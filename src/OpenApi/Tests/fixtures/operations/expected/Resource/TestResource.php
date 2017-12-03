@@ -6,10 +6,10 @@
  * Do no edit it directly.
  */
 
-namespace Joli\Jane\OpenApi\Tests\Expected\Resource;
+namespace Jane\OpenApi\Tests\Expected\Resource;
 
-use Joli\Jane\OpenApi\Runtime\Client\QueryParam;
-use Joli\Jane\OpenApi\Runtime\Client\Resource;
+use Jane\OpenApi\Runtime\Client\QueryParam;
+use Jane\OpenApi\Runtime\Client\Resource;
 
 class TestResource extends Resource
 {

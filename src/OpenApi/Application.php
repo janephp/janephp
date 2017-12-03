@@ -1,8 +1,8 @@
 <?php
 
-namespace Joli\Jane\OpenApi;
+namespace Jane\OpenApi;
 
-use Joli\Jane\OpenApi\Command\GenerateCommand;
+use Jane\OpenApi\Command\GenerateCommand;
 use Symfony\Component\Console\Application as BaseApplication;
 
 class Application extends BaseApplication

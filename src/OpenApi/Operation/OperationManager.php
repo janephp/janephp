@@ -1,10 +1,10 @@
 <?php
 
-namespace Joli\Jane\OpenApi\Operation;
+namespace Jane\OpenApi\Operation;
 
-use Joli\Jane\OpenApi\Model\Operation as OpenApiOperation;
-use Joli\Jane\OpenApi\Model\PathItem;
-use Joli\Jane\OpenApi\Model\OpenApi;
+use Jane\OpenApi\Model\Operation as OpenApiOperation;
+use Jane\OpenApi\Model\PathItem;
+use Jane\OpenApi\Model\OpenApi;
 
 class OperationManager
 {

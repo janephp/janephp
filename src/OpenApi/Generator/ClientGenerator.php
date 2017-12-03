@@ -1,11 +1,11 @@
 <?php
 
-namespace Joli\Jane\OpenApi\Generator;
+namespace Jane\OpenApi\Generator;
 
-use Joli\Jane\Generator\Context\Context;
-use Joli\Jane\OpenApi\Model\OpenApi;
-use Joli\Jane\OpenApi\Naming\OperationNamingInterface;
-use Joli\Jane\OpenApi\Operation\OperationManager;
+use Jane\Generator\Context\Context;
+use Jane\OpenApi\Model\OpenApi;
+use Jane\OpenApi\Naming\OperationNamingInterface;
+use Jane\OpenApi\Operation\OperationManager;
 
 use PhpParser\BuilderFactory;
 use PhpParser\Node;
@@ -15,7 +15,7 @@ use PhpParser\Node\Stmt;
 class ClientGenerator
 {
     /**
-     * @var \Joli\Jane\OpenApi\Operation\OperationManager
+     * @var \Jane\OpenApi\Operation\OperationManager
      */
     private $operationManager;
 
@@ -76,12 +76,12 @@ class ClientGenerator
 
         return [
             'class' => $factory->namespace($namespace . "\\Resource")
-                ->addStmt($factory->use('Joli\Jane\OpenApi\Runtime\Client\Resource'))
+                ->addStmt($factory->use('Jane\OpenApi\Runtime\Client\Resource'))
                 ->addStmt($class)
                 ->getNode()
             ,
             'trait' => $factory->namespace($namespace . "\\Resource")
-                ->addStmt($factory->use('Joli\Jane\OpenApi\Runtime\Client\QueryParam'))
+                ->addStmt($factory->use('Jane\OpenApi\Runtime\Client\QueryParam'))
                 ->addStmt($trait)
                 ->getNode()
         ];

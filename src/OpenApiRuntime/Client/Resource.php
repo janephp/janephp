@@ -1,6 +1,6 @@
 <?php
 
-namespace Joli\Jane\OpenApi\Runtime\Client;
+namespace Jane\OpenApiRuntime\Client;
 
 use Http\Client\Common\FlexibleHttpClient;
 use Http\Client\HttpAsyncClient;
@@ -10,9 +10,9 @@ use Symfony\Component\Serializer\SerializerInterface;
 
 abstract class Resource
 {
-    const FETCH_RESPONSE = 'response';
-    const FETCH_OBJECT = 'object';
-    const FETCH_PROMISE = 'promise';
+    public const FETCH_RESPONSE = 'response';
+    public const FETCH_OBJECT = 'object';
+    public const FETCH_PROMISE = 'promise';
 
     /**
      * @var HttpClient|HttpAsyncClient

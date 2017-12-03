@@ -1,8 +1,8 @@
 <?php
 
-namespace Joli\Jane\OpenApi\Normalizer;
+namespace Jane\OpenApi\Normalizer;
 
-use Joli\Jane\Runtime\Reference;
+use Jane\Runtime\Reference;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -27,7 +27,7 @@ class JsonReferenceNormalizer implements DenormalizerInterface, NormalizerInterf
 
     public function supportsNormalization($data, $format = null)
     {
-        if ($data instanceof \Joli\Jane\OpenApi\Model\JsonReference) {
+        if ($data instanceof \Jane\OpenApi\Model\JsonReference) {
             return true;
         }
 
@@ -42,7 +42,7 @@ class JsonReferenceNormalizer implements DenormalizerInterface, NormalizerInterf
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
-        $object = new \Joli\Jane\OpenApi\Model\JsonReference();
+        $object = new \Jane\OpenApi\Model\JsonReference();
         if (property_exists($data, '$ref')) {
             $object->setDollarRef($data->{'$ref'});
         }

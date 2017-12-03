@@ -1,10 +1,10 @@
 <?php
 
-namespace Joli\Jane\OpenApi\Guesser\OpenApiSchema;
+namespace Jane\OpenApi\Guesser\OpenApiSchema;
 
-use Joli\Jane\OpenApi\Model\Schema;
+use Jane\OpenApi\Model\Schema;
 
-class ReferenceGuesser extends \Joli\Jane\Guesser\ReferenceGuesser
+class ReferenceGuesser extends \Jane\Guesser\ReferenceGuesser
 {
     /**
      * @return string

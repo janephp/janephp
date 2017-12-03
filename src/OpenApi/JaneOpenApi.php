@@ -1,25 +1,25 @@
 <?php
 
-namespace Joli\Jane\OpenApi;
+namespace Jane\OpenApi;
 
 use Fitbug\SymfonySerializer\YamlEncoderDecoder\YamlDecode;
 use Fitbug\SymfonySerializer\YamlEncoderDecoder\YamlEncode;
 use Fitbug\SymfonySerializer\YamlEncoderDecoder\YamlEncoder;
-use Joli\Jane\Encoder\RawEncoder;
-use Joli\Jane\Generator\Context\Context;
-use Joli\Jane\Generator\File;
-use Joli\Jane\Generator\ModelGenerator;
-use Joli\Jane\Generator\Naming;
-use Joli\Jane\Generator\NormalizerGenerator;
-use Joli\Jane\Guesser\ChainGuesser;
-use Joli\Jane\OpenApi\Generator\ClientGenerator;
-use Joli\Jane\OpenApi\Generator\GeneratorFactory;
-use Joli\Jane\OpenApi\Guesser\OpenApiSchema\GuesserFactory;
-use Joli\Jane\OpenApi\Model\OpenApi;
-use Joli\Jane\OpenApi\Normalizer\NormalizerFactory;
-use Joli\Jane\OpenApi\SchemaParser\SchemaParser;
-use Joli\Jane\Registry;
-use Joli\Jane\Schema;
+use Jane\Encoder\RawEncoder;
+use Jane\Generator\Context\Context;
+use Jane\Generator\File;
+use Jane\Generator\ModelGenerator;
+use Jane\Generator\Naming;
+use Jane\Generator\NormalizerGenerator;
+use Jane\Guesser\ChainGuesser;
+use Jane\OpenApi\Generator\ClientGenerator;
+use Jane\OpenApi\Generator\GeneratorFactory;
+use Jane\OpenApi\Guesser\OpenApiSchema\GuesserFactory;
+use Jane\OpenApi\Model\OpenApi;
+use Jane\OpenApi\Normalizer\NormalizerFactory;
+use Jane\OpenApi\SchemaParser\SchemaParser;
+use Jane\Registry;
+use Jane\Schema;
 use PhpCsFixer\Config;
 use PhpCsFixer\ConfigInterface;
 use PhpCsFixer\Console\ConfigurationResolver;

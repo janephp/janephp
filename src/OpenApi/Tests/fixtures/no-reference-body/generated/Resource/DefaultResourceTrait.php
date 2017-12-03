@@ -6,20 +6,20 @@
  * Do no edit it directly.
  */
 
-namespace Joli\Jane\OpenApi\Tests\Expected\Resource;
+namespace Jane\OpenApi\Tests\Expected\Resource;
 
-use Joli\Jane\OpenApi\Runtime\Client\QueryParam;
+use Jane\OpenApi\Runtime\Client\QueryParam;
 
 trait DefaultResourceTrait
 {
     /**
-     * @param \Joli\Jane\OpenApi\Tests\Expected\Model\TestGetBody $body
+     * @param \Jane\OpenApi\Tests\Expected\Model\TestGetBody $body
      * @param array                                               $parameters List of parameters
      * @param string                                              $fetch      Fetch mode (object or response)
      *
      * @return \Psr\Http\Message\ResponseInterface
      */
-    public function getTest(\Joli\Jane\OpenApi\Tests\Expected\Model\TestGetBody $body, $parameters = [], $fetch = self::FETCH_OBJECT)
+    public function getTest(\Jane\OpenApi\Tests\Expected\Model\TestGetBody $body, $parameters = [], $fetch = self::FETCH_OBJECT)
     {
         $queryParam = new QueryParam();
         $url        = '/test';
@@ -37,13 +37,13 @@ trait DefaultResourceTrait
     }
 
     /**
-     * @param \Joli\Jane\OpenApi\Tests\Expected\Model\TestPostBody $body
+     * @param \Jane\OpenApi\Tests\Expected\Model\TestPostBody $body
      * @param array                                                $parameters List of parameters
      * @param string                                               $fetch      Fetch mode (object or response)
      *
      * @return \Psr\Http\Message\ResponseInterface
      */
-    public function test(\Joli\Jane\OpenApi\Tests\Expected\Model\TestPostBody $body, $parameters = [], $fetch = self::FETCH_OBJECT)
+    public function test(\Jane\OpenApi\Tests\Expected\Model\TestPostBody $body, $parameters = [], $fetch = self::FETCH_OBJECT)
     {
         $queryParam = new QueryParam();
         $url        = '/test';

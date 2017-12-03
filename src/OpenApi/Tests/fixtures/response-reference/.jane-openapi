@@ -2,6 +2,6 @@
 
 return [
     'openapi-file' => 'tests/fixtures/response-reference/swagger.json',
-    'namespace' => 'Joli\Jane\OpenApi\Tests\Expected',
+    'namespace' => 'Jane\OpenApi\Tests\Expected',
     'directory' => __DIR__ . '/generated',
 ];

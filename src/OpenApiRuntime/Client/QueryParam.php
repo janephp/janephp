@@ -1,6 +1,6 @@
 <?php
 
-namespace Joli\Jane\OpenApi\Runtime\Client;
+namespace Jane\OpenApiRuntime\Client;
 
 use Symfony\Component\OptionsResolver\OptionsResolver;
 

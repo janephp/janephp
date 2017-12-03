@@ -1,6 +1,6 @@
 <?php
 
-namespace Joli\Jane\OpenApi\Guesser;
+namespace Jane\OpenApi\Guesser;
 
 interface OperationGuesserInterface
 {

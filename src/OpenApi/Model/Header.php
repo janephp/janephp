@@ -1,6 +1,6 @@
 <?php
 
-namespace Joli\Jane\OpenApi\Model;
+namespace Jane\OpenApi\Model;
 
 class Header
 {

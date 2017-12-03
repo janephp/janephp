@@ -1,17 +1,17 @@
 <?php
 
-namespace Joli\Jane\OpenApi\Generator;
+namespace Jane\OpenApi\Generator;
 
 use Doctrine\Common\Inflector\Inflector;
-use Joli\Jane\Generator\Context\Context;
-use Joli\Jane\Runtime\Reference;
-use Joli\Jane\OpenApi\Model\BodyParameter;
-use Joli\Jane\OpenApi\Model\FormDataParameterSubSchema;
-use Joli\Jane\OpenApi\Model\HeaderParameterSubSchema;
-use Joli\Jane\OpenApi\Model\PathParameterSubSchema;
-use Joli\Jane\OpenApi\Model\QueryParameterSubSchema;
-use Joli\Jane\OpenApi\Operation\Operation;
-use Joli\Jane\Reference\Resolver;
+use Jane\Generator\Context\Context;
+use Jane\Runtime\Reference;
+use Jane\OpenApi\Model\BodyParameter;
+use Jane\OpenApi\Model\FormDataParameterSubSchema;
+use Jane\OpenApi\Model\HeaderParameterSubSchema;
+use Jane\OpenApi\Model\PathParameterSubSchema;
+use Jane\OpenApi\Model\QueryParameterSubSchema;
+use Jane\OpenApi\Operation\Operation;
+use Jane\Reference\Resolver;
 use PhpParser\Node\Arg;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Name;

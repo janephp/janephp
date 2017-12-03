@@ -1,16 +1,16 @@
 <?php
 
-namespace Joli\Jane\OpenApi\Generator;
+namespace Jane\OpenApi\Generator;
 
-use Joli\Jane\Generator\Context\Context;
-use Joli\Jane\OpenApi\Model\Response;
-use Joli\Jane\Runtime\Reference;
-use Joli\Jane\OpenApi\Generator\Parameter\BodyParameterGenerator;
-use Joli\Jane\OpenApi\Generator\Parameter\FormDataParameterGenerator;
-use Joli\Jane\OpenApi\Generator\Parameter\HeaderParameterGenerator;
-use Joli\Jane\OpenApi\Generator\Parameter\PathParameterGenerator;
-use Joli\Jane\OpenApi\Generator\Parameter\QueryParameterGenerator;
-use Joli\Jane\OpenApi\Operation\Operation;
+use Jane\Generator\Context\Context;
+use Jane\OpenApi\Model\Response;
+use Jane\Runtime\Reference;
+use Jane\OpenApi\Generator\Parameter\BodyParameterGenerator;
+use Jane\OpenApi\Generator\Parameter\FormDataParameterGenerator;
+use Jane\OpenApi\Generator\Parameter\HeaderParameterGenerator;
+use Jane\OpenApi\Generator\Parameter\PathParameterGenerator;
+use Jane\OpenApi\Generator\Parameter\QueryParameterGenerator;
+use Jane\OpenApi\Operation\Operation;
 use PhpParser\Node\Arg;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Name;

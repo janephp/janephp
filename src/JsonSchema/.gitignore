@@ -6,6 +6,6 @@ bin/*
 !bin/jane
 stub
 
-tests/generated/*
-!tests/generated/.gitkeep
-tests/fixtures/*/generated
+Tests/generated/*
+!Tests/generated/.gitkeep
+Tests/fixtures/*/generated

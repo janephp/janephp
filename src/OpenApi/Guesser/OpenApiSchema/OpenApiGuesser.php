@@ -1,17 +1,17 @@
 <?php
 
-namespace Joli\Jane\OpenApi\Guesser\OpenApiSchema;
+namespace Jane\OpenApi\Guesser\OpenApiSchema;
 
-use Joli\Jane\Guesser\ChainGuesserAwareInterface;
-use Joli\Jane\Guesser\ChainGuesserAwareTrait;
-use Joli\Jane\Guesser\ClassGuesserInterface;
-use Joli\Jane\Guesser\GuesserInterface;
-use Joli\Jane\OpenApi\Model\BodyParameter;
-use Joli\Jane\OpenApi\Model\Operation;
-use Joli\Jane\OpenApi\Model\PathItem;
-use Joli\Jane\OpenApi\Model\Response;
-use Joli\Jane\OpenApi\Model\OpenApi;
-use Joli\Jane\Registry;
+use Jane\Guesser\ChainGuesserAwareInterface;
+use Jane\Guesser\ChainGuesserAwareTrait;
+use Jane\Guesser\ClassGuesserInterface;
+use Jane\Guesser\GuesserInterface;
+use Jane\OpenApi\Model\BodyParameter;
+use Jane\OpenApi\Model\Operation;
+use Jane\OpenApi\Model\PathItem;
+use Jane\OpenApi\Model\Response;
+use Jane\OpenApi\Model\OpenApi;
+use Jane\Registry;
 
 class OpenApiGuesser implements GuesserInterface, ClassGuesserInterface, ChainGuesserAwareInterface
 {

@@ -1,10 +1,10 @@
 <?php
 
-namespace Joli\Jane\OpenApi\Command;
+namespace Jane\OpenApi\Command;
 
-use Joli\Jane\OpenApi\JaneOpenApi;
-use Joli\Jane\Registry;
-use Joli\Jane\Schema;
+use Jane\OpenApi\JaneOpenApi;
+use Jane\Registry;
+use Jane\Schema;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;

@@ -1,8 +1,8 @@
 <?php
 
-namespace Joli\Jane\OpenApi\Normalizer;
+namespace Jane\OpenApi\Normalizer;
 
-use Joli\Jane\Runtime\Reference;
+use Jane\Runtime\Reference;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -27,7 +27,7 @@ class PrimitivesItemsNormalizer implements DenormalizerInterface, NormalizerInte
 
     public function supportsNormalization($data, $format = null)
     {
-        if ($data instanceof \Joli\Jane\OpenApi\Model\PrimitivesItems) {
+        if ($data instanceof \Jane\OpenApi\Model\PrimitivesItems) {
             return true;
         }
 
@@ -42,7 +42,7 @@ class PrimitivesItemsNormalizer implements DenormalizerInterface, NormalizerInte
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
-        $object = new \Joli\Jane\OpenApi\Model\PrimitivesItems();
+        $object = new \Jane\OpenApi\Model\PrimitivesItems();
         if (property_exists($data, 'type')) {
             $object->setType($data->{'type'});
         }

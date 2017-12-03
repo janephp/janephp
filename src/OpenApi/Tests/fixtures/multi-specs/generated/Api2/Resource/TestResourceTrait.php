@@ -6,9 +6,9 @@
  * Do no edit it directly.
  */
 
-namespace Joli\Jane\OpenApi\Tests\Expected\Api2\Resource;
+namespace Jane\OpenApi\Tests\Expected\Api2\Resource;
 
-use Joli\Jane\OpenApi\Runtime\Client\QueryParam;
+use Jane\OpenApi\Runtime\Client\QueryParam;
 
 trait TestResourceTrait
 {
@@ -16,7 +16,7 @@ trait TestResourceTrait
      * @param array  $parameters List of parameters
      * @param string $fetch      Fetch mode (object or response)
      *
-     * @return \Psr\Http\Message\ResponseInterface|\Joli\Jane\OpenApi\Tests\Expected\Api1\Model\Body
+     * @return \Psr\Http\Message\ResponseInterface|\Jane\OpenApi\Tests\Expected\Api1\Model\Body
      */
     public function testReferenceResponse($parameters = [], $fetch = self::FETCH_OBJECT)
     {

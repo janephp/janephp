@@ -15,14 +15,21 @@
 
     <testsuites>
         <testsuite name="Jane Unit Test Suite">
-            <directory>tests</directory>
-            <exclude>tests/fixtures</exclude>
+            <directory>./src/*/Tests</directory>
+            <exclude>
+                <directory>./src/JsonSchema/Tests/data</directory>
+                <directory>./src/JsonSchema/Tests/fixtures</directory>
+                <directory>./src/JsonSchema/Tests/generated</directory>
+            </exclude>
         </testsuite>
     </testsuites>
 
     <filter>
         <whitelist>
-            <directory suffix=".php">src</directory>
+            <directory suffix=".php">./src</directory>
+            <exclude>
+                <directory>./src/*/Tests</directory>
+            </exclude>
         </whitelist>
     </filter>
 </phpunit>

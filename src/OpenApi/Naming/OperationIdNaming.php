@@ -1,9 +1,9 @@
 <?php
 
-namespace Joli\Jane\OpenApi\Naming;
+namespace Jane\OpenApi\Naming;
 
 use Doctrine\Common\Inflector\Inflector;
-use Joli\Jane\OpenApi\Operation\Operation;
+use Jane\OpenApi\Operation\Operation;
 
 class OperationIdNaming implements OperationNamingInterface
 {

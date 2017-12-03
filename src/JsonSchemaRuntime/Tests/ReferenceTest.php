@@ -1,10 +1,11 @@
 <?php
 
-namespace Joli\Jane\Runtime\Tests;
+namespace Jane\JsonSchemaRuntime\Tests;
 
-use Joli\Jane\Runtime\Reference;
+use Jane\JsonSchemaRuntime\Reference;
+use PHPUnit\Framework\TestCase;
 
-class ReferenceTest extends \PHPUnit_Framework_TestCase
+class ReferenceTest extends TestCase
 {
     /**
      * @dataProvider resolveProvider

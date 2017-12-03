@@ -1,6 +1,6 @@
 <?php
 
-namespace Joli\Jane\OpenApi\Generator\Parameter;
+namespace Jane\OpenApi\Generator\Parameter;
 
 use PhpParser\Node;
 use PhpParser\Node\Expr;

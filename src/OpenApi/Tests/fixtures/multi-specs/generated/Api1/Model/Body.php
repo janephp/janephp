@@ -6,7 +6,7 @@
  * Do no edit it directly.
  */
 
-namespace Joli\Jane\OpenApi\Tests\Expected\Api1\Model;
+namespace Jane\OpenApi\Tests\Expected\Api1\Model;
 
 class Body
 {

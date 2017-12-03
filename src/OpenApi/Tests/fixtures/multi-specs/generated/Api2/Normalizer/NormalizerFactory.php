@@ -6,7 +6,7 @@
  * Do no edit it directly.
  */
 
-namespace Joli\Jane\OpenApi\Tests\Expected\Api2\Normalizer;
+namespace Jane\OpenApi\Tests\Expected\Api2\Normalizer;
 
 class NormalizerFactory
 {

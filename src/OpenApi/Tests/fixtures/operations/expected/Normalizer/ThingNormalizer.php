@@ -6,7 +6,7 @@
  * Do no edit it directly.
  */
 
-namespace Joli\Jane\OpenApi\Tests\Expected\Normalizer;
+namespace Jane\OpenApi\Tests\Expected\Normalizer;
 
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
@@ -32,7 +32,7 @@ class ThingNormalizer implements DenormalizerInterface, NormalizerInterface, Den
 
     public function supportsNormalization($data, $format = null)
     {
-        if ($data instanceof \Joli\Jane\OpenApi\Tests\Expected\Model\Thing) {
+        if ($data instanceof \Jane\OpenApi\Tests\Expected\Model\Thing) {
             return true;
         }
 
@@ -44,7 +44,7 @@ class ThingNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         if (!is_object($data)) {
             throw new InvalidArgumentException();
         }
-        $object = new \Joli\Jane\OpenApi\Tests\Expected\Model\Thing();
+        $object = new \Jane\OpenApi\Tests\Expected\Model\Thing();
         if (property_exists($data, 'name')) {
             $object->setName($data->{'name'});
         }

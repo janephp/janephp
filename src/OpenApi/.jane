@@ -3,7 +3,7 @@
 return [
     'json-schema-file' => 'swagger-spec.json',
     'root-class' => 'OpenApi',
-    'namespace' => 'Joli\Jane\OpenApi',
+    'namespace' => 'Jane\OpenApi',
     'directory' => __DIR__ . '/generated',
     'reference' => true,
 ];

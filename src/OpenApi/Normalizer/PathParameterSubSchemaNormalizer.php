@@ -1,8 +1,8 @@
 <?php
 
-namespace Joli\Jane\OpenApi\Normalizer;
+namespace Jane\OpenApi\Normalizer;
 
-use Joli\Jane\Runtime\Reference;
+use Jane\Runtime\Reference;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -27,7 +27,7 @@ class PathParameterSubSchemaNormalizer implements DenormalizerInterface, Normali
 
     public function supportsNormalization($data, $format = null)
     {
-        if ($data instanceof \Joli\Jane\OpenApi\Model\PathParameterSubSchema) {
+        if ($data instanceof \Jane\OpenApi\Model\PathParameterSubSchema) {
             return true;
         }
 
@@ -42,7 +42,7 @@ class PathParameterSubSchemaNormalizer implements DenormalizerInterface, Normali
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
-        $object = new \Joli\Jane\OpenApi\Model\PathParameterSubSchema();
+        $object = new \Jane\OpenApi\Model\PathParameterSubSchema();
         if (property_exists($data, 'required')) {
             $object->setRequired($data->{'required'});
         }

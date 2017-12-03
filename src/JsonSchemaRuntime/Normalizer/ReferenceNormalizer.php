@@ -1,8 +1,8 @@
 <?php
 
-namespace Joli\Jane\Runtime\Normalizer;
+namespace Jane\JsonSchemaRuntime\Normalizer;
 
-use Joli\Jane\Runtime\Reference;
+use Jane\JsonSchemaRuntime\Reference;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
 class ReferenceNormalizer implements NormalizerInterface

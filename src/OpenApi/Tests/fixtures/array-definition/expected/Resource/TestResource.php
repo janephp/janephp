@@ -6,10 +6,10 @@
  * Do no edit it directly.
  */
 
-namespace Joli\Jane\OpenApi\Tests\Expected\Resource;
+namespace Jane\OpenApi\Tests\Expected\Resource;
 
-use Joli\Jane\OpenApi\Runtime\Client\QueryParam;
-use Joli\Jane\OpenApi\Runtime\Client\Resource;
+use Jane\OpenApi\Runtime\Client\QueryParam;
+use Jane\OpenApi\Runtime\Client\Resource;
 
 class TestResource extends Resource
 {
@@ -17,7 +17,7 @@ class TestResource extends Resource
      * @param array  $parameters List of parameters
      * @param string $fetch      Fetch mode (object or response)
      *
-     * @return \Psr\Http\Message\ResponseInterface|\Joli\Jane\OpenApi\Tests\Expected\Model\BarItem[]
+     * @return \Psr\Http\Message\ResponseInterface|\Jane\OpenApi\Tests\Expected\Model\BarItem[]
      */
     public function testSimple($parameters = [], $fetch = self::FETCH_OBJECT)
     {

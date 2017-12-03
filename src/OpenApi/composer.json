@@ -1,5 +1,5 @@
 {
-    "name": "jane/open-api",
+    "name": "jane-php/open-api",
     "description": "Generate a PHP Client API (PSR7 compatible) given a OpenApi (Swagger) specification",
     "type": "library",
     "keywords": ["jane", "swagger", "openapi"],
@@ -31,8 +31,6 @@
         "jane/runtime": "^2.1",
         "jane/openapi-runtime": "^2.0",
         "nikic/php-parser": "^3.0",
-        "symfony/console": "^3.1",
-        "doctrine/inflector": "^1.0",
         "symfony/yaml": "^3.1",
         "fitbug/symfony-yaml-serializer-encoder-decoder": "^0.1.1"
     },

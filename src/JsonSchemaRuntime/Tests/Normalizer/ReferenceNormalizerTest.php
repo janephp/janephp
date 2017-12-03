@@ -1,11 +1,12 @@
 <?php
 
-namespace Joli\Jane\Runtime\Tests\Normalizer;
+namespace Jane\JsonSchemaRuntime\Tests\Normalizer;
 
-use Joli\Jane\Runtime\Normalizer\ReferenceNormalizer;
-use Joli\Jane\Runtime\Reference;
+use Jane\JsonSchemaRuntime\Normalizer\ReferenceNormalizer;
+use Jane\JsonSchemaRuntime\Reference;
+use PHPUnit\Framework\TestCase;
 
-class ReferenceNormalizerTest extends \PHPUnit_Framework_TestCase
+class ReferenceNormalizerTest extends TestCase
 {
     /** @var ReferenceNormalizer */
     private $referenceNormalizer;

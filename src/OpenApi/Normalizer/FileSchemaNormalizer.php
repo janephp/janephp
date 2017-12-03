@@ -1,8 +1,8 @@
 <?php
 
-namespace Joli\Jane\OpenApi\Normalizer;
+namespace Jane\OpenApi\Normalizer;
 
-use Joli\Jane\Runtime\Reference;
+use Jane\Runtime\Reference;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -27,7 +27,7 @@ class FileSchemaNormalizer implements DenormalizerInterface, NormalizerInterface
 
     public function supportsNormalization($data, $format = null)
     {
-        if ($data instanceof \Joli\Jane\OpenApi\Model\FileSchema) {
+        if ($data instanceof \Jane\OpenApi\Model\FileSchema) {
             return true;
         }
 
@@ -42,7 +42,7 @@ class FileSchemaNormalizer implements DenormalizerInterface, NormalizerInterface
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
-        $object = new \Joli\Jane\OpenApi\Model\FileSchema();
+        $object = new \Jane\OpenApi\Model\FileSchema();
         if (property_exists($data, 'format')) {
             $object->setFormat($data->{'format'});
         }

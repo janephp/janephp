@@ -1,6 +1,8 @@
 <?php
 
-namespace Joli\Jane\Runtime;
+declare(strict_types=1);
+
+namespace Jane\JsonSchemaRuntime;
 
 use League\Uri\Formatter;
 use League\Uri\Schemes\Generic\AbstractUri;
@@ -34,14 +36,9 @@ class Reference
      */
     private $mergedUri;
 
-    /**
-     * @param string $reference
-     * @param string $origin
-     */
-    public function __construct($reference, $origin)
+    public function __construct(string $reference, string $origin)
     {
         $uriParse = new UriParser();
-
         $originParts = $uriParse->parse($origin);
         $referenceParts = parse_url($reference);
         $mergedParts = array_merge($originParts, $referenceParts);

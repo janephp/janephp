@@ -1,6 +1,6 @@
 <?php
 
-namespace Joli\Jane\OpenApi\Exception;
+namespace Jane\OpenApi\Exception;
 
 use Exception;
 use UnexpectedValueException;

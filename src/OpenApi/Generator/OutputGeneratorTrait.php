@@ -1,11 +1,11 @@
 <?php
 
-namespace Joli\Jane\OpenApi\Generator;
+namespace Jane\OpenApi\Generator;
 
-use Joli\Jane\Generator\Context\Context;
-use Joli\Jane\Runtime\Reference;
-use Joli\Jane\Reference\Resolver;
-use Joli\Jane\OpenApi\Model\Schema;
+use Jane\Generator\Context\Context;
+use Jane\Runtime\Reference;
+use Jane\Reference\Resolver;
+use Jane\OpenApi\Model\Schema;
 use PhpParser\Node\Arg;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Name;

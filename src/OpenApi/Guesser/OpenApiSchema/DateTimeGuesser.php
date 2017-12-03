@@ -1,9 +1,9 @@
 <?php
 
-namespace Joli\Jane\OpenApi\Guesser\OpenApiSchema;
+namespace Jane\OpenApi\Guesser\OpenApiSchema;
 
-use Joli\Jane\Guesser\JsonSchema\DateTimeGuesser as BaseDateTimeGuesser;
-use Joli\Jane\OpenApi\Model\Schema;
+use Jane\Guesser\JsonSchema\DateTimeGuesser as BaseDateTimeGuesser;
+use Jane\OpenApi\Model\Schema;
 
 class DateTimeGuesser extends BaseDateTimeGuesser
 {

@@ -1,13 +1,13 @@
 <?php
 
-namespace Joli\Jane\OpenApi\Generator\Parameter;
+namespace Jane\OpenApi\Generator\Parameter;
 
 use Doctrine\Common\Inflector\Inflector;
-use Joli\Jane\Generator\Context\Context;
-use Joli\Jane\Runtime\Reference;
-use Joli\Jane\Reference\Resolver;
-use Joli\Jane\OpenApi\Model\BodyParameter;
-use Joli\Jane\OpenApi\Model\Schema;
+use Jane\Generator\Context\Context;
+use Jane\Runtime\Reference;
+use Jane\Reference\Resolver;
+use Jane\OpenApi\Model\BodyParameter;
+use Jane\OpenApi\Model\Schema;
 use PhpParser\Node;
 use PhpParser\Parser;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;

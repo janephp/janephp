@@ -1,9 +1,9 @@
 <?php
 
-namespace Joli\Jane\OpenApi\Guesser\OpenApiSchema;
+namespace Jane\OpenApi\Guesser\OpenApiSchema;
 
-use Joli\Jane\Generator\Naming;
-use Joli\Jane\Guesser\ChainGuesser;
+use Jane\Generator\Naming;
+use Jane\Guesser\ChainGuesser;
 use Symfony\Component\Serializer\SerializerInterface;
 
 class GuesserFactory

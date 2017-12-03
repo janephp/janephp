@@ -6,9 +6,9 @@
  * Do no edit it directly.
  */
 
-namespace Joli\Jane\OpenApi\Tests\Expected\Resource;
+namespace Jane\OpenApi\Tests\Expected\Resource;
 
-use Joli\Jane\OpenApi\Runtime\Client\QueryParam;
+use Jane\OpenApi\Runtime\Client\QueryParam;
 
 trait DefaultResourceTrait
 {
@@ -128,7 +128,7 @@ trait DefaultResourceTrait
      * @param array  $parameters List of parameters
      * @param string $fetch      Fetch mode (object or response)
      *
-     * @return \Psr\Http\Message\ResponseInterface|\Joli\Jane\OpenApi\Tests\Expected\Model\Thing[]
+     * @return \Psr\Http\Message\ResponseInterface|\Jane\OpenApi\Tests\Expected\Model\Thing[]
      */
     public function getThings($parameters = [], $fetch = self::FETCH_OBJECT)
     {
@@ -156,7 +156,7 @@ trait DefaultResourceTrait
      * @param array  $parameters List of parameters
      * @param string $fetch      Fetch mode (object or response)
      *
-     * @return \Psr\Http\Message\ResponseInterface|\Joli\Jane\OpenApi\Tests\Expected\Model\Thing[]
+     * @return \Psr\Http\Message\ResponseInterface|\Jane\OpenApi\Tests\Expected\Model\Thing[]
      */
     public function getThingsById($parameters = [], $fetch = self::FETCH_OBJECT)
     {
@@ -184,7 +184,7 @@ trait DefaultResourceTrait
      * @param array  $parameters List of parameters
      * @param string $fetch      Fetch mode (object or response)
      *
-     * @return \Psr\Http\Message\ResponseInterface|\Joli\Jane\OpenApi\Tests\Expected\Model\Thing
+     * @return \Psr\Http\Message\ResponseInterface|\Jane\OpenApi\Tests\Expected\Model\Thing
      */
     public function getAnotherThing($parameters = [], $fetch = self::FETCH_OBJECT)
     {
@@ -212,7 +212,7 @@ trait DefaultResourceTrait
      * @param array  $parameters List of parameters
      * @param string $fetch      Fetch mode (object or response)
      *
-     * @return \Psr\Http\Message\ResponseInterface|\Joli\Jane\OpenApi\Tests\Expected\Model\Thing
+     * @return \Psr\Http\Message\ResponseInterface|\Jane\OpenApi\Tests\Expected\Model\Thing
      */
     public function getAnotherThingById($parameters = [], $fetch = self::FETCH_OBJECT)
     {

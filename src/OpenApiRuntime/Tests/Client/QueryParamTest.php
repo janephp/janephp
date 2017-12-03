@@ -1,10 +1,11 @@
 <?php
 
-namespace Joli\Jane\OpenApi\Runtime\Tests;
+namespace Jane\OpenApiRuntime\Tests;
 
-use Joli\Jane\OpenApi\Runtime\Client\QueryParam;
+use Jane\OpenApiRuntime\Client\QueryParam;
+use PHPUnit\Framework\TestCase;
 
-class QueryParamTest extends \PHPUnit_Framework_TestCase
+class QueryParamTest extends TestCase
 {
     /** @var QueryParam */
     private $queryParam;

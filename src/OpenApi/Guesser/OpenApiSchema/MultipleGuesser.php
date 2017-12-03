@@ -1,9 +1,9 @@
 <?php
 
-namespace Joli\Jane\OpenApi\Guesser\OpenApiSchema;
+namespace Jane\OpenApi\Guesser\OpenApiSchema;
 
-use Joli\Jane\Guesser\JsonSchema\MultipleGuesser as BaseMultipleGuesser;
-use Joli\Jane\OpenApi\Model\Schema;
+use Jane\Guesser\JsonSchema\MultipleGuesser as BaseMultipleGuesser;
+use Jane\OpenApi\Model\Schema;
 
 class MultipleGuesser extends BaseMultipleGuesser
 {

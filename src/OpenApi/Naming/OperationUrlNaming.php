@@ -1,11 +1,11 @@
 <?php
 
-namespace Joli\Jane\OpenApi\Naming;
+namespace Jane\OpenApi\Naming;
 
 use Doctrine\Common\Inflector\Inflector;
-use Joli\Jane\OpenApi\Model\Response;
-use Joli\Jane\OpenApi\Model\Schema;
-use Joli\Jane\OpenApi\Operation\Operation;
+use Jane\OpenApi\Model\Response;
+use Jane\OpenApi\Model\Schema;
+use Jane\OpenApi\Operation\Operation;
 
 class OperationUrlNaming implements OperationNamingInterface
 {

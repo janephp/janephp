@@ -1,6 +1,6 @@
 <?php
 
-namespace Joli\Jane\OpenApi\Operation;
+namespace Jane\OpenApi\Operation;
 
 use Doctrine\Common\Inflector\Inflector;
 

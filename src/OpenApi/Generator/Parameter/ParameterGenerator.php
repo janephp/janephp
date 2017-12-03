@@ -1,8 +1,8 @@
 <?php
 
-namespace Joli\Jane\OpenApi\Generator\Parameter;
+namespace Jane\OpenApi\Generator\Parameter;
 
-use Joli\Jane\Generator\Context\Context;
+use Jane\Generator\Context\Context;
 use PhpParser\Node;
 use PhpParser\Parser;
 use PhpParser\Node\Expr;

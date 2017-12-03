@@ -1,8 +1,8 @@
 <?php
 
-namespace Joli\Jane\OpenApi\Operation;
+namespace Jane\OpenApi\Operation;
 
-use Joli\Jane\OpenApi\Model\Operation as OpenApiOperation;
+use Jane\OpenApi\Model\Operation as OpenApiOperation;
 
 class Operation
 {
@@ -15,7 +15,7 @@ class Operation
     const HEAD    = 'HEAD';
 
     /**
-     * @var \Joli\Jane\OpenApi\Model\Operation
+     * @var \Jane\OpenApi\Model\Operation
      */
     private $operation;
 
@@ -52,7 +52,7 @@ class Operation
     }
 
     /**
-     * @return \Joli\Jane\OpenApi\Model\Operation
+     * @return \Jane\OpenApi\Model\Operation
      */
     public function getOperation()
     {

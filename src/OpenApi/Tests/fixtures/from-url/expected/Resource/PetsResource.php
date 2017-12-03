@@ -6,10 +6,10 @@
  * Do no edit it directly.
  */
 
-namespace Joli\Jane\OpenApi\Tests\Expected\Resource;
+namespace Jane\OpenApi\Tests\Expected\Resource;
 
-use Joli\Jane\OpenApi\Runtime\Client\QueryParam;
-use Joli\Jane\OpenApi\Runtime\Client\Resource;
+use Jane\OpenApi\Runtime\Client\QueryParam;
+use Jane\OpenApi\Runtime\Client\Resource;
 
 class PetsResource extends Resource
 {
@@ -21,7 +21,7 @@ class PetsResource extends Resource
      *
      * @param string $fetch Fetch mode (object or response)
      *
-     * @return \Psr\Http\Message\ResponseInterface|\Joli\Jane\OpenApi\Tests\Expected\Model\Pet[]|\Joli\Jane\OpenApi\Tests\Expected\Model\Error
+     * @return \Psr\Http\Message\ResponseInterface|\Jane\OpenApi\Tests\Expected\Model\Pet[]|\Jane\OpenApi\Tests\Expected\Model\Error
      */
     public function listPets($parameters = [], $fetch = self::FETCH_OBJECT)
     {
@@ -52,7 +52,7 @@ class PetsResource extends Resource
      * @param array  $parameters List of parameters
      * @param string $fetch      Fetch mode (object or response)
      *
-     * @return \Psr\Http\Message\ResponseInterface|null|\Joli\Jane\OpenApi\Tests\Expected\Model\Error
+     * @return \Psr\Http\Message\ResponseInterface|null|\Jane\OpenApi\Tests\Expected\Model\Error
      */
     public function createPets($parameters = [], $fetch = self::FETCH_OBJECT)
     {
@@ -83,7 +83,7 @@ class PetsResource extends Resource
      * @param array  $parameters List of parameters
      * @param string $fetch      Fetch mode (object or response)
      *
-     * @return \Psr\Http\Message\ResponseInterface|\Joli\Jane\OpenApi\Tests\Expected\Model\Pet[]|\Joli\Jane\OpenApi\Tests\Expected\Model\Error
+     * @return \Psr\Http\Message\ResponseInterface|\Jane\OpenApi\Tests\Expected\Model\Pet[]|\Jane\OpenApi\Tests\Expected\Model\Error
      */
     public function showPetById($petId, $parameters = [], $fetch = self::FETCH_OBJECT)
     {

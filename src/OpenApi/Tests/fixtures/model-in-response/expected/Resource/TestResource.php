@@ -6,10 +6,10 @@
  * Do no edit it directly.
  */
 
-namespace Joli\Jane\OpenApi\Tests\Expected\Resource;
+namespace Jane\OpenApi\Tests\Expected\Resource;
 
-use Joli\Jane\OpenApi\Runtime\Client\QueryParam;
-use Joli\Jane\OpenApi\Runtime\Client\Resource;
+use Jane\OpenApi\Runtime\Client\QueryParam;
+use Jane\OpenApi\Runtime\Client\Resource;
 
 class TestResource extends Resource
 {
@@ -17,7 +17,7 @@ class TestResource extends Resource
      * @param array  $parameters List of parameters
      * @param string $fetch      Fetch mode (object or response)
      *
-     * @return \Psr\Http\Message\ResponseInterface|\Joli\Jane\OpenApi\Tests\Expected\Model\Schema|\Joli\Jane\OpenApi\Tests\Expected\Model\Error
+     * @return \Psr\Http\Message\ResponseInterface|\Jane\OpenApi\Tests\Expected\Model\Schema|\Jane\OpenApi\Tests\Expected\Model\Error
      */
     public function getTest($parameters = [], $fetch = self::FETCH_OBJECT)
     {
@@ -52,7 +52,7 @@ class TestResource extends Resource
      * @param array  $parameters List of parameters
      * @param string $fetch      Fetch mode (object or response)
      *
-     * @return \Psr\Http\Message\ResponseInterface|\Joli\Jane\OpenApi\Tests\Expected\Model\TestIdGetResponse200|\Joli\Jane\OpenApi\Tests\Expected\Model\Error
+     * @return \Psr\Http\Message\ResponseInterface|\Jane\OpenApi\Tests\Expected\Model\TestIdGetResponse200|\Jane\OpenApi\Tests\Expected\Model\Error
      */
     public function getTestById($id, $parameters = [], $fetch = self::FETCH_OBJECT)
     {
@@ -87,7 +87,7 @@ class TestResource extends Resource
      * @param array  $parameters List of parameters
      * @param string $fetch      Fetch mode (object or response)
      *
-     * @return \Psr\Http\Message\ResponseInterface|\Joli\Jane\OpenApi\Tests\Expected\Model\Schema[]
+     * @return \Psr\Http\Message\ResponseInterface|\Jane\OpenApi\Tests\Expected\Model\Schema[]
      */
     public function getTestList($parameters = [], $fetch = self::FETCH_OBJECT)
     {

@@ -6,7 +6,7 @@
  * Do no edit it directly.
  */
 
-namespace Joli\Jane\OpenApi\Tests\Expected\Normalizer;
+namespace Jane\OpenApi\Tests\Expected\Normalizer;
 
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
@@ -32,7 +32,7 @@ class BarItemNormalizer implements DenormalizerInterface, NormalizerInterface, D
 
     public function supportsNormalization($data, $format = null)
     {
-        if ($data instanceof \Joli\Jane\OpenApi\Tests\Expected\Model\BarItem) {
+        if ($data instanceof \Jane\OpenApi\Tests\Expected\Model\BarItem) {
             return true;
         }
 
@@ -44,7 +44,7 @@ class BarItemNormalizer implements DenormalizerInterface, NormalizerInterface, D
         if (!is_object($data)) {
             throw new InvalidArgumentException();
         }
-        $object = new \Joli\Jane\OpenApi\Tests\Expected\Model\BarItem();
+        $object = new \Jane\OpenApi\Tests\Expected\Model\BarItem();
         if (property_exists($data, 'bar')) {
             $object->setBar($data->{'bar'});
         }

@@ -1,9 +1,9 @@
 <?php
 
-namespace Joli\Jane\OpenApi\SchemaParser;
+namespace Jane\OpenApi\SchemaParser;
 
-use Joli\Jane\OpenApi\Exception\ParseFailureException;
-use Joli\Jane\OpenApi\Model\OpenApi;
+use Jane\OpenApi\Exception\ParseFailureException;
+use Jane\OpenApi\Model\OpenApi;
 use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Component\Yaml\Yaml;
 

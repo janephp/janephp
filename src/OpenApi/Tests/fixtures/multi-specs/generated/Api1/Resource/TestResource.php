@@ -6,9 +6,9 @@
  * Do no edit it directly.
  */
 
-namespace Joli\Jane\OpenApi\Tests\Expected\Api1\Resource;
+namespace Jane\OpenApi\Tests\Expected\Api1\Resource;
 
-use Joli\Jane\OpenApi\Runtime\Client\Resource;
+use Jane\OpenApi\Runtime\Client\Resource;
 
 class TestResource extends Resource
 {

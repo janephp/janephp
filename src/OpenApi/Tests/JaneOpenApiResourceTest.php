@@ -1,15 +1,16 @@
 <?php
 
-namespace Joli\Jane\OpenApi\Tests;
+namespace Jane\OpenApi\Tests;
 
-use Joli\Jane\OpenApi\Command\GenerateCommand;
+use Jane\OpenApi\Command\GenerateCommand;
+use PHPUnit\Framework\TestCase;
 use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Output\NullOutput;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Finder\Finder;
 use Symfony\Component\Finder\SplFileInfo;
 
-class JaneOpenApiResourceTest extends \PHPUnit_Framework_TestCase
+class JaneOpenApiResourceTest extends TestCase
 {
     /**
      * @dataProvider resourceProvider

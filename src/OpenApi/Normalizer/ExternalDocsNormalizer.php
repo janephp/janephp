@@ -1,8 +1,8 @@
 <?php
 
-namespace Joli\Jane\OpenApi\Normalizer;
+namespace Jane\OpenApi\Normalizer;
 
-use Joli\Jane\Runtime\Reference;
+use Jane\Runtime\Reference;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -27,7 +27,7 @@ class ExternalDocsNormalizer implements DenormalizerInterface, NormalizerInterfa
 
     public function supportsNormalization($data, $format = null)
     {
-        if ($data instanceof \Joli\Jane\OpenApi\Model\ExternalDocs) {
+        if ($data instanceof \Jane\OpenApi\Model\ExternalDocs) {
             return true;
         }
 
@@ -42,7 +42,7 @@ class ExternalDocsNormalizer implements DenormalizerInterface, NormalizerInterfa
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
-        $object = new \Joli\Jane\OpenApi\Model\ExternalDocs();
+        $object = new \Jane\OpenApi\Model\ExternalDocs();
         if (property_exists($data, 'description')) {
             $object->setDescription($data->{'description'});
         }

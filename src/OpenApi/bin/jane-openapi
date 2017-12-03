@@ -1,7 +1,7 @@
 #!/usr/bin/env php
 <?php
 
-use Joli\Jane\OpenApi\Application;
+use Jane\OpenApi\Application;
 
 if (file_exists(__DIR__ . '/../vendor/autoload.php')) {
     require_once(__DIR__ . '/../vendor/autoload.php');

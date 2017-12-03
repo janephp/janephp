@@ -1,8 +1,8 @@
 <?php
 
-namespace Joli\Jane\OpenApi\Naming;
+namespace Jane\OpenApi\Naming;
 
-use Joli\Jane\OpenApi\Operation\Operation;
+use Jane\OpenApi\Operation\Operation;
 
 interface OperationNamingInterface
 {
