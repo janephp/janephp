@@ -46,7 +46,7 @@ class Schema
     /**
      * @return string
      */
-    public function getStringProperty()
+    public function getStringProperty(): ?string
     {
         return $this->stringProperty;
     }
@@ -56,7 +56,7 @@ class Schema
      *
      * @return self
      */
-    public function setStringProperty($stringProperty = null)
+    public function setStringProperty(?string $stringProperty): self
     {
         $this->stringProperty = $stringProperty;
 
@@ -66,7 +66,7 @@ class Schema
     /**
      * @return \DateTime
      */
-    public function getDateProperty()
+    public function getDateProperty(): ?\DateTime
     {
         return $this->dateProperty;
     }
@@ -76,7 +76,7 @@ class Schema
      *
      * @return self
      */
-    public function setDateProperty(\DateTime $dateProperty = null)
+    public function setDateProperty(?\DateTime $dateProperty): self
     {
         $this->dateProperty = $dateProperty;
 
@@ -86,7 +86,7 @@ class Schema
     /**
      * @return int
      */
-    public function getIntegerProperty()
+    public function getIntegerProperty(): ?int
     {
         return $this->integerProperty;
     }
@@ -96,7 +96,7 @@ class Schema
      *
      * @return self
      */
-    public function setIntegerProperty($integerProperty = null)
+    public function setIntegerProperty(?int $integerProperty): self
     {
         $this->integerProperty = $integerProperty;
 
@@ -106,7 +106,7 @@ class Schema
     /**
      * @return float
      */
-    public function getFloatProperty()
+    public function getFloatProperty(): ?float
     {
         return $this->floatProperty;
     }
@@ -116,7 +116,7 @@ class Schema
      *
      * @return self
      */
-    public function setFloatProperty($floatProperty = null)
+    public function setFloatProperty(?float $floatProperty): self
     {
         $this->floatProperty = $floatProperty;
 
@@ -126,7 +126,7 @@ class Schema
     /**
      * @return mixed[]
      */
-    public function getArrayProperty()
+    public function getArrayProperty(): ?array
     {
         return $this->arrayProperty;
     }
@@ -136,7 +136,7 @@ class Schema
      *
      * @return self
      */
-    public function setArrayProperty(array $arrayProperty = null)
+    public function setArrayProperty(?array $arrayProperty): self
     {
         $this->arrayProperty = $arrayProperty;
 
@@ -146,7 +146,7 @@ class Schema
     /**
      * @return string[]
      */
-    public function getMapProperty()
+    public function getMapProperty(): ?\ArrayObject
     {
         return $this->mapProperty;
     }
@@ -156,7 +156,7 @@ class Schema
      *
      * @return self
      */
-    public function setMapProperty(\ArrayObject $mapProperty = null)
+    public function setMapProperty(?\ArrayObject $mapProperty): self
     {
         $this->mapProperty = $mapProperty;
 
@@ -166,7 +166,7 @@ class Schema
     /**
      * @return SchemaObjectProperty
      */
-    public function getObjectProperty()
+    public function getObjectProperty(): ?SchemaObjectProperty
     {
         return $this->objectProperty;
     }
@@ -176,7 +176,7 @@ class Schema
      *
      * @return self
      */
-    public function setObjectProperty(SchemaObjectProperty $objectProperty = null)
+    public function setObjectProperty(?SchemaObjectProperty $objectProperty): self
     {
         $this->objectProperty = $objectProperty;
 
@@ -186,7 +186,7 @@ class Schema
     /**
      * @return Schema
      */
-    public function getObjectRefProperty()
+    public function getObjectRefProperty(): ?self
     {
         return $this->objectRefProperty;
     }
@@ -196,7 +196,7 @@ class Schema
      *
      * @return self
      */
-    public function setObjectRefProperty(Schema $objectRefProperty = null)
+    public function setObjectRefProperty(?self $objectRefProperty): self
     {
         $this->objectRefProperty = $objectRefProperty;
 

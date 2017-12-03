@@ -18,7 +18,7 @@ class TestGetBodyBaz
     /**
      * @return string
      */
-    public function getBaz()
+    public function getBaz(): ?string
     {
         return $this->baz;
     }
@@ -28,7 +28,7 @@ class TestGetBodyBaz
      *
      * @return self
      */
-    public function setBaz($baz = null)
+    public function setBaz(?string $baz): self
     {
         $this->baz = $baz;
 

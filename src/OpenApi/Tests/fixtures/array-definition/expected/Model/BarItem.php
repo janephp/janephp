@@ -18,7 +18,7 @@ class BarItem
     /**
      * @return string
      */
-    public function getBar()
+    public function getBar(): ?string
     {
         return $this->bar;
     }
@@ -28,7 +28,7 @@ class BarItem
      *
      * @return self
      */
-    public function setBar($bar = null)
+    public function setBar(?string $bar): self
     {
         $this->bar = $bar;
 

@@ -18,7 +18,7 @@ class TestPostResponse201
     /**
      * @return string
      */
-    public function getFoo()
+    public function getFoo(): ?string
     {
         return $this->foo;
     }
@@ -28,7 +28,7 @@ class TestPostResponse201
      *
      * @return self
      */
-    public function setFoo($foo = null)
+    public function setFoo(?string $foo): self
     {
         $this->foo = $foo;
 

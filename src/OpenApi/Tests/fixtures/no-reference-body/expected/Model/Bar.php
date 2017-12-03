@@ -22,7 +22,7 @@ class Bar
     /**
      * @return string
      */
-    public function getFoo()
+    public function getFoo(): ?string
     {
         return $this->foo;
     }
@@ -32,7 +32,7 @@ class Bar
      *
      * @return self
      */
-    public function setFoo($foo = null)
+    public function setFoo(?string $foo): self
     {
         $this->foo = $foo;
 
@@ -42,7 +42,7 @@ class Bar
     /**
      * @return string
      */
-    public function getBar()
+    public function getBar(): ?string
     {
         return $this->bar;
     }
@@ -52,7 +52,7 @@ class Bar
      *
      * @return self
      */
-    public function setBar($bar = null)
+    public function setBar(?string $bar): self
     {
         $this->bar = $bar;
 

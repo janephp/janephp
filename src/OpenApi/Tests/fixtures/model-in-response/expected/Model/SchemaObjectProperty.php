@@ -18,7 +18,7 @@ class SchemaObjectProperty
     /**
      * @return string
      */
-    public function getStringProperty()
+    public function getStringProperty(): ?string
     {
         return $this->stringProperty;
     }
@@ -28,7 +28,7 @@ class SchemaObjectProperty
      *
      * @return self
      */
-    public function setStringProperty($stringProperty = null)
+    public function setStringProperty(?string $stringProperty): self
     {
         $this->stringProperty = $stringProperty;
 
