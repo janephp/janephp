@@ -8,7 +8,7 @@
 
 namespace Jane\OpenApi\Tests\Expected\Api2\Resource;
 
-use Jane\OpenApi\Runtime\Client\Resource;
+use Jane\OpenApiRuntime\Client\Resource;
 
 class TestResource extends Resource
 {

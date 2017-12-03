@@ -22,7 +22,7 @@ class Error
     /**
      * @return int
      */
-    public function getCode()
+    public function getCode(): ?int
     {
         return $this->code;
     }
@@ -32,7 +32,7 @@ class Error
      *
      * @return self
      */
-    public function setCode($code = null)
+    public function setCode(?int $code): self
     {
         $this->code = $code;
 
@@ -42,7 +42,7 @@ class Error
     /**
      * @return string
      */
-    public function getMessage()
+    public function getMessage(): ?string
     {
         return $this->message;
     }
@@ -52,7 +52,7 @@ class Error
      *
      * @return self
      */
-    public function setMessage($message = null)
+    public function setMessage(?string $message): self
     {
         $this->message = $message;
 

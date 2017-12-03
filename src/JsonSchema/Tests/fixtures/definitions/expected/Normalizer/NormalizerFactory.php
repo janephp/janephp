@@ -16,7 +16,7 @@ class NormalizerFactory
     {
         $normalizers = [];
         $normalizers[] = new \Symfony\Component\Serializer\Normalizer\ArrayDenormalizer();
-        $normalizers[] = new \Jane\JsonSchema\Runtime\Normalizer\ReferenceNormalizer();
+        $normalizers[] = new \Jane\JsonSchemaRuntime\Normalizer\ReferenceNormalizer();
         $normalizers[] = new FooNormalizer();
         $normalizers[] = new BarItemNormalizer();
 

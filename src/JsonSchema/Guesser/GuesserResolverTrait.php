@@ -2,7 +2,7 @@
 
 namespace Jane\JsonSchema\Guesser;
 
-use Jane\JsonSchema\Runtime\Reference;
+use Jane\JsonSchemaRuntime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 
 trait GuesserResolverTrait

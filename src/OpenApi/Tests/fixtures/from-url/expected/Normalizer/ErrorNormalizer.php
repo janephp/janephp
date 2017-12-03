@@ -23,7 +23,7 @@ class ErrorNormalizer implements DenormalizerInterface, NormalizerInterface, Den
 
     public function supportsDenormalization($data, $type, $format = null)
     {
-        if ($type !== 'Joli\\Jane\\OpenApi\\Tests\\Expected\\Model\\Error') {
+        if ($type !== 'Jane\\OpenApi\\Tests\\Expected\\Model\\Error') {
             return false;
         }
 

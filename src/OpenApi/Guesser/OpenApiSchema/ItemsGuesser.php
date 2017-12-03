@@ -2,7 +2,7 @@
 
 namespace Jane\OpenApi\Guesser\OpenApiSchema;
 
-use Jane\Guesser\JsonSchema\ItemsGuesser as BaseItemsGuesser;
+use Jane\JsonSchema\Guesser\JsonSchema\ItemsGuesser as BaseItemsGuesser;
 use Jane\OpenApi\Model\Schema;
 
 class ItemsGuesser extends BaseItemsGuesser

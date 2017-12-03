@@ -25,7 +25,7 @@ class ParenttypeNormalizer implements DenormalizerInterface, NormalizerInterface
 
     public function supportsDenormalization($data, $type, $format = null)
     {
-        if ($type !== 'Joli\\Jane\\Tests\\Expected\\Model\\Parenttype') {
+        if ($type !== 'Jane\\JsonSchema\\Tests\\Expected\\Model\\Parenttype') {
             return false;
         }
 

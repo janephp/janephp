@@ -26,7 +26,7 @@ class Pet
     /**
      * @return int
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
@@ -36,7 +36,7 @@ class Pet
      *
      * @return self
      */
-    public function setId($id = null)
+    public function setId(?int $id): self
     {
         $this->id = $id;
 
@@ -46,7 +46,7 @@ class Pet
     /**
      * @return string
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
@@ -56,7 +56,7 @@ class Pet
      *
      * @return self
      */
-    public function setName($name = null)
+    public function setName(?string $name): self
     {
         $this->name = $name;
 
@@ -66,7 +66,7 @@ class Pet
     /**
      * @return string
      */
-    public function getTag()
+    public function getTag(): ?string
     {
         return $this->tag;
     }
@@ -76,7 +76,7 @@ class Pet
      *
      * @return self
      */
-    public function setTag($tag = null)
+    public function setTag(?string $tag): self
     {
         $this->tag = $tag;
 

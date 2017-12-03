@@ -80,7 +80,7 @@ class NormalizerGenerator implements GeneratorInterface
             $classes[] = $normalizerClass->name;
 
             $namespace = new Stmt\Namespace_(new Name($schema->getNamespace()."\\Normalizer"), [
-                new Stmt\Use_([new Stmt\UseUse(new Name('Jane\JsonSchema\Runtime\Reference'))]),
+                new Stmt\Use_([new Stmt\UseUse(new Name('Jane\JsonSchemaRuntime\Reference'))]),
                 new Stmt\Use_([new Stmt\UseUse(new Name('Symfony\Component\Serializer\Exception\InvalidArgumentException'))]),
                 new Stmt\Use_([new Stmt\UseUse(new Name('Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface'))]),
                 new Stmt\Use_([new Stmt\UseUse(new Name('Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait'))]),
@@ -112,7 +112,7 @@ class NormalizerGenerator implements GeneratorInterface
         ];
 
         if ($this->useReference) {
-            $statements[] = new Expr\Assign(new Expr\ArrayDimFetch(new Expr\Variable('normalizers')), new Expr\New_(new Name('\Jane\JsonSchema\Runtime\Normalizer\ReferenceNormalizer')));
+            $statements[] = new Expr\Assign(new Expr\ArrayDimFetch(new Expr\Variable('normalizers')), new Expr\New_(new Name('\Jane\JsonSchemaRuntime\Normalizer\ReferenceNormalizer')));
         }
 
         foreach ($classes as $class) {

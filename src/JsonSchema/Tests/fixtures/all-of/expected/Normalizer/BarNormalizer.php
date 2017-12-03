@@ -25,7 +25,7 @@ class BarNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
 
     public function supportsDenormalization($data, $type, $format = null)
     {
-        if ($type !== 'Joli\\Jane\\Tests\\Expected\\Model\\Bar') {
+        if ($type !== 'Jane\\JsonSchema\\Tests\\Expected\\Model\\Bar') {
             return false;
         }
 

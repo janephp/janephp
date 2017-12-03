@@ -25,7 +25,7 @@ class TestNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
 
     public function supportsDenormalization($data, $type, $format = null)
     {
-        if ($type !== 'Joli\\Jane\\Tests\\Expected\\Schema1\\Model\\Test') {
+        if ($type !== 'Jane\\JsonSchema\\Tests\\Expected\\Schema1\\Model\\Test') {
             return false;
         }
 
@@ -48,7 +48,7 @@ class TestNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         }
         $object = new \Jane\JsonSchema\Tests\Expected\Schema1\Model\Test();
         if (property_exists($data, 'foo')) {
-            $object->setFoo($this->denormalizer->denormalize($data->{'foo'}, 'Joli\\Jane\\Tests\\Expected\\Schema2\\Model\\Foo', 'json', $context));
+            $object->setFoo($this->denormalizer->denormalize($data->{'foo'}, 'Jane\\JsonSchema\\Tests\\Expected\\Schema2\\Model\\Foo', 'json', $context));
         }
 
         return $object;

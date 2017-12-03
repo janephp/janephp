@@ -3,8 +3,8 @@
 namespace Jane\OpenApi\Command;
 
 use Jane\OpenApi\JaneOpenApi;
-use Jane\Registry;
-use Jane\Schema;
+use Jane\JsonSchema\Registry;
+use Jane\JsonSchema\Schema;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;

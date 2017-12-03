@@ -23,7 +23,7 @@ class TestGetBodyBazNormalizer implements DenormalizerInterface, NormalizerInter
 
     public function supportsDenormalization($data, $type, $format = null)
     {
-        if ($type !== 'Joli\\Jane\\OpenApi\\Tests\\Expected\\Model\\TestGetBodyBaz') {
+        if ($type !== 'Jane\\OpenApi\\Tests\\Expected\\Model\\TestGetBodyBaz') {
             return false;
         }
 

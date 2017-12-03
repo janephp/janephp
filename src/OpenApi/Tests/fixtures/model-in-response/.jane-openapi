@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'openapi-file' => 'tests/fixtures/model-in-response/swagger.json',
+    'openapi-file' => __DIR__ . '/swagger.json',
     'namespace' => 'Jane\OpenApi\Tests\Expected',
     'directory' => __DIR__ . '/generated',
 ];

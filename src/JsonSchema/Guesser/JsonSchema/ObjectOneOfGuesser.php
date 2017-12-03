@@ -12,7 +12,7 @@ use Jane\JsonSchema\Guesser\TypeGuesserInterface;
 use Jane\JsonSchema\JsonSchemaMerger;
 use Jane\JsonSchema\Model\JsonSchema;
 use Jane\JsonSchema\Registry;
-use Jane\JsonSchema\Runtime\Reference;
+use Jane\JsonSchemaRuntime\Reference;
 use Jane\JsonSchema\Schema;
 use Symfony\Component\Serializer\SerializerInterface;
 

@@ -2,7 +2,7 @@
 
 namespace Jane\OpenApi\Generator;
 
-use Jane\Generator\Context\Context;
+use Jane\JsonSchema\Generator\Context\Context;
 use Jane\OpenApi\Model\OpenApi;
 use Jane\OpenApi\Naming\OperationNamingInterface;
 use Jane\OpenApi\Operation\OperationManager;
@@ -76,12 +76,12 @@ class ClientGenerator
 
         return [
             'class' => $factory->namespace($namespace . "\\Resource")
-                ->addStmt($factory->use('Jane\OpenApi\Runtime\Client\Resource'))
+                ->addStmt($factory->use('Jane\OpenApiRuntime\Client\Resource'))
                 ->addStmt($class)
                 ->getNode()
             ,
             'trait' => $factory->namespace($namespace . "\\Resource")
-                ->addStmt($factory->use('Jane\OpenApi\Runtime\Client\QueryParam'))
+                ->addStmt($factory->use('Jane\OpenApiRuntime\Client\QueryParam'))
                 ->addStmt($trait)
                 ->getNode()
         ];

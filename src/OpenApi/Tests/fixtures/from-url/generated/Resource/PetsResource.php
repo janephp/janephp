@@ -8,7 +8,7 @@
 
 namespace Jane\OpenApi\Tests\Expected\Resource;
 
-use Jane\OpenApi\Runtime\Client\Resource;
+use Jane\OpenApiRuntime\Client\Resource;
 
 class PetsResource extends Resource
 {

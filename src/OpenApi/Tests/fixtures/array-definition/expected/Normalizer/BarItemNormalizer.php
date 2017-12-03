@@ -23,7 +23,7 @@ class BarItemNormalizer implements DenormalizerInterface, NormalizerInterface, D
 
     public function supportsDenormalization($data, $type, $format = null)
     {
-        if ($type !== 'Joli\\Jane\\OpenApi\\Tests\\Expected\\Model\\BarItem') {
+        if ($type !== 'Jane\\OpenApi\\Tests\\Expected\\Model\\BarItem') {
             return false;
         }
 

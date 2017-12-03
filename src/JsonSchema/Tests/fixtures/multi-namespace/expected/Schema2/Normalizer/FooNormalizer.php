@@ -25,7 +25,7 @@ class FooNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
 
     public function supportsDenormalization($data, $type, $format = null)
     {
-        if ($type !== 'Joli\\Jane\\Tests\\Expected\\Schema2\\Model\\Foo') {
+        if ($type !== 'Jane\\JsonSchema\\Tests\\Expected\\Schema2\\Model\\Foo') {
             return false;
         }
 

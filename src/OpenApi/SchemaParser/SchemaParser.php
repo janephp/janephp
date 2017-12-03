@@ -9,7 +9,7 @@ use Symfony\Component\Yaml\Yaml;
 
 class SchemaParser
 {
-    const OPEN_API_MODEL    = "Joli\\Jane\\OpenApi\\Model\\OpenApi";
+    const OPEN_API_MODEL    = "Jane\\OpenApi\\Model\\OpenApi";
     const EXCEPTION_MESSAGE = "Could not parse \"%s\", is it a valid specification?";
     const CONTENT_TYPE_JSON = 'json';
     const CONTENT_TYPE_YAML = 'yaml';

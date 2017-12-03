@@ -10,7 +10,7 @@ declare(strict_types=1);
 
 namespace Jane\JsonSchema\Tests\Expected\Normalizer;
 
-use Jane\JsonSchema\Runtime\Reference;
+use Jane\JsonSchemaRuntime\Reference;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -26,7 +26,7 @@ class BarItemNormalizer implements DenormalizerInterface, NormalizerInterface, D
 
     public function supportsDenormalization($data, $type, $format = null)
     {
-        if ($type !== 'Joli\\Jane\\Tests\\Expected\\Model\\BarItem') {
+        if ($type !== 'Jane\\JsonSchema\\Tests\\Expected\\Model\\BarItem') {
             return false;
         }
 

@@ -3,7 +3,6 @@
 namespace Jane\JsonSchema\Tests;
 
 use Jane\JsonSchema\Jane;
-use Jane\JsonSchema\Model\JsonSchema;
 use Jane\JsonSchema\Registry;
 use Jane\JsonSchema\Schema;
 use PHPUnit\Framework\TestCase;
@@ -26,7 +25,7 @@ class LibraryTest extends TestCase
     public function testLibrary()
     {
         $registry = new Registry();
-        $registry->addSchema(new Schema('tests/data/json-schema.json', 'Joli\\Jane', __DIR__ . "/generated", 'JsonSchema'));
+        $registry->addSchema(new Schema(__DIR__ . '/data/json-schema.json', 'Jane\JsonSchema', __DIR__ . "/generated", 'JsonSchema'));
 
         $this->jane->generate($registry);
 
@@ -35,17 +34,17 @@ class LibraryTest extends TestCase
         $this->assertTrue(file_exists(__DIR__ . "/generated/Normalizer/NormalizerFactory.php"));
 
         $this->assertEquals(
-            file_get_contents(__DIR__ . "/../src/Model/JsonSchema.php"),
+            file_get_contents(__DIR__ . "/../Model/JsonSchema.php"),
             file_get_contents(__DIR__ . "/generated/Model/JsonSchema.php")
         );
 
         $this->assertEquals(
-            file_get_contents(__DIR__ . "/../src/Normalizer/JsonSchemaNormalizer.php"),
+            file_get_contents(__DIR__ . "/../Normalizer/JsonSchemaNormalizer.php"),
             file_get_contents(__DIR__ . "/generated/Normalizer/JsonSchemaNormalizer.php")
         );
 
         $this->assertEquals(
-            file_get_contents(__DIR__ . "/../src/Normalizer/NormalizerFactory.php"),
+            file_get_contents(__DIR__ . "/../Normalizer/NormalizerFactory.php"),
             file_get_contents(__DIR__ . "/generated/Normalizer/NormalizerFactory.php")
         );
     }

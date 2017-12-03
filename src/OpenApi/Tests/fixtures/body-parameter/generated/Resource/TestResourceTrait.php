@@ -8,7 +8,7 @@
 
 namespace Jane\OpenApi\Tests\Expected\Resource;
 
-use Jane\OpenApi\Runtime\Client\QueryParam;
+use Jane\OpenApiRuntime\Client\QueryParam;
 
 trait TestResourceTrait
 {
@@ -43,8 +43,8 @@ trait TestResourceTrait
 
     /**
      * @param \Jane\OpenApi\Tests\Expected\Model\Schema $testObject
-     * @param array                                          $parameters List of parameters
-     * @param string                                         $fetch      Fetch mode (object or response)
+     * @param array                                     $parameters List of parameters
+     * @param string                                    $fetch      Fetch mode (object or response)
      *
      * @return \Psr\Http\Message\ResponseInterface|null
      */

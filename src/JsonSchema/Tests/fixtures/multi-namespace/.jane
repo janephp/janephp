@@ -3,12 +3,12 @@
 return [
     'mapping' => [
         // Order of schema matters for naming
-        'tests/fixtures/multi-namespace/schema2.json' => [
+        __DIR__ . '/schema2.json' => [
             'root-class' => 'Test',
             'namespace' => 'Jane\JsonSchema\Tests\Expected\Schema2',
             'directory' => __DIR__ . '/generated/Schema2',
         ],
-        'tests/fixtures/multi-namespace/schema1.json' => [
+        __DIR__ . '/schema1.json' => [
             'root-class' => 'Test',
             'namespace' => 'Jane\JsonSchema\Tests\Expected\Schema1',
             'directory' => __DIR__ . '/generated/Schema1',

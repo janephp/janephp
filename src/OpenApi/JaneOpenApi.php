@@ -5,21 +5,20 @@ namespace Jane\OpenApi;
 use Fitbug\SymfonySerializer\YamlEncoderDecoder\YamlDecode;
 use Fitbug\SymfonySerializer\YamlEncoderDecoder\YamlEncode;
 use Fitbug\SymfonySerializer\YamlEncoderDecoder\YamlEncoder;
-use Jane\Encoder\RawEncoder;
-use Jane\Generator\Context\Context;
-use Jane\Generator\File;
-use Jane\Generator\ModelGenerator;
-use Jane\Generator\Naming;
-use Jane\Generator\NormalizerGenerator;
-use Jane\Guesser\ChainGuesser;
+use Jane\JsonSchema\Generator\Context\Context;
+use Jane\JsonSchema\Generator\File;
+use Jane\JsonSchema\Generator\ModelGenerator;
+use Jane\JsonSchema\Generator\Naming;
+use Jane\JsonSchema\Generator\NormalizerGenerator;
+use Jane\JsonSchema\Guesser\ChainGuesser;
 use Jane\OpenApi\Generator\ClientGenerator;
 use Jane\OpenApi\Generator\GeneratorFactory;
 use Jane\OpenApi\Guesser\OpenApiSchema\GuesserFactory;
 use Jane\OpenApi\Model\OpenApi;
 use Jane\OpenApi\Normalizer\NormalizerFactory;
 use Jane\OpenApi\SchemaParser\SchemaParser;
-use Jane\Registry;
-use Jane\Schema;
+use Jane\JsonSchema\Registry;
+use Jane\JsonSchema\Schema;
 use PhpCsFixer\Config;
 use PhpCsFixer\ConfigInterface;
 use PhpCsFixer\Console\ConfigurationResolver;
@@ -39,8 +38,6 @@ use PhpCsFixer\Linter\Linter;
 
 class JaneOpenApi
 {
-    const VERSION = '1.0.x';
-
     /**
      * @var SchemaParser
      */

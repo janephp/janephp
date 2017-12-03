@@ -2,7 +2,7 @@
 
 namespace Jane\OpenApi\Guesser\OpenApiSchema;
 
-use Jane\Guesser\JsonSchema\DateTimeGuesser as BaseDateTimeGuesser;
+use Jane\JsonSchema\Guesser\JsonSchema\DateTimeGuesser as BaseDateTimeGuesser;
 use Jane\OpenApi\Model\Schema;
 
 class DateTimeGuesser extends BaseDateTimeGuesser

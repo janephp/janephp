@@ -23,7 +23,7 @@ class ThingNormalizer implements DenormalizerInterface, NormalizerInterface, Den
 
     public function supportsDenormalization($data, $type, $format = null)
     {
-        if ($type !== 'Joli\\Jane\\OpenApi\\Tests\\Expected\\Model\\Thing') {
+        if ($type !== 'Jane\\OpenApi\\Tests\\Expected\\Model\\Thing') {
             return false;
         }
 

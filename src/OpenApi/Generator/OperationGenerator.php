@@ -2,9 +2,9 @@
 
 namespace Jane\OpenApi\Generator;
 
-use Jane\Generator\Context\Context;
+use Jane\JsonSchema\Generator\Context\Context;
 use Jane\OpenApi\Model\Response;
-use Jane\Runtime\Reference;
+use Jane\JsonSchemaRuntime\Reference;
 use Jane\OpenApi\Generator\Parameter\BodyParameterGenerator;
 use Jane\OpenApi\Generator\Parameter\FormDataParameterGenerator;
 use Jane\OpenApi\Generator\Parameter\HeaderParameterGenerator;

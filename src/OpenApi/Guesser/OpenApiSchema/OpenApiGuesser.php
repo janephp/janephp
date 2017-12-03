@@ -2,16 +2,16 @@
 
 namespace Jane\OpenApi\Guesser\OpenApiSchema;
 
-use Jane\Guesser\ChainGuesserAwareInterface;
-use Jane\Guesser\ChainGuesserAwareTrait;
-use Jane\Guesser\ClassGuesserInterface;
-use Jane\Guesser\GuesserInterface;
+use Jane\JsonSchema\Guesser\ChainGuesserAwareInterface;
+use Jane\JsonSchema\Guesser\ChainGuesserAwareTrait;
+use Jane\JsonSchema\Guesser\ClassGuesserInterface;
+use Jane\JsonSchema\Guesser\GuesserInterface;
+use Jane\JsonSchema\Registry;
 use Jane\OpenApi\Model\BodyParameter;
 use Jane\OpenApi\Model\Operation;
 use Jane\OpenApi\Model\PathItem;
 use Jane\OpenApi\Model\Response;
 use Jane\OpenApi\Model\OpenApi;
-use Jane\Registry;
 
 class OpenApiGuesser implements GuesserInterface, ClassGuesserInterface, ChainGuesserAwareInterface
 {

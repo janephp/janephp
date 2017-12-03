@@ -23,7 +23,7 @@ class BodyNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
 
     public function supportsDenormalization($data, $type, $format = null)
     {
-        if ($type !== 'Joli\\Jane\\OpenApi\\Tests\\Expected\\Api1\\Model\\Body') {
+        if ($type !== 'Jane\\OpenApi\\Tests\\Expected\\Api1\\Model\\Body') {
             return false;
         }
 

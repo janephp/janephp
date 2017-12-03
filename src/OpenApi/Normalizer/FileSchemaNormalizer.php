@@ -2,7 +2,7 @@
 
 namespace Jane\OpenApi\Normalizer;
 
-use Jane\Runtime\Reference;
+use Jane\JsonSchemaRuntime\Reference;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -18,7 +18,7 @@ class FileSchemaNormalizer implements DenormalizerInterface, NormalizerInterface
 
     public function supportsDenormalization($data, $type, $format = null)
     {
-        if ($type !== 'Joli\\Jane\\OpenApi\\Model\\FileSchema') {
+        if ($type !== 'Jane\\OpenApi\\Model\\FileSchema') {
             return false;
         }
 
@@ -69,7 +69,7 @@ class FileSchemaNormalizer implements DenormalizerInterface, NormalizerInterface
             $object->setReadOnly($data->{'readOnly'});
         }
         if (property_exists($data, 'externalDocs')) {
-            $object->setExternalDocs($this->denormalizer->denormalize($data->{'externalDocs'}, 'Joli\\Jane\\OpenApi\\Model\\ExternalDocs', 'json', $context));
+            $object->setExternalDocs($this->denormalizer->denormalize($data->{'externalDocs'}, 'Jane\\OpenApi\\Model\\ExternalDocs', 'json', $context));
         }
         if (property_exists($data, 'example')) {
             $object->setExample($data->{'example'});

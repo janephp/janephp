@@ -2,7 +2,7 @@
 
 namespace Jane\OpenApi\Normalizer;
 
-use Jane\Runtime\Reference;
+use Jane\JsonSchemaRuntime\Reference;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -18,7 +18,7 @@ class SchemaNormalizer implements DenormalizerInterface, NormalizerInterface, De
 
     public function supportsDenormalization($data, $type, $format = null)
     {
-        if ($type !== 'Joli\\Jane\\OpenApi\\Model\\Schema') {
+        if ($type !== 'Jane\\OpenApi\\Model\\Schema') {
             return false;
         }
 
@@ -114,7 +114,7 @@ class SchemaNormalizer implements DenormalizerInterface, NormalizerInterface, De
         if (property_exists($data, 'additionalProperties')) {
             $value_2 = $data->{'additionalProperties'};
             if (is_object($data->{'additionalProperties'})) {
-                $value_2 = $this->denormalizer->denormalize($data->{'additionalProperties'}, 'Joli\\Jane\\OpenApi\\Model\\Schema', 'json', $context);
+                $value_2 = $this->denormalizer->denormalize($data->{'additionalProperties'}, 'Jane\\OpenApi\\Model\\Schema', 'json', $context);
             }
             if (is_bool($data->{'additionalProperties'})) {
                 $value_2 = $data->{'additionalProperties'};
@@ -138,12 +138,12 @@ class SchemaNormalizer implements DenormalizerInterface, NormalizerInterface, De
         if (property_exists($data, 'items')) {
             $value_5 = $data->{'items'};
             if (is_object($data->{'items'})) {
-                $value_5 = $this->denormalizer->denormalize($data->{'items'}, 'Joli\\Jane\\OpenApi\\Model\\Schema', 'json', $context);
+                $value_5 = $this->denormalizer->denormalize($data->{'items'}, 'Jane\\OpenApi\\Model\\Schema', 'json', $context);
             }
             if (is_array($data->{'items'})) {
                 $values_3 = [];
                 foreach ($data->{'items'} as $value_6) {
-                    $values_3[] = $this->denormalizer->denormalize($value_6, 'Joli\\Jane\\OpenApi\\Model\\Schema', 'json', $context);
+                    $values_3[] = $this->denormalizer->denormalize($value_6, 'Jane\\OpenApi\\Model\\Schema', 'json', $context);
                 }
                 $value_5 = $values_3;
             }
@@ -152,14 +152,14 @@ class SchemaNormalizer implements DenormalizerInterface, NormalizerInterface, De
         if (property_exists($data, 'allOf')) {
             $values_4 = [];
             foreach ($data->{'allOf'} as $value_7) {
-                $values_4[] = $this->denormalizer->denormalize($value_7, 'Joli\\Jane\\OpenApi\\Model\\Schema', 'json', $context);
+                $values_4[] = $this->denormalizer->denormalize($value_7, 'Jane\\OpenApi\\Model\\Schema', 'json', $context);
             }
             $object->setAllOf($values_4);
         }
         if (property_exists($data, 'properties')) {
             $values_5 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
             foreach ($data->{'properties'} as $key => $value_8) {
-                $values_5[$key] = $this->denormalizer->denormalize($value_8, 'Joli\\Jane\\OpenApi\\Model\\Schema', 'json', $context);
+                $values_5[$key] = $this->denormalizer->denormalize($value_8, 'Jane\\OpenApi\\Model\\Schema', 'json', $context);
             }
             $object->setProperties($values_5);
         }
@@ -170,10 +170,10 @@ class SchemaNormalizer implements DenormalizerInterface, NormalizerInterface, De
             $object->setReadOnly($data->{'readOnly'});
         }
         if (property_exists($data, 'xml')) {
-            $object->setXml($this->denormalizer->denormalize($data->{'xml'}, 'Joli\\Jane\\OpenApi\\Model\\Xml', 'json', $context));
+            $object->setXml($this->denormalizer->denormalize($data->{'xml'}, 'Jane\\OpenApi\\Model\\Xml', 'json', $context));
         }
         if (property_exists($data, 'externalDocs')) {
-            $object->setExternalDocs($this->denormalizer->denormalize($data->{'externalDocs'}, 'Joli\\Jane\\OpenApi\\Model\\ExternalDocs', 'json', $context));
+            $object->setExternalDocs($this->denormalizer->denormalize($data->{'externalDocs'}, 'Jane\\OpenApi\\Model\\ExternalDocs', 'json', $context));
         }
         if (property_exists($data, 'example')) {
             $object->setExample($data->{'example'});

@@ -15,7 +15,7 @@ use Jane\JsonSchema\Guesser\PropertiesGuesserInterface;
 use Jane\JsonSchema\Guesser\TypeGuesserInterface;
 use Jane\JsonSchema\Model\JsonSchema;
 use Jane\JsonSchema\Registry;
-use Jane\JsonSchema\Runtime\Reference;
+use Jane\JsonSchemaRuntime\Reference;
 use Symfony\Component\Serializer\SerializerInterface;
 
 class AllOfGuesser implements GuesserInterface, TypeGuesserInterface, ChainGuesserAwareInterface, PropertiesGuesserInterface, ClassGuesserInterface

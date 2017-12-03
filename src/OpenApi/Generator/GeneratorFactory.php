@@ -2,7 +2,6 @@
 
 namespace Jane\OpenApi\Generator;
 
-use Jane\Jane;
 use Jane\OpenApi\Naming\ChainOperationNaming;
 use Jane\OpenApi\Naming\OperationUrlNaming;
 use Jane\OpenApi\Generator\Parameter\BodyParameterGenerator;
@@ -12,20 +11,14 @@ use Jane\OpenApi\Generator\Parameter\PathParameterGenerator;
 use Jane\OpenApi\Generator\Parameter\QueryParameterGenerator;
 use Jane\OpenApi\Naming\OperationIdNaming;
 use Jane\OpenApi\Operation\OperationManager;
-use PhpParser\Lexer;
-use PhpParser\Parser;
 use PhpParser\ParserFactory;
 
 class GeneratorFactory
 {
     public static function build($serializer)
     {
-        if (class_exists('PhpParser\ParserFactory')) {
-            $parserFactory = new ParserFactory();
-            $parser = $parserFactory->create(ParserFactory::PREFER_PHP5);
-        } else {
-            $parser = new Parser(new Lexer());
-        }
+        $parserFactory = new ParserFactory();
+        $parser = $parserFactory->create(ParserFactory::PREFER_PHP7);
 
         $bodyParameter     = new BodyParameterGenerator($parser, $serializer);
         $pathParameter     = new PathParameterGenerator($parser);

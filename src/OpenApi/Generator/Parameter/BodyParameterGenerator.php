@@ -3,9 +3,8 @@
 namespace Jane\OpenApi\Generator\Parameter;
 
 use Doctrine\Common\Inflector\Inflector;
-use Jane\Generator\Context\Context;
-use Jane\Runtime\Reference;
-use Jane\Reference\Resolver;
+use Jane\JsonSchema\Generator\Context\Context;
+use Jane\JsonSchemaRuntime\Reference;
 use Jane\OpenApi\Model\BodyParameter;
 use Jane\OpenApi\Model\Schema;
 use PhpParser\Node;

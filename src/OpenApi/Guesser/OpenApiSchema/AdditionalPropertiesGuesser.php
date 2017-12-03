@@ -2,7 +2,7 @@
 
 namespace Jane\OpenApi\Guesser\OpenApiSchema;
 
-use Jane\Guesser\JsonSchema\AdditionalPropertiesGuesser as BaseAdditionalPropertiesGuesser;
+use Jane\JsonSchema\Guesser\JsonSchema\AdditionalPropertiesGuesser as BaseAdditionalPropertiesGuesser;
 use Jane\OpenApi\Model\Schema;
 
 class AdditionalPropertiesGuesser extends BaseAdditionalPropertiesGuesser

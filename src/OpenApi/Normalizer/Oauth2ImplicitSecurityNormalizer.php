@@ -2,7 +2,7 @@
 
 namespace Jane\OpenApi\Normalizer;
 
-use Jane\Runtime\Reference;
+use Jane\JsonSchemaRuntime\Reference;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -18,7 +18,7 @@ class Oauth2ImplicitSecurityNormalizer implements DenormalizerInterface, Normali
 
     public function supportsDenormalization($data, $type, $format = null)
     {
-        if ($type !== 'Joli\\Jane\\OpenApi\\Model\\Oauth2ImplicitSecurity') {
+        if ($type !== 'Jane\\OpenApi\\Model\\Oauth2ImplicitSecurity') {
             return false;
         }
 

@@ -8,7 +8,7 @@
 
 namespace Jane\OpenApi\Tests\Expected\Resource;
 
-use Jane\OpenApi\Runtime\Client\QueryParam;
+use Jane\OpenApiRuntime\Client\QueryParam;
 
 trait TestResourceTrait
 {

@@ -2,7 +2,7 @@
 
 namespace Jane\OpenApi\Normalizer;
 
-use Jane\Runtime\Reference;
+use Jane\JsonSchemaRuntime\Reference;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -18,7 +18,7 @@ class HeaderParameterSubSchemaNormalizer implements DenormalizerInterface, Norma
 
     public function supportsDenormalization($data, $type, $format = null)
     {
-        if ($type !== 'Joli\\Jane\\OpenApi\\Model\\HeaderParameterSubSchema') {
+        if ($type !== 'Jane\\OpenApi\\Model\\HeaderParameterSubSchema') {
             return false;
         }
 
@@ -62,7 +62,7 @@ class HeaderParameterSubSchemaNormalizer implements DenormalizerInterface, Norma
             $object->setFormat($data->{'format'});
         }
         if (property_exists($data, 'items')) {
-            $object->setItems($this->denormalizer->denormalize($data->{'items'}, 'Joli\\Jane\\OpenApi\\Model\\PrimitivesItems', 'json', $context));
+            $object->setItems($this->denormalizer->denormalize($data->{'items'}, 'Jane\\OpenApi\\Model\\PrimitivesItems', 'json', $context));
         }
         if (property_exists($data, 'collectionFormat')) {
             $object->setCollectionFormat($data->{'collectionFormat'});

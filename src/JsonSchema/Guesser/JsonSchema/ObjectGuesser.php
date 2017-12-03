@@ -15,10 +15,8 @@ use Jane\JsonSchema\Guesser\GuesserResolverTrait;
 use Jane\JsonSchema\Guesser\PropertiesGuesserInterface;
 use Jane\JsonSchema\Guesser\TypeGuesserInterface;
 use Jane\JsonSchema\Model\JsonSchema;
-use Jane\JsonSchema\Reference\Resolver;
 use Jane\JsonSchema\Registry;
-use Jane\JsonSchema\Runtime\Reference;
-use Jane\JsonSchema\Schema;
+use Jane\JsonSchemaRuntime\Reference;
 use Symfony\Component\Serializer\SerializerInterface;
 
 class ObjectGuesser implements GuesserInterface, PropertiesGuesserInterface, TypeGuesserInterface, ChainGuesserAwareInterface, ClassGuesserInterface

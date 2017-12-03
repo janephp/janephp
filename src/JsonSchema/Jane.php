@@ -27,8 +27,6 @@ use PhpCsFixer\Finder;
 
 class Jane
 {
-    const VERSION = '1.0-dev';
-
     private $serializer;
 
     private $modelGenerator;

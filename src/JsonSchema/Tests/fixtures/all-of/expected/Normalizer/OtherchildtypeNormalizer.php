@@ -25,7 +25,7 @@ class OtherchildtypeNormalizer implements DenormalizerInterface, NormalizerInter
 
     public function supportsDenormalization($data, $type, $format = null)
     {
-        if ($type !== 'Joli\\Jane\\Tests\\Expected\\Model\\Otherchildtype') {
+        if ($type !== 'Jane\\JsonSchema\\Tests\\Expected\\Model\\Otherchildtype') {
             return false;
         }
 

@@ -18,7 +18,7 @@ class Thing
     /**
      * @return string
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
@@ -28,7 +28,7 @@ class Thing
      *
      * @return self
      */
-    public function setName($name = null)
+    public function setName(?string $name): self
     {
         $this->name = $name;
 

@@ -16,11 +16,7 @@
     <testsuites>
         <testsuite name="Jane Unit Test Suite">
             <directory>./src/*/Tests</directory>
-            <exclude>
-                <directory>./src/JsonSchema/Tests/data</directory>
-                <directory>./src/JsonSchema/Tests/fixtures</directory>
-                <directory>./src/JsonSchema/Tests/generated</directory>
-            </exclude>
+            <exclude>./src/JsonSchema/Tests/fixtures</exclude>
         </testsuite>
     </testsuites>
 

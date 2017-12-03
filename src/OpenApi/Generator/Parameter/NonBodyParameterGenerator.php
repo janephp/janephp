@@ -3,7 +3,7 @@
 namespace Jane\OpenApi\Generator\Parameter;
 
 use Doctrine\Common\Inflector\Inflector;
-use Jane\Generator\Context\Context;
+use Jane\JsonSchema\Generator\Context\Context;
 use Jane\OpenApi\Model\FormDataParameterSubSchema;
 use Jane\OpenApi\Model\HeaderParameterSubSchema;
 use Jane\OpenApi\Model\PathParameterSubSchema;

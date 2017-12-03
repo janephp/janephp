@@ -2,7 +2,7 @@
 
 namespace Jane\OpenApi\Normalizer;
 
-use Jane\Runtime\Reference;
+use Jane\JsonSchemaRuntime\Reference;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -18,7 +18,7 @@ class OperationNormalizer implements DenormalizerInterface, NormalizerInterface,
 
     public function supportsDenormalization($data, $type, $format = null)
     {
-        if ($type !== 'Joli\\Jane\\OpenApi\\Model\\Operation') {
+        if ($type !== 'Jane\\OpenApi\\Model\\Operation') {
             return false;
         }
 
@@ -57,7 +57,7 @@ class OperationNormalizer implements DenormalizerInterface, NormalizerInterface,
             $object->setDescription($data->{'description'});
         }
         if (property_exists($data, 'externalDocs')) {
-            $object->setExternalDocs($this->denormalizer->denormalize($data->{'externalDocs'}, 'Joli\\Jane\\OpenApi\\Model\\ExternalDocs', 'json', $context));
+            $object->setExternalDocs($this->denormalizer->denormalize($data->{'externalDocs'}, 'Jane\\OpenApi\\Model\\ExternalDocs', 'json', $context));
         }
         if (property_exists($data, 'operationId')) {
             $object->setOperationId($data->{'operationId'});
@@ -81,22 +81,22 @@ class OperationNormalizer implements DenormalizerInterface, NormalizerInterface,
             foreach ($data->{'parameters'} as $value_3) {
                 $value_4 = $value_3;
                 if (is_object($value_3) and isset($value_3->{'name'}) and (isset($value_3->{'in'}) and $value_3->{'in'} == 'body') and isset($value_3->{'schema'})) {
-                    $value_4 = $this->denormalizer->denormalize($value_3, 'Joli\\Jane\\OpenApi\\Model\\BodyParameter', 'json', $context);
+                    $value_4 = $this->denormalizer->denormalize($value_3, 'Jane\\OpenApi\\Model\\BodyParameter', 'json', $context);
                 }
                 if (is_object($value_3) and (isset($value_3->{'in'}) and $value_3->{'in'} == 'header') and isset($value_3->{'name'}) and (isset($value_3->{'type'}) and ($value_3->{'type'} == 'string' or $value_3->{'type'} == 'number' or $value_3->{'type'} == 'boolean' or $value_3->{'type'} == 'integer' or $value_3->{'type'} == 'array'))) {
-                    $value_4 = $this->denormalizer->denormalize($value_3, 'Joli\\Jane\\OpenApi\\Model\\HeaderParameterSubSchema', 'json', $context);
+                    $value_4 = $this->denormalizer->denormalize($value_3, 'Jane\\OpenApi\\Model\\HeaderParameterSubSchema', 'json', $context);
                 }
                 if (is_object($value_3) and (isset($value_3->{'in'}) and $value_3->{'in'} == 'formData') and isset($value_3->{'name'}) and (isset($value_3->{'type'}) and ($value_3->{'type'} == 'string' or $value_3->{'type'} == 'number' or $value_3->{'type'} == 'boolean' or $value_3->{'type'} == 'integer' or $value_3->{'type'} == 'array' or $value_3->{'type'} == 'file'))) {
-                    $value_4 = $this->denormalizer->denormalize($value_3, 'Joli\\Jane\\OpenApi\\Model\\FormDataParameterSubSchema', 'json', $context);
+                    $value_4 = $this->denormalizer->denormalize($value_3, 'Jane\\OpenApi\\Model\\FormDataParameterSubSchema', 'json', $context);
                 }
                 if (is_object($value_3) and (isset($value_3->{'in'}) and $value_3->{'in'} == 'query') and isset($value_3->{'name'}) and (isset($value_3->{'type'}) and ($value_3->{'type'} == 'string' or $value_3->{'type'} == 'number' or $value_3->{'type'} == 'boolean' or $value_3->{'type'} == 'integer' or $value_3->{'type'} == 'array'))) {
-                    $value_4 = $this->denormalizer->denormalize($value_3, 'Joli\\Jane\\OpenApi\\Model\\QueryParameterSubSchema', 'json', $context);
+                    $value_4 = $this->denormalizer->denormalize($value_3, 'Jane\\OpenApi\\Model\\QueryParameterSubSchema', 'json', $context);
                 }
                 if (is_object($value_3) and (isset($value_3->{'required'}) and $value_3->{'required'} == '1') and (isset($value_3->{'in'}) and $value_3->{'in'} == 'path') and isset($value_3->{'name'}) and (isset($value_3->{'type'}) and ($value_3->{'type'} == 'string' or $value_3->{'type'} == 'number' or $value_3->{'type'} == 'boolean' or $value_3->{'type'} == 'integer' or $value_3->{'type'} == 'array'))) {
-                    $value_4 = $this->denormalizer->denormalize($value_3, 'Joli\\Jane\\OpenApi\\Model\\PathParameterSubSchema', 'json', $context);
+                    $value_4 = $this->denormalizer->denormalize($value_3, 'Jane\\OpenApi\\Model\\PathParameterSubSchema', 'json', $context);
                 }
                 if (is_object($value_3) and isset($value_3->{'$ref'})) {
-                    $value_4 = $this->denormalizer->denormalize($value_3, 'Joli\\Jane\\OpenApi\\Model\\JsonReference', 'json', $context);
+                    $value_4 = $this->denormalizer->denormalize($value_3, 'Jane\\OpenApi\\Model\\JsonReference', 'json', $context);
                 }
                 $values_3[] = $value_4;
             }
@@ -108,10 +108,10 @@ class OperationNormalizer implements DenormalizerInterface, NormalizerInterface,
                 if (preg_match('/^([0-9]{3})$|^(default)$/', $key) && isset($value_5)) {
                     $value_6 = $value_5;
                     if (is_object($value_5) and isset($value_5->{'description'})) {
-                        $value_6 = $this->denormalizer->denormalize($value_5, 'Joli\\Jane\\OpenApi\\Model\\Response', 'json', $context);
+                        $value_6 = $this->denormalizer->denormalize($value_5, 'Jane\\OpenApi\\Model\\Response', 'json', $context);
                     }
                     if (is_object($value_5) and isset($value_5->{'$ref'})) {
-                        $value_6 = $this->denormalizer->denormalize($value_5, 'Joli\\Jane\\OpenApi\\Model\\JsonReference', 'json', $context);
+                        $value_6 = $this->denormalizer->denormalize($value_5, 'Jane\\OpenApi\\Model\\JsonReference', 'json', $context);
                     }
                     $values_4[$key] = $value_6;
                     continue;

@@ -7,7 +7,7 @@ class NormalizerFactory
     public static function create()
     {
         $normalizers   = [];
-        $normalizers[] = new \Jane\Runtime\Normalizer\ReferenceNormalizer();
+        $normalizers[] = new \Jane\JsonSchemaRuntime\Normalizer\ReferenceNormalizer();
         $normalizers[] = new OpenApiNormalizer();
         $normalizers[] = new InfoNormalizer();
         $normalizers[] = new ContactNormalizer();

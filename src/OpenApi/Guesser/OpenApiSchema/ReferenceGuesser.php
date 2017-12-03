@@ -4,7 +4,7 @@ namespace Jane\OpenApi\Guesser\OpenApiSchema;
 
 use Jane\OpenApi\Model\Schema;
 
-class ReferenceGuesser extends \Jane\Guesser\ReferenceGuesser
+class ReferenceGuesser extends \Jane\JsonSchema\Guesser\ReferenceGuesser
 {
     /**
      * @return string

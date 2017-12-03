@@ -18,7 +18,7 @@ class TestIdGetResponse200
     /**
      * @return int
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
@@ -28,7 +28,7 @@ class TestIdGetResponse200
      *
      * @return self
      */
-    public function setId($id = null)
+    public function setId(?int $id): self
     {
         $this->id = $id;
 

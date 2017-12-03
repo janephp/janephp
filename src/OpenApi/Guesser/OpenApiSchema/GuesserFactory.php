@@ -2,8 +2,8 @@
 
 namespace Jane\OpenApi\Guesser\OpenApiSchema;
 
-use Jane\Generator\Naming;
-use Jane\Guesser\ChainGuesser;
+use Jane\JsonSchema\Generator\Naming;
+use Jane\JsonSchema\Guesser\ChainGuesser;
 use Symfony\Component\Serializer\SerializerInterface;
 
 class GuesserFactory

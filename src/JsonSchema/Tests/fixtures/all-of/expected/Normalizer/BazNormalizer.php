@@ -25,7 +25,7 @@ class BazNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
 
     public function supportsDenormalization($data, $type, $format = null)
     {
-        if ($type !== 'Joli\\Jane\\Tests\\Expected\\Model\\Baz') {
+        if ($type !== 'Jane\\JsonSchema\\Tests\\Expected\\Model\\Baz') {
             return false;
         }
 
@@ -51,10 +51,10 @@ class BazNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
             $object->setFoo($data->{'foo'});
         }
         if (property_exists($data, 'Bar')) {
-            $object->setBar($this->denormalizer->denormalize($data->{'Bar'}, 'Joli\\Jane\\Tests\\Expected\\Model\\Bar', 'json', $context));
+            $object->setBar($this->denormalizer->denormalize($data->{'Bar'}, 'Jane\\JsonSchema\\Tests\\Expected\\Model\\Bar', 'json', $context));
         }
         if (property_exists($data, 'Baz')) {
-            $object->setBaz($this->denormalizer->denormalize($data->{'Baz'}, 'Joli\\Jane\\Tests\\Expected\\Model\\BazBaz', 'json', $context));
+            $object->setBaz($this->denormalizer->denormalize($data->{'Baz'}, 'Jane\\JsonSchema\\Tests\\Expected\\Model\\BazBaz', 'json', $context));
         }
 
         return $object;

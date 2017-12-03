@@ -2,7 +2,7 @@
 
 namespace Jane\OpenApi\Normalizer;
 
-use Jane\Runtime\Reference;
+use Jane\JsonSchemaRuntime\Reference;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -18,7 +18,7 @@ class ResponseNormalizer implements DenormalizerInterface, NormalizerInterface, 
 
     public function supportsDenormalization($data, $type, $format = null)
     {
-        if ($type !== 'Joli\\Jane\\OpenApi\\Model\\Response') {
+        if ($type !== 'Jane\\OpenApi\\Model\\Response') {
             return false;
         }
 
@@ -49,17 +49,17 @@ class ResponseNormalizer implements DenormalizerInterface, NormalizerInterface, 
         if (property_exists($data, 'schema')) {
             $value = $data->{'schema'};
             if (is_object($data->{'schema'})) {
-                $value = $this->denormalizer->denormalize($data->{'schema'}, 'Joli\\Jane\\OpenApi\\Model\\Schema', 'json', $context);
+                $value = $this->denormalizer->denormalize($data->{'schema'}, 'Jane\\OpenApi\\Model\\Schema', 'json', $context);
             }
             if (is_object($data->{'schema'}) and (isset($data->{'schema'}->{'type'}) and $data->{'schema'}->{'type'} == 'file')) {
-                $value = $this->denormalizer->denormalize($data->{'schema'}, 'Joli\\Jane\\OpenApi\\Model\\FileSchema', 'json', $context);
+                $value = $this->denormalizer->denormalize($data->{'schema'}, 'Jane\\OpenApi\\Model\\FileSchema', 'json', $context);
             }
             $object->setSchema($value);
         }
         if (property_exists($data, 'headers')) {
             $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
             foreach ($data->{'headers'} as $key => $value_1) {
-                $values[$key] = $this->denormalizer->denormalize($value_1, 'Joli\\Jane\\OpenApi\\Model\\Header', 'json', $context);
+                $values[$key] = $this->denormalizer->denormalize($value_1, 'Jane\\OpenApi\\Model\\Header', 'json', $context);
             }
             $object->setHeaders($values);
         }

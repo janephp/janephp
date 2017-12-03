@@ -23,7 +23,7 @@ class TestIdGetResponse200Normalizer implements DenormalizerInterface, Normalize
 
     public function supportsDenormalization($data, $type, $format = null)
     {
-        if ($type !== 'Joli\\Jane\\OpenApi\\Tests\\Expected\\Model\\TestIdGetResponse200') {
+        if ($type !== 'Jane\\OpenApi\\Tests\\Expected\\Model\\TestIdGetResponse200') {
             return false;
         }
 

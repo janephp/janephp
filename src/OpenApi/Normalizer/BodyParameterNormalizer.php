@@ -2,7 +2,7 @@
 
 namespace Jane\OpenApi\Normalizer;
 
-use Jane\Runtime\Reference;
+use Jane\JsonSchemaRuntime\Reference;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -18,7 +18,7 @@ class BodyParameterNormalizer implements DenormalizerInterface, NormalizerInterf
 
     public function supportsDenormalization($data, $type, $format = null)
     {
-        if ($type !== 'Joli\\Jane\\OpenApi\\Model\\BodyParameter') {
+        if ($type !== 'Jane\\OpenApi\\Model\\BodyParameter') {
             return false;
         }
 
@@ -56,7 +56,7 @@ class BodyParameterNormalizer implements DenormalizerInterface, NormalizerInterf
             $object->setRequired($data->{'required'});
         }
         if (property_exists($data, 'schema')) {
-            $object->setSchema($this->denormalizer->denormalize($data->{'schema'}, 'Joli\\Jane\\OpenApi\\Model\\Schema', 'json', $context));
+            $object->setSchema($this->denormalizer->denormalize($data->{'schema'}, 'Jane\\OpenApi\\Model\\Schema', 'json', $context));
         }
 
         return $object;

@@ -25,7 +25,7 @@ class BazBazNormalizer implements DenormalizerInterface, NormalizerInterface, De
 
     public function supportsDenormalization($data, $type, $format = null)
     {
-        if ($type !== 'Joli\\Jane\\Tests\\Expected\\Model\\BazBaz') {
+        if ($type !== 'Jane\\JsonSchema\\Tests\\Expected\\Model\\BazBaz') {
             return false;
         }
 

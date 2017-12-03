@@ -25,7 +25,7 @@ class TestSubObjectNormalizer implements DenormalizerInterface, NormalizerInterf
 
     public function supportsDenormalization($data, $type, $format = null)
     {
-        if ($type !== 'Joli\\Jane\\Tests\\Expected\\Model\\TestSubObject') {
+        if ($type !== 'Jane\\JsonSchema\\Tests\\Expected\\Model\\TestSubObject') {
             return false;
         }
 

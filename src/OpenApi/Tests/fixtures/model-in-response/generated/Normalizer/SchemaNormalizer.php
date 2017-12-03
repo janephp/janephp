@@ -23,7 +23,7 @@ class SchemaNormalizer implements DenormalizerInterface, NormalizerInterface, De
 
     public function supportsDenormalization($data, $type, $format = null)
     {
-        if ($type !== 'Joli\\Jane\\OpenApi\\Tests\\Expected\\Model\\Schema') {
+        if ($type !== 'Jane\\OpenApi\\Tests\\Expected\\Model\\Schema') {
             return false;
         }
 
@@ -69,10 +69,10 @@ class SchemaNormalizer implements DenormalizerInterface, NormalizerInterface, De
             $object->setMapProperty($values_1);
         }
         if (property_exists($data, 'objectProperty')) {
-            $object->setObjectProperty($this->denormalizer->denormalize($data->{'objectProperty'}, 'Joli\\Jane\\OpenApi\\Tests\\Expected\\Model\\SchemaObjectProperty', 'json', $context));
+            $object->setObjectProperty($this->denormalizer->denormalize($data->{'objectProperty'}, 'Jane\\OpenApi\\Tests\\Expected\\Model\\SchemaObjectProperty', 'json', $context));
         }
         if (property_exists($data, 'objectRefProperty')) {
-            $object->setObjectRefProperty($this->denormalizer->denormalize($data->{'objectRefProperty'}, 'Joli\\Jane\\OpenApi\\Tests\\Expected\\Model\\Schema', 'json', $context));
+            $object->setObjectRefProperty($this->denormalizer->denormalize($data->{'objectRefProperty'}, 'Jane\\OpenApi\\Tests\\Expected\\Model\\Schema', 'json', $context));
         }
 
         return $object;

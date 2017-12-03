@@ -18,7 +18,7 @@ class Error
     /**
      * @return string
      */
-    public function getMessage()
+    public function getMessage(): ?string
     {
         return $this->message;
     }
@@ -28,7 +28,7 @@ class Error
      *
      * @return self
      */
-    public function setMessage($message = null)
+    public function setMessage(?string $message): self
     {
         $this->message = $message;
 

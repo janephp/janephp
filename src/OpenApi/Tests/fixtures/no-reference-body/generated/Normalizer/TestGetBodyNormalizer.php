@@ -23,7 +23,7 @@ class TestGetBodyNormalizer implements DenormalizerInterface, NormalizerInterfac
 
     public function supportsDenormalization($data, $type, $format = null)
     {
-        if ($type !== 'Joli\\Jane\\OpenApi\\Tests\\Expected\\Model\\TestGetBody') {
+        if ($type !== 'Jane\\OpenApi\\Tests\\Expected\\Model\\TestGetBody') {
             return false;
         }
 
@@ -49,10 +49,10 @@ class TestGetBodyNormalizer implements DenormalizerInterface, NormalizerInterfac
             $object->setFoo($data->{'foo'});
         }
         if (property_exists($data, 'Bar')) {
-            $object->setBar($this->denormalizer->denormalize($data->{'Bar'}, 'Joli\\Jane\\OpenApi\\Tests\\Expected\\Model\\Bar', 'json', $context));
+            $object->setBar($this->denormalizer->denormalize($data->{'Bar'}, 'Jane\\OpenApi\\Tests\\Expected\\Model\\Bar', 'json', $context));
         }
         if (property_exists($data, 'Baz')) {
-            $object->setBaz($this->denormalizer->denormalize($data->{'Baz'}, 'Joli\\Jane\\OpenApi\\Tests\\Expected\\Model\\TestGetBodyBaz', 'json', $context));
+            $object->setBaz($this->denormalizer->denormalize($data->{'Baz'}, 'Jane\\OpenApi\\Tests\\Expected\\Model\\TestGetBodyBaz', 'json', $context));
         }
 
         return $object;

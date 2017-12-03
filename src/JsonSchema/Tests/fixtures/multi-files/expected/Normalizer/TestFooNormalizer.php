@@ -25,7 +25,7 @@ class TestFooNormalizer implements DenormalizerInterface, NormalizerInterface, D
 
     public function supportsDenormalization($data, $type, $format = null)
     {
-        if ($type !== 'Joli\\Jane\\Tests\\Expected\\Model\\TestFoo') {
+        if ($type !== 'Jane\\JsonSchema\\Tests\\Expected\\Model\\TestFoo') {
             return false;
         }
 

@@ -2,7 +2,7 @@
 
 namespace Jane\OpenApi\Normalizer;
 
-use Jane\Runtime\Reference;
+use Jane\JsonSchemaRuntime\Reference;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -18,7 +18,7 @@ class InfoNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
 
     public function supportsDenormalization($data, $type, $format = null)
     {
-        if ($type !== 'Joli\\Jane\\OpenApi\\Model\\Info') {
+        if ($type !== 'Jane\\OpenApi\\Model\\Info') {
             return false;
         }
 
@@ -56,10 +56,10 @@ class InfoNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             $object->setTermsOfService($data->{'termsOfService'});
         }
         if (property_exists($data, 'contact')) {
-            $object->setContact($this->denormalizer->denormalize($data->{'contact'}, 'Joli\\Jane\\OpenApi\\Model\\Contact', 'json', $context));
+            $object->setContact($this->denormalizer->denormalize($data->{'contact'}, 'Jane\\OpenApi\\Model\\Contact', 'json', $context));
         }
         if (property_exists($data, 'license')) {
-            $object->setLicense($this->denormalizer->denormalize($data->{'license'}, 'Joli\\Jane\\OpenApi\\Model\\License', 'json', $context));
+            $object->setLicense($this->denormalizer->denormalize($data->{'license'}, 'Jane\\OpenApi\\Model\\License', 'json', $context));
         }
 
         return $object;

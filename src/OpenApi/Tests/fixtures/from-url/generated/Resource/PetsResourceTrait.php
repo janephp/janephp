@@ -8,7 +8,7 @@
 
 namespace Jane\OpenApi\Tests\Expected\Resource;
 
-use Jane\OpenApi\Runtime\Client\QueryParam;
+use Jane\OpenApiRuntime\Client\QueryParam;
 
 trait PetsResourceTrait
 {
@@ -38,10 +38,10 @@ trait PetsResourceTrait
         $response = $promise->wait();
         if (self::FETCH_OBJECT == $fetch) {
             if ('200' == $response->getStatusCode()) {
-                return $this->serializer->deserialize((string) $response->getBody(), 'Joli\\Jane\\OpenApi\\Tests\\Expected\\Model\\Pet[]', 'json');
+                return $this->serializer->deserialize((string) $response->getBody(), 'Jane\\OpenApi\\Tests\\Expected\\Model\\Pet[]', 'json');
             }
 
-            return $this->serializer->deserialize((string) $response->getBody(), 'Joli\\Jane\\OpenApi\\Tests\\Expected\\Model\\Error', 'json');
+            return $this->serializer->deserialize((string) $response->getBody(), 'Jane\\OpenApi\\Tests\\Expected\\Model\\Error', 'json');
         }
 
         return $response;
@@ -71,7 +71,7 @@ trait PetsResourceTrait
                 return null;
             }
 
-            return $this->serializer->deserialize((string) $response->getBody(), 'Joli\\Jane\\OpenApi\\Tests\\Expected\\Model\\Error', 'json');
+            return $this->serializer->deserialize((string) $response->getBody(), 'Jane\\OpenApi\\Tests\\Expected\\Model\\Error', 'json');
         }
 
         return $response;
@@ -100,10 +100,10 @@ trait PetsResourceTrait
         $response = $promise->wait();
         if (self::FETCH_OBJECT == $fetch) {
             if ('200' == $response->getStatusCode()) {
-                return $this->serializer->deserialize((string) $response->getBody(), 'Joli\\Jane\\OpenApi\\Tests\\Expected\\Model\\Pet[]', 'json');
+                return $this->serializer->deserialize((string) $response->getBody(), 'Jane\\OpenApi\\Tests\\Expected\\Model\\Pet[]', 'json');
             }
 
-            return $this->serializer->deserialize((string) $response->getBody(), 'Joli\\Jane\\OpenApi\\Tests\\Expected\\Model\\Error', 'json');
+            return $this->serializer->deserialize((string) $response->getBody(), 'Jane\\OpenApi\\Tests\\Expected\\Model\\Error', 'json');
         }
 
         return $response;

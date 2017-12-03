@@ -23,7 +23,7 @@ class PetNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
 
     public function supportsDenormalization($data, $type, $format = null)
     {
-        if ($type !== 'Joli\\Jane\\OpenApi\\Tests\\Expected\\Model\\Pet') {
+        if ($type !== 'Jane\\OpenApi\\Tests\\Expected\\Model\\Pet') {
             return false;
         }
 

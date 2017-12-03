@@ -2,9 +2,8 @@
 
 namespace Jane\OpenApi\Generator;
 
-use Jane\Generator\Context\Context;
-use Jane\Runtime\Reference;
-use Jane\Reference\Resolver;
+use Jane\JsonSchema\Generator\Context\Context;
+use Jane\JsonSchemaRuntime\Reference;
 use Jane\OpenApi\Model\Schema;
 use PhpParser\Node\Arg;
 use PhpParser\Node\Expr;

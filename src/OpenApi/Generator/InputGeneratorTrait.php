@@ -3,15 +3,14 @@
 namespace Jane\OpenApi\Generator;
 
 use Doctrine\Common\Inflector\Inflector;
-use Jane\Generator\Context\Context;
-use Jane\Runtime\Reference;
+use Jane\JsonSchema\Generator\Context\Context;
+use Jane\JsonSchemaRuntime\Reference;
 use Jane\OpenApi\Model\BodyParameter;
 use Jane\OpenApi\Model\FormDataParameterSubSchema;
 use Jane\OpenApi\Model\HeaderParameterSubSchema;
 use Jane\OpenApi\Model\PathParameterSubSchema;
 use Jane\OpenApi\Model\QueryParameterSubSchema;
 use Jane\OpenApi\Operation\Operation;
-use Jane\Reference\Resolver;
 use PhpParser\Node\Arg;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Name;
@@ -333,19 +332,19 @@ trait InputGeneratorTrait
     {
         return $parameter->resolve(function ($value) {
             if (isset($value->{'in'}) and $value->{'in'} == 'body') {
-                return $this->getDenormalizer()->denormalize($value, 'Joli\\Jane\\OpenApi\\Model\\BodyParameter');
+                return $this->getDenormalizer()->denormalize($value, 'Jane\\OpenApi\\Model\\BodyParameter');
             }
             if (isset($value->{'in'}) and $value->{'in'} == 'header') {
-                return $this->getDenormalizer()->denormalize($value, 'Joli\\Jane\\OpenApi\\Model\\HeaderParameterSubSchema');
+                return $this->getDenormalizer()->denormalize($value, 'Jane\\OpenApi\\Model\\HeaderParameterSubSchema');
             }
             if (isset($value->{'in'}) and $value->{'in'} == 'formData') {
-                return $this->getDenormalizer()->denormalize($value, 'Joli\\Jane\\OpenApi\\Model\\FormDataParameterSubSchema');
+                return $this->getDenormalizer()->denormalize($value, 'Jane\\OpenApi\\Model\\FormDataParameterSubSchema');
             }
             if (isset($value->{'in'}) and $value->{'in'} == 'query') {
-                return $this->getDenormalizer()->denormalize($value, 'Joli\\Jane\\OpenApi\\Model\\QueryParameterSubSchema');
+                return $this->getDenormalizer()->denormalize($value, 'Jane\\OpenApi\\Model\\QueryParameterSubSchema');
             }
             if (isset($value->{'in'}) and $value->{'in'} == 'path') {
-                return $this->getDenormalizer()->denormalize($value, 'Joli\\Jane\\OpenApi\\Model\\PathParameterSubSchema');
+                return $this->getDenormalizer()->denormalize($value, 'Jane\\OpenApi\\Model\\PathParameterSubSchema');
             }
 
             return $value;

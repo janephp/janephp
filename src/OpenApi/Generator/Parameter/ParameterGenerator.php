@@ -2,7 +2,7 @@
 
 namespace Jane\OpenApi\Generator\Parameter;
 
-use Jane\Generator\Context\Context;
+use Jane\JsonSchema\Generator\Context\Context;
 use PhpParser\Node;
 use PhpParser\Parser;
 use PhpParser\Node\Expr;

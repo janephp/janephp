@@ -2,7 +2,7 @@
 
 namespace Jane\OpenApi\Guesser\OpenApiSchema;
 
-use Jane\Guesser\JsonSchema\AllOfGuesser as BaseAllOfGuesser;
+use Jane\JsonSchema\Guesser\JsonSchema\AllOfGuesser as BaseAllOfGuesser;
 use Jane\OpenApi\Model\Schema;
 
 class AllOfGuesser extends BaseAllOfGuesser
