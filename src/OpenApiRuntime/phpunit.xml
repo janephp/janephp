@@ -13,14 +13,8 @@
         bootstrap                   = "vendor/autoload.php" >
 
     <testsuites>
-        <testsuite name="Jane Open Api Unit Test Suite">
-            <directory>tests</directory>
+        <testsuite name="Jane Open Api Runtime Unit Test Suite">
+            <directory>Tests</directory>
         </testsuite>
     </testsuites>
-
-    <filter>
-        <whitelist>
-            <directory suffix=".php">src</directory>
-        </whitelist>
-    </filter>
 </phpunit>

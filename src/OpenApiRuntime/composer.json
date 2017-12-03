@@ -11,11 +11,11 @@
     ],
     "autoload": {
         "psr-4": {
-            "Jane\\OpenApiRuntime": ""
+            "Jane\\OpenApiRuntime\\": ""
         }
     },
     "require": {
-        "jane-php/json-schema-runtime": "^2.0",
+        "jane-php/json-schema-runtime": "^4.0",
         "php-http/httplug": "^1.0",
         "php-http/message-factory": "^1.0.2",
         "php-http/client-common": "^1.1",
