@@ -1,5 +1,5 @@
 .idea
 vendor/
 composer.lock
-tests/fixtures/*/generated
+Tests/fixtures/*/generated
 .php_cs.cache
