@@ -27,6 +27,8 @@ use PhpCsFixer\Finder;
 
 class Jane
 {
+    public const VERSION = '4.x-dev';
+
     private $serializer;
 
     private $modelGenerator;
@@ -182,7 +184,10 @@ EOH
         $resolver = new ConfigurationResolver($fixerConfig, $resolverOptions, $directory, new ToolInfo());
 
         $finder = new Finder();
-        $finder->in($directory);
+        $finder->in([
+            $directory . '/Model',
+            $directory . '/Normalizer',
+        ]);
         $fixerConfig->setFinder($finder);
 
         $runner = new Runner(
