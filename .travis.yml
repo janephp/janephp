@@ -26,7 +26,7 @@ before_install:
     - travis_retry composer self-update
 
 install:
-    - travis_retry composer update ${COMPOSER_FLAGS} --prefer-source --no-interaction
+    - travis_retry composer update ${COMPOSER_FLAGS} --no-interaction
 
 script:
     - travis_wait $TEST_COMMAND
