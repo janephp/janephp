@@ -8,7 +8,7 @@ use Jane\OpenApi\Model\Schema;
 class AdditionalPropertiesGuesser extends BaseAdditionalPropertiesGuesser
 {
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function supportObject($object)
     {
@@ -16,11 +16,11 @@ class AdditionalPropertiesGuesser extends BaseAdditionalPropertiesGuesser
             return false;
         }
 
-        if ($object->getType() !== 'object') {
+        if ('object' !== $object->getType()) {
             return false;
         }
 
-        if ($object->getAdditionalProperties() !== true && !is_object($object->getAdditionalProperties())) {
+        if (true !== $object->getAdditionalProperties() && !is_object($object->getAdditionalProperties())) {
             return false;
         }
 

@@ -5,28 +5,28 @@ namespace Jane\JsonSchema\Generator;
 use PhpParser\Node;
 
 /**
- * File generated
+ * File generated.
  *
  * Simply a correspondance between a filename and a AST
  */
 class File
 {
     /**
-     * Relative path of the file generated
+     * Relative path of the file generated.
      *
      * @var string
      */
     private $filename;
 
     /**
-     * Ast generated
+     * Ast generated.
      *
      * @var Node
      */
     private $node;
 
     /**
-     * Type of generation (model / normalizer / ...)
+     * Type of generation (model / normalizer / ...).
      *
      * @var string
      */
@@ -35,8 +35,8 @@ class File
     public function __construct($filename, Node $node, $type)
     {
         $this->filename = $filename;
-        $this->node     = $node;
-        $this->type     = $type;
+        $this->node = $node;
+        $this->type = $type;
     }
 
     /**

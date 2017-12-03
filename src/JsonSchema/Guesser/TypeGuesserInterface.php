@@ -9,7 +9,7 @@ use Jane\JsonSchema\Schema;
 interface TypeGuesserInterface
 {
     /**
-     * Return all types guessed
+     * Return all types guessed.
      *
      * @param mixed    $object
      * @param string   $name

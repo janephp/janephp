@@ -8,11 +8,11 @@ use Jane\OpenApi\Model\Schema;
 class ArrayGuesser extends BaseArrayGuesser
 {
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function supportObject($object)
     {
-        return (($object instanceof Schema) && $object->getType() === 'array');
+        return ($object instanceof Schema) && 'array' === $object->getType();
     }
 
     /**

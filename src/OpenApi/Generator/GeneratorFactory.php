@@ -20,11 +20,11 @@ class GeneratorFactory
         $parserFactory = new ParserFactory();
         $parser = $parserFactory->create(ParserFactory::PREFER_PHP7);
 
-        $bodyParameter     = new BodyParameterGenerator($parser, $serializer);
-        $pathParameter     = new PathParameterGenerator($parser);
+        $bodyParameter = new BodyParameterGenerator($parser, $serializer);
+        $pathParameter = new PathParameterGenerator($parser);
         $formDataParameter = new FormDataParameterGenerator($parser);
-        $headerParameter   = new HeaderParameterGenerator($parser);
-        $queryParameter    = new QueryParameterGenerator($parser);
+        $headerParameter = new HeaderParameterGenerator($parser);
+        $queryParameter = new QueryParameterGenerator($parser);
 
         $operation = new OperationGenerator($serializer, $bodyParameter, $formDataParameter, $headerParameter, $pathParameter, $queryParameter);
         $operationManager = new OperationManager();

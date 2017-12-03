@@ -26,7 +26,7 @@ class Oauth2ImplicitSecurityNormalizer implements DenormalizerInterface, Normali
 
     public function supportsDenormalization($data, $type, $format = null)
     {
-        if ($type !== 'Jane\\OpenApi\\Model\\Oauth2ImplicitSecurity') {
+        if ('Jane\\OpenApi\\Model\\Oauth2ImplicitSecurity' !== $type) {
             return false;
         }
 

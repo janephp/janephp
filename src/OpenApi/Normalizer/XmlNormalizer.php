@@ -26,7 +26,7 @@ class XmlNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
 
     public function supportsDenormalization($data, $type, $format = null)
     {
-        if ($type !== 'Jane\\OpenApi\\Model\\Xml') {
+        if ('Jane\\OpenApi\\Model\\Xml' !== $type) {
             return false;
         }
 

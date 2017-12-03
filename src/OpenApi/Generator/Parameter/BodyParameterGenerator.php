@@ -26,7 +26,7 @@ class BodyParameterGenerator extends ParameterGenerator
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      *
      * @param $parameter BodyParameter
      */
@@ -37,8 +37,8 @@ class BodyParameterGenerator extends ParameterGenerator
         list($class, $array) = $this->getClass($parameter, $context, $reference);
 
         if (null === $array || true === $array) {
-            if ($class == "array") {
-                return new Node\Param($name, null, "array");
+            if ('array' == $class) {
+                return new Node\Param($name, null, 'array');
             }
 
             return new Node\Param($name);
@@ -48,7 +48,7 @@ class BodyParameterGenerator extends ParameterGenerator
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      *
      * @param $parameter BodyParameter
      */
@@ -65,29 +65,29 @@ class BodyParameterGenerator extends ParameterGenerator
 
     /**
      * @param BodyParameter $parameter
-     * @param Context $context
+     * @param Context       $context
      *
      * @return array
      */
     protected function getClass(BodyParameter $parameter, Context $context, $reference)
     {
         $resolvedSchema = null;
-        $jsonReference  = null;
-        $array          = false;
-        $schema         = $parameter->getSchema();
+        $jsonReference = null;
+        $array = false;
+        $schema = $parameter->getSchema();
 
         if ($schema instanceof Reference) {
             list($jsonReference, $resolvedSchema) = $this->resolveSchema($schema, Schema::class);
         }
 
-        if ($schema instanceof Schema && $schema->getType() == "array" && $schema->getItems() instanceof Reference) {
+        if ($schema instanceof Schema && 'array' == $schema->getType() && $schema->getItems() instanceof Reference) {
             list($jsonReference, $resolvedSchema) = $this->resolveSchema($schema->getItems(), Schema::class);
-            $array          = true;
+            $array = true;
         }
 
-        if ($resolvedSchema === null) {
+        if (null === $resolvedSchema) {
             if ($context->getRegistry()->hasClass($reference)) {
-                return ["\\" . $context->getRegistry()->getSchema($reference)->getNamespace() . "\\Model\\" . $context->getRegistry()->getClass($reference)->getName(), false];
+                return ['\\' . $context->getRegistry()->getSchema($reference)->getNamespace() . '\\Model\\' . $context->getRegistry()->getClass($reference)->getName(), false];
             }
 
             return [$schema->getType(), null];
@@ -96,14 +96,14 @@ class BodyParameterGenerator extends ParameterGenerator
         $class = $context->getRegistry()->getClass($jsonReference);
 
         // Happens when reference resolve to a none object
-        if ($class === null) {
+        if (null === $class) {
             return [$schema->getType(), null];
         }
 
-        $class = "\\" . $context->getRegistry()->getSchema($jsonReference)->getNamespace() . "\\Model\\" . $class->getName();
+        $class = '\\' . $context->getRegistry()->getSchema($jsonReference)->getNamespace() . '\\Model\\' . $class->getName();
 
         if ($array) {
-            $class .= "[]";
+            $class .= '[]';
         }
 
         return [$class, $array];
@@ -117,13 +117,13 @@ class BodyParameterGenerator extends ParameterGenerator
      */
     private function resolveSchema(Reference $reference, $class)
     {
-        $result    = $reference;
+        $result = $reference;
 
         do {
             $refString = (string) $reference->getMergedUri();
-            $result = $result->resolve(function ($data) use($result, $class) {
+            $result = $result->resolve(function ($data) use ($result, $class) {
                 return $this->denormalizer->denormalize($data, $class, 'json', [
-                    'document-origin' => (string) $result->getMergedUri()->withFragment('')
+                    'document-origin' => (string) $result->getMergedUri()->withFragment(''),
                 ]);
             });
         } while ($result instanceof Reference);

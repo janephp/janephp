@@ -26,7 +26,7 @@ class Oauth2PasswordSecurityNormalizer implements DenormalizerInterface, Normali
 
     public function supportsDenormalization($data, $type, $format = null)
     {
-        if ($type !== 'Jane\\OpenApi\\Model\\Oauth2PasswordSecurity') {
+        if ('Jane\\OpenApi\\Model\\Oauth2PasswordSecurity' !== $type) {
             return false;
         }
 

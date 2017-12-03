@@ -26,7 +26,7 @@ class PathParameterSubSchemaNormalizer implements DenormalizerInterface, Normali
 
     public function supportsDenormalization($data, $type, $format = null)
     {
-        if ($type !== 'Jane\\OpenApi\\Model\\PathParameterSubSchema') {
+        if ('Jane\\OpenApi\\Model\\PathParameterSubSchema' !== $type) {
             return false;
         }
 

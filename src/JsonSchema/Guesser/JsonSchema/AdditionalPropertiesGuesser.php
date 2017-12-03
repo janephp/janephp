@@ -17,7 +17,7 @@ class AdditionalPropertiesGuesser implements GuesserInterface, TypeGuesserInterf
     use ChainGuesserAwareTrait;
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function guessClass($object, $name, $reference, Registry $registry)
     {
@@ -27,7 +27,7 @@ class AdditionalPropertiesGuesser implements GuesserInterface, TypeGuesserInterf
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function supportObject($object)
     {
@@ -35,11 +35,11 @@ class AdditionalPropertiesGuesser implements GuesserInterface, TypeGuesserInterf
             return false;
         }
 
-        if ($object->getType() !== 'object') {
+        if ('object' !== $object->getType()) {
             return false;
         }
 
-        if ($object->getAdditionalProperties() !== true && !is_object($object->getAdditionalProperties())) {
+        if (true !== $object->getAdditionalProperties() && !is_object($object->getAdditionalProperties())) {
             return false;
         }
 
@@ -47,11 +47,11 @@ class AdditionalPropertiesGuesser implements GuesserInterface, TypeGuesserInterf
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function guessType($object, $name, $reference, Registry $registry)
     {
-        if ($object->getAdditionalProperties() === true) {
+        if (true === $object->getAdditionalProperties()) {
             return new MapType($object, new Type($object, 'mixed'));
         }
 

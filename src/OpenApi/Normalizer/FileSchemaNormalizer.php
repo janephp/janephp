@@ -26,7 +26,7 @@ class FileSchemaNormalizer implements DenormalizerInterface, NormalizerInterface
 
     public function supportsDenormalization($data, $type, $format = null)
     {
-        if ($type !== 'Jane\\OpenApi\\Model\\FileSchema') {
+        if ('Jane\\OpenApi\\Model\\FileSchema' !== $type) {
             return false;
         }
 

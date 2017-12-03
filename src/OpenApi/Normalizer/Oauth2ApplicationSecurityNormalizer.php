@@ -26,7 +26,7 @@ class Oauth2ApplicationSecurityNormalizer implements DenormalizerInterface, Norm
 
     public function supportsDenormalization($data, $type, $format = null)
     {
-        if ($type !== 'Jane\\OpenApi\\Model\\Oauth2ApplicationSecurity') {
+        if ('Jane\\OpenApi\\Model\\Oauth2ApplicationSecurity' !== $type) {
             return false;
         }
 

@@ -8,11 +8,11 @@ use Jane\OpenApi\Model\Schema;
 class AllOfGuesser extends BaseAllOfGuesser
 {
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function supportObject($object)
     {
-        return (($object instanceof Schema) && is_array($object->getAllOf()) && count($object->getAllOf()) > 0);
+        return ($object instanceof Schema) && is_array($object->getAllOf()) && count($object->getAllOf()) > 0;
     }
 
     /**

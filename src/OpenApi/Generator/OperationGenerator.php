@@ -31,16 +31,16 @@ class OperationGenerator
 
     public function __construct(DenormalizerInterface $denormalizer, BodyParameterGenerator $bodyParameterGenerator, FormDataParameterGenerator $formDataParameterGenerator, HeaderParameterGenerator $headerParameterGenerator, PathParameterGenerator $pathParameterGenerator, QueryParameterGenerator $queryParameterGenerator)
     {
-        $this->denormalizer               = $denormalizer;
-        $this->bodyParameterGenerator     = $bodyParameterGenerator;
+        $this->denormalizer = $denormalizer;
+        $this->bodyParameterGenerator = $bodyParameterGenerator;
         $this->formDataParameterGenerator = $formDataParameterGenerator;
-        $this->headerParameterGenerator   = $headerParameterGenerator;
-        $this->pathParameterGenerator     = $pathParameterGenerator;
-        $this->queryParameterGenerator    = $queryParameterGenerator;
+        $this->headerParameterGenerator = $headerParameterGenerator;
+        $this->pathParameterGenerator = $pathParameterGenerator;
+        $this->queryParameterGenerator = $queryParameterGenerator;
     }
 
     /**
-     * Generate a method for an operation
+     * Generate a method for an operation.
      *
      * @param string    $name
      * @param Operation $operation
@@ -66,7 +66,7 @@ class OperationGenerator
                     new Arg(new Scalar\String_($operation->getMethod())),
                     new Arg($urlVariable),
                     new Arg($headerVariable),
-                    new Arg($bodyVariable)
+                    new Arg($bodyVariable),
                 ]
             )),
             // $response = $this->httpClient->sendRequest($request);
@@ -75,13 +75,13 @@ class OperationGenerator
                 'sendAsyncRequest',
                 [new Arg(new Expr\Variable('request'))]
             )),
-            // if ($fetch === self::FETCH_PROMISE) { return $promise }
+            // if ($fetch === self::FETCH_PROMISE) { return $promise }
             new Stmt\If_(
                 new Expr\BinaryOp\Identical(new Expr\ConstFetch(new Name('self::FETCH_PROMISE')), new Expr\Variable('fetch')),
                 [
                     'stmts' => [
-                        new Stmt\Return_(new Expr\Variable('promise'))
-                    ]
+                        new Stmt\Return_(new Expr\Variable('promise')),
+                    ],
                 ]
             ),
             // $response = $promise->wait();
@@ -93,7 +93,7 @@ class OperationGenerator
 
         // Output
         $outputStatements = [];
-        $outputTypes = ["\\Psr\\Http\\Message\\ResponseInterface"];
+        $outputTypes = ['\\Psr\\Http\\Message\\ResponseInterface'];
 
         if ($operation->getOperation()->getResponses()) {
             foreach ($operation->getOperation()->getResponses() as $status => $response) {
@@ -122,7 +122,7 @@ class OperationGenerator
             $statements[] = new Stmt\If_(
                 new Expr\BinaryOp\Equal(new Expr\ConstFetch(new Name('self::FETCH_OBJECT')), new Expr\Variable('fetch')),
                 [
-                    'stmts' => $outputStatements
+                    'stmts' => $outputStatements,
                 ]
             );
         }
@@ -132,23 +132,23 @@ class OperationGenerator
         $documentation = array_merge(
             [
                 '/**',
-                sprintf(" * %s", $operation->getOperation()->getDescription()),
+                sprintf(' * %s', $operation->getOperation()->getDescription()),
                 ' *',
             ],
             $documentationParameters,
             [
                 ' *',
                 ' * @return ' . implode('|', $outputTypes),
-                ' */'
+                ' */',
             ]
         );
 
         return new Stmt\ClassMethod($name, [
-            'type'     => Stmt\Class_::MODIFIER_PUBLIC,
-            'params'   => $parameters,
-            'stmts'    => $statements
+            'type' => Stmt\Class_::MODIFIER_PUBLIC,
+            'params' => $parameters,
+            'stmts' => $statements,
         ], [
-            'comments' => [new Comment\Doc(implode("\n", $documentation))]
+            'comments' => [new Comment\Doc(implode("\n", $documentation))],
         ]);
     }
 

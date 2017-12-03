@@ -11,7 +11,7 @@ trait GuesserResolverTrait
     protected $serializer;
 
     /**
-     * Resolve a reference with a denormalizer
+     * Resolve a reference with a denormalizer.
      *
      * @param Reference $reference
      * @param string    $class
@@ -23,9 +23,9 @@ trait GuesserResolverTrait
         $result = $reference;
 
         while ($result instanceof Reference) {
-            $result = $result->resolve(function ($data) use($result, $class) {
+            $result = $result->resolve(function ($data) use ($result, $class) {
                 return $this->serializer->denormalize($data, $class, 'json', [
-                    'document-origin' => (string) $result->getMergedUri()->withFragment('')
+                    'document-origin' => (string) $result->getMergedUri()->withFragment(''),
                 ]);
             });
         }

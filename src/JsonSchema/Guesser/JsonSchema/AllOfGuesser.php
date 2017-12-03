@@ -39,7 +39,7 @@ class AllOfGuesser implements GuesserInterface, TypeGuesserInterface, ChainGuess
         $hasSubObject = false;
 
         foreach ($object->getAllOf() as $allOf) {
-            if ($this->resolve($allOf, $this->getSchemaClass())->getType() === 'object') {
+            if ('object' === $this->resolve($allOf, $this->getSchemaClass())->getType()) {
                 $hasSubObject = true;
                 break;
             }
@@ -82,7 +82,7 @@ class AllOfGuesser implements GuesserInterface, TypeGuesserInterface, ChainGuess
             if ($allOfSchema instanceof Reference) {
                 $allOfReference = (string) $allOf->getMergedUri();
 
-                if ((string)$allOf->getMergedUri() === (string)$allOf->getMergedUri()->withFragment('')) {
+                if ((string) $allOf->getMergedUri() === (string) $allOf->getMergedUri()->withFragment('')) {
                     $allOfReference .= '#';
                 }
 
@@ -99,7 +99,7 @@ class AllOfGuesser implements GuesserInterface, TypeGuesserInterface, ChainGuess
             }
         }
 
-        if ($type === null) {
+        if (null === $type) {
             return new Type($object, 'mixed');
         }
 
@@ -126,7 +126,7 @@ class AllOfGuesser implements GuesserInterface, TypeGuesserInterface, ChainGuess
             if ($allOfSchema instanceof Reference) {
                 $allOfReference = (string) $allOfSchema->getMergedUri();
 
-                if ((string)$allOfSchema->getMergedUri() === (string)$allOfSchema->getMergedUri()->withFragment('')) {
+                if ((string) $allOfSchema->getMergedUri() === (string) $allOfSchema->getMergedUri()->withFragment('')) {
                     $allOfReference .= '#';
                 }
 

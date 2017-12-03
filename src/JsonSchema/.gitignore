@@ -1,10 +1,5 @@
-.idea
-.php_cs.cache
 vendor
 composer.lock
-bin/*
-!bin/jane
-stub
 
 Tests/generated/*
 !Tests/generated/.gitkeep

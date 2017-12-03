@@ -26,7 +26,7 @@ class QueryParameterSubSchemaNormalizer implements DenormalizerInterface, Normal
 
     public function supportsDenormalization($data, $type, $format = null)
     {
-        if ($type !== 'Jane\\OpenApi\\Model\\QueryParameterSubSchema') {
+        if ('Jane\\OpenApi\\Model\\QueryParameterSubSchema' !== $type) {
             return false;
         }
 

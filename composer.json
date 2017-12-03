@@ -11,8 +11,15 @@
     "autoload": {
         "psr-4": {
             "Jane\\": "src/"
-        }
+        },
+        "exclude-from-classmap": [
+            "**/Tests/"
+        ]
     },
+    "bin": [
+        "src/JsonSchema/bin/jane",
+        "src/OpenApi/bin/jane-openapi"
+    ],
     "require": {
         "php": ">=7.1",
         "doctrine/inflector": "^1.0",
@@ -33,6 +40,12 @@
         "phpunit/phpunit": "^6.0",
         "friendsofphp/php-cs-fixer": "^2.7.3"
     },
+    "replace": {
+        "jane-php/json-schema": "self.version",
+        "jane-php/json-schema-runtime": "self.version",
+        "jane-php/open-api": "self.version",
+        "jane-php/open-api-runtime": "self.version"
+    },
     "suggest": {
         "friendsofphp/php-cs-fixer": "Allow to automatically fix cs on generated code for better visualisation"
     },
@@ -48,7 +61,9 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "1.0-dev"
+            "dev-master": "4-dev"
         }
-    }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }

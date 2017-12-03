@@ -6,7 +6,7 @@ use League\Uri\Schemes\Http;
 
 class Registry
 {
-    /** @var Schema[]  */
+    /** @var Schema[] */
     private $schemas = [];
 
     public function addSchema(Schema $schema)
@@ -38,14 +38,14 @@ class Registry
 
     public function hasClass($classReference)
     {
-        return $this->getClass($classReference) !== null;
+        return null !== $this->getClass($classReference);
     }
 
     public function getClass($classReference)
     {
         $schema = $this->getSchema($classReference);
 
-        if ($schema === null) {
+        if (null === $schema) {
             return null;
         }
 

@@ -4,9 +4,7 @@ namespace Jane\JsonSchema\Generator\Model;
 
 use Jane\JsonSchema\Generator\Naming;
 use Jane\JsonSchema\Guesser\Guess\Type;
-use Jane\JsonSchema\Schema;
 use PhpParser\Comment\Doc;
-use PhpParser\Node\Name;
 use PhpParser\Node\Param;
 use PhpParser\Node\Stmt;
 use PhpParser\Node\Expr;
@@ -14,7 +12,7 @@ use PhpParser\Node\Expr;
 trait GetterSetterGenerator
 {
     /**
-     * The naming service
+     * The naming service.
      *
      * @return Naming
      */
@@ -24,7 +22,7 @@ trait GetterSetterGenerator
      * Create get method.
      *
      * @param $name
-     * @param Type $type
+     * @param Type   $type
      * @param string $namespace
      *
      * @return Stmt\ClassMethod
@@ -49,7 +47,7 @@ trait GetterSetterGenerator
                         new Expr\PropertyFetch(new Expr\Variable('this'), $this->getNaming()->getPropertyName($name))
                     ),
                 ],
-                'returnType' => $returnType
+                'returnType' => $returnType,
             ], [
                 'comments' => [$this->createGetterDoc($type, $namespace)],
             ]
@@ -60,7 +58,7 @@ trait GetterSetterGenerator
      * Create set method.
      *
      * @param $name
-     * @param Type $type
+     * @param Type   $type
      * @param string $namespace
      *
      * @return Stmt\ClassMethod
@@ -94,7 +92,7 @@ trait GetterSetterGenerator
                     // return $this;
                     new Stmt\Return_(new Expr\Variable('this')),
                 ],
-                'returnType' => 'self'
+                'returnType' => 'self',
             ], [
                 'comments' => [$this->createSetterDoc($name, $type, $namespace)],
             ]
@@ -104,7 +102,7 @@ trait GetterSetterGenerator
     /**
      * Return doc for get method.
      *
-     * @param Type $type
+     * @param Type   $type
      * @param string $namespace
      *
      * @return Doc
@@ -123,7 +121,7 @@ EOD
      * Return doc for set method.
      *
      * @param $name
-     * @param Type $type
+     * @param Type   $type
      * @param string $namespace
      *
      * @return Doc
@@ -137,6 +135,6 @@ EOD
  * @return self
  */
 EOD
-        , $type->getDocTypeHint($namespace), '$'.$this->getNaming()->getPropertyName($name)));
+        , $type->getDocTypeHint($namespace), '$' . $this->getNaming()->getPropertyName($name)));
     }
 }

@@ -4,7 +4,6 @@ namespace Jane\JsonSchema\Guesser;
 
 use Jane\JsonSchema\Guesser\Guess\Type;
 use Jane\JsonSchema\Registry;
-use Jane\JsonSchema\Schema;
 
 class ChainGuesser implements TypeGuesserInterface, PropertiesGuesserInterface, ClassGuesserInterface
 {
@@ -23,7 +22,7 @@ class ChainGuesser implements TypeGuesserInterface, PropertiesGuesserInterface, 
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function guessClass($object, $name, $reference, Registry $registry)
     {
@@ -39,7 +38,7 @@ class ChainGuesser implements TypeGuesserInterface, PropertiesGuesserInterface, 
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function guessType($object, $name, $reference, Registry $registry)
     {
@@ -55,7 +54,7 @@ class ChainGuesser implements TypeGuesserInterface, PropertiesGuesserInterface, 
             }
         }
 
-        if ($type === null) {
+        if (null === $type) {
             return new Type($object, 'mixed');
         }
 

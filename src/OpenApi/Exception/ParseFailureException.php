@@ -15,13 +15,13 @@ class ParseFailureException extends UnexpectedValueException
     /**
      * Construct the exception.
      *
-     * @param string    $message      [optional] The Exception message to throw.
-     * @param int       $code         [optional] The Exception code.
+     * @param string    $message      [optional] The Exception message to throw
+     * @param int       $code         [optional] The Exception code
      * @param Exception $previousJson [optional] The previous exception from the Json serialisation attempt
      * @param Exception $previousYaml [optional] The previous exception from the Yaml serialisation attempt
      */
     public function __construct(
-        $message = "",
+        $message = '',
         $code = 0,
         Exception $previousJson = null,
         Exception $previousYaml = null
@@ -31,7 +31,7 @@ class ParseFailureException extends UnexpectedValueException
     }
 
     /**
-     * Get the previous exception from the Yaml serialisation attempt
+     * Get the previous exception from the Yaml serialisation attempt.
      *
      * @return Exception
      */
@@ -41,7 +41,7 @@ class ParseFailureException extends UnexpectedValueException
     }
 
     /**
-     * Get the previous exception from the Json serialisation attempt
+     * Get the previous exception from the Json serialisation attempt.
      *
      * @return Exception
      */

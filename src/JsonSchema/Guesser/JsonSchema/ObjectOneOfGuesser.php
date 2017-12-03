@@ -13,7 +13,6 @@ use Jane\JsonSchema\JsonSchemaMerger;
 use Jane\JsonSchema\Model\JsonSchema;
 use Jane\JsonSchema\Registry;
 use Jane\JsonSchemaRuntime\Reference;
-use Jane\JsonSchema\Schema;
 use Symfony\Component\Serializer\SerializerInterface;
 
 class ObjectOneOfGuesser implements GuesserInterface, TypeGuesserInterface, ClassGuesserInterface, ChainGuesserAwareInterface
@@ -38,7 +37,7 @@ class ObjectOneOfGuesser implements GuesserInterface, TypeGuesserInterface, Clas
     public function guessClass($object, $name, $reference, Registry $registry)
     {
         foreach ($object->getOneOf() as $key => $oneOf) {
-            $oneOfName = $name.'Sub';
+            $oneOfName = $name . 'Sub';
             $oneOfResolved = $oneOf;
 
             if ($oneOf instanceof Reference) {
@@ -60,7 +59,7 @@ class ObjectOneOfGuesser implements GuesserInterface, TypeGuesserInterface, Clas
         $type = new MultipleType($object);
 
         foreach ($object->getOneOf() as $key => $oneOf) {
-            $oneOfName = $name.'Sub';
+            $oneOfName = $name . 'Sub';
             $oneOfResolved = $oneOf;
 
             if ($oneOf instanceof Reference) {
@@ -81,6 +80,6 @@ class ObjectOneOfGuesser implements GuesserInterface, TypeGuesserInterface, Clas
      */
     public function supportObject($object)
     {
-        return ($object instanceof JsonSchema) && $object->getType() === 'object' && is_array($object->getOneOf()) && count($object->getOneOf()) > 0;
+        return ($object instanceof JsonSchema) && 'object' === $object->getType() && is_array($object->getOneOf()) && count($object->getOneOf()) > 0;
     }
 }

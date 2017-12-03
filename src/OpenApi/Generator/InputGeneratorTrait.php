@@ -51,7 +51,7 @@ trait InputGeneratorTrait
     abstract protected function getDenormalizer();
 
     /**
-     * Create the query param statements and documentation
+     * Create the query param statements and documentation.
      *
      * @param Operation $operation
      *
@@ -62,7 +62,7 @@ trait InputGeneratorTrait
         $queryParamDocumentation = [];
         $queryParamVariable = new Expr\Variable('queryParam');
         $queryParamStatements = [
-            new Expr\Assign($queryParamVariable, new Expr\New_(new Name('QueryParam')))
+            new Expr\Assign($queryParamVariable, new Expr\New_(new Name('QueryParam'))),
         ];
 
         if ($operation->getOperation()->getParameters()) {
@@ -92,7 +92,7 @@ trait InputGeneratorTrait
     }
 
     /**
-     * Create parameters for the method and their documentation
+     * Create parameters for the method and their documentation.
      *
      * @param Operation $operation
      * @param string[]  $queryParamDocumentation
@@ -130,16 +130,16 @@ trait InputGeneratorTrait
         }
 
         if (!empty($queryParamDocumentation)) {
-            $documentationParams[] = " * @param array  \$parameters {";
-            $documentationParams   = array_merge($documentationParams, array_map(function ($doc) {
-                return " *     " . $doc;
+            $documentationParams[] = ' * @param array  $parameters {';
+            $documentationParams = array_merge($documentationParams, array_map(function ($doc) {
+                return ' *     ' . $doc;
             }, $queryParamDocumentation));
-            $documentationParams[] = " * }";
+            $documentationParams[] = ' * }';
         } else {
-            $documentationParams[] = " * @param array  \$parameters List of parameters";
+            $documentationParams[] = ' * @param array  $parameters List of parameters';
         }
 
-        $documentationParams[] = " * @param string \$fetch      Fetch mode (object or response)";
+        $documentationParams[] = ' * @param string $fetch      Fetch mode (object or response)';
 
         $methodParameters[] = new Param('parameters', new Expr\Array_());
         $methodParameters[] = new Param('fetch', new Expr\ConstFetch(new Name('self::FETCH_OBJECT')));
@@ -148,9 +148,9 @@ trait InputGeneratorTrait
     }
 
     /**
-     * Create all statements around url transformation
+     * Create all statements around url transformation.
      *
-     * @param Operation $operation
+     * @param Operation     $operation
      * @param Expr\Variable $queryParamVariable
      *
      * @return array
@@ -160,7 +160,7 @@ trait InputGeneratorTrait
         $urlVariable = new Expr\Variable('url');
         // url = /path
         $statements = [
-            new Expr\Assign($urlVariable, new Scalar\String_($operation->getPath()))
+            new Expr\Assign($urlVariable, new Scalar\String_($operation->getPath())),
         ];
 
         if ($operation->getOperation()->getParameters()) {
@@ -176,7 +176,7 @@ trait InputGeneratorTrait
                         new Arg(new Expr\FuncCall(new Name('urlencode'), [
                             new Arg(new Expr\Variable(Inflector::camelize($parameter->getName()))),
                         ])),
-                        new Arg($urlVariable)
+                        new Arg($urlVariable),
                     ]));
                 }
             }
@@ -195,11 +195,11 @@ trait InputGeneratorTrait
     }
 
     /**
-     * Create body statements
+     * Create body statements.
      *
-     * @param Operation $operation
+     * @param Operation     $operation
      * @param Expr\Variable $queryParamVariable
-     * @param Context $context
+     * @param Context       $context
      *
      * @return array
      */
@@ -221,7 +221,7 @@ trait InputGeneratorTrait
         if (null === $bodyParameter) {
             // $body = $queryParam->buildFormDataString($parameters);
             return [[
-                new Expr\Assign($bodyVariable, new Expr\MethodCall($queryParamVariable, 'buildFormDataString', [new Arg(new Expr\Variable('parameters'))]))
+                new Expr\Assign($bodyVariable, new Expr\MethodCall($queryParamVariable, 'buildFormDataString', [new Arg(new Expr\Variable('parameters'))])),
             ], $bodyVariable];
         }
 
@@ -236,25 +236,25 @@ trait InputGeneratorTrait
                             'serialize',
                             [
                                 new Arg(new Expr\Variable(Inflector::camelize($bodyParameter->getName()))),
-                                new Arg(new Scalar\String_('json'))
+                                new Arg(new Scalar\String_('json')),
                             ]
                         )
-                    )
+                    ),
                 ],
-                $bodyVariable
+                $bodyVariable,
             ];
         }
 
         // $body = $parameter
         return [[
-            new Expr\Assign($bodyVariable, new Expr\Variable(Inflector::camelize($bodyParameter->getName())))
+            new Expr\Assign($bodyVariable, new Expr\Variable(Inflector::camelize($bodyParameter->getName()))),
         ], $bodyVariable];
     }
 
     /**
-     * Create headers statements
+     * Create headers statements.
      *
-     * @param Operation $operation
+     * @param Operation     $operation
      * @param Expr\Variable $queryParamVariable
      *
      * @return array
@@ -272,13 +272,13 @@ trait InputGeneratorTrait
 
         $produces = $operation->getOperation()->getProduces();
 
-        if ($produces && in_array("application/json", $produces)) {
+        if ($produces && in_array('application/json', $produces)) {
             $headers[]
                 = new Expr\ArrayItem(
                     new Expr\Array_(
                         [
                         new Expr\ArrayItem(
-                            new Scalar\String_("application/json")
+                            new Scalar\String_('application/json')
                         ),
                         ]
                     ),
@@ -296,10 +296,10 @@ trait InputGeneratorTrait
                 }
             );
 
-            if (count($bodyParameters) > 0 && in_array("application/json", $consumes)) {
+            if (count($bodyParameters) > 0 && in_array('application/json', $consumes)) {
                 $headers[]
                     = new Expr\ArrayItem(
-                        new Scalar\String_("application/json"),
+                        new Scalar\String_('application/json'),
                         new Scalar\String_('Content-Type')
                     );
             }
@@ -315,11 +315,11 @@ trait InputGeneratorTrait
                                 $headers
                             )
                         ),
-                        new Arg(new Expr\MethodCall($queryParamVariable, 'buildHeaders', [new Arg(new Expr\Variable('parameters'))]))
+                        new Arg(new Expr\MethodCall($queryParamVariable, 'buildHeaders', [new Arg(new Expr\Variable('parameters'))])),
                     ])
-                )
+                ),
             ],
-            $headerVariable
+            $headerVariable,
         ];
     }
 
@@ -331,19 +331,19 @@ trait InputGeneratorTrait
     protected function resolveParameter(Reference $parameter)
     {
         return $parameter->resolve(function ($value) {
-            if (isset($value->{'in'}) and $value->{'in'} == 'body') {
+            if (isset($value->{'in'}) and 'body' == $value->{'in'}) {
                 return $this->getDenormalizer()->denormalize($value, 'Jane\\OpenApi\\Model\\BodyParameter');
             }
-            if (isset($value->{'in'}) and $value->{'in'} == 'header') {
+            if (isset($value->{'in'}) and 'header' == $value->{'in'}) {
                 return $this->getDenormalizer()->denormalize($value, 'Jane\\OpenApi\\Model\\HeaderParameterSubSchema');
             }
-            if (isset($value->{'in'}) and $value->{'in'} == 'formData') {
+            if (isset($value->{'in'}) and 'formData' == $value->{'in'}) {
                 return $this->getDenormalizer()->denormalize($value, 'Jane\\OpenApi\\Model\\FormDataParameterSubSchema');
             }
-            if (isset($value->{'in'}) and $value->{'in'} == 'query') {
+            if (isset($value->{'in'}) and 'query' == $value->{'in'}) {
                 return $this->getDenormalizer()->denormalize($value, 'Jane\\OpenApi\\Model\\QueryParameterSubSchema');
             }
-            if (isset($value->{'in'}) and $value->{'in'} == 'path') {
+            if (isset($value->{'in'}) and 'path' == $value->{'in'}) {
                 return $this->getDenormalizer()->denormalize($value, 'Jane\\OpenApi\\Model\\PathParameterSubSchema');
             }
 

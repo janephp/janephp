@@ -5,7 +5,6 @@ namespace Jane\JsonSchema\Guesser;
 use Jane\JsonSchema\Model\JsonSchema;
 use Jane\JsonSchema\Registry;
 use Jane\JsonSchemaRuntime\Reference;
-use Jane\JsonSchema\Schema;
 use Symfony\Component\Serializer\SerializerInterface;
 
 class ReferenceGuesser implements ClassGuesserInterface, GuesserInterface, TypeGuesserInterface, ChainGuesserAwareInterface
@@ -39,8 +38,8 @@ class ReferenceGuesser implements ClassGuesserInterface, GuesserInterface, TypeG
 
         $mergedReference = (string) $object->getMergedUri();
 
-        if ($registry->getSchema($mergedReference) === null) {
-            $schema = $registry->getSchema((string)$object->getOriginUri());
+        if (null === $registry->getSchema($mergedReference)) {
+            $schema = $registry->getSchema((string) $object->getOriginUri());
             $schema->addReference((string) $object->getMergedUri()->withFragment(''));
         }
 
@@ -62,7 +61,7 @@ class ReferenceGuesser implements ClassGuesserInterface, GuesserInterface, TypeG
         $resolved = $this->resolve($object, $this->getSchemaClass());
         $classKey = (string) $object->getMergedUri();
 
-        if ((string)$object->getMergedUri() === (string)$object->getMergedUri()->withFragment('')) {
+        if ((string) $object->getMergedUri() === (string) $object->getMergedUri()->withFragment('')) {
             $classKey .= '#';
         }
 

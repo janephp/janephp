@@ -33,7 +33,7 @@ class DateTimeType extends ObjectType
     {
         // \DateTime::createFromFormat($format, $data)
         return new Expr\StaticCall(new Name('\DateTime'), 'createFromFormat', [
-            new Arg(new Expr\ConstFetch(new Name('"'.$this->format.'"'))),
+            new Arg(new Expr\ConstFetch(new Name('"' . $this->format . '"'))),
             new Arg($input),
         ]);
     }
@@ -45,7 +45,7 @@ class DateTimeType extends ObjectType
     {
         // $object->format($format);
         return new Expr\MethodCall($input, 'format', [
-            new Arg(new Expr\ConstFetch(new Name('"'.$this->format.'"'))),
+            new Arg(new Expr\ConstFetch(new Name('"' . $this->format . '"'))),
         ]);
     }
 
@@ -61,7 +61,7 @@ class DateTimeType extends ObjectType
             new Expr\BinaryOp\NotIdentical(
                 new Expr\ConstFetch(new Name('false')),
                 new Expr\StaticCall(new Name('\DateTime'), 'createFromFormat', [
-                    new Arg(new Expr\ConstFetch(new Name('"'.$this->format.'"'))),
+                    new Arg(new Expr\ConstFetch(new Name('"' . $this->format . '"'))),
                     new Arg($input),
                 ])
             )

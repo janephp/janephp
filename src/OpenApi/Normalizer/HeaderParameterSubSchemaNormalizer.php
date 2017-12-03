@@ -26,7 +26,7 @@ class HeaderParameterSubSchemaNormalizer implements DenormalizerInterface, Norma
 
     public function supportsDenormalization($data, $type, $format = null)
     {
-        if ($type !== 'Jane\\OpenApi\\Model\\HeaderParameterSubSchema') {
+        if ('Jane\\OpenApi\\Model\\HeaderParameterSubSchema' !== $type) {
             return false;
         }
 

@@ -9,7 +9,6 @@ use Jane\JsonSchema\Guesser\GuesserInterface;
 use Jane\JsonSchema\Guesser\TypeGuesserInterface;
 use Jane\JsonSchema\Model\JsonSchema;
 use Jane\JsonSchema\Registry;
-use Jane\JsonSchema\Schema;
 
 class MultipleGuesser implements GuesserInterface, TypeGuesserInterface, ChainGuesserAwareInterface
 {

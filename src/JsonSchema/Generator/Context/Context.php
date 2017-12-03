@@ -3,32 +3,30 @@
 namespace Jane\JsonSchema\Generator\Context;
 
 use Jane\JsonSchema\Generator\File;
-use Jane\JsonSchema\Guesser\Guess\ClassGuess;
-use Jane\JsonSchema\Model\JsonSchema;
 use Jane\JsonSchema\Registry;
 use Jane\JsonSchema\Schema;
 
 /**
- * Context when generating a library base on a Schema
+ * Context when generating a library base on a Schema.
  */
 class Context
 {
     /**
-     * Registry of all classes created on various schema
+     * Registry of all classes created on various schema.
      *
      * @var Registry
      */
     private $registry;
 
     /**
-     * Files generated through the run
+     * Files generated through the run.
      *
      * @var File[]
      */
     private $files = [];
 
     /**
-     * Variable scope to have unique variable name per method
+     * Variable scope to have unique variable name per method.
      *
      * @var UniqueVariableScope
      */
@@ -83,7 +81,7 @@ class Context
     }
 
     /**
-     * Refresh the unique variable scope for a context
+     * Refresh the unique variable scope for a context.
      */
     public function refreshScope()
     {
@@ -91,7 +89,7 @@ class Context
     }
 
     /**
-     * Get a unique variable name
+     * Get a unique variable name.
      *
      * @param string $prefix
      *

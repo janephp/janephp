@@ -26,7 +26,7 @@ class BasicAuthenticationSecurityNormalizer implements DenormalizerInterface, No
 
     public function supportsDenormalization($data, $type, $format = null)
     {
-        if ($type !== 'Jane\\OpenApi\\Model\\BasicAuthenticationSecurity') {
+        if ('Jane\\OpenApi\\Model\\BasicAuthenticationSecurity' !== $type) {
             return false;
         }
 

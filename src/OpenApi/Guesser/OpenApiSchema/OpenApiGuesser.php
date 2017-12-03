@@ -18,21 +18,21 @@ class OpenApiGuesser implements GuesserInterface, ClassGuesserInterface, ChainGu
     use ChainGuesserAwareTrait;
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function supportObject($object)
     {
-        return ($object instanceof OpenApi);
+        return $object instanceof OpenApi;
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      *
      * @param OpenApi $object
      */
     public function guessClass($object, $name, $reference, Registry $registry)
     {
-        if ($object->getDefinitions() !== null) {
+        if (null !== $object->getDefinitions()) {
             foreach ($object->getDefinitions() as $key => $definition) {
                 $this->chainGuesser->guessClass($definition, $key, $reference . '/definitions/' . $key, $registry);
             }
@@ -52,7 +52,7 @@ class OpenApiGuesser implements GuesserInterface, ClassGuesserInterface, ChainGu
                     if ($path->getParameters()) {
                         foreach ($path->getParameters() as $key => $parameter) {
                             if ($parameter instanceof BodyParameter) {
-                                $this->chainGuesser->guessClass($parameter->getSchema(), $pathName . 'Body' . $key, $reference . '/' . $pathName . '/parameters/' . $key,  $registry);
+                                $this->chainGuesser->guessClass($parameter->getSchema(), $pathName . 'Body' . $key, $reference . '/' . $pathName . '/parameters/' . $key, $registry);
                             }
                         }
                     }
@@ -63,30 +63,30 @@ class OpenApiGuesser implements GuesserInterface, ClassGuesserInterface, ChainGu
         if ($object->getParameters()) {
             foreach ($object->getParameters() as $parameterName => $parameter) {
                 if ($parameter instanceof BodyParameter) {
-                    $this->chainGuesser->guessClass($parameter->getSchema(), $parameterName, $reference . '/parameters/' . $parameterName,  $registry);
+                    $this->chainGuesser->guessClass($parameter->getSchema(), $parameterName, $reference . '/parameters/' . $parameterName, $registry);
                 }
             }
         }
     }
 
     /**
-     * Discover classes in operation
+     * Discover classes in operation.
      *
      * @param $name
      * @param Operation $operation
-     * @param string $reference
-     * @param Registry $registry
+     * @param string    $reference
+     * @param Registry  $registry
      */
     protected function getClassFromOperation($name, Operation $operation = null, $reference, $registry)
     {
-        if ($operation === null) {
+        if (null === $operation) {
             return;
         }
 
         if ($operation->getParameters()) {
             foreach ($operation->getParameters() as $key => $parameter) {
                 if ($parameter instanceof BodyParameter) {
-                    $this->chainGuesser->guessClass($parameter->getSchema(), $name . 'Body', $reference . '/parameters/' . $key,  $registry);
+                    $this->chainGuesser->guessClass($parameter->getSchema(), $name . 'Body', $reference . '/parameters/' . $key, $registry);
                 }
             }
         }
@@ -94,7 +94,7 @@ class OpenApiGuesser implements GuesserInterface, ClassGuesserInterface, ChainGu
         if ($operation->getResponses()) {
             foreach ($operation->getResponses() as $status => $response) {
                 if ($response instanceof Response) {
-                    $this->chainGuesser->guessClass($response->getSchema(), $name.'Response'.$status, $reference . '/responses/' . $status, $registry);
+                    $this->chainGuesser->guessClass($response->getSchema(), $name . 'Response' . $status, $reference . '/responses/' . $status, $registry);
                 }
             }
         }

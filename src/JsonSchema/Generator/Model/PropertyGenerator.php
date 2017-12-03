@@ -12,14 +12,14 @@ use PhpParser\Node\Expr;
 trait PropertyGenerator
 {
     /**
-     * The naming service
+     * The naming service.
      *
      * @return Naming
      */
     abstract protected function getNaming();
 
     /**
-     * Return a property stmt
+     * Return a property stmt.
      *
      * @param string      $name
      * @param Type        $type
@@ -30,21 +30,21 @@ trait PropertyGenerator
     protected function createProperty($name, Type $type, $namespace, $default = null)
     {
         $propertyName = $this->getNaming()->getPropertyName($name);
-        $property     = new Stmt\PropertyProperty($propertyName);
+        $property = new Stmt\PropertyProperty($propertyName);
 
-        if ($default !== null) {
+        if (null !== $default) {
             $property->default = new Expr\ConstFetch(new Name($default));
         }
 
         return new Stmt\Property(Stmt\Class_::MODIFIER_PROTECTED, [
-            $property
+            $property,
         ], [
-            'comments' => [$this->createPropertyDoc($type, $namespace)]
+            'comments' => [$this->createPropertyDoc($type, $namespace)],
         ]);
     }
 
     /**
-     * Get php doc for parameter
+     * Get php doc for parameter.
      *
      * @param Type $type
      *

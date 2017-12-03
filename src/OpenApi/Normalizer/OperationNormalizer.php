@@ -26,7 +26,7 @@ class OperationNormalizer implements DenormalizerInterface, NormalizerInterface,
 
     public function supportsDenormalization($data, $type, $format = null)
     {
-        if ($type !== 'Jane\\OpenApi\\Model\\Operation') {
+        if ('Jane\\OpenApi\\Model\\Operation' !== $type) {
             return false;
         }
 
@@ -88,19 +88,19 @@ class OperationNormalizer implements DenormalizerInterface, NormalizerInterface,
             $values_3 = [];
             foreach ($data->{'parameters'} as $value_3) {
                 $value_4 = $value_3;
-                if (is_object($value_3) and isset($value_3->{'name'}) and (isset($value_3->{'in'}) and $value_3->{'in'} == 'body') and isset($value_3->{'schema'})) {
+                if (is_object($value_3) and isset($value_3->{'name'}) and (isset($value_3->{'in'}) and 'body' == $value_3->{'in'}) and isset($value_3->{'schema'})) {
                     $value_4 = $this->denormalizer->denormalize($value_3, 'Jane\\OpenApi\\Model\\BodyParameter', 'json', $context);
                 }
-                if (is_object($value_3) and (isset($value_3->{'in'}) and $value_3->{'in'} == 'header') and isset($value_3->{'name'}) and (isset($value_3->{'type'}) and ($value_3->{'type'} == 'string' or $value_3->{'type'} == 'number' or $value_3->{'type'} == 'boolean' or $value_3->{'type'} == 'integer' or $value_3->{'type'} == 'array'))) {
+                if (is_object($value_3) and (isset($value_3->{'in'}) and 'header' == $value_3->{'in'}) and isset($value_3->{'name'}) and (isset($value_3->{'type'}) and ('string' == $value_3->{'type'} or 'number' == $value_3->{'type'} or 'boolean' == $value_3->{'type'} or 'integer' == $value_3->{'type'} or 'array' == $value_3->{'type'}))) {
                     $value_4 = $this->denormalizer->denormalize($value_3, 'Jane\\OpenApi\\Model\\HeaderParameterSubSchema', 'json', $context);
                 }
-                if (is_object($value_3) and (isset($value_3->{'in'}) and $value_3->{'in'} == 'formData') and isset($value_3->{'name'}) and (isset($value_3->{'type'}) and ($value_3->{'type'} == 'string' or $value_3->{'type'} == 'number' or $value_3->{'type'} == 'boolean' or $value_3->{'type'} == 'integer' or $value_3->{'type'} == 'array' or $value_3->{'type'} == 'file'))) {
+                if (is_object($value_3) and (isset($value_3->{'in'}) and 'formData' == $value_3->{'in'}) and isset($value_3->{'name'}) and (isset($value_3->{'type'}) and ('string' == $value_3->{'type'} or 'number' == $value_3->{'type'} or 'boolean' == $value_3->{'type'} or 'integer' == $value_3->{'type'} or 'array' == $value_3->{'type'} or 'file' == $value_3->{'type'}))) {
                     $value_4 = $this->denormalizer->denormalize($value_3, 'Jane\\OpenApi\\Model\\FormDataParameterSubSchema', 'json', $context);
                 }
-                if (is_object($value_3) and (isset($value_3->{'in'}) and $value_3->{'in'} == 'query') and isset($value_3->{'name'}) and (isset($value_3->{'type'}) and ($value_3->{'type'} == 'string' or $value_3->{'type'} == 'number' or $value_3->{'type'} == 'boolean' or $value_3->{'type'} == 'integer' or $value_3->{'type'} == 'array'))) {
+                if (is_object($value_3) and (isset($value_3->{'in'}) and 'query' == $value_3->{'in'}) and isset($value_3->{'name'}) and (isset($value_3->{'type'}) and ('string' == $value_3->{'type'} or 'number' == $value_3->{'type'} or 'boolean' == $value_3->{'type'} or 'integer' == $value_3->{'type'} or 'array' == $value_3->{'type'}))) {
                     $value_4 = $this->denormalizer->denormalize($value_3, 'Jane\\OpenApi\\Model\\QueryParameterSubSchema', 'json', $context);
                 }
-                if (is_object($value_3) and (isset($value_3->{'required'}) and $value_3->{'required'} == '1') and (isset($value_3->{'in'}) and $value_3->{'in'} == 'path') and isset($value_3->{'name'}) and (isset($value_3->{'type'}) and ($value_3->{'type'} == 'string' or $value_3->{'type'} == 'number' or $value_3->{'type'} == 'boolean' or $value_3->{'type'} == 'integer' or $value_3->{'type'} == 'array'))) {
+                if (is_object($value_3) and (isset($value_3->{'required'}) and '1' == $value_3->{'required'}) and (isset($value_3->{'in'}) and 'path' == $value_3->{'in'}) and isset($value_3->{'name'}) and (isset($value_3->{'type'}) and ('string' == $value_3->{'type'} or 'number' == $value_3->{'type'} or 'boolean' == $value_3->{'type'} or 'integer' == $value_3->{'type'} or 'array' == $value_3->{'type'}))) {
                     $value_4 = $this->denormalizer->denormalize($value_3, 'Jane\\OpenApi\\Model\\PathParameterSubSchema', 'json', $context);
                 }
                 if (is_object($value_3) and isset($value_3->{'$ref'})) {
@@ -225,7 +225,7 @@ class OperationNormalizer implements DenormalizerInterface, NormalizerInterface,
         if (null !== $object->getResponses()) {
             $values_4 = new \stdClass();
             foreach ($object->getResponses() as $key => $value_5) {
-                if (preg_match('/^([0-9]{3})$|^(default)$/', $key) && !is_null($value_5)) {
+                if (preg_match('/^([0-9]{3})$|^(default)$/', $key) && null !== $value_5) {
                     $value_6 = $value_5;
                     if (is_object($value_5)) {
                         $value_6 = $this->normalizer->normalize($value_5, 'json', $context);
@@ -236,7 +236,7 @@ class OperationNormalizer implements DenormalizerInterface, NormalizerInterface,
                     $values_4->{$key} = $value_6;
                     continue;
                 }
-                if (preg_match('/^x-/', $key) && !is_null($value_5)) {
+                if (preg_match('/^x-/', $key) && null !== $value_5) {
                     $values_4->{$key} = $value_5;
                     continue;
                 }

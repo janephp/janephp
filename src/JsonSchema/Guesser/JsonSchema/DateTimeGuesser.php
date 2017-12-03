@@ -19,15 +19,15 @@ class DateTimeGuesser implements GuesserInterface, TypeGuesserInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function supportObject($object)
     {
-        return (($object instanceof JsonSchema) && $object->getType() === 'string' && $object->getFormat() === 'date-time');
+        return ($object instanceof JsonSchema) && 'string' === $object->getType() && 'date-time' === $object->getFormat();
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function guessType($object, $name, $reference, Registry $registry)
     {

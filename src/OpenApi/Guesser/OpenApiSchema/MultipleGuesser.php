@@ -8,7 +8,7 @@ use Jane\OpenApi\Model\Schema;
 class MultipleGuesser extends BaseMultipleGuesser
 {
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function supportObject($object)
     {

@@ -28,48 +28,48 @@ trait OutputGeneratorTrait
      */
     protected function createResponseDenormalizationStatement($status, $schema, Context $context, $reference)
     {
-        $jsonReference  = $reference;
-        $array          = false;
+        $jsonReference = $reference;
+        $array = false;
 
         if ($schema instanceof Reference) {
             list($jsonReference, $schema) = $this->resolve($schema, Schema::class);
         }
 
-        if ($schema instanceof Schema && $schema->getType() == "array") {
+        if ($schema instanceof Schema && 'array' == $schema->getType()) {
             $array = true;
             $jsonReference .= '/items';
 
             if ($schema->getItems() instanceof Reference) {
-                list($jsonReference, ) = $this->resolve($schema->getItems(), Schema::class);
+                list($jsonReference) = $this->resolve($schema->getItems(), Schema::class);
             }
         }
 
         $class = $context->getRegistry()->getClass($jsonReference);
 
         // Happens when reference resolve to a none object
-        if ($class === null) {
+        if (null === $class) {
             $returnType = 'null';
             $returnStmt = new Stmt\Return_(new Expr\ConstFetch(new Name('null')));
         } else {
-            $class = $context->getRegistry()->getSchema($jsonReference)->getNamespace() . "\\Model\\" . $class->getName();
+            $class = $context->getRegistry()->getSchema($jsonReference)->getNamespace() . '\\Model\\' . $class->getName();
 
             if ($array) {
-                $class .= "[]";
+                $class .= '[]';
             }
 
-            $returnType = "\\" . $class;
+            $returnType = '\\' . $class;
             $returnStmt = new Stmt\Return_(new Expr\MethodCall(
                 new Expr\PropertyFetch(new Expr\Variable('this'), 'serializer'),
                 'deserialize',
                 [
                     new Arg(new Expr\Cast\String_(new Expr\MethodCall(new Expr\Variable('response'), 'getBody'))),
                     new Arg(new Scalar\String_($class)),
-                    new Arg(new Scalar\String_('json'))
+                    new Arg(new Scalar\String_('json')),
                 ]
             ));
         }
 
-        if ($status === 'default') {
+        if ('default' === $status) {
             return [$returnType, $returnStmt];
         }
 
@@ -79,7 +79,7 @@ trait OutputGeneratorTrait
                 new Expr\MethodCall(new Expr\Variable('response'), 'getStatusCode')
             ),
             [
-                'stmts' => [$returnStmt]
+                'stmts' => [$returnStmt],
             ]
         )];
     }
@@ -92,13 +92,13 @@ trait OutputGeneratorTrait
      */
     private function resolve(Reference $reference, $class)
     {
-        $result    = $reference;
+        $result = $reference;
 
         do {
             $refString = (string) $reference->getMergedUri();
-            $result = $result->resolve(function ($data) use($result, $class) {
+            $result = $result->resolve(function ($data) use ($result, $class) {
                 return $this->getDenormalizer()->denormalize($data, $class, 'json', [
-                    'document-origin' => (string) $result->getMergedUri()->withFragment('')
+                    'document-origin' => (string) $result->getMergedUri()->withFragment(''),
                 ]);
             });
         } while ($result instanceof Reference);

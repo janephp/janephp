@@ -26,7 +26,7 @@ class ExternalDocsNormalizer implements DenormalizerInterface, NormalizerInterfa
 
     public function supportsDenormalization($data, $type, $format = null)
     {
-        if ($type !== 'Jane\\OpenApi\\Model\\ExternalDocs') {
+        if ('Jane\\OpenApi\\Model\\ExternalDocs' !== $type) {
             return false;
         }
 

@@ -8,11 +8,11 @@ use Jane\OpenApi\Model\Schema;
 class ItemsGuesser extends BaseItemsGuesser
 {
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function supportObject($object)
     {
-        return (
+        return
             ($object instanceof Schema)
             && (
                 $object->getItems() instanceof Schema
@@ -23,6 +23,6 @@ class ItemsGuesser extends BaseItemsGuesser
                     count($object->getItems()) > 0
                 )
             )
-        );
+        ;
     }
 }

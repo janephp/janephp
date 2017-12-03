@@ -26,7 +26,7 @@ class Oauth2AccessCodeSecurityNormalizer implements DenormalizerInterface, Norma
 
     public function supportsDenormalization($data, $type, $format = null)
     {
-        if ($type !== 'Jane\\OpenApi\\Model\\Oauth2AccessCodeSecurity') {
+        if ('Jane\\OpenApi\\Model\\Oauth2AccessCodeSecurity' !== $type) {
             return false;
         }
 

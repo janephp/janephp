@@ -3,7 +3,6 @@
 namespace Jane\JsonSchema\Guesser\Guess;
 
 use PhpParser\Node\Name;
-use PhpParser\Node\Stmt;
 
 class ClassGuess
 {

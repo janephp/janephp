@@ -3,10 +3,8 @@
 namespace Jane\JsonSchema\Guesser\Guess;
 
 use Jane\JsonSchema\Generator\Context\Context;
-
 use PhpParser\Node\Arg;
 use PhpParser\Node\Name;
-use PhpParser\Node\Stmt;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Scalar;
 
@@ -18,7 +16,7 @@ class ObjectType extends Type
 
     private $discriminants;
 
-    public function __construct($object, $className, $namespace, $discriminants = array())
+    public function __construct($object, $className, $namespace, $discriminants = [])
     {
         parent::__construct($object, 'object');
 
@@ -28,7 +26,7 @@ class ObjectType extends Type
     }
 
     /**
-     * (@inheritDoc}
+     * (@inheritDoc}.
      */
     protected function createDenormalizationValueStatement(Context $context, Expr $input): Expr
     {
@@ -36,24 +34,24 @@ class ObjectType extends Type
             new Arg($input),
             new Arg(new Scalar\String_($this->getFqdn(false))),
             new Arg(new Scalar\String_('json')),
-            new Arg(new Expr\Variable('context'))
+            new Arg(new Expr\Variable('context')),
         ]);
     }
 
     /**
-     * (@inheritDoc}
+     * (@inheritDoc}.
      */
     protected function createNormalizationValueStatement(Context $context, Expr $input): Expr
     {
         return new Expr\MethodCall(new Expr\PropertyFetch(new Expr\Variable('this'), 'normalizer'), 'normalize', [
             new Arg($input),
             new Arg(new Scalar\String_('json')),
-            new Arg(new Expr\Variable('context'))
+            new Arg(new Expr\Variable('context')),
         ]);
     }
 
     /**
-     * (@inheritDoc}
+     * (@inheritDoc}.
      */
     public function createConditionStatement(Expr $input): Expr
     {
@@ -63,15 +61,15 @@ class ObjectType extends Type
             $issetCondition = new Expr\FuncCall(
                 new Name('isset'),
                 [
-                    new Arg(new Expr\PropertyFetch($input, sprintf("{'%s'}", $key)))
+                    new Arg(new Expr\PropertyFetch($input, sprintf("{'%s'}", $key))),
                 ]
             );
 
             $logicalOr = null;
 
-            if ($values !== null) {
+            if (null !== $values) {
                 foreach ($values as $value) {
-                    if ($logicalOr === null) {
+                    if (null === $logicalOr) {
                         $logicalOr = new Expr\BinaryOp\Equal(
                             new Expr\PropertyFetch($input, sprintf("{'%s'}", $key)),
                             new Scalar\String_($value)
@@ -88,7 +86,7 @@ class ObjectType extends Type
                 }
             }
 
-            if ($logicalOr !== null) {
+            if (null !== $logicalOr) {
                 $conditionStatement = new Expr\BinaryOp\LogicalAnd($conditionStatement, new Expr\BinaryOp\LogicalAnd($issetCondition, $logicalOr));
             } else {
                 $conditionStatement = new Expr\BinaryOp\LogicalAnd($conditionStatement, $issetCondition);
@@ -99,7 +97,7 @@ class ObjectType extends Type
     }
 
     /**
-     * (@inheritDoc}
+     * (@inheritDoc}.
      */
     public function getTypeHint($currentNamespace)
     {
@@ -111,7 +109,7 @@ class ObjectType extends Type
     }
 
     /**
-     * (@inheritDoc}
+     * (@inheritDoc}.
      */
     public function getDocTypeHint($namespace)
     {
@@ -121,9 +119,9 @@ class ObjectType extends Type
     private function getFqdn($withRoot = true)
     {
         if ($withRoot) {
-            return '\\' . $this->namespace . '\\Model\\'. $this->className;
+            return '\\' . $this->namespace . '\\Model\\' . $this->className;
         }
 
-        return $this->namespace . '\\Model\\'. $this->className;
+        return $this->namespace . '\\Model\\' . $this->className;
     }
 }

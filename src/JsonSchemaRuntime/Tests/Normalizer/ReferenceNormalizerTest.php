@@ -39,7 +39,7 @@ class ReferenceNormalizerTest extends TestCase
             ['#pointer'],
             ['#'],
             ['https://my-site/schema#pointer'],
-            ['my-site.com/teest']
+            ['my-site.com/teest'],
         ];
     }
 }

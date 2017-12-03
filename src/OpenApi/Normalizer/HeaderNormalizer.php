@@ -26,7 +26,7 @@ class HeaderNormalizer implements DenormalizerInterface, NormalizerInterface, De
 
     public function supportsDenormalization($data, $type, $format = null)
     {
-        if ($type !== 'Jane\\OpenApi\\Model\\Header') {
+        if ('Jane\\OpenApi\\Model\\Header' !== $type) {
             return false;
         }
 

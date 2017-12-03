@@ -12,6 +12,6 @@ class DateTimeGuesser extends BaseDateTimeGuesser
      */
     public function supportObject($object)
     {
-        return ($object instanceof Schema) && $object->getType() === 'string' && $object->getFormat() === 'date-time';
+        return ($object instanceof Schema) && 'string' === $object->getType() && 'date-time' === $object->getFormat();
     }
 }

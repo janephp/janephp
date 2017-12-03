@@ -1,5 +1,0 @@
-preset: symfony
-
-finder:
-    exclude:
-        - "tests/fixtures"

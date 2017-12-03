@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Jane\JsonSchemaRuntime;
 
-use League\Uri\Formatter;
 use League\Uri\Schemes\Generic\AbstractUri;
 use League\Uri\Schemes\Http;
 use League\Uri\UriParser;
@@ -12,7 +11,7 @@ use Rs\Json\Pointer;
 use Symfony\Component\Yaml\Yaml;
 
 /**
- * Deal with a Json Reference
+ * Deal with a Json Reference.
  */
 class Reference
 {
@@ -53,7 +52,7 @@ class Reference
     }
 
     /**
-     * Resolve a JSON Reference
+     * Resolve a JSON Reference.
      *
      * @param callable $deserializeCallback
      *
@@ -65,7 +64,7 @@ class Reference
             $deserializeCallback = function ($data) { return $data; };
         }
 
-        if ($this->resolved === null) {
+        if (null === $this->resolved) {
             $this->resolved = $this->doResolve();
         }
 
@@ -73,7 +72,7 @@ class Reference
     }
 
     /**
-     * Resolve a JSON Reference for a Schema
+     * Resolve a JSON Reference for a Schema.
      *
      * @return mixed Return the json value referenced
      */
@@ -82,14 +81,14 @@ class Reference
         // @TODO Better handling of getting the content of a file
         $json = file_get_contents((string) $this->mergedUri->withFragment(''));
 
-        if (!json_decode($json) || json_last_error() !== JSON_ERROR_NONE) {
+        if (!json_decode($json) || JSON_ERROR_NONE !== json_last_error()) {
             $decoded = Yaml::parse($json, Yaml::PARSE_OBJECT | Yaml::PARSE_OBJECT_FOR_MAP | Yaml::PARSE_DATETIME | Yaml::PARSE_EXCEPTION_ON_INVALID_TYPE);
             $json = json_encode($decoded);
         }
 
         $pointer = new Pointer($json);
 
-        if ($this->mergedUri->getFragment() === '') {
+        if ('' === $this->mergedUri->getFragment()) {
             return json_decode($json);
         }
 
@@ -97,13 +96,13 @@ class Reference
     }
 
     /**
-     * Return true if reference and origin are in the same document
+     * Return true if reference and origin are in the same document.
      *
      * @return bool
      */
     public function isInCurrentDocument()
     {
-        return (
+        return
             $this->mergedUri->getScheme() === $this->originUri->getScheme()
             &&
             $this->mergedUri->getHost() === $this->originUri->getHost()
@@ -113,7 +112,7 @@ class Reference
             $this->mergedUri->getPath() === $this->originUri->getPath()
             &&
             $this->mergedUri->getQuery() === $this->originUri->getQuery()
-        );
+        ;
     }
 
     /**
@@ -141,7 +140,7 @@ class Reference
     }
 
     /**
-     * Join path like unix path join :
+     * Join path like unix path join :.
      *
      *   a/b + c => a/b/c
      *   a/b + /c => /c
@@ -155,22 +154,22 @@ class Reference
     {
         $resultPath = null;
 
-        foreach($paths as $path) {
-            if ($resultPath === null || (!empty($path) && $path[0] === '/')) {
+        foreach ($paths as $path) {
+            if (null === $resultPath || (!empty($path) && '/' === $path[0])) {
                 $resultPath = $path;
             } else {
                 $resultPath = $resultPath . '/' . $path;
             }
         }
 
-        $resultPath = preg_replace('~/{2,}~','/', $resultPath);
+        $resultPath = preg_replace('~/{2,}~', '/', $resultPath);
 
-        if ($resultPath === '/') {
+        if ('/' === $resultPath) {
             return '/';
         }
 
         $resultPathParts = [];
-        foreach(explode('/',rtrim($resultPath,'/')) as $part) {
+        foreach (explode('/', rtrim($resultPath, '/')) as $part) {
             if ('.' === $part) {
                 continue;
             }
@@ -183,6 +182,6 @@ class Reference
             $resultPathParts[] = $part;
         }
 
-        return implode('/',$resultPathParts);
+        return implode('/', $resultPathParts);
     }
 }

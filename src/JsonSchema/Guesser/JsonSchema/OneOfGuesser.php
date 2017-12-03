@@ -9,22 +9,21 @@ use Jane\JsonSchema\Guesser\GuesserInterface;
 use Jane\JsonSchema\Guesser\TypeGuesserInterface;
 use Jane\JsonSchema\Model\JsonSchema;
 use Jane\JsonSchema\Registry;
-use Jane\JsonSchema\Schema;
 
 class OneOfGuesser implements ChainGuesserAwareInterface, TypeGuesserInterface, GuesserInterface
 {
     use ChainGuesserAwareTrait;
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function supportObject($object)
     {
-        return (($object instanceof JsonSchema) && $object->getType() !== "object" && is_array($object->getOneOf()) && count($object->getOneOf()) > 0);
+        return ($object instanceof JsonSchema) && 'object' !== $object->getType() && is_array($object->getOneOf()) && count($object->getOneOf()) > 0;
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function guessType($object, $name, $reference, Registry $registry)
     {

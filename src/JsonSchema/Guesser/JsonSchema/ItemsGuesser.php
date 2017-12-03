@@ -2,7 +2,6 @@
 
 namespace Jane\JsonSchema\Guesser\JsonSchema;
 
-use Jane\JsonSchema\Generator\Context\Context;
 use Jane\JsonSchema\Guesser\ChainGuesserAwareInterface;
 use Jane\JsonSchema\Guesser\ChainGuesserAwareTrait;
 use Jane\JsonSchema\Guesser\ClassGuesserInterface;
@@ -15,7 +14,7 @@ class ItemsGuesser implements GuesserInterface, ClassGuesserInterface, ChainGues
     use ChainGuesserAwareTrait;
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function guessClass($object, $name, $reference, Registry $registry)
     {
@@ -29,11 +28,11 @@ class ItemsGuesser implements GuesserInterface, ClassGuesserInterface, ChainGues
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function supportObject($object)
     {
-        return (
+        return
             ($object instanceof JsonSchema)
             && (
                 $object->getItems() instanceof JsonSchema
@@ -44,6 +43,6 @@ class ItemsGuesser implements GuesserInterface, ClassGuesserInterface, ChainGues
                     count($object->getItems()) > 0
                 )
             )
-        );
+        ;
     }
 }

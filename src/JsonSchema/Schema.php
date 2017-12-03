@@ -29,6 +29,7 @@ class Schema
 
     /**
      * Schema constructor.
+     *
      * @param string $origin
      * @param string $namespace
      * @param string $directory
@@ -129,14 +130,14 @@ class Schema
 
     private function fixPath($path)
     {
-        $path = preg_replace('#([^:]){1}/{2,}#','$1/', $path);
+        $path = preg_replace('#([^:]){1}/{2,}#', '$1/', $path);
 
-        if ($path === '/') {
+        if ('/' === $path) {
             return '/';
         }
 
         $pathParts = [];
-        foreach(explode('/',rtrim($path,'/')) as $part) {
+        foreach (explode('/', rtrim($path, '/')) as $part) {
             if ('.' === $part) {
                 continue;
             }
@@ -149,6 +150,6 @@ class Schema
             $pathParts[] = $part;
         }
 
-        return implode('/',$pathParts);
+        return implode('/', $pathParts);
     }
 }

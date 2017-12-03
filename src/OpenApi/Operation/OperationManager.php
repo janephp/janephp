@@ -11,7 +11,7 @@ class OperationManager
     public function buildOperationCollection(OpenApi $openApi, $reference)
     {
         $operationCollection = new OperationCollection();
-        $host = $openApi->getHost() === null ? 'localhost' : $openApi->getHost();
+        $host = null === $openApi->getHost() ? 'localhost' : $openApi->getHost();
 
         if ($openApi->getPaths()) {
             foreach ($openApi->getPaths() as $path => $pathItem) {

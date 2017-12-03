@@ -26,7 +26,7 @@ class TagNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
 
     public function supportsDenormalization($data, $type, $format = null)
     {
-        if ($type !== 'Jane\\OpenApi\\Model\\Tag') {
+        if ('Jane\\OpenApi\\Model\\Tag' !== $type) {
             return false;
         }
 

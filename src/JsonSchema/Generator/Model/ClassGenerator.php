@@ -10,14 +10,14 @@ use PhpParser\Node\Stmt;
 trait ClassGenerator
 {
     /**
-     * The naming service
+     * The naming service.
      *
      * @return Naming
      */
     abstract protected function getNaming();
 
     /**
-     * Return a model class
+     * Return a model class.
      *
      * @param string $name
      * @param Node[] $properties
@@ -30,7 +30,7 @@ trait ClassGenerator
         return new Stmt\Class_(
             new Name($this->getNaming()->getClassName($name)),
             [
-                'stmts' => array_merge($properties, $methods)
+                'stmts' => array_merge($properties, $methods),
             ]
         );
     }

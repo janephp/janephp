@@ -7,7 +7,7 @@ use Jane\JsonSchema\Model\JsonSchema;
 class JsonSchemaMerger
 {
     /**
-     * Create a new JsonSchema based on two merged schema
+     * Create a new JsonSchema based on two merged schema.
      *
      * @param JsonSchema $left
      * @param JsonSchema $right
@@ -20,11 +20,11 @@ class JsonSchemaMerger
     {
         $merged = clone $right;
 
-        if ($left->getType() !== null && $right->getType() !== null && $left->getType() !== $right->getType()) {
-            throw new \RuntimeException("Both types are defined and different, merge is not possible");
+        if (null !== $left->getType() && null !== $right->getType() && $left->getType() !== $right->getType()) {
+            throw new \RuntimeException('Both types are defined and different, merge is not possible');
         }
 
-        if ($right->getType() === null && $left->getType() !== null) {
+        if (null === $right->getType() && null !== $left->getType()) {
             $merged->setType($left->getType());
         }
 

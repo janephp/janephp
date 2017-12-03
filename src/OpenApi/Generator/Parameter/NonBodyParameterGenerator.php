@@ -24,7 +24,7 @@ abstract class NonBodyParameterGenerator extends ParameterGenerator
         $name = Inflector::camelize($parameter->getName());
         $methodParameter = new Node\Param($name);
 
-        if (!$parameter->getRequired() || $parameter->getDefault() !== null) {
+        if (!$parameter->getRequired() || null !== $parameter->getDefault()) {
             $methodParameter->default = $this->getDefaultAsExpr($parameter);
         }
 
@@ -40,14 +40,14 @@ abstract class NonBodyParameterGenerator extends ParameterGenerator
     {
         $statements = [];
 
-        if (!$parameter->getRequired() || $parameter->getDefault() !== null) {
+        if (!$parameter->getRequired() || null !== $parameter->getDefault()) {
             $statements[] = new Expr\MethodCall($queryParamVariable, 'setDefault', [
                 new Node\Arg(new Scalar\String_($parameter->getName())),
                 new Node\Arg($this->getDefaultAsExpr($parameter)),
             ]);
         }
 
-        if ($parameter->getRequired() && $parameter->getDefault() === null) {
+        if ($parameter->getRequired() && null === $parameter->getDefault()) {
             $statements[] = new Expr\MethodCall($queryParamVariable, 'setRequired', [new Node\Arg(new Scalar\String_($parameter->getName()))]);
         }
 
@@ -63,7 +63,7 @@ abstract class NonBodyParameterGenerator extends ParameterGenerator
      */
     protected function getDefaultAsExpr($parameter)
     {
-        return $this->parser->parse('<?php '.var_export($parameter->getDefault(), true).';')[0];
+        return $this->parser->parse('<?php ' . var_export($parameter->getDefault(), true) . ';')[0];
     }
 
     /**

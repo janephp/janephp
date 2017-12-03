@@ -10,7 +10,7 @@ trait ChainGuesserAwareTrait
     protected $chainGuesser;
 
     /**
-     * Set the chain guesser
+     * Set the chain guesser.
      *
      * @param ChainGuesser $chainGuesser
      */

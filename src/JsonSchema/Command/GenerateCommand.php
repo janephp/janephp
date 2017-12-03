@@ -41,7 +41,7 @@ class GenerateCommand extends Command
 
         if (!$input->hasOption('config-file') && file_exists('.jane')) {
             $configFile = '.jane';
-        } elseif($input->hasOption('config-file') && null !== $input->getOption('config-file')) {
+        } elseif ($input->hasOption('config-file') && null !== $input->getOption('config-file')) {
             $configFile = $input->getOption('config-file');
         }
 
@@ -83,7 +83,7 @@ class GenerateCommand extends Command
             }
         }
 
-        $options  = $this->resolveConfiguration($options);
+        $options = $this->resolveConfiguration($options);
         $registry = new Registry();
 
         if (array_key_exists('json-schema-file', $options)) {
@@ -110,7 +110,7 @@ class GenerateCommand extends Command
         $files = $jane->generate($registry);
 
         foreach ($files as $file) {
-            $output->writeln(sprintf("Generated %s", $file));
+            $output->writeln(sprintf('Generated %s', $file));
         }
     }
 
@@ -131,7 +131,7 @@ class GenerateCommand extends Command
             ]);
         } else {
             $optionsResolver->setRequired([
-                'mapping'
+                'mapping',
             ]);
         }
 

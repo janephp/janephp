@@ -26,7 +26,7 @@ class ApiKeySecurityNormalizer implements DenormalizerInterface, NormalizerInter
 
     public function supportsDenormalization($data, $type, $format = null)
     {
-        if ($type !== 'Jane\\OpenApi\\Model\\ApiKeySecurity') {
+        if ('Jane\\OpenApi\\Model\\ApiKeySecurity' !== $type) {
             return false;
         }
 

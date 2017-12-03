@@ -2,7 +2,6 @@
 
 namespace Jane\JsonSchema\Guesser;
 
-use Jane\JsonSchema\Reference\Resolver;
 use Symfony\Component\Serializer\SerializerInterface;
 
 class ChainGuesserFactory

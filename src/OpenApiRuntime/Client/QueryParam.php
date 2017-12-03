@@ -9,12 +9,12 @@ class QueryParam extends OptionsResolver
     /**
      * @var array
      */
-    protected $formParameters = array();
+    protected $formParameters = [];
 
     /**
      * @var array
      */
-    protected $headerParameters = array();
+    protected $headerParameters = [];
 
     /**
      * Define a form parameter option.

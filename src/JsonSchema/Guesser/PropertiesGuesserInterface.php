@@ -8,7 +8,7 @@ use Jane\JsonSchema\Registry;
 interface PropertiesGuesserInterface
 {
     /**
-     * Return all properties guessed
+     * Return all properties guessed.
      *
      * @param mixed    $object
      * @param string   $name

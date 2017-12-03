@@ -12,14 +12,7 @@
     ],
     "autoload": {
         "psr-4": {
-            "Joli\\Jane\\OpenApi\\Model\\": "generated/Model/",
-            "Joli\\Jane\\OpenApi\\Normalizer\\": "generated/Normalizer/",
-            "Joli\\Jane\\OpenApi\\": "src/"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "Joli\\Jane\\OpenApi\\Tests\\": "tests/"
+            "Jane\\OpenApi": ""
         }
     },
     "bin": [
@@ -27,21 +20,22 @@
     ],
     "require": {
         "php": ">=5.6",
-        "jane/jane": "^3.1.1",
-        "jane/runtime": "^2.1",
-        "jane/openapi-runtime": "^2.0",
+        "jane-php/json-schema": "^4.0",
+        "jane-php/json-schema-runtime": "^4.0",
+        "jane-php/open-api-runtime": "^4.0",
         "nikic/php-parser": "^3.0",
-        "symfony/yaml": "^3.1",
+        "symfony/yaml": "^3.1|^4.0",
         "fitbug/symfony-yaml-serializer-encoder-decoder": "^0.1.1"
     },
     "require-dev": {
         "phpunit/phpunit": "^4.7",
-        "friendsofphp/php-cs-fixer": "^2.0",
-        "sllh/php-cs-fixer-styleci-bridge": "^2.1",
-        "php-jsonpointer/php-jsonpointer": "^3.0.2"
+        "friendsofphp/php-cs-fixer": "^2.7.3"
     },
     "suggest": {
         "friendsofphp/php-cs-fixer": "To have a nice formatting of the generated files"
+    },
+    "conflict": {
+        "friendsofphp/php-cs-fixer": "<2.7.3|>=3.0"
     },
     "config": {
         "process-timeout": 1800
@@ -52,7 +46,7 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "3-dev"
+            "dev-master": "4-dev"
         }
     },
     "minimum-stability": "dev",

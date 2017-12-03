@@ -40,7 +40,7 @@ class GenerateCommand extends Command
 
         if (!$input->hasOption('config-file') && file_exists('.jane-openapi')) {
             $configFile = '.jane-openapi';
-        } elseif($input->hasOption('config-file') && null !== $input->getOption('config-file')) {
+        } elseif ($input->hasOption('config-file') && null !== $input->getOption('config-file')) {
             $configFile = $input->getOption('config-file');
         }
 
@@ -90,11 +90,11 @@ class GenerateCommand extends Command
         }
 
         $janeOpenApi = JaneOpenApi::build($options);
-        $files       = $janeOpenApi->generate($registry);
+        $files = $janeOpenApi->generate($registry);
         $janeOpenApi->printFiles($files, $registry);
 
         foreach ($files as $file) {
-            $output->writeln(sprintf("Generate %s", $file->getFilename()));
+            $output->writeln(sprintf('Generate %s', $file->getFilename()));
         }
     }
 
@@ -114,7 +114,7 @@ class GenerateCommand extends Command
             ]);
         } else {
             $optionsResolver->setRequired([
-                'mapping'
+                'mapping',
             ]);
         }
 

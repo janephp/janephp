@@ -26,7 +26,7 @@ class ContactNormalizer implements DenormalizerInterface, NormalizerInterface, D
 
     public function supportsDenormalization($data, $type, $format = null)
     {
-        if ($type !== 'Jane\\OpenApi\\Model\\Contact') {
+        if ('Jane\\OpenApi\\Model\\Contact' !== $type) {
             return false;
         }
 

@@ -6,13 +6,13 @@ use Jane\OpenApi\Model\Operation as OpenApiOperation;
 
 class Operation
 {
-    const DELETE  = 'DELETE';
-    const GET     = 'GET';
-    const POST    = 'POST';
-    const PUT     = 'PUT';
-    const PATCH   = 'PATCH';
+    const DELETE = 'DELETE';
+    const GET = 'GET';
+    const POST = 'POST';
+    const PUT = 'PUT';
+    const PATCH = 'PATCH';
     const OPTIONS = 'OPTIONS';
-    const HEAD    = 'HEAD';
+    const HEAD = 'HEAD';
 
     /**
      * @var \Jane\OpenApi\Model\Operation
@@ -34,12 +34,12 @@ class Operation
      */
     private $reference;
 
-    public function __construct(OpenApiOperation $operation, $path, $method, $reference, $basePath = "", $host = 'localhost')
+    public function __construct(OpenApiOperation $operation, $path, $method, $reference, $basePath = '', $host = 'localhost')
     {
         $this->operation = $operation;
-        $this->path      = preg_replace('#^/+#', '/', $basePath . $path);
-        $this->method    = $method;
-        $this->host      = $host;
+        $this->path = preg_replace('#^/+#', '/', $basePath . $path);
+        $this->method = $method;
+        $this->host = $host;
         $this->reference = $reference;
     }
 

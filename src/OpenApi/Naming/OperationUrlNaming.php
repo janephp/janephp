@@ -20,7 +20,7 @@ class OperationUrlNaming implements OperationNamingInterface
         if ($responses instanceof \ArrayObject && isset($responses[200])) {
             $response = $responses[200];
 
-            if ($response instanceof Response && $response->getSchema() instanceof Schema && $response->getSchema()->getType() === 'array') {
+            if ($response instanceof Response && $response->getSchema() instanceof Schema && 'array' === $response->getSchema()->getType()) {
                 $shouldSingularize = false;
             }
         }
@@ -44,7 +44,7 @@ class OperationUrlNaming implements OperationNamingInterface
                         function ($match) {
                             return ('.' === $match[1] ? '_' : '') . strtoupper($match[2]);
                         },
-                        $parameterMatches['parameter'][ $parameterIndex ]
+                        $parameterMatches['parameter'][$parameterIndex]
                     );
 
                     $methodNameParts[] = 'By' . ucfirst($withoutSnakes);

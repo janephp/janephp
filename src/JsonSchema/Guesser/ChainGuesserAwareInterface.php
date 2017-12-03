@@ -5,7 +5,7 @@ namespace Jane\JsonSchema\Guesser;
 interface ChainGuesserAwareInterface
 {
     /**
-     * Set the chain guesser
+     * Set the chain guesser.
      *
      * @param ChainGuesser $chainGuesser
      *

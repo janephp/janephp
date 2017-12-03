@@ -7,7 +7,7 @@ use Jane\JsonSchema\Registry;
 interface ClassGuesserInterface
 {
     /**
-     * Guess model
+     * Guess model.
      *
      * This guesser should create a Model and the associated File
      * The file must be inject into the context

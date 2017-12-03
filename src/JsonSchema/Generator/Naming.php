@@ -29,11 +29,11 @@ class Naming
         )\b
     /ix';
 
-
     /**
-     * Get a property name
+     * Get a property name.
      *
      * @param $name
+     *
      * @return string
      */
     public function getPropertyName($name)
@@ -44,23 +44,25 @@ class Naming
     }
 
     /**
-     * Get a method name given a prefix
+     * Get a method name given a prefix.
      *
      * @param $prefix
      * @param $name
+     *
      * @return string
      */
     public function getPrefixedMethodName($prefix, $name)
     {
         $name = $this->replaceDollar($name);
 
-        return sprintf("%s%s", $prefix, Inflector::classify($name));
+        return sprintf('%s%s', $prefix, Inflector::classify($name));
     }
 
     /**
-     * Get a class name
+     * Get a class name.
      *
      * @param $name
+     *
      * @return string
      */
     public function getClassName($name)
@@ -72,7 +74,7 @@ class Naming
         $name = Inflector::classify($name);
 
         if (preg_match(self::BAD_CLASS_NAME_REGEX, $name)) {
-            $name = '_'.$name;
+            $name = '_' . $name;
         }
 
         return $name;
@@ -80,13 +82,14 @@ class Naming
 
     /**
      * @param $name
+     *
      * @return mixed
      */
     protected function replaceDollar($name)
     {
         if (preg_match('/\$/', $name)) {
             $name = preg_replace_callback('/\$([a-z])/', function ($matches) {
-                return 'dollar'.ucfirst($matches[1]);
+                return 'dollar' . ucfirst($matches[1]);
             }, $name);
         }
 

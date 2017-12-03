@@ -63,7 +63,7 @@ trait DenormalizerGenerator
     {
         $context->refreshScope();
         $objectVariable = new Expr\Variable('object');
-        $assignStatement = new Expr\Assign($objectVariable, new Expr\New_(new Name('\\'.$modelFqdn)));
+        $assignStatement = new Expr\Assign($objectVariable, new Expr\New_(new Name('\\' . $modelFqdn)));
         $statements = [$assignStatement];
 
         if ($this->useReference) {
@@ -87,8 +87,8 @@ trait DenormalizerGenerator
             new Expr\BooleanNot(new Expr\FuncCall(new Name('is_object'), [new Arg(new Expr\Variable('data'))])),
             [
                 'stmts' => [
-                    new Stmt\Throw_(new Expr\New_(new Name('InvalidArgumentException')))
-                ]
+                    new Stmt\Throw_(new Expr\New_(new Name('InvalidArgumentException'))),
+                ],
             ]
         ));
 

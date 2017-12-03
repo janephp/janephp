@@ -26,7 +26,7 @@ class LicenseNormalizer implements DenormalizerInterface, NormalizerInterface, D
 
     public function supportsDenormalization($data, $type, $format = null)
     {
-        if ($type !== 'Jane\\OpenApi\\Model\\License') {
+        if ('Jane\\OpenApi\\Model\\License' !== $type) {
             return false;
         }
 

@@ -40,7 +40,7 @@ class ObjectGuesser implements GuesserInterface, PropertiesGuesserInterface, Typ
      */
     public function supportObject($object)
     {
-        return ($object instanceof JsonSchema) && $object->getType() === 'object' && $object->getProperties() !== null;
+        return ($object instanceof JsonSchema) && 'object' === $object->getType() && null !== $object->getProperties();
     }
 
     /**
@@ -72,7 +72,7 @@ class ObjectGuesser implements GuesserInterface, PropertiesGuesserInterface, Typ
             }
 
             $type = $propertyObj->getType();
-            $nullable = $type == 'null' || (is_array($type) && in_array('null', $type));
+            $nullable = 'null' == $type || (is_array($type) && in_array('null', $type));
 
             $properties[] = new Property($property, $key, $reference . '/properties/' . $key, $nullable);
         }
@@ -97,7 +97,7 @@ class ObjectGuesser implements GuesserInterface, PropertiesGuesserInterface, Typ
                 $property = $this->resolve($property, $this->getSchemaClass());
             }
 
-            if ($property->getEnum() !== null) {
+            if (null !== $property->getEnum()) {
                 $isSimple = true;
                 foreach ($property->getEnum() as $value) {
                     if (is_array($value) || is_object($value)) {

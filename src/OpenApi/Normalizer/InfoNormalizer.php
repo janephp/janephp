@@ -26,7 +26,7 @@ class InfoNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
 
     public function supportsDenormalization($data, $type, $format = null)
     {
-        if ($type !== 'Jane\\OpenApi\\Model\\Info') {
+        if ('Jane\\OpenApi\\Model\\Info' !== $type) {
             return false;
         }
 

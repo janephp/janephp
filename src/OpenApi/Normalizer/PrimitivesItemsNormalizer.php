@@ -26,7 +26,7 @@ class PrimitivesItemsNormalizer implements DenormalizerInterface, NormalizerInte
 
     public function supportsDenormalization($data, $type, $format = null)
     {
-        if ($type !== 'Jane\\OpenApi\\Model\\PrimitivesItems') {
+        if ('Jane\\OpenApi\\Model\\PrimitivesItems' !== $type) {
             return false;
         }
 

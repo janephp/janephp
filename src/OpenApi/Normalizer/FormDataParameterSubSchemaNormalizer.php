@@ -26,7 +26,7 @@ class FormDataParameterSubSchemaNormalizer implements DenormalizerInterface, Nor
 
     public function supportsDenormalization($data, $type, $format = null)
     {
-        if ($type !== 'Jane\\OpenApi\\Model\\FormDataParameterSubSchema') {
+        if ('Jane\\OpenApi\\Model\\FormDataParameterSubSchema' !== $type) {
             return false;
         }
 

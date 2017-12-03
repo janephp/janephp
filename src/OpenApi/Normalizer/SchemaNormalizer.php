@@ -26,7 +26,7 @@ class SchemaNormalizer implements DenormalizerInterface, NormalizerInterface, De
 
     public function supportsDenormalization($data, $type, $format = null)
     {
-        if ($type !== 'Jane\\OpenApi\\Model\\Schema') {
+        if ('Jane\\OpenApi\\Model\\Schema' !== $type) {
             return false;
         }
 
@@ -273,7 +273,7 @@ class SchemaNormalizer implements DenormalizerInterface, NormalizerInterface, De
         }
         if (null !== $object->getType()) {
             $value_3 = $object->getType();
-            if (!is_null($object->getType())) {
+            if (null !== $object->getType()) {
                 $value_3 = $object->getType();
             }
             if (is_array($object->getType())) {

@@ -8,7 +8,6 @@ use Jane\JsonSchema\Guesser\ClassGuesserInterface;
 use Jane\JsonSchema\Guesser\Guess\MultipleType;
 use Jane\JsonSchema\Guesser\GuesserInterface;
 use Jane\JsonSchema\Guesser\TypeGuesserInterface;
-
 use Jane\JsonSchema\Model\JsonSchema;
 use Jane\JsonSchema\Registry;
 
@@ -17,21 +16,21 @@ class AnyOfGuesser implements GuesserInterface, ClassGuesserInterface, TypeGuess
     use ChainGuesserAwareTrait;
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function guessClass($object, $name, $reference, Registry $registry)
     {
         foreach ($object->getAnyOf() as $anyOfKey => $anyOfObject) {
-            $this->chainGuesser->guessClass($anyOfObject, $name.'AnyOf', $reference . '/anyOf/' . $anyOfKey, $registry);
+            $this->chainGuesser->guessClass($anyOfObject, $name . 'AnyOf', $reference . '/anyOf/' . $anyOfKey, $registry);
         }
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function guessType($object, $name, $reference, Registry $registry)
     {
-        if (count($object->getAnyOf()) == 1) {
+        if (1 == count($object->getAnyOf())) {
             return $this->chainGuesser->guessType($object->getAnyOf()[0], $name, $reference . '/anyOf/0', $registry);
         }
 
@@ -45,10 +44,10 @@ class AnyOfGuesser implements GuesserInterface, ClassGuesserInterface, TypeGuess
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function supportObject($object)
     {
-        return (($object instanceof JsonSchema) && is_array($object->getAnyOf()) && count($object->getAnyOf()) > 0);
+        return ($object instanceof JsonSchema) && is_array($object->getAnyOf()) && count($object->getAnyOf()) > 0;
     }
 }

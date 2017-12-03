@@ -9,8 +9,8 @@ use Symfony\Component\Yaml\Yaml;
 
 class SchemaParser
 {
-    const OPEN_API_MODEL    = "Jane\\OpenApi\\Model\\OpenApi";
-    const EXCEPTION_MESSAGE = "Could not parse \"%s\", is it a valid specification?";
+    const OPEN_API_MODEL = 'Jane\\OpenApi\\Model\\OpenApi';
+    const EXCEPTION_MESSAGE = 'Could not parse "%s", is it a valid specification?';
     const CONTENT_TYPE_JSON = 'json';
     const CONTENT_TYPE_YAML = 'yaml';
     /**
@@ -28,9 +28,8 @@ class SchemaParser
         $this->serializer = $serializer;
     }
 
-
     /**
-     * Parse an file into a OpenAPI Schema model
+     * Parse an file into a OpenAPI Schema model.
      *
      * @param string $openApiSpec
      *
@@ -41,10 +40,10 @@ class SchemaParser
     public function parseSchema($openApiSpec)
     {
         $openApiSpecContents = file_get_contents($openApiSpec);
-        $schemaClass         = self::OPEN_API_MODEL;
-        $schema              = null;
-        $jsonException       = null;
-        $yamlException       = null;
+        $schemaClass = self::OPEN_API_MODEL;
+        $schema = null;
+        $jsonException = null;
+        $yamlException = null;
 
         try {
             return $this->serializer->deserialize(
@@ -52,7 +51,7 @@ class SchemaParser
                 $schemaClass,
                 self::CONTENT_TYPE_JSON,
                 [
-                    'document-origin' => $openApiSpec
+                    'document-origin' => $openApiSpec,
                 ]
             );
         } catch (\Exception $exception) {
@@ -67,7 +66,7 @@ class SchemaParser
             $schemaClass,
             self::CONTENT_TYPE_JSON,
             [
-                'document-origin' => $openApiSpec
+                'document-origin' => $openApiSpec,
             ]
         );
     }

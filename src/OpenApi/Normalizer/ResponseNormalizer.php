@@ -26,7 +26,7 @@ class ResponseNormalizer implements DenormalizerInterface, NormalizerInterface, 
 
     public function supportsDenormalization($data, $type, $format = null)
     {
-        if ($type !== 'Jane\\OpenApi\\Model\\Response') {
+        if ('Jane\\OpenApi\\Model\\Response' !== $type) {
             return false;
         }
 
@@ -59,7 +59,7 @@ class ResponseNormalizer implements DenormalizerInterface, NormalizerInterface, 
             if (is_object($data->{'schema'})) {
                 $value = $this->denormalizer->denormalize($data->{'schema'}, 'Jane\\OpenApi\\Model\\Schema', 'json', $context);
             }
-            if (is_object($data->{'schema'}) and (isset($data->{'schema'}->{'type'}) and $data->{'schema'}->{'type'} == 'file')) {
+            if (is_object($data->{'schema'}) and (isset($data->{'schema'}->{'type'}) and 'file' == $data->{'schema'}->{'type'})) {
                 $value = $this->denormalizer->denormalize($data->{'schema'}, 'Jane\\OpenApi\\Model\\FileSchema', 'json', $context);
             }
             $object->setSchema($value);

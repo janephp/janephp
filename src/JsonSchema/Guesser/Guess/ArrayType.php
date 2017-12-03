@@ -3,7 +3,6 @@
 namespace Jane\JsonSchema\Guesser\Guess;
 
 use Jane\JsonSchema\Generator\Context\Context;
-use PhpParser\Node\Name;
 use PhpParser\Node\Stmt;
 use PhpParser\Node\Expr;
 
@@ -19,7 +18,7 @@ class ArrayType extends Type
     }
 
     /**
-     * (@inheritDoc}
+     * (@inheritDoc}.
      */
     public function getDocTypeHint($namespace)
     {
@@ -27,66 +26,66 @@ class ArrayType extends Type
             $typesString = [];
 
             foreach ($this->itemType->getTypes() as $type) {
-                $typesString[] = $type->getDocTypeHint($namespace).'[]';
+                $typesString[] = $type->getDocTypeHint($namespace) . '[]';
             }
 
             return implode('|', $typesString);
         }
 
-        return $this->itemType->getDocTypeHint($namespace).'[]';
+        return $this->itemType->getDocTypeHint($namespace) . '[]';
     }
 
     /**
-     * (@inheritDoc}
+     * (@inheritDoc}.
      */
     public function createDenormalizationStatement(Context $context, Expr $input): array
     {
-        $valuesVar     = new Expr\Variable($context->getUniqueVariableName('values'));
-        $statements    = [
+        $valuesVar = new Expr\Variable($context->getUniqueVariableName('values'));
+        $statements = [
             // $values = [];
             new Expr\Assign($valuesVar, $this->createArrayValueStatement()),
         ];
 
-        $loopValueVar   = new Expr\Variable($context->getUniqueVariableName('value'));
-        $loopKeyVar     = $this->createLoopKeyStatement($context);
+        $loopValueVar = new Expr\Variable($context->getUniqueVariableName('value'));
+        $loopKeyVar = $this->createLoopKeyStatement($context);
 
         list($subStatements, $outputExpr) = $this->itemType->createDenormalizationStatement($context, $loopValueVar);
 
-        $loopStatements   = array_merge($subStatements, [
-            new Expr\Assign($this->createLoopOutputAssignement($valuesVar, $loopKeyVar), $outputExpr)
+        $loopStatements = array_merge($subStatements, [
+            new Expr\Assign($this->createLoopOutputAssignement($valuesVar, $loopKeyVar), $outputExpr),
         ]);
 
-        $statements[]     = new Stmt\Foreach_($input, $loopValueVar, [
+        $statements[] = new Stmt\Foreach_($input, $loopValueVar, [
             'keyVar' => $loopKeyVar,
-            'stmts'  => $loopStatements
+            'stmts' => $loopStatements,
         ]);
 
         return [$statements, $valuesVar];
     }
 
     /**
-     * (@inheritDoc}
+     * (@inheritDoc}.
      */
     public function createNormalizationStatement(Context $context, Expr $input): array
     {
-        $valuesVar     = new Expr\Variable($context->getUniqueVariableName('values'));
-        $statements    = [
+        $valuesVar = new Expr\Variable($context->getUniqueVariableName('values'));
+        $statements = [
             // $values = [];
             new Expr\Assign($valuesVar, $this->createNormalizationArrayValueStatement()),
         ];
 
-        $loopValueVar   = new Expr\Variable($context->getUniqueVariableName('value'));
-        $loopKeyVar     = $this->createLoopKeyStatement($context);
+        $loopValueVar = new Expr\Variable($context->getUniqueVariableName('value'));
+        $loopKeyVar = $this->createLoopKeyStatement($context);
 
         list($subStatements, $outputExpr) = $this->itemType->createNormalizationStatement($context, $loopValueVar);
 
-        $loopStatements   = array_merge($subStatements, [
-            new Expr\Assign($this->createNormalizationLoopOutputAssignement($valuesVar, $loopKeyVar), $outputExpr)
+        $loopStatements = array_merge($subStatements, [
+            new Expr\Assign($this->createNormalizationLoopOutputAssignement($valuesVar, $loopKeyVar), $outputExpr),
         ]);
 
-        $statements[]     = new Stmt\Foreach_($input, $loopValueVar, [
+        $statements[] = new Stmt\Foreach_($input, $loopValueVar, [
             'keyVar' => $loopKeyVar,
-            'stmts'  => $loopStatements
+            'stmts' => $loopStatements,
         ]);
 
         return [$statements, $valuesVar];

@@ -2,24 +2,19 @@
 
 namespace Jane\JsonSchema\Guesser\JsonSchema;
 
-use Jane\JsonSchema\Generator\Model\ClassGenerator;
-use Jane\JsonSchema\Generator\Model\GetterSetterGenerator;
-use Jane\JsonSchema\Generator\Model\PropertyGenerator;
 use Jane\JsonSchema\Generator\Naming;
-
 use Jane\JsonSchema\Guesser\ChainGuesserFactory;
 use Jane\JsonSchema\JsonSchemaMerger;
-use Jane\JsonSchema\Reference\Resolver;
 use Symfony\Component\Serializer\SerializerInterface;
 
 class JsonSchemaGuesserFactory
 {
     public static function create(SerializerInterface $serializer, array $options = [])
     {
-        $chainGuesser          = ChainGuesserFactory::create($serializer);
-        $naming                = new Naming();
-        $merger                = new JsonSchemaMerger();
-        $dateFormat            = isset($options['date-format']) ? $options['date-format'] : \DateTime::RFC3339;
+        $chainGuesser = ChainGuesserFactory::create($serializer);
+        $naming = new Naming();
+        $merger = new JsonSchemaMerger();
+        $dateFormat = isset($options['date-format']) ? $options['date-format'] : \DateTime::RFC3339;
 
         $chainGuesser->addGuesser(new DateTimeGuesser($dateFormat));
         $chainGuesser->addGuesser(new SimpleTypeGuesser());

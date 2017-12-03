@@ -1,8 +1,16 @@
 <?php
 
-// Needed to get styleci-bridge loaded
-require_once __DIR__.'/vendor/sllh/php-cs-fixer-styleci-bridge/autoload.php';
+$dirs = PhpCsFixer\Finder::create()
+    ->in(__DIR__ . '/src')
+;
 
-use SLLH\StyleCIBridge\ConfigBridge;
-
-return ConfigBridge::create();
+return PhpCsFixer\Config::create()
+    ->setRiskyAllowed(true)
+    ->setRules([
+        '@Symfony' => true,
+        '@Symfony:risky' => true,
+        'array_syntax' => ['syntax' => 'short'],
+        'concat_space' => ['spacing' => 'one'],
+    ])
+    ->setFinder($dirs)
+;

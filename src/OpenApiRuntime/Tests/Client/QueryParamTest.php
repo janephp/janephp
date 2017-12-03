@@ -29,7 +29,7 @@ class QueryParamTest extends TestCase
 
         $this->queryParam->setHeaderParameters([
             'foo_header',
-            'bar_header'
+            'bar_header',
         ]);
     }
 

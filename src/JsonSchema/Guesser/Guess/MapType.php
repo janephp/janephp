@@ -4,7 +4,6 @@ namespace Jane\JsonSchema\Guesser\Guess;
 
 use Jane\JsonSchema\Generator\Context\Context;
 use PhpParser\Node\Name;
-use PhpParser\Node\Stmt;
 use PhpParser\Node\Expr;
 
 class MapType extends ArrayType
@@ -17,7 +16,7 @@ class MapType extends ArrayType
     }
 
     /**
-     * (@inheritDoc}
+     * (@inheritDoc}.
      */
     public function getTypeHint($namespace)
     {
@@ -25,18 +24,18 @@ class MapType extends ArrayType
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     protected function createArrayValueStatement(): Expr
     {
         return new Expr\New_(new Name('\ArrayObject'), [
             new Expr\Array_(),
-            new Expr\ClassConstFetch(new Name('\ArrayObject'), 'ARRAY_AS_PROPS')
+            new Expr\ClassConstFetch(new Name('\ArrayObject'), 'ARRAY_AS_PROPS'),
         ]);
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     protected function createNormalizationArrayValueStatement(): Expr
     {
@@ -44,7 +43,7 @@ class MapType extends ArrayType
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     protected function createLoopKeyStatement(Context $context): Expr
     {
@@ -52,7 +51,7 @@ class MapType extends ArrayType
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     protected function createLoopOutputAssignement(Expr $valuesVar, $loopKeyVar): Expr
     {
@@ -60,7 +59,7 @@ class MapType extends ArrayType
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     protected function createNormalizationLoopOutputAssignement(Expr $valuesVar, $loopKeyVar): Expr
     {

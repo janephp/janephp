@@ -6,10 +6,8 @@ use Jane\JsonSchema\Generator\Context\Context;
 use Jane\OpenApi\Model\OpenApi;
 use Jane\OpenApi\Naming\OperationNamingInterface;
 use Jane\OpenApi\Operation\OperationManager;
-
 use PhpParser\BuilderFactory;
 use PhpParser\Node;
-use PhpParser\Node\Expr;
 use PhpParser\Node\Stmt;
 
 class ClientGenerator
@@ -31,13 +29,13 @@ class ClientGenerator
 
     public function __construct(OperationManager $operationManager, OperationGenerator $operationGenerator, OperationNamingInterface $operationNaming)
     {
-        $this->operationManager   = $operationManager;
+        $this->operationManager = $operationManager;
         $this->operationGenerator = $operationGenerator;
-        $this->operationNaming    = $operationNaming;
+        $this->operationNaming = $operationNaming;
     }
 
     /**
-     * Generate an ast node (which correspond to a class) for a OpenApi spec
+     * Generate an ast node (which correspond to a class) for a OpenApi spec.
      *
      * @param OpenApi $openApi
      * @param string  $namespace
@@ -50,7 +48,7 @@ class ClientGenerator
     public function generate(OpenApi $openApi, $namespace, Context $context, $reference, $suffix = 'Resource')
     {
         $operationsGrouped = $this->operationManager->buildOperationCollection($openApi, $reference);
-        $nodes             = [];
+        $nodes = [];
 
         foreach ($operationsGrouped as $group => $operations) {
             $nodes[] = $this->generateClass($group, $operations, $namespace, $context, $suffix);
@@ -75,15 +73,14 @@ class ClientGenerator
         ]));
 
         return [
-            'class' => $factory->namespace($namespace . "\\Resource")
+            'class' => $factory->namespace($namespace . '\\Resource')
                 ->addStmt($factory->use('Jane\OpenApiRuntime\Client\Resource'))
                 ->addStmt($class)
-                ->getNode()
-            ,
-            'trait' => $factory->namespace($namespace . "\\Resource")
+                ->getNode(),
+            'trait' => $factory->namespace($namespace . '\\Resource')
                 ->addStmt($factory->use('Jane\OpenApiRuntime\Client\QueryParam'))
                 ->addStmt($trait)
-                ->getNode()
+                ->getNode(),
         ];
     }
 }

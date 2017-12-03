@@ -19,7 +19,7 @@ class ArrayGuesser implements GuesserInterface, TypeGuesserInterface, ChainGuess
     use ChainGuesserAwareTrait;
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function guessClass($object, $name, $reference, Registry $registry)
     {
@@ -29,21 +29,21 @@ class ArrayGuesser implements GuesserInterface, TypeGuesserInterface, ChainGuess
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function supportObject($object)
     {
-        return (($object instanceof JsonSchema) && $object->getType() === 'array');
+        return ($object instanceof JsonSchema) && 'array' === $object->getType();
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function guessType($object, $name, $reference, Registry $registry)
     {
         $items = $object->getItems();
 
-        if ($items === null) {
+        if (null === $items) {
             return new ArrayType($object, new Type($object, 'mixed'));
         }
 

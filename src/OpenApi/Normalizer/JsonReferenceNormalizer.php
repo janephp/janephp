@@ -26,7 +26,7 @@ class JsonReferenceNormalizer implements DenormalizerInterface, NormalizerInterf
 
     public function supportsDenormalization($data, $type, $format = null)
     {
-        if ($type !== 'Jane\\OpenApi\\Model\\JsonReference') {
+        if ('Jane\\OpenApi\\Model\\JsonReference' !== $type) {
             return false;
         }
 
