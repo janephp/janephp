@@ -25,6 +25,10 @@
             <directory suffix=".php">./src</directory>
             <exclude>
                 <directory>./src/*/Tests</directory>
+                <directory>./src/JsonSchema/Model</directory>
+                <directory>./src/JsonSchema/Normalizer</directory>
+                <directory>./src/OpenApi/Model</directory>
+                <directory>./src/OpenApi/Normalizer</directory>
             </exclude>
         </whitelist>
     </filter>
