@@ -1,0 +1,44 @@
+{
+    "swagger": "2.0",
+    "paths": {
+        "/test-simple": {
+            "post": {
+                "produces": [
+                    "application/json"
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "operationId": "Body parameter triggers content type being set",
+                "responses": {
+                    "200": {
+                        "description": "no error"
+                    }
+                },
+                "tags": [
+                    "Foo"
+                ]
+            }
+        },
+        "/test-object": {
+            "get": {
+                "produces": [
+                    "application/json"
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "operationId": "Produces triggers accept being set",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "no error"
+                    }
+                },
+                "tags": [
+                    "Bar"
+                ]
+            }
+        }
+    }
+}
