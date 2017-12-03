@@ -1,0 +1,14 @@
+<?php
+
+return [
+    'mapping' => [
+        'tests/fixtures/multi-specs/swagger1.json' => [
+            'namespace' => 'Joli\Jane\OpenApi\Tests\Expected\Api1',
+            'directory' => __DIR__ . '/generated/Api1',
+        ],
+        'tests/fixtures/multi-specs/swagger2.json' => [
+            'namespace' => 'Joli\Jane\OpenApi\Tests\Expected\Api2',
+            'directory' => __DIR__ . '/generated/Api2',
+        ],
+    ],
+];

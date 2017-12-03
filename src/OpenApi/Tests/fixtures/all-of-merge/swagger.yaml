@@ -1,0 +1,14 @@
+swagger: "2.0"
+definitions:
+  Bar:
+    properties:
+      bar:
+        type: "string"
+  Foo:
+    allOf:
+      - $ref: "#/definitions/Bar"
+      - type: "object"
+        properties:
+          foo:
+            type: "string"
+            description: "Path to a file where the container ID is written"

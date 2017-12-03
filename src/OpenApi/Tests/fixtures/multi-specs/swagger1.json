@@ -1,0 +1,34 @@
+{
+    "swagger": "2.0",
+    "responses": {
+        "200": {
+            "description": "no error",
+            "schema": {
+                "$ref": "#/definitions/body"
+            }
+        }
+    },
+    "definitions": {
+        "body": {
+            "type": "object",
+            "properties": {
+                "foo": {"type": "string"}
+            }
+        }
+    },
+    "paths": {
+        "/test-query": {
+            "get": {
+                "operationId": "Test Reference Response",
+                "responses": {
+                    "200": {
+                        "$ref": "#/responses/200"
+                    }
+                },
+                "tags": [
+                    "Test"
+                ]
+            }
+        }
+    }
+}

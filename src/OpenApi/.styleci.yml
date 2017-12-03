@@ -1,0 +1,12 @@
+preset: symfony
+
+enabled:
+  - short_array_syntax
+
+
+finder:
+  exclude:
+    - "tests/fixtures"
+    - "tests/fixtures-boilerplate"
+    - "generated"
+    - "bin"

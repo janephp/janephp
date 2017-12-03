@@ -1,0 +1,45 @@
+swagger: "2.0"
+definitions:
+  Foo:
+    type: "object"
+    properties:
+      foo:
+        type: "string"
+  Bar:
+    allOf:
+      - $ref: "#/definitions/Foo"
+      - type: "object"
+        properties:
+          bar:
+            type: "string"
+paths:
+  /test:
+    get:
+      operationId: "getTest"
+      parameters:
+        - name: "body"
+          in: "body"
+          required: true
+          schema:
+            allOf:
+              - $ref: "#/definitions/Foo"
+              - type: "object"
+                properties:
+                  Bar:
+                    $ref: "#/definitions/Bar"
+                  Baz:
+                    type: "object"
+                    properties:
+                      baz:
+                        type: "string"
+    post:
+      operationId: "test"
+      parameters:
+        - name: "body"
+          in: "body"
+          required: true
+          schema:
+            type: "object"
+            properties:
+              foo:
+                type: "string"

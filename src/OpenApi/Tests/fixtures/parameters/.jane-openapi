@@ -1,0 +1,7 @@
+<?php
+
+return [
+    'openapi-file' => 'tests/fixtures/parameters/swagger.json',
+    'namespace' => 'Joli\Jane\OpenApi\Tests\Expected',
+    'directory' => __DIR__ . '/generated',
+];

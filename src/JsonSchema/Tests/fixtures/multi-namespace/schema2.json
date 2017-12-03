@@ -1,0 +1,12 @@
+{
+    "definitions": {
+        "Foo": {
+            "type": "object",
+            "properties": {
+                "foo": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,36 @@
+{
+    "name": "jane/runtime",
+    "description": "Jane runtime Library",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Joel Wurtz",
+            "email": "jwurtz@jolicode.com"
+        },
+        {
+            "name": "JoliCode",
+            "email": "coucou@jolicode.com"
+        }
+    ],
+    "require": {
+        "php": "^7.0",
+        "symfony/serializer": "^3.1",
+        "symfony/yaml": "^3.1",
+        "league/uri": "^4.2",
+        "php-jsonpointer/php-jsonpointer": "^3.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^4.7|^5.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Joli\\Jane\\Runtime\\": "src/"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-ci": "vendor/bin/phpunit --coverage-text --coverage-clover=build/coverage.xml"
+    },
+    "minimum-stability": "stable"
+}

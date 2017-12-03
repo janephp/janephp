@@ -1,0 +1,98 @@
+{
+    "id": "http://json-schema.org/draft-04/schema#",
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "description": "Testing allOf",
+    "type": "object",
+    "definitions": {
+        "otherchildtype": {
+            "allOf": [
+                {
+                    "$ref": "#/definitions/parenttype"
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "childProperty": {
+                            "type": "string"
+                        }
+                    }
+                }
+            ]
+        },
+        "childtype": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/parenttype"
+                }
+            ],
+            "properties": {
+                "childProperty": {
+                    "type": "string"
+                }
+            }
+        },
+        "parenttype": {
+            "type": "object",
+            "properties": {
+                "inheritedProperty": {
+                    "type": "string"
+                }
+            }
+        },
+        "Foo": {
+            "type": "object",
+            "properties": {
+                "foo": {
+                    "type": "string"
+                }
+            }
+        },
+        "Bar": {
+            "allOf": [
+                {
+                    "$ref": "#/definitions/Foo"
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "bar": {
+                            "type": "string"
+                        }
+                    }
+                }
+            ]
+        },
+        "Baz": {
+            "allOf": [
+                {
+                    "$ref": "#/definitions/Foo"
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "Bar": {
+                            "$ref": "#/definitions/Bar"
+                        },
+                        "Baz": {
+                            "type": "object",
+                            "properties": {
+                                "baz": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            ]
+        }
+    },
+    "properties": {
+        "child": {
+            "$ref": "#/definitions/childtype"
+        },
+        "parent": {
+            "$ref": "#/definitions/parenttype"
+        }
+    }
+}

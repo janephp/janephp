@@ -1,0 +1,9 @@
+<?php
+
+return [
+    'json-schema-file' => 'tests/fixtures/test-no-reference/schema.json',
+    'root-class' => 'Test',
+    'namespace' => 'Jane\JsonSchema\Tests\Expected',
+    'directory' => __DIR__ . '/generated',
+    'reference' => false,
+];
