@@ -15,7 +15,7 @@ use PhpParser\ParserFactory;
 
 class GeneratorFactory
 {
-    public static function build($serializer)
+    public static function build($serializer, $options)
     {
         $parserFactory = new ParserFactory();
         $parser = $parserFactory->create(ParserFactory::PREFER_PHP7);
@@ -33,6 +33,6 @@ class GeneratorFactory
             new OperationUrlNaming(),
         ]);
 
-        return new ClientGenerator($operationManager, $operation, $operationNaming);
+        return new ClientGenerator($operationManager, $operation, $operationNaming, $options['async']);
     }
 }

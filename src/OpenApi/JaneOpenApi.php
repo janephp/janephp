@@ -163,7 +163,7 @@ class JaneOpenApi
         $normalizers = NormalizerFactory::create();
         $serializer = new Serializer($normalizers, $encoders);
         $schemaParser = new SchemaParser($serializer);
-        $clientGenerator = GeneratorFactory::build($serializer);
+        $clientGenerator = GeneratorFactory::build($serializer, $options);
         $naming = new Naming();
         $modelGenerator = new ModelGenerator($naming);
         $normGenerator = new NormalizerGenerator($naming, isset($options['reference']) ? $options['reference'] : false);

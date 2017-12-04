@@ -25,6 +25,7 @@ class GenerateCommand extends Command
         $this->setDescription('Generate an api client: class, normalizers and resources given a specific Json OpenApi file');
         $this->addOption('config-file', 'c', InputOption::VALUE_OPTIONAL, 'File to use for Jane OpenAPI configuration');
         $this->addOption('reference', null, InputOption::VALUE_NONE, 'Use the JSON Reference specification in your generated library');
+        $this->addOption('async', null, InputOption::VALUE_NONE, 'Generate extra async methods compatible with amphp');
         $this->addOption('date-format', 'd', InputOption::VALUE_OPTIONAL, 'Date time format to use for date time field');
         $this->addArgument('openapi-file', InputArgument::OPTIONAL, 'Location of the OpenApi (Swagger) Schema file');
         $this->addArgument('namespace', InputArgument::OPTIONAL, 'Namespace prefix to use for generated files');
@@ -75,8 +76,12 @@ class GenerateCommand extends Command
                 $options['date-format'] = $input->getOption('date-format');
             }
 
-            if ($input->hasOption('no-reference') && null !== $input->getOption('no-reference')) {
+            if ($input->hasOption('reference') && null !== $input->getOption('reference')) {
                 $options['reference'] = $input->getOption('reference');
+            }
+
+            if ($input->hasOption('async') && null !== $input->getOption('async')) {
+                $options['async'] = $input->getOption('async');
             }
         }
 
@@ -104,6 +109,7 @@ class GenerateCommand extends Command
         $optionsResolver->setDefaults([
             'reference' => false,
             'date-format' => \DateTime::RFC3339,
+            'async' => false,
         ]);
 
         if (array_key_exists('openapi-file', $options)) {
@@ -130,6 +136,7 @@ class GenerateCommand extends Command
             'openapi-file',
             'reference',
             'date-format',
+            'async',
         ]);
 
         $optionsResolver->setRequired([

@@ -12,12 +12,11 @@ abstract class Resource
 {
     public const FETCH_RESPONSE = 'response';
     public const FETCH_OBJECT = 'object';
-    public const FETCH_PROMISE = 'promise';
 
     /**
      * @var HttpClient|HttpAsyncClient
      */
-    protected $httpAsyncClient;
+    protected $httpClient;
 
     /**
      * @var MessageFactory

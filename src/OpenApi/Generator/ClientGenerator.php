@@ -27,11 +27,14 @@ class ClientGenerator
      */
     private $operationNaming;
 
-    public function __construct(OperationManager $operationManager, OperationGenerator $operationGenerator, OperationNamingInterface $operationNaming)
+    private $generateAsync;
+
+    public function __construct(OperationManager $operationManager, OperationGenerator $operationGenerator, OperationNamingInterface $operationNaming, bool $generateAsync = false)
     {
         $this->operationManager = $operationManager;
         $this->operationGenerator = $operationGenerator;
         $this->operationNaming = $operationNaming;
+        $this->generateAsync = $generateAsync;
     }
 
     /**
@@ -84,7 +87,11 @@ class ClientGenerator
         $class->extend('Resource');
 
         foreach ($operations as $operation) {
-            $trait->addStmt($this->operationGenerator->generate($this->operationNaming->generateFunctionName($operation), $operation, $context));
+            $trait->addStmt($this->operationGenerator->generateSync($this->operationNaming->generateFunctionName($operation), $operation, $context));
+
+            if ($this->generateAsync) {
+                $trait->addStmt($this->operationGenerator->generateAsync($this->operationNaming->generateFunctionName($operation) . 'Async', $operation, $context));
+            }
         }
 
         $class->addStmt(new Stmt\TraitUse([
