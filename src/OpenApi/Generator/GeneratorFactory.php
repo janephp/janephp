@@ -3,6 +3,7 @@
 namespace Jane\OpenApi\Generator;
 
 use Jane\OpenApi\Naming\ChainOperationNaming;
+use Jane\OpenApi\Naming\ExceptionNaming;
 use Jane\OpenApi\Naming\OperationUrlNaming;
 use Jane\OpenApi\Generator\Parameter\BodyParameterGenerator;
 use Jane\OpenApi\Generator\Parameter\FormDataParameterGenerator;
@@ -25,8 +26,9 @@ class GeneratorFactory
         $formDataParameter = new FormDataParameterGenerator($parser);
         $headerParameter = new HeaderParameterGenerator($parser);
         $queryParameter = new QueryParameterGenerator($parser);
+        $exceptionGenerator = new ExceptionGenerator(new ExceptionNaming());
 
-        $operation = new OperationGenerator($serializer, $bodyParameter, $formDataParameter, $headerParameter, $pathParameter, $queryParameter);
+        $operation = new OperationGenerator($serializer, $bodyParameter, $formDataParameter, $headerParameter, $pathParameter, $queryParameter, $exceptionGenerator);
         $operationManager = new OperationManager();
         $operationNaming = new ChainOperationNaming([
             new OperationIdNaming(),

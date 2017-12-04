@@ -22,7 +22,7 @@ trait PetsResourceTrait
      *
      * @param string $fetch Fetch mode (object or response)
      *
-     * @return \Psr\Http\Message\ResponseInterface|\Jane\OpenApi\Tests\Expected\Model\Pet[]|\Jane\OpenApi\Tests\Expected\Model\Error
+     * @return \Psr\Http\Message\ResponseInterface|\Jane\OpenApi\Tests\Expected\Model\Pet|\Jane\OpenApi\Tests\Expected\Model\Error
      */
     public function listPets($parameters = [], $fetch = self::FETCH_OBJECT)
     {
@@ -34,8 +34,8 @@ trait PetsResourceTrait
         $body = $queryParam->buildFormDataString($parameters);
         $request = $this->messageFactory->createRequest('GET', $url, $headers, $body);
         $response = $this->httpClient->sendRequest($request);
-        if (self::FETCH_OBJECT == $fetch) {
-            if ('200' == $response->getStatusCode()) {
+        if (self::FETCH_OBJECT === $fetch) {
+            if (200 === $response->getStatusCode()) {
                 return $this->serializer->deserialize((string) $response->getBody(), 'Jane\\OpenApi\\Tests\\Expected\\Model\\Pet[]', 'json');
             }
 
@@ -60,8 +60,8 @@ trait PetsResourceTrait
         $body = $queryParam->buildFormDataString($parameters);
         $request = $this->messageFactory->createRequest('POST', $url, $headers, $body);
         $response = $this->httpClient->sendRequest($request);
-        if (self::FETCH_OBJECT == $fetch) {
-            if ('201' == $response->getStatusCode()) {
+        if (self::FETCH_OBJECT === $fetch) {
+            if (201 === $response->getStatusCode()) {
                 return null;
             }
 
@@ -76,7 +76,7 @@ trait PetsResourceTrait
      * @param array  $parameters List of parameters
      * @param string $fetch      Fetch mode (object or response)
      *
-     * @return \Psr\Http\Message\ResponseInterface|\Jane\OpenApi\Tests\Expected\Model\Pet[]|\Jane\OpenApi\Tests\Expected\Model\Error
+     * @return \Psr\Http\Message\ResponseInterface|\Jane\OpenApi\Tests\Expected\Model\Pet|\Jane\OpenApi\Tests\Expected\Model\Error
      */
     public function showPetById($petId, $parameters = [], $fetch = self::FETCH_OBJECT)
     {
@@ -88,8 +88,8 @@ trait PetsResourceTrait
         $body = $queryParam->buildFormDataString($parameters);
         $request = $this->messageFactory->createRequest('GET', $url, $headers, $body);
         $response = $this->httpClient->sendRequest($request);
-        if (self::FETCH_OBJECT == $fetch) {
-            if ('200' == $response->getStatusCode()) {
+        if (self::FETCH_OBJECT === $fetch) {
+            if (200 === $response->getStatusCode()) {
                 return $this->serializer->deserialize((string) $response->getBody(), 'Jane\\OpenApi\\Tests\\Expected\\Model\\Pet[]', 'json');
             }
 

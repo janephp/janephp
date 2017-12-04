@@ -30,7 +30,17 @@ class OperationGenerator
      */
     protected $denormalizer;
 
-    public function __construct(DenormalizerInterface $denormalizer, BodyParameterGenerator $bodyParameterGenerator, FormDataParameterGenerator $formDataParameterGenerator, HeaderParameterGenerator $headerParameterGenerator, PathParameterGenerator $pathParameterGenerator, QueryParameterGenerator $queryParameterGenerator)
+    protected $exceptionGenerator;
+
+    public function __construct(
+        DenormalizerInterface $denormalizer,
+        BodyParameterGenerator $bodyParameterGenerator,
+        FormDataParameterGenerator $formDataParameterGenerator,
+        HeaderParameterGenerator $headerParameterGenerator,
+        PathParameterGenerator $pathParameterGenerator,
+        QueryParameterGenerator $queryParameterGenerator,
+        ExceptionGenerator $exceptionGenerator
+    )
     {
         $this->denormalizer = $denormalizer;
         $this->bodyParameterGenerator = $bodyParameterGenerator;
@@ -38,13 +48,14 @@ class OperationGenerator
         $this->headerParameterGenerator = $headerParameterGenerator;
         $this->pathParameterGenerator = $pathParameterGenerator;
         $this->queryParameterGenerator = $queryParameterGenerator;
+        $this->exceptionGenerator = $exceptionGenerator;
     }
 
     public function generateSync($name, Operation $operation, Context $context)
     {
         list($queryParamDocumentation, , ) = $this->createQueryParamStatements($operation);
         list($documentationParameters, $parameters) = $this->createParameters($operation, $queryParamDocumentation, $context);
-        list($statements, $outputTypes) = $this->getOperationStatements(
+        list($statements, $outputTypes, $throwTypes) = $this->getOperationStatements(
             $name,
             $operation,
             $context,
@@ -63,6 +74,9 @@ class OperationGenerator
                 ' *',
             ],
             $documentationParameters,
+            array_map(function ($type) {
+                return ' * @throws ' . $type;
+            }, $throwTypes),
             [
                 ' *',
                 ' * @return ' . implode('|', $outputTypes),
@@ -83,7 +97,7 @@ class OperationGenerator
     {
         list($queryParamDocumentation, , ) = $this->createQueryParamStatements($operation);
         list($documentationParameters, $parameters) = $this->createParameters($operation, $queryParamDocumentation, $context);
-        list($statements, $outputTypes) = $this->getOperationStatements(
+        list($statements, $outputTypes, $throwTypes) = $this->getOperationStatements(
             $name,
             $operation,
             $context,
@@ -102,6 +116,9 @@ class OperationGenerator
                 ' *',
             ],
             $documentationParameters,
+            array_map(function ($type) {
+                return ' * @throws ' . $type;
+            }, $throwTypes),
             [
                 ' *',
                 ' * @return \Amp\Promise<' . implode('|', $outputTypes).'>',
@@ -116,7 +133,7 @@ class OperationGenerator
             $vars[] = new Expr\Variable($parameter->name);
         }
 
-        return new Stmt\ClassMethod($name, [
+        return new Stmt\ClassMethod($name. 'Async', [
             'type' => Stmt\Class_::MODIFIER_PUBLIC,
             'params' => $parameters,
             'stmts' => [
@@ -160,6 +177,7 @@ class OperationGenerator
         // Output
         $outputStatements = [];
         $outputTypes = ['\\Psr\\Http\\Message\\ResponseInterface'];
+        $throwTypes = [];
 
         if ($operation->getOperation()->getResponses()) {
             foreach ($operation->getOperation()->getResponses() as $status => $response) {
@@ -167,16 +185,24 @@ class OperationGenerator
                     list(, $response) = $this->resolve($response, Response::class);
                 }
 
-                list($outputType, $ifStatus) = $this->createResponseDenormalizationStatement(
+                /** @var Response $response */
+
+                list($outputType, $throwType, $ifStatus) = $this->createResponseDenormalizationStatement(
+                    $name,
                     $status,
                     $response->getSchema(),
                     $context,
-                    $operation->getReference() . '/responses/' . $status
+                    $operation->getReference() . '/responses/' . $status,
+                    $response->getDescription()
                 );
 
-                if (null !== $outputType) {
-                    if (!in_array($outputType, $outputTypes)) {
+                if (null !== $outputType || null !== $throwType) {
+                    if (null !== $outputType && !in_array($outputType, $outputTypes)) {
                         $outputTypes[] = $outputType;
+                    }
+
+                    if (null !== $throwType && !in_array($throwType, $throwTypes)) {
+                        $throwTypes[] = $throwType;
                     }
 
                     $outputStatements[] = $ifStatus;
@@ -186,7 +212,7 @@ class OperationGenerator
 
         if (!empty($outputStatements)) {
             $statements[] = new Stmt\If_(
-                new Expr\BinaryOp\Equal(new Expr\ConstFetch(new Name('self::FETCH_OBJECT')), new Expr\Variable('fetch')),
+                new Expr\BinaryOp\Identical(new Expr\ConstFetch(new Name('self::FETCH_OBJECT')), new Expr\Variable('fetch')),
                 [
                     'stmts' => $outputStatements,
                 ]
@@ -196,7 +222,7 @@ class OperationGenerator
         // return $response
         $statements[] = new Stmt\Return_(new Expr\Variable('response'));
 
-        return [$statements, $outputTypes];
+        return [$statements, $outputTypes, $throwTypes];
     }
 
     /**

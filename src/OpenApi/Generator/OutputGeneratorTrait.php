@@ -19,14 +19,7 @@ trait OutputGeneratorTrait
      */
     abstract protected function getDenormalizer();
 
-    /**
-     * @param         $status
-     * @param         $schema
-     * @param Context $context
-     *
-     * @return [string, null|Stmt\If_]
-     */
-    protected function createResponseDenormalizationStatement($status, $schema, Context $context, $reference)
+    protected function createResponseDenormalizationStatement(string $name, string $status, $schema, Context $context, string $reference, string $description)
     {
         $jsonReference = $reference;
         $array = false;
@@ -44,21 +37,21 @@ trait OutputGeneratorTrait
             }
         }
 
-        $class = $context->getRegistry()->getClass($jsonReference);
+        $classGuess = $context->getRegistry()->getClass($jsonReference);
+        $returnType = 'null';
+        $throwType = null;
+        $serializeStmt = new Expr\ConstFetch(new Name('null'));
+        $class = null;
 
-        // Happens when reference resolve to a none object
-        if (null === $class) {
-            $returnType = 'null';
-            $returnStmt = new Stmt\Return_(new Expr\ConstFetch(new Name('null')));
-        } else {
-            $class = $context->getRegistry()->getSchema($jsonReference)->getNamespace() . '\\Model\\' . $class->getName();
+        if (null !== $classGuess) {
+            $class = $context->getRegistry()->getSchema($jsonReference)->getNamespace() . '\\Model\\' . $classGuess->getName();
+            $returnType = '\\' . $class;
 
             if ($array) {
                 $class .= '[]';
             }
 
-            $returnType = '\\' . $class;
-            $returnStmt = new Stmt\Return_(new Expr\MethodCall(
+            $serializeStmt = new Expr\MethodCall(
                 new Expr\PropertyFetch(new Expr\Variable('this'), 'serializer'),
                 'deserialize',
                 [
@@ -66,22 +59,47 @@ trait OutputGeneratorTrait
                     new Arg(new Scalar\String_($class)),
                     new Arg(new Scalar\String_('json')),
                 ]
-            ));
+            );
+        }
+
+        $returnStmt = new Stmt\Return_($serializeStmt);
+
+        if ((int)$status >= 400) {
+            $exceptionName = $this->exceptionGenerator->generate(
+                $name,
+                (int)$status,
+                $context,
+                $classGuess,
+                $array,
+                $class,
+                $description
+            );
+
+            $returnType = null;
+            $throwType = '\\' . $context->getCurrentSchema()->getNamespace() . '\\Exception\\' . $exceptionName;
+            $returnStmt = new Stmt\Throw_(new Expr\New_(new Name($throwType), $classGuess ? [
+                $serializeStmt
+            ] : []));
         }
 
         if ('default' === $status) {
-            return [$returnType, $returnStmt];
+            return [$returnType, $throwType, $returnStmt];
         }
 
-        return [$returnType, new Stmt\If_(
-            new Expr\BinaryOp\Equal(
-                new Scalar\String_($status),
+        return [$returnType, $throwType, new Stmt\If_(
+            new Expr\BinaryOp\Identical(
+                new Scalar\LNumber((int) $status),
                 new Expr\MethodCall(new Expr\Variable('response'), 'getStatusCode')
             ),
             [
                 'stmts' => [$returnStmt],
             ]
         )];
+    }
+
+    protected function createException($status, $request)
+    {
+
     }
 
     /**

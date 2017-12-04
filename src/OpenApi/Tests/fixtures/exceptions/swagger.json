@@ -1,0 +1,35 @@
+{
+    "swagger": "2.0",
+    "basePath": "/",
+    "paths": {
+        "/test-exception": {
+            "get": {
+                "operationId": "Test No Tag",
+                "responses": {
+                    "400": {
+                        "description": "Bad request on test exception",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "404": {
+                        "description": "Not found get"
+                    },
+                    "500": {
+                        "description": "Internal server error on test exception"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "Error": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}

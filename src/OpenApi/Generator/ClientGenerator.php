@@ -90,7 +90,7 @@ class ClientGenerator
             $trait->addStmt($this->operationGenerator->generateSync($this->operationNaming->generateFunctionName($operation), $operation, $context));
 
             if ($this->generateAsync) {
-                $trait->addStmt($this->operationGenerator->generateAsync($this->operationNaming->generateFunctionName($operation) . 'Async', $operation, $context));
+                $trait->addStmt($this->operationGenerator->generateAsync($this->operationNaming->generateFunctionName($operation), $operation, $context));
             }
         }
 

@@ -48,44 +48,32 @@ class Schema
         $this->references = [$this->origin];
     }
 
-    /**
-     * @return string
-     */
-    public function getOrigin()
+    public function getOrigin(): string
     {
         return $this->origin;
     }
 
-    /**
-     * @return string
-     */
-    public function getNamespace()
+    public function getNamespace(): string
     {
         return $this->namespace;
     }
 
-    /**
-     * @return string
-     */
-    public function getDirectory()
+    public function getDirectory(): string
     {
         return $this->directory;
     }
 
-    /**
-     * @return string
-     */
-    public function getRootName()
+    public function getRootName(): string
     {
         return $this->rootName;
     }
 
-    public function addClass($reference, $class)
+    public function addClass(string $reference, ClassGuess $class)
     {
         $this->classes[$reference] = $class;
     }
 
-    public function getClass($reference)
+    public function getClass($reference): ?ClassGuess
     {
         if (array_key_exists($reference, $this->classes)) {
             return $this->classes[$reference];
@@ -101,27 +89,27 @@ class Schema
     /**
      * @return ClassGuess[]
      */
-    public function getClasses()
+    public function getClasses(): array
     {
         return $this->classes;
     }
 
-    public function addFile(File $file)
+    public function addFile(File $file): void
     {
         $this->files[] = $file;
     }
 
-    public function getFiles()
+    public function getFiles(): array
     {
         return $this->files;
     }
 
-    public function addReference($reference)
+    public function addReference(string $reference): void
     {
         $this->references[] = $reference;
     }
 
-    public function hasReference($reference)
+    public function hasReference(string $reference): bool
     {
         return in_array($reference, $this->references, true);
     }
@@ -142,7 +130,7 @@ class Schema
         $this->parsed = $parsed;
     }
 
-    private function fixPath($path)
+    private function fixPath(string $path): string
     {
         $path = preg_replace('#([^:]){1}/{2,}#', '$1/', $path);
 
