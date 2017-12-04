@@ -56,15 +56,7 @@ trait NormalizerGenerator
                 new Param('format', new Expr\ConstFetch(new Name('null'))),
             ],
             'stmts' => [
-                new Stmt\If_(
-                    new Expr\Instanceof_(new Expr\Variable('data'), new Name('\\' . $modelFqdn)),
-                    [
-                        'stmts' => [
-                            new Stmt\Return_(new Expr\ConstFetch(new Name('true'))),
-                        ],
-                    ]
-                ),
-                new Stmt\Return_(new Expr\ConstFetch(new Name('false'))),
+                new Stmt\Return_(new Expr\Instanceof_(new Expr\Variable('data'), new Name('\\' . $modelFqdn))),
             ],
         ]);
     }

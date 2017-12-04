@@ -45,16 +45,35 @@ class ClientGenerator
      *
      * @return Node[]
      */
-    public function generate(OpenApi $openApi, $namespace, Context $context, $reference, $suffix = 'Resource')
+    public function generate(OpenApi $openApi, string $namespace, Context $context, string $reference, string $suffix = 'Resource')
     {
-        $operationsGrouped = $this->operationManager->buildOperationCollection($openApi, $reference);
+        $factory = new BuilderFactory();
+        $classClient = $factory->class('Client');
+        $classClient->extend('Resource');
+
+        $classCreator = $factory->namespace($namespace)
+            ->addStmt($factory->use('Jane\OpenApiRuntime\Client\Resource'))
+        ;
+
         $nodes = [];
+        $operationsGrouped = $this->operationManager->buildOperationCollection($openApi, $reference);
 
         foreach ($operationsGrouped as $group => $operations) {
-            $nodes[] = $this->generateClass($group, $operations, $namespace, $context, $suffix);
+            $resource = $this->generateClass($group, $operations, $namespace, $context, $suffix);
+            $classClient->addStmt(new Stmt\TraitUse([
+                new Node\Name($group . $suffix . 'Trait'),
+            ]));
+            $classCreator->addStmt($factory->use($namespace . '\\Resource\\' . $group . $suffix . 'Trait'));
+
+            $nodes[] = $resource;
         }
 
-        return $nodes;
+        $classCreator->addStmt($classClient);
+
+        return [
+            'resources' => $nodes,
+            'client' => $classCreator->getNode()
+        ];
     }
 
     protected function generateClass($group, $operations, $namespace, Context $context, $suffix = 'Resource')
@@ -77,6 +96,7 @@ class ClientGenerator
                 ->addStmt($factory->use('Jane\OpenApiRuntime\Client\Resource'))
                 ->addStmt($class)
                 ->getNode(),
+            'name' => $group . $suffix,
             'trait' => $factory->namespace($namespace . '\\Resource')
                 ->addStmt($factory->use('Jane\OpenApiRuntime\Client\QueryParam'))
                 ->addStmt($trait)

@@ -37,15 +37,7 @@ trait DenormalizerGenerator
                 new Param('format', new Expr\ConstFetch(new Name('null'))),
             ],
             'stmts' => [
-                new Stmt\If_(
-                    new Expr\BinaryOp\NotIdentical(new Expr\Variable('type'), new Scalar\String_($modelFqdn)),
-                    [
-                        'stmts' => [
-                            new Stmt\Return_(new Expr\ConstFetch(new Name('false'))),
-                        ],
-                    ]
-                ),
-                new Stmt\Return_(new Expr\ConstFetch(new Name('true'))),
+                new Stmt\Return_(new Expr\BinaryOp\Identical(new Expr\Variable('type'), new Scalar\String_($modelFqdn))),
             ],
         ]);
     }

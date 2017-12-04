@@ -25,20 +25,12 @@ class TestNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
 
     public function supportsDenormalization($data, $type, $format = null)
     {
-        if ($type !== 'Jane\\JsonSchema\\Tests\\Expected\\Schema1\\Model\\Test') {
-            return false;
-        }
-
-        return true;
+        return $type === 'Jane\\JsonSchema\\Tests\\Expected\\Schema1\\Model\\Test';
     }
 
     public function supportsNormalization($data, $format = null)
     {
-        if ($data instanceof \Jane\JsonSchema\Tests\Expected\Schema1\Model\Test) {
-            return true;
-        }
-
-        return false;
+        return $data instanceof \Jane\JsonSchema\Tests\Expected\Schema1\Model\Test;
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])

@@ -3,8 +3,10 @@
 namespace Jane\JsonSchema\Tests;
 
 use Jane\JsonSchema\Jane;
+use Jane\JsonSchema\Printer;
 use Jane\JsonSchema\Registry;
 use Jane\JsonSchema\Schema;
+use PhpParser\PrettyPrinter\Standard;
 use PHPUnit\Framework\TestCase;
 
 class LibraryTest extends TestCase
@@ -14,9 +16,12 @@ class LibraryTest extends TestCase
      */
     protected $jane;
 
+    protected $printer;
+
     public function setUp()
     {
         $this->jane = Jane::build();
+        $this->printer = new Printer(new Standard());
     }
 
     /**
@@ -28,6 +33,7 @@ class LibraryTest extends TestCase
         $registry->addSchema(new Schema(__DIR__ . '/data/json-schema.json', 'Jane\JsonSchema', __DIR__ . "/generated", 'JsonSchema'));
 
         $this->jane->generate($registry);
+        $this->printer->output($registry);
 
         $this->assertTrue(file_exists(__DIR__ . "/generated/Model/JsonSchema.php"));
         $this->assertTrue(file_exists(__DIR__ . "/generated/Normalizer/JsonSchemaNormalizer.php"));

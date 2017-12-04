@@ -133,13 +133,16 @@ class JaneOpenApi
 
             $clients = $this->clientGenerator->generate($schema->getParsed(), $schema->getNamespace(), $context, $schema->getOrigin() . '#');
 
-            foreach ($clients as $node) {
+            foreach ($clients['resources'] as $node) {
                 $class = $node['class'];
                 $trait = $node['trait'];
+                $name = $node['name'];
 
-                $schema->addFile(new File($schema->getDirectory() . DIRECTORY_SEPARATOR . 'Resource' . DIRECTORY_SEPARATOR . $class->stmts[1]->name . '.php', $class, ''));
-                $schema->addFile(new File($schema->getDirectory() . DIRECTORY_SEPARATOR . 'Resource' . DIRECTORY_SEPARATOR . $trait->stmts[1]->name . '.php', $trait, ''));
+                $schema->addFile(new File($schema->getDirectory() . DIRECTORY_SEPARATOR . 'Resource' . DIRECTORY_SEPARATOR . $name . '.php', $class, ''));
+                $schema->addFile(new File($schema->getDirectory() . DIRECTORY_SEPARATOR . 'Resource' . DIRECTORY_SEPARATOR . $name . 'Trait.php', $trait, ''));
             }
+
+            $schema->addFile(new File($schema->getDirectory(). DIRECTORY_SEPARATOR . 'Client.php', $clients['client'], ''));
         }
 
         return $files;

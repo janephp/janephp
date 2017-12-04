@@ -26,20 +26,12 @@ class BarItemNormalizer implements DenormalizerInterface, NormalizerInterface, D
 
     public function supportsDenormalization($data, $type, $format = null)
     {
-        if ($type !== 'Jane\\JsonSchema\\Tests\\Expected\\Model\\BarItem') {
-            return false;
-        }
-
-        return true;
+        return $type === 'Jane\\JsonSchema\\Tests\\Expected\\Model\\BarItem';
     }
 
     public function supportsNormalization($data, $format = null)
     {
-        if ($data instanceof \Jane\JsonSchema\Tests\Expected\Model\BarItem) {
-            return true;
-        }
-
-        return false;
+        return $data instanceof \Jane\JsonSchema\Tests\Expected\Model\BarItem;
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])

@@ -26,20 +26,12 @@ class JsonSchemaNormalizer implements DenormalizerInterface, NormalizerInterface
 
     public function supportsDenormalization($data, $type, $format = null)
     {
-        if ($type !== 'Jane\\JsonSchema\\Model\\JsonSchema') {
-            return false;
-        }
-
-        return true;
+        return $type === 'Jane\\JsonSchema\\Model\\JsonSchema';
     }
 
     public function supportsNormalization($data, $format = null)
     {
-        if ($data instanceof \Jane\JsonSchema\Model\JsonSchema) {
-            return true;
-        }
-
-        return false;
+        return $data instanceof \Jane\JsonSchema\Model\JsonSchema;
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])
