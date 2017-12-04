@@ -19,22 +19,13 @@ use Jane\OpenApi\Normalizer\NormalizerFactory;
 use Jane\OpenApi\SchemaParser\SchemaParser;
 use Jane\JsonSchema\Registry;
 use Jane\JsonSchema\Schema;
-use PhpCsFixer\Config;
 use PhpCsFixer\ConfigInterface;
-use PhpCsFixer\Console\ConfigurationResolver;
-use PhpCsFixer\Differ\NullDiffer;
-use PhpCsFixer\Error\ErrorsManager;
-use PhpCsFixer\Finder;
-use PhpCsFixer\Runner\Runner;
-use PhpCsFixer\ToolInfo;
 use PhpParser\PrettyPrinter\Standard as StandardPrettyPrinter;
 use PhpParser\PrettyPrinterAbstract;
 use Symfony\Component\Serializer\Encoder\JsonDecode;
 use Symfony\Component\Serializer\Encoder\JsonEncode;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Serializer;
-use PhpCsFixer\Cache\NullCacheManager;
-use PhpCsFixer\Linter\Linter;
 
 class JaneOpenApi
 {
@@ -46,11 +37,6 @@ class JaneOpenApi
      * @var Generator\ClientGenerator
      */
     private $clientGenerator;
-
-    /**
-     * @var \PhpParser\PrettyPrinterAbstract
-     */
-    private $prettyPrinter;
 
     /**
      * @var ModelGenerator
@@ -68,11 +54,6 @@ class JaneOpenApi
     private $chainGuesser;
 
     /**
-     * @var ConfigInterface
-     */
-    private $fixerConfig;
-
-    /**
      * JaneOpenApi constructor.
      *
      * @param SchemaParser          $schemaParser
@@ -88,17 +69,13 @@ class JaneOpenApi
         ChainGuesser $chainGuesser,
         ModelGenerator $modelGenerator,
         NormalizerGenerator $normalizerGenerator,
-        ClientGenerator $clientGenerator,
-        PrettyPrinterAbstract $prettyPrinter,
-        ConfigInterface $fixerConfig = null
+        ClientGenerator $clientGenerator
     ) {
         $this->schemaParser = $schemaParser;
         $this->clientGenerator = $clientGenerator;
-        $this->prettyPrinter = $prettyPrinter;
         $this->modelGenerator = $modelGenerator;
         $this->normalizerGenerator = $normalizerGenerator;
         $this->chainGuesser = $chainGuesser;
-        $this->fixer = $fixerConfig;
     }
 
     /**
@@ -151,102 +128,21 @@ class JaneOpenApi
         foreach ($registry->getSchemas() as $schema) {
             $context->setCurrentSchema($schema);
 
-            $files = array_merge($files, $this->modelGenerator->generate($schema, $schema->getRootName(), $context));
-            $files = array_merge($files, $this->normalizerGenerator->generate($schema, $schema->getRootName(), $context));
+            $this->modelGenerator->generate($schema, $schema->getRootName(), $context);
+            $this->normalizerGenerator->generate($schema, $schema->getRootName(), $context);
+
             $clients = $this->clientGenerator->generate($schema->getParsed(), $schema->getNamespace(), $context, $schema->getOrigin() . '#');
 
             foreach ($clients as $node) {
                 $class = $node['class'];
                 $trait = $node['trait'];
 
-                $files[] = new File($schema->getDirectory() . DIRECTORY_SEPARATOR . 'Resource' . DIRECTORY_SEPARATOR . $class->stmts[1]->name . '.php', $class, '');
-                $files[] = new File($schema->getDirectory() . DIRECTORY_SEPARATOR . 'Resource' . DIRECTORY_SEPARATOR . $trait->stmts[1]->name . '.php', $trait, '');
+                $schema->addFile(new File($schema->getDirectory() . DIRECTORY_SEPARATOR . 'Resource' . DIRECTORY_SEPARATOR . $class->stmts[1]->name . '.php', $class, ''));
+                $schema->addFile(new File($schema->getDirectory() . DIRECTORY_SEPARATOR . 'Resource' . DIRECTORY_SEPARATOR . $trait->stmts[1]->name . '.php', $trait, ''));
             }
         }
 
         return $files;
-    }
-
-    /**
-     * Print files.
-     *
-     * @param File[]   $files
-     * @param Registry $registry
-     */
-    public function printFiles($files, $registry)
-    {
-        foreach ($files as $file) {
-            if (!file_exists(dirname($file->getFilename()))) {
-                mkdir(dirname($file->getFilename()), 0755, true);
-            }
-
-            file_put_contents($file->getFilename(), $this->prettyPrinter->prettyPrintFile([$file->getNode()]));
-        }
-
-        foreach ($registry->getSchemas() as $schema) {
-            $this->fix($schema->getDirectory());
-        }
-    }
-
-    /**
-     * Use php cs fixer to have a nice formatting of generated files.
-     *
-     * @param string $directory
-     *
-     * @return array|void
-     */
-    protected function fix($directory)
-    {
-        if (!class_exists('PhpCsFixer\Config')) {
-            return;
-        }
-
-        /** @var Config $fixerConfig */
-        $fixerConfig = $this->fixerConfig;
-
-        if (null === $fixerConfig) {
-            $fixerConfig = Config::create()
-                ->setRiskyAllowed(true)
-                ->setRules(
-                    [
-                        '@Symfony' => true,
-                        'array_syntax' => ['syntax' => 'short'],
-                        'simplified_null_return' => false,
-                        'ordered_imports' => true,
-                        'phpdoc_order' => true,
-                        'binary_operator_spaces' => ['align_equals' => true],
-                        'concat_space' => false,
-                        'yoda_style' => false,
-                        'header_comment' => [
-                            'header' => <<<EOH
-This file has been auto generated by Jane,
-
-Do no edit it directly.
-EOH
-                            ,
-                        ],
-                    ]
-                );
-        }
-        $resolverOptions = ['allow-risky' => true];
-        $resolver = new ConfigurationResolver($fixerConfig, $resolverOptions, $directory, new ToolInfo());
-
-        $finder = new Finder();
-        $finder->in($directory);
-        $fixerConfig->setFinder($finder);
-
-        $runner = new Runner(
-            $resolver->getConfig()->getFinder(),
-            $resolver->getFixers(),
-            new NullDiffer(),
-            null,
-            new ErrorsManager(),
-            new Linter(),
-            false,
-            new NullCacheManager()
-        );
-
-        return $runner->fix();
     }
 
     public static function build(array $options = [])
@@ -265,7 +161,6 @@ EOH
         $serializer = new Serializer($normalizers, $encoders);
         $schemaParser = new SchemaParser($serializer);
         $clientGenerator = GeneratorFactory::build($serializer);
-        $prettyPrinter = new StandardPrettyPrinter();
         $naming = new Naming();
         $modelGenerator = new ModelGenerator($naming);
         $normGenerator = new NormalizerGenerator($naming, isset($options['reference']) ? $options['reference'] : false);
@@ -275,8 +170,7 @@ EOH
             GuesserFactory::create($serializer, $options),
             $modelGenerator,
             $normGenerator,
-            $clientGenerator,
-            $prettyPrinter
+            $clientGenerator
         );
     }
 }

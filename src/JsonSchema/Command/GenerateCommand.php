@@ -2,8 +2,10 @@
 
 namespace Jane\JsonSchema\Command;
 
+use Jane\JsonSchema\Printer;
 use Jane\JsonSchema\Registry;
 use Jane\JsonSchema\Schema;
+use PhpParser\PrettyPrinter\Standard;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -95,6 +97,7 @@ class GenerateCommand extends Command
         }
 
         $jane = \Jane\JsonSchema\Jane::build($options);
+        $fixerConfig = null;
 
         if ($input->hasOption('fixer-config-file') && null !== $input->getOption('fixer-config-file')) {
             $fixerConfigFile = $input->getOption('fixer-config-file');
@@ -103,15 +106,13 @@ class GenerateCommand extends Command
                 throw new \RuntimeException(sprintf('Fixer config file %s could not be found', $fixerConfigFile));
             }
 
-            $configFile = require $fixerConfigFile;
-            $jane->setFixerConfig($configFile);
+            $fixerConfig = require $fixerConfigFile;
         }
 
-        $files = $jane->generate($registry);
+        $printer = new Printer(new Standard(), $fixerConfig);
 
-        foreach ($files as $file) {
-            $output->writeln(sprintf('Generated %s', $file));
-        }
+        $jane->generate($registry);
+        $printer->output($registry);
     }
 
     protected function resolveConfiguration(array $options = [])

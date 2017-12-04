@@ -2,6 +2,7 @@
 
 namespace Jane\JsonSchema;
 
+use Jane\JsonSchema\Generator\File;
 use Jane\JsonSchema\Guesser\Guess\ClassGuess;
 
 class Schema
@@ -23,6 +24,9 @@ class Schema
 
     /** @var string[] A list of references this schema is registered to */
     private $references;
+
+    /** @var File[] A list of references this schema is registered to */
+    private $files = [];
 
     /** @var mixed Parsed schema */
     private $parsed;
@@ -100,6 +104,16 @@ class Schema
     public function getClasses()
     {
         return $this->classes;
+    }
+
+    public function addFile(File $file)
+    {
+        $this->files[] = $file;
+    }
+
+    public function getFiles()
+    {
+        return $this->files;
     }
 
     public function addReference($reference)

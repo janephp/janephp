@@ -2,9 +2,11 @@
 
 namespace Jane\OpenApi\Command;
 
+use Jane\JsonSchema\Printer;
 use Jane\OpenApi\JaneOpenApi;
 use Jane\JsonSchema\Registry;
 use Jane\JsonSchema\Schema;
+use PhpParser\PrettyPrinter\Standard;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -90,12 +92,10 @@ class GenerateCommand extends Command
         }
 
         $janeOpenApi = JaneOpenApi::build($options);
-        $files = $janeOpenApi->generate($registry);
-        $janeOpenApi->printFiles($files, $registry);
+        $printer = new Printer(new Standard());
 
-        foreach ($files as $file) {
-            $output->writeln(sprintf('Generate %s', $file->getFilename()));
-        }
+        $janeOpenApi->generate($registry);
+        $printer->output($registry);
     }
 
     protected function resolveConfiguration(array $options = [])

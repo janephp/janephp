@@ -43,17 +43,9 @@ class ModelGenerator implements GeneratorInterface
 
     /**
      * Generate a model given a schema.
-     *
-     * @param Schema  $schema    Schema to generate from
-     * @param string  $className Class to generate
-     * @param Context $context   Context for generation
-     *
-     * @return File[]
      */
-    public function generate($schema, $className, Context $context)
+    public function generate(Schema $schema, string $className, Context $context)
     {
-        $files = [];
-
         foreach ($schema->getClasses() as $class) {
             $properties = [];
             $methods = [];
@@ -72,9 +64,7 @@ class ModelGenerator implements GeneratorInterface
 
             $namespace = new Stmt\Namespace_(new Name($schema->getNamespace() . '\\Model'), [$model]);
 
-            $files[] = new File($schema->getDirectory() . '/Model/' . $class->getName() . '.php', $namespace, self::FILE_TYPE_MODEL);
+            $schema->addFile(new File($schema->getDirectory() . '/Model/' . $class->getName() . '.php', $namespace, self::FILE_TYPE_MODEL));
         }
-
-        return $files;
     }
 }

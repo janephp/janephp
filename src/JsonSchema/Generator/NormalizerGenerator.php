@@ -48,17 +48,10 @@ class NormalizerGenerator implements GeneratorInterface
     }
 
     /**
-     * Generate a set of files given a schema.
-     *
-     * @param Schema  $schema    Schema to generate from
-     * @param string  $className Class to generate
-     * @param Context $context   Context for generation
-     *
-     * @return File[]
+     * {@inheritdoc}
      */
-    public function generate($schema, $className, Context $context)
+    public function generate(Schema $schema, string $className, Context $context)
     {
-        $files = [];
         $classes = [];
 
         foreach ($schema->getClasses() as $class) {
@@ -86,18 +79,17 @@ class NormalizerGenerator implements GeneratorInterface
                 new Stmt\Use_([new Stmt\UseUse(new Name('Symfony\Component\Serializer\Normalizer\NormalizerInterface'))]),
                 $normalizerClass,
             ]);
-            $files[] = new File($schema->getDirectory() . '/Normalizer/' . $class->getName() . 'Normalizer.php', $namespace, self::FILE_TYPE_NORMALIZER);
+
+            $schema->addFile(new File($schema->getDirectory() . '/Normalizer/' . $class->getName() . 'Normalizer.php', $namespace, self::FILE_TYPE_NORMALIZER));
         }
 
-        $files[] = new File(
+        $schema->addFile(new File(
             $schema->getDirectory() . '/Normalizer/NormalizerFactory.php',
             new Stmt\Namespace_(new Name($schema->getNamespace() . '\\Normalizer'), [
                 $this->createNormalizerFactoryClass($classes),
             ]),
             self::FILE_TYPE_NORMALIZER
-        );
-
-        return $files;
+        ));
     }
 
     protected function createNormalizerFactoryClass($classes)
