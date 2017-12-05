@@ -2,9 +2,6 @@
 
 namespace Jane\OpenApi;
 
-use Fitbug\SymfonySerializer\YamlEncoderDecoder\YamlDecode;
-use Fitbug\SymfonySerializer\YamlEncoderDecoder\YamlEncode;
-use Fitbug\SymfonySerializer\YamlEncoderDecoder\YamlEncoder;
 use Jane\JsonSchema\Generator\Context\Context;
 use Jane\JsonSchema\Generator\File;
 use Jane\JsonSchema\Generator\ModelGenerator;
@@ -20,12 +17,14 @@ use Jane\OpenApi\SchemaParser\SchemaParser;
 use Jane\JsonSchema\Registry;
 use Jane\JsonSchema\Schema;
 use PhpCsFixer\ConfigInterface;
-use PhpParser\PrettyPrinter\Standard as StandardPrettyPrinter;
 use PhpParser\PrettyPrinterAbstract;
 use Symfony\Component\Serializer\Encoder\JsonDecode;
 use Symfony\Component\Serializer\Encoder\JsonEncode;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
+use Symfony\Component\Serializer\Encoder\YamlEncoder;
 use Symfony\Component\Serializer\Serializer;
+use Symfony\Component\Yaml\Dumper;
+use Symfony\Component\Yaml\Parser;
 
 class JaneOpenApi
 {
@@ -156,8 +155,8 @@ class JaneOpenApi
                 new JsonDecode(false)
             ),
             new YamlEncoder(
-                new YamlEncode(),
-                new YamlDecode(false, true, true, true)
+                new Dumper(),
+                new Parser()
             ),
         ];
         $normalizers = NormalizerFactory::create();
