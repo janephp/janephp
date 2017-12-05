@@ -23,7 +23,6 @@
     "require": {
         "php": ">=7.1",
         "doctrine/inflector": "^1.0",
-        "fitbug/symfony-yaml-serializer-encoder-decoder": "^0.1.1",
         "league/uri": "^4.2",
         "nikic/php-parser": "^3.0",
         "php-http/httplug": "^1.0",
@@ -33,7 +32,7 @@
         "symfony/property-access": "^3.1|^4.0",
         "symfony/console": "^3.1|^4.0",
         "symfony/options-resolver": "^3.1|^4.0",
-        "symfony/serializer": "^3.1|^4.0",
+        "symfony/serializer": "^3.2|^4.0",
         "symfony/yaml": "^3.1|^4.0"
     },
     "require-dev": {
