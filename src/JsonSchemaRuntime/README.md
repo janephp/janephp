@@ -1,15 +1,18 @@
-# Jane
+# Jane JsonSchema Runtime
 
+Jane Runtime are a collection of class used by a library generated via [Jane JsonSchema](https://github.com/janephp/json-schema)
 
-[![Latest Version](https://img.shields.io/github/release/janephp/runtime.svg?style=flat-square)](https://github.com/janephp/runtime/releases)
-[![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE)
-[![Build Status](https://img.shields.io/travis/janephp/runtime.svg?style=flat-square)](https://travis-ci.org/janephp/runtime)
-[![Code Coverage](https://img.shields.io/scrutinizer/coverage/g/janephp/runtime.svg?style=flat-square)](https://scrutinizer-ci.com/g/janephp/runtime)
-[![Quality Score](https://img.shields.io/scrutinizer/g/janephp/runtime.svg?style=flat-square)](https://scrutinizer-ci.com/g/janephp/runtime)
-[![Total Downloads](https://img.shields.io/packagist/dt/jane/runtime.svg?style=flat-square)](https://packagist.org/packages/jane/runtime)
+## License
 
-Jane Runtime are a collection of class used by a library generated via Jane
+View the [LICENSE](LICENSE) file attach to this project.
 
+## Resources
+
+ * Documentation
+ * [Contributing](https://github.com/janephp/janephp/blob/master/CONTRIBUTING.md)
+ * [Report Issues](https://github.com/janephp/janephp/issues) and [send Pull Requests](https://github.com/janephp/janephp/pulls) 
+ in the [main Jane Repository](https://github.com/janephp/janephp)
+ 
 ## Sponsor
 
 [![JoliCode](https://jolicode.com/images/logo.svg)](https://jolicode.com)
@@ -19,7 +22,3 @@ Open Source time sponsored by JoliCode
 ## Credits
 
 * [All contributors](https://github.com/jolicode/jane/graphs/contributors)
-
-## License
-
-View the [LICENSE](LICENSE) file attach to this project.
