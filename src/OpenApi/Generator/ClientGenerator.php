@@ -8,6 +8,8 @@ use Jane\OpenApi\Naming\OperationNamingInterface;
 use Jane\OpenApi\Operation\OperationManager;
 use PhpParser\BuilderFactory;
 use PhpParser\Node;
+use PhpParser\Node\Name;
+use PhpParser\Node\Expr;
 use PhpParser\Node\Stmt;
 
 class ClientGenerator
@@ -70,6 +72,85 @@ class ClientGenerator
 
             $nodes[] = $resource;
         }
+
+        $classClient->addStmt(new Stmt\ClassMethod(
+            'create', [
+                'flags' => Stmt\Class_::MODIFIER_STATIC | Stmt\Class_::MODIFIER_PUBLIC,
+                'params' => [
+                    new Node\Param('httpClient', new Expr\ConstFetch(new Name('null')))
+                ],
+                'stmts' => [
+                    new Stmt\If_(
+                        new Expr\BinaryOp\Identical(new Expr\ConstFetch(new Name('null')), new Expr\Variable('httpClient')),
+                        [
+                            'stmts' => [
+                                new Stmt\TryCatch([
+                                    new Expr\Assign(
+                                        new Expr\Variable('httpClient'),
+                                        new Expr\StaticCall(
+                                            new Name('\\Http\\Discovery\\HttpAsyncClientDiscovery'),
+                                            'find'
+                                        )
+                                    )
+                                ], [
+                                    new Stmt\Catch_([
+                                        new Name('\\Http\\Discovery\\NotFoundException')
+                                    ], 'e', [
+                                        new Expr\Assign(
+                                            new Expr\Variable('httpClient'),
+                                            new Expr\StaticCall(
+                                                new Name('\\Http\\Discovery\\HttpClientDiscovery'),
+                                                'find'
+                                            )
+                                        )
+                                    ])
+                                ])
+                            ]
+                        ]
+                    ),
+                    new Expr\Assign(
+                        new Expr\Variable('messageFactory'),
+                        new Expr\StaticCall(
+                            new Name('\\Http\\Discovery\\MessageFactoryDiscovery'),
+                            'find'
+                        )
+                    ),
+                    new Expr\Assign(
+                        new Expr\Variable('serializer'),
+                        new Expr\New_(
+                            new Name('\\Symfony\\Component\\Serializer\\Serializer'),
+                            [
+                                new Node\Arg(
+                                    new Expr\StaticCall(
+                                        new Name('\\' . $context->getCurrentSchema()->getNamespace() . '\\Normalizer\\NormalizerFactory'),
+                                        'create'
+                                    )
+                                ),
+                                new Node\Arg(
+                                    new Expr\Array_([
+                                        new Expr\ArrayItem(
+                                            new Expr\New_(new Name('\\Symfony\\Component\\Serializer\\Encoder\\JsonEncoder'), [
+                                                new Node\Arg(new Expr\New_(new Name('\\Symfony\\Component\\Serializer\\Encoder\\JsonEncode'))),
+                                                new Node\Arg(new Expr\New_(new Name('\\Symfony\\Component\\Serializer\\Encoder\\JsonDecode'))),
+                                            ])
+                                        )
+                                    ])
+                                )
+                            ]
+                        )
+                    ),
+                    new Stmt\Return_(
+                        new Expr\New_(
+                            new Name('self'), [
+                                new Node\Arg(new Expr\Variable('httpClient')),
+                                new Node\Arg(new Expr\Variable('messageFactory')),
+                                new Node\Arg(new Expr\Variable('serializer')),
+                            ]
+                        )
+                    ),
+                ]
+            ]
+        ));
 
         $classCreator->addStmt($classClient);
 

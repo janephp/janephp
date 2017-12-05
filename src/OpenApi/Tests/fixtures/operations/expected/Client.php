@@ -18,4 +18,19 @@ class Client extends Resource
 {
     use DefaultResourceTrait;
     use TestResourceTrait;
+
+    public static function create($httpClient = null)
+    {
+        if (null === $httpClient) {
+            try {
+                $httpClient = \Http\Discovery\HttpAsyncClientDiscovery::find();
+            } catch (\Http\Discovery\NotFoundException $e) {
+                $httpClient = \Http\Discovery\HttpClientDiscovery::find();
+            }
+        }
+        $messageFactory = \Http\Discovery\MessageFactoryDiscovery::find();
+        $serializer = new \Symfony\Component\Serializer\Serializer(\Jane\OpenApi\Tests\Expected\Normalizer\NormalizerFactory::create(), [new \Symfony\Component\Serializer\Encoder\JsonEncoder(new \Symfony\Component\Serializer\Encoder\JsonEncode(), new \Symfony\Component\Serializer\Encoder\JsonDecode())]);
+
+        return new self($httpClient, $messageFactory, $serializer);
+    }
 }
