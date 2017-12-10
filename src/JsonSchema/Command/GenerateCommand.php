@@ -23,9 +23,10 @@ class GenerateCommand extends Command
         $this->setName('generate');
         $this->setDescription('Generate a set of class and normalizers given a specific Json Schema file');
         $this->addOption('config-file', 'c', InputOption::VALUE_OPTIONAL, 'File to use for jane configuration');
-        $this->addOption('no-reference', null, InputOption::VALUE_NONE, 'Don\'t use the reference system in your generated schema');
+        $this->addOption('reference', null, InputOption::VALUE_NONE, 'Use the reference system in your generated schema');
         $this->addOption('date-format', 'd', InputOption::VALUE_OPTIONAL, 'Date time format to use for date time field');
         $this->addOption('fixer-config-file', null, InputOption::VALUE_REQUIRED, 'File to use for php-cs-fixer configuration');
+        $this->addOption('no-strict', null, InputOption::VALUE_NONE, 'Don\'t use strict mode');
         $this->addArgument('json-schema-file', InputArgument::OPTIONAL, 'Location of the Json Schema file');
         $this->addArgument('root-class', InputArgument::OPTIONAL, 'Name of the root entity you want to generate');
         $this->addArgument('namespace', InputArgument::OPTIONAL, 'Namespace prefix to use for generated files');
@@ -80,8 +81,8 @@ class GenerateCommand extends Command
                 $options['date-format'] = $input->getOption('date-format');
             }
 
-            if ($input->hasOption('no-reference') && null !== $input->getOption('no-reference')) {
-                $options['reference'] = !$input->getOption('no-reference');
+            if ($input->hasOption('reference') && null !== $input->getOption('reference')) {
+                $options['reference'] = !$input->getOption('reference');
             }
         }
 
@@ -120,6 +121,7 @@ class GenerateCommand extends Command
         $optionsResolver = new OptionsResolver();
         $optionsResolver->setDefaults([
             'reference' => true,
+            'strict' => true,
             'date-format' => \DateTime::RFC3339,
         ]);
 
@@ -148,6 +150,7 @@ class GenerateCommand extends Command
             'json-schema-file',
             'reference',
             'date-format',
+            'strict',
         ]);
 
         $optionsResolver->setRequired([

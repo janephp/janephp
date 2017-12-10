@@ -37,12 +37,15 @@ class Jane
 
     private $chainGuesser;
 
-    public function __construct(Serializer $serializer, ChainGuesser $chainGuesser, ModelGenerator $modelGenerator, NormalizerGenerator $normalizerGenerator)
+    private $strict;
+
+    public function __construct(Serializer $serializer, ChainGuesser $chainGuesser, ModelGenerator $modelGenerator, NormalizerGenerator $normalizerGenerator, $strict = true)
     {
         $this->serializer = $serializer;
         $this->chainGuesser = $chainGuesser;
         $this->modelGenerator = $modelGenerator;
         $this->normalizerGenerator = $normalizerGenerator;
+        $this->strict = $strict;
     }
 
     /**
@@ -79,7 +82,7 @@ class Jane
             }
         }
 
-        return new Context($registry);
+        return new Context($registry, $this->strict);
     }
 
     /**
@@ -107,9 +110,9 @@ class Jane
         $chainGuesser = JsonSchemaGuesserFactory::create($serializer, $options);
         $naming = new Naming();
         $modelGenerator = new ModelGenerator($naming);
-        $normGenerator = new NormalizerGenerator($naming, isset($options['reference']) ? $options['reference'] : true);
+        $normGenerator = new NormalizerGenerator($naming, $options['reference']);
 
-        return new self($serializer, $chainGuesser, $modelGenerator, $normGenerator);
+        return new self($serializer, $chainGuesser, $modelGenerator, $normGenerator, $options['strict']);
     }
 
     public static function buildSerializer()

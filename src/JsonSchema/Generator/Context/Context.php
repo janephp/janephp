@@ -11,71 +11,49 @@ use Jane\JsonSchema\Schema;
  */
 class Context
 {
-    /**
-     * Registry of all classes created on various schema.
-     *
-     * @var Registry
-     */
     private $registry;
 
-    /**
-     * Files generated through the run.
-     *
-     * @var File[]
-     */
     private $files = [];
 
-    /**
-     * Variable scope to have unique variable name per method.
-     *
-     * @var UniqueVariableScope
-     */
     private $variableScope;
 
     private $currentSchema;
 
-    /**
-     * @param Registry $registry
-     */
-    public function __construct(Registry $registry)
+    private $strict;
+
+    public function __construct(Registry $registry, bool $strict = true)
     {
         $this->registry = $registry;
         $this->variableScope = new UniqueVariableScope();
+        $this->strict = $strict;
     }
 
-    public function addFile(File $file)
+    public function isStrict(): bool
+    {
+        return $this->strict;
+    }
+
+    public function addFile(File $file): void
     {
         $this->files[] = $file;
     }
 
-    /**
-     * @return File[]
-     */
-    public function getFiles()
+    public function getFiles(): array
     {
         return $this->files;
     }
 
-    /**
-     * @return Registry
-     */
-    public function getRegistry()
+    public function getRegistry(): Registry
     {
         return $this->registry;
     }
 
-    /**
-     * @return Schema
-     */
-    public function getCurrentSchema()
+    public function getCurrentSchema(): Schema
     {
         return $this->currentSchema;
     }
 
-    /**
-     * @param Schema $currentSchema
-     */
-    public function setCurrentSchema(Schema $currentSchema)
+    public function setCurrentSchema(Schema $currentSchema): void
     {
         $this->currentSchema = $currentSchema;
     }
@@ -83,19 +61,12 @@ class Context
     /**
      * Refresh the unique variable scope for a context.
      */
-    public function refreshScope()
+    public function refreshScope(): void
     {
         $this->variableScope = new UniqueVariableScope();
     }
 
-    /**
-     * Get a unique variable name.
-     *
-     * @param string $prefix
-     *
-     * @return string
-     */
-    public function getUniqueVariableName($prefix = 'var')
+    public function getUniqueVariableName(string $prefix = 'var'): string
     {
         return $this->variableScope->getUniqueName($prefix);
     }

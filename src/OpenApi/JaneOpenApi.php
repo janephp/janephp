@@ -28,6 +28,8 @@ use Symfony\Component\Yaml\Parser;
 
 class JaneOpenApi
 {
+    const VERSION = '4.x-dev';
+
     /**
      * @var SchemaParser
      */
@@ -52,29 +54,22 @@ class JaneOpenApi
      */
     private $chainGuesser;
 
-    /**
-     * JaneOpenApi constructor.
-     *
-     * @param SchemaParser          $schemaParser
-     * @param ChainGuesser          $chainGuesser
-     * @param ModelGenerator        $modelGenerator
-     * @param NormalizerGenerator   $normalizerGenerator
-     * @param ClientGenerator       $clientGenerator
-     * @param PrettyPrinterAbstract $prettyPrinter
-     * @param ConfigInterface|null  $fixerConfig
-     */
+    private $strict;
+
     public function __construct(
         SchemaParser $schemaParser,
         ChainGuesser $chainGuesser,
         ModelGenerator $modelGenerator,
         NormalizerGenerator $normalizerGenerator,
-        ClientGenerator $clientGenerator
+        ClientGenerator $clientGenerator,
+        bool $strict = true
     ) {
         $this->schemaParser = $schemaParser;
         $this->clientGenerator = $clientGenerator;
         $this->modelGenerator = $modelGenerator;
         $this->normalizerGenerator = $normalizerGenerator;
         $this->chainGuesser = $chainGuesser;
+        $this->strict = $strict;
     }
 
     /**
@@ -107,7 +102,7 @@ class JaneOpenApi
             }
         }
 
-        return new Context($registry);
+        return new Context($registry, $this->strict);
     }
 
     /**
@@ -165,14 +160,15 @@ class JaneOpenApi
         $clientGenerator = GeneratorFactory::build($serializer, $options);
         $naming = new Naming();
         $modelGenerator = new ModelGenerator($naming);
-        $normGenerator = new NormalizerGenerator($naming, isset($options['reference']) ? $options['reference'] : false);
+        $normGenerator = new NormalizerGenerator($naming, $options['reference'] ?? false);
 
         return new self(
             $schemaParser,
             GuesserFactory::create($serializer, $options),
             $modelGenerator,
             $normGenerator,
-            $clientGenerator
+            $clientGenerator,
+            $options['strict'] ?? true
         );
     }
 }

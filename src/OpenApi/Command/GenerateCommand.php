@@ -27,6 +27,7 @@ class GenerateCommand extends Command
         $this->addOption('reference', null, InputOption::VALUE_NONE, 'Use the JSON Reference specification in your generated library');
         $this->addOption('async', null, InputOption::VALUE_NONE, 'Generate extra async methods compatible with amphp');
         $this->addOption('date-format', 'd', InputOption::VALUE_OPTIONAL, 'Date time format to use for date time field');
+        $this->addOption('no-strict', null, InputOption::VALUE_NONE, 'Don\'t use strict mode');
         $this->addArgument('openapi-file', InputArgument::OPTIONAL, 'Location of the OpenApi (Swagger) Schema file');
         $this->addArgument('namespace', InputArgument::OPTIONAL, 'Namespace prefix to use for generated files');
         $this->addArgument('directory', InputArgument::OPTIONAL, 'Directory where to generate files');
@@ -83,6 +84,10 @@ class GenerateCommand extends Command
             if ($input->hasOption('async') && null !== $input->getOption('async')) {
                 $options['async'] = $input->getOption('async');
             }
+
+            if ($input->hasOption('no-strict') && null !== $input->getOption('no-strict')) {
+                $options['strict'] = !$input->getOption('no-strict');
+            }
         }
 
         $options = $this->resolveConfiguration($options);
@@ -110,6 +115,7 @@ class GenerateCommand extends Command
             'reference' => false,
             'date-format' => \DateTime::RFC3339,
             'async' => false,
+            'strict' => true,
         ]);
 
         if (array_key_exists('openapi-file', $options)) {
@@ -137,6 +143,7 @@ class GenerateCommand extends Command
             'reference',
             'date-format',
             'async',
+            'strict',
         ]);
 
         $optionsResolver->setRequired([

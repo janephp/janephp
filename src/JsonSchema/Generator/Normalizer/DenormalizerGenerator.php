@@ -79,7 +79,10 @@ trait DenormalizerGenerator
             new Expr\BooleanNot(new Expr\FuncCall(new Name('is_object'), [new Arg(new Expr\Variable('data'))])),
             [
                 'stmts' => [
-                    new Stmt\Throw_(new Expr\New_(new Name('InvalidArgumentException'))),
+                    $context->isStrict() ?
+                    new Stmt\Throw_(new Expr\New_(new Name('InvalidArgumentException')))
+                    :
+                    new Stmt\Return_(new Expr\ConstFetch(new Name('null'))),
                 ],
             ]
         ));
@@ -88,11 +91,22 @@ trait DenormalizerGenerator
             $propertyVar = new Expr\PropertyFetch(new Expr\Variable('data'), sprintf("{'%s'}", $property->getName()));
             list($denormalizationStatements, $outputVar) = $property->getType()->createDenormalizationStatement($context, $propertyVar);
 
-            $statements[] = new Stmt\If_(
-                new Expr\FuncCall(new Name('property_exists'), [
-                    new Arg(new Expr\Variable('data')),
-                    new Arg(new Scalar\String_($property->getName())),
-                ]), [
+            $condition = new Expr\FuncCall(new Name('property_exists'), [
+                new Arg(new Expr\Variable('data')),
+                new Arg(new Scalar\String_($property->getName())),
+            ]);
+
+            if (!$context->isStrict()) {
+                $condition = new Expr\BinaryOp\BooleanAnd(
+                    $condition,
+                    new Expr\BinaryOp\NotIdentical(
+                        $propertyVar,
+                        new Expr\ConstFetch(new Name('null'))
+                    )
+                );
+            }
+
+            $statements[] = new Stmt\If_($condition, [
                     'stmts' => array_merge($denormalizationStatements, [
                         new Expr\MethodCall($objectVariable, $this->getNaming()->getPrefixedMethodName('set', $property->getName()), [
                             $outputVar,
