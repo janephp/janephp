@@ -2,19 +2,12 @@
 
 namespace Jane\JsonSchema\Guesser\Guess;
 
-use PhpParser\Node\Name;
-
 class ClassGuess
 {
     /**
      * @var string Name of the class
      */
     private $name;
-
-    /**
-     * @var array Options for generation
-     */
-    private $options;
 
     /**
      * @var mixed Object link to the generation
@@ -31,12 +24,29 @@ class ClassGuess
      */
     private $reference;
 
-    public function __construct($object, $reference, $name, $options = [])
+    private $constraints = [];
+
+    public function __construct($object, $reference, $name)
     {
         $this->name = $name;
         $this->object = $object;
-        $this->options = $options;
         $this->reference = $reference;
+    }
+
+    /**
+     * @return ConstraintGuess[]
+     */
+    public function getConstraints(): array
+    {
+        return $this->constraints;
+    }
+
+    /**
+     * @param ConstraintGuess[] $constraints
+     */
+    public function setConstraints($constraints): void
+    {
+        $this->constraints = $constraints;
     }
 
     /**
