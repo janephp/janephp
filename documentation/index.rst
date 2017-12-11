@@ -6,3 +6,20 @@ code respecting common and advanced PSR.
 
  * JsonSchema
  * OpenAPI
+
+.. toctree::
+   :hidden:
+
+   Jane <self>
+
+.. toctree::
+   :hidden:
+   :caption: Json Schema
+
+   Introduction <JsonSchema/introduction>
+
+.. toctree::
+   :hidden:
+   :caption: OpenAPI
+
+   Introduction <OpenAPI/introduction>
