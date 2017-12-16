@@ -36,7 +36,10 @@
                     "200": {
                         "description": "no error"
                     }
-                }
+                },
+                "tags": [
+                    "Test.foo"
+                ]
             }
         },
         "/test-get": {

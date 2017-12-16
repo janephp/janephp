@@ -24,7 +24,9 @@ class OperationCollection extends \ArrayObject
             $group = $operation->getOperation()->getTags()[0];
         }
 
-        $group = trim(preg_replace('/[^a-z0-9 ]+/iu', '', $group));
+        // Doctrine Inflector does not seem to handle some characters (like dots) well.
+        // So replace invalid char by an underscore to allow Doctrine to uppercase word correctly.
+        $group = trim(preg_replace('/[^a-z0-9 ]+/iu', '_', $group));
         $group = Inflector::classify($group);
 
         if (!isset($this[$group])) {
