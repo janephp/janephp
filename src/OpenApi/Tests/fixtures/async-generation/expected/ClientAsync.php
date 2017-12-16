@@ -10,16 +10,17 @@ declare(strict_types=1);
 
 namespace Jane\OpenApi\Tests\Expected;
 
-class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugResource
+class ClientAsync extends \Jane\OpenApiRuntime\Client\AmpArtaxResource
 {
+    use Resource\TestAsyncResourceTrait;
+
     public static function create($httpClient = null)
     {
         if (null === $httpClient) {
-            $httpClient = \Http\Discovery\HttpClientDiscovery::find();
+            $httpClient = new \Amp\Artax\DefaultClient();
         }
-        $messageFactory = \Http\Discovery\MessageFactoryDiscovery::find();
         $serializer = new \Symfony\Component\Serializer\Serializer(\Jane\OpenApi\Tests\Expected\Normalizer\NormalizerFactory::create(), [new \Symfony\Component\Serializer\Encoder\JsonEncoder(new \Symfony\Component\Serializer\Encoder\JsonEncode(), new \Symfony\Component\Serializer\Encoder\JsonDecode())]);
 
-        return new self($httpClient, $messageFactory, $serializer);
+        return new self($httpClient, $serializer);
     }
 }

@@ -20,7 +20,7 @@ trait TestResourceTrait
      *
      * @return \Psr\Http\Message\ResponseInterface|null
      */
-    public function testReferenceResponse($parameters = [], $fetch = self::FETCH_OBJECT)
+    public function testReferenceResponse(array $parameters = [], string $fetch = self::FETCH_OBJECT)
     {
         $queryParam = new QueryParam();
         $url = '/test-query';

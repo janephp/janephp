@@ -24,7 +24,7 @@ trait PetsResourceTrait
      *
      * @return \Psr\Http\Message\ResponseInterface|\Jane\OpenApi\Tests\Expected\Model\Pet|\Jane\OpenApi\Tests\Expected\Model\Error
      */
-    public function listPets($parameters = [], $fetch = self::FETCH_OBJECT)
+    public function listPets(array $parameters = [], string $fetch = self::FETCH_OBJECT)
     {
         $queryParam = new QueryParam();
         $queryParam->setDefault('limit', null);
@@ -51,7 +51,7 @@ trait PetsResourceTrait
      *
      * @return \Psr\Http\Message\ResponseInterface|null|\Jane\OpenApi\Tests\Expected\Model\Error
      */
-    public function createPets($parameters = [], $fetch = self::FETCH_OBJECT)
+    public function createPets(array $parameters = [], string $fetch = self::FETCH_OBJECT)
     {
         $queryParam = new QueryParam();
         $url = '/v1/pets';
@@ -78,7 +78,7 @@ trait PetsResourceTrait
      *
      * @return \Psr\Http\Message\ResponseInterface|\Jane\OpenApi\Tests\Expected\Model\Pet|\Jane\OpenApi\Tests\Expected\Model\Error
      */
-    public function showPetById($petId, $parameters = [], $fetch = self::FETCH_OBJECT)
+    public function showPetById(string $petId, array $parameters = [], string $fetch = self::FETCH_OBJECT)
     {
         $queryParam = new QueryParam();
         $url = '/v1/pets/{petId}';

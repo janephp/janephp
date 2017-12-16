@@ -3,192 +3,127 @@
 namespace Jane\OpenApi\Generator;
 
 use Jane\JsonSchema\Generator\Context\Context;
+use Jane\JsonSchema\Generator\File;
+use Jane\JsonSchema\Generator\GeneratorInterface;
+use Jane\JsonSchema\Schema;
 use Jane\OpenApi\Model\OpenApi;
 use Jane\OpenApi\Naming\OperationNamingInterface;
+use Jane\OpenApi\Operation\OperationCollection;
 use Jane\OpenApi\Operation\OperationManager;
-use PhpParser\BuilderFactory;
-use PhpParser\Node;
 use PhpParser\Node\Name;
-use PhpParser\Node\Expr;
 use PhpParser\Node\Stmt;
 
-class ClientGenerator
+abstract class ClientGenerator implements GeneratorInterface
 {
-    /**
-     * @var \Jane\OpenApi\Operation\OperationManager
-     */
+    public const FILE_TYPE_CLIENT = 'client';
+    public const FILE_TYPE_RESOURCE = 'resource';
+    public const FILE_TYPE_RESOURCE_TRAIT = 'resource_trait';
+
     private $operationManager;
 
-    /**
-     * @var OperationGenerator
-     */
     private $operationGenerator;
 
-    /**
-     * @var OperationNamingInterface
-     */
     private $operationNaming;
 
-    private $generateAsync;
-
-    public function __construct(OperationManager $operationManager, OperationGenerator $operationGenerator, OperationNamingInterface $operationNaming, bool $generateAsync = false)
+    public function __construct(OperationManager $operationManager, OperationGenerator $operationGenerator, OperationNamingInterface $operationNaming)
     {
         $this->operationManager = $operationManager;
         $this->operationGenerator = $operationGenerator;
         $this->operationNaming = $operationNaming;
-        $this->generateAsync = $generateAsync;
     }
 
-    /**
-     * Generate an ast node (which correspond to a class) for a OpenApi spec.
-     *
-     * @param OpenApi $openApi
-     * @param string  $namespace
-     * @param Context $context
-     * @param string  $reference
-     * @param string  $suffix
-     *
-     * @return Node[]
-     */
-    public function generate(OpenApi $openApi, string $namespace, Context $context, string $reference, string $suffix = 'Resource')
+    public function generate(Schema $schema, string $className, Context $context)
     {
-        $factory = new BuilderFactory();
-        $classClient = $factory->class('Client');
-        $classClient->extend('Resource');
+        /** @var OpenApi $openApi */
+        $openApi = $schema->getParsed();
+        $operationsGrouped = $this->operationManager->buildOperationCollection($openApi, $schema->getOrigin() . '#');
 
-        $classCreator = $factory->namespace($namespace)
-            ->addStmt($factory->use('Jane\OpenApiRuntime\Client\Resource'))
-        ;
-
-        $nodes = [];
-        $operationsGrouped = $this->operationManager->buildOperationCollection($openApi, $reference);
+        $traitsStatements = [];
 
         foreach ($operationsGrouped as $group => $operations) {
-            $resource = $this->generateClass($group, $operations, $namespace, $context, $suffix);
-            $classClient->addStmt(new Stmt\TraitUse([
-                new Node\Name($group . $suffix . 'Trait'),
-            ]));
-            $classCreator->addStmt($factory->use($namespace . '\\Resource\\' . $group . $suffix . 'Trait'));
-
-            $nodes[] = $resource;
+            $group = ucfirst($group);
+            $traitName = $this->createResourceTrait($group, $schema, $operations, $context);
+            $this->createResource($group, $traitName, $schema, $context);
+            $traitsStatements[] = new Stmt\TraitUse([
+                new Name('Resource\\' . $traitName),
+            ]);
         }
 
-        $classClient->addStmt(new Stmt\ClassMethod(
-            'create', [
-                'flags' => Stmt\Class_::MODIFIER_STATIC | Stmt\Class_::MODIFIER_PUBLIC,
-                'params' => [
-                    new Node\Param('httpClient', new Expr\ConstFetch(new Name('null')))
-                ],
-                'stmts' => [
-                    new Stmt\If_(
-                        new Expr\BinaryOp\Identical(new Expr\ConstFetch(new Name('null')), new Expr\Variable('httpClient')),
-                        [
-                            'stmts' => [
-                                new Stmt\TryCatch([
-                                    new Expr\Assign(
-                                        new Expr\Variable('httpClient'),
-                                        new Expr\StaticCall(
-                                            new Name('\\Http\\Discovery\\HttpAsyncClientDiscovery'),
-                                            'find'
-                                        )
-                                    )
-                                ], [
-                                    new Stmt\Catch_([
-                                        new Name('\\Http\\Discovery\\NotFoundException')
-                                    ], 'e', [
-                                        new Expr\Assign(
-                                            new Expr\Variable('httpClient'),
-                                            new Expr\StaticCall(
-                                                new Name('\\Http\\Discovery\\HttpClientDiscovery'),
-                                                'find'
-                                            )
-                                        )
-                                    ])
-                                ])
-                            ]
-                        ]
-                    ),
-                    new Expr\Assign(
-                        new Expr\Variable('messageFactory'),
-                        new Expr\StaticCall(
-                            new Name('\\Http\\Discovery\\MessageFactoryDiscovery'),
-                            'find'
-                        )
-                    ),
-                    new Expr\Assign(
-                        new Expr\Variable('serializer'),
-                        new Expr\New_(
-                            new Name('\\Symfony\\Component\\Serializer\\Serializer'),
-                            [
-                                new Node\Arg(
-                                    new Expr\StaticCall(
-                                        new Name('\\' . $context->getCurrentSchema()->getNamespace() . '\\Normalizer\\NormalizerFactory'),
-                                        'create'
-                                    )
-                                ),
-                                new Node\Arg(
-                                    new Expr\Array_([
-                                        new Expr\ArrayItem(
-                                            new Expr\New_(new Name('\\Symfony\\Component\\Serializer\\Encoder\\JsonEncoder'), [
-                                                new Node\Arg(new Expr\New_(new Name('\\Symfony\\Component\\Serializer\\Encoder\\JsonEncode'))),
-                                                new Node\Arg(new Expr\New_(new Name('\\Symfony\\Component\\Serializer\\Encoder\\JsonDecode'))),
-                                            ])
-                                        )
-                                    ])
-                                )
-                            ]
-                        )
-                    ),
-                    new Stmt\Return_(
-                        new Expr\New_(
-                            new Name('self'), [
-                                new Node\Arg(new Expr\Variable('httpClient')),
-                                new Node\Arg(new Expr\Variable('messageFactory')),
-                                new Node\Arg(new Expr\Variable('serializer')),
-                            ]
-                        )
-                    ),
-                ]
+        $client = $this->createResourceClass('Client' . $this->getSuffix());
+        $client->stmts = array_merge(
+            $client->stmts,
+            $traitsStatements,
+            [
+                $this->getFactoryMethod($context)
             ]
+        );
+
+        $node = new Stmt\Namespace_(new Name($schema->getNamespace()), [
+            $client,
+        ]);
+
+        $schema->addFile(new File(
+            $schema->getDirectory() . DIRECTORY_SEPARATOR . 'Client' . $this->getSuffix() . '.php',
+            $node,
+            self::FILE_TYPE_CLIENT
         ));
-
-        $classCreator->addStmt($classClient);
-
-        return [
-            'resources' => $nodes,
-            'client' => $classCreator->getNode()
-        ];
     }
 
-    protected function generateClass($group, $operations, $namespace, Context $context, $suffix = 'Resource')
+    protected function createResource(string $group, string $traitName, Schema $schema, Context $context)
     {
-        $factory = new BuilderFactory();
-        $trait = $factory->trait($group . $suffix . 'Trait');
-        $class = $factory->class($group . $suffix);
-        $class->extend('Resource');
+        $className = $group . $this->getSuffix() .'Resource';
+        $resource = $this->createResourceClass($className);
+        $resource->stmts = array_merge(
+            $resource->stmts,
+            [
+                new Stmt\TraitUse([
+                    new Name($traitName),
+                ])
+            ]
+        );
+
+        $node = new Stmt\Namespace_(new Name($schema->getNamespace() . '\\Resource'), [
+            $resource,
+        ]);
+
+        $schema->addFile(new File(
+            $schema->getDirectory() . DIRECTORY_SEPARATOR . 'Resource' . DIRECTORY_SEPARATOR . $className . '.php',
+            $node,
+            self::FILE_TYPE_RESOURCE
+        ));
+    }
+
+    protected function createResourceTrait(string $group, Schema $schema, $operations, Context $context): string
+    {
+        $statements = [];
 
         foreach ($operations as $operation) {
-            $trait->addStmt($this->operationGenerator->generateSync($this->operationNaming->generateFunctionName($operation), $operation, $context));
-
-            if ($this->generateAsync) {
-                $trait->addStmt($this->operationGenerator->generateAsync($this->operationNaming->generateFunctionName($operation), $operation, $context));
-            }
+            $operationName = $this->operationNaming->generateFunctionName($operation);
+            $statements[] = $this->operationGenerator->createOperation($operationName, $operation, $context);
         }
 
-        $class->addStmt(new Stmt\TraitUse([
-            new Node\Name($group . $suffix . 'Trait'),
-        ]));
+        $traitName = $group . $this->getSuffix() . 'ResourceTrait';
+        $trait = new Stmt\Trait_($traitName, [
+            'stmts' => $statements,
+        ]);
 
-        return [
-            'class' => $factory->namespace($namespace . '\\Resource')
-                ->addStmt($factory->use('Jane\OpenApiRuntime\Client\Resource'))
-                ->addStmt($class)
-                ->getNode(),
-            'name' => $group . $suffix,
-            'trait' => $factory->namespace($namespace . '\\Resource')
-                ->addStmt($factory->use('Jane\OpenApiRuntime\Client\QueryParam'))
-                ->addStmt($trait)
-                ->getNode(),
-        ];
+        $node = new Stmt\Namespace_(new Name($schema->getNamespace() . '\\Resource'), [
+            new Stmt\Use_([new Stmt\UseUse(new Name('Jane\OpenApiRuntime\Client\QueryParam'))]),
+            $trait,
+        ]);
+
+        $schema->addFile(new File(
+            $schema->getDirectory() . DIRECTORY_SEPARATOR . 'Resource'. DIRECTORY_SEPARATOR . $traitName . '.php',
+            $node,
+            self::FILE_TYPE_RESOURCE_TRAIT
+        ));
+
+        return $traitName;
     }
+
+    abstract protected function getSuffix(): string;
+
+    abstract protected function createResourceClass(string $name): Stmt\Class_;
+
+    abstract protected function getFactoryMethod(Context $context): Stmt;
 }

@@ -20,7 +20,7 @@ trait BarResourceTrait
      *
      * @return \Psr\Http\Message\ResponseInterface|null
      */
-    public function producesTriggersAcceptBeingSet($parameters = [], $fetch = self::FETCH_OBJECT)
+    public function producesTriggersAcceptBeingSet(array $parameters = [], string $fetch = self::FETCH_OBJECT)
     {
         $queryParam = new QueryParam();
         $url = '/test-object';

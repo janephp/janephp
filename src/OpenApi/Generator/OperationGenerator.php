@@ -20,7 +20,7 @@ use PhpParser\Node\Scalar;
 use PhpParser\Comment;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 
-class OperationGenerator
+abstract class OperationGenerator
 {
     use OutputGeneratorTrait;
     use InputGeneratorTrait;
@@ -51,132 +51,36 @@ class OperationGenerator
         $this->exceptionGenerator = $exceptionGenerator;
     }
 
-    public function generateSync($name, Operation $operation, Context $context)
+    abstract protected function getAssignResponseStatement(): Expr;
+
+    abstract protected function getReturnTypesForDoc($outputTypes): string;
+
+    abstract protected function getResponseClass(): string;
+
+    abstract protected function getCreateRequestStatements(string $method, Expr\Variable $urlVariable, Expr\Variable $headerVariable, Expr\Variable $bodyVariable): array;
+
+    public function createOperation($name, Operation $operation, Context $context): Stmt\ClassMethod
     {
-        list($queryParamDocumentation, , ) = $this->createQueryParamStatements($operation);
-        list($documentationParameters, $parameters) = $this->createParameters($operation, $queryParamDocumentation, $context);
-        list($statements, $outputTypes, $throwTypes) = $this->getOperationStatements(
-            $name,
-            $operation,
-            $context,
-            // $response = $this->httpClient->sendRequest($request);
-            new Expr\Assign(new Expr\Variable('response'), new Expr\MethodCall(
-                new Expr\PropertyFetch(new Expr\Variable('this'), 'httpClient'),
-                'sendRequest',
-                [new Arg(new Expr\Variable('request'))]
-            ))
-        );
-
-        $documentation = array_merge(
-            [
-                '/**',
-                sprintf(' * %s', $operation->getOperation()->getDescription()),
-                ' *',
-            ],
-            $documentationParameters,
-            array_map(function ($type) {
-                return ' * @throws ' . $type;
-            }, $throwTypes),
-            [
-                ' *',
-                ' * @return ' . implode('|', $outputTypes),
-                ' */',
-            ]
-        );
-
-        return new Stmt\ClassMethod($name, [
-            'type' => Stmt\Class_::MODIFIER_PUBLIC,
-            'params' => $parameters,
-            'stmts' => $statements,
-        ], [
-            'comments' => [new Comment\Doc(implode("\n", $documentation))],
-        ]);
-    }
-
-    public function generateAsync($name, Operation $operation, Context $context)
-    {
-        list($queryParamDocumentation, , ) = $this->createQueryParamStatements($operation);
-        list($documentationParameters, $parameters) = $this->createParameters($operation, $queryParamDocumentation, $context);
-        list($statements, $outputTypes, $throwTypes) = $this->getOperationStatements(
-            $name,
-            $operation,
-            $context,
-            // $response = yield $this->httpClient->sendAsyncRequest($request);
-            new Expr\Assign(new Expr\Variable('response'), new Expr\Yield_(new Expr\MethodCall(
-                new Expr\PropertyFetch(new Expr\Variable('this'), 'httpClient'),
-                'sendAsyncRequest',
-                [new Arg(new Expr\Variable('request'))]
-            )))
-        );
-
-        $documentation = array_merge(
-            [
-                '/**',
-                sprintf(' * %s', $operation->getOperation()->getDescription()),
-                ' *',
-            ],
-            $documentationParameters,
-            array_map(function ($type) {
-                return ' * @throws ' . $type;
-            }, $throwTypes),
-            [
-                ' *',
-                ' * @return \Amp\Promise<' . implode('|', $outputTypes).'>',
-                ' */',
-            ]
-        );
-
-        $vars = [];
-
-        /** @var Param $parameter */
-        foreach ($parameters as $parameter) {
-            $vars[] = new Expr\Variable($parameter->name);
-        }
-
-        return new Stmt\ClassMethod($name. 'Async', [
-            'type' => Stmt\Class_::MODIFIER_PUBLIC,
-            'params' => $parameters,
-            'stmts' => [
-                 new Stmt\Return_(
-                     new Expr\FuncCall(new Name('\Amp\call'), array_merge([
-                         new Expr\Closure([
-                             'stmts' => $statements,
-                             'params' => $parameters,
-                         ]),
-                     ], $vars))
-                 )
-            ],
-        ], [
-            'comments' => [new Comment\Doc(implode("\n", $documentation))],
-        ]);
-    }
-
-    protected function getOperationStatements($name, Operation $operation, Context $context, Expr $getResponse)
-    {
-        // Input
-        list(, $queryParamStatements, $queryParamVariable) = $this->createQueryParamStatements($operation);
+        list($queryParamDocumentation, $queryParamStatements, $queryParamVariable) = $this->createQueryParamStatements($operation);
         list($urlStatements, $urlVariable) = $this->createUrlStatements($operation, $queryParamVariable);
         list($bodyStatements, $bodyVariable) = $this->createBodyStatements($operation, $queryParamVariable, $context);
         list($headerStatements, $headerVariable) = $this->createHeaderStatements($operation, $queryParamVariable);
+        list($documentationParameters, $parameters) = $this->createParameters($operation, $queryParamDocumentation, $context);
 
-        $statements = array_merge($queryParamStatements, $urlStatements, $headerStatements, $bodyStatements, [
-            // $request = $this->messageFactory->createRequest('method', $url, $headers, $body);
-            new Expr\Assign(new Expr\Variable('request'), new Expr\MethodCall(
-                new Expr\PropertyFetch(new Expr\Variable('this'), 'messageFactory'),
-                'createRequest',
-                [
-                    new Arg(new Scalar\String_($operation->getMethod())),
-                    new Arg($urlVariable),
-                    new Arg($headerVariable),
-                    new Arg($bodyVariable),
-                ]
-            )),
-            $getResponse,
-        ]);
+        $statements = array_merge(
+            $queryParamStatements,
+            $urlStatements,
+            $headerStatements,
+            $bodyStatements,
+            $this->getCreateRequestStatements($operation->getMethod(), $urlVariable, $headerVariable, $bodyVariable),
+            [
+                $this->getAssignResponseStatement(),
+            ]
+        );
 
         // Output
         $outputStatements = [];
-        $outputTypes = ['\\Psr\\Http\\Message\\ResponseInterface'];
+        $outputTypes = ['\\' . $this->getResponseClass()];
         $throwTypes = [];
 
         if ($operation->getOperation()->getResponses()) {
@@ -222,7 +126,30 @@ class OperationGenerator
         // return $response
         $statements[] = new Stmt\Return_(new Expr\Variable('response'));
 
-        return [$statements, $outputTypes, $throwTypes];
+        $documentation = array_merge(
+            [
+                '/**',
+                sprintf(' * %s', $operation->getOperation()->getDescription()),
+                ' *',
+            ],
+            $documentationParameters,
+            array_map(function ($type) {
+                return ' * @throws ' . $type;
+            }, $throwTypes),
+            [
+                ' *',
+                ' * @return ' .  $this->getReturnTypesForDoc($outputTypes), //implode('|', $outputTypes),
+                ' */',
+            ]
+        );
+
+        return new Stmt\ClassMethod($name, [
+            'type' => Stmt\Class_::MODIFIER_PUBLIC,
+            'params' => $parameters,
+            'stmts' => $statements,
+        ], [
+            'comments' => [new Comment\Doc(implode("\n", $documentation))],
+        ]);
     }
 
     /**

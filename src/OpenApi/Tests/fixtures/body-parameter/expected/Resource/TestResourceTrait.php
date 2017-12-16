@@ -21,7 +21,7 @@ trait TestResourceTrait
      *
      * @return \Psr\Http\Message\ResponseInterface|null
      */
-    public function testSimpleBodyParameter($testString, $parameters = [], $fetch = self::FETCH_OBJECT)
+    public function testSimpleBodyParameter($testString, array $parameters = [], string $fetch = self::FETCH_OBJECT)
     {
         $queryParam = new QueryParam();
         $url = '/test-simple';
@@ -46,7 +46,7 @@ trait TestResourceTrait
      *
      * @return \Psr\Http\Message\ResponseInterface|null
      */
-    public function testObjectBodyParameter(\Jane\OpenApi\Tests\Expected\Model\Schema $testObject, $parameters = [], $fetch = self::FETCH_OBJECT)
+    public function testObjectBodyParameter(\Jane\OpenApi\Tests\Expected\Model\Schema $testObject, array $parameters = [], string $fetch = self::FETCH_OBJECT)
     {
         $queryParam = new QueryParam();
         $url = '/test-object';
@@ -71,7 +71,7 @@ trait TestResourceTrait
      *
      * @return \Psr\Http\Message\ResponseInterface|null
      */
-    public function testObjectListBodyParameter(array $testObjectList, $parameters = [], $fetch = self::FETCH_OBJECT)
+    public function testObjectListBodyParameter(array $testObjectList, array $parameters = [], string $fetch = self::FETCH_OBJECT)
     {
         $queryParam = new QueryParam();
         $url = '/test-object-list';

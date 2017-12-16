@@ -141,8 +141,8 @@ trait InputGeneratorTrait
 
         $documentationParams[] = ' * @param string $fetch      Fetch mode (object or response)';
 
-        $methodParameters[] = new Param('parameters', new Expr\Array_());
-        $methodParameters[] = new Param('fetch', new Expr\ConstFetch(new Name('self::FETCH_OBJECT')));
+        $methodParameters[] = new Param('parameters', new Expr\Array_(), 'array');
+        $methodParameters[] = new Param('fetch', new Expr\ConstFetch(new Name('self::FETCH_OBJECT')), 'string');
 
         return [$documentationParams, $methodParameters];
     }

@@ -8,10 +8,10 @@ use Jane\OpenApi\Model\OpenApi;
 
 class OperationManager
 {
-    public function buildOperationCollection(OpenApi $openApi, $reference)
+    public function buildOperationCollection(OpenApi $openApi, string $reference): OperationCollection
     {
         $operationCollection = new OperationCollection();
-        $host = null === $openApi->getHost() ? 'localhost' : $openApi->getHost();
+        $host = $openApi->getHost() ?? 'localhost';
 
         if ($openApi->getPaths()) {
             foreach ($openApi->getPaths() as $path => $pathItem) {

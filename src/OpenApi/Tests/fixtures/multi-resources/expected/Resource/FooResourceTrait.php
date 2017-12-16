@@ -20,7 +20,7 @@ trait FooResourceTrait
      *
      * @return \Psr\Http\Message\ResponseInterface|null
      */
-    public function bodyParameterTriggersContentTypeBeingSet($parameters = [], $fetch = self::FETCH_OBJECT)
+    public function bodyParameterTriggersContentTypeBeingSet(array $parameters = [], string $fetch = self::FETCH_OBJECT)
     {
         $queryParam = new QueryParam();
         $url = '/test-simple';

@@ -222,7 +222,7 @@ class Operation
     }
 
     /**
-     * @return Response|JsonReference[]|mixed[]
+     * @return Response[]|JsonReference[]|mixed[]
      */
     public function getResponses()
     {
@@ -230,7 +230,7 @@ class Operation
     }
 
     /**
-     * @param Response|JsonReference[]|mixed[] $responses
+     * @param Response[]|JsonReference[]|mixed[] $responses
      *
      * @return self
      */

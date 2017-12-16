@@ -12,26 +12,4 @@ abstract class Resource
 {
     public const FETCH_RESPONSE = 'response';
     public const FETCH_OBJECT = 'object';
-
-    /**
-     * @var HttpClient|HttpAsyncClient
-     */
-    protected $httpClient;
-
-    /**
-     * @var MessageFactory
-     */
-    protected $messageFactory;
-
-    /**
-     * @var SerializerInterface
-     */
-    protected $serializer;
-
-    public function __construct($httpClient, MessageFactory $messageFactory, SerializerInterface $serializer)
-    {
-        $this->httpClient = new FlexibleHttpClient($httpClient);
-        $this->messageFactory = $messageFactory;
-        $this->serializer = $serializer;
-    }
 }

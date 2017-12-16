@@ -21,7 +21,7 @@ trait DefaultResourceTrait
      *
      * @return \Psr\Http\Message\ResponseInterface
      */
-    public function getTest(\Jane\OpenApi\Tests\Expected\Model\TestGetBody $body, $parameters = [], $fetch = self::FETCH_OBJECT)
+    public function getTest(\Jane\OpenApi\Tests\Expected\Model\TestGetBody $body, array $parameters = [], string $fetch = self::FETCH_OBJECT)
     {
         $queryParam = new QueryParam();
         $url = '/test';
@@ -41,7 +41,7 @@ trait DefaultResourceTrait
      *
      * @return \Psr\Http\Message\ResponseInterface
      */
-    public function test(\Jane\OpenApi\Tests\Expected\Model\TestPostBody $body, $parameters = [], $fetch = self::FETCH_OBJECT)
+    public function test(\Jane\OpenApi\Tests\Expected\Model\TestPostBody $body, array $parameters = [], string $fetch = self::FETCH_OBJECT)
     {
         $queryParam = new QueryParam();
         $url = '/test';

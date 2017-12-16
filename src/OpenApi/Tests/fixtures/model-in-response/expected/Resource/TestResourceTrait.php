@@ -23,7 +23,7 @@ trait TestResourceTrait
      *
      * @return \Psr\Http\Message\ResponseInterface|\Jane\OpenApi\Tests\Expected\Model\Schema
      */
-    public function getTest($parameters = [], $fetch = self::FETCH_OBJECT)
+    public function getTest(array $parameters = [], string $fetch = self::FETCH_OBJECT)
     {
         $queryParam = new QueryParam();
         $url = '/test';
@@ -57,7 +57,7 @@ trait TestResourceTrait
      *
      * @return \Psr\Http\Message\ResponseInterface|\Jane\OpenApi\Tests\Expected\Model\TestIdGetResponse200
      */
-    public function getTestById($id, $parameters = [], $fetch = self::FETCH_OBJECT)
+    public function getTestById(int $id, array $parameters = [], string $fetch = self::FETCH_OBJECT)
     {
         $queryParam = new QueryParam();
         $url = '/test/{id}';
@@ -88,7 +88,7 @@ trait TestResourceTrait
      *
      * @return \Psr\Http\Message\ResponseInterface|\Jane\OpenApi\Tests\Expected\Model\Schema
      */
-    public function getTestList($parameters = [], $fetch = self::FETCH_OBJECT)
+    public function getTestList(array $parameters = [], string $fetch = self::FETCH_OBJECT)
     {
         $queryParam = new QueryParam();
         $url = '/test-list';

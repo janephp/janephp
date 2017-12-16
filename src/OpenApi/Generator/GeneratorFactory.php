@@ -16,7 +16,7 @@ use PhpParser\ParserFactory;
 
 class GeneratorFactory
 {
-    public static function build($serializer, $options)
+    public static function build($serializer, $options): array
     {
         $parserFactory = new ParserFactory();
         $parser = $parserFactory->create(ParserFactory::PREFER_PHP7);
@@ -28,13 +28,24 @@ class GeneratorFactory
         $queryParameter = new QueryParameterGenerator($parser);
         $exceptionGenerator = new ExceptionGenerator(new ExceptionNaming());
 
-        $operation = new OperationGenerator($serializer, $bodyParameter, $formDataParameter, $headerParameter, $pathParameter, $queryParameter, $exceptionGenerator);
+        $psrHttplugOperationGenerator = new Psr7HttplugOperationGenerator($serializer, $bodyParameter, $formDataParameter, $headerParameter, $pathParameter, $queryParameter, $exceptionGenerator);
         $operationManager = new OperationManager();
         $operationNaming = new ChainOperationNaming([
             new OperationIdNaming(),
             new OperationUrlNaming(),
         ]);
 
-        return new ClientGenerator($operationManager, $operation, $operationNaming, $options['async']);
+        $clientAsyncGenerator = null;
+
+        $generators = [
+            new Psr7HttplugClientGenerator($operationManager, $psrHttplugOperationGenerator, $operationNaming)
+        ];
+
+        if ($options['async']) {
+            $ampArtaxOperationGenerator = new AmpArtaxOperationGenerator($serializer, $bodyParameter, $formDataParameter, $headerParameter, $pathParameter, $queryParameter, $exceptionGenerator);
+            $generators[] = new AmpArtaxClientGenerator($operationManager, $ampArtaxOperationGenerator, $operationNaming);
+        }
+
+        return $generators;
     }
 }

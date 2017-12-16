@@ -10,21 +10,14 @@ declare(strict_types=1);
 
 namespace Jane\OpenApi\Tests\Expected;
 
-use Jane\OpenApiRuntime\Client\Resource;
-use Jane\OpenApi\Tests\Expected\Resource\DefaultResourceTrait;
-
-class Client extends Resource
+class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugResource
 {
-    use DefaultResourceTrait;
+    use Resource\DefaultResourceTrait;
 
     public static function create($httpClient = null)
     {
         if (null === $httpClient) {
-            try {
-                $httpClient = \Http\Discovery\HttpAsyncClientDiscovery::find();
-            } catch (\Http\Discovery\NotFoundException $e) {
-                $httpClient = \Http\Discovery\HttpClientDiscovery::find();
-            }
+            $httpClient = \Http\Discovery\HttpClientDiscovery::find();
         }
         $messageFactory = \Http\Discovery\MessageFactoryDiscovery::find();
         $serializer = new \Symfony\Component\Serializer\Serializer(\Jane\OpenApi\Tests\Expected\Normalizer\NormalizerFactory::create(), [new \Symfony\Component\Serializer\Encoder\JsonEncoder(new \Symfony\Component\Serializer\Encoder\JsonEncode(), new \Symfony\Component\Serializer\Encoder\JsonDecode())]);

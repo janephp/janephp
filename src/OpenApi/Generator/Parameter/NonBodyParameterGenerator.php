@@ -28,6 +28,8 @@ abstract class NonBodyParameterGenerator extends ParameterGenerator
             $methodParameter->default = $this->getDefaultAsExpr($parameter);
         }
 
+        $methodParameter->type = $this->convertParameterType($parameter->getType());
+
         return $methodParameter;
     }
 

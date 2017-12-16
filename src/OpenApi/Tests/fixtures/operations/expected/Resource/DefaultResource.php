@@ -10,9 +10,7 @@ declare(strict_types=1);
 
 namespace Jane\OpenApi\Tests\Expected\Resource;
 
-use Jane\OpenApiRuntime\Client\Resource;
-
-class DefaultResource extends Resource
+class DefaultResource extends \Jane\OpenApiRuntime\Client\Psr7HttplugResource
 {
     use DefaultResourceTrait;
 }

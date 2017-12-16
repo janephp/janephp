@@ -10,7 +10,7 @@ declare(strict_types=1);
 
 namespace Jane\OpenApi\Tests\Expected\Resource;
 
-class PetsResource extends \Jane\OpenApiRuntime\Client\Psr7HttplugResource
+class TestAsyncResource extends \Jane\OpenApiRuntime\Client\AmpArtaxResource
 {
-    use PetsResourceTrait;
+    use TestAsyncResourceTrait;
 }

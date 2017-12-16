@@ -20,7 +20,7 @@ trait DefaultResourceTrait
      *
      * @return \Psr\Http\Message\ResponseInterface|null
      */
-    public function testNoTag($parameters = [], $fetch = self::FETCH_OBJECT)
+    public function testNoTag(array $parameters = [], string $fetch = self::FETCH_OBJECT)
     {
         $queryParam = new QueryParam();
         $url = '/test-no-tag';
@@ -44,7 +44,7 @@ trait DefaultResourceTrait
      *
      * @return \Psr\Http\Message\ResponseInterface|null
      */
-    public function getTestOperationUrl($parameters = [], $fetch = self::FETCH_OBJECT)
+    public function getTestOperationUrl(array $parameters = [], string $fetch = self::FETCH_OBJECT)
     {
         $queryParam = new QueryParam();
         $url = '/test-operation-url';
@@ -68,7 +68,7 @@ trait DefaultResourceTrait
      *
      * @return \Psr\Http\Message\ResponseInterface|null
      */
-    public function getTestOperationUrlById($parameters = [], $fetch = self::FETCH_OBJECT)
+    public function getTestOperationUrlById(array $parameters = [], string $fetch = self::FETCH_OBJECT)
     {
         $queryParam = new QueryParam();
         $url = '/test-operation-url/{id}';
@@ -92,7 +92,7 @@ trait DefaultResourceTrait
      *
      * @return \Psr\Http\Message\ResponseInterface|null
      */
-    public function getTestOperationUrlWithExtension($parameters = [], $fetch = self::FETCH_OBJECT)
+    public function getTestOperationUrlWithExtension(array $parameters = [], string $fetch = self::FETCH_OBJECT)
     {
         $queryParam = new QueryParam();
         $url = '/test-operation-url-with-extension.php';
@@ -116,7 +116,7 @@ trait DefaultResourceTrait
      *
      * @return \Psr\Http\Message\ResponseInterface|\Jane\OpenApi\Tests\Expected\Model\Thing
      */
-    public function getThings($parameters = [], $fetch = self::FETCH_OBJECT)
+    public function getThings(array $parameters = [], string $fetch = self::FETCH_OBJECT)
     {
         $queryParam = new QueryParam();
         $url = '/things';
@@ -140,7 +140,7 @@ trait DefaultResourceTrait
      *
      * @return \Psr\Http\Message\ResponseInterface|\Jane\OpenApi\Tests\Expected\Model\Thing
      */
-    public function getThingsById($parameters = [], $fetch = self::FETCH_OBJECT)
+    public function getThingsById(array $parameters = [], string $fetch = self::FETCH_OBJECT)
     {
         $queryParam = new QueryParam();
         $url = '/things/{id}';
@@ -164,7 +164,7 @@ trait DefaultResourceTrait
      *
      * @return \Psr\Http\Message\ResponseInterface|\Jane\OpenApi\Tests\Expected\Model\Thing
      */
-    public function getAnotherThing($parameters = [], $fetch = self::FETCH_OBJECT)
+    public function getAnotherThing(array $parameters = [], string $fetch = self::FETCH_OBJECT)
     {
         $queryParam = new QueryParam();
         $url = '/another-things';
@@ -188,7 +188,7 @@ trait DefaultResourceTrait
      *
      * @return \Psr\Http\Message\ResponseInterface|\Jane\OpenApi\Tests\Expected\Model\Thing
      */
-    public function getAnotherThingById($parameters = [], $fetch = self::FETCH_OBJECT)
+    public function getAnotherThingById(array $parameters = [], string $fetch = self::FETCH_OBJECT)
     {
         $queryParam = new QueryParam();
         $url = '/another-things/{id}';
@@ -212,7 +212,7 @@ trait DefaultResourceTrait
      *
      * @return \Psr\Http\Message\ResponseInterface|null
      */
-    public function postNo200Thing($parameters = [], $fetch = self::FETCH_OBJECT)
+    public function postNo200Thing(array $parameters = [], string $fetch = self::FETCH_OBJECT)
     {
         $queryParam = new QueryParam();
         $url = '/no-200-things';

@@ -21,7 +21,7 @@ trait TestResourceTrait
      *
      * @return \Psr\Http\Message\ResponseInterface|null
      */
-    public function bodyParameterTriggersContentTypeBeingSet($testString, $parameters = [], $fetch = self::FETCH_OBJECT)
+    public function bodyParameterTriggersContentTypeBeingSet($testString, array $parameters = [], string $fetch = self::FETCH_OBJECT)
     {
         $queryParam = new QueryParam();
         $url = '/test-simple';
@@ -45,7 +45,7 @@ trait TestResourceTrait
      *
      * @return \Psr\Http\Message\ResponseInterface|null
      */
-    public function producesTriggersAcceptBeingSet($parameters = [], $fetch = self::FETCH_OBJECT)
+    public function producesTriggersAcceptBeingSet(array $parameters = [], string $fetch = self::FETCH_OBJECT)
     {
         $queryParam = new QueryParam();
         $url = '/test-object';

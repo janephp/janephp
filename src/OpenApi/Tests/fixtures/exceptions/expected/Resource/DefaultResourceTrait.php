@@ -24,7 +24,7 @@ trait DefaultResourceTrait
      *
      * @return \Psr\Http\Message\ResponseInterface
      */
-    public function testNoTag($parameters = [], $fetch = self::FETCH_OBJECT)
+    public function testNoTag(array $parameters = [], string $fetch = self::FETCH_OBJECT)
     {
         $queryParam = new QueryParam();
         $url = '/test-exception';

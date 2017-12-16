@@ -20,7 +20,7 @@ trait TestResourceTrait
      *
      * @return \Psr\Http\Message\ResponseInterface|null
      */
-    public function deleteTest($parameters = [], $fetch = self::FETCH_OBJECT)
+    public function deleteTest(array $parameters = [], string $fetch = self::FETCH_OBJECT)
     {
         $queryParam = new QueryParam();
         $url = '/test-get';
@@ -44,7 +44,7 @@ trait TestResourceTrait
      *
      * @return \Psr\Http\Message\ResponseInterface|null
      */
-    public function getTest($parameters = [], $fetch = self::FETCH_OBJECT)
+    public function getTest(array $parameters = [], string $fetch = self::FETCH_OBJECT)
     {
         $queryParam = new QueryParam();
         $url = '/test-get';
@@ -68,7 +68,7 @@ trait TestResourceTrait
      *
      * @return \Psr\Http\Message\ResponseInterface|null
      */
-    public function headTest($parameters = [], $fetch = self::FETCH_OBJECT)
+    public function headTest(array $parameters = [], string $fetch = self::FETCH_OBJECT)
     {
         $queryParam = new QueryParam();
         $url = '/test-get';
@@ -92,7 +92,7 @@ trait TestResourceTrait
      *
      * @return \Psr\Http\Message\ResponseInterface|null
      */
-    public function optionsTest($parameters = [], $fetch = self::FETCH_OBJECT)
+    public function optionsTest(array $parameters = [], string $fetch = self::FETCH_OBJECT)
     {
         $queryParam = new QueryParam();
         $url = '/test-get';
@@ -116,7 +116,7 @@ trait TestResourceTrait
      *
      * @return \Psr\Http\Message\ResponseInterface|null
      */
-    public function patchTest($parameters = [], $fetch = self::FETCH_OBJECT)
+    public function patchTest(array $parameters = [], string $fetch = self::FETCH_OBJECT)
     {
         $queryParam = new QueryParam();
         $url = '/test-get';
@@ -140,7 +140,7 @@ trait TestResourceTrait
      *
      * @return \Psr\Http\Message\ResponseInterface|null
      */
-    public function postTest($parameters = [], $fetch = self::FETCH_OBJECT)
+    public function postTest(array $parameters = [], string $fetch = self::FETCH_OBJECT)
     {
         $queryParam = new QueryParam();
         $url = '/test-get';
@@ -164,7 +164,7 @@ trait TestResourceTrait
      *
      * @return \Psr\Http\Message\ResponseInterface|null
      */
-    public function putTest($parameters = [], $fetch = self::FETCH_OBJECT)
+    public function putTest(array $parameters = [], string $fetch = self::FETCH_OBJECT)
     {
         $queryParam = new QueryParam();
         $url = '/test-get';

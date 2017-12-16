@@ -20,7 +20,7 @@ trait TestResourceTrait
      *
      * @return \Psr\Http\Message\ResponseInterface|\Jane\OpenApi\Tests\Expected\Model\BarItem
      */
-    public function testSimple($parameters = [], $fetch = self::FETCH_OBJECT)
+    public function testSimple(array $parameters = [], string $fetch = self::FETCH_OBJECT)
     {
         $queryParam = new QueryParam();
         $url = '/test-simple';

@@ -23,7 +23,7 @@ trait TestResourceTrait
      *
      * @return \Psr\Http\Message\ResponseInterface|\Jane\OpenApi\Tests\Expected\Model\Schema
      */
-    public function getTest($parameters = [], $fetch = self::FETCH_OBJECT)
+    public function getTest(array $parameters = [], string $fetch = self::FETCH_OBJECT)
     {
         $queryParam = new QueryParam();
         $url = '/test';
@@ -48,41 +48,6 @@ trait TestResourceTrait
     }
 
     /**
-     * @param array  $parameters List of parameters
-     * @param string $fetch      Fetch mode (object or response)
-     *
-     * @throws \Jane\OpenApi\Tests\Expected\Exception\GetTestBadRequestException
-     * @throws \Jane\OpenApi\Tests\Expected\Exception\GetTestNotFoundException
-     *
-     * @return \Amp\Promise<\Psr\Http\Message\ResponseInterface|\Jane\OpenApi\Tests\Expected\Model\Schema>
-     */
-    public function getTestAsync($parameters = [], $fetch = self::FETCH_OBJECT)
-    {
-        return \Amp\call(function ($parameters = [], $fetch = self::FETCH_OBJECT) {
-            $queryParam = new QueryParam();
-            $url = '/test';
-            $url = $url . ('?' . $queryParam->buildQueryString($parameters));
-            $headers = array_merge(['Host' => 'localhost'], $queryParam->buildHeaders($parameters));
-            $body = $queryParam->buildFormDataString($parameters);
-            $request = $this->messageFactory->createRequest('GET', $url, $headers, $body);
-            $response = (yield $this->httpClient->sendAsyncRequest($request));
-            if (self::FETCH_OBJECT === $fetch) {
-                if (200 === $response->getStatusCode()) {
-                    return $this->serializer->deserialize((string) $response->getBody(), 'Jane\\OpenApi\\Tests\\Expected\\Model\\Schema', 'json');
-                }
-                if (400 === $response->getStatusCode()) {
-                    throw new \Jane\OpenApi\Tests\Expected\Exception\GetTestBadRequestException($this->serializer->deserialize((string) $response->getBody(), 'Jane\\OpenApi\\Tests\\Expected\\Model\\Error', 'json'));
-                }
-                if (404 === $response->getStatusCode()) {
-                    throw new \Jane\OpenApi\Tests\Expected\Exception\GetTestNotFoundException($this->serializer->deserialize((string) $response->getBody(), 'Jane\\OpenApi\\Tests\\Expected\\Model\\Error', 'json'));
-                }
-            }
-
-            return $response;
-        }, $parameters, $fetch);
-    }
-
-    /**
      * @param int    $id         id
      * @param array  $parameters List of parameters
      * @param string $fetch      Fetch mode (object or response)
@@ -92,7 +57,7 @@ trait TestResourceTrait
      *
      * @return \Psr\Http\Message\ResponseInterface|\Jane\OpenApi\Tests\Expected\Model\TestIdGetResponse200
      */
-    public function getTestById($id, $parameters = [], $fetch = self::FETCH_OBJECT)
+    public function getTestById(int $id, array $parameters = [], string $fetch = self::FETCH_OBJECT)
     {
         $queryParam = new QueryParam();
         $url = '/test/{id}';
@@ -118,49 +83,12 @@ trait TestResourceTrait
     }
 
     /**
-     * @param int    $id         id
-     * @param array  $parameters List of parameters
-     * @param string $fetch      Fetch mode (object or response)
-     *
-     * @throws \Jane\OpenApi\Tests\Expected\Exception\GetTestByIdBadRequestException
-     * @throws \Jane\OpenApi\Tests\Expected\Exception\GetTestByIdNotFoundException
-     *
-     * @return \Amp\Promise<\Psr\Http\Message\ResponseInterface|\Jane\OpenApi\Tests\Expected\Model\TestIdGetResponse200>
-     */
-    public function getTestByIdAsync($id, $parameters = [], $fetch = self::FETCH_OBJECT)
-    {
-        return \Amp\call(function ($id, $parameters = [], $fetch = self::FETCH_OBJECT) {
-            $queryParam = new QueryParam();
-            $url = '/test/{id}';
-            $url = str_replace('{id}', urlencode($id), $url);
-            $url = $url . ('?' . $queryParam->buildQueryString($parameters));
-            $headers = array_merge(['Host' => 'localhost'], $queryParam->buildHeaders($parameters));
-            $body = $queryParam->buildFormDataString($parameters);
-            $request = $this->messageFactory->createRequest('GET', $url, $headers, $body);
-            $response = (yield $this->httpClient->sendAsyncRequest($request));
-            if (self::FETCH_OBJECT === $fetch) {
-                if (200 === $response->getStatusCode()) {
-                    return $this->serializer->deserialize((string) $response->getBody(), 'Jane\\OpenApi\\Tests\\Expected\\Model\\TestIdGetResponse200', 'json');
-                }
-                if (400 === $response->getStatusCode()) {
-                    throw new \Jane\OpenApi\Tests\Expected\Exception\GetTestByIdBadRequestException($this->serializer->deserialize((string) $response->getBody(), 'Jane\\OpenApi\\Tests\\Expected\\Model\\Error', 'json'));
-                }
-                if (404 === $response->getStatusCode()) {
-                    throw new \Jane\OpenApi\Tests\Expected\Exception\GetTestByIdNotFoundException($this->serializer->deserialize((string) $response->getBody(), 'Jane\\OpenApi\\Tests\\Expected\\Model\\Error', 'json'));
-                }
-            }
-
-            return $response;
-        }, $id, $parameters, $fetch);
-    }
-
-    /**
      * @param array  $parameters List of parameters
      * @param string $fetch      Fetch mode (object or response)
      *
      * @return \Psr\Http\Message\ResponseInterface|\Jane\OpenApi\Tests\Expected\Model\Schema
      */
-    public function getTestList($parameters = [], $fetch = self::FETCH_OBJECT)
+    public function getTestList(array $parameters = [], string $fetch = self::FETCH_OBJECT)
     {
         $queryParam = new QueryParam();
         $url = '/test-list';
@@ -176,31 +104,5 @@ trait TestResourceTrait
         }
 
         return $response;
-    }
-
-    /**
-     * @param array  $parameters List of parameters
-     * @param string $fetch      Fetch mode (object or response)
-     *
-     * @return \Amp\Promise<\Psr\Http\Message\ResponseInterface|\Jane\OpenApi\Tests\Expected\Model\Schema>
-     */
-    public function getTestListAsync($parameters = [], $fetch = self::FETCH_OBJECT)
-    {
-        return \Amp\call(function ($parameters = [], $fetch = self::FETCH_OBJECT) {
-            $queryParam = new QueryParam();
-            $url = '/test-list';
-            $url = $url . ('?' . $queryParam->buildQueryString($parameters));
-            $headers = array_merge(['Host' => 'localhost'], $queryParam->buildHeaders($parameters));
-            $body = $queryParam->buildFormDataString($parameters);
-            $request = $this->messageFactory->createRequest('GET', $url, $headers, $body);
-            $response = (yield $this->httpClient->sendAsyncRequest($request));
-            if (self::FETCH_OBJECT === $fetch) {
-                if (200 === $response->getStatusCode()) {
-                    return $this->serializer->deserialize((string) $response->getBody(), 'Jane\\OpenApi\\Tests\\Expected\\Model\\Schema[]', 'json');
-                }
-            }
-
-            return $response;
-        }, $parameters, $fetch);
     }
 }

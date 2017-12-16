@@ -29,7 +29,7 @@ trait TestResourceTrait
      *
      * @return \Psr\Http\Message\ResponseInterface|null
      */
-    public function testQueryParameters($parameters = [], $fetch = self::FETCH_OBJECT)
+    public function testQueryParameters(array $parameters = [], string $fetch = self::FETCH_OBJECT)
     {
         $queryParam = new QueryParam();
         $queryParam->setDefault('testString', null);
@@ -68,7 +68,7 @@ trait TestResourceTrait
      *
      * @return \Psr\Http\Message\ResponseInterface|null
      */
-    public function testHeaderParameters($parameters = [], $fetch = self::FETCH_OBJECT)
+    public function testHeaderParameters(array $parameters = [], string $fetch = self::FETCH_OBJECT)
     {
         $queryParam = new QueryParam();
         $queryParam->setDefault('testString', null);
@@ -113,7 +113,7 @@ trait TestResourceTrait
      *
      * @return \Psr\Http\Message\ResponseInterface|null
      */
-    public function testFormParameters($parameters = [], $fetch = self::FETCH_OBJECT)
+    public function testFormParameters(array $parameters = [], string $fetch = self::FETCH_OBJECT)
     {
         $queryParam = new QueryParam();
         $queryParam->setDefault('testString', null);
@@ -152,7 +152,7 @@ trait TestResourceTrait
      *
      * @return \Psr\Http\Message\ResponseInterface|null
      */
-    public function testPathParameters($testString, $testInteger, $testFloat, $parameters = [], $fetch = self::FETCH_OBJECT)
+    public function testPathParameters(string $testString, int $testInteger, float $testFloat, array $parameters = [], string $fetch = self::FETCH_OBJECT)
     {
         $queryParam = new QueryParam();
         $url = '/test-path/{testString}/{testInteger}/{testFloat}';
@@ -180,7 +180,7 @@ trait TestResourceTrait
      *
      * @return \Psr\Http\Message\ResponseInterface|null
      */
-    public function getByTestInteger($testInteger, $parameters = [], $fetch = self::FETCH_OBJECT)
+    public function getByTestInteger(int $testInteger, array $parameters = [], string $fetch = self::FETCH_OBJECT)
     {
         $queryParam = new QueryParam();
         $url = '/{test_integer}';

@@ -2,6 +2,7 @@
 
 namespace Jane\JsonSchema;
 
+use Jane\JsonSchema\Generator\ChainGenerator;
 use Jane\JsonSchema\Generator\Context\Context;
 use Jane\JsonSchema\Generator\ModelGenerator;
 use Jane\JsonSchema\Generator\Naming;
@@ -9,53 +10,29 @@ use Jane\JsonSchema\Generator\NormalizerGenerator;
 use Jane\JsonSchema\Guesser\ChainGuesser;
 use Jane\JsonSchema\Guesser\JsonSchema\JsonSchemaGuesserFactory;
 use Jane\JsonSchema\Normalizer\NormalizerFactory;
-use PhpCsFixer\Cache\NullCacheManager;
-use PhpCsFixer\Differ\NullDiffer;
-use PhpCsFixer\Error\ErrorsManager;
-use PhpCsFixer\Linter\Linter;
-use PhpCsFixer\Runner\Runner;
-use PhpCsFixer\ToolInfo;
-use PhpParser\PrettyPrinter\Standard;
 use Symfony\Component\Serializer\Encoder\JsonDecode;
 use Symfony\Component\Serializer\Encoder\JsonEncode;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Serializer;
-use PhpCsFixer\Config;
-use PhpCsFixer\ConfigInterface;
-use PhpCsFixer\Console\ConfigurationResolver;
-use PhpCsFixer\Finder;
 
-class Jane
+class Jane extends ChainGenerator
 {
     public const VERSION = '4.x-dev';
 
     private $serializer;
 
-    private $modelGenerator;
-
-    private $normalizerGenerator;
-
     private $chainGuesser;
 
     private $strict;
 
-    public function __construct(Serializer $serializer, ChainGuesser $chainGuesser, ModelGenerator $modelGenerator, NormalizerGenerator $normalizerGenerator, $strict = true)
+    public function __construct(Serializer $serializer, ChainGuesser $chainGuesser, $strict = true)
     {
         $this->serializer = $serializer;
         $this->chainGuesser = $chainGuesser;
-        $this->modelGenerator = $modelGenerator;
-        $this->normalizerGenerator = $normalizerGenerator;
         $this->strict = $strict;
     }
 
-    /**
-     * Return a list of class guessed.
-     *
-     * @param $registry
-     *
-     * @return Context
-     */
-    public function createContext(Registry $registry)
+    public function createContext(Registry $registry): Context
     {
         // List of schemas can evolve, but we don't want to generate new schema dynamically added, so we "clone" the array
         // to have a fixed list of schemas
@@ -85,25 +62,6 @@ class Jane
         return new Context($registry, $this->strict);
     }
 
-    /**
-     * Generate code.
-     *
-     * @param Registry $registry
-     *
-     * @return array
-     */
-    public function generate($registry)
-    {
-        $context = $this->createContext($registry);
-
-        foreach ($registry->getSchemas() as $schema) {
-            $context->setCurrentSchema($schema);
-
-            $this->modelGenerator->generate($schema, $schema->getRootName(), $context);
-            $this->normalizerGenerator->generate($schema, $schema->getRootName(), $context);
-        }
-    }
-
     public static function build($options = [])
     {
         $serializer = self::buildSerializer();
@@ -112,7 +70,11 @@ class Jane
         $modelGenerator = new ModelGenerator($naming);
         $normGenerator = new NormalizerGenerator($naming, $options['reference']);
 
-        return new self($serializer, $chainGuesser, $modelGenerator, $normGenerator, $options['strict']);
+        $self = new self($serializer, $chainGuesser, $options['strict']);
+        $self->addGenerator($modelGenerator);
+        $self->addGenerator($normGenerator);
+
+        return $self;
     }
 
     public static function buildSerializer()

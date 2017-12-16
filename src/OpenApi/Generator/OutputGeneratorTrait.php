@@ -19,6 +19,8 @@ trait OutputGeneratorTrait
      */
     abstract protected function getDenormalizer();
 
+    abstract protected function getResponseToStringStatement($responseVariable): Expr;
+
     protected function createResponseDenormalizationStatement(string $name, string $status, $schema, Context $context, string $reference, string $description)
     {
         $jsonReference = $reference;
@@ -55,7 +57,7 @@ trait OutputGeneratorTrait
                 new Expr\PropertyFetch(new Expr\Variable('this'), 'serializer'),
                 'deserialize',
                 [
-                    new Arg(new Expr\Cast\String_(new Expr\MethodCall(new Expr\Variable('response'), 'getBody'))),
+                    new Arg($this->getResponseToStringStatement(new Expr\Variable('response'))),
                     new Arg(new Scalar\String_($class)),
                     new Arg(new Scalar\String_('json')),
                 ]

@@ -13,8 +13,6 @@ class Context
 {
     private $registry;
 
-    private $files = [];
-
     private $variableScope;
 
     private $currentSchema;
@@ -31,16 +29,6 @@ class Context
     public function isStrict(): bool
     {
         return $this->strict;
-    }
-
-    public function addFile(File $file): void
-    {
-        $this->files[] = $file;
-    }
-
-    public function getFiles(): array
-    {
-        return $this->files;
     }
 
     public function getRegistry(): Registry
