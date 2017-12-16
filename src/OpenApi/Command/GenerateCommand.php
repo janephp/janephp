@@ -23,14 +23,7 @@ class GenerateCommand extends Command
     {
         $this->setName('generate');
         $this->setDescription('Generate an api client: class, normalizers and resources given a specific Json OpenApi file');
-        $this->addOption('config-file', 'c', InputOption::VALUE_OPTIONAL, 'File to use for Jane OpenAPI configuration');
-        $this->addOption('reference', null, InputOption::VALUE_NONE, 'Use the JSON Reference specification in your generated library');
-        $this->addOption('async', null, InputOption::VALUE_NONE, 'Generate extra async methods compatible with amphp');
-        $this->addOption('date-format', 'd', InputOption::VALUE_OPTIONAL, 'Date time format to use for date time field');
-        $this->addOption('no-strict', null, InputOption::VALUE_NONE, 'Don\'t use strict mode');
-        $this->addArgument('openapi-file', InputArgument::OPTIONAL, 'Location of the OpenApi (Swagger) Schema file');
-        $this->addArgument('namespace', InputArgument::OPTIONAL, 'Namespace prefix to use for generated files');
-        $this->addArgument('directory', InputArgument::OPTIONAL, 'Directory where to generate files');
+        $this->addOption('config-file', 'c', InputOption::VALUE_REQUIRED, 'File to use for Jane OpenAPI configuration', '.jane-openapi');
     }
 
     /**
@@ -38,56 +31,16 @@ class GenerateCommand extends Command
      */
     public function execute(InputInterface $input, OutputInterface $output)
     {
-        $options = [];
+        $configFile = $input->getOption('config-file');
 
-        $configFile = null;
-
-        if (!$input->hasOption('config-file') && file_exists('.jane-openapi')) {
-            $configFile = '.jane-openapi';
-        } elseif ($input->hasOption('config-file') && null !== $input->getOption('config-file')) {
-            $configFile = $input->getOption('config-file');
+        if (!file_exists($configFile)) {
+            throw new \RuntimeException(sprintf('Config file %s does not exist', $configFile));
         }
 
-        if ($configFile) {
-            $configFile = $input->getOption('config-file');
+        $options = require $configFile;
 
-            if (!file_exists($configFile)) {
-                throw new \RuntimeException(sprintf('Config file %s does not exist', $configFile));
-            }
-
-            $options = require $configFile;
-
-            if (!is_array($options)) {
-                throw new \RuntimeException(sprintf('Invalid config file specified or invalid return type in file %s', $configFile));
-            }
-        } else {
-            if ($input->hasArgument('openapi-file') && null !== $input->getArgument('openapi-file')) {
-                $options['openapi-file'] = $input->getArgument('openapi-file');
-            }
-
-            if ($input->hasArgument('namespace') && null !== $input->getArgument('namespace')) {
-                $options['namespace'] = $input->getArgument('namespace');
-            }
-
-            if ($input->hasArgument('directory') && null !== $input->getArgument('directory')) {
-                $options['directory'] = $input->getArgument('directory');
-            }
-
-            if ($input->hasOption('date-format') && null !== $input->getOption('date-format')) {
-                $options['date-format'] = $input->getOption('date-format');
-            }
-
-            if ($input->hasOption('reference') && null !== $input->getOption('reference')) {
-                $options['reference'] = $input->getOption('reference');
-            }
-
-            if ($input->hasOption('async') && null !== $input->getOption('async')) {
-                $options['async'] = $input->getOption('async');
-            }
-
-            if ($input->hasOption('no-strict') && null !== $input->getOption('no-strict')) {
-                $options['strict'] = !$input->getOption('no-strict');
-            }
+        if (!is_array($options)) {
+            throw new \RuntimeException(sprintf('Invalid config file specified or invalid return type in file %s', $configFile));
         }
 
         $options = $this->resolveConfiguration($options);

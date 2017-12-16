@@ -24,6 +24,7 @@ matrix:
 
 before_install:
     - travis_retry composer self-update
+    - phpenv config-rm xdebug.ini || true
 
 install:
     - travis_retry composer update ${COMPOSER_FLAGS} --no-interaction

@@ -56,8 +56,8 @@
         "process-timeout": 1800
     },
     "scripts": {
-        "test": "vendor/bin/phpunit",
-        "test-ci": "vendor/bin/phpunit --coverage-text --coverage-clover=build/coverage.xml"
+        "test": "php vendor/bin/phpunit",
+        "test-ci": "phpdbg -qrr vendor/bin/phpunit --coverage-text --coverage-clover=build/coverage.xml --coverage-html=build/html"
     },
     "extra": {
         "branch-alias": {

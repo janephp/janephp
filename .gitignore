@@ -5,6 +5,7 @@ composer.lock
 bin/*
 !bin/jane
 stub
+build
 
 tests/generated/*
 !tests/generated/.gitkeep
