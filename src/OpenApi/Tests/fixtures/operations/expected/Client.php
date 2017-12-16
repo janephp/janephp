@@ -13,6 +13,7 @@ namespace Jane\OpenApi\Tests\Expected;
 class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugResource
 {
     use Resource\DefaultResourceTrait;
+    use Resource\TestFooResourceTrait;
     use Resource\TestResourceTrait;
 
     public static function create($httpClient = null)

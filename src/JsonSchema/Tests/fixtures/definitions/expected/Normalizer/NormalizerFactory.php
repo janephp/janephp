@@ -19,6 +19,7 @@ class NormalizerFactory
         $normalizers[] = new \Jane\JsonSchemaRuntime\Normalizer\ReferenceNormalizer();
         $normalizers[] = new FooNormalizer();
         $normalizers[] = new BarItemNormalizer();
+        $normalizers[] = new HelloWorldNormalizer();
 
         return $normalizers;
     }
