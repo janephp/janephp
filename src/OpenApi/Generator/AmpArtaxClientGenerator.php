@@ -74,7 +74,7 @@ class AmpArtaxClientGenerator extends ClientGenerator
                     ),
                     new Stmt\Return_(
                         new Expr\New_(
-                            new Name('self'), [
+                            new Name('static'), [
                                 new Node\Arg(new Expr\Variable('httpClient')),
                                 new Node\Arg(new Expr\Variable('serializer')),
                             ]

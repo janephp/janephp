@@ -85,7 +85,7 @@ class Psr7HttplugClientGenerator extends ClientGenerator
                     ),
                     new Stmt\Return_(
                         new Expr\New_(
-                            new Name('self'), [
+                            new Name('static'), [
                                 new Node\Arg(new Expr\Variable('httpClient')),
                                 new Node\Arg(new Expr\Variable('messageFactory')),
                                 new Node\Arg(new Expr\Variable('serializer')),

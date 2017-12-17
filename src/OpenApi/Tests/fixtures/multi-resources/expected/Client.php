@@ -23,6 +23,6 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugResource
         $messageFactory = \Http\Discovery\MessageFactoryDiscovery::find();
         $serializer = new \Symfony\Component\Serializer\Serializer(\Jane\OpenApi\Tests\Expected\Normalizer\NormalizerFactory::create(), [new \Symfony\Component\Serializer\Encoder\JsonEncoder(new \Symfony\Component\Serializer\Encoder\JsonEncode(), new \Symfony\Component\Serializer\Encoder\JsonDecode())]);
 
-        return new self($httpClient, $messageFactory, $serializer);
+        return new static($httpClient, $messageFactory, $serializer);
     }
 }
