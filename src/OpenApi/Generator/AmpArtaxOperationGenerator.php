@@ -85,6 +85,11 @@ class AmpArtaxOperationGenerator extends OperationGenerator
         return '\Amp\Promise<' . implode('|', $outputTypes).'>';
     }
 
+    protected function getResponseStatusStatement($responseVariable): Expr
+    {
+        return new Expr\MethodCall($responseVariable, 'getStatus');
+    }
+
     public function createOperation($name, Operation $operation, Context $context): Stmt\ClassMethod
     {
         $classMethod = parent::createOperation($name, $operation, $context);

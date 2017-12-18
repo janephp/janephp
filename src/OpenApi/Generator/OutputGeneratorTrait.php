@@ -21,6 +21,8 @@ trait OutputGeneratorTrait
 
     abstract protected function getResponseToStringStatement($responseVariable): Expr;
 
+    abstract protected function getResponseStatusStatement($responseVariable): Expr;
+
     protected function createResponseDenormalizationStatement(string $name, string $status, $schema, Context $context, string $reference, string $description)
     {
         $jsonReference = $reference;
@@ -91,7 +93,7 @@ trait OutputGeneratorTrait
         return [$returnType, $throwType, new Stmt\If_(
             new Expr\BinaryOp\Identical(
                 new Scalar\LNumber((int) $status),
-                new Expr\MethodCall(new Expr\Variable('response'), 'getStatusCode')
+                $this->getResponseStatusStatement(new Expr\Variable('response'))
             ),
             [
                 'stmts' => [$returnStmt],

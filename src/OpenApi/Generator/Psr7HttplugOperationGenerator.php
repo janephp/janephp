@@ -56,6 +56,11 @@ class Psr7HttplugOperationGenerator extends OperationGenerator
         ))];
     }
 
+    protected function getResponseStatusStatement($responseVariable): Expr
+    {
+        return new Expr\MethodCall($responseVariable, 'getStatusCode');
+    }
+
     protected function getReturnTypesForDoc($outputTypes): string
     {
         return implode('|', $outputTypes);

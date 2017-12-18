@@ -37,13 +37,13 @@ trait TestAsyncResourceTrait
             $request = $request->withBody($body);
             $response = (yield $this->httpClient->request($request, [], $cancellationToken));
             if (self::FETCH_OBJECT === $fetch) {
-                if (200 === $response->getStatusCode()) {
+                if (200 === $response->getStatus()) {
                     return $this->serializer->deserialize((yield $response->getBody()), 'Jane\\OpenApi\\Tests\\Expected\\Model\\Schema', 'json');
                 }
-                if (400 === $response->getStatusCode()) {
+                if (400 === $response->getStatus()) {
                     throw new \Jane\OpenApi\Tests\Expected\Exception\GetTestBadRequestException($this->serializer->deserialize((yield $response->getBody()), 'Jane\\OpenApi\\Tests\\Expected\\Model\\Error', 'json'));
                 }
-                if (404 === $response->getStatusCode()) {
+                if (404 === $response->getStatus()) {
                     throw new \Jane\OpenApi\Tests\Expected\Exception\GetTestNotFoundException($this->serializer->deserialize((yield $response->getBody()), 'Jane\\OpenApi\\Tests\\Expected\\Model\\Error', 'json'));
                 }
             }
@@ -77,13 +77,13 @@ trait TestAsyncResourceTrait
             $request = $request->withBody($body);
             $response = (yield $this->httpClient->request($request, [], $cancellationToken));
             if (self::FETCH_OBJECT === $fetch) {
-                if (200 === $response->getStatusCode()) {
+                if (200 === $response->getStatus()) {
                     return $this->serializer->deserialize((yield $response->getBody()), 'Jane\\OpenApi\\Tests\\Expected\\Model\\TestIdGetResponse200', 'json');
                 }
-                if (400 === $response->getStatusCode()) {
+                if (400 === $response->getStatus()) {
                     throw new \Jane\OpenApi\Tests\Expected\Exception\GetTestByIdBadRequestException($this->serializer->deserialize((yield $response->getBody()), 'Jane\\OpenApi\\Tests\\Expected\\Model\\Error', 'json'));
                 }
-                if (404 === $response->getStatusCode()) {
+                if (404 === $response->getStatus()) {
                     throw new \Jane\OpenApi\Tests\Expected\Exception\GetTestByIdNotFoundException($this->serializer->deserialize((yield $response->getBody()), 'Jane\\OpenApi\\Tests\\Expected\\Model\\Error', 'json'));
                 }
             }
@@ -112,7 +112,7 @@ trait TestAsyncResourceTrait
             $request = $request->withBody($body);
             $response = (yield $this->httpClient->request($request, [], $cancellationToken));
             if (self::FETCH_OBJECT === $fetch) {
-                if (200 === $response->getStatusCode()) {
+                if (200 === $response->getStatus()) {
                     return $this->serializer->deserialize((yield $response->getBody()), 'Jane\\OpenApi\\Tests\\Expected\\Model\\Schema[]', 'json');
                 }
             }
