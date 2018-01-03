@@ -11,15 +11,21 @@ code respecting common and advanced PSR.
    :hidden:
 
    Jane <self>
+   Internal <internal>
 
 .. toctree::
    :hidden:
    :caption: Json Schema
 
    Introduction <JsonSchema/introduction>
+   Generating a Model <JsonSchema/generate>
+   Using a generated Model <JsonSchema/usage>
 
 .. toctree::
    :hidden:
    :caption: OpenAPI
 
    Introduction <OpenAPI/introduction>
+   Generating a Client <OpenAPI/generate>
+   Using a generated client <OpenAPI/usage>
+   Asynchronous Client <OpenAPI/async>

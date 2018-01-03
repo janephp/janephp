@@ -1,0 +1,2 @@
+Using a generated client
+========================
