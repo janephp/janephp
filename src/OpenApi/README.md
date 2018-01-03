@@ -8,7 +8,7 @@ View the [LICENSE](LICENSE) file attach to this project.
 
 ## Resources
 
- * Documentation
+ * [Documentation](http://jane.readthedocs.io/en/latest/)
  * [Contributing](https://github.com/janephp/janephp/blob/master/CONTRIBUTING.md)
  * [Report Issues](https://github.com/janephp/janephp/issues) and [send Pull Requests](https://github.com/janephp/janephp/pulls) 
  in the [main Jane Repository](https://github.com/janephp/janephp)
