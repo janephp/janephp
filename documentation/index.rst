@@ -30,4 +30,3 @@ code respecting common and advanced PSR.
    Generating a Client <OpenAPI/generate>
    Using a generated client <OpenAPI/usage>
    Asynchronous Client <OpenAPI/async>
-   Multi files <OpenAPI/multi>

@@ -59,14 +59,6 @@ Other options are available to customize the generated code:
  * ``async``: A boolean (false by default) which allows to generate a full asynchronous client using `Amp`_ with `Artax`_
    client, see :doc:`/OpenAPI/async` fore more information.
 
-Multi files
------------
-
-Jane OpenAPI can also generate a speification separated into different files at the same time with different namespaces
-and directories allowing to handle JSON References between them.
-
-See :doc:`/OpenAPI/multi` for more information
-
 .. _`JSON Reference`: https://tools.ietf.org/id/draft-pbryan-zyp-json-ref-03.html
 .. _Amp: https://amphp.org/
 .. _Artax: https://amphp.org/artax/
