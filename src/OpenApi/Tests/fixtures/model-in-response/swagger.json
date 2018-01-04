@@ -1,6 +1,14 @@
 {
     "swagger": "2.0",
     "definitions": {
+        "Empty Space": {
+            "type": "object",
+            "properties": {
+                "stringProperty": {
+                    "type": "string"
+                }
+            }
+        },
         "Schema": {
             "type": "object",
             "properties": {
@@ -45,6 +53,22 @@
         }
     },
     "paths": {
+        "/test-empty": {
+            "get": {
+                "operationId": "Get Empty Test",
+                "responses": {
+                    "200": {
+                        "description": "no error",
+                        "schema": {
+                            "$ref": "#/definitions/Empty Space"
+                        }
+                    }
+                },
+                "tags": [
+                    "Test"
+                ]
+            }
+        },
         "/test": {
             "get": {
                 "operationId": "Get Test",

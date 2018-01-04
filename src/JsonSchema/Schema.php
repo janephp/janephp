@@ -70,11 +70,13 @@ class Schema
 
     public function addClass(string $reference, ClassGuess $class)
     {
-        $this->classes[$reference] = $class;
+        $this->classes[urldecode($reference)] = $class;
     }
 
     public function getClass($reference): ?ClassGuess
     {
+        $reference = urldecode($reference);
+
         if (array_key_exists($reference, $this->classes)) {
             return $this->classes[$reference];
         }

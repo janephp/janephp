@@ -18,6 +18,30 @@ trait TestResourceTrait
      * @param array  $parameters List of parameters
      * @param string $fetch      Fetch mode (object or response)
      *
+     * @return \Psr\Http\Message\ResponseInterface|\Jane\OpenApi\Tests\Expected\Model\EmptySpace
+     */
+    public function getEmptyTest(array $parameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        $queryParam = new QueryParam();
+        $url = '/test-empty';
+        $url = $url . ('?' . $queryParam->buildQueryString($parameters));
+        $headers = $queryParam->buildHeaders($parameters);
+        $body = $queryParam->buildFormDataString($parameters);
+        $request = $this->messageFactory->createRequest('GET', $url, $headers, $body);
+        $response = $this->httpClient->sendRequest($request);
+        if (self::FETCH_OBJECT === $fetch) {
+            if (200 === $response->getStatusCode()) {
+                return $this->serializer->deserialize((string) $response->getBody(), 'Jane\\OpenApi\\Tests\\Expected\\Model\\EmptySpace', 'json');
+            }
+        }
+
+        return $response;
+    }
+
+    /**
+     * @param array  $parameters List of parameters
+     * @param string $fetch      Fetch mode (object or response)
+     *
      * @throws \Jane\OpenApi\Tests\Expected\Exception\GetTestBadRequestException
      * @throws \Jane\OpenApi\Tests\Expected\Exception\GetTestNotFoundException
      *

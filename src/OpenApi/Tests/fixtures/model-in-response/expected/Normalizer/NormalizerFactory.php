@@ -16,6 +16,7 @@ class NormalizerFactory
     {
         $normalizers = [];
         $normalizers[] = new \Symfony\Component\Serializer\Normalizer\ArrayDenormalizer();
+        $normalizers[] = new EmptySpaceNormalizer();
         $normalizers[] = new SchemaNormalizer();
         $normalizers[] = new SchemaObjectPropertyNormalizer();
         $normalizers[] = new ErrorNormalizer();
