@@ -53,19 +53,13 @@ class GenerateCommand extends Command
         }
 
         $jane = \Jane\JsonSchema\Jane::build($options);
-        $fixerConfig = null;
+        $fixerConfigFile = '';
 
         if ($input->hasOption('fixer-config-file') && null !== $input->getOption('fixer-config-file')) {
             $fixerConfigFile = $input->getOption('fixer-config-file');
-
-            if (!file_exists($fixerConfigFile)) {
-                throw new \RuntimeException(sprintf('Fixer config file %s could not be found', $fixerConfigFile));
-            }
-
-            $fixerConfig = require $fixerConfigFile;
         }
 
-        $printer = new Printer(new Standard(), $fixerConfig);
+        $printer = new Printer(new Standard(), $fixerConfigFile);
 
         $jane->generate($registry);
         $printer->output($registry);
