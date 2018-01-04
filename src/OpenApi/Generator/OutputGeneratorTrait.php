@@ -64,6 +64,10 @@ trait OutputGeneratorTrait
                     new Arg(new Scalar\String_('json')),
                 ]
             );
+        } elseif ($schema instanceof Schema) {
+            $serializeStmt = new Expr\FuncCall(new Name('json_decode'), [
+                new Arg($this->getResponseToStringStatement(new Expr\Variable('response'))),
+            ]);
         }
 
         $returnStmt = new Stmt\Return_($serializeStmt);

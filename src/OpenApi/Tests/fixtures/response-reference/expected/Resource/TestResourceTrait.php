@@ -37,4 +37,28 @@ trait TestResourceTrait
 
         return $response;
     }
+
+    /**
+     * @param array  $parameters List of parameters
+     * @param string $fetch      Fetch mode (object or response)
+     *
+     * @return \Psr\Http\Message\ResponseInterface|null
+     */
+    public function testRefArray(array $parameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        $queryParam = new QueryParam();
+        $url = '/test-array-ref';
+        $url = $url . ('?' . $queryParam->buildQueryString($parameters));
+        $headers = $queryParam->buildHeaders($parameters);
+        $body = $queryParam->buildFormDataString($parameters);
+        $request = $this->messageFactory->createRequest('GET', $url, $headers, $body);
+        $response = $this->httpClient->sendRequest($request);
+        if (self::FETCH_OBJECT === $fetch) {
+            if (200 === $response->getStatusCode()) {
+                return json_decode((string) $response->getBody());
+            }
+        }
+
+        return $response;
+    }
 }

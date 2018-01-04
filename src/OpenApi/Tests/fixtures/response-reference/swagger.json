@@ -5,6 +5,14 @@
             "description": "no error"
         }
     },
+    "definitions": {
+        "NotAnObject": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        }
+    },
     "paths": {
         "/test-query": {
             "get": {
@@ -12,6 +20,22 @@
                 "responses": {
                     "200": {
                         "$ref": "#/responses/200"
+                    }
+                },
+                "tags": [
+                    "Test"
+                ]
+            }
+        },
+        "/test-array-ref": {
+            "get": {
+                "operationId": "Test Ref Array",
+                "responses": {
+                    "200": {
+                        "description": "Description",
+                        "schema": {
+                            "$ref": "#/definitions/NotAnObject"
+                        }
                     }
                 },
                 "tags": [
