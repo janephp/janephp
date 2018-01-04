@@ -11,12 +11,9 @@ use Jane\OpenApi\Generator\Parameter\HeaderParameterGenerator;
 use Jane\OpenApi\Generator\Parameter\PathParameterGenerator;
 use Jane\OpenApi\Generator\Parameter\QueryParameterGenerator;
 use Jane\OpenApi\Operation\Operation;
-use PhpParser\Node\Arg;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Name;
-use PhpParser\Node\Param;
 use PhpParser\Node\Stmt;
-use PhpParser\Node\Scalar;
 use PhpParser\Comment;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 
@@ -40,8 +37,7 @@ abstract class OperationGenerator
         PathParameterGenerator $pathParameterGenerator,
         QueryParameterGenerator $queryParameterGenerator,
         ExceptionGenerator $exceptionGenerator
-    )
-    {
+    ) {
         $this->denormalizer = $denormalizer;
         $this->bodyParameterGenerator = $bodyParameterGenerator;
         $this->formDataParameterGenerator = $formDataParameterGenerator;
@@ -89,7 +85,7 @@ abstract class OperationGenerator
                     list(, $response) = $this->resolve($response, Response::class);
                 }
 
-                /** @var Response $response */
+                /* @var Response $response */
 
                 list($outputType, $throwType, $ifStatus) = $this->createResponseDenormalizationStatement(
                     $name,
@@ -138,7 +134,7 @@ abstract class OperationGenerator
             }, $throwTypes),
             [
                 ' *',
-                ' * @return ' .  $this->getReturnTypesForDoc($outputTypes), //implode('|', $outputTypes),
+                ' * @return ' . $this->getReturnTypesForDoc($outputTypes), //implode('|', $outputTypes),
                 ' */',
             ]
         );

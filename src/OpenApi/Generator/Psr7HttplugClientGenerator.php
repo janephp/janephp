@@ -25,7 +25,7 @@ class Psr7HttplugClientGenerator extends ClientGenerator
     protected function createResourceClass(string $name): Stmt\Class_
     {
         return new Stmt\Class_($name, [
-            'extends' => new Node\Name\FullyQualified(Psr7HttplugResource::class)
+            'extends' => new Node\Name\FullyQualified(Psr7HttplugResource::class),
         ]);
     }
 
@@ -35,7 +35,7 @@ class Psr7HttplugClientGenerator extends ClientGenerator
             'create', [
                 'flags' => Stmt\Class_::MODIFIER_STATIC | Stmt\Class_::MODIFIER_PUBLIC,
                 'params' => [
-                    new Node\Param('httpClient', new Expr\ConstFetch(new Name('null')))
+                    new Node\Param('httpClient', new Expr\ConstFetch(new Name('null'))),
                 ],
                 'stmts' => [
                     new Stmt\If_(
@@ -48,8 +48,8 @@ class Psr7HttplugClientGenerator extends ClientGenerator
                                         new Name\FullyQualified(HttpClientDiscovery::class),
                                         'find'
                                     )
-                                )
-                            ]
+                                ),
+                            ],
                         ]
                     ),
                     new Expr\Assign(
@@ -77,9 +77,9 @@ class Psr7HttplugClientGenerator extends ClientGenerator
                                                 new Node\Arg(new Expr\New_(new Name\FullyQualified(JsonEncode::class))),
                                                 new Node\Arg(new Expr\New_(new Name\FullyQualified(JsonDecode::class))),
                                             ])
-                                        )
+                                        ),
                                     ])
-                                )
+                                ),
                             ]
                         )
                     ),
@@ -92,7 +92,7 @@ class Psr7HttplugClientGenerator extends ClientGenerator
                             ]
                         )
                     ),
-                ]
+                ],
             ]
         );
     }

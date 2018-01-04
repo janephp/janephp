@@ -8,7 +8,6 @@ use Jane\JsonSchema\Generator\GeneratorInterface;
 use Jane\JsonSchema\Schema;
 use Jane\OpenApi\Model\OpenApi;
 use Jane\OpenApi\Naming\OperationNamingInterface;
-use Jane\OpenApi\Operation\OperationCollection;
 use Jane\OpenApi\Operation\OperationManager;
 use PhpParser\Node\Name;
 use PhpParser\Node\Stmt;
@@ -54,7 +53,7 @@ abstract class ClientGenerator implements GeneratorInterface
             $client->stmts,
             $traitsStatements,
             [
-                $this->getFactoryMethod($context)
+                $this->getFactoryMethod($context),
             ]
         );
 
@@ -71,14 +70,14 @@ abstract class ClientGenerator implements GeneratorInterface
 
     protected function createResource(string $group, string $traitName, Schema $schema, Context $context)
     {
-        $className = $group . $this->getSuffix() .'Resource';
+        $className = $group . $this->getSuffix() . 'Resource';
         $resource = $this->createResourceClass($className);
         $resource->stmts = array_merge(
             $resource->stmts,
             [
                 new Stmt\TraitUse([
                     new Name($traitName),
-                ])
+                ]),
             ]
         );
 
@@ -113,7 +112,7 @@ abstract class ClientGenerator implements GeneratorInterface
         ]);
 
         $schema->addFile(new File(
-            $schema->getDirectory() . DIRECTORY_SEPARATOR . 'Resource'. DIRECTORY_SEPARATOR . $traitName . '.php',
+            $schema->getDirectory() . DIRECTORY_SEPARATOR . 'Resource' . DIRECTORY_SEPARATOR . $traitName . '.php',
             $node,
             self::FILE_TYPE_RESOURCE_TRAIT
         ));

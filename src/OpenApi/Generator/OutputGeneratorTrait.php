@@ -68,10 +68,10 @@ trait OutputGeneratorTrait
 
         $returnStmt = new Stmt\Return_($serializeStmt);
 
-        if ((int)$status >= 400) {
+        if ((int) $status >= 400) {
             $exceptionName = $this->exceptionGenerator->generate(
                 $name,
-                (int)$status,
+                (int) $status,
                 $context,
                 $classGuess,
                 $array,
@@ -82,7 +82,7 @@ trait OutputGeneratorTrait
             $returnType = null;
             $throwType = '\\' . $context->getCurrentSchema()->getNamespace() . '\\Exception\\' . $exceptionName;
             $returnStmt = new Stmt\Throw_(new Expr\New_(new Name($throwType), $classGuess ? [
-                $serializeStmt
+                $serializeStmt,
             ] : []));
         }
 
@@ -103,7 +103,6 @@ trait OutputGeneratorTrait
 
     protected function createException($status, $request)
     {
-
     }
 
     /**

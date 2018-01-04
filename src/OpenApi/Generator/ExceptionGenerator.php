@@ -7,7 +7,6 @@ use Jane\JsonSchema\Generator\File;
 use Jane\JsonSchema\Guesser\Guess\ClassGuess;
 use Jane\JsonSchema\Schema;
 use Jane\OpenApi\Naming\ExceptionNaming;
-use PhpParser\Node\Arg;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Name;
 use PhpParser\Node\Param;
@@ -54,12 +53,12 @@ class ExceptionGenerator
                     new Name($exceptionName),
                     [
                         'implements' => [
-                            new Name($status >= 500 ? 'ServerException' : 'ClientException')
+                            new Name($status >= 500 ? 'ServerException' : 'ClientException'),
                         ],
                         'extends' => new Name('\\RuntimeException'),
                         'stmts' => [
                             new Stmt\Property(Stmt\Class_::MODIFIER_PRIVATE, [
-                                new Stmt\PropertyProperty($propertyName)
+                                new Stmt\PropertyProperty($propertyName),
                             ]),
                             new Stmt\ClassMethod('__construct', [
                                 'params' => [
@@ -68,7 +67,7 @@ class ExceptionGenerator
                                 'stmts' => [
                                     new Expr\StaticCall(new Name('parent'), '__construct', [
                                         new Scalar\String_($description),
-                                        new Scalar\LNumber($status)
+                                        new Scalar\LNumber($status),
                                     ]),
                                     new Expr\Assign(
                                         new Expr\PropertyFetch(
@@ -76,7 +75,7 @@ class ExceptionGenerator
                                             $propertyName
                                         ), new Expr\Variable($propertyName)
                                     ),
-                                ]
+                                ],
                             ]),
                             new Stmt\ClassMethod($methodName, [
                                 'stmts' => [
@@ -85,12 +84,12 @@ class ExceptionGenerator
                                             new Expr\Variable('this'),
                                             $propertyName
                                         )
-                                    )
-                                ]
+                                    ),
+                                ],
                             ]),
                         ],
                     ]
-                )
+                ),
             ]);
 
             $schema->addFile(new File($schema->getDirectory() . '/Exception/' . $exceptionName . '.php', $exception, 'Exception'));
@@ -103,7 +102,7 @@ class ExceptionGenerator
                 new Name($exceptionName),
                 [
                     'implements' => [
-                        new Name($status >= 500 ? 'ServerException' : 'ClientException')
+                        new Name($status >= 500 ? 'ServerException' : 'ClientException'),
                     ],
                     'extends' => new Name('\\RuntimeException'),
                     'stmts' => [
@@ -111,13 +110,13 @@ class ExceptionGenerator
                             'stmts' => [
                                 new Expr\StaticCall(new Name('parent'), '__construct', [
                                     new Scalar\String_($description),
-                                    new Scalar\LNumber($status)
+                                    new Scalar\LNumber($status),
                                 ]),
-                            ]
+                            ],
                         ]),
                     ],
                 ]
-            )
+            ),
         ]);
 
         $schema->addFile(new File($schema->getDirectory() . '/Exception/' . $exceptionName . '.php', $exception, 'Exception'));
@@ -132,30 +131,30 @@ class ExceptionGenerator
                 new Name('ApiException'),
                 [
                     'extends' => [
-                        new Name('\\Throwable')
-                    ]
+                        new Name('\\Throwable'),
+                    ],
                 ]
             ),
         ]);
 
         $clientException = new Stmt\Namespace_(new Name($schema->getNamespace() . '\\Exception'), [
-            new Stmt\Interface_ (
+            new Stmt\Interface_(
                 new Name('ClientException'),
                 [
                     'extends' => [
-                        new Name('ApiException')
-                    ]
+                        new Name('ApiException'),
+                    ],
                 ]
             ),
         ]);
 
         $serverException = new Stmt\Namespace_(new Name($schema->getNamespace() . '\\Exception'), [
-            new Stmt\Interface_ (
+            new Stmt\Interface_(
                 new Name('ServerException'),
                 [
                     'extends' => [
-                        new Name('ApiException')
-                    ]
+                        new Name('ApiException'),
+                    ],
                 ]
             ),
         ]);

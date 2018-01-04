@@ -1,6 +1,12 @@
 <?php
 
 $dirs = PhpCsFixer\Finder::create()
+    ->exclude('JsonSchema/Normalizer')
+    ->exclude('JsonSchema/Model')
+    ->exclude('JsonSchema/Tests/fixtures')
+    ->exclude('OpenApi/Normalizer')
+    ->exclude('OpenApi/Model')
+    ->exclude('OpenApi/Tests/fixtures')
     ->in(__DIR__ . '/src')
 ;
 
@@ -11,6 +17,7 @@ return PhpCsFixer\Config::create()
         '@Symfony:risky' => true,
         'array_syntax' => ['syntax' => 'short'],
         'concat_space' => ['spacing' => 'one'],
+        'yoda_style' => null,
     ])
     ->setFinder($dirs)
 ;

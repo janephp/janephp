@@ -20,25 +20,25 @@ class JaneBaseTest extends TestCase
         // 1. Cleanup generated
         $filesystem = new Filesystem();
 
-        if ($filesystem->exists($testDirectory->getRealPath().DIRECTORY_SEPARATOR.'generated')) {
-            $filesystem->remove($testDirectory->getRealPath().DIRECTORY_SEPARATOR.'generated');
+        if ($filesystem->exists($testDirectory->getRealPath() . DIRECTORY_SEPARATOR . 'generated')) {
+            $filesystem->remove($testDirectory->getRealPath() . DIRECTORY_SEPARATOR . 'generated');
         }
 
-        $filesystem->mkdir($testDirectory->getRealPath().DIRECTORY_SEPARATOR.'generated');
+        $filesystem->mkdir($testDirectory->getRealPath() . DIRECTORY_SEPARATOR . 'generated');
 
         // 2. Generate
         $command = new GenerateCommand();
         $inputArray = new ArrayInput([
-            '--config-file' => $testDirectory->getRealPath().DIRECTORY_SEPARATOR.'.jane',
+            '--config-file' => $testDirectory->getRealPath() . DIRECTORY_SEPARATOR . '.jane',
         ], $command->getDefinition());
 
         $command->execute($inputArray, new NullOutput());
 
         // 3. Compare
         $expectedFinder = new Finder();
-        $expectedFinder->in($testDirectory->getRealPath().DIRECTORY_SEPARATOR.'expected');
+        $expectedFinder->in($testDirectory->getRealPath() . DIRECTORY_SEPARATOR . 'expected');
         $generatedFinder = new Finder();
-        $generatedFinder->in($testDirectory->getRealPath().DIRECTORY_SEPARATOR.'generated');
+        $generatedFinder->in($testDirectory->getRealPath() . DIRECTORY_SEPARATOR . 'generated');
         $generatedData = [];
 
         $this->assertEquals(count($expectedFinder), count($generatedFinder), sprintf('No same number of files for %s', $testDirectory->getRelativePathname()));
@@ -67,9 +67,9 @@ class JaneBaseTest extends TestCase
     public function schemaProvider()
     {
         $finder = new Finder();
-        $finder->directories()->in(__DIR__.'/fixtures');
+        $finder->directories()->in(__DIR__ . '/fixtures');
         $finder->depth('< 1');
-        $data = array();
+        $data = [];
         foreach ($finder as $directory) {
             $data[] = [$directory->getFilename(), $directory];
         }

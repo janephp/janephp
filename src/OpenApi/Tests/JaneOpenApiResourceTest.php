@@ -51,12 +51,12 @@ class JaneOpenApiResourceTest extends TestCase
 
             if ($expectedFile->isFile()) {
                 $expectedPath = $expectedFile->getRealPath();
-                $actualPath   = $generatedData[ $expectedFile->getRelativePathname() ];
+                $actualPath = $generatedData[$expectedFile->getRelativePathname()];
 
                 $this->assertEquals(
                     file_get_contents($expectedPath),
                     file_get_contents($actualPath),
-                    "Expected " . $expectedPath . " got " . $actualPath . ' in ' . $name
+                    'Expected ' . $expectedPath . ' got ' . $actualPath . ' in ' . $name
                 );
             }
         }
@@ -65,10 +65,10 @@ class JaneOpenApiResourceTest extends TestCase
     public function resourceProvider()
     {
         $finder = new Finder();
-        $finder->directories()->in(__DIR__.'/fixtures');
+        $finder->directories()->in(__DIR__ . '/fixtures');
         $finder->depth('< 1');
 
-        $data = array();
+        $data = [];
 
         foreach ($finder as $directory) {
             $data[] = [$directory->getFilename(), $directory];

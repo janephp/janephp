@@ -10,7 +10,7 @@ use Symfony\Component\Validator\Constraint;
 interface ConstraintGuesserInterface
 {
     /**
-     * Return all validators guessed
+     * Return all validators guessed.
      *
      * @param mixed    $object
      * @param string   $name

@@ -2,7 +2,6 @@
 
 namespace Jane\JsonSchema\Generator\Context;
 
-use Jane\JsonSchema\Generator\File;
 use Jane\JsonSchema\Registry;
 use Jane\JsonSchema\Schema;
 

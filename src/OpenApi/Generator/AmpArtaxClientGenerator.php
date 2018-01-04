@@ -24,7 +24,7 @@ class AmpArtaxClientGenerator extends ClientGenerator
     protected function createResourceClass(string $name): Stmt\Class_
     {
         return new Stmt\Class_($name, [
-            'extends' => new Node\Name\FullyQualified(AmpArtaxResource::class)
+            'extends' => new Node\Name\FullyQualified(AmpArtaxResource::class),
         ]);
     }
 
@@ -34,7 +34,7 @@ class AmpArtaxClientGenerator extends ClientGenerator
             'create', [
                 'flags' => Stmt\Class_::MODIFIER_STATIC | Stmt\Class_::MODIFIER_PUBLIC,
                 'params' => [
-                    new Node\Param('httpClient', new Expr\ConstFetch(new Name('null')))
+                    new Node\Param('httpClient', new Expr\ConstFetch(new Name('null'))),
                 ],
                 'stmts' => [
                     new Stmt\If_(
@@ -44,8 +44,8 @@ class AmpArtaxClientGenerator extends ClientGenerator
                                 new Expr\Assign(
                                     new Expr\Variable('httpClient'),
                                     new Expr\New_(new Name\FullyQualified(DefaultClient::class))
-                                )
-                            ]
+                                ),
+                            ],
                         ]
                     ),
                     new Expr\Assign(
@@ -66,9 +66,9 @@ class AmpArtaxClientGenerator extends ClientGenerator
                                                 new Node\Arg(new Expr\New_(new Name\FullyQualified(JsonEncode::class))),
                                                 new Node\Arg(new Expr\New_(new Name\FullyQualified(JsonDecode::class))),
                                             ])
-                                        )
+                                        ),
                                     ])
-                                )
+                                ),
                             ]
                         )
                     ),
@@ -80,7 +80,7 @@ class AmpArtaxClientGenerator extends ClientGenerator
                             ]
                         )
                     ),
-                ]
+                ],
             ]
         );
     }

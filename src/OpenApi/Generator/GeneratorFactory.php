@@ -38,7 +38,7 @@ class GeneratorFactory
         $clientAsyncGenerator = null;
 
         $generators = [
-            new Psr7HttplugClientGenerator($operationManager, $psrHttplugOperationGenerator, $operationNaming)
+            new Psr7HttplugClientGenerator($operationManager, $psrHttplugOperationGenerator, $operationNaming),
         ];
 
         if ($options['async']) {

@@ -67,14 +67,14 @@ class AmpArtaxOperationGenerator extends OperationGenerator
                 new Expr\Variable('request'),
                 'withHeaders',
                 [
-                    new Arg($headerVariable)
+                    new Arg($headerVariable),
                 ]
             )),
             new Expr\Assign(new Expr\Variable('request'), new Expr\MethodCall(
                 new Expr\Variable('request'),
                 'withBody',
                 [
-                    new Arg($bodyVariable)
+                    new Arg($bodyVariable),
                 ]
             )),
         ];
@@ -82,7 +82,7 @@ class AmpArtaxOperationGenerator extends OperationGenerator
 
     protected function getReturnTypesForDoc($outputTypes): string
     {
-        return '\Amp\Promise<' . implode('|', $outputTypes).'>';
+        return '\Amp\Promise<' . implode('|', $outputTypes) . '>';
     }
 
     protected function getResponseStatusStatement($responseVariable): Expr
@@ -103,9 +103,9 @@ class AmpArtaxOperationGenerator extends OperationGenerator
             new Stmt\Return_(new Expr\FuncCall(new Name\FullyQualified('Amp\\call'), [
                 new Expr\Closure([
                     'stmts' => $classMethod->stmts,
-                    'uses' => $uses
-                ])
-            ]))
+                    'uses' => $uses,
+                ]),
+            ])),
         ];
         $classMethod->returnType = new Name\FullyQualified(Promise::class);
 
