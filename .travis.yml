@@ -25,12 +25,14 @@ matrix:
 before_install:
     - travis_retry composer self-update
     - phpenv config-rm xdebug.ini || true
+    - if [[ "$COVERAGE" = true ]]; then wget http://cs.sensiolabs.org/download/php-cs-fixer-v2.phar; fi
 
 install:
     - travis_retry composer update ${COMPOSER_FLAGS} --no-interaction
 
 script:
     - travis_wait $TEST_COMMAND
+    - if [[ "$COVERAGE" = true ]]; then php php-cs-fixer-v2.phar --dry-run --diff; fi
 
 after_success:
     - if [[ "$COVERAGE" = true ]]; then wget https://scrutinizer-ci.com/ocular.phar; fi
