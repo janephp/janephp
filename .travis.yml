@@ -32,7 +32,7 @@ install:
 
 script:
     - travis_wait $TEST_COMMAND
-    - if [[ "$COVERAGE" = true ]]; then php php-cs-fixer-v2.phar --dry-run --diff; fi
+    - if [[ "$COVERAGE" = true ]]; then php php-cs-fixer-v2.phar fix --dry-run --diff; fi
 
 after_success:
     - if [[ "$COVERAGE" = true ]]; then wget https://scrutinizer-ci.com/ocular.phar; fi
