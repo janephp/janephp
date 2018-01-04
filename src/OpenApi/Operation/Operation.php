@@ -3,82 +3,61 @@
 namespace Jane\OpenApi\Operation;
 
 use Jane\OpenApi\Model\Operation as OpenApiOperation;
+use Jane\OpenApi\Model\PathItem;
 
 class Operation
 {
-    const DELETE = 'DELETE';
-    const GET = 'GET';
-    const POST = 'POST';
-    const PUT = 'PUT';
-    const PATCH = 'PATCH';
-    const OPTIONS = 'OPTIONS';
-    const HEAD = 'HEAD';
+    public const DELETE = 'DELETE';
+    public const GET = 'GET';
+    public const POST = 'POST';
+    public const PUT = 'PUT';
+    public const PATCH = 'PATCH';
+    public const OPTIONS = 'OPTIONS';
+    public const HEAD = 'HEAD';
 
-    /**
-     * @var \Jane\OpenApi\Model\Operation
-     */
     private $operation;
 
-    /**
-     * @var string
-     */
     private $path;
 
-    /**
-     * @var string
-     */
     private $method;
 
-    /**
-     * @var string
-     */
     private $reference;
 
-    public function __construct(OpenApiOperation $operation, $path, $method, $reference, $host = null)
+    private $parameters = [];
+
+    public function __construct(PathItem $pathItem, OpenApiOperation $operation, string $path, string $method, string $reference)
     {
         $this->operation = $operation;
         $this->path = preg_replace('#^/+#', '/', $path);
         $this->method = $method;
-        $this->host = $host;
         $this->reference = $reference;
+        $this->parameters = array_merge(
+            $pathItem->getParameters() ?? [],
+            $operation->getParameters() ?? []
+        );
     }
 
-    /**
-     * @return string
-     */
-    public function getMethod()
+    public function getParameters(): array
+    {
+        return $this->parameters;
+    }
+
+    public function getMethod(): string
     {
         return $this->method;
     }
 
-    /**
-     * @return \Jane\OpenApi\Model\Operation
-     */
-    public function getOperation()
+    public function getOperation(): OpenApiOperation
     {
         return $this->operation;
     }
 
-    /**
-     * @return string
-     */
-    public function getPath()
+    public function getPath(): string
     {
         return $this->path;
     }
 
-    /**
-     * @return string
-     */
-    public function getHost()
-    {
-        return $this->host;
-    }
-
-    /**
-     * @return string
-     */
-    public function getReference()
+    public function getReference(): string
     {
         return $this->reference;
     }

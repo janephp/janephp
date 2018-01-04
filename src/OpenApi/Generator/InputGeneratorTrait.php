@@ -51,14 +51,7 @@ trait InputGeneratorTrait
      */
     abstract protected function getDenormalizer();
 
-    /**
-     * Create the query param statements and documentation.
-     *
-     * @param Operation $operation
-     *
-     * @return array
-     */
-    protected function createQueryParamStatements(Operation $operation)
+    protected function createQueryParamStatements(Operation $operation): array
     {
         $queryParamDocumentation = [];
         $queryParamVariable = new Expr\Variable('queryParam');
@@ -66,67 +59,48 @@ trait InputGeneratorTrait
             new Expr\Assign($queryParamVariable, new Expr\New_(new Name('QueryParam'))),
         ];
 
-        if ($operation->getOperation()->getParameters()) {
-            foreach ($operation->getOperation()->getParameters() as $parameter) {
-                if ($parameter instanceof Reference) {
-                    $parameter = $this->resolveParameter($parameter);
-                }
+        foreach ($operation->getParameters() as $parameter) {
+            if ($parameter instanceof Reference) {
+                $parameter = $this->resolveParameter($parameter);
+            }
 
-                if ($parameter instanceof FormDataParameterSubSchema) {
-                    $queryParamStatements = array_merge($queryParamStatements, $this->formDataParameterGenerator->generateQueryParamStatements($parameter, $queryParamVariable));
-                    $queryParamDocumentation[] = $this->formDataParameterGenerator->generateQueryDocParameter($parameter);
-                }
+            if ($parameter instanceof FormDataParameterSubSchema) {
+                $queryParamStatements = array_merge($queryParamStatements, $this->formDataParameterGenerator->generateQueryParamStatements($parameter, $queryParamVariable));
+                $queryParamDocumentation[] = $this->formDataParameterGenerator->generateQueryDocParameter($parameter);
+            }
 
-                if ($parameter instanceof HeaderParameterSubSchema) {
-                    $queryParamStatements = array_merge($queryParamStatements, $this->headerParameterGenerator->generateQueryParamStatements($parameter, $queryParamVariable));
-                    $queryParamDocumentation[] = $this->headerParameterGenerator->generateQueryDocParameter($parameter);
-                }
+            if ($parameter instanceof HeaderParameterSubSchema) {
+                $queryParamStatements = array_merge($queryParamStatements, $this->headerParameterGenerator->generateQueryParamStatements($parameter, $queryParamVariable));
+                $queryParamDocumentation[] = $this->headerParameterGenerator->generateQueryDocParameter($parameter);
+            }
 
-                if ($parameter instanceof QueryParameterSubSchema) {
-                    $queryParamStatements = array_merge($queryParamStatements, $this->queryParameterGenerator->generateQueryParamStatements($parameter, $queryParamVariable));
-                    $queryParamDocumentation[] = $this->queryParameterGenerator->generateQueryDocParameter($parameter);
-                }
+            if ($parameter instanceof QueryParameterSubSchema) {
+                $queryParamStatements = array_merge($queryParamStatements, $this->queryParameterGenerator->generateQueryParamStatements($parameter, $queryParamVariable));
+                $queryParamDocumentation[] = $this->queryParameterGenerator->generateQueryDocParameter($parameter);
             }
         }
 
         return [$queryParamDocumentation, $queryParamStatements, $queryParamVariable];
     }
 
-    /**
-     * Create parameters for the method and their documentation.
-     *
-     * @param Operation $operation
-     * @param string[]  $queryParamDocumentation
-     * @param Context   $context
-     *
-     * @return array
-     */
-    protected function createParameters(Operation $operation, $queryParamDocumentation, Context $context)
+    protected function createParameters(Operation $operation, $queryParamDocumentation, Context $context): array
     {
         $documentationParams = [];
         $methodParameters = [];
 
-        if ($operation->getOperation()->getParameters()) {
-            foreach ($operation->getOperation()->getParameters() as $key => $parameter) {
-                if ($parameter instanceof Reference) {
-                    $parameter = $this->resolveParameter($parameter);
-                }
-
-                if ($parameter instanceof PathParameterSubSchema) {
-                    $methodParameters[] = $this->pathParameterGenerator->generateMethodParameter($parameter, $context, $operation->getReference() . '/parameters/' . $key);
-                    $documentationParams[] = sprintf(' * @param %s', $this->pathParameterGenerator->generateDocParameter($parameter, $context, $operation->getReference() . '/parameters/' . $key));
-                }
+        foreach ($operation->getParameters() as $key => $parameter) {
+            if ($parameter instanceof Reference) {
+                $parameter = $this->resolveParameter($parameter);
             }
 
-            foreach ($operation->getOperation()->getParameters() as $key => $parameter) {
-                if ($parameter instanceof Reference) {
-                    $parameter = $this->resolveParameter($parameter);
-                }
+            if ($parameter instanceof PathParameterSubSchema) {
+                $methodParameters[] = $this->pathParameterGenerator->generateMethodParameter($parameter, $context, $operation->getReference() . '/parameters/' . $key);
+                $documentationParams[] = sprintf(' * @param %s', $this->pathParameterGenerator->generateDocParameter($parameter, $context, $operation->getReference() . '/parameters/' . $key));
+            }
 
-                if ($parameter instanceof BodyParameter) {
-                    $methodParameters[] = $this->bodyParameterGenerator->generateMethodParameter($parameter, $context, $operation->getReference() . '/parameters/' . $key);
-                    $documentationParams[] = sprintf(' * @param %s', $this->bodyParameterGenerator->generateDocParameter($parameter, $context, $operation->getReference() . '/parameters/' . $key));
-                }
+            if ($parameter instanceof BodyParameter) {
+                $methodParameters[] = $this->bodyParameterGenerator->generateMethodParameter($parameter, $context, $operation->getReference() . '/parameters/' . $key);
+                $documentationParams[] = sprintf(' * @param %s', $this->bodyParameterGenerator->generateDocParameter($parameter, $context, $operation->getReference() . '/parameters/' . $key));
             }
         }
 
@@ -148,14 +122,6 @@ trait InputGeneratorTrait
         return [$documentationParams, $methodParameters];
     }
 
-    /**
-     * Create all statements around url transformation.
-     *
-     * @param Operation     $operation
-     * @param Expr\Variable $queryParamVariable
-     *
-     * @return array
-     */
     protected function createUrlStatements(Operation $operation, $queryParamVariable)
     {
         $urlVariable = new Expr\Variable('url');
@@ -164,22 +130,20 @@ trait InputGeneratorTrait
             new Expr\Assign($urlVariable, new Scalar\String_($operation->getPath())),
         ];
 
-        if ($operation->getOperation()->getParameters()) {
-            foreach ($operation->getOperation()->getParameters() as $parameter) {
-                if ($parameter instanceof Reference) {
-                    $parameter = $this->resolveParameter($parameter);
-                }
+        foreach ($operation->getParameters() as $parameter) {
+            if ($parameter instanceof Reference) {
+                $parameter = $this->resolveParameter($parameter);
+            }
 
-                if ($parameter instanceof PathParameterSubSchema) {
-                    // $url = str_replace('{param}', $param, $url)
-                    $statements[] = new Expr\Assign($urlVariable, new Expr\FuncCall(new Name('str_replace'), [
-                        new Arg(new Scalar\String_('{' . $parameter->getName() . '}')),
-                        new Arg(new Expr\FuncCall(new Name('urlencode'), [
-                            new Arg(new Expr\Variable(Inflector::camelize($parameter->getName()))),
-                        ])),
-                        new Arg($urlVariable),
-                    ]));
-                }
+            if ($parameter instanceof PathParameterSubSchema) {
+                // $url = str_replace('{param}', $param, $url)
+                $statements[] = new Expr\Assign($urlVariable, new Expr\FuncCall(new Name('str_replace'), [
+                    new Arg(new Scalar\String_('{' . $parameter->getName() . '}')),
+                    new Arg(new Expr\FuncCall(new Name('urlencode'), [
+                        new Arg(new Expr\Variable(Inflector::camelize($parameter->getName()))),
+                    ])),
+                    new Arg($urlVariable),
+                ]));
             }
         }
 
@@ -195,27 +159,20 @@ trait InputGeneratorTrait
         return [$statements, $urlVariable];
     }
 
-    /**
-     * Create body statements.
-     *
-     * @param Operation     $operation
-     * @param Expr\Variable $queryParamVariable
-     * @param Context       $context
-     *
-     * @return array
-     */
-    protected function createBodyStatements(Operation $operation, $queryParamVariable, Context $context)
+    protected function createBodyStatements(Operation $operation, $queryParamVariable, Context $context): array
     {
         $bodyParameter = null;
         $bodyVariable = new Expr\Variable('body');
         $parameterKey = 0;
 
-        if ($operation->getOperation()->getParameters()) {
-            foreach ($operation->getOperation()->getParameters() as $key => $parameter) {
-                if ($parameter instanceof BodyParameter) {
-                    $bodyParameter = $parameter;
-                    $parameterKey = $key;
-                }
+        foreach ($operation->getParameters() as $key => $parameter) {
+            if ($parameter instanceof Reference) {
+                $parameter = $this->resolveParameter($parameter);
+            }
+
+            if ($parameter instanceof BodyParameter) {
+                $bodyParameter = $parameter;
+                $parameterKey = $key;
             }
         }
 
@@ -275,32 +232,30 @@ trait InputGeneratorTrait
             );
         }
 
-        if ($operation->getOperation()->getParameters()) {
-            $bodyParameters = array_filter(
-                $operation->getOperation()->getParameters(),
-                function ($parameter) {
-                    return $parameter instanceof BodyParameter;
-                }
-            );
-
-            $formParameters = array_filter(
-                $operation->getOperation()->getParameters(),
-                function ($parameter) {
-                    return $parameter instanceof FormDataParameterSubSchema;
-                }
-            );
-
-            if (\count($bodyParameters) > 0) {
-                $headers[] = new Expr\ArrayItem(
-                    new Scalar\String_('application/json'),
-                    new Scalar\String_('Content-Type')
-                );
-            } elseif (\count($formParameters) > 0) {
-                $headers[] = new Expr\ArrayItem(
-                    new Scalar\String_('application/x-www-form-urlencoded'),
-                    new Scalar\String_('Content-Type')
-                );
+        $bodyParameters = array_filter(
+            $operation->getParameters(),
+            function ($parameter) {
+                return $parameter instanceof BodyParameter;
             }
+        );
+
+        $formParameters = array_filter(
+            $operation->getParameters(),
+            function ($parameter) {
+                return $parameter instanceof FormDataParameterSubSchema;
+            }
+        );
+
+        if (\count($bodyParameters) > 0) {
+            $headers[] = new Expr\ArrayItem(
+                new Scalar\String_('application/json'),
+                new Scalar\String_('Content-Type')
+            );
+        } elseif (\count($formParameters) > 0) {
+            $headers[] = new Expr\ArrayItem(
+                new Scalar\String_('application/x-www-form-urlencoded'),
+                new Scalar\String_('Content-Type')
+            );
         }
 
         $headersStatement = new Expr\MethodCall($queryParamVariable, 'buildHeaders', [new Arg(new Expr\Variable('parameters'))]);

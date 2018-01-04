@@ -9,6 +9,47 @@
         }
     },
     "paths": {
+        "/test-path-parameters/{testPath}": {
+            "parameters": [
+                {
+                    "name": "testBody",
+                    "in": "body",
+                    "schema": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                },
+                {
+                    "name": "testPath",
+                    "in": "path",
+                    "type": "string"
+                },
+                {
+                    "name": "testQuery",
+                    "in": "query",
+                    "type": "string"
+                },
+                {
+                    "name": "testHeader",
+                    "in": "header",
+                    "type": "string"
+                }
+            ],
+            "get": {
+                "operationId": "testGetWithPathParameters",
+                "tags": [
+                    "Test"
+                ]
+            },
+            "post": {
+                "operationId": "testPostWithPathParameters",
+                "tags": [
+                    "Test"
+                ]
+            }
+        },
         "/test-query": {
             "get": {
                 "operationId": "Test Query Parameters",

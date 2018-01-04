@@ -30,7 +30,7 @@ class AmpArtaxOperationGenerator extends OperationGenerator
         )));
     }
 
-    protected function createParameters(Operation $operation, $queryParamDocumentation, Context $context)
+    protected function createParameters(Operation $operation, $queryParamDocumentation, Context $context): array
     {
         list($documentationParam, $methodParams) = parent::createParameters($operation, $queryParamDocumentation, $context);
 

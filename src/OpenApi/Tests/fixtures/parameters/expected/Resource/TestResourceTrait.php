@@ -15,6 +15,62 @@ use Jane\OpenApiRuntime\Client\QueryParam;
 trait TestResourceTrait
 {
     /**
+     * @param array $testBody
+     * @param array $parameters {
+     *
+     *     @var string $testQuery
+     *     @var string $testHeader
+     * }
+     *
+     * @param string $fetch Fetch mode (object or response)
+     *
+     * @return \Psr\Http\Message\ResponseInterface
+     */
+    public function testGetWithPathParameters(array $testBody, array $parameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        $queryParam = new QueryParam();
+        $queryParam->setDefault('testQuery', null);
+        $queryParam->setDefault('testHeader', null);
+        $queryParam->setHeaderParameters(['testHeader']);
+        $url = '/test-path-parameters/{testPath}';
+        $url = $url . ('?' . $queryParam->buildQueryString($parameters));
+        $headers = array_merge(['Content-Type' => 'application/json'], $queryParam->buildHeaders($parameters));
+        $body = $testBody;
+        $request = $this->messageFactory->createRequest('GET', $url, $headers, $body);
+        $response = $this->httpClient->sendRequest($request);
+
+        return $response;
+    }
+
+    /**
+     * @param array $testBody
+     * @param array $parameters {
+     *
+     *     @var string $testQuery
+     *     @var string $testHeader
+     * }
+     *
+     * @param string $fetch Fetch mode (object or response)
+     *
+     * @return \Psr\Http\Message\ResponseInterface
+     */
+    public function testPostWithPathParameters(array $testBody, array $parameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        $queryParam = new QueryParam();
+        $queryParam->setDefault('testQuery', null);
+        $queryParam->setDefault('testHeader', null);
+        $queryParam->setHeaderParameters(['testHeader']);
+        $url = '/test-path-parameters/{testPath}';
+        $url = $url . ('?' . $queryParam->buildQueryString($parameters));
+        $headers = array_merge(['Content-Type' => 'application/json'], $queryParam->buildHeaders($parameters));
+        $body = $testBody;
+        $request = $this->messageFactory->createRequest('POST', $url, $headers, $body);
+        $response = $this->httpClient->sendRequest($request);
+
+        return $response;
+    }
+
+    /**
      * @param array $parameters {
      *
      *     @var string $testString
