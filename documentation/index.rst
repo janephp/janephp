@@ -20,6 +20,7 @@ code respecting common and advanced PSR.
    Introduction <JsonSchema/introduction>
    Generating a Model <JsonSchema/generate>
    Using a generated Model <JsonSchema/usage>
+   Multi schemas <JsonSchema/multi>
 
 .. toctree::
    :hidden:
@@ -29,3 +30,4 @@ code respecting common and advanced PSR.
    Generating a Client <OpenAPI/generate>
    Using a generated client <OpenAPI/usage>
    Asynchronous Client <OpenAPI/async>
+   Multi files <OpenAPI/multi>

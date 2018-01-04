@@ -8,8 +8,8 @@ at the root of your project:
 
     php vendor/bin/jane generate
 
-This command will try to read a config file named `.jane` located on the current working directory. However you can name it as you
-like and use the `--config-file` option to specify its location:
+This command will try to read a config file named ``.jane`` located on the current working directory. However you can name it as you
+like and use the ``--config-file`` option to specify its location:
 
 .. code-block:: bash
 
@@ -55,5 +55,13 @@ Other options are available to customize the generated code:
 
  * ``reference``: A boolean which indicate to add the support for `JSON Reference`_ into the generated code.
  * ``date-format``: A date format to specify how the generated code should encode and decode ``\DateTime`` object to string
+
+Multi schemas
+-------------
+
+Jane JsonSchema can also generate multiple schemas at the same time with different namespaces and directories,
+allowing to handle JSON References on others schema.
+
+See :doc:`/JsonSchema/multi` for more information
 
 .. _`JSON Reference`: https://tools.ietf.org/id/draft-pbryan-zyp-json-ref-03.html
