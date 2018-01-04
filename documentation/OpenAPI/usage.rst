@@ -93,6 +93,21 @@ object::
 
 This allow to do custom work when the API does not return standard JSON body.
 
+Host and basePath support
+-------------------------
+
+Jane OpenAPI will never generate the complete url with the host and the base path for an endpoint. Instead it will only
+do a request on the specified path.
+
+If host and/or base path is present in the specification it is added, via the ``PluginClient``, ``AddHostPlugin`` and
+``AddPathPlugin`` thanks to `HTTPlug plugin system`_ when using the static ``create``.
+
+This allow you to configure different host and base path given a specific environment / server, which may defer when in test,
+preprod and production environment.
+
+Jane OpenAPI will always try to use ``https`` if present in the scheme (or if there is no scheme). It will use the first scheme
+present if ``https`` is not present.
+
 Using Resource instead of Client
 --------------------------------
 
@@ -135,3 +150,4 @@ recommended to always use the ``Client`` class containing all methods.
 .. _PSR7 Response: http://www.php-fig.org/psr/psr-7/#33-psrhttpmessageresponseinterface
 .. _Message Factory Interface: http://docs.php-http.org/en/latest/message/message-factory.html
 .. _PHPDoc: https://www.phpdoc.org/
+.. _HTTPlug plugin system: http://docs.php-http.org/en/latest/plugins/introduction.html

@@ -2,9 +2,14 @@
 
 namespace Jane\OpenApi\Generator;
 
+use Http\Client\Common\Plugin\AddHostPlugin;
+use Http\Client\Common\Plugin\AddPathPlugin;
+use Http\Client\Common\PluginClient;
 use Http\Discovery\HttpClientDiscovery;
 use Http\Discovery\MessageFactoryDiscovery;
+use Http\Discovery\UriFactoryDiscovery;
 use Jane\JsonSchema\Generator\Context\Context;
+use Jane\OpenApi\Model\OpenApi;
 use Jane\OpenApiRuntime\Client\Psr7HttplugResource;
 use PhpParser\Node;
 use PhpParser\Node\Name;
@@ -41,15 +46,7 @@ class Psr7HttplugClientGenerator extends ClientGenerator
                     new Stmt\If_(
                         new Expr\BinaryOp\Identical(new Expr\ConstFetch(new Name('null')), new Expr\Variable('httpClient')),
                         [
-                            'stmts' => [
-                                new Expr\Assign(
-                                    new Expr\Variable('httpClient'),
-                                    new Expr\StaticCall(
-                                        new Name\FullyQualified(HttpClientDiscovery::class),
-                                        'find'
-                                    )
-                                ),
-                            ],
+                            'stmts' => $this->getHttpClientCreateExpr($context),
                         ]
                     ),
                     new Expr\Assign(
@@ -95,5 +92,88 @@ class Psr7HttplugClientGenerator extends ClientGenerator
                 ],
             ]
         );
+    }
+
+    private function getHttpClientCreateExpr(Context $context)
+    {
+        /** @var OpenApi $openApi */
+        $openApi = $context->getCurrentSchema()->getParsed();
+        $baseUri = null;
+        $plugins = [];
+
+        if (null !== $openApi->getHost()) {
+            $scheme = 'https';
+
+            if (null !== $openApi->getSchemes() && count($openApi->getSchemes()) > 0 && !in_array('https', $openApi->getSchemes())) {
+                $scheme = $openApi->getSchemes()[0];
+            }
+
+            $baseUri = $scheme . '://' . trim($openApi->getHost(), '/');
+
+            if (null !== $openApi->getBasePath()) {
+                $baseUri .= '/' . trim($openApi->getBasePath(), '/');
+                $plugins[] = AddPathPlugin::class;
+            }
+
+            $plugins[] = AddHostPlugin::class;
+        } elseif (null !== $openApi->getBasePath()) {
+            $baseUri = trim($openApi->getBasePath(), '/');
+            $plugins[] = AddPathPlugin::class;
+        }
+
+        $httpClientAssign = new Expr\Assign(
+            new Expr\Variable('httpClient'),
+            new Expr\StaticCall(
+                new Name\FullyQualified(HttpClientDiscovery::class),
+                'find'
+            )
+        );
+
+        if (empty($baseUri)) {
+            return [$httpClientAssign];
+        }
+
+        $statements = [
+            $httpClientAssign,
+            new Expr\Assign(
+                new Expr\Variable('plugins'),
+                new Expr\Array_()
+            ),
+            new Expr\Assign(
+                new Expr\Variable('uri'),
+                new Expr\MethodCall(
+                    new Expr\StaticCall(
+                        new Name\FullyQualified(UriFactoryDiscovery::class),
+                        'find'
+                    ),
+                    'createUri',
+                    [
+                        new Node\Arg(new Node\Scalar\String_($baseUri)),
+                    ]
+                )
+            ),
+        ];
+
+        foreach ($plugins as $pluginClass) {
+            $statements[] = new Expr\Assign(
+                new Expr\ArrayDimFetch(new Expr\Variable('plugins')),
+                new Expr\New_(new Name\FullyQualified($pluginClass), [
+                    new Node\Arg(new Expr\Variable('uri')),
+                ])
+            );
+        }
+
+        $statements[] = new Expr\Assign(
+            new Expr\Variable('httpClient'),
+            new Expr\New_(
+                new Name\FullyQualified(PluginClient::class),
+                [
+                    new Node\Arg(new Expr\Variable('httpClient')),
+                    new Node\Arg(new Expr\Variable('plugins')),
+                ]
+            )
+        );
+
+        return $statements;
     }
 }

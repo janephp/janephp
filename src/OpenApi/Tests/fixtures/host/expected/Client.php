@@ -12,14 +12,14 @@ namespace Jane\OpenApi\Tests\Expected;
 
 class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugResource
 {
-    use Resource\PetsResourceTrait;
+    use Resource\DefaultResourceTrait;
 
     public static function create($httpClient = null)
     {
         if (null === $httpClient) {
             $httpClient = \Http\Discovery\HttpClientDiscovery::find();
             $plugins = [];
-            $uri = \Http\Discovery\UriFactoryDiscovery::find()->createUri('http://petstore.swagger.io/v1');
+            $uri = \Http\Discovery\UriFactoryDiscovery::find()->createUri('https://www.foo-host.com/base-path');
             $plugins[] = new \Http\Client\Common\Plugin\AddPathPlugin($uri);
             $plugins[] = new \Http\Client\Common\Plugin\AddHostPlugin($uri);
             $httpClient = new \Http\Client\Common\PluginClient($httpClient, $plugins);
