@@ -2,16 +2,8 @@
 
 namespace Jane\JsonSchema;
 
-use PhpCsFixer\Cache\NullCacheManager;
 use PhpCsFixer\Config;
-use PhpCsFixer\ConfigInterface;
 use PhpCsFixer\Console\Command\FixCommand;
-use PhpCsFixer\Console\ConfigurationResolver;
-use PhpCsFixer\Differ\NullDiffer;
-use PhpCsFixer\Error\ErrorsManager;
-use PhpCsFixer\Finder;
-use PhpCsFixer\Linter\Linter;
-use PhpCsFixer\Runner\Runner;
 use PhpCsFixer\ToolInfo;
 use PhpParser\PrettyPrinterAbstract;
 use Symfony\Component\Console\Input\ArrayInput;
@@ -63,7 +55,7 @@ EOH
             ],
         ];
 
-        if (version_compare(\PhpCsFixer\Console\Application::VERSION, '2.6.0','>=')) {
+        if (version_compare(\PhpCsFixer\Console\Application::VERSION, '2.6.0', '>=')) {
             $rules['yoda_style'] = null;
         }
 
