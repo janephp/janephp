@@ -26,7 +26,7 @@ trait TestResourceTrait
         $queryParam = new QueryParam();
         $url = '/test-simple';
         $url = $url . ('?' . $queryParam->buildQueryString($parameters));
-        $headers = $queryParam->buildHeaders($parameters);
+        $headers = array_merge(['Content-Type' => 'application/json'], $queryParam->buildHeaders($parameters));
         $body = $testString;
         $request = $this->messageFactory->createRequest('POST', $url, $headers, $body);
         $response = $this->httpClient->sendRequest($request);
@@ -51,7 +51,7 @@ trait TestResourceTrait
         $queryParam = new QueryParam();
         $url = '/test-object';
         $url = $url . ('?' . $queryParam->buildQueryString($parameters));
-        $headers = $queryParam->buildHeaders($parameters);
+        $headers = array_merge(['Content-Type' => 'application/json'], $queryParam->buildHeaders($parameters));
         $body = $this->serializer->serialize($testObject, 'json');
         $request = $this->messageFactory->createRequest('POST', $url, $headers, $body);
         $response = $this->httpClient->sendRequest($request);
@@ -76,7 +76,7 @@ trait TestResourceTrait
         $queryParam = new QueryParam();
         $url = '/test-object-list';
         $url = $url . ('?' . $queryParam->buildQueryString($parameters));
-        $headers = $queryParam->buildHeaders($parameters);
+        $headers = array_merge(['Content-Type' => 'application/json'], $queryParam->buildHeaders($parameters));
         $body = $testObjectList;
         $request = $this->messageFactory->createRequest('POST', $url, $headers, $body);
         $response = $this->httpClient->sendRequest($request);

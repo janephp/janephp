@@ -8,6 +8,7 @@ use Jane\JsonSchemaRuntime\Reference;
 use Jane\OpenApi\Model\BodyParameter;
 use Jane\OpenApi\Model\FormDataParameterSubSchema;
 use Jane\OpenApi\Model\HeaderParameterSubSchema;
+use Jane\OpenApi\Model\OpenApi;
 use Jane\OpenApi\Model\PathParameterSubSchema;
 use Jane\OpenApi\Model\QueryParameterSubSchema;
 use Jane\OpenApi\Operation\Operation;
@@ -251,44 +252,30 @@ trait InputGeneratorTrait
         ], $bodyVariable];
     }
 
-    /**
-     * Create headers statements.
-     *
-     * @param Operation     $operation
-     * @param Expr\Variable $queryParamVariable
-     *
-     * @return array
-     */
-    protected function createHeaderStatements(Operation $operation, $queryParamVariable)
+    protected function createHeaderStatements(OpenApi $openApi, Operation $operation, $queryParamVariable): array
     {
         $headerVariable = new Expr\Variable('headers');
 
-        $headers = [
-            new Expr\ArrayItem(
-                new Scalar\String_($operation->getHost()),
-                new Scalar\String_('Host')
-            ),
-        ];
+        $headers = [];
+        $consumes = array_merge(
+            $openApi->getConsumes() ?? [],
+            $operation->getOperation()->getConsumes() ?? []
+        );
 
-        $produces = $operation->getOperation()->getProduces();
-
-        if ($produces && in_array('application/json', $produces)) {
-            $headers[]
-                = new Expr\ArrayItem(
-                    new Expr\Array_(
-                        [
-                        new Expr\ArrayItem(
-                            new Scalar\String_('application/json')
-                        ),
-                        ]
+        if (\in_array('application/json', $consumes, true)) {
+            $headers[] = new Expr\ArrayItem(
+                new Expr\Array_(
+                    [
+                    new Expr\ArrayItem(
+                        new Scalar\String_('application/json')
                     ),
-                    new Scalar\String_('Accept')
-                );
+                    ]
+                ),
+                new Scalar\String_('Accept')
+            );
         }
 
-        $consumes = $operation->getOperation()->getProduces();
-
-        if ($operation->getOperation()->getParameters() && $consumes) {
+        if ($operation->getOperation()->getParameters()) {
             $bodyParameters = array_filter(
                 $operation->getOperation()->getParameters(),
                 function ($parameter) {
@@ -296,20 +283,44 @@ trait InputGeneratorTrait
                 }
             );
 
-            if (count($bodyParameters) > 0 && in_array('application/json', $consumes)) {
-                $headers[]
-                    = new Expr\ArrayItem(
-                        new Scalar\String_('application/json'),
-                        new Scalar\String_('Content-Type')
-                    );
+            $formParameters = array_filter(
+                $operation->getOperation()->getParameters(),
+                function ($parameter) {
+                    return $parameter instanceof FormDataParameterSubSchema;
+                }
+            );
+
+            if (\count($bodyParameters) > 0) {
+                $headers[] = new Expr\ArrayItem(
+                    new Scalar\String_('application/json'),
+                    new Scalar\String_('Content-Type')
+                );
+            } elseif (\count($formParameters) > 0) {
+                $headers[] = new Expr\ArrayItem(
+                    new Scalar\String_('application/x-www-form-urlencoded'),
+                    new Scalar\String_('Content-Type')
+                );
             }
+        }
+
+        $headersStatement = new Expr\MethodCall($queryParamVariable, 'buildHeaders', [new Arg(new Expr\Variable('parameters'))]);
+
+        if (\count($headers) > 0) {
+            $headersStatement = new Expr\FuncCall(new Name('array_merge'), [
+                new Arg(
+                    new Expr\Array_(
+                        $headers
+                    )
+                ),
+                new Arg($headersStatement),
+            ]);
         }
 
         return [
             [
                 new Expr\Assign(
                     $headerVariable,
-                    new Expr\MethodCall($queryParamVariable, 'buildHeaders', [new Arg(new Expr\Variable('parameters'))])
+                    $headersStatement
                 ),
             ],
             $headerVariable,

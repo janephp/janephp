@@ -25,7 +25,7 @@ trait TestResourceTrait
         $queryParam = new QueryParam();
         $url = '/test-simple';
         $url = $url . ('?' . $queryParam->buildQueryString($parameters));
-        $headers = $queryParam->buildHeaders($parameters);
+        $headers = array_merge(['Accept' => ['application/json']], $queryParam->buildHeaders($parameters));
         $body = $queryParam->buildFormDataString($parameters);
         $request = $this->messageFactory->createRequest('POST', $url, $headers, $body);
         $response = $this->httpClient->sendRequest($request);

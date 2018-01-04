@@ -57,10 +57,12 @@ abstract class OperationGenerator
 
     public function createOperation($name, Operation $operation, Context $context): Stmt\ClassMethod
     {
+        $openApi = $context->getCurrentSchema()->getParsed();
+
         list($queryParamDocumentation, $queryParamStatements, $queryParamVariable) = $this->createQueryParamStatements($operation);
         list($urlStatements, $urlVariable) = $this->createUrlStatements($operation, $queryParamVariable);
         list($bodyStatements, $bodyVariable) = $this->createBodyStatements($operation, $queryParamVariable, $context);
-        list($headerStatements, $headerVariable) = $this->createHeaderStatements($operation, $queryParamVariable);
+        list($headerStatements, $headerVariable) = $this->createHeaderStatements($openApi, $operation, $queryParamVariable);
         list($documentationParameters, $parameters) = $this->createParameters($operation, $queryParamDocumentation, $context);
 
         $statements = array_merge(

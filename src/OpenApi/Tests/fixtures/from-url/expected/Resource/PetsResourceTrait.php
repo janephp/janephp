@@ -30,7 +30,7 @@ trait PetsResourceTrait
         $queryParam->setDefault('limit', null);
         $url = '/pets';
         $url = $url . ('?' . $queryParam->buildQueryString($parameters));
-        $headers = $queryParam->buildHeaders($parameters);
+        $headers = array_merge(['Accept' => ['application/json']], $queryParam->buildHeaders($parameters));
         $body = $queryParam->buildFormDataString($parameters);
         $request = $this->messageFactory->createRequest('GET', $url, $headers, $body);
         $response = $this->httpClient->sendRequest($request);
@@ -56,7 +56,7 @@ trait PetsResourceTrait
         $queryParam = new QueryParam();
         $url = '/pets';
         $url = $url . ('?' . $queryParam->buildQueryString($parameters));
-        $headers = $queryParam->buildHeaders($parameters);
+        $headers = array_merge(['Accept' => ['application/json']], $queryParam->buildHeaders($parameters));
         $body = $queryParam->buildFormDataString($parameters);
         $request = $this->messageFactory->createRequest('POST', $url, $headers, $body);
         $response = $this->httpClient->sendRequest($request);
@@ -84,7 +84,7 @@ trait PetsResourceTrait
         $url = '/pets/{petId}';
         $url = str_replace('{petId}', urlencode($petId), $url);
         $url = $url . ('?' . $queryParam->buildQueryString($parameters));
-        $headers = $queryParam->buildHeaders($parameters);
+        $headers = array_merge(['Accept' => ['application/json']], $queryParam->buildHeaders($parameters));
         $body = $queryParam->buildFormDataString($parameters);
         $request = $this->messageFactory->createRequest('GET', $url, $headers, $body);
         $response = $this->httpClient->sendRequest($request);
