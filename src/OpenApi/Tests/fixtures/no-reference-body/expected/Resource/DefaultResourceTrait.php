@@ -26,7 +26,7 @@ trait DefaultResourceTrait
         $queryParam = new QueryParam();
         $url = '/test';
         $url = $url . ('?' . $queryParam->buildQueryString($parameters));
-        $headers = array_merge(['Host' => 'localhost'], $queryParam->buildHeaders($parameters));
+        $headers = $queryParam->buildHeaders($parameters);
         $body = $this->serializer->serialize($body, 'json');
         $request = $this->messageFactory->createRequest('GET', $url, $headers, $body);
         $response = $this->httpClient->sendRequest($request);
@@ -46,7 +46,7 @@ trait DefaultResourceTrait
         $queryParam = new QueryParam();
         $url = '/test';
         $url = $url . ('?' . $queryParam->buildQueryString($parameters));
-        $headers = array_merge(['Host' => 'localhost'], $queryParam->buildHeaders($parameters));
+        $headers = $queryParam->buildHeaders($parameters);
         $body = $this->serializer->serialize($body, 'json');
         $request = $this->messageFactory->createRequest('POST', $url, $headers, $body);
         $response = $this->httpClient->sendRequest($request);

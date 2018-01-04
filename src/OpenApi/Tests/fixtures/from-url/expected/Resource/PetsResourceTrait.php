@@ -28,9 +28,9 @@ trait PetsResourceTrait
     {
         $queryParam = new QueryParam();
         $queryParam->setDefault('limit', null);
-        $url = '/v1/pets';
+        $url = '/pets';
         $url = $url . ('?' . $queryParam->buildQueryString($parameters));
-        $headers = array_merge(['Host' => 'petstore.swagger.io'], $queryParam->buildHeaders($parameters));
+        $headers = $queryParam->buildHeaders($parameters);
         $body = $queryParam->buildFormDataString($parameters);
         $request = $this->messageFactory->createRequest('GET', $url, $headers, $body);
         $response = $this->httpClient->sendRequest($request);
@@ -54,9 +54,9 @@ trait PetsResourceTrait
     public function createPets(array $parameters = [], string $fetch = self::FETCH_OBJECT)
     {
         $queryParam = new QueryParam();
-        $url = '/v1/pets';
+        $url = '/pets';
         $url = $url . ('?' . $queryParam->buildQueryString($parameters));
-        $headers = array_merge(['Host' => 'petstore.swagger.io'], $queryParam->buildHeaders($parameters));
+        $headers = $queryParam->buildHeaders($parameters);
         $body = $queryParam->buildFormDataString($parameters);
         $request = $this->messageFactory->createRequest('POST', $url, $headers, $body);
         $response = $this->httpClient->sendRequest($request);
@@ -81,10 +81,10 @@ trait PetsResourceTrait
     public function showPetById(string $petId, array $parameters = [], string $fetch = self::FETCH_OBJECT)
     {
         $queryParam = new QueryParam();
-        $url = '/v1/pets/{petId}';
+        $url = '/pets/{petId}';
         $url = str_replace('{petId}', urlencode($petId), $url);
         $url = $url . ('?' . $queryParam->buildQueryString($parameters));
-        $headers = array_merge(['Host' => 'petstore.swagger.io'], $queryParam->buildHeaders($parameters));
+        $headers = $queryParam->buildHeaders($parameters);
         $body = $queryParam->buildFormDataString($parameters);
         $request = $this->messageFactory->createRequest('GET', $url, $headers, $body);
         $response = $this->httpClient->sendRequest($request);

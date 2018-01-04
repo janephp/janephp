@@ -25,7 +25,7 @@ trait BarResourceTrait
         $queryParam = new QueryParam();
         $url = '/test-object';
         $url = $url . ('?' . $queryParam->buildQueryString($parameters));
-        $headers = array_merge(['Host' => 'localhost', 'Accept' => ['application/json']], $queryParam->buildHeaders($parameters));
+        $headers = $queryParam->buildHeaders($parameters);
         $body = $queryParam->buildFormDataString($parameters);
         $request = $this->messageFactory->createRequest('GET', $url, $headers, $body);
         $response = $this->httpClient->sendRequest($request);

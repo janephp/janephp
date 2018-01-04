@@ -25,7 +25,7 @@ trait TestResourceTrait
         $queryParam = new QueryParam();
         $url = '/test';
         $url = $url . ('?' . $queryParam->buildQueryString($parameters));
-        $headers = array_merge(['Host' => 'localhost'], $queryParam->buildHeaders($parameters));
+        $headers = $queryParam->buildHeaders($parameters);
         $body = $queryParam->buildFormDataString($parameters);
         $request = $this->messageFactory->createRequest('POST', $url, $headers, $body);
         $response = $this->httpClient->sendRequest($request);

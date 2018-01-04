@@ -309,14 +309,7 @@ trait InputGeneratorTrait
             [
                 new Expr\Assign(
                     $headerVariable,
-                    new Expr\FuncCall(new Name('array_merge'), [
-                        new Arg(
-                            new Expr\Array_(
-                                $headers
-                            )
-                        ),
-                        new Arg(new Expr\MethodCall($queryParamVariable, 'buildHeaders', [new Arg(new Expr\Variable('parameters'))])),
-                    ])
+                    new Expr\MethodCall($queryParamVariable, 'buildHeaders', [new Arg(new Expr\Variable('parameters'))])
                 ),
             ],
             $headerVariable,

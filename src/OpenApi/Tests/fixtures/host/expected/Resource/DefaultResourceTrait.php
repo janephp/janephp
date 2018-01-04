@@ -23,9 +23,9 @@ trait DefaultResourceTrait
     public function testHost(array $parameters = [], string $fetch = self::FETCH_OBJECT)
     {
         $queryParam = new QueryParam();
-        $url = 'base-path/test-exception';
+        $url = '/test-exception';
         $url = $url . ('?' . $queryParam->buildQueryString($parameters));
-        $headers = array_merge(['Host' => 'www.foo-host.com'], $queryParam->buildHeaders($parameters));
+        $headers = $queryParam->buildHeaders($parameters);
         $body = $queryParam->buildFormDataString($parameters);
         $request = $this->messageFactory->createRequest('GET', $url, $headers, $body);
         $response = $this->httpClient->sendRequest($request);

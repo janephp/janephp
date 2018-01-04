@@ -40,7 +40,7 @@ trait TestResourceTrait
         $queryParam->setDefault('testDefault', 'test');
         $url = '/test-query';
         $url = $url . ('?' . $queryParam->buildQueryString($parameters));
-        $headers = array_merge(['Host' => 'localhost'], $queryParam->buildHeaders($parameters));
+        $headers = $queryParam->buildHeaders($parameters);
         $body = $queryParam->buildFormDataString($parameters);
         $request = $this->messageFactory->createRequest('GET', $url, $headers, $body);
         $response = $this->httpClient->sendRequest($request);
@@ -85,7 +85,7 @@ trait TestResourceTrait
         $queryParam->setHeaderParameters(['testDefault']);
         $url = '/test-header';
         $url = $url . ('?' . $queryParam->buildQueryString($parameters));
-        $headers = array_merge(['Host' => 'localhost'], $queryParam->buildHeaders($parameters));
+        $headers = $queryParam->buildHeaders($parameters);
         $body = $queryParam->buildFormDataString($parameters);
         $request = $this->messageFactory->createRequest('GET', $url, $headers, $body);
         $response = $this->httpClient->sendRequest($request);
@@ -130,7 +130,7 @@ trait TestResourceTrait
         $queryParam->setFormParameters(['testDefault']);
         $url = '/test-form';
         $url = $url . ('?' . $queryParam->buildQueryString($parameters));
-        $headers = array_merge(['Host' => 'localhost'], $queryParam->buildHeaders($parameters));
+        $headers = $queryParam->buildHeaders($parameters);
         $body = $queryParam->buildFormDataString($parameters);
         $request = $this->messageFactory->createRequest('POST', $url, $headers, $body);
         $response = $this->httpClient->sendRequest($request);
@@ -160,7 +160,7 @@ trait TestResourceTrait
         $url = str_replace('{testInteger}', urlencode($testInteger), $url);
         $url = str_replace('{testFloat}', urlencode($testFloat), $url);
         $url = $url . ('?' . $queryParam->buildQueryString($parameters));
-        $headers = array_merge(['Host' => 'localhost'], $queryParam->buildHeaders($parameters));
+        $headers = $queryParam->buildHeaders($parameters);
         $body = $queryParam->buildFormDataString($parameters);
         $request = $this->messageFactory->createRequest('GET', $url, $headers, $body);
         $response = $this->httpClient->sendRequest($request);
@@ -186,7 +186,7 @@ trait TestResourceTrait
         $url = '/{test_integer}';
         $url = str_replace('{test_integer}', urlencode($testInteger), $url);
         $url = $url . ('?' . $queryParam->buildQueryString($parameters));
-        $headers = array_merge(['Host' => 'localhost'], $queryParam->buildHeaders($parameters));
+        $headers = $queryParam->buildHeaders($parameters);
         $body = $queryParam->buildFormDataString($parameters);
         $request = $this->messageFactory->createRequest('GET', $url, $headers, $body);
         $response = $this->httpClient->sendRequest($request);

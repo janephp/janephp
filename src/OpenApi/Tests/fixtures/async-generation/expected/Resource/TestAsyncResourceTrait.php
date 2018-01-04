@@ -30,7 +30,7 @@ trait TestAsyncResourceTrait
             $queryParam = new QueryParam();
             $url = '/test';
             $url = $url . ('?' . $queryParam->buildQueryString($parameters));
-            $headers = array_merge(['Host' => 'localhost'], $queryParam->buildHeaders($parameters));
+            $headers = $queryParam->buildHeaders($parameters);
             $body = $queryParam->buildFormDataString($parameters);
             $request = new \Amp\Artax\Request($url, 'GET');
             $request = $request->withHeaders($headers);
@@ -70,7 +70,7 @@ trait TestAsyncResourceTrait
             $url = '/test/{id}';
             $url = str_replace('{id}', urlencode($id), $url);
             $url = $url . ('?' . $queryParam->buildQueryString($parameters));
-            $headers = array_merge(['Host' => 'localhost'], $queryParam->buildHeaders($parameters));
+            $headers = $queryParam->buildHeaders($parameters);
             $body = $queryParam->buildFormDataString($parameters);
             $request = new \Amp\Artax\Request($url, 'GET');
             $request = $request->withHeaders($headers);
@@ -105,7 +105,7 @@ trait TestAsyncResourceTrait
             $queryParam = new QueryParam();
             $url = '/test-list';
             $url = $url . ('?' . $queryParam->buildQueryString($parameters));
-            $headers = array_merge(['Host' => 'localhost'], $queryParam->buildHeaders($parameters));
+            $headers = $queryParam->buildHeaders($parameters);
             $body = $queryParam->buildFormDataString($parameters);
             $request = new \Amp\Artax\Request($url, 'GET');
             $request = $request->withHeaders($headers);

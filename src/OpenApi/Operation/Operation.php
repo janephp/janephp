@@ -34,10 +34,10 @@ class Operation
      */
     private $reference;
 
-    public function __construct(OpenApiOperation $operation, $path, $method, $reference, $basePath = '', $host = 'localhost')
+    public function __construct(OpenApiOperation $operation, $path, $method, $reference, $host = null)
     {
         $this->operation = $operation;
-        $this->path = preg_replace('#^/+#', '/', $basePath . $path);
+        $this->path = preg_replace('#^/+#', '/', $path);
         $this->method = $method;
         $this->host = $host;
         $this->reference = $reference;
