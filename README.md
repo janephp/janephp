@@ -13,6 +13,10 @@ Jane is a set of libraries to generate PHP code.
 
 [Documentation is available at http://jane.readthedocs.io/en/latest/](http://jane.readthedocs.io/en/latest/)
 
+## Changes
+
+View the [Change Log](CHANGELOG) file attached to this project.
+
 ## Contribution
 
 View the [CONTRIBUTING](CONTRIBUTING) file attached to this project.
