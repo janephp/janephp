@@ -1,7 +1,7 @@
 Using a generated Model
 =======================
 
-This library generate basics P.O.P.O. objects (Plain Old PHP Objects) with a bunch of setters / getters. It also generates
+This library generates basics P.O.P.O. objects (Plain Old PHP Objects) with a bunch of setters / getters. It also generates
 all normalizers to handle denormalization from a json string, and normalization.
 
 All normalizers respect the ``Symfony\Component\Serializer\Normalizer\NormalizerInterface`` and
@@ -39,10 +39,10 @@ This serializer will be able to encode and decode every data respecting your jso
 
 .. note::
     Take note that we don't use classic defaults for ``JsonEncode`` and ``JsonDecode``. Using ``JSON_UNESCAPED_SLASHES``
-    only makes sense if you can have JSON References in your data (not specification). However using ``false`` for
+    only makes sense if you can have JSON References in your data (not specification). However, using ``false`` for
     ``JsonDecode`` (which means not using associative array but ``\stdClass`` instead) is mandatory.
 
-    As an example of why its mandatory, a JSON Schema could contain the following valid specification::
+    As an example of why it's mandatory, a JSON Schema could contain the following valid specification::
 
         {
             "type": "object",
@@ -53,9 +53,9 @@ This serializer will be able to encode and decode every data respecting your jso
             }
         }
 
-    When using associative array it would be tricky (but feasible) to deal with data inside the array or object (need to detect if all keys are
-    numerical). The main problem comes when dealing with an empty array or object. In this case there is no possibility
-    to know if it was an array or object, and in some cases decoding and recoding this value (with no modifications)
+    When using associative array, it would be tricky (but feasible) to deal with data inside the array or object (need to detect if all keys are
+    numerical). The main problem comes when dealing with an empty array or object. In this case, there is no possibility
+    to know if it was an array or object, and in some cases, decoding and recoding this value (with no modification)
     will change the data.
 
 .. _Symfony Serializer Component: https://symfony.com/doc/current/components/serializer.html

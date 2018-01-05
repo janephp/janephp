@@ -8,8 +8,8 @@ at the root of your project:
 
     php vendor/bin/jane-openapi generate
 
-This command will try to read a config file named ``.jane-openapi`` located on the current working directory. However you can name it as you
-like and use the ``--config-file`` option to specify its location:
+This command will try to read a config file named ``.jane-openapi`` located on the current working directory. However, you can name it as you
+like and use the ``--config-file`` option to specify its location and name:
 
 .. code-block:: bash
 
@@ -32,14 +32,14 @@ The configuration file consists of a simple PHP script returning an array::
         'directory' => __DIR__ . '/generated',
     ];
 
-This example is the minimum configuration required for generating a Client:
+This example shows the minimum configuration required to generate a client:
 
- * ``openapi-file``: Specify the location of your OpenApi file, it can be local file or a remote one ``https://my.domain.com/my-api.json``.
+ * ``openapi-file``: Specify the location of your OpenApi file, it can be a local file or a remote one ``https://my.domain.com/my-api.json``.
    It can also be a ``yaml`` file.
  * ``namespace``: Root namespace of all of your generated code
  * ``directory``: Directory where the code will be generated
 
-Given this configuration you will need to add the following configuration to composer, in order to load the generated files::
+Given this configuration, you will need to add the following configuration to composer, in order to load the generated files::
 
     "autoload": {
         "psr-4": {

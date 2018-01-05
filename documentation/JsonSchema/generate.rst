@@ -8,15 +8,15 @@ at the root of your project:
 
     php vendor/bin/jane generate
 
-This command will try to read a config file named ``.jane`` located on the current working directory. However you can name it as you
-like and use the ``--config-file`` option to specify its location:
+This command will try to read a config file named ``.jane`` located on the current working directory. However, you can name it as you
+like and use the ``--config-file`` option to specify its location and name:
 
 .. code-block:: bash
 
     php vendor/bin/jane generate --config-file=jane-configuration.php
 
 .. note::
-    No others options can be passed to the command. Having a config file ensure that a team working on the project always
+    No others options can be passed to this command. Having a config file ensure that a team working on the project always
     use the same set of parameters and, when it changes, give vision of the new option used to generate the code.
 
 Configuration file
@@ -33,9 +33,9 @@ The configuration file consists of a simple PHP script returning an array::
         'directory' => __DIR__ . '/generated',
     ];
 
-This example is the minimum configuration required for generating a Model:
+This example shows the minimum configuration required to generate a Model:
 
- * ``json-schema-file``: Specify the location of your json schema file, it can be local file or a remote one ``https://my.domain.com/my-schema.json``
+ * ``json-schema-file``: Specify the location of your json schema file, it can be a local file or a remote one ``https://my.domain.com/my-schema.json``
  * ``root-class``: The root class of the root object defined in your json schema, if there is no property on the root object it will not be used
  * ``namespace``: Root namespace of all of your generated code
  * ``directory``: Directory where the code will be generated at
@@ -60,7 +60,7 @@ Multi schemas
 -------------
 
 Jane JsonSchema can also generate multiple schemas at the same time with different namespaces and directories,
-allowing to handle JSON References on others schema.
+allowing to handle JSON References on others schemas.
 
 See :doc:`/JsonSchema/multi` for more information
 

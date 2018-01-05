@@ -4,10 +4,10 @@ Using a generated client
 Generating a client will produce same classes as the :doc:`/JsonSchema/introduction` library:
 
  * Model files in the ``Model`` namespace
- * Normalizer files in the ``Normalizer`` namesapce
+ * Normalizer files in the ``Normalizer`` namespace
  * A ``NormalizerFactory`` class in the ``Normalizer`` namespace
 
-Futhermore it generates:
+Furthermore, it generates:
 
  * Resources files in the ``Resource`` namespace which are a subset of the API endpoints (depends on the tags of the endpoint)
  * Client file in the root namespace containing all API endpoints
@@ -16,13 +16,13 @@ Futhermore it generates:
 Creating the API Client
 -----------------------
 
-Generated ``Client`` class, have a static method ``create`` which act like a factory to create your Client::
+Generated ``Client`` class have a static method ``create`` which act like a factory to create your Client::
 
     <?php
 
     $apiClient = Vendor\Library\Generated\Client::create();
 
-Optionally you can pass a custom ``HttpClient`` respecting the `HTTPlug`_ standard. If you which to use the constructor
+Optionally, you can pass a custom ``HttpClient`` respecting the `HTTPlug`_ standard. If you which to use the constructor
 to reuse existing instances, sections below describe the 4 services used by it and how to create them.
 
 Creating the Http Client
@@ -38,7 +38,7 @@ Recommended way of creating an HTTP Client is by using the `discovery`_ library 
 
     $httpClient = Http\Discovery\HttpClientDiscovery::find();
 
-This allow, user of the API to use any client respecting the standard.
+This allows user of the API to use any client respecting the standard.
 
 Creating the Serializer
 -----------------------
@@ -84,7 +84,7 @@ Like the HTTP Client and Message Factory, it is recommended to use the `discover
 Using the API Client
 --------------------
 
-Generated code also generate a complete `PHPDoc`_ comment on each method, which should correctly describe the endpoint.
+Generated code has complete `PHPDoc`_ comment on each method, which should correctly describe the endpoint.
 Method names for each endpoint depends on the ``operationId`` property of the OpenAPI specification. And if not present
 it will be generated from the endpoint path::
 
@@ -94,9 +94,9 @@ it will be generated from the endpoint path::
     // Operation id being listFoo
     $foos = $apiClient->listFoo();
 
-Also depending on the parameters of the endpoint it may have 2 to more arguments.
+Also depending on the parameters of the endpoint, it may have 2 to more arguments.
 
-Last parameter of each endpoint, allows to specify which type of data the method must return. By default it will try to
+Last parameter of each endpoint, allows to specify which type of data the method must return. By default, it will try to
 return an object depending on the status code of your response. But you can force the method to return a `PSR7 Response`_
 object::
 
@@ -109,7 +109,7 @@ This allow to do custom work when the API does not return standard JSON body.
 Host and basePath support
 -------------------------
 
-Jane OpenAPI will never generate the complete url with the host and the base path for an endpoint. Instead it will only
+Jane OpenAPI will never generate the complete url with the host and the base path for an endpoint. Instead, it will only
 do a request on the specified path.
 
 If host and/or base path is present in the specification it is added, via the ``PluginClient``, ``AddHostPlugin`` and
@@ -124,10 +124,10 @@ present if ``https`` is not present.
 Using Resource instead of Client
 --------------------------------
 
-Jane OpenAPI also generated ``Resource`` class, which are exactly the same as the ``Client`` but it may contain less
+Jane OpenAPI also generates ``Resource`` class, which are exactly the same as the ``Client`` but it may contain less
 endpoint. Separation of a method into a specific endpoint depends on the ``tags`` value in the OpenAPI specification.
 
-As an example when using the following specification::
+As an example, when using the following specification::
 
     {
         "swagger": "2.0",
@@ -154,7 +154,7 @@ As an example when using the following specification::
 It will create 2 resources, one being ``FooResource`` and having the ``testSimple`` method, the other one
 being the ``BarResource`` containing the ``testObject`` method.
 
-This may be useful when you have large API and don't want to disclose every methods into the same service. However it is highly
+This may be useful when you have large API and don't want to disclose every methods into the same service. However, it is highly
 recommended to always use the ``Client`` class containing all methods.
 
 .. _HTTPlug: http://docs.php-http.org/en/latest/index.html
