@@ -18,6 +18,7 @@ class NormalizerFactory
         $normalizers[] = new \Symfony\Component\Serializer\Normalizer\ArrayDenormalizer();
         $normalizers[] = new BarNormalizer();
         $normalizers[] = new FooNormalizer();
+        $normalizers[] = new FuzNormalizer();
 
         return $normalizers;
     }

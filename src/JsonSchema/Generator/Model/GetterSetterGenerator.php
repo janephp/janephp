@@ -3,6 +3,7 @@
 namespace Jane\JsonSchema\Generator\Model;
 
 use Jane\JsonSchema\Generator\Naming;
+use Jane\JsonSchema\Guesser\Guess\Property;
 use Jane\JsonSchema\Guesser\Guess\Type;
 use PhpParser\Comment\Doc;
 use PhpParser\Node\Param;
@@ -18,18 +19,9 @@ trait GetterSetterGenerator
      */
     abstract protected function getNaming();
 
-    /**
-     * Create get method.
-     *
-     * @param $name
-     * @param Type   $type
-     * @param string $namespace
-     *
-     * @return Stmt\ClassMethod
-     */
-    protected function createGetter($name, Type $type, $namespace, $required = false)
+    protected function createGetter(Property $property, $namespace, $required = false): Stmt\ClassMethod
     {
-        $returnType = $type->getTypeHint($namespace);
+        $returnType = $property->getType()->getTypeHint($namespace);
 
         if ($returnType && !$required) {
             $returnType = '?' . $returnType;
@@ -37,35 +29,26 @@ trait GetterSetterGenerator
 
         return new Stmt\ClassMethod(
             // getProperty
-            $this->getNaming()->getPrefixedMethodName('get', $name),
+            $this->getNaming()->getPrefixedMethodName('get', $property->getName()),
             [
                 // public function
                 'type' => Stmt\Class_::MODIFIER_PUBLIC,
                 'stmts' => [
                     // return $this->property;
                     new Stmt\Return_(
-                        new Expr\PropertyFetch(new Expr\Variable('this'), $this->getNaming()->getPropertyName($name))
+                        new Expr\PropertyFetch(new Expr\Variable('this'), $this->getNaming()->getPropertyName($property->getName()))
                     ),
                 ],
                 'returnType' => $returnType,
             ], [
-                'comments' => [$this->createGetterDoc($type, $namespace)],
+                'comments' => [$this->createGetterDoc($property, $namespace)],
             ]
         );
     }
 
-    /**
-     * Create set method.
-     *
-     * @param $name
-     * @param Type   $type
-     * @param string $namespace
-     *
-     * @return Stmt\ClassMethod
-     */
-    protected function createSetter($name, Type $type, $namespace, $required = false)
+    protected function createSetter(Property $property, $namespace, $required = false): Stmt\ClassMethod
     {
-        $setType = $type->getTypeHint($namespace);
+        $setType = $property->getType()->getTypeHint($namespace);
 
         if ($setType && !$required) {
             $setType = '?' . $setType;
@@ -73,68 +56,55 @@ trait GetterSetterGenerator
 
         return new Stmt\ClassMethod(
             // setProperty
-            $this->getNaming()->getPrefixedMethodName('set', $name),
+            $this->getNaming()->getPrefixedMethodName('set', $property->getName()),
             [
                 // public function
                 'type' => Stmt\Class_::MODIFIER_PUBLIC,
                 // ($property)
                 'params' => [
-                    new Param($this->getNaming()->getPropertyName($name), null, $setType),
+                    new Param($this->getNaming()->getPropertyName($property->getName()), null, $setType),
                 ],
                 'stmts' => [
                     // $this->property = $property;
                     new Expr\Assign(
                         new Expr\PropertyFetch(
                             new Expr\Variable('this'),
-                            $this->getNaming()->getPropertyName($name)
-                        ), new Expr\Variable($this->getNaming()->getPropertyName($name))
+                            $this->getNaming()->getPropertyName($property->getName())
+                        ), new Expr\Variable($this->getNaming()->getPropertyName($property->getName()))
                     ),
                     // return $this;
                     new Stmt\Return_(new Expr\Variable('this')),
                 ],
                 'returnType' => 'self',
             ], [
-                'comments' => [$this->createSetterDoc($name, $type, $namespace)],
+                'comments' => [$this->createSetterDoc($property, $namespace)],
             ]
         );
     }
 
-    /**
-     * Return doc for get method.
-     *
-     * @param Type   $type
-     * @param string $namespace
-     *
-     * @return Doc
-     */
-    protected function createGetterDoc(Type $type, $namespace)
+    protected function createGetterDoc(Property $property, $namespace): Doc
     {
         return new Doc(sprintf(<<<EOD
 /**
+ * %s
+ *
  * @return %s
  */
 EOD
-        , $type->getDocTypeHint($namespace)));
+        , $property->getDescription(), $property->getType()->getDocTypeHint($namespace)));
     }
 
-    /**
-     * Return doc for set method.
-     *
-     * @param $name
-     * @param Type   $type
-     * @param string $namespace
-     *
-     * @return Doc
-     */
-    protected function createSetterDoc($name, Type $type, $namespace)
+    protected function createSetterDoc(Property $property, $namespace): Doc
     {
         return new Doc(sprintf(<<<EOD
 /**
+ * %s
+ *
  * @param %s %s
  *
  * @return self
  */
 EOD
-        , $type->getDocTypeHint($namespace), '$' . $this->getNaming()->getPropertyName($name)));
+        , $property->getDescription(), $property->getType()->getDocTypeHint($namespace), '$' . $this->getNaming()->getPropertyName($property->getName())));
     }
 }

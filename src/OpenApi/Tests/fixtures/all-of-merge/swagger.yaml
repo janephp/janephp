@@ -11,4 +11,12 @@ definitions:
         properties:
           foo:
             type: "string"
-            description: "Path to a file where the container ID is written"
+            description: "A description"
+  Fuz:
+    allOf:
+      - $ref: "#/definitions/Bar"
+      - type: "object"
+        properties:
+          bar:
+            type: "string"
+            description: "A description"

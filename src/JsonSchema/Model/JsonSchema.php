@@ -141,6 +141,8 @@ class JsonSchema
      */
     protected $oneOf;
     /**
+     * Core schema meta-schema.
+     *
      * @var JsonSchema
      */
     protected $not;
@@ -786,6 +788,8 @@ class JsonSchema
     }
 
     /**
+     * Core schema meta-schema.
+     *
      * @return JsonSchema
      */
     public function getNot(): ?self
@@ -794,6 +798,8 @@ class JsonSchema
     }
 
     /**
+     * Core schema meta-schema.
+     *
      * @param JsonSchema $not
      *
      * @return self

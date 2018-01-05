@@ -125,7 +125,7 @@ Using Resource instead of Client
 --------------------------------
 
 Jane OpenAPI also generates ``Resource`` class, which are exactly the same as the ``Client`` but it may contain less
-endpoint. Separation of a method into a specific endpoint depends on the ``tags`` value in the OpenAPI specification.
+endpoint. Separation of a method into a specific resource depends on the ``tags`` value in the OpenAPI specification.
 
 As an example, when using the following specification::
 

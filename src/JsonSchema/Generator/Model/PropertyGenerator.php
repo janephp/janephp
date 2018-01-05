@@ -3,7 +3,7 @@
 namespace Jane\JsonSchema\Generator\Model;
 
 use Jane\JsonSchema\Generator\Naming;
-use Jane\JsonSchema\Guesser\Guess\Type;
+use Jane\JsonSchema\Guesser\Guess\Property;
 use PhpParser\Comment\Doc;
 use PhpParser\Node\Name;
 use PhpParser\Node\Stmt;
@@ -18,45 +18,31 @@ trait PropertyGenerator
      */
     abstract protected function getNaming();
 
-    /**
-     * Return a property stmt.
-     *
-     * @param string      $name
-     * @param Type        $type
-     * @param string|null $default
-     *
-     * @return Stmt\Property
-     */
-    protected function createProperty($name, Type $type, $namespace, $default = null)
+    protected function createProperty(Property $property, $namespace, $default = null): Stmt
     {
-        $propertyName = $this->getNaming()->getPropertyName($name);
-        $property = new Stmt\PropertyProperty($propertyName);
+        $propertyName = $this->getNaming()->getPropertyName($property->getName());
+        $propertyStmt = new Stmt\PropertyProperty($propertyName);
 
         if (null !== $default) {
-            $property->default = new Expr\ConstFetch(new Name($default));
+            $propertyStmt->default = new Expr\ConstFetch(new Name($default));
         }
 
         return new Stmt\Property(Stmt\Class_::MODIFIER_PROTECTED, [
-            $property,
+            $propertyStmt,
         ], [
-            'comments' => [$this->createPropertyDoc($type, $namespace)],
+            'comments' => [$this->createPropertyDoc($property, $namespace)],
         ]);
     }
 
-    /**
-     * Get php doc for parameter.
-     *
-     * @param Type $type
-     *
-     * @return Doc
-     */
-    protected function createPropertyDoc(Type $type, $namespace)
+    protected function createPropertyDoc(Property $property, $namespace): Doc
     {
         return new Doc(sprintf(<<<EOD
 /**
+ * %s
+ *
  * @var %s
  */
 EOD
-        , $type->getDocTypeHint($namespace)));
+        , $property->getDescription(), $property->getType()->getDocTypeHint($namespace)));
     }
 }

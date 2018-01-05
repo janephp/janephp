@@ -74,7 +74,7 @@ class ObjectGuesser implements GuesserInterface, PropertiesGuesserInterface, Typ
             $type = $propertyObj->getType();
             $nullable = 'null' == $type || (is_array($type) && in_array('null', $type));
 
-            $properties[] = new Property($property, $key, $reference . '/properties/' . $key, $nullable);
+            $properties[$key] = new Property($property, $key, $reference . '/properties/' . $key, $nullable, null, $propertyObj->getDescription());
         }
 
         return $properties;

@@ -10,20 +10,18 @@ declare(strict_types=1);
 
 namespace Jane\OpenApi\Tests\Expected\Model;
 
-class Foo
+class Fuz
 {
-    /**
-     * @var string
-     */
-    protected $bar;
     /**
      * A description.
      *
      * @var string
      */
-    protected $foo;
+    protected $bar;
 
     /**
+     * A description.
+     *
      * @return string
      */
     public function getBar(): ?string
@@ -32,6 +30,8 @@ class Foo
     }
 
     /**
+     * A description.
+     *
      * @param string $bar
      *
      * @return self
@@ -39,30 +39,6 @@ class Foo
     public function setBar(?string $bar): self
     {
         $this->bar = $bar;
-
-        return $this;
-    }
-
-    /**
-     * A description.
-     *
-     * @return string
-     */
-    public function getFoo(): ?string
-    {
-        return $this->foo;
-    }
-
-    /**
-     * A description.
-     *
-     * @param string $foo
-     *
-     * @return self
-     */
-    public function setFoo(?string $foo): self
-    {
-        $this->foo = $foo;
 
         return $this;
     }

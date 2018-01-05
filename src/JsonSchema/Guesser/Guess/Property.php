@@ -29,68 +29,53 @@ class Property
      */
     private $nullable;
 
-    public function __construct($object, $name, $reference, $nullable = false, $type = null)
+    /**
+     * @var string
+     */
+    private $description;
+
+    public function __construct($object, string $name, string $reference, bool $nullable = false, Type $type = null, string $description = null)
     {
         $this->name = $name;
         $this->object = $object;
         $this->reference = $reference;
         $this->nullable = $nullable;
         $this->type = $type;
+        $this->description = $description;
     }
 
-    /**
-     * @return mixed
-     */
     public function getObject()
     {
         return $this->object;
     }
 
-    /**
-     * Return name of the property.
-     *
-     * @return string
-     */
-    public function getName()
+    public function getName(): string
     {
         return $this->name;
     }
 
-    /**
-     * @return string
-     */
-    public function getReference()
+    public function getReference(): string
     {
         return $this->reference;
     }
 
-    /**
-     * Whether the property is nullable or not.
-     *
-     * @return bool
-     */
-    public function isNullable()
+    public function isNullable(): bool
     {
         return $this->nullable;
     }
 
-    /**
-     * Return type of the property.
-     *
-     * @return Type
-     */
-    public function getType()
+    public function getType(): Type
     {
         return $this->type;
     }
 
-    /**
-     * Set the type.
-     *
-     * @param Type $type
-     */
-    public function setType(Type $type)
+    public function setType(Type $type): void
     {
         $this->type = $type;
+    }
+
+    public function getDescription(): string
+    {
+        return (string) $this->description;
     }
 }
