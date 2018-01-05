@@ -25,7 +25,7 @@ trait TestResourceTrait
      */
     public function getTest(array $parameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        $queryParam = new QueryParam();
+        $queryParam = new QueryParam($this->streamFactory);
         $url = '/test';
         $url = $url . ('?' . $queryParam->buildQueryString($parameters));
         $headers = $queryParam->buildHeaders($parameters);
@@ -59,7 +59,7 @@ trait TestResourceTrait
      */
     public function getTestById(int $id, array $parameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        $queryParam = new QueryParam();
+        $queryParam = new QueryParam($this->streamFactory);
         $url = '/test/{id}';
         $url = str_replace('{id}', urlencode($id), $url);
         $url = $url . ('?' . $queryParam->buildQueryString($parameters));
@@ -90,7 +90,7 @@ trait TestResourceTrait
      */
     public function getTestList(array $parameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        $queryParam = new QueryParam();
+        $queryParam = new QueryParam($this->streamFactory);
         $url = '/test-list';
         $url = $url . ('?' . $queryParam->buildQueryString($parameters));
         $headers = $queryParam->buildHeaders($parameters);

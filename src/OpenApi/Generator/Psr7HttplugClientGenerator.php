@@ -7,6 +7,7 @@ use Http\Client\Common\Plugin\AddPathPlugin;
 use Http\Client\Common\PluginClient;
 use Http\Discovery\HttpClientDiscovery;
 use Http\Discovery\MessageFactoryDiscovery;
+use Http\Discovery\StreamFactoryDiscovery;
 use Http\Discovery\UriFactoryDiscovery;
 use Jane\JsonSchema\Generator\Context\Context;
 use Jane\OpenApi\Model\OpenApi;
@@ -57,6 +58,13 @@ class Psr7HttplugClientGenerator extends ClientGenerator
                         )
                     ),
                     new Expr\Assign(
+                        new Expr\Variable('streamFactory'),
+                        new Expr\StaticCall(
+                            new Name\FullyQualified(StreamFactoryDiscovery::class),
+                            'find'
+                        )
+                    ),
+                    new Expr\Assign(
                         new Expr\Variable('serializer'),
                         new Expr\New_(
                             new Name\FullyQualified(Serializer::class),
@@ -86,6 +94,7 @@ class Psr7HttplugClientGenerator extends ClientGenerator
                                 new Node\Arg(new Expr\Variable('httpClient')),
                                 new Node\Arg(new Expr\Variable('messageFactory')),
                                 new Node\Arg(new Expr\Variable('serializer')),
+                                new Node\Arg(new Expr\Variable('streamFactory')),
                             ]
                         )
                     ),

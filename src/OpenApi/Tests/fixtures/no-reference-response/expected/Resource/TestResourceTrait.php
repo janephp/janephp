@@ -22,7 +22,7 @@ trait TestResourceTrait
      */
     public function test(array $parameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        $queryParam = new QueryParam();
+        $queryParam = new QueryParam($this->streamFactory);
         $url = '/test';
         $url = $url . ('?' . $queryParam->buildQueryString($parameters));
         $headers = $queryParam->buildHeaders($parameters);

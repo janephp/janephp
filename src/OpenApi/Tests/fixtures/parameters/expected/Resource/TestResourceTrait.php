@@ -28,12 +28,12 @@ trait TestResourceTrait
      */
     public function testGetWithPathParameters(array $testBody, array $parameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        $queryParam = new QueryParam();
+        $queryParam = new QueryParam($this->streamFactory);
         $queryParam->addQueryParameter('testQuery', false, ['string']);
         $queryParam->addHeaderParameter('testHeader', false, ['string']);
         $url = '/test-path-parameters/{testPath}';
         $url = $url . ('?' . $queryParam->buildQueryString($parameters));
-        $headers = array_merge(['Content-Type' => 'application/json'], $queryParam->buildHeaders($parameters));
+        $headers = array_merge(['Content-Type' => ['application/json']], $queryParam->buildHeaders($parameters));
         $body = $testBody;
         $request = $this->messageFactory->createRequest('GET', $url, $headers, $body);
         $response = $this->httpClient->sendRequest($request);
@@ -55,12 +55,12 @@ trait TestResourceTrait
      */
     public function testPostWithPathParameters(array $testBody, array $parameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        $queryParam = new QueryParam();
+        $queryParam = new QueryParam($this->streamFactory);
         $queryParam->addQueryParameter('testQuery', false, ['string']);
         $queryParam->addHeaderParameter('testHeader', false, ['string']);
         $url = '/test-path-parameters/{testPath}';
         $url = $url . ('?' . $queryParam->buildQueryString($parameters));
-        $headers = array_merge(['Content-Type' => 'application/json'], $queryParam->buildHeaders($parameters));
+        $headers = array_merge(['Content-Type' => ['application/json']], $queryParam->buildHeaders($parameters));
         $body = $testBody;
         $request = $this->messageFactory->createRequest('POST', $url, $headers, $body);
         $response = $this->httpClient->sendRequest($request);
@@ -85,7 +85,7 @@ trait TestResourceTrait
      */
     public function testQueryParameters(array $parameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        $queryParam = new QueryParam();
+        $queryParam = new QueryParam($this->streamFactory);
         $queryParam->addQueryParameter('testString', false, ['string']);
         $queryParam->addQueryParameter('testInteger', false, ['int']);
         $queryParam->addQueryParameter('testFloat', false, ['float']);
@@ -124,7 +124,7 @@ trait TestResourceTrait
      */
     public function testHeaderParameters(array $parameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        $queryParam = new QueryParam();
+        $queryParam = new QueryParam($this->streamFactory);
         $queryParam->addHeaderParameter('testString', false, ['string']);
         $queryParam->addHeaderParameter('testInteger', false, ['int']);
         $queryParam->addHeaderParameter('testFloat', false, ['float']);
@@ -163,7 +163,7 @@ trait TestResourceTrait
      */
     public function testFormParameters(array $parameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        $queryParam = new QueryParam();
+        $queryParam = new QueryParam($this->streamFactory);
         $queryParam->addFormParameter('testString', false, ['string']);
         $queryParam->addFormParameter('testInteger', false, ['int']);
         $queryParam->addFormParameter('testFloat', false, ['float']);
@@ -172,7 +172,7 @@ trait TestResourceTrait
         $queryParam->addFormParameter('testDefault', false, ['string'], 'test');
         $url = '/test-form';
         $url = $url . ('?' . $queryParam->buildQueryString($parameters));
-        $headers = array_merge(['Content-Type' => 'application/x-www-form-urlencoded'], $queryParam->buildHeaders($parameters));
+        $headers = array_merge(['Content-Type' => ['application/x-www-form-urlencoded']], $queryParam->buildHeaders($parameters));
         $body = $queryParam->buildFormDataString($parameters);
         $request = $this->messageFactory->createRequest('POST', $url, $headers, $body);
         $response = $this->httpClient->sendRequest($request);
@@ -196,7 +196,7 @@ trait TestResourceTrait
      */
     public function testPathParameters(string $testString, int $testInteger, float $testFloat, array $parameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        $queryParam = new QueryParam();
+        $queryParam = new QueryParam($this->streamFactory);
         $url = '/test-path/{testString}/{testInteger}/{testFloat}';
         $url = str_replace('{testString}', urlencode($testString), $url);
         $url = str_replace('{testInteger}', urlencode($testInteger), $url);
@@ -224,7 +224,7 @@ trait TestResourceTrait
      */
     public function getByTestInteger(int $testInteger, array $parameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        $queryParam = new QueryParam();
+        $queryParam = new QueryParam($this->streamFactory);
         $url = '/{test_integer}';
         $url = str_replace('{test_integer}', urlencode($testInteger), $url);
         $url = $url . ('?' . $queryParam->buildQueryString($parameters));

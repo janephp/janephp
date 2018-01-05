@@ -26,7 +26,7 @@ trait DefaultResourceTrait
      */
     public function testNoTag(array $parameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        $queryParam = new QueryParam();
+        $queryParam = new QueryParam($this->streamFactory);
         $url = '/test-exception';
         $url = $url . ('?' . $queryParam->buildQueryString($parameters));
         $headers = $queryParam->buildHeaders($parameters);

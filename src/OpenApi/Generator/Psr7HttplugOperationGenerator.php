@@ -5,6 +5,7 @@ namespace Jane\OpenApi\Generator;
 use Jane\OpenApi\Model\Response;
 use PhpParser\Node\Arg;
 use PhpParser\Node\Expr;
+use PhpParser\Node\Name;
 use PhpParser\Node\Scalar;
 use Psr\Http\Message\ResponseInterface;
 
@@ -17,6 +18,15 @@ class Psr7HttplugOperationGenerator extends OperationGenerator
             'sendRequest',
             [new Arg(new Expr\Variable('request'))]
         ));
+    }
+
+    protected function getCreateQueryParamStatements(Expr $queryParamVariable)
+    {
+        return [
+            new Expr\Assign($queryParamVariable, new Expr\New_(new Name('QueryParam'), [
+                new Arg(new Expr\PropertyFetch(new Expr\Variable('this'), 'streamFactory'))
+            ])),
+        ];
     }
 
     protected function getResponseClass(): string

@@ -24,7 +24,7 @@ trait StoreResourceTrait
      */
     public function getInventory(array $parameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        $queryParam = new QueryParam();
+        $queryParam = new QueryParam($this->streamFactory);
         $url = '/store/inventory';
         $url = $url . ('?' . $queryParam->buildQueryString($parameters));
         $headers = array_merge(['Accept' => ['application/json']], $queryParam->buildHeaders($parameters));
@@ -51,10 +51,10 @@ trait StoreResourceTrait
      */
     public function placeOrder(\Jane\OpenApi\Tests\Expected\Model\Order $body, array $parameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        $queryParam = new QueryParam();
+        $queryParam = new QueryParam($this->streamFactory);
         $url = '/store/order';
         $url = $url . ('?' . $queryParam->buildQueryString($parameters));
-        $headers = array_merge(['Accept' => ['application/json'], 'Content-Type' => 'application/json'], $queryParam->buildHeaders($parameters));
+        $headers = array_merge(['Accept' => ['application/json'], 'Content-Type' => ['application/json']], $queryParam->buildHeaders($parameters));
         $body = $this->serializer->serialize($body, 'json');
         $request = $this->messageFactory->createRequest('POST', $url, $headers, $body);
         $response = $this->httpClient->sendRequest($request);
@@ -84,7 +84,7 @@ trait StoreResourceTrait
      */
     public function deleteOrder(int $orderId, array $parameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        $queryParam = new QueryParam();
+        $queryParam = new QueryParam($this->streamFactory);
         $url = '/store/order/{orderId}';
         $url = str_replace('{orderId}', urlencode($orderId), $url);
         $url = $url . ('?' . $queryParam->buildQueryString($parameters));
@@ -118,7 +118,7 @@ trait StoreResourceTrait
      */
     public function getOrderById(int $orderId, array $parameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        $queryParam = new QueryParam();
+        $queryParam = new QueryParam($this->streamFactory);
         $url = '/store/order/{orderId}';
         $url = str_replace('{orderId}', urlencode($orderId), $url);
         $url = $url . ('?' . $queryParam->buildQueryString($parameters));

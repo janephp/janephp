@@ -22,7 +22,7 @@ trait TestResourceTrait
      */
     public function deleteTest(array $parameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        $queryParam = new QueryParam();
+        $queryParam = new QueryParam($this->streamFactory);
         $url = '/test-get';
         $url = $url . ('?' . $queryParam->buildQueryString($parameters));
         $headers = $queryParam->buildHeaders($parameters);
@@ -46,7 +46,7 @@ trait TestResourceTrait
      */
     public function getTest(array $parameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        $queryParam = new QueryParam();
+        $queryParam = new QueryParam($this->streamFactory);
         $url = '/test-get';
         $url = $url . ('?' . $queryParam->buildQueryString($parameters));
         $headers = $queryParam->buildHeaders($parameters);
@@ -70,7 +70,7 @@ trait TestResourceTrait
      */
     public function headTest(array $parameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        $queryParam = new QueryParam();
+        $queryParam = new QueryParam($this->streamFactory);
         $url = '/test-get';
         $url = $url . ('?' . $queryParam->buildQueryString($parameters));
         $headers = $queryParam->buildHeaders($parameters);
@@ -94,7 +94,7 @@ trait TestResourceTrait
      */
     public function optionsTest(array $parameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        $queryParam = new QueryParam();
+        $queryParam = new QueryParam($this->streamFactory);
         $url = '/test-get';
         $url = $url . ('?' . $queryParam->buildQueryString($parameters));
         $headers = $queryParam->buildHeaders($parameters);
@@ -118,7 +118,7 @@ trait TestResourceTrait
      */
     public function patchTest(array $parameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        $queryParam = new QueryParam();
+        $queryParam = new QueryParam($this->streamFactory);
         $url = '/test-get';
         $url = $url . ('?' . $queryParam->buildQueryString($parameters));
         $headers = $queryParam->buildHeaders($parameters);
@@ -142,7 +142,7 @@ trait TestResourceTrait
      */
     public function postTest(array $parameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        $queryParam = new QueryParam();
+        $queryParam = new QueryParam($this->streamFactory);
         $url = '/test-get';
         $url = $url . ('?' . $queryParam->buildQueryString($parameters));
         $headers = $queryParam->buildHeaders($parameters);
@@ -166,7 +166,7 @@ trait TestResourceTrait
      */
     public function putTest(array $parameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        $queryParam = new QueryParam();
+        $queryParam = new QueryParam($this->streamFactory);
         $url = '/test-get';
         $url = $url . ('?' . $queryParam->buildQueryString($parameters));
         $headers = $queryParam->buildHeaders($parameters);

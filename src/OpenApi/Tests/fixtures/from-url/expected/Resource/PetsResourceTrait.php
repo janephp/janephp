@@ -26,7 +26,7 @@ trait PetsResourceTrait
      */
     public function listPets(array $parameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        $queryParam = new QueryParam();
+        $queryParam = new QueryParam($this->streamFactory);
         $queryParam->addQueryParameter('limit', false, ['int']);
         $url = '/pets';
         $url = $url . ('?' . $queryParam->buildQueryString($parameters));
@@ -53,7 +53,7 @@ trait PetsResourceTrait
      */
     public function createPets(array $parameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        $queryParam = new QueryParam();
+        $queryParam = new QueryParam($this->streamFactory);
         $url = '/pets';
         $url = $url . ('?' . $queryParam->buildQueryString($parameters));
         $headers = array_merge(['Accept' => ['application/json']], $queryParam->buildHeaders($parameters));
@@ -80,7 +80,7 @@ trait PetsResourceTrait
      */
     public function showPetById(string $petId, array $parameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        $queryParam = new QueryParam();
+        $queryParam = new QueryParam($this->streamFactory);
         $url = '/pets/{petId}';
         $url = str_replace('{petId}', urlencode($petId), $url);
         $url = $url . ('?' . $queryParam->buildQueryString($parameters));

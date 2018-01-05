@@ -23,7 +23,7 @@ Generated ``Client`` class, have a static method ``create`` which act like a fac
     $apiClient = Vendor\Library\Generated\Client::create();
 
 Optionally you can pass a custom ``HttpClient`` respecting the `HTTPlug`_ standard. If you which to use the constructor
-to reuse existing instances, sections below describe the 3 services used by it and how to create them.
+to reuse existing instances, sections below describe the 4 services used by it and how to create them.
 
 Creating the Http Client
 ------------------------
@@ -67,6 +67,19 @@ Like the HTTP Client, it is recommended to use the `discovery`_ library of HTTPl
     <?php
 
     $messageFactory = Http\Discovery\MessageFactoryDiscovery::find();
+
+
+Creating the Stream Factory
+---------------------------
+
+The generated endpoints will also need a service to transform body parameters like ``resource`` or ``string`` into
+`PSR7 Stream`_ when uploading file (multipart form). This is done by using the `Stream Factory Interface`_ from `HTTPlug`_.
+
+Like the HTTP Client and Message Factory, it is recommended to use the `discovery`_ library of HTTPlug to create it::
+
+    <?php
+
+    $streamFactory = Http\Discovery\StreamFactoryDiscovery::find();
 
 Using the API Client
 --------------------
@@ -151,3 +164,5 @@ recommended to always use the ``Client`` class containing all methods.
 .. _Message Factory Interface: http://docs.php-http.org/en/latest/message/message-factory.html
 .. _PHPDoc: https://www.phpdoc.org/
 .. _HTTPlug plugin system: http://docs.php-http.org/en/latest/plugins/introduction.html
+.. _PSR7 Stream:
+.. _Stream Factory Interface:

@@ -25,10 +25,10 @@ trait PetResourceTrait
      */
     public function addPet(\Jane\OpenApi\Tests\Expected\Model\Pet $body, array $parameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        $queryParam = new QueryParam();
+        $queryParam = new QueryParam($this->streamFactory);
         $url = '/pet';
         $url = $url . ('?' . $queryParam->buildQueryString($parameters));
-        $headers = array_merge(['Accept' => ['application/json'], 'Content-Type' => 'application/json'], $queryParam->buildHeaders($parameters));
+        $headers = array_merge(['Accept' => ['application/json'], 'Content-Type' => ['application/json']], $queryParam->buildHeaders($parameters));
         $body = $this->serializer->serialize($body, 'json');
         $request = $this->messageFactory->createRequest('POST', $url, $headers, $body);
         $response = $this->httpClient->sendRequest($request);
@@ -54,10 +54,10 @@ trait PetResourceTrait
      */
     public function updatePet(\Jane\OpenApi\Tests\Expected\Model\Pet $body, array $parameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        $queryParam = new QueryParam();
+        $queryParam = new QueryParam($this->streamFactory);
         $url = '/pet';
         $url = $url . ('?' . $queryParam->buildQueryString($parameters));
-        $headers = array_merge(['Accept' => ['application/json'], 'Content-Type' => 'application/json'], $queryParam->buildHeaders($parameters));
+        $headers = array_merge(['Accept' => ['application/json'], 'Content-Type' => ['application/json']], $queryParam->buildHeaders($parameters));
         $body = $this->serializer->serialize($body, 'json');
         $request = $this->messageFactory->createRequest('PUT', $url, $headers, $body);
         $response = $this->httpClient->sendRequest($request);
@@ -92,7 +92,7 @@ trait PetResourceTrait
      */
     public function findPetsByStatus(array $parameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        $queryParam = new QueryParam();
+        $queryParam = new QueryParam($this->streamFactory);
         $queryParam->addQueryParameter('status', true, ['array']);
         $url = '/pet/findByStatus';
         $url = $url . ('?' . $queryParam->buildQueryString($parameters));
@@ -128,7 +128,7 @@ trait PetResourceTrait
      */
     public function findPetsByTags(array $parameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        $queryParam = new QueryParam();
+        $queryParam = new QueryParam($this->streamFactory);
         $queryParam->addQueryParameter('tags', true, ['array']);
         $url = '/pet/findByTags';
         $url = $url . ('?' . $queryParam->buildQueryString($parameters));
@@ -164,7 +164,7 @@ trait PetResourceTrait
      */
     public function deletePet(int $petId, array $parameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        $queryParam = new QueryParam();
+        $queryParam = new QueryParam($this->streamFactory);
         $queryParam->addHeaderParameter('api_key', false, ['string']);
         $url = '/pet/{petId}';
         $url = str_replace('{petId}', urlencode($petId), $url);
@@ -199,7 +199,7 @@ trait PetResourceTrait
      */
     public function getPetById(int $petId, array $parameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        $queryParam = new QueryParam();
+        $queryParam = new QueryParam($this->streamFactory);
         $url = '/pet/{petId}';
         $url = str_replace('{petId}', urlencode($petId), $url);
         $url = $url . ('?' . $queryParam->buildQueryString($parameters));
@@ -238,13 +238,13 @@ trait PetResourceTrait
      */
     public function updatePetWithForm(int $petId, array $parameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        $queryParam = new QueryParam();
+        $queryParam = new QueryParam($this->streamFactory);
         $queryParam->addFormParameter('name', false, ['string']);
         $queryParam->addFormParameter('status', false, ['string']);
         $url = '/pet/{petId}';
         $url = str_replace('{petId}', urlencode($petId), $url);
         $url = $url . ('?' . $queryParam->buildQueryString($parameters));
-        $headers = array_merge(['Accept' => ['application/json'], 'Content-Type' => 'application/x-www-form-urlencoded'], $queryParam->buildHeaders($parameters));
+        $headers = array_merge(['Accept' => ['application/json'], 'Content-Type' => ['application/x-www-form-urlencoded']], $queryParam->buildHeaders($parameters));
         $body = $queryParam->buildFormDataString($parameters);
         $request = $this->messageFactory->createRequest('POST', $url, $headers, $body);
         $response = $this->httpClient->sendRequest($request);
@@ -271,14 +271,16 @@ trait PetResourceTrait
      */
     public function uploadFile(int $petId, array $parameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        $queryParam = new QueryParam();
+        $queryParam = new QueryParam($this->streamFactory);
         $queryParam->addFormParameter('additionalMetadata', false, ['string']);
         $queryParam->addFormParameter('file', false, ['string', 'resource', '\\Psr\\Http\\Message\\StreamInterface']);
         $url = '/pet/{petId}/uploadImage';
         $url = str_replace('{petId}', urlencode($petId), $url);
         $url = $url . ('?' . $queryParam->buildQueryString($parameters));
-        $headers = array_merge(['Accept' => ['application/json'], 'Content-Type' => 'application/x-www-form-urlencoded'], $queryParam->buildHeaders($parameters));
-        $body = $queryParam->buildFormDataString($parameters);
+        $headers = array_merge(['Accept' => ['application/json'], 'Content-Type' => ['application/x-www-form-urlencoded']], $queryParam->buildHeaders($parameters));
+        $multipartBuilder = $queryParam->buildFormDataMultipart($parameters);
+        $headers = array_merge($headers, ['Content-Type' => ['multipart/form-data; boundary="' . ($multipartBuilder->getBoundary() . '"')]]);
+        $body = $multipartBuilder->build();
         $request = $this->messageFactory->createRequest('POST', $url, $headers, $body);
         $response = $this->httpClient->sendRequest($request);
         if (self::FETCH_OBJECT === $fetch) {

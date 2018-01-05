@@ -51,13 +51,14 @@ trait InputGeneratorTrait
      */
     abstract protected function getDenormalizer();
 
+    abstract protected function getCreateQueryParamStatements(Expr $queryParamVariable);
+
     protected function createInputParamStatements(Operation $operation): array
     {
         $queryParamDocumentation = [];
         $queryParamVariable = new Expr\Variable('queryParam');
-        $inputParamStatements = [
-            new Expr\Assign($queryParamVariable, new Expr\New_(new Name('QueryParam'))),
-        ];
+        $inputParamStatements = $this->getCreateQueryParamStatements($queryParamVariable);
+        $hasFile = false;
 
         foreach ($operation->getParameters() as $parameter) {
             if ($parameter instanceof Reference) {
@@ -67,6 +68,10 @@ trait InputGeneratorTrait
             if ($parameter instanceof FormDataParameterSubSchema) {
                 $inputParamStatements = array_merge($inputParamStatements, $this->formDataParameterGenerator->generateInputParamStatements($parameter, $queryParamVariable));
                 $queryParamDocumentation[] = $this->formDataParameterGenerator->generateInputDocParameter($parameter);
+
+                if ($parameter->getType() === 'file') {
+                    $hasFile = true;
+                }
             }
 
             if ($parameter instanceof HeaderParameterSubSchema) {
@@ -80,7 +85,7 @@ trait InputGeneratorTrait
             }
         }
 
-        return [$queryParamDocumentation, $inputParamStatements, $queryParamVariable];
+        return [$queryParamDocumentation, $inputParamStatements, $queryParamVariable, $hasFile];
     }
 
     protected function createParameters(Operation $operation, $queryParamDocumentation, Context $context): array
@@ -159,7 +164,7 @@ trait InputGeneratorTrait
         return [$statements, $urlVariable];
     }
 
-    protected function createBodyStatements(Operation $operation, $queryParamVariable, Context $context): array
+    protected function createBodyStatements(Operation $operation, $queryParamVariable, Context $context, $hasFile = false): array
     {
         $bodyParameter = null;
         $bodyVariable = new Expr\Variable('body');
@@ -177,10 +182,44 @@ trait InputGeneratorTrait
         }
 
         if (null === $bodyParameter) {
-            // $body = $queryParam->buildFormDataString($parameters);
-            return [[
-                new Expr\Assign($bodyVariable, new Expr\MethodCall($queryParamVariable, 'buildFormDataString', [new Arg(new Expr\Variable('parameters'))])),
-            ], $bodyVariable];
+            if (!$hasFile) {
+                // $body = $queryParam->buildFormDataString($parameters);
+                return [
+                    [
+                        new Expr\Assign($bodyVariable, new Expr\MethodCall($queryParamVariable, 'buildFormDataString', [new Arg(new Expr\Variable('parameters'))])),
+                    ],
+                    $bodyVariable
+                ];
+            }
+
+            return [
+                // $multipartBuilder = $queryParam->buildFormDataMultipart($parameters);
+                // $headers = array_merge($headers, ['Content-Type' => 'multipart/form-data; boundary="'.$multipartBuilder->getBoundary().'"']);
+                // $body = $multipartBuilder->build();
+                [
+                    new Expr\Assign(new Expr\Variable('multipartBuilder'), new Expr\MethodCall($queryParamVariable, 'buildFormDataMultipart', [new Arg(new Expr\Variable('parameters'))])),
+                    new Expr\Assign(new Expr\Variable('headers'), new Expr\FuncCall(
+                        new Name('array_merge'),
+                        [
+                            new Arg(new Expr\Variable('headers')),
+                            new Arg(new Expr\Array_([
+                                new Expr\ArrayItem(
+                                    new Expr\Array_([new Expr\BinaryOp\Concat(
+                                        new Scalar\String_('multipart/form-data; boundary="'),
+                                        new Expr\BinaryOp\Concat(
+                                            new Expr\MethodCall(new Expr\Variable('multipartBuilder'), 'getBoundary'),
+                                            new Scalar\String_('"')
+                                        )
+                                    )]),
+                                    new Scalar\String_('Content-Type')
+                                )
+                            ]))
+                        ]
+                    )),
+                    new Expr\Assign($bodyVariable, new Expr\MethodCall(new Expr\Variable('multipartBuilder'), 'build')),
+                ],
+                $bodyVariable
+            ];
         }
 
         // $body = $this->serializer->serialize($parameter);
@@ -249,12 +288,12 @@ trait InputGeneratorTrait
 
         if (\count($bodyParameters) > 0) {
             $headers[] = new Expr\ArrayItem(
-                new Scalar\String_('application/json'),
+                new Expr\Array_([new Scalar\String_('application/json')]),
                 new Scalar\String_('Content-Type')
             );
         } elseif (\count($formParameters) > 0) {
             $headers[] = new Expr\ArrayItem(
-                new Scalar\String_('application/x-www-form-urlencoded'),
+                new Expr\Array_([new Scalar\String_('application/x-www-form-urlencoded')]),
                 new Scalar\String_('Content-Type')
             );
         }

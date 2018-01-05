@@ -22,7 +22,7 @@ trait TestFooResourceTrait
      */
     public function getTestOperationUrlWithExtension(array $parameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        $queryParam = new QueryParam();
+        $queryParam = new QueryParam($this->streamFactory);
         $url = '/test-operation-url-with-extension.php';
         $url = $url . ('?' . $queryParam->buildQueryString($parameters));
         $headers = $queryParam->buildHeaders($parameters);
