@@ -1,11 +1,11 @@
 # Jane
 
 
-[![Latest Version](https://img.shields.io/github/release/janephp/janephp.svg?style=flat-square)](https://github.com/janephp/jane/releases)
+[![Latest Version](https://img.shields.io/github/release/janephp/janephp.svg?style=flat-square)](https://github.com/janephp/janephp/releases)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE)
-[![Build Status](https://img.shields.io/travis/janephp/janephp.svg?style=flat-square)](https://travis-ci.org/janephp/jane)
-[![Code Coverage](https://img.shields.io/scrutinizer/coverage/g/janephp/janephp.svg?style=flat-square)](https://scrutinizer-ci.com/g/janephp/jane)
-[![Quality Score](https://img.shields.io/scrutinizer/g/janephp/janephp.svg?style=flat-square)](https://scrutinizer-ci.com/g/janephp/jane)
+[![Build Status](https://img.shields.io/travis/janephp/janephp.svg?style=flat-square)](https://travis-ci.org/janephp/janephp)
+[![Code Coverage](https://img.shields.io/scrutinizer/coverage/g/janephp/janephp.svg?style=flat-square)](https://scrutinizer-ci.com/g/janephp/janephp)
+[![Quality Score](https://img.shields.io/scrutinizer/g/janephp/janephp.svg?style=flat-square)](https://scrutinizer-ci.com/g/janephp/janephp)
 
 Jane is a set of libraries to generate PHP code.
 
