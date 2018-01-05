@@ -22,6 +22,7 @@
  * [OpenAPI] Support Symfony 4
  * [Jane] Add a not strict mode, which generate more permissive normalizers (allowing null / not 
  defined properties in several places)
+ * [Jane] Add property description in doc block comment
 
 ### Fixed
 
@@ -31,7 +32,6 @@
  * [OpenAPI] Fix references having a space in the name
  * [OpenAPI] Fix `Content-Type` and `Accept` headers
  * [Jane] Fix all-of not merging properties with the same name
- * [Jane] Add property description in doc block comment
 
 ## Older versions
 
