@@ -29,9 +29,8 @@ trait TestResourceTrait
     public function testGetWithPathParameters(array $testBody, array $parameters = [], string $fetch = self::FETCH_OBJECT)
     {
         $queryParam = new QueryParam();
-        $queryParam->setDefault('testQuery', null);
-        $queryParam->setDefault('testHeader', null);
-        $queryParam->setHeaderParameters(['testHeader']);
+        $queryParam->addQueryParameter('testQuery', false, ['string']);
+        $queryParam->addHeaderParameter('testHeader', false, ['string']);
         $url = '/test-path-parameters/{testPath}';
         $url = $url . ('?' . $queryParam->buildQueryString($parameters));
         $headers = array_merge(['Content-Type' => 'application/json'], $queryParam->buildHeaders($parameters));
@@ -57,9 +56,8 @@ trait TestResourceTrait
     public function testPostWithPathParameters(array $testBody, array $parameters = [], string $fetch = self::FETCH_OBJECT)
     {
         $queryParam = new QueryParam();
-        $queryParam->setDefault('testQuery', null);
-        $queryParam->setDefault('testHeader', null);
-        $queryParam->setHeaderParameters(['testHeader']);
+        $queryParam->addQueryParameter('testQuery', false, ['string']);
+        $queryParam->addHeaderParameter('testHeader', false, ['string']);
         $url = '/test-path-parameters/{testPath}';
         $url = $url . ('?' . $queryParam->buildQueryString($parameters));
         $headers = array_merge(['Content-Type' => 'application/json'], $queryParam->buildHeaders($parameters));
@@ -88,12 +86,12 @@ trait TestResourceTrait
     public function testQueryParameters(array $parameters = [], string $fetch = self::FETCH_OBJECT)
     {
         $queryParam = new QueryParam();
-        $queryParam->setDefault('testString', null);
-        $queryParam->setDefault('testInteger', null);
-        $queryParam->setDefault('testFloat', null);
-        $queryParam->setDefault('testArray', null);
-        $queryParam->setRequired('testRequired');
-        $queryParam->setDefault('testDefault', 'test');
+        $queryParam->addQueryParameter('testString', false, ['string']);
+        $queryParam->addQueryParameter('testInteger', false, ['int']);
+        $queryParam->addQueryParameter('testFloat', false, ['float']);
+        $queryParam->addQueryParameter('testArray', false, ['array']);
+        $queryParam->addQueryParameter('testRequired', true, ['string']);
+        $queryParam->addQueryParameter('testDefault', false, ['string'], 'test');
         $url = '/test-query';
         $url = $url . ('?' . $queryParam->buildQueryString($parameters));
         $headers = $queryParam->buildHeaders($parameters);
@@ -127,18 +125,12 @@ trait TestResourceTrait
     public function testHeaderParameters(array $parameters = [], string $fetch = self::FETCH_OBJECT)
     {
         $queryParam = new QueryParam();
-        $queryParam->setDefault('testString', null);
-        $queryParam->setHeaderParameters(['testString']);
-        $queryParam->setDefault('testInteger', null);
-        $queryParam->setHeaderParameters(['testInteger']);
-        $queryParam->setDefault('testFloat', null);
-        $queryParam->setHeaderParameters(['testFloat']);
-        $queryParam->setDefault('testArray', null);
-        $queryParam->setHeaderParameters(['testArray']);
-        $queryParam->setRequired('testRequired');
-        $queryParam->setHeaderParameters(['testRequired']);
-        $queryParam->setDefault('testDefault', 'test');
-        $queryParam->setHeaderParameters(['testDefault']);
+        $queryParam->addHeaderParameter('testString', false, ['string']);
+        $queryParam->addHeaderParameter('testInteger', false, ['int']);
+        $queryParam->addHeaderParameter('testFloat', false, ['float']);
+        $queryParam->addHeaderParameter('testArray', false, ['array']);
+        $queryParam->addHeaderParameter('testRequired', true, ['string']);
+        $queryParam->addHeaderParameter('testDefault', false, ['string'], 'test');
         $url = '/test-header';
         $url = $url . ('?' . $queryParam->buildQueryString($parameters));
         $headers = $queryParam->buildHeaders($parameters);
@@ -172,18 +164,12 @@ trait TestResourceTrait
     public function testFormParameters(array $parameters = [], string $fetch = self::FETCH_OBJECT)
     {
         $queryParam = new QueryParam();
-        $queryParam->setDefault('testString', null);
-        $queryParam->setFormParameters(['testString']);
-        $queryParam->setDefault('testInteger', null);
-        $queryParam->setFormParameters(['testInteger']);
-        $queryParam->setDefault('testFloat', null);
-        $queryParam->setFormParameters(['testFloat']);
-        $queryParam->setDefault('testArray', null);
-        $queryParam->setFormParameters(['testArray']);
-        $queryParam->setRequired('testRequired');
-        $queryParam->setFormParameters(['testRequired']);
-        $queryParam->setDefault('testDefault', 'test');
-        $queryParam->setFormParameters(['testDefault']);
+        $queryParam->addFormParameter('testString', false, ['string']);
+        $queryParam->addFormParameter('testInteger', false, ['int']);
+        $queryParam->addFormParameter('testFloat', false, ['float']);
+        $queryParam->addFormParameter('testArray', false, ['array']);
+        $queryParam->addFormParameter('testRequired', true, ['string']);
+        $queryParam->addFormParameter('testDefault', false, ['string'], 'test');
         $url = '/test-form';
         $url = $url . ('?' . $queryParam->buildQueryString($parameters));
         $headers = array_merge(['Content-Type' => 'application/x-www-form-urlencoded'], $queryParam->buildHeaders($parameters));

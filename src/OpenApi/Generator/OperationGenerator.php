@@ -59,7 +59,7 @@ abstract class OperationGenerator
     {
         $openApi = $context->getCurrentSchema()->getParsed();
 
-        list($queryParamDocumentation, $queryParamStatements, $queryParamVariable) = $this->createQueryParamStatements($operation);
+        list($queryParamDocumentation, $queryParamStatements, $queryParamVariable) = $this->createInputParamStatements($operation);
         list($urlStatements, $urlVariable) = $this->createUrlStatements($operation, $queryParamVariable);
         list($bodyStatements, $bodyVariable) = $this->createBodyStatements($operation, $queryParamVariable, $context);
         list($headerStatements, $headerVariable) = $this->createHeaderStatements($openApi, $operation, $queryParamVariable);

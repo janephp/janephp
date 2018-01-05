@@ -51,11 +51,11 @@ trait InputGeneratorTrait
      */
     abstract protected function getDenormalizer();
 
-    protected function createQueryParamStatements(Operation $operation): array
+    protected function createInputParamStatements(Operation $operation): array
     {
         $queryParamDocumentation = [];
         $queryParamVariable = new Expr\Variable('queryParam');
-        $queryParamStatements = [
+        $inputParamStatements = [
             new Expr\Assign($queryParamVariable, new Expr\New_(new Name('QueryParam'))),
         ];
 
@@ -65,22 +65,22 @@ trait InputGeneratorTrait
             }
 
             if ($parameter instanceof FormDataParameterSubSchema) {
-                $queryParamStatements = array_merge($queryParamStatements, $this->formDataParameterGenerator->generateQueryParamStatements($parameter, $queryParamVariable));
-                $queryParamDocumentation[] = $this->formDataParameterGenerator->generateQueryDocParameter($parameter);
+                $inputParamStatements = array_merge($inputParamStatements, $this->formDataParameterGenerator->generateInputParamStatements($parameter, $queryParamVariable));
+                $queryParamDocumentation[] = $this->formDataParameterGenerator->generateInputDocParameter($parameter);
             }
 
             if ($parameter instanceof HeaderParameterSubSchema) {
-                $queryParamStatements = array_merge($queryParamStatements, $this->headerParameterGenerator->generateQueryParamStatements($parameter, $queryParamVariable));
-                $queryParamDocumentation[] = $this->headerParameterGenerator->generateQueryDocParameter($parameter);
+                $inputParamStatements = array_merge($inputParamStatements, $this->headerParameterGenerator->generateInputParamStatements($parameter, $queryParamVariable));
+                $queryParamDocumentation[] = $this->headerParameterGenerator->generateInputDocParameter($parameter);
             }
 
             if ($parameter instanceof QueryParameterSubSchema) {
-                $queryParamStatements = array_merge($queryParamStatements, $this->queryParameterGenerator->generateQueryParamStatements($parameter, $queryParamVariable));
-                $queryParamDocumentation[] = $this->queryParameterGenerator->generateQueryDocParameter($parameter);
+                $inputParamStatements = array_merge($inputParamStatements, $this->queryParameterGenerator->generateInputParamStatements($parameter, $queryParamVariable));
+                $queryParamDocumentation[] = $this->queryParameterGenerator->generateInputDocParameter($parameter);
             }
         }
 
-        return [$queryParamDocumentation, $queryParamStatements, $queryParamVariable];
+        return [$queryParamDocumentation, $inputParamStatements, $queryParamVariable];
     }
 
     protected function createParameters(Operation $operation, $queryParamDocumentation, Context $context): array
@@ -214,12 +214,13 @@ trait InputGeneratorTrait
         $headerVariable = new Expr\Variable('headers');
 
         $headers = [];
-        $consumes = array_merge(
-            $openApi->getConsumes() ?? [],
-            $operation->getOperation()->getConsumes() ?? []
+        $produces = array_merge(
+            $openApi->getProduces() ?? [],
+            $operation->getOperation()->getProduces() ?? []
         );
 
-        if (\in_array('application/json', $consumes, true)) {
+        // It's a server side specification, what it produces is what we potentially can accept
+        if (\in_array('application/json', $produces, true)) {
             $headers[] = new Expr\ArrayItem(
                 new Expr\Array_(
                     [

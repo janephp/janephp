@@ -27,7 +27,7 @@ trait PetsResourceTrait
     public function listPets(array $parameters = [], string $fetch = self::FETCH_OBJECT)
     {
         $queryParam = new QueryParam();
-        $queryParam->setDefault('limit', null);
+        $queryParam->addQueryParameter('limit', false, ['int']);
         $url = '/pets';
         $url = $url . ('?' . $queryParam->buildQueryString($parameters));
         $headers = array_merge(['Accept' => ['application/json']], $queryParam->buildHeaders($parameters));

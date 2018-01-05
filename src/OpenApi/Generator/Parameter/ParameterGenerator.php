@@ -5,7 +5,6 @@ namespace Jane\OpenApi\Generator\Parameter;
 use Jane\JsonSchema\Generator\Context\Context;
 use PhpParser\Node;
 use PhpParser\Parser;
-use PhpParser\Node\Expr;
 
 abstract class ParameterGenerator
 {
@@ -14,9 +13,12 @@ abstract class ParameterGenerator
      */
     protected $parser;
 
-    public function __construct(Parser $parser)
+    protected $async;
+
+    public function __construct(Parser $parser, $async = false)
     {
         $this->parser = $parser;
+        $this->async = $async;
     }
 
     /**
@@ -46,7 +48,7 @@ abstract class ParameterGenerator
      *
      * @return Node\Expr[]
      */
-    public function generateQueryParamStatements($parameter, Expr $queryParamVariable)
+    protected function generateInputParamArguments($parameter): array
     {
         return [];
     }

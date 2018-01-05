@@ -11,6 +11,7 @@ use Jane\OpenApi\Model\QueryParameterSubSchema;
 use PhpParser\Node;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Scalar;
+use Psr\Http\Message\StreamInterface;
 
 abstract class NonBodyParameterGenerator extends ParameterGenerator
 {
@@ -28,32 +29,51 @@ abstract class NonBodyParameterGenerator extends ParameterGenerator
             $methodParameter->default = $this->getDefaultAsExpr($parameter);
         }
 
-        $methodParameter->type = $this->convertParameterType($parameter->getType());
+        $types = $this->convertParameterType($parameter->getType());
+
+        if (\count($types) === 1) {
+            $methodParameter->type = $types[0];
+        }
 
         return $methodParameter;
     }
+
+    abstract public function generateInputParamStatements($parameter, Expr $inputParamVariable): array;
 
     /**
      * {@inheritdoc}
      *
      * @param $parameter PathParameterSubSchema|HeaderParameterSubSchema|FormDataParameterSubSchema|QueryParameterSubSchema
      */
-    public function generateQueryParamStatements($parameter, Expr $queryParamVariable)
+    protected function generateInputParamArguments($parameter): array
     {
-        $statements = [];
-
-        if (!$parameter->getRequired() || null !== $parameter->getDefault()) {
-            $statements[] = new Expr\MethodCall($queryParamVariable, 'setDefault', [
-                new Node\Arg(new Scalar\String_($parameter->getName())),
-                new Node\Arg($this->getDefaultAsExpr($parameter)),
-            ]);
-        }
+        $arguments = [
+            new Node\Arg(new Scalar\String_($parameter->getName())),
+        ];
 
         if ($parameter->getRequired() && null === $parameter->getDefault()) {
-            $statements[] = new Expr\MethodCall($queryParamVariable, 'setRequired', [new Node\Arg(new Scalar\String_($parameter->getName()))]);
+            $arguments[] = new Node\Arg(new Expr\ConstFetch(new Node\Name('true')));
+        } else {
+            $arguments[] = new Node\Arg(new Expr\ConstFetch(new Node\Name('false')));
         }
 
-        return $statements;
+        if ($parameter->getType()) {
+            $types = [];
+
+            foreach ($this->convertParameterType($parameter->getType()) as $typeString) {
+                $types[] = new Scalar\String_($typeString);
+            }
+
+            $arguments[] = new Node\Arg(new Expr\Array_($types));
+        } else {
+            $arguments[] = new Node\Arg(new Expr\Array_());
+        }
+
+        if (!$parameter->getRequired() && null !== $parameter->getDefault()) {
+            $arguments[] = new Node\Arg($this->getDefaultAsExpr($parameter));
+        }
+
+        return $arguments;
     }
 
     /**
@@ -75,7 +95,9 @@ abstract class NonBodyParameterGenerator extends ParameterGenerator
      */
     public function generateDocParameter($parameter, Context $context, $reference)
     {
-        return sprintf('%s $%s %s', $this->convertParameterType($parameter->getType()), Inflector::camelize($parameter->getName()), $parameter->getDescription() ?: '');
+        $type = implode('|', $this->convertParameterType($parameter->getType()));
+
+        return sprintf('%s $%s %s', $type, Inflector::camelize($parameter->getName()), $parameter->getDescription() ?: '');
     }
 
     /**
@@ -83,20 +105,22 @@ abstract class NonBodyParameterGenerator extends ParameterGenerator
      *
      * @return string
      */
-    public function generateQueryDocParameter($parameter)
+    public function generateInputDocParameter($parameter)
     {
-        return sprintf('@var %s $%s %s', $this->convertParameterType($parameter->getType()), $parameter->getName(), $parameter->getDescription() ?: '');
+        $type = implode('|', $this->convertParameterType($parameter->getType()));
+
+        return sprintf('@var %s $%s %s', $type, $parameter->getName(), $parameter->getDescription() ?: '');
     }
 
     public function convertParameterType($type)
     {
         $convertArray = [
-            'string' => 'string',
-            'number' => 'float',
-            'boolean' => 'bool',
-            'integer' => 'int',
-            'array' => 'array',
-            'file' => '\Psr\Http\Message\StreamInterface',
+            'string' => ['string'],
+            'number' => ['float'],
+            'boolean' => ['bool'],
+            'integer' => ['int'],
+            'array' => ['array'],
+            'file' => ['string', 'resource', '\\' . StreamInterface::class],
         ];
 
         return $convertArray[$type];
