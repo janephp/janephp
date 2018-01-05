@@ -30,6 +30,8 @@
  * [OpenAPI] Remove base path from method name
  * [OpenAPI] Fix references having a space in the name
  * [OpenAPI] Fix `Content-Type` and `Accept` headers
+ * [Jane] Fix all-of not merging properties with the same name
+ * [Jane] Add property description in doc block comment
 
 ## Older versions
 
