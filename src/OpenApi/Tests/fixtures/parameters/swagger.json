@@ -191,6 +191,26 @@
                 ]
             }
         },
+        "/test-form-file": {
+            "post": {
+                "operationId": "Test Form File Parameters",
+                "parameters": [
+                    {
+                        "name": "testFile",
+                        "in": "formData",
+                        "type": "file"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "no error"
+                    }
+                },
+                "tags": [
+                    "Test"
+                ]
+            }
+        },
         "/test-path/{testString}/{testInteger}/{testFloat}": {
             "get": {
                 "operationId": "Test Path Parameters",

@@ -1,7 +1,0 @@
-<?php
-
-return [
-    'openapi-file' => 'http://petstore.swagger.io/v2/swagger.json',
-    'namespace' => 'Jane\OpenApi\Tests\Expected',
-    'directory' => __DIR__ . '/generated',
-];

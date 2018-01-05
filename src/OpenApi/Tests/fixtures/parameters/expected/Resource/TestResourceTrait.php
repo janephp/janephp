@@ -186,6 +186,37 @@ trait TestResourceTrait
     }
 
     /**
+     * @param array $parameters {
+     *
+     *     @var string|resource|\Psr\Http\Message\StreamInterface $testFile
+     * }
+     *
+     * @param string $fetch Fetch mode (object or response)
+     *
+     * @return \Psr\Http\Message\ResponseInterface|null
+     */
+    public function testFormFileParameters(array $parameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        $queryParam = new QueryParam($this->streamFactory);
+        $queryParam->addFormParameter('testFile', false, ['string', 'resource', '\\Psr\\Http\\Message\\StreamInterface']);
+        $url = '/test-form-file';
+        $url = $url . ('?' . $queryParam->buildQueryString($parameters));
+        $headers = array_merge(['Content-Type' => ['application/x-www-form-urlencoded']], $queryParam->buildHeaders($parameters));
+        $multipartBuilder = $queryParam->buildFormDataMultipart($parameters);
+        $headers = array_merge($headers, ['Content-Type' => ['multipart/form-data; boundary="' . ($multipartBuilder->getBoundary() . '"')]]);
+        $body = $multipartBuilder->build();
+        $request = $this->messageFactory->createRequest('POST', $url, $headers, $body);
+        $response = $this->httpClient->sendRequest($request);
+        if (self::FETCH_OBJECT === $fetch) {
+            if (200 === $response->getStatusCode()) {
+                return null;
+            }
+        }
+
+        return $response;
+    }
+
+    /**
      * @param string $testString
      * @param int    $testInteger
      * @param float  $testFloat
