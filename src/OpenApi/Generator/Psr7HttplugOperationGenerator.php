@@ -24,7 +24,7 @@ class Psr7HttplugOperationGenerator extends OperationGenerator
     {
         return [
             new Expr\Assign($queryParamVariable, new Expr\New_(new Name('QueryParam'), [
-                new Arg(new Expr\PropertyFetch(new Expr\Variable('this'), 'streamFactory'))
+                new Arg(new Expr\PropertyFetch(new Expr\Variable('this'), 'streamFactory')),
             ])),
         ];
     }

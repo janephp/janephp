@@ -58,7 +58,7 @@
     },
     "scripts": {
         "test": "php vendor/bin/phpunit",
-        "test-ci": "phpdbg -qrr -d memory_limit=2G vendor/bin/phpunit --coverage-text --coverage-clover=build/coverage.xml --coverage-html=build/html"
+        "test-ci": "phpdbg -qrr -d memory_limit=3G vendor/bin/phpunit --coverage-text --coverage-clover=build/coverage.xml --coverage-html=build/html"
     },
     "extra": {
         "branch-alias": {

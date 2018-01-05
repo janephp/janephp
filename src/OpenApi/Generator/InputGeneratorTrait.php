@@ -188,7 +188,7 @@ trait InputGeneratorTrait
                     [
                         new Expr\Assign($bodyVariable, new Expr\MethodCall($queryParamVariable, 'buildFormDataString', [new Arg(new Expr\Variable('parameters'))])),
                     ],
-                    $bodyVariable
+                    $bodyVariable,
                 ];
             }
 
@@ -212,13 +212,13 @@ trait InputGeneratorTrait
                                         )
                                     )]),
                                     new Scalar\String_('Content-Type')
-                                )
-                            ]))
+                                ),
+                            ])),
                         ]
                     )),
                     new Expr\Assign($bodyVariable, new Expr\MethodCall(new Expr\Variable('multipartBuilder'), 'build')),
                 ],
-                $bodyVariable
+                $bodyVariable,
             ];
         }
 
