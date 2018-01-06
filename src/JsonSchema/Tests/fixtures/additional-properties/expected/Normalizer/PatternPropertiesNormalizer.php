@@ -8,7 +8,7 @@ declare(strict_types=1);
  * Do no edit it directly.
  */
 
-namespace Jane\OpenApi\Normalizer;
+namespace Jane\JsonSchema\Tests\Expected\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
@@ -19,19 +19,19 @@ use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
-class TagNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+class PatternPropertiesNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
 
     public function supportsDenormalization($data, $type, $format = null)
     {
-        return $type === 'Jane\\OpenApi\\Model\\Tag';
+        return $type === 'Jane\\JsonSchema\\Tests\\Expected\\Model\\PatternProperties';
     }
 
     public function supportsNormalization($data, $format = null)
     {
-        return $data instanceof \Jane\OpenApi\Model\Tag;
+        return $data instanceof \Jane\JsonSchema\Tests\Expected\Model\PatternProperties;
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])
@@ -42,23 +42,18 @@ class TagNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
-        $object = new \Jane\OpenApi\Model\Tag();
+        $object = new \Jane\JsonSchema\Tests\Expected\Model\PatternProperties();
         $data = clone $data;
-        if (property_exists($data, 'name')) {
-            $object->setName($data->{'name'});
-            unset($data->{'name'});
-        }
-        if (property_exists($data, 'description')) {
-            $object->setDescription($data->{'description'});
-            unset($data->{'description'});
-        }
-        if (property_exists($data, 'externalDocs')) {
-            $object->setExternalDocs($this->denormalizer->denormalize($data->{'externalDocs'}, 'Jane\\OpenApi\\Model\\ExternalDocs', 'json', $context));
-            unset($data->{'externalDocs'});
+        if (property_exists($data, 'foo')) {
+            $object->setFoo($data->{'foo'});
+            unset($data->{'foo'});
         }
         foreach ($data as $key => $value) {
-            if (preg_match('/^x-/', $key)) {
+            if (preg_match('/x-.*/', $key)) {
                 $object[$key] = $value;
+            }
+            if (preg_match('/xxxx-.*/', $key)) {
+                $object[$key] = $this->denormalizer->denormalize($value, 'Jane\\JsonSchema\\Tests\\Expected\\Model\\AdditionalProperties', 'json', $context);
             }
         }
 
@@ -68,18 +63,15 @@ class TagNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
     public function normalize($object, $format = null, array $context = [])
     {
         $data = new \stdClass();
-        if (null !== $object->getName()) {
-            $data->{'name'} = $object->getName();
-        }
-        if (null !== $object->getDescription()) {
-            $data->{'description'} = $object->getDescription();
-        }
-        if (null !== $object->getExternalDocs()) {
-            $data->{'externalDocs'} = $this->normalizer->normalize($object->getExternalDocs(), 'json', $context);
+        if (null !== $object->getFoo()) {
+            $data->{'foo'} = $object->getFoo();
         }
         foreach ($object as $key => $value) {
-            if (preg_match('/^x-/', $key)) {
+            if (preg_match('/x-.*/', $key)) {
                 $data->{$key} = $value;
+            }
+            if (preg_match('/xxxx-.*/', $key)) {
+                $data->{$key} = $this->normalizer->normalize($value, 'json', $context);
             }
         }
 

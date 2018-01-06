@@ -10,7 +10,7 @@ declare(strict_types=1);
 
 namespace Jane\OpenApi\Model;
 
-class Tag
+class Tag extends \ArrayObject
 {
     /**
      * @var string
@@ -21,6 +21,8 @@ class Tag
      */
     protected $description;
     /**
+     * information about external documentation.
+     *
      * @var ExternalDocs
      */
     protected $externalDocs;
@@ -66,6 +68,8 @@ class Tag
     }
 
     /**
+     * information about external documentation.
+     *
      * @return ExternalDocs
      */
     public function getExternalDocs(): ?ExternalDocs
@@ -74,6 +78,8 @@ class Tag
     }
 
     /**
+     * information about external documentation.
+     *
      * @param ExternalDocs $externalDocs
      *
      * @return self

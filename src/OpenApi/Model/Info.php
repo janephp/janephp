@@ -10,25 +10,35 @@ declare(strict_types=1);
 
 namespace Jane\OpenApi\Model;
 
-class Info
+class Info extends \ArrayObject
 {
     /**
+     * A unique and precise title of the API.
+     *
      * @var string
      */
     protected $title;
     /**
+     * A semantic version number of the API.
+     *
      * @var string
      */
     protected $version;
     /**
+     * A longer description of the API. Should be different from the title.  GitHub Flavored Markdown is allowed.
+     *
      * @var string
      */
     protected $description;
     /**
+     * The terms of service for the API.
+     *
      * @var string
      */
     protected $termsOfService;
     /**
+     * Contact information for the owners of the API.
+     *
      * @var Contact
      */
     protected $contact;
@@ -38,6 +48,8 @@ class Info
     protected $license;
 
     /**
+     * A unique and precise title of the API.
+     *
      * @return string
      */
     public function getTitle(): ?string
@@ -46,6 +58,8 @@ class Info
     }
 
     /**
+     * A unique and precise title of the API.
+     *
      * @param string $title
      *
      * @return self
@@ -58,6 +72,8 @@ class Info
     }
 
     /**
+     * A semantic version number of the API.
+     *
      * @return string
      */
     public function getVersion(): ?string
@@ -66,6 +82,8 @@ class Info
     }
 
     /**
+     * A semantic version number of the API.
+     *
      * @param string $version
      *
      * @return self
@@ -78,6 +96,8 @@ class Info
     }
 
     /**
+     * A longer description of the API. Should be different from the title.  GitHub Flavored Markdown is allowed.
+     *
      * @return string
      */
     public function getDescription(): ?string
@@ -86,6 +106,8 @@ class Info
     }
 
     /**
+     * A longer description of the API. Should be different from the title.  GitHub Flavored Markdown is allowed.
+     *
      * @param string $description
      *
      * @return self
@@ -98,6 +120,8 @@ class Info
     }
 
     /**
+     * The terms of service for the API.
+     *
      * @return string
      */
     public function getTermsOfService(): ?string
@@ -106,6 +130,8 @@ class Info
     }
 
     /**
+     * The terms of service for the API.
+     *
      * @param string $termsOfService
      *
      * @return self
@@ -118,6 +144,8 @@ class Info
     }
 
     /**
+     * Contact information for the owners of the API.
+     *
      * @return Contact
      */
     public function getContact(): ?Contact
@@ -126,6 +154,8 @@ class Info
     }
 
     /**
+     * Contact information for the owners of the API.
+     *
      * @param Contact $contact
      *
      * @return self

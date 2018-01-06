@@ -30,11 +30,9 @@ class Printer
                 }
 
                 file_put_contents($file->getFilename(), $this->prettyPrinter->prettyPrintFile([$file->getNode()]));
-            }
-        }
 
-        foreach ($registry->getSchemas() as $schema) {
-            $this->fix($schema->getDirectory());
+                $this->fix($file->getFilename());
+            }
         }
     }
 
@@ -62,7 +60,7 @@ EOH
         return json_encode($rules);
     }
 
-    protected function fix(string $directory): void
+    protected function fix(string $file): void
     {
         if (!class_exists(FixCommand::class)) {
             return;
@@ -70,7 +68,7 @@ EOH
 
         $command = new FixCommand(new ToolInfo());
         $input = new ArrayInput([
-            'path' => [$directory],
+            'path' => [$file],
             '--allow-risky' => true,
             '--rules' => $this->getDefaultRules(),
         ], $command->getDefinition());

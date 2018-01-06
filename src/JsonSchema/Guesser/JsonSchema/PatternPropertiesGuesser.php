@@ -27,7 +27,6 @@ class PatternPropertiesGuesser implements GuesserInterface, TypeGuesserInterface
             return false;
         }
 
-        // @TODO Handle case when there is properties (need to rework the guessClass for extending \ArrayObject and do the assignation)
         if (null !== $object->getProperties()) {
             return false;
         }

@@ -10,22 +10,30 @@ declare(strict_types=1);
 
 namespace Jane\OpenApi\Model;
 
-class Contact
+class Contact extends \ArrayObject
 {
     /**
+     * The identifying name of the contact person/organization.
+     *
      * @var string
      */
     protected $name;
     /**
+     * The URL pointing to the contact information.
+     *
      * @var string
      */
     protected $url;
     /**
+     * The email address of the contact person/organization.
+     *
      * @var string
      */
     protected $email;
 
     /**
+     * The identifying name of the contact person/organization.
+     *
      * @return string
      */
     public function getName(): ?string
@@ -34,6 +42,8 @@ class Contact
     }
 
     /**
+     * The identifying name of the contact person/organization.
+     *
      * @param string $name
      *
      * @return self
@@ -46,6 +56,8 @@ class Contact
     }
 
     /**
+     * The URL pointing to the contact information.
+     *
      * @return string
      */
     public function getUrl(): ?string
@@ -54,6 +66,8 @@ class Contact
     }
 
     /**
+     * The URL pointing to the contact information.
+     *
      * @param string $url
      *
      * @return self
@@ -66,6 +80,8 @@ class Contact
     }
 
     /**
+     * The email address of the contact person/organization.
+     *
      * @return string
      */
     public function getEmail(): ?string
@@ -74,6 +90,8 @@ class Contact
     }
 
     /**
+     * The email address of the contact person/organization.
+     *
      * @param string $email
      *
      * @return self

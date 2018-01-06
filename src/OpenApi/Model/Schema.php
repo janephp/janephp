@@ -10,7 +10,7 @@ declare(strict_types=1);
 
 namespace Jane\OpenApi\Model;
 
-class Schema
+class Schema extends \ArrayObject
 {
     /**
      * @var string
@@ -125,6 +125,8 @@ class Schema
      */
     protected $xml;
     /**
+     * information about external documentation.
+     *
      * @var ExternalDocs
      */
     protected $externalDocs;
@@ -694,6 +696,8 @@ class Schema
     }
 
     /**
+     * information about external documentation.
+     *
      * @return ExternalDocs
      */
     public function getExternalDocs(): ?ExternalDocs
@@ -702,6 +706,8 @@ class Schema
     }
 
     /**
+     * information about external documentation.
+     *
      * @param ExternalDocs $externalDocs
      *
      * @return self

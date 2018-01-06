@@ -26,20 +26,12 @@ class PathItemNormalizer implements DenormalizerInterface, NormalizerInterface, 
 
     public function supportsDenormalization($data, $type, $format = null)
     {
-        if ('Jane\\OpenApi\\Model\\PathItem' !== $type) {
-            return false;
-        }
-
-        return true;
+        return $type === 'Jane\\OpenApi\\Model\\PathItem';
     }
 
     public function supportsNormalization($data, $format = null)
     {
-        if ($data instanceof \Jane\OpenApi\Model\PathItem) {
-            return true;
-        }
-
-        return false;
+        return $data instanceof \Jane\OpenApi\Model\PathItem;
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])
@@ -51,47 +43,56 @@ class PathItemNormalizer implements DenormalizerInterface, NormalizerInterface, 
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \Jane\OpenApi\Model\PathItem();
+        $data = clone $data;
         if (property_exists($data, '$ref')) {
             $object->setDollarRef($data->{'$ref'});
+            unset($data->{'$ref'});
         }
         if (property_exists($data, 'get')) {
             $object->setGet($this->denormalizer->denormalize($data->{'get'}, 'Jane\\OpenApi\\Model\\Operation', 'json', $context));
+            unset($data->{'get'});
         }
         if (property_exists($data, 'put')) {
             $object->setPut($this->denormalizer->denormalize($data->{'put'}, 'Jane\\OpenApi\\Model\\Operation', 'json', $context));
+            unset($data->{'put'});
         }
         if (property_exists($data, 'post')) {
             $object->setPost($this->denormalizer->denormalize($data->{'post'}, 'Jane\\OpenApi\\Model\\Operation', 'json', $context));
+            unset($data->{'post'});
         }
         if (property_exists($data, 'delete')) {
             $object->setDelete($this->denormalizer->denormalize($data->{'delete'}, 'Jane\\OpenApi\\Model\\Operation', 'json', $context));
+            unset($data->{'delete'});
         }
         if (property_exists($data, 'options')) {
             $object->setOptions($this->denormalizer->denormalize($data->{'options'}, 'Jane\\OpenApi\\Model\\Operation', 'json', $context));
+            unset($data->{'options'});
         }
         if (property_exists($data, 'head')) {
             $object->setHead($this->denormalizer->denormalize($data->{'head'}, 'Jane\\OpenApi\\Model\\Operation', 'json', $context));
+            unset($data->{'head'});
         }
         if (property_exists($data, 'patch')) {
             $object->setPatch($this->denormalizer->denormalize($data->{'patch'}, 'Jane\\OpenApi\\Model\\Operation', 'json', $context));
+            unset($data->{'patch'});
         }
         if (property_exists($data, 'parameters')) {
             $values = [];
             foreach ($data->{'parameters'} as $value) {
                 $value_1 = $value;
-                if (is_object($value) and isset($value->{'name'}) and (isset($value->{'in'}) and 'body' == $value->{'in'}) and isset($value->{'schema'})) {
+                if (is_object($value) and isset($value->{'name'}) and (isset($value->{'in'}) and $value->{'in'} == 'body') and isset($value->{'schema'})) {
                     $value_1 = $this->denormalizer->denormalize($value, 'Jane\\OpenApi\\Model\\BodyParameter', 'json', $context);
                 }
-                if (is_object($value) and (isset($value->{'in'}) and 'header' == $value->{'in'}) and isset($value->{'name'}) and (isset($value->{'type'}) and ('string' == $value->{'type'} or 'number' == $value->{'type'} or 'boolean' == $value->{'type'} or 'integer' == $value->{'type'} or 'array' == $value->{'type'}))) {
+                if (is_object($value) and (isset($value->{'in'}) and $value->{'in'} == 'header') and isset($value->{'name'}) and (isset($value->{'type'}) and ($value->{'type'} == 'string' or $value->{'type'} == 'number' or $value->{'type'} == 'boolean' or $value->{'type'} == 'integer' or $value->{'type'} == 'array'))) {
                     $value_1 = $this->denormalizer->denormalize($value, 'Jane\\OpenApi\\Model\\HeaderParameterSubSchema', 'json', $context);
                 }
-                if (is_object($value) and (isset($value->{'in'}) and 'formData' == $value->{'in'}) and isset($value->{'name'}) and (isset($value->{'type'}) and ('string' == $value->{'type'} or 'number' == $value->{'type'} or 'boolean' == $value->{'type'} or 'integer' == $value->{'type'} or 'array' == $value->{'type'} or 'file' == $value->{'type'}))) {
+                if (is_object($value) and (isset($value->{'in'}) and $value->{'in'} == 'formData') and isset($value->{'name'}) and (isset($value->{'type'}) and ($value->{'type'} == 'string' or $value->{'type'} == 'number' or $value->{'type'} == 'boolean' or $value->{'type'} == 'integer' or $value->{'type'} == 'array' or $value->{'type'} == 'file'))) {
                     $value_1 = $this->denormalizer->denormalize($value, 'Jane\\OpenApi\\Model\\FormDataParameterSubSchema', 'json', $context);
                 }
-                if (is_object($value) and (isset($value->{'in'}) and 'query' == $value->{'in'}) and isset($value->{'name'}) and (isset($value->{'type'}) and ('string' == $value->{'type'} or 'number' == $value->{'type'} or 'boolean' == $value->{'type'} or 'integer' == $value->{'type'} or 'array' == $value->{'type'}))) {
+                if (is_object($value) and (isset($value->{'in'}) and $value->{'in'} == 'query') and isset($value->{'name'}) and (isset($value->{'type'}) and ($value->{'type'} == 'string' or $value->{'type'} == 'number' or $value->{'type'} == 'boolean' or $value->{'type'} == 'integer' or $value->{'type'} == 'array'))) {
                     $value_1 = $this->denormalizer->denormalize($value, 'Jane\\OpenApi\\Model\\QueryParameterSubSchema', 'json', $context);
                 }
-                if (is_object($value) and (isset($value->{'required'}) and '1' == $value->{'required'}) and (isset($value->{'in'}) and 'path' == $value->{'in'}) and isset($value->{'name'}) and (isset($value->{'type'}) and ('string' == $value->{'type'} or 'number' == $value->{'type'} or 'boolean' == $value->{'type'} or 'integer' == $value->{'type'} or 'array' == $value->{'type'}))) {
+                if (is_object($value) and (isset($value->{'required'}) and $value->{'required'} == '1') and (isset($value->{'in'}) and $value->{'in'} == 'path') and isset($value->{'name'}) and (isset($value->{'type'}) and ($value->{'type'} == 'string' or $value->{'type'} == 'number' or $value->{'type'} == 'boolean' or $value->{'type'} == 'integer' or $value->{'type'} == 'array'))) {
                     $value_1 = $this->denormalizer->denormalize($value, 'Jane\\OpenApi\\Model\\PathParameterSubSchema', 'json', $context);
                 }
                 if (is_object($value) and isset($value->{'$ref'})) {
@@ -100,6 +101,12 @@ class PathItemNormalizer implements DenormalizerInterface, NormalizerInterface, 
                 $values[] = $value_1;
             }
             $object->setParameters($values);
+            unset($data->{'parameters'});
+        }
+        foreach ($data as $key => $value_2) {
+            if (preg_match('/^x-/', $key)) {
+                $object[$key] = $value_2;
+            }
         }
 
         return $object;
@@ -157,6 +164,11 @@ class PathItemNormalizer implements DenormalizerInterface, NormalizerInterface, 
                 $values[] = $value_1;
             }
             $data->{'parameters'} = $values;
+        }
+        foreach ($object as $key => $value_2) {
+            if (preg_match('/^x-/', $key)) {
+                $data->{$key} = $value_2;
+            }
         }
 
         return $data;

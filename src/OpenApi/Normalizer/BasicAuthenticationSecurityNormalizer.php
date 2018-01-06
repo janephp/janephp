@@ -26,20 +26,12 @@ class BasicAuthenticationSecurityNormalizer implements DenormalizerInterface, No
 
     public function supportsDenormalization($data, $type, $format = null)
     {
-        if ('Jane\\OpenApi\\Model\\BasicAuthenticationSecurity' !== $type) {
-            return false;
-        }
-
-        return true;
+        return $type === 'Jane\\OpenApi\\Model\\BasicAuthenticationSecurity';
     }
 
     public function supportsNormalization($data, $format = null)
     {
-        if ($data instanceof \Jane\OpenApi\Model\BasicAuthenticationSecurity) {
-            return true;
-        }
-
-        return false;
+        return $data instanceof \Jane\OpenApi\Model\BasicAuthenticationSecurity;
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])
@@ -51,11 +43,19 @@ class BasicAuthenticationSecurityNormalizer implements DenormalizerInterface, No
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \Jane\OpenApi\Model\BasicAuthenticationSecurity();
+        $data = clone $data;
         if (property_exists($data, 'type')) {
             $object->setType($data->{'type'});
+            unset($data->{'type'});
         }
         if (property_exists($data, 'description')) {
             $object->setDescription($data->{'description'});
+            unset($data->{'description'});
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/^x-/', $key)) {
+                $object[$key] = $value;
+            }
         }
 
         return $object;
@@ -69,6 +69,11 @@ class BasicAuthenticationSecurityNormalizer implements DenormalizerInterface, No
         }
         if (null !== $object->getDescription()) {
             $data->{'description'} = $object->getDescription();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/^x-/', $key)) {
+                $data->{$key} = $value;
+            }
         }
 
         return $data;

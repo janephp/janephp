@@ -10,30 +10,42 @@ declare(strict_types=1);
 
 namespace Jane\OpenApi\Model;
 
-class BodyParameter
+class BodyParameter extends \ArrayObject
 {
     /**
+     * A brief description of the parameter. This could contain examples of use.  GitHub Flavored Markdown is allowed.
+     *
      * @var string
      */
     protected $description;
     /**
+     * The name of the parameter.
+     *
      * @var string
      */
     protected $name;
     /**
+     * Determines the location of the parameter.
+     *
      * @var string
      */
     protected $in;
     /**
+     * Determines whether or not this parameter is required or optional.
+     *
      * @var bool
      */
     protected $required;
     /**
+     * A deterministic version of a JSON Schema object.
+     *
      * @var Schema
      */
     protected $schema;
 
     /**
+     * A brief description of the parameter. This could contain examples of use.  GitHub Flavored Markdown is allowed.
+     *
      * @return string
      */
     public function getDescription(): ?string
@@ -42,6 +54,8 @@ class BodyParameter
     }
 
     /**
+     * A brief description of the parameter. This could contain examples of use.  GitHub Flavored Markdown is allowed.
+     *
      * @param string $description
      *
      * @return self
@@ -54,6 +68,8 @@ class BodyParameter
     }
 
     /**
+     * The name of the parameter.
+     *
      * @return string
      */
     public function getName(): ?string
@@ -62,6 +78,8 @@ class BodyParameter
     }
 
     /**
+     * The name of the parameter.
+     *
      * @param string $name
      *
      * @return self
@@ -74,6 +92,8 @@ class BodyParameter
     }
 
     /**
+     * Determines the location of the parameter.
+     *
      * @return string
      */
     public function getIn(): ?string
@@ -82,6 +102,8 @@ class BodyParameter
     }
 
     /**
+     * Determines the location of the parameter.
+     *
      * @param string $in
      *
      * @return self
@@ -94,6 +116,8 @@ class BodyParameter
     }
 
     /**
+     * Determines whether or not this parameter is required or optional.
+     *
      * @return bool
      */
     public function getRequired(): ?bool
@@ -102,6 +126,8 @@ class BodyParameter
     }
 
     /**
+     * Determines whether or not this parameter is required or optional.
+     *
      * @param bool $required
      *
      * @return self
@@ -114,6 +140,8 @@ class BodyParameter
     }
 
     /**
+     * A deterministic version of a JSON Schema object.
+     *
      * @return Schema
      */
     public function getSchema()
@@ -122,6 +150,8 @@ class BodyParameter
     }
 
     /**
+     * A deterministic version of a JSON Schema object.
+     *
      * @param Schema $schema
      *
      * @return self

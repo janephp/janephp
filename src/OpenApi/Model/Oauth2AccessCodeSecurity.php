@@ -10,7 +10,7 @@ declare(strict_types=1);
 
 namespace Jane\OpenApi\Model;
 
-class Oauth2AccessCodeSecurity
+class Oauth2AccessCodeSecurity extends \ArrayObject
 {
     /**
      * @var string

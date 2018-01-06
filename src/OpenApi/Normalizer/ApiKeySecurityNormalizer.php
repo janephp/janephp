@@ -26,20 +26,12 @@ class ApiKeySecurityNormalizer implements DenormalizerInterface, NormalizerInter
 
     public function supportsDenormalization($data, $type, $format = null)
     {
-        if ('Jane\\OpenApi\\Model\\ApiKeySecurity' !== $type) {
-            return false;
-        }
-
-        return true;
+        return $type === 'Jane\\OpenApi\\Model\\ApiKeySecurity';
     }
 
     public function supportsNormalization($data, $format = null)
     {
-        if ($data instanceof \Jane\OpenApi\Model\ApiKeySecurity) {
-            return true;
-        }
-
-        return false;
+        return $data instanceof \Jane\OpenApi\Model\ApiKeySecurity;
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])
@@ -51,17 +43,27 @@ class ApiKeySecurityNormalizer implements DenormalizerInterface, NormalizerInter
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \Jane\OpenApi\Model\ApiKeySecurity();
+        $data = clone $data;
         if (property_exists($data, 'type')) {
             $object->setType($data->{'type'});
+            unset($data->{'type'});
         }
         if (property_exists($data, 'name')) {
             $object->setName($data->{'name'});
+            unset($data->{'name'});
         }
         if (property_exists($data, 'in')) {
             $object->setIn($data->{'in'});
+            unset($data->{'in'});
         }
         if (property_exists($data, 'description')) {
             $object->setDescription($data->{'description'});
+            unset($data->{'description'});
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/^x-/', $key)) {
+                $object[$key] = $value;
+            }
         }
 
         return $object;
@@ -81,6 +83,11 @@ class ApiKeySecurityNormalizer implements DenormalizerInterface, NormalizerInter
         }
         if (null !== $object->getDescription()) {
             $data->{'description'} = $object->getDescription();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/^x-/', $key)) {
+                $data->{$key} = $value;
+            }
         }
 
         return $data;

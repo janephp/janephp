@@ -59,7 +59,8 @@ class ModelGenerator implements GeneratorInterface
             $model = $this->createModel(
                 $class->getName(),
                 $properties,
-                $methods
+                $methods,
+                \count($class->getExtensionsType()) > 0
             );
 
             $namespace = new Stmt\Namespace_(new Name($schema->getNamespace() . '\\Model'), [$model]);

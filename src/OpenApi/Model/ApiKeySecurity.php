@@ -10,7 +10,7 @@ declare(strict_types=1);
 
 namespace Jane\OpenApi\Model;
 
-class ApiKeySecurity
+class ApiKeySecurity extends \ArrayObject
 {
     /**
      * @var string

@@ -8,7 +8,7 @@ declare(strict_types=1);
  * Do no edit it directly.
  */
 
-namespace Jane\OpenApi\Normalizer;
+namespace Jane\JsonSchema\Tests\Expected\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
@@ -19,19 +19,19 @@ use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
-class JsonReferenceNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+class AdditionalPropertiesNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
 
     public function supportsDenormalization($data, $type, $format = null)
     {
-        return $type === 'Jane\\OpenApi\\Model\\JsonReference';
+        return $type === 'Jane\\JsonSchema\\Tests\\Expected\\Model\\AdditionalProperties';
     }
 
     public function supportsNormalization($data, $format = null)
     {
-        return $data instanceof \Jane\OpenApi\Model\JsonReference;
+        return $data instanceof \Jane\JsonSchema\Tests\Expected\Model\AdditionalProperties;
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])
@@ -42,9 +42,16 @@ class JsonReferenceNormalizer implements DenormalizerInterface, NormalizerInterf
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
-        $object = new \Jane\OpenApi\Model\JsonReference();
-        if (property_exists($data, '$ref')) {
-            $object->setDollarRef($data->{'$ref'});
+        $object = new \Jane\JsonSchema\Tests\Expected\Model\AdditionalProperties();
+        $data = clone $data;
+        if (property_exists($data, 'foo')) {
+            $object->setFoo($data->{'foo'});
+            unset($data->{'foo'});
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', $key)) {
+                $object[$key] = $value;
+            }
         }
 
         return $object;
@@ -53,8 +60,13 @@ class JsonReferenceNormalizer implements DenormalizerInterface, NormalizerInterf
     public function normalize($object, $format = null, array $context = [])
     {
         $data = new \stdClass();
-        if (null !== $object->getDollarRef()) {
-            $data->{'$ref'} = $object->getDollarRef();
+        if (null !== $object->getFoo()) {
+            $data->{'foo'} = $object->getFoo();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', $key)) {
+                $data->{$key} = $value;
+            }
         }
 
         return $data;

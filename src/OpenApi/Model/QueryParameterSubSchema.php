@@ -10,25 +10,35 @@ declare(strict_types=1);
 
 namespace Jane\OpenApi\Model;
 
-class QueryParameterSubSchema
+class QueryParameterSubSchema extends \ArrayObject
 {
     /**
+     * Determines whether or not this parameter is required or optional.
+     *
      * @var bool
      */
     protected $required;
     /**
+     * Determines the location of the parameter.
+     *
      * @var string
      */
     protected $in;
     /**
+     * A brief description of the parameter. This could contain examples of use.  GitHub Flavored Markdown is allowed.
+     *
      * @var string
      */
     protected $description;
     /**
+     * The name of the parameter.
+     *
      * @var string
      */
     protected $name;
     /**
+     * allows sending a parameter by name only or with an empty value.
+     *
      * @var bool
      */
     protected $allowEmptyValue;
@@ -102,6 +112,8 @@ class QueryParameterSubSchema
     protected $multipleOf;
 
     /**
+     * Determines whether or not this parameter is required or optional.
+     *
      * @return bool
      */
     public function getRequired(): ?bool
@@ -110,6 +122,8 @@ class QueryParameterSubSchema
     }
 
     /**
+     * Determines whether or not this parameter is required or optional.
+     *
      * @param bool $required
      *
      * @return self
@@ -122,6 +136,8 @@ class QueryParameterSubSchema
     }
 
     /**
+     * Determines the location of the parameter.
+     *
      * @return string
      */
     public function getIn(): ?string
@@ -130,6 +146,8 @@ class QueryParameterSubSchema
     }
 
     /**
+     * Determines the location of the parameter.
+     *
      * @param string $in
      *
      * @return self
@@ -142,6 +160,8 @@ class QueryParameterSubSchema
     }
 
     /**
+     * A brief description of the parameter. This could contain examples of use.  GitHub Flavored Markdown is allowed.
+     *
      * @return string
      */
     public function getDescription(): ?string
@@ -150,6 +170,8 @@ class QueryParameterSubSchema
     }
 
     /**
+     * A brief description of the parameter. This could contain examples of use.  GitHub Flavored Markdown is allowed.
+     *
      * @param string $description
      *
      * @return self
@@ -162,6 +184,8 @@ class QueryParameterSubSchema
     }
 
     /**
+     * The name of the parameter.
+     *
      * @return string
      */
     public function getName(): ?string
@@ -170,6 +194,8 @@ class QueryParameterSubSchema
     }
 
     /**
+     * The name of the parameter.
+     *
      * @param string $name
      *
      * @return self
@@ -182,6 +208,8 @@ class QueryParameterSubSchema
     }
 
     /**
+     * allows sending a parameter by name only or with an empty value.
+     *
      * @return bool
      */
     public function getAllowEmptyValue(): ?bool
@@ -190,6 +218,8 @@ class QueryParameterSubSchema
     }
 
     /**
+     * allows sending a parameter by name only or with an empty value.
+     *
      * @param bool $allowEmptyValue
      *
      * @return self

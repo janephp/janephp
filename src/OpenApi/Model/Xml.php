@@ -10,7 +10,7 @@ declare(strict_types=1);
 
 namespace Jane\OpenApi\Model;
 
-class Xml
+class Xml extends \ArrayObject
 {
     /**
      * @var string

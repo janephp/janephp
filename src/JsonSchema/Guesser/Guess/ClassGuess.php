@@ -19,73 +19,79 @@ class ClassGuess
      */
     private $properties;
 
-    /**
-     * @var string Reference of the class
-     */
     private $reference;
+
+    private $extensionsObject;
+
+    /** @var Type[] */
+    private $extensionsType = [];
 
     private $constraints = [];
 
-    public function __construct($object, $reference, $name)
+    public function __construct($object, string $reference, string $name, array $extensionsObject = [])
     {
         $this->name = $name;
         $this->object = $object;
         $this->reference = $reference;
+        $this->extensionsObject = $extensionsObject;
     }
 
-    /**
-     * @return ConstraintGuess[]
-     */
-    public function getConstraints(): array
-    {
-        return $this->constraints;
-    }
-
-    /**
-     * @param ConstraintGuess[] $constraints
-     */
-    public function setConstraints($constraints): void
-    {
-        $this->constraints = $constraints;
-    }
-
-    /**
-     * @return mixed
-     */
     public function getObject()
     {
         return $this->object;
     }
 
-    /**
-     * @return string
-     */
-    public function getName()
+    public function getName(): string
     {
         return $this->name;
     }
 
-    /**
-     * @return string
-     */
-    public function getReference()
+    public function getReference(): string
     {
         return $this->reference;
     }
 
-    /**
-     * @return Property[]
-     */
-    public function getProperties()
+    public function getProperties(): array
     {
         return $this->properties;
     }
 
-    /**
-     * @param Property[] $properties
-     */
-    public function setProperties($properties)
+    public function setProperties(array $properties): void
     {
         $this->properties = $properties;
+    }
+
+    /**
+     * @return Type[]
+     */
+    public function getExtensionsType(): array
+    {
+        return $this->extensionsType;
+    }
+
+    /**
+     * @param Type[] $extensionsType
+     */
+    public function setExtensionsType(array $extensionsType): void
+    {
+        $this->extensionsType = $extensionsType;
+    }
+
+    /**
+     * @return array
+     */
+    public function getExtensionsObject(): array
+    {
+        return $this->extensionsObject;
+    }
+
+    public function getConstraints(): array
+    {
+        return $this->constraints;
+    }
+
+    public function setConstraints($constraints): void
+    {
+        $this->constraints = $constraints;
     }
 }

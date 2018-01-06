@@ -22,15 +22,17 @@ trait ClassGenerator
      * @param string $name
      * @param Node[] $properties
      * @param Node[] $methods
+     * @param bool   $hasExtensions
      *
      * @return Stmt\Class_
      */
-    protected function createModel($name, $properties, $methods)
+    protected function createModel(string $name, $properties, $methods, bool $hasExtensions = false): Stmt\Class_
     {
         return new Stmt\Class_(
             new Name($this->getNaming()->getClassName($name)),
             [
                 'stmts' => array_merge($properties, $methods),
+                'extends' => $hasExtensions ? new Name('\ArrayObject') : null,
             ]
         );
     }

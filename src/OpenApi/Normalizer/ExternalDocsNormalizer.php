@@ -26,20 +26,12 @@ class ExternalDocsNormalizer implements DenormalizerInterface, NormalizerInterfa
 
     public function supportsDenormalization($data, $type, $format = null)
     {
-        if ('Jane\\OpenApi\\Model\\ExternalDocs' !== $type) {
-            return false;
-        }
-
-        return true;
+        return $type === 'Jane\\OpenApi\\Model\\ExternalDocs';
     }
 
     public function supportsNormalization($data, $format = null)
     {
-        if ($data instanceof \Jane\OpenApi\Model\ExternalDocs) {
-            return true;
-        }
-
-        return false;
+        return $data instanceof \Jane\OpenApi\Model\ExternalDocs;
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])
@@ -51,11 +43,19 @@ class ExternalDocsNormalizer implements DenormalizerInterface, NormalizerInterfa
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \Jane\OpenApi\Model\ExternalDocs();
+        $data = clone $data;
         if (property_exists($data, 'description')) {
             $object->setDescription($data->{'description'});
+            unset($data->{'description'});
         }
         if (property_exists($data, 'url')) {
             $object->setUrl($data->{'url'});
+            unset($data->{'url'});
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/^x-/', $key)) {
+                $object[$key] = $value;
+            }
         }
 
         return $object;
@@ -69,6 +69,11 @@ class ExternalDocsNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         if (null !== $object->getUrl()) {
             $data->{'url'} = $object->getUrl();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/^x-/', $key)) {
+                $data->{$key} = $value;
+            }
         }
 
         return $data;

@@ -10,7 +10,7 @@ declare(strict_types=1);
 
 namespace Jane\OpenApi\Model;
 
-class FileSchema
+class FileSchema extends \ArrayObject
 {
     /**
      * @var string
@@ -41,6 +41,8 @@ class FileSchema
      */
     protected $readOnly;
     /**
+     * information about external documentation.
+     *
      * @var ExternalDocs
      */
     protected $externalDocs;
@@ -190,6 +192,8 @@ class FileSchema
     }
 
     /**
+     * information about external documentation.
+     *
      * @return ExternalDocs
      */
     public function getExternalDocs(): ?ExternalDocs
@@ -198,6 +202,8 @@ class FileSchema
     }
 
     /**
+     * information about external documentation.
+     *
      * @param ExternalDocs $externalDocs
      *
      * @return self

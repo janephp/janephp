@@ -26,20 +26,12 @@ class BodyParameterNormalizer implements DenormalizerInterface, NormalizerInterf
 
     public function supportsDenormalization($data, $type, $format = null)
     {
-        if ('Jane\\OpenApi\\Model\\BodyParameter' !== $type) {
-            return false;
-        }
-
-        return true;
+        return $type === 'Jane\\OpenApi\\Model\\BodyParameter';
     }
 
     public function supportsNormalization($data, $format = null)
     {
-        if ($data instanceof \Jane\OpenApi\Model\BodyParameter) {
-            return true;
-        }
-
-        return false;
+        return $data instanceof \Jane\OpenApi\Model\BodyParameter;
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])
@@ -51,20 +43,31 @@ class BodyParameterNormalizer implements DenormalizerInterface, NormalizerInterf
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \Jane\OpenApi\Model\BodyParameter();
+        $data = clone $data;
         if (property_exists($data, 'description')) {
             $object->setDescription($data->{'description'});
+            unset($data->{'description'});
         }
         if (property_exists($data, 'name')) {
             $object->setName($data->{'name'});
+            unset($data->{'name'});
         }
         if (property_exists($data, 'in')) {
             $object->setIn($data->{'in'});
+            unset($data->{'in'});
         }
         if (property_exists($data, 'required')) {
             $object->setRequired($data->{'required'});
+            unset($data->{'required'});
         }
         if (property_exists($data, 'schema')) {
             $object->setSchema($this->denormalizer->denormalize($data->{'schema'}, 'Jane\\OpenApi\\Model\\Schema', 'json', $context));
+            unset($data->{'schema'});
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/^x-/', $key)) {
+                $object[$key] = $value;
+            }
         }
 
         return $object;
@@ -87,6 +90,11 @@ class BodyParameterNormalizer implements DenormalizerInterface, NormalizerInterf
         }
         if (null !== $object->getSchema()) {
             $data->{'schema'} = $this->normalizer->normalize($object->getSchema(), 'json', $context);
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/^x-/', $key)) {
+                $data->{$key} = $value;
+            }
         }
 
         return $data;

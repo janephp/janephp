@@ -26,20 +26,12 @@ class XmlNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
 
     public function supportsDenormalization($data, $type, $format = null)
     {
-        if ('Jane\\OpenApi\\Model\\Xml' !== $type) {
-            return false;
-        }
-
-        return true;
+        return $type === 'Jane\\OpenApi\\Model\\Xml';
     }
 
     public function supportsNormalization($data, $format = null)
     {
-        if ($data instanceof \Jane\OpenApi\Model\Xml) {
-            return true;
-        }
-
-        return false;
+        return $data instanceof \Jane\OpenApi\Model\Xml;
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])
@@ -51,20 +43,31 @@ class XmlNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \Jane\OpenApi\Model\Xml();
+        $data = clone $data;
         if (property_exists($data, 'name')) {
             $object->setName($data->{'name'});
+            unset($data->{'name'});
         }
         if (property_exists($data, 'namespace')) {
             $object->setNamespace($data->{'namespace'});
+            unset($data->{'namespace'});
         }
         if (property_exists($data, 'prefix')) {
             $object->setPrefix($data->{'prefix'});
+            unset($data->{'prefix'});
         }
         if (property_exists($data, 'attribute')) {
             $object->setAttribute($data->{'attribute'});
+            unset($data->{'attribute'});
         }
         if (property_exists($data, 'wrapped')) {
             $object->setWrapped($data->{'wrapped'});
+            unset($data->{'wrapped'});
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/^x-/', $key)) {
+                $object[$key] = $value;
+            }
         }
 
         return $object;
@@ -87,6 +90,11 @@ class XmlNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
         }
         if (null !== $object->getWrapped()) {
             $data->{'wrapped'} = $object->getWrapped();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/^x-/', $key)) {
+                $data->{$key} = $value;
+            }
         }
 
         return $data;

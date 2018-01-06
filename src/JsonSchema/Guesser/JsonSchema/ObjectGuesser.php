@@ -45,11 +45,35 @@ class ObjectGuesser implements GuesserInterface, PropertiesGuesserInterface, Typ
 
     /**
      * {@inheritdoc}
+     *
+     * @param JsonSchema $object
      */
     public function guessClass($object, $name, $reference, Registry $registry)
     {
         if (!$registry->hasClass($reference)) {
-            $registry->getSchema($reference)->addClass($reference, new ClassGuess($object, $reference, $this->naming->getClassName($name)));
+            $extensions = [];
+
+            if ($object->getAdditionalProperties()) {
+                $extensionObject = null;
+
+                if (\is_object($object->getAdditionalProperties())) {
+                    $extensionObject = $object->getAdditionalProperties();
+                }
+
+                $extensions['.*'] = [
+                    'object' => $extensionObject,
+                    'reference' => $reference . '/additionalProperties',
+                ];
+            } elseif (method_exists($object, 'getPatternProperties') && $object->getPatternProperties() !== null) {
+                foreach ($object->getPatternProperties() as $pattern => $patternProperty) {
+                    $extensions[$pattern] = [
+                        'object' => $patternProperty,
+                        'reference' => $reference . '/oatternProperties/' . $pattern,
+                    ];
+                }
+            }
+
+            $registry->getSchema($reference)->addClass($reference, new ClassGuess($object, $reference, $this->naming->getClassName($name), $extensions));
         }
 
         foreach ($object->getProperties() as $key => $property) {

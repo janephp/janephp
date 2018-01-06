@@ -10,18 +10,24 @@ declare(strict_types=1);
 
 namespace Jane\OpenApi\Model;
 
-class License
+class License extends \ArrayObject
 {
     /**
+     * The name of the license type. It's encouraged to use an OSI compatible license.
+     *
      * @var string
      */
     protected $name;
     /**
+     * The URL pointing to the license.
+     *
      * @var string
      */
     protected $url;
 
     /**
+     * The name of the license type. It's encouraged to use an OSI compatible license.
+     *
      * @return string
      */
     public function getName(): ?string
@@ -30,6 +36,8 @@ class License
     }
 
     /**
+     * The name of the license type. It's encouraged to use an OSI compatible license.
+     *
      * @param string $name
      *
      * @return self
@@ -42,6 +50,8 @@ class License
     }
 
     /**
+     * The URL pointing to the license.
+     *
      * @return string
      */
     public function getUrl(): ?string
@@ -50,6 +60,8 @@ class License
     }
 
     /**
+     * The URL pointing to the license.
+     *
      * @param string $url
      *
      * @return self

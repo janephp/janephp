@@ -26,20 +26,12 @@ class PrimitivesItemsNormalizer implements DenormalizerInterface, NormalizerInte
 
     public function supportsDenormalization($data, $type, $format = null)
     {
-        if ('Jane\\OpenApi\\Model\\PrimitivesItems' !== $type) {
-            return false;
-        }
-
-        return true;
+        return $type === 'Jane\\OpenApi\\Model\\PrimitivesItems';
     }
 
     public function supportsNormalization($data, $format = null)
     {
-        if ($data instanceof \Jane\OpenApi\Model\PrimitivesItems) {
-            return true;
-        }
-
-        return false;
+        return $data instanceof \Jane\OpenApi\Model\PrimitivesItems;
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])
@@ -51,50 +43,66 @@ class PrimitivesItemsNormalizer implements DenormalizerInterface, NormalizerInte
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \Jane\OpenApi\Model\PrimitivesItems();
+        $data = clone $data;
         if (property_exists($data, 'type')) {
             $object->setType($data->{'type'});
+            unset($data->{'type'});
         }
         if (property_exists($data, 'format')) {
             $object->setFormat($data->{'format'});
+            unset($data->{'format'});
         }
         if (property_exists($data, 'items')) {
             $object->setItems($this->denormalizer->denormalize($data->{'items'}, 'Jane\\OpenApi\\Model\\PrimitivesItems', 'json', $context));
+            unset($data->{'items'});
         }
         if (property_exists($data, 'collectionFormat')) {
             $object->setCollectionFormat($data->{'collectionFormat'});
+            unset($data->{'collectionFormat'});
         }
         if (property_exists($data, 'default')) {
             $object->setDefault($data->{'default'});
+            unset($data->{'default'});
         }
         if (property_exists($data, 'maximum')) {
             $object->setMaximum($data->{'maximum'});
+            unset($data->{'maximum'});
         }
         if (property_exists($data, 'exclusiveMaximum')) {
             $object->setExclusiveMaximum($data->{'exclusiveMaximum'});
+            unset($data->{'exclusiveMaximum'});
         }
         if (property_exists($data, 'minimum')) {
             $object->setMinimum($data->{'minimum'});
+            unset($data->{'minimum'});
         }
         if (property_exists($data, 'exclusiveMinimum')) {
             $object->setExclusiveMinimum($data->{'exclusiveMinimum'});
+            unset($data->{'exclusiveMinimum'});
         }
         if (property_exists($data, 'maxLength')) {
             $object->setMaxLength($data->{'maxLength'});
+            unset($data->{'maxLength'});
         }
         if (property_exists($data, 'minLength')) {
             $object->setMinLength($data->{'minLength'});
+            unset($data->{'minLength'});
         }
         if (property_exists($data, 'pattern')) {
             $object->setPattern($data->{'pattern'});
+            unset($data->{'pattern'});
         }
         if (property_exists($data, 'maxItems')) {
             $object->setMaxItems($data->{'maxItems'});
+            unset($data->{'maxItems'});
         }
         if (property_exists($data, 'minItems')) {
             $object->setMinItems($data->{'minItems'});
+            unset($data->{'minItems'});
         }
         if (property_exists($data, 'uniqueItems')) {
             $object->setUniqueItems($data->{'uniqueItems'});
+            unset($data->{'uniqueItems'});
         }
         if (property_exists($data, 'enum')) {
             $values = [];
@@ -102,9 +110,16 @@ class PrimitivesItemsNormalizer implements DenormalizerInterface, NormalizerInte
                 $values[] = $value;
             }
             $object->setEnum($values);
+            unset($data->{'enum'});
         }
         if (property_exists($data, 'multipleOf')) {
             $object->setMultipleOf($data->{'multipleOf'});
+            unset($data->{'multipleOf'});
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/^x-/', $key)) {
+                $object[$key] = $value_1;
+            }
         }
 
         return $object;
@@ -167,6 +182,11 @@ class PrimitivesItemsNormalizer implements DenormalizerInterface, NormalizerInte
         }
         if (null !== $object->getMultipleOf()) {
             $data->{'multipleOf'} = $object->getMultipleOf();
+        }
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/^x-/', $key)) {
+                $data->{$key} = $value_1;
+            }
         }
 
         return $data;

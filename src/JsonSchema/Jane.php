@@ -56,6 +56,14 @@ class Jane extends ChainGenerator
                 }
 
                 $class->setProperties($properties);
+
+                $extensionsTypes = [];
+
+                foreach ($class->getExtensionsObject() as $pattern => $extensionData) {
+                    $extensionsTypes[$pattern] = $this->chainGuesser->guessType($extensionData['object'], $class->getName(), $extensionData['reference'], $registry);
+                }
+
+                $class->setExtensionsType($extensionsTypes);
             }
         }
 

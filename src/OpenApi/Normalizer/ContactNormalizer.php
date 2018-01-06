@@ -26,20 +26,12 @@ class ContactNormalizer implements DenormalizerInterface, NormalizerInterface, D
 
     public function supportsDenormalization($data, $type, $format = null)
     {
-        if ('Jane\\OpenApi\\Model\\Contact' !== $type) {
-            return false;
-        }
-
-        return true;
+        return $type === 'Jane\\OpenApi\\Model\\Contact';
     }
 
     public function supportsNormalization($data, $format = null)
     {
-        if ($data instanceof \Jane\OpenApi\Model\Contact) {
-            return true;
-        }
-
-        return false;
+        return $data instanceof \Jane\OpenApi\Model\Contact;
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])
@@ -51,14 +43,23 @@ class ContactNormalizer implements DenormalizerInterface, NormalizerInterface, D
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \Jane\OpenApi\Model\Contact();
+        $data = clone $data;
         if (property_exists($data, 'name')) {
             $object->setName($data->{'name'});
+            unset($data->{'name'});
         }
         if (property_exists($data, 'url')) {
             $object->setUrl($data->{'url'});
+            unset($data->{'url'});
         }
         if (property_exists($data, 'email')) {
             $object->setEmail($data->{'email'});
+            unset($data->{'email'});
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/^x-/', $key)) {
+                $object[$key] = $value;
+            }
         }
 
         return $object;
@@ -75,6 +76,11 @@ class ContactNormalizer implements DenormalizerInterface, NormalizerInterface, D
         }
         if (null !== $object->getEmail()) {
             $data->{'email'} = $object->getEmail();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/^x-/', $key)) {
+                $data->{$key} = $value;
+            }
         }
 
         return $data;

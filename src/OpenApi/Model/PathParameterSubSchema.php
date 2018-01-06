@@ -10,21 +10,29 @@ declare(strict_types=1);
 
 namespace Jane\OpenApi\Model;
 
-class PathParameterSubSchema
+class PathParameterSubSchema extends \ArrayObject
 {
     /**
+     * Determines whether or not this parameter is required or optional.
+     *
      * @var bool
      */
     protected $required;
     /**
+     * Determines the location of the parameter.
+     *
      * @var string
      */
     protected $in;
     /**
+     * A brief description of the parameter. This could contain examples of use.  GitHub Flavored Markdown is allowed.
+     *
      * @var string
      */
     protected $description;
     /**
+     * The name of the parameter.
+     *
      * @var string
      */
     protected $name;
@@ -98,6 +106,8 @@ class PathParameterSubSchema
     protected $multipleOf;
 
     /**
+     * Determines whether or not this parameter is required or optional.
+     *
      * @return bool
      */
     public function getRequired(): ?bool
@@ -106,6 +116,8 @@ class PathParameterSubSchema
     }
 
     /**
+     * Determines whether or not this parameter is required or optional.
+     *
      * @param bool $required
      *
      * @return self
@@ -118,6 +130,8 @@ class PathParameterSubSchema
     }
 
     /**
+     * Determines the location of the parameter.
+     *
      * @return string
      */
     public function getIn(): ?string
@@ -126,6 +140,8 @@ class PathParameterSubSchema
     }
 
     /**
+     * Determines the location of the parameter.
+     *
      * @param string $in
      *
      * @return self
@@ -138,6 +154,8 @@ class PathParameterSubSchema
     }
 
     /**
+     * A brief description of the parameter. This could contain examples of use.  GitHub Flavored Markdown is allowed.
+     *
      * @return string
      */
     public function getDescription(): ?string
@@ -146,6 +164,8 @@ class PathParameterSubSchema
     }
 
     /**
+     * A brief description of the parameter. This could contain examples of use.  GitHub Flavored Markdown is allowed.
+     *
      * @param string $description
      *
      * @return self
@@ -158,6 +178,8 @@ class PathParameterSubSchema
     }
 
     /**
+     * The name of the parameter.
+     *
      * @return string
      */
     public function getName(): ?string
@@ -166,6 +188,8 @@ class PathParameterSubSchema
     }
 
     /**
+     * The name of the parameter.
+     *
      * @param string $name
      *
      * @return self

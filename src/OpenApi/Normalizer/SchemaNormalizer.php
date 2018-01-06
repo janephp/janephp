@@ -26,20 +26,12 @@ class SchemaNormalizer implements DenormalizerInterface, NormalizerInterface, De
 
     public function supportsDenormalization($data, $type, $format = null)
     {
-        if ('Jane\\OpenApi\\Model\\Schema' !== $type) {
-            return false;
-        }
-
-        return true;
+        return $type === 'Jane\\OpenApi\\Model\\Schema';
     }
 
     public function supportsNormalization($data, $format = null)
     {
-        if ($data instanceof \Jane\OpenApi\Model\Schema) {
-            return true;
-        }
-
-        return false;
+        return $data instanceof \Jane\OpenApi\Model\Schema;
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])
@@ -51,59 +43,78 @@ class SchemaNormalizer implements DenormalizerInterface, NormalizerInterface, De
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \Jane\OpenApi\Model\Schema();
+        $data = clone $data;
         if (property_exists($data, '$ref')) {
             $object->setDollarRef($data->{'$ref'});
+            unset($data->{'$ref'});
         }
         if (property_exists($data, 'format')) {
             $object->setFormat($data->{'format'});
+            unset($data->{'format'});
         }
         if (property_exists($data, 'title')) {
             $object->setTitle($data->{'title'});
+            unset($data->{'title'});
         }
         if (property_exists($data, 'description')) {
             $object->setDescription($data->{'description'});
+            unset($data->{'description'});
         }
         if (property_exists($data, 'default')) {
             $object->setDefault($data->{'default'});
+            unset($data->{'default'});
         }
         if (property_exists($data, 'multipleOf')) {
             $object->setMultipleOf($data->{'multipleOf'});
+            unset($data->{'multipleOf'});
         }
         if (property_exists($data, 'maximum')) {
             $object->setMaximum($data->{'maximum'});
+            unset($data->{'maximum'});
         }
         if (property_exists($data, 'exclusiveMaximum')) {
             $object->setExclusiveMaximum($data->{'exclusiveMaximum'});
+            unset($data->{'exclusiveMaximum'});
         }
         if (property_exists($data, 'minimum')) {
             $object->setMinimum($data->{'minimum'});
+            unset($data->{'minimum'});
         }
         if (property_exists($data, 'exclusiveMinimum')) {
             $object->setExclusiveMinimum($data->{'exclusiveMinimum'});
+            unset($data->{'exclusiveMinimum'});
         }
         if (property_exists($data, 'maxLength')) {
             $object->setMaxLength($data->{'maxLength'});
+            unset($data->{'maxLength'});
         }
         if (property_exists($data, 'minLength')) {
             $object->setMinLength($data->{'minLength'});
+            unset($data->{'minLength'});
         }
         if (property_exists($data, 'pattern')) {
             $object->setPattern($data->{'pattern'});
+            unset($data->{'pattern'});
         }
         if (property_exists($data, 'maxItems')) {
             $object->setMaxItems($data->{'maxItems'});
+            unset($data->{'maxItems'});
         }
         if (property_exists($data, 'minItems')) {
             $object->setMinItems($data->{'minItems'});
+            unset($data->{'minItems'});
         }
         if (property_exists($data, 'uniqueItems')) {
             $object->setUniqueItems($data->{'uniqueItems'});
+            unset($data->{'uniqueItems'});
         }
         if (property_exists($data, 'maxProperties')) {
             $object->setMaxProperties($data->{'maxProperties'});
+            unset($data->{'maxProperties'});
         }
         if (property_exists($data, 'minProperties')) {
             $object->setMinProperties($data->{'minProperties'});
+            unset($data->{'minProperties'});
         }
         if (property_exists($data, 'required')) {
             $values = [];
@@ -111,6 +122,7 @@ class SchemaNormalizer implements DenormalizerInterface, NormalizerInterface, De
                 $values[] = $value;
             }
             $object->setRequired($values);
+            unset($data->{'required'});
         }
         if (property_exists($data, 'enum')) {
             $values_1 = [];
@@ -118,6 +130,7 @@ class SchemaNormalizer implements DenormalizerInterface, NormalizerInterface, De
                 $values_1[] = $value_1;
             }
             $object->setEnum($values_1);
+            unset($data->{'enum'});
         }
         if (property_exists($data, 'additionalProperties')) {
             $value_2 = $data->{'additionalProperties'};
@@ -128,6 +141,7 @@ class SchemaNormalizer implements DenormalizerInterface, NormalizerInterface, De
                 $value_2 = $data->{'additionalProperties'};
             }
             $object->setAdditionalProperties($value_2);
+            unset($data->{'additionalProperties'});
         }
         if (property_exists($data, 'type')) {
             $value_3 = $data->{'type'};
@@ -142,6 +156,7 @@ class SchemaNormalizer implements DenormalizerInterface, NormalizerInterface, De
                 $value_3 = $values_2;
             }
             $object->setType($value_3);
+            unset($data->{'type'});
         }
         if (property_exists($data, 'items')) {
             $value_5 = $data->{'items'};
@@ -156,6 +171,7 @@ class SchemaNormalizer implements DenormalizerInterface, NormalizerInterface, De
                 $value_5 = $values_3;
             }
             $object->setItems($value_5);
+            unset($data->{'items'});
         }
         if (property_exists($data, 'allOf')) {
             $values_4 = [];
@@ -163,6 +179,7 @@ class SchemaNormalizer implements DenormalizerInterface, NormalizerInterface, De
                 $values_4[] = $this->denormalizer->denormalize($value_7, 'Jane\\OpenApi\\Model\\Schema', 'json', $context);
             }
             $object->setAllOf($values_4);
+            unset($data->{'allOf'});
         }
         if (property_exists($data, 'properties')) {
             $values_5 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
@@ -170,21 +187,32 @@ class SchemaNormalizer implements DenormalizerInterface, NormalizerInterface, De
                 $values_5[$key] = $this->denormalizer->denormalize($value_8, 'Jane\\OpenApi\\Model\\Schema', 'json', $context);
             }
             $object->setProperties($values_5);
+            unset($data->{'properties'});
         }
         if (property_exists($data, 'discriminator')) {
             $object->setDiscriminator($data->{'discriminator'});
+            unset($data->{'discriminator'});
         }
         if (property_exists($data, 'readOnly')) {
             $object->setReadOnly($data->{'readOnly'});
+            unset($data->{'readOnly'});
         }
         if (property_exists($data, 'xml')) {
             $object->setXml($this->denormalizer->denormalize($data->{'xml'}, 'Jane\\OpenApi\\Model\\Xml', 'json', $context));
+            unset($data->{'xml'});
         }
         if (property_exists($data, 'externalDocs')) {
             $object->setExternalDocs($this->denormalizer->denormalize($data->{'externalDocs'}, 'Jane\\OpenApi\\Model\\ExternalDocs', 'json', $context));
+            unset($data->{'externalDocs'});
         }
         if (property_exists($data, 'example')) {
             $object->setExample($data->{'example'});
+            unset($data->{'example'});
+        }
+        foreach ($data as $key_1 => $value_9) {
+            if (preg_match('/^x-/', $key_1)) {
+                $object[$key_1] = $value_9;
+            }
         }
 
         return $object;
@@ -273,7 +301,7 @@ class SchemaNormalizer implements DenormalizerInterface, NormalizerInterface, De
         }
         if (null !== $object->getType()) {
             $value_3 = $object->getType();
-            if (null !== $object->getType()) {
+            if (!is_null($object->getType())) {
                 $value_3 = $object->getType();
             }
             if (is_array($object->getType())) {
@@ -327,6 +355,11 @@ class SchemaNormalizer implements DenormalizerInterface, NormalizerInterface, De
         }
         if (null !== $object->getExample()) {
             $data->{'example'} = $object->getExample();
+        }
+        foreach ($object as $key_1 => $value_9) {
+            if (preg_match('/^x-/', $key_1)) {
+                $data->{$key_1} = $value_9;
+            }
         }
 
         return $data;

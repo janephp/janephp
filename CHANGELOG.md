@@ -23,6 +23,7 @@
  * [Jane] Add a not strict mode, which generate more permissive normalizers (allowing null / not 
  defined properties in several places)
  * [Jane] Add property description in doc block comment
+ * [Jane] Add support for additionalProperties / patternProperties with existing properties
 
 ### Fixed
 

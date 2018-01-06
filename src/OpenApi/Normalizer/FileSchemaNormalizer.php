@@ -26,20 +26,12 @@ class FileSchemaNormalizer implements DenormalizerInterface, NormalizerInterface
 
     public function supportsDenormalization($data, $type, $format = null)
     {
-        if ('Jane\\OpenApi\\Model\\FileSchema' !== $type) {
-            return false;
-        }
-
-        return true;
+        return $type === 'Jane\\OpenApi\\Model\\FileSchema';
     }
 
     public function supportsNormalization($data, $format = null)
     {
-        if ($data instanceof \Jane\OpenApi\Model\FileSchema) {
-            return true;
-        }
-
-        return false;
+        return $data instanceof \Jane\OpenApi\Model\FileSchema;
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])
@@ -51,17 +43,22 @@ class FileSchemaNormalizer implements DenormalizerInterface, NormalizerInterface
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \Jane\OpenApi\Model\FileSchema();
+        $data = clone $data;
         if (property_exists($data, 'format')) {
             $object->setFormat($data->{'format'});
+            unset($data->{'format'});
         }
         if (property_exists($data, 'title')) {
             $object->setTitle($data->{'title'});
+            unset($data->{'title'});
         }
         if (property_exists($data, 'description')) {
             $object->setDescription($data->{'description'});
+            unset($data->{'description'});
         }
         if (property_exists($data, 'default')) {
             $object->setDefault($data->{'default'});
+            unset($data->{'default'});
         }
         if (property_exists($data, 'required')) {
             $values = [];
@@ -69,18 +66,28 @@ class FileSchemaNormalizer implements DenormalizerInterface, NormalizerInterface
                 $values[] = $value;
             }
             $object->setRequired($values);
+            unset($data->{'required'});
         }
         if (property_exists($data, 'type')) {
             $object->setType($data->{'type'});
+            unset($data->{'type'});
         }
         if (property_exists($data, 'readOnly')) {
             $object->setReadOnly($data->{'readOnly'});
+            unset($data->{'readOnly'});
         }
         if (property_exists($data, 'externalDocs')) {
             $object->setExternalDocs($this->denormalizer->denormalize($data->{'externalDocs'}, 'Jane\\OpenApi\\Model\\ExternalDocs', 'json', $context));
+            unset($data->{'externalDocs'});
         }
         if (property_exists($data, 'example')) {
             $object->setExample($data->{'example'});
+            unset($data->{'example'});
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/^x-/', $key)) {
+                $object[$key] = $value_1;
+            }
         }
 
         return $object;
@@ -119,6 +126,11 @@ class FileSchemaNormalizer implements DenormalizerInterface, NormalizerInterface
         }
         if (null !== $object->getExample()) {
             $data->{'example'} = $object->getExample();
+        }
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/^x-/', $key)) {
+                $data->{$key} = $value_1;
+            }
         }
 
         return $data;

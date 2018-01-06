@@ -4,7 +4,9 @@ namespace Jane\JsonSchema\Generator\Normalizer;
 
 use Jane\JsonSchema\Generator\Context\Context;
 use Jane\JsonSchema\Generator\Naming;
+use Jane\JsonSchema\Guesser\Guess\ClassGuess;
 use Jane\JsonSchema\Guesser\Guess\Property;
+use PhpParser\Node\Arg;
 use PhpParser\Node\Name;
 use PhpParser\Node\Param;
 use PhpParser\Node\Stmt;
@@ -70,7 +72,7 @@ trait NormalizerGenerator
      *
      * @return Stmt\ClassMethod
      */
-    protected function createNormalizeMethod($modelFqdn, Context $context, $properties)
+    protected function createNormalizeMethod($modelFqdn, Context $context, ClassGuess $classGuess)
     {
         $context->refreshScope();
         $dataVariable = new Expr\Variable('data');
@@ -79,7 +81,7 @@ trait NormalizerGenerator
         ];
 
         /** @var Property $property */
-        foreach ($properties as $property) {
+        foreach ($classGuess->getProperties() as $property) {
             $propertyVar = new Expr\MethodCall(new Expr\Variable('object'), $this->getNaming()->getPrefixedMethodName('get', $property->getName()));
             list($normalizationStatements, $outputVar) = $property->getType()->createNormalizationStatement($context, $propertyVar);
 
@@ -97,6 +99,33 @@ trait NormalizerGenerator
                     'stmts' => $normalizationStatements,
                 ]
             );
+        }
+
+        $patternCondition = [];
+        $loopKeyVar = new Expr\Variable($context->getUniqueVariableName('key'));
+        $loopValueVar = new Expr\Variable($context->getUniqueVariableName('value'));
+
+        foreach ($classGuess->getExtensionsType() as $pattern => $type) {
+            list($denormalizationStatements, $outputVar) = $type->createNormalizationStatement($context, $loopValueVar);
+
+            $patternCondition[] = new Stmt\If_(
+                new Expr\FuncCall(new Name('preg_match'), [
+                    new Arg(new Expr\ConstFetch(new Name("'/" . str_replace('/', '\/', $pattern) . "/'"))),
+                    new Arg($loopKeyVar),
+                ]),
+                [
+                    'stmts' => array_merge($denormalizationStatements, [
+                        new Expr\Assign(new Expr\PropertyFetch($dataVariable, $loopKeyVar), $outputVar),
+                    ]),
+                ]
+            );
+        }
+
+        if (\count($patternCondition) > 0) {
+            $statements[] = new Stmt\Foreach_(new Expr\Variable('object'), $loopValueVar, [
+                'keyVar' => $loopKeyVar,
+                'stmts' => $patternCondition,
+            ]);
         }
 
         $statements[] = new Stmt\Return_($dataVariable);

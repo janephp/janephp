@@ -26,20 +26,12 @@ class InfoNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
 
     public function supportsDenormalization($data, $type, $format = null)
     {
-        if ('Jane\\OpenApi\\Model\\Info' !== $type) {
-            return false;
-        }
-
-        return true;
+        return $type === 'Jane\\OpenApi\\Model\\Info';
     }
 
     public function supportsNormalization($data, $format = null)
     {
-        if ($data instanceof \Jane\OpenApi\Model\Info) {
-            return true;
-        }
-
-        return false;
+        return $data instanceof \Jane\OpenApi\Model\Info;
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])
@@ -51,23 +43,35 @@ class InfoNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \Jane\OpenApi\Model\Info();
+        $data = clone $data;
         if (property_exists($data, 'title')) {
             $object->setTitle($data->{'title'});
+            unset($data->{'title'});
         }
         if (property_exists($data, 'version')) {
             $object->setVersion($data->{'version'});
+            unset($data->{'version'});
         }
         if (property_exists($data, 'description')) {
             $object->setDescription($data->{'description'});
+            unset($data->{'description'});
         }
         if (property_exists($data, 'termsOfService')) {
             $object->setTermsOfService($data->{'termsOfService'});
+            unset($data->{'termsOfService'});
         }
         if (property_exists($data, 'contact')) {
             $object->setContact($this->denormalizer->denormalize($data->{'contact'}, 'Jane\\OpenApi\\Model\\Contact', 'json', $context));
+            unset($data->{'contact'});
         }
         if (property_exists($data, 'license')) {
             $object->setLicense($this->denormalizer->denormalize($data->{'license'}, 'Jane\\OpenApi\\Model\\License', 'json', $context));
+            unset($data->{'license'});
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/^x-/', $key)) {
+                $object[$key] = $value;
+            }
         }
 
         return $object;
@@ -93,6 +97,11 @@ class InfoNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         }
         if (null !== $object->getLicense()) {
             $data->{'license'} = $this->normalizer->normalize($object->getLicense(), 'json', $context);
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/^x-/', $key)) {
+                $data->{$key} = $value;
+            }
         }
 
         return $data;

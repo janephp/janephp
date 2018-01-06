@@ -10,7 +10,7 @@ declare(strict_types=1);
 
 namespace Jane\OpenApi\Model;
 
-class PathItem
+class PathItem extends \ArrayObject
 {
     /**
      * @var string
@@ -45,6 +45,8 @@ class PathItem
      */
     protected $patch;
     /**
+     * The parameters needed to send a valid API call.
+     *
      * @var BodyParameter[]|HeaderParameterSubSchema[]|FormDataParameterSubSchema[]|QueryParameterSubSchema[]|PathParameterSubSchema[]|JsonReference[]
      */
     protected $parameters;
@@ -210,6 +212,8 @@ class PathItem
     }
 
     /**
+     * The parameters needed to send a valid API call.
+     *
      * @return BodyParameter[]|HeaderParameterSubSchema[]|FormDataParameterSubSchema[]|QueryParameterSubSchema[]|PathParameterSubSchema[]|JsonReference[]
      */
     public function getParameters(): ?array
@@ -218,6 +222,8 @@ class PathItem
     }
 
     /**
+     * The parameters needed to send a valid API call.
+     *
      * @param BodyParameter[]|HeaderParameterSubSchema[]|FormDataParameterSubSchema[]|QueryParameterSubSchema[]|PathParameterSubSchema[]|JsonReference[] $parameters
      *
      * @return self

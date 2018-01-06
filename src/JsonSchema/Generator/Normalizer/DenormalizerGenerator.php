@@ -4,6 +4,7 @@ namespace Jane\JsonSchema\Generator\Normalizer;
 
 use Jane\JsonSchema\Generator\Context\Context;
 use Jane\JsonSchema\Generator\Naming;
+use Jane\JsonSchema\Guesser\Guess\ClassGuess;
 use PhpParser\Node\Arg;
 use PhpParser\Node\Name;
 use PhpParser\Node\Param;
@@ -42,16 +43,7 @@ trait DenormalizerGenerator
         ]);
     }
 
-    /**
-     * Create the denormalization method.
-     *
-     * @param $modelFqdn
-     * @param Context $context
-     * @param $properties
-     *
-     * @return Stmt\ClassMethod
-     */
-    protected function createDenormalizeMethod($modelFqdn, Context $context, $properties)
+    protected function createDenormalizeMethod(string $modelFqdn, Context $context, ClassGuess $classGuess): Stmt\ClassMethod
     {
         $context->refreshScope();
         $objectVariable = new Expr\Variable('object');
@@ -87,7 +79,14 @@ trait DenormalizerGenerator
             ]
         ));
 
-        foreach ($properties as $property) {
+        $unset = \count($classGuess->getExtensionsType()) > 0;
+
+        if ($unset) {
+            // Force cloning when unsetting to not loose data for references
+            $statements[] = new Expr\Assign(new Expr\Variable('data'), new Expr\Clone_(new Expr\Variable('data')));
+        }
+
+        foreach ($classGuess->getProperties() as $property) {
             $propertyVar = new Expr\PropertyFetch(new Expr\Variable('data'), sprintf("{'%s'}", $property->getName()));
             list($denormalizationStatements, $outputVar) = $property->getType()->createDenormalizationStatement($context, $propertyVar);
 
@@ -107,13 +106,44 @@ trait DenormalizerGenerator
             }
 
             $statements[] = new Stmt\If_($condition, [
+                    'stmts' => array_merge(
+                        $denormalizationStatements,
+                        [
+                            new Expr\MethodCall($objectVariable, $this->getNaming()->getPrefixedMethodName('set', $property->getName()), [
+                                $outputVar,
+                            ]),
+                        ],
+                        $unset ? [new Stmt\Unset_([$propertyVar])] : []
+                    ),
+                ]
+            );
+        }
+
+        $patternCondition = [];
+        $loopKeyVar = new Expr\Variable($context->getUniqueVariableName('key'));
+        $loopValueVar = new Expr\Variable($context->getUniqueVariableName('value'));
+
+        foreach ($classGuess->getExtensionsType() as $pattern => $type) {
+            list($denormalizationStatements, $outputVar) = $type->createDenormalizationStatement($context, $loopValueVar);
+
+            $patternCondition[] = new Stmt\If_(
+                new Expr\FuncCall(new Name('preg_match'), [
+                    new Arg(new Expr\ConstFetch(new Name("'/" . str_replace('/', '\/', $pattern) . "/'"))),
+                    new Arg($loopKeyVar),
+                ]),
+                [
                     'stmts' => array_merge($denormalizationStatements, [
-                        new Expr\MethodCall($objectVariable, $this->getNaming()->getPrefixedMethodName('set', $property->getName()), [
-                            $outputVar,
-                        ]),
+                        new Expr\Assign(new Expr\ArrayDimFetch($objectVariable, $loopKeyVar), $outputVar),
                     ]),
                 ]
             );
+        }
+
+        if (\count($patternCondition) > 0) {
+            $statements[] = new Stmt\Foreach_(new Expr\Variable('data'), $loopValueVar, [
+                'keyVar' => $loopKeyVar,
+                'stmts' => $patternCondition,
+            ]);
         }
 
         $statements[] = new Stmt\Return_($objectVariable);

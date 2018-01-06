@@ -26,20 +26,12 @@ class ResponseNormalizer implements DenormalizerInterface, NormalizerInterface, 
 
     public function supportsDenormalization($data, $type, $format = null)
     {
-        if ('Jane\\OpenApi\\Model\\Response' !== $type) {
-            return false;
-        }
-
-        return true;
+        return $type === 'Jane\\OpenApi\\Model\\Response';
     }
 
     public function supportsNormalization($data, $format = null)
     {
-        if ($data instanceof \Jane\OpenApi\Model\Response) {
-            return true;
-        }
-
-        return false;
+        return $data instanceof \Jane\OpenApi\Model\Response;
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])
@@ -51,18 +43,21 @@ class ResponseNormalizer implements DenormalizerInterface, NormalizerInterface, 
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \Jane\OpenApi\Model\Response();
+        $data = clone $data;
         if (property_exists($data, 'description')) {
             $object->setDescription($data->{'description'});
+            unset($data->{'description'});
         }
         if (property_exists($data, 'schema')) {
             $value = $data->{'schema'};
             if (is_object($data->{'schema'})) {
                 $value = $this->denormalizer->denormalize($data->{'schema'}, 'Jane\\OpenApi\\Model\\Schema', 'json', $context);
             }
-            if (is_object($data->{'schema'}) and (isset($data->{'schema'}->{'type'}) and 'file' == $data->{'schema'}->{'type'})) {
+            if (is_object($data->{'schema'}) and (isset($data->{'schema'}->{'type'}) and $data->{'schema'}->{'type'} == 'file')) {
                 $value = $this->denormalizer->denormalize($data->{'schema'}, 'Jane\\OpenApi\\Model\\FileSchema', 'json', $context);
             }
             $object->setSchema($value);
+            unset($data->{'schema'});
         }
         if (property_exists($data, 'headers')) {
             $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
@@ -70,6 +65,7 @@ class ResponseNormalizer implements DenormalizerInterface, NormalizerInterface, 
                 $values[$key] = $this->denormalizer->denormalize($value_1, 'Jane\\OpenApi\\Model\\Header', 'json', $context);
             }
             $object->setHeaders($values);
+            unset($data->{'headers'});
         }
         if (property_exists($data, 'examples')) {
             $values_1 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
@@ -77,6 +73,12 @@ class ResponseNormalizer implements DenormalizerInterface, NormalizerInterface, 
                 $values_1[$key_1] = $value_2;
             }
             $object->setExamples($values_1);
+            unset($data->{'examples'});
+        }
+        foreach ($data as $key_2 => $value_3) {
+            if (preg_match('/^x-/', $key_2)) {
+                $object[$key_2] = $value_3;
+            }
         }
 
         return $object;
@@ -111,6 +113,11 @@ class ResponseNormalizer implements DenormalizerInterface, NormalizerInterface, 
                 $values_1->{$key_1} = $value_2;
             }
             $data->{'examples'} = $values_1;
+        }
+        foreach ($object as $key_2 => $value_3) {
+            if (preg_match('/^x-/', $key_2)) {
+                $data->{$key_2} = $value_3;
+            }
         }
 
         return $data;

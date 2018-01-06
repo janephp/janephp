@@ -10,25 +10,35 @@ declare(strict_types=1);
 
 namespace Jane\OpenApi\Model;
 
-class OpenApi
+class OpenApi extends \ArrayObject
 {
     /**
+     * The Swagger version of this document.
+     *
      * @var string
      */
     protected $swagger;
     /**
+     * General information about the API.
+     *
      * @var Info
      */
     protected $info;
     /**
+     * The host (name or ip) of the API. Example: 'swagger.io'.
+     *
      * @var string
      */
     protected $host;
     /**
+     * The base path to the API. Example: '/api'.
+     *
      * @var string
      */
     protected $basePath;
     /**
+     * The transfer protocol of the API.
+     *
      * @var string[]
      */
     protected $schemes;
@@ -41,18 +51,26 @@ class OpenApi
      */
     protected $produces;
     /**
+     * Relative paths to the individual endpoints. They must be relative to the 'basePath'.
+     *
      * @var mixed[]|PathItem[]
      */
     protected $paths;
     /**
+     * One or more JSON objects describing the schemas being consumed and produced by the API.
+     *
      * @var Schema[]
      */
     protected $definitions;
     /**
+     * One or more JSON representations for parameters.
+     *
      * @var BodyParameter[]|HeaderParameterSubSchema[]|FormDataParameterSubSchema[]|QueryParameterSubSchema[]|PathParameterSubSchema[]
      */
     protected $parameters;
     /**
+     * One or more JSON representations for parameters.
+     *
      * @var Response[]
      */
     protected $responses;
@@ -69,11 +87,15 @@ class OpenApi
      */
     protected $tags;
     /**
+     * information about external documentation.
+     *
      * @var ExternalDocs
      */
     protected $externalDocs;
 
     /**
+     * The Swagger version of this document.
+     *
      * @return string
      */
     public function getSwagger(): ?string
@@ -82,6 +104,8 @@ class OpenApi
     }
 
     /**
+     * The Swagger version of this document.
+     *
      * @param string $swagger
      *
      * @return self
@@ -94,6 +118,8 @@ class OpenApi
     }
 
     /**
+     * General information about the API.
+     *
      * @return Info
      */
     public function getInfo(): ?Info
@@ -102,6 +128,8 @@ class OpenApi
     }
 
     /**
+     * General information about the API.
+     *
      * @param Info $info
      *
      * @return self
@@ -114,6 +142,8 @@ class OpenApi
     }
 
     /**
+     * The host (name or ip) of the API. Example: 'swagger.io'.
+     *
      * @return string
      */
     public function getHost(): ?string
@@ -122,6 +152,8 @@ class OpenApi
     }
 
     /**
+     * The host (name or ip) of the API. Example: 'swagger.io'.
+     *
      * @param string $host
      *
      * @return self
@@ -134,6 +166,8 @@ class OpenApi
     }
 
     /**
+     * The base path to the API. Example: '/api'.
+     *
      * @return string
      */
     public function getBasePath(): ?string
@@ -142,6 +176,8 @@ class OpenApi
     }
 
     /**
+     * The base path to the API. Example: '/api'.
+     *
      * @param string $basePath
      *
      * @return self
@@ -154,6 +190,8 @@ class OpenApi
     }
 
     /**
+     * The transfer protocol of the API.
+     *
      * @return string[]
      */
     public function getSchemes(): ?array
@@ -162,6 +200,8 @@ class OpenApi
     }
 
     /**
+     * The transfer protocol of the API.
+     *
      * @param string[] $schemes
      *
      * @return self
@@ -214,6 +254,8 @@ class OpenApi
     }
 
     /**
+     * Relative paths to the individual endpoints. They must be relative to the 'basePath'.
+     *
      * @return mixed[]|PathItem[]
      */
     public function getPaths()
@@ -222,6 +264,8 @@ class OpenApi
     }
 
     /**
+     * Relative paths to the individual endpoints. They must be relative to the 'basePath'.
+     *
      * @param mixed[]|PathItem[] $paths
      *
      * @return self
@@ -234,6 +278,8 @@ class OpenApi
     }
 
     /**
+     * One or more JSON objects describing the schemas being consumed and produced by the API.
+     *
      * @return Schema[]
      */
     public function getDefinitions(): ?\ArrayObject
@@ -242,6 +288,8 @@ class OpenApi
     }
 
     /**
+     * One or more JSON objects describing the schemas being consumed and produced by the API.
+     *
      * @param Schema[] $definitions
      *
      * @return self
@@ -254,6 +302,8 @@ class OpenApi
     }
 
     /**
+     * One or more JSON representations for parameters.
+     *
      * @return BodyParameter[]|HeaderParameterSubSchema[]|FormDataParameterSubSchema[]|QueryParameterSubSchema[]|PathParameterSubSchema[]
      */
     public function getParameters(): ?\ArrayObject
@@ -262,6 +312,8 @@ class OpenApi
     }
 
     /**
+     * One or more JSON representations for parameters.
+     *
      * @param BodyParameter[]|HeaderParameterSubSchema[]|FormDataParameterSubSchema[]|QueryParameterSubSchema[]|PathParameterSubSchema[] $parameters
      *
      * @return self
@@ -274,6 +326,8 @@ class OpenApi
     }
 
     /**
+     * One or more JSON representations for parameters.
+     *
      * @return Response[]
      */
     public function getResponses(): ?\ArrayObject
@@ -282,6 +336,8 @@ class OpenApi
     }
 
     /**
+     * One or more JSON representations for parameters.
+     *
      * @param Response[] $responses
      *
      * @return self
@@ -354,6 +410,8 @@ class OpenApi
     }
 
     /**
+     * information about external documentation.
+     *
      * @return ExternalDocs
      */
     public function getExternalDocs(): ?ExternalDocs
@@ -362,6 +420,8 @@ class OpenApi
     }
 
     /**
+     * information about external documentation.
+     *
      * @param ExternalDocs $externalDocs
      *
      * @return self

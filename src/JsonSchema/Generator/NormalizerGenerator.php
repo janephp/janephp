@@ -59,8 +59,8 @@ class NormalizerGenerator implements GeneratorInterface
             $modelFqdn = $schema->getNamespace() . '\\Model\\' . $class->getName();
             $methods[] = $this->createSupportsDenormalizationMethod($modelFqdn);
             $methods[] = $this->createSupportsNormalizationMethod($modelFqdn);
-            $methods[] = $this->createDenormalizeMethod($modelFqdn, $context, $class->getProperties());
-            $methods[] = $this->createNormalizeMethod($modelFqdn, $context, $class->getProperties());
+            $methods[] = $this->createDenormalizeMethod($modelFqdn, $context, $class);
+            $methods[] = $this->createNormalizeMethod($modelFqdn, $context, $class);
 
             $normalizerClass = $this->createNormalizerClass(
                 $class->getName() . 'Normalizer',

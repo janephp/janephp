@@ -26,20 +26,12 @@ class Oauth2ImplicitSecurityNormalizer implements DenormalizerInterface, Normali
 
     public function supportsDenormalization($data, $type, $format = null)
     {
-        if ('Jane\\OpenApi\\Model\\Oauth2ImplicitSecurity' !== $type) {
-            return false;
-        }
-
-        return true;
+        return $type === 'Jane\\OpenApi\\Model\\Oauth2ImplicitSecurity';
     }
 
     public function supportsNormalization($data, $format = null)
     {
-        if ($data instanceof \Jane\OpenApi\Model\Oauth2ImplicitSecurity) {
-            return true;
-        }
-
-        return false;
+        return $data instanceof \Jane\OpenApi\Model\Oauth2ImplicitSecurity;
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])
@@ -51,11 +43,14 @@ class Oauth2ImplicitSecurityNormalizer implements DenormalizerInterface, Normali
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \Jane\OpenApi\Model\Oauth2ImplicitSecurity();
+        $data = clone $data;
         if (property_exists($data, 'type')) {
             $object->setType($data->{'type'});
+            unset($data->{'type'});
         }
         if (property_exists($data, 'flow')) {
             $object->setFlow($data->{'flow'});
+            unset($data->{'flow'});
         }
         if (property_exists($data, 'scopes')) {
             $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
@@ -63,12 +58,20 @@ class Oauth2ImplicitSecurityNormalizer implements DenormalizerInterface, Normali
                 $values[$key] = $value;
             }
             $object->setScopes($values);
+            unset($data->{'scopes'});
         }
         if (property_exists($data, 'authorizationUrl')) {
             $object->setAuthorizationUrl($data->{'authorizationUrl'});
+            unset($data->{'authorizationUrl'});
         }
         if (property_exists($data, 'description')) {
             $object->setDescription($data->{'description'});
+            unset($data->{'description'});
+        }
+        foreach ($data as $key_1 => $value_1) {
+            if (preg_match('/^x-/', $key_1)) {
+                $object[$key_1] = $value_1;
+            }
         }
 
         return $object;
@@ -95,6 +98,11 @@ class Oauth2ImplicitSecurityNormalizer implements DenormalizerInterface, Normali
         }
         if (null !== $object->getDescription()) {
             $data->{'description'} = $object->getDescription();
+        }
+        foreach ($object as $key_1 => $value_1) {
+            if (preg_match('/^x-/', $key_1)) {
+                $data->{$key_1} = $value_1;
+            }
         }
 
         return $data;

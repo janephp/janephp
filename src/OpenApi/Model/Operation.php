@@ -10,25 +10,33 @@ declare(strict_types=1);
 
 namespace Jane\OpenApi\Model;
 
-class Operation
+class Operation extends \ArrayObject
 {
     /**
      * @var string[]
      */
     protected $tags;
     /**
+     * A brief summary of the operation.
+     *
      * @var string
      */
     protected $summary;
     /**
+     * A longer description of the operation, GitHub Flavored Markdown is allowed.
+     *
      * @var string
      */
     protected $description;
     /**
+     * information about external documentation.
+     *
      * @var ExternalDocs
      */
     protected $externalDocs;
     /**
+     * A unique identifier of the operation.
+     *
      * @var string
      */
     protected $operationId;
@@ -41,14 +49,20 @@ class Operation
      */
     protected $consumes;
     /**
+     * The parameters needed to send a valid API call.
+     *
      * @var BodyParameter[]|HeaderParameterSubSchema[]|FormDataParameterSubSchema[]|QueryParameterSubSchema[]|PathParameterSubSchema[]|JsonReference[]
      */
     protected $parameters;
     /**
+     * Response objects names can either be any valid HTTP status code or 'default'.
+     *
      * @var Response|JsonReference[]|mixed[]
      */
     protected $responses;
     /**
+     * The transfer protocol of the API.
+     *
      * @var string[]
      */
     protected $schemes;
@@ -82,6 +96,8 @@ class Operation
     }
 
     /**
+     * A brief summary of the operation.
+     *
      * @return string
      */
     public function getSummary(): ?string
@@ -90,6 +106,8 @@ class Operation
     }
 
     /**
+     * A brief summary of the operation.
+     *
      * @param string $summary
      *
      * @return self
@@ -102,6 +120,8 @@ class Operation
     }
 
     /**
+     * A longer description of the operation, GitHub Flavored Markdown is allowed.
+     *
      * @return string
      */
     public function getDescription(): ?string
@@ -110,6 +130,8 @@ class Operation
     }
 
     /**
+     * A longer description of the operation, GitHub Flavored Markdown is allowed.
+     *
      * @param string $description
      *
      * @return self
@@ -122,6 +144,8 @@ class Operation
     }
 
     /**
+     * information about external documentation.
+     *
      * @return ExternalDocs
      */
     public function getExternalDocs(): ?ExternalDocs
@@ -130,6 +154,8 @@ class Operation
     }
 
     /**
+     * information about external documentation.
+     *
      * @param ExternalDocs $externalDocs
      *
      * @return self
@@ -142,6 +168,8 @@ class Operation
     }
 
     /**
+     * A unique identifier of the operation.
+     *
      * @return string
      */
     public function getOperationId(): ?string
@@ -150,6 +178,8 @@ class Operation
     }
 
     /**
+     * A unique identifier of the operation.
+     *
      * @param string $operationId
      *
      * @return self
@@ -202,6 +232,8 @@ class Operation
     }
 
     /**
+     * The parameters needed to send a valid API call.
+     *
      * @return BodyParameter[]|HeaderParameterSubSchema[]|FormDataParameterSubSchema[]|QueryParameterSubSchema[]|PathParameterSubSchema[]|JsonReference[]
      */
     public function getParameters(): ?array
@@ -210,6 +242,8 @@ class Operation
     }
 
     /**
+     * The parameters needed to send a valid API call.
+     *
      * @param BodyParameter[]|HeaderParameterSubSchema[]|FormDataParameterSubSchema[]|QueryParameterSubSchema[]|PathParameterSubSchema[]|JsonReference[] $parameters
      *
      * @return self
@@ -222,7 +256,9 @@ class Operation
     }
 
     /**
-     * @return Response[]|JsonReference[]|mixed[]
+     * Response objects names can either be any valid HTTP status code or 'default'.
+     *
+     * @return Response|JsonReference[]|mixed[]
      */
     public function getResponses()
     {
@@ -230,7 +266,9 @@ class Operation
     }
 
     /**
-     * @param Response[]|JsonReference[]|mixed[] $responses
+     * Response objects names can either be any valid HTTP status code or 'default'.
+     *
+     * @param Response|JsonReference[]|mixed[] $responses
      *
      * @return self
      */
@@ -242,6 +280,8 @@ class Operation
     }
 
     /**
+     * The transfer protocol of the API.
+     *
      * @return string[]
      */
     public function getSchemes(): ?array
@@ -250,6 +290,8 @@ class Operation
     }
 
     /**
+     * The transfer protocol of the API.
+     *
      * @param string[] $schemes
      *
      * @return self

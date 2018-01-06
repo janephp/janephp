@@ -1,0 +1,28 @@
+{
+    "id": "http://json-schema.org/draft-04/schema#",
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "description": "Schema for object with null values",
+    "definitions": {
+        "AdditionalProperties": {
+            "type": "object",
+            "properties": {
+                "foo": { "type" : "string" }
+            },
+            "additionalProperties": true
+        },
+        "PatternProperties": {
+            "type": "object",
+            "properties": {
+                "foo": { "type" : "string" }
+            },
+            "patternProperties": {
+                "x-.*": {
+                    "type": "string"
+                },
+                "xxxx-.*": {
+                    "$ref": "#/definitions/AdditionalProperties"
+                }
+            }
+        }
+    }
+}
