@@ -6,5 +6,7 @@ use Jane\OpenApi\Operation\Operation;
 
 interface OperationNamingInterface
 {
-    public function generateFunctionName(Operation $operation);
+    public function getFunctionName(Operation $operation): string;
+
+    public function getEndpointName(Operation $operation): string;
 }

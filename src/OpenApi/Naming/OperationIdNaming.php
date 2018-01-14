@@ -7,8 +7,13 @@ use Jane\OpenApi\Operation\Operation;
 
 class OperationIdNaming implements OperationNamingInterface
 {
-    public function generateFunctionName(Operation $operation)
+    public function getFunctionName(Operation $operation): string
     {
         return Inflector::camelize($operation->getOperation()->getOperationId());
+    }
+
+    public function getEndpointName(Operation $operation): string
+    {
+        return Inflector::classify($operation->getOperation()->getOperationId());
     }
 }

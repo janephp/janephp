@@ -97,7 +97,7 @@ abstract class ClientGenerator implements GeneratorInterface
         $statements = [];
 
         foreach ($operations as $operation) {
-            $operationName = $this->operationNaming->generateFunctionName($operation);
+            $operationName = $this->operationNaming->getFunctionName($operation);
             $statements[] = $this->operationGenerator->createOperation($operationName, $operation, $context);
         }
 

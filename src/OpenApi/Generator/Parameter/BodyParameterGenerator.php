@@ -37,7 +37,7 @@ class BodyParameterGenerator extends ParameterGenerator
         list($class, $array) = $this->getClass($parameter, $context, $reference);
 
         if (null === $array || true === $array) {
-            if ('array' == $class) {
+            if ('array' === $class) {
                 return new Node\Param($name, null, 'array');
             }
 
@@ -52,15 +52,15 @@ class BodyParameterGenerator extends ParameterGenerator
      *
      * @param $parameter BodyParameter
      */
-    public function generateDocParameter($parameter, Context $context, $reference)
+    public function generateMethodDocParameter($parameter, Context $context, $reference)
     {
         list($class, $array) = $this->getClass($parameter, $context, $reference);
 
         if (null === $class) {
-            return sprintf('%s $%s %s', 'mixed', Inflector::camelize($parameter->getName()), $parameter->getDescription() ?: '');
+            return sprintf(' * @param %s $%s %s', 'mixed', Inflector::camelize($parameter->getName()), $parameter->getDescription() ?: '');
         }
 
-        return sprintf('%s $%s %s', $class, Inflector::camelize($parameter->getName()), $parameter->getDescription() ?: '');
+        return sprintf(' * @param %s $%s %s', $class, Inflector::camelize($parameter->getName()), $parameter->getDescription() ?: '');
     }
 
     /**
@@ -80,7 +80,7 @@ class BodyParameterGenerator extends ParameterGenerator
             list($jsonReference, $resolvedSchema) = $this->resolveSchema($schema, Schema::class);
         }
 
-        if ($schema instanceof Schema && 'array' == $schema->getType() && $schema->getItems() instanceof Reference) {
+        if ($schema instanceof Schema && 'array' === $schema->getType() && $schema->getItems() instanceof Reference) {
             list($jsonReference, $resolvedSchema) = $this->resolveSchema($schema->getItems(), Schema::class);
             $array = true;
         }

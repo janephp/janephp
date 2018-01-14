@@ -9,12 +9,21 @@ use Jane\OpenApi\Operation\Operation;
 
 class OperationUrlNaming implements OperationNamingInterface
 {
-    public function generateFunctionName(Operation $operation)
+    public function getFunctionName(Operation $operation): string
+    {
+        return Inflector::camelize($this->getUniqueName($operation));
+    }
+
+
+    public function getEndpointName(Operation $operation): string
+    {
+        return Inflector::classify($this->getUniqueName($operation));
+    }
+
+    private function getUniqueName(Operation $operation): string
     {
         $prefix = strtolower($operation->getMethod());
-
         $shouldSingularize = true;
-
         $responses = $operation->getOperation()->getResponses();
 
         if ($responses instanceof \ArrayObject && isset($responses[200])) {

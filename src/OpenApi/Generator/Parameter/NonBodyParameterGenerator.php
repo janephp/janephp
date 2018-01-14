@@ -13,14 +13,14 @@ use PhpParser\Node\Expr;
 use PhpParser\Node\Scalar;
 use Psr\Http\Message\StreamInterface;
 
-abstract class NonBodyParameterGenerator extends ParameterGenerator
+class NonBodyParameterGenerator extends ParameterGenerator
 {
     /**
      * {@inheritdoc}
      *
      * @param $parameter PathParameterSubSchema|HeaderParameterSubSchema|FormDataParameterSubSchema|QueryParameterSubSchema
      */
-    public function generateMethodParameter($parameter, Context $context, $reference)
+    public function generateMethodParameter($parameter, Context $context, $reference): Node\Param
     {
         $name = Inflector::camelize($parameter->getName());
         $methodParameter = new Node\Param($name);
@@ -38,42 +38,78 @@ abstract class NonBodyParameterGenerator extends ParameterGenerator
         return $methodParameter;
     }
 
-    abstract public function generateInputParamStatements($parameter, Expr $inputParamVariable): array;
+    /**
+     * @param $parameters PathParameterSubSchema[]|HeaderParameterSubSchema[]|FormDataParameterSubSchema[]|QueryParameterSubSchema[]
+     *
+     * @return array
+     */
+    public function generateOptionsResolverStatements(Expr\Variable $optionsResolverVariable, $parameters): array
+    {
+        $required = [];
+        $allowedTypes = [];
+        $defined = [];
+        $defaults = [];
+
+        foreach ($parameters as $parameter) {
+            $defined[] = new Expr\ArrayItem(new Scalar\String_($parameter->getName()));
+
+            if ($parameter->getRequired() && null === $parameter->getDefault()) {
+                $required[] = new Expr\ArrayItem(new Scalar\String_($parameter->getName()));
+            }
+
+            if ($parameter->getType()) {
+                $types = [];
+
+                foreach ($this->convertParameterType($parameter->getType()) as $typeString) {
+                    $types[] = new Expr\ArrayItem(new Scalar\String_($typeString));
+                }
+
+                $allowedTypes[] = new Expr\MethodCall($optionsResolverVariable, 'setAllowedTypes', [
+                    new Node\Arg(new Scalar\String_($parameter->getName())),
+                    new Node\Arg(new Expr\Array_($types)),
+                ]);
+            }
+
+            if (!$parameter->getRequired() && null !== $parameter->getDefault()) {
+                $defaults[] = new Expr\ArrayItem($this->getDefaultAsExpr($parameter), new Scalar\String_($parameter->getName()));
+            }
+        }
+
+        return array_merge([
+            new Expr\MethodCall($optionsResolverVariable, 'setDefined', [
+                new Node\Arg(new Expr\Array_($defined))
+            ]),
+            new Expr\MethodCall($optionsResolverVariable, 'setRequired', [
+                new Node\Arg(new Expr\Array_($required))
+            ]),
+            new Expr\MethodCall($optionsResolverVariable, 'setDefaults', [
+                new Node\Arg(new Expr\Array_($defaults))
+            ])
+        ], $allowedTypes);
+    }
 
     /**
      * {@inheritdoc}
      *
      * @param $parameter PathParameterSubSchema|HeaderParameterSubSchema|FormDataParameterSubSchema|QueryParameterSubSchema
      */
-    protected function generateInputParamArguments($parameter): array
+    public function generateMethodDocParameter($parameter, Context $context, $reference)
     {
-        $arguments = [
-            new Node\Arg(new Scalar\String_($parameter->getName())),
-        ];
+        $type = implode('|', $this->convertParameterType($parameter->getType()));
 
-        if ($parameter->getRequired() && null === $parameter->getDefault()) {
-            $arguments[] = new Node\Arg(new Expr\ConstFetch(new Node\Name('true')));
-        } else {
-            $arguments[] = new Node\Arg(new Expr\ConstFetch(new Node\Name('false')));
-        }
+        return sprintf(' * @param %s $%s %s', $type, Inflector::camelize($parameter->getName()), $parameter->getDescription() ?: '');
+    }
 
-        if ($parameter->getType()) {
-            $types = [];
+    /**
+     * @param $parameter PathParameterSubSchema|HeaderParameterSubSchema|FormDataParameterSubSchema|QueryParameterSubSchema
+     *
+     * @return string
+     */
+    public function generateOptionDocParameter($parameter)
+    {
+        $type = implode('|', $this->convertParameterType($parameter->getType()));
 
-            foreach ($this->convertParameterType($parameter->getType()) as $typeString) {
-                $types[] = new Scalar\String_($typeString);
-            }
-
-            $arguments[] = new Node\Arg(new Expr\Array_($types));
-        } else {
-            $arguments[] = new Node\Arg(new Expr\Array_());
-        }
-
-        if (!$parameter->getRequired() && null !== $parameter->getDefault()) {
-            $arguments[] = new Node\Arg($this->getDefaultAsExpr($parameter));
-        }
-
-        return $arguments;
+        return sprintf(' *     @var %s $%s %s', $type, $parameter->getName(), $parameter->getDescription() ?: '');
     }
 
     /**
@@ -83,36 +119,12 @@ abstract class NonBodyParameterGenerator extends ParameterGenerator
      *
      * @return Expr
      */
-    protected function getDefaultAsExpr($parameter)
+    private function getDefaultAsExpr($parameter)
     {
         return $this->parser->parse('<?php ' . var_export($parameter->getDefault(), true) . ';')[0];
     }
 
-    /**
-     * {@inheritdoc}
-     *
-     * @param $parameter PathParameterSubSchema|HeaderParameterSubSchema|FormDataParameterSubSchema|QueryParameterSubSchema
-     */
-    public function generateDocParameter($parameter, Context $context, $reference)
-    {
-        $type = implode('|', $this->convertParameterType($parameter->getType()));
-
-        return sprintf('%s $%s %s', $type, Inflector::camelize($parameter->getName()), $parameter->getDescription() ?: '');
-    }
-
-    /**
-     * @param $parameter PathParameterSubSchema|HeaderParameterSubSchema|FormDataParameterSubSchema|QueryParameterSubSchema
-     *
-     * @return string
-     */
-    public function generateInputDocParameter($parameter)
-    {
-        $type = implode('|', $this->convertParameterType($parameter->getType()));
-
-        return sprintf('@var %s $%s %s', $type, $parameter->getName(), $parameter->getDescription() ?: '');
-    }
-
-    public function convertParameterType($type)
+    private function convertParameterType($type)
     {
         $convertArray = [
             'string' => ['string'],
