@@ -30,12 +30,20 @@ abstract class OperationGenerator
 
     abstract protected function getEndpointCallName() : string;
 
+    abstract protected function getResponseClass() : string;
+
     public function createOperation($name, Operation $operation, Context $context): Stmt\ClassMethod
     {
         [$endpointName, $methodParams, $methodDoc, $returnDoc] = $this->endpointGenerator->createEndpointClass($operation, $context);
         $endpointArgs = [];
 
-        $documentation = $methodDoc . "\n * @param string \$fetch Fetch mode to use (can be OBJECT or RESPONSE)\n". $returnDoc;
+        $documentation =
+            $methodDoc .
+            "\n * @param string \$fetch Fetch mode to use (can be OBJECT or RESPONSE)\n" .
+            $returnDoc .
+            '|\\' . $this->getResponseClass() . "\n" .
+            ' */'
+        ;
 
         /** @var Param $param */
         foreach ($methodParams as $param) {

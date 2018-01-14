@@ -39,7 +39,7 @@ abstract class Psr7HttplugResource extends Resource
 
     public function executePsr7Endpoint(BaseEndpoint $endpoint, string $fetch = self::FETCH_OBJECT)
     {
-        [$bodyHeaders, $body] = $endpoint->getBody($this->streamFactory, $this->serializer);
+        [$bodyHeaders, $body] = $endpoint->getBody($this->serializer, $this->streamFactory);
         $request = $this->messageFactory->createRequest($endpoint->getMethod(), $endpoint->getUri(), $endpoint->getHeaders($bodyHeaders), $body);
         $response = $this->httpClient->sendRequest($request);
 

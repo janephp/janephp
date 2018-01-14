@@ -22,6 +22,11 @@ abstract class BaseEndpoint
 
     abstract public function transformResponseBody(string $body, int $status, SerializerInterface $serializer);
 
+    protected function getExtraHeaders(): array
+    {
+        return [];
+    }
+
     public function getQueryString(): string
     {
         return http_build_query($this->getQueryOptionsResolver()->resolve($this->queryParameters), null, '&', PHP_QUERY_RFC3986);
@@ -29,7 +34,7 @@ abstract class BaseEndpoint
 
     public function getHeaders($baseHeaders): array
     {
-        return array_merge($baseHeaders, $this->getHeadersOptionsResolver()->resolve($this->headerParameters));
+        return array_merge($this->getExtraHeaders(), $baseHeaders, $this->getHeadersOptionsResolver()->resolve($this->headerParameters));
     }
 
     protected function getFormBody(): array

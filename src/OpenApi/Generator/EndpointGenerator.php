@@ -10,6 +10,7 @@ use Jane\JsonSchemaRuntime\Reference;
 use Jane\OpenApi\Model\BodyParameter;
 use Jane\OpenApi\Model\FormDataParameterSubSchema;
 use Jane\OpenApi\Model\HeaderParameterSubSchema;
+use Jane\OpenApi\Model\OpenApi;
 use Jane\OpenApi\Model\PathParameterSubSchema;
 use Jane\OpenApi\Model\QueryParameterSubSchema;
 use Jane\OpenApi\Model\Response;
@@ -62,14 +63,14 @@ class EndpointGenerator
 
     public function createEndpointClass(Operation $operation, Context $context): array
     {
+        $openApi = $context->getCurrentSchema()->getParsed();
         $endpointName = $this->operationNaming->getEndpointName($operation);
 
         [$constructorMethod, $methodParams, $methodParamsDoc, $pathProperties] = $this->getConstructor($operation, $context);
         [$transformBodyMethod, $returnDoc] = $this->getTransformResponseBody($operation, $endpointName, $context);
         $class = new Stmt\Class_($endpointName, [
             'extends' => new Name\FullyQualified(BaseEndpoint::class),
-            'stmts' => array_merge($pathProperties, [
-                $constructorMethod,
+            'stmts' => array_merge($pathProperties, $constructorMethod === null ? [] : [$constructorMethod], [
                 $this->getGetMethod($operation),
                 $this->getGetUri($operation),
                 $this->getGetBody($operation),
@@ -77,9 +78,14 @@ class EndpointGenerator
             ])
         ]);
 
+        $extraHeadersMethod = $this->getExtraHeadersMethod($openApi, $operation);
         $queryResolverMethod = $this->getOptionsResolverMethod($operation, QueryParameterSubSchema::class, 'getQueryOptionsResolver');
         $formResolverMethod = $this->getOptionsResolverMethod($operation, FormDataParameterSubSchema::class, 'getFormOptionsResolver');
         $headerResolverMethod = $this->getOptionsResolverMethod($operation, HeaderParameterSubSchema::class, 'getHeadersOptionsResolver');
+
+        if ($extraHeadersMethod) {
+            $class->stmts[] = $extraHeadersMethod;
+        }
 
         if ($queryResolverMethod) {
             $class->stmts[] = $queryResolverMethod;
@@ -131,7 +137,7 @@ class EndpointGenerator
                 $pathParams[] = $this->nonBodyParameterGenerator->generateMethodParameter($parameter, $context, $operation->getReference() . '/parameters/' . $key);
                 $pathParamsDoc[] = $this->nonBodyParameterGenerator->generateMethodDocParameter($parameter, $context, $operation->getReference() . '/parameters/' . $key);
                 $methodStatements[] = new Expr\Assign(new Expr\PropertyFetch(new Expr\Variable('this'), Inflector::camelize($parameter->getName())), new Expr\Variable(Inflector::camelize($parameter->getName())));
-                $pathProperties[] = new Stmt\Property(0, [
+                $pathProperties[] = new Stmt\Property(Stmt\Class_::MODIFIER_PROTECTED, [
                     new Stmt\PropertyProperty(new Name($parameter->getName()))
                 ]);
             }
@@ -155,6 +161,19 @@ class EndpointGenerator
             }
         }
 
+        $methodStatements = array_merge(
+            $methodStatements,
+            $bodyAssign !== null ? [$bodyAssign] : [],
+            \count($queryParamsDoc) > 0 ? [new Expr\Assign(new Expr\PropertyFetch(new Expr\Variable('this'), 'queryParameters'), new Expr\Variable('queryParameters'))] : [],
+            \count($formParamsDoc) > 0 ? [new Expr\Assign(new Expr\PropertyFetch(new Expr\Variable('this'), 'formParameters'), new Expr\Variable('formParameters'))] : [],
+            \count($headerParamsDoc) > 0 ? [new Expr\Assign(new Expr\PropertyFetch(new Expr\Variable('this'), 'headerParameters'), new Expr\Variable('headerParameters'))] : []
+        );
+
+
+        if (\count($methodStatements) === 0) {
+            return [null, [], '/**', []];
+        }
+
         $methodParams = array_merge(
             $pathParams,
             $bodyParam ? [$bodyParam] : [],
@@ -169,14 +188,6 @@ class EndpointGenerator
             \count($queryParamsDoc) > 0 ? array_merge([' * @param array $queryParameters {'], $queryParamsDoc, [' * }']) : [],
             \count($formParamsDoc) > 0 ? array_merge([' * @param array $formParameters {'], $formParamsDoc, [' * }']) : [],
             \count($headerParamsDoc) > 0 ? array_merge([' * @param array $headerParameters {'], $headerParamsDoc, [' * }']) : []
-        );
-
-        $methodStatements = array_merge(
-            $methodStatements,
-            $bodyAssign !== null ? [$bodyAssign] : [],
-            \count($queryParamsDoc) > 0 ? [new Expr\Assign(new Expr\PropertyFetch(new Expr\Variable('this'), 'queryParameters'), new Expr\Variable('queryParameters'))] : [],
-            \count($formParamsDoc) > 0 ? [new Expr\Assign(new Expr\PropertyFetch(new Expr\Variable('this'), 'formParameters'), new Expr\Variable('formParameters'))] : [],
-            \count($headerParamsDoc) > 0 ? [new Expr\Assign(new Expr\PropertyFetch(new Expr\Variable('this'), 'headerParameters'), new Expr\Variable('headerParameters'))] : []
         );
 
         $methodParamsDoc = <<<EOD
@@ -245,6 +256,40 @@ EOD
         ]);
     }
 
+    private function getExtraHeadersMethod(OpenApi $openApi, Operation $operation): ?Stmt\ClassMethod
+    {
+        $headers = [];
+        $produces = array_merge(
+            $openApi->getProduces() ?? [],
+            $operation->getOperation()->getProduces() ?? []
+        );
+
+        // It's a server side specification, what it produces is what we potentially can accept
+        if (\in_array('application/json', $produces, true)) {
+            $headers[] = new Expr\ArrayItem(
+                new Expr\Array_(
+                    [
+                        new Expr\ArrayItem(
+                            new Scalar\String_('application/json')
+                        ),
+                    ]
+                ),
+                new Scalar\String_('Accept')
+            );
+        }
+
+        if (\count($headers) === 0) {
+            return null;
+        }
+
+        return new Stmt\ClassMethod('getExtraHeaders', [
+            'stmts' => [
+                new Stmt\Return_(new Expr\Array_($headers))
+            ],
+            'returnType' => new Name('array')
+        ]);
+    }
+
     private function getOptionsResolverMethod(Operation $operation, $class, $methodName): ?Stmt\ClassMethod
     {
         $parameters = [];
@@ -266,6 +311,7 @@ EOD
         $optionsResolverVariable = new Expr\Variable('optionsResolver');
 
         return new Stmt\ClassMethod($methodName, [
+            'type' => Stmt\Class_::MODIFIER_PROTECTED,
             'stmts' => array_merge(
                 [
                     new Expr\Assign($optionsResolverVariable, new Expr\StaticCall(new Name('parent'), $methodName))
@@ -352,17 +398,23 @@ EOD
 
         if ($hasBody) {
             $method->stmts = [
-                new Stmt\Return_(new Expr\PropertyFetch(
-                    new Expr\Variable('this'),
-                    'body'
-                ))
+                new Stmt\Return_(new Expr\Array_([
+                    new Expr\Array_(),
+                    new Expr\PropertyFetch(
+                        new Expr\Variable('this'),
+                        'body'
+                    )
+                ])),
             ];
 
             return $method;
         }
 
         $method->stmts = [
-            new Stmt\Return_(new Expr\ConstFetch(new Name('null')))
+            new Stmt\Return_(new Expr\Array_([
+                new Expr\Array_(),
+                new Expr\ConstFetch(new Name('null'))
+            ])),
         ];
 
         return $method;
@@ -405,14 +457,11 @@ EOD
             }
         }
 
-        $outputStatements[] = new Stmt\Return_(new Expr\ConstFetch(new Name('null')));
-
         $returnDoc = implode('', array_map(function ($value) {
                 return ' * @throws ' . $value . "\n";
             }, $throwTypes))
             . " *\n"
-            . ' * @return ' . implode('|', $outputTypes) . "\n"
-            . ' */'
+            . ' * @return ' . implode('|', $outputTypes);
         ;
 
         return [new Stmt\ClassMethod('transformResponseBody', [
@@ -429,7 +478,8 @@ EOD
  *
 
 EOD
-                . $returnDoc
+                . $returnDoc . "\n"
+                . ' */'
             )
         ]]), $returnDoc];
     }
@@ -461,12 +511,12 @@ EOD
 
         if (null !== $classGuess) {
             $class = $context->getRegistry()->getSchema($jsonReference)->getNamespace() . '\\Model\\' . $classGuess->getName();
-            $returnType = '\\' . $class;
 
             if ($array) {
                 $class .= '[]';
             }
 
+            $returnType = '\\' . $class;
             $serializeStmt = new Expr\MethodCall(
                 new Expr\Variable('serializer'),
                 'deserialize',
