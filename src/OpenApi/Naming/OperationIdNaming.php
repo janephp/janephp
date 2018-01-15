@@ -9,11 +9,11 @@ class OperationIdNaming implements OperationNamingInterface
 {
     public function getFunctionName(Operation $operation): string
     {
-        return Inflector::camelize($operation->getOperation()->getOperationId());
+        return Inflector::camelize((string) $operation->getOperation()->getOperationId());
     }
 
     public function getEndpointName(Operation $operation): string
     {
-        return Inflector::classify($operation->getOperation()->getOperationId());
+        return Inflector::classify((string) $operation->getOperation()->getOperationId());
     }
 }
