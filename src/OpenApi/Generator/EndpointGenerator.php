@@ -52,8 +52,7 @@ class EndpointGenerator
         Parameter\NonBodyParameterGenerator $nonBodyParameterGenerator,
         DenormalizerInterface $denormalizer,
         ExceptionGenerator $exceptionGenerator
-    )
-    {
+    ) {
         $this->operationNaming = $operationNaming;
         $this->bodyParameterGenerator = $bodyParameterGenerator;
         $this->nonBodyParameterGenerator = $nonBodyParameterGenerator;
@@ -75,7 +74,7 @@ class EndpointGenerator
                 $this->getGetUri($operation),
                 $this->getGetBody($operation),
                 $transformBodyMethod,
-            ])
+            ]),
         ]);
 
         $extraHeadersMethod = $this->getExtraHeadersMethod($openApi, $operation);
@@ -104,7 +103,7 @@ class EndpointGenerator
             new Stmt\Namespace_(
                 new Name($context->getCurrentSchema()->getNamespace() . '\\Endpoint'),
                 [
-                    $class
+                    $class,
                 ]
             ),
             'Endpoint'
@@ -138,7 +137,7 @@ class EndpointGenerator
                 $pathParamsDoc[] = $this->nonBodyParameterGenerator->generateMethodDocParameter($parameter, $context, $operation->getReference() . '/parameters/' . $key);
                 $methodStatements[] = new Expr\Assign(new Expr\PropertyFetch(new Expr\Variable('this'), Inflector::camelize($parameter->getName())), new Expr\Variable(Inflector::camelize($parameter->getName())));
                 $pathProperties[] = new Stmt\Property(Stmt\Class_::MODIFIER_PROTECTED, [
-                    new Stmt\PropertyProperty(new Name($parameter->getName()))
+                    new Stmt\PropertyProperty(new Name($parameter->getName())),
                 ]);
             }
 
@@ -168,7 +167,6 @@ class EndpointGenerator
             \count($formParamsDoc) > 0 ? [new Expr\Assign(new Expr\PropertyFetch(new Expr\Variable('this'), 'formParameters'), new Expr\Variable('formParameters'))] : [],
             \count($headerParamsDoc) > 0 ? [new Expr\Assign(new Expr\PropertyFetch(new Expr\Variable('this'), 'headerParameters'), new Expr\Variable('headerParameters'))] : []
         );
-
 
         if (\count($methodStatements) === 0) {
             return [null, [], '/**', []];
@@ -200,19 +198,19 @@ EOD
 
         return [new Stmt\ClassMethod('__construct', [
             'params' => $methodParams,
-            'stmts' => $methodStatements
+            'stmts' => $methodStatements,
         ], [
-            'comments' => [new Doc($methodParamsDoc . "\n */")
-        ]]), $methodParams, $methodParamsDoc, $pathProperties];
+            'comments' => [new Doc($methodParamsDoc . "\n */"),
+        ], ]), $methodParams, $methodParamsDoc, $pathProperties];
     }
 
     private function getGetMethod(Operation $operation): Stmt\ClassMethod
     {
         return new Stmt\ClassMethod('getMethod', [
             'stmts' => [
-                new Stmt\Return_(new Scalar\String_($operation->getMethod()))
+                new Stmt\Return_(new Scalar\String_($operation->getMethod())),
             ],
-            'returnType' => new Name('string')
+            'returnType' => new Name('string'),
         ]);
     }
 
@@ -234,9 +232,9 @@ EOD
         if (\count($names) === 0) {
             return new Stmt\ClassMethod('getUri', [
                 'stmts' => [
-                    new Stmt\Return_(new Scalar\String_($operation->getPath()))
+                    new Stmt\Return_(new Scalar\String_($operation->getPath())),
                 ],
-                'returnType' => new Name('string')
+                'returnType' => new Name('string'),
             ]);
         }
 
@@ -250,9 +248,9 @@ EOD
                         return new Expr\PropertyFetch(new Expr\Variable('this'), $name);
                     }, $names))),
                     new Arg(new Scalar\String_($operation->getPath())),
-                ]))
+                ])),
             ],
-            'returnType' => new Name('string')
+            'returnType' => new Name('string'),
         ]);
     }
 
@@ -284,9 +282,9 @@ EOD
 
         return new Stmt\ClassMethod('getExtraHeaders', [
             'stmts' => [
-                new Stmt\Return_(new Expr\Array_($headers))
+                new Stmt\Return_(new Expr\Array_($headers)),
             ],
-            'returnType' => new Name('array')
+            'returnType' => new Name('array'),
         ]);
     }
 
@@ -314,14 +312,14 @@ EOD
             'type' => Stmt\Class_::MODIFIER_PROTECTED,
             'stmts' => array_merge(
                 [
-                    new Expr\Assign($optionsResolverVariable, new Expr\StaticCall(new Name('parent'), $methodName))
+                    new Expr\Assign($optionsResolverVariable, new Expr\StaticCall(new Name('parent'), $methodName)),
                 ],
                 $this->nonBodyParameterGenerator->generateOptionsResolverStatements($optionsResolverVariable, $parameters),
                 [
-                    new Stmt\Return_($optionsResolverVariable)
+                    new Stmt\Return_($optionsResolverVariable),
                 ]
             ),
-            'returnType' => new Name\FullyQualified(OptionsResolver::class)
+            'returnType' => new Name\FullyQualified(OptionsResolver::class),
         ]);
     }
 
@@ -357,9 +355,9 @@ EOD
 
         $method = new Stmt\ClassMethod('getBody', [
             'params' => [
-                new Param('serializer', null , new Name\FullyQualified(SerializerInterface::class)),
+                new Param('serializer', null, new Name\FullyQualified(SerializerInterface::class)),
                 new Param('streamFactory', new Expr\ConstFetch(new Name('null')), new Name\FullyQualified(StreamFactory::class)),
-            ]
+            ],
         ]);
 
         if ($isSerializableBody) {
@@ -368,9 +366,9 @@ EOD
                     new Expr\Variable('this'),
                     'getSerializedBody',
                     [
-                        new Arg(new Expr\Variable('serializer'))
+                        new Arg(new Expr\Variable('serializer')),
                     ]
-                ))
+                )),
             ];
 
             return $method;
@@ -382,9 +380,9 @@ EOD
                     new Expr\Variable('this'),
                     'getMultipartBody',
                     [
-                        new Arg(new Expr\Variable('streamFactory'))
+                        new Arg(new Expr\Variable('streamFactory')),
                     ]
-                ))
+                )),
             ];
 
             return $method;
@@ -395,7 +393,7 @@ EOD
                 new Stmt\Return_(new Expr\MethodCall(
                     new Expr\Variable('this'),
                     'getFormBody'
-                ))
+                )),
             ];
 
             return $method;
@@ -408,7 +406,7 @@ EOD
                     new Expr\PropertyFetch(
                         new Expr\Variable('this'),
                         'body'
-                    )
+                    ),
                 ])),
             ];
 
@@ -418,7 +416,7 @@ EOD
         $method->stmts = [
             new Stmt\Return_(new Expr\Array_([
                 new Expr\Array_(),
-                new Expr\ConstFetch(new Name('null'))
+                new Expr\ConstFetch(new Name('null')),
             ])),
         ];
 
@@ -465,17 +463,16 @@ EOD
         }
 
         $returnDoc = implode('', array_map(function ($value) {
-                return ' * @throws ' . $value . "\n";
-            }, $throwTypes))
+            return ' * @throws ' . $value . "\n";
+        }, $throwTypes))
             . " *\n"
             . ' * @return ' . implode('|', $outputTypes);
-        ;
 
         return [new Stmt\ClassMethod('transformResponseBody', [
             'params' => [
-                new Param('body', null , 'string'),
-                new Param('status', null , 'int'),
-                new Param('serializer', null , new Name\FullyQualified(SerializerInterface::class))
+                new Param('body', null, 'string'),
+                new Param('status', null, 'int'),
+                new Param('serializer', null, new Name\FullyQualified(SerializerInterface::class)),
             ],
             'stmts' => $outputStatements,
         ], [
@@ -487,8 +484,8 @@ EOD
 EOD
                 . $returnDoc . "\n"
                 . ' */'
-            )
-        ]]), $returnDoc];
+            ),
+        ], ]), $returnDoc];
     }
 
     private function createResponseDenormalizationStatement(string $name, string $status, $schema, Context $context, string $reference, string $description)

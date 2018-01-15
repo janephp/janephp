@@ -6,7 +6,6 @@ use Amp\Artax\Client;
 use Amp\Artax\Request;
 use Amp\Artax\Response;
 use function Amp\call;
-use Amp\CancellationToken;
 use Amp\Promise;
 use Symfony\Component\Serializer\SerializerInterface;
 
@@ -30,7 +29,7 @@ abstract class AmpArtaxResource extends Resource
 
     public function executeArtaxEndpoint(BaseEndpoint $endpoint, string $fetch = self::FETCH_OBJECT): Promise
     {
-        return call(function () use($endpoint, $fetch) {
+        return call(function () use ($endpoint, $fetch) {
             [$bodyHeaders, $body] = $endpoint->getBody($this->serializer);
             $request = new Request($endpoint->getUri() . '?' . $endpoint->getQueryString(), $endpoint->getMethod());
             $request = $request->withBody($body);

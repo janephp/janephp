@@ -77,14 +77,14 @@ class NonBodyParameterGenerator extends ParameterGenerator
 
         return array_merge([
             new Expr\MethodCall($optionsResolverVariable, 'setDefined', [
-                new Node\Arg(new Expr\Array_($defined))
+                new Node\Arg(new Expr\Array_($defined)),
             ]),
             new Expr\MethodCall($optionsResolverVariable, 'setRequired', [
-                new Node\Arg(new Expr\Array_($required))
+                new Node\Arg(new Expr\Array_($required)),
             ]),
             new Expr\MethodCall($optionsResolverVariable, 'setDefaults', [
-                new Node\Arg(new Expr\Array_($defaults))
-            ])
+                new Node\Arg(new Expr\Array_($defaults)),
+            ]),
         ], $allowedTypes);
     }
 

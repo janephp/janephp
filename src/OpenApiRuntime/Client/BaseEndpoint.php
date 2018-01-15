@@ -41,7 +41,7 @@ abstract class BaseEndpoint
     {
         return [
             ['Content-Type' => ['application/x-www-form-urlencoded']],
-            http_build_query($this->getFormOptionsResolver()->resolve($this->formParameters))
+            http_build_query($this->getFormOptionsResolver()->resolve($this->formParameters)),
         ];
     }
 
@@ -56,7 +56,7 @@ abstract class BaseEndpoint
 
         return [
             ['Content-Type' => ['multipart/form-data; boundary="' . ($bodyBuilder->getBoundary() . '"')]],
-            $bodyBuilder->build()
+            $bodyBuilder->build(),
         ];
     }
 
@@ -64,7 +64,7 @@ abstract class BaseEndpoint
     {
         return [
             ['Content-Type' => ['application/json']],
-            $serializer->serialize($this->body, 'json')
+            $serializer->serialize($this->body, 'json'),
         ];
     }
 

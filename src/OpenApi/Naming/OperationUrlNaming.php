@@ -14,7 +14,6 @@ class OperationUrlNaming implements OperationNamingInterface
         return Inflector::camelize($this->getUniqueName($operation));
     }
 
-
     public function getEndpointName(Operation $operation): string
     {
         return Inflector::classify($this->getUniqueName($operation));

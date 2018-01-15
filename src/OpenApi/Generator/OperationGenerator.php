@@ -4,12 +4,6 @@ namespace Jane\OpenApi\Generator;
 
 use Jane\JsonSchema\Generator\Context\Context;
 use Jane\OpenApi\Model\Response;
-use Jane\JsonSchemaRuntime\Reference;
-use Jane\OpenApi\Generator\Parameter\BodyParameterGenerator;
-use Jane\OpenApi\Generator\Parameter\FormDataParameterGenerator;
-use Jane\OpenApi\Generator\Parameter\HeaderParameterGenerator;
-use Jane\OpenApi\Generator\Parameter\PathParameterGenerator;
-use Jane\OpenApi\Generator\Parameter\QueryParameterGenerator;
 use Jane\OpenApi\Operation\Operation;
 use PhpParser\Node\Arg;
 use PhpParser\Node\Expr;
@@ -17,7 +11,6 @@ use PhpParser\Node\Name;
 use PhpParser\Node\Param;
 use PhpParser\Node\Stmt;
 use PhpParser\Comment;
-use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 
 abstract class OperationGenerator
 {
@@ -28,9 +21,9 @@ abstract class OperationGenerator
         $this->endpointGenerator = $endpointGenerator;
     }
 
-    abstract protected function getEndpointCallName() : string;
+    abstract protected function getEndpointCallName(): string;
 
-    abstract protected function getResponseClass() : string;
+    abstract protected function getResponseClass(): string;
 
     public function createOperation($name, Operation $operation, Context $context): Stmt\ClassMethod
     {
@@ -59,11 +52,11 @@ abstract class OperationGenerator
                 new Expr\Assign(new Expr\Variable('endpoint'), new Expr\New_(new Name\FullyQualified($endpointName), $endpointArgs)),
                 new Stmt\Return_(new Expr\MethodCall(new Expr\Variable('this'), $this->getEndpointCallName(), [
                     new Arg(new Expr\Variable('endpoint')),
-                    new Arg(new Expr\Variable('fetch'))
-                ]))
+                    new Arg(new Expr\Variable('fetch')),
+                ])),
             ],
         ], [
-            'comments' => [new Comment\Doc($documentation)]
+            'comments' => [new Comment\Doc($documentation)],
         ]);
     }
 }
