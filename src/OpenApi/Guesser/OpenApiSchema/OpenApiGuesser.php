@@ -38,6 +38,12 @@ class OpenApiGuesser implements GuesserInterface, ClassGuesserInterface, ChainGu
             }
         }
 
+        if ($object->getResponses()) {
+            foreach ($object->getResponses() as $responseName => $response) {
+                $this->chainGuesser->guessClass($response->getSchema(), 'Response' . ucfirst($responseName), $reference . '/responses/' . $responseName, $registry);
+            }
+        }
+
         if ($object->getPaths()) {
             foreach ($object->getPaths() as $pathName => $path) {
                 if ($path instanceof PathItem) {

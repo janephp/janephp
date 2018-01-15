@@ -333,10 +333,15 @@ EOD
         $hasFileInForm = false;
 
         foreach ($operation->getParameters() as $parameter) {
-            if ($parameter instanceof BodyParameter) {
+            if ($parameter instanceof BodyParameter && $parameter->getSchema() !== null) {
                 $hasBody = true;
+                $schema = $parameter->getSchema();
 
-                if ($parameter->getSchema() !== null) {
+                if ($schema instanceof Reference) {
+                    [$_, $schema] = $this->resolve($schema, Schema::class);
+                }
+
+                if ($schema->getType() !== 'file') {
                     $isSerializableBody = true;
                 }
             }
@@ -428,8 +433,10 @@ EOD
 
         if ($operation->getOperation()->getResponses()) {
             foreach ($operation->getOperation()->getResponses() as $status => $response) {
+                $reference = $operation->getReference() . '/responses/' . $status;
+
                 if ($response instanceof Reference) {
-                    [$_, $response] = $this->resolve($response, Response::class);
+                    [$reference, $response] = $this->resolve($response, Response::class);
                 }
 
                 /* @var Response $response */
@@ -439,7 +446,7 @@ EOD
                     $status,
                     $response->getSchema(),
                     $context,
-                    $operation->getReference() . '/responses/' . $status,
+                    $reference,
                     $response->getDescription()
                 );
 

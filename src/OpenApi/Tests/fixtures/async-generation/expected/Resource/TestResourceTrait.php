@@ -10,99 +10,48 @@ declare(strict_types=1);
 
 namespace Jane\OpenApi\Tests\Expected\Resource;
 
-use Jane\OpenApiRuntime\Client\QueryParam;
-
 trait TestResourceTrait
 {
     /**
-     * @param array  $parameters List of parameters
-     * @param string $fetch      Fetch mode (object or response)
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @throws \Jane\OpenApi\Tests\Expected\Exception\GetTestBadRequestException
      * @throws \Jane\OpenApi\Tests\Expected\Exception\GetTestNotFoundException
      *
-     * @return \Psr\Http\Message\ResponseInterface|\Jane\OpenApi\Tests\Expected\Model\Schema
+     * @return null|\Jane\OpenApi\Tests\Expected\Model\Schema|\Psr\Http\Message\ResponseInterface
      */
-    public function getTest(array $parameters = [], string $fetch = self::FETCH_OBJECT)
+    public function getTest(string $fetch = self::FETCH_OBJECT)
     {
-        $queryParam = new QueryParam($this->streamFactory);
-        $url = '/test';
-        $url = $url . ('?' . $queryParam->buildQueryString($parameters));
-        $headers = $queryParam->buildHeaders($parameters);
-        $body = $queryParam->buildFormDataString($parameters);
-        $request = $this->messageFactory->createRequest('GET', $url, $headers, $body);
-        $response = $this->httpClient->sendRequest($request);
-        if (self::FETCH_OBJECT === $fetch) {
-            if (200 === $response->getStatusCode()) {
-                return $this->serializer->deserialize((string) $response->getBody(), 'Jane\\OpenApi\\Tests\\Expected\\Model\\Schema', 'json');
-            }
-            if (400 === $response->getStatusCode()) {
-                throw new \Jane\OpenApi\Tests\Expected\Exception\GetTestBadRequestException($this->serializer->deserialize((string) $response->getBody(), 'Jane\\OpenApi\\Tests\\Expected\\Model\\Error', 'json'));
-            }
-            if (404 === $response->getStatusCode()) {
-                throw new \Jane\OpenApi\Tests\Expected\Exception\GetTestNotFoundException($this->serializer->deserialize((string) $response->getBody(), 'Jane\\OpenApi\\Tests\\Expected\\Model\\Error', 'json'));
-            }
-        }
+        $endpoint = new \Jane\OpenApi\Tests\Expected\Endpoint\GetTest();
 
-        return $response;
+        return $this->executePsr7Endpoint($endpoint, $fetch);
     }
 
     /**
-     * @param int    $id         id
-     * @param array  $parameters List of parameters
-     * @param string $fetch      Fetch mode (object or response)
+     * @param int    $id    id
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @throws \Jane\OpenApi\Tests\Expected\Exception\GetTestByIdBadRequestException
      * @throws \Jane\OpenApi\Tests\Expected\Exception\GetTestByIdNotFoundException
      *
-     * @return \Psr\Http\Message\ResponseInterface|\Jane\OpenApi\Tests\Expected\Model\TestIdGetResponse200
+     * @return null|\Jane\OpenApi\Tests\Expected\Model\TestIdGetResponse200|\Psr\Http\Message\ResponseInterface
      */
-    public function getTestById(int $id, array $parameters = [], string $fetch = self::FETCH_OBJECT)
+    public function getTestById(int $id, string $fetch = self::FETCH_OBJECT)
     {
-        $queryParam = new QueryParam($this->streamFactory);
-        $url = '/test/{id}';
-        $url = str_replace('{id}', urlencode($id), $url);
-        $url = $url . ('?' . $queryParam->buildQueryString($parameters));
-        $headers = $queryParam->buildHeaders($parameters);
-        $body = $queryParam->buildFormDataString($parameters);
-        $request = $this->messageFactory->createRequest('GET', $url, $headers, $body);
-        $response = $this->httpClient->sendRequest($request);
-        if (self::FETCH_OBJECT === $fetch) {
-            if (200 === $response->getStatusCode()) {
-                return $this->serializer->deserialize((string) $response->getBody(), 'Jane\\OpenApi\\Tests\\Expected\\Model\\TestIdGetResponse200', 'json');
-            }
-            if (400 === $response->getStatusCode()) {
-                throw new \Jane\OpenApi\Tests\Expected\Exception\GetTestByIdBadRequestException($this->serializer->deserialize((string) $response->getBody(), 'Jane\\OpenApi\\Tests\\Expected\\Model\\Error', 'json'));
-            }
-            if (404 === $response->getStatusCode()) {
-                throw new \Jane\OpenApi\Tests\Expected\Exception\GetTestByIdNotFoundException($this->serializer->deserialize((string) $response->getBody(), 'Jane\\OpenApi\\Tests\\Expected\\Model\\Error', 'json'));
-            }
-        }
+        $endpoint = new \Jane\OpenApi\Tests\Expected\Endpoint\GetTestById($id);
 
-        return $response;
+        return $this->executePsr7Endpoint($endpoint, $fetch);
     }
 
     /**
-     * @param array  $parameters List of parameters
-     * @param string $fetch      Fetch mode (object or response)
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Psr\Http\Message\ResponseInterface|\Jane\OpenApi\Tests\Expected\Model\Schema
+     * @return null|\Jane\OpenApi\Tests\Expected\Model\Schema[]|\Psr\Http\Message\ResponseInterface
      */
-    public function getTestList(array $parameters = [], string $fetch = self::FETCH_OBJECT)
+    public function getTestList(string $fetch = self::FETCH_OBJECT)
     {
-        $queryParam = new QueryParam($this->streamFactory);
-        $url = '/test-list';
-        $url = $url . ('?' . $queryParam->buildQueryString($parameters));
-        $headers = $queryParam->buildHeaders($parameters);
-        $body = $queryParam->buildFormDataString($parameters);
-        $request = $this->messageFactory->createRequest('GET', $url, $headers, $body);
-        $response = $this->httpClient->sendRequest($request);
-        if (self::FETCH_OBJECT === $fetch) {
-            if (200 === $response->getStatusCode()) {
-                return $this->serializer->deserialize((string) $response->getBody(), 'Jane\\OpenApi\\Tests\\Expected\\Model\\Schema[]', 'json');
-            }
-        }
+        $endpoint = new \Jane\OpenApi\Tests\Expected\Endpoint\GetTestList();
 
-        return $response;
+        return $this->executePsr7Endpoint($endpoint, $fetch);
     }
 }
