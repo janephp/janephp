@@ -10,114 +10,48 @@ declare(strict_types=1);
 
 namespace Jane\OpenApi\Tests\Expected\Resource;
 
-use Jane\OpenApiRuntime\Client\QueryParam;
-
 trait TestAsyncResourceTrait
 {
     /**
-     * @param array                  $parameters        List of parameters
-     * @param string                 $fetch             Fetch mode (object or response)
-     * @param \Amp\CancellationToken $cancellationToken Token to cancel the request
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @throws \Jane\OpenApi\Tests\Expected\Exception\GetTestBadRequestException
      * @throws \Jane\OpenApi\Tests\Expected\Exception\GetTestNotFoundException
      *
-     * @return \Amp\Promise<\Amp\Artax\Response|\Jane\OpenApi\Tests\Expected\Model\Schema>
+     * @return null|\Jane\OpenApi\Tests\Expected\Model\Schema|\Amp\Artax\Response
      */
-    public function getTest(array $parameters = [], string $fetch = self::FETCH_OBJECT, \Amp\CancellationToken $cancellationToken = null): \Amp\Promise
+    public function getTest(string $fetch = self::FETCH_OBJECT)
     {
-        return \Amp\call(function () use ($parameters, $fetch, $cancellationToken) {
-            $queryParam = new QueryParam();
-            $url = '/test';
-            $url = $url . ('?' . $queryParam->buildQueryString($parameters));
-            $headers = $queryParam->buildHeaders($parameters);
-            $body = $queryParam->buildFormDataString($parameters);
-            $request = new \Amp\Artax\Request($url, 'GET');
-            $request = $request->withHeaders($headers);
-            $request = $request->withBody($body);
-            $response = (yield $this->httpClient->request($request, [], $cancellationToken));
-            if (self::FETCH_OBJECT === $fetch) {
-                if (200 === $response->getStatus()) {
-                    return $this->serializer->deserialize((yield $response->getBody()), 'Jane\\OpenApi\\Tests\\Expected\\Model\\Schema', 'json');
-                }
-                if (400 === $response->getStatus()) {
-                    throw new \Jane\OpenApi\Tests\Expected\Exception\GetTestBadRequestException($this->serializer->deserialize((yield $response->getBody()), 'Jane\\OpenApi\\Tests\\Expected\\Model\\Error', 'json'));
-                }
-                if (404 === $response->getStatus()) {
-                    throw new \Jane\OpenApi\Tests\Expected\Exception\GetTestNotFoundException($this->serializer->deserialize((yield $response->getBody()), 'Jane\\OpenApi\\Tests\\Expected\\Model\\Error', 'json'));
-                }
-            }
+        $endpoint = new \Jane\OpenApi\Tests\Expected\Endpoint\GetTest();
 
-            return $response;
-        });
+        return $this->executeArtaxEndpoint($endpoint, $fetch);
     }
 
     /**
-     * @param int                    $id                id
-     * @param array                  $parameters        List of parameters
-     * @param string                 $fetch             Fetch mode (object or response)
-     * @param \Amp\CancellationToken $cancellationToken Token to cancel the request
+     * @param int    $id    id
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @throws \Jane\OpenApi\Tests\Expected\Exception\GetTestByIdBadRequestException
      * @throws \Jane\OpenApi\Tests\Expected\Exception\GetTestByIdNotFoundException
      *
-     * @return \Amp\Promise<\Amp\Artax\Response|\Jane\OpenApi\Tests\Expected\Model\TestIdGetResponse200>
+     * @return null|\Jane\OpenApi\Tests\Expected\Model\TestIdGetResponse200|\Amp\Artax\Response
      */
-    public function getTestById(int $id, array $parameters = [], string $fetch = self::FETCH_OBJECT, \Amp\CancellationToken $cancellationToken = null): \Amp\Promise
+    public function getTestById(int $id, string $fetch = self::FETCH_OBJECT)
     {
-        return \Amp\call(function () use ($id, $parameters, $fetch, $cancellationToken) {
-            $queryParam = new QueryParam();
-            $url = '/test/{id}';
-            $url = str_replace('{id}', urlencode($id), $url);
-            $url = $url . ('?' . $queryParam->buildQueryString($parameters));
-            $headers = $queryParam->buildHeaders($parameters);
-            $body = $queryParam->buildFormDataString($parameters);
-            $request = new \Amp\Artax\Request($url, 'GET');
-            $request = $request->withHeaders($headers);
-            $request = $request->withBody($body);
-            $response = (yield $this->httpClient->request($request, [], $cancellationToken));
-            if (self::FETCH_OBJECT === $fetch) {
-                if (200 === $response->getStatus()) {
-                    return $this->serializer->deserialize((yield $response->getBody()), 'Jane\\OpenApi\\Tests\\Expected\\Model\\TestIdGetResponse200', 'json');
-                }
-                if (400 === $response->getStatus()) {
-                    throw new \Jane\OpenApi\Tests\Expected\Exception\GetTestByIdBadRequestException($this->serializer->deserialize((yield $response->getBody()), 'Jane\\OpenApi\\Tests\\Expected\\Model\\Error', 'json'));
-                }
-                if (404 === $response->getStatus()) {
-                    throw new \Jane\OpenApi\Tests\Expected\Exception\GetTestByIdNotFoundException($this->serializer->deserialize((yield $response->getBody()), 'Jane\\OpenApi\\Tests\\Expected\\Model\\Error', 'json'));
-                }
-            }
+        $endpoint = new \Jane\OpenApi\Tests\Expected\Endpoint\GetTestById($id);
 
-            return $response;
-        });
+        return $this->executeArtaxEndpoint($endpoint, $fetch);
     }
 
     /**
-     * @param array                  $parameters        List of parameters
-     * @param string                 $fetch             Fetch mode (object or response)
-     * @param \Amp\CancellationToken $cancellationToken Token to cancel the request
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Amp\Promise<\Amp\Artax\Response|\Jane\OpenApi\Tests\Expected\Model\Schema>
+     * @return null|\Jane\OpenApi\Tests\Expected\Model\Schema[]|\Amp\Artax\Response
      */
-    public function getTestList(array $parameters = [], string $fetch = self::FETCH_OBJECT, \Amp\CancellationToken $cancellationToken = null): \Amp\Promise
+    public function getTestList(string $fetch = self::FETCH_OBJECT)
     {
-        return \Amp\call(function () use ($parameters, $fetch, $cancellationToken) {
-            $queryParam = new QueryParam();
-            $url = '/test-list';
-            $url = $url . ('?' . $queryParam->buildQueryString($parameters));
-            $headers = $queryParam->buildHeaders($parameters);
-            $body = $queryParam->buildFormDataString($parameters);
-            $request = new \Amp\Artax\Request($url, 'GET');
-            $request = $request->withHeaders($headers);
-            $request = $request->withBody($body);
-            $response = (yield $this->httpClient->request($request, [], $cancellationToken));
-            if (self::FETCH_OBJECT === $fetch) {
-                if (200 === $response->getStatus()) {
-                    return $this->serializer->deserialize((yield $response->getBody()), 'Jane\\OpenApi\\Tests\\Expected\\Model\\Schema[]', 'json');
-                }
-            }
+        $endpoint = new \Jane\OpenApi\Tests\Expected\Endpoint\GetTestList();
 
-            return $response;
-        });
+        return $this->executeArtaxEndpoint($endpoint, $fetch);
     }
 }

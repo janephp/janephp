@@ -19,16 +19,29 @@ class ChainOperationNaming implements OperationNamingInterface
         $this->operationNamings = $operationNamings;
     }
 
-    public function generateFunctionName(Operation $operation)
+    public function getFunctionName(Operation $operation): string
     {
         foreach ($this->operationNamings as $operationNaming) {
-            $functionName = $operationNaming->generateFunctionName($operation);
+            $functionName = $operationNaming->getFunctionName($operation);
 
             if (!empty($functionName)) {
                 return $functionName;
             }
         }
 
-        return '';
+        throw new \RuntimeException('Cannot generate function name');
+    }
+
+    public function getEndpointName(Operation $operation): string
+    {
+        foreach ($this->operationNamings as $operationNaming) {
+            $functionName = $operationNaming->getEndpointName($operation);
+
+            if (!empty($functionName)) {
+                return $functionName;
+            }
+        }
+
+        throw new \RuntimeException('Cannot generate endpoint name');
     }
 }

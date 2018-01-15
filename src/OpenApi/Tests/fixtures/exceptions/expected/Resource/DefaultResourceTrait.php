@@ -10,41 +10,21 @@ declare(strict_types=1);
 
 namespace Jane\OpenApi\Tests\Expected\Resource;
 
-use Jane\OpenApiRuntime\Client\QueryParam;
-
 trait DefaultResourceTrait
 {
     /**
-     * @param array  $parameters List of parameters
-     * @param string $fetch      Fetch mode (object or response)
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @throws \Jane\OpenApi\Tests\Expected\Exception\TestNoTagBadRequestException
      * @throws \Jane\OpenApi\Tests\Expected\Exception\TestNoTagNotFoundException
      * @throws \Jane\OpenApi\Tests\Expected\Exception\TestNoTagInternalServerErrorException
      *
-     * @return \Psr\Http\Message\ResponseInterface
+     * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function testNoTag(array $parameters = [], string $fetch = self::FETCH_OBJECT)
+    public function testNoTag(string $fetch = self::FETCH_OBJECT)
     {
-        $queryParam = new QueryParam($this->streamFactory);
-        $url = '/test-exception';
-        $url = $url . ('?' . $queryParam->buildQueryString($parameters));
-        $headers = $queryParam->buildHeaders($parameters);
-        $body = $queryParam->buildFormDataString($parameters);
-        $request = $this->messageFactory->createRequest('GET', $url, $headers, $body);
-        $response = $this->httpClient->sendRequest($request);
-        if (self::FETCH_OBJECT === $fetch) {
-            if (400 === $response->getStatusCode()) {
-                throw new \Jane\OpenApi\Tests\Expected\Exception\TestNoTagBadRequestException($this->serializer->deserialize((string) $response->getBody(), 'Jane\\OpenApi\\Tests\\Expected\\Model\\Error', 'json'));
-            }
-            if (404 === $response->getStatusCode()) {
-                throw new \Jane\OpenApi\Tests\Expected\Exception\TestNoTagNotFoundException();
-            }
-            if (500 === $response->getStatusCode()) {
-                throw new \Jane\OpenApi\Tests\Expected\Exception\TestNoTagInternalServerErrorException();
-            }
-        }
+        $endpoint = new \Jane\OpenApi\Tests\Expected\Endpoint\TestNoTag();
 
-        return $response;
+        return $this->executePsr7Endpoint($endpoint, $fetch);
     }
 }

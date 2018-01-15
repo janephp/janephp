@@ -9,6 +9,7 @@ use Jane\OpenApi\Model\BodyParameter;
 use Jane\OpenApi\Model\Schema;
 use PhpParser\Node;
 use PhpParser\Parser;
+use Psr\Http\Message\StreamInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 
 class BodyParameterGenerator extends ParameterGenerator
@@ -35,16 +36,13 @@ class BodyParameterGenerator extends ParameterGenerator
         $name = Inflector::camelize($parameter->getName());
 
         list($class, $array) = $this->getClass($parameter, $context, $reference);
+        $paramType = \count($class) === 1 ? $class[0] : null;
 
-        if (null === $array || true === $array) {
-            if ('array' == $class) {
-                return new Node\Param($name, null, 'array');
-            }
-
-            return new Node\Param($name);
+        if ($array) {
+            $paramType = 'array';
         }
 
-        return new Node\Param($name, null, $class);
+        return new Node\Param($name, null, $paramType);
     }
 
     /**
@@ -52,15 +50,11 @@ class BodyParameterGenerator extends ParameterGenerator
      *
      * @param $parameter BodyParameter
      */
-    public function generateDocParameter($parameter, Context $context, $reference)
+    public function generateMethodDocParameter($parameter, Context $context, $reference)
     {
         list($class, $array) = $this->getClass($parameter, $context, $reference);
 
-        if (null === $class) {
-            return sprintf('%s $%s %s', 'mixed', Inflector::camelize($parameter->getName()), $parameter->getDescription() ?: '');
-        }
-
-        return sprintf('%s $%s %s', $class, Inflector::camelize($parameter->getName()), $parameter->getDescription() ?: '');
+        return sprintf(' * @param %s $%s %s', implode('|', $class), Inflector::camelize($parameter->getName()), $parameter->getDescription() ?: '');
     }
 
     /**
@@ -80,24 +74,24 @@ class BodyParameterGenerator extends ParameterGenerator
             list($jsonReference, $resolvedSchema) = $this->resolveSchema($schema, Schema::class);
         }
 
-        if ($schema instanceof Schema && 'array' == $schema->getType() && $schema->getItems() instanceof Reference) {
+        if ($schema instanceof Schema && 'array' === $schema->getType() && $schema->getItems() instanceof Reference) {
             list($jsonReference, $resolvedSchema) = $this->resolveSchema($schema->getItems(), Schema::class);
             $array = true;
         }
 
         if (null === $resolvedSchema) {
             if ($context->getRegistry()->hasClass($reference)) {
-                return ['\\' . $context->getRegistry()->getSchema($reference)->getNamespace() . '\\Model\\' . $context->getRegistry()->getClass($reference)->getName(), false];
+                return [['\\' . $context->getRegistry()->getSchema($reference)->getNamespace() . '\\Model\\' . $context->getRegistry()->getClass($reference)->getName()], false];
             }
 
-            return [$schema->getType(), null];
+            return [$this->convertParameterType($schema->getType()), null];
         }
 
         $class = $context->getRegistry()->getClass($jsonReference);
 
         // Happens when reference resolve to a none object
         if (null === $class) {
-            return [$schema->getType(), null];
+            return [$this->convertParameterType($schema->getType()), null];
         }
 
         $class = '\\' . $context->getRegistry()->getSchema($jsonReference)->getNamespace() . '\\Model\\' . $class->getName();
@@ -106,7 +100,22 @@ class BodyParameterGenerator extends ParameterGenerator
             $class .= '[]';
         }
 
-        return [$class, $array];
+        return [[$class], $array];
+    }
+
+    private function convertParameterType($type)
+    {
+        $convertArray = [
+            'string' => ['string'],
+            'number' => ['float'],
+            'boolean' => ['bool'],
+            'integer' => ['int'],
+            'array' => ['array'],
+            'object' => ['\\stdClass'],
+            'file' => ['string', 'resource', '\\' . StreamInterface::class],
+        ];
+
+        return $convertArray[$type] ?? ['mixed'];
     }
 
     /**

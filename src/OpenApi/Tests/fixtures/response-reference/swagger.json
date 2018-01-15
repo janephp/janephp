@@ -1,8 +1,14 @@
 {
     "swagger": "2.0",
     "responses": {
-        "200": {
-            "description": "no error"
+        "common": {
+            "description": "no error",
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "foo": { "type": "string" }
+                }
+            }
         }
     },
     "definitions": {
@@ -19,7 +25,7 @@
                 "operationId": "Test Reference Response",
                 "responses": {
                     "200": {
-                        "$ref": "#/responses/200"
+                        "$ref": "#/responses/common"
                     }
                 },
                 "tags": [

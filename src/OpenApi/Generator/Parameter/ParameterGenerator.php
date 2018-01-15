@@ -13,12 +13,9 @@ abstract class ParameterGenerator
      */
     protected $parser;
 
-    protected $async;
-
-    public function __construct(Parser $parser, $async = false)
+    public function __construct(Parser $parser)
     {
         $this->parser = $parser;
-        $this->async = $async;
     }
 
     /**
@@ -38,7 +35,7 @@ abstract class ParameterGenerator
      *
      * @return string
      */
-    public function generateDocParameter($parameter, Context $context, $reference)
+    public function generateMethodDocParameter($parameter, Context $context, $reference)
     {
         return '';
     }

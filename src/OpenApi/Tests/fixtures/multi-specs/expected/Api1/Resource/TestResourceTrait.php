@@ -10,31 +10,17 @@ declare(strict_types=1);
 
 namespace Jane\OpenApi\Tests\Expected\Api1\Resource;
 
-use Jane\OpenApiRuntime\Client\QueryParam;
-
 trait TestResourceTrait
 {
     /**
-     * @param array  $parameters List of parameters
-     * @param string $fetch      Fetch mode (object or response)
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Psr\Http\Message\ResponseInterface|\Jane\OpenApi\Tests\Expected\Api1\Model\Body
+     * @return null|\Jane\OpenApi\Tests\Expected\Api1\Model\Body|\Psr\Http\Message\ResponseInterface
      */
-    public function testReferenceResponse(array $parameters = [], string $fetch = self::FETCH_OBJECT)
+    public function testReferenceResponse(string $fetch = self::FETCH_OBJECT)
     {
-        $queryParam = new QueryParam($this->streamFactory);
-        $url = '/test-query';
-        $url = $url . ('?' . $queryParam->buildQueryString($parameters));
-        $headers = $queryParam->buildHeaders($parameters);
-        $body = $queryParam->buildFormDataString($parameters);
-        $request = $this->messageFactory->createRequest('GET', $url, $headers, $body);
-        $response = $this->httpClient->sendRequest($request);
-        if (self::FETCH_OBJECT === $fetch) {
-            if (200 === $response->getStatusCode()) {
-                return $this->serializer->deserialize((string) $response->getBody(), 'Jane\\OpenApi\\Tests\\Expected\\Api1\\Model\\Body', 'json');
-            }
-        }
+        $endpoint = new \Jane\OpenApi\Tests\Expected\Api1\Endpoint\TestReferenceResponse();
 
-        return $response;
+        return $this->executePsr7Endpoint($endpoint, $fetch);
     }
 }

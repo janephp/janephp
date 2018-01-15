@@ -10,82 +10,44 @@ declare(strict_types=1);
 
 namespace Jane\OpenApi\Tests\Expected\Resource;
 
-use Jane\OpenApiRuntime\Client\QueryParam;
-
 trait TestResourceTrait
 {
     /**
-     * @param string $testString
-     * @param array  $parameters List of parameters
-     * @param string $fetch      Fetch mode (object or response)
+     * @param string|resource|\Psr\Http\Message\StreamInterface $testString
+     * @param string                                            $fetch      Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Psr\Http\Message\ResponseInterface|null
+     * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function testSimpleBodyParameter($testString, array $parameters = [], string $fetch = self::FETCH_OBJECT)
+    public function testSimpleBodyParameter($testString, string $fetch = self::FETCH_OBJECT)
     {
-        $queryParam = new QueryParam($this->streamFactory);
-        $url = '/test-simple';
-        $url = $url . ('?' . $queryParam->buildQueryString($parameters));
-        $headers = array_merge(['Content-Type' => ['application/json']], $queryParam->buildHeaders($parameters));
-        $body = $testString;
-        $request = $this->messageFactory->createRequest('POST', $url, $headers, $body);
-        $response = $this->httpClient->sendRequest($request);
-        if (self::FETCH_OBJECT === $fetch) {
-            if (200 === $response->getStatusCode()) {
-                return null;
-            }
-        }
+        $endpoint = new \Jane\OpenApi\Tests\Expected\Endpoint\TestSimpleBodyParameter($testString);
 
-        return $response;
+        return $this->executePsr7Endpoint($endpoint, $fetch);
     }
 
     /**
      * @param \Jane\OpenApi\Tests\Expected\Model\Schema $testObject
-     * @param array                                     $parameters List of parameters
-     * @param string                                    $fetch      Fetch mode (object or response)
+     * @param string                                    $fetch      Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Psr\Http\Message\ResponseInterface|null
+     * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function testObjectBodyParameter(\Jane\OpenApi\Tests\Expected\Model\Schema $testObject, array $parameters = [], string $fetch = self::FETCH_OBJECT)
+    public function testObjectBodyParameter(\Jane\OpenApi\Tests\Expected\Model\Schema $testObject, string $fetch = self::FETCH_OBJECT)
     {
-        $queryParam = new QueryParam($this->streamFactory);
-        $url = '/test-object';
-        $url = $url . ('?' . $queryParam->buildQueryString($parameters));
-        $headers = array_merge(['Content-Type' => ['application/json']], $queryParam->buildHeaders($parameters));
-        $body = $this->serializer->serialize($testObject, 'json');
-        $request = $this->messageFactory->createRequest('POST', $url, $headers, $body);
-        $response = $this->httpClient->sendRequest($request);
-        if (self::FETCH_OBJECT === $fetch) {
-            if (200 === $response->getStatusCode()) {
-                return null;
-            }
-        }
+        $endpoint = new \Jane\OpenApi\Tests\Expected\Endpoint\TestObjectBodyParameter($testObject);
 
-        return $response;
+        return $this->executePsr7Endpoint($endpoint, $fetch);
     }
 
     /**
      * @param array  $testObjectList
-     * @param array  $parameters     List of parameters
-     * @param string $fetch          Fetch mode (object or response)
+     * @param string $fetch          Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Psr\Http\Message\ResponseInterface|null
+     * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function testObjectListBodyParameter(array $testObjectList, array $parameters = [], string $fetch = self::FETCH_OBJECT)
+    public function testObjectListBodyParameter(array $testObjectList, string $fetch = self::FETCH_OBJECT)
     {
-        $queryParam = new QueryParam($this->streamFactory);
-        $url = '/test-object-list';
-        $url = $url . ('?' . $queryParam->buildQueryString($parameters));
-        $headers = array_merge(['Content-Type' => ['application/json']], $queryParam->buildHeaders($parameters));
-        $body = $testObjectList;
-        $request = $this->messageFactory->createRequest('POST', $url, $headers, $body);
-        $response = $this->httpClient->sendRequest($request);
-        if (self::FETCH_OBJECT === $fetch) {
-            if (200 === $response->getStatusCode()) {
-                return null;
-            }
-        }
+        $endpoint = new \Jane\OpenApi\Tests\Expected\Endpoint\TestObjectListBodyParameter($testObjectList);
 
-        return $response;
+        return $this->executePsr7Endpoint($endpoint, $fetch);
     }
 }
