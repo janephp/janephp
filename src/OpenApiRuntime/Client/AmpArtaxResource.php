@@ -31,7 +31,9 @@ abstract class AmpArtaxResource extends Resource
     {
         return call(function () use ($endpoint, $fetch) {
             [$bodyHeaders, $body] = $endpoint->getBody($this->serializer);
-            $request = new Request($endpoint->getUri() . '?' . $endpoint->getQueryString(), $endpoint->getMethod());
+            $queryString = $endpoint->getQueryString();
+            $uri = $queryString !== '' ? $endpoint->getUri() . '?' . $queryString : $endpoint->getUri();
+            $request = new Request($uri, $endpoint->getMethod());
             $request = $request->withBody($body);
             $request = $request->withHeaders($endpoint->getHeaders($bodyHeaders));
 
