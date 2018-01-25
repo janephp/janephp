@@ -5,6 +5,7 @@ namespace Jane\OpenApi\SchemaParser;
 use Jane\OpenApi\Exception\ParseFailureException;
 use Jane\OpenApi\Model\OpenApi;
 use Symfony\Component\Serializer\SerializerInterface;
+use Symfony\Component\Yaml\Exception\ExceptionInterface as YamlException;
 use Symfony\Component\Yaml\Yaml;
 
 class SchemaParser
@@ -58,8 +59,19 @@ class SchemaParser
             $jsonException = $exception;
         }
 
-        $content = Yaml::parse($openApiSpecContents, Yaml::PARSE_OBJECT | Yaml::PARSE_OBJECT_FOR_MAP | Yaml::PARSE_DATETIME | Yaml::PARSE_EXCEPTION_ON_INVALID_TYPE);
-        $openApiSpecContents = json_encode($content);
+        try {
+            $content = Yaml::parse(
+                $openApiSpecContents,
+                Yaml::PARSE_OBJECT | Yaml::PARSE_OBJECT_FOR_MAP | Yaml::PARSE_DATETIME | Yaml::PARSE_EXCEPTION_ON_INVALID_TYPE
+            );
+            $openApiSpecContents = json_encode($content);
+        } catch (YamlException $yamlException) {
+            throw new \LogicException(sprintf(
+                "Could not parse schema in JSON nor YAML format:\n- JSON error: \"%s\"\n- YAML error: \"%s\"\n",
+                $jsonException->getMessage(),
+                $yamlException->getMessage()
+            ));
+        }
 
         return $this->serializer->deserialize(
             $openApiSpecContents,
