@@ -10,7 +10,7 @@ declare(strict_types=1);
 
 namespace Jane\OpenApi\Tests\Expected;
 
-class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugResource
+class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
 {
     public static function create($httpClient = null)
     {

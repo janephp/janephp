@@ -10,10 +10,27 @@ declare(strict_types=1);
 
 namespace Jane\OpenApi\Tests\Expected;
 
-class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugResource
+class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
 {
-    use Resource\FooResourceTrait;
-    use Resource\BarResourceTrait;
+    /**
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\Psr\Http\Message\ResponseInterface
+     */
+    public function bodyParameterTriggersContentTypeBeingSet(string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \Jane\OpenApi\Tests\Expected\Endpoint\BodyParameterTriggersContentTypeBeingSet(), $fetch);
+    }
+
+    /**
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\Psr\Http\Message\ResponseInterface
+     */
+    public function producesTriggersAcceptBeingSet(string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \Jane\OpenApi\Tests\Expected\Endpoint\ProducesTriggersAcceptBeingSet(), $fetch);
+    }
 
     public static function create($httpClient = null)
     {

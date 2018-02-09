@@ -10,9 +10,43 @@ declare(strict_types=1);
 
 namespace Jane\OpenApi\Tests\Expected;
 
-class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugResource
+class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
 {
-    use Resource\PetsResourceTrait;
+    /**
+     * @param array $queryParameters {
+     *
+     *     @var int $limit How many items to return at one time (max 100)
+     * }
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\Jane\OpenApi\Tests\Expected\Model\Pet[]|\Jane\OpenApi\Tests\Expected\Model\Error|\Psr\Http\Message\ResponseInterface
+     */
+    public function listPets(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \Jane\OpenApi\Tests\Expected\Endpoint\ListPets($queryParameters), $fetch);
+    }
+
+    /**
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\Jane\OpenApi\Tests\Expected\Model\Error|\Psr\Http\Message\ResponseInterface
+     */
+    public function createPets(string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \Jane\OpenApi\Tests\Expected\Endpoint\CreatePets(), $fetch);
+    }
+
+    /**
+     * @param string $petId The id of the pet to retrieve
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\Jane\OpenApi\Tests\Expected\Model\Pet[]|\Jane\OpenApi\Tests\Expected\Model\Error|\Psr\Http\Message\ResponseInterface
+     */
+    public function showPetById(string $petId, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \Jane\OpenApi\Tests\Expected\Endpoint\ShowPetById($petId), $fetch);
+    }
 
     public static function create($httpClient = null)
     {

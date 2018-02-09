@@ -211,6 +211,30 @@
                 ]
             }
         },
+        "/test-binary-body": {
+            "post": {
+                "operationId": "Test Binary Body",
+                "parameters": [
+                    {
+                        "name": "testBinary",
+                        "in": "body",
+                        "schema": {
+                            "type": "string",
+                            "format": "binary"
+                        },
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "no error"
+                    }
+                },
+                "tags": [
+                    "Test"
+                ]
+            }
+        },
         "/test-path/{testString}/{testInteger}/{testFloat}": {
             "get": {
                 "operationId": "Test Path Parameters",

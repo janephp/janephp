@@ -26,8 +26,8 @@ class GeneratorFactory
             new OperationIdNaming(),
             new OperationUrlNaming(),
         ]);
-        $endpointGenerator = new EndpointGenerator($operationNaming, $bodyParameter, $nonBodyParameter, $serializer, $exceptionGenerator);
-        $psrHttplugOperationGenerator = new Psr7HttplugOperationGenerator($endpointGenerator);
+        $psrHttplugEndpointGenerator = new Psr7HttplugEndpointGenerator($operationNaming, $bodyParameter, $nonBodyParameter, $serializer, $exceptionGenerator);
+        $psrHttplugOperationGenerator = new Psr7HttplugOperationGenerator($psrHttplugEndpointGenerator);
         $clientAsyncGenerator = null;
 
         $generators = [
@@ -35,7 +35,8 @@ class GeneratorFactory
         ];
 
         if ($options['async']) {
-            $ampArtaxOperationGenerator = new AmpArtaxOperationGenerator($endpointGenerator);
+            $ampArtaxEndpointGenerator = new AmpArtaxEndpointGenerator($operationNaming, $bodyParameter, $nonBodyParameter, $serializer, $exceptionGenerator);
+            $ampArtaxOperationGenerator = new AmpArtaxOperationGenerator($ampArtaxEndpointGenerator);
             $generators[] = new AmpArtaxClientGenerator($operationManager, $ampArtaxOperationGenerator, $operationNaming);
         }
 

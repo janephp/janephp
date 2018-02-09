@@ -10,35 +10,40 @@ declare(strict_types=1);
 
 namespace Jane\OpenApi\Tests\Expected\Endpoint;
 
-class GetAnotherThingById extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7HttplugEndpoint
+class TestBinaryBody extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7HttplugEndpoint
 {
+    /**
+     * @param string|resource|\Psr\Http\Message\StreamInterface $testBinary
+     */
+    public function __construct($testBinary)
+    {
+        $this->body = $testBinary;
+    }
+
     use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
 
     public function getMethod(): string
     {
-        return 'GET';
+        return 'POST';
     }
 
     public function getUri(): string
     {
-        return '/another-things/{id}';
+        return '/test-binary-body';
     }
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null): array
     {
-        return [[], null];
+        return $this->getSerializedBody($serializer);
     }
 
     /**
      * {@inheritdoc}
-     *
-     *
-     * @return null|\Jane\OpenApi\Tests\Expected\Model\Thing
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
     {
         if (200 === $status) {
-            return $serializer->deserialize($body, 'Jane\\OpenApi\\Tests\\Expected\\Model\\Thing', 'json');
+            return null;
         }
     }
 }
