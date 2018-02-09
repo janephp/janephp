@@ -6,11 +6,9 @@ use Jane\JsonSchema\Generator\Context\Context;
 use Jane\OpenApi\Model\Response;
 use Jane\OpenApi\Operation\Operation;
 use PhpParser\Node\Arg;
-use PhpParser\Node\Const_;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Name;
 use PhpParser\Node\Param;
-use PhpParser\Node\Scalar\String_;
 use PhpParser\Node\Stmt;
 use PhpParser\Comment;
 

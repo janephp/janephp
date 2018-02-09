@@ -18,8 +18,6 @@ use Jane\OpenApi\Model\Schema;
 use Jane\OpenApi\Naming\OperationNamingInterface;
 use Jane\OpenApi\Operation\Operation;
 use Jane\OpenApiRuntime\Client\BaseEndpoint;
-use Jane\OpenApiRuntime\Client\Psr7HttplugEndpoint;
-use Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
 use PhpParser\Comment\Doc;
 use PhpParser\Node\Arg;
 use PhpParser\Node\Expr;
@@ -352,7 +350,7 @@ EOD
                     [$_, $schema] = $this->resolve($schema, Schema::class);
                 }
 
-                if ($schema->getType() !== 'file') {
+                if ($schema->getType() === 'object' || $schema->getType() === 'array') {
                     $isSerializableBody = true;
                 }
             }

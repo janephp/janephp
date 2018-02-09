@@ -28,7 +28,7 @@ interface Endpoint
     public function getUri(): string;
 
     /**
-     * Get the HTTP method of an endpoint (like GET, POST, ...)
+     * Get the HTTP method of an endpoint (like GET, POST, ...).
      */
     public function getMethod(): string;
 

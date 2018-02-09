@@ -14,8 +14,8 @@ class Psr7HttplugOperationGenerator extends OperationGenerator
     protected function getReturnDoc($returnTypes, $throwTypes): string
     {
         return implode('', array_map(function ($value) {
-                return ' * @throws ' . $value . "\n";
-            }, $throwTypes))
+            return ' * @throws ' . $value . "\n";
+        }, $throwTypes))
             . " *\n"
             . ' * @return ' . implode('|', $returnTypes)
         ;

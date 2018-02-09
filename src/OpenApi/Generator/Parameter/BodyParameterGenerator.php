@@ -115,22 +115,22 @@ class BodyParameterGenerator extends ParameterGenerator
                 'binary' => ['string', 'resource', '\\' . StreamInterface::class],
             ],
             'number' => [
-                'default' => ['float']
+                'default' => ['float'],
             ],
             'boolean' => [
-                'default' => ['bool']
+                'default' => ['bool'],
             ],
             'integer' => [
-                'default' => ['int']
+                'default' => ['int'],
             ],
             'array' => [
-                'default' => ['array']
+                'default' => ['array'],
             ],
             'object' => [
-                'default' => ['\\stdClass']
+                'default' => ['\\stdClass'],
             ],
             'file' => [
-                'default' => ['string', 'resource', '\\' . StreamInterface::class]
+                'default' => ['string', 'resource', '\\' . StreamInterface::class],
             ],
         ];
 

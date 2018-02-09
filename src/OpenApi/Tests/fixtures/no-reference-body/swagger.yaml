@@ -21,6 +21,7 @@ paths:
           in: "body"
           required: true
           schema:
+            type: "object"
             allOf:
               - $ref: "#/definitions/Foo"
               - type: "object"
