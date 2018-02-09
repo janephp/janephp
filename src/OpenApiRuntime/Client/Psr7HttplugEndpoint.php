@@ -14,5 +14,5 @@ interface Psr7HttplugEndpoint extends Endpoint
      *
      * Implementations may vary depending the status code of the response and the fetch mode used.
      */
-    public function parsePSR7Response(ResponseInterface $response, SerializerInterface $serializer, string $fetchMode = Resource::FETCH_OBJECT);
+    public function parsePSR7Response(ResponseInterface $response, SerializerInterface $serializer, string $fetchMode = Client::FETCH_OBJECT);
 }

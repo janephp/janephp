@@ -12,13 +12,13 @@ trait Psr7HttplugEndpointTrait
 {
     abstract protected function transformResponseBody(string $body, int $status, SerializerInterface $serializer);
 
-    public function parsePSR7Response(ResponseInterface $response, SerializerInterface $serializer, string $fetchMode = Resource::FETCH_OBJECT)
+    public function parsePSR7Response(ResponseInterface $response, SerializerInterface $serializer, string $fetchMode = Client::FETCH_OBJECT)
     {
-        if ($fetchMode === Resource::FETCH_OBJECT) {
+        if ($fetchMode === Client::FETCH_OBJECT) {
             return $this->transformResponseBody((string) $response->getBody(), $response->getStatusCode(), $serializer);
         }
 
-        if ($fetchMode === Resource::FETCH_RESPONSE) {
+        if ($fetchMode === Client::FETCH_RESPONSE) {
             return $response;
         }
 

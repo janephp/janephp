@@ -14,14 +14,14 @@ trait AmpArtaxEndpointTrait
 {
     abstract protected function transformResponseBody(string $body, int $status, SerializerInterface $serializer);
 
-    public function parseArtaxResponse(Response $response, SerializerInterface $serializer, string $fetchMode = Resource::FETCH_OBJECT): Promise
+    public function parseArtaxResponse(Response $response, SerializerInterface $serializer, string $fetchMode = Client::FETCH_OBJECT): Promise
     {
         return call(function () use ($response, $serializer, $fetchMode) {
-            if ($fetchMode === Resource::FETCH_OBJECT) {
+            if ($fetchMode === Client::FETCH_OBJECT) {
                 return $this->transformResponseBody(yield $response->getBody(), $response->getStatus(), $serializer);
             }
 
-            if ($fetchMode === Resource::FETCH_RESPONSE) {
+            if ($fetchMode === Client::FETCH_RESPONSE) {
                 return $response;
             }
 
