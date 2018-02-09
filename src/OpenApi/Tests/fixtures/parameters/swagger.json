@@ -39,12 +39,18 @@
             ],
             "get": {
                 "operationId": "testGetWithPathParameters",
+                "consumes": [
+                    "application/json"
+                ],
                 "tags": [
                     "Test"
                 ]
             },
             "post": {
                 "operationId": "testPostWithPathParameters",
+                "consumes": [
+                    "application/json"
+                ],
                 "tags": [
                     "Test"
                 ]

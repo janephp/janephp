@@ -340,6 +340,7 @@ EOD
         $isSerializableBody = false;
         $isFormBody = false;
         $hasFileInForm = false;
+        $consumes = is_array($operation->getOperation()->getConsumes()) ? $operation->getOperation()->getConsumes() : [$operation->getOperation()->getConsumes()];
 
         foreach ($operation->getParameters() as $parameter) {
             if ($parameter instanceof BodyParameter && $parameter->getSchema() !== null) {
@@ -350,7 +351,7 @@ EOD
                     [$_, $schema] = $this->resolve($schema, Schema::class);
                 }
 
-                if ($schema->getType() === 'object' || $schema->getType() === 'array') {
+                if (\in_array('application/json', $consumes, true)) {
                     $isSerializableBody = true;
                 }
             }

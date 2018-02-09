@@ -16,6 +16,8 @@ paths:
   /test:
     get:
       operationId: "getTest"
+      consumes:
+        - "application/json"
       parameters:
         - name: "body"
           in: "body"
@@ -35,6 +37,8 @@ paths:
                         type: "string"
     post:
       operationId: "test"
+      consumes:
+        - "application/json"
       parameters:
         - name: "body"
           in: "body"
