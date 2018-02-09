@@ -10,8 +10,10 @@ declare(strict_types=1);
 
 namespace Jane\OpenApi\Tests\Expected\Endpoint;
 
-class ProducesTriggersAcceptBeingSet extends \Jane\OpenApiRuntime\Client\BaseEndpoint
+class ProducesTriggersAcceptBeingSet extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7HttplugEndpoint
 {
+    use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
+
     public function getMethod(): string
     {
         return 'GET';
@@ -22,23 +24,23 @@ class ProducesTriggersAcceptBeingSet extends \Jane\OpenApiRuntime\Client\BaseEnd
         return '/test-object';
     }
 
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null)
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null): array
     {
         return [[], null];
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
-    {
-        if (200 === $status) {
-            return null;
-        }
     }
 
     public function getExtraHeaders(): array
     {
         return ['Accept' => ['application/json']];
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
+    {
+        if (200 === $status) {
+            return null;
+        }
     }
 }

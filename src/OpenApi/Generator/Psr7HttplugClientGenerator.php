@@ -11,7 +11,7 @@ use Http\Discovery\StreamFactoryDiscovery;
 use Http\Discovery\UriFactoryDiscovery;
 use Jane\JsonSchema\Generator\Context\Context;
 use Jane\OpenApi\Model\OpenApi;
-use Jane\OpenApiRuntime\Client\Psr7HttplugResource;
+use Jane\OpenApiRuntime\Client\Psr7HttplugClient;
 use PhpParser\Node;
 use PhpParser\Node\Name;
 use PhpParser\Node\Expr;
@@ -31,7 +31,7 @@ class Psr7HttplugClientGenerator extends ClientGenerator
     protected function createResourceClass(string $name): Stmt\Class_
     {
         return new Stmt\Class_($name, [
-            'extends' => new Node\Name\FullyQualified(Psr7HttplugResource::class),
+            'extends' => new Node\Name\FullyQualified(Psr7HttplugClient::class),
         ]);
     }
 

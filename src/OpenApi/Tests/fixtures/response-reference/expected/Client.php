@@ -10,9 +10,27 @@ declare(strict_types=1);
 
 namespace Jane\OpenApi\Tests\Expected;
 
-class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugResource
+class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
 {
-    use Resource\TestResourceTrait;
+    /**
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\Jane\OpenApi\Tests\Expected\Model\ResponseCommon|\Psr\Http\Message\ResponseInterface
+     */
+    public function testReferenceResponse(string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \Jane\OpenApi\Tests\Expected\Endpoint\TestReferenceResponse(), $fetch);
+    }
+
+    /**
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\Psr\Http\Message\ResponseInterface
+     */
+    public function testRefArray(string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \Jane\OpenApi\Tests\Expected\Endpoint\TestRefArray(), $fetch);
+    }
 
     public static function create($httpClient = null)
     {

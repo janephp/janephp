@@ -10,9 +10,21 @@ declare(strict_types=1);
 
 namespace Jane\OpenApi\Tests\Expected;
 
-class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugResource
+class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
 {
-    use Resource\DefaultResourceTrait;
+    /**
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @throws \Jane\OpenApi\Tests\Expected\Exception\TestNoTagBadRequestException
+     * @throws \Jane\OpenApi\Tests\Expected\Exception\TestNoTagNotFoundException
+     * @throws \Jane\OpenApi\Tests\Expected\Exception\TestNoTagInternalServerErrorException
+     *
+     * @return null|\Psr\Http\Message\ResponseInterface
+     */
+    public function testNoTag(string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \Jane\OpenApi\Tests\Expected\Endpoint\TestNoTag(), $fetch);
+    }
 
     public static function create($httpClient = null)
     {

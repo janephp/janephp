@@ -10,7 +10,7 @@ declare(strict_types=1);
 
 namespace Jane\OpenApi\Tests\Expected\Endpoint;
 
-class TestPathParameters extends \Jane\OpenApiRuntime\Client\BaseEndpoint
+class TestPathParameters extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7HttplugEndpoint
 {
     protected $testString;
     protected $testInteger;
@@ -28,6 +28,8 @@ class TestPathParameters extends \Jane\OpenApiRuntime\Client\BaseEndpoint
         $this->testFloat = $testFloat;
     }
 
+    use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
+
     public function getMethod(): string
     {
         return 'GET';
@@ -38,7 +40,7 @@ class TestPathParameters extends \Jane\OpenApiRuntime\Client\BaseEndpoint
         return str_replace(['{testString}', '{testInteger}', '{testFloat}'], [$this->testString, $this->testInteger, $this->testFloat], '/test-path/{testString}/{testInteger}/{testFloat}');
     }
 
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null)
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null): array
     {
         return [[], null];
     }
@@ -46,7 +48,7 @@ class TestPathParameters extends \Jane\OpenApiRuntime\Client\BaseEndpoint
     /**
      * {@inheritdoc}
      */
-    public function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
+    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
     {
         if (200 === $status) {
             return null;

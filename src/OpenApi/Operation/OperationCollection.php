@@ -2,8 +2,6 @@
 
 namespace Jane\OpenApi\Operation;
 
-use Doctrine\Common\Inflector\Inflector;
-
 class OperationCollection extends \ArrayObject
 {
     /**
@@ -14,26 +12,12 @@ class OperationCollection extends \ArrayObject
     public function addOperation(Operation $operation)
     {
         $id = $operation->getMethod() . $operation->getPath();
-        $group = 'Default';
 
         if ($operation->getOperation()->getOperationId()) {
             $id = $operation->getOperation()->getOperationId();
         }
 
-        if (null !== $operation->getOperation()->getTags() && count($operation->getOperation()->getTags()) > 0) {
-            $group = $operation->getOperation()->getTags()[0];
-        }
-
-        // Doctrine Inflector does not seem to handle some characters (like dots) well.
-        // So replace invalid char by an underscore to allow Doctrine to uppercase word correctly.
-        $group = trim(preg_replace('/[^a-z0-9 ]+/iu', '_', $group));
-        $group = Inflector::classify($group);
-
-        if (!isset($this[$group])) {
-            $this[$group] = [];
-        }
-
-        $this[$group][$id] = $operation;
+        $this[$id] = $operation;
 
         return $this;
     }

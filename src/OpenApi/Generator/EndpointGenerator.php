@@ -18,6 +18,8 @@ use Jane\OpenApi\Model\Schema;
 use Jane\OpenApi\Naming\OperationNamingInterface;
 use Jane\OpenApi\Operation\Operation;
 use Jane\OpenApiRuntime\Client\BaseEndpoint;
+use Jane\OpenApiRuntime\Client\Psr7HttplugEndpoint;
+use Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
 use PhpParser\Comment\Doc;
 use PhpParser\Node\Arg;
 use PhpParser\Node\Expr;
@@ -29,7 +31,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\SerializerInterface;
 
-class EndpointGenerator
+abstract class EndpointGenerator
 {
     /** @var OperationNamingInterface */
     private $operationNaming;
@@ -60,20 +62,29 @@ class EndpointGenerator
         $this->exceptionGenerator = $exceptionGenerator;
     }
 
-    public function createEndpointClass(Operation $operation, Context $context): array
+    abstract protected function getInterface(): array;
+
+    abstract protected function getTrait(): array;
+
+    public function createEndpointClass(Operation $operation, Context $context, bool $async = false): array
     {
         $openApi = $context->getCurrentSchema()->getParsed();
         $endpointName = $this->operationNaming->getEndpointName($operation);
 
         [$constructorMethod, $methodParams, $methodParamsDoc, $pathProperties] = $this->getConstructor($operation, $context);
-        [$transformBodyMethod, $returnDoc] = $this->getTransformResponseBody($operation, $endpointName, $context);
+        [$transformBodyMethod, $outputTypes, $throwTypes] = $this->getTransformResponseBody($operation, $endpointName, $context);
         $class = new Stmt\Class_($endpointName, [
             'extends' => new Name\FullyQualified(BaseEndpoint::class),
+            'implements' => array_map(function ($interface) {
+                return new Name\FullyQualified($interface);
+            }, $this->getInterface()),
             'stmts' => array_merge($pathProperties, $constructorMethod === null ? [] : [$constructorMethod], [
+                new Stmt\Use_(array_map(function ($traitName) {
+                    return new Stmt\UseUse(new Name\FullyQualified($traitName));
+                }, $this->getTrait())),
                 $this->getGetMethod($operation),
                 $this->getGetUri($operation),
                 $this->getGetBody($operation),
-                $transformBodyMethod,
             ]),
         ]);
 
@@ -98,6 +109,8 @@ class EndpointGenerator
             $class->stmts[] = $headerResolverMethod;
         }
 
+        $class->stmts[] = $transformBodyMethod;
+
         $file = new File(
             $context->getCurrentSchema()->getDirectory() . DIRECTORY_SEPARATOR . 'Endpoint' . DIRECTORY_SEPARATOR . $endpointName . '.php',
             new Stmt\Namespace_(
@@ -111,7 +124,7 @@ class EndpointGenerator
 
         $context->getCurrentSchema()->addFile($file);
 
-        return [$context->getCurrentSchema()->getNamespace() . '\\Endpoint\\' . $endpointName, $methodParams, $methodParamsDoc, $returnDoc];
+        return [$context->getCurrentSchema()->getNamespace() . '\\Endpoint\\' . $endpointName, $methodParams, $methodParamsDoc, $outputTypes, $throwTypes];
     }
 
     private function getConstructor(Operation $operation, Context $context): array
@@ -358,6 +371,7 @@ EOD
                 new Param('serializer', null, new Name\FullyQualified(SerializerInterface::class)),
                 new Param('streamFactory', new Expr\ConstFetch(new Name('null')), new Name\FullyQualified(StreamFactory::class)),
             ],
+            'returnType' => new Name('array'),
         ]);
 
         if ($isSerializableBody) {
@@ -469,6 +483,7 @@ EOD
             . ' * @return ' . implode('|', $outputTypes);
 
         return [new Stmt\ClassMethod('transformResponseBody', [
+            'type' => Stmt\Class_::MODIFIER_PROTECTED,
             'params' => [
                 new Param('body', null, 'string'),
                 new Param('status', null, 'int'),
@@ -485,7 +500,7 @@ EOD
                 . $returnDoc . "\n"
                 . ' */'
             ),
-        ], ]), $returnDoc];
+        ], ]), $outputTypes, $throwTypes];
     }
 
     private function createResponseDenormalizationStatement(string $name, string $status, $schema, Context $context, string $reference, string $description)

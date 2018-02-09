@@ -4,7 +4,7 @@ namespace Jane\OpenApi\Generator;
 
 use Amp\Artax\DefaultClient;
 use Jane\JsonSchema\Generator\Context\Context;
-use Jane\OpenApiRuntime\Client\AmpArtaxResource;
+use Jane\OpenApiRuntime\Client\AmpArtaxClient;
 use PhpParser\Node;
 use PhpParser\Node\Name;
 use PhpParser\Node\Expr;
@@ -24,7 +24,7 @@ class AmpArtaxClientGenerator extends ClientGenerator
     protected function createResourceClass(string $name): Stmt\Class_
     {
         return new Stmt\Class_($name, [
-            'extends' => new Node\Name\FullyQualified(AmpArtaxResource::class),
+            'extends' => new Node\Name\FullyQualified(AmpArtaxClient::class),
         ]);
     }
 

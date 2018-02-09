@@ -84,14 +84,14 @@ class BodyParameterGenerator extends ParameterGenerator
                 return [['\\' . $context->getRegistry()->getSchema($reference)->getNamespace() . '\\Model\\' . $context->getRegistry()->getClass($reference)->getName()], false];
             }
 
-            return [$this->convertParameterType($schema->getType()), null];
+            return [$this->convertParameterType($schema->getType(), $schema->getFormat()), null];
         }
 
         $class = $context->getRegistry()->getClass($jsonReference);
 
         // Happens when reference resolve to a none object
         if (null === $class) {
-            return [$this->convertParameterType($schema->getType()), null];
+            return [$this->convertParameterType($schema->getType(), $schema->getFormat()), null];
         }
 
         $class = '\\' . $context->getRegistry()->getSchema($jsonReference)->getNamespace() . '\\Model\\' . $class->getName();
@@ -103,19 +103,42 @@ class BodyParameterGenerator extends ParameterGenerator
         return [[$class], $array];
     }
 
-    private function convertParameterType($type)
+    private function convertParameterType($type, $format = null)
     {
+        if (null === $format) {
+            $format = 'default';
+        }
+
         $convertArray = [
-            'string' => ['string'],
-            'number' => ['float'],
-            'boolean' => ['bool'],
-            'integer' => ['int'],
-            'array' => ['array'],
-            'object' => ['\\stdClass'],
-            'file' => ['string', 'resource', '\\' . StreamInterface::class],
+            'string' => [
+                'default' => ['string'],
+                'binary' => ['string', 'resource', '\\' . StreamInterface::class],
+            ],
+            'number' => [
+                'default' => ['float']
+            ],
+            'boolean' => [
+                'default' => ['bool']
+            ],
+            'integer' => [
+                'default' => ['int']
+            ],
+            'array' => [
+                'default' => ['array']
+            ],
+            'object' => [
+                'default' => ['\\stdClass']
+            ],
+            'file' => [
+                'default' => ['string', 'resource', '\\' . StreamInterface::class]
+            ],
         ];
 
-        return $convertArray[$type] ?? ['mixed'];
+        if (!isset($convertArray[$type]) || !isset($convertArray[$type][$format])) {
+            return ['mixed'];
+        }
+
+        return $convertArray[$type][$format];
     }
 
     /**

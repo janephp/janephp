@@ -7,7 +7,7 @@ use Http\Message\MessageFactory;
 use Http\Message\StreamFactory;
 use Symfony\Component\Serializer\SerializerInterface;
 
-abstract class Psr7HttplugResource extends Resource
+abstract class Psr7HttplugClient extends Client
 {
     /**
      * @var HttpClient
@@ -37,18 +37,13 @@ abstract class Psr7HttplugResource extends Resource
         $this->streamFactory = $streamFactory;
     }
 
-    public function executePsr7Endpoint(BaseEndpoint $endpoint, string $fetch = self::FETCH_OBJECT)
+    public function executePsr7Endpoint(Psr7HttplugEndpoint $endpoint, string $fetch = self::FETCH_OBJECT)
     {
         [$bodyHeaders, $body] = $endpoint->getBody($this->serializer, $this->streamFactory);
         $queryString = $endpoint->getQueryString();
         $uri = $queryString !== '' ? $endpoint->getUri() . '?' . $queryString : $endpoint->getUri();
         $request = $this->messageFactory->createRequest($endpoint->getMethod(), $uri, $endpoint->getHeaders($bodyHeaders), $body);
-        $response = $this->httpClient->sendRequest($request);
 
-        if ($fetch === self::FETCH_OBJECT) {
-            return $endpoint->transformResponseBody((string) $response->getBody(), $response->getStatusCode(), $this->serializer);
-        }
-
-        return $response;
+        return $endpoint->parsePSR7Response($this->httpClient->sendRequest($request), $this->serializer, $fetch);
     }
 }

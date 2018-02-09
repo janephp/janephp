@@ -10,8 +10,10 @@ declare(strict_types=1);
 
 namespace Jane\OpenApi\Tests\Expected\Endpoint;
 
-class TestNoTag extends \Jane\OpenApiRuntime\Client\BaseEndpoint
+class TestNoTag extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7HttplugEndpoint
 {
+    use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
+
     public function getMethod(): string
     {
         return 'GET';
@@ -22,7 +24,7 @@ class TestNoTag extends \Jane\OpenApiRuntime\Client\BaseEndpoint
         return '/test-exception';
     }
 
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null)
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null): array
     {
         return [[], null];
     }
@@ -34,7 +36,7 @@ class TestNoTag extends \Jane\OpenApiRuntime\Client\BaseEndpoint
      * @throws \Jane\OpenApi\Tests\Expected\Exception\TestNoTagNotFoundException
      * @throws \Jane\OpenApi\Tests\Expected\Exception\TestNoTagInternalServerErrorException
      */
-    public function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
+    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
     {
         if (400 === $status) {
             throw new \Jane\OpenApi\Tests\Expected\Exception\TestNoTagBadRequestException($serializer->deserialize($body, 'Jane\\OpenApi\\Tests\\Expected\\Model\\Error', 'json'));

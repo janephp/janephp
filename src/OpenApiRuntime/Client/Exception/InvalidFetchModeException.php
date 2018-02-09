@@ -4,6 +4,6 @@ declare(strict_types=1);
 
 namespace Jane\OpenApiRuntime\Client\Exception;
 
-class InvalidParametersException extends \RuntimeException
+class InvalidFetchModeException extends \RuntimeException
 {
 }
