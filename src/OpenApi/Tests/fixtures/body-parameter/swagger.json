@@ -100,7 +100,7 @@
                         "required": true,
                         "schema": {
                             "type": "array",
-                            "additionalProperties": {
+                            "items": {
                                 "$ref": "#/definitions/Schema"
                             }
                         }

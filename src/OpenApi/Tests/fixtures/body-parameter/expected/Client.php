@@ -35,8 +35,8 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
     }
 
     /**
-     * @param array  $testObjectList
-     * @param string $fetch          Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param \Jane\OpenApi\Tests\Expected\Model\Schema[] $testObjectList
+     * @param string                                      $fetch          Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */

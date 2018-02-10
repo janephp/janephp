@@ -13,7 +13,7 @@ namespace Jane\OpenApi\Tests\Expected\Endpoint;
 class TestObjectListBodyParameter extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7HttplugEndpoint
 {
     /**
-     * @param array $testObjectList
+     * @param \Jane\OpenApi\Tests\Expected\Model\Schema[] $testObjectList
      */
     public function __construct(array $testObjectList)
     {
