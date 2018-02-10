@@ -1,6 +1,6 @@
-# Jane OpenApi
+# Jane OpenAPI
 
-Generate a PHP Client API (PSR7 compatible) given a [OpenApi (Swagger) specification](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md).
+Generate a PHP Client API (PSR7 compatible) given a [OpenAPI (Swagger) specification](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md).
 
 ## License
 

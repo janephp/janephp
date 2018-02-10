@@ -7,8 +7,8 @@
  * **BC-BREAK** New namespace and repository name due to using a new monolith repository
  * **BC-BREAK** JanePHP now require and generate code for PHP 7.1
  * **BC-BREAK** Config file is now mandatory, console client does not provide anymore options
- * [OpenAPI] **BC-BREAK** Order of parameters for each endpoint may be different (it's now in the order of declaration in the
- specification)
+ * **BC-BREAK** There is no more Resource file, all calls are now done in an unique Client class
+ * [OpenAPI] **BC-BREAK** Arguments for each endpoint may be different, they are now split between query, form and headers.
  * [OpenAPI] **BC-BREAK** Response with 400 to 599 status code will know throw custom generated exception instead of 
  returning an object
  * [OpenAPI] **BC-BREAK** Base path is no more present in the url as you can use a HTTPlug plugin for that
@@ -20,6 +20,8 @@
  * [OpenAPI] New factory method for the client which provide better DX to start using a Generated Client
  * [OpenAPI] Add support for global parameters
  * [OpenAPI] Support Symfony 4
+ * [OpenAPI] Each endpoint have its own class, this helps extending a generated Client.
+ * [OpenAPI] Add support for binary format
  * [Jane] Add a not strict mode, which generate more permissive normalizers (allowing null / not 
  defined properties in several places)
  * [Jane] Add property description in doc block comment

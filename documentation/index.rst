@@ -12,6 +12,8 @@ code respecting common and advanced PSR.
 
    Jane <self>
    Internal <internal>
+   Backwards compatibility <bc>
+
 
 .. toctree::
    :hidden:
@@ -30,3 +32,4 @@ code respecting common and advanced PSR.
    Generating a Client <OpenAPI/generate>
    Using a generated client <OpenAPI/usage>
    Asynchronous Client <OpenAPI/async>
+   Extending the Client <OpenAPI/extending>

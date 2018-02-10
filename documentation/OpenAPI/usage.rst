@@ -9,7 +9,7 @@ Generating a client will produce same classes as the :doc:`/JsonSchema/introduct
 
 Furthermore, it generates:
 
- * Resources files in the ``Resource`` namespace which are a subset of the API endpoints (depends on the tags of the endpoint)
+ * Endpoints files in the ``Endpoint`` namespace, each API Endpoint will generate a class containing all the logic to go from Object to Request, and from Response to Object
  * Client file in the root namespace containing all API endpoints
  * ClientAsync file in the root namespace containing all API endpoints with an Async API. (only present if using the ``'async' => true`` option)
 
@@ -120,42 +120,6 @@ preprod and production environment.
 
 Jane OpenAPI will always try to use ``https`` if present in the scheme (or if there is no scheme). It will use the first scheme
 present if ``https`` is not present.
-
-Using Resource instead of Client
---------------------------------
-
-Jane OpenAPI also generates ``Resource`` class, which are exactly the same as the ``Client`` but it may contain less
-endpoint. Separation of a method into a specific resource depends on the ``tags`` value in the OpenAPI specification.
-
-As an example, when using the following specification::
-
-    {
-        "swagger": "2.0",
-        "paths": {
-            "/test-simple": {
-                "post": {
-                    "operationId": "testSimple",
-                    "tags": [
-                        "Foo"
-                    ]
-                }
-            },
-            "/test-object": {
-                "get": {
-                    "operationId": "testObject",
-                    "tags": [
-                        "Bar"
-                    ]
-                }
-            }
-        }
-    }
-
-It will create 2 resources, one being ``FooResource`` and having the ``testSimple`` method, the other one
-being the ``BarResource`` containing the ``testObject`` method.
-
-This may be useful when you have large API and don't want to disclose every methods into the same service. However, it is highly
-recommended to always use the ``Client`` class containing all methods.
 
 .. _HTTPlug: http://docs.php-http.org/en/latest/index.html
 .. _discovery: http://docs.php-http.org/en/latest/discovery.html
