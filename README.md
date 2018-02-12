@@ -15,11 +15,11 @@ Jane is a set of libraries to generate PHP code.
 
 ## Changes
 
-View the [Change Log](CHANGELOG) file attached to this project.
+View the [CHANGELOG](CHANGELOG.md) file attached to this project.
 
 ## Contribution
 
-View the [CONTRIBUTING](CONTRIBUTING) file attached to this project.
+View the [CONTRIBUTING](CONTRIBUTING.md) file attached to this project.
 
 ## Sponsor
 
