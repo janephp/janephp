@@ -82,7 +82,7 @@ abstract class EndpointGenerator
                 }, $this->getTrait())),
                 $this->getGetMethod($operation),
                 $this->getGetUri($operation),
-                $this->getGetBody($operation),
+                $this->getGetBody($operation, $context),
             ]),
         ]);
 
@@ -334,7 +334,7 @@ EOD
         ]);
     }
 
-    private function getGetBody(Operation $operation): Stmt\ClassMethod
+    private function getGetBody(Operation $operation, Context $context): Stmt\ClassMethod
     {
         $hasBody = false;
         $isSerializableBody = false;
@@ -342,16 +342,17 @@ EOD
         $hasFileInForm = false;
         $consumes = is_array($operation->getOperation()->getConsumes()) ? $operation->getOperation()->getConsumes() : [$operation->getOperation()->getConsumes()];
 
-        foreach ($operation->getParameters() as $parameter) {
+        foreach ($operation->getParameters() as $key => $parameter) {
             if ($parameter instanceof BodyParameter && $parameter->getSchema() !== null) {
                 $hasBody = true;
-                $schema = $parameter->getSchema();
 
-                if ($schema instanceof Reference) {
-                    [$_, $schema] = $this->resolve($schema, Schema::class);
-                }
+                [$classGuess, $array, $schema] = $this->guessClass($parameter->getSchema(), $operation->getReference() . '/parameters/' . $key, $context);
 
                 if (\in_array('application/json', $consumes, true)) {
+                    $isSerializableBody = true;
+                }
+
+                if (null !== $classGuess) {
                     $isSerializableBody = true;
                 }
             }
@@ -502,7 +503,7 @@ EOD
         ], ]), $outputTypes, $throwTypes];
     }
 
-    private function createResponseDenormalizationStatement(string $name, string $status, $schema, Context $context, string $reference, string $description)
+    private function guessClass($schema, string $reference, Context $context)
     {
         $jsonReference = $reference;
         $array = false;
@@ -522,13 +523,20 @@ EOD
         }
 
         $classGuess = $context->getRegistry()->getClass($jsonReference);
+
+        return [$classGuess, $array, $schema];
+    }
+
+    private function createResponseDenormalizationStatement(string $name, string $status, $schema, Context $context, string $reference, string $description)
+    {
+        [$classGuess, $array, $schema] = $this->guessClass($schema, $reference, $context);
         $returnType = 'null';
         $throwType = null;
         $serializeStmt = new Expr\ConstFetch(new Name('null'));
         $class = null;
 
         if (null !== $classGuess) {
-            $class = $context->getRegistry()->getSchema($jsonReference)->getNamespace() . '\\Model\\' . $classGuess->getName();
+            $class = $context->getRegistry()->getSchema($classGuess->getReference())->getNamespace() . '\\Model\\' . $classGuess->getName();
 
             if ($array) {
                 $class .= '[]';
