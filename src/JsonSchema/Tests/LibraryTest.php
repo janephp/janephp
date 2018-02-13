@@ -33,7 +33,7 @@ class LibraryTest extends TestCase
     public function testLibrary()
     {
         $registry = new Registry();
-        $registry->addSchema(new Schema(__DIR__ . '/data/json-schema.json', 'Jane\JsonSchema', __DIR__ . '/generated', 'JsonSchema'));
+        $registry->addSchema(new Schema(__DIR__ . '/data/json-schema.json', 'Jane\JsonSchema', __DIR__ . '/generated', 'JsonSchema', 4));
 
         $this->jane->generate($registry);
         $this->printer->output($registry);

@@ -76,6 +76,8 @@ class GenerateCommand extends Command
                 'namespace',
                 'directory',
             ]);
+
+            $optionsResolver->setDefault('version', 2);
         } else {
             $optionsResolver->setRequired([
                 'mapping',
@@ -98,6 +100,8 @@ class GenerateCommand extends Command
             'strict',
         ]);
 
+        $optionsResolver->setDefault('version', 2);
+
         $optionsResolver->setRequired([
             'namespace',
             'directory',
@@ -105,6 +109,6 @@ class GenerateCommand extends Command
 
         $options = $optionsResolver->resolve($options);
 
-        return new Schema($schema, $options['namespace'], $options['directory'], '');
+        return new Schema($schema, $options['namespace'], $options['directory'], '', $options['version']);
     }
 }

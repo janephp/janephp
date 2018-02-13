@@ -2,8 +2,8 @@
 
 namespace Jane\OpenApi\Operation;
 
-use Jane\OpenApi\Model\Operation as OpenApiOperation;
-use Jane\OpenApi\Model\PathItem;
+use Jane\OpenApi\JsonSchema\Version3\Model\Operation as OpenApiOperation;
+use Jane\OpenApi\JsonSchema\Version3\Model\PathItem;
 
 class Operation
 {
