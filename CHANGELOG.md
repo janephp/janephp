@@ -1,6 +1,10 @@
 # Change Log
 
-## 4.0.0 - Unreleased
+## Unreleased
+
+...
+
+## 4.0.0 - 2018-02-12
 
 ### Added
 
