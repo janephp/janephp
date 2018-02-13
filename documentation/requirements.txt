@@ -1,5 +1,4 @@
 git+https://github.com/fabpot/sphinx-php.git
-sphinx-rtd-theme==0.1.6
-sphinxcontrib-spelling
+sphinx-rtd-theme==0.2.4
 pyenchant
 docutils==0.12
