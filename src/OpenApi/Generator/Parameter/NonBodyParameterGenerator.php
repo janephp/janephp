@@ -4,10 +4,10 @@ namespace Jane\OpenApi\Generator\Parameter;
 
 use Doctrine\Common\Inflector\Inflector;
 use Jane\JsonSchema\Generator\Context\Context;
-use Jane\OpenApi\Model\FormDataParameterSubSchema;
-use Jane\OpenApi\Model\HeaderParameterSubSchema;
-use Jane\OpenApi\Model\PathParameterSubSchema;
-use Jane\OpenApi\Model\QueryParameterSubSchema;
+use Jane\OpenApi\JsonSchema\Version3\Model\FormDataParameterSubSchema;
+use Jane\OpenApi\JsonSchema\Version3\Model\HeaderParameterSubSchema;
+use Jane\OpenApi\JsonSchema\Version3\Model\PathParameterSubSchema;
+use Jane\OpenApi\JsonSchema\Version3\Model\QueryParameterSubSchema;
 use PhpParser\Node;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Scalar;

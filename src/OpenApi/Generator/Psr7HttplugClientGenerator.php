@@ -10,7 +10,7 @@ use Http\Discovery\MessageFactoryDiscovery;
 use Http\Discovery\StreamFactoryDiscovery;
 use Http\Discovery\UriFactoryDiscovery;
 use Jane\JsonSchema\Generator\Context\Context;
-use Jane\OpenApi\Model\OpenApi;
+use Jane\OpenApi\JsonSchema\Version3\Model\OpenApi;
 use Jane\OpenApiRuntime\Client\Psr7HttplugClient;
 use PhpParser\Node;
 use PhpParser\Node\Name;
@@ -110,24 +110,27 @@ class Psr7HttplugClientGenerator extends ClientGenerator
         $baseUri = null;
         $plugins = [];
 
-        if (null !== $openApi->getHost()) {
-            $scheme = 'https';
+        $servers = $openApi->getServers();
+        $server = $servers !== null && $servers[0] !== null ? $servers[0] : null;
 
-            if (null !== $openApi->getSchemes() && \count($openApi->getSchemes()) > 0 && !\in_array('https', $openApi->getSchemes())) {
-                $scheme = $openApi->getSchemes()[0];
+        if (null !== $openApi->getSchemes() && \count($openApi->getSchemes()) > 0 && !\in_array('https', $openApi->getSchemes())) {
+            $scheme = $openApi->getSchemes()[0];
+        }
+
+        if (null !== $server) {
+            $url = parse_url($server->getUrl());
+            $baseUri = '';
+
+            if (null !== $url['host']) {
+                $scheme = $url['scheme'] ?? 'https';
+                $baseUri = $scheme . '://' . trim($url['host'], '/');
+                $plugins[] = AddHostPlugin::class;
             }
 
-            $baseUri = $scheme . '://' . trim($openApi->getHost(), '/');
-
-            if (null !== $openApi->getBasePath()) {
-                $baseUri .= '/' . trim($openApi->getBasePath(), '/');
+            if (null !== $url['path']) {
+                $baseUri .= '/' . trim($url['path'], '/');
                 $plugins[] = AddPathPlugin::class;
             }
-
-            $plugins[] = AddHostPlugin::class;
-        } elseif (null !== $openApi->getBasePath()) {
-            $baseUri = trim($openApi->getBasePath(), '/');
-            $plugins[] = AddPathPlugin::class;
         }
 
         $httpClientAssign = new Expr\Assign(
