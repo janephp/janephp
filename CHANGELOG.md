@@ -4,6 +4,13 @@
 
 ...
 
+## 4.0.1 - 2018-02-22
+
+### Fixed
+
+ * [JsonSchema Runtime] Fix composer dependency to allow symfony 4
+ * [OpenAPI] Be less restrictive to detect schema serializable
+
 ## 4.0.0 - 2018-02-12
 
 ### Added
