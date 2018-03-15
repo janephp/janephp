@@ -40,6 +40,7 @@ class Printer
     {
         $rules = [
             '@Symfony' => true,
+            'self_accessor' => true,
             'array_syntax' => ['syntax' => 'short'],
             'concat_space' => ['spacing' => 'one'],
             'declare_strict_types' => true,
