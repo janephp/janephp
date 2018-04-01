@@ -25,6 +25,10 @@ class AutoMapper
     {
         $source = null;
 
+        if (null === $value) {
+            return null;
+        }
+
         if (is_object($value)) {
             $source = get_class($value);
         }

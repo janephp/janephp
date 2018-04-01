@@ -51,7 +51,9 @@ class TransformerFactory
             $targetType = $this->getTargetType($propertyType, $targetTypes);
 
             if (null !== $targetType) {
-                return new ArrayTransformer($this->getTransformer([$propertyType->getCollectionValueType()], [$targetType->getCollectionKeyType()]));
+                $subItemTransformer = $this->getTransformer([$propertyType->getCollectionValueType()], [$targetType->getCollectionValueType()]);
+
+                return new ArrayTransformer($subItemTransformer);
             }
 
             return null;
@@ -61,7 +63,7 @@ class TransformerFactory
             $targetType = $this->getTargetType($propertyType, $targetTypes);
 
             if (null !== $targetType) {
-                return new ObjectTransformer($targetType->getCollectionKeyType());
+                return new ObjectTransformer($targetType);
             }
 
             return null;

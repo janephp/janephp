@@ -14,9 +14,11 @@ use Symfony\Component\PropertyInfo\PropertyInfoExtractor;
 
 class AutoMapperTest extends TestCase
 {
-    public function testAutoMapping()
+    private $compiler;
+
+    public function setUp()
     {
-        $configuration = new MapperConfiguration(new Compiler(new PropertyInfoExtractor(
+        $this->compiler = new Compiler(new PropertyInfoExtractor(
             [new ReflectionExtractor()],
             [new ReflectionExtractor(), new PhpDocExtractor()],
             [new ReflectionExtractor()],
@@ -24,12 +26,24 @@ class AutoMapperTest extends TestCase
         ),
             new Accessor(),
             new TransformerFactory()
-        ), User::class, UserDTO::class);
+        );
+    }
+
+    public function testAutoMapping()
+    {
+        $configurationUser = new MapperConfiguration($this->compiler, User::class, UserDTO::class);
+        $configurationAddress = new MapperConfiguration($this->compiler, Address::class, AddressDTO::class);
 
         $automapper = new AutoMapper();
-        $automapper->register($configuration);
+        $automapper->register($configurationUser);
+        $automapper->register($configurationAddress);
 
+        $address = new Address();
+        $address->setCity('Toulon');
         $user = new User(1, 'yolo', '13');
+        $user->address = $address;
+        $user->addresses[] = $address;
+
         /** @var UserDTO $userDto */
         $userDto = $automapper->map($user, UserDTO::class);
 
@@ -38,6 +52,11 @@ class AutoMapperTest extends TestCase
         self::assertEquals('yolo', $userDto->name);
         self::assertEquals('13', $userDto->age);
         self::assertNull($userDto->email);
+        self::assertCount(1, $userDto->addresses);
+        self::assertInstanceOf(AddressDTO::class, $userDto->address);
+        self::assertInstanceOf(AddressDTO::class, $userDto->addresses[0]);
+        self::assertEquals('Toulon', $userDto->address->city);
+        self::assertEquals('Toulon', $userDto->addresses[0]->city);
     }
 }
 
@@ -52,7 +71,7 @@ class User
      */
     public $name;
     /**
-     * @var string
+     * @var string|int
      */
     public $age;
     /**
@@ -60,12 +79,22 @@ class User
      */
     private $email;
 
-    public function __construct($id, $name, $age, $email = 'test')
+    /**
+     * @var Address
+     */
+    public $address;
+
+    /**
+     * @var Address[]
+     */
+    public $addresses = [];
+
+    public function __construct($id, $name, $age)
     {
         $this->id = $id;
         $this->name = $name;
         $this->age = $age;
-        $this->email = $email;
+        $this->email = 'test';
     }
 
     /**
@@ -74,6 +103,30 @@ class User
     public function getId()
     {
         return $this->id;
+    }
+}
+
+class Address
+{
+    /**
+     * @var string|null
+     */
+    private $city;
+
+    /**
+     * @return string
+     */
+    public function getCity(): ?string
+    {
+        return $this->city;
+    }
+
+    /**
+     * @param string $city
+     */
+    public function setCity(?string $city): void
+    {
+        $this->city = $city;
     }
 }
 
@@ -88,11 +141,29 @@ class UserDTO
      */
     public $name;
     /**
-     * @var string
+     * @var string|int
      */
     public $age;
     /**
      * @var string
      */
     public $email;
+
+    /**
+     * @var AddressDTO
+     */
+    public $address;
+
+    /**
+     * @var AddressDTO[]
+     */
+    public $addresses = [];
+}
+
+class AddressDTO
+{
+    /**
+     * @var string|null
+     */
+    public $city;
 }
