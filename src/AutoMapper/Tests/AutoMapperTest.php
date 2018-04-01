@@ -37,6 +37,7 @@ class AutoMapperTest extends TestCase
         self::assertEquals(1, $userDto->id);
         self::assertEquals('yolo', $userDto->name);
         self::assertEquals('13', $userDto->age);
+        self::assertNull($userDto->email);
     }
 }
 
@@ -54,11 +55,17 @@ class User
      * @var string
      */
     public $age;
-    public function __construct($id, $name, $age)
+    /**
+     * @var string
+     */
+    private $email;
+
+    public function __construct($id, $name, $age, $email = 'test')
     {
         $this->id = $id;
         $this->name = $name;
         $this->age = $age;
+        $this->email = $email;
     }
     /**
      * @return int
@@ -83,4 +90,8 @@ class UserDTO
      * @var string
      */
     public $age;
+    /**
+     * @var string
+     */
+    public $email;
 }

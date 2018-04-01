@@ -67,8 +67,6 @@ class MapperConfiguration implements MapperConfigurationInterface
             $class = $this->compile();
             $printer = new Standard();
             $code = $printer->prettyPrint([$class]);
-
-            var_dump($code);
             // Yolo
             eval($code);
         }
