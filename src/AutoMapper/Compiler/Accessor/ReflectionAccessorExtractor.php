@@ -1,12 +1,12 @@
 <?php
 
-namespace Jane\AutoMapper\Compiler;
+namespace Jane\AutoMapper\Compiler\Accessor;
 
 use Doctrine\Common\Inflector\Inflector;
 
-class Accessor
+class ReflectionAccessorExtractor implements AccessorExtractorInterface
 {
-    public function getReadAccessor(string $class, string $property): Access
+    public function getReadAccessor(string $class, string $property): ReadAccessor
     {
         $reflClass = new \ReflectionClass($class);
         $hasProperty = $reflClass->hasProperty($property);
@@ -18,22 +18,22 @@ class Accessor
         $accessRef = false;
 
         if ($reflClass->hasMethod($getter) && $reflClass->getMethod($getter)->isPublic()) {
-            $accessType = Access::TYPE_METHOD;
+            $accessType = ReadAccessor::TYPE_METHOD;
             $accessName = $getter;
         } elseif ($reflClass->hasMethod($getsetter) && $reflClass->getMethod($getsetter)->isPublic()) {
-            $accessType = Access::TYPE_METHOD;
+            $accessType = ReadAccessor::TYPE_METHOD;
             $accessName = $getsetter;
         } elseif ($reflClass->hasMethod($isser) && $reflClass->getMethod($isser)->isPublic()) {
-            $accessType = Access::TYPE_METHOD;
+            $accessType = ReadAccessor::TYPE_METHOD;
             $accessName = $isser;
         } elseif ($reflClass->hasMethod($hasser) && $reflClass->getMethod($hasser)->isPublic()) {
-            $accessType = Access::TYPE_METHOD;
+            $accessType = ReadAccessor::TYPE_METHOD;
             $accessName = $hasser;
         } elseif ($reflClass->hasMethod('__get') && $reflClass->getMethod('__get')->isPublic()) {
-            $accessType = Access::TYPE_PROPERTY;
+            $accessType = ReadAccessor::TYPE_PROPERTY;
             $accessName = $property;
         } elseif ($hasProperty && $reflClass->getProperty($property)->isPublic()) {
-            $accessType = Access::TYPE_PROPERTY;
+            $accessType = ReadAccessor::TYPE_PROPERTY;
             $accessName = $property;
             $accessRef = true;
         } else {
@@ -48,10 +48,10 @@ class Accessor
             ));
         }
 
-        return new Access($accessType, $accessName, $accessRef);
+        return new ReadAccessor($accessType, $accessName, $accessRef);
     }
 
-    public function getWriteAccessor(string $class, string $property, bool $isArray)
+    public function getWriteMutator(string $class, string $property): WriteMutator
     {
         $reflClass = new \ReflectionClass($class);
         $hasProperty = $reflClass->hasProperty($property);
@@ -61,40 +61,22 @@ class Accessor
         $accessName = null;
         $accessType = null;
 
-        if ($isArray) {
-            $methods = $this->findAdderAndRemover($reflClass, $singulars);
-
-            if (null !== $methods) {
-                $accessType = Access::TYPE_ADDER_AND_REMOVER;
-                $accessName = $methods[0];
-                $accessRemover = $methods[1];
-            }
-        }
-
         if ($accessType === null) {
             $setter = 'set' . $camelized;
             $getsetter = lcfirst($camelized); // jQuery style, e.g. read: last(), write: last($item)
 
             if ($this->isMethodAccessible($reflClass, $setter, 1)) {
-                $accessType = Access::TYPE_METHOD;
+                $accessType = WriteMutator::TYPE_METHOD;
                 $accessName = $setter;
             } elseif ($this->isMethodAccessible($reflClass, $getsetter, 1)) {
-                $accessType = Access::TYPE_METHOD;
+                $accessType = WriteMutator::TYPE_METHOD;
                 $accessName = $getsetter;
             } elseif ($this->isMethodAccessible($reflClass, '__set', 2)) {
-                $accessType = Access::TYPE_PROPERTY;
+                $accessType = WriteMutator::TYPE_PROPERTY;
                 $accessName = $property;
             } elseif ($hasProperty && $reflClass->getProperty($property)->isPublic()) {
-                $accessType = Access::TYPE_PROPERTY;
+                $accessType = WriteMutator::TYPE_PROPERTY;
                 $accessName = $property;
-            } elseif (null !== $methods = $this->findAdderAndRemover($reflClass, $singulars)) {
-                throw new \RuntimeException(sprintf(
-                    'The property "%s" in class "%s" can be defined with the methods "%s()" but ' .
-                    'the new value must be an array or an instance of \Traversable, ',
-                    $property,
-                    $reflClass->name,
-                    implode('()", "', $methods)
-                ));
             } else {
                 throw new \RuntimeException(sprintf(
                     'Neither the property "%s" nor one of the methods %s"%s()", "%s()", ' .
@@ -110,32 +92,7 @@ class Accessor
             }
         }
 
-        return new Access($accessType, $accessName, false, $accessRemover);
-    }
-
-    /**
-     * Searches for add and remove methods.
-     *
-     * @param \ReflectionClass $reflClass The reflection class for the given object
-     * @param array            $singulars The singular form of the property name or null
-     *
-     * @return array|null An array containing the adder and remover when found, null otherwise
-     */
-    private function findAdderAndRemover(\ReflectionClass $reflClass, array $singulars): ?array
-    {
-        foreach ($singulars as $singular) {
-            $addMethod = 'add' . $singular;
-            $removeMethod = 'remove' . $singular;
-
-            $addMethodFound = $this->isMethodAccessible($reflClass, $addMethod, 1);
-            $removeMethodFound = $this->isMethodAccessible($reflClass, $removeMethod, 1);
-
-            if ($addMethodFound && $removeMethodFound) {
-                return [$addMethod, $removeMethod];
-            }
-        }
-
-        return null;
+        return new WriteMutator($accessType, $accessName, false, $accessRemover);
     }
 
     /**

@@ -1,11 +1,11 @@
 <?php
 
-namespace Jane\AutoMapper\Compiler;
+namespace Jane\AutoMapper\Compiler\Accessor;
 
 use PhpParser\Node\Arg;
 use PhpParser\Node\Expr;
 
-class Access
+class WriteMutator
 {
     const TYPE_METHOD = 1;
     const TYPE_PROPERTY = 2;
@@ -27,25 +27,7 @@ class Access
         $this->remover = $remover;
     }
 
-    public function isByItem(): bool
-    {
-        return $this->type === self::TYPE_ADDER_AND_REMOVER;
-    }
-
-    public function getReadExpression(Expr\Variable $input): Expr
-    {
-        if ($this->type === self::TYPE_METHOD) {
-            return new Expr\MethodCall($input, $this->name);
-        }
-
-        if ($this->type === self::TYPE_PROPERTY) {
-            return new Expr\PropertyFetch($input, $this->name);
-        }
-
-        throw new \RuntimeException('Invalid accessor for read expression');
-    }
-
-    public function getWriteExpression(Expr\Variable $output, Expr $value): Expr
+    public function getExpression(Expr\Variable $output, Expr $value): Expr
     {
         if ($this->type === self::TYPE_METHOD || $this->type === self::TYPE_ADDER_AND_REMOVER) {
             return new Expr\MethodCall($output, $this->name, [

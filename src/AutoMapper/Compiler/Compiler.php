@@ -2,6 +2,7 @@
 
 namespace Jane\AutoMapper\Compiler;
 
+use Jane\AutoMapper\Compiler\Accessor\AccessorExtractorInterface;
 use Jane\AutoMapper\Compiler\Transformer\TransformerFactory;
 use Jane\AutoMapper\Compiler\Transformer\TransformerInterface;
 use Jane\AutoMapper\Mapper;
@@ -17,12 +18,12 @@ class Compiler
 
     private $transformerFactory;
 
-    private $accessor;
+    private $accessorExtractor;
 
-    public function __construct(PropertyInfoExtractorInterface $propertyInfoExtractor, Accessor $accessor, TransformerFactory $transformerFactory)
+    public function __construct(PropertyInfoExtractorInterface $propertyInfoExtractor, AccessorExtractorInterface $accessorExtractor, TransformerFactory $transformerFactory)
     {
         $this->propertyInfoExtractor = $propertyInfoExtractor;
-        $this->accessor = $accessor;
+        $this->accessorExtractor = $accessorExtractor;
         $this->transformerFactory = $transformerFactory;
     }
 
@@ -55,9 +56,12 @@ class Compiler
                     continue;
                 }
 
+                $sourceAccessor = $this->accessorExtractor->getReadAccessor($source, $property);
+                $targetMutator = $this->accessorExtractor->getWriteMutator($target, $property);
+
                 $mapping[] = [
-                    'source' => $property,
-                    'target' => $property,
+                    'sourceAccessor' => $sourceAccessor,
+                    'targetMutator' => $targetMutator,
                     'transformer' => $transformer,
                 ];
             }
@@ -79,12 +83,11 @@ class Compiler
         foreach ($mapping as $propertyMapping) {
             /** @var TransformerInterface $transformer */
             $transformer = $propertyMapping['transformer'];
+            $sourceAccessor = $propertyMapping['sourceAccessor'];
+            $targetMutator = $propertyMapping['targetMutator'];
 
-            $sourceAccessor = $this->accessor->getReadAccessor($source, $propertyMapping['source']);
-            $targetMutator = $this->accessor->getWriteAccessor($target, $propertyMapping['target'], false);
-
-            [$output, $propStatements] = $transformer->transform($sourceAccessor->getReadExpression($sourceInput), $uniqueVariableScope);
-            $propStatements[] = $targetMutator->getWriteExpression($result, $output);
+            [$output, $propStatements] = $transformer->transform($sourceAccessor->getExpression($sourceInput), $uniqueVariableScope);
+            $propStatements[] = $targetMutator->getExpression($result, $output);
 
             $statements = array_merge(
                 $statements,

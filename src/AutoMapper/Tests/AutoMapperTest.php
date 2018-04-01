@@ -3,7 +3,7 @@
 namespace Jane\AutoMapper\Tests;
 
 use Jane\AutoMapper\AutoMapper;
-use Jane\AutoMapper\Compiler\Accessor;
+use Jane\AutoMapper\Compiler\Accessor\ReflectionAccessorExtractor;
 use Jane\AutoMapper\Compiler\Compiler;
 use Jane\AutoMapper\Compiler\Transformer\TransformerFactory;
 use Jane\AutoMapper\MapperConfiguration;
@@ -24,7 +24,7 @@ class AutoMapperTest extends TestCase
             [new ReflectionExtractor()],
             [new ReflectionExtractor()]
         ),
-            new Accessor(),
+            new ReflectionAccessorExtractor(),
             new TransformerFactory()
         );
     }
