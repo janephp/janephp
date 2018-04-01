@@ -1,0 +1,6 @@
+vendor
+composer.lock
+
+Tests/generated/*
+!Tests/generated/.gitkeep
+Tests/fixtures/*/generated
