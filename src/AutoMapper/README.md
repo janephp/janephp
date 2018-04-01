@@ -66,20 +66,6 @@ class UserDTO
      * @var string|int
      */
     public $age;
-    /**
-     * @var string
-     */
-    public $email;
-
-    /**
-     * @var AddressDTO
-     */
-    public $address;
-
-    /**
-     * @var AddressDTO[]
-     */
-    public $addresses = [];
 }
 
 $compiler = new Compiler(new PropertyInfoExtractor(
