@@ -73,7 +73,7 @@ class Compiler
         $sourceInput = new Expr\Variable($uniqueVariableScope->getUniqueName('value'));
         $result = new Expr\Variable($uniqueVariableScope->getUniqueName('result'));
         $statements = [
-            new Expr\Assign($result, new Expr\New_(new Name($target)))
+            new Expr\Assign($result, new Expr\New_(new Name($target))),
         ];
 
         foreach ($mapping as $propertyMapping) {
@@ -98,7 +98,7 @@ class Compiler
             'flags' => Stmt\Class_::MODIFIER_PUBLIC,
             'params' => [
                 new Param($sourceInput->name),
-                new Param('options', new Expr\Array_(), 'array')
+                new Param('options', new Expr\Array_(), 'array'),
             ],
             'stmts' => $statements,
         ]);
@@ -106,7 +106,7 @@ class Compiler
         return new Stmt\Class_(new Name('Mapper'), [
             'flags' => Stmt\Class_::MODIFIER_FINAL,
             'extends' => new Name\FullyQualified(Mapper::class),
-            'stmts' => [$method]
+            'stmts' => [$method],
         ]);
     }
 }

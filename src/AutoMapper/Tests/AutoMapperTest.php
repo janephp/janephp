@@ -67,6 +67,7 @@ class User
         $this->age = $age;
         $this->email = $email;
     }
+
     /**
      * @return int
      */

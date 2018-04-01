@@ -79,7 +79,7 @@ class MapperConfiguration implements MapperConfigurationInterface
         return hash('md5', serialize([
             $source,
             $target,
-            $options
+            $options,
         ]));
     }
 

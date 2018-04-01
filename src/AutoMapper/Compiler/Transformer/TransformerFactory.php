@@ -7,7 +7,7 @@ use Symfony\Component\PropertyInfo\Type;
 class TransformerFactory
 {
     private const BUILTIN = [
-        Type::BUILTIN_TYPE_BOOL ,
+        Type::BUILTIN_TYPE_BOOL,
         Type::BUILTIN_TYPE_CALLABLE,
         Type::BUILTIN_TYPE_FLOAT,
         Type::BUILTIN_TYPE_INT,

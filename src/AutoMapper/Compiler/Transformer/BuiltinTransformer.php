@@ -12,22 +12,16 @@ class BuiltinTransformer implements TransformerInterface
 
     public const CAST_MAPPING = [
         Type::BUILTIN_TYPE_BOOL => [
-
         ],
         Type::BUILTIN_TYPE_FLOAT => [
-
         ],
         Type::BUILTIN_TYPE_INT => [
-
         ],
         Type::BUILTIN_TYPE_ITERABLE => [
-
         ],
         Type::BUILTIN_TYPE_STRING => [
-
         ],
         self::BUILTIN_TYPE_MIXED => [
-
         ],
         Type::BUILTIN_TYPE_CALLABLE => [],
         Type::BUILTIN_TYPE_RESOURCE => [],

@@ -49,7 +49,7 @@ class Access
     {
         if ($this->type === self::TYPE_METHOD || $this->type === self::TYPE_ADDER_AND_REMOVER) {
             return new Expr\MethodCall($output, $this->name, [
-                new Arg($value)
+                new Arg($value),
             ]);
         }
 

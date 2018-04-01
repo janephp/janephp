@@ -11,10 +11,10 @@ class Accessor
         $reflClass = new \ReflectionClass($class);
         $hasProperty = $reflClass->hasProperty($property);
         $camelProp = Inflector::camelize($property);
-        $getter = 'get'.$camelProp;
+        $getter = 'get' . $camelProp;
         $getsetter = lcfirst($camelProp); // jQuery style, e.g. read: last(), write: last($item)
-        $isser = 'is'.$camelProp;
-        $hasser = 'has'.$camelProp;
+        $isser = 'is' . $camelProp;
+        $hasser = 'has' . $camelProp;
         $accessRef = false;
 
         if ($reflClass->hasMethod($getter) && $reflClass->getMethod($getter)->isPublic()) {
@@ -37,10 +37,10 @@ class Accessor
             $accessName = $property;
             $accessRef = true;
         } else {
-            $methods = array($getter, $getsetter, $isser, $hasser, '__get');
+            $methods = [$getter, $getsetter, $isser, $hasser, '__get'];
 
             throw new \RuntimeException(sprintf(
-                'Neither the property "%s" nor one of the methods "%s()" '.
+                'Neither the property "%s" nor one of the methods "%s()" ' .
                 'exist and have public access in class "%s".',
                 $property,
                 implode('()", "', $methods),
@@ -72,7 +72,7 @@ class Accessor
         }
 
         if ($accessType === null) {
-            $setter = 'set'.$camelized;
+            $setter = 'set' . $camelized;
             $getsetter = lcfirst($camelized); // jQuery style, e.g. read: last(), write: last($item)
 
             if ($this->isMethodAccessible($reflClass, $setter, 1)) {
@@ -89,7 +89,7 @@ class Accessor
                 $accessName = $property;
             } elseif (null !== $methods = $this->findAdderAndRemover($reflClass, $singulars)) {
                 throw new \RuntimeException(sprintf(
-                    'The property "%s" in class "%s" can be defined with the methods "%s()" but '.
+                    'The property "%s" in class "%s" can be defined with the methods "%s()" but ' .
                     'the new value must be an array or an instance of \Traversable, ',
                     $property,
                     $reflClass->name,
@@ -97,11 +97,11 @@ class Accessor
                 ));
             } else {
                 throw new \RuntimeException(sprintf(
-                    'Neither the property "%s" nor one of the methods %s"%s()", "%s()", '.
+                    'Neither the property "%s" nor one of the methods %s"%s()", "%s()", ' .
                     '"__set()" or "__call()" exist and have public access in class "%s".',
                     $property,
                     implode('', array_map(function ($singular) {
-                        return '"add'.$singular.'()"/"remove'.$singular.'()", ';
+                        return '"add' . $singular . '()"/"remove' . $singular . '()", ';
                     }, $singulars)),
                     $setter,
                     $getsetter,
@@ -112,7 +112,6 @@ class Accessor
 
         return new Access($accessType, $accessName, false, $accessRemover);
     }
-
 
     /**
      * Searches for add and remove methods.
@@ -125,14 +124,14 @@ class Accessor
     private function findAdderAndRemover(\ReflectionClass $reflClass, array $singulars): ?array
     {
         foreach ($singulars as $singular) {
-            $addMethod = 'add'.$singular;
-            $removeMethod = 'remove'.$singular;
+            $addMethod = 'add' . $singular;
+            $removeMethod = 'remove' . $singular;
 
             $addMethodFound = $this->isMethodAccessible($reflClass, $addMethod, 1);
             $removeMethodFound = $this->isMethodAccessible($reflClass, $removeMethod, 1);
 
             if ($addMethodFound && $removeMethodFound) {
-                return array($addMethod, $removeMethod);
+                return [$addMethod, $removeMethod];
             }
         }
 
