@@ -3,6 +3,8 @@
 namespace Jane\AutoMapper\Compiler;
 
 use Jane\AutoMapper\Compiler\Accessor\AccessorExtractorInterface;
+use Jane\AutoMapper\Compiler\Accessor\ReadAccessor;
+use Jane\AutoMapper\Compiler\Accessor\WriteMutator;
 use Jane\AutoMapper\Compiler\Transformer\TransformerFactory;
 use Symfony\Component\PropertyInfo\PropertyInfoExtractorInterface;
 
@@ -19,5 +21,15 @@ abstract class PropertiesMappingExtractor implements PropertiesMappingExtractorI
         $this->propertyInfoExtractor = $propertyInfoExtractor;
         $this->accessorExtractor = $accessorExtractor;
         $this->transformerFactory = $transformerFactory;
+    }
+
+    public function getReadAccessor(string $source, string $property): ReadAccessor
+    {
+        return $this->accessorExtractor->getReadAccessor($source, $property);
+    }
+
+    public function getWriteMutator(string $target, string $property): WriteMutator
+    {
+        return $this->accessorExtractor->getWriteMutator($target, $property);
     }
 }

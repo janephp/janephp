@@ -48,10 +48,7 @@ class AutoMapper
             eval($printer->prettyPrint([$class]));
         }
 
-        $this->mapperRegistry[$className] = new $className();
-        $this->mapperRegistry[$className]->setAutoMapper($this);
-
-        return $this->mapperRegistry[$className];
+        return $this->mapperRegistry[$className] = $mappingConfiguration->createMapper($this);
     }
 
     public function map($value, string $target, array $options = [])

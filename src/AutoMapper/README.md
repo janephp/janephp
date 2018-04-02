@@ -7,13 +7,13 @@ Generate automapper class which allows to automap values from Class to Class.
 ## Features
 
  * Optimized mapper from named class to named class (equal or very close to native perf)
+ * Custom property transformer
  * Use symfony/property-info for mapping (allow extracting properties from reflection / phpdoc / serializer / doctrine / ...)
  * Array/stdClass Mapper (a.k.a. Normalizers)
  * Type casting
 
 ## Planned
 
- * Custom property transformer
  * MaxDepth / Circular Reference / Groups
  * Symfony/Serializer Bridge
  * Auto reverse mapping

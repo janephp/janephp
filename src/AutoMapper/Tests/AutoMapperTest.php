@@ -57,6 +57,9 @@ class AutoMapperTest extends TestCase
     {
         $configurationUser = new MapperConfiguration($this->sourceTargetMappingExtractor, User::class, UserDTO::class);
         $configurationAddress = new MapperConfiguration($this->sourceTargetMappingExtractor, Address::class, AddressDTO::class);
+        $configurationUser->forMember('yearOfBirth', function (User $user) {
+            return ((int) date('Y')) - ((int) $user->age);
+        });
 
         $autoMapper = new AutoMapper();
         $autoMapper->register($configurationUser);
@@ -75,6 +78,7 @@ class AutoMapperTest extends TestCase
         self::assertSame(1, $userDto->id);
         self::assertSame('yolo', $userDto->name);
         self::assertSame(13, $userDto->age);
+        self::assertSame(((int) date('Y')) - 13, $userDto->yearOfBirth);
         self::assertNull($userDto->email);
         self::assertCount(1, $userDto->addresses);
         self::assertInstanceOf(AddressDTO::class, $userDto->address);
@@ -227,10 +231,17 @@ class UserDTO
      * @var string
      */
     public $name;
+
     /**
      * @var int
      */
     public $age;
+
+    /**
+     * @var int
+     */
+    public $yearOfBirth;
+
     /**
      * @var string
      */

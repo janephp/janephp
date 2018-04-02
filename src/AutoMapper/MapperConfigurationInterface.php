@@ -13,4 +13,6 @@ interface MapperConfigurationInterface
     public function getPropertiesMapping(): array;
 
     public function getMapperClassName(): string;
+
+    public function createMapper(AutoMapper $autoMapper): Mapper;
 }

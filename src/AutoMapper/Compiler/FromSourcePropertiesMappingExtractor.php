@@ -33,16 +33,22 @@ class FromSourcePropertiesMappingExtractor extends PropertiesMappingExtractor
                 continue;
             }
 
+            $targetMutator = $this->getWriteMutator($target, $property);
             $sourceAccessor = $this->accessorExtractor->getReadAccessor($source, $property);
-            $targetMutator = new WriteMutator(WriteMutator::TYPE_ARRAY_DIMENSION, $property, false);
-
-            if ($target === \stdClass::class) {
-                $targetMutator = new WriteMutator(WriteMutator::TYPE_PROPERTY, $property, false);
-            }
-
             $mapping[] = new PropertyMapping($sourceAccessor, $targetMutator, $transformer, $property);
         }
 
         return $mapping;
+    }
+
+    public function getWriteMutator(string $target, string $property): WriteMutator
+    {
+        $targetMutator = new WriteMutator(WriteMutator::TYPE_ARRAY_DIMENSION, $property, false);
+
+        if ($target === \stdClass::class) {
+            $targetMutator = new WriteMutator(WriteMutator::TYPE_PROPERTY, $property, false);
+        }
+
+        return $targetMutator;
     }
 }

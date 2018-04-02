@@ -42,6 +42,17 @@ abstract class AbstractMapperConfiguration implements MapperConfigurationInterfa
         return sprintf('Mapper_%s', $this->hash);
     }
 
+    public function createMapper(AutoMapper $autoMapper): Mapper
+    {
+        $className = $this->getMapperClassName();
+
+        /** @var Mapper $mapper */
+        $mapper = new $className();
+        $mapper->setAutoMapper($autoMapper);
+
+        return $mapper;
+    }
+
     protected function buildHash(string $source, string $target, array $options = [])
     {
         return hash('md5', serialize([
