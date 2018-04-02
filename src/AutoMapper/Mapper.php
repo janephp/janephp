@@ -8,6 +8,13 @@ abstract class Mapper
 
     protected $callbacks;
 
+    protected $hash;
+
+    public function getModificationHash(): ?string
+    {
+        return $this->hash;
+    }
+
     public function setAutoMapper(AutoMapperInterface $autoMapper)
     {
         $this->autoMapper = $autoMapper;

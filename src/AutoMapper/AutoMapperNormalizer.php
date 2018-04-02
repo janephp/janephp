@@ -36,7 +36,7 @@ class AutoMapperNormalizer extends AbstractAutoMapper implements DenormalizerInt
             return $this->normalize($value, null, $context);
         }
 
-        return $this->getMapper($source, $target, $context)->map($value, $context);
+        return $this->getMapper($source, $target)->map($value, $context);
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])

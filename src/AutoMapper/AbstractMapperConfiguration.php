@@ -10,11 +10,12 @@ abstract class AbstractMapperConfiguration implements MapperConfigurationInterfa
 
     protected $target;
 
+    protected $className;
+
     public function __construct(string $source, string $target)
     {
         $this->source = $source;
         $this->target = $target;
-        $this->hash = $this->buildHash($source, $target);
     }
 
     public function getSource(): string
@@ -29,7 +30,11 @@ abstract class AbstractMapperConfiguration implements MapperConfigurationInterfa
 
     public function getMapperClassName(): string
     {
-        return sprintf('Mapper_%s', $this->hash);
+        if ($this->className !== null) {
+            return $this->className;
+        }
+
+        return $this->className = sprintf('Mapper_%s', crc32($this->source . $this->target));
     }
 
     public function createMapper(AutoMapperInterface $autoMapper): Mapper
@@ -43,12 +48,20 @@ abstract class AbstractMapperConfiguration implements MapperConfigurationInterfa
         return $mapper;
     }
 
-    protected function buildHash(string $source, string $target)
+    public function getModificationHash(): string
     {
-        // @TODO Use modification date of source or target class
-        return hash('md5', serialize([
-            $source,
-            $target,
-        ]));
+        $hash = '';
+
+        if (!in_array($this->source, ['array', \stdClass::class])) {
+            $reflection = new \ReflectionClass($this->source);
+            $hash .= filemtime($reflection->getFileName());
+        }
+
+        if (!in_array($this->target, ['array', \stdClass::class])) {
+            $reflection = new \ReflectionClass($this->target);
+            $hash .= filemtime($reflection->getFileName());
+        }
+
+        return $hash;
     }
 }

@@ -103,6 +103,15 @@ class Compiler
         }
 
         $statements[] = new Stmt\Return_($result);
+        $hashValues = [];
+
+        if (!in_array($mapperConfiguration->getSource(), ['array', \stdClass::class])) {
+            $hashValues[] = $mapperConfiguration->getSource();
+        }
+
+        if (!in_array($mapperConfiguration->getSource(), ['array', \stdClass::class])) {
+            $hashValues[] = $mapperConfiguration->getSource();
+        }
 
         $method = new Stmt\ClassMethod('map', [
             'flags' => Stmt\Class_::MODIFIER_PUBLIC,
@@ -116,7 +125,12 @@ class Compiler
         return new Stmt\Class_(new Name($mapperConfiguration->getMapperClassName()), [
             'flags' => Stmt\Class_::MODIFIER_FINAL,
             'extends' => new Name\FullyQualified(Mapper::class),
-            'stmts' => [$method],
+            'stmts' => [
+                new Stmt\Property(Stmt\Class_::MODIFIER_PROTECTED, [
+                    new Stmt\PropertyProperty('hash', new Scalar\String_($mapperConfiguration->getModificationHash())),
+                ]),
+                $method,
+            ],
         ]);
     }
 }
