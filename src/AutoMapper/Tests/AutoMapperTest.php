@@ -149,6 +149,22 @@ class AutoMapperTest extends TestCase
         self::assertInstanceOf(\stdClass::class, $user);
         self::assertEquals(1, $user->id);
     }
+
+    public function testReverse()
+    {
+        $configurationUser = (new MapperConfiguration($this->fromSourceMappingExtractor, UserDTO::class, \stdClass::class))->getReverseConfiguration();
+        $autoMapper = new AutoMapper();
+        $autoMapper->register($configurationUser);
+
+        $user = new \stdClass();
+        $user->id = 1;
+
+        /** @var UserDTO $userDto */
+        $userDto = $autoMapper->map($user, UserDTO::class);
+
+        self::assertInstanceOf(UserDTO::class, $userDto);
+        self::assertEquals(1, $userDto->id);
+    }
 }
 
 class User

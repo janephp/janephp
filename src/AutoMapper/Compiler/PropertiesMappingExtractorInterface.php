@@ -15,4 +15,6 @@ interface PropertiesMappingExtractorInterface
     public function getReadAccessor(string $source, string $property): ReadAccessor;
 
     public function getWriteMutator(string $target, string $property): WriteMutator;
+
+    public function getReverseExtractor(): self;
 }

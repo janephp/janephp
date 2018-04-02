@@ -16,8 +16,6 @@ class MapperConfiguration extends AbstractMapperConfiguration
     public function __construct(PropertiesMappingExtractorInterface $mappingExtractor, string $source, string $target, array $options = [])
     {
         $this->mappingExtractor = $mappingExtractor;
-        $this->source = $source;
-        $this->target = $target;
 
         parent::__construct($source, $target, $options);
     }
@@ -53,5 +51,10 @@ class MapperConfiguration extends AbstractMapperConfiguration
     public function forMember(string $property, callable $callback)
     {
         $this->customMapping[$property] = $callback;
+    }
+
+    public function getReverseConfiguration()
+    {
+        return new self($this->mappingExtractor->getReverseExtractor(), $this->target, $this->source, $this->options);
     }
 }

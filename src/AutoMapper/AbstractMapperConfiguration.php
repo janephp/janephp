@@ -16,6 +16,8 @@ abstract class AbstractMapperConfiguration implements MapperConfigurationInterfa
 
     public function __construct(string $source, string $target, array $options = [])
     {
+        $this->source = $source;
+        $this->target = $target;
         $this->options = $this->getOptionsResolver()->resolve($options);
         $this->hash = $this->buildHash($source, $target, $options);
     }

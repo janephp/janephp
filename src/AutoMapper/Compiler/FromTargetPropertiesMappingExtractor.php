@@ -46,4 +46,9 @@ class FromTargetPropertiesMappingExtractor extends PropertiesMappingExtractor
 
         return $mapping;
     }
+
+    public function getReverseExtractor(): PropertiesMappingExtractorInterface
+    {
+        return new FromSourcePropertiesMappingExtractor($this->propertyInfoExtractor, $this->accessorExtractor, $this->transformerFactory);
+    }
 }
