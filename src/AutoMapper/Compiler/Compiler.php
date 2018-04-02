@@ -69,7 +69,7 @@ class Compiler
             'flags' => Stmt\Class_::MODIFIER_PUBLIC,
             'params' => [
                 new Param($sourceInput->name),
-                new Param('options', new Expr\Array_(), 'array'),
+                new Param('context', new Expr\Array_(), 'array'),
             ],
             'stmts' => $statements,
         ]);

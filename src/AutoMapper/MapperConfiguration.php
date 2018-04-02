@@ -13,16 +13,16 @@ class MapperConfiguration extends AbstractMapperConfiguration
 
     private $customMapping = [];
 
-    public function __construct(PropertiesMappingExtractorInterface $mappingExtractor, string $source, string $target, array $options = [])
+    public function __construct(PropertiesMappingExtractorInterface $mappingExtractor, string $source, string $target)
     {
         $this->mappingExtractor = $mappingExtractor;
 
-        parent::__construct($source, $target, $options);
+        parent::__construct($source, $target);
     }
 
     public function getPropertiesMapping(): array
     {
-        $mappings = $this->mappingExtractor->getPropertiesMapping($this->source, $this->target, $this->options);
+        $mappings = $this->mappingExtractor->getPropertiesMapping($this->source, $this->target);
 
         foreach ($this->customMapping as $property => $callback) {
             $mappings[] = new PropertyMapping(
@@ -55,6 +55,6 @@ class MapperConfiguration extends AbstractMapperConfiguration
 
     public function getReverseConfiguration()
     {
-        return new self($this->mappingExtractor->getReverseExtractor(), $this->target, $this->source, $this->options);
+        return new self($this->mappingExtractor->getReverseExtractor(), $this->target, $this->source);
     }
 }

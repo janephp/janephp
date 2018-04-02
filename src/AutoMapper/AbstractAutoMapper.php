@@ -25,16 +25,12 @@ abstract class AbstractAutoMapper implements AutoMapperInterface
             $this->configurations[$configuration->getSource()] = [];
         }
 
-        if (!array_key_exists($configuration->getTarget(), $this->configurations[$configuration->getSource()])) {
-            $this->configurations[$configuration->getSource()][$configuration->getTarget()] = [];
-        }
-
-        $this->configurations[$configuration->getSource()][$configuration->getTarget()][] = $configuration;
+        $this->configurations[$configuration->getSource()][$configuration->getTarget()] = $configuration;
     }
 
-    public function getMapper(string $source, string $target, array $options = []): Mapper
+    public function getMapper(string $source, string $target): Mapper
     {
-        $mappingConfiguration = $this->getConfiguration($source, $target, $options);
+        $mappingConfiguration = $this->getConfiguration($source, $target);
 
         if ($mappingConfiguration === null) {
             throw new NoMappingFoundException('No mapping found for source ' . $source . ' and target ' . $target);
@@ -56,7 +52,7 @@ abstract class AbstractAutoMapper implements AutoMapperInterface
         return $this->mapperRegistry[$className] = $mappingConfiguration->createMapper($this);
     }
 
-    public function map($value, string $target, array $options = [])
+    public function map($value, string $target, array $context = [])
     {
         $source = null;
 
@@ -76,26 +72,15 @@ abstract class AbstractAutoMapper implements AutoMapperInterface
             throw new NoMappingFoundException('Cannot map this value, its neither an object or an array');
         }
 
-        return $this->getMapper($source, $target, $options)->map($value, $options);
+        return $this->getMapper($source, $target)->map($value, $context);
     }
 
-    protected function getConfiguration(string $source, string $target, array $options = []): ?MapperConfigurationInterface
+    protected function getConfiguration(string $source, string $target): ?MapperConfigurationInterface
     {
         if (!array_key_exists($source, $this->configurations) || !array_key_exists($target, $this->configurations[$source])) {
             return null;
         }
 
-        $mappingConfiguration = null;
-
-        /** @var MapperConfigurationInterface $configuration */
-        foreach ($this->configurations[$source][$target] as $configuration) {
-            if ($configuration->supports($source, $target, $options)) {
-                $mappingConfiguration = $configuration;
-
-                break;
-            }
-        }
-
-        return $mappingConfiguration;
+        return $this->configurations[$source][$target];
     }
 }

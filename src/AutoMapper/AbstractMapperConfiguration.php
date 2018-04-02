@@ -2,31 +2,19 @@
 
 namespace Jane\AutoMapper;
 
-use Symfony\Component\OptionsResolver\OptionsResolver;
-
 abstract class AbstractMapperConfiguration implements MapperConfigurationInterface
 {
     protected $hash;
-
-    protected $options;
 
     protected $source;
 
     protected $target;
 
-    public function __construct(string $source, string $target, array $options = [])
+    public function __construct(string $source, string $target)
     {
         $this->source = $source;
         $this->target = $target;
-        $this->options = $this->getOptionsResolver()->resolve($options);
-        $this->hash = $this->buildHash($source, $target, $options);
-    }
-
-    public function supports(string $source, string $target, array $options = [])
-    {
-        $options = $this->getOptionsResolver()->resolve($options);
-
-        return $this->buildHash($source, $target, $options) === $this->hash;
+        $this->hash = $this->buildHash($source, $target);
     }
 
     public function getSource(): string
@@ -55,17 +43,12 @@ abstract class AbstractMapperConfiguration implements MapperConfigurationInterfa
         return $mapper;
     }
 
-    protected function buildHash(string $source, string $target, array $options = [])
+    protected function buildHash(string $source, string $target)
     {
+        // @TODO Use modification date of source or target class
         return hash('md5', serialize([
             $source,
             $target,
-            $options,
         ]));
-    }
-
-    protected function getOptionsResolver(): OptionsResolver
-    {
-        return new OptionsResolver();
     }
 }

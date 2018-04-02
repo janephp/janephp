@@ -7,9 +7,9 @@ use SebastianBergmann\GlobalState\RuntimeException;
 
 class FromSourcePropertiesMappingExtractor extends PropertiesMappingExtractor
 {
-    public function getPropertiesMapping(string $source, string $target, array $options = []): array
+    public function getPropertiesMapping(string $source, string $target): array
     {
-        $sourceProperties = $this->propertyInfoExtractor->getProperties($source, $options);
+        $sourceProperties = $this->propertyInfoExtractor->getProperties($source);
 
         if (!\in_array($target, ['array', \stdClass::class])) {
             throw new RuntimeException('Only array or stdClass are accepted as a target');
@@ -22,11 +22,11 @@ class FromSourcePropertiesMappingExtractor extends PropertiesMappingExtractor
         $mapping = [];
 
         foreach ($sourceProperties as $property) {
-            if (!$this->propertyInfoExtractor->isReadable($source, $property, $options)) {
+            if (!$this->propertyInfoExtractor->isReadable($source, $property)) {
                 continue;
             }
 
-            $sourceTypes = $this->propertyInfoExtractor->getTypes($source, $property, $options);
+            $sourceTypes = $this->propertyInfoExtractor->getTypes($source, $property);
             $transformer = $this->transformerFactory->getTransformer($sourceTypes, $sourceTypes);
 
             if (null === $transformer) {

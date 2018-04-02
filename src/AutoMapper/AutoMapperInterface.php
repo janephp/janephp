@@ -4,7 +4,7 @@ namespace Jane\AutoMapper;
 
 interface AutoMapperInterface
 {
-    public function getMapper(string $source, string $target, array $options = []): Mapper;
+    public function getMapper(string $source, string $target): Mapper;
 
-    public function map($value, string $target, array $options = []);
+    public function map($value, string $target, array $context = []);
 }

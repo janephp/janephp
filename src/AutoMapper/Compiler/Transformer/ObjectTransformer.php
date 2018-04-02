@@ -22,7 +22,7 @@ class ObjectTransformer implements TransformerInterface
         return [new Expr\MethodCall(new Expr\PropertyFetch(new Expr\Variable('this'), 'autoMapper'), 'map', [
             new Arg($input),
             new Arg(new Scalar\String_($this->targetType->getClassName())),
-            new Arg(new Expr\Variable('options')),
+            new Arg(new Expr\Variable('context')),
         ]), []];
     }
 }

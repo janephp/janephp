@@ -18,13 +18,16 @@ class PropertyMapping
 
     private $property;
 
-    public function __construct(ReadAccessor $readAccessor, WriteMutator $writeMutator, TransformerInterface $transformer, string $property, bool $checkExists = false)
+    private $groups;
+
+    public function __construct(ReadAccessor $readAccessor, WriteMutator $writeMutator, TransformerInterface $transformer, string $property, bool $checkExists = false, array $groups = null)
     {
         $this->readAccessor = $readAccessor;
         $this->writeMutator = $writeMutator;
         $this->transformer = $transformer;
         $this->property = $property;
         $this->checkExists = $checkExists;
+        $this->groups = $groups;
     }
 
     public function getReadAccessor(): ReadAccessor
@@ -50,5 +53,10 @@ class PropertyMapping
     public function checkExists(): bool
     {
         return $this->checkExists;
+    }
+
+    public function getGroups(): ?array
+    {
+        return $this->groups;
     }
 }
