@@ -45,7 +45,6 @@ class AutoMapper
             $class = $this->compiler->compile($mappingConfiguration);
             $printer = new Standard();
 
-            var_dump($printer->prettyPrint([$class]));
             eval($printer->prettyPrint([$class]));
         }
 
