@@ -18,16 +18,19 @@ class PropertyMapping
 
     private $property;
 
-    private $groups;
+    private $sourceGroups;
 
-    public function __construct(ReadAccessor $readAccessor, WriteMutator $writeMutator, TransformerInterface $transformer, string $property, bool $checkExists = false, array $groups = null)
+    private $targetGroups;
+
+    public function __construct(ReadAccessor $readAccessor, WriteMutator $writeMutator, TransformerInterface $transformer, string $property, bool $checkExists = false, array $sourceGroups = null, array $targetGroups = null)
     {
         $this->readAccessor = $readAccessor;
         $this->writeMutator = $writeMutator;
         $this->transformer = $transformer;
         $this->property = $property;
         $this->checkExists = $checkExists;
-        $this->groups = $groups;
+        $this->sourceGroups = $sourceGroups;
+        $this->targetGroups = $targetGroups;
     }
 
     public function getReadAccessor(): ReadAccessor
@@ -55,8 +58,13 @@ class PropertyMapping
         return $this->checkExists;
     }
 
-    public function getGroups(): ?array
+    public function getSourceGroups(): ?array
     {
-        return $this->groups;
+        return $this->sourceGroups;
+    }
+
+    public function getTargetGroups(): ?array
+    {
+        return $this->targetGroups;
     }
 }

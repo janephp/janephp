@@ -38,18 +38,57 @@ class Compiler
         foreach ($propertiesMapping as $propertyMapping) {
             [$output, $propStatements] = $propertyMapping->getTransformer()->transform($propertyMapping->getReadAccessor()->getExpression($sourceInput), $uniqueVariableScope);
             $propStatements[] = $propertyMapping->getWriteMutator()->getExpression($result, $output);
+            $conditions = [];
 
             if ($propertyMapping->checkExists()) {
-                $condition = new Expr\FuncCall(new Name('property_exists'), [
-                    new Arg($sourceInput),
-                    new Arg(new Scalar\String_($propertyMapping->getProperty())),
-                ]);
+                if ($mapperConfiguration->getSource() === \stdClass::class) {
+                    $conditions[] = new Expr\FuncCall(new Name('property_exists'), [
+                        new Arg($sourceInput),
+                        new Arg(new Scalar\String_($propertyMapping->getProperty())),
+                    ]);
+                }
 
                 if ($mapperConfiguration->getSource() === 'array') {
-                    $condition = new Expr\FuncCall(new Name('array_key_exists'), [
+                    $conditions[] = new Expr\FuncCall(new Name('array_key_exists'), [
                         new Arg(new Scalar\String_($propertyMapping->getProperty())),
                         new Arg($sourceInput),
                     ]);
+                }
+            }
+
+            if (null !== $propertyMapping->getSourceGroups()) {
+                $conditions[] = new Expr\BinaryOp\BooleanAnd(
+                    new Expr\FuncCall(new Name('isset'), [
+                        new Arg(new Expr\ArrayDimFetch(new Expr\Variable('context'), new Scalar\String_('groups'))),
+                    ]),
+                    new Expr\FuncCall(new Name('array_intersect'), [
+                        new Arg(new Expr\ArrayDimFetch(new Expr\Variable('context'), new Scalar\String_('groups'))),
+                        new Arg(new Expr\Array_(array_map(function (string $group) {
+                            return new Expr\ArrayItem(new Scalar\String_($group));
+                        }, $propertyMapping->getSourceGroups()))),
+                    ])
+                );
+            }
+
+            if (null !== $propertyMapping->getTargetGroups()) {
+                $conditions[] = new Expr\BinaryOp\BooleanAnd(
+                    new Expr\FuncCall(new Name('isset'), [
+                        new Arg(new Expr\ArrayDimFetch(new Expr\Variable('context'), new Scalar\String_('groups'))),
+                    ]),
+                    new Expr\FuncCall(new Name('array_intersect'), [
+                        new Arg(new Expr\ArrayDimFetch(new Expr\Variable('context'), new Scalar\String_('groups'))),
+                        new Arg(new Expr\Array_(array_map(function (string $group) {
+                            return new Expr\ArrayItem(new Scalar\String_($group));
+                        }, $propertyMapping->getTargetGroups()))),
+                    ])
+                );
+            }
+
+            if (\count($conditions) > 0) {
+                $condition = array_shift($conditions);
+
+                while (\count($conditions) > 0) {
+                    $condition = new Expr\BinaryOp\BooleanAnd($condition, array_shift($conditions));
                 }
 
                 $propStatements = [new Stmt\If_($condition, [

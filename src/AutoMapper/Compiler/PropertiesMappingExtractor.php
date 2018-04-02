@@ -7,6 +7,7 @@ use Jane\AutoMapper\Compiler\Accessor\ReadAccessor;
 use Jane\AutoMapper\Compiler\Accessor\WriteMutator;
 use Jane\AutoMapper\Compiler\Transformer\TransformerFactory;
 use Symfony\Component\PropertyInfo\PropertyInfoExtractorInterface;
+use Symfony\Component\Serializer\Mapping\Factory\ClassMetadataFactoryInterface;
 
 abstract class PropertiesMappingExtractor implements PropertiesMappingExtractorInterface
 {
@@ -16,11 +17,14 @@ abstract class PropertiesMappingExtractor implements PropertiesMappingExtractorI
 
     protected $accessorExtractor;
 
-    public function __construct(PropertyInfoExtractorInterface $propertyInfoExtractor, AccessorExtractorInterface $accessorExtractor, TransformerFactory $transformerFactory)
+    protected $classMetadataFactory;
+
+    public function __construct(PropertyInfoExtractorInterface $propertyInfoExtractor, AccessorExtractorInterface $accessorExtractor, TransformerFactory $transformerFactory, ClassMetadataFactoryInterface $classMetadataFactory = null)
     {
         $this->propertyInfoExtractor = $propertyInfoExtractor;
         $this->accessorExtractor = $accessorExtractor;
         $this->transformerFactory = $transformerFactory;
+        $this->classMetadataFactory = $classMetadataFactory;
     }
 
     public function getReadAccessor(string $source, string $property): ReadAccessor
@@ -31,5 +35,40 @@ abstract class PropertiesMappingExtractor implements PropertiesMappingExtractorI
     public function getWriteMutator(string $target, string $property): WriteMutator
     {
         return $this->accessorExtractor->getWriteMutator($target, $property);
+    }
+
+    protected function getGroups($class, $property): ?array
+    {
+        if ($class === 'array') {
+            return null;
+        }
+
+        if (null === $this->classMetadataFactory) {
+            return null;
+        }
+
+        if (!$this->classMetadataFactory->getMetadataFor($class)) {
+            return null;
+        }
+
+        $serializerClassMetadata = $this->classMetadataFactory->getMetadataFor($class);
+        $anyGroupFound = false;
+        $groups = [];
+
+        foreach ($serializerClassMetadata->getAttributesMetadata() as $serializerAttributeMetadata) {
+            if (\count($serializerAttributeMetadata->getGroups()) > 0) {
+                $anyGroupFound = true;
+            }
+
+            if ($serializerAttributeMetadata->getName() === $property) {
+                $groups = $serializerAttributeMetadata->getGroups();
+            }
+        }
+
+        if (!$anyGroupFound) {
+            return null;
+        }
+
+        return $groups;
     }
 }

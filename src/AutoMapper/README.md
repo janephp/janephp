@@ -13,10 +13,11 @@ Generate automapper class which allows to automap values from Class to Class.
  * Type casting
  * Reverse mapping
  * Symfony/Serializer Bridge
+ * Groups support
 
 ## Planned
 
- * MaxDepth / Circular Reference / Groups
+ * MaxDepth / Circular Reference
 
 ## Example
 

@@ -33,15 +33,23 @@ class FromTargetPropertiesMappingExtractor extends PropertiesMappingExtractor
                 continue;
             }
 
-            $sourceAccessor = new ReadAccessor(ReadAccessor::TYPE_ARRAY_DIMENSION, $property, false);
+            $sourceAccessor = new ReadAccessor(ReadAccessor::TYPE_ARRAY_DIMENSION, $property);
 
             if ($source === \stdClass::class) {
-                $sourceAccessor = new ReadAccessor(ReadAccessor::TYPE_PROPERTY, $property, false);
+                $sourceAccessor = new ReadAccessor(ReadAccessor::TYPE_PROPERTY, $property);
             }
 
             $targetMutator = $this->accessorExtractor->getWriteMutator($target, $property);
 
-            $mapping[] = new PropertyMapping($sourceAccessor, $targetMutator, $transformer, $property, true);
+            $mapping[] = new PropertyMapping(
+                $sourceAccessor,
+                $targetMutator,
+                $transformer,
+                $property,
+                true,
+                $this->getGroups($source, $property),
+                $this->getGroups($target, $property)
+            );
         }
 
         return $mapping;

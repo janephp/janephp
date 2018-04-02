@@ -39,7 +39,15 @@ class SourceTargetPropertiesMappingExtractor extends PropertiesMappingExtractor
                 $sourceAccessor = $this->accessorExtractor->getReadAccessor($source, $property);
                 $targetMutator = $this->accessorExtractor->getWriteMutator($target, $property);
 
-                $mapping[] = new PropertyMapping($sourceAccessor, $targetMutator, $transformer, $property);
+                $mapping[] = new PropertyMapping(
+                    $sourceAccessor,
+                    $targetMutator,
+                    $transformer,
+                    $property,
+                    false,
+                    $this->getGroups($source, $property),
+                    $this->getGroups($target, $property)
+                );
             }
         }
 

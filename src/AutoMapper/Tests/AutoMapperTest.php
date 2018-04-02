@@ -2,6 +2,7 @@
 
 namespace Jane\AutoMapper\Tests;
 
+use Doctrine\Common\Annotations\AnnotationReader;
 use Jane\AutoMapper\AutoMapper;
 use Jane\AutoMapper\Compiler\Accessor\ReflectionAccessorExtractor;
 use Jane\AutoMapper\Compiler\FromSourcePropertiesMappingExtractor;
@@ -9,10 +10,17 @@ use Jane\AutoMapper\Compiler\FromTargetPropertiesMappingExtractor;
 use Jane\AutoMapper\Compiler\SourceTargetPropertiesMappingExtractor;
 use Jane\AutoMapper\Compiler\Transformer\TransformerFactory;
 use Jane\AutoMapper\MapperConfiguration;
+use Jane\AutoMapper\Tests\Domain\Address;
+use Jane\AutoMapper\Tests\Domain\AddressDTO;
+use Jane\AutoMapper\Tests\Domain\Foo;
+use Jane\AutoMapper\Tests\Domain\User;
+use Jane\AutoMapper\Tests\Domain\UserDTO;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\PropertyInfo\Extractor\PhpDocExtractor;
 use Symfony\Component\PropertyInfo\Extractor\ReflectionExtractor;
 use Symfony\Component\PropertyInfo\PropertyInfoExtractor;
+use Symfony\Component\Serializer\Mapping\Factory\ClassMetadataFactory;
+use Symfony\Component\Serializer\Mapping\Loader\AnnotationLoader;
 
 class AutoMapperTest extends TestCase
 {
@@ -29,7 +37,8 @@ class AutoMapperTest extends TestCase
             [new ReflectionExtractor()]
         ),
             new ReflectionAccessorExtractor(),
-            new TransformerFactory()
+            new TransformerFactory(),
+            new ClassMetadataFactory(new AnnotationLoader(new AnnotationReader()))
         );
 
         $this->fromTargetMappingExtractor = new FromTargetPropertiesMappingExtractor(new PropertyInfoExtractor(
@@ -39,7 +48,8 @@ class AutoMapperTest extends TestCase
             [new ReflectionExtractor()]
         ),
             new ReflectionAccessorExtractor(),
-            new TransformerFactory()
+            new TransformerFactory(),
+            new ClassMetadataFactory(new AnnotationLoader(new AnnotationReader()))
         );
 
         $this->fromSourceMappingExtractor = new FromSourcePropertiesMappingExtractor(new PropertyInfoExtractor(
@@ -49,7 +59,8 @@ class AutoMapperTest extends TestCase
             [new ReflectionExtractor()]
         ),
             new ReflectionAccessorExtractor(),
-            new TransformerFactory()
+            new TransformerFactory(),
+            new ClassMetadataFactory(new AnnotationLoader(new AnnotationReader()))
         );
     }
 
@@ -165,119 +176,29 @@ class AutoMapperTest extends TestCase
         self::assertInstanceOf(UserDTO::class, $userDto);
         self::assertEquals(1, $userDto->id);
     }
-}
 
-class User
-{
-    /**
-     * @var int
-     */
-    private $id;
-    /**
-     * @var string
-     */
-    public $name;
-    /**
-     * @var string|int
-     */
-    public $age;
-    /**
-     * @var string
-     */
-    private $email;
-
-    /**
-     * @var Address
-     */
-    public $address;
-
-    /**
-     * @var Address[]
-     */
-    public $addresses = [];
-
-    public function __construct($id, $name, $age)
+    public function testGroups()
     {
-        $this->id = $id;
-        $this->name = $name;
-        $this->age = $age;
-        $this->email = 'test';
+        $configurationUser = new MapperConfiguration($this->fromSourceMappingExtractor, Foo::class, 'array');
+        $autoMapper = new AutoMapper();
+        $autoMapper->register($configurationUser);
+
+        $foo = new Foo();
+        $foo->setId(10);
+
+        $fooArray = $autoMapper->map($foo, 'array', ['groups' => ['test']]);
+
+        self::assertInternalType('array', $fooArray);
+        self::assertEquals(10, $fooArray['id']);
+
+        $fooArray = $autoMapper->map($foo, 'array', ['groups' => []]);
+
+        self::assertInternalType('array', $fooArray);
+        self::assertArrayNotHasKey('id', $fooArray);
+
+        $fooArray = $autoMapper->map($foo, 'array');
+
+        self::assertInternalType('array', $fooArray);
+        self::assertArrayNotHasKey('id', $fooArray);
     }
-
-    /**
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-}
-
-class Address
-{
-    /**
-     * @var string|null
-     */
-    private $city;
-
-    /**
-     * @return string
-     */
-    public function getCity(): ?string
-    {
-        return $this->city;
-    }
-
-    /**
-     * @param string $city
-     */
-    public function setCity(?string $city): void
-    {
-        $this->city = $city;
-    }
-}
-
-class UserDTO
-{
-    /**
-     * @var int
-     */
-    public $id;
-    /**
-     * @var string
-     */
-    public $name;
-
-    /**
-     * @var int
-     */
-    public $age;
-
-    /**
-     * @var int
-     */
-    public $yearOfBirth;
-
-    /**
-     * @var string
-     */
-    public $email;
-
-    /**
-     * @var AddressDTO
-     */
-    public $address;
-
-    /**
-     * @var AddressDTO[]
-     */
-    public $addresses = [];
-}
-
-class AddressDTO
-{
-    /**
-     * @var string|null
-     */
-    public $city;
 }
