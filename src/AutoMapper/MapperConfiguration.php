@@ -37,7 +37,7 @@ class MapperConfiguration extends AbstractMapperConfiguration
         return $mappings;
     }
 
-    public function createMapper(AutoMapper $autoMapper): Mapper
+    public function createMapper(AutoMapperInterface $autoMapper): Mapper
     {
         $mapper = parent::createMapper($autoMapper);
 

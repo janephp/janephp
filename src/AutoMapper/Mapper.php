@@ -8,7 +8,7 @@ abstract class Mapper
 
     protected $callbacks;
 
-    public function setAutoMapper(AutoMapper $autoMapper)
+    public function setAutoMapper(AutoMapperInterface $autoMapper)
     {
         $this->autoMapper = $autoMapper;
     }

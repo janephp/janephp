@@ -12,11 +12,11 @@ Generate automapper class which allows to automap values from Class to Class.
  * Array/stdClass Mapper (a.k.a. Normalizers)
  * Type casting
  * Reverse mapping
+ * Symfony/Serializer Bridge
 
 ## Planned
 
  * MaxDepth / Circular Reference / Groups
- * Symfony/Serializer Bridge
 
 ## Example
 
