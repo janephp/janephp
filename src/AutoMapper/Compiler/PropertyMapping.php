@@ -14,34 +14,41 @@ class PropertyMapping
 
     private $transformer;
 
-    public function __construct(ReadAccessor $readAccessor, WriteMutator $writeMutator, TransformerInterface $transformer)
+    private $checkExists;
+
+    private $property;
+
+    public function __construct(ReadAccessor $readAccessor, WriteMutator $writeMutator, TransformerInterface $transformer, string $property, bool $checkExists = false)
     {
         $this->readAccessor = $readAccessor;
         $this->writeMutator = $writeMutator;
         $this->transformer = $transformer;
+        $this->property = $property;
+        $this->checkExists = $checkExists;
     }
 
-    /**
-     * @return ReadAccessor
-     */
     public function getReadAccessor(): ReadAccessor
     {
         return $this->readAccessor;
     }
 
-    /**
-     * @return WriteMutator
-     */
     public function getWriteMutator(): WriteMutator
     {
         return $this->writeMutator;
     }
 
-    /**
-     * @return TransformerInterface
-     */
     public function getTransformer(): TransformerInterface
     {
         return $this->transformer;
+    }
+
+    public function getProperty(): string
+    {
+        return $this->property;
+    }
+
+    public function checkExists(): bool
+    {
+        return $this->checkExists;
     }
 }

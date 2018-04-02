@@ -2,25 +2,8 @@
 
 namespace Jane\AutoMapper\Compiler;
 
-use Jane\AutoMapper\Compiler\Accessor\AccessorExtractorInterface;
-use Jane\AutoMapper\Compiler\Transformer\TransformerFactory;
-use Symfony\Component\PropertyInfo\PropertyInfoExtractorInterface;
-
-class MappingFactory
+class SourceTargetPropertiesMappingExtractor extends PropertiesMappingExtractor
 {
-    private $propertyInfoExtractor;
-
-    private $transformerFactory;
-
-    private $accessorExtractor;
-
-    public function __construct(PropertyInfoExtractorInterface $propertyInfoExtractor, AccessorExtractorInterface $accessorExtractor, TransformerFactory $transformerFactory)
-    {
-        $this->propertyInfoExtractor = $propertyInfoExtractor;
-        $this->accessorExtractor = $accessorExtractor;
-        $this->transformerFactory = $transformerFactory;
-    }
-
     /**
      * @return PropertyMapping[]
      */
@@ -30,7 +13,7 @@ class MappingFactory
         $targetProperties = $this->propertyInfoExtractor->getProperties($target, $options);
 
         if (null === $sourceProperties || null === $targetProperties) {
-            throw new \RuntimeException('Cannot find properties to map');
+            return [];
         }
 
         $mapping = [];
@@ -56,7 +39,7 @@ class MappingFactory
                 $sourceAccessor = $this->accessorExtractor->getReadAccessor($source, $property);
                 $targetMutator = $this->accessorExtractor->getWriteMutator($target, $property);
 
-                $mapping[] = new PropertyMapping($sourceAccessor, $targetMutator, $transformer);
+                $mapping[] = new PropertyMapping($sourceAccessor, $targetMutator, $transformer, $property);
             }
         }
 

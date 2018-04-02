@@ -2,20 +2,15 @@
 
 namespace Jane\AutoMapper;
 
-use Jane\AutoMapper\Compiler\Compiler;
-use Jane\AutoMapper\Compiler\MappingFactory;
-use PhpParser\Node\Name;
-use PhpParser\Node\Stmt\Class_;
-use PhpParser\PrettyPrinter\Standard;
-use Symfony\Component\OptionsResolver\OptionsResolver;
+use Jane\AutoMapper\Compiler\PropertiesMappingExtractorInterface;
 
 class MapperConfiguration extends AbstractMapperConfiguration
 {
-    private $mappingFactory;
+    private $mappingExtractor;
 
-    public function __construct(MappingFactory $mappingFactory, string $source, string $target, array $options = [])
+    public function __construct(PropertiesMappingExtractorInterface $mappingExtractor, string $source, string $target, array $options = [])
     {
-        $this->mappingFactory = $mappingFactory;
+        $this->mappingExtractor = $mappingExtractor;
         $this->source = $source;
         $this->target = $target;
 
@@ -24,6 +19,6 @@ class MapperConfiguration extends AbstractMapperConfiguration
 
     public function getPropertiesMapping(): array
     {
-        return $this->mappingFactory->getPropertiesMapping($this->source, $this->target, $this->options);
+        return $this->mappingExtractor->getPropertiesMapping($this->source, $this->target, $this->options);
     }
 }
