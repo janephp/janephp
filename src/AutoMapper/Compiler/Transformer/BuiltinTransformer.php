@@ -44,8 +44,8 @@ class BuiltinTransformer implements TransformerInterface
         Type::BUILTIN_TYPE_STRING => [
             Type::BUILTIN_TYPE_ARRAY => 'toArray',
             Type::BUILTIN_TYPE_ITERABLE => 'toArray',
-            Type::BUILTIN_TYPE_INT => Cast\Int_::class,
             Type::BUILTIN_TYPE_FLOAT => Cast\Double::class,
+            Type::BUILTIN_TYPE_INT => Cast\Int_::class,
             Type::BUILTIN_TYPE_BOOL => Cast\Bool_::class,
         ],
         Type::BUILTIN_TYPE_CALLABLE => [],
