@@ -72,15 +72,15 @@ class AutoMapperTest extends TestCase
         $userDto = $autoMapper->map($user, UserDTO::class);
 
         self::assertInstanceOf(UserDTO::class, $userDto);
-        self::assertEquals(1, $userDto->id);
-        self::assertEquals('yolo', $userDto->name);
-        self::assertEquals('13', $userDto->age);
+        self::assertSame(1, $userDto->id);
+        self::assertSame('yolo', $userDto->name);
+        self::assertSame(13, $userDto->age);
         self::assertNull($userDto->email);
         self::assertCount(1, $userDto->addresses);
         self::assertInstanceOf(AddressDTO::class, $userDto->address);
         self::assertInstanceOf(AddressDTO::class, $userDto->addresses[0]);
-        self::assertEquals('Toulon', $userDto->address->city);
-        self::assertEquals('Toulon', $userDto->addresses[0]->city);
+        self::assertSame('Toulon', $userDto->address->city);
+        self::assertSame('Toulon', $userDto->addresses[0]->city);
     }
 
     public function testAutoMapperFromArray()
@@ -228,7 +228,7 @@ class UserDTO
      */
     public $name;
     /**
-     * @var string|int
+     * @var int
      */
     public $age;
     /**
