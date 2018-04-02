@@ -5,6 +5,7 @@ namespace Jane\AutoMapper\Tests;
 use Jane\AutoMapper\AutoMapper;
 use Jane\AutoMapper\Compiler\Accessor\ReflectionAccessorExtractor;
 use Jane\AutoMapper\Compiler\Compiler;
+use Jane\AutoMapper\Compiler\MappingFactory;
 use Jane\AutoMapper\Compiler\Transformer\TransformerFactory;
 use Jane\AutoMapper\MapperConfiguration;
 use PHPUnit\Framework\TestCase;
@@ -14,11 +15,11 @@ use Symfony\Component\PropertyInfo\PropertyInfoExtractor;
 
 class AutoMapperTest extends TestCase
 {
-    private $compiler;
+    private $mappingFactory;
 
     public function setUp()
     {
-        $this->compiler = new Compiler(new PropertyInfoExtractor(
+        $this->mappingFactory = new MappingFactory(new PropertyInfoExtractor(
             [new ReflectionExtractor()],
             [new ReflectionExtractor(), new PhpDocExtractor()],
             [new ReflectionExtractor()],
@@ -31,12 +32,12 @@ class AutoMapperTest extends TestCase
 
     public function testAutoMapping()
     {
-        $configurationUser = new MapperConfiguration($this->compiler, User::class, UserDTO::class);
-        $configurationAddress = new MapperConfiguration($this->compiler, Address::class, AddressDTO::class);
+        $configurationUser = new MapperConfiguration($this->mappingFactory, User::class, UserDTO::class);
+        $configurationAddress = new MapperConfiguration($this->mappingFactory, Address::class, AddressDTO::class);
 
-        $automapper = new AutoMapper();
-        $automapper->register($configurationUser);
-        $automapper->register($configurationAddress);
+        $autoMapper = new AutoMapper();
+        $autoMapper->register($configurationUser);
+        $autoMapper->register($configurationAddress);
 
         $address = new Address();
         $address->setCity('Toulon');
@@ -45,7 +46,7 @@ class AutoMapperTest extends TestCase
         $user->addresses[] = $address;
 
         /** @var UserDTO $userDto */
-        $userDto = $automapper->map($user, UserDTO::class);
+        $userDto = $autoMapper->map($user, UserDTO::class);
 
         self::assertInstanceOf(UserDTO::class, $userDto);
         self::assertEquals(1, $userDto->id);

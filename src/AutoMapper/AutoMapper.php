@@ -2,11 +2,22 @@
 
 namespace Jane\AutoMapper;
 
+use Jane\AutoMapper\Compiler\Compiler;
 use Jane\AutoMapper\Exception\NoMappingFoundException;
+use PhpParser\PrettyPrinter\Standard;
 
 class AutoMapper
 {
     private $configurations = [];
+
+    private $mapperRegistry = [];
+
+    private $compiler;
+
+    public function __construct(Compiler $compiler = null)
+    {
+        $this->compiler = $compiler ?? new Compiler();
+    }
 
     public function register(MapperConfigurationInterface $configuration)
     {
@@ -19,6 +30,28 @@ class AutoMapper
         }
 
         $this->configurations[$configuration->getSource()][$configuration->getTarget()][] = $configuration;
+    }
+
+    public function getMapper(string $source, string $target, array $options = []): Mapper
+    {
+        $mappingConfiguration = $this->getConfiguration($source, $target, $options);
+        $className = $mappingConfiguration->getMapperClassName();
+
+        if (array_key_exists($className, $this->mapperRegistry)) {
+            return $this->mapperRegistry[$className];
+        }
+
+        if (!class_exists($className)) {
+            $class = $this->compiler->compile($mappingConfiguration);
+            $printer = new Standard();
+
+            eval($printer->prettyPrint([$class]));
+        }
+
+        $this->mapperRegistry[$className] = new $className();
+        $this->mapperRegistry[$className]->setAutoMapper($this);
+
+        return $this->mapperRegistry[$className];
     }
 
     public function map($value, string $target, array $options = [])
@@ -41,6 +74,11 @@ class AutoMapper
             throw new NoMappingFoundException('Cannot map this value, its neither an object or an array');
         }
 
+        return $this->getMapper($source, $target, $options)->map($value, $options);
+    }
+
+    protected function getConfiguration(string $source, string $target, array $options = []): MapperConfigurationInterface
+    {
         if (!array_key_exists($source, $this->configurations) || !array_key_exists($target, $this->configurations[$source])) {
             throw new NoMappingFoundException('No mapping found for source ' . $source . ' and target ' . $target);
         }
@@ -60,9 +98,6 @@ class AutoMapper
             throw new NoMappingFoundException('No mapping found for source ' . $source . ' and target ' . $target);
         }
 
-        $mapper = $mappingConfiguration->getMapper();
-        $mapper->setAutoMapper($this);
-
-        return $mapper->map($value);
+        return $mappingConfiguration;
     }
 }

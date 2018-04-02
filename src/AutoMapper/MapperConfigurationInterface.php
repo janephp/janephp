@@ -10,5 +10,7 @@ interface MapperConfigurationInterface
 
     public function getTarget(): string;
 
-    public function getMapper(): Mapper;
+    public function getPropertiesMapping(): array;
+
+    public function getMapperClassName(): string;
 }

@@ -26,11 +26,6 @@ class ReadAccessor
         $this->remover = $remover;
     }
 
-    public function isByItem(): bool
-    {
-        return $this->type === self::TYPE_ADDER_AND_REMOVER;
-    }
-
     public function getExpression(Expr\Variable $input): Expr
     {
         if ($this->type === self::TYPE_METHOD) {
