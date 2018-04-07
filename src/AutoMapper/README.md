@@ -17,72 +17,44 @@ Generate automapper class which allows to automap values from Class to Class.
 
 ## Planned
 
- * MaxDepth / Circular Reference
+ * MaxDepth
+ * Circular Reference
+ * Flatten
+ * Unflatten
+ * Custom Value Transformer
+ * Private Properties
+ * Better constructor (supporting : not calling constructor / properties constructor)
+
+## Why ?
+
+Applications often have different layers, between a database, an api, your view etc... Often you need to transfer data
+from one domain layer to another one, which have not the same model but which are similar.
+
+Writing mapping code between layers is a boring task and does not add value to your code, that's where this lib is useful, it's
+meant to reduce maintenance of this code and help you focus on your business need.
+
+Other great PHP libraries exist on this subject:
+
+ * https://github.com/mark-gerarts/automapper-plus
+ * https://github.com/idr0id/Papper
+ * https://github.com/michelsalib/BCCAutoMapperBundle
+ * ... https://packagist.org/?q=automapper&p=0
+
+What change here is that the main focus is **performance**, so instead of reading / analyzing metadata at each call it will
+compile mapping into stupid php code like you would have done in your application `$newData->seeFoo($oldData->getFoo());`
+
+You can see benchmarks of existing automapper library here : https://travis-ci.org/idr0id/php-mappers-benchmarks/builds/361253808?utm_source=github_status&utm_medium=notification
+
+Please note that like any other benchmark it's done on a specific use case, so you should not trust me and benchmark your own
+use case.
+
+## Some use cases
+
+ * Mapping from a Database Model to DTO One (for DDD or Api by example)
+ * Mapping from any Model to an array or a stdClass for Serialization
+ * Mapping from a POST request to a model (for a form by example)
+ * ....
 
 ## Example
 
-```php
-class User
-{
-    /**
-     * @var int
-     */
-    private $id;
-    /**
-     * @var string
-     */
-    public $name;
-    /**
-     * @var string|int
-     */
-    public $age;
-
-    public function __construct($id, $name, $age)
-    {
-        $this->id = $id;
-        $this->name = $name;
-        $this->age = $age;
-    }
-
-    /**
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-}
-
-class UserDTO
-{
-    /**
-     * @var int
-     */
-    public $id;
-    /**
-     * @var string
-     */
-    public $name;
-    /**
-     * @var string|int
-     */
-    public $age;
-}
-
-$compiler = new Compiler(new PropertyInfoExtractor(
-    [new ReflectionExtractor()],
-    [new ReflectionExtractor(), new PhpDocExtractor()],
-    [new ReflectionExtractor()],
-    [new ReflectionExtractor()]
-), new Accessor(), new TransformerFactory());
-
-$configurationUser = new MapperConfiguration($this->compiler, User::class, UserDTO::class);
-$automapper = new AutoMapper();
-$automapper->register($configurationUser);
-
-$user = new User(1, 'yolo', '13');
-
-/** @var UserDTO $userDto */
-$userDto = $automapper->map($user, UserDTO::class);
-
-```
+See tests
