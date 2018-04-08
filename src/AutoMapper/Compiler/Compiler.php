@@ -28,6 +28,7 @@ class Compiler
         $hashVariable = new Expr\Variable($uniqueVariableScope->getUniqueName('sourceHash'));
         $contextVariable = new Expr\Variable($uniqueVariableScope->getUniqueName('context'));
         $statements = [];
+        $constructStatements = [];
 
         if ($mapperConfiguration->getSource() !== 'array') {
             $statements[] = new Expr\Assign($hashVariable, new Expr\BinaryOp\Concat(new Expr\FuncCall(new Name('spl_object_hash'), [
@@ -65,6 +66,23 @@ class Compiler
             [$output, $propStatements] = $propertyMapping->getTransformer()->transform($propertyMapping->getReadAccessor()->getExpression($sourceInput), $uniqueVariableScope);
             $propStatements[] = $propertyMapping->getWriteMutator()->getExpression($result, $output);
             $conditions = [];
+
+            $extractCallback = $propertyMapping->getReadAccessor()->getExtractCallback($mapperConfiguration->getSource());
+            $hydrateCallback = $propertyMapping->getWriteMutator()->getHydrateCallback($mapperConfiguration->getTarget());
+
+            if (null !== $extractCallback) {
+                $constructStatements[] = new Expr\Assign(
+                    new Expr\ArrayDimFetch(new Expr\PropertyFetch(new Expr\Variable('this'), 'extractCallbacks'), new Scalar\String_($propertyMapping->getProperty())),
+                    $extractCallback
+                );
+            }
+
+            if (null !== $hydrateCallback) {
+                $constructStatements[] = new Expr\Assign(
+                    new Expr\ArrayDimFetch(new Expr\PropertyFetch(new Expr\Variable('this'), 'hydrateCallbacks'), new Scalar\String_($propertyMapping->getProperty())),
+                    $hydrateCallback
+                );
+            }
 
             if ($propertyMapping->checkExists()) {
                 if ($mapperConfiguration->getSource() === \stdClass::class) {
@@ -132,13 +150,18 @@ class Compiler
 
         $statements[] = new Stmt\Return_($result);
 
-        $method = new Stmt\ClassMethod('map', [
+        $mapmethod = new Stmt\ClassMethod('map', [
             'flags' => Stmt\Class_::MODIFIER_PUBLIC,
             'params' => [
                 new Param($sourceInput->name),
                 new Param('context', null, new Name\FullyQualified(Context::class)),
             ],
             'stmts' => $statements,
+        ]);
+
+        $constructMethod = new Stmt\ClassMethod('__construct', [
+            'flags' => Stmt\Class_::MODIFIER_PUBLIC,
+            'stmts' => $constructStatements,
         ]);
 
         return new Stmt\Class_(new Name($mapperConfiguration->getMapperClassName()), [
@@ -148,7 +171,8 @@ class Compiler
                 new Stmt\Property(Stmt\Class_::MODIFIER_PROTECTED, [
                     new Stmt\PropertyProperty('hash', new Scalar\String_($mapperConfiguration->getModificationHash())),
                 ]),
-                $method,
+                $constructMethod,
+                $mapmethod,
             ],
         ]);
     }

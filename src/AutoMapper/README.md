@@ -15,6 +15,7 @@ Generate automapper class which allows to automap values from Class to Class.
  * Symfony/Serializer Bridge
  * Groups support
  * Circular Reference
+ * Private Properties mapping
 
 ## Planned
 
@@ -22,7 +23,6 @@ Generate automapper class which allows to automap values from Class to Class.
  * Flatten
  * Unflatten
  * Custom Value Transformer
- * Private Properties
  * Better constructor (supporting : not calling constructor / properties constructor)
 
 ## Why ?

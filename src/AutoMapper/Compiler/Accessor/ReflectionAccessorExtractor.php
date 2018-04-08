@@ -6,6 +6,13 @@ use Doctrine\Common\Inflector\Inflector;
 
 class ReflectionAccessorExtractor implements AccessorExtractorInterface
 {
+    private $allowPrivate;
+
+    public function __construct($allowPrivate = false)
+    {
+        $this->allowPrivate = $allowPrivate;
+    }
+
     public function getReadAccessor(string $class, string $property): ReadAccessor
     {
         $reflClass = new \ReflectionClass($class);
@@ -15,8 +22,9 @@ class ReflectionAccessorExtractor implements AccessorExtractorInterface
         $getsetter = lcfirst($camelProp); // jQuery style, e.g. read: last(), write: last($item)
         $isser = 'is' . $camelProp;
         $hasser = 'has' . $camelProp;
-        $accessRef = false;
+        $accessPrivate = false;
 
+        // @TODO Extract this into multiple parts to allow user to choose preferred methods
         if ($reflClass->hasMethod($getter) && $reflClass->getMethod($getter)->isPublic()) {
             $accessType = ReadAccessor::TYPE_METHOD;
             $accessName = $getter;
@@ -35,7 +43,10 @@ class ReflectionAccessorExtractor implements AccessorExtractorInterface
         } elseif ($hasProperty && $reflClass->getProperty($property)->isPublic()) {
             $accessType = ReadAccessor::TYPE_PROPERTY;
             $accessName = $property;
-            $accessRef = true;
+        } elseif ($hasProperty && $this->allowPrivate && $reflClass->getProperty($property)) {
+            $accessType = ReadAccessor::TYPE_PROPERTY;
+            $accessName = $property;
+            $accessPrivate = true;
         } else {
             $methods = [$getter, $getsetter, $isser, $hasser, '__get'];
 
@@ -48,7 +59,7 @@ class ReflectionAccessorExtractor implements AccessorExtractorInterface
             ));
         }
 
-        return new ReadAccessor($accessType, $accessName, $accessRef);
+        return new ReadAccessor($accessType, $accessName, $accessPrivate);
     }
 
     public function getWriteMutator(string $class, string $property): WriteMutator
@@ -60,11 +71,13 @@ class ReflectionAccessorExtractor implements AccessorExtractorInterface
         $accessRemover = null;
         $accessName = null;
         $accessType = null;
+        $accessPrivate = false;
 
         if ($accessType === null) {
             $setter = 'set' . $camelized;
             $getsetter = lcfirst($camelized); // jQuery style, e.g. read: last(), write: last($item)
 
+            // @TODO Extract this into multiple parts to allow user to choose preferred methods
             if ($this->isMethodAccessible($reflClass, $setter, 1)) {
                 $accessType = WriteMutator::TYPE_METHOD;
                 $accessName = $setter;
@@ -77,6 +90,10 @@ class ReflectionAccessorExtractor implements AccessorExtractorInterface
             } elseif ($hasProperty && $reflClass->getProperty($property)->isPublic()) {
                 $accessType = WriteMutator::TYPE_PROPERTY;
                 $accessName = $property;
+            } elseif ($hasProperty && $this->allowPrivate && $reflClass->getProperty($property)) {
+                $accessType = WriteMutator::TYPE_PROPERTY;
+                $accessName = $property;
+                $accessPrivate = true;
             } else {
                 throw new \RuntimeException(sprintf(
                     'Neither the property "%s" nor one of the methods %s"%s()", "%s()", ' .
@@ -92,7 +109,7 @@ class ReflectionAccessorExtractor implements AccessorExtractorInterface
             }
         }
 
-        return new WriteMutator($accessType, $accessName, false, $accessRemover);
+        return new WriteMutator($accessType, $accessName, false, $accessRemover, $accessPrivate);
     }
 
     /**

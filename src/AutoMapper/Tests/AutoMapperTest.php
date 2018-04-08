@@ -10,16 +10,18 @@ use Jane\AutoMapper\Compiler\FromTargetPropertiesMappingExtractor;
 use Jane\AutoMapper\Compiler\SourceTargetPropertiesMappingExtractor;
 use Jane\AutoMapper\Compiler\Transformer\TransformerFactory;
 use Jane\AutoMapper\Context;
+use Jane\AutoMapper\Extractor\ReflectionExtractor;
 use Jane\AutoMapper\MapperConfiguration;
 use Jane\AutoMapper\Tests\Domain\Address;
 use Jane\AutoMapper\Tests\Domain\AddressDTO;
 use Jane\AutoMapper\Tests\Domain\Foo;
 use Jane\AutoMapper\Tests\Domain\Node;
+use Jane\AutoMapper\Tests\Domain\PrivateUser;
+use Jane\AutoMapper\Tests\Domain\PrivateUserDTO;
 use Jane\AutoMapper\Tests\Domain\User;
 use Jane\AutoMapper\Tests\Domain\UserDTO;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\PropertyInfo\Extractor\PhpDocExtractor;
-use Symfony\Component\PropertyInfo\Extractor\ReflectionExtractor;
 use Symfony\Component\PropertyInfo\PropertyInfoExtractor;
 use Symfony\Component\Serializer\Mapping\Factory\ClassMetadataFactory;
 use Symfony\Component\Serializer\Mapping\Loader\AnnotationLoader;
@@ -27,16 +29,21 @@ use Symfony\Component\Serializer\Mapping\Loader\AnnotationLoader;
 class AutoMapperTest extends TestCase
 {
     private $sourceTargetMappingExtractor;
+    private $sourceTargetPrivateMappingExtractor;
     private $fromTargetMappingExtractor;
     private $fromSourceMappingExtractor;
 
     public function setUp()
     {
+        $reflectionExtractor = new ReflectionExtractor();
+        $reflectionExtractorPrivate = new ReflectionExtractor(true);
+        $phpDocExtractor = new PhpDocExtractor();
+
         $this->sourceTargetMappingExtractor = new SourceTargetPropertiesMappingExtractor(new PropertyInfoExtractor(
-            [new ReflectionExtractor()],
-            [new ReflectionExtractor(), new PhpDocExtractor()],
-            [new ReflectionExtractor()],
-            [new ReflectionExtractor()]
+            [$reflectionExtractor],
+            [$reflectionExtractor, $phpDocExtractor],
+            [$reflectionExtractor],
+            [$reflectionExtractor]
         ),
             new ReflectionAccessorExtractor(),
             new TransformerFactory(),
@@ -44,10 +51,10 @@ class AutoMapperTest extends TestCase
         );
 
         $this->fromTargetMappingExtractor = new FromTargetPropertiesMappingExtractor(new PropertyInfoExtractor(
-            [new ReflectionExtractor()],
-            [new ReflectionExtractor(), new PhpDocExtractor()],
-            [new ReflectionExtractor()],
-            [new ReflectionExtractor()]
+            [$reflectionExtractor],
+            [$reflectionExtractor, $phpDocExtractor],
+            [$reflectionExtractor],
+            [$reflectionExtractor]
         ),
             new ReflectionAccessorExtractor(),
             new TransformerFactory(),
@@ -55,12 +62,23 @@ class AutoMapperTest extends TestCase
         );
 
         $this->fromSourceMappingExtractor = new FromSourcePropertiesMappingExtractor(new PropertyInfoExtractor(
-            [new ReflectionExtractor()],
-            [new ReflectionExtractor(), new PhpDocExtractor()],
-            [new ReflectionExtractor()],
-            [new ReflectionExtractor()]
+            [$reflectionExtractor],
+            [$reflectionExtractor, $phpDocExtractor],
+            [$reflectionExtractor],
+            [$reflectionExtractor]
         ),
             new ReflectionAccessorExtractor(),
+            new TransformerFactory(),
+            new ClassMetadataFactory(new AnnotationLoader(new AnnotationReader()))
+        );
+
+        $this->sourceTargetPrivateMappingExtractor = new SourceTargetPropertiesMappingExtractor(new PropertyInfoExtractor(
+            [$reflectionExtractorPrivate],
+            [$reflectionExtractorPrivate, $phpDocExtractor],
+            [$reflectionExtractorPrivate],
+            [$reflectionExtractorPrivate]
+        ),
+            new ReflectionAccessorExtractor(true),
             new TransformerFactory(),
             new ClassMetadataFactory(new AnnotationLoader(new AnnotationReader()))
         );
@@ -227,5 +245,21 @@ class AutoMapperTest extends TestCase
         self::assertNotSame($newNode->parent->parent, $nodeA->parent->parent);
         self::assertInstanceOf(Node::class, $newNode->parent->parent->parent);
         self::assertSame($newNode, $newNode->parent->parent->parent);
+    }
+
+    public function testPrivate()
+    {
+        $configuration = new MapperConfiguration($this->sourceTargetPrivateMappingExtractor, PrivateUser::class, PrivateUserDTO::class);
+        $autoMapper = new AutoMapper();
+        $autoMapper->register($configuration);
+
+        $user = new PrivateUser(10, 'foo', 'bar');
+        /** @var PrivateUserDTO $userDto */
+        $userDto = $autoMapper->map($user, PrivateUserDTO::class);
+
+        self::assertInstanceOf(PrivateUserDTO::class, $userDto);
+        self::assertSame(10, $userDto->getId());
+        self::assertSame('foo', $userDto->getFirstName());
+        self::assertSame('bar', $userDto->getLastName());
     }
 }

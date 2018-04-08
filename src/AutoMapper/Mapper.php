@@ -8,6 +8,10 @@ abstract class Mapper
 
     protected $callbacks;
 
+    protected $hydrateCallbacks = [];
+
+    protected $extractCallbacks = [];
+
     protected $hash;
 
     public function getModificationHash(): ?string
