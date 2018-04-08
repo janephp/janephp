@@ -25,5 +25,5 @@ abstract class Mapper
         $this->callbacks[$name] = $callback;
     }
 
-    abstract public function map($value, array $context = []);
+    abstract public function map($value, Context $context);
 }

@@ -14,11 +14,11 @@ Generate automapper class which allows to automap values from Class to Class.
  * Reverse mapping
  * Symfony/Serializer Bridge
  * Groups support
+ * Circular Reference
 
 ## Planned
 
  * MaxDepth
- * Circular Reference
  * Flatten
  * Unflatten
  * Custom Value Transformer
@@ -53,6 +53,7 @@ use case.
  * Mapping from a Database Model to DTO One (for DDD or Api by example)
  * Mapping from any Model to an array or a stdClass for Serialization
  * Mapping from a POST request to a model (for a form by example)
+ * Deep Cloning (map from and to the same class)
  * ....
 
 ## Example

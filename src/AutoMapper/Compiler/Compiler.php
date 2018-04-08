@@ -2,6 +2,7 @@
 
 namespace Jane\AutoMapper\Compiler;
 
+use Jane\AutoMapper\Context;
 use Jane\AutoMapper\Mapper;
 use Jane\AutoMapper\MapperConfigurationInterface;
 use PhpParser\Node\Arg;
@@ -24,14 +25,39 @@ class Compiler
         $uniqueVariableScope = new UniqueVariableScope();
         $sourceInput = new Expr\Variable($uniqueVariableScope->getUniqueName('value'));
         $result = new Expr\Variable($uniqueVariableScope->getUniqueName('result'));
-        $statements = [
-            new Expr\Assign($result, new Expr\New_(new Name($mapperConfiguration->getTarget()))),
-        ];
+        $hashVariable = new Expr\Variable($uniqueVariableScope->getUniqueName('sourceHash'));
+        $contextVariable = new Expr\Variable($uniqueVariableScope->getUniqueName('context'));
+        $statements = [];
+
+        if ($mapperConfiguration->getSource() !== 'array') {
+            $statements[] = new Expr\Assign($hashVariable, new Expr\BinaryOp\Concat(new Expr\FuncCall(new Name('spl_object_hash'), [
+                new Arg($sourceInput),
+            ]),
+                new Scalar\String_($mapperConfiguration->getTarget())
+            ));
+            $statements[] = new Stmt\If_(new Expr\FuncCall(new Name('array_key_exists'), [
+                new Arg($hashVariable),
+                new Arg(new Expr\MethodCall($contextVariable, 'getRegistry')),
+            ]), [
+                'stmts' => [
+                    new Stmt\Return_(new Expr\ArrayDimFetch(new Expr\MethodCall($contextVariable, 'getRegistry'), $hashVariable)),
+                ],
+            ]);
+        }
 
         if ($mapperConfiguration->getTarget() === 'array') {
-            $statements = [
-                new Expr\Assign($result, new Expr\Array_()),
-            ];
+            $statements[] = new Expr\Assign($result, new Expr\Array_());
+        }
+
+        if ($mapperConfiguration->getTarget() !== 'array') {
+            $statements[] = new Expr\Assign($result, new Expr\New_(new Name($mapperConfiguration->getTarget())));
+        }
+
+        if ($mapperConfiguration->getSource() !== 'array') {
+            $statements[] = new Expr\AssignRef(
+                new Expr\ArrayDimFetch(new Expr\MethodCall($contextVariable, 'getRegistry'), $hashVariable),
+                $result
+            );
         }
 
         /** @var PropertyMapping $propertyMapping */
@@ -58,11 +84,12 @@ class Compiler
 
             if (null !== $propertyMapping->getSourceGroups()) {
                 $conditions[] = new Expr\BinaryOp\BooleanAnd(
-                    new Expr\FuncCall(new Name('isset'), [
-                        new Arg(new Expr\ArrayDimFetch(new Expr\Variable('context'), new Scalar\String_('groups'))),
-                    ]),
+                    new Expr\BinaryOp\NotIdentical(
+                        new Expr\ConstFetch(new Name('null')),
+                        new Expr\MethodCall(new Expr\Variable('context'), 'getGroups')
+                    ),
                     new Expr\FuncCall(new Name('array_intersect'), [
-                        new Arg(new Expr\ArrayDimFetch(new Expr\Variable('context'), new Scalar\String_('groups'))),
+                        new Arg(new Expr\MethodCall(new Expr\Variable('context'), 'getGroups')),
                         new Arg(new Expr\Array_(array_map(function (string $group) {
                             return new Expr\ArrayItem(new Scalar\String_($group));
                         }, $propertyMapping->getSourceGroups()))),
@@ -72,11 +99,12 @@ class Compiler
 
             if (null !== $propertyMapping->getTargetGroups()) {
                 $conditions[] = new Expr\BinaryOp\BooleanAnd(
-                    new Expr\FuncCall(new Name('isset'), [
-                        new Arg(new Expr\ArrayDimFetch(new Expr\Variable('context'), new Scalar\String_('groups'))),
-                    ]),
+                    new Expr\BinaryOp\NotIdentical(
+                        new Expr\ConstFetch(new Name('null')),
+                        new Expr\MethodCall(new Expr\Variable('context'), 'getGroups')
+                    ),
                     new Expr\FuncCall(new Name('array_intersect'), [
-                        new Arg(new Expr\ArrayDimFetch(new Expr\Variable('context'), new Scalar\String_('groups'))),
+                        new Arg(new Expr\MethodCall(new Expr\Variable('context'), 'getGroups')),
                         new Arg(new Expr\Array_(array_map(function (string $group) {
                             return new Expr\ArrayItem(new Scalar\String_($group));
                         }, $propertyMapping->getTargetGroups()))),
@@ -103,21 +131,12 @@ class Compiler
         }
 
         $statements[] = new Stmt\Return_($result);
-        $hashValues = [];
-
-        if (!in_array($mapperConfiguration->getSource(), ['array', \stdClass::class])) {
-            $hashValues[] = $mapperConfiguration->getSource();
-        }
-
-        if (!in_array($mapperConfiguration->getSource(), ['array', \stdClass::class])) {
-            $hashValues[] = $mapperConfiguration->getSource();
-        }
 
         $method = new Stmt\ClassMethod('map', [
             'flags' => Stmt\Class_::MODIFIER_PUBLIC,
             'params' => [
                 new Param($sourceInput->name),
-                new Param('context', new Expr\Array_(), 'array'),
+                new Param('context', null, new Name\FullyQualified(Context::class)),
             ],
             'stmts' => $statements,
         ]);

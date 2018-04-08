@@ -9,10 +9,12 @@ use Jane\AutoMapper\Compiler\FromSourcePropertiesMappingExtractor;
 use Jane\AutoMapper\Compiler\FromTargetPropertiesMappingExtractor;
 use Jane\AutoMapper\Compiler\SourceTargetPropertiesMappingExtractor;
 use Jane\AutoMapper\Compiler\Transformer\TransformerFactory;
+use Jane\AutoMapper\Context;
 use Jane\AutoMapper\MapperConfiguration;
 use Jane\AutoMapper\Tests\Domain\Address;
 use Jane\AutoMapper\Tests\Domain\AddressDTO;
 use Jane\AutoMapper\Tests\Domain\Foo;
+use Jane\AutoMapper\Tests\Domain\Node;
 use Jane\AutoMapper\Tests\Domain\User;
 use Jane\AutoMapper\Tests\Domain\UserDTO;
 use PHPUnit\Framework\TestCase;
@@ -186,12 +188,12 @@ class AutoMapperTest extends TestCase
         $foo = new Foo();
         $foo->setId(10);
 
-        $fooArray = $autoMapper->map($foo, 'array', ['groups' => ['test']]);
+        $fooArray = $autoMapper->map($foo, 'array', new Context(['test']));
 
         self::assertInternalType('array', $fooArray);
         self::assertEquals(10, $fooArray['id']);
 
-        $fooArray = $autoMapper->map($foo, 'array', ['groups' => []]);
+        $fooArray = $autoMapper->map($foo, 'array', new Context([]));
 
         self::assertInternalType('array', $fooArray);
         self::assertArrayNotHasKey('id', $fooArray);
@@ -200,5 +202,30 @@ class AutoMapperTest extends TestCase
 
         self::assertInternalType('array', $fooArray);
         self::assertArrayNotHasKey('id', $fooArray);
+    }
+
+    public function testDeepCloning()
+    {
+        $configuration = new MapperConfiguration($this->sourceTargetMappingExtractor, Node::class, Node::class);
+        $autoMapper = new AutoMapper();
+        $autoMapper->register($configuration);
+
+        $nodeA = new Node();
+        $nodeB = new Node();
+        $nodeB->parent = $nodeA;
+        $nodeC = new Node();
+        $nodeC->parent = $nodeB;
+        $nodeA->parent = $nodeC;
+
+        $newNode = $autoMapper->map($nodeA, Node::class);
+
+        self::assertInstanceOf(Node::class, $newNode);
+        self::assertNotSame($newNode, $nodeA);
+        self::assertInstanceOf(Node::class, $newNode->parent);
+        self::assertNotSame($newNode->parent, $nodeA->parent);
+        self::assertInstanceOf(Node::class, $newNode->parent->parent);
+        self::assertNotSame($newNode->parent->parent, $nodeA->parent->parent);
+        self::assertInstanceOf(Node::class, $newNode->parent->parent->parent);
+        self::assertSame($newNode, $newNode->parent->parent->parent);
     }
 }

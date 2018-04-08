@@ -52,7 +52,7 @@ abstract class AbstractAutoMapper implements AutoMapperInterface
         return $this->mapperRegistry[$className] = $mappingConfiguration->createMapper($this);
     }
 
-    public function map($value, string $target, array $context = [])
+    public function map($value, string $target, Context $context = null)
     {
         $source = null;
 
@@ -70,6 +70,10 @@ abstract class AbstractAutoMapper implements AutoMapperInterface
 
         if (null === $source) {
             throw new NoMappingFoundException('Cannot map this value, its neither an object or an array');
+        }
+
+        if (null === $context) {
+            $context = new Context();
         }
 
         return $this->getMapper($source, $target)->map($value, $context);
