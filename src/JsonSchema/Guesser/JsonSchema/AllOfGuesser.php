@@ -64,7 +64,7 @@ class AllOfGuesser implements GuesserInterface, TypeGuesserInterface, ChainGuess
                     foreach ($object->getPatternProperties() as $pattern => $patternProperty) {
                         $extensions[$pattern] = [
                             'object' => $patternProperty,
-                            'reference' => $reference . '/oatternProperties/' . $pattern,
+                            'reference' => $reference . '/patternProperties/' . $pattern,
                         ];
                     }
                 }
