@@ -13,6 +13,7 @@ class WriteMutator
     const TYPE_METHOD = 1;
     const TYPE_PROPERTY = 2;
     const TYPE_ARRAY_DIMENSION = 3;
+    const TYPE_CONSTRUCTOR = 4;
 
     private $type;
 

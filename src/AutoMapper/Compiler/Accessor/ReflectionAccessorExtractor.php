@@ -72,6 +72,7 @@ class ReflectionAccessorExtractor implements AccessorExtractorInterface
         $accessName = null;
         $accessType = null;
         $accessPrivate = false;
+        $constructor = $reflClass->getConstructor();
 
         if ($accessType === null) {
             $setter = 'set' . $camelized;

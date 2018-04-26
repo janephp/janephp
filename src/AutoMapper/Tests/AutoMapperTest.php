@@ -262,4 +262,20 @@ class AutoMapperTest extends TestCase
         self::assertSame('foo', $userDto->getFirstName());
         self::assertSame('bar', $userDto->getLastName());
     }
+
+    public function testConstructor()
+    {
+        $configuration = new MapperConfiguration($this->sourceTargetPrivateMappingExtractor, PrivateUser::class, PrivateUserDTO::class);
+        $autoMapper = new AutoMapper();
+        $autoMapper->register($configuration);
+
+        $user = new PrivateUser(10, 'foo', 'bar');
+        /** @var PrivateUserDTO $userDto */
+        $userDto = $autoMapper->map($user, PrivateUserDTO::class);
+
+        self::assertInstanceOf(PrivateUserDTO::class, $userDto);
+        self::assertSame(10, $userDto->getId());
+        self::assertSame('foo', $userDto->getFirstName());
+        self::assertSame('bar', $userDto->getLastName());
+    }
 }
