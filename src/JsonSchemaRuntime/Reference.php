@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Jane\JsonSchemaRuntime;
 
-use League\Uri\Schemes\Generic\AbstractUri;
-use League\Uri\Schemes\Http;
-use League\Uri\UriParser;
+use League\Uri\AbstractUri;
+use League\Uri\Http;
+use League\Uri\Parser;
 use Rs\Json\Pointer;
 use Symfony\Component\Yaml\Yaml;
 
@@ -37,7 +37,7 @@ class Reference
 
     public function __construct(string $reference, string $origin)
     {
-        $uriParse = new UriParser();
+        $uriParse = new Parser();
         $originParts = $uriParse->parse($origin);
         $referenceParts = parse_url($reference);
         $mergedParts = array_merge($originParts, $referenceParts);

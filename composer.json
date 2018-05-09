@@ -23,7 +23,7 @@
     "require": {
         "php": ">=7.1",
         "doctrine/inflector": "^1.0",
-        "league/uri": "^4.2",
+        "league/uri": "^5.3",
         "nikic/php-parser": "^3.0",
         "php-http/httplug": "^1.0",
         "php-http/message-factory": "^1.0.2",
