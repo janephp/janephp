@@ -3,7 +3,7 @@
 namespace Jane\JsonSchema;
 
 use Jane\JsonSchema\Guesser\Guess\ClassGuess;
-use League\Uri\Schemes\Http;
+use League\Uri\Http;
 
 class Registry
 {
