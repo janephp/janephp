@@ -41,7 +41,8 @@ abstract class Psr7HttplugClient extends Client
     {
         [$bodyHeaders, $body] = $endpoint->getBody($this->serializer, $this->streamFactory);
         $queryString = $endpoint->getQueryString();
-        $uri = $queryString !== '' ? $endpoint->getUri() . '?' . $queryString : $endpoint->getUri();
+        $uriGlue = false === strpos($endpoint->getUri(), '?') ? '?' : '&';
+        $uri = $queryString !== '' ? $endpoint->getUri() . $uriGlue . $queryString : $endpoint->getUri();
         $request = $this->messageFactory->createRequest($endpoint->getMethod(), $uri, $endpoint->getHeaders($bodyHeaders), $body);
 
         return $endpoint->parsePSR7Response($this->httpClient->sendRequest($request), $this->serializer, $fetch);
