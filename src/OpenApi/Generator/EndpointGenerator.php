@@ -110,7 +110,7 @@ abstract class EndpointGenerator
         $class->stmts[] = $transformBodyMethod;
 
         $file = new File(
-            $context->getCurrentSchema()->getDirectory() . DIRECTORY_SEPARATOR . 'Endpoint' . DIRECTORY_SEPARATOR . $endpointName . '.php',
+            $context->getCurrentSchema()->getDirectory() . \DIRECTORY_SEPARATOR . 'Endpoint' . \DIRECTORY_SEPARATOR . $endpointName . '.php',
             new Stmt\Namespace_(
                 new Name($context->getCurrentSchema()->getNamespace() . '\\Endpoint'),
                 [

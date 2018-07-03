@@ -20,23 +20,23 @@ class JaneOpenApiResourceTest extends TestCase
         // 1. Cleanup generated
         $filesystem = new Filesystem();
 
-        if ($filesystem->exists($testDirectory->getRealPath() . DIRECTORY_SEPARATOR . 'generated')) {
-            $filesystem->remove($testDirectory->getRealPath() . DIRECTORY_SEPARATOR . 'generated');
+        if ($filesystem->exists($testDirectory->getRealPath() . \DIRECTORY_SEPARATOR . 'generated')) {
+            $filesystem->remove($testDirectory->getRealPath() . \DIRECTORY_SEPARATOR . 'generated');
         }
 
-        $filesystem->mkdir($testDirectory->getRealPath() . DIRECTORY_SEPARATOR . 'generated');
+        $filesystem->mkdir($testDirectory->getRealPath() . \DIRECTORY_SEPARATOR . 'generated');
 
         // 2. Generate
         $command = new GenerateCommand();
-        $input = new ArrayInput(['--config-file' => $testDirectory->getRealPath() . DIRECTORY_SEPARATOR . '.jane-openapi'], $command->getDefinition());
+        $input = new ArrayInput(['--config-file' => $testDirectory->getRealPath() . \DIRECTORY_SEPARATOR . '.jane-openapi'], $command->getDefinition());
         $command->execute($input, new NullOutput());
 
         // 3. Compare
         $expectedFinder = new Finder();
-        $expectedFinder->in($testDirectory->getRealPath() . DIRECTORY_SEPARATOR . 'expected');
+        $expectedFinder->in($testDirectory->getRealPath() . \DIRECTORY_SEPARATOR . 'expected');
 
         $generatedFinder = new Finder();
-        $generatedFinder->in($testDirectory->getRealPath() . DIRECTORY_SEPARATOR . 'generated');
+        $generatedFinder->in($testDirectory->getRealPath() . \DIRECTORY_SEPARATOR . 'generated');
 
         $generatedData = [];
 

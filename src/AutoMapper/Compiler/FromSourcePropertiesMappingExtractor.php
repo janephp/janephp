@@ -7,7 +7,7 @@ use SebastianBergmann\GlobalState\RuntimeException;
 
 class FromSourcePropertiesMappingExtractor extends PropertiesMappingExtractor
 {
-    public function getPropertiesMapping(string $source, string $target): array
+    public function getPropertiesMapping(string $source, string $target, bool $allowConstruct = true): array
     {
         $sourceProperties = $this->propertyInfoExtractor->getProperties($source);
 

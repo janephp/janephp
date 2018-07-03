@@ -11,9 +11,18 @@ use PhpParser\Node\Name;
 use PhpParser\Node\Param;
 use PhpParser\Node\Stmt;
 use PhpParser\Node\Scalar;
+use PhpParser\Parser;
+use PhpParser\ParserFactory;
 
 class Compiler
 {
+    private $parser;
+
+    public function __construct(Parser $parser = null)
+    {
+        $this->parser = $parser ?? ParserFactory::create(ParserFactory::PREFER_PHP7);
+    }
+
     public function compile(MapperConfigurationInterface $mapperConfiguration)
     {
         $propertiesMapping = $mapperConfiguration->getPropertiesMapping();
@@ -48,10 +57,58 @@ class Compiler
 
         if ($mapperConfiguration->getTarget() === 'array') {
             $statements[] = new Expr\Assign($result, new Expr\Array_());
-        }
+        } elseif ($mapperConfiguration->getTarget() === \stdClass::class) {
+            $statements[] = new Expr\Assign($result, new Expr\New_(new Name(\stdClass::class)));
+        } elseif ($mapperConfiguration->shouldDisabledTargetConstructor()) {
+            if ($mapperConfiguration->isTargetCloneable()) {
+                $constructStatements[] = new Expr\Assign(
+                    new Expr\PropertyFetch(new Expr\Variable('this'), 'cachedTarget'),
+                    new Expr\MethodCall(new Expr\New_(new Name(\ReflectionClass::class), [
+                        new Arg(new Scalar\String_($mapperConfiguration->getTarget())),
+                    ]), 'newInstanceWithoutConstructor')
+                );
+                $statements[] = new Expr\Assign($result, new Expr\Clone_(new Expr\PropertyFetch(new Expr\Variable('this'), 'cachedTarget')));
+            } else {
+                $constructStatements[] = new Expr\Assign(
+                    new Expr\PropertyFetch(new Expr\Variable('this'), 'cachedTarget'),
+                    new Expr\New_(new Name(\ReflectionClass::class), [
+                        new Arg(new Scalar\String_($mapperConfiguration->getTarget())),
+                    ])
+                );
+                $statements[] = new Expr\Assign($result, new Expr\MethodCall(
+                    new Expr\PropertyFetch(new Expr\Variable('this'), 'cachedTarget'),
+                    'newInstanceWithoutConstructor'
+                ));
+            }
+        } else {
+            $constructArguments = [];
+            $reflectionClass = new \ReflectionClass($mapperConfiguration->getTarget());
+            $constructor = $reflectionClass->getConstructor();
 
-        if ($mapperConfiguration->getTarget() !== 'array') {
-            $statements[] = new Expr\Assign($result, new Expr\New_(new Name($mapperConfiguration->getTarget())));
+            if ($constructor !== null) {
+                /** @var PropertyMapping $propertyMapping */
+                foreach ($propertiesMapping as $propertyMapping) {
+                    if ($propertyMapping->getWriteMutator()->getParameter() === null) {
+                        continue;
+                    }
+
+                    [$output, $propStatements] = $propertyMapping->getTransformer()->transform($propertyMapping->getReadAccessor()->getExpression($sourceInput), $uniqueVariableScope);
+                    $constructArguments[$propertyMapping->getWriteMutator()->getParameter()->getPosition()] = new Arg($output);
+
+                    $statements = array_merge(
+                        $statements,
+                        $propStatements
+                    );
+                }
+
+                foreach ($constructor->getParameters() as $constructorParameter) {
+                    if (!array_key_exists($constructorParameter->getPosition(), $constructArguments)) {
+                        $constructArguments[$constructorParameter->getPosition()] = new Arg($this->getValueAsExpr($constructorParameter->getDefaultValue()));
+                    }
+                }
+            }
+
+            $statements[] = new Expr\Assign($result, new Expr\New_(new Name($mapperConfiguration->getTarget()), $constructArguments));
         }
 
         if ($mapperConfiguration->getSource() !== 'array') {
@@ -64,7 +121,13 @@ class Compiler
         /** @var PropertyMapping $propertyMapping */
         foreach ($propertiesMapping as $propertyMapping) {
             [$output, $propStatements] = $propertyMapping->getTransformer()->transform($propertyMapping->getReadAccessor()->getExpression($sourceInput), $uniqueVariableScope);
-            $propStatements[] = $propertyMapping->getWriteMutator()->getExpression($result, $output);
+            $writeExpression = $propertyMapping->getWriteMutator()->getExpression($result, $output);
+
+            if ($writeExpression === null) {
+                continue;
+            }
+
+            $propStatements[] = $writeExpression;
             $conditions = [];
 
             $extractCallback = $propertyMapping->getReadAccessor()->getExtractCallback($mapperConfiguration->getSource());
@@ -175,5 +238,10 @@ class Compiler
                 $mapmethod,
             ],
         ]);
+    }
+
+    private function getValueAsExpr($value)
+    {
+        return $this->parser->parse('<?php ' . var_export($value, true) . ';')[0];
     }
 }

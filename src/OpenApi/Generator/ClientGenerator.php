@@ -56,7 +56,7 @@ abstract class ClientGenerator implements GeneratorInterface
         ]);
 
         $schema->addFile(new File(
-            $schema->getDirectory() . DIRECTORY_SEPARATOR . 'Client' . $this->getSuffix() . '.php',
+            $schema->getDirectory() . \DIRECTORY_SEPARATOR . 'Client' . $this->getSuffix() . '.php',
             $node,
             self::FILE_TYPE_CLIENT
         ));

@@ -19,7 +19,10 @@ use Jane\AutoMapper\Tests\Domain\Node;
 use Jane\AutoMapper\Tests\Domain\PrivateUser;
 use Jane\AutoMapper\Tests\Domain\PrivateUserDTO;
 use Jane\AutoMapper\Tests\Domain\User;
+use Jane\AutoMapper\Tests\Domain\UserConstructorDTO;
 use Jane\AutoMapper\Tests\Domain\UserDTO;
+use Jane\AutoMapper\Tests\Domain\UserDTONoAge;
+use Jane\AutoMapper\Tests\Domain\UserDTONoName;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\PropertyInfo\Extractor\PhpDocExtractor;
 use Symfony\Component\PropertyInfo\PropertyInfoExtractor;
@@ -265,17 +268,55 @@ class AutoMapperTest extends TestCase
 
     public function testConstructor()
     {
-        $configuration = new MapperConfiguration($this->sourceTargetPrivateMappingExtractor, PrivateUser::class, PrivateUserDTO::class);
+        $configuration = new MapperConfiguration($this->sourceTargetPrivateMappingExtractor, UserDTO::class, UserConstructorDTO::class);
         $autoMapper = new AutoMapper();
         $autoMapper->register($configuration);
 
-        $user = new PrivateUser(10, 'foo', 'bar');
-        /** @var PrivateUserDTO $userDto */
-        $userDto = $autoMapper->map($user, PrivateUserDTO::class);
+        $user = new UserDTO();
+        $user->id = 10;
+        $user->name = 'foo';
+        $user->age = 3;
+        /** @var UserConstructorDTO $userDto */
+        $userDto = $autoMapper->map($user, UserConstructorDTO::class);
 
-        self::assertInstanceOf(PrivateUserDTO::class, $userDto);
-        self::assertSame(10, $userDto->getId());
-        self::assertSame('foo', $userDto->getFirstName());
-        self::assertSame('bar', $userDto->getLastName());
+        self::assertInstanceOf(UserConstructorDTO::class, $userDto);
+        self::assertSame('10', $userDto->getId());
+        self::assertSame('foo', $userDto->getName());
+        self::assertSame(3, $userDto->getAge());
+    }
+
+    public function testConstructorWithDefault()
+    {
+        $configuration = new MapperConfiguration($this->sourceTargetPrivateMappingExtractor, UserDTONoAge::class, UserConstructorDTO::class);
+        $autoMapper = new AutoMapper();
+        $autoMapper->register($configuration);
+
+        $user = new UserDTONoAge();
+        $user->id = 10;
+        $user->name = 'foo';
+        /** @var UserConstructorDTO $userDto */
+        $userDto = $autoMapper->map($user, UserConstructorDTO::class);
+
+        self::assertInstanceOf(UserConstructorDTO::class, $userDto);
+        self::assertSame('10', $userDto->getId());
+        self::assertSame('foo', $userDto->getName());
+        self::assertSame(30, $userDto->getAge());
+    }
+
+    public function testConstructorDisable()
+    {
+        $configuration = new MapperConfiguration($this->sourceTargetPrivateMappingExtractor, UserDTONoName::class, UserConstructorDTO::class);
+        $autoMapper = new AutoMapper();
+        $autoMapper->register($configuration);
+
+        $user = new UserDTONoName();
+        $user->id = 10;
+        /** @var UserConstructorDTO $userDto */
+        $userDto = $autoMapper->map($user, UserConstructorDTO::class);
+
+        self::assertInstanceOf(UserConstructorDTO::class, $userDto);
+        self::assertSame('10', $userDto->getId());
+        self::assertNull($userDto->getName());
+        self::assertNull($userDto->getAge());
     }
 }

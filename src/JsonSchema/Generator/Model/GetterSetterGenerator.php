@@ -4,7 +4,6 @@ namespace Jane\JsonSchema\Generator\Model;
 
 use Jane\JsonSchema\Generator\Naming;
 use Jane\JsonSchema\Guesser\Guess\Property;
-use Jane\JsonSchema\Guesser\Guess\Type;
 use PhpParser\Comment\Doc;
 use PhpParser\Node\Param;
 use PhpParser\Node\Stmt;

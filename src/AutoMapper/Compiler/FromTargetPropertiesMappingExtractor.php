@@ -7,7 +7,7 @@ use SebastianBergmann\GlobalState\RuntimeException;
 
 class FromTargetPropertiesMappingExtractor extends PropertiesMappingExtractor
 {
-    public function getPropertiesMapping(string $source, string $target): array
+    public function getPropertiesMapping(string $source, string $target, bool $allowConstruct = true): array
     {
         $targetProperties = $this->propertyInfoExtractor->getProperties($target);
 
@@ -39,7 +39,7 @@ class FromTargetPropertiesMappingExtractor extends PropertiesMappingExtractor
                 $sourceAccessor = new ReadAccessor(ReadAccessor::TYPE_PROPERTY, $property);
             }
 
-            $targetMutator = $this->accessorExtractor->getWriteMutator($target, $property);
+            $targetMutator = $this->accessorExtractor->getWriteMutator($target, $property, $allowConstruct);
 
             $mapping[] = new PropertyMapping(
                 $sourceAccessor,

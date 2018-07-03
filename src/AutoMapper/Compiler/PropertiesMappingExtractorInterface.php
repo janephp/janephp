@@ -10,7 +10,7 @@ interface PropertiesMappingExtractorInterface
     /**
      * @return PropertyMapping[]
      */
-    public function getPropertiesMapping(string $source, string $target): array;
+    public function getPropertiesMapping(string $source, string $target, bool $allowConstruct = true): array;
 
     public function getReadAccessor(string $source, string $property): ReadAccessor;
 

@@ -19,22 +19,19 @@ class WriteMutator
 
     private $name;
 
-    private $remover;
-
-    private $ref;
-
     private $private;
 
-    public function __construct(int $type, string $name, bool $ref = false, ?string $remover = null, bool $private = false)
+    private $parameter;
+
+    public function __construct(int $type, string $name, bool $private = false, \ReflectionParameter $parameter = null)
     {
         $this->type = $type;
         $this->name = $name;
-        $this->ref = $ref;
-        $this->remover = $remover;
         $this->private = $private;
+        $this->parameter = $parameter;
     }
 
-    public function getExpression(Expr\Variable $output, Expr $value): Expr
+    public function getExpression(Expr\Variable $output, Expr $value): ?Expr
     {
         if ($this->type === self::TYPE_METHOD) {
             return new Expr\MethodCall($output, $this->name, [
@@ -60,7 +57,11 @@ class WriteMutator
             return new Expr\Assign(new Expr\ArrayDimFetch($output, new Scalar\String_($this->name)), $value);
         }
 
-        throw new \RuntimeException('Invalid accessor for read expression');
+        if ($this->type === self::TYPE_CONSTRUCTOR) {
+            return null;
+        }
+
+        throw new \RuntimeException('Invalid accessor for write expression');
     }
 
     public function getHydrateCallback($className)
@@ -82,5 +83,10 @@ class WriteMutator
             new Arg(new Expr\ConstFetch(new Name('null'))),
             new Arg(new Scalar\String_(new Name\FullyQualified($className))),
         ]);
+    }
+
+    public function getParameter(): ?\ReflectionParameter
+    {
+        return $this->parameter;
     }
 }

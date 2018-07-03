@@ -16,6 +16,7 @@ Generate automapper class which allows to automap values from Class to Class.
  * Groups support
  * Circular Reference
  * Private Properties mapping
+ * Use or disable constructor when creating the target object
 
 ## Planned
 
@@ -23,7 +24,6 @@ Generate automapper class which allows to automap values from Class to Class.
  * Flatten
  * Unflatten
  * Custom Value Transformer
- * Better constructor (supporting : not calling constructor / properties constructor)
 
 ## Why ?
 
