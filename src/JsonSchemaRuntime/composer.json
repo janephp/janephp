@@ -22,7 +22,7 @@
         "php": "^7.0",
         "symfony/serializer": "^3.1|^4.0",
         "symfony/yaml": "^3.1|^4.0",
-        "league/uri": "^5.3",
+        "league/uri": "^4.2|^5.3",
         "php-jsonpointer/php-jsonpointer": "^3.0"
     },
     "require-dev": {
