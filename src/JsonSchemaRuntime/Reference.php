@@ -4,8 +4,10 @@ declare(strict_types=1);
 
 namespace Jane\JsonSchemaRuntime;
 
-use League\Uri\Schemes\Generic\AbstractUri;
-use League\Uri\Schemes\Http;
+use League\Uri\AbstractUri;
+use League\Uri\Http;
+use League\Uri\Schemes\Http as HttpLegacy;
+use League\Uri\Parser;
 use League\Uri\UriParser;
 use Rs\Json\Pointer;
 use Symfony\Component\Yaml\Yaml;
@@ -15,29 +17,24 @@ use Symfony\Component\Yaml\Yaml;
  */
 class Reference
 {
-    /**
-     * @var mixed
-     */
     private $resolved;
 
-    /**
-     * @var AbstractUri
-     */
     private $referenceUri;
 
-    /**
-     * @var AbstractUri
-     */
     private $originUri;
 
-    /**
-     * @var AbstractUri
-     */
     private $mergedUri;
 
     public function __construct(string $reference, string $origin)
     {
-        $uriParse = new UriParser();
+        if (class_exists(Parser::class)) {
+            $uriParse = new Parser();
+        } else {
+            $uriParse = new UriParser();
+        }
+
+        $http = class_exists(Http::class) ? Http::class : HttpLegacy::class;
+
         $originParts = $uriParse->parse($origin);
         $referenceParts = parse_url($reference);
         $mergedParts = array_merge($originParts, $referenceParts);
@@ -46,9 +43,9 @@ class Reference
             $mergedParts['path'] = $this->joinPath(dirname($originParts['path']), $referenceParts['path']);
         }
 
-        $this->referenceUri = Http::createFromString($reference);
-        $this->originUri = Http::createFromString($origin);
-        $this->mergedUri = Http::createFromComponents($mergedParts);
+        $this->referenceUri = $http::createFromString($reference);
+        $this->originUri = $http::createFromString($origin);
+        $this->mergedUri = $http::createFromComponents($mergedParts);
     }
 
     /**
@@ -116,7 +113,7 @@ class Reference
     }
 
     /**
-     * @return AbstractUri
+     * @return AbstractUri|\League\Uri\Schemes\Generic\AbstractUri
      */
     public function getMergedUri()
     {
@@ -124,7 +121,7 @@ class Reference
     }
 
     /**
-     * @return AbstractUri
+     * @return AbstractUri|\League\Uri\Schemes\Generic\AbstractUri
      */
     public function getReferenceUri()
     {
@@ -132,7 +129,7 @@ class Reference
     }
 
     /**
-     * @return AbstractUri
+     * @return AbstractUri|\League\Uri\Schemes\Generic\AbstractUri
      */
     public function getOriginUri()
     {
