@@ -52,12 +52,12 @@ abstract class AbstractMapperConfiguration implements MapperConfigurationInterfa
     {
         $hash = '';
 
-        if (!in_array($this->source, ['array', \stdClass::class])) {
+        if (!\in_array($this->source, ['array', \stdClass::class], true)) {
             $reflection = new \ReflectionClass($this->source);
             $hash .= filemtime($reflection->getFileName());
         }
 
-        if (!in_array($this->target, ['array', \stdClass::class])) {
+        if (!\in_array($this->target, ['array', \stdClass::class], true)) {
             $reflection = new \ReflectionClass($this->target);
             $hash .= filemtime($reflection->getFileName());
         }

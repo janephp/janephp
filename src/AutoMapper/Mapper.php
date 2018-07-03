@@ -12,6 +12,8 @@ abstract class Mapper
 
     protected $extractCallbacks = [];
 
+    protected $cachedTarget;
+
     protected $hash;
 
     public function getModificationHash(): ?string

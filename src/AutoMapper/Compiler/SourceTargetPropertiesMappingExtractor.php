@@ -7,7 +7,7 @@ class SourceTargetPropertiesMappingExtractor extends PropertiesMappingExtractor
     /**
      * @return PropertyMapping[]
      */
-    public function getPropertiesMapping(string $source, string $target): array
+    public function getPropertiesMapping(string $source, string $target, bool $allowConstruct = true): array
     {
         $sourceProperties = $this->propertyInfoExtractor->getProperties($source);
         $targetProperties = $this->propertyInfoExtractor->getProperties($target);
@@ -37,7 +37,7 @@ class SourceTargetPropertiesMappingExtractor extends PropertiesMappingExtractor
                 }
 
                 $sourceAccessor = $this->accessorExtractor->getReadAccessor($source, $property);
-                $targetMutator = $this->accessorExtractor->getWriteMutator($target, $property);
+                $targetMutator = $this->accessorExtractor->getWriteMutator($target, $property, $allowConstruct);
 
                 $mapping[] = new PropertyMapping(
                     $sourceAccessor,

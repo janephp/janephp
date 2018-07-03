@@ -62,23 +62,35 @@ class ReflectionAccessorExtractor implements AccessorExtractorInterface
         return new ReadAccessor($accessType, $accessName, $accessPrivate);
     }
 
-    public function getWriteMutator(string $class, string $property): WriteMutator
+    public function getWriteMutator(string $class, string $property, bool $allowConstruct = true): WriteMutator
     {
         $reflClass = new \ReflectionClass($class);
         $hasProperty = $reflClass->hasProperty($property);
         $camelized = Inflector::camelize($property);
         $singulars = (array) Inflector::singularize($camelized);
-        $accessRemover = null;
+        $accessParameter = null;
         $accessName = null;
         $accessType = null;
         $accessPrivate = false;
+        $constructor = $reflClass->getConstructor();
+
+        if ($constructor !== null) {
+            foreach ($constructor->getParameters() as $parameter) {
+                if ($parameter->getName() === $property) {
+                    $accessParameter = $parameter;
+                }
+            }
+        }
 
         if ($accessType === null) {
             $setter = 'set' . $camelized;
             $getsetter = lcfirst($camelized); // jQuery style, e.g. read: last(), write: last($item)
 
             // @TODO Extract this into multiple parts to allow user to choose preferred methods
-            if ($this->isMethodAccessible($reflClass, $setter, 1)) {
+            if ($accessParameter !== null && $allowConstruct) {
+                $accessType = WriteMutator::TYPE_CONSTRUCTOR;
+                $accessName = $property;
+            } elseif ($this->isMethodAccessible($reflClass, $setter, 1)) {
                 $accessType = WriteMutator::TYPE_METHOD;
                 $accessName = $setter;
             } elseif ($this->isMethodAccessible($reflClass, $getsetter, 1)) {
@@ -109,7 +121,7 @@ class ReflectionAccessorExtractor implements AccessorExtractorInterface
             }
         }
 
-        return new WriteMutator($accessType, $accessName, false, $accessRemover, $accessPrivate);
+        return new WriteMutator($accessType, $accessName, $accessPrivate, $accessParameter);
     }
 
     /**
