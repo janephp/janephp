@@ -23,7 +23,6 @@ matrix:
           env: COMPOSER_FLAGS="--prefer-stable --prefer-lowest" COVERAGE=true TEST_COMMAND="composer test-ci"
 
 before_install:
-    - travis_retry composer self-update
     - phpenv config-rm xdebug.ini || true
 
 install:
