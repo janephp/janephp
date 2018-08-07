@@ -50,6 +50,21 @@ class MultipleType extends Type
     }
 
     /**
+     * We have to place mixed normalization path at the last.
+     * @return Type[]
+     */
+    protected function getTypesSorted()
+    {
+        $types = $this->getTypes();
+        usort($types, function($first, $second) {
+            /** @var Type $first */
+            /** @var Type $second */
+            return $first->name == 'mixed' ? 1 : 0;
+        });
+        return $types;
+    }
+
+    /**
      * {@inheritdoc}
      */
     public function getDocTypeHint($namespace)
@@ -97,20 +112,22 @@ class MultipleType extends Type
             new Expr\Assign($output, $input),
         ];
 
-        foreach ($this->getTypes() as $type) {
+        /** @var Stmt\If_|null $ifStmt */
+        $ifStmt = null;
+        foreach ($this->getTypesSorted() as $type) {
             list($typeStatements, $typeOutput) = $type->createDenormalizationStatement($context, $input);
 
-            $statements[] = new Stmt\If_(
-                $type->createConditionStatement($input),
-                [
-                    'stmts' => array_merge(
-                        $typeStatements, [
-                            new Expr\Assign($output, $typeOutput),
-                        ]
-                    ),
-                ]
-            );
+            $condition = $type->createConditionStatement($input);
+            $statement = array_merge($typeStatements, [new Expr\Assign($output, $typeOutput)]);
+
+            if($ifStmt === null) {
+                $ifStmt = new Stmt\If_($condition, ['stmts' => $statement]);
+            }
+            else {
+                $ifStmt->elseifs[] = new Stmt\ElseIf_($condition, $statement);
+            }
         }
+        $statements[] = $ifStmt;
 
         return [$statements, $output];
     }
@@ -125,20 +142,22 @@ class MultipleType extends Type
             new Expr\Assign($output, $input),
         ];
 
-        foreach ($this->getTypes() as $type) {
+        /** @var Stmt\If_|null $ifStmt */
+        $ifStmt = null;
+        foreach ($this->getTypesSorted() as $type) {
             list($typeStatements, $typeOutput) = $type->createNormalizationStatement($context, $input);
 
-            $statements[] = new Stmt\If_(
-                $type->createNormalizationConditionStatement($input),
-                [
-                    'stmts' => array_merge(
-                        $typeStatements, [
-                            new Expr\Assign($output, $typeOutput),
-                        ]
-                    ),
-                ]
-            );
+            $condition = $type->createNormalizationConditionStatement($input);
+            $statement = array_merge($typeStatements, [new Expr\Assign($output, $typeOutput)]);
+
+            if($ifStmt === null) {
+                $ifStmt = new Stmt\If_($condition, ['stmts' => $statement]);
+            }
+            else {
+                $ifStmt->elseifs[] = new Stmt\ElseIf_($condition, $statement);
+            }
         }
+        $statements[] = $ifStmt;
 
         return [$statements, $output];
     }

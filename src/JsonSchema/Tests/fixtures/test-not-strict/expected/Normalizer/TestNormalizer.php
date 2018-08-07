@@ -49,8 +49,7 @@ class TestNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             $value = $data->{'nullOrString'};
             if (is_string($data->{'nullOrString'})) {
                 $value = $data->{'nullOrString'};
-            }
-            if (is_null($data->{'nullOrString'})) {
+            } elseif (is_null($data->{'nullOrString'})) {
                 $value = $data->{'nullOrString'};
             }
             $object->setNullOrString($value);
@@ -80,8 +79,7 @@ class TestNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         $value = $object->getNullOrString();
         if (is_string($object->getNullOrString())) {
             $value = $object->getNullOrString();
-        }
-        if (is_null($object->getNullOrString())) {
+        } elseif (is_null($object->getNullOrString())) {
             $value = $object->getNullOrString();
         }
         $data->{'nullOrString'} = $value;
