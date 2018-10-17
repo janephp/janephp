@@ -27,8 +27,8 @@
         "symfony/yaml": "^3.1|^4.0"
     },
     "require-dev": {
-        "phpunit/phpunit": "^6.0",
-        "friendsofphp/php-cs-fixer": "^2.7.3"
+        "friendsofphp/php-cs-fixer": "^2.7.3",
+        "phpunit/phpunit": "^6.0"
     },
     "suggest": {
         "friendsofphp/php-cs-fixer": "Allow to automatically fix cs on generated code for better visualisation"
@@ -37,7 +37,8 @@
         "friendsofphp/php-cs-fixer": "<2.7.3|>=3.0"
     },
     "config": {
-        "process-timeout": 1800
+        "process-timeout": 1800,
+        "sort-packages": true
     },
     "scripts": {
         "test": "vendor/bin/phpunit"
