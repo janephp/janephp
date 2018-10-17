@@ -14,9 +14,9 @@ class SimpleTypeGuesser extends BaseSimpleTypeGuesser
     {
         return ($object instanceof Schema)
             &&
-            in_array($object->getType(), $this->typesSupported)
+            \in_array($object->getType(), $this->typesSupported)
             &&
-            !in_array($object->getFormat(), $this->excludeFormat)
+            !\in_array($object->getFormat(), $this->excludeFormat)
         ;
     }
 }

@@ -41,7 +41,7 @@ class JaneBaseTest extends TestCase
         $generatedFinder->in($testDirectory->getRealPath() . \DIRECTORY_SEPARATOR . 'generated');
         $generatedData = [];
 
-        $this->assertEquals(count($expectedFinder), count($generatedFinder), sprintf('No same number of files for %s', $testDirectory->getRelativePathname()));
+        $this->assertEquals(\count($expectedFinder), \count($generatedFinder), sprintf('No same number of files for %s', $testDirectory->getRelativePathname()));
 
         foreach ($generatedFinder as $generatedFile) {
             $generatedData[$generatedFile->getRelativePathname()] = $generatedFile->getRealPath();

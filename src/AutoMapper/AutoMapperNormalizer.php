@@ -16,11 +16,11 @@ class AutoMapperNormalizer extends AbstractAutoMapper implements DenormalizerInt
             return null;
         }
 
-        if (is_object($value)) {
-            $source = get_class($value);
+        if (\is_object($value)) {
+            $source = \get_class($value);
         }
 
-        if (is_array($value)) {
+        if (\is_array($value)) {
             $source = 'array';
         }
 
@@ -58,7 +58,7 @@ class AutoMapperNormalizer extends AbstractAutoMapper implements DenormalizerInt
 
     public function supportsNormalization($data, $format = null)
     {
-        $configuration = $this->getConfiguration(get_class($data), 'array');
+        $configuration = $this->getConfiguration(\get_class($data), 'array');
 
         return null !== $configuration;
     }

@@ -113,7 +113,7 @@ class Schema
 
     public function hasReference(string $reference): bool
     {
-        return in_array($reference, $this->references, true);
+        return \in_array($reference, $this->references, true);
     }
 
     /**
@@ -146,7 +146,7 @@ class Schema
                 continue;
             }
 
-            if ('..' === $part && count($pathParts) > 0) {
+            if ('..' === $part && \count($pathParts) > 0) {
                 array_pop($pathParts);
                 continue;
             }

@@ -12,7 +12,7 @@ class AllOfGuesser extends BaseAllOfGuesser
      */
     public function supportObject($object)
     {
-        return ($object instanceof Schema) && is_array($object->getAllOf()) && count($object->getAllOf()) > 0;
+        return ($object instanceof Schema) && \is_array($object->getAllOf()) && \count($object->getAllOf()) > 0;
     }
 
     /**

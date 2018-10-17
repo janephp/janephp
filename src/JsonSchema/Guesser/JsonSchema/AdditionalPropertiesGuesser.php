@@ -39,7 +39,7 @@ class AdditionalPropertiesGuesser implements GuesserInterface, TypeGuesserInterf
             return false;
         }
 
-        if (true !== $object->getAdditionalProperties() && !is_object($object->getAdditionalProperties())) {
+        if (true !== $object->getAdditionalProperties() && !\is_object($object->getAdditionalProperties())) {
             return false;
         }
 

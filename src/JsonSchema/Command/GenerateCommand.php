@@ -37,7 +37,7 @@ class GenerateCommand extends Command
 
         $options = require $configFile;
 
-        if (!is_array($options)) {
+        if (!\is_array($options)) {
             throw new \RuntimeException(sprintf('Invalid config file specified or invalid return type in file %s', $configFile));
         }
 

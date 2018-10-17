@@ -47,7 +47,7 @@ class ArrayGuesser implements GuesserInterface, TypeGuesserInterface, ChainGuess
             return new ArrayType($object, new Type($object, 'mixed'));
         }
 
-        if (!is_array($items)) {
+        if (!\is_array($items)) {
             return new ArrayType($object, $this->chainGuesser->guessType($items, $name . 'Item', $reference . '/items', $registry));
         }
 

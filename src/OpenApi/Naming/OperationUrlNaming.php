@@ -59,11 +59,11 @@ class OperationUrlNaming implements OperationNamingInterface
                 }
             } else {
                 $methodNameParts[] = ucfirst($part);
-                $lastNonParameterPartIndex = count($methodNameParts) - 1;
+                $lastNonParameterPartIndex = \count($methodNameParts) - 1;
             }
         }
 
-        if ($shouldSingularize && count($methodNameParts) > 0) {
+        if ($shouldSingularize && \count($methodNameParts) > 0) {
             $methodNameParts[$lastNonParameterPartIndex] = Inflector::singularize($methodNameParts[$lastNonParameterPartIndex]);
         }
 

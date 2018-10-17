@@ -96,7 +96,7 @@ class ObjectGuesser implements GuesserInterface, PropertiesGuesserInterface, Typ
             }
 
             $type = $propertyObj->getType();
-            $nullable = 'null' == $type || (is_array($type) && in_array('null', $type));
+            $nullable = 'null' == $type || (\is_array($type) && \in_array('null', $type));
 
             $properties[$key] = new Property($property, $key, $reference . '/properties/' . $key, $nullable, null, $propertyObj->getDescription());
         }
@@ -113,7 +113,7 @@ class ObjectGuesser implements GuesserInterface, PropertiesGuesserInterface, Typ
         $required = $object->getRequired() ?: [];
 
         foreach ($object->getProperties() as $key => $property) {
-            if (!in_array($key, $required)) {
+            if (!\in_array($key, $required)) {
                 continue;
             }
 
@@ -124,7 +124,7 @@ class ObjectGuesser implements GuesserInterface, PropertiesGuesserInterface, Typ
             if (null !== $property->getEnum()) {
                 $isSimple = true;
                 foreach ($property->getEnum() as $value) {
-                    if (is_array($value) || is_object($value)) {
+                    if (\is_array($value) || \is_object($value)) {
                         $isSimple = false;
                     }
                 }

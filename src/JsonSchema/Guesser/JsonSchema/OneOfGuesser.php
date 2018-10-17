@@ -19,7 +19,7 @@ class OneOfGuesser implements ChainGuesserAwareInterface, TypeGuesserInterface, 
      */
     public function supportObject($object)
     {
-        return ($object instanceof JsonSchema) && 'object' !== $object->getType() && is_array($object->getOneOf()) && count($object->getOneOf()) > 0;
+        return ($object instanceof JsonSchema) && 'object' !== $object->getType() && \is_array($object->getOneOf()) && \count($object->getOneOf()) > 0;
     }
 
     /**

@@ -40,7 +40,7 @@ class Reference
         $mergedParts = array_merge($originParts, $referenceParts);
 
         if (array_key_exists('path', $referenceParts)) {
-            $mergedParts['path'] = $this->joinPath(dirname($originParts['path']), $referenceParts['path']);
+            $mergedParts['path'] = $this->joinPath(\dirname($originParts['path']), $referenceParts['path']);
         }
 
         $this->referenceUri = $http::createFromString($reference);
@@ -171,7 +171,7 @@ class Reference
                 continue;
             }
 
-            if ('..' === $part && count($resultPathParts) > 0) {
+            if ('..' === $part && \count($resultPathParts) > 0) {
                 array_pop($resultPathParts);
                 continue;
             }

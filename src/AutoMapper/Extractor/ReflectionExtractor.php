@@ -176,7 +176,7 @@ class ReflectionExtractor implements PropertyListExtractorInterface, PropertyTyp
         }
         $type = $this->extractFromReflectionType($reflectionType);
 
-        if (in_array($prefix, $this->arrayMutatorPrefixes)) {
+        if (\in_array($prefix, $this->arrayMutatorPrefixes)) {
             $type = new Type(Type::BUILTIN_TYPE_ARRAY, false, null, true, new Type(Type::BUILTIN_TYPE_INT), $type);
         }
 
@@ -199,7 +199,7 @@ class ReflectionExtractor implements PropertyListExtractorInterface, PropertyTyp
             return [$this->extractFromReflectionType($reflectionType)];
         }
 
-        if (in_array($prefix, ['is', 'can'])) {
+        if (\in_array($prefix, ['is', 'can'])) {
             return [new Type(Type::BUILTIN_TYPE_BOOL)];
         }
 
@@ -276,7 +276,7 @@ class ReflectionExtractor implements PropertyListExtractorInterface, PropertyTyp
 
         foreach ($this->mutatorPrefixes as $prefix) {
             $names = [$ucProperty];
-            if (in_array($prefix, $this->arrayMutatorPrefixes)) {
+            if (\in_array($prefix, $this->arrayMutatorPrefixes)) {
                 $names = array_merge($names, $ucSingulars);
             }
 
@@ -305,7 +305,7 @@ class ReflectionExtractor implements PropertyListExtractorInterface, PropertyTyp
         $pattern = implode('|', array_merge($this->accessorPrefixes, $this->mutatorPrefixes));
 
         if ('' !== $pattern && preg_match('/^(' . $pattern . ')(.+)$/i', $methodName, $matches)) {
-            if (!in_array($matches[1], $this->arrayMutatorPrefixes)) {
+            if (!\in_array($matches[1], $this->arrayMutatorPrefixes)) {
                 return $matches[2];
             }
 

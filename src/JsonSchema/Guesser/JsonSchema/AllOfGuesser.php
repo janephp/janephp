@@ -133,7 +133,7 @@ class AllOfGuesser implements GuesserInterface, TypeGuesserInterface, ChainGuess
      */
     public function supportObject($object)
     {
-        return ($object instanceof JsonSchema) && is_array($object->getAllOf()) && count($object->getAllOf()) > 0;
+        return ($object instanceof JsonSchema) && \is_array($object->getAllOf()) && \count($object->getAllOf()) > 0;
     }
 
     /**

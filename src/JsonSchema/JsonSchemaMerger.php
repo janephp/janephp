@@ -36,11 +36,11 @@ class JsonSchemaMerger
 
     private function arrayMerge($left, $right)
     {
-        if (!is_array($left)) {
+        if (!\is_array($left)) {
             return $right;
         }
 
-        if (!is_array($right)) {
+        if (!\is_array($right)) {
             return $left;
         }
 
@@ -49,7 +49,7 @@ class JsonSchemaMerger
 
     private function arrayUnique($array)
     {
-        if (!is_array($array)) {
+        if (!\is_array($array)) {
             return $array;
         }
 

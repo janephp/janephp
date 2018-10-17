@@ -38,9 +38,9 @@ class ItemsGuesser implements GuesserInterface, ClassGuesserInterface, ChainGues
                 $object->getItems() instanceof JsonSchema
                 ||
                 (
-                    is_array($object->getItems())
+                    \is_array($object->getItems())
                     &&
-                    count($object->getItems()) > 0
+                    \count($object->getItems()) > 0
                 )
             )
         ;

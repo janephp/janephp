@@ -340,7 +340,7 @@ EOD
         $isSerializableBody = false;
         $isFormBody = false;
         $hasFileInForm = false;
-        $consumes = is_array($operation->getOperation()->getConsumes()) ? $operation->getOperation()->getConsumes() : [$operation->getOperation()->getConsumes()];
+        $consumes = \is_array($operation->getOperation()->getConsumes()) ? $operation->getOperation()->getConsumes() : [$operation->getOperation()->getConsumes()];
 
         foreach ($operation->getParameters() as $key => $parameter) {
             if ($parameter instanceof BodyParameter && $parameter->getSchema() !== null) {

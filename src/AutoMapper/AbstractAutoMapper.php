@@ -60,11 +60,11 @@ abstract class AbstractAutoMapper implements AutoMapperInterface
             return null;
         }
 
-        if (is_object($value)) {
-            $source = get_class($value);
+        if (\is_object($value)) {
+            $source = \get_class($value);
         }
 
-        if (is_array($value)) {
+        if (\is_array($value)) {
             $source = 'array';
         }
 

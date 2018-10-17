@@ -12,6 +12,6 @@ class MultipleGuesser extends BaseMultipleGuesser
      */
     public function supportObject($object)
     {
-        return ($object instanceof Schema) && is_array($object->getType());
+        return ($object instanceof Schema) && \is_array($object->getType());
     }
 }

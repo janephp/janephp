@@ -113,7 +113,7 @@ class Psr7HttplugClientGenerator extends ClientGenerator
         if (null !== $openApi->getHost()) {
             $scheme = 'https';
 
-            if (null !== $openApi->getSchemes() && count($openApi->getSchemes()) > 0 && !in_array('https', $openApi->getSchemes())) {
+            if (null !== $openApi->getSchemes() && \count($openApi->getSchemes()) > 0 && !\in_array('https', $openApi->getSchemes())) {
                 $scheme = $openApi->getSchemes()[0];
             }
 

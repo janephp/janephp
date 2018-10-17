@@ -24,8 +24,8 @@ class Printer
     {
         foreach ($registry->getSchemas() as $schema) {
             foreach ($schema->getFiles() as $file) {
-                if (!file_exists(dirname($file->getFilename()))) {
-                    mkdir(dirname($file->getFilename()), 0755, true);
+                if (!file_exists(\dirname($file->getFilename()))) {
+                    mkdir(\dirname($file->getFilename()), 0755, true);
                 }
 
                 file_put_contents($file->getFilename(), $this->prettyPrinter->prettyPrintFile([$file->getNode()]));
