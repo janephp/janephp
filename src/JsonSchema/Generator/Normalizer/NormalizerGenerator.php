@@ -66,9 +66,9 @@ trait NormalizerGenerator
     /**
      * Create the normalization method.
      *
-     * @param $modelFqdn
+     * @param string $modelFqdn
      * @param Context $context
-     * @param $properties
+     * @param ClassGuess $classGuess
      *
      * @return Stmt\ClassMethod
      */
