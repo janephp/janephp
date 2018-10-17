@@ -30,6 +30,7 @@ install:
 
 script:
     - travis_wait $TEST_COMMAND
+    - composer normalize --dry-run
     - if [[ "$COVERAGE" = true ]]; then vendor/bin/php-cs-fixer fix --dry-run --diff; fi
 
 after_success:
