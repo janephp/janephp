@@ -1,0 +1,53 @@
+{
+    "id": "http://json-schema.org/draft-04/schema#",
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "description": "Schema with definitions",
+    "definitions": {
+        "Foo": {
+            "type": "object",
+            "properties": {
+                "foo": {
+                    "oneOf": [
+                        {
+                            "$ref":"#/definitions/list_of_strings"
+                        },
+                        {
+                            "type":"object",
+                            "patternProperties":{
+                                "^[a-zA-Z0-9._-]+$":{
+                                    "oneOf":[
+                                        {
+                                            "type":"object",
+                                            "properties":{
+                                                "aliases":{
+                                                    "$ref":"#/definitions/list_of_strings"
+                                                },
+                                                "ipv4_address":{
+                                                    "type":"string"
+                                                },
+                                                "ipv6_address":{
+                                                    "type":"string"
+                                                }
+                                            },
+                                            "additionalProperties":false
+                                        },
+                                        {
+                                            "type":"null"
+                                        }
+                                    ]
+                                }
+                            },
+                            "additionalProperties":false
+                        }
+                    ]
+                }
+            }
+        },
+        "list_of_strings": {
+            "type": "string",
+            "enum": [
+                "a", "b", "c"
+            ]
+        }
+    }
+}

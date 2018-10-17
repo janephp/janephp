@@ -51,16 +51,18 @@ class MultipleType extends Type
 
     /**
      * We have to place mixed normalization path at the last.
+     *
      * @return Type[]
      */
     protected function getTypesSorted()
     {
         $types = $this->getTypes();
-        usort($types, function($first, $second) {
-            /** @var Type $first */
-            /** @var Type $second */
+        usort($types, function ($first, $second) {
+            /* @var Type $first */
+            /* @var Type $second */
             return $first->name == 'mixed' ? 1 : 0;
         });
+
         return $types;
     }
 
@@ -120,10 +122,9 @@ class MultipleType extends Type
             $condition = $type->createConditionStatement($input);
             $statement = array_merge($typeStatements, [new Expr\Assign($output, $typeOutput)]);
 
-            if($ifStmt === null) {
+            if ($ifStmt === null) {
                 $ifStmt = new Stmt\If_($condition, ['stmts' => $statement]);
-            }
-            else {
+            } else {
                 $ifStmt->elseifs[] = new Stmt\ElseIf_($condition, $statement);
             }
         }
@@ -150,10 +151,9 @@ class MultipleType extends Type
             $condition = $type->createNormalizationConditionStatement($input);
             $statement = array_merge($typeStatements, [new Expr\Assign($output, $typeOutput)]);
 
-            if($ifStmt === null) {
+            if ($ifStmt === null) {
                 $ifStmt = new Stmt\If_($condition, ['stmts' => $statement]);
-            }
-            else {
+            } else {
                 $ifStmt->elseifs[] = new Stmt\ElseIf_($condition, $statement);
             }
         }
