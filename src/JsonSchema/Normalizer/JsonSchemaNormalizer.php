@@ -86,8 +86,7 @@ class JsonSchemaNormalizer implements DenormalizerInterface, NormalizerInterface
             $value = $data->{'additionalItems'};
             if (is_bool($data->{'additionalItems'})) {
                 $value = $data->{'additionalItems'};
-            }
-            if (is_object($data->{'additionalItems'})) {
+            } elseif (is_object($data->{'additionalItems'})) {
                 $value = $this->denormalizer->denormalize($data->{'additionalItems'}, 'Jane\\JsonSchema\\Model\\JsonSchema', 'json', $context);
             }
             $object->setAdditionalItems($value);
@@ -96,8 +95,7 @@ class JsonSchemaNormalizer implements DenormalizerInterface, NormalizerInterface
             $value_1 = $data->{'items'};
             if (is_object($data->{'items'})) {
                 $value_1 = $this->denormalizer->denormalize($data->{'items'}, 'Jane\\JsonSchema\\Model\\JsonSchema', 'json', $context);
-            }
-            if (is_array($data->{'items'})) {
+            } elseif (is_array($data->{'items'})) {
                 $values = [];
                 foreach ($data->{'items'} as $value_2) {
                     $values[] = $this->denormalizer->denormalize($value_2, 'Jane\\JsonSchema\\Model\\JsonSchema', 'json', $context);
@@ -132,8 +130,7 @@ class JsonSchemaNormalizer implements DenormalizerInterface, NormalizerInterface
             $value_4 = $data->{'additionalProperties'};
             if (is_bool($data->{'additionalProperties'})) {
                 $value_4 = $data->{'additionalProperties'};
-            }
-            if (is_object($data->{'additionalProperties'})) {
+            } elseif (is_object($data->{'additionalProperties'})) {
                 $value_4 = $this->denormalizer->denormalize($data->{'additionalProperties'}, 'Jane\\JsonSchema\\Model\\JsonSchema', 'json', $context);
             }
             $object->setAdditionalProperties($value_4);
@@ -165,8 +162,7 @@ class JsonSchemaNormalizer implements DenormalizerInterface, NormalizerInterface
                 $value_9 = $value_8;
                 if (is_object($value_8)) {
                     $value_9 = $this->denormalizer->denormalize($value_8, 'Jane\\JsonSchema\\Model\\JsonSchema', 'json', $context);
-                }
-                if (is_array($value_8)) {
+                } elseif (is_array($value_8)) {
                     $values_6 = [];
                     foreach ($value_8 as $value_10) {
                         $values_6[] = $value_10;
@@ -186,15 +182,14 @@ class JsonSchemaNormalizer implements DenormalizerInterface, NormalizerInterface
         }
         if (property_exists($data, 'type')) {
             $value_12 = $data->{'type'};
-            if (isset($data->{'type'})) {
-                $value_12 = $data->{'type'};
-            }
             if (is_array($data->{'type'})) {
                 $values_8 = [];
                 foreach ($data->{'type'} as $value_13) {
                     $values_8[] = $value_13;
                 }
                 $value_12 = $values_8;
+            } elseif (isset($data->{'type'})) {
+                $value_12 = $data->{'type'};
             }
             $object->setType($value_12);
         }
@@ -275,8 +270,7 @@ class JsonSchemaNormalizer implements DenormalizerInterface, NormalizerInterface
             $value = $object->getAdditionalItems();
             if (is_bool($object->getAdditionalItems())) {
                 $value = $object->getAdditionalItems();
-            }
-            if (is_object($object->getAdditionalItems())) {
+            } elseif (is_object($object->getAdditionalItems())) {
                 $value = $this->normalizer->normalize($object->getAdditionalItems(), 'json', $context);
             }
             $data->{'additionalItems'} = $value;
@@ -285,8 +279,7 @@ class JsonSchemaNormalizer implements DenormalizerInterface, NormalizerInterface
             $value_1 = $object->getItems();
             if (is_object($object->getItems())) {
                 $value_1 = $this->normalizer->normalize($object->getItems(), 'json', $context);
-            }
-            if (is_array($object->getItems())) {
+            } elseif (is_array($object->getItems())) {
                 $values = [];
                 foreach ($object->getItems() as $value_2) {
                     $values[] = $this->normalizer->normalize($value_2, 'json', $context);
@@ -321,8 +314,7 @@ class JsonSchemaNormalizer implements DenormalizerInterface, NormalizerInterface
             $value_4 = $object->getAdditionalProperties();
             if (is_bool($object->getAdditionalProperties())) {
                 $value_4 = $object->getAdditionalProperties();
-            }
-            if (is_object($object->getAdditionalProperties())) {
+            } elseif (is_object($object->getAdditionalProperties())) {
                 $value_4 = $this->normalizer->normalize($object->getAdditionalProperties(), 'json', $context);
             }
             $data->{'additionalProperties'} = $value_4;
@@ -354,8 +346,7 @@ class JsonSchemaNormalizer implements DenormalizerInterface, NormalizerInterface
                 $value_9 = $value_8;
                 if (is_object($value_8)) {
                     $value_9 = $this->normalizer->normalize($value_8, 'json', $context);
-                }
-                if (is_array($value_8)) {
+                } elseif (is_array($value_8)) {
                     $values_6 = [];
                     foreach ($value_8 as $value_10) {
                         $values_6[] = $value_10;
@@ -375,15 +366,14 @@ class JsonSchemaNormalizer implements DenormalizerInterface, NormalizerInterface
         }
         if (null !== $object->getType()) {
             $value_12 = $object->getType();
-            if (!is_null($object->getType())) {
-                $value_12 = $object->getType();
-            }
             if (is_array($object->getType())) {
                 $values_8 = [];
                 foreach ($object->getType() as $value_13) {
                     $values_8[] = $value_13;
                 }
                 $value_12 = $values_8;
+            } elseif (!is_null($object->getType())) {
+                $value_12 = $object->getType();
             }
             $data->{'type'} = $value_12;
         }
