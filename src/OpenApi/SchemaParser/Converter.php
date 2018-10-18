@@ -8,7 +8,7 @@ use Jane\OpenApi\JsonSchema\Version3\Model\OpenApi;
 class Converter
 {
     /**
-     * Transform a version2 of OpenApi to version3
+     * Transform a version2 of OpenApi to version3.
      */
     public function convert(OpenApiV2 $openApiVersion2): OpenApi
     {

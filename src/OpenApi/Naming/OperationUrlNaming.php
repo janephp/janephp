@@ -31,7 +31,7 @@ class OperationUrlNaming implements OperationNamingInterface
             if ($response instanceof Response && $response->getContent()) {
                 $firstContent = $response->getContent()->getIterator()->current();
 
-                if ($firstContent->getSchema() instanceof Schema && 'array' === $firstContent->getSchema() ->getType()) {
+                if ($firstContent->getSchema() instanceof Schema && 'array' === $firstContent->getSchema()->getType()) {
                     $shouldSingularize = false;
                 }
             }

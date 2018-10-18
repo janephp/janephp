@@ -36,7 +36,7 @@ class ResponsesNormalizer implements DenormalizerInterface, NormalizerInterface,
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        if (!is_object($data)) {
+        if (!\is_object($data)) {
             throw new InvalidArgumentException();
         }
         if (isset($data->{'$ref'})) {
@@ -46,10 +46,10 @@ class ResponsesNormalizer implements DenormalizerInterface, NormalizerInterface,
         $data = clone $data;
         if (property_exists($data, 'default')) {
             $value = $data->{'default'};
-            if (is_object($data->{'default'}) and isset($data->{'default'}->{'description'})) {
+            if (\is_object($data->{'default'}) and isset($data->{'default'}->{'description'})) {
                 $value = $this->denormalizer->denormalize($data->{'default'}, 'Jane\\OpenApi\\JsonSchema\\Version3\\Model\\Response', 'json', $context);
             }
-            if (is_object($data->{'default'}) and isset($data->{'default'}->{'$ref'})) {
+            if (\is_object($data->{'default'}) and isset($data->{'default'}->{'$ref'})) {
                 $value = $this->denormalizer->denormalize($data->{'default'}, 'Jane\\OpenApi\\JsonSchema\\Version3\\Model\\Reference', 'json', $context);
             }
             $object->setDefault($value);
@@ -58,10 +58,10 @@ class ResponsesNormalizer implements DenormalizerInterface, NormalizerInterface,
         foreach ($data as $key => $value_1) {
             if (preg_match('/[1-5](?:\d{2}|XX)/', $key)) {
                 $value_2 = $value_1;
-                if (is_object($value_1) and isset($value_1->{'description'})) {
+                if (\is_object($value_1) and isset($value_1->{'description'})) {
                     $value_2 = $this->denormalizer->denormalize($value_1, 'Jane\\OpenApi\\JsonSchema\\Version3\\Model\\Response', 'json', $context);
                 }
-                if (is_object($value_1) and isset($value_1->{'$ref'})) {
+                if (\is_object($value_1) and isset($value_1->{'$ref'})) {
                     $value_2 = $this->denormalizer->denormalize($value_1, 'Jane\\OpenApi\\JsonSchema\\Version3\\Model\\Reference', 'json', $context);
                 }
                 $object[$key] = $value_2;
@@ -79,10 +79,10 @@ class ResponsesNormalizer implements DenormalizerInterface, NormalizerInterface,
         $data = new \stdClass();
         if (null !== $object->getDefault()) {
             $value = $object->getDefault();
-            if (is_object($object->getDefault())) {
+            if (\is_object($object->getDefault())) {
                 $value = $this->normalizer->normalize($object->getDefault(), 'json', $context);
             }
-            if (is_object($object->getDefault())) {
+            if (\is_object($object->getDefault())) {
                 $value = $this->normalizer->normalize($object->getDefault(), 'json', $context);
             }
             $data->{'default'} = $value;
@@ -90,10 +90,10 @@ class ResponsesNormalizer implements DenormalizerInterface, NormalizerInterface,
         foreach ($object as $key => $value_1) {
             if (preg_match('/[1-5](?:\d{2}|XX)/', $key)) {
                 $value_2 = $value_1;
-                if (is_object($value_1)) {
+                if (\is_object($value_1)) {
                     $value_2 = $this->normalizer->normalize($value_1, 'json', $context);
                 }
-                if (is_object($value_1)) {
+                if (\is_object($value_1)) {
                     $value_2 = $this->normalizer->normalize($value_1, 'json', $context);
                 }
                 $data->{$key} = $value_2;

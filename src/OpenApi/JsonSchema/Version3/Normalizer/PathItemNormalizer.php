@@ -36,7 +36,7 @@ class PathItemNormalizer implements DenormalizerInterface, NormalizerInterface, 
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        if (!is_object($data)) {
+        if (!\is_object($data)) {
             throw new InvalidArgumentException();
         }
         if (isset($data->{'$ref'})) {
@@ -100,37 +100,37 @@ class PathItemNormalizer implements DenormalizerInterface, NormalizerInterface, 
             $values_1 = [];
             foreach ($data->{'parameters'} as $value_1) {
                 $value_2 = $value_1;
-                if (is_object($value_1) and isset($value_1->{'name'}) and (isset($value_1->{'in'}) and $value_1->{'in'} == 'path') and (isset($value_1->{'required'}) and $value_1->{'required'} == '1') and isset($value_1->{'schema'})) {
+                if (\is_object($value_1) and isset($value_1->{'name'}) and (isset($value_1->{'in'}) and $value_1->{'in'} == 'path') and (isset($value_1->{'required'}) and $value_1->{'required'} == '1') and isset($value_1->{'schema'})) {
                     $value_2 = $this->denormalizer->denormalize($value_1, 'Jane\\OpenApi\\JsonSchema\\Version3\\Model\\ParameterWithSchemaWithExampleInPath', 'json', $context);
                 }
-                if (is_object($value_1) and isset($value_1->{'name'}) and (isset($value_1->{'in'}) and $value_1->{'in'} == 'query') and isset($value_1->{'schema'})) {
+                if (\is_object($value_1) and isset($value_1->{'name'}) and (isset($value_1->{'in'}) and $value_1->{'in'} == 'query') and isset($value_1->{'schema'})) {
                     $value_2 = $this->denormalizer->denormalize($value_1, 'Jane\\OpenApi\\JsonSchema\\Version3\\Model\\ParameterWithSchemaWithExampleInQuery', 'json', $context);
                 }
-                if (is_object($value_1) and isset($value_1->{'name'}) and (isset($value_1->{'in'}) and $value_1->{'in'} == 'header') and isset($value_1->{'schema'})) {
+                if (\is_object($value_1) and isset($value_1->{'name'}) and (isset($value_1->{'in'}) and $value_1->{'in'} == 'header') and isset($value_1->{'schema'})) {
                     $value_2 = $this->denormalizer->denormalize($value_1, 'Jane\\OpenApi\\JsonSchema\\Version3\\Model\\ParameterWithSchemaWithExampleInHeader', 'json', $context);
                 }
-                if (is_object($value_1) and isset($value_1->{'name'}) and (isset($value_1->{'in'}) and $value_1->{'in'} == 'cookie') and isset($value_1->{'schema'})) {
+                if (\is_object($value_1) and isset($value_1->{'name'}) and (isset($value_1->{'in'}) and $value_1->{'in'} == 'cookie') and isset($value_1->{'schema'})) {
                     $value_2 = $this->denormalizer->denormalize($value_1, 'Jane\\OpenApi\\JsonSchema\\Version3\\Model\\ParameterWithSchemaWithExampleInCookie', 'json', $context);
                 }
-                if (is_object($value_1) and isset($value_1->{'name'}) and (isset($value_1->{'in'}) and $value_1->{'in'} == 'path') and (isset($value_1->{'required'}) and $value_1->{'required'} == '1') and isset($value_1->{'schema'}) and isset($value_1->{'examples'})) {
+                if (\is_object($value_1) and isset($value_1->{'name'}) and (isset($value_1->{'in'}) and $value_1->{'in'} == 'path') and (isset($value_1->{'required'}) and $value_1->{'required'} == '1') and isset($value_1->{'schema'}) and isset($value_1->{'examples'})) {
                     $value_2 = $this->denormalizer->denormalize($value_1, 'Jane\\OpenApi\\JsonSchema\\Version3\\Model\\ParameterWithSchemaWithExamplesInPath', 'json', $context);
                 }
-                if (is_object($value_1) and isset($value_1->{'name'}) and (isset($value_1->{'in'}) and $value_1->{'in'} == 'query') and isset($value_1->{'schema'}) and isset($value_1->{'examples'})) {
+                if (\is_object($value_1) and isset($value_1->{'name'}) and (isset($value_1->{'in'}) and $value_1->{'in'} == 'query') and isset($value_1->{'schema'}) and isset($value_1->{'examples'})) {
                     $value_2 = $this->denormalizer->denormalize($value_1, 'Jane\\OpenApi\\JsonSchema\\Version3\\Model\\ParameterWithSchemaWithExamplesInQuery', 'json', $context);
                 }
-                if (is_object($value_1) and isset($value_1->{'name'}) and (isset($value_1->{'in'}) and $value_1->{'in'} == 'header') and isset($value_1->{'schema'}) and isset($value_1->{'examples'})) {
+                if (\is_object($value_1) and isset($value_1->{'name'}) and (isset($value_1->{'in'}) and $value_1->{'in'} == 'header') and isset($value_1->{'schema'}) and isset($value_1->{'examples'})) {
                     $value_2 = $this->denormalizer->denormalize($value_1, 'Jane\\OpenApi\\JsonSchema\\Version3\\Model\\ParameterWithSchemaWithExamplesInHeader', 'json', $context);
                 }
-                if (is_object($value_1) and isset($value_1->{'name'}) and (isset($value_1->{'in'}) and $value_1->{'in'} == 'cookie') and isset($value_1->{'schema'}) and isset($value_1->{'examples'})) {
+                if (\is_object($value_1) and isset($value_1->{'name'}) and (isset($value_1->{'in'}) and $value_1->{'in'} == 'cookie') and isset($value_1->{'schema'}) and isset($value_1->{'examples'})) {
                     $value_2 = $this->denormalizer->denormalize($value_1, 'Jane\\OpenApi\\JsonSchema\\Version3\\Model\\ParameterWithSchemaWithExamplesInCookie', 'json', $context);
                 }
-                if (is_object($value_1) and isset($value_1->{'name'}) and (isset($value_1->{'in'}) and $value_1->{'in'} == 'path') and isset($value_1->{'content'})) {
+                if (\is_object($value_1) and isset($value_1->{'name'}) and (isset($value_1->{'in'}) and $value_1->{'in'} == 'path') and isset($value_1->{'content'})) {
                     $value_2 = $this->denormalizer->denormalize($value_1, 'Jane\\OpenApi\\JsonSchema\\Version3\\Model\\ParameterWithContentInPath', 'json', $context);
                 }
-                if (is_object($value_1) and isset($value_1->{'name'}) and (isset($value_1->{'in'}) and ($value_1->{'in'} == 'query' or $value_1->{'in'} == 'header' or $value_1->{'in'} == 'cookie')) and isset($value_1->{'content'})) {
+                if (\is_object($value_1) and isset($value_1->{'name'}) and (isset($value_1->{'in'}) and ($value_1->{'in'} == 'query' or $value_1->{'in'} == 'header' or $value_1->{'in'} == 'cookie')) and isset($value_1->{'content'})) {
                     $value_2 = $this->denormalizer->denormalize($value_1, 'Jane\\OpenApi\\JsonSchema\\Version3\\Model\\ParameterWithContentNotInPath', 'json', $context);
                 }
-                if (is_object($value_1) and isset($value_1->{'$ref'})) {
+                if (\is_object($value_1) and isset($value_1->{'$ref'})) {
                     $value_2 = $this->denormalizer->denormalize($value_1, 'Jane\\OpenApi\\JsonSchema\\Version3\\Model\\Reference', 'json', $context);
                 }
                 $values_1[] = $value_2;
@@ -194,37 +194,37 @@ class PathItemNormalizer implements DenormalizerInterface, NormalizerInterface, 
             $values_1 = [];
             foreach ($object->getParameters() as $value_1) {
                 $value_2 = $value_1;
-                if (is_object($value_1)) {
+                if (\is_object($value_1)) {
                     $value_2 = $this->normalizer->normalize($value_1, 'json', $context);
                 }
-                if (is_object($value_1)) {
+                if (\is_object($value_1)) {
                     $value_2 = $this->normalizer->normalize($value_1, 'json', $context);
                 }
-                if (is_object($value_1)) {
+                if (\is_object($value_1)) {
                     $value_2 = $this->normalizer->normalize($value_1, 'json', $context);
                 }
-                if (is_object($value_1)) {
+                if (\is_object($value_1)) {
                     $value_2 = $this->normalizer->normalize($value_1, 'json', $context);
                 }
-                if (is_object($value_1)) {
+                if (\is_object($value_1)) {
                     $value_2 = $this->normalizer->normalize($value_1, 'json', $context);
                 }
-                if (is_object($value_1)) {
+                if (\is_object($value_1)) {
                     $value_2 = $this->normalizer->normalize($value_1, 'json', $context);
                 }
-                if (is_object($value_1)) {
+                if (\is_object($value_1)) {
                     $value_2 = $this->normalizer->normalize($value_1, 'json', $context);
                 }
-                if (is_object($value_1)) {
+                if (\is_object($value_1)) {
                     $value_2 = $this->normalizer->normalize($value_1, 'json', $context);
                 }
-                if (is_object($value_1)) {
+                if (\is_object($value_1)) {
                     $value_2 = $this->normalizer->normalize($value_1, 'json', $context);
                 }
-                if (is_object($value_1)) {
+                if (\is_object($value_1)) {
                     $value_2 = $this->normalizer->normalize($value_1, 'json', $context);
                 }
-                if (is_object($value_1)) {
+                if (\is_object($value_1)) {
                     $value_2 = $this->normalizer->normalize($value_1, 'json', $context);
                 }
                 $values_1[] = $value_2;

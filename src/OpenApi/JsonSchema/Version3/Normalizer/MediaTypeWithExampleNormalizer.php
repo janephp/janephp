@@ -36,7 +36,7 @@ class MediaTypeWithExampleNormalizer implements DenormalizerInterface, Normalize
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        if (!is_object($data)) {
+        if (!\is_object($data)) {
             throw new InvalidArgumentException();
         }
         if (isset($data->{'$ref'})) {
@@ -46,10 +46,10 @@ class MediaTypeWithExampleNormalizer implements DenormalizerInterface, Normalize
         $data = clone $data;
         if (property_exists($data, 'schema')) {
             $value = $data->{'schema'};
-            if (is_object($data->{'schema'})) {
+            if (\is_object($data->{'schema'})) {
                 $value = $this->denormalizer->denormalize($data->{'schema'}, 'Jane\\OpenApi\\JsonSchema\\Version3\\Model\\Schema', 'json', $context);
             }
-            if (is_object($data->{'schema'}) and isset($data->{'schema'}->{'$ref'})) {
+            if (\is_object($data->{'schema'}) and isset($data->{'schema'}->{'$ref'})) {
                 $value = $this->denormalizer->denormalize($data->{'schema'}, 'Jane\\OpenApi\\JsonSchema\\Version3\\Model\\Reference', 'json', $context);
             }
             $object->setSchema($value);
@@ -81,10 +81,10 @@ class MediaTypeWithExampleNormalizer implements DenormalizerInterface, Normalize
         $data = new \stdClass();
         if (null !== $object->getSchema()) {
             $value = $object->getSchema();
-            if (is_object($object->getSchema())) {
+            if (\is_object($object->getSchema())) {
                 $value = $this->normalizer->normalize($object->getSchema(), 'json', $context);
             }
-            if (is_object($object->getSchema())) {
+            if (\is_object($object->getSchema())) {
                 $value = $this->normalizer->normalize($object->getSchema(), 'json', $context);
             }
             $data->{'schema'} = $value;

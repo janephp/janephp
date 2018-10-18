@@ -36,7 +36,7 @@ class OpenApiNormalizer implements DenormalizerInterface, NormalizerInterface, D
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        if (!is_object($data)) {
+        if (!\is_object($data)) {
             throw new InvalidArgumentException();
         }
         if (isset($data->{'$ref'})) {
@@ -91,7 +91,7 @@ class OpenApiNormalizer implements DenormalizerInterface, NormalizerInterface, D
         if (property_exists($data, 'paths')) {
             $values_5 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
             foreach ($data->{'paths'} as $key_1 => $value_5) {
-                if (preg_match('/^\\//', $key_1) && is_object($value_5)) {
+                if (preg_match('/^\\//', $key_1) && \is_object($value_5)) {
                     $values_5[$key_1] = $this->denormalizer->denormalize($value_5, 'Jane\\OpenApi\\JsonSchema\\Version3\\Model\\PathItem', 'json', $context);
                     continue;
                 }
@@ -160,11 +160,11 @@ class OpenApiNormalizer implements DenormalizerInterface, NormalizerInterface, D
         if (null !== $object->getPaths()) {
             $values_5 = new \stdClass();
             foreach ($object->getPaths() as $key_1 => $value_5) {
-                if (preg_match('/^\\//', $key_1) && is_object($value_5)) {
+                if (preg_match('/^\\//', $key_1) && \is_object($value_5)) {
                     $values_5->{$key_1} = $this->normalizer->normalize($value_5, 'json', $context);
                     continue;
                 }
-                if (preg_match('/^x-/', $key_1) && !is_null($value_5)) {
+                if (preg_match('/^x-/', $key_1) && null !== $value_5) {
                     $values_5->{$key_1} = $value_5;
                     continue;
                 }

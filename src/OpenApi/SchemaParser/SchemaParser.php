@@ -2,7 +2,6 @@
 
 namespace Jane\OpenApi\SchemaParser;
 
-use Jane\OpenApi\Exception\ParseFailureException;
 use Jane\OpenApi\JsonSchema\Version3\Model\OpenApi;
 use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Component\Yaml\Exception\ExceptionInterface as YamlException;
@@ -10,7 +9,7 @@ use Symfony\Component\Yaml\Yaml;
 
 class SchemaParser
 {
-    /** @var SerializerInterface  */
+    /** @var SerializerInterface */
     private $serializer;
 
     /** @var Converter */

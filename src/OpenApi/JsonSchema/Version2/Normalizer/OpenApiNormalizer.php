@@ -36,7 +36,7 @@ class OpenApiNormalizer implements DenormalizerInterface, NormalizerInterface, D
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        if (!is_object($data)) {
+        if (!\is_object($data)) {
             throw new InvalidArgumentException();
         }
         if (isset($data->{'$ref'})) {
@@ -91,7 +91,7 @@ class OpenApiNormalizer implements DenormalizerInterface, NormalizerInterface, D
                     $values_3[$key] = $value_3;
                     continue;
                 }
-                if (preg_match('/^\//', $key) && is_object($value_3)) {
+                if (preg_match('/^\//', $key) && \is_object($value_3)) {
                     $values_3[$key] = $this->denormalizer->denormalize($value_3, 'Jane\\OpenApi\\JsonSchema\\Version2\\Model\\PathItem', 'json', $context);
                     continue;
                 }
@@ -111,19 +111,19 @@ class OpenApiNormalizer implements DenormalizerInterface, NormalizerInterface, D
             $values_5 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
             foreach ($data->{'parameters'} as $key_2 => $value_5) {
                 $value_6 = $value_5;
-                if (is_object($value_5) and isset($value_5->{'name'}) and (isset($value_5->{'in'}) and $value_5->{'in'} == 'body') and isset($value_5->{'schema'})) {
+                if (\is_object($value_5) and isset($value_5->{'name'}) and (isset($value_5->{'in'}) and $value_5->{'in'} == 'body') and isset($value_5->{'schema'})) {
                     $value_6 = $this->denormalizer->denormalize($value_5, 'Jane\\OpenApi\\JsonSchema\\Version2\\Model\\BodyParameter', 'json', $context);
                 }
-                if (is_object($value_5) and (isset($value_5->{'in'}) and $value_5->{'in'} == 'header') and isset($value_5->{'name'}) and (isset($value_5->{'type'}) and ($value_5->{'type'} == 'string' or $value_5->{'type'} == 'number' or $value_5->{'type'} == 'boolean' or $value_5->{'type'} == 'integer' or $value_5->{'type'} == 'array'))) {
+                if (\is_object($value_5) and (isset($value_5->{'in'}) and $value_5->{'in'} == 'header') and isset($value_5->{'name'}) and (isset($value_5->{'type'}) and ($value_5->{'type'} == 'string' or $value_5->{'type'} == 'number' or $value_5->{'type'} == 'boolean' or $value_5->{'type'} == 'integer' or $value_5->{'type'} == 'array'))) {
                     $value_6 = $this->denormalizer->denormalize($value_5, 'Jane\\OpenApi\\JsonSchema\\Version2\\Model\\HeaderParameterSubSchema', 'json', $context);
                 }
-                if (is_object($value_5) and (isset($value_5->{'in'}) and $value_5->{'in'} == 'formData') and isset($value_5->{'name'}) and (isset($value_5->{'type'}) and ($value_5->{'type'} == 'string' or $value_5->{'type'} == 'number' or $value_5->{'type'} == 'boolean' or $value_5->{'type'} == 'integer' or $value_5->{'type'} == 'array' or $value_5->{'type'} == 'file'))) {
+                if (\is_object($value_5) and (isset($value_5->{'in'}) and $value_5->{'in'} == 'formData') and isset($value_5->{'name'}) and (isset($value_5->{'type'}) and ($value_5->{'type'} == 'string' or $value_5->{'type'} == 'number' or $value_5->{'type'} == 'boolean' or $value_5->{'type'} == 'integer' or $value_5->{'type'} == 'array' or $value_5->{'type'} == 'file'))) {
                     $value_6 = $this->denormalizer->denormalize($value_5, 'Jane\\OpenApi\\JsonSchema\\Version2\\Model\\FormDataParameterSubSchema', 'json', $context);
                 }
-                if (is_object($value_5) and (isset($value_5->{'in'}) and $value_5->{'in'} == 'query') and isset($value_5->{'name'}) and (isset($value_5->{'type'}) and ($value_5->{'type'} == 'string' or $value_5->{'type'} == 'number' or $value_5->{'type'} == 'boolean' or $value_5->{'type'} == 'integer' or $value_5->{'type'} == 'array'))) {
+                if (\is_object($value_5) and (isset($value_5->{'in'}) and $value_5->{'in'} == 'query') and isset($value_5->{'name'}) and (isset($value_5->{'type'}) and ($value_5->{'type'} == 'string' or $value_5->{'type'} == 'number' or $value_5->{'type'} == 'boolean' or $value_5->{'type'} == 'integer' or $value_5->{'type'} == 'array'))) {
                     $value_6 = $this->denormalizer->denormalize($value_5, 'Jane\\OpenApi\\JsonSchema\\Version2\\Model\\QueryParameterSubSchema', 'json', $context);
                 }
-                if (is_object($value_5) and (isset($value_5->{'required'}) and $value_5->{'required'} == '1') and (isset($value_5->{'in'}) and $value_5->{'in'} == 'path') and isset($value_5->{'name'}) and (isset($value_5->{'type'}) and ($value_5->{'type'} == 'string' or $value_5->{'type'} == 'number' or $value_5->{'type'} == 'boolean' or $value_5->{'type'} == 'integer' or $value_5->{'type'} == 'array'))) {
+                if (\is_object($value_5) and (isset($value_5->{'required'}) and $value_5->{'required'} == '1') and (isset($value_5->{'in'}) and $value_5->{'in'} == 'path') and isset($value_5->{'name'}) and (isset($value_5->{'type'}) and ($value_5->{'type'} == 'string' or $value_5->{'type'} == 'number' or $value_5->{'type'} == 'boolean' or $value_5->{'type'} == 'integer' or $value_5->{'type'} == 'array'))) {
                     $value_6 = $this->denormalizer->denormalize($value_5, 'Jane\\OpenApi\\JsonSchema\\Version2\\Model\\PathParameterSubSchema', 'json', $context);
                 }
                 $values_5[$key_2] = $value_6;
@@ -159,22 +159,22 @@ class OpenApiNormalizer implements DenormalizerInterface, NormalizerInterface, D
             $values_10 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
             foreach ($data->{'securityDefinitions'} as $key_5 => $value_11) {
                 $value_12 = $value_11;
-                if (is_object($value_11) and (isset($value_11->{'type'}) and $value_11->{'type'} == 'basic')) {
+                if (\is_object($value_11) and (isset($value_11->{'type'}) and $value_11->{'type'} == 'basic')) {
                     $value_12 = $this->denormalizer->denormalize($value_11, 'Jane\\OpenApi\\JsonSchema\\Version2\\Model\\BasicAuthenticationSecurity', 'json', $context);
                 }
-                if (is_object($value_11) and (isset($value_11->{'type'}) and $value_11->{'type'} == 'apiKey') and isset($value_11->{'name'}) and (isset($value_11->{'in'}) and ($value_11->{'in'} == 'header' or $value_11->{'in'} == 'query'))) {
+                if (\is_object($value_11) and (isset($value_11->{'type'}) and $value_11->{'type'} == 'apiKey') and isset($value_11->{'name'}) and (isset($value_11->{'in'}) and ($value_11->{'in'} == 'header' or $value_11->{'in'} == 'query'))) {
                     $value_12 = $this->denormalizer->denormalize($value_11, 'Jane\\OpenApi\\JsonSchema\\Version2\\Model\\ApiKeySecurity', 'json', $context);
                 }
-                if (is_object($value_11) and (isset($value_11->{'type'}) and $value_11->{'type'} == 'oauth2') and (isset($value_11->{'flow'}) and $value_11->{'flow'} == 'implicit') and isset($value_11->{'authorizationUrl'})) {
+                if (\is_object($value_11) and (isset($value_11->{'type'}) and $value_11->{'type'} == 'oauth2') and (isset($value_11->{'flow'}) and $value_11->{'flow'} == 'implicit') and isset($value_11->{'authorizationUrl'})) {
                     $value_12 = $this->denormalizer->denormalize($value_11, 'Jane\\OpenApi\\JsonSchema\\Version2\\Model\\Oauth2ImplicitSecurity', 'json', $context);
                 }
-                if (is_object($value_11) and (isset($value_11->{'type'}) and $value_11->{'type'} == 'oauth2') and (isset($value_11->{'flow'}) and $value_11->{'flow'} == 'password') and isset($value_11->{'tokenUrl'})) {
+                if (\is_object($value_11) and (isset($value_11->{'type'}) and $value_11->{'type'} == 'oauth2') and (isset($value_11->{'flow'}) and $value_11->{'flow'} == 'password') and isset($value_11->{'tokenUrl'})) {
                     $value_12 = $this->denormalizer->denormalize($value_11, 'Jane\\OpenApi\\JsonSchema\\Version2\\Model\\Oauth2PasswordSecurity', 'json', $context);
                 }
-                if (is_object($value_11) and (isset($value_11->{'type'}) and $value_11->{'type'} == 'oauth2') and (isset($value_11->{'flow'}) and $value_11->{'flow'} == 'application') and isset($value_11->{'tokenUrl'})) {
+                if (\is_object($value_11) and (isset($value_11->{'type'}) and $value_11->{'type'} == 'oauth2') and (isset($value_11->{'flow'}) and $value_11->{'flow'} == 'application') and isset($value_11->{'tokenUrl'})) {
                     $value_12 = $this->denormalizer->denormalize($value_11, 'Jane\\OpenApi\\JsonSchema\\Version2\\Model\\Oauth2ApplicationSecurity', 'json', $context);
                 }
-                if (is_object($value_11) and (isset($value_11->{'type'}) and $value_11->{'type'} == 'oauth2') and (isset($value_11->{'flow'}) and $value_11->{'flow'} == 'accessCode') and isset($value_11->{'authorizationUrl'}) and isset($value_11->{'tokenUrl'})) {
+                if (\is_object($value_11) and (isset($value_11->{'type'}) and $value_11->{'type'} == 'oauth2') and (isset($value_11->{'flow'}) and $value_11->{'flow'} == 'accessCode') and isset($value_11->{'authorizationUrl'}) and isset($value_11->{'tokenUrl'})) {
                     $value_12 = $this->denormalizer->denormalize($value_11, 'Jane\\OpenApi\\JsonSchema\\Version2\\Model\\Oauth2AccessCodeSecurity', 'json', $context);
                 }
                 $values_10[$key_5] = $value_12;
@@ -242,11 +242,11 @@ class OpenApiNormalizer implements DenormalizerInterface, NormalizerInterface, D
         if (null !== $object->getPaths()) {
             $values_3 = new \stdClass();
             foreach ($object->getPaths() as $key => $value_3) {
-                if (preg_match('/^x-/', $key) && !is_null($value_3)) {
+                if (preg_match('/^x-/', $key) && null !== $value_3) {
                     $values_3->{$key} = $value_3;
                     continue;
                 }
-                if (preg_match('/^\//', $key) && is_object($value_3)) {
+                if (preg_match('/^\//', $key) && \is_object($value_3)) {
                     $values_3->{$key} = $this->normalizer->normalize($value_3, 'json', $context);
                     continue;
                 }
@@ -264,19 +264,19 @@ class OpenApiNormalizer implements DenormalizerInterface, NormalizerInterface, D
             $values_5 = new \stdClass();
             foreach ($object->getParameters() as $key_2 => $value_5) {
                 $value_6 = $value_5;
-                if (is_object($value_5)) {
+                if (\is_object($value_5)) {
                     $value_6 = $this->normalizer->normalize($value_5, 'json', $context);
                 }
-                if (is_object($value_5)) {
+                if (\is_object($value_5)) {
                     $value_6 = $this->normalizer->normalize($value_5, 'json', $context);
                 }
-                if (is_object($value_5)) {
+                if (\is_object($value_5)) {
                     $value_6 = $this->normalizer->normalize($value_5, 'json', $context);
                 }
-                if (is_object($value_5)) {
+                if (\is_object($value_5)) {
                     $value_6 = $this->normalizer->normalize($value_5, 'json', $context);
                 }
-                if (is_object($value_5)) {
+                if (\is_object($value_5)) {
                     $value_6 = $this->normalizer->normalize($value_5, 'json', $context);
                 }
                 $values_5->{$key_2} = $value_6;
@@ -309,22 +309,22 @@ class OpenApiNormalizer implements DenormalizerInterface, NormalizerInterface, D
             $values_10 = new \stdClass();
             foreach ($object->getSecurityDefinitions() as $key_5 => $value_11) {
                 $value_12 = $value_11;
-                if (is_object($value_11)) {
+                if (\is_object($value_11)) {
                     $value_12 = $this->normalizer->normalize($value_11, 'json', $context);
                 }
-                if (is_object($value_11)) {
+                if (\is_object($value_11)) {
                     $value_12 = $this->normalizer->normalize($value_11, 'json', $context);
                 }
-                if (is_object($value_11)) {
+                if (\is_object($value_11)) {
                     $value_12 = $this->normalizer->normalize($value_11, 'json', $context);
                 }
-                if (is_object($value_11)) {
+                if (\is_object($value_11)) {
                     $value_12 = $this->normalizer->normalize($value_11, 'json', $context);
                 }
-                if (is_object($value_11)) {
+                if (\is_object($value_11)) {
                     $value_12 = $this->normalizer->normalize($value_11, 'json', $context);
                 }
-                if (is_object($value_11)) {
+                if (\is_object($value_11)) {
                     $value_12 = $this->normalizer->normalize($value_11, 'json', $context);
                 }
                 $values_10->{$key_5} = $value_12;
