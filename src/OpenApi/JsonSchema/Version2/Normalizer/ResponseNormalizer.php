@@ -36,7 +36,7 @@ class ResponseNormalizer implements DenormalizerInterface, NormalizerInterface, 
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        if (!is_object($data)) {
+        if (!\is_object($data)) {
             throw new InvalidArgumentException();
         }
         if (isset($data->{'$ref'})) {
@@ -50,10 +50,10 @@ class ResponseNormalizer implements DenormalizerInterface, NormalizerInterface, 
         }
         if (property_exists($data, 'schema')) {
             $value = $data->{'schema'};
-            if (is_object($data->{'schema'})) {
+            if (\is_object($data->{'schema'})) {
                 $value = $this->denormalizer->denormalize($data->{'schema'}, 'Jane\\OpenApi\\JsonSchema\\Version2\\Model\\Schema', 'json', $context);
             }
-            if (is_object($data->{'schema'}) and (isset($data->{'schema'}->{'type'}) and $data->{'schema'}->{'type'} == 'file')) {
+            if (\is_object($data->{'schema'}) and (isset($data->{'schema'}->{'type'}) and $data->{'schema'}->{'type'} == 'file')) {
                 $value = $this->denormalizer->denormalize($data->{'schema'}, 'Jane\\OpenApi\\JsonSchema\\Version2\\Model\\FileSchema', 'json', $context);
             }
             $object->setSchema($value);
@@ -92,10 +92,10 @@ class ResponseNormalizer implements DenormalizerInterface, NormalizerInterface, 
         }
         if (null !== $object->getSchema()) {
             $value = $object->getSchema();
-            if (is_object($object->getSchema())) {
+            if (\is_object($object->getSchema())) {
                 $value = $this->normalizer->normalize($object->getSchema(), 'json', $context);
             }
-            if (is_object($object->getSchema())) {
+            if (\is_object($object->getSchema())) {
                 $value = $this->normalizer->normalize($object->getSchema(), 'json', $context);
             }
             $data->{'schema'} = $value;

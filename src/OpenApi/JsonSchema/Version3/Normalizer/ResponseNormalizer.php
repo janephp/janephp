@@ -36,7 +36,7 @@ class ResponseNormalizer implements DenormalizerInterface, NormalizerInterface, 
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        if (!is_object($data)) {
+        if (!\is_object($data)) {
             throw new InvalidArgumentException();
         }
         if (isset($data->{'$ref'})) {
@@ -56,10 +56,10 @@ class ResponseNormalizer implements DenormalizerInterface, NormalizerInterface, 
             $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
             foreach ($data->{'content'} as $key => $value) {
                 $value_1 = $value;
-                if (is_object($value)) {
+                if (\is_object($value)) {
                     $value_1 = $this->denormalizer->denormalize($value, 'Jane\\OpenApi\\JsonSchema\\Version3\\Model\\MediaTypeWithExample', 'json', $context);
                 }
-                if (is_object($value) and isset($value->{'examples'})) {
+                if (\is_object($value) and isset($value->{'examples'})) {
                     $value_1 = $this->denormalizer->denormalize($value, 'Jane\\OpenApi\\JsonSchema\\Version3\\Model\\MediaTypeWithExamples', 'json', $context);
                 }
                 $values[$key] = $value_1;
@@ -71,13 +71,13 @@ class ResponseNormalizer implements DenormalizerInterface, NormalizerInterface, 
             $values_1 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
             foreach ($data->{'links'} as $key_1 => $value_2) {
                 $value_3 = $value_2;
-                if (is_object($value_2)) {
+                if (\is_object($value_2)) {
                     $value_3 = $this->denormalizer->denormalize($value_2, 'Jane\\OpenApi\\JsonSchema\\Version3\\Model\\LinkWithOperationRef', 'json', $context);
                 }
-                if (is_object($value_2)) {
+                if (\is_object($value_2)) {
                     $value_3 = $this->denormalizer->denormalize($value_2, 'Jane\\OpenApi\\JsonSchema\\Version3\\Model\\LinkWithOperationId', 'json', $context);
                 }
-                if (is_object($value_2) and isset($value_2->{'$ref'})) {
+                if (\is_object($value_2) and isset($value_2->{'$ref'})) {
                     $value_3 = $this->denormalizer->denormalize($value_2, 'Jane\\OpenApi\\JsonSchema\\Version3\\Model\\Reference', 'json', $context);
                 }
                 $values_1[$key_1] = $value_3;
@@ -107,10 +107,10 @@ class ResponseNormalizer implements DenormalizerInterface, NormalizerInterface, 
             $values = new \stdClass();
             foreach ($object->getContent() as $key => $value) {
                 $value_1 = $value;
-                if (is_object($value)) {
+                if (\is_object($value)) {
                     $value_1 = $this->normalizer->normalize($value, 'json', $context);
                 }
-                if (is_object($value)) {
+                if (\is_object($value)) {
                     $value_1 = $this->normalizer->normalize($value, 'json', $context);
                 }
                 $values->{$key} = $value_1;
@@ -121,13 +121,13 @@ class ResponseNormalizer implements DenormalizerInterface, NormalizerInterface, 
             $values_1 = new \stdClass();
             foreach ($object->getLinks() as $key_1 => $value_2) {
                 $value_3 = $value_2;
-                if (is_object($value_2)) {
+                if (\is_object($value_2)) {
                     $value_3 = $this->normalizer->normalize($value_2, 'json', $context);
                 }
-                if (is_object($value_2)) {
+                if (\is_object($value_2)) {
                     $value_3 = $this->normalizer->normalize($value_2, 'json', $context);
                 }
-                if (is_object($value_2)) {
+                if (\is_object($value_2)) {
                     $value_3 = $this->normalizer->normalize($value_2, 'json', $context);
                 }
                 $values_1->{$key_1} = $value_3;

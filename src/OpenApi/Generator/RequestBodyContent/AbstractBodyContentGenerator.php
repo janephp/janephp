@@ -79,7 +79,6 @@ abstract class AbstractBodyContentGenerator implements RequestBodyContentGenerat
         );
     }
 
-
     protected function guessClass($schema, string $reference, Context $context)
     {
         $jsonReference = $reference;
@@ -158,7 +157,7 @@ abstract class AbstractBodyContentGenerator implements RequestBodyContentGenerat
                 'default' => new Expr\FuncCall(new Name('is_array'), [$inputArg]),
             ],
             'object' => [
-                'default' => new Expr\Instanceof_($fetch, new Name('\\stdClass' )),
+                'default' => new Expr\Instanceof_($fetch, new Name('\\stdClass')),
             ],
             'file' => [
                 'default' => new Expr\BinaryOp\LogicalOr(

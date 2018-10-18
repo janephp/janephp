@@ -2,10 +2,8 @@
 
 namespace Jane\OpenApi\Generator\Parameter;
 
-use Doctrine\Common\Inflector\Inflector;
 use Jane\JsonSchema\Generator\Context\Context;
 use Jane\JsonSchemaRuntime\Reference;
-use Jane\OpenApi\JsonSchema\Version3\Model\BodyParameter;
 use Jane\OpenApi\JsonSchema\Version3\Model\MediaTypeWithExample;
 use Jane\OpenApi\JsonSchema\Version3\Model\MediaTypeWithExamples;
 use Jane\OpenApi\JsonSchema\Version3\Model\Schema;
@@ -61,7 +59,7 @@ class BodyParameterGenerator extends ParameterGenerator
 
     /**
      * @param MediaTypeWithExample|MediaTypeWithExamples $parameter
-     * @param Context       $context
+     * @param Context                                    $context
      *
      * @return array
      */

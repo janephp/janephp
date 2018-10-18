@@ -36,7 +36,7 @@ class SchemaNormalizer implements DenormalizerInterface, NormalizerInterface, De
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        if (!is_object($data)) {
+        if (!\is_object($data)) {
             throw new InvalidArgumentException();
         }
         if (isset($data->{'$ref'})) {
@@ -134,10 +134,10 @@ class SchemaNormalizer implements DenormalizerInterface, NormalizerInterface, De
         }
         if (property_exists($data, 'additionalProperties')) {
             $value_2 = $data->{'additionalProperties'};
-            if (is_object($data->{'additionalProperties'})) {
+            if (\is_object($data->{'additionalProperties'})) {
                 $value_2 = $this->denormalizer->denormalize($data->{'additionalProperties'}, 'Jane\\OpenApi\\JsonSchema\\Version2\\Model\\Schema', 'json', $context);
             }
-            if (is_bool($data->{'additionalProperties'})) {
+            if (\is_bool($data->{'additionalProperties'})) {
                 $value_2 = $data->{'additionalProperties'};
             }
             $object->setAdditionalProperties($value_2);
@@ -148,7 +148,7 @@ class SchemaNormalizer implements DenormalizerInterface, NormalizerInterface, De
             if (isset($data->{'type'})) {
                 $value_3 = $data->{'type'};
             }
-            if (is_array($data->{'type'})) {
+            if (\is_array($data->{'type'})) {
                 $values_2 = [];
                 foreach ($data->{'type'} as $value_4) {
                     $values_2[] = $value_4;
@@ -160,10 +160,10 @@ class SchemaNormalizer implements DenormalizerInterface, NormalizerInterface, De
         }
         if (property_exists($data, 'items')) {
             $value_5 = $data->{'items'};
-            if (is_object($data->{'items'})) {
+            if (\is_object($data->{'items'})) {
                 $value_5 = $this->denormalizer->denormalize($data->{'items'}, 'Jane\\OpenApi\\JsonSchema\\Version2\\Model\\Schema', 'json', $context);
             }
-            if (is_array($data->{'items'})) {
+            if (\is_array($data->{'items'})) {
                 $values_3 = [];
                 foreach ($data->{'items'} as $value_6) {
                     $values_3[] = $this->denormalizer->denormalize($value_6, 'Jane\\OpenApi\\JsonSchema\\Version2\\Model\\Schema', 'json', $context);
@@ -291,20 +291,20 @@ class SchemaNormalizer implements DenormalizerInterface, NormalizerInterface, De
         }
         if (null !== $object->getAdditionalProperties()) {
             $value_2 = $object->getAdditionalProperties();
-            if (is_object($object->getAdditionalProperties())) {
+            if (\is_object($object->getAdditionalProperties())) {
                 $value_2 = $this->normalizer->normalize($object->getAdditionalProperties(), 'json', $context);
             }
-            if (is_bool($object->getAdditionalProperties())) {
+            if (\is_bool($object->getAdditionalProperties())) {
                 $value_2 = $object->getAdditionalProperties();
             }
             $data->{'additionalProperties'} = $value_2;
         }
         if (null !== $object->getType()) {
             $value_3 = $object->getType();
-            if (!is_null($object->getType())) {
+            if (null !== $object->getType()) {
                 $value_3 = $object->getType();
             }
-            if (is_array($object->getType())) {
+            if (\is_array($object->getType())) {
                 $values_2 = [];
                 foreach ($object->getType() as $value_4) {
                     $values_2[] = $value_4;
@@ -315,10 +315,10 @@ class SchemaNormalizer implements DenormalizerInterface, NormalizerInterface, De
         }
         if (null !== $object->getItems()) {
             $value_5 = $object->getItems();
-            if (is_object($object->getItems())) {
+            if (\is_object($object->getItems())) {
                 $value_5 = $this->normalizer->normalize($object->getItems(), 'json', $context);
             }
-            if (is_array($object->getItems())) {
+            if (\is_array($object->getItems())) {
                 $values_3 = [];
                 foreach ($object->getItems() as $value_6) {
                     $values_3[] = $this->normalizer->normalize($value_6, 'json', $context);

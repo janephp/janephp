@@ -36,7 +36,7 @@ class PathParameterSubSchemaNormalizer implements DenormalizerInterface, Normali
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        if (!is_object($data)) {
+        if (!\is_object($data)) {
             throw new InvalidArgumentException();
         }
         if (isset($data->{'$ref'})) {

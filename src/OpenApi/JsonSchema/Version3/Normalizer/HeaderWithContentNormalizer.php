@@ -36,7 +36,7 @@ class HeaderWithContentNormalizer implements DenormalizerInterface, NormalizerIn
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        if (!is_object($data)) {
+        if (!\is_object($data)) {
             throw new InvalidArgumentException();
         }
         if (isset($data->{'$ref'})) {
@@ -64,10 +64,10 @@ class HeaderWithContentNormalizer implements DenormalizerInterface, NormalizerIn
             $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
             foreach ($data->{'content'} as $key => $value) {
                 $value_1 = $value;
-                if (is_object($value)) {
+                if (\is_object($value)) {
                     $value_1 = $this->denormalizer->denormalize($value, 'Jane\\OpenApi\\JsonSchema\\Version3\\Model\\MediaTypeWithExample', 'json', $context);
                 }
-                if (is_object($value) and isset($value->{'examples'})) {
+                if (\is_object($value) and isset($value->{'examples'})) {
                     $value_1 = $this->denormalizer->denormalize($value, 'Jane\\OpenApi\\JsonSchema\\Version3\\Model\\MediaTypeWithExamples', 'json', $context);
                 }
                 $values[$key] = $value_1;
@@ -103,10 +103,10 @@ class HeaderWithContentNormalizer implements DenormalizerInterface, NormalizerIn
             $values = new \stdClass();
             foreach ($object->getContent() as $key => $value) {
                 $value_1 = $value;
-                if (is_object($value)) {
+                if (\is_object($value)) {
                     $value_1 = $this->normalizer->normalize($value, 'json', $context);
                 }
-                if (is_object($value)) {
+                if (\is_object($value)) {
                     $value_1 = $this->normalizer->normalize($value, 'json', $context);
                 }
                 $values->{$key} = $value_1;

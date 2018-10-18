@@ -8,7 +8,6 @@ use Jane\JsonSchema\Generator\Context\Context;
 use Jane\JsonSchema\Generator\File;
 use Jane\JsonSchemaRuntime\Reference;
 use Jane\OpenApi\JsonSchema\Version3\Model\OpenApi;
-use Jane\OpenApi\JsonSchema\Version3\Model\ParameterWithContentInPath;
 use Jane\OpenApi\JsonSchema\Version3\Model\ParameterWithSchemaWithExampleInHeader;
 use Jane\OpenApi\JsonSchema\Version3\Model\ParameterWithSchemaWithExampleInPath;
 use Jane\OpenApi\JsonSchema\Version3\Model\ParameterWithSchemaWithExampleInQuery;
@@ -369,7 +368,7 @@ EOD
                 new Param('streamFactory', new Expr\ConstFetch(new Name('null')), new Name\FullyQualified(StreamFactory::class)),
             ],
             'returnType' => new Name('array'),
-            'stmts' => $this->requestBodyGenerator->getSerializeStatements($operation->getOperation()->getRequestBody(), $operation->getReference() . '/requestBody', $context)
+            'stmts' => $this->requestBodyGenerator->getSerializeStatements($operation->getOperation()->getRequestBody(), $operation->getReference() . '/requestBody', $context),
         ]);
 
         $hasBody = false;
@@ -716,34 +715,34 @@ EOD
     private function resolveParameter(Reference $parameter)
     {
         return $parameter->resolve(function ($value) {
-            if (is_object($value) and isset($value->{'name'}) and (isset($value->{'in'}) and $value->{'in'} == 'path') and (isset($value->{'required'}) and $value->{'required'} == '1') and isset($value->{'schema'})) {
+            if (\is_object($value) and isset($value->{'name'}) and (isset($value->{'in'}) and $value->{'in'} == 'path') and (isset($value->{'required'}) and $value->{'required'} == '1') and isset($value->{'schema'})) {
                 return $this->denormalizer->denormalize($value, 'Jane\\OpenApi\\JsonSchema\\Version3\\Model\\ParameterWithSchemaWithExampleInPath', 'json');
             }
-            if (is_object($value) and isset($value->{'name'}) and (isset($value->{'in'}) and $value->{'in'} == 'query') and isset($value->{'schema'})) {
+            if (\is_object($value) and isset($value->{'name'}) and (isset($value->{'in'}) and $value->{'in'} == 'query') and isset($value->{'schema'})) {
                 return $this->denormalizer->denormalize($value, 'Jane\\OpenApi\\JsonSchema\\Version3\\Model\\ParameterWithSchemaWithExampleInQuery', 'json');
             }
-            if (is_object($value) and isset($value->{'name'}) and (isset($value->{'in'}) and $value->{'in'} == 'header') and isset($value->{'schema'})) {
+            if (\is_object($value) and isset($value->{'name'}) and (isset($value->{'in'}) and $value->{'in'} == 'header') and isset($value->{'schema'})) {
                 return $this->denormalizer->denormalize($value, 'Jane\\OpenApi\\JsonSchema\\Version3\\Model\\ParameterWithSchemaWithExampleInHeader', 'json');
             }
-            if (is_object($value) and isset($value->{'name'}) and (isset($value->{'in'}) and $value->{'in'} == 'cookie') and isset($value->{'schema'})) {
+            if (\is_object($value) and isset($value->{'name'}) and (isset($value->{'in'}) and $value->{'in'} == 'cookie') and isset($value->{'schema'})) {
                 return $this->denormalizer->denormalize($value, 'Jane\\OpenApi\\JsonSchema\\Version3\\Model\\ParameterWithSchemaWithExampleInCookie', 'json');
             }
-            if (is_object($value) and isset($value->{'name'}) and (isset($value->{'in'}) and $value->{'in'} == 'path') and (isset($value->{'required'}) and $value->{'required'} == '1') and isset($value->{'schema'}) and isset($value->{'examples'})) {
+            if (\is_object($value) and isset($value->{'name'}) and (isset($value->{'in'}) and $value->{'in'} == 'path') and (isset($value->{'required'}) and $value->{'required'} == '1') and isset($value->{'schema'}) and isset($value->{'examples'})) {
                 return $this->denormalizer->denormalize($value, 'Jane\\OpenApi\\JsonSchema\\Version3\\Model\\ParameterWithSchemaWithExamplesInPath', 'json');
             }
-            if (is_object($value) and isset($value->{'name'}) and (isset($value->{'in'}) and $value->{'in'} == 'query') and isset($value->{'schema'}) and isset($value->{'examples'})) {
+            if (\is_object($value) and isset($value->{'name'}) and (isset($value->{'in'}) and $value->{'in'} == 'query') and isset($value->{'schema'}) and isset($value->{'examples'})) {
                 return $this->denormalizer->denormalize($value, 'Jane\\OpenApi\\JsonSchema\\Version3\\Model\\ParameterWithSchemaWithExamplesInQuery', 'json');
             }
-            if (is_object($value) and isset($value->{'name'}) and (isset($value->{'in'}) and $value->{'in'} == 'header') and isset($value->{'schema'}) and isset($value->{'examples'})) {
+            if (\is_object($value) and isset($value->{'name'}) and (isset($value->{'in'}) and $value->{'in'} == 'header') and isset($value->{'schema'}) and isset($value->{'examples'})) {
                 return $this->denormalizer->denormalize($value, 'Jane\\OpenApi\\JsonSchema\\Version3\\Model\\ParameterWithSchemaWithExamplesInHeader', 'json');
             }
-            if (is_object($value) and isset($value->{'name'}) and (isset($value->{'in'}) and $value->{'in'} == 'cookie') and isset($value->{'schema'}) and isset($value->{'examples'})) {
+            if (\is_object($value) and isset($value->{'name'}) and (isset($value->{'in'}) and $value->{'in'} == 'cookie') and isset($value->{'schema'}) and isset($value->{'examples'})) {
                 return $this->denormalizer->denormalize($value, 'Jane\\OpenApi\\JsonSchema\\Version3\\Model\\ParameterWithSchemaWithExamplesInCookie', 'json');
             }
-            if (is_object($value) and isset($value->{'name'}) and (isset($value->{'in'}) and $value->{'in'} == 'path') and isset($value->{'content'})) {
+            if (\is_object($value) and isset($value->{'name'}) and (isset($value->{'in'}) and $value->{'in'} == 'path') and isset($value->{'content'})) {
                 return $this->denormalizer->denormalize($value, 'Jane\\OpenApi\\JsonSchema\\Version3\\Model\\ParameterWithContentInPath', 'json');
             }
-            if (is_object($value) and isset($value->{'name'}) and (isset($value->{'in'}) and ($value->{'in'} == 'query' or $value->{'in'} == 'header' or $value->{'in'} == 'cookie')) and isset($value->{'content'})) {
+            if (\is_object($value) and isset($value->{'name'}) and (isset($value->{'in'}) and ($value->{'in'} == 'query' or $value->{'in'} == 'header' or $value->{'in'} == 'cookie')) and isset($value->{'content'})) {
                 return $this->denormalizer->denormalize($value, 'Jane\\OpenApi\\JsonSchema\\Version3\\Model\\ParameterWithContentNotInPath', 'json');
             }
 

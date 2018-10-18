@@ -36,7 +36,7 @@ class ParameterWithSchemaWithExamplesInPathNormalizer implements DenormalizerInt
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        if (!is_object($data)) {
+        if (!\is_object($data)) {
             throw new InvalidArgumentException();
         }
         if (isset($data->{'$ref'})) {
@@ -82,10 +82,10 @@ class ParameterWithSchemaWithExamplesInPathNormalizer implements DenormalizerInt
         }
         if (property_exists($data, 'schema')) {
             $value = $data->{'schema'};
-            if (is_object($data->{'schema'})) {
+            if (\is_object($data->{'schema'})) {
                 $value = $this->denormalizer->denormalize($data->{'schema'}, 'Jane\\OpenApi\\JsonSchema\\Version3\\Model\\Schema', 'json', $context);
             }
-            if (is_object($data->{'schema'}) and isset($data->{'schema'}->{'$ref'})) {
+            if (\is_object($data->{'schema'}) and isset($data->{'schema'}->{'$ref'})) {
                 $value = $this->denormalizer->denormalize($data->{'schema'}, 'Jane\\OpenApi\\JsonSchema\\Version3\\Model\\Reference', 'json', $context);
             }
             $object->setSchema($value);
@@ -95,10 +95,10 @@ class ParameterWithSchemaWithExamplesInPathNormalizer implements DenormalizerInt
             $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
             foreach ($data->{'examples'} as $key => $value_1) {
                 $value_2 = $value_1;
-                if (is_object($value_1)) {
+                if (\is_object($value_1)) {
                     $value_2 = $this->denormalizer->denormalize($value_1, 'Jane\\OpenApi\\JsonSchema\\Version3\\Model\\Example', 'json', $context);
                 }
-                if (is_object($value_1) and isset($value_1->{'$ref'})) {
+                if (\is_object($value_1) and isset($value_1->{'$ref'})) {
                     $value_2 = $this->denormalizer->denormalize($value_1, 'Jane\\OpenApi\\JsonSchema\\Version3\\Model\\Reference', 'json', $context);
                 }
                 $values[$key] = $value_2;
@@ -147,10 +147,10 @@ class ParameterWithSchemaWithExamplesInPathNormalizer implements DenormalizerInt
         }
         if (null !== $object->getSchema()) {
             $value = $object->getSchema();
-            if (is_object($object->getSchema())) {
+            if (\is_object($object->getSchema())) {
                 $value = $this->normalizer->normalize($object->getSchema(), 'json', $context);
             }
-            if (is_object($object->getSchema())) {
+            if (\is_object($object->getSchema())) {
                 $value = $this->normalizer->normalize($object->getSchema(), 'json', $context);
             }
             $data->{'schema'} = $value;
@@ -159,10 +159,10 @@ class ParameterWithSchemaWithExamplesInPathNormalizer implements DenormalizerInt
             $values = new \stdClass();
             foreach ($object->getExamples() as $key => $value_1) {
                 $value_2 = $value_1;
-                if (is_object($value_1)) {
+                if (\is_object($value_1)) {
                     $value_2 = $this->normalizer->normalize($value_1, 'json', $context);
                 }
-                if (is_object($value_1)) {
+                if (\is_object($value_1)) {
                     $value_2 = $this->normalizer->normalize($value_1, 'json', $context);
                 }
                 $values->{$key} = $value_2;

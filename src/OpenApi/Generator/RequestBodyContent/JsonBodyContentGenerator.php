@@ -32,7 +32,7 @@ class JsonBodyContentGenerator extends AbstractBodyContentGenerator
                     new Expr\ArrayItem(
                         new Expr\Array_([new Expr\ArrayItem(new Scalar\String_($contentType))]),
                         new Scalar\String_('Content-Type')
-                    )
+                    ),
                 ]),
                 new Expr\FuncCall(new Name('json_encode'), [
                     new Arg(new Expr\PropertyFetch(new Expr\Variable('this'), 'body')),
@@ -45,7 +45,7 @@ class JsonBodyContentGenerator extends AbstractBodyContentGenerator
                 new Expr\ArrayItem(
                     new Expr\Array_([new Expr\ArrayItem(new Scalar\String_($contentType))]),
                     new Scalar\String_('Content-Type')
-                )
+                ),
             ]),
             new Expr\MethodCall(
                 new Expr\Variable('serializer'),
