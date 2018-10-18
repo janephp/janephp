@@ -1,5 +1,5 @@
 {
-    "swagger": "2.0",
+    "openapi": "3.0.0",
     "paths": {
         "/test-query": {
             "get": {
@@ -7,8 +7,12 @@
                 "responses": {
                     "200": {
                         "description": "test",
-                        "schema": {
-                            "$ref": "swagger1.json#/definitions/body"
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "swagger1.json#/components/schemas/body"
+                                }
+                            }
                         }
                     }
                 },
@@ -17,5 +21,9 @@
                 ]
             }
         }
+    },
+    "info": {
+        "version": "",
+        "title": ""
     }
 }

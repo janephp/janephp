@@ -1,6 +1,5 @@
 {
-    "swagger": "2.0",
-    "basePath": "/",
+    "openapi": "3.0.0",
     "paths": {
         "/test-exception": {
             "get": {
@@ -8,8 +7,12 @@
                 "responses": {
                     "400": {
                         "description": "Bad request on test exception",
-                        "schema": {
-                            "$ref": "#/definitions/Error"
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
                         }
                     },
                     "404": {
@@ -22,12 +25,23 @@
             }
         }
     },
-    "definitions": {
-        "Error": {
-            "type": "object",
-            "properties": {
-                "message": {
-                    "type": "string"
+    "servers": [
+        {
+            "url": "/"
+        }
+    ],
+    "info": {
+        "version": "",
+        "title": ""
+    },
+    "components": {
+        "schemas": {
+            "Error": {
+                "type": "object",
+                "properties": {
+                    "message": {
+                        "type": "string"
+                    }
                 }
             }
         }

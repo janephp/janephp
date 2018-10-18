@@ -113,15 +113,11 @@ class Psr7HttplugClientGenerator extends ClientGenerator
         $servers = $openApi->getServers();
         $server = $servers !== null && $servers[0] !== null ? $servers[0] : null;
 
-        if (null !== $openApi->getSchemes() && \count($openApi->getSchemes()) > 0 && !\in_array('https', $openApi->getSchemes())) {
-            $scheme = $openApi->getSchemes()[0];
-        }
-
         if (null !== $server) {
             $url = parse_url($server->getUrl());
             $baseUri = '';
 
-            if (null !== $url['host']) {
+            if (isset($url['host'])) {
                 $scheme = $url['scheme'] ?? 'https';
                 $baseUri = $scheme . '://' . trim($url['host'], '/');
                 $plugins[] = AddHostPlugin::class;
@@ -141,7 +137,7 @@ class Psr7HttplugClientGenerator extends ClientGenerator
             )
         );
 
-        if (empty($baseUri)) {
+        if (empty($baseUri) || $baseUri === '/') {
             return [$httpClientAssign];
         }
 

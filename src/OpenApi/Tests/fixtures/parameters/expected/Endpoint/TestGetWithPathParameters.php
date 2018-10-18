@@ -12,9 +12,11 @@ namespace Jane\OpenApi\Tests\Expected\Endpoint;
 
 class TestGetWithPathParameters extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7HttplugEndpoint
 {
+    protected $testPath;
+
     /**
-     * @param array $testBody
-     * @param array $queryParameters {
+     * @param string $testPath
+     * @param array  $queryParameters {
      *
      *     @var string $testQuery
      * }
@@ -24,9 +26,9 @@ class TestGetWithPathParameters extends \Jane\OpenApiRuntime\Client\BaseEndpoint
      *     @var string $testHeader
      * }
      */
-    public function __construct(array $testBody, array $queryParameters = [], array $headerParameters = [])
+    public function __construct(string $testPath, array $queryParameters = [], array $headerParameters = [])
     {
-        $this->body = $testBody;
+        $this->testPath = $testPath;
         $this->queryParameters = $queryParameters;
         $this->headerParameters = $headerParameters;
     }
@@ -40,12 +42,12 @@ class TestGetWithPathParameters extends \Jane\OpenApiRuntime\Client\BaseEndpoint
 
     public function getUri(): string
     {
-        return '/test-path-parameters/{testPath}';
+        return str_replace(['{testPath}'], [$this->testPath], '/test-path-parameters/{testPath}');
     }
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null): array
     {
-        return $this->getSerializedBody($serializer);
+        return [[], null];
     }
 
     protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
@@ -73,7 +75,8 @@ class TestGetWithPathParameters extends \Jane\OpenApiRuntime\Client\BaseEndpoint
     /**
      * {@inheritdoc}
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
+    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
+        return null;
     }
 }

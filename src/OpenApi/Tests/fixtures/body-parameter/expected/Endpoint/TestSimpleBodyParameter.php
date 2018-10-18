@@ -13,11 +13,11 @@ namespace Jane\OpenApi\Tests\Expected\Endpoint;
 class TestSimpleBodyParameter extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7HttplugEndpoint
 {
     /**
-     * @param string|resource|\Psr\Http\Message\StreamInterface $testString
+     * @param string|resource|\Psr\Http\Message\StreamInterface $requestBody
      */
-    public function __construct($testString)
+    public function __construct($requestBody)
     {
-        $this->body = $testString;
+        $this->body = $requestBody;
     }
 
     use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
@@ -34,13 +34,17 @@ class TestSimpleBodyParameter extends \Jane\OpenApiRuntime\Client\BaseEndpoint i
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null): array
     {
-        return [[], $this->body];
+        if (is_string($this->body) or is_resource($this->body) or $this->body instanceof \Psr\Http\Message\StreamInterface) {
+            return [['Content-Type' => ['text/plain']], $this->body];
+        }
+
+        return [[], null];
     }
 
     /**
      * {@inheritdoc}
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
+    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         if (200 === $status) {
             return null;

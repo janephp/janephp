@@ -16,6 +16,8 @@ class NormalizerFactory
     {
         $normalizers = [];
         $normalizers[] = new \Symfony\Component\Serializer\Normalizer\ArrayDenormalizer();
+        $normalizers[] = new TestFormPostBodyNormalizer();
+        $normalizers[] = new TestFormFilePostBodyNormalizer();
 
         return $normalizers;
     }

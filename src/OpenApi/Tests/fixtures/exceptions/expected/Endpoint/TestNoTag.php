@@ -29,6 +29,11 @@ class TestNoTag extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jan
         return [[], null];
     }
 
+    public function getExtraHeaders(): array
+    {
+        return ['Accept' => ['application/json']];
+    }
+
     /**
      * {@inheritdoc}
      *
@@ -36,9 +41,9 @@ class TestNoTag extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jan
      * @throws \Jane\OpenApi\Tests\Expected\Exception\TestNoTagNotFoundException
      * @throws \Jane\OpenApi\Tests\Expected\Exception\TestNoTagInternalServerErrorException
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
+    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
-        if (400 === $status) {
+        if (400 === $status && 'application/json' === $contentType) {
             throw new \Jane\OpenApi\Tests\Expected\Exception\TestNoTagBadRequestException($serializer->deserialize($body, 'Jane\\OpenApi\\Tests\\Expected\\Model\\Error', 'json'));
         }
         if (404 === $status) {

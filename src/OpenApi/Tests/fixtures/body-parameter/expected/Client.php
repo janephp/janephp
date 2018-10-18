@@ -13,36 +13,36 @@ namespace Jane\OpenApi\Tests\Expected;
 class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
 {
     /**
-     * @param string|resource|\Psr\Http\Message\StreamInterface $testString
-     * @param string                                            $fetch      Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param string|resource|\Psr\Http\Message\StreamInterface $requestBody
+     * @param string                                            $fetch       Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function testSimpleBodyParameter($testString, string $fetch = self::FETCH_OBJECT)
+    public function testSimpleBodyParameter($requestBody, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Jane\OpenApi\Tests\Expected\Endpoint\TestSimpleBodyParameter($testString), $fetch);
+        return $this->executePsr7Endpoint(new \Jane\OpenApi\Tests\Expected\Endpoint\TestSimpleBodyParameter($requestBody), $fetch);
     }
 
     /**
-     * @param \Jane\OpenApi\Tests\Expected\Model\Schema $testObject
-     * @param string                                    $fetch      Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param \Jane\OpenApi\Tests\Expected\Model\Schema $requestBody
+     * @param string                                    $fetch       Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function testObjectBodyParameter(\Jane\OpenApi\Tests\Expected\Model\Schema $testObject, string $fetch = self::FETCH_OBJECT)
+    public function testObjectBodyParameter(\Jane\OpenApi\Tests\Expected\Model\Schema $requestBody, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Jane\OpenApi\Tests\Expected\Endpoint\TestObjectBodyParameter($testObject), $fetch);
+        return $this->executePsr7Endpoint(new \Jane\OpenApi\Tests\Expected\Endpoint\TestObjectBodyParameter($requestBody), $fetch);
     }
 
     /**
-     * @param \Jane\OpenApi\Tests\Expected\Model\Schema[] $testObjectList
-     * @param string                                      $fetch          Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param \Jane\OpenApi\Tests\Expected\Model\Schema[] $requestBody
+     * @param string                                      $fetch       Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function testObjectListBodyParameter(array $testObjectList, string $fetch = self::FETCH_OBJECT)
+    public function testObjectListBodyParameter(array $requestBody, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Jane\OpenApi\Tests\Expected\Endpoint\TestObjectListBodyParameter($testObjectList), $fetch);
+        return $this->executePsr7Endpoint(new \Jane\OpenApi\Tests\Expected\Endpoint\TestObjectListBodyParameter($requestBody), $fetch);
     }
 
     public static function create($httpClient = null)

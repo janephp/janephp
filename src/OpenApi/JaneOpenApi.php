@@ -52,7 +52,7 @@ class JaneOpenApi extends ChainGenerator
 
         /** @var Schema $schema */
         foreach ($schemas as $schema) {
-            $openApiSpec = $this->schemaParser->parseSchema($schema->getOrigin(), $schema->getVersion());
+            $openApiSpec = $this->schemaParser->parseSchema($schema->getOrigin());
             $this->chainGuesser->guessClass($openApiSpec, $schema->getRootName(), $schema->getOrigin() . '#', $registry);
             $schema->setParsed($openApiSpec);
         }

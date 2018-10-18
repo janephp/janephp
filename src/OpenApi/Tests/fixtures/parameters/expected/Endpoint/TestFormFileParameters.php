@@ -13,14 +13,11 @@ namespace Jane\OpenApi\Tests\Expected\Endpoint;
 class TestFormFileParameters extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7HttplugEndpoint
 {
     /**
-     * @param array $formParameters {
-     *
-     *     @var string|resource|\Psr\Http\Message\StreamInterface $testFile
-     * }
+     * @param \Jane\OpenApi\Tests\Expected\Model\TestFormFilePostBody $requestBody
      */
-    public function __construct(array $formParameters = [])
+    public function __construct(\Jane\OpenApi\Tests\Expected\Model\TestFormFilePostBody $requestBody)
     {
-        $this->formParameters = $formParameters;
+        $this->body = $requestBody;
     }
 
     use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
@@ -37,24 +34,23 @@ class TestFormFileParameters extends \Jane\OpenApiRuntime\Client\BaseEndpoint im
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null): array
     {
-        return $this->getMultipartBody($streamFactory);
-    }
+        if ($this->body instanceof \Jane\OpenApi\Tests\Expected\Model\TestFormFilePostBody) {
+            $bodyBuilder = new \Http\Message\MultipartStream\MultipartStreamBuilder($streamFactory);
+            $formParameters = $serializer->normalize($this->body, 'json');
+            foreach ($formParameters as $key => $value) {
+                $bodyBuilder->addResource($key, $value);
+            }
 
-    protected function getFormOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
-    {
-        $optionsResolver = parent::getFormOptionsResolver();
-        $optionsResolver->setDefined(['testFile']);
-        $optionsResolver->setRequired([]);
-        $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('testFile', ['string', 'resource', '\\Psr\\Http\\Message\\StreamInterface']);
+            return [['Content-Type' => ['multipart/form-data; boundary="' . ($bodyBuilder->getBoundary() . '""')]], $bodyBuilder->build()];
+        }
 
-        return $optionsResolver;
+        return [[], null];
     }
 
     /**
      * {@inheritdoc}
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
+    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         if (200 === $status) {
             return null;

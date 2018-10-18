@@ -109,6 +109,6 @@ class GenerateCommand extends Command
 
         $options = $optionsResolver->resolve($options);
 
-        return new Schema($schema, $options['namespace'], $options['directory'], '', $options['version']);
+        return new Schema($schema, $options['namespace'], $options['directory'], '');
     }
 }

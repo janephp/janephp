@@ -6,6 +6,8 @@ use Doctrine\Common\Inflector\Inflector;
 use Jane\JsonSchema\Generator\Context\Context;
 use Jane\JsonSchemaRuntime\Reference;
 use Jane\OpenApi\JsonSchema\Version3\Model\BodyParameter;
+use Jane\OpenApi\JsonSchema\Version3\Model\MediaTypeWithExample;
+use Jane\OpenApi\JsonSchema\Version3\Model\MediaTypeWithExamples;
 use Jane\OpenApi\JsonSchema\Version3\Model\Schema;
 use PhpParser\Node;
 use PhpParser\Parser;
@@ -29,11 +31,11 @@ class BodyParameterGenerator extends ParameterGenerator
     /**
      * {@inheritdoc}
      *
-     * @param $parameter BodyParameter
+     * @param $parameter MediaTypeWithExample|MediaTypeWithExamples
      */
     public function generateMethodParameter($parameter, Context $context, $reference)
     {
-        $name = Inflector::camelize($parameter->getName());
+        $name = 'requestBody';
 
         list($class, $array) = $this->getClass($parameter, $context, $reference);
         $paramType = \count($class) === 1 ? $class[0] : null;
@@ -48,34 +50,35 @@ class BodyParameterGenerator extends ParameterGenerator
     /**
      * {@inheritdoc}
      *
-     * @param $parameter BodyParameter
+     * @param $parameter MediaTypeWithExample|MediaTypeWithExamples
      */
     public function generateMethodDocParameter($parameter, Context $context, $reference)
     {
-        list($class, $array) = $this->getClass($parameter, $context, $reference);
+        [$class, $_] = $this->getClass($parameter, $context, $reference);
 
-        return sprintf(' * @param %s $%s %s', implode('|', $class), Inflector::camelize($parameter->getName()), $parameter->getDescription() ?: '');
+        return sprintf(' * @param %s $%s %s', implode('|', $class), 'requestBody', '');
     }
 
     /**
-     * @param BodyParameter $parameter
+     * @param MediaTypeWithExample|MediaTypeWithExamples $parameter
      * @param Context       $context
      *
      * @return array
      */
-    protected function getClass(BodyParameter $parameter, Context $context, $reference)
+    protected function getClass($parameter, Context $context, $reference)
     {
         $resolvedSchema = null;
         $jsonReference = null;
         $array = false;
+        $reference .= '/schema';
         $schema = $parameter->getSchema();
 
         if ($schema instanceof Reference) {
-            list($jsonReference, $resolvedSchema) = $this->resolveSchema($schema, Schema::class);
+            [$jsonReference, $resolvedSchema] = $this->resolveSchema($schema, Schema::class);
         }
 
         if ($schema instanceof Schema && 'array' === $schema->getType() && $schema->getItems() instanceof Reference) {
-            list($jsonReference, $resolvedSchema) = $this->resolveSchema($schema->getItems(), Schema::class);
+            [$jsonReference, $resolvedSchema] = $this->resolveSchema($schema->getItems(), Schema::class);
             $array = true;
         }
 

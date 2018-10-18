@@ -29,15 +29,20 @@ class TestReferenceResponse extends \Jane\OpenApiRuntime\Client\BaseEndpoint imp
         return [[], null];
     }
 
+    public function getExtraHeaders(): array
+    {
+        return ['Accept' => ['application/json']];
+    }
+
     /**
      * {@inheritdoc}
      *
      *
      * @return null|\Jane\OpenApi\Tests\Expected\Api1\Model\Body
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
+    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
-        if (200 === $status) {
+        if (200 === $status && 'application/json' === $contentType) {
             return $serializer->deserialize($body, 'Jane\\OpenApi\\Tests\\Expected\\Api1\\Model\\Body', 'json');
         }
     }

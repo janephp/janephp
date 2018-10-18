@@ -7,12 +7,14 @@ use Http\Message\StreamFactory;
 use Jane\JsonSchema\Generator\Context\Context;
 use Jane\JsonSchema\Generator\File;
 use Jane\JsonSchemaRuntime\Reference;
-use Jane\OpenApi\JsonSchema\Version3\Model\BodyParameter;
-use Jane\OpenApi\JsonSchema\Version3\Model\FormDataParameterSubSchema;
-use Jane\OpenApi\JsonSchema\Version3\Model\HeaderParameterSubSchema;
 use Jane\OpenApi\JsonSchema\Version3\Model\OpenApi;
-use Jane\OpenApi\JsonSchema\Version3\Model\PathParameterSubSchema;
-use Jane\OpenApi\JsonSchema\Version3\Model\QueryParameterSubSchema;
+use Jane\OpenApi\JsonSchema\Version3\Model\ParameterWithContentInPath;
+use Jane\OpenApi\JsonSchema\Version3\Model\ParameterWithSchemaWithExampleInHeader;
+use Jane\OpenApi\JsonSchema\Version3\Model\ParameterWithSchemaWithExampleInPath;
+use Jane\OpenApi\JsonSchema\Version3\Model\ParameterWithSchemaWithExampleInQuery;
+use Jane\OpenApi\JsonSchema\Version3\Model\ParameterWithSchemaWithExamplesInHeader;
+use Jane\OpenApi\JsonSchema\Version3\Model\ParameterWithSchemaWithExamplesInPath;
+use Jane\OpenApi\JsonSchema\Version3\Model\ParameterWithSchemaWithExamplesInQuery;
 use Jane\OpenApi\JsonSchema\Version3\Model\Response;
 use Jane\OpenApi\JsonSchema\Version3\Model\Schema;
 use Jane\OpenApi\Naming\OperationNamingInterface;
@@ -46,18 +48,23 @@ abstract class EndpointGenerator
     /** @var ExceptionGenerator */
     private $exceptionGenerator;
 
+    /** @var RequestBodyGenerator */
+    private $requestBodyGenerator;
+
     public function __construct(
         OperationNamingInterface $operationNaming,
         Parameter\BodyParameterGenerator $bodyParameterGenerator,
         Parameter\NonBodyParameterGenerator $nonBodyParameterGenerator,
         DenormalizerInterface $denormalizer,
-        ExceptionGenerator $exceptionGenerator
+        ExceptionGenerator $exceptionGenerator,
+        RequestBodyGenerator $requestBodyGenerator
     ) {
         $this->operationNaming = $operationNaming;
         $this->bodyParameterGenerator = $bodyParameterGenerator;
         $this->nonBodyParameterGenerator = $nonBodyParameterGenerator;
         $this->denormalizer = $denormalizer;
         $this->exceptionGenerator = $exceptionGenerator;
+        $this->requestBodyGenerator = $requestBodyGenerator;
     }
 
     abstract protected function getInterface(): array;
@@ -87,9 +94,8 @@ abstract class EndpointGenerator
         ]);
 
         $extraHeadersMethod = $this->getExtraHeadersMethod($openApi, $operation);
-        $queryResolverMethod = $this->getOptionsResolverMethod($operation, QueryParameterSubSchema::class, 'getQueryOptionsResolver');
-        $formResolverMethod = $this->getOptionsResolverMethod($operation, FormDataParameterSubSchema::class, 'getFormOptionsResolver');
-        $headerResolverMethod = $this->getOptionsResolverMethod($operation, HeaderParameterSubSchema::class, 'getHeadersOptionsResolver');
+        $queryResolverMethod = $this->getOptionsResolverMethod($operation, [ParameterWithSchemaWithExampleInQuery::class, ParameterWithSchemaWithExamplesInQuery::class], 'getQueryOptionsResolver');
+        $headerResolverMethod = $this->getOptionsResolverMethod($operation, [ParameterWithSchemaWithExampleInHeader::class, ParameterWithSchemaWithExamplesInHeader::class], 'getHeadersOptionsResolver');
 
         if ($extraHeadersMethod) {
             $class->stmts[] = $extraHeadersMethod;
@@ -97,10 +103,6 @@ abstract class EndpointGenerator
 
         if ($queryResolverMethod) {
             $class->stmts[] = $queryResolverMethod;
-        }
-
-        if ($formResolverMethod) {
-            $class->stmts[] = $formResolverMethod;
         }
 
         if ($headerResolverMethod) {
@@ -133,7 +135,6 @@ abstract class EndpointGenerator
         $bodyAssign = null;
         $pathParamsDoc = [];
         $queryParamsDoc = [];
-        $formParamsDoc = [];
         $headerParamsDoc = [];
         $methodStatements = [];
         $pathProperties = [];
@@ -143,7 +144,7 @@ abstract class EndpointGenerator
                 $parameter = $this->resolveParameter($parameter);
             }
 
-            if ($parameter instanceof PathParameterSubSchema) {
+            if ($parameter instanceof ParameterWithSchemaWithExampleInPath || $parameter instanceof ParameterWithSchemaWithExamplesInPath) {
                 $pathParams[] = $this->nonBodyParameterGenerator->generateMethodParameter($parameter, $context, $operation->getReference() . '/parameters/' . $key);
                 $pathParamsDoc[] = $this->nonBodyParameterGenerator->generateMethodDocParameter($parameter, $context, $operation->getReference() . '/parameters/' . $key);
                 $methodStatements[] = new Expr\Assign(new Expr\PropertyFetch(new Expr\Variable('this'), Inflector::camelize($parameter->getName())), new Expr\Variable(Inflector::camelize($parameter->getName())));
@@ -152,22 +153,22 @@ abstract class EndpointGenerator
                 ]);
             }
 
-            if ($parameter instanceof BodyParameter) {
-                $bodyParam = $this->bodyParameterGenerator->generateMethodParameter($parameter, $context, $operation->getReference() . '/parameters/' . $key);
-                $bodyDoc = $this->bodyParameterGenerator->generateMethodDocParameter($parameter, $context, $operation->getReference() . '/parameters/' . $key);
-                $bodyAssign = new Expr\Assign(new Expr\PropertyFetch(new Expr\Variable('this'), 'body'), new Expr\Variable(Inflector::camelize($parameter->getName())));
-            }
-
-            if ($parameter instanceof QueryParameterSubSchema) {
+            if ($parameter instanceof ParameterWithSchemaWithExampleInQuery || $parameter instanceof ParameterWithSchemaWithExamplesInQuery) {
                 $queryParamsDoc[] = $this->nonBodyParameterGenerator->generateOptionDocParameter($parameter);
             }
 
-            if ($parameter instanceof FormDataParameterSubSchema) {
-                $formParamsDoc[] = $this->nonBodyParameterGenerator->generateOptionDocParameter($parameter);
-            }
-
-            if ($parameter instanceof HeaderParameterSubSchema) {
+            if ($parameter instanceof ParameterWithSchemaWithExampleInHeader || $parameter instanceof ParameterWithSchemaWithExamplesInHeader) {
                 $headerParamsDoc[] = $this->nonBodyParameterGenerator->generateOptionDocParameter($parameter);
+            }
+        }
+
+        $requestBody = $operation->getOperation()->getRequestBody();
+
+        if ($requestBody && $requestBody->getContent()) {
+            foreach ($requestBody->getContent() as $contentType => $content) {
+                $bodyParam = $this->bodyParameterGenerator->generateMethodParameter($content, $context, $operation->getReference() . '/requestBody/content/' . $contentType);
+                $bodyDoc = $this->bodyParameterGenerator->generateMethodDocParameter($content, $context, $operation->getReference() . '/requestBody/content/' . $contentType);
+                $bodyAssign = new Expr\Assign(new Expr\PropertyFetch(new Expr\Variable('this'), 'body'), new Expr\Variable('requestBody'));
             }
         }
 
@@ -175,7 +176,6 @@ abstract class EndpointGenerator
             $methodStatements,
             $bodyAssign !== null ? [$bodyAssign] : [],
             \count($queryParamsDoc) > 0 ? [new Expr\Assign(new Expr\PropertyFetch(new Expr\Variable('this'), 'queryParameters'), new Expr\Variable('queryParameters'))] : [],
-            \count($formParamsDoc) > 0 ? [new Expr\Assign(new Expr\PropertyFetch(new Expr\Variable('this'), 'formParameters'), new Expr\Variable('formParameters'))] : [],
             \count($headerParamsDoc) > 0 ? [new Expr\Assign(new Expr\PropertyFetch(new Expr\Variable('this'), 'headerParameters'), new Expr\Variable('headerParameters'))] : []
         );
 
@@ -187,7 +187,6 @@ abstract class EndpointGenerator
             $pathParams,
             $bodyParam ? [$bodyParam] : [],
             \count($queryParamsDoc) > 0 ? [new Param('queryParameters', new Expr\Array_(), 'array')] : [],
-            \count($formParamsDoc) > 0 ? [new Param('formParameters', new Expr\Array_(), 'array')] : [],
             \count($headerParamsDoc) > 0 ? [new Param('headerParameters', new Expr\Array_(), 'array')] : []
         );
 
@@ -195,7 +194,6 @@ abstract class EndpointGenerator
             $pathParamsDoc,
             $bodyDoc ? [$bodyDoc] : [],
             \count($queryParamsDoc) > 0 ? array_merge([' * @param array $queryParameters {'], $queryParamsDoc, [' * }']) : [],
-            \count($formParamsDoc) > 0 ? array_merge([' * @param array $formParameters {'], $formParamsDoc, [' * }']) : [],
             \count($headerParamsDoc) > 0 ? array_merge([' * @param array $headerParameters {'], $headerParamsDoc, [' * }']) : []
         );
 
@@ -234,7 +232,7 @@ EOD
                 $parameter = $this->resolveParameter($parameter);
             }
 
-            if ($parameter instanceof PathParameterSubSchema) {
+            if ($parameter instanceof ParameterWithSchemaWithExampleInPath || $parameter instanceof ParameterWithSchemaWithExamplesInPath) {
                 // $url = str_replace('{param}', $param, $url)
                 $names[] = $parameter->getName();
             }
@@ -268,10 +266,37 @@ EOD
     private function getExtraHeadersMethod(OpenApi $openApi, Operation $operation): ?Stmt\ClassMethod
     {
         $headers = [];
-        $produces = array_merge(
-            $openApi->getProduces() ?? [],
-            $operation->getOperation()->getProduces() ?? []
-        );
+        $produces = [];
+
+        if ($operation->getOperation()->getResponses()) {
+            foreach ($operation->getOperation()->getResponses() as $response) {
+                if ($response instanceof Reference) {
+                    [$_, $response] = $this->resolve($response, Response::class);
+                }
+
+                /** @var Response $response */
+                if ($response->getContent()) {
+                    foreach ($response->getContent() as $contentType => $content) {
+                        $produces[] = $contentType;
+                    }
+                }
+            }
+
+            if ($operation->getOperation()->getResponses()->getDefault()) {
+                $response = $operation->getOperation()->getResponses()->getDefault();
+
+                if ($response instanceof Reference) {
+                    [$_, $response] = $this->resolve($response, Response::class);
+                }
+
+                /** @var Response $response */
+                if ($response->getContent()) {
+                    foreach ($response->getContent() as $contentType => $content) {
+                        $produces[] = $contentType;
+                    }
+                }
+            }
+        }
 
         // It's a server side specification, what it produces is what we potentially can accept
         if (\in_array('application/json', $produces, true)) {
@@ -299,7 +324,7 @@ EOD
         ]);
     }
 
-    private function getOptionsResolverMethod(Operation $operation, $class, $methodName): ?Stmt\ClassMethod
+    private function getOptionsResolverMethod(Operation $operation, $classes, $methodName): ?Stmt\ClassMethod
     {
         $parameters = [];
 
@@ -308,8 +333,10 @@ EOD
                 $parameter = $this->resolveParameter($parameter);
             }
 
-            if (is_a($parameter, $class)) {
-                $parameters[] = $parameter;
+            foreach ($classes as $class) {
+                if (is_a($parameter, $class)) {
+                    $parameters[] = $parameter;
+                }
             }
         }
 
@@ -336,103 +363,71 @@ EOD
 
     private function getGetBody(Operation $operation, Context $context): Stmt\ClassMethod
     {
-        $hasBody = false;
-        $isSerializableBody = false;
-        $isFormBody = false;
-        $hasFileInForm = false;
-        $consumes = \is_array($operation->getOperation()->getConsumes()) ? $operation->getOperation()->getConsumes() : [$operation->getOperation()->getConsumes()];
-
-        foreach ($operation->getParameters() as $key => $parameter) {
-            if ($parameter instanceof BodyParameter && $parameter->getSchema() !== null) {
-                $hasBody = true;
-
-                [$classGuess, $array, $schema] = $this->guessClass($parameter->getSchema(), $operation->getReference() . '/parameters/' . $key, $context);
-
-                if (\in_array('application/json', $consumes, true)) {
-                    $isSerializableBody = true;
-                }
-
-                if (null !== $classGuess) {
-                    $isSerializableBody = true;
-                }
-            }
-
-            if ($parameter instanceof FormDataParameterSubSchema) {
-                $isFormBody = true;
-
-                if ($parameter->getType() === 'file') {
-                    $hasFileInForm = true;
-                }
-            }
-        }
-
-        $method = new Stmt\ClassMethod('getBody', [
+        return new Stmt\ClassMethod('getBody', [
             'params' => [
                 new Param('serializer', null, new Name\FullyQualified(SerializerInterface::class)),
                 new Param('streamFactory', new Expr\ConstFetch(new Name('null')), new Name\FullyQualified(StreamFactory::class)),
             ],
             'returnType' => new Name('array'),
+            'stmts' => $this->requestBodyGenerator->getSerializeStatements($operation->getOperation()->getRequestBody(), $operation->getReference() . '/requestBody', $context)
         ]);
 
-        if ($isSerializableBody) {
-            $method->stmts = [
-                new Stmt\Return_(new Expr\MethodCall(
-                    new Expr\Variable('this'),
-                    'getSerializedBody',
-                    [
-                        new Arg(new Expr\Variable('serializer')),
-                    ]
-                )),
-            ];
+        $hasBody = false;
+        $isSerializableBody = false;
+        $requestBody = $operation->getOperation()->getRequestBody();
 
-            return $method;
-        }
+//        if ($requestBody && $requestBody->getContent()) {
+//            foreach ($requestBody->getContent() as $contentType => $content) {
+//                if ($content->getSchema() !== null) {
+//                    $hasBody = true;
+//
+//                    [$classGuess, $array, $schema] = $this->guessClass($content->getSchema(), $operation->getReference() . '/requestBody/content/' . $contentType . '/schema', $context);
+//
+//                    if ($contentType === 'application/json') {
+//                        $isSerializableBody = true;
+//                    }
+//
+//                    if (null !== $classGuess) {
+//                        $isSerializableBody = true;
+//                    }
+//                }
+//            }
+//        }
 
-        if ($isFormBody && $hasFileInForm) {
-            $method->stmts = [
-                new Stmt\Return_(new Expr\MethodCall(
-                    new Expr\Variable('this'),
-                    'getMultipartBody',
-                    [
-                        new Arg(new Expr\Variable('streamFactory')),
-                    ]
-                )),
-            ];
-
-            return $method;
-        }
-
-        if ($isFormBody) {
-            $method->stmts = [
-                new Stmt\Return_(new Expr\MethodCall(
-                    new Expr\Variable('this'),
-                    'getFormBody'
-                )),
-            ];
-
-            return $method;
-        }
-
-        if ($hasBody) {
-            $method->stmts = [
-                new Stmt\Return_(new Expr\Array_([
-                    new Expr\Array_(),
-                    new Expr\PropertyFetch(
-                        new Expr\Variable('this'),
-                        'body'
-                    ),
-                ])),
-            ];
-
-            return $method;
-        }
-
-        $method->stmts = [
-            new Stmt\Return_(new Expr\Array_([
-                new Expr\Array_(),
-                new Expr\ConstFetch(new Name('null')),
-            ])),
-        ];
+//        if ($isSerializableBody) {
+//            $method->stmts = [
+//                new Stmt\Return_(new Expr\MethodCall(
+//                    new Expr\Variable('this'),
+//                    'getSerializedBody',
+//                    [
+//                        new Arg(new Expr\Variable('serializer')),
+//                    ]
+//                )),
+//            ];
+//
+//            return $method;
+//        }
+//
+//        if ($hasBody) {
+//            $method->stmts = [
+//                new Stmt\Return_(new Expr\Array_([
+//                    new Expr\Array_(),
+//                    new Expr\PropertyFetch(
+//                        new Expr\Variable('this'),
+//                        'body'
+//                    ),
+//                ])),
+//            ];
+//
+//            return $method;
+//        }
+//
+//        $method->stmts = [
+//            new Stmt\Return_(new Expr\Array_([
+//                new Expr\Array_(),
+//                new Expr\ConstFetch(new Name('null')),
+//            ])),
+//        ];
 
         return $method;
     }
@@ -452,28 +447,45 @@ EOD
                 }
 
                 /* @var Response $response */
-
-                [$outputType, $throwType, $ifStatus] = $this->createResponseDenormalizationStatement(
+                [$newOutputTypes, $newThrowTypes, $ifStatements] = $this->createResponseDenormalizationStatement(
                     $endpointName,
                     $status,
-                    $response->getSchema(),
+                    $response,
                     $context,
                     $reference,
                     $response->getDescription()
                 );
 
-                if (null !== $outputType || null !== $throwType) {
-                    if (null !== $outputType && !\in_array($outputType, $outputTypes, true)) {
-                        $outputTypes[] = $outputType;
-                    }
-
-                    if (null !== $throwType && !\in_array($throwType, $throwTypes, true)) {
-                        $throwTypes[] = $throwType;
-                    }
-
-                    $outputStatements[] = $ifStatus;
-                }
+                $outputTypes = array_merge($outputTypes, $newOutputTypes);
+                $throwTypes = array_merge($throwTypes, $newThrowTypes);
+                $outputStatements = array_merge($outputStatements, $ifStatements);
             }
+
+            if ($operation->getOperation()->getResponses()->getDefault()) {
+                $response = $operation->getOperation()->getResponses()->getDefault();
+                $reference = $operation->getReference() . '/responses/default';
+
+                if ($response instanceof Reference) {
+                    [$reference, $response] = $this->resolve($response, Response::class);
+                }
+
+                /* @var Response $response */
+                [$newOutputTypes, $newThrowTypes, $ifStatements] = $this->createResponseDenormalizationStatement(
+                    $endpointName,
+                    'default',
+                    $response,
+                    $context,
+                    $reference,
+                    $response->getDescription()
+                );
+
+                $outputTypes = array_merge($outputTypes, $newOutputTypes);
+                $throwTypes = array_merge($throwTypes, $newThrowTypes);
+                $outputStatements = array_merge($outputStatements, $ifStatements);
+            }
+
+            $outputTypes = array_unique($outputTypes);
+            $throwTypes = array_unique($throwTypes);
         }
 
         $returnDoc = implode('', array_map(function ($value) {
@@ -488,6 +500,7 @@ EOD
                 new Param('body', null, 'string'),
                 new Param('status', null, 'int'),
                 new Param('serializer', null, new Name\FullyQualified(SerializerInterface::class)),
+                new Param('contentType', new Expr\ConstFetch(new Name('null')), '?string'),
             ],
             'stmts' => $outputStatements,
         ], [
@@ -527,7 +540,104 @@ EOD
         return [$classGuess, $array, $schema];
     }
 
-    private function createResponseDenormalizationStatement(string $name, string $status, $schema, Context $context, string $reference, string $description)
+    private function createResponseDenormalizationStatement(string $name, string $status, Response $response, Context $context, string $reference, string $description)
+    {
+        // No content response
+        if (!$response->getContent()) {
+            [$returnType, $throwType, $returnStatement] = $this->createContentDenormalizationStatement(
+                $name,
+                $status,
+                null,
+                $context,
+                $reference,
+                $description
+            );
+
+            $returnTypes = $returnType === null ? [] : [$returnType];
+            $throwTypes = $throwType === null ? [] : [$throwType];
+
+            if ('default' === $status) {
+                return [$returnTypes, $throwTypes, [$returnStatement]];
+            }
+
+            return [$returnTypes, $throwTypes, [new Stmt\If_(
+                new Expr\BinaryOp\Identical(
+                    new Scalar\LNumber((int) $status),
+                    new Expr\Variable('status')
+                ),
+                [
+                    'stmts' => [$returnStatement],
+                ]
+            )]];
+        }
+
+        $returnTypes = [];
+        $throwTypes = [];
+        $statements = [];
+
+        foreach ($response->getContent() as $contentType => $content) {
+            if ($contentType === 'application/json') {
+                [$returnType, $throwType, $returnStatement] = $this->createContentDenormalizationStatement(
+                    $name,
+                    $status,
+                    $content->getSchema(),
+                    $context,
+                    $reference . '/content/' . $contentType . '/schema',
+                    $description
+                );
+
+                if ($returnType !== null) {
+                    $returnTypes[] = $returnType;
+                }
+
+                if ($throwType !== null) {
+                    $throwTypes[] = $throwType;
+                }
+
+                $statements[] = new Stmt\If_(
+                    new Expr\BinaryOp\Identical(
+                        new Scalar\String_($contentType),
+                        new Expr\Variable('contentType')
+                    ),
+                    [
+                        'stmts' => [$returnStatement],
+                    ]
+                );
+            }
+        }
+
+        if ('default' === $status) {
+            return [$returnTypes, $throwTypes, $statements];
+        }
+
+        // Avoid useless imbrication of ifs
+        if (\count($statements) === 1 && $statements[0] instanceof Stmt\If_) {
+            return [$returnTypes, $throwTypes, [new Stmt\If_(
+                new Expr\BinaryOp\BooleanAnd(
+                    new Expr\BinaryOp\Identical(
+                        new Scalar\LNumber((int) $status),
+                        new Expr\Variable('status')
+                    ),
+                    $statements[0]->cond
+                ),
+                [
+                    'stmts' => $statements[0]->stmts,
+                ]
+            )]];
+        }
+
+        return [$returnTypes, $throwTypes, [new Stmt\If_(
+            new Expr\BinaryOp\Identical(
+                new Scalar\LNumber((int) $status),
+                new Expr\Variable('status')
+            ),
+            [
+                'stmts' => $statements,
+            ]
+        )]];
+    }
+
+    private function createContentDenormalizationStatement(string $name, string $status, $schema, Context $context, string $reference, string $description)
     {
         [$classGuess, $array, $schema] = $this->guessClass($schema, $reference, $context);
         $returnType = 'null';
@@ -558,7 +668,7 @@ EOD
             ]);
         }
 
-        $returnStmt = new Stmt\Return_($serializeStmt);
+        $contentStatement = new Stmt\Return_($serializeStmt);
 
         if ((int) $status >= 400) {
             $exceptionName = $this->exceptionGenerator->generate(
@@ -573,24 +683,12 @@ EOD
 
             $returnType = null;
             $throwType = '\\' . $context->getCurrentSchema()->getNamespace() . '\\Exception\\' . $exceptionName;
-            $returnStmt = new Stmt\Throw_(new Expr\New_(new Name($throwType), $classGuess ? [
+            $contentStatement = new Stmt\Throw_(new Expr\New_(new Name($throwType), $classGuess ? [
                 $serializeStmt,
             ] : []));
         }
 
-        if ('default' === $status) {
-            return [$returnType, $throwType, $returnStmt];
-        }
-
-        return [$returnType, $throwType, new Stmt\If_(
-            new Expr\BinaryOp\Identical(
-                new Scalar\LNumber((int) $status),
-                new Expr\Variable('status')
-            ),
-            [
-                'stmts' => [$returnStmt],
-            ]
-        )];
+        return [$returnType, $throwType, $contentStatement];
     }
 
     /**
@@ -618,20 +716,35 @@ EOD
     private function resolveParameter(Reference $parameter)
     {
         return $parameter->resolve(function ($value) {
-            if (isset($value->{'in'}) and 'body' === $value->{'in'}) {
-                return $this->denormalizer->denormalize($value, BodyParameter::class);
+            if (is_object($value) and isset($value->{'name'}) and (isset($value->{'in'}) and $value->{'in'} == 'path') and (isset($value->{'required'}) and $value->{'required'} == '1') and isset($value->{'schema'})) {
+                return $this->denormalizer->denormalize($value, 'Jane\\OpenApi\\JsonSchema\\Version3\\Model\\ParameterWithSchemaWithExampleInPath', 'json');
             }
-            if (isset($value->{'in'}) and 'header' === $value->{'in'}) {
-                return $this->denormalizer->denormalize($value, HeaderParameterSubSchema::class);
+            if (is_object($value) and isset($value->{'name'}) and (isset($value->{'in'}) and $value->{'in'} == 'query') and isset($value->{'schema'})) {
+                return $this->denormalizer->denormalize($value, 'Jane\\OpenApi\\JsonSchema\\Version3\\Model\\ParameterWithSchemaWithExampleInQuery', 'json');
             }
-            if (isset($value->{'in'}) and 'formData' === $value->{'in'}) {
-                return $this->denormalizer->denormalize($value, FormDataParameterSubSchema::class);
+            if (is_object($value) and isset($value->{'name'}) and (isset($value->{'in'}) and $value->{'in'} == 'header') and isset($value->{'schema'})) {
+                return $this->denormalizer->denormalize($value, 'Jane\\OpenApi\\JsonSchema\\Version3\\Model\\ParameterWithSchemaWithExampleInHeader', 'json');
             }
-            if (isset($value->{'in'}) and 'query' === $value->{'in'}) {
-                return $this->denormalizer->denormalize($value, QueryParameterSubSchema::class);
+            if (is_object($value) and isset($value->{'name'}) and (isset($value->{'in'}) and $value->{'in'} == 'cookie') and isset($value->{'schema'})) {
+                return $this->denormalizer->denormalize($value, 'Jane\\OpenApi\\JsonSchema\\Version3\\Model\\ParameterWithSchemaWithExampleInCookie', 'json');
             }
-            if (isset($value->{'in'}) and 'path' === $value->{'in'}) {
-                return $this->denormalizer->denormalize($value, PathParameterSubSchema::class);
+            if (is_object($value) and isset($value->{'name'}) and (isset($value->{'in'}) and $value->{'in'} == 'path') and (isset($value->{'required'}) and $value->{'required'} == '1') and isset($value->{'schema'}) and isset($value->{'examples'})) {
+                return $this->denormalizer->denormalize($value, 'Jane\\OpenApi\\JsonSchema\\Version3\\Model\\ParameterWithSchemaWithExamplesInPath', 'json');
+            }
+            if (is_object($value) and isset($value->{'name'}) and (isset($value->{'in'}) and $value->{'in'} == 'query') and isset($value->{'schema'}) and isset($value->{'examples'})) {
+                return $this->denormalizer->denormalize($value, 'Jane\\OpenApi\\JsonSchema\\Version3\\Model\\ParameterWithSchemaWithExamplesInQuery', 'json');
+            }
+            if (is_object($value) and isset($value->{'name'}) and (isset($value->{'in'}) and $value->{'in'} == 'header') and isset($value->{'schema'}) and isset($value->{'examples'})) {
+                return $this->denormalizer->denormalize($value, 'Jane\\OpenApi\\JsonSchema\\Version3\\Model\\ParameterWithSchemaWithExamplesInHeader', 'json');
+            }
+            if (is_object($value) and isset($value->{'name'}) and (isset($value->{'in'}) and $value->{'in'} == 'cookie') and isset($value->{'schema'}) and isset($value->{'examples'})) {
+                return $this->denormalizer->denormalize($value, 'Jane\\OpenApi\\JsonSchema\\Version3\\Model\\ParameterWithSchemaWithExamplesInCookie', 'json');
+            }
+            if (is_object($value) and isset($value->{'name'}) and (isset($value->{'in'}) and $value->{'in'} == 'path') and isset($value->{'content'})) {
+                return $this->denormalizer->denormalize($value, 'Jane\\OpenApi\\JsonSchema\\Version3\\Model\\ParameterWithContentInPath', 'json');
+            }
+            if (is_object($value) and isset($value->{'name'}) and (isset($value->{'in'}) and ($value->{'in'} == 'query' or $value->{'in'} == 'header' or $value->{'in'} == 'cookie')) and isset($value->{'content'})) {
+                return $this->denormalizer->denormalize($value, 'Jane\\OpenApi\\JsonSchema\\Version3\\Model\\ParameterWithContentNotInPath', 'json');
             }
 
             return $value;

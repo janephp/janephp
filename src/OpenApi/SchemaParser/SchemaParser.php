@@ -25,14 +25,14 @@ class SchemaParser
     /**
      * Parse an file into a OpenAPI Schema model.
      */
-    public function parseSchema(string $openApiSpecPath, int $version): OpenApi
+    public function parseSchema(string $openApiSpecPath): OpenApi
     {
         $openApiSpecContents = file_get_contents($openApiSpecPath);
         $jsonException = null;
         $yamlException = null;
 
         try {
-            return $this->deserialize($openApiSpecContents, $openApiSpecPath, $version);
+            return $this->deserialize($openApiSpecContents, $openApiSpecPath);
         } catch (\Exception $exception) {
             $jsonException = $exception;
         }
@@ -42,7 +42,8 @@ class SchemaParser
                 $openApiSpecContents,
                 Yaml::PARSE_OBJECT | Yaml::PARSE_OBJECT_FOR_MAP | Yaml::PARSE_DATETIME | Yaml::PARSE_EXCEPTION_ON_INVALID_TYPE
             );
-            $openApiSpecContents = json_encode($content);
+
+            return $this->denormalize($content, $openApiSpecPath);
         } catch (YamlException $yamlException) {
             throw new \LogicException(sprintf(
                 "Could not parse schema in JSON nor YAML format:\n- JSON error: \"%s\"\n- YAML error: \"%s\"\n",
@@ -50,15 +51,26 @@ class SchemaParser
                 $yamlException->getMessage()
             ));
         }
-
-        return $this->deserialize($openApiSpecContents, $openApiSpecPath, $version);
     }
 
-    private function deserialize($openApiSpecContents, $openApiSpecPath, $version)
+    private function deserialize($openApiSpecContents, $openApiSpecPath)
     {
-        $schemaClass = $version === 3 ? OpenApi::class : \Jane\OpenApi\JsonSchema\Version2\Model\OpenApi::class;
-        $openApi = $this->serializer->deserialize(
-            $openApiSpecContents,
+        $openApiData = \json_decode($openApiSpecContents);
+
+        return $this->denormalize($openApiData, $openApiSpecPath);
+    }
+
+    private function denormalize($openApiSpecData, $openApiSpecPath): OpenApi
+    {
+        $isVersion3 = false;
+
+        if (\property_exists($openApiSpecData, 'openapi') && version_compare($openApiSpecData->openapi, '3.0.0', '>=')) {
+            $isVersion3 = true;
+        }
+
+        $schemaClass = $isVersion3 ? OpenApi::class : \Jane\OpenApi\JsonSchema\Version2\Model\OpenApi::class;
+        $openApi = $this->serializer->denormalize(
+            $openApiSpecData,
             $schemaClass,
             'json',
             [
@@ -66,7 +78,7 @@ class SchemaParser
             ]
         );
 
-        if ($version === 2) {
+        if (!$isVersion3) {
             return $this->converter->convert($openApi);
         }
 
