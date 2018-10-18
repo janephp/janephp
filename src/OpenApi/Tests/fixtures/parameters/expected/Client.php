@@ -13,8 +13,8 @@ namespace Jane\OpenApi\Tests\Expected;
 class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
 {
     /**
-     * @param array $testBody
-     * @param array $queryParameters {
+     * @param string $testPath
+     * @param array  $queryParameters {
      *
      *     @var string $testQuery
      * }
@@ -28,14 +28,14 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function testGetWithPathParameters(array $testBody, array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
+    public function testGetWithPathParameters(string $testPath, array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Jane\OpenApi\Tests\Expected\Endpoint\TestGetWithPathParameters($testBody, $queryParameters, $headerParameters), $fetch);
+        return $this->executePsr7Endpoint(new \Jane\OpenApi\Tests\Expected\Endpoint\TestGetWithPathParameters($testPath, $queryParameters, $headerParameters), $fetch);
     }
 
     /**
-     * @param array $testBody
-     * @param array $queryParameters {
+     * @param string $testPath
+     * @param array  $queryParameters {
      *
      *     @var string $testQuery
      * }
@@ -49,9 +49,9 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function testPostWithPathParameters(array $testBody, array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
+    public function testPostWithPathParameters(string $testPath, array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Jane\OpenApi\Tests\Expected\Endpoint\TestPostWithPathParameters($testBody, $queryParameters, $headerParameters), $fetch);
+        return $this->executePsr7Endpoint(new \Jane\OpenApi\Tests\Expected\Endpoint\TestPostWithPathParameters($testPath, $queryParameters, $headerParameters), $fetch);
     }
 
     /**
@@ -95,49 +95,36 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
     }
 
     /**
-     * @param array $formParameters {
-     *
-     *     @var string $testString
-     *     @var int $testInteger
-     *     @var float $testFloat
-     *     @var array $testArray
-     *     @var string $testRequired
-     *     @var string $testDefault
-     * }
-     *
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param \Jane\OpenApi\Tests\Expected\Model\TestFormPostBody $requestBody
+     * @param string                                              $fetch       Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function testFormParameters(array $formParameters = [], string $fetch = self::FETCH_OBJECT)
+    public function testFormParameters(\Jane\OpenApi\Tests\Expected\Model\TestFormPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Jane\OpenApi\Tests\Expected\Endpoint\TestFormParameters($formParameters), $fetch);
+        return $this->executePsr7Endpoint(new \Jane\OpenApi\Tests\Expected\Endpoint\TestFormParameters($requestBody), $fetch);
     }
 
     /**
-     * @param array $formParameters {
-     *
-     *     @var string|resource|\Psr\Http\Message\StreamInterface $testFile
-     * }
-     *
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param \Jane\OpenApi\Tests\Expected\Model\TestFormFilePostBody $requestBody
+     * @param string                                                  $fetch       Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function testFormFileParameters(array $formParameters = [], string $fetch = self::FETCH_OBJECT)
+    public function testFormFileParameters(\Jane\OpenApi\Tests\Expected\Model\TestFormFilePostBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Jane\OpenApi\Tests\Expected\Endpoint\TestFormFileParameters($formParameters), $fetch);
+        return $this->executePsr7Endpoint(new \Jane\OpenApi\Tests\Expected\Endpoint\TestFormFileParameters($requestBody), $fetch);
     }
 
     /**
-     * @param string|resource|\Psr\Http\Message\StreamInterface $testBinary
-     * @param string                                            $fetch      Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param string|resource|\Psr\Http\Message\StreamInterface $requestBody
+     * @param string                                            $fetch       Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function testBinaryBody($testBinary, string $fetch = self::FETCH_OBJECT)
+    public function testBinaryBody($requestBody, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Jane\OpenApi\Tests\Expected\Endpoint\TestBinaryBody($testBinary), $fetch);
+        return $this->executePsr7Endpoint(new \Jane\OpenApi\Tests\Expected\Endpoint\TestBinaryBody($requestBody), $fetch);
     }
 
     /**

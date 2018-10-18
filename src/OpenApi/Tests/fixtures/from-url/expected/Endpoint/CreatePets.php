@@ -40,12 +40,13 @@ class CreatePets extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Ja
      *
      * @return null|\Jane\OpenApi\Tests\Expected\Model\Error
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
+    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         if (201 === $status) {
             return null;
         }
-
-        return $serializer->deserialize($body, 'Jane\\OpenApi\\Tests\\Expected\\Model\\Error', 'json');
+        if ('application/json' === $contentType) {
+            return $serializer->deserialize($body, 'Jane\\OpenApi\\Tests\\Expected\\Model\\Error', 'json');
+        }
     }
 }

@@ -31,22 +31,13 @@ class Schema
     /** @var mixed Parsed schema */
     private $parsed;
 
-    /** @var int Version of this schema */
-    private $version;
-
-    public function __construct(string $origin, string $namespace, string $directory, string $rootName, int $version)
+    public function __construct(string $origin, string $namespace, string $directory, string $rootName)
     {
         $this->origin = $this->fixPath($origin);
         $this->namespace = $namespace;
         $this->directory = $directory;
         $this->rootName = $rootName;
         $this->references = [$this->origin];
-        $this->version = $version;
-    }
-
-    public function getVersion(): int
-    {
-        return $this->version;
     }
 
     public function getOrigin(): string

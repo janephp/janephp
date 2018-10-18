@@ -3,6 +3,9 @@
 namespace Jane\OpenApi\Generator;
 
 use Jane\OpenApi\Generator\Parameter\NonBodyParameterGenerator;
+use Jane\OpenApi\Generator\RequestBodyContent\DefaultBodyContentGenerator;
+use Jane\OpenApi\Generator\RequestBodyContent\FormBodyContentGenerator;
+use Jane\OpenApi\Generator\RequestBodyContent\JsonBodyContentGenerator;
 use Jane\OpenApi\Naming\ChainOperationNaming;
 use Jane\OpenApi\Naming\ExceptionNaming;
 use Jane\OpenApi\Naming\OperationUrlNaming;
@@ -26,7 +29,13 @@ class GeneratorFactory
             new OperationIdNaming(),
             new OperationUrlNaming(),
         ]);
-        $psrHttplugEndpointGenerator = new Psr7HttplugEndpointGenerator($operationNaming, $bodyParameter, $nonBodyParameter, $serializer, $exceptionGenerator);
+
+        $defaultContentGenerator = new DefaultBodyContentGenerator($serializer);
+        $requestBodyGenerator = new RequestBodyGenerator($defaultContentGenerator);
+        $requestBodyGenerator->addRequestBodyGenerator(['application/json'], new JsonBodyContentGenerator($serializer));
+        $requestBodyGenerator->addRequestBodyGenerator(['application/x-www-form-urlencoded', 'multipart/form-data'], new FormBodyContentGenerator($serializer));
+
+        $psrHttplugEndpointGenerator = new Psr7HttplugEndpointGenerator($operationNaming, $bodyParameter, $nonBodyParameter, $serializer, $exceptionGenerator, $requestBodyGenerator);
         $psrHttplugOperationGenerator = new Psr7HttplugOperationGenerator($psrHttplugEndpointGenerator);
         $clientAsyncGenerator = null;
 
@@ -35,7 +44,7 @@ class GeneratorFactory
         ];
 
         if ($options['async']) {
-            $ampArtaxEndpointGenerator = new AmpArtaxEndpointGenerator($operationNaming, $bodyParameter, $nonBodyParameter, $serializer, $exceptionGenerator);
+            $ampArtaxEndpointGenerator = new AmpArtaxEndpointGenerator($operationNaming, $bodyParameter, $nonBodyParameter, $serializer, $exceptionGenerator, $requestBodyGenerator);
             $ampArtaxOperationGenerator = new AmpArtaxOperationGenerator($ampArtaxEndpointGenerator);
             $generators[] = new AmpArtaxClientGenerator($operationManager, $ampArtaxOperationGenerator, $operationNaming);
         }

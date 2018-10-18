@@ -13,14 +13,14 @@ namespace Jane\OpenApi\Tests\Expected;
 class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
 {
     /**
-     * @param string $testString
-     * @param string $fetch      Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param string $requestBody
+     * @param string $fetch       Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function bodyParameterTriggersContentTypeBeingSet(string $testString, string $fetch = self::FETCH_OBJECT)
+    public function bodyParameterTriggersContentTypeBeingSet(string $requestBody, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Jane\OpenApi\Tests\Expected\Endpoint\BodyParameterTriggersContentTypeBeingSet($testString), $fetch);
+        return $this->executePsr7Endpoint(new \Jane\OpenApi\Tests\Expected\Endpoint\BodyParameterTriggersContentTypeBeingSet($requestBody), $fetch);
     }
 
     /**

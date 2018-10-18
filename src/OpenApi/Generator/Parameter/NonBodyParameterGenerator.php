@@ -5,9 +5,9 @@ namespace Jane\OpenApi\Generator\Parameter;
 use Doctrine\Common\Inflector\Inflector;
 use Jane\JsonSchema\Generator\Context\Context;
 use Jane\OpenApi\JsonSchema\Version3\Model\FormDataParameterSubSchema;
-use Jane\OpenApi\JsonSchema\Version3\Model\HeaderParameterSubSchema;
-use Jane\OpenApi\JsonSchema\Version3\Model\PathParameterSubSchema;
-use Jane\OpenApi\JsonSchema\Version3\Model\QueryParameterSubSchema;
+use Jane\OpenApi\JsonSchema\Version3\Model\ParameterWithSchemaWithExampleInHeader;
+use Jane\OpenApi\JsonSchema\Version3\Model\ParameterWithSchemaWithExampleInPath;
+use Jane\OpenApi\JsonSchema\Version3\Model\ParameterWithSchemaWithExampleInQuery;
 use PhpParser\Node;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Scalar;
@@ -18,18 +18,22 @@ class NonBodyParameterGenerator extends ParameterGenerator
     /**
      * {@inheritdoc}
      *
-     * @param $parameter PathParameterSubSchema|HeaderParameterSubSchema|FormDataParameterSubSchema|QueryParameterSubSchema
+     * @param $parameter ParameterWithSchemaWithExampleInPath|ParameterWithSchemaWithExampleInHeader|FormDataParameterSubSchema|ParameterWithSchemaWithExampleInQuery
      */
     public function generateMethodParameter($parameter, Context $context, $reference): Node\Param
     {
         $name = Inflector::camelize($parameter->getName());
         $methodParameter = new Node\Param($name);
 
-        if (!$parameter->getRequired() || null !== $parameter->getDefault()) {
+        if (!$parameter->getSchema()) {
+            return $methodParameter;
+        }
+
+        if (!$parameter->getRequired() || null !== $parameter->getSchema()->getDefault()) {
             $methodParameter->default = $this->getDefaultAsExpr($parameter);
         }
 
-        $types = $this->convertParameterType($parameter->getType());
+        $types = $this->convertParameterType($parameter->getSchema()->getType());
 
         if (\count($types) === 1) {
             $methodParameter->type = $types[0];
@@ -39,7 +43,7 @@ class NonBodyParameterGenerator extends ParameterGenerator
     }
 
     /**
-     * @param $parameters PathParameterSubSchema[]|HeaderParameterSubSchema[]|FormDataParameterSubSchema[]|QueryParameterSubSchema[]
+     * @param $parameters ParameterWithSchemaWithExampleInPath[]|ParameterWithSchemaWithExampleInHeader[]|FormDataParameterSubSchema[]|ParameterWithSchemaWithExampleInQuery[]
      *
      * @return array
      */
@@ -52,15 +56,16 @@ class NonBodyParameterGenerator extends ParameterGenerator
 
         foreach ($parameters as $parameter) {
             $defined[] = new Expr\ArrayItem(new Scalar\String_($parameter->getName()));
+            $schema = $parameter->getSchema();
 
-            if ($parameter->getRequired() && null === $parameter->getDefault()) {
+            if ($parameter->getRequired() && null === $schema->getDefault()) {
                 $required[] = new Expr\ArrayItem(new Scalar\String_($parameter->getName()));
             }
 
-            if ($parameter->getType()) {
+            if ($schema->getType()) {
                 $types = [];
 
-                foreach ($this->convertParameterType($parameter->getType()) as $typeString) {
+                foreach ($this->convertParameterType($schema->getType()) as $typeString) {
                     $types[] = new Expr\ArrayItem(new Scalar\String_($typeString));
                 }
 
@@ -70,7 +75,7 @@ class NonBodyParameterGenerator extends ParameterGenerator
                 ]);
             }
 
-            if (!$parameter->getRequired() && null !== $parameter->getDefault()) {
+            if (!$parameter->getRequired() && null !== $schema->getDefault()) {
                 $defaults[] = new Expr\ArrayItem($this->getDefaultAsExpr($parameter), new Scalar\String_($parameter->getName()));
             }
         }
@@ -91,23 +96,31 @@ class NonBodyParameterGenerator extends ParameterGenerator
     /**
      * {@inheritdoc}
      *
-     * @param $parameter PathParameterSubSchema|HeaderParameterSubSchema|FormDataParameterSubSchema|QueryParameterSubSchema
+     * @param $parameter ParameterWithSchemaWithExampleInPath|ParameterWithSchemaWithExampleInHeader|FormDataParameterSubSchema|ParameterWithSchemaWithExampleInQuery
      */
     public function generateMethodDocParameter($parameter, Context $context, $reference)
     {
-        $type = implode('|', $this->convertParameterType($parameter->getType()));
+        $type = 'mixed';
+
+        if ($parameter->getSchema()) {
+            $type = implode('|', $this->convertParameterType($parameter->getSchema()->getType()));
+        }
 
         return sprintf(' * @param %s $%s %s', $type, Inflector::camelize($parameter->getName()), $parameter->getDescription() ?: '');
     }
 
     /**
-     * @param $parameter PathParameterSubSchema|HeaderParameterSubSchema|FormDataParameterSubSchema|QueryParameterSubSchema
+     * @param $parameter ParameterWithSchemaWithExampleInPath|ParameterWithSchemaWithExampleInHeader|FormDataParameterSubSchema|ParameterWithSchemaWithExampleInQuery
      *
      * @return string
      */
     public function generateOptionDocParameter($parameter)
     {
-        $type = implode('|', $this->convertParameterType($parameter->getType()));
+        $type = 'mixed';
+
+        if ($parameter->getSchema()) {
+            $type = implode('|', $this->convertParameterType($parameter->getSchema()->getType()));
+        }
 
         return sprintf(' *     @var %s $%s %s', $type, $parameter->getName(), $parameter->getDescription() ?: '');
     }
@@ -115,13 +128,13 @@ class NonBodyParameterGenerator extends ParameterGenerator
     /**
      * Generate a default value as an Expr.
      *
-     * @param $parameter PathParameterSubSchema|HeaderParameterSubSchema|FormDataParameterSubSchema|QueryParameterSubSchema
+     * @param $parameter ParameterWithSchemaWithExampleInPath|ParameterWithSchemaWithExampleInHeader|FormDataParameterSubSchema|ParameterWithSchemaWithExampleInQuery
      *
      * @return Expr
      */
     private function getDefaultAsExpr($parameter)
     {
-        return $this->parser->parse('<?php ' . var_export($parameter->getDefault(), true) . ';')[0];
+        return $this->parser->parse('<?php ' . var_export($parameter->getSchema()->getDefault(), true) . ';')[0];
     }
 
     private function convertParameterType($type)

@@ -28,8 +28,12 @@ class OperationUrlNaming implements OperationNamingInterface
         if ($responses instanceof \ArrayObject && isset($responses[200])) {
             $response = $responses[200];
 
-            if ($response instanceof Response && $response->getSchema() instanceof Schema && 'array' === $response->getSchema()->getType()) {
-                $shouldSingularize = false;
+            if ($response instanceof Response && $response->getContent()) {
+                $firstContent = $response->getContent()->getIterator()->current();
+
+                if ($firstContent->getSchema() instanceof Schema && 'array' === $firstContent->getSchema() ->getType()) {
+                    $shouldSingularize = false;
+                }
             }
         }
 

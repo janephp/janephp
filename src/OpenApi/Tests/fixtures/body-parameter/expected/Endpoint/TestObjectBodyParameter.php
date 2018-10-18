@@ -13,11 +13,11 @@ namespace Jane\OpenApi\Tests\Expected\Endpoint;
 class TestObjectBodyParameter extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7HttplugEndpoint
 {
     /**
-     * @param \Jane\OpenApi\Tests\Expected\Model\Schema $testObject
+     * @param \Jane\OpenApi\Tests\Expected\Model\Schema $requestBody
      */
-    public function __construct(\Jane\OpenApi\Tests\Expected\Model\Schema $testObject)
+    public function __construct(\Jane\OpenApi\Tests\Expected\Model\Schema $requestBody)
     {
-        $this->body = $testObject;
+        $this->body = $requestBody;
     }
 
     use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
@@ -34,13 +34,17 @@ class TestObjectBodyParameter extends \Jane\OpenApiRuntime\Client\BaseEndpoint i
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null): array
     {
-        return $this->getSerializedBody($serializer);
+        if ($this->body instanceof \Jane\OpenApi\Tests\Expected\Model\Schema) {
+            return [['Content-Type' => ['application/json']], $serializer->serialize($this->body, 'json')];
+        }
+
+        return [[], null];
     }
 
     /**
      * {@inheritdoc}
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
+    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         if (200 === $status) {
             return null;

@@ -1,39 +1,43 @@
 {
-    "swagger": "2.0",
-    "definitions": {
-        "Bar": {
-            "type": "array",
-            "items": {
-                "type": "object",
-                "properties": {
-                    "bar": {
-                        "type": "string"
-                    }
-                }
-            }
-        }
-    },
+    "openapi": "3.0.0",
     "paths": {
         "/test-simple": {
             "post": {
-                "produces": [
-                    "application/json"
-                ],
-                "consumes": [
-                    "application/json"
-                ],
                 "operationId": "testSimple",
                 "responses": {
                     "200": {
                         "description": "no error",
-                        "schema": {
-                            "$ref": "#/definitions/Bar"
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Bar"
+                                }
+                            }
                         }
                     }
                 },
                 "tags": [
                     "Test"
                 ]
+            }
+        }
+    },
+    "info": {
+        "version": "",
+        "title": ""
+    },
+    "components": {
+        "schemas": {
+            "Bar": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "bar": {
+                            "type": "string"
+                        }
+                    }
+                }
             }
         }
     }

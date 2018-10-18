@@ -1,49 +1,5 @@
 {
-    "swagger": "2.0",
-    "definitions": {
-        "Schema": {
-            "type": "object",
-            "properties": {
-                "stringProperty": {
-                    "type": "string"
-                },
-                "integerProperty": {
-                    "type": "integer"
-                },
-                "floatProperty": {
-                    "type": "number"
-                },
-                "arrayProperty": {
-                    "type": "array"
-                },
-                "mapProperty": {
-                    "type": "object",
-                    "additionalProperties": {
-                        "type": "string"
-                    }
-                },
-                "objectProperty": {
-                    "type": "object",
-                    "properties": {
-                        "stringProperty": {
-                            "type": "string"
-                        }
-                    }
-                },
-                "objectRefProperty": {
-                    "$ref": "#/definitions/Schema"
-                }
-            }
-        },
-        "Error": {
-            "type": "object",
-            "properties": {
-                "message": {
-                    "type": "string"
-                }
-            }
-        }
-    },
+    "openapi": "3.0.0",
     "paths": {
         "/test": {
             "get": {
@@ -51,20 +7,32 @@
                 "responses": {
                     "200": {
                         "description": "no error",
-                        "schema": {
-                            "$ref": "#/definitions/Schema"
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Schema"
+                                }
+                            }
                         }
                     },
                     "400": {
                         "description": "bad request",
-                        "schema": {
-                            "$ref": "#/definitions/Error"
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
                         }
                     },
                     "404": {
                         "description": "not found",
-                        "schema": {
-                            "$ref": "#/definitions/Error"
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
                         }
                     }
                 },
@@ -82,32 +50,46 @@
                         "in": "path",
                         "description": "id",
                         "required": true,
-                        "type": "integer",
-                        "format": "int32"
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
                     }
                 ],
                 "responses": {
                     "200": {
                         "description": "no error",
-                        "schema": {
-                            "type": "object",
-                            "properties": {
-                                "id": {
-                                    "type": "integer"
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "id": {
+                                            "type": "integer"
+                                        }
+                                    }
                                 }
                             }
                         }
                     },
                     "400": {
                         "description": "bad request",
-                        "schema": {
-                            "$ref": "#/definitions/Error"
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
                         }
                     },
                     "404": {
                         "description": "not found",
-                        "schema": {
-                            "$ref": "#/definitions/Error"
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
                         }
                     }
                 },
@@ -122,10 +104,14 @@
                 "responses": {
                     "200": {
                         "description": "no error",
-                        "schema": {
-                            "type": "array",
-                            "items": {
-                                "$ref": "#/definitions/Schema"
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Schema"
+                                    }
+                                }
                             }
                         }
                     }
@@ -133,6 +119,58 @@
                 "tags": [
                     "Test"
                 ]
+            }
+        }
+    },
+    "info": {
+        "version": "",
+        "title": ""
+    },
+    "components": {
+        "schemas": {
+            "Schema": {
+                "type": "object",
+                "properties": {
+                    "stringProperty": {
+                        "type": "string"
+                    },
+                    "integerProperty": {
+                        "type": "integer"
+                    },
+                    "floatProperty": {
+                        "type": "number"
+                    },
+                    "arrayProperty": {
+                        "type": "array",
+                        "items": {
+                        }
+                    },
+                    "mapProperty": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        }
+                    },
+                    "objectProperty": {
+                        "type": "object",
+                        "properties": {
+                            "stringProperty": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "objectRefProperty": {
+                        "$ref": "#/components/schemas/Schema"
+                    }
+                }
+            },
+            "Error": {
+                "type": "object",
+                "properties": {
+                    "message": {
+                        "type": "string"
+                    }
+                }
             }
         }
     }

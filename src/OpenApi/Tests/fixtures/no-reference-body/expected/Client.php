@@ -13,25 +13,25 @@ namespace Jane\OpenApi\Tests\Expected;
 class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
 {
     /**
-     * @param \Jane\OpenApi\Tests\Expected\Model\TestGetBody $body
-     * @param string                                         $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param \Jane\OpenApi\Tests\Expected\Model\TestGetBody $requestBody
+     * @param string                                         $fetch       Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function getTest(\Jane\OpenApi\Tests\Expected\Model\TestGetBody $body, string $fetch = self::FETCH_OBJECT)
+    public function getTest(\Jane\OpenApi\Tests\Expected\Model\TestGetBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Jane\OpenApi\Tests\Expected\Endpoint\GetTest($body), $fetch);
+        return $this->executePsr7Endpoint(new \Jane\OpenApi\Tests\Expected\Endpoint\GetTest($requestBody), $fetch);
     }
 
     /**
-     * @param \Jane\OpenApi\Tests\Expected\Model\TestPostBody $body
-     * @param string                                          $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param \Jane\OpenApi\Tests\Expected\Model\TestPostBody $requestBody
+     * @param string                                          $fetch       Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function test(\Jane\OpenApi\Tests\Expected\Model\TestPostBody $body, string $fetch = self::FETCH_OBJECT)
+    public function test(\Jane\OpenApi\Tests\Expected\Model\TestPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Jane\OpenApi\Tests\Expected\Endpoint\Test($body), $fetch);
+        return $this->executePsr7Endpoint(new \Jane\OpenApi\Tests\Expected\Endpoint\Test($requestBody), $fetch);
     }
 
     public static function create($httpClient = null)
