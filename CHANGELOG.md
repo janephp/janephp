@@ -1,8 +1,8 @@
 # Change Log
 
-## Unreleased
+## 5.0 - Unreleased
 
-...
+ * [OpenAPI] **BC-BREAK** Use the openapi v3 specification (v2 is not more supported)
 
 ## 4.0.1 - 2018-02-22
 

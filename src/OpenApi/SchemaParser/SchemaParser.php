@@ -78,7 +78,7 @@ class SchemaParser
         );
 
         if (!$isVersion3) {
-            return $this->converter->convert($openApi);
+            throw new \BadMethodCallException('Only OpenAPI v3 specifications and up are supported, use an external tool to convert your api files');
         }
 
         return $openApi;
