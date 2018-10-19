@@ -62,7 +62,7 @@ class ExceptionGenerator
                             ]),
                             new Stmt\ClassMethod('__construct', [
                                 'params' => [
-                                    new Param(new Expr\Variable($propertyName), null, $isArray ? null :new Name( '\\' . $classFqdn)),
+                                    new Param(new Expr\Variable($propertyName), null, $isArray ? null : new Name('\\' . $classFqdn)),
                                 ],
                                 'stmts' => [
                                     new Stmt\Expression(new Expr\StaticCall(new Name('parent'), '__construct', [
