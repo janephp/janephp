@@ -25,8 +25,10 @@ use Jane\AutoMapper\Tests\Domain\PrivateUserDTO;
 use Jane\AutoMapper\Tests\Domain\User;
 use Jane\AutoMapper\Tests\Domain\UserConstructorDTO;
 use Jane\AutoMapper\Tests\Domain\UserDTO;
+use Jane\AutoMapper\Tests\Domain\UserDTOAddressString;
 use Jane\AutoMapper\Tests\Domain\UserDTONoAge;
 use Jane\AutoMapper\Tests\Domain\UserDTONoName;
+use Jane\AutoMapper\Tests\Transformer\AddressToStringTransformerFactory;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\PropertyInfo\Extractor\PhpDocExtractor;
 use Symfony\Component\PropertyInfo\PropertyInfoExtractor;
@@ -39,17 +41,19 @@ class AutoMapperTest extends TestCase
     private $sourceTargetPrivateMappingExtractor;
     private $fromTargetMappingExtractor;
     private $fromSourceMappingExtractor;
+    /** @var ChainTransformerFactory */
+    private $transformerFactory;
 
     public function setUp()
     {
         $reflectionExtractor = new ReflectionExtractor();
         $reflectionExtractorPrivate = new ReflectionExtractor(true);
         $phpDocExtractor = new PhpDocExtractor();
-        $transformerFactory = new ChainTransformerFactory();
-        $transformerFactory->addTransformerFactory(new MultipleTransformerFactory($transformerFactory), 0);
-        $transformerFactory->addTransformerFactory(new BuiltinTransformerFactory(), 1);
-        $transformerFactory->addTransformerFactory(new ArrayTransformerFactory($transformerFactory), 2);
-        $transformerFactory->addTransformerFactory(new ObjectTransformerFactory(), 3);
+        $this->transformerFactory = new ChainTransformerFactory();
+        $this->transformerFactory->addTransformerFactory(new MultipleTransformerFactory($this->transformerFactory), 0);
+        $this->transformerFactory->addTransformerFactory(new BuiltinTransformerFactory(), 1);
+        $this->transformerFactory->addTransformerFactory(new ArrayTransformerFactory($this->transformerFactory), 2);
+        $this->transformerFactory->addTransformerFactory(new ObjectTransformerFactory(), 3);
 
         $this->sourceTargetMappingExtractor = new SourceTargetPropertiesMappingExtractor(new PropertyInfoExtractor(
             [$reflectionExtractor],
@@ -58,7 +62,7 @@ class AutoMapperTest extends TestCase
             [$reflectionExtractor]
         ),
             new ReflectionAccessorExtractor(),
-            $transformerFactory,
+            $this->transformerFactory,
             new ClassMetadataFactory(new AnnotationLoader(new AnnotationReader()))
         );
 
@@ -69,7 +73,7 @@ class AutoMapperTest extends TestCase
             [$reflectionExtractor]
         ),
             new ReflectionAccessorExtractor(),
-            $transformerFactory,
+            $this->transformerFactory,
             new ClassMetadataFactory(new AnnotationLoader(new AnnotationReader()))
         );
 
@@ -80,7 +84,7 @@ class AutoMapperTest extends TestCase
             [$reflectionExtractor]
         ),
             new ReflectionAccessorExtractor(),
-            $transformerFactory,
+            $this->transformerFactory,
             new ClassMetadataFactory(new AnnotationLoader(new AnnotationReader()))
         );
 
@@ -91,7 +95,7 @@ class AutoMapperTest extends TestCase
             [$reflectionExtractorPrivate]
         ),
             new ReflectionAccessorExtractor(true),
-            $transformerFactory,
+            $this->transformerFactory,
             new ClassMetadataFactory(new AnnotationLoader(new AnnotationReader()))
         );
     }
@@ -327,5 +331,24 @@ class AutoMapperTest extends TestCase
         self::assertSame('10', $userDto->getId());
         self::assertNull($userDto->getName());
         self::assertNull($userDto->getAge());
+    }
+
+    public function testCustomValueTransformer()
+    {
+        $this->transformerFactory->addTransformerFactory(new AddressToStringTransformerFactory());
+
+        $configuration = new MapperConfiguration($this->sourceTargetPrivateMappingExtractor, User::class, UserDTOAddressString::class);
+        $autoMapper = new AutoMapper();
+        $autoMapper->register($configuration);
+
+        $user = new User(10, 'test', 13);
+        $user->address = new Address();
+        $user->address->setCity('Paris');
+
+        /** @var UserDTOAddressString $userDto */
+        $userDto = $autoMapper->map($user, UserDTOAddressString::class);
+
+        self::assertInstanceOf(UserDTOAddressString::class, $userDto);
+        self::assertSame('Paris', $userDto->address);
     }
 }
