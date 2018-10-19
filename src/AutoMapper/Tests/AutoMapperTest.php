@@ -8,7 +8,11 @@ use Jane\AutoMapper\Compiler\Accessor\ReflectionAccessorExtractor;
 use Jane\AutoMapper\Compiler\FromSourcePropertiesMappingExtractor;
 use Jane\AutoMapper\Compiler\FromTargetPropertiesMappingExtractor;
 use Jane\AutoMapper\Compiler\SourceTargetPropertiesMappingExtractor;
-use Jane\AutoMapper\Compiler\Transformer\TransformerFactory;
+use Jane\AutoMapper\Compiler\Transformer\ArrayTransformerFactory;
+use Jane\AutoMapper\Compiler\Transformer\BuiltinTransformerFactory;
+use Jane\AutoMapper\Compiler\Transformer\ChainTransformerFactory;
+use Jane\AutoMapper\Compiler\Transformer\MultipleTransformerFactory;
+use Jane\AutoMapper\Compiler\Transformer\ObjectTransformerFactory;
 use Jane\AutoMapper\Context;
 use Jane\AutoMapper\Extractor\ReflectionExtractor;
 use Jane\AutoMapper\MapperConfiguration;
@@ -41,6 +45,11 @@ class AutoMapperTest extends TestCase
         $reflectionExtractor = new ReflectionExtractor();
         $reflectionExtractorPrivate = new ReflectionExtractor(true);
         $phpDocExtractor = new PhpDocExtractor();
+        $transformerFactory = new ChainTransformerFactory();
+        $transformerFactory->addTransformerFactory(new MultipleTransformerFactory($transformerFactory), 0);
+        $transformerFactory->addTransformerFactory(new BuiltinTransformerFactory(), 1);
+        $transformerFactory->addTransformerFactory(new ArrayTransformerFactory($transformerFactory), 2);
+        $transformerFactory->addTransformerFactory(new ObjectTransformerFactory(), 3);
 
         $this->sourceTargetMappingExtractor = new SourceTargetPropertiesMappingExtractor(new PropertyInfoExtractor(
             [$reflectionExtractor],
@@ -49,7 +58,7 @@ class AutoMapperTest extends TestCase
             [$reflectionExtractor]
         ),
             new ReflectionAccessorExtractor(),
-            new TransformerFactory(),
+            $transformerFactory,
             new ClassMetadataFactory(new AnnotationLoader(new AnnotationReader()))
         );
 
@@ -60,7 +69,7 @@ class AutoMapperTest extends TestCase
             [$reflectionExtractor]
         ),
             new ReflectionAccessorExtractor(),
-            new TransformerFactory(),
+            $transformerFactory,
             new ClassMetadataFactory(new AnnotationLoader(new AnnotationReader()))
         );
 
@@ -71,7 +80,7 @@ class AutoMapperTest extends TestCase
             [$reflectionExtractor]
         ),
             new ReflectionAccessorExtractor(),
-            new TransformerFactory(),
+            $transformerFactory,
             new ClassMetadataFactory(new AnnotationLoader(new AnnotationReader()))
         );
 
@@ -82,7 +91,7 @@ class AutoMapperTest extends TestCase
             [$reflectionExtractorPrivate]
         ),
             new ReflectionAccessorExtractor(true),
-            new TransformerFactory(),
+            $transformerFactory,
             new ClassMetadataFactory(new AnnotationLoader(new AnnotationReader()))
         );
     }

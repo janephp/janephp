@@ -5,7 +5,7 @@ namespace Jane\AutoMapper\Compiler;
 use Jane\AutoMapper\Compiler\Accessor\AccessorExtractorInterface;
 use Jane\AutoMapper\Compiler\Accessor\ReadAccessor;
 use Jane\AutoMapper\Compiler\Accessor\WriteMutator;
-use Jane\AutoMapper\Compiler\Transformer\TransformerFactory;
+use Jane\AutoMapper\Compiler\Transformer\TransformerFactoryInterface;
 use Symfony\Component\PropertyInfo\PropertyInfoExtractorInterface;
 use Symfony\Component\Serializer\Mapping\Factory\ClassMetadataFactoryInterface;
 
@@ -19,7 +19,7 @@ abstract class PropertiesMappingExtractor implements PropertiesMappingExtractorI
 
     protected $classMetadataFactory;
 
-    public function __construct(PropertyInfoExtractorInterface $propertyInfoExtractor, AccessorExtractorInterface $accessorExtractor, TransformerFactory $transformerFactory, ClassMetadataFactoryInterface $classMetadataFactory = null)
+    public function __construct(PropertyInfoExtractorInterface $propertyInfoExtractor, AccessorExtractorInterface $accessorExtractor, TransformerFactoryInterface $transformerFactory, ClassMetadataFactoryInterface $classMetadataFactory = null)
     {
         $this->propertyInfoExtractor = $propertyInfoExtractor;
         $this->accessorExtractor = $accessorExtractor;
