@@ -1,9 +1,17 @@
 <?php
 
 return [
-    'json-schema-file' => __DIR__ . '/swagger-spec.json',
-    'root-class' => 'OpenApi',
-    'namespace' => 'Jane\OpenApi',
-    'directory' => __DIR__,
+    'mapping' => [
+        __DIR__ . '/JsonSchema/version2.json' => [
+            'root-class' => 'OpenApi',
+            'namespace' => 'Jane\OpenApi\JsonSchema\Version2',
+            'directory' => __DIR__ . DIRECTORY_SEPARATOR . 'JsonSchema' . DIRECTORY_SEPARATOR . 'Version2',
+        ],
+        __DIR__ . '/JsonSchema/version3.json' => [
+            'root-class' => 'OpenApi',
+            'namespace' => 'Jane\OpenApi\JsonSchema\Version3',
+            'directory' => __DIR__ . DIRECTORY_SEPARATOR . 'JsonSchema' . DIRECTORY_SEPARATOR . 'Version3',
+        ]
+    ],
     'reference' => true,
 ];

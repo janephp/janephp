@@ -7,11 +7,12 @@ use Jane\JsonSchema\Guesser\ChainGuesserAwareTrait;
 use Jane\JsonSchema\Guesser\ClassGuesserInterface;
 use Jane\JsonSchema\Guesser\GuesserInterface;
 use Jane\JsonSchema\Registry;
-use Jane\OpenApi\Model\BodyParameter;
-use Jane\OpenApi\Model\Operation;
-use Jane\OpenApi\Model\PathItem;
-use Jane\OpenApi\Model\Response;
-use Jane\OpenApi\Model\OpenApi;
+use Jane\JsonSchemaRuntime\Reference;
+use Jane\OpenApi\JsonSchema\Version3\Model\BodyParameter;
+use Jane\OpenApi\JsonSchema\Version3\Model\Operation;
+use Jane\OpenApi\JsonSchema\Version3\Model\PathItem;
+use Jane\OpenApi\JsonSchema\Version3\Model\Response;
+use Jane\OpenApi\JsonSchema\Version3\Model\OpenApi;
 
 class OpenApiGuesser implements GuesserInterface, ClassGuesserInterface, ChainGuesserAwareInterface
 {
@@ -32,15 +33,19 @@ class OpenApiGuesser implements GuesserInterface, ClassGuesserInterface, ChainGu
      */
     public function guessClass($object, $name, $reference, Registry $registry)
     {
-        if (null !== $object->getDefinitions()) {
-            foreach ($object->getDefinitions() as $key => $definition) {
-                $this->chainGuesser->guessClass($definition, $key, $reference . '/definitions/' . $key, $registry);
+        if ($object->getComponents() && $object->getComponents()->getSchemas()) {
+            foreach ($object->getComponents()->getSchemas() as $key => $definition) {
+                $this->chainGuesser->guessClass($definition, $key, $reference . '/components/schemas/' . $key, $registry);
             }
         }
 
-        if ($object->getResponses()) {
-            foreach ($object->getResponses() as $responseName => $response) {
-                $this->chainGuesser->guessClass($response->getSchema(), 'Response' . ucfirst($responseName), $reference . '/responses/' . $responseName, $registry);
+        if ($object->getComponents() && $object->getComponents()->getResponses()) {
+            foreach ($object->getComponents()->getResponses() as $responseName => $response) {
+                if ($response->getContent()) {
+                    foreach ($response->getContent() as $contentType => $content) {
+                        $this->chainGuesser->guessClass($content->getSchema(), 'Response' . ucfirst($responseName), $reference . '/components/responses/' . $responseName . '/content/' . $contentType . '/schema', $registry);
+                    }
+                }
             }
         }
 
@@ -66,8 +71,8 @@ class OpenApiGuesser implements GuesserInterface, ClassGuesserInterface, ChainGu
             }
         }
 
-        if ($object->getParameters()) {
-            foreach ($object->getParameters() as $parameterName => $parameter) {
+        if ($object->getComponents() && $object->getComponents()->getParameters()) {
+            foreach ($object->getComponents()->getParameters() as $parameterName => $parameter) {
                 if ($parameter instanceof BodyParameter) {
                     $this->chainGuesser->guessClass($parameter->getSchema(), $parameterName, $reference . '/parameters/' . $parameterName, $registry);
                 }
@@ -97,10 +102,18 @@ class OpenApiGuesser implements GuesserInterface, ClassGuesserInterface, ChainGu
             }
         }
 
+        if ($operation->getRequestBody() && $operation->getRequestBody()->getContent()) {
+            foreach ($operation->getRequestBody()->getContent() as $contentType => $content) {
+                $this->chainGuesser->guessClass($content->getSchema(), $name . 'Body', $reference . '/requestBody/content/' . $contentType . '/schema', $registry);
+            }
+        }
+
         if ($operation->getResponses()) {
             foreach ($operation->getResponses() as $status => $response) {
-                if ($response instanceof Response) {
-                    $this->chainGuesser->guessClass($response->getSchema(), $name . 'Response' . $status, $reference . '/responses/' . $status, $registry);
+                if ($response instanceof Response && $response->getContent()) {
+                    foreach ($response->getContent() as $contentType => $content) {
+                        $this->chainGuesser->guessClass($content->getSchema(), $name . 'Response' . $status, $reference . '/responses/' . $status . '/content/' . $contentType . '/schema', $registry);
+                    }
                 }
             }
         }

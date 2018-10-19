@@ -1,17 +1,23 @@
----
-swagger: "2.0"
+openapi: 3.0.0
 paths:
-  "/test":
-    post:
-      operationId: "test"
-      responses:
-        201:
-          description: ""
-          schema:
-            type: "object"
-            required: [Id, Warnings]
-            properties:
-              foo:
-                type: "string"
-      tags:
-      - Test
+    /test:
+        post:
+            operationId: test
+            responses:
+                '201':
+                    description: Created
+                    content:
+                        'application/json':
+                            schema:
+                                type: object
+                                required:
+                                - Id
+                                - Warnings
+                                properties:
+                                    foo:
+                                        type: string
+            tags:
+            - Test
+info:
+    version: ''
+    title: ''

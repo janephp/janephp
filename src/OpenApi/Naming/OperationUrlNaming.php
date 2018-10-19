@@ -3,8 +3,8 @@
 namespace Jane\OpenApi\Naming;
 
 use Doctrine\Common\Inflector\Inflector;
-use Jane\OpenApi\Model\Response;
-use Jane\OpenApi\Model\Schema;
+use Jane\OpenApi\JsonSchema\Version3\Model\Response;
+use Jane\OpenApi\JsonSchema\Version3\Model\Schema;
 use Jane\OpenApi\Operation\Operation;
 
 class OperationUrlNaming implements OperationNamingInterface
@@ -28,8 +28,12 @@ class OperationUrlNaming implements OperationNamingInterface
         if ($responses instanceof \ArrayObject && isset($responses[200])) {
             $response = $responses[200];
 
-            if ($response instanceof Response && $response->getSchema() instanceof Schema && 'array' === $response->getSchema()->getType()) {
-                $shouldSingularize = false;
+            if ($response instanceof Response && $response->getContent()) {
+                $firstContent = $response->getContent()->getIterator()->current();
+
+                if ($firstContent->getSchema() instanceof Schema && 'array' === $firstContent->getSchema()->getType()) {
+                    $shouldSingularize = false;
+                }
             }
         }
 

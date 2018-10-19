@@ -111,7 +111,7 @@ class MultipleType extends Type
     {
         $output = new Expr\Variable($context->getUniqueVariableName('value'));
         $statements = [
-            new Expr\Assign($output, $input),
+            new Stmt\Expression(new Expr\Assign($output, $input)),
         ];
 
         /** @var Stmt\If_|null $ifStmt */
@@ -120,7 +120,7 @@ class MultipleType extends Type
             list($typeStatements, $typeOutput) = $type->createDenormalizationStatement($context, $input);
 
             $condition = $type->createConditionStatement($input);
-            $statement = array_merge($typeStatements, [new Expr\Assign($output, $typeOutput)]);
+            $statement = array_merge($typeStatements, [new Stmt\Expression(new Expr\Assign($output, $typeOutput))]);
 
             if ($ifStmt === null) {
                 $ifStmt = new Stmt\If_($condition, ['stmts' => $statement]);
@@ -140,7 +140,7 @@ class MultipleType extends Type
     {
         $output = new Expr\Variable($context->getUniqueVariableName('value'));
         $statements = [
-            new Expr\Assign($output, $input),
+            new Stmt\Expression(new Expr\Assign($output, $input)),
         ];
 
         /** @var Stmt\If_|null $ifStmt */
@@ -149,7 +149,7 @@ class MultipleType extends Type
             list($typeStatements, $typeOutput) = $type->createNormalizationStatement($context, $input);
 
             $condition = $type->createNormalizationConditionStatement($input);
-            $statement = array_merge($typeStatements, [new Expr\Assign($output, $typeOutput)]);
+            $statement = array_merge($typeStatements, [new Stmt\Expression(new Expr\Assign($output, $typeOutput))]);
 
             if ($ifStmt === null) {
                 $ifStmt = new Stmt\If_($condition, ['stmts' => $statement]);

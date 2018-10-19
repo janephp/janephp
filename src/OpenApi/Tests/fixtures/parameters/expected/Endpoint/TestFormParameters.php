@@ -13,19 +13,11 @@ namespace Jane\OpenApi\Tests\Expected\Endpoint;
 class TestFormParameters extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7HttplugEndpoint
 {
     /**
-     * @param array $formParameters {
-     *
-     *     @var string $testString
-     *     @var int $testInteger
-     *     @var float $testFloat
-     *     @var array $testArray
-     *     @var string $testRequired
-     *     @var string $testDefault
-     * }
+     * @param \Jane\OpenApi\Tests\Expected\Model\TestFormPostBody $requestBody
      */
-    public function __construct(array $formParameters = [])
+    public function __construct(\Jane\OpenApi\Tests\Expected\Model\TestFormPostBody $requestBody)
     {
-        $this->formParameters = $formParameters;
+        $this->body = $requestBody;
     }
 
     use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
@@ -42,29 +34,17 @@ class TestFormParameters extends \Jane\OpenApiRuntime\Client\BaseEndpoint implem
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null): array
     {
-        return $this->getFormBody();
-    }
+        if ($this->body instanceof \Jane\OpenApi\Tests\Expected\Model\TestFormPostBody) {
+            return [['Content-Type' => ['application/x-www-form-urlencoded']], http_build_query($serializer->normalize($this->body, 'json'))];
+        }
 
-    protected function getFormOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
-    {
-        $optionsResolver = parent::getFormOptionsResolver();
-        $optionsResolver->setDefined(['testString', 'testInteger', 'testFloat', 'testArray', 'testRequired', 'testDefault']);
-        $optionsResolver->setRequired(['testRequired']);
-        $optionsResolver->setDefaults(['testDefault' => 'test']);
-        $optionsResolver->setAllowedTypes('testString', ['string']);
-        $optionsResolver->setAllowedTypes('testInteger', ['int']);
-        $optionsResolver->setAllowedTypes('testFloat', ['float']);
-        $optionsResolver->setAllowedTypes('testArray', ['array']);
-        $optionsResolver->setAllowedTypes('testRequired', ['string']);
-        $optionsResolver->setAllowedTypes('testDefault', ['string']);
-
-        return $optionsResolver;
+        return [[], null];
     }
 
     /**
      * {@inheritdoc}
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
+    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         if (200 === $status) {
             return null;

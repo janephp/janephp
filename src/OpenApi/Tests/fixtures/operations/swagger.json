@@ -1,6 +1,5 @@
 {
-    "swagger": "2.0",
-    "basePath": "/",
+    "openapi": "3.0.0",
     "paths": {
         "/test-no-tag": {
             "get": {
@@ -126,10 +125,14 @@
                 "responses": {
                     "200": {
                         "description": "no error",
-                        "schema": {
-                            "type": "array",
-                            "items": {
-                                "$ref": "#/definitions/Thing"
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Thing"
+                                    }
+                                }
                             }
                         }
                     }
@@ -141,10 +144,14 @@
                 "responses": {
                     "200": {
                         "description": "no error",
-                        "schema": {
-                            "type": "array",
-                            "items": {
-                                "$ref": "#/definitions/Thing"
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Thing"
+                                    }
+                                }
                             }
                         }
                     }
@@ -156,8 +163,12 @@
                 "responses": {
                     "200": {
                         "description": "no error",
-                        "schema": {
-                            "$ref": "#/definitions/Thing"
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Thing"
+                                }
+                            }
                         }
                     }
                 }
@@ -168,8 +179,12 @@
                 "responses": {
                     "200": {
                         "description": "no error",
-                        "schema": {
-                            "$ref": "#/definitions/Thing"
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Thing"
+                                }
+                            }
                         }
                     }
                 }
@@ -185,12 +200,23 @@
             }
         }
     },
-    "definitions": {
-        "Thing": {
-            "type": "object",
-            "properties": {
-                "name": {
-                    "type": "string"
+    "servers": [
+        {
+            "url": "/"
+        }
+    ],
+    "info": {
+        "version": "",
+        "title": ""
+    },
+    "components": {
+        "schemas": {
+            "Thing": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    }
                 }
             }
         }

@@ -6,7 +6,7 @@ use Jane\JsonSchema\Generator\Context\Context;
 use Jane\JsonSchema\Generator\File;
 use Jane\JsonSchema\Generator\GeneratorInterface;
 use Jane\JsonSchema\Schema;
-use Jane\OpenApi\Model\OpenApi;
+use Jane\OpenApi\JsonSchema\Version3\Model\OpenApi;
 use Jane\OpenApi\Naming\OperationNamingInterface;
 use Jane\OpenApi\Operation\OperationManager;
 use PhpParser\Node\Name;

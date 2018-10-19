@@ -76,6 +76,8 @@ class GenerateCommand extends Command
                 'namespace',
                 'directory',
             ]);
+
+            $optionsResolver->setDefault('version', 2);
         } else {
             $optionsResolver->setRequired([
                 'mapping',
@@ -97,6 +99,8 @@ class GenerateCommand extends Command
             'async',
             'strict',
         ]);
+
+        $optionsResolver->setDefault('version', 2);
 
         $optionsResolver->setRequired([
             'namespace',

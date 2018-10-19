@@ -31,15 +31,7 @@ class Schema
     /** @var mixed Parsed schema */
     private $parsed;
 
-    /**
-     * Schema constructor.
-     *
-     * @param string $origin
-     * @param string $namespace
-     * @param string $directory
-     * @param string $rootName
-     */
-    public function __construct($origin, $namespace, $directory, $rootName)
+    public function __construct(string $origin, string $namespace, string $directory, string $rootName)
     {
         $this->origin = $this->fixPath($origin);
         $this->namespace = $namespace;

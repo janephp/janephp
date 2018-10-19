@@ -54,8 +54,8 @@ trait NormalizerGenerator
         return new Stmt\ClassMethod('supportsNormalization', [
             'type' => Stmt\Class_::MODIFIER_PUBLIC,
             'params' => [
-                new Param('data'),
-                new Param('format', new Expr\ConstFetch(new Name('null'))),
+                new Param(new Expr\Variable('data')),
+                new Param(new Expr\Variable('format'), new Expr\ConstFetch(new Name('null'))),
             ],
             'stmts' => [
                 new Stmt\Return_(new Expr\Instanceof_(new Expr\Variable('data'), new Name('\\' . $modelFqdn))),
@@ -77,7 +77,7 @@ trait NormalizerGenerator
         $context->refreshScope();
         $dataVariable = new Expr\Variable('data');
         $statements = [
-            new Expr\Assign($dataVariable, new Expr\New_(new Name('\\stdClass'))),
+            new Stmt\Expression(new Expr\Assign($dataVariable, new Expr\New_(new Name('\\stdClass')))),
         ];
 
         /** @var Property $property */
@@ -85,7 +85,7 @@ trait NormalizerGenerator
             $propertyVar = new Expr\MethodCall(new Expr\Variable('object'), $this->getNaming()->getPrefixedMethodName('get', $property->getPhpName()));
             list($normalizationStatements, $outputVar) = $property->getType()->createNormalizationStatement($context, $propertyVar);
 
-            $normalizationStatements[] = new Expr\Assign(new Expr\PropertyFetch($dataVariable, sprintf("{'%s'}", $property->getName())), $outputVar);
+            $normalizationStatements[] = new Stmt\Expression(new Expr\Assign(new Expr\PropertyFetch($dataVariable, sprintf("{'%s'}", $property->getName())), $outputVar));
 
             if ($property->isNullable()) {
                 $statements = array_merge($statements, $normalizationStatements);
@@ -115,7 +115,7 @@ trait NormalizerGenerator
                 ]),
                 [
                     'stmts' => array_merge($denormalizationStatements, [
-                        new Expr\Assign(new Expr\PropertyFetch($dataVariable, $loopKeyVar), $outputVar),
+                        new Stmt\Expression(new Expr\Assign(new Expr\PropertyFetch($dataVariable, $loopKeyVar), $outputVar)),
                     ]),
                 ]
             );
@@ -133,9 +133,9 @@ trait NormalizerGenerator
         return new Stmt\ClassMethod('normalize', [
             'type' => Stmt\Class_::MODIFIER_PUBLIC,
             'params' => [
-                new Param('object'),
-                new Param('format', new Expr\ConstFetch(new Name('null'))),
-                new Param('context', new Expr\Array_(), 'array'),
+                new Param(new Expr\Variable('object')),
+                new Param(new Expr\Variable('format'), new Expr\ConstFetch(new Name('null'))),
+                new Param(new Expr\Variable('context'), new Expr\Array_(), 'array'),
             ],
             'stmts' => $statements,
         ]);

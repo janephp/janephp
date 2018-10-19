@@ -3,10 +3,12 @@
 namespace Jane\OpenApi\Generator;
 
 use Jane\OpenApi\Generator\Parameter\NonBodyParameterGenerator;
+use Jane\OpenApi\Generator\RequestBodyContent\DefaultBodyContentGenerator;
+use Jane\OpenApi\Generator\RequestBodyContent\FormBodyContentGenerator;
+use Jane\OpenApi\Generator\RequestBodyContent\JsonBodyContentGenerator;
 use Jane\OpenApi\Naming\ChainOperationNaming;
 use Jane\OpenApi\Naming\ExceptionNaming;
 use Jane\OpenApi\Naming\OperationUrlNaming;
-use Jane\OpenApi\Generator\Parameter\BodyParameterGenerator;
 use Jane\OpenApi\Naming\OperationIdNaming;
 use Jane\OpenApi\Operation\OperationManager;
 use PhpParser\ParserFactory;
@@ -18,7 +20,6 @@ class GeneratorFactory
         $parserFactory = new ParserFactory();
         $parser = $parserFactory->create(ParserFactory::PREFER_PHP7);
 
-        $bodyParameter = new BodyParameterGenerator($parser, $serializer);
         $nonBodyParameter = new NonBodyParameterGenerator($parser);
         $exceptionGenerator = new ExceptionGenerator(new ExceptionNaming());
         $operationManager = new OperationManager();
@@ -26,19 +27,19 @@ class GeneratorFactory
             new OperationIdNaming(),
             new OperationUrlNaming(),
         ]);
-        $psrHttplugEndpointGenerator = new Psr7HttplugEndpointGenerator($operationNaming, $bodyParameter, $nonBodyParameter, $serializer, $exceptionGenerator);
+
+        $defaultContentGenerator = new DefaultBodyContentGenerator($serializer);
+        $requestBodyGenerator = new RequestBodyGenerator($defaultContentGenerator);
+        $requestBodyGenerator->addRequestBodyGenerator(['application/json'], new JsonBodyContentGenerator($serializer));
+        $requestBodyGenerator->addRequestBodyGenerator(['application/x-www-form-urlencoded', 'multipart/form-data'], new FormBodyContentGenerator($serializer));
+
+        $psrHttplugEndpointGenerator = new Psr7HttplugEndpointGenerator($operationNaming, $nonBodyParameter, $serializer, $exceptionGenerator, $requestBodyGenerator);
         $psrHttplugOperationGenerator = new Psr7HttplugOperationGenerator($psrHttplugEndpointGenerator);
         $clientAsyncGenerator = null;
 
         $generators = [
             new Psr7HttplugClientGenerator($operationManager, $psrHttplugOperationGenerator, $operationNaming),
         ];
-
-        if ($options['async']) {
-            $ampArtaxEndpointGenerator = new AmpArtaxEndpointGenerator($operationNaming, $bodyParameter, $nonBodyParameter, $serializer, $exceptionGenerator);
-            $ampArtaxOperationGenerator = new AmpArtaxOperationGenerator($ampArtaxEndpointGenerator);
-            $generators[] = new AmpArtaxClientGenerator($operationManager, $ampArtaxOperationGenerator, $operationNaming);
-        }
 
         return $generators;
     }

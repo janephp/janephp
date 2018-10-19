@@ -39,6 +39,11 @@ class GetTestById extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \J
         return [[], null];
     }
 
+    public function getExtraHeaders(): array
+    {
+        return ['Accept' => ['application/json']];
+    }
+
     /**
      * {@inheritdoc}
      *
@@ -47,15 +52,15 @@ class GetTestById extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \J
      *
      * @return null|\Jane\OpenApi\Tests\Expected\Model\TestIdGetResponse200
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
+    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
-        if (200 === $status) {
+        if (200 === $status && 'application/json' === $contentType) {
             return $serializer->deserialize($body, 'Jane\\OpenApi\\Tests\\Expected\\Model\\TestIdGetResponse200', 'json');
         }
-        if (400 === $status) {
+        if (400 === $status && 'application/json' === $contentType) {
             throw new \Jane\OpenApi\Tests\Expected\Exception\GetTestByIdBadRequestException($serializer->deserialize($body, 'Jane\\OpenApi\\Tests\\Expected\\Model\\Error', 'json'));
         }
-        if (404 === $status) {
+        if (404 === $status && 'application/json' === $contentType) {
             throw new \Jane\OpenApi\Tests\Expected\Exception\GetTestByIdNotFoundException($serializer->deserialize($body, 'Jane\\OpenApi\\Tests\\Expected\\Model\\Error', 'json'));
         }
     }

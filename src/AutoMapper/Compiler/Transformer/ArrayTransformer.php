@@ -20,7 +20,7 @@ class ArrayTransformer implements TransformerInterface
         $valuesVar = new Expr\Variable($uniqueVariableScope->getUniqueName('values'));
         $statements = [
             // $values = [];
-            new Expr\Assign($valuesVar, new Expr\Array_()),
+            new Stmt\Expression(new Expr\Assign($valuesVar, new Expr\Array_())),
         ];
 
         $loopValueVar = new Expr\Variable($uniqueVariableScope->getUniqueName('value'));
@@ -28,7 +28,7 @@ class ArrayTransformer implements TransformerInterface
         [$output, $itemStatements] = $this->itemTransformer->transform($loopValueVar, $uniqueVariableScope);
 
         $loopStatements = array_merge($itemStatements, [
-            new Expr\Assign(new Expr\ArrayDimFetch($valuesVar), $output),
+            new Stmt\Expression(new Expr\Assign(new Expr\ArrayDimFetch($valuesVar), $output)),
         ]);
 
         $statements[] = new Stmt\Foreach_($input, $loopValueVar, [

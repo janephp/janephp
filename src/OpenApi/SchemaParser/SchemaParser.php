@@ -2,59 +2,36 @@
 
 namespace Jane\OpenApi\SchemaParser;
 
-use Jane\OpenApi\Exception\ParseFailureException;
-use Jane\OpenApi\Model\OpenApi;
+use Jane\OpenApi\JsonSchema\Version3\Model\OpenApi;
 use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Component\Yaml\Exception\ExceptionInterface as YamlException;
 use Symfony\Component\Yaml\Yaml;
 
 class SchemaParser
 {
-    const OPEN_API_MODEL = 'Jane\\OpenApi\\Model\\OpenApi';
-    const EXCEPTION_MESSAGE = 'Could not parse "%s", is it a valid specification?';
-    const CONTENT_TYPE_JSON = 'json';
-    const CONTENT_TYPE_YAML = 'yaml';
-    /**
-     * @var SerializerInterface
-     */
+    /** @var SerializerInterface */
     private $serializer;
 
-    /**
-     * SchemaParser constructor.
-     *
-     * @param SerializerInterface $serializer
-     */
-    public function __construct(SerializerInterface $serializer)
+    /** @var Converter */
+    private $converter;
+
+    public function __construct(SerializerInterface $serializer, Converter $converter)
     {
         $this->serializer = $serializer;
+        $this->converter = $converter;
     }
 
     /**
      * Parse an file into a OpenAPI Schema model.
-     *
-     * @param string $openApiSpec
-     *
-     * @return OpenApi
-     *
-     * @throws ParseFailureException
      */
-    public function parseSchema($openApiSpec)
+    public function parseSchema(string $openApiSpecPath): OpenApi
     {
-        $openApiSpecContents = file_get_contents($openApiSpec);
-        $schemaClass = self::OPEN_API_MODEL;
-        $schema = null;
+        $openApiSpecContents = file_get_contents($openApiSpecPath);
         $jsonException = null;
         $yamlException = null;
 
         try {
-            return $this->serializer->deserialize(
-                $openApiSpecContents,
-                $schemaClass,
-                self::CONTENT_TYPE_JSON,
-                [
-                    'document-origin' => $openApiSpec,
-                ]
-            );
+            return $this->deserialize($openApiSpecContents, $openApiSpecPath);
         } catch (\Exception $exception) {
             $jsonException = $exception;
         }
@@ -64,7 +41,8 @@ class SchemaParser
                 $openApiSpecContents,
                 Yaml::PARSE_OBJECT | Yaml::PARSE_OBJECT_FOR_MAP | Yaml::PARSE_DATETIME | Yaml::PARSE_EXCEPTION_ON_INVALID_TYPE
             );
-            $openApiSpecContents = json_encode($content);
+
+            return $this->denormalize($content, $openApiSpecPath);
         } catch (YamlException $yamlException) {
             throw new \LogicException(sprintf(
                 "Could not parse schema in JSON nor YAML format:\n- JSON error: \"%s\"\n- YAML error: \"%s\"\n",
@@ -72,14 +50,37 @@ class SchemaParser
                 $yamlException->getMessage()
             ));
         }
+    }
 
-        return $this->serializer->deserialize(
-            $openApiSpecContents,
+    private function deserialize($openApiSpecContents, $openApiSpecPath)
+    {
+        $openApiData = \json_decode($openApiSpecContents);
+
+        return $this->denormalize($openApiData, $openApiSpecPath);
+    }
+
+    private function denormalize($openApiSpecData, $openApiSpecPath): OpenApi
+    {
+        $isVersion3 = false;
+
+        if (\property_exists($openApiSpecData, 'openapi') && version_compare($openApiSpecData->openapi, '3.0.0', '>=')) {
+            $isVersion3 = true;
+        }
+
+        $schemaClass = $isVersion3 ? OpenApi::class : \Jane\OpenApi\JsonSchema\Version2\Model\OpenApi::class;
+        $openApi = $this->serializer->denormalize(
+            $openApiSpecData,
             $schemaClass,
-            self::CONTENT_TYPE_JSON,
+            'json',
             [
-                'document-origin' => $openApiSpec,
+                'document-origin' => $openApiSpecPath,
             ]
         );
+
+        if (!$isVersion3) {
+            throw new \BadMethodCallException('Only OpenAPI v3 specifications and up are supported, use an external tool to convert your api files');
+        }
+
+        return $openApi;
     }
 }

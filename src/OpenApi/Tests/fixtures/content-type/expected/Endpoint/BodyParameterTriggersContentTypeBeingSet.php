@@ -13,11 +13,11 @@ namespace Jane\OpenApi\Tests\Expected\Endpoint;
 class BodyParameterTriggersContentTypeBeingSet extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7HttplugEndpoint
 {
     /**
-     * @param string $testString
+     * @param string $requestBody
      */
-    public function __construct(string $testString)
+    public function __construct(string $requestBody)
     {
-        $this->body = $testString;
+        $this->body = $requestBody;
     }
 
     use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
@@ -34,18 +34,17 @@ class BodyParameterTriggersContentTypeBeingSet extends \Jane\OpenApiRuntime\Clie
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null): array
     {
-        return $this->getSerializedBody($serializer);
-    }
+        if (is_string($this->body)) {
+            return [['Content-Type' => ['application/json']], json_encode($this->body)];
+        }
 
-    public function getExtraHeaders(): array
-    {
-        return ['Accept' => ['application/json']];
+        return [[], null];
     }
 
     /**
      * {@inheritdoc}
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
+    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         if (200 === $status) {
             return null;

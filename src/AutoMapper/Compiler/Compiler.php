@@ -40,11 +40,11 @@ class Compiler
         $constructStatements = [];
 
         if ($mapperConfiguration->getSource() !== 'array') {
-            $statements[] = new Expr\Assign($hashVariable, new Expr\BinaryOp\Concat(new Expr\FuncCall(new Name('spl_object_hash'), [
+            $statements[] = new Stmt\Expression(new Expr\Assign($hashVariable, new Expr\BinaryOp\Concat(new Expr\FuncCall(new Name('spl_object_hash'), [
                 new Arg($sourceInput),
             ]),
                 new Scalar\String_($mapperConfiguration->getTarget())
-            ));
+            )));
             $statements[] = new Stmt\If_(new Expr\FuncCall(new Name('array_key_exists'), [
                 new Arg($hashVariable),
                 new Arg(new Expr\MethodCall($contextVariable, 'getRegistry')),
@@ -56,29 +56,29 @@ class Compiler
         }
 
         if ($mapperConfiguration->getTarget() === 'array') {
-            $statements[] = new Expr\Assign($result, new Expr\Array_());
+            $statements[] = new Stmt\Expression(new Expr\Assign($result, new Expr\Array_()));
         } elseif ($mapperConfiguration->getTarget() === \stdClass::class) {
-            $statements[] = new Expr\Assign($result, new Expr\New_(new Name(\stdClass::class)));
+            $statements[] = new Stmt\Expression(new Expr\Assign($result, new Expr\New_(new Name(\stdClass::class))));
         } elseif ($mapperConfiguration->shouldDisabledTargetConstructor()) {
             if ($mapperConfiguration->isTargetCloneable()) {
-                $constructStatements[] = new Expr\Assign(
+                $constructStatements[] = new Stmt\Expression(new Expr\Assign(
                     new Expr\PropertyFetch(new Expr\Variable('this'), 'cachedTarget'),
                     new Expr\MethodCall(new Expr\New_(new Name(\ReflectionClass::class), [
                         new Arg(new Scalar\String_($mapperConfiguration->getTarget())),
                     ]), 'newInstanceWithoutConstructor')
-                );
-                $statements[] = new Expr\Assign($result, new Expr\Clone_(new Expr\PropertyFetch(new Expr\Variable('this'), 'cachedTarget')));
+                ));
+                $statements[] = new Stmt\Expression(new Expr\Assign($result, new Expr\Clone_(new Expr\PropertyFetch(new Expr\Variable('this'), 'cachedTarget'))));
             } else {
-                $constructStatements[] = new Expr\Assign(
+                $constructStatements[] = new Stmt\Expression(new Expr\Assign(
                     new Expr\PropertyFetch(new Expr\Variable('this'), 'cachedTarget'),
                     new Expr\New_(new Name(\ReflectionClass::class), [
                         new Arg(new Scalar\String_($mapperConfiguration->getTarget())),
                     ])
-                );
-                $statements[] = new Expr\Assign($result, new Expr\MethodCall(
+                ));
+                $statements[] = new Stmt\Expression(new Expr\Assign($result, new Expr\MethodCall(
                     new Expr\PropertyFetch(new Expr\Variable('this'), 'cachedTarget'),
                     'newInstanceWithoutConstructor'
-                ));
+                )));
             }
         } else {
             $constructArguments = [];
@@ -108,14 +108,14 @@ class Compiler
                 }
             }
 
-            $statements[] = new Expr\Assign($result, new Expr\New_(new Name($mapperConfiguration->getTarget()), $constructArguments));
+            $statements[] = new Stmt\Expression(new Expr\Assign($result, new Expr\New_(new Name($mapperConfiguration->getTarget()), $constructArguments)));
         }
 
         if ($mapperConfiguration->getSource() !== 'array') {
-            $statements[] = new Expr\AssignRef(
+            $statements[] = new Stmt\Expression(new Expr\AssignRef(
                 new Expr\ArrayDimFetch(new Expr\MethodCall($contextVariable, 'getRegistry'), $hashVariable),
                 $result
-            );
+            ));
         }
 
         /** @var PropertyMapping $propertyMapping */
@@ -127,24 +127,24 @@ class Compiler
                 continue;
             }
 
-            $propStatements[] = $writeExpression;
+            $propStatements[] = new Stmt\Expression($writeExpression);
             $conditions = [];
 
             $extractCallback = $propertyMapping->getReadAccessor()->getExtractCallback($mapperConfiguration->getSource());
             $hydrateCallback = $propertyMapping->getWriteMutator()->getHydrateCallback($mapperConfiguration->getTarget());
 
             if (null !== $extractCallback) {
-                $constructStatements[] = new Expr\Assign(
+                $constructStatements[] = new Stmt\Expression(new Expr\Assign(
                     new Expr\ArrayDimFetch(new Expr\PropertyFetch(new Expr\Variable('this'), 'extractCallbacks'), new Scalar\String_($propertyMapping->getProperty())),
                     $extractCallback
-                );
+                ));
             }
 
             if (null !== $hydrateCallback) {
-                $constructStatements[] = new Expr\Assign(
+                $constructStatements[] = new Stmt\Expression(new Expr\Assign(
                     new Expr\ArrayDimFetch(new Expr\PropertyFetch(new Expr\Variable('this'), 'hydrateCallbacks'), new Scalar\String_($propertyMapping->getProperty())),
                     $hydrateCallback
-                );
+                ));
             }
 
             if ($propertyMapping->checkExists()) {
@@ -216,8 +216,8 @@ class Compiler
         $mapmethod = new Stmt\ClassMethod('map', [
             'flags' => Stmt\Class_::MODIFIER_PUBLIC,
             'params' => [
-                new Param($sourceInput->name),
-                new Param('context', null, new Name\FullyQualified(Context::class)),
+                new Param(new Expr\Variable($sourceInput->name)),
+                new Param(new Expr\Variable('context'), null, new Name\FullyQualified(Context::class)),
             ],
             'stmts' => $statements,
         ]);
@@ -242,6 +242,12 @@ class Compiler
 
     private function getValueAsExpr($value)
     {
-        return $this->parser->parse('<?php ' . var_export($value, true) . ';')[0];
+        $expr = $this->parser->parse('<?php ' . var_export($value, true) . ';')[0];
+
+        if ($expr instanceof Stmt\Expression) {
+            return $expr->expr;
+        }
+
+        return $expr;
     }
 }

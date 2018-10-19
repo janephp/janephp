@@ -15,7 +15,7 @@
         }
     },
     "require": {
-        "jane-php/json-schema-runtime": "^4.0",
+        "jane-php/json-schema-runtime": "^5.0",
         "php-http/client-common": "^1.4",
         "php-http/httplug": "^1.0",
         "php-http/message-factory": "^1.0.2",
@@ -31,7 +31,7 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "4-dev"
+            "dev-master": "5-dev"
         }
     },
     "minimum-stability": "dev",

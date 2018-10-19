@@ -1,16 +1,27 @@
 {
-    "swagger": "2.0",
-    "basePath": "base-path",
-    "host": "www.foo-host.com",
-    "schemes": [
-        "http",
-        "https"
-    ],
+    "openapi": "3.0.0",
     "paths": {
         "/test-exception": {
             "get": {
-                "operationId": "testHost"
+                "operationId": "testHost",
+                "responses": {
+                    "default": {
+                        "description": "Default response"
+                    }
+                }
             }
         }
+    },
+    "servers": [
+        {
+            "url": "https://www.foo-host.com/base-path"
+        },
+        {
+            "url": "http://www.foo-host.com/base-path"
+        }
+    ],
+    "info": {
+        "version": "",
+        "title": ""
     }
 }
