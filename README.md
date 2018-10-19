@@ -4,8 +4,7 @@
 [![Latest Version](https://img.shields.io/github/release/janephp/janephp.svg?style=flat-square)](https://github.com/janephp/janephp/releases)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE)
 [![Build Status](https://img.shields.io/travis/janephp/janephp.svg?style=flat-square)](https://travis-ci.org/janephp/janephp)
-[![Code Coverage](https://img.shields.io/scrutinizer/coverage/g/janephp/janephp.svg?style=flat-square)](https://scrutinizer-ci.com/g/janephp/janephp)
-[![Quality Score](https://img.shields.io/scrutinizer/g/janephp/janephp.svg?style=flat-square)](https://scrutinizer-ci.com/g/janephp/janephp)
+[![Coverage Status](https://coveralls.io/repos/github/janephp/janephp/badge.svg?branch=master)](https://coveralls.io/github/janephp/janephp?branch=master)
 
 Jane is a set of libraries to generate PHP code.
 
