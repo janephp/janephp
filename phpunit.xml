@@ -29,8 +29,7 @@
                 <directory>./src/*/Tests</directory>
                 <directory>./src/JsonSchema/Model</directory>
                 <directory>./src/JsonSchema/Normalizer</directory>
-                <directory>./src/OpenApi/Model</directory>
-                <directory>./src/OpenApi/Normalizer</directory>
+                <directory>./src/OpenApi/JsonSchema</directory>
             </exclude>
         </whitelist>
     </filter>
