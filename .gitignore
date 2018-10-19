@@ -6,6 +6,7 @@ bin/*
 !bin/jane
 stub
 build
+.token
 
 tests/generated/*
 !tests/generated/.gitkeep
