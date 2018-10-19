@@ -52,14 +52,12 @@ abstract class EndpointGenerator
 
     public function __construct(
         OperationNamingInterface $operationNaming,
-        Parameter\BodyParameterGenerator $bodyParameterGenerator,
         Parameter\NonBodyParameterGenerator $nonBodyParameterGenerator,
         DenormalizerInterface $denormalizer,
         ExceptionGenerator $exceptionGenerator,
         RequestBodyGenerator $requestBodyGenerator
     ) {
         $this->operationNaming = $operationNaming;
-        $this->bodyParameterGenerator = $bodyParameterGenerator;
         $this->nonBodyParameterGenerator = $nonBodyParameterGenerator;
         $this->denormalizer = $denormalizer;
         $this->exceptionGenerator = $exceptionGenerator;
@@ -164,11 +162,9 @@ abstract class EndpointGenerator
         $requestBody = $operation->getOperation()->getRequestBody();
 
         if ($requestBody && $requestBody->getContent()) {
-            foreach ($requestBody->getContent() as $contentType => $content) {
-                $bodyParam = $this->bodyParameterGenerator->generateMethodParameter($content, $context, $operation->getReference() . '/requestBody/content/' . $contentType);
-                $bodyDoc = $this->bodyParameterGenerator->generateMethodDocParameter($content, $context, $operation->getReference() . '/requestBody/content/' . $contentType);
-                $bodyAssign = new Expr\Assign(new Expr\PropertyFetch(new Expr\Variable('this'), 'body'), new Expr\Variable('requestBody'));
-            }
+            $bodyParam = $this->requestBodyGenerator->generateMethodParameter($requestBody, $operation->getReference() . '/requestBody' , $context);
+            $bodyDoc = $this->requestBodyGenerator->generateMethodDocParameter($requestBody, $operation->getReference() . '/requestBody' , $context);
+            $bodyAssign = new Expr\Assign(new Expr\PropertyFetch(new Expr\Variable('this'), 'body'), new Expr\Variable('requestBody'));
         }
 
         $methodStatements = array_merge(

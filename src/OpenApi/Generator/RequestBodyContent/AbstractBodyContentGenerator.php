@@ -28,7 +28,23 @@ abstract class AbstractBodyContentGenerator implements RequestBodyContentGenerat
 
         if ($classGuess === null) {
             $types = $this->schemaTypeToPHP($schema->getType(), $schema->getFormat());
+
+            if ($array) {
+                $types = array_map(function ($type) {
+                    return $type . '[]';
+                }, $types);
+            }
+
+            return [$types, $array];
         }
+
+        $class = $context->getRegistry()->getSchema($classGuess->getReference())->getNamespace() . '\\Model\\' . $classGuess->getName();
+
+        if ($array) {
+            $class .= '[]';
+        }
+
+        return [['\\' . $class], $array];
     }
 
     /**

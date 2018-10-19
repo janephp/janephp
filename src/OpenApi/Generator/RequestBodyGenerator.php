@@ -3,10 +3,14 @@
 namespace Jane\OpenApi\Generator;
 
 use Jane\JsonSchema\Generator\Context\Context;
+use Jane\OpenApi\JsonSchema\Version3\Model\MediaTypeWithExample;
+use Jane\OpenApi\JsonSchema\Version3\Model\MediaTypeWithExamples;
+use Jane\OpenApi\JsonSchema\Version3\Model\Reference;
 use Jane\OpenApi\JsonSchema\Version3\Model\RequestBody;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Name;
 use PhpParser\Node\Stmt;
+use PhpParser\Node\Param;
 
 class RequestBodyGenerator
 {
@@ -28,34 +32,68 @@ class RequestBodyGenerator
         }
     }
 
-    public function getTypes(RequestBody $requestBody, Context $context): array
+    /**
+     * @param $requestBody RequestBody|Reference
+     */
+    public function generateMethodParameter($requestBody, string $reference, Context $context): ?Param
     {
         if (!$requestBody->getContent()) {
-            return [];
+            return null;
         }
 
-        $hasDefaultType = false;
-        $types = [];
+        $name = 'requestBody';
+        [$types, $onlyArray] = $this->getTypes($requestBody, $reference, $context);
+        $paramType = \count($types) === 1 ? $types[0] : null;
 
-        foreach ($requestBody->getContent() as $contentType => $content) {
-            if (!isset($this->generators[$contentType])) {
-                $hasDefaultType = true;
-
-                continue;
-            }
-
-            $generator = $this->generators[$contentType];
-            $types = array_merge($types, $generator->getTypes());
+        if ($onlyArray) {
+            $paramType = 'array';
         }
 
-        if ($hasDefaultType) {
-            $types = array_merge($types, $this->defaultRequestBodyGenerator->getTypes());
-        }
-
-        return array_unique($types);
+        return new Param($name, null, $paramType);
     }
 
-    public function getSerializeStatements(?RequestBody $requestBody, $reference, Context $context): array
+    /**
+     * @param $requestBody RequestBody|Reference
+     */
+    public function generateMethodDocParameter($requestBody, string $reference, Context $context)
+    {
+        [$types, $_] = $this->getTypes($requestBody, $reference, $context);
+
+        return sprintf(' * @param %s $%s %s', implode('|', $types), 'requestBody', '');
+    }
+
+    private function getTypes(?RequestBody $requestBody, string $reference, Context $context): array
+    {
+        $types = [];
+
+        if (!$requestBody || !$requestBody->getContent()) {
+            return $types;
+        }
+
+        $onlyArray = null;
+
+        foreach ($requestBody->getContent() as $contentType => $content) {
+            $generator = $this->defaultRequestBodyGenerator;
+
+            if (isset($this->generators[$contentType])) {
+                $generator = $this->generators[$contentType];
+            }
+
+            [$newTypes, $isArray] = $generator->getTypes($content, $reference . '/content/' . $contentType, $context);
+
+            if ($onlyArray === null) {
+                $onlyArray = $isArray;
+            } else {
+                $onlyArray = $onlyArray && $isArray;
+            }
+
+            $types = array_merge($types, $newTypes);
+        }
+
+        return [array_unique($types), $onlyArray];
+    }
+
+    public function getSerializeStatements(?RequestBody $requestBody, string $reference, Context $context): array
     {
         if (!$requestBody || !$requestBody->getContent()) {
             return [
