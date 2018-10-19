@@ -17,13 +17,13 @@ Generate automapper class which allows to automap values from Class to Class.
  * Circular Reference
  * Private Properties mapping
  * Use or disable constructor when creating the target object
+ * Custom Value Transformer
 
 ## Planned
 
  * MaxDepth
  * Flatten
  * Unflatten
- * Custom Value Transformer
 
 ## Why ?
 
