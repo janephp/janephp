@@ -6,6 +6,13 @@
  * [OpenAPI] **BC-BREAK** Use the openapi v3 specification (v2 is not more supported)
  * [OpenAPI] **BC-BREAK** No more asynchronous code generation (sync and async api can be the same on php 7.3 by using ext-async)
 
+## 4.0.4 - 2018-10-19
+
+ * [OpenAPI] Fix items object generation for json schema and openapi #29
+ * [OpenAPI] Fix bad parameter generation #41 #18
+ * [Jane] Fix properties having the same name #25
+ * [Jane] Fix bad normalizer on reserved keywords #16
+
 ## 4.0.1 - 2018-02-22
 
 ### Fixed
