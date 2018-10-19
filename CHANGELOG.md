@@ -2,7 +2,9 @@
 
 ## 5.0 - Unreleased
 
+ * **BC-BREAK** All libraries now use php-parser v4
  * [OpenAPI] **BC-BREAK** Use the openapi v3 specification (v2 is not more supported)
+ * [OpenAPI] **BC-BREAK** No more asynchronous code generation (sync and async api can be the same on php 7.3 by using ext-async)
 
 ## 4.0.1 - 2018-02-22
 
