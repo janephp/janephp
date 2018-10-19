@@ -24,10 +24,6 @@ class DefinitionGuesser implements ChainGuesserAwareInterface, GuesserInterface,
          */
         foreach ($object->getDefinitions() as $key => $definition) {
             $this->chainGuesser->guessClass($definition, $key, $reference . '/definitions/' . $key, $registry);
-
-            if (is_a($definition, $this->getSchemaClass()) && 'array' === $definition->getType()) {
-                $this->chainGuesser->guessClass($definition->getItems(), $key . 'Item', $reference . '/definitions/' . $key . '/items', $registry);
-            }
         }
     }
 
