@@ -14,15 +14,7 @@ class JsonBodyContentGenerator extends AbstractBodyContentGenerator
     /**
      * {@inheritdoc}
      */
-    public function getTypes($content): array
-    {
-        // TODO: Implement getType() method.
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getSerializeStatements($content, $contentType, $reference, Context $context)
+    public function getSerializeStatements($content, string $contentType, string $reference, Context $context): array
     {
         [$classGuess, $array, $schema] = $this->guessClass($content->getSchema(), $reference . '/schema', $context);
 

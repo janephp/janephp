@@ -6,6 +6,7 @@ use Jane\JsonSchema\Generator\Context\Context;
 use Jane\JsonSchemaRuntime\Reference;
 use Jane\OpenApi\Generator\RequestBodyContentGeneratorInterface;
 use Jane\OpenApi\JsonSchema\Version3\Model\Schema;
+use PhpParser\Node;
 use PhpParser\Node\Arg;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Name;
@@ -21,10 +22,19 @@ abstract class AbstractBodyContentGenerator implements RequestBodyContentGenerat
         $this->denormalizer = $denormalizer;
     }
 
+    public function getTypes($content, string $reference, Context $context): array
+    {
+        [$classGuess, $array, $schema] = $this->guessClass($content->getSchema(), $reference . '/schema', $context);
+
+        if ($classGuess === null) {
+            $types = $this->schemaTypeToPHP($schema->getType(), $schema->getFormat());
+        }
+    }
+
     /**
      * {@inheritdoc}
      */
-    public function getTypeCondition($content, $reference, Context $context)
+    public function getTypeCondition($content, string $reference, Context $context): Node
     {
         [$classGuess, $array, $schema] = $this->guessClass($content->getSchema(), $reference . '/schema', $context);
 
@@ -123,6 +133,44 @@ abstract class AbstractBodyContentGenerator implements RequestBodyContentGenerat
         } while ($result instanceof Reference);
 
         return [$refString, $result];
+    }
+
+    private function schemaTypeToPHP($type, $format = null)
+    {
+        if (null === $format) {
+            $format = 'default';
+        }
+
+        $convertArray = [
+            'string' => [
+                'default' => ['string'],
+                'binary' => ['string', 'resource', '\\' . StreamInterface::class],
+            ],
+            'number' => [
+                'default' => ['float'],
+            ],
+            'boolean' => [
+                'default' => ['bool'],
+            ],
+            'integer' => [
+                'default' => ['int'],
+            ],
+            'array' => [
+                'default' => ['array'],
+            ],
+            'object' => [
+                'default' => ['\\stdClass'],
+            ],
+            'file' => [
+                'default' => ['string', 'resource', '\\' . StreamInterface::class],
+            ],
+        ];
+
+        if (!isset($convertArray[$type]) || !isset($convertArray[$type][$format])) {
+            return ['mixed'];
+        }
+
+        return $convertArray[$type][$format];
     }
 
     private function typeToCondition($type, $format, $fetch)

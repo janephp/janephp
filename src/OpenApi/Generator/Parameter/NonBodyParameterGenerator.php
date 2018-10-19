@@ -4,7 +4,6 @@ namespace Jane\OpenApi\Generator\Parameter;
 
 use Doctrine\Common\Inflector\Inflector;
 use Jane\JsonSchema\Generator\Context\Context;
-use Jane\OpenApi\JsonSchema\Version3\Model\FormDataParameterSubSchema;
 use Jane\OpenApi\JsonSchema\Version3\Model\ParameterWithSchemaWithExampleInHeader;
 use Jane\OpenApi\JsonSchema\Version3\Model\ParameterWithSchemaWithExampleInPath;
 use Jane\OpenApi\JsonSchema\Version3\Model\ParameterWithSchemaWithExampleInQuery;
@@ -18,7 +17,7 @@ class NonBodyParameterGenerator extends ParameterGenerator
     /**
      * {@inheritdoc}
      *
-     * @param $parameter ParameterWithSchemaWithExampleInPath|ParameterWithSchemaWithExampleInHeader|FormDataParameterSubSchema|ParameterWithSchemaWithExampleInQuery
+     * @param $parameter ParameterWithSchemaWithExampleInPath|ParameterWithSchemaWithExampleInHeader|ParameterWithSchemaWithExampleInQuery
      */
     public function generateMethodParameter($parameter, Context $context, $reference): Node\Param
     {
@@ -43,7 +42,7 @@ class NonBodyParameterGenerator extends ParameterGenerator
     }
 
     /**
-     * @param $parameters ParameterWithSchemaWithExampleInPath[]|ParameterWithSchemaWithExampleInHeader[]|FormDataParameterSubSchema[]|ParameterWithSchemaWithExampleInQuery[]
+     * @param $parameters ParameterWithSchemaWithExampleInPath[]|ParameterWithSchemaWithExampleInHeader[]|ParameterWithSchemaWithExampleInQuery[]
      *
      * @return array
      */
@@ -96,7 +95,7 @@ class NonBodyParameterGenerator extends ParameterGenerator
     /**
      * {@inheritdoc}
      *
-     * @param $parameter ParameterWithSchemaWithExampleInPath|ParameterWithSchemaWithExampleInHeader|FormDataParameterSubSchema|ParameterWithSchemaWithExampleInQuery
+     * @param $parameter ParameterWithSchemaWithExampleInPath|ParameterWithSchemaWithExampleInHeader|ParameterWithSchemaWithExampleInQuery
      */
     public function generateMethodDocParameter($parameter, Context $context, $reference)
     {
@@ -110,7 +109,7 @@ class NonBodyParameterGenerator extends ParameterGenerator
     }
 
     /**
-     * @param $parameter ParameterWithSchemaWithExampleInPath|ParameterWithSchemaWithExampleInHeader|FormDataParameterSubSchema|ParameterWithSchemaWithExampleInQuery
+     * @param $parameter ParameterWithSchemaWithExampleInPath|ParameterWithSchemaWithExampleInHeader|ParameterWithSchemaWithExampleInQuery
      *
      * @return string
      */
@@ -128,7 +127,7 @@ class NonBodyParameterGenerator extends ParameterGenerator
     /**
      * Generate a default value as an Expr.
      *
-     * @param $parameter ParameterWithSchemaWithExampleInPath|ParameterWithSchemaWithExampleInHeader|FormDataParameterSubSchema|ParameterWithSchemaWithExampleInQuery
+     * @param $parameter ParameterWithSchemaWithExampleInPath|ParameterWithSchemaWithExampleInHeader|ParameterWithSchemaWithExampleInQuery
      *
      * @return Expr
      */

@@ -15,30 +15,9 @@ class FormBodyContentGenerator extends AbstractBodyContentGenerator
     /**
      * {@inheritdoc}
      */
-    public function getTypes($content): array
-    {
-        // TODO: Implement getType() method.
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getSerializeStatements($content, $contentType, $reference, Context $context)
+    public function getSerializeStatements($content, string $contentType, string $reference, Context $context): array
     {
         if (preg_match('/multipart\/form-data/', $contentType)) {
-            /*
-            $bodyBuilder = new MultipartStreamBuilder($streamFactory);
-            $formParameters = $this->getFormOptionsResolver()->resolve($this->formParameters);
-
-            foreach ($formParameters as $key => $value) {
-            $bodyBuilder->addResource($key, $value);
-            }
-
-            return [
-            ['Content-Type' => ['multipart/form-data; boundary="' . ($bodyBuilder->getBoundary() . '"')]],
-            $bodyBuilder->build(),
-            ];
-             */
             return [
                 new Expr\Assign(new Expr\Variable('bodyBuilder'), new Expr\New_(new Name('\\' . MultipartStreamBuilder::class), [
                     new Arg(new Expr\Variable('streamFactory')),

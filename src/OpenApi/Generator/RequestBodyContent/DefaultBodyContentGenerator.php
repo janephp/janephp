@@ -12,15 +12,7 @@ class DefaultBodyContentGenerator extends AbstractBodyContentGenerator
     /**
      * {@inheritdoc}
      */
-    public function getTypes($content): array
-    {
-        // TODO: Implement getType() method.
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getSerializeStatements($content, $contentType, $reference, Context $context)
+    public function getSerializeStatements($content, string $contentType, string $reference, Context $context): array
     {
         return [new Stmt\Return_(new Expr\Array_([
             new Expr\Array_([

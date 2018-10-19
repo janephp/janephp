@@ -43,12 +43,6 @@ class GeneratorFactory
             new Psr7HttplugClientGenerator($operationManager, $psrHttplugOperationGenerator, $operationNaming),
         ];
 
-        if ($options['async']) {
-            $ampArtaxEndpointGenerator = new AmpArtaxEndpointGenerator($operationNaming, $bodyParameter, $nonBodyParameter, $serializer, $exceptionGenerator, $requestBodyGenerator);
-            $ampArtaxOperationGenerator = new AmpArtaxOperationGenerator($ampArtaxEndpointGenerator);
-            $generators[] = new AmpArtaxClientGenerator($operationManager, $ampArtaxOperationGenerator, $operationNaming);
-        }
-
         return $generators;
     }
 }
