@@ -26,12 +26,13 @@ before_install:
 
 install:
     - travis_retry composer update ${COMPOSER_FLAGS} --no-interaction --ignore-platform-reqs
+    - if [[ $COVERAGE = true ]]; then wget https://github.com/php-coveralls/php-coveralls/releases/download/v1.0.2/coveralls.phar; fi
+    - if [[ $COVERAGE = true ]]; then chmod +x coveralls.phar; fi
 
 script:
     - travis_wait $TEST_COMMAND
     - composer normalize --dry-run
-    - if [[ "$COVERAGE" = true ]]; then vendor/bin/php-cs-fixer fix --dry-run --diff; fi
+    - if [[ $COVERAGE = true ]]; then vendor/bin/php-cs-fixer fix --dry-run --diff; fi
 
-after_success:
-    - if [[ "$COVERAGE" = true ]]; then wget https://scrutinizer-ci.com/ocular.phar; fi
-    - if [[ "$COVERAGE" = true ]]; then php ocular.phar code-coverage:upload --format=php-clover build/coverage.xml; fi
+after_script:
+    - if [[ $COVERAGE = true ]]; then ./coveralls.phar -v; fi
