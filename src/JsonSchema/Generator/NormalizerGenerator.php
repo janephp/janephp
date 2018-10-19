@@ -80,7 +80,7 @@ class NormalizerGenerator implements GeneratorInterface
                 $normalizerClass,
             ]);
 
-            $schema->addFile(new File($schema->getDirectory() . '/Normalizer/' . $class->getName() . 'Normalizer.php', $namespace, self::FILE_TYPE_NORMALIZER));
+            $schema->addFile(new File($schema->getDirectory() . '/Normalizer/' . $normalizerClass->name . '.php', $namespace, self::FILE_TYPE_NORMALIZER));
         }
 
         $schema->addFile(new File(

@@ -1,0 +1,15 @@
+{
+    "id": "http://json-schema.org/draft-04/schema#",
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "description": "Schema with definitions",
+    "definitions": {
+        "List": {
+            "type": "object",
+            "properties": {
+                "foo": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}
