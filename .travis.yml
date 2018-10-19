@@ -17,9 +17,9 @@ matrix:
     fast_finish: true
     include:
         - php: 7.2
-          env: COVERAGE=true
+          env: COVERAGE=true TEST_COMMAND="composer test-ci"
         - php: 7.1
-          env: COMPOSER_FLAGS="--prefer-stable --prefer-lowest" TEST_COMMAND="composer test-ci"
+          env: COMPOSER_FLAGS="--prefer-stable --prefer-lowest"
 
 before_install:
     - phpenv config-rm xdebug.ini || true
