@@ -29,7 +29,7 @@
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^2.7.3",
-        "phpunit/phpunit": "^4.7",
+        "phpunit/phpunit": "^4.7"
     },
     "suggest": {
         "friendsofphp/php-cs-fixer": "To have a nice formatting of the generated files"
