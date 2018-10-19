@@ -34,6 +34,11 @@ class Property
      */
     private $description;
 
+    /**
+     * @var string
+     */
+    private $phpName;
+
     public function __construct($object, string $name, string $reference, bool $nullable = false, Type $type = null, string $description = null)
     {
         $this->name = $name;
@@ -42,6 +47,16 @@ class Property
         $this->nullable = $nullable;
         $this->type = $type;
         $this->description = $description;
+    }
+
+    public function setPhpName(string $name)
+    {
+        $this->phpName = $name;
+    }
+
+    public function getPhpName(): string
+    {
+        return $this->phpName;
     }
 
     public function getObject()

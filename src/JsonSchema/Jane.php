@@ -25,11 +25,14 @@ class Jane extends ChainGenerator
 
     private $strict;
 
-    public function __construct(Serializer $serializer, ChainGuesser $chainGuesser, $strict = true)
+    private $naming;
+
+    public function __construct(Serializer $serializer, ChainGuesser $chainGuesser, Naming $naming, $strict = true)
     {
         $this->serializer = $serializer;
         $this->chainGuesser = $chainGuesser;
         $this->strict = $strict;
+        $this->naming = $naming;
     }
 
     public function createContext(Registry $registry): Context
@@ -50,8 +53,25 @@ class Jane extends ChainGenerator
         foreach ($registry->getSchemas() as $schema) {
             foreach ($schema->getClasses() as $class) {
                 $properties = $this->chainGuesser->guessProperties($class->getObject(), $schema->getRootName(), $class->getReference(), $registry);
+                $names = [];
 
                 foreach ($properties as $property) {
+                    $property->setPhpName($this->naming->getPropertyName($property->getName()));
+
+                    $i = 2;
+                    $newName = $property->getPhpName();
+
+                    while (\in_array(strtolower($newName), $names, true)) {
+                        $newName = $property->getPhpName() . $i;
+                        ++$i;
+                    }
+
+                    if ($newName !== $property->getPhpName()) {
+                        $property->setPhpName($newName);
+                    }
+
+                    $names[] = strtolower($property->getPhpName());
+
                     $property->setType($this->chainGuesser->guessType($property->getObject(), $property->getName(), $property->getReference(), $registry));
                 }
 
@@ -78,7 +98,7 @@ class Jane extends ChainGenerator
         $modelGenerator = new ModelGenerator($naming);
         $normGenerator = new NormalizerGenerator($naming, $options['reference']);
 
-        $self = new self($serializer, $chainGuesser, $options['strict']);
+        $self = new self($serializer, $chainGuesser, $naming, $options['strict']);
         $self->addGenerator($modelGenerator);
         $self->addGenerator($normGenerator);
 

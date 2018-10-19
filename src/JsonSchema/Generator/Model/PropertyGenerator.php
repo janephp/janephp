@@ -20,7 +20,7 @@ trait PropertyGenerator
 
     protected function createProperty(Property $property, $namespace, $default = null): Stmt
     {
-        $propertyName = $this->getNaming()->getPropertyName($property->getName());
+        $propertyName = $property->getPhpName();
         $propertyStmt = new Stmt\PropertyProperty($propertyName);
 
         if (null !== $default) {

@@ -82,7 +82,7 @@ trait NormalizerGenerator
 
         /** @var Property $property */
         foreach ($classGuess->getProperties() as $property) {
-            $propertyVar = new Expr\MethodCall(new Expr\Variable('object'), $this->getNaming()->getPrefixedMethodName('get', $property->getName()));
+            $propertyVar = new Expr\MethodCall(new Expr\Variable('object'), $this->getNaming()->getPrefixedMethodName('get', $property->getPhpName()));
             list($normalizationStatements, $outputVar) = $property->getType()->createNormalizationStatement($context, $propertyVar);
 
             $normalizationStatements[] = new Expr\Assign(new Expr\PropertyFetch($dataVariable, sprintf("{'%s'}", $property->getName())), $outputVar);

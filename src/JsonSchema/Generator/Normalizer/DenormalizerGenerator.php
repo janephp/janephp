@@ -109,7 +109,7 @@ trait DenormalizerGenerator
                     'stmts' => array_merge(
                         $denormalizationStatements,
                         [
-                            new Expr\MethodCall($objectVariable, $this->getNaming()->getPrefixedMethodName('set', $property->getName()), [
+                            new Expr\MethodCall($objectVariable, $this->getNaming()->getPrefixedMethodName('set', $property->getPhpName()), [
                                 $outputVar,
                             ]),
                         ],

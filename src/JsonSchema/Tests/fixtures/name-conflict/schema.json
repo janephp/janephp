@@ -1,0 +1,16 @@
+{
+    "type": "object",
+    "properties": {
+        "msgref": {
+            "type": "string",
+            "description": "Indicates the ID of the referenced original mail."
+        },
+        "msg_ref": {
+            "type": "string",
+            "description": "Message reference on reply/forward."
+        }
+    },
+    "required": [
+        "msgref"
+    ]
+}

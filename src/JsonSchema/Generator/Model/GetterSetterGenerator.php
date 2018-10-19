@@ -28,14 +28,14 @@ trait GetterSetterGenerator
 
         return new Stmt\ClassMethod(
             // getProperty
-            $this->getNaming()->getPrefixedMethodName('get', $property->getName()),
+            $this->getNaming()->getPrefixedMethodName('get', $property->getPhpName()),
             [
                 // public function
                 'type' => Stmt\Class_::MODIFIER_PUBLIC,
                 'stmts' => [
                     // return $this->property;
                     new Stmt\Return_(
-                        new Expr\PropertyFetch(new Expr\Variable('this'), $this->getNaming()->getPropertyName($property->getName()))
+                        new Expr\PropertyFetch(new Expr\Variable('this'), $property->getPhpName())
                     ),
                 ],
                 'returnType' => $returnType,
@@ -55,21 +55,21 @@ trait GetterSetterGenerator
 
         return new Stmt\ClassMethod(
             // setProperty
-            $this->getNaming()->getPrefixedMethodName('set', $property->getName()),
+            $this->getNaming()->getPrefixedMethodName('set', $property->getPhpName()),
             [
                 // public function
                 'type' => Stmt\Class_::MODIFIER_PUBLIC,
                 // ($property)
                 'params' => [
-                    new Param($this->getNaming()->getPropertyName($property->getName()), null, $setType),
+                    new Param($this->getNaming()->getPropertyName($property->getPhpName()), null, $setType),
                 ],
                 'stmts' => [
                     // $this->property = $property;
                     new Expr\Assign(
                         new Expr\PropertyFetch(
                             new Expr\Variable('this'),
-                            $this->getNaming()->getPropertyName($property->getName())
-                        ), new Expr\Variable($this->getNaming()->getPropertyName($property->getName()))
+                            $this->getNaming()->getPropertyName($property->getPhpName())
+                        ), new Expr\Variable($this->getNaming()->getPropertyName($property->getPhpName()))
                     ),
                     // return $this;
                     new Stmt\Return_(new Expr\Variable('this')),
@@ -104,6 +104,6 @@ EOD
  * @return self
  */
 EOD
-        , $property->getDescription(), $property->getType()->getDocTypeHint($namespace), '$' . $this->getNaming()->getPropertyName($property->getName())));
+        , $property->getDescription(), $property->getType()->getDocTypeHint($namespace), '$' . $property->getPhpName()));
     }
 }
