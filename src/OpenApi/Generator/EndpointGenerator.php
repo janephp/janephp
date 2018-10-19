@@ -162,8 +162,8 @@ abstract class EndpointGenerator
         $requestBody = $operation->getOperation()->getRequestBody();
 
         if ($requestBody && $requestBody->getContent()) {
-            $bodyParam = $this->requestBodyGenerator->generateMethodParameter($requestBody, $operation->getReference() . '/requestBody' , $context);
-            $bodyDoc = $this->requestBodyGenerator->generateMethodDocParameter($requestBody, $operation->getReference() . '/requestBody' , $context);
+            $bodyParam = $this->requestBodyGenerator->generateMethodParameter($requestBody, $operation->getReference() . '/requestBody', $context);
+            $bodyDoc = $this->requestBodyGenerator->generateMethodDocParameter($requestBody, $operation->getReference() . '/requestBody', $context);
             $bodyAssign = new Expr\Assign(new Expr\PropertyFetch(new Expr\Variable('this'), 'body'), new Expr\Variable('requestBody'));
         }
 

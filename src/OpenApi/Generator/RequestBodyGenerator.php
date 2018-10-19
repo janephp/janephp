@@ -3,8 +3,6 @@
 namespace Jane\OpenApi\Generator;
 
 use Jane\JsonSchema\Generator\Context\Context;
-use Jane\OpenApi\JsonSchema\Version3\Model\MediaTypeWithExample;
-use Jane\OpenApi\JsonSchema\Version3\Model\MediaTypeWithExamples;
 use Jane\OpenApi\JsonSchema\Version3\Model\Reference;
 use Jane\OpenApi\JsonSchema\Version3\Model\RequestBody;
 use PhpParser\Node\Expr;

@@ -9,7 +9,6 @@ use Jane\OpenApi\Generator\RequestBodyContent\JsonBodyContentGenerator;
 use Jane\OpenApi\Naming\ChainOperationNaming;
 use Jane\OpenApi\Naming\ExceptionNaming;
 use Jane\OpenApi\Naming\OperationUrlNaming;
-use Jane\OpenApi\Generator\Parameter\BodyParameterGenerator;
 use Jane\OpenApi\Naming\OperationIdNaming;
 use Jane\OpenApi\Operation\OperationManager;
 use PhpParser\ParserFactory;

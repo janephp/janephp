@@ -2,7 +2,6 @@
 
 namespace Jane\OpenApiRuntime\Client;
 
-use Http\Message\MultipartStream\MultipartStreamBuilder;
 use Http\Message\StreamFactory;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Serializer\SerializerInterface;
