@@ -61,16 +61,16 @@ trait GetterSetterGenerator
                 'type' => Stmt\Class_::MODIFIER_PUBLIC,
                 // ($property)
                 'params' => [
-                    new Param($this->getNaming()->getPropertyName($property->getPhpName()), null, $setType),
+                    new Param(new Expr\Variable($this->getNaming()->getPropertyName($property->getPhpName())), null, $setType),
                 ],
                 'stmts' => [
                     // $this->property = $property;
-                    new Expr\Assign(
+                    new Stmt\Expression(new Expr\Assign(
                         new Expr\PropertyFetch(
                             new Expr\Variable('this'),
                             $this->getNaming()->getPropertyName($property->getPhpName())
                         ), new Expr\Variable($this->getNaming()->getPropertyName($property->getPhpName()))
-                    ),
+                    )),
                     // return $this;
                     new Stmt\Return_(new Expr\Variable('this')),
                 ],

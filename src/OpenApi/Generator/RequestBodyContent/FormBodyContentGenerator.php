@@ -19,20 +19,20 @@ class FormBodyContentGenerator extends AbstractBodyContentGenerator
     {
         if (preg_match('/multipart\/form-data/', $contentType)) {
             return [
-                new Expr\Assign(new Expr\Variable('bodyBuilder'), new Expr\New_(new Name('\\' . MultipartStreamBuilder::class), [
+                new Stmt\Expression(new Expr\Assign(new Expr\Variable('bodyBuilder'), new Expr\New_(new Name('\\' . MultipartStreamBuilder::class), [
                     new Arg(new Expr\Variable('streamFactory')),
-                ])),
-                new Expr\Assign(new Expr\Variable('formParameters'), new Expr\MethodCall(new Expr\Variable('serializer'), 'normalize', [
+                ]))),
+                new Stmt\Expression(new Expr\Assign(new Expr\Variable('formParameters'), new Expr\MethodCall(new Expr\Variable('serializer'), 'normalize', [
                     new Arg(new Expr\PropertyFetch(new Expr\Variable('this'), 'body')),
                     new Arg(new Scalar\String_('json')),
-                ])),
+                ]))),
                 new Stmt\Foreach_(new Expr\Variable('formParameters'), new Expr\Variable('value'), [
                     'keyVar' => new Expr\Variable('key'),
                     'stmts' => [
-                        new Expr\MethodCall(new Expr\Variable('bodyBuilder'), 'addResource', [
+                        new Stmt\Expression(new Expr\MethodCall(new Expr\Variable('bodyBuilder'), 'addResource', [
                             new Arg(new Expr\Variable('key')),
                             new Arg(new Expr\Variable('value')),
-                        ]),
+                        ])),
                     ],
                 ]),
                 new Stmt\Return_(new Expr\Array_([

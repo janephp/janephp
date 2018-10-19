@@ -47,7 +47,7 @@ class RequestBodyGenerator
             $paramType = 'array';
         }
 
-        return new Param($name, null, $paramType);
+        return new Param(new Expr\Variable($name), null, $paramType === null ? $paramType : new Name($paramType));
     }
 
     /**

@@ -40,10 +40,10 @@ abstract class OperationGenerator
 
         /** @var Param $param */
         foreach ($methodParams as $param) {
-            $endpointArgs[] = new Arg(new Expr\Variable($param->name));
+            $endpointArgs[] = new Arg(new Expr\Variable($param->var->name));
         }
 
-        $methodParams[] = new Param('fetch', new Expr\ClassConstFetch(new Name('self'), 'FETCH_OBJECT'), 'string');
+        $methodParams[] = new Param(new Expr\Variable('fetch'), new Expr\ClassConstFetch(new Name('self'), 'FETCH_OBJECT'), new Name('string'));
 
         return new Stmt\ClassMethod($name, [
             'type' => Stmt\Class_::MODIFIER_PUBLIC,

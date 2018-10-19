@@ -144,7 +144,7 @@ abstract class EndpointGenerator
             if ($parameter instanceof ParameterWithSchemaWithExampleInPath || $parameter instanceof ParameterWithSchemaWithExamplesInPath) {
                 $pathParams[] = $this->nonBodyParameterGenerator->generateMethodParameter($parameter, $context, $operation->getReference() . '/parameters/' . $key);
                 $pathParamsDoc[] = $this->nonBodyParameterGenerator->generateMethodDocParameter($parameter, $context, $operation->getReference() . '/parameters/' . $key);
-                $methodStatements[] = new Expr\Assign(new Expr\PropertyFetch(new Expr\Variable('this'), Inflector::camelize($parameter->getName())), new Expr\Variable(Inflector::camelize($parameter->getName())));
+                $methodStatements[] = new Stmt\Expression(new Expr\Assign(new Expr\PropertyFetch(new Expr\Variable('this'), Inflector::camelize($parameter->getName())), new Expr\Variable(Inflector::camelize($parameter->getName()))));
                 $pathProperties[] = new Stmt\Property(Stmt\Class_::MODIFIER_PROTECTED, [
                     new Stmt\PropertyProperty(new Name($parameter->getName())),
                 ]);
@@ -164,14 +164,14 @@ abstract class EndpointGenerator
         if ($requestBody && $requestBody->getContent()) {
             $bodyParam = $this->requestBodyGenerator->generateMethodParameter($requestBody, $operation->getReference() . '/requestBody', $context);
             $bodyDoc = $this->requestBodyGenerator->generateMethodDocParameter($requestBody, $operation->getReference() . '/requestBody', $context);
-            $bodyAssign = new Expr\Assign(new Expr\PropertyFetch(new Expr\Variable('this'), 'body'), new Expr\Variable('requestBody'));
+            $bodyAssign = new Stmt\Expression(new Expr\Assign(new Expr\PropertyFetch(new Expr\Variable('this'), 'body'), new Expr\Variable('requestBody')));
         }
 
         $methodStatements = array_merge(
             $methodStatements,
             $bodyAssign !== null ? [$bodyAssign] : [],
-            \count($queryParamsDoc) > 0 ? [new Expr\Assign(new Expr\PropertyFetch(new Expr\Variable('this'), 'queryParameters'), new Expr\Variable('queryParameters'))] : [],
-            \count($headerParamsDoc) > 0 ? [new Expr\Assign(new Expr\PropertyFetch(new Expr\Variable('this'), 'headerParameters'), new Expr\Variable('headerParameters'))] : []
+            \count($queryParamsDoc) > 0 ? [new Stmt\Expression(new Expr\Assign(new Expr\PropertyFetch(new Expr\Variable('this'), 'queryParameters'), new Expr\Variable('queryParameters')))] : [],
+            \count($headerParamsDoc) > 0 ? [new Stmt\Expression(new Expr\Assign(new Expr\PropertyFetch(new Expr\Variable('this'), 'headerParameters'), new Expr\Variable('headerParameters')))] : []
         );
 
         if (\count($methodStatements) === 0) {
@@ -181,8 +181,8 @@ abstract class EndpointGenerator
         $methodParams = array_merge(
             $pathParams,
             $bodyParam ? [$bodyParam] : [],
-            \count($queryParamsDoc) > 0 ? [new Param('queryParameters', new Expr\Array_(), 'array')] : [],
-            \count($headerParamsDoc) > 0 ? [new Param('headerParameters', new Expr\Array_(), 'array')] : []
+            \count($queryParamsDoc) > 0 ? [new Param(new Expr\Variable('queryParameters'), new Expr\Array_(), new Name('array'))] : [],
+            \count($headerParamsDoc) > 0 ? [new Param(new Expr\Variable('headerParameters'), new Expr\Array_(), new Name('array'))] : []
         );
 
         $methodDocumentations = array_merge(
@@ -345,7 +345,7 @@ EOD
             'type' => Stmt\Class_::MODIFIER_PROTECTED,
             'stmts' => array_merge(
                 [
-                    new Expr\Assign($optionsResolverVariable, new Expr\StaticCall(new Name('parent'), $methodName)),
+                    new Stmt\Expression(new Expr\Assign($optionsResolverVariable, new Expr\StaticCall(new Name('parent'), $methodName))),
                 ],
                 $this->nonBodyParameterGenerator->generateOptionsResolverStatements($optionsResolverVariable, $parameters),
                 [
@@ -360,8 +360,8 @@ EOD
     {
         return new Stmt\ClassMethod('getBody', [
             'params' => [
-                new Param('serializer', null, new Name\FullyQualified(SerializerInterface::class)),
-                new Param('streamFactory', new Expr\ConstFetch(new Name('null')), new Name\FullyQualified(StreamFactory::class)),
+                new Param(new Expr\Variable('serializer'), null, new Name\FullyQualified(SerializerInterface::class)),
+                new Param(new Expr\Variable('streamFactory'), new Expr\ConstFetch(new Name('null')), new Name\FullyQualified(StreamFactory::class)),
             ],
             'returnType' => new Name('array'),
             'stmts' => $this->requestBodyGenerator->getSerializeStatements($operation->getOperation()->getRequestBody(), $operation->getReference() . '/requestBody', $context),
@@ -492,10 +492,10 @@ EOD
         return [new Stmt\ClassMethod('transformResponseBody', [
             'type' => Stmt\Class_::MODIFIER_PROTECTED,
             'params' => [
-                new Param('body', null, 'string'),
-                new Param('status', null, 'int'),
-                new Param('serializer', null, new Name\FullyQualified(SerializerInterface::class)),
-                new Param('contentType', new Expr\ConstFetch(new Name('null')), '?string'),
+                new Param(new Expr\Variable('body'), null, new Name('string')),
+                new Param(new Expr\Variable('status'), null, new Name('int')),
+                new Param(new Expr\Variable('serializer'), null, new Name\FullyQualified(SerializerInterface::class)),
+                new Param(new Expr\Variable('contentType'), new Expr\ConstFetch(new Name('null')), '?string'),
             ],
             'stmts' => $outputStatements,
         ], [

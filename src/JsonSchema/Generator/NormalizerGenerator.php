@@ -95,16 +95,16 @@ class NormalizerGenerator implements GeneratorInterface
     protected function createNormalizerFactoryClass($classes)
     {
         $statements = [
-            new Expr\Assign(new Expr\Variable('normalizers'), new Expr\Array_()),
-            new Expr\Assign(new Expr\ArrayDimFetch(new Expr\Variable('normalizers')), new Expr\New_(new Name('\Symfony\Component\Serializer\Normalizer\ArrayDenormalizer'))),
+            new Stmt\Expression(new Expr\Assign(new Expr\Variable('normalizers'), new Expr\Array_())),
+            new Stmt\Expression(new Expr\Assign(new Expr\ArrayDimFetch(new Expr\Variable('normalizers')), new Expr\New_(new Name('\Symfony\Component\Serializer\Normalizer\ArrayDenormalizer')))),
         ];
 
         if ($this->useReference) {
-            $statements[] = new Expr\Assign(new Expr\ArrayDimFetch(new Expr\Variable('normalizers')), new Expr\New_(new Name('\Jane\JsonSchemaRuntime\Normalizer\ReferenceNormalizer')));
+            $statements[] = new Stmt\Expression(new Expr\Assign(new Expr\ArrayDimFetch(new Expr\Variable('normalizers')), new Expr\New_(new Name('\Jane\JsonSchemaRuntime\Normalizer\ReferenceNormalizer'))));
         }
 
         foreach ($classes as $class) {
-            $statements[] = new Expr\Assign(new Expr\ArrayDimFetch(new Expr\Variable('normalizers')), new Expr\New_($class));
+            $statements[] = new Stmt\Expression(new Expr\Assign(new Expr\ArrayDimFetch(new Expr\Variable('normalizers')), new Expr\New_($class)));
         }
 
         $statements[] = new Stmt\Return_(new Expr\Variable('normalizers'));

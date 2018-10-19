@@ -7,6 +7,7 @@ use PhpParser\Node\Expr;
 use PhpParser\Node\Name;
 use PhpParser\Node\Param;
 use PhpParser\Node\Scalar;
+use PhpParser\Node\Stmt;
 
 class WriteMutator
 {
@@ -73,11 +74,11 @@ class WriteMutator
         return new Expr\StaticCall(new Name\FullyQualified(\Closure::class), 'bind', [
             new Arg(new Expr\Closure([
                 'params' => [
-                    new Param('object'),
-                    new Param('value'),
+                    new Param(new Expr\Variable('object')),
+                    new Param(new Expr\Variable('value')),
                 ],
                 'stmts' => [
-                    new Expr\Assign(new Expr\PropertyFetch(new Expr\Variable('object'), $this->name), new Expr\Variable('value')),
+                    new Stmt\Expression(new Expr\Assign(new Expr\PropertyFetch(new Expr\Variable('object'), $this->name), new Expr\Variable('value'))),
                 ],
             ])),
             new Arg(new Expr\ConstFetch(new Name('null'))),

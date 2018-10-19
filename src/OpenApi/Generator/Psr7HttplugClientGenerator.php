@@ -41,7 +41,7 @@ class Psr7HttplugClientGenerator extends ClientGenerator
             'create', [
                 'flags' => Stmt\Class_::MODIFIER_STATIC | Stmt\Class_::MODIFIER_PUBLIC,
                 'params' => [
-                    new Node\Param('httpClient', new Expr\ConstFetch(new Name('null'))),
+                    new Node\Param(new Expr\Variable('httpClient'), new Expr\ConstFetch(new Name('null'))),
                 ],
                 'stmts' => [
                     new Stmt\If_(
@@ -50,21 +50,21 @@ class Psr7HttplugClientGenerator extends ClientGenerator
                             'stmts' => $this->getHttpClientCreateExpr($context),
                         ]
                     ),
-                    new Expr\Assign(
+                    new Stmt\Expression(new Expr\Assign(
                         new Expr\Variable('messageFactory'),
                         new Expr\StaticCall(
                             new Name\FullyQualified(MessageFactoryDiscovery::class),
                             'find'
                         )
-                    ),
-                    new Expr\Assign(
+                    )),
+                    new Stmt\Expression(new Expr\Assign(
                         new Expr\Variable('streamFactory'),
                         new Expr\StaticCall(
                             new Name\FullyQualified(StreamFactoryDiscovery::class),
                             'find'
                         )
-                    ),
-                    new Expr\Assign(
+                    )),
+                    new Stmt\Expression(new Expr\Assign(
                         new Expr\Variable('serializer'),
                         new Expr\New_(
                             new Name\FullyQualified(Serializer::class),
@@ -87,7 +87,7 @@ class Psr7HttplugClientGenerator extends ClientGenerator
                                 ),
                             ]
                         )
-                    ),
+                    )),
                     new Stmt\Return_(
                         new Expr\New_(
                             new Name('static'), [
@@ -129,13 +129,13 @@ class Psr7HttplugClientGenerator extends ClientGenerator
             }
         }
 
-        $httpClientAssign = new Expr\Assign(
+        $httpClientAssign = new Stmt\Expression(new Expr\Assign(
             new Expr\Variable('httpClient'),
             new Expr\StaticCall(
                 new Name\FullyQualified(HttpClientDiscovery::class),
                 'find'
             )
-        );
+        ));
 
         if (empty($baseUri) || $baseUri === '/') {
             return [$httpClientAssign];
@@ -143,11 +143,11 @@ class Psr7HttplugClientGenerator extends ClientGenerator
 
         $statements = [
             $httpClientAssign,
-            new Expr\Assign(
+            new Stmt\Expression(new Expr\Assign(
                 new Expr\Variable('plugins'),
                 new Expr\Array_()
-            ),
-            new Expr\Assign(
+            )),
+            new Stmt\Expression(new Expr\Assign(
                 new Expr\Variable('uri'),
                 new Expr\MethodCall(
                     new Expr\StaticCall(
@@ -159,19 +159,19 @@ class Psr7HttplugClientGenerator extends ClientGenerator
                         new Node\Arg(new Node\Scalar\String_($baseUri)),
                     ]
                 )
-            ),
+            )),
         ];
 
         foreach ($plugins as $pluginClass) {
-            $statements[] = new Expr\Assign(
+            $statements[] = new Stmt\Expression(new Expr\Assign(
                 new Expr\ArrayDimFetch(new Expr\Variable('plugins')),
                 new Expr\New_(new Name\FullyQualified($pluginClass), [
                     new Node\Arg(new Expr\Variable('uri')),
                 ])
-            );
+            ));
         }
 
-        $statements[] = new Expr\Assign(
+        $statements[] = new Stmt\Expression(new Expr\Assign(
             new Expr\Variable('httpClient'),
             new Expr\New_(
                 new Name\FullyQualified(PluginClient::class),
@@ -180,7 +180,7 @@ class Psr7HttplugClientGenerator extends ClientGenerator
                     new Node\Arg(new Expr\Variable('plugins')),
                 ]
             )
-        );
+        ));
 
         return $statements;
     }

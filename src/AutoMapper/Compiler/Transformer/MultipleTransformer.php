@@ -38,7 +38,7 @@ class MultipleTransformer implements TransformerInterface
     {
         $output = new Expr\Variable($uniqueVariableScope->getUniqueName('value'));
         $statements = [
-            new Expr\Assign($output, $input),
+            new Stmt\Expression(new Expr\Assign($output, $input)),
         ];
 
         foreach ($this->transformers as $transformerData) {
@@ -57,7 +57,7 @@ class MultipleTransformer implements TransformerInterface
                 [
                     'stmts' => array_merge(
                         $transformerStatements, [
-                            new Expr\Assign($output, $transformerOutput),
+                            new Stmt\Expression(new Expr\Assign($output, $transformerOutput)),
                         ]
                     ),
                 ]

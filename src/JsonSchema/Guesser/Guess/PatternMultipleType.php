@@ -54,7 +54,7 @@ class PatternMultipleType extends Type
         $valuesVar = new Expr\Variable($context->getUniqueVariableName('values'));
         $statements = [
             // $values = [];
-            new Expr\Assign($valuesVar, $this->createArrayValueStatement()),
+            new Stmt\Expression(new Expr\Assign($valuesVar, $this->createArrayValueStatement())),
         ];
 
         $loopValueVar = new Expr\Variable($context->getUniqueVariableName('value'));
@@ -74,7 +74,7 @@ class PatternMultipleType extends Type
                     ),
                     [
                         'stmts' => array_merge($typeStatements, [
-                            new Expr\Assign(new Expr\ArrayDimFetch($valuesVar, $loopKeyVar), $typeOutput),
+                            new Stmt\Expression(new Expr\Assign(new Expr\ArrayDimFetch($valuesVar, $loopKeyVar), $typeOutput)),
                             new Stmt\Continue_(),
                         ]),
                     ]
@@ -98,7 +98,7 @@ class PatternMultipleType extends Type
         $valuesVar = new Expr\Variable($context->getUniqueVariableName('values'));
         $statements = [
             // $values = [];
-            new Expr\Assign($valuesVar, $this->createNormalizationArrayValueStatement()),
+            new Stmt\Expression(new Expr\Assign($valuesVar, $this->createNormalizationArrayValueStatement())),
         ];
 
         $loopValueVar = new Expr\Variable($context->getUniqueVariableName('value'));
@@ -118,7 +118,7 @@ class PatternMultipleType extends Type
                     ),
                     [
                         'stmts' => array_merge($typeStatements, [
-                            new Expr\Assign(new Expr\PropertyFetch($valuesVar, $loopKeyVar), $typeOutput),
+                            new Stmt\Expression(new Expr\Assign(new Expr\PropertyFetch($valuesVar, $loopKeyVar), $typeOutput)),
                             new Stmt\Continue_(),
                         ]),
                     ]

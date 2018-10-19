@@ -62,19 +62,19 @@ class ExceptionGenerator
                             ]),
                             new Stmt\ClassMethod('__construct', [
                                 'params' => [
-                                    new Param($propertyName, null, $isArray ? null : '\\' . $classFqdn),
+                                    new Param(new Expr\Variable($propertyName), null, $isArray ? null :new Name( '\\' . $classFqdn)),
                                 ],
                                 'stmts' => [
-                                    new Expr\StaticCall(new Name('parent'), '__construct', [
+                                    new Stmt\Expression(new Expr\StaticCall(new Name('parent'), '__construct', [
                                         new Scalar\String_($description),
                                         new Scalar\LNumber($status),
-                                    ]),
-                                    new Expr\Assign(
+                                    ])),
+                                    new Stmt\Expression(new Expr\Assign(
                                         new Expr\PropertyFetch(
                                             new Expr\Variable('this'),
                                             $propertyName
                                         ), new Expr\Variable($propertyName)
-                                    ),
+                                    )),
                                 ],
                             ]),
                             new Stmt\ClassMethod($methodName, [
@@ -108,10 +108,10 @@ class ExceptionGenerator
                     'stmts' => [
                         new Stmt\ClassMethod('__construct', [
                             'stmts' => [
-                                new Expr\StaticCall(new Name('parent'), '__construct', [
+                                new Stmt\Expression(new Expr\StaticCall(new Name('parent'), '__construct', [
                                     new Scalar\String_($description),
                                     new Scalar\LNumber($status),
-                                ]),
+                                ])),
                             ],
                         ]),
                     ],
