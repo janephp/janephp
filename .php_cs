@@ -8,6 +8,7 @@ $dirs = PhpCsFixer\Finder::create()
     ->exclude('OpenApi/Normalizer')
     ->exclude('OpenApi/Model')
     ->exclude('OpenApi/Tests/fixtures')
+    ->exclude('AutoMapper/Bundle/Tests/Resources')
     ->in(__DIR__ . '/src')
 ;
 

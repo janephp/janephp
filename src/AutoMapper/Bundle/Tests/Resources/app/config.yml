@@ -1,0 +1,18 @@
+framework:
+    secret: jane-automapper
+    property_info: ~
+    test: ~
+
+jane_auto_mapper:
+    private: true
+    mappings:
+        -
+            source: Jane\AutoMapper\Tests\Domain\User
+            target: Jane\AutoMapper\Tests\Domain\UserDTO
+            pass: DummyApp\UserConfigurationPass
+        -
+            source: array
+            target: Jane\AutoMapper\Tests\Domain\UserDTO
+
+services:
+    DummyApp\UserConfigurationPass: ~

@@ -37,7 +37,9 @@ class ArrayTransformerFactory implements TransformerFactoryInterface
             if (null !== $targetType) {
                 $subItemTransformer = $this->chainTransformerFactory->getTransformer([$propertyType->getCollectionValueType()], [$targetType->getCollectionValueType()]);
 
-                return new ArrayTransformer($subItemTransformer);
+                if ($subItemTransformer !== null) {
+                    return new ArrayTransformer($subItemTransformer);
+                }
             }
         }
 

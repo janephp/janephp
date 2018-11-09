@@ -14,9 +14,19 @@
         bootstrap                   = "Tests/bootstrap.php" >
 
     <testsuites>
-        <testsuite name="Jane JsonSchema Unit Test Suite">
+        <testsuite name="Jane AutoMapper Unit Test Suite">
             <directory>Tests</directory>
-            <exclude>Tests/fixtures</exclude>
+            <exclude>Tests/Transformer</exclude>
+            <exclude>Tests/Domain</exclude>
+        </testsuite>
+
+        <testsuite name="Jane AutoMapper Bundle Test Suite">
+            <directory>Bundle/Tests</directory>
         </testsuite>
     </testsuites>
+
+    <php>
+        <server name="KERNEL_DIR" value="./Bundle/Tests/Resources/app" />
+        <server name="KERNEL_CLASS" value="AppKernel" />
+    </php>
 </phpunit>

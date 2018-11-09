@@ -11,3 +11,4 @@ build
 tests/generated/*
 !tests/generated/.gitkeep
 tests/fixtures/*/generated
+src/AutoMapper/Bundle/Tests/Resources/app/cache/
