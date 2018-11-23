@@ -33,9 +33,14 @@ class Compiler
         $result = new Expr\Variable($uniqueVariableScope->getUniqueName('result'));
         $hashVariable = new Expr\Variable($uniqueVariableScope->getUniqueName('sourceHash'));
         $contextVariable = new Expr\Variable($uniqueVariableScope->getUniqueName('context'));
-        $statements = [];
         $constructStatements = [];
         $injectMapperStatements = [];
+
+        $statements = [
+            new Stmt\If_(new Expr\BinaryOp\Identical(new Expr\ConstFetch(new Name('null')), $sourceInput), [
+                'smts' => [new Stmt\Return_(new Expr\ConstFetch(new Name('null')))]
+            ])
+        ];
 
         if ($mapperConfiguration->getSource() !== 'array') {
             $statements[] = new Stmt\Expression(new Expr\Assign($hashVariable, new Expr\BinaryOp\Concat(new Expr\FuncCall(new Name('spl_object_hash'), [
