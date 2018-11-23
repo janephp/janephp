@@ -1,9 +1,12 @@
 language: php
-sudo: false
+sudo: required
+services:
+    - docker
 
 cache:
     directories:
         - $HOME/.composer/cache
+        - /cache/gitsplit
 
 php:
     - 7.1
@@ -12,6 +15,7 @@ php:
 env:
     global:
         - TEST_COMMAND="composer test"
+        - TEST=true
 
 matrix:
     fast_finish: true
@@ -20,19 +24,26 @@ matrix:
           env: COVERAGE=true TEST_COMMAND="composer test-ci"
         - php: 7.1
           env: COMPOSER_FLAGS="--prefer-stable --prefer-lowest"
+        - php: 7.2
+          env: GITSPLIT=true TEST=false
 
 before_install:
     - phpenv config-rm xdebug.ini || true
 
 install:
-    - travis_retry composer update ${COMPOSER_FLAGS} --no-interaction --ignore-platform-reqs
+    - if [[ TEST = true ]]; then travis_retry composer update ${COMPOSER_FLAGS} --no-interaction --ignore-platform-reqs; fi
     - if [[ $COVERAGE = true ]]; then wget https://github.com/php-coveralls/php-coveralls/releases/download/v1.0.2/coveralls.phar; fi
     - if [[ $COVERAGE = true ]]; then chmod +x coveralls.phar; fi
+    - if [[ $GITSPLIT = true ]]; then docker pull jderusse/gitsplit; fi
+    - if [[ $GITSPLIT = true ]]; then git config remote.origin.fetch "+refs/*:refs/*"; fi
+    - if [[ $GITSPLIT = true ]]; then git config remote.origin.mirror true; fi
+    - if [[ $GITSPLIT = true ]]; then git fetch --prune --unshallow || git fetch --prune; fi
 
 script:
-    - travis_wait $TEST_COMMAND
-    - composer normalize --dry-run
+    - if [[ TEST = true ]]; then travis_wait $TEST_COMMAND; fi
+    - if [[ TEST = true ]]; then composer normalize --dry-run; fi
     - if [[ $COVERAGE = true ]]; then vendor/bin/php-cs-fixer fix --dry-run --diff; fi
+    - if [[ $GITSPLIT = true ]]; then docker run --rm -t -e GH_TOKEN -v /cache/gitsplit:/cache/gitsplit -v ${PWD}:/srv jderusse/gitsplit gitsplit --ref "${TRAVIS_BRANCH}"; fi
 
 after_script:
     - if [[ $COVERAGE = true ]]; then ./coveralls.phar -v; fi
