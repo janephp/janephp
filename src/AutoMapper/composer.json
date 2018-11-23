@@ -28,7 +28,7 @@
     "require-dev": {
         "doctrine/annotations": "^1.5",
         "phpunit/phpunit": "^6.0",
-        "sensio/framework-extra-bundle": "^3.0",
+        "symfony/framework-bundle": "^4.0",
         "symfony/serializer": "^3.4|^4.0"
     },
     "config": {

@@ -39,7 +39,7 @@
         "localheinz/composer-normalize": "~0.8.0",
         "php-http/artax-adapter": "^0.1",
         "phpunit/phpunit": "^6.0",
-        "sensio/framework-extra-bundle": "^3.0",
+        "symfony/framework-bundle": "^4.0",
         "symfony/phpunit-bridge": "^4.1"
     },
     "suggest": {
