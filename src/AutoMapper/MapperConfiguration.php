@@ -40,9 +40,9 @@ class MapperConfiguration extends AbstractMapperConfiguration
         return $mappings;
     }
 
-    public function createMapper(AutoMapperInterface $autoMapper): Mapper
+    public function createMapper(): Mapper
     {
-        $mapper = parent::createMapper($autoMapper);
+        $mapper = parent::createMapper();
 
         foreach ($this->customMapping as $property => $callback) {
             $mapper->addCallback($property, $callback);

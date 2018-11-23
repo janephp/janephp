@@ -38,6 +38,7 @@
         "friendsofphp/php-cs-fixer": "^2.7.3",
         "localheinz/composer-normalize": "~0.8.0",
         "php-http/artax-adapter": "^0.1",
+        "phpbench/phpbench": "@dev",
         "phpunit/phpunit": "^6.0",
         "symfony/framework-bundle": "^4.0",
         "symfony/phpunit-bridge": "^4.1"

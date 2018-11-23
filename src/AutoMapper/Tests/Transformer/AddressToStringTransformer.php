@@ -12,4 +12,9 @@ class AddressToStringTransformer implements TransformerInterface
     {
         return [new Expr\MethodCall($input, 'getCity'), []];
     }
+
+    public function getDependencies()
+    {
+        return [];
+    }
 }

@@ -105,4 +105,9 @@ class BuiltinTransformer implements TransformerInterface
             new Arg($input),
         ]);
     }
+
+    public function getDependencies()
+    {
+        return [];
+    }
 }

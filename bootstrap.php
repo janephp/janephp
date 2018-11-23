@@ -1,5 +1,9 @@
 <?php
 
-$loader = require_once __DIR__ . '/vendor/autoload.php';
+use Doctrine\Common\Annotations\AnnotationRegistry;
 
-\Doctrine\Common\Annotations\AnnotationRegistry::registerLoader('class_exists');
+$loader = require __DIR__.'/vendor/autoload.php';
+
+AnnotationRegistry::registerLoader([$loader, 'loadClass']);
+
+return $loader;

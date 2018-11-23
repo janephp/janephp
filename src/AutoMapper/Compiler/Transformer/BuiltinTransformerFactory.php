@@ -25,7 +25,9 @@ class BuiltinTransformerFactory implements TransformerFactoryInterface
      */
     public function getTransformer(?array $sourcesTypes, ?array $targetTypes): ?TransformerInterface
     {
-        if (null === $sourcesTypes || \count($sourcesTypes) === 0) {
+        $nbSourcesTypes = \count($sourcesTypes);
+
+        if (null === $sourcesTypes || $nbSourcesTypes === 0 || $nbSourcesTypes > 1) {
             return null;
         }
 

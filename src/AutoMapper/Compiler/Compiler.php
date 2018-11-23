@@ -2,6 +2,7 @@
 
 namespace Jane\AutoMapper\Compiler;
 
+use Jane\AutoMapper\AutoMapperInterface;
 use Jane\AutoMapper\Context;
 use Jane\AutoMapper\Mapper;
 use Jane\AutoMapper\MapperConfigurationInterface;
@@ -34,6 +35,7 @@ class Compiler
         $contextVariable = new Expr\Variable($uniqueVariableScope->getUniqueName('context'));
         $statements = [];
         $constructStatements = [];
+        $injectMapperStatements = [];
 
         if ($mapperConfiguration->getSource() !== 'array') {
             $statements[] = new Stmt\Expression(new Expr\Assign($hashVariable, new Expr\BinaryOp\Concat(new Expr\FuncCall(new Name('spl_object_hash'), [
@@ -116,7 +118,19 @@ class Compiler
 
         /** @var PropertyMapping $propertyMapping */
         foreach ($propertiesMapping as $propertyMapping) {
-            [$output, $propStatements] = $propertyMapping->getTransformer()->transform($propertyMapping->getReadAccessor()->getExpression($sourceInput), $uniqueVariableScope);
+            $transformer = $propertyMapping->getTransformer();
+
+            foreach ($transformer->getDependencies() as $dependency) {
+                $injectMapperStatements[] = new Stmt\Expression(new Expr\Assign(
+                    new Expr\ArrayDimFetch(new Expr\PropertyFetch(new Expr\Variable('this'), 'mappers'), new Scalar\String_($dependency->getName())),
+                    new Expr\MethodCall(new Expr\Variable('autoMapper'), 'getMapper', [
+                        new Arg(new Scalar\String_($dependency->getSource())),
+                        new Arg(new Scalar\String_($dependency->getTarget())),
+                    ])
+                ));
+            }
+
+            [$output, $propStatements] = $transformer->transform($propertyMapping->getReadAccessor()->getExpression($sourceInput), $uniqueVariableScope);
             $writeExpression = $propertyMapping->getWriteMutator()->getExpression($result, $output);
 
             if ($writeExpression === null) {
@@ -209,13 +223,21 @@ class Compiler
 
         $statements[] = new Stmt\Return_($result);
 
-        $mapmethod = new Stmt\ClassMethod('map', [
+        $mapMethod = new Stmt\ClassMethod('map', [
             'flags' => Stmt\Class_::MODIFIER_PUBLIC,
             'params' => [
                 new Param(new Expr\Variable($sourceInput->name)),
                 new Param(new Expr\Variable('context'), null, new Name\FullyQualified(Context::class)),
             ],
             'stmts' => $statements,
+        ]);
+
+        $injectMappersMethod = new Stmt\ClassMethod('injectMappers', [
+            'flags' => Stmt\Class_::MODIFIER_PUBLIC,
+            'params' => [
+                new Param(new Expr\Variable('autoMapper'), null, new Name\FullyQualified(AutoMapperInterface::class)),
+            ],
+            'stmts' => $injectMapperStatements,
         ]);
 
         $constructMethod = new Stmt\ClassMethod('__construct', [
@@ -231,9 +253,23 @@ class Compiler
                     new Stmt\PropertyProperty('hash', new Scalar\String_($mapperConfiguration->getModificationHash())),
                 ]),
                 $constructMethod,
-                $mapmethod,
+                $mapMethod,
+                $injectMappersMethod,
             ],
         ]);
+    }
+
+    /**
+     * @param MapperDependency[] $dependencies
+     */
+    private function getConstructor($dependencies): Stmt\ClassMethod
+    {
+        if (\count($dependencies) === 0) {
+            return null;
+        }
+
+        foreach ($dependencies as $dependency) {
+        }
     }
 
     private function getValueAsExpr($value)

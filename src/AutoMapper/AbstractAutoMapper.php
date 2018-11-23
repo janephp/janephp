@@ -49,7 +49,10 @@ abstract class AbstractAutoMapper implements AutoMapperInterface, AutoMapperRegi
             eval($printer->prettyPrint([$class]));
         }
 
-        return $this->mapperRegistry[$className] = $mappingConfiguration->createMapper($this);
+        $this->mapperRegistry[$className] = $mappingConfiguration->createMapper($this);
+        $this->mapperRegistry[$className]->injectMappers($this);
+
+        return $this->mapperRegistry[$className];
     }
 
     public function hasMapper(string $source, string $target): bool

@@ -29,7 +29,7 @@ class UserDTO
     public $email;
 
     /**
-     * @var AddressDTO
+     * @var AddressDTO|null
      */
     public $address;
 

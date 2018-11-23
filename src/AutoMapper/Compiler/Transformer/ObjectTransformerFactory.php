@@ -32,7 +32,9 @@ class ObjectTransformerFactory implements TransformerFactoryInterface
      */
     public function getTransformer(?array $sourcesTypes, ?array $targetTypes): ?TransformerInterface
     {
-        if (null === $sourcesTypes || \count($sourcesTypes) === 0) {
+        $nbSourcesTypes = \count($sourcesTypes);
+
+        if (null === $sourcesTypes || $nbSourcesTypes === 0 || $nbSourcesTypes > 1) {
             return null;
         }
 
@@ -60,13 +62,13 @@ class ObjectTransformerFactory implements TransformerFactoryInterface
                 }
 
                 if ($this->autoMapper->hasMapper($sourceTypeName, $targetTypeName)) {
-                    return new ObjectTransformer($targetType);
+                    return new ObjectTransformer($propertyType, $targetType);
                 }
 
                 if ($this->autoCreateSubMapper && $this->autoMapper instanceof AutoMapperRegisterInterface && $this->mapperConfigurationFactory !== null) {
                     $this->autoMapper->register($this->mapperConfigurationFactory->create($sourceTypeName, $targetTypeName));
 
-                    return new ObjectTransformer($targetType);
+                    return new ObjectTransformer($propertyType, $targetType);
                 }
 
                 return null;

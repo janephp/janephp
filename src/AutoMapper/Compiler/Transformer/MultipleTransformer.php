@@ -67,6 +67,17 @@ class MultipleTransformer implements TransformerInterface
         return [$output, $statements];
     }
 
+    public function getDependencies()
+    {
+        $dependencies = [];
+
+        foreach ($this->transformers as $transformerData) {
+            $dependencies = array_merge($dependencies, $transformerData['transformer']->getDependencies());
+        }
+
+        return $dependencies;
+    }
+
     public function isArray(): bool
     {
         return false;

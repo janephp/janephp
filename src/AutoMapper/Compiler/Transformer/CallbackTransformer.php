@@ -28,4 +28,9 @@ class CallbackTransformer implements TransformerInterface
             [],
         ];
     }
+
+    public function getDependencies()
+    {
+        return [];
+    }
 }

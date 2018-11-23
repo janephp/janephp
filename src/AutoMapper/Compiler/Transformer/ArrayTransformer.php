@@ -37,4 +37,9 @@ class ArrayTransformer implements TransformerInterface
 
         return [$valuesVar, $statements];
     }
+
+    public function getDependencies()
+    {
+        return $this->itemTransformer->getDependencies();
+    }
 }

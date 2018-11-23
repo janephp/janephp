@@ -17,7 +17,7 @@ interface MapperConfigurationInterface
 
     public function getMapperClassName(): string;
 
-    public function createMapper(AutoMapperInterface $autoMapper): Mapper;
+    public function createMapper(): Mapper;
 
     public function getModificationHash(): string;
 

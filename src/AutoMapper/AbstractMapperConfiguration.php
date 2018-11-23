@@ -37,15 +37,11 @@ abstract class AbstractMapperConfiguration implements MapperConfigurationInterfa
         return $this->className = sprintf('Mapper_%s', crc32($this->source . $this->target));
     }
 
-    public function createMapper(AutoMapperInterface $autoMapper): Mapper
+    public function createMapper(): Mapper
     {
         $className = $this->getMapperClassName();
 
-        /** @var Mapper $mapper */
-        $mapper = new $className();
-        $mapper->setAutoMapper($autoMapper);
-
-        return $mapper;
+        return new $className();
     }
 
     public function getModificationHash(): string
