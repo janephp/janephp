@@ -28,6 +28,11 @@ class FromSourcePropertiesMappingExtractor extends PropertiesMappingExtractor
             }
 
             $sourceTypes = $this->propertyInfoExtractor->getTypes($source, $property);
+
+            if ($sourceTypes === null) {
+                continue;
+            }
+
             $targetTypes = [];
 
             foreach ($sourceTypes as $type) {

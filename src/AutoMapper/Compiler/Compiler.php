@@ -27,10 +27,6 @@ class Compiler
     {
         $propertiesMapping = $mapperConfiguration->getPropertiesMapping();
 
-        if (\count($propertiesMapping) === 0) {
-            throw new \RuntimeException('No properties to compile');
-        }
-
         $uniqueVariableScope = new UniqueVariableScope();
         $sourceInput = new Expr\Variable($uniqueVariableScope->getUniqueName('value'));
         $result = new Expr\Variable($uniqueVariableScope->getUniqueName('result'));
