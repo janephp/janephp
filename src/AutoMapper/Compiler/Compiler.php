@@ -38,7 +38,7 @@ class Compiler
 
         $statements = [
             new Stmt\If_(new Expr\BinaryOp\Identical(new Expr\ConstFetch(new Name('null')), $sourceInput), [
-                'smts' => [new Stmt\Return_(new Expr\ConstFetch(new Name('null')))]
+                'stmts' => [new Stmt\Return_(new Expr\ConstFetch(new Name('null')))]
             ])
         ];
 
