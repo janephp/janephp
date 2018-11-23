@@ -139,10 +139,15 @@ class AutoMapperTest extends TestCase
     public function testAutoMapperFromArray()
     {
         $configurationUser = new MapperConfiguration($this->fromTargetMappingExtractor, 'array', UserDTO::class);
+        $configurationAddress = new MapperConfiguration($this->fromTargetMappingExtractor, 'array', AddressDTO::class);
         $this->autoMapper->register($configurationUser);
+        $this->autoMapper->register($configurationAddress);
 
         $user = [
             'id' => 1,
+            'address' => [
+                'city' => 'Toulon',
+            ],
         ];
 
         /** @var UserDTO $userDto */
@@ -150,20 +155,28 @@ class AutoMapperTest extends TestCase
 
         self::assertInstanceOf(UserDTO::class, $userDto);
         self::assertEquals(1, $userDto->id);
+        self::assertInstanceOf(AddressDTO::class, $userDto->address);
+        self::assertSame('Toulon', $userDto->address->city);
     }
 
     public function testAutoMapperToArray()
     {
-        $configurationUser = new MapperConfiguration($this->fromSourceMappingExtractor, UserDTO::class, 'array');
+        $configurationUser = new MapperConfiguration($this->fromSourceMappingExtractor, User::class, 'array');
+        $configurationAddress = new MapperConfiguration($this->fromSourceMappingExtractor, Address::class, 'array');
         $this->autoMapper->register($configurationUser);
+        $this->autoMapper->register($configurationAddress);
 
-        $userDto = new UserDTO();
-        $userDto->id = 1;
+        $address = new Address();
+        $address->setCity('Toulon');
+        $user = new User(1, 'yolo', '13');
+        $user->address = $address;
+        $user->addresses[] = $address;
 
-        $user = $this->autoMapper->map($userDto, 'array');
+        $userData = $this->autoMapper->map($user, 'array');
 
-        self::assertInternalType('array', $user);
-        self::assertEquals(1, $user['id']);
+        self::assertInternalType('array', $userData);
+        self::assertEquals(1, $userData['id']);
+        self::assertInternalType('array', $userData['address']);
     }
 
     public function testAutoMapperFromStdObject()

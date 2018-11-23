@@ -19,9 +19,15 @@ class ObjectTransformer implements TransformerInterface
 
     public function transform(Expr $input, UniqueVariableScope $uniqueVariableScope): array
     {
+        $targetTypeName = 'array';
+
+        if ($this->targetType->getBuiltinType() === Type::BUILTIN_TYPE_OBJECT) {
+            $targetTypeName = $this->targetType->getClassName();
+        }
+
         return [new Expr\MethodCall(new Expr\PropertyFetch(new Expr\Variable('this'), 'autoMapper'), 'map', [
             new Arg($input),
-            new Arg(new Scalar\String_($this->targetType->getClassName())),
+            new Arg(new Scalar\String_($targetTypeName)),
             new Arg(new Expr\Variable('context')),
         ]), []];
     }

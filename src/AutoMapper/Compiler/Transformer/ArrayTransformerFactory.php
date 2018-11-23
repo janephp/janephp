@@ -29,9 +29,8 @@ class ArrayTransformerFactory implements TransformerFactoryInterface
 
         /** @var Type $propertyType */
         $propertyType = $sourcesTypes[0];
-        $transformer = null;
 
-        if ($propertyType->getBuiltinType() === Type::BUILTIN_TYPE_ARRAY) {
+        if ($propertyType->getBuiltinType() === Type::BUILTIN_TYPE_ARRAY && $propertyType->isCollection()) {
             $targetType = $this->getTargetType($propertyType, $targetTypes);
 
             if (null !== $targetType) {
