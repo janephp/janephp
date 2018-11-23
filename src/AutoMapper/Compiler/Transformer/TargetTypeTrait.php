@@ -13,6 +13,10 @@ trait TargetTypeTrait
                 if ($targetType->getBuiltinType() === Type::BUILTIN_TYPE_ARRAY) {
                     return $targetType;
                 }
+
+                if ($targetType->getBuiltinType() === Type::BUILTIN_TYPE_OBJECT) {
+                    return $targetType;
+                }
             }
 
             return null;
@@ -21,6 +25,10 @@ trait TargetTypeTrait
         if ($sourceType->getBuiltinType() === Type::BUILTIN_TYPE_OBJECT) {
             foreach ($targetTypes as $targetType) {
                 if ($targetType->getBuiltinType() === Type::BUILTIN_TYPE_OBJECT) {
+                    return $targetType;
+                }
+
+                if ($targetType->getBuiltinType() === Type::BUILTIN_TYPE_ARRAY) {
                     return $targetType;
                 }
             }

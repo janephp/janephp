@@ -6,7 +6,7 @@ use Jane\AutoMapper\Compiler\Compiler;
 use Jane\AutoMapper\Exception\NoMappingFoundException;
 use PhpParser\PrettyPrinter\Standard;
 
-abstract class AbstractAutoMapper implements AutoMapperInterface
+abstract class AbstractAutoMapper implements AutoMapperInterface, AutoMapperRegisterInterface
 {
     private $configurations = [];
 
@@ -19,7 +19,7 @@ abstract class AbstractAutoMapper implements AutoMapperInterface
         $this->compiler = $compiler ?? new Compiler();
     }
 
-    public function register(MapperConfigurationInterface $configuration)
+    public function register(MapperConfigurationInterface $configuration): void
     {
         if (!array_key_exists($configuration->getSource(), $this->configurations)) {
             $this->configurations[$configuration->getSource()] = [];
@@ -50,6 +50,11 @@ abstract class AbstractAutoMapper implements AutoMapperInterface
         }
 
         return $this->mapperRegistry[$className] = $mappingConfiguration->createMapper($this);
+    }
+
+    public function hasMapper(string $source, string $target): bool
+    {
+        return $this->getConfiguration($source, $target) !== null;
     }
 
     public function map($value, string $target, Context $context = null)

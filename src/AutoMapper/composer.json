@@ -13,6 +13,11 @@
             "Jane\\AutoMapper\\": ""
         }
     },
+    "autoload-dev": {
+        "classmap": [
+            "Bundle/Tests/Resources/app/AppKernel.php"
+        ]
+    },
     "require": {
         "php": ">=7.1",
         "doctrine/inflector": "^1.3",
@@ -23,6 +28,7 @@
     "require-dev": {
         "doctrine/annotations": "^1.5",
         "phpunit/phpunit": "^6.0",
+        "symfony/framework-bundle": "^4.0",
         "symfony/serializer": "^3.4|^4.0"
     },
     "config": {

@@ -29,15 +29,16 @@ class ArrayTransformerFactory implements TransformerFactoryInterface
 
         /** @var Type $propertyType */
         $propertyType = $sourcesTypes[0];
-        $transformer = null;
 
-        if ($propertyType->getBuiltinType() === Type::BUILTIN_TYPE_ARRAY) {
+        if ($propertyType->getBuiltinType() === Type::BUILTIN_TYPE_ARRAY && $propertyType->isCollection()) {
             $targetType = $this->getTargetType($propertyType, $targetTypes);
 
             if (null !== $targetType) {
                 $subItemTransformer = $this->chainTransformerFactory->getTransformer([$propertyType->getCollectionValueType()], [$targetType->getCollectionValueType()]);
 
-                return new ArrayTransformer($subItemTransformer);
+                if ($subItemTransformer !== null) {
+                    return new ArrayTransformer($subItemTransformer);
+                }
             }
         }
 

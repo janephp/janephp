@@ -4,6 +4,7 @@ namespace Jane\AutoMapper\Compiler;
 
 use Jane\AutoMapper\Compiler\Accessor\ReadAccessor;
 use SebastianBergmann\GlobalState\RuntimeException;
+use Symfony\Component\PropertyInfo\Type;
 
 class FromTargetPropertiesMappingExtractor extends PropertiesMappingExtractor
 {
@@ -27,7 +28,13 @@ class FromTargetPropertiesMappingExtractor extends PropertiesMappingExtractor
             }
 
             $targetTypes = $this->propertyInfoExtractor->getTypes($target, $property);
-            $transformer = $this->transformerFactory->getTransformer($targetTypes, $targetTypes);
+            $sourceTypes = [];
+
+            foreach ($targetTypes as $type) {
+                $sourceTypes[] = $this->transformType($source, $type);
+            }
+
+            $transformer = $this->transformerFactory->getTransformer($sourceTypes, $targetTypes);
 
             if (null === $transformer) {
                 continue;
@@ -53,6 +60,30 @@ class FromTargetPropertiesMappingExtractor extends PropertiesMappingExtractor
         }
 
         return $mapping;
+    }
+
+    private function transformType(string $source, Type $type = null): ?Type
+    {
+        if ($type === null) {
+            return null;
+        }
+
+        $builtinType = $type->getBuiltinType();
+        $className = $type->getClassName();
+
+        if ($type->getBuiltinType() === Type::BUILTIN_TYPE_OBJECT && $type->getClassName() !== \stdClass::class) {
+            $builtinType = $source === 'array' ? Type::BUILTIN_TYPE_ARRAY : Type::BUILTIN_TYPE_OBJECT;
+            $className = $source === 'array' ? null : \stdClass::class;
+        }
+
+        return new Type(
+            $builtinType,
+            $type->isNullable(),
+            $className,
+            $type->isCollection(),
+            $this->transformType($source, $type->getCollectionKeyType()),
+            $this->transformType($source, $type->getCollectionValueType())
+        );
     }
 
     public function getReverseExtractor(): PropertiesMappingExtractorInterface
