@@ -2,6 +2,7 @@
 
 namespace Jane\AutoMapper\Compiler\Transformer;
 
+use Jane\AutoMapper\MapperConfigurationInterface;
 use Symfony\Component\PropertyInfo\Type;
 
 interface TransformerFactoryInterface
@@ -12,5 +13,5 @@ interface TransformerFactoryInterface
      *
      * @return null|TransformerInterface
      */
-    public function getTransformer(?array $sourcesTypes, ?array $targetTypes): ?TransformerInterface;
+    public function getTransformer(?array $sourcesTypes, ?array $targetTypes, MapperConfigurationInterface $mapperConfiguration): ?TransformerInterface;
 }

@@ -12,10 +12,19 @@ abstract class AbstractMapperConfiguration implements MapperConfigurationInterfa
 
     protected $className;
 
+    private $useDateTimeToString;
+
+    private $isConstructorAllowed;
+
+    private $dateTimeFormat;
+
     public function __construct(string $source, string $target)
     {
         $this->source = $source;
         $this->target = $target;
+        $this->isConstructorAllowed = true;
+        $this->useDateTimeToString = false;
+        $this->dateTimeFormat = \DateTimeInterface::RFC3339;
     }
 
     public function getSource(): string
@@ -59,5 +68,25 @@ abstract class AbstractMapperConfiguration implements MapperConfigurationInterfa
         }
 
         return $hash;
+    }
+
+    public function setConstructorAllowed(bool $isConstructorAllowed)
+    {
+        $this->isConstructorAllowed = $isConstructorAllowed;
+    }
+
+    public function isConstructorAllowed(): bool
+    {
+        return $this->isConstructorAllowed;
+    }
+
+    public function getDateTimeFormat(): string
+    {
+        return $this->dateTimeFormat;
+    }
+
+    public function setDateTimeFormat(string $dateTimeFormat): void
+    {
+        $this->dateTimeFormat = $dateTimeFormat;
     }
 }

@@ -2,12 +2,11 @@
 
 namespace Jane\AutoMapper\Compiler\Transformer;
 
+use Jane\AutoMapper\MapperConfigurationInterface;
 use Symfony\Component\PropertyInfo\Type;
 
-class ArrayTransformerFactory implements TransformerFactoryInterface
+class ArrayTransformerFactory extends AbstractUniqueTypeTransformerFactory
 {
-    use TargetTypeTrait;
-
     private $chainTransformerFactory;
 
     public function __construct(ChainTransformerFactory $chainTransformerFactory)
@@ -15,33 +14,20 @@ class ArrayTransformerFactory implements TransformerFactoryInterface
         $this->chainTransformerFactory = $chainTransformerFactory;
     }
 
-    /**
-     * @param Type[] $sourcesTypes
-     * @param Type[] $targetTypes
-     *
-     * @return null|TransformerInterface
-     */
-    public function getTransformer(?array $sourcesTypes, ?array $targetTypes): ?TransformerInterface
+    protected function createTransformer(Type $sourceType, Type $targetType, MapperConfigurationInterface $mapperConfiguration): ?TransformerInterface
     {
-        $nbSourcesTypes = \count($sourcesTypes);
-
-        if (null === $sourcesTypes || $nbSourcesTypes === 0 || $nbSourcesTypes > 1) {
+        if ($sourceType->getBuiltinType() !== Type::BUILTIN_TYPE_ARRAY || !$sourceType->isCollection()) {
             return null;
         }
 
-        /** @var Type $propertyType */
-        $propertyType = $sourcesTypes[0];
+        if ($targetType->getBuiltinType() !== Type::BUILTIN_TYPE_ARRAY || !$targetType->isCollection()) {
+            return null;
+        }
 
-        if ($propertyType->getBuiltinType() === Type::BUILTIN_TYPE_ARRAY && $propertyType->isCollection()) {
-            $targetType = $this->getTargetType($propertyType, $targetTypes);
+        $subItemTransformer = $this->chainTransformerFactory->getTransformer([$sourceType->getCollectionValueType()], [$targetType->getCollectionValueType()], $mapperConfiguration);
 
-            if (null !== $targetType) {
-                $subItemTransformer = $this->chainTransformerFactory->getTransformer([$propertyType->getCollectionValueType()], [$targetType->getCollectionValueType()]);
-
-                if ($subItemTransformer !== null) {
-                    return new ArrayTransformer($subItemTransformer);
-                }
-            }
+        if ($subItemTransformer !== null) {
+            return new ArrayTransformer($subItemTransformer);
         }
 
         return null;

@@ -6,16 +6,18 @@ use Doctrine\Common\Annotations\AnnotationReader;
 use Jane\AutoMapper\AutoMapper;
 use Jane\AutoMapper\Compiler\Accessor\ReflectionAccessorExtractor;
 use Jane\AutoMapper\Compiler\Compiler;
-use Jane\AutoMapper\Compiler\EvalLoader;
+use Jane\AutoMapper\Compiler\FileLoader;
 use Jane\AutoMapper\Compiler\FromSourcePropertiesMappingExtractor;
 use Jane\AutoMapper\Compiler\FromTargetPropertiesMappingExtractor;
 use Jane\AutoMapper\Compiler\SourceTargetPropertiesMappingExtractor;
 use Jane\AutoMapper\Compiler\Transformer\ArrayTransformerFactory;
 use Jane\AutoMapper\Compiler\Transformer\BuiltinTransformerFactory;
 use Jane\AutoMapper\Compiler\Transformer\ChainTransformerFactory;
+use Jane\AutoMapper\Compiler\Transformer\DateTimeTransformerFactory;
 use Jane\AutoMapper\Compiler\Transformer\MultipleTransformerFactory;
 use Jane\AutoMapper\Compiler\Transformer\NullableTransformerFactory;
 use Jane\AutoMapper\Compiler\Transformer\ObjectTransformerFactory;
+use Jane\AutoMapper\Compiler\Transformer\UniqueTypeTransformerFactory;
 use Jane\AutoMapper\Context;
 use Jane\AutoMapper\Extractor\PrivateReflectionExtractor;
 use Jane\AutoMapper\MapperConfiguration;
@@ -52,6 +54,8 @@ class AutoMapperTest extends TestCase
 
     public function setUp()
     {
+        @unlink(__DIR__ . '/cache/registry.php');
+
         $reflectionExtractor = new ReflectionExtractor();
         $reflectionExtractorPrivate = new PrivateReflectionExtractor();
         $phpDocExtractor = new PhpDocExtractor();
@@ -101,7 +105,7 @@ class AutoMapperTest extends TestCase
             new ClassMetadataFactory(new AnnotationLoader(new AnnotationReader()))
         );
 
-        $this->autoMapper = new AutoMapper(new EvalLoader(new Compiler()), new MapperConfigurationFactory(
+        $this->autoMapper = new AutoMapper(new FileLoader(new Compiler(), __DIR__ . '/cache'), new MapperConfigurationFactory(
             $this->sourceTargetMappingExtractor,
             $this->fromSourceMappingExtractor,
             $this->fromTargetMappingExtractor
@@ -109,6 +113,8 @@ class AutoMapperTest extends TestCase
 
         $this->transformerFactory->addTransformerFactory(new MultipleTransformerFactory($this->transformerFactory));
         $this->transformerFactory->addTransformerFactory(new NullableTransformerFactory($this->transformerFactory));
+        $this->transformerFactory->addTransformerFactory(new UniqueTypeTransformerFactory($this->transformerFactory));
+        $this->transformerFactory->addTransformerFactory(new DateTimeTransformerFactory());
         $this->transformerFactory->addTransformerFactory(new BuiltinTransformerFactory());
         $this->transformerFactory->addTransformerFactory(new ArrayTransformerFactory($this->transformerFactory));
         $this->transformerFactory->addTransformerFactory(new ObjectTransformerFactory($this->autoMapper));
@@ -159,6 +165,7 @@ class AutoMapperTest extends TestCase
             'address' => [
                 'city' => 'Toulon',
             ],
+            'createdAt' => '1987-04-30T06:00:00Z',
         ];
 
         /** @var UserDTO $userDto */
@@ -168,6 +175,8 @@ class AutoMapperTest extends TestCase
         self::assertEquals(1, $userDto->id);
         self::assertInstanceOf(AddressDTO::class, $userDto->address);
         self::assertSame('Toulon', $userDto->address->city);
+        self::assertInstanceOf(\DateTimeInterface::class, $userDto->createdAt);
+        self::assertEquals(1987, $userDto->createdAt->format('Y'));
     }
 
     public function testAutoMapperToArray()
@@ -188,6 +197,7 @@ class AutoMapperTest extends TestCase
         self::assertInternalType('array', $userData);
         self::assertEquals(1, $userData['id']);
         self::assertInternalType('array', $userData['address']);
+        self::assertInternalType('string', $userData['createdAt']);
     }
 
     public function testAutoMapperFromStdObject()

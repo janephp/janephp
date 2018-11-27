@@ -25,7 +25,7 @@ class MapperConfiguration extends AbstractMapperConfiguration
      */
     public function getPropertiesMapping(): array
     {
-        $mappings = $this->mappingExtractor->getPropertiesMapping($this->source, $this->target, !$this->shouldDisabledTargetConstructor());
+        $mappings = $this->mappingExtractor->getPropertiesMapping($this->source, $this->target, $this);
 
         foreach ($this->customMapping as $property => $callback) {
             $mappings[] = new PropertyMapping(
@@ -61,8 +61,12 @@ class MapperConfiguration extends AbstractMapperConfiguration
         return new self($this->mappingExtractor->getReverseExtractor(), $this->target, $this->source);
     }
 
-    public function shouldDisabledTargetConstructor(): bool
+    public function hasConstructor(): bool
     {
+        if (!$this->isConstructorAllowed()) {
+            return false;
+        }
+
         if (\in_array($this->target, ['array', \stdClass::class], true)) {
             return false;
         }
@@ -84,24 +88,18 @@ class MapperConfiguration extends AbstractMapperConfiguration
         }
 
         if (\count($mandatoryParameters) === 0) {
-            return false;
-        }
-
-        $mappings = $this->mappingExtractor->getPropertiesMapping($this->source, $this->target);
-
-        foreach ($mandatoryParameters as $mandatoryParameter) {
-            /** @var PropertyMapping $property */
-            foreach ($mappings as $property) {
-                if ($property->getWriteMutator()->getParameter()->getName() === $mandatoryParameter->getName()) {
-                    continue 2;
-                }
-            }
-
-            // If no match, then some mandatory parameters don't belong to any mutator, skip it
             return true;
         }
 
-        return false;
+        foreach ($mandatoryParameters as $mandatoryParameter) {
+            $readAccessor = $this->mappingExtractor->getReadAccessor($this->source, $mandatoryParameter->getName());
+
+            if ($readAccessor === null) {
+                return false;
+            }
+        }
+
+        return true;
     }
 
     public function isTargetCloneable(): bool

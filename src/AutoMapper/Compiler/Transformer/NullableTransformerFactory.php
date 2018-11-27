@@ -2,6 +2,7 @@
 
 namespace Jane\AutoMapper\Compiler\Transformer;
 
+use Jane\AutoMapper\MapperConfigurationInterface;
 use Symfony\Component\PropertyInfo\Type;
 
 class NullableTransformerFactory implements TransformerFactoryInterface
@@ -13,9 +14,9 @@ class NullableTransformerFactory implements TransformerFactoryInterface
         $this->chainTransformerFactory = $chainTransformerFactory;
     }
 
-    public function getTransformer(?array $sourcesTypes, ?array $targetTypes): ?TransformerInterface
+    public function getTransformer(?array $sourcesTypes, ?array $targetTypes, MapperConfigurationInterface $mapperConfiguration): ?TransformerInterface
     {
-        $nbSourcesTypes = \count($sourcesTypes);
+        $nbSourcesTypes = $sourcesTypes ? \count($sourcesTypes) : 0;
 
         if (null === $sourcesTypes || $nbSourcesTypes === 0 || $nbSourcesTypes > 1) {
             return null;
@@ -45,7 +46,7 @@ class NullableTransformerFactory implements TransformerFactoryInterface
             $propertyType->isCollection(),
             $propertyType->getCollectionKeyType(),
             $propertyType->getCollectionValueType()
-        )], $targetTypes);
+        )], $targetTypes, $mapperConfiguration);
 
         if ($subTransformer === null) {
             return null;

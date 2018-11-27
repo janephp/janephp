@@ -3,12 +3,11 @@
 namespace Jane\AutoMapper\Compiler\Transformer;
 
 use Jane\AutoMapper\AutoMapperInterface;
+use Jane\AutoMapper\MapperConfigurationInterface;
 use Symfony\Component\PropertyInfo\Type;
 
-class ObjectTransformerFactory implements TransformerFactoryInterface
+class ObjectTransformerFactory extends AbstractUniqueTypeTransformerFactory
 {
-    use TargetTypeTrait;
-
     private $autoMapper;
 
     public function __construct(AutoMapperInterface $autoMapper)
@@ -16,51 +15,37 @@ class ObjectTransformerFactory implements TransformerFactoryInterface
         $this->autoMapper = $autoMapper;
     }
 
-    /**
-     * @param Type[] $sourcesTypes
-     * @param Type[] $targetTypes
-     *
-     * @return null|TransformerInterface
-     */
-    public function getTransformer(?array $sourcesTypes, ?array $targetTypes): ?TransformerInterface
+    protected function createTransformer(Type $sourceType, Type $targetType, MapperConfigurationInterface $mapperConfiguration): ?TransformerInterface
     {
-        $nbSourcesTypes = \count($sourcesTypes);
-
-        if (null === $sourcesTypes || $nbSourcesTypes === 0 || $nbSourcesTypes > 1) {
+        // Only deal with source type being an object or an array that is not a collection
+        if (!$this->isObjectType($sourceType) || !$this->isObjectType($targetType)) {
             return null;
         }
 
-        /** @var Type $propertyType */
-        $propertyType = $sourcesTypes[0];
+        $sourceTypeName = 'array';
+        $targetTypeName = 'array';
 
-        if (
-            $propertyType->getBuiltinType() === Type::BUILTIN_TYPE_OBJECT
-            ||
-            ($propertyType->getBuiltinType() === Type::BUILTIN_TYPE_ARRAY && !$propertyType->isCollection())
-        ) {
-            $sourceTypeName = 'array';
+        if ($sourceType->getBuiltinType() === Type::BUILTIN_TYPE_OBJECT) {
+            $sourceTypeName = $sourceType->getClassName();
+        }
 
-            if ($propertyType->getBuiltinType() === Type::BUILTIN_TYPE_OBJECT) {
-                $sourceTypeName = $propertyType->getClassName();
-            }
+        if ($targetType->getBuiltinType() === Type::BUILTIN_TYPE_OBJECT) {
+            $targetTypeName = $targetType->getClassName();
+        }
 
-            $targetType = $this->getTargetType($propertyType, $targetTypes);
-
-            if (null !== $targetType) {
-                $targetTypeName = 'array';
-
-                if ($targetType->getBuiltinType() === Type::BUILTIN_TYPE_OBJECT) {
-                    $targetTypeName = $targetType->getClassName();
-                }
-
-                if ($this->autoMapper->hasMapper($sourceTypeName, $targetTypeName)) {
-                    return new ObjectTransformer($propertyType, $targetType);
-                }
-
-                return null;
-            }
+        if ($this->autoMapper->hasMapper($sourceTypeName, $targetTypeName)) {
+            return new ObjectTransformer($sourceType, $targetType);
         }
 
         return null;
+    }
+
+    private function isObjectType(Type $type): bool
+    {
+        return
+            $type->getBuiltinType() === Type::BUILTIN_TYPE_OBJECT
+            ||
+            ($type->getBuiltinType() === Type::BUILTIN_TYPE_ARRAY && !$type->isCollection())
+        ;
     }
 }

@@ -2,12 +2,14 @@
 
 namespace Jane\AutoMapper\Compiler;
 
+use Jane\AutoMapper\MapperConfigurationInterface;
+
 class SourceTargetPropertiesMappingExtractor extends PropertiesMappingExtractor
 {
     /**
      * @return PropertyMapping[]
      */
-    public function getPropertiesMapping(string $source, string $target, bool $allowConstruct = true): array
+    public function getPropertiesMapping(string $source, string $target, MapperConfigurationInterface $mapperConfiguration): array
     {
         $sourceProperties = array_unique($this->propertyInfoExtractor->getProperties($source));
         $targetProperties = array_unique($this->propertyInfoExtractor->getProperties($target));
@@ -30,14 +32,14 @@ class SourceTargetPropertiesMappingExtractor extends PropertiesMappingExtractor
 
                 $sourceTypes = $this->propertyInfoExtractor->getTypes($source, $property);
                 $targetTypes = $this->propertyInfoExtractor->getTypes($target, $property);
-                $transformer = $this->transformerFactory->getTransformer($sourceTypes, $targetTypes);
+                $transformer = $this->transformerFactory->getTransformer($sourceTypes, $targetTypes, $mapperConfiguration);
 
                 if (null === $transformer) {
                     continue;
                 }
 
                 $sourceAccessor = $this->accessorExtractor->getReadAccessor($source, $property);
-                $targetMutator = $this->accessorExtractor->getWriteMutator($target, $property, $allowConstruct);
+                $targetMutator = $this->accessorExtractor->getWriteMutator($target, $property, false);
 
                 $mapping[] = new PropertyMapping(
                     $sourceAccessor,

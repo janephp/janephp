@@ -31,12 +31,18 @@ class User
      */
     public $addresses = [];
 
+    /**
+     * @var \DateTimeInterface
+     */
+    public $createdAt;
+
     public function __construct($id, $name, $age)
     {
         $this->id = $id;
         $this->name = $name;
         $this->age = $age;
         $this->email = 'test';
+        $this->createdAt = new \DateTime();
     }
 
     /**

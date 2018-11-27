@@ -2,6 +2,7 @@
 
 namespace Jane\AutoMapper\Compiler\Transformer;
 
+use Jane\AutoMapper\MapperConfigurationInterface;
 use Symfony\Component\PropertyInfo\Type;
 
 class ChainTransformerFactory implements TransformerFactoryInterface
@@ -20,10 +21,10 @@ class ChainTransformerFactory implements TransformerFactoryInterface
      *
      * @return null|TransformerInterface
      */
-    public function getTransformer(?array $sourcesTypes, ?array $targetTypes): ?TransformerInterface
+    public function getTransformer(?array $sourcesTypes, ?array $targetTypes, MapperConfigurationInterface $mapperConfiguration): ?TransformerInterface
     {
         foreach ($this->factories as $factory) {
-            $transformer = $factory->getTransformer($sourcesTypes, $targetTypes);
+            $transformer = $factory->getTransformer($sourcesTypes, $targetTypes, $mapperConfiguration);
 
             if ($transformer !== null) {
                 return $transformer;

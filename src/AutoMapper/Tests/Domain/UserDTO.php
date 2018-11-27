@@ -37,4 +37,9 @@ class UserDTO
      * @var AddressDTO[]
      */
     public $addresses = [];
+
+    /**
+     * @var \DateTime|null
+     */
+    public $createdAt;
 }

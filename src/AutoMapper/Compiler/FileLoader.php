@@ -28,7 +28,7 @@ class FileLoader implements MapperClassLoaderInterface
     public function load(MapperConfigurationInterface $mapperConfiguration): void
     {
         $className = $mapperConfiguration->getMapperClassName();
-        $classPath = $this->directory . DIRECTORY_SEPARATOR . $className . '.php';
+        $classPath = $this->directory . \DIRECTORY_SEPARATOR . $className . '.php';
 
         if (!$this->hotReload) {
             require $classPath;
@@ -51,7 +51,7 @@ class FileLoader implements MapperClassLoaderInterface
         }
 
         if (!$this->registry) {
-            $registryPath = $this->directory . DIRECTORY_SEPARATOR . 'registry.php';
+            $registryPath = $this->directory . \DIRECTORY_SEPARATOR . 'registry.php';
 
             if (!file_exists($registryPath)) {
                 $this->registry = [];
@@ -65,7 +65,7 @@ class FileLoader implements MapperClassLoaderInterface
 
     private function addHashToRegistry($className, $hash)
     {
-        $registryPath = $this->directory . DIRECTORY_SEPARATOR . 'registry.php';
+        $registryPath = $this->directory . \DIRECTORY_SEPARATOR . 'registry.php';
         $this->registry[$className] = $hash;
         file_put_contents($registryPath, "<?php\n\nreturn " . var_export($this->registry, true) . ";\n");
     }
@@ -73,7 +73,7 @@ class FileLoader implements MapperClassLoaderInterface
     public function saveMapper(MapperConfigurationInterface $mapperConfiguration): void
     {
         $className = $mapperConfiguration->getMapperClassName();
-        $classPath = $this->directory . DIRECTORY_SEPARATOR . $className . '.php';
+        $classPath = $this->directory . \DIRECTORY_SEPARATOR . $className . '.php';
         $hash = $mapperConfiguration->getModificationHash();
         $classCode = $this->printer->prettyPrint([$this->compiler->compile($mapperConfiguration)]);
 

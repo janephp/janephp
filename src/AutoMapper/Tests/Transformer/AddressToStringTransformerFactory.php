@@ -4,6 +4,7 @@ namespace Jane\AutoMapper\Tests\Transformer;
 
 use Jane\AutoMapper\Compiler\Transformer\TransformerFactoryInterface;
 use Jane\AutoMapper\Compiler\Transformer\TransformerInterface;
+use Jane\AutoMapper\MapperConfigurationInterface;
 use Jane\AutoMapper\Tests\Domain\Address;
 use Symfony\Component\PropertyInfo\Type;
 
@@ -12,7 +13,7 @@ class AddressToStringTransformerFactory implements TransformerFactoryInterface
     /**
      * {@inheritdoc}
      */
-    public function getTransformer(?array $sourcesTypes, ?array $targetTypes): ?TransformerInterface
+    public function getTransformer(?array $sourcesTypes, ?array $targetTypes, MapperConfigurationInterface $mapperConfiguration): ?TransformerInterface
     {
         if (null === $sourcesTypes || null === $targetTypes || \count($sourcesTypes) === 0 || \count($targetTypes) === 0) {
             return null;

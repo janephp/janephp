@@ -2,10 +2,8 @@
 
 namespace Jane\AutoMapper;
 
-use Jane\AutoMapper\Compiler\Compiler;
 use Jane\AutoMapper\Compiler\MapperClassLoaderInterface;
 use Jane\AutoMapper\Exception\NoMappingFoundException;
-use PhpParser\PrettyPrinter\Standard;
 
 abstract class AbstractAutoMapper implements AutoMapperInterface, AutoMapperRegisterInterface
 {

@@ -36,11 +36,14 @@ class Compiler
         $constructStatements = [];
         $injectMapperStatements = [];
         $addedDependencies = [];
+        $inConstructor = [];
+        $reflectionClass = $mapperConfiguration->getTarget() === 'array' ? null : new \ReflectionClass($mapperConfiguration->getTarget());
+        $targetConstructor = $reflectionClass ? $reflectionClass->getConstructor() : null;
 
         $statements = [
             new Stmt\If_(new Expr\BinaryOp\Identical(new Expr\ConstFetch(new Name('null')), $sourceInput), [
-                'stmts' => [new Stmt\Return_(new Expr\ConstFetch(new Name('null')))]
-            ])
+                'stmts' => [new Stmt\Return_(new Expr\ConstFetch(new Name('null')))],
+            ]),
         ];
 
         if ($mapperConfiguration->getSource() !== 'array') {
@@ -63,56 +66,54 @@ class Compiler
             $statements[] = new Stmt\Expression(new Expr\Assign($result, new Expr\Array_()));
         } elseif ($mapperConfiguration->getTarget() === \stdClass::class) {
             $statements[] = new Stmt\Expression(new Expr\Assign($result, new Expr\New_(new Name(\stdClass::class))));
-        } elseif ($mapperConfiguration->shouldDisabledTargetConstructor()) {
-            if ($mapperConfiguration->isTargetCloneable()) {
-                $constructStatements[] = new Stmt\Expression(new Expr\Assign(
-                    new Expr\PropertyFetch(new Expr\Variable('this'), 'cachedTarget'),
-                    new Expr\MethodCall(new Expr\New_(new Name(\ReflectionClass::class), [
-                        new Arg(new Scalar\String_($mapperConfiguration->getTarget())),
-                    ]), 'newInstanceWithoutConstructor')
-                ));
-                $statements[] = new Stmt\Expression(new Expr\Assign($result, new Expr\Clone_(new Expr\PropertyFetch(new Expr\Variable('this'), 'cachedTarget'))));
-            } else {
-                $constructStatements[] = new Stmt\Expression(new Expr\Assign(
-                    new Expr\PropertyFetch(new Expr\Variable('this'), 'cachedTarget'),
-                    new Expr\New_(new Name(\ReflectionClass::class), [
-                        new Arg(new Scalar\String_($mapperConfiguration->getTarget())),
-                    ])
-                ));
-                $statements[] = new Stmt\Expression(new Expr\Assign($result, new Expr\MethodCall(
-                    new Expr\PropertyFetch(new Expr\Variable('this'), 'cachedTarget'),
-                    'newInstanceWithoutConstructor'
-                )));
-            }
-        } else {
+        } elseif ($targetConstructor !== null && $mapperConfiguration->hasConstructor()) {
             $constructArguments = [];
-            $reflectionClass = new \ReflectionClass($mapperConfiguration->getTarget());
-            $constructor = $reflectionClass->getConstructor();
 
-            if ($constructor !== null) {
-                /** @var PropertyMapping $propertyMapping */
-                foreach ($propertiesMapping as $propertyMapping) {
-                    if ($propertyMapping->getWriteMutator()->getParameter() === null) {
-                        continue;
-                    }
-
-                    [$output, $propStatements] = $propertyMapping->getTransformer()->transform($propertyMapping->getReadAccessor()->getExpression($sourceInput), $uniqueVariableScope);
-                    $constructArguments[$propertyMapping->getWriteMutator()->getParameter()->getPosition()] = new Arg($output);
-
-                    $constructStatements = array_merge(
-                        $constructStatements,
-                        $propStatements
-                    );
+            /** @var PropertyMapping $propertyMapping */
+            foreach ($propertiesMapping as $propertyMapping) {
+                if ($propertyMapping->getWriteMutator()->getParameter() === null) {
+                    continue;
                 }
 
-                foreach ($constructor->getParameters() as $constructorParameter) {
-                    if (!array_key_exists($constructorParameter->getPosition(), $constructArguments)) {
-                        $constructArguments[$constructorParameter->getPosition()] = new Arg($this->getValueAsExpr($constructorParameter->getDefaultValue()));
-                    }
+                [$output, $propStatements] = $propertyMapping->getTransformer()->transform($propertyMapping->getReadAccessor()->getExpression($sourceInput), $uniqueVariableScope);
+                $constructArguments[$propertyMapping->getWriteMutator()->getParameter()->getPosition()] = new Arg($output);
+
+                $constructStatements = array_merge(
+                    $constructStatements,
+                    $propStatements
+                );
+
+                $inConstructor[] = $propertyMapping->getProperty();
+            }
+
+            foreach ($targetConstructor->getParameters() as $constructorParameter) {
+                if (!array_key_exists($constructorParameter->getPosition(), $constructArguments) && $constructorParameter->isDefaultValueAvailable()) {
+                    $constructArguments[$constructorParameter->getPosition()] = new Arg($this->getValueAsExpr($constructorParameter->getDefaultValue()));
                 }
             }
 
             $statements[] = new Stmt\Expression(new Expr\Assign($result, new Expr\New_(new Name($mapperConfiguration->getTarget()), $constructArguments)));
+        } elseif ($targetConstructor !== null && $mapperConfiguration->isTargetCloneable()) {
+            $constructStatements[] = new Stmt\Expression(new Expr\Assign(
+                new Expr\PropertyFetch(new Expr\Variable('this'), 'cachedTarget'),
+                new Expr\MethodCall(new Expr\New_(new Name(\ReflectionClass::class), [
+                    new Arg(new Scalar\String_($mapperConfiguration->getTarget())),
+                ]), 'newInstanceWithoutConstructor')
+            ));
+            $statements[] = new Stmt\Expression(new Expr\Assign($result, new Expr\Clone_(new Expr\PropertyFetch(new Expr\Variable('this'), 'cachedTarget'))));
+        } elseif ($targetConstructor !== null) {
+            $constructStatements[] = new Stmt\Expression(new Expr\Assign(
+                new Expr\PropertyFetch(new Expr\Variable('this'), 'cachedTarget'),
+                new Expr\New_(new Name(\ReflectionClass::class), [
+                    new Arg(new Scalar\String_($mapperConfiguration->getTarget())),
+                ])
+            ));
+            $statements[] = new Stmt\Expression(new Expr\Assign($result, new Expr\MethodCall(
+                new Expr\PropertyFetch(new Expr\Variable('this'), 'cachedTarget'),
+                'newInstanceWithoutConstructor'
+            )));
+        } else {
+            $statements[] = new Stmt\Expression(new Expr\Assign($result, new Expr\New_(new Name($mapperConfiguration->getTarget()))));
         }
 
         if ($mapperConfiguration->getSource() !== 'array') {
@@ -139,6 +140,10 @@ class Compiler
                     ])
                 ));
                 $addedDependencies[$dependency->getName()] = true;
+            }
+
+            if (\in_array($propertyMapping->getProperty(), $inConstructor, true)) {
+                continue;
             }
 
             [$output, $propStatements] = $transformer->transform($propertyMapping->getReadAccessor()->getExpression($sourceInput), $uniqueVariableScope);

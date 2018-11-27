@@ -3,12 +3,13 @@
 namespace Jane\AutoMapper\Compiler;
 
 use Jane\AutoMapper\Compiler\Accessor\WriteMutator;
+use Jane\AutoMapper\MapperConfigurationInterface;
 use SebastianBergmann\GlobalState\RuntimeException;
 use Symfony\Component\PropertyInfo\Type;
 
 class FromSourcePropertiesMappingExtractor extends PropertiesMappingExtractor
 {
-    public function getPropertiesMapping(string $source, string $target, bool $allowConstruct = true): array
+    public function getPropertiesMapping(string $source, string $target, MapperConfigurationInterface $mapperConfiguration): array
     {
         $sourceProperties = array_unique($this->propertyInfoExtractor->getProperties($source));
 
@@ -39,7 +40,7 @@ class FromSourcePropertiesMappingExtractor extends PropertiesMappingExtractor
                 $targetTypes[] = $this->transformType($target, $type);
             }
 
-            $transformer = $this->transformerFactory->getTransformer($sourceTypes, $targetTypes);
+            $transformer = $this->transformerFactory->getTransformer($sourceTypes, $targetTypes, $mapperConfiguration);
 
             if (null === $transformer) {
                 continue;
@@ -73,6 +74,11 @@ class FromSourcePropertiesMappingExtractor extends PropertiesMappingExtractor
         if ($type->getBuiltinType() === Type::BUILTIN_TYPE_OBJECT && $type->getClassName() !== \stdClass::class) {
             $builtinType = $target === 'array' ? Type::BUILTIN_TYPE_ARRAY : Type::BUILTIN_TYPE_OBJECT;
             $className = $target === 'array' ? null : \stdClass::class;
+        }
+
+        // Use string for datetime
+        if ($type->getBuiltinType() === Type::BUILTIN_TYPE_OBJECT && ($type->getClassName() === \DateTimeInterface::class || is_subclass_of($type->getClassName(), \DateTimeInterface::class))) {
+            $builtinType = 'string';
         }
 
         return new Type(

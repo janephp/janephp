@@ -3,12 +3,13 @@
 namespace Jane\AutoMapper\Compiler;
 
 use Jane\AutoMapper\Compiler\Accessor\ReadAccessor;
+use Jane\AutoMapper\MapperConfigurationInterface;
 use SebastianBergmann\GlobalState\RuntimeException;
 use Symfony\Component\PropertyInfo\Type;
 
 class FromTargetPropertiesMappingExtractor extends PropertiesMappingExtractor
 {
-    public function getPropertiesMapping(string $source, string $target, bool $allowConstruct = true): array
+    public function getPropertiesMapping(string $source, string $target, MapperConfigurationInterface $mapperConfiguration): array
     {
         $targetProperties = array_unique($this->propertyInfoExtractor->getProperties($target));
 
@@ -39,7 +40,7 @@ class FromTargetPropertiesMappingExtractor extends PropertiesMappingExtractor
                 $sourceTypes[] = $this->transformType($source, $type);
             }
 
-            $transformer = $this->transformerFactory->getTransformer($sourceTypes, $targetTypes);
+            $transformer = $this->transformerFactory->getTransformer($sourceTypes, $targetTypes, $mapperConfiguration);
 
             if (null === $transformer) {
                 continue;
@@ -51,7 +52,7 @@ class FromTargetPropertiesMappingExtractor extends PropertiesMappingExtractor
                 $sourceAccessor = new ReadAccessor(ReadAccessor::TYPE_PROPERTY, $property);
             }
 
-            $targetMutator = $this->accessorExtractor->getWriteMutator($target, $property, $allowConstruct);
+            $targetMutator = $this->accessorExtractor->getWriteMutator($target, $property, $mapperConfiguration->isConstructorAllowed());
 
             $mapping[] = new PropertyMapping(
                 $sourceAccessor,
@@ -79,6 +80,10 @@ class FromTargetPropertiesMappingExtractor extends PropertiesMappingExtractor
         if ($type->getBuiltinType() === Type::BUILTIN_TYPE_OBJECT && $type->getClassName() !== \stdClass::class) {
             $builtinType = $source === 'array' ? Type::BUILTIN_TYPE_ARRAY : Type::BUILTIN_TYPE_OBJECT;
             $className = $source === 'array' ? null : \stdClass::class;
+        }
+
+        if ($type->getBuiltinType() === Type::BUILTIN_TYPE_OBJECT && ($type->getClassName() === \DateTimeInterface::class || is_subclass_of($type->getClassName(), \DateTimeInterface::class))) {
+            $builtinType = 'string';
         }
 
         return new Type(

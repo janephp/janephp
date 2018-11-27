@@ -86,7 +86,7 @@ class BuiltinTransformer implements TransformerInterface
             }
         }
 
-        throw new \RuntimeException(sprintf('Source type %s cannot be transformed into one of the following type %s', $this->sourceType->getBuiltinType(), implode(', ', $targetTypes)));
+        return [$input, []];
     }
 
     public function isArray(): bool

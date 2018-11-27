@@ -21,7 +21,11 @@ interface MapperConfigurationInterface
 
     public function getModificationHash(): string;
 
-    public function shouldDisabledTargetConstructor(): bool;
+    public function hasConstructor(): bool;
+
+    public function isConstructorAllowed(): bool;
 
     public function isTargetCloneable(): bool;
+
+    public function getDateTimeFormat(): string;
 }

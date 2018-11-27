@@ -13,7 +13,7 @@ class ReflectionAccessorExtractor implements AccessorExtractorInterface
         $this->allowPrivate = $allowPrivate;
     }
 
-    public function getReadAccessor(string $class, string $property): ReadAccessor
+    public function getReadAccessor(string $class, string $property): ?ReadAccessor
     {
         $reflClass = new \ReflectionClass($class);
         $hasProperty = $reflClass->hasProperty($property);
@@ -48,21 +48,13 @@ class ReflectionAccessorExtractor implements AccessorExtractorInterface
             $accessName = $property;
             $accessPrivate = true;
         } else {
-            $methods = [$getter, $getsetter, $isser, $hasser, '__get'];
-
-            throw new \RuntimeException(sprintf(
-                'Neither the property "%s" nor one of the methods "%s()" ' .
-                'exist and have public access in class "%s".',
-                $property,
-                implode('()", "', $methods),
-                $reflClass->name
-            ));
+            return null;
         }
 
         return new ReadAccessor($accessType, $accessName, $accessPrivate);
     }
 
-    public function getWriteMutator(string $class, string $property, bool $allowConstruct = true): WriteMutator
+    public function getWriteMutator(string $class, string $property, bool $allowConstruct = true): ?WriteMutator
     {
         $reflClass = new \ReflectionClass($class);
         $hasProperty = $reflClass->hasProperty($property);
@@ -107,17 +99,7 @@ class ReflectionAccessorExtractor implements AccessorExtractorInterface
                 $accessName = $property;
                 $accessPrivate = true;
             } else {
-                throw new \RuntimeException(sprintf(
-                    'Neither the property "%s" nor one of the methods %s"%s()", "%s()", ' .
-                    '"__set()" or "__call()" exist and have public access in class "%s".',
-                    $property,
-                    implode('', array_map(function ($singular) {
-                        return '"add' . $singular . '()"/"remove' . $singular . '()", ';
-                    }, $singulars)),
-                    $setter,
-                    $getsetter,
-                    $reflClass->name
-                ));
+                return null;
             }
         }
 
