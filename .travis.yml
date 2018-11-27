@@ -21,9 +21,9 @@ matrix:
     fast_finish: true
     include:
         - php: 7.2
-          env: COVERAGE=true TEST_COMMAND="composer test-ci"
+          env: COVERAGE=true TEST_COMMAND="composer test-ci" TEST=true
         - php: 7.1
-          env: COMPOSER_FLAGS="--prefer-stable --prefer-lowest"
+          env: COMPOSER_FLAGS="--prefer-stable --prefer-lowest" TEST=true
         - php: 7.2
           env: GITSPLIT=true TEST=false
 
