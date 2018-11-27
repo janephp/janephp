@@ -10,7 +10,7 @@ class FromSourcePropertiesMappingExtractor extends PropertiesMappingExtractor
 {
     public function getPropertiesMapping(string $source, string $target, bool $allowConstruct = true): array
     {
-        $sourceProperties = $this->propertyInfoExtractor->getProperties($source);
+        $sourceProperties = array_unique($this->propertyInfoExtractor->getProperties($source));
 
         if (!\in_array($target, ['array', \stdClass::class])) {
             throw new RuntimeException('Only array or stdClass are accepted as a target');

@@ -9,8 +9,8 @@ class SourceTargetPropertiesMappingExtractor extends PropertiesMappingExtractor
      */
     public function getPropertiesMapping(string $source, string $target, bool $allowConstruct = true): array
     {
-        $sourceProperties = $this->propertyInfoExtractor->getProperties($source);
-        $targetProperties = $this->propertyInfoExtractor->getProperties($target);
+        $sourceProperties = array_unique($this->propertyInfoExtractor->getProperties($source));
+        $targetProperties = array_unique($this->propertyInfoExtractor->getProperties($target));
 
         if (null === $sourceProperties || null === $targetProperties) {
             return [];

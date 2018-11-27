@@ -35,6 +35,7 @@ class Compiler
         $contextVariable = new Expr\Variable($uniqueVariableScope->getUniqueName('context'));
         $constructStatements = [];
         $injectMapperStatements = [];
+        $addedDependencies = [];
 
         $statements = [
             new Stmt\If_(new Expr\BinaryOp\Identical(new Expr\ConstFetch(new Name('null')), $sourceInput), [
@@ -98,8 +99,8 @@ class Compiler
                     [$output, $propStatements] = $propertyMapping->getTransformer()->transform($propertyMapping->getReadAccessor()->getExpression($sourceInput), $uniqueVariableScope);
                     $constructArguments[$propertyMapping->getWriteMutator()->getParameter()->getPosition()] = new Arg($output);
 
-                    $statements = array_merge(
-                        $statements,
+                    $constructStatements = array_merge(
+                        $constructStatements,
                         $propStatements
                     );
                 }
@@ -126,6 +127,10 @@ class Compiler
             $transformer = $propertyMapping->getTransformer();
 
             foreach ($transformer->getDependencies() as $dependency) {
+                if (isset($addedDependencies[$dependency->getName()])) {
+                    continue;
+                }
+
                 $injectMapperStatements[] = new Stmt\Expression(new Expr\Assign(
                     new Expr\ArrayDimFetch(new Expr\PropertyFetch(new Expr\Variable('this'), 'mappers'), new Scalar\String_($dependency->getName())),
                     new Expr\MethodCall(new Expr\Variable('autoMapper'), 'getMapper', [
@@ -133,6 +138,7 @@ class Compiler
                         new Arg(new Scalar\String_($dependency->getTarget())),
                     ])
                 ));
+                $addedDependencies[$dependency->getName()] = true;
             }
 
             [$output, $propStatements] = $transformer->transform($propertyMapping->getReadAccessor()->getExpression($sourceInput), $uniqueVariableScope);
