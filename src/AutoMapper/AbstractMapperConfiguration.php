@@ -34,7 +34,7 @@ abstract class AbstractMapperConfiguration implements MapperConfigurationInterfa
             return $this->className;
         }
 
-        return $this->className = sprintf('Mapper_%s', crc32($this->source . $this->target));
+        return $this->className = sprintf('Mapper_%s_%s', str_replace('\\', '_', $this->source), str_replace('\\', '_', $this->target));
     }
 
     public function createMapper(): Mapper

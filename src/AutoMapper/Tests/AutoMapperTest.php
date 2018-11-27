@@ -5,6 +5,8 @@ namespace Jane\AutoMapper\Tests;
 use Doctrine\Common\Annotations\AnnotationReader;
 use Jane\AutoMapper\AutoMapper;
 use Jane\AutoMapper\Compiler\Accessor\ReflectionAccessorExtractor;
+use Jane\AutoMapper\Compiler\Compiler;
+use Jane\AutoMapper\Compiler\EvalLoader;
 use Jane\AutoMapper\Compiler\FromSourcePropertiesMappingExtractor;
 use Jane\AutoMapper\Compiler\FromTargetPropertiesMappingExtractor;
 use Jane\AutoMapper\Compiler\SourceTargetPropertiesMappingExtractor;
@@ -50,15 +52,10 @@ class AutoMapperTest extends TestCase
 
     public function setUp()
     {
-        $this->autoMapper = new AutoMapper();
         $reflectionExtractor = new ReflectionExtractor();
         $reflectionExtractorPrivate = new PrivateReflectionExtractor();
         $phpDocExtractor = new PhpDocExtractor();
         $this->transformerFactory = new ChainTransformerFactory();
-        $this->transformerFactory->addTransformerFactory(new MultipleTransformerFactory($this->transformerFactory));
-        $this->transformerFactory->addTransformerFactory(new NullableTransformerFactory($this->transformerFactory));
-        $this->transformerFactory->addTransformerFactory(new BuiltinTransformerFactory());
-        $this->transformerFactory->addTransformerFactory(new ArrayTransformerFactory($this->transformerFactory));
 
         $this->sourceTargetMappingExtractor = new SourceTargetPropertiesMappingExtractor(new PropertyInfoExtractor(
             [$reflectionExtractor],
@@ -104,11 +101,17 @@ class AutoMapperTest extends TestCase
             new ClassMetadataFactory(new AnnotationLoader(new AnnotationReader()))
         );
 
-        $this->transformerFactory->addTransformerFactory(new ObjectTransformerFactory($this->autoMapper, new MapperConfigurationFactory(
+        $this->autoMapper = new AutoMapper(new EvalLoader(new Compiler()), new MapperConfigurationFactory(
             $this->sourceTargetMappingExtractor,
             $this->fromSourceMappingExtractor,
             $this->fromTargetMappingExtractor
-        )));
+        ));
+
+        $this->transformerFactory->addTransformerFactory(new MultipleTransformerFactory($this->transformerFactory));
+        $this->transformerFactory->addTransformerFactory(new NullableTransformerFactory($this->transformerFactory));
+        $this->transformerFactory->addTransformerFactory(new BuiltinTransformerFactory());
+        $this->transformerFactory->addTransformerFactory(new ArrayTransformerFactory($this->transformerFactory));
+        $this->transformerFactory->addTransformerFactory(new ObjectTransformerFactory($this->autoMapper));
     }
 
     public function testAutoMapping()
@@ -221,9 +224,7 @@ class AutoMapperTest extends TestCase
     public function testReverse()
     {
         $configurationUser = (new MapperConfiguration($this->fromSourceMappingExtractor, UserDTO::class, \stdClass::class))->getReverseConfiguration();
-        $configurationAddress = new MapperConfiguration($this->fromTargetMappingExtractor, \stdClass::class, AddressDTO::class);
         $this->autoMapper->register($configurationUser);
-        $this->autoMapper->register($configurationAddress);
 
         $user = new \stdClass();
         $user->id = 1;

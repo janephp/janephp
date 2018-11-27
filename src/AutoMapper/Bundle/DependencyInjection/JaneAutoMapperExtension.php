@@ -40,6 +40,15 @@ class JaneAutoMapperExtension extends Extension
                 ->addTag('property_info.access_extractor', ['priority' => -1500])
             ;
         }
+
+        if ($config['autoregister']) {
+            $container
+                ->getDefinition(AutoMapper::class)
+                ->setArgument(1, new Reference(MapperConfigurationFactory::class))
+            ;
+        }
+
+        $container->setParameter('automapper.cache_dir', $config['cache_dir']);
     }
 
     private function createMapperConfigurationDefinition(ContainerBuilder $container, $config)

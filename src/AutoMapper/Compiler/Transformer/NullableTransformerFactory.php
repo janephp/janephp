@@ -38,14 +38,20 @@ class NullableTransformerFactory implements TransformerFactoryInterface
             }
         }
 
-        // Remove nullable property here to avoid infinite loop
-        return new NullableTransformer($this->chainTransformerFactory->getTransformer([new Type(
+        $subTransformer = $this->chainTransformerFactory->getTransformer([new Type(
             $propertyType->getBuiltinType(),
             false,
             $propertyType->getClassName(),
             $propertyType->isCollection(),
             $propertyType->getCollectionKeyType(),
             $propertyType->getCollectionValueType()
-        )], $targetTypes), $isTargetNullable);
+        )], $targetTypes);
+
+        if ($subTransformer === null) {
+            return null;
+        }
+
+        // Remove nullable property here to avoid infinite loop
+        return new NullableTransformer($subTransformer, $isTargetNullable);
     }
 }

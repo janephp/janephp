@@ -3,6 +3,7 @@
 namespace Jane\AutoMapper;
 
 use Jane\AutoMapper\Compiler\Compiler;
+use Jane\AutoMapper\Compiler\MapperClassLoaderInterface;
 use Jane\AutoMapper\Exception\NoMappingFoundException;
 use PhpParser\PrettyPrinter\Standard;
 
@@ -12,11 +13,14 @@ abstract class AbstractAutoMapper implements AutoMapperInterface, AutoMapperRegi
 
     private $mapperRegistry = [];
 
-    private $compiler;
+    private $classLoader;
 
-    public function __construct(Compiler $compiler = null)
+    private $mapperConfigurationFactory;
+
+    public function __construct(MapperClassLoaderInterface $classLoader, MapperConfigurationFactory $mapperConfigurationFactory = null)
     {
-        $this->compiler = $compiler ?? new Compiler();
+        $this->classLoader = $classLoader;
+        $this->mapperConfigurationFactory = $mapperConfigurationFactory;
     }
 
     public function register(MapperConfigurationInterface $configuration): void
@@ -43,10 +47,7 @@ abstract class AbstractAutoMapper implements AutoMapperInterface, AutoMapperRegi
         }
 
         if (!class_exists($className)) {
-            $class = $this->compiler->compile($mappingConfiguration);
-            $printer = new Standard();
-
-            eval($printer->prettyPrint([$class]));
+            $this->classLoader->load($mappingConfiguration);
         }
 
         $this->mapperRegistry[$className] = $mappingConfiguration->createMapper($this);
@@ -90,7 +91,11 @@ abstract class AbstractAutoMapper implements AutoMapperInterface, AutoMapperRegi
     protected function getConfiguration(string $source, string $target): ?MapperConfigurationInterface
     {
         if (!array_key_exists($source, $this->configurations) || !array_key_exists($target, $this->configurations[$source])) {
-            return null;
+            if ($this->mapperConfigurationFactory === null) {
+                return null;
+            }
+
+            $this->register($this->mapperConfigurationFactory->create($source, $target));
         }
 
         return $this->configurations[$source][$target];
