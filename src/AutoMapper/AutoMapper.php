@@ -47,7 +47,7 @@ class AutoMapper extends AbstractAutoMapper
         $phpDocExtractor = new PhpDocExtractor();
         $propertyInfoExtractor = new PropertyInfoExtractor(
             [$reflectionExtractor],
-            [$reflectionExtractor, $phpDocExtractor],
+            [$phpDocExtractor, $reflectionExtractor],
             [$reflectionExtractor],
             [$reflectionExtractor]
         );
