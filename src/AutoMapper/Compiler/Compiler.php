@@ -117,22 +117,6 @@ class Compiler
             $statements[] = new Stmt\Expression(new Expr\Assign($result, new Expr\New_(new Name($mapperConfiguration->getTarget()))));
         }
 
-        if ($mapperConfiguration->getSource() !== 'array') {
-            $statements[] = new Stmt\Expression(new Expr\Assign(
-                $contextVariable,
-                new Expr\MethodCall($contextVariable, 'withReference', [
-                    new Arg($hashVariable),
-                    new Arg($result),
-                ])
-            ));
-        }
-
-        $statements[] = new Stmt\Expression(new Expr\Assign(
-            $contextVariable,
-            new Expr\MethodCall($contextVariable, 'withIncrementedDepth')
-        ));
-
-        /** @var PropertyMapping $propertyMapping */
         foreach ($propertiesMapping as $propertyMapping) {
             $transformer = $propertyMapping->getTransformer();
 
@@ -150,6 +134,28 @@ class Compiler
                 ));
                 $addedDependencies[$dependency->getName()] = true;
             }
+        }
+
+        if (\count($addedDependencies) > 0) {
+            if ($mapperConfiguration->getSource() !== 'array') {
+                $statements[] = new Stmt\Expression(new Expr\Assign(
+                    $contextVariable,
+                    new Expr\MethodCall($contextVariable, 'withReference', [
+                        new Arg($hashVariable),
+                        new Arg($result),
+                    ])
+                ));
+            }
+
+            $statements[] = new Stmt\Expression(new Expr\Assign(
+                $contextVariable,
+                new Expr\MethodCall($contextVariable, 'withIncrementedDepth')
+            ));
+        }
+
+        /** @var PropertyMapping $propertyMapping */
+        foreach ($propertiesMapping as $propertyMapping) {
+            $transformer = $propertyMapping->getTransformer();
 
             if (\in_array($propertyMapping->getProperty(), $inConstructor, true)) {
                 continue;
