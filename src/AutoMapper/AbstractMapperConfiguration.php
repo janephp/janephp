@@ -12,8 +12,6 @@ abstract class AbstractMapperConfiguration implements MapperConfigurationInterfa
 
     protected $className;
 
-    private $useDateTimeToString;
-
     private $isConstructorAllowed;
 
     private $dateTimeFormat;
@@ -23,8 +21,7 @@ abstract class AbstractMapperConfiguration implements MapperConfigurationInterfa
         $this->source = $source;
         $this->target = $target;
         $this->isConstructorAllowed = true;
-        $this->useDateTimeToString = false;
-        $this->dateTimeFormat = \DateTimeInterface::RFC3339;
+        $this->dateTimeFormat = \DateTime::RFC3339;
     }
 
     public function getSource(): string
