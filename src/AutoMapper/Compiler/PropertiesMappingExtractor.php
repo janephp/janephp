@@ -37,6 +37,32 @@ abstract class PropertiesMappingExtractor implements PropertiesMappingExtractorI
         return $this->accessorExtractor->getWriteMutator($target, $property);
     }
 
+    protected function getMaxDepth($class, $property): ?int
+    {
+        if ($class === 'array') {
+            return null;
+        }
+
+        if (null === $this->classMetadataFactory) {
+            return null;
+        }
+
+        if (!$this->classMetadataFactory->getMetadataFor($class)) {
+            return null;
+        }
+
+        $serializerClassMetadata = $this->classMetadataFactory->getMetadataFor($class);
+        $maxDepth = null;
+
+        foreach ($serializerClassMetadata->getAttributesMetadata() as $serializerAttributeMetadata) {
+            if ($serializerAttributeMetadata->getName() === $property) {
+                $maxDepth = $serializerAttributeMetadata->getMaxDepth();
+            }
+        }
+
+        return $maxDepth;
+    }
+
     protected function getGroups($class, $property): ?array
     {
         if ($class === 'array') {

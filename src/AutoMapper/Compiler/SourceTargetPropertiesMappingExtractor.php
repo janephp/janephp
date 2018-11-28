@@ -41,6 +41,18 @@ class SourceTargetPropertiesMappingExtractor extends PropertiesMappingExtractor
                 $sourceAccessor = $this->accessorExtractor->getReadAccessor($source, $property);
                 $targetMutator = $this->accessorExtractor->getWriteMutator($target, $property, false);
 
+                $maxDepthSource = $this->getMaxDepth($source, $property);
+                $maxDepthTarget = $this->getMaxDepth($target, $property);
+                $maxDepth = null;
+
+                if ($maxDepthSource !== null && $maxDepthTarget !== null) {
+                    $maxDepth = min($maxDepthSource, $maxDepthTarget);
+                } elseif ($maxDepthSource !== null) {
+                    $maxDepth = $maxDepthSource;
+                } elseif ($maxDepthTarget !== null) {
+                    $maxDepth = $maxDepthTarget;
+                }
+
                 $mapping[] = new PropertyMapping(
                     $sourceAccessor,
                     $targetMutator,
@@ -48,7 +60,8 @@ class SourceTargetPropertiesMappingExtractor extends PropertiesMappingExtractor
                     $property,
                     false,
                     $this->getGroups($source, $property),
-                    $this->getGroups($target, $property)
+                    $this->getGroups($target, $property),
+                    $maxDepth
                 );
             }
         }

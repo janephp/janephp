@@ -22,8 +22,18 @@ class PropertyMapping
 
     private $targetGroups;
 
-    public function __construct(ReadAccessor $readAccessor, WriteMutator $writeMutator, TransformerInterface $transformer, string $property, bool $checkExists = false, array $sourceGroups = null, array $targetGroups = null)
-    {
+    private $maxDepth;
+
+    public function __construct(
+        ReadAccessor $readAccessor,
+        WriteMutator $writeMutator,
+        TransformerInterface $transformer,
+        string $property,
+        bool $checkExists = false,
+        array $sourceGroups = null,
+        array $targetGroups = null,
+        ?int $maxDepth = null
+    ) {
         $this->readAccessor = $readAccessor;
         $this->writeMutator = $writeMutator;
         $this->transformer = $transformer;
@@ -31,6 +41,7 @@ class PropertyMapping
         $this->checkExists = $checkExists;
         $this->sourceGroups = $sourceGroups;
         $this->targetGroups = $targetGroups;
+        $this->maxDepth = $maxDepth;
     }
 
     public function getReadAccessor(): ReadAccessor
@@ -66,5 +77,10 @@ class PropertyMapping
     public function getTargetGroups(): ?array
     {
         return $this->targetGroups;
+    }
+
+    public function getMaxDepth(): ?int
+    {
+        return $this->maxDepth;
     }
 }

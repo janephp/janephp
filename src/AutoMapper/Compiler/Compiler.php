@@ -52,12 +52,13 @@ class Compiler
             ]),
                 new Scalar\String_($mapperConfiguration->getTarget())
             )));
-            $statements[] = new Stmt\If_(new Expr\FuncCall(new Name('array_key_exists'), [
+            $statements[] = new Stmt\If_(new Expr\MethodCall($contextVariable, new Name('hasReference'), [
                 new Arg($hashVariable),
-                new Arg(new Expr\MethodCall($contextVariable, 'getRegistry')),
             ]), [
                 'stmts' => [
-                    new Stmt\Return_(new Expr\ArrayDimFetch(new Expr\MethodCall($contextVariable, 'getRegistry'), $hashVariable)),
+                    new Stmt\Return_(new Expr\MethodCall($contextVariable, 'getReference', [
+                        new Arg($hashVariable),
+                    ])),
                 ],
             ]);
         }
@@ -117,11 +118,19 @@ class Compiler
         }
 
         if ($mapperConfiguration->getSource() !== 'array') {
-            $statements[] = new Stmt\Expression(new Expr\AssignRef(
-                new Expr\ArrayDimFetch(new Expr\MethodCall($contextVariable, 'getRegistry'), $hashVariable),
-                $result
+            $statements[] = new Stmt\Expression(new Expr\Assign(
+                $contextVariable,
+                new Expr\MethodCall($contextVariable, 'withReference', [
+                    new Arg($hashVariable),
+                    new Arg($result),
+                ])
             ));
         }
+
+        $statements[] = new Stmt\Expression(new Expr\Assign(
+            $contextVariable,
+            new Expr\MethodCall($contextVariable, 'withIncrementedDepth')
+        ));
 
         /** @var PropertyMapping $propertyMapping */
         foreach ($propertiesMapping as $propertyMapping) {
@@ -216,6 +225,13 @@ class Compiler
                             return new Expr\ArrayItem(new Scalar\String_($group));
                         }, $propertyMapping->getTargetGroups()))),
                     ])
+                );
+            }
+
+            if (null !== $propertyMapping->getMaxDepth()) {
+                $conditions[] = new Expr\BinaryOp\SmallerOrEqual(
+                    new Expr\MethodCall($contextVariable, 'getDepth'),
+                    new Scalar\LNumber($propertyMapping->getMaxDepth())
                 );
             }
 

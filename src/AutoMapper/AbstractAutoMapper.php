@@ -86,7 +86,7 @@ abstract class AbstractAutoMapper implements AutoMapperInterface, AutoMapperRegi
         return $this->getMapper($source, $target)->map($value, $context);
     }
 
-    protected function getConfiguration(string $source, string $target): ?MapperConfigurationInterface
+    public function getConfiguration(string $source, string $target): ?MapperConfigurationInterface
     {
         if (!array_key_exists($source, $this->configurations) || !array_key_exists($target, $this->configurations[$source])) {
             if ($this->mapperConfigurationFactory === null) {

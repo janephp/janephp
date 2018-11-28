@@ -11,19 +11,15 @@ Generate automapper class which allows to automap values from Class to Class.
  * Use symfony/property-info for mapping (allow extracting properties from reflection / phpdoc / serializer / doctrine / ...)
  * Array/stdClass Mapper (a.k.a. Normalizers)
  * Type casting
- * Reverse mapping
  * Symfony/Serializer Bridge
  * Groups support
  * Circular Reference
  * Private Properties mapping
  * Use or disable constructor when creating the target object
  * Custom Value Transformer
-
-## Planned
-
  * MaxDepth
- * Flatten
- * Unflatten
+ * Cache generated code and regenerate on file change (check can be deactivated for even faster code)
+ * AutoRegister (will create mapping even if not registered)
 
 ## Why ?
 

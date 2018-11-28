@@ -61,7 +61,8 @@ class FromTargetPropertiesMappingExtractor extends PropertiesMappingExtractor
                 $property,
                 true,
                 $this->getGroups($source, $property),
-                $this->getGroups($target, $property)
+                $this->getGroups($target, $property),
+                $this->getMaxDepth($target, $property)
             );
         }
 

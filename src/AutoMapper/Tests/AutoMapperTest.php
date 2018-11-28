@@ -2,134 +2,43 @@
 
 namespace Jane\AutoMapper\Tests;
 
-use Doctrine\Common\Annotations\AnnotationReader;
 use Jane\AutoMapper\AutoMapper;
-use Jane\AutoMapper\Compiler\Accessor\ReflectionAccessorExtractor;
 use Jane\AutoMapper\Compiler\Compiler;
 use Jane\AutoMapper\Compiler\FileLoader;
-use Jane\AutoMapper\Compiler\FromSourcePropertiesMappingExtractor;
-use Jane\AutoMapper\Compiler\FromTargetPropertiesMappingExtractor;
-use Jane\AutoMapper\Compiler\SourceTargetPropertiesMappingExtractor;
-use Jane\AutoMapper\Compiler\Transformer\ArrayTransformerFactory;
-use Jane\AutoMapper\Compiler\Transformer\BuiltinTransformerFactory;
-use Jane\AutoMapper\Compiler\Transformer\ChainTransformerFactory;
-use Jane\AutoMapper\Compiler\Transformer\DateTimeTransformerFactory;
-use Jane\AutoMapper\Compiler\Transformer\MultipleTransformerFactory;
-use Jane\AutoMapper\Compiler\Transformer\NullableTransformerFactory;
-use Jane\AutoMapper\Compiler\Transformer\ObjectTransformerFactory;
-use Jane\AutoMapper\Compiler\Transformer\UniqueTypeTransformerFactory;
 use Jane\AutoMapper\Context;
-use Jane\AutoMapper\Extractor\PrivateReflectionExtractor;
-use Jane\AutoMapper\MapperConfiguration;
-use Jane\AutoMapper\MapperConfigurationFactory;
 use Jane\AutoMapper\Tests\Domain\Address;
 use Jane\AutoMapper\Tests\Domain\AddressDTO;
 use Jane\AutoMapper\Tests\Domain\Foo;
+use Jane\AutoMapper\Tests\Domain\FooMaxDepth;
 use Jane\AutoMapper\Tests\Domain\Node;
 use Jane\AutoMapper\Tests\Domain\PrivateUser;
 use Jane\AutoMapper\Tests\Domain\PrivateUserDTO;
 use Jane\AutoMapper\Tests\Domain\User;
 use Jane\AutoMapper\Tests\Domain\UserConstructorDTO;
 use Jane\AutoMapper\Tests\Domain\UserDTO;
-use Jane\AutoMapper\Tests\Domain\UserDTOAddressString;
 use Jane\AutoMapper\Tests\Domain\UserDTONoAge;
 use Jane\AutoMapper\Tests\Domain\UserDTONoName;
-use Jane\AutoMapper\Tests\Transformer\AddressToStringTransformerFactory;
 use PHPUnit\Framework\TestCase;
-use Symfony\Component\PropertyInfo\Extractor\PhpDocExtractor;
-use Symfony\Component\PropertyInfo\Extractor\ReflectionExtractor;
-use Symfony\Component\PropertyInfo\PropertyInfoExtractor;
-use Symfony\Component\Serializer\Mapping\Factory\ClassMetadataFactory;
-use Symfony\Component\Serializer\Mapping\Loader\AnnotationLoader;
 
 class AutoMapperTest extends TestCase
 {
-    private $sourceTargetMappingExtractor;
-    private $sourceTargetPrivateMappingExtractor;
-    private $fromTargetMappingExtractor;
-    private $fromSourceMappingExtractor;
-    /** @var ChainTransformerFactory */
-    private $transformerFactory;
+    /** @var AutoMapper */
     private $autoMapper;
 
     public function setUp()
     {
         @unlink(__DIR__ . '/cache/registry.php');
+        $loader = new FileLoader(new Compiler(), __DIR__ . '/cache');
 
-        $reflectionExtractor = new ReflectionExtractor();
-        $reflectionExtractorPrivate = new PrivateReflectionExtractor();
-        $phpDocExtractor = new PhpDocExtractor();
-        $this->transformerFactory = new ChainTransformerFactory();
-
-        $this->sourceTargetMappingExtractor = new SourceTargetPropertiesMappingExtractor(new PropertyInfoExtractor(
-            [$reflectionExtractor],
-            [$reflectionExtractor, $phpDocExtractor],
-            [$reflectionExtractor],
-            [$reflectionExtractor]
-        ),
-            new ReflectionAccessorExtractor(),
-            $this->transformerFactory,
-            new ClassMetadataFactory(new AnnotationLoader(new AnnotationReader()))
-        );
-
-        $this->fromTargetMappingExtractor = new FromTargetPropertiesMappingExtractor(new PropertyInfoExtractor(
-            [$reflectionExtractor],
-            [$reflectionExtractor, $phpDocExtractor],
-            [$reflectionExtractor],
-            [$reflectionExtractor]
-        ),
-            new ReflectionAccessorExtractor(),
-            $this->transformerFactory,
-            new ClassMetadataFactory(new AnnotationLoader(new AnnotationReader()))
-        );
-
-        $this->fromSourceMappingExtractor = new FromSourcePropertiesMappingExtractor(new PropertyInfoExtractor(
-            [$reflectionExtractor],
-            [$reflectionExtractor, $phpDocExtractor],
-            [$reflectionExtractor],
-            [$reflectionExtractor]
-        ),
-            new ReflectionAccessorExtractor(),
-            $this->transformerFactory,
-            new ClassMetadataFactory(new AnnotationLoader(new AnnotationReader()))
-        );
-
-        $this->sourceTargetPrivateMappingExtractor = new SourceTargetPropertiesMappingExtractor(new PropertyInfoExtractor(
-            [$reflectionExtractorPrivate],
-            [$reflectionExtractorPrivate, $phpDocExtractor],
-            [$reflectionExtractorPrivate],
-            [$reflectionExtractorPrivate]
-        ),
-            new ReflectionAccessorExtractor(true),
-            $this->transformerFactory,
-            new ClassMetadataFactory(new AnnotationLoader(new AnnotationReader()))
-        );
-
-        $this->autoMapper = new AutoMapper(new FileLoader(new Compiler(), __DIR__ . '/cache'), new MapperConfigurationFactory(
-            $this->sourceTargetMappingExtractor,
-            $this->fromSourceMappingExtractor,
-            $this->fromTargetMappingExtractor
-        ));
-
-        $this->transformerFactory->addTransformerFactory(new MultipleTransformerFactory($this->transformerFactory));
-        $this->transformerFactory->addTransformerFactory(new NullableTransformerFactory($this->transformerFactory));
-        $this->transformerFactory->addTransformerFactory(new UniqueTypeTransformerFactory($this->transformerFactory));
-        $this->transformerFactory->addTransformerFactory(new DateTimeTransformerFactory());
-        $this->transformerFactory->addTransformerFactory(new BuiltinTransformerFactory());
-        $this->transformerFactory->addTransformerFactory(new ArrayTransformerFactory($this->transformerFactory));
-        $this->transformerFactory->addTransformerFactory(new ObjectTransformerFactory($this->autoMapper));
+        $this->autoMapper = AutoMapper::create(true, $loader);
     }
 
     public function testAutoMapping()
     {
-        $configurationUser = new MapperConfiguration($this->sourceTargetMappingExtractor, User::class, UserDTO::class);
-        $configurationAddress = new MapperConfiguration($this->sourceTargetMappingExtractor, Address::class, AddressDTO::class);
+        $configurationUser = $this->autoMapper->getConfiguration(User::class, UserDTO::class);
         $configurationUser->forMember('yearOfBirth', function (User $user) {
             return ((int) date('Y')) - ((int) $user->age);
         });
-
-        $this->autoMapper->register($configurationUser);
-        $this->autoMapper->register($configurationAddress);
 
         $address = new Address();
         $address->setCity('Toulon');
@@ -145,7 +54,6 @@ class AutoMapperTest extends TestCase
         self::assertSame('yolo', $userDto->name);
         self::assertSame(13, $userDto->age);
         self::assertSame(((int) date('Y')) - 13, $userDto->yearOfBirth);
-        self::assertNull($userDto->email);
         self::assertCount(1, $userDto->addresses);
         self::assertInstanceOf(AddressDTO::class, $userDto->address);
         self::assertInstanceOf(AddressDTO::class, $userDto->addresses[0]);
@@ -155,11 +63,6 @@ class AutoMapperTest extends TestCase
 
     public function testAutoMapperFromArray()
     {
-        $configurationUser = new MapperConfiguration($this->fromTargetMappingExtractor, 'array', UserDTO::class);
-        $configurationAddress = new MapperConfiguration($this->fromTargetMappingExtractor, 'array', AddressDTO::class);
-        $this->autoMapper->register($configurationUser);
-        $this->autoMapper->register($configurationAddress);
-
         $user = [
             'id' => 1,
             'address' => [
@@ -181,11 +84,6 @@ class AutoMapperTest extends TestCase
 
     public function testAutoMapperToArray()
     {
-        $configurationUser = new MapperConfiguration($this->fromSourceMappingExtractor, User::class, 'array');
-        $configurationAddress = new MapperConfiguration($this->fromSourceMappingExtractor, Address::class, 'array');
-        $this->autoMapper->register($configurationUser);
-        $this->autoMapper->register($configurationAddress);
-
         $address = new Address();
         $address->setCity('Toulon');
         $user = new User(1, 'yolo', '13');
@@ -202,11 +100,6 @@ class AutoMapperTest extends TestCase
 
     public function testAutoMapperFromStdObject()
     {
-        $configurationUser = new MapperConfiguration($this->fromTargetMappingExtractor, \stdClass::class, UserDTO::class);
-        $configurationAddress = new MapperConfiguration($this->fromTargetMappingExtractor, \stdClass::class, AddressDTO::class);
-        $this->autoMapper->register($configurationUser);
-        $this->autoMapper->register($configurationAddress);
-
         $user = new \stdClass();
         $user->id = 1;
 
@@ -219,9 +112,6 @@ class AutoMapperTest extends TestCase
 
     public function testAutoMapperToStdObject()
     {
-        $configurationUser = new MapperConfiguration($this->fromSourceMappingExtractor, UserDTO::class, \stdClass::class);
-        $this->autoMapper->register($configurationUser);
-
         $userDto = new UserDTO();
         $userDto->id = 1;
 
@@ -231,26 +121,8 @@ class AutoMapperTest extends TestCase
         self::assertEquals(1, $user->id);
     }
 
-    public function testReverse()
-    {
-        $configurationUser = (new MapperConfiguration($this->fromSourceMappingExtractor, UserDTO::class, \stdClass::class))->getReverseConfiguration();
-        $this->autoMapper->register($configurationUser);
-
-        $user = new \stdClass();
-        $user->id = 1;
-
-        /** @var UserDTO $userDto */
-        $userDto = $this->autoMapper->map($user, UserDTO::class);
-
-        self::assertInstanceOf(UserDTO::class, $userDto);
-        self::assertEquals(1, $userDto->id);
-    }
-
     public function testGroups()
     {
-        $configurationUser = new MapperConfiguration($this->fromSourceMappingExtractor, Foo::class, 'array');
-        $this->autoMapper->register($configurationUser);
-
         $foo = new Foo();
         $foo->setId(10);
 
@@ -272,9 +144,6 @@ class AutoMapperTest extends TestCase
 
     public function testDeepCloning()
     {
-        $configuration = new MapperConfiguration($this->sourceTargetMappingExtractor, Node::class, Node::class);
-        $this->autoMapper->register($configuration);
-
         $nodeA = new Node();
         $nodeB = new Node();
         $nodeB->parent = $nodeA;
@@ -296,9 +165,6 @@ class AutoMapperTest extends TestCase
 
     public function testPrivate()
     {
-        $configuration = new MapperConfiguration($this->sourceTargetPrivateMappingExtractor, PrivateUser::class, PrivateUserDTO::class);
-        $this->autoMapper->register($configuration);
-
         $user = new PrivateUser(10, 'foo', 'bar');
         /** @var PrivateUserDTO $userDto */
         $userDto = $this->autoMapper->map($user, PrivateUserDTO::class);
@@ -311,9 +177,6 @@ class AutoMapperTest extends TestCase
 
     public function testConstructor()
     {
-        $configuration = new MapperConfiguration($this->sourceTargetPrivateMappingExtractor, UserDTO::class, UserConstructorDTO::class);
-        $this->autoMapper->register($configuration);
-
         $user = new UserDTO();
         $user->id = 10;
         $user->name = 'foo';
@@ -329,9 +192,6 @@ class AutoMapperTest extends TestCase
 
     public function testConstructorWithDefault()
     {
-        $configuration = new MapperConfiguration($this->sourceTargetPrivateMappingExtractor, UserDTONoAge::class, UserConstructorDTO::class);
-        $this->autoMapper->register($configuration);
-
         $user = new UserDTONoAge();
         $user->id = 10;
         $user->name = 'foo';
@@ -346,9 +206,6 @@ class AutoMapperTest extends TestCase
 
     public function testConstructorDisable()
     {
-        $configuration = new MapperConfiguration($this->sourceTargetPrivateMappingExtractor, UserDTONoName::class, UserConstructorDTO::class);
-        $this->autoMapper->register($configuration);
-
         $user = new UserDTONoName();
         $user->id = 10;
         /** @var UserConstructorDTO $userDto */
@@ -360,21 +217,13 @@ class AutoMapperTest extends TestCase
         self::assertNull($userDto->getAge());
     }
 
-    public function testCustomValueTransformer()
+    public function testMaxDepth()
     {
-        $this->transformerFactory->addTransformerFactory(new AddressToStringTransformerFactory());
+        $foo = new FooMaxDepth(0, new FooMaxDepth(1, new FooMaxDepth(2, new FooMaxDepth(3, new FooMaxDepth(4)))));
+        $fooArray = $this->autoMapper->map($foo, 'array');
 
-        $configuration = new MapperConfiguration($this->sourceTargetPrivateMappingExtractor, User::class, UserDTOAddressString::class);
-        $this->autoMapper->register($configuration);
-
-        $user = new User(10, 'test', 13);
-        $user->address = new Address();
-        $user->address->setCity('Paris');
-
-        /** @var UserDTOAddressString $userDto */
-        $userDto = $this->autoMapper->map($user, UserDTOAddressString::class);
-
-        self::assertInstanceOf(UserDTOAddressString::class, $userDto);
-        self::assertSame('Paris', $userDto->address);
+        self::assertNotNull($fooArray['child']);
+        self::assertNotNull($fooArray['child']['child']);
+        self::assertFalse(isset($fooArray['child']['child']['child']));
     }
 }
