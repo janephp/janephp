@@ -50,7 +50,9 @@ class Context
         }
 
         if (null !== $callback) {
-            return $callback($object, $this);
+            $value = $callback($object, $this);
+
+            return $value;
         }
 
         if (null === $circularReferenceLimit) {
@@ -87,14 +89,14 @@ class Context
         return $this->object;
     }
 
-    public function getCircularReferenceLimit(): ?int
-    {
-        return $this->circularReferenceLimit;
-    }
-
     public function setCircularReferenceLimit(?int $circularReferenceLimit): void
     {
         $this->circularReferenceLimit = $circularReferenceLimit;
+    }
+
+    public function setCircularReferenceHandler(?callable $circularReferenceHandler): void
+    {
+        $this->circularReferenceHandler = $circularReferenceHandler;
     }
 
     public function withReference($reference, &$object): self

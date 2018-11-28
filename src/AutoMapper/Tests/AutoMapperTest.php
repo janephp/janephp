@@ -304,4 +304,34 @@ class AutoMapperTest extends TestCase
 
         $mapper->map($nodeA, new Context());
     }
+
+    public function testCircularReferenceHandlerOnContext()
+    {
+        $nodeA = new Node();
+        $nodeA->parent = $nodeA;
+
+        $context = new Context();
+        $context->setCircularReferenceHandler(function () {
+            return 'foo';
+        });
+
+        $nodeArray = $this->autoMapper->map($nodeA, 'array', $context);
+
+        self::assertSame('foo', $nodeArray['parent']);
+    }
+
+    public function testCircularReferenceHandlerOnMapper()
+    {
+        $nodeA = new Node();
+        $nodeA->parent = $nodeA;
+
+        $mapper = $this->autoMapper->getMapper(Node::class, 'array');
+        $mapper->setCircularReferenceHandler(function () {
+            return 'foo';
+        });
+
+        $nodeArray = $mapper->map($nodeA, new Context());
+
+        self::assertSame('foo', $nodeArray['parent']);
+    }
 }
