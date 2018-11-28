@@ -6,6 +6,7 @@ use Jane\AutoMapper\AutoMapper;
 use Jane\AutoMapper\Compiler\Compiler;
 use Jane\AutoMapper\Compiler\FileLoader;
 use Jane\AutoMapper\Context;
+use Jane\AutoMapper\Exception\CircularReferenceException;
 use Jane\AutoMapper\Tests\Domain\Address;
 use Jane\AutoMapper\Tests\Domain\AddressDTO;
 use Jane\AutoMapper\Tests\Domain\Foo;
@@ -163,6 +164,40 @@ class AutoMapperTest extends TestCase
         self::assertSame($newNode, $newNode->parent->parent->parent);
     }
 
+    public function testDeepCloningArray()
+    {
+        $nodeA = new Node();
+        $nodeB = new Node();
+        $nodeB->parent = $nodeA;
+        $nodeC = new Node();
+        $nodeC->parent = $nodeB;
+        $nodeA->parent = $nodeC;
+
+        $newNode = $this->autoMapper->map($nodeA, 'array');
+
+        self::assertInternalType('array', $newNode);
+        self::assertInternalType('array', $newNode['parent']);
+        self::assertInternalType('array', $newNode['parent']['parent']);
+        self::assertInternalType('array', $newNode['parent']['parent']['parent']);
+        self::assertSame($newNode, $newNode['parent']['parent']['parent']);
+    }
+
+    public function testCircularReferenceArray()
+    {
+        $nodeA = new Node();
+        $nodeB = new Node();
+
+        $nodeA->childs[] = $nodeB;
+        $nodeB->childs[] = $nodeA;
+
+        $newNode = $this->autoMapper->map($nodeA, 'array');
+
+        self::assertInternalType('array', $newNode);
+        self::assertInternalType('array', $newNode['childs'][0]);
+        self::assertInternalType('array', $newNode['childs'][0]['childs'][0]);
+        self::assertSame($newNode, $newNode['childs'][0]['childs'][0]);
+    }
+
     public function testPrivate()
     {
         $user = new PrivateUser(10, 'foo', 'bar');
@@ -242,5 +277,31 @@ class AutoMapperTest extends TestCase
         $userDto = $this->autoMapper->map($user, UserDTO::class, $context);
 
         self::assertSame($userDtoToPopulate, $userDto);
+    }
+
+    public function testCircularReferenceLimitOnContext()
+    {
+        $nodeA = new Node();
+        $nodeA->parent = $nodeA;
+
+        $context = new Context();
+        $context->setCircularReferenceLimit(1);
+
+        $this->expectException(CircularReferenceException::class);
+
+        $this->autoMapper->map($nodeA, 'array', $context);
+    }
+
+    public function testCircularReferenceLimitOnMapper()
+    {
+        $nodeA = new Node();
+        $nodeA->parent = $nodeA;
+
+        $mapper = $this->autoMapper->getMapper(Node::class, 'array');
+        $mapper->setCircularReferenceLimit(1);
+
+        $this->expectException(CircularReferenceException::class);
+
+        $mapper->map($nodeA, new Context());
     }
 }

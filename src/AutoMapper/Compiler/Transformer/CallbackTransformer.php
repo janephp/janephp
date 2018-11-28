@@ -33,4 +33,9 @@ class CallbackTransformer implements TransformerInterface
     {
         return [];
     }
+
+    public function assignByRef(): bool
+    {
+        return false;
+    }
 }

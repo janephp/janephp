@@ -16,6 +16,10 @@ abstract class AbstractMapperConfiguration implements MapperConfigurationInterfa
 
     private $dateTimeFormat;
 
+    protected $circularReferenceHandler;
+
+    protected $circularReferenceLimit;
+
     public function __construct(string $source, string $target)
     {
         $this->source = $source;
@@ -47,7 +51,12 @@ abstract class AbstractMapperConfiguration implements MapperConfigurationInterfa
     {
         $className = $this->getMapperClassName();
 
-        return new $className();
+        /** @var Mapper $mapper */
+        $mapper = new $className();
+        $mapper->setCircularReferenceHandler($this->circularReferenceHandler);
+        $mapper->setCircularReferenceLimit($this->circularReferenceLimit);
+
+        return $mapper;
     }
 
     public function getModificationHash(): string
@@ -85,5 +94,15 @@ abstract class AbstractMapperConfiguration implements MapperConfigurationInterfa
     public function setDateTimeFormat(string $dateTimeFormat): void
     {
         $this->dateTimeFormat = $dateTimeFormat;
+    }
+
+    public function setCircularReferenceHandler(?callable $circularReferenceHandler): void
+    {
+        $this->circularReferenceHandler = $circularReferenceHandler;
+    }
+
+    public function setCircularReferenceLimit(?int $circularReferenceLimit): void
+    {
+        $this->circularReferenceLimit = $circularReferenceLimit;
     }
 }

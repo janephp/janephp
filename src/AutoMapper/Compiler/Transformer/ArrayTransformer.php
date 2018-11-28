@@ -27,15 +27,22 @@ class ArrayTransformer implements TransformerInterface
 
         [$output, $itemStatements] = $this->itemTransformer->transform($loopValueVar, $uniqueVariableScope);
 
-        $loopStatements = array_merge($itemStatements, [
-            new Stmt\Expression(new Expr\Assign(new Expr\ArrayDimFetch($valuesVar), $output)),
-        ]);
+        if ($this->itemTransformer->assignByRef()) {
+            $itemStatements[] = new Stmt\Expression(new Expr\AssignRef(new Expr\ArrayDimFetch($valuesVar), $output));
+        } else {
+            $itemStatements[] = new Stmt\Expression(new Expr\Assign(new Expr\ArrayDimFetch($valuesVar), $output));
+        }
 
         $statements[] = new Stmt\Foreach_($input, $loopValueVar, [
-            'stmts' => $loopStatements,
+            'stmts' => $itemStatements,
         ]);
 
         return [$valuesVar, $statements];
+    }
+
+    public function assignByRef(): bool
+    {
+        return false;
     }
 
     public function getDependencies()

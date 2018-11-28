@@ -27,4 +27,9 @@ class DateTimeToStringTansformer implements TransformerInterface
     {
         return [];
     }
+
+    public function assignByRef(): bool
+    {
+        return false;
+    }
 }

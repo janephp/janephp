@@ -16,6 +16,10 @@ abstract class Mapper
 
     protected $hash;
 
+    protected $circularReferenceHandler;
+
+    protected $circularReferenceLimit;
+
     public function getModificationHash(): ?string
     {
         return $this->hash;
@@ -26,7 +30,17 @@ abstract class Mapper
         $this->callbacks[$name] = $callback;
     }
 
-    abstract public function map($value, Context $context);
+    abstract public function &map($value, Context $context);
 
     abstract public function injectMappers(AutoMapperInterface $autoMapper);
+
+    public function setCircularReferenceHandler(?callable $circularReferenceHandler): void
+    {
+        $this->circularReferenceHandler = $circularReferenceHandler;
+    }
+
+    public function setCircularReferenceLimit(?int $circularReferenceLimit): void
+    {
+        $this->circularReferenceLimit = $circularReferenceLimit;
+    }
 }

@@ -32,7 +32,7 @@ class WriteMutator
         $this->parameter = $parameter;
     }
 
-    public function getExpression(Expr\Variable $output, Expr $value): ?Expr
+    public function getExpression(Expr\Variable $output, Expr $value, bool $byRef = false): ?Expr
     {
         if ($this->type === self::TYPE_METHOD) {
             return new Expr\MethodCall($output, $this->name, [
@@ -51,10 +51,18 @@ class WriteMutator
                 );
             }
 
+            if ($byRef) {
+                return new Expr\AssignRef(new Expr\PropertyFetch($output, $this->name), $value);
+            }
+
             return new Expr\Assign(new Expr\PropertyFetch($output, $this->name), $value);
         }
 
         if ($this->type === self::TYPE_ARRAY_DIMENSION) {
+            if ($byRef) {
+                return new Expr\AssignRef(new Expr\ArrayDimFetch($output, new Scalar\String_($this->name)), $value);
+            }
+
             return new Expr\Assign(new Expr\ArrayDimFetch($output, new Scalar\String_($this->name)), $value);
         }
 

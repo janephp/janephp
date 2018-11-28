@@ -17,4 +17,6 @@ interface TransformerInterface
      * @return MapperDependency[]
      */
     public function getDependencies();
+
+    public function assignByRef(): bool;
 }

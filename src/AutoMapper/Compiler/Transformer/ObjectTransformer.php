@@ -61,6 +61,11 @@ class ObjectTransformer implements TransformerInterface
         return $targetTypeName;
     }
 
+    public function assignByRef(): bool
+    {
+        return true;
+    }
+
     public function getDependencies()
     {
         return [new MapperDependency($this->getDependencyName(), $this->getSource(), $this->getTarget())];

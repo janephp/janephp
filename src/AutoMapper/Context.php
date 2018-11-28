@@ -2,9 +2,13 @@
 
 namespace Jane\AutoMapper;
 
+use Jane\AutoMapper\Exception\CircularReferenceException;
+
 class Context
 {
-    private $registry = [];
+    private $referenceRegistry = [];
+
+    private $countReferenceRegistry = [];
 
     private $groups;
 
@@ -12,20 +16,55 @@ class Context
 
     private $object;
 
+    private $circularReferenceLimit;
+
+    private $circularReferenceHandler;
+
     public function __construct(array $groups = null)
     {
         $this->groups = $groups;
         $this->depth = 0;
     }
 
-    public function hasReference($reference): bool
+    public function shouldHandleCircularReference($reference, ?int $circularReferenceLimit = null): bool
     {
-        return isset($this->registry[$reference]);
+        if (!isset($this->referenceRegistry[$reference])) {
+            return false;
+        }
+
+        if (null === $circularReferenceLimit) {
+            $circularReferenceLimit = $this->circularReferenceLimit;
+        }
+
+        if (null !== $circularReferenceLimit) {
+            return $this->countReferenceRegistry[$reference] >= $circularReferenceLimit;
+        }
+
+        return true;
     }
 
-    public function getReference($reference)
+    public function &handleCircularReference(string $reference, $object, ?int $circularReferenceLimit = null, callable $callback = null)
     {
-        return $this->registry[$reference];
+        if (null === $callback) {
+            $callback = $this->circularReferenceHandler;
+        }
+
+        if (null !== $callback) {
+            return $callback($object, $this);
+        }
+
+        if (null === $circularReferenceLimit) {
+            $circularReferenceLimit = $this->circularReferenceLimit;
+        }
+
+        if (null !== $circularReferenceLimit && $this->countReferenceRegistry[$reference] >= $circularReferenceLimit) {
+            throw new CircularReferenceException(sprintf('A circular reference has been detected when mapping the object of type "%s" (configured limit: %d)', \is_object($object) ? \get_class($object) : 'array', $circularReferenceLimit));
+        }
+
+        // When no limit defined return the object referenced
+        ++$this->countReferenceRegistry[$reference];
+
+        return $this->referenceRegistry[$reference];
     }
 
     public function getGroups(): ?array
@@ -48,10 +87,22 @@ class Context
         return $this->object;
     }
 
+    public function getCircularReferenceLimit(): ?int
+    {
+        return $this->circularReferenceLimit;
+    }
+
+    public function setCircularReferenceLimit(?int $circularReferenceLimit): void
+    {
+        $this->circularReferenceLimit = $circularReferenceLimit;
+    }
+
     public function withReference($reference, &$object): self
     {
         $new = clone $this;
-        $new->registry[$reference] = &$object;
+
+        $new->referenceRegistry[$reference] = &$object;
+        $new->countReferenceRegistry[$reference] = 1;
 
         return $new;
     }

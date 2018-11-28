@@ -28,6 +28,11 @@ class StringToDateTimeTransformer implements TransformerInterface
         ]), []];
     }
 
+    public function assignByRef(): bool
+    {
+        return false;
+    }
+
     public function getDependencies()
     {
         return [];

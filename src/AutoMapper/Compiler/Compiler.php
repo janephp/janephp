@@ -43,7 +43,7 @@ class Compiler
 
         $statements = [
             new Stmt\If_(new Expr\BinaryOp\Identical(new Expr\ConstFetch(new Name('null')), $sourceInput), [
-                'stmts' => [new Stmt\Return_(new Expr\ConstFetch(new Name('null')))],
+                'stmts' => [new Stmt\Return_($sourceInput)],
             ]),
         ];
 
@@ -53,12 +53,16 @@ class Compiler
             ]),
                 new Scalar\String_($mapperConfiguration->getTarget())
             )));
-            $statements[] = new Stmt\If_(new Expr\MethodCall($contextVariable, new Name('hasReference'), [
+            $statements[] = new Stmt\If_(new Expr\MethodCall($contextVariable, new Name('shouldHandleCircularReference'), [
                 new Arg($hashVariable),
+                new Arg(new Expr\PropertyFetch(new Expr\Variable('this'), 'circularReferenceLimit')),
             ]), [
                 'stmts' => [
-                    new Stmt\Return_(new Expr\MethodCall($contextVariable, 'getReference', [
+                    new Stmt\Return_(new Expr\MethodCall($contextVariable, 'handleCircularReference', [
                         new Arg($hashVariable),
+                        new Arg($sourceInput),
+                        new Arg(new Expr\PropertyFetch(new Expr\Variable('this'), 'circularReferenceLimit')),
+                        new Arg(new Expr\PropertyFetch(new Expr\Variable('this'), 'circularReferenceHandler')),
                     ])),
                 ],
             ]);
@@ -168,7 +172,7 @@ class Compiler
             }
 
             [$output, $propStatements] = $transformer->transform($propertyMapping->getReadAccessor()->getExpression($sourceInput), $uniqueVariableScope);
-            $writeExpression = $propertyMapping->getWriteMutator()->getExpression($result, $output);
+            $writeExpression = $propertyMapping->getWriteMutator()->getExpression($result, $output, $transformer->assignByRef());
 
             if ($writeExpression === null) {
                 continue;
@@ -273,6 +277,7 @@ class Compiler
                 new Param(new Expr\Variable($sourceInput->name)),
                 new Param(new Expr\Variable('context'), null, new Name\FullyQualified(Context::class)),
             ],
+            'byRef' => true,
             'stmts' => $statements,
         ]);
 

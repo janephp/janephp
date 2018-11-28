@@ -24,11 +24,12 @@ class NullableTransformer implements TransformerInterface
 
         $newOutput = null;
         $statements = [];
+        $assignClass = $this->itemTransformer->assignByRef() ? Expr\AssignRef::class : Expr\Assign::class;
 
         if ($this->isTargetNullable) {
             $newOutput = new Expr\Variable($uniqueVariableScope->getUniqueName('value'));
             $statements[] = new Stmt\Expression(new Expr\Assign($newOutput, new Expr\ConstFetch(new Name('null'))));
-            $itemStatements[] = new Stmt\Expression(new Expr\Assign($newOutput, $output));
+            $itemStatements[] = new Stmt\Expression(new $assignClass($newOutput, $output));
         }
 
         $statements[] = new Stmt\If_(new Expr\BinaryOp\NotIdentical(new Expr\ConstFetch(new Name('null')), $input), [
@@ -41,5 +42,10 @@ class NullableTransformer implements TransformerInterface
     public function getDependencies()
     {
         return $this->itemTransformer->getDependencies();
+    }
+
+    public function assignByRef(): bool
+    {
+        return false;
     }
 }

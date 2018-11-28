@@ -47,6 +47,7 @@ class MultipleTransformer implements TransformerInterface
 
             [$transformerOutput, $transformerStatements] = $transformer->transform($input, $uniqueVariableScope);
 
+            $assignClass = $transformer->assignByRef() ? Expr\AssignRef::class : Expr\Assign::class;
             $statements[] = new Stmt\If_(
                 new Expr\FuncCall(
                     new Name(self::CONDITION_MAPPING[$type->getBuiltinType()]),
@@ -57,7 +58,7 @@ class MultipleTransformer implements TransformerInterface
                 [
                     'stmts' => array_merge(
                         $transformerStatements, [
-                            new Stmt\Expression(new Expr\Assign($output, $transformerOutput)),
+                            new Stmt\Expression(new $assignClass($output, $transformerOutput)),
                         ]
                     ),
                 ]
@@ -65,6 +66,11 @@ class MultipleTransformer implements TransformerInterface
         }
 
         return [$output, $statements];
+    }
+
+    public function assignByRef(): bool
+    {
+        return false;
     }
 
     public function getDependencies()
