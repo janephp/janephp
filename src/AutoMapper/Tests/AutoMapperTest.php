@@ -226,4 +226,21 @@ class AutoMapperTest extends TestCase
         self::assertNotNull($fooArray['child']['child']);
         self::assertFalse(isset($fooArray['child']['child']['child']));
     }
+
+    public function testObjectToPopulate()
+    {
+        $configurationUser = $this->autoMapper->getConfiguration(User::class, UserDTO::class);
+        $configurationUser->forMember('yearOfBirth', function (User $user) {
+            return ((int) date('Y')) - ((int) $user->age);
+        });
+
+        $user = new User(1, 'yolo', '13');
+        $userDtoToPopulate = new UserDTO();
+        $context = new Context();
+        $context->setObjectToPopulate($userDtoToPopulate);
+
+        $userDto = $this->autoMapper->map($user, UserDTO::class, $context);
+
+        self::assertSame($userDtoToPopulate, $userDto);
+    }
 }

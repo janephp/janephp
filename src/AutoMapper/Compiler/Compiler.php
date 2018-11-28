@@ -39,6 +39,7 @@ class Compiler
         $inConstructor = [];
         $reflectionClass = $mapperConfiguration->getTarget() === 'array' ? null : new \ReflectionClass($mapperConfiguration->getTarget());
         $targetConstructor = $reflectionClass ? $reflectionClass->getConstructor() : null;
+        $createObjectStatements = [];
 
         $statements = [
             new Stmt\If_(new Expr\BinaryOp\Identical(new Expr\ConstFetch(new Name('null')), $sourceInput), [
@@ -64,9 +65,9 @@ class Compiler
         }
 
         if ($mapperConfiguration->getTarget() === 'array') {
-            $statements[] = new Stmt\Expression(new Expr\Assign($result, new Expr\Array_()));
+            $createObjectStatements[] = new Stmt\Expression(new Expr\Assign($result, new Expr\Array_()));
         } elseif ($mapperConfiguration->getTarget() === \stdClass::class) {
-            $statements[] = new Stmt\Expression(new Expr\Assign($result, new Expr\New_(new Name(\stdClass::class))));
+            $createObjectStatements[] = new Stmt\Expression(new Expr\Assign($result, new Expr\New_(new Name(\stdClass::class))));
         } elseif ($targetConstructor !== null && $mapperConfiguration->hasConstructor()) {
             $constructArguments = [];
 
@@ -79,8 +80,8 @@ class Compiler
                 [$output, $propStatements] = $propertyMapping->getTransformer()->transform($propertyMapping->getReadAccessor()->getExpression($sourceInput), $uniqueVariableScope);
                 $constructArguments[$propertyMapping->getWriteMutator()->getParameter()->getPosition()] = new Arg($output);
 
-                $constructStatements = array_merge(
-                    $constructStatements,
+                $createObjectStatements = array_merge(
+                    $createObjectStatements,
                     $propStatements
                 );
 
@@ -93,7 +94,7 @@ class Compiler
                 }
             }
 
-            $statements[] = new Stmt\Expression(new Expr\Assign($result, new Expr\New_(new Name($mapperConfiguration->getTarget()), $constructArguments)));
+            $createObjectStatements[] = new Stmt\Expression(new Expr\Assign($result, new Expr\New_(new Name($mapperConfiguration->getTarget()), $constructArguments)));
         } elseif ($targetConstructor !== null && $mapperConfiguration->isTargetCloneable()) {
             $constructStatements[] = new Stmt\Expression(new Expr\Assign(
                 new Expr\PropertyFetch(new Expr\Variable('this'), 'cachedTarget'),
@@ -101,7 +102,7 @@ class Compiler
                     new Arg(new Scalar\String_($mapperConfiguration->getTarget())),
                 ]), 'newInstanceWithoutConstructor')
             ));
-            $statements[] = new Stmt\Expression(new Expr\Assign($result, new Expr\Clone_(new Expr\PropertyFetch(new Expr\Variable('this'), 'cachedTarget'))));
+            $createObjectStatements[] = new Stmt\Expression(new Expr\Assign($result, new Expr\Clone_(new Expr\PropertyFetch(new Expr\Variable('this'), 'cachedTarget'))));
         } elseif ($targetConstructor !== null) {
             $constructStatements[] = new Stmt\Expression(new Expr\Assign(
                 new Expr\PropertyFetch(new Expr\Variable('this'), 'cachedTarget'),
@@ -109,13 +110,18 @@ class Compiler
                     new Arg(new Scalar\String_($mapperConfiguration->getTarget())),
                 ])
             ));
-            $statements[] = new Stmt\Expression(new Expr\Assign($result, new Expr\MethodCall(
+            $createObjectStatements[] = new Stmt\Expression(new Expr\Assign($result, new Expr\MethodCall(
                 new Expr\PropertyFetch(new Expr\Variable('this'), 'cachedTarget'),
                 'newInstanceWithoutConstructor'
             )));
         } else {
-            $statements[] = new Stmt\Expression(new Expr\Assign($result, new Expr\New_(new Name($mapperConfiguration->getTarget()))));
+            $createObjectStatements[] = new Stmt\Expression(new Expr\Assign($result, new Expr\New_(new Name($mapperConfiguration->getTarget()))));
         }
+
+        $statements[] = new Stmt\Expression(new Expr\Assign($result, new Expr\MethodCall($contextVariable, 'getObjectToPopulate')));
+        $statements[] = new Stmt\If_(new Expr\BinaryOp\Identical(new Expr\ConstFetch(new Name('null')), $result), [
+            'stmts' => $createObjectStatements,
+        ]);
 
         foreach ($propertiesMapping as $propertyMapping) {
             $transformer = $propertyMapping->getTransformer();

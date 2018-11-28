@@ -10,6 +10,8 @@ class Context
 
     private $depth;
 
+    private $object;
+
     public function __construct(array $groups = null)
     {
         $this->groups = $groups;
@@ -34,6 +36,16 @@ class Context
     public function getDepth(): int
     {
         return $this->depth;
+    }
+
+    public function setObjectToPopulate($object)
+    {
+        $this->object = $object;
+    }
+
+    public function getObjectToPopulate()
+    {
+        return $this->object;
     }
 
     public function withReference($reference, &$object): self
