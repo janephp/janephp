@@ -54,6 +54,10 @@
             <tag name="jane_auto_mapper.transformer_factory" priority="0" />
         </service>
 
+        <service id="Jane\AutoMapper\AutoMapperNormalizer">
+            <argument type="service" id="Jane\AutoMapper\AutoMapperInterface" />
+        </service>
+
         <service id="Jane\AutoMapper\Compiler\Transformer\BuiltinTransformerFactory">
             <argument type="service" id="Jane\AutoMapper\Compiler\Transformer\ChainTransformerFactory" />
             <tag name="jane_auto_mapper.transformer_factory" priority="0" />

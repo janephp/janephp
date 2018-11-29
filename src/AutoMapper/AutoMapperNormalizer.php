@@ -2,64 +2,60 @@
 
 namespace Jane\AutoMapper;
 
-use Jane\AutoMapper\Exception\NoMappingFoundException;
+use Symfony\Component\Serializer\Normalizer\AbstractNormalizer;
+use Symfony\Component\Serializer\Normalizer\CacheableSupportsMethodInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
-class AutoMapperNormalizer extends AbstractAutoMapper implements DenormalizerInterface, NormalizerInterface
+final class AutoMapperNormalizer implements DenormalizerInterface, NormalizerInterface, CacheableSupportsMethodInterface
 {
-    public function map($value, string $target, array $context = [])
+    private $autoMapper;
+
+    public function __construct(AutoMapperInterface $autoMapper)
     {
-        $source = null;
-
-        if (null === $value) {
-            return null;
-        }
-
-        if (\is_object($value)) {
-            $source = \get_class($value);
-        }
-
-        if (\is_array($value)) {
-            $source = 'array';
-        }
-
-        if (null === $source) {
-            throw new NoMappingFoundException('Cannot map this value, its neither an object or an array');
-        }
-
-        if ($source === 'array') {
-            return $this->denormalize($value, $target, null, $context);
-        }
-
-        if ($target === 'array') {
-            return $this->normalize($value, null, $context);
-        }
-
-        return $this->getMapper($source, $target)->map($value, $context);
-    }
-
-    public function denormalize($data, $class, $format = null, array $context = [])
-    {
-        return parent::map($data, $class, $context);
-    }
-
-    public function supportsDenormalization($data, $type, $format = null)
-    {
-        $configuration = $this->getConfiguration('array', $type);
-
-        return null !== $configuration;
+        $this->autoMapper = $autoMapper;
     }
 
     public function normalize($object, $format = null, array $context = [])
     {
-        return parent::map($object, 'array', $context);
+        $autoMapperContext = $this->createAutoMapperContext($context);
+
+        return $this->autoMapper->map($object, 'array', $autoMapperContext);
+    }
+
+    public function denormalize($data, $class, $format = null, array $context = [])
+    {
+        $autoMapperContext = $this->createAutoMapperContext($context);
+
+        return $this->autoMapper->map($data, $class, $autoMapperContext);
     }
 
     public function supportsNormalization($data, $format = null)
     {
-        $configuration = $this->getConfiguration(\get_class($data), 'array');
+        return $this->autoMapper->hasMapper(\get_class($data), 'array');
+    }
 
-        return null !== $configuration;
+    public function supportsDenormalization($data, $type, $format = null)
+    {
+        return $this->autoMapper->hasMapper('array', $type);
+    }
+
+    public function hasCacheableSupportsMethod(): bool
+    {
+        return true;
+    }
+
+    private function createAutoMapperContext(array $serializerContext = []): Context
+    {
+        $context = new Context($serializerContext[AbstractNormalizer::GROUPS] ?? null);
+        $context->setCircularReferenceLimit($serializerContext[AbstractNormalizer::CIRCULAR_REFERENCE_LIMIT] ?? 1);
+        $context->setObjectToPopulate($serializerContext[AbstractNormalizer::OBJECT_TO_POPULATE] ?? null);
+        $context->setCircularReferenceHandler($serializerContext['circular_reference_handler'] ?? null); // AbstractNormalizer::CIRCULAR_REFERENCE_HANDLER
+
+        // AbstractNormalizer::ATTRIBUTES
+        // AbstractNormalizer::DEFAULT_CONSTRUCTOR_ARGUMENTS
+        // AbstractNormalizer::IGNORED_ATTRIBUTES
+
+        return $context;
     }
 }

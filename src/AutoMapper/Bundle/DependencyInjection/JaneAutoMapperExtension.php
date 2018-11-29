@@ -2,6 +2,7 @@
 
 namespace Jane\AutoMapper\Bundle\DependencyInjection;
 
+use Jane\AutoMapper\AutoMapperNormalizer;
 use Jane\AutoMapper\Bundle\AutoMapper;
 use Jane\AutoMapper\Bundle\Configuration\RestrictConfigurationPass;
 use Jane\AutoMapper\Extractor\PrivateReflectionExtractor;
@@ -45,6 +46,13 @@ class JaneAutoMapperExtension extends Extension
             $container
                 ->getDefinition(AutoMapper::class)
                 ->setArgument(1, new Reference(MapperConfigurationFactory::class))
+            ;
+        }
+
+        if ($config['normalizer']) {
+            $container
+                ->getDefinition(AutoMapperNormalizer::class)
+                ->addTag('serializer.normalizer')
             ;
         }
 
