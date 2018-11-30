@@ -11,15 +11,18 @@ class MapperConfigurationFactory
     private $sourceTargetPropertiesMappingExtractor;
     private $fromSourcePropertiesMappingExtractor;
     private $fromTargetPropertiesMappingExtractor;
+    private $classPrefix;
 
     public function __construct(
         SourceTargetPropertiesMappingExtractor $sourceTargetPropertiesMappingExtractor,
         FromSourcePropertiesMappingExtractor $fromSourcePropertiesMappingExtractor,
-        FromTargetPropertiesMappingExtractor $fromTargetPropertiesMappingExtractor
+        FromTargetPropertiesMappingExtractor $fromTargetPropertiesMappingExtractor,
+        string $classPrefix = 'Mapper_'
     ) {
         $this->sourceTargetPropertiesMappingExtractor = $sourceTargetPropertiesMappingExtractor;
         $this->fromSourcePropertiesMappingExtractor = $fromSourcePropertiesMappingExtractor;
         $this->fromTargetPropertiesMappingExtractor = $fromTargetPropertiesMappingExtractor;
+        $this->classPrefix = $classPrefix;
     }
 
     public function create($source, $target): MapperConfigurationInterface
@@ -34,6 +37,6 @@ class MapperConfigurationFactory
             $extractor = $this->fromSourcePropertiesMappingExtractor;
         }
 
-        return new MapperConfiguration($extractor, $source, $target);
+        return new MapperConfiguration($extractor, $source, $target, $this->classPrefix);
     }
 }

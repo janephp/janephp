@@ -2,13 +2,27 @@
 
 namespace Jane\AutoMapper\Compiler;
 
+use Jane\AutoMapper\Compiler\Accessor\AccessorExtractorInterface;
 use Jane\AutoMapper\Compiler\Accessor\WriteMutator;
+use Jane\AutoMapper\Compiler\Transformer\TransformerFactoryInterface;
 use Jane\AutoMapper\MapperConfigurationInterface;
 use SebastianBergmann\GlobalState\RuntimeException;
+use Symfony\Component\PropertyInfo\PropertyInfoExtractorInterface;
 use Symfony\Component\PropertyInfo\Type;
+use Symfony\Component\Serializer\Mapping\Factory\ClassMetadataFactoryInterface;
+use Symfony\Component\Serializer\NameConverter\AdvancedNameConverterInterface;
 
 class FromSourcePropertiesMappingExtractor extends PropertiesMappingExtractor
 {
+    private $nameConverter;
+
+    public function __construct(PropertyInfoExtractorInterface $propertyInfoExtractor, AccessorExtractorInterface $accessorExtractor, TransformerFactoryInterface $transformerFactory, ClassMetadataFactoryInterface $classMetadataFactory = null, AdvancedNameConverterInterface $nameConverter = null)
+    {
+        parent::__construct($propertyInfoExtractor, $accessorExtractor, $transformerFactory, $classMetadataFactory);
+
+        $this->nameConverter = $nameConverter;
+    }
+
     public function getPropertiesMapping(string $source, string $target, MapperConfigurationInterface $mapperConfiguration): array
     {
         $sourceProperties = $this->propertyInfoExtractor->getProperties($source);
@@ -47,11 +61,9 @@ class FromSourcePropertiesMappingExtractor extends PropertiesMappingExtractor
                 continue;
             }
 
-            $targetMutator = $this->getWriteMutator($target, $property);
-            $sourceAccessor = $this->accessorExtractor->getReadAccessor($source, $property);
             $mapping[] = new PropertyMapping(
-                $sourceAccessor,
-                $targetMutator,
+                $this->getReadAccessor($source, $target, $property),
+                $this->getWriteMutator($source, $target, $property),
                 $transformer,
                 $property,
                 false,
@@ -93,8 +105,12 @@ class FromSourcePropertiesMappingExtractor extends PropertiesMappingExtractor
         );
     }
 
-    public function getWriteMutator(string $target, string $property): WriteMutator
+    public function getWriteMutator(string $source, string $target, string $property): WriteMutator
     {
+        if ($this->nameConverter !== null) {
+            $property = $this->nameConverter->normalize($property, $source, $target);
+        }
+
         $targetMutator = new WriteMutator(WriteMutator::TYPE_ARRAY_DIMENSION, $property, false);
 
         if ($target === \stdClass::class) {

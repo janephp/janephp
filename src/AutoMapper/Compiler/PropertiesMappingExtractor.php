@@ -27,12 +27,12 @@ abstract class PropertiesMappingExtractor implements PropertiesMappingExtractorI
         $this->classMetadataFactory = $classMetadataFactory;
     }
 
-    public function getReadAccessor(string $source, string $property): ?ReadAccessor
+    public function getReadAccessor(string $source, string $target, string $property): ?ReadAccessor
     {
         return $this->accessorExtractor->getReadAccessor($source, $property);
     }
 
-    public function getWriteMutator(string $target, string $property): ?WriteMutator
+    public function getWriteMutator(string $source, string $target, string $property): ?WriteMutator
     {
         return $this->accessorExtractor->getWriteMutator($target, $property);
     }

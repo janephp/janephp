@@ -29,7 +29,7 @@
         "doctrine/annotations": "^1.5",
         "phpunit/phpunit": "^6.0",
         "symfony/framework-bundle": "^4.0",
-        "symfony/serializer": "^3.4|^4.0"
+        "symfony/serializer": "^4.2"
     },
     "config": {
         "process-timeout": 1800,

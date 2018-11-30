@@ -13,7 +13,7 @@ interface PropertiesMappingExtractorInterface
      */
     public function getPropertiesMapping(string $source, string $target, MapperConfigurationInterface $mapperConfiguration): array;
 
-    public function getReadAccessor(string $source, string $property): ?ReadAccessor;
+    public function getReadAccessor(string $source, string $target, string $property): ?ReadAccessor;
 
-    public function getWriteMutator(string $target, string $property): ?WriteMutator;
+    public function getWriteMutator(string $source, string $target, string $property): ?WriteMutator;
 }

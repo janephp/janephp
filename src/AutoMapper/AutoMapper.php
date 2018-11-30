@@ -24,6 +24,7 @@ use Symfony\Component\PropertyInfo\Extractor\ReflectionExtractor;
 use Symfony\Component\PropertyInfo\PropertyInfoExtractor;
 use Symfony\Component\Serializer\Mapping\Factory\ClassMetadataFactory;
 use Symfony\Component\Serializer\Mapping\Loader\AnnotationLoader;
+use Symfony\Component\Serializer\NameConverter\AdvancedNameConverterInterface;
 
 class AutoMapper extends AbstractAutoMapper
 {
@@ -32,7 +33,7 @@ class AutoMapper extends AbstractAutoMapper
      *
      * @internal
      */
-    public static function create(bool $private = true, MapperClassLoaderInterface $loader = null): self
+    public static function create(bool $private = true, MapperClassLoaderInterface $loader = null, AdvancedNameConverterInterface $nameConverter = null, string $classPrefix = 'Mapper_'): self
     {
         if ($loader === null) {
             $loader = new EvalLoader(new Compiler());
@@ -66,20 +67,23 @@ class AutoMapper extends AbstractAutoMapper
             $propertyInfoExtractor,
             $accessorExtractor,
             $transformerFactory,
-            $classMetadataFactory
+            $classMetadataFactory,
+            $nameConverter
         );
 
         $fromSourceMappingExtractor = new FromSourcePropertiesMappingExtractor(
             $propertyInfoExtractor,
             $accessorExtractor,
             $transformerFactory,
-            $classMetadataFactory
+            $classMetadataFactory,
+            $nameConverter
         );
 
         $autoMapper = new self($loader, new MapperConfigurationFactory(
             $sourceTargetMappingExtractor,
             $fromSourceMappingExtractor,
-            $fromTargetMappingExtractor
+            $fromTargetMappingExtractor,
+            $classPrefix
         ));
 
         $transformerFactory->addTransformerFactory(new MultipleTransformerFactory($transformerFactory));

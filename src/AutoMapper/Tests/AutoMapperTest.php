@@ -20,6 +20,7 @@ use Jane\AutoMapper\Tests\Domain\UserDTO;
 use Jane\AutoMapper\Tests\Domain\UserDTONoAge;
 use Jane\AutoMapper\Tests\Domain\UserDTONoName;
 use PHPUnit\Framework\TestCase;
+use Symfony\Component\Serializer\NameConverter\AdvancedNameConverterInterface;
 
 class AutoMapperTest extends TestCase
 {
@@ -363,5 +364,37 @@ class AutoMapperTest extends TestCase
         $userDto = $this->autoMapper->map($user, UserDTO::class, $context);
 
         self::assertNull($userDto->name);
+    }
+
+    public function testNameConverter()
+    {
+        $nameConverter = new class() implements AdvancedNameConverterInterface {
+            public function normalize($propertyName, string $class = null, string $format = null, array $context = [])
+            {
+                if ($propertyName === 'id') {
+                    return '@id';
+                }
+
+                return $propertyName;
+            }
+
+            public function denormalize($propertyName, string $class = null, string $format = null, array $context = [])
+            {
+                if ($propertyName === '@id') {
+                    return 'id';
+                }
+
+                return $propertyName;
+            }
+        };
+
+        $autoMapper = AutoMapper::create(true, null, $nameConverter, 'Mapper2_');
+        $user = new User(1, 'yolo', '13');
+
+        $userArray = $autoMapper->map($user, 'array', new Context());
+
+        self::assertInternalType('array', $userArray);
+        self::assertArrayHasKey('@id', $userArray);
+        self::assertSame(1, $userArray['@id']);
     }
 }

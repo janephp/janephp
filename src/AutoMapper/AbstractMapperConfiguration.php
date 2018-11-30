@@ -20,12 +20,15 @@ abstract class AbstractMapperConfiguration implements MapperConfigurationInterfa
 
     protected $circularReferenceLimit;
 
-    public function __construct(string $source, string $target)
+    protected $classPrefix;
+
+    public function __construct(string $source, string $target, $classPrefix = 'Mapper_')
     {
         $this->source = $source;
         $this->target = $target;
         $this->isConstructorAllowed = true;
         $this->dateTimeFormat = \DateTime::RFC3339;
+        $this->classPrefix = $classPrefix;
     }
 
     public function getSource(): string
@@ -44,7 +47,7 @@ abstract class AbstractMapperConfiguration implements MapperConfigurationInterfa
             return $this->className;
         }
 
-        return $this->className = sprintf('Mapper_%s_%s', str_replace('\\', '_', $this->source), str_replace('\\', '_', $this->target));
+        return $this->className = sprintf('%s%s_%s', $this->classPrefix, str_replace('\\', '_', $this->source), str_replace('\\', '_', $this->target));
     }
 
     public function createMapper(): Mapper

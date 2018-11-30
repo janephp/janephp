@@ -13,11 +13,11 @@ class MapperConfiguration extends AbstractMapperConfiguration
 
     private $customMapping = [];
 
-    public function __construct(PropertiesMappingExtractorInterface $mappingExtractor, string $source, string $target)
+    public function __construct(PropertiesMappingExtractorInterface $mappingExtractor, string $source, string $target, string $classPrefix = 'Mapper_')
     {
         $this->mappingExtractor = $mappingExtractor;
 
-        parent::__construct($source, $target);
+        parent::__construct($source, $target, $classPrefix);
     }
 
     /**
@@ -30,7 +30,7 @@ class MapperConfiguration extends AbstractMapperConfiguration
         foreach ($this->customMapping as $property => $callback) {
             $mappings[] = new PropertyMapping(
                 new ReadAccessor(ReadAccessor::TYPE_SOURCE, $property),
-                $this->mappingExtractor->getWriteMutator($this->target, $property),
+                $this->mappingExtractor->getWriteMutator($this->source, $this->target, $property),
                 new CallbackTransformer($property),
                 $property,
                 false
@@ -87,7 +87,7 @@ class MapperConfiguration extends AbstractMapperConfiguration
         }
 
         foreach ($mandatoryParameters as $mandatoryParameter) {
-            $readAccessor = $this->mappingExtractor->getReadAccessor($this->source, $mandatoryParameter->getName());
+            $readAccessor = $this->mappingExtractor->getReadAccessor($this->source, $this->target, $mandatoryParameter->getName());
 
             if ($readAccessor === null) {
                 return false;

@@ -2,13 +2,27 @@
 
 namespace Jane\AutoMapper\Compiler;
 
+use Jane\AutoMapper\Compiler\Accessor\AccessorExtractorInterface;
 use Jane\AutoMapper\Compiler\Accessor\ReadAccessor;
+use Jane\AutoMapper\Compiler\Transformer\TransformerFactoryInterface;
 use Jane\AutoMapper\MapperConfigurationInterface;
 use SebastianBergmann\GlobalState\RuntimeException;
+use Symfony\Component\PropertyInfo\PropertyInfoExtractorInterface;
 use Symfony\Component\PropertyInfo\Type;
+use Symfony\Component\Serializer\Mapping\Factory\ClassMetadataFactoryInterface;
+use Symfony\Component\Serializer\NameConverter\AdvancedNameConverterInterface;
 
 class FromTargetPropertiesMappingExtractor extends PropertiesMappingExtractor
 {
+    private $nameConverter;
+
+    public function __construct(PropertyInfoExtractorInterface $propertyInfoExtractor, AccessorExtractorInterface $accessorExtractor, TransformerFactoryInterface $transformerFactory, ClassMetadataFactoryInterface $classMetadataFactory = null, AdvancedNameConverterInterface $nameConverter = null)
+    {
+        parent::__construct($propertyInfoExtractor, $accessorExtractor, $transformerFactory, $classMetadataFactory);
+
+        $this->nameConverter = $nameConverter;
+    }
+
     public function getPropertiesMapping(string $source, string $target, MapperConfigurationInterface $mapperConfiguration): array
     {
         $targetProperties = array_unique($this->propertyInfoExtractor->getProperties($target));
@@ -46,17 +60,9 @@ class FromTargetPropertiesMappingExtractor extends PropertiesMappingExtractor
                 continue;
             }
 
-            $sourceAccessor = new ReadAccessor(ReadAccessor::TYPE_ARRAY_DIMENSION, $property);
-
-            if ($source === \stdClass::class) {
-                $sourceAccessor = new ReadAccessor(ReadAccessor::TYPE_PROPERTY, $property);
-            }
-
-            $targetMutator = $this->accessorExtractor->getWriteMutator($target, $property, $mapperConfiguration->isConstructorAllowed());
-
             $mapping[] = new PropertyMapping(
-                $sourceAccessor,
-                $targetMutator,
+                $this->getReadAccessor($source, $target, $property),
+                $this->getWriteMutator($source, $target, $property),
                 $transformer,
                 $property,
                 true,
@@ -67,6 +73,21 @@ class FromTargetPropertiesMappingExtractor extends PropertiesMappingExtractor
         }
 
         return $mapping;
+    }
+
+    public function getReadAccessor(string $source, string $target, string $property): ?ReadAccessor
+    {
+        if (null !== $this->nameConverter) {
+            $property = $this->nameConverter->normalize($property, $target, $source);
+        }
+
+        $sourceAccessor = new ReadAccessor(ReadAccessor::TYPE_ARRAY_DIMENSION, $property);
+
+        if ($source === \stdClass::class) {
+            $sourceAccessor = new ReadAccessor(ReadAccessor::TYPE_PROPERTY, $property);
+        }
+
+        return $sourceAccessor;
     }
 
     private function transformType(string $source, Type $type = null): ?Type
