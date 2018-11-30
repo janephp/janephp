@@ -2,6 +2,7 @@
 
 namespace Jane\AutoMapper\Compiler\Transformer;
 
+use Jane\AutoMapper\Compiler\PropertyMapping;
 use Jane\AutoMapper\Compiler\UniqueVariableScope;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Stmt;
@@ -15,7 +16,7 @@ class ArrayTransformer implements TransformerInterface
         $this->itemTransformer = $itemTransformer;
     }
 
-    public function transform(Expr $input, UniqueVariableScope $uniqueVariableScope): array
+    public function transform(Expr $input, UniqueVariableScope $uniqueVariableScope, PropertyMapping $propertyMapping): array
     {
         $valuesVar = new Expr\Variable($uniqueVariableScope->getUniqueName('values'));
         $statements = [
@@ -25,7 +26,7 @@ class ArrayTransformer implements TransformerInterface
 
         $loopValueVar = new Expr\Variable($uniqueVariableScope->getUniqueName('value'));
 
-        [$output, $itemStatements] = $this->itemTransformer->transform($loopValueVar, $uniqueVariableScope);
+        [$output, $itemStatements] = $this->itemTransformer->transform($loopValueVar, $uniqueVariableScope, $propertyMapping);
 
         if ($this->itemTransformer->assignByRef()) {
             $itemStatements[] = new Stmt\Expression(new Expr\AssignRef(new Expr\ArrayDimFetch($valuesVar), $output));

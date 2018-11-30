@@ -2,6 +2,7 @@
 
 namespace Jane\AutoMapper\Compiler\Transformer;
 
+use Jane\AutoMapper\Compiler\PropertyMapping;
 use Jane\AutoMapper\Compiler\UniqueVariableScope;
 use PhpParser\Node\Arg;
 use PhpParser\Node\Expr;
@@ -16,7 +17,7 @@ class DateTimeToStringTansformer implements TransformerInterface
         $this->format = $format;
     }
 
-    public function transform(Expr $input, UniqueVariableScope $uniqueVariableScope): array
+    public function transform(Expr $input, UniqueVariableScope $uniqueVariableScope, PropertyMapping $propertyMapping): array
     {
         return [new Expr\MethodCall($input, 'format', [
             new Arg(new String_($this->format)),

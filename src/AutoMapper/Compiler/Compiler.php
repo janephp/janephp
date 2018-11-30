@@ -81,7 +81,7 @@ class Compiler
                     continue;
                 }
 
-                [$output, $propStatements] = $propertyMapping->getTransformer()->transform($propertyMapping->getReadAccessor()->getExpression($sourceInput), $uniqueVariableScope);
+                [$output, $propStatements] = $propertyMapping->getTransformer()->transform($propertyMapping->getReadAccessor()->getExpression($sourceInput), $uniqueVariableScope, $propertyMapping);
                 $constructArguments[$propertyMapping->getWriteMutator()->getParameter()->getPosition()] = new Arg($output);
 
                 $createObjectStatements = array_merge(
@@ -171,7 +171,7 @@ class Compiler
                 continue;
             }
 
-            [$output, $propStatements] = $transformer->transform($propertyMapping->getReadAccessor()->getExpression($sourceInput), $uniqueVariableScope);
+            [$output, $propStatements] = $transformer->transform($propertyMapping->getReadAccessor()->getExpression($sourceInput), $uniqueVariableScope, $propertyMapping);
             $writeExpression = $propertyMapping->getWriteMutator()->getExpression($result, $output, $transformer->assignByRef());
 
             if ($writeExpression === null) {
@@ -213,6 +213,10 @@ class Compiler
                     ]);
                 }
             }
+
+            $conditions[] = new Expr\MethodCall($contextVariable, 'isAllowedAttribute', [
+                new Arg(new Scalar\String_($propertyMapping->getProperty())),
+            ]);
 
             if (null !== $propertyMapping->getSourceGroups()) {
                 $conditions[] = new Expr\BinaryOp\BooleanAnd(

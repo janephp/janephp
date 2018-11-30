@@ -20,10 +20,16 @@ class Context
 
     private $circularReferenceHandler;
 
-    public function __construct(array $groups = null)
+    private $attributes;
+
+    private $ignoredAttributes;
+
+    public function __construct(array $groups = null, array $attributes = null, array $ignoredAttributes = null)
     {
         $this->groups = $groups;
         $this->depth = 0;
+        $this->attributes = $attributes;
+        $this->ignoredAttributes = $ignoredAttributes;
     }
 
     public function shouldHandleCircularReference($reference, ?int $circularReferenceLimit = null): bool
@@ -109,10 +115,42 @@ class Context
         return $new;
     }
 
+    public function isAllowedAttribute(string $attribute): bool
+    {
+        if ($this->ignoredAttributes !== null && \in_array($attribute, $this->ignoredAttributes, true)) {
+            return false;
+        }
+
+        if ($this->attributes === null) {
+            return true;
+        }
+
+        return \in_array($attribute, $this->attributes, true);
+    }
+
     public function withIncrementedDepth(): self
     {
         $new = clone $this;
         ++$new->depth;
+
+        return $new;
+    }
+
+    public function withNewContext(string $attribute): self
+    {
+        if ($this->attributes === null) {
+            return $this;
+        }
+
+        $new = clone $this;
+
+        if ($this->ignoredAttributes !== null && isset($this->ignoredAttributes[$attribute]) && \is_array($this->ignoredAttributes[$attribute])) {
+            $new->ignoredAttributes = $this->ignoredAttributes[$attribute];
+        }
+
+        if ($this->attributes !== null && isset($this->attributes[$attribute]) && \is_array($this->attributes[$attribute])) {
+            $new->attributes = $this->attributes[$attribute];
+        }
 
         return $new;
     }

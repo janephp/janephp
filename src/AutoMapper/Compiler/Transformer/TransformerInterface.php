@@ -2,6 +2,7 @@
 
 namespace Jane\AutoMapper\Compiler\Transformer;
 
+use Jane\AutoMapper\Compiler\PropertyMapping;
 use Jane\AutoMapper\Compiler\UniqueVariableScope;
 use Jane\AutoMapper\Compiler\MapperDependency;
 use PhpParser\Node\Expr;
@@ -11,7 +12,7 @@ interface TransformerInterface
     /**
      * @return Expr[]
      */
-    public function transform(Expr $input, UniqueVariableScope $uniqueVariableScope): array;
+    public function transform(Expr $input, UniqueVariableScope $uniqueVariableScope, PropertyMapping $propertyMapping): array;
 
     /**
      * @return MapperDependency[]

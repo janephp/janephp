@@ -334,4 +334,34 @@ class AutoMapperTest extends TestCase
 
         self::assertSame('foo', $nodeArray['parent']);
     }
+
+    public function testAllowedAttributes()
+    {
+        $configurationUser = $this->autoMapper->getConfiguration(User::class, UserDTO::class);
+        $configurationUser->forMember('yearOfBirth', function (User $user) {
+            return ((int) date('Y')) - ((int) $user->age);
+        });
+
+        $user = new User(1, 'yolo', '13');
+        $context = new Context(null, ['id', 'age'], null);
+
+        $userDto = $this->autoMapper->map($user, UserDTO::class, $context);
+
+        self::assertNull($userDto->name);
+    }
+
+    public function testIgnoredAttributes()
+    {
+        $configurationUser = $this->autoMapper->getConfiguration(User::class, UserDTO::class);
+        $configurationUser->forMember('yearOfBirth', function (User $user) {
+            return ((int) date('Y')) - ((int) $user->age);
+        });
+
+        $user = new User(1, 'yolo', '13');
+        $context = new Context(null, null, ['name']);
+
+        $userDto = $this->autoMapper->map($user, UserDTO::class, $context);
+
+        self::assertNull($userDto->name);
+    }
 }

@@ -2,6 +2,7 @@
 
 namespace Jane\AutoMapper\Compiler\Transformer;
 
+use Jane\AutoMapper\Compiler\PropertyMapping;
 use Jane\AutoMapper\Compiler\UniqueVariableScope;
 use PhpParser\Node\Arg;
 use PhpParser\Node\Expr;
@@ -34,7 +35,7 @@ class MultipleTransformer implements TransformerInterface
         ];
     }
 
-    public function transform(Expr $input, UniqueVariableScope $uniqueVariableScope): array
+    public function transform(Expr $input, UniqueVariableScope $uniqueVariableScope, PropertyMapping $propertyMapping): array
     {
         $output = new Expr\Variable($uniqueVariableScope->getUniqueName('value'));
         $statements = [
@@ -45,7 +46,7 @@ class MultipleTransformer implements TransformerInterface
             $transformer = $transformerData['transformer'];
             $type = $transformerData['type'];
 
-            [$transformerOutput, $transformerStatements] = $transformer->transform($input, $uniqueVariableScope);
+            [$transformerOutput, $transformerStatements] = $transformer->transform($input, $uniqueVariableScope, $propertyMapping);
 
             $assignClass = $transformer->assignByRef() ? Expr\AssignRef::class : Expr\Assign::class;
             $statements[] = new Stmt\If_(

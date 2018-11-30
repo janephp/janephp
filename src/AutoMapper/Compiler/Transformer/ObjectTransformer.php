@@ -2,6 +2,7 @@
 
 namespace Jane\AutoMapper\Compiler\Transformer;
 
+use Jane\AutoMapper\Compiler\PropertyMapping;
 use Jane\AutoMapper\Compiler\UniqueVariableScope;
 use Jane\AutoMapper\Compiler\MapperDependency;
 use PhpParser\Node\Arg;
@@ -21,7 +22,7 @@ class ObjectTransformer implements TransformerInterface
         $this->targetType = $targetType;
     }
 
-    public function transform(Expr $input, UniqueVariableScope $uniqueVariableScope): array
+    public function transform(Expr $input, UniqueVariableScope $uniqueVariableScope, PropertyMapping $propertyMapping): array
     {
         $mapperName = $this->getDependencyName();
 
@@ -30,7 +31,9 @@ class ObjectTransformer implements TransformerInterface
             new Scalar\String_($mapperName)
             ), 'map', [
                 new Arg($input),
-                new Arg(new Expr\Variable('context')),
+                new Arg(new Expr\MethodCall(new Expr\Variable('context'), 'withNewContext', [
+                    new Arg(new Scalar\String_($propertyMapping->getProperty())),
+                ])),
         ]), []];
     }
 

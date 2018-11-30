@@ -2,6 +2,7 @@
 
 namespace Jane\AutoMapper\Compiler\Transformer;
 
+use Jane\AutoMapper\Compiler\PropertyMapping;
 use Jane\AutoMapper\Compiler\UniqueVariableScope;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Name;
@@ -18,9 +19,9 @@ class NullableTransformer implements TransformerInterface
         $this->isTargetNullable = $isTargetNullable;
     }
 
-    public function transform(Expr $input, UniqueVariableScope $uniqueVariableScope): array
+    public function transform(Expr $input, UniqueVariableScope $uniqueVariableScope, PropertyMapping $propertyMapping): array
     {
-        [$output, $itemStatements] = $this->itemTransformer->transform($input, $uniqueVariableScope);
+        [$output, $itemStatements] = $this->itemTransformer->transform($input, $uniqueVariableScope, $propertyMapping);
 
         $newOutput = null;
         $statements = [];

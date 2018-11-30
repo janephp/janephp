@@ -2,6 +2,7 @@
 
 namespace Jane\AutoMapper\Compiler\Transformer;
 
+use Jane\AutoMapper\Compiler\PropertyMapping;
 use Jane\AutoMapper\Compiler\UniqueVariableScope;
 use PhpParser\Node\Arg;
 use PhpParser\Node\Expr;
@@ -16,7 +17,7 @@ class CallbackTransformer implements TransformerInterface
         $this->callbackName = $callbackName;
     }
 
-    public function transform(Expr $input, UniqueVariableScope $uniqueVariableScope): array
+    public function transform(Expr $input, UniqueVariableScope $uniqueVariableScope, PropertyMapping $propertyMapping): array
     {
         /*
          * $output = $this->callbacks[$callbackName]($input);
