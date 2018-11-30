@@ -96,9 +96,4 @@ class FromTargetPropertiesMappingExtractor extends PropertiesMappingExtractor
             $this->transformType($source, $type->getCollectionValueType())
         );
     }
-
-    public function getReverseExtractor(): PropertiesMappingExtractorInterface
-    {
-        return new FromSourcePropertiesMappingExtractor($this->propertyInfoExtractor, $this->accessorExtractor, $this->transformerFactory);
-    }
 }

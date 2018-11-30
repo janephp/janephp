@@ -56,11 +56,6 @@ class MapperConfiguration extends AbstractMapperConfiguration
         $this->customMapping[$property] = $callback;
     }
 
-    public function getReverseConfiguration()
-    {
-        return new self($this->mappingExtractor->getReverseExtractor(), $this->target, $this->source);
-    }
-
     public function hasConstructor(): bool
     {
         if (!$this->isConstructorAllowed()) {
