@@ -32,6 +32,10 @@ final class AutoMapperNormalizer implements DenormalizerInterface, NormalizerInt
 
     public function supportsNormalization($data, $format = null)
     {
+        if (!\is_object($data)) {
+            return false;
+        }
+
         return $this->autoMapper->hasMapper(\get_class($data), 'array');
     }
 
@@ -47,8 +51,14 @@ final class AutoMapperNormalizer implements DenormalizerInterface, NormalizerInt
 
     private function createAutoMapperContext(array $serializerContext = []): Context
     {
+        $circularReferenceLimit = 1;
+
+        if (isset($serializerContext[AbstractNormalizer::CIRCULAR_REFERENCE_LIMIT]) && \is_int($serializerContext[AbstractNormalizer::CIRCULAR_REFERENCE_LIMIT])) {
+            $circularReferenceLimit = $serializerContext[AbstractNormalizer::CIRCULAR_REFERENCE_LIMIT];
+        }
+
         $context = new Context($serializerContext[AbstractNormalizer::GROUPS] ?? null);
-        $context->setCircularReferenceLimit($serializerContext[AbstractNormalizer::CIRCULAR_REFERENCE_LIMIT] ?? 1);
+        $context->setCircularReferenceLimit($circularReferenceLimit);
         $context->setObjectToPopulate($serializerContext[AbstractNormalizer::OBJECT_TO_POPULATE] ?? null);
         $context->setCircularReferenceHandler($serializerContext['circular_reference_handler'] ?? null); // AbstractNormalizer::CIRCULAR_REFERENCE_HANDLER
 

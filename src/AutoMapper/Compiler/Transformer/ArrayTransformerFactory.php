@@ -16,11 +16,11 @@ class ArrayTransformerFactory extends AbstractUniqueTypeTransformerFactory
 
     protected function createTransformer(Type $sourceType, Type $targetType, MapperConfigurationInterface $mapperConfiguration): ?TransformerInterface
     {
-        if ($sourceType->getBuiltinType() !== Type::BUILTIN_TYPE_ARRAY || !$sourceType->isCollection()) {
+        if (!$sourceType->isCollection()) {
             return null;
         }
 
-        if ($targetType->getBuiltinType() !== Type::BUILTIN_TYPE_ARRAY || !$targetType->isCollection()) {
+        if (!$targetType->isCollection()) {
             return null;
         }
 

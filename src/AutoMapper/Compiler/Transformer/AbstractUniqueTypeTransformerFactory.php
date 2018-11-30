@@ -12,11 +12,11 @@ abstract class AbstractUniqueTypeTransformerFactory implements TransformerFactor
         $nbSourcesTypes = $sourcesTypes ? \count($sourcesTypes) : 0;
         $nbTargetsTypes = $targetTypes ? \count($targetTypes) : 0;
 
-        if ($nbSourcesTypes === 0 || $nbSourcesTypes > 1) {
+        if ($nbSourcesTypes === 0 || $nbSourcesTypes > 1 || !$sourcesTypes[0] instanceof Type) {
             return null;
         }
 
-        if ($nbTargetsTypes === 0 || $nbTargetsTypes > 1) {
+        if ($nbTargetsTypes === 0 || $nbTargetsTypes > 1 || !$targetTypes[0] instanceof Type) {
             return null;
         }
 

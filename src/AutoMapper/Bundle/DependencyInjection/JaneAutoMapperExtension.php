@@ -52,7 +52,7 @@ class JaneAutoMapperExtension extends Extension
         if ($config['normalizer']) {
             $container
                 ->getDefinition(AutoMapperNormalizer::class)
-                ->addTag('serializer.normalizer')
+                ->addTag('serializer.normalizer', ['priority' => 1000])
             ;
         }
 

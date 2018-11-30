@@ -22,7 +22,7 @@ class BuiltinTransformerFactory implements TransformerFactoryInterface
     {
         $nbSourcesTypes = $sourcesTypes ? \count($sourcesTypes) : 0;
 
-        if (null === $sourcesTypes || $nbSourcesTypes === 0 || $nbSourcesTypes > 1) {
+        if (null === $sourcesTypes || $nbSourcesTypes === 0 || $nbSourcesTypes > 1 || !$sourcesTypes[0] instanceof Type) {
             return null;
         }
 
