@@ -397,4 +397,19 @@ class AutoMapperTest extends TestCase
         self::assertArrayHasKey('@id', $userArray);
         self::assertSame(1, $userArray['@id']);
     }
+
+    public function testDefaultArguments()
+    {
+        $user = new UserDTONoAge();
+        $user->id = 10;
+        $user->name = 'foo';
+        /** @var UserConstructorDTO $userDto */
+        $context = new Context();
+        $context->setConstructorArgument(UserConstructorDTO::class, 'age', 50);
+
+        $userDto = $this->autoMapper->map($user, UserConstructorDTO::class, $context);
+
+        self::assertInstanceOf(UserConstructorDTO::class, $userDto);
+        self::assertSame(50, $userDto->getAge());
+    }
 }

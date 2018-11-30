@@ -60,14 +60,20 @@ final class AutoMapperNormalizer implements DenormalizerInterface, NormalizerInt
         $context = new Context(
             $serializerContext[AbstractNormalizer::GROUPS] ?? null,
             $serializerContext[AbstractNormalizer::ATTRIBUTES] ?? null,
-            $serializerContextContext['ignored_attributes'] ?? null
+            $serializerContextContext[AbstractNormalizer::IGNORED_ATTRIBUTES] ?? null
         );
+
+        if (isset($serializerContext[AbstractNormalizer::DEFAULT_CONSTRUCTOR_ARGUMENTS])) {
+            foreach ($serializerContext[AbstractNormalizer::DEFAULT_CONSTRUCTOR_ARGUMENTS] as $class => $keyArgs) {
+                foreach ($keyArgs as $key => $value) {
+                    $context->setConstructorArgument($class, $key, $value);
+                }
+            }
+        }
 
         $context->setCircularReferenceLimit($circularReferenceLimit);
         $context->setObjectToPopulate($serializerContext[AbstractNormalizer::OBJECT_TO_POPULATE] ?? null);
-        $context->setCircularReferenceHandler($serializerContext['circular_reference_handler'] ?? null); // AbstractNormalizer::CIRCULAR_REFERENCE_HANDLER
-
-        // AbstractNormalizer::DEFAULT_CONSTRUCTOR_ARGUMENTS
+        $context->setCircularReferenceHandler($serializerContext[AbstractNormalizer::CIRCULAR_REFERENCE_HANDLER] ?? null); // AbstractNormalizer::CIRCULAR_REFERENCE_HANDLER
 
         return $context;
     }

@@ -24,6 +24,8 @@ class Context
 
     private $ignoredAttributes;
 
+    private $constructorArguments = [];
+
     public function __construct(array $groups = null, array $attributes = null, array $ignoredAttributes = null)
     {
         $this->groups = $groups;
@@ -92,7 +94,13 @@ class Context
 
     public function getObjectToPopulate()
     {
-        return $this->object;
+        $object = $this->object;
+
+        if ($object !== null) {
+            $this->object = null;
+        }
+
+        return $object;
     }
 
     public function setCircularReferenceLimit(?int $circularReferenceLimit): void
@@ -134,6 +142,25 @@ class Context
         ++$new->depth;
 
         return $new;
+    }
+
+    public function setConstructorArgument(string $class, string $key, $value): void
+    {
+        if ($this->constructorArguments[$class] ?? false) {
+            $this->constructorArguments[$class] = [];
+        }
+
+        $this->constructorArguments[$class][$key] = $value;
+    }
+
+    public function hasConstructorArgument(string $class, string $key): bool
+    {
+        return array_key_exists($key, $this->constructorArguments[$class] ?? []);
+    }
+
+    public function getConstructorArgument(string $class, string $key)
+    {
+        return $this->constructorArguments[$class][$key];
     }
 
     public function withNewContext(string $attribute): self

@@ -81,20 +81,48 @@ class Compiler
                     continue;
                 }
 
-                [$output, $propStatements] = $propertyMapping->getTransformer()->transform($propertyMapping->getReadAccessor()->getExpression($sourceInput), $uniqueVariableScope, $propertyMapping);
-                $constructArguments[$propertyMapping->getWriteMutator()->getParameter()->getPosition()] = new Arg($output);
+                $constructVar = new Expr\Variable($uniqueVariableScope->getUniqueName('constructArg'));
 
-                $createObjectStatements = array_merge(
-                    $createObjectStatements,
-                    $propStatements
-                );
+                [$output, $propStatements] = $propertyMapping->getTransformer()->transform($propertyMapping->getReadAccessor()->getExpression($sourceInput), $uniqueVariableScope, $propertyMapping);
+                $constructArguments[$propertyMapping->getWriteMutator()->getParameter()->getPosition()] = new Arg($constructVar);
+
+                $propStatements[] = new Stmt\Expression(new Expr\Assign($constructVar, $output));
+                $createObjectStatements[] = new Stmt\If_(new Expr\MethodCall($contextVariable, 'hasConstructorArgument', [
+                    new Arg(new Scalar\String_($mapperConfiguration->getTarget())),
+                    new Arg(new Scalar\String_($propertyMapping->getProperty())),
+                ]), [
+                    'stmts' => [
+                        new Stmt\Expression(new Expr\Assign($constructVar, new Expr\MethodCall($contextVariable, 'getConstructorArgument', [
+                            new Arg(new Scalar\String_($mapperConfiguration->getTarget())),
+                            new Arg(new Scalar\String_($propertyMapping->getProperty())),
+                        ]))),
+                    ],
+                    'else' => new Stmt\Else_($propStatements),
+                ]);
 
                 $inConstructor[] = $propertyMapping->getProperty();
             }
 
             foreach ($targetConstructor->getParameters() as $constructorParameter) {
                 if (!array_key_exists($constructorParameter->getPosition(), $constructArguments) && $constructorParameter->isDefaultValueAvailable()) {
-                    $constructArguments[$constructorParameter->getPosition()] = new Arg($this->getValueAsExpr($constructorParameter->getDefaultValue()));
+                    $constructVar = new Expr\Variable($uniqueVariableScope->getUniqueName('constructArg'));
+
+                    $createObjectStatements[] = new Stmt\If_(new Expr\MethodCall($contextVariable, 'hasConstructorArgument', [
+                        new Arg(new Scalar\String_($mapperConfiguration->getTarget())),
+                        new Arg(new Scalar\String_($constructorParameter->getName())),
+                    ]), [
+                        'stmts' => [
+                            new Stmt\Expression(new Expr\Assign($constructVar, new Expr\MethodCall($contextVariable, 'getConstructorArgument', [
+                                new Arg(new Scalar\String_($mapperConfiguration->getTarget())),
+                                new Arg(new Scalar\String_($constructorParameter->getName())),
+                            ]))),
+                        ],
+                        'else' => new Stmt\Else_([
+                            new Stmt\Expression(new Expr\Assign($constructVar, $this->getValueAsExpr($constructorParameter->getDefaultValue()))),
+                        ]),
+                    ]);
+
+                    $constructArguments[$constructorParameter->getPosition()] = new Arg($constructVar);
                 }
             }
 
