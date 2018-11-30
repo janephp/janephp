@@ -21,12 +21,12 @@ Generate automapper class which allows to automap values from Class to Class.
  * Cache generated code and regenerate on file change (check can be deactivated for even faster code)
  * AutoRegister (will create mapping even if not registered)
  * Specific Attributes mapping (with exclusion or inclusion strategy)
+ * Name Converter Supports
 
 ## Todo
 
  * Handling inheritance with class discriminator
  * Constructor Arguments
- * Name Converter Supports
 
 ## Why ?
 
