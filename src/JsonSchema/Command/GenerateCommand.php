@@ -72,6 +72,7 @@ class GenerateCommand extends Command
             'reference' => true,
             'strict' => true,
             'date-format' => \DateTime::RFC3339,
+            'use-cacheable-supports-method' => false,
         ]);
 
         if (array_key_exists('json-schema-file', $options)) {
@@ -100,6 +101,7 @@ class GenerateCommand extends Command
             'reference',
             'date-format',
             'strict',
+            'use-cacheable-supports-method',
         ]);
 
         $optionsResolver->setRequired([
