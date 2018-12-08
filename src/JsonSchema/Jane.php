@@ -96,7 +96,7 @@ class Jane extends ChainGenerator
         $chainGuesser = JsonSchemaGuesserFactory::create($serializer, $options);
         $naming = new Naming();
         $modelGenerator = new ModelGenerator($naming);
-        $normGenerator = new NormalizerGenerator($naming, $options['reference']);
+        $normGenerator = new NormalizerGenerator($naming, $options['reference'], $options['use-cacheable-supports-method'] ?? false);
 
         $self = new self($serializer, $chainGuesser, $naming, $options['strict']);
         $self->addGenerator($modelGenerator);
