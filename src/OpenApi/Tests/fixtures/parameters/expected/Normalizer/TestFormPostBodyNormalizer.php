@@ -11,6 +11,7 @@ declare(strict_types=1);
 namespace Jane\OpenApi\Tests\Expected\Normalizer;
 
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
+use Symfony\Component\Serializer\Normalizer\CacheableSupportsMethodInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -18,7 +19,7 @@ use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
-class TestFormPostBodyNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+class TestFormPostBodyNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface, CacheableSupportsMethodInterface
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
@@ -92,5 +93,10 @@ class TestFormPostBodyNormalizer implements DenormalizerInterface, NormalizerInt
         }
 
         return $data;
+    }
+
+    public function hasCacheableSupportsMethod(): bool
+    {
+        return true;
     }
 }

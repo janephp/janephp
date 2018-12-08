@@ -12,6 +12,7 @@ namespace Jane\JsonSchema\Tests\Expected\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
+use Symfony\Component\Serializer\Normalizer\CacheableSupportsMethodInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -19,7 +20,7 @@ use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
-class TestNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+class TestNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface, CacheableSupportsMethodInterface
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
@@ -94,5 +95,10 @@ class TestNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         $data->{'dateOrNullOrInt'} = $value_1;
 
         return $data;
+    }
+
+    public function hasCacheableSupportsMethod(): bool
+    {
+        return true;
     }
 }

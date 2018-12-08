@@ -37,6 +37,7 @@ trait NormalizerGenerator
                     new Name('NormalizerInterface'),
                     new Name('DenormalizerAwareInterface'),
                     new Name('NormalizerAwareInterface'),
+                    new Name('CacheableSupportsMethodInterface'),
                 ],
             ]
         );
@@ -138,6 +139,22 @@ trait NormalizerGenerator
                 new Param(new Expr\Variable('context'), new Expr\Array_(), 'array'),
             ],
             'stmts' => $statements,
+        ]);
+    }
+
+    /**
+     * Create method to say that hasCacheableSupportsMethod is supported.
+     *
+     * @return Stmt\ClassMethod
+     */
+    protected function createHasCacheableSupportsMethod()
+    {
+        return new Stmt\ClassMethod('hasCacheableSupportsMethod', [
+            'type' => Stmt\Class_::MODIFIER_PUBLIC,
+            'returnType' => 'bool',
+            'stmts' => [
+                new Stmt\Return_(new Expr\ConstFetch(new Name('true'))),
+            ],
         ]);
     }
 }

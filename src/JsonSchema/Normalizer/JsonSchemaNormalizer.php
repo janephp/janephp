@@ -12,6 +12,7 @@ namespace Jane\JsonSchema\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
+use Symfony\Component\Serializer\Normalizer\CacheableSupportsMethodInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -19,7 +20,7 @@ use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
-class JsonSchemaNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+class JsonSchemaNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface, CacheableSupportsMethodInterface
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
@@ -406,5 +407,10 @@ class JsonSchemaNormalizer implements DenormalizerInterface, NormalizerInterface
         }
 
         return $data;
+    }
+
+    public function hasCacheableSupportsMethod(): bool
+    {
+        return true;
     }
 }

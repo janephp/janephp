@@ -61,6 +61,7 @@ class NormalizerGenerator implements GeneratorInterface
             $methods[] = $this->createSupportsNormalizationMethod($modelFqdn);
             $methods[] = $this->createDenormalizeMethod($modelFqdn, $context, $class);
             $methods[] = $this->createNormalizeMethod($modelFqdn, $context, $class);
+            $methods[] = $this->createHasCacheableSupportsMethod();
 
             $normalizerClass = $this->createNormalizerClass(
                 $class->getName() . 'Normalizer',
@@ -71,6 +72,7 @@ class NormalizerGenerator implements GeneratorInterface
             $namespace = new Stmt\Namespace_(new Name($schema->getNamespace() . '\\Normalizer'), [
                 new Stmt\Use_([new Stmt\UseUse(new Name('Jane\JsonSchemaRuntime\Reference'))]),
                 new Stmt\Use_([new Stmt\UseUse(new Name('Symfony\Component\Serializer\Exception\InvalidArgumentException'))]),
+                new Stmt\Use_([new Stmt\UseUse(new Name('Symfony\Component\Serializer\Normalizer\CacheableSupportsMethodInterface'))]),
                 new Stmt\Use_([new Stmt\UseUse(new Name('Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface'))]),
                 new Stmt\Use_([new Stmt\UseUse(new Name('Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait'))]),
                 new Stmt\Use_([new Stmt\UseUse(new Name('Symfony\Component\Serializer\Normalizer\DenormalizerInterface'))]),
