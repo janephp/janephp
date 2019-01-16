@@ -10,12 +10,17 @@ use Symfony\Component\Serializer\SerializerInterface;
 
 trait Psr7HttplugEndpointTrait
 {
-    abstract protected function transformResponseBody(string $body, int $status, SerializerInterface $serializer);
+    abstract protected function transformResponseBody(string $body, int $status, SerializerInterface $serializer, ?string $contentType = null);
 
     public function parsePSR7Response(ResponseInterface $response, SerializerInterface $serializer, string $fetchMode = Client::FETCH_OBJECT)
     {
         if ($fetchMode === Client::FETCH_OBJECT) {
-            return $this->transformResponseBody((string) $response->getBody(), $response->getStatusCode(), $serializer);
+            return $this->transformResponseBody(
+                (string) $response->getBody(),
+                $response->getStatusCode(),
+                $serializer,
+                $response->getHeader('Content-Type')[0] ?? ''
+            );
         }
 
         if ($fetchMode === Client::FETCH_RESPONSE) {
