@@ -94,7 +94,7 @@ class NormalizerGenerator implements GeneratorInterface
             if ($this->useCacheableSupportsMethod) {
                 $useStmts[] = new Stmt\Use_([new Stmt\UseUse(new Name('Symfony\Component\Serializer\Normalizer\CacheableSupportsMethodInterface'))]);
             }
-            
+
             $useStmts[] = $normalizerClass;
 
             $namespace = new Stmt\Namespace_(new Name($schema->getNamespace() . '\\Normalizer'), $useStmts);
