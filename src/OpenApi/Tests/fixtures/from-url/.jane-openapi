@@ -4,4 +4,5 @@ return [
     'openapi-file' => 'https://raw.githubusercontent.com/OAI/OpenAPI-Specification/master/examples/v2.0/yaml/petstore.yaml',
     'namespace' => 'Jane\OpenApi\Tests\Expected',
     'directory' => __DIR__ . '/generated',
+    'use-fixer' => false,
 ];

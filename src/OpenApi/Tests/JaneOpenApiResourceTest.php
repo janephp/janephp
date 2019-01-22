@@ -28,8 +28,11 @@ class JaneOpenApiResourceTest extends TestCase
 
         // 2. Generate
         $command = new GenerateCommand();
-        $input = new ArrayInput(['--config-file' => $testDirectory->getRealPath() . \DIRECTORY_SEPARATOR . '.jane-openapi'], $command->getDefinition());
-        $command->execute($input, new NullOutput());
+        $inputArray = new ArrayInput([
+            '--config-file' => $testDirectory->getRealPath() . \DIRECTORY_SEPARATOR . '.jane-openapi',
+        ], $command->getDefinition());
+
+        $command->execute($inputArray, new NullOutput());
 
         // 3. Compare
         $expectedFinder = new Finder();

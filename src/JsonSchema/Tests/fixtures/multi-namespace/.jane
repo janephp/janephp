@@ -14,5 +14,6 @@ return [
             'directory' => __DIR__ . '/generated/Schema1',
         ],
     ],
-    'reference' => false
+    'reference' => false,
+    'use-fixer' => false,
 ];
