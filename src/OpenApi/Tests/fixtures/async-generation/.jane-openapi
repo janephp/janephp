@@ -5,4 +5,5 @@ return [
     'namespace' => 'Jane\OpenApi\Tests\Expected',
     'directory' => __DIR__ . '/generated',
     'async' => true,
+    'use-fixer' => false,
 ];

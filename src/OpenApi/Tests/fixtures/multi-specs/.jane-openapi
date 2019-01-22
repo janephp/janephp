@@ -11,4 +11,5 @@ return [
             'directory' => __DIR__ . '/generated/Api2',
         ],
     ],
+    'use-fixer' => false,
 ];
