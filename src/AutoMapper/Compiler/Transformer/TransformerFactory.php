@@ -21,7 +21,7 @@ class TransformerFactory
      * @param Type[] $sourcesTypes
      * @param Type[] $targetTypes
      *
-     * @return null|TransformerInterface
+     * @return TransformerInterface|null
      */
     public function getTransformer(?array $sourcesTypes, ?array $targetTypes): ?TransformerInterface
     {

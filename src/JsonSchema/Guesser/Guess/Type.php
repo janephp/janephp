@@ -117,7 +117,7 @@ class Type
     }
 
     /**
-     * @return null|string|Name
+     * @return string|Name|null
      */
     public function getTypeHint($namespace)
     {
@@ -125,7 +125,7 @@ class Type
     }
 
     /**
-     * @return null|string|Name
+     * @return string|Name|null
      */
     public function getDocTypeHint($namespace)
     {
