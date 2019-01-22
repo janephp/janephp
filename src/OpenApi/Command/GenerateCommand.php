@@ -23,7 +23,6 @@ class GenerateCommand extends Command
         $this->setName('generate');
         $this->setDescription('Generate an api client: class, normalizers and resources given a specific Json OpenApi file');
         $this->addOption('config-file', 'c', InputOption::VALUE_REQUIRED, 'File to use for Jane OpenAPI configuration', '.jane-openapi');
-        $this->addOption('fixer-config-file', 'f', InputOption::VALUE_REQUIRED, 'File to use for php-cs-fixer configuration');
     }
 
     /**
@@ -57,11 +56,15 @@ class GenerateCommand extends Command
         $janeOpenApi = JaneOpenApi::build($options);
         $fixerConfigFile = '';
 
-        if ($input->hasOption('fixer-config-file') && null !== $input->getOption('fixer-config-file')) {
-            $fixerConfigFile = $input->getOption('fixer-config-file');
+        if (array_key_exists('fixer-config-file', $options) && null !== $options['fixer-config-file']) {
+            $fixerConfigFile = $options['fixer-config-file'];
         }
 
         $printer = new Printer(new Standard(), $fixerConfigFile);
+
+        if (array_key_exists('use-fixer', $options) && false === $options['use-fixer']) {
+            $printer->setUseFixer(false);
+        }
 
         $janeOpenApi->generate($registry);
         $printer->output($registry);
@@ -75,6 +78,8 @@ class GenerateCommand extends Command
             'date-format' => \DateTime::RFC3339,
             'async' => false,
             'strict' => true,
+            'use-fixer' => true,
+            'fixer-config-file' => null,
         ]);
 
         if (array_key_exists('openapi-file', $options)) {
@@ -103,6 +108,8 @@ class GenerateCommand extends Command
             'date-format',
             'async',
             'strict',
+            'use-fixer',
+            'fixer-config-file',
         ]);
 
         $optionsResolver->setRequired([

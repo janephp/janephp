@@ -30,7 +30,6 @@ class JaneOpenApiResourceTest extends TestCase
         $command = new GenerateCommand();
         $inputArray = new ArrayInput([
             '--config-file' => $testDirectory->getRealPath() . \DIRECTORY_SEPARATOR . '.jane-openapi',
-            '--fixer-config-file' => __DIR__ . '/.php_cs',
         ], $command->getDefinition());
 
         $command->execute($inputArray, new NullOutput());
