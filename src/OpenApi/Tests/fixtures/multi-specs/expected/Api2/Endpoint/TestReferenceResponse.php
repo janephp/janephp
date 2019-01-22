@@ -33,7 +33,7 @@ class TestReferenceResponse extends \Jane\OpenApiRuntime\Client\BaseEndpoint imp
      * {@inheritdoc}
      *
      *
-     * @return null|\Jane\OpenApi\Tests\Expected\Api1\Model\Body
+     * @return \Jane\OpenApi\Tests\Expected\Api1\Model\Body|null
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
     {

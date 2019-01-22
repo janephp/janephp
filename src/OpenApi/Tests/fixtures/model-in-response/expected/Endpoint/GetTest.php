@@ -35,7 +35,7 @@ class GetTest extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\
      * @throws \Jane\OpenApi\Tests\Expected\Exception\GetTestBadRequestException
      * @throws \Jane\OpenApi\Tests\Expected\Exception\GetTestNotFoundException
      *
-     * @return null|\Jane\OpenApi\Tests\Expected\Model\Schema
+     * @return \Jane\OpenApi\Tests\Expected\Model\Schema|null
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
     {

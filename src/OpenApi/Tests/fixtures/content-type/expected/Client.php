@@ -16,7 +16,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @param string $testString
      * @param string $fetch      Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return \Psr\Http\Message\ResponseInterface|null
      */
     public function bodyParameterTriggersContentTypeBeingSet(string $testString, string $fetch = self::FETCH_OBJECT)
     {
@@ -26,7 +26,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return \Psr\Http\Message\ResponseInterface|null
      */
     public function producesTriggersAcceptBeingSet(string $fetch = self::FETCH_OBJECT)
     {

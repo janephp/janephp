@@ -33,7 +33,7 @@ class GetEmptyTest extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \
      * {@inheritdoc}
      *
      *
-     * @return null|\Jane\OpenApi\Tests\Expected\Model\EmptySpace
+     * @return \Jane\OpenApi\Tests\Expected\Model\EmptySpace|null
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
     {

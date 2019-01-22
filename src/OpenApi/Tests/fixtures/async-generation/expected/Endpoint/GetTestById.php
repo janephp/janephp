@@ -45,7 +45,7 @@ class GetTestById extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \J
      * @throws \Jane\OpenApi\Tests\Expected\Exception\GetTestByIdBadRequestException
      * @throws \Jane\OpenApi\Tests\Expected\Exception\GetTestByIdNotFoundException
      *
-     * @return null|\Jane\OpenApi\Tests\Expected\Model\TestIdGetResponse200
+     * @return \Jane\OpenApi\Tests\Expected\Model\TestIdGetResponse200|null
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
     {

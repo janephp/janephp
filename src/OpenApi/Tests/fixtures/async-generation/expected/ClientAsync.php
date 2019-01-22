@@ -18,7 +18,7 @@ class ClientAsync extends \Jane\OpenApiRuntime\Client\AmpArtaxClient
      * @throws \Jane\OpenApi\Tests\Expected\Exception\GetTestBadRequestException
      * @throws \Jane\OpenApi\Tests\Expected\Exception\GetTestNotFoundException
      *
-     * @return \Amp\Promise<null|\Jane\OpenApi\Tests\Expected\Model\Schema|\Amp\Artax\Response>
+     * @return \Amp\Promise<\Jane\OpenApi\Tests\Expected\Model\Schema|\Amp\Artax\Response|null>
      */
     public function getTest(string $fetch = self::FETCH_OBJECT)
     {
@@ -32,7 +32,7 @@ class ClientAsync extends \Jane\OpenApiRuntime\Client\AmpArtaxClient
      * @throws \Jane\OpenApi\Tests\Expected\Exception\GetTestByIdBadRequestException
      * @throws \Jane\OpenApi\Tests\Expected\Exception\GetTestByIdNotFoundException
      *
-     * @return \Amp\Promise<null|\Jane\OpenApi\Tests\Expected\Model\TestIdGetResponse200|\Amp\Artax\Response>
+     * @return \Amp\Promise<\Jane\OpenApi\Tests\Expected\Model\TestIdGetResponse200|\Amp\Artax\Response|null>
      */
     public function getTestById(int $id, string $fetch = self::FETCH_OBJECT)
     {
@@ -42,7 +42,7 @@ class ClientAsync extends \Jane\OpenApiRuntime\Client\AmpArtaxClient
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Amp\Promise<null|\Jane\OpenApi\Tests\Expected\Model\Schema[]|\Amp\Artax\Response>
+     * @return \Amp\Promise<\Jane\OpenApi\Tests\Expected\Model\Schema[]|\Amp\Artax\Response|null>
      */
     public function getTestList(string $fetch = self::FETCH_OBJECT)
     {

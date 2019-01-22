@@ -15,7 +15,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return \Psr\Http\Message\ResponseInterface|null
      */
     public function testNoTag(string $fetch = self::FETCH_OBJECT)
     {
@@ -25,7 +25,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return \Psr\Http\Message\ResponseInterface|null
      */
     public function getTestOperationUrl(string $fetch = self::FETCH_OBJECT)
     {
@@ -35,7 +35,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return \Psr\Http\Message\ResponseInterface|null
      */
     public function getTestOperationUrlById(string $fetch = self::FETCH_OBJECT)
     {
@@ -45,7 +45,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return \Psr\Http\Message\ResponseInterface|null
      */
     public function getTestOperationUrlWithExtension(string $fetch = self::FETCH_OBJECT)
     {
@@ -55,7 +55,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return \Psr\Http\Message\ResponseInterface|null
      */
     public function deleteTest(string $fetch = self::FETCH_OBJECT)
     {
@@ -65,7 +65,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return \Psr\Http\Message\ResponseInterface|null
      */
     public function getTest(string $fetch = self::FETCH_OBJECT)
     {
@@ -75,7 +75,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return \Psr\Http\Message\ResponseInterface|null
      */
     public function headTest(string $fetch = self::FETCH_OBJECT)
     {
@@ -85,7 +85,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return \Psr\Http\Message\ResponseInterface|null
      */
     public function optionsTest(string $fetch = self::FETCH_OBJECT)
     {
@@ -95,7 +95,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return \Psr\Http\Message\ResponseInterface|null
      */
     public function patchTest(string $fetch = self::FETCH_OBJECT)
     {
@@ -105,7 +105,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return \Psr\Http\Message\ResponseInterface|null
      */
     public function postTest(string $fetch = self::FETCH_OBJECT)
     {
@@ -115,7 +115,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return \Psr\Http\Message\ResponseInterface|null
      */
     public function putTest(string $fetch = self::FETCH_OBJECT)
     {
@@ -125,7 +125,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Jane\OpenApi\Tests\Expected\Model\Thing[]|\Psr\Http\Message\ResponseInterface
+     * @return \Jane\OpenApi\Tests\Expected\Model\Thing[]|\Psr\Http\Message\ResponseInterface|null
      */
     public function getThings(string $fetch = self::FETCH_OBJECT)
     {
@@ -135,7 +135,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Jane\OpenApi\Tests\Expected\Model\Thing[]|\Psr\Http\Message\ResponseInterface
+     * @return \Jane\OpenApi\Tests\Expected\Model\Thing[]|\Psr\Http\Message\ResponseInterface|null
      */
     public function getThingsById(string $fetch = self::FETCH_OBJECT)
     {
@@ -145,7 +145,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Jane\OpenApi\Tests\Expected\Model\Thing|\Psr\Http\Message\ResponseInterface
+     * @return \Jane\OpenApi\Tests\Expected\Model\Thing|\Psr\Http\Message\ResponseInterface|null
      */
     public function getAnotherThing(string $fetch = self::FETCH_OBJECT)
     {
@@ -155,7 +155,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Jane\OpenApi\Tests\Expected\Model\Thing|\Psr\Http\Message\ResponseInterface
+     * @return \Jane\OpenApi\Tests\Expected\Model\Thing|\Psr\Http\Message\ResponseInterface|null
      */
     public function getAnotherThingById(string $fetch = self::FETCH_OBJECT)
     {
@@ -165,7 +165,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return \Psr\Http\Message\ResponseInterface|null
      */
     public function postNo200Thing(string $fetch = self::FETCH_OBJECT)
     {

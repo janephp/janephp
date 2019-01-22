@@ -26,7 +26,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return \Psr\Http\Message\ResponseInterface|null
      */
     public function testGetWithPathParameters(array $testBody, array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -47,7 +47,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return \Psr\Http\Message\ResponseInterface|null
      */
     public function testPostWithPathParameters(array $testBody, array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -67,7 +67,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return \Psr\Http\Message\ResponseInterface|null
      */
     public function testQueryParameters(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -87,7 +87,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return \Psr\Http\Message\ResponseInterface|null
      */
     public function testHeaderParameters(array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -107,7 +107,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return \Psr\Http\Message\ResponseInterface|null
      */
     public function testFormParameters(array $formParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -122,7 +122,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return \Psr\Http\Message\ResponseInterface|null
      */
     public function testFormFileParameters(array $formParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -133,7 +133,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @param string|resource|\Psr\Http\Message\StreamInterface $testBinary
      * @param string                                            $fetch      Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return \Psr\Http\Message\ResponseInterface|null
      */
     public function testBinaryBody($testBinary, string $fetch = self::FETCH_OBJECT)
     {
@@ -146,7 +146,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @param float  $testFloat
      * @param string $fetch       Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return \Psr\Http\Message\ResponseInterface|null
      */
     public function testPathParameters(string $testString, int $testInteger, float $testFloat, string $fetch = self::FETCH_OBJECT)
     {
@@ -157,7 +157,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @param int    $testInteger
      * @param string $fetch       Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return \Psr\Http\Message\ResponseInterface|null
      */
     public function getByTestInteger(int $testInteger, string $fetch = self::FETCH_OBJECT)
     {

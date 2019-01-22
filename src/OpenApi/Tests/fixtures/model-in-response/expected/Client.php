@@ -15,7 +15,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Jane\OpenApi\Tests\Expected\Model\EmptySpace|\Psr\Http\Message\ResponseInterface
+     * @return \Jane\OpenApi\Tests\Expected\Model\EmptySpace|\Psr\Http\Message\ResponseInterface|null
      */
     public function getEmptyTest(string $fetch = self::FETCH_OBJECT)
     {
@@ -28,7 +28,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @throws \Jane\OpenApi\Tests\Expected\Exception\GetTestBadRequestException
      * @throws \Jane\OpenApi\Tests\Expected\Exception\GetTestNotFoundException
      *
-     * @return null|\Jane\OpenApi\Tests\Expected\Model\Schema|\Psr\Http\Message\ResponseInterface
+     * @return \Jane\OpenApi\Tests\Expected\Model\Schema|\Psr\Http\Message\ResponseInterface|null
      */
     public function getTest(string $fetch = self::FETCH_OBJECT)
     {
@@ -42,7 +42,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @throws \Jane\OpenApi\Tests\Expected\Exception\GetTestByIdBadRequestException
      * @throws \Jane\OpenApi\Tests\Expected\Exception\GetTestByIdNotFoundException
      *
-     * @return null|\Jane\OpenApi\Tests\Expected\Model\TestIdGetResponse200|\Psr\Http\Message\ResponseInterface
+     * @return \Jane\OpenApi\Tests\Expected\Model\TestIdGetResponse200|\Psr\Http\Message\ResponseInterface|null
      */
     public function getTestById(int $id, string $fetch = self::FETCH_OBJECT)
     {
@@ -52,7 +52,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Jane\OpenApi\Tests\Expected\Model\Schema[]|\Psr\Http\Message\ResponseInterface
+     * @return \Jane\OpenApi\Tests\Expected\Model\Schema[]|\Psr\Http\Message\ResponseInterface|null
      */
     public function getTestList(string $fetch = self::FETCH_OBJECT)
     {

@@ -16,7 +16,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @param \Jane\OpenApi\Tests\Expected\Model\TestGetBody $body
      * @param string                                         $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return \Psr\Http\Message\ResponseInterface|null
      */
     public function getTest(\Jane\OpenApi\Tests\Expected\Model\TestGetBody $body, string $fetch = self::FETCH_OBJECT)
     {
@@ -27,7 +27,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @param \Jane\OpenApi\Tests\Expected\Model\TestPostBody $body
      * @param string                                          $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return \Psr\Http\Message\ResponseInterface|null
      */
     public function test(\Jane\OpenApi\Tests\Expected\Model\TestPostBody $body, string $fetch = self::FETCH_OBJECT)
     {

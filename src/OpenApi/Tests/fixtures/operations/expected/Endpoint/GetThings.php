@@ -33,7 +33,7 @@ class GetThings extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jan
      * {@inheritdoc}
      *
      *
-     * @return null|\Jane\OpenApi\Tests\Expected\Model\Thing[]
+     * @return \Jane\OpenApi\Tests\Expected\Model\Thing[]|null
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
     {

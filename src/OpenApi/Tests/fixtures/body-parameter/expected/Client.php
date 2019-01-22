@@ -16,7 +16,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @param string|resource|\Psr\Http\Message\StreamInterface $testString
      * @param string                                            $fetch      Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return \Psr\Http\Message\ResponseInterface|null
      */
     public function testSimpleBodyParameter($testString, string $fetch = self::FETCH_OBJECT)
     {
@@ -27,7 +27,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @param \Jane\OpenApi\Tests\Expected\Model\Schema $testObject
      * @param string                                    $fetch      Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return \Psr\Http\Message\ResponseInterface|null
      */
     public function testObjectBodyParameter(\Jane\OpenApi\Tests\Expected\Model\Schema $testObject, string $fetch = self::FETCH_OBJECT)
     {
@@ -38,7 +38,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @param \Jane\OpenApi\Tests\Expected\Model\Schema[] $testObjectList
      * @param string                                      $fetch          Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return \Psr\Http\Message\ResponseInterface|null
      */
     public function testObjectListBodyParameter(array $testObjectList, string $fetch = self::FETCH_OBJECT)
     {

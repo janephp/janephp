@@ -19,7 +19,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @throws \Jane\OpenApi\Tests\Expected\Exception\TestNoTagNotFoundException
      * @throws \Jane\OpenApi\Tests\Expected\Exception\TestNoTagInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return \Psr\Http\Message\ResponseInterface|null
      */
     public function testNoTag(string $fetch = self::FETCH_OBJECT)
     {

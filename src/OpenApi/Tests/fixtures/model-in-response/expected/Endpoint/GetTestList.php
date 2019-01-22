@@ -33,7 +33,7 @@ class GetTestList extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \J
      * {@inheritdoc}
      *
      *
-     * @return null|\Jane\OpenApi\Tests\Expected\Model\Schema[]
+     * @return \Jane\OpenApi\Tests\Expected\Model\Schema[]|null
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
     {

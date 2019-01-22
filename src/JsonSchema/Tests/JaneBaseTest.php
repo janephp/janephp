@@ -30,6 +30,7 @@ class JaneBaseTest extends TestCase
         $command = new GenerateCommand();
         $inputArray = new ArrayInput([
             '--config-file' => $testDirectory->getRealPath() . \DIRECTORY_SEPARATOR . '.jane',
+            '--fixer-config-file' => __DIR__ . '/.php_cs',
         ], $command->getDefinition());
 
         $command->execute($inputArray, new NullOutput());

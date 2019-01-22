@@ -23,6 +23,7 @@ class GenerateCommand extends Command
         $this->setName('generate');
         $this->setDescription('Generate an api client: class, normalizers and resources given a specific Json OpenApi file');
         $this->addOption('config-file', 'c', InputOption::VALUE_REQUIRED, 'File to use for Jane OpenAPI configuration', '.jane-openapi');
+        $this->addOption('fixer-config-file', 'f', InputOption::VALUE_REQUIRED, 'File to use for php-cs-fixer configuration');
     }
 
     /**
@@ -54,7 +55,13 @@ class GenerateCommand extends Command
         }
 
         $janeOpenApi = JaneOpenApi::build($options);
-        $printer = new Printer(new Standard());
+        $fixerConfigFile = '';
+
+        if ($input->hasOption('fixer-config-file') && null !== $input->getOption('fixer-config-file')) {
+            $fixerConfigFile = $input->getOption('fixer-config-file');
+        }
+
+        $printer = new Printer(new Standard(), $fixerConfigFile);
 
         $janeOpenApi->generate($registry);
         $printer->output($registry);

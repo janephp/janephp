@@ -21,7 +21,7 @@ class Test
      */
     protected $dateOrNull;
     /**
-     * @var \DateTime|null|int
+     * @var \DateTime|int|null
      */
     protected $dateOrNullOrInt;
 
@@ -66,7 +66,7 @@ class Test
     }
 
     /**
-     * @return \DateTime|null|int
+     * @return \DateTime|int|null
      */
     public function getDateOrNullOrInt()
     {
@@ -74,7 +74,7 @@ class Test
     }
 
     /**
-     * @param \DateTime|null|int $dateOrNullOrInt
+     * @param \DateTime|int|null $dateOrNullOrInt
      *
      * @return self
      */

@@ -60,7 +60,7 @@ class ListPets extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane
      * {@inheritdoc}
      *
      *
-     * @return null|\Jane\OpenApi\Tests\Expected\Model\Pet[]|\Jane\OpenApi\Tests\Expected\Model\Error
+     * @return \Jane\OpenApi\Tests\Expected\Model\Pet[]|\Jane\OpenApi\Tests\Expected\Model\Error|null
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
     {
