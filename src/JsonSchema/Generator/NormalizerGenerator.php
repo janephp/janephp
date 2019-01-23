@@ -41,7 +41,7 @@ class NormalizerGenerator implements GeneratorInterface
     {
         $this->naming = $naming;
         $this->useReference = $useReference;
-        $this->useCacheableSupportsMethod = $useCacheableSupportsMethod;
+        $this->useCacheableSupportsMethod = $this->canUseCacheableSupportsMethod($useCacheableSupportsMethod);
     }
 
     /**
@@ -69,14 +69,14 @@ class NormalizerGenerator implements GeneratorInterface
             $methods[] = $this->createDenormalizeMethod($modelFqdn, $context, $class);
             $methods[] = $this->createNormalizeMethod($modelFqdn, $context, $class);
 
-            if ($this->canUseCacheableSupportsMethod()) {
+            if ($this->useCacheableSupportsMethod) {
                 $methods[] = $this->createHasCacheableSupportsMethod();
             }
 
             $normalizerClass = $this->createNormalizerClass(
                 $class->getName() . 'Normalizer',
                 $methods,
-                $this->canUseCacheableSupportsMethod()
+                $this->useCacheableSupportsMethod
             );
             $classes[] = $normalizerClass->name;
 
@@ -111,11 +111,11 @@ class NormalizerGenerator implements GeneratorInterface
         ));
     }
 
-    protected function canUseCacheableSupportsMethod(): bool
+    protected function canUseCacheableSupportsMethod(?bool $useCacheableSupportsMethod): bool
     {
         return
-            true === $this->useCacheableSupportsMethod ||
-            (null === $this->useCacheableSupportsMethod && true === class_exists('Symfony\Component\Serializer\Normalizer\CacheableSupportsMethodInterface'));
+            true === $useCacheableSupportsMethod ||
+            (null === $useCacheableSupportsMethod && class_exists('Symfony\Component\Serializer\Normalizer\CacheableSupportsMethodInterface'));
     }
 
     protected function createNormalizerFactoryClass($classes)
