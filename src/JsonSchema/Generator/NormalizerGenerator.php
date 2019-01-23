@@ -28,7 +28,7 @@ class NormalizerGenerator implements GeneratorInterface
     protected $useReference;
 
     /**
-     * @var bool Whether to use the CacheableSupportsMethodInterface interface, for >sf 4.1
+     * @var bool|null Whether to use the CacheableSupportsMethodInterface interface, for >sf 4.1
      */
     protected $useCacheableSupportsMethod;
 
@@ -37,7 +37,7 @@ class NormalizerGenerator implements GeneratorInterface
      * @param bool   $useReference Whether to generate the JSON Reference system
      * @param bool   $useCache     Whether to use the CacheableSupportsMethodInterface interface, for >sf 4.1
      */
-    public function __construct(Naming $naming, $useReference = true, $useCacheableSupportsMethod = false)
+    public function __construct(Naming $naming, $useReference = true, $useCacheableSupportsMethod = null)
     {
         $this->naming = $naming;
         $this->useReference = $useReference;
@@ -69,14 +69,14 @@ class NormalizerGenerator implements GeneratorInterface
             $methods[] = $this->createDenormalizeMethod($modelFqdn, $context, $class);
             $methods[] = $this->createNormalizeMethod($modelFqdn, $context, $class);
 
-            if ($this->useCacheableSupportsMethod) {
+            if ($this->canUseCacheableSupportsMethod()) {
                 $methods[] = $this->createHasCacheableSupportsMethod();
             }
 
             $normalizerClass = $this->createNormalizerClass(
                 $class->getName() . 'Normalizer',
                 $methods,
-                $this->useCacheableSupportsMethod
+                $this->canUseCacheableSupportsMethod()
             );
             $classes[] = $normalizerClass->name;
 
@@ -109,6 +109,13 @@ class NormalizerGenerator implements GeneratorInterface
             ]),
             self::FILE_TYPE_NORMALIZER
         ));
+    }
+
+    protected function canUseCacheableSupportsMethod(): bool
+    {
+        return
+            true === $this->useCacheableSupportsMethod ||
+            (null === $this->useCacheableSupportsMethod && true === class_exists('Symfony\Component\Serializer\Normalizer\CacheableSupportsMethodInterface'));
     }
 
     protected function createNormalizerFactoryClass($classes)

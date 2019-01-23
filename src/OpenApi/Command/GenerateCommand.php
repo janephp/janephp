@@ -80,7 +80,7 @@ class GenerateCommand extends Command
             'strict' => true,
             'use-fixer' => true,
             'fixer-config-file' => null,
-            'use-cacheable-supports-method' => false,
+            'use-cacheable-supports-method' => null,
         ]);
 
         if (array_key_exists('openapi-file', $options)) {

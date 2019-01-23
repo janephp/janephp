@@ -78,7 +78,7 @@ class GenerateCommand extends Command
             'date-format' => \DateTime::RFC3339,
             'use-fixer' => true,
             'fixer-config-file' => null,
-            'use-cacheable-supports-method' => false,
+            'use-cacheable-supports-method' => null,
         ]);
 
         if (array_key_exists('json-schema-file', $options)) {
