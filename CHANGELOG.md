@@ -2,7 +2,10 @@
 
 ## Unreleased
 
-...
+* [JsonSchema] Added `use-cacheable-supports-method` option to add CacheableSupportsMethodInterface to your Normalizers.
+* [OpenAPI] Added `use-cacheable-supports-method` option to add CacheableSupportsMethodInterface to your Normalizers
+* [JsonSchema] Added `use-fixer` & `fixer-config-file` options to disable or change configuration to post generation cs-fix.
+* [OpenAPI] Added `use-fixer` & `fixer-config-file` options to disable or change configuration to post generation cs-fix.
 
 ## 4.0.1 - 2018-02-22
 
