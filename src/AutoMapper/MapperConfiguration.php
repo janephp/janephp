@@ -13,9 +13,12 @@ class MapperConfiguration extends AbstractMapperConfiguration
 
     private $customMapping = [];
 
-    public function __construct(PropertiesMappingExtractorInterface $mappingExtractor, string $source, string $target, string $classPrefix = 'Mapper_')
+    private $autoMapperRegister;
+
+    public function __construct(AutoMapperRegisterInterface $autoMapperRegister, PropertiesMappingExtractorInterface $mappingExtractor, string $source, string $target, string $classPrefix = 'Mapper_')
     {
         $this->mappingExtractor = $mappingExtractor;
+        $this->autoMapperRegister = $autoMapperRegister;
 
         parent::__construct($source, $target, $classPrefix);
     }
@@ -102,5 +105,37 @@ class MapperConfiguration extends AbstractMapperConfiguration
         $reflection = new \ReflectionClass($this->getTarget());
 
         return $reflection->isCloneable() && !$reflection->hasMethod('__clone');
+    }
+
+    public function canHaveCircularDependency(): bool
+    {
+        $checked = [];
+
+        return $this->checkCircularMapperConfiguration($this, $checked);
+    }
+
+    protected function checkCircularMapperConfiguration(MapperConfigurationInterface $configuration, &$checked)
+    {
+        foreach ($configuration->getPropertiesMapping() as $propertyMapping) {
+            foreach ($propertyMapping->getTransformer()->getDependencies() as $dependency) {
+                if (isset($checked[$dependency->getName()])) {
+                    continue;
+                }
+
+                $checked[$dependency->getName()] = true;
+
+                if ($dependency->getSource() === $this->getSource() && $dependency->getTarget() === $this->getTarget()) {
+                    return true;
+                }
+
+                $subConfiguration = $this->autoMapperRegister->getConfiguration($dependency->getSource(), $dependency->getTarget());
+
+                if (null !== $subConfiguration && true === $this->checkCircularMapperConfiguration($subConfiguration, $checked)) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
     }
 }

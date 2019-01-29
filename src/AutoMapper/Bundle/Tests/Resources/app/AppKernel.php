@@ -49,6 +49,11 @@ class AppKernel extends Kernel
     {
         return new Response();
     }
+
+    public function getProjectDir()
+    {
+        return __DIR__ . '/..';
+    }
 }
 
 class UserConfigurationPass implements ConfigurationPassInterface

@@ -64,6 +64,7 @@ class JaneAutoMapperExtension extends Extension
         $serviceName = 'Mapping_' . $config['source'] . '_' . $config['target'];
         $definition = $container->register($serviceName, MapperConfiguration::class);
         $definition->setFactory([new Reference(MapperConfigurationFactory::class), 'create']);
+        $definition->addArgument(new Reference(AutoMapper::class));
         $definition->addArgument($config['source']);
         $definition->addArgument($config['target']);
         $definition->addTag('jane_auto_mapper.mapper_configuration');

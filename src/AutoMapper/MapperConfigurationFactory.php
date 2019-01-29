@@ -25,7 +25,7 @@ class MapperConfigurationFactory
         $this->classPrefix = $classPrefix;
     }
 
-    public function create($source, $target): MapperConfigurationInterface
+    public function create(AutoMapperRegisterInterface $autoMapperRegister, $source, $target): MapperConfiguration
     {
         $extractor = $this->sourceTargetPropertiesMappingExtractor;
 
@@ -37,6 +37,6 @@ class MapperConfigurationFactory
             $extractor = $this->fromSourcePropertiesMappingExtractor;
         }
 
-        return new MapperConfiguration($extractor, $source, $target, $this->classPrefix);
+        return new MapperConfiguration($autoMapperRegister, $extractor, $source, $target, $this->classPrefix);
     }
 }

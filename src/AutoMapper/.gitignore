@@ -4,3 +4,4 @@ composer.lock
 Tests/generated/*
 !Tests/generated/.gitkeep
 Tests/fixtures/*/generated
+Bundle/Tests/Resources/var

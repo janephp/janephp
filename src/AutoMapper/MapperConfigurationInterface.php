@@ -28,4 +28,6 @@ interface MapperConfigurationInterface
     public function isTargetCloneable(): bool;
 
     public function getDateTimeFormat(): string;
+
+    public function canHaveCircularDependency(): bool;
 }

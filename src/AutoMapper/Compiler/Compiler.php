@@ -40,6 +40,7 @@ class Compiler
         $constructStatements = [];
         $injectMapperStatements = [];
         $addedDependencies = [];
+        $canHaveCircularDependency = $mapperConfiguration->canHaveCircularDependency() && $mapperConfiguration->getSource() !== 'array';
 
         $statements = [
             new Stmt\If_(new Expr\BinaryOp\Identical(new Expr\ConstFetch(new Name('null')), $sourceInput), [
@@ -47,7 +48,7 @@ class Compiler
             ]),
         ];
 
-        if ($mapperConfiguration->getSource() !== 'array') {
+        if ($canHaveCircularDependency) {
             $statements[] = new Stmt\Expression(new Expr\Assign($hashVariable, new Expr\BinaryOp\Concat(new Expr\FuncCall(new Name('spl_object_hash'), [
                 new Arg($sourceInput),
             ]),
@@ -96,7 +97,7 @@ class Compiler
         }
 
         if (\count($addedDependencies) > 0) {
-            if ($mapperConfiguration->getSource() !== 'array') {
+            if ($canHaveCircularDependency) {
                 $statements[] = new Stmt\Expression(new Expr\Assign(
                     $contextVariable,
                     new Expr\MethodCall($contextVariable, 'withReference', [

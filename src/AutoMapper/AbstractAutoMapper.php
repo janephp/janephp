@@ -93,7 +93,7 @@ abstract class AbstractAutoMapper implements AutoMapperInterface, AutoMapperRegi
                 return null;
             }
 
-            $this->register($this->mapperConfigurationFactory->create($source, $target));
+            $this->register($this->mapperConfigurationFactory->create($this, $source, $target));
         }
 
         return $this->configurations[$source][$target];
