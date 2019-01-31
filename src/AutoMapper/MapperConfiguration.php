@@ -13,6 +13,8 @@ class MapperConfiguration extends AbstractMapperConfiguration
 
     private $customMapping = [];
 
+    private $propertiesMapping;
+
     private $autoMapperRegister;
 
     public function __construct(AutoMapperRegisterInterface $autoMapperRegister, PropertiesMappingExtractorInterface $mappingExtractor, string $source, string $target, string $classPrefix = 'Mapper_')
@@ -28,10 +30,32 @@ class MapperConfiguration extends AbstractMapperConfiguration
      */
     public function getPropertiesMapping(): array
     {
-        $mappings = $this->mappingExtractor->getPropertiesMapping($this->source, $this->target, $this);
+        if ($this->propertiesMapping === null) {
+            $this->buildPropertyMapping();
+        }
+
+        return $this->propertiesMapping;
+    }
+
+    public function getPropertyMapping(string $property): ?PropertyMapping
+    {
+        if ($this->propertiesMapping === null) {
+            $this->buildPropertyMapping();
+        }
+
+        return $this->propertiesMapping[$property] ?? null;
+    }
+
+    private function buildPropertyMapping()
+    {
+        $this->propertiesMapping = [];
+
+        foreach ($this->mappingExtractor->getPropertiesMapping($this->source, $this->target, $this) as $propertyMapping) {
+            $this->propertiesMapping[$propertyMapping->getProperty()] = $propertyMapping;
+        }
 
         foreach ($this->customMapping as $property => $callback) {
-            $mappings[] = new PropertyMapping(
+            $this->propertiesMapping[$property] = new PropertyMapping(
                 new ReadAccessor(ReadAccessor::TYPE_SOURCE, $property),
                 $this->mappingExtractor->getWriteMutator($this->source, $this->target, $property),
                 new CallbackTransformer($property),
@@ -39,8 +63,6 @@ class MapperConfiguration extends AbstractMapperConfiguration
                 false
             );
         }
-
-        return $mappings;
     }
 
     public function createMapper(): Mapper

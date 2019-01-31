@@ -14,6 +14,7 @@ use PhpParser\Node\Stmt;
 use PhpParser\Node\Scalar;
 use PhpParser\Parser;
 use PhpParser\ParserFactory;
+use Symfony\Component\Serializer\Mapping\ClassDiscriminatorMapping;
 use Symfony\Component\Serializer\Mapping\ClassDiscriminatorResolverInterface;
 
 class Compiler
@@ -38,7 +39,6 @@ class Compiler
         $hashVariable = new Expr\Variable($uniqueVariableScope->getUniqueName('sourceHash'));
         $contextVariable = new Expr\Variable($uniqueVariableScope->getUniqueName('context'));
         $constructStatements = [];
-        $injectMapperStatements = [];
         $addedDependencies = [];
         $canHaveCircularDependency = $mapperConfiguration->canHaveCircularDependency() && $mapperConfiguration->getSource() !== 'array';
 
@@ -69,7 +69,7 @@ class Compiler
             ]);
         }
 
-        [$createObjectStmts, $inConstructor, $constructStatementsForCreateObjects] = $this->getCreateObjectStatements($mapperConfiguration, $result, $contextVariable, $sourceInput, $uniqueVariableScope);
+        [$createObjectStmts, $inConstructor, $constructStatementsForCreateObjects, $injectMapperStatements] = $this->getCreateObjectStatements($mapperConfiguration, $result, $contextVariable, $sourceInput, $uniqueVariableScope);
         $constructStatements = array_merge($constructStatements, $constructStatementsForCreateObjects);
 
         $statements[] = new Stmt\Expression(new Expr\Assign($result, new Expr\MethodCall($contextVariable, 'getObjectToPopulate')));
@@ -264,18 +264,57 @@ class Compiler
 
     private function getCreateObjectStatements(MapperConfigurationInterface $mapperConfiguration, Expr\Variable $result, Expr\Variable $contextVariable, Expr\Variable $sourceInput, UniqueVariableScope $uniqueVariableScope): array
     {
-        $reflectionClass = $mapperConfiguration->getTarget() === 'array' ? null : new \ReflectionClass($mapperConfiguration->getTarget());
-        $targetConstructor = $reflectionClass ? $reflectionClass->getConstructor() : null;
-        $propertiesMapping = $mapperConfiguration->getPropertiesMapping();
+
+        if ($mapperConfiguration->getTarget() === 'array') {
+            return [[new Stmt\Expression(new Expr\Assign($result, new Expr\Array_()))], [], [], []];
+        }
+
+        if ($mapperConfiguration->getTarget() === \stdClass::class) {
+            return [[new Stmt\Expression(new Expr\Assign($result, new Expr\New_(new Name(\stdClass::class))))], [], [], []];
+        }
+
+        $reflectionClass = new \ReflectionClass($mapperConfiguration->getTarget());
+        $targetConstructor = $reflectionClass->getConstructor();
         $createObjectStatements = [];
         $inConstructor = [];
         $constructStatements = [];
+        $injectMapperStatements = [];
+        /** @var ClassDiscriminatorMapping $classDiscriminatorMapping */
+        $classDiscriminatorMapping = $mapperConfiguration->getTarget() !== 'array' && null !== $this->classDiscriminator ? $this->classDiscriminator->getMappingForClass($mapperConfiguration->getTarget()) : null;
 
-        if ($mapperConfiguration->getTarget() === 'array') {
-            $createObjectStatements[] = new Stmt\Expression(new Expr\Assign($result, new Expr\Array_()));
-        } elseif ($mapperConfiguration->getTarget() === \stdClass::class) {
-            $createObjectStatements[] = new Stmt\Expression(new Expr\Assign($result, new Expr\New_(new Name(\stdClass::class))));
-        } elseif ($targetConstructor !== null && $mapperConfiguration->hasConstructor()) {
+        if (null !== $classDiscriminatorMapping && null !== ($propertyMapping = $mapperConfiguration->getPropertyMapping($classDiscriminatorMapping->getTypeProperty()))) {
+            [$output, $createObjectStatements] = $propertyMapping->getTransformer()->transform($propertyMapping->getReadAccessor()->getExpression($sourceInput), $uniqueVariableScope, $propertyMapping);
+
+            foreach ($classDiscriminatorMapping->getTypesMapping() as $typeValue => $typeTarget) {
+                $mapperName = 'Discriminator_Mapper_' . $mapperConfiguration->getSource() . '_' . $typeTarget;
+
+                $injectMapperStatements[] = new Stmt\Expression(new Expr\Assign(
+                    new Expr\ArrayDimFetch(new Expr\PropertyFetch(new Expr\Variable('this'), 'mappers'), new Scalar\String_($mapperName)),
+                    new Expr\MethodCall(new Expr\Variable('autoMapper'), 'getMapper', [
+                        new Arg(new Scalar\String_($mapperConfiguration->getSource())),
+                        new Arg(new Scalar\String_($typeTarget)),
+                    ])
+                ));
+                $createObjectStatements[] = new Stmt\If_(new Expr\BinaryOp\Identical(
+                    new Scalar\String_($typeValue),
+                    $output
+                ), [
+                    'stmts' => [
+                        new Stmt\Return_(new Expr\MethodCall(new Expr\ArrayDimFetch(
+                            new Expr\PropertyFetch(new Expr\Variable('this'), 'mappers'),
+                            new Scalar\String_($mapperName)
+                        ), 'map', [
+                            new Arg($sourceInput),
+                            new Expr\Variable('context'),
+                        ])),
+                    ],
+                ]);
+            }
+        }
+
+        $propertiesMapping = $mapperConfiguration->getPropertiesMapping();
+
+        if ($targetConstructor !== null && $mapperConfiguration->hasConstructor()) {
             $constructArguments = [];
 
             /** @var PropertyMapping $propertyMapping */
@@ -353,7 +392,7 @@ class Compiler
             $createObjectStatements[] = new Stmt\Expression(new Expr\Assign($result, new Expr\New_(new Name\FullyQualified($mapperConfiguration->getTarget()))));
         }
 
-        return [$createObjectStatements, $inConstructor, $constructStatements];
+        return [$createObjectStatements, $inConstructor, $constructStatements, $injectMapperStatements];
     }
 
     private function getValueAsExpr($value)

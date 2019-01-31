@@ -2,6 +2,7 @@
 
 namespace Jane\AutoMapper\Tests;
 
+use Doctrine\Common\Annotations\AnnotationReader;
 use Jane\AutoMapper\AutoMapper;
 use Jane\AutoMapper\Compiler\Compiler;
 use Jane\AutoMapper\Compiler\FileLoader;
@@ -9,9 +10,11 @@ use Jane\AutoMapper\Context;
 use Jane\AutoMapper\Exception\CircularReferenceException;
 use Jane\AutoMapper\Tests\Domain\Address;
 use Jane\AutoMapper\Tests\Domain\AddressDTO;
+use Jane\AutoMapper\Tests\Domain\Cat;
 use Jane\AutoMapper\Tests\Domain\Foo;
 use Jane\AutoMapper\Tests\Domain\FooMaxDepth;
 use Jane\AutoMapper\Tests\Domain\Node;
+use Jane\AutoMapper\Tests\Domain\Pet;
 use Jane\AutoMapper\Tests\Domain\PrivateUser;
 use Jane\AutoMapper\Tests\Domain\PrivateUserDTO;
 use Jane\AutoMapper\Tests\Domain\User;
@@ -19,7 +22,11 @@ use Jane\AutoMapper\Tests\Domain\UserConstructorDTO;
 use Jane\AutoMapper\Tests\Domain\UserDTO;
 use Jane\AutoMapper\Tests\Domain\UserDTONoAge;
 use Jane\AutoMapper\Tests\Domain\UserDTONoName;
+use PhpParser\ParserFactory;
 use PHPUnit\Framework\TestCase;
+use Symfony\Component\Serializer\Mapping\ClassDiscriminatorFromClassMetadata;
+use Symfony\Component\Serializer\Mapping\Factory\ClassMetadataFactory;
+use Symfony\Component\Serializer\Mapping\Loader\AnnotationLoader;
 use Symfony\Component\Serializer\NameConverter\AdvancedNameConverterInterface;
 
 class AutoMapperTest extends TestCase
@@ -30,7 +37,12 @@ class AutoMapperTest extends TestCase
     public function setUp()
     {
         @unlink(__DIR__ . '/cache/registry.php');
-        $loader = new FileLoader(new Compiler(), __DIR__ . '/cache');
+
+        $classMetadataFactory = new ClassMetadataFactory(new AnnotationLoader(new AnnotationReader()));
+        $loader = new FileLoader(new Compiler(
+            (new ParserFactory())->create(ParserFactory::PREFER_PHP7),
+            new ClassDiscriminatorFromClassMetadata($classMetadataFactory)
+        ), __DIR__ . '/cache');
 
         $this->autoMapper = AutoMapper::create(true, $loader);
     }
@@ -411,5 +423,16 @@ class AutoMapperTest extends TestCase
 
         self::assertInstanceOf(UserConstructorDTO::class, $userDto);
         self::assertSame(50, $userDto->getAge());
+    }
+
+    public function testDiscriminator()
+    {
+        $data = [
+            'type' => 'cat'
+        ];
+
+        $pet = $this->autoMapper->map($data, Pet::class);
+
+        self::assertInstanceOf(Cat::class, $pet);
     }
 }

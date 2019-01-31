@@ -15,6 +15,8 @@ interface MapperConfigurationInterface
      */
     public function getPropertiesMapping(): array;
 
+    public function getPropertyMapping(string $property): ?PropertyMapping;
+
     public function getMapperClassName(): string;
 
     public function createMapper(): Mapper;

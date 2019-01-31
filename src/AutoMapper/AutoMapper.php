@@ -19,9 +19,11 @@ use Jane\AutoMapper\Compiler\Transformer\NullableTransformerFactory;
 use Jane\AutoMapper\Compiler\Transformer\ObjectTransformerFactory;
 use Jane\AutoMapper\Compiler\Transformer\UniqueTypeTransformerFactory;
 use Jane\AutoMapper\Extractor\PrivateReflectionExtractor;
+use PhpParser\ParserFactory;
 use Symfony\Component\PropertyInfo\Extractor\PhpDocExtractor;
 use Symfony\Component\PropertyInfo\Extractor\ReflectionExtractor;
 use Symfony\Component\PropertyInfo\PropertyInfoExtractor;
+use Symfony\Component\Serializer\Mapping\ClassDiscriminatorFromClassMetadata;
 use Symfony\Component\Serializer\Mapping\Factory\ClassMetadataFactory;
 use Symfony\Component\Serializer\Mapping\Loader\AnnotationLoader;
 use Symfony\Component\Serializer\NameConverter\AdvancedNameConverterInterface;
@@ -35,8 +37,13 @@ class AutoMapper extends AbstractAutoMapper
      */
     public static function create(bool $private = true, MapperClassLoaderInterface $loader = null, AdvancedNameConverterInterface $nameConverter = null, string $classPrefix = 'Mapper_'): self
     {
+        $classMetadataFactory = new ClassMetadataFactory(new AnnotationLoader(new AnnotationReader()));
+
         if ($loader === null) {
-            $loader = new EvalLoader(new Compiler());
+            $loader = new EvalLoader(new Compiler(
+                (new ParserFactory())->create(ParserFactory::PREFER_PHP7),
+                new ClassDiscriminatorFromClassMetadata($classMetadataFactory)
+            ));
         }
 
         if ($private) {
@@ -53,7 +60,6 @@ class AutoMapper extends AbstractAutoMapper
             [$reflectionExtractor]
         );
         $accessorExtractor = new ReflectionAccessorExtractor($private);
-        $classMetadataFactory = new ClassMetadataFactory(new AnnotationLoader(new AnnotationReader()));
         $transformerFactory = new ChainTransformerFactory();
 
         $sourceTargetMappingExtractor = new SourceTargetPropertiesMappingExtractor(
