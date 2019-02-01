@@ -34,8 +34,8 @@ class ServiceInstantiationTest extends WebTestCase
         self::assertSame(13, $userDto->age);
         self::assertSame(((int) date('Y')) - 13, $userDto->yearOfBirth);
         self::assertNull($userDto->email);
-        self::assertCount(1, $userDto->addresses);
         self::assertInstanceOf(AddressDTO::class, $userDto->address);
+        self::assertCount(1, $userDto->addresses);
         self::assertInstanceOf(AddressDTO::class, $userDto->addresses[0]);
         self::assertSame('Toulon', $userDto->address->city);
         self::assertSame('Toulon', $userDto->addresses[0]->city);
