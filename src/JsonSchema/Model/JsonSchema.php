@@ -43,7 +43,7 @@ class JsonSchema
     /**
      * @var bool
      */
-    protected $exclusiveMaximum;
+    protected $exclusiveMaximum = false;
     /**
      * @var float
      */
@@ -51,7 +51,7 @@ class JsonSchema
     /**
      * @var bool
      */
-    protected $exclusiveMinimum;
+    protected $exclusiveMinimum = false;
     /**
      * @var int
      */
@@ -83,7 +83,7 @@ class JsonSchema
     /**
      * @var bool
      */
-    protected $uniqueItems;
+    protected $uniqueItems = false;
     /**
      * @var int
      */

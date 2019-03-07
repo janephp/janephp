@@ -5,9 +5,8 @@ namespace Jane\JsonSchema\Generator\Model;
 use Jane\JsonSchema\Generator\Naming;
 use Jane\JsonSchema\Guesser\Guess\Property;
 use PhpParser\Comment\Doc;
-use PhpParser\Node\Name;
 use PhpParser\Node\Stmt;
-use PhpParser\Node\Expr;
+use PhpParser\Parser;
 
 trait PropertyGenerator
 {
@@ -18,13 +17,24 @@ trait PropertyGenerator
      */
     abstract protected function getNaming();
 
+    /**
+     * The PHP Parser.
+     *
+     * @return Parser
+     */
+    abstract protected function getParser();
+
     protected function createProperty(Property $property, $namespace, $default = null): Stmt
     {
         $propertyName = $property->getPhpName();
         $propertyStmt = new Stmt\PropertyProperty($propertyName);
 
-        if (null !== $default) {
-            $propertyStmt->default = new Expr\ConstFetch(new Name($default));
+        if (null === $default) {
+            $default = $property->getDefault();
+        }
+
+        if (null !== $default && is_scalar($default)) {
+            $propertyStmt->default = $this->getDefaultAsExpr($default);
         }
 
         return new Stmt\Property(Stmt\Class_::MODIFIER_PROTECTED, [
@@ -44,5 +54,10 @@ trait PropertyGenerator
  */
 EOD
         , $property->getDescription(), $property->getType()->getDocTypeHint($namespace)));
+    }
+
+    private function getDefaultAsExpr($value)
+    {
+        return $this->parser->parse('<?php ' . var_export($value, true) . ';')[0];
     }
 }

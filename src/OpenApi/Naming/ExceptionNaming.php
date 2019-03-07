@@ -49,7 +49,7 @@ class ExceptionNaming
 
     public function generateExceptionName(int $status, string $functionName)
     {
-        if (!array_key_exists($status, $this->statusNamingMapping)) {
+        if (!\array_key_exists($status, $this->statusNamingMapping)) {
             throw new \Error($status . ' is not a valid status code for Exception');
         }
 

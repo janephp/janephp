@@ -45,7 +45,7 @@ class GenerateCommand extends Command
         $options = $this->resolveConfiguration($options);
         $registry = new Registry();
 
-        if (array_key_exists('openapi-file', $options)) {
+        if (\array_key_exists('openapi-file', $options)) {
             $registry->addSchema($this->resolveSchema($options['openapi-file'], $options));
         } else {
             foreach ($options['mapping'] as $schema => $schemaOptions) {
@@ -56,13 +56,13 @@ class GenerateCommand extends Command
         $janeOpenApi = JaneOpenApi::build($options);
         $fixerConfigFile = '';
 
-        if (array_key_exists('fixer-config-file', $options) && null !== $options['fixer-config-file']) {
+        if (\array_key_exists('fixer-config-file', $options) && null !== $options['fixer-config-file']) {
             $fixerConfigFile = $options['fixer-config-file'];
         }
 
         $printer = new Printer(new Standard(), $fixerConfigFile);
 
-        if (array_key_exists('use-fixer', $options) && false === $options['use-fixer']) {
+        if (\array_key_exists('use-fixer', $options) && false === $options['use-fixer']) {
             $printer->setUseFixer(false);
         }
 
@@ -83,7 +83,7 @@ class GenerateCommand extends Command
             'use-cacheable-supports-method' => null,
         ]);
 
-        if (array_key_exists('openapi-file', $options)) {
+        if (\array_key_exists('openapi-file', $options)) {
             $optionsResolver->setRequired([
                 'openapi-file',
                 'namespace',
