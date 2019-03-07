@@ -77,11 +77,11 @@ class Schema
     {
         $reference = urldecode($reference);
 
-        if (array_key_exists($reference, $this->classes)) {
+        if (\array_key_exists($reference, $this->classes)) {
             return $this->classes[$reference];
         }
 
-        if (array_key_exists($reference . '#', $this->classes)) {
+        if (\array_key_exists($reference . '#', $this->classes)) {
             return $this->classes[$reference . '#'];
         }
 

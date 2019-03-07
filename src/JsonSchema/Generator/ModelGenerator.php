@@ -50,7 +50,7 @@ class ModelGenerator implements GeneratorInterface
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     protected function getParser()
     {

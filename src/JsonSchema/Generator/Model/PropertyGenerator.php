@@ -5,9 +5,7 @@ namespace Jane\JsonSchema\Generator\Model;
 use Jane\JsonSchema\Generator\Naming;
 use Jane\JsonSchema\Guesser\Guess\Property;
 use PhpParser\Comment\Doc;
-use PhpParser\Node\Name;
 use PhpParser\Node\Stmt;
-use PhpParser\Node\Expr;
 use PhpParser\Parser;
 
 trait PropertyGenerator

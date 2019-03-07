@@ -102,7 +102,7 @@ class Compiler
                 }
 
                 foreach ($constructor->getParameters() as $constructorParameter) {
-                    if (!array_key_exists($constructorParameter->getPosition(), $constructArguments)) {
+                    if (!\array_key_exists($constructorParameter->getPosition(), $constructArguments)) {
                         $constructArguments[$constructorParameter->getPosition()] = new Arg($this->getValueAsExpr($constructorParameter->getDefaultValue()));
                     }
                 }
