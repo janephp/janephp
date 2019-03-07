@@ -9,6 +9,7 @@ use Jane\JsonSchema\Generator\Model\PropertyGenerator;
 use Jane\JsonSchema\Schema;
 use PhpParser\Node\Name;
 use PhpParser\Node\Stmt;
+use PhpParser\Parser;
 
 class ModelGenerator implements GeneratorInterface
 {
@@ -24,11 +25,18 @@ class ModelGenerator implements GeneratorInterface
     protected $naming;
 
     /**
-     * @param Naming $naming Naming Service
+     * @var Parser PHP Parser
      */
-    public function __construct(Naming $naming)
+    protected $parser;
+
+    /**
+     * @param Naming $naming Naming Service
+     * @param Parser $parser PHP Parser
+     */
+    public function __construct(Naming $naming, Parser $parser)
     {
         $this->naming = $naming;
+        $this->parser = $parser;
     }
 
     /**
@@ -39,6 +47,14 @@ class ModelGenerator implements GeneratorInterface
     protected function getNaming()
     {
         return $this->naming;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    protected function getParser()
+    {
+        return $this->parser;
     }
 
     /**
