@@ -81,7 +81,7 @@ abstract class AbstractAutoMapper implements AutoMapperInterface
 
     protected function getConfiguration(string $source, string $target): ?MapperConfigurationInterface
     {
-        if (!\array_key_exists($source, $this->configurations) || !array_key_exists($target, $this->configurations[$source])) {
+        if (!\array_key_exists($source, $this->configurations) || !\array_key_exists($target, $this->configurations[$source])) {
             return null;
         }
 
