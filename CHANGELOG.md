@@ -6,6 +6,15 @@
  * [OpenAPI] **BC-BREAK** Use the openapi v3 specification (v2 is not more supported)
  * [OpenAPI] **BC-BREAK** No more asynchronous code generation (sync and async api can be the same on php 7.3 by using ext-async)
 
+## 4.2.0 - 2019-08-03
+
+ * [Jane] Add support for default value in model (only scalar)
+ * [OpenAPI] Add support for httplug 2.0
+
+## 4.1.0 - 2019-01-24
+
+ * [Jane][OpenAPI] Add support for cacheable normalizer
+
 ## 4.0.4 - 2018-10-19
 
  * [OpenAPI] Fix items object generation for json schema and openapi #29
