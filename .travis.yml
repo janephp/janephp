@@ -43,7 +43,7 @@ script:
     - if [[ $TEST = true ]]; then travis_wait $TEST_COMMAND; fi
     - if [[ $TEST = true ]]; then composer normalize --dry-run; fi
     - if [[ $COVERAGE = true ]]; then vendor/bin/php-cs-fixer fix --dry-run --diff; fi
-    - if [[ $GITSPLIT = true ]]; then docker run --rm -t -e GH_TOKEN -v /cache/gitsplit:/cache/gitsplit -v ${PWD}:/srv jderusse/gitsplit gitsplit --ref "${TRAVIS_BRANCH}"; fi
+    - if [[ $GITSPLIT = true ]]; then docker run --rm -t -e GH_TOKEN -v /cache/gitsplit:/cache/gitsplit -v ${PWD}:/srv jderusse/gitsplit gitsplit; fi
 
 after_script:
     - if [[ $COVERAGE = true ]]; then ./coveralls.phar -v; fi
