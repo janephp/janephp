@@ -6,7 +6,7 @@ use Jane\JsonSchema\Generator\ChainGenerator;
 use Jane\JsonSchema\Generator\Context\Context;
 use Jane\JsonSchema\Generator\ModelGenerator;
 use Jane\JsonSchema\Generator\Naming;
-use Jane\JsonSchema\Generator\NormalizerGenerator;
+use Jane\OpenApi\Generator\NormalizerGenerator;
 use Jane\JsonSchema\Guesser\ChainGuesser;
 use Jane\OpenApi\Generator\GeneratorFactory;
 use Jane\OpenApi\Guesser\OpenApiSchema\GuesserFactory;
