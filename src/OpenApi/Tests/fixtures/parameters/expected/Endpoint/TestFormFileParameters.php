@@ -11,20 +11,20 @@ class TestFormFileParameters extends \Jane\OpenApiRuntime\Client\BaseEndpoint im
      *     @var string|resource|\Psr\Http\Message\StreamInterface $testFile 
      * }
      */
-    function __construct(array $formParameters = array())
+    public function __construct(array $formParameters = array())
     {
         $this->formParameters = $formParameters;
     }
     use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
-    function getMethod() : string
+    public function getMethod() : string
     {
         return 'POST';
     }
-    function getUri() : string
+    public function getUri() : string
     {
         return '/test-form-file';
     }
-    function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null) : array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null) : array
     {
         return $this->getMultipartBody($streamFactory);
     }

@@ -10,24 +10,24 @@ class ShowPetById extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \J
      *
      * @param string $petId The id of the pet to retrieve
      */
-    function __construct(string $petId)
+    public function __construct(string $petId)
     {
         $this->petId = $petId;
     }
     use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
-    function getMethod() : string
+    public function getMethod() : string
     {
         return 'GET';
     }
-    function getUri() : string
+    public function getUri() : string
     {
         return str_replace(array('{petId}'), array($this->petId), '/pets/{petId}');
     }
-    function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null) : array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null) : array
     {
         return array(array(), null);
     }
-    function getExtraHeaders() : array
+    public function getExtraHeaders() : array
     {
         return array('Accept' => array('application/json'));
     }

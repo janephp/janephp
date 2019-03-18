@@ -4,6 +4,8 @@ namespace Jane\JsonSchema\Generator\Model;
 
 use Jane\JsonSchema\Generator\Naming;
 use Jane\JsonSchema\Guesser\Guess\Property;
+use function Jane\parserExpression;
+use function Jane\parserVariable;
 use PhpParser\Comment\Doc;
 use PhpParser\Node\Param;
 use PhpParser\Node\Stmt;
@@ -61,16 +63,16 @@ trait GetterSetterGenerator
                 'type' => Stmt\Class_::MODIFIER_PUBLIC,
                 // ($property)
                 'params' => [
-                    new Param($this->getNaming()->getPropertyName($property->getPhpName()), null, $setType),
+                    new Param(parserVariable($this->getNaming()->getPropertyName($property->getPhpName())), null, $setType),
                 ],
                 'stmts' => [
                     // $this->property = $property;
-                    new Expr\Assign(
+                    parserExpression(new Expr\Assign(
                         new Expr\PropertyFetch(
                             new Expr\Variable('this'),
                             $this->getNaming()->getPropertyName($property->getPhpName())
                         ), new Expr\Variable($this->getNaming()->getPropertyName($property->getPhpName()))
-                    ),
+                    )),
                     // return $this;
                     new Stmt\Return_(new Expr\Variable('this')),
                 ],

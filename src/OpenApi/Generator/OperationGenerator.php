@@ -4,6 +4,8 @@ namespace Jane\OpenApi\Generator;
 
 use Jane\JsonSchema\Generator\Context\Context;
 use Jane\OpenApi\Operation\Operation;
+use function Jane\isPhpParser4;
+use function Jane\parserVariable;
 use PhpParser\Node\Arg;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Name;
@@ -40,10 +42,10 @@ abstract class OperationGenerator
 
         /** @var Param $param */
         foreach ($methodParams as $param) {
-            $endpointArgs[] = new Arg(new Expr\Variable($param->name));
+            $endpointArgs[] = new Arg(isPhpParser4() ? $param->var : new Expr\Variable($param->name));
         }
 
-        $methodParams[] = new Param('fetch', new Expr\ClassConstFetch(new Name('self'), 'FETCH_OBJECT'), 'string');
+        $methodParams[] = new Param(parserVariable('fetch'), new Expr\ClassConstFetch(new Name('self'), 'FETCH_OBJECT'), new Name('string'));
 
         return new Stmt\ClassMethod($name, [
             'type' => Stmt\Class_::MODIFIER_PUBLIC,

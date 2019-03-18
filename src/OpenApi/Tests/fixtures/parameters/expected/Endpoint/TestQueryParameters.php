@@ -16,20 +16,20 @@ class TestQueryParameters extends \Jane\OpenApiRuntime\Client\BaseEndpoint imple
      *     @var string $testDefault 
      * }
      */
-    function __construct(array $queryParameters = array())
+    public function __construct(array $queryParameters = array())
     {
         $this->queryParameters = $queryParameters;
     }
     use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
-    function getMethod() : string
+    public function getMethod() : string
     {
         return 'GET';
     }
-    function getUri() : string
+    public function getUri() : string
     {
         return '/test-query';
     }
-    function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null) : array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null) : array
     {
         return array(array(), null);
     }

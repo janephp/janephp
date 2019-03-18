@@ -14,22 +14,22 @@ class TestPathParameters extends \Jane\OpenApiRuntime\Client\BaseEndpoint implem
      * @param int $testInteger 
      * @param float $testFloat 
      */
-    function __construct(string $testString, int $testInteger, float $testFloat)
+    public function __construct(string $testString, int $testInteger, float $testFloat)
     {
         $this->testString = $testString;
         $this->testInteger = $testInteger;
         $this->testFloat = $testFloat;
     }
     use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
-    function getMethod() : string
+    public function getMethod() : string
     {
         return 'GET';
     }
-    function getUri() : string
+    public function getUri() : string
     {
         return str_replace(array('{testString}', '{testInteger}', '{testFloat}'), array($this->testString, $this->testInteger, $this->testFloat), '/test-path/{testString}/{testInteger}/{testFloat}');
     }
-    function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null) : array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null) : array
     {
         return array(array(), null);
     }

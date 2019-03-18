@@ -16,20 +16,20 @@ class TestFormParameters extends \Jane\OpenApiRuntime\Client\BaseEndpoint implem
      *     @var string $testDefault 
      * }
      */
-    function __construct(array $formParameters = array())
+    public function __construct(array $formParameters = array())
     {
         $this->formParameters = $formParameters;
     }
     use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
-    function getMethod() : string
+    public function getMethod() : string
     {
         return 'POST';
     }
-    function getUri() : string
+    public function getUri() : string
     {
         return '/test-form';
     }
-    function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null) : array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null) : array
     {
         return $this->getFormBody();
     }

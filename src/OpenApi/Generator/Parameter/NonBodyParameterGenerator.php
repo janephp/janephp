@@ -8,6 +8,9 @@ use Jane\OpenApi\Model\FormDataParameterSubSchema;
 use Jane\OpenApi\Model\HeaderParameterSubSchema;
 use Jane\OpenApi\Model\PathParameterSubSchema;
 use Jane\OpenApi\Model\QueryParameterSubSchema;
+use function Jane\isPhpParser4;
+use function Jane\parserExpression;
+use function Jane\parserVariable;
 use PhpParser\Node;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Scalar;
@@ -23,7 +26,7 @@ class NonBodyParameterGenerator extends ParameterGenerator
     public function generateMethodParameter($parameter, Context $context, $reference): Node\Param
     {
         $name = Inflector::camelize($parameter->getName());
-        $methodParameter = new Node\Param($name);
+        $methodParameter = new Node\Param(parserVariable($name));
 
         if (!$parameter->getRequired() || null !== $parameter->getDefault()) {
             $methodParameter->default = $this->getDefaultAsExpr($parameter);
@@ -32,7 +35,7 @@ class NonBodyParameterGenerator extends ParameterGenerator
         $types = $this->convertParameterType($parameter->getType());
 
         if (\count($types) === 1) {
-            $methodParameter->type = $types[0];
+            $methodParameter->type = new Node\Name($types[0]);
         }
 
         return $methodParameter;
@@ -64,10 +67,10 @@ class NonBodyParameterGenerator extends ParameterGenerator
                     $types[] = new Expr\ArrayItem(new Scalar\String_($typeString));
                 }
 
-                $allowedTypes[] = new Expr\MethodCall($optionsResolverVariable, 'setAllowedTypes', [
+                $allowedTypes[] = parserExpression(new Expr\MethodCall($optionsResolverVariable, 'setAllowedTypes', [
                     new Node\Arg(new Scalar\String_($parameter->getName())),
                     new Node\Arg(new Expr\Array_($types)),
-                ]);
+                ]));
             }
 
             if (!$parameter->getRequired() && null !== $parameter->getDefault()) {
@@ -76,15 +79,15 @@ class NonBodyParameterGenerator extends ParameterGenerator
         }
 
         return array_merge([
-            new Expr\MethodCall($optionsResolverVariable, 'setDefined', [
+            parserExpression(new Expr\MethodCall($optionsResolverVariable, 'setDefined', [
                 new Node\Arg(new Expr\Array_($defined)),
-            ]),
-            new Expr\MethodCall($optionsResolverVariable, 'setRequired', [
+            ])),
+            parserExpression(new Expr\MethodCall($optionsResolverVariable, 'setRequired', [
                 new Node\Arg(new Expr\Array_($required)),
-            ]),
-            new Expr\MethodCall($optionsResolverVariable, 'setDefaults', [
+            ])),
+            parserExpression(new Expr\MethodCall($optionsResolverVariable, 'setDefaults', [
                 new Node\Arg(new Expr\Array_($defaults)),
-            ]),
+            ])),
         ], $allowedTypes);
     }
 
@@ -121,7 +124,14 @@ class NonBodyParameterGenerator extends ParameterGenerator
      */
     private function getDefaultAsExpr($parameter)
     {
-        return $this->parser->parse('<?php ' . var_export($parameter->getDefault(), true) . ';')[0];
+        $expr = $this->parser->parse('<?php ' . var_export($parameter->getDefault(), true) . ';')[0];
+
+        if (isPhpParser4() &&
+            $expr instanceof Node\Stmt\Expression) {
+            return $expr->expr;
+        }
+
+        return $expr;
     }
 
     private function convertParameterType($type)

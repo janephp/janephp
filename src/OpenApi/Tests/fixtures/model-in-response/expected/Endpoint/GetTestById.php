@@ -10,20 +10,20 @@ class GetTestById extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \J
      *
      * @param int $id id
      */
-    function __construct(int $id)
+    public function __construct(int $id)
     {
         $this->id = $id;
     }
     use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
-    function getMethod() : string
+    public function getMethod() : string
     {
         return 'GET';
     }
-    function getUri() : string
+    public function getUri() : string
     {
         return str_replace(array('{id}'), array($this->id), '/test/{id}');
     }
-    function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null) : array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null) : array
     {
         return array(array(), null);
     }

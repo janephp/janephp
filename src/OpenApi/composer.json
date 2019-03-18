@@ -13,7 +13,8 @@
     "autoload": {
         "psr-4": {
             "Jane\\OpenApi\\": ""
-        }
+        },
+        "files": ["helpers.php"]
     },
     "bin": [
         "bin/jane-openapi"
@@ -23,7 +24,7 @@
         "jane-php/json-schema": "^4.0",
         "jane-php/json-schema-runtime": "^4.0",
         "jane-php/open-api-runtime": "^4.0",
-        "nikic/php-parser": "^3.0",
+        "nikic/php-parser": "^3.0 || ^4.0",
         "symfony/serializer": "^3.2|^4.0",
         "symfony/yaml": "^3.1|^4.0"
     },

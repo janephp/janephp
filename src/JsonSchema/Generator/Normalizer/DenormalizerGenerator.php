@@ -5,6 +5,8 @@ namespace Jane\JsonSchema\Generator\Normalizer;
 use Jane\JsonSchema\Generator\Context\Context;
 use Jane\JsonSchema\Generator\Naming;
 use Jane\JsonSchema\Guesser\Guess\ClassGuess;
+use function Jane\parserExpression;
+use function Jane\parserVariable;
 use PhpParser\Node\Arg;
 use PhpParser\Node\Name;
 use PhpParser\Node\Param;
@@ -33,9 +35,9 @@ trait DenormalizerGenerator
         return new Stmt\ClassMethod('supportsDenormalization', [
             'type' => Stmt\Class_::MODIFIER_PUBLIC,
             'params' => [
-                new Param('data'),
-                new Param('type'),
-                new Param('format', new Expr\ConstFetch(new Name('null'))),
+                new Param(parserVariable('data')),
+                new Param(parserVariable('type')),
+                new Param(parserVariable('format'), new Expr\ConstFetch(new Name('null'))),
             ],
             'stmts' => [
                 new Stmt\Return_(new Expr\BinaryOp\Identical(new Expr\Variable('type'), new Scalar\String_($modelFqdn))),
@@ -47,7 +49,7 @@ trait DenormalizerGenerator
     {
         $context->refreshScope();
         $objectVariable = new Expr\Variable('object');
-        $assignStatement = new Expr\Assign($objectVariable, new Expr\New_(new Name('\\' . $modelFqdn)));
+        $assignStatement = parserExpression(new Expr\Assign($objectVariable, new Expr\New_(new Name('\\' . $modelFqdn))));
         $statements = [$assignStatement];
 
         if ($this->useReference) {
@@ -83,7 +85,7 @@ trait DenormalizerGenerator
 
         if ($unset) {
             // Force cloning when unsetting to not loose data for references
-            $statements[] = new Expr\Assign(new Expr\Variable('data'), new Expr\Clone_(new Expr\Variable('data')));
+            $statements[] = parserExpression(new Expr\Assign(new Expr\Variable('data'), new Expr\Clone_(new Expr\Variable('data'))));
         }
 
         foreach ($classGuess->getProperties() as $property) {
@@ -109,9 +111,9 @@ trait DenormalizerGenerator
                     'stmts' => array_merge(
                         $denormalizationStatements,
                         [
-                            new Expr\MethodCall($objectVariable, $this->getNaming()->getPrefixedMethodName('set', $property->getPhpName()), [
+                            parserExpression(new Expr\MethodCall($objectVariable, $this->getNaming()->getPrefixedMethodName('set', $property->getPhpName()), [
                                 $outputVar,
-                            ]),
+                            ])),
                         ],
                         $unset ? [new Stmt\Unset_([$propertyVar])] : []
                     ),
@@ -133,7 +135,7 @@ trait DenormalizerGenerator
                 ]),
                 [
                     'stmts' => array_merge($denormalizationStatements, [
-                        new Expr\Assign(new Expr\ArrayDimFetch($objectVariable, $loopKeyVar), $outputVar),
+                        parserExpression(new Expr\Assign(new Expr\ArrayDimFetch($objectVariable, $loopKeyVar), $outputVar)),
                     ]),
                 ]
             );
@@ -151,10 +153,10 @@ trait DenormalizerGenerator
         return new Stmt\ClassMethod('denormalize', [
             'type' => Stmt\Class_::MODIFIER_PUBLIC,
             'params' => [
-                new Param('data'),
-                new Param('class'),
-                new Param('format', new Expr\ConstFetch(new Name('null'))),
-                new Param('context', new Expr\Array_(), 'array'),
+                new Param(parserVariable('data')),
+                new Param(parserVariable('class')),
+                new Param(parserVariable('format'), new Expr\ConstFetch(new Name('null'))),
+                new Param(parserVariable('context'), new Expr\Array_(), new Name('array')),
             ],
             'stmts' => $statements,
         ]);

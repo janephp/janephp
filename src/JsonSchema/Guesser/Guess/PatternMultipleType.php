@@ -3,6 +3,7 @@
 namespace Jane\JsonSchema\Guesser\Guess;
 
 use Jane\JsonSchema\Generator\Context\Context;
+use function Jane\parserExpression;
 use PhpParser\Node\Arg;
 use PhpParser\Node\Name;
 use PhpParser\Node\Stmt;
@@ -54,7 +55,7 @@ class PatternMultipleType extends Type
         $valuesVar = new Expr\Variable($context->getUniqueVariableName('values'));
         $statements = [
             // $values = [];
-            new Expr\Assign($valuesVar, $this->createArrayValueStatement()),
+            parserExpression(new Expr\Assign($valuesVar, $this->createArrayValueStatement())),
         ];
 
         $loopValueVar = new Expr\Variable($context->getUniqueVariableName('value'));
@@ -74,7 +75,7 @@ class PatternMultipleType extends Type
                     ),
                     [
                         'stmts' => array_merge($typeStatements, [
-                            new Expr\Assign(new Expr\ArrayDimFetch($valuesVar, $loopKeyVar), $typeOutput),
+                            parserExpression(new Expr\Assign(new Expr\ArrayDimFetch($valuesVar, $loopKeyVar), $typeOutput)),
                             new Stmt\Continue_(),
                         ]),
                     ]
@@ -98,7 +99,7 @@ class PatternMultipleType extends Type
         $valuesVar = new Expr\Variable($context->getUniqueVariableName('values'));
         $statements = [
             // $values = [];
-            new Expr\Assign($valuesVar, $this->createNormalizationArrayValueStatement()),
+            parserExpression(new Expr\Assign($valuesVar, $this->createNormalizationArrayValueStatement())),
         ];
 
         $loopValueVar = new Expr\Variable($context->getUniqueVariableName('value'));
@@ -118,7 +119,7 @@ class PatternMultipleType extends Type
                     ),
                     [
                         'stmts' => array_merge($typeStatements, [
-                            new Expr\Assign(new Expr\PropertyFetch($valuesVar, $loopKeyVar), $typeOutput),
+                            parserExpression(new Expr\Assign(new Expr\PropertyFetch($valuesVar, $loopKeyVar), $typeOutput)),
                             new Stmt\Continue_(),
                         ]),
                     ]

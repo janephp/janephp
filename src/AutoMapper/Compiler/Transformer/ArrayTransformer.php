@@ -3,6 +3,7 @@
 namespace Jane\AutoMapper\Compiler\Transformer;
 
 use Jane\AutoMapper\Compiler\UniqueVariableScope;
+use function Jane\parserExpression;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Stmt;
 
@@ -20,7 +21,7 @@ class ArrayTransformer implements TransformerInterface
         $valuesVar = new Expr\Variable($uniqueVariableScope->getUniqueName('values'));
         $statements = [
             // $values = [];
-            new Expr\Assign($valuesVar, new Expr\Array_()),
+            parserExpression(new Expr\Assign($valuesVar, new Expr\Array_())),
         ];
 
         $loopValueVar = new Expr\Variable($uniqueVariableScope->getUniqueName('value'));
@@ -28,7 +29,7 @@ class ArrayTransformer implements TransformerInterface
         [$output, $itemStatements] = $this->itemTransformer->transform($loopValueVar, $uniqueVariableScope);
 
         $loopStatements = array_merge($itemStatements, [
-            new Expr\Assign(new Expr\ArrayDimFetch($valuesVar), $output),
+            parserExpression(new Expr\Assign(new Expr\ArrayDimFetch($valuesVar), $output)),
         ]);
 
         $statements[] = new Stmt\Foreach_($input, $loopValueVar, [
