@@ -12,7 +12,10 @@
     "autoload": {
         "psr-4": {
             "Jane\\OpenApiRuntime\\": ""
-        }
+        },
+        "exclude-from-classmap": [
+            "/Tests/"
+        ]
     },
     "require": {
         "jane-php/json-schema-runtime": "^5.0",

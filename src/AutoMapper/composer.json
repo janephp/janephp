@@ -11,7 +11,10 @@
     "autoload": {
         "psr-4": {
             "Jane\\AutoMapper\\": ""
-        }
+        },
+        "exclude-from-classmap": [
+            "/Tests/"
+        ]
     },
     "autoload-dev": {
         "classmap": [
