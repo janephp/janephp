@@ -55,11 +55,15 @@ class GenerateCommand extends Command
         $jane = \Jane\JsonSchema\Jane::build($options);
         $fixerConfigFile = '';
 
-        if ($input->hasOption('fixer-config-file') && null !== $input->getOption('fixer-config-file')) {
-            $fixerConfigFile = $input->getOption('fixer-config-file');
+        if (array_key_exists('fixer-config-file', $options) && null !== $options['fixer-config-file']) {
+            $fixerConfigFile = $options['fixer-config-file'];
         }
 
         $printer = new Printer(new Standard(), $fixerConfigFile);
+
+        if (array_key_exists('use-fixer', $options) && false === $options['use-fixer']) {
+            $printer->setUseFixer(false);
+        }
 
         $jane->generate($registry);
         $printer->output($registry);
@@ -72,6 +76,8 @@ class GenerateCommand extends Command
             'reference' => true,
             'strict' => true,
             'date-format' => \DateTime::RFC3339,
+            'use-fixer' => true,
+            'fixer-config-file' => null,
         ]);
 
         if (array_key_exists('json-schema-file', $options)) {
@@ -100,6 +106,8 @@ class GenerateCommand extends Command
             'reference',
             'date-format',
             'strict',
+            'use-fixer',
+            'fixer-config-file',
         ]);
 
         $optionsResolver->setRequired([

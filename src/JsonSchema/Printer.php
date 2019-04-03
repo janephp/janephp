@@ -14,10 +14,18 @@ class Printer
 
     private $fixerConfig;
 
-    public function __construct(PrettyPrinterAbstract $prettyPrinter, string $fixerConfig = '')
+    private $useFixer;
+
+    public function __construct(PrettyPrinterAbstract $prettyPrinter, string $fixerConfig = '', bool $useFixer = true)
     {
         $this->prettyPrinter = $prettyPrinter;
         $this->fixerConfig = $fixerConfig;
+        $this->useFixer = $useFixer;
+    }
+
+    public function setUseFixer(bool $useFixer): void
+    {
+        $this->useFixer = $useFixer;
     }
 
     public function output(Registry $registry): void
@@ -30,7 +38,9 @@ class Printer
 
                 file_put_contents($file->getFilename(), $this->prettyPrinter->prettyPrintFile([$file->getNode()]));
 
-                $this->fix($file->getFilename());
+                if ($this->useFixer) {
+                    $this->fix($file->getFilename());
+                }
             }
         }
     }

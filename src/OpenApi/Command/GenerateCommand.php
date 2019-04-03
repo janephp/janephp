@@ -54,7 +54,17 @@ class GenerateCommand extends Command
         }
 
         $janeOpenApi = JaneOpenApi::build($options);
-        $printer = new Printer(new Standard());
+        $fixerConfigFile = '';
+
+        if (array_key_exists('fixer-config-file', $options) && null !== $options['fixer-config-file']) {
+            $fixerConfigFile = $options['fixer-config-file'];
+        }
+
+        $printer = new Printer(new Standard(), $fixerConfigFile);
+
+        if (array_key_exists('use-fixer', $options) && false === $options['use-fixer']) {
+            $printer->setUseFixer(false);
+        }
 
         $janeOpenApi->generate($registry);
         $printer->output($registry);
@@ -68,6 +78,8 @@ class GenerateCommand extends Command
             'date-format' => \DateTime::RFC3339,
             'async' => false,
             'strict' => true,
+            'use-fixer' => true,
+            'fixer-config-file' => null,
         ]);
 
         if (array_key_exists('openapi-file', $options)) {
@@ -98,6 +110,8 @@ class GenerateCommand extends Command
             'date-format',
             'async',
             'strict',
+            'use-fixer',
+            'fixer-config-file',
         ]);
 
         $optionsResolver->setDefault('version', 2);
