@@ -39,7 +39,7 @@ class Reference
         $referenceParts = parse_url($reference);
         $mergedParts = array_merge($originParts, $referenceParts);
 
-        if (array_key_exists('path', $referenceParts)) {
+        if (\array_key_exists('path', $referenceParts)) {
             $mergedParts['path'] = $this->joinPath(\dirname($originParts['path']), $referenceParts['path']);
         }
 

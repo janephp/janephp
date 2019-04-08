@@ -264,7 +264,6 @@ class Compiler
 
     private function getCreateObjectStatements(MapperConfigurationInterface $mapperConfiguration, Expr\Variable $result, Expr\Variable $contextVariable, Expr\Variable $sourceInput, UniqueVariableScope $uniqueVariableScope): array
     {
-
         if ($mapperConfiguration->getTarget() === 'array') {
             return [[new Stmt\Expression(new Expr\Assign($result, new Expr\Array_()))], [], [], []];
         }
@@ -346,7 +345,7 @@ class Compiler
             }
 
             foreach ($targetConstructor->getParameters() as $constructorParameter) {
-                if (!array_key_exists($constructorParameter->getPosition(), $constructArguments) && $constructorParameter->isDefaultValueAvailable()) {
+                if (!\array_key_exists($constructorParameter->getPosition(), $constructArguments) && $constructorParameter->isDefaultValueAvailable()) {
                     $constructVar = new Expr\Variable($uniqueVariableScope->getUniqueName('constructArg'));
 
                     $createObjectStatements[] = new Stmt\If_(new Expr\MethodCall($contextVariable, 'hasConstructorArgument', [

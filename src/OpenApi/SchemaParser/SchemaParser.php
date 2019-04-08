@@ -54,7 +54,7 @@ class SchemaParser
 
     private function deserialize($openApiSpecContents, $openApiSpecPath)
     {
-        $openApiData = \json_decode($openApiSpecContents);
+        $openApiData = json_decode($openApiSpecContents);
 
         return $this->denormalize($openApiData, $openApiSpecPath);
     }
@@ -63,7 +63,7 @@ class SchemaParser
     {
         $isVersion3 = false;
 
-        if (\property_exists($openApiSpecData, 'openapi') && version_compare($openApiSpecData->openapi, '3.0.0', '>=')) {
+        if (property_exists($openApiSpecData, 'openapi') && version_compare($openApiSpecData->openapi, '3.0.0', '>=')) {
             $isVersion3 = true;
         }
 

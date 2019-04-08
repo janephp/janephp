@@ -23,7 +23,7 @@ abstract class AbstractAutoMapper implements AutoMapperInterface, AutoMapperRegi
 
     public function register(MapperConfigurationInterface $configuration): void
     {
-        if (!array_key_exists($configuration->getSource(), $this->configurations)) {
+        if (!\array_key_exists($configuration->getSource(), $this->configurations)) {
             $this->configurations[$configuration->getSource()] = [];
         }
 
@@ -40,7 +40,7 @@ abstract class AbstractAutoMapper implements AutoMapperInterface, AutoMapperRegi
 
         $className = $mappingConfiguration->getMapperClassName();
 
-        if (array_key_exists($className, $this->mapperRegistry)) {
+        if (\array_key_exists($className, $this->mapperRegistry)) {
             return $this->mapperRegistry[$className];
         }
 
@@ -88,7 +88,7 @@ abstract class AbstractAutoMapper implements AutoMapperInterface, AutoMapperRegi
 
     public function getConfiguration(string $source, string $target): ?MapperConfigurationInterface
     {
-        if (!array_key_exists($source, $this->configurations) || !array_key_exists($target, $this->configurations[$source])) {
+        if (!\array_key_exists($source, $this->configurations) || !\array_key_exists($target, $this->configurations[$source])) {
             if ($this->mapperConfigurationFactory === null) {
                 return null;
             }
