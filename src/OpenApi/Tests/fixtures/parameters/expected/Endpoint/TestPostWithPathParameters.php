@@ -15,22 +15,22 @@ class TestPostWithPathParameters extends \Jane\OpenApiRuntime\Client\BaseEndpoin
      *     @var string $testHeader 
      * }
      */
-    function __construct(array $testBody, array $queryParameters = array(), array $headerParameters = array())
+    public function __construct(array $testBody, array $queryParameters = array(), array $headerParameters = array())
     {
         $this->body = $testBody;
         $this->queryParameters = $queryParameters;
         $this->headerParameters = $headerParameters;
     }
     use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
-    function getMethod() : string
+    public function getMethod() : string
     {
         return 'POST';
     }
-    function getUri() : string
+    public function getUri() : string
     {
         return '/test-path-parameters/{testPath}';
     }
-    function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null) : array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null) : array
     {
         return $this->getSerializedBody($serializer);
     }

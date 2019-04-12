@@ -5,6 +5,9 @@ namespace Jane\AutoMapper\Compiler;
 use Jane\AutoMapper\Context;
 use Jane\AutoMapper\Mapper;
 use Jane\AutoMapper\MapperConfigurationInterface;
+use function Jane\isPhpParser4;
+use function Jane\parserExpression;
+use function Jane\parserVariable;
 use PhpParser\Node\Arg;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Name;
@@ -40,11 +43,11 @@ class Compiler
         $constructStatements = [];
 
         if ($mapperConfiguration->getSource() !== 'array') {
-            $statements[] = new Expr\Assign($hashVariable, new Expr\BinaryOp\Concat(new Expr\FuncCall(new Name('spl_object_hash'), [
+            $statements[] = parserExpression(new Expr\Assign($hashVariable, new Expr\BinaryOp\Concat(new Expr\FuncCall(new Name('spl_object_hash'), [
                 new Arg($sourceInput),
             ]),
                 new Scalar\String_($mapperConfiguration->getTarget())
-            ));
+            )));
             $statements[] = new Stmt\If_(new Expr\FuncCall(new Name('array_key_exists'), [
                 new Arg($hashVariable),
                 new Arg(new Expr\MethodCall($contextVariable, 'getRegistry')),
@@ -56,29 +59,29 @@ class Compiler
         }
 
         if ($mapperConfiguration->getTarget() === 'array') {
-            $statements[] = new Expr\Assign($result, new Expr\Array_());
+            $statements[] = parserExpression(new Expr\Assign($result, new Expr\Array_()));
         } elseif ($mapperConfiguration->getTarget() === \stdClass::class) {
-            $statements[] = new Expr\Assign($result, new Expr\New_(new Name(\stdClass::class)));
+            $statements[] = parserExpression(new Expr\Assign($result, new Expr\New_(new Name(\stdClass::class))));
         } elseif ($mapperConfiguration->shouldDisabledTargetConstructor()) {
             if ($mapperConfiguration->isTargetCloneable()) {
-                $constructStatements[] = new Expr\Assign(
+                $constructStatements[] = parserExpression(new Expr\Assign(
                     new Expr\PropertyFetch(new Expr\Variable('this'), 'cachedTarget'),
                     new Expr\MethodCall(new Expr\New_(new Name(\ReflectionClass::class), [
                         new Arg(new Scalar\String_($mapperConfiguration->getTarget())),
                     ]), 'newInstanceWithoutConstructor')
-                );
-                $statements[] = new Expr\Assign($result, new Expr\Clone_(new Expr\PropertyFetch(new Expr\Variable('this'), 'cachedTarget')));
+                ));
+                $statements[] = parserExpression(new Expr\Assign($result, new Expr\Clone_(new Expr\PropertyFetch(new Expr\Variable('this'), 'cachedTarget'))));
             } else {
-                $constructStatements[] = new Expr\Assign(
+                $constructStatements[] = parserExpression(new Expr\Assign(
                     new Expr\PropertyFetch(new Expr\Variable('this'), 'cachedTarget'),
                     new Expr\New_(new Name(\ReflectionClass::class), [
                         new Arg(new Scalar\String_($mapperConfiguration->getTarget())),
                     ])
-                );
-                $statements[] = new Expr\Assign($result, new Expr\MethodCall(
+                ));
+                $statements[] = parserExpression(new Expr\Assign($result, new Expr\MethodCall(
                     new Expr\PropertyFetch(new Expr\Variable('this'), 'cachedTarget'),
                     'newInstanceWithoutConstructor'
-                ));
+                )));
             }
         } else {
             $constructArguments = [];
@@ -108,14 +111,14 @@ class Compiler
                 }
             }
 
-            $statements[] = new Expr\Assign($result, new Expr\New_(new Name($mapperConfiguration->getTarget()), $constructArguments));
+            $statements[] = parserExpression(new Expr\Assign($result, new Expr\New_(new Name($mapperConfiguration->getTarget()), $constructArguments)));
         }
 
         if ($mapperConfiguration->getSource() !== 'array') {
-            $statements[] = new Expr\AssignRef(
+            $statements[] = parserExpression(new Expr\AssignRef(
                 new Expr\ArrayDimFetch(new Expr\MethodCall($contextVariable, 'getRegistry'), $hashVariable),
                 $result
-            );
+            ));
         }
 
         /** @var PropertyMapping $propertyMapping */
@@ -127,24 +130,24 @@ class Compiler
                 continue;
             }
 
-            $propStatements[] = $writeExpression;
+            $propStatements[] = parserExpression($writeExpression);
             $conditions = [];
 
             $extractCallback = $propertyMapping->getReadAccessor()->getExtractCallback($mapperConfiguration->getSource());
             $hydrateCallback = $propertyMapping->getWriteMutator()->getHydrateCallback($mapperConfiguration->getTarget());
 
             if (null !== $extractCallback) {
-                $constructStatements[] = new Expr\Assign(
+                $constructStatements[] = parserExpression(new Expr\Assign(
                     new Expr\ArrayDimFetch(new Expr\PropertyFetch(new Expr\Variable('this'), 'extractCallbacks'), new Scalar\String_($propertyMapping->getProperty())),
                     $extractCallback
-                );
+                ));
             }
 
             if (null !== $hydrateCallback) {
-                $constructStatements[] = new Expr\Assign(
+                $constructStatements[] = parserExpression(new Expr\Assign(
                     new Expr\ArrayDimFetch(new Expr\PropertyFetch(new Expr\Variable('this'), 'hydrateCallbacks'), new Scalar\String_($propertyMapping->getProperty())),
                     $hydrateCallback
-                );
+                ));
             }
 
             if ($propertyMapping->checkExists()) {
@@ -214,16 +217,16 @@ class Compiler
         $statements[] = new Stmt\Return_($result);
 
         $mapmethod = new Stmt\ClassMethod('map', [
-            'flags' => Stmt\Class_::MODIFIER_PUBLIC,
+            'type' => Stmt\Class_::MODIFIER_PUBLIC,
             'params' => [
-                new Param($sourceInput->name),
-                new Param('context', null, new Name\FullyQualified(Context::class)),
+                new Param(parserVariable($sourceInput->name)),
+                new Param(parserVariable('context'), null, new Name\FullyQualified(Context::class)),
             ],
             'stmts' => $statements,
         ]);
 
         $constructMethod = new Stmt\ClassMethod('__construct', [
-            'flags' => Stmt\Class_::MODIFIER_PUBLIC,
+            'type' => Stmt\Class_::MODIFIER_PUBLIC,
             'stmts' => $constructStatements,
         ]);
 
@@ -242,6 +245,13 @@ class Compiler
 
     private function getValueAsExpr($value)
     {
-        return $this->parser->parse('<?php ' . var_export($value, true) . ';')[0];
+        $expr = $this->parser->parse('<?php ' . var_export($value, true) . ';')[0];
+
+        if (isPhpParser4() &&
+            $expr instanceof Stmt\Expression) {
+            return $expr->expr;
+        }
+
+        return $expr;
     }
 }

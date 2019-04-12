@@ -6,6 +6,7 @@ use Jane\JsonSchema\Generator\Context\Context;
 use Jane\JsonSchema\Generator\Normalizer\DenormalizerGenerator;
 use Jane\JsonSchema\Generator\Normalizer\NormalizerGenerator as NormalizerGeneratorTrait;
 use Jane\JsonSchema\Schema;
+use function Jane\parserExpression;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Name;
 use PhpParser\Node\Stmt;
@@ -121,16 +122,16 @@ class NormalizerGenerator implements GeneratorInterface
     protected function createNormalizerFactoryClass($classes)
     {
         $statements = [
-            new Expr\Assign(new Expr\Variable('normalizers'), new Expr\Array_()),
-            new Expr\Assign(new Expr\ArrayDimFetch(new Expr\Variable('normalizers')), new Expr\New_(new Name('\Symfony\Component\Serializer\Normalizer\ArrayDenormalizer'))),
+            parserExpression(new Expr\Assign(new Expr\Variable('normalizers'), new Expr\Array_())),
+            parserExpression(new Expr\Assign(new Expr\ArrayDimFetch(new Expr\Variable('normalizers')), new Expr\New_(new Name('\Symfony\Component\Serializer\Normalizer\ArrayDenormalizer')))),
         ];
 
         if ($this->useReference) {
-            $statements[] = new Expr\Assign(new Expr\ArrayDimFetch(new Expr\Variable('normalizers')), new Expr\New_(new Name('\Jane\JsonSchemaRuntime\Normalizer\ReferenceNormalizer')));
+            $statements[] = parserExpression(new Expr\Assign(new Expr\ArrayDimFetch(new Expr\Variable('normalizers')), new Expr\New_(new Name('\Jane\JsonSchemaRuntime\Normalizer\ReferenceNormalizer'))));
         }
 
         foreach ($classes as $class) {
-            $statements[] = new Expr\Assign(new Expr\ArrayDimFetch(new Expr\Variable('normalizers')), new Expr\New_($class));
+            $statements[] = parserExpression(new Expr\Assign(new Expr\ArrayDimFetch(new Expr\Variable('normalizers')), new Expr\New_($class)));
         }
 
         $statements[] = new Stmt\Return_(new Expr\Variable('normalizers'));

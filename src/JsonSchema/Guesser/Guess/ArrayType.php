@@ -3,6 +3,7 @@
 namespace Jane\JsonSchema\Guesser\Guess;
 
 use Jane\JsonSchema\Generator\Context\Context;
+use function Jane\parserExpression;
 use PhpParser\Node\Stmt;
 use PhpParser\Node\Expr;
 
@@ -43,7 +44,7 @@ class ArrayType extends Type
         $valuesVar = new Expr\Variable($context->getUniqueVariableName('values'));
         $statements = [
             // $values = [];
-            new Expr\Assign($valuesVar, $this->createArrayValueStatement()),
+            parserExpression(new Expr\Assign($valuesVar, $this->createArrayValueStatement())),
         ];
 
         $loopValueVar = new Expr\Variable($context->getUniqueVariableName('value'));
@@ -52,7 +53,7 @@ class ArrayType extends Type
         list($subStatements, $outputExpr) = $this->itemType->createDenormalizationStatement($context, $loopValueVar);
 
         $loopStatements = array_merge($subStatements, [
-            new Expr\Assign($this->createLoopOutputAssignement($valuesVar, $loopKeyVar), $outputExpr),
+            parserExpression(new Expr\Assign($this->createLoopOutputAssignement($valuesVar, $loopKeyVar), $outputExpr)),
         ]);
 
         $statements[] = new Stmt\Foreach_($input, $loopValueVar, [
@@ -71,7 +72,7 @@ class ArrayType extends Type
         $valuesVar = new Expr\Variable($context->getUniqueVariableName('values'));
         $statements = [
             // $values = [];
-            new Expr\Assign($valuesVar, $this->createNormalizationArrayValueStatement()),
+            parserExpression(new Expr\Assign($valuesVar, $this->createNormalizationArrayValueStatement())),
         ];
 
         $loopValueVar = new Expr\Variable($context->getUniqueVariableName('value'));
@@ -80,7 +81,7 @@ class ArrayType extends Type
         list($subStatements, $outputExpr) = $this->itemType->createNormalizationStatement($context, $loopValueVar);
 
         $loopStatements = array_merge($subStatements, [
-            new Expr\Assign($this->createNormalizationLoopOutputAssignement($valuesVar, $loopKeyVar), $outputExpr),
+            parserExpression(new Expr\Assign($this->createNormalizationLoopOutputAssignement($valuesVar, $loopKeyVar), $outputExpr)),
         ]);
 
         $statements[] = new Stmt\Foreach_($input, $loopValueVar, [

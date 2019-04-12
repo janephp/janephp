@@ -16,20 +16,20 @@ class TestHeaderParameters extends \Jane\OpenApiRuntime\Client\BaseEndpoint impl
      *     @var string $testDefault 
      * }
      */
-    function __construct(array $headerParameters = array())
+    public function __construct(array $headerParameters = array())
     {
         $this->headerParameters = $headerParameters;
     }
     use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
-    function getMethod() : string
+    public function getMethod() : string
     {
         return 'GET';
     }
-    function getUri() : string
+    public function getUri() : string
     {
         return '/test-header';
     }
-    function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null) : array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null) : array
     {
         return array(array(), null);
     }

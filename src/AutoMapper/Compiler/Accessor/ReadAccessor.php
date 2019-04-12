@@ -2,12 +2,13 @@
 
 namespace Jane\AutoMapper\Compiler\Accessor;
 
+use function Jane\parserVariable;
 use PhpParser\Node\Arg;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Name;
 use PhpParser\Node\Param;
 use PhpParser\Node\Scalar;
-use PhpParser\Node\Stmt\Return_;
+use PhpParser\Node\Stmt;
 
 class ReadAccessor
 {
@@ -68,10 +69,10 @@ class ReadAccessor
         return new Expr\StaticCall(new Name\FullyQualified(\Closure::class), 'bind', [
             new Arg(new Expr\Closure([
                 'params' => [
-                    new Param('object'),
+                    new Param(parserVariable('object')),
                 ],
                 'stmts' => [
-                    new Return_(new Expr\PropertyFetch(new Expr\Variable('object'), $this->name)),
+                    new Stmt\Return_(new Expr\PropertyFetch(new Expr\Variable('object'), $this->name)),
                 ],
             ])),
             new Arg(new Expr\ConstFetch(new Name('null'))),

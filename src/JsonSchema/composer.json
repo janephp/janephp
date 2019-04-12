@@ -11,7 +11,8 @@
     "autoload": {
         "psr-4": {
             "Jane\\JsonSchema\\": ""
-        }
+        },
+        "files": ["helpers.php"]
     },
     "bin": [
         "bin/jane"
@@ -20,7 +21,7 @@
         "php": ">=7.1",
         "doctrine/inflector": "^1.0",
         "jane-php/json-schema-runtime": "^4.0",
-        "nikic/php-parser": "^3.0",
+        "nikic/php-parser": "^3.0 || ^4.0",
         "symfony/console": "^3.1|^4.0",
         "symfony/options-resolver": "^3.1|^4.0",
         "symfony/property-access": "^3.1|^4.0",

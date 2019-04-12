@@ -12,7 +12,7 @@
         "php": ">=7.1",
         "doctrine/inflector": "^1.0",
         "league/uri": "^4.2 || ^5.3",
-        "nikic/php-parser": "^3.0",
+        "nikic/php-parser": "^3.0 || ^4.0",
         "php-http/client-common": "^1.4 || ^2.0",
         "php-http/httplug": "^1.0 || ^2.0",
         "php-http/message-factory": "^1.0.2",
@@ -56,6 +56,9 @@
         "psr-4": {
             "Jane\\": "src/"
         },
+        "files": [
+            "helpers.php"
+        ],
         "exclude-from-classmap": [
             "**/Tests/"
         ]

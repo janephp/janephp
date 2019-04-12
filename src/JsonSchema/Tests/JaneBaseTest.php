@@ -2,6 +2,7 @@
 
 namespace Jane\JsonSchema\tests;
 
+use function Jane\isPhpParser4;
 use Jane\JsonSchema\Command\GenerateCommand;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Console\Input\ArrayInput;
@@ -54,7 +55,7 @@ class JaneBaseTest extends TestCase
                 sprintf('File %s does not exist for %s', $expectedFile->getRelativePathname(), $testDirectory->getRelativePathname())
             );
 
-            if ($expectedFile->isFile()) {
+            if ($expectedFile->isFile() && !isPhpParser4()) {
                 $this->assertEquals(
                     file_get_contents($expectedFile->getRealPath()),
                     file_get_contents($generatedData[$expectedFile->getRelativePathname()]),

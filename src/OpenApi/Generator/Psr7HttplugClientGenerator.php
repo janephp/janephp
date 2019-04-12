@@ -12,6 +12,8 @@ use Http\Discovery\UriFactoryDiscovery;
 use Jane\JsonSchema\Generator\Context\Context;
 use Jane\OpenApi\Model\OpenApi;
 use Jane\OpenApiRuntime\Client\Psr7HttplugClient;
+use function Jane\parserExpression;
+use function Jane\parserVariable;
 use PhpParser\Node;
 use PhpParser\Node\Name;
 use PhpParser\Node\Expr;
@@ -39,9 +41,9 @@ class Psr7HttplugClientGenerator extends ClientGenerator
     {
         return new Stmt\ClassMethod(
             'create', [
-                'flags' => Stmt\Class_::MODIFIER_STATIC | Stmt\Class_::MODIFIER_PUBLIC,
+                'type' => Stmt\Class_::MODIFIER_STATIC | Stmt\Class_::MODIFIER_PUBLIC,
                 'params' => [
-                    new Node\Param('httpClient', new Expr\ConstFetch(new Name('null'))),
+                    new Node\Param(parserVariable('httpClient'), new Expr\ConstFetch(new Name('null'))),
                 ],
                 'stmts' => [
                     new Stmt\If_(
@@ -50,21 +52,21 @@ class Psr7HttplugClientGenerator extends ClientGenerator
                             'stmts' => $this->getHttpClientCreateExpr($context),
                         ]
                     ),
-                    new Expr\Assign(
+                    parserExpression(new Expr\Assign(
                         new Expr\Variable('messageFactory'),
                         new Expr\StaticCall(
                             new Name\FullyQualified(MessageFactoryDiscovery::class),
                             'find'
                         )
-                    ),
-                    new Expr\Assign(
+                    )),
+                    parserExpression(new Expr\Assign(
                         new Expr\Variable('streamFactory'),
                         new Expr\StaticCall(
                             new Name\FullyQualified(StreamFactoryDiscovery::class),
                             'find'
                         )
-                    ),
-                    new Expr\Assign(
+                    )),
+                    parserExpression(new Expr\Assign(
                         new Expr\Variable('serializer'),
                         new Expr\New_(
                             new Name\FullyQualified(Serializer::class),
@@ -87,7 +89,7 @@ class Psr7HttplugClientGenerator extends ClientGenerator
                                 ),
                             ]
                         )
-                    ),
+                    )),
                     new Stmt\Return_(
                         new Expr\New_(
                             new Name('static'), [
@@ -130,13 +132,13 @@ class Psr7HttplugClientGenerator extends ClientGenerator
             $plugins[] = AddPathPlugin::class;
         }
 
-        $httpClientAssign = new Expr\Assign(
+        $httpClientAssign = parserExpression(new Expr\Assign(
             new Expr\Variable('httpClient'),
             new Expr\StaticCall(
                 new Name\FullyQualified(HttpClientDiscovery::class),
                 'find'
             )
-        );
+        ));
 
         if (empty($baseUri)) {
             return [$httpClientAssign];
@@ -144,11 +146,11 @@ class Psr7HttplugClientGenerator extends ClientGenerator
 
         $statements = [
             $httpClientAssign,
-            new Expr\Assign(
+            parserExpression(new Expr\Assign(
                 new Expr\Variable('plugins'),
                 new Expr\Array_()
-            ),
-            new Expr\Assign(
+            )),
+            parserExpression(new Expr\Assign(
                 new Expr\Variable('uri'),
                 new Expr\MethodCall(
                     new Expr\StaticCall(
@@ -160,19 +162,19 @@ class Psr7HttplugClientGenerator extends ClientGenerator
                         new Node\Arg(new Node\Scalar\String_($baseUri)),
                     ]
                 )
-            ),
+            )),
         ];
 
         foreach ($plugins as $pluginClass) {
-            $statements[] = new Expr\Assign(
+            $statements[] = parserExpression(new Expr\Assign(
                 new Expr\ArrayDimFetch(new Expr\Variable('plugins')),
                 new Expr\New_(new Name\FullyQualified($pluginClass), [
                     new Node\Arg(new Expr\Variable('uri')),
                 ])
-            );
+            ));
         }
 
-        $statements[] = new Expr\Assign(
+        $statements[] = parserExpression(new Expr\Assign(
             new Expr\Variable('httpClient'),
             new Expr\New_(
                 new Name\FullyQualified(PluginClient::class),
@@ -181,7 +183,7 @@ class Psr7HttplugClientGenerator extends ClientGenerator
                     new Node\Arg(new Expr\Variable('plugins')),
                 ]
             )
-        );
+        ));
 
         return $statements;
     }

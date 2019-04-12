@@ -3,6 +3,7 @@
 namespace Jane\AutoMapper\Compiler\Transformer;
 
 use Jane\AutoMapper\Compiler\UniqueVariableScope;
+use function Jane\parserExpression;
 use PhpParser\Node\Arg;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Name;
@@ -38,7 +39,7 @@ class MultipleTransformer implements TransformerInterface
     {
         $output = new Expr\Variable($uniqueVariableScope->getUniqueName('value'));
         $statements = [
-            new Expr\Assign($output, $input),
+            parserExpression(new Expr\Assign($output, $input)),
         ];
 
         foreach ($this->transformers as $transformerData) {
@@ -57,7 +58,7 @@ class MultipleTransformer implements TransformerInterface
                 [
                     'stmts' => array_merge(
                         $transformerStatements, [
-                            new Expr\Assign($output, $transformerOutput),
+                            parserExpression(new Expr\Assign($output, $transformerOutput)),
                         ]
                     ),
                 ]

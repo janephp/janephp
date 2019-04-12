@@ -5,12 +5,12 @@ namespace Jane\OpenApi\Tests\Expected\Exception;
 class GetTestByIdBadRequestException extends \RuntimeException implements ClientException
 {
     private $error;
-    function __construct(\Jane\OpenApi\Tests\Expected\Model\Error $error)
+    public function __construct(\Jane\OpenApi\Tests\Expected\Model\Error $error)
     {
         parent::__construct('bad request', 400);
         $this->error = $error;
     }
-    function getError()
+    public function getError()
     {
         return $this->error;
     }

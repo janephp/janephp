@@ -9,20 +9,20 @@ class TestBinaryBody extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements
      *
      * @param string|resource|\Psr\Http\Message\StreamInterface $testBinary 
      */
-    function __construct($testBinary)
+    public function __construct($testBinary)
     {
         $this->body = $testBinary;
     }
     use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
-    function getMethod() : string
+    public function getMethod() : string
     {
         return 'POST';
     }
-    function getUri() : string
+    public function getUri() : string
     {
         return '/test-binary-body';
     }
-    function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null) : array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null) : array
     {
         return array(array(), $this->body);
     }

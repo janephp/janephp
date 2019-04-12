@@ -10,20 +10,20 @@ class GetByTestInteger extends \Jane\OpenApiRuntime\Client\BaseEndpoint implemen
      *
      * @param int $testInteger 
      */
-    function __construct(int $testInteger)
+    public function __construct(int $testInteger)
     {
         $this->testInteger = $testInteger;
     }
     use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
-    function getMethod() : string
+    public function getMethod() : string
     {
         return 'GET';
     }
-    function getUri() : string
+    public function getUri() : string
     {
         return str_replace(array('{test_integer}'), array($this->test_integer), '/{test_integer}');
     }
-    function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null) : array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null) : array
     {
         return array(array(), null);
     }

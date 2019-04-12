@@ -2,6 +2,7 @@
 
 namespace Jane\JsonSchema\Tests;
 
+use function Jane\isPhpParser4;
 use Jane\JsonSchema\Jane;
 use Jane\JsonSchema\Printer;
 use Jane\JsonSchema\Registry;
@@ -42,20 +43,22 @@ class LibraryTest extends TestCase
         $this->assertFileExists(__DIR__ . '/generated/Normalizer/JsonSchemaNormalizer.php');
         $this->assertFileExists(__DIR__ . '/generated/Normalizer/NormalizerFactory.php');
 
-        $this->assertEquals(
-            file_get_contents(__DIR__ . '/../Model/JsonSchema.php'),
-            file_get_contents(__DIR__ . '/generated/Model/JsonSchema.php')
-        );
+        if (!isPhpParser4()) {
+            $this->assertEquals(
+                file_get_contents(__DIR__ . '/../Model/JsonSchema.php'),
+                file_get_contents(__DIR__ . '/generated/Model/JsonSchema.php')
+            );
 
-        $this->assertEquals(
-            file_get_contents(__DIR__ . '/../Normalizer/JsonSchemaNormalizer.php'),
-            file_get_contents(__DIR__ . '/generated/Normalizer/JsonSchemaNormalizer.php')
-        );
+            $this->assertEquals(
+                file_get_contents(__DIR__ . '/../Normalizer/JsonSchemaNormalizer.php'),
+                file_get_contents(__DIR__ . '/generated/Normalizer/JsonSchemaNormalizer.php')
+            );
 
-        $this->assertEquals(
-            file_get_contents(__DIR__ . '/../Normalizer/NormalizerFactory.php'),
-            file_get_contents(__DIR__ . '/generated/Normalizer/NormalizerFactory.php')
-        );
+            $this->assertEquals(
+                file_get_contents(__DIR__ . '/../Normalizer/NormalizerFactory.php'),
+                file_get_contents(__DIR__ . '/generated/Normalizer/NormalizerFactory.php')
+            );
+        }
     }
 
     public function testBothWay()

@@ -2,6 +2,7 @@
 
 namespace Jane\JsonSchema\Generator\Model;
 
+use function Jane\isPhpParser4;
 use Jane\JsonSchema\Generator\Naming;
 use Jane\JsonSchema\Guesser\Guess\Property;
 use PhpParser\Comment\Doc;
@@ -58,6 +59,13 @@ EOD
 
     private function getDefaultAsExpr($value)
     {
-        return $this->parser->parse('<?php ' . var_export($value, true) . ';')[0];
+        $expr = $this->parser->parse('<?php ' . var_export($value, true) . ';')[0];
+
+        if (isPhpParser4() &&
+            $expr instanceof Stmt\Expression) {
+            return $expr->expr;
+        }
+
+        return $expr;
     }
 }

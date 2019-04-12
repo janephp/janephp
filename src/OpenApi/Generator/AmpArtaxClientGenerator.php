@@ -5,6 +5,8 @@ namespace Jane\OpenApi\Generator;
 use Amp\Artax\DefaultClient;
 use Jane\JsonSchema\Generator\Context\Context;
 use Jane\OpenApiRuntime\Client\AmpArtaxClient;
+use function Jane\parserExpression;
+use function Jane\parserVariable;
 use PhpParser\Node;
 use PhpParser\Node\Name;
 use PhpParser\Node\Expr;
@@ -32,23 +34,23 @@ class AmpArtaxClientGenerator extends ClientGenerator
     {
         return new Stmt\ClassMethod(
             'create', [
-                'flags' => Stmt\Class_::MODIFIER_STATIC | Stmt\Class_::MODIFIER_PUBLIC,
+                'type' => Stmt\Class_::MODIFIER_STATIC | Stmt\Class_::MODIFIER_PUBLIC,
                 'params' => [
-                    new Node\Param('httpClient', new Expr\ConstFetch(new Name('null'))),
+                    new Node\Param(parserVariable('httpClient'), new Expr\ConstFetch(new Name('null'))),
                 ],
                 'stmts' => [
                     new Stmt\If_(
                         new Expr\BinaryOp\Identical(new Expr\ConstFetch(new Name('null')), new Expr\Variable('httpClient')),
                         [
                             'stmts' => [
-                                new Expr\Assign(
+                                parserExpression(new Expr\Assign(
                                     new Expr\Variable('httpClient'),
                                     new Expr\New_(new Name\FullyQualified(DefaultClient::class))
-                                ),
+                                )),
                             ],
                         ]
                     ),
-                    new Expr\Assign(
+                    parserExpression(new Expr\Assign(
                         new Expr\Variable('serializer'),
                         new Expr\New_(
                             new Name\FullyQualified(Serializer::class),
@@ -71,7 +73,7 @@ class AmpArtaxClientGenerator extends ClientGenerator
                                 ),
                             ]
                         )
-                    ),
+                    )),
                     new Stmt\Return_(
                         new Expr\New_(
                             new Name('static'), [

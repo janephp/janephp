@@ -7,6 +7,7 @@ use Jane\JsonSchema\Generator\Context\Context;
 use Jane\JsonSchemaRuntime\Reference;
 use Jane\OpenApi\Model\BodyParameter;
 use Jane\OpenApi\Model\Schema;
+use function Jane\parserVariable;
 use PhpParser\Node;
 use PhpParser\Parser;
 use Psr\Http\Message\StreamInterface;
@@ -42,7 +43,7 @@ class BodyParameterGenerator extends ParameterGenerator
             $paramType = 'array';
         }
 
-        return new Node\Param($name, null, $paramType);
+        return new Node\Param(parserVariable($name), null, null === $paramType ? $paramType : new Node\Name($paramType));
     }
 
     /**

@@ -7,6 +7,8 @@ use Jane\JsonSchema\Generator\File;
 use Jane\JsonSchema\Guesser\Guess\ClassGuess;
 use Jane\JsonSchema\Schema;
 use Jane\OpenApi\Naming\ExceptionNaming;
+use function Jane\parserExpression;
+use function Jane\parserVariable;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Name;
 use PhpParser\Node\Param;
@@ -61,23 +63,25 @@ class ExceptionGenerator
                                 new Stmt\PropertyProperty($propertyName),
                             ]),
                             new Stmt\ClassMethod('__construct', [
+                                'type' => Stmt\Class_::MODIFIER_PUBLIC,
                                 'params' => [
-                                    new Param($propertyName, null, $isArray ? null : '\\' . $classFqdn),
+                                    new Param(parserVariable($propertyName), null, $isArray ? null : new Name('\\' . $classFqdn)),
                                 ],
                                 'stmts' => [
-                                    new Expr\StaticCall(new Name('parent'), '__construct', [
+                                    parserExpression(new Expr\StaticCall(new Name('parent'), '__construct', [
                                         new Scalar\String_($description),
                                         new Scalar\LNumber($status),
-                                    ]),
-                                    new Expr\Assign(
+                                    ])),
+                                    parserExpression(new Expr\Assign(
                                         new Expr\PropertyFetch(
                                             new Expr\Variable('this'),
                                             $propertyName
                                         ), new Expr\Variable($propertyName)
-                                    ),
+                                    )),
                                 ],
                             ]),
                             new Stmt\ClassMethod($methodName, [
+                                'type' => Stmt\Class_::MODIFIER_PUBLIC,
                                 'stmts' => [
                                     new Stmt\Return_(
                                         new Expr\PropertyFetch(
@@ -107,6 +111,7 @@ class ExceptionGenerator
                     'extends' => new Name('\\RuntimeException'),
                     'stmts' => [
                         new Stmt\ClassMethod('__construct', [
+                            'type' => Stmt\Class_::MODIFIER_PUBLIC,
                             'stmts' => [
                                 new Expr\StaticCall(new Name('parent'), '__construct', [
                                     new Scalar\String_($description),
