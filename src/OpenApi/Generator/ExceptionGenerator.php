@@ -113,10 +113,10 @@ class ExceptionGenerator
                         new Stmt\ClassMethod('__construct', [
                             'type' => Stmt\Class_::MODIFIER_PUBLIC,
                             'stmts' => [
-                                new Expr\StaticCall(new Name('parent'), '__construct', [
+                                parserExpression(new Expr\StaticCall(new Name('parent'), '__construct', [
                                     new Scalar\String_($description),
                                     new Scalar\LNumber($status),
-                                ]),
+                                ])),
                             ],
                         ]),
                     ],
