@@ -40,7 +40,7 @@
         "php-http/artax-adapter": "^0.1",
         "phpbench/phpbench": "@dev",
         "phpunit/phpunit": "^6.0",
-        "symfony/framework-bundle": "^4.0",
+        "symfony/framework-bundle": "^4.2",
         "symfony/phpunit-bridge": "^4.1"
     },
     "suggest": {

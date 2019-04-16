@@ -28,7 +28,7 @@
     "require-dev": {
         "doctrine/annotations": "^1.5",
         "phpunit/phpunit": "^6.0",
-        "symfony/framework-bundle": "^4.0",
+        "symfony/framework-bundle": "^4.2",
         "symfony/serializer": "^4.2"
     },
     "config": {
