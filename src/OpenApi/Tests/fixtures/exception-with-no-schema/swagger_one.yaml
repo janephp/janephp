@@ -1,0 +1,22 @@
+swagger: '2.0'
+info:
+    title: Swagger
+    version: 1.0.0
+schemes:
+    - https
+produces:
+    - application/json
+paths:
+    '/test-one':
+        get:
+            operationId: testOne
+            responses:
+                '200':
+                    description: Success
+                    schema:
+                        type: object
+                        properties:
+                            message:
+                                type: string
+                '404':
+                    description: Not found
