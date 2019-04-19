@@ -201,6 +201,7 @@ EOD
             . implode("\n", $methodDocumentations);
 
         return [new Stmt\ClassMethod('__construct', [
+            'type' => Stmt\Class_::MODIFIER_PUBLIC,
             'params' => $methodParams,
             'stmts' => $methodStatements,
         ], [
@@ -211,6 +212,7 @@ EOD
     private function getGetMethod(Operation $operation): Stmt\ClassMethod
     {
         return new Stmt\ClassMethod('getMethod', [
+            'type' => Stmt\Class_::MODIFIER_PUBLIC,
             'stmts' => [
                 new Stmt\Return_(new Scalar\String_($operation->getMethod())),
             ],
@@ -235,6 +237,7 @@ EOD
 
         if (\count($names) === 0) {
             return new Stmt\ClassMethod('getUri', [
+                'type' => Stmt\Class_::MODIFIER_PUBLIC,
                 'stmts' => [
                     new Stmt\Return_(new Scalar\String_($operation->getPath())),
                 ],
@@ -243,6 +246,7 @@ EOD
         }
 
         return new Stmt\ClassMethod('getUri', [
+            'type' => Stmt\Class_::MODIFIER_PUBLIC,
             'stmts' => [
                 new Stmt\Return_(new Expr\FuncCall(new Name('str_replace'), [
                     new Arg(new Expr\Array_(array_map(function ($name) {
@@ -312,6 +316,7 @@ EOD
         }
 
         return new Stmt\ClassMethod('getExtraHeaders', [
+            'type' => Stmt\Class_::MODIFIER_PUBLIC,
             'stmts' => [
                 new Stmt\Return_(new Expr\Array_($headers)),
             ],
@@ -359,6 +364,7 @@ EOD
     private function getGetBody(Operation $operation, Context $context): Stmt\ClassMethod
     {
         return new Stmt\ClassMethod('getBody', [
+            'type' => Stmt\Class_::MODIFIER_PUBLIC,
             'params' => [
                 new Param(new Expr\Variable('serializer'), null, new Name\FullyQualified(SerializerInterface::class)),
                 new Param(new Expr\Variable('streamFactory'), new Expr\ConstFetch(new Name('null')), new Name\FullyQualified(StreamFactory::class)),
