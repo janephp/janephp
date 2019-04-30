@@ -45,7 +45,7 @@ class GenerateCommand extends Command
         $options = $this->resolveConfiguration($options);
         $registry = new Registry();
 
-        if (array_key_exists('openapi-file', $options)) {
+        if (\array_key_exists('openapi-file', $options)) {
             $registry->addSchema($this->resolveSchema($options['openapi-file'], $options));
         } else {
             foreach ($options['mapping'] as $schema => $schemaOptions) {
@@ -54,7 +54,17 @@ class GenerateCommand extends Command
         }
 
         $janeOpenApi = JaneOpenApi::build($options);
-        $printer = new Printer(new Standard());
+        $fixerConfigFile = '';
+
+        if (\array_key_exists('fixer-config-file', $options) && null !== $options['fixer-config-file']) {
+            $fixerConfigFile = $options['fixer-config-file'];
+        }
+
+        $printer = new Printer(new Standard(), $fixerConfigFile);
+
+        if (\array_key_exists('use-fixer', $options) && false === $options['use-fixer']) {
+            $printer->setUseFixer(false);
+        }
 
         $janeOpenApi->generate($registry);
         $printer->output($registry);
@@ -68,9 +78,11 @@ class GenerateCommand extends Command
             'date-format' => \DateTime::RFC3339,
             'async' => false,
             'strict' => true,
+            'use-fixer' => true,
+            'fixer-config-file' => null,
         ]);
 
-        if (array_key_exists('openapi-file', $options)) {
+        if (\array_key_exists('openapi-file', $options)) {
             $optionsResolver->setRequired([
                 'openapi-file',
                 'namespace',
@@ -98,6 +110,8 @@ class GenerateCommand extends Command
             'date-format',
             'async',
             'strict',
+            'use-fixer',
+            'fixer-config-file',
         ]);
 
         $optionsResolver->setDefault('version', 2);

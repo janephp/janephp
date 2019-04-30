@@ -11,7 +11,7 @@ interface TransformerFactoryInterface
      * @param Type[] $sourcesTypes
      * @param Type[] $targetTypes
      *
-     * @return null|TransformerInterface
+     * @return TransformerInterface|null
      */
     public function getTransformer(?array $sourcesTypes, ?array $targetTypes, MapperConfigurationInterface $mapperConfiguration): ?TransformerInterface;
 }

@@ -155,7 +155,7 @@ class Context
 
     public function hasConstructorArgument(string $class, string $key): bool
     {
-        return array_key_exists($key, $this->constructorArguments[$class] ?? []);
+        return \array_key_exists($key, $this->constructorArguments[$class] ?? []);
     }
 
     public function getConstructorArgument(string $class, string $key)

@@ -428,7 +428,7 @@ class AutoMapperTest extends TestCase
     public function testDiscriminator()
     {
         $data = [
-            'type' => 'cat'
+            'type' => 'cat',
         ];
 
         $pet = $this->autoMapper->map($data, Pet::class);

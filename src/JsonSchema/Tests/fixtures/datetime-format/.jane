@@ -6,4 +6,5 @@ return [
     'namespace' => 'Jane\JsonSchema\Tests\Expected',
     'directory' => __DIR__ . '/generated',
     'date-format' => \DateTime::RFC850,
+    'use-fixer' => false,
 ];
