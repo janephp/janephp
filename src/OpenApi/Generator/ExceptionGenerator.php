@@ -61,6 +61,7 @@ class ExceptionGenerator
                                 new Stmt\PropertyProperty($propertyName),
                             ]),
                             new Stmt\ClassMethod('__construct', [
+                                'type' => Stmt\Class_::MODIFIER_PUBLIC,
                                 'params' => [
                                     new Param(new Expr\Variable($propertyName), null, $isArray ? null : new Name('\\' . $classFqdn)),
                                 ],
@@ -78,6 +79,7 @@ class ExceptionGenerator
                                 ],
                             ]),
                             new Stmt\ClassMethod($methodName, [
+                                'type' => Stmt\Class_::MODIFIER_PUBLIC,
                                 'stmts' => [
                                     new Stmt\Return_(
                                         new Expr\PropertyFetch(
@@ -107,6 +109,7 @@ class ExceptionGenerator
                     'extends' => new Name('\\RuntimeException'),
                     'stmts' => [
                         new Stmt\ClassMethod('__construct', [
+                            'type' => Stmt\Class_::MODIFIER_PUBLIC,
                             'stmts' => [
                                 new Stmt\Expression(new Expr\StaticCall(new Name('parent'), '__construct', [
                                     new Scalar\String_($description),
