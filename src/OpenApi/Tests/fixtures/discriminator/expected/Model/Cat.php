@@ -2,7 +2,7 @@
 
 namespace Jane\OpenApi\Tests\Expected\Model;
 
-class Cat
+class Cat extends Pet
 {
     /**
      * 

@@ -2,8 +2,6 @@
 
 namespace Jane\OpenApi\Guesser\Guess;
 
-use Jane\JsonSchema\Guesser\Guess\ClassGuess;
-
 class MultipleClass extends ClassGuess
 {
     protected $discriminator;
@@ -13,6 +11,7 @@ class MultipleClass extends ClassGuess
     public function __construct(ClassGuess $classGuess, string $discriminator, array $references = [])
     {
         parent::__construct($classGuess->getObject(), $classGuess->getReference(), $classGuess->getName(), $classGuess->getExtensionsObject());
+        $this->setMultipleClass($classGuess->getMultipleClass());
         $this->setProperties($classGuess->getProperties());
         $this->setExtensionsType($classGuess->getExtensionsType());
         $this->setConstraints($classGuess->getConstraints());

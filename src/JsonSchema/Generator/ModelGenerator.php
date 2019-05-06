@@ -6,6 +6,7 @@ use Jane\JsonSchema\Generator\Context\Context;
 use Jane\JsonSchema\Generator\Model\ClassGenerator;
 use Jane\JsonSchema\Generator\Model\GetterSetterGenerator;
 use Jane\JsonSchema\Generator\Model\PropertyGenerator;
+use Jane\JsonSchema\Guesser\Guess\ClassGuess;
 use Jane\JsonSchema\Schema;
 use PhpParser\Node\Name;
 use PhpParser\Node\Stmt;
@@ -72,16 +73,21 @@ class ModelGenerator implements GeneratorInterface
                 $methods[] = $this->createSetter($property, $schema->getNamespace() . '\\Model');
             }
 
-            $model = $this->createModel(
-                $class->getName(),
-                $properties,
-                $methods,
-                \count($class->getExtensionsType()) > 0
-            );
+            $model = $this->doCreateModel($class, $properties, $methods);
 
             $namespace = new Stmt\Namespace_(new Name($schema->getNamespace() . '\\Model'), [$model]);
 
             $schema->addFile(new File($schema->getDirectory() . '/Model/' . $class->getName() . '.php', $namespace, self::FILE_TYPE_MODEL));
         }
+    }
+
+    protected function doCreateModel(ClassGuess $class, $properties, $methods): Stmt\Class_
+    {
+        return $this->createModel(
+            $class->getName(),
+            $properties,
+            $methods,
+            \count($class->getExtensionsType()) > 0
+        );
     }
 }
