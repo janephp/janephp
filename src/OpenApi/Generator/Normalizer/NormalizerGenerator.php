@@ -2,9 +2,11 @@
 
 namespace Jane\OpenApi\Generator\Normalizer;
 
+use PhpParser\Node\Param;
 use Jane\JsonSchema\Generator\Normalizer\NormalizerGenerator as JsonSchemaNormalizerGenerator;
 use Jane\JsonSchema\Guesser\Guess\ClassGuess;
 use Jane\OpenApi\Guesser\Guess\MultipleClass;
+use function Jane\parserVariable;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Stmt;
 use PhpParser\Node\Name;
@@ -52,5 +54,26 @@ trait NormalizerGenerator
         }
 
         return $statements;
+    }
+
+    /**
+     * We want stricly same class for OpenApi Normalizers since we can have inheritance and this could avoid
+     * normalization to use child classes.
+     */
+    protected function createSupportsNormalizationMethod($modelFqdn)
+    {
+        return new Stmt\ClassMethod('supportsNormalization', [
+            'type' => Stmt\Class_::MODIFIER_PUBLIC,
+            'params' => [
+                new Param(parserVariable('data')),
+                new Param(parserVariable('format'), new Expr\ConstFetch(new Name('null'))),
+            ],
+            'stmts' => [
+                new Stmt\Return_(new Expr\BinaryOp\Identical(
+                    new Expr\FuncCall(new Name('get_class'), [new Expr\Variable('data')]),
+                    new Scalar\String_($modelFqdn)
+                )),
+            ],
+        ]);
     }
 }
