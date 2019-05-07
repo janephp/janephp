@@ -4,6 +4,7 @@ namespace Jane\OpenApi\Generator;
 
 use Jane\JsonSchema\Generator\ModelGenerator as BaseModelGenerator;
 use Jane\JsonSchema\Guesser\Guess\ClassGuess as BaseClassGuess;
+use Jane\JsonSchema\Guesser\Guess\Property;
 use Jane\OpenApi\Generator\Model\ClassGenerator;
 use Jane\OpenApi\Guesser\Guess\ClassGuess;
 use Jane\OpenApi\Guesser\Guess\MultipleClass;
@@ -12,6 +13,15 @@ use PhpParser\Node\Stmt;
 class ModelGenerator extends BaseModelGenerator
 {
     use ClassGenerator;
+
+    protected function doCreateClassMethods(BaseClassGuess $classGuess, Property $property, string $namespace)
+    {
+        $methods = [];
+        $methods[] = $this->createGetter($property, $namespace);
+        $methods[] = $this->createSetter($property, $namespace, false, $classGuess instanceof MultipleClass ? false : true);
+
+        return $methods;
+    }
 
     protected function doCreateModel(BaseClassGuess $class, $properties, $methods): Stmt\Class_
     {

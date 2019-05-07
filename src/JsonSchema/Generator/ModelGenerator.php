@@ -7,6 +7,7 @@ use Jane\JsonSchema\Generator\Model\ClassGenerator;
 use Jane\JsonSchema\Generator\Model\GetterSetterGenerator;
 use Jane\JsonSchema\Generator\Model\PropertyGenerator;
 use Jane\JsonSchema\Guesser\Guess\ClassGuess;
+use Jane\JsonSchema\Guesser\Guess\Property;
 use Jane\JsonSchema\Schema;
 use PhpParser\Node\Name;
 use PhpParser\Node\Stmt;
@@ -69,8 +70,7 @@ class ModelGenerator implements GeneratorInterface
 
             foreach ($class->getProperties() as $property) {
                 $properties[] = $this->createProperty($property, $schema->getNamespace() . '\\Model');
-                $methods[] = $this->createGetter($property, $schema->getNamespace() . '\\Model');
-                $methods[] = $this->createSetter($property, $schema->getNamespace() . '\\Model');
+                $methods = array_merge($methods, $this->doCreateClassMethods($class, $property, $schema->getNamespace() . '\\Model'));
             }
 
             $model = $this->doCreateModel($class, $properties, $methods);
@@ -79,6 +79,15 @@ class ModelGenerator implements GeneratorInterface
 
             $schema->addFile(new File($schema->getDirectory() . '/Model/' . $class->getName() . '.php', $namespace, self::FILE_TYPE_MODEL));
         }
+    }
+
+    protected function doCreateClassMethods(ClassGuess $classGuess, Property $property, string $namespace)
+    {
+        $methods = [];
+        $methods[] = $this->createGetter($property, $namespace);
+        $methods[] = $this->createSetter($property, $namespace);
+
+        return $methods;
     }
 
     protected function doCreateModel(ClassGuess $class, $properties, $methods): Stmt\Class_

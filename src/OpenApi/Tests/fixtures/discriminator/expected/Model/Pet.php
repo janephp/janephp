@@ -29,13 +29,10 @@ class Pet
      * 
      *
      * @param string $name
-     *
-     * @return self
      */
-    public function setName(?string $name) : self
+    public function setName(?string $name)
     {
         $this->name = $name;
-        return $this;
     }
     /**
      * 
@@ -50,12 +47,9 @@ class Pet
      * 
      *
      * @param string $petType
-     *
-     * @return self
      */
-    public function setPetType(?string $petType) : self
+    public function setPetType(?string $petType)
     {
         $this->petType = $petType;
-        return $this;
     }
 }
