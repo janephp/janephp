@@ -9,20 +9,20 @@ class GetTest extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\
      *
      * @param \Jane\OpenApi\Tests\Expected\Model\TestGetBody $requestBody 
      */
-    function __construct(\Jane\OpenApi\Tests\Expected\Model\TestGetBody $requestBody)
+    public function __construct(\Jane\OpenApi\Tests\Expected\Model\TestGetBody $requestBody)
     {
         $this->body = $requestBody;
     }
     use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
-    function getMethod() : string
+    public function getMethod() : string
     {
         return 'GET';
     }
-    function getUri() : string
+    public function getUri() : string
     {
         return '/test';
     }
-    function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null) : array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null) : array
     {
         if ($this->body instanceof \Jane\OpenApi\Tests\Expected\Model\TestGetBody) {
             return array(array('Content-Type' => array('application/json')), $serializer->serialize($this->body, 'json'));

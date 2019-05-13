@@ -9,20 +9,20 @@ class TestFormFileParameters extends \Jane\OpenApiRuntime\Client\BaseEndpoint im
      *
      * @param \Jane\OpenApi\Tests\Expected\Model\TestFormFilePostBody $requestBody 
      */
-    function __construct(\Jane\OpenApi\Tests\Expected\Model\TestFormFilePostBody $requestBody)
+    public function __construct(\Jane\OpenApi\Tests\Expected\Model\TestFormFilePostBody $requestBody)
     {
         $this->body = $requestBody;
     }
     use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
-    function getMethod() : string
+    public function getMethod() : string
     {
         return 'POST';
     }
-    function getUri() : string
+    public function getUri() : string
     {
         return '/test-form-file';
     }
-    function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null) : array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null) : array
     {
         if ($this->body instanceof \Jane\OpenApi\Tests\Expected\Model\TestFormFilePostBody) {
             $bodyBuilder = new \Http\Message\MultipartStream\MultipartStreamBuilder($streamFactory);

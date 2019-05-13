@@ -9,20 +9,20 @@ class TestFormParameters extends \Jane\OpenApiRuntime\Client\BaseEndpoint implem
      *
      * @param \Jane\OpenApi\Tests\Expected\Model\TestFormPostBody $requestBody 
      */
-    function __construct(\Jane\OpenApi\Tests\Expected\Model\TestFormPostBody $requestBody)
+    public function __construct(\Jane\OpenApi\Tests\Expected\Model\TestFormPostBody $requestBody)
     {
         $this->body = $requestBody;
     }
     use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
-    function getMethod() : string
+    public function getMethod() : string
     {
         return 'POST';
     }
-    function getUri() : string
+    public function getUri() : string
     {
         return '/test-form';
     }
-    function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null) : array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null) : array
     {
         if ($this->body instanceof \Jane\OpenApi\Tests\Expected\Model\TestFormPostBody) {
             return array(array('Content-Type' => array('application/x-www-form-urlencoded')), http_build_query($serializer->normalize($this->body, 'json')));

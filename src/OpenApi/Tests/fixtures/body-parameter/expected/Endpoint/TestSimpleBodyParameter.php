@@ -9,20 +9,20 @@ class TestSimpleBodyParameter extends \Jane\OpenApiRuntime\Client\BaseEndpoint i
      *
      * @param string|resource|\Psr\Http\Message\StreamInterface $requestBody 
      */
-    function __construct($requestBody)
+    public function __construct($requestBody)
     {
         $this->body = $requestBody;
     }
     use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
-    function getMethod() : string
+    public function getMethod() : string
     {
         return 'POST';
     }
-    function getUri() : string
+    public function getUri() : string
     {
         return '/test-simple';
     }
-    function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null) : array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null) : array
     {
         if (is_string($this->body) or is_resource($this->body) or $this->body instanceof \Psr\Http\Message\StreamInterface) {
             return array(array('Content-Type' => array('text/plain')), $this->body);
