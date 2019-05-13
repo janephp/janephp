@@ -9,20 +9,20 @@ class TestObjectBodyParameter extends \Jane\OpenApiRuntime\Client\BaseEndpoint i
      *
      * @param \Jane\OpenApi\Tests\Expected\Model\Schema $requestBody 
      */
-    function __construct(\Jane\OpenApi\Tests\Expected\Model\Schema $requestBody)
+    public function __construct(\Jane\OpenApi\Tests\Expected\Model\Schema $requestBody)
     {
         $this->body = $requestBody;
     }
     use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
-    function getMethod() : string
+    public function getMethod() : string
     {
         return 'POST';
     }
-    function getUri() : string
+    public function getUri() : string
     {
         return '/test-object';
     }
-    function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null) : array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null) : array
     {
         if ($this->body instanceof \Jane\OpenApi\Tests\Expected\Model\Schema) {
             return array(array('Content-Type' => array('application/json')), $serializer->serialize($this->body, 'json'));

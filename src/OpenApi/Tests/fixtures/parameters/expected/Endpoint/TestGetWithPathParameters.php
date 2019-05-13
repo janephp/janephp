@@ -16,22 +16,22 @@ class TestGetWithPathParameters extends \Jane\OpenApiRuntime\Client\BaseEndpoint
      *     @var string $testHeader 
      * }
      */
-    function __construct(string $testPath, array $queryParameters = array(), array $headerParameters = array())
+    public function __construct(string $testPath, array $queryParameters = array(), array $headerParameters = array())
     {
         $this->testPath = $testPath;
         $this->queryParameters = $queryParameters;
         $this->headerParameters = $headerParameters;
     }
     use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
-    function getMethod() : string
+    public function getMethod() : string
     {
         return 'GET';
     }
-    function getUri() : string
+    public function getUri() : string
     {
         return str_replace(array('{testPath}'), array($this->testPath), '/test-path-parameters/{testPath}');
     }
-    function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null) : array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null) : array
     {
         return array(array(), null);
     }
