@@ -11,7 +11,10 @@
     "autoload": {
         "psr-4": {
             "Jane\\JsonSchema\\": ""
-        }
+        },
+        "exclude-from-classmap": [
+            "/Tests/"
+        ]
     },
     "bin": [
         "bin/jane"

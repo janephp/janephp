@@ -13,7 +13,10 @@
     "autoload": {
         "psr-4": {
             "Jane\\OpenApi\\": ""
-        }
+        },
+        "exclude-from-classmap": [
+            "/Tests/"
+        ]
     },
     "bin": [
         "bin/jane-openapi"
