@@ -84,9 +84,7 @@ trait NormalizerGenerator
     {
         $context->refreshScope();
         $dataVariable = new Expr\Variable('data');
-        $statements = [
-            parserExpression(new Expr\Assign($dataVariable, new Expr\New_(new Name('\\stdClass')))),
-        ];
+        $statements = $this->normalizeMethodStatements($dataVariable, $classGuess, $context);
 
         /** @var Property $property */
         foreach ($classGuess->getProperties() as $property) {
@@ -147,6 +145,13 @@ trait NormalizerGenerator
             ],
             'stmts' => $statements,
         ]);
+    }
+
+    protected function normalizeMethodStatements(Expr\Variable $dataVariable, ClassGuess $classGuess, Context $context): array
+    {
+        return [
+            parserExpression(new Expr\Assign($dataVariable, new Expr\New_(new Name('\\stdClass')))),
+        ];
     }
 
     /**

@@ -4,11 +4,13 @@ namespace Jane\OpenApi;
 
 use Jane\JsonSchema\Generator\ChainGenerator;
 use Jane\JsonSchema\Generator\Context\Context;
-use Jane\JsonSchema\Generator\ModelGenerator;
+use Jane\OpenApi\Generator\ModelGenerator;
 use Jane\JsonSchema\Generator\Naming;
-use Jane\JsonSchema\Generator\NormalizerGenerator;
+use Jane\OpenApi\Generator\NormalizerGenerator;
 use Jane\JsonSchema\Guesser\ChainGuesser;
 use Jane\OpenApi\Generator\GeneratorFactory;
+use Jane\OpenApi\Guesser\Guess\ClassGuess;
+use Jane\OpenApi\Guesser\Guess\MultipleClass;
 use Jane\OpenApi\Guesser\OpenApiSchema\GuesserFactory;
 use Jane\OpenApi\Normalizer\NormalizerFactory;
 use Jane\OpenApi\SchemaParser\SchemaParser;
@@ -93,9 +95,25 @@ class JaneOpenApi extends ChainGenerator
 
                 $class->setExtensionsType($extensionsTypes);
             }
+
+            $this->hydrateDiscriminatedClasses($schema, $registry);
         }
 
         return new Context($registry, $this->strict);
+    }
+
+    protected function hydrateDiscriminatedClasses(Schema $schema, Registry $registry)
+    {
+        foreach ($schema->getClasses() as $class) {
+            if ($class instanceof MultipleClass) { // is parent class
+                foreach ($class->getReferences() as $reference) {
+                    $guess = $registry->getClass($reference);
+                    if ($guess instanceof ClassGuess) { // is child class
+                        $guess->setMultipleClass($class);
+                    }
+                }
+            }
+        }
     }
 
     public static function build(array $options = [])

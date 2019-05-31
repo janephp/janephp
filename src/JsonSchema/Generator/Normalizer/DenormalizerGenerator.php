@@ -69,17 +69,7 @@ trait DenormalizerGenerator
             ];
         }
 
-        array_unshift($statements, new Stmt\If_(
-            new Expr\BooleanNot(new Expr\FuncCall(new Name('is_object'), [new Arg(new Expr\Variable('data'))])),
-            [
-                'stmts' => [
-                    $context->isStrict() ?
-                    new Stmt\Throw_(new Expr\New_(new Name('InvalidArgumentException')))
-                    :
-                    new Stmt\Return_(new Expr\ConstFetch(new Name('null'))),
-                ],
-            ]
-        ));
+        array_unshift($statements, ...$this->denormalizeMethodStatements($classGuess, $context));
 
         $unset = \count($classGuess->getExtensionsType()) > 0;
 
@@ -160,5 +150,22 @@ trait DenormalizerGenerator
             ],
             'stmts' => $statements,
         ]);
+    }
+
+    protected function denormalizeMethodStatements(ClassGuess $classGuess, Context $context): array
+    {
+        return [
+            new Stmt\If_(
+                new Expr\BooleanNot(new Expr\FuncCall(new Name('is_object'), [new Arg(new Expr\Variable('data'))])),
+                [
+                    'stmts' => [
+                        $context->isStrict() ?
+                            new Stmt\Throw_(new Expr\New_(new Name('InvalidArgumentException')))
+                            :
+                            new Stmt\Return_(new Expr\ConstFetch(new Name('null'))),
+                    ],
+                ]
+            ),
+        ];
     }
 }

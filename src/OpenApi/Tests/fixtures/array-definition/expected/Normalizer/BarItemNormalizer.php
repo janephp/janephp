@@ -20,7 +20,7 @@ class BarItemNormalizer implements DenormalizerInterface, NormalizerInterface, D
     }
     public function supportsNormalization($data, $format = null)
     {
-        return $data instanceof \Jane\OpenApi\Tests\Expected\Model\BarItem;
+        return get_class($data) === 'Jane\\OpenApi\\Tests\\Expected\\Model\\BarItem';
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
