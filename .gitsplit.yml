@@ -18,6 +18,9 @@ splits:
     -
         prefix: "src/OpenApiRuntime"
         target: "https://${GH_TOKEN}@github.com/janephp/open-api-runtime.git"
+    -
+        prefix: "documentation"
+        target: "https://${GH_TOKEN}@github.com/janephp/documentation.git"
 
 # List of references to split (defined as regexp)
 origins:
