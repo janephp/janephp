@@ -1,5 +1,5 @@
-Json Schema
-===========
+OpenAPI
+=======
 
 Jane OpenAPI is a library to generate, in PHP, an http client and its associated models and serializers from a `OpenAPI`_
 specification: version 2.
