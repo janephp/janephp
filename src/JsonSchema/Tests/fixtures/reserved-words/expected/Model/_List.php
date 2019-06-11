@@ -13,7 +13,7 @@ class _List
     /**
      * 
      *
-     * @return string
+     * @return string|null
      */
     public function getFoo() : ?string
     {
@@ -22,7 +22,7 @@ class _List
     /**
      * 
      *
-     * @param string $foo
+     * @param string|null $foo
      *
      * @return self
      */

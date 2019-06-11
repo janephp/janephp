@@ -13,7 +13,7 @@ class Test
     /**
      * 
      *
-     * @return TestFooItem[]
+     * @return TestFooItem[]|null
      */
     public function getFoo() : ?array
     {
@@ -22,7 +22,7 @@ class Test
     /**
      * 
      *
-     * @param TestFooItem[] $foo
+     * @param TestFooItem[]|null $foo
      *
      * @return self
      */

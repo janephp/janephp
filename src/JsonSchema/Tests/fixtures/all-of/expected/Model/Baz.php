@@ -25,7 +25,7 @@ class Baz
     /**
      * 
      *
-     * @return string
+     * @return string|null
      */
     public function getFoo() : ?string
     {
@@ -34,7 +34,7 @@ class Baz
     /**
      * 
      *
-     * @param string $foo
+     * @param string|null $foo
      *
      * @return self
      */
@@ -46,7 +46,7 @@ class Baz
     /**
      * 
      *
-     * @return Bar
+     * @return Bar|null
      */
     public function getBar() : ?Bar
     {
@@ -55,7 +55,7 @@ class Baz
     /**
      * 
      *
-     * @param Bar $bar
+     * @param Bar|null $bar
      *
      * @return self
      */
@@ -67,7 +67,7 @@ class Baz
     /**
      * 
      *
-     * @return BazBaz
+     * @return BazBaz|null
      */
     public function getBaz() : ?BazBaz
     {
@@ -76,7 +76,7 @@ class Baz
     /**
      * 
      *
-     * @param BazBaz $baz
+     * @param BazBaz|null $baz
      *
      * @return self
      */

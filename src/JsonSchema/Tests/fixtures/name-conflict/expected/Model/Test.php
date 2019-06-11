@@ -19,7 +19,7 @@ class Test
     /**
      * Indicates the ID of the referenced original mail.
      *
-     * @return string
+     * @return string|null
      */
     public function getMsgref() : ?string
     {
@@ -28,7 +28,7 @@ class Test
     /**
      * Indicates the ID of the referenced original mail.
      *
-     * @param string $msgref
+     * @param string|null $msgref
      *
      * @return self
      */
@@ -40,7 +40,7 @@ class Test
     /**
      * Message reference on reply/forward.
      *
-     * @return string
+     * @return string|null
      */
     public function getMsgRef2() : ?string
     {
@@ -49,7 +49,7 @@ class Test
     /**
      * Message reference on reply/forward.
      *
-     * @param string $msgRef2
+     * @param string|null $msgRef2
      *
      * @return self
      */
