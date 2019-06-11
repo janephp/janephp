@@ -19,7 +19,7 @@ class Foo
     /**
      * 
      *
-     * @return string
+     * @return string|null
      */
     public function getBar() : ?string
     {
@@ -28,7 +28,7 @@ class Foo
     /**
      * 
      *
-     * @param string $bar
+     * @param string|null $bar
      *
      * @return self
      */
@@ -40,7 +40,7 @@ class Foo
     /**
      * A description
      *
-     * @return string
+     * @return string|null
      */
     public function getFoo() : ?string
     {
@@ -49,7 +49,7 @@ class Foo
     /**
      * A description
      *
-     * @param string $foo
+     * @param string|null $foo
      *
      * @return self
      */

@@ -13,7 +13,7 @@ class Parenttype
     /**
      * 
      *
-     * @return string
+     * @return string|null
      */
     public function getInheritedProperty() : ?string
     {
@@ -22,7 +22,7 @@ class Parenttype
     /**
      * 
      *
-     * @param string $inheritedProperty
+     * @param string|null $inheritedProperty
      *
      * @return self
      */

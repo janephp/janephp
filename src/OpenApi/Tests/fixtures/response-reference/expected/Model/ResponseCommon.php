@@ -13,7 +13,7 @@ class ResponseCommon
     /**
      * 
      *
-     * @return string
+     * @return string|null
      */
     public function getFoo() : ?string
     {
@@ -22,7 +22,7 @@ class ResponseCommon
     /**
      * 
      *
-     * @param string $foo
+     * @param string|null $foo
      *
      * @return self
      */

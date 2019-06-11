@@ -13,7 +13,7 @@ class BarItem
     /**
      * 
      *
-     * @return string
+     * @return string|null
      */
     public function getBar() : ?string
     {
@@ -22,7 +22,7 @@ class BarItem
     /**
      * 
      *
-     * @param string $bar
+     * @param string|null $bar
      *
      * @return self
      */

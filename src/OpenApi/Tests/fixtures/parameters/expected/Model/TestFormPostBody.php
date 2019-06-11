@@ -43,7 +43,7 @@ class TestFormPostBody
     /**
      * 
      *
-     * @return string
+     * @return string|null
      */
     public function getTestString() : ?string
     {
@@ -52,7 +52,7 @@ class TestFormPostBody
     /**
      * 
      *
-     * @param string $testString
+     * @param string|null $testString
      *
      * @return self
      */
@@ -64,7 +64,7 @@ class TestFormPostBody
     /**
      * 
      *
-     * @return int
+     * @return int|null
      */
     public function getTestInteger() : ?int
     {
@@ -73,7 +73,7 @@ class TestFormPostBody
     /**
      * 
      *
-     * @param int $testInteger
+     * @param int|null $testInteger
      *
      * @return self
      */
@@ -85,7 +85,7 @@ class TestFormPostBody
     /**
      * 
      *
-     * @return float
+     * @return float|null
      */
     public function getTestFloat() : ?float
     {
@@ -94,7 +94,7 @@ class TestFormPostBody
     /**
      * 
      *
-     * @param float $testFloat
+     * @param float|null $testFloat
      *
      * @return self
      */
@@ -106,7 +106,7 @@ class TestFormPostBody
     /**
      * 
      *
-     * @return mixed[]
+     * @return mixed[]|null
      */
     public function getTestArray() : ?array
     {
@@ -115,7 +115,7 @@ class TestFormPostBody
     /**
      * 
      *
-     * @param mixed[] $testArray
+     * @param mixed[]|null $testArray
      *
      * @return self
      */
@@ -127,7 +127,7 @@ class TestFormPostBody
     /**
      * 
      *
-     * @return string
+     * @return string|null
      */
     public function getTestRequired() : ?string
     {
@@ -136,7 +136,7 @@ class TestFormPostBody
     /**
      * 
      *
-     * @param string $testRequired
+     * @param string|null $testRequired
      *
      * @return self
      */
@@ -148,7 +148,7 @@ class TestFormPostBody
     /**
      * 
      *
-     * @return string
+     * @return string|null
      */
     public function getTestDefault() : ?string
     {
@@ -157,7 +157,7 @@ class TestFormPostBody
     /**
      * 
      *
-     * @param string $testDefault
+     * @param string|null $testDefault
      *
      * @return self
      */

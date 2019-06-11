@@ -25,7 +25,7 @@ class Pet
     /**
      * 
      *
-     * @return int
+     * @return int|null
      */
     public function getId() : ?int
     {
@@ -34,7 +34,7 @@ class Pet
     /**
      * 
      *
-     * @param int $id
+     * @param int|null $id
      *
      * @return self
      */
@@ -46,7 +46,7 @@ class Pet
     /**
      * 
      *
-     * @return string
+     * @return string|null
      */
     public function getName() : ?string
     {
@@ -55,7 +55,7 @@ class Pet
     /**
      * 
      *
-     * @param string $name
+     * @param string|null $name
      *
      * @return self
      */
@@ -67,7 +67,7 @@ class Pet
     /**
      * 
      *
-     * @return string
+     * @return string|null
      */
     public function getTag() : ?string
     {
@@ -76,7 +76,7 @@ class Pet
     /**
      * 
      *
-     * @param string $tag
+     * @param string|null $tag
      *
      * @return self
      */

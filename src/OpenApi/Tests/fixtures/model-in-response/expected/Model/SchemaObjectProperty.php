@@ -13,7 +13,7 @@ class SchemaObjectProperty
     /**
      * 
      *
-     * @return string
+     * @return string|null
      */
     public function getStringProperty() : ?string
     {
@@ -22,7 +22,7 @@ class SchemaObjectProperty
     /**
      * 
      *
-     * @param string $stringProperty
+     * @param string|null $stringProperty
      *
      * @return self
      */

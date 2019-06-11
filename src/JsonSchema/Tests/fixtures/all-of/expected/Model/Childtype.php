@@ -19,7 +19,7 @@ class Childtype
     /**
      * 
      *
-     * @return string
+     * @return string|null
      */
     public function getChildProperty() : ?string
     {
@@ -28,7 +28,7 @@ class Childtype
     /**
      * 
      *
-     * @param string $childProperty
+     * @param string|null $childProperty
      *
      * @return self
      */
@@ -40,7 +40,7 @@ class Childtype
     /**
      * 
      *
-     * @return string
+     * @return string|null
      */
     public function getInheritedProperty() : ?string
     {
@@ -49,7 +49,7 @@ class Childtype
     /**
      * 
      *
-     * @param string $inheritedProperty
+     * @param string|null $inheritedProperty
      *
      * @return self
      */

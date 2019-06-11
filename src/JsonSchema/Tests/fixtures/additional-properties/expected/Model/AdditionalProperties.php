@@ -13,7 +13,7 @@ class AdditionalProperties extends \ArrayObject
     /**
      * 
      *
-     * @return string
+     * @return string|null
      */
     public function getFoo() : ?string
     {
@@ -22,7 +22,7 @@ class AdditionalProperties extends \ArrayObject
     /**
      * 
      *
-     * @param string $foo
+     * @param string|null $foo
      *
      * @return self
      */

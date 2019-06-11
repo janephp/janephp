@@ -19,7 +19,7 @@ class Error
     /**
      * 
      *
-     * @return int
+     * @return int|null
      */
     public function getCode() : ?int
     {
@@ -28,7 +28,7 @@ class Error
     /**
      * 
      *
-     * @param int $code
+     * @param int|null $code
      *
      * @return self
      */
@@ -40,7 +40,7 @@ class Error
     /**
      * 
      *
-     * @return string
+     * @return string|null
      */
     public function getMessage() : ?string
     {
@@ -49,7 +49,7 @@ class Error
     /**
      * 
      *
-     * @param string $message
+     * @param string|null $message
      *
      * @return self
      */

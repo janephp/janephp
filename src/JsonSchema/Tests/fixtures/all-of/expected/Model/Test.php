@@ -19,7 +19,7 @@ class Test
     /**
      * 
      *
-     * @return Childtype
+     * @return Childtype|null
      */
     public function getChild() : ?Childtype
     {
@@ -28,7 +28,7 @@ class Test
     /**
      * 
      *
-     * @param Childtype $child
+     * @param Childtype|null $child
      *
      * @return self
      */
@@ -40,7 +40,7 @@ class Test
     /**
      * 
      *
-     * @return Parenttype
+     * @return Parenttype|null
      */
     public function getParent() : ?Parenttype
     {
@@ -49,7 +49,7 @@ class Test
     /**
      * 
      *
-     * @param Parenttype $parent
+     * @param Parenttype|null $parent
      *
      * @return self
      */
