@@ -51,9 +51,10 @@ class ModelGenerator implements GeneratorInterface
             $methods = [];
 
             foreach ($class->getProperties() as $property) {
+                $required = !$property->isNullable() && $context->isStrict();
                 $properties[] = $this->createProperty($property, $schema->getNamespace() . '\\Model');
-                $methods[] = $this->createGetter($property, $schema->getNamespace() . '\\Model');
-                $methods[] = $this->createSetter($property, $schema->getNamespace() . '\\Model');
+                $methods[] = $this->createGetter($property, $schema->getNamespace() . '\\Model', $required);
+                $methods[] = $this->createSetter($property, $schema->getNamespace() . '\\Model', $required);
             }
 
             $model = $this->createModel(

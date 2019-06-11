@@ -11,7 +11,6 @@ declare(strict_types=1);
 namespace Jane\JsonSchema\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -37,52 +36,52 @@ class JsonSchemaNormalizer implements DenormalizerInterface, NormalizerInterface
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException();
+            return null;
         }
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \Jane\JsonSchema\Model\JsonSchema();
-        if (property_exists($data, 'id')) {
+        if (property_exists($data, 'id') && $data->{'id'} !== null) {
             $object->setId($data->{'id'});
         }
-        if (property_exists($data, '$schema')) {
+        if (property_exists($data, '$schema') && $data->{'$schema'} !== null) {
             $object->setDollarSchema($data->{'$schema'});
         }
-        if (property_exists($data, 'title')) {
+        if (property_exists($data, 'title') && $data->{'title'} !== null) {
             $object->setTitle($data->{'title'});
         }
-        if (property_exists($data, 'description')) {
+        if (property_exists($data, 'description') && $data->{'description'} !== null) {
             $object->setDescription($data->{'description'});
         }
-        if (property_exists($data, 'default')) {
+        if (property_exists($data, 'default') && $data->{'default'} !== null) {
             $object->setDefault($data->{'default'});
         }
-        if (property_exists($data, 'multipleOf')) {
+        if (property_exists($data, 'multipleOf') && $data->{'multipleOf'} !== null) {
             $object->setMultipleOf($data->{'multipleOf'});
         }
-        if (property_exists($data, 'maximum')) {
+        if (property_exists($data, 'maximum') && $data->{'maximum'} !== null) {
             $object->setMaximum($data->{'maximum'});
         }
-        if (property_exists($data, 'exclusiveMaximum')) {
+        if (property_exists($data, 'exclusiveMaximum') && $data->{'exclusiveMaximum'} !== null) {
             $object->setExclusiveMaximum($data->{'exclusiveMaximum'});
         }
-        if (property_exists($data, 'minimum')) {
+        if (property_exists($data, 'minimum') && $data->{'minimum'} !== null) {
             $object->setMinimum($data->{'minimum'});
         }
-        if (property_exists($data, 'exclusiveMinimum')) {
+        if (property_exists($data, 'exclusiveMinimum') && $data->{'exclusiveMinimum'} !== null) {
             $object->setExclusiveMinimum($data->{'exclusiveMinimum'});
         }
-        if (property_exists($data, 'maxLength')) {
+        if (property_exists($data, 'maxLength') && $data->{'maxLength'} !== null) {
             $object->setMaxLength($data->{'maxLength'});
         }
-        if (property_exists($data, 'minLength')) {
+        if (property_exists($data, 'minLength') && $data->{'minLength'} !== null) {
             $object->setMinLength($data->{'minLength'});
         }
-        if (property_exists($data, 'pattern')) {
+        if (property_exists($data, 'pattern') && $data->{'pattern'} !== null) {
             $object->setPattern($data->{'pattern'});
         }
-        if (property_exists($data, 'additionalItems')) {
+        if (property_exists($data, 'additionalItems') && $data->{'additionalItems'} !== null) {
             $value = $data->{'additionalItems'};
             if (is_bool($data->{'additionalItems'})) {
                 $value = $data->{'additionalItems'};
@@ -91,7 +90,7 @@ class JsonSchemaNormalizer implements DenormalizerInterface, NormalizerInterface
             }
             $object->setAdditionalItems($value);
         }
-        if (property_exists($data, 'items')) {
+        if (property_exists($data, 'items') && $data->{'items'} !== null) {
             $value_1 = $data->{'items'};
             if (is_object($data->{'items'})) {
                 $value_1 = $this->denormalizer->denormalize($data->{'items'}, 'Jane\\JsonSchema\\Model\\JsonSchema', 'json', $context);
@@ -104,29 +103,29 @@ class JsonSchemaNormalizer implements DenormalizerInterface, NormalizerInterface
             }
             $object->setItems($value_1);
         }
-        if (property_exists($data, 'maxItems')) {
+        if (property_exists($data, 'maxItems') && $data->{'maxItems'} !== null) {
             $object->setMaxItems($data->{'maxItems'});
         }
-        if (property_exists($data, 'minItems')) {
+        if (property_exists($data, 'minItems') && $data->{'minItems'} !== null) {
             $object->setMinItems($data->{'minItems'});
         }
-        if (property_exists($data, 'uniqueItems')) {
+        if (property_exists($data, 'uniqueItems') && $data->{'uniqueItems'} !== null) {
             $object->setUniqueItems($data->{'uniqueItems'});
         }
-        if (property_exists($data, 'maxProperties')) {
+        if (property_exists($data, 'maxProperties') && $data->{'maxProperties'} !== null) {
             $object->setMaxProperties($data->{'maxProperties'});
         }
-        if (property_exists($data, 'minProperties')) {
+        if (property_exists($data, 'minProperties') && $data->{'minProperties'} !== null) {
             $object->setMinProperties($data->{'minProperties'});
         }
-        if (property_exists($data, 'required')) {
+        if (property_exists($data, 'required') && $data->{'required'} !== null) {
             $values_1 = [];
             foreach ($data->{'required'} as $value_3) {
                 $values_1[] = $value_3;
             }
             $object->setRequired($values_1);
         }
-        if (property_exists($data, 'additionalProperties')) {
+        if (property_exists($data, 'additionalProperties') && $data->{'additionalProperties'} !== null) {
             $value_4 = $data->{'additionalProperties'};
             if (is_bool($data->{'additionalProperties'})) {
                 $value_4 = $data->{'additionalProperties'};
@@ -135,28 +134,28 @@ class JsonSchemaNormalizer implements DenormalizerInterface, NormalizerInterface
             }
             $object->setAdditionalProperties($value_4);
         }
-        if (property_exists($data, 'definitions')) {
+        if (property_exists($data, 'definitions') && $data->{'definitions'} !== null) {
             $values_2 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
             foreach ($data->{'definitions'} as $key => $value_5) {
                 $values_2[$key] = $this->denormalizer->denormalize($value_5, 'Jane\\JsonSchema\\Model\\JsonSchema', 'json', $context);
             }
             $object->setDefinitions($values_2);
         }
-        if (property_exists($data, 'properties')) {
+        if (property_exists($data, 'properties') && $data->{'properties'} !== null) {
             $values_3 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
             foreach ($data->{'properties'} as $key_1 => $value_6) {
                 $values_3[$key_1] = $this->denormalizer->denormalize($value_6, 'Jane\\JsonSchema\\Model\\JsonSchema', 'json', $context);
             }
             $object->setProperties($values_3);
         }
-        if (property_exists($data, 'patternProperties')) {
+        if (property_exists($data, 'patternProperties') && $data->{'patternProperties'} !== null) {
             $values_4 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
             foreach ($data->{'patternProperties'} as $key_2 => $value_7) {
                 $values_4[$key_2] = $this->denormalizer->denormalize($value_7, 'Jane\\JsonSchema\\Model\\JsonSchema', 'json', $context);
             }
             $object->setPatternProperties($values_4);
         }
-        if (property_exists($data, 'dependencies')) {
+        if (property_exists($data, 'dependencies') && $data->{'dependencies'} !== null) {
             $values_5 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
             foreach ($data->{'dependencies'} as $key_3 => $value_8) {
                 $value_9 = $value_8;
@@ -173,14 +172,14 @@ class JsonSchemaNormalizer implements DenormalizerInterface, NormalizerInterface
             }
             $object->setDependencies($values_5);
         }
-        if (property_exists($data, 'enum')) {
+        if (property_exists($data, 'enum') && $data->{'enum'} !== null) {
             $values_7 = [];
             foreach ($data->{'enum'} as $value_11) {
                 $values_7[] = $value_11;
             }
             $object->setEnum($values_7);
         }
-        if (property_exists($data, 'type')) {
+        if (property_exists($data, 'type') && $data->{'type'} !== null) {
             $value_12 = $data->{'type'};
             if (is_array($data->{'type'})) {
                 $values_8 = [];
@@ -193,31 +192,31 @@ class JsonSchemaNormalizer implements DenormalizerInterface, NormalizerInterface
             }
             $object->setType($value_12);
         }
-        if (property_exists($data, 'format')) {
+        if (property_exists($data, 'format') && $data->{'format'} !== null) {
             $object->setFormat($data->{'format'});
         }
-        if (property_exists($data, 'allOf')) {
+        if (property_exists($data, 'allOf') && $data->{'allOf'} !== null) {
             $values_9 = [];
             foreach ($data->{'allOf'} as $value_14) {
                 $values_9[] = $this->denormalizer->denormalize($value_14, 'Jane\\JsonSchema\\Model\\JsonSchema', 'json', $context);
             }
             $object->setAllOf($values_9);
         }
-        if (property_exists($data, 'anyOf')) {
+        if (property_exists($data, 'anyOf') && $data->{'anyOf'} !== null) {
             $values_10 = [];
             foreach ($data->{'anyOf'} as $value_15) {
                 $values_10[] = $this->denormalizer->denormalize($value_15, 'Jane\\JsonSchema\\Model\\JsonSchema', 'json', $context);
             }
             $object->setAnyOf($values_10);
         }
-        if (property_exists($data, 'oneOf')) {
+        if (property_exists($data, 'oneOf') && $data->{'oneOf'} !== null) {
             $values_11 = [];
             foreach ($data->{'oneOf'} as $value_16) {
                 $values_11[] = $this->denormalizer->denormalize($value_16, 'Jane\\JsonSchema\\Model\\JsonSchema', 'json', $context);
             }
             $object->setOneOf($values_11);
         }
-        if (property_exists($data, 'not')) {
+        if (property_exists($data, 'not') && $data->{'not'} !== null) {
             $object->setNot($this->denormalizer->denormalize($data->{'not'}, 'Jane\\JsonSchema\\Model\\JsonSchema', 'json', $context));
         }
 

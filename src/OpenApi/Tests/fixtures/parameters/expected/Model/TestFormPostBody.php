@@ -43,20 +43,20 @@ class TestFormPostBody
     /**
      * 
      *
-     * @return string|null
+     * @return string
      */
-    public function getTestString() : ?string
+    public function getTestString() : string
     {
         return $this->testString;
     }
     /**
      * 
      *
-     * @param string|null $testString
+     * @param string $testString
      *
      * @return self
      */
-    public function setTestString(?string $testString) : self
+    public function setTestString(string $testString) : self
     {
         $this->testString = $testString;
         return $this;
@@ -64,20 +64,20 @@ class TestFormPostBody
     /**
      * 
      *
-     * @return int|null
+     * @return int
      */
-    public function getTestInteger() : ?int
+    public function getTestInteger() : int
     {
         return $this->testInteger;
     }
     /**
      * 
      *
-     * @param int|null $testInteger
+     * @param int $testInteger
      *
      * @return self
      */
-    public function setTestInteger(?int $testInteger) : self
+    public function setTestInteger(int $testInteger) : self
     {
         $this->testInteger = $testInteger;
         return $this;
@@ -85,20 +85,20 @@ class TestFormPostBody
     /**
      * 
      *
-     * @return float|null
+     * @return float
      */
-    public function getTestFloat() : ?float
+    public function getTestFloat() : float
     {
         return $this->testFloat;
     }
     /**
      * 
      *
-     * @param float|null $testFloat
+     * @param float $testFloat
      *
      * @return self
      */
-    public function setTestFloat(?float $testFloat) : self
+    public function setTestFloat(float $testFloat) : self
     {
         $this->testFloat = $testFloat;
         return $this;
@@ -106,20 +106,20 @@ class TestFormPostBody
     /**
      * 
      *
-     * @return mixed[]|null
+     * @return mixed[]
      */
-    public function getTestArray() : ?array
+    public function getTestArray() : array
     {
         return $this->testArray;
     }
     /**
      * 
      *
-     * @param mixed[]|null $testArray
+     * @param mixed[] $testArray
      *
      * @return self
      */
-    public function setTestArray(?array $testArray) : self
+    public function setTestArray(array $testArray) : self
     {
         $this->testArray = $testArray;
         return $this;
@@ -127,20 +127,20 @@ class TestFormPostBody
     /**
      * 
      *
-     * @return string|null
+     * @return string
      */
-    public function getTestRequired() : ?string
+    public function getTestRequired() : string
     {
         return $this->testRequired;
     }
     /**
      * 
      *
-     * @param string|null $testRequired
+     * @param string $testRequired
      *
      * @return self
      */
-    public function setTestRequired(?string $testRequired) : self
+    public function setTestRequired(string $testRequired) : self
     {
         $this->testRequired = $testRequired;
         return $this;
@@ -148,20 +148,20 @@ class TestFormPostBody
     /**
      * 
      *
-     * @return string|null
+     * @return string
      */
-    public function getTestDefault() : ?string
+    public function getTestDefault() : string
     {
         return $this->testDefault;
     }
     /**
      * 
      *
-     * @param string|null $testDefault
+     * @param string $testDefault
      *
      * @return self
      */
-    public function setTestDefault(?string $testDefault) : self
+    public function setTestDefault(string $testDefault) : self
     {
         $this->testDefault = $testDefault;
         return $this;

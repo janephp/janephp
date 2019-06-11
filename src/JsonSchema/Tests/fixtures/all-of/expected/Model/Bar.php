@@ -19,20 +19,20 @@ class Bar
     /**
      * 
      *
-     * @return string|null
+     * @return string
      */
-    public function getFoo() : ?string
+    public function getFoo() : string
     {
         return $this->foo;
     }
     /**
      * 
      *
-     * @param string|null $foo
+     * @param string $foo
      *
      * @return self
      */
-    public function setFoo(?string $foo) : self
+    public function setFoo(string $foo) : self
     {
         $this->foo = $foo;
         return $this;
@@ -40,20 +40,20 @@ class Bar
     /**
      * 
      *
-     * @return string|null
+     * @return string
      */
-    public function getBar() : ?string
+    public function getBar() : string
     {
         return $this->bar;
     }
     /**
      * 
      *
-     * @param string|null $bar
+     * @param string $bar
      *
      * @return self
      */
-    public function setBar(?string $bar) : self
+    public function setBar(string $bar) : self
     {
         $this->bar = $bar;
         return $this;
