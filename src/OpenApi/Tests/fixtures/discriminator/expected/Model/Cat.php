@@ -25,7 +25,7 @@ class Cat extends Pet
     /**
      * 
      *
-     * @return string
+     * @return string|null
      */
     public function getName() : ?string
     {
@@ -34,7 +34,7 @@ class Cat extends Pet
     /**
      * 
      *
-     * @param string $name
+     * @param string|null $name
      *
      * @return self
      */
@@ -46,7 +46,7 @@ class Cat extends Pet
     /**
      * 
      *
-     * @return string
+     * @return string|null
      */
     public function getPetType() : ?string
     {
@@ -55,7 +55,7 @@ class Cat extends Pet
     /**
      * 
      *
-     * @param string $petType
+     * @param string|null $petType
      *
      * @return self
      */
@@ -67,7 +67,7 @@ class Cat extends Pet
     /**
      * The measured skill for hunting
      *
-     * @return string
+     * @return string|null
      */
     public function getHuntingSkill() : ?string
     {
@@ -76,7 +76,7 @@ class Cat extends Pet
     /**
      * The measured skill for hunting
      *
-     * @param string $huntingSkill
+     * @param string|null $huntingSkill
      *
      * @return self
      */

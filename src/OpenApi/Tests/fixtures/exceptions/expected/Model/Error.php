@@ -13,7 +13,7 @@ class Error
     /**
      * 
      *
-     * @return string
+     * @return string|null
      */
     public function getMessage() : ?string
     {
@@ -22,7 +22,7 @@ class Error
     /**
      * 
      *
-     * @param string $message
+     * @param string|null $message
      *
      * @return self
      */

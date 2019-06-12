@@ -13,7 +13,7 @@ class Thing
     /**
      * 
      *
-     * @return string
+     * @return string|null
      */
     public function getName() : ?string
     {
@@ -22,7 +22,7 @@ class Thing
     /**
      * 
      *
-     * @param string $name
+     * @param string|null $name
      *
      * @return self
      */

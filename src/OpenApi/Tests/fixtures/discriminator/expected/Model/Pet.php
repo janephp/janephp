@@ -19,7 +19,7 @@ class Pet
     /**
      * 
      *
-     * @return string
+     * @return string|null
      */
     public function getName() : ?string
     {
@@ -28,7 +28,7 @@ class Pet
     /**
      * 
      *
-     * @param string $name
+     * @param string|null $name
      */
     public function setName(?string $name)
     {
@@ -37,7 +37,7 @@ class Pet
     /**
      * 
      *
-     * @return string
+     * @return string|null
      */
     public function getPetType() : ?string
     {
@@ -46,7 +46,7 @@ class Pet
     /**
      * 
      *
-     * @param string $petType
+     * @param string|null $petType
      */
     public function setPetType(?string $petType)
     {
