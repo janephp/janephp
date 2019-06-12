@@ -13,7 +13,7 @@ class Test
     /**
      * 
      *
-     * @return TestFoo
+     * @return TestFoo|null
      */
     public function getFoo() : ?TestFoo
     {
@@ -22,7 +22,7 @@ class Test
     /**
      * 
      *
-     * @param TestFoo $foo
+     * @param TestFoo|null $foo
      *
      * @return self
      */

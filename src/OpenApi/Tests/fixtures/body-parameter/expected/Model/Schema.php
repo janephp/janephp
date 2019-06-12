@@ -55,7 +55,7 @@ class Schema
     /**
      * 
      *
-     * @return string
+     * @return string|null
      */
     public function getStringProperty() : ?string
     {
@@ -64,7 +64,7 @@ class Schema
     /**
      * 
      *
-     * @param string $stringProperty
+     * @param string|null $stringProperty
      *
      * @return self
      */
@@ -76,7 +76,7 @@ class Schema
     /**
      * 
      *
-     * @return \DateTime
+     * @return \DateTime|null
      */
     public function getDateProperty() : ?\DateTime
     {
@@ -85,7 +85,7 @@ class Schema
     /**
      * 
      *
-     * @param \DateTime $dateProperty
+     * @param \DateTime|null $dateProperty
      *
      * @return self
      */
@@ -97,7 +97,7 @@ class Schema
     /**
      * 
      *
-     * @return int
+     * @return int|null
      */
     public function getIntegerProperty() : ?int
     {
@@ -106,7 +106,7 @@ class Schema
     /**
      * 
      *
-     * @param int $integerProperty
+     * @param int|null $integerProperty
      *
      * @return self
      */
@@ -118,7 +118,7 @@ class Schema
     /**
      * 
      *
-     * @return float
+     * @return float|null
      */
     public function getFloatProperty() : ?float
     {
@@ -127,7 +127,7 @@ class Schema
     /**
      * 
      *
-     * @param float $floatProperty
+     * @param float|null $floatProperty
      *
      * @return self
      */
@@ -139,7 +139,7 @@ class Schema
     /**
      * 
      *
-     * @return mixed[]
+     * @return mixed[]|null
      */
     public function getArrayProperty() : ?array
     {
@@ -148,7 +148,7 @@ class Schema
     /**
      * 
      *
-     * @param mixed[] $arrayProperty
+     * @param mixed[]|null $arrayProperty
      *
      * @return self
      */
@@ -160,7 +160,7 @@ class Schema
     /**
      * 
      *
-     * @return string[]
+     * @return string[]|null
      */
     public function getMapProperty() : ?\ArrayObject
     {
@@ -169,7 +169,7 @@ class Schema
     /**
      * 
      *
-     * @param string[] $mapProperty
+     * @param string[]|null $mapProperty
      *
      * @return self
      */
@@ -181,7 +181,7 @@ class Schema
     /**
      * 
      *
-     * @return SchemaObjectProperty
+     * @return SchemaObjectProperty|null
      */
     public function getObjectProperty() : ?SchemaObjectProperty
     {
@@ -190,7 +190,7 @@ class Schema
     /**
      * 
      *
-     * @param SchemaObjectProperty $objectProperty
+     * @param SchemaObjectProperty|null $objectProperty
      *
      * @return self
      */
@@ -202,7 +202,7 @@ class Schema
     /**
      * 
      *
-     * @return Schema
+     * @return Schema|null
      */
     public function getObjectRefProperty() : ?Schema
     {
@@ -211,7 +211,7 @@ class Schema
     /**
      * 
      *
-     * @param Schema $objectRefProperty
+     * @param Schema|null $objectRefProperty
      *
      * @return self
      */

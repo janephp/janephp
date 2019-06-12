@@ -13,7 +13,7 @@ class Test
     /**
      * 
      *
-     * @return \Jane\JsonSchema\Tests\Expected\Schema2\Model\Foo
+     * @return \Jane\JsonSchema\Tests\Expected\Schema2\Model\Foo|null
      */
     public function getFoo() : ?\Jane\JsonSchema\Tests\Expected\Schema2\Model\Foo
     {
@@ -22,7 +22,7 @@ class Test
     /**
      * 
      *
-     * @param \Jane\JsonSchema\Tests\Expected\Schema2\Model\Foo $foo
+     * @param \Jane\JsonSchema\Tests\Expected\Schema2\Model\Foo|null $foo
      *
      * @return self
      */

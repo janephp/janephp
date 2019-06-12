@@ -13,7 +13,7 @@ class BazBaz
     /**
      * 
      *
-     * @return string
+     * @return string|null
      */
     public function getBaz() : ?string
     {
@@ -22,7 +22,7 @@ class BazBaz
     /**
      * 
      *
-     * @param string $baz
+     * @param string|null $baz
      *
      * @return self
      */

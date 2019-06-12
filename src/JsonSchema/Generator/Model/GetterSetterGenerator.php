@@ -3,7 +3,9 @@
 namespace Jane\JsonSchema\Generator\Model;
 
 use Jane\JsonSchema\Generator\Naming;
+use Jane\JsonSchema\Guesser\Guess\MultipleType;
 use Jane\JsonSchema\Guesser\Guess\Property;
+use Jane\JsonSchema\Guesser\Guess\Type;
 use PhpParser\Comment\Doc;
 use PhpParser\Node\Param;
 use PhpParser\Node\Stmt;
@@ -18,7 +20,7 @@ trait GetterSetterGenerator
      */
     abstract protected function getNaming();
 
-    protected function createGetter(Property $property, $namespace, $required = false): Stmt\ClassMethod
+    protected function createGetter(Property $property, string $namespace, bool $required = false): Stmt\ClassMethod
     {
         $returnType = $property->getType()->getTypeHint($namespace);
 
@@ -40,12 +42,12 @@ trait GetterSetterGenerator
                 ],
                 'returnType' => $returnType,
             ], [
-                'comments' => [$this->createGetterDoc($property, $namespace)],
+                'comments' => [$this->createGetterDoc($property, $namespace, $required)],
             ]
         );
     }
 
-    protected function createSetter(Property $property, $namespace, $required = false): Stmt\ClassMethod
+    protected function createSetter(Property $property, string $namespace, bool $required = false): Stmt\ClassMethod
     {
         $setType = $property->getType()->getTypeHint($namespace);
 
@@ -76,12 +78,12 @@ trait GetterSetterGenerator
                 ],
                 'returnType' => 'self',
             ], [
-                'comments' => [$this->createSetterDoc($property, $namespace)],
+                'comments' => [$this->createSetterDoc($property, $namespace, $required)],
             ]
         );
     }
 
-    protected function createGetterDoc(Property $property, $namespace): Doc
+    protected function createGetterDoc(Property $property, string $namespace, bool $required): Doc
     {
         return new Doc(sprintf(<<<EOD
 /**
@@ -90,10 +92,10 @@ trait GetterSetterGenerator
  * @return %s
  */
 EOD
-        , $property->getDescription(), $property->getType()->getDocTypeHint($namespace)));
+        , $property->getDescription(), $this->getDocType($property, $namespace, $required)));
     }
 
-    protected function createSetterDoc(Property $property, $namespace): Doc
+    protected function createSetterDoc(Property $property, string $namespace, bool $required): Doc
     {
         return new Doc(sprintf(<<<EOD
 /**
@@ -104,6 +106,24 @@ EOD
  * @return self
  */
 EOD
-        , $property->getDescription(), $property->getType()->getDocTypeHint($namespace), '$' . $property->getPhpName()));
+        , $property->getDescription(), $this->getDocType($property, $namespace, $required), '$' . $property->getPhpName()));
+    }
+
+    private function getDocType(Property $property, string $namespace, bool $required): string
+    {
+        $returnType = $property->getType();
+        $returnTypeHint = $returnType->getDocTypeHint($namespace);
+        if ($required) {
+            return $returnTypeHint;
+        }
+        $returnTypes = [$returnType];
+        if ($returnType instanceof MultipleType) {
+            $returnTypes = $returnType->getTypes();
+        }
+        if (!\count(array_intersect([Type::TYPE_MIXED, Type::TYPE_NULL], $returnTypes))) {
+            $returnTypeHint .= '|' . Type::TYPE_NULL;
+        }
+
+        return $returnTypeHint;
     }
 }

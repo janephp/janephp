@@ -13,7 +13,7 @@ class TestFormFilePostBody
     /**
      * 
      *
-     * @return string
+     * @return string|null
      */
     public function getTestFile() : ?string
     {
@@ -22,7 +22,7 @@ class TestFormFilePostBody
     /**
      * 
      *
-     * @param string $testFile
+     * @param string|null $testFile
      *
      * @return self
      */

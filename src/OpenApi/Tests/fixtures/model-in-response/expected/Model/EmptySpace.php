@@ -13,7 +13,7 @@ class EmptySpace
     /**
      * 
      *
-     * @return string
+     * @return string|null
      */
     public function getStringProperty() : ?string
     {
@@ -22,7 +22,7 @@ class EmptySpace
     /**
      * 
      *
-     * @param string $stringProperty
+     * @param string|null $stringProperty
      *
      * @return self
      */
