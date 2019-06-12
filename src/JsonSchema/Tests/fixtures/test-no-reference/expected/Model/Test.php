@@ -19,7 +19,7 @@ class Test
     /**
      * 
      *
-     * @return string
+     * @return string|null
      */
     public function getString() : ?string
     {
@@ -28,7 +28,7 @@ class Test
     /**
      * 
      *
-     * @param string $string
+     * @param string|null $string
      *
      * @return self
      */
@@ -40,7 +40,7 @@ class Test
     /**
      * 
      *
-     * @return TestSubObject
+     * @return TestSubObject|null
      */
     public function getSubObject() : ?TestSubObject
     {
@@ -49,7 +49,7 @@ class Test
     /**
      * 
      *
-     * @param TestSubObject $subObject
+     * @param TestSubObject|null $subObject
      *
      * @return self
      */

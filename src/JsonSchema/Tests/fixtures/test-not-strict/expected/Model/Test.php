@@ -73,7 +73,7 @@ class Test
     /**
      * 
      *
-     * @return string[]
+     * @return string[]|null
      */
     public function getArray() : ?array
     {
@@ -82,7 +82,7 @@ class Test
     /**
      * 
      *
-     * @param string[] $array
+     * @param string[]|null $array
      *
      * @return self
      */
@@ -94,7 +94,7 @@ class Test
     /**
      * 
      *
-     * @return string[]
+     * @return string[]|null
      */
     public function getObject() : ?\ArrayObject
     {
@@ -103,7 +103,7 @@ class Test
     /**
      * 
      *
-     * @param string[] $object
+     * @param string[]|null $object
      *
      * @return self
      */

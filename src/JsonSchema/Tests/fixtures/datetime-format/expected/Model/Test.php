@@ -25,7 +25,7 @@ class Test
     /**
      * 
      *
-     * @return \DateTime
+     * @return \DateTime|null
      */
     public function getDate() : ?\DateTime
     {
@@ -34,7 +34,7 @@ class Test
     /**
      * 
      *
-     * @param \DateTime $date
+     * @param \DateTime|null $date
      *
      * @return self
      */

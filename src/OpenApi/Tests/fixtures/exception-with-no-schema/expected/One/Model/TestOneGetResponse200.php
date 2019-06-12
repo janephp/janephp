@@ -13,7 +13,7 @@ class TestOneGetResponse200
     /**
      * 
      *
-     * @return string
+     * @return string|null
      */
     public function getMessage() : ?string
     {
@@ -22,7 +22,7 @@ class TestOneGetResponse200
     /**
      * 
      *
-     * @param string $message
+     * @param string|null $message
      *
      * @return self
      */

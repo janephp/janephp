@@ -25,7 +25,7 @@ class Dog extends Pet
     /**
      * 
      *
-     * @return string
+     * @return string|null
      */
     public function getName() : ?string
     {
@@ -34,7 +34,7 @@ class Dog extends Pet
     /**
      * 
      *
-     * @param string $name
+     * @param string|null $name
      *
      * @return self
      */
@@ -46,7 +46,7 @@ class Dog extends Pet
     /**
      * 
      *
-     * @return string
+     * @return string|null
      */
     public function getPetType() : ?string
     {
@@ -55,7 +55,7 @@ class Dog extends Pet
     /**
      * 
      *
-     * @param string $petType
+     * @param string|null $petType
      *
      * @return self
      */
@@ -67,7 +67,7 @@ class Dog extends Pet
     /**
      * the size of the pack the dog is from
      *
-     * @return int
+     * @return int|null
      */
     public function getPackSize() : ?int
     {
@@ -76,7 +76,7 @@ class Dog extends Pet
     /**
      * the size of the pack the dog is from
      *
-     * @param int $packSize
+     * @param int|null $packSize
      *
      * @return self
      */

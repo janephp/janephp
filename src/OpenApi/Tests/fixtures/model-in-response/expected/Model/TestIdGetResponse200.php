@@ -13,7 +13,7 @@ class TestIdGetResponse200
     /**
      * 
      *
-     * @return int
+     * @return int|null
      */
     public function getId() : ?int
     {
@@ -22,7 +22,7 @@ class TestIdGetResponse200
     /**
      * 
      *
-     * @param int $id
+     * @param int|null $id
      *
      * @return self
      */

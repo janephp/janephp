@@ -49,7 +49,7 @@ class Test
     /**
      * 
      *
-     * @return string
+     * @return string|null
      */
     public function getString() : ?string
     {
@@ -58,7 +58,7 @@ class Test
     /**
      * 
      *
-     * @param string $string
+     * @param string|null $string
      *
      * @return self
      */
@@ -70,7 +70,7 @@ class Test
     /**
      * 
      *
-     * @return bool
+     * @return bool|null
      */
     public function getBool() : ?bool
     {
@@ -79,7 +79,7 @@ class Test
     /**
      * 
      *
-     * @param bool $bool
+     * @param bool|null $bool
      *
      * @return self
      */
@@ -91,7 +91,7 @@ class Test
     /**
      * 
      *
-     * @return int
+     * @return int|null
      */
     public function getInteger() : ?int
     {
@@ -100,7 +100,7 @@ class Test
     /**
      * 
      *
-     * @param int $integer
+     * @param int|null $integer
      *
      * @return self
      */
@@ -112,7 +112,7 @@ class Test
     /**
      * 
      *
-     * @return float
+     * @return float|null
      */
     public function getFloat() : ?float
     {
@@ -121,7 +121,7 @@ class Test
     /**
      * 
      *
-     * @param float $float
+     * @param float|null $float
      *
      * @return self
      */
@@ -133,7 +133,7 @@ class Test
     /**
      * 
      *
-     * @return mixed[]
+     * @return mixed[]|null
      */
     public function getArray() : ?array
     {
@@ -142,7 +142,7 @@ class Test
     /**
      * 
      *
-     * @param mixed[] $array
+     * @param mixed[]|null $array
      *
      * @return self
      */
@@ -154,7 +154,7 @@ class Test
     /**
      * 
      *
-     * @return mixed[]
+     * @return mixed[]|null
      */
     public function getObject() : ?array
     {
@@ -163,7 +163,7 @@ class Test
     /**
      * 
      *
-     * @param mixed[] $object
+     * @param mixed[]|null $object
      *
      * @return self
      */
@@ -175,7 +175,7 @@ class Test
     /**
      * 
      *
-     * @return TestSubObject
+     * @return TestSubObject|null
      */
     public function getSubObject() : ?TestSubObject
     {
@@ -184,7 +184,7 @@ class Test
     /**
      * 
      *
-     * @param TestSubObject $subObject
+     * @param TestSubObject|null $subObject
      *
      * @return self
      */
