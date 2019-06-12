@@ -27,8 +27,8 @@ You will have to do this::
 
     $normalizers = Vendor\Library\Generated\Normalizer\NormalizerFactory::create();
     $encoders = [new Symfony\Component\Serializer\Encoder\JsonEncoder(
-        new Symfony\Component\Serializer\Encoder\JsonEncode(JSON_UNESCAPED_SLASHES),
-        new Symfony\Component\Serializer\Encoder\JsonDecode(false))
+        new Symfony\Component\Serializer\Encoder\JsonEncode([Symfony\Component\Serializer\Encoder\JsonEncode::OPTIONS => \JSON_UNESCAPED_SLASHES]),
+        new Symfony\Component\Serializer\Encoder\JsonDecode([Symfony\Component\Serializer\Encoder\JsonDecode::ASSOCIATIVE => false])),
     ];
 
     $serializer = new Symfony\Component\Serializer\Serializer($normalizers, $encoders);
