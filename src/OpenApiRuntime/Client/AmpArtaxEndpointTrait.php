@@ -19,6 +19,7 @@ trait AmpArtaxEndpointTrait
         return call(function () use ($response, $serializer, $fetchMode) {
             if ($fetchMode === Client::FETCH_OBJECT) {
                 $contentType = $response->hasHeader('Content-Type') ? current($response->getHeader('Content-Type')) : null;
+
                 return $this->transformResponseBody(yield $response->getBody(), $response->getStatus(), $serializer, $contentType);
             }
 
