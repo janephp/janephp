@@ -4,25 +4,31 @@ namespace Jane;
 
 use PhpParser\Node;
 
-function parserExpression(Node\Expr $expr): Node
-{
-    if (isPhpParser4()) {
-        return new Node\Stmt\Expression($expr);
-    }
+if (!\function_exists('Jane\parserExpression')) {
+    function parserExpression(Node\Expr $expr): Node
+    {
+        if (isPhpParser4()) {
+            return new Node\Stmt\Expression($expr);
+        }
 
-    return $expr;
+        return $expr;
+    }
 }
 
-function parserVariable(string $name)
-{
-    if (isPhpParser4()) {
-        return new Node\Expr\Variable($name);
-    }
+if (!\function_exists('Jane\parserVariable')) {
+    function parserVariable(string $name)
+    {
+        if (isPhpParser4()) {
+            return new Node\Expr\Variable($name);
+        }
 
-    return $name;
+        return $name;
+    }
 }
 
-function isPhpParser4(): bool
-{
-    return class_exists('PhpParser\\Node\\Stmt\\Expression');
+if (!\function_exists('Jane\isPhpParser4')) {
+    function isPhpParser4(): bool
+    {
+        return class_exists('PhpParser\\Node\\Stmt\\Expression');
+    }
 }
