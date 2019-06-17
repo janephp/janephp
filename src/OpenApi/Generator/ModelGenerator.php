@@ -14,11 +14,11 @@ class ModelGenerator extends BaseModelGenerator
 {
     use ClassGenerator;
 
-    protected function doCreateClassMethods(BaseClassGuess $classGuess, Property $property, string $namespace)
+    protected function doCreateClassMethods(BaseClassGuess $classGuess, Property $property, string $namespace, bool $required)
     {
         $methods = [];
-        $methods[] = $this->createGetter($property, $namespace);
-        $methods[] = $this->createSetter($property, $namespace, false, $classGuess instanceof MultipleClass ? false : true);
+        $methods[] = $this->createGetter($property, $namespace, $required);
+        $methods[] = $this->createSetter($property, $namespace, $required, $classGuess instanceof MultipleClass ? false : true);
 
         return $methods;
     }

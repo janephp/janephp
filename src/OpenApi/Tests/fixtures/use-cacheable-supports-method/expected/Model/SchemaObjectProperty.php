@@ -18,19 +18,19 @@ class SchemaObjectProperty
     protected $stringProperty;
 
     /**
-     * @return string|null
+     * @return string
      */
-    public function getStringProperty(): ?string
+    public function getStringProperty(): string
     {
         return $this->stringProperty;
     }
 
     /**
-     * @param string|null $stringProperty
+     * @param string $stringProperty
      *
      * @return self
      */
-    public function setStringProperty(?string $stringProperty): self
+    public function setStringProperty(string $stringProperty): self
     {
         $this->stringProperty = $stringProperty;
 

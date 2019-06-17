@@ -13,20 +13,20 @@ class BarItem
     /**
      * 
      *
-     * @return string|null
+     * @return string
      */
-    public function getBar() : ?string
+    public function getBar() : string
     {
         return $this->bar;
     }
     /**
      * 
      *
-     * @param string|null $bar
+     * @param string $bar
      *
      * @return self
      */
-    public function setBar(?string $bar) : self
+    public function setBar(string $bar) : self
     {
         $this->bar = $bar;
         return $this;

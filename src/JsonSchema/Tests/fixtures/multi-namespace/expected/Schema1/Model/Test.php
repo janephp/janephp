@@ -13,20 +13,20 @@ class Test
     /**
      * 
      *
-     * @return \Jane\JsonSchema\Tests\Expected\Schema2\Model\Foo|null
+     * @return \Jane\JsonSchema\Tests\Expected\Schema2\Model\Foo
      */
-    public function getFoo() : ?\Jane\JsonSchema\Tests\Expected\Schema2\Model\Foo
+    public function getFoo() : \Jane\JsonSchema\Tests\Expected\Schema2\Model\Foo
     {
         return $this->foo;
     }
     /**
      * 
      *
-     * @param \Jane\JsonSchema\Tests\Expected\Schema2\Model\Foo|null $foo
+     * @param \Jane\JsonSchema\Tests\Expected\Schema2\Model\Foo $foo
      *
      * @return self
      */
-    public function setFoo(?\Jane\JsonSchema\Tests\Expected\Schema2\Model\Foo $foo) : self
+    public function setFoo(\Jane\JsonSchema\Tests\Expected\Schema2\Model\Foo $foo) : self
     {
         $this->foo = $foo;
         return $this;

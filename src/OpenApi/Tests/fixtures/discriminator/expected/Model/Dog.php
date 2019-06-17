@@ -25,20 +25,20 @@ class Dog extends Pet
     /**
      * 
      *
-     * @return string|null
+     * @return string
      */
-    public function getName() : ?string
+    public function getName() : string
     {
         return $this->name;
     }
     /**
      * 
      *
-     * @param string|null $name
+     * @param string $name
      *
      * @return self
      */
-    public function setName(?string $name) : self
+    public function setName(string $name) : self
     {
         $this->name = $name;
         return $this;
@@ -46,20 +46,20 @@ class Dog extends Pet
     /**
      * 
      *
-     * @return string|null
+     * @return string
      */
-    public function getPetType() : ?string
+    public function getPetType() : string
     {
         return $this->petType;
     }
     /**
      * 
      *
-     * @param string|null $petType
+     * @param string $petType
      *
      * @return self
      */
-    public function setPetType(?string $petType) : self
+    public function setPetType(string $petType) : self
     {
         $this->petType = $petType;
         return $this;
@@ -67,20 +67,20 @@ class Dog extends Pet
     /**
      * the size of the pack the dog is from
      *
-     * @return int|null
+     * @return int
      */
-    public function getPackSize() : ?int
+    public function getPackSize() : int
     {
         return $this->packSize;
     }
     /**
      * the size of the pack the dog is from
      *
-     * @param int|null $packSize
+     * @param int $packSize
      *
      * @return self
      */
-    public function setPackSize(?int $packSize) : self
+    public function setPackSize(int $packSize) : self
     {
         $this->packSize = $packSize;
         return $this;

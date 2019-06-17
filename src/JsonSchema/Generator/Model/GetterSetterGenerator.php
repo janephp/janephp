@@ -22,7 +22,7 @@ trait GetterSetterGenerator
      */
     abstract protected function getNaming();
 
-    protected function createGetter(Property $property, string $namespace, bool $required = false): Stmt\ClassMethod
+    protected function createGetter(Property $property, string $namespace, bool $required): Stmt\ClassMethod
     {
         $returnType = $property->getType()->getTypeHint($namespace);
 
@@ -49,7 +49,7 @@ trait GetterSetterGenerator
         );
     }
 
-    protected function createSetter(Property $property, string $namespace, bool $required = false, bool $fluent = true): Stmt\ClassMethod
+    protected function createSetter(Property $property, string $namespace, bool $required, bool $fluent = true): Stmt\ClassMethod
     {
         $setType = $property->getType()->getTypeHint($namespace);
 

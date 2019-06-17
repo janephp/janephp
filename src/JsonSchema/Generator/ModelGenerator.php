@@ -69,8 +69,9 @@ class ModelGenerator implements GeneratorInterface
             $methods = [];
 
             foreach ($class->getProperties() as $property) {
+                $required = !$property->isNullable() && $context->isStrict();
                 $properties[] = $this->createProperty($property, $schema->getNamespace() . '\\Model');
-                $methods = array_merge($methods, $this->doCreateClassMethods($class, $property, $schema->getNamespace() . '\\Model'));
+                $methods = array_merge($methods, $this->doCreateClassMethods($class, $property, $schema->getNamespace() . '\\Model', $required));
             }
 
             $model = $this->doCreateModel($class, $properties, $methods);
@@ -81,11 +82,11 @@ class ModelGenerator implements GeneratorInterface
         }
     }
 
-    protected function doCreateClassMethods(ClassGuess $classGuess, Property $property, string $namespace)
+    protected function doCreateClassMethods(ClassGuess $classGuess, Property $property, string $namespace, bool $required)
     {
         $methods = [];
-        $methods[] = $this->createGetter($property, $namespace);
-        $methods[] = $this->createSetter($property, $namespace);
+        $methods[] = $this->createGetter($property, $namespace, $required);
+        $methods[] = $this->createSetter($property, $namespace, $required);
 
         return $methods;
     }

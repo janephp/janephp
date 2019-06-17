@@ -19,36 +19,36 @@ class Pet
     /**
      * 
      *
-     * @return string|null
+     * @return string
      */
-    public function getName() : ?string
+    public function getName() : string
     {
         return $this->name;
     }
     /**
      * 
      *
-     * @param string|null $name
+     * @param string $name
      */
-    public function setName(?string $name)
+    public function setName(string $name)
     {
         $this->name = $name;
     }
     /**
      * 
      *
-     * @return string|null
+     * @return string
      */
-    public function getPetType() : ?string
+    public function getPetType() : string
     {
         return $this->petType;
     }
     /**
      * 
      *
-     * @param string|null $petType
+     * @param string $petType
      */
-    public function setPetType(?string $petType)
+    public function setPetType(string $petType)
     {
         $this->petType = $petType;
     }
