@@ -25,20 +25,20 @@ class TestGetBody
     /**
      * 
      *
-     * @return string|null
+     * @return string
      */
-    public function getFoo() : ?string
+    public function getFoo() : string
     {
         return $this->foo;
     }
     /**
      * 
      *
-     * @param string|null $foo
+     * @param string $foo
      *
      * @return self
      */
-    public function setFoo(?string $foo) : self
+    public function setFoo(string $foo) : self
     {
         $this->foo = $foo;
         return $this;
@@ -46,20 +46,20 @@ class TestGetBody
     /**
      * 
      *
-     * @return Bar|null
+     * @return Bar
      */
-    public function getBar() : ?Bar
+    public function getBar() : Bar
     {
         return $this->bar;
     }
     /**
      * 
      *
-     * @param Bar|null $bar
+     * @param Bar $bar
      *
      * @return self
      */
-    public function setBar(?Bar $bar) : self
+    public function setBar(Bar $bar) : self
     {
         $this->bar = $bar;
         return $this;
@@ -67,20 +67,20 @@ class TestGetBody
     /**
      * 
      *
-     * @return TestGetBodyBaz|null
+     * @return TestGetBodyBaz
      */
-    public function getBaz() : ?TestGetBodyBaz
+    public function getBaz() : TestGetBodyBaz
     {
         return $this->baz;
     }
     /**
      * 
      *
-     * @param TestGetBodyBaz|null $baz
+     * @param TestGetBodyBaz $baz
      *
      * @return self
      */
-    public function setBaz(?TestGetBodyBaz $baz) : self
+    public function setBaz(TestGetBodyBaz $baz) : self
     {
         $this->baz = $baz;
         return $this;

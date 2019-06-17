@@ -19,20 +19,20 @@ class Test
     /**
      * 
      *
-     * @return Childtype|null
+     * @return Childtype
      */
-    public function getChild() : ?Childtype
+    public function getChild() : Childtype
     {
         return $this->child;
     }
     /**
      * 
      *
-     * @param Childtype|null $child
+     * @param Childtype $child
      *
      * @return self
      */
-    public function setChild(?Childtype $child) : self
+    public function setChild(Childtype $child) : self
     {
         $this->child = $child;
         return $this;
@@ -40,20 +40,20 @@ class Test
     /**
      * 
      *
-     * @return Parenttype|null
+     * @return Parenttype
      */
-    public function getParent() : ?Parenttype
+    public function getParent() : Parenttype
     {
         return $this->parent;
     }
     /**
      * 
      *
-     * @param Parenttype|null $parent
+     * @param Parenttype $parent
      *
      * @return self
      */
-    public function setParent(?Parenttype $parent) : self
+    public function setParent(Parenttype $parent) : self
     {
         $this->parent = $parent;
         return $this;

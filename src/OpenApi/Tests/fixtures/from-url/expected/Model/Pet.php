@@ -25,20 +25,20 @@ class Pet
     /**
      * 
      *
-     * @return int|null
+     * @return int
      */
-    public function getId() : ?int
+    public function getId() : int
     {
         return $this->id;
     }
     /**
      * 
      *
-     * @param int|null $id
+     * @param int $id
      *
      * @return self
      */
-    public function setId(?int $id) : self
+    public function setId(int $id) : self
     {
         $this->id = $id;
         return $this;
@@ -46,20 +46,20 @@ class Pet
     /**
      * 
      *
-     * @return string|null
+     * @return string
      */
-    public function getName() : ?string
+    public function getName() : string
     {
         return $this->name;
     }
     /**
      * 
      *
-     * @param string|null $name
+     * @param string $name
      *
      * @return self
      */
-    public function setName(?string $name) : self
+    public function setName(string $name) : self
     {
         $this->name = $name;
         return $this;
@@ -67,20 +67,20 @@ class Pet
     /**
      * 
      *
-     * @return string|null
+     * @return string
      */
-    public function getTag() : ?string
+    public function getTag() : string
     {
         return $this->tag;
     }
     /**
      * 
      *
-     * @param string|null $tag
+     * @param string $tag
      *
      * @return self
      */
-    public function setTag(?string $tag) : self
+    public function setTag(string $tag) : self
     {
         $this->tag = $tag;
         return $this;

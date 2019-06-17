@@ -13,20 +13,20 @@ class TestFormFilePostBody
     /**
      * 
      *
-     * @return string|null
+     * @return string
      */
-    public function getTestFile() : ?string
+    public function getTestFile() : string
     {
         return $this->testFile;
     }
     /**
      * 
      *
-     * @param string|null $testFile
+     * @param string $testFile
      *
      * @return self
      */
-    public function setTestFile(?string $testFile) : self
+    public function setTestFile(string $testFile) : self
     {
         $this->testFile = $testFile;
         return $this;

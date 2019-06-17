@@ -13,20 +13,20 @@ class BazBaz
     /**
      * 
      *
-     * @return string|null
+     * @return string
      */
-    public function getBaz() : ?string
+    public function getBaz() : string
     {
         return $this->baz;
     }
     /**
      * 
      *
-     * @param string|null $baz
+     * @param string $baz
      *
      * @return self
      */
-    public function setBaz(?string $baz) : self
+    public function setBaz(string $baz) : self
     {
         $this->baz = $baz;
         return $this;

@@ -25,20 +25,20 @@ class Test
     /**
      * 
      *
-     * @return \DateTime|null
+     * @return \DateTime
      */
-    public function getDate() : ?\DateTime
+    public function getDate() : \DateTime
     {
         return $this->date;
     }
     /**
      * 
      *
-     * @param \DateTime|null $date
+     * @param \DateTime $date
      *
      * @return self
      */
-    public function setDate(?\DateTime $date) : self
+    public function setDate(\DateTime $date) : self
     {
         $this->date = $date;
         return $this;

@@ -19,20 +19,20 @@ class Childtype
     /**
      * 
      *
-     * @return string|null
+     * @return string
      */
-    public function getChildProperty() : ?string
+    public function getChildProperty() : string
     {
         return $this->childProperty;
     }
     /**
      * 
      *
-     * @param string|null $childProperty
+     * @param string $childProperty
      *
      * @return self
      */
-    public function setChildProperty(?string $childProperty) : self
+    public function setChildProperty(string $childProperty) : self
     {
         $this->childProperty = $childProperty;
         return $this;
@@ -40,20 +40,20 @@ class Childtype
     /**
      * 
      *
-     * @return string|null
+     * @return string
      */
-    public function getInheritedProperty() : ?string
+    public function getInheritedProperty() : string
     {
         return $this->inheritedProperty;
     }
     /**
      * 
      *
-     * @param string|null $inheritedProperty
+     * @param string $inheritedProperty
      *
      * @return self
      */
-    public function setInheritedProperty(?string $inheritedProperty) : self
+    public function setInheritedProperty(string $inheritedProperty) : self
     {
         $this->inheritedProperty = $inheritedProperty;
         return $this;
