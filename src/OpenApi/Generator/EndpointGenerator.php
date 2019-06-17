@@ -496,6 +496,7 @@ EOD
                 new Param(parserVariable('body'), null, new Name('string')),
                 new Param(parserVariable('status'), null, new Name('int')),
                 new Param(parserVariable('serializer'), null, new Name\FullyQualified(SerializerInterface::class)),
+                new Param(parserVariable('contentType'), null, new Name('string')),
             ],
             'stmts' => $outputStatements,
         ], [
