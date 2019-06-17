@@ -13,20 +13,20 @@ class Test
     /**
      * 
      *
-     * @return TestFooItem[]|null
+     * @return TestFooItem[]
      */
-    public function getFoo() : ?array
+    public function getFoo() : array
     {
         return $this->foo;
     }
     /**
      * 
      *
-     * @param TestFooItem[]|null $foo
+     * @param TestFooItem[] $foo
      *
      * @return self
      */
-    public function setFoo(?array $foo) : self
+    public function setFoo(array $foo) : self
     {
         $this->foo = $foo;
         return $this;

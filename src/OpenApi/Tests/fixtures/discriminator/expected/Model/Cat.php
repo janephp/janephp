@@ -25,20 +25,20 @@ class Cat extends Pet
     /**
      * 
      *
-     * @return string|null
+     * @return string
      */
-    public function getName() : ?string
+    public function getName() : string
     {
         return $this->name;
     }
     /**
      * 
      *
-     * @param string|null $name
+     * @param string $name
      *
      * @return self
      */
-    public function setName(?string $name) : self
+    public function setName(string $name) : self
     {
         $this->name = $name;
         return $this;
@@ -46,20 +46,20 @@ class Cat extends Pet
     /**
      * 
      *
-     * @return string|null
+     * @return string
      */
-    public function getPetType() : ?string
+    public function getPetType() : string
     {
         return $this->petType;
     }
     /**
      * 
      *
-     * @param string|null $petType
+     * @param string $petType
      *
      * @return self
      */
-    public function setPetType(?string $petType) : self
+    public function setPetType(string $petType) : self
     {
         $this->petType = $petType;
         return $this;
@@ -67,20 +67,20 @@ class Cat extends Pet
     /**
      * The measured skill for hunting
      *
-     * @return string|null
+     * @return string
      */
-    public function getHuntingSkill() : ?string
+    public function getHuntingSkill() : string
     {
         return $this->huntingSkill;
     }
     /**
      * The measured skill for hunting
      *
-     * @param string|null $huntingSkill
+     * @param string $huntingSkill
      *
      * @return self
      */
-    public function setHuntingSkill(?string $huntingSkill) : self
+    public function setHuntingSkill(string $huntingSkill) : self
     {
         $this->huntingSkill = $huntingSkill;
         return $this;

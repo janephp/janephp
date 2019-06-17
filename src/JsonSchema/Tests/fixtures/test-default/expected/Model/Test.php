@@ -49,20 +49,20 @@ class Test
     /**
      * 
      *
-     * @return string|null
+     * @return string
      */
-    public function getString() : ?string
+    public function getString() : string
     {
         return $this->string;
     }
     /**
      * 
      *
-     * @param string|null $string
+     * @param string $string
      *
      * @return self
      */
-    public function setString(?string $string) : self
+    public function setString(string $string) : self
     {
         $this->string = $string;
         return $this;
@@ -70,20 +70,20 @@ class Test
     /**
      * 
      *
-     * @return bool|null
+     * @return bool
      */
-    public function getBool() : ?bool
+    public function getBool() : bool
     {
         return $this->bool;
     }
     /**
      * 
      *
-     * @param bool|null $bool
+     * @param bool $bool
      *
      * @return self
      */
-    public function setBool(?bool $bool) : self
+    public function setBool(bool $bool) : self
     {
         $this->bool = $bool;
         return $this;
@@ -91,20 +91,20 @@ class Test
     /**
      * 
      *
-     * @return int|null
+     * @return int
      */
-    public function getInteger() : ?int
+    public function getInteger() : int
     {
         return $this->integer;
     }
     /**
      * 
      *
-     * @param int|null $integer
+     * @param int $integer
      *
      * @return self
      */
-    public function setInteger(?int $integer) : self
+    public function setInteger(int $integer) : self
     {
         $this->integer = $integer;
         return $this;
@@ -112,20 +112,20 @@ class Test
     /**
      * 
      *
-     * @return float|null
+     * @return float
      */
-    public function getFloat() : ?float
+    public function getFloat() : float
     {
         return $this->float;
     }
     /**
      * 
      *
-     * @param float|null $float
+     * @param float $float
      *
      * @return self
      */
-    public function setFloat(?float $float) : self
+    public function setFloat(float $float) : self
     {
         $this->float = $float;
         return $this;
@@ -133,20 +133,20 @@ class Test
     /**
      * 
      *
-     * @return mixed[]|null
+     * @return mixed[]
      */
-    public function getArray() : ?array
+    public function getArray() : array
     {
         return $this->array;
     }
     /**
      * 
      *
-     * @param mixed[]|null $array
+     * @param mixed[] $array
      *
      * @return self
      */
-    public function setArray(?array $array) : self
+    public function setArray(array $array) : self
     {
         $this->array = $array;
         return $this;
@@ -154,20 +154,20 @@ class Test
     /**
      * 
      *
-     * @return mixed[]|null
+     * @return mixed[]
      */
-    public function getObject() : ?array
+    public function getObject() : array
     {
         return $this->object;
     }
     /**
      * 
      *
-     * @param mixed[]|null $object
+     * @param mixed[] $object
      *
      * @return self
      */
-    public function setObject(?array $object) : self
+    public function setObject(array $object) : self
     {
         $this->object = $object;
         return $this;
@@ -175,20 +175,20 @@ class Test
     /**
      * 
      *
-     * @return TestSubObject|null
+     * @return TestSubObject
      */
-    public function getSubObject() : ?TestSubObject
+    public function getSubObject() : TestSubObject
     {
         return $this->subObject;
     }
     /**
      * 
      *
-     * @param TestSubObject|null $subObject
+     * @param TestSubObject $subObject
      *
      * @return self
      */
-    public function setSubObject(?TestSubObject $subObject) : self
+    public function setSubObject(TestSubObject $subObject) : self
     {
         $this->subObject = $subObject;
         return $this;

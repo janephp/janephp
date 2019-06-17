@@ -19,20 +19,20 @@ class Test
     /**
      * 
      *
-     * @return string|null
+     * @return string
      */
-    public function getString() : ?string
+    public function getString() : string
     {
         return $this->string;
     }
     /**
      * 
      *
-     * @param string|null $string
+     * @param string $string
      *
      * @return self
      */
-    public function setString(?string $string) : self
+    public function setString(string $string) : self
     {
         $this->string = $string;
         return $this;
@@ -40,20 +40,20 @@ class Test
     /**
      * 
      *
-     * @return TestSubObject|null
+     * @return TestSubObject
      */
-    public function getSubObject() : ?TestSubObject
+    public function getSubObject() : TestSubObject
     {
         return $this->subObject;
     }
     /**
      * 
      *
-     * @param TestSubObject|null $subObject
+     * @param TestSubObject $subObject
      *
      * @return self
      */
-    public function setSubObject(?TestSubObject $subObject) : self
+    public function setSubObject(TestSubObject $subObject) : self
     {
         $this->subObject = $subObject;
         return $this;

@@ -23,7 +23,7 @@ class LibraryTest extends TestCase
     {
         $this->jane = Jane::build([
             'reference' => true,
-            'strict' => true,
+            'strict' => false,
         ]);
         $this->printer = new Printer(new Standard());
     }

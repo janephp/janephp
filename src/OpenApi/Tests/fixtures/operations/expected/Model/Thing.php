@@ -13,20 +13,20 @@ class Thing
     /**
      * 
      *
-     * @return string|null
+     * @return string
      */
-    public function getName() : ?string
+    public function getName() : string
     {
         return $this->name;
     }
     /**
      * 
      *
-     * @param string|null $name
+     * @param string $name
      *
      * @return self
      */
-    public function setName(?string $name) : self
+    public function setName(string $name) : self
     {
         $this->name = $name;
         return $this;

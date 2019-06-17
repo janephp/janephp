@@ -13,20 +13,20 @@ class TestTwoGetResponse200
     /**
      * 
      *
-     * @return string|null
+     * @return string
      */
-    public function getMessage() : ?string
+    public function getMessage() : string
     {
         return $this->message;
     }
     /**
      * 
      *
-     * @param string|null $message
+     * @param string $message
      *
      * @return self
      */
-    public function setMessage(?string $message) : self
+    public function setMessage(string $message) : self
     {
         $this->message = $message;
         return $this;

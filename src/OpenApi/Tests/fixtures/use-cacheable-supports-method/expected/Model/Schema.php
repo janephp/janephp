@@ -46,19 +46,19 @@ class Schema
     protected $objectRefProperty;
 
     /**
-     * @return string|null
+     * @return string
      */
-    public function getStringProperty(): ?string
+    public function getStringProperty(): string
     {
         return $this->stringProperty;
     }
 
     /**
-     * @param string|null $stringProperty
+     * @param string $stringProperty
      *
      * @return self
      */
-    public function setStringProperty(?string $stringProperty): self
+    public function setStringProperty(string $stringProperty): self
     {
         $this->stringProperty = $stringProperty;
 
@@ -66,19 +66,19 @@ class Schema
     }
 
     /**
-     * @return \DateTime|null
+     * @return \DateTime
      */
-    public function getDateProperty(): ?\DateTime
+    public function getDateProperty(): \DateTime
     {
         return $this->dateProperty;
     }
 
     /**
-     * @param \DateTime|null $dateProperty
+     * @param \DateTime $dateProperty
      *
      * @return self
      */
-    public function setDateProperty(?\DateTime $dateProperty): self
+    public function setDateProperty(\DateTime $dateProperty): self
     {
         $this->dateProperty = $dateProperty;
 
@@ -86,19 +86,19 @@ class Schema
     }
 
     /**
-     * @return int|null
+     * @return int
      */
-    public function getIntegerProperty(): ?int
+    public function getIntegerProperty(): int
     {
         return $this->integerProperty;
     }
 
     /**
-     * @param int|null $integerProperty
+     * @param int $integerProperty
      *
      * @return self
      */
-    public function setIntegerProperty(?int $integerProperty): self
+    public function setIntegerProperty(int $integerProperty): self
     {
         $this->integerProperty = $integerProperty;
 
@@ -106,19 +106,19 @@ class Schema
     }
 
     /**
-     * @return float|null
+     * @return float
      */
-    public function getFloatProperty(): ?float
+    public function getFloatProperty(): float
     {
         return $this->floatProperty;
     }
 
     /**
-     * @param float|null $floatProperty
+     * @param float $floatProperty
      *
      * @return self
      */
-    public function setFloatProperty(?float $floatProperty): self
+    public function setFloatProperty(float $floatProperty): self
     {
         $this->floatProperty = $floatProperty;
 
@@ -126,19 +126,19 @@ class Schema
     }
 
     /**
-     * @return mixed[]|null
+     * @return mixed[]
      */
-    public function getArrayProperty(): ?array
+    public function getArrayProperty(): array
     {
         return $this->arrayProperty;
     }
 
     /**
-     * @param mixed[]|null $arrayProperty
+     * @param mixed[] $arrayProperty
      *
      * @return self
      */
-    public function setArrayProperty(?array $arrayProperty): self
+    public function setArrayProperty(array $arrayProperty): self
     {
         $this->arrayProperty = $arrayProperty;
 
@@ -146,19 +146,19 @@ class Schema
     }
 
     /**
-     * @return string[]|null
+     * @return string[]
      */
-    public function getMapProperty(): ?\ArrayObject
+    public function getMapProperty(): \ArrayObject
     {
         return $this->mapProperty;
     }
 
     /**
-     * @param string[]|null $mapProperty
+     * @param string[] $mapProperty
      *
      * @return self
      */
-    public function setMapProperty(?\ArrayObject $mapProperty): self
+    public function setMapProperty(\ArrayObject $mapProperty): self
     {
         $this->mapProperty = $mapProperty;
 
@@ -166,19 +166,19 @@ class Schema
     }
 
     /**
-     * @return SchemaObjectProperty|null
+     * @return SchemaObjectProperty
      */
-    public function getObjectProperty(): ?SchemaObjectProperty
+    public function getObjectProperty(): SchemaObjectProperty
     {
         return $this->objectProperty;
     }
 
     /**
-     * @param SchemaObjectProperty|null $objectProperty
+     * @param SchemaObjectProperty $objectProperty
      *
      * @return self
      */
-    public function setObjectProperty(?SchemaObjectProperty $objectProperty): self
+    public function setObjectProperty(SchemaObjectProperty $objectProperty): self
     {
         $this->objectProperty = $objectProperty;
 
@@ -186,19 +186,19 @@ class Schema
     }
 
     /**
-     * @return Schema|null
+     * @return Schema
      */
-    public function getObjectRefProperty(): ?self
+    public function getObjectRefProperty(): self
     {
         return $this->objectRefProperty;
     }
 
     /**
-     * @param Schema|null $objectRefProperty
+     * @param Schema $objectRefProperty
      *
      * @return self
      */
-    public function setObjectRefProperty(?self $objectRefProperty): self
+    public function setObjectRefProperty(self $objectRefProperty): self
     {
         $this->objectRefProperty = $objectRefProperty;
 

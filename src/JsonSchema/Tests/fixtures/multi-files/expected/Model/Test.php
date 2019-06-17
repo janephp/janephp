@@ -13,20 +13,20 @@ class Test
     /**
      * 
      *
-     * @return TestFoo|null
+     * @return TestFoo
      */
-    public function getFoo() : ?TestFoo
+    public function getFoo() : TestFoo
     {
         return $this->foo;
     }
     /**
      * 
      *
-     * @param TestFoo|null $foo
+     * @param TestFoo $foo
      *
      * @return self
      */
-    public function setFoo(?TestFoo $foo) : self
+    public function setFoo(TestFoo $foo) : self
     {
         $this->foo = $foo;
         return $this;
