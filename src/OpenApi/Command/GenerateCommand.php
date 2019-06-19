@@ -80,6 +80,7 @@ class GenerateCommand extends Command
             'strict' => true,
             'use-fixer' => true,
             'fixer-config-file' => null,
+            'use-cacheable-supports-method' => null,
         ]);
 
         if (\array_key_exists('openapi-file', $options)) {
@@ -112,6 +113,7 @@ class GenerateCommand extends Command
             'strict',
             'use-fixer',
             'fixer-config-file',
+            'use-cacheable-supports-method',
         ]);
 
         $optionsResolver->setDefault('version', 2);

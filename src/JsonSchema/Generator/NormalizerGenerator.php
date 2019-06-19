@@ -28,13 +28,20 @@ class NormalizerGenerator implements GeneratorInterface
     protected $useReference;
 
     /**
+     * @var bool|null Whether to use the CacheableSupportsMethodInterface interface, for >sf 4.1
+     */
+    protected $useCacheableSupportsMethod;
+
+    /**
      * @param Naming $naming       Naming Service
      * @param bool   $useReference Whether to generate the JSON Reference system
+     * @param bool   $useCache     Whether to use the CacheableSupportsMethodInterface interface, for >sf 4.1
      */
-    public function __construct(Naming $naming, $useReference = true)
+    public function __construct(Naming $naming, $useReference = true, $useCacheableSupportsMethod = null)
     {
         $this->naming = $naming;
         $this->useReference = $useReference;
+        $this->useCacheableSupportsMethod = $this->canUseCacheableSupportsMethod($useCacheableSupportsMethod);
     }
 
     /**
@@ -62,13 +69,18 @@ class NormalizerGenerator implements GeneratorInterface
             $methods[] = $this->createDenormalizeMethod($modelFqdn, $context, $class);
             $methods[] = $this->createNormalizeMethod($modelFqdn, $context, $class);
 
+            if ($this->useCacheableSupportsMethod) {
+                $methods[] = $this->createHasCacheableSupportsMethod();
+            }
+
             $normalizerClass = $this->createNormalizerClass(
                 $class->getName() . 'Normalizer',
-                $methods
+                $methods,
+                $this->useCacheableSupportsMethod
             );
             $classes[] = $normalizerClass->name;
 
-            $namespace = new Stmt\Namespace_(new Name($schema->getNamespace() . '\\Normalizer'), [
+            $useStmts = [
                 new Stmt\Use_([new Stmt\UseUse(new Name('Jane\JsonSchemaRuntime\Reference'))]),
                 new Stmt\Use_([new Stmt\UseUse(new Name('Symfony\Component\Serializer\Exception\InvalidArgumentException'))]),
                 new Stmt\Use_([new Stmt\UseUse(new Name('Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface'))]),
@@ -77,8 +89,15 @@ class NormalizerGenerator implements GeneratorInterface
                 new Stmt\Use_([new Stmt\UseUse(new Name('Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface'))]),
                 new Stmt\Use_([new Stmt\UseUse(new Name('Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait'))]),
                 new Stmt\Use_([new Stmt\UseUse(new Name('Symfony\Component\Serializer\Normalizer\NormalizerInterface'))]),
-                $normalizerClass,
-            ]);
+            ];
+
+            if ($this->useCacheableSupportsMethod) {
+                $useStmts[] = new Stmt\Use_([new Stmt\UseUse(new Name('Symfony\Component\Serializer\Normalizer\CacheableSupportsMethodInterface'))]);
+            }
+
+            $useStmts[] = $normalizerClass;
+
+            $namespace = new Stmt\Namespace_(new Name($schema->getNamespace() . '\\Normalizer'), $useStmts);
 
             $schema->addFile(new File($schema->getDirectory() . '/Normalizer/' . $normalizerClass->name . '.php', $namespace, self::FILE_TYPE_NORMALIZER));
         }
@@ -90,6 +109,13 @@ class NormalizerGenerator implements GeneratorInterface
             ]),
             self::FILE_TYPE_NORMALIZER
         ));
+    }
+
+    protected function canUseCacheableSupportsMethod(?bool $useCacheableSupportsMethod): bool
+    {
+        return
+            true === $useCacheableSupportsMethod ||
+            (null === $useCacheableSupportsMethod && class_exists('Symfony\Component\Serializer\Normalizer\CacheableSupportsMethodInterface'));
     }
 
     protected function createNormalizerFactoryClass($classes)

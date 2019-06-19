@@ -134,7 +134,7 @@ class JaneOpenApi extends ChainGenerator
         $generators = GeneratorFactory::build($serializer, $options);
         $naming = new Naming();
         $modelGenerator = new ModelGenerator($naming);
-        $normGenerator = new NormalizerGenerator($naming, $options['reference'] ?? false);
+        $normGenerator = new NormalizerGenerator($naming, $options['reference'] ?? false, $options['use-cacheable-supports-method'] ?? false);
 
         $self = new self(
             $schemaParser,

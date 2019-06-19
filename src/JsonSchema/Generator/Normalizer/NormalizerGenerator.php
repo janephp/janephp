@@ -21,23 +21,29 @@ trait NormalizerGenerator
      */
     abstract protected function getNaming();
 
-    protected function createNormalizerClass($name, $methods)
+    protected function createNormalizerClass($name, $methods, $useCacheableSupportsMethod = false)
     {
         $traits = [
             new Stmt\TraitUse([new Name('DenormalizerAwareTrait')]),
             new Stmt\TraitUse([new Name('NormalizerAwareTrait')]),
         ];
 
+        $implements = [
+            new Name('DenormalizerInterface'),
+            new Name('NormalizerInterface'),
+            new Name('DenormalizerAwareInterface'),
+            new Name('NormalizerAwareInterface'),
+        ];
+
+        if ($useCacheableSupportsMethod) {
+            $implements[] = new Name('CacheableSupportsMethodInterface');
+        }
+
         return new Stmt\Class_(
             new Name($this->getNaming()->getClassName($name)),
             [
                 'stmts' => array_merge($traits, $methods),
-                'implements' => [
-                    new Name('DenormalizerInterface'),
-                    new Name('NormalizerInterface'),
-                    new Name('DenormalizerAwareInterface'),
-                    new Name('NormalizerAwareInterface'),
-                ],
+                'implements' => $implements,
             ]
         );
     }
@@ -136,6 +142,22 @@ trait NormalizerGenerator
                 new Param(new Expr\Variable('context'), new Expr\Array_(), 'array'),
             ],
             'stmts' => $statements,
+        ]);
+    }
+
+    /**
+     * Create method to say that hasCacheableSupportsMethod is supported.
+     *
+     * @return Stmt\ClassMethod
+     */
+    protected function createHasCacheableSupportsMethod()
+    {
+        return new Stmt\ClassMethod('hasCacheableSupportsMethod', [
+            'type' => Stmt\Class_::MODIFIER_PUBLIC,
+            'returnType' => 'bool',
+            'stmts' => [
+                new Stmt\Return_(new Expr\ConstFetch(new Name('true'))),
+            ],
         ]);
     }
 
