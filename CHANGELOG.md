@@ -2,10 +2,41 @@
 
 ## Unreleased
 
-* [JsonSchema] Added `use-cacheable-supports-method` option to add CacheableSupportsMethodInterface to your Normalizers.
-* [OpenAPI] Added `use-cacheable-supports-method` option to add CacheableSupportsMethodInterface to your Normalizers
-* [JsonSchema] Added `use-fixer` & `fixer-config-file` options to disable or change configuration to post generation cs-fix.
-* [OpenAPI] Added `use-fixer` & `fixer-config-file` options to disable or change configuration to post generation cs-fix.
+## 4.4.0 - 2019-06-17
+ 
+### Added
+ 
+ * [Jane] nullable properties
+ * [Jane] add null type to PHPDoc for getters/setters
+ * [Jane] checking if helper function exists before creating it (php-parser 3.x / 4.x compatibility)
+
+## 4.3.0 - 2019-05-31
+
+ * [OpenAPI] Discriminator support
+ * [Jane] php-parser 4.x compatibility
+
+## 4.2.0 - 2019-03-08
+
+### Added
+
+ * [Jane] Support for default value in model (only scalar)
+ * [OpenAPI] Support for httplug 2.0
+
+## 4.1.0 - 2019-01-29
+
+### Added
+
+ * [Jane] `use-cacheable-supports-method` option to add CacheableSupportsMethodInterface to your Normalizers.
+ * [Jane] `use-fixer` & `fixer-config-file` options to disable or change configuration to post generation cs-fix.
+
+## 4.0.4 - 2018-10-19
+
+### Fixed
+
+ * [OpenAPI] Fix items object generation for json schema and openapi #29
+ * [OpenAPI] Fix bad parameter generation #41 #18
+ * [Jane] Fix properties having the same name #25
+ * [Jane] Fix bad normalizer on reserved keywords #16
 
 ## 4.0.1 - 2018-02-22
 
