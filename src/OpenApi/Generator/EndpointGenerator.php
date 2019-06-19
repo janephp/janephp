@@ -148,7 +148,7 @@ abstract class EndpointGenerator
             if ($parameter instanceof PathParameterSubSchema) {
                 $pathParams[] = $this->nonBodyParameterGenerator->generateMethodParameter($parameter, $context, $operation->getReference() . '/parameters/' . $key);
                 $pathParamsDoc[] = $this->nonBodyParameterGenerator->generateMethodDocParameter($parameter, $context, $operation->getReference() . '/parameters/' . $key);
-                $methodStatements[] = parserExpression(new Expr\Assign(new Expr\PropertyFetch(new Expr\Variable('this'), Inflector::camelize($parameter->getName())), new Expr\Variable(Inflector::camelize($parameter->getName()))));
+                $methodStatements[] = parserExpression(new Expr\Assign(new Expr\PropertyFetch(new Expr\Variable('this'), $parameter->getName()), new Expr\Variable(Inflector::camelize($parameter->getName()))));
                 $pathProperties[] = new Stmt\Property(Stmt\Class_::MODIFIER_PROTECTED, [
                     new Stmt\PropertyProperty(new Name($parameter->getName())),
                 ]);
