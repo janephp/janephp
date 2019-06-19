@@ -73,7 +73,7 @@ class ObjectGuesser implements GuesserInterface, PropertiesGuesserInterface, Typ
                 }
             }
 
-            $registry->getSchema($reference)->addClass($reference, new ClassGuess($object, $reference, $this->naming->getClassName($name), $extensions));
+            $registry->getSchema($reference)->addClass($reference, $this->createClassGuess($object, $reference, $name, $extensions));
         }
 
         foreach ($object->getProperties() as $key => $property) {
@@ -149,5 +149,10 @@ class ObjectGuesser implements GuesserInterface, PropertiesGuesserInterface, Typ
     protected function getSchemaClass()
     {
         return JsonSchema::class;
+    }
+
+    protected function createClassGuess($object, $reference, $name, $extensions): ClassGuess
+    {
+        return new ClassGuess($object, $reference, $this->naming->getClassName($name), $extensions);
     }
 }
