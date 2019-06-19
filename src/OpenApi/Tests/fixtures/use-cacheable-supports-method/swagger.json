@@ -1,0 +1,51 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Swagger Store Product DTO",
+        "description": "DTO to be saved as serialized data and used for Product Frontend View",
+        "version": "1.0.0"
+    },
+    "paths": {},
+    "components": {
+        "schemas": {
+            "Schema": {
+                "type": "object",
+                "properties": {
+                    "stringProperty": {
+                        "type": "string"
+                    },
+                    "dateProperty": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "integerProperty": {
+                        "type": "integer"
+                    },
+                    "floatProperty": {
+                        "type": "number"
+                    },
+                    "arrayProperty": {
+                        "type": "array"
+                    },
+                    "mapProperty": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        }
+                    },
+                    "objectProperty": {
+                        "type": "object",
+                        "properties": {
+                            "stringProperty": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "objectRefProperty": {
+                        "$ref": "#/components/schemas/Schema"
+                    }
+                }
+            }
+        }
+    }
+}

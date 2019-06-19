@@ -13,7 +13,7 @@
 
 ## 4.1.0 - 2019-01-24
 
- * [Jane][OpenAPI] Add support for cacheable normalizer
+ * [Jane] Added `use-cacheable-supports-method` option to add CacheableSupportsMethodInterface to your Normalizers.
 
 ## 4.0.4 - 2018-10-19
 

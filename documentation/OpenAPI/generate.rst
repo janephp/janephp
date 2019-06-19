@@ -58,6 +58,9 @@ Other options are available to customize the generated code:
    not respecting some standards (nullable field as an example)
  * ``async``: A boolean (false by default) which allows to generate a full asynchronous client using `Amp`_ with `Artax`_
    client, see :doc:`/OpenAPI/async` fore more information.
+ * ``use-fixer``: A boolean which indicate if we make a first cs-fix after code generation
+ * ``fixer-config-file``: A string to specify where to find the custom configuration for the cs-fixer after code generation
+ * ``use-cacheable-supports-method``: A boolean which indicate if we use ``CacheableSupportsMethodInterface`` interface to improve caching performances when used with Symfony Serializer.
 
 .. _`JSON Reference`: https://tools.ietf.org/id/draft-pbryan-zyp-json-ref-03.html
 .. _Amp: https://amphp.org/
