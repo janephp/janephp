@@ -27,29 +27,35 @@ class PetNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
         if (!is_object($data)) {
             throw new InvalidArgumentException();
         }
-        $object = new \Jane\OpenApi\Tests\Expected\Model\Pet();
-        if (property_exists($data, 'id')) {
-            $object->setId($data->{'id'});
+        if (property_exists($data, 'petType') and 'Cat' === $data->{'petType'}) {
+            return $this->denormalizer->denormalize($data, 'Jane\\OpenApi\\Tests\\Expected\\Model\\Cat', $format, $context);
         }
+        if (property_exists($data, 'petType') and 'Dog' === $data->{'petType'}) {
+            return $this->denormalizer->denormalize($data, 'Jane\\OpenApi\\Tests\\Expected\\Model\\Dog', $format, $context);
+        }
+        $object = new \Jane\OpenApi\Tests\Expected\Model\Pet();
         if (property_exists($data, 'name')) {
             $object->setName($data->{'name'});
         }
-        if (property_exists($data, 'tag')) {
-            $object->setTag($data->{'tag'});
+        if (property_exists($data, 'petType')) {
+            $object->setPetType($data->{'petType'});
         }
         return $object;
     }
     public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
-        if (null !== $object->getId()) {
-            $data->{'id'} = $object->getId();
+        if (null !== $object->getPetType() and 'Cat' === $object->getPetType()) {
+            return $this->normalizer->normalize($object, $format, $context);
+        }
+        if (null !== $object->getPetType() and 'Dog' === $object->getPetType()) {
+            return $this->normalizer->normalize($object, $format, $context);
         }
         if (null !== $object->getName()) {
             $data->{'name'} = $object->getName();
         }
-        if (null !== $object->getTag()) {
-            $data->{'tag'} = $object->getTag();
+        if (null !== $object->getPetType()) {
+            $data->{'petType'} = $object->getPetType();
         }
         return $data;
     }

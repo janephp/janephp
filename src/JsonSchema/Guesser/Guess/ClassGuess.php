@@ -17,7 +17,7 @@ class ClassGuess
     /**
      * @var Property[]
      */
-    private $properties;
+    private $properties = [];
 
     private $reference;
 

@@ -20,7 +20,7 @@ class BodyNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
     }
     public function supportsNormalization($data, $format = null)
     {
-        return $data instanceof \Jane\OpenApi\Tests\Expected\Api1\Model\Body;
+        return get_class($data) === 'Jane\\OpenApi\\Tests\\Expected\\Api1\\Model\\Body';
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {

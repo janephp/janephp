@@ -47,12 +47,27 @@ trait GetterSetterGenerator
         );
     }
 
-    protected function createSetter(Property $property, string $namespace, bool $required): Stmt\ClassMethod
+    protected function createSetter(Property $property, string $namespace, bool $required, bool $fluent = true): Stmt\ClassMethod
     {
         $setType = $property->getType()->getTypeHint($namespace);
 
         if ($setType && !$required) {
             $setType = '?' . $setType;
+        }
+
+        $stmts = [
+            // $this->property = $property;
+            new Stmt\Expression(new Expr\Assign(
+                new Expr\PropertyFetch(
+                    new Expr\Variable('this'),
+                    $this->getNaming()->getPropertyName($property->getPhpName())
+                ), new Expr\Variable($this->getNaming()->getPropertyName($property->getPhpName()))
+            )),
+        ];
+
+        if ($fluent) {
+            // return $this;
+            $stmts[] = new Stmt\Return_(new Expr\Variable('this'));
         }
 
         return new Stmt\ClassMethod(
@@ -65,20 +80,10 @@ trait GetterSetterGenerator
                 'params' => [
                     new Param(new Expr\Variable($this->getNaming()->getPropertyName($property->getPhpName())), null, $setType),
                 ],
-                'stmts' => [
-                    // $this->property = $property;
-                    new Stmt\Expression(new Expr\Assign(
-                        new Expr\PropertyFetch(
-                            new Expr\Variable('this'),
-                            $this->getNaming()->getPropertyName($property->getPhpName())
-                        ), new Expr\Variable($this->getNaming()->getPropertyName($property->getPhpName()))
-                    )),
-                    // return $this;
-                    new Stmt\Return_(new Expr\Variable('this')),
-                ],
-                'returnType' => 'self',
+                'stmts' => $stmts,
+                'returnType' => $fluent ? 'self' : null,
             ], [
-                'comments' => [$this->createSetterDoc($property, $namespace, $required)],
+                'comments' => [$this->createSetterDoc($property, $namespace, $required, $fluent)],
             ]
         );
     }
@@ -95,18 +100,30 @@ EOD
         , $property->getDescription(), $this->getDocType($property, $namespace, $required)));
     }
 
-    protected function createSetterDoc(Property $property, string $namespace, bool $required): Doc
+    protected function createSetterDoc(Property $property, string $namespace, bool $required, bool $fluent): Doc
     {
-        return new Doc(sprintf(<<<EOD
+        $description = sprintf(<<<EOD
 /**
  * %s
  *
  * @param %s %s
+
+EOD
+            , $property->getDescription(), $this->getDocType($property, $namespace, $required), '$' . $property->getPhpName());
+
+        if ($fluent) {
+            $description .= <<<EOD
  *
  * @return self
+
+EOD;
+        }
+
+        $description .= <<<EOD
  */
-EOD
-        , $property->getDescription(), $this->getDocType($property, $namespace, $required), '$' . $property->getPhpName()));
+EOD;
+
+        return new Doc($description);
     }
 
     private function getDocType(Property $property, string $namespace, bool $required): string

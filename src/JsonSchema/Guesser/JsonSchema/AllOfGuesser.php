@@ -23,7 +23,7 @@ class AllOfGuesser implements GuesserInterface, TypeGuesserInterface, ChainGuess
     use ChainGuesserAwareTrait;
     use GuesserResolverTrait;
 
-    private $naming;
+    protected $naming;
 
     public function __construct(SerializerInterface $serializer, Naming $naming)
     {
@@ -69,7 +69,7 @@ class AllOfGuesser implements GuesserInterface, TypeGuesserInterface, ChainGuess
                     }
                 }
 
-                $registry->getSchema($reference)->addClass($reference, new ClassGuess($object, $reference, $this->naming->getClassName($name), $extensions));
+                $registry->getSchema($reference)->addClass($reference, $this->createClassGuess($object, $reference, $name, $extensions));
             }
 
             foreach ($object->getAllOf() as $allOfIndex => $allOf) {
@@ -167,5 +167,10 @@ class AllOfGuesser implements GuesserInterface, TypeGuesserInterface, ChainGuess
     protected function getSchemaClass()
     {
         return JsonSchema::class;
+    }
+
+    protected function createClassGuess($object, $reference, $name, $extensions): ClassGuess
+    {
+        return new ClassGuess($object, $reference, $this->naming->getClassName($name), $extensions);
     }
 }
