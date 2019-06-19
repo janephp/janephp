@@ -6,6 +6,19 @@
  * [OpenAPI] **BC-BREAK** Use the openapi v3 specification (v2 is not more supported)
  * [OpenAPI] **BC-BREAK** No more asynchronous code generation (sync and async api can be the same on php 7.3 by using ext-async)
 
+## 4.4.0 - 2019-06-17
+ 
+### Added
+ 
+ * [Jane] nullable properties
+ * [Jane] add null type to PHPDoc for getters/setters
+ * [Jane] checking if helper function exists before creating it (php-parser 3.x / 4.x compatibility)
+
+## 4.3.0 - 2019-05-31
+
+ * [OpenAPI] Discriminator support
+ * [Jane] php-parser 4.x compatibility
+
 ## 4.2.0 - 2019-08-03
 
  * [Jane] Add support for default value in model (only scalar)
