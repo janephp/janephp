@@ -12,7 +12,7 @@ class GetByTestInteger extends \Jane\OpenApiRuntime\Client\BaseEndpoint implemen
      */
     public function __construct(int $testInteger)
     {
-        $this->testInteger = $testInteger;
+        $this->test_integer = $testInteger;
     }
     use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
     public function getMethod() : string
