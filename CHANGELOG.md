@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+* [OpenAPI] Fix generated endpoint in case of uppercase first letter in path parameter  #79
+
 ## 4.4.0 - 2019-06-17
  
 ### Added
