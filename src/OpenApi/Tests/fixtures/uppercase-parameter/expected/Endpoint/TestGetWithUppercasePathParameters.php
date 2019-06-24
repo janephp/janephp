@@ -2,17 +2,17 @@
 
 namespace Jane\OpenApi\Tests\Expected\Endpoint;
 
-class GetByTestInteger extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7HttplugEndpoint
+class TestGetWithUppercasePathParameters extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7HttplugEndpoint
 {
-    protected $test_integer;
+    protected $TestParameter;
     /**
      * 
      *
-     * @param int $testInteger 
+     * @param string $testParameter 
      */
-    public function __construct(int $testInteger)
+    public function __construct(string $testParameter)
     {
-        $this->test_integer = $testInteger;
+        $this->TestParameter = $testParameter;
     }
     use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
     public function getMethod() : string
@@ -21,7 +21,7 @@ class GetByTestInteger extends \Jane\OpenApiRuntime\Client\BaseEndpoint implemen
     }
     public function getUri() : string
     {
-        return str_replace(array('{test_integer}'), array($this->test_integer), '/{test_integer}');
+        return str_replace(array('{TestParameter}'), array($this->TestParameter), '/test-uppercase-path-parameters/{TestParameter}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null) : array
     {
@@ -35,8 +35,5 @@ class GetByTestInteger extends \Jane\OpenApiRuntime\Client\BaseEndpoint implemen
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
     {
-        if (200 === $status) {
-            return null;
-        }
     }
 }
