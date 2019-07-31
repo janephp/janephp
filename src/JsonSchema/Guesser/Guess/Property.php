@@ -35,11 +35,16 @@ class Property
     private $description;
 
     /**
+     * @var mixed
+     */
+    private $default;
+
+    /**
      * @var string
      */
     private $phpName;
 
-    public function __construct($object, string $name, string $reference, bool $nullable = false, Type $type = null, string $description = null)
+    public function __construct($object, string $name, string $reference, bool $nullable = false, Type $type = null, string $description = null, $default = null)
     {
         $this->name = $name;
         $this->object = $object;
@@ -47,6 +52,7 @@ class Property
         $this->nullable = $nullable;
         $this->type = $type;
         $this->description = $description;
+        $this->default = $default;
     }
 
     public function setPhpName(string $name)
@@ -92,5 +98,10 @@ class Property
     public function getDescription(): string
     {
         return (string) $this->description;
+    }
+
+    public function getDefault()
+    {
+        return $this->default;
     }
 }

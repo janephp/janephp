@@ -10,6 +10,7 @@ use Jane\JsonSchema\Generator\NormalizerGenerator;
 use Jane\JsonSchema\Guesser\ChainGuesser;
 use Jane\JsonSchema\Guesser\JsonSchema\JsonSchemaGuesserFactory;
 use Jane\JsonSchema\Normalizer\NormalizerFactory;
+use PhpParser\ParserFactory;
 use Symfony\Component\Serializer\Encoder\JsonDecode;
 use Symfony\Component\Serializer\Encoder\JsonEncode;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
@@ -95,7 +96,8 @@ class Jane extends ChainGenerator
         $serializer = self::buildSerializer();
         $chainGuesser = JsonSchemaGuesserFactory::create($serializer, $options);
         $naming = new Naming();
-        $modelGenerator = new ModelGenerator($naming);
+        $parser = (new ParserFactory())->create(ParserFactory::PREFER_PHP7);
+        $modelGenerator = new ModelGenerator($naming, $parser);
         $normGenerator = new NormalizerGenerator($naming, $options['reference'], $options['use-cacheable-supports-method'] ?? false);
 
         $self = new self($serializer, $chainGuesser, $naming, $options['strict']);

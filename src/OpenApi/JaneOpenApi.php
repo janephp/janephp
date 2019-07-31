@@ -14,6 +14,7 @@ use Jane\OpenApi\SchemaParser\Converter;
 use Jane\OpenApi\SchemaParser\SchemaParser;
 use Jane\JsonSchema\Registry;
 use Jane\JsonSchema\Schema;
+use PhpParser\ParserFactory;
 use Symfony\Component\Serializer\Encoder\JsonDecode;
 use Symfony\Component\Serializer\Encoder\JsonEncode;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
@@ -133,7 +134,8 @@ class JaneOpenApi extends ChainGenerator
         $schemaParser = new SchemaParser($serializer, new Converter());
         $generators = GeneratorFactory::build($serializer, $options);
         $naming = new Naming();
-        $modelGenerator = new ModelGenerator($naming);
+        $parser = (new ParserFactory())->create(ParserFactory::PREFER_PHP7);
+        $modelGenerator = new ModelGenerator($naming, $parser);
         $normGenerator = new NormalizerGenerator($naming, $options['reference'] ?? false, $options['use-cacheable-supports-method'] ?? false);
 
         $self = new self(
