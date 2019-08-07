@@ -70,7 +70,7 @@ trait NormalizerGenerator
             ],
             'stmts' => [
                 new Stmt\Return_(new Expr\BinaryOp\Identical(
-                    new Expr\FuncCall(new Name('get_class'), [new Expr\Variable('data')]),
+                    new Expr\ClassConstFetch(new Expr\Variable('data'), 'class'),
                     new Scalar\String_($modelFqdn)
                 )),
             ],
