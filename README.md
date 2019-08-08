@@ -6,7 +6,7 @@
 [![Build Status](https://img.shields.io/travis/janephp/janephp.svg?style=flat-square)](https://travis-ci.org/janephp/janephp)
 [![Coverage Status](https://coveralls.io/repos/github/janephp/janephp/badge.svg?branch=master)](https://coveralls.io/github/janephp/janephp?branch=master)
 
-Jane is a set of libraries to generate PHP code.
+Jane is a set of libraries to generate Models & API Clients based on JsonSchema / OpenAPI specs
 
 ## Documentation
 
