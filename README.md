@@ -1,4 +1,4 @@
-# 🌱 Jane
+# Jane
 
 
 [![Latest Version](https://img.shields.io/github/release/janephp/janephp.svg?style=flat-square)](https://github.com/janephp/janephp/releases)
