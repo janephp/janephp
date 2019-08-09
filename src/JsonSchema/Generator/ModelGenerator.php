@@ -68,6 +68,7 @@ class ModelGenerator implements GeneratorInterface
             $properties = [];
             $methods = [];
 
+            /** @var Property $property */
             foreach ($class->getProperties() as $property) {
                 $required = !$property->isNullable() && $context->isStrict();
                 $properties[] = $this->createProperty($property, $schema->getNamespace() . '\\Model');

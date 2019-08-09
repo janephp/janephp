@@ -25,36 +25,39 @@ class TestNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
     public function denormalize($data, $class, $format = null, array $context = array())
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException();
+            return null;
+        }
+        if (isset($data->{'$ref'})) {
+            return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \Jane\JsonSchema\Tests\Expected\Model\Test();
-        if (property_exists($data, 'string')) {
+        if (property_exists($data, 'string') && $data->{'string'} !== null) {
             $object->setString($data->{'string'});
         }
-        if (property_exists($data, 'bool')) {
+        if (property_exists($data, 'bool') && $data->{'bool'} !== null) {
             $object->setBool($data->{'bool'});
         }
-        if (property_exists($data, 'integer')) {
+        if (property_exists($data, 'integer') && $data->{'integer'} !== null) {
             $object->setInteger($data->{'integer'});
         }
-        if (property_exists($data, 'float')) {
+        if (property_exists($data, 'float') && $data->{'float'} !== null) {
             $object->setFloat($data->{'float'});
         }
-        if (property_exists($data, 'array')) {
+        if (property_exists($data, 'array') && $data->{'array'} !== null) {
             $values = array();
             foreach ($data->{'array'} as $value) {
                 $values[] = $value;
             }
             $object->setArray($values);
         }
-        if (property_exists($data, 'object')) {
+        if (property_exists($data, 'object') && $data->{'object'} !== null) {
             $values_1 = array();
             foreach ($data->{'object'} as $value_1) {
                 $values_1[] = $value_1;
             }
             $object->setObject($values_1);
         }
-        if (property_exists($data, 'subObject')) {
+        if (property_exists($data, 'subObject') && $data->{'subObject'} !== null) {
             $object->setSubObject($this->denormalizer->denormalize($data->{'subObject'}, 'Jane\\JsonSchema\\Tests\\Expected\\Model\\TestSubObject', 'json', $context));
         }
         return $object;

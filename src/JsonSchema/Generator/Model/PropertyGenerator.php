@@ -34,7 +34,7 @@ trait PropertyGenerator
         }
 
         if (null !== $default && is_scalar($default)) {
-            $propertyStmt->default = $this->getDefaultAsExpr($default);
+            $propertyStmt->default = $this->getDefaultAsExpr($default)->expr;
         }
 
         return new Stmt\Property(Stmt\Class_::MODIFIER_PROTECTED, [
@@ -56,7 +56,7 @@ EOD
         , $property->getDescription(), $property->getType()->getDocTypeHint($namespace)));
     }
 
-    private function getDefaultAsExpr($value)
+    private function getDefaultAsExpr($value): Stmt\Expression
     {
         return $this->parser->parse('<?php ' . var_export($value, true) . ';')[0];
     }

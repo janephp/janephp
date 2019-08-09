@@ -8,6 +8,7 @@ class NormalizerFactory
     {
         $normalizers = array();
         $normalizers[] = new \Symfony\Component\Serializer\Normalizer\ArrayDenormalizer();
+        $normalizers[] = new \Jane\JsonSchemaRuntime\Normalizer\ReferenceNormalizer();
         $normalizers[] = new TestNormalizer();
         $normalizers[] = new TestSubObjectNormalizer();
         return $normalizers;
