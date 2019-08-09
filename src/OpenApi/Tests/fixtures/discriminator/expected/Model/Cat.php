@@ -21,7 +21,7 @@ class Cat extends Pet
      *
      * @var string
      */
-    protected $huntingSkill;
+    protected $huntingSkill = 'lazy';
     /**
      * 
      *

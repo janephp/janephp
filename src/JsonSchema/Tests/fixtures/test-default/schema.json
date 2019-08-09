@@ -1,0 +1,43 @@
+{
+    "id": "http://json-schema.org/draft-04/schema#",
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "description": "Schema for object with null values",
+    "type": "object",
+    "properties": {
+        "string": {
+            "type": "string",
+            "default": "content"
+        },
+        "bool": {
+            "type": "boolean",
+            "default": true
+        },
+        "integer": {
+            "type": "integer",
+            "default": 10
+        },
+        "float": {
+            "type": "number",
+            "default": 3.4
+        },
+        "array": {
+            "type": "array",
+            "default": ["value"]
+        },
+        "object": {
+            "type": "array",
+            "default": {
+                "key": "value"
+            }
+        },
+        "subObject": {
+            "type": "object",
+            "properties": {
+                "foo": {
+                    "type": "string",
+                    "default": "subContent"
+                }
+            }
+        }
+    }
+}

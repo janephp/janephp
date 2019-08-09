@@ -11,6 +11,7 @@ use Jane\JsonSchema\Guesser\Guess\Property;
 use Jane\JsonSchema\Schema;
 use PhpParser\Node\Name;
 use PhpParser\Node\Stmt;
+use PhpParser\Parser;
 
 class ModelGenerator implements GeneratorInterface
 {
@@ -26,11 +27,18 @@ class ModelGenerator implements GeneratorInterface
     protected $naming;
 
     /**
-     * @param Naming $naming Naming Service
+     * @var Parser PHP Parser
      */
-    public function __construct(Naming $naming)
+    protected $parser;
+
+    /**
+     * @param Naming $naming Naming Service
+     * @param Parser $parser PHP Parser
+     */
+    public function __construct(Naming $naming, Parser $parser)
     {
         $this->naming = $naming;
+        $this->parser = $parser;
     }
 
     /**
@@ -44,6 +52,14 @@ class ModelGenerator implements GeneratorInterface
     }
 
     /**
+     * {@inheritdoc}
+     */
+    protected function getParser()
+    {
+        return $this->parser;
+    }
+
+    /**
      * Generate a model given a schema.
      */
     public function generate(Schema $schema, string $className, Context $context)
@@ -52,6 +68,7 @@ class ModelGenerator implements GeneratorInterface
             $properties = [];
             $methods = [];
 
+            /** @var Property $property */
             foreach ($class->getProperties() as $property) {
                 $required = !$property->isNullable() && $context->isStrict();
                 $properties[] = $this->createProperty($property, $schema->getNamespace() . '\\Model');
