@@ -39,7 +39,7 @@ class TestFormPostBody
      *
      * @var string
      */
-    protected $testDefault;
+    protected $testDefault = 'test';
     /**
      * 
      *

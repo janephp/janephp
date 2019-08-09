@@ -21,7 +21,7 @@ class Dog extends Pet
      *
      * @var int
      */
-    protected $packSize;
+    protected $packSize = 0;
     /**
      * 
      *

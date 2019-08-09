@@ -33,7 +33,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @param string $petId The id of the pet to retrieve
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Jane\OpenApi\Tests\Expected\Model\Pet[]|\Jane\OpenApi\Tests\Expected\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return null|\Jane\OpenApi\Tests\Expected\Model\Pet|\Jane\OpenApi\Tests\Expected\Model\Error|\Psr\Http\Message\ResponseInterface
      */
     public function showPetById(string $petId, string $fetch = self::FETCH_OBJECT)
     {
