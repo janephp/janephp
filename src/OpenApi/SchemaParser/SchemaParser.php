@@ -63,7 +63,7 @@ class SchemaParser
     {
         $isVersion3 = false;
 
-        if (property_exists($openApiSpecData, 'openapi') && version_compare($openApiSpecData->openapi, '3.0.0', '>=')) {
+        if ($openApiSpecData instanceof \stdClass && property_exists($openApiSpecData, 'openapi') && version_compare($openApiSpecData->openapi, '3.0.0', '>=')) {
             $isVersion3 = true;
         }
 
