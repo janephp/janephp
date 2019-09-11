@@ -18,6 +18,7 @@
         ]
     },
     "require": {
+        "php": ">=7.2",
         "jane-php/json-schema-runtime": "^5.0",
         "php-http/client-common": "^1.4 || ^2.0",
         "php-http/httplug": "^1.0 || ^2.0",
