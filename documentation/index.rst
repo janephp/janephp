@@ -1,11 +1,12 @@
 Jane: Tools for generating PHP Code
 ===================================
 
-Jane regroups different tools that aim to generated high quality PHP
-code respecting common and advanced PSR.
+Jane is a set of libraries to generate Models & API Clients based on JsonSchema / OpenAPI specs
+by following high quality PHP code guidelines and respecting common & advanced PSR.
 
- * JsonSchema
- * OpenAPI
+ * :doc:`/JsonSchema/introduction`
+ * :doc:`/OpenAPI/introduction`
+ * :doc:`/AutoMapper/introduction`
 
 .. toctree::
    :hidden:
@@ -31,5 +32,10 @@ code respecting common and advanced PSR.
    Introduction <OpenAPI/introduction>
    Generating a Client <OpenAPI/generate>
    Using a generated client <OpenAPI/usage>
-   Asynchronous Client <OpenAPI/async>
    Extending the Client <OpenAPI/extending>
+
+.. toctree::
+   :hidden:
+   :caption: AutoMapper
+
+   Introduction <AutoMapper/introduction>
