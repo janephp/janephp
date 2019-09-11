@@ -4,6 +4,7 @@ namespace Jane\JsonSchema\Generator\Model;
 
 use Jane\JsonSchema\Generator\Naming;
 use Jane\JsonSchema\Guesser\Guess\Property;
+use Jane\JsonSchema\Guesser\Guess\Type;
 use PhpParser\Comment\Doc;
 use PhpParser\Node\Stmt;
 use PhpParser\Parser;
@@ -33,7 +34,7 @@ trait PropertyGenerator
             $default = $property->getDefault();
         }
 
-        if (null !== $default && is_scalar($default)) {
+        if ((null !== $default && is_scalar($default)) || (Type::TYPE_ARRAY === $property->getType()->getTypeHint($namespace) && \is_array($default))) {
             $propertyStmt->default = $this->getDefaultAsExpr($default)->expr;
         }
 

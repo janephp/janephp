@@ -33,7 +33,7 @@ class Test
      *
      * @var mixed[]
      */
-    protected $array;
+    protected $array = array(0 => 'value');
     /**
      * 
      *
