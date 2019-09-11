@@ -9,7 +9,6 @@ cache:
         - /cache/gitsplit
 
 php:
-    - 7.1
     - 7.3
     - 7.4snapshot
 
@@ -23,8 +22,6 @@ matrix:
     include:
         - php: 7.2
           env: COVERAGE=true TEST_COMMAND="composer test-ci"
-        - php: 7.1
-          env: COMPOSER_FLAGS="--prefer-stable --prefer-lowest"
         - php: 7.2
           env: GITSPLIT=true TEST=false
 
