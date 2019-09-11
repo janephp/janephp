@@ -20,7 +20,7 @@
         "bin/jane"
     ],
     "require": {
-        "php": ">=7.1",
+        "php": ">=7.2",
         "doctrine/inflector": "^1.0",
         "jane-php/json-schema-runtime": "^5.0",
         "nikic/php-parser": "^4.0",
@@ -30,14 +30,11 @@
         "symfony/yaml": "^3.1|^4.0"
     },
     "require-dev": {
-        "friendsofphp/php-cs-fixer": "^2.7.3",
+        "friendsofphp/php-cs-fixer": "^2.15",
         "phpunit/phpunit": "^6.0"
     },
     "suggest": {
         "friendsofphp/php-cs-fixer": "Allow to automatically fix cs on generated code for better visualisation"
-    },
-    "conflict": {
-        "friendsofphp/php-cs-fixer": "<2.7.3|>=3.0"
     },
     "config": {
         "process-timeout": 1800,

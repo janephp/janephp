@@ -11,7 +11,6 @@ Furthermore, it generates:
 
  * Endpoints files in the ``Endpoint`` namespace, each API Endpoint will generate a class containing all the logic to go from Object to Request, and from Response to Object
  * Client file in the root namespace containing all API endpoints
- * ClientAsync file in the root namespace containing all API endpoints with an Async API. (only present if using the ``'async' => true`` option)
 
 Creating the API Client
 -----------------------
