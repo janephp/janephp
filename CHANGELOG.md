@@ -1,6 +1,10 @@
 # Change Log
 
-## 5.0 - Unreleased
+## Unreleased
+
+//
+
+## 5.0 - 2019-09-11
 
 ### Added
 

@@ -55,9 +55,7 @@ Other options are available to customize the generated code:
  * ``reference``: A boolean which indicate to add the support for `JSON Reference`_ into the generated code.
  * ``date-format``: A date format to specify how the generated code should encode and decode ``\DateTime`` object to string
  * ``strict``: A boolean which indicate strict mode (true by default), not strict mode generate more permissive client
-   not respecting some standards (nullable field as an example)
- * ``async``: A boolean (false by default) which allows to generate a full asynchronous client using `Amp`_ with `Artax`_
-   client, see :doc:`/OpenAPI/async` fore more information.
+   not respecting some standards (nullable field as an example) client.
  * ``use-fixer``: A boolean which indicate if we make a first cs-fix after code generation
  * ``fixer-config-file``: A string to specify where to find the custom configuration for the cs-fixer after code generation
  * ``use-cacheable-supports-method``: A boolean which indicate if we use ``CacheableSupportsMethodInterface`` interface to improve caching performances when used with Symfony Serializer.
