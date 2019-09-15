@@ -596,9 +596,12 @@ EOD
                 }
 
                 $statements[] = new Stmt\If_(
-                    new Expr\BinaryOp\Identical(
-                        new Scalar\String_($contentType),
-                        new Expr\Variable('contentType')
+                    new Expr\BinaryOp\NotIdentical(
+                        new Expr\FuncCall(new Name('mb_strpos'), [
+                            new Arg(new Expr\Variable('contentType')),
+                            new Arg(new Scalar\String_($contentType)),
+                        ]),
+                        new Expr\ConstFetch(new Name('false'))
                     ),
                     [
                         'stmts' => [$returnStatement],
