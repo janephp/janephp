@@ -12,9 +12,9 @@ Since OpenAPI is supported in both v2 & v3 version, here is Jane version you nee
 +------------+------------+
 | OpenAPI    | Jane       |
 +============+============+
-| v3         | 5.x        |
+| v3         | ^5.0       |
 +------------+------------+
-| v2         | 4.x        |
+| v2         | ^4.0       |
 +------------+------------+
 
 Installation
