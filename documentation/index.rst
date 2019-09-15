@@ -12,9 +12,8 @@ by following high quality PHP code guidelines and respecting common & advanced P
    :hidden:
 
    Jane <self>
-   Internal <internal>
    Backwards compatibility <bc>
-
+   Internal <internal>
 
 .. toctree::
    :hidden:
