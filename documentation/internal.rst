@@ -1,10 +1,10 @@
 Internal
 ========
 
-This documentation describes how all Jane libraries work to generate the code. It is mainly oriented for people wanting
-to contribute to this library.
+This documentation describes how JsonSchema & OpenAPI Jane libraries work to generate the code.
+It is mainly oriented for people wanting to contribute to theses libraries.
 
-This library is based on 3 different steps:
+Theses libraries is based on 3 different steps:
 
 Guessing
 --------

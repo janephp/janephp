@@ -1,13 +1,26 @@
-Json Schema
+OpenAPI
 ===========
 
 Jane OpenAPI is a library to generate, in PHP, an http client and its associated models and serializers from a `OpenAPI`_
 specification: version 3.
 
+Compatibility
+-------------
+
+Since OpenAPI is supported in both v2 & v3 version, here is Jane version you need depending on your OpenAPI version:
+
++------------+------------+
+| OpenAPI    | Jane       |
++============+============+
+| v3         | ^5.0       |
++------------+------------+
+| v2         | ^4.0       |
++------------+------------+
+
 Installation
 ------------
 
-Add this library with composer as a ``dev`` dependency:
+Add this library with composer as a ``dev`` dependency (replace version depending on what you need):
 
 .. code-block:: bash
 
