@@ -39,10 +39,10 @@ class ShowPetById extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \J
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
-        if (200 === $status && 'application/json' === $contentType) {
+        if (200 === $status && mb_strpos($contentType, 'application/json') !== false) {
             return $serializer->deserialize($body, 'Jane\\OpenApi\\Tests\\Expected\\Model\\Pet', 'json');
         }
-        if ('application/json' === $contentType) {
+        if (mb_strpos($contentType, 'application/json') !== false) {
             return $serializer->deserialize($body, 'Jane\\OpenApi\\Tests\\Expected\\Model\\Error', 'json');
         }
     }

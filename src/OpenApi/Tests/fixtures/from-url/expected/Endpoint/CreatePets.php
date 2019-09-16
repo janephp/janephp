@@ -32,7 +32,7 @@ class CreatePets extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Ja
         if (201 === $status) {
             return null;
         }
-        if ('application/json' === $contentType) {
+        if (mb_strpos($contentType, 'application/json') !== false) {
             return $serializer->deserialize($body, 'Jane\\OpenApi\\Tests\\Expected\\Model\\Error', 'json');
         }
     }
