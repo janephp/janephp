@@ -45,7 +45,7 @@ trait DenormalizerGenerator
                                 'denormalize',
                                 [
                                     new Expr\Variable('data'),
-                                    new Scalar\String_(sprintf('%s\\Model\\%s', $context->getCurrentSchema()->getNamespace(), $name)),
+                                    new Scalar\String_(sprintf('%s\\Model\\%s', $context->getCurrentSchema()->getNamespace(), $this->getNaming()->getClassName($name))),
                                     new Expr\Variable('format'),
                                     new Expr\Variable('context'),
                                 ]
