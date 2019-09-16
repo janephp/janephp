@@ -4,7 +4,14 @@
 
 //
 
-## 5.0 - 2019-09-11
+## [5.0.1] - 2019-09-16
+
+### Fixed
+
+ * [JsonSchema] GH#109 Support for default value for array type
+ * [OpenAPI] GH#115 Fix Content-Type comparison in generated endpoints
+
+## [5.0.0] - 2019-09-11
 
 ### Added
 
@@ -17,7 +24,7 @@
 
  * [OpenAPI] GH#101 Remove warning when using Generate command
 
-## 4.4.0 - 2019-06-17
+## [4.4.0] - 2019-06-17
  
 ### Added
  
@@ -25,35 +32,35 @@
  * [Jane] add null type to PHPDoc for getters/setters
  * [Jane] checking if helper function exists before creating it (php-parser 3.x / 4.x compatibility)
 
-## 4.3.0 - 2019-05-31
+## [4.3.0] - 2019-05-31
 
  * [OpenAPI] Discriminator support
  * [Jane] php-parser 4.x compatibility
 
-## 4.2.0 - 2019-08-03
+## [4.2.0] - 2019-08-03
 
  * [Jane] Add support for default value in model (only scalar)
  * [OpenAPI] Add support for httplug 2.0
 
-## 4.1.0 - 2019-01-24
+## [4.1.0] - 2019-01-24
 
  * [Jane] Added `use-cacheable-supports-method` option to add CacheableSupportsMethodInterface to your Normalizers.
 
-## 4.0.4 - 2018-10-19
+## [4.0.4] - 2018-10-19
 
  * [OpenAPI] Fix items object generation for json schema and openapi #29
  * [OpenAPI] Fix bad parameter generation #41 #18
  * [Jane] Fix properties having the same name #25
  * [Jane] Fix bad normalizer on reserved keywords #16
 
-## 4.0.1 - 2018-02-22
+## [4.0.1] - 2018-02-22
 
 ### Fixed
 
  * [JsonSchema Runtime] Fix composer dependency to allow symfony 4
  * [OpenAPI] Be less restrictive to detect schema serializable
 
-## 4.0.0 - 2018-02-12
+## [4.0.0] - 2018-02-12
 
 ### Added
 
@@ -95,3 +102,15 @@ See :
  
  * https://github.com/janephp/jane/releases
  * https://github.com/janephp/openapi/releases
+
+[Unreleased]: https://github.com/janephp/janephp/compare/v5.0.1...HEAD
+[5.0.1]: https://github.com/janephp/janephp/compare/v5.0.0...v5.0.1
+[5.0.0]: https://github.com/janephp/janephp/compare/v4.4.0...v5.0.0
+[4.4.0]: https://github.com/janephp/janephp/compare/v4.3.0...v4.4.0
+[4.3.0]: https://github.com/janephp/janephp/compare/v4.2.0...v4.3.0
+[4.2.0]: https://github.com/janephp/janephp/compare/v4.1.0...v4.2.0
+[4.1.0]: https://github.com/janephp/janephp/compare/v4.0.4...v4.1.0
+[4.0.4]: https://github.com/janephp/janephp/compare/v4.0.2...v4.0.4
+[4.0.2]: https://github.com/janephp/janephp/compare/v4.0.1...v4.0.2
+[4.0.1]: https://github.com/janephp/janephp/compare/v4.0.0...v4.0.1
+[4.0.0]: https://github.com/janephp/janephp/releases/tag/v4.0.0
