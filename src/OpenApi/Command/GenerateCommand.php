@@ -90,7 +90,7 @@ class GenerateCommand extends Command
                 'directory',
             ]);
 
-            $optionsResolver->setDefault('version', 2);
+            $optionsResolver->setDefault('version', 3);
         } else {
             $optionsResolver->setRequired([
                 'mapping',
@@ -116,7 +116,7 @@ class GenerateCommand extends Command
             'use-cacheable-supports-method',
         ]);
 
-        $optionsResolver->setDefault('version', 2);
+        $optionsResolver->setDefault('version', 3);
 
         $optionsResolver->setRequired([
             'namespace',

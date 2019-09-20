@@ -12,13 +12,9 @@ class SchemaParser
     /** @var SerializerInterface */
     private $serializer;
 
-    /** @var Converter */
-    private $converter;
-
-    public function __construct(SerializerInterface $serializer, Converter $converter)
+    public function __construct(SerializerInterface $serializer)
     {
         $this->serializer = $serializer;
-        $this->converter = $converter;
     }
 
     /**
@@ -61,26 +57,17 @@ class SchemaParser
 
     private function denormalize($openApiSpecData, $openApiSpecPath): OpenApi
     {
-        $isVersion3 = false;
-
-        if ($openApiSpecData instanceof \stdClass && property_exists($openApiSpecData, 'openapi') && version_compare($openApiSpecData->openapi, '3.0.0', '>=')) {
-            $isVersion3 = true;
+        if (!($openApiSpecData instanceof \stdClass && property_exists($openApiSpecData, 'openapi') && version_compare($openApiSpecData->openapi, '3.0.0', '>='))) {
+            throw new \BadMethodCallException('Only OpenAPI v3 specifications and up are supported, use an external tool to convert your api files');
         }
 
-        $schemaClass = $isVersion3 ? OpenApi::class : \Jane\OpenApi\JsonSchema\Version2\Model\OpenApi::class;
-        $openApi = $this->serializer->denormalize(
+        return $this->serializer->denormalize(
             $openApiSpecData,
-            $schemaClass,
+            OpenApi::class,
             'json',
             [
                 'document-origin' => $openApiSpecPath,
             ]
         );
-
-        if (!$isVersion3) {
-            throw new \BadMethodCallException('Only OpenAPI v3 specifications and up are supported, use an external tool to convert your api files');
-        }
-
-        return $openApi;
     }
 }

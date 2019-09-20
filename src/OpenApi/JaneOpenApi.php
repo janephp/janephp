@@ -10,7 +10,6 @@ use Jane\OpenApi\Generator\NormalizerGenerator;
 use Jane\JsonSchema\Guesser\ChainGuesser;
 use Jane\OpenApi\Generator\GeneratorFactory;
 use Jane\OpenApi\Guesser\OpenApiSchema\GuesserFactory;
-use Jane\OpenApi\SchemaParser\Converter;
 use Jane\OpenApi\SchemaParser\SchemaParser;
 use Jane\JsonSchema\Registry;
 use Jane\JsonSchema\Schema;
@@ -129,9 +128,9 @@ class JaneOpenApi extends ChainGenerator
             ),
         ];
 
-        $normalizers = array_merge(JsonSchema\Version2\Normalizer\NormalizerFactory::create(), JsonSchema\Version3\Normalizer\NormalizerFactory::create());
+        $normalizers = JsonSchema\Version3\Normalizer\NormalizerFactory::create();
         $serializer = new Serializer($normalizers, $encoders);
-        $schemaParser = new SchemaParser($serializer, new Converter());
+        $schemaParser = new SchemaParser($serializer);
         $generators = GeneratorFactory::build($serializer, $options);
         $naming = new Naming();
         $parser = (new ParserFactory())->create(ParserFactory::PREFER_PHP7);
