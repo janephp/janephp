@@ -4,15 +4,11 @@ declare(strict_types=1);
 
 namespace Jane\OpenApiRuntime\Client;
 
-use Psr\Http\Message\ResponseInterface;
-use Symfony\Component\Serializer\SerializerInterface;
+@trigger_error(sprintf('The "%s" class is deprecated since Jane 5.1, use "%s" instead.', Psr7HttplugEndpoint::class, Psr7Endpoint::class), E_USER_DEPRECATED);
 
-interface Psr7HttplugEndpoint extends Endpoint
+/**
+ * @deprecated since Jane 5.1, use Psr7Endpoint instead.
+ */
+interface Psr7HttplugEndpoint extends Psr7Endpoint
 {
-    /**
-     * Parse and transform a PSR7 Response into a different object.
-     *
-     * Implementations may vary depending the status code of the response and the fetch mode used.
-     */
-    public function parsePSR7Response(ResponseInterface $response, SerializerInterface $serializer, string $fetchMode = Client::FETCH_OBJECT);
 }

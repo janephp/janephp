@@ -7,6 +7,11 @@ use Http\Message\MessageFactory;
 use Http\Message\StreamFactory;
 use Symfony\Component\Serializer\SerializerInterface;
 
+@trigger_error(sprintf('The "%s" class is deprecated since Jane 5.1, use "%s" instead.', Psr7HttplugClient::class, Psr18Client::class), E_USER_DEPRECATED);
+
+/**
+ * @deprecated since Jane 5.1, use Psr18Client instead.
+ */
 abstract class Psr7HttplugClient extends Client
 {
     /**
@@ -37,7 +42,7 @@ abstract class Psr7HttplugClient extends Client
         $this->streamFactory = $streamFactory;
     }
 
-    public function executePsr7Endpoint(Psr7HttplugEndpoint $endpoint, string $fetch = self::FETCH_OBJECT)
+    public function executePsr7Endpoint(Psr7Endpoint $endpoint, string $fetch = self::FETCH_OBJECT)
     {
         [$bodyHeaders, $body] = $endpoint->getBody($this->serializer, $this->streamFactory);
         $queryString = $endpoint->getQueryString();

@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Jane\OpenApiRuntime\Client;
 
-use Http\Message\StreamFactory;
 use Symfony\Component\Serializer\SerializerInterface;
 
 interface Endpoint
@@ -13,9 +12,9 @@ interface Endpoint
      * Get body for an endpoint.
      *
      * Return value consist of an array where the first item will be a list of headers to add on the request (like the Content Type)
-     * And the second value consist of the body object
+     * And the second value consist of the body object.
      */
-    public function getBody(SerializerInterface $serializer, StreamFactory $streamFactory = null): array;
+    public function getBody(SerializerInterface $serializer, $streamFactory = null): array;
 
     /**
      * Get the query string of an endpoint without the starting ? (like foo=foo&bar=bar).

@@ -2,7 +2,9 @@
 
 ## Unreleased
 
-//
+### Added
+
+* [OpenAPI] GH#120 Support for PSR18 client generation.
 
 ## [5.0.1] - 2019-09-16
 

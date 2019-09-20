@@ -2,7 +2,7 @@
 
 namespace Jane\OpenApi\Tests\Expected\Endpoint;
 
-class TestObjectListBodyParameter extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7HttplugEndpoint
+class TestObjectListBodyParameter extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7Endpoint
 {
     /**
      * 
@@ -13,7 +13,7 @@ class TestObjectListBodyParameter extends \Jane\OpenApiRuntime\Client\BaseEndpoi
     {
         $this->body = $requestBody;
     }
-    use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
+    use \Jane\OpenApiRuntime\Client\Psr7EndpointTrait;
     public function getMethod() : string
     {
         return 'POST';
@@ -22,7 +22,7 @@ class TestObjectListBodyParameter extends \Jane\OpenApiRuntime\Client\BaseEndpoi
     {
         return '/test-object-list';
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null) : array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
         if (is_array($this->body) and isset($this->body[0]) and $this->body[0] instanceof \Jane\OpenApi\Tests\Expected\Model\Schema) {
             return array(array('Content-Type' => array('application/json')), $serializer->serialize($this->body, 'json'));

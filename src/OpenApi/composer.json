@@ -1,6 +1,6 @@
 {
     "name": "jane-php/open-api",
-    "description": "Generate a PHP Client API (PSR7 compatible) given a OpenApi (Swagger) specification",
+    "description": "Generate a PHP Client API (PSR7/PSR18 compatible) given a OpenApi (Swagger) specification",
     "type": "library",
     "keywords": ["jane", "swagger", "openapi"],
     "license": "MIT",

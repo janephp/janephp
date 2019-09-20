@@ -6,6 +6,7 @@ use Jane\OpenApi\Generator\Parameter\NonBodyParameterGenerator;
 use Jane\OpenApi\Generator\RequestBodyContent\DefaultBodyContentGenerator;
 use Jane\OpenApi\Generator\RequestBodyContent\FormBodyContentGenerator;
 use Jane\OpenApi\Generator\RequestBodyContent\JsonBodyContentGenerator;
+use Jane\OpenApi\JaneOpenApi;
 use Jane\OpenApi\Naming\ChainOperationNaming;
 use Jane\OpenApi\Naming\ExceptionNaming;
 use Jane\OpenApi\Naming\OperationUrlNaming;
@@ -33,12 +34,14 @@ class GeneratorFactory
         $requestBodyGenerator->addRequestBodyGenerator(['application/json'], new JsonBodyContentGenerator($serializer));
         $requestBodyGenerator->addRequestBodyGenerator(['application/x-www-form-urlencoded', 'multipart/form-data'], new FormBodyContentGenerator($serializer));
 
-        $psrHttplugEndpointGenerator = new Psr7HttplugEndpointGenerator($operationNaming, $nonBodyParameter, $serializer, $exceptionGenerator, $requestBodyGenerator);
-        $psrHttplugOperationGenerator = new Psr7HttplugOperationGenerator($psrHttplugEndpointGenerator);
+        $psr7EndpointGenerator = new Psr7EndpointGenerator($operationNaming, $nonBodyParameter, $serializer, $exceptionGenerator, $requestBodyGenerator);
+        $psr7OperationGenerator = new Psr7OperationGenerator($psr7EndpointGenerator);
         $clientAsyncGenerator = null;
 
         $generators = [
-            new Psr7HttplugClientGenerator($operationManager, $psrHttplugOperationGenerator, $operationNaming),
+            $options['client'] === JaneOpenApi::CLIENT_HTTPLUG
+                ? new HttplugClientGenerator($operationManager, $psr7OperationGenerator, $operationNaming)
+                : new Psr18ClientGenerator($operationManager, $psr7OperationGenerator, $operationNaming),
         ];
 
         return $generators;

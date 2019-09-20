@@ -3,7 +3,6 @@
 namespace Jane\OpenApi\Generator;
 
 use Doctrine\Common\Inflector\Inflector;
-use Http\Message\StreamFactory;
 use Jane\JsonSchema\Generator\Context\Context;
 use Jane\JsonSchema\Generator\File;
 use Jane\JsonSchemaRuntime\Reference;
@@ -367,7 +366,7 @@ EOD
             'type' => Stmt\Class_::MODIFIER_PUBLIC,
             'params' => [
                 new Param(new Expr\Variable('serializer'), null, new Name\FullyQualified(SerializerInterface::class)),
-                new Param(new Expr\Variable('streamFactory'), new Expr\ConstFetch(new Name('null')), new Name\FullyQualified(StreamFactory::class)),
+                new Param(new Expr\Variable('streamFactory'), new Expr\ConstFetch(new Name('null'))),
             ],
             'returnType' => new Name('array'),
             'stmts' => $this->requestBodyGenerator->getSerializeStatements($operation->getOperation()->getRequestBody(), $operation->getReference() . '/requestBody', $context),

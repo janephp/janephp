@@ -14,8 +14,6 @@
         "league/uri": "^4.2 || ^5.3",
         "nikic/php-parser": "^4.0",
         "php-http/client-common": "^1.4 || ^2.0",
-        "php-http/httplug": "^1.0 || ^2.0",
-        "php-http/message-factory": "^1.0.2",
         "php-http/multipart-stream-builder": "^1.0",
         "php-jsonpointer/php-jsonpointer": "^3.0",
         "symfony/console": "^3.1 || ^4.0",
@@ -38,8 +36,12 @@
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^2.15",
         "localheinz/composer-normalize": "~0.8.0",
+        "php-http/httplug": "^1.0 || ^2.0",
+        "php-http/message-factory": "^1.0.2",
         "phpbench/phpbench": "@dev",
         "phpunit/phpunit": "^6.0",
+        "psr/http-client": "^1.0",
+        "psr/http-factory": "^1.0",
         "symfony/framework-bundle": "^4.2",
         "symfony/phpunit-bridge": "^4.1"
     },
