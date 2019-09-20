@@ -7,7 +7,7 @@ specification: version 3.
 Compatibility
 -------------
 
-Since OpenAPI is supported in both v2 & v3 version, here is Jane version you need depending on your OpenAPI version:
+Jane supports OpenAPI v2 & v3. Depending on your OpenAPI version, you should use following Jane version:
 
 +------------+------------+
 | OpenAPI    | Jane       |
