@@ -13,137 +13,137 @@ namespace Jane\JsonSchema\Model;
 class JsonSchema
 {
     /**
-     * @var string
+     * @var string|null
      */
     protected $id;
     /**
-     * @var string
+     * @var string|null
      */
     protected $dollarSchema;
     /**
-     * @var string
+     * @var string|null
      */
     protected $title;
     /**
-     * @var string
+     * @var string|null
      */
     protected $description;
     /**
-     * @var mixed
+     * @var mixed|null
      */
     protected $default;
     /**
-     * @var float
+     * @var float|null
      */
     protected $multipleOf;
     /**
-     * @var float
+     * @var float|null
      */
     protected $maximum;
     /**
-     * @var bool
+     * @var bool|null
      */
     protected $exclusiveMaximum = false;
     /**
-     * @var float
+     * @var float|null
      */
     protected $minimum;
     /**
-     * @var bool
+     * @var bool|null
      */
     protected $exclusiveMinimum = false;
     /**
-     * @var int
+     * @var int|null
      */
     protected $maxLength;
     /**
-     * @var int
+     * @var int|null
      */
     protected $minLength;
     /**
-     * @var string
+     * @var string|null
      */
     protected $pattern;
     /**
-     * @var bool|JsonSchema
+     * @var bool|JsonSchema|null
      */
     protected $additionalItems;
     /**
-     * @var JsonSchema|JsonSchema[]
+     * @var JsonSchema|JsonSchema[]|null
      */
     protected $items;
     /**
-     * @var int
+     * @var int|null
      */
     protected $maxItems;
     /**
-     * @var int
+     * @var int|null
      */
     protected $minItems;
     /**
-     * @var bool
+     * @var bool|null
      */
     protected $uniqueItems = false;
     /**
-     * @var int
+     * @var int|null
      */
     protected $maxProperties;
     /**
-     * @var int
+     * @var int|null
      */
     protected $minProperties;
     /**
-     * @var string[]
+     * @var string[]|null
      */
     protected $required;
     /**
-     * @var bool|JsonSchema
+     * @var bool|JsonSchema|null
      */
     protected $additionalProperties;
     /**
-     * @var JsonSchema[]
+     * @var JsonSchema[]|null
      */
     protected $definitions;
     /**
-     * @var JsonSchema[]
+     * @var JsonSchema[]|null
      */
     protected $properties;
     /**
-     * @var JsonSchema[]
+     * @var JsonSchema[]|null
      */
     protected $patternProperties;
     /**
-     * @var JsonSchema[]|string[][]
+     * @var JsonSchema[]|string[][]|null
      */
     protected $dependencies;
     /**
-     * @var mixed[]
+     * @var mixed[]|null
      */
     protected $enum;
     /**
-     * @var mixed|mixed[]
+     * @var mixed|mixed[]|null
      */
     protected $type;
     /**
-     * @var string
+     * @var string|null
      */
     protected $format;
     /**
-     * @var JsonSchema[]
+     * @var JsonSchema[]|null
      */
     protected $allOf;
     /**
-     * @var JsonSchema[]
+     * @var JsonSchema[]|null
      */
     protected $anyOf;
     /**
-     * @var JsonSchema[]
+     * @var JsonSchema[]|null
      */
     protected $oneOf;
     /**
      * Core schema meta-schema.
      *
-     * @var JsonSchema
+     * @var JsonSchema|null
      */
     protected $not;
 

@@ -19,13 +19,13 @@ class Test
     /**
      * 
      *
-     * @var string[]
+     * @var string[]|null
      */
     protected $array;
     /**
      * 
      *
-     * @var string[]
+     * @var string[]|null
      */
     protected $object;
     /**

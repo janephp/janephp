@@ -25,7 +25,7 @@ trait PropertyGenerator
      */
     abstract protected function getParser();
 
-    protected function createProperty(Property $property, $namespace, $default = null): Stmt
+    protected function createProperty(Property $property, $namespace, $default = null, bool $required = false): Stmt
     {
         $propertyName = $property->getPhpName();
         $propertyStmt = new Stmt\PropertyProperty($propertyName);
@@ -41,12 +41,17 @@ trait PropertyGenerator
         return new Stmt\Property(Stmt\Class_::MODIFIER_PROTECTED, [
             $propertyStmt,
         ], [
-            'comments' => [$this->createPropertyDoc($property, $namespace)],
+            'comments' => [$this->createPropertyDoc($property, $namespace, $required)],
         ]);
     }
 
-    protected function createPropertyDoc(Property $property, $namespace): Doc
+    protected function createPropertyDoc(Property $property, $namespace, bool $required): Doc
     {
+        $docTypeHint = $property->getType()->getDocTypeHint($namespace);
+        if (!$required && strpos($docTypeHint, 'null') === false) {
+            $docTypeHint .= '|null';
+        }
+
         return new Doc(sprintf(<<<EOD
 /**
  * %s
@@ -54,7 +59,7 @@ trait PropertyGenerator
  * @var %s
  */
 EOD
-        , $property->getDescription(), $property->getType()->getDocTypeHint($namespace)));
+        , $property->getDescription(), $docTypeHint));
     }
 
     private function getDefaultAsExpr($value): Stmt\Expression

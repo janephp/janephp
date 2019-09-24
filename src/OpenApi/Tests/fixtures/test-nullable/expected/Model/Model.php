@@ -7,7 +7,7 @@ class Model
     /**
      * 
      *
-     * @var string
+     * @var string|null
      */
     protected $foo;
     /**

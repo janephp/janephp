@@ -7,7 +7,7 @@ class TestSubObject
     /**
      * 
      *
-     * @var string
+     * @var string|null
      */
     protected $foo = 'subContent';
     /**
