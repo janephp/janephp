@@ -51,6 +51,7 @@ I choosed to represent `CatFacts API`_ within this example:
                         description: 'The `Fact` itself'
                     updatedAt:
                         type: string
+                        format: date-time
                         description: 'Date in which `Fact` was last modified'
                     sendDate:
                         type: string
@@ -84,6 +85,7 @@ We need to configure Jane before generation. So we create a ``.jane-openapi`` fi
         'openapi-file' => __DIR__ . '/schema.yaml',
         'namespace' => 'CatFacts\Api',
         'directory' => __DIR__ . '/generated/',
+        'date-format' => \DateTimeInterface::RFC3339_EXTENDED, // date-time format use by CatFact API
     ];
 
 It will contains a reference to your main schema file (that file can be linked to other files if you want), the PHP
@@ -165,15 +167,22 @@ And this will give us a ``Fact`` object as following:
 
     object(CatFacts\Api\Model\Fact)#29 (10) {
       ["id":protected]=>
-      string(24) "591f98783b90f7150a19c1cf"
+      string(24) "591f98108dec2e14e3c20b0f"
       ["v":protected]=>
       int(0)
       ["user":protected]=>
       NULL
       ["text":protected]=>
-      string(140) "Contrary to popular belief, the cat is a social animal. A pet cat will respond and answer to speech, and seems to enjoy human companionship."
+      string(63) "Cats have been domesticated for half as long as dogs have been."
       ["updatedAt":protected]=>
-      string(24) "2019-08-24T20:20:02.145Z"
+      object(DateTime)#28 (3) {
+        ["date"]=>
+        string(26) "2019-08-24 20:20:02.145000"
+        ["timezone_type"]=>
+        int(2)
+        ["timezone"]=>
+        string(1) "Z"
+      }
       ["sendDate":protected]=>
       NULL
       ["deleted":protected]=>
