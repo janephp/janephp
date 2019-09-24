@@ -21,7 +21,11 @@
         "symfony/property-access": "^3.1 || ^4.0",
         "symfony/property-info": "^3.4 || ^4.0",
         "symfony/serializer": "^4.2",
-        "symfony/yaml": "^3.1 || ^4.0"
+        "symfony/yaml": "^3.1 || ^4.0",
+        "php-http/httplug": "^1.0 || ^2.0",
+        "php-http/message-factory": "^1.0.2",
+        "psr/http-client": "^1.0",
+        "psr/http-factory": "^1.0"
     },
     "replace": {
         "jane-php/automapper": "self.version",
@@ -36,12 +40,8 @@
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^2.15",
         "localheinz/composer-normalize": "~0.8.0",
-        "php-http/httplug": "^1.0 || ^2.0",
-        "php-http/message-factory": "^1.0.2",
         "phpbench/phpbench": "@dev",
         "phpunit/phpunit": "^6.0",
-        "psr/http-client": "^1.0",
-        "psr/http-factory": "^1.0",
         "symfony/framework-bundle": "^4.2",
         "symfony/phpunit-bridge": "^4.1"
     },
