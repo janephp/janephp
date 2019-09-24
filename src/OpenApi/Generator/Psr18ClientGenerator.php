@@ -5,13 +5,11 @@ namespace Jane\OpenApi\Generator;
 use Http\Client\Common\Plugin\AddHostPlugin;
 use Http\Client\Common\Plugin\AddPathPlugin;
 use Http\Client\Common\PluginClient;
-use Http\Discovery\HttpClientDiscovery;
-use Http\Discovery\MessageFactoryDiscovery;
-use Http\Discovery\StreamFactoryDiscovery;
-use Http\Discovery\UriFactoryDiscovery;
+use Http\Discovery\Psr17FactoryDiscovery;
+use Http\Discovery\Psr18ClientDiscovery;
 use Jane\JsonSchema\Generator\Context\Context;
 use Jane\OpenApi\JsonSchema\Version3\Model\OpenApi;
-use Jane\OpenApiRuntime\Client\Psr7HttplugClient;
+use Jane\OpenApiRuntime\Client\Psr18Client;
 use PhpParser\Node;
 use PhpParser\Node\Name;
 use PhpParser\Node\Expr;
@@ -21,7 +19,7 @@ use Symfony\Component\Serializer\Encoder\JsonEncode;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Serializer;
 
-class Psr7HttplugClientGenerator extends ClientGenerator
+class Psr18ClientGenerator extends ClientGenerator
 {
     protected function getSuffix(): string
     {
@@ -31,7 +29,7 @@ class Psr7HttplugClientGenerator extends ClientGenerator
     protected function createResourceClass(string $name): Stmt\Class_
     {
         return new Stmt\Class_($name, [
-            'extends' => new Node\Name\FullyQualified(Psr7HttplugClient::class),
+            'extends' => new Node\Name\FullyQualified(Psr18Client::class),
         ]);
     }
 
@@ -51,17 +49,17 @@ class Psr7HttplugClientGenerator extends ClientGenerator
                         ]
                     ),
                     new Stmt\Expression(new Expr\Assign(
-                        new Expr\Variable('messageFactory'),
+                        new Expr\Variable('requestFactory'),
                         new Expr\StaticCall(
-                            new Name\FullyQualified(MessageFactoryDiscovery::class),
-                            'find'
+                            new Name\FullyQualified(Psr17FactoryDiscovery::class),
+                            'findRequestFactory'
                         )
                     )),
                     new Stmt\Expression(new Expr\Assign(
                         new Expr\Variable('streamFactory'),
                         new Expr\StaticCall(
-                            new Name\FullyQualified(StreamFactoryDiscovery::class),
-                            'find'
+                            new Name\FullyQualified(Psr17FactoryDiscovery::class),
+                            'findStreamFactory'
                         )
                     )),
                     new Stmt\Expression(new Expr\Assign(
@@ -92,7 +90,7 @@ class Psr7HttplugClientGenerator extends ClientGenerator
                         new Expr\New_(
                             new Name('static'), [
                                 new Node\Arg(new Expr\Variable('httpClient')),
-                                new Node\Arg(new Expr\Variable('messageFactory')),
+                                new Node\Arg(new Expr\Variable('requestFactory')),
                                 new Node\Arg(new Expr\Variable('serializer')),
                                 new Node\Arg(new Expr\Variable('streamFactory')),
                             ]
@@ -132,7 +130,7 @@ class Psr7HttplugClientGenerator extends ClientGenerator
         $httpClientAssign = new Stmt\Expression(new Expr\Assign(
             new Expr\Variable('httpClient'),
             new Expr\StaticCall(
-                new Name\FullyQualified(HttpClientDiscovery::class),
+                new Name\FullyQualified(Psr18ClientDiscovery::class),
                 'find'
             )
         ));
@@ -151,8 +149,8 @@ class Psr7HttplugClientGenerator extends ClientGenerator
                 new Expr\Variable('uri'),
                 new Expr\MethodCall(
                     new Expr\StaticCall(
-                        new Name\FullyQualified(UriFactoryDiscovery::class),
-                        'find'
+                        new Name\FullyQualified(Psr17FactoryDiscovery::class),
+                        'findUrlFactory'
                     ),
                     'createUri',
                     [

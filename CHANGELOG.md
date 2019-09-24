@@ -2,7 +2,15 @@
 
 ## Unreleased
 
-//
+### Added
+
+* [OpenAPI] GH#120 Support for PSR18 client generation.
+
+### Deprecated
+
+* [OpenAPI] GH#120 Jane\OpenApiRuntime\Client\Psr7HttplugClient deprecated, use Jane\OpenApiRuntime\Client\Psr18Client instead.
+* [OpenAPI] GH#120 Jane\OpenApiRuntime\Client\Psr7HttplugEndpoint deprecated, use Jane\OpenApiRuntime\Client\Psr7Endpoint instead.
+* [OpenAPI] GH#120 Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait deprecated, use Jane\OpenApiRuntime\Client\Psr7EndpointTrait instead.
 
 ## [5.0.1] - 2019-09-16
 
