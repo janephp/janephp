@@ -1,0 +1,24 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "version": "",
+        "title": ""
+    },
+    "paths": {},
+    "components": {
+        "schemas": {
+            "Model": {
+                "type": "object",
+                "properties": {
+                    "foo": {
+                        "nullable": true,
+                        "type": "string"
+                    },
+                    "bar": {
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    }
+}

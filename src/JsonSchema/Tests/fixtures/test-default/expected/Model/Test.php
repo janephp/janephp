@@ -7,43 +7,43 @@ class Test
     /**
      * 
      *
-     * @var string
+     * @var string|null
      */
     protected $string = 'content';
     /**
      * 
      *
-     * @var bool
+     * @var bool|null
      */
     protected $bool = true;
     /**
      * 
      *
-     * @var int
+     * @var int|null
      */
     protected $integer = 10;
     /**
      * 
      *
-     * @var float
+     * @var float|null
      */
     protected $float = 3.4;
     /**
      * 
      *
-     * @var mixed[]
+     * @var mixed[]|null
      */
     protected $array = array(0 => 'value');
     /**
      * 
      *
-     * @var mixed[]
+     * @var mixed[]|null
      */
     protected $object;
     /**
      * 
      *
-     * @var TestSubObject
+     * @var TestSubObject|null
      */
     protected $subObject;
     /**
