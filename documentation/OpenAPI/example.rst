@@ -4,7 +4,7 @@ Example
 In this section, we will see a working example of OpenApi v3 client onto a simple API that gives facts about cats and comment it.
 
 .. warning::
-    We suggest you to read :doc:`/OpenAPI/generate` and :doc:`/OpenAPI/usage` first to understand more easily.
+    We suggest you to read :doc:`/OpenAPI/generate` and :doc:`/OpenAPI/usage` first to understand this page more easily.
 
 You can find the fully working example on the following link: https://github.com/janephp/openapi3-example
 
@@ -13,7 +13,7 @@ OpenAPI schema
 
 First, we need a valid OpenAPI schema. You can use tool such as Stoplight_ or other OpenApi designer.
 
-I choosed to represent `CatFacts API`_ within this example. So here is the quick schema I made
+I choosed to represent `CatFacts API`_ within this example:
 
 .. code-block:: yaml
 
@@ -68,7 +68,7 @@ I choosed to represent `CatFacts API`_ within this example. So here is the quick
                         type: string
                         description: 'Type of animal the `Fact` describes (e.g. ‘cat’, ‘dog’, ‘horse’)'
 
-This will allow us to request CatFact API and get a random Fact !
+This schema describe the endpoint and the model of the CatFact API.
 
 .. _Stoplight: https://stoplight.io/studio/
 .. _CatFacts API: https://alexwohlbruck.github.io/cat-facts/
@@ -105,7 +105,7 @@ It will find any ``.jane-openapi`` file and use it as configuration. If your fil
 Creating a client
 -----------------
 
-Then you need a Client to bridge between Jane and you application. Jane use HTTPlug_ to make this bridge easier
+Then you need a Client to bridge between Jane and your application. Jane use HTTPlug_ to make this bridge easier
 which allow us to have any middleware we need. Here is a ClientFactory example::
 
     <?php
@@ -142,7 +142,7 @@ which allow us to have any middleware we need. Here is a ClientFactory example::
     }
 
 In this example we can see that we give the HTTPlug the URL of the API and we decorate the client with error & host plugins.
-With both theses, we can have a Client by calling this class ...
+With both theses, we can have a Client by calling this Factory.
 
 .. _HTTPlug: http://httplug.io/
 
