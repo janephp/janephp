@@ -31,6 +31,7 @@ by following high quality PHP code guidelines and respecting common & advanced P
    Introduction <OpenAPI/introduction>
    Generating a Client <OpenAPI/generate>
    Using a generated client <OpenAPI/usage>
+   Example <OpenAPI/example.rst>
    Extending the Client <OpenAPI/extending>
 
 .. toctree::

@@ -21,7 +21,9 @@ div.highlight pre span.nv {
     color: #6ab0de
 }
 
-div.highlight pre span.k, div.highlight pre span.o {
+div.highlight pre span.k,
+div.highlight pre span.o,
+div.highlight pre span.nt {
     color: #ff8400;
 }
 
