@@ -19,6 +19,11 @@ class SchemaGuesser extends ObjectGuesser
         return ($object instanceof Schema) && ('object' === $object->getType() || null === $object->getType()) && null !== $object->getProperties();
     }
 
+    protected function isPropertyNullable($property): bool
+    {
+        return parent::isPropertyNullable($property) || ($property->getNullable() ?? false);
+    }
+
     /**
      * @param Schema $object
      */
