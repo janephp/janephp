@@ -97,7 +97,7 @@ namespace you want for generated classes and the directory you want to use.
 .. warning::
 
     Client argument is recommended, if you don't fill it, it will generated a HTTPlug Client which is not what we are
-    showing here and deprecated since Jane v5.1.0
+    showing here and HTTPlug Client generation is deprecated since Jane v5.1.0
 
 Jane generation
 ---------------

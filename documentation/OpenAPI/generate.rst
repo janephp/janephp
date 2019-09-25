@@ -39,7 +39,7 @@ This example shows the minimum configuration required to generate a client:
    It can also be a ``yaml`` file.
  * ``namespace``: Root namespace of all of your generated code
  * ``directory``: Directory where the code will be generated
- * ``client``: Client to generate (``httplug`` or ``psr18``, ``httplug`` is deprecated and will be removed at Jane v6.0.0)
+ * ``client``: Client to generate (``httplug`` or ``psr18``, ``httplug`` is deprecated and will be removed in Jane v6.0.0)
 
 Given this configuration, you will need to add the following configuration to composer, in order to load the generated files::
 
