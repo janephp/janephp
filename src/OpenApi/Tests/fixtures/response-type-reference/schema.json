@@ -1,0 +1,41 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "version": "",
+        "title": ""
+    },
+    "paths": {
+        "/foo": {
+            "get": {
+                "operationId": "foo",
+                "responses": {
+                    "200": {
+                        "description": "Default response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "id": {
+                                            "type": "integer"
+                                        },
+                                        "bar": {
+                                            "$ref": "#/components/schemas/Bar"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Bar": {
+                "type": "string"
+            }
+        }
+    }
+}
