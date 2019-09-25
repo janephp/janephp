@@ -21,23 +21,27 @@ Generated ``Client`` class have a static method ``create`` which act like a fact
 
     $apiClient = Vendor\Library\Generated\Client::create();
 
-Optionally, you can pass a custom ``HttpClient`` respecting the `HTTPlug`_ standard. If you which to use the constructor
+Optionally, you can pass a custom ``HttpClient`` respecting the `PSR18`_ Client standard. If you which to use the constructor
 to reuse existing instances, sections below describe the 4 services used by it and how to create them.
 
 Creating the Http Client
 ------------------------
 
-The main dependency on the ``Client`` class is an Http Client respecting the `HTTPlug`_ standard. We highly recommend
-you to read the docs on `HTTPlug`_. This HTTP Client MAY redirect on a 3XX responses (depend on your API), but it MUST
+The main dependency on the ``Client`` class is an Http Client respecting the `PSR18`_ Client standard. We highly recommend
+you to read the `PSR18`_ specification. This HTTP Client MAY redirect on a 3XX responses (depend on your API), but it MUST
 not throw errors on 4XX and 5XX responses, as this can be handle by the generated code directly.
 
-Recommended way of creating an HTTP Client is by using the `discovery`_ library of HTTPlug to create the client::
+Recommended way of creating an HTTP Client is by using the `discovery`_ library to create the client::
 
     <?php
 
-    $httpClient = Http\Discovery\HttpClientDiscovery::find();
+    $httpClient = Http\Discovery\Psr18ClientDiscovery::find();
 
 This allows user of the API to use any client respecting the standard.
+
+.. hint::
+
+    You can use clients such as Symfony `HttpClient`_ as `PSR18`_ client.
 
 Creating the Serializer
 -----------------------
@@ -55,30 +59,29 @@ Like in :doc:`/JsonSchema/usage`, creating a serializer is done by using the ``N
     $serializer = new Symfony\Component\Serializer\Serializer($normalizers, $encoders);
 
 
-Creating the Message Factory
+Creating the Request Factory
 ----------------------------
 
-The generated endpoints will also need a service to transform parameters and object of the endpoint to a `PSR7 Request`_
-This is done by using the `Message Factory Interface`_ from `HTTPlug`_.
+The generated endpoints will also need a factory to transform parameters and object of the endpoint to a `PSR7 Request`_.
 
-Like the HTTP Client, it is recommended to use the `discovery`_ library of HTTPlug to create it::
+Like the HTTP Client, it is recommended to use the `discovery`_ library to create it::
 
     <?php
 
-    $messageFactory = Http\Discovery\MessageFactoryDiscovery::find();
+    $requestFactory = Http\Discovery\Psr17FactoryDiscovery::findRequestFactory();
 
 
 Creating the Stream Factory
 ---------------------------
 
 The generated endpoints will also need a service to transform body parameters like ``resource`` or ``string`` into
-`PSR7 Stream`_ when uploading file (multipart form). This is done by using the `Stream Factory Interface`_ from `HTTPlug`_.
+`PSR7 Stream`_ when uploading file (multipart form).
 
-Like the HTTP Client and Message Factory, it is recommended to use the `discovery`_ library of HTTPlug to create it::
+Like the HTTP Client and Request Factory, it is recommended to use the `discovery`_ library to create it::
 
     <?php
 
-    $streamFactory = Http\Discovery\StreamFactoryDiscovery::find();
+    $streamFactory = Http\Discovery\Psr17FactoryDiscovery::findStreamFactory();
 
 Using the API Client
 --------------------
@@ -112,7 +115,7 @@ Jane OpenAPI will never generate the complete url with the host and the base pat
 do a request on the specified path.
 
 If host and/or base path is present in the specification it is added, via the ``PluginClient``, ``AddHostPlugin`` and
-``AddPathPlugin`` thanks to `HTTPlug plugin system`_ when using the static ``create``.
+``AddPathPlugin`` thanks to `php-http plugin system`_ when using the static ``create``.
 
 This allow you to configure different host and base path given a specific environment / server, which may defer when in test,
 preprod and production environment.
@@ -120,12 +123,12 @@ preprod and production environment.
 Jane OpenAPI will always try to use ``https`` if present in the scheme (or if there is no scheme). It will use the first scheme
 present if ``https`` is not present.
 
-.. _HTTPlug: http://docs.php-http.org/en/latest/index.html
+
+.. _PSR18: https://www.php-fig.org/psr/psr-18/
+.. _HttpClient: https://symfony.com/doc/current/components/http_client.html#psr-18
 .. _discovery: http://docs.php-http.org/en/latest/discovery.html
 .. _PSR7 Request: http://www.php-fig.org/psr/psr-7/#32-psrhttpmessagerequestinterface
 .. _PSR7 Response: http://www.php-fig.org/psr/psr-7/#33-psrhttpmessageresponseinterface
-.. _Message Factory Interface: http://docs.php-http.org/en/latest/message/message-factory.html
+.. _PSR7 Stream: https://www.php-fig.org/psr/psr-7/#34-psrhttpmessagestreaminterface
 .. _PHPDoc: https://www.phpdoc.org/
-.. _HTTPlug plugin system: http://docs.php-http.org/en/latest/plugins/introduction.html
-.. _PSR7 Stream:
-.. _Stream Factory Interface:
+.. _php-http plugin system: http://docs.php-http.org/en/latest/plugins/introduction.html

@@ -30,6 +30,7 @@ The configuration file consists of a simple PHP script returning an array::
         'openapi-file' => __DIR__ . '/openapi.json',
         'namespace' => 'Vendor\Library\Api',
         'directory' => __DIR__ . '/generated',
+        'client' => 'psr18',
     ];
 
 This example shows the minimum configuration required to generate a client:
@@ -38,6 +39,7 @@ This example shows the minimum configuration required to generate a client:
    It can also be a ``yaml`` file.
  * ``namespace``: Root namespace of all of your generated code
  * ``directory``: Directory where the code will be generated
+ * ``client``: Client to generate (``httplug`` or ``psr18``, ``httplug`` is deprecated and will be removed at Jane v6.0.0)
 
 Given this configuration, you will need to add the following configuration to composer, in order to load the generated files::
 
@@ -61,5 +63,3 @@ Other options are available to customize the generated code:
  * ``use-cacheable-supports-method``: A boolean which indicate if we use ``CacheableSupportsMethodInterface`` interface to improve caching performances when used with Symfony Serializer.
 
 .. _`JSON Reference`: https://tools.ietf.org/id/draft-pbryan-zyp-json-ref-03.html
-.. _Amp: https://amphp.org/
-.. _Artax: https://amphp.org/artax/
