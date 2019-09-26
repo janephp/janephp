@@ -2,9 +2,9 @@
 
 namespace Jane\OpenApi\Tests\Expected\Endpoint;
 
-class GetThings extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7HttplugEndpoint
+class GetThings extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7Endpoint
 {
-    use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
+    use \Jane\OpenApiRuntime\Client\Psr7EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';
@@ -13,7 +13,7 @@ class GetThings extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jan
     {
         return '/things';
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null) : array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
         return array(array(), null);
     }

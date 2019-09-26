@@ -21,7 +21,7 @@ class TestPostWithPathParameters extends \Jane\OpenApiRuntime\Client\BaseEndpoin
         $this->queryParameters = $queryParameters;
         $this->headerParameters = $headerParameters;
     }
-    use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
+    use \Jane\OpenApiRuntime\Client\Psr7EndpointTrait;
     public function getMethod() : string
     {
         return 'POST';

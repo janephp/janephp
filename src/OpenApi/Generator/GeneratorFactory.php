@@ -10,6 +10,7 @@ use Jane\OpenApi\Generator\Parameter\BodyParameterGenerator;
 use Jane\OpenApi\Naming\OperationIdNaming;
 use Jane\OpenApi\Operation\OperationManager;
 use PhpParser\ParserFactory;
+use Jane\OpenApi\JaneOpenApi;
 
 class GeneratorFactory
 {
@@ -26,12 +27,16 @@ class GeneratorFactory
             new OperationIdNaming(),
             new OperationUrlNaming(),
         ]);
-        $psrHttplugEndpointGenerator = new Psr7HttplugEndpointGenerator($operationNaming, $bodyParameter, $nonBodyParameter, $serializer, $exceptionGenerator);
-        $psrHttplugOperationGenerator = new Psr7HttplugOperationGenerator($psrHttplugEndpointGenerator);
+
+        $psr7EndpointGenerator = new Psr7EndpointGenerator($operationNaming, $bodyParameter, $nonBodyParameter, $serializer, $exceptionGenerator);
+        $psr7OperationGenerator = new Psr7OperationGenerator($psr7EndpointGenerator);
+
         $clientAsyncGenerator = null;
 
         $generators = [
-            new Psr7HttplugClientGenerator($operationManager, $psrHttplugOperationGenerator, $operationNaming),
+            $options['client'] === JaneOpenApi::CLIENT_HTTPLUG
+                ? new HttplugClientGenerator($operationManager, $psr7OperationGenerator, $operationNaming)
+                : new Psr18ClientGenerator($operationManager, $psr7OperationGenerator, $operationNaming),
         ];
 
         if ($options['async']) {

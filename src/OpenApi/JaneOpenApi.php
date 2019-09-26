@@ -28,6 +28,8 @@ use Symfony\Component\Yaml\Parser;
 class JaneOpenApi extends ChainGenerator
 {
     public const VERSION = '4.x-dev';
+    public const CLIENT_PSR18 = 'psr18';
+    public const CLIENT_HTTPLUG = 'httplug';
 
     private $schemaParser;
 
@@ -118,6 +120,10 @@ class JaneOpenApi extends ChainGenerator
 
     public static function build(array $options = [])
     {
+        if ($options['client'] === self::CLIENT_HTTPLUG) {
+            @trigger_error(sprintf('Generating "%s" client is deprecated, use the "%s" in the "client" option', self::CLIENT_HTTPLUG, self::CLIENT_PSR18));
+        }
+
         $encoders = [
             new JsonEncoder(
                 new JsonEncode(),

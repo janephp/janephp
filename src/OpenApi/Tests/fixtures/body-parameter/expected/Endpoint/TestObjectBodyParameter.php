@@ -2,7 +2,7 @@
 
 namespace Jane\OpenApi\Tests\Expected\Endpoint;
 
-class TestObjectBodyParameter extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7HttplugEndpoint
+class TestObjectBodyParameter extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7Endpoint
 {
     /**
      * 

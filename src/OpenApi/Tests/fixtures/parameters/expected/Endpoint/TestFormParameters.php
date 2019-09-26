@@ -2,7 +2,7 @@
 
 namespace Jane\OpenApi\Tests\Expected\Endpoint;
 
-class TestFormParameters extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7HttplugEndpoint
+class TestFormParameters extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7Endpoint
 {
     /**
      * 

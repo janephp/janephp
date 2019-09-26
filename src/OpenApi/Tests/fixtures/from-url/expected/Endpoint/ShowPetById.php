@@ -2,7 +2,7 @@
 
 namespace Jane\OpenApi\Tests\Expected\Endpoint;
 
-class ShowPetById extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7HttplugEndpoint
+class ShowPetById extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7Endpoint
 {
     protected $petId;
     /**
@@ -14,7 +14,7 @@ class ShowPetById extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \J
     {
         $this->petId = $petId;
     }
-    use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
+    use \Jane\OpenApiRuntime\Client\Psr7EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';
@@ -23,7 +23,7 @@ class ShowPetById extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \J
     {
         return str_replace(array('{petId}'), array($this->petId), '/pets/{petId}');
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null) : array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
         return array(array(), null);
     }
