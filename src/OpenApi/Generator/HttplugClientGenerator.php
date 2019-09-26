@@ -122,13 +122,13 @@ class HttplugClientGenerator extends ClientGenerator
             $url = parse_url($server->getUrl());
             $baseUri = '';
 
-            if (isset($url['host'])) {
+            if (\array_key_exists('host', $url)) {
                 $scheme = $url['scheme'] ?? 'https';
                 $baseUri = $scheme . '://' . trim($url['host'], '/');
                 $plugins[] = AddHostPlugin::class;
             }
 
-            if (null !== $url['path']) {
+            if (\array_key_exists('path', $url) && null !== $url['path']) {
                 $baseUri .= '/' . trim($url['path'], '/');
                 $plugins[] = AddPathPlugin::class;
             }
