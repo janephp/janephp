@@ -1,0 +1,37 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "version": "",
+        "title": ""
+    },
+    "paths": {
+        "/foo": {
+            "get": {
+                "operationId": "foo",
+                "description": "caca",
+                "parameters": [
+                    {
+                        "name": "bar",
+                        "in": "query",
+                        "schema": {
+                            "$ref": "#/components/schemas/Bar"
+                        },
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "Default response"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Bar": {
+                "type": "string"
+            }
+        }
+    }
+}

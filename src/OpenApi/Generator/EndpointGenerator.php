@@ -140,6 +140,11 @@ abstract class EndpointGenerator
                 $parameter = $this->resolveParameter($parameter);
             }
 
+            if (!$parameter instanceof \stdClass && $parameter->getSchema() instanceof Reference) {
+                [$_, $schema] = $this->resolve($parameter->getSchema(), Schema::class);
+                $parameter->setSchema($schema);
+            }
+
             if ($parameter instanceof ParameterWithSchemaWithExampleInPath || $parameter instanceof ParameterWithSchemaWithExamplesInPath) {
                 $pathParams[] = $this->nonBodyParameterGenerator->generateMethodParameter($parameter, $context, $operation->getReference() . '/parameters/' . $key);
                 $pathParamsDoc[] = $this->nonBodyParameterGenerator->generateMethodDocParameter($parameter, $context, $operation->getReference() . '/parameters/' . $key);
