@@ -1,23 +1,46 @@
-# Change Log
+# Changelog
 
-## Unreleased
+All notable changes to this project will be documented in this file.
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## [Unreleased]
+
+## [5.1.0] - 2019-09-26
 
 ### Added
 
-* [OpenAPI] GH#120 Support for PSR18 client generation.
+* [OpenAPI] [GH#120](https://github.com/janephp/janephp/pull/120) Support for PSR18 client generation
+* [Documentation] [GH#122](https://github.com/janephp/janephp/pull/122) OpenAPI example
+
+### Changed
+
+* [Documentation] [GH#124](https://github.com/janephp/janephp/pull/124) Update documentation with new PSR-18 Client
+
+### Fixed
+
+* [OpenAPI] [GH#118](https://github.com/janephp/janephp/pull/118) Correct discriminator classname snake_case into camelCase for denormalization
+* [OpenAPI] [GH#121](https://github.com/janephp/janephp/pull/121) Fix nullable property support
+* [OpenAPI] [GH#123](https://github.com/janephp/janephp/pull/123) / [GH#125](https://github.com/janephp/janephp/pull/125) Check if path exists before using it in *ClientGenerator
+* [OpenAPI] [GH#126](https://github.com/janephp/janephp/pull/126) Fix reference in endpoint parameter schema
+
+### Removed
+
+* [OpenAPI] [GH#119](https://github.com/janephp/janephp/pull/119) Removing OpenAPI v2 support
 
 ### Deprecated
 
-* [OpenAPI] GH#120 Jane\OpenApiRuntime\Client\Psr7HttplugClient deprecated, use Jane\OpenApiRuntime\Client\Psr18Client instead.
-* [OpenAPI] GH#120 Jane\OpenApiRuntime\Client\Psr7HttplugEndpoint deprecated, use Jane\OpenApiRuntime\Client\Psr7Endpoint instead.
-* [OpenAPI] GH#120 Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait deprecated, use Jane\OpenApiRuntime\Client\Psr7EndpointTrait instead.
+* [OpenAPI] [GH#120](https://github.com/janephp/janephp/pull/120) Jane\OpenApiRuntime\Client\Psr7HttplugClient deprecated, use Jane\OpenApiRuntime\Client\Psr18Client instead.
+* [OpenAPI] [GH#120](https://github.com/janephp/janephp/pull/120) Jane\OpenApiRuntime\Client\Psr7HttplugEndpoint deprecated, use Jane\OpenApiRuntime\Client\Psr7Endpoint instead.
+* [OpenAPI] [GH#120](https://github.com/janephp/janephp/pull/120) Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait deprecated, use Jane\OpenApiRuntime\Client\Psr7EndpointTrait instead.
 
 ## [5.0.1] - 2019-09-16
 
 ### Fixed
 
- * [JsonSchema] GH#109 Support for default value for array type
- * [OpenAPI] GH#115 Fix Content-Type comparison in generated endpoints
+ * [JsonSchema] [GH#109](https://github.com/janephp/janephp/pull/109) Support for default value for array type
+ * [OpenAPI] [GH#115](https://github.com/janephp/janephp/pull/115) Fix Content-Type comparison in generated endpoints
 
 ## [5.0.0] - 2019-09-11
 
@@ -111,7 +134,8 @@ See :
  * https://github.com/janephp/jane/releases
  * https://github.com/janephp/openapi/releases
 
-[Unreleased]: https://github.com/janephp/janephp/compare/v5.0.1...HEAD
+[Unreleased]: https://github.com/janephp/janephp/compare/v5.1.0...HEAD
+[5.1.0]: https://github.com/janephp/janephp/compare/v5.0.1...v5.1.0
 [5.0.1]: https://github.com/janephp/janephp/compare/v5.0.0...v5.0.1
 [5.0.0]: https://github.com/janephp/janephp/compare/v4.4.0...v5.0.0
 [4.4.0]: https://github.com/janephp/janephp/compare/v4.3.0...v4.4.0
