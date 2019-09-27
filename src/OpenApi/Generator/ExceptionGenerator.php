@@ -33,8 +33,9 @@ class ExceptionGenerator
         $schema = $context->getCurrentSchema();
         $schema->getRootName();
 
-        if (!isset($this->intialized[$schema->getRootName()])) {
-            $this->intialized[$schema->getRootName()] = true;
+        $unique = $schema->getRootName() . $schema->getDirectory();
+        if (!\array_key_exists($unique, $this->intialized)) {
+            $this->intialized[$unique] = true;
             $this->createBaseExceptions($schema);
         }
 
