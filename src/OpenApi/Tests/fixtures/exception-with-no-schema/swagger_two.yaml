@@ -1,0 +1,18 @@
+openapi: 3.0.0
+info:
+    version: ''
+    title: ''
+paths:
+    '/test-two':
+        get:
+            operationId: testTwo
+            responses:
+                '200':
+                    description: Success
+                    schema:
+                        type: object
+                        properties:
+                            message:
+                                type: string
+                '404':
+                    description: Not found
