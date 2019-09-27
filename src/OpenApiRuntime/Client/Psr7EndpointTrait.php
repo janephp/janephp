@@ -10,7 +10,7 @@ use Symfony\Component\Serializer\SerializerInterface;
 
 trait Psr7EndpointTrait
 {
-    abstract protected function transformResponseBody(string $body, int $status, SerializerInterface $serializer, string $contentType = null);
+    abstract protected function transformResponseBody(string $body, int $status, SerializerInterface $serializer, ?string $contentType);
 
     public function parsePSR7Response(ResponseInterface $response, SerializerInterface $serializer, string $fetchMode = Client::FETCH_OBJECT)
     {
