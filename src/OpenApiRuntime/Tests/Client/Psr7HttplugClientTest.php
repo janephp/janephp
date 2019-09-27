@@ -8,7 +8,7 @@ use Http\Client\HttpClient;
 use Http\Message\MessageFactory;
 use Http\Message\StreamFactory;
 use Jane\OpenApiRuntime\Client\Psr7HttplugClient;
-use Jane\OpenApiRuntime\Client\Psr7HttplugEndpoint;
+use Jane\OpenApiRuntime\Client\Psr7Endpoint;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
@@ -41,16 +41,10 @@ class Psr7HttplugClientTest extends TestCase
 
         $streamFactoryMock = $this->createMock(StreamFactory::class);
 
-        $client = new class($httpClientMock, $messageFactoryMock, $serializerMock) extends Psr7HttplugClient {
+        $client = new class($httpClientMock, $messageFactoryMock, $serializerMock, $streamFactoryMock) extends Psr7HttplugClient {
         };
 
-        $constructorArgs = [
-            $httpClientMock,
-            $messageFactoryMock,
-            $serializerMock,
-            $streamFactoryMock,
-        ];
-        $endpointMock = $this->getMockBuilder(Psr7HttplugEndpoint::class)->setConstructorArgs($constructorArgs)->getMock();
+        $endpointMock = $this->getMockBuilder(Psr7Endpoint::class)->getMock();
         $endpointMock
             ->expects($this->once())
             ->method('getBody')

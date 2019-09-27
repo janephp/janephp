@@ -6,15 +6,15 @@ namespace Jane\OpenApiRuntime\Tests\Client;
 
 use Jane\OpenApiRuntime\Client\Client;
 use Jane\OpenApiRuntime\Client\Exception\InvalidFetchModeException;
-use Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
+use Jane\OpenApiRuntime\Client\Psr7EndpointTrait;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ResponseInterface;
 use Symfony\Component\Serializer\SerializerInterface;
 
-class Psr7HttplugEndpointTraitTest extends TestCase
+class Psr7EndpointTraitTest extends TestCase
 {
     /**
-     * @covers \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait::parsePSR7Response
+     * @covers \Jane\OpenApiRuntime\Client\Psr7EndpointTrait::parsePSR7Response
      */
     public function testParsePSR7ResponseWithObjectFetchModeShouldTransformResponseBody()
     {
@@ -43,7 +43,7 @@ class Psr7HttplugEndpointTraitTest extends TestCase
     }
 
     /**
-     * @covers \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait::parsePSR7Response
+     * @covers \Jane\OpenApiRuntime\Client\Psr7EndpointTrait::parsePSR7Response
      */
     public function testParsePSR7ResponseWithResponseFetchModeShouldReturnResponse()
     {
@@ -56,7 +56,7 @@ class Psr7HttplugEndpointTraitTest extends TestCase
     }
 
     /**
-     * @covers \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait::parsePSR7Response
+     * @covers \Jane\OpenApiRuntime\Client\Psr7EndpointTrait::parsePSR7Response
      */
     public function testParsePSR7ResponseWithInvalidFetchModeShouldThrowException()
     {
@@ -75,7 +75,7 @@ class Psr7HttplugEndpointTraitTest extends TestCase
         static $endpoint = null;
         if ($endpoint === null) {
             $endpoint = new class() {
-                use Psr7HttplugEndpointTrait;
+                use Psr7EndpointTrait;
 
                 protected function transformResponseBody(
                     string $body,

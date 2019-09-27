@@ -4,7 +4,7 @@ namespace Jane\OpenApi\Generator;
 
 use Psr\Http\Message\ResponseInterface;
 
-class Psr7HttplugOperationGenerator extends OperationGenerator
+class Psr7OperationGenerator extends OperationGenerator
 {
     protected function getEndpointCallName(): string
     {

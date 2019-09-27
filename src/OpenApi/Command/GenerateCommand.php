@@ -81,6 +81,7 @@ class GenerateCommand extends Command
             'use-fixer' => true,
             'fixer-config-file' => null,
             'use-cacheable-supports-method' => null,
+            'client' => JaneOpenApi::CLIENT_HTTPLUG,
         ]);
 
         if (\array_key_exists('openapi-file', $options)) {
@@ -94,6 +95,11 @@ class GenerateCommand extends Command
                 'mapping',
             ]);
         }
+
+        $optionsResolver->setAllowedValues('client', [
+            JaneOpenApi::CLIENT_PSR18,
+            JaneOpenApi::CLIENT_HTTPLUG,
+        ]);
 
         return $optionsResolver->resolve($options);
     }
@@ -112,6 +118,7 @@ class GenerateCommand extends Command
             'use-fixer',
             'fixer-config-file',
             'use-cacheable-supports-method',
+            'client',
         ]);
 
         $optionsResolver->setRequired([

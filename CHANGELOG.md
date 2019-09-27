@@ -2,7 +2,8 @@
 
 ## Unreleased
 
-* [OpenAPI] Fix generated endpoint in case of uppercase first letter in path parameter  #79
+ * [OpenAPI] Fix generated endpoint in case of uppercase first letter in path parameter  #79
+ * [OpenAPI] Support for PSR18 client generation.
 
 ## 4.4.0 - 2019-06-17
  

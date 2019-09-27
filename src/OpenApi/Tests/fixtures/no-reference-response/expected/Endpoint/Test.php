@@ -2,9 +2,9 @@
 
 namespace Jane\OpenApi\Tests\Expected\Endpoint;
 
-class Test extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7HttplugEndpoint
+class Test extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7Endpoint
 {
-    use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
+    use \Jane\OpenApiRuntime\Client\Psr7EndpointTrait;
     public function getMethod() : string
     {
         return 'POST';
@@ -13,7 +13,7 @@ class Test extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\Ope
     {
         return '/test';
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null) : array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
         return array(array(), null);
     }
@@ -23,7 +23,7 @@ class Test extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\Ope
      *
      * @return null|\Jane\OpenApi\Tests\Expected\Model\TestPostResponse201
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
+    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType)
     {
         if (201 === $status) {
             return $serializer->deserialize($body, 'Jane\\OpenApi\\Tests\\Expected\\Model\\TestPostResponse201', 'json');

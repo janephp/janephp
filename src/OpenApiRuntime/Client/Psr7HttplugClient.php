@@ -37,7 +37,7 @@ abstract class Psr7HttplugClient extends Client
         $this->streamFactory = $streamFactory;
     }
 
-    public function executePsr7Endpoint(Psr7HttplugEndpoint $endpoint, string $fetch = self::FETCH_OBJECT)
+    public function executePsr7Endpoint(Psr7Endpoint $endpoint, string $fetch = self::FETCH_OBJECT)
     {
         [$bodyHeaders, $body] = $endpoint->getBody($this->serializer, $this->streamFactory);
         $queryString = $endpoint->getQueryString();

@@ -5,15 +5,11 @@ namespace Jane\OpenApi\Generator;
 use Http\Client\Common\Plugin\AddHostPlugin;
 use Http\Client\Common\Plugin\AddPathPlugin;
 use Http\Client\Common\PluginClient;
-use Http\Discovery\HttpClientDiscovery;
-use Http\Discovery\MessageFactoryDiscovery;
-use Http\Discovery\StreamFactoryDiscovery;
-use Http\Discovery\UriFactoryDiscovery;
+use Http\Discovery\Psr17FactoryDiscovery;
+use Http\Discovery\Psr18ClientDiscovery;
 use Jane\JsonSchema\Generator\Context\Context;
 use Jane\OpenApi\Model\OpenApi;
-use Jane\OpenApiRuntime\Client\Psr7HttplugClient;
-use function Jane\parserExpression;
-use function Jane\parserVariable;
+use Jane\OpenApiRuntime\Client\Psr18Client;
 use PhpParser\Node;
 use PhpParser\Node\Name;
 use PhpParser\Node\Expr;
@@ -22,8 +18,10 @@ use Symfony\Component\Serializer\Encoder\JsonDecode;
 use Symfony\Component\Serializer\Encoder\JsonEncode;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Serializer;
+use function Jane\parserExpression;
+use function Jane\parserVariable;
 
-class Psr7HttplugClientGenerator extends ClientGenerator
+class Psr18ClientGenerator extends ClientGenerator
 {
     protected function getSuffix(): string
     {
@@ -33,7 +31,7 @@ class Psr7HttplugClientGenerator extends ClientGenerator
     protected function createResourceClass(string $name): Stmt\Class_
     {
         return new Stmt\Class_($name, [
-            'extends' => new Node\Name\FullyQualified(Psr7HttplugClient::class),
+            'extends' => new Node\Name\FullyQualified(Psr18Client::class),
         ]);
     }
 
@@ -41,7 +39,7 @@ class Psr7HttplugClientGenerator extends ClientGenerator
     {
         return new Stmt\ClassMethod(
             'create', [
-                'type' => Stmt\Class_::MODIFIER_STATIC | Stmt\Class_::MODIFIER_PUBLIC,
+                'flags' => Stmt\Class_::MODIFIER_STATIC | Stmt\Class_::MODIFIER_PUBLIC,
                 'params' => [
                     new Node\Param(parserVariable('httpClient'), new Expr\ConstFetch(new Name('null'))),
                 ],
@@ -53,17 +51,17 @@ class Psr7HttplugClientGenerator extends ClientGenerator
                         ]
                     ),
                     parserExpression(new Expr\Assign(
-                        new Expr\Variable('messageFactory'),
+                        new Expr\Variable('requestFactory'),
                         new Expr\StaticCall(
-                            new Name\FullyQualified(MessageFactoryDiscovery::class),
-                            'find'
+                            new Name\FullyQualified(Psr17FactoryDiscovery::class),
+                            'findRequestFactory'
                         )
                     )),
                     parserExpression(new Expr\Assign(
                         new Expr\Variable('streamFactory'),
                         new Expr\StaticCall(
-                            new Name\FullyQualified(StreamFactoryDiscovery::class),
-                            'find'
+                            new Name\FullyQualified(Psr17FactoryDiscovery::class),
+                            'findStreamFactory'
                         )
                     )),
                     parserExpression(new Expr\Assign(
@@ -94,7 +92,7 @@ class Psr7HttplugClientGenerator extends ClientGenerator
                         new Expr\New_(
                             new Name('static'), [
                                 new Node\Arg(new Expr\Variable('httpClient')),
-                                new Node\Arg(new Expr\Variable('messageFactory')),
+                                new Node\Arg(new Expr\Variable('requestFactory')),
                                 new Node\Arg(new Expr\Variable('serializer')),
                                 new Node\Arg(new Expr\Variable('streamFactory')),
                             ]
@@ -112,35 +110,34 @@ class Psr7HttplugClientGenerator extends ClientGenerator
         $baseUri = null;
         $plugins = [];
 
-        if (null !== $openApi->getHost()) {
-            $scheme = 'https';
+        $openApi->getBasePath();
+        $openApi->getHost();
 
-            if (null !== $openApi->getSchemes() && \count($openApi->getSchemes()) > 0 && !\in_array('https', $openApi->getSchemes())) {
-                $scheme = $openApi->getSchemes()[0];
+        if (null !== ($host = $openApi->getHost())) {
+            $scheme = 'https';
+            $schemes = $openApi->getSchemes() ?? [];
+            if (1 === \count($schemes)) {
+                $scheme = reset($schemes);
             }
 
-            $baseUri = $scheme . '://' . trim($openApi->getHost(), '/');
+            $baseUri = $scheme . '://' . trim($host, '/');
+            $plugins[] = AddHostPlugin::class;
 
-            if (null !== $openApi->getBasePath()) {
-                $baseUri .= '/' . trim($openApi->getBasePath(), '/');
+            if (null !== ($basePath = $openApi->getBasePath())) {
+                $baseUri .= '/' . trim($basePath, '/');
                 $plugins[] = AddPathPlugin::class;
             }
-
-            $plugins[] = AddHostPlugin::class;
-        } elseif (null !== $openApi->getBasePath()) {
-            $baseUri = trim($openApi->getBasePath(), '/');
-            $plugins[] = AddPathPlugin::class;
         }
 
         $httpClientAssign = parserExpression(new Expr\Assign(
             new Expr\Variable('httpClient'),
             new Expr\StaticCall(
-                new Name\FullyQualified(HttpClientDiscovery::class),
+                new Name\FullyQualified(Psr18ClientDiscovery::class),
                 'find'
             )
         ));
 
-        if (empty($baseUri)) {
+        if (empty($baseUri) || $baseUri === '/') {
             return [$httpClientAssign];
         }
 
@@ -154,8 +151,8 @@ class Psr7HttplugClientGenerator extends ClientGenerator
                 new Expr\Variable('uri'),
                 new Expr\MethodCall(
                     new Expr\StaticCall(
-                        new Name\FullyQualified(UriFactoryDiscovery::class),
-                        'find'
+                        new Name\FullyQualified(Psr17FactoryDiscovery::class),
+                        'findUrlFactory'
                     ),
                     'createUri',
                     [
