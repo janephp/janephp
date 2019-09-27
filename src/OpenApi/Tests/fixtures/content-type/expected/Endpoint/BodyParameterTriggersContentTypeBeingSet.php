@@ -13,7 +13,7 @@ class BodyParameterTriggersContentTypeBeingSet extends \Jane\OpenApiRuntime\Clie
     {
         $this->body = $testString;
     }
-    use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
+    use \Jane\OpenApiRuntime\Client\Psr7EndpointTrait;
     public function getMethod() : string
     {
         return 'POST';
@@ -22,7 +22,7 @@ class BodyParameterTriggersContentTypeBeingSet extends \Jane\OpenApiRuntime\Clie
     {
         return '/test-simple';
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null) : array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
         return $this->getSerializedBody($serializer);
     }
@@ -36,7 +36,7 @@ class BodyParameterTriggersContentTypeBeingSet extends \Jane\OpenApiRuntime\Clie
      *
      * @return null
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
+    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType)
     {
         if (200 === $status) {
             return null;

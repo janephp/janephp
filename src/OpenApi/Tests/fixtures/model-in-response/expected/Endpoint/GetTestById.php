@@ -35,7 +35,7 @@ class GetTestById extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \J
      *
      * @return null|\Jane\OpenApi\Tests\Expected\Model\TestIdGetResponse200
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
+    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType)
     {
         if (200 === $status) {
             return $serializer->deserialize($body, 'Jane\\OpenApi\\Tests\\Expected\\Model\\TestIdGetResponse200', 'json');

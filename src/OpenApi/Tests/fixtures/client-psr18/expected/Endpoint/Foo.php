@@ -23,7 +23,7 @@ class Foo extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\Open
      *
      * @return null
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType)
     {
         return null;
     }

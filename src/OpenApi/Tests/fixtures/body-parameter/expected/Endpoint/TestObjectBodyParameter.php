@@ -13,7 +13,7 @@ class TestObjectBodyParameter extends \Jane\OpenApiRuntime\Client\BaseEndpoint i
     {
         $this->body = $testObject;
     }
-    use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
+    use \Jane\OpenApiRuntime\Client\Psr7EndpointTrait;
     public function getMethod() : string
     {
         return 'POST';
@@ -22,7 +22,7 @@ class TestObjectBodyParameter extends \Jane\OpenApiRuntime\Client\BaseEndpoint i
     {
         return '/test-object';
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null) : array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
         return $this->getSerializedBody($serializer);
     }
@@ -32,7 +32,7 @@ class TestObjectBodyParameter extends \Jane\OpenApiRuntime\Client\BaseEndpoint i
      *
      * @return null
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
+    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType)
     {
         if (200 === $status) {
             return null;

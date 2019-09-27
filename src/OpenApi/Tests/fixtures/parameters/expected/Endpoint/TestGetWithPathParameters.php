@@ -2,7 +2,7 @@
 
 namespace Jane\OpenApi\Tests\Expected\Endpoint;
 
-class TestGetWithPathParameters extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7HttplugEndpoint
+class TestGetWithPathParameters extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7Endpoint
 {
     /**
      * 
@@ -30,7 +30,7 @@ class TestGetWithPathParameters extends \Jane\OpenApiRuntime\Client\BaseEndpoint
     {
         return '/test-path-parameters/{testPath}';
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null) : array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
         return $this->getSerializedBody($serializer);
     }
@@ -58,7 +58,7 @@ class TestGetWithPathParameters extends \Jane\OpenApiRuntime\Client\BaseEndpoint
      *
      * @return null
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
+    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType)
     {
     }
 }

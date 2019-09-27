@@ -53,7 +53,7 @@ class TestHeaderParameters extends \Jane\OpenApiRuntime\Client\BaseEndpoint impl
      *
      * @return null
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
+    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType)
     {
         if (200 === $status) {
             return null;

@@ -18,6 +18,8 @@ use Symfony\Component\Serializer\Encoder\JsonDecode;
 use Symfony\Component\Serializer\Encoder\JsonEncode;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Serializer;
+use function Jane\parserExpression;
+use function Jane\parserVariable;
 
 class Psr18ClientGenerator extends ClientGenerator
 {
@@ -39,7 +41,7 @@ class Psr18ClientGenerator extends ClientGenerator
             'create', [
                 'flags' => Stmt\Class_::MODIFIER_STATIC | Stmt\Class_::MODIFIER_PUBLIC,
                 'params' => [
-                    new Node\Param(new Expr\Variable('httpClient'), new Expr\ConstFetch(new Name('null'))),
+                    new Node\Param(parserVariable('httpClient'), new Expr\ConstFetch(new Name('null'))),
                 ],
                 'stmts' => [
                     new Stmt\If_(
@@ -48,21 +50,21 @@ class Psr18ClientGenerator extends ClientGenerator
                             'stmts' => $this->getHttpClientCreateExpr($context),
                         ]
                     ),
-                    new Stmt\Expression(new Expr\Assign(
+                    parserExpression(new Expr\Assign(
                         new Expr\Variable('requestFactory'),
                         new Expr\StaticCall(
                             new Name\FullyQualified(Psr17FactoryDiscovery::class),
                             'findRequestFactory'
                         )
                     )),
-                    new Stmt\Expression(new Expr\Assign(
+                    parserExpression(new Expr\Assign(
                         new Expr\Variable('streamFactory'),
                         new Expr\StaticCall(
                             new Name\FullyQualified(Psr17FactoryDiscovery::class),
                             'findStreamFactory'
                         )
                     )),
-                    new Stmt\Expression(new Expr\Assign(
+                    parserExpression(new Expr\Assign(
                         new Expr\Variable('serializer'),
                         new Expr\New_(
                             new Name\FullyQualified(Serializer::class),
@@ -127,7 +129,7 @@ class Psr18ClientGenerator extends ClientGenerator
             }
         }
 
-        $httpClientAssign = new Stmt\Expression(new Expr\Assign(
+        $httpClientAssign = parserExpression(new Expr\Assign(
             new Expr\Variable('httpClient'),
             new Expr\StaticCall(
                 new Name\FullyQualified(Psr18ClientDiscovery::class),
@@ -141,11 +143,11 @@ class Psr18ClientGenerator extends ClientGenerator
 
         $statements = [
             $httpClientAssign,
-            new Stmt\Expression(new Expr\Assign(
+            parserExpression(new Expr\Assign(
                 new Expr\Variable('plugins'),
                 new Expr\Array_()
             )),
-            new Stmt\Expression(new Expr\Assign(
+            parserExpression(new Expr\Assign(
                 new Expr\Variable('uri'),
                 new Expr\MethodCall(
                     new Expr\StaticCall(
@@ -161,7 +163,7 @@ class Psr18ClientGenerator extends ClientGenerator
         ];
 
         foreach ($plugins as $pluginClass) {
-            $statements[] = new Stmt\Expression(new Expr\Assign(
+            $statements[] = parserExpression(new Expr\Assign(
                 new Expr\ArrayDimFetch(new Expr\Variable('plugins')),
                 new Expr\New_(new Name\FullyQualified($pluginClass), [
                     new Node\Arg(new Expr\Variable('uri')),
@@ -169,7 +171,7 @@ class Psr18ClientGenerator extends ClientGenerator
             ));
         }
 
-        $statements[] = new Stmt\Expression(new Expr\Assign(
+        $statements[] = parserExpression(new Expr\Assign(
             new Expr\Variable('httpClient'),
             new Expr\New_(
                 new Name\FullyQualified(PluginClient::class),
