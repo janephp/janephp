@@ -40,7 +40,7 @@ class ObjectGuesser implements GuesserInterface, PropertiesGuesserInterface, Typ
      */
     public function supportObject($object)
     {
-        return ($object instanceof JsonSchema) && 'object' === $object->getType() && null !== $object->getProperties();
+        return ($object instanceof JsonSchema) && (\is_array($object->getType()) ? \in_array('object', $object->getType()) : 'object' === $object->getType()) && null !== $object->getProperties();
     }
 
     /**

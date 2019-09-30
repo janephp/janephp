@@ -33,7 +33,7 @@ class LibraryTest extends TestCase
     public function testLibrary()
     {
         $registry = new Registry();
-        $registry->addSchema(new Schema(__DIR__ . '/data/json-schema.json', 'Jane\JsonSchema', __DIR__ . '/generated', 'JsonSchema', 4));
+        $registry->addSchema(new Schema(__DIR__ . '/data/json-schema.json', 'Jane\JsonSchema', __DIR__ . '/generated', 'JsonSchema'));
 
         $this->jane->generate($registry);
         $this->printer->output($registry);
@@ -56,16 +56,5 @@ class LibraryTest extends TestCase
             file_get_contents(__DIR__ . '/../Normalizer/NormalizerFactory.php'),
             file_get_contents(__DIR__ . '/generated/Normalizer/NormalizerFactory.php')
         );
-    }
-
-    public function testBothWay()
-    {
-        $serializer = Jane::buildSerializer();
-
-        $json = file_get_contents(__DIR__ . '/data/json-schema.json');
-        $schema = $serializer->deserialize($json, 'Jane\JsonSchema\Model\JsonSchema', 'json', ['document-origin' => 'tests/data/json-schema.json']);
-        $newJson = $serializer->serialize($schema, 'json');
-
-        $this->assertEquals(json_decode($json), json_decode($newJson));
     }
 }

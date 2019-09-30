@@ -42,11 +42,14 @@ class JsonSchemaNormalizer implements DenormalizerInterface, NormalizerInterface
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \Jane\JsonSchema\Model\JsonSchema();
-        if (property_exists($data, 'id') && $data->{'id'} !== null) {
-            $object->setId($data->{'id'});
+        if (property_exists($data, '$id') && $data->{'$id'} !== null) {
+            $object->setDollarId($data->{'$id'});
         }
         if (property_exists($data, '$schema') && $data->{'$schema'} !== null) {
             $object->setDollarSchema($data->{'$schema'});
+        }
+        if (property_exists($data, '$ref') && $data->{'$ref'} !== null) {
+            $object->setDollarRef($data->{'$ref'});
         }
         if (property_exists($data, 'title') && $data->{'title'} !== null) {
             $object->setTitle($data->{'title'});
@@ -56,6 +59,13 @@ class JsonSchemaNormalizer implements DenormalizerInterface, NormalizerInterface
         }
         if (property_exists($data, 'default') && $data->{'default'} !== null) {
             $object->setDefault($data->{'default'});
+        }
+        if (property_exists($data, 'examples') && $data->{'examples'} !== null) {
+            $values = [];
+            foreach ($data->{'examples'} as $value) {
+                $values[] = $value;
+            }
+            $object->setExamples($values);
         }
         if (property_exists($data, 'multipleOf') && $data->{'multipleOf'} !== null) {
             $object->setMultipleOf($data->{'multipleOf'});
@@ -82,26 +92,34 @@ class JsonSchemaNormalizer implements DenormalizerInterface, NormalizerInterface
             $object->setPattern($data->{'pattern'});
         }
         if (property_exists($data, 'additionalItems') && $data->{'additionalItems'} !== null) {
-            $value = $data->{'additionalItems'};
-            if (is_bool($data->{'additionalItems'})) {
-                $value = $data->{'additionalItems'};
-            } elseif (is_object($data->{'additionalItems'})) {
-                $value = $this->denormalizer->denormalize($data->{'additionalItems'}, 'Jane\\JsonSchema\\Model\\JsonSchema', 'json', $context);
+            $value_1 = $data->{'additionalItems'};
+            if (is_object($data->{'additionalItems'})) {
+                $value_1 = $this->denormalizer->denormalize($data->{'additionalItems'}, 'Jane\\JsonSchema\\Model\\JsonSchema', 'json', $context);
+            } elseif (is_bool($data->{'additionalItems'})) {
+                $value_1 = $data->{'additionalItems'};
             }
-            $object->setAdditionalItems($value);
+            $object->setAdditionalItems($value_1);
         }
         if (property_exists($data, 'items') && $data->{'items'} !== null) {
-            $value_1 = $data->{'items'};
+            $value_2 = $data->{'items'};
             if (is_object($data->{'items'})) {
-                $value_1 = $this->denormalizer->denormalize($data->{'items'}, 'Jane\\JsonSchema\\Model\\JsonSchema', 'json', $context);
+                $value_2 = $this->denormalizer->denormalize($data->{'items'}, 'Jane\\JsonSchema\\Model\\JsonSchema', 'json', $context);
+            } elseif (is_bool($data->{'items'})) {
+                $value_2 = $data->{'items'};
             } elseif (is_array($data->{'items'})) {
-                $values = [];
-                foreach ($data->{'items'} as $value_2) {
-                    $values[] = $this->denormalizer->denormalize($value_2, 'Jane\\JsonSchema\\Model\\JsonSchema', 'json', $context);
+                $values_1 = [];
+                foreach ($data->{'items'} as $value_3) {
+                    $value_4 = $value_3;
+                    if (is_object($value_3)) {
+                        $value_4 = $this->denormalizer->denormalize($value_3, 'Jane\\JsonSchema\\Model\\JsonSchema', 'json', $context);
+                    } elseif (is_bool($value_3)) {
+                        $value_4 = $value_3;
+                    }
+                    $values_1[] = $value_4;
                 }
-                $value_1 = $values;
+                $value_2 = $values_1;
             }
-            $object->setItems($value_1);
+            $object->setItems($value_2);
         }
         if (property_exists($data, 'maxItems') && $data->{'maxItems'} !== null) {
             $object->setMaxItems($data->{'maxItems'});
@@ -112,6 +130,15 @@ class JsonSchemaNormalizer implements DenormalizerInterface, NormalizerInterface
         if (property_exists($data, 'uniqueItems') && $data->{'uniqueItems'} !== null) {
             $object->setUniqueItems($data->{'uniqueItems'});
         }
+        if (property_exists($data, 'contains') && $data->{'contains'} !== null) {
+            $value_5 = $data->{'contains'};
+            if (is_object($data->{'contains'})) {
+                $value_5 = $this->denormalizer->denormalize($data->{'contains'}, 'Jane\\JsonSchema\\Model\\JsonSchema', 'json', $context);
+            } elseif (is_bool($data->{'contains'})) {
+                $value_5 = $data->{'contains'};
+            }
+            $object->setContains($value_5);
+        }
         if (property_exists($data, 'maxProperties') && $data->{'maxProperties'} !== null) {
             $object->setMaxProperties($data->{'maxProperties'});
         }
@@ -119,105 +146,161 @@ class JsonSchemaNormalizer implements DenormalizerInterface, NormalizerInterface
             $object->setMinProperties($data->{'minProperties'});
         }
         if (property_exists($data, 'required') && $data->{'required'} !== null) {
-            $values_1 = [];
-            foreach ($data->{'required'} as $value_3) {
-                $values_1[] = $value_3;
+            $values_2 = [];
+            foreach ($data->{'required'} as $value_6) {
+                $values_2[] = $value_6;
             }
-            $object->setRequired($values_1);
+            $object->setRequired($values_2);
         }
         if (property_exists($data, 'additionalProperties') && $data->{'additionalProperties'} !== null) {
-            $value_4 = $data->{'additionalProperties'};
-            if (is_bool($data->{'additionalProperties'})) {
-                $value_4 = $data->{'additionalProperties'};
-            } elseif (is_object($data->{'additionalProperties'})) {
-                $value_4 = $this->denormalizer->denormalize($data->{'additionalProperties'}, 'Jane\\JsonSchema\\Model\\JsonSchema', 'json', $context);
+            $value_7 = $data->{'additionalProperties'};
+            if (is_object($data->{'additionalProperties'})) {
+                $value_7 = $this->denormalizer->denormalize($data->{'additionalProperties'}, 'Jane\\JsonSchema\\Model\\JsonSchema', 'json', $context);
+            } elseif (is_bool($data->{'additionalProperties'})) {
+                $value_7 = $data->{'additionalProperties'};
             }
-            $object->setAdditionalProperties($value_4);
+            $object->setAdditionalProperties($value_7);
         }
         if (property_exists($data, 'definitions') && $data->{'definitions'} !== null) {
-            $values_2 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
-            foreach ($data->{'definitions'} as $key => $value_5) {
-                $values_2[$key] = $this->denormalizer->denormalize($value_5, 'Jane\\JsonSchema\\Model\\JsonSchema', 'json', $context);
-            }
-            $object->setDefinitions($values_2);
-        }
-        if (property_exists($data, 'properties') && $data->{'properties'} !== null) {
             $values_3 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
-            foreach ($data->{'properties'} as $key_1 => $value_6) {
-                $values_3[$key_1] = $this->denormalizer->denormalize($value_6, 'Jane\\JsonSchema\\Model\\JsonSchema', 'json', $context);
-            }
-            $object->setProperties($values_3);
-        }
-        if (property_exists($data, 'patternProperties') && $data->{'patternProperties'} !== null) {
-            $values_4 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
-            foreach ($data->{'patternProperties'} as $key_2 => $value_7) {
-                $values_4[$key_2] = $this->denormalizer->denormalize($value_7, 'Jane\\JsonSchema\\Model\\JsonSchema', 'json', $context);
-            }
-            $object->setPatternProperties($values_4);
-        }
-        if (property_exists($data, 'dependencies') && $data->{'dependencies'} !== null) {
-            $values_5 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
-            foreach ($data->{'dependencies'} as $key_3 => $value_8) {
+            foreach ($data->{'definitions'} as $key => $value_8) {
                 $value_9 = $value_8;
                 if (is_object($value_8)) {
                     $value_9 = $this->denormalizer->denormalize($value_8, 'Jane\\JsonSchema\\Model\\JsonSchema', 'json', $context);
-                } elseif (is_array($value_8)) {
-                    $values_6 = [];
-                    foreach ($value_8 as $value_10) {
-                        $values_6[] = $value_10;
-                    }
-                    $value_9 = $values_6;
+                } elseif (is_bool($value_8)) {
+                    $value_9 = $value_8;
                 }
-                $values_5[$key_3] = $value_9;
+                $values_3[$key] = $value_9;
             }
-            $object->setDependencies($values_5);
+            $object->setDefinitions($values_3);
+        }
+        if (property_exists($data, 'properties') && $data->{'properties'} !== null) {
+            $values_4 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            foreach ($data->{'properties'} as $key_1 => $value_10) {
+                $value_11 = $value_10;
+                if (is_object($value_10)) {
+                    $value_11 = $this->denormalizer->denormalize($value_10, 'Jane\\JsonSchema\\Model\\JsonSchema', 'json', $context);
+                } elseif (is_bool($value_10)) {
+                    $value_11 = $value_10;
+                }
+                $values_4[$key_1] = $value_11;
+            }
+            $object->setProperties($values_4);
+        }
+        if (property_exists($data, 'patternProperties') && $data->{'patternProperties'} !== null) {
+            $values_5 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            foreach ($data->{'patternProperties'} as $key_2 => $value_12) {
+                $value_13 = $value_12;
+                if (is_object($value_12)) {
+                    $value_13 = $this->denormalizer->denormalize($value_12, 'Jane\\JsonSchema\\Model\\JsonSchema', 'json', $context);
+                } elseif (is_bool($value_12)) {
+                    $value_13 = $value_12;
+                }
+                $values_5[$key_2] = $value_13;
+            }
+            $object->setPatternProperties($values_5);
+        }
+        if (property_exists($data, 'dependencies') && $data->{'dependencies'} !== null) {
+            $values_6 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            foreach ($data->{'dependencies'} as $key_3 => $value_14) {
+                $value_15 = $value_14;
+                if (is_object($value_14)) {
+                    $value_15 = $this->denormalizer->denormalize($value_14, 'Jane\\JsonSchema\\Model\\JsonSchema', 'json', $context);
+                } elseif (is_bool($value_14)) {
+                    $value_15 = $value_14;
+                } elseif (is_array($value_14)) {
+                    $values_7 = [];
+                    foreach ($value_14 as $value_16) {
+                        $values_7[] = $value_16;
+                    }
+                    $value_15 = $values_7;
+                }
+                $values_6[$key_3] = $value_15;
+            }
+            $object->setDependencies($values_6);
+        }
+        if (property_exists($data, 'propertyNames') && $data->{'propertyNames'} !== null) {
+            $value_17 = $data->{'propertyNames'};
+            if (is_object($data->{'propertyNames'})) {
+                $value_17 = $this->denormalizer->denormalize($data->{'propertyNames'}, 'Jane\\JsonSchema\\Model\\JsonSchema', 'json', $context);
+            } elseif (is_bool($data->{'propertyNames'})) {
+                $value_17 = $data->{'propertyNames'};
+            }
+            $object->setPropertyNames($value_17);
+        }
+        if (property_exists($data, 'const') && $data->{'const'} !== null) {
+            $object->setConst($data->{'const'});
         }
         if (property_exists($data, 'enum') && $data->{'enum'} !== null) {
-            $values_7 = [];
-            foreach ($data->{'enum'} as $value_11) {
-                $values_7[] = $value_11;
+            $values_8 = [];
+            foreach ($data->{'enum'} as $value_18) {
+                $values_8[] = $value_18;
             }
-            $object->setEnum($values_7);
+            $object->setEnum($values_8);
         }
         if (property_exists($data, 'type') && $data->{'type'} !== null) {
-            $value_12 = $data->{'type'};
+            $value_19 = $data->{'type'};
             if (is_array($data->{'type'})) {
-                $values_8 = [];
-                foreach ($data->{'type'} as $value_13) {
-                    $values_8[] = $value_13;
+                $values_9 = [];
+                foreach ($data->{'type'} as $value_20) {
+                    $values_9[] = $value_20;
                 }
-                $value_12 = $values_8;
+                $value_19 = $values_9;
             } elseif (isset($data->{'type'})) {
-                $value_12 = $data->{'type'};
+                $value_19 = $data->{'type'};
             }
-            $object->setType($value_12);
+            $object->setType($value_19);
         }
         if (property_exists($data, 'format') && $data->{'format'} !== null) {
             $object->setFormat($data->{'format'});
         }
         if (property_exists($data, 'allOf') && $data->{'allOf'} !== null) {
-            $values_9 = [];
-            foreach ($data->{'allOf'} as $value_14) {
-                $values_9[] = $this->denormalizer->denormalize($value_14, 'Jane\\JsonSchema\\Model\\JsonSchema', 'json', $context);
+            $values_10 = [];
+            foreach ($data->{'allOf'} as $value_21) {
+                $value_22 = $value_21;
+                if (is_object($value_21)) {
+                    $value_22 = $this->denormalizer->denormalize($value_21, 'Jane\\JsonSchema\\Model\\JsonSchema', 'json', $context);
+                } elseif (is_bool($value_21)) {
+                    $value_22 = $value_21;
+                }
+                $values_10[] = $value_22;
             }
-            $object->setAllOf($values_9);
+            $object->setAllOf($values_10);
         }
         if (property_exists($data, 'anyOf') && $data->{'anyOf'} !== null) {
-            $values_10 = [];
-            foreach ($data->{'anyOf'} as $value_15) {
-                $values_10[] = $this->denormalizer->denormalize($value_15, 'Jane\\JsonSchema\\Model\\JsonSchema', 'json', $context);
+            $values_11 = [];
+            foreach ($data->{'anyOf'} as $value_23) {
+                $value_24 = $value_23;
+                if (is_object($value_23)) {
+                    $value_24 = $this->denormalizer->denormalize($value_23, 'Jane\\JsonSchema\\Model\\JsonSchema', 'json', $context);
+                } elseif (is_bool($value_23)) {
+                    $value_24 = $value_23;
+                }
+                $values_11[] = $value_24;
             }
-            $object->setAnyOf($values_10);
+            $object->setAnyOf($values_11);
         }
         if (property_exists($data, 'oneOf') && $data->{'oneOf'} !== null) {
-            $values_11 = [];
-            foreach ($data->{'oneOf'} as $value_16) {
-                $values_11[] = $this->denormalizer->denormalize($value_16, 'Jane\\JsonSchema\\Model\\JsonSchema', 'json', $context);
+            $values_12 = [];
+            foreach ($data->{'oneOf'} as $value_25) {
+                $value_26 = $value_25;
+                if (is_object($value_25)) {
+                    $value_26 = $this->denormalizer->denormalize($value_25, 'Jane\\JsonSchema\\Model\\JsonSchema', 'json', $context);
+                } elseif (is_bool($value_25)) {
+                    $value_26 = $value_25;
+                }
+                $values_12[] = $value_26;
             }
-            $object->setOneOf($values_11);
+            $object->setOneOf($values_12);
         }
         if (property_exists($data, 'not') && $data->{'not'} !== null) {
-            $object->setNot($this->denormalizer->denormalize($data->{'not'}, 'Jane\\JsonSchema\\Model\\JsonSchema', 'json', $context));
+            $value_27 = $data->{'not'};
+            if (is_object($data->{'not'})) {
+                $value_27 = $this->denormalizer->denormalize($data->{'not'}, 'Jane\\JsonSchema\\Model\\JsonSchema', 'json', $context);
+            } elseif (is_bool($data->{'not'})) {
+                $value_27 = $data->{'not'};
+            }
+            $object->setNot($value_27);
         }
 
         return $object;
@@ -226,11 +309,14 @@ class JsonSchemaNormalizer implements DenormalizerInterface, NormalizerInterface
     public function normalize($object, $format = null, array $context = [])
     {
         $data = new \stdClass();
-        if (null !== $object->getId()) {
-            $data->{'id'} = $object->getId();
+        if (null !== $object->getDollarId()) {
+            $data->{'$id'} = $object->getDollarId();
         }
         if (null !== $object->getDollarSchema()) {
             $data->{'$schema'} = $object->getDollarSchema();
+        }
+        if (null !== $object->getDollarRef()) {
+            $data->{'$ref'} = $object->getDollarRef();
         }
         if (null !== $object->getTitle()) {
             $data->{'title'} = $object->getTitle();
@@ -240,6 +326,13 @@ class JsonSchemaNormalizer implements DenormalizerInterface, NormalizerInterface
         }
         if (null !== $object->getDefault()) {
             $data->{'default'} = $object->getDefault();
+        }
+        if (null !== $object->getExamples()) {
+            $values = [];
+            foreach ($object->getExamples() as $value) {
+                $values[] = $value;
+            }
+            $data->{'examples'} = $values;
         }
         if (null !== $object->getMultipleOf()) {
             $data->{'multipleOf'} = $object->getMultipleOf();
@@ -266,26 +359,34 @@ class JsonSchemaNormalizer implements DenormalizerInterface, NormalizerInterface
             $data->{'pattern'} = $object->getPattern();
         }
         if (null !== $object->getAdditionalItems()) {
-            $value = $object->getAdditionalItems();
-            if (is_bool($object->getAdditionalItems())) {
-                $value = $object->getAdditionalItems();
-            } elseif (is_object($object->getAdditionalItems())) {
-                $value = $this->normalizer->normalize($object->getAdditionalItems(), 'json', $context);
+            $value_1 = $object->getAdditionalItems();
+            if (is_object($object->getAdditionalItems())) {
+                $value_1 = $this->normalizer->normalize($object->getAdditionalItems(), 'json', $context);
+            } elseif (is_bool($object->getAdditionalItems())) {
+                $value_1 = $object->getAdditionalItems();
             }
-            $data->{'additionalItems'} = $value;
+            $data->{'additionalItems'} = $value_1;
         }
         if (null !== $object->getItems()) {
-            $value_1 = $object->getItems();
+            $value_2 = $object->getItems();
             if (is_object($object->getItems())) {
-                $value_1 = $this->normalizer->normalize($object->getItems(), 'json', $context);
+                $value_2 = $this->normalizer->normalize($object->getItems(), 'json', $context);
+            } elseif (is_bool($object->getItems())) {
+                $value_2 = $object->getItems();
             } elseif (is_array($object->getItems())) {
-                $values = [];
-                foreach ($object->getItems() as $value_2) {
-                    $values[] = $this->normalizer->normalize($value_2, 'json', $context);
+                $values_1 = [];
+                foreach ($object->getItems() as $value_3) {
+                    $value_4 = $value_3;
+                    if (is_object($value_3)) {
+                        $value_4 = $this->normalizer->normalize($value_3, 'json', $context);
+                    } elseif (is_bool($value_3)) {
+                        $value_4 = $value_3;
+                    }
+                    $values_1[] = $value_4;
                 }
-                $value_1 = $values;
+                $value_2 = $values_1;
             }
-            $data->{'items'} = $value_1;
+            $data->{'items'} = $value_2;
         }
         if (null !== $object->getMaxItems()) {
             $data->{'maxItems'} = $object->getMaxItems();
@@ -296,6 +397,15 @@ class JsonSchemaNormalizer implements DenormalizerInterface, NormalizerInterface
         if (null !== $object->getUniqueItems()) {
             $data->{'uniqueItems'} = $object->getUniqueItems();
         }
+        if (null !== $object->getContains()) {
+            $value_5 = $object->getContains();
+            if (is_object($object->getContains())) {
+                $value_5 = $this->normalizer->normalize($object->getContains(), 'json', $context);
+            } elseif (is_bool($object->getContains())) {
+                $value_5 = $object->getContains();
+            }
+            $data->{'contains'} = $value_5;
+        }
         if (null !== $object->getMaxProperties()) {
             $data->{'maxProperties'} = $object->getMaxProperties();
         }
@@ -303,105 +413,161 @@ class JsonSchemaNormalizer implements DenormalizerInterface, NormalizerInterface
             $data->{'minProperties'} = $object->getMinProperties();
         }
         if (null !== $object->getRequired()) {
-            $values_1 = [];
-            foreach ($object->getRequired() as $value_3) {
-                $values_1[] = $value_3;
+            $values_2 = [];
+            foreach ($object->getRequired() as $value_6) {
+                $values_2[] = $value_6;
             }
-            $data->{'required'} = $values_1;
+            $data->{'required'} = $values_2;
         }
         if (null !== $object->getAdditionalProperties()) {
-            $value_4 = $object->getAdditionalProperties();
-            if (is_bool($object->getAdditionalProperties())) {
-                $value_4 = $object->getAdditionalProperties();
-            } elseif (is_object($object->getAdditionalProperties())) {
-                $value_4 = $this->normalizer->normalize($object->getAdditionalProperties(), 'json', $context);
+            $value_7 = $object->getAdditionalProperties();
+            if (is_object($object->getAdditionalProperties())) {
+                $value_7 = $this->normalizer->normalize($object->getAdditionalProperties(), 'json', $context);
+            } elseif (is_bool($object->getAdditionalProperties())) {
+                $value_7 = $object->getAdditionalProperties();
             }
-            $data->{'additionalProperties'} = $value_4;
+            $data->{'additionalProperties'} = $value_7;
         }
         if (null !== $object->getDefinitions()) {
-            $values_2 = new \stdClass();
-            foreach ($object->getDefinitions() as $key => $value_5) {
-                $values_2->{$key} = $this->normalizer->normalize($value_5, 'json', $context);
-            }
-            $data->{'definitions'} = $values_2;
-        }
-        if (null !== $object->getProperties()) {
             $values_3 = new \stdClass();
-            foreach ($object->getProperties() as $key_1 => $value_6) {
-                $values_3->{$key_1} = $this->normalizer->normalize($value_6, 'json', $context);
-            }
-            $data->{'properties'} = $values_3;
-        }
-        if (null !== $object->getPatternProperties()) {
-            $values_4 = new \stdClass();
-            foreach ($object->getPatternProperties() as $key_2 => $value_7) {
-                $values_4->{$key_2} = $this->normalizer->normalize($value_7, 'json', $context);
-            }
-            $data->{'patternProperties'} = $values_4;
-        }
-        if (null !== $object->getDependencies()) {
-            $values_5 = new \stdClass();
-            foreach ($object->getDependencies() as $key_3 => $value_8) {
+            foreach ($object->getDefinitions() as $key => $value_8) {
                 $value_9 = $value_8;
                 if (is_object($value_8)) {
                     $value_9 = $this->normalizer->normalize($value_8, 'json', $context);
-                } elseif (is_array($value_8)) {
-                    $values_6 = [];
-                    foreach ($value_8 as $value_10) {
-                        $values_6[] = $value_10;
-                    }
-                    $value_9 = $values_6;
+                } elseif (is_bool($value_8)) {
+                    $value_9 = $value_8;
                 }
-                $values_5->{$key_3} = $value_9;
+                $values_3->{$key} = $value_9;
             }
-            $data->{'dependencies'} = $values_5;
+            $data->{'definitions'} = $values_3;
+        }
+        if (null !== $object->getProperties()) {
+            $values_4 = new \stdClass();
+            foreach ($object->getProperties() as $key_1 => $value_10) {
+                $value_11 = $value_10;
+                if (is_object($value_10)) {
+                    $value_11 = $this->normalizer->normalize($value_10, 'json', $context);
+                } elseif (is_bool($value_10)) {
+                    $value_11 = $value_10;
+                }
+                $values_4->{$key_1} = $value_11;
+            }
+            $data->{'properties'} = $values_4;
+        }
+        if (null !== $object->getPatternProperties()) {
+            $values_5 = new \stdClass();
+            foreach ($object->getPatternProperties() as $key_2 => $value_12) {
+                $value_13 = $value_12;
+                if (is_object($value_12)) {
+                    $value_13 = $this->normalizer->normalize($value_12, 'json', $context);
+                } elseif (is_bool($value_12)) {
+                    $value_13 = $value_12;
+                }
+                $values_5->{$key_2} = $value_13;
+            }
+            $data->{'patternProperties'} = $values_5;
+        }
+        if (null !== $object->getDependencies()) {
+            $values_6 = new \stdClass();
+            foreach ($object->getDependencies() as $key_3 => $value_14) {
+                $value_15 = $value_14;
+                if (is_object($value_14)) {
+                    $value_15 = $this->normalizer->normalize($value_14, 'json', $context);
+                } elseif (is_bool($value_14)) {
+                    $value_15 = $value_14;
+                } elseif (is_array($value_14)) {
+                    $values_7 = [];
+                    foreach ($value_14 as $value_16) {
+                        $values_7[] = $value_16;
+                    }
+                    $value_15 = $values_7;
+                }
+                $values_6->{$key_3} = $value_15;
+            }
+            $data->{'dependencies'} = $values_6;
+        }
+        if (null !== $object->getPropertyNames()) {
+            $value_17 = $object->getPropertyNames();
+            if (is_object($object->getPropertyNames())) {
+                $value_17 = $this->normalizer->normalize($object->getPropertyNames(), 'json', $context);
+            } elseif (is_bool($object->getPropertyNames())) {
+                $value_17 = $object->getPropertyNames();
+            }
+            $data->{'propertyNames'} = $value_17;
+        }
+        if (null !== $object->getConst()) {
+            $data->{'const'} = $object->getConst();
         }
         if (null !== $object->getEnum()) {
-            $values_7 = [];
-            foreach ($object->getEnum() as $value_11) {
-                $values_7[] = $value_11;
+            $values_8 = [];
+            foreach ($object->getEnum() as $value_18) {
+                $values_8[] = $value_18;
             }
-            $data->{'enum'} = $values_7;
+            $data->{'enum'} = $values_8;
         }
         if (null !== $object->getType()) {
-            $value_12 = $object->getType();
+            $value_19 = $object->getType();
             if (is_array($object->getType())) {
-                $values_8 = [];
-                foreach ($object->getType() as $value_13) {
-                    $values_8[] = $value_13;
+                $values_9 = [];
+                foreach ($object->getType() as $value_20) {
+                    $values_9[] = $value_20;
                 }
-                $value_12 = $values_8;
+                $value_19 = $values_9;
             } elseif (!is_null($object->getType())) {
-                $value_12 = $object->getType();
+                $value_19 = $object->getType();
             }
-            $data->{'type'} = $value_12;
+            $data->{'type'} = $value_19;
         }
         if (null !== $object->getFormat()) {
             $data->{'format'} = $object->getFormat();
         }
         if (null !== $object->getAllOf()) {
-            $values_9 = [];
-            foreach ($object->getAllOf() as $value_14) {
-                $values_9[] = $this->normalizer->normalize($value_14, 'json', $context);
+            $values_10 = [];
+            foreach ($object->getAllOf() as $value_21) {
+                $value_22 = $value_21;
+                if (is_object($value_21)) {
+                    $value_22 = $this->normalizer->normalize($value_21, 'json', $context);
+                } elseif (is_bool($value_21)) {
+                    $value_22 = $value_21;
+                }
+                $values_10[] = $value_22;
             }
-            $data->{'allOf'} = $values_9;
+            $data->{'allOf'} = $values_10;
         }
         if (null !== $object->getAnyOf()) {
-            $values_10 = [];
-            foreach ($object->getAnyOf() as $value_15) {
-                $values_10[] = $this->normalizer->normalize($value_15, 'json', $context);
+            $values_11 = [];
+            foreach ($object->getAnyOf() as $value_23) {
+                $value_24 = $value_23;
+                if (is_object($value_23)) {
+                    $value_24 = $this->normalizer->normalize($value_23, 'json', $context);
+                } elseif (is_bool($value_23)) {
+                    $value_24 = $value_23;
+                }
+                $values_11[] = $value_24;
             }
-            $data->{'anyOf'} = $values_10;
+            $data->{'anyOf'} = $values_11;
         }
         if (null !== $object->getOneOf()) {
-            $values_11 = [];
-            foreach ($object->getOneOf() as $value_16) {
-                $values_11[] = $this->normalizer->normalize($value_16, 'json', $context);
+            $values_12 = [];
+            foreach ($object->getOneOf() as $value_25) {
+                $value_26 = $value_25;
+                if (is_object($value_25)) {
+                    $value_26 = $this->normalizer->normalize($value_25, 'json', $context);
+                } elseif (is_bool($value_25)) {
+                    $value_26 = $value_25;
+                }
+                $values_12[] = $value_26;
             }
-            $data->{'oneOf'} = $values_11;
+            $data->{'oneOf'} = $values_12;
         }
         if (null !== $object->getNot()) {
-            $data->{'not'} = $this->normalizer->normalize($object->getNot(), 'json', $context);
+            $value_27 = $object->getNot();
+            if (is_object($object->getNot())) {
+                $value_27 = $this->normalizer->normalize($object->getNot(), 'json', $context);
+            } elseif (is_bool($object->getNot())) {
+                $value_27 = $object->getNot();
+            }
+            $data->{'not'} = $value_27;
         }
 
         return $data;

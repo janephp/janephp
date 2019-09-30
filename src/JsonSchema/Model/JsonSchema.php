@@ -15,11 +15,15 @@ class JsonSchema
     /**
      * @var string|null
      */
-    protected $id;
+    protected $dollarId;
     /**
      * @var string|null
      */
     protected $dollarSchema;
+    /**
+     * @var string|null
+     */
+    protected $dollarRef;
     /**
      * @var string|null
      */
@@ -33,6 +37,10 @@ class JsonSchema
      */
     protected $default;
     /**
+     * @var mixed[]|null
+     */
+    protected $examples;
+    /**
      * @var float|null
      */
     protected $multipleOf;
@@ -41,17 +49,17 @@ class JsonSchema
      */
     protected $maximum;
     /**
-     * @var bool|null
+     * @var float|null
      */
-    protected $exclusiveMaximum = false;
+    protected $exclusiveMaximum;
     /**
      * @var float|null
      */
     protected $minimum;
     /**
-     * @var bool|null
+     * @var float|null
      */
-    protected $exclusiveMinimum = false;
+    protected $exclusiveMinimum;
     /**
      * @var int|null
      */
@@ -65,11 +73,11 @@ class JsonSchema
      */
     protected $pattern;
     /**
-     * @var bool|JsonSchema|null
+     * @var JsonSchema|bool|null
      */
     protected $additionalItems;
     /**
-     * @var JsonSchema|JsonSchema[]|null
+     * @var JsonSchema|bool|JsonSchema[]|bool[]|null
      */
     protected $items;
     /**
@@ -85,6 +93,10 @@ class JsonSchema
      */
     protected $uniqueItems = false;
     /**
+     * @var JsonSchema|bool|null
+     */
+    protected $contains;
+    /**
      * @var int|null
      */
     protected $maxProperties;
@@ -95,27 +107,35 @@ class JsonSchema
     /**
      * @var string[]|null
      */
-    protected $required;
+    protected $required = [];
     /**
-     * @var bool|JsonSchema|null
+     * @var JsonSchema|bool|null
      */
     protected $additionalProperties;
     /**
-     * @var JsonSchema[]|null
+     * @var JsonSchema[]|bool[]|null
      */
     protected $definitions;
     /**
-     * @var JsonSchema[]|null
+     * @var JsonSchema[]|bool[]|null
      */
     protected $properties;
     /**
-     * @var JsonSchema[]|null
+     * @var JsonSchema[]|bool[]|null
      */
     protected $patternProperties;
     /**
-     * @var JsonSchema[]|string[][]|null
+     * @var JsonSchema[]|bool[]|string[][]|null
      */
     protected $dependencies;
+    /**
+     * @var JsonSchema|bool|null
+     */
+    protected $propertyNames;
+    /**
+     * @var mixed|null
+     */
+    protected $const;
     /**
      * @var mixed[]|null
      */
@@ -129,40 +149,38 @@ class JsonSchema
      */
     protected $format;
     /**
-     * @var JsonSchema[]|null
+     * @var JsonSchema[]|bool[]|null
      */
     protected $allOf;
     /**
-     * @var JsonSchema[]|null
+     * @var JsonSchema[]|bool[]|null
      */
     protected $anyOf;
     /**
-     * @var JsonSchema[]|null
+     * @var JsonSchema[]|bool[]|null
      */
     protected $oneOf;
     /**
-     * Core schema meta-schema.
-     *
-     * @var JsonSchema|null
+     * @var JsonSchema|bool|null
      */
     protected $not;
 
     /**
      * @return string|null
      */
-    public function getId(): ?string
+    public function getDollarId(): ?string
     {
-        return $this->id;
+        return $this->dollarId;
     }
 
     /**
-     * @param string|null $id
+     * @param string|null $dollarId
      *
      * @return self
      */
-    public function setId(?string $id): self
+    public function setDollarId(?string $dollarId): self
     {
-        $this->id = $id;
+        $this->dollarId = $dollarId;
 
         return $this;
     }
@@ -183,6 +201,26 @@ class JsonSchema
     public function setDollarSchema(?string $dollarSchema): self
     {
         $this->dollarSchema = $dollarSchema;
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getDollarRef(): ?string
+    {
+        return $this->dollarRef;
+    }
+
+    /**
+     * @param string|null $dollarRef
+     *
+     * @return self
+     */
+    public function setDollarRef(?string $dollarRef): self
+    {
+        $this->dollarRef = $dollarRef;
 
         return $this;
     }
@@ -248,6 +286,26 @@ class JsonSchema
     }
 
     /**
+     * @return mixed[]|null
+     */
+    public function getExamples(): ?array
+    {
+        return $this->examples;
+    }
+
+    /**
+     * @param mixed[]|null $examples
+     *
+     * @return self
+     */
+    public function setExamples(?array $examples): self
+    {
+        $this->examples = $examples;
+
+        return $this;
+    }
+
+    /**
      * @return float|null
      */
     public function getMultipleOf(): ?float
@@ -288,19 +346,19 @@ class JsonSchema
     }
 
     /**
-     * @return bool|null
+     * @return float|null
      */
-    public function getExclusiveMaximum(): ?bool
+    public function getExclusiveMaximum(): ?float
     {
         return $this->exclusiveMaximum;
     }
 
     /**
-     * @param bool|null $exclusiveMaximum
+     * @param float|null $exclusiveMaximum
      *
      * @return self
      */
-    public function setExclusiveMaximum(?bool $exclusiveMaximum): self
+    public function setExclusiveMaximum(?float $exclusiveMaximum): self
     {
         $this->exclusiveMaximum = $exclusiveMaximum;
 
@@ -328,19 +386,19 @@ class JsonSchema
     }
 
     /**
-     * @return bool|null
+     * @return float|null
      */
-    public function getExclusiveMinimum(): ?bool
+    public function getExclusiveMinimum(): ?float
     {
         return $this->exclusiveMinimum;
     }
 
     /**
-     * @param bool|null $exclusiveMinimum
+     * @param float|null $exclusiveMinimum
      *
      * @return self
      */
-    public function setExclusiveMinimum(?bool $exclusiveMinimum): self
+    public function setExclusiveMinimum(?float $exclusiveMinimum): self
     {
         $this->exclusiveMinimum = $exclusiveMinimum;
 
@@ -408,7 +466,7 @@ class JsonSchema
     }
 
     /**
-     * @return bool|JsonSchema|null
+     * @return JsonSchema|bool|null
      */
     public function getAdditionalItems()
     {
@@ -416,7 +474,7 @@ class JsonSchema
     }
 
     /**
-     * @param bool|JsonSchema|null $additionalItems
+     * @param JsonSchema|bool|null $additionalItems
      *
      * @return self
      */
@@ -428,7 +486,7 @@ class JsonSchema
     }
 
     /**
-     * @return JsonSchema|JsonSchema[]|null
+     * @return JsonSchema|bool|JsonSchema[]|bool[]|null
      */
     public function getItems()
     {
@@ -436,7 +494,7 @@ class JsonSchema
     }
 
     /**
-     * @param JsonSchema|JsonSchema[]|null $items
+     * @param JsonSchema|bool|JsonSchema[]|bool[]|null $items
      *
      * @return self
      */
@@ -508,6 +566,26 @@ class JsonSchema
     }
 
     /**
+     * @return JsonSchema|bool|null
+     */
+    public function getContains()
+    {
+        return $this->contains;
+    }
+
+    /**
+     * @param JsonSchema|bool|null $contains
+     *
+     * @return self
+     */
+    public function setContains($contains): self
+    {
+        $this->contains = $contains;
+
+        return $this;
+    }
+
+    /**
      * @return int|null
      */
     public function getMaxProperties(): ?int
@@ -568,7 +646,7 @@ class JsonSchema
     }
 
     /**
-     * @return bool|JsonSchema|null
+     * @return JsonSchema|bool|null
      */
     public function getAdditionalProperties()
     {
@@ -576,7 +654,7 @@ class JsonSchema
     }
 
     /**
-     * @param bool|JsonSchema|null $additionalProperties
+     * @param JsonSchema|bool|null $additionalProperties
      *
      * @return self
      */
@@ -588,7 +666,7 @@ class JsonSchema
     }
 
     /**
-     * @return JsonSchema[]|null
+     * @return JsonSchema[]|bool[]|null
      */
     public function getDefinitions(): ?\ArrayObject
     {
@@ -596,7 +674,7 @@ class JsonSchema
     }
 
     /**
-     * @param JsonSchema[]|null $definitions
+     * @param JsonSchema[]|bool[]|null $definitions
      *
      * @return self
      */
@@ -608,7 +686,7 @@ class JsonSchema
     }
 
     /**
-     * @return JsonSchema[]|null
+     * @return JsonSchema[]|bool[]|null
      */
     public function getProperties(): ?\ArrayObject
     {
@@ -616,7 +694,7 @@ class JsonSchema
     }
 
     /**
-     * @param JsonSchema[]|null $properties
+     * @param JsonSchema[]|bool[]|null $properties
      *
      * @return self
      */
@@ -628,7 +706,7 @@ class JsonSchema
     }
 
     /**
-     * @return JsonSchema[]|null
+     * @return JsonSchema[]|bool[]|null
      */
     public function getPatternProperties(): ?\ArrayObject
     {
@@ -636,7 +714,7 @@ class JsonSchema
     }
 
     /**
-     * @param JsonSchema[]|null $patternProperties
+     * @param JsonSchema[]|bool[]|null $patternProperties
      *
      * @return self
      */
@@ -648,7 +726,7 @@ class JsonSchema
     }
 
     /**
-     * @return JsonSchema[]|string[][]|null
+     * @return JsonSchema[]|bool[]|string[][]|null
      */
     public function getDependencies(): ?\ArrayObject
     {
@@ -656,13 +734,53 @@ class JsonSchema
     }
 
     /**
-     * @param JsonSchema[]|string[][]|null $dependencies
+     * @param JsonSchema[]|bool[]|string[][]|null $dependencies
      *
      * @return self
      */
     public function setDependencies(?\ArrayObject $dependencies): self
     {
         $this->dependencies = $dependencies;
+
+        return $this;
+    }
+
+    /**
+     * @return JsonSchema|bool|null
+     */
+    public function getPropertyNames()
+    {
+        return $this->propertyNames;
+    }
+
+    /**
+     * @param JsonSchema|bool|null $propertyNames
+     *
+     * @return self
+     */
+    public function setPropertyNames($propertyNames): self
+    {
+        $this->propertyNames = $propertyNames;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getConst()
+    {
+        return $this->const;
+    }
+
+    /**
+     * @param mixed $const
+     *
+     * @return self
+     */
+    public function setConst($const): self
+    {
+        $this->const = $const;
 
         return $this;
     }
@@ -728,7 +846,7 @@ class JsonSchema
     }
 
     /**
-     * @return JsonSchema[]|null
+     * @return JsonSchema[]|bool[]|null
      */
     public function getAllOf(): ?array
     {
@@ -736,7 +854,7 @@ class JsonSchema
     }
 
     /**
-     * @param JsonSchema[]|null $allOf
+     * @param JsonSchema[]|bool[]|null $allOf
      *
      * @return self
      */
@@ -748,7 +866,7 @@ class JsonSchema
     }
 
     /**
-     * @return JsonSchema[]|null
+     * @return JsonSchema[]|bool[]|null
      */
     public function getAnyOf(): ?array
     {
@@ -756,7 +874,7 @@ class JsonSchema
     }
 
     /**
-     * @param JsonSchema[]|null $anyOf
+     * @param JsonSchema[]|bool[]|null $anyOf
      *
      * @return self
      */
@@ -768,7 +886,7 @@ class JsonSchema
     }
 
     /**
-     * @return JsonSchema[]|null
+     * @return JsonSchema[]|bool[]|null
      */
     public function getOneOf(): ?array
     {
@@ -776,7 +894,7 @@ class JsonSchema
     }
 
     /**
-     * @param JsonSchema[]|null $oneOf
+     * @param JsonSchema[]|bool[]|null $oneOf
      *
      * @return self
      */
@@ -788,23 +906,19 @@ class JsonSchema
     }
 
     /**
-     * Core schema meta-schema.
-     *
-     * @return JsonSchema|null
+     * @return JsonSchema|bool|null
      */
-    public function getNot(): ?self
+    public function getNot()
     {
         return $this->not;
     }
 
     /**
-     * Core schema meta-schema.
-     *
-     * @param JsonSchema|null $not
+     * @param JsonSchema|bool|null $not
      *
      * @return self
      */
-    public function setNot(?self $not): self
+    public function setNot($not): self
     {
         $this->not = $not;
 

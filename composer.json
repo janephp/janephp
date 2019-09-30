@@ -10,6 +10,7 @@
     ],
     "require": {
         "php": ">=7.2",
+        "ext-json": "*",
         "doctrine/inflector": "^1.0",
         "league/uri": "^4.2 || ^5.3",
         "nikic/php-parser": "^4.0",
@@ -75,6 +76,6 @@
     ],
     "scripts": {
         "test": "php vendor/bin/phpunit",
-        "test-ci": "phpdbg -qrr -d memory_limit=2G vendor/bin/phpunit --coverage-text --coverage-clover=build/logs/clover.xml --coverage-html=build/html"
+        "test-ci": "phpdbg -qrr -d memory_limit=-1 vendor/bin/phpunit --coverage-text --coverage-clover=build/logs/clover.xml --coverage-html=build/html"
     }
 }
