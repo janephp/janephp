@@ -7,6 +7,7 @@ use Jane\JsonSchema\Generator\Context\Context;
 use Jane\JsonSchema\Generator\ModelGenerator;
 use Jane\JsonSchema\Generator\Naming;
 use Jane\JsonSchema\Generator\NormalizerGenerator;
+use Jane\JsonSchema\Generator\ProxyGenerator;
 use Jane\JsonSchema\Guesser\ChainGuesser;
 use Jane\JsonSchema\Guesser\JsonSchema\JsonSchemaGuesserFactory;
 use Jane\JsonSchema\Normalizer\NormalizerFactory;
@@ -98,10 +99,12 @@ class Jane extends ChainGenerator
         $naming = new Naming();
         $parser = (new ParserFactory())->create(ParserFactory::PREFER_PHP7);
         $modelGenerator = new ModelGenerator($naming, $parser);
+        $proxyGenerator = new ProxyGenerator($naming);
         $normGenerator = new NormalizerGenerator($naming, $options['reference'], $options['use-cacheable-supports-method'] ?? false);
 
         $self = new self($serializer, $chainGuesser, $naming, $options['strict']);
         $self->addGenerator($modelGenerator);
+        $self->addGenerator($proxyGenerator);
         $self->addGenerator($normGenerator);
 
         return $self;
