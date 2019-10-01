@@ -1,228 +1,135 @@
 {
-    "id": "http://json-schema.org/draft-04/schema#",
-    "$schema": "http://json-schema.org/draft-04/schema#",
-    "description": "Core schema meta-schema",
-    "exclusiveMaximum": false,
-    "exclusiveMinimum": false,
-    "uniqueItems": false,
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "$id": "http://json-schema.org/draft-06/schema#",
+    "title": "Core schema meta-schema",
     "definitions": {
         "schemaArray": {
             "type": "array",
-            "exclusiveMaximum": false,
-            "exclusiveMinimum": false,
-            "uniqueItems": false,
             "minItems": 1,
             "items": { "$ref": "#" }
         },
-        "positiveInteger": {
+        "nonNegativeInteger": {
             "type": "integer",
-            "exclusiveMaximum": false,
-            "exclusiveMinimum": false,
-            "uniqueItems": false,
             "minimum": 0
         },
-        "positiveIntegerDefault0": {
-            "allOf": [ { "$ref": "#/definitions/positiveInteger" }, {
-                    "default": 0,
-                    "exclusiveMaximum": false,
-                    "exclusiveMinimum": false,
-                    "uniqueItems": false
-                }
-            ],
-            "exclusiveMaximum": false,
-            "exclusiveMinimum": false,
-            "uniqueItems": false
+        "nonNegativeIntegerDefault0": {
+            "allOf": [
+                { "$ref": "#/definitions/nonNegativeInteger" },
+                { "default": 0 }
+            ]
         },
         "simpleTypes": {
-            "enum": [ "array", "boolean", "integer", "null", "number", "object", "string" ],
-            "exclusiveMaximum": false,
-            "exclusiveMinimum": false,
-            "uniqueItems": false
+            "enum": [
+                "array",
+                "boolean",
+                "integer",
+                "null",
+                "number",
+                "object",
+                "string"
+            ]
         },
         "stringArray": {
             "type": "array",
-            "items": {
-                "type": "string",
-                "exclusiveMaximum": false,
-                "exclusiveMinimum": false,
-                "uniqueItems": false
-            },
-            "exclusiveMaximum": false,
-            "exclusiveMinimum": false,
-            "minItems": 1,
-            "uniqueItems": true
+            "items": { "type": "string" },
+            "uniqueItems": true,
+            "default": []
         }
     },
-    "type": "object",
+    "type": ["object", "boolean"],
     "properties": {
-        "id": {
-            "exclusiveMaximum": false,
-            "exclusiveMinimum": false,
-            "uniqueItems": false,
+        "$id": {
             "type": "string",
-            "format": "uri"
+            "format": "uri-reference"
         },
         "$schema": {
-            "exclusiveMaximum": false,
-            "exclusiveMinimum": false,
-            "uniqueItems": false,
             "type": "string",
             "format": "uri"
         },
+        "$ref": {
+            "type": "string",
+            "format": "uri-reference"
+        },
         "title": {
-            "exclusiveMaximum": false,
-            "exclusiveMinimum": false,
-            "uniqueItems": false,
             "type": "string"
         },
         "description": {
-            "exclusiveMaximum": false,
-            "exclusiveMinimum": false,
-            "uniqueItems": false,
             "type": "string"
         },
-        "default": {
-            "exclusiveMaximum": false,
-            "exclusiveMinimum": false,
-            "uniqueItems": false
+        "default": {},
+        "examples": {
+            "type": "array",
+            "items": {}
         },
         "multipleOf": {
             "type": "number",
-            "exclusiveMaximum": false,
-            "uniqueItems": false,
-            "minimum": 0,
-            "exclusiveMinimum": true
+            "exclusiveMinimum": 0
         },
         "maximum": {
-            "exclusiveMaximum": false,
-            "exclusiveMinimum": false,
-            "uniqueItems": false,
             "type": "number"
         },
         "exclusiveMaximum": {
-            "type": "boolean",
-            "default": false,
-            "exclusiveMaximum": false,
-            "exclusiveMinimum": false,
-            "uniqueItems": false
+            "type": "number"
         },
         "minimum": {
-            "exclusiveMaximum": false,
-            "exclusiveMinimum": false,
-            "uniqueItems": false,
             "type": "number"
         },
         "exclusiveMinimum": {
-            "type": "boolean",
-            "default": false,
-            "exclusiveMaximum": false,
-            "exclusiveMinimum": false,
-            "uniqueItems": false
+            "type": "number"
         },
-        "maxLength": { "$ref": "#/definitions/positiveInteger" },
-        "minLength": { "$ref": "#/definitions/positiveIntegerDefault0" },
+        "maxLength": { "$ref": "#/definitions/nonNegativeInteger" },
+        "minLength": { "$ref": "#/definitions/nonNegativeIntegerDefault0" },
         "pattern": {
-            "exclusiveMaximum": false,
-            "exclusiveMinimum": false,
-            "uniqueItems": false,
             "type": "string",
             "format": "regex"
         },
-        "additionalItems": {
-            "anyOf": [
-                {
-                    "exclusiveMaximum": false,
-                    "exclusiveMinimum": false,
-                    "uniqueItems": false,
-                    "type": "boolean"
-                },
-                { "$ref": "#" }
-            ],
-            "default": {},
-            "exclusiveMaximum": false,
-            "exclusiveMinimum": false,
-            "uniqueItems": false
-        },
+        "additionalItems": { "$ref": "#" },
         "items": {
             "anyOf": [
                 { "$ref": "#" },
                 { "$ref": "#/definitions/schemaArray" }
             ],
-            "default": {},
-            "exclusiveMaximum": false,
-            "exclusiveMinimum": false,
-            "uniqueItems": false
+            "default": {}
         },
-        "maxItems": { "$ref": "#/definitions/positiveInteger" },
-        "minItems": { "$ref": "#/definitions/positiveIntegerDefault0" },
+        "maxItems": { "$ref": "#/definitions/nonNegativeInteger" },
+        "minItems": { "$ref": "#/definitions/nonNegativeIntegerDefault0" },
         "uniqueItems": {
             "type": "boolean",
-            "default": false,
-            "exclusiveMaximum": false,
-            "exclusiveMinimum": false,
-            "uniqueItems": false
+            "default": false
         },
-        "maxProperties": { "$ref": "#/definitions/positiveInteger" },
-        "minProperties": { "$ref": "#/definitions/positiveIntegerDefault0" },
+        "contains": { "$ref": "#" },
+        "maxProperties": { "$ref": "#/definitions/nonNegativeInteger" },
+        "minProperties": { "$ref": "#/definitions/nonNegativeIntegerDefault0" },
         "required": { "$ref": "#/definitions/stringArray" },
-        "additionalProperties": {
-            "anyOf": [
-                {
-                    "exclusiveMaximum": false,
-                    "exclusiveMinimum": false,
-                    "uniqueItems": false,
-                    "type": "boolean"
-                },
-                { "$ref": "#" }
-            ],
-            "default": {},
-            "exclusiveMaximum": false,
-            "exclusiveMinimum": false,
-            "uniqueItems": false
-        },
+        "additionalProperties": { "$ref": "#" },
         "definitions": {
             "type": "object",
             "additionalProperties": { "$ref": "#" },
-            "default": {},
-            "exclusiveMaximum": false,
-            "exclusiveMinimum": false,
-            "uniqueItems": false
+            "default": {}
         },
         "properties": {
             "type": "object",
             "additionalProperties": { "$ref": "#" },
-            "default": {},
-            "exclusiveMaximum": false,
-            "exclusiveMinimum": false,
-            "uniqueItems": false
+            "default": {}
         },
         "patternProperties": {
             "type": "object",
             "additionalProperties": { "$ref": "#" },
-            "default": {},
-            "exclusiveMaximum": false,
-            "exclusiveMinimum": false,
-            "uniqueItems": false
+            "default": {}
         },
         "dependencies": {
             "type": "object",
-            "exclusiveMaximum": false,
-            "exclusiveMinimum": false,
-            "uniqueItems": false,
             "additionalProperties": {
-                "exclusiveMaximum": false,
-                "exclusiveMinimum": false,
-                "uniqueItems": false,
                 "anyOf": [
                     { "$ref": "#" },
                     { "$ref": "#/definitions/stringArray" }
                 ]
             }
         },
+        "propertyNames": { "$ref": "#" },
+        "const": {},
         "enum": {
             "type": "array",
-            "exclusiveMaximum": false,
-            "exclusiveMinimum": false,
             "minItems": 1,
             "uniqueItems": true
         },
@@ -231,31 +138,17 @@
                 { "$ref": "#/definitions/simpleTypes" },
                 {
                     "type": "array",
-                    "exclusiveMaximum": false,
-                    "exclusiveMinimum": false,
                     "items": { "$ref": "#/definitions/simpleTypes" },
                     "minItems": 1,
                     "uniqueItems": true
                 }
-            ],
-            "exclusiveMaximum": false,
-            "exclusiveMinimum": false,
-            "uniqueItems": false
+            ]
         },
-        "format": {
-            "type": "string",
-            "exclusiveMaximum": false,
-            "exclusiveMinimum": false,
-            "uniqueItems": false
-        },
+        "format": { "type": "string" },
         "allOf": { "$ref": "#/definitions/schemaArray" },
         "anyOf": { "$ref": "#/definitions/schemaArray" },
         "oneOf": { "$ref": "#/definitions/schemaArray" },
         "not": { "$ref": "#" }
-    },
-    "dependencies": {
-        "exclusiveMaximum": [ "maximum" ],
-        "exclusiveMinimum": [ "minimum" ]
     },
     "default": {}
 }

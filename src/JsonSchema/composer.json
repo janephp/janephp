@@ -21,6 +21,7 @@
     ],
     "require": {
         "php": ">=7.2",
+        "ext-json": "*",
         "doctrine/inflector": "^1.0",
         "jane-php/json-schema-runtime": "^5.0",
         "nikic/php-parser": "^4.0",
