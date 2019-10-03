@@ -185,7 +185,7 @@
         "const": { "type": "string" },
         "enum": {
             "type": "array",
-            "items": true
+            "items": { "type": "string" }
         },
         "type": {
             "anyOf": [

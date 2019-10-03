@@ -241,7 +241,7 @@ class JsonSchema
      */
     protected $const;
     /**
-     * @var mixed[]|null
+     * @var string[]|null
      */
     protected $enum;
     /**
@@ -1390,7 +1390,7 @@ class JsonSchema
     }
 
     /**
-     * @return mixed[]|null
+     * @return string[]|null
      */
     public function getEnum(): ?array
     {
@@ -1398,7 +1398,7 @@ class JsonSchema
     }
 
     /**
-     * @param mixed[]|null $enum
+     * @param string[]|null $enum
      *
      * @return self
      */
