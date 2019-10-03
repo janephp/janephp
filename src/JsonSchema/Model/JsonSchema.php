@@ -27,17 +27,25 @@ class JsonSchema
     /**
      * @var string|null
      */
+    protected $dollarComment;
+    /**
+     * @var string|null
+     */
     protected $title;
     /**
      * @var string|null
      */
     protected $description;
     /**
+     * @var bool|null
+     */
+    protected $readOnly = false;
+    /**
      * @var mixed|null
      */
     protected $default;
     /**
-     * @var mixed[]|null
+     * @var JsonSchema[]|bool[]|null
      */
     protected $examples;
     /**
@@ -133,7 +141,7 @@ class JsonSchema
      */
     protected $propertyNames;
     /**
-     * @var mixed|null
+     * @var string|null
      */
     protected $const;
     /**
@@ -148,6 +156,26 @@ class JsonSchema
      * @var string|null
      */
     protected $format;
+    /**
+     * @var string|null
+     */
+    protected $contentMediaType;
+    /**
+     * @var string|null
+     */
+    protected $contentEncoding;
+    /**
+     * @var JsonSchema|bool|null
+     */
+    protected $if;
+    /**
+     * @var JsonSchema|bool|null
+     */
+    protected $then;
+    /**
+     * @var JsonSchema|bool|null
+     */
+    protected $else;
     /**
      * @var JsonSchema[]|bool[]|null
      */
@@ -228,6 +256,26 @@ class JsonSchema
     /**
      * @return string|null
      */
+    public function getDollarComment(): ?string
+    {
+        return $this->dollarComment;
+    }
+
+    /**
+     * @param string|null $dollarComment
+     *
+     * @return self
+     */
+    public function setDollarComment(?string $dollarComment): self
+    {
+        $this->dollarComment = $dollarComment;
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
     public function getTitle(): ?string
     {
         return $this->title;
@@ -266,6 +314,26 @@ class JsonSchema
     }
 
     /**
+     * @return bool|null
+     */
+    public function getReadOnly(): ?bool
+    {
+        return $this->readOnly;
+    }
+
+    /**
+     * @param bool|null $readOnly
+     *
+     * @return self
+     */
+    public function setReadOnly(?bool $readOnly): self
+    {
+        $this->readOnly = $readOnly;
+
+        return $this;
+    }
+
+    /**
      * @return mixed
      */
     public function getDefault()
@@ -286,7 +354,7 @@ class JsonSchema
     }
 
     /**
-     * @return mixed[]|null
+     * @return JsonSchema[]|bool[]|null
      */
     public function getExamples(): ?array
     {
@@ -294,7 +362,7 @@ class JsonSchema
     }
 
     /**
-     * @param mixed[]|null $examples
+     * @param JsonSchema[]|bool[]|null $examples
      *
      * @return self
      */
@@ -766,19 +834,19 @@ class JsonSchema
     }
 
     /**
-     * @return mixed
+     * @return string|null
      */
-    public function getConst()
+    public function getConst(): ?string
     {
         return $this->const;
     }
 
     /**
-     * @param mixed $const
+     * @param string|null $const
      *
      * @return self
      */
-    public function setConst($const): self
+    public function setConst(?string $const): self
     {
         $this->const = $const;
 
@@ -841,6 +909,106 @@ class JsonSchema
     public function setFormat(?string $format): self
     {
         $this->format = $format;
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getContentMediaType(): ?string
+    {
+        return $this->contentMediaType;
+    }
+
+    /**
+     * @param string|null $contentMediaType
+     *
+     * @return self
+     */
+    public function setContentMediaType(?string $contentMediaType): self
+    {
+        $this->contentMediaType = $contentMediaType;
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getContentEncoding(): ?string
+    {
+        return $this->contentEncoding;
+    }
+
+    /**
+     * @param string|null $contentEncoding
+     *
+     * @return self
+     */
+    public function setContentEncoding(?string $contentEncoding): self
+    {
+        $this->contentEncoding = $contentEncoding;
+
+        return $this;
+    }
+
+    /**
+     * @return JsonSchema|bool|null
+     */
+    public function getIf()
+    {
+        return $this->if;
+    }
+
+    /**
+     * @param JsonSchema|bool|null $if
+     *
+     * @return self
+     */
+    public function setIf($if): self
+    {
+        $this->if = $if;
+
+        return $this;
+    }
+
+    /**
+     * @return JsonSchema|bool|null
+     */
+    public function getThen()
+    {
+        return $this->then;
+    }
+
+    /**
+     * @param JsonSchema|bool|null $then
+     *
+     * @return self
+     */
+    public function setThen($then): self
+    {
+        $this->then = $then;
+
+        return $this;
+    }
+
+    /**
+     * @return JsonSchema|bool|null
+     */
+    public function getElse()
+    {
+        return $this->else;
+    }
+
+    /**
+     * @param JsonSchema|bool|null $else
+     *
+     * @return self
+     */
+    public function setElse($else): self
+    {
+        $this->else = $else;
 
         return $this;
     }
