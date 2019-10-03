@@ -13,6 +13,94 @@ namespace Jane\JsonSchema\Model;
 class JsonSchema
 {
     /**
+     * @var JsonSchema[]|bool[]|null
+     */
+    protected $definitions;
+    /**
+     * @var JsonSchema[]|bool[]|string[][]|null
+     */
+    protected $dependencies;
+    /**
+     * @var JsonSchema|bool|null
+     */
+    protected $additionalItems;
+    /**
+     * @var JsonSchema|bool|null
+     */
+    protected $unevaluatedItems;
+    /**
+     * @var JsonSchema|bool|JsonSchema[]|bool[]|null
+     */
+    protected $items;
+    /**
+     * @var JsonSchema|bool|null
+     */
+    protected $contains;
+    /**
+     * @var JsonSchema|bool|null
+     */
+    protected $additionalProperties;
+    /**
+     * @var JsonSchema[]|bool[]|null
+     */
+    protected $unevaluatedProperties;
+    /**
+     * @var JsonSchema[]|bool[]|null
+     */
+    protected $properties;
+    /**
+     * @var JsonSchema[]|bool[]|null
+     */
+    protected $patternProperties;
+    /**
+     * @var JsonSchema[]|bool[]|null
+     */
+    protected $dependentSchemas;
+    /**
+     * @var JsonSchema|bool|null
+     */
+    protected $propertyNames;
+    /**
+     * @var JsonSchema|bool|null
+     */
+    protected $if;
+    /**
+     * @var JsonSchema|bool|null
+     */
+    protected $then;
+    /**
+     * @var JsonSchema|bool|null
+     */
+    protected $else;
+    /**
+     * @var JsonSchema[]|bool[]|null
+     */
+    protected $allOf;
+    /**
+     * @var JsonSchema[]|bool[]|null
+     */
+    protected $anyOf;
+    /**
+     * @var JsonSchema[]|bool[]|null
+     */
+    protected $oneOf;
+    /**
+     * @var JsonSchema|bool|null
+     */
+    protected $not;
+    /**
+     * @var string|null
+     */
+    protected $contentMediaType;
+    /**
+     * @var string|null
+     */
+    protected $contentEncoding;
+    /**
+     * @var JsonSchema|bool|null
+     */
+    protected $contentSchema;
+    /**
      * @var string|null
      */
     protected $dollarId;
@@ -23,11 +111,35 @@ class JsonSchema
     /**
      * @var string|null
      */
+    protected $dollarAnchor;
+    /**
+     * @var string|null
+     */
     protected $dollarRef;
     /**
      * @var string|null
      */
+    protected $dollarRecursiveRef;
+    /**
+     * @var bool|null
+     */
+    protected $dollarRecursiveAnchor = false;
+    /**
+     * @var bool[]|null
+     */
+    protected $dollarVocabulary;
+    /**
+     * @var string|null
+     */
     protected $dollarComment;
+    /**
+     * @var JsonSchema[]|bool[]|null
+     */
+    protected $dollarDefs;
+    /**
+     * @var string|null
+     */
+    protected $format;
     /**
      * @var string|null
      */
@@ -37,15 +149,23 @@ class JsonSchema
      */
     protected $description;
     /**
-     * @var bool|null
-     */
-    protected $readOnly = false;
-    /**
      * @var mixed|null
      */
     protected $default;
     /**
-     * @var JsonSchema[]|bool[]|null
+     * @var bool|null
+     */
+    protected $deprecated = false;
+    /**
+     * @var bool|null
+     */
+    protected $readOnly = false;
+    /**
+     * @var bool|null
+     */
+    protected $writeOnly = false;
+    /**
+     * @var mixed[]|null
      */
     protected $examples;
     /**
@@ -81,14 +201,6 @@ class JsonSchema
      */
     protected $pattern;
     /**
-     * @var JsonSchema|bool|null
-     */
-    protected $additionalItems;
-    /**
-     * @var JsonSchema|bool|JsonSchema[]|bool[]|null
-     */
-    protected $items;
-    /**
      * @var int|null
      */
     protected $maxItems;
@@ -101,9 +213,13 @@ class JsonSchema
      */
     protected $uniqueItems = false;
     /**
-     * @var JsonSchema|bool|null
+     * @var int|null
      */
-    protected $contains;
+    protected $maxContains;
+    /**
+     * @var int|null
+     */
+    protected $minContains;
     /**
      * @var int|null
      */
@@ -117,29 +233,9 @@ class JsonSchema
      */
     protected $required = [];
     /**
-     * @var JsonSchema|bool|null
+     * @var string[][]|null
      */
-    protected $additionalProperties;
-    /**
-     * @var JsonSchema[]|bool[]|null
-     */
-    protected $definitions;
-    /**
-     * @var JsonSchema[]|bool[]|null
-     */
-    protected $properties;
-    /**
-     * @var JsonSchema[]|bool[]|null
-     */
-    protected $patternProperties;
-    /**
-     * @var JsonSchema[]|bool[]|string[][]|null
-     */
-    protected $dependencies;
-    /**
-     * @var JsonSchema|bool|null
-     */
-    protected $propertyNames;
+    protected $dependentRequired;
     /**
      * @var string|null
      */
@@ -152,46 +248,446 @@ class JsonSchema
      * @var mixed|mixed[]|null
      */
     protected $type;
+
     /**
-     * @var string|null
+     * @return JsonSchema[]|bool[]|null
      */
-    protected $format;
+    public function getDefinitions(): ?\ArrayObject
+    {
+        return $this->definitions;
+    }
+
     /**
-     * @var string|null
+     * @param JsonSchema[]|bool[]|null $definitions
+     *
+     * @return self
      */
-    protected $contentMediaType;
+    public function setDefinitions(?\ArrayObject $definitions): self
+    {
+        $this->definitions = $definitions;
+
+        return $this;
+    }
+
     /**
-     * @var string|null
+     * @return JsonSchema[]|bool[]|string[][]|null
      */
-    protected $contentEncoding;
+    public function getDependencies(): ?\ArrayObject
+    {
+        return $this->dependencies;
+    }
+
     /**
-     * @var JsonSchema|bool|null
+     * @param JsonSchema[]|bool[]|string[][]|null $dependencies
+     *
+     * @return self
      */
-    protected $if;
+    public function setDependencies(?\ArrayObject $dependencies): self
+    {
+        $this->dependencies = $dependencies;
+
+        return $this;
+    }
+
     /**
-     * @var JsonSchema|bool|null
+     * @return JsonSchema|bool|null
      */
-    protected $then;
+    public function getAdditionalItems()
+    {
+        return $this->additionalItems;
+    }
+
     /**
-     * @var JsonSchema|bool|null
+     * @param JsonSchema|bool|null $additionalItems
+     *
+     * @return self
      */
-    protected $else;
+    public function setAdditionalItems($additionalItems): self
+    {
+        $this->additionalItems = $additionalItems;
+
+        return $this;
+    }
+
     /**
-     * @var JsonSchema[]|bool[]|null
+     * @return JsonSchema|bool|null
      */
-    protected $allOf;
+    public function getUnevaluatedItems()
+    {
+        return $this->unevaluatedItems;
+    }
+
     /**
-     * @var JsonSchema[]|bool[]|null
+     * @param JsonSchema|bool|null $unevaluatedItems
+     *
+     * @return self
      */
-    protected $anyOf;
+    public function setUnevaluatedItems($unevaluatedItems): self
+    {
+        $this->unevaluatedItems = $unevaluatedItems;
+
+        return $this;
+    }
+
     /**
-     * @var JsonSchema[]|bool[]|null
+     * @return JsonSchema|bool|JsonSchema[]|bool[]|null
      */
-    protected $oneOf;
+    public function getItems()
+    {
+        return $this->items;
+    }
+
     /**
-     * @var JsonSchema|bool|null
+     * @param JsonSchema|bool|JsonSchema[]|bool[]|null $items
+     *
+     * @return self
      */
-    protected $not;
+    public function setItems($items): self
+    {
+        $this->items = $items;
+
+        return $this;
+    }
+
+    /**
+     * @return JsonSchema|bool|null
+     */
+    public function getContains()
+    {
+        return $this->contains;
+    }
+
+    /**
+     * @param JsonSchema|bool|null $contains
+     *
+     * @return self
+     */
+    public function setContains($contains): self
+    {
+        $this->contains = $contains;
+
+        return $this;
+    }
+
+    /**
+     * @return JsonSchema|bool|null
+     */
+    public function getAdditionalProperties()
+    {
+        return $this->additionalProperties;
+    }
+
+    /**
+     * @param JsonSchema|bool|null $additionalProperties
+     *
+     * @return self
+     */
+    public function setAdditionalProperties($additionalProperties): self
+    {
+        $this->additionalProperties = $additionalProperties;
+
+        return $this;
+    }
+
+    /**
+     * @return JsonSchema[]|bool[]|null
+     */
+    public function getUnevaluatedProperties(): ?\ArrayObject
+    {
+        return $this->unevaluatedProperties;
+    }
+
+    /**
+     * @param JsonSchema[]|bool[]|null $unevaluatedProperties
+     *
+     * @return self
+     */
+    public function setUnevaluatedProperties(?\ArrayObject $unevaluatedProperties): self
+    {
+        $this->unevaluatedProperties = $unevaluatedProperties;
+
+        return $this;
+    }
+
+    /**
+     * @return JsonSchema[]|bool[]|null
+     */
+    public function getProperties(): ?\ArrayObject
+    {
+        return $this->properties;
+    }
+
+    /**
+     * @param JsonSchema[]|bool[]|null $properties
+     *
+     * @return self
+     */
+    public function setProperties(?\ArrayObject $properties): self
+    {
+        $this->properties = $properties;
+
+        return $this;
+    }
+
+    /**
+     * @return JsonSchema[]|bool[]|null
+     */
+    public function getPatternProperties(): ?\ArrayObject
+    {
+        return $this->patternProperties;
+    }
+
+    /**
+     * @param JsonSchema[]|bool[]|null $patternProperties
+     *
+     * @return self
+     */
+    public function setPatternProperties(?\ArrayObject $patternProperties): self
+    {
+        $this->patternProperties = $patternProperties;
+
+        return $this;
+    }
+
+    /**
+     * @return JsonSchema[]|bool[]|null
+     */
+    public function getDependentSchemas(): ?\ArrayObject
+    {
+        return $this->dependentSchemas;
+    }
+
+    /**
+     * @param JsonSchema[]|bool[]|null $dependentSchemas
+     *
+     * @return self
+     */
+    public function setDependentSchemas(?\ArrayObject $dependentSchemas): self
+    {
+        $this->dependentSchemas = $dependentSchemas;
+
+        return $this;
+    }
+
+    /**
+     * @return JsonSchema|bool|null
+     */
+    public function getPropertyNames()
+    {
+        return $this->propertyNames;
+    }
+
+    /**
+     * @param JsonSchema|bool|null $propertyNames
+     *
+     * @return self
+     */
+    public function setPropertyNames($propertyNames): self
+    {
+        $this->propertyNames = $propertyNames;
+
+        return $this;
+    }
+
+    /**
+     * @return JsonSchema|bool|null
+     */
+    public function getIf()
+    {
+        return $this->if;
+    }
+
+    /**
+     * @param JsonSchema|bool|null $if
+     *
+     * @return self
+     */
+    public function setIf($if): self
+    {
+        $this->if = $if;
+
+        return $this;
+    }
+
+    /**
+     * @return JsonSchema|bool|null
+     */
+    public function getThen()
+    {
+        return $this->then;
+    }
+
+    /**
+     * @param JsonSchema|bool|null $then
+     *
+     * @return self
+     */
+    public function setThen($then): self
+    {
+        $this->then = $then;
+
+        return $this;
+    }
+
+    /**
+     * @return JsonSchema|bool|null
+     */
+    public function getElse()
+    {
+        return $this->else;
+    }
+
+    /**
+     * @param JsonSchema|bool|null $else
+     *
+     * @return self
+     */
+    public function setElse($else): self
+    {
+        $this->else = $else;
+
+        return $this;
+    }
+
+    /**
+     * @return JsonSchema[]|bool[]|null
+     */
+    public function getAllOf(): ?array
+    {
+        return $this->allOf;
+    }
+
+    /**
+     * @param JsonSchema[]|bool[]|null $allOf
+     *
+     * @return self
+     */
+    public function setAllOf(?array $allOf): self
+    {
+        $this->allOf = $allOf;
+
+        return $this;
+    }
+
+    /**
+     * @return JsonSchema[]|bool[]|null
+     */
+    public function getAnyOf(): ?array
+    {
+        return $this->anyOf;
+    }
+
+    /**
+     * @param JsonSchema[]|bool[]|null $anyOf
+     *
+     * @return self
+     */
+    public function setAnyOf(?array $anyOf): self
+    {
+        $this->anyOf = $anyOf;
+
+        return $this;
+    }
+
+    /**
+     * @return JsonSchema[]|bool[]|null
+     */
+    public function getOneOf(): ?array
+    {
+        return $this->oneOf;
+    }
+
+    /**
+     * @param JsonSchema[]|bool[]|null $oneOf
+     *
+     * @return self
+     */
+    public function setOneOf(?array $oneOf): self
+    {
+        $this->oneOf = $oneOf;
+
+        return $this;
+    }
+
+    /**
+     * @return JsonSchema|bool|null
+     */
+    public function getNot()
+    {
+        return $this->not;
+    }
+
+    /**
+     * @param JsonSchema|bool|null $not
+     *
+     * @return self
+     */
+    public function setNot($not): self
+    {
+        $this->not = $not;
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getContentMediaType(): ?string
+    {
+        return $this->contentMediaType;
+    }
+
+    /**
+     * @param string|null $contentMediaType
+     *
+     * @return self
+     */
+    public function setContentMediaType(?string $contentMediaType): self
+    {
+        $this->contentMediaType = $contentMediaType;
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getContentEncoding(): ?string
+    {
+        return $this->contentEncoding;
+    }
+
+    /**
+     * @param string|null $contentEncoding
+     *
+     * @return self
+     */
+    public function setContentEncoding(?string $contentEncoding): self
+    {
+        $this->contentEncoding = $contentEncoding;
+
+        return $this;
+    }
+
+    /**
+     * @return JsonSchema|bool|null
+     */
+    public function getContentSchema()
+    {
+        return $this->contentSchema;
+    }
+
+    /**
+     * @param JsonSchema|bool|null $contentSchema
+     *
+     * @return self
+     */
+    public function setContentSchema($contentSchema): self
+    {
+        $this->contentSchema = $contentSchema;
+
+        return $this;
+    }
 
     /**
      * @return string|null
@@ -236,6 +732,26 @@ class JsonSchema
     /**
      * @return string|null
      */
+    public function getDollarAnchor(): ?string
+    {
+        return $this->dollarAnchor;
+    }
+
+    /**
+     * @param string|null $dollarAnchor
+     *
+     * @return self
+     */
+    public function setDollarAnchor(?string $dollarAnchor): self
+    {
+        $this->dollarAnchor = $dollarAnchor;
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
     public function getDollarRef(): ?string
     {
         return $this->dollarRef;
@@ -256,6 +772,66 @@ class JsonSchema
     /**
      * @return string|null
      */
+    public function getDollarRecursiveRef(): ?string
+    {
+        return $this->dollarRecursiveRef;
+    }
+
+    /**
+     * @param string|null $dollarRecursiveRef
+     *
+     * @return self
+     */
+    public function setDollarRecursiveRef(?string $dollarRecursiveRef): self
+    {
+        $this->dollarRecursiveRef = $dollarRecursiveRef;
+
+        return $this;
+    }
+
+    /**
+     * @return bool|null
+     */
+    public function getDollarRecursiveAnchor(): ?bool
+    {
+        return $this->dollarRecursiveAnchor;
+    }
+
+    /**
+     * @param bool|null $dollarRecursiveAnchor
+     *
+     * @return self
+     */
+    public function setDollarRecursiveAnchor(?bool $dollarRecursiveAnchor): self
+    {
+        $this->dollarRecursiveAnchor = $dollarRecursiveAnchor;
+
+        return $this;
+    }
+
+    /**
+     * @return bool[]|null
+     */
+    public function getDollarVocabulary(): ?\ArrayObject
+    {
+        return $this->dollarVocabulary;
+    }
+
+    /**
+     * @param bool[]|null $dollarVocabulary
+     *
+     * @return self
+     */
+    public function setDollarVocabulary(?\ArrayObject $dollarVocabulary): self
+    {
+        $this->dollarVocabulary = $dollarVocabulary;
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
     public function getDollarComment(): ?string
     {
         return $this->dollarComment;
@@ -269,6 +845,46 @@ class JsonSchema
     public function setDollarComment(?string $dollarComment): self
     {
         $this->dollarComment = $dollarComment;
+
+        return $this;
+    }
+
+    /**
+     * @return JsonSchema[]|bool[]|null
+     */
+    public function getDollarDefs(): ?\ArrayObject
+    {
+        return $this->dollarDefs;
+    }
+
+    /**
+     * @param JsonSchema[]|bool[]|null $dollarDefs
+     *
+     * @return self
+     */
+    public function setDollarDefs(?\ArrayObject $dollarDefs): self
+    {
+        $this->dollarDefs = $dollarDefs;
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getFormat(): ?string
+    {
+        return $this->format;
+    }
+
+    /**
+     * @param string|null $format
+     *
+     * @return self
+     */
+    public function setFormat(?string $format): self
+    {
+        $this->format = $format;
 
         return $this;
     }
@@ -314,26 +930,6 @@ class JsonSchema
     }
 
     /**
-     * @return bool|null
-     */
-    public function getReadOnly(): ?bool
-    {
-        return $this->readOnly;
-    }
-
-    /**
-     * @param bool|null $readOnly
-     *
-     * @return self
-     */
-    public function setReadOnly(?bool $readOnly): self
-    {
-        $this->readOnly = $readOnly;
-
-        return $this;
-    }
-
-    /**
      * @return mixed
      */
     public function getDefault()
@@ -354,7 +950,67 @@ class JsonSchema
     }
 
     /**
-     * @return JsonSchema[]|bool[]|null
+     * @return bool|null
+     */
+    public function getDeprecated(): ?bool
+    {
+        return $this->deprecated;
+    }
+
+    /**
+     * @param bool|null $deprecated
+     *
+     * @return self
+     */
+    public function setDeprecated(?bool $deprecated): self
+    {
+        $this->deprecated = $deprecated;
+
+        return $this;
+    }
+
+    /**
+     * @return bool|null
+     */
+    public function getReadOnly(): ?bool
+    {
+        return $this->readOnly;
+    }
+
+    /**
+     * @param bool|null $readOnly
+     *
+     * @return self
+     */
+    public function setReadOnly(?bool $readOnly): self
+    {
+        $this->readOnly = $readOnly;
+
+        return $this;
+    }
+
+    /**
+     * @return bool|null
+     */
+    public function getWriteOnly(): ?bool
+    {
+        return $this->writeOnly;
+    }
+
+    /**
+     * @param bool|null $writeOnly
+     *
+     * @return self
+     */
+    public function setWriteOnly(?bool $writeOnly): self
+    {
+        $this->writeOnly = $writeOnly;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed[]|null
      */
     public function getExamples(): ?array
     {
@@ -362,7 +1018,7 @@ class JsonSchema
     }
 
     /**
-     * @param JsonSchema[]|bool[]|null $examples
+     * @param mixed[]|null $examples
      *
      * @return self
      */
@@ -534,46 +1190,6 @@ class JsonSchema
     }
 
     /**
-     * @return JsonSchema|bool|null
-     */
-    public function getAdditionalItems()
-    {
-        return $this->additionalItems;
-    }
-
-    /**
-     * @param JsonSchema|bool|null $additionalItems
-     *
-     * @return self
-     */
-    public function setAdditionalItems($additionalItems): self
-    {
-        $this->additionalItems = $additionalItems;
-
-        return $this;
-    }
-
-    /**
-     * @return JsonSchema|bool|JsonSchema[]|bool[]|null
-     */
-    public function getItems()
-    {
-        return $this->items;
-    }
-
-    /**
-     * @param JsonSchema|bool|JsonSchema[]|bool[]|null $items
-     *
-     * @return self
-     */
-    public function setItems($items): self
-    {
-        $this->items = $items;
-
-        return $this;
-    }
-
-    /**
      * @return int|null
      */
     public function getMaxItems(): ?int
@@ -634,21 +1250,41 @@ class JsonSchema
     }
 
     /**
-     * @return JsonSchema|bool|null
+     * @return int|null
      */
-    public function getContains()
+    public function getMaxContains(): ?int
     {
-        return $this->contains;
+        return $this->maxContains;
     }
 
     /**
-     * @param JsonSchema|bool|null $contains
+     * @param int|null $maxContains
      *
      * @return self
      */
-    public function setContains($contains): self
+    public function setMaxContains(?int $maxContains): self
     {
-        $this->contains = $contains;
+        $this->maxContains = $maxContains;
+
+        return $this;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getMinContains(): ?int
+    {
+        return $this->minContains;
+    }
+
+    /**
+     * @param int|null $minContains
+     *
+     * @return self
+     */
+    public function setMinContains(?int $minContains): self
+    {
+        $this->minContains = $minContains;
 
         return $this;
     }
@@ -714,121 +1350,21 @@ class JsonSchema
     }
 
     /**
-     * @return JsonSchema|bool|null
+     * @return string[][]|null
      */
-    public function getAdditionalProperties()
+    public function getDependentRequired(): ?\ArrayObject
     {
-        return $this->additionalProperties;
+        return $this->dependentRequired;
     }
 
     /**
-     * @param JsonSchema|bool|null $additionalProperties
+     * @param string[][]|null $dependentRequired
      *
      * @return self
      */
-    public function setAdditionalProperties($additionalProperties): self
+    public function setDependentRequired(?\ArrayObject $dependentRequired): self
     {
-        $this->additionalProperties = $additionalProperties;
-
-        return $this;
-    }
-
-    /**
-     * @return JsonSchema[]|bool[]|null
-     */
-    public function getDefinitions(): ?\ArrayObject
-    {
-        return $this->definitions;
-    }
-
-    /**
-     * @param JsonSchema[]|bool[]|null $definitions
-     *
-     * @return self
-     */
-    public function setDefinitions(?\ArrayObject $definitions): self
-    {
-        $this->definitions = $definitions;
-
-        return $this;
-    }
-
-    /**
-     * @return JsonSchema[]|bool[]|null
-     */
-    public function getProperties(): ?\ArrayObject
-    {
-        return $this->properties;
-    }
-
-    /**
-     * @param JsonSchema[]|bool[]|null $properties
-     *
-     * @return self
-     */
-    public function setProperties(?\ArrayObject $properties): self
-    {
-        $this->properties = $properties;
-
-        return $this;
-    }
-
-    /**
-     * @return JsonSchema[]|bool[]|null
-     */
-    public function getPatternProperties(): ?\ArrayObject
-    {
-        return $this->patternProperties;
-    }
-
-    /**
-     * @param JsonSchema[]|bool[]|null $patternProperties
-     *
-     * @return self
-     */
-    public function setPatternProperties(?\ArrayObject $patternProperties): self
-    {
-        $this->patternProperties = $patternProperties;
-
-        return $this;
-    }
-
-    /**
-     * @return JsonSchema[]|bool[]|string[][]|null
-     */
-    public function getDependencies(): ?\ArrayObject
-    {
-        return $this->dependencies;
-    }
-
-    /**
-     * @param JsonSchema[]|bool[]|string[][]|null $dependencies
-     *
-     * @return self
-     */
-    public function setDependencies(?\ArrayObject $dependencies): self
-    {
-        $this->dependencies = $dependencies;
-
-        return $this;
-    }
-
-    /**
-     * @return JsonSchema|bool|null
-     */
-    public function getPropertyNames()
-    {
-        return $this->propertyNames;
-    }
-
-    /**
-     * @param JsonSchema|bool|null $propertyNames
-     *
-     * @return self
-     */
-    public function setPropertyNames($propertyNames): self
-    {
-        $this->propertyNames = $propertyNames;
+        $this->dependentRequired = $dependentRequired;
 
         return $this;
     }
@@ -889,206 +1425,6 @@ class JsonSchema
     public function setType($type): self
     {
         $this->type = $type;
-
-        return $this;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getFormat(): ?string
-    {
-        return $this->format;
-    }
-
-    /**
-     * @param string|null $format
-     *
-     * @return self
-     */
-    public function setFormat(?string $format): self
-    {
-        $this->format = $format;
-
-        return $this;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getContentMediaType(): ?string
-    {
-        return $this->contentMediaType;
-    }
-
-    /**
-     * @param string|null $contentMediaType
-     *
-     * @return self
-     */
-    public function setContentMediaType(?string $contentMediaType): self
-    {
-        $this->contentMediaType = $contentMediaType;
-
-        return $this;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getContentEncoding(): ?string
-    {
-        return $this->contentEncoding;
-    }
-
-    /**
-     * @param string|null $contentEncoding
-     *
-     * @return self
-     */
-    public function setContentEncoding(?string $contentEncoding): self
-    {
-        $this->contentEncoding = $contentEncoding;
-
-        return $this;
-    }
-
-    /**
-     * @return JsonSchema|bool|null
-     */
-    public function getIf()
-    {
-        return $this->if;
-    }
-
-    /**
-     * @param JsonSchema|bool|null $if
-     *
-     * @return self
-     */
-    public function setIf($if): self
-    {
-        $this->if = $if;
-
-        return $this;
-    }
-
-    /**
-     * @return JsonSchema|bool|null
-     */
-    public function getThen()
-    {
-        return $this->then;
-    }
-
-    /**
-     * @param JsonSchema|bool|null $then
-     *
-     * @return self
-     */
-    public function setThen($then): self
-    {
-        $this->then = $then;
-
-        return $this;
-    }
-
-    /**
-     * @return JsonSchema|bool|null
-     */
-    public function getElse()
-    {
-        return $this->else;
-    }
-
-    /**
-     * @param JsonSchema|bool|null $else
-     *
-     * @return self
-     */
-    public function setElse($else): self
-    {
-        $this->else = $else;
-
-        return $this;
-    }
-
-    /**
-     * @return JsonSchema[]|bool[]|null
-     */
-    public function getAllOf(): ?array
-    {
-        return $this->allOf;
-    }
-
-    /**
-     * @param JsonSchema[]|bool[]|null $allOf
-     *
-     * @return self
-     */
-    public function setAllOf(?array $allOf): self
-    {
-        $this->allOf = $allOf;
-
-        return $this;
-    }
-
-    /**
-     * @return JsonSchema[]|bool[]|null
-     */
-    public function getAnyOf(): ?array
-    {
-        return $this->anyOf;
-    }
-
-    /**
-     * @param JsonSchema[]|bool[]|null $anyOf
-     *
-     * @return self
-     */
-    public function setAnyOf(?array $anyOf): self
-    {
-        $this->anyOf = $anyOf;
-
-        return $this;
-    }
-
-    /**
-     * @return JsonSchema[]|bool[]|null
-     */
-    public function getOneOf(): ?array
-    {
-        return $this->oneOf;
-    }
-
-    /**
-     * @param JsonSchema[]|bool[]|null $oneOf
-     *
-     * @return self
-     */
-    public function setOneOf(?array $oneOf): self
-    {
-        $this->oneOf = $oneOf;
-
-        return $this;
-    }
-
-    /**
-     * @return JsonSchema|bool|null
-     */
-    public function getNot()
-    {
-        return $this->not;
-    }
-
-    /**
-     * @param JsonSchema|bool|null $not
-     *
-     * @return self
-     */
-    public function setNot($not): self
-    {
-        $this->not = $not;
 
         return $this;
     }

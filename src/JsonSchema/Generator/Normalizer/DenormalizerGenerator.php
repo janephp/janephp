@@ -63,6 +63,17 @@ trait DenormalizerGenerator
                         ],
                     ]
                 ),
+                new Stmt\If_(
+                    new Expr\Isset_([new Expr\PropertyFetch(new Expr\Variable('data'), "{'\$recursiveRef'}")]),
+                    [
+                        'stmts' => [
+                            new Stmt\Return_(new Expr\New_(new Name('Reference'), [
+                                new Expr\PropertyFetch(new Expr\Variable('data'), "{'\$recursiveRef'}"),
+                                new Expr\ArrayDimFetch(new Expr\Variable('context'), new Scalar\String_('document-origin')),
+                            ])),
+                        ],
+                    ]
+                ),
                 $assignStatement,
             ];
         }

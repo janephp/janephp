@@ -30,6 +30,9 @@ class FooNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
+        if (isset($data->{'$recursiveRef'})) {
+            return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
+        }
         $object = new \Jane\JsonSchema\Tests\Expected\Model\Foo();
         if (property_exists($data, 'foo')) {
             $value = $data->{'foo'};

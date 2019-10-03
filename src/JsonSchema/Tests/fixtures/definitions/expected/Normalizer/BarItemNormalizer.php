@@ -30,6 +30,9 @@ class BarItemNormalizer implements DenormalizerInterface, NormalizerInterface, D
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
+        if (isset($data->{'$recursiveRef'})) {
+            return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
+        }
         $object = new \Jane\JsonSchema\Tests\Expected\Model\BarItem();
         if (property_exists($data, 'bar')) {
             $object->setBar($data->{'bar'});
