@@ -30,6 +30,9 @@ class TestFooItemNormalizer implements DenormalizerInterface, NormalizerInterfac
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
+        if (isset($data->{'$recursiveRef'})) {
+            return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
+        }
         $object = new \Jane\JsonSchema\Tests\Expected\Model\TestFooItem();
         if (property_exists($data, 'bar')) {
             $object->setBar($data->{'bar'});

@@ -30,6 +30,9 @@ class ListNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
+        if (isset($data->{'$recursiveRef'})) {
+            return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
+        }
         $object = new \Jane\JsonSchema\Tests\Expected\Model\_List();
         if (property_exists($data, 'foo')) {
             $object->setFoo($data->{'foo'});
