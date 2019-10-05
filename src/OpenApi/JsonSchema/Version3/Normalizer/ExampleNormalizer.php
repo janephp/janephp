@@ -11,7 +11,6 @@ declare(strict_types=1);
 namespace Jane\OpenApi\JsonSchema\Version3\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -37,26 +36,26 @@ class ExampleNormalizer implements DenormalizerInterface, NormalizerInterface, D
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (!\is_object($data)) {
-            throw new InvalidArgumentException();
+            return null;
         }
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \Jane\OpenApi\JsonSchema\Version3\Model\Example();
         $data = clone $data;
-        if (property_exists($data, 'summary')) {
+        if (property_exists($data, 'summary') && $data->{'summary'} !== null) {
             $object->setSummary($data->{'summary'});
             unset($data->{'summary'});
         }
-        if (property_exists($data, 'description')) {
+        if (property_exists($data, 'description') && $data->{'description'} !== null) {
             $object->setDescription($data->{'description'});
             unset($data->{'description'});
         }
-        if (property_exists($data, 'value')) {
+        if (property_exists($data, 'value') && $data->{'value'} !== null) {
             $object->setValue($data->{'value'});
             unset($data->{'value'});
         }
-        if (property_exists($data, 'externalValue')) {
+        if (property_exists($data, 'externalValue') && $data->{'externalValue'} !== null) {
             $object->setExternalValue($data->{'externalValue'});
             unset($data->{'externalValue'});
         }

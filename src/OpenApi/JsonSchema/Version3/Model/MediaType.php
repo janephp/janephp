@@ -10,23 +10,27 @@ declare(strict_types=1);
 
 namespace Jane\OpenApi\JsonSchema\Version3\Model;
 
-class MediaTypeWithExample extends \ArrayObject
+class MediaType extends \ArrayObject
 {
     /**
-     * @var Schema|Reference
+     * @var Schema|Reference|null
      */
     protected $schema;
     /**
-     * @var mixed
+     * @var mixed|null
      */
     protected $example;
     /**
-     * @var Encoding[]
+     * @var Example[]|Reference[]|null
+     */
+    protected $examples;
+    /**
+     * @var Encoding[]|null
      */
     protected $encoding;
 
     /**
-     * @return Schema|Reference
+     * @return Schema|Reference|null
      */
     public function getSchema()
     {
@@ -34,7 +38,7 @@ class MediaTypeWithExample extends \ArrayObject
     }
 
     /**
-     * @param Schema|Reference $schema
+     * @param Schema|Reference|null $schema
      *
      * @return self
      */
@@ -66,7 +70,27 @@ class MediaTypeWithExample extends \ArrayObject
     }
 
     /**
-     * @return Encoding[]
+     * @return Example[]|Reference[]|null
+     */
+    public function getExamples(): ?\ArrayObject
+    {
+        return $this->examples;
+    }
+
+    /**
+     * @param Example[]|Reference[]|null $examples
+     *
+     * @return self
+     */
+    public function setExamples(?\ArrayObject $examples): self
+    {
+        $this->examples = $examples;
+
+        return $this;
+    }
+
+    /**
+     * @return Encoding[]|null
      */
     public function getEncoding(): ?\ArrayObject
     {
@@ -74,7 +98,7 @@ class MediaTypeWithExample extends \ArrayObject
     }
 
     /**
-     * @param Encoding[] $encoding
+     * @param Encoding[]|null $encoding
      *
      * @return self
      */

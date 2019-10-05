@@ -11,7 +11,6 @@ declare(strict_types=1);
 namespace Jane\OpenApi\JsonSchema\Version3\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -37,13 +36,13 @@ class ReferenceNormalizer implements DenormalizerInterface, NormalizerInterface,
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (!\is_object($data)) {
-            throw new InvalidArgumentException();
+            return null;
         }
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \Jane\OpenApi\JsonSchema\Version3\Model\Reference();
-        if (property_exists($data, '$ref')) {
+        if (property_exists($data, '$ref') && $data->{'$ref'} !== null) {
             $object->setDollarRef($data->{'$ref'});
         }
 

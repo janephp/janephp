@@ -13,24 +13,24 @@ namespace Jane\OpenApi\JsonSchema\Version3\Model;
 class Response extends \ArrayObject
 {
     /**
-     * @var string
+     * @var string|null
      */
     protected $description;
     /**
-     * @var mixed
+     * @var Header[]|Reference[]|null
      */
     protected $headers;
     /**
-     * @var MediaTypeWithExample[]|MediaTypeWithExamples[]
+     * @var MediaType[]|null
      */
     protected $content;
     /**
-     * @var LinkWithOperationRef[]|LinkWithOperationId[]|Reference[]
+     * @var Link[]|Reference[]|null
      */
     protected $links;
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getDescription(): ?string
     {
@@ -38,7 +38,7 @@ class Response extends \ArrayObject
     }
 
     /**
-     * @param string $description
+     * @param string|null $description
      *
      * @return self
      */
@@ -50,19 +50,19 @@ class Response extends \ArrayObject
     }
 
     /**
-     * @return mixed
+     * @return Header[]|Reference[]|null
      */
-    public function getHeaders()
+    public function getHeaders(): ?\ArrayObject
     {
         return $this->headers;
     }
 
     /**
-     * @param mixed $headers
+     * @param Header[]|Reference[]|null $headers
      *
      * @return self
      */
-    public function setHeaders($headers): self
+    public function setHeaders(?\ArrayObject $headers): self
     {
         $this->headers = $headers;
 
@@ -70,7 +70,7 @@ class Response extends \ArrayObject
     }
 
     /**
-     * @return MediaTypeWithExample[]|MediaTypeWithExamples[]
+     * @return MediaType[]|null
      */
     public function getContent(): ?\ArrayObject
     {
@@ -78,7 +78,7 @@ class Response extends \ArrayObject
     }
 
     /**
-     * @param MediaTypeWithExample[]|MediaTypeWithExamples[] $content
+     * @param MediaType[]|null $content
      *
      * @return self
      */
@@ -90,7 +90,7 @@ class Response extends \ArrayObject
     }
 
     /**
-     * @return LinkWithOperationRef[]|LinkWithOperationId[]|Reference[]
+     * @return Link[]|Reference[]|null
      */
     public function getLinks(): ?\ArrayObject
     {
@@ -98,7 +98,7 @@ class Response extends \ArrayObject
     }
 
     /**
-     * @param LinkWithOperationRef[]|LinkWithOperationId[]|Reference[] $links
+     * @param Link[]|Reference[]|null $links
      *
      * @return self
      */

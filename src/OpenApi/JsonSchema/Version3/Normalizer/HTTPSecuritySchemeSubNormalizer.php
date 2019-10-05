@@ -18,19 +18,19 @@ use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
-class DiscriminatorNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+class HTTPSecuritySchemeSubNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
 
     public function supportsDenormalization($data, $type, $format = null)
     {
-        return $type === 'Jane\\OpenApi\\JsonSchema\\Version3\\Model\\Discriminator';
+        return $type === 'Jane\\OpenApi\\JsonSchema\\Version3\\Model\\HTTPSecuritySchemeSub';
     }
 
     public function supportsNormalization($data, $format = null)
     {
-        return $data instanceof \Jane\OpenApi\JsonSchema\Version3\Model\Discriminator;
+        return $data instanceof \Jane\OpenApi\JsonSchema\Version3\Model\HTTPSecuritySchemeSub;
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])
@@ -41,16 +41,9 @@ class DiscriminatorNormalizer implements DenormalizerInterface, NormalizerInterf
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
-        $object = new \Jane\OpenApi\JsonSchema\Version3\Model\Discriminator();
-        if (property_exists($data, 'propertyName') && $data->{'propertyName'} !== null) {
-            $object->setPropertyName($data->{'propertyName'});
-        }
-        if (property_exists($data, 'mapping') && $data->{'mapping'} !== null) {
-            $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
-            foreach ($data->{'mapping'} as $key => $value) {
-                $values[$key] = $value;
-            }
-            $object->setMapping($values);
+        $object = new \Jane\OpenApi\JsonSchema\Version3\Model\HTTPSecuritySchemeSub();
+        if (property_exists($data, 'scheme') && $data->{'scheme'} !== null) {
+            $object->setScheme($data->{'scheme'});
         }
 
         return $object;
@@ -59,15 +52,8 @@ class DiscriminatorNormalizer implements DenormalizerInterface, NormalizerInterf
     public function normalize($object, $format = null, array $context = [])
     {
         $data = new \stdClass();
-        if (null !== $object->getPropertyName()) {
-            $data->{'propertyName'} = $object->getPropertyName();
-        }
-        if (null !== $object->getMapping()) {
-            $values = new \stdClass();
-            foreach ($object->getMapping() as $key => $value) {
-                $values->{$key} = $value;
-            }
-            $data->{'mapping'} = $values;
+        if (null !== $object->getScheme()) {
+            $data->{'scheme'} = $object->getScheme();
         }
 
         return $data;

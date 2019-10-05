@@ -13,56 +13,56 @@ namespace Jane\OpenApi\JsonSchema\Version3\Model;
 class Operation extends \ArrayObject
 {
     /**
-     * @var string[]
+     * @var string[]|null
      */
     protected $tags;
     /**
-     * @var string
+     * @var string|null
      */
     protected $summary;
     /**
-     * @var string
+     * @var string|null
      */
     protected $description;
     /**
-     * @var ExternalDocumentation
+     * @var ExternalDocumentation|null
      */
     protected $externalDocs;
     /**
-     * @var string
+     * @var string|null
      */
     protected $operationId;
     /**
-     * @var ParameterWithSchemaWithExampleInPath[]|ParameterWithSchemaWithExampleInQuery[]|ParameterWithSchemaWithExampleInHeader[]|ParameterWithSchemaWithExampleInCookie[]|ParameterWithSchemaWithExamplesInPath[]|ParameterWithSchemaWithExamplesInQuery[]|ParameterWithSchemaWithExamplesInHeader[]|ParameterWithSchemaWithExamplesInCookie[]|ParameterWithContentInPath[]|ParameterWithContentNotInPath[]|Reference[]
+     * @var Parameter[]|Reference[]|null
      */
     protected $parameters;
     /**
-     * @var RequestBody|Reference
+     * @var RequestBody|Reference|null
      */
     protected $requestBody;
     /**
-     * @var Responses
+     * @var Responses|null
      */
     protected $responses;
     /**
-     * @var mixed[][]|Reference[]
+     * @var mixed[][]|Reference[]|null
      */
     protected $callbacks;
     /**
-     * @var bool
+     * @var bool|null
      */
-    protected $deprecated;
+    protected $deprecated = false;
     /**
-     * @var string[][][]
+     * @var string[][][]|null
      */
     protected $security;
     /**
-     * @var Server[]
+     * @var Server[]|null
      */
     protected $servers;
 
     /**
-     * @return string[]
+     * @return string[]|null
      */
     public function getTags(): ?array
     {
@@ -70,7 +70,7 @@ class Operation extends \ArrayObject
     }
 
     /**
-     * @param string[] $tags
+     * @param string[]|null $tags
      *
      * @return self
      */
@@ -82,7 +82,7 @@ class Operation extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getSummary(): ?string
     {
@@ -90,7 +90,7 @@ class Operation extends \ArrayObject
     }
 
     /**
-     * @param string $summary
+     * @param string|null $summary
      *
      * @return self
      */
@@ -102,7 +102,7 @@ class Operation extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getDescription(): ?string
     {
@@ -110,7 +110,7 @@ class Operation extends \ArrayObject
     }
 
     /**
-     * @param string $description
+     * @param string|null $description
      *
      * @return self
      */
@@ -122,7 +122,7 @@ class Operation extends \ArrayObject
     }
 
     /**
-     * @return ExternalDocumentation
+     * @return ExternalDocumentation|null
      */
     public function getExternalDocs(): ?ExternalDocumentation
     {
@@ -130,7 +130,7 @@ class Operation extends \ArrayObject
     }
 
     /**
-     * @param ExternalDocumentation $externalDocs
+     * @param ExternalDocumentation|null $externalDocs
      *
      * @return self
      */
@@ -142,7 +142,7 @@ class Operation extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getOperationId(): ?string
     {
@@ -150,7 +150,7 @@ class Operation extends \ArrayObject
     }
 
     /**
-     * @param string $operationId
+     * @param string|null $operationId
      *
      * @return self
      */
@@ -162,7 +162,7 @@ class Operation extends \ArrayObject
     }
 
     /**
-     * @return ParameterWithSchemaWithExampleInPath[]|ParameterWithSchemaWithExampleInQuery[]|ParameterWithSchemaWithExampleInHeader[]|ParameterWithSchemaWithExampleInCookie[]|ParameterWithSchemaWithExamplesInPath[]|ParameterWithSchemaWithExamplesInQuery[]|ParameterWithSchemaWithExamplesInHeader[]|ParameterWithSchemaWithExamplesInCookie[]|ParameterWithContentInPath[]|ParameterWithContentNotInPath[]|Reference[]
+     * @return Parameter[]|Reference[]|null
      */
     public function getParameters(): ?array
     {
@@ -170,7 +170,7 @@ class Operation extends \ArrayObject
     }
 
     /**
-     * @param ParameterWithSchemaWithExampleInPath[]|ParameterWithSchemaWithExampleInQuery[]|ParameterWithSchemaWithExampleInHeader[]|ParameterWithSchemaWithExampleInCookie[]|ParameterWithSchemaWithExamplesInPath[]|ParameterWithSchemaWithExamplesInQuery[]|ParameterWithSchemaWithExamplesInHeader[]|ParameterWithSchemaWithExamplesInCookie[]|ParameterWithContentInPath[]|ParameterWithContentNotInPath[]|Reference[] $parameters
+     * @param Parameter[]|Reference[]|null $parameters
      *
      * @return self
      */
@@ -182,7 +182,7 @@ class Operation extends \ArrayObject
     }
 
     /**
-     * @return RequestBody|Reference
+     * @return RequestBody|Reference|null
      */
     public function getRequestBody()
     {
@@ -190,7 +190,7 @@ class Operation extends \ArrayObject
     }
 
     /**
-     * @param RequestBody|Reference $requestBody
+     * @param RequestBody|Reference|null $requestBody
      *
      * @return self
      */
@@ -202,7 +202,7 @@ class Operation extends \ArrayObject
     }
 
     /**
-     * @return Responses
+     * @return Responses|null
      */
     public function getResponses(): ?Responses
     {
@@ -210,7 +210,7 @@ class Operation extends \ArrayObject
     }
 
     /**
-     * @param Responses $responses
+     * @param Responses|null $responses
      *
      * @return self
      */
@@ -222,7 +222,7 @@ class Operation extends \ArrayObject
     }
 
     /**
-     * @return mixed[][]|Reference[]
+     * @return mixed[][]|Reference[]|null
      */
     public function getCallbacks(): ?\ArrayObject
     {
@@ -230,7 +230,7 @@ class Operation extends \ArrayObject
     }
 
     /**
-     * @param mixed[][]|Reference[] $callbacks
+     * @param mixed[][]|Reference[]|null $callbacks
      *
      * @return self
      */
@@ -242,7 +242,7 @@ class Operation extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getDeprecated(): ?bool
     {
@@ -250,7 +250,7 @@ class Operation extends \ArrayObject
     }
 
     /**
-     * @param bool $deprecated
+     * @param bool|null $deprecated
      *
      * @return self
      */
@@ -262,7 +262,7 @@ class Operation extends \ArrayObject
     }
 
     /**
-     * @return string[][][]
+     * @return string[][][]|null
      */
     public function getSecurity(): ?array
     {
@@ -270,7 +270,7 @@ class Operation extends \ArrayObject
     }
 
     /**
-     * @param string[][][] $security
+     * @param string[][][]|null $security
      *
      * @return self
      */
@@ -282,7 +282,7 @@ class Operation extends \ArrayObject
     }
 
     /**
-     * @return Server[]
+     * @return Server[]|null
      */
     public function getServers(): ?array
     {
@@ -290,7 +290,7 @@ class Operation extends \ArrayObject
     }
 
     /**
-     * @param Server[] $servers
+     * @param Server[]|null $servers
      *
      * @return self
      */

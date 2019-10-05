@@ -13,16 +13,16 @@ namespace Jane\OpenApi\JsonSchema\Version3\Model;
 class License extends \ArrayObject
 {
     /**
-     * @var string
+     * @var string|null
      */
     protected $name;
     /**
-     * @var string
+     * @var string|null
      */
     protected $url;
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getName(): ?string
     {
@@ -30,7 +30,7 @@ class License extends \ArrayObject
     }
 
     /**
-     * @param string $name
+     * @param string|null $name
      *
      * @return self
      */
@@ -42,7 +42,7 @@ class License extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getUrl(): ?string
     {
@@ -50,7 +50,7 @@ class License extends \ArrayObject
     }
 
     /**
-     * @param string $url
+     * @param string|null $url
      *
      * @return self
      */

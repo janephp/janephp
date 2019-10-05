@@ -4,9 +4,7 @@ namespace Jane\OpenApi\Generator\Parameter;
 
 use Doctrine\Common\Inflector\Inflector;
 use Jane\JsonSchema\Generator\Context\Context;
-use Jane\OpenApi\JsonSchema\Version3\Model\ParameterWithSchemaWithExampleInHeader;
-use Jane\OpenApi\JsonSchema\Version3\Model\ParameterWithSchemaWithExampleInPath;
-use Jane\OpenApi\JsonSchema\Version3\Model\ParameterWithSchemaWithExampleInQuery;
+use Jane\OpenApi\JsonSchema\Version3\Model\Parameter;
 use PhpParser\Node;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Scalar;
@@ -15,12 +13,7 @@ use Psr\Http\Message\StreamInterface;
 
 class NonBodyParameterGenerator extends ParameterGenerator
 {
-    /**
-     * {@inheritdoc}
-     *
-     * @param $parameter ParameterWithSchemaWithExampleInPath|ParameterWithSchemaWithExampleInHeader|ParameterWithSchemaWithExampleInQuery
-     */
-    public function generateMethodParameter($parameter, Context $context, $reference): Node\Param
+    public function generateMethodParameter(Parameter $parameter, Context $context, $reference): Node\Param
     {
         $name = Inflector::camelize($parameter->getName());
         $methodParameter = new Node\Param(new Expr\Variable($name));
@@ -43,7 +36,7 @@ class NonBodyParameterGenerator extends ParameterGenerator
     }
 
     /**
-     * @param $parameters ParameterWithSchemaWithExampleInPath[]|ParameterWithSchemaWithExampleInHeader[]|ParameterWithSchemaWithExampleInQuery[]
+     * @param $parameters Parameter[]
      *
      * @return array
      */
@@ -58,11 +51,11 @@ class NonBodyParameterGenerator extends ParameterGenerator
             $defined[] = new Expr\ArrayItem(new Scalar\String_($parameter->getName()));
             $schema = $parameter->getSchema();
 
-            if ($parameter->getRequired() && null === $schema->getDefault()) {
+            if ($parameter->getRequired() && (null !== $schema && null === $schema->getDefault())) {
                 $required[] = new Expr\ArrayItem(new Scalar\String_($parameter->getName()));
             }
 
-            if ($schema->getType()) {
+            if (null !== $schema && $schema->getType()) {
                 $types = [];
 
                 foreach ($this->convertParameterType($schema->getType()) as $typeString) {
@@ -93,12 +86,7 @@ class NonBodyParameterGenerator extends ParameterGenerator
         ], $allowedTypes);
     }
 
-    /**
-     * {@inheritdoc}
-     *
-     * @param $parameter ParameterWithSchemaWithExampleInPath|ParameterWithSchemaWithExampleInHeader|ParameterWithSchemaWithExampleInQuery
-     */
-    public function generateMethodDocParameter($parameter, Context $context, $reference)
+    public function generateMethodDocParameter(Parameter $parameter, Context $context, $reference)
     {
         $type = 'mixed';
 
@@ -109,12 +97,7 @@ class NonBodyParameterGenerator extends ParameterGenerator
         return sprintf(' * @param %s $%s %s', $type, Inflector::camelize($parameter->getName()), $parameter->getDescription() ?: '');
     }
 
-    /**
-     * @param $parameter ParameterWithSchemaWithExampleInPath|ParameterWithSchemaWithExampleInHeader|ParameterWithSchemaWithExampleInQuery
-     *
-     * @return string
-     */
-    public function generateOptionDocParameter($parameter)
+    public function generateOptionDocParameter(Parameter $parameter): string
     {
         $type = 'mixed';
 
@@ -127,12 +110,8 @@ class NonBodyParameterGenerator extends ParameterGenerator
 
     /**
      * Generate a default value as an Expr.
-     *
-     * @param $parameter ParameterWithSchemaWithExampleInPath|ParameterWithSchemaWithExampleInHeader|ParameterWithSchemaWithExampleInQuery
-     *
-     * @return Expr
      */
-    private function getDefaultAsExpr($parameter)
+    private function getDefaultAsExpr(Parameter $parameter): Expr
     {
         $expr = $this->parser->parse('<?php ' . var_export($parameter->getSchema()->getDefault(), true) . ';')[0];
 

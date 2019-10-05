@@ -11,7 +11,6 @@ declare(strict_types=1);
 namespace Jane\OpenApi\JsonSchema\Version3\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -37,14 +36,14 @@ class ServerVariableNormalizer implements DenormalizerInterface, NormalizerInter
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (!\is_object($data)) {
-            throw new InvalidArgumentException();
+            return null;
         }
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \Jane\OpenApi\JsonSchema\Version3\Model\ServerVariable();
         $data = clone $data;
-        if (property_exists($data, 'enum')) {
+        if (property_exists($data, 'enum') && $data->{'enum'} !== null) {
             $values = [];
             foreach ($data->{'enum'} as $value) {
                 $values[] = $value;
@@ -52,11 +51,11 @@ class ServerVariableNormalizer implements DenormalizerInterface, NormalizerInter
             $object->setEnum($values);
             unset($data->{'enum'});
         }
-        if (property_exists($data, 'default')) {
+        if (property_exists($data, 'default') && $data->{'default'} !== null) {
             $object->setDefault($data->{'default'});
             unset($data->{'default'});
         }
-        if (property_exists($data, 'description')) {
+        if (property_exists($data, 'description') && $data->{'description'} !== null) {
             $object->setDescription($data->{'description'});
             unset($data->{'description'});
         }

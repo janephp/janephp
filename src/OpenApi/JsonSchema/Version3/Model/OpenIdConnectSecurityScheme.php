@@ -13,20 +13,20 @@ namespace Jane\OpenApi\JsonSchema\Version3\Model;
 class OpenIdConnectSecurityScheme extends \ArrayObject
 {
     /**
-     * @var string
+     * @var string|null
      */
     protected $type;
     /**
-     * @var string
+     * @var string|null
      */
     protected $openIdConnectUrl;
     /**
-     * @var string
+     * @var string|null
      */
     protected $description;
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getType(): ?string
     {
@@ -34,7 +34,7 @@ class OpenIdConnectSecurityScheme extends \ArrayObject
     }
 
     /**
-     * @param string $type
+     * @param string|null $type
      *
      * @return self
      */
@@ -46,7 +46,7 @@ class OpenIdConnectSecurityScheme extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getOpenIdConnectUrl(): ?string
     {
@@ -54,7 +54,7 @@ class OpenIdConnectSecurityScheme extends \ArrayObject
     }
 
     /**
-     * @param string $openIdConnectUrl
+     * @param string|null $openIdConnectUrl
      *
      * @return self
      */
@@ -66,7 +66,7 @@ class OpenIdConnectSecurityScheme extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getDescription(): ?string
     {
@@ -74,7 +74,7 @@ class OpenIdConnectSecurityScheme extends \ArrayObject
     }
 
     /**
-     * @param string $description
+     * @param string|null $description
      *
      * @return self
      */

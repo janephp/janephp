@@ -11,7 +11,6 @@ declare(strict_types=1);
 namespace Jane\OpenApi\JsonSchema\Version3\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -19,78 +18,52 @@ use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
-class HeaderWithSchemaWithExamplesNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+class MediaTypeNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
 
     public function supportsDenormalization($data, $type, $format = null)
     {
-        return $type === 'Jane\\OpenApi\\JsonSchema\\Version3\\Model\\HeaderWithSchemaWithExamples';
+        return $type === 'Jane\\OpenApi\\JsonSchema\\Version3\\Model\\MediaType';
     }
 
     public function supportsNormalization($data, $format = null)
     {
-        return $data instanceof \Jane\OpenApi\JsonSchema\Version3\Model\HeaderWithSchemaWithExamples;
+        return $data instanceof \Jane\OpenApi\JsonSchema\Version3\Model\MediaType;
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (!\is_object($data)) {
-            throw new InvalidArgumentException();
+            return null;
         }
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
-        $object = new \Jane\OpenApi\JsonSchema\Version3\Model\HeaderWithSchemaWithExamples();
+        $object = new \Jane\OpenApi\JsonSchema\Version3\Model\MediaType();
         $data = clone $data;
-        if (property_exists($data, 'description')) {
-            $object->setDescription($data->{'description'});
-            unset($data->{'description'});
-        }
-        if (property_exists($data, 'required')) {
-            $object->setRequired($data->{'required'});
-            unset($data->{'required'});
-        }
-        if (property_exists($data, 'deprecated')) {
-            $object->setDeprecated($data->{'deprecated'});
-            unset($data->{'deprecated'});
-        }
-        if (property_exists($data, 'allowEmptyValue')) {
-            $object->setAllowEmptyValue($data->{'allowEmptyValue'});
-            unset($data->{'allowEmptyValue'});
-        }
-        if (property_exists($data, 'style')) {
-            $object->setStyle($data->{'style'});
-            unset($data->{'style'});
-        }
-        if (property_exists($data, 'explode')) {
-            $object->setExplode($data->{'explode'});
-            unset($data->{'explode'});
-        }
-        if (property_exists($data, 'allowReserved')) {
-            $object->setAllowReserved($data->{'allowReserved'});
-            unset($data->{'allowReserved'});
-        }
-        if (property_exists($data, 'schema')) {
+        if (property_exists($data, 'schema') && $data->{'schema'} !== null) {
             $value = $data->{'schema'};
             if (\is_object($data->{'schema'})) {
                 $value = $this->denormalizer->denormalize($data->{'schema'}, 'Jane\\OpenApi\\JsonSchema\\Version3\\Model\\Schema', 'json', $context);
-            }
-            if (\is_object($data->{'schema'}) and isset($data->{'schema'}->{'$ref'})) {
+            } elseif (\is_object($data->{'schema'}) and isset($data->{'schema'}->{'$ref'})) {
                 $value = $this->denormalizer->denormalize($data->{'schema'}, 'Jane\\OpenApi\\JsonSchema\\Version3\\Model\\Reference', 'json', $context);
             }
             $object->setSchema($value);
             unset($data->{'schema'});
         }
-        if (property_exists($data, 'examples')) {
+        if (property_exists($data, 'example') && $data->{'example'} !== null) {
+            $object->setExample($data->{'example'});
+            unset($data->{'example'});
+        }
+        if (property_exists($data, 'examples') && $data->{'examples'} !== null) {
             $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
             foreach ($data->{'examples'} as $key => $value_1) {
                 $value_2 = $value_1;
                 if (\is_object($value_1)) {
                     $value_2 = $this->denormalizer->denormalize($value_1, 'Jane\\OpenApi\\JsonSchema\\Version3\\Model\\Example', 'json', $context);
-                }
-                if (\is_object($value_1) and isset($value_1->{'$ref'})) {
+                } elseif (\is_object($value_1) and isset($value_1->{'$ref'})) {
                     $value_2 = $this->denormalizer->denormalize($value_1, 'Jane\\OpenApi\\JsonSchema\\Version3\\Model\\Reference', 'json', $context);
                 }
                 $values[$key] = $value_2;
@@ -98,9 +71,17 @@ class HeaderWithSchemaWithExamplesNormalizer implements DenormalizerInterface, N
             $object->setExamples($values);
             unset($data->{'examples'});
         }
-        foreach ($data as $key_1 => $value_3) {
-            if (preg_match('/^x-/', $key_1)) {
-                $object[$key_1] = $value_3;
+        if (property_exists($data, 'encoding') && $data->{'encoding'} !== null) {
+            $values_1 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            foreach ($data->{'encoding'} as $key_1 => $value_3) {
+                $values_1[$key_1] = $this->denormalizer->denormalize($value_3, 'Jane\\OpenApi\\JsonSchema\\Version3\\Model\\Encoding', 'json', $context);
+            }
+            $object->setEncoding($values_1);
+            unset($data->{'encoding'});
+        }
+        foreach ($data as $key_2 => $value_4) {
+            if (preg_match('/^x-/', $key_2)) {
+                $object[$key_2] = $value_4;
             }
         }
 
@@ -110,36 +91,17 @@ class HeaderWithSchemaWithExamplesNormalizer implements DenormalizerInterface, N
     public function normalize($object, $format = null, array $context = [])
     {
         $data = new \stdClass();
-        if (null !== $object->getDescription()) {
-            $data->{'description'} = $object->getDescription();
-        }
-        if (null !== $object->getRequired()) {
-            $data->{'required'} = $object->getRequired();
-        }
-        if (null !== $object->getDeprecated()) {
-            $data->{'deprecated'} = $object->getDeprecated();
-        }
-        if (null !== $object->getAllowEmptyValue()) {
-            $data->{'allowEmptyValue'} = $object->getAllowEmptyValue();
-        }
-        if (null !== $object->getStyle()) {
-            $data->{'style'} = $object->getStyle();
-        }
-        if (null !== $object->getExplode()) {
-            $data->{'explode'} = $object->getExplode();
-        }
-        if (null !== $object->getAllowReserved()) {
-            $data->{'allowReserved'} = $object->getAllowReserved();
-        }
         if (null !== $object->getSchema()) {
             $value = $object->getSchema();
             if (\is_object($object->getSchema())) {
                 $value = $this->normalizer->normalize($object->getSchema(), 'json', $context);
-            }
-            if (\is_object($object->getSchema())) {
+            } elseif (\is_object($object->getSchema())) {
                 $value = $this->normalizer->normalize($object->getSchema(), 'json', $context);
             }
             $data->{'schema'} = $value;
+        }
+        if (null !== $object->getExample()) {
+            $data->{'example'} = $object->getExample();
         }
         if (null !== $object->getExamples()) {
             $values = new \stdClass();
@@ -147,17 +109,23 @@ class HeaderWithSchemaWithExamplesNormalizer implements DenormalizerInterface, N
                 $value_2 = $value_1;
                 if (\is_object($value_1)) {
                     $value_2 = $this->normalizer->normalize($value_1, 'json', $context);
-                }
-                if (\is_object($value_1)) {
+                } elseif (\is_object($value_1)) {
                     $value_2 = $this->normalizer->normalize($value_1, 'json', $context);
                 }
                 $values->{$key} = $value_2;
             }
             $data->{'examples'} = $values;
         }
-        foreach ($object as $key_1 => $value_3) {
-            if (preg_match('/^x-/', $key_1)) {
-                $data->{$key_1} = $value_3;
+        if (null !== $object->getEncoding()) {
+            $values_1 = new \stdClass();
+            foreach ($object->getEncoding() as $key_1 => $value_3) {
+                $values_1->{$key_1} = $this->normalizer->normalize($value_3, 'json', $context);
+            }
+            $data->{'encoding'} = $values_1;
+        }
+        foreach ($object as $key_2 => $value_4) {
+            if (preg_match('/^x-/', $key_2)) {
+                $data->{$key_2} = $value_4;
             }
         }
 

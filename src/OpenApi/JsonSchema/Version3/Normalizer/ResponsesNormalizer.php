@@ -11,7 +11,6 @@ declare(strict_types=1);
 namespace Jane\OpenApi\JsonSchema\Version3\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -37,31 +36,29 @@ class ResponsesNormalizer implements DenormalizerInterface, NormalizerInterface,
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (!\is_object($data)) {
-            throw new InvalidArgumentException();
+            return null;
         }
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \Jane\OpenApi\JsonSchema\Version3\Model\Responses();
         $data = clone $data;
-        if (property_exists($data, 'default')) {
+        if (property_exists($data, 'default') && $data->{'default'} !== null) {
             $value = $data->{'default'};
             if (\is_object($data->{'default'}) and isset($data->{'default'}->{'description'})) {
                 $value = $this->denormalizer->denormalize($data->{'default'}, 'Jane\\OpenApi\\JsonSchema\\Version3\\Model\\Response', 'json', $context);
-            }
-            if (\is_object($data->{'default'}) and isset($data->{'default'}->{'$ref'})) {
+            } elseif (\is_object($data->{'default'}) and isset($data->{'default'}->{'$ref'})) {
                 $value = $this->denormalizer->denormalize($data->{'default'}, 'Jane\\OpenApi\\JsonSchema\\Version3\\Model\\Reference', 'json', $context);
             }
             $object->setDefault($value);
             unset($data->{'default'});
         }
         foreach ($data as $key => $value_1) {
-            if (preg_match('/[1-5](?:\d{2}|XX)/', $key)) {
+            if (preg_match('/^[1-5](?:\d{2}|XX)$/', $key)) {
                 $value_2 = $value_1;
                 if (\is_object($value_1) and isset($value_1->{'description'})) {
                     $value_2 = $this->denormalizer->denormalize($value_1, 'Jane\\OpenApi\\JsonSchema\\Version3\\Model\\Response', 'json', $context);
-                }
-                if (\is_object($value_1) and isset($value_1->{'$ref'})) {
+                } elseif (\is_object($value_1) and isset($value_1->{'$ref'})) {
                     $value_2 = $this->denormalizer->denormalize($value_1, 'Jane\\OpenApi\\JsonSchema\\Version3\\Model\\Reference', 'json', $context);
                 }
                 $object[$key] = $value_2;
@@ -81,19 +78,17 @@ class ResponsesNormalizer implements DenormalizerInterface, NormalizerInterface,
             $value = $object->getDefault();
             if (\is_object($object->getDefault())) {
                 $value = $this->normalizer->normalize($object->getDefault(), 'json', $context);
-            }
-            if (\is_object($object->getDefault())) {
+            } elseif (\is_object($object->getDefault())) {
                 $value = $this->normalizer->normalize($object->getDefault(), 'json', $context);
             }
             $data->{'default'} = $value;
         }
         foreach ($object as $key => $value_1) {
-            if (preg_match('/[1-5](?:\d{2}|XX)/', $key)) {
+            if (preg_match('/^[1-5](?:\d{2}|XX)$/', $key)) {
                 $value_2 = $value_1;
                 if (\is_object($value_1)) {
                     $value_2 = $this->normalizer->normalize($value_1, 'json', $context);
-                }
-                if (\is_object($value_1)) {
+                } elseif (\is_object($value_1)) {
                     $value_2 = $this->normalizer->normalize($value_1, 'json', $context);
                 }
                 $data->{$key} = $value_2;

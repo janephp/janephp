@@ -11,7 +11,6 @@ declare(strict_types=1);
 namespace Jane\OpenApi\JsonSchema\Version3\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -37,26 +36,26 @@ class OpenApiNormalizer implements DenormalizerInterface, NormalizerInterface, D
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (!\is_object($data)) {
-            throw new InvalidArgumentException();
+            return null;
         }
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \Jane\OpenApi\JsonSchema\Version3\Model\OpenApi();
         $data = clone $data;
-        if (property_exists($data, 'openapi')) {
+        if (property_exists($data, 'openapi') && $data->{'openapi'} !== null) {
             $object->setOpenapi($data->{'openapi'});
             unset($data->{'openapi'});
         }
-        if (property_exists($data, 'info')) {
+        if (property_exists($data, 'info') && $data->{'info'} !== null) {
             $object->setInfo($this->denormalizer->denormalize($data->{'info'}, 'Jane\\OpenApi\\JsonSchema\\Version3\\Model\\Info', 'json', $context));
             unset($data->{'info'});
         }
-        if (property_exists($data, 'externalDocs')) {
+        if (property_exists($data, 'externalDocs') && $data->{'externalDocs'} !== null) {
             $object->setExternalDocs($this->denormalizer->denormalize($data->{'externalDocs'}, 'Jane\\OpenApi\\JsonSchema\\Version3\\Model\\ExternalDocumentation', 'json', $context));
             unset($data->{'externalDocs'});
         }
-        if (property_exists($data, 'servers')) {
+        if (property_exists($data, 'servers') && $data->{'servers'} !== null) {
             $values = [];
             foreach ($data->{'servers'} as $value) {
                 $values[] = $this->denormalizer->denormalize($value, 'Jane\\OpenApi\\JsonSchema\\Version3\\Model\\Server', 'json', $context);
@@ -64,7 +63,7 @@ class OpenApiNormalizer implements DenormalizerInterface, NormalizerInterface, D
             $object->setServers($values);
             unset($data->{'servers'});
         }
-        if (property_exists($data, 'security')) {
+        if (property_exists($data, 'security') && $data->{'security'} !== null) {
             $values_1 = [];
             foreach ($data->{'security'} as $value_1) {
                 $values_2 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
@@ -80,7 +79,7 @@ class OpenApiNormalizer implements DenormalizerInterface, NormalizerInterface, D
             $object->setSecurity($values_1);
             unset($data->{'security'});
         }
-        if (property_exists($data, 'tags')) {
+        if (property_exists($data, 'tags') && $data->{'tags'} !== null) {
             $values_4 = [];
             foreach ($data->{'tags'} as $value_4) {
                 $values_4[] = $this->denormalizer->denormalize($value_4, 'Jane\\OpenApi\\JsonSchema\\Version3\\Model\\Tag', 'json', $context);
@@ -88,7 +87,7 @@ class OpenApiNormalizer implements DenormalizerInterface, NormalizerInterface, D
             $object->setTags($values_4);
             unset($data->{'tags'});
         }
-        if (property_exists($data, 'paths')) {
+        if (property_exists($data, 'paths') && $data->{'paths'} !== null) {
             $values_5 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
             foreach ($data->{'paths'} as $key_1 => $value_5) {
                 if (preg_match('/^\\//', $key_1) && \is_object($value_5)) {
@@ -103,7 +102,7 @@ class OpenApiNormalizer implements DenormalizerInterface, NormalizerInterface, D
             $object->setPaths($values_5);
             unset($data->{'paths'});
         }
-        if (property_exists($data, 'components')) {
+        if (property_exists($data, 'components') && $data->{'components'} !== null) {
             $object->setComponents($this->denormalizer->denormalize($data->{'components'}, 'Jane\\OpenApi\\JsonSchema\\Version3\\Model\\Components', 'json', $context));
             unset($data->{'components'});
         }

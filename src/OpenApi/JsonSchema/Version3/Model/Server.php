@@ -13,20 +13,20 @@ namespace Jane\OpenApi\JsonSchema\Version3\Model;
 class Server extends \ArrayObject
 {
     /**
-     * @var string
+     * @var string|null
      */
     protected $url;
     /**
-     * @var string
+     * @var string|null
      */
     protected $description;
     /**
-     * @var ServerVariable[]
+     * @var ServerVariable[]|null
      */
     protected $variables;
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getUrl(): ?string
     {
@@ -34,7 +34,7 @@ class Server extends \ArrayObject
     }
 
     /**
-     * @param string $url
+     * @param string|null $url
      *
      * @return self
      */
@@ -46,7 +46,7 @@ class Server extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getDescription(): ?string
     {
@@ -54,7 +54,7 @@ class Server extends \ArrayObject
     }
 
     /**
-     * @param string $description
+     * @param string|null $description
      *
      * @return self
      */
@@ -66,7 +66,7 @@ class Server extends \ArrayObject
     }
 
     /**
-     * @return ServerVariable[]
+     * @return ServerVariable[]|null
      */
     public function getVariables(): ?\ArrayObject
     {
@@ -74,7 +74,7 @@ class Server extends \ArrayObject
     }
 
     /**
-     * @param ServerVariable[] $variables
+     * @param ServerVariable[]|null $variables
      *
      * @return self
      */

@@ -11,7 +11,6 @@ declare(strict_types=1);
 namespace Jane\OpenApi\JsonSchema\Version3\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -37,22 +36,22 @@ class PasswordOAuthFlowNormalizer implements DenormalizerInterface, NormalizerIn
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (!\is_object($data)) {
-            throw new InvalidArgumentException();
+            return null;
         }
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \Jane\OpenApi\JsonSchema\Version3\Model\PasswordOAuthFlow();
         $data = clone $data;
-        if (property_exists($data, 'tokenUrl')) {
+        if (property_exists($data, 'tokenUrl') && $data->{'tokenUrl'} !== null) {
             $object->setTokenUrl($data->{'tokenUrl'});
             unset($data->{'tokenUrl'});
         }
-        if (property_exists($data, 'refreshUrl')) {
+        if (property_exists($data, 'refreshUrl') && $data->{'refreshUrl'} !== null) {
             $object->setRefreshUrl($data->{'refreshUrl'});
             unset($data->{'refreshUrl'});
         }
-        if (property_exists($data, 'scopes')) {
+        if (property_exists($data, 'scopes') && $data->{'scopes'} !== null) {
             $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
             foreach ($data->{'scopes'} as $key => $value) {
                 $values[$key] = $value;

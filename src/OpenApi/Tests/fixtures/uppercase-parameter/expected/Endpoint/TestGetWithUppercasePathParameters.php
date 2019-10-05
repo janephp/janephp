@@ -4,6 +4,16 @@ namespace Jane\OpenApi\Tests\Expected\Endpoint;
 
 class TestGetWithUppercasePathParameters extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7Endpoint
 {
+    protected $TestParameter;
+    /**
+     * 
+     *
+     * @param mixed $testParameter 
+     */
+    public function __construct($testParameter)
+    {
+        $this->TestParameter = $testParameter;
+    }
     use \Jane\OpenApiRuntime\Client\Psr7EndpointTrait;
     public function getMethod() : string
     {
@@ -11,7 +21,7 @@ class TestGetWithUppercasePathParameters extends \Jane\OpenApiRuntime\Client\Bas
     }
     public function getUri() : string
     {
-        return '/test-uppercase-path-parameters/{TestParameter}';
+        return str_replace(array('{TestParameter}'), array($this->TestParameter), '/test-uppercase-path-parameters/{TestParameter}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {

@@ -11,7 +11,6 @@ declare(strict_types=1);
 namespace Jane\OpenApi\JsonSchema\Version3\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -37,39 +36,29 @@ class EncodingNormalizer implements DenormalizerInterface, NormalizerInterface, 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (!\is_object($data)) {
-            throw new InvalidArgumentException();
+            return null;
         }
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \Jane\OpenApi\JsonSchema\Version3\Model\Encoding();
-        if (property_exists($data, 'contentType')) {
+        if (property_exists($data, 'contentType') && $data->{'contentType'} !== null) {
             $object->setContentType($data->{'contentType'});
         }
-        if (property_exists($data, 'headers')) {
+        if (property_exists($data, 'headers') && $data->{'headers'} !== null) {
             $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
             foreach ($data->{'headers'} as $key => $value) {
-                $value_1 = $value;
-                if (\is_object($value) and isset($value->{'schema'})) {
-                    $value_1 = $this->denormalizer->denormalize($value, 'Jane\\OpenApi\\JsonSchema\\Version3\\Model\\HeaderWithSchemaWithExample', 'json', $context);
-                }
-                if (\is_object($value) and isset($value->{'schema'}) and isset($value->{'examples'})) {
-                    $value_1 = $this->denormalizer->denormalize($value, 'Jane\\OpenApi\\JsonSchema\\Version3\\Model\\HeaderWithSchemaWithExamples', 'json', $context);
-                }
-                if (\is_object($value) and isset($value->{'content'})) {
-                    $value_1 = $this->denormalizer->denormalize($value, 'Jane\\OpenApi\\JsonSchema\\Version3\\Model\\HeaderWithContent', 'json', $context);
-                }
-                $values[$key] = $value_1;
+                $values[$key] = $this->denormalizer->denormalize($value, 'Jane\\OpenApi\\JsonSchema\\Version3\\Model\\Header', 'json', $context);
             }
             $object->setHeaders($values);
         }
-        if (property_exists($data, 'style')) {
+        if (property_exists($data, 'style') && $data->{'style'} !== null) {
             $object->setStyle($data->{'style'});
         }
-        if (property_exists($data, 'explode')) {
+        if (property_exists($data, 'explode') && $data->{'explode'} !== null) {
             $object->setExplode($data->{'explode'});
         }
-        if (property_exists($data, 'allowReserved')) {
+        if (property_exists($data, 'allowReserved') && $data->{'allowReserved'} !== null) {
             $object->setAllowReserved($data->{'allowReserved'});
         }
 
@@ -85,17 +74,7 @@ class EncodingNormalizer implements DenormalizerInterface, NormalizerInterface, 
         if (null !== $object->getHeaders()) {
             $values = new \stdClass();
             foreach ($object->getHeaders() as $key => $value) {
-                $value_1 = $value;
-                if (\is_object($value)) {
-                    $value_1 = $this->normalizer->normalize($value, 'json', $context);
-                }
-                if (\is_object($value)) {
-                    $value_1 = $this->normalizer->normalize($value, 'json', $context);
-                }
-                if (\is_object($value)) {
-                    $value_1 = $this->normalizer->normalize($value, 'json', $context);
-                }
-                $values->{$key} = $value_1;
+                $values->{$key} = $this->normalizer->normalize($value, 'json', $context);
             }
             $data->{'headers'} = $values;
         }

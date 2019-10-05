@@ -13,20 +13,20 @@ namespace Jane\OpenApi\JsonSchema\Version3\Model;
 class OAuth2SecurityScheme extends \ArrayObject
 {
     /**
-     * @var string
+     * @var string|null
      */
     protected $type;
     /**
-     * @var OAuthFlows
+     * @var OAuthFlows|null
      */
     protected $flows;
     /**
-     * @var string
+     * @var string|null
      */
     protected $description;
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getType(): ?string
     {
@@ -34,7 +34,7 @@ class OAuth2SecurityScheme extends \ArrayObject
     }
 
     /**
-     * @param string $type
+     * @param string|null $type
      *
      * @return self
      */
@@ -46,7 +46,7 @@ class OAuth2SecurityScheme extends \ArrayObject
     }
 
     /**
-     * @return OAuthFlows
+     * @return OAuthFlows|null
      */
     public function getFlows(): ?OAuthFlows
     {
@@ -54,7 +54,7 @@ class OAuth2SecurityScheme extends \ArrayObject
     }
 
     /**
-     * @param OAuthFlows $flows
+     * @param OAuthFlows|null $flows
      *
      * @return self
      */
@@ -66,7 +66,7 @@ class OAuth2SecurityScheme extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getDescription(): ?string
     {
@@ -74,7 +74,7 @@ class OAuth2SecurityScheme extends \ArrayObject
     }
 
     /**
-     * @param string $description
+     * @param string|null $description
      *
      * @return self
      */

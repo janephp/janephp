@@ -6,13 +6,9 @@ use Doctrine\Common\Inflector\Inflector;
 use Jane\JsonSchema\Generator\Context\Context;
 use Jane\JsonSchema\Generator\File;
 use Jane\JsonSchemaRuntime\Reference;
+use Jane\OpenApi\Generator\Parameter\NonBodyParameterGenerator;
 use Jane\OpenApi\JsonSchema\Version3\Model\OpenApi;
-use Jane\OpenApi\JsonSchema\Version3\Model\ParameterWithSchemaWithExampleInHeader;
-use Jane\OpenApi\JsonSchema\Version3\Model\ParameterWithSchemaWithExampleInPath;
-use Jane\OpenApi\JsonSchema\Version3\Model\ParameterWithSchemaWithExampleInQuery;
-use Jane\OpenApi\JsonSchema\Version3\Model\ParameterWithSchemaWithExamplesInHeader;
-use Jane\OpenApi\JsonSchema\Version3\Model\ParameterWithSchemaWithExamplesInPath;
-use Jane\OpenApi\JsonSchema\Version3\Model\ParameterWithSchemaWithExamplesInQuery;
+use Jane\OpenApi\JsonSchema\Version3\Model\Parameter;
 use Jane\OpenApi\JsonSchema\Version3\Model\Response;
 use Jane\OpenApi\JsonSchema\Version3\Model\Schema;
 use Jane\OpenApi\Naming\OperationNamingInterface;
@@ -31,13 +27,14 @@ use Symfony\Component\Serializer\SerializerInterface;
 
 abstract class EndpointGenerator
 {
+    const IN_PATH = 'path';
+    const IN_QUERY = 'query';
+    const IN_HEADER = 'header';
+
     /** @var OperationNamingInterface */
     private $operationNaming;
 
-    /** @var Parameter\BodyParameterGenerator */
-    private $bodyParameterGenerator;
-
-    /** @var Parameter\NonBodyParameterGenerator */
+    /** @var NonBodyParameterGenerator */
     private $nonBodyParameterGenerator;
 
     /** @var DenormalizerInterface */
@@ -51,7 +48,7 @@ abstract class EndpointGenerator
 
     public function __construct(
         OperationNamingInterface $operationNaming,
-        Parameter\NonBodyParameterGenerator $nonBodyParameterGenerator,
+        NonBodyParameterGenerator $nonBodyParameterGenerator,
         DenormalizerInterface $denormalizer,
         ExceptionGenerator $exceptionGenerator,
         RequestBodyGenerator $requestBodyGenerator
@@ -90,8 +87,8 @@ abstract class EndpointGenerator
         ]);
 
         $extraHeadersMethod = $this->getExtraHeadersMethod($openApi, $operation);
-        $queryResolverMethod = $this->getOptionsResolverMethod($operation, [ParameterWithSchemaWithExampleInQuery::class, ParameterWithSchemaWithExamplesInQuery::class], 'getQueryOptionsResolver');
-        $headerResolverMethod = $this->getOptionsResolverMethod($operation, [ParameterWithSchemaWithExampleInHeader::class, ParameterWithSchemaWithExamplesInHeader::class], 'getHeadersOptionsResolver');
+        $queryResolverMethod = $this->getOptionsResolverMethod($operation, self::IN_QUERY, 'getQueryOptionsResolver');
+        $headerResolverMethod = $this->getOptionsResolverMethod($operation, self::IN_HEADER, 'getHeadersOptionsResolver');
 
         if ($extraHeadersMethod) {
             $class->stmts[] = $extraHeadersMethod;
@@ -145,7 +142,7 @@ abstract class EndpointGenerator
                 $parameter->setSchema($schema);
             }
 
-            if ($parameter instanceof ParameterWithSchemaWithExampleInPath || $parameter instanceof ParameterWithSchemaWithExamplesInPath) {
+            if ($parameter instanceof Parameter && self::IN_PATH === $parameter->getIn()) {
                 $pathParams[] = $this->nonBodyParameterGenerator->generateMethodParameter($parameter, $context, $operation->getReference() . '/parameters/' . $key);
                 $pathParamsDoc[] = $this->nonBodyParameterGenerator->generateMethodDocParameter($parameter, $context, $operation->getReference() . '/parameters/' . $key);
                 $methodStatements[] = new Stmt\Expression(new Expr\Assign(new Expr\PropertyFetch(new Expr\Variable('this'), $parameter->getName()), new Expr\Variable(Inflector::camelize($parameter->getName()))));
@@ -154,11 +151,10 @@ abstract class EndpointGenerator
                 ]);
             }
 
-            if ($parameter instanceof ParameterWithSchemaWithExampleInQuery || $parameter instanceof ParameterWithSchemaWithExamplesInQuery) {
+            if ($parameter instanceof Parameter && self::IN_QUERY === $parameter->getIn()) {
                 $queryParamsDoc[] = $this->nonBodyParameterGenerator->generateOptionDocParameter($parameter);
             }
-
-            if ($parameter instanceof ParameterWithSchemaWithExampleInHeader || $parameter instanceof ParameterWithSchemaWithExamplesInHeader) {
+            if ($parameter instanceof Parameter && self::IN_HEADER === $parameter->getIn()) {
                 $headerParamsDoc[] = $this->nonBodyParameterGenerator->generateOptionDocParameter($parameter);
             }
         }
@@ -233,7 +229,7 @@ EOD
                 $parameter = $this->resolveParameter($parameter);
             }
 
-            if ($parameter instanceof ParameterWithSchemaWithExampleInPath || $parameter instanceof ParameterWithSchemaWithExamplesInPath) {
+            if ($parameter instanceof Parameter && self::IN_PATH === $parameter->getIn()) {
                 // $url = str_replace('{param}', $param, $url)
                 $names[] = $parameter->getName();
             }
@@ -328,7 +324,7 @@ EOD
         ]);
     }
 
-    private function getOptionsResolverMethod(Operation $operation, $classes, $methodName): ?Stmt\ClassMethod
+    private function getOptionsResolverMethod(Operation $operation, string $parameterIn, string $methodName): ?Stmt\ClassMethod
     {
         $parameters = [];
 
@@ -337,10 +333,8 @@ EOD
                 $parameter = $this->resolveParameter($parameter);
             }
 
-            foreach ($classes as $class) {
-                if (is_a($parameter, $class)) {
-                    $parameters[] = $parameter;
-                }
+            if ($parameter instanceof Parameter && $parameterIn === $parameter->getIn()) {
+                $parameters[] = $parameter;
             }
         }
 
@@ -724,35 +718,8 @@ EOD
     private function resolveParameter(Reference $parameter)
     {
         return $parameter->resolve(function ($value) {
-            if (\is_object($value) and isset($value->{'name'}) and (isset($value->{'in'}) and $value->{'in'} == 'path') and (isset($value->{'required'}) and $value->{'required'} == '1') and isset($value->{'schema'})) {
-                return $this->denormalizer->denormalize($value, 'Jane\\OpenApi\\JsonSchema\\Version3\\Model\\ParameterWithSchemaWithExampleInPath', 'json');
-            }
-            if (\is_object($value) and isset($value->{'name'}) and (isset($value->{'in'}) and $value->{'in'} == 'query') and isset($value->{'schema'})) {
-                return $this->denormalizer->denormalize($value, 'Jane\\OpenApi\\JsonSchema\\Version3\\Model\\ParameterWithSchemaWithExampleInQuery', 'json');
-            }
-            if (\is_object($value) and isset($value->{'name'}) and (isset($value->{'in'}) and $value->{'in'} == 'header') and isset($value->{'schema'})) {
-                return $this->denormalizer->denormalize($value, 'Jane\\OpenApi\\JsonSchema\\Version3\\Model\\ParameterWithSchemaWithExampleInHeader', 'json');
-            }
-            if (\is_object($value) and isset($value->{'name'}) and (isset($value->{'in'}) and $value->{'in'} == 'cookie') and isset($value->{'schema'})) {
-                return $this->denormalizer->denormalize($value, 'Jane\\OpenApi\\JsonSchema\\Version3\\Model\\ParameterWithSchemaWithExampleInCookie', 'json');
-            }
-            if (\is_object($value) and isset($value->{'name'}) and (isset($value->{'in'}) and $value->{'in'} == 'path') and (isset($value->{'required'}) and $value->{'required'} == '1') and isset($value->{'schema'}) and isset($value->{'examples'})) {
-                return $this->denormalizer->denormalize($value, 'Jane\\OpenApi\\JsonSchema\\Version3\\Model\\ParameterWithSchemaWithExamplesInPath', 'json');
-            }
-            if (\is_object($value) and isset($value->{'name'}) and (isset($value->{'in'}) and $value->{'in'} == 'query') and isset($value->{'schema'}) and isset($value->{'examples'})) {
-                return $this->denormalizer->denormalize($value, 'Jane\\OpenApi\\JsonSchema\\Version3\\Model\\ParameterWithSchemaWithExamplesInQuery', 'json');
-            }
-            if (\is_object($value) and isset($value->{'name'}) and (isset($value->{'in'}) and $value->{'in'} == 'header') and isset($value->{'schema'}) and isset($value->{'examples'})) {
-                return $this->denormalizer->denormalize($value, 'Jane\\OpenApi\\JsonSchema\\Version3\\Model\\ParameterWithSchemaWithExamplesInHeader', 'json');
-            }
-            if (\is_object($value) and isset($value->{'name'}) and (isset($value->{'in'}) and $value->{'in'} == 'cookie') and isset($value->{'schema'}) and isset($value->{'examples'})) {
-                return $this->denormalizer->denormalize($value, 'Jane\\OpenApi\\JsonSchema\\Version3\\Model\\ParameterWithSchemaWithExamplesInCookie', 'json');
-            }
-            if (\is_object($value) and isset($value->{'name'}) and (isset($value->{'in'}) and $value->{'in'} == 'path') and isset($value->{'content'})) {
-                return $this->denormalizer->denormalize($value, 'Jane\\OpenApi\\JsonSchema\\Version3\\Model\\ParameterWithContentInPath', 'json');
-            }
-            if (\is_object($value) and isset($value->{'name'}) and (isset($value->{'in'}) and ($value->{'in'} == 'query' or $value->{'in'} == 'header' or $value->{'in'} == 'cookie')) and isset($value->{'content'})) {
-                return $this->denormalizer->denormalize($value, 'Jane\\OpenApi\\JsonSchema\\Version3\\Model\\ParameterWithContentNotInPath', 'json');
+            if (\is_object($value)) {
+                return $this->denormalizer->denormalize($value, 'Jane\\OpenApi\\JsonSchema\\Version3\\Model\\Parameter', 'json');
             }
 
             return $value;

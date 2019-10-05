@@ -11,7 +11,6 @@ declare(strict_types=1);
 namespace Jane\OpenApi\JsonSchema\Version3\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -19,46 +18,46 @@ use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
-class BearerHTTPSecuritySchemeNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+class HTTPSecuritySchemeNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
 
     public function supportsDenormalization($data, $type, $format = null)
     {
-        return $type === 'Jane\\OpenApi\\JsonSchema\\Version3\\Model\\BearerHTTPSecurityScheme';
+        return $type === 'Jane\\OpenApi\\JsonSchema\\Version3\\Model\\HTTPSecurityScheme';
     }
 
     public function supportsNormalization($data, $format = null)
     {
-        return $data instanceof \Jane\OpenApi\JsonSchema\Version3\Model\BearerHTTPSecurityScheme;
+        return $data instanceof \Jane\OpenApi\JsonSchema\Version3\Model\HTTPSecurityScheme;
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (!\is_object($data)) {
-            throw new InvalidArgumentException();
+            return null;
         }
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
-        $object = new \Jane\OpenApi\JsonSchema\Version3\Model\BearerHTTPSecurityScheme();
+        $object = new \Jane\OpenApi\JsonSchema\Version3\Model\HTTPSecurityScheme();
         $data = clone $data;
-        if (property_exists($data, 'scheme')) {
+        if (property_exists($data, 'scheme') && $data->{'scheme'} !== null) {
             $object->setScheme($data->{'scheme'});
             unset($data->{'scheme'});
         }
-        if (property_exists($data, 'bearerFormat')) {
+        if (property_exists($data, 'bearerFormat') && $data->{'bearerFormat'} !== null) {
             $object->setBearerFormat($data->{'bearerFormat'});
             unset($data->{'bearerFormat'});
         }
-        if (property_exists($data, 'type')) {
-            $object->setType($data->{'type'});
-            unset($data->{'type'});
-        }
-        if (property_exists($data, 'description')) {
+        if (property_exists($data, 'description') && $data->{'description'} !== null) {
             $object->setDescription($data->{'description'});
             unset($data->{'description'});
+        }
+        if (property_exists($data, 'type') && $data->{'type'} !== null) {
+            $object->setType($data->{'type'});
+            unset($data->{'type'});
         }
         foreach ($data as $key => $value) {
             if (preg_match('/^x-/', $key)) {
@@ -78,11 +77,11 @@ class BearerHTTPSecuritySchemeNormalizer implements DenormalizerInterface, Norma
         if (null !== $object->getBearerFormat()) {
             $data->{'bearerFormat'} = $object->getBearerFormat();
         }
-        if (null !== $object->getType()) {
-            $data->{'type'} = $object->getType();
-        }
         if (null !== $object->getDescription()) {
             $data->{'description'} = $object->getDescription();
+        }
+        if (null !== $object->getType()) {
+            $data->{'type'} = $object->getType();
         }
         foreach ($object as $key => $value) {
             if (preg_match('/^x-/', $key)) {

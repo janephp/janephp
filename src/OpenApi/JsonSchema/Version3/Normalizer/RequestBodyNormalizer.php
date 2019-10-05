@@ -11,7 +11,6 @@ declare(strict_types=1);
 namespace Jane\OpenApi\JsonSchema\Version3\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -37,39 +36,32 @@ class RequestBodyNormalizer implements DenormalizerInterface, NormalizerInterfac
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (!\is_object($data)) {
-            throw new InvalidArgumentException();
+            return null;
         }
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \Jane\OpenApi\JsonSchema\Version3\Model\RequestBody();
         $data = clone $data;
-        if (property_exists($data, 'description')) {
+        if (property_exists($data, 'description') && $data->{'description'} !== null) {
             $object->setDescription($data->{'description'});
             unset($data->{'description'});
         }
-        if (property_exists($data, 'content')) {
+        if (property_exists($data, 'content') && $data->{'content'} !== null) {
             $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
             foreach ($data->{'content'} as $key => $value) {
-                $value_1 = $value;
-                if (\is_object($value)) {
-                    $value_1 = $this->denormalizer->denormalize($value, 'Jane\\OpenApi\\JsonSchema\\Version3\\Model\\MediaTypeWithExample', 'json', $context);
-                }
-                if (\is_object($value) and isset($value->{'examples'})) {
-                    $value_1 = $this->denormalizer->denormalize($value, 'Jane\\OpenApi\\JsonSchema\\Version3\\Model\\MediaTypeWithExamples', 'json', $context);
-                }
-                $values[$key] = $value_1;
+                $values[$key] = $this->denormalizer->denormalize($value, 'Jane\\OpenApi\\JsonSchema\\Version3\\Model\\MediaType', 'json', $context);
             }
             $object->setContent($values);
             unset($data->{'content'});
         }
-        if (property_exists($data, 'required')) {
+        if (property_exists($data, 'required') && $data->{'required'} !== null) {
             $object->setRequired($data->{'required'});
             unset($data->{'required'});
         }
-        foreach ($data as $key_1 => $value_2) {
+        foreach ($data as $key_1 => $value_1) {
             if (preg_match('/^x-/', $key_1)) {
-                $object[$key_1] = $value_2;
+                $object[$key_1] = $value_1;
             }
         }
 
@@ -85,23 +77,16 @@ class RequestBodyNormalizer implements DenormalizerInterface, NormalizerInterfac
         if (null !== $object->getContent()) {
             $values = new \stdClass();
             foreach ($object->getContent() as $key => $value) {
-                $value_1 = $value;
-                if (\is_object($value)) {
-                    $value_1 = $this->normalizer->normalize($value, 'json', $context);
-                }
-                if (\is_object($value)) {
-                    $value_1 = $this->normalizer->normalize($value, 'json', $context);
-                }
-                $values->{$key} = $value_1;
+                $values->{$key} = $this->normalizer->normalize($value, 'json', $context);
             }
             $data->{'content'} = $values;
         }
         if (null !== $object->getRequired()) {
             $data->{'required'} = $object->getRequired();
         }
-        foreach ($object as $key_1 => $value_2) {
+        foreach ($object as $key_1 => $value_1) {
             if (preg_match('/^x-/', $key_1)) {
-                $data->{$key_1} = $value_2;
+                $data->{$key_1} = $value_1;
             }
         }
 

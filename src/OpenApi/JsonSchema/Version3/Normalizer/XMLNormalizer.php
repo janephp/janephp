@@ -11,7 +11,6 @@ declare(strict_types=1);
 namespace Jane\OpenApi\JsonSchema\Version3\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -37,30 +36,30 @@ class XMLNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (!\is_object($data)) {
-            throw new InvalidArgumentException();
+            return null;
         }
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \Jane\OpenApi\JsonSchema\Version3\Model\XML();
         $data = clone $data;
-        if (property_exists($data, 'name')) {
+        if (property_exists($data, 'name') && $data->{'name'} !== null) {
             $object->setName($data->{'name'});
             unset($data->{'name'});
         }
-        if (property_exists($data, 'namespace')) {
+        if (property_exists($data, 'namespace') && $data->{'namespace'} !== null) {
             $object->setNamespace($data->{'namespace'});
             unset($data->{'namespace'});
         }
-        if (property_exists($data, 'prefix')) {
+        if (property_exists($data, 'prefix') && $data->{'prefix'} !== null) {
             $object->setPrefix($data->{'prefix'});
             unset($data->{'prefix'});
         }
-        if (property_exists($data, 'attribute')) {
+        if (property_exists($data, 'attribute') && $data->{'attribute'} !== null) {
             $object->setAttribute($data->{'attribute'});
             unset($data->{'attribute'});
         }
-        if (property_exists($data, 'wrapped')) {
+        if (property_exists($data, 'wrapped') && $data->{'wrapped'} !== null) {
             $object->setWrapped($data->{'wrapped'});
             unset($data->{'wrapped'});
         }

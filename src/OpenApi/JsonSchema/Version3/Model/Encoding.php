@@ -13,28 +13,28 @@ namespace Jane\OpenApi\JsonSchema\Version3\Model;
 class Encoding
 {
     /**
-     * @var string
+     * @var string|null
      */
     protected $contentType;
     /**
-     * @var HeaderWithSchemaWithExample[]|HeaderWithSchemaWithExamples[]|HeaderWithContent[]
+     * @var Header[]|null
      */
     protected $headers;
     /**
-     * @var string
+     * @var string|null
      */
     protected $style;
     /**
-     * @var bool
+     * @var bool|null
      */
     protected $explode;
     /**
-     * @var bool
+     * @var bool|null
      */
-    protected $allowReserved;
+    protected $allowReserved = false;
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getContentType(): ?string
     {
@@ -42,7 +42,7 @@ class Encoding
     }
 
     /**
-     * @param string $contentType
+     * @param string|null $contentType
      *
      * @return self
      */
@@ -54,7 +54,7 @@ class Encoding
     }
 
     /**
-     * @return HeaderWithSchemaWithExample[]|HeaderWithSchemaWithExamples[]|HeaderWithContent[]
+     * @return Header[]|null
      */
     public function getHeaders(): ?\ArrayObject
     {
@@ -62,7 +62,7 @@ class Encoding
     }
 
     /**
-     * @param HeaderWithSchemaWithExample[]|HeaderWithSchemaWithExamples[]|HeaderWithContent[] $headers
+     * @param Header[]|null $headers
      *
      * @return self
      */
@@ -74,7 +74,7 @@ class Encoding
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getStyle(): ?string
     {
@@ -82,7 +82,7 @@ class Encoding
     }
 
     /**
-     * @param string $style
+     * @param string|null $style
      *
      * @return self
      */
@@ -94,7 +94,7 @@ class Encoding
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getExplode(): ?bool
     {
@@ -102,7 +102,7 @@ class Encoding
     }
 
     /**
-     * @param bool $explode
+     * @param bool|null $explode
      *
      * @return self
      */
@@ -114,7 +114,7 @@ class Encoding
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getAllowReserved(): ?bool
     {
@@ -122,7 +122,7 @@ class Encoding
     }
 
     /**
-     * @param bool $allowReserved
+     * @param bool|null $allowReserved
      *
      * @return self
      */

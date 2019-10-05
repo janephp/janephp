@@ -13,24 +13,24 @@ namespace Jane\OpenApi\JsonSchema\Version3\Model;
 class OAuthFlows extends \ArrayObject
 {
     /**
-     * @var ImplicitOAuthFlow
+     * @var ImplicitOAuthFlow|null
      */
     protected $implicit;
     /**
-     * @var PasswordOAuthFlow
+     * @var PasswordOAuthFlow|null
      */
     protected $password;
     /**
-     * @var ClientCredentialsFlow
+     * @var ClientCredentialsFlow|null
      */
     protected $clientCredentials;
     /**
-     * @var AuthorizationCodeOAuthFlow
+     * @var AuthorizationCodeOAuthFlow|null
      */
     protected $authorizationCode;
 
     /**
-     * @return ImplicitOAuthFlow
+     * @return ImplicitOAuthFlow|null
      */
     public function getImplicit(): ?ImplicitOAuthFlow
     {
@@ -38,7 +38,7 @@ class OAuthFlows extends \ArrayObject
     }
 
     /**
-     * @param ImplicitOAuthFlow $implicit
+     * @param ImplicitOAuthFlow|null $implicit
      *
      * @return self
      */
@@ -50,7 +50,7 @@ class OAuthFlows extends \ArrayObject
     }
 
     /**
-     * @return PasswordOAuthFlow
+     * @return PasswordOAuthFlow|null
      */
     public function getPassword(): ?PasswordOAuthFlow
     {
@@ -58,7 +58,7 @@ class OAuthFlows extends \ArrayObject
     }
 
     /**
-     * @param PasswordOAuthFlow $password
+     * @param PasswordOAuthFlow|null $password
      *
      * @return self
      */
@@ -70,7 +70,7 @@ class OAuthFlows extends \ArrayObject
     }
 
     /**
-     * @return ClientCredentialsFlow
+     * @return ClientCredentialsFlow|null
      */
     public function getClientCredentials(): ?ClientCredentialsFlow
     {
@@ -78,7 +78,7 @@ class OAuthFlows extends \ArrayObject
     }
 
     /**
-     * @param ClientCredentialsFlow $clientCredentials
+     * @param ClientCredentialsFlow|null $clientCredentials
      *
      * @return self
      */
@@ -90,7 +90,7 @@ class OAuthFlows extends \ArrayObject
     }
 
     /**
-     * @return AuthorizationCodeOAuthFlow
+     * @return AuthorizationCodeOAuthFlow|null
      */
     public function getAuthorizationCode(): ?AuthorizationCodeOAuthFlow
     {
@@ -98,7 +98,7 @@ class OAuthFlows extends \ArrayObject
     }
 
     /**
-     * @param AuthorizationCodeOAuthFlow $authorizationCode
+     * @param AuthorizationCodeOAuthFlow|null $authorizationCode
      *
      * @return self
      */

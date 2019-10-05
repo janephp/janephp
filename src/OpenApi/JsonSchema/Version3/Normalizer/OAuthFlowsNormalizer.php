@@ -11,7 +11,6 @@ declare(strict_types=1);
 namespace Jane\OpenApi\JsonSchema\Version3\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -37,26 +36,26 @@ class OAuthFlowsNormalizer implements DenormalizerInterface, NormalizerInterface
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (!\is_object($data)) {
-            throw new InvalidArgumentException();
+            return null;
         }
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \Jane\OpenApi\JsonSchema\Version3\Model\OAuthFlows();
         $data = clone $data;
-        if (property_exists($data, 'implicit')) {
+        if (property_exists($data, 'implicit') && $data->{'implicit'} !== null) {
             $object->setImplicit($this->denormalizer->denormalize($data->{'implicit'}, 'Jane\\OpenApi\\JsonSchema\\Version3\\Model\\ImplicitOAuthFlow', 'json', $context));
             unset($data->{'implicit'});
         }
-        if (property_exists($data, 'password')) {
+        if (property_exists($data, 'password') && $data->{'password'} !== null) {
             $object->setPassword($this->denormalizer->denormalize($data->{'password'}, 'Jane\\OpenApi\\JsonSchema\\Version3\\Model\\PasswordOAuthFlow', 'json', $context));
             unset($data->{'password'});
         }
-        if (property_exists($data, 'clientCredentials')) {
+        if (property_exists($data, 'clientCredentials') && $data->{'clientCredentials'} !== null) {
             $object->setClientCredentials($this->denormalizer->denormalize($data->{'clientCredentials'}, 'Jane\\OpenApi\\JsonSchema\\Version3\\Model\\ClientCredentialsFlow', 'json', $context));
             unset($data->{'clientCredentials'});
         }
-        if (property_exists($data, 'authorizationCode')) {
+        if (property_exists($data, 'authorizationCode') && $data->{'authorizationCode'} !== null) {
             $object->setAuthorizationCode($this->denormalizer->denormalize($data->{'authorizationCode'}, 'Jane\\OpenApi\\JsonSchema\\Version3\\Model\\AuthorizationCodeOAuthFlow', 'json', $context));
             unset($data->{'authorizationCode'});
         }

@@ -13,12 +13,12 @@ namespace Jane\OpenApi\JsonSchema\Version3\Model;
 class Reference
 {
     /**
-     * @var string
+     * @var string|null
      */
     protected $dollarRef;
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getDollarRef(): ?string
     {
@@ -26,7 +26,7 @@ class Reference
     }
 
     /**
-     * @param string $dollarRef
+     * @param string|null $dollarRef
      *
      * @return self
      */

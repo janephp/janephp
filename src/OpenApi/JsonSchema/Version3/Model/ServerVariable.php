@@ -13,20 +13,20 @@ namespace Jane\OpenApi\JsonSchema\Version3\Model;
 class ServerVariable extends \ArrayObject
 {
     /**
-     * @var string[]
+     * @var string[]|null
      */
     protected $enum;
     /**
-     * @var string
+     * @var string|null
      */
     protected $default;
     /**
-     * @var string
+     * @var string|null
      */
     protected $description;
 
     /**
-     * @return string[]
+     * @return string[]|null
      */
     public function getEnum(): ?array
     {
@@ -34,7 +34,7 @@ class ServerVariable extends \ArrayObject
     }
 
     /**
-     * @param string[] $enum
+     * @param string[]|null $enum
      *
      * @return self
      */
@@ -46,7 +46,7 @@ class ServerVariable extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getDefault(): ?string
     {
@@ -54,7 +54,7 @@ class ServerVariable extends \ArrayObject
     }
 
     /**
-     * @param string $default
+     * @param string|null $default
      *
      * @return self
      */
@@ -66,7 +66,7 @@ class ServerVariable extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getDescription(): ?string
     {
@@ -74,7 +74,7 @@ class ServerVariable extends \ArrayObject
     }
 
     /**
-     * @param string $description
+     * @param string|null $description
      *
      * @return self
      */

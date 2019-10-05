@@ -11,7 +11,6 @@ declare(strict_types=1);
 namespace Jane\OpenApi\JsonSchema\Version3\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -37,14 +36,14 @@ class OperationNormalizer implements DenormalizerInterface, NormalizerInterface,
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (!\is_object($data)) {
-            throw new InvalidArgumentException();
+            return null;
         }
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \Jane\OpenApi\JsonSchema\Version3\Model\Operation();
         $data = clone $data;
-        if (property_exists($data, 'tags')) {
+        if (property_exists($data, 'tags') && $data->{'tags'} !== null) {
             $values = [];
             foreach ($data->{'tags'} as $value) {
                 $values[] = $value;
@@ -52,57 +51,29 @@ class OperationNormalizer implements DenormalizerInterface, NormalizerInterface,
             $object->setTags($values);
             unset($data->{'tags'});
         }
-        if (property_exists($data, 'summary')) {
+        if (property_exists($data, 'summary') && $data->{'summary'} !== null) {
             $object->setSummary($data->{'summary'});
             unset($data->{'summary'});
         }
-        if (property_exists($data, 'description')) {
+        if (property_exists($data, 'description') && $data->{'description'} !== null) {
             $object->setDescription($data->{'description'});
             unset($data->{'description'});
         }
-        if (property_exists($data, 'externalDocs')) {
+        if (property_exists($data, 'externalDocs') && $data->{'externalDocs'} !== null) {
             $object->setExternalDocs($this->denormalizer->denormalize($data->{'externalDocs'}, 'Jane\\OpenApi\\JsonSchema\\Version3\\Model\\ExternalDocumentation', 'json', $context));
             unset($data->{'externalDocs'});
         }
-        if (property_exists($data, 'operationId')) {
+        if (property_exists($data, 'operationId') && $data->{'operationId'} !== null) {
             $object->setOperationId($data->{'operationId'});
             unset($data->{'operationId'});
         }
-        if (property_exists($data, 'parameters')) {
+        if (property_exists($data, 'parameters') && $data->{'parameters'} !== null) {
             $values_1 = [];
             foreach ($data->{'parameters'} as $value_1) {
                 $value_2 = $value_1;
-                if (\is_object($value_1) and isset($value_1->{'name'}) and (isset($value_1->{'in'}) and $value_1->{'in'} == 'path') and (isset($value_1->{'required'}) and $value_1->{'required'} == '1') and isset($value_1->{'schema'})) {
-                    $value_2 = $this->denormalizer->denormalize($value_1, 'Jane\\OpenApi\\JsonSchema\\Version3\\Model\\ParameterWithSchemaWithExampleInPath', 'json', $context);
-                }
-                if (\is_object($value_1) and isset($value_1->{'name'}) and (isset($value_1->{'in'}) and $value_1->{'in'} == 'query') and isset($value_1->{'schema'})) {
-                    $value_2 = $this->denormalizer->denormalize($value_1, 'Jane\\OpenApi\\JsonSchema\\Version3\\Model\\ParameterWithSchemaWithExampleInQuery', 'json', $context);
-                }
-                if (\is_object($value_1) and isset($value_1->{'name'}) and (isset($value_1->{'in'}) and $value_1->{'in'} == 'header') and isset($value_1->{'schema'})) {
-                    $value_2 = $this->denormalizer->denormalize($value_1, 'Jane\\OpenApi\\JsonSchema\\Version3\\Model\\ParameterWithSchemaWithExampleInHeader', 'json', $context);
-                }
-                if (\is_object($value_1) and isset($value_1->{'name'}) and (isset($value_1->{'in'}) and $value_1->{'in'} == 'cookie') and isset($value_1->{'schema'})) {
-                    $value_2 = $this->denormalizer->denormalize($value_1, 'Jane\\OpenApi\\JsonSchema\\Version3\\Model\\ParameterWithSchemaWithExampleInCookie', 'json', $context);
-                }
-                if (\is_object($value_1) and isset($value_1->{'name'}) and (isset($value_1->{'in'}) and $value_1->{'in'} == 'path') and (isset($value_1->{'required'}) and $value_1->{'required'} == '1') and isset($value_1->{'schema'}) and isset($value_1->{'examples'})) {
-                    $value_2 = $this->denormalizer->denormalize($value_1, 'Jane\\OpenApi\\JsonSchema\\Version3\\Model\\ParameterWithSchemaWithExamplesInPath', 'json', $context);
-                }
-                if (\is_object($value_1) and isset($value_1->{'name'}) and (isset($value_1->{'in'}) and $value_1->{'in'} == 'query') and isset($value_1->{'schema'}) and isset($value_1->{'examples'})) {
-                    $value_2 = $this->denormalizer->denormalize($value_1, 'Jane\\OpenApi\\JsonSchema\\Version3\\Model\\ParameterWithSchemaWithExamplesInQuery', 'json', $context);
-                }
-                if (\is_object($value_1) and isset($value_1->{'name'}) and (isset($value_1->{'in'}) and $value_1->{'in'} == 'header') and isset($value_1->{'schema'}) and isset($value_1->{'examples'})) {
-                    $value_2 = $this->denormalizer->denormalize($value_1, 'Jane\\OpenApi\\JsonSchema\\Version3\\Model\\ParameterWithSchemaWithExamplesInHeader', 'json', $context);
-                }
-                if (\is_object($value_1) and isset($value_1->{'name'}) and (isset($value_1->{'in'}) and $value_1->{'in'} == 'cookie') and isset($value_1->{'schema'}) and isset($value_1->{'examples'})) {
-                    $value_2 = $this->denormalizer->denormalize($value_1, 'Jane\\OpenApi\\JsonSchema\\Version3\\Model\\ParameterWithSchemaWithExamplesInCookie', 'json', $context);
-                }
-                if (\is_object($value_1) and isset($value_1->{'name'}) and (isset($value_1->{'in'}) and $value_1->{'in'} == 'path') and isset($value_1->{'content'})) {
-                    $value_2 = $this->denormalizer->denormalize($value_1, 'Jane\\OpenApi\\JsonSchema\\Version3\\Model\\ParameterWithContentInPath', 'json', $context);
-                }
-                if (\is_object($value_1) and isset($value_1->{'name'}) and (isset($value_1->{'in'}) and ($value_1->{'in'} == 'query' or $value_1->{'in'} == 'header' or $value_1->{'in'} == 'cookie')) and isset($value_1->{'content'})) {
-                    $value_2 = $this->denormalizer->denormalize($value_1, 'Jane\\OpenApi\\JsonSchema\\Version3\\Model\\ParameterWithContentNotInPath', 'json', $context);
-                }
-                if (\is_object($value_1) and isset($value_1->{'$ref'})) {
+                if (\is_object($value_1) and isset($value_1->{'name'}) and isset($value_1->{'in'})) {
+                    $value_2 = $this->denormalizer->denormalize($value_1, 'Jane\\OpenApi\\JsonSchema\\Version3\\Model\\Parameter', 'json', $context);
+                } elseif (\is_object($value_1) and isset($value_1->{'$ref'})) {
                     $value_2 = $this->denormalizer->denormalize($value_1, 'Jane\\OpenApi\\JsonSchema\\Version3\\Model\\Reference', 'json', $context);
                 }
                 $values_1[] = $value_2;
@@ -110,26 +81,27 @@ class OperationNormalizer implements DenormalizerInterface, NormalizerInterface,
             $object->setParameters($values_1);
             unset($data->{'parameters'});
         }
-        if (property_exists($data, 'requestBody')) {
+        if (property_exists($data, 'requestBody') && $data->{'requestBody'} !== null) {
             $value_3 = $data->{'requestBody'};
             if (\is_object($data->{'requestBody'}) and isset($data->{'requestBody'}->{'content'})) {
                 $value_3 = $this->denormalizer->denormalize($data->{'requestBody'}, 'Jane\\OpenApi\\JsonSchema\\Version3\\Model\\RequestBody', 'json', $context);
-            }
-            if (\is_object($data->{'requestBody'}) and isset($data->{'requestBody'}->{'$ref'})) {
+            } elseif (\is_object($data->{'requestBody'}) and isset($data->{'requestBody'}->{'$ref'})) {
                 $value_3 = $this->denormalizer->denormalize($data->{'requestBody'}, 'Jane\\OpenApi\\JsonSchema\\Version3\\Model\\Reference', 'json', $context);
             }
             $object->setRequestBody($value_3);
             unset($data->{'requestBody'});
         }
-        if (property_exists($data, 'responses')) {
+        if (property_exists($data, 'responses') && $data->{'responses'} !== null) {
             $object->setResponses($this->denormalizer->denormalize($data->{'responses'}, 'Jane\\OpenApi\\JsonSchema\\Version3\\Model\\Responses', 'json', $context));
             unset($data->{'responses'});
         }
-        if (property_exists($data, 'callbacks')) {
+        if (property_exists($data, 'callbacks') && $data->{'callbacks'} !== null) {
             $values_2 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
             foreach ($data->{'callbacks'} as $key => $value_4) {
                 $value_5 = $value_4;
-                if (isset($value_4)) {
+                if (\is_object($value_4) and isset($value_4->{'$ref'})) {
+                    $value_5 = $this->denormalizer->denormalize($value_4, 'Jane\\OpenApi\\JsonSchema\\Version3\\Model\\Reference', 'json', $context);
+                } elseif (isset($value_4)) {
                     $values_3 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
                     foreach ($value_4 as $key_1 => $value_6) {
                         if (preg_match('/^x-/', $key_1) && isset($value_6)) {
@@ -139,19 +111,16 @@ class OperationNormalizer implements DenormalizerInterface, NormalizerInterface,
                     }
                     $value_5 = $values_3;
                 }
-                if (\is_object($value_4) and isset($value_4->{'$ref'})) {
-                    $value_5 = $this->denormalizer->denormalize($value_4, 'Jane\\OpenApi\\JsonSchema\\Version3\\Model\\Reference', 'json', $context);
-                }
                 $values_2[$key] = $value_5;
             }
             $object->setCallbacks($values_2);
             unset($data->{'callbacks'});
         }
-        if (property_exists($data, 'deprecated')) {
+        if (property_exists($data, 'deprecated') && $data->{'deprecated'} !== null) {
             $object->setDeprecated($data->{'deprecated'});
             unset($data->{'deprecated'});
         }
-        if (property_exists($data, 'security')) {
+        if (property_exists($data, 'security') && $data->{'security'} !== null) {
             $values_4 = [];
             foreach ($data->{'security'} as $value_7) {
                 $values_5 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
@@ -167,7 +136,7 @@ class OperationNormalizer implements DenormalizerInterface, NormalizerInterface,
             $object->setSecurity($values_4);
             unset($data->{'security'});
         }
-        if (property_exists($data, 'servers')) {
+        if (property_exists($data, 'servers') && $data->{'servers'} !== null) {
             $values_7 = [];
             foreach ($data->{'servers'} as $value_10) {
                 $values_7[] = $this->denormalizer->denormalize($value_10, 'Jane\\OpenApi\\JsonSchema\\Version3\\Model\\Server', 'json', $context);
@@ -212,35 +181,7 @@ class OperationNormalizer implements DenormalizerInterface, NormalizerInterface,
                 $value_2 = $value_1;
                 if (\is_object($value_1)) {
                     $value_2 = $this->normalizer->normalize($value_1, 'json', $context);
-                }
-                if (\is_object($value_1)) {
-                    $value_2 = $this->normalizer->normalize($value_1, 'json', $context);
-                }
-                if (\is_object($value_1)) {
-                    $value_2 = $this->normalizer->normalize($value_1, 'json', $context);
-                }
-                if (\is_object($value_1)) {
-                    $value_2 = $this->normalizer->normalize($value_1, 'json', $context);
-                }
-                if (\is_object($value_1)) {
-                    $value_2 = $this->normalizer->normalize($value_1, 'json', $context);
-                }
-                if (\is_object($value_1)) {
-                    $value_2 = $this->normalizer->normalize($value_1, 'json', $context);
-                }
-                if (\is_object($value_1)) {
-                    $value_2 = $this->normalizer->normalize($value_1, 'json', $context);
-                }
-                if (\is_object($value_1)) {
-                    $value_2 = $this->normalizer->normalize($value_1, 'json', $context);
-                }
-                if (\is_object($value_1)) {
-                    $value_2 = $this->normalizer->normalize($value_1, 'json', $context);
-                }
-                if (\is_object($value_1)) {
-                    $value_2 = $this->normalizer->normalize($value_1, 'json', $context);
-                }
-                if (\is_object($value_1)) {
+                } elseif (\is_object($value_1)) {
                     $value_2 = $this->normalizer->normalize($value_1, 'json', $context);
                 }
                 $values_1[] = $value_2;
@@ -251,8 +192,7 @@ class OperationNormalizer implements DenormalizerInterface, NormalizerInterface,
             $value_3 = $object->getRequestBody();
             if (\is_object($object->getRequestBody())) {
                 $value_3 = $this->normalizer->normalize($object->getRequestBody(), 'json', $context);
-            }
-            if (\is_object($object->getRequestBody())) {
+            } elseif (\is_object($object->getRequestBody())) {
                 $value_3 = $this->normalizer->normalize($object->getRequestBody(), 'json', $context);
             }
             $data->{'requestBody'} = $value_3;
@@ -264,7 +204,9 @@ class OperationNormalizer implements DenormalizerInterface, NormalizerInterface,
             $values_2 = new \stdClass();
             foreach ($object->getCallbacks() as $key => $value_4) {
                 $value_5 = $value_4;
-                if (null !== $value_4) {
+                if (\is_object($value_4)) {
+                    $value_5 = $this->normalizer->normalize($value_4, 'json', $context);
+                } elseif (null !== $value_4) {
                     $values_3 = new \stdClass();
                     foreach ($value_4 as $key_1 => $value_6) {
                         if (preg_match('/^x-/', $key_1) && null !== $value_6) {
@@ -273,9 +215,6 @@ class OperationNormalizer implements DenormalizerInterface, NormalizerInterface,
                         }
                     }
                     $value_5 = $values_3;
-                }
-                if (\is_object($value_4)) {
-                    $value_5 = $this->normalizer->normalize($value_4, 'json', $context);
                 }
                 $values_2->{$key} = $value_5;
             }

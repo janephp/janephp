@@ -13,32 +13,32 @@ namespace Jane\OpenApi\JsonSchema\Version3\Model;
 class Info extends \ArrayObject
 {
     /**
-     * @var string
+     * @var string|null
      */
     protected $title;
     /**
-     * @var string
+     * @var string|null
      */
     protected $description;
     /**
-     * @var string
+     * @var string|null
      */
     protected $termsOfService;
     /**
-     * @var Contact
+     * @var Contact|null
      */
     protected $contact;
     /**
-     * @var License
+     * @var License|null
      */
     protected $license;
     /**
-     * @var string
+     * @var string|null
      */
     protected $version;
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getTitle(): ?string
     {
@@ -46,7 +46,7 @@ class Info extends \ArrayObject
     }
 
     /**
-     * @param string $title
+     * @param string|null $title
      *
      * @return self
      */
@@ -58,7 +58,7 @@ class Info extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getDescription(): ?string
     {
@@ -66,7 +66,7 @@ class Info extends \ArrayObject
     }
 
     /**
-     * @param string $description
+     * @param string|null $description
      *
      * @return self
      */
@@ -78,7 +78,7 @@ class Info extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getTermsOfService(): ?string
     {
@@ -86,7 +86,7 @@ class Info extends \ArrayObject
     }
 
     /**
-     * @param string $termsOfService
+     * @param string|null $termsOfService
      *
      * @return self
      */
@@ -98,7 +98,7 @@ class Info extends \ArrayObject
     }
 
     /**
-     * @return Contact
+     * @return Contact|null
      */
     public function getContact(): ?Contact
     {
@@ -106,7 +106,7 @@ class Info extends \ArrayObject
     }
 
     /**
-     * @param Contact $contact
+     * @param Contact|null $contact
      *
      * @return self
      */
@@ -118,7 +118,7 @@ class Info extends \ArrayObject
     }
 
     /**
-     * @return License
+     * @return License|null
      */
     public function getLicense(): ?License
     {
@@ -126,7 +126,7 @@ class Info extends \ArrayObject
     }
 
     /**
-     * @param License $license
+     * @param License|null $license
      *
      * @return self
      */
@@ -138,7 +138,7 @@ class Info extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getVersion(): ?string
     {
@@ -146,7 +146,7 @@ class Info extends \ArrayObject
     }
 
     /**
-     * @param string $version
+     * @param string|null $version
      *
      * @return self
      */

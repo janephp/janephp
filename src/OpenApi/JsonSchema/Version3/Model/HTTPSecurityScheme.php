@@ -10,27 +10,27 @@ declare(strict_types=1);
 
 namespace Jane\OpenApi\JsonSchema\Version3\Model;
 
-class BearerHTTPSecurityScheme extends \ArrayObject
+class HTTPSecurityScheme extends \ArrayObject
 {
     /**
-     * @var string
+     * @var string|null
      */
     protected $scheme;
     /**
-     * @var string
+     * @var string|null
      */
     protected $bearerFormat;
     /**
-     * @var string
-     */
-    protected $type;
-    /**
-     * @var string
+     * @var string|null
      */
     protected $description;
+    /**
+     * @var string|null
+     */
+    protected $type;
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getScheme(): ?string
     {
@@ -38,7 +38,7 @@ class BearerHTTPSecurityScheme extends \ArrayObject
     }
 
     /**
-     * @param string $scheme
+     * @param string|null $scheme
      *
      * @return self
      */
@@ -50,7 +50,7 @@ class BearerHTTPSecurityScheme extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getBearerFormat(): ?string
     {
@@ -58,7 +58,7 @@ class BearerHTTPSecurityScheme extends \ArrayObject
     }
 
     /**
-     * @param string $bearerFormat
+     * @param string|null $bearerFormat
      *
      * @return self
      */
@@ -70,27 +70,7 @@ class BearerHTTPSecurityScheme extends \ArrayObject
     }
 
     /**
-     * @return string
-     */
-    public function getType(): ?string
-    {
-        return $this->type;
-    }
-
-    /**
-     * @param string $type
-     *
-     * @return self
-     */
-    public function setType(?string $type): self
-    {
-        $this->type = $type;
-
-        return $this;
-    }
-
-    /**
-     * @return string
+     * @return string|null
      */
     public function getDescription(): ?string
     {
@@ -98,13 +78,33 @@ class BearerHTTPSecurityScheme extends \ArrayObject
     }
 
     /**
-     * @param string $description
+     * @param string|null $description
      *
      * @return self
      */
     public function setDescription(?string $description): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getType(): ?string
+    {
+        return $this->type;
+    }
+
+    /**
+     * @param string|null $type
+     *
+     * @return self
+     */
+    public function setType(?string $type): self
+    {
+        $this->type = $type;
 
         return $this;
     }

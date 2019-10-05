@@ -13,16 +13,16 @@ namespace Jane\OpenApi\JsonSchema\Version3\Model;
 class Discriminator
 {
     /**
-     * @var string
+     * @var string|null
      */
     protected $propertyName;
     /**
-     * @var string[]
+     * @var string[]|null
      */
     protected $mapping;
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getPropertyName(): ?string
     {
@@ -30,7 +30,7 @@ class Discriminator
     }
 
     /**
-     * @param string $propertyName
+     * @param string|null $propertyName
      *
      * @return self
      */
@@ -42,7 +42,7 @@ class Discriminator
     }
 
     /**
-     * @return string[]
+     * @return string[]|null
      */
     public function getMapping(): ?\ArrayObject
     {
@@ -50,7 +50,7 @@ class Discriminator
     }
 
     /**
-     * @param string[] $mapping
+     * @param string[]|null $mapping
      *
      * @return self
      */

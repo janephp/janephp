@@ -13,20 +13,20 @@ namespace Jane\OpenApi\JsonSchema\Version3\Model;
 class ImplicitOAuthFlow extends \ArrayObject
 {
     /**
-     * @var string
+     * @var string|null
      */
     protected $authorizationUrl;
     /**
-     * @var string
+     * @var string|null
      */
     protected $refreshUrl;
     /**
-     * @var string[]
+     * @var string[]|null
      */
     protected $scopes;
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getAuthorizationUrl(): ?string
     {
@@ -34,7 +34,7 @@ class ImplicitOAuthFlow extends \ArrayObject
     }
 
     /**
-     * @param string $authorizationUrl
+     * @param string|null $authorizationUrl
      *
      * @return self
      */
@@ -46,7 +46,7 @@ class ImplicitOAuthFlow extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getRefreshUrl(): ?string
     {
@@ -54,7 +54,7 @@ class ImplicitOAuthFlow extends \ArrayObject
     }
 
     /**
-     * @param string $refreshUrl
+     * @param string|null $refreshUrl
      *
      * @return self
      */
@@ -66,7 +66,7 @@ class ImplicitOAuthFlow extends \ArrayObject
     }
 
     /**
-     * @return string[]
+     * @return string[]|null
      */
     public function getScopes(): ?\ArrayObject
     {
@@ -74,7 +74,7 @@ class ImplicitOAuthFlow extends \ArrayObject
     }
 
     /**
-     * @param string[] $scopes
+     * @param string[]|null $scopes
      *
      * @return self
      */

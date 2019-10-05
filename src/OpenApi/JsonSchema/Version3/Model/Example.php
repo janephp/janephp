@@ -13,24 +13,24 @@ namespace Jane\OpenApi\JsonSchema\Version3\Model;
 class Example extends \ArrayObject
 {
     /**
-     * @var string
+     * @var string|null
      */
     protected $summary;
     /**
-     * @var string
+     * @var string|null
      */
     protected $description;
     /**
-     * @var mixed
+     * @var mixed|null
      */
     protected $value;
     /**
-     * @var string
+     * @var string|null
      */
     protected $externalValue;
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getSummary(): ?string
     {
@@ -38,7 +38,7 @@ class Example extends \ArrayObject
     }
 
     /**
-     * @param string $summary
+     * @param string|null $summary
      *
      * @return self
      */
@@ -50,7 +50,7 @@ class Example extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getDescription(): ?string
     {
@@ -58,7 +58,7 @@ class Example extends \ArrayObject
     }
 
     /**
-     * @param string $description
+     * @param string|null $description
      *
      * @return self
      */
@@ -90,7 +90,7 @@ class Example extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getExternalValue(): ?string
     {
@@ -98,7 +98,7 @@ class Example extends \ArrayObject
     }
 
     /**
-     * @param string $externalValue
+     * @param string|null $externalValue
      *
      * @return self
      */

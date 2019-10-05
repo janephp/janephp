@@ -13,20 +13,20 @@ namespace Jane\OpenApi\JsonSchema\Version3\Model;
 class Contact extends \ArrayObject
 {
     /**
-     * @var string
+     * @var string|null
      */
     protected $name;
     /**
-     * @var string
+     * @var string|null
      */
     protected $url;
     /**
-     * @var string
+     * @var string|null
      */
     protected $email;
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getName(): ?string
     {
@@ -34,7 +34,7 @@ class Contact extends \ArrayObject
     }
 
     /**
-     * @param string $name
+     * @param string|null $name
      *
      * @return self
      */
@@ -46,7 +46,7 @@ class Contact extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getUrl(): ?string
     {
@@ -54,7 +54,7 @@ class Contact extends \ArrayObject
     }
 
     /**
-     * @param string $url
+     * @param string|null $url
      *
      * @return self
      */
@@ -66,7 +66,7 @@ class Contact extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getEmail(): ?string
     {
@@ -74,7 +74,7 @@ class Contact extends \ArrayObject
     }
 
     /**
-     * @param string $email
+     * @param string|null $email
      *
      * @return self
      */

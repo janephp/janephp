@@ -13,40 +13,40 @@ namespace Jane\OpenApi\JsonSchema\Version3\Model;
 class OpenApi extends \ArrayObject
 {
     /**
-     * @var string
+     * @var string|null
      */
     protected $openapi;
     /**
-     * @var Info
+     * @var Info|null
      */
     protected $info;
     /**
-     * @var ExternalDocumentation
+     * @var ExternalDocumentation|null
      */
     protected $externalDocs;
     /**
-     * @var Server[]
+     * @var Server[]|null
      */
     protected $servers;
     /**
-     * @var string[][][]
+     * @var string[][][]|null
      */
     protected $security;
     /**
-     * @var Tag[]
+     * @var Tag[]|null
      */
     protected $tags;
     /**
-     * @var PathItem[]|mixed[]
+     * @var PathItem[]|mixed[]|null
      */
     protected $paths;
     /**
-     * @var Components
+     * @var Components|null
      */
     protected $components;
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getOpenapi(): ?string
     {
@@ -54,7 +54,7 @@ class OpenApi extends \ArrayObject
     }
 
     /**
-     * @param string $openapi
+     * @param string|null $openapi
      *
      * @return self
      */
@@ -66,7 +66,7 @@ class OpenApi extends \ArrayObject
     }
 
     /**
-     * @return Info
+     * @return Info|null
      */
     public function getInfo(): ?Info
     {
@@ -74,7 +74,7 @@ class OpenApi extends \ArrayObject
     }
 
     /**
-     * @param Info $info
+     * @param Info|null $info
      *
      * @return self
      */
@@ -86,7 +86,7 @@ class OpenApi extends \ArrayObject
     }
 
     /**
-     * @return ExternalDocumentation
+     * @return ExternalDocumentation|null
      */
     public function getExternalDocs(): ?ExternalDocumentation
     {
@@ -94,7 +94,7 @@ class OpenApi extends \ArrayObject
     }
 
     /**
-     * @param ExternalDocumentation $externalDocs
+     * @param ExternalDocumentation|null $externalDocs
      *
      * @return self
      */
@@ -106,7 +106,7 @@ class OpenApi extends \ArrayObject
     }
 
     /**
-     * @return Server[]
+     * @return Server[]|null
      */
     public function getServers(): ?array
     {
@@ -114,7 +114,7 @@ class OpenApi extends \ArrayObject
     }
 
     /**
-     * @param Server[] $servers
+     * @param Server[]|null $servers
      *
      * @return self
      */
@@ -126,7 +126,7 @@ class OpenApi extends \ArrayObject
     }
 
     /**
-     * @return string[][][]
+     * @return string[][][]|null
      */
     public function getSecurity(): ?array
     {
@@ -134,7 +134,7 @@ class OpenApi extends \ArrayObject
     }
 
     /**
-     * @param string[][][] $security
+     * @param string[][][]|null $security
      *
      * @return self
      */
@@ -146,7 +146,7 @@ class OpenApi extends \ArrayObject
     }
 
     /**
-     * @return Tag[]
+     * @return Tag[]|null
      */
     public function getTags(): ?array
     {
@@ -154,7 +154,7 @@ class OpenApi extends \ArrayObject
     }
 
     /**
-     * @param Tag[] $tags
+     * @param Tag[]|null $tags
      *
      * @return self
      */
@@ -186,7 +186,7 @@ class OpenApi extends \ArrayObject
     }
 
     /**
-     * @return Components
+     * @return Components|null
      */
     public function getComponents(): ?Components
     {
@@ -194,7 +194,7 @@ class OpenApi extends \ArrayObject
     }
 
     /**
-     * @param Components $components
+     * @param Components|null $components
      *
      * @return self
      */

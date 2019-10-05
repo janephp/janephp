@@ -13,20 +13,20 @@ namespace Jane\OpenApi\JsonSchema\Version3\Model;
 class Tag extends \ArrayObject
 {
     /**
-     * @var string
+     * @var string|null
      */
     protected $name;
     /**
-     * @var string
+     * @var string|null
      */
     protected $description;
     /**
-     * @var ExternalDocumentation
+     * @var ExternalDocumentation|null
      */
     protected $externalDocs;
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getName(): ?string
     {
@@ -34,7 +34,7 @@ class Tag extends \ArrayObject
     }
 
     /**
-     * @param string $name
+     * @param string|null $name
      *
      * @return self
      */
@@ -46,7 +46,7 @@ class Tag extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getDescription(): ?string
     {
@@ -54,7 +54,7 @@ class Tag extends \ArrayObject
     }
 
     /**
-     * @param string $description
+     * @param string|null $description
      *
      * @return self
      */
@@ -66,7 +66,7 @@ class Tag extends \ArrayObject
     }
 
     /**
-     * @return ExternalDocumentation
+     * @return ExternalDocumentation|null
      */
     public function getExternalDocs(): ?ExternalDocumentation
     {
@@ -74,7 +74,7 @@ class Tag extends \ArrayObject
     }
 
     /**
-     * @param ExternalDocumentation $externalDocs
+     * @param ExternalDocumentation|null $externalDocs
      *
      * @return self
      */

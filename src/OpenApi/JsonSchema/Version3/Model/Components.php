@@ -13,44 +13,44 @@ namespace Jane\OpenApi\JsonSchema\Version3\Model;
 class Components extends \ArrayObject
 {
     /**
-     * @var Reference|Schema[]
+     * @var Schema|Reference[]|null
      */
     protected $schemas;
     /**
-     * @var Reference|Response[]
+     * @var Reference|Response[]|null
      */
     protected $responses;
     /**
-     * @var Reference|ParameterWithSchemaWithExampleInPath|ParameterWithSchemaWithExampleInQuery|ParameterWithSchemaWithExampleInHeader|ParameterWithSchemaWithExampleInCookie|ParameterWithSchemaWithExamplesInPath|ParameterWithSchemaWithExamplesInQuery|ParameterWithSchemaWithExamplesInHeader|ParameterWithSchemaWithExamplesInCookie|ParameterWithContentInPath|ParameterWithContentNotInPath[]
+     * @var Reference|Parameter[]|null
      */
     protected $parameters;
     /**
-     * @var Reference|Example[]
+     * @var Reference|Example[]|null
      */
     protected $examples;
     /**
-     * @var Reference|RequestBody[]
+     * @var Reference|RequestBody[]|null
      */
     protected $requestBodies;
     /**
-     * @var Reference|HeaderWithSchemaWithExample|HeaderWithSchemaWithExamples|HeaderWithContent[]
+     * @var Reference|Header[]|null
      */
     protected $headers;
     /**
-     * @var Reference|APIKeySecurityScheme|NonBearerHTTPSecurityScheme|BearerHTTPSecurityScheme|OAuth2SecurityScheme|OpenIdConnectSecurityScheme[]
+     * @var Reference|APIKeySecurityScheme|HTTPSecurityScheme|OAuth2SecurityScheme|OpenIdConnectSecurityScheme[]|null
      */
     protected $securitySchemes;
     /**
-     * @var Reference|LinkWithOperationRef|LinkWithOperationId[]
+     * @var Reference|Link[]|null
      */
     protected $links;
     /**
-     * @var Reference|mixed[][]
+     * @var Reference|mixed[][]|null
      */
     protected $callbacks;
 
     /**
-     * @return Reference|Schema[]
+     * @return Schema|Reference[]
      */
     public function getSchemas()
     {
@@ -58,7 +58,7 @@ class Components extends \ArrayObject
     }
 
     /**
-     * @param Reference|Schema[] $schemas
+     * @param Schema|Reference[] $schemas
      *
      * @return self
      */
@@ -90,7 +90,7 @@ class Components extends \ArrayObject
     }
 
     /**
-     * @return Reference|ParameterWithSchemaWithExampleInPath|ParameterWithSchemaWithExampleInQuery|ParameterWithSchemaWithExampleInHeader|ParameterWithSchemaWithExampleInCookie|ParameterWithSchemaWithExamplesInPath|ParameterWithSchemaWithExamplesInQuery|ParameterWithSchemaWithExamplesInHeader|ParameterWithSchemaWithExamplesInCookie|ParameterWithContentInPath|ParameterWithContentNotInPath[]
+     * @return Reference|Parameter[]
      */
     public function getParameters()
     {
@@ -98,7 +98,7 @@ class Components extends \ArrayObject
     }
 
     /**
-     * @param Reference|ParameterWithSchemaWithExampleInPath|ParameterWithSchemaWithExampleInQuery|ParameterWithSchemaWithExampleInHeader|ParameterWithSchemaWithExampleInCookie|ParameterWithSchemaWithExamplesInPath|ParameterWithSchemaWithExamplesInQuery|ParameterWithSchemaWithExamplesInHeader|ParameterWithSchemaWithExamplesInCookie|ParameterWithContentInPath|ParameterWithContentNotInPath[] $parameters
+     * @param Reference|Parameter[] $parameters
      *
      * @return self
      */
@@ -150,7 +150,7 @@ class Components extends \ArrayObject
     }
 
     /**
-     * @return Reference|HeaderWithSchemaWithExample|HeaderWithSchemaWithExamples|HeaderWithContent[]
+     * @return Reference|Header[]
      */
     public function getHeaders()
     {
@@ -158,7 +158,7 @@ class Components extends \ArrayObject
     }
 
     /**
-     * @param Reference|HeaderWithSchemaWithExample|HeaderWithSchemaWithExamples|HeaderWithContent[] $headers
+     * @param Reference|Header[] $headers
      *
      * @return self
      */
@@ -170,7 +170,7 @@ class Components extends \ArrayObject
     }
 
     /**
-     * @return Reference|APIKeySecurityScheme|NonBearerHTTPSecurityScheme|BearerHTTPSecurityScheme|OAuth2SecurityScheme|OpenIdConnectSecurityScheme[]
+     * @return Reference|APIKeySecurityScheme|HTTPSecurityScheme|OAuth2SecurityScheme|OpenIdConnectSecurityScheme[]
      */
     public function getSecuritySchemes()
     {
@@ -178,7 +178,7 @@ class Components extends \ArrayObject
     }
 
     /**
-     * @param Reference|APIKeySecurityScheme|NonBearerHTTPSecurityScheme|BearerHTTPSecurityScheme|OAuth2SecurityScheme|OpenIdConnectSecurityScheme[] $securitySchemes
+     * @param Reference|APIKeySecurityScheme|HTTPSecurityScheme|OAuth2SecurityScheme|OpenIdConnectSecurityScheme[] $securitySchemes
      *
      * @return self
      */
@@ -190,7 +190,7 @@ class Components extends \ArrayObject
     }
 
     /**
-     * @return Reference|LinkWithOperationRef|LinkWithOperationId[]
+     * @return Reference|Link[]
      */
     public function getLinks()
     {
@@ -198,7 +198,7 @@ class Components extends \ArrayObject
     }
 
     /**
-     * @param Reference|LinkWithOperationRef|LinkWithOperationId[] $links
+     * @param Reference|Link[] $links
      *
      * @return self
      */

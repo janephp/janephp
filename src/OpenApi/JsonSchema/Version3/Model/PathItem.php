@@ -13,60 +13,60 @@ namespace Jane\OpenApi\JsonSchema\Version3\Model;
 class PathItem extends \ArrayObject
 {
     /**
-     * @var string
+     * @var string|null
      */
     protected $dollarRef;
     /**
-     * @var string
+     * @var string|null
      */
     protected $summary;
     /**
-     * @var string
+     * @var string|null
      */
     protected $description;
     /**
-     * @var Operation
+     * @var Operation|null
      */
     protected $get;
     /**
-     * @var Operation
+     * @var Operation|null
      */
     protected $put;
     /**
-     * @var Operation
+     * @var Operation|null
      */
     protected $post;
     /**
-     * @var Operation
+     * @var Operation|null
      */
     protected $delete;
     /**
-     * @var Operation
+     * @var Operation|null
      */
     protected $options;
     /**
-     * @var Operation
+     * @var Operation|null
      */
     protected $head;
     /**
-     * @var Operation
+     * @var Operation|null
      */
     protected $patch;
     /**
-     * @var Operation
+     * @var Operation|null
      */
     protected $trace;
     /**
-     * @var Server[]
+     * @var Server[]|null
      */
     protected $servers;
     /**
-     * @var ParameterWithSchemaWithExampleInPath[]|ParameterWithSchemaWithExampleInQuery[]|ParameterWithSchemaWithExampleInHeader[]|ParameterWithSchemaWithExampleInCookie[]|ParameterWithSchemaWithExamplesInPath[]|ParameterWithSchemaWithExamplesInQuery[]|ParameterWithSchemaWithExamplesInHeader[]|ParameterWithSchemaWithExamplesInCookie[]|ParameterWithContentInPath[]|ParameterWithContentNotInPath[]|Reference[]
+     * @var Parameter[]|Reference[]|null
      */
     protected $parameters;
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getDollarRef(): ?string
     {
@@ -74,7 +74,7 @@ class PathItem extends \ArrayObject
     }
 
     /**
-     * @param string $dollarRef
+     * @param string|null $dollarRef
      *
      * @return self
      */
@@ -86,7 +86,7 @@ class PathItem extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getSummary(): ?string
     {
@@ -94,7 +94,7 @@ class PathItem extends \ArrayObject
     }
 
     /**
-     * @param string $summary
+     * @param string|null $summary
      *
      * @return self
      */
@@ -106,7 +106,7 @@ class PathItem extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getDescription(): ?string
     {
@@ -114,7 +114,7 @@ class PathItem extends \ArrayObject
     }
 
     /**
-     * @param string $description
+     * @param string|null $description
      *
      * @return self
      */
@@ -126,7 +126,7 @@ class PathItem extends \ArrayObject
     }
 
     /**
-     * @return Operation
+     * @return Operation|null
      */
     public function getGet(): ?Operation
     {
@@ -134,7 +134,7 @@ class PathItem extends \ArrayObject
     }
 
     /**
-     * @param Operation $get
+     * @param Operation|null $get
      *
      * @return self
      */
@@ -146,7 +146,7 @@ class PathItem extends \ArrayObject
     }
 
     /**
-     * @return Operation
+     * @return Operation|null
      */
     public function getPut(): ?Operation
     {
@@ -154,7 +154,7 @@ class PathItem extends \ArrayObject
     }
 
     /**
-     * @param Operation $put
+     * @param Operation|null $put
      *
      * @return self
      */
@@ -166,7 +166,7 @@ class PathItem extends \ArrayObject
     }
 
     /**
-     * @return Operation
+     * @return Operation|null
      */
     public function getPost(): ?Operation
     {
@@ -174,7 +174,7 @@ class PathItem extends \ArrayObject
     }
 
     /**
-     * @param Operation $post
+     * @param Operation|null $post
      *
      * @return self
      */
@@ -186,7 +186,7 @@ class PathItem extends \ArrayObject
     }
 
     /**
-     * @return Operation
+     * @return Operation|null
      */
     public function getDelete(): ?Operation
     {
@@ -194,7 +194,7 @@ class PathItem extends \ArrayObject
     }
 
     /**
-     * @param Operation $delete
+     * @param Operation|null $delete
      *
      * @return self
      */
@@ -206,7 +206,7 @@ class PathItem extends \ArrayObject
     }
 
     /**
-     * @return Operation
+     * @return Operation|null
      */
     public function getOptions(): ?Operation
     {
@@ -214,7 +214,7 @@ class PathItem extends \ArrayObject
     }
 
     /**
-     * @param Operation $options
+     * @param Operation|null $options
      *
      * @return self
      */
@@ -226,7 +226,7 @@ class PathItem extends \ArrayObject
     }
 
     /**
-     * @return Operation
+     * @return Operation|null
      */
     public function getHead(): ?Operation
     {
@@ -234,7 +234,7 @@ class PathItem extends \ArrayObject
     }
 
     /**
-     * @param Operation $head
+     * @param Operation|null $head
      *
      * @return self
      */
@@ -246,7 +246,7 @@ class PathItem extends \ArrayObject
     }
 
     /**
-     * @return Operation
+     * @return Operation|null
      */
     public function getPatch(): ?Operation
     {
@@ -254,7 +254,7 @@ class PathItem extends \ArrayObject
     }
 
     /**
-     * @param Operation $patch
+     * @param Operation|null $patch
      *
      * @return self
      */
@@ -266,7 +266,7 @@ class PathItem extends \ArrayObject
     }
 
     /**
-     * @return Operation
+     * @return Operation|null
      */
     public function getTrace(): ?Operation
     {
@@ -274,7 +274,7 @@ class PathItem extends \ArrayObject
     }
 
     /**
-     * @param Operation $trace
+     * @param Operation|null $trace
      *
      * @return self
      */
@@ -286,7 +286,7 @@ class PathItem extends \ArrayObject
     }
 
     /**
-     * @return Server[]
+     * @return Server[]|null
      */
     public function getServers(): ?array
     {
@@ -294,7 +294,7 @@ class PathItem extends \ArrayObject
     }
 
     /**
-     * @param Server[] $servers
+     * @param Server[]|null $servers
      *
      * @return self
      */
@@ -306,7 +306,7 @@ class PathItem extends \ArrayObject
     }
 
     /**
-     * @return ParameterWithSchemaWithExampleInPath[]|ParameterWithSchemaWithExampleInQuery[]|ParameterWithSchemaWithExampleInHeader[]|ParameterWithSchemaWithExampleInCookie[]|ParameterWithSchemaWithExamplesInPath[]|ParameterWithSchemaWithExamplesInQuery[]|ParameterWithSchemaWithExamplesInHeader[]|ParameterWithSchemaWithExamplesInCookie[]|ParameterWithContentInPath[]|ParameterWithContentNotInPath[]|Reference[]
+     * @return Parameter[]|Reference[]|null
      */
     public function getParameters(): ?array
     {
@@ -314,7 +314,7 @@ class PathItem extends \ArrayObject
     }
 
     /**
-     * @param ParameterWithSchemaWithExampleInPath[]|ParameterWithSchemaWithExampleInQuery[]|ParameterWithSchemaWithExampleInHeader[]|ParameterWithSchemaWithExampleInCookie[]|ParameterWithSchemaWithExamplesInPath[]|ParameterWithSchemaWithExamplesInQuery[]|ParameterWithSchemaWithExamplesInHeader[]|ParameterWithSchemaWithExamplesInCookie[]|ParameterWithContentInPath[]|ParameterWithContentNotInPath[]|Reference[] $parameters
+     * @param Parameter[]|Reference[]|null $parameters
      *
      * @return self
      */

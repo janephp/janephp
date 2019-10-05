@@ -5,13 +5,16 @@ namespace Jane\OpenApi\Tests\Expected;
 class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
 {
     /**
+     * 
+     *
+     * @param mixed $testParameter 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function testGetWithUppercasePathParameters(string $fetch = self::FETCH_OBJECT)
+    public function testGetWithUppercasePathParameters($testParameter, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Jane\OpenApi\Tests\Expected\Endpoint\TestGetWithUppercasePathParameters(), $fetch);
+        return $this->executePsr7Endpoint(new \Jane\OpenApi\Tests\Expected\Endpoint\TestGetWithUppercasePathParameters($testParameter), $fetch);
     }
     public static function create($httpClient = null)
     {

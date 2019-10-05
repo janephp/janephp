@@ -10,55 +10,63 @@ declare(strict_types=1);
 
 namespace Jane\OpenApi\JsonSchema\Version3\Model;
 
-class ParameterWithSchemaWithExamplesInPath extends \ArrayObject
+class Parameter extends \ArrayObject
 {
     /**
-     * @var string
+     * @var string|null
      */
     protected $name;
     /**
-     * @var string
+     * @var string|null
      */
     protected $in;
     /**
-     * @var string
+     * @var string|null
      */
     protected $description;
     /**
-     * @var bool
+     * @var bool|null
      */
-    protected $required;
+    protected $required = false;
     /**
-     * @var bool
+     * @var bool|null
      */
-    protected $deprecated;
+    protected $deprecated = false;
     /**
-     * @var bool
+     * @var bool|null
      */
-    protected $allowEmptyValue;
+    protected $allowEmptyValue = false;
     /**
-     * @var string
+     * @var string|null
      */
     protected $style;
     /**
-     * @var bool
+     * @var bool|null
      */
     protected $explode;
     /**
-     * @var bool
+     * @var bool|null
      */
-    protected $allowReserved;
+    protected $allowReserved = false;
     /**
-     * @var Schema|Reference
+     * @var Schema|Reference|null
      */
     protected $schema;
     /**
-     * @var Example[]|Reference[]
+     * @var MediaType[]|null
+     */
+    protected $content;
+    /**
+     * @var mixed|null
+     */
+    protected $example;
+    /**
+     * @var Example[]|Reference[]|null
      */
     protected $examples;
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getName(): ?string
     {
@@ -66,7 +74,7 @@ class ParameterWithSchemaWithExamplesInPath extends \ArrayObject
     }
 
     /**
-     * @param string $name
+     * @param string|null $name
      *
      * @return self
      */
@@ -78,7 +86,7 @@ class ParameterWithSchemaWithExamplesInPath extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getIn(): ?string
     {
@@ -86,7 +94,7 @@ class ParameterWithSchemaWithExamplesInPath extends \ArrayObject
     }
 
     /**
-     * @param string $in
+     * @param string|null $in
      *
      * @return self
      */
@@ -98,7 +106,7 @@ class ParameterWithSchemaWithExamplesInPath extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getDescription(): ?string
     {
@@ -106,7 +114,7 @@ class ParameterWithSchemaWithExamplesInPath extends \ArrayObject
     }
 
     /**
-     * @param string $description
+     * @param string|null $description
      *
      * @return self
      */
@@ -118,7 +126,7 @@ class ParameterWithSchemaWithExamplesInPath extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getRequired(): ?bool
     {
@@ -126,7 +134,7 @@ class ParameterWithSchemaWithExamplesInPath extends \ArrayObject
     }
 
     /**
-     * @param bool $required
+     * @param bool|null $required
      *
      * @return self
      */
@@ -138,7 +146,7 @@ class ParameterWithSchemaWithExamplesInPath extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getDeprecated(): ?bool
     {
@@ -146,7 +154,7 @@ class ParameterWithSchemaWithExamplesInPath extends \ArrayObject
     }
 
     /**
-     * @param bool $deprecated
+     * @param bool|null $deprecated
      *
      * @return self
      */
@@ -158,7 +166,7 @@ class ParameterWithSchemaWithExamplesInPath extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getAllowEmptyValue(): ?bool
     {
@@ -166,7 +174,7 @@ class ParameterWithSchemaWithExamplesInPath extends \ArrayObject
     }
 
     /**
-     * @param bool $allowEmptyValue
+     * @param bool|null $allowEmptyValue
      *
      * @return self
      */
@@ -178,7 +186,7 @@ class ParameterWithSchemaWithExamplesInPath extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getStyle(): ?string
     {
@@ -186,7 +194,7 @@ class ParameterWithSchemaWithExamplesInPath extends \ArrayObject
     }
 
     /**
-     * @param string $style
+     * @param string|null $style
      *
      * @return self
      */
@@ -198,7 +206,7 @@ class ParameterWithSchemaWithExamplesInPath extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getExplode(): ?bool
     {
@@ -206,7 +214,7 @@ class ParameterWithSchemaWithExamplesInPath extends \ArrayObject
     }
 
     /**
-     * @param bool $explode
+     * @param bool|null $explode
      *
      * @return self
      */
@@ -218,7 +226,7 @@ class ParameterWithSchemaWithExamplesInPath extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getAllowReserved(): ?bool
     {
@@ -226,7 +234,7 @@ class ParameterWithSchemaWithExamplesInPath extends \ArrayObject
     }
 
     /**
-     * @param bool $allowReserved
+     * @param bool|null $allowReserved
      *
      * @return self
      */
@@ -238,7 +246,7 @@ class ParameterWithSchemaWithExamplesInPath extends \ArrayObject
     }
 
     /**
-     * @return Schema|Reference
+     * @return Schema|Reference|null
      */
     public function getSchema()
     {
@@ -246,7 +254,7 @@ class ParameterWithSchemaWithExamplesInPath extends \ArrayObject
     }
 
     /**
-     * @param Schema|Reference $schema
+     * @param Schema|Reference|null $schema
      *
      * @return self
      */
@@ -258,7 +266,47 @@ class ParameterWithSchemaWithExamplesInPath extends \ArrayObject
     }
 
     /**
-     * @return Example[]|Reference[]
+     * @return MediaType[]|null
+     */
+    public function getContent(): ?\ArrayObject
+    {
+        return $this->content;
+    }
+
+    /**
+     * @param MediaType[]|null $content
+     *
+     * @return self
+     */
+    public function setContent(?\ArrayObject $content): self
+    {
+        $this->content = $content;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getExample()
+    {
+        return $this->example;
+    }
+
+    /**
+     * @param mixed $example
+     *
+     * @return self
+     */
+    public function setExample($example): self
+    {
+        $this->example = $example;
+
+        return $this;
+    }
+
+    /**
+     * @return Example[]|Reference[]|null
      */
     public function getExamples(): ?\ArrayObject
     {
@@ -266,7 +314,7 @@ class ParameterWithSchemaWithExamplesInPath extends \ArrayObject
     }
 
     /**
-     * @param Example[]|Reference[] $examples
+     * @param Example[]|Reference[]|null $examples
      *
      * @return self
      */

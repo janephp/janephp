@@ -10,31 +10,55 @@ declare(strict_types=1);
 
 namespace Jane\OpenApi\JsonSchema\Version3\Model;
 
-class LinkWithOperationRef extends \ArrayObject
+class Link extends \ArrayObject
 {
     /**
-     * @var string
+     * @var string|null
+     */
+    protected $operationId;
+    /**
+     * @var string|null
      */
     protected $operationRef;
     /**
-     * @var mixed[]
+     * @var mixed[]|null
      */
     protected $parameters;
     /**
-     * @var mixed
+     * @var mixed|null
      */
     protected $requestBody;
     /**
-     * @var string
+     * @var string|null
      */
     protected $description;
     /**
-     * @var Server
+     * @var Server|null
      */
     protected $server;
 
     /**
-     * @return string
+     * @return string|null
+     */
+    public function getOperationId(): ?string
+    {
+        return $this->operationId;
+    }
+
+    /**
+     * @param string|null $operationId
+     *
+     * @return self
+     */
+    public function setOperationId(?string $operationId): self
+    {
+        $this->operationId = $operationId;
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
      */
     public function getOperationRef(): ?string
     {
@@ -42,7 +66,7 @@ class LinkWithOperationRef extends \ArrayObject
     }
 
     /**
-     * @param string $operationRef
+     * @param string|null $operationRef
      *
      * @return self
      */
@@ -54,7 +78,7 @@ class LinkWithOperationRef extends \ArrayObject
     }
 
     /**
-     * @return mixed[]
+     * @return mixed[]|null
      */
     public function getParameters(): ?\ArrayObject
     {
@@ -62,7 +86,7 @@ class LinkWithOperationRef extends \ArrayObject
     }
 
     /**
-     * @param mixed[] $parameters
+     * @param mixed[]|null $parameters
      *
      * @return self
      */
@@ -94,7 +118,7 @@ class LinkWithOperationRef extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getDescription(): ?string
     {
@@ -102,7 +126,7 @@ class LinkWithOperationRef extends \ArrayObject
     }
 
     /**
-     * @param string $description
+     * @param string|null $description
      *
      * @return self
      */
@@ -114,7 +138,7 @@ class LinkWithOperationRef extends \ArrayObject
     }
 
     /**
-     * @return Server
+     * @return Server|null
      */
     public function getServer(): ?Server
     {
@@ -122,7 +146,7 @@ class LinkWithOperationRef extends \ArrayObject
     }
 
     /**
-     * @param Server $server
+     * @param Server|null $server
      *
      * @return self
      */

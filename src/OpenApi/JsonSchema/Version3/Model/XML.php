@@ -13,28 +13,28 @@ namespace Jane\OpenApi\JsonSchema\Version3\Model;
 class XML extends \ArrayObject
 {
     /**
-     * @var string
+     * @var string|null
      */
     protected $name;
     /**
-     * @var string
+     * @var string|null
      */
     protected $namespace;
     /**
-     * @var string
+     * @var string|null
      */
     protected $prefix;
     /**
-     * @var bool
+     * @var bool|null
      */
-    protected $attribute;
+    protected $attribute = false;
     /**
-     * @var bool
+     * @var bool|null
      */
-    protected $wrapped;
+    protected $wrapped = false;
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getName(): ?string
     {
@@ -42,7 +42,7 @@ class XML extends \ArrayObject
     }
 
     /**
-     * @param string $name
+     * @param string|null $name
      *
      * @return self
      */
@@ -54,7 +54,7 @@ class XML extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getNamespace(): ?string
     {
@@ -62,7 +62,7 @@ class XML extends \ArrayObject
     }
 
     /**
-     * @param string $namespace
+     * @param string|null $namespace
      *
      * @return self
      */
@@ -74,7 +74,7 @@ class XML extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getPrefix(): ?string
     {
@@ -82,7 +82,7 @@ class XML extends \ArrayObject
     }
 
     /**
-     * @param string $prefix
+     * @param string|null $prefix
      *
      * @return self
      */
@@ -94,7 +94,7 @@ class XML extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getAttribute(): ?bool
     {
@@ -102,7 +102,7 @@ class XML extends \ArrayObject
     }
 
     /**
-     * @param bool $attribute
+     * @param bool|null $attribute
      *
      * @return self
      */
@@ -114,7 +114,7 @@ class XML extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getWrapped(): ?bool
     {
@@ -122,7 +122,7 @@ class XML extends \ArrayObject
     }
 
     /**
-     * @param bool $wrapped
+     * @param bool|null $wrapped
      *
      * @return self
      */

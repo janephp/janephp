@@ -11,7 +11,6 @@ declare(strict_types=1);
 namespace Jane\OpenApi\JsonSchema\Version3\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -19,36 +18,40 @@ use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
-class LinkWithOperationIdNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+class LinkNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
 
     public function supportsDenormalization($data, $type, $format = null)
     {
-        return $type === 'Jane\\OpenApi\\JsonSchema\\Version3\\Model\\LinkWithOperationId';
+        return $type === 'Jane\\OpenApi\\JsonSchema\\Version3\\Model\\Link';
     }
 
     public function supportsNormalization($data, $format = null)
     {
-        return $data instanceof \Jane\OpenApi\JsonSchema\Version3\Model\LinkWithOperationId;
+        return $data instanceof \Jane\OpenApi\JsonSchema\Version3\Model\Link;
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (!\is_object($data)) {
-            throw new InvalidArgumentException();
+            return null;
         }
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
-        $object = new \Jane\OpenApi\JsonSchema\Version3\Model\LinkWithOperationId();
+        $object = new \Jane\OpenApi\JsonSchema\Version3\Model\Link();
         $data = clone $data;
-        if (property_exists($data, 'operationId')) {
+        if (property_exists($data, 'operationId') && $data->{'operationId'} !== null) {
             $object->setOperationId($data->{'operationId'});
             unset($data->{'operationId'});
         }
-        if (property_exists($data, 'parameters')) {
+        if (property_exists($data, 'operationRef') && $data->{'operationRef'} !== null) {
+            $object->setOperationRef($data->{'operationRef'});
+            unset($data->{'operationRef'});
+        }
+        if (property_exists($data, 'parameters') && $data->{'parameters'} !== null) {
             $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
             foreach ($data->{'parameters'} as $key => $value) {
                 $values[$key] = $value;
@@ -56,15 +59,15 @@ class LinkWithOperationIdNormalizer implements DenormalizerInterface, Normalizer
             $object->setParameters($values);
             unset($data->{'parameters'});
         }
-        if (property_exists($data, 'requestBody')) {
+        if (property_exists($data, 'requestBody') && $data->{'requestBody'} !== null) {
             $object->setRequestBody($data->{'requestBody'});
             unset($data->{'requestBody'});
         }
-        if (property_exists($data, 'description')) {
+        if (property_exists($data, 'description') && $data->{'description'} !== null) {
             $object->setDescription($data->{'description'});
             unset($data->{'description'});
         }
-        if (property_exists($data, 'server')) {
+        if (property_exists($data, 'server') && $data->{'server'} !== null) {
             $object->setServer($this->denormalizer->denormalize($data->{'server'}, 'Jane\\OpenApi\\JsonSchema\\Version3\\Model\\Server', 'json', $context));
             unset($data->{'server'});
         }
@@ -82,6 +85,9 @@ class LinkWithOperationIdNormalizer implements DenormalizerInterface, Normalizer
         $data = new \stdClass();
         if (null !== $object->getOperationId()) {
             $data->{'operationId'} = $object->getOperationId();
+        }
+        if (null !== $object->getOperationRef()) {
+            $data->{'operationRef'} = $object->getOperationRef();
         }
         if (null !== $object->getParameters()) {
             $values = new \stdClass();

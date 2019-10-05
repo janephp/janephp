@@ -13,16 +13,16 @@ namespace Jane\OpenApi\JsonSchema\Version3\Model;
 class ExternalDocumentation extends \ArrayObject
 {
     /**
-     * @var string
+     * @var string|null
      */
     protected $description;
     /**
-     * @var string
+     * @var string|null
      */
     protected $url;
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getDescription(): ?string
     {
@@ -30,7 +30,7 @@ class ExternalDocumentation extends \ArrayObject
     }
 
     /**
-     * @param string $description
+     * @param string|null $description
      *
      * @return self
      */
@@ -42,7 +42,7 @@ class ExternalDocumentation extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getUrl(): ?string
     {
@@ -50,7 +50,7 @@ class ExternalDocumentation extends \ArrayObject
     }
 
     /**
-     * @param string $url
+     * @param string|null $url
      *
      * @return self
      */

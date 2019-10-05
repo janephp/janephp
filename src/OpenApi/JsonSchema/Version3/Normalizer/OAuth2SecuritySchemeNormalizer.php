@@ -11,7 +11,6 @@ declare(strict_types=1);
 namespace Jane\OpenApi\JsonSchema\Version3\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -37,22 +36,22 @@ class OAuth2SecuritySchemeNormalizer implements DenormalizerInterface, Normalize
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (!\is_object($data)) {
-            throw new InvalidArgumentException();
+            return null;
         }
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \Jane\OpenApi\JsonSchema\Version3\Model\OAuth2SecurityScheme();
         $data = clone $data;
-        if (property_exists($data, 'type')) {
+        if (property_exists($data, 'type') && $data->{'type'} !== null) {
             $object->setType($data->{'type'});
             unset($data->{'type'});
         }
-        if (property_exists($data, 'flows')) {
+        if (property_exists($data, 'flows') && $data->{'flows'} !== null) {
             $object->setFlows($this->denormalizer->denormalize($data->{'flows'}, 'Jane\\OpenApi\\JsonSchema\\Version3\\Model\\OAuthFlows', 'json', $context));
             unset($data->{'flows'});
         }
-        if (property_exists($data, 'description')) {
+        if (property_exists($data, 'description') && $data->{'description'} !== null) {
             $object->setDescription($data->{'description'});
             unset($data->{'description'});
         }

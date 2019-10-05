@@ -13,20 +13,20 @@ namespace Jane\OpenApi\JsonSchema\Version3\Model;
 class RequestBody extends \ArrayObject
 {
     /**
-     * @var string
+     * @var string|null
      */
     protected $description;
     /**
-     * @var MediaTypeWithExample[]|MediaTypeWithExamples[]
+     * @var MediaType[]|null
      */
     protected $content;
     /**
-     * @var bool
+     * @var bool|null
      */
-    protected $required;
+    protected $required = false;
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getDescription(): ?string
     {
@@ -34,7 +34,7 @@ class RequestBody extends \ArrayObject
     }
 
     /**
-     * @param string $description
+     * @param string|null $description
      *
      * @return self
      */
@@ -46,7 +46,7 @@ class RequestBody extends \ArrayObject
     }
 
     /**
-     * @return MediaTypeWithExample[]|MediaTypeWithExamples[]
+     * @return MediaType[]|null
      */
     public function getContent(): ?\ArrayObject
     {
@@ -54,7 +54,7 @@ class RequestBody extends \ArrayObject
     }
 
     /**
-     * @param MediaTypeWithExample[]|MediaTypeWithExamples[] $content
+     * @param MediaType[]|null $content
      *
      * @return self
      */
@@ -66,7 +66,7 @@ class RequestBody extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getRequired(): ?bool
     {
@@ -74,7 +74,7 @@ class RequestBody extends \ArrayObject
     }
 
     /**
-     * @param bool $required
+     * @param bool|null $required
      *
      * @return self
      */

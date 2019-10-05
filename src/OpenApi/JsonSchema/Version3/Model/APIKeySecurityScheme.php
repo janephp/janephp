@@ -13,24 +13,24 @@ namespace Jane\OpenApi\JsonSchema\Version3\Model;
 class APIKeySecurityScheme extends \ArrayObject
 {
     /**
-     * @var string
+     * @var string|null
      */
     protected $type;
     /**
-     * @var string
+     * @var string|null
      */
     protected $name;
     /**
-     * @var string
+     * @var string|null
      */
     protected $in;
     /**
-     * @var string
+     * @var string|null
      */
     protected $description;
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getType(): ?string
     {
@@ -38,7 +38,7 @@ class APIKeySecurityScheme extends \ArrayObject
     }
 
     /**
-     * @param string $type
+     * @param string|null $type
      *
      * @return self
      */
@@ -50,7 +50,7 @@ class APIKeySecurityScheme extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getName(): ?string
     {
@@ -58,7 +58,7 @@ class APIKeySecurityScheme extends \ArrayObject
     }
 
     /**
-     * @param string $name
+     * @param string|null $name
      *
      * @return self
      */
@@ -70,7 +70,7 @@ class APIKeySecurityScheme extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getIn(): ?string
     {
@@ -78,7 +78,7 @@ class APIKeySecurityScheme extends \ArrayObject
     }
 
     /**
-     * @param string $in
+     * @param string|null $in
      *
      * @return self
      */
@@ -90,7 +90,7 @@ class APIKeySecurityScheme extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getDescription(): ?string
     {
@@ -98,7 +98,7 @@ class APIKeySecurityScheme extends \ArrayObject
     }
 
     /**
-     * @param string $description
+     * @param string|null $description
      *
      * @return self
      */
