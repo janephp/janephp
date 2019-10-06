@@ -45,11 +45,20 @@ class ProxyGenerator implements GeneratorInterface
     public function generate(Schema $schema, string $className, Context $context)
     {
         foreach ($schema->getClasses() as $class) {
-            $proxy = $this->createProxy($class->getName(), $schema->getNamespace(), [$this->createProperties($class->getProperties())]);
-            $namespace = new Stmt\Namespace_(new Name($schema->getNamespace() . '\\Proxy'), [$proxy]);
+            $hasReadOnlyProperty = false;
+            foreach ($class->getProperties() as $property) {
+                if ($property->isReadOnly()) {
+                    $hasReadOnlyProperty = true;
+                }
+            }
 
-            $className = $this->getNaming()->getProxyName($class->getName());
-            $schema->addFile(new File(sprintf('%s/Proxy/%s.php', $schema->getDirectory(), $className), $namespace, self::FILE_TYPE_PROXY));
+            if ($hasReadOnlyProperty) {
+                $proxy = $this->createProxy($class->getName(), $schema->getNamespace(), [$this->createProperties($class->getProperties())]);
+                $namespace = new Stmt\Namespace_(new Name($schema->getNamespace() . '\\Proxy'), [$proxy]);
+
+                $className = $this->getNaming()->getProxyName($class->getName());
+                $schema->addFile(new File(sprintf('%s/Proxy/%s.php', $schema->getDirectory(), $className), $namespace, self::FILE_TYPE_PROXY));
+            }
         }
     }
 }
