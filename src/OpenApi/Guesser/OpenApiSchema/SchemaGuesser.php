@@ -3,8 +3,8 @@
 namespace Jane\OpenApi\Guesser\OpenApiSchema;
 
 use Jane\JsonSchema\Guesser\JsonSchema\ObjectGuesser;
-use Jane\OpenApi\JsonSchema\Version3\Model\Discriminator;
-use Jane\OpenApi\JsonSchema\Version3\Model\Schema;
+use Jane\OpenApi\JsonSchema\Model\Discriminator;
+use Jane\OpenApi\JsonSchema\Model\Schema;
 use Jane\JsonSchema\Guesser\Guess\ClassGuess as BaseClassGuess;
 use Jane\OpenApi\Guesser\Guess\ClassGuess;
 use Jane\OpenApi\Guesser\Guess\MultipleClass;

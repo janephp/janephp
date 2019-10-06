@@ -3,7 +3,7 @@
 namespace Jane\OpenApi\Guesser\OpenApiSchema;
 
 use Jane\JsonSchema\Guesser\JsonSchema\ArrayGuesser as BaseArrayGuesser;
-use Jane\OpenApi\JsonSchema\Version3\Model\Schema;
+use Jane\OpenApi\JsonSchema\Model\Schema;
 
 class ArrayGuesser extends BaseArrayGuesser
 {

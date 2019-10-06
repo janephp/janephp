@@ -134,7 +134,7 @@ class JaneOpenApi extends ChainGenerator
             ),
         ];
 
-        $normalizers = JsonSchema\Version3\Normalizer\NormalizerFactory::create();
+        $normalizers = JsonSchema\Normalizer\NormalizerFactory::create();
         $serializer = new Serializer($normalizers, $encoders);
         $schemaParser = new SchemaParser($serializer);
         $generators = GeneratorFactory::build($serializer, $options);

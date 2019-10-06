@@ -4,6 +4,7 @@ namespace Jane\OpenApi\Generator\RequestBodyContent;
 
 use Http\Message\MultipartStream\MultipartStreamBuilder;
 use Jane\JsonSchema\Generator\Context\Context;
+use Jane\OpenApi\JsonSchema\Model\MediaType;
 use PhpParser\Node\Arg;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Name;
@@ -15,7 +16,7 @@ class FormBodyContentGenerator extends AbstractBodyContentGenerator
     /**
      * {@inheritdoc}
      */
-    public function getSerializeStatements($content, string $contentType, string $reference, Context $context): array
+    public function getSerializeStatements(MediaType $content, string $contentType, string $reference, Context $context): array
     {
         if (preg_match('/multipart\/form-data/', $contentType)) {
             return [

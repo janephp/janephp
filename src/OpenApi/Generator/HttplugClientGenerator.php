@@ -10,7 +10,7 @@ use Http\Discovery\MessageFactoryDiscovery;
 use Http\Discovery\StreamFactoryDiscovery;
 use Http\Discovery\UriFactoryDiscovery;
 use Jane\JsonSchema\Generator\Context\Context;
-use Jane\OpenApi\JsonSchema\Version3\Model\OpenApi;
+use Jane\OpenApi\JsonSchema\Model\OpenApi;
 use Jane\OpenApiRuntime\Client\Psr7HttplugClient;
 use PhpParser\Node;
 use PhpParser\Node\Name;
