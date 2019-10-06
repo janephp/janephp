@@ -3,6 +3,7 @@
 namespace Jane\OpenApi\Generator\RequestBodyContent;
 
 use Jane\JsonSchema\Generator\Context\Context;
+use Jane\OpenApi\JsonSchema\Model\MediaType;
 use PhpParser\Node\Arg;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Name;
@@ -14,11 +15,11 @@ class JsonBodyContentGenerator extends AbstractBodyContentGenerator
     /**
      * {@inheritdoc}
      */
-    public function getSerializeStatements($content, string $contentType, string $reference, Context $context): array
+    public function getSerializeStatements(MediaType $content, string $contentType, string $reference, Context $context): array
     {
         [$classGuess, $array, $schema] = $this->guessClass($content->getSchema(), $reference . '/schema', $context);
 
-        if ($classGuess === null) {
+        if (null === $classGuess) {
             return [new Stmt\Return_(new Expr\Array_([
                 new Expr\Array_([
                     new Expr\ArrayItem(

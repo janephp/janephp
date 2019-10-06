@@ -27,9 +27,9 @@ use Symfony\Component\Serializer\SerializerInterface;
 
 abstract class EndpointGenerator
 {
-    const IN_PATH = 'path';
-    const IN_QUERY = 'query';
-    const IN_HEADER = 'header';
+    private const IN_PATH = 'path';
+    private const IN_QUERY = 'query';
+    private const IN_HEADER = 'header';
 
     /** @var OperationNamingInterface */
     private $operationNaming;

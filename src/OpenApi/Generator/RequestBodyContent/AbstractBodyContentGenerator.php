@@ -5,6 +5,7 @@ namespace Jane\OpenApi\Generator\RequestBodyContent;
 use Jane\JsonSchema\Generator\Context\Context;
 use Jane\JsonSchemaRuntime\Reference;
 use Jane\OpenApi\Generator\RequestBodyContentGeneratorInterface;
+use Jane\OpenApi\JsonSchema\Model\MediaType;
 use Jane\OpenApi\JsonSchema\Model\Schema;
 use PhpParser\Node;
 use PhpParser\Node\Arg;
@@ -22,7 +23,7 @@ abstract class AbstractBodyContentGenerator implements RequestBodyContentGenerat
         $this->denormalizer = $denormalizer;
     }
 
-    public function getTypes($content, string $reference, Context $context): array
+    public function getTypes(MediaType $content, string $reference, Context $context): array
     {
         [$classGuess, $array, $schema] = $this->guessClass($content->getSchema(), $reference . '/schema', $context);
 
@@ -50,7 +51,7 @@ abstract class AbstractBodyContentGenerator implements RequestBodyContentGenerat
     /**
      * {@inheritdoc}
      */
-    public function getTypeCondition($content, string $reference, Context $context): Node
+    public function getTypeCondition(MediaType $content, string $reference, Context $context): Node
     {
         [$classGuess, $array, $schema] = $this->guessClass($content->getSchema(), $reference . '/schema', $context);
 

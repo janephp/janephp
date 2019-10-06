@@ -7,9 +7,8 @@ use Jane\JsonSchema\Guesser\ChainGuesserAwareTrait;
 use Jane\JsonSchema\Guesser\ClassGuesserInterface;
 use Jane\JsonSchema\Guesser\GuesserInterface;
 use Jane\JsonSchema\Registry;
-use Jane\JsonSchemaRuntime\Reference;
-use Jane\OpenApi\JsonSchema\Model\BodyParameter;
 use Jane\OpenApi\JsonSchema\Model\Operation;
+use Jane\OpenApi\JsonSchema\Model\Parameter;
 use Jane\OpenApi\JsonSchema\Model\PathItem;
 use Jane\OpenApi\JsonSchema\Model\Response;
 use Jane\OpenApi\JsonSchema\Model\OpenApi;
@@ -17,6 +16,8 @@ use Jane\OpenApi\JsonSchema\Model\OpenApi;
 class OpenApiGuesser implements GuesserInterface, ClassGuesserInterface, ChainGuesserAwareInterface
 {
     use ChainGuesserAwareTrait;
+
+    private const IN_BODY = 'body';
 
     /**
      * {@inheritdoc}
@@ -62,7 +63,7 @@ class OpenApiGuesser implements GuesserInterface, ClassGuesserInterface, ChainGu
 
                     if ($path->getParameters()) {
                         foreach ($path->getParameters() as $key => $parameter) {
-                            if ($parameter instanceof BodyParameter) {
+                            if ($parameter instanceof Parameter && self::IN_BODY === $parameter->getIn()) {
                                 $this->chainGuesser->guessClass($parameter->getSchema(), $pathName . 'Body' . $key, $reference . '/' . $pathName . '/parameters/' . $key, $registry);
                             }
                         }
@@ -73,7 +74,7 @@ class OpenApiGuesser implements GuesserInterface, ClassGuesserInterface, ChainGu
 
         if ($object->getComponents() && $object->getComponents()->getParameters()) {
             foreach ($object->getComponents()->getParameters() as $parameterName => $parameter) {
-                if ($parameter instanceof BodyParameter) {
+                if ($parameter instanceof Parameter && self::IN_BODY === $parameter->getIn()) {
                     $this->chainGuesser->guessClass($parameter->getSchema(), $parameterName, $reference . '/parameters/' . $parameterName, $registry);
                 }
             }
@@ -88,15 +89,15 @@ class OpenApiGuesser implements GuesserInterface, ClassGuesserInterface, ChainGu
      * @param string    $reference
      * @param Registry  $registry
      */
-    protected function getClassFromOperation($name, Operation $operation = null, $reference, $registry)
+    protected function getClassFromOperation($name, ?Operation $operation, $reference, $registry)
     {
         if (null === $operation) {
             return;
         }
 
-        if ($operation->getParameters()) {
+        if (null !== $operation->getParameters() && \count($operation->getParameters()) > 0) {
             foreach ($operation->getParameters() as $key => $parameter) {
-                if ($parameter instanceof BodyParameter) {
+                if ($parameter instanceof Parameter && self::IN_BODY === $parameter->getIn()) {
                     $this->chainGuesser->guessClass($parameter->getSchema(), $name . 'Body', $reference . '/parameters/' . $key, $registry);
                 }
             }
