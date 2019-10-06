@@ -4,7 +4,7 @@ namespace Jane\OpenApi\Generator\Parameter;
 
 use Doctrine\Common\Inflector\Inflector;
 use Jane\JsonSchema\Generator\Context\Context;
-use Jane\OpenApi\JsonSchema\Version3\Model\Parameter;
+use Jane\OpenApi\JsonSchema\Model\Parameter;
 use PhpParser\Node;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Scalar;

@@ -3,8 +3,8 @@
 return [
     'json-schema-file' => __DIR__ . '/JsonSchema/version3.json',
     'root-class' => 'OpenApi',
-    'namespace' => 'Jane\OpenApi\JsonSchema\Version3',
-    'directory' => __DIR__ . DIRECTORY_SEPARATOR . 'JsonSchema' . DIRECTORY_SEPARATOR . 'Version3',
+    'namespace' => 'Jane\OpenApi\JsonSchema',
+    'directory' => __DIR__ . DIRECTORY_SEPARATOR . 'JsonSchema',
     'reference' => true,
     "strict" => false,
 ];

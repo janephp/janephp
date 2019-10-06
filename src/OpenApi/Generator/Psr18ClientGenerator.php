@@ -8,7 +8,7 @@ use Http\Client\Common\PluginClient;
 use Http\Discovery\Psr17FactoryDiscovery;
 use Http\Discovery\Psr18ClientDiscovery;
 use Jane\JsonSchema\Generator\Context\Context;
-use Jane\OpenApi\JsonSchema\Version3\Model\OpenApi;
+use Jane\OpenApi\JsonSchema\Model\OpenApi;
 use Jane\OpenApiRuntime\Client\Psr18Client;
 use PhpParser\Node;
 use PhpParser\Node\Name;

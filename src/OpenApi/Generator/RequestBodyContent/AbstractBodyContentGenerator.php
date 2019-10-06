@@ -5,7 +5,7 @@ namespace Jane\OpenApi\Generator\RequestBodyContent;
 use Jane\JsonSchema\Generator\Context\Context;
 use Jane\JsonSchemaRuntime\Reference;
 use Jane\OpenApi\Generator\RequestBodyContentGeneratorInterface;
-use Jane\OpenApi\JsonSchema\Version3\Model\Schema;
+use Jane\OpenApi\JsonSchema\Model\Schema;
 use PhpParser\Node;
 use PhpParser\Node\Arg;
 use PhpParser\Node\Expr;

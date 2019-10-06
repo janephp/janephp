@@ -7,10 +7,10 @@ use Jane\JsonSchema\Generator\Context\Context;
 use Jane\JsonSchema\Generator\File;
 use Jane\JsonSchemaRuntime\Reference;
 use Jane\OpenApi\Generator\Parameter\NonBodyParameterGenerator;
-use Jane\OpenApi\JsonSchema\Version3\Model\OpenApi;
-use Jane\OpenApi\JsonSchema\Version3\Model\Parameter;
-use Jane\OpenApi\JsonSchema\Version3\Model\Response;
-use Jane\OpenApi\JsonSchema\Version3\Model\Schema;
+use Jane\OpenApi\JsonSchema\Model\OpenApi;
+use Jane\OpenApi\JsonSchema\Model\Parameter;
+use Jane\OpenApi\JsonSchema\Model\Response;
+use Jane\OpenApi\JsonSchema\Model\Schema;
 use Jane\OpenApi\Naming\OperationNamingInterface;
 use Jane\OpenApi\Operation\Operation;
 use Jane\OpenApiRuntime\Client\BaseEndpoint;
@@ -719,7 +719,7 @@ EOD
     {
         return $parameter->resolve(function ($value) {
             if (\is_object($value)) {
-                return $this->denormalizer->denormalize($value, 'Jane\\OpenApi\\JsonSchema\\Version3\\Model\\Parameter', 'json');
+                return $this->denormalizer->denormalize($value, 'Jane\\OpenApi\\JsonSchema\\Model\\Parameter', 'json');
             }
 
             return $value;

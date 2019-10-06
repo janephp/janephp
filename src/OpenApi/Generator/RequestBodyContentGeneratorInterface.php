@@ -3,8 +3,8 @@
 namespace Jane\OpenApi\Generator;
 
 use Jane\JsonSchema\Generator\Context\Context;
-use Jane\OpenApi\JsonSchema\Version3\Model\MediaTypeWithExample;
-use Jane\OpenApi\JsonSchema\Version3\Model\MediaTypeWithExamples;
+use Jane\OpenApi\JsonSchema\Model\MediaTypeWithExample;
+use Jane\OpenApi\JsonSchema\Model\MediaTypeWithExamples;
 use PhpParser\Node;
 
 interface RequestBodyContentGeneratorInterface
