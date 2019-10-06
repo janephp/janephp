@@ -16,6 +16,7 @@ class NormalizerGenerator implements GeneratorInterface
 
     use DenormalizerGenerator;
     use NormalizerGeneratorTrait;
+    use PropertyCheckTrait;
 
     /**
      * @var Naming The naming service
@@ -62,12 +63,16 @@ class NormalizerGenerator implements GeneratorInterface
         $classes = [];
 
         foreach ($schema->getClasses() as $class) {
-            $methods = [];
+            $hasReadOnlyProperty = $this->hasReadOnlyProperty($class);
+
             $modelFqdn = $schema->getNamespace() . '\\Model\\' . $class->getName();
+            $proxyFqdn = sprintf('%s\\Proxy\\%s', $schema->getNamespace(), $this->getNaming()->getProxyName($class->getName()));
+
+            $methods = [];
             $methods[] = $this->createSupportsDenormalizationMethod($modelFqdn);
-            $methods[] = $this->createSupportsNormalizationMethod($modelFqdn);
-            $methods[] = $this->createDenormalizeMethod($modelFqdn, $context, $class);
-            $methods[] = $this->createNormalizeMethod($modelFqdn, $context, $class);
+            $methods[] = $this->createSupportsNormalizationMethod($modelFqdn, $proxyFqdn, $hasReadOnlyProperty);
+            $methods[] = $this->createDenormalizeMethod($modelFqdn, $context, $class, $hasReadOnlyProperty);
+            $methods[] = $this->createNormalizeMethod($modelFqdn, $context, $class, $hasReadOnlyProperty);
 
             if ($this->useCacheableSupportsMethod) {
                 $methods[] = $this->createHasCacheableSupportsMethod();
@@ -93,6 +98,10 @@ class NormalizerGenerator implements GeneratorInterface
 
             if ($this->useCacheableSupportsMethod) {
                 $useStmts[] = new Stmt\Use_([new Stmt\UseUse(new Name('Symfony\Component\Serializer\Normalizer\CacheableSupportsMethodInterface'))]);
+            }
+
+            if ($hasReadOnlyProperty) {
+                $useStmts[] = new Stmt\Use_([new Stmt\UseUse(new Name(sprintf('%s\\Proxy\\%s', $schema->getNamespace(), $this->getNaming()->getProxyName($class->getName()))))]);
             }
 
             $useStmts[] = $normalizerClass;

@@ -43,39 +43,47 @@ trait DenormalizerGenerator
         ]);
     }
 
-    protected function createDenormalizeMethod(string $modelFqdn, Context $context, ClassGuess $classGuess): Stmt\ClassMethod
+    protected function createDenormalizeMethod(string $modelFqdn, Context $context, ClassGuess $classGuess, bool $useProxy): Stmt\ClassMethod
     {
         $context->refreshScope();
         $objectVariable = new Expr\Variable('object');
-        $assignStatement = new Stmt\Expression(new Expr\Assign($objectVariable, new Expr\New_(new Name('\\' . $modelFqdn))));
-        $statements = [$assignStatement];
+        $statements = [];
 
         if ($this->useReference) {
-            $statements = [
-                new Stmt\If_(
-                    new Expr\Isset_([new Expr\PropertyFetch(new Expr\Variable('data'), "{'\$ref'}")]),
-                    [
-                        'stmts' => [
-                            new Stmt\Return_(new Expr\New_(new Name('Reference'), [
-                                new Expr\PropertyFetch(new Expr\Variable('data'), "{'\$ref'}"),
-                                new Expr\ArrayDimFetch(new Expr\Variable('context'), new Scalar\String_('document-origin')),
-                            ])),
-                        ],
-                    ]
-                ),
-                new Stmt\If_(
-                    new Expr\Isset_([new Expr\PropertyFetch(new Expr\Variable('data'), "{'\$recursiveRef'}")]),
-                    [
-                        'stmts' => [
-                            new Stmt\Return_(new Expr\New_(new Name('Reference'), [
-                                new Expr\PropertyFetch(new Expr\Variable('data'), "{'\$recursiveRef'}"),
-                                new Expr\ArrayDimFetch(new Expr\Variable('context'), new Scalar\String_('document-origin')),
-                            ])),
-                        ],
-                    ]
-                ),
-                $assignStatement,
-            ];
+            $statements[] = new Stmt\If_(
+                new Expr\Isset_([new Expr\PropertyFetch(new Expr\Variable('data'), "{'\$ref'}")]),
+                [
+                    'stmts' => [
+                        new Stmt\Return_(new Expr\New_(new Name('Reference'), [
+                            new Expr\PropertyFetch(new Expr\Variable('data'), "{'\$ref'}"),
+                            new Expr\ArrayDimFetch(new Expr\Variable('context'), new Scalar\String_('document-origin')),
+                        ])),
+                    ],
+                ]
+            );
+            $statements[] = new Stmt\If_(
+                new Expr\Isset_([new Expr\PropertyFetch(new Expr\Variable('data'), "{'\$recursiveRef'}")]),
+                [
+                    'stmts' => [
+                        new Stmt\Return_(new Expr\New_(new Name('Reference'), [
+                            new Expr\PropertyFetch(new Expr\Variable('data'), "{'\$recursiveRef'}"),
+                            new Expr\ArrayDimFetch(new Expr\Variable('context'), new Scalar\String_('document-origin')),
+                        ])),
+                    ],
+                ]
+            );
+        }
+
+        if ($useProxy) {
+            $statements[] = new Stmt\Expression(new Expr\Assign($objectVariable, new Expr\New_(new Name($this->getNaming()->getProxyName($classGuess->getName())))));
+
+            $propertiesVariable = new Expr\Variable('properties');
+            $statements[] = new Stmt\Expression(new Expr\Assign(
+                $propertiesVariable,
+                new Expr\MethodCall(new Expr\Variable('object'), '__properties')
+            ));
+        } else {
+            $statements[] = new Stmt\Expression(new Expr\Assign($objectVariable, new Expr\New_(new Name('\\' . $modelFqdn))));
         }
 
         array_unshift($statements, ...$this->denormalizeMethodStatements($classGuess, $context));
@@ -106,18 +114,15 @@ trait DenormalizerGenerator
                 );
             }
 
+            if ($useProxy) {
+                $assignStatement = new Stmt\Expression(new Expr\Assign(new Expr\ArrayDimFetch(new Expr\Variable('properties'), new Scalar\String_($property->getName())), $outputVar));
+            } else {
+                $assignStatement = new Stmt\Expression(new Expr\MethodCall($objectVariable, $this->getNaming()->getPrefixedMethodName('set', $property->getPhpName()), [$outputVar]));
+            }
+
             $statements[] = new Stmt\If_($condition, [
-                    'stmts' => array_merge(
-                        $denormalizationStatements,
-                        [
-                            new Stmt\Expression(new Expr\MethodCall($objectVariable, $this->getNaming()->getPrefixedMethodName('set', $property->getPhpName()), [
-                                $outputVar,
-                            ])),
-                        ],
-                        $unset ? [new Stmt\Unset_([$propertyVar])] : []
-                    ),
-                ]
-            );
+                'stmts' => array_merge($denormalizationStatements, [$assignStatement], $unset ? [new Stmt\Unset_([$propertyVar])] : []),
+            ]);
         }
 
         $patternCondition = [];

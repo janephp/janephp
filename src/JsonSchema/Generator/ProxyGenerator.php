@@ -13,6 +13,7 @@ class ProxyGenerator implements GeneratorInterface
 {
     use ClassGenerator;
     use PropertiesGenerator;
+    use PropertyCheckTrait;
 
     const FILE_TYPE_PROXY = 'proxy';
 
@@ -45,14 +46,7 @@ class ProxyGenerator implements GeneratorInterface
     public function generate(Schema $schema, string $className, Context $context)
     {
         foreach ($schema->getClasses() as $class) {
-            $hasReadOnlyProperty = false;
-            foreach ($class->getProperties() as $property) {
-                if ($property->isReadOnly()) {
-                    $hasReadOnlyProperty = true;
-                }
-            }
-
-            if ($hasReadOnlyProperty) {
+            if ($this->hasReadOnlyProperty($class)) {
                 $proxy = $this->createProxy($class->getName(), $schema->getNamespace(), [$this->createProperties($class->getProperties())]);
                 $namespace = new Stmt\Namespace_(new Name($schema->getNamespace() . '\\Proxy'), [$proxy]);
 

@@ -11,6 +11,7 @@ use PhpParser\Node\Name;
 use PhpParser\Node\Param;
 use PhpParser\Node\Stmt;
 use PhpParser\Node\Expr;
+use PhpParser\Node\Scalar;
 
 trait NormalizerGenerator
 {
@@ -52,20 +53,27 @@ trait NormalizerGenerator
      * Create method to check if denormalization is supported.
      *
      * @param string $modelFqdn Fully Qualified name of the model class denormalized
+     * @param bool   $useProxy
      *
      * @return Stmt\ClassMethod
      */
-    protected function createSupportsNormalizationMethod($modelFqdn)
+    protected function createSupportsNormalizationMethod(string $modelFqdn, string $proxyFqdn, bool $useProxy)
     {
+        $statements = [];
+
+        if ($useProxy) {
+            $statements[] = new Stmt\Return_(new Expr\Instanceof_(new Expr\Variable('data'), new Name('\\' . $proxyFqdn)));
+        } else {
+            $statements[] = new Stmt\Return_(new Expr\Instanceof_(new Expr\Variable('data'), new Name('\\' . $modelFqdn)));
+        }
+
         return new Stmt\ClassMethod('supportsNormalization', [
             'type' => Stmt\Class_::MODIFIER_PUBLIC,
             'params' => [
                 new Param(new Expr\Variable('data')),
                 new Param(new Expr\Variable('format'), new Expr\ConstFetch(new Name('null'))),
             ],
-            'stmts' => [
-                new Stmt\Return_(new Expr\Instanceof_(new Expr\Variable('data'), new Name('\\' . $modelFqdn))),
-            ],
+            'stmts' => $statements,
         ]);
     }
 
@@ -75,18 +83,32 @@ trait NormalizerGenerator
      * @param string     $modelFqdn
      * @param Context    $context
      * @param ClassGuess $classGuess
+     * @param bool       $useProxy
      *
      * @return Stmt\ClassMethod
      */
-    protected function createNormalizeMethod($modelFqdn, Context $context, ClassGuess $classGuess)
+    protected function createNormalizeMethod($modelFqdn, Context $context, ClassGuess $classGuess, bool $useProxy)
     {
         $context->refreshScope();
         $dataVariable = new Expr\Variable('data');
         $statements = $this->normalizeMethodStatements($dataVariable, $classGuess, $context);
 
+        if ($useProxy) {
+            $propertiesVariable = new Expr\Variable('properties');
+            $statements[] = new Stmt\Expression(new Expr\Assign(
+                $propertiesVariable,
+                new Expr\MethodCall(new Expr\Variable('object'), '__properties')
+            ));
+        }
+
         /** @var Property $property */
         foreach ($classGuess->getProperties() as $property) {
-            $propertyVar = new Expr\MethodCall(new Expr\Variable('object'), $this->getNaming()->getPrefixedMethodName('get', $property->getPhpName()));
+            if ($useProxy) {
+                $propertyVar = new Expr\ArrayDimFetch(new Expr\Variable('properties'), new Scalar\String_($property->getName()));
+            } else {
+                $propertyVar = new Expr\MethodCall(new Expr\Variable('object'), $this->getNaming()->getPrefixedMethodName('get', $property->getPhpName()));
+            }
+
             list($normalizationStatements, $outputVar) = $property->getType()->createNormalizationStatement($context, $propertyVar);
 
             $normalizationStatements[] = new Stmt\Expression(new Expr\Assign(new Expr\PropertyFetch($dataVariable, sprintf("{'%s'}", $property->getName())), $outputVar));

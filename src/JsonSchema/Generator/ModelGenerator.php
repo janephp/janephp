@@ -87,7 +87,9 @@ class ModelGenerator implements GeneratorInterface
     {
         $methods = [];
         $methods[] = $this->createGetter($property, $namespace, $required);
-        $methods[] = $this->createSetter($property, $namespace, $required);
+        if (!$property->isReadOnly()) {
+            $methods[] = $this->createSetter($property, $namespace, $required);
+        }
 
         return $methods;
     }
