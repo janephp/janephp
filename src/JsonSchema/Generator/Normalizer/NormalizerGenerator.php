@@ -126,7 +126,7 @@ trait NormalizerGenerator
 
             $normalizationStatements[] = new Stmt\Expression(new Expr\Assign(new Expr\PropertyFetch($dataVariable, sprintf("{'%s'}", $property->getName())), $outputVar));
 
-            if ($property->isNullable()) {
+            if (!$property->isNullable()) {
                 $statements = array_merge($statements, $normalizationStatements);
 
                 continue;
