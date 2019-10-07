@@ -16,6 +16,18 @@ class Test
      * @var string
      */
     protected $email;
+    public function __construct(\Jane\JsonSchema\Tests\Expected\Proxy\ProxyTest $proxy = null)
+    {
+        if ($proxy instanceof \Jane\JsonSchema\Tests\Expected\Proxy\ProxyTest) {
+            $properties = $proxy->__properties();
+            if (null !== $properties['__token']) {
+                $this->{'token'} = $properties['__token'];
+            }
+            if (null !== $properties['email']) {
+                $this->{'email'} = $properties['email'];
+            }
+        }
+    }
     /**
      * 
      *

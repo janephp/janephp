@@ -4,6 +4,7 @@ namespace Jane\JsonSchema\Generator;
 
 use Jane\JsonSchema\Generator\Context\Context;
 use Jane\JsonSchema\Generator\Model\ClassGenerator;
+use Jane\JsonSchema\Generator\Model\ConstructGenerator;
 use Jane\JsonSchema\Generator\Model\GetterSetterGenerator;
 use Jane\JsonSchema\Generator\Model\PropertyGenerator;
 use Jane\JsonSchema\Guesser\Guess\ClassGuess;
@@ -16,8 +17,10 @@ use PhpParser\Parser;
 class ModelGenerator implements GeneratorInterface
 {
     use ClassGenerator;
+    use ConstructGenerator;
     use GetterSetterGenerator;
     use PropertyGenerator;
+    use PropertyCheckTrait;
 
     const FILE_TYPE_MODEL = 'model';
 
@@ -64,22 +67,31 @@ class ModelGenerator implements GeneratorInterface
      */
     public function generate(Schema $schema, string $className, Context $context)
     {
+        $namespace = $schema->getNamespace() . '\\Model';
+
         foreach ($schema->getClasses() as $class) {
             $properties = [];
             $methods = [];
 
+            if ($this->hasReadOnlyProperty($class)) {
+                $methods[] = $this->createConstruct(
+                    sprintf('\\%s\\Proxy\\%s', $schema->getNamespace(), $this->getNaming()->getProxyName($class->getName())),
+                    $class,
+                    $context
+                );
+            }
+
             /** @var Property $property */
             foreach ($class->getProperties() as $property) {
                 $required = !$property->isNullable() && $context->isStrict();
-                $properties[] = $this->createProperty($property, $schema->getNamespace() . '\\Model', null, $required);
-                $methods = array_merge($methods, $this->doCreateClassMethods($class, $property, $schema->getNamespace() . '\\Model', $required));
+                $properties[] = $this->createProperty($property, $namespace, null, $required);
+                $methods = array_merge($methods, $this->doCreateClassMethods($class, $property, $namespace, $required));
             }
 
             $model = $this->doCreateModel($class, $properties, $methods);
 
-            $namespace = new Stmt\Namespace_(new Name($schema->getNamespace() . '\\Model'), [$model]);
-
-            $schema->addFile(new File($schema->getDirectory() . '/Model/' . $class->getName() . '.php', $namespace, self::FILE_TYPE_MODEL));
+            $namespaceStmt = new Stmt\Namespace_(new Name($namespace), [$model]);
+            $schema->addFile(new File($schema->getDirectory() . '/Model/' . $class->getName() . '.php', $namespaceStmt, self::FILE_TYPE_MODEL));
         }
     }
 
