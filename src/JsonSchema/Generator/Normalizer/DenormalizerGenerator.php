@@ -28,8 +28,14 @@ trait DenormalizerGenerator
      *
      * @return Stmt\ClassMethod
      */
-    protected function createSupportsDenormalizationMethod($modelFqdn)
+    protected function createSupportsDenormalizationMethod(string $modelFqdn, string $proxyFqdn, bool $useProxy)
     {
+        $stmt = new Expr\BinaryOp\Identical(new Expr\Variable('type'), new Scalar\String_($modelFqdn));
+
+        if ($useProxy) {
+            $stmt = new Expr\BinaryOp\BooleanOr($stmt, new Expr\BinaryOp\Identical(new Expr\Variable('type'), new Scalar\String_($proxyFqdn)));
+        }
+
         return new Stmt\ClassMethod('supportsDenormalization', [
             'type' => Stmt\Class_::MODIFIER_PUBLIC,
             'params' => [
@@ -37,9 +43,7 @@ trait DenormalizerGenerator
                 new Param(new Expr\Variable('type')),
                 new Param(new Expr\Variable('format'), new Expr\ConstFetch(new Name('null'))),
             ],
-            'stmts' => [
-                new Stmt\Return_(new Expr\BinaryOp\Identical(new Expr\Variable('type'), new Scalar\String_($modelFqdn))),
-            ],
+            'stmts' => [new Stmt\Return_($stmt)],
         ]);
     }
 
@@ -73,7 +77,6 @@ trait DenormalizerGenerator
                 ]
             );
         }
-
         if ($useProxy) {
             $statements[] = new Stmt\Expression(new Expr\Assign($objectVariable, new Expr\New_(new Name($this->getNaming()->getProxyName($classGuess->getName())))));
 
@@ -152,7 +155,11 @@ trait DenormalizerGenerator
             ]);
         }
 
-        $statements[] = new Stmt\Return_($objectVariable);
+        if ($useProxy) {
+            $statements[] = new Stmt\Return_(new Expr\New_(new Name('\\' . $modelFqdn), [new Arg($objectVariable)]));
+        } else {
+            $statements[] = new Stmt\Return_($objectVariable);
+        }
 
         return new Stmt\ClassMethod('denormalize', [
             'type' => Stmt\Class_::MODIFIER_PUBLIC,

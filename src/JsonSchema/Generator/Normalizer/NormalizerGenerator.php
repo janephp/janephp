@@ -59,12 +59,10 @@ trait NormalizerGenerator
      */
     protected function createSupportsNormalizationMethod(string $modelFqdn, string $proxyFqdn, bool $useProxy)
     {
-        $statements = [];
+        $stmt = new Expr\Instanceof_(new Expr\Variable('data'), new Name('\\' . $modelFqdn));
 
         if ($useProxy) {
-            $statements[] = new Stmt\Return_(new Expr\Instanceof_(new Expr\Variable('data'), new Name('\\' . $proxyFqdn)));
-        } else {
-            $statements[] = new Stmt\Return_(new Expr\Instanceof_(new Expr\Variable('data'), new Name('\\' . $modelFqdn)));
+            $stmt = new Expr\BinaryOp\BooleanOr($stmt, new Expr\Instanceof_(new Expr\Variable('data'), new Name('\\' . $proxyFqdn)));
         }
 
         return new Stmt\ClassMethod('supportsNormalization', [
@@ -73,7 +71,7 @@ trait NormalizerGenerator
                 new Param(new Expr\Variable('data')),
                 new Param(new Expr\Variable('format'), new Expr\ConstFetch(new Name('null'))),
             ],
-            'stmts' => $statements,
+            'stmts' => [new Stmt\Return_($stmt)],
         ]);
     }
 
@@ -87,17 +85,32 @@ trait NormalizerGenerator
      *
      * @return Stmt\ClassMethod
      */
-    protected function createNormalizeMethod($modelFqdn, Context $context, ClassGuess $classGuess, bool $useProxy)
+    protected function createNormalizeMethod(string $modelFqdn, string $proxyFqdn, Context $context, ClassGuess $classGuess, bool $useProxy)
     {
         $context->refreshScope();
         $dataVariable = new Expr\Variable('data');
-        $statements = $this->normalizeMethodStatements($dataVariable, $classGuess, $context);
+        $objectVariable = new Expr\Variable('object');
+        $statements = [];
+
+        if ($useProxy) {
+            $statements[] = new Stmt\If_(
+                new Expr\Instanceof_($objectVariable, new Name('\\' . $modelFqdn)),
+                [
+                    'stmts' => [new Stmt\Expression(new Expr\Assign(
+                        $objectVariable,
+                        new Expr\New_(new Name('\\' . $proxyFqdn), [new Arg($objectVariable)])
+                    ))],
+                ]
+            );
+        }
+
+        $statements = array_merge($statements, $this->normalizeMethodStatements($dataVariable, $classGuess, $context));
 
         if ($useProxy) {
             $propertiesVariable = new Expr\Variable('properties');
             $statements[] = new Stmt\Expression(new Expr\Assign(
                 $propertiesVariable,
-                new Expr\MethodCall(new Expr\Variable('object'), '__properties')
+                new Expr\MethodCall($objectVariable, '__properties')
             ));
         }
 
@@ -106,7 +119,7 @@ trait NormalizerGenerator
             if ($useProxy) {
                 $propertyVar = new Expr\ArrayDimFetch(new Expr\Variable('properties'), new Scalar\String_($property->getName()));
             } else {
-                $propertyVar = new Expr\MethodCall(new Expr\Variable('object'), $this->getNaming()->getPrefixedMethodName('get', $property->getPhpName()));
+                $propertyVar = new Expr\MethodCall($objectVariable, $this->getNaming()->getPrefixedMethodName('get', $property->getPhpName()));
             }
 
             list($normalizationStatements, $outputVar) = $property->getType()->createNormalizationStatement($context, $propertyVar);
@@ -148,7 +161,7 @@ trait NormalizerGenerator
         }
 
         if (\count($patternCondition) > 0) {
-            $statements[] = new Stmt\Foreach_(new Expr\Variable('object'), $loopValueVar, [
+            $statements[] = new Stmt\Foreach_($objectVariable, $loopValueVar, [
                 'keyVar' => $loopKeyVar,
                 'stmts' => $patternCondition,
             ]);
@@ -159,7 +172,7 @@ trait NormalizerGenerator
         return new Stmt\ClassMethod('normalize', [
             'type' => Stmt\Class_::MODIFIER_PUBLIC,
             'params' => [
-                new Param(new Expr\Variable('object')),
+                new Param($objectVariable),
                 new Param(new Expr\Variable('format'), new Expr\ConstFetch(new Name('null'))),
                 new Param(new Expr\Variable('context'), new Expr\Array_(), 'array'),
             ],

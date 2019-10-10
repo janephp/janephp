@@ -69,10 +69,10 @@ class NormalizerGenerator implements GeneratorInterface
             $proxyFqdn = sprintf('%s\\Proxy\\%s', $schema->getNamespace(), $this->getNaming()->getProxyName($class->getName()));
 
             $methods = [];
-            $methods[] = $this->createSupportsDenormalizationMethod($modelFqdn);
+            $methods[] = $this->createSupportsDenormalizationMethod($modelFqdn, $proxyFqdn, $hasReadOnlyProperty);
             $methods[] = $this->createSupportsNormalizationMethod($modelFqdn, $proxyFqdn, $hasReadOnlyProperty);
             $methods[] = $this->createDenormalizeMethod($modelFqdn, $context, $class, $hasReadOnlyProperty);
-            $methods[] = $this->createNormalizeMethod($modelFqdn, $context, $class, $hasReadOnlyProperty);
+            $methods[] = $this->createNormalizeMethod($modelFqdn, $proxyFqdn, $context, $class, $hasReadOnlyProperty);
 
             if ($this->useCacheableSupportsMethod) {
                 $methods[] = $this->createHasCacheableSupportsMethod();

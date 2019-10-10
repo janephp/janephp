@@ -17,11 +17,11 @@ class TestNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
     use NormalizerAwareTrait;
     public function supportsDenormalization($data, $type, $format = null)
     {
-        return $type === 'Jane\\JsonSchema\\Tests\\Expected\\Model\\Test';
+        return $type === 'Jane\\JsonSchema\\Tests\\Expected\\Model\\Test' || $type === 'Jane\\JsonSchema\\Tests\\Expected\\Proxy\\ProxyTest';
     }
     public function supportsNormalization($data, $format = null)
     {
-        return $data instanceof \Jane\JsonSchema\Tests\Expected\Proxy\ProxyTest;
+        return $data instanceof \Jane\JsonSchema\Tests\Expected\Model\Test || $data instanceof \Jane\JsonSchema\Tests\Expected\Proxy\ProxyTest;
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
@@ -42,10 +42,13 @@ class TestNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         if (property_exists($data, 'email')) {
             $properties['email'] = $data->{'email'};
         }
-        return $object;
+        return new \Jane\JsonSchema\Tests\Expected\Model\Test($object);
     }
     public function normalize($object, $format = null, array $context = array())
     {
+        if ($object instanceof \Jane\JsonSchema\Tests\Expected\Model\Test) {
+            $object = new \Jane\JsonSchema\Tests\Expected\Proxy\ProxyTest($object);
+        }
         $data = new \stdClass();
         $properties = $object->__properties();
         if (null !== $properties['__token']) {
