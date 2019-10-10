@@ -59,20 +59,29 @@ trait NormalizerGenerator
      * We want stricly same class for OpenApi Normalizers since we can have inheritance and this could avoid
      * normalization to use child classes.
      */
-    protected function createSupportsNormalizationMethod($modelFqdn)
+    protected function createSupportsNormalizationMethod(string $modelFqdn, string $proxyFqdn, bool $useProxy)
     {
+        $statements = [];
+
+        if ($useProxy) {
+            $statements[] = new Stmt\Return_(new Expr\BinaryOp\Identical(
+                new Expr\FuncCall(new Name('get_class'), [new Expr\Variable('data')]),
+                new Scalar\String_($proxyFqdn)
+            ));
+        } else {
+            $statements[] = new Stmt\Return_(new Expr\BinaryOp\Identical(
+                new Expr\FuncCall(new Name('get_class'), [new Expr\Variable('data')]),
+                new Scalar\String_($modelFqdn)
+            ));
+        }
+
         return new Stmt\ClassMethod('supportsNormalization', [
             'type' => Stmt\Class_::MODIFIER_PUBLIC,
             'params' => [
                 new Param(new Expr\Variable('data')),
                 new Param(new Expr\Variable('format'), new Expr\ConstFetch(new Name('null'))),
             ],
-            'stmts' => [
-                new Stmt\Return_(new Expr\BinaryOp\Identical(
-                    new Expr\FuncCall(new Name('get_class'), [new Expr\Variable('data')]),
-                    new Scalar\String_($modelFqdn)
-                )),
-            ],
+            'stmts' => $statements,
         ]);
     }
 }

@@ -44,7 +44,10 @@ class Property
      */
     private $phpName;
 
-    public function __construct($object, string $name, string $reference, bool $nullable = false, Type $type = null, string $description = null, $default = null)
+    /** @var bool */
+    private $readOnly;
+
+    public function __construct($object, string $name, string $reference, bool $nullable = false, Type $type = null, string $description = null, $default = null, bool $readOnly = false)
     {
         $this->name = $name;
         $this->object = $object;
@@ -53,6 +56,7 @@ class Property
         $this->type = $type;
         $this->description = $description;
         $this->default = $default;
+        $this->readOnly = $readOnly;
     }
 
     public function setPhpName(string $name)
@@ -103,5 +107,10 @@ class Property
     public function getDefault()
     {
         return $this->default;
+    }
+
+    public function isReadOnly(): bool
+    {
+        return $this->readOnly;
     }
 }

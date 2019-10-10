@@ -85,6 +85,11 @@ class Naming
         return $name;
     }
 
+    public function getProxyName($name)
+    {
+        return sprintf('Proxy%s', $this->getClassName($name));
+    }
+
     /**
      * @param $name
      *
