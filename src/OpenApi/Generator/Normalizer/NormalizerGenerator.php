@@ -61,19 +61,12 @@ trait NormalizerGenerator
      */
     protected function createSupportsNormalizationMethod(string $modelFqdn, string $proxyFqdn, bool $useProxy)
     {
-        $statements = [];
-
-        if ($useProxy) {
-            $statements[] = new Stmt\Return_(new Expr\BinaryOp\Identical(
+        $exprTestClassFunction = function ($class) {
+            return new Expr\BinaryOp\Identical(
                 new Expr\FuncCall(new Name('get_class'), [new Expr\Variable('data')]),
-                new Scalar\String_($proxyFqdn)
-            ));
-        } else {
-            $statements[] = new Stmt\Return_(new Expr\BinaryOp\Identical(
-                new Expr\FuncCall(new Name('get_class'), [new Expr\Variable('data')]),
-                new Scalar\String_($modelFqdn)
-            ));
-        }
+                new Scalar\String_($class)
+            );
+        };
 
         return new Stmt\ClassMethod('supportsNormalization', [
             'type' => Stmt\Class_::MODIFIER_PUBLIC,
@@ -81,7 +74,16 @@ trait NormalizerGenerator
                 new Param(new Expr\Variable('data')),
                 new Param(new Expr\Variable('format'), new Expr\ConstFetch(new Name('null'))),
             ],
-            'stmts' => $statements,
+            'stmts' => [
+                new Stmt\Return_(
+                    new Expr\BinaryOp\BooleanAnd(
+                        new Expr\FuncCall(new Name('is_object'), [new Expr\Variable('data')]),
+                        $useProxy ?
+                            new Expr\BinaryOp\BooleanOr($exprTestClassFunction($modelFqdn), $exprTestClassFunction($proxyFqdn)) :
+                            $exprTestClassFunction($modelFqdn)
+                    )
+                ),
+            ],
         ]);
     }
 }
