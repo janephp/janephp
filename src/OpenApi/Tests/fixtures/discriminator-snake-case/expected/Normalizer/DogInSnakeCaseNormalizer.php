@@ -20,7 +20,7 @@ class DogInSnakeCaseNormalizer implements DenormalizerInterface, NormalizerInter
     }
     public function supportsNormalization($data, $format = null)
     {
-        return get_class($data) === 'Jane\\OpenApi\\Tests\\Expected\\Model\\DogInSnakeCase';
+        return is_object($data) && get_class($data) === 'Jane\\OpenApi\\Tests\\Expected\\Model\\DogInSnakeCase';
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
