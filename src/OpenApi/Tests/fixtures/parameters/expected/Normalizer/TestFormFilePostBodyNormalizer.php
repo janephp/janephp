@@ -20,7 +20,7 @@ class TestFormFilePostBodyNormalizer implements DenormalizerInterface, Normalize
     }
     public function supportsNormalization($data, $format = null)
     {
-        return get_class($data) === 'Jane\\OpenApi\\Tests\\Expected\\Model\\TestFormFilePostBody';
+        return is_object($data) && get_class($data) === 'Jane\\OpenApi\\Tests\\Expected\\Model\\TestFormFilePostBody';
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {

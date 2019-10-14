@@ -20,7 +20,7 @@ class EmptySpaceNormalizer implements DenormalizerInterface, NormalizerInterface
     }
     public function supportsNormalization($data, $format = null)
     {
-        return get_class($data) === 'Jane\\OpenApi\\Tests\\Expected\\Model\\EmptySpace';
+        return is_object($data) && get_class($data) === 'Jane\\OpenApi\\Tests\\Expected\\Model\\EmptySpace';
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {

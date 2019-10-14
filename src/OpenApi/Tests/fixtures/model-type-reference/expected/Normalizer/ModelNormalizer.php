@@ -20,7 +20,7 @@ class ModelNormalizer implements DenormalizerInterface, NormalizerInterface, Den
     }
     public function supportsNormalization($data, $format = null)
     {
-        return get_class($data) === 'Jane\\OpenApi\\Tests\\Expected\\Model\\Model';
+        return is_object($data) && get_class($data) === 'Jane\\OpenApi\\Tests\\Expected\\Model\\Model';
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
