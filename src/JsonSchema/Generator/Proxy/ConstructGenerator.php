@@ -72,7 +72,7 @@ trait ConstructGenerator
                 'params' => [
                     new Param($modelVariable, new Expr\ConstFetch(new Name('null')), $modelFdqn),
                     new Param(new Expr\Variable('normalizer'), new Expr\ConstFetch(new Name('null')), sprintf('\\%s', NormalizerInterface::class)),
-                    new Param(new Expr\Variable('context'), new Expr\ConstFetch(new Name('null')), 'array')
+                    new Param(new Expr\Variable('context'), new Expr\ConstFetch(new Name('null')), 'array'),
                 ],
                 'stmts' => [
                     new Stmt\If_(
