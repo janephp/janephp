@@ -42,7 +42,7 @@ class TestNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         if (property_exists($data, 'email')) {
             $properties['email'] = $data->{'email'};
         }
-        return new \Jane\JsonSchema\Tests\Expected\Model\Test($object);
+        return new \Jane\JsonSchema\Tests\Expected\Model\Test($object, $this->normalizer, $context);
     }
     public function normalize($object, $format = null, array $context = array())
     {

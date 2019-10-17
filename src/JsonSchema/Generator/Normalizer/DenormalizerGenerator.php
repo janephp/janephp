@@ -156,7 +156,11 @@ trait DenormalizerGenerator
         }
 
         if ($useProxy) {
-            $statements[] = new Stmt\Return_(new Expr\New_(new Name('\\' . $modelFqdn), [new Arg($objectVariable)]));
+            $statements[] = new Stmt\Return_(new Expr\New_(new Name('\\' . $modelFqdn), [
+                new Arg($objectVariable),
+                new Arg(new Expr\PropertyFetch(new Expr\Variable('this'), 'normalizer')),
+                new Arg(new Expr\Variable('context')),
+            ]));
         } else {
             $statements[] = new Stmt\Return_($objectVariable);
         }
