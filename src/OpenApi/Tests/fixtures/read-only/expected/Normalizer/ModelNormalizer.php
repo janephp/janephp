@@ -36,7 +36,7 @@ class ModelNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         if (property_exists($data, 'bar')) {
             $properties['bar'] = $this->denormalizer->denormalize($data->{'bar'}, 'Jane\\OpenApi\\Tests\\Expected\\Model\\SubModel', 'json', $context);
         }
-        return new \Jane\OpenApi\Tests\Expected\Model\Model($object);
+        return new \Jane\OpenApi\Tests\Expected\Model\Model($object, $this->normalizer, $context);
     }
     public function normalize($object, $format = null, array $context = array())
     {
