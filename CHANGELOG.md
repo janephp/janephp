@@ -7,6 +7,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [5.2.0] - 2019-10-17
+
+### Added 
+
+* [JsonSchema] [GH#139](https://github.com/janephp/janephp/pull/139) readOnly field behavior with Proxy models
+
+### Changed
+
+* [JsonSchema] [GH#132](https://github.com/janephp/janephp/pull/132) upgrade specs to draft-06
+* [JsonSchema] [GH#134](https://github.com/janephp/janephp/pull/134) upgrade specs to draft-07
+* [JsonSchema] [GH#136](https://github.com/janephp/janephp/pull/136) upgrade specs to 2019-09 (last version)
+* [OpenApi] [GH#137](https://github.com/janephp/janephp/pull/137) upgrade specs to 3.0.2 (last version)
+
+### Fixed 
+
+* [OpenApi] [GH#143](https://github.com/janephp/janephp/pull/143) Check if object for normalizers supportNormalization method
+* [JsonSchema] [GH#141](https://github.com/janephp/janephp/pull/141) Better nullable checks on generated normalizers
+
 ## [5.1.1] - 2019-09-27
 
 ### Fixed
@@ -140,7 +158,8 @@ See :
  * https://github.com/janephp/jane/releases
  * https://github.com/janephp/openapi/releases
 
-[Unreleased]: https://github.com/janephp/janephp/compare/v5.1.1..HEAD
+[Unreleased]: https://github.com/janephp/janephp/compare/v5.2.0...HEAD
+[5.2.0]: https://github.com/janephp/janephp/compare/v5.1.1...v5.2.0
 [5.1.1]: https://github.com/janephp/janephp/compare/v5.1.0...v5.1.1
 [5.1.0]: https://github.com/janephp/janephp/compare/v5.0.1...v5.1.0
 [5.0.1]: https://github.com/janephp/janephp/compare/v5.0.0...v5.0.1
