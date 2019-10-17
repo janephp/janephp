@@ -39,12 +39,8 @@ class BarNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
     public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
-        if (null !== $object->getFoo()) {
-            $data->{'foo'} = $object->getFoo();
-        }
-        if (null !== $object->getBar()) {
-            $data->{'bar'} = $object->getBar();
-        }
+        $data->{'foo'} = $object->getFoo();
+        $data->{'bar'} = $object->getBar();
         return $data;
     }
 }

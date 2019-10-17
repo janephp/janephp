@@ -36,9 +36,7 @@ class ThingNormalizer implements DenormalizerInterface, NormalizerInterface, Den
     public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
-        if (null !== $object->getName()) {
-            $data->{'name'} = $object->getName();
-        }
+        $data->{'name'} = $object->getName();
         return $data;
     }
 }

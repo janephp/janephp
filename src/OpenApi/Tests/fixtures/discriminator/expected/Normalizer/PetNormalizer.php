@@ -51,12 +51,8 @@ class PetNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
         if (null !== $object->getPetType() and 'Dog' === $object->getPetType()) {
             return $this->normalizer->normalize($object, $format, $context);
         }
-        if (null !== $object->getName()) {
-            $data->{'name'} = $object->getName();
-        }
-        if (null !== $object->getPetType()) {
-            $data->{'petType'} = $object->getPetType();
-        }
+        $data->{'name'} = $object->getName();
+        $data->{'petType'} = $object->getPetType();
         return $data;
     }
 }

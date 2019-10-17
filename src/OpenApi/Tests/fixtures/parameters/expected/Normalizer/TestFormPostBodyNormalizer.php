@@ -55,28 +55,16 @@ class TestFormPostBodyNormalizer implements DenormalizerInterface, NormalizerInt
     public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
-        if (null !== $object->getTestString()) {
-            $data->{'testString'} = $object->getTestString();
+        $data->{'testString'} = $object->getTestString();
+        $data->{'testInteger'} = $object->getTestInteger();
+        $data->{'testFloat'} = $object->getTestFloat();
+        $values = array();
+        foreach ($object->getTestArray() as $value) {
+            $values[] = $value;
         }
-        if (null !== $object->getTestInteger()) {
-            $data->{'testInteger'} = $object->getTestInteger();
-        }
-        if (null !== $object->getTestFloat()) {
-            $data->{'testFloat'} = $object->getTestFloat();
-        }
-        if (null !== $object->getTestArray()) {
-            $values = array();
-            foreach ($object->getTestArray() as $value) {
-                $values[] = $value;
-            }
-            $data->{'testArray'} = $values;
-        }
-        if (null !== $object->getTestRequired()) {
-            $data->{'testRequired'} = $object->getTestRequired();
-        }
-        if (null !== $object->getTestDefault()) {
-            $data->{'testDefault'} = $object->getTestDefault();
-        }
+        $data->{'testArray'} = $values;
+        $data->{'testRequired'} = $object->getTestRequired();
+        $data->{'testDefault'} = $object->getTestDefault();
         return $data;
     }
 }
