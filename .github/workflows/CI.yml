@@ -9,8 +9,11 @@ jobs:
             - name: composer install
               uses: nick-zh/composer-php@master
               with:
-                  action: 'update'
+                action: 'update'
             - name: php-cs-fixer check
-              uses: docker://oskarstark/php-cs-fixer-ga
+              id: cs-fix
+              uses:  actions/php-cs-fixer-check@v1
               with:
-                  args: '--diff --dry-run'
+                args: '--diff --dry-run'
+            - name: php-ce-fixer output
+                run: echo "The time was ${{ steps.cs-fix.outputs.results }}"

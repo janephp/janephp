@@ -1,0 +1,15 @@
+# action.yml
+name: 'Cs fix run dry'
+description: 'Greet someone and record the time'
+inputs:
+    options:  # id of input
+        description: 'Options to pass to the cs fix commant'
+        required: true
+        default: '--diff --dry-run'
+outputs:
+
+runs:
+    using: 'docker'
+    image: 'Dockerfile'
+    args:
+        - ${{ inputs.options }}
