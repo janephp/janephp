@@ -1,0 +1,16 @@
+name: CI
+on: [push, pull_request]
+jobs:
+    cs-check:
+        runs-on: ubuntu-latest
+        steps:
+            - name: checkout
+              uses: actions/checkout@master
+            - name: composer install
+              uses: nick-zh/composer-php@master
+              with:
+                  action: 'update'
+            - name: php-cs-fixer check
+              uses: docker://oskarstark/php-cs-fixer-ga
+              with:
+                  args: '--diff --dry-run'
