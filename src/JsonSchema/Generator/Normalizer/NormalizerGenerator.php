@@ -5,7 +5,9 @@ namespace Jane\JsonSchema\Generator\Normalizer;
 use Jane\JsonSchema\Generator\Context\Context;
 use Jane\JsonSchema\Generator\Naming;
 use Jane\JsonSchema\Guesser\Guess\ClassGuess;
+use Jane\JsonSchema\Guesser\Guess\MultipleType;
 use Jane\JsonSchema\Guesser\Guess\Property;
+use Jane\JsonSchema\Guesser\Guess\Type;
 use PhpParser\Node\Arg;
 use PhpParser\Node\Name;
 use PhpParser\Node\Param;
@@ -126,7 +128,7 @@ trait NormalizerGenerator
 
             $normalizationStatements[] = new Stmt\Expression(new Expr\Assign(new Expr\PropertyFetch($dataVariable, sprintf("{'%s'}", $property->getName())), $outputVar));
 
-            if (!$property->isNullable()) {
+            if ((!$property->isNullable() && $context->isStrict()) || ($property->getType() instanceof MultipleType && \count(array_intersect([Type::TYPE_NULL], $property->getType()->getTypes())) === 1) || ($property->getType()->getName() === Type::TYPE_NULL)) {
                 $statements = array_merge($statements, $normalizationStatements);
 
                 continue;

@@ -49,9 +49,7 @@ class AdditionalPropertiesNormalizer implements DenormalizerInterface, Normalize
     public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
-        if (null !== $object->getFoo()) {
-            $data->{'foo'} = $object->getFoo();
-        }
+        $data->{'foo'} = $object->getFoo();
         foreach ($object as $key => $value) {
             if (preg_match('/.*/', $key)) {
                 $data->{$key} = $value;
