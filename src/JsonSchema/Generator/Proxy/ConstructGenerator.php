@@ -13,6 +13,7 @@ use PhpParser\Node\Param;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Name;
 use PhpParser\Node\Scalar;
+use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
 trait ConstructGenerator
 {
@@ -46,7 +47,7 @@ trait ConstructGenerator
         foreach ($class->getProperties() as $property) {
             $propertyVar = new Expr\MethodCall($modelVariable, $this->getNaming()->getPrefixedMethodName('get', $property->getPhpName()));
 
-            list($normalizationStatements, $outputVar) = $property->getType()->createNormalizationStatement($context, $propertyVar);
+            list($normalizationStatements, $outputVar) = $property->getType()->createNormalizationStatement($context, $propertyVar, false);
 
             $normalizationStatements[] = new Stmt\Expression(new Expr\Assign(new Expr\ArrayDimFetch(new Expr\Variable('properties'), new Scalar\String_($property->getName())), $outputVar));
 
@@ -68,7 +69,11 @@ trait ConstructGenerator
             '__construct',
             [
                 'type' => Stmt\Class_::MODIFIER_PUBLIC,
-                'params' => [new Param($modelVariable, new Expr\ConstFetch(new Name('null')), $modelFdqn)],
+                'params' => [
+                    new Param($modelVariable, new Expr\ConstFetch(new Name('null')), $modelFdqn),
+                    new Param(new Expr\Variable('normalizer'), new Expr\ConstFetch(new Name('null')), sprintf('\\%s', NormalizerInterface::class)),
+                    new Param(new Expr\Variable('context'), new Expr\ConstFetch(new Name('null')), 'array')
+                ],
                 'stmts' => [
                     new Stmt\If_(
                         new Expr\Instanceof_($modelVariable, new Name($modelFdqn)),

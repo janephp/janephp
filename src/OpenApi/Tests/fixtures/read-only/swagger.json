@@ -1,0 +1,27 @@
+{
+    "openapi": "3.0.2",
+    "components": {
+        "schemas": {
+            "Model": {
+                "type": "object",
+                "properties": {
+                    "foo": {
+                        "readOnly": true,
+                        "type": "string"
+                    },
+                    "bar": {
+                        "$ref": "#/components/schemas/SubModel"
+                    }
+                }
+            },
+            "SubModel": {
+                "type": "object",
+                "properties": {
+                    "baz": {
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    }
+}

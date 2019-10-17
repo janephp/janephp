@@ -47,7 +47,7 @@ class TestNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
     public function normalize($object, $format = null, array $context = array())
     {
         if ($object instanceof \Jane\JsonSchema\Tests\Expected\Model\Test) {
-            $object = new \Jane\JsonSchema\Tests\Expected\Proxy\ProxyTest($object);
+            $object = new \Jane\JsonSchema\Tests\Expected\Proxy\ProxyTest($object, $this->normalizer, $context);
         }
         $data = new \stdClass();
         $properties = $object->__properties();

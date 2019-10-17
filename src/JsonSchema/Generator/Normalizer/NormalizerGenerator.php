@@ -100,7 +100,11 @@ trait NormalizerGenerator
                 [
                     'stmts' => [new Stmt\Expression(new Expr\Assign(
                         $objectVariable,
-                        new Expr\New_(new Name('\\' . $proxyFqdn), [new Arg($objectVariable)])
+                        new Expr\New_(new Name('\\' . $proxyFqdn), [
+                            new Arg($objectVariable),
+                            new Arg(new Expr\PropertyFetch(new Expr\Variable('this'), 'normalizer')),
+                            new Arg(new Expr\Variable('context'))
+                        ])
                     ))],
                 ]
             );

@@ -13,6 +13,7 @@ use PhpParser\Node\Param;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Name;
 use PhpParser\Node\Scalar;
+use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
 trait ConstructGenerator
 {
@@ -46,7 +47,7 @@ trait ConstructGenerator
         foreach ($class->getProperties() as $property) {
             $propertyVar = new Expr\ArrayDimFetch(new Expr\Variable('properties'), new Scalar\String_($property->getName()));
 
-            list($normalizationStatements, $outputVar) = $property->getType()->createNormalizationStatement($context, $propertyVar);
+            list($normalizationStatements, $outputVar) = $property->getType()->createNormalizationStatement($context, $propertyVar, false);
 
             $normalizationStatements[] = new Stmt\Expression(new Expr\Assign(new Expr\PropertyFetch(new Expr\Variable('this'), sprintf("{'%s'}", $property->getPhpName())), $outputVar));
 
@@ -68,7 +69,11 @@ trait ConstructGenerator
             '__construct',
             [
                 'type' => Stmt\Class_::MODIFIER_PUBLIC,
-                'params' => [new Param($proxyVariable, new Expr\ConstFetch(new Name('null')), $proxyFqdn)],
+                'params' => [
+                    new Param($proxyVariable, new Expr\ConstFetch(new Name('null')), $proxyFqdn),
+                    new Param(new Expr\Variable('normalizer'), new Expr\ConstFetch(new Name('null')), sprintf('\\%s', NormalizerInterface::class)),
+                    new Param(new Expr\Variable('context'), new Expr\ConstFetch(new Name('null')), 'array')
+                ],
                 'stmts' => [
                     new Stmt\If_(
                         new Expr\Instanceof_($proxyVariable, new Name($proxyFqdn)),

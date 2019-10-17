@@ -136,7 +136,7 @@ class MultipleType extends Type
     /**
      * {@inheritdoc}
      */
-    public function createNormalizationStatement(Context $context, Expr $input): array
+    public function createNormalizationStatement(Context $context, Expr $input, bool $normalizerFromObject = true): array
     {
         $output = new Expr\Variable($context->getUniqueVariableName('value'));
         $statements = [
@@ -146,7 +146,7 @@ class MultipleType extends Type
         /** @var Stmt\If_|null $ifStmt */
         $ifStmt = null;
         foreach ($this->getTypesSorted() as $type) {
-            list($typeStatements, $typeOutput) = $type->createNormalizationStatement($context, $input);
+            list($typeStatements, $typeOutput) = $type->createNormalizationStatement($context, $input, $normalizerFromObject);
 
             $condition = $type->createNormalizationConditionStatement($input);
             $statement = array_merge($typeStatements, [new Stmt\Expression(new Expr\Assign($output, $typeOutput))]);
