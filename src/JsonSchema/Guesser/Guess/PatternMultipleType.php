@@ -49,7 +49,7 @@ class PatternMultipleType extends Type
     /**
      * (@inheritDoc}.
      */
-    public function createDenormalizationStatement(Context $context, Expr $input): array
+    public function createDenormalizationStatement(Context $context, Expr $input, bool $normalizerFromObject = true): array
     {
         $valuesVar = new Expr\Variable($context->getUniqueVariableName('values'));
         $statements = [
@@ -62,7 +62,7 @@ class PatternMultipleType extends Type
         $loopStatements = [];
 
         foreach ($this->types as $pattern => $type) {
-            list($typeStatements, $typeOutput) = $type->createDenormalizationStatement($context, $loopValueVar);
+            list($typeStatements, $typeOutput) = $type->createDenormalizationStatement($context, $loopValueVar, $normalizerFromObject);
             $loopStatements = array_merge($loopStatements, [
                 new Stmt\If_(
                     new Expr\BinaryOp\BooleanAnd(

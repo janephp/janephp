@@ -38,7 +38,7 @@ class ArrayType extends Type
     /**
      * (@inheritDoc}.
      */
-    public function createDenormalizationStatement(Context $context, Expr $input): array
+    public function createDenormalizationStatement(Context $context, Expr $input, bool $normalizerFromObject = true): array
     {
         $valuesVar = new Expr\Variable($context->getUniqueVariableName('values'));
         $statements = [
@@ -49,7 +49,7 @@ class ArrayType extends Type
         $loopValueVar = new Expr\Variable($context->getUniqueVariableName('value'));
         $loopKeyVar = $this->createLoopKeyStatement($context);
 
-        list($subStatements, $outputExpr) = $this->itemType->createDenormalizationStatement($context, $loopValueVar);
+        list($subStatements, $outputExpr) = $this->itemType->createDenormalizationStatement($context, $loopValueVar, $normalizerFromObject);
 
         $loopStatements = array_merge($subStatements, [
             new Stmt\Expression(new Expr\Assign($this->createLoopOutputAssignement($valuesVar, $loopKeyVar), $outputExpr)),

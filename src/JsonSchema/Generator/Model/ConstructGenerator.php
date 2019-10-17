@@ -13,7 +13,7 @@ use PhpParser\Node\Param;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Name;
 use PhpParser\Node\Scalar;
-use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 
 trait ConstructGenerator
 {
@@ -47,12 +47,12 @@ trait ConstructGenerator
         foreach ($class->getProperties() as $property) {
             $propertyVar = new Expr\ArrayDimFetch(new Expr\Variable('properties'), new Scalar\String_($property->getName()));
 
-            list($normalizationStatements, $outputVar) = $property->getType()->createNormalizationStatement($context, $propertyVar, false);
+            list($denormalizationStatements, $outputVar) = $property->getType()->createDenormalizationStatement($context, $propertyVar, false);
 
-            $normalizationStatements[] = new Stmt\Expression(new Expr\Assign(new Expr\PropertyFetch(new Expr\Variable('this'), sprintf("{'%s'}", $property->getPhpName())), $outputVar));
+            $denormalizationStatements[] = new Stmt\Expression(new Expr\Assign(new Expr\PropertyFetch(new Expr\Variable('this'), sprintf("{'%s'}", $property->getPhpName())), $outputVar));
 
             if ((!$property->isNullable() && $context->isStrict()) || ($property->getType() instanceof MultipleType && \count(array_intersect([Type::TYPE_NULL], $property->getType()->getTypes())) === 1) || ($property->getType()->getName() === Type::TYPE_NULL)) {
-                $methods = array_merge($methods, $normalizationStatements);
+                $methods = array_merge($methods, $denormalizationStatements);
 
                 continue;
             }
@@ -60,7 +60,7 @@ trait ConstructGenerator
             $methods[] = new Stmt\If_(
                 new Expr\BinaryOp\NotIdentical(new Expr\ConstFetch(new Name('null')), $propertyVar),
                 [
-                    'stmts' => $normalizationStatements,
+                    'stmts' => $denormalizationStatements,
                 ]
             );
         }
@@ -71,7 +71,7 @@ trait ConstructGenerator
                 'type' => Stmt\Class_::MODIFIER_PUBLIC,
                 'params' => [
                     new Param($proxyVariable, new Expr\ConstFetch(new Name('null')), $proxyFqdn),
-                    new Param(new Expr\Variable('normalizer'), new Expr\ConstFetch(new Name('null')), sprintf('\\%s', NormalizerInterface::class)),
+                    new Param(new Expr\Variable('denormalizer'), new Expr\ConstFetch(new Name('null')), sprintf('\\%s', DenormalizerInterface::class)),
                     new Param(new Expr\Variable('context'), new Expr\ConstFetch(new Name('null')), 'array'),
                 ],
                 'stmts' => [
