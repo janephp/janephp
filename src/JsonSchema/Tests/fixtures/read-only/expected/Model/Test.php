@@ -16,7 +16,7 @@ class Test
      * @var string
      */
     protected $email;
-    public function __construct(\Jane\JsonSchema\Tests\Expected\Proxy\ProxyTest $proxy = null)
+    public function __construct(\Jane\JsonSchema\Tests\Expected\Proxy\ProxyTest $proxy = null, \Symfony\Component\Serializer\Normalizer\NormalizerInterface $normalizer = null, array $context = null)
     {
         if ($proxy instanceof \Jane\JsonSchema\Tests\Expected\Proxy\ProxyTest) {
             $properties = $proxy->__properties();

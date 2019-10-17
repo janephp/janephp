@@ -41,7 +41,7 @@ class DateTimeType extends ObjectType
     /**
      * (@inheritDoc}.
      */
-    protected function createNormalizationValueStatement(Context $context, Expr $input): Expr
+    protected function createNormalizationValueStatement(Context $context, Expr $input, bool $normalizerFromObject = true): Expr
     {
         // $object->format($format);
         return new Expr\MethodCall($input, 'format', [

@@ -41,9 +41,14 @@ class ObjectType extends Type
     /**
      * (@inheritDoc}.
      */
-    protected function createNormalizationValueStatement(Context $context, Expr $input): Expr
+    protected function createNormalizationValueStatement(Context $context, Expr $input, bool $normalizerFromObject = true): Expr
     {
-        return new Expr\MethodCall(new Expr\PropertyFetch(new Expr\Variable('this'), 'normalizer'), 'normalize', [
+        $normalizerVar = new Expr\PropertyFetch(new Expr\Variable('this'), 'normalizer');
+        if (!$normalizerFromObject) {
+            $normalizerVar = new Expr\Variable('normalizer');
+        }
+
+        return new Expr\MethodCall($normalizerVar, 'normalize', [
             new Arg($input),
             new Arg(new Scalar\String_('json')),
             new Arg(new Expr\Variable('context')),
