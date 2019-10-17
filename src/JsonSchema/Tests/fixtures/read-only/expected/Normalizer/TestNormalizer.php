@@ -51,12 +51,8 @@ class TestNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         }
         $data = new \stdClass();
         $properties = $object->__properties();
-        if (null !== $properties['__token']) {
-            $data->{'__token'} = $properties['__token'];
-        }
-        if (null !== $properties['email']) {
-            $data->{'email'} = $properties['email'];
-        }
+        $data->{'__token'} = $properties['__token'];
+        $data->{'email'} = $properties['email'];
         return $data;
     }
 }
