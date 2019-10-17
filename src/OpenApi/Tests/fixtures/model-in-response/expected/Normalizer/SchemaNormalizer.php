@@ -62,35 +62,21 @@ class SchemaNormalizer implements DenormalizerInterface, NormalizerInterface, De
     public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
-        if (null !== $object->getStringProperty()) {
-            $data->{'stringProperty'} = $object->getStringProperty();
+        $data->{'stringProperty'} = $object->getStringProperty();
+        $data->{'integerProperty'} = $object->getIntegerProperty();
+        $data->{'floatProperty'} = $object->getFloatProperty();
+        $values = array();
+        foreach ($object->getArrayProperty() as $value) {
+            $values[] = $value;
         }
-        if (null !== $object->getIntegerProperty()) {
-            $data->{'integerProperty'} = $object->getIntegerProperty();
+        $data->{'arrayProperty'} = $values;
+        $values_1 = new \stdClass();
+        foreach ($object->getMapProperty() as $key => $value_1) {
+            $values_1->{$key} = $value_1;
         }
-        if (null !== $object->getFloatProperty()) {
-            $data->{'floatProperty'} = $object->getFloatProperty();
-        }
-        if (null !== $object->getArrayProperty()) {
-            $values = array();
-            foreach ($object->getArrayProperty() as $value) {
-                $values[] = $value;
-            }
-            $data->{'arrayProperty'} = $values;
-        }
-        if (null !== $object->getMapProperty()) {
-            $values_1 = new \stdClass();
-            foreach ($object->getMapProperty() as $key => $value_1) {
-                $values_1->{$key} = $value_1;
-            }
-            $data->{'mapProperty'} = $values_1;
-        }
-        if (null !== $object->getObjectProperty()) {
-            $data->{'objectProperty'} = $this->normalizer->normalize($object->getObjectProperty(), 'json', $context);
-        }
-        if (null !== $object->getObjectRefProperty()) {
-            $data->{'objectRefProperty'} = $this->normalizer->normalize($object->getObjectRefProperty(), 'json', $context);
-        }
+        $data->{'mapProperty'} = $values_1;
+        $data->{'objectProperty'} = $this->normalizer->normalize($object->getObjectProperty(), 'json', $context);
+        $data->{'objectRefProperty'} = $this->normalizer->normalize($object->getObjectRefProperty(), 'json', $context);
         return $data;
     }
 }

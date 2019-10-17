@@ -36,9 +36,7 @@ class TestFooNormalizer implements DenormalizerInterface, NormalizerInterface, D
     public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
-        if (null !== $object->getFoo()) {
-            $data->{'foo'} = $object->getFoo();
-        }
+        $data->{'foo'} = $object->getFoo();
         return $data;
     }
 }

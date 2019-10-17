@@ -62,9 +62,7 @@ class TestNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
     public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
-        if (null !== $object->getDate()) {
-            $data->{'date'} = $object->getDate()->format("l, d-M-y H:i:s T");
-        }
+        $data->{'date'} = $object->getDate()->format("l, d-M-y H:i:s T");
         $value = $object->getDateOrNull();
         if (is_object($object->getDateOrNull())) {
             $value = $object->getDateOrNull()->format("l, d-M-y H:i:s T");

@@ -39,12 +39,8 @@ class FooGetResponse200Normalizer implements DenormalizerInterface, NormalizerIn
     public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
-        if (null !== $object->getId()) {
-            $data->{'id'} = $object->getId();
-        }
-        if (null !== $object->getBar()) {
-            $data->{'bar'} = $object->getBar();
-        }
+        $data->{'id'} = $object->getId();
+        $data->{'bar'} = $object->getBar();
         return $data;
     }
 }

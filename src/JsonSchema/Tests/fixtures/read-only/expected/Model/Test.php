@@ -20,12 +20,8 @@ class Test
     {
         if ($proxy instanceof \Jane\JsonSchema\Tests\Expected\Proxy\ProxyTest) {
             $properties = $proxy->__properties();
-            if (null !== $properties['__token']) {
-                $this->{'token'} = $properties['__token'];
-            }
-            if (null !== $properties['email']) {
-                $this->{'email'} = $properties['email'];
-            }
+            $this->{'token'} = $properties['__token'];
+            $this->{'email'} = $properties['email'];
         }
     }
     /**

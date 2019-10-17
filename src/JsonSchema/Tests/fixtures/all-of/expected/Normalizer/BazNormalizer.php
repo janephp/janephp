@@ -42,15 +42,9 @@ class BazNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
     public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
-        if (null !== $object->getFoo()) {
-            $data->{'foo'} = $object->getFoo();
-        }
-        if (null !== $object->getBar()) {
-            $data->{'Bar'} = $this->normalizer->normalize($object->getBar(), 'json', $context);
-        }
-        if (null !== $object->getBaz()) {
-            $data->{'Baz'} = $this->normalizer->normalize($object->getBaz(), 'json', $context);
-        }
+        $data->{'foo'} = $object->getFoo();
+        $data->{'Bar'} = $this->normalizer->normalize($object->getBar(), 'json', $context);
+        $data->{'Baz'} = $this->normalizer->normalize($object->getBaz(), 'json', $context);
         return $data;
     }
 }

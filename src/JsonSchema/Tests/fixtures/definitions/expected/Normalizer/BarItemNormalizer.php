@@ -42,9 +42,7 @@ class BarItemNormalizer implements DenormalizerInterface, NormalizerInterface, D
     public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
-        if (null !== $object->getBar()) {
-            $data->{'bar'} = $object->getBar();
-        }
+        $data->{'bar'} = $object->getBar();
         return $data;
     }
 }
