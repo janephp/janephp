@@ -12,8 +12,8 @@ jobs:
                 action: 'update'
             - name: php-cs-fixer check
               id: cs-fix
-              uses:  actions/php-cs-fixer-check@v1
+              uses:  ./.github/actions/php-cs-fixer-action
               with:
                 args: '--diff --dry-run'
-            - name: php-ce-fixer output
+            - name: php-cs-fixer output
                 run: echo "The time was ${{ steps.cs-fix.outputs.results }}"

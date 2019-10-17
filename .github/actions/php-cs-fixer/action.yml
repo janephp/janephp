@@ -1,9 +1,9 @@
 # action.yml
 name: 'Cs fix run dry'
-description: 'Greet someone and record the time'
+description: 'Launches the php-cs-fixer with dry-run mode'
 inputs:
     options:  # id of input
-        description: 'Options to pass to the cs fix commant'
+        description: 'Options to pass to the cs fix command'
         required: true
         default: '--diff --dry-run'
 outputs:
