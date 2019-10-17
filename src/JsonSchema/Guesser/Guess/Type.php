@@ -76,9 +76,9 @@ class Type
         return $this->name;
     }
 
-    public function createDenormalizationStatement(Context $context, Expr $input): array
+    public function createDenormalizationStatement(Context $context, Expr $input, bool $normalizerFromObject = true): array
     {
-        return [[], $this->createDenormalizationValueStatement($context, $input)];
+        return [[], $this->createDenormalizationValueStatement($context, $input, $normalizerFromObject)];
     }
 
     public function createNormalizationStatement(Context $context, Expr $input, bool $normalizerFromObject = true): array
@@ -86,7 +86,7 @@ class Type
         return [[], $this->createNormalizationValueStatement($context, $input, $normalizerFromObject)];
     }
 
-    protected function createDenormalizationValueStatement(Context $context, Expr $input): Expr
+    protected function createDenormalizationValueStatement(Context $context, Expr $input, bool $normalizerFromObject = true): Expr
     {
         return $input;
     }

@@ -29,7 +29,7 @@ class DateTimeType extends ObjectType
     /**
      * (@inheritDoc}.
      */
-    protected function createDenormalizationValueStatement(Context $context, Expr $input): Expr
+    protected function createDenormalizationValueStatement(Context $context, Expr $input, bool $normalizerFromObject = true): Expr
     {
         // \DateTime::createFromFormat($format, $data)
         return new Expr\StaticCall(new Name('\DateTime'), 'createFromFormat', [

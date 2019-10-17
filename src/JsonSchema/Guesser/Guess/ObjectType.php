@@ -28,9 +28,14 @@ class ObjectType extends Type
     /**
      * (@inheritDoc}.
      */
-    protected function createDenormalizationValueStatement(Context $context, Expr $input): Expr
+    protected function createDenormalizationValueStatement(Context $context, Expr $input, bool $normalizerFromObject = true): Expr
     {
-        return new Expr\MethodCall(new Expr\PropertyFetch(new Expr\Variable('this'), 'denormalizer'), 'denormalize', [
+        $denormalizerVar = new Expr\PropertyFetch(new Expr\Variable('this'), 'denormalizer');
+        if (!$normalizerFromObject) {
+            $denormalizerVar = new Expr\Variable('denormalizer');
+        }
+
+        return new Expr\MethodCall($denormalizerVar, 'denormalize', [
             new Arg($input),
             new Arg(new Scalar\String_($this->getFqdn(false))),
             new Arg(new Scalar\String_('json')),

@@ -16,12 +16,23 @@ class Model
      * @var SubModel
      */
     protected $bar;
-    public function __construct(\Jane\OpenApi\Tests\Expected\Proxy\ProxyModel $proxy = null, \Symfony\Component\Serializer\Normalizer\NormalizerInterface $normalizer = null, array $context = null)
+    /**
+     * 
+     *
+     * @var ModelTranslationsItem[]
+     */
+    protected $translations;
+    public function __construct(\Jane\OpenApi\Tests\Expected\Proxy\ProxyModel $proxy = null, \Symfony\Component\Serializer\Normalizer\DenormalizerInterface $denormalizer = null, array $context = null)
     {
         if ($proxy instanceof \Jane\OpenApi\Tests\Expected\Proxy\ProxyModel) {
             $properties = $proxy->__properties();
             $this->{'foo'} = $properties['foo'];
-            $this->{'bar'} = $normalizer->normalize($properties['bar'], 'json', $context);
+            $this->{'bar'} = $denormalizer->denormalize($properties['bar'], 'Jane\\OpenApi\\Tests\\Expected\\Model\\SubModel', 'json', $context);
+            $values = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
+            foreach ($properties['translations'] as $key => $value) {
+                $values[$key] = $denormalizer->denormalize($value, 'Jane\\OpenApi\\Tests\\Expected\\Model\\ModelTranslationsItem', 'json', $context);
+            }
+            $this->{'translations'} = $values;
         }
     }
     /**
@@ -52,6 +63,27 @@ class Model
     public function setBar(SubModel $bar) : self
     {
         $this->bar = $bar;
+        return $this;
+    }
+    /**
+     * 
+     *
+     * @return ModelTranslationsItem[]
+     */
+    public function getTranslations() : \ArrayObject
+    {
+        return $this->translations;
+    }
+    /**
+     * 
+     *
+     * @param ModelTranslationsItem[] $translations
+     *
+     * @return self
+     */
+    public function setTranslations(\ArrayObject $translations) : self
+    {
+        $this->translations = $translations;
         return $this;
     }
 }

@@ -11,6 +11,17 @@
                     },
                     "bar": {
                         "$ref": "#/components/schemas/SubModel"
+                    },
+                    "translations": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "object",
+                            "properties": {
+                                "label": {
+                                    "type": "string"
+                                }
+                            }
+                        }
                     }
                 }
             },

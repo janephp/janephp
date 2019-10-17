@@ -36,7 +36,14 @@ class ModelNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         if (property_exists($data, 'bar')) {
             $properties['bar'] = $this->denormalizer->denormalize($data->{'bar'}, 'Jane\\OpenApi\\Tests\\Expected\\Model\\SubModel', 'json', $context);
         }
-        return new \Jane\OpenApi\Tests\Expected\Model\Model($object, $this->normalizer, $context);
+        if (property_exists($data, 'translations')) {
+            $values = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
+            foreach ($data->{'translations'} as $key => $value) {
+                $values[$key] = $this->denormalizer->denormalize($value, 'Jane\\OpenApi\\Tests\\Expected\\Model\\ModelTranslationsItem', 'json', $context);
+            }
+            $properties['translations'] = $values;
+        }
+        return new \Jane\OpenApi\Tests\Expected\Model\Model($object, $this->denormalizer, $context);
     }
     public function normalize($object, $format = null, array $context = array())
     {
@@ -47,6 +54,11 @@ class ModelNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         $properties = $object->__properties();
         $data->{'foo'} = $properties['foo'];
         $data->{'bar'} = $this->normalizer->normalize($properties['bar'], 'json', $context);
+        $values = new \stdClass();
+        foreach ($properties['translations'] as $key => $value) {
+            $values->{$key} = $this->normalizer->normalize($value, 'json', $context);
+        }
+        $data->{'translations'} = $values;
         return $data;
     }
 }
