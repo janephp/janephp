@@ -16,4 +16,4 @@ jobs:
               with:
                 args: '--diff --dry-run'
             - name: php-cs-fixer output
-                run: echo "The time was ${{ steps.phpcs.outputs.results }}"
+                run: echo "${{ steps.phpcs.outputs.results }}"

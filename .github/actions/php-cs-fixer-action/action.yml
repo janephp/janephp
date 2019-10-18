@@ -4,8 +4,7 @@ description: 'Launches the php-cs-fixer with dry-run mode'
 inputs:
     options:  # id of input
         description: 'Options to pass to the cs fix command'
-        required: true
-        default: '--diff --dry-run'
+        required: false
 outputs:
 
 runs:
