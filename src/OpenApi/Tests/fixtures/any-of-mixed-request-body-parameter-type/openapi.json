@@ -1,0 +1,58 @@
+{
+    "openapi": "3.0.0",
+    "paths": {
+        "/test-simple": {
+            "post": {
+                "operationId": "Test Mixed Request Body",
+                "responses": {
+                    "200": {
+                        "description": "no error"
+                    }
+                },
+                "tags": [
+                    "Test."
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/FooBar"
+                            }
+                        }
+                    },
+                    "required": true
+                }
+            }
+        }
+    },
+    "info": {
+        "version": "",
+        "title": ""
+    },
+    "components": {
+        "schemas": {
+            "FooBar": {
+                "anyOf": [
+                    {
+                        "type": "object",
+                        "title": "Foo",
+                        "properties": {
+                            "title": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    {
+                        "type": "object",
+                        "title": "Bar",
+                        "properties": {
+                            "name": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                ]
+            }
+        }
+    }
+}
