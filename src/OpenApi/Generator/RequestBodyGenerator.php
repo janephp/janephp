@@ -3,6 +3,7 @@
 namespace Jane\OpenApi\Generator;
 
 use Jane\JsonSchema\Generator\Context\Context;
+use Jane\OpenApi\Generator\RequestBodyContent\AbstractBodyContentGenerator;
 use Jane\OpenApi\JsonSchema\Model\Reference;
 use Jane\OpenApi\JsonSchema\Model\RequestBody;
 use PhpParser\Node\Expr;
@@ -41,7 +42,10 @@ class RequestBodyGenerator
 
         $name = 'requestBody';
         [$types, $onlyArray] = $this->getTypes($requestBody, $reference, $context);
-        $paramType = \count($types) === 1 ? $types[0] : null;
+        $paramType = null;
+        if (\count($types) === 1 && $types[0] !== AbstractBodyContentGenerator::PHP_TYPE_MIXED) {
+            $paramType = $types[0];
+        };
 
         if ($onlyArray) {
             $paramType = 'array';

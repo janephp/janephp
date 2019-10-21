@@ -16,6 +16,8 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 
 abstract class AbstractBodyContentGenerator implements RequestBodyContentGeneratorInterface
 {
+    public const PHP_TYPE_MIXED = 'mixed';
+
     private $denormalizer;
 
     public function __construct(DenormalizerInterface $denormalizer)
@@ -184,7 +186,7 @@ abstract class AbstractBodyContentGenerator implements RequestBodyContentGenerat
         ];
 
         if (!isset($convertArray[$type]) || !isset($convertArray[$type][$format])) {
-            return ['mixed'];
+            return [self::PHP_TYPE_MIXED];
         }
 
         return $convertArray[$type][$format];
