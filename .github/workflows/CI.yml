@@ -9,8 +9,11 @@ jobs:
             - name: composer install
               uses: nick-zh/composer-php@master
               with:
-                  action: 'update'
+                action: 'update'
             - name: php-cs-fixer check
-              uses: docker://oskarstark/php-cs-fixer-ga
+              id: phpcs
+              uses:  ./.github/actions/php-cs-fixer-action
               with:
-                  args: '--diff --dry-run'
+                args: '--diff --dry-run'
+            - name: php-cs-fixer output
+                run: echo "${{ steps.phpcs.outputs.results }}"
