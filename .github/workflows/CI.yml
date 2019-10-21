@@ -1,19 +1,19 @@
 name: CI
 on: [push, pull_request]
 jobs:
-    cs-check:
-        runs-on: ubuntu-latest
-        steps:
-            - name: checkout
-              uses: actions/checkout@master
-            - name: composer install
-              uses: nick-zh/composer-php@master
-              with:
-                action: 'update'
-            - name: php-cs-fixer check
-              id: phpcs
-              uses:  ./.github/actions/php-cs-fixer-action
-              with:
-                args: '--diff --dry-run'
-            - name: php-cs-fixer output
-                run: echo "${{ steps.phpcs.outputs.results }}"
+  cs-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'checkout'
+        uses: actions/checkout@master
+      - name: 'composer install'
+        uses: nick-zh/composer-php@master
+        with:
+          action: 'update'
+      - name: 'php-cs-fixer check'
+        id: phpcs
+        uses:  ./.github/actions/php-cs-fixer-action
+        with:
+          args: '--diff --dry-run'
+      - name: 'php-cs-fixer output'
+          run: 'echo "${{ steps.phpcs.outputs.results }}"'
