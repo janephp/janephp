@@ -23,7 +23,7 @@ class Operation
 
     private $reference;
 
-    private $parameters = [];
+    private $parameters = array();
 
     public function __construct(PathItem $pathItem, OpenApiOperation $operation, string $path, string $method, string $reference)
     {
