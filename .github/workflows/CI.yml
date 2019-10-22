@@ -6,14 +6,7 @@ jobs:
     steps:
       - name: 'checkout'
         uses: actions/checkout@master
-      - name: 'composer install'
-        uses: nick-zh/composer-php@master
-        with:
-          action: 'update'
       - name: 'php-cs-fixer check'
-        id: phpcs
-        uses:  ./.github/actions/php-cs-fixer-action
+        uses:  docker://oskarstark/php-cs-fixer-ga
         with:
-          args: '--diff --dry-run'
-      - name: 'php-cs-fixer output'
-        run: 'echo "${{ steps.phpcs.outputs.results }}"'
+          args: '--dry-run --diff'
