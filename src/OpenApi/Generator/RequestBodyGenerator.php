@@ -45,7 +45,7 @@ class RequestBodyGenerator
         $paramType = null;
         if (\count($types) === 1 && $types[0] !== AbstractBodyContentGenerator::PHP_TYPE_MIXED) {
             $paramType = $types[0];
-        };
+        }
 
         if ($onlyArray) {
             $paramType = 'array';
