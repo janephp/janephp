@@ -4,7 +4,6 @@ namespace Jane\JsonSchema\Generator;
 
 use Jane\JsonSchema\Generator\Context\Context;
 use Jane\JsonSchema\Generator\Model\ClassGenerator;
-use Jane\JsonSchema\Generator\Model\ConstructGenerator;
 use Jane\JsonSchema\Generator\Model\GetterSetterGenerator;
 use Jane\JsonSchema\Generator\Model\PropertyGenerator;
 use Jane\JsonSchema\Guesser\Guess\ClassGuess;
@@ -17,7 +16,6 @@ use PhpParser\Parser;
 class ModelGenerator implements GeneratorInterface
 {
     use ClassGenerator;
-    use ConstructGenerator;
     use GetterSetterGenerator;
     use PropertyGenerator;
     use PropertyCheckTrait;
