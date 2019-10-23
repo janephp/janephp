@@ -4,6 +4,7 @@ namespace Jane\JsonSchema\Generator;
 
 use Jane\JsonSchema\Generator\Context\Context;
 use Jane\JsonSchema\Generator\Model\ClassGenerator;
+use Jane\JsonSchema\Generator\Model\ConstructGenerator;
 use Jane\JsonSchema\Generator\Model\GetterSetterGenerator;
 use Jane\JsonSchema\Generator\Model\PropertyGenerator;
 use Jane\JsonSchema\Guesser\Guess\ClassGuess;
@@ -16,6 +17,7 @@ use PhpParser\Parser;
 class ModelGenerator implements GeneratorInterface
 {
     use ClassGenerator;
+    use ConstructGenerator;
     use GetterSetterGenerator;
     use PropertyGenerator;
     use PropertyCheckTrait;
@@ -71,6 +73,14 @@ class ModelGenerator implements GeneratorInterface
             $properties = [];
             $methods = [];
 
+            if ($this->hasReadOnlyProperty($class)) {
+                $methods[] = $this->createConstruct(
+                    sprintf('\\%s\\Proxy\\%s', $schema->getNamespace(), $this->getNaming()->getProxyName($class->getName())),
+                    $class,
+                    $context
+                );
+            }
+
             /** @var Property $property */
             foreach ($class->getProperties() as $property) {
                 $required = !$property->isNullable() && $context->isStrict();
@@ -89,7 +99,9 @@ class ModelGenerator implements GeneratorInterface
     {
         $methods = [];
         $methods[] = $this->createGetter($property, $namespace, $required);
-        $methods[] = $this->createSetter($property, $namespace, $required);
+        if (!$property->isReadOnly()) {
+            $methods[] = $this->createSetter($property, $namespace, $required);
+        }
 
         return $methods;
     }
@@ -100,8 +112,7 @@ class ModelGenerator implements GeneratorInterface
             $class->getName(),
             $properties,
             $methods,
-            \count($class->getExtensionsType()) > 0,
-            $class->isDeprecated()
+            \count($class->getExtensionsType()) > 0
         );
     }
 }

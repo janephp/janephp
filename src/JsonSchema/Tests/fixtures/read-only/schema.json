@@ -1,0 +1,12 @@
+{
+    "type": "object",
+    "properties": {
+        "__token": {
+            "type": "string",
+            "readOnly": true
+        },
+        "email": {
+            "type": "string"
+        }
+    }
+}
