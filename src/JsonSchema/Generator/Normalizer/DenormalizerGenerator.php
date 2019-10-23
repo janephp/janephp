@@ -28,14 +28,8 @@ trait DenormalizerGenerator
      *
      * @return Stmt\ClassMethod
      */
-    protected function createSupportsDenormalizationMethod(string $modelFqdn, string $proxyFqdn, bool $useProxy)
+    protected function createSupportsDenormalizationMethod(string $modelFqdn)
     {
-        $stmt = new Expr\BinaryOp\Identical(new Expr\Variable('type'), new Scalar\String_($modelFqdn));
-
-        if ($useProxy) {
-            $stmt = new Expr\BinaryOp\BooleanOr($stmt, new Expr\BinaryOp\Identical(new Expr\Variable('type'), new Scalar\String_($proxyFqdn)));
-        }
-
         return new Stmt\ClassMethod('supportsDenormalization', [
             'type' => Stmt\Class_::MODIFIER_PUBLIC,
             'params' => [
@@ -43,11 +37,11 @@ trait DenormalizerGenerator
                 new Param(new Expr\Variable('type')),
                 new Param(new Expr\Variable('format'), new Expr\ConstFetch(new Name('null'))),
             ],
-            'stmts' => [new Stmt\Return_($stmt)],
+            'stmts' => [new Stmt\Return_(new Expr\BinaryOp\Identical(new Expr\Variable('type'), new Scalar\String_($modelFqdn)))],
         ]);
     }
 
-    protected function createDenormalizeMethod(string $modelFqdn, Context $context, ClassGuess $classGuess, bool $useProxy): Stmt\ClassMethod
+    protected function createDenormalizeMethod(string $modelFqdn, Context $context, ClassGuess $classGuess): Stmt\ClassMethod
     {
         $context->refreshScope();
         $objectVariable = new Expr\Variable('object');
@@ -77,17 +71,8 @@ trait DenormalizerGenerator
                 ]
             );
         }
-        if ($useProxy) {
-            $statements[] = new Stmt\Expression(new Expr\Assign($objectVariable, new Expr\New_(new Name($this->getNaming()->getProxyName($classGuess->getName())))));
 
-            $propertiesVariable = new Expr\Variable('properties');
-            $statements[] = new Stmt\Expression(new Expr\Assign(
-                $propertiesVariable,
-                new Expr\MethodCall(new Expr\Variable('object'), '__properties')
-            ));
-        } else {
-            $statements[] = new Stmt\Expression(new Expr\Assign($objectVariable, new Expr\New_(new Name('\\' . $modelFqdn))));
-        }
+        $statements[] = new Stmt\Expression(new Expr\Assign($objectVariable, new Expr\New_(new Name('\\' . $modelFqdn))));
 
         array_unshift($statements, ...$this->denormalizeMethodStatements($classGuess, $context));
 
@@ -117,14 +102,10 @@ trait DenormalizerGenerator
                 );
             }
 
-            if ($useProxy) {
-                $assignStatement = new Stmt\Expression(new Expr\Assign(new Expr\ArrayDimFetch(new Expr\Variable('properties'), new Scalar\String_($property->getName())), $outputVar));
-            } else {
-                $assignStatement = new Stmt\Expression(new Expr\MethodCall($objectVariable, $this->getNaming()->getPrefixedMethodName('set', $property->getPhpName()), [$outputVar]));
-            }
-
             $statements[] = new Stmt\If_($condition, [
-                'stmts' => array_merge($denormalizationStatements, [$assignStatement], $unset ? [new Stmt\Unset_([$propertyVar])] : []),
+                'stmts' => array_merge($denormalizationStatements, [
+                    new Stmt\Expression(new Expr\MethodCall($objectVariable, $this->getNaming()->getPrefixedMethodName('set', $property->getPhpName()), [$outputVar]))
+                ], $unset ? [new Stmt\Unset_([$propertyVar])] : []),
             ]);
         }
 
@@ -154,16 +135,7 @@ trait DenormalizerGenerator
                 'stmts' => $patternCondition,
             ]);
         }
-
-        if ($useProxy) {
-            $statements[] = new Stmt\Return_(new Expr\New_(new Name('\\' . $modelFqdn), [
-                new Arg($objectVariable),
-                new Arg(new Expr\PropertyFetch(new Expr\Variable('this'), 'denormalizer')),
-                new Arg(new Expr\Variable('context')),
-            ]));
-        } else {
-            $statements[] = new Stmt\Return_($objectVariable);
-        }
+        $statements[] = new Stmt\Return_($objectVariable);
 
         return new Stmt\ClassMethod('denormalize', [
             'type' => Stmt\Class_::MODIFIER_PUBLIC,

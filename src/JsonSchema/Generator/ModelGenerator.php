@@ -73,14 +73,6 @@ class ModelGenerator implements GeneratorInterface
             $properties = [];
             $methods = [];
 
-            if ($this->hasReadOnlyProperty($class)) {
-                $methods[] = $this->createConstruct(
-                    sprintf('\\%s\\Proxy\\%s', $schema->getNamespace(), $this->getNaming()->getProxyName($class->getName())),
-                    $class,
-                    $context
-                );
-            }
-
             /** @var Property $property */
             foreach ($class->getProperties() as $property) {
                 $required = !$property->isNullable() && $context->isStrict();

@@ -55,25 +55,18 @@ trait NormalizerGenerator
      * Create method to check if denormalization is supported.
      *
      * @param string $modelFqdn Fully Qualified name of the model class denormalized
-     * @param bool   $useProxy
      *
      * @return Stmt\ClassMethod
      */
-    protected function createSupportsNormalizationMethod(string $modelFqdn, string $proxyFqdn, bool $useProxy)
+    protected function createSupportsNormalizationMethod(string $modelFqdn)
     {
-        $stmt = new Expr\Instanceof_(new Expr\Variable('data'), new Name('\\' . $modelFqdn));
-
-        if ($useProxy) {
-            $stmt = new Expr\BinaryOp\BooleanOr($stmt, new Expr\Instanceof_(new Expr\Variable('data'), new Name('\\' . $proxyFqdn)));
-        }
-
         return new Stmt\ClassMethod('supportsNormalization', [
             'type' => Stmt\Class_::MODIFIER_PUBLIC,
             'params' => [
                 new Param(new Expr\Variable('data')),
                 new Param(new Expr\Variable('format'), new Expr\ConstFetch(new Name('null'))),
             ],
-            'stmts' => [new Stmt\Return_($stmt)],
+            'stmts' => [new Stmt\Return_(new Expr\Instanceof_(new Expr\Variable('data'), new Name('\\' . $modelFqdn)))],
         ]);
     }
 
@@ -83,50 +76,21 @@ trait NormalizerGenerator
      * @param string     $modelFqdn
      * @param Context    $context
      * @param ClassGuess $classGuess
-     * @param bool       $useProxy
      *
      * @return Stmt\ClassMethod
      */
-    protected function createNormalizeMethod(string $modelFqdn, string $proxyFqdn, Context $context, ClassGuess $classGuess, bool $useProxy)
+    protected function createNormalizeMethod(string $modelFqdn, Context $context, ClassGuess $classGuess)
     {
         $context->refreshScope();
         $dataVariable = new Expr\Variable('data');
         $objectVariable = new Expr\Variable('object');
         $statements = [];
 
-        if ($useProxy) {
-            $statements[] = new Stmt\If_(
-                new Expr\Instanceof_($objectVariable, new Name('\\' . $modelFqdn)),
-                [
-                    'stmts' => [new Stmt\Expression(new Expr\Assign(
-                        $objectVariable,
-                        new Expr\New_(new Name('\\' . $proxyFqdn), [
-                            new Arg($objectVariable),
-                            new Arg(new Expr\PropertyFetch(new Expr\Variable('this'), 'normalizer')),
-                            new Arg(new Expr\Variable('context')),
-                        ])
-                    ))],
-                ]
-            );
-        }
-
         $statements = array_merge($statements, $this->normalizeMethodStatements($dataVariable, $classGuess, $context));
-
-        if ($useProxy) {
-            $propertiesVariable = new Expr\Variable('properties');
-            $statements[] = new Stmt\Expression(new Expr\Assign(
-                $propertiesVariable,
-                new Expr\MethodCall($objectVariable, '__properties')
-            ));
-        }
 
         /** @var Property $property */
         foreach ($classGuess->getProperties() as $property) {
-            if ($useProxy) {
-                $propertyVar = new Expr\ArrayDimFetch(new Expr\Variable('properties'), new Scalar\String_($property->getName()));
-            } else {
-                $propertyVar = new Expr\MethodCall($objectVariable, $this->getNaming()->getPrefixedMethodName('get', $property->getPhpName()));
-            }
+            $propertyVar = new Expr\MethodCall($objectVariable, $this->getNaming()->getPrefixedMethodName('get', $property->getPhpName()));
 
             list($normalizationStatements, $outputVar) = $property->getType()->createNormalizationStatement($context, $propertyVar);
 

@@ -4,7 +4,6 @@ namespace Jane\OpenApi;
 
 use Jane\JsonSchema\Generator\ChainGenerator;
 use Jane\JsonSchema\Generator\Context\Context;
-use Jane\JsonSchema\Generator\ProxyGenerator;
 use Jane\OpenApi\Generator\ModelGenerator;
 use Jane\JsonSchema\Generator\Naming;
 use Jane\OpenApi\Generator\NormalizerGenerator;
@@ -142,7 +141,6 @@ class JaneOpenApi extends ChainGenerator
         $naming = new Naming();
         $parser = (new ParserFactory())->create(ParserFactory::PREFER_PHP7);
         $modelGenerator = new ModelGenerator($naming, $parser);
-        $proxyGenerator = new ProxyGenerator($naming);
         $normGenerator = new NormalizerGenerator($naming, $options['reference'] ?? false, $options['use-cacheable-supports-method'] ?? false);
 
         $self = new self(
@@ -153,7 +151,6 @@ class JaneOpenApi extends ChainGenerator
         );
 
         $self->addGenerator($modelGenerator);
-        $self->addGenerator($proxyGenerator);
         $self->addGenerator($normGenerator);
 
         foreach ($generators as $generator) {
