@@ -104,7 +104,7 @@ trait DenormalizerGenerator
 
             $statements[] = new Stmt\If_($condition, [
                 'stmts' => array_merge($denormalizationStatements, [
-                    new Stmt\Expression(new Expr\MethodCall($objectVariable, $this->getNaming()->getPrefixedMethodName('set', $property->getPhpName()), [$outputVar]))
+                    new Stmt\Expression(new Expr\MethodCall($objectVariable, $this->getNaming()->getPrefixedMethodName('set', $property->getPhpName()), [$outputVar])),
                 ], $unset ? [new Stmt\Unset_([$propertyVar])] : []),
             ]);
         }

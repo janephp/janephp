@@ -13,7 +13,6 @@ use PhpParser\Node\Name;
 use PhpParser\Node\Param;
 use PhpParser\Node\Stmt;
 use PhpParser\Node\Expr;
-use PhpParser\Node\Scalar;
 
 trait NormalizerGenerator
 {
