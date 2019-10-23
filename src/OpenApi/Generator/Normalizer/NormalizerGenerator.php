@@ -59,7 +59,7 @@ trait NormalizerGenerator
      * We want stricly same class for OpenApi Normalizers since we can have inheritance and this could avoid
      * normalization to use child classes.
      */
-    protected function createSupportsNormalizationMethod(string $modelFqdn, string $proxyFqdn, bool $useProxy)
+    protected function createSupportsNormalizationMethod(string $modelFqdn)
     {
         $exprTestClassFunction = function ($class) {
             return new Expr\BinaryOp\Identical(
@@ -78,9 +78,7 @@ trait NormalizerGenerator
                 new Stmt\Return_(
                     new Expr\BinaryOp\BooleanAnd(
                         new Expr\FuncCall(new Name('is_object'), [new Expr\Variable('data')]),
-                        $useProxy ?
-                            new Expr\BinaryOp\BooleanOr($exprTestClassFunction($modelFqdn), $exprTestClassFunction($proxyFqdn)) :
-                            $exprTestClassFunction($modelFqdn)
+                        $exprTestClassFunction($modelFqdn)
                     )
                 ),
             ],
