@@ -37,7 +37,7 @@
     },
     "conflict": {
         "friendsofphp/php-cs-fixer": "<2.7.3|>=3.0",
-        "jane-php/open-api-runtime": "< 4.5"
+        "jane-php/open-api-runtime": "< 4.5.2"
     },
     "config": {
         "process-timeout": 1800,
