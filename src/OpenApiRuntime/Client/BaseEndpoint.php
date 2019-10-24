@@ -3,7 +3,6 @@
 namespace Jane\OpenApiRuntime\Client;
 
 use Http\Message\MultipartStream\MultipartStreamBuilder;
-use Http\Message\StreamFactory;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Serializer\SerializerInterface;
 
@@ -45,7 +44,7 @@ abstract class BaseEndpoint implements Endpoint
         ];
     }
 
-    protected function getMultipartBody(StreamFactory $streamFactory = null): array
+    protected function getMultipartBody($streamFactory = null): array
     {
         $bodyBuilder = new MultipartStreamBuilder($streamFactory);
         $formParameters = $this->getFormOptionsResolver()->resolve($this->formParameters);
