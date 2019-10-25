@@ -76,6 +76,6 @@
     ],
     "scripts": {
         "test": "php vendor/bin/phpunit",
-        "test-ci": "phpdbg -qrr -d memory_limit=-1 vendor/bin/phpunit --coverage-text --coverage-clover=build/logs/clover.xml --coverage-html=build/html"
+        "test-coverage": "phpdbg -qrr -d memory_limit=-1 vendor/bin/phpunit --coverage-text --coverage-clover=build/logs/clover.xml --coverage-html=build/html"
     }
 }
