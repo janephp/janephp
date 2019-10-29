@@ -47,7 +47,10 @@ class Property
     /** @var bool */
     private $readOnly;
 
-    public function __construct($object, string $name, string $reference, bool $nullable = false, Type $type = null, string $description = null, $default = null, bool $readOnly = false)
+    /** @var bool */
+    private $deprecated;
+
+    public function __construct($object, string $name, string $reference, bool $nullable = false, Type $type = null, string $description = null, $default = null, bool $readOnly = false, bool $deprecated = false)
     {
         $this->name = $name;
         $this->object = $object;
@@ -57,6 +60,7 @@ class Property
         $this->description = $description;
         $this->default = $default;
         $this->readOnly = $readOnly;
+        $this->deprecated = $deprecated;
     }
 
     public function setPhpName(string $name)
@@ -112,5 +116,10 @@ class Property
     public function isReadOnly(): bool
     {
         return $this->readOnly;
+    }
+
+    public function isDeprecated(): bool
+    {
+        return $this->deprecated;
     }
 }

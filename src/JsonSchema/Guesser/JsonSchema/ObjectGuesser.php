@@ -5,12 +5,12 @@ namespace Jane\JsonSchema\Guesser\JsonSchema;
 use Jane\JsonSchema\Generator\Naming;
 use Jane\JsonSchema\Guesser\ChainGuesserAwareInterface;
 use Jane\JsonSchema\Guesser\ChainGuesserAwareTrait;
+use Jane\JsonSchema\Guesser\ClassGuesserInterface;
 use Jane\JsonSchema\Guesser\Guess\ClassGuess;
 use Jane\JsonSchema\Guesser\Guess\ObjectType;
 use Jane\JsonSchema\Guesser\Guess\Property;
 use Jane\JsonSchema\Guesser\Guess\Type;
 use Jane\JsonSchema\Guesser\GuesserInterface;
-use Jane\JsonSchema\Guesser\ClassGuesserInterface;
 use Jane\JsonSchema\Guesser\GuesserResolverTrait;
 use Jane\JsonSchema\Guesser\PropertiesGuesserInterface;
 use Jane\JsonSchema\Guesser\TypeGuesserInterface;
@@ -97,7 +97,7 @@ class ObjectGuesser implements GuesserInterface, PropertiesGuesserInterface, Typ
 
             $nullable = $this->isPropertyNullable($propertyObj);
 
-            $properties[$key] = new Property($property, $key, $reference . '/properties/' . $key, $nullable, null, $propertyObj->getDescription(), $propertyObj->getDefault(), $propertyObj->getReadOnly());
+            $properties[$key] = new Property($property, $key, $reference . '/properties/' . $key, $nullable, null, $propertyObj->getDescription(), $propertyObj->getDefault(), $propertyObj->getReadOnly(), $propertyObj->getDeprecated());
         }
 
         return $properties;

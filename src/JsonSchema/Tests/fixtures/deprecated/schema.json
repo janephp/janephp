@@ -1,0 +1,12 @@
+{
+    "type": "object",
+    "properties": {
+        "email": {
+            "type": "string"
+        },
+        "foo": {
+            "type": "string",
+            "deprecated": true
+        }
+    }
+}

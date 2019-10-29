@@ -52,14 +52,29 @@ trait PropertyGenerator
             $docTypeHint .= '|null';
         }
 
-        return new Doc(sprintf(<<<EOD
+        $description = sprintf(<<<EOD
 /**
  * %s
  *
+
+EOD
+        , $property->getDescription());
+
+        if ($property->isDeprecated()) {
+            $description .= <<<EOD
+ * @deprecated
+ *
+
+EOD;
+        }
+
+        $description .= sprintf(<<<EOD
  * @var %s
  */
 EOD
-        , $property->getDescription(), $docTypeHint));
+        , $docTypeHint);
+
+        return new Doc($description);
     }
 
     private function getDefaultAsExpr($value): Stmt\Expression
