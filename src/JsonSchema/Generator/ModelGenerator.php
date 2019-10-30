@@ -102,7 +102,8 @@ class ModelGenerator implements GeneratorInterface
             $class->getName(),
             $properties,
             $methods,
-            \count($class->getExtensionsType()) > 0
+            \count($class->getExtensionsType()) > 0,
+            $class->isDeprecated()
         );
     }
 }

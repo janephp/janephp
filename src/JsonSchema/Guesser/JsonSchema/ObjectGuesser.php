@@ -157,6 +157,6 @@ class ObjectGuesser implements GuesserInterface, PropertiesGuesserInterface, Typ
 
     protected function createClassGuess($object, $reference, $name, $extensions): ClassGuess
     {
-        return new ClassGuess($object, $reference, $this->naming->getClassName($name), $extensions);
+        return new ClassGuess($object, $reference, $this->naming->getClassName($name), $extensions, $object->getDeprecated());
     }
 }

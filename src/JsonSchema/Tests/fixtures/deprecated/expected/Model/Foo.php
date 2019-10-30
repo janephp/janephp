@@ -2,7 +2,11 @@
 
 namespace Jane\JsonSchema\Tests\Expected\Model;
 
-class Test
+/**
+ *
+ * @deprecated
+ */
+class Foo
 {
     /**
      * 

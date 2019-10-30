@@ -10,17 +10,17 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class TestNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+class FooNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     public function supportsDenormalization($data, $type, $format = null)
     {
-        return $type === 'Jane\\JsonSchema\\Tests\\Expected\\Model\\Test';
+        return $type === 'Jane\\JsonSchema\\Tests\\Expected\\Model\\Foo';
     }
     public function supportsNormalization($data, $format = null)
     {
-        return $data instanceof \Jane\JsonSchema\Tests\Expected\Model\Test;
+        return $data instanceof \Jane\JsonSchema\Tests\Expected\Model\Foo;
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
@@ -33,7 +33,7 @@ class TestNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         if (isset($data->{'$recursiveRef'})) {
             return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
         }
-        $object = new \Jane\JsonSchema\Tests\Expected\Model\Test();
+        $object = new \Jane\JsonSchema\Tests\Expected\Model\Foo();
         if (property_exists($data, 'email')) {
             $object->setEmail($data->{'email'});
         }

@@ -1,12 +1,18 @@
 {
     "type": "object",
-    "properties": {
-        "email": {
-            "type": "string"
-        },
-        "foo": {
-            "type": "string",
-            "deprecated": true
+    "definitions": {
+        "Foo": {
+            "type": "object",
+            "deprecated": true,
+            "properties": {
+                "email": {
+                    "type": "string"
+                },
+                "foo": {
+                    "type": "string",
+                    "deprecated": true
+                }
+            }
         }
     }
 }
