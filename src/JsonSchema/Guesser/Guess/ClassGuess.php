@@ -28,12 +28,16 @@ class ClassGuess
 
     private $constraints = [];
 
-    public function __construct($object, string $reference, string $name, array $extensionsObject = [])
+    /** @var bool */
+    private $deprecated;
+
+    public function __construct($object, string $reference, string $name, array $extensionsObject = [], bool $deprecated = false)
     {
         $this->name = $name;
         $this->object = $object;
         $this->reference = $reference;
         $this->extensionsObject = $extensionsObject;
+        $this->deprecated = $deprecated;
     }
 
     public function getObject()
@@ -93,5 +97,10 @@ class ClassGuess
     public function setConstraints($constraints): void
     {
         $this->constraints = $constraints;
+    }
+
+    public function isDeprecated(): bool
+    {
+        return $this->deprecated;
     }
 }

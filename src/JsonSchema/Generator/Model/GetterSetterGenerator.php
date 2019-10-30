@@ -7,9 +7,9 @@ use Jane\JsonSchema\Guesser\Guess\MultipleType;
 use Jane\JsonSchema\Guesser\Guess\Property;
 use Jane\JsonSchema\Guesser\Guess\Type;
 use PhpParser\Comment\Doc;
+use PhpParser\Node\Expr;
 use PhpParser\Node\Param;
 use PhpParser\Node\Stmt;
-use PhpParser\Node\Expr;
 
 trait GetterSetterGenerator
 {
@@ -90,14 +90,29 @@ trait GetterSetterGenerator
 
     protected function createGetterDoc(Property $property, string $namespace, bool $required): Doc
     {
-        return new Doc(sprintf(<<<EOD
+        $description = sprintf(<<<EOD
 /**
  * %s
  *
+
+EOD
+            , $property->getDescription());
+
+        if ($property->isDeprecated()) {
+            $description .= <<<EOD
+ * @deprecated
+ *
+
+EOD;
+        }
+
+        $description .= sprintf(<<<EOD
  * @return %s
  */
 EOD
-        , $property->getDescription(), $this->getDocType($property, $namespace, $required)));
+            , $this->getDocType($property, $namespace, $required));
+
+        return new Doc($description);
     }
 
     protected function createSetterDoc(Property $property, string $namespace, bool $required, bool $fluent): Doc
@@ -110,6 +125,14 @@ EOD
 
 EOD
             , $property->getDescription(), $this->getDocType($property, $namespace, $required), '$' . $property->getPhpName());
+
+        if ($property->isDeprecated()) {
+            $description .= <<<EOD
+ *
+ * @deprecated
+
+EOD;
+        }
 
         if ($fluent) {
             $description .= <<<EOD
