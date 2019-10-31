@@ -29,7 +29,7 @@ class SchemaGuesser extends ObjectGuesser
      */
     protected function createClassGuess($object, $reference, $name, $extensions): BaseClassGuess
     {
-        $classGuess = new ClassGuess($object, $reference, $this->naming->getClassName($name), $extensions);
+        $classGuess = new ClassGuess($object, $reference, $this->naming->getClassName($name), $extensions, $object->getDeprecated() ?? false);
 
         if ($object->getDiscriminator() instanceof Discriminator &&
             \is_array($object->getEnum()) && \count($object->getEnum()) > 0) {
