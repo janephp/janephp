@@ -1,0 +1,15 @@
+openapi: 3.0.0
+info:
+  version: ''
+  title: ''
+components:
+  schemas:
+    Foo:
+      type: object
+      deprecated: true
+      properties:
+        email:
+          type: string
+        bar:
+          type: string
+          deprecated: true

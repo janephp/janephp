@@ -36,6 +36,7 @@ class ModelGenerator extends BaseModelGenerator
             $properties,
             $methods,
             \count($class->getExtensionsType()) > 0,
+            $class->isDeprecated(),
             $extends
         );
 

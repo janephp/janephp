@@ -6,6 +6,7 @@ use Jane\JsonSchema\Generator\Model\ClassGenerator as BaseClassGenerator;
 use PhpParser\Node;
 use PhpParser\Node\Name;
 use PhpParser\Node\Stmt;
+use PhpParser\Comment\Doc;
 
 trait ClassGenerator
 {
@@ -24,7 +25,7 @@ trait ClassGenerator
      *
      * @return Stmt\Class_
      */
-    protected function createModel(string $name, $properties, $methods, bool $hasExtensions = false, $extends = null): Stmt\Class_
+    protected function createModel(string $name, $properties, $methods, bool $hasExtensions = false, bool $deprecated = false, $extends = null): Stmt\Class_
     {
         $classExtends = null;
         if (null !== $extends) {
@@ -33,12 +34,24 @@ trait ClassGenerator
             $classExtends = new Name('\ArrayObject');
         }
 
+        $attributes = [];
+        if ($deprecated) {
+            $attributes['comments'] = [new Doc(<<<EOD
+/**
+ *
+ * @deprecated
+ */
+EOD
+            )];
+        }
+
         return new Stmt\Class_(
             new Name($this->getNaming()->getClassName($name)),
             [
                 'stmts' => array_merge($properties, $methods),
                 'extends' => $classExtends,
-            ]
+            ],
+            $attributes
         );
     }
 }
