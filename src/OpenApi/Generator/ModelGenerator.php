@@ -18,9 +18,7 @@ class ModelGenerator extends BaseModelGenerator
     {
         $methods = [];
         $methods[] = $this->createGetter($property, $namespace, $required);
-        if (!$property->isReadOnly()) {
-            $methods[] = $this->createSetter($property, $namespace, $required, $classGuess instanceof MultipleClass ? false : true);
-        }
+        $methods[] = $this->createSetter($property, $namespace, $required, $classGuess instanceof MultipleClass ? false : true);
 
         return $methods;
     }
