@@ -5,22 +5,22 @@ cache_url: "/cache/gitsplit"
 splits:
     -
         prefix: "src/AutoMapper"
-        target: "https://${GH_TOKEN}@github.com/janephp/automapper.git"
+        target: "https://janephp:${GH_TOKEN}@github.com/janephp/automapper.git"
     -
         prefix: "src/JsonSchema"
-        target: "https://${GH_TOKEN}@github.com/janephp/json-schema.git"
+        target: "https://janephp:${GH_TOKEN}@github.com/janephp/json-schema.git"
     -
         prefix: "src/JsonSchemaRuntime"
-        target: "https://${GH_TOKEN}@github.com/janephp/json-schema-runtime.git"
+        target: "https://janephp:${GH_TOKEN}@github.com/janephp/json-schema-runtime.git"
     -
         prefix: "src/OpenApi"
-        target: "https://${GH_TOKEN}@github.com/janephp/open-api.git"
+        target: "https://janephp:${GH_TOKEN}@github.com/janephp/open-api.git"
     -
         prefix: "src/OpenApiRuntime"
-        target: "https://${GH_TOKEN}@github.com/janephp/open-api-runtime.git"
+        target: "https://janephp:${GH_TOKEN}@github.com/janephp/open-api-runtime.git"
     -
         prefix: "documentation"
-        target: "https://${GH_TOKEN}@github.com/janephp/documentation.git"
+        target: "https://janephp:${GH_TOKEN}@github.com/janephp/documentation.git"
 
 # List of references to split (defined as regexp)
 origins:
