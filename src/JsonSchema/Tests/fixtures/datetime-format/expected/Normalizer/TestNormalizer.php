@@ -65,35 +65,22 @@ class TestNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         if (null !== $object->getDate()) {
             $data->{'date'} = $object->getDate()->format("l, d-M-y H:i:s T");
         }
-        else {
-            $data->{'date'} = null;
-        }
-        if (null !== $object->getDateOrNull()) {
+        $value = $object->getDateOrNull();
+        if (is_object($object->getDateOrNull())) {
+            $value = $object->getDateOrNull()->format("l, d-M-y H:i:s T");
+        } elseif (is_null($object->getDateOrNull())) {
             $value = $object->getDateOrNull();
-            if (is_object($object->getDateOrNull())) {
-                $value = $object->getDateOrNull()->format("l, d-M-y H:i:s T");
-            } elseif (is_null($object->getDateOrNull())) {
-                $value = $object->getDateOrNull();
-            }
-            $data->{'dateOrNull'} = $value;
         }
-        else {
-            $data->{'dateOrNull'} = null;
-        }
-        if (null !== $object->getDateOrNullOrInt()) {
+        $data->{'dateOrNull'} = $value;
+        $value_1 = $object->getDateOrNullOrInt();
+        if (is_object($object->getDateOrNullOrInt())) {
+            $value_1 = $object->getDateOrNullOrInt()->format("l, d-M-y H:i:s T");
+        } elseif (is_null($object->getDateOrNullOrInt())) {
             $value_1 = $object->getDateOrNullOrInt();
-            if (is_object($object->getDateOrNullOrInt())) {
-                $value_1 = $object->getDateOrNullOrInt()->format("l, d-M-y H:i:s T");
-            } elseif (is_null($object->getDateOrNullOrInt())) {
-                $value_1 = $object->getDateOrNullOrInt();
-            } elseif (is_int($object->getDateOrNullOrInt())) {
-                $value_1 = $object->getDateOrNullOrInt();
-            }
-            $data->{'dateOrNullOrInt'} = $value_1;
+        } elseif (is_int($object->getDateOrNullOrInt())) {
+            $value_1 = $object->getDateOrNullOrInt();
         }
-        else {
-            $data->{'dateOrNullOrInt'} = null;
-        }
+        $data->{'dateOrNullOrInt'} = $value_1;
         return $data;
     }
 }

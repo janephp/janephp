@@ -43,7 +43,9 @@ class ModelNormalizer implements DenormalizerInterface, NormalizerInterface, Den
     {
         $data = new \stdClass();
         $data->{'foo'} = $object->getFoo();
-        $data->{'bar'} = $object->getBar();
+        if (null !== $object->getBar()) {
+            $data->{'bar'} = $object->getBar();
+        }
         if (null !== $object->getDate()) {
             $data->{'date'} = $object->getDate()->format("Y-m-d\TH:i:sP");
         }

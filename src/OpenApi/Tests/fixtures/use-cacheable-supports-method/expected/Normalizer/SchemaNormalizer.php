@@ -79,37 +79,37 @@ class SchemaNormalizer implements DenormalizerInterface, NormalizerInterface, De
     public function normalize($object, $format = null, array $context = [])
     {
         $data = new \stdClass();
-        $data->{'stringProperty'} = $object->getStringProperty();
+        if (null !== $object->getStringProperty()) {
+            $data->{'stringProperty'} = $object->getStringProperty();
+        }
         if (null !== $object->getDateProperty()) {
             $data->{'dateProperty'} = $object->getDateProperty()->format("Y-m-d\TH:i:sP");
-        } else {
-            $data->{'dateProperty'} = null;
         }
-        $data->{'integerProperty'} = $object->getIntegerProperty();
-        $data->{'floatProperty'} = $object->getFloatProperty();
-        $values = [];
-        foreach ($object->getArrayProperty() as $value) {
-            $values[] = $value;
+        if (null !== $object->getIntegerProperty()) {
+            $data->{'integerProperty'} = $object->getIntegerProperty();
         }
-        $data->{'arrayProperty'} = $values;
+        if (null !== $object->getFloatProperty()) {
+            $data->{'floatProperty'} = $object->getFloatProperty();
+        }
+        if (null !== $object->getArrayProperty()) {
+            $values = [];
+            foreach ($object->getArrayProperty() as $value) {
+                $values[] = $value;
+            }
+            $data->{'arrayProperty'} = $values;
+        }
         if (null !== $object->getMapProperty()) {
             $values_1 = new \stdClass();
             foreach ($object->getMapProperty() as $key => $value_1) {
                 $values_1->{$key} = $value_1;
             }
             $data->{'mapProperty'} = $values_1;
-        } else {
-            $data->{'mapProperty'} = null;
         }
         if (null !== $object->getObjectProperty()) {
             $data->{'objectProperty'} = $this->normalizer->normalize($object->getObjectProperty(), 'json', $context);
-        } else {
-            $data->{'objectProperty'} = null;
         }
         if (null !== $object->getObjectRefProperty()) {
             $data->{'objectRefProperty'} = $this->normalizer->normalize($object->getObjectRefProperty(), 'json', $context);
-        } else {
-            $data->{'objectRefProperty'} = null;
         }
 
         return $data;

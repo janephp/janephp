@@ -39,8 +39,12 @@ class ErrorNormalizer implements DenormalizerInterface, NormalizerInterface, Den
     public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
-        $data->{'code'} = $object->getCode();
-        $data->{'message'} = $object->getMessage();
+        if (null !== $object->getCode()) {
+            $data->{'code'} = $object->getCode();
+        }
+        if (null !== $object->getMessage()) {
+            $data->{'message'} = $object->getMessage();
+        }
         return $data;
     }
 }

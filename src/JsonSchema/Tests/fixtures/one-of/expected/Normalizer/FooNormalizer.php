@@ -83,9 +83,6 @@ class FooNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
             }
             $data->{'foo'} = $value;
         }
-        else {
-            $data->{'foo'} = null;
-        }
         return $data;
     }
 }

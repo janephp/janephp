@@ -50,7 +50,9 @@ class SchemaObjectPropertyNormalizer implements DenormalizerInterface, Normalize
     public function normalize($object, $format = null, array $context = [])
     {
         $data = new \stdClass();
-        $data->{'stringProperty'} = $object->getStringProperty();
+        if (null !== $object->getStringProperty()) {
+            $data->{'stringProperty'} = $object->getStringProperty();
+        }
 
         return $data;
     }

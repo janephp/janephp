@@ -39,9 +39,6 @@ class TestNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         if (null !== $object->getFoo()) {
             $data->{'foo'} = $this->normalizer->normalize($object->getFoo(), 'json', $context);
         }
-        else {
-            $data->{'foo'} = null;
-        }
         return $data;
     }
 }
