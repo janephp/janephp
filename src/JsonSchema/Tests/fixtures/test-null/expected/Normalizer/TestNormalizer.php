@@ -52,13 +52,18 @@ class TestNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
     {
         $data = new \stdClass();
         $data->{'onlyNull'} = $object->getOnlyNull();
-        $value = $object->getNullOrString();
-        if (is_string($object->getNullOrString())) {
+        if (null !== $object->getNullOrString()) {
             $value = $object->getNullOrString();
-        } elseif (is_null($object->getNullOrString())) {
-            $value = $object->getNullOrString();
+            if (is_string($object->getNullOrString())) {
+                $value = $object->getNullOrString();
+            } elseif (is_null($object->getNullOrString())) {
+                $value = $object->getNullOrString();
+            }
+            $data->{'nullOrString'} = $value;
         }
-        $data->{'nullOrString'} = $value;
+        else {
+            $data->{'nullOrString'} = null;
+        }
         return $data;
     }
 }

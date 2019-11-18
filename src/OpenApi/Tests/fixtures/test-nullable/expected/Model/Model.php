@@ -19,6 +19,12 @@ class Model
     /**
      * 
      *
+     * @var \DateTime|null
+     */
+    protected $date;
+    /**
+     * 
+     *
      * @return string|null
      */
     public function getFoo() : ?string
@@ -56,6 +62,27 @@ class Model
     public function setBar(string $bar) : self
     {
         $this->bar = $bar;
+        return $this;
+    }
+    /**
+     * 
+     *
+     * @return \DateTime|null
+     */
+    public function getDate() : ?\DateTime
+    {
+        return $this->date;
+    }
+    /**
+     * 
+     *
+     * @param \DateTime|null $date
+     *
+     * @return self
+     */
+    public function setDate(?\DateTime $date) : self
+    {
+        $this->date = $date;
         return $this;
     }
 }

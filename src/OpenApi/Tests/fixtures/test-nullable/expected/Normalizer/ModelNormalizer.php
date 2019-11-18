@@ -34,6 +34,9 @@ class ModelNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         if (property_exists($data, 'bar')) {
             $object->setBar($data->{'bar'});
         }
+        if (property_exists($data, 'date')) {
+            $object->setDate(\DateTime::createFromFormat("Y-m-d\TH:i:sP", $data->{'date'}));
+        }
         return $object;
     }
     public function normalize($object, $format = null, array $context = array())
@@ -41,6 +44,12 @@ class ModelNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         $data = new \stdClass();
         $data->{'foo'} = $object->getFoo();
         $data->{'bar'} = $object->getBar();
+        if (null !== $object->getDate()) {
+            $data->{'date'} = $object->getDate()->format("Y-m-d\TH:i:sP");
+        }
+        else {
+            $data->{'date'} = null;
+        }
         return $data;
     }
 }

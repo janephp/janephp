@@ -16,6 +16,11 @@
                     },
                     "bar": {
                         "type": "string"
+                    },
+                    "date": {
+                        "nullable": true,
+                        "type": "string",
+                        "format": "date-time"
                     }
                 }
             }

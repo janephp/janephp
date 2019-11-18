@@ -61,26 +61,31 @@ class FooNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
     public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
-        $value = $object->getFoo();
-        if (is_string($object->getFoo())) {
+        if (null !== $object->getFoo()) {
             $value = $object->getFoo();
-        } elseif (!is_null($object->getFoo())) {
-            $values = new \stdClass();
-            foreach ($object->getFoo() as $key => $value_1) {
-                if (preg_match('/^[a-zA-Z0-9._-]+$/', $key) && !is_null($value_1)) {
-                    $value_2 = $value_1;
-                    if (is_object($value_1)) {
+            if (is_string($object->getFoo())) {
+                $value = $object->getFoo();
+            } elseif (!is_null($object->getFoo())) {
+                $values = new \stdClass();
+                foreach ($object->getFoo() as $key => $value_1) {
+                    if (preg_match('/^[a-zA-Z0-9._-]+$/', $key) && !is_null($value_1)) {
                         $value_2 = $value_1;
-                    } elseif (is_null($value_1)) {
-                        $value_2 = $value_1;
+                        if (is_object($value_1)) {
+                            $value_2 = $value_1;
+                        } elseif (is_null($value_1)) {
+                            $value_2 = $value_1;
+                        }
+                        $values->{$key} = $value_2;
+                        continue;
                     }
-                    $values->{$key} = $value_2;
-                    continue;
                 }
+                $value = $values;
             }
-            $value = $values;
+            $data->{'foo'} = $value;
         }
-        $data->{'foo'} = $value;
+        else {
+            $data->{'foo'} = null;
+        }
         return $data;
     }
 }
