@@ -4,6 +4,20 @@ namespace Jane\OpenApi\Tests\Expected;
 
 class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
 {
+    /**
+     * 
+     *
+     * @param array $queryParameters {
+     *     @var int $testNullableInteger 
+     * }
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\Psr\Http\Message\ResponseInterface
+     */
+    public function testNullableQueryParameters(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \Jane\OpenApi\Tests\Expected\Endpoint\TestNullableQueryParameters($queryParameters), $fetch);
+    }
     public static function create($httpClient = null)
     {
         if (null === $httpClient) {
