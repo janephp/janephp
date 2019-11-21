@@ -14,6 +14,7 @@ class GuesserFactory
         $dateFormat = isset($options['date-format']) ? $options['date-format'] : \DateTime::RFC3339;
 
         $chainGuesser = new ChainGuesser();
+        $chainGuesser->addGuesser(new SecurityGuesser());
         $chainGuesser->addGuesser(new DateTimeGuesser($dateFormat));
         $chainGuesser->addGuesser(new ReferenceGuesser($serializer));
         $chainGuesser->addGuesser(new OpenApiGuesser());

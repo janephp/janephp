@@ -7,6 +7,7 @@ use Jane\JsonSchema\Guesser\ChainGuesserAwareTrait;
 use Jane\JsonSchema\Guesser\ClassGuesserInterface;
 use Jane\JsonSchema\Guesser\GuesserInterface;
 use Jane\JsonSchema\Registry;
+use Jane\OpenApi\JsonSchema\Model\Components;
 use Jane\OpenApi\JsonSchema\Model\Operation;
 use Jane\OpenApi\JsonSchema\Model\Parameter;
 use Jane\OpenApi\JsonSchema\Model\PathItem;
@@ -34,15 +35,20 @@ class OpenApiGuesser implements GuesserInterface, ClassGuesserInterface, ChainGu
      */
     public function guessClass($object, $name, $reference, Registry $registry)
     {
-        if ($object->getComponents() && $object->getComponents()->getSchemas()) {
+        if ($object->getComponents() instanceof Components && is_iterable($object->getComponents()->getSchemas())) {
             foreach ($object->getComponents()->getSchemas() as $key => $definition) {
                 $this->chainGuesser->guessClass($definition, $key, $reference . '/components/schemas/' . $key, $registry);
             }
         }
+        if ($object->getComponents() instanceof Components && is_iterable($object->getComponents()->getSecuritySchemes())) {
+            foreach ($object->getComponents()->getSecuritySchemes() as $key => $definition) {
+                $this->chainGuesser->guessClass($definition, $key, $reference . '/components/securitySchemes/' . $key, $registry);
+            }
+        }
 
-        if ($object->getComponents() && $object->getComponents()->getResponses()) {
+        if ($object->getComponents() instanceof Components && is_iterable($object->getComponents()->getResponses())) {
             foreach ($object->getComponents()->getResponses() as $responseName => $response) {
-                if ($response->getContent()) {
+                if (is_iterable($response->getContent())) {
                     foreach ($response->getContent() as $contentType => $content) {
                         $this->chainGuesser->guessClass($content->getSchema(), 'Response' . ucfirst($responseName), $reference . '/components/responses/' . $responseName . '/content/' . $contentType . '/schema', $registry);
                     }
@@ -50,7 +56,7 @@ class OpenApiGuesser implements GuesserInterface, ClassGuesserInterface, ChainGu
             }
         }
 
-        if ($object->getPaths()) {
+        if (is_iterable($object->getPaths())) {
             foreach ($object->getPaths() as $pathName => $path) {
                 if ($path instanceof PathItem) {
                     $this->getClassFromOperation($pathName . 'Delete', $path->getDelete(), $reference . '/' . $pathName . '/delete', $registry);
@@ -61,7 +67,7 @@ class OpenApiGuesser implements GuesserInterface, ClassGuesserInterface, ChainGu
                     $this->getClassFromOperation($pathName . 'Post', $path->getPost(), $reference . '/' . $pathName . '/post', $registry);
                     $this->getClassFromOperation($pathName . 'Put', $path->getPut(), $reference . '/' . $pathName . '/put', $registry);
 
-                    if ($path->getParameters()) {
+                    if (is_iterable($path->getParameters())) {
                         foreach ($path->getParameters() as $key => $parameter) {
                             if ($parameter instanceof Parameter && self::IN_BODY === $parameter->getIn()) {
                                 $this->chainGuesser->guessClass($parameter->getSchema(), $pathName . 'Body' . $key, $reference . '/' . $pathName . '/parameters/' . $key, $registry);
@@ -72,7 +78,7 @@ class OpenApiGuesser implements GuesserInterface, ClassGuesserInterface, ChainGu
             }
         }
 
-        if ($object->getComponents() && $object->getComponents()->getParameters()) {
+        if ($object->getComponents() instanceof Components && is_iterable($object->getComponents()->getParameters())) {
             foreach ($object->getComponents()->getParameters() as $parameterName => $parameter) {
                 if ($parameter instanceof Parameter && self::IN_BODY === $parameter->getIn()) {
                     $this->chainGuesser->guessClass($parameter->getSchema(), $parameterName, $reference . '/parameters/' . $parameterName, $registry);
