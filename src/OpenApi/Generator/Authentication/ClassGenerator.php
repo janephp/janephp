@@ -2,7 +2,6 @@
 
 namespace Jane\OpenApi\Generator\Authentication;
 
-use Jane\JsonSchema\Generator\Naming;
 use Jane\OpenApiRuntime\Client\Authentication;
 use PhpParser\Node\Stmt;
 use PhpParser\Node\Name;

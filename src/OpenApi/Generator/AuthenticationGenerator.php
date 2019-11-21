@@ -8,6 +8,8 @@ use Jane\JsonSchema\Generator\GeneratorInterface;
 use Jane\JsonSchema\Generator\Naming;
 use Jane\JsonSchema\Schema as BaseSchema;
 use Jane\OpenApi\Generator\Authentication\ClassGenerator;
+use Jane\OpenApi\Generator\Authentication\ConstructGenerator;
+use Jane\OpenApi\Generator\Authentication\GetPluginGenerator;
 use Jane\OpenApi\Schema;
 use PhpParser\Node\Name;
 use PhpParser\Node\Stmt;
@@ -15,6 +17,8 @@ use PhpParser\Node\Stmt;
 class AuthenticationGenerator implements GeneratorInterface
 {
     use ClassGenerator;
+    use ConstructGenerator;
+    use GetPluginGenerator;
 
     protected const REFERENCE = 'Authentication';
     protected const FILE_TYPE_AUTH = 'auth';
@@ -43,7 +47,12 @@ class AuthenticationGenerator implements GeneratorInterface
             foreach ($securitySchemes as $securityScheme) {
                 $className = $this->getNaming()->getAuthName($securityScheme->getName());
 
-                $authentication = $this->createAuthentication($className, []);
+                $methods = [
+                    $this->createConstruct(),
+                    $this->createGetPlugin(),
+                ];
+
+                $authentication = $this->createAuthentication($className, $methods);
                 $namespace = new Stmt\Namespace_(new Name($namespace), [$authentication]);
 
                 $schema->addFile(new File(sprintf('%s/%s/%s.php', $schema->getDirectory(), self::REFERENCE, $className), $namespace, self::FILE_TYPE_AUTH));
