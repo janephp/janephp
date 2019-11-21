@@ -62,8 +62,8 @@ class NonBodyParameterGenerator extends ParameterGenerator
                     $types[] = new Expr\ArrayItem(new Scalar\String_($typeString));
                 }
 
-                if($schema->getNullable()) {
-                   $types[] = new Expr\ArrayItem(new Scalar\String_('null'));
+                if ($schema->getNullable()) {
+                    $types[] = new Expr\ArrayItem(new Scalar\String_('null'));
                 }
 
                 $allowedTypes[] = new Stmt\Expression(new Expr\MethodCall($optionsResolverVariable, 'setAllowedTypes', [
