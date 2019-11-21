@@ -61,6 +61,10 @@ class JaneOpenApiResourceTest extends TestCase
         $data = [];
 
         foreach ($finder as $directory) {
+            if ('authentification' !== $directory->getFilename()) {
+                continue;
+            }
+
             $data[] = [$directory->getFilename(), $directory];
         }
 
