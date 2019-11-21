@@ -36,7 +36,6 @@ class GeneratorFactory
 
         $psr7EndpointGenerator = new Psr7EndpointGenerator($operationNaming, $nonBodyParameter, $serializer, $exceptionGenerator, $requestBodyGenerator);
         $psr7OperationGenerator = new Psr7OperationGenerator($psr7EndpointGenerator);
-        $clientAsyncGenerator = null;
 
         $generators = [
             $options['client'] === JaneOpenApi::CLIENT_HTTPLUG

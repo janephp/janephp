@@ -10,6 +10,7 @@ use Jane\OpenApi\JsonSchema\Model\APIKeySecurityScheme;
 use Jane\OpenApi\JsonSchema\Model\HTTPSecurityScheme;
 use Jane\OpenApi\JsonSchema\Model\OAuth2SecurityScheme;
 use Jane\OpenApi\JsonSchema\Model\OpenIdConnectSecurityScheme;
+use Jane\OpenApi\Schema;
 
 class SecurityGuesser implements GuesserInterface, ClassGuesserInterface
 {
@@ -28,6 +29,12 @@ class SecurityGuesser implements GuesserInterface, ClassGuesserInterface
      */
     public function guessClass($object, $name, $reference, Registry $registry)
     {
-        return new SecuritySchemeGuess($name, $object->getType(), $object);
+        $securitySchemeGuess = new SecuritySchemeGuess($name, $object->getType(), $object);
+
+        /** @var Schema $schema */
+        $schema = $registry->getSchema($reference);
+        $schema->addSecurityScheme($reference, $securitySchemeGuess);
+
+        return $securitySchemeGuess;
     }
 }

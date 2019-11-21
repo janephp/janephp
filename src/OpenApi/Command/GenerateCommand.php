@@ -4,8 +4,8 @@ namespace Jane\OpenApi\Command;
 
 use Jane\JsonSchema\Printer;
 use Jane\OpenApi\JaneOpenApi;
-use Jane\JsonSchema\Registry;
-use Jane\JsonSchema\Schema;
+use Jane\OpenApi\Registry;
+use Jane\OpenApi\Schema;
 use PhpParser\PrettyPrinter\Standard;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
