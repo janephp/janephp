@@ -143,7 +143,7 @@ class JaneOpenApi extends ChainGenerator
         $parser = (new ParserFactory())->create(ParserFactory::PREFER_PHP7);
         $modelGenerator = new ModelGenerator($naming, $parser);
         $normGenerator = new NormalizerGenerator($naming, $options['reference'] ?? false, $options['use-cacheable-supports-method'] ?? false);
-        $authGenerator = new AuthenticationGenerator();
+        $authGenerator = new AuthenticationGenerator($naming);
 
         $self = new self(
             $schemaParser,

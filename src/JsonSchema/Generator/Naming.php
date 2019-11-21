@@ -54,6 +54,11 @@ class Naming
         return $name;
     }
 
+    public function getAuthName(string $name): string
+    {
+        return $this->getClassName(sprintf('%sAuthentication', $name));
+    }
+
     protected function cleaning(string $name, bool $class = false): string
     {
         if (preg_match('/\$/', $name)) {

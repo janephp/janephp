@@ -35,7 +35,7 @@
             }
         },
         "securitySchemes": {
-            "BasicAuth": {
+            "Basic": {
                 "type": "http",
                 "scheme": "basic"
             }
