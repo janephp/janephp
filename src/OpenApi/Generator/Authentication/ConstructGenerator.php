@@ -31,7 +31,9 @@ trait ConstructGenerator
                         $needs['password'] = new Name('string');
                         break;
                 }
-
+                break;
+            case SecuritySchemeGuess::TYPE_API_KEY:
+                $needs['apiKey'] = new Name('string');
                 break;
         }
 
