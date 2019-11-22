@@ -61,10 +61,6 @@ class JaneOpenApiResourceTest extends TestCase
         $data = [];
 
         foreach ($finder as $directory) {
-            if (!\in_array($directory->getFilename(), ['authentication-http'])) {
-                continue;
-            }
-
             $data[] = [$directory->getFilename(), $directory];
         }
 
