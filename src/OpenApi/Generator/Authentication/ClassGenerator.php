@@ -8,10 +8,10 @@ use PhpParser\Node\Name;
 
 trait ClassGenerator
 {
-    protected function createAuthentication(string $name, array $methods): Stmt\Class_
+    protected function createAuthentication(string $name, array $properties, array $methods): Stmt\Class_
     {
         return new Stmt\Class_($name, [
-            'stmts' => $methods,
+            'stmts' => array_merge($properties, $methods),
             'implements' => [new Name\FullyQualified(Authentication::class)],
         ]);
     }

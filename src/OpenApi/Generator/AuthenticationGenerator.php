@@ -47,12 +47,14 @@ class AuthenticationGenerator implements GeneratorInterface
             foreach ($securitySchemes as $securityScheme) {
                 $className = $this->getNaming()->getAuthName($securityScheme->getName());
 
+                [$properties, $constructMethod] = $this->createConstruct($securityScheme);
+
                 $methods = [
-                    $this->createConstruct(),
-                    $this->createGetPlugin(),
+                    $constructMethod,
+                    $this->createGetPlugin($securityScheme),
                 ];
 
-                $authentication = $this->createAuthentication($className, $methods);
+                $authentication = $this->createAuthentication($className, $properties, $methods);
                 $namespace = new Stmt\Namespace_(new Name($namespace), [$authentication]);
 
                 $schema->addFile(new File(sprintf('%s/%s/%s.php', $schema->getDirectory(), self::REFERENCE, $className), $namespace, self::FILE_TYPE_AUTH));
