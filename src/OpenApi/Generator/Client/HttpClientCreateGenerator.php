@@ -32,7 +32,10 @@ trait HttpClientCreateGenerator
             )
         ));
 
-        if (!$this->needsServerPlugins($openApi)) {
+        $needsServerPlugins = $this->needsServerPlugins($openApi);
+        $needsAuthenticationPlugins = $this->needsAuthenticationPlugins($context->getRegistry());
+
+        if (!$needsServerPlugins && !$needsAuthenticationPlugins) {
             return [$httpClientAssign];
         }
 
@@ -44,7 +47,12 @@ trait HttpClientCreateGenerator
             )),
         ];
 
-        $statements = array_merge($statements, $this->getServerPluginsStatements($openApi));
+        if ($needsServerPlugins) {
+            $statements = array_merge($statements, $this->getServerPluginsStatements($openApi));
+        }
+        if ($needsAuthenticationPlugins) {
+            $statements = array_merge($statements, $this->getAuthenticationPluginsStatements($context->getRegistry()));
+        }
 
         $statements[] = new Stmt\Expression(new Expr\Assign(
             new Expr\Variable('httpClient'),
