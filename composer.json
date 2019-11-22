@@ -43,7 +43,7 @@
         "localheinz/composer-normalize": "~0.8.0",
         "phpbench/phpbench": "@dev",
         "phpunit/phpunit": "^6.0",
-        "symfony/framework-bundle": "^4.2",
+        "symfony/framework-bundle": "<4.4",
         "symfony/phpunit-bridge": "^4.1"
     },
     "suggest": {
