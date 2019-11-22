@@ -23,6 +23,11 @@
         "version": "",
         "title": ""
     },
+    "servers": [
+        {
+            "url": "https://www.foo-host.com/base-path"
+        }
+    ],
     "components": {
         "schemas": {
             "Foo": {

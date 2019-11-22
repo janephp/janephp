@@ -6,6 +6,7 @@ use Jane\JsonSchema\Generator\Context\Context;
 use Jane\JsonSchema\Generator\File;
 use Jane\JsonSchema\Generator\GeneratorInterface;
 use Jane\JsonSchema\Schema;
+use Jane\OpenApi\Generator\Client\HttpClientCreateGenerator;
 use Jane\OpenApi\JsonSchema\Model\OpenApi;
 use Jane\OpenApi\Naming\OperationNamingInterface;
 use Jane\OpenApi\Operation\OperationManager;
@@ -14,6 +15,8 @@ use PhpParser\Node\Stmt;
 
 abstract class ClientGenerator implements GeneratorInterface
 {
+    use HttpClientCreateGenerator;
+
     public const FILE_TYPE_CLIENT = 'client';
     public const FILE_TYPE_RESOURCE = 'resource';
     public const FILE_TYPE_RESOURCE_TRAIT = 'resource_trait';
@@ -47,7 +50,7 @@ abstract class ClientGenerator implements GeneratorInterface
         $client->stmts = array_merge(
             $statements,
             [
-                $this->getFactoryMethod($context),
+                $this->getFactoryMethod($schema, $context),
             ]
         );
 
@@ -66,5 +69,5 @@ abstract class ClientGenerator implements GeneratorInterface
 
     abstract protected function createResourceClass(string $name): Stmt\Class_;
 
-    abstract protected function getFactoryMethod(Context $context): Stmt;
+    abstract protected function getFactoryMethod(Schema $schema, Context $context): Stmt;
 }
