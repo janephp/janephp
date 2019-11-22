@@ -40,9 +40,9 @@
             }
         },
         "securitySchemes": {
-            "Basic": {
+            "Bearer": {
                 "type": "http",
-                "scheme": "Bearer"
+                "scheme": "bearer"
             }
         }
     }
