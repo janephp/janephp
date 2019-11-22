@@ -4,7 +4,31 @@
         "version": "",
         "title": ""
     },
-    "paths": {},
+    "paths": {
+        "/test-nullable-query-parameter": {
+            "get": {
+                "operationId": "Test Nullable Query Parameters",
+                "parameters": [
+                    {
+                        "name": "testNullableInteger",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer",
+                            "nullable": true
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "no error"
+                    }
+                },
+                "tags": [
+                    "Test"
+                ]
+            }
+        }
+    },
     "components": {
         "schemas": {
             "Model": {
