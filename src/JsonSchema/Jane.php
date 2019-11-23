@@ -109,7 +109,7 @@ class Jane extends ChainGenerator
 
     public static function buildSerializer()
     {
-        $encoders = [new JsonEncoder(new JsonEncode(JSON_UNESCAPED_SLASHES), new JsonDecode(false))];
+        $encoders = [new JsonEncoder(new JsonEncode([JsonEncode::OPTIONS => JSON_UNESCAPED_SLASHES]), new JsonDecode())];
         $normalizers = NormalizerFactory::create();
 
         return new Serializer($normalizers, $encoders);
