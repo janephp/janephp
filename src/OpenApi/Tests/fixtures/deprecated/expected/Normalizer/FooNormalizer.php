@@ -39,8 +39,12 @@ class FooNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
     public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
-        $data->{'email'} = $object->getEmail();
-        $data->{'bar'} = $object->getBar();
+        if (null !== $object->getEmail()) {
+            $data->{'email'} = $object->getEmail();
+        }
+        if (null !== $object->getBar()) {
+            $data->{'bar'} = $object->getBar();
+        }
         return $data;
     }
 }

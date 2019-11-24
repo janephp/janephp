@@ -46,11 +46,13 @@ class TestNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
     public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
-        $values = array();
-        foreach ($object->getFoo() as $value) {
-            $values[] = $this->normalizer->normalize($value, 'json', $context);
+        if (null !== $object->getFoo()) {
+            $values = array();
+            foreach ($object->getFoo() as $value) {
+                $values[] = $this->normalizer->normalize($value, 'json', $context);
+            }
+            $data->{'foo'} = $values;
         }
-        $data->{'foo'} = $values;
         return $data;
     }
 }
