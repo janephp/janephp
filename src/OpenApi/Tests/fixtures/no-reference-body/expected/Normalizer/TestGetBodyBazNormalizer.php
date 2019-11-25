@@ -36,7 +36,9 @@ class TestGetBodyBazNormalizer implements DenormalizerInterface, NormalizerInter
     public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
-        $data->{'baz'} = $object->getBaz();
+        if (null !== $object->getBaz()) {
+            $data->{'baz'} = $object->getBaz();
+        }
         return $data;
     }
 }

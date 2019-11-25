@@ -39,8 +39,12 @@ class OtherchildtypeNormalizer implements DenormalizerInterface, NormalizerInter
     public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
-        $data->{'inheritedProperty'} = $object->getInheritedProperty();
-        $data->{'childProperty'} = $object->getChildProperty();
+        if (null !== $object->getInheritedProperty()) {
+            $data->{'inheritedProperty'} = $object->getInheritedProperty();
+        }
+        if (null !== $object->getChildProperty()) {
+            $data->{'childProperty'} = $object->getChildProperty();
+        }
         return $data;
     }
 }
