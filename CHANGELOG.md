@@ -7,6 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [5.2.1] - 2019-11-25
+
+### Changed
+
+* [OpenApi] [GH#174](https://github.com/janephp/janephp/pull/174) Better handling of nullable fields in Normalizer
+* [OpenApi] [GH#175](https://github.com/janephp/janephp/pull/175) Handling of nullable attribute on query parameters
+
+### Fixed
+
+* Fixing Gitsplit workflow
+* [AutoMapper] [GH#179](https://github.com/janephp/janephp/pull/179) Fixing incompatible changes in Symfony 5.0
+
 ## [5.2.0] - 2019-11-05
 
 ### Added 
@@ -159,7 +171,8 @@ See :
  * https://github.com/janephp/jane/releases
  * https://github.com/janephp/openapi/releases
 
-[Unreleased]: https://github.com/janephp/janephp/compare/v5.2.0...HEAD
+[Unreleased]: https://github.com/janephp/janephp/compare/v5.2.1...HEAD
+[5.2.1]: https://github.com/janephp/janephp/compare/v5.2.0...v5.2.1
 [5.2.0]: https://github.com/janephp/janephp/compare/v5.1.1...v5.2.0
 [5.1.1]: https://github.com/janephp/janephp/compare/v5.1.0...v5.1.1
 [5.1.0]: https://github.com/janephp/janephp/compare/v5.0.1...v5.1.0
