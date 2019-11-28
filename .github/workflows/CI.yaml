@@ -1,0 +1,36 @@
+name: CI
+on: [push]
+jobs:
+    cs-check:
+        runs-on: ubuntu-latest
+        steps:
+            - name: checkout
+              uses: actions/checkout@master
+            - name: setup
+              uses: shivammathur/setup-php@master
+              with:
+                  php-version: 7.2
+                  extension-csv: mbstring, fileinfo, json, intl, dom
+            - name: install
+              run: composer install
+            - name: 'php-cs-fixer check'
+              run: 'vendor/bin/php-cs-fixer fix --dry-run --diff'
+    tests:
+        runs-on: ubuntu-latest
+        strategy:
+            max-parallel: 15
+            matrix:
+                php-versions:  ['7.2', '7.3', '7.4']
+        name: tests-${{ matrix.php-versions }}
+        steps:
+            - name: checkout
+              uses: actions/checkout@master
+            - name: setup
+              uses: shivammathur/setup-php@master
+              with:
+                  php-version: ${{ matrix.php-versions }}
+                  extension-csv: mbstring, fileinfo, json, intl, dom
+            - name: install
+              run: composer install
+            - name: tests
+              run: composer test
