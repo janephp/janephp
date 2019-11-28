@@ -1,0 +1,20 @@
+name: gitsplit
+on:
+    push:
+        branches:
+            - master
+            - 4.x
+    release:
+        types: [published]
+jobs:
+    gitsplit:
+        runs-on: ubuntu-latest
+        steps:
+            - name: checkout
+              uses: actions/checkout@master
+            - name: git-setup
+              run: git config remote.origin.fetch "+refs/*:refs/*" && git config remote.origin.mirror true && git fetch --prune --unshallow || git fetch --prune
+            - name: gitsplit
+              run: docker run --rm -t -e GH_TOKEN -v /cache/gitsplit:/cache/gitsplit -v ${PWD}:/srv jderusse/gitsplit gitsplit
+              env:
+                  GH_TOKEN: ${{ secrets.PRIVATE_TOKEN }}
