@@ -22,10 +22,10 @@
         "doctrine/inflector": "^1.0",
         "jane-php/json-schema-runtime": "^4.0",
         "nikic/php-parser": "^3.0 || ^4.0",
-        "symfony/console": "^3.1|^4.0",
-        "symfony/options-resolver": "^3.1|^4.0",
-        "symfony/property-access": "^3.1|^4.0",
-        "symfony/yaml": "^3.1|^4.0"
+        "symfony/console": "^3.1 || ^4.0 || ^5.0",
+        "symfony/options-resolver": "^3.1 || ^4.0 || ^5.0",
+        "symfony/property-access": "^3.1 || ^4.0 || ^5.0",
+        "symfony/yaml": "^3.1 || ^4.0 || ^5.0"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^2.7.3",
