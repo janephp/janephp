@@ -109,7 +109,16 @@ class Jane extends ChainGenerator
 
     public static function buildSerializer()
     {
-        $encoders = [new JsonEncoder(new JsonEncode(JSON_UNESCAPED_SLASHES), new JsonDecode(false))];
+        if (defined(JsonEncode::CLASS . '::OPTIONS')) {
+            // Symfony >= 4.2
+            $jsonEncode = new JsonEncode([
+                JsonEncode::OPTIONS => JSON_UNESCAPED_SLASHES,
+            ]);
+        } else {
+            // Symfony < 4.2
+            $jsonEncode = new JsonEncode(JSON_UNESCAPED_SLASHES);
+        }
+        $encoders = [new JsonEncoder($jsonEncode, new JsonDecode())];
         $normalizers = NormalizerFactory::create();
 
         return new Serializer($normalizers, $encoders);
