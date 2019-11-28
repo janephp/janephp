@@ -4,8 +4,8 @@ namespace Jane\JsonSchema\Guesser\Guess;
 
 use Jane\JsonSchema\Generator\Context\Context;
 use function Jane\parserExpression;
-use PhpParser\Node\Stmt;
 use PhpParser\Node\Expr;
+use PhpParser\Node\Stmt;
 
 class ArrayType extends Type
 {

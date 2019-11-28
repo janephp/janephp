@@ -10,10 +10,9 @@ interface PropertiesGuesserInterface
     /**
      * Return all properties guessed.
      *
-     * @param mixed    $object
-     * @param string   $name
-     * @param string   $reference
-     * @param Registry $registry
+     * @param mixed  $object
+     * @param string $name
+     * @param string $reference
      *
      * @internal
      *

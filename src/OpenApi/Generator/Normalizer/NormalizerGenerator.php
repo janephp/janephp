@@ -2,16 +2,16 @@
 
 namespace Jane\OpenApi\Generator\Normalizer;
 
-use PhpParser\Node\Param;
+use Jane\JsonSchema\Generator\Context\Context;
 use Jane\JsonSchema\Generator\Normalizer\NormalizerGenerator as JsonSchemaNormalizerGenerator;
 use Jane\JsonSchema\Guesser\Guess\ClassGuess;
 use Jane\OpenApi\Guesser\Guess\MultipleClass;
 use function Jane\parserVariable;
 use PhpParser\Node\Expr;
-use PhpParser\Node\Stmt;
 use PhpParser\Node\Name;
+use PhpParser\Node\Param;
 use PhpParser\Node\Scalar;
-use Jane\JsonSchema\Generator\Context\Context;
+use PhpParser\Node\Stmt;
 
 trait NormalizerGenerator
 {

@@ -11,10 +11,9 @@ interface TypeGuesserInterface
     /**
      * Return all types guessed.
      *
-     * @param mixed    $object
-     * @param string   $name
-     * @param Registry $registry
-     * @param Schema   $schema
+     * @param mixed  $object
+     * @param string $name
+     * @param Schema $schema
      *
      * @internal
      *

@@ -2,16 +2,16 @@
 
 namespace Jane\OpenApi\Generator;
 
+use function Jane\isPhpParser4;
 use Jane\JsonSchema\Generator\Context\Context;
 use Jane\OpenApi\Operation\Operation;
-use function Jane\isPhpParser4;
 use function Jane\parserVariable;
+use PhpParser\Comment;
 use PhpParser\Node\Arg;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Name;
 use PhpParser\Node\Param;
 use PhpParser\Node\Stmt;
-use PhpParser\Comment;
 
 abstract class OperationGenerator
 {

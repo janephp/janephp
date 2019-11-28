@@ -5,9 +5,9 @@ namespace Jane\JsonSchema\Guesser\Guess;
 use Jane\JsonSchema\Generator\Context\Context;
 use function Jane\parserExpression;
 use PhpParser\Node\Arg;
+use PhpParser\Node\Expr;
 use PhpParser\Node\Name;
 use PhpParser\Node\Stmt;
-use PhpParser\Node\Expr;
 
 class PatternMultipleType extends Type
 {
@@ -24,7 +24,6 @@ class PatternMultipleType extends Type
      * Add a type.
      *
      * @param string $pattern
-     * @param Type   $type
      *
      * @return $this
      */

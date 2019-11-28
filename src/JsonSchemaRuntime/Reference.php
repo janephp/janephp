@@ -6,8 +6,8 @@ namespace Jane\JsonSchemaRuntime;
 
 use League\Uri\AbstractUri;
 use League\Uri\Http;
-use League\Uri\Schemes\Http as HttpLegacy;
 use League\Uri\Parser;
+use League\Uri\Schemes\Http as HttpLegacy;
 use League\Uri\UriParser;
 use Rs\Json\Pointer;
 use Symfony\Component\Yaml\Yaml;

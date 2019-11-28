@@ -59,9 +59,6 @@ class BodyParameterGenerator extends ParameterGenerator
     }
 
     /**
-     * @param BodyParameter $parameter
-     * @param Context       $context
-     *
      * @return array
      */
     protected function getClass(BodyParameter $parameter, Context $context, $reference)
@@ -143,7 +140,6 @@ class BodyParameterGenerator extends ParameterGenerator
     }
 
     /**
-     * @param Reference $reference
      * @param $class
      *
      * @return mixed

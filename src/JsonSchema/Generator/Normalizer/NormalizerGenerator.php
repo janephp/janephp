@@ -9,10 +9,10 @@ use Jane\JsonSchema\Guesser\Guess\Property;
 use function Jane\parserExpression;
 use function Jane\parserVariable;
 use PhpParser\Node\Arg;
+use PhpParser\Node\Expr;
 use PhpParser\Node\Name;
 use PhpParser\Node\Param;
 use PhpParser\Node\Stmt;
-use PhpParser\Node\Expr;
 
 trait NormalizerGenerator
 {
@@ -74,9 +74,7 @@ trait NormalizerGenerator
     /**
      * Create the normalization method.
      *
-     * @param string     $modelFqdn
-     * @param Context    $context
-     * @param ClassGuess $classGuess
+     * @param string $modelFqdn
      *
      * @return Stmt\ClassMethod
      */

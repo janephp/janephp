@@ -3,12 +3,12 @@
 namespace Jane\OpenApi\Generator\Parameter;
 
 use Doctrine\Common\Inflector\Inflector;
+use function Jane\isPhpParser4;
 use Jane\JsonSchema\Generator\Context\Context;
 use Jane\OpenApi\Model\FormDataParameterSubSchema;
 use Jane\OpenApi\Model\HeaderParameterSubSchema;
 use Jane\OpenApi\Model\PathParameterSubSchema;
 use Jane\OpenApi\Model\QueryParameterSubSchema;
-use function Jane\isPhpParser4;
 use function Jane\parserExpression;
 use function Jane\parserVariable;
 use PhpParser\Node;
@@ -43,8 +43,6 @@ class NonBodyParameterGenerator extends ParameterGenerator
 
     /**
      * @param $parameters PathParameterSubSchema[]|HeaderParameterSubSchema[]|FormDataParameterSubSchema[]|QueryParameterSubSchema[]
-     *
-     * @return array
      */
     public function generateOptionsResolverStatements(Expr\Variable $optionsResolverVariable, $parameters): array
     {

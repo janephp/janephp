@@ -2,15 +2,15 @@
 
 namespace Jane\OpenApi\Generator;
 
+use Jane\OpenApi\Generator\Parameter\BodyParameterGenerator;
 use Jane\OpenApi\Generator\Parameter\NonBodyParameterGenerator;
+use Jane\OpenApi\JaneOpenApi;
 use Jane\OpenApi\Naming\ChainOperationNaming;
 use Jane\OpenApi\Naming\ExceptionNaming;
-use Jane\OpenApi\Naming\OperationUrlNaming;
-use Jane\OpenApi\Generator\Parameter\BodyParameterGenerator;
 use Jane\OpenApi\Naming\OperationIdNaming;
+use Jane\OpenApi\Naming\OperationUrlNaming;
 use Jane\OpenApi\Operation\OperationManager;
 use PhpParser\ParserFactory;
-use Jane\OpenApi\JaneOpenApi;
 
 class GeneratorFactory
 {

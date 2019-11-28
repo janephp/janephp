@@ -109,7 +109,7 @@ class Jane extends ChainGenerator
 
     public static function buildSerializer()
     {
-        if (defined(JsonEncode::CLASS . '::OPTIONS')) {
+        if (\defined(JsonEncode::class . '::OPTIONS')) {
             // Symfony >= 4.2
             $jsonEncode = new JsonEncode([
                 JsonEncode::OPTIONS => JSON_UNESCAPED_SLASHES,

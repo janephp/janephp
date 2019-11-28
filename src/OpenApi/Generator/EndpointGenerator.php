@@ -603,7 +603,6 @@ EOD
     }
 
     /**
-     * @param Reference $reference
      * @param $class
      *
      * @return mixed
