@@ -21,8 +21,6 @@ class SchemaParser
 
     /**
      * SchemaParser constructor.
-     *
-     * @param SerializerInterface $serializer
      */
     public function __construct(SerializerInterface $serializer)
     {
@@ -66,11 +64,7 @@ class SchemaParser
             );
             $openApiSpecContents = json_encode($content);
         } catch (YamlException $yamlException) {
-            throw new \LogicException(sprintf(
-                "Could not parse schema in JSON nor YAML format:\n- JSON error: \"%s\"\n- YAML error: \"%s\"\n",
-                $jsonException->getMessage(),
-                $yamlException->getMessage()
-            ));
+            throw new \LogicException(sprintf("Could not parse schema in JSON nor YAML format:\n- JSON error: \"%s\"\n- YAML error: \"%s\"\n", $jsonException->getMessage(), $yamlException->getMessage()));
         }
 
         return $this->serializer->deserialize(

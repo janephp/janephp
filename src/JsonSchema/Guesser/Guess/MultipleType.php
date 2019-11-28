@@ -4,8 +4,8 @@ namespace Jane\JsonSchema\Guesser\Guess;
 
 use Jane\JsonSchema\Generator\Context\Context;
 use function Jane\parserExpression;
-use PhpParser\Node\Stmt;
 use PhpParser\Node\Expr;
+use PhpParser\Node\Stmt;
 
 class MultipleType extends Type
 {
@@ -20,8 +20,6 @@ class MultipleType extends Type
 
     /**
      * Add a type.
-     *
-     * @param Type $type
      *
      * @return $this
      */

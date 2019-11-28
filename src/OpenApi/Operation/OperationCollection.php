@@ -5,8 +5,6 @@ namespace Jane\OpenApi\Operation;
 class OperationCollection extends \ArrayObject
 {
     /**
-     * @param Operation $operation
-     *
      * @return self
      */
     public function addOperation(Operation $operation)

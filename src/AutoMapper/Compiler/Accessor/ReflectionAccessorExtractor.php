@@ -50,13 +50,7 @@ class ReflectionAccessorExtractor implements AccessorExtractorInterface
         } else {
             $methods = [$getter, $getsetter, $isser, $hasser, '__get'];
 
-            throw new \RuntimeException(sprintf(
-                'Neither the property "%s" nor one of the methods "%s()" ' .
-                'exist and have public access in class "%s".',
-                $property,
-                implode('()", "', $methods),
-                $reflClass->name
-            ));
+            throw new \RuntimeException(sprintf('Neither the property "%s" nor one of the methods "%s()" ' . 'exist and have public access in class "%s".', $property, implode('()", "', $methods), $reflClass->name));
         }
 
         return new ReadAccessor($accessType, $accessName, $accessPrivate);
@@ -107,17 +101,7 @@ class ReflectionAccessorExtractor implements AccessorExtractorInterface
                 $accessName = $property;
                 $accessPrivate = true;
             } else {
-                throw new \RuntimeException(sprintf(
-                    'Neither the property "%s" nor one of the methods %s"%s()", "%s()", ' .
-                    '"__set()" or "__call()" exist and have public access in class "%s".',
-                    $property,
-                    implode('', array_map(function ($singular) {
-                        return '"add' . $singular . '()"/"remove' . $singular . '()", ';
-                    }, $singulars)),
-                    $setter,
-                    $getsetter,
-                    $reflClass->name
-                ));
+                throw new \RuntimeException(sprintf('Neither the property "%s" nor one of the methods %s"%s()", "%s()", ' . '"__set()" or "__call()" exist and have public access in class "%s".', $property, implode('', array_map(function ($singular) { return '"add' . $singular . '()"/"remove' . $singular . '()", '; }, $singulars)), $setter, $getsetter, $reflClass->name));
             }
         }
 

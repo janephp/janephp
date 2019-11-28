@@ -16,13 +16,9 @@ trait ClassGenerator
     /**
      * Return a model class.
      *
-     * @param string $name
      * @param Node[] $properties
      * @param Node[] $methods
-     * @param bool   $hasExtensions
      * @param string $extends
-     *
-     * @return Stmt\Class_
      */
     protected function createModel(string $name, $properties, $methods, bool $hasExtensions = false, $extends = null): Stmt\Class_
     {

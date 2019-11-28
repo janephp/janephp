@@ -20,8 +20,6 @@ class TransformerFactory
     /**
      * @param Type[] $sourcesTypes
      * @param Type[] $targetTypes
-     *
-     * @return TransformerInterface|null
      */
     public function getTransformer(?array $sourcesTypes, ?array $targetTypes): ?TransformerInterface
     {

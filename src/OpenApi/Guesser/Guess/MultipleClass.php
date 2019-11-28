@@ -35,9 +35,6 @@ class MultipleClass extends ClassGuess
     /**
      * Add a reference.
      *
-     * @param string $className
-     * @param string $reference
-     *
      * @return $this
      */
     public function addReference(string $className, string $reference): self

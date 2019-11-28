@@ -20,7 +20,6 @@ abstract class ParameterGenerator
 
     /**
      * @param $parameter
-     * @param Context $context
      *
      * @return Node\Param|null
      */
@@ -31,7 +30,6 @@ abstract class ParameterGenerator
 
     /**
      * @param $parameter
-     * @param Context $context
      *
      * @return string
      */

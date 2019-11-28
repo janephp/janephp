@@ -10,16 +10,16 @@ use Http\Discovery\Psr18ClientDiscovery;
 use Jane\JsonSchema\Generator\Context\Context;
 use Jane\OpenApi\Model\OpenApi;
 use Jane\OpenApiRuntime\Client\Psr18Client;
+use function Jane\parserExpression;
+use function Jane\parserVariable;
 use PhpParser\Node;
-use PhpParser\Node\Name;
 use PhpParser\Node\Expr;
+use PhpParser\Node\Name;
 use PhpParser\Node\Stmt;
 use Symfony\Component\Serializer\Encoder\JsonDecode;
 use Symfony\Component\Serializer\Encoder\JsonEncode;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Serializer;
-use function Jane\parserExpression;
-use function Jane\parserVariable;
 
 class Psr18ClientGenerator extends ClientGenerator
 {

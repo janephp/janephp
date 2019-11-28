@@ -5,13 +5,13 @@ namespace Jane\JsonSchema\Generator\Model;
 use Jane\JsonSchema\Generator\Naming;
 use Jane\JsonSchema\Guesser\Guess\MultipleType;
 use Jane\JsonSchema\Guesser\Guess\Property;
+use Jane\JsonSchema\Guesser\Guess\Type;
 use function Jane\parserExpression;
 use function Jane\parserVariable;
-use Jane\JsonSchema\Guesser\Guess\Type;
 use PhpParser\Comment\Doc;
+use PhpParser\Node\Expr;
 use PhpParser\Node\Param;
 use PhpParser\Node\Stmt;
-use PhpParser\Node\Expr;
 
 trait GetterSetterGenerator
 {

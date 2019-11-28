@@ -8,11 +8,11 @@ use Jane\JsonSchema\Guesser\Guess\ClassGuess;
 use function Jane\parserExpression;
 use function Jane\parserVariable;
 use PhpParser\Node\Arg;
+use PhpParser\Node\Expr;
 use PhpParser\Node\Name;
 use PhpParser\Node\Param;
-use PhpParser\Node\Stmt;
-use PhpParser\Node\Expr;
 use PhpParser\Node\Scalar;
+use PhpParser\Node\Stmt;
 
 trait DenormalizerGenerator
 {

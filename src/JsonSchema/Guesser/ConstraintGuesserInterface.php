@@ -12,10 +12,9 @@ interface ConstraintGuesserInterface
     /**
      * Return all validators guessed.
      *
-     * @param mixed    $object
-     * @param string   $name
-     * @param string   $reference
-     * @param Registry $registry
+     * @param mixed  $object
+     * @param string $name
+     * @param string $reference
      *
      * @internal
      *

@@ -2,15 +2,15 @@
 
 namespace Jane\OpenApi\Generator\Normalizer;
 
-use Jane\JsonSchema\Generator\Normalizer\DenormalizerGenerator as JsonSchemaDenormalizerGenerator;
 use Jane\JsonSchema\Generator\Context\Context;
+use Jane\JsonSchema\Generator\Normalizer\DenormalizerGenerator as JsonSchemaDenormalizerGenerator;
 use Jane\JsonSchema\Guesser\Guess\ClassGuess;
 use Jane\OpenApi\Guesser\Guess\MultipleClass;
+use PhpParser\Node\Arg;
 use PhpParser\Node\Expr;
-use PhpParser\Node\Stmt;
 use PhpParser\Node\Name;
 use PhpParser\Node\Scalar;
-use PhpParser\Node\Arg;
+use PhpParser\Node\Stmt;
 
 trait DenormalizerGenerator
 {
