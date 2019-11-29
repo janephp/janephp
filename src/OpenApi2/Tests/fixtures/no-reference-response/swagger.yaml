@@ -1,0 +1,17 @@
+---
+swagger: "2.0"
+paths:
+  "/test":
+    post:
+      operationId: "test"
+      responses:
+        201:
+          description: ""
+          schema:
+            type: "object"
+            required: [Id, Warnings]
+            properties:
+              foo:
+                type: "string"
+      tags:
+      - Test

@@ -1,0 +1,53 @@
+{
+    "swagger": "2.0",
+    "responses": {
+        "common": {
+            "description": "no error",
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "foo": { "type": "string" }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "NotAnObject": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        }
+    },
+    "paths": {
+        "/test-query": {
+            "get": {
+                "operationId": "Test Reference Response",
+                "responses": {
+                    "200": {
+                        "$ref": "#/responses/common"
+                    }
+                },
+                "tags": [
+                    "Test"
+                ]
+            }
+        },
+        "/test-array-ref": {
+            "get": {
+                "operationId": "Test Ref Array",
+                "responses": {
+                    "200": {
+                        "description": "Description",
+                        "schema": {
+                            "$ref": "#/definitions/NotAnObject"
+                        }
+                    }
+                },
+                "tags": [
+                    "Test"
+                ]
+            }
+        }
+    }
+}

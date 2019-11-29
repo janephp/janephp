@@ -1,0 +1,26 @@
+{
+    "name": "jane-php/open-api-common",
+    "description": "Utility for OpenApi 2/3 generators",
+    "type": "library",
+    "keywords": ["jane", "swagger", "openapi", "utility"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Joel Wurtz",
+            "email": "jwurtz@jolicode.com"
+        },
+        {
+            "name": "Baptiste Leduc",
+            "email": "baptiste.leduc@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Jane\\OpenApiCommon\\": ""
+        }
+    },
+    "require": {
+        "php": ">=7.2",
+        "ext-json": "*"
+    }
+}
