@@ -27,6 +27,6 @@
 
     <php>
         <server name="KERNEL_DIR" value="./Bundle/Tests/Resources/app" />
-        <server name="KERNEL_CLASS" value="AppKernel" />
+        <server name="KERNEL_CLASS" value="DummyApp\AppKernel" />
     </php>
 </phpunit>
