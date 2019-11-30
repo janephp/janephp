@@ -103,13 +103,13 @@ class OpenApiGuesser implements GuesserInterface, ClassGuesserInterface, ChainGu
             }
         }
 
-        if ($operation->getRequestBody() && $operation->getRequestBody()->getContent()) {
+        if (null !== $operation->getRequestBody() && is_iterable($operation->getRequestBody()->getContent())) {
             foreach ($operation->getRequestBody()->getContent() as $contentType => $content) {
                 $this->chainGuesser->guessClass($content->getSchema(), $name . 'Body', $reference . '/requestBody/content/' . $contentType . '/schema', $registry);
             }
         }
 
-        if ($operation->getResponses()) {
+        if (is_iterable($operation->getResponses())) {
             foreach ($operation->getResponses() as $status => $response) {
                 if ($response instanceof Response && $response->getContent()) {
                     foreach ($response->getContent() as $contentType => $content) {
