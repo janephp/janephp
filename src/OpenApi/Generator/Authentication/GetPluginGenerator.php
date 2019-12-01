@@ -155,7 +155,7 @@ trait GetPluginGenerator
 
                 $stmts[] = new Stmt\Return_(new Expr\New_(new Name\FullyQualified(Plugin\AuthenticationPlugin::class), [
                     new Node\Arg(new Expr\New_($pluginClass, [
-                        new Node\Arg(new Expr\PropertyFetch(new Expr\Variable('this'), new Scalar\String_('token'))),
+                        new Node\Arg(new Expr\PropertyFetch(new Expr\Variable('this'), new Scalar\String_('apiKey'))),
                     ])),
                 ]));
                 break;

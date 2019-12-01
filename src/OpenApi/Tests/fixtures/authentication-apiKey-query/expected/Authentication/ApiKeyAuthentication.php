@@ -11,7 +11,7 @@ class ApiKeyAuthentication implements \Jane\OpenApiRuntime\Client\Authentication
     }
     public function getPlugin() : \Http\Client\Common\Plugin
     {
-        return new \Http\Client\Common\Plugin\AuthenticationPlugin(new class($this->{'token'}) implements \Http\Message\Authentication
+        return new \Http\Client\Common\Plugin\AuthenticationPlugin(new class($this->{'apiKey'}) implements \Http\Message\Authentication
         {
             private $apiKey;
             public function __construct(string $apiKey)
