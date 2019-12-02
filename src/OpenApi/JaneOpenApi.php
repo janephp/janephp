@@ -126,7 +126,7 @@ class JaneOpenApi extends ChainGenerator
         $encoders = [
             new JsonEncoder(
                 new JsonEncode(),
-                new JsonDecode(false)
+                new JsonDecode()
             ),
             new YamlEncoder(
                 new Dumper(),
