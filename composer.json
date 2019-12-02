@@ -6,6 +6,10 @@
         {
             "name": "Joel Wurtz",
             "email": "jwurtz@jolicode.com"
+        },
+        {
+            "name": "Baptiste Leduc",
+            "email": "baptiste.leduc@gmail.com"
         }
     ],
     "require": {
@@ -34,9 +38,6 @@
         "jane-php/json-schema-runtime": "self.version",
         "jane-php/open-api": "self.version",
         "jane-php/open-api-runtime": "self.version"
-    },
-    "conflict": {
-        "friendsofphp/php-cs-fixer": "<2.0 || >=3.0"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "2.15.3",

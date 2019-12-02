@@ -6,18 +6,11 @@
         {
             "name": "Joel Wurtz",
             "email": "jwurtz@jolicode.com"
-        }
-    ],
-    "autoload": {
-        "psr-4": {
-            "Jane\\JsonSchema\\": ""
         },
-        "exclude-from-classmap": [
-            "/Tests/"
-        ]
-    },
-    "bin": [
-        "bin/jane"
+        {
+            "name": "Baptiste Leduc",
+            "email": "baptiste.leduc@gmail.com"
+        }
     ],
     "require": {
         "php": ">=7.2",
@@ -25,13 +18,13 @@
         "doctrine/inflector": "^1.0",
         "jane-php/json-schema-runtime": "^5.0",
         "nikic/php-parser": "^4.0",
-        "symfony/console": "^3.1|^4.0",
-        "symfony/options-resolver": "^3.1|^4.0",
-        "symfony/property-access": "^3.1|^4.0",
-        "symfony/yaml": "^3.1|^4.0"
+        "symfony/console": "^3.1 || ^4.0",
+        "symfony/options-resolver": "^3.1 || ^4.0",
+        "symfony/property-access": "^3.1 || ^4.0",
+        "symfony/yaml": "^3.1 || ^4.0"
     },
     "require-dev": {
-        "friendsofphp/php-cs-fixer": "^2.15",
+        "friendsofphp/php-cs-fixer": "2.15.3",
         "phpunit/phpunit": "^6.0"
     },
     "suggest": {
@@ -41,14 +34,25 @@
         "process-timeout": 1800,
         "sort-packages": true
     },
-    "scripts": {
-        "test": "vendor/bin/phpunit"
-    },
     "extra": {
         "branch-alias": {
             "dev-master": "5-dev"
         }
     },
+    "autoload": {
+        "psr-4": {
+            "Jane\\JsonSchema\\": ""
+        },
+        "exclude-from-classmap": [
+            "/Tests/"
+        ]
+    },
     "minimum-stability": "dev",
-    "prefer-stable": true
+    "prefer-stable": true,
+    "bin": [
+        "bin/jane"
+    ],
+    "scripts": {
+        "test": "vendor/bin/phpunit"
+    }
 }
