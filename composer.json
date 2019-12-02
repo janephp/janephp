@@ -44,8 +44,8 @@
         "localheinz/composer-normalize": "~0.8.0",
         "phpbench/phpbench": "@dev",
         "phpunit/phpunit": "^6.0",
-        "symfony/framework-bundle": "<4.4",
-        "symfony/phpunit-bridge": "^4.1"
+        "symfony/framework-bundle": "^4.4 || ^5.0",
+        "symfony/phpunit-bridge": "^4.1 || ^5.0"
     },
     "suggest": {
         "friendsofphp/php-cs-fixer": "Allow to automatically fix cs on generated code for better visualisation"
