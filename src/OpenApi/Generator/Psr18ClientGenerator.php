@@ -109,7 +109,7 @@ class Psr18ClientGenerator extends ClientGenerator
         $plugins = [];
 
         $servers = $openApi->getServers();
-        $server = $servers !== null && $servers[0] !== null ? $servers[0] : null;
+        $server = $servers !== null && !empty($servers[0]) ? $servers[0] : null;
 
         if (null !== $server) {
             $url = parse_url($server->getUrl());
