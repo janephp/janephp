@@ -79,16 +79,17 @@ EOH
         }
 
         $command = new FixCommand(new ToolInfo());
-        $input = new ArrayInput([
+        $config = [
             'path' => [$path],
             '--allow-risky' => true,
-            '--rules' => $this->getDefaultRules(),
-        ], $command->getDefinition());
+        ];
 
         if (!empty($this->fixerConfig)) {
-            $input->setOption('config', $this->fixerConfig);
+            $config['--config'] = $this->fixerConfig;
+        } else {
+            $config['--rules'] = $this->getDefaultRules();
         }
 
-        $command->run($input, new NullOutput());
+        $command->run(new ArrayInput($config, $command->getDefinition()), new NullOutput());
     }
 }
