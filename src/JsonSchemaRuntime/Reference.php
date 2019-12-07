@@ -17,6 +17,8 @@ use Symfony\Component\Yaml\Yaml;
  */
 class Reference
 {
+    private static $cache = [];
+
     private $resolved;
 
     private $referenceUri;
@@ -75,18 +77,24 @@ class Reference
      */
     protected function doResolve()
     {
-        // @TODO Better handling of getting the content of a file
-        $json = file_get_contents((string) $this->mergedUri->withFragment(''));
+        $fragment = (string) $this->mergedUri->withFragment('');
 
-        if (!json_decode($json) || JSON_ERROR_NONE !== json_last_error()) {
-            $decoded = Yaml::parse($json, Yaml::PARSE_OBJECT | Yaml::PARSE_OBJECT_FOR_MAP | Yaml::PARSE_DATETIME | Yaml::PARSE_EXCEPTION_ON_INVALID_TYPE);
-            $json = json_encode($decoded);
+        if (!\array_key_exists($fragment, self::$cache)) {
+            $contents = file_get_contents($fragment);
+
+            if (!json_decode($contents) || JSON_ERROR_NONE !== json_last_error()) {
+                $decoded = Yaml::parse($contents,
+                    Yaml::PARSE_OBJECT | Yaml::PARSE_OBJECT_FOR_MAP | Yaml::PARSE_DATETIME | Yaml::PARSE_EXCEPTION_ON_INVALID_TYPE);
+                $contents = json_encode($decoded);
+            }
+
+            self::$cache[$fragment] = $contents;
         }
 
-        $pointer = new Pointer($json);
+        $pointer = new Pointer(self::$cache[$fragment]);
 
         if ('' === $this->mergedUri->getFragment()) {
-            return json_decode($json);
+            return json_decode(self::$cache[$fragment]);
         }
 
         return $pointer->get($this->mergedUri->getFragment());
