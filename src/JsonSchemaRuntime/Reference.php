@@ -17,7 +17,8 @@ use Symfony\Component\Yaml\Yaml;
  */
 class Reference
 {
-    private static $cache = [];
+    private static $fileCache = [];
+    private static $arrayCache = [];
 
     private $resolved;
 
@@ -80,7 +81,7 @@ class Reference
         $fragment = (string) $this->mergedUri->withFragment('');
         $reference = sprintf('%s_%s', $fragment, $this->mergedUri->getFragment());
 
-        if (!\array_key_exists($reference, self::$cache)) {
+        if (!\array_key_exists($fragment, self::$fileCache)) {
             $contents = file_get_contents($fragment);
 
             if (!json_decode($contents) || JSON_ERROR_NONE !== json_last_error()) {
@@ -89,17 +90,21 @@ class Reference
                 $contents = json_encode($decoded);
             }
 
-            $pointer = new Pointer($contents);
+            self::$fileCache[$fragment] = $contents;
+        }
+
+        if (!\array_key_exists($reference, self::$arrayCache)) {
+            $pointer = new Pointer(self::$fileCache[$fragment]);
             if ('' === $this->mergedUri->getFragment()) {
-                $array = json_decode($contents);
+                $array = json_decode(self::$fileCache[$fragment]);
             } else {
                 $array = $pointer->get($this->mergedUri->getFragment());
             }
 
-            self::$cache[$reference] = $array;
+            self::$arrayCache[$reference] = $array;
         }
 
-        return self::$cache[$reference];
+        return self::$arrayCache[$reference];
     }
 
     /**
