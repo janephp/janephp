@@ -8,10 +8,26 @@ use League\Uri\Schemes\Http as HttpLegacy;
 
 class Registry
 {
+    /** @var string[] */
+    private $outputDirectories = [];
+
     /** @var Schema[] */
     private $schemas = [];
 
-    public function addSchema(Schema $schema)
+    public function addOutputDirectory(string $outputDirectory): void
+    {
+        $this->outputDirectories[] = $outputDirectory;
+    }
+
+    /**
+     * @return string[]
+     */
+    public function getOutputDirectories(): array
+    {
+        return $this->outputDirectories;
+    }
+
+    public function addSchema(Schema $schema): void
     {
         $this->schemas[] = $schema;
     }

@@ -47,9 +47,11 @@ class GenerateCommand extends Command
 
         if (\array_key_exists('openapi-file', $options)) {
             $registry->addSchema($this->resolveSchema($options['openapi-file'], $options));
+            $registry->addOutputDirectory($options['directory']);
         } else {
             foreach ($options['mapping'] as $schema => $schemaOptions) {
                 $registry->addSchema($this->resolveSchema($schema, $schemaOptions));
+                $registry->addOutputDirectory($schemaOptions['directory']);
             }
         }
 
