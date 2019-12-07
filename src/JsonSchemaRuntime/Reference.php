@@ -78,8 +78,9 @@ class Reference
     protected function doResolve()
     {
         $fragment = (string) $this->mergedUri->withFragment('');
+        $reference = sprintf('%s_%s', $fragment, $this->mergedUri->getFragment());
 
-        if (!\array_key_exists($fragment, self::$cache)) {
+        if (!\array_key_exists($reference, self::$cache)) {
             $contents = file_get_contents($fragment);
 
             if (!json_decode($contents) || JSON_ERROR_NONE !== json_last_error()) {
@@ -88,16 +89,17 @@ class Reference
                 $contents = json_encode($decoded);
             }
 
-            self::$cache[$fragment] = $contents;
+            $pointer = new Pointer($contents);
+            if ('' === $this->mergedUri->getFragment()) {
+                $array = json_decode($contents);
+            } else {
+                $array = $pointer->get($this->mergedUri->getFragment());
+            }
+
+            self::$cache[$reference] = $array;
         }
 
-        $pointer = new Pointer(self::$cache[$fragment]);
-
-        if ('' === $this->mergedUri->getFragment()) {
-            return json_decode(self::$cache[$fragment]);
-        }
-
-        return $pointer->get($this->mergedUri->getFragment());
+        return self::$cache[$reference];
     }
 
     /**
