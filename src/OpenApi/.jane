@@ -6,5 +6,6 @@ return [
     'namespace' => 'Jane\OpenApi\JsonSchema',
     'directory' => __DIR__ . DIRECTORY_SEPARATOR . 'JsonSchema',
     'reference' => true,
-    "strict" => false,
+    'cs-fixer' => true,
+    'strict' => false,
 ];

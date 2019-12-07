@@ -62,8 +62,8 @@ class GenerateCommand extends Command
 
         $printer = new Printer(new Standard(), $fixerConfigFile);
 
-        if (\array_key_exists('use-fixer', $options) && false === $options['use-fixer']) {
-            $printer->setUseFixer(false);
+        if (\array_key_exists('use-fixer', $options) && \is_bool($options['use-fixer'])) {
+            $printer->setUseFixer($options['use-fixer']);
         }
 
         $janeOpenApi->generate($registry);
@@ -80,7 +80,7 @@ class GenerateCommand extends Command
             'date-format' => \DateTime::RFC3339,
             'async' => false,
             'strict' => true,
-            'use-fixer' => true,
+            'use-fixer' => false,
             'fixer-config-file' => null,
             'use-cacheable-supports-method' => null,
             'client' => JaneOpenApi::CLIENT_HTTPLUG,

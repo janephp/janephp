@@ -78,7 +78,7 @@ class GenerateCommand extends Command
             'reference' => true,
             'strict' => true,
             'date-format' => \DateTime::RFC3339,
-            'use-fixer' => true,
+            'use-fixer' => false,
             'fixer-config-file' => null,
             'use-cacheable-supports-method' => null,
         ]);

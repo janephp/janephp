@@ -11,5 +11,4 @@ return [
             'directory' => __DIR__ . '/generated/Two',
         ],
     ],
-    'use-fixer' => false,
 ];

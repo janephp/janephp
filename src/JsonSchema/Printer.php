@@ -16,7 +16,7 @@ class Printer
 
     private $useFixer;
 
-    public function __construct(PrettyPrinterAbstract $prettyPrinter, string $fixerConfig = '', bool $useFixer = true)
+    public function __construct(PrettyPrinterAbstract $prettyPrinter, string $fixerConfig = '', bool $useFixer = false)
     {
         $this->prettyPrinter = $prettyPrinter;
         $this->fixerConfig = $fixerConfig;
