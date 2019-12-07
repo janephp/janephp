@@ -9,7 +9,7 @@ class ReviewsGetResponse200HydraSearchHydraMappingItem
      *
      * @var string
      */
-    protected $@type;
+    protected $type;
     /**
      * 
      *
@@ -33,20 +33,20 @@ class ReviewsGetResponse200HydraSearchHydraMappingItem
      *
      * @return string
      */
-    public function get@type() : string
+    public function getType() : string
     {
-        return $this->@type;
+        return $this->type;
     }
     /**
      * 
      *
-     * @param string $@type
+     * @param string $type
      *
      * @return self
      */
-    public function set@type(string $@type) : self
+    public function setType(string $type) : self
     {
-        $this->@type = $@type;
+        $this->type = $type;
         return $this;
     }
     /**

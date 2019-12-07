@@ -9,44 +9,44 @@ class BooksIdReviewsGetResponse200
      *
      * @var object[]
      */
-    protected $hydra:member;
+    protected $hydraMember;
     /**
      * 
      *
      * @var int
      */
-    protected $hydra:totalItems;
+    protected $hydraTotalItems;
     /**
      * 
      *
      * @var BooksIdReviewsGetResponse200HydraView
      */
-    protected $hydra:view;
+    protected $hydraView;
     /**
      * 
      *
      * @var BooksIdReviewsGetResponse200HydraSearch
      */
-    protected $hydra:search;
+    protected $hydraSearch;
     /**
      * 
      *
      * @return object[]
      */
-    public function getHydra:member() : array
+    public function getHydraMember() : array
     {
-        return $this->hydra:member;
+        return $this->hydraMember;
     }
     /**
      * 
      *
-     * @param object[] $hydra:member
+     * @param object[] $hydraMember
      *
      * @return self
      */
-    public function setHydra:member(array $hydra:member) : self
+    public function setHydraMember(array $hydraMember) : self
     {
-        $this->hydra:member = $hydra:member;
+        $this->hydraMember = $hydraMember;
         return $this;
     }
     /**
@@ -54,20 +54,20 @@ class BooksIdReviewsGetResponse200
      *
      * @return int
      */
-    public function getHydra:totalItems() : int
+    public function getHydraTotalItems() : int
     {
-        return $this->hydra:totalItems;
+        return $this->hydraTotalItems;
     }
     /**
      * 
      *
-     * @param int $hydra:totalItems
+     * @param int $hydraTotalItems
      *
      * @return self
      */
-    public function setHydra:totalItems(int $hydra:totalItems) : self
+    public function setHydraTotalItems(int $hydraTotalItems) : self
     {
-        $this->hydra:totalItems = $hydra:totalItems;
+        $this->hydraTotalItems = $hydraTotalItems;
         return $this;
     }
     /**
@@ -75,20 +75,20 @@ class BooksIdReviewsGetResponse200
      *
      * @return BooksIdReviewsGetResponse200HydraView
      */
-    public function getHydra:view() : BooksIdReviewsGetResponse200HydraView
+    public function getHydraView() : BooksIdReviewsGetResponse200HydraView
     {
-        return $this->hydra:view;
+        return $this->hydraView;
     }
     /**
      * 
      *
-     * @param BooksIdReviewsGetResponse200HydraView $hydra:view
+     * @param BooksIdReviewsGetResponse200HydraView $hydraView
      *
      * @return self
      */
-    public function setHydra:view(BooksIdReviewsGetResponse200HydraView $hydra:view) : self
+    public function setHydraView(BooksIdReviewsGetResponse200HydraView $hydraView) : self
     {
-        $this->hydra:view = $hydra:view;
+        $this->hydraView = $hydraView;
         return $this;
     }
     /**
@@ -96,20 +96,20 @@ class BooksIdReviewsGetResponse200
      *
      * @return BooksIdReviewsGetResponse200HydraSearch
      */
-    public function getHydra:search() : BooksIdReviewsGetResponse200HydraSearch
+    public function getHydraSearch() : BooksIdReviewsGetResponse200HydraSearch
     {
-        return $this->hydra:search;
+        return $this->hydraSearch;
     }
     /**
      * 
      *
-     * @param BooksIdReviewsGetResponse200HydraSearch $hydra:search
+     * @param BooksIdReviewsGetResponse200HydraSearch $hydraSearch
      *
      * @return self
      */
-    public function setHydra:search(BooksIdReviewsGetResponse200HydraSearch $hydra:search) : self
+    public function setHydraSearch(BooksIdReviewsGetResponse200HydraSearch $hydraSearch) : self
     {
-        $this->hydra:search = $hydra:search;
+        $this->hydraSearch = $hydraSearch;
         return $this;
     }
 }

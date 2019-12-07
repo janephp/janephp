@@ -29,38 +29,38 @@ class BooksGetResponse200HydraSearchNormalizer implements DenormalizerInterface,
         }
         $object = new \ApiPlatform\Demo\Model\BooksGetResponse200HydraSearch();
         if (property_exists($data, '@type')) {
-            $object->set@type($data->{'@type'});
+            $object->setType($data->{'@type'});
         }
         if (property_exists($data, 'hydra:template')) {
-            $object->setHydra:template($data->{'hydra:template'});
+            $object->setHydraTemplate($data->{'hydra:template'});
         }
         if (property_exists($data, 'hydra:variableRepresentation')) {
-            $object->setHydra:variableRepresentation($data->{'hydra:variableRepresentation'});
+            $object->setHydraVariableRepresentation($data->{'hydra:variableRepresentation'});
         }
         if (property_exists($data, 'hydra:mapping')) {
             $values = array();
             foreach ($data->{'hydra:mapping'} as $value) {
                 $values[] = $this->denormalizer->denormalize($value, 'ApiPlatform\\Demo\\Model\\BooksGetResponse200HydraSearchHydraMappingItem', 'json', $context);
             }
-            $object->setHydra:mapping($values);
+            $object->setHydraMapping($values);
         }
         return $object;
     }
     public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
-        if (null !== $object->get@type()) {
-            $data->{'@type'} = $object->get@type();
+        if (null !== $object->getType()) {
+            $data->{'@type'} = $object->getType();
         }
-        if (null !== $object->getHydra:template()) {
-            $data->{'hydra:template'} = $object->getHydra:template();
+        if (null !== $object->getHydraTemplate()) {
+            $data->{'hydra:template'} = $object->getHydraTemplate();
         }
-        if (null !== $object->getHydra:variableRepresentation()) {
-            $data->{'hydra:variableRepresentation'} = $object->getHydra:variableRepresentation();
+        if (null !== $object->getHydraVariableRepresentation()) {
+            $data->{'hydra:variableRepresentation'} = $object->getHydraVariableRepresentation();
         }
-        if (null !== $object->getHydra:mapping()) {
+        if (null !== $object->getHydraMapping()) {
             $values = array();
-            foreach ($object->getHydra:mapping() as $value) {
+            foreach ($object->getHydraMapping() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data->{'hydra:mapping'} = $values;

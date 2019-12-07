@@ -9,44 +9,44 @@ class BooksGetResponse200HydraSearch
      *
      * @var string
      */
-    protected $@type;
+    protected $type;
     /**
      * 
      *
      * @var string
      */
-    protected $hydra:template;
+    protected $hydraTemplate;
     /**
      * 
      *
      * @var string
      */
-    protected $hydra:variableRepresentation;
+    protected $hydraVariableRepresentation;
     /**
      * 
      *
      * @var BooksGetResponse200HydraSearchHydraMappingItem[]
      */
-    protected $hydra:mapping;
+    protected $hydraMapping;
     /**
      * 
      *
      * @return string
      */
-    public function get@type() : string
+    public function getType() : string
     {
-        return $this->@type;
+        return $this->type;
     }
     /**
      * 
      *
-     * @param string $@type
+     * @param string $type
      *
      * @return self
      */
-    public function set@type(string $@type) : self
+    public function setType(string $type) : self
     {
-        $this->@type = $@type;
+        $this->type = $type;
         return $this;
     }
     /**
@@ -54,20 +54,20 @@ class BooksGetResponse200HydraSearch
      *
      * @return string
      */
-    public function getHydra:template() : string
+    public function getHydraTemplate() : string
     {
-        return $this->hydra:template;
+        return $this->hydraTemplate;
     }
     /**
      * 
      *
-     * @param string $hydra:template
+     * @param string $hydraTemplate
      *
      * @return self
      */
-    public function setHydra:template(string $hydra:template) : self
+    public function setHydraTemplate(string $hydraTemplate) : self
     {
-        $this->hydra:template = $hydra:template;
+        $this->hydraTemplate = $hydraTemplate;
         return $this;
     }
     /**
@@ -75,20 +75,20 @@ class BooksGetResponse200HydraSearch
      *
      * @return string
      */
-    public function getHydra:variableRepresentation() : string
+    public function getHydraVariableRepresentation() : string
     {
-        return $this->hydra:variableRepresentation;
+        return $this->hydraVariableRepresentation;
     }
     /**
      * 
      *
-     * @param string $hydra:variableRepresentation
+     * @param string $hydraVariableRepresentation
      *
      * @return self
      */
-    public function setHydra:variableRepresentation(string $hydra:variableRepresentation) : self
+    public function setHydraVariableRepresentation(string $hydraVariableRepresentation) : self
     {
-        $this->hydra:variableRepresentation = $hydra:variableRepresentation;
+        $this->hydraVariableRepresentation = $hydraVariableRepresentation;
         return $this;
     }
     /**
@@ -96,20 +96,20 @@ class BooksGetResponse200HydraSearch
      *
      * @return BooksGetResponse200HydraSearchHydraMappingItem[]
      */
-    public function getHydra:mapping() : array
+    public function getHydraMapping() : array
     {
-        return $this->hydra:mapping;
+        return $this->hydraMapping;
     }
     /**
      * 
      *
-     * @param BooksGetResponse200HydraSearchHydraMappingItem[] $hydra:mapping
+     * @param BooksGetResponse200HydraSearchHydraMappingItem[] $hydraMapping
      *
      * @return self
      */
-    public function setHydra:mapping(array $hydra:mapping) : self
+    public function setHydraMapping(array $hydraMapping) : self
     {
-        $this->hydra:mapping = $hydra:mapping;
+        $this->hydraMapping = $hydraMapping;
         return $this;
     }
 }

@@ -29,39 +29,39 @@ class BooksGetResponse200HydraViewNormalizer implements DenormalizerInterface, N
         }
         $object = new \ApiPlatform\Demo\Model\BooksGetResponse200HydraView();
         if (property_exists($data, '@id')) {
-            $object->set@id($data->{'@id'});
+            $object->setId($data->{'@id'});
         }
         if (property_exists($data, '@type')) {
-            $object->set@type($data->{'@type'});
+            $object->setType($data->{'@type'});
         }
         if (property_exists($data, 'hydra:first')) {
-            $object->setHydra:first($data->{'hydra:first'});
+            $object->setHydraFirst($data->{'hydra:first'});
         }
         if (property_exists($data, 'hydra:last')) {
-            $object->setHydra:last($data->{'hydra:last'});
+            $object->setHydraLast($data->{'hydra:last'});
         }
         if (property_exists($data, 'hydra:next')) {
-            $object->setHydra:next($data->{'hydra:next'});
+            $object->setHydraNext($data->{'hydra:next'});
         }
         return $object;
     }
     public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
-        if (null !== $object->get@id()) {
-            $data->{'@id'} = $object->get@id();
+        if (null !== $object->getId()) {
+            $data->{'@id'} = $object->getId();
         }
-        if (null !== $object->get@type()) {
-            $data->{'@type'} = $object->get@type();
+        if (null !== $object->getType()) {
+            $data->{'@type'} = $object->getType();
         }
-        if (null !== $object->getHydra:first()) {
-            $data->{'hydra:first'} = $object->getHydra:first();
+        if (null !== $object->getHydraFirst()) {
+            $data->{'hydra:first'} = $object->getHydraFirst();
         }
-        if (null !== $object->getHydra:last()) {
-            $data->{'hydra:last'} = $object->getHydra:last();
+        if (null !== $object->getHydraLast()) {
+            $data->{'hydra:last'} = $object->getHydraLast();
         }
-        if (null !== $object->getHydra:next()) {
-            $data->{'hydra:next'} = $object->getHydra:next();
+        if (null !== $object->getHydraNext()) {
+            $data->{'hydra:next'} = $object->getHydraNext();
         }
         return $data;
     }

@@ -9,50 +9,50 @@ class ReviewsGetResponse200HydraView
      *
      * @var string
      */
-    protected $@id;
+    protected $id;
     /**
      * 
      *
      * @var string
      */
-    protected $@type;
+    protected $type;
     /**
      * 
      *
      * @var string
      */
-    protected $hydra:first;
+    protected $hydraFirst;
     /**
      * 
      *
      * @var string
      */
-    protected $hydra:last;
+    protected $hydraLast;
     /**
      * 
      *
      * @var string
      */
-    protected $hydra:next;
+    protected $hydraNext;
     /**
      * 
      *
      * @return string
      */
-    public function get@id() : string
+    public function getId() : string
     {
-        return $this->@id;
+        return $this->id;
     }
     /**
      * 
      *
-     * @param string $@id
+     * @param string $id
      *
      * @return self
      */
-    public function set@id(string $@id) : self
+    public function setId(string $id) : self
     {
-        $this->@id = $@id;
+        $this->id = $id;
         return $this;
     }
     /**
@@ -60,20 +60,20 @@ class ReviewsGetResponse200HydraView
      *
      * @return string
      */
-    public function get@type() : string
+    public function getType() : string
     {
-        return $this->@type;
+        return $this->type;
     }
     /**
      * 
      *
-     * @param string $@type
+     * @param string $type
      *
      * @return self
      */
-    public function set@type(string $@type) : self
+    public function setType(string $type) : self
     {
-        $this->@type = $@type;
+        $this->type = $type;
         return $this;
     }
     /**
@@ -81,20 +81,20 @@ class ReviewsGetResponse200HydraView
      *
      * @return string
      */
-    public function getHydra:first() : string
+    public function getHydraFirst() : string
     {
-        return $this->hydra:first;
+        return $this->hydraFirst;
     }
     /**
      * 
      *
-     * @param string $hydra:first
+     * @param string $hydraFirst
      *
      * @return self
      */
-    public function setHydra:first(string $hydra:first) : self
+    public function setHydraFirst(string $hydraFirst) : self
     {
-        $this->hydra:first = $hydra:first;
+        $this->hydraFirst = $hydraFirst;
         return $this;
     }
     /**
@@ -102,20 +102,20 @@ class ReviewsGetResponse200HydraView
      *
      * @return string
      */
-    public function getHydra:last() : string
+    public function getHydraLast() : string
     {
-        return $this->hydra:last;
+        return $this->hydraLast;
     }
     /**
      * 
      *
-     * @param string $hydra:last
+     * @param string $hydraLast
      *
      * @return self
      */
-    public function setHydra:last(string $hydra:last) : self
+    public function setHydraLast(string $hydraLast) : self
     {
-        $this->hydra:last = $hydra:last;
+        $this->hydraLast = $hydraLast;
         return $this;
     }
     /**
@@ -123,20 +123,20 @@ class ReviewsGetResponse200HydraView
      *
      * @return string
      */
-    public function getHydra:next() : string
+    public function getHydraNext() : string
     {
-        return $this->hydra:next;
+        return $this->hydraNext;
     }
     /**
      * 
      *
-     * @param string $hydra:next
+     * @param string $hydraNext
      *
      * @return self
      */
-    public function setHydra:next(string $hydra:next) : self
+    public function setHydraNext(string $hydraNext) : self
     {
-        $this->hydra:next = $hydra:next;
+        $this->hydraNext = $hydraNext;
         return $this;
     }
 }

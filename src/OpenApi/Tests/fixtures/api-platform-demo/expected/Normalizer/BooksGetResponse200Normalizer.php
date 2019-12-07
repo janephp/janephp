@@ -33,37 +33,37 @@ class BooksGetResponse200Normalizer implements DenormalizerInterface, Normalizer
             foreach ($data->{'hydra:member'} as $value) {
                 $values[] = $value;
             }
-            $object->setHydra:member($values);
+            $object->setHydraMember($values);
         }
         if (property_exists($data, 'hydra:totalItems')) {
-            $object->setHydra:totalItems($data->{'hydra:totalItems'});
+            $object->setHydraTotalItems($data->{'hydra:totalItems'});
         }
         if (property_exists($data, 'hydra:view')) {
-            $object->setHydra:view($this->denormalizer->denormalize($data->{'hydra:view'}, 'ApiPlatform\\Demo\\Model\\BooksGetResponse200HydraView', 'json', $context));
+            $object->setHydraView($this->denormalizer->denormalize($data->{'hydra:view'}, 'ApiPlatform\\Demo\\Model\\BooksGetResponse200HydraView', 'json', $context));
         }
         if (property_exists($data, 'hydra:search')) {
-            $object->setHydra:search($this->denormalizer->denormalize($data->{'hydra:search'}, 'ApiPlatform\\Demo\\Model\\BooksGetResponse200HydraSearch', 'json', $context));
+            $object->setHydraSearch($this->denormalizer->denormalize($data->{'hydra:search'}, 'ApiPlatform\\Demo\\Model\\BooksGetResponse200HydraSearch', 'json', $context));
         }
         return $object;
     }
     public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
-        if (null !== $object->getHydra:member()) {
+        if (null !== $object->getHydraMember()) {
             $values = array();
-            foreach ($object->getHydra:member() as $value) {
+            foreach ($object->getHydraMember() as $value) {
                 $values[] = $value;
             }
             $data->{'hydra:member'} = $values;
         }
-        if (null !== $object->getHydra:totalItems()) {
-            $data->{'hydra:totalItems'} = $object->getHydra:totalItems();
+        if (null !== $object->getHydraTotalItems()) {
+            $data->{'hydra:totalItems'} = $object->getHydraTotalItems();
         }
-        if (null !== $object->getHydra:view()) {
-            $data->{'hydra:view'} = $this->normalizer->normalize($object->getHydra:view(), 'json', $context);
+        if (null !== $object->getHydraView()) {
+            $data->{'hydra:view'} = $this->normalizer->normalize($object->getHydraView(), 'json', $context);
         }
-        if (null !== $object->getHydra:search()) {
-            $data->{'hydra:search'} = $this->normalizer->normalize($object->getHydra:search(), 'json', $context);
+        if (null !== $object->getHydraSearch()) {
+            $data->{'hydra:search'} = $this->normalizer->normalize($object->getHydraSearch(), 'json', $context);
         }
         return $data;
     }

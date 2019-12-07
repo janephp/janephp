@@ -29,7 +29,7 @@ class ReviewsGetResponse200HydraSearchHydraMappingItemNormalizer implements Deno
         }
         $object = new \ApiPlatform\Demo\Model\ReviewsGetResponse200HydraSearchHydraMappingItem();
         if (property_exists($data, '@type')) {
-            $object->set@type($data->{'@type'});
+            $object->setType($data->{'@type'});
         }
         if (property_exists($data, 'variable')) {
             $object->setVariable($data->{'variable'});
@@ -45,8 +45,8 @@ class ReviewsGetResponse200HydraSearchHydraMappingItemNormalizer implements Deno
     public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
-        if (null !== $object->get@type()) {
-            $data->{'@type'} = $object->get@type();
+        if (null !== $object->getType()) {
+            $data->{'@type'} = $object->getType();
         }
         if (null !== $object->getVariable()) {
             $data->{'variable'} = $object->getVariable();
