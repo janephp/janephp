@@ -55,8 +55,8 @@ Other options are available to customize the generated code:
 
  * ``reference``: A boolean which indicate to add the support for `JSON Reference`_ into the generated code.
  * ``date-format``: A date format to specify how the generated code should encode and decode ``\DateTime`` object to string
- * ``use-fixer``: A boolean which indicate if we make a first cs-fix after code generation
- * ``fixer-config-file``: A string to specify where to find the custom configuration for the cs-fixer after code generation
+ * ``use-fixer``: A boolean which indicate if we make a first cs-fix after code generation, is disabled by default.
+ * ``fixer-config-file``: A string to specify where to find the custom configuration for the cs-fixer after code generation, will remove all Jane default cs-fixer default configuration.
  * ``use-cacheable-supports-method``: A boolean which indicate if we use ``CacheableSupportsMethodInterface`` interface to improve caching performances when used with Symfony Serializer.
 
 Multi schemas
