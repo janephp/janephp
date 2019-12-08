@@ -7,6 +7,7 @@ use PhpCsFixer\ToolInfo;
 use PhpParser\PrettyPrinterAbstract;
 use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Output\NullOutput;
+use Symfony\Component\Filesystem\Filesystem;
 
 class Printer
 {
@@ -14,13 +15,14 @@ class Printer
 
     private $fixerConfig;
 
-    private $useFixer;
+    private $useFixer = false;
 
-    public function __construct(PrettyPrinterAbstract $prettyPrinter, string $fixerConfig = '', bool $useFixer = false)
+    private $cleanGenerated = true;
+
+    public function __construct(PrettyPrinterAbstract $prettyPrinter, string $fixerConfig = '')
     {
         $this->prettyPrinter = $prettyPrinter;
         $this->fixerConfig = $fixerConfig;
-        $this->useFixer = $useFixer;
     }
 
     public function setUseFixer(bool $useFixer): void
@@ -28,8 +30,21 @@ class Printer
         $this->useFixer = $useFixer;
     }
 
+    public function setCleanGenerated(bool $cleanGenerated): void
+    {
+        $this->cleanGenerated = $cleanGenerated;
+    }
+
     public function output(Registry $registry): void
     {
+        if ($this->cleanGenerated) {
+            $fs = new Filesystem();
+            foreach ($registry->getOutputDirectories() as $directory) {
+                $fs->remove($directory);
+                $fs->mkdir($directory);
+            }
+        }
+
         foreach ($registry->getSchemas() as $schema) {
             foreach ($schema->getFiles() as $file) {
                 if (!file_exists(\dirname($file->getFilename()))) {

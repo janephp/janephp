@@ -60,6 +60,7 @@ Other options are available to customize the generated code:
    not respecting some standards (nullable field as an example) client.
  * ``use-fixer``: A boolean which indicate if we make a first cs-fix after code generation, is disabled by default.
  * ``fixer-config-file``: A string to specify where to find the custom configuration for the cs-fixer after code generation, will remove all Jane default cs-fixer default configuration.
+ * ``clean-generated``: A boolean which indicate if we clean generated output before generating new files, is enabled by default.
  * ``use-cacheable-supports-method``: A boolean which indicate if we use ``CacheableSupportsMethodInterface`` interface to improve caching performances when used with Symfony Serializer.
 
 .. _`JSON Reference`: https://tools.ietf.org/id/draft-pbryan-zyp-json-ref-03.html
