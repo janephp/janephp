@@ -17,6 +17,9 @@ use Symfony\Component\Yaml\Yaml;
  */
 class Reference
 {
+    private static $fileCache = [];
+    private static $arrayCache = [];
+
     private $resolved;
 
     private $referenceUri;
@@ -75,21 +78,33 @@ class Reference
      */
     protected function doResolve()
     {
-        // @TODO Better handling of getting the content of a file
-        $json = file_get_contents((string) $this->mergedUri->withFragment(''));
+        $fragment = (string) $this->mergedUri->withFragment('');
+        $reference = sprintf('%s_%s', $fragment, $this->mergedUri->getFragment());
 
-        if (!json_decode($json) || JSON_ERROR_NONE !== json_last_error()) {
-            $decoded = Yaml::parse($json, Yaml::PARSE_OBJECT | Yaml::PARSE_OBJECT_FOR_MAP | Yaml::PARSE_DATETIME | Yaml::PARSE_EXCEPTION_ON_INVALID_TYPE);
-            $json = json_encode($decoded);
+        if (!\array_key_exists($fragment, self::$fileCache)) {
+            $contents = file_get_contents($fragment);
+
+            if (!json_decode($contents) || JSON_ERROR_NONE !== json_last_error()) {
+                $decoded = Yaml::parse($contents,
+                    Yaml::PARSE_OBJECT | Yaml::PARSE_OBJECT_FOR_MAP | Yaml::PARSE_DATETIME | Yaml::PARSE_EXCEPTION_ON_INVALID_TYPE);
+                $contents = json_encode($decoded);
+            }
+
+            self::$fileCache[$fragment] = $contents;
         }
 
-        $pointer = new Pointer($json);
+        if (!\array_key_exists($reference, self::$arrayCache)) {
+            $pointer = new Pointer(self::$fileCache[$fragment]);
+            if ('' === $this->mergedUri->getFragment()) {
+                $array = json_decode(self::$fileCache[$fragment]);
+            } else {
+                $array = $pointer->get($this->mergedUri->getFragment());
+            }
 
-        if ('' === $this->mergedUri->getFragment()) {
-            return json_decode($json);
+            self::$arrayCache[$reference] = $array;
         }
 
-        return $pointer->get($this->mergedUri->getFragment());
+        return self::$arrayCache[$reference];
     }
 
     /**
