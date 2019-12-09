@@ -7,12 +7,33 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [5.2.2] - 2019-12-09
+
+### Added
+
+* [Jane] [GH#192](https://github.com/janephp/janephp/pull/192) & [GH#195](https://github.com/janephp/janephp/pull/195) Symfony 5 compatibility
+* [Jane] [GH#197](https://github.com/janephp/janephp/pull/197) Local cache for Reference contents
+* [Jane] [GH#198](https://github.com/janephp/janephp/pull/198) Remove generated code before new generation
+* [OpenAPI] [GH#203](https://github.com/janephp/janephp/pull/203) Readonly property support
+
+### Changed
+
+* [Jane] [GH#190](https://github.com/janephp/janephp/pull/190) Cleaning all components (dependencies / tests)
+* [Jane] [GH#196](https://github.com/janephp/janephp/pull/196) Make cs fixer opt-in instead of opt-out
+
+### Fixed
+
+* [OpenAPI] [GH#173](https://github.com/janephp/janephp/pull/173) No content in requestBody
+* [OpenAPI] [GH#194](https://github.com/janephp/janephp/pull/194) Fixed undefined offset error with servers paths
+* [OpenAPI] [GH#201](https://github.com/janephp/janephp/pull/202) Fix nullable array types in generated Normalizer
+* [JsonSchema] [GH#193](https://github.com/janephp/janephp/pull/193) Fixing non-sanitized property fields & methods
+
 ## [5.2.1] - 2019-11-25
 
 ### Changed
 
-* [OpenApi] [GH#174](https://github.com/janephp/janephp/pull/174) Better handling of nullable fields in Normalizer
-* [OpenApi] [GH#175](https://github.com/janephp/janephp/pull/175) Handling of nullable attribute on query parameters
+* [OpenAPI] [GH#174](https://github.com/janephp/janephp/pull/174) Better handling of nullable fields in Normalizer
+* [OpenAPI] [GH#175](https://github.com/janephp/janephp/pull/175) Handling of nullable attribute on query parameters
 
 ### Fixed
 
@@ -21,7 +42,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [5.2.0] - 2019-11-05
 
-### Added 
+### Added
 
 * GH Actions for tests & cs-check
 * [JsonSchema] [GH#167](https://github.com/janephp/janephp/pull/167) add deprecated behavior (for classes & properties)
@@ -31,11 +52,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * [JsonSchema] [GH#132](https://github.com/janephp/janephp/pull/132) upgrade specs to draft-06
 * [JsonSchema] [GH#134](https://github.com/janephp/janephp/pull/134) upgrade specs to draft-07
 * [JsonSchema] [GH#136](https://github.com/janephp/janephp/pull/136) upgrade specs to 2019-09 (last version)
-* [OpenApi] [GH#137](https://github.com/janephp/janephp/pull/137) upgrade specs to 3.0.2 (last version)
+* [OpenAPI] [GH#137](https://github.com/janephp/janephp/pull/137) upgrade specs to 3.0.2 (last version)
 
-### Fixed 
+### Fixed
 
-* [OpenApi] [GH#143](https://github.com/janephp/janephp/pull/143) Check if object for normalizers supportNormalization method
+* [OpenAPI] [GH#143](https://github.com/janephp/janephp/pull/143) Check if object for normalizers supportNormalization method
 * [JsonSchema] [GH#141](https://github.com/janephp/janephp/pull/141) Better nullable checks on generated normalizers
 
 ## [5.1.1] - 2019-09-27
@@ -93,9 +114,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
  * [OpenAPI] GH#101 Remove warning when using Generate command
 
 ## [4.4.0] - 2019-06-17
- 
+
 ### Added
- 
+
  * [Jane] nullable properties
  * [Jane] add null type to PHPDoc for getters/setters
  * [Jane] checking if helper function exists before creating it (php-parser 3.x / 4.x compatibility)
@@ -137,7 +158,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
  * **BC-BREAK** Config file is now mandatory, console client does not provide anymore options
  * **BC-BREAK** There is no more Resource file, all calls are now done in an unique Client class
  * [OpenAPI] **BC-BREAK** Arguments for each endpoint may be different, they are now split between query, form and headers.
- * [OpenAPI] **BC-BREAK** Response with 400 to 599 status code will know throw custom generated exception instead of 
+ * [OpenAPI] **BC-BREAK** Response with 400 to 599 status code will know throw custom generated exception instead of
  returning an object
  * [OpenAPI] **BC-BREAK** Base path is no more present in the url as you can use a HTTPlug plugin for that
  * [OpenAPI] New documentation available at [https://jane.readthedocs.io/en/latest/](https://jane.readthedocs.io/en/latest/)
@@ -150,7 +171,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
  * [OpenAPI] Support Symfony 4
  * [OpenAPI] Each endpoint have its own class, this helps extending a generated Client.
  * [OpenAPI] Add support for binary format
- * [Jane] Add a not strict mode, which generate more permissive normalizers (allowing null / not 
+ * [Jane] Add a not strict mode, which generate more permissive normalizers (allowing null / not
  defined properties in several places)
  * [Jane] Add property description in doc block comment
  * [Jane] Add support for additionalProperties / patternProperties with existing properties
@@ -166,12 +187,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Older versions
 
-See : 
- 
+See :
+
  * https://github.com/janephp/jane/releases
  * https://github.com/janephp/openapi/releases
 
-[Unreleased]: https://github.com/janephp/janephp/compare/v5.2.1...HEAD
+[Unreleased]: https://github.com/janephp/janephp/compare/v5.2.2...HEAD
+[5.2.2]: https://github.com/janephp/janephp/compare/v5.2.1...v5.2.2
 [5.2.1]: https://github.com/janephp/janephp/compare/v5.2.0...v5.2.1
 [5.2.0]: https://github.com/janephp/janephp/compare/v5.1.1...v5.2.0
 [5.1.1]: https://github.com/janephp/janephp/compare/v5.1.0...v5.1.1
