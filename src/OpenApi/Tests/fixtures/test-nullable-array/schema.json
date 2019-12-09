@@ -1,0 +1,39 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "version": "",
+        "title": ""
+    },
+    "paths": {
+        "/test-nullable-array": {
+            "get": {
+                "operationId": "Test Nullable Array",
+                "responses": {
+                    "200": {
+                        "description": "no error"
+                    }
+                },
+                "tags": [
+                    "Test"
+                ]
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Model": {
+                "type": "object",
+                "properties": {
+                    "foo": {
+                        "nullable": true,
+                        "type": "string"
+                    },
+                    "bar": {
+                        "nullable": true,
+                        "type": "array"
+                    }
+                }
+            }
+        }
+    }
+}
