@@ -15,5 +15,4 @@ return [
         ],
     ],
     'reference' => false,
-    'use-fixer' => false,
 ];

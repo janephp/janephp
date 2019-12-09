@@ -16,7 +16,7 @@ class Printer
 
     private $useFixer;
 
-    public function __construct(PrettyPrinterAbstract $prettyPrinter, string $fixerConfig = '', bool $useFixer = true)
+    public function __construct(PrettyPrinterAbstract $prettyPrinter, string $fixerConfig = '', bool $useFixer = false)
     {
         $this->prettyPrinter = $prettyPrinter;
         $this->fixerConfig = $fixerConfig;
@@ -37,10 +37,12 @@ class Printer
                 }
 
                 file_put_contents($file->getFilename(), $this->prettyPrinter->prettyPrintFile([$file->getNode()]));
+            }
+        }
 
-                if ($this->useFixer) {
-                    $this->fix($file->getFilename());
-                }
+        if ($this->useFixer) {
+            foreach ($registry->getOutputDirectories() as $directory) {
+                $this->fix($directory);
             }
         }
     }
@@ -70,23 +72,24 @@ EOH
         return json_encode($rules);
     }
 
-    protected function fix(string $file): void
+    protected function fix(string $path): void
     {
         if (!class_exists(FixCommand::class)) {
             return;
         }
 
         $command = new FixCommand(new ToolInfo());
-        $input = new ArrayInput([
-            'path' => [$file],
+        $config = [
+            'path' => [$path],
             '--allow-risky' => true,
-            '--rules' => $this->getDefaultRules(),
-        ], $command->getDefinition());
+        ];
 
         if (!empty($this->fixerConfig)) {
-            $input->setOption('config', $this->fixerConfig);
+            $config['--config'] = $this->fixerConfig;
+        } else {
+            $config['--rules'] = $this->getDefaultRules();
         }
 
-        $command->run($input, new NullOutput());
+        $command->run(new ArrayInput($config, $command->getDefinition()), new NullOutput());
     }
 }

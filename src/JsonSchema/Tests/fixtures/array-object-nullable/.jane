@@ -5,6 +5,5 @@ return [
     'root-class' => 'Test',
     'namespace' => 'Jane\JsonSchema\Tests\Expected',
     'directory' => __DIR__ . '/generated',
-    'use-fixer' => false,
     'strict' => true,
 ];

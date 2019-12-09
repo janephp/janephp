@@ -46,9 +46,11 @@ class GenerateCommand extends Command
 
         if (\array_key_exists('json-schema-file', $options)) {
             $registry->addSchema($this->resolveSchema($options['json-schema-file'], $options));
+            $registry->addOutputDirectory($options['directory']);
         } else {
             foreach ($options['mapping'] as $schema => $schemaOptions) {
                 $registry->addSchema($this->resolveSchema($schema, $schemaOptions));
+                $registry->addOutputDirectory($schemaOptions['directory']);
             }
         }
 
@@ -78,7 +80,7 @@ class GenerateCommand extends Command
             'reference' => true,
             'strict' => true,
             'date-format' => \DateTime::RFC3339,
-            'use-fixer' => true,
+            'use-fixer' => false,
             'fixer-config-file' => null,
             'use-cacheable-supports-method' => null,
         ]);

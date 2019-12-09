@@ -4,5 +4,4 @@ return [
     'openapi-file' => __DIR__ . '/openapi.json',
     'namespace' => 'Jane\OpenApi\Tests\Expected',
     'directory' => __DIR__ . '/generated',
-    'use-fixer' => false,
 ];

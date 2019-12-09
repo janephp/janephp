@@ -24,7 +24,7 @@ class LibraryTest extends TestCase
             'reference' => true,
             'strict' => false,
         ]);
-        $this->printer = new Printer(new Standard());
+        $this->printer = new Printer(new Standard(), '', true);
     }
 
     /**
@@ -34,6 +34,7 @@ class LibraryTest extends TestCase
     {
         $registry = new Registry();
         $registry->addSchema(new Schema(__DIR__ . '/data/json-schema.json', 'Jane\JsonSchema', __DIR__ . '/generated', 'JsonSchema'));
+        $registry->addOutputDirectory(__DIR__ . '/generated');
 
         $this->jane->generate($registry);
         $this->printer->output($registry);
