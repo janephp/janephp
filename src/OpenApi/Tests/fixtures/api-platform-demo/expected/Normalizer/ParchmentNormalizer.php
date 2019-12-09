@@ -48,9 +48,6 @@ class ParchmentNormalizer implements DenormalizerInterface, NormalizerInterface,
         if (null !== $object->getDescription()) {
             $data->{'description'} = $object->getDescription();
         }
-        if (null !== $object->getId()) {
-            $data->{'id'} = $object->getId();
-        }
         return $data;
     }
 }
