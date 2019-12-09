@@ -1,0 +1,23 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "version": "",
+        "title": ""
+    },
+    "components": {
+        "schemas": {
+            "Model": {
+                "type": "object",
+                "properties": {
+                    "foo": {
+                        "readOnly": true,
+                        "type": "string"
+                    },
+                    "bar": {
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    }
+}
