@@ -13,7 +13,7 @@ use Jane\JsonSchema\Guesser\Guess\ObjectType;
 use Jane\JsonSchema\Guesser\Guess\PatternMultipleType;
 use Jane\JsonSchema\Guesser\Guess\Property;
 use Jane\JsonSchema\Guesser\Guess\Type;
-use Jane\OpenApi\JsonSchema\Model\Schema;
+use Jane\JsonSchemaRuntime\Reference;
 use PhpParser\Node\Arg;
 use PhpParser\Node\Name;
 use PhpParser\Node\Param;
@@ -95,7 +95,7 @@ trait NormalizerGenerator
 
         /** @var Property $property */
         foreach ($classGuess->getProperties() as $property) {
-            if ($property->getObject() instanceof Schema && !$property->getObject()->getReadOnly()) {
+            if (!$this->isReadOnlyProperty($property)) {
                 $propertyVar = new Expr\MethodCall($objectVariable, $this->getNaming()->getPrefixedMethodName('get', $property->getPhpName()));
 
                 list($normalizationStatements, $outputVar) = $property->getType()->createNormalizationStatement($context, $propertyVar);
@@ -197,5 +197,12 @@ trait NormalizerGenerator
         return [
             new Stmt\Expression(new Expr\Assign($dataVariable, new Expr\New_(new Name('\\stdClass')))),
         ];
+    }
+
+    protected function isReadOnlyProperty(Property $property): bool
+    {
+        $isNotAReference = !$property->getObject() instanceof Reference;
+
+        return $isNotAReference && $property->getObject()->getReadOnly();
     }
 }
