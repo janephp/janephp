@@ -1,8 +1,7 @@
 <?php
 
 return [
-    'openapi-file' => 'https://demo.api-platform.com/docs.json',
+    'openapi-file' => __DIR__ . '/apip-demo.json',
     'namespace' => 'ApiPlatform\Demo',
     'directory' => __DIR__ . '/generated',
-    'use-fixer' => false,
 ];
