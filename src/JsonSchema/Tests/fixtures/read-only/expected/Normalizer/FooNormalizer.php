@@ -1,6 +1,6 @@
 <?php
 
-namespace ApiPlatform\Demo\Normalizer;
+namespace Jane\JsonSchema\Tests\Expected\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
@@ -10,43 +10,49 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class ParchmentNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+class FooNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     public function supportsDenormalization($data, $type, $format = null)
     {
-        return $type === 'ApiPlatform\\Demo\\Model\\Parchment';
+        return $type === 'Jane\\JsonSchema\\Tests\\Expected\\Model\\Foo';
     }
     public function supportsNormalization($data, $format = null)
     {
-        return is_object($data) && get_class($data) === 'ApiPlatform\\Demo\\Model\\Parchment';
+        return $data instanceof \Jane\JsonSchema\Tests\Expected\Model\Foo;
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
         if (!is_object($data)) {
             throw new InvalidArgumentException();
         }
-        $object = new \ApiPlatform\Demo\Model\Parchment();
-        if (property_exists($data, 'title')) {
-            $object->setTitle($data->{'title'});
+        if (isset($data->{'$ref'})) {
+            return new Reference($data->{'$ref'}, $context['document-origin']);
         }
-        if (property_exists($data, 'description')) {
-            $object->setDescription($data->{'description'});
+        if (isset($data->{'$recursiveRef'})) {
+            return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
         }
-        if (property_exists($data, 'id')) {
-            $object->setId($data->{'id'});
+        $object = new \Jane\JsonSchema\Tests\Expected\Model\Foo();
+        if (property_exists($data, 'foo')) {
+            $object->setFoo($data->{'foo'});
+        }
+        if (property_exists($data, 'bar')) {
+            $object->setBar($data->{'bar'});
+        }
+        if (property_exists($data, 'fooBar')) {
+            $object->setFooBar($data->{'fooBar'});
         }
         return $object;
     }
     public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
-        if (null !== $object->getTitle()) {
-            $data->{'title'} = $object->getTitle();
+        if (null !== $object->getBar()) {
+            $data->{'bar'} = $object->getBar();
         }
-        if (null !== $object->getDescription()) {
-            $data->{'description'} = $object->getDescription();
+        if (null !== $object->getFooBar()) {
+            $data->{'fooBar'} = $object->getFooBar();
         }
         return $data;
     }

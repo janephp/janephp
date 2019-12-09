@@ -1,0 +1,7 @@
+<?php
+
+return [
+    'openapi-file' => __DIR__ . '/schema.json',
+    'namespace' => 'Jane\OpenApi\Tests\Expected',
+    'directory' => __DIR__ . '/generated',
+];

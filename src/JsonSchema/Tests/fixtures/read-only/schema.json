@@ -1,0 +1,23 @@
+{
+    "id": "http://json-schema.org/draft-04/schema#",
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "description": "Schema with definitions",
+    "definitions": {
+        "Foo": {
+            "type": "object",
+            "properties": {
+                "foo": {
+                    "type": "string",
+                    "readOnly": true
+                },
+                "bar": {
+                    "type": "string",
+                    "readOnly": false
+                },
+                "fooBar": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}

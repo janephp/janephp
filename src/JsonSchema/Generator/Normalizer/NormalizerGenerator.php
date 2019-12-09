@@ -94,43 +94,45 @@ trait NormalizerGenerator
 
         /** @var Property $property */
         foreach ($classGuess->getProperties() as $property) {
-            $propertyVar = new Expr\MethodCall($objectVariable, $this->getNaming()->getPrefixedMethodName('get', $property->getPhpName()));
+            if (!$property->isReadOnly()) {
+                $propertyVar = new Expr\MethodCall($objectVariable, $this->getNaming()->getPrefixedMethodName('get', $property->getPhpName()));
 
-            list($normalizationStatements, $outputVar) = $property->getType()->createNormalizationStatement($context, $propertyVar);
+                list($normalizationStatements, $outputVar) = $property->getType()->createNormalizationStatement($context, $propertyVar);
 
-            $normalizationStatements[] = new Stmt\Expression(new Expr\Assign(new Expr\PropertyFetch($dataVariable, sprintf("{'%s'}", $property->getName())), $outputVar));
+                $normalizationStatements[] = new Stmt\Expression(new Expr\Assign(new Expr\PropertyFetch($dataVariable, sprintf("{'%s'}", $property->getName())), $outputVar));
 
-            if ($property->isNullable() || ($property->getType() instanceof MultipleType && \count(array_intersect([Type::TYPE_NULL], $property->getType()->getTypes())) === 1) || ($property->getType()->getName() === Type::TYPE_NULL)) {
-                if ($property->getType()->getName() !== Type::TYPE_NULL &&
-                    (
-                        $property->getType() instanceof DateTimeType ||
-                        $property->getType() instanceof MapType ||
-                        $property->getType() instanceof ObjectType ||
-                        $property->getType() instanceof PatternMultipleType ||
-                        $property->getType() instanceof ArrayType
-                    )) {
-                    $statements[] = new Stmt\If_(
-                        new Expr\BinaryOp\NotIdentical(new Expr\ConstFetch(new Name('null')), $propertyVar),
-                        [
-                            'stmts' => $normalizationStatements,
-                        ]
-                    );
-                    $statements[] = new Stmt\Else_(
-                        [new Stmt\Expression(new Expr\Assign(new Expr\PropertyFetch($dataVariable, sprintf("{'%s'}", $property->getName())), new Expr\ConstFetch(new Name('null'))))]
-                    );
-                } else {
-                    $statements = array_merge($statements, $normalizationStatements);
+                if ($property->isNullable() || ($property->getType() instanceof MultipleType && \count(array_intersect([Type::TYPE_NULL], $property->getType()->getTypes())) === 1) || ($property->getType()->getName() === Type::TYPE_NULL)) {
+                    if ($property->getType()->getName() !== Type::TYPE_NULL &&
+                        (
+                            $property->getType() instanceof DateTimeType ||
+                            $property->getType() instanceof MapType ||
+                            $property->getType() instanceof ObjectType ||
+                            $property->getType() instanceof PatternMultipleType ||
+                            $property->getType() instanceof ArrayType
+                        )) {
+                        $statements[] = new Stmt\If_(
+                            new Expr\BinaryOp\NotIdentical(new Expr\ConstFetch(new Name('null')), $propertyVar),
+                            [
+                                'stmts' => $normalizationStatements,
+                            ]
+                        );
+                        $statements[] = new Stmt\Else_(
+                            [new Stmt\Expression(new Expr\Assign(new Expr\PropertyFetch($dataVariable, sprintf("{'%s'}", $property->getName())), new Expr\ConstFetch(new Name('null'))))]
+                        );
+                    } else {
+                        $statements = array_merge($statements, $normalizationStatements);
+                    }
+
+                    continue;
                 }
 
-                continue;
+                $statements[] = new Stmt\If_(
+                    new Expr\BinaryOp\NotIdentical(new Expr\ConstFetch(new Name('null')), $propertyVar),
+                    [
+                        'stmts' => $normalizationStatements,
+                    ]
+                );
             }
-
-            $statements[] = new Stmt\If_(
-                new Expr\BinaryOp\NotIdentical(new Expr\ConstFetch(new Name('null')), $propertyVar),
-                [
-                    'stmts' => $normalizationStatements,
-                ]
-            );
         }
 
         $patternCondition = [];
