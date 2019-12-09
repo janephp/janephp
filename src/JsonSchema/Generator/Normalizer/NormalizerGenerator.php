@@ -4,6 +4,7 @@ namespace Jane\JsonSchema\Generator\Normalizer;
 
 use Jane\JsonSchema\Generator\Context\Context;
 use Jane\JsonSchema\Generator\Naming;
+use Jane\JsonSchema\Guesser\Guess\ArrayType;
 use Jane\JsonSchema\Guesser\Guess\ClassGuess;
 use Jane\JsonSchema\Guesser\Guess\DateTimeType;
 use Jane\JsonSchema\Guesser\Guess\MapType;
@@ -105,7 +106,8 @@ trait NormalizerGenerator
                         $property->getType() instanceof DateTimeType ||
                         $property->getType() instanceof MapType ||
                         $property->getType() instanceof ObjectType ||
-                        $property->getType() instanceof PatternMultipleType
+                        $property->getType() instanceof PatternMultipleType ||
+                        $property->getType() instanceof ArrayType
                     )) {
                     $statements[] = new Stmt\If_(
                         new Expr\BinaryOp\NotIdentical(new Expr\ConstFetch(new Name('null')), $propertyVar),
