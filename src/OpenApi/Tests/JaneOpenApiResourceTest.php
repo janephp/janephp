@@ -6,7 +6,6 @@ use Jane\OpenApi\Command\GenerateCommand;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Output\NullOutput;
-use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Finder\Finder;
 use Symfony\Component\Finder\SplFileInfo;
 
@@ -17,21 +16,12 @@ class JaneOpenApiResourceTest extends TestCase
      */
     public function testRessources($name, SplFileInfo $testDirectory)
     {
-        // 1. Cleanup generated
-        $filesystem = new Filesystem();
-
-        if ($filesystem->exists($testDirectory->getRealPath() . \DIRECTORY_SEPARATOR . 'generated')) {
-            $filesystem->remove($testDirectory->getRealPath() . \DIRECTORY_SEPARATOR . 'generated');
-        }
-
-        $filesystem->mkdir($testDirectory->getRealPath() . \DIRECTORY_SEPARATOR . 'generated');
-
-        // 2. Generate
+        // 1. Generate
         $command = new GenerateCommand();
         $input = new ArrayInput(['--config-file' => $testDirectory->getRealPath() . \DIRECTORY_SEPARATOR . '.jane-openapi'], $command->getDefinition());
         $command->execute($input, new NullOutput());
 
-        // 3. Compare
+        // 2. Compare
         $expectedFinder = new Finder();
         $expectedFinder->in($testDirectory->getRealPath() . \DIRECTORY_SEPARATOR . 'expected');
 

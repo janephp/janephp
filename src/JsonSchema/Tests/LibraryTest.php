@@ -24,7 +24,9 @@ class LibraryTest extends TestCase
             'reference' => true,
             'strict' => false,
         ]);
-        $this->printer = new Printer(new Standard(), '', true);
+        $this->printer = new Printer(new Standard(), '');
+        $this->printer->setUseFixer(true);
+        $this->printer->setCleanGenerated(false);
     }
 
     /**

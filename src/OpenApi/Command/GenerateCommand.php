@@ -67,6 +67,9 @@ class GenerateCommand extends Command
         if (\array_key_exists('use-fixer', $options) && \is_bool($options['use-fixer'])) {
             $printer->setUseFixer($options['use-fixer']);
         }
+        if (\array_key_exists('clean-generated', $options) && \is_bool($options['clean-generated'])) {
+            $printer->setCleanGenerated($options['clean-generated']);
+        }
 
         $janeOpenApi->generate($registry);
         $printer->output($registry);
@@ -84,6 +87,7 @@ class GenerateCommand extends Command
             'strict' => true,
             'use-fixer' => false,
             'fixer-config-file' => null,
+            'clean-generated' => true,
             'use-cacheable-supports-method' => null,
             'client' => JaneOpenApi::CLIENT_HTTPLUG,
         ]);
@@ -123,6 +127,7 @@ class GenerateCommand extends Command
             'strict',
             'use-fixer',
             'fixer-config-file',
+            'clean-generated',
             'use-cacheable-supports-method',
             'client',
         ]);

@@ -2,6 +2,7 @@
 
 namespace Jane\JsonSchema\Command;
 
+use Jane\JsonSchema\Jane;
 use Jane\JsonSchema\Printer;
 use Jane\JsonSchema\Registry;
 use Jane\JsonSchema\Schema;
@@ -54,7 +55,7 @@ class GenerateCommand extends Command
             }
         }
 
-        $jane = \Jane\JsonSchema\Jane::build($options);
+        $jane = Jane::build($options);
         $fixerConfigFile = '';
 
         if (\array_key_exists('fixer-config-file', $options) && null !== $options['fixer-config-file']) {
@@ -63,8 +64,11 @@ class GenerateCommand extends Command
 
         $printer = new Printer(new Standard(), $fixerConfigFile);
 
-        if (\array_key_exists('use-fixer', $options) && false === $options['use-fixer']) {
-            $printer->setUseFixer(false);
+        if (\array_key_exists('use-fixer', $options) && \is_bool($options['use-fixer'])) {
+            $printer->setUseFixer($options['use-fixer']);
+        }
+        if (\array_key_exists('clean-generated', $options) && \is_bool($options['clean-generated'])) {
+            $printer->setCleanGenerated($options['clean-generated']);
         }
 
         $jane->generate($registry);
@@ -82,6 +86,7 @@ class GenerateCommand extends Command
             'date-format' => \DateTime::RFC3339,
             'use-fixer' => false,
             'fixer-config-file' => null,
+            'clean-generated' => true,
             'use-cacheable-supports-method' => null,
         ]);
 
@@ -113,6 +118,7 @@ class GenerateCommand extends Command
             'strict',
             'use-fixer',
             'fixer-config-file',
+            'clean-generated',
             'use-cacheable-supports-method',
         ]);
 
