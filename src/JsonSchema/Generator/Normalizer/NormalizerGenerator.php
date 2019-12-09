@@ -95,7 +95,7 @@ trait NormalizerGenerator
 
         /** @var Property $property */
         foreach ($classGuess->getProperties() as $property) {
-            if (!$this->isReadOnlyProperty($property)) {
+            if (!$property->isReadOnly()) {
                 $propertyVar = new Expr\MethodCall($objectVariable, $this->getNaming()->getPrefixedMethodName('get', $property->getPhpName()));
 
                 list($normalizationStatements, $outputVar) = $property->getType()->createNormalizationStatement($context, $propertyVar);
@@ -197,12 +197,5 @@ trait NormalizerGenerator
         return [
             new Stmt\Expression(new Expr\Assign($dataVariable, new Expr\New_(new Name('\\stdClass')))),
         ];
-    }
-
-    protected function isReadOnlyProperty(Property $property): bool
-    {
-        $isNotAReference = !$property->getObject() instanceof Reference;
-
-        return $isNotAReference && $property->getObject()->getReadOnly();
     }
 }
