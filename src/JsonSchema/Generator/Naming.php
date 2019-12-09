@@ -29,54 +29,23 @@ class Naming
         )\b
     /ix';
 
-    /**
-     * Get a property name.
-     *
-     * @param $name
-     *
-     * @return string
-     */
-    public function getPropertyName($name)
+    public function getPropertyName(string $name): string
     {
-        $name = $this->replaceDollar($name);
+        $name = $this->cleaning($name);
 
-        return Inflector::camelize($name);
+        return $name;
     }
 
-    /**
-     * Get a method name given a prefix.
-     *
-     * @param $prefix
-     * @param $name
-     *
-     * @return string
-     */
-    public function getPrefixedMethodName($prefix, $name)
+    public function getPrefixedMethodName(string $prefix, string $name): string
     {
-        $name = $this->replaceDollar($name);
+        $name = $this->cleaning($name);
 
         return sprintf('%s%s', $prefix, Inflector::classify($name));
     }
 
-    /**
-     * Get a class name.
-     *
-     * @param $name
-     *
-     * @return string
-     */
-    public function getClassName($name)
+    public function getClassName(string $name): string
     {
-        $name = $this->replaceDollar($name);
-        $name = preg_replace_callback('#[/\{\}]+(\w)#', function ($matches) {
-            return ucfirst($matches[1]);
-        }, $name);
-
-        // Doctrine Inflector does not seem to handle some characters (like dots) well.
-        // So replace invalid char by an underscore to allow Doctrine to uppercase word correctly.
-        $name = trim(preg_replace('/[^a-z0-9 ]+/iu', '_', $name));
-
-        $name = Inflector::classify($name);
+        $name = $this->cleaning($name, true);
 
         if (preg_match(self::BAD_CLASS_NAME_REGEX, $name)) {
             $name = '_' . $name;
@@ -85,12 +54,7 @@ class Naming
         return $name;
     }
 
-    /**
-     * @param $name
-     *
-     * @return mixed
-     */
-    protected function replaceDollar($name)
+    protected function cleaning(string $name, bool $class = false): string
     {
         if (preg_match('/\$/', $name)) {
             $name = preg_replace_callback('/\$([a-z])/', function ($matches) {
@@ -98,6 +62,18 @@ class Naming
             }, $name);
         }
 
-        return $name;
+        $name = preg_replace_callback('#[/\{\}]+(\w)#', function ($matches) {
+            return ucfirst($matches[1]);
+        }, $name);
+
+        // Doctrine Inflector does not seem to handle some characters (like dots, @, :) well.
+        // So replace invalid char by an underscore to allow Doctrine to uppercase word correctly.
+        $name = trim(preg_replace('/[^a-z0-9 ]+/iu', '_', $name));
+
+        if ($class) {
+            return Inflector::classify($name);
+        }
+
+        return Inflector::camelize($name);
     }
 }
