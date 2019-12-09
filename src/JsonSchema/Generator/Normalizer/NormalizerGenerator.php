@@ -13,7 +13,6 @@ use Jane\JsonSchema\Guesser\Guess\ObjectType;
 use Jane\JsonSchema\Guesser\Guess\PatternMultipleType;
 use Jane\JsonSchema\Guesser\Guess\Property;
 use Jane\JsonSchema\Guesser\Guess\Type;
-use Jane\JsonSchemaRuntime\Reference;
 use PhpParser\Node\Arg;
 use PhpParser\Node\Name;
 use PhpParser\Node\Param;
