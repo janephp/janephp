@@ -68,6 +68,8 @@ class GenerateCommand extends Command
 
         $janeOpenApi->generate($registry);
         $printer->output($registry);
+
+        return 0;
     }
 
     protected function resolveConfiguration(array $options = [])
