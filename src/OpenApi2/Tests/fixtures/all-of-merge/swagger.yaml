@@ -1,0 +1,22 @@
+swagger: "2.0"
+definitions:
+  Bar:
+    properties:
+      bar:
+        type: "string"
+  Foo:
+    allOf:
+      - $ref: "#/definitions/Bar"
+      - type: "object"
+        properties:
+          foo:
+            type: "string"
+            description: "A description"
+  Fuz:
+    allOf:
+      - $ref: "#/definitions/Bar"
+      - type: "object"
+        properties:
+          bar:
+            type: "string"
+            description: "A description"

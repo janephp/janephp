@@ -97,7 +97,10 @@ class ObjectGuesser implements GuesserInterface, PropertiesGuesserInterface, Typ
 
             $nullable = $this->isPropertyNullable($propertyObj);
 
-            $properties[$key] = new Property($property, $key, $reference . '/properties/' . $key, $nullable, null, $propertyObj->getDescription(), $propertyObj->getDefault(), $propertyObj->getReadOnly(), $propertyObj->getDeprecated());
+            $properties[$key] = new Property($property, $key, $reference . '/properties/' . $key, $nullable, null, $propertyObj->getDescription(), $propertyObj->getDefault(), $propertyObj->getReadOnly());
+            if (method_exists($propertyObj, 'getDeprecated')) {
+                $properties[$key]->setDeprecated($propertyObj->getDeprecated());
+            }
         }
 
         return $properties;

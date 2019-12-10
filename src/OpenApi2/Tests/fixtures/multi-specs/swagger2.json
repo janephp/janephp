@@ -1,0 +1,21 @@
+{
+    "swagger": "2.0",
+    "paths": {
+        "/test-query": {
+            "get": {
+                "operationId": "Test Reference Response",
+                "responses": {
+                    "200": {
+                        "description": "test",
+                        "schema": {
+                            "$ref": "swagger1.json#/definitions/body"
+                        }
+                    }
+                },
+                "tags": [
+                    "Test"
+                ]
+            }
+        }
+    }
+}

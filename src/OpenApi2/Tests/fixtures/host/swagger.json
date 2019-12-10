@@ -1,0 +1,16 @@
+{
+    "swagger": "2.0",
+    "basePath": "base-path",
+    "host": "www.foo-host.com",
+    "schemes": [
+        "http",
+        "https"
+    ],
+    "paths": {
+        "/test-exception": {
+            "get": {
+                "operationId": "testHost"
+            }
+        }
+    }
+}

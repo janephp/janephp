@@ -27,7 +27,7 @@ use Jane\OpenApi\Guesser\Guess\ClassGuess;
 
 class JaneOpenApi extends ChainGenerator
 {
-    public const VERSION = '4.x-dev';
+    public const VERSION = '5.x-dev';
     public const CLIENT_PSR18 = 'psr18';
     public const CLIENT_HTTPLUG = 'httplug';
 
@@ -124,19 +124,7 @@ class JaneOpenApi extends ChainGenerator
             @trigger_error(sprintf('Generating "%s" client is deprecated, use the "%s" in the "client" option', self::CLIENT_HTTPLUG, self::CLIENT_PSR18));
         }
 
-        $encoders = [
-            new JsonEncoder(
-                new JsonEncode(),
-                new JsonDecode()
-            ),
-            new YamlEncoder(
-                new Dumper(),
-                new Parser()
-            ),
-        ];
-
-        $normalizers = JsonSchema\Normalizer\NormalizerFactory::create();
-        $serializer = new Serializer($normalizers, $encoders);
+        $serializer = self::buildSerializer();
         $schemaParser = new SchemaParser($serializer);
         $generators = GeneratorFactory::build($serializer, $options);
         $naming = new Naming();
@@ -161,5 +149,17 @@ class JaneOpenApi extends ChainGenerator
         }
 
         return $self;
+    }
+
+    public static function buildSerializer()
+    {
+        $encoders = [
+            new JsonEncoder(new JsonEncode([JsonEncode::OPTIONS => JSON_UNESCAPED_SLASHES]), new JsonDecode()),
+            new YamlEncoder(new Dumper(), new Parser()),
+        ];
+
+        $normalizers = JsonSchema\Normalizer\NormalizerFactory::create();
+
+        return new Serializer($normalizers, $encoders);
     }
 }

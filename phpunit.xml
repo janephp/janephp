@@ -23,6 +23,7 @@
             <directory>./src/*/Tests</directory>
             <exclude>./src/JsonSchema/Tests/fixtures</exclude>
             <exclude>./src/OpenApi/Tests/fixtures</exclude>
+            <exclude>./src/OpenApi2/Tests/fixtures</exclude>
         </testsuite>
     </testsuites>
 
@@ -35,6 +36,7 @@
                 <directory>./src/JsonSchema/Model</directory>
                 <directory>./src/JsonSchema/Normalizer</directory>
                 <directory>./src/OpenApi/JsonSchema</directory>
+                <directory>./src/OpenApi2/JsonSchema</directory>
             </exclude>
         </whitelist>
     </filter>
