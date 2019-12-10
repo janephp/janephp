@@ -288,10 +288,15 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
     {
         return $this->executePsr7Endpoint(new \ApiPlatform\Demo\Endpoint\PutReviewItem($id, $requestBody), $fetch);
     }
-    public static function create($httpClient = null)
+    public static function create($httpClient = null, \Jane\OpenApiRuntime\Client\Authentication $authentication = null)
     {
         if (null === $httpClient) {
             $httpClient = \Http\Discovery\HttpClientDiscovery::find();
+            $plugins = array();
+            if (null !== $authentication) {
+                $plugins[] = $authentication->getPlugin();
+            }
+            $httpClient = new \Http\Client\Common\PluginClient($httpClient, $plugins);
         }
         $messageFactory = \Http\Discovery\MessageFactoryDiscovery::find();
         $streamFactory = \Http\Discovery\StreamFactoryDiscovery::find();

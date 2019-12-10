@@ -1,0 +1,49 @@
+{
+    "openapi": "3.0.2",
+    "paths": {
+        "/foo": {
+            "get": {
+                "operationId": "getFoo",
+                "responses": {
+                    "200": {
+                        "description": "no error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Foo"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "info": {
+        "version": "",
+        "title": ""
+    },
+    "servers": [
+        {
+            "url": "https://www.foo-host.com/base-path"
+        }
+    ],
+    "components": {
+        "schemas": {
+            "Foo": {
+                "type": "object",
+                "properties": {
+                    "foo": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "securitySchemes": {
+            "Bearer": {
+                "type": "http",
+                "scheme": "bearer"
+            }
+        }
+    }
+}

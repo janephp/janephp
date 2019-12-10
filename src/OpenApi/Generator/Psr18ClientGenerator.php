@@ -2,13 +2,11 @@
 
 namespace Jane\OpenApi\Generator;
 
-use Http\Client\Common\Plugin\AddHostPlugin;
-use Http\Client\Common\Plugin\AddPathPlugin;
-use Http\Client\Common\PluginClient;
 use Http\Discovery\Psr17FactoryDiscovery;
-use Http\Discovery\Psr18ClientDiscovery;
 use Jane\JsonSchema\Generator\Context\Context;
-use Jane\OpenApi\JsonSchema\Model\OpenApi;
+use Jane\JsonSchema\Schema as BaseSchema;
+use Jane\OpenApi\Schema;
+use Jane\OpenApiRuntime\Client\Authentication;
 use Jane\OpenApiRuntime\Client\Psr18Client;
 use PhpParser\Node;
 use PhpParser\Node\Name;
@@ -33,14 +31,17 @@ class Psr18ClientGenerator extends ClientGenerator
         ]);
     }
 
-    protected function getFactoryMethod(Context $context): Stmt
+    protected function getFactoryMethod(BaseSchema $schema, Context $context): Stmt
     {
+        $params = [new Node\Param(new Expr\Variable('httpClient'), new Expr\ConstFetch(new Name('null')))];
+        if ($schema instanceof Schema && \count($schema->getSecuritySchemes()) > 0) {
+            $params[] = new Node\Param(new Expr\Variable('authentication'), new Expr\ConstFetch(new Name('null')), new Name\FullyQualified(Authentication::class));
+        }
+
         return new Stmt\ClassMethod(
             'create', [
                 'flags' => Stmt\Class_::MODIFIER_STATIC | Stmt\Class_::MODIFIER_PUBLIC,
-                'params' => [
-                    new Node\Param(new Expr\Variable('httpClient'), new Expr\ConstFetch(new Name('null'))),
-                ],
+                'params' => $params,
                 'stmts' => [
                     new Stmt\If_(
                         new Expr\BinaryOp\Identical(new Expr\ConstFetch(new Name('null')), new Expr\Variable('httpClient')),
@@ -99,87 +100,5 @@ class Psr18ClientGenerator extends ClientGenerator
                 ],
             ]
         );
-    }
-
-    private function getHttpClientCreateExpr(Context $context)
-    {
-        /** @var OpenApi $openApi */
-        $openApi = $context->getCurrentSchema()->getParsed();
-        $baseUri = null;
-        $plugins = [];
-
-        $servers = $openApi->getServers();
-        $server = $servers !== null && !empty($servers[0]) ? $servers[0] : null;
-
-        if (null !== $server) {
-            $url = parse_url($server->getUrl());
-            $baseUri = '';
-
-            if (\array_key_exists('host', $url)) {
-                $scheme = $url['scheme'] ?? 'https';
-                $baseUri = $scheme . '://' . trim($url['host'], '/');
-                $plugins[] = AddHostPlugin::class;
-            }
-
-            if (\array_key_exists('path', $url) && null !== $url['path']) {
-                $baseUri .= '/' . trim($url['path'], '/');
-                $plugins[] = AddPathPlugin::class;
-            }
-        }
-
-        $httpClientAssign = new Stmt\Expression(new Expr\Assign(
-            new Expr\Variable('httpClient'),
-            new Expr\StaticCall(
-                new Name\FullyQualified(Psr18ClientDiscovery::class),
-                'find'
-            )
-        ));
-
-        if (empty($baseUri) || $baseUri === '/') {
-            return [$httpClientAssign];
-        }
-
-        $statements = [
-            $httpClientAssign,
-            new Stmt\Expression(new Expr\Assign(
-                new Expr\Variable('plugins'),
-                new Expr\Array_()
-            )),
-            new Stmt\Expression(new Expr\Assign(
-                new Expr\Variable('uri'),
-                new Expr\MethodCall(
-                    new Expr\StaticCall(
-                        new Name\FullyQualified(Psr17FactoryDiscovery::class),
-                        'findUrlFactory'
-                    ),
-                    'createUri',
-                    [
-                        new Node\Arg(new Node\Scalar\String_($baseUri)),
-                    ]
-                )
-            )),
-        ];
-
-        foreach ($plugins as $pluginClass) {
-            $statements[] = new Stmt\Expression(new Expr\Assign(
-                new Expr\ArrayDimFetch(new Expr\Variable('plugins')),
-                new Expr\New_(new Name\FullyQualified($pluginClass), [
-                    new Node\Arg(new Expr\Variable('uri')),
-                ])
-            ));
-        }
-
-        $statements[] = new Stmt\Expression(new Expr\Assign(
-            new Expr\Variable('httpClient'),
-            new Expr\New_(
-                new Name\FullyQualified(PluginClient::class),
-                [
-                    new Node\Arg(new Expr\Variable('httpClient')),
-                    new Node\Arg(new Expr\Variable('plugins')),
-                ]
-            )
-        ));
-
-        return $statements;
     }
 }

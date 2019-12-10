@@ -32,6 +32,9 @@
         "friendsofphp/php-cs-fixer": "2.15.3",
         "phpunit/phpunit": "^6.0"
     },
+    "conflict": {
+        "jane-php/json-schema-runtime": "<5.3"
+    },
     "suggest": {
         "friendsofphp/php-cs-fixer": "To have a nice formatting of the generated files"
     },
