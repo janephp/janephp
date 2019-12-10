@@ -37,7 +37,10 @@
         "jane-php/automapper": "self.version",
         "jane-php/json-schema": "self.version",
         "jane-php/json-schema-runtime": "self.version",
+        "jane-php/open-api-common": "self.version",
         "jane-php/open-api": "self.version",
+        "jane-php/open-api-2": "self.version",
+        "jane-php/open-api-3": "self.version",
         "jane-php/open-api-runtime": "self.version"
     },
     "require-dev": {
@@ -78,6 +81,7 @@
         "src/OpenApi/bin/jane-openapi"
     ],
     "scripts": {
+        "cs-fix": "php-cs-fixer fix",
         "test": "php vendor/bin/phpunit",
         "test-coverage": "phpdbg -qrr -d memory_limit=-1 vendor/bin/phpunit --coverage-text --coverage-clover=build/logs/clover.xml --coverage-html=build/html"
     }
