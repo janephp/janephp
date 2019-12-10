@@ -23,6 +23,7 @@
         "ext-json": "*",
         "jane-php/json-schema": "^5.0",
         "jane-php/json-schema-runtime": "^5.0",
+        "jane-php/open-api-common": "^5.0",
         "jane-php/open-api-runtime": "^5.0",
         "nikic/php-parser": "^4.0",
         "symfony/serializer": "^3.2 || ^4.0 || ^5.0",
