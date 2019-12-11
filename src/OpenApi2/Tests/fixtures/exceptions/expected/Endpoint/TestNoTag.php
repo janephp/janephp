@@ -29,7 +29,7 @@ class TestNoTag extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jan
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType)
     {
         if (400 === $status) {
-            throw new \Jane\OpenApi2\Tests\Expected\Exception\TestNoTagBadRequestException($serializer->deserialize($body, 'Jane\\OpenApi\\Tests\\Expected\\Model\\Error', 'json'));
+            throw new \Jane\OpenApi2\Tests\Expected\Exception\TestNoTagBadRequestException($serializer->deserialize($body, 'Jane\\OpenApi2\\Tests\\Expected\\Model\\Error', 'json'));
         }
         if (404 === $status) {
             throw new \Jane\OpenApi2\Tests\Expected\Exception\TestNoTagNotFoundException();

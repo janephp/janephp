@@ -16,11 +16,11 @@ class ThingNormalizer implements DenormalizerInterface, NormalizerInterface, Den
     use NormalizerAwareTrait;
     public function supportsDenormalization($data, $type, $format = null)
     {
-        return $type === 'Jane\\OpenApi\\Tests\\Expected\\Model\\Thing';
+        return $type === 'Jane\\OpenApi2\\Tests\\Expected\\Model\\Thing';
     }
     public function supportsNormalization($data, $format = null)
     {
-        return get_class($data) === 'Jane\\OpenApi\\Tests\\Expected\\Model\\Thing';
+        return get_class($data) === 'Jane\\OpenApi2\\Tests\\Expected\\Model\\Thing';
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {

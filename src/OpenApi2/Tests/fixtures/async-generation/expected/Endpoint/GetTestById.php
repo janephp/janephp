@@ -38,13 +38,13 @@ class GetTestById extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \J
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType)
     {
         if (200 === $status) {
-            return $serializer->deserialize($body, 'Jane\\OpenApi\\Tests\\Expected\\Model\\TestIdGetResponse200', 'json');
+            return $serializer->deserialize($body, 'Jane\\OpenApi2\\Tests\\Expected\\Model\\TestIdGetResponse200', 'json');
         }
         if (400 === $status) {
-            throw new \Jane\OpenApi2\Tests\Expected\Exception\GetTestByIdBadRequestException($serializer->deserialize($body, 'Jane\\OpenApi\\Tests\\Expected\\Model\\Error', 'json'));
+            throw new \Jane\OpenApi2\Tests\Expected\Exception\GetTestByIdBadRequestException($serializer->deserialize($body, 'Jane\\OpenApi2\\Tests\\Expected\\Model\\Error', 'json'));
         }
         if (404 === $status) {
-            throw new \Jane\OpenApi2\Tests\Expected\Exception\GetTestByIdNotFoundException($serializer->deserialize($body, 'Jane\\OpenApi\\Tests\\Expected\\Model\\Error', 'json'));
+            throw new \Jane\OpenApi2\Tests\Expected\Exception\GetTestByIdNotFoundException($serializer->deserialize($body, 'Jane\\OpenApi2\\Tests\\Expected\\Model\\Error', 'json'));
         }
     }
 }

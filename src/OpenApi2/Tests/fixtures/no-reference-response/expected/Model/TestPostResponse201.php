@@ -5,13 +5,13 @@ namespace Jane\OpenApi2\Tests\Expected\Model;
 class TestPostResponse201
 {
     /**
-     *
+     * 
      *
      * @var string
      */
     protected $foo;
     /**
-     *
+     * 
      *
      * @return string
      */
@@ -20,7 +20,7 @@ class TestPostResponse201
         return $this->foo;
     }
     /**
-     *
+     * 
      *
      * @param string $foo
      *

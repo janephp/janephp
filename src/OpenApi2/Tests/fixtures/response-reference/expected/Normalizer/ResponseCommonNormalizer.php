@@ -16,11 +16,11 @@ class ResponseCommonNormalizer implements DenormalizerInterface, NormalizerInter
     use NormalizerAwareTrait;
     public function supportsDenormalization($data, $type, $format = null)
     {
-        return $type === 'Jane\\OpenApi\\Tests\\Expected\\Model\\ResponseCommon';
+        return $type === 'Jane\\OpenApi2\\Tests\\Expected\\Model\\ResponseCommon';
     }
     public function supportsNormalization($data, $format = null)
     {
-        return get_class($data) === 'Jane\\OpenApi\\Tests\\Expected\\Model\\ResponseCommon';
+        return get_class($data) === 'Jane\\OpenApi2\\Tests\\Expected\\Model\\ResponseCommon';
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {

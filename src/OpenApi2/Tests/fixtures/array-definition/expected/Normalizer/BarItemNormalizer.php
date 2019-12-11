@@ -16,11 +16,11 @@ class BarItemNormalizer implements DenormalizerInterface, NormalizerInterface, D
     use NormalizerAwareTrait;
     public function supportsDenormalization($data, $type, $format = null)
     {
-        return $type === 'Jane\\OpenApi\\Tests\\Expected\\Model\\BarItem';
+        return $type === 'Jane\\OpenApi2\\Tests\\Expected\\Model\\BarItem';
     }
     public function supportsNormalization($data, $format = null)
     {
-        return get_class($data) === 'Jane\\OpenApi\\Tests\\Expected\\Model\\BarItem';
+        return get_class($data) === 'Jane\\OpenApi2\\Tests\\Expected\\Model\\BarItem';
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {

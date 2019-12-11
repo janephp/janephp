@@ -16,11 +16,11 @@ class DogNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
     use NormalizerAwareTrait;
     public function supportsDenormalization($data, $type, $format = null)
     {
-        return $type === 'Jane\\OpenApi\\Tests\\Expected\\Model\\Dog';
+        return $type === 'Jane\\OpenApi2\\Tests\\Expected\\Model\\Dog';
     }
     public function supportsNormalization($data, $format = null)
     {
-        return get_class($data) === 'Jane\\OpenApi\\Tests\\Expected\\Model\\Dog';
+        return get_class($data) === 'Jane\\OpenApi2\\Tests\\Expected\\Model\\Dog';
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {

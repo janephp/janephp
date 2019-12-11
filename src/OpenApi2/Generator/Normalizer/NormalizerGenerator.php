@@ -6,12 +6,12 @@ use Jane\JsonSchema\Generator\Context\Context;
 use Jane\JsonSchema\Generator\Normalizer\NormalizerGenerator as JsonSchemaNormalizerGenerator;
 use Jane\JsonSchema\Guesser\Guess\ClassGuess;
 use Jane\OpenApi2\Guesser\Guess\MultipleClass;
-use function Jane\parserVariable;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Name;
 use PhpParser\Node\Param;
 use PhpParser\Node\Scalar;
 use PhpParser\Node\Stmt;
+use PhpParser\Node;
 
 trait NormalizerGenerator
 {
@@ -65,8 +65,8 @@ trait NormalizerGenerator
         return new Stmt\ClassMethod('supportsNormalization', [
             'type' => Stmt\Class_::MODIFIER_PUBLIC,
             'params' => [
-                new Param(parserVariable('data')),
-                new Param(parserVariable('format'), new Expr\ConstFetch(new Name('null'))),
+                new Param(new Node\Expr\Variable('data')),
+                new Param(new Node\Expr\Variable('format'), new Expr\ConstFetch(new Name('null'))),
             ],
             'stmts' => [
                 new Stmt\Return_(new Expr\BinaryOp\Identical(

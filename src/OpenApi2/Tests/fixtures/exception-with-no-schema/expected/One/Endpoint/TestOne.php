@@ -31,7 +31,7 @@ class TestOne extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType)
     {
         if (200 === $status) {
-            return $serializer->deserialize($body, 'Jane\\OpenApi\\Tests\\Expected\\One\\Model\\TestOneGetResponse200', 'json');
+            return $serializer->deserialize($body, 'Jane\\OpenApi2\\Tests\\Expected\\One\\Model\\TestOneGetResponse200', 'json');
         }
         if (404 === $status) {
             throw new \Jane\OpenApi2\Tests\Expected\One\Exception\TestOneNotFoundException();

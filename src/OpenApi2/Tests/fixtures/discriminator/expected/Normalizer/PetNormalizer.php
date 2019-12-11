@@ -16,11 +16,11 @@ class PetNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
     use NormalizerAwareTrait;
     public function supportsDenormalization($data, $type, $format = null)
     {
-        return $type === 'Jane\\OpenApi\\Tests\\Expected\\Model\\Pet';
+        return $type === 'Jane\\OpenApi2\\Tests\\Expected\\Model\\Pet';
     }
     public function supportsNormalization($data, $format = null)
     {
-        return get_class($data) === 'Jane\\OpenApi\\Tests\\Expected\\Model\\Pet';
+        return get_class($data) === 'Jane\\OpenApi2\\Tests\\Expected\\Model\\Pet';
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
@@ -28,10 +28,10 @@ class PetNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
             throw new InvalidArgumentException();
         }
         if (property_exists($data, 'petType') and 'Cat' === $data->{'petType'}) {
-            return $this->denormalizer->denormalize($data, 'Jane\\OpenApi\\Tests\\Expected\\Model\\Cat', $format, $context);
+            return $this->denormalizer->denormalize($data, 'Jane\\OpenApi2\\Tests\\Expected\\Model\\Cat', $format, $context);
         }
         if (property_exists($data, 'petType') and 'Dog' === $data->{'petType'}) {
-            return $this->denormalizer->denormalize($data, 'Jane\\OpenApi\\Tests\\Expected\\Model\\Dog', $format, $context);
+            return $this->denormalizer->denormalize($data, 'Jane\\OpenApi2\\Tests\\Expected\\Model\\Dog', $format, $context);
         }
         $object = new \Jane\OpenApi2\Tests\Expected\Model\Pet();
         if (property_exists($data, 'name')) {

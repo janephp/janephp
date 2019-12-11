@@ -26,7 +26,7 @@ class TestReferenceResponse extends \Jane\OpenApiRuntime\Client\BaseEndpoint imp
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType)
     {
         if (200 === $status) {
-            return $serializer->deserialize($body, 'Jane\\OpenApi\\Tests\\Expected\\Api1\\Model\\Body', 'json');
+            return $serializer->deserialize($body, 'Jane\\OpenApi2\\Tests\\Expected\\Api1\\Model\\Body', 'json');
         }
     }
 }

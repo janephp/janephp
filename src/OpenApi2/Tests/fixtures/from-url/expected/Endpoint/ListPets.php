@@ -50,8 +50,8 @@ class ListPets extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType)
     {
         if (200 === $status) {
-            return $serializer->deserialize($body, 'Jane\\OpenApi\\Tests\\Expected\\Model\\Pet[]', 'json');
+            return $serializer->deserialize($body, 'Jane\\OpenApi2\\Tests\\Expected\\Model\\Pet[]', 'json');
         }
-        return $serializer->deserialize($body, 'Jane\\OpenApi\\Tests\\Expected\\Model\\Error', 'json');
+        return $serializer->deserialize($body, 'Jane\\OpenApi2\\Tests\\Expected\\Model\\Error', 'json');
     }
 }

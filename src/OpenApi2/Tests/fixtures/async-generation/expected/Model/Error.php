@@ -5,13 +5,13 @@ namespace Jane\OpenApi2\Tests\Expected\Model;
 class Error
 {
     /**
-     *
+     * 
      *
      * @var string
      */
     protected $message;
     /**
-     *
+     * 
      *
      * @return string
      */
@@ -20,7 +20,7 @@ class Error
         return $this->message;
     }
     /**
-     *
+     * 
      *
      * @param string $message
      *

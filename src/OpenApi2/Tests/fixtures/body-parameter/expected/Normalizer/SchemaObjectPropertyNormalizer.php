@@ -16,11 +16,11 @@ class SchemaObjectPropertyNormalizer implements DenormalizerInterface, Normalize
     use NormalizerAwareTrait;
     public function supportsDenormalization($data, $type, $format = null)
     {
-        return $type === 'Jane\\OpenApi\\Tests\\Expected\\Model\\SchemaObjectProperty';
+        return $type === 'Jane\\OpenApi2\\Tests\\Expected\\Model\\SchemaObjectProperty';
     }
     public function supportsNormalization($data, $format = null)
     {
-        return get_class($data) === 'Jane\\OpenApi\\Tests\\Expected\\Model\\SchemaObjectProperty';
+        return get_class($data) === 'Jane\\OpenApi2\\Tests\\Expected\\Model\\SchemaObjectProperty';
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {

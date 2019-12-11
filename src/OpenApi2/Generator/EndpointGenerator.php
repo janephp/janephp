@@ -17,8 +17,6 @@ use Jane\OpenApi2\Model\Schema;
 use Jane\OpenApi2\Naming\OperationNamingInterface;
 use Jane\OpenApi2\Operation\Operation;
 use Jane\OpenApiRuntime\Client\BaseEndpoint;
-use function Jane\parserExpression;
-use function Jane\parserVariable;
 use PhpParser\Comment\Doc;
 use PhpParser\Node\Arg;
 use PhpParser\Node\Expr;
@@ -27,6 +25,7 @@ use PhpParser\Node\NullableType;
 use PhpParser\Node\Param;
 use PhpParser\Node\Scalar;
 use PhpParser\Node\Stmt;
+use PhpParser\Node;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\SerializerInterface;
@@ -148,7 +147,7 @@ abstract class EndpointGenerator
             if ($parameter instanceof PathParameterSubSchema) {
                 $pathParams[] = $this->nonBodyParameterGenerator->generateMethodParameter($parameter, $context, $operation->getReference() . '/parameters/' . $key);
                 $pathParamsDoc[] = $this->nonBodyParameterGenerator->generateMethodDocParameter($parameter, $context, $operation->getReference() . '/parameters/' . $key);
-                $methodStatements[] = parserExpression(new Expr\Assign(new Expr\PropertyFetch(new Expr\Variable('this'), $parameter->getName()), new Expr\Variable(Inflector::camelize($parameter->getName()))));
+                $methodStatements[] = new Node\Stmt\Expression(new Expr\Assign(new Expr\PropertyFetch(new Expr\Variable('this'), $parameter->getName()), new Expr\Variable(Inflector::camelize($parameter->getName()))));
                 $pathProperties[] = new Stmt\Property(Stmt\Class_::MODIFIER_PROTECTED, [
                     new Stmt\PropertyProperty(new Name($parameter->getName())),
                 ]);
@@ -157,7 +156,7 @@ abstract class EndpointGenerator
             if ($parameter instanceof BodyParameter) {
                 $bodyParam = $this->bodyParameterGenerator->generateMethodParameter($parameter, $context, $operation->getReference() . '/parameters/' . $key);
                 $bodyDoc = $this->bodyParameterGenerator->generateMethodDocParameter($parameter, $context, $operation->getReference() . '/parameters/' . $key);
-                $bodyAssign = parserExpression(new Expr\Assign(new Expr\PropertyFetch(new Expr\Variable('this'), 'body'), new Expr\Variable(Inflector::camelize($parameter->getName()))));
+                $bodyAssign = new Node\Stmt\Expression(new Expr\Assign(new Expr\PropertyFetch(new Expr\Variable('this'), 'body'), new Expr\Variable(Inflector::camelize($parameter->getName()))));
             }
 
             if ($parameter instanceof QueryParameterSubSchema) {
@@ -176,9 +175,9 @@ abstract class EndpointGenerator
         $methodStatements = array_merge(
             $methodStatements,
             $bodyAssign !== null ? [$bodyAssign] : [],
-            \count($queryParamsDoc) > 0 ? [parserExpression(new Expr\Assign(new Expr\PropertyFetch(new Expr\Variable('this'), 'queryParameters'), new Expr\Variable('queryParameters')))] : [],
-            \count($formParamsDoc) > 0 ? [parserExpression(new Expr\Assign(new Expr\PropertyFetch(new Expr\Variable('this'), 'formParameters'), new Expr\Variable('formParameters')))] : [],
-            \count($headerParamsDoc) > 0 ? [parserExpression(new Expr\Assign(new Expr\PropertyFetch(new Expr\Variable('this'), 'headerParameters'), new Expr\Variable('headerParameters')))] : []
+            \count($queryParamsDoc) > 0 ? [new Node\Stmt\Expression(new Expr\Assign(new Expr\PropertyFetch(new Expr\Variable('this'), 'queryParameters'), new Expr\Variable('queryParameters')))] : [],
+            \count($formParamsDoc) > 0 ? [new Node\Stmt\Expression(new Expr\Assign(new Expr\PropertyFetch(new Expr\Variable('this'), 'formParameters'), new Expr\Variable('formParameters')))] : [],
+            \count($headerParamsDoc) > 0 ? [new Node\Stmt\Expression(new Expr\Assign(new Expr\PropertyFetch(new Expr\Variable('this'), 'headerParameters'), new Expr\Variable('headerParameters')))] : []
         );
 
         if (\count($methodStatements) === 0) {
@@ -188,9 +187,9 @@ abstract class EndpointGenerator
         $methodParams = array_merge(
             $pathParams,
             $bodyParam ? [$bodyParam] : [],
-            \count($queryParamsDoc) > 0 ? [new Param(parserVariable('queryParameters'), new Expr\Array_(), new Name('array'))] : [],
-            \count($formParamsDoc) > 0 ? [new Param(parserVariable('formParameters'), new Expr\Array_(), new Name('array'))] : [],
-            \count($headerParamsDoc) > 0 ? [new Param(parserVariable('headerParameters'), new Expr\Array_(), new Name('array'))] : []
+            \count($queryParamsDoc) > 0 ? [new Param(new Node\Expr\Variable('queryParameters'), new Expr\Array_(), new Name('array'))] : [],
+            \count($formParamsDoc) > 0 ? [new Param(new Node\Expr\Variable('formParameters'), new Expr\Array_(), new Name('array'))] : [],
+            \count($headerParamsDoc) > 0 ? [new Param(new Node\Expr\Variable('headerParameters'), new Expr\Array_(), new Name('array'))] : []
         );
 
         $methodDocumentations = array_merge(
@@ -330,7 +329,7 @@ EOD
             'type' => Stmt\Class_::MODIFIER_PROTECTED,
             'stmts' => array_merge(
                 [
-                    parserExpression(new Expr\Assign($optionsResolverVariable, new Expr\StaticCall(new Name('parent'), $methodName))),
+                    new Node\Stmt\Expression(new Expr\Assign($optionsResolverVariable, new Expr\StaticCall(new Name('parent'), $methodName))),
                 ],
                 $this->nonBodyParameterGenerator->generateOptionsResolverStatements($optionsResolverVariable, $parameters),
                 [
@@ -376,8 +375,8 @@ EOD
         $method = new Stmt\ClassMethod('getBody', [
             'type' => Stmt\Class_::MODIFIER_PUBLIC,
             'params' => [
-                new Param(parserVariable('serializer'), null, new Name\FullyQualified(SerializerInterface::class)),
-                new Param(parserVariable('streamFactory'), new Expr\ConstFetch(new Name('null'))),
+                new Param(new Node\Expr\Variable('serializer'), null, new Name\FullyQualified(SerializerInterface::class)),
+                new Param(new Node\Expr\Variable('streamFactory'), new Expr\ConstFetch(new Name('null'))),
             ],
             'returnType' => new Name('array'),
         ]);
@@ -493,10 +492,10 @@ EOD
         return [new Stmt\ClassMethod('transformResponseBody', [
             'type' => Stmt\Class_::MODIFIER_PROTECTED,
             'params' => [
-                new Param(parserVariable('body'), null, new Name('string')),
-                new Param(parserVariable('status'), null, new Name('int')),
-                new Param(parserVariable('serializer'), null, new Name\FullyQualified(SerializerInterface::class)),
-                new Param(parserVariable('contentType'), null, new NullableType(new Name('string'))),
+                new Param(new Node\Expr\Variable('body'), null, new Name('string')),
+                new Param(new Node\Expr\Variable('status'), null, new Name('int')),
+                new Param(new Node\Expr\Variable('serializer'), null, new Name\FullyQualified(SerializerInterface::class)),
+                new Param(new Node\Expr\Variable('contentType'), null, new NullableType(new Name('string'))),
             ],
             'stmts' => $outputStatements,
         ], [

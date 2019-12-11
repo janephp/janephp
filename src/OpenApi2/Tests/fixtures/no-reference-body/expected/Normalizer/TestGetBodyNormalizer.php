@@ -16,11 +16,11 @@ class TestGetBodyNormalizer implements DenormalizerInterface, NormalizerInterfac
     use NormalizerAwareTrait;
     public function supportsDenormalization($data, $type, $format = null)
     {
-        return $type === 'Jane\\OpenApi\\Tests\\Expected\\Model\\TestGetBody';
+        return $type === 'Jane\\OpenApi2\\Tests\\Expected\\Model\\TestGetBody';
     }
     public function supportsNormalization($data, $format = null)
     {
-        return get_class($data) === 'Jane\\OpenApi\\Tests\\Expected\\Model\\TestGetBody';
+        return get_class($data) === 'Jane\\OpenApi2\\Tests\\Expected\\Model\\TestGetBody';
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
@@ -32,10 +32,10 @@ class TestGetBodyNormalizer implements DenormalizerInterface, NormalizerInterfac
             $object->setFoo($data->{'foo'});
         }
         if (property_exists($data, 'Bar')) {
-            $object->setBar($this->denormalizer->denormalize($data->{'Bar'}, 'Jane\\OpenApi\\Tests\\Expected\\Model\\Bar', 'json', $context));
+            $object->setBar($this->denormalizer->denormalize($data->{'Bar'}, 'Jane\\OpenApi2\\Tests\\Expected\\Model\\Bar', 'json', $context));
         }
         if (property_exists($data, 'Baz')) {
-            $object->setBaz($this->denormalizer->denormalize($data->{'Baz'}, 'Jane\\OpenApi\\Tests\\Expected\\Model\\TestGetBodyBaz', 'json', $context));
+            $object->setBaz($this->denormalizer->denormalize($data->{'Baz'}, 'Jane\\OpenApi2\\Tests\\Expected\\Model\\TestGetBodyBaz', 'json', $context));
         }
         return $object;
     }

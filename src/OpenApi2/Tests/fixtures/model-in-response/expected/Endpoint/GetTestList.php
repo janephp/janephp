@@ -26,7 +26,7 @@ class GetTestList extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \J
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType)
     {
         if (200 === $status) {
-            return $serializer->deserialize($body, 'Jane\\OpenApi\\Tests\\Expected\\Model\\Schema[]', 'json');
+            return $serializer->deserialize($body, 'Jane\\OpenApi2\\Tests\\Expected\\Model\\Schema[]', 'json');
         }
     }
 }

@@ -5,13 +5,13 @@ namespace Jane\OpenApi2\Tests\Expected\Model;
 class SchemaObjectProperty
 {
     /**
-     *
+     * 
      *
      * @var string
      */
     protected $stringProperty;
     /**
-     *
+     * 
      *
      * @return string
      */
@@ -20,7 +20,7 @@ class SchemaObjectProperty
         return $this->stringProperty;
     }
     /**
-     *
+     * 
      *
      * @param string $stringProperty
      *

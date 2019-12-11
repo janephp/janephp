@@ -7,13 +7,12 @@ use Jane\JsonSchema\Generator\File;
 use Jane\JsonSchema\Guesser\Guess\ClassGuess;
 use Jane\JsonSchema\Schema;
 use Jane\OpenApi2\Naming\ExceptionNaming;
-use function Jane\parserExpression;
-use function Jane\parserVariable;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Name;
 use PhpParser\Node\Param;
 use PhpParser\Node\Scalar;
 use PhpParser\Node\Stmt;
+use PhpParser\Node;
 
 class ExceptionGenerator
 {
@@ -66,14 +65,14 @@ class ExceptionGenerator
                             new Stmt\ClassMethod('__construct', [
                                 'type' => Stmt\Class_::MODIFIER_PUBLIC,
                                 'params' => [
-                                    new Param(parserVariable($propertyName), null, $isArray ? null : new Name('\\' . $classFqdn)),
+                                    new Param(new Node\Expr\Variable($propertyName), null, $isArray ? null : new Name('\\' . $classFqdn)),
                                 ],
                                 'stmts' => [
-                                    parserExpression(new Expr\StaticCall(new Name('parent'), '__construct', [
+                                    new Node\Stmt\Expression(new Expr\StaticCall(new Name('parent'), '__construct', [
                                         new Scalar\String_($description),
                                         new Scalar\LNumber($status),
                                     ])),
-                                    parserExpression(new Expr\Assign(
+                                    new Node\Stmt\Expression(new Expr\Assign(
                                         new Expr\PropertyFetch(
                                             new Expr\Variable('this'),
                                             $propertyName
@@ -114,7 +113,7 @@ class ExceptionGenerator
                         new Stmt\ClassMethod('__construct', [
                             'type' => Stmt\Class_::MODIFIER_PUBLIC,
                             'stmts' => [
-                                parserExpression(new Expr\StaticCall(new Name('parent'), '__construct', [
+                                new Node\Stmt\Expression(new Expr\StaticCall(new Name('parent'), '__construct', [
                                     new Scalar\String_($description),
                                     new Scalar\LNumber($status),
                                 ])),

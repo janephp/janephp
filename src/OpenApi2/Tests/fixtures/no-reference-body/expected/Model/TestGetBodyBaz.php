@@ -5,13 +5,13 @@ namespace Jane\OpenApi2\Tests\Expected\Model;
 class TestGetBodyBaz
 {
     /**
-     *
+     * 
      *
      * @var string
      */
     protected $baz;
     /**
-     *
+     * 
      *
      * @return string
      */
@@ -20,7 +20,7 @@ class TestGetBodyBaz
         return $this->baz;
     }
     /**
-     *
+     * 
      *
      * @param string $baz
      *

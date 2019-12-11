@@ -26,7 +26,7 @@ class GetThings extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jan
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType)
     {
         if (200 === $status) {
-            return $serializer->deserialize($body, 'Jane\\OpenApi\\Tests\\Expected\\Model\\Thing[]', 'json');
+            return $serializer->deserialize($body, 'Jane\\OpenApi2\\Tests\\Expected\\Model\\Thing[]', 'json');
         }
     }
 }

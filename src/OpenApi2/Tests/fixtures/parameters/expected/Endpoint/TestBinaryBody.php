@@ -5,9 +5,9 @@ namespace Jane\OpenApi2\Tests\Expected\Endpoint;
 class TestBinaryBody extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7Endpoint
 {
     /**
+     * 
      *
-     *
-     * @param string|resource|\Psr\Http\Message\StreamInterface $testBinary
+     * @param string|resource|\Psr\Http\Message\StreamInterface $testBinary 
      */
     public function __construct($testBinary)
     {

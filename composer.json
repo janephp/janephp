@@ -66,8 +66,7 @@
     "autoload": {
         "psr-4": {
             "Jane\\": "src/"
-        },
-        "files": ["helpers.php"]
+        }
     },
     "autoload-dev": {
         "classmap": [

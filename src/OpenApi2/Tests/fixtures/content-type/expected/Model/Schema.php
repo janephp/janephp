@@ -5,55 +5,55 @@ namespace Jane\OpenApi2\Tests\Expected\Model;
 class Schema
 {
     /**
-     *
+     * 
      *
      * @var string
      */
     protected $stringProperty;
     /**
-     *
+     * 
      *
      * @var \DateTime
      */
     protected $dateProperty;
     /**
-     *
+     * 
      *
      * @var int
      */
     protected $integerProperty;
     /**
-     *
+     * 
      *
      * @var float
      */
     protected $floatProperty;
     /**
-     *
+     * 
      *
      * @var mixed[]
      */
     protected $arrayProperty;
     /**
-     *
+     * 
      *
      * @var string[]
      */
     protected $mapProperty;
     /**
-     *
+     * 
      *
      * @var SchemaObjectProperty
      */
     protected $objectProperty;
     /**
-     *
+     * 
      *
      * @var Schema
      */
     protected $objectRefProperty;
     /**
-     *
+     * 
      *
      * @return string
      */
@@ -62,7 +62,7 @@ class Schema
         return $this->stringProperty;
     }
     /**
-     *
+     * 
      *
      * @param string $stringProperty
      *
@@ -74,7 +74,7 @@ class Schema
         return $this;
     }
     /**
-     *
+     * 
      *
      * @return \DateTime
      */
@@ -83,7 +83,7 @@ class Schema
         return $this->dateProperty;
     }
     /**
-     *
+     * 
      *
      * @param \DateTime $dateProperty
      *
@@ -95,7 +95,7 @@ class Schema
         return $this;
     }
     /**
-     *
+     * 
      *
      * @return int
      */
@@ -104,7 +104,7 @@ class Schema
         return $this->integerProperty;
     }
     /**
-     *
+     * 
      *
      * @param int $integerProperty
      *
@@ -116,7 +116,7 @@ class Schema
         return $this;
     }
     /**
-     *
+     * 
      *
      * @return float
      */
@@ -125,7 +125,7 @@ class Schema
         return $this->floatProperty;
     }
     /**
-     *
+     * 
      *
      * @param float $floatProperty
      *
@@ -137,7 +137,7 @@ class Schema
         return $this;
     }
     /**
-     *
+     * 
      *
      * @return mixed[]
      */
@@ -146,7 +146,7 @@ class Schema
         return $this->arrayProperty;
     }
     /**
-     *
+     * 
      *
      * @param mixed[] $arrayProperty
      *
@@ -158,7 +158,7 @@ class Schema
         return $this;
     }
     /**
-     *
+     * 
      *
      * @return string[]
      */
@@ -167,7 +167,7 @@ class Schema
         return $this->mapProperty;
     }
     /**
-     *
+     * 
      *
      * @param string[] $mapProperty
      *
@@ -179,7 +179,7 @@ class Schema
         return $this;
     }
     /**
-     *
+     * 
      *
      * @return SchemaObjectProperty
      */
@@ -188,7 +188,7 @@ class Schema
         return $this->objectProperty;
     }
     /**
-     *
+     * 
      *
      * @param SchemaObjectProperty $objectProperty
      *
@@ -200,7 +200,7 @@ class Schema
         return $this;
     }
     /**
-     *
+     * 
      *
      * @return Schema
      */
@@ -209,7 +209,7 @@ class Schema
         return $this->objectRefProperty;
     }
     /**
-     *
+     * 
      *
      * @param Schema $objectRefProperty
      *

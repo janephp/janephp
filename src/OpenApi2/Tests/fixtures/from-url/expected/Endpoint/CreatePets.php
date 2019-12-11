@@ -32,6 +32,6 @@ class CreatePets extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Ja
         if (201 === $status) {
             return null;
         }
-        return $serializer->deserialize($body, 'Jane\\OpenApi\\Tests\\Expected\\Model\\Error', 'json');
+        return $serializer->deserialize($body, 'Jane\\OpenApi2\\Tests\\Expected\\Model\\Error', 'json');
     }
 }

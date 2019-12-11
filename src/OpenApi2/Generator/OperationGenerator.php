@@ -2,16 +2,15 @@
 
 namespace Jane\OpenApi2\Generator;
 
-use function Jane\isPhpParser4;
 use Jane\JsonSchema\Generator\Context\Context;
 use Jane\OpenApi2\Operation\Operation;
-use function Jane\parserVariable;
 use PhpParser\Comment;
 use PhpParser\Node\Arg;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Name;
 use PhpParser\Node\Param;
 use PhpParser\Node\Stmt;
+use PhpParser\Node;
 
 abstract class OperationGenerator
 {
@@ -42,10 +41,10 @@ abstract class OperationGenerator
 
         /** @var Param $param */
         foreach ($methodParams as $param) {
-            $endpointArgs[] = new Arg(isPhpParser4() ? $param->var : new Expr\Variable($param->name));
+            $endpointArgs[] = new Arg($param->var);
         }
 
-        $methodParams[] = new Param(parserVariable('fetch'), new Expr\ClassConstFetch(new Name('self'), 'FETCH_OBJECT'), new Name('string'));
+        $methodParams[] = new Param(new Node\Expr\Variable('fetch'), new Expr\ClassConstFetch(new Name('self'), 'FETCH_OBJECT'), new Name('string'));
 
         return new Stmt\ClassMethod($name, [
             'type' => Stmt\Class_::MODIFIER_PUBLIC,

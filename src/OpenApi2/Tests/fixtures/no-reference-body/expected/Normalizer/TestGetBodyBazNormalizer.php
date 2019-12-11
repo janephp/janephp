@@ -16,11 +16,11 @@ class TestGetBodyBazNormalizer implements DenormalizerInterface, NormalizerInter
     use NormalizerAwareTrait;
     public function supportsDenormalization($data, $type, $format = null)
     {
-        return $type === 'Jane\\OpenApi\\Tests\\Expected\\Model\\TestGetBodyBaz';
+        return $type === 'Jane\\OpenApi2\\Tests\\Expected\\Model\\TestGetBodyBaz';
     }
     public function supportsNormalization($data, $format = null)
     {
-        return get_class($data) === 'Jane\\OpenApi\\Tests\\Expected\\Model\\TestGetBodyBaz';
+        return get_class($data) === 'Jane\\OpenApi2\\Tests\\Expected\\Model\\TestGetBodyBaz';
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {

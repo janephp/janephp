@@ -5,9 +5,9 @@ namespace Jane\OpenApi2\Tests\Expected;
 class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
 {
     /**
+     * 
      *
-     *
-     * @param string $testString
+     * @param string $testString 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Psr\Http\Message\ResponseInterface

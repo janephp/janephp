@@ -17,8 +17,7 @@
     "autoload": {
         "psr-4": {
             "Jane\\OpenApi2\\": ""
-        },
-        "files": ["helpers.php"]
+        }
     },
     "bin": [
         "bin/jane-openapi"
@@ -40,10 +39,6 @@
     },
     "suggest": {
         "friendsofphp/php-cs-fixer": "To have a nice formatting of the generated files"
-    },
-    "conflict": {
-        "friendsofphp/php-cs-fixer": "<2.7.3|>=3.0",
-        "jane-php/open-api-runtime": "< 4.5.2"
     },
     "config": {
         "process-timeout": 1800,

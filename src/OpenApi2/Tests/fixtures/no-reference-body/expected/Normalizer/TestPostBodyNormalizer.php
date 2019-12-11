@@ -16,11 +16,11 @@ class TestPostBodyNormalizer implements DenormalizerInterface, NormalizerInterfa
     use NormalizerAwareTrait;
     public function supportsDenormalization($data, $type, $format = null)
     {
-        return $type === 'Jane\\OpenApi\\Tests\\Expected\\Model\\TestPostBody';
+        return $type === 'Jane\\OpenApi2\\Tests\\Expected\\Model\\TestPostBody';
     }
     public function supportsNormalization($data, $format = null)
     {
-        return get_class($data) === 'Jane\\OpenApi\\Tests\\Expected\\Model\\TestPostBody';
+        return get_class($data) === 'Jane\\OpenApi2\\Tests\\Expected\\Model\\TestPostBody';
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {

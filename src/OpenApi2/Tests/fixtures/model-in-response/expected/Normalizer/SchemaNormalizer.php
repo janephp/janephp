@@ -16,11 +16,11 @@ class SchemaNormalizer implements DenormalizerInterface, NormalizerInterface, De
     use NormalizerAwareTrait;
     public function supportsDenormalization($data, $type, $format = null)
     {
-        return $type === 'Jane\\OpenApi\\Tests\\Expected\\Model\\Schema';
+        return $type === 'Jane\\OpenApi2\\Tests\\Expected\\Model\\Schema';
     }
     public function supportsNormalization($data, $format = null)
     {
-        return get_class($data) === 'Jane\\OpenApi\\Tests\\Expected\\Model\\Schema';
+        return get_class($data) === 'Jane\\OpenApi2\\Tests\\Expected\\Model\\Schema';
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
@@ -52,10 +52,10 @@ class SchemaNormalizer implements DenormalizerInterface, NormalizerInterface, De
             $object->setMapProperty($values_1);
         }
         if (property_exists($data, 'objectProperty')) {
-            $object->setObjectProperty($this->denormalizer->denormalize($data->{'objectProperty'}, 'Jane\\OpenApi\\Tests\\Expected\\Model\\SchemaObjectProperty', 'json', $context));
+            $object->setObjectProperty($this->denormalizer->denormalize($data->{'objectProperty'}, 'Jane\\OpenApi2\\Tests\\Expected\\Model\\SchemaObjectProperty', 'json', $context));
         }
         if (property_exists($data, 'objectRefProperty')) {
-            $object->setObjectRefProperty($this->denormalizer->denormalize($data->{'objectRefProperty'}, 'Jane\\OpenApi\\Tests\\Expected\\Model\\Schema', 'json', $context));
+            $object->setObjectRefProperty($this->denormalizer->denormalize($data->{'objectRefProperty'}, 'Jane\\OpenApi2\\Tests\\Expected\\Model\\Schema', 'json', $context));
         }
         return $object;
     }

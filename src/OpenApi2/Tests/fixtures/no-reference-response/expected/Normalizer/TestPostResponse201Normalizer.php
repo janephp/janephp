@@ -16,11 +16,11 @@ class TestPostResponse201Normalizer implements DenormalizerInterface, Normalizer
     use NormalizerAwareTrait;
     public function supportsDenormalization($data, $type, $format = null)
     {
-        return $type === 'Jane\\OpenApi\\Tests\\Expected\\Model\\TestPostResponse201';
+        return $type === 'Jane\\OpenApi2\\Tests\\Expected\\Model\\TestPostResponse201';
     }
     public function supportsNormalization($data, $format = null)
     {
-        return get_class($data) === 'Jane\\OpenApi\\Tests\\Expected\\Model\\TestPostResponse201';
+        return get_class($data) === 'Jane\\OpenApi2\\Tests\\Expected\\Model\\TestPostResponse201';
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {

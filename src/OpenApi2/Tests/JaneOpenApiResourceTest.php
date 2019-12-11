@@ -2,7 +2,6 @@
 
 namespace Jane\OpenApi2\Tests;
 
-use function Jane\isPhpParser4;
 use Jane\OpenApi2\Command\GenerateCommand;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Console\Input\ArrayInput;
@@ -53,7 +52,7 @@ class JaneOpenApiResourceTest extends TestCase
         foreach ($expectedFinder as $expectedFile) {
             $this->assertArrayHasKey($expectedFile->getRelativePathname(), $generatedData);
 
-            if ($expectedFile->isFile() && !isPhpParser4()) {
+            if ($expectedFile->isFile()) {
                 $expectedPath = $expectedFile->getRealPath();
                 $actualPath = $generatedData[$expectedFile->getRelativePathname()];
 

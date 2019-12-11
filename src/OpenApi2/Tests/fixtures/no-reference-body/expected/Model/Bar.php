@@ -5,19 +5,19 @@ namespace Jane\OpenApi2\Tests\Expected\Model;
 class Bar
 {
     /**
-     *
+     * 
      *
      * @var string
      */
     protected $foo;
     /**
-     *
+     * 
      *
      * @var string
      */
     protected $bar;
     /**
-     *
+     * 
      *
      * @return string
      */
@@ -26,7 +26,7 @@ class Bar
         return $this->foo;
     }
     /**
-     *
+     * 
      *
      * @param string $foo
      *
@@ -38,7 +38,7 @@ class Bar
         return $this;
     }
     /**
-     *
+     * 
      *
      * @return string
      */
@@ -47,7 +47,7 @@ class Bar
         return $this->bar;
     }
     /**
-     *
+     * 
      *
      * @param string $bar
      *
