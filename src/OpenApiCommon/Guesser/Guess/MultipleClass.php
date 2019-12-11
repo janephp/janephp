@@ -1,6 +1,6 @@
 <?php
 
-namespace Jane\OpenApi2\Guesser\Guess;
+namespace Jane\OpenApiCommon\Guesser\Guess;
 
 class MultipleClass extends ClassGuess
 {
@@ -32,11 +32,6 @@ class MultipleClass extends ClassGuess
         return $this->discriminator;
     }
 
-    /**
-     * Add a reference.
-     *
-     * @return $this
-     */
     public function addReference(string $className, string $reference): self
     {
         $this->references[$className] = $reference;
@@ -45,11 +40,9 @@ class MultipleClass extends ClassGuess
     }
 
     /**
-     * Return a list of references.
-     *
      * @return string[]
      */
-    public function getReferences()
+    public function getReferences(): array
     {
         return $this->references;
     }

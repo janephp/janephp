@@ -5,7 +5,7 @@ namespace Jane\OpenApi2\Generator\Normalizer;
 use Jane\JsonSchema\Generator\Context\Context;
 use Jane\JsonSchema\Generator\Normalizer\NormalizerGenerator as JsonSchemaNormalizerGenerator;
 use Jane\JsonSchema\Guesser\Guess\ClassGuess;
-use Jane\OpenApi2\Guesser\Guess\MultipleClass;
+use Jane\OpenApiCommon\Guesser\Guess\MultipleClass;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Name;
 use PhpParser\Node\Param;

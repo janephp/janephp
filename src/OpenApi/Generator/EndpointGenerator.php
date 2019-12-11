@@ -370,65 +370,6 @@ EOD
             'returnType' => new Name('array'),
             'stmts' => $this->requestBodyGenerator->getSerializeStatements($operation->getOperation()->getRequestBody(), $operation->getReference() . '/requestBody', $context),
         ]);
-
-        $hasBody = false;
-        $isSerializableBody = false;
-        $requestBody = $operation->getOperation()->getRequestBody();
-
-//        if ($requestBody && $requestBody->getContent()) {
-//            foreach ($requestBody->getContent() as $contentType => $content) {
-//                if ($content->getSchema() !== null) {
-//                    $hasBody = true;
-//
-//                    [$classGuess, $array, $schema] = $this->guessClass($content->getSchema(), $operation->getReference() . '/requestBody/content/' . $contentType . '/schema', $context);
-//
-//                    if ($contentType === 'application/json') {
-//                        $isSerializableBody = true;
-//                    }
-//
-//                    if (null !== $classGuess) {
-//                        $isSerializableBody = true;
-//                    }
-//                }
-//            }
-//        }
-
-//        if ($isSerializableBody) {
-//            $method->stmts = [
-//                new Stmt\Return_(new Expr\MethodCall(
-//                    new Expr\Variable('this'),
-//                    'getSerializedBody',
-//                    [
-//                        new Arg(new Expr\Variable('serializer')),
-//                    ]
-//                )),
-//            ];
-//
-//            return $method;
-//        }
-//
-//        if ($hasBody) {
-//            $method->stmts = [
-//                new Stmt\Return_(new Expr\Array_([
-//                    new Expr\Array_(),
-//                    new Expr\PropertyFetch(
-//                        new Expr\Variable('this'),
-//                        'body'
-//                    ),
-//                ])),
-//            ];
-//
-//            return $method;
-//        }
-//
-//        $method->stmts = [
-//            new Stmt\Return_(new Expr\Array_([
-//                new Expr\Array_(),
-//                new Expr\ConstFetch(new Name('null')),
-//            ])),
-//        ];
-
-        return $method;
     }
 
     private function getTransformResponseBody(Operation $operation, string $endpointName, Context $context): array

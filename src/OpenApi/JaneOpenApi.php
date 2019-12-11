@@ -2,7 +2,6 @@
 
 namespace Jane\OpenApi;
 
-use Jane\JsonSchema\Generator\ChainGenerator;
 use Jane\JsonSchema\Generator\Context\Context;
 use Jane\OpenApi\Generator\AuthenticationGenerator;
 use Jane\OpenApi\Generator\ModelGenerator;
@@ -22,10 +21,9 @@ use Symfony\Component\Serializer\Encoder\YamlEncoder;
 use Symfony\Component\Serializer\Serializer;
 use Symfony\Component\Yaml\Dumper;
 use Symfony\Component\Yaml\Parser;
-use Jane\OpenApi\Guesser\Guess\MultipleClass;
-use Jane\OpenApi\Guesser\Guess\ClassGuess;
+use Jane\OpenApiCommon\JaneOpenApi as CommonJaneOpenApi;
 
-class JaneOpenApi extends ChainGenerator
+class JaneOpenApi extends CommonJaneOpenApi
 {
     public const VERSION = '5.x-dev';
     public const CLIENT_PSR18 = 'psr18';
@@ -102,20 +100,6 @@ class JaneOpenApi extends ChainGenerator
         }
 
         return new Context($registry, $this->strict);
-    }
-
-    protected function hydrateDiscriminatedClasses(Schema $schema, Registry $registry)
-    {
-        foreach ($schema->getClasses() as $class) {
-            if ($class instanceof MultipleClass) { // is parent class
-                foreach ($class->getReferences() as $reference) {
-                    $guess = $registry->getClass($reference);
-                    if ($guess instanceof ClassGuess) { // is child class
-                        $guess->setMultipleClass($class);
-                    }
-                }
-            }
-        }
     }
 
     public static function build(array $options = [])

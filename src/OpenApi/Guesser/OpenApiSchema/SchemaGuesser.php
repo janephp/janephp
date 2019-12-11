@@ -6,8 +6,8 @@ use Jane\JsonSchema\Guesser\JsonSchema\ObjectGuesser;
 use Jane\OpenApi\JsonSchema\Model\Discriminator;
 use Jane\OpenApi\JsonSchema\Model\Schema;
 use Jane\JsonSchema\Guesser\Guess\ClassGuess as BaseClassGuess;
-use Jane\OpenApi\Guesser\Guess\ClassGuess;
-use Jane\OpenApi\Guesser\Guess\MultipleClass;
+use Jane\OpenApiCommon\Guesser\Guess\ClassGuess;
+use Jane\OpenApiCommon\Guesser\Guess\MultipleClass;
 
 class SchemaGuesser extends ObjectGuesser
 {

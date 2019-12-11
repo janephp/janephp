@@ -1,6 +1,6 @@
 <?php
 
-namespace Jane\OpenApi2\Guesser\Guess;
+namespace Jane\OpenApiCommon\Guesser\Guess;
 
 use Jane\JsonSchema\Guesser\Guess\ClassGuess as BaseClassGuess;
 

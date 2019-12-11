@@ -6,8 +6,8 @@ use Jane\JsonSchema\Generator\ModelGenerator as BaseModelGenerator;
 use Jane\JsonSchema\Guesser\Guess\ClassGuess as BaseClassGuess;
 use Jane\JsonSchema\Guesser\Guess\Property;
 use Jane\OpenApi2\Generator\Model\ClassGenerator;
-use Jane\OpenApi2\Guesser\Guess\ClassGuess;
-use Jane\OpenApi2\Guesser\Guess\MultipleClass;
+use Jane\OpenApiCommon\Guesser\Guess\ClassGuess;
+use Jane\OpenApiCommon\Guesser\Guess\MultipleClass;
 use PhpParser\Node\Stmt;
 
 class ModelGenerator extends BaseModelGenerator
