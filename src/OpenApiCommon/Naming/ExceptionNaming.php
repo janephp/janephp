@@ -1,6 +1,6 @@
 <?php
 
-namespace Jane\OpenApi\Naming;
+namespace Jane\OpenApiCommon\Naming;
 
 class ExceptionNaming
 {

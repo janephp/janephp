@@ -5,21 +5,12 @@ namespace Jane\OpenApi\Naming;
 use Doctrine\Common\Inflector\Inflector;
 use Jane\OpenApi\JsonSchema\Model\Response;
 use Jane\OpenApi\JsonSchema\Model\Schema;
-use Jane\OpenApi\Operation\Operation;
+use Jane\OpenApiCommon\Naming\OperationUrlNaming as CommonOperationUrlNaming;
+use Jane\OpenApiCommon\Operation\Operation;
 
-class OperationUrlNaming implements OperationNamingInterface
+class OperationUrlNaming extends CommonOperationUrlNaming
 {
-    public function getFunctionName(Operation $operation): string
-    {
-        return Inflector::camelize($this->getUniqueName($operation));
-    }
-
-    public function getEndpointName(Operation $operation): string
-    {
-        return Inflector::classify($this->getUniqueName($operation));
-    }
-
-    private function getUniqueName(Operation $operation): string
+    protected function getUniqueName(Operation $operation): string
     {
         $prefix = strtolower($operation->getMethod());
         $shouldSingularize = true;

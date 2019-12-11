@@ -1,8 +1,8 @@
 <?php
 
-namespace Jane\OpenApi\Naming;
+namespace Jane\OpenApiCommon\Naming;
 
-use Jane\OpenApi\Operation\Operation;
+use Jane\OpenApiCommon\Operation\Operation;
 
 interface OperationNamingInterface
 {

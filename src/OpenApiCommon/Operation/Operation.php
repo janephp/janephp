@@ -1,9 +1,6 @@
 <?php
 
-namespace Jane\OpenApi\Operation;
-
-use Jane\OpenApi\JsonSchema\Model\Operation as OpenApiOperation;
-use Jane\OpenApi\JsonSchema\Model\PathItem;
+namespace Jane\OpenApiCommon\Operation;
 
 class Operation
 {
@@ -25,7 +22,7 @@ class Operation
 
     private $parameters = [];
 
-    public function __construct(PathItem $pathItem, OpenApiOperation $operation, string $path, string $method, string $reference)
+    public function __construct(object $pathItem, object $operation, string $path, string $method, string $reference)
     {
         $this->operation = $operation;
         $this->path = preg_replace('#^/+#', '/', $path);
@@ -47,7 +44,7 @@ class Operation
         return $this->method;
     }
 
-    public function getOperation(): OpenApiOperation
+    public function getOperation(): object
     {
         return $this->operation;
     }

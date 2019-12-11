@@ -8,7 +8,7 @@ use Jane\JsonSchema\Generator\GeneratorInterface;
 use Jane\JsonSchema\Schema;
 use Jane\OpenApi\Generator\Client\HttpClientCreateGenerator;
 use Jane\OpenApi\JsonSchema\Model\OpenApi;
-use Jane\OpenApi\Naming\OperationNamingInterface;
+use Jane\OpenApiCommon\Naming\OperationNamingInterface;
 use Jane\OpenApi\Operation\OperationManager;
 use PhpParser\Node\Name;
 use PhpParser\Node\Stmt;

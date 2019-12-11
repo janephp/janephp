@@ -1,8 +1,8 @@
 <?php
 
-namespace Jane\OpenApi2\Naming;
+namespace Jane\OpenApiCommon\Naming;
 
-use Jane\OpenApi2\Operation\Operation;
+use Jane\OpenApiCommon\Operation\Operation;
 
 class ChainOperationNaming implements OperationNamingInterface
 {

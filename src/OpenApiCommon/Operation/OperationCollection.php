@@ -1,13 +1,10 @@
 <?php
 
-namespace Jane\OpenApi2\Operation;
+namespace Jane\OpenApiCommon\Operation;
 
 class OperationCollection extends \ArrayObject
 {
-    /**
-     * @return self
-     */
-    public function addOperation(Operation $operation)
+    public function addOperation(Operation $operation): self
     {
         $id = $operation->getMethod() . $operation->getPath();
 

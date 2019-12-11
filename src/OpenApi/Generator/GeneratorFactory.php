@@ -7,10 +7,10 @@ use Jane\OpenApi\Generator\RequestBodyContent\DefaultBodyContentGenerator;
 use Jane\OpenApi\Generator\RequestBodyContent\FormBodyContentGenerator;
 use Jane\OpenApi\Generator\RequestBodyContent\JsonBodyContentGenerator;
 use Jane\OpenApi\JaneOpenApi;
-use Jane\OpenApi\Naming\ChainOperationNaming;
-use Jane\OpenApi\Naming\ExceptionNaming;
+use Jane\OpenApiCommon\Naming\ChainOperationNaming;
+use Jane\OpenApiCommon\Naming\ExceptionNaming;
 use Jane\OpenApi\Naming\OperationUrlNaming;
-use Jane\OpenApi\Naming\OperationIdNaming;
+use Jane\OpenApiCommon\Naming\OperationIdNaming;
 use Jane\OpenApi\Operation\OperationManager;
 use PhpParser\ParserFactory;
 

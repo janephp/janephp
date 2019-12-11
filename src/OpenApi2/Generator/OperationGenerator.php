@@ -3,7 +3,7 @@
 namespace Jane\OpenApi2\Generator;
 
 use Jane\JsonSchema\Generator\Context\Context;
-use Jane\OpenApi2\Operation\Operation;
+use Jane\OpenApiCommon\Operation\Operation;
 use PhpParser\Comment;
 use PhpParser\Node\Arg;
 use PhpParser\Node\Expr;
