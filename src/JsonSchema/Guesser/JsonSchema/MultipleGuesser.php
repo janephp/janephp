@@ -19,7 +19,14 @@ class MultipleGuesser implements GuesserInterface, TypeGuesserInterface, ChainGu
      */
     public function supportObject($object)
     {
-        return ($object instanceof JsonSchema) && \is_array($object->getType());
+        $class = $this->getSchemaClass();
+
+        return ($object instanceof $class) && \is_array($object->getType());
+    }
+
+    protected function getSchemaClass(): string
+    {
+        return JsonSchema::class;
     }
 
     /**

@@ -7,11 +7,8 @@ use Jane\OpenApi2\Model\Schema;
 
 class MultipleGuesser extends BaseMultipleGuesser
 {
-    /**
-     * {@inheritdoc}
-     */
-    public function supportObject($object)
+    protected function getSchemaClass(): string
     {
-        return ($object instanceof Schema) && \is_array($object->getType());
+        return Schema::class;
     }
 }

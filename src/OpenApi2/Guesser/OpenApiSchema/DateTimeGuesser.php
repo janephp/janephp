@@ -7,11 +7,8 @@ use Jane\OpenApi2\Model\Schema;
 
 class DateTimeGuesser extends BaseDateTimeGuesser
 {
-    /**
-     * {@inheritdoc}
-     */
-    public function supportObject($object)
+    protected function getSchemaClass(): string
     {
-        return ($object instanceof Schema) && 'string' === $object->getType() && 'date-time' === $object->getFormat();
+        return Schema::class;
     }
 }

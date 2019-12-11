@@ -7,16 +7,8 @@ use Jane\OpenApi\JsonSchema\Model\Schema;
 
 class SimpleTypeGuesser extends BaseSimpleTypeGuesser
 {
-    /**
-     * {@inheritdoc}
-     */
-    public function supportObject($object)
+    protected function getSchemaClass(): string
     {
-        return ($object instanceof Schema)
-            &&
-            \in_array($object->getType(), $this->typesSupported)
-            &&
-            !\in_array($object->getFormat(), $this->excludeFormat)
-        ;
+        return Schema::class;
     }
 }

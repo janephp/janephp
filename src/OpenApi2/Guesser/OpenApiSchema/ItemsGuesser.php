@@ -7,22 +7,8 @@ use Jane\OpenApi2\Model\Schema;
 
 class ItemsGuesser extends BaseItemsGuesser
 {
-    /**
-     * {@inheritdoc}
-     */
-    public function supportObject($object)
+    protected function getSchemaClass(): string
     {
-        return
-            ($object instanceof Schema)
-            && (
-                $object->getItems() instanceof Schema
-                ||
-                (
-                    \is_array($object->getItems())
-                    &&
-                    \count($object->getItems()) > 0
-                )
-            )
-        ;
+        return Schema::class;
     }
 }

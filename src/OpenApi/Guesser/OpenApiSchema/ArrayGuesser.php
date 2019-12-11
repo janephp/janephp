@@ -2,22 +2,11 @@
 
 namespace Jane\OpenApi\Guesser\OpenApiSchema;
 
-use Jane\JsonSchema\Guesser\JsonSchema\ArrayGuesser as BaseArrayGuesser;
+use Jane\OpenApiCommon\Guesser\OpenApiSchema\ArrayGuesser as CommonArrayGuesser;
 use Jane\OpenApi\JsonSchema\Model\Schema;
 
-class ArrayGuesser extends BaseArrayGuesser
+class ArrayGuesser extends CommonArrayGuesser
 {
-    /**
-     * {@inheritdoc}
-     */
-    public function supportObject($object)
-    {
-        return ($object instanceof Schema) && 'array' === $object->getType();
-    }
-
-    /**
-     * @return string
-     */
     protected function getSchemaClass()
     {
         return Schema::class;

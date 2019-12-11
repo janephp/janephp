@@ -32,17 +32,19 @@ class ItemsGuesser implements GuesserInterface, ClassGuesserInterface, ChainGues
      */
     public function supportObject($object)
     {
+        $class = $this->getSchemaClass();
+
         return
-            ($object instanceof JsonSchema)
-            && (
-                $object->getItems() instanceof JsonSchema
-                ||
-                (
-                    \is_array($object->getItems())
-                    &&
-                    \count($object->getItems()) > 0
-                )
+            $object instanceof $class &&
+            (
+                $object->getItems() instanceof $class ||
+                (\is_array($object->getItems()) && \count($object->getItems()) > 0)
             )
         ;
+    }
+
+    protected function getSchemaClass(): string
+    {
+        return JsonSchema::class;
     }
 }
