@@ -3,13 +3,13 @@
 namespace Jane\OpenApi2\SchemaParser;
 
 use Jane\OpenApi2\Model\OpenApi;
-use Jane\OpenApiCommon\SchemaParser\SchemaParser as BaseSchemaParser;
+use Jane\OpenApiCommon\SchemaParser\SchemaParser as CommonSchemaParser;
 
 /**
  * @method OpenApi parseSchema(string $openApiSpecPath)
  * @method OpenApi denormalize($openApiSpecData, $openApiSpecPath)
  */
-class SchemaParser extends BaseSchemaParser
+class SchemaParser extends CommonSchemaParser
 {
     protected const OPEN_API_MODEL = OpenApi::class;
     protected const OPEN_API_VERSION_MAJOR = '2';
