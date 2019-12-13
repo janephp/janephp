@@ -7,14 +7,18 @@ use Symfony\Component\Console\Application as BaseApplication;
 
 class Application extends BaseApplication
 {
+    public const COMMAND_CLASS = GenerateCommand::class;
+    public const VERSION = '5.x-dev';
+
     /**
      * Constructor.
      */
     public function __construct()
     {
-        parent::__construct('Jane', Jane::VERSION);
+        parent::__construct('Jane', self::VERSION);
 
-        $this->add(new GenerateCommand());
+        $commandClass = static::COMMAND_CLASS;
+        $this->add(new $commandClass());
     }
 
     public function getLongVersion()
