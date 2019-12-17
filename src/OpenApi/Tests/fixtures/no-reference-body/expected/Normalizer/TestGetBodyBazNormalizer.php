@@ -20,7 +20,7 @@ class TestGetBodyBazNormalizer implements DenormalizerInterface, NormalizerInter
     }
     public function supportsNormalization($data, $format = null)
     {
-        return get_class($data) === 'Jane\\OpenApi\\Tests\\Expected\\Model\\TestGetBodyBaz';
+        return is_object($data) && get_class($data) === 'Jane\\OpenApi\\Tests\\Expected\\Model\\TestGetBodyBaz';
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
