@@ -69,10 +69,15 @@ trait NormalizerGenerator
                 new Param(parserVariable('format'), new Expr\ConstFetch(new Name('null'))),
             ],
             'stmts' => [
-                new Stmt\Return_(new Expr\BinaryOp\Identical(
-                    new Expr\FuncCall(new Name('get_class'), [new Expr\Variable('data')]),
-                    new Scalar\String_($modelFqdn)
-                )),
+                new Stmt\Return_(
+                    new Expr\BinaryOp\BooleanAnd(
+                        new Expr\FuncCall(new Name('is_object'), [new Expr\Variable('data')]),
+                        new Expr\BinaryOp\Identical(
+                            new Expr\FuncCall(new Name('get_class'), [new Expr\Variable('data')]),
+                            new Scalar\String_($modelFqdn)
+                        )
+                    )
+                ),
             ],
         ]);
     }
