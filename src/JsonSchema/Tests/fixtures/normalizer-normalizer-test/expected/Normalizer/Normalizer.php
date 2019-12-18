@@ -25,7 +25,7 @@ class Normalizer implements DenormalizerInterface, NormalizerInterface, Denormal
     {
         $normalizerClass = $this->normalizers[get_class($object)];
         $normalizer = $this->getNormalizer($normalizerClass);
-        return $normalizer->denormalize($object, $format, $context);
+        return $normalizer->normalize($object, $format, $context);
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
