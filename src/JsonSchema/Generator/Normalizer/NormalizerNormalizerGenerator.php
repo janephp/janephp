@@ -68,7 +68,7 @@ trait NormalizerNormalizerGenerator
                         new Arg(new Expr\Variable('normalizerClass')),
                     ])
                 )),
-                new Stmt\Return_(new Expr\MethodCall(new Expr\Variable('normalizer'), 'denormalize', [
+                new Stmt\Return_(new Expr\MethodCall(new Expr\Variable('normalizer'), 'normalize', [
                     new Arg(new Expr\Variable('object')),
                     new Arg(new Expr\Variable('format')),
                     new Arg(new Expr\Variable('context')),
