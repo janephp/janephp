@@ -12,7 +12,7 @@ class Normalizer implements DenormalizerInterface, NormalizerInterface, Denormal
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
-    protected $normalizers = array('Jane\\JsonSchema\\Tests\\Expected\\Model\\Test' => 'Jane\\JsonSchema\\Tests\\Expected\\Normalizer\\TestNormalizer');
+    protected $normalizers = array('Jane\\JsonSchema\\Tests\\Expected\\Model\\Test' => 'Jane\\JsonSchema\\Tests\\Expected\\Normalizer\\TestNormalizer'), $normalizersCache = array();
     public function supportsDenormalization($data, $type, $format = null)
     {
         return array_key_exists($type, $this->normalizers);
@@ -24,15 +24,27 @@ class Normalizer implements DenormalizerInterface, NormalizerInterface, Denormal
     public function normalize($object, $format = null, array $context = array())
     {
         $normalizerClass = $this->normalizers[get_class($object)];
-        $normalizer = new $normalizerClass();
-        $normalizer->setNormalizer($this->normalizer);
+        $normalizer = $this->getNormalizer($normalizerClass);
         return $normalizer->denormalize($object, $format, $context);
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
         $denormalizerClass = $this->normalizers[$class];
-        $denormalizer = new $denormalizerClass();
-        $denormalizer->setDenormalizer($this->denormalizer);
+        $denormalizer = $this->getNormalizer($denormalizerClass);
         return $denormalizer->denormalize($data, $class, $format, $context);
+    }
+    private function getNormalizer(string $normalizerClass)
+    {
+        if (false === array_key_exists($normalizerClass, $this->normalizersCache)) {
+            $this->normalizersCache[$normalizerClass] = $this->initNormalizer($normalizerClass);
+        }
+        return $this->normalizersCache[$normalizerClass];
+    }
+    private function initNormalizer(string $normalizerClass)
+    {
+        $normalizer = new $normalizerClass();
+        $normalizer->setNormalizer($this->normalizer);
+        $normalizer->setDenormalizer($this->denormalizer);
+        return $normalizer;
     }
 }

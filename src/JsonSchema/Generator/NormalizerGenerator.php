@@ -42,9 +42,9 @@ class NormalizerGenerator implements GeneratorInterface
     protected $useCacheableSupportsMethod;
 
     /**
-     * @var array
+     * @var bool
      */
-    protected $normalizerOptions;
+    protected $normalizerFactory;
 
     /**
      * @param Naming $naming       Naming Service
@@ -52,13 +52,13 @@ class NormalizerGenerator implements GeneratorInterface
      * @param bool   $useReference Whether to generate the JSON Reference system
      * @param bool   $useCache     Whether to use the CacheableSupportsMethodInterface interface, for >sf 4.1
      */
-    public function __construct(Naming $naming, Parser $parser, $useReference = true, $useCacheableSupportsMethod = null, $normalizerOptions = null)
+    public function __construct(Naming $naming, Parser $parser, $useReference = true, $useCacheableSupportsMethod = null, $normalizerFactory = true)
     {
         $this->naming = $naming;
         $this->parser = $parser;
         $this->useReference = $useReference;
         $this->useCacheableSupportsMethod = $this->canUseCacheableSupportsMethod($useCacheableSupportsMethod);
-        $this->normalizerOptions = $normalizerOptions ?? ['factory' => true, 'single-file' => false];
+        $this->normalizerFactory = $normalizerFactory;
     }
 
     /**
@@ -124,7 +124,7 @@ class NormalizerGenerator implements GeneratorInterface
             $schema->addFile(new File($schema->getDirectory() . '/Normalizer/' . $normalizerClass->name . '.php', $namespace, self::FILE_TYPE_NORMALIZER));
         }
 
-        if ($this->normalizerOptions['factory']) {
+        if ($this->normalizerFactory) {
             $schema->addFile(new File(
                 $schema->getDirectory() . '/Normalizer/NormalizerFactory.php',
                 new Stmt\Namespace_(new Name($schema->getNamespace() . '\\Normalizer'), [
@@ -177,16 +177,23 @@ class NormalizerGenerator implements GeneratorInterface
 
     protected function createNormalizerNormalizerClass(array $normalizers)
     {
+        $properties = [];
         $propertyName = $this->getNaming()->getPropertyName('normalizers');
         $propertyStmt = new Stmt\PropertyProperty($propertyName);
         $propertyStmt->default = $this->parser->parse('<?php ' . var_export($normalizers, true) . ';')[0]->expr;
+        $properties[] = $propertyStmt;
+        $propertyStmt = new Stmt\PropertyProperty('normalizersCache');
+        $propertyStmt->default = new Expr\Array_();
+        $properties[] = $propertyStmt;
 
         $methods = [];
-        $methods[] = new Stmt\Property(Stmt\Class_::MODIFIER_PROTECTED, [$propertyStmt]);
+        $methods[] = new Stmt\Property(Stmt\Class_::MODIFIER_PROTECTED, $properties);
         $methods[] = $this->createBaseNormalizerSupportsDenormalizationMethod();
         $methods[] = $this->createBaseNormalizerSupportsNormalizationMethod();
         $methods[] = $this->createBaseNormalizerNormalizeMethod();
         $methods[] = $this->createBaseNormalizerDenormalizeMethod();
+        $methods[] = $this->createBaseNormalizerGetNormalizer();
+        $methods[] = $this->createBaseNormalizerInitNormalizerMethod();
 
         if ($this->useCacheableSupportsMethod) {
             $methods[] = $this->createHasCacheableSupportsMethod();
