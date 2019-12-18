@@ -69,10 +69,14 @@ class Psr18ClientGenerator extends ClientGenerator
                             new Name\FullyQualified(Serializer::class),
                             [
                                 new Node\Arg(
-                                    new Expr\StaticCall(
-                                        new Name('\\' . $context->getCurrentSchema()->getNamespace() . '\\Normalizer\\NormalizerFactory'),
-                                        'create'
-                                    )
+                                    $this->normalizerFactory ?
+                                        new Expr\StaticCall(
+                                            new Name('\\' . $context->getCurrentSchema()->getNamespace() . '\\Normalizer\\NormalizerFactory'),
+                                            'create'
+                                        ) :
+                                        new Expr\Array_([
+                                            new Expr\ArrayItem(new Expr\New_(new Name('\\' . $context->getCurrentSchema()->getNamespace() . '\\Normalizer\\Normalizer'))),
+                                        ])
                                 ),
                                 new Node\Arg(
                                     new Expr\Array_([

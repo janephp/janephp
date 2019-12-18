@@ -1,0 +1,56 @@
+openapi: 3.0.0
+paths:
+    /test:
+        get:
+            operationId: getTest
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            type: object
+                            allOf:
+                            - $ref: '#/components/schemas/Foo'
+                            - type: object
+                              properties:
+                                  Bar:
+                                      $ref: '#/components/schemas/Bar'
+                                  Baz:
+                                      type: object
+                                      properties:
+                                          baz:
+                                              type: string
+                required: true
+            responses:
+                default:
+                    description: Default response
+        post:
+            operationId: test
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            type: object
+                            properties:
+                                foo:
+                                    type: string
+                required: true
+            responses:
+                default:
+                    description: Default response
+info:
+    version: ''
+    title: ''
+components:
+    schemas:
+        Foo:
+            type: object
+            properties:
+                foo:
+                    type: string
+        Bar:
+            allOf:
+            - $ref: '#/components/schemas/Foo'
+            - type: object
+              properties:
+                  bar:
+                      type: string

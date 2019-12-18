@@ -39,8 +39,8 @@ class GeneratorFactory
 
         $generators = [
             $options['client'] === JaneOpenApi::CLIENT_HTTPLUG
-                ? new HttplugClientGenerator($operationManager, $psr7OperationGenerator, $operationNaming)
-                : new Psr18ClientGenerator($operationManager, $psr7OperationGenerator, $operationNaming),
+                ? new HttplugClientGenerator($operationManager, $psr7OperationGenerator, $operationNaming, $options['normalizer-factory'] ?? true)
+                : new Psr18ClientGenerator($operationManager, $psr7OperationGenerator, $operationNaming, $options['normalizer-factory'] ?? true),
         ];
 
         return $generators;
