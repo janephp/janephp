@@ -119,31 +119,14 @@ trait JaneObjectNormalizerGenerator
                 new Param(new Expr\Variable('normalizerClass'), null, 'string'),
             ],
             'stmts' => [
-                new Stmt\If_(
-                    new Expr\BinaryOp\Identical(
-                        new Expr\ConstFetch(new Name('false')),
-                        new Expr\FuncCall(new Name('array_key_exists'), [
-                            new Arg(new Expr\Variable('normalizerClass')),
-                            new Arg(new Expr\PropertyFetch(new Expr\Variable('this'), 'normalizersCache')),
-                        ])
+                new Stmt\Return_(new Expr\BinaryOp\Coalesce(
+                    new Expr\ArrayDimFetch(
+                        new Expr\PropertyFetch(new Expr\Variable('this'), 'normalizersCache'),
+                        new Expr\Variable('normalizerClass')
                     ),
-                    [
-                        'stmts' => [
-                            new Stmt\Expression(new Expr\Assign(
-                                new Expr\ArrayDimFetch(
-                                    new Expr\PropertyFetch(new Expr\Variable('this'), 'normalizersCache'),
-                                    new Expr\Variable('normalizerClass')
-                                ),
-                                new Expr\MethodCall(new Expr\Variable('this'), 'initNormalizer', [
-                                    new Arg(new Expr\Variable('normalizerClass')),
-                                ])
-                            )),
-                        ],
-                    ]
-                ),
-                new Stmt\Return_(new Expr\ArrayDimFetch(
-                    new Expr\PropertyFetch(new Expr\Variable('this'), 'normalizersCache'),
-                    new Expr\Variable('normalizerClass')
+                    new Expr\MethodCall(new Expr\Variable('this'), 'initNormalizer', [
+                        new Arg(new Expr\Variable('normalizerClass')),
+                    ])
                 )),
             ],
         ]);
@@ -167,6 +150,13 @@ trait JaneObjectNormalizerGenerator
                 new Stmt\Expression(new Expr\MethodCall(new Expr\Variable('normalizer'), 'setDenormalizer', [
                     new Arg(new Expr\PropertyFetch(new Expr\Variable('this'), 'denormalizer')),
                 ])),
+                new Stmt\Expression(new Expr\Assign(
+                    new Expr\ArrayDimFetch(
+                        new Expr\PropertyFetch(new Expr\Variable('this'), 'normalizersCache'),
+                        new Expr\Variable('normalizerClass')
+                    ),
+                    new Expr\Variable('normalizer')
+                )),
                 new Stmt\Return_(new Expr\Variable('normalizer')),
             ],
         ]);

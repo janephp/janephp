@@ -35,16 +35,14 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
     }
     private function getNormalizer(string $normalizerClass)
     {
-        if (false === array_key_exists($normalizerClass, $this->normalizersCache)) {
-            $this->normalizersCache[$normalizerClass] = $this->initNormalizer($normalizerClass);
-        }
-        return $this->normalizersCache[$normalizerClass];
+        return $this->normalizersCache[$normalizerClass] ?? $this->initNormalizer($normalizerClass);
     }
     private function initNormalizer(string $normalizerClass)
     {
         $normalizer = new $normalizerClass();
         $normalizer->setNormalizer($this->normalizer);
         $normalizer->setDenormalizer($this->denormalizer);
+        $this->normalizersCache[$normalizerClass] = $normalizer;
         return $normalizer;
     }
 }
