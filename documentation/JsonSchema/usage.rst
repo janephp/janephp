@@ -7,9 +7,7 @@ all normalizers to handle denormalization from a json string, and normalization.
 All normalizers respect the ``Symfony\Component\Serializer\Normalizer\NormalizerInterface`` and
 ``Symfony\Component\Serializer\Normalizer\DenormalizerInterface`` from the `Symfony Serializer Component`_.
 
-It also generates a ``NormalizerFactory`` class having a static function ``create`` returning an array of all
-normalizers. But if you set ``normalizer-factory`` disabled, you'll have a ``LazyNormalizer`` that will load needed
-normalizers when you need to use them.
+It also generate a ``LazyNormalizer`` class that will act as an usual Symfony Normalizer.
 
 Given this configuration::
 
@@ -26,37 +24,16 @@ You will have to do this::
 
     <?php
 
-    $normalizers = Vendor\Library\Generated\Normalizer\NormalizerFactory::create();
+    $normalizers = [
+        new Symfony\Component\Serializer\Normalizer\ArrayDenormalizer(),
+        new Vendor\Library\Generated\Normalizer\LazyNormalizer(),
+    ];
     $encoders = [new Symfony\Component\Serializer\Encoder\JsonEncoder(
         new Symfony\Component\Serializer\Encoder\JsonEncode([Symfony\Component\Serializer\Encoder\JsonEncode::OPTIONS => \JSON_UNESCAPED_SLASHES]),
         new Symfony\Component\Serializer\Encoder\JsonDecode([Symfony\Component\Serializer\Encoder\JsonDecode::ASSOCIATIVE => false])),
     ];
 
     $serializer = new Symfony\Component\Serializer\Serializer($normalizers, $encoders);
-    $serializer->deserialize('{...}');
-
-And if you want to use the ``LazyNormalizer``, here is an example configuration::
-
-    <?php
-
-    return [
-        'json-schema-file' => __DIR__ . '/json-schema.json',
-        'root-class' => 'MyModel',
-        'namespace' => 'Vendor\Library\Generated',
-        'directory' => __DIR__ . '/generated',
-        'normalizer-factory' => false,
-    ];
-
-And it's usage::
-
-    <?php
-
-    $encoders = [new Symfony\Component\Serializer\Encoder\JsonEncoder(
-        new Symfony\Component\Serializer\Encoder\JsonEncode([Symfony\Component\Serializer\Encoder\JsonEncode::OPTIONS => \JSON_UNESCAPED_SLASHES]),
-        new Symfony\Component\Serializer\Encoder\JsonDecode([Symfony\Component\Serializer\Encoder\JsonDecode::ASSOCIATIVE => false])),
-    ];
-
-    $serializer = new Symfony\Component\Serializer\Serializer([new Vendor\Library\Generated\Normalizer\LazyNormalizer()], $encoders);
     $serializer->deserialize('{...}');
 
 This serializer will be able to encode and decode every data respecting your json schema specification.

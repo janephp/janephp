@@ -27,15 +27,11 @@ abstract class ClientGenerator implements GeneratorInterface
 
     private $operationNaming;
 
-    /** @var bool */
-    protected $normalizerFactory;
-
-    public function __construct(OperationManager $operationManager, OperationGenerator $operationGenerator, OperationNamingInterface $operationNaming, bool $normalizerFactory = true)
+    public function __construct(OperationManager $operationManager, OperationGenerator $operationGenerator, OperationNamingInterface $operationNaming)
     {
         $this->operationManager = $operationManager;
         $this->operationGenerator = $operationGenerator;
         $this->operationNaming = $operationNaming;
-        $this->normalizerFactory = $normalizerFactory;
     }
 
     public function generate(Schema $schema, string $className, Context $context)

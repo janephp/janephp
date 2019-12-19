@@ -10,14 +10,17 @@ declare(strict_types=1);
 
 namespace Jane\JsonSchema\Normalizer;
 
+@trigger_error('The "NormalizerFactory" class is deprecated since Jane 5.3, use "LazyNormalizer" instead.', E_USER_DEPRECATED);
+/**
+ * @deprecated The "NormalizerFactory" class is deprecated since Jane 5.3, use "LazyNormalizer" instead.
+ */
 class NormalizerFactory
 {
     public static function create()
     {
         $normalizers = [];
         $normalizers[] = new \Symfony\Component\Serializer\Normalizer\ArrayDenormalizer();
-        $normalizers[] = new \Jane\JsonSchemaRuntime\Normalizer\ReferenceNormalizer();
-        $normalizers[] = new JsonSchemaNormalizer();
+        $normalizers[] = new \Jane\JsonSchema\Normalizer\LazyNormalizer();
 
         return $normalizers;
     }

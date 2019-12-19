@@ -90,7 +90,6 @@ class GenerateCommand extends Command
             'clean-generated' => true,
             'use-cacheable-supports-method' => null,
             'client' => JaneOpenApi::CLIENT_HTTPLUG,
-            'normalizer-factory' => true,
         ]);
 
         if (\array_key_exists('openapi-file', $options)) {
@@ -131,7 +130,6 @@ class GenerateCommand extends Command
             'clean-generated',
             'use-cacheable-supports-method',
             'client',
-            'normalizer-factory',
         ]);
 
         $optionsResolver->setDefault('version', 3);

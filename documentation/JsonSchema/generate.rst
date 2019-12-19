@@ -59,7 +59,6 @@ Other options are available to customize the generated code:
  * ``fixer-config-file``: A string to specify where to find the custom configuration for the cs-fixer after code generation, will remove all Jane default cs-fixer default configuration.
  * ``clean-generated``: A boolean which indicate if we clean generated output before generating new files, is enabled by default.
  * ``use-cacheable-supports-method``: A boolean which indicate if we use ``CacheableSupportsMethodInterface`` interface to improve caching performances when used with Symfony Serializer.
- * ``normalizer-factory``: A boolean which indicate if we use ``NormalizerFactory`` or ``LazyNormalizer``, is enabled by default.
 
 Multi schemas
 -------------

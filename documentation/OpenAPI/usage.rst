@@ -5,7 +5,7 @@ Generating a client will produce same classes as the :doc:`/JsonSchema/introduct
 
  * Model files in the ``Model`` namespace
  * Normalizer files in the ``Normalizer`` namespace
- * A ``NormalizerFactory`` or ``LazyNormalizer`` class in the ``Normalizer`` namespace
+ * A ``LazyNormalizer`` class in the ``Normalizer`` namespace
 
 Furthermore, it generates:
 
@@ -46,28 +46,20 @@ This allows user of the API to use any client respecting the standard.
 Creating the Serializer
 -----------------------
 
-Like in :doc:`/JsonSchema/usage`, creating a serializer is done by using the ``NormalizerFactory`` class::
+Like in :doc:`/JsonSchema/usage`, creating a serializer is done by using the ``LazyNormalizer`` class::
 
     <?php
 
-    $normalizers = Vendor\Library\Generated\Normalizer\NormalizerFactory::create();
+    $normalizers = [
+        new Symfony\Component\Serializer\Normalizer\ArrayDenormalizer(),
+        new Vendor\Library\Generated\Normalizer\LazyNormalizer(),
+    ];
     $encoders = [new Symfony\Component\Serializer\Encoder\JsonEncoder(
         new Symfony\Component\Serializer\Encoder\JsonEncode(JSON_UNESCAPED_SLASHES),
         new Symfony\Component\Serializer\Encoder\JsonDecode(false))
     ];
 
     $serializer = new Symfony\Component\Serializer\Serializer($normalizers, $encoders);
-
-But if you have ``normalizer-factory`` disabled, you'll have ``LazyNormalizer`` instead that you can use as following::
-
-    <?php
-
-    $encoders = [new Symfony\Component\Serializer\Encoder\JsonEncoder(
-        new Symfony\Component\Serializer\Encoder\JsonEncode(JSON_UNESCAPED_SLASHES),
-        new Symfony\Component\Serializer\Encoder\JsonDecode(false))
-    ];
-
-    $serializer = new Symfony\Component\Serializer\Serializer([new Vendor\Library\Generated\Normalizer\LazyNormalizer()], $encoders);
 
 Creating the Request Factory
 ----------------------------
