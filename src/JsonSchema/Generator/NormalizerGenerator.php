@@ -125,6 +125,8 @@ class NormalizerGenerator implements GeneratorInterface
         }
 
         if ($this->normalizerFactory) {
+            @trigger_error(sprintf('The "NormalizerFactory" class is deprecated since Jane 5.3, use "LazyNormalizer" instead.'), E_USER_DEPRECATED);
+
             $schema->addFile(new File(
                 $schema->getDirectory() . '/Normalizer/NormalizerFactory.php',
                 new Stmt\Namespace_(new Name($schema->getNamespace() . '\\Normalizer'), [
@@ -134,7 +136,7 @@ class NormalizerGenerator implements GeneratorInterface
             ));
         } else {
             $schema->addFile(new File(
-                $schema->getDirectory() . '/Normalizer/Normalizer.php',
+                $schema->getDirectory() . '/Normalizer/LazyNormalizer.php',
                 new Stmt\Namespace_(new Name($schema->getNamespace() . '\\Normalizer'), $this->createNormalizerNormalizerClass($normalizers)),
                 self::FILE_TYPE_NORMALIZER
             ));
@@ -200,7 +202,7 @@ class NormalizerGenerator implements GeneratorInterface
         }
 
         $normalizerClass = $this->createNormalizerClass(
-            'Normalizer',
+            'LazyNormalizer',
             $methods,
             $this->useCacheableSupportsMethod
         );

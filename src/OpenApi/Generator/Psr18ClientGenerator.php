@@ -75,7 +75,7 @@ class Psr18ClientGenerator extends ClientGenerator
                                             'create'
                                         ) :
                                         new Expr\Array_([
-                                            new Expr\ArrayItem(new Expr\New_(new Name('\\' . $context->getCurrentSchema()->getNamespace() . '\\Normalizer\\Normalizer'))),
+                                            new Expr\ArrayItem(new Expr\New_(new Name('\\' . $context->getCurrentSchema()->getNamespace() . '\\Normalizer\\LazyNormalizer'))),
                                         ])
                                 ),
                                 new Node\Arg(

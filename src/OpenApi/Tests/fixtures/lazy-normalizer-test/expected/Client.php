@@ -35,7 +35,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
         }
         $messageFactory = \Http\Discovery\MessageFactoryDiscovery::find();
         $streamFactory = \Http\Discovery\StreamFactoryDiscovery::find();
-        $serializer = new \Symfony\Component\Serializer\Serializer(array(new \Jane\OpenApi\Tests\Expected\Normalizer\Normalizer()), array(new \Symfony\Component\Serializer\Encoder\JsonEncoder(new \Symfony\Component\Serializer\Encoder\JsonEncode(), new \Symfony\Component\Serializer\Encoder\JsonDecode())));
+        $serializer = new \Symfony\Component\Serializer\Serializer(array(new \Jane\OpenApi\Tests\Expected\Normalizer\LazyNormalizer()), array(new \Symfony\Component\Serializer\Encoder\JsonEncoder(new \Symfony\Component\Serializer\Encoder\JsonEncode(), new \Symfony\Component\Serializer\Encoder\JsonDecode())));
         return new static($httpClient, $messageFactory, $serializer, $streamFactory);
     }
 }
