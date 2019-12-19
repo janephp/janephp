@@ -5,7 +5,7 @@ namespace Jane\JsonSchema\Generator;
 use Jane\JsonSchema\Generator\Context\Context;
 use Jane\JsonSchema\Generator\Normalizer\DenormalizerGenerator;
 use Jane\JsonSchema\Generator\Normalizer\NormalizerGenerator as NormalizerGeneratorTrait;
-use Jane\JsonSchema\Generator\Normalizer\LazyNormalizerGenerator;
+use Jane\JsonSchema\Generator\Normalizer\JaneObjectNormalizerGenerator;
 use Jane\JsonSchema\Schema;
 use Jane\JsonSchemaRuntime\Reference;
 use PhpParser\Comment\Doc;
@@ -22,7 +22,7 @@ class NormalizerGenerator implements GeneratorInterface
 
     use DenormalizerGenerator;
     use NormalizerGeneratorTrait;
-    use LazyNormalizerGenerator;
+    use JaneObjectNormalizerGenerator;
     use PropertyCheckTrait;
 
     /**
@@ -123,15 +123,15 @@ class NormalizerGenerator implements GeneratorInterface
         }
 
         $schema->addFile(new File(
-            $schema->getDirectory() . '/Normalizer/LazyNormalizer.php',
-            new Stmt\Namespace_(new Name($schema->getNamespace() . '\\Normalizer'), $this->createLazyNormalizerClass($normalizers)),
+            $schema->getDirectory() . '/Normalizer/JaneObjectNormalizer.php',
+            new Stmt\Namespace_(new Name($schema->getNamespace() . '\\Normalizer'), $this->createJaneObjectNormalizerClass($normalizers)),
             self::FILE_TYPE_NORMALIZER
         ));
-        $lazyNormalizerClass = sprintf('\\%s\\Normalizer\\%s', $schema->getNamespace(), 'LazyNormalizer');
+        $janeObjectNormalizerClass = sprintf('\\%s\\Normalizer\\%s', $schema->getNamespace(), 'JaneObjectNormalizer');
 
         $schema->addFile(new File(
             $schema->getDirectory() . '/Normalizer/NormalizerFactory.php',
-            new Stmt\Namespace_(new Name($schema->getNamespace() . '\\Normalizer'), $this->createNormalizerFactoryClass($lazyNormalizerClass)),
+            new Stmt\Namespace_(new Name($schema->getNamespace() . '\\Normalizer'), $this->createNormalizerFactoryClass($janeObjectNormalizerClass)),
             self::FILE_TYPE_NORMALIZER
         ));
     }
@@ -143,17 +143,17 @@ class NormalizerGenerator implements GeneratorInterface
             (null === $useCacheableSupportsMethod && class_exists('Symfony\Component\Serializer\Normalizer\CacheableSupportsMethodInterface'));
     }
 
-    protected function createNormalizerFactoryClass(string $lazyNormalizerClass): array
+    protected function createNormalizerFactoryClass(string $janeObjectNormalizerClass): array
     {
         $statements = [
             new Stmt\Expression(new Expr\Assign(new Expr\Variable('normalizers'), new Expr\Array_())),
             new Stmt\Expression(new Expr\Assign(new Expr\ArrayDimFetch(new Expr\Variable('normalizers')), new Expr\New_(new Name('\Symfony\Component\Serializer\Normalizer\ArrayDenormalizer')))),
         ];
 
-        $statements[] = new Stmt\Expression(new Expr\Assign(new Expr\ArrayDimFetch(new Expr\Variable('normalizers')), new Expr\New_(new Name($lazyNormalizerClass))));
+        $statements[] = new Stmt\Expression(new Expr\Assign(new Expr\ArrayDimFetch(new Expr\Variable('normalizers')), new Expr\New_(new Name($janeObjectNormalizerClass))));
         $statements[] = new Stmt\Return_(new Expr\Variable('normalizers'));
 
-        $deprecatedString = 'The "NormalizerFactory" class is deprecated since Jane 5.3, use "LazyNormalizer" instead.';
+        $deprecatedString = 'The "NormalizerFactory" class is deprecated since Jane 5.3, use "JaneObjectNormalizer" instead.';
         $deprecatedComment = <<<EOT
 /**
  * @deprecated $deprecatedString
@@ -179,7 +179,7 @@ EOT;
         return [$stmt, $class];
     }
 
-    protected function createLazyNormalizerClass(array $normalizers): array
+    protected function createJaneObjectNormalizerClass(array $normalizers): array
     {
         if ($this->useReference) {
             $normalizers['\\Jane\\JsonSchemaRuntime\\Reference'] = '\\Jane\\JsonSchemaRuntime\\Normalizer\\ReferenceNormalizer';
@@ -208,7 +208,7 @@ EOT;
         }
 
         $normalizerClass = $this->createNormalizerClass(
-            'LazyNormalizer',
+            'JaneObjectNormalizer',
             $methods,
             $this->useCacheableSupportsMethod
         );

@@ -76,7 +76,7 @@ class HttplugClientGenerator extends ClientGenerator
                             [
                                 new Node\Arg(new Expr\Array_([
                                     new Expr\ArrayItem(new Expr\New_(new Name('\\Symfony\\Component\\Serializer\\Normalizer\\ArrayDenormalizer'))),
-                                    new Expr\ArrayItem(new Expr\New_(new Name('\\' . $context->getCurrentSchema()->getNamespace() . '\\Normalizer\\LazyNormalizer'))),
+                                    new Expr\ArrayItem(new Expr\New_(new Name('\\' . $context->getCurrentSchema()->getNamespace() . '\\Normalizer\\JaneObjectNormalizer'))),
                                 ])),
                                 new Node\Arg(
                                     new Expr\Array_([

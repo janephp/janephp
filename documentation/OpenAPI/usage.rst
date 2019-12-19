@@ -5,7 +5,7 @@ Generating a client will produce same classes as the :doc:`/JsonSchema/introduct
 
  * Model files in the ``Model`` namespace
  * Normalizer files in the ``Normalizer`` namespace
- * A ``LazyNormalizer`` class in the ``Normalizer`` namespace
+ * A ``JaneObjectNormalizer`` class in the ``Normalizer`` namespace
 
 Furthermore, it generates:
 
@@ -46,13 +46,13 @@ This allows user of the API to use any client respecting the standard.
 Creating the Serializer
 -----------------------
 
-Like in :doc:`/JsonSchema/usage`, creating a serializer is done by using the ``LazyNormalizer`` class::
+Like in :doc:`/JsonSchema/usage`, creating a serializer is done by using the ``JaneObjectNormalizer`` class::
 
     <?php
 
     $normalizers = [
         new Symfony\Component\Serializer\Normalizer\ArrayDenormalizer(),
-        new Vendor\Library\Generated\Normalizer\LazyNormalizer(),
+        new Vendor\Library\Generated\Normalizer\JaneObjectNormalizer(),
     ];
     $encoders = [new Symfony\Component\Serializer\Encoder\JsonEncoder(
         new Symfony\Component\Serializer\Encoder\JsonEncode(JSON_UNESCAPED_SLASHES),
