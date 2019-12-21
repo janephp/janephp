@@ -31,19 +31,11 @@ class GeneratorFactory
         $psr7EndpointGenerator = new Psr7EndpointGenerator($operationNaming, $bodyParameter, $nonBodyParameter, $serializer, $exceptionGenerator);
         $psr7OperationGenerator = new Psr7OperationGenerator($psr7EndpointGenerator);
 
-        $clientAsyncGenerator = null;
-
         $generators = [
             $options['client'] === JaneOpenApi::CLIENT_HTTPLUG
                 ? new HttplugClientGenerator($operationManager, $psr7OperationGenerator, $operationNaming)
                 : new Psr18ClientGenerator($operationManager, $psr7OperationGenerator, $operationNaming),
         ];
-
-        if ($options['async']) {
-            $ampArtaxEndpointGenerator = new AmpArtaxEndpointGenerator($operationNaming, $bodyParameter, $nonBodyParameter, $serializer, $exceptionGenerator);
-            $ampArtaxOperationGenerator = new AmpArtaxOperationGenerator($ampArtaxEndpointGenerator);
-            $generators[] = new AmpArtaxClientGenerator($operationManager, $ampArtaxOperationGenerator, $operationNaming);
-        }
 
         return $generators;
     }

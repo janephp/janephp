@@ -65,7 +65,7 @@ abstract class EndpointGenerator
 
     abstract protected function getTrait(): array;
 
-    public function createEndpointClass(Operation $operation, Context $context, bool $async = false): array
+    public function createEndpointClass(Operation $operation, Context $context): array
     {
         $openApi = $context->getCurrentSchema()->getParsed();
         $endpointName = $this->operationNaming->getEndpointName($operation);

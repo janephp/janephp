@@ -1,9 +1,0 @@
-<?php
-
-return [
-    'openapi-file' => __DIR__ . '/swagger.json',
-    'namespace' => 'Jane\OpenApi2\Tests\Expected',
-    'directory' => __DIR__ . '/generated',
-    'async' => true,
-    'use-fixer' => false,
-];
