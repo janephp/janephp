@@ -1,6 +1,6 @@
 <?php
 
-namespace Jane\OpenApi\Generator\Model;
+namespace Jane\OpenApiCommon\Generator\Model;
 
 use Jane\JsonSchema\Generator\Model\ClassGenerator as BaseClassGenerator;
 use PhpParser\Node;
@@ -21,6 +21,7 @@ trait ClassGenerator
      * @param Node[] $properties
      * @param Node[] $methods
      * @param bool   $hasExtensions
+     * @param bool   $deprecated
      * @param string $extends
      *
      * @return Stmt\Class_

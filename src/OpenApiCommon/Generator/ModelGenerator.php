@@ -1,11 +1,11 @@
 <?php
 
-namespace Jane\OpenApi\Generator;
+namespace Jane\OpenApiCommon\Generator;
 
 use Jane\JsonSchema\Generator\ModelGenerator as BaseModelGenerator;
 use Jane\JsonSchema\Guesser\Guess\ClassGuess as BaseClassGuess;
 use Jane\JsonSchema\Guesser\Guess\Property;
-use Jane\OpenApi\Generator\Model\ClassGenerator;
+use Jane\OpenApiCommon\Generator\Model\ClassGenerator;
 use Jane\OpenApiCommon\Guesser\Guess\ClassGuess;
 use Jane\OpenApiCommon\Guesser\Guess\MultipleClass;
 use PhpParser\Node\Stmt;
