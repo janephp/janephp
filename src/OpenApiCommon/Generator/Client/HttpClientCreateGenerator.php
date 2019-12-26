@@ -1,12 +1,11 @@
 <?php
 
-namespace Jane\OpenApi\Generator\Client;
+namespace Jane\OpenApiCommon\Generator\Client;
 
 use Http\Client\Common\PluginClient;
 use Http\Discovery\HttpClientDiscovery;
 use Http\Discovery\Psr18ClientDiscovery;
 use Jane\JsonSchema\Generator\Context\Context;
-use Jane\OpenApi\Generator\Psr18ClientGenerator;
 use Jane\OpenApi\JsonSchema\Model\OpenApi;
 use PhpParser\Node\Stmt;
 use PhpParser\Node\Expr;
@@ -15,12 +14,14 @@ use PhpParser\Node;
 
 trait HttpClientCreateGenerator
 {
-    use ServerPluginGenerator;
     use AuthenticationPluginGenerator;
+
+    abstract protected function getPsr18ClientGeneratorClass(): string;
 
     protected function getHttpClientCreateExpr(Context $context)
     {
-        $discoveryClientClass = $this instanceof Psr18ClientGenerator ? Psr18ClientDiscovery::class : HttpClientDiscovery::class;
+        $psr18ClientGeneratorClass = $this->getPsr18ClientGeneratorClass();
+        $discoveryClientClass = $this instanceof $psr18ClientGeneratorClass ? Psr18ClientDiscovery::class : HttpClientDiscovery::class;
 
         /** @var OpenApi $openApi */
         $openApi = $context->getCurrentSchema()->getParsed();

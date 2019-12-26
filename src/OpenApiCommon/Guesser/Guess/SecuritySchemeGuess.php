@@ -1,11 +1,6 @@
 <?php
 
-namespace Jane\OpenApi\Guesser\Guess;
-
-use Jane\OpenApi\JsonSchema\Model\APIKeySecurityScheme;
-use Jane\OpenApi\JsonSchema\Model\HTTPSecurityScheme;
-use Jane\OpenApi\JsonSchema\Model\OAuth2SecurityScheme;
-use Jane\OpenApi\JsonSchema\Model\OpenIdConnectSecurityScheme;
+namespace Jane\OpenApiCommon\Guesser\Guess;
 
 class SecuritySchemeGuess
 {
@@ -30,7 +25,6 @@ class SecuritySchemeGuess
     /** @var string */
     private $type;
 
-    /** @var APIKeySecurityScheme|HTTPSecurityScheme|OAuth2SecurityScheme|OpenIdConnectSecurityScheme $object */
     private $object;
 
     public function __construct(string $name, string $type, object $object)

@@ -7,13 +7,13 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return null|\Jane\OpenApi2\Tests\Expected\Model\Foo|\Psr\Http\Message\ResponseInterface
      */
-    public function testHost(string $fetch = self::FETCH_OBJECT)
+    public function getFoo(string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Jane\OpenApi2\Tests\Expected\Endpoint\TestHost(), $fetch);
+        return $this->executePsr7Endpoint(new \Jane\OpenApi2\Tests\Expected\Endpoint\GetFoo(), $fetch);
     }
-    public static function create($httpClient = null)
+    public static function create($httpClient = null, \Jane\OpenApiRuntime\Client\Authentication $authentication = null)
     {
         if (null === $httpClient) {
             $httpClient = \Http\Discovery\HttpClientDiscovery::find();
@@ -21,6 +21,9 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
             $uri = \Http\Discovery\UriFactoryDiscovery::find()->createUri('https://www.foo-host.com/base-path');
             $plugins[] = new \Http\Client\Common\Plugin\AddHostPlugin($uri);
             $plugins[] = new \Http\Client\Common\Plugin\AddPathPlugin($uri);
+            if (null !== $authentication) {
+                $plugins[] = $authentication->getPlugin();
+            }
             $httpClient = new \Http\Client\Common\PluginClient($httpClient, $plugins);
         }
         $messageFactory = \Http\Discovery\MessageFactoryDiscovery::find();

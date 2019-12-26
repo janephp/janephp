@@ -37,6 +37,11 @@ class OpenApiGuesser implements GuesserInterface, ClassGuesserInterface, ChainGu
                 $this->chainGuesser->guessClass($definition, $key, $reference . '/definitions/' . $key, $registry);
             }
         }
+        if (null !== $object->getSecurityDefinitions() && is_iterable($object->getSecurityDefinitions())) {
+            foreach ($object->getSecurityDefinitions() as $key => $definition) {
+                $this->chainGuesser->guessClass($definition, $key, $reference . '/securityDefinitions/' . $key, $registry);
+            }
+        }
 
         if ($object->getResponses()) {
             foreach ($object->getResponses() as $responseName => $response) {

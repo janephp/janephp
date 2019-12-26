@@ -2,13 +2,10 @@
 
 namespace Jane\OpenApi2\Generator;
 
-use Http\Client\Common\Plugin\AddHostPlugin;
-use Http\Client\Common\Plugin\AddPathPlugin;
-use Http\Client\Common\PluginClient;
 use Http\Discovery\Psr17FactoryDiscovery;
-use Http\Discovery\Psr18ClientDiscovery;
 use Jane\JsonSchema\Generator\Context\Context;
-use Jane\OpenApi2\Model\OpenApi;
+use Jane\OpenApiCommon\Schema;
+use Jane\OpenApiRuntime\Client\Authentication;
 use Jane\OpenApiRuntime\Client\Psr18Client;
 use PhpParser\Node;
 use PhpParser\Node\Expr;
@@ -18,6 +15,7 @@ use Symfony\Component\Serializer\Encoder\JsonDecode;
 use Symfony\Component\Serializer\Encoder\JsonEncode;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Serializer;
+use Jane\JsonSchema\Schema as BaseSchema;
 
 class Psr18ClientGenerator extends ClientGenerator
 {
@@ -33,14 +31,17 @@ class Psr18ClientGenerator extends ClientGenerator
         ]);
     }
 
-    protected function getFactoryMethod(Context $context): Stmt
+    protected function getFactoryMethod(BaseSchema $schema, Context $context): Stmt
     {
+        $params = [new Node\Param(new Expr\Variable('httpClient'), new Expr\ConstFetch(new Name('null')))];
+        if ($schema instanceof Schema && \count($schema->getSecuritySchemes()) > 0) {
+            $params[] = new Node\Param(new Expr\Variable('authentication'), new Expr\ConstFetch(new Name('null')), new Name\FullyQualified(Authentication::class));
+        }
+
         return new Stmt\ClassMethod(
             'create', [
                 'flags' => Stmt\Class_::MODIFIER_STATIC | Stmt\Class_::MODIFIER_PUBLIC,
-                'params' => [
-                    new Node\Param(new Node\Expr\Variable('httpClient'), new Expr\ConstFetch(new Name('null'))),
-                ],
+                'params' => $params,
                 'stmts' => [
                     new Stmt\If_(
                         new Expr\BinaryOp\Identical(new Expr\ConstFetch(new Name('null')), new Expr\Variable('httpClient')),
@@ -99,87 +100,5 @@ class Psr18ClientGenerator extends ClientGenerator
                 ],
             ]
         );
-    }
-
-    private function getHttpClientCreateExpr(Context $context)
-    {
-        /** @var OpenApi $openApi */
-        $openApi = $context->getCurrentSchema()->getParsed();
-        $baseUri = null;
-        $plugins = [];
-
-        $openApi->getBasePath();
-        $openApi->getHost();
-
-        if (null !== ($host = $openApi->getHost())) {
-            $scheme = 'https';
-            $schemes = $openApi->getSchemes() ?? [];
-            if (1 === \count($schemes)) {
-                $scheme = reset($schemes);
-            }
-
-            $baseUri = $scheme . '://' . trim($host, '/');
-            $plugins[] = AddHostPlugin::class;
-
-            if (null !== ($basePath = $openApi->getBasePath())) {
-                $baseUri .= '/' . trim($basePath, '/');
-                $plugins[] = AddPathPlugin::class;
-            }
-        }
-
-        $httpClientAssign = new Node\Stmt\Expression(new Expr\Assign(
-            new Expr\Variable('httpClient'),
-            new Expr\StaticCall(
-                new Name\FullyQualified(Psr18ClientDiscovery::class),
-                'find'
-            )
-        ));
-
-        if (empty($baseUri) || $baseUri === '/') {
-            return [$httpClientAssign];
-        }
-
-        $statements = [
-            $httpClientAssign,
-            new Node\Stmt\Expression(new Expr\Assign(
-                new Expr\Variable('plugins'),
-                new Expr\Array_()
-            )),
-            new Node\Stmt\Expression(new Expr\Assign(
-                new Expr\Variable('uri'),
-                new Expr\MethodCall(
-                    new Expr\StaticCall(
-                        new Name\FullyQualified(Psr17FactoryDiscovery::class),
-                        'findUrlFactory'
-                    ),
-                    'createUri',
-                    [
-                        new Node\Arg(new Node\Scalar\String_($baseUri)),
-                    ]
-                )
-            )),
-        ];
-
-        foreach ($plugins as $pluginClass) {
-            $statements[] = new Node\Stmt\Expression(new Expr\Assign(
-                new Expr\ArrayDimFetch(new Expr\Variable('plugins')),
-                new Expr\New_(new Name\FullyQualified($pluginClass), [
-                    new Node\Arg(new Expr\Variable('uri')),
-                ])
-            ));
-        }
-
-        $statements[] = new Node\Stmt\Expression(new Expr\Assign(
-            new Expr\Variable('httpClient'),
-            new Expr\New_(
-                new Name\FullyQualified(PluginClient::class),
-                [
-                    new Node\Arg(new Expr\Variable('httpClient')),
-                    new Node\Arg(new Expr\Variable('plugins')),
-                ]
-            )
-        ));
-
-        return $statements;
     }
 }

@@ -3,10 +3,9 @@
 namespace Jane\OpenApiCommon\Command;
 
 use Jane\JsonSchema\Printer;
-use Jane\JsonSchema\Registry;
-use Jane\JsonSchema\Schema;
-use Jane\OpenApi\Registry as OpenApiRegistry;
 use Jane\OpenApiCommon\JaneOpenApi;
+use Jane\OpenApiCommon\Registry;
+use Jane\OpenApiCommon\Schema;
 use PhpParser\PrettyPrinter\Standard;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
@@ -16,9 +15,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 abstract class GenerateCommand extends Command
 {
-    protected const REGISTRY_CLASS = Registry::class;
     protected const OPEN_API_CLASS = '';
-    protected const SCHEMA_CLASS = Schema::class;
 
     public function configure()
     {
@@ -42,23 +39,15 @@ abstract class GenerateCommand extends Command
         }
 
         $options = $this->resolveConfiguration($options);
-        $registryClass = static::REGISTRY_CLASS;
-        /** @var Registry $registry */
-        $registry = new $registryClass();
+        $registry = new Registry();
 
         if (\array_key_exists('openapi-file', $options)) {
             $registry->addSchema($this->resolveSchema($options['openapi-file'], $options));
-
-            if ($registry instanceof OpenApiRegistry) {
-                $registry->addOutputDirectory($options['directory']);
-            }
+            $registry->addOutputDirectory($options['directory']);
         } else {
             foreach ($options['mapping'] as $schema => $schemaOptions) {
                 $registry->addSchema($this->resolveSchema($schema, $schemaOptions));
-
-                if ($registry instanceof OpenApiRegistry) {
-                    $registry->addOutputDirectory($schemaOptions['directory']);
-                }
+                $registry->addOutputDirectory($schemaOptions['directory']);
             }
         }
 
@@ -149,8 +138,7 @@ abstract class GenerateCommand extends Command
         ]);
 
         $options = $optionsResolver->resolve($options);
-        $schemaClass = static::SCHEMA_CLASS;
 
-        return new $schemaClass($schema, $options['namespace'], $options['directory'], '');
+        return new Schema($schema, $options['namespace'], $options['directory'], '');
     }
 }

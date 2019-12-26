@@ -1,8 +1,8 @@
 <?php
 
-namespace Jane\OpenApi\Generator;
+namespace Jane\OpenApi2\Generator;
 
-use Jane\OpenApi\Generator\Authentication\GetPluginGenerator;
+use Jane\OpenApi2\Generator\Authentication\GetPluginGenerator;
 use Jane\OpenApiCommon\Generator\AuthenticationGenerator as CommonAuthenticationGenerator;
 
 class AuthenticationGenerator extends CommonAuthenticationGenerator

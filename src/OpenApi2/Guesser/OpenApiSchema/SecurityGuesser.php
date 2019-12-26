@@ -1,15 +1,13 @@
 <?php
 
-namespace Jane\OpenApi\Guesser\OpenApiSchema;
+namespace Jane\OpenApi2\Guesser\OpenApiSchema;
 
 use Jane\JsonSchema\Guesser\ClassGuesserInterface;
 use Jane\JsonSchema\Guesser\GuesserInterface;
 use Jane\JsonSchema\Registry;
+use Jane\OpenApi2\Model\ApiKeySecurity;
+use Jane\OpenApi2\Model\BasicAuthenticationSecurity;
 use Jane\OpenApiCommon\Guesser\Guess\SecuritySchemeGuess;
-use Jane\OpenApi\JsonSchema\Model\APIKeySecurityScheme;
-use Jane\OpenApi\JsonSchema\Model\HTTPSecurityScheme;
-use Jane\OpenApi\JsonSchema\Model\OAuth2SecurityScheme;
-use Jane\OpenApi\JsonSchema\Model\OpenIdConnectSecurityScheme;
 use Jane\OpenApiCommon\Schema;
 
 class SecurityGuesser implements GuesserInterface, ClassGuesserInterface
@@ -19,13 +17,13 @@ class SecurityGuesser implements GuesserInterface, ClassGuesserInterface
      */
     public function supportObject($object)
     {
-        return ($object instanceof APIKeySecurityScheme || $object instanceof HTTPSecurityScheme || $object instanceof OAuth2SecurityScheme || $object instanceof OpenIdConnectSecurityScheme) && \in_array($object->getType(), SecuritySchemeGuess::getAvailableTypes());
+        return ($object instanceof ApiKeySecurity || $object instanceof BasicAuthenticationSecurity) && \in_array($object->getType(), SecuritySchemeGuess::getAvailableTypes());
     }
 
     /**
      * {@inheritdoc}
      *
-     * @param APIKeySecurityScheme|HTTPSecurityScheme|OAuth2SecurityScheme|OpenIdConnectSecurityScheme $object
+     * @param ApiKeySecurity|BasicAuthenticationSecurity $object
      */
     public function guessClass($object, $name, $reference, Registry $registry)
     {

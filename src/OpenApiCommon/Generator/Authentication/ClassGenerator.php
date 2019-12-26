@@ -1,6 +1,6 @@
 <?php
 
-namespace Jane\OpenApi\Generator\Authentication;
+namespace Jane\OpenApiCommon\Generator\Authentication;
 
 use Jane\OpenApiRuntime\Client\Authentication;
 use PhpParser\Node\Stmt;

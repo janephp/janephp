@@ -5,7 +5,7 @@ namespace Jane\OpenApi\Generator;
 use Http\Discovery\Psr17FactoryDiscovery;
 use Jane\JsonSchema\Generator\Context\Context;
 use Jane\JsonSchema\Schema as BaseSchema;
-use Jane\OpenApi\Schema;
+use Jane\OpenApiCommon\Schema;
 use Jane\OpenApiRuntime\Client\Authentication;
 use Jane\OpenApiRuntime\Client\Psr18Client;
 use PhpParser\Node;

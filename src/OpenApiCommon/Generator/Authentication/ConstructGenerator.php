@@ -1,8 +1,8 @@
 <?php
 
-namespace Jane\OpenApi\Generator\Authentication;
+namespace Jane\OpenApiCommon\Generator\Authentication;
 
-use Jane\OpenApi\Guesser\Guess\SecuritySchemeGuess;
+use Jane\OpenApiCommon\Guesser\Guess\SecuritySchemeGuess;
 use Jane\OpenApi\JsonSchema\Model\HTTPSecurityScheme;
 use PhpParser\Node\Name;
 use PhpParser\Node\Param;

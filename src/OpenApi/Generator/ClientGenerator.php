@@ -6,7 +6,8 @@ use Jane\JsonSchema\Generator\Context\Context;
 use Jane\JsonSchema\Generator\File;
 use Jane\JsonSchema\Generator\GeneratorInterface;
 use Jane\JsonSchema\Schema;
-use Jane\OpenApi\Generator\Client\HttpClientCreateGenerator;
+use Jane\OpenApi\Generator\Client\ServerPluginGenerator;
+use Jane\OpenApiCommon\Generator\Client\HttpClientCreateGenerator;
 use Jane\OpenApi\JsonSchema\Model\OpenApi;
 use Jane\OpenApiCommon\Naming\OperationNamingInterface;
 use Jane\OpenApi\Operation\OperationManager;
@@ -16,6 +17,7 @@ use PhpParser\Node\Stmt;
 abstract class ClientGenerator implements GeneratorInterface
 {
     use HttpClientCreateGenerator;
+    use ServerPluginGenerator;
 
     public const FILE_TYPE_CLIENT = 'client';
     public const FILE_TYPE_RESOURCE = 'resource';

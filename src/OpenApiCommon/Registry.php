@@ -1,9 +1,9 @@
 <?php
 
-namespace Jane\OpenApi;
+namespace Jane\OpenApiCommon;
 
 use Jane\JsonSchema\Registry as BaseRegistry;
-use Jane\OpenApi\Guesser\Guess\SecuritySchemeGuess;
+use Jane\OpenApiCommon\Guesser\Guess\SecuritySchemeGuess;
 
 class Registry extends BaseRegistry
 {

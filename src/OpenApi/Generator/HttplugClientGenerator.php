@@ -6,7 +6,7 @@ use Http\Discovery\MessageFactoryDiscovery;
 use Http\Discovery\StreamFactoryDiscovery;
 use Jane\JsonSchema\Generator\Context\Context;
 use Jane\JsonSchema\Schema as BaseSchema;
-use Jane\OpenApi\Schema;
+use Jane\OpenApiCommon\Schema;
 use Jane\OpenApiRuntime\Client\Authentication;
 use Jane\OpenApiRuntime\Client\Psr7HttplugClient;
 use PhpParser\Node;

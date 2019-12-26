@@ -1,9 +1,9 @@
 <?php
 
-namespace Jane\OpenApi\Generator\Client;
+namespace Jane\OpenApiCommon\Generator\Client;
 
 use Jane\JsonSchema\Registry;
-use Jane\OpenApi\Schema;
+use Jane\OpenApiCommon\Schema;
 use PhpParser\Node\Name;
 use PhpParser\Node\Stmt;
 use PhpParser\Node\Expr;

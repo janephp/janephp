@@ -1,9 +1,9 @@
 <?php
 
-namespace Jane\OpenApi;
+namespace Jane\OpenApiCommon;
 
 use Jane\JsonSchema\Schema as BaseSchema;
-use Jane\OpenApi\Guesser\Guess\SecuritySchemeGuess;
+use Jane\OpenApiCommon\Guesser\Guess\SecuritySchemeGuess;
 
 class Schema extends BaseSchema
 {
