@@ -11,6 +11,7 @@ use Jane\OpenApi\JsonSchema\Model\OpenApi;
 use Jane\OpenApi\JsonSchema\Model\Parameter;
 use Jane\OpenApi\JsonSchema\Model\Response;
 use Jane\OpenApi\JsonSchema\Model\Schema;
+use Jane\OpenApiCommon\Generator\ExceptionGenerator;
 use Jane\OpenApiCommon\Naming\OperationNamingInterface;
 use Jane\OpenApiCommon\Operation\Operation;
 use Jane\OpenApiRuntime\Client\BaseEndpoint;

@@ -14,6 +14,7 @@ use Jane\OpenApi2\Model\PathParameterSubSchema;
 use Jane\OpenApi2\Model\QueryParameterSubSchema;
 use Jane\OpenApi2\Model\Response;
 use Jane\OpenApi2\Model\Schema;
+use Jane\OpenApiCommon\Generator\ExceptionGenerator;
 use Jane\OpenApiCommon\Naming\OperationNamingInterface;
 use Jane\OpenApiCommon\Operation\Operation;
 use Jane\OpenApiRuntime\Client\BaseEndpoint;

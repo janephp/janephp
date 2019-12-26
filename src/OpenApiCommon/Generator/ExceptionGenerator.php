@@ -1,6 +1,6 @@
 <?php
 
-namespace Jane\OpenApi2\Generator;
+namespace Jane\OpenApiCommon\Generator;
 
 use Jane\JsonSchema\Generator\Context\Context;
 use Jane\JsonSchema\Generator\File;
@@ -20,9 +20,9 @@ class ExceptionGenerator
 
     private $intialized = [];
 
-    public function __construct(ExceptionNaming $exceptionNaming)
+    public function __construct()
     {
-        $this->exceptionNaming = $exceptionNaming;
+        $this->exceptionNaming = new ExceptionNaming();
     }
 
     public function generate(string $functionName, int $status, Context $context, ?ClassGuess $classGuess, bool $isArray, ?string $classFqdn, ?string $description): ?string

@@ -5,8 +5,8 @@ namespace Jane\OpenApi2\Generator;
 use Jane\OpenApi2\Generator\Parameter\BodyParameterGenerator;
 use Jane\OpenApi2\Generator\Parameter\NonBodyParameterGenerator;
 use Jane\OpenApi2\JaneOpenApi;
+use Jane\OpenApiCommon\Generator\ExceptionGenerator;
 use Jane\OpenApiCommon\Naming\ChainOperationNaming;
-use Jane\OpenApiCommon\Naming\ExceptionNaming;
 use Jane\OpenApiCommon\Naming\OperationIdNaming;
 use Jane\OpenApi2\Naming\OperationUrlNaming;
 use Jane\OpenApi2\Operation\OperationManager;
@@ -21,7 +21,7 @@ class GeneratorFactory
 
         $bodyParameter = new BodyParameterGenerator($parser, $serializer);
         $nonBodyParameter = new NonBodyParameterGenerator($parser);
-        $exceptionGenerator = new ExceptionGenerator(new ExceptionNaming());
+        $exceptionGenerator = new ExceptionGenerator();
         $operationManager = new OperationManager();
         $operationNaming = new ChainOperationNaming([
             new OperationIdNaming(),
