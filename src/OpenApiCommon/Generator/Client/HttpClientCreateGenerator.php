@@ -18,7 +18,7 @@ trait HttpClientCreateGenerator
 
     abstract protected function getPsr18ClientGeneratorClass(): string;
 
-    protected function getHttpClientCreateExpr(Context $context)
+    protected function getHttpClientCreateExpr(Context $context): array
     {
         $psr18ClientGeneratorClass = $this->getPsr18ClientGeneratorClass();
         $discoveryClientClass = $this instanceof $psr18ClientGeneratorClass ? Psr18ClientDiscovery::class : HttpClientDiscovery::class;
