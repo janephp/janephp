@@ -1,9 +1,8 @@
 <?php
 
-namespace Jane\OpenApi\Generator\Parameter;
+namespace Jane\OpenApiCommon\Generator\Parameter;
 
 use Jane\JsonSchema\Generator\Context\Context;
-use Jane\OpenApi\JsonSchema\Model\Parameter;
 use PhpParser\Node;
 use PhpParser\Parser;
 
@@ -20,33 +19,31 @@ abstract class ParameterGenerator
     }
 
     /**
-     * @param Parameter $parameter
-     * @param Context   $context
+     * @param $parameter
      *
      * @return Node\Param|null
      */
-    public function generateMethodParameter(Parameter $parameter, Context $context, $reference)
+    public function generateMethodParameter($parameter, Context $context, $reference)
     {
         return null;
     }
 
     /**
-     * @param Parameter $parameter
-     * @param Context   $context
+     * @param $parameter
      *
      * @return string
      */
-    public function generateMethodDocParameter(Parameter $parameter, Context $context, $reference)
+    public function generateMethodDocParameter($parameter, Context $context, $reference)
     {
         return '';
     }
 
     /**
-     * @param Parameter $parameter
+     * @param $parameter
      *
      * @return Node\Expr[]
      */
-    protected function generateInputParamArguments(Parameter $parameter): array
+    protected function generateInputParamArguments($parameter): array
     {
         return [];
     }

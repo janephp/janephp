@@ -7,6 +7,7 @@ use Jane\JsonSchema\Generator\Context\Context;
 use Jane\JsonSchemaRuntime\Reference;
 use Jane\OpenApi2\Model\BodyParameter;
 use Jane\OpenApi2\Model\Schema;
+use Jane\OpenApiCommon\Generator\Parameter\ParameterGenerator;
 use PhpParser\Node;
 use PhpParser\Parser;
 use Psr\Http\Message\StreamInterface;
@@ -29,7 +30,7 @@ class BodyParameterGenerator extends ParameterGenerator
     /**
      * {@inheritdoc}
      *
-     * @param $parameter BodyParameter
+     * @param BodyParameter $parameter
      */
     public function generateMethodParameter($parameter, Context $context, $reference)
     {
@@ -48,7 +49,7 @@ class BodyParameterGenerator extends ParameterGenerator
     /**
      * {@inheritdoc}
      *
-     * @param $parameter BodyParameter
+     * @param BodyParameter $parameter
      */
     public function generateMethodDocParameter($parameter, Context $context, $reference)
     {
@@ -57,10 +58,7 @@ class BodyParameterGenerator extends ParameterGenerator
         return sprintf(' * @param %s $%s %s', implode('|', $class), Inflector::camelize($parameter->getName()), $parameter->getDescription() ?: '');
     }
 
-    /**
-     * @return array
-     */
-    protected function getClass(BodyParameter $parameter, Context $context, $reference)
+    protected function getClass(BodyParameter $parameter, Context $context, $reference): array
     {
         $resolvedSchema = null;
         $jsonReference = null;
@@ -138,11 +136,6 @@ class BodyParameterGenerator extends ParameterGenerator
         return $convertArray[$type][$format];
     }
 
-    /**
-     * @param $class
-     *
-     * @return mixed
-     */
     private function resolveSchema(Reference $reference, $class)
     {
         $result = $reference;

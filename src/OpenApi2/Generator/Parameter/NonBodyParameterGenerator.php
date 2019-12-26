@@ -8,6 +8,7 @@ use Jane\OpenApi2\Model\FormDataParameterSubSchema;
 use Jane\OpenApi2\Model\HeaderParameterSubSchema;
 use Jane\OpenApi2\Model\PathParameterSubSchema;
 use Jane\OpenApi2\Model\QueryParameterSubSchema;
+use Jane\OpenApiCommon\Generator\Parameter\ParameterGenerator;
 use PhpParser\Node;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Scalar;
@@ -18,7 +19,7 @@ class NonBodyParameterGenerator extends ParameterGenerator
     /**
      * {@inheritdoc}
      *
-     * @param $parameter PathParameterSubSchema|HeaderParameterSubSchema|FormDataParameterSubSchema|QueryParameterSubSchema
+     * @param PathParameterSubSchema|HeaderParameterSubSchema|FormDataParameterSubSchema|QueryParameterSubSchema $parameter
      */
     public function generateMethodParameter($parameter, Context $context, $reference): Node\Param
     {
@@ -39,7 +40,7 @@ class NonBodyParameterGenerator extends ParameterGenerator
     }
 
     /**
-     * @param $parameters PathParameterSubSchema[]|HeaderParameterSubSchema[]|FormDataParameterSubSchema[]|QueryParameterSubSchema[]
+     * @param PathParameterSubSchema[]|HeaderParameterSubSchema[]|FormDataParameterSubSchema[]|QueryParameterSubSchema[] $parameters
      */
     public function generateOptionsResolverStatements(Expr\Variable $optionsResolverVariable, $parameters): array
     {
@@ -89,7 +90,7 @@ class NonBodyParameterGenerator extends ParameterGenerator
     /**
      * {@inheritdoc}
      *
-     * @param $parameter PathParameterSubSchema|HeaderParameterSubSchema|FormDataParameterSubSchema|QueryParameterSubSchema
+     * @param PathParameterSubSchema|HeaderParameterSubSchema|FormDataParameterSubSchema|QueryParameterSubSchema $parameter
      */
     public function generateMethodDocParameter($parameter, Context $context, $reference)
     {
@@ -99,11 +100,9 @@ class NonBodyParameterGenerator extends ParameterGenerator
     }
 
     /**
-     * @param $parameter PathParameterSubSchema|HeaderParameterSubSchema|FormDataParameterSubSchema|QueryParameterSubSchema
-     *
-     * @return string
+     * @param PathParameterSubSchema|HeaderParameterSubSchema|FormDataParameterSubSchema|QueryParameterSubSchema $parameter
      */
-    public function generateOptionDocParameter($parameter)
+    public function generateOptionDocParameter($parameter): string
     {
         $type = implode('|', $this->convertParameterType($parameter->getType()));
 
@@ -113,11 +112,9 @@ class NonBodyParameterGenerator extends ParameterGenerator
     /**
      * Generate a default value as an Expr.
      *
-     * @param $parameter PathParameterSubSchema|HeaderParameterSubSchema|FormDataParameterSubSchema|QueryParameterSubSchema
-     *
-     * @return Expr
+     * @param PathParameterSubSchema|HeaderParameterSubSchema|FormDataParameterSubSchema|QueryParameterSubSchema $parameter
      */
-    private function getDefaultAsExpr($parameter)
+    private function getDefaultAsExpr($parameter): Expr
     {
         $expr = $this->parser->parse('<?php ' . var_export($parameter->getDefault(), true) . ';')[0];
 
