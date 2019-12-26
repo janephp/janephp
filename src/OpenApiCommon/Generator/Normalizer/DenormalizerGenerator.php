@@ -1,16 +1,16 @@
 <?php
 
-namespace Jane\OpenApi2\Generator\Normalizer;
+namespace Jane\OpenApiCommon\Generator\Normalizer;
 
-use Jane\JsonSchema\Generator\Context\Context;
 use Jane\JsonSchema\Generator\Normalizer\DenormalizerGenerator as JsonSchemaDenormalizerGenerator;
+use Jane\JsonSchema\Generator\Context\Context;
 use Jane\JsonSchema\Guesser\Guess\ClassGuess;
 use Jane\OpenApiCommon\Guesser\Guess\MultipleClass;
-use PhpParser\Node\Arg;
 use PhpParser\Node\Expr;
+use PhpParser\Node\Stmt;
 use PhpParser\Node\Name;
 use PhpParser\Node\Scalar;
-use PhpParser\Node\Stmt;
+use PhpParser\Node\Arg;
 
 trait DenormalizerGenerator
 {
@@ -45,7 +45,7 @@ trait DenormalizerGenerator
                                 'denormalize',
                                 [
                                     new Expr\Variable('data'),
-                                    new Scalar\String_(sprintf('%s\\Model\\%s', $context->getCurrentSchema()->getNamespace(), $name)),
+                                    new Scalar\String_(sprintf('%s\\Model\\%s', $context->getCurrentSchema()->getNamespace(), $this->getNaming()->getClassName($name))),
                                     new Expr\Variable('format'),
                                     new Expr\Variable('context'),
                                 ]

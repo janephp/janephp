@@ -20,7 +20,7 @@ class BarNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
     }
     public function supportsNormalization($data, $format = null)
     {
-        return get_class($data) === 'Jane\\OpenApi2\\Tests\\Expected\\Model\\Bar';
+        return is_object($data) && get_class($data) === 'Jane\\OpenApi2\\Tests\\Expected\\Model\\Bar';
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {

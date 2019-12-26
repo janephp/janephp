@@ -20,7 +20,7 @@ class SchemaNormalizer implements DenormalizerInterface, NormalizerInterface, De
     }
     public function supportsNormalization($data, $format = null)
     {
-        return get_class($data) === 'Jane\\OpenApi2\\Tests\\Expected\\Model\\Schema';
+        return is_object($data) && get_class($data) === 'Jane\\OpenApi2\\Tests\\Expected\\Model\\Schema';
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {

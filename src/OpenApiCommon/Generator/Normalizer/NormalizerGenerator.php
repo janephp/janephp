@@ -1,6 +1,6 @@
 <?php
 
-namespace Jane\OpenApi\Generator\Normalizer;
+namespace Jane\OpenApiCommon\Generator\Normalizer;
 
 use PhpParser\Node\Param;
 use Jane\JsonSchema\Generator\Normalizer\NormalizerGenerator as JsonSchemaNormalizerGenerator;
@@ -57,7 +57,7 @@ trait NormalizerGenerator
 
     /**
      * We want stricly same class for OpenApi Normalizers since we can have inheritance and this could avoid
-     * normalization to use child classes.
+     * normalization to use child classes. This is why we use `get_class` and not `instanceof`.
      */
     protected function createSupportsNormalizationMethod(string $modelFqdn)
     {

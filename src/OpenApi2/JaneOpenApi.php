@@ -6,7 +6,7 @@ use Jane\JsonSchema\Generator\Naming;
 use Jane\OpenApi2\Generator\AuthenticationGenerator;
 use Jane\OpenApi2\Generator\GeneratorFactory;
 use Jane\OpenApiCommon\Generator\ModelGenerator;
-use Jane\OpenApi2\Generator\NormalizerGenerator;
+use Jane\OpenApiCommon\Generator\NormalizerGenerator;
 use Jane\OpenApi2\Guesser\OpenApiSchema\GuesserFactory;
 use Jane\OpenApi2\Normalizer\NormalizerFactory;
 use Jane\OpenApi2\SchemaParser\SchemaParser;

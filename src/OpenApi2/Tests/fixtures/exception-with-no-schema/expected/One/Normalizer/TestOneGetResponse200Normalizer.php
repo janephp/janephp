@@ -20,7 +20,7 @@ class TestOneGetResponse200Normalizer implements DenormalizerInterface, Normaliz
     }
     public function supportsNormalization($data, $format = null)
     {
-        return get_class($data) === 'Jane\\OpenApi2\\Tests\\Expected\\One\\Model\\TestOneGetResponse200';
+        return is_object($data) && get_class($data) === 'Jane\\OpenApi2\\Tests\\Expected\\One\\Model\\TestOneGetResponse200';
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {

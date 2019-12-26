@@ -5,7 +5,7 @@ namespace Jane\OpenApi;
 use Jane\OpenApi\Generator\AuthenticationGenerator;
 use Jane\OpenApiCommon\Generator\ModelGenerator;
 use Jane\JsonSchema\Generator\Naming;
-use Jane\OpenApi\Generator\NormalizerGenerator;
+use Jane\OpenApiCommon\Generator\NormalizerGenerator;
 use Jane\OpenApi\Generator\GeneratorFactory;
 use Jane\OpenApi\Guesser\OpenApiSchema\GuesserFactory;
 use Jane\OpenApi\SchemaParser\SchemaParser;
