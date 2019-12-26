@@ -3,6 +3,8 @@
 namespace Jane\OpenApiCommon\Command;
 
 use Jane\JsonSchema\Printer;
+use Jane\OpenApiCommon\Exception\CouldNotParseException;
+use Jane\OpenApiCommon\Exception\OpenApiVersionSupportException;
 use Jane\OpenApiCommon\JaneOpenApi;
 use Jane\OpenApiCommon\Registry;
 use Jane\OpenApiCommon\Schema;
@@ -145,6 +147,8 @@ class GenerateCommand extends Command
     {
         $firstSchema = $registry->getFirstSchema();
         $openApiClass = null;
+        $openApi2ExceptionMessage = null;
+        $openApi3ExceptionMessage = null;
 
         if (class_exists(\Jane\OpenApi2\JaneOpenApi::class)) {
             $openApi2Serializer = \Jane\OpenApi2\JaneOpenApi::buildSerializer();
@@ -153,7 +157,9 @@ class GenerateCommand extends Command
             try {
                 $openApi2SchemaParser->parseSchema($firstSchema->getOrigin());
                 $openApiClass = \Jane\OpenApi2\JaneOpenApi::class;
-            } catch (\Exception $e) {
+            } catch (CouldNotParseException $e) {
+                $openApi2ExceptionMessage = $e->getMessage();
+            } catch (OpenApiVersionSupportException $e) {
                 // We don't need this exception, we will trigger another one if needed ~
             }
         }
@@ -164,13 +170,23 @@ class GenerateCommand extends Command
             try {
                 $openApi3SchemaParser->parseSchema($firstSchema->getOrigin());
                 $openApiClass = \Jane\OpenApi\JaneOpenApi::class;
-            } catch (\Exception $e) {
+            } catch (CouldNotParseException $e) {
+                $openApi3ExceptionMessage = $e->getMessage();
+            } catch (OpenApiVersionSupportException $e) {
                 // We don't need this exception, we will trigger another one if needed ~
             }
         }
 
         if (null === $openApiClass) {
-            throw new \BadMethodCallException('Only OpenApi v2 / v3 specifications are supported, use an external tool to convert your api files.');
+            if (null !== $openApi2ExceptionMessage || null !== $openApi3ExceptionMessage) {
+                throw new CouldNotParseException(sprintf(
+                    "Could not parse schema in OpenApi v2 nor v3 format:\n- OpenApi v2 error: \"%s\"\n- OpenApi v3: \"%s\"\n",
+                    (string) $openApi2ExceptionMessage,
+                    (string) $openApi3ExceptionMessage
+                ));
+            } else {
+                throw new OpenApiVersionSupportException('Only OpenApi v2 / v3 specifications are supported, use an external tool to convert your api files.');
+            }
         }
 
         return $openApiClass;
