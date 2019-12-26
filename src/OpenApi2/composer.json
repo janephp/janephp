@@ -19,9 +19,6 @@
             "Jane\\OpenApi2\\": ""
         }
     },
-    "bin": [
-        "bin/jane-openapi"
-    ],
     "require": {
         "php": ">=7.2",
         "ext-json": "*",

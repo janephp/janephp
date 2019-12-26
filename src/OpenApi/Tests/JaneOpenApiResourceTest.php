@@ -2,7 +2,7 @@
 
 namespace Jane\OpenApi\Tests;
 
-use Jane\OpenApi\Command\GenerateCommand;
+use Jane\OpenApiCommon\Command\GenerateCommand;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Output\NullOutput;

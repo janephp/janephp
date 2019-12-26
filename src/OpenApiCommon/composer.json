@@ -23,5 +23,12 @@
         "php": ">=7.2",
         "ext-json": "*",
         "jane-php/json-schema": "^5.0"
-    }
+    },
+    "suggest": {
+        "jane-php/open-api-2": "Allow to generate OpenApi v2 clients",
+        "jane-php/open-api-3": "Allow to generate OpenApi v3 clients"
+    },
+    "bin": [
+        "bin/jane-openapi"
+    ]
 }

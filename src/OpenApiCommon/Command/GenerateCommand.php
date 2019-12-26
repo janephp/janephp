@@ -13,10 +13,8 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-abstract class GenerateCommand extends Command
+class GenerateCommand extends Command
 {
-    protected const OPEN_API_CLASS = '';
-
     public function configure()
     {
         $this->setName('generate');
@@ -51,9 +49,10 @@ abstract class GenerateCommand extends Command
             }
         }
 
-        $janeOpenApiClass = static::OPEN_API_CLASS;
+        $openApiClass = $this->matchOpenApiClass($registry);
+
         /** @var JaneOpenApi $janeOpenApi */
-        $janeOpenApi = $janeOpenApiClass::build($options);
+        $janeOpenApi = $openApiClass::build($options);
         $fixerConfigFile = '';
 
         if (\array_key_exists('fixer-config-file', $options) && null !== $options['fixer-config-file']) {
@@ -140,5 +139,40 @@ abstract class GenerateCommand extends Command
         $options = $optionsResolver->resolve($options);
 
         return new Schema($schema, $options['namespace'], $options['directory'], '');
+    }
+
+    private function matchOpenApiClass(Registry $registry): string
+    {
+        $firstSchema = $registry->getFirstSchema();
+        $openApiClass = null;
+
+        if (class_exists(\Jane\OpenApi2\JaneOpenApi::class)) {
+            $openApi2Serializer = \Jane\OpenApi2\JaneOpenApi::buildSerializer();
+            $openApi2SchemaParser = new \Jane\OpenApi2\SchemaParser\SchemaParser($openApi2Serializer);
+
+            try {
+                $openApi2SchemaParser->parseSchema($firstSchema->getOrigin());
+                $openApiClass = \Jane\OpenApi2\JaneOpenApi::class;
+            } catch (\Exception $e) {
+                // We don't need this exception, we will trigger another one if needed ~
+            }
+        }
+        if (null === $openApiClass && class_exists(\Jane\OpenApi\JaneOpenApi::class)) {
+            $openApi3Serializer = \Jane\OpenApi\JaneOpenApi::buildSerializer();
+            $openApi3SchemaParser = new \Jane\OpenApi\SchemaParser\SchemaParser($openApi3Serializer);
+
+            try {
+                $openApi3SchemaParser->parseSchema($firstSchema->getOrigin());
+                $openApiClass = \Jane\OpenApi\JaneOpenApi::class;
+            } catch (\Exception $e) {
+                // We don't need this exception, we will trigger another one if needed ~
+            }
+        }
+
+        if (null === $openApiClass) {
+            throw new \BadMethodCallException('Only OpenApi v2 / v3 specifications are supported, use an external tool to convert your api files.');
+        }
+
+        return $openApiClass;
     }
 }

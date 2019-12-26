@@ -8,6 +8,8 @@ use Symfony\Component\Yaml\Yaml;
 
 abstract class SchemaParser
 {
+    protected static $parsed = [];
+
     protected const OPEN_API_MODEL = null;
     protected const OPEN_API_VERSION_MAJOR = null;
 
@@ -21,30 +23,34 @@ abstract class SchemaParser
 
     public function parseSchema(string $openApiSpecPath)
     {
-        $openApiSpecContents = file_get_contents($openApiSpecPath);
-        $jsonException = null;
-        $yamlException = null;
+        if (!\array_key_exists($openApiSpecPath, static::$parsed)) {
+            $openApiSpecContents = file_get_contents($openApiSpecPath);
+            $jsonException = null;
+            $yamlException = null;
 
-        try {
-            return $this->deserialize($openApiSpecContents, $openApiSpecPath);
-        } catch (\Exception $exception) {
-            $jsonException = $exception;
+            try {
+                return static::$parsed[$openApiSpecPath] = $this->deserialize($openApiSpecContents, $openApiSpecPath);
+            } catch (\Exception $exception) {
+                $jsonException = $exception;
+            }
+
+            try {
+                $content = Yaml::parse(
+                    $openApiSpecContents,
+                    Yaml::PARSE_OBJECT | Yaml::PARSE_OBJECT_FOR_MAP | Yaml::PARSE_DATETIME | Yaml::PARSE_EXCEPTION_ON_INVALID_TYPE
+                );
+
+                return static::$parsed[$openApiSpecPath] = $this->denormalize($content, $openApiSpecPath);
+            } catch (YamlException $yamlException) {
+                throw new \LogicException(sprintf(
+                    "Could not parse schema in JSON nor YAML format:\n- JSON error: \"%s\"\n- YAML error: \"%s\"\n",
+                    $jsonException->getMessage(),
+                    $yamlException->getMessage()
+                ));
+            }
         }
 
-        try {
-            $content = Yaml::parse(
-                $openApiSpecContents,
-                Yaml::PARSE_OBJECT | Yaml::PARSE_OBJECT_FOR_MAP | Yaml::PARSE_DATETIME | Yaml::PARSE_EXCEPTION_ON_INVALID_TYPE
-            );
-
-            return $this->denormalize($content, $openApiSpecPath);
-        } catch (YamlException $yamlException) {
-            throw new \LogicException(sprintf(
-                "Could not parse schema in JSON nor YAML format:\n- JSON error: \"%s\"\n- YAML error: \"%s\"\n",
-                $jsonException->getMessage(),
-                $yamlException->getMessage()
-            ));
-        }
+        return static::$parsed[$openApiSpecPath];
     }
 
     protected function deserialize($openApiSpecContents, $openApiSpecPath)

@@ -7,6 +7,11 @@ use Jane\OpenApiCommon\Guesser\Guess\SecuritySchemeGuess;
 
 class Registry extends BaseRegistry
 {
+    public function getFirstSchema(): Schema
+    {
+        return reset($this->schemas);
+    }
+
     public function hasSecurityScheme($securitySchemeReference): bool
     {
         return null !== $this->getClass($securitySchemeReference);

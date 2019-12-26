@@ -1,9 +1,9 @@
 <?php
 
-namespace Jane\OpenApi2;
+namespace Jane\OpenApiCommon;
 
 use Jane\JsonSchema\Application as JsonSchemaApplication;
-use Jane\OpenApi2\Command\GenerateCommand;
+use Jane\OpenApiCommon\Command\GenerateCommand;
 
 class Application extends JsonSchemaApplication
 {
