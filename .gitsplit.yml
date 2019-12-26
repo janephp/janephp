@@ -34,6 +34,3 @@ splits:
 # List of references to split (defined as regexp)
 origins:
     - ^master$
-    - ^4.x$
-    - ^5.x$
-    - ^v\d+\.\d+\.\d+$
