@@ -7,8 +7,7 @@ all normalizers to handle denormalization from a json string, and normalization.
 All normalizers respect the ``Symfony\Component\Serializer\Normalizer\NormalizerInterface`` and
 ``Symfony\Component\Serializer\Normalizer\DenormalizerInterface`` from the `Symfony Serializer Component`_.
 
-It also generates a ``NormalizerFactory`` class having a static function ``create`` returning an array of all
-normalizers.
+It also generate a ``JaneObjectNormalizer`` class that will act as an usual Symfony Normalizer.
 
 Given this configuration::
 
@@ -25,7 +24,10 @@ You will have to do this::
 
     <?php
 
-    $normalizers = Vendor\Library\Generated\Normalizer\NormalizerFactory::create();
+    $normalizers = [
+        new Symfony\Component\Serializer\Normalizer\ArrayDenormalizer(),
+        new Vendor\Library\Generated\Normalizer\JaneObjectNormalizer(),
+    ];
     $encoders = [new Symfony\Component\Serializer\Encoder\JsonEncoder(
         new Symfony\Component\Serializer\Encoder\JsonEncode([Symfony\Component\Serializer\Encoder\JsonEncode::OPTIONS => \JSON_UNESCAPED_SLASHES]),
         new Symfony\Component\Serializer\Encoder\JsonDecode([Symfony\Component\Serializer\Encoder\JsonDecode::ASSOCIATIVE => false])),

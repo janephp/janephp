@@ -5,10 +5,16 @@ namespace Jane\JsonSchema\Generator;
 use Jane\JsonSchema\Generator\Context\Context;
 use Jane\JsonSchema\Generator\Normalizer\DenormalizerGenerator;
 use Jane\JsonSchema\Generator\Normalizer\NormalizerGenerator as NormalizerGeneratorTrait;
+use Jane\JsonSchema\Generator\Normalizer\JaneObjectNormalizerGenerator;
 use Jane\JsonSchema\Schema;
+use Jane\JsonSchemaRuntime\Reference;
+use PhpParser\Comment\Doc;
+use PhpParser\Node\Arg;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Name;
 use PhpParser\Node\Stmt;
+use PhpParser\Node\Scalar;
+use PhpParser\Parser;
 
 class NormalizerGenerator implements GeneratorInterface
 {
@@ -16,12 +22,18 @@ class NormalizerGenerator implements GeneratorInterface
 
     use DenormalizerGenerator;
     use NormalizerGeneratorTrait;
+    use JaneObjectNormalizerGenerator;
     use PropertyCheckTrait;
 
     /**
      * @var Naming The naming service
      */
     protected $naming;
+
+    /**
+     * @var Parser PHP Parser
+     */
+    protected $parser;
 
     /**
      * @var bool Whether to generate the JSON Reference system
@@ -35,12 +47,14 @@ class NormalizerGenerator implements GeneratorInterface
 
     /**
      * @param Naming $naming       Naming Service
+     * @param Parser $parser       PHP Parser
      * @param bool   $useReference Whether to generate the JSON Reference system
      * @param bool   $useCache     Whether to use the CacheableSupportsMethodInterface interface, for >sf 4.1
      */
-    public function __construct(Naming $naming, $useReference = true, $useCacheableSupportsMethod = null)
+    public function __construct(Naming $naming, Parser $parser, $useReference = true, $useCacheableSupportsMethod = null)
     {
         $this->naming = $naming;
+        $this->parser = $parser;
         $this->useReference = $useReference;
         $this->useCacheableSupportsMethod = $this->canUseCacheableSupportsMethod($useCacheableSupportsMethod);
     }
@@ -61,6 +75,8 @@ class NormalizerGenerator implements GeneratorInterface
     public function generate(Schema $schema, string $className, Context $context)
     {
         $classes = [];
+
+        $normalizers = [];
 
         foreach ($schema->getClasses() as $class) {
             $modelFqdn = $schema->getNamespace() . '\\Model\\' . $class->getName();
@@ -101,14 +117,21 @@ class NormalizerGenerator implements GeneratorInterface
 
             $namespace = new Stmt\Namespace_(new Name($schema->getNamespace() . '\\Normalizer'), $useStmts);
 
+            $normalizers[$modelFqdn] = $schema->getNamespace() . '\\Normalizer\\' . $class->getName() . 'Normalizer';
+
             $schema->addFile(new File($schema->getDirectory() . '/Normalizer/' . $normalizerClass->name . '.php', $namespace, self::FILE_TYPE_NORMALIZER));
         }
 
         $schema->addFile(new File(
+            $schema->getDirectory() . '/Normalizer/JaneObjectNormalizer.php',
+            new Stmt\Namespace_(new Name($schema->getNamespace() . '\\Normalizer'), $this->createJaneObjectNormalizerClass($normalizers)),
+            self::FILE_TYPE_NORMALIZER
+        ));
+        $janeObjectNormalizerClass = sprintf('\\%s\\Normalizer\\%s', $schema->getNamespace(), 'JaneObjectNormalizer');
+
+        $schema->addFile(new File(
             $schema->getDirectory() . '/Normalizer/NormalizerFactory.php',
-            new Stmt\Namespace_(new Name($schema->getNamespace() . '\\Normalizer'), [
-                $this->createNormalizerFactoryClass($classes),
-            ]),
+            new Stmt\Namespace_(new Name($schema->getNamespace() . '\\Normalizer'), $this->createNormalizerFactoryClass($janeObjectNormalizerClass)),
             self::FILE_TYPE_NORMALIZER
         ));
     }
@@ -120,30 +143,89 @@ class NormalizerGenerator implements GeneratorInterface
             (null === $useCacheableSupportsMethod && class_exists('Symfony\Component\Serializer\Normalizer\CacheableSupportsMethodInterface'));
     }
 
-    protected function createNormalizerFactoryClass($classes)
+    protected function createNormalizerFactoryClass(string $janeObjectNormalizerClass): array
     {
         $statements = [
             new Stmt\Expression(new Expr\Assign(new Expr\Variable('normalizers'), new Expr\Array_())),
             new Stmt\Expression(new Expr\Assign(new Expr\ArrayDimFetch(new Expr\Variable('normalizers')), new Expr\New_(new Name('\Symfony\Component\Serializer\Normalizer\ArrayDenormalizer')))),
         ];
 
-        if ($this->useReference) {
-            $statements[] = new Stmt\Expression(new Expr\Assign(new Expr\ArrayDimFetch(new Expr\Variable('normalizers')), new Expr\New_(new Name('\Jane\JsonSchemaRuntime\Normalizer\ReferenceNormalizer'))));
-        }
-
-        foreach ($classes as $class) {
-            $statements[] = new Stmt\Expression(new Expr\Assign(new Expr\ArrayDimFetch(new Expr\Variable('normalizers')), new Expr\New_($class)));
-        }
-
+        $statements[] = new Stmt\Expression(new Expr\Assign(new Expr\ArrayDimFetch(new Expr\Variable('normalizers')), new Expr\New_(new Name($janeObjectNormalizerClass))));
         $statements[] = new Stmt\Return_(new Expr\Variable('normalizers'));
 
-        return new Stmt\Class_('NormalizerFactory', [
+        $deprecatedString = 'The "NormalizerFactory" class is deprecated since Jane 5.3, use "JaneObjectNormalizer" instead.';
+        $deprecatedComment = <<<EOT
+/**
+ * @deprecated $deprecatedString
+ */
+EOT;
+
+        $class = new Stmt\Class_('NormalizerFactory', [
             'stmts' => [
                 new Stmt\ClassMethod('create', [
                     'type' => Stmt\Class_::MODIFIER_STATIC | Stmt\Class_::MODIFIER_PUBLIC,
                     'stmts' => $statements,
                 ]),
             ],
+        ], [
+            'comments' => [new Doc($deprecatedComment)],
         ]);
+
+        $stmt = new Stmt\Expression(new Expr\ErrorSuppress(new Expr\FuncCall(new Name('trigger_error'), [
+            new Arg(new Scalar\String_($deprecatedString)),
+            new Arg(new Expr\ConstFetch(new Name('E_USER_DEPRECATED'))),
+        ])));
+
+        return [$stmt, $class];
+    }
+
+    protected function createJaneObjectNormalizerClass(array $normalizers): array
+    {
+        if ($this->useReference) {
+            $normalizers['\\Jane\\JsonSchemaRuntime\\Reference'] = '\\Jane\\JsonSchemaRuntime\\Normalizer\\ReferenceNormalizer';
+        }
+
+        $properties = [];
+        $propertyName = $this->getNaming()->getPropertyName('normalizers');
+        $propertyStmt = new Stmt\PropertyProperty($propertyName);
+        $propertyStmt->default = $this->parser->parse('<?php ' . var_export($normalizers, true) . ';')[0]->expr;
+        $properties[] = $propertyStmt;
+        $propertyStmt = new Stmt\PropertyProperty('normalizersCache');
+        $propertyStmt->default = new Expr\Array_();
+        $properties[] = $propertyStmt;
+
+        $methods = [];
+        $methods[] = new Stmt\Property(Stmt\Class_::MODIFIER_PROTECTED, $properties);
+        $methods[] = $this->createBaseNormalizerSupportsDenormalizationMethod();
+        $methods[] = $this->createBaseNormalizerSupportsNormalizationMethod();
+        $methods[] = $this->createBaseNormalizerNormalizeMethod();
+        $methods[] = $this->createBaseNormalizerDenormalizeMethod();
+        $methods[] = $this->createBaseNormalizerGetNormalizer();
+        $methods[] = $this->createBaseNormalizerInitNormalizerMethod();
+
+        if ($this->useCacheableSupportsMethod) {
+            $methods[] = $this->createHasCacheableSupportsMethod();
+        }
+
+        $normalizerClass = $this->createNormalizerClass(
+            'JaneObjectNormalizer',
+            $methods,
+            $this->useCacheableSupportsMethod
+        );
+
+        $useStmts = [
+            new Stmt\Use_([new Stmt\UseUse(new Name('Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface'))]),
+            new Stmt\Use_([new Stmt\UseUse(new Name('Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait'))]),
+            new Stmt\Use_([new Stmt\UseUse(new Name('Symfony\Component\Serializer\Normalizer\DenormalizerInterface'))]),
+            new Stmt\Use_([new Stmt\UseUse(new Name('Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface'))]),
+            new Stmt\Use_([new Stmt\UseUse(new Name('Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait'))]),
+            new Stmt\Use_([new Stmt\UseUse(new Name('Symfony\Component\Serializer\Normalizer\NormalizerInterface'))]),
+        ];
+
+        if ($this->useCacheableSupportsMethod) {
+            $useStmts[] = new Stmt\Use_([new Stmt\UseUse(new Name('Symfony\Component\Serializer\Normalizer\CacheableSupportsMethodInterface'))]);
+        }
+
+        return array_merge($useStmts, [$normalizerClass]);
     }
 }

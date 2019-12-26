@@ -68,12 +68,10 @@ class Psr18ClientGenerator extends ClientGenerator
                         new Expr\New_(
                             new Name\FullyQualified(Serializer::class),
                             [
-                                new Node\Arg(
-                                    new Expr\StaticCall(
-                                        new Name('\\' . $context->getCurrentSchema()->getNamespace() . '\\Normalizer\\NormalizerFactory'),
-                                        'create'
-                                    )
-                                ),
+                                new Node\Arg(new Expr\Array_([
+                                    new Expr\ArrayItem(new Expr\New_(new Name('\\Symfony\\Component\\Serializer\\Normalizer\\ArrayDenormalizer'))),
+                                    new Expr\ArrayItem(new Expr\New_(new Name('\\' . $context->getCurrentSchema()->getNamespace() . '\\Normalizer\\JaneObjectNormalizer'))),
+                                ])),
                                 new Node\Arg(
                                     new Expr\Array_([
                                         new Expr\ArrayItem(
