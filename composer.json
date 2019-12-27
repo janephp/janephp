@@ -77,7 +77,7 @@
     "prefer-stable": true,
     "bin": [
         "src/JsonSchema/bin/jane",
-        "src/OpenApi/bin/jane-openapi"
+        "src/OpenApiCommon/bin/jane-openapi"
     ],
     "scripts": {
         "cs-fix": "php-cs-fixer fix",
