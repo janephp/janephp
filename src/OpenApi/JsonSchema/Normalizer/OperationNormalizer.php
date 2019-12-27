@@ -41,6 +41,9 @@ class OperationNormalizer implements DenormalizerInterface, NormalizerInterface,
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
+        if (isset($data->{'$recursiveRef'})) {
+            return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
+        }
         $object = new \Jane\OpenApi\JsonSchema\Model\Operation();
         $data = clone $data;
         if (property_exists($data, 'tags') && $data->{'tags'} !== null) {
@@ -71,10 +74,10 @@ class OperationNormalizer implements DenormalizerInterface, NormalizerInterface,
             $values_1 = [];
             foreach ($data->{'parameters'} as $value_1) {
                 $value_2 = $value_1;
-                if (is_object($value_1) and isset($value_1->{'name'}) and isset($value_1->{'in'})) {
-                    $value_2 = $this->denormalizer->denormalize($value_1, 'Jane\\OpenApi\\JsonSchema\\Model\\Parameter', 'json', $context);
-                } elseif (is_object($value_1) and isset($value_1->{'$ref'})) {
+                if (is_object($value_1) and isset($value_1->{'$ref'})) {
                     $value_2 = $this->denormalizer->denormalize($value_1, 'Jane\\OpenApi\\JsonSchema\\Model\\Reference', 'json', $context);
+                } elseif (is_object($value_1) and isset($value_1->{'name'}) and isset($value_1->{'in'})) {
+                    $value_2 = $this->denormalizer->denormalize($value_1, 'Jane\\OpenApi\\JsonSchema\\Model\\Parameter', 'json', $context);
                 }
                 $values_1[] = $value_2;
             }
@@ -83,10 +86,10 @@ class OperationNormalizer implements DenormalizerInterface, NormalizerInterface,
         }
         if (property_exists($data, 'requestBody') && $data->{'requestBody'} !== null) {
             $value_3 = $data->{'requestBody'};
-            if (is_object($data->{'requestBody'}) and isset($data->{'requestBody'}->{'content'})) {
-                $value_3 = $this->denormalizer->denormalize($data->{'requestBody'}, 'Jane\\OpenApi\\JsonSchema\\Model\\RequestBody', 'json', $context);
-            } elseif (is_object($data->{'requestBody'}) and isset($data->{'requestBody'}->{'$ref'})) {
+            if (is_object($data->{'requestBody'}) and isset($data->{'requestBody'}->{'$ref'})) {
                 $value_3 = $this->denormalizer->denormalize($data->{'requestBody'}, 'Jane\\OpenApi\\JsonSchema\\Model\\Reference', 'json', $context);
+            } elseif (is_object($data->{'requestBody'}) and isset($data->{'requestBody'}->{'content'})) {
+                $value_3 = $this->denormalizer->denormalize($data->{'requestBody'}, 'Jane\\OpenApi\\JsonSchema\\Model\\RequestBody', 'json', $context);
             }
             $object->setRequestBody($value_3);
             unset($data->{'requestBody'});

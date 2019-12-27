@@ -126,6 +126,11 @@ class ObjectType extends Type
         return $this->getTypeHint($namespace);
     }
 
+    public function getClassName()
+    {
+        return $this->className;
+    }
+
     private function getFqdn($withRoot = true)
     {
         if ($withRoot) {

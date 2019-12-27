@@ -41,6 +41,9 @@ class ClientCredentialsFlowNormalizer implements DenormalizerInterface, Normaliz
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
+        if (isset($data->{'$recursiveRef'})) {
+            return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
+        }
         $object = new \Jane\OpenApi\JsonSchema\Model\ClientCredentialsFlow();
         $data = clone $data;
         if (property_exists($data, 'tokenUrl') && $data->{'tokenUrl'} !== null) {

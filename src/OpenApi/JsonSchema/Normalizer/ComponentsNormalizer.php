@@ -41,6 +41,9 @@ class ComponentsNormalizer implements DenormalizerInterface, NormalizerInterface
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
+        if (isset($data->{'$recursiveRef'})) {
+            return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
+        }
         $object = new \Jane\OpenApi\JsonSchema\Model\Components();
         $data = clone $data;
         if (property_exists($data, 'schemas') && $data->{'schemas'} !== null) {
@@ -48,10 +51,10 @@ class ComponentsNormalizer implements DenormalizerInterface, NormalizerInterface
             foreach ($data->{'schemas'} as $key => $value) {
                 if (preg_match('/^[a-zA-Z0-9\.\-_]+$/', $key) && isset($value)) {
                     $value_1 = $value;
-                    if (is_object($value)) {
-                        $value_1 = $this->denormalizer->denormalize($value, 'Jane\\OpenApi\\JsonSchema\\Model\\Schema', 'json', $context);
-                    } elseif (is_object($value) and isset($value->{'$ref'})) {
+                    if (is_object($value) and isset($value->{'$ref'})) {
                         $value_1 = $this->denormalizer->denormalize($value, 'Jane\\OpenApi\\JsonSchema\\Model\\Reference', 'json', $context);
+                    } elseif (is_object($value)) {
+                        $value_1 = $this->denormalizer->denormalize($value, 'Jane\\OpenApi\\JsonSchema\\Model\\Schema', 'json', $context);
                     }
                     $values[$key] = $value_1;
                     continue;

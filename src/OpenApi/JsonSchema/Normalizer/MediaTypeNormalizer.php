@@ -41,14 +41,17 @@ class MediaTypeNormalizer implements DenormalizerInterface, NormalizerInterface,
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
+        if (isset($data->{'$recursiveRef'})) {
+            return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
+        }
         $object = new \Jane\OpenApi\JsonSchema\Model\MediaType();
         $data = clone $data;
         if (property_exists($data, 'schema') && $data->{'schema'} !== null) {
             $value = $data->{'schema'};
-            if (is_object($data->{'schema'})) {
-                $value = $this->denormalizer->denormalize($data->{'schema'}, 'Jane\\OpenApi\\JsonSchema\\Model\\Schema', 'json', $context);
-            } elseif (is_object($data->{'schema'}) and isset($data->{'schema'}->{'$ref'})) {
+            if (is_object($data->{'schema'}) and isset($data->{'schema'}->{'$ref'})) {
                 $value = $this->denormalizer->denormalize($data->{'schema'}, 'Jane\\OpenApi\\JsonSchema\\Model\\Reference', 'json', $context);
+            } elseif (is_object($data->{'schema'})) {
+                $value = $this->denormalizer->denormalize($data->{'schema'}, 'Jane\\OpenApi\\JsonSchema\\Model\\Schema', 'json', $context);
             }
             $object->setSchema($value);
             unset($data->{'schema'});
@@ -61,10 +64,10 @@ class MediaTypeNormalizer implements DenormalizerInterface, NormalizerInterface,
             $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
             foreach ($data->{'examples'} as $key => $value_1) {
                 $value_2 = $value_1;
-                if (is_object($value_1)) {
-                    $value_2 = $this->denormalizer->denormalize($value_1, 'Jane\\OpenApi\\JsonSchema\\Model\\Example', 'json', $context);
-                } elseif (is_object($value_1) and isset($value_1->{'$ref'})) {
+                if (is_object($value_1) and isset($value_1->{'$ref'})) {
                     $value_2 = $this->denormalizer->denormalize($value_1, 'Jane\\OpenApi\\JsonSchema\\Model\\Reference', 'json', $context);
+                } elseif (is_object($value_1)) {
+                    $value_2 = $this->denormalizer->denormalize($value_1, 'Jane\\OpenApi\\JsonSchema\\Model\\Example', 'json', $context);
                 }
                 $values[$key] = $value_2;
             }
