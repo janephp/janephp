@@ -25,7 +25,7 @@ class BarNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
     public function denormalize($data, $class, $format = null, array $context = array())
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException();
+            throw new InvalidArgumentException(sprintf('Given $data is not an object (%s given). We need an object in order to continue denormalize method.', gettype($data)));
         }
         $object = new \Jane\JsonSchema\Tests\Expected\Model\Bar();
         if (property_exists($data, 'foo')) {

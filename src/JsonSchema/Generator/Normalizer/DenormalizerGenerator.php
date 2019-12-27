@@ -157,7 +157,9 @@ trait DenormalizerGenerator
                 [
                     'stmts' => [
                         $context->isStrict() ?
-                            new Stmt\Throw_(new Expr\New_(new Name('InvalidArgumentException')))
+                            new Stmt\Throw_(new Expr\New_(new Name('InvalidArgumentException'), [
+                                new Expr\FuncCall(new Name('sprintf'), [new Arg(new Scalar\String_('Given $data is not an object (%s given). We need an object in order to continue denormalize method.')), new Arg(new Expr\FuncCall(new Name('gettype'), [new Arg(new Expr\Variable('data'))]))]),
+                            ]))
                             :
                             new Stmt\Return_(new Expr\ConstFetch(new Name('null'))),
                     ],
