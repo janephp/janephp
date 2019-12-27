@@ -41,6 +41,9 @@ class ImplicitOAuthFlowNormalizer implements DenormalizerInterface, NormalizerIn
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
+        if (isset($data->{'$recursiveRef'})) {
+            return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
+        }
         $object = new \Jane\OpenApi\JsonSchema\Model\ImplicitOAuthFlow();
         $data = clone $data;
         if (property_exists($data, 'authorizationUrl') && $data->{'authorizationUrl'} !== null) {

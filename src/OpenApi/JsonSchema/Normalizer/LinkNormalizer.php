@@ -41,6 +41,9 @@ class LinkNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
+        if (isset($data->{'$recursiveRef'})) {
+            return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
+        }
         $object = new \Jane\OpenApi\JsonSchema\Model\Link();
         $data = clone $data;
         if (property_exists($data, 'operationId') && $data->{'operationId'} !== null) {

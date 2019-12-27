@@ -190,10 +190,10 @@
                         "^[a-zA-Z0-9\\.\\-_]+$": {
                             "oneOf": [
                                 {
-                                    "$ref": "#/definitions/Schema"
+                                    "$ref": "#/definitions/Reference"
                                 },
                                 {
-                                    "$ref": "#/definitions/Reference"
+                                    "$ref": "#/definitions/Schema"
                                 }
                             ]
                         }
@@ -334,7 +334,7 @@
                 "multipleOf": {
                     "type": "number",
                     "minimum": 0,
-                    "exclusiveMinimum": true
+                    "exclusiveMinimum": 0
                 },
                 "maximum": {
                     "type": "number"

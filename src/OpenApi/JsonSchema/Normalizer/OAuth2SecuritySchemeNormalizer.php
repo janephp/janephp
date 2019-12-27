@@ -41,6 +41,9 @@ class OAuth2SecuritySchemeNormalizer implements DenormalizerInterface, Normalize
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
+        if (isset($data->{'$recursiveRef'})) {
+            return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
+        }
         $object = new \Jane\OpenApi\JsonSchema\Model\OAuth2SecurityScheme();
         $data = clone $data;
         if (property_exists($data, 'type') && $data->{'type'} !== null) {

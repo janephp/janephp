@@ -41,6 +41,9 @@ class TagNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
+        if (isset($data->{'$recursiveRef'})) {
+            return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
+        }
         $object = new \Jane\OpenApi\JsonSchema\Model\Tag();
         $data = clone $data;
         if (property_exists($data, 'name') && $data->{'name'} !== null) {
