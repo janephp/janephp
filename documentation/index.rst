@@ -39,3 +39,5 @@ by following high quality PHP code guidelines and respecting common & advanced P
    :caption: AutoMapper
 
    Introduction <AutoMapper/introduction>
+   Usage <AutoMapper/usage>
+   Features <AutoMapper/features>

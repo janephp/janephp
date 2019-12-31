@@ -3,13 +3,9 @@ AutoMapper
 
 Jane AutoMapper is an experimental library that generate AutoMapper class which allows to automap values from Class to Class.
 
-Description
-------------
-
 Taken from `AutoMapper/AutoMapper`_:
 
 AutoMapper is a simple little library built to solve a deceptively complex problem - getting rid of code that mapped one object to another. This type of code is rather dreary and boring to write, so why not invent a tool to do it for us?
-
 
 In PHP libraries and application mapping from one object to another is fairly common:
 
@@ -36,5 +32,10 @@ For that goal it provides an unique interface (other code is only implementation
          */
         public function map($source, $target, Context $context = null);
     }
+
+The source is from where the data comes from, it can be either an array or an object.
+The target is where the data should be mapped to, it can be either a string (representing a type: array or class name) or directly an array or object (in that case construction of the object is avoided).
+
+Current implementation handle all of those possiblities at the exception of the mapping from a dynamic object (array / stdClass) to another dynamic object.
 
 .. _`AutoMapper/AutoMapper`: https://github.com/AutoMapper/AutoMapper
