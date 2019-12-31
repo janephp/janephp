@@ -25,7 +25,7 @@ class PetNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
     public function denormalize($data, $class, $format = null, array $context = array())
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException();
+            throw new InvalidArgumentException(sprintf('Given $data is not an object (%s given). We need an object in order to continue denormalize method.', gettype($data)));
         }
         if (property_exists($data, 'petType') and 'cat_in_snake_case' === $data->{'petType'}) {
             return $this->denormalizer->denormalize($data, 'Jane\\OpenApi\\Tests\\Expected\\Model\\CatInSnakeCase', $format, $context);
