@@ -14,7 +14,7 @@ In PHP libraries and application mapping from one object to another is fairly co
 - Hydrate object from SQL results in Doctrine
 - Migrating legacy data to new model
 - Mapping from database model to DTO objects (API / CQRS / ...)
-- And even more ...
+- And even more...
 
 The goal of this component is to offer an abstraction on top of this subject.
 For that goal it provides an unique interface (other code is only implementation detail)::

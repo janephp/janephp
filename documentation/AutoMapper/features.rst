@@ -43,9 +43,9 @@ Default implementation allows you to pass a Name Converter when converting to or
 Discriminator Mapping
 ---------------------
 
-This component understand the Discriminiator Mapping Annotation of the Serializer component and should correctly handle construction of object when having inheritance.
+This component understand the Discriminator Mapping Annotation of the Serializer component and should correctly handle construction of object when having inheritance.
 
 Type casting
 ------------
 
-This component will try to correctly map scalar values (going from int to string, etc ...).
+This component will try to correctly map scalar values (going from int to string, etc.).
