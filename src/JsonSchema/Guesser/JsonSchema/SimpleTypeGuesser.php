@@ -37,7 +37,9 @@ class SimpleTypeGuesser implements GuesserInterface, TypeGuesserInterface
      */
     public function supportObject($object)
     {
-        return ($object instanceof JsonSchema)
+        $class = $this->getSchemaClass();
+
+        return ($object instanceof $class)
             &&
             \in_array($object->getType(), $this->typesSupported)
             &&
@@ -47,6 +49,11 @@ class SimpleTypeGuesser implements GuesserInterface, TypeGuesserInterface
                 !\in_array($object->getFormat(), $this->excludeFormat[$object->getType()])
             )
         ;
+    }
+
+    protected function getSchemaClass(): string
+    {
+        return JsonSchema::class;
     }
 
     /**

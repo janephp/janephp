@@ -1,0 +1,20 @@
+{
+    "name": "jane-php/open-api-3",
+    "description": "Generate a PHP Client API (PSR7/PSR18 compatible) given a OpenApi 3.x specification",
+    "type": "library",
+    "keywords": ["jane", "swagger", "openapi"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Joel Wurtz",
+            "email": "jwurtz@jolicode.com"
+        },
+        {
+            "name": "Baptiste Leduc",
+            "email": "baptiste.leduc@gmail.com"
+        }
+    ],
+    "require": {
+        "jane-php/open-api": "^5.0"
+    }
+}

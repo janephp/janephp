@@ -5,6 +5,8 @@ namespace Jane\OpenApi\Operation;
 use Jane\OpenApi\JsonSchema\Model\Operation as OpenApiOperation;
 use Jane\OpenApi\JsonSchema\Model\PathItem;
 use Jane\OpenApi\JsonSchema\Model\OpenApi;
+use Jane\OpenApiCommon\Operation\Operation;
+use Jane\OpenApiCommon\Operation\OperationCollection;
 
 class OperationManager
 {

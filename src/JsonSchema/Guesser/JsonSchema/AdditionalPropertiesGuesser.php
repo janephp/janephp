@@ -31,7 +31,9 @@ class AdditionalPropertiesGuesser implements GuesserInterface, TypeGuesserInterf
      */
     public function supportObject($object)
     {
-        if (!($object instanceof JsonSchema)) {
+        $class = $this->getSchemaClass();
+
+        if (!($object instanceof $class)) {
             return false;
         }
 

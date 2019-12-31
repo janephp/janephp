@@ -1,0 +1,8 @@
+<?php
+
+return [
+    'openapi-file' => __DIR__ . '/swagger.yaml',
+    'namespace' => 'Jane\OpenApi2\Tests\Expected',
+    'directory' => __DIR__ . '/generated',
+    'use-fixer' => false,
+];

@@ -9,10 +9,10 @@ use League\Uri\Schemes\Http as HttpLegacy;
 class Registry
 {
     /** @var string[] */
-    private $outputDirectories = [];
+    protected $outputDirectories = [];
 
     /** @var Schema[] */
-    private $schemas = [];
+    protected $schemas = [];
 
     public function addOutputDirectory(string $outputDirectory): void
     {

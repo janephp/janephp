@@ -23,7 +23,9 @@ class DateTimeGuesser implements GuesserInterface, TypeGuesserInterface
      */
     public function supportObject($object)
     {
-        return ($object instanceof JsonSchema) && 'string' === $object->getType() && 'date-time' === $object->getFormat();
+        $class = $this->getSchemaClass();
+
+        return ($object instanceof $class) && 'string' === $object->getType() && 'date-time' === $object->getFormat();
     }
 
     /**
@@ -32,5 +34,10 @@ class DateTimeGuesser implements GuesserInterface, TypeGuesserInterface
     public function guessType($object, $name, $reference, Registry $registry)
     {
         return new DateTimeType($object, $this->dateFormat);
+    }
+
+    protected function getSchemaClass(): string
+    {
+        return JsonSchema::class;
     }
 }

@@ -5,6 +5,7 @@ namespace Jane\OpenApi\Generator\Parameter;
 use Doctrine\Common\Inflector\Inflector;
 use Jane\JsonSchema\Generator\Context\Context;
 use Jane\OpenApi\JsonSchema\Model\Parameter;
+use Jane\OpenApiCommon\Generator\Parameter\ParameterGenerator;
 use PhpParser\Node;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Scalar;
@@ -13,7 +14,12 @@ use Psr\Http\Message\StreamInterface;
 
 class NonBodyParameterGenerator extends ParameterGenerator
 {
-    public function generateMethodParameter(Parameter $parameter, Context $context, $reference): Node\Param
+    /**
+     * {@inheritdoc}
+     *
+     * @param Parameter $parameter
+     */
+    public function generateMethodParameter($parameter, Context $context, $reference): Node\Param
     {
         $name = Inflector::camelize($parameter->getName());
         $methodParameter = new Node\Param(new Expr\Variable($name));
@@ -36,9 +42,7 @@ class NonBodyParameterGenerator extends ParameterGenerator
     }
 
     /**
-     * @param $parameters Parameter[]
-     *
-     * @return array
+     * @param Parameter[] $parameters
      */
     public function generateOptionsResolverStatements(Expr\Variable $optionsResolverVariable, $parameters): array
     {
@@ -90,7 +94,12 @@ class NonBodyParameterGenerator extends ParameterGenerator
         ], $allowedTypes);
     }
 
-    public function generateMethodDocParameter(Parameter $parameter, Context $context, $reference)
+    /**
+     * {@inheritdoc}
+     *
+     * @param Parameter $parameter
+     */
+    public function generateMethodDocParameter($parameter, Context $context, $reference)
     {
         $type = 'mixed';
 

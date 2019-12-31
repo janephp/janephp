@@ -2,14 +2,12 @@
 
 namespace Jane\OpenApi\Guesser\OpenApiSchema;
 
+use Jane\JsonSchema\Guesser\ReferenceGuesser as BaseReferenceGuesser;
 use Jane\OpenApi\JsonSchema\Model\Schema;
 
-class ReferenceGuesser extends \Jane\JsonSchema\Guesser\ReferenceGuesser
+class ReferenceGuesser extends BaseReferenceGuesser
 {
-    /**
-     * @return string
-     */
-    protected function getSchemaClass()
+    protected function getSchemaClass(): string
     {
         return Schema::class;
     }

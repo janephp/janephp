@@ -1,0 +1,41 @@
+{
+    "swagger": "2.0",
+    "basePath": "base-path",
+    "host": "www.foo-host.com",
+    "schemes": [
+        "http",
+        "https"
+    ],
+    "paths": {
+        "/foo": {
+            "get": {
+                "operationId": "getFoo",
+                "responses": {
+                    "200": {
+                        "description": "no error",
+                        "schema": {
+                            "$ref": "#/definitions/Foo"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "Foo": {
+            "type": "object",
+            "properties": {
+                "foo": {
+                    "type": "string"
+                }
+            }
+        }
+    },
+    "securityDefinitions": {
+        "api_key": {
+            "type": "apiKey",
+            "in": "query",
+            "name": "api_key"
+        }
+    }
+}

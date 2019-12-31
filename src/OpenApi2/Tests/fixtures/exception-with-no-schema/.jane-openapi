@@ -1,0 +1,15 @@
+<?php
+
+return [
+    'mapping' => [
+        __DIR__ . '/swagger_one.yaml' => [
+            'namespace' => 'Jane\OpenApi2\Tests\Expected\One',
+            'directory' => __DIR__ . '/generated/One',
+        ],
+        __DIR__ . '/swagger_two.yaml' => [
+            'namespace' => 'Jane\OpenApi2\Tests\Expected\Two',
+            'directory' => __DIR__ . '/generated/Two',
+        ],
+    ],
+    'use-fixer' => false,
+];

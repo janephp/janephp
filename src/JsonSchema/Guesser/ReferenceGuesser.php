@@ -72,10 +72,7 @@ class ReferenceGuesser implements ClassGuesserInterface, GuesserInterface, TypeG
         return $this->chainGuesser->guessType($resolved, $name, $classKey, $registry);
     }
 
-    /**
-     * @return string
-     */
-    protected function getSchemaClass()
+    protected function getSchemaClass(): string
     {
         return JsonSchema::class;
     }

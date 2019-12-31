@@ -1,0 +1,25 @@
+{
+    "swagger": "2.0",
+    "paths": {
+        "/test-uppercase-path-parameters/{TestParameter}": {
+            "get": {
+                "operationId": "testGetWithUppercasePathParameters",
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Test"
+                ],
+                "parameters": [
+                    {
+                        "name": "TestParameter",
+                        "in": "path",
+                        "type": "string",
+                        "required": true,
+                        "x-nullable": false
+                    }
+                ]
+            }
+        }
+    }
+}

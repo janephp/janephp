@@ -4,7 +4,7 @@ namespace Jane\OpenApi\Generator\Authentication;
 
 use Http\Client\Common\Plugin;
 use Http\Message\Authentication;
-use Jane\OpenApi\Guesser\Guess\SecuritySchemeGuess;
+use Jane\OpenApiCommon\Guesser\Guess\SecuritySchemeGuess;
 use Jane\OpenApi\JsonSchema\Model\APIKeySecurityScheme;
 use Jane\OpenApi\JsonSchema\Model\HTTPSecurityScheme;
 use PhpParser\Node;
@@ -158,6 +158,9 @@ trait GetPluginGenerator
                         new Node\Arg(new Expr\PropertyFetch(new Expr\Variable('this'), new Scalar\String_('apiKey'))),
                     ])),
                 ]));
+                break;
+            default:
+                throw new \Exception(sprintf('Jane actually does not support Security type %s generation', $securityScheme->getType()));
                 break;
         }
 

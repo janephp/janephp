@@ -7,10 +7,10 @@ use Jane\OpenApi\Generator\RequestBodyContent\DefaultBodyContentGenerator;
 use Jane\OpenApi\Generator\RequestBodyContent\FormBodyContentGenerator;
 use Jane\OpenApi\Generator\RequestBodyContent\JsonBodyContentGenerator;
 use Jane\OpenApi\JaneOpenApi;
-use Jane\OpenApi\Naming\ChainOperationNaming;
-use Jane\OpenApi\Naming\ExceptionNaming;
+use Jane\OpenApiCommon\Generator\ExceptionGenerator;
+use Jane\OpenApiCommon\Naming\ChainOperationNaming;
 use Jane\OpenApi\Naming\OperationUrlNaming;
-use Jane\OpenApi\Naming\OperationIdNaming;
+use Jane\OpenApiCommon\Naming\OperationIdNaming;
 use Jane\OpenApi\Operation\OperationManager;
 use PhpParser\ParserFactory;
 
@@ -22,7 +22,7 @@ class GeneratorFactory
         $parser = $parserFactory->create(ParserFactory::PREFER_PHP7);
 
         $nonBodyParameter = new NonBodyParameterGenerator($parser);
-        $exceptionGenerator = new ExceptionGenerator(new ExceptionNaming());
+        $exceptionGenerator = new ExceptionGenerator();
         $operationManager = new OperationManager();
         $operationNaming = new ChainOperationNaming([
             new OperationIdNaming(),

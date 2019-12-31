@@ -11,8 +11,9 @@ use Jane\OpenApi\JsonSchema\Model\OpenApi;
 use Jane\OpenApi\JsonSchema\Model\Parameter;
 use Jane\OpenApi\JsonSchema\Model\Response;
 use Jane\OpenApi\JsonSchema\Model\Schema;
-use Jane\OpenApi\Naming\OperationNamingInterface;
-use Jane\OpenApi\Operation\Operation;
+use Jane\OpenApiCommon\Generator\ExceptionGenerator;
+use Jane\OpenApiCommon\Naming\OperationNamingInterface;
+use Jane\OpenApiCommon\Operation\Operation;
 use Jane\OpenApiRuntime\Client\BaseEndpoint;
 use PhpParser\Comment\Doc;
 use PhpParser\Node\Arg;
@@ -64,7 +65,7 @@ abstract class EndpointGenerator
 
     abstract protected function getTrait(): array;
 
-    public function createEndpointClass(Operation $operation, Context $context, bool $async = false): array
+    public function createEndpointClass(Operation $operation, Context $context): array
     {
         $openApi = $context->getCurrentSchema()->getParsed();
         $endpointName = $this->operationNaming->getEndpointName($operation);
@@ -370,65 +371,6 @@ EOD
             'returnType' => new Name('array'),
             'stmts' => $this->requestBodyGenerator->getSerializeStatements($operation->getOperation()->getRequestBody(), $operation->getReference() . '/requestBody', $context),
         ]);
-
-        $hasBody = false;
-        $isSerializableBody = false;
-        $requestBody = $operation->getOperation()->getRequestBody();
-
-//        if ($requestBody && $requestBody->getContent()) {
-//            foreach ($requestBody->getContent() as $contentType => $content) {
-//                if ($content->getSchema() !== null) {
-//                    $hasBody = true;
-//
-//                    [$classGuess, $array, $schema] = $this->guessClass($content->getSchema(), $operation->getReference() . '/requestBody/content/' . $contentType . '/schema', $context);
-//
-//                    if ($contentType === 'application/json') {
-//                        $isSerializableBody = true;
-//                    }
-//
-//                    if (null !== $classGuess) {
-//                        $isSerializableBody = true;
-//                    }
-//                }
-//            }
-//        }
-
-//        if ($isSerializableBody) {
-//            $method->stmts = [
-//                new Stmt\Return_(new Expr\MethodCall(
-//                    new Expr\Variable('this'),
-//                    'getSerializedBody',
-//                    [
-//                        new Arg(new Expr\Variable('serializer')),
-//                    ]
-//                )),
-//            ];
-//
-//            return $method;
-//        }
-//
-//        if ($hasBody) {
-//            $method->stmts = [
-//                new Stmt\Return_(new Expr\Array_([
-//                    new Expr\Array_(),
-//                    new Expr\PropertyFetch(
-//                        new Expr\Variable('this'),
-//                        'body'
-//                    ),
-//                ])),
-//            ];
-//
-//            return $method;
-//        }
-//
-//        $method->stmts = [
-//            new Stmt\Return_(new Expr\Array_([
-//                new Expr\Array_(),
-//                new Expr\ConstFetch(new Name('null')),
-//            ])),
-//        ];
-
-        return $method;
     }
 
     private function getTransformResponseBody(Operation $operation, string $endpointName, Context $context): array

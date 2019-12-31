@@ -13,8 +13,17 @@ splits:
         prefix: "src/JsonSchemaRuntime"
         target: "https://${GH_TOKEN}@github.com/janephp/json-schema-runtime.git"
     -
+        prefix: "src/OpenApiCommon"
+        target: "https://${GH_TOKEN}@github.com/janephp/open-api-common.git"
+    -
         prefix: "src/OpenApi"
         target: "https://${GH_TOKEN}@github.com/janephp/open-api.git"
+    -
+        prefix: "src/OpenApi2"
+        target: "https://${GH_TOKEN}@github.com/janephp/open-api-2.git"
+    -
+        prefix: "src/OpenApi3"
+        target: "https://${GH_TOKEN}@github.com/janephp/open-api-3.git"
     -
         prefix: "src/OpenApiRuntime"
         target: "https://${GH_TOKEN}@github.com/janephp/open-api-runtime.git"
@@ -25,6 +34,3 @@ splits:
 # List of references to split (defined as regexp)
 origins:
     - ^master$
-    - ^4.x$
-    - ^5.x$
-    - ^v\d+\.\d+\.\d+$

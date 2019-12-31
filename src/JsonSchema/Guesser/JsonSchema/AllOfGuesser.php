@@ -133,7 +133,9 @@ class AllOfGuesser implements GuesserInterface, TypeGuesserInterface, ChainGuess
      */
     public function supportObject($object)
     {
-        return ($object instanceof JsonSchema) && \is_array($object->getAllOf()) && \count($object->getAllOf()) > 0;
+        $class = $this->getSchemaClass();
+
+        return ($object instanceof $class) && \is_array($object->getAllOf()) && \count($object->getAllOf()) > 0;
     }
 
     /**
@@ -161,10 +163,7 @@ class AllOfGuesser implements GuesserInterface, TypeGuesserInterface, ChainGuess
         return $properties;
     }
 
-    /**
-     * @return string
-     */
-    protected function getSchemaClass()
+    protected function getSchemaClass(): string
     {
         return JsonSchema::class;
     }
