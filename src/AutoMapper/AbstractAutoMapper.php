@@ -5,7 +5,7 @@ namespace Jane\AutoMapper;
 use Jane\AutoMapper\Compiler\MapperClassLoaderInterface;
 use Jane\AutoMapper\Exception\NoMappingFoundException;
 
-abstract class AbstractAutoMapper implements AutoMapperInterface, AutoMapperRegisterInterface
+abstract class AbstractAutoMapper implements AutoMapperInterface, AutoMapperRegistryInterface, AutoMapperRegisterInterface
 {
     private $configurations = [];
 
@@ -30,7 +30,7 @@ abstract class AbstractAutoMapper implements AutoMapperInterface, AutoMapperRegi
         $this->configurations[$configuration->getSource()][$configuration->getTarget()] = $configuration;
     }
 
-    public function getMapper(string $source, string $target): Mapper
+    public function getMapper(string $source, string $target): MapperInterface
     {
         $mappingConfiguration = $this->getConfiguration($source, $target);
 

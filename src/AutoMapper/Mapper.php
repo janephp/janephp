@@ -2,7 +2,7 @@
 
 namespace Jane\AutoMapper;
 
-abstract class Mapper
+abstract class Mapper implements MapperInterface
 {
     protected $mappers = [];
 
