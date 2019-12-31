@@ -4,9 +4,14 @@ namespace Jane\AutoMapper;
 
 interface AutoMapperInterface
 {
-    public function getMapper(string $source, string $target): Mapper;
-
-    public function hasMapper(string $source, string $target): bool;
-
-    public function map($value, string $target, Context $context = null);
+    /**
+     * Map data from to target.
+     *
+     * @param array|object        $source  Any data object, which may be an object or an array
+     * @param string|array|object $target  To which type of data, or data, the source should be mapped
+     * @param Context             $context Options mappers have access to
+     *
+     * @return array|object The mapped object
+     */
+    public function map($source, string $target, Context $context = null);
 }
