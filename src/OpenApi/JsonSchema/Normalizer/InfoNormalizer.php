@@ -41,6 +41,9 @@ class InfoNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
+        if (isset($data->{'$recursiveRef'})) {
+            return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
+        }
         $object = new \Jane\OpenApi\JsonSchema\Model\Info();
         $data = clone $data;
         if (property_exists($data, 'title') && $data->{'title'} !== null) {

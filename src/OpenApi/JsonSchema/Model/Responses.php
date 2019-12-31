@@ -13,12 +13,12 @@ namespace Jane\OpenApi\JsonSchema\Model;
 class Responses extends \ArrayObject
 {
     /**
-     * @var Response|Reference|null
+     * @var Reference|Response|null
      */
     protected $default;
 
     /**
-     * @return Response|Reference|null
+     * @return Reference|Response|null
      */
     public function getDefault()
     {
@@ -26,7 +26,7 @@ class Responses extends \ArrayObject
     }
 
     /**
-     * @param Response|Reference|null $default
+     * @param Reference|Response|null $default
      *
      * @return self
      */

@@ -60,7 +60,11 @@ class MultipleType extends Type
         usort($types, function ($first, $second) {
             /* @var Type $first */
             /* @var Type $second */
-            return $first->name == 'mixed' ? 1 : 0;
+            if (($second instanceof ObjectType && 'Reference' === $second->getClassName()) || 'mixed' === $first->getName()) {
+                return 1;
+            }
+
+            return 0;
         });
 
         return $types;

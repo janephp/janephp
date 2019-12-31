@@ -49,7 +49,7 @@ class Parameter extends \ArrayObject
      */
     protected $allowReserved = false;
     /**
-     * @var Schema|Reference|null
+     * @var Reference|Schema|null
      */
     protected $schema;
     /**
@@ -246,7 +246,7 @@ class Parameter extends \ArrayObject
     }
 
     /**
-     * @return Schema|Reference|null
+     * @return Reference|Schema|null
      */
     public function getSchema()
     {
@@ -254,7 +254,7 @@ class Parameter extends \ArrayObject
     }
 
     /**
-     * @param Schema|Reference|null $schema
+     * @param Reference|Schema|null $schema
      *
      * @return self
      */

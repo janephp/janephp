@@ -41,6 +41,9 @@ class HTTPSecuritySchemeNormalizer implements DenormalizerInterface, NormalizerI
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
+        if (isset($data->{'$recursiveRef'})) {
+            return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
+        }
         $object = new \Jane\OpenApi\JsonSchema\Model\HTTPSecurityScheme();
         $data = clone $data;
         if (property_exists($data, 'scheme') && $data->{'scheme'} !== null) {

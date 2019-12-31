@@ -37,7 +37,7 @@ class Operation extends \ArrayObject
      */
     protected $parameters;
     /**
-     * @var RequestBody|Reference|null
+     * @var Reference|RequestBody|null
      */
     protected $requestBody;
     /**
@@ -182,7 +182,7 @@ class Operation extends \ArrayObject
     }
 
     /**
-     * @return RequestBody|Reference|null
+     * @return Reference|RequestBody|null
      */
     public function getRequestBody()
     {
@@ -190,7 +190,7 @@ class Operation extends \ArrayObject
     }
 
     /**
-     * @param RequestBody|Reference|null $requestBody
+     * @param Reference|RequestBody|null $requestBody
      *
      * @return self
      */
