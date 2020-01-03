@@ -2,7 +2,6 @@
 
 namespace Jane\OpenApiCommon\Generator\Client;
 
-use Http\Client\Common\Plugin;
 use Http\Discovery\Psr17FactoryDiscovery;
 use Http\Discovery\UriFactoryDiscovery;
 use PhpParser\Node\Stmt;
@@ -12,30 +11,20 @@ use PhpParser\Node;
 
 trait ServerPluginGenerator
 {
-    /** @var string */
-    private $baseUri;
-
-    /** @var array|Plugin[] */
-    private $plugins = [];
-
     abstract protected function getPsr18ClientGeneratorClass(): string;
 
-    abstract protected function discoverServer($openApi): void;
+    abstract protected function discoverServer($openApi): array;
 
     protected function needsServerPlugins($openApi): bool
     {
-        if (null === $this->baseUri) {
-            $this->discoverServer($openApi);
-        }
+        [$baseUri, $_] = $this->discoverServer($openApi);
 
-        return !(empty($this->baseUri) || $this->baseUri === '/');
+        return !(empty($baseUri) || $baseUri === '/');
     }
 
     protected function getServerPluginsStatements($openApi): array
     {
-        if (null === $this->baseUri) {
-            $this->discoverServer($openApi);
-        }
+        [$baseUri, $plugins] = $this->discoverServer($openApi);
 
         $psr18ClientGeneratorClass = $this->getPsr18ClientGeneratorClass();
         $discoveryFactoryClass = $this instanceof $psr18ClientGeneratorClass ? Psr17FactoryDiscovery::class : UriFactoryDiscovery::class;
@@ -51,13 +40,13 @@ trait ServerPluginGenerator
                     ),
                     'createUri',
                     [
-                        new Node\Arg(new Node\Scalar\String_($this->baseUri)),
+                        new Node\Arg(new Node\Scalar\String_($baseUri)),
                     ]
                 )
             )),
         ];
 
-        foreach ($this->plugins as $pluginClass) {
+        foreach ($plugins as $pluginClass) {
             $stmts[] = new Stmt\Expression(new Expr\Assign(
                 new Expr\ArrayDimFetch(new Expr\Variable('plugins')),
                 new Expr\New_(new Name\FullyQualified($pluginClass), [
