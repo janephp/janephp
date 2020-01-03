@@ -11,6 +11,7 @@ use Jane\OpenApi\JsonSchema\Model\Components;
 use Jane\OpenApi\JsonSchema\Model\Operation;
 use Jane\OpenApi\JsonSchema\Model\Parameter;
 use Jane\OpenApi\JsonSchema\Model\PathItem;
+use Jane\OpenApi\JsonSchema\Model\RequestBody;
 use Jane\OpenApi\JsonSchema\Model\Response;
 use Jane\OpenApi\JsonSchema\Model\OpenApi;
 
@@ -104,7 +105,7 @@ class OpenApiGuesser implements GuesserInterface, ClassGuesserInterface, ChainGu
             }
         }
 
-        if (null !== $operation->getRequestBody() && is_iterable($operation->getRequestBody()->getContent())) {
+        if ($operation->getRequestBody() instanceof RequestBody && is_iterable($operation->getRequestBody()->getContent())) {
             foreach ($operation->getRequestBody()->getContent() as $contentType => $content) {
                 $this->chainGuesser->guessClass($content->getSchema(), $name . 'Body', $reference . '/requestBody/content/' . $contentType . '/schema', $registry);
             }
