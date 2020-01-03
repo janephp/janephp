@@ -17,25 +17,30 @@ trait ServerPluginGenerator
         return Psr18ClientGenerator::class;
     }
 
-    private function discoverServer(OpenApi $openApi)
+    private function discoverServer(OpenApi $openApi): array
     {
         $servers = $openApi->getServers();
         $server = $servers !== null && !empty($servers[0]) ? $servers[0] : null;
 
         if (null !== $server) {
             $url = parse_url($server->getUrl());
-            $this->baseUri = '';
+            $baseUri = '';
+            $plugins = [];
 
             if (\array_key_exists('host', $url)) {
                 $scheme = $url['scheme'] ?? 'https';
-                $this->baseUri = $scheme . '://' . trim($url['host'], '/');
-                $this->plugins[] = AddHostPlugin::class;
+                $baseUri = $scheme . '://' . trim($url['host'], '/');
+                $plugins[] = AddHostPlugin::class;
             }
 
             if (\array_key_exists('path', $url) && null !== $url['path']) {
-                $this->baseUri .= '/' . trim($url['path'], '/');
-                $this->plugins[] = AddPathPlugin::class;
+                $baseUri .= '/' . trim($url['path'], '/');
+                $plugins[] = AddPathPlugin::class;
             }
+
+            return [$baseUri, $plugins];
         }
+
+        return [null, []];
     }
 }
