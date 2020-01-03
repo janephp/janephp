@@ -10,7 +10,7 @@ upgrade to at least this version if you want to follow the following example.
 The first step is to install this package:
 
 ```
-composer require --dev jane/open-api
+composer require --dev jane-php/open-api
 ```
 
 We install this library as a dev dependency, as there is no need for your user or the runtime
@@ -21,7 +21,7 @@ For that, Jane OpenAPI offers a runtime library that you MUST depend on by requi
 (into your non-dev dependencies):
 
 ```
-composer require jane/openapi-runtime
+composer require jane-php/open-api-runtime
 ```
 
 ## Creating your schema
