@@ -162,6 +162,10 @@ abstract class EndpointGenerator
 
         $requestBody = $operation->getOperation()->getRequestBody();
 
+        if ($requestBody instanceof Reference) {
+            [$_, $requestBody] = $this->resolve($requestBody, RequestBody::class);
+        }
+
         if ($requestBody instanceof RequestBody && $requestBody->getContent()) {
             $bodyParam = $this->requestBodyGenerator->generateMethodParameter($requestBody, $operation->getReference() . '/requestBody', $context);
             $bodyDoc = $this->requestBodyGenerator->generateMethodDocParameter($requestBody, $operation->getReference() . '/requestBody', $context);
@@ -362,11 +366,11 @@ EOD
 
     private function getGetBody(Operation $operation, Context $context): Stmt\ClassMethod
     {
-        $stmts = [];
-        
-        if ($operation->getOperation()->getRequestBody() === null ||
-            $operation->getOperation()->getRequestBody() instanceof RequestBody) {
-            $stmts = $this->requestBodyGenerator->getSerializeStatements($operation->getOperation()->getRequestBody(), $operation->getReference() . '/requestBody', $context);
+        $opRef = $operation->getReference() . '/requestBody';
+        $requestBody = $operation->getOperation()->getRequestBody();
+
+        if ($requestBody instanceof Reference) {
+            [$_, $requestBody] = $this->resolve($requestBody, RequestBody::class);
         }
 
         return new Stmt\ClassMethod('getBody', [
@@ -376,7 +380,7 @@ EOD
                 new Param(new Expr\Variable('streamFactory'), new Expr\ConstFetch(new Name('null'))),
             ],
             'returnType' => new Name('array'),
-            'stmts' => $stmts,
+            'stmts' => $this->requestBodyGenerator->getSerializeStatements($requestBody, $opRef, $context),
         ]);
     }
 
