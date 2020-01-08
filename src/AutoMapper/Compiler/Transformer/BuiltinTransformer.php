@@ -65,11 +65,6 @@ class BuiltinTransformer implements TransformerInterface
         $this->targetTypes = $targetTypes;
     }
 
-    /**
-     * @return (array|mixed|object)[]
-     *
-     * @psalm-return array{0: mixed|object, 1: array<empty, empty>}
-     */
     public function transform(Expr $input, UniqueVariableScope $uniqueVariableScope, PropertyMapping $propertyMapping): array
     {
         $targetTypes = array_map(function (Type $type) {

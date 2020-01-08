@@ -17,11 +17,6 @@ class CallbackTransformer implements TransformerInterface
         $this->callbackName = $callbackName;
     }
 
-    /**
-     * @return (Expr\FuncCall|array)[]
-     *
-     * @psalm-return array{0: Expr\FuncCall, 1: array<empty, empty>}
-     */
     public function transform(Expr $input, UniqueVariableScope $uniqueVariableScope, PropertyMapping $propertyMapping): array
     {
         /*

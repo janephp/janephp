@@ -59,9 +59,6 @@ abstract class AbstractAutoMapper implements AutoMapperInterface, AutoMapperRegi
         return $this->getConfiguration($source, $target) !== null;
     }
 
-    /**
-     * @param string $target
-     */
     public function map($value, string $target, Context $context = null)
     {
         $source = null;

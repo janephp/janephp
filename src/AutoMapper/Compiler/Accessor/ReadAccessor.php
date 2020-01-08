@@ -59,7 +59,7 @@ class ReadAccessor
         throw new \RuntimeException('Invalid accessor for read expression');
     }
 
-    public function getExtractCallback(string $className)
+    public function getExtractCallback($className)
     {
         if ($this->type !== self::TYPE_PROPERTY || !$this->private) {
             return null;

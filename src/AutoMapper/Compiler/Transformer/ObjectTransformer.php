@@ -22,11 +22,6 @@ class ObjectTransformer implements TransformerInterface
         $this->targetType = $targetType;
     }
 
-    /**
-     * @return (Expr\MethodCall|array)[]
-     *
-     * @psalm-return array{0: Expr\MethodCall, 1: array<empty, empty>}
-     */
     public function transform(Expr $input, UniqueVariableScope $uniqueVariableScope, PropertyMapping $propertyMapping): array
     {
         $mapperName = $this->getDependencyName();
@@ -47,7 +42,7 @@ class ObjectTransformer implements TransformerInterface
         return 'Mapper_' . $this->getSource() . '_' . $this->getTarget();
     }
 
-    private function getSource(): ?string
+    private function getSource(): string
     {
         $sourceTypeName = 'array';
 
@@ -58,7 +53,7 @@ class ObjectTransformer implements TransformerInterface
         return $sourceTypeName;
     }
 
-    private function getTarget(): ?string
+    private function getTarget(): string
     {
         $targetTypeName = 'array';
 

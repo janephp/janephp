@@ -16,11 +16,6 @@ class ArrayTransformer implements TransformerInterface
         $this->itemTransformer = $itemTransformer;
     }
 
-    /**
-     * @return ((Stmt\Expression|Stmt\Foreach_)[]|Expr\Variable)[]
-     *
-     * @psalm-return array{0: Expr\Variable, 1: array{0: Stmt\Expression, 1: Stmt\Foreach_}}
-     */
     public function transform(Expr $input, UniqueVariableScope $uniqueVariableScope, PropertyMapping $propertyMapping): array
     {
         $valuesVar = new Expr\Variable($uniqueVariableScope->getUniqueName('values'));

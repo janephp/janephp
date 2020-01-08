@@ -136,7 +136,7 @@ class MapperConfiguration extends AbstractMapperConfiguration
         return $this->checkCircularMapperConfiguration($this, $checked);
     }
 
-    protected function checkCircularMapperConfiguration(MapperConfigurationInterface $configuration, array &$checked)
+    protected function checkCircularMapperConfiguration(MapperConfigurationInterface $configuration, &$checked)
     {
         foreach ($configuration->getPropertiesMapping() as $propertyMapping) {
             foreach ($propertyMapping->getTransformer()->getDependencies() as $dependency) {

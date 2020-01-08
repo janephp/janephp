@@ -73,7 +73,7 @@ class WriteMutator
         throw new \RuntimeException('Invalid accessor for write expression');
     }
 
-    public function getHydrateCallback(string $className)
+    public function getHydrateCallback($className)
     {
         if ($this->type !== self::TYPE_PROPERTY || !$this->private) {
             return null;

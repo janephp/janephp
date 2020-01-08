@@ -12,13 +12,14 @@
             <directory name="vendor" />
             <directory name="src/*/vendor" />
             <directory name="src/*/Tests" />
-            <directory name="src/AutoMapper/Bundle/Tests" />
 
             <directory name="src/JsonSchema/Model" />
             <directory name="src/JsonSchema/Normalizer" />
             <directory name="src/OpenApi2/Model" />
             <directory name="src/OpenApi2/Normalizer" />
             <directory name="src/OpenApi/JsonSchema" />
+
+            <directory name="src/AutoMapper" />
         </ignoreFiles>
     </projectFiles>
 
