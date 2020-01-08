@@ -13,6 +13,8 @@ interface Psr7Endpoint extends Endpoint
      * Parse and transform a PSR7 Response into a different object.
      *
      * Implementations may vary depending the status code of the response and the fetch mode used.
+     *
+     * @return mixed
      */
     public function parsePSR7Response(ResponseInterface $response, SerializerInterface $serializer, string $fetchMode = Client::FETCH_OBJECT);
 }

@@ -38,6 +38,9 @@ abstract class Psr18Client extends Client
         $this->streamFactory = $streamFactory;
     }
 
+    /**
+     * @return mixed
+     */
     public function executePsr7Endpoint(Psr7Endpoint $endpoint, string $fetch = self::FETCH_OBJECT)
     {
         [$bodyHeaders, $body] = $endpoint->getBody($this->serializer, $this->streamFactory);

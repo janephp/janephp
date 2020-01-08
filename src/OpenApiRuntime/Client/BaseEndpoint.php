@@ -59,7 +59,7 @@ abstract class BaseEndpoint implements Endpoint
         ];
     }
 
-    protected function getMultipartBody($streamFactory = null): array
+    protected function getMultipartBody(object $streamFactory = null): array
     {
         $bodyBuilder = new MultipartStreamBuilder($streamFactory);
         $formParameters = $this->getFormOptionsResolver()->resolve($this->formParameters);

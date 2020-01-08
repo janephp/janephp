@@ -22,7 +22,7 @@ class TestBinaryBody extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements
     {
         return '/test-binary-body';
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, object $streamFactory = null) : array
     {
         if (is_string($this->body) or is_resource($this->body) or $this->body instanceof \Psr\Http\Message\StreamInterface) {
             return array(array('Content-Type' => array('test/plain')), $this->body);

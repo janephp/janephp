@@ -22,7 +22,7 @@ class TestObjectListBodyParameter extends \Jane\OpenApiRuntime\Client\BaseEndpoi
     {
         return '/test-object-list';
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, object $streamFactory = null) : array
     {
         if (is_array($this->body) and isset($this->body[0]) and $this->body[0] instanceof \Jane\OpenApi\Tests\Expected\Model\Schema) {
             return array(array('Content-Type' => array('application/json')), $serializer->serialize($this->body, 'json'));

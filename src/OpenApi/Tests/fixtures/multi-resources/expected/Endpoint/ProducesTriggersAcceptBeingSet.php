@@ -13,7 +13,7 @@ class ProducesTriggersAcceptBeingSet extends \Jane\OpenApiRuntime\Client\BaseEnd
     {
         return '/test-object';
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, object $streamFactory = null) : array
     {
         return array(array(), null);
     }

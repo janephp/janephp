@@ -47,7 +47,7 @@ trait NormalizerGenerator
         }
 
         return new Stmt\Class_(
-            new Name($this->getNaming()->getClassName($name)),
+            $this->getNaming()->getClassName($name),
             [
                 'stmts' => array_merge($traits, $methods),
                 'implements' => $implements,
@@ -94,21 +94,21 @@ trait NormalizerGenerator
 
         /** @var Property $property */
         foreach ($classGuess->getProperties() as $property) {
-            if (!$property->isReadOnly()) {
+            if (!$property->isReadOnly() && ($propertyType = $property->getType()) instanceof Type) {
                 $propertyVar = new Expr\MethodCall($objectVariable, $this->getNaming()->getPrefixedMethodName('get', $property->getPhpName()));
 
-                list($normalizationStatements, $outputVar) = $property->getType()->createNormalizationStatement($context, $propertyVar);
+                list($normalizationStatements, $outputVar) = $propertyType->createNormalizationStatement($context, $propertyVar);
 
                 $normalizationStatements[] = new Stmt\Expression(new Expr\Assign(new Expr\PropertyFetch($dataVariable, sprintf("{'%s'}", $property->getName())), $outputVar));
 
-                if ($property->isNullable() || ($property->getType() instanceof MultipleType && \count(array_intersect([Type::TYPE_NULL], $property->getType()->getTypes())) === 1) || ($property->getType()->getName() === Type::TYPE_NULL)) {
-                    if ($property->getType()->getName() !== Type::TYPE_NULL &&
+                if ($property->isNullable() || ($propertyType instanceof MultipleType && \count(array_intersect([Type::TYPE_NULL], $propertyType->getTypes())) === 1) || ($propertyType->getName() === Type::TYPE_NULL)) {
+                    if ($propertyType->getName() !== Type::TYPE_NULL &&
                         (
-                            $property->getType() instanceof DateTimeType ||
-                            $property->getType() instanceof MapType ||
-                            $property->getType() instanceof ObjectType ||
-                            $property->getType() instanceof PatternMultipleType ||
-                            $property->getType() instanceof ArrayType
+                            $propertyType instanceof DateTimeType ||
+                            $propertyType instanceof MapType ||
+                            $propertyType instanceof ObjectType ||
+                            $propertyType instanceof PatternMultipleType ||
+                            $propertyType instanceof ArrayType
                         )) {
                         $statements[] = new Stmt\If_(
                             new Expr\BinaryOp\NotIdentical(new Expr\ConstFetch(new Name('null')), $propertyVar),

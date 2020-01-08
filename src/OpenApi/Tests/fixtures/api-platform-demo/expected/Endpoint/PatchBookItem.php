@@ -25,7 +25,7 @@ class PatchBookItem extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements 
     {
         return str_replace(array('{id}'), array($this->id), '/books/{id}');
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, object $streamFactory = null) : array
     {
         if ($this->body instanceof \ApiPlatform\Demo\Model\Book) {
             return array(array('Content-Type' => array('application/merge-patch+json')), $this->body);

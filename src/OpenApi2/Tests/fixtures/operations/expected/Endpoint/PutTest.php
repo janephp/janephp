@@ -13,7 +13,7 @@ class PutTest extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\
     {
         return '/test-get';
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, object $streamFactory = null) : array
     {
         return array(array(), null);
     }

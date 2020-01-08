@@ -22,7 +22,7 @@ class BodyParameterTriggersContentTypeBeingSet extends \Jane\OpenApiRuntime\Clie
     {
         return '/test-simple';
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, object $streamFactory = null) : array
     {
         if (is_string($this->body)) {
             return array(array('Content-Type' => array('application/json')), json_encode($this->body));

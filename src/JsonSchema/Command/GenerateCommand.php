@@ -32,6 +32,10 @@ class GenerateCommand extends Command
     {
         $configFile = $input->getOption('config-file');
 
+        if (!\is_string($configFile)) {
+            throw new \RuntimeException('Given `config-file` option should be a string');
+        }
+
         if (!file_exists($configFile)) {
             throw new \RuntimeException(sprintf('Config file %s does not exist', $configFile));
         }
@@ -130,6 +134,6 @@ class GenerateCommand extends Command
 
         $options = $optionsResolver->resolve($options);
 
-        return new Schema($schema, $options['namespace'], $options['directory'], $options['root-class'], 4);
+        return new Schema($schema, $options['namespace'], $options['directory'], $options['root-class']);
     }
 }

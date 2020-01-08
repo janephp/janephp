@@ -5,7 +5,7 @@ namespace Jane\JsonSchema\Guesser;
 use Jane\JsonSchema\Guesser\Guess\Type;
 use Jane\JsonSchema\Registry;
 
-class ChainGuesser implements TypeGuesserInterface, PropertiesGuesserInterface, ClassGuesserInterface, ConstraintGuesserInterface
+class ChainGuesser implements TypeGuesserInterface, PropertiesGuesserInterface, ClassGuesserInterface
 {
     /**
      * @var GuesserInterface[]
@@ -79,25 +79,5 @@ class ChainGuesser implements TypeGuesserInterface, PropertiesGuesserInterface, 
         }
 
         return $properties;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function guessConstraints($object, $name, $reference, Registry $registry)
-    {
-        $constraints = [];
-
-        foreach ($this->guessers as $guesser) {
-            if (!($guesser instanceof ConstraintGuesserInterface)) {
-                continue;
-            }
-
-            if ($guesser->supportObject($object)) {
-                $constraints = array_merge($constraints, $guesser->guessConstraints($object, $name, $reference, $registry));
-            }
-        }
-
-        return $constraints;
     }
 }

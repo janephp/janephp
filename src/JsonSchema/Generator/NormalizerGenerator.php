@@ -185,10 +185,16 @@ EOT;
             $normalizers['\\Jane\\JsonSchemaRuntime\\Reference'] = '\\Jane\\JsonSchemaRuntime\\Normalizer\\ReferenceNormalizer';
         }
 
+        $propertyStmtDefault = null;
+        $defaultStmt = $this->parser->parse('<?php ' . var_export($normalizers, true) . ';');
+        if (null !== $defaultStmt && \count($defaultStmt) > 0 && ($defaultExpr = $defaultStmt[0]) instanceof Stmt\Expression) {
+            $propertyStmtDefault = $defaultExpr->expr;
+        }
+
         $properties = [];
         $propertyName = $this->getNaming()->getPropertyName('normalizers');
         $propertyStmt = new Stmt\PropertyProperty($propertyName);
-        $propertyStmt->default = $this->parser->parse('<?php ' . var_export($normalizers, true) . ';')[0]->expr;
+        $propertyStmt->default = $propertyStmtDefault;
         $properties[] = $propertyStmt;
         $propertyStmt = new Stmt\PropertyProperty('normalizersCache');
         $propertyStmt->default = new Expr\Array_();

@@ -48,6 +48,6 @@ class AnyOfGuesser implements GuesserInterface, ClassGuesserInterface, TypeGuess
      */
     public function supportObject($object)
     {
-        return ($object instanceof JsonSchema) && \is_array($object->getAnyOf()) && \count($object->getAnyOf()) > 0;
+        return ($object instanceof JsonSchema) && \is_array($anyOf = $object->getAnyOf()) && \count($anyOf) > 0;
     }
 }

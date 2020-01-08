@@ -23,7 +23,7 @@ class GetTestById extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \J
     {
         return str_replace(array('{id}'), array($this->id), '/test/{id}');
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, object $streamFactory = null) : array
     {
         return array(array(), null);
     }

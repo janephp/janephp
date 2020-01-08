@@ -22,7 +22,7 @@ class TestSimpleBodyParameter extends \Jane\OpenApiRuntime\Client\BaseEndpoint i
     {
         return '/test-simple';
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, object $streamFactory = null) : array
     {
         return array(array(), $this->body);
     }

@@ -377,7 +377,7 @@ EOD
             'type' => Stmt\Class_::MODIFIER_PUBLIC,
             'params' => [
                 new Param(new Node\Expr\Variable('serializer'), null, new Name\FullyQualified(SerializerInterface::class)),
-                new Param(new Node\Expr\Variable('streamFactory'), new Expr\ConstFetch(new Name('null'))),
+                new Param(new Node\Expr\Variable('streamFactory'), new Expr\ConstFetch(new Name('null')), new Name('object')),
             ],
             'returnType' => new Name('array'),
         ]);

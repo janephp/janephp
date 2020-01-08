@@ -15,8 +15,9 @@ use Jane\JsonSchema\Guesser\PropertiesGuesserInterface;
 use Jane\JsonSchema\Guesser\TypeGuesserInterface;
 use Jane\JsonSchema\Model\JsonSchema;
 use Jane\JsonSchema\Registry;
+use Jane\JsonSchema\Schema;
 use Jane\JsonSchemaRuntime\Reference;
-use Symfony\Component\Serializer\SerializerInterface;
+use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 
 class AllOfGuesser implements GuesserInterface, TypeGuesserInterface, ChainGuesserAwareInterface, PropertiesGuesserInterface, ClassGuesserInterface
 {
@@ -25,7 +26,7 @@ class AllOfGuesser implements GuesserInterface, TypeGuesserInterface, ChainGuess
 
     protected $naming;
 
-    public function __construct(SerializerInterface $serializer, Naming $naming)
+    public function __construct(DenormalizerInterface $serializer, Naming $naming)
     {
         $this->serializer = $serializer;
         $this->naming = $naming;
@@ -69,7 +70,10 @@ class AllOfGuesser implements GuesserInterface, TypeGuesserInterface, ChainGuess
                     }
                 }
 
-                $registry->getSchema($reference)->addClass($reference, $this->createClassGuess($object, $reference, $name, $extensions));
+                $schema = $registry->getSchema($reference);
+                if ($schema instanceof Schema) {
+                    $schema->addClass($reference, $this->createClassGuess($object, $reference, $name, $extensions));
+                }
             }
 
             foreach ($object->getAllOf() as $allOfIndex => $allOf) {
@@ -91,10 +95,12 @@ class AllOfGuesser implements GuesserInterface, TypeGuesserInterface, ChainGuess
     {
         $type = null;
         $allOfType = null;
+        $schema = $registry->getSchema($reference);
+        $class = $registry->getClass($reference);
 
         // Mainly a merged class
-        if ($registry->hasClass($reference)) {
-            return new ObjectType($object, $registry->getClass($reference)->getName(), $registry->getSchema($reference)->getNamespace());
+        if ($registry->hasClass($reference) && $class instanceof ClassGuess && $schema instanceof Schema) {
+            return new ObjectType($object, $class->getName(), $schema->getNamespace());
         }
 
         foreach ($object->getAllOf() as $allOfIndex => $allOf) {

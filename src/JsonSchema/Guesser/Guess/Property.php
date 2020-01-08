@@ -10,7 +10,7 @@ class Property
     private $name;
 
     /**
-     * @var Type
+     * @var Type|null
      */
     private $type;
 
@@ -30,7 +30,7 @@ class Property
     private $nullable;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $description;
 
@@ -92,7 +92,7 @@ class Property
         return $this->nullable;
     }
 
-    public function getType(): Type
+    public function getType(): ?Type
     {
         return $this->type;
     }

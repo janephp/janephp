@@ -24,7 +24,7 @@ class TestNullableQueryParameters extends \Jane\OpenApiRuntime\Client\BaseEndpoi
     {
         return '/test-nullable-query-parameter';
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, object $streamFactory = null) : array
     {
         return array(array(), null);
     }

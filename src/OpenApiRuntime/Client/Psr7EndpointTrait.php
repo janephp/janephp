@@ -12,6 +12,9 @@ trait Psr7EndpointTrait
 {
     abstract protected function transformResponseBody(string $body, int $status, SerializerInterface $serializer, string $contentType = null);
 
+    /**
+     * {@inheritdoc}.
+     */
     public function parsePSR7Response(ResponseInterface $response, SerializerInterface $serializer, string $fetchMode = Client::FETCH_OBJECT)
     {
         if ($fetchMode === Client::FETCH_OBJECT) {

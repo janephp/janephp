@@ -2,17 +2,18 @@
 
 namespace Jane\JsonSchema\Guesser;
 
+use Jane\JsonSchema\Guesser\Guess\ClassGuess;
 use Jane\JsonSchema\Model\JsonSchema;
 use Jane\JsonSchema\Registry;
 use Jane\JsonSchemaRuntime\Reference;
-use Symfony\Component\Serializer\SerializerInterface;
+use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 
 class ReferenceGuesser implements ClassGuesserInterface, GuesserInterface, TypeGuesserInterface, ChainGuesserAwareInterface
 {
     use ChainGuesserAwareTrait;
     use GuesserResolverTrait;
 
-    public function __construct(SerializerInterface $serializer)
+    public function __construct(DenormalizerInterface $serializer)
     {
         $this->serializer = $serializer;
     }
@@ -27,19 +28,17 @@ class ReferenceGuesser implements ClassGuesserInterface, GuesserInterface, TypeG
 
     /**
      * {@inheritdoc}
-     *
-     * @param Reference $object
      */
     public function guessClass($object, $name, $reference, Registry $registry)
     {
+        /** @var Reference $object */
         if ($object->isInCurrentDocument()) {
             return [];
         }
 
         $mergedReference = (string) $object->getMergedUri();
 
-        if (null === $registry->getSchema($mergedReference)) {
-            $schema = $registry->getSchema((string) $object->getOriginUri());
+        if (null === $registry->getSchema($mergedReference) && null !== ($schema = $registry->getSchema((string) $object->getOriginUri()))) {
             $schema->addReference((string) $object->getMergedUri()->withFragment(''));
         }
 
@@ -53,8 +52,6 @@ class ReferenceGuesser implements ClassGuesserInterface, GuesserInterface, TypeG
 
     /**
      * {@inheritdoc}
-     *
-     * @param Reference $object
      */
     public function guessType($object, string $name, string $reference, Registry $registry)
     {
@@ -65,8 +62,8 @@ class ReferenceGuesser implements ClassGuesserInterface, GuesserInterface, TypeG
             $classKey .= '#';
         }
 
-        if ($registry->hasClass($classKey)) {
-            $name = $registry->getClass($classKey)->getName();
+        if ($registry->hasClass($classKey) && ($classGuess = $registry->getClass($classKey)) instanceof ClassGuess) {
+            $name = $classGuess->getName();
         }
 
         return $this->chainGuesser->guessType($resolved, $name, $classKey, $registry);

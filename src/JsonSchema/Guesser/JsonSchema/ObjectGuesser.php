@@ -17,7 +17,7 @@ use Jane\JsonSchema\Guesser\TypeGuesserInterface;
 use Jane\JsonSchema\Model\JsonSchema;
 use Jane\JsonSchema\Registry;
 use Jane\JsonSchemaRuntime\Reference;
-use Symfony\Component\Serializer\SerializerInterface;
+use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 
 class ObjectGuesser implements GuesserInterface, PropertiesGuesserInterface, TypeGuesserInterface, ChainGuesserAwareInterface, ClassGuesserInterface
 {
@@ -29,7 +29,7 @@ class ObjectGuesser implements GuesserInterface, PropertiesGuesserInterface, Typ
      */
     protected $naming;
 
-    public function __construct(Naming $naming, SerializerInterface $serializer)
+    public function __construct(Naming $naming, DenormalizerInterface $serializer)
     {
         $this->naming = $naming;
         $this->serializer = $serializer;
@@ -45,15 +45,13 @@ class ObjectGuesser implements GuesserInterface, PropertiesGuesserInterface, Typ
 
     /**
      * {@inheritdoc}
-     *
-     * @param JsonSchema $object
      */
     public function guessClass($object, $name, $reference, Registry $registry)
     {
-        if (!$registry->hasClass($reference)) {
+        if (!$registry->hasClass($reference) && null !== ($schema = $registry->getSchema($reference))) {
             $extensions = [];
 
-            if ($object->getAdditionalProperties()) {
+            if (method_exists($object, 'getAdditionalProperties') && $object->getAdditionalProperties()) {
                 $extensionObject = null;
 
                 if (\is_object($object->getAdditionalProperties())) {
@@ -73,11 +71,13 @@ class ObjectGuesser implements GuesserInterface, PropertiesGuesserInterface, Typ
                 }
             }
 
-            $registry->getSchema($reference)->addClass($reference, $this->createClassGuess($object, $reference, $name, $extensions));
+            $schema->addClass($reference, $this->createClassGuess($object, $reference, $name, $extensions));
         }
 
-        foreach ($object->getProperties() as $key => $property) {
-            $this->chainGuesser->guessClass($property, $name . ucfirst($key), $reference . '/properties/' . $key, $registry);
+        if (method_exists($object, 'getProperties')) {
+            foreach ($object->getProperties() ?? [] as $key => $property) {
+                $this->chainGuesser->guessClass($property, $name . ucfirst($key), $reference . '/properties/' . $key, $registry);
+            }
         }
     }
 
@@ -143,8 +143,8 @@ class ObjectGuesser implements GuesserInterface, PropertiesGuesserInterface, Typ
             }
         }
 
-        if ($registry->hasClass($reference)) {
-            return new ObjectType($object, $registry->getClass($reference)->getName(), $registry->getSchema($reference)->getNamespace(), $discriminants);
+        if ($registry->hasClass($reference) && ($classGuess = $registry->getClass($reference)) instanceof ClassGuess && null !== ($schema = $registry->getSchema($reference))) {
+            return new ObjectType($object, $classGuess->getName(), $schema->getNamespace(), $discriminants);
         }
 
         return new Type($object, 'object');
@@ -160,6 +160,6 @@ class ObjectGuesser implements GuesserInterface, PropertiesGuesserInterface, Typ
 
     protected function createClassGuess(JsonSchema $object, string $reference, $name, array $extensions): ClassGuess
     {
-        return new ClassGuess($object, $reference, $this->naming->getClassName($name), $extensions, $object->getDeprecated());
+        return new ClassGuess($object, $reference, $this->naming->getClassName($name), $extensions, $object->getDeprecated() ?? false);
     }
 }

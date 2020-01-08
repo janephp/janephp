@@ -13,7 +13,7 @@ class GetTestOperationUrlWithExtension extends \Jane\OpenApiRuntime\Client\BaseE
     {
         return '/test-operation-url-with-extension.php';
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, object $streamFactory = null) : array
     {
         return array(array(), null);
     }

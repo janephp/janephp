@@ -13,7 +13,7 @@ class GetFoo extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\O
     {
         return '/foo';
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, object $streamFactory = null) : array
     {
         return array(array(), null);
     }

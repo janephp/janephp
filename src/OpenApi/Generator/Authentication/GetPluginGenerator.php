@@ -58,6 +58,10 @@ trait GetPluginGenerator
                     $anonymousClass['constructStatements'][] = new Stmt\Expression(new Expr\Assign(new Expr\PropertyFetch(new Expr\Variable('this'), new Scalar\String_($field)), new Expr\Variable($field)));
                 }
 
+                if (null === $anonymousClass['fetchedValue']) {
+                    throw new \Exception('Jane actually does only support Basic & Bearer schemes');
+                }
+
                 $pluginClass = new Stmt\Class_(null, [
                     'implements' => [new Name\FullyQualified(Authentication::class)],
                     'stmts' => array_merge(
@@ -97,43 +101,45 @@ trait GetPluginGenerator
                 $object = $securityScheme->getObject();
                 $authenticateStmts = [];
 
-                switch ($object->getIn()) {
-                    case 'header':
-                        $authenticateStmts = [
-                            new Stmt\Return_(new Expr\MethodCall(new Expr\Variable('request'), 'withHeader', [
-                                new Node\Arg(new Scalar\String_($object->getName())),
-                                new Node\Arg(new Expr\PropertyFetch(new Expr\Variable('this'), new Scalar\String_('apiKey'))),
-                            ])),
-                        ];
-                        break;
-                    case 'query':
-                        $authenticateStmts = [
-                            new Stmt\Expression(new Expr\Assign(new Expr\Variable('uri'), new Expr\MethodCall(new Expr\Variable('request'), 'getUri'))),
-                            new Stmt\Expression(new Expr\Assign(new Expr\Variable('query'), new Expr\MethodCall(new Expr\Variable('uri'), 'getQuery'))),
-                            new Stmt\Expression(new Expr\Assign(new Expr\Variable('params'), new Expr\Array_())),
-                            new Stmt\Expression(new Expr\FuncCall(new Name('parse_str'), [
-                                new Node\Arg(new Expr\Variable('query')),
-                                new Node\Arg(new Expr\Variable('params')),
-                            ])),
-                            new Stmt\Expression(new Expr\Assign(new Expr\Variable('params'), new Expr\FuncCall(new Name('array_merge'), [
-                                new Node\Arg(new Expr\Variable('params')),
-                                new Node\Arg(new Expr\Array_([
-                                    new Expr\ArrayItem(new Expr\PropertyFetch(new Expr\Variable('this'), new Scalar\String_('apiKey')), new Scalar\String_($object->getName())),
+                if (\is_string($objectName = $object->getName())) {
+                    switch ($object->getIn()) {
+                        case 'header':
+                            $authenticateStmts = [
+                                new Stmt\Return_(new Expr\MethodCall(new Expr\Variable('request'), 'withHeader', [
+                                    new Node\Arg(new Scalar\String_($objectName)),
+                                    new Node\Arg(new Expr\PropertyFetch(new Expr\Variable('this'), new Scalar\String_('apiKey'))),
                                 ])),
-                            ]))),
-                            new Stmt\Expression(new Expr\Assign(new Expr\Variable('query'), new Expr\FuncCall(new Name('http_build_query'), [
-                                new Node\Arg(new Expr\Variable('params')),
-                                new Node\Arg(new Expr\ConstFetch(new Name('null'))),
-                                new Node\Arg(new Scalar\String_('&')),
-                            ]))),
-                            new Stmt\Expression(new Expr\Assign(new Expr\Variable('uri'), new Expr\MethodCall(new Expr\Variable('uri'), 'withQuery', [
-                                new Node\Arg(new Expr\Variable('query')),
-                            ]))),
-                            new Stmt\Return_(new Expr\MethodCall(new Expr\Variable('request'), 'withUri', [
-                                new Node\Arg(new Expr\Variable('uri')),
-                            ])),
-                        ];
-                        break;
+                            ];
+                            break;
+                        case 'query':
+                            $authenticateStmts = [
+                                new Stmt\Expression(new Expr\Assign(new Expr\Variable('uri'), new Expr\MethodCall(new Expr\Variable('request'), 'getUri'))),
+                                new Stmt\Expression(new Expr\Assign(new Expr\Variable('query'), new Expr\MethodCall(new Expr\Variable('uri'), 'getQuery'))),
+                                new Stmt\Expression(new Expr\Assign(new Expr\Variable('params'), new Expr\Array_())),
+                                new Stmt\Expression(new Expr\FuncCall(new Name('parse_str'), [
+                                    new Node\Arg(new Expr\Variable('query')),
+                                    new Node\Arg(new Expr\Variable('params')),
+                                ])),
+                                new Stmt\Expression(new Expr\Assign(new Expr\Variable('params'), new Expr\FuncCall(new Name('array_merge'), [
+                                    new Node\Arg(new Expr\Variable('params')),
+                                    new Node\Arg(new Expr\Array_([
+                                        new Expr\ArrayItem(new Expr\PropertyFetch(new Expr\Variable('this'), new Scalar\String_('apiKey')), new Scalar\String_($objectName)),
+                                    ])),
+                                ]))),
+                                new Stmt\Expression(new Expr\Assign(new Expr\Variable('query'), new Expr\FuncCall(new Name('http_build_query'), [
+                                    new Node\Arg(new Expr\Variable('params')),
+                                    new Node\Arg(new Expr\ConstFetch(new Name('null'))),
+                                    new Node\Arg(new Scalar\String_('&')),
+                                ]))),
+                                new Stmt\Expression(new Expr\Assign(new Expr\Variable('uri'), new Expr\MethodCall(new Expr\Variable('uri'), 'withQuery', [
+                                    new Node\Arg(new Expr\Variable('query')),
+                                ]))),
+                                new Stmt\Return_(new Expr\MethodCall(new Expr\Variable('request'), 'withUri', [
+                                    new Node\Arg(new Expr\Variable('uri')),
+                                ])),
+                            ];
+                            break;
+                    }
                 }
 
                 $pluginClass = new Stmt\Class_(null, [

@@ -146,10 +146,14 @@ abstract class EndpointGenerator
             if ($parameter instanceof Parameter && self::IN_PATH === $parameter->getIn()) {
                 $pathParams[] = $this->nonBodyParameterGenerator->generateMethodParameter($parameter, $context, $operation->getReference() . '/parameters/' . $key);
                 $pathParamsDoc[] = $this->nonBodyParameterGenerator->generateMethodDocParameter($parameter, $context, $operation->getReference() . '/parameters/' . $key);
-                $methodStatements[] = new Stmt\Expression(new Expr\Assign(new Expr\PropertyFetch(new Expr\Variable('this'), $parameter->getName()), new Expr\Variable(Inflector::camelize($parameter->getName()))));
-                $pathProperties[] = new Stmt\Property(Stmt\Class_::MODIFIER_PROTECTED, [
-                    new Stmt\PropertyProperty(new Name($parameter->getName())),
-                ]);
+
+                if (\is_string($parameterName = $parameter->getName())) {
+                    $methodStatements[] = new Stmt\Expression(new Expr\Assign(new Expr\PropertyFetch(new Expr\Variable('this'), $parameterName), new Expr\Variable(Inflector::camelize($parameterName))));
+
+                    $pathProperties[] = new Stmt\Property(Stmt\Class_::MODIFIER_PROTECTED, [
+                        new Stmt\PropertyProperty($parameterName),
+                    ]);
+                }
             }
 
             if ($parameter instanceof Parameter && self::IN_QUERY === $parameter->getIn()) {
@@ -230,9 +234,8 @@ EOD
                 $parameter = $this->resolveParameter($parameter);
             }
 
-            if ($parameter instanceof Parameter && self::IN_PATH === $parameter->getIn()) {
-                // $url = str_replace('{param}', $param, $url)
-                $names[] = $parameter->getName();
+            if ($parameter instanceof Parameter && self::IN_PATH === $parameter->getIn() && \is_string($parameterName = $parameter->getName())) {
+                $names[] = $parameterName;
             }
         }
 
@@ -246,16 +249,19 @@ EOD
             ]);
         }
 
+        $strReplaceSearch = array_map(function (string $name) {
+            return new Expr\ArrayItem(new Scalar\String_('{' . $name . '}'));
+        }, $names);
+        $strReplaceReplace = array_map(function ($name) {
+            return new Expr\ArrayItem(new Expr\PropertyFetch(new Expr\Variable('this'), $name));
+        }, $names);
+
         return new Stmt\ClassMethod('getUri', [
             'type' => Stmt\Class_::MODIFIER_PUBLIC,
             'stmts' => [
                 new Stmt\Return_(new Expr\FuncCall(new Name('str_replace'), [
-                    new Arg(new Expr\Array_(array_map(function ($name) {
-                        return new Scalar\String_('{' . $name . '}');
-                    }, $names))),
-                    new Arg(new Expr\Array_(array_map(function ($name) {
-                        return new Expr\PropertyFetch(new Expr\Variable('this'), $name);
-                    }, $names))),
+                    new Arg(new Expr\Array_($strReplaceSearch)),
+                    new Arg(new Expr\Array_($strReplaceReplace)),
                     new Arg(new Scalar\String_($operation->getPath())),
                 ])),
             ],
@@ -366,7 +372,7 @@ EOD
             'type' => Stmt\Class_::MODIFIER_PUBLIC,
             'params' => [
                 new Param(new Expr\Variable('serializer'), null, new Name\FullyQualified(SerializerInterface::class)),
-                new Param(new Expr\Variable('streamFactory'), new Expr\ConstFetch(new Name('null'))),
+                new Param(new Expr\Variable('streamFactory'), new Expr\ConstFetch(new Name('null')), new Name('object')),
             ],
             'returnType' => new Name('array'),
             'stmts' => $this->requestBodyGenerator->getSerializeStatements($operation->getOperation()->getRequestBody(), $operation->getReference() . '/requestBody', $context),
@@ -516,37 +522,39 @@ EOD
         $throwTypes = [];
         $statements = [];
 
-        foreach ($response->getContent() as $contentType => $content) {
-            if ($contentType === 'application/json') {
-                [$returnType, $throwType, $returnStatement] = $this->createContentDenormalizationStatement(
-                    $name,
-                    $status,
-                    $content->getSchema(),
-                    $context,
-                    $reference . '/content/' . $contentType . '/schema',
-                    $description
-                );
+        if (is_iterable($responseContent = $response->getContent())) {
+            foreach ($responseContent as $contentType => $content) {
+                if ($contentType === 'application/json') {
+                    [$returnType, $throwType, $returnStatement] = $this->createContentDenormalizationStatement(
+                        $name,
+                        $status,
+                        $content->getSchema(),
+                        $context,
+                        $reference . '/content/' . $contentType . '/schema',
+                        $description
+                    );
 
-                if ($returnType !== null) {
-                    $returnTypes[] = $returnType;
+                    if ($returnType !== null) {
+                        $returnTypes[] = $returnType;
+                    }
+
+                    if ($throwType !== null) {
+                        $throwTypes[] = $throwType;
+                    }
+
+                    $statements[] = new Stmt\If_(
+                        new Expr\BinaryOp\NotIdentical(
+                            new Expr\FuncCall(new Name('mb_strpos'), [
+                                new Arg(new Expr\Variable('contentType')),
+                                new Arg(new Scalar\String_($contentType)),
+                            ]),
+                            new Expr\ConstFetch(new Name('false'))
+                        ),
+                        [
+                            'stmts' => [$returnStatement],
+                        ]
+                    );
                 }
-
-                if ($throwType !== null) {
-                    $throwTypes[] = $throwType;
-                }
-
-                $statements[] = new Stmt\If_(
-                    new Expr\BinaryOp\NotIdentical(
-                        new Expr\FuncCall(new Name('mb_strpos'), [
-                            new Arg(new Expr\Variable('contentType')),
-                            new Arg(new Scalar\String_($contentType)),
-                        ]),
-                        new Expr\ConstFetch(new Name('false'))
-                    ),
-                    [
-                        'stmts' => [$returnStatement],
-                    ]
-                );
             }
         }
 

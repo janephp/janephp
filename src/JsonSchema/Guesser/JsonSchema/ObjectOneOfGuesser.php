@@ -13,7 +13,7 @@ use Jane\JsonSchema\JsonSchemaMerger;
 use Jane\JsonSchema\Model\JsonSchema;
 use Jane\JsonSchema\Registry;
 use Jane\JsonSchemaRuntime\Reference;
-use Symfony\Component\Serializer\SerializerInterface;
+use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 
 class ObjectOneOfGuesser implements GuesserInterface, TypeGuesserInterface, ClassGuesserInterface, ChainGuesserAwareInterface
 {
@@ -25,7 +25,7 @@ class ObjectOneOfGuesser implements GuesserInterface, TypeGuesserInterface, Clas
      */
     private $jsonSchemaMerger;
 
-    public function __construct(JsonSchemaMerger $jsonSchemaMerger, SerializerInterface $serializer)
+    public function __construct(JsonSchemaMerger $jsonSchemaMerger, DenormalizerInterface $serializer)
     {
         $this->jsonSchemaMerger = $jsonSchemaMerger;
         $this->serializer = $serializer;
@@ -80,6 +80,6 @@ class ObjectOneOfGuesser implements GuesserInterface, TypeGuesserInterface, Clas
      */
     public function supportObject($object)
     {
-        return ($object instanceof JsonSchema) && 'object' === $object->getType() && \is_array($object->getOneOf()) && \count($object->getOneOf()) > 0;
+        return ($object instanceof JsonSchema) && 'object' === $object->getType() && \is_array($oneOf = $object->getOneOf()) && \count($oneOf) > 0;
     }
 }

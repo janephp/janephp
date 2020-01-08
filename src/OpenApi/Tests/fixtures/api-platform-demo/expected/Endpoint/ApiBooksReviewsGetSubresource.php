@@ -31,7 +31,7 @@ class ApiBooksReviewsGetSubresource extends \Jane\OpenApiRuntime\Client\BaseEndp
     {
         return str_replace(array('{id}'), array($this->id), '/books/{id}/reviews');
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, object $streamFactory = null) : array
     {
         return array(array(), null);
     }

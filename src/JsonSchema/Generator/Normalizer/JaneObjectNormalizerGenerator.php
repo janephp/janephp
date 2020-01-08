@@ -21,7 +21,7 @@ trait JaneObjectNormalizerGenerator
             ],
             'stmts' => [new Stmt\Return_(new Expr\FuncCall(new Name('array_key_exists'), [
                 new Arg(new Expr\Variable('type')),
-                new Expr\PropertyFetch(new Expr\Variable('this'), 'normalizers'),
+                new Arg(new Expr\PropertyFetch(new Expr\Variable('this'), 'normalizers')),
             ]))],
         ]);
     }
@@ -38,8 +38,8 @@ trait JaneObjectNormalizerGenerator
                 new Expr\BinaryOp\BooleanAnd(
                     new Expr\FuncCall(new Name('is_object'), [new Arg(new Expr\Variable('data'))]),
                     new Expr\FuncCall(new Name('array_key_exists'), [
-                        new Expr\FuncCall(new Name('get_class'), [new Arg(new Expr\Variable('data'))]),
-                        new Expr\PropertyFetch(new Expr\Variable('this'), 'normalizers'),
+                        new Arg(new Expr\FuncCall(new Name('get_class'), [new Arg(new Expr\Variable('data'))])),
+                        new Arg(new Expr\PropertyFetch(new Expr\Variable('this'), 'normalizers')),
                     ])
                 ))],
         ]);

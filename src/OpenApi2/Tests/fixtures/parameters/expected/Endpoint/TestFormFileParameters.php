@@ -24,7 +24,7 @@ class TestFormFileParameters extends \Jane\OpenApiRuntime\Client\BaseEndpoint im
     {
         return '/test-form-file';
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, object $streamFactory = null) : array
     {
         return $this->getMultipartBody($streamFactory);
     }

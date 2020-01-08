@@ -34,8 +34,12 @@ trait PropertyGenerator
             $default = $property->getDefault();
         }
 
-        if ((null !== $default && is_scalar($default)) || (Type::TYPE_ARRAY === $property->getType()->getTypeHint($namespace) && \is_array($default))) {
-            $propertyStmt->default = $this->getDefaultAsExpr($default)->expr;
+        $propertyType = $property->getType();
+        if ((null !== $default && is_scalar($default)) || ($propertyType instanceof Type && Type::TYPE_ARRAY === $propertyType->getTypeHint($namespace) && \is_array($default))) {
+            $defaultStmt = $this->getDefaultAsExpr($default);
+            if ($defaultStmt instanceof Stmt\Expression) {
+                $propertyStmt->default = $defaultStmt->expr;
+            }
         }
 
         return new Stmt\Property(Stmt\Class_::MODIFIER_PROTECTED, [
@@ -47,38 +51,47 @@ trait PropertyGenerator
 
     protected function createPropertyDoc(Property $property, $namespace, bool $required): Doc
     {
-        $docTypeHint = $property->getType()->getDocTypeHint($namespace);
-        if (!$required && strpos($docTypeHint, 'null') === false) {
-            $docTypeHint .= '|null';
-        }
+        $description = '';
+        $propertyType = $property->getType();
+        if ($propertyType instanceof Type) {
+            $docTypeHint = $propertyType->getDocTypeHint($namespace);
+            if (!$required && strpos($docTypeHint, 'null') === false) {
+                $docTypeHint .= '|null';
+            }
 
-        $description = sprintf(<<<EOD
+            $description = sprintf(<<<EOD
 /**
  * %s
  *
 
 EOD
-        , $property->getDescription());
+                , $property->getDescription());
 
-        if ($property->isDeprecated()) {
-            $description .= <<<EOD
+            if ($property->isDeprecated()) {
+                $description .= <<<EOD
  * @deprecated
  *
 
 EOD;
-        }
+            }
 
-        $description .= sprintf(<<<EOD
+            $description .= sprintf(<<<EOD
  * @var %s
  */
 EOD
-        , $docTypeHint);
+                , $docTypeHint);
+        }
 
         return new Doc($description);
     }
 
     private function getDefaultAsExpr($value): ?\PhpParser\Node\Stmt
     {
-        return $this->parser->parse('<?php ' . var_export($value, true) . ';')[0];
+        $parsed = $this->parser->parse('<?php ' . var_export($value, true) . ';');
+        if (null === $parsed) {
+            return null;
+        }
+
+        return $parsed[0];
     }
 }

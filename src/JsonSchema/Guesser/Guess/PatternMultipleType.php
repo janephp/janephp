@@ -137,8 +137,8 @@ class PatternMultipleType extends Type
     protected function createArrayValueStatement(): Expr
     {
         return new Expr\New_(new Name('\ArrayObject'), [
-            new Expr\Array_(),
-            new Expr\ClassConstFetch(new Name('\ArrayObject'), 'ARRAY_AS_PROPS'),
+            new Arg(new Expr\Array_()),
+            new Arg(new Expr\ClassConstFetch(new Name('\ArrayObject'), 'ARRAY_AS_PROPS')),
         ]);
     }
 

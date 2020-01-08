@@ -5,11 +5,11 @@ namespace Jane\JsonSchema\Guesser\JsonSchema;
 use Jane\JsonSchema\Generator\Naming;
 use Jane\JsonSchema\Guesser\ChainGuesserFactory;
 use Jane\JsonSchema\JsonSchemaMerger;
-use Symfony\Component\Serializer\SerializerInterface;
+use Symfony\Component\Serializer\Serializer;
 
 class JsonSchemaGuesserFactory
 {
-    public static function create(SerializerInterface $serializer, array $options = [])
+    public static function create(Serializer $serializer, array $options = [])
     {
         $chainGuesser = ChainGuesserFactory::create($serializer);
         $naming = new Naming();

@@ -13,7 +13,7 @@ class GetEmptyTest extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \
     {
         return '/test-empty';
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, object $streamFactory = null) : array
     {
         return array(array(), null);
     }

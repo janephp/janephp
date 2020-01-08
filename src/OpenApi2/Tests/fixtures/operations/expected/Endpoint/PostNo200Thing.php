@@ -13,7 +13,7 @@ class PostNo200Thing extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements
     {
         return '/no-200-things';
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, object $streamFactory = null) : array
     {
         return array(array(), null);
     }

@@ -23,7 +23,7 @@ class DeleteReviewItem extends \Jane\OpenApiRuntime\Client\BaseEndpoint implemen
     {
         return str_replace(array('{id}'), array($this->id), '/reviews/{id}');
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, object $streamFactory = null) : array
     {
         return array(array(), null);
     }

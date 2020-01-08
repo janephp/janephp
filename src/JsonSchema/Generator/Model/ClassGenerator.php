@@ -42,7 +42,7 @@ EOD
         }
 
         return new Stmt\Class_(
-            new Name($this->getNaming()->getClassName($name)),
+            $this->getNaming()->getClassName($name),
             [
                 'stmts' => array_merge($properties, $methods),
                 'extends' => $hasExtensions ? new Name('\ArrayObject') : null,

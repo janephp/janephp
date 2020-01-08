@@ -22,8 +22,8 @@ trait ServerPluginGenerator
         $servers = $openApi->getServers();
         $server = $servers !== null && !empty($servers[0]) ? $servers[0] : null;
 
-        if (null !== $server) {
-            $url = parse_url($server->getUrl());
+        if (null !== $server && null !== ($serverUrl = $server->getUrl())) {
+            $url = parse_url($serverUrl);
             $baseUri = '';
             $plugins = [];
 

@@ -3,6 +3,7 @@
 namespace Jane\JsonSchema\Guesser\Guess;
 
 use Jane\JsonSchema\Generator\Context\Context;
+use PhpParser\Node\Arg;
 use PhpParser\Node\Name;
 use PhpParser\Node\Expr;
 
@@ -29,8 +30,8 @@ class MapType extends ArrayType
     protected function createArrayValueStatement(): Expr
     {
         return new Expr\New_(new Name('\ArrayObject'), [
-            new Expr\Array_(),
-            new Expr\ClassConstFetch(new Name('\ArrayObject'), 'ARRAY_AS_PROPS'),
+            new Arg(new Expr\Array_()),
+            new Arg(new Expr\ClassConstFetch(new Name('\ArrayObject'), 'ARRAY_AS_PROPS')),
         ]);
     }
 

@@ -13,7 +13,7 @@ class TestTwo extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\
     {
         return '/test-two';
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, object $streamFactory = null) : array
     {
         return array(array(), null);
     }

@@ -25,7 +25,7 @@ class PutBookItem extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \J
     {
         return str_replace(array('{id}'), array($this->id), '/books/{id}');
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, object $streamFactory = null) : array
     {
         if ($this->body instanceof \stdClass) {
             return array(array('Content-Type' => array('application/ld+json')), $this->body);

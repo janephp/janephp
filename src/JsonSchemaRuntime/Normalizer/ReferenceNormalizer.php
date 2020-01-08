@@ -10,7 +10,7 @@ class ReferenceNormalizer implements NormalizerInterface
     /**
      * {@inheritdoc}
      */
-    public function normalize($object, string $format = null, array $context = []): \stdClass
+    public function normalize($object, string $format = null, array $context = [])
     {
         $ref = new \stdClass();
         $ref->{'$ref'} = (string) $object->getReferenceUri();

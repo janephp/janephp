@@ -29,7 +29,7 @@ class TestFormParameters extends \Jane\OpenApiRuntime\Client\BaseEndpoint implem
     {
         return '/test-form';
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, object $streamFactory = null) : array
     {
         return $this->getFormBody();
     }

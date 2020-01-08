@@ -23,7 +23,7 @@ class GetByTestInteger extends \Jane\OpenApiRuntime\Client\BaseEndpoint implemen
     {
         return str_replace(array('{test_integer}'), array($this->test_integer), '/{test_integer}');
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, object $streamFactory = null) : array
     {
         return array(array(), null);
     }

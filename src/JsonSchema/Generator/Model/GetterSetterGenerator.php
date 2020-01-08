@@ -22,10 +22,13 @@ trait GetterSetterGenerator
 
     protected function createGetter(Property $property, string $namespace, bool $required): Stmt\ClassMethod
     {
-        $returnType = $property->getType()->getTypeHint($namespace);
+        $returnType = null;
+        if (($propertyType = $property->getType()) instanceof Type) {
+            $returnType = $propertyType->getTypeHint($namespace);
 
-        if ($returnType && !$required) {
-            $returnType = '?' . $returnType;
+            if ($returnType && !$required) {
+                $returnType = '?' . $returnType;
+            }
         }
 
         return new Stmt\ClassMethod(
@@ -49,10 +52,13 @@ trait GetterSetterGenerator
 
     protected function createSetter(Property $property, string $namespace, bool $required, bool $fluent = true): Stmt\ClassMethod
     {
-        $setType = $property->getType()->getTypeHint($namespace);
+        $setType = null;
+        if (($propertyType = $property->getType()) instanceof Type) {
+            $setType = $propertyType->getTypeHint($namespace);
 
-        if ($setType && !$required) {
-            $setType = '?' . $setType;
+            if ($setType && !$required) {
+                $setType = '?' . $setType;
+            }
         }
 
         $stmts = [
@@ -152,18 +158,22 @@ EOD;
     private function getDocType(Property $property, string $namespace, bool $required): string
     {
         $returnType = $property->getType();
-        $returnTypeHint = $returnType->getDocTypeHint($namespace);
-        if ($required) {
+        if ($returnType instanceof Type) {
+            $returnTypeHint = $returnType->getDocTypeHint($namespace);
+            if ($required) {
+                return $returnTypeHint;
+            }
+            $returnTypes = [$returnType];
+            if ($returnType instanceof MultipleType) {
+                $returnTypes = $returnType->getTypes();
+            }
+            if (!\count(array_intersect([Type::TYPE_MIXED, Type::TYPE_NULL], $returnTypes))) {
+                $returnTypeHint .= '|' . Type::TYPE_NULL;
+            }
+
             return $returnTypeHint;
         }
-        $returnTypes = [$returnType];
-        if ($returnType instanceof MultipleType) {
-            $returnTypes = $returnType->getTypes();
-        }
-        if (!\count(array_intersect([Type::TYPE_MIXED, Type::TYPE_NULL], $returnTypes))) {
-            $returnTypeHint .= '|' . Type::TYPE_NULL;
-        }
 
-        return $returnTypeHint;
+        return 'mixed';
     }
 }

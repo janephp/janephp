@@ -24,7 +24,7 @@ class GetParchmentCollection extends \Jane\OpenApiRuntime\Client\BaseEndpoint im
     {
         return '/parchments';
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, object $streamFactory = null) : array
     {
         return array(array(), null);
     }
