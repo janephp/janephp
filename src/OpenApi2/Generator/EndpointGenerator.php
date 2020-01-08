@@ -306,7 +306,10 @@ EOD
         ]);
     }
 
-    private function getOptionsResolverMethod(Operation $operation, $class, $methodName): ?Stmt\ClassMethod
+    /**
+     * @param FormDataParameterSubSchema::class|HeaderParameterSubSchema::class|QueryParameterSubSchema::class $class
+     */
+    private function getOptionsResolverMethod(Operation $operation, string $class, string $methodName): ?Stmt\ClassMethod
     {
         $parameters = [];
 
@@ -512,7 +515,7 @@ EOD
         ], ]), $outputTypes, $throwTypes];
     }
 
-    private function guessClass($schema, string $reference, Context $context)
+    private function guessClass(?object $schema, string $reference, Context $context)
     {
         $jsonReference = $reference;
         $array = false;
@@ -604,10 +607,11 @@ EOD
 
     /**
      * @param $class
+     * @param Response::class|Schema::class $class
      *
      * @return mixed
      */
-    private function resolve(Reference $reference, $class)
+    private function resolve(Reference $reference, string $class)
     {
         $result = $reference;
 

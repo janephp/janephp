@@ -56,7 +56,7 @@ class ReferenceGuesser implements ClassGuesserInterface, GuesserInterface, TypeG
      *
      * @param Reference $object
      */
-    public function guessType($object, $name, $reference, Registry $registry)
+    public function guessType($object, string $name, string $reference, Registry $registry)
     {
         $resolved = $this->resolve($object, $this->getSchemaClass());
         $classKey = (string) $object->getMergedUri();

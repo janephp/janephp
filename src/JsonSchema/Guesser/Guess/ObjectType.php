@@ -131,7 +131,7 @@ class ObjectType extends Type
         return $this->className;
     }
 
-    private function getFqdn($withRoot = true)
+    private function getFqdn(bool $withRoot = true)
     {
         if ($withRoot) {
             return '\\' . $this->namespace . '\\Model\\' . $this->className;

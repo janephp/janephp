@@ -65,7 +65,7 @@ class Schema
         $this->classes[urldecode($reference)] = $class;
     }
 
-    public function getClass($reference): ?ClassGuess
+    public function getClass(string $reference): ?ClassGuess
     {
         $reference = urldecode($reference);
 

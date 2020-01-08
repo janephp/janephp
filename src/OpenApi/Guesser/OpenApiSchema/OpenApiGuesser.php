@@ -95,7 +95,7 @@ class OpenApiGuesser implements GuesserInterface, ClassGuesserInterface, ChainGu
      * @param string    $reference
      * @param Registry  $registry
      */
-    protected function getClassFromOperation($name, ?Operation $operation, $reference, $registry)
+    protected function getClassFromOperation(string $name, ?Operation $operation, $reference, $registry)
     {
         if (null === $operation) {
             return;

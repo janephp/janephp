@@ -51,7 +51,7 @@ class AdditionalPropertiesGuesser implements GuesserInterface, TypeGuesserInterf
     /**
      * {@inheritdoc}
      */
-    public function guessType($object, $name, $reference, Registry $registry)
+    public function guessType($object, string $name, string $reference, Registry $registry)
     {
         if (true === $object->getAdditionalProperties()) {
             return new MapType($object, new Type($object, 'mixed'));

@@ -119,7 +119,7 @@ class Type
     /**
      * @return string|Name|null
      */
-    public function getTypeHint($namespace)
+    public function getTypeHint(string $namespace)
     {
         return $this->phpMapping[$this->name];
     }
@@ -127,7 +127,7 @@ class Type
     /**
      * @return string|Name|null
      */
-    public function getDocTypeHint($namespace)
+    public function getDocTypeHint(string $namespace)
     {
         return (string) $this;
     }

@@ -15,7 +15,7 @@ class Schema extends BaseSchema
         $this->securitySchemes[urldecode($reference)] = $securityScheme;
     }
 
-    public function getSecurityScheme($reference): ?SecuritySchemeGuess
+    public function getSecurityScheme(string $reference): ?SecuritySchemeGuess
     {
         $reference = urldecode($reference);
 

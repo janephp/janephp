@@ -20,5 +20,5 @@ interface TypeGuesserInterface
      *
      * @return Type
      */
-    public function guessType($object, $name, $reference, Registry $registry);
+    public function guessType($object, string $name, string $reference, Registry $registry);
 }

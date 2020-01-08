@@ -37,7 +37,7 @@ abstract class PropertiesMappingExtractor implements PropertiesMappingExtractorI
         return $this->accessorExtractor->getWriteMutator($target, $property);
     }
 
-    protected function getMaxDepth($class, $property): ?int
+    protected function getMaxDepth(string $class, string $property): ?int
     {
         if ($class === 'array') {
             return null;
@@ -63,7 +63,7 @@ abstract class PropertiesMappingExtractor implements PropertiesMappingExtractorI
         return $maxDepth;
     }
 
-    protected function getGroups($class, $property): ?array
+    protected function getGroups(string $class, string $property): ?array
     {
         if ($class === 'array') {
             return null;

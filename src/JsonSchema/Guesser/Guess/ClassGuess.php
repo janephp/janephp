@@ -94,7 +94,7 @@ class ClassGuess
         return $this->constraints;
     }
 
-    public function setConstraints($constraints): void
+    public function setConstraints(array $constraints): void
     {
         $this->constraints = $constraints;
     }

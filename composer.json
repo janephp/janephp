@@ -49,7 +49,8 @@
         "phpbench/phpbench": "@dev",
         "phpunit/phpunit": "^8.0",
         "symfony/framework-bundle": "^4.4 || ^5.0",
-        "symfony/phpunit-bridge": "^4.1 || ^5.0"
+        "symfony/phpunit-bridge": "^4.1 || ^5.0",
+        "vimeo/psalm": "^3.8"
     },
     "suggest": {
         "friendsofphp/php-cs-fixer": "Allow to automatically fix cs on generated code for better visualisation"

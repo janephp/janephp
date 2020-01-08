@@ -34,7 +34,11 @@ class JsonSchemaMerger
         return $merged;
     }
 
-    private function arrayMerge($left, $right)
+    /**
+     * @param (JsonSchema|bool|string)[]|null $left
+     * @param (JsonSchema|bool|string)[]|null $right
+     */
+    private function arrayMerge(?array $left, ?array $right)
     {
         if (!\is_array($left)) {
             return $right;

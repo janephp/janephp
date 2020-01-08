@@ -21,7 +21,7 @@ class NonBodyParameterGenerator extends ParameterGenerator
      *
      * @param PathParameterSubSchema|HeaderParameterSubSchema|FormDataParameterSubSchema|QueryParameterSubSchema $parameter
      */
-    public function generateMethodParameter($parameter, Context $context, $reference): Node\Param
+    public function generateMethodParameter($parameter, Context $context, string $reference): Node\Param
     {
         $name = Inflector::camelize($parameter->getName());
         $methodParameter = new Node\Param(new Node\Expr\Variable($name));
@@ -92,7 +92,7 @@ class NonBodyParameterGenerator extends ParameterGenerator
      *
      * @param PathParameterSubSchema|HeaderParameterSubSchema|FormDataParameterSubSchema|QueryParameterSubSchema $parameter
      */
-    public function generateMethodDocParameter($parameter, Context $context, $reference)
+    public function generateMethodDocParameter($parameter, Context $context, string $reference)
     {
         $type = implode('|', $this->convertParameterType($parameter->getType()));
 
@@ -113,8 +113,10 @@ class NonBodyParameterGenerator extends ParameterGenerator
      * Generate a default value as an Expr.
      *
      * @param PathParameterSubSchema|HeaderParameterSubSchema|FormDataParameterSubSchema|QueryParameterSubSchema $parameter
+     *
+     * @return Expr|Node\Stmt|null
      */
-    private function getDefaultAsExpr($parameter): Expr
+    private function getDefaultAsExpr($parameter)
     {
         $expr = $this->parser->parse('<?php ' . var_export($parameter->getDefault(), true) . ';')[0];
 
@@ -125,7 +127,10 @@ class NonBodyParameterGenerator extends ParameterGenerator
         return $expr;
     }
 
-    private function convertParameterType($type)
+    /**
+     * @param string|null $type
+     */
+    private function convertParameterType(?string $type)
     {
         $convertArray = [
             'string' => ['string'],

@@ -25,7 +25,7 @@ class MapperConfigurationFactory
         $this->classPrefix = $classPrefix;
     }
 
-    public function create(AutoMapperRegisterInterface $autoMapperRegister, $source, $target): MapperConfiguration
+    public function create(AutoMapperRegisterInterface $autoMapperRegister, string $source, string $target): MapperConfiguration
     {
         $extractor = $this->sourceTargetPropertiesMappingExtractor;
 

@@ -55,7 +55,10 @@ abstract class SchemaParser
         return static::$parsed[$openApiSpecPath];
     }
 
-    protected function deserialize($openApiSpecContents, $openApiSpecPath)
+    /**
+     * @param false|string $openApiSpecContents
+     */
+    protected function deserialize($openApiSpecContents, string $openApiSpecPath)
     {
         $openApiData = json_decode($openApiSpecContents);
 
@@ -64,7 +67,7 @@ abstract class SchemaParser
 
     abstract protected function validSchema($openApiSpecData): bool;
 
-    protected function denormalize($openApiSpecData, $openApiSpecPath)
+    protected function denormalize($openApiSpecData, string $openApiSpecPath)
     {
         if (!$this->validSchema($openApiSpecData)) {
             throw new OpenApiVersionSupportException(sprintf('Only OpenAPI v%s specifications and up are supported, use an external tool to convert your api files', static::OPEN_API_VERSION_MAJOR));

@@ -31,7 +31,7 @@ class DateTimeGuesser implements GuesserInterface, TypeGuesserInterface
     /**
      * {@inheritdoc}
      */
-    public function guessType($object, $name, $reference, Registry $registry)
+    public function guessType($object, string $name, string $reference, Registry $registry)
     {
         return new DateTimeType($object, $this->dateFormat);
     }

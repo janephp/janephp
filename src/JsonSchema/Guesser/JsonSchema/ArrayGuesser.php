@@ -39,7 +39,7 @@ class ArrayGuesser implements GuesserInterface, TypeGuesserInterface, ChainGuess
     /**
      * {@inheritdoc}
      */
-    public function guessType($object, $name, $reference, Registry $registry)
+    public function guessType($object, string $name, string $reference, Registry $registry)
     {
         $items = $object->getItems();
 

@@ -32,7 +32,7 @@ class BodyParameterGenerator extends ParameterGenerator
      *
      * @param BodyParameter $parameter
      */
-    public function generateMethodParameter($parameter, Context $context, $reference)
+    public function generateMethodParameter($parameter, Context $context, string $reference)
     {
         $name = Inflector::camelize($parameter->getName());
 
@@ -51,14 +51,14 @@ class BodyParameterGenerator extends ParameterGenerator
      *
      * @param BodyParameter $parameter
      */
-    public function generateMethodDocParameter($parameter, Context $context, $reference)
+    public function generateMethodDocParameter($parameter, Context $context, string $reference)
     {
         list($class, $array) = $this->getClass($parameter, $context, $reference);
 
         return sprintf(' * @param %s $%s %s', implode('|', $class), Inflector::camelize($parameter->getName()), $parameter->getDescription() ?: '');
     }
 
-    protected function getClass(BodyParameter $parameter, Context $context, $reference): array
+    protected function getClass(BodyParameter $parameter, Context $context, string $reference): array
     {
         $resolvedSchema = null;
         $jsonReference = null;
@@ -98,7 +98,10 @@ class BodyParameterGenerator extends ParameterGenerator
         return [[$class], $array];
     }
 
-    private function convertParameterType($type, $format = null)
+    /**
+     * @param string|null $format
+     */
+    private function convertParameterType($type, ?string $format = null)
     {
         if (null === $format) {
             $format = 'default';
@@ -136,7 +139,10 @@ class BodyParameterGenerator extends ParameterGenerator
         return $convertArray[$type][$format];
     }
 
-    private function resolveSchema(Reference $reference, $class)
+    /**
+     * @param Schema::class $class
+     */
+    private function resolveSchema(Reference $reference, string $class)
     {
         $result = $reference;
 

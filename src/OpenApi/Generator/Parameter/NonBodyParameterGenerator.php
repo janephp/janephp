@@ -19,7 +19,7 @@ class NonBodyParameterGenerator extends ParameterGenerator
      *
      * @param Parameter $parameter
      */
-    public function generateMethodParameter($parameter, Context $context, $reference): Node\Param
+    public function generateMethodParameter($parameter, Context $context, string $reference): Node\Param
     {
         $name = Inflector::camelize($parameter->getName());
         $methodParameter = new Node\Param(new Expr\Variable($name));
@@ -99,7 +99,7 @@ class NonBodyParameterGenerator extends ParameterGenerator
      *
      * @param Parameter $parameter
      */
-    public function generateMethodDocParameter($parameter, Context $context, $reference)
+    public function generateMethodDocParameter($parameter, Context $context, string $reference)
     {
         $type = 'mixed';
 
@@ -123,8 +123,10 @@ class NonBodyParameterGenerator extends ParameterGenerator
 
     /**
      * Generate a default value as an Expr.
+     *
+     * @return Expr|Stmt|null
      */
-    private function getDefaultAsExpr(Parameter $parameter): Expr
+    private function getDefaultAsExpr(Parameter $parameter)
     {
         $expr = $this->parser->parse('<?php ' . var_export($parameter->getSchema()->getDefault(), true) . ';')[0];
 

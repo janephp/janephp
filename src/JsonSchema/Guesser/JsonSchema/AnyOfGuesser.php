@@ -28,7 +28,7 @@ class AnyOfGuesser implements GuesserInterface, ClassGuesserInterface, TypeGuess
     /**
      * {@inheritdoc}
      */
-    public function guessType($object, $name, $reference, Registry $registry)
+    public function guessType($object, string $name, string $reference, Registry $registry)
     {
         if (1 == \count($object->getAnyOf())) {
             return $this->chainGuesser->guessType($object->getAnyOf()[0], $name, $reference . '/anyOf/0', $registry);

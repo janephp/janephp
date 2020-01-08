@@ -14,7 +14,7 @@ use PhpParser\ParserFactory;
 
 class GeneratorFactory
 {
-    public static function build($serializer, $options): array
+    public static function build(\Symfony\Component\Serializer\SerializerInterface $serializer, array $options): array
     {
         $parserFactory = new ParserFactory();
         $parser = $parserFactory->create(ParserFactory::PREFER_PHP7);

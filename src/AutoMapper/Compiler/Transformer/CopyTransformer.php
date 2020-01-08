@@ -8,6 +8,11 @@ use PhpParser\Node\Expr;
 
 class CopyTransformer implements TransformerInterface
 {
+    /**
+     * @return (Expr|array)[]
+     *
+     * @psalm-return array{0: Expr, 1: array<empty, empty>}
+     */
     public function transform(Expr $input, UniqueVariableScope $uniqueVariableScope, PropertyMapping $propertyMapping): array
     {
         return [$input, []];

@@ -114,7 +114,7 @@ class ObjectGuesser implements GuesserInterface, PropertiesGuesserInterface, Typ
     /**
      * {@inheritdoc}
      */
-    public function guessType($object, $name, $reference, Registry $registry)
+    public function guessType($object, string $name, string $reference, Registry $registry)
     {
         $discriminants = [];
         $required = $object->getRequired() ?: [];
@@ -158,7 +158,10 @@ class ObjectGuesser implements GuesserInterface, PropertiesGuesserInterface, Typ
         return JsonSchema::class;
     }
 
-    protected function createClassGuess($object, $reference, $name, $extensions): ClassGuess
+    /**
+     * @param (JsonSchema|bool|null|string)[][] $extensions
+     */
+    protected function createClassGuess(JsonSchema $object, string $reference, $name, array $extensions): ClassGuess
     {
         return new ClassGuess($object, $reference, $this->naming->getClassName($name), $extensions, $object->getDeprecated());
     }

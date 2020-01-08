@@ -35,6 +35,11 @@ class MultipleTransformer implements TransformerInterface
         ];
     }
 
+    /**
+     * @return ((Stmt\Expression|Stmt\If_)[]|Expr\Variable)[]
+     *
+     * @psalm-return array{0: Expr\Variable, 1: non-empty-list<Stmt\Expression|Stmt\If_>}
+     */
     public function transform(Expr $input, UniqueVariableScope $uniqueVariableScope, PropertyMapping $propertyMapping): array
     {
         $output = new Expr\Variable($uniqueVariableScope->getUniqueName('value'));

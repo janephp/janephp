@@ -111,12 +111,18 @@ class ArrayType extends Type
         return null;
     }
 
-    protected function createLoopOutputAssignement(Expr $valuesVar, $loopKeyVar): Expr
+    /**
+     * @param Expr|null $loopKeyVar
+     */
+    protected function createLoopOutputAssignement(Expr $valuesVar, ?Expr $loopKeyVar): Expr
     {
         return new Expr\ArrayDimFetch($valuesVar);
     }
 
-    protected function createNormalizationLoopOutputAssignement(Expr $valuesVar, $loopKeyVar): Expr
+    /**
+     * @param Expr|null $loopKeyVar
+     */
+    protected function createNormalizationLoopOutputAssignement(Expr $valuesVar, ?Expr $loopKeyVar): Expr
     {
         return new Expr\ArrayDimFetch($valuesVar);
     }

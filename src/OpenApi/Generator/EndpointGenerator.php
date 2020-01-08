@@ -457,6 +457,9 @@ EOD
         ], ]), $outputTypes, $throwTypes];
     }
 
+    /**
+     * @param Schema|\Jane\OpenApi\JsonSchema\Model\Reference|null $schema
+     */
     private function guessClass($schema, string $reference, Context $context)
     {
         $jsonReference = $reference;
@@ -581,6 +584,9 @@ EOD
         )]];
     }
 
+    /**
+     * @param Schema|\Jane\OpenApi\JsonSchema\Model\Reference|null $schema
+     */
     private function createContentDenormalizationStatement(string $name, string $status, $schema, Context $context, string $reference, string $description)
     {
         [$classGuess, $array, $schema] = $this->guessClass($schema, $reference, $context);
@@ -638,10 +644,11 @@ EOD
     /**
      * @param Reference $reference
      * @param $class
+     * @param Response::class|Schema::class $class
      *
      * @return mixed
      */
-    private function resolve(Reference $reference, $class)
+    private function resolve(Reference $reference, string $class)
     {
         $result = $reference;
 

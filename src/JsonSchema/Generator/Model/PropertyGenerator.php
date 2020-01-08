@@ -77,7 +77,7 @@ EOD
         return new Doc($description);
     }
 
-    private function getDefaultAsExpr($value): Stmt\Expression
+    private function getDefaultAsExpr($value): ?\PhpParser\Node\Stmt
     {
         return $this->parser->parse('<?php ' . var_export($value, true) . ';')[0];
     }

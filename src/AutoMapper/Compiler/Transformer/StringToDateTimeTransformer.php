@@ -21,6 +21,11 @@ class StringToDateTimeTransformer implements TransformerInterface
         $this->format = $format;
     }
 
+    /**
+     * @return (Expr\StaticCall|array)[]
+     *
+     * @psalm-return array{0: Expr\StaticCall, 1: array<empty, empty>}
+     */
     public function transform(Expr $input, UniqueVariableScope $uniqueVariableScope, PropertyMapping $propertyMapping): array
     {
         return [new Expr\StaticCall(new Name\FullyQualified($this->className), 'createFromFormat', [

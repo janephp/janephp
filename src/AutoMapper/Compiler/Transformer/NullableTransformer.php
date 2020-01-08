@@ -19,6 +19,11 @@ class NullableTransformer implements TransformerInterface
         $this->isTargetNullable = $isTargetNullable;
     }
 
+    /**
+     * @return ((Stmt\Expression|Stmt\If_)[]|Expr)[]
+     *
+     * @psalm-return array{0: Expr, 1: non-empty-list<Stmt\Expression|Stmt\If_>}
+     */
     public function transform(Expr $input, UniqueVariableScope $uniqueVariableScope, PropertyMapping $propertyMapping): array
     {
         [$output, $itemStatements] = $this->itemTransformer->transform($input, $uniqueVariableScope, $propertyMapping);

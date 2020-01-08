@@ -17,6 +17,11 @@ class DateTimeToStringTansformer implements TransformerInterface
         $this->format = $format;
     }
 
+    /**
+     * @return (Expr\MethodCall|array)[]
+     *
+     * @psalm-return array{0: Expr\MethodCall, 1: array<empty, empty>}
+     */
     public function transform(Expr $input, UniqueVariableScope $uniqueVariableScope, PropertyMapping $propertyMapping): array
     {
         return [new Expr\MethodCall($input, 'format', [

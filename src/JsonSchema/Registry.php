@@ -32,7 +32,7 @@ class Registry
         $this->schemas[] = $schema;
     }
 
-    public function getSchema($reference): ?Schema
+    public function getSchema(string $reference): ?Schema
     {
         $uri = class_exists(Http::class) ? Http::createFromString($reference) : HttpLegacy::createFromString($reference);
         $schemaUri = (string) $uri->withFragment('');
@@ -54,12 +54,12 @@ class Registry
         return $this->schemas;
     }
 
-    public function hasClass($classReference): bool
+    public function hasClass(string $classReference): bool
     {
         return null !== $this->getClass($classReference);
     }
 
-    public function getClass($classReference): ?ClassGuess
+    public function getClass(string $classReference): ?ClassGuess
     {
         $schema = $this->getSchema($classReference);
 

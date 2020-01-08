@@ -23,7 +23,7 @@ abstract class ParameterGenerator
      *
      * @return Node\Param|null
      */
-    public function generateMethodParameter($parameter, Context $context, $reference)
+    public function generateMethodParameter($parameter, Context $context, string $reference)
     {
         return null;
     }
@@ -33,18 +33,8 @@ abstract class ParameterGenerator
      *
      * @return string
      */
-    public function generateMethodDocParameter($parameter, Context $context, $reference)
+    public function generateMethodDocParameter($parameter, Context $context, string $reference)
     {
         return '';
-    }
-
-    /**
-     * @param $parameter
-     *
-     * @return Node\Expr[]
-     */
-    protected function generateInputParamArguments($parameter): array
-    {
-        return [];
     }
 }

@@ -108,6 +108,9 @@ abstract class AbstractBodyContentGenerator implements RequestBodyContentGenerat
         );
     }
 
+    /**
+     * @param Schema|\Jane\OpenApi\JsonSchema\Model\Reference|null $schema
+     */
     protected function guessClass($schema, string $reference, Context $context)
     {
         $jsonReference = $reference;
@@ -135,10 +138,11 @@ abstract class AbstractBodyContentGenerator implements RequestBodyContentGenerat
     /**
      * @param Reference $reference
      * @param $class
+     * @param Schema::class $class
      *
      * @return mixed
      */
-    private function resolve(Reference $reference, $class)
+    private function resolve(Reference $reference, string $class)
     {
         $result = $reference;
 
@@ -192,6 +196,9 @@ abstract class AbstractBodyContentGenerator implements RequestBodyContentGenerat
         return $convertArray[$type][$format];
     }
 
+    /**
+     * @param Expr\ArrayDimFetch|Expr\PropertyFetch $fetch
+     */
     private function typeToCondition($type, $format, $fetch)
     {
         if (null === $format) {

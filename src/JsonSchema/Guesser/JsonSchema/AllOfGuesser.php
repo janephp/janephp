@@ -87,7 +87,7 @@ class AllOfGuesser implements GuesserInterface, TypeGuesserInterface, ChainGuess
     /**
      * {@inheritdoc}
      */
-    public function guessType($object, $name, $reference, Registry $registry)
+    public function guessType($object, string $name, string $reference, Registry $registry)
     {
         $type = null;
         $allOfType = null;
@@ -168,7 +168,10 @@ class AllOfGuesser implements GuesserInterface, TypeGuesserInterface, ChainGuess
         return JsonSchema::class;
     }
 
-    protected function createClassGuess($object, $reference, $name, $extensions): ClassGuess
+    /**
+     * @param (mixed|string)[][] $extensions
+     */
+    protected function createClassGuess($object, string $reference, string $name, array $extensions): ClassGuess
     {
         return new ClassGuess($object, $reference, $this->naming->getClassName($name), $extensions);
     }

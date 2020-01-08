@@ -94,7 +94,10 @@ class ModelGenerator implements GeneratorInterface
         return $methods;
     }
 
-    protected function doCreateModel(ClassGuess $class, $properties, $methods): Stmt\Class_
+    /**
+     * @param Stmt[] $properties
+     */
+    protected function doCreateModel(ClassGuess $class, array $properties, array $methods): Stmt\Class_
     {
         return $this->createModel(
             $class->getName(),

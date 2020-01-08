@@ -32,7 +32,7 @@ class MultipleGuesser implements GuesserInterface, TypeGuesserInterface, ChainGu
     /**
      * {@inheritdoc}
      */
-    public function guessType($object, $name, $reference, Registry $registry)
+    public function guessType($object, string $name, string $reference, Registry $registry)
     {
         $typeGuess = new MultipleType($object);
         $fakeSchema = clone $object;

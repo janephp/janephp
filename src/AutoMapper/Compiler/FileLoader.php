@@ -63,7 +63,7 @@ class FileLoader implements MapperClassLoaderInterface
         return $this->registry;
     }
 
-    private function addHashToRegistry($className, $hash)
+    private function addHashToRegistry(string $className, string $hash)
     {
         $registryPath = $this->directory . \DIRECTORY_SEPARATOR . 'registry.php';
         $this->registry[$className] = $hash;
