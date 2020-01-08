@@ -81,7 +81,6 @@
     ],
     "scripts": {
         "cs-fix": "php-cs-fixer fix",
-        "test": "php vendor/bin/phpunit",
-        "test-coverage": "phpdbg -qrr -d memory_limit=-1 vendor/bin/phpunit --coverage-text --coverage-clover=build/logs/clover.xml --coverage-html=build/html"
+        "test": "php vendor/bin/phpunit"
     }
 }
