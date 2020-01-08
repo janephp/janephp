@@ -16,7 +16,7 @@ class Psr7EndpointTraitTest extends TestCase
     /**
      * @covers \Jane\OpenApiRuntime\Client\Psr7EndpointTrait::parsePSR7Response
      */
-    public function testParsePSR7ResponseWithObjectFetchModeShouldTransformResponseBody()
+    public function testParsePSR7ResponseWithObjectFetchModeShouldTransformResponseBody(): void
     {
         $endpoint = $this->getEndpointInstance();
 
@@ -45,7 +45,7 @@ class Psr7EndpointTraitTest extends TestCase
     /**
      * @covers \Jane\OpenApiRuntime\Client\Psr7EndpointTrait::parsePSR7Response
      */
-    public function testParsePSR7ResponseWithResponseFetchModeShouldReturnResponse()
+    public function testParsePSR7ResponseWithResponseFetchModeShouldReturnResponse(): void
     {
         $endpoint = $this->getEndpointInstance();
 
@@ -58,7 +58,7 @@ class Psr7EndpointTraitTest extends TestCase
     /**
      * @covers \Jane\OpenApiRuntime\Client\Psr7EndpointTrait::parsePSR7Response
      */
-    public function testParsePSR7ResponseWithInvalidFetchModeShouldThrowException()
+    public function testParsePSR7ResponseWithInvalidFetchModeShouldThrowException(): void
     {
         $endpoint = $this->getEndpointInstance();
 
@@ -70,7 +70,7 @@ class Psr7EndpointTraitTest extends TestCase
         $endpoint->parsePSR7Response($responseMock, $serializerMock, 'foo');
     }
 
-    private function getEndpointInstance()
+    private function getEndpointInstance(): object
     {
         static $endpoint = null;
         if ($endpoint === null) {

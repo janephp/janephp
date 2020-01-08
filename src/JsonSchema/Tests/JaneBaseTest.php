@@ -14,7 +14,7 @@ class JaneBaseTest extends TestCase
     /**
      * @dataProvider schemaProvider
      */
-    public function testRessources($name, SplFileInfo $testDirectory)
+    public function testRessources(SplFileInfo $testDirectory): void
     {
         // 1. Generate
         $command = new GenerateCommand();
@@ -54,14 +54,14 @@ class JaneBaseTest extends TestCase
         }
     }
 
-    public function schemaProvider()
+    public function schemaProvider(): array
     {
         $finder = new Finder();
         $finder->directories()->in(__DIR__ . '/fixtures');
         $finder->depth('< 1');
         $data = [];
         foreach ($finder as $directory) {
-            $data[] = [$directory->getFilename(), $directory];
+            $data[] = [$directory];
         }
 
         return $data;

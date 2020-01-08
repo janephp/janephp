@@ -7,7 +7,7 @@ use PHPUnit\Framework\TestCase;
 
 class UniqueVariableScopeTest extends TestCase
 {
-    public function testUniqueVariable()
+    public function testUniqueVariable(): void
     {
         $uniqueVariableScope = new UniqueVariableScope();
 

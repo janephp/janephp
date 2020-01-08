@@ -18,7 +18,7 @@ class LibraryTest extends TestCase
 
     protected $printer;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->jane = Jane::build([
             'reference' => true,
@@ -32,7 +32,7 @@ class LibraryTest extends TestCase
     /**
      * Unique test with ~70% coverage, library generated from json schema must be the same as the library used.
      */
-    public function testLibrary()
+    public function testLibrary(): void
     {
         $registry = new Registry();
         $registry->addSchema(new Schema(__DIR__ . '/data/json-schema.json', 'Jane\JsonSchema', __DIR__ . '/generated', 'JsonSchema'));
