@@ -108,41 +108,30 @@ abstract class AbstractBodyContentGenerator implements RequestBodyContentGenerat
         );
     }
 
-    /**
-     * @param Schema|\Jane\OpenApi\JsonSchema\Model\Reference|null $schema
-     */
-    protected function guessClass($schema, string $reference, Context $context)
+    protected function guessClass(?object $schema, string $reference, Context $context)
     {
-        $jsonReference = $reference;
         $array = false;
 
         if ($schema instanceof Reference) {
-            [$jsonReference, $schema] = $this->resolve($schema, Schema::class);
+            [$reference, $schema] = $this->resolve($schema, Schema::class);
         }
 
         if ($schema instanceof Schema && 'array' === $schema->getType()) {
             $array = true;
-            $jsonReference .= '/items';
+            $reference .= '/items';
             $items = $schema->getItems();
 
             if ($items instanceof Reference) {
-                [$jsonReference, $_] = $this->resolve($items, Schema::class);
+                [$reference, $_] = $this->resolve($items, Schema::class);
             }
         }
 
-        $classGuess = $context->getRegistry()->getClass($jsonReference);
+        $classGuess = $context->getRegistry()->getClass($reference);
 
         return [$classGuess, $array, $schema];
     }
 
-    /**
-     * @param Reference $reference
-     * @param $class
-     * @param Schema::class $class
-     *
-     * @return mixed
-     */
-    private function resolve(Reference $reference, string $class)
+    private function resolve(Reference $reference, string $class): array
     {
         $result = $reference;
 
@@ -158,7 +147,7 @@ abstract class AbstractBodyContentGenerator implements RequestBodyContentGenerat
         return [$refString, $result];
     }
 
-    private function schemaTypeToPHP($type, $format = null)
+    private function schemaTypeToPHP(?string $type, ?string $format = null)
     {
         if (null === $format) {
             $format = 'default';
@@ -196,10 +185,7 @@ abstract class AbstractBodyContentGenerator implements RequestBodyContentGenerat
         return $convertArray[$type][$format];
     }
 
-    /**
-     * @param Expr\ArrayDimFetch|Expr\PropertyFetch $fetch
-     */
-    private function typeToCondition($type, $format, $fetch)
+    private function typeToCondition(?string $type, ?string $format, Expr $fetch)
     {
         if (null === $format) {
             $format = 'default';

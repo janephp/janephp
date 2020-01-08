@@ -34,10 +34,7 @@ class PatternMultipleType extends Type
         return $this;
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getDocTypeHint($namespace)
+    public function getDocTypeHint(string $namespace): string
     {
         $stringTypes = array_map(function ($type) use ($namespace) {
             return $type->getDocTypeHint($namespace) . '[]';

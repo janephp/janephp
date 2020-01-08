@@ -28,35 +28,9 @@ class JsonSchemaMerger
             $merged->setType($left->getType());
         }
 
-        $merged->setProperties($this->arrayMerge($left->getProperties(), $right->getProperties()));
-        $merged->setRequired($this->arrayUnique($this->arrayMerge($left->getRequired(), $right->getRequired())));
+        $merged->setProperties(array_merge($left->getProperties() ?? [], $right->getProperties() ?? []));
+        $merged->setRequired(array_unique(array_merge($left->getRequired() ?? [], $right->getRequired() ?? [])));
 
         return $merged;
-    }
-
-    /**
-     * @param (JsonSchema|bool|string)[]|null $left
-     * @param (JsonSchema|bool|string)[]|null $right
-     */
-    private function arrayMerge(?array $left, ?array $right)
-    {
-        if (!\is_array($left)) {
-            return $right;
-        }
-
-        if (!\is_array($right)) {
-            return $left;
-        }
-
-        return array_merge($left, $right);
-    }
-
-    private function arrayUnique($array)
-    {
-        if (!\is_array($array)) {
-            return $array;
-        }
-
-        return array_unique($array);
     }
 }

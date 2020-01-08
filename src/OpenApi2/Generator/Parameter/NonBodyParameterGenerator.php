@@ -113,24 +113,15 @@ class NonBodyParameterGenerator extends ParameterGenerator
      * Generate a default value as an Expr.
      *
      * @param PathParameterSubSchema|HeaderParameterSubSchema|FormDataParameterSubSchema|QueryParameterSubSchema $parameter
-     *
-     * @return Expr|Node\Stmt|null
      */
-    private function getDefaultAsExpr($parameter)
+    private function getDefaultAsExpr($parameter): Expr
     {
         $expr = $this->parser->parse('<?php ' . var_export($parameter->getDefault(), true) . ';')[0];
 
-        if ($expr instanceof Node\Stmt\Expression) {
-            return $expr->expr;
-        }
-
-        return $expr;
+        return $expr->expr;
     }
 
-    /**
-     * @param string|null $type
-     */
-    private function convertParameterType(?string $type)
+    private function convertParameterType(string $type): array
     {
         $convertArray = [
             'string' => ['string'],

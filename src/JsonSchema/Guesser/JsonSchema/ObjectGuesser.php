@@ -158,9 +158,6 @@ class ObjectGuesser implements GuesserInterface, PropertiesGuesserInterface, Typ
         return JsonSchema::class;
     }
 
-    /**
-     * @param (JsonSchema|bool|null|string)[][] $extensions
-     */
     protected function createClassGuess(JsonSchema $object, string $reference, $name, array $extensions): ClassGuess
     {
         return new ClassGuess($object, $reference, $this->naming->getClassName($name), $extensions, $object->getDeprecated());

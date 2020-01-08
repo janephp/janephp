@@ -68,7 +68,10 @@ class DateTimeType extends ObjectType
         );
     }
 
-    public function getTypeHint($namespace)
+    /**
+     * {@inheritdoc}.
+     */
+    public function getTypeHint(string $namespace)
     {
         return '\DateTime';
     }

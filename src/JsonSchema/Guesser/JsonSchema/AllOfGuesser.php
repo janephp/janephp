@@ -168,9 +168,6 @@ class AllOfGuesser implements GuesserInterface, TypeGuesserInterface, ChainGuess
         return JsonSchema::class;
     }
 
-    /**
-     * @param (mixed|string)[][] $extensions
-     */
     protected function createClassGuess($object, string $reference, string $name, array $extensions): ClassGuess
     {
         return new ClassGuess($object, $reference, $this->naming->getClassName($name), $extensions);

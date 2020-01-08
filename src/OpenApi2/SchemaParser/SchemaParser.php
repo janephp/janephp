@@ -14,7 +14,7 @@ class SchemaParser extends CommonSchemaParser
     protected const OPEN_API_MODEL = OpenApi::class;
     protected const OPEN_API_VERSION_MAJOR = '2';
 
-    protected function validSchema($openApiSpecData): bool
+    protected function validSchema(?\stdClass $openApiSpecData): bool
     {
         return $openApiSpecData instanceof \stdClass && property_exists($openApiSpecData, 'swagger') && version_compare($openApiSpecData->swagger, '2.0', '>=') && version_compare($openApiSpecData->swagger, '3.0', '<');
     }

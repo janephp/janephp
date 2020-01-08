@@ -13,10 +13,11 @@ use Jane\OpenApi\Naming\OperationUrlNaming;
 use Jane\OpenApiCommon\Naming\OperationIdNaming;
 use Jane\OpenApi\Operation\OperationManager;
 use PhpParser\ParserFactory;
+use Symfony\Component\Serializer\SerializerInterface;
 
 class GeneratorFactory
 {
-    public static function build(\Symfony\Component\Serializer\SerializerInterface $serializer, array $options): array
+    public static function build(SerializerInterface $serializer, array $options): array
     {
         $parserFactory = new ParserFactory();
         $parser = $parserFactory->create(ParserFactory::PREFER_PHP7);

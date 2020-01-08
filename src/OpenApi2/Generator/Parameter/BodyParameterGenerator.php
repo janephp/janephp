@@ -66,11 +66,11 @@ class BodyParameterGenerator extends ParameterGenerator
         $schema = $parameter->getSchema();
 
         if ($schema instanceof Reference) {
-            list($jsonReference, $resolvedSchema) = $this->resolveSchema($schema, Schema::class);
+            list($jsonReference, $resolvedSchema) = $this->resolve($schema, Schema::class);
         }
 
         if ($schema instanceof Schema && 'array' === $schema->getType() && $schema->getItems() instanceof Reference) {
-            list($jsonReference, $resolvedSchema) = $this->resolveSchema($schema->getItems(), Schema::class);
+            list($jsonReference, $resolvedSchema) = $this->resolve($schema->getItems(), Schema::class);
             $array = true;
         }
 
@@ -98,10 +98,7 @@ class BodyParameterGenerator extends ParameterGenerator
         return [[$class], $array];
     }
 
-    /**
-     * @param string|null $format
-     */
-    private function convertParameterType($type, ?string $format = null)
+    private function convertParameterType(?string $type, ?string $format = null)
     {
         if (null === $format) {
             $format = 'default';
@@ -139,10 +136,7 @@ class BodyParameterGenerator extends ParameterGenerator
         return $convertArray[$type][$format];
     }
 
-    /**
-     * @param Schema::class $class
-     */
-    private function resolveSchema(Reference $reference, string $class)
+    private function resolve(Reference $reference, string $class): array
     {
         $result = $reference;
 

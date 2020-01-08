@@ -17,10 +17,7 @@ class ArrayType extends Type
         $this->itemType = $itemType;
     }
 
-    /**
-     * (@inheritDoc}.
-     */
-    public function getDocTypeHint($namespace)
+    public function getDocTypeHint(string $namespace): string
     {
         if ($this->itemType instanceof MultipleType) {
             $typesString = [];
@@ -91,7 +88,10 @@ class ArrayType extends Type
         return [$statements, $valuesVar];
     }
 
-    public function getTypeHint($namespace)
+    /**
+     * {@inheritdoc}.
+     */
+    public function getTypeHint(string $namespace)
     {
         return 'array';
     }
@@ -111,17 +111,11 @@ class ArrayType extends Type
         return null;
     }
 
-    /**
-     * @param Expr|null $loopKeyVar
-     */
     protected function createLoopOutputAssignement(Expr $valuesVar, ?Expr $loopKeyVar): Expr
     {
         return new Expr\ArrayDimFetch($valuesVar);
     }
 
-    /**
-     * @param Expr|null $loopKeyVar
-     */
     protected function createNormalizationLoopOutputAssignement(Expr $valuesVar, ?Expr $loopKeyVar): Expr
     {
         return new Expr\ArrayDimFetch($valuesVar);

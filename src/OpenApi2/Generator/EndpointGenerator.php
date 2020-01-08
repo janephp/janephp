@@ -306,9 +306,6 @@ EOD
         ]);
     }
 
-    /**
-     * @param FormDataParameterSubSchema::class|HeaderParameterSubSchema::class|QueryParameterSubSchema::class $class
-     */
     private function getOptionsResolverMethod(Operation $operation, string $class, string $methodName): ?Stmt\ClassMethod
     {
         $parameters = [];
@@ -605,13 +602,7 @@ EOD
         )];
     }
 
-    /**
-     * @param $class
-     * @param Response::class|Schema::class $class
-     *
-     * @return mixed
-     */
-    private function resolve(Reference $reference, string $class)
+    private function resolve(Reference $reference, string $class): array
     {
         $result = $reference;
 

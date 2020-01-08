@@ -18,7 +18,7 @@ class MapType extends ArrayType
     /**
      * (@inheritDoc}.
      */
-    public function getTypeHint($namespace)
+    public function getTypeHint(string $namespace)
     {
         return new Name('\ArrayObject');
     }

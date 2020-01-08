@@ -123,18 +123,12 @@ class NonBodyParameterGenerator extends ParameterGenerator
 
     /**
      * Generate a default value as an Expr.
-     *
-     * @return Expr|Stmt|null
      */
-    private function getDefaultAsExpr(Parameter $parameter)
+    private function getDefaultAsExpr(Parameter $parameter): ?Expr
     {
         $expr = $this->parser->parse('<?php ' . var_export($parameter->getSchema()->getDefault(), true) . ';')[0];
 
-        if ($expr instanceof Stmt\Expression) {
-            return $expr->expr;
-        }
-
-        return $expr;
+        return $expr->expr;
     }
 
     private function convertParameterType($type)

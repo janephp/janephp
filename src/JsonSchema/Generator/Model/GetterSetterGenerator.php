@@ -149,10 +149,7 @@ EOD;
         return new Doc($description);
     }
 
-    /**
-     * @return \PhpParser\Node\Name|string|null
-     */
-    private function getDocType(Property $property, string $namespace, bool $required)
+    private function getDocType(Property $property, string $namespace, bool $required): string
     {
         $returnType = $property->getType();
         $returnTypeHint = $returnType->getDocTypeHint($namespace);

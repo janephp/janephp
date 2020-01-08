@@ -70,10 +70,7 @@ class MultipleType extends Type
         return $types;
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getDocTypeHint($namespace)
+    public function getDocTypeHint(string $namespace): string
     {
         $stringTypes = array_map(function ($type) use ($namespace) {
             return $type->getDocTypeHint($namespace);
@@ -83,9 +80,9 @@ class MultipleType extends Type
     }
 
     /**
-     * {@inheritdoc}
+     * (@inheritDoc}.
      */
-    public function getTypeHint($namespace)
+    public function getTypeHint(string $namespace)
     {
         // We have exactly two types: one null and an object
         if (2 === \count($this->types)) {

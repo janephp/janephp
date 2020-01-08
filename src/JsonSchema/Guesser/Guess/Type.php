@@ -124,10 +124,7 @@ class Type
         return $this->phpMapping[$this->name];
     }
 
-    /**
-     * @return string|Name|null
-     */
-    public function getDocTypeHint(string $namespace)
+    public function getDocTypeHint(string $namespace): string
     {
         return (string) $this;
     }

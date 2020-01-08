@@ -109,7 +109,7 @@ class ObjectType extends Type
     /**
      * (@inheritDoc}.
      */
-    public function getTypeHint($currentNamespace)
+    public function getTypeHint(string $currentNamespace)
     {
         if ('\\' . $currentNamespace . '\\' . $this->className === $this->getFqdn()) {
             return $this->className;
@@ -118,12 +118,9 @@ class ObjectType extends Type
         return $this->getFqdn();
     }
 
-    /**
-     * (@inheritDoc}.
-     */
-    public function getDocTypeHint($namespace)
+    public function getDocTypeHint(string $namespace): string
     {
-        return $this->getTypeHint($namespace);
+        return $this->getTypeHint($namespace) ?? '';
     }
 
     public function getClassName()
