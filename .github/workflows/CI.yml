@@ -34,6 +34,20 @@ jobs:
         run: composer install
       - name: tests
         run: composer test
+  static-analyzis:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@master
+      - name: setup
+        uses: shivammathur/setup-php@master
+        with:
+          php-version: 7.2
+          extension-csv: mbstring, fileinfo, json, intl, dom
+      - name: install
+        run: composer install
+      - name: static analysis
+        run: composer static-analysis
   coverage:
     runs-on: ubuntu-latest
     steps:
