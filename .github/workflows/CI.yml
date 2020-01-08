@@ -34,23 +34,3 @@ jobs:
         run: composer install
       - name: tests
         run: composer test
-  coverage:
-    runs-on: ubuntu-latest
-    steps:
-      - name: checkout
-        uses: actions/checkout@master
-      - name: setup
-        uses: shivammathur/setup-php@master
-        with:
-          php-version: 7.2
-          extension-csv: mbstring, fileinfo, json, intl, dom
-      - name: coveralls-setup
-        run: wget https://github.com/php-coveralls/php-coveralls/releases/download/v1.0.2/coveralls.phar && chmod +x coveralls.phar
-      - name: install
-        run: composer install
-      - name: tests
-        run: composer test-coverage
-      - name: coveralls-sync
-        run: ./coveralls.phar -v
-        env:
-          COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
