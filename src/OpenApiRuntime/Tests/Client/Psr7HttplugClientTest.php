@@ -20,7 +20,7 @@ class Psr7HttplugClientTest extends TestCase
      * @covers \Jane\OpenApiRuntime\Client\Psr7HttplugClient::__construct
      * @covers \Jane\OpenApiRuntime\Client\Psr7HttplugClient::executePsr7Endpoint
      */
-    public function testExecutePsr7Endpoint()
+    public function testExecutePsr7Endpoint(): void
     {
         $responseMock = $this->createMock(ResponseInterface::class);
         $httpClientMock = $this->createMock(HttpClient::class);

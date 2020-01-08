@@ -34,7 +34,7 @@ class AutoMapperTest extends TestCase
     /** @var AutoMapper */
     private $autoMapper;
 
-    public function setUp()
+    public function setUp(): void
     {
         @unlink(__DIR__ . '/cache/registry.php');
 
@@ -47,7 +47,7 @@ class AutoMapperTest extends TestCase
         $this->autoMapper = AutoMapper::create(true, $loader);
     }
 
-    public function testAutoMapping()
+    public function testAutoMapping(): void
     {
         $configurationUser = $this->autoMapper->getConfiguration(User::class, UserDTO::class);
         $configurationUser->forMember('yearOfBirth', function (User $user) {
@@ -75,7 +75,7 @@ class AutoMapperTest extends TestCase
         self::assertSame('Toulon', $userDto->addresses[0]->city);
     }
 
-    public function testAutoMapperFromArray()
+    public function testAutoMapperFromArray(): void
     {
         $user = [
             'id' => 1,
@@ -96,7 +96,7 @@ class AutoMapperTest extends TestCase
         self::assertEquals(1987, $userDto->createdAt->format('Y'));
     }
 
-    public function testAutoMapperToArray()
+    public function testAutoMapperToArray(): void
     {
         $address = new Address();
         $address->setCity('Toulon');
@@ -106,13 +106,13 @@ class AutoMapperTest extends TestCase
 
         $userData = $this->autoMapper->map($user, 'array');
 
-        self::assertInternalType('array', $userData);
+        self::assertIsArray($userData);
         self::assertEquals(1, $userData['id']);
-        self::assertInternalType('array', $userData['address']);
-        self::assertInternalType('string', $userData['createdAt']);
+        self::assertIsArray($userData['address']);
+        self::assertIsString($userData['createdAt']);
     }
 
-    public function testAutoMapperFromStdObject()
+    public function testAutoMapperFromStdObject(): void
     {
         $user = new \stdClass();
         $user->id = 1;
@@ -124,7 +124,7 @@ class AutoMapperTest extends TestCase
         self::assertEquals(1, $userDto->id);
     }
 
-    public function testAutoMapperToStdObject()
+    public function testAutoMapperToStdObject(): void
     {
         $userDto = new UserDTO();
         $userDto->id = 1;
@@ -135,28 +135,28 @@ class AutoMapperTest extends TestCase
         self::assertEquals(1, $user->id);
     }
 
-    public function testGroups()
+    public function testGroups(): void
     {
         $foo = new Foo();
         $foo->setId(10);
 
         $fooArray = $this->autoMapper->map($foo, 'array', new Context(['test']));
 
-        self::assertInternalType('array', $fooArray);
+        self::assertIsArray($fooArray);
         self::assertEquals(10, $fooArray['id']);
 
         $fooArray = $this->autoMapper->map($foo, 'array', new Context([]));
 
-        self::assertInternalType('array', $fooArray);
+        self::assertIsArray($fooArray);
         self::assertArrayNotHasKey('id', $fooArray);
 
         $fooArray = $this->autoMapper->map($foo, 'array');
 
-        self::assertInternalType('array', $fooArray);
+        self::assertIsArray($fooArray);
         self::assertArrayNotHasKey('id', $fooArray);
     }
 
-    public function testDeepCloning()
+    public function testDeepCloning(): void
     {
         $nodeA = new Node();
         $nodeB = new Node();
@@ -177,7 +177,7 @@ class AutoMapperTest extends TestCase
         self::assertSame($newNode, $newNode->parent->parent->parent);
     }
 
-    public function testDeepCloningArray()
+    public function testDeepCloningArray(): void
     {
         $nodeA = new Node();
         $nodeB = new Node();
@@ -188,14 +188,14 @@ class AutoMapperTest extends TestCase
 
         $newNode = $this->autoMapper->map($nodeA, 'array');
 
-        self::assertInternalType('array', $newNode);
-        self::assertInternalType('array', $newNode['parent']);
-        self::assertInternalType('array', $newNode['parent']['parent']);
-        self::assertInternalType('array', $newNode['parent']['parent']['parent']);
+        self::assertIsArray($newNode);
+        self::assertIsArray($newNode['parent']);
+        self::assertIsArray($newNode['parent']['parent']);
+        self::assertIsArray($newNode['parent']['parent']['parent']);
         self::assertSame($newNode, $newNode['parent']['parent']['parent']);
     }
 
-    public function testCircularReferenceArray()
+    public function testCircularReferenceArray(): void
     {
         $nodeA = new Node();
         $nodeB = new Node();
@@ -205,13 +205,13 @@ class AutoMapperTest extends TestCase
 
         $newNode = $this->autoMapper->map($nodeA, 'array');
 
-        self::assertInternalType('array', $newNode);
-        self::assertInternalType('array', $newNode['childs'][0]);
-        self::assertInternalType('array', $newNode['childs'][0]['childs'][0]);
+        self::assertIsArray($newNode);
+        self::assertIsArray($newNode['childs'][0]);
+        self::assertIsArray($newNode['childs'][0]['childs'][0]);
         self::assertSame($newNode, $newNode['childs'][0]['childs'][0]);
     }
 
-    public function testPrivate()
+    public function testPrivate(): void
     {
         $user = new PrivateUser(10, 'foo', 'bar');
         /** @var PrivateUserDTO $userDto */
@@ -223,7 +223,7 @@ class AutoMapperTest extends TestCase
         self::assertSame('bar', $userDto->getLastName());
     }
 
-    public function testConstructor()
+    public function testConstructor(): void
     {
         $user = new UserDTO();
         $user->id = 10;
@@ -238,7 +238,7 @@ class AutoMapperTest extends TestCase
         self::assertSame(3, $userDto->getAge());
     }
 
-    public function testConstructorWithDefault()
+    public function testConstructorWithDefault(): void
     {
         $user = new UserDTONoAge();
         $user->id = 10;
@@ -252,7 +252,7 @@ class AutoMapperTest extends TestCase
         self::assertSame(30, $userDto->getAge());
     }
 
-    public function testConstructorDisable()
+    public function testConstructorDisable(): void
     {
         $user = new UserDTONoName();
         $user->id = 10;
@@ -265,7 +265,7 @@ class AutoMapperTest extends TestCase
         self::assertNull($userDto->getAge());
     }
 
-    public function testMaxDepth()
+    public function testMaxDepth(): void
     {
         $foo = new FooMaxDepth(0, new FooMaxDepth(1, new FooMaxDepth(2, new FooMaxDepth(3, new FooMaxDepth(4)))));
         $fooArray = $this->autoMapper->map($foo, 'array');
@@ -275,7 +275,7 @@ class AutoMapperTest extends TestCase
         self::assertFalse(isset($fooArray['child']['child']['child']));
     }
 
-    public function testObjectToPopulate()
+    public function testObjectToPopulate(): void
     {
         $configurationUser = $this->autoMapper->getConfiguration(User::class, UserDTO::class);
         $configurationUser->forMember('yearOfBirth', function (User $user) {
@@ -292,7 +292,7 @@ class AutoMapperTest extends TestCase
         self::assertSame($userDtoToPopulate, $userDto);
     }
 
-    public function testCircularReferenceLimitOnContext()
+    public function testCircularReferenceLimitOnContext(): void
     {
         $nodeA = new Node();
         $nodeA->parent = $nodeA;
@@ -305,7 +305,7 @@ class AutoMapperTest extends TestCase
         $this->autoMapper->map($nodeA, 'array', $context);
     }
 
-    public function testCircularReferenceLimitOnMapper()
+    public function testCircularReferenceLimitOnMapper(): void
     {
         $nodeA = new Node();
         $nodeA->parent = $nodeA;
@@ -318,7 +318,7 @@ class AutoMapperTest extends TestCase
         $mapper->map($nodeA, new Context());
     }
 
-    public function testCircularReferenceHandlerOnContext()
+    public function testCircularReferenceHandlerOnContext(): void
     {
         $nodeA = new Node();
         $nodeA->parent = $nodeA;
@@ -333,7 +333,7 @@ class AutoMapperTest extends TestCase
         self::assertSame('foo', $nodeArray['parent']);
     }
 
-    public function testCircularReferenceHandlerOnMapper()
+    public function testCircularReferenceHandlerOnMapper(): void
     {
         $nodeA = new Node();
         $nodeA->parent = $nodeA;
@@ -348,7 +348,7 @@ class AutoMapperTest extends TestCase
         self::assertSame('foo', $nodeArray['parent']);
     }
 
-    public function testAllowedAttributes()
+    public function testAllowedAttributes(): void
     {
         $configurationUser = $this->autoMapper->getConfiguration(User::class, UserDTO::class);
         $configurationUser->forMember('yearOfBirth', function (User $user) {
@@ -363,7 +363,7 @@ class AutoMapperTest extends TestCase
         self::assertNull($userDto->name);
     }
 
-    public function testIgnoredAttributes()
+    public function testIgnoredAttributes(): void
     {
         $configurationUser = $this->autoMapper->getConfiguration(User::class, UserDTO::class);
         $configurationUser->forMember('yearOfBirth', function (User $user) {
@@ -378,7 +378,7 @@ class AutoMapperTest extends TestCase
         self::assertNull($userDto->name);
     }
 
-    public function testNameConverter()
+    public function testNameConverter(): void
     {
         $nameConverter = new class() implements AdvancedNameConverterInterface {
             public function normalize($propertyName, string $class = null, string $format = null, array $context = [])
@@ -405,12 +405,12 @@ class AutoMapperTest extends TestCase
 
         $userArray = $autoMapper->map($user, 'array', new Context());
 
-        self::assertInternalType('array', $userArray);
+        self::assertIsArray($userArray);
         self::assertArrayHasKey('@id', $userArray);
         self::assertSame(1, $userArray['@id']);
     }
 
-    public function testDefaultArguments()
+    public function testDefaultArguments(): void
     {
         $user = new UserDTONoAge();
         $user->id = 10;
@@ -425,7 +425,7 @@ class AutoMapperTest extends TestCase
         self::assertSame(50, $userDto->getAge());
     }
 
-    public function testDiscriminator()
+    public function testDiscriminator(): void
     {
         $data = [
             'type' => 'cat',

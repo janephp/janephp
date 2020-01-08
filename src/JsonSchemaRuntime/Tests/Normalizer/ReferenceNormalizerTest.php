@@ -11,12 +11,12 @@ class ReferenceNormalizerTest extends TestCase
     /** @var ReferenceNormalizer */
     private $referenceNormalizer;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->referenceNormalizer = new ReferenceNormalizer();
     }
 
-    public function testSupports()
+    public function testSupports(): void
     {
         $this->assertFalse($this->referenceNormalizer->supportsNormalization('toto'));
         $this->assertTrue($this->referenceNormalizer->supportsNormalization(new Reference('reference', 'schema')));
@@ -25,7 +25,7 @@ class ReferenceNormalizerTest extends TestCase
     /**
      * @dataProvider normalizeProvider
      */
-    public function testNormalize($referenceString)
+    public function testNormalize($referenceString): void
     {
         $reference = new Reference($referenceString, 'schema');
         $normalized = $this->referenceNormalizer->normalize($reference);
@@ -33,7 +33,7 @@ class ReferenceNormalizerTest extends TestCase
         $this->assertEquals($referenceString, $normalized->{'$ref'});
     }
 
-    public function normalizeProvider()
+    public function normalizeProvider(): array
     {
         return [
             ['#pointer'],

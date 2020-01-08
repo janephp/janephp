@@ -21,7 +21,7 @@ class Psr18ClientTest extends TestCase
      * @covers \Jane\OpenApiRuntime\Client\Psr18Client::__construct
      * @covers \Jane\OpenApiRuntime\Client\Psr18Client::executePsr7Endpoint
      */
-    public function testExecutePsr7Endpoint()
+    public function testExecutePsr7Endpoint(): void
     {
         $responseMock = $this->createMock(ResponseInterface::class);
         $httpClientMock = $this->createMock(ClientInterface::class);

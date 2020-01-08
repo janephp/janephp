@@ -26,7 +26,7 @@
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "2.15.3",
-        "phpunit/phpunit": "^6.0"
+        "phpunit/phpunit": "^8.0"
     },
     "suggest": {
         "friendsofphp/php-cs-fixer": "Allow to automatically fix cs on generated code for better visualisation"

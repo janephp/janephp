@@ -15,7 +15,7 @@ class JaneOpenApiResourceTest extends TestCase
     /**
      * @dataProvider resourceProvider
      */
-    public function testRessources($name, SplFileInfo $testDirectory)
+    public function testRessources($name, SplFileInfo $testDirectory): void
     {
         // 1. Cleanup generated
         $filesystem = new Filesystem();
@@ -65,7 +65,7 @@ class JaneOpenApiResourceTest extends TestCase
         }
     }
 
-    public function resourceProvider()
+    public function resourceProvider(): array
     {
         $finder = new Finder();
         $finder->directories()->in(__DIR__ . '/fixtures');
