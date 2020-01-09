@@ -21,7 +21,7 @@ class ArrayGuesser implements GuesserInterface, TypeGuesserInterface, ChainGuess
     /**
      * {@inheritdoc}
      */
-    public function guessClass($object, $name, $reference, Registry $registry)
+    public function guessClass($object, string $name, string $reference, Registry $registry): void
     {
         if (is_a($object->getItems(), $this->getSchemaClass())) {
             $this->chainGuesser->guessClass($object->getItems(), $name . 'Item', $reference . '/items', $registry);
@@ -31,7 +31,7 @@ class ArrayGuesser implements GuesserInterface, TypeGuesserInterface, ChainGuess
     /**
      * {@inheritdoc}
      */
-    public function supportObject($object)
+    public function supportObject($object): bool
     {
         return ($object instanceof JsonSchema) && 'array' === $object->getType();
     }
@@ -39,7 +39,7 @@ class ArrayGuesser implements GuesserInterface, TypeGuesserInterface, ChainGuess
     /**
      * {@inheritdoc}
      */
-    public function guessType($object, $name, $reference, Registry $registry)
+    public function guessType($object, string $name, string $reference, Registry $registry): Type
     {
         $items = $object->getItems();
 
@@ -60,10 +60,7 @@ class ArrayGuesser implements GuesserInterface, TypeGuesserInterface, ChainGuess
         return $type;
     }
 
-    /**
-     * @return string
-     */
-    protected function getSchemaClass()
+    protected function getSchemaClass(): string
     {
         return Schema::class;
     }

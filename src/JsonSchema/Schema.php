@@ -60,7 +60,7 @@ class Schema
         return $this->rootName;
     }
 
-    public function addClass(string $reference, ClassGuess $class)
+    public function addClass(string $reference, ClassGuess $class): void
     {
         $this->classes[urldecode($reference)] = $class;
     }
@@ -119,7 +119,7 @@ class Schema
     /**
      * @param mixed $parsed
      */
-    public function setParsed($parsed)
+    public function setParsed($parsed): void
     {
         $this->parsed = $parsed;
     }

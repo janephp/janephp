@@ -10,14 +10,9 @@ interface PropertiesGuesserInterface
     /**
      * Return all properties guessed.
      *
-     * @param mixed    $object
-     * @param string   $name
-     * @param string   $reference
-     * @param Registry $registry
-     *
      * @internal
      *
      * @return Property[]
      */
-    public function guessProperties($object, $name, $reference, Registry $registry);
+    public function guessProperties($object, string $name, string $reference, Registry $registry): array;
 }

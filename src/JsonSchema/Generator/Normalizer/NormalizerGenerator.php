@@ -47,7 +47,7 @@ trait NormalizerGenerator
         }
 
         return new Stmt\Class_(
-            new Name($this->getNaming()->getClassName($name)),
+            $this->getNaming()->getClassName($name),
             [
                 'stmts' => array_merge($traits, $methods),
                 'implements' => $implements,

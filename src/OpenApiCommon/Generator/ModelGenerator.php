@@ -14,7 +14,7 @@ class ModelGenerator extends BaseModelGenerator
 {
     use ClassGenerator;
 
-    protected function doCreateClassMethods(BaseClassGuess $classGuess, Property $property, string $namespace, bool $required)
+    protected function doCreateClassMethods(BaseClassGuess $classGuess, Property $property, string $namespace, bool $required): array
     {
         $methods = [];
         $methods[] = $this->createGetter($property, $namespace, $required);
@@ -23,7 +23,7 @@ class ModelGenerator extends BaseModelGenerator
         return $methods;
     }
 
-    protected function doCreateModel(BaseClassGuess $class, $properties, $methods): Stmt\Class_
+    protected function doCreateModel(BaseClassGuess $class, array $properties, array $methods): Stmt\Class_
     {
         $extends = null;
         if ($class instanceof ClassGuess &&

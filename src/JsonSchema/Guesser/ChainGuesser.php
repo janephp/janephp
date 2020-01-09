@@ -5,14 +5,14 @@ namespace Jane\JsonSchema\Guesser;
 use Jane\JsonSchema\Guesser\Guess\Type;
 use Jane\JsonSchema\Registry;
 
-class ChainGuesser implements TypeGuesserInterface, PropertiesGuesserInterface, ClassGuesserInterface, ConstraintGuesserInterface
+class ChainGuesser implements TypeGuesserInterface, PropertiesGuesserInterface, ClassGuesserInterface
 {
     /**
      * @var GuesserInterface[]
      */
     private $guessers = [];
 
-    public function addGuesser(GuesserInterface $guesser)
+    public function addGuesser(GuesserInterface $guesser): void
     {
         if ($guesser instanceof ChainGuesserAwareInterface) {
             $guesser->setChainGuesser($this);
@@ -24,7 +24,7 @@ class ChainGuesser implements TypeGuesserInterface, PropertiesGuesserInterface, 
     /**
      * {@inheritdoc}
      */
-    public function guessClass($object, $name, $reference, Registry $registry)
+    public function guessClass($object, string $name, string $reference, Registry $registry): void
     {
         foreach ($this->guessers as $guesser) {
             if (!($guesser instanceof ClassGuesserInterface)) {
@@ -40,7 +40,7 @@ class ChainGuesser implements TypeGuesserInterface, PropertiesGuesserInterface, 
     /**
      * {@inheritdoc}
      */
-    public function guessType($object, $name, $reference, Registry $registry)
+    public function guessType($object, string $name, string $reference, Registry $registry): Type
     {
         $type = null;
 
@@ -64,7 +64,7 @@ class ChainGuesser implements TypeGuesserInterface, PropertiesGuesserInterface, 
     /**
      * {@inheritdoc}
      */
-    public function guessProperties($object, $name, $reference, Registry $registry)
+    public function guessProperties($object, string $name, string $reference, Registry $registry): array
     {
         $properties = [];
 
@@ -79,25 +79,5 @@ class ChainGuesser implements TypeGuesserInterface, PropertiesGuesserInterface, 
         }
 
         return $properties;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function guessConstraints($object, $name, $reference, Registry $registry)
-    {
-        $constraints = [];
-
-        foreach ($this->guessers as $guesser) {
-            if (!($guesser instanceof ConstraintGuesserInterface)) {
-                continue;
-            }
-
-            if ($guesser->supportObject($object)) {
-                $constraints = array_merge($constraints, $guesser->guessConstraints($object, $name, $reference, $registry));
-            }
-        }
-
-        return $constraints;
     }
 }

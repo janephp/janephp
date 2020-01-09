@@ -15,10 +15,8 @@ trait GetterSetterGenerator
 {
     /**
      * The naming service.
-     *
-     * @return Naming
      */
-    abstract protected function getNaming();
+    abstract protected function getNaming(): Naming;
 
     protected function createGetter(Property $property, string $namespace, bool $required): Stmt\ClassMethod
     {

@@ -51,7 +51,7 @@ class NormalizerGenerator implements GeneratorInterface
      * @param bool   $useReference Whether to generate the JSON Reference system
      * @param bool   $useCache     Whether to use the CacheableSupportsMethodInterface interface, for >sf 4.1
      */
-    public function __construct(Naming $naming, Parser $parser, $useReference = true, $useCacheableSupportsMethod = null)
+    public function __construct(Naming $naming, Parser $parser, bool $useReference = true, bool $useCacheableSupportsMethod = null)
     {
         $this->naming = $naming;
         $this->parser = $parser;
@@ -61,10 +61,8 @@ class NormalizerGenerator implements GeneratorInterface
 
     /**
      * The naming service.
-     *
-     * @return Naming
      */
-    protected function getNaming()
+    protected function getNaming(): Naming
     {
         return $this->naming;
     }
@@ -72,7 +70,7 @@ class NormalizerGenerator implements GeneratorInterface
     /**
      * {@inheritdoc}
      */
-    public function generate(Schema $schema, string $className, Context $context)
+    public function generate(Schema $schema, string $className, Context $context): void
     {
         $classes = [];
 

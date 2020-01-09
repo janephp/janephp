@@ -33,6 +33,8 @@ use Symfony\Component\Serializer\SerializerInterface;
 
 abstract class EndpointGenerator
 {
+    use GeneratorResolveTrait;
+
     /** @var OperationNamingInterface */
     private $operationNaming;
 
@@ -41,9 +43,6 @@ abstract class EndpointGenerator
 
     /** @var Parameter\NonBodyParameterGenerator */
     private $nonBodyParameterGenerator;
-
-    /** @var DenormalizerInterface */
-    private $denormalizer;
 
     /** @var ExceptionGenerator */
     private $exceptionGenerator;
@@ -306,7 +305,7 @@ EOD
         ]);
     }
 
-    private function getOptionsResolverMethod(Operation $operation, $class, $methodName): ?Stmt\ClassMethod
+    private function getOptionsResolverMethod(Operation $operation, string $class, string $methodName): ?Stmt\ClassMethod
     {
         $parameters = [];
 
@@ -600,49 +599,5 @@ EOD
                 'stmts' => [$returnStmt],
             ]
         )];
-    }
-
-    /**
-     * @param $class
-     *
-     * @return mixed
-     */
-    private function resolve(Reference $reference, $class)
-    {
-        $result = $reference;
-
-        do {
-            $refString = (string) $reference->getMergedUri();
-            $result = $result->resolve(function ($data) use ($result, $class) {
-                return $this->denormalizer->denormalize($data, $class, 'json', [
-                    'document-origin' => (string) $result->getMergedUri()->withFragment(''),
-                ]);
-            });
-        } while ($result instanceof Reference);
-
-        return [$refString, $result];
-    }
-
-    private function resolveParameter(Reference $parameter)
-    {
-        return $parameter->resolve(function ($value) {
-            if (isset($value->{'in'}) and 'body' === $value->{'in'}) {
-                return $this->denormalizer->denormalize($value, BodyParameter::class);
-            }
-            if (isset($value->{'in'}) and 'header' === $value->{'in'}) {
-                return $this->denormalizer->denormalize($value, HeaderParameterSubSchema::class);
-            }
-            if (isset($value->{'in'}) and 'formData' === $value->{'in'}) {
-                return $this->denormalizer->denormalize($value, FormDataParameterSubSchema::class);
-            }
-            if (isset($value->{'in'}) and 'query' === $value->{'in'}) {
-                return $this->denormalizer->denormalize($value, QueryParameterSubSchema::class);
-            }
-            if (isset($value->{'in'}) and 'path' === $value->{'in'}) {
-                return $this->denormalizer->denormalize($value, PathParameterSubSchema::class);
-            }
-
-            return $value;
-        });
     }
 }

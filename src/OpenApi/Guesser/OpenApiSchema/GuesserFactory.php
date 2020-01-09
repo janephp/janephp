@@ -8,7 +8,7 @@ use Symfony\Component\Serializer\SerializerInterface;
 
 class GuesserFactory
 {
-    public static function create(SerializerInterface $serializer, array $options = [])
+    public static function create(SerializerInterface $serializer, array $options = []): ChainGuesser
     {
         $naming = new Naming();
         $dateFormat = isset($options['date-format']) ? $options['date-format'] : \DateTime::RFC3339;

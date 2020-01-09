@@ -5,6 +5,7 @@ namespace Jane\JsonSchema\Guesser\JsonSchema;
 use Jane\JsonSchema\Guesser\ChainGuesserAwareInterface;
 use Jane\JsonSchema\Guesser\ChainGuesserAwareTrait;
 use Jane\JsonSchema\Guesser\Guess\PatternMultipleType;
+use Jane\JsonSchema\Guesser\Guess\Type;
 use Jane\JsonSchema\Guesser\GuesserInterface;
 use Jane\JsonSchema\Guesser\TypeGuesserInterface;
 use Jane\JsonSchema\Model\JsonSchema;
@@ -17,7 +18,7 @@ class PatternPropertiesGuesser implements GuesserInterface, TypeGuesserInterface
     /**
      * {@inheritdoc}
      */
-    public function supportObject($object)
+    public function supportObject($object): bool
     {
         if (!($object instanceof JsonSchema)) {
             return false;
@@ -41,7 +42,7 @@ class PatternPropertiesGuesser implements GuesserInterface, TypeGuesserInterface
     /**
      * {@inheritdoc}
      */
-    public function guessType($object, $name, $reference, Registry $registry)
+    public function guessType($object, string $name, string $reference, Registry $registry): Type
     {
         $type = new PatternMultipleType($object);
 

@@ -17,7 +17,7 @@ class SecurityGuesser implements GuesserInterface, ClassGuesserInterface
     /**
      * {@inheritdoc}
      */
-    public function supportObject($object)
+    public function supportObject($object): bool
     {
         return ($object instanceof APIKeySecurityScheme || $object instanceof HTTPSecurityScheme || $object instanceof OAuth2SecurityScheme || $object instanceof OpenIdConnectSecurityScheme) && \in_array($object->getType(), SecuritySchemeGuess::getAvailableTypes());
     }
@@ -27,14 +27,12 @@ class SecurityGuesser implements GuesserInterface, ClassGuesserInterface
      *
      * @param APIKeySecurityScheme|HTTPSecurityScheme|OAuth2SecurityScheme|OpenIdConnectSecurityScheme $object
      */
-    public function guessClass($object, $name, $reference, Registry $registry)
+    public function guessClass($object, string $name, string $reference, Registry $registry): void
     {
         $securitySchemeGuess = new SecuritySchemeGuess($name, $object->getType(), $object);
 
         /** @var Schema $schema */
         $schema = $registry->getSchema($reference);
         $schema->addSecurityScheme($reference, $securitySchemeGuess);
-
-        return $securitySchemeGuess;
     }
 }

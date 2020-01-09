@@ -8,7 +8,7 @@ use PhpParser\Node\Expr;
 
 class MapType extends ArrayType
 {
-    public function __construct($object, Type $itemType)
+    public function __construct(object $object, Type $itemType)
     {
         parent::__construct($object, $itemType, 'object');
 
@@ -18,7 +18,7 @@ class MapType extends ArrayType
     /**
      * (@inheritDoc}.
      */
-    public function getTypeHint($namespace)
+    public function getTypeHint(string $namespace)
     {
         return new Name('\ArrayObject');
     }

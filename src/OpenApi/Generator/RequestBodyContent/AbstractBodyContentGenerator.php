@@ -4,6 +4,7 @@ namespace Jane\OpenApi\Generator\RequestBodyContent;
 
 use Jane\JsonSchema\Generator\Context\Context;
 use Jane\JsonSchemaRuntime\Reference;
+use Jane\OpenApi\Generator\GeneratorResolveTrait;
 use Jane\OpenApi\Generator\RequestBodyContentGeneratorInterface;
 use Jane\OpenApi\JsonSchema\Model\MediaType;
 use Jane\OpenApi\JsonSchema\Model\Schema;
@@ -16,9 +17,9 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 
 abstract class AbstractBodyContentGenerator implements RequestBodyContentGeneratorInterface
 {
-    public const PHP_TYPE_MIXED = 'mixed';
+    use GeneratorResolveTrait;
 
-    private $denormalizer;
+    public const PHP_TYPE_MIXED = 'mixed';
 
     public function __construct(DenormalizerInterface $denormalizer)
     {
@@ -108,7 +109,7 @@ abstract class AbstractBodyContentGenerator implements RequestBodyContentGenerat
         );
     }
 
-    protected function guessClass($schema, string $reference, Context $context)
+    protected function guessClass($schema, string $reference, Context $context): array
     {
         $jsonReference = $reference;
         $array = false;
@@ -132,29 +133,7 @@ abstract class AbstractBodyContentGenerator implements RequestBodyContentGenerat
         return [$classGuess, $array, $schema];
     }
 
-    /**
-     * @param Reference $reference
-     * @param $class
-     *
-     * @return mixed
-     */
-    private function resolve(Reference $reference, $class)
-    {
-        $result = $reference;
-
-        do {
-            $refString = (string) $reference->getMergedUri();
-            $result = $result->resolve(function ($data) use ($result, $class) {
-                return $this->denormalizer->denormalize($data, $class, 'json', [
-                    'document-origin' => (string) $result->getMergedUri()->withFragment(''),
-                ]);
-            });
-        } while ($result instanceof Reference);
-
-        return [$refString, $result];
-    }
-
-    private function schemaTypeToPHP($type, $format = null)
+    private function schemaTypeToPHP(?string $type, ?string $format = null): array
     {
         if (null === $format) {
             $format = 'default';
@@ -192,7 +171,7 @@ abstract class AbstractBodyContentGenerator implements RequestBodyContentGenerat
         return $convertArray[$type][$format];
     }
 
-    private function typeToCondition($type, $format, $fetch)
+    private function typeToCondition(?string $type, ?string $format, Expr $fetch): Expr
     {
         if (null === $format) {
             $format = 'default';

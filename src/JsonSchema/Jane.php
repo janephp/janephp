@@ -15,6 +15,7 @@ use Symfony\Component\Serializer\Encoder\JsonDecode;
 use Symfony\Component\Serializer\Encoder\JsonEncode;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Serializer;
+use Symfony\Component\Serializer\SerializerInterface;
 
 class Jane extends ChainGenerator
 {
@@ -28,7 +29,7 @@ class Jane extends ChainGenerator
 
     private $naming;
 
-    public function __construct(Serializer $serializer, ChainGuesser $chainGuesser, Naming $naming, $strict = true)
+    public function __construct(SerializerInterface $serializer, ChainGuesser $chainGuesser, Naming $naming, bool $strict = true)
     {
         $this->serializer = $serializer;
         $this->chainGuesser = $chainGuesser;
@@ -91,7 +92,7 @@ class Jane extends ChainGenerator
         return new Context($registry, $this->strict);
     }
 
-    public static function build($options = [])
+    public static function build(array $options = []): self
     {
         $serializer = self::buildSerializer();
         $chainGuesser = JsonSchemaGuesserFactory::create($serializer, $options);
@@ -107,7 +108,7 @@ class Jane extends ChainGenerator
         return $self;
     }
 
-    public static function buildSerializer()
+    public static function buildSerializer(): SerializerInterface
     {
         $encoders = [new JsonEncoder(new JsonEncode([JsonEncode::OPTIONS => JSON_UNESCAPED_SLASHES]), new JsonDecode())];
         $normalizers = NormalizerFactory::create();

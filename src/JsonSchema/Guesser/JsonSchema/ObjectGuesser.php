@@ -38,7 +38,7 @@ class ObjectGuesser implements GuesserInterface, PropertiesGuesserInterface, Typ
     /**
      * {@inheritdoc}
      */
-    public function supportObject($object)
+    public function supportObject($object): bool
     {
         return ($object instanceof JsonSchema) && (\is_array($object->getType()) ? \in_array('object', $object->getType()) : 'object' === $object->getType()) && null !== $object->getProperties();
     }
@@ -48,7 +48,7 @@ class ObjectGuesser implements GuesserInterface, PropertiesGuesserInterface, Typ
      *
      * @param JsonSchema $object
      */
-    public function guessClass($object, $name, $reference, Registry $registry)
+    public function guessClass($object, string $name, string $reference, Registry $registry): void
     {
         if (!$registry->hasClass($reference)) {
             $extensions = [];
@@ -84,7 +84,7 @@ class ObjectGuesser implements GuesserInterface, PropertiesGuesserInterface, Typ
     /**
      * {@inheritdoc}
      */
-    public function guessProperties($object, $name, $reference, Registry $registry)
+    public function guessProperties($object, string $name, string $reference, Registry $registry): array
     {
         $properties = [];
 
@@ -114,7 +114,7 @@ class ObjectGuesser implements GuesserInterface, PropertiesGuesserInterface, Typ
     /**
      * {@inheritdoc}
      */
-    public function guessType($object, $name, $reference, Registry $registry)
+    public function guessType($object, string $name, string $reference, Registry $registry): Type
     {
         $discriminants = [];
         $required = $object->getRequired() ?: [];
@@ -150,15 +150,12 @@ class ObjectGuesser implements GuesserInterface, PropertiesGuesserInterface, Typ
         return new Type($object, 'object');
     }
 
-    /**
-     * @return string
-     */
-    protected function getSchemaClass()
+    protected function getSchemaClass(): string
     {
         return JsonSchema::class;
     }
 
-    protected function createClassGuess($object, $reference, $name, $extensions): ClassGuess
+    protected function createClassGuess($object, string $reference, string $name, array $extensions): ClassGuess
     {
         return new ClassGuess($object, $reference, $this->naming->getClassName($name), $extensions, $object->getDeprecated());
     }

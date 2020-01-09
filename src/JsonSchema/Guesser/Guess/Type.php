@@ -55,10 +55,10 @@ class Type
 
     protected $object;
 
-    public function __construct($object, string $name)
+    public function __construct(?object $object, string $name)
     {
         $this->name = $name;
-        $this->object = null;
+        $this->object = $object;
     }
 
     public function getName()
@@ -71,7 +71,7 @@ class Type
         return $this->object;
     }
 
-    public function __toString()
+    public function __toString(): string
     {
         return $this->name;
     }
@@ -119,7 +119,7 @@ class Type
     /**
      * @return string|Name|null
      */
-    public function getTypeHint($namespace)
+    public function getTypeHint(string $namespace)
     {
         return $this->phpMapping[$this->name];
     }
@@ -127,7 +127,7 @@ class Type
     /**
      * @return string|Name|null
      */
-    public function getDocTypeHint($namespace)
+    public function getDocTypeHint(string $namespace)
     {
         return (string) $this;
     }

@@ -23,7 +23,7 @@ class OpenApiGuesser implements GuesserInterface, ClassGuesserInterface, ChainGu
     /**
      * {@inheritdoc}
      */
-    public function supportObject($object)
+    public function supportObject($object): bool
     {
         return $object instanceof OpenApi;
     }
@@ -33,7 +33,7 @@ class OpenApiGuesser implements GuesserInterface, ClassGuesserInterface, ChainGu
      *
      * @param OpenApi $object
      */
-    public function guessClass($object, $name, $reference, Registry $registry)
+    public function guessClass($object, string $name, string $reference, Registry $registry): void
     {
         if ($object->getComponents() instanceof Components && is_iterable($object->getComponents()->getSchemas())) {
             foreach ($object->getComponents()->getSchemas() as $key => $definition) {
@@ -89,13 +89,8 @@ class OpenApiGuesser implements GuesserInterface, ClassGuesserInterface, ChainGu
 
     /**
      * Discover classes in operation.
-     *
-     * @param $name
-     * @param Operation $operation
-     * @param string    $reference
-     * @param Registry  $registry
      */
-    protected function getClassFromOperation($name, ?Operation $operation, $reference, $registry)
+    protected function getClassFromOperation(string $name, ?Operation $operation, string $reference, Registry $registry): void
     {
         if (null === $operation) {
             return;

@@ -62,7 +62,7 @@ class Printer
         }
     }
 
-    protected function getDefaultRules()
+    protected function getDefaultRules(): string
     {
         $rules = [
             '@Symfony' => true,

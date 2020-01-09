@@ -28,6 +28,8 @@ use Symfony\Component\Serializer\SerializerInterface;
 
 abstract class EndpointGenerator
 {
+    use GeneratorResolveTrait;
+
     private const IN_PATH = 'path';
     private const IN_QUERY = 'query';
     private const IN_HEADER = 'header';
@@ -37,9 +39,6 @@ abstract class EndpointGenerator
 
     /** @var NonBodyParameterGenerator */
     private $nonBodyParameterGenerator;
-
-    /** @var DenormalizerInterface */
-    private $denormalizer;
 
     /** @var ExceptionGenerator */
     private $exceptionGenerator;
@@ -481,7 +480,7 @@ EOD
         return [$classGuess, $array, $schema];
     }
 
-    private function createResponseDenormalizationStatement(string $name, string $status, Response $response, Context $context, string $reference, string $description)
+    private function createResponseDenormalizationStatement(string $name, string $status, Response $response, Context $context, string $reference, string $description): array
     {
         // No content response
         if (!$response->getContent()) {
@@ -581,7 +580,7 @@ EOD
         )]];
     }
 
-    private function createContentDenormalizationStatement(string $name, string $status, $schema, Context $context, string $reference, string $description)
+    private function createContentDenormalizationStatement(string $name, string $status, $schema, Context $context, string $reference, string $description): array
     {
         [$classGuess, $array, $schema] = $this->guessClass($schema, $reference, $context);
         $returnType = 'null';
@@ -633,38 +632,5 @@ EOD
         }
 
         return [$returnType, $throwType, $contentStatement];
-    }
-
-    /**
-     * @param Reference $reference
-     * @param $class
-     *
-     * @return mixed
-     */
-    private function resolve(Reference $reference, $class)
-    {
-        $result = $reference;
-
-        do {
-            $refString = (string) $reference->getMergedUri();
-            $result = $result->resolve(function ($data) use ($result, $class) {
-                return $this->denormalizer->denormalize($data, $class, 'json', [
-                    'document-origin' => (string) $result->getMergedUri()->withFragment(''),
-                ]);
-            });
-        } while ($result instanceof Reference);
-
-        return [$refString, $result];
-    }
-
-    private function resolveParameter(Reference $parameter)
-    {
-        return $parameter->resolve(function ($value) {
-            if (\is_object($value)) {
-                return $this->denormalizer->denormalize($value, 'Jane\\OpenApi\\JsonSchema\\Model\\Parameter', 'json');
-            }
-
-            return $value;
-        });
     }
 }

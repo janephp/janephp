@@ -4,7 +4,6 @@ namespace Jane\JsonSchema;
 
 use Jane\JsonSchema\Guesser\Guess\ClassGuess;
 use League\Uri\Http;
-use League\Uri\Schemes\Http as HttpLegacy;
 
 class Registry
 {
@@ -32,9 +31,9 @@ class Registry
         $this->schemas[] = $schema;
     }
 
-    public function getSchema($reference): ?Schema
+    public function getSchema(string $reference): ?Schema
     {
-        $uri = class_exists(Http::class) ? Http::createFromString($reference) : HttpLegacy::createFromString($reference);
+        $uri = Http::createFromString($reference);
         $schemaUri = (string) $uri->withFragment('');
 
         foreach ($this->schemas as $schema) {
@@ -54,12 +53,12 @@ class Registry
         return $this->schemas;
     }
 
-    public function hasClass($classReference): bool
+    public function hasClass(string $classReference): bool
     {
         return null !== $this->getClass($classReference);
     }
 
-    public function getClass($classReference): ?ClassGuess
+    public function getClass(string $classReference): ?ClassGuess
     {
         $schema = $this->getSchema($classReference);
 

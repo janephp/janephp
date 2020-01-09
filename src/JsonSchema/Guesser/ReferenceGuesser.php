@@ -2,6 +2,7 @@
 
 namespace Jane\JsonSchema\Guesser;
 
+use Jane\JsonSchema\Guesser\Guess\Type;
 use Jane\JsonSchema\Model\JsonSchema;
 use Jane\JsonSchema\Registry;
 use Jane\JsonSchemaRuntime\Reference;
@@ -20,7 +21,7 @@ class ReferenceGuesser implements ClassGuesserInterface, GuesserInterface, TypeG
     /**
      * {@inheritdoc}
      */
-    public function supportObject($object)
+    public function supportObject($object): bool
     {
         return $object instanceof Reference;
     }
@@ -30,10 +31,10 @@ class ReferenceGuesser implements ClassGuesserInterface, GuesserInterface, TypeG
      *
      * @param Reference $object
      */
-    public function guessClass($object, $name, $reference, Registry $registry)
+    public function guessClass($object, string $name, string $reference, Registry $registry): void
     {
         if ($object->isInCurrentDocument()) {
-            return [];
+            return;
         }
 
         $mergedReference = (string) $object->getMergedUri();
@@ -43,7 +44,7 @@ class ReferenceGuesser implements ClassGuesserInterface, GuesserInterface, TypeG
             $schema->addReference((string) $object->getMergedUri()->withFragment(''));
         }
 
-        return $this->chainGuesser->guessClass(
+        $this->chainGuesser->guessClass(
             $this->resolve($object, $this->getSchemaClass()),
             $name,
             (string) $object->getMergedUri()->withFragment('') === (string) $object->getMergedUri() ? (string) $object->getMergedUri()->withFragment('') . '#' : (string) $object->getMergedUri(),
@@ -56,7 +57,7 @@ class ReferenceGuesser implements ClassGuesserInterface, GuesserInterface, TypeG
      *
      * @param Reference $object
      */
-    public function guessType($object, $name, $reference, Registry $registry)
+    public function guessType($object, string $name, string $reference, Registry $registry): Type
     {
         $resolved = $this->resolve($object, $this->getSchemaClass());
         $classKey = (string) $object->getMergedUri();

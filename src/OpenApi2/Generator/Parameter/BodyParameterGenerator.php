@@ -5,6 +5,7 @@ namespace Jane\OpenApi2\Generator\Parameter;
 use Doctrine\Common\Inflector\Inflector;
 use Jane\JsonSchema\Generator\Context\Context;
 use Jane\JsonSchemaRuntime\Reference;
+use Jane\OpenApi2\Generator\GeneratorResolveTrait;
 use Jane\OpenApi2\Model\BodyParameter;
 use Jane\OpenApi2\Model\Schema;
 use Jane\OpenApiCommon\Generator\Parameter\ParameterGenerator;
@@ -15,10 +16,7 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 
 class BodyParameterGenerator extends ParameterGenerator
 {
-    /**
-     * @var DenormalizerInterface
-     */
-    private $denormalizer;
+    use GeneratorResolveTrait;
 
     public function __construct(Parser $parser, DenormalizerInterface $denormalizer)
     {
@@ -32,7 +30,7 @@ class BodyParameterGenerator extends ParameterGenerator
      *
      * @param BodyParameter $parameter
      */
-    public function generateMethodParameter($parameter, Context $context, $reference)
+    public function generateMethodParameter($parameter, Context $context, string $reference): ?Node\Param
     {
         $name = Inflector::camelize($parameter->getName());
 
@@ -51,14 +49,14 @@ class BodyParameterGenerator extends ParameterGenerator
      *
      * @param BodyParameter $parameter
      */
-    public function generateMethodDocParameter($parameter, Context $context, $reference)
+    public function generateMethodDocParameter($parameter, Context $context, string $reference): string
     {
         list($class, $array) = $this->getClass($parameter, $context, $reference);
 
         return sprintf(' * @param %s $%s %s', implode('|', $class), Inflector::camelize($parameter->getName()), $parameter->getDescription() ?: '');
     }
 
-    protected function getClass(BodyParameter $parameter, Context $context, $reference): array
+    protected function getClass(BodyParameter $parameter, Context $context, string $reference): array
     {
         $resolvedSchema = null;
         $jsonReference = null;
@@ -66,11 +64,11 @@ class BodyParameterGenerator extends ParameterGenerator
         $schema = $parameter->getSchema();
 
         if ($schema instanceof Reference) {
-            list($jsonReference, $resolvedSchema) = $this->resolveSchema($schema, Schema::class);
+            list($jsonReference, $resolvedSchema) = $this->resolve($schema, Schema::class);
         }
 
         if ($schema instanceof Schema && 'array' === $schema->getType() && $schema->getItems() instanceof Reference) {
-            list($jsonReference, $resolvedSchema) = $this->resolveSchema($schema->getItems(), Schema::class);
+            list($jsonReference, $resolvedSchema) = $this->resolve($schema->getItems(), Schema::class);
             $array = true;
         }
 
@@ -98,7 +96,7 @@ class BodyParameterGenerator extends ParameterGenerator
         return [[$class], $array];
     }
 
-    private function convertParameterType($type, $format = null)
+    private function convertParameterType(string $type, ?string $format = null): array
     {
         if (null === $format) {
             $format = 'default';
@@ -134,21 +132,5 @@ class BodyParameterGenerator extends ParameterGenerator
         }
 
         return $convertArray[$type][$format];
-    }
-
-    private function resolveSchema(Reference $reference, $class)
-    {
-        $result = $reference;
-
-        do {
-            $refString = (string) $reference->getMergedUri();
-            $result = $result->resolve(function ($data) use ($result, $class) {
-                return $this->denormalizer->denormalize($data, $class, 'json', [
-                    'document-origin' => (string) $result->getMergedUri()->withFragment(''),
-                ]);
-            });
-        } while ($result instanceof Reference);
-
-        return [$refString, $result];
     }
 }

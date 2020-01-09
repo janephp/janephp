@@ -12,13 +12,8 @@ trait GuesserResolverTrait
 
     /**
      * Resolve a reference with a denormalizer.
-     *
-     * @param Reference $reference
-     * @param string    $class
-     *
-     * @return mixed
      */
-    public function resolve($reference, $class)
+    public function resolve(Reference $reference, string $class): object
     {
         $result = $reference;
 

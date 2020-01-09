@@ -55,7 +55,7 @@ class RequestBodyGenerator
     }
 
     /**
-     * @param $requestBody RequestBody|Reference
+     * @param RequestBody|Reference $requestBody
      */
     public function generateMethodDocParameter($requestBody, string $reference, Context $context)
     {

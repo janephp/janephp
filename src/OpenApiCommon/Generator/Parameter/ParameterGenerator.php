@@ -23,7 +23,7 @@ abstract class ParameterGenerator
      *
      * @return Node\Param|null
      */
-    public function generateMethodParameter($parameter, Context $context, $reference)
+    public function generateMethodParameter($parameter, Context $context, string $reference): ?Node\Param
     {
         return null;
     }
@@ -33,7 +33,7 @@ abstract class ParameterGenerator
      *
      * @return string
      */
-    public function generateMethodDocParameter($parameter, Context $context, $reference)
+    public function generateMethodDocParameter($parameter, Context $context, string $reference): string
     {
         return '';
     }

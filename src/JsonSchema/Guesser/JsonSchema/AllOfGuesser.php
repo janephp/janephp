@@ -34,12 +34,15 @@ class AllOfGuesser implements GuesserInterface, TypeGuesserInterface, ChainGuess
     /**
      * {@inheritdoc}
      */
-    public function guessClass($object, $name, $reference, Registry $registry)
+    public function guessClass($object, string $name, string $reference, Registry $registry): void
     {
         $hasSubObject = false;
 
         foreach ($object->getAllOf() as $allOf) {
-            if ('object' === $this->resolve($allOf, $this->getSchemaClass())->getType()) {
+            if ($allOf instanceof Reference) {
+                $allOf = $this->resolve($allOf, $this->getSchemaClass());
+            }
+            if ('object' === $allOf->getType()) {
                 $hasSubObject = true;
                 break;
             }
@@ -87,7 +90,7 @@ class AllOfGuesser implements GuesserInterface, TypeGuesserInterface, ChainGuess
     /**
      * {@inheritdoc}
      */
-    public function guessType($object, $name, $reference, Registry $registry)
+    public function guessType($object, string $name, string $reference, Registry $registry): Type
     {
         $type = null;
         $allOfType = null;
@@ -131,7 +134,7 @@ class AllOfGuesser implements GuesserInterface, TypeGuesserInterface, ChainGuess
     /**
      * {@inheritdoc}
      */
-    public function supportObject($object)
+    public function supportObject($object): bool
     {
         $class = $this->getSchemaClass();
 
@@ -141,7 +144,7 @@ class AllOfGuesser implements GuesserInterface, TypeGuesserInterface, ChainGuess
     /**
      * {@inheritdoc}
      */
-    public function guessProperties($object, $name, $reference, Registry $registry)
+    public function guessProperties($object, string $name, string $reference, Registry $registry): array
     {
         $properties = [];
         foreach ($object->getAllOf() as $allOfIndex => $allOfSchema) {
@@ -168,7 +171,7 @@ class AllOfGuesser implements GuesserInterface, TypeGuesserInterface, ChainGuess
         return JsonSchema::class;
     }
 
-    protected function createClassGuess($object, $reference, $name, $extensions): ClassGuess
+    protected function createClassGuess($object, string $reference, string $name, array $extensions): ClassGuess
     {
         return new ClassGuess($object, $reference, $this->naming->getClassName($name), $extensions);
     }

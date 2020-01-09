@@ -5,6 +5,7 @@ namespace Jane\JsonSchema\Guesser\JsonSchema;
 use Jane\JsonSchema\Guesser\ChainGuesserAwareInterface;
 use Jane\JsonSchema\Guesser\ChainGuesserAwareTrait;
 use Jane\JsonSchema\Guesser\Guess\MultipleType;
+use Jane\JsonSchema\Guesser\Guess\Type;
 use Jane\JsonSchema\Guesser\GuesserInterface;
 use Jane\JsonSchema\Guesser\TypeGuesserInterface;
 use Jane\JsonSchema\Model\JsonSchema;
@@ -17,7 +18,7 @@ class MultipleGuesser implements GuesserInterface, TypeGuesserInterface, ChainGu
     /**
      * {@inheritdoc}
      */
-    public function supportObject($object)
+    public function supportObject($object): bool
     {
         $class = $this->getSchemaClass();
 
@@ -32,7 +33,7 @@ class MultipleGuesser implements GuesserInterface, TypeGuesserInterface, ChainGu
     /**
      * {@inheritdoc}
      */
-    public function guessType($object, $name, $reference, Registry $registry)
+    public function guessType($object, string $name, string $reference, Registry $registry): Type
     {
         $typeGuess = new MultipleType($object);
         $fakeSchema = clone $object;

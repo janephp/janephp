@@ -10,7 +10,7 @@ class ArrayType extends Type
 {
     protected $itemType;
 
-    public function __construct($object, Type $itemType, $type = 'array')
+    public function __construct(object $object, Type $itemType, string $type = 'array')
     {
         parent::__construct($object, $type);
 
@@ -20,7 +20,7 @@ class ArrayType extends Type
     /**
      * (@inheritDoc}.
      */
-    public function getDocTypeHint($namespace)
+    public function getDocTypeHint(string $namespace)
     {
         if ($this->itemType instanceof MultipleType) {
             $typesString = [];
@@ -91,7 +91,7 @@ class ArrayType extends Type
         return [$statements, $valuesVar];
     }
 
-    public function getTypeHint($namespace)
+    public function getTypeHint(string $namespace)
     {
         return 'array';
     }

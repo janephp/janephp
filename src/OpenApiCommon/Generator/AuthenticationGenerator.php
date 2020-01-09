@@ -21,9 +21,6 @@ class AuthenticationGenerator implements GeneratorInterface
     protected const REFERENCE = 'Authentication';
     protected const FILE_TYPE_AUTH = 'auth';
 
-    /**
-     * @var Naming Naming Service
-     */
     protected $naming;
 
     public function __construct(Naming $naming)
@@ -36,7 +33,7 @@ class AuthenticationGenerator implements GeneratorInterface
         return $this->naming;
     }
 
-    public function generate(BaseSchema $schema, string $className, Context $context)
+    public function generate(BaseSchema $schema, string $className, Context $context): void
     {
         if ($schema instanceof Schema) {
             $namespace = sprintf('%s\\%s', $schema->getNamespace(), self::REFERENCE);

@@ -6,6 +6,7 @@ use Jane\JsonSchema\Guesser\ChainGuesserAwareInterface;
 use Jane\JsonSchema\Guesser\ChainGuesserAwareTrait;
 use Jane\JsonSchema\Guesser\ClassGuesserInterface;
 use Jane\JsonSchema\Guesser\Guess\MultipleType;
+use Jane\JsonSchema\Guesser\Guess\Type;
 use Jane\JsonSchema\Guesser\GuesserInterface;
 use Jane\JsonSchema\Guesser\GuesserResolverTrait;
 use Jane\JsonSchema\Guesser\TypeGuesserInterface;
@@ -34,7 +35,7 @@ class ObjectOneOfGuesser implements GuesserInterface, TypeGuesserInterface, Clas
     /**
      * {@inheritdoc}
      */
-    public function guessClass($object, $name, $reference, Registry $registry)
+    public function guessClass($object, string $name, string $reference, Registry $registry): void
     {
         foreach ($object->getOneOf() as $key => $oneOf) {
             $oneOfName = $name . 'Sub';
@@ -54,7 +55,7 @@ class ObjectOneOfGuesser implements GuesserInterface, TypeGuesserInterface, Clas
     /**
      * {@inheritdoc}
      */
-    public function guessType($object, $name, $reference, Registry $registry)
+    public function guessType($object, string $name, string $reference, Registry $registry): Type
     {
         $type = new MultipleType($object);
 
@@ -78,7 +79,7 @@ class ObjectOneOfGuesser implements GuesserInterface, TypeGuesserInterface, Clas
     /**
      * {@inheritdoc}
      */
-    public function supportObject($object)
+    public function supportObject($object): bool
     {
         return ($object instanceof JsonSchema) && 'object' === $object->getType() && \is_array($object->getOneOf()) && \count($object->getOneOf()) > 0;
     }
