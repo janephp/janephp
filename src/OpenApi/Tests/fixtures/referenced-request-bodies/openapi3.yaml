@@ -5,7 +5,7 @@ info:
 servers:
   - url: https://acme.localhost/v1/
 paths:
-  "/parents/{parent_id}/child/child_id/":
+  '/parents/{parent_id}/child/child_id/':
     parameters:
       - name: parent_id
         in: path
@@ -21,7 +21,8 @@ paths:
           format: uuid
     get:
       responses:
-        200:
+        '200':
+          description: 'Get'
           content:
             application/json:
               schema:
@@ -30,7 +31,8 @@ paths:
       requestBody:
         $ref: '#/components/requestBodies/child'
       responses:
-        200:
+        '200':
+          description: 'Patch'
           content:
             application/json:
               schema:

@@ -160,13 +160,7 @@ abstract class EndpointGenerator
             }
         }
 
-        $requestBody = $operation->getOperation()->getRequestBody();
-
-        if ($requestBody instanceof Reference) {
-            [$_, $requestBody] = $this->resolve($requestBody, RequestBody::class);
-        }
-
-        if ($requestBody instanceof RequestBody && $requestBody->getContent()) {
+        if (($requestBody = $operation->getOperation()->getRequestBody()) instanceof RequestBody && null !== $requestBody->getContent()) {
             $bodyParam = $this->requestBodyGenerator->generateMethodParameter($requestBody, $operation->getReference() . '/requestBody', $context);
             $bodyDoc = $this->requestBodyGenerator->generateMethodDocParameter($requestBody, $operation->getReference() . '/requestBody', $context);
             $bodyAssign = new Stmt\Expression(new Expr\Assign(new Expr\PropertyFetch(new Expr\Variable('this'), 'body'), new Expr\Variable('requestBody')));

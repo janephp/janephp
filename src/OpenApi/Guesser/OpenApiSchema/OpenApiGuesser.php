@@ -6,7 +6,9 @@ use Jane\JsonSchema\Guesser\ChainGuesserAwareInterface;
 use Jane\JsonSchema\Guesser\ChainGuesserAwareTrait;
 use Jane\JsonSchema\Guesser\ClassGuesserInterface;
 use Jane\JsonSchema\Guesser\GuesserInterface;
+use Jane\JsonSchema\Guesser\GuesserResolverTrait;
 use Jane\JsonSchema\Registry;
+use Jane\JsonSchemaRuntime\Reference;
 use Jane\OpenApi\JsonSchema\Model\Components;
 use Jane\OpenApi\JsonSchema\Model\Operation;
 use Jane\OpenApi\JsonSchema\Model\Parameter;
@@ -14,12 +16,19 @@ use Jane\OpenApi\JsonSchema\Model\PathItem;
 use Jane\OpenApi\JsonSchema\Model\RequestBody;
 use Jane\OpenApi\JsonSchema\Model\Response;
 use Jane\OpenApi\JsonSchema\Model\OpenApi;
+use Symfony\Component\Serializer\SerializerInterface;
 
 class OpenApiGuesser implements GuesserInterface, ClassGuesserInterface, ChainGuesserAwareInterface
 {
+    use GuesserResolverTrait;
     use ChainGuesserAwareTrait;
 
     private const IN_BODY = 'body';
+
+    public function __construct(SerializerInterface $serializer)
+    {
+        $this->serializer = $serializer;
+    }
 
     /**
      * {@inheritdoc}
@@ -103,6 +112,11 @@ class OpenApiGuesser implements GuesserInterface, ClassGuesserInterface, ChainGu
                     $this->chainGuesser->guessClass($parameter->getSchema(), $name . 'Body', $reference . '/parameters/' . $key, $registry);
                 }
             }
+        }
+
+        if (($requestBody = $operation->getRequestBody()) instanceof Reference) {
+            $requestBody = $this->resolve($requestBody, RequestBody::class);
+            $operation->setRequestBody($requestBody);
         }
 
         if ($operation->getRequestBody() instanceof RequestBody && is_iterable($operation->getRequestBody()->getContent())) {

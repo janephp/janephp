@@ -17,7 +17,7 @@ class GuesserFactory
         $chainGuesser->addGuesser(new SecurityGuesser());
         $chainGuesser->addGuesser(new DateTimeGuesser($dateFormat));
         $chainGuesser->addGuesser(new ReferenceGuesser($serializer));
-        $chainGuesser->addGuesser(new OpenApiGuesser());
+        $chainGuesser->addGuesser(new OpenApiGuesser($serializer));
         $chainGuesser->addGuesser(new SchemaGuesser($naming, $serializer));
         $chainGuesser->addGuesser(new AdditionalPropertiesGuesser());
         $chainGuesser->addGuesser(new AllOfGuesser($serializer, $naming));
