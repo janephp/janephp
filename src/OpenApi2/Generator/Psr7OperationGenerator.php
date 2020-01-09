@@ -11,7 +11,7 @@ class Psr7OperationGenerator extends OperationGenerator
         return 'executePsr7Endpoint';
     }
 
-    protected function getReturnDoc($returnTypes, $throwTypes): string
+    protected function getReturnDoc(array $returnTypes, array $throwTypes): string
     {
         return implode('', array_map(function ($value) {
             return ' * @throws ' . $value . "\n";

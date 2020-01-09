@@ -16,7 +16,7 @@ class ObjectType extends Type
 
     private $discriminants;
 
-    public function __construct($object, $className, $namespace, $discriminants = [])
+    public function __construct(object $object, string $className, string $namespace, array $discriminants = [])
     {
         parent::__construct($object, 'object');
 
@@ -109,7 +109,7 @@ class ObjectType extends Type
     /**
      * (@inheritDoc}.
      */
-    public function getTypeHint($currentNamespace)
+    public function getTypeHint(string $currentNamespace)
     {
         if ('\\' . $currentNamespace . '\\' . $this->className === $this->getFqdn()) {
             return $this->className;
@@ -121,17 +121,17 @@ class ObjectType extends Type
     /**
      * (@inheritDoc}.
      */
-    public function getDocTypeHint($namespace)
+    public function getDocTypeHint(string $namespace)
     {
         return $this->getTypeHint($namespace);
     }
 
-    public function getClassName()
+    public function getClassName(): string
     {
         return $this->className;
     }
 
-    private function getFqdn($withRoot = true)
+    private function getFqdn(bool $withRoot = true): string
     {
         if ($withRoot) {
             return '\\' . $this->namespace . '\\Model\\' . $this->className;

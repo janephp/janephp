@@ -7,7 +7,7 @@ use Jane\OpenApi2\Model\Schema;
 
 class ArrayGuesser extends CommonArrayGuesser
 {
-    protected function getSchemaClass()
+    protected function getSchemaClass(): string
     {
         return Schema::class;
     }

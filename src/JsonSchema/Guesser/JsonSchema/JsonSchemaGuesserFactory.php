@@ -3,13 +3,14 @@
 namespace Jane\JsonSchema\Guesser\JsonSchema;
 
 use Jane\JsonSchema\Generator\Naming;
+use Jane\JsonSchema\Guesser\ChainGuesser;
 use Jane\JsonSchema\Guesser\ChainGuesserFactory;
 use Jane\JsonSchema\JsonSchemaMerger;
 use Symfony\Component\Serializer\SerializerInterface;
 
 class JsonSchemaGuesserFactory
 {
-    public static function create(SerializerInterface $serializer, array $options = [])
+    public static function create(SerializerInterface $serializer, array $options = []): ChainGuesser
     {
         $chainGuesser = ChainGuesserFactory::create($serializer);
         $naming = new Naming();

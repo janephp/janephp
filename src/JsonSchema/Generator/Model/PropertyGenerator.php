@@ -13,19 +13,15 @@ trait PropertyGenerator
 {
     /**
      * The naming service.
-     *
-     * @return Naming
      */
-    abstract protected function getNaming();
+    abstract protected function getNaming(): Naming;
 
     /**
      * The PHP Parser.
-     *
-     * @return Parser
      */
-    abstract protected function getParser();
+    abstract protected function getParser(): Parser;
 
-    protected function createProperty(Property $property, $namespace, $default = null, bool $required = false): Stmt
+    protected function createProperty(Property $property, string $namespace, $default = null, bool $required = false): Stmt
     {
         $propertyName = $this->getNaming()->getPropertyName($property->getPhpName());
         $propertyStmt = new Stmt\PropertyProperty($propertyName);

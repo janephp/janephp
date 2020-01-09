@@ -13,7 +13,7 @@ class SchemaGuesser extends ObjectGuesser
     /**
      * {@inheritdoc}
      */
-    public function supportObject($object)
+    public function supportObject($object): bool
     {
         return ($object instanceof Schema) && ('object' === $object->getType() || null === $object->getType()) && null !== $object->getProperties();
     }
@@ -21,7 +21,7 @@ class SchemaGuesser extends ObjectGuesser
     /**
      * @param Schema $object
      */
-    protected function createClassGuess($object, $reference, $name, $extensions): BaseClassGuess
+    protected function createClassGuess($object, string $reference, string $name, array $extensions): BaseClassGuess
     {
         $classGuess = new ClassGuess($object, $reference, $this->naming->getClassName($name), $extensions);
 
@@ -38,10 +38,7 @@ class SchemaGuesser extends ObjectGuesser
         return $classGuess;
     }
 
-    /**
-     * @return string
-     */
-    protected function getSchemaClass()
+    protected function getSchemaClass(): string
     {
         return Schema::class;
     }

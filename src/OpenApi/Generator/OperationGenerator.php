@@ -24,9 +24,9 @@ abstract class OperationGenerator
 
     abstract protected function getResponseClass(): string;
 
-    abstract protected function getReturnDoc($returnTypes, $throwTypes): string;
+    abstract protected function getReturnDoc(array $returnTypes, array $throwTypes): string;
 
-    public function createOperation($name, Operation $operation, Context $context): Stmt\ClassMethod
+    public function createOperation(string $name, Operation $operation, Context $context): Stmt\ClassMethod
     {
         [$endpointName, $methodParams, $methodDoc, $returnTypes, $throwTypes] = $this->endpointGenerator->createEndpointClass($operation, $context);
         $endpointArgs = [];

@@ -10,7 +10,7 @@ class MultipleType extends Type
 {
     protected $types;
 
-    public function __construct($object, array $types = [])
+    public function __construct(object $object, array $types = [])
     {
         parent::__construct($object, 'mixed');
 
@@ -19,12 +19,8 @@ class MultipleType extends Type
 
     /**
      * Add a type.
-     *
-     * @param Type $type
-     *
-     * @return $this
      */
-    public function addType(Type $type)
+    public function addType(Type $type): self
     {
         if ($type instanceof self) {
             foreach ($type->getTypes() as $subType) {
@@ -44,7 +40,7 @@ class MultipleType extends Type
      *
      * @return Type[]
      */
-    public function getTypes()
+    public function getTypes(): array
     {
         return $this->types;
     }
@@ -54,7 +50,7 @@ class MultipleType extends Type
      *
      * @return Type[]
      */
-    protected function getTypesSorted()
+    protected function getTypesSorted(): array
     {
         $types = $this->getTypes();
         usort($types, function ($first, $second) {
@@ -73,7 +69,7 @@ class MultipleType extends Type
     /**
      * {@inheritdoc}
      */
-    public function getDocTypeHint($namespace)
+    public function getDocTypeHint(string $namespace)
     {
         $stringTypes = array_map(function ($type) use ($namespace) {
             return $type->getDocTypeHint($namespace);
@@ -85,7 +81,7 @@ class MultipleType extends Type
     /**
      * {@inheritdoc}
      */
-    public function getTypeHint($namespace)
+    public function getTypeHint(string $namespace)
     {
         // We have exactly two types: one null and an object
         if (2 === \count($this->types)) {
@@ -103,7 +99,7 @@ class MultipleType extends Type
         return null;
     }
 
-    private function isOptionalType(Type $nullType)
+    private function isOptionalType(Type $nullType): bool
     {
         return 'null' === $nullType->getName();
     }

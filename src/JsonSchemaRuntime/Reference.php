@@ -6,9 +6,7 @@ namespace Jane\JsonSchemaRuntime;
 
 use League\Uri\AbstractUri;
 use League\Uri\Http;
-use League\Uri\Schemes\Http as HttpLegacy;
 use League\Uri\Parser;
-use League\Uri\UriParser;
 use Rs\Json\Pointer;
 use Symfony\Component\Yaml\Yaml;
 
@@ -30,15 +28,7 @@ class Reference
 
     public function __construct(string $reference, string $origin)
     {
-        if (class_exists(Parser::class)) {
-            $uriParse = new Parser();
-        } else {
-            $uriParse = new UriParser();
-        }
-
-        $http = class_exists(Http::class) ? Http::class : HttpLegacy::class;
-
-        $originParts = $uriParse->parse($origin);
+        $originParts = (new Parser())->parse($origin);
         $referenceParts = parse_url($reference);
         $mergedParts = array_merge($originParts, $referenceParts);
 
@@ -46,9 +36,9 @@ class Reference
             $mergedParts['path'] = $this->joinPath(\dirname($originParts['path']), $referenceParts['path']);
         }
 
-        $this->referenceUri = $http::createFromString($reference);
-        $this->originUri = $http::createFromString($origin);
-        $this->mergedUri = $http::createFromComponents($mergedParts);
+        $this->referenceUri = Http::createFromString($reference);
+        $this->originUri = Http::createFromString($origin);
+        $this->mergedUri = Http::createFromComponents($mergedParts);
     }
 
     /**
@@ -109,10 +99,8 @@ class Reference
 
     /**
      * Return true if reference and origin are in the same document.
-     *
-     * @return bool
      */
-    public function isInCurrentDocument()
+    public function isInCurrentDocument(): bool
     {
         return
             $this->mergedUri->getScheme() === $this->originUri->getScheme()
@@ -127,26 +115,17 @@ class Reference
         ;
     }
 
-    /**
-     * @return AbstractUri|\League\Uri\Schemes\Generic\AbstractUri
-     */
-    public function getMergedUri()
+    public function getMergedUri(): AbstractUri
     {
         return $this->mergedUri;
     }
 
-    /**
-     * @return AbstractUri|\League\Uri\Schemes\Generic\AbstractUri
-     */
-    public function getReferenceUri()
+    public function getReferenceUri(): AbstractUri
     {
         return $this->referenceUri;
     }
 
-    /**
-     * @return AbstractUri|\League\Uri\Schemes\Generic\AbstractUri
-     */
-    public function getOriginUri()
+    public function getOriginUri(): AbstractUri
     {
         return $this->originUri;
     }
@@ -157,12 +136,8 @@ class Reference
      *   a/b + c => a/b/c
      *   a/b + /c => /c
      *   a/b/c + .././d => a/b/d
-     *
-     * @param array ...$paths
-     *
-     * @return string
      */
-    private function joinPath(...$paths)
+    private function joinPath(...$paths): string
     {
         $resultPath = null;
 

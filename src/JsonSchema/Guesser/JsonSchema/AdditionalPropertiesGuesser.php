@@ -19,7 +19,7 @@ class AdditionalPropertiesGuesser implements GuesserInterface, TypeGuesserInterf
     /**
      * {@inheritdoc}
      */
-    public function guessClass($object, $name, $reference, Registry $registry)
+    public function guessClass($object, string $name, string $reference, Registry $registry): void
     {
         if (is_a($object->getAdditionalProperties(), $this->getSchemaClass())) {
             $this->chainGuesser->guessClass($object->getAdditionalProperties(), $name . 'Item', $reference . '/additionalProperties', $registry);
@@ -29,7 +29,7 @@ class AdditionalPropertiesGuesser implements GuesserInterface, TypeGuesserInterf
     /**
      * {@inheritdoc}
      */
-    public function supportObject($object)
+    public function supportObject($object): bool
     {
         $class = $this->getSchemaClass();
 
@@ -51,7 +51,7 @@ class AdditionalPropertiesGuesser implements GuesserInterface, TypeGuesserInterf
     /**
      * {@inheritdoc}
      */
-    public function guessType($object, $name, $reference, Registry $registry)
+    public function guessType($object, string $name, string $reference, Registry $registry): Type
     {
         if (true === $object->getAdditionalProperties()) {
             return new MapType($object, new Type($object, 'mixed'));
@@ -60,10 +60,7 @@ class AdditionalPropertiesGuesser implements GuesserInterface, TypeGuesserInterf
         return new MapType($object, $this->chainGuesser->guessType($object->getAdditionalProperties(), $name . 'Item', $reference . '/additionalProperties', $registry));
     }
 
-    /**
-     * @return string
-     */
-    protected function getSchemaClass()
+    protected function getSchemaClass(): string
     {
         return JsonSchema::class;
     }

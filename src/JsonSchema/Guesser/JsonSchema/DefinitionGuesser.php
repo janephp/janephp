@@ -16,7 +16,7 @@ class DefinitionGuesser implements ChainGuesserAwareInterface, GuesserInterface,
     /**
      * {@inheritdoc}
      */
-    public function guessClass($object, $name, $reference, Registry $registry)
+    public function guessClass($object, string $name, string $reference, Registry $registry): void
     {
         /**
          * @var string
@@ -30,15 +30,12 @@ class DefinitionGuesser implements ChainGuesserAwareInterface, GuesserInterface,
     /**
      * {@inheritdoc}
      */
-    public function supportObject($object)
+    public function supportObject($object): bool
     {
         return ($object instanceof JsonSchema) && null !== $object->getDefinitions() && \count($object->getDefinitions()) > 0;
     }
 
-    /**
-     * @return string
-     */
-    protected function getSchemaClass()
+    protected function getSchemaClass(): string
     {
         return JsonSchema::class;
     }

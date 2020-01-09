@@ -13,52 +13,37 @@ class File
 {
     /**
      * Relative path of the file generated.
-     *
-     * @var string
      */
     private $filename;
 
     /**
      * Ast generated.
-     *
-     * @var Node
      */
     private $node;
 
     /**
      * Type of generation (model / normalizer / ...).
-     *
-     * @var string
      */
     private $type;
 
-    public function __construct($filename, Node $node, $type)
+    public function __construct(string $filename, Node $node, string $type)
     {
         $this->filename = $filename;
         $this->node = $node;
         $this->type = $type;
     }
 
-    /**
-     * @return string
-     */
-    public function getFilename()
+    public function getFilename(): string
     {
         return $this->filename;
     }
 
-    /**
-     * @return Node
-     */
-    public function getNode()
+    public function getNode(): Node
     {
         return $this->node;
     }
 
-    /**
-     * @return string
-     */
-    public function getType()
+    public function getType(): string
     {
         return $this->type;
     }

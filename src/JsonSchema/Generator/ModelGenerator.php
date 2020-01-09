@@ -44,10 +44,8 @@ class ModelGenerator implements GeneratorInterface
 
     /**
      * The naming service.
-     *
-     * @return Naming
      */
-    protected function getNaming()
+    protected function getNaming(): Naming
     {
         return $this->naming;
     }
@@ -55,7 +53,7 @@ class ModelGenerator implements GeneratorInterface
     /**
      * {@inheritdoc}
      */
-    protected function getParser()
+    protected function getParser(): Parser
     {
         return $this->parser;
     }
@@ -63,7 +61,7 @@ class ModelGenerator implements GeneratorInterface
     /**
      * Generate a model given a schema.
      */
-    public function generate(Schema $schema, string $className, Context $context)
+    public function generate(Schema $schema, string $className, Context $context): void
     {
         $namespace = $schema->getNamespace() . '\\Model';
 
@@ -85,7 +83,7 @@ class ModelGenerator implements GeneratorInterface
         }
     }
 
-    protected function doCreateClassMethods(ClassGuess $classGuess, Property $property, string $namespace, bool $required)
+    protected function doCreateClassMethods(ClassGuess $classGuess, Property $property, string $namespace, bool $required): array
     {
         $methods = [];
         $methods[] = $this->createGetter($property, $namespace, $required);
@@ -94,7 +92,7 @@ class ModelGenerator implements GeneratorInterface
         return $methods;
     }
 
-    protected function doCreateModel(ClassGuess $class, $properties, $methods): Stmt\Class_
+    protected function doCreateModel(ClassGuess $class, array $properties, array $methods): Stmt\Class_
     {
         return $this->createModel(
             $class->getName(),

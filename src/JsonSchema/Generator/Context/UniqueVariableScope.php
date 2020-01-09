@@ -16,7 +16,7 @@ class UniqueVariableScope
      *
      * @return string if not found return the $name given, if not return the name suffixed with a number
      */
-    public function getUniqueName($name)
+    public function getUniqueName(string $name): string
     {
         if (!isset($this->registry[$name])) {
             $this->registry[$name] = 0;

@@ -19,7 +19,7 @@ class NonBodyParameterGenerator extends ParameterGenerator
      *
      * @param Parameter $parameter
      */
-    public function generateMethodParameter($parameter, Context $context, $reference): Node\Param
+    public function generateMethodParameter($parameter, Context $context, string $reference): ?Node\Param
     {
         $name = Inflector::camelize($parameter->getName());
         $methodParameter = new Node\Param(new Expr\Variable($name));
@@ -44,7 +44,7 @@ class NonBodyParameterGenerator extends ParameterGenerator
     /**
      * @param Parameter[] $parameters
      */
-    public function generateOptionsResolverStatements(Expr\Variable $optionsResolverVariable, $parameters): array
+    public function generateOptionsResolverStatements(Expr\Variable $optionsResolverVariable, array $parameters): array
     {
         $required = [];
         $allowedTypes = [];
@@ -99,7 +99,7 @@ class NonBodyParameterGenerator extends ParameterGenerator
      *
      * @param Parameter $parameter
      */
-    public function generateMethodDocParameter($parameter, Context $context, $reference)
+    public function generateMethodDocParameter($parameter, Context $context, string $reference): string
     {
         $type = 'mixed';
 
@@ -135,7 +135,7 @@ class NonBodyParameterGenerator extends ParameterGenerator
         return $expr;
     }
 
-    private function convertParameterType($type)
+    private function convertParameterType(string $type): array
     {
         $convertArray = [
             'string' => ['string'],

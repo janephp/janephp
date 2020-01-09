@@ -50,7 +50,7 @@ class Property
     /** @var bool */
     private $deprecated = false;
 
-    public function __construct($object, string $name, string $reference, bool $nullable = false, Type $type = null, string $description = null, $default = null, ?bool $readOnly = null)
+    public function __construct(object $object, string $name, string $reference, bool $nullable = false, Type $type = null, string $description = null, $default = null, ?bool $readOnly = null)
     {
         $this->name = $name;
         $this->object = $object;
@@ -62,7 +62,7 @@ class Property
         $this->readOnly = $readOnly ?? false;
     }
 
-    public function setPhpName(string $name)
+    public function setPhpName(string $name): void
     {
         $this->phpName = $name;
     }
@@ -72,7 +72,7 @@ class Property
         return $this->phpName;
     }
 
-    public function getObject()
+    public function getObject(): object
     {
         return $this->object;
     }

@@ -12,7 +12,7 @@ class PatternMultipleType extends Type
 {
     protected $types = [];
 
-    public function __construct($object, array $types = [])
+    public function __construct(object $object, array $types = [])
     {
         parent::__construct($object, 'mixed');
 
@@ -21,13 +21,8 @@ class PatternMultipleType extends Type
 
     /**
      * Add a type.
-     *
-     * @param string $pattern
-     * @param Type   $type
-     *
-     * @return $this
      */
-    public function addType($pattern, Type $type)
+    public function addType(string $pattern, Type $type): self
     {
         $this->types[$pattern] = $type;
 
@@ -37,7 +32,7 @@ class PatternMultipleType extends Type
     /**
      * {@inheritdoc}
      */
-    public function getDocTypeHint($namespace)
+    public function getDocTypeHint(string $namespace)
     {
         $stringTypes = array_map(function ($type) use ($namespace) {
             return $type->getDocTypeHint($namespace) . '[]';

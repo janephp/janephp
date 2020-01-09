@@ -36,7 +36,7 @@ abstract class ClientGenerator implements GeneratorInterface
         $this->operationNaming = $operationNaming;
     }
 
-    public function generate(Schema $schema, string $className, Context $context)
+    public function generate(Schema $schema, string $className, Context $context): void
     {
         /** @var OpenApi $openApi */
         $openApi = $schema->getParsed();

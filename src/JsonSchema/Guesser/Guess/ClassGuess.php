@@ -10,7 +10,7 @@ class ClassGuess
     private $name;
 
     /**
-     * @var mixed Object link to the generation
+     * @var object Object link to the generation
      */
     private $object;
 
@@ -31,7 +31,7 @@ class ClassGuess
     /** @var bool */
     private $deprecated;
 
-    public function __construct($object, string $reference, string $name, array $extensionsObject = [], bool $deprecated = false)
+    public function __construct(object $object, string $reference, string $name, array $extensionsObject = [], bool $deprecated = false)
     {
         $this->name = $name;
         $this->object = $object;
@@ -40,7 +40,7 @@ class ClassGuess
         $this->deprecated = $deprecated;
     }
 
-    public function getObject()
+    public function getObject(): object
     {
         return $this->object;
     }

@@ -39,12 +39,12 @@ class SecuritySchemeGuess
         return $this->name;
     }
 
-    public function getType()
+    public function getType(): string
     {
         return $this->type;
     }
 
-    public function getObject()
+    public function getObject(): object
     {
         return $this->object;
     }
