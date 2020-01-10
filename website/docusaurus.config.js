@@ -14,7 +14,7 @@ module.exports = {
         src: 'img/logo.svg',
       },
       links: [
-        {to: 'docs/doc1', label: 'Docs', position: 'left'},
+        {to: 'docs/documentation/choose', label: 'Docs', position: 'left'},
         {to: 'blog', label: 'Blog', position: 'left'},
         {
           href: 'https://github.com/janephp/janephp',
@@ -27,32 +27,36 @@ module.exports = {
       style: 'dark',
       links: [
         {
-          title: 'Docs',
+          title: 'Documentation',
           items: [
             {
               label: 'Getting started',
-              to: 'docs/doc1',
+              to: 'docs/documentation/choose',
             },
             {
-              label: 'JSON Schema Component',
-              to: 'docs/doc2',
+              label: 'Usage with JSON Schema',
+              to: 'docs/documentation/json_schema',
             },
             {
-              label: 'OpenAPI Component',
-              to: 'docs/doc2',
+              label: 'Usage with OpenAPI',
+              to: 'docs/documentation/open_api',
             },
           ],
         },
         {
-          title: 'Community',
+          title: 'Guides',
           items: [
             {
-              label: 'Stack Overflow',
-              href: 'https://stackoverflow.com/questions/tagged/docusaurus',
+              label: 'Elasticsearch models',
+              to: 'docs/guides/elasticsearch_models',
             },
             {
-              label: 'Discord',
-              href: 'https://discordapp.com/invite/docusaurus',
+              label: 'API Platform DTO',
+              to: 'docs/guides/apiplatform_dto',
+            },
+            {
+              label: 'External API Client',
+              to: 'docs/guides/external_api_client',
             },
           ],
         },
@@ -68,8 +72,8 @@ module.exports = {
               href: 'https://github.com/janephp/janephp',
             },
             {
-              label: 'Twitter',
-              href: 'https://twitter.com/docusaurus',
+              label: 'Sponsor',
+              href: 'https://jolicode.com',
             },
           ],
         },

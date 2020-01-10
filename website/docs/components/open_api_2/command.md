@@ -1,7 +1,7 @@
 ---
-id: doc1
-title: Style Guide
-sidebar_label: Style Guide
+id: command
+title: OpenAPI 2 - Command
+sidebar_label: Command
 ---
 
 You can write content using [GitHub-flavored Markdown syntax](https://github.github.com/gfm/).
