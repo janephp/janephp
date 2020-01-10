@@ -9,6 +9,7 @@ use Jane\JsonSchemaRuntime\Reference;
 use Jane\OpenApi\Generator\Parameter\NonBodyParameterGenerator;
 use Jane\OpenApi\JsonSchema\Model\OpenApi;
 use Jane\OpenApi\JsonSchema\Model\Parameter;
+use Jane\OpenApi\JsonSchema\Model\RequestBody;
 use Jane\OpenApi\JsonSchema\Model\Response;
 use Jane\OpenApi\JsonSchema\Model\Schema;
 use Jane\OpenApiCommon\Generator\ExceptionGenerator;
@@ -159,9 +160,7 @@ abstract class EndpointGenerator
             }
         }
 
-        $requestBody = $operation->getOperation()->getRequestBody();
-
-        if ($requestBody && $requestBody->getContent()) {
+        if (($requestBody = $operation->getOperation()->getRequestBody()) instanceof RequestBody && null !== $requestBody->getContent()) {
             $bodyParam = $this->requestBodyGenerator->generateMethodParameter($requestBody, $operation->getReference() . '/requestBody', $context);
             $bodyDoc = $this->requestBodyGenerator->generateMethodDocParameter($requestBody, $operation->getReference() . '/requestBody', $context);
             $bodyAssign = new Stmt\Expression(new Expr\Assign(new Expr\PropertyFetch(new Expr\Variable('this'), 'body'), new Expr\Variable('requestBody')));
@@ -361,6 +360,13 @@ EOD
 
     private function getGetBody(Operation $operation, Context $context): Stmt\ClassMethod
     {
+        $opRef = $operation->getReference() . '/requestBody';
+        $requestBody = $operation->getOperation()->getRequestBody();
+
+        if ($requestBody instanceof Reference) {
+            [$_, $requestBody] = $this->resolve($requestBody, RequestBody::class);
+        }
+
         return new Stmt\ClassMethod('getBody', [
             'type' => Stmt\Class_::MODIFIER_PUBLIC,
             'params' => [
@@ -368,7 +374,7 @@ EOD
                 new Param(new Expr\Variable('streamFactory'), new Expr\ConstFetch(new Name('null'))),
             ],
             'returnType' => new Name('array'),
-            'stmts' => $this->requestBodyGenerator->getSerializeStatements($operation->getOperation()->getRequestBody(), $operation->getReference() . '/requestBody', $context),
+            'stmts' => $this->requestBodyGenerator->getSerializeStatements($requestBody, $opRef, $context),
         ]);
     }
 

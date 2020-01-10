@@ -1,0 +1,67 @@
+openapi: '3.0.0'
+info:
+  version: 1.0.0
+  title: Referenced request bodies
+servers:
+  - url: https://acme.localhost/v1/
+paths:
+  '/parents/{parent_id}/child/child_id/':
+    parameters:
+      - name: parent_id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: child_id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+    get:
+      responses:
+        '200':
+          description: 'Get'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/child'
+    patch:
+      requestBody:
+        $ref: '#/components/requestBodies/child'
+      responses:
+        '200':
+          description: 'Patch'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/child'
+components:
+  schemas:
+    parent:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        child:
+          type: array
+          items:
+            $ref: '#/components/schemas/child'
+    child:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+  requestBodies:
+    child:
+      required: true
+      content:
+        application/json:
+          schema:
+            properties:
+              id:
+                type: string
+                format: uuid
