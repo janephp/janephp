@@ -4,16 +4,29 @@ namespace Jane\OpenApi\Generator\Parameter;
 
 use Doctrine\Common\Inflector\Inflector;
 use Jane\JsonSchema\Generator\Context\Context;
+use Jane\JsonSchemaRuntime\Reference;
+use Jane\OpenApi\Generator\GeneratorResolveTrait;
 use Jane\OpenApi\JsonSchema\Model\Parameter;
+use Jane\OpenApi\JsonSchema\Model\Schema;
 use Jane\OpenApiCommon\Generator\Parameter\ParameterGenerator;
 use PhpParser\Node;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Scalar;
 use PhpParser\Node\Stmt;
+use PhpParser\Parser;
 use Psr\Http\Message\StreamInterface;
+use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 
 class NonBodyParameterGenerator extends ParameterGenerator
 {
+    use GeneratorResolveTrait;
+
+    public function __construct(DenormalizerInterface $denormalizer, Parser $parser)
+    {
+        parent::__construct($parser);
+        $this->denormalizer = $denormalizer;
+    }
+
     /**
      * {@inheritdoc}
      *
@@ -57,6 +70,10 @@ class NonBodyParameterGenerator extends ParameterGenerator
 
             if ($parameter->getRequired() && (null !== $schema && null === $schema->getDefault())) {
                 $required[] = new Expr\ArrayItem(new Scalar\String_($parameter->getName()));
+            }
+
+            if ($schema instanceof Reference) {
+                [$_, $schema] = $this->resolve($schema, Schema::class);
             }
 
             if (null !== $schema && $schema->getType()) {
