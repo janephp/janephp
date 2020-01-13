@@ -16,6 +16,7 @@ use Symfony\Component\Yaml\Yaml;
 class Reference
 {
     private static $fileCache = [];
+    private static $pointerCache = [];
     private static $arrayCache = [];
 
     private $resolved;
@@ -84,11 +85,14 @@ class Reference
         }
 
         if (!\array_key_exists($reference, self::$arrayCache)) {
-            $pointer = new Pointer(self::$fileCache[$fragment]);
             if ('' === $this->mergedUri->getFragment()) {
                 $array = json_decode(self::$fileCache[$fragment]);
             } else {
-                $array = $pointer->get($this->mergedUri->getFragment());
+                if (!\array_key_exists($fragment, self::$pointerCache)) {
+                    self::$pointerCache[$fragment] = new Pointer(self::$fileCache[$fragment]);
+                }
+
+                $array = self::$pointerCache[$fragment]->get($this->mergedUri->getFragment());
             }
 
             self::$arrayCache[$reference] = $array;
