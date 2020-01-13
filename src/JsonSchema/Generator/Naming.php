@@ -75,6 +75,15 @@ class Naming
         // So replace invalid char by an underscore to allow Doctrine to uppercase word correctly.
         $name = trim(preg_replace('/[^a-z0-9 ]+/iu', '_', $name));
 
+        if (mb_strlen($name) > 218) {
+            // usual filesystem will block after 255 characters
+            // we stop at 218 to keep 32 characters for a MD5 hash of the original file (to avoid colision)
+            // and last 4 characters for the extension (.php)
+            $hash = md5($name);
+            $name = mb_substr($name, -218, 218);
+            $name = ucfirst($hash) . ucfirst($name);
+        }
+
         if ($class) {
             return Inflector::classify($name);
         }
