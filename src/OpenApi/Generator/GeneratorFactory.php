@@ -22,7 +22,7 @@ class GeneratorFactory
         $parserFactory = new ParserFactory();
         $parser = $parserFactory->create(ParserFactory::PREFER_PHP7);
 
-        $nonBodyParameter = new NonBodyParameterGenerator($parser);
+        $nonBodyParameter = new NonBodyParameterGenerator($serializer, $parser);
         $exceptionGenerator = new ExceptionGenerator();
         $operationManager = new OperationManager();
         $operationNaming = new ChainOperationNaming([

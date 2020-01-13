@@ -28,9 +28,13 @@ trait GeneratorResolveTrait
 
     protected function resolveParameter(Reference $parameter)
     {
-        return $parameter->resolve(function ($value) {
+        $result = $parameter;
+
+        return $parameter->resolve(function ($value) use ($result) {
             if (\is_object($value)) {
-                return $this->denormalizer->denormalize($value, 'Jane\\OpenApi\\JsonSchema\\Model\\Parameter', 'json');
+                return $this->denormalizer->denormalize($value, 'Jane\\OpenApi\\JsonSchema\\Model\\Parameter', 'json', [
+                    'document-origin' => (string) $result->getMergedUri()->withFragment(''),
+                ]);
             }
 
             return $value;
