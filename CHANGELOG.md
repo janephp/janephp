@@ -7,6 +7,42 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [5.3.0] - 2020-01-15
+
+### Added
+
+* [OpenAPI] [GH#177](https://github.com/janephp/janephp/pull/177) Authentication feature
+* [Jane] [GH#210](https://github.com/janephp/janephp/pull/210) Added JaneObjectNormalizer to lazy-load Normalizer when needed
+* [OpenAPI] [GH#206](https://github.com/janephp/janephp/pull/206) OpenAPI 2 component
+* [AutoMapper] [GH#214](https://github.com/janephp/janephp/pull/214) Added a quick documentation about the AutoMapper
+* [Jane] [GH#223](https://github.com/janephp/janephp/pull/223) Add test with lowest dependencies
+
+### Changed
+
+* [Jane] [GH#212](https://github.com/janephp/janephp/pull/212) Improve sorting in MultiType guesser
+* [Jane] [GH#213](https://github.com/janephp/janephp/pull/213) More explicit message for denormalize exceptions
+* [Jane] [GH#220](https://github.com/janephp/janephp/pull/220) Upgrade phpunit to v8.x
+* [Jane] [GH#224](https://github.com/janephp/janephp/pull/224) Added typehints onto all methods & parameters and fixing obvious AST miss-match
+
+### Deprecated
+
+* [Jane] [GH#210](https://github.com/janephp/janephp/pull/210) NormalizerFactory is now deprecated, you should use JaneObjectNormalizer
+* [OpenAPI] [GH#206](https://github.com/janephp/janephp/pull/206) Branch 4.x & all v4.x tags are now deprecated, you should use last OpenAPI 2 component
+* [OpenAPI] [GH#206](https://github.com/janephp/janephp/pull/206) OpenAPI component is now deprecated, you should use OpenAPI 3 component
+
+### Removed
+
+* [OpenAPI] [GH#216](https://github.com/janephp/janephp/pull/216) Removed out-of-date USAGE instructions
+* [Jane] [GH#222](https://github.com/janephp/janephp/pull/222) Remove coveralls integration
+
+### Fixed
+
+* [OpenAPI] [GH#218](https://github.com/janephp/janephp/pull/218) Fixed ServerPluginGenerator by not using instance variables
+* [OpenAPI] [GH#217](https://github.com/janephp/janephp/pull/217) Missing requestBody Reference handling
+* [Jane] [GH#227](https://github.com/janephp/janephp/pull/227) Fixing JSON Pointer being created too much times
+* [OpenAPI] [GH#226](https://github.com/janephp/janephp/pull/226) Missing non-body parameters Reference handling
+* [OpenAPI] [GH#230](https://github.com/janephp/janephp/pull/230) Better handling of nullable properties (& strict mode) in Normalizers
+
 ## [5.2.2] - 2019-12-09
 
 ### Added
@@ -192,7 +228,8 @@ See :
  * https://github.com/janephp/jane/releases
  * https://github.com/janephp/openapi/releases
 
-[Unreleased]: https://github.com/janephp/janephp/compare/v5.2.2...HEAD
+[Unreleased]: https://github.com/janephp/janephp/compare/v5.3.0...HEAD
+[5.3.0]: https://github.com/janephp/janephp/compare/v5.2.2...v5.3.0
 [5.2.2]: https://github.com/janephp/janephp/compare/v5.2.1...v5.2.2
 [5.2.1]: https://github.com/janephp/janephp/compare/v5.2.0...v5.2.1
 [5.2.0]: https://github.com/janephp/janephp/compare/v5.1.1...v5.2.0
