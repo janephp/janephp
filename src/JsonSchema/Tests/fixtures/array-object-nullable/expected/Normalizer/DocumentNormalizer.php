@@ -34,7 +34,7 @@ class DocumentNormalizer implements DenormalizerInterface, NormalizerInterface, 
             return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
         }
         $object = new \Jane\JsonSchema\Tests\Expected\Model\Document();
-        if (property_exists($data, 'attributes')) {
+        if (property_exists($data, 'attributes') && $data->{'attributes'} !== null) {
             $value = $data->{'attributes'};
             if (is_array($data->{'attributes'})) {
                 $values = array();
@@ -46,6 +46,9 @@ class DocumentNormalizer implements DenormalizerInterface, NormalizerInterface, 
                 $value = $data->{'attributes'};
             }
             $object->setAttributes($value);
+        }
+        elseif (property_exists($data, 'attributes') && $data->{'attributes'} === null) {
+            $object->setAttributes(null);
         }
         return $object;
     }

@@ -37,6 +37,9 @@ class TestSubObjectNormalizer implements DenormalizerInterface, NormalizerInterf
         if (property_exists($data, 'foo') && $data->{'foo'} !== null) {
             $object->setFoo($data->{'foo'});
         }
+        elseif (property_exists($data, 'foo') && $data->{'foo'} === null) {
+            $object->setFoo(null);
+        }
         return $object;
     }
     public function normalize($object, $format = null, array $context = array())
@@ -44,6 +47,9 @@ class TestSubObjectNormalizer implements DenormalizerInterface, NormalizerInterf
         $data = new \stdClass();
         if (null !== $object->getFoo()) {
             $data->{'foo'} = $object->getFoo();
+        }
+        else {
+            $data->{'foo'} = null;
         }
         return $data;
     }

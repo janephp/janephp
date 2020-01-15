@@ -37,7 +37,7 @@ class TestNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         if (property_exists($data, 'date')) {
             $object->setDate(\DateTime::createFromFormat("Y-m-d\TH:i:sP", $data->{'date'}));
         }
-        if (property_exists($data, 'dateOrNull')) {
+        if (property_exists($data, 'dateOrNull') && $data->{'dateOrNull'} !== null) {
             $value = $data->{'dateOrNull'};
             if (is_string($data->{'dateOrNull'}) and false !== \DateTime::createFromFormat("Y-m-d\TH:i:sP", $data->{'dateOrNull'})) {
                 $value = \DateTime::createFromFormat("Y-m-d\TH:i:sP", $data->{'dateOrNull'});
@@ -46,7 +46,10 @@ class TestNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             }
             $object->setDateOrNull($value);
         }
-        if (property_exists($data, 'dateOrNullOrInt')) {
+        elseif (property_exists($data, 'dateOrNull') && $data->{'dateOrNull'} === null) {
+            $object->setDateOrNull(null);
+        }
+        if (property_exists($data, 'dateOrNullOrInt') && $data->{'dateOrNullOrInt'} !== null) {
             $value_1 = $data->{'dateOrNullOrInt'};
             if (is_string($data->{'dateOrNullOrInt'}) and false !== \DateTime::createFromFormat("Y-m-d\TH:i:sP", $data->{'dateOrNullOrInt'})) {
                 $value_1 = \DateTime::createFromFormat("Y-m-d\TH:i:sP", $data->{'dateOrNullOrInt'});
@@ -56,6 +59,9 @@ class TestNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
                 $value_1 = $data->{'dateOrNullOrInt'};
             }
             $object->setDateOrNullOrInt($value_1);
+        }
+        elseif (property_exists($data, 'dateOrNullOrInt') && $data->{'dateOrNullOrInt'} === null) {
+            $object->setDateOrNullOrInt(null);
         }
         return $object;
     }

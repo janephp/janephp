@@ -34,10 +34,13 @@ class TestNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
         }
         $object = new \Jane\JsonSchema\Tests\Expected\Model\Test();
-        if (property_exists($data, 'onlyNull')) {
+        if (property_exists($data, 'onlyNull') && $data->{'onlyNull'} !== null) {
             $object->setOnlyNull($data->{'onlyNull'});
         }
-        if (property_exists($data, 'nullOrString')) {
+        elseif (property_exists($data, 'onlyNull') && $data->{'onlyNull'} === null) {
+            $object->setOnlyNull(null);
+        }
+        if (property_exists($data, 'nullOrString') && $data->{'nullOrString'} !== null) {
             $value = $data->{'nullOrString'};
             if (is_string($data->{'nullOrString'})) {
                 $value = $data->{'nullOrString'};
@@ -45,6 +48,9 @@ class TestNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
                 $value = $data->{'nullOrString'};
             }
             $object->setNullOrString($value);
+        }
+        elseif (property_exists($data, 'nullOrString') && $data->{'nullOrString'} === null) {
+            $object->setNullOrString(null);
         }
         return $object;
     }
