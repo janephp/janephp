@@ -34,58 +34,74 @@ class TestNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
         }
         $object = new \Jane\JsonSchema\Tests\Expected\Model\Test();
-        if (property_exists($data, 'string')) {
+        if (property_exists($data, 'string') && $data->{'string'} !== null) {
             $object->setString($data->{'string'});
         }
-        if (property_exists($data, 'bool')) {
+        elseif (property_exists($data, 'string') && $data->{'string'} === null) {
+            $object->setString(null);
+        }
+        if (property_exists($data, 'bool') && $data->{'bool'} !== null) {
             $object->setBool($data->{'bool'});
         }
-        if (property_exists($data, 'integer')) {
+        elseif (property_exists($data, 'bool') && $data->{'bool'} === null) {
+            $object->setBool(null);
+        }
+        if (property_exists($data, 'integer') && $data->{'integer'} !== null) {
             $object->setInteger($data->{'integer'});
         }
-        if (property_exists($data, 'float')) {
+        elseif (property_exists($data, 'integer') && $data->{'integer'} === null) {
+            $object->setInteger(null);
+        }
+        if (property_exists($data, 'float') && $data->{'float'} !== null) {
             $object->setFloat($data->{'float'});
         }
-        if (property_exists($data, 'array')) {
+        elseif (property_exists($data, 'float') && $data->{'float'} === null) {
+            $object->setFloat(null);
+        }
+        if (property_exists($data, 'array') && $data->{'array'} !== null) {
             $values = array();
             foreach ($data->{'array'} as $value) {
                 $values[] = $value;
             }
             $object->setArray($values);
         }
-        if (property_exists($data, 'object')) {
+        elseif (property_exists($data, 'array') && $data->{'array'} === null) {
+            $object->setArray(null);
+        }
+        if (property_exists($data, 'object') && $data->{'object'} !== null) {
             $values_1 = array();
             foreach ($data->{'object'} as $value_1) {
                 $values_1[] = $value_1;
             }
             $object->setObject($values_1);
         }
-        if (property_exists($data, 'subObject')) {
+        elseif (property_exists($data, 'object') && $data->{'object'} === null) {
+            $object->setObject(null);
+        }
+        if (property_exists($data, 'subObject') && $data->{'subObject'} !== null) {
             $object->setSubObject($this->denormalizer->denormalize($data->{'subObject'}, 'Jane\\JsonSchema\\Tests\\Expected\\Model\\TestSubObject', 'json', $context));
+        }
+        elseif (property_exists($data, 'subObject') && $data->{'subObject'} === null) {
+            $object->setSubObject(null);
         }
         return $object;
     }
     public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
-        if (null !== $object->getString()) {
-            $data->{'string'} = $object->getString();
-        }
-        if (null !== $object->getBool()) {
-            $data->{'bool'} = $object->getBool();
-        }
-        if (null !== $object->getInteger()) {
-            $data->{'integer'} = $object->getInteger();
-        }
-        if (null !== $object->getFloat()) {
-            $data->{'float'} = $object->getFloat();
-        }
+        $data->{'string'} = $object->getString();
+        $data->{'bool'} = $object->getBool();
+        $data->{'integer'} = $object->getInteger();
+        $data->{'float'} = $object->getFloat();
         if (null !== $object->getArray()) {
             $values = array();
             foreach ($object->getArray() as $value) {
                 $values[] = $value;
             }
             $data->{'array'} = $values;
+        }
+        else {
+            $data->{'array'} = null;
         }
         if (null !== $object->getObject()) {
             $values_1 = array();
@@ -94,8 +110,14 @@ class TestNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             }
             $data->{'object'} = $values_1;
         }
+        else {
+            $data->{'object'} = null;
+        }
         if (null !== $object->getSubObject()) {
             $data->{'subObject'} = $this->normalizer->normalize($object->getSubObject(), 'json', $context);
+        }
+        else {
+            $data->{'subObject'} = null;
         }
         return $data;
     }

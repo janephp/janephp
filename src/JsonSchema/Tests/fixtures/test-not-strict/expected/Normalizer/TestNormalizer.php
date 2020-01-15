@@ -52,19 +52,25 @@ class TestNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         elseif (property_exists($data, 'nullOrString') && $data->{'nullOrString'} === null) {
             $object->setNullOrString(null);
         }
-        if (property_exists($data, 'array')) {
+        if (property_exists($data, 'array') && $data->{'array'} !== null) {
             $values = array();
             foreach ($data->{'array'} as $value_1) {
                 $values[] = $value_1;
             }
             $object->setArray($values);
         }
-        if (property_exists($data, 'object')) {
+        elseif (property_exists($data, 'array') && $data->{'array'} === null) {
+            $object->setArray(null);
+        }
+        if (property_exists($data, 'object') && $data->{'object'} !== null) {
             $values_1 = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
             foreach ($data->{'object'} as $key => $value_2) {
                 $values_1[$key] = $value_2;
             }
             $object->setObject($values_1);
+        }
+        elseif (property_exists($data, 'object') && $data->{'object'} === null) {
+            $object->setObject(null);
         }
         return $object;
     }
@@ -86,12 +92,18 @@ class TestNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             }
             $data->{'array'} = $values;
         }
+        else {
+            $data->{'array'} = null;
+        }
         if (null !== $object->getObject()) {
             $values_1 = new \stdClass();
             foreach ($object->getObject() as $key => $value_2) {
                 $values_1->{$key} = $value_2;
             }
             $data->{'object'} = $values_1;
+        }
+        else {
+            $data->{'object'} = null;
         }
         return $data;
     }

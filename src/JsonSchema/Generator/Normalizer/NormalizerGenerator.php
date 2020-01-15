@@ -101,7 +101,7 @@ trait NormalizerGenerator
 
                 $normalizationStatements[] = new Stmt\Expression(new Expr\Assign(new Expr\PropertyFetch($dataVariable, sprintf("{'%s'}", $property->getName())), $outputVar));
 
-                if ($property->isNullable() || ($property->getType() instanceof MultipleType && \count(array_intersect([Type::TYPE_NULL], $property->getType()->getTypes())) === 1) || ($property->getType()->getName() === Type::TYPE_NULL)) {
+                if (!$context->isStrict() || $property->isNullable() || ($property->getType() instanceof MultipleType && \count(array_intersect([Type::TYPE_NULL], $property->getType()->getTypes())) === 1) || ($property->getType()->getName() === Type::TYPE_NULL)) {
                     if ($property->getType()->getName() !== Type::TYPE_NULL &&
                         (
                             $property->getType() instanceof DateTimeType ||

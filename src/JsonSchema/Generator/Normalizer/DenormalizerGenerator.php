@@ -97,7 +97,7 @@ trait DenormalizerGenerator
                 new Stmt\Expression(new Expr\MethodCall($objectVariable, $this->getNaming()->getPrefixedMethodName('set', $property->getPhpName()), [$outputVar])),
             ], $unset ? [new Stmt\Unset_([$propertyVar])] : []);
 
-            if ($property->isNullable()) {
+            if (!$context->isStrict() || $property->isNullable()) {
                 $fullCondition = new Expr\BinaryOp\BooleanAnd(
                     $baseCondition,
                     new Expr\BinaryOp\NotIdentical(
@@ -111,7 +111,7 @@ trait DenormalizerGenerator
                 'stmts' => $mutatorStmt,
             ]);
 
-            if ($property->isNullable()) {
+            if (!$context->isStrict() || $property->isNullable()) {
                 $invertCondition = new Expr\BinaryOp\BooleanAnd(
                     $baseCondition,
                     new Expr\BinaryOp\Identical(
