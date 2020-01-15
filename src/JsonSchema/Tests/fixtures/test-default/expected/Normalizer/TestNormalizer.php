@@ -89,10 +89,30 @@ class TestNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
     public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
-        $data->{'string'} = $object->getString();
-        $data->{'bool'} = $object->getBool();
-        $data->{'integer'} = $object->getInteger();
-        $data->{'float'} = $object->getFloat();
+        if (null !== $object->getString()) {
+            $data->{'string'} = $object->getString();
+        }
+        else {
+            $data->{'string'} = null;
+        }
+        if (null !== $object->getBool()) {
+            $data->{'bool'} = $object->getBool();
+        }
+        else {
+            $data->{'bool'} = null;
+        }
+        if (null !== $object->getInteger()) {
+            $data->{'integer'} = $object->getInteger();
+        }
+        else {
+            $data->{'integer'} = null;
+        }
+        if (null !== $object->getFloat()) {
+            $data->{'float'} = $object->getFloat();
+        }
+        else {
+            $data->{'float'} = null;
+        }
         if (null !== $object->getArray()) {
             $values = array();
             foreach ($object->getArray() as $value) {

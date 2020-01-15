@@ -45,7 +45,12 @@ class TestSubObjectNormalizer implements DenormalizerInterface, NormalizerInterf
     public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
-        $data->{'foo'} = $object->getFoo();
+        if (null !== $object->getFoo()) {
+            $data->{'foo'} = $object->getFoo();
+        }
+        else {
+            $data->{'foo'} = null;
+        }
         return $data;
     }
 }
