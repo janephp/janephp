@@ -28,15 +28,21 @@ class ModelNormalizer implements DenormalizerInterface, NormalizerInterface, Den
             throw new InvalidArgumentException(sprintf('Given $data is not an object (%s given). We need an object in order to continue denormalize method.', gettype($data)));
         }
         $object = new \Jane\OpenApi\Tests\Expected\Model\Model();
-        if (property_exists($data, 'foo')) {
+        if (property_exists($data, 'foo') && $data->{'foo'} !== null) {
             $object->setFoo($data->{'foo'});
         }
-        if (property_exists($data, 'bar')) {
+        elseif (property_exists($data, 'foo') && $data->{'foo'} === null) {
+            $object->setFoo(null);
+        }
+        if (property_exists($data, 'bar') && $data->{'bar'} !== null) {
             $values = array();
             foreach ($data->{'bar'} as $value) {
                 $values[] = $value;
             }
             $object->setBar($values);
+        }
+        elseif (property_exists($data, 'bar') && $data->{'bar'} === null) {
+            $object->setBar(null);
         }
         return $object;
     }

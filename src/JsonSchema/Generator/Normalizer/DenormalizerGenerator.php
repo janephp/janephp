@@ -87,14 +87,19 @@ trait DenormalizerGenerator
             $propertyVar = new Expr\PropertyFetch(new Expr\Variable('data'), sprintf("{'%s'}", $property->getName()));
             list($denormalizationStatements, $outputVar) = $property->getType()->createDenormalizationStatement($context, $propertyVar);
 
-            $condition = new Expr\FuncCall(new Name('property_exists'), [
+            $baseCondition = new Expr\FuncCall(new Name('property_exists'), [
                 new Arg(new Expr\Variable('data')),
                 new Arg(new Scalar\String_($property->getName())),
             ]);
+            $fullCondition = $baseCondition;
 
-            if (!$context->isStrict()) {
-                $condition = new Expr\BinaryOp\BooleanAnd(
-                    $condition,
+            $mutatorStmt = array_merge($denormalizationStatements, [
+                new Stmt\Expression(new Expr\MethodCall($objectVariable, $this->getNaming()->getPrefixedMethodName('set', $property->getPhpName()), [$outputVar])),
+            ], $unset ? [new Stmt\Unset_([$propertyVar])] : []);
+
+            if ($property->isNullable()) {
+                $fullCondition = new Expr\BinaryOp\BooleanAnd(
+                    $baseCondition,
                     new Expr\BinaryOp\NotIdentical(
                         $propertyVar,
                         new Expr\ConstFetch(new Name('null'))
@@ -102,11 +107,23 @@ trait DenormalizerGenerator
                 );
             }
 
-            $statements[] = new Stmt\If_($condition, [
-                'stmts' => array_merge($denormalizationStatements, [
-                    new Stmt\Expression(new Expr\MethodCall($objectVariable, $this->getNaming()->getPrefixedMethodName('set', $property->getPhpName()), [$outputVar])),
-                ], $unset ? [new Stmt\Unset_([$propertyVar])] : []),
+            $statements[] = new Stmt\If_($fullCondition, [
+                'stmts' => $mutatorStmt,
             ]);
+
+            if ($property->isNullable()) {
+                $invertCondition = new Expr\BinaryOp\BooleanAnd(
+                    $baseCondition,
+                    new Expr\BinaryOp\Identical(
+                        $propertyVar,
+                        new Expr\ConstFetch(new Name('null'))
+                    )
+                );
+
+                $statements[] = new Stmt\ElseIf_($invertCondition, [
+                    new Stmt\Expression(new Expr\MethodCall($objectVariable, $this->getNaming()->getPrefixedMethodName('set', $property->getPhpName()), [new Expr\ConstFetch(new Name('null'))])),
+                ]);
+            }
         }
 
         $patternCondition = [];

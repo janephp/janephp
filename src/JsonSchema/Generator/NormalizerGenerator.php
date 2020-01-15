@@ -72,8 +72,6 @@ class NormalizerGenerator implements GeneratorInterface
      */
     public function generate(Schema $schema, string $className, Context $context): void
     {
-        $classes = [];
-
         $normalizers = [];
 
         foreach ($schema->getClasses() as $class) {
@@ -94,7 +92,6 @@ class NormalizerGenerator implements GeneratorInterface
                 $methods,
                 $this->useCacheableSupportsMethod
             );
-            $classes[] = $normalizerClass->name;
 
             $useStmts = [
                 new Stmt\Use_([new Stmt\UseUse(new Name('Jane\JsonSchemaRuntime\Reference'))]),
