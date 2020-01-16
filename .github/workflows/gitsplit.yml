@@ -13,7 +13,9 @@ jobs:
         uses: actions/checkout@master
       - name: git-setup
         run: git config remote.origin.mirror true && git fetch --prune --unshallow || git fetch --prune
-      - name: gitsplit
-        run: docker run --rm -t -e GH_TOKEN -v /cache/gitsplit:/cache/gitsplit -v ${PWD}:/srv jderusse/gitsplit gitsplit
+      - name: git-subsplit-setup
+        run: cd /tmp ; wget https://raw.githubusercontent.com/dflydev/git-subsplit/master/git-subsplit.sh ; cp git-subsplit.sh "$(git --exec-path)"/git-subsplit ; cd -
+      - name: subsplit
+        run: .github/workflows/gitsplit.sh
         env:
           GH_TOKEN: ${{ secrets.PRIVATE_TOKEN }}
