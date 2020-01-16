@@ -14,7 +14,7 @@ jobs:
       - name: git-setup
         run: git config remote.origin.mirror true && git fetch --prune --unshallow || git fetch --prune
       - name: git-subsplit-setup
-        run: cd /tmp ; wget https://raw.githubusercontent.com/dflydev/git-subsplit/master/git-subsplit.sh ; cp git-subsplit.sh "$(git --exec-path)"/git-subsplit ; cd -
+        run: wget https://raw.githubusercontent.com/dflydev/git-subsplit/master/git-subsplit.sh ; chmod +x git-subsplit.sh 
       - name: subsplit
         run: .github/workflows/gitsplit.sh
         env:

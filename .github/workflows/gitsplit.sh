@@ -12,10 +12,13 @@ repositories["https://${GH_TOKEN}@github.com/janephp/open-api-3.git"]="src/OpenA
 repositories["https://${GH_TOKEN}@github.com/janephp/open-api-runtime.git"]="src/OpenApiRuntime"
 repositories["https://${GH_TOKEN}@github.com/janephp/documentation.git"]="documentation"
 
+./git-subsplit.sh init https://${GH_TOKEN}@github.com/janephp/janephp.git
+
 publish=""
 for repository in "${!repositories[@]}"; do
-    git subsplit init $repository
     publish="$repository:${repositories[$repository]} $publish"
 done
 
-git subsplit publish "$publish" --heads=master
+./git-subsplit.sh publish "$publish" --heads=master
+
+rm -rf .subsplit/
