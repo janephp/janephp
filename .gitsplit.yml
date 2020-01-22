@@ -3,34 +3,35 @@ cache_url: "/cache/gitsplit"
 
 # List of splits.
 splits:
-    -
-        prefix: "src/AutoMapper"
-        target: "https://${GH_TOKEN}@github.com/janephp/automapper.git"
-    -
-        prefix: "src/JsonSchema"
-        target: "https://${GH_TOKEN}@github.com/janephp/json-schema.git"
-    -
-        prefix: "src/JsonSchemaRuntime"
-        target: "https://${GH_TOKEN}@github.com/janephp/json-schema-runtime.git"
-    -
-        prefix: "src/OpenApiCommon"
-        target: "https://${GH_TOKEN}@github.com/janephp/open-api-common.git"
-    -
-        prefix: "src/OpenApi"
-        target: "https://${GH_TOKEN}@github.com/janephp/open-api.git"
-    -
-        prefix: "src/OpenApi2"
-        target: "https://${GH_TOKEN}@github.com/janephp/open-api-2.git"
-    -
-        prefix: "src/OpenApi3"
-        target: "https://${GH_TOKEN}@github.com/janephp/open-api-3.git"
-    -
-        prefix: "src/OpenApiRuntime"
-        target: "https://${GH_TOKEN}@github.com/janephp/open-api-runtime.git"
-    -
-        prefix: "documentation"
-        target: "https://${GH_TOKEN}@github.com/janephp/documentation.git"
+  -
+    prefix: "src/AutoMapper"
+    target: "https://${GH_TOKEN}@github.com/janephp/automapper.git"
+  -
+    prefix: "src/JsonSchema"
+    target: "https://${GH_TOKEN}@github.com/janephp/json-schema.git"
+  -
+    prefix: "src/JsonSchemaRuntime"
+    target: "https://${GH_TOKEN}@github.com/janephp/json-schema-runtime.git"
+  -
+    prefix: "src/OpenApiCommon"
+    target: "https://${GH_TOKEN}@github.com/janephp/open-api-common.git"
+  -
+    prefix: "src/OpenApi"
+    target: "https://${GH_TOKEN}@github.com/janephp/open-api.git"
+  -
+    prefix: "src/OpenApi2"
+    target: "https://${GH_TOKEN}@github.com/janephp/open-api-2.git"
+  -
+    prefix: "src/OpenApi3"
+    target: "https://${GH_TOKEN}@github.com/janephp/open-api-3.git"
+  -
+    prefix: "src/OpenApiRuntime"
+    target: "https://${GH_TOKEN}@github.com/janephp/open-api-runtime.git"
+  -
+    prefix: "documentation"
+    target: "https://${GH_TOKEN}@github.com/janephp/documentation.git"
 
 # List of references to split (defined as regexp)
 origins:
-    - ^master$
+  - ^master$
+  - ^v\d+\.\d+\.\d+$
