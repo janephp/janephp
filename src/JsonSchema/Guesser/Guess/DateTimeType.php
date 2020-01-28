@@ -89,6 +89,13 @@ class DateTimeType extends ObjectType
 
     protected function generateParseExpression(Expr $input): Expr
     {
+        if ($this->inputFormat === 'strtotime') {
+            // (new \DateTime())->setTimestamp(strtotime($data))
+            return new Expr\MethodCall(new Expr\New_(new Name('\DateTime')), 'setTimestamp', [
+                new Expr\FuncCall(new Name('strtotime'), [new Arg($input)])
+            ]);
+        }
+
         // \DateTime::createFromFormat($format, $data)
         return new Expr\StaticCall(new Name('\DateTime'), 'createFromFormat', [
             new Arg(new Expr\ConstFetch(new Name('"' . $this->inputFormat . '"'))),
