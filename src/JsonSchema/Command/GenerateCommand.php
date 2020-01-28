@@ -86,6 +86,7 @@ class GenerateCommand extends Command
             'date-format' => \DateTime::RFC3339,
             'full-date-format' => 'Y-m-d',
             'date-prefer-interface' => null,
+            'date-input-format' => null,
             'use-fixer' => false,
             'fixer-config-file' => null,
             'clean-generated' => true,
