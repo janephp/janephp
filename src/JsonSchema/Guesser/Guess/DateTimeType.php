@@ -19,11 +19,19 @@ class DateTimeType extends ObjectType
      */
     private $format;
 
-    public function __construct(object $object, string $format = \DateTime::RFC3339)
+    /**
+     * Indicator whether to use DateTime or DateTimeInterface as type hint
+     *
+     * @var bool
+     */
+    private $preferInterface;
+
+    public function __construct(object $object, string $format = \DateTime::RFC3339, ?bool $preferInterface = null)
     {
         parent::__construct($object, '\DateTime', '', []);
 
         $this->format = $format;
+        $this->preferInterface = $preferInterface ?? false;
     }
 
     /**
@@ -70,7 +78,7 @@ class DateTimeType extends ObjectType
 
     public function getTypeHint(string $namespace)
     {
-        return '\DateTime';
+        return $this->preferInterface ? '\DateTimeInterface' : '\DateTime';
     }
 
     public function __toString(): string
