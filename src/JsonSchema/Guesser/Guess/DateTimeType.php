@@ -20,7 +20,7 @@ class DateTimeType extends ObjectType
     private $format;
 
     /**
-     * Indicator whether to use DateTime or DateTimeInterface as type hint
+     * Indicator whether to use DateTime or DateTimeInterface as type hint.
      *
      * @var bool
      */
