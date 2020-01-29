@@ -38,15 +38,121 @@ class ReferenceNormalizer implements DenormalizerInterface, NormalizerInterface,
         if (!is_object($data)) {
             return null;
         }
+
+        $object = null;
+        $data = clone $data;
+
         if (isset($data->{'$ref'})) {
-            return new Reference($data->{'$ref'}, $context['document-origin']);
+            $object = new Reference($data->{'$ref'}, $context['document-origin']);
+            unset($data->{'$ref'});
         }
+
         if (isset($data->{'$recursiveRef'})) {
-            return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
+            $object = new Reference($data->{'$recursiveRef'}, $context['document-origin']);
+            unset($data->{'$recursiveRef'});
         }
-        $object = new \Jane\OpenApi\JsonSchema\Model\Reference();
+
+        if ($object === null) {
+            return null;
+        }
+
         if (property_exists($data, '$ref') && $data->{'$ref'} !== null) {
             $object->setDollarRef($data->{'$ref'});
+        }
+
+        if (property_exists($data, 'title') && $data->{'title'} !== null) {
+            $object->setTitle($data->{'title'});
+            unset($data->{'title'});
+        }
+
+        if (property_exists($data, 'multipleOf') && $data->{'multipleOf'} !== null) {
+            $object->setMultipleOf($data->{'multipleOf'});
+            unset($data->{'multipleOf'});
+        }
+
+        if (property_exists($data, 'maximum') && $data->{'maximum'} !== null) {
+            $object->setMaximum($data->{'maximum'});
+            unset($data->{'maximum'});
+        }
+
+        if (property_exists($data, 'exclusiveMaximum') && $data->{'exclusiveMaximum'} !== null) {
+            $object->setExclusiveMaximum($data->{'exclusiveMaximum'});
+            unset($data->{'exclusiveMaximum'});
+        }
+
+        if (property_exists($data, 'minimum') && $data->{'minimum'} !== null) {
+            $object->setMinimum($data->{'minimum'});
+            unset($data->{'minimum'});
+        }
+
+        if (property_exists($data, 'exclusiveMinimum') && $data->{'exclusiveMinimum'} !== null) {
+            $object->setExclusiveMinimum($data->{'exclusiveMinimum'});
+            unset($data->{'exclusiveMinimum'});
+        }
+
+        if (property_exists($data, 'maxLength') && $data->{'maxLength'} !== null) {
+            $object->setMaxLength($data->{'maxLength'});
+            unset($data->{'maxLength'});
+        }
+
+        if (property_exists($data, 'minLength') && $data->{'minLength'} !== null) {
+            $object->setMinLength($data->{'minLength'});
+            unset($data->{'minLength'});
+        }
+
+        if (property_exists($data, 'pattern') && $data->{'pattern'} !== null) {
+            $object->setPattern($data->{'pattern'});
+            unset($data->{'pattern'});
+        }
+
+        if (property_exists($data, 'maxItems') && $data->{'maxItems'} !== null) {
+            $object->setMaxItems($data->{'maxItems'});
+            unset($data->{'maxItems'});
+        }
+
+        if (property_exists($data, 'minItems') && $data->{'minItems'} !== null) {
+            $object->setMinItems($data->{'minItems'});
+            unset($data->{'minItems'});
+        }
+
+        if (property_exists($data, 'uniqueItems') && $data->{'uniqueItems'} !== null) {
+            $object->setUniqueItems($data->{'uniqueItems'});
+            unset($data->{'uniqueItems'});
+        }
+
+        if (property_exists($data, 'type') && $data->{'type'} !== null) {
+            $object->setType($data->{'type'});
+            unset($data->{'type'});
+        }
+
+        if (property_exists($data, 'description') && $data->{'description'} !== null) {
+            $object->setDescription($data->{'description'});
+            unset($data->{'description'});
+        }
+
+        if (property_exists($data, 'format') && $data->{'format'} !== null) {
+            $object->setFormat($data->{'format'});
+            unset($data->{'format'});
+        }
+
+        if (property_exists($data, 'nullable') && $data->{'nullable'} !== null) {
+            $object->setNullable($data->{'nullable'});
+            unset($data->{'nullable'});
+        }
+
+        if (property_exists($data, 'readOnly') && $data->{'readOnly'} !== null) {
+            $object->setReadOnly($data->{'readOnly'});
+            unset($data->{'readOnly'});
+        }
+
+        if (property_exists($data, 'writeOnly') && $data->{'writeOnly'} !== null) {
+            $object->setWriteOnly($data->{'writeOnly'});
+            unset($data->{'writeOnly'});
+        }
+
+        if (property_exists($data, 'deprecated') && $data->{'deprecated'} !== null) {
+            $object->setDeprecated($data->{'deprecated'});
+            unset($data->{'deprecated'});
         }
 
         return $object;
@@ -57,6 +163,82 @@ class ReferenceNormalizer implements DenormalizerInterface, NormalizerInterface,
         $data = new \stdClass();
         if (null !== $object->getDollarRef()) {
             $data->{'$ref'} = $object->getDollarRef();
+        }
+
+        if (null !== $object->getTitle()) {
+            $data->{'title'} = $object->getTitle();
+        }
+
+        if (null !== $object->getMultipleOf()) {
+            $data->{'multipleOf'} = $object->getMultipleOf();
+        }
+
+        if (null !== $object->getMaximum()) {
+            $data->{'maximum'} = $object->getMaximum();
+        }
+
+        if (null !== $object->getExclusiveMaximum()) {
+            $data->{'exclusiveMaximum'} = $object->getExclusiveMaximum();
+        }
+
+        if (null !== $object->getMinimum()) {
+            $data->{'minimum'} = $object->getMinimum();
+        }
+
+        if (null !== $object->getExclusiveMinimum()) {
+            $data->{'exclusiveMinimum'} = $object->getExclusiveMinimum();
+        }
+
+        if (null !== $object->getMaxLength()) {
+            $data->{'maxLength'} = $object->getMaxLength();
+        }
+
+        if (null !== $object->getMinLength()) {
+            $data->{'minLength'} = $object->getMinLength();
+        }
+
+        if (null !== $object->getPattern()) {
+            $data->{'pattern'} = $object->getPattern();
+        }
+
+        if (null !== $object->getMaxItems()) {
+            $data->{'maxItems'} = $object->getMaxItems();
+        }
+
+        if (null !== $object->getMinItems()) {
+            $data->{'minItems'} = $object->getMinItems();
+        }
+
+        if (null !== $object->getUniqueItems()) {
+            $data->{'uniqueItems'} = $object->getUniqueItems();
+        }
+
+        if (null !== $object->getType()) {
+            $data->{'type'} = $object->getType();
+        }
+
+        if (null !== $object->getDescription()) {
+            $data->{'description'} = $object->getDescription();
+        }
+
+        if (null !== $object->getFormat()) {
+            $data->{'format'} = $object->getFormat();
+        }
+
+        if (null !== $object->getNullable()) {
+            $data->{'nullable'} = $object->getNullable();
+        }
+
+        if (null !== $object->getReadOnly()) {
+            $data->{'readOnly'} = $object->getReadOnly();
+        }
+
+        if (null !== $object->getWriteOnly()) {
+            $data->{'writeOnly'} = $object->getWriteOnly();
+        }
+
+        if (null !== $object->getDeprecated()) {
+            $data->{'deprecated'} = $object->getDeprecated();
         }
 
         return $data;

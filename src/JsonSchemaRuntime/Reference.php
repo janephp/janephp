@@ -27,6 +27,106 @@ class Reference
 
     private $mergedUri;
 
+    /**
+     * @var string|null
+     */
+    protected $title;
+
+    /**
+     * @var float|null
+     */
+    protected $multipleOf;
+
+    /**
+     * @var float|null
+     */
+    protected $maximum;
+
+    /**
+     * @var bool|null
+     */
+    protected $exclusiveMaximum;
+
+    /**
+     * @var float|null
+     */
+    protected $minimum;
+
+    /**
+     * @var bool|null
+     */
+    protected $exclusiveMinimum;
+
+    /**
+     * @var int|null
+     */
+    protected $maxLength;
+
+    /**
+     * @var int|null
+     */
+    protected $minLength;
+
+    /**
+     * @var string|null
+     */
+    protected $pattern;
+
+    /**
+     * @var int|null
+     */
+    protected $maxItems;
+
+    /**
+     * @var int|null
+     */
+    protected $minItems;
+
+    /**
+     * @var bool|null
+     */
+    protected $uniqueItems;
+
+    /**
+     * @var string|null
+     */
+    protected $type;
+
+    /**
+     * @var string|null
+     */
+    protected $description;
+
+    /**
+     * @var string|null
+     */
+    protected $format;
+
+    /**
+     * @var bool|null
+     */
+    protected $nullable;
+
+    /**
+     * @var bool|null
+     */
+    protected $readOnly;
+
+    /**
+     * @var bool|null
+     */
+    protected $writeOnly;
+
+    /**
+     * @var mixed|null
+     */
+    protected $example;
+
+    /**
+     * @var bool|null
+     */
+    protected $deprecated;
+
     public function __construct(string $reference, string $origin)
     {
         $originParts = (new Parser())->parse($origin);
@@ -116,7 +216,7 @@ class Reference
             $this->mergedUri->getPath() === $this->originUri->getPath()
             &&
             $this->mergedUri->getQuery() === $this->originUri->getQuery()
-        ;
+            ;
     }
 
     public function getMergedUri(): AbstractUri
@@ -132,6 +232,366 @@ class Reference
     public function getOriginUri(): AbstractUri
     {
         return $this->originUri;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getTitle(): ?string
+    {
+        return $this->title;
+    }
+
+    /**
+     * @param string|null $title
+     *
+     * @return Reference
+     */
+    public function setTitle(?string $title): self
+    {
+        $this->title = $title;
+        return $this;
+    }
+
+    /**
+     * @return float|null
+     */
+    public function getMultipleOf(): ?float
+    {
+        return $this->multipleOf;
+    }
+
+    /**
+     * @param float|null $multipleOf
+     *
+     * @return Reference
+     */
+    public function setMultipleOf(?float $multipleOf): self
+    {
+        $this->multipleOf = $multipleOf;
+        return $this;
+    }
+
+    /**
+     * @return float|null
+     */
+    public function getMaximum(): ?float
+    {
+        return $this->maximum;
+    }
+
+    /**
+     * @param float|null $maximum
+     *
+     * @return Reference
+     */
+    public function setMaximum(?float $maximum): self
+    {
+        $this->maximum = $maximum;
+        return $this;
+    }
+
+    /**
+     * @return bool|null
+     */
+    public function getExclusiveMaximum(): ?bool
+    {
+        return $this->exclusiveMaximum;
+    }
+
+    /**
+     * @param bool|null $exclusiveMaximum
+     *
+     * @return Reference
+     */
+    public function setExclusiveMaximum(?bool $exclusiveMaximum): self
+    {
+        $this->exclusiveMaximum = $exclusiveMaximum;
+        return $this;
+    }
+
+    /**
+     * @return float|null
+     */
+    public function getMinimum(): ?float
+    {
+        return $this->minimum;
+    }
+
+    /**
+     * @param float|null $minimum
+     *
+     * @return Reference
+     */
+    public function setMinimum(?float $minimum): self
+    {
+        $this->minimum = $minimum;
+        return $this;
+    }
+
+    /**
+     * @return bool|null
+     */
+    public function getExclusiveMinimum(): ?bool
+    {
+        return $this->exclusiveMinimum;
+    }
+
+    /**
+     * @param bool|null $exclusiveMinimum
+     *
+     * @return Reference
+     */
+    public function setExclusiveMinimum(?bool $exclusiveMinimum): self
+    {
+        $this->exclusiveMinimum = $exclusiveMinimum;
+        return $this;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getMaxLength(): ?int
+    {
+        return $this->maxLength;
+    }
+
+    /**
+     * @param int|null $maxLength
+     *
+     * @return Reference
+     */
+    public function setMaxLength(?int $maxLength): self
+    {
+        $this->maxLength = $maxLength;
+        return $this;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getMinLength(): ?int
+    {
+        return $this->minLength;
+    }
+
+    /**
+     * @param int|null $minLength
+     *
+     * @return Reference
+     */
+    public function setMinLength(?int $minLength): self
+    {
+        $this->minLength = $minLength;
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getPattern(): ?string
+    {
+        return $this->pattern;
+    }
+
+    /**
+     * @param string|null $pattern
+     *
+     * @return Reference
+     */
+    public function setPattern(?string $pattern): self
+    {
+        $this->pattern = $pattern;
+        return $this;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getMaxItems(): ?int
+    {
+        return $this->maxItems;
+    }
+
+    /**
+     * @param int|null $maxItems
+     *
+     * @return Reference
+     */
+    public function setMaxItems(?int $maxItems): self
+    {
+        $this->maxItems = $maxItems;
+        return $this;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getMinItems(): ?int
+    {
+        return $this->minItems;
+    }
+
+    /**
+     * @param int|null $minItems
+     *
+     * @return Reference
+     */
+    public function setMinItems(?int $minItems): self
+    {
+        $this->minItems = $minItems;
+        return $this;
+    }
+
+    /**
+     * @return bool|null
+     */
+    public function getUniqueItems(): ?bool
+    {
+        return $this->uniqueItems;
+    }
+
+    /**
+     * @param bool|null $uniqueItems
+     *
+     * @return Reference
+     */
+    public function setUniqueItems(?bool $uniqueItems): self
+    {
+        $this->uniqueItems = $uniqueItems;
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getType(): ?string
+    {
+        return $this->type;
+    }
+
+    /**
+     * @param string|null $type
+     *
+     * @return Reference
+     */
+    public function setType(?string $type): self
+    {
+        $this->type = $type;
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    /**
+     * @param string|null $description
+     *
+     * @return Reference
+     */
+    public function setDescription(?string $description): self
+    {
+        $this->description = $description;
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getFormat(): ?string
+    {
+        return $this->format;
+    }
+
+    /**
+     * @param string|null $format
+     *
+     * @return Reference
+     */
+    public function setFormat(?string $format): self
+    {
+        $this->format = $format;
+        return $this;
+    }
+
+    /**
+     * @return bool|null
+     */
+    public function getNullable(): ?bool
+    {
+        return $this->nullable;
+    }
+
+    /**
+     * @param bool|null $nullable
+     *
+     * @return Reference
+     */
+    public function setNullable(?bool $nullable): self
+    {
+        $this->nullable = $nullable;
+        return $this;
+    }
+
+    /**
+     * @return bool|null
+     */
+    public function getReadOnly(): ?bool
+    {
+        return $this->readOnly;
+    }
+
+    /**
+     * @param bool|null $readOnly
+     *
+     * @return Reference
+     */
+    public function setReadOnly(?bool $readOnly): self
+    {
+        $this->readOnly = $readOnly;
+        return $this;
+    }
+
+    /**
+     * @return bool|null
+     */
+    public function getWriteOnly(): ?bool
+    {
+        return $this->writeOnly;
+    }
+
+    /**
+     * @param bool|null $writeOnly
+     * @return Reference
+     */
+    public function setWriteOnly(?bool $writeOnly): self
+    {
+        $this->writeOnly = $writeOnly;
+        return $this;
+    }
+
+    /**
+     * @return bool|null
+     */
+    public function getDeprecated(): ?bool
+    {
+        return $this->deprecated;
+    }
+
+    /**
+     * @param bool|null $deprecated
+     *
+     * @return Reference
+     */
+    public function setDeprecated(?bool $deprecated): self
+    {
+        $this->deprecated = $deprecated;
+        return $this;
     }
 
     /**

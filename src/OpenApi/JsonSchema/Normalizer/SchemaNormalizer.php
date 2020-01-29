@@ -38,14 +38,20 @@ class SchemaNormalizer implements DenormalizerInterface, NormalizerInterface, De
         if (!is_object($data)) {
             return null;
         }
-        if (isset($data->{'$ref'})) {
-            return new Reference($data->{'$ref'}, $context['document-origin']);
-        }
-        if (isset($data->{'$recursiveRef'})) {
-            return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
-        }
+
         $object = new \Jane\OpenApi\JsonSchema\Model\Schema();
         $data = clone $data;
+
+        if (isset($data->{'$ref'})) {
+            $object = new Reference($data->{'$ref'}, $context['document-origin']);
+            unset($data->{'$ref'});
+        }
+
+        if (isset($data->{'$recursiveRef'})) {
+            $object = new Reference($data->{'$recursiveRef'}, $context['document-origin']);
+            unset($data->{'$recursiveRef'});
+        }
+
         if (property_exists($data, 'title') && $data->{'title'} !== null) {
             $object->setTitle($data->{'title'});
             unset($data->{'title'});
@@ -94,14 +100,49 @@ class SchemaNormalizer implements DenormalizerInterface, NormalizerInterface, De
             $object->setUniqueItems($data->{'uniqueItems'});
             unset($data->{'uniqueItems'});
         }
+        if (property_exists($data, 'type') && $data->{'type'} !== null) {
+            $object->setType($data->{'type'});
+            unset($data->{'type'});
+        }
+        if (property_exists($data, 'description') && $data->{'description'} !== null) {
+            $object->setDescription($data->{'description'});
+            unset($data->{'description'});
+        }
+        if (property_exists($data, 'format') && $data->{'format'} !== null) {
+            $object->setFormat($data->{'format'});
+            unset($data->{'format'});
+        }
+        if (property_exists($data, 'nullable') && $data->{'nullable'} !== null) {
+            $object->setNullable($data->{'nullable'});
+            unset($data->{'nullable'});
+        }
+        if (property_exists($data, 'readOnly') && $data->{'readOnly'} !== null) {
+            $object->setReadOnly($data->{'readOnly'});
+            unset($data->{'readOnly'});
+        }
+        if (property_exists($data, 'writeOnly') && $data->{'writeOnly'} !== null) {
+            $object->setWriteOnly($data->{'writeOnly'});
+            unset($data->{'writeOnly'});
+        }
+        if (property_exists($data, 'deprecated') && $data->{'deprecated'} !== null) {
+            $object->setDeprecated($data->{'deprecated'});
+            unset($data->{'deprecated'});
+        }
+
+        if ($object instanceof Reference) {
+            return $object;
+        }
+
         if (property_exists($data, 'maxProperties') && $data->{'maxProperties'} !== null) {
             $object->setMaxProperties($data->{'maxProperties'});
             unset($data->{'maxProperties'});
         }
+
         if (property_exists($data, 'minProperties') && $data->{'minProperties'} !== null) {
             $object->setMinProperties($data->{'minProperties'});
             unset($data->{'minProperties'});
         }
+
         if (property_exists($data, 'required') && $data->{'required'} !== null) {
             $values = [];
             foreach ($data->{'required'} as $value) {
@@ -110,6 +151,7 @@ class SchemaNormalizer implements DenormalizerInterface, NormalizerInterface, De
             $object->setRequired($values);
             unset($data->{'required'});
         }
+
         if (property_exists($data, 'enum') && $data->{'enum'} !== null) {
             $values_1 = [];
             foreach ($data->{'enum'} as $value_1) {
@@ -118,10 +160,7 @@ class SchemaNormalizer implements DenormalizerInterface, NormalizerInterface, De
             $object->setEnum($values_1);
             unset($data->{'enum'});
         }
-        if (property_exists($data, 'type') && $data->{'type'} !== null) {
-            $object->setType($data->{'type'});
-            unset($data->{'type'});
-        }
+
         if (property_exists($data, 'not') && $data->{'not'} !== null) {
             $value_2 = $data->{'not'};
             if (is_object($data->{'not'}) and isset($data->{'not'}->{'$ref'})) {
@@ -210,33 +249,13 @@ class SchemaNormalizer implements DenormalizerInterface, NormalizerInterface, De
             $object->setAdditionalProperties($value_12);
             unset($data->{'additionalProperties'});
         }
-        if (property_exists($data, 'description') && $data->{'description'} !== null) {
-            $object->setDescription($data->{'description'});
-            unset($data->{'description'});
-        }
-        if (property_exists($data, 'format') && $data->{'format'} !== null) {
-            $object->setFormat($data->{'format'});
-            unset($data->{'format'});
-        }
         if (property_exists($data, 'default') && $data->{'default'} !== null) {
             $object->setDefault($data->{'default'});
             unset($data->{'default'});
         }
-        if (property_exists($data, 'nullable') && $data->{'nullable'} !== null) {
-            $object->setNullable($data->{'nullable'});
-            unset($data->{'nullable'});
-        }
         if (property_exists($data, 'discriminator') && $data->{'discriminator'} !== null) {
             $object->setDiscriminator($this->denormalizer->denormalize($data->{'discriminator'}, 'Jane\\OpenApi\\JsonSchema\\Model\\Discriminator', 'json', $context));
             unset($data->{'discriminator'});
-        }
-        if (property_exists($data, 'readOnly') && $data->{'readOnly'} !== null) {
-            $object->setReadOnly($data->{'readOnly'});
-            unset($data->{'readOnly'});
-        }
-        if (property_exists($data, 'writeOnly') && $data->{'writeOnly'} !== null) {
-            $object->setWriteOnly($data->{'writeOnly'});
-            unset($data->{'writeOnly'});
         }
         if (property_exists($data, 'example') && $data->{'example'} !== null) {
             $object->setExample($data->{'example'});
@@ -245,10 +264,6 @@ class SchemaNormalizer implements DenormalizerInterface, NormalizerInterface, De
         if (property_exists($data, 'externalDocs') && $data->{'externalDocs'} !== null) {
             $object->setExternalDocs($this->denormalizer->denormalize($data->{'externalDocs'}, 'Jane\\OpenApi\\JsonSchema\\Model\\ExternalDocumentation', 'json', $context));
             unset($data->{'externalDocs'});
-        }
-        if (property_exists($data, 'deprecated') && $data->{'deprecated'} !== null) {
-            $object->setDeprecated($data->{'deprecated'});
-            unset($data->{'deprecated'});
         }
         if (property_exists($data, 'xml') && $data->{'xml'} !== null) {
             $object->setXml($this->denormalizer->denormalize($data->{'xml'}, 'Jane\\OpenApi\\JsonSchema\\Model\\XML', 'json', $context));
