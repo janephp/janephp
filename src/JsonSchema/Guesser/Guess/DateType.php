@@ -41,7 +41,7 @@ class DateType extends ObjectType
             [
                 new Arg(new Expr\ConstFetch(new Name('0'))),
                 new Arg(new Expr\ConstFetch(new Name('0'))),
-                new Arg(new Expr\ConstFetch(new Name('0')))
+                new Arg(new Expr\ConstFetch(new Name('0'))),
             ]);
     }
 
@@ -76,7 +76,7 @@ class DateType extends ObjectType
                     [
                         new Arg(new Expr\ConstFetch(new Name('0'))),
                         new Arg(new Expr\ConstFetch(new Name('0'))),
-                        new Arg(new Expr\ConstFetch(new Name('0')))
+                        new Arg(new Expr\ConstFetch(new Name('0'))),
                     ])
             )
         );
