@@ -37,7 +37,7 @@ class Review
      */
     protected $publicationDate;
     /**
-     * A book.
+     * The item that is being reviewed/rated
      *
      * @var Book
      */
@@ -152,7 +152,7 @@ class Review
         return $this;
     }
     /**
-     * A book.
+     * The item that is being reviewed/rated
      *
      * @return Book
      */
@@ -161,7 +161,7 @@ class Review
         return $this->book;
     }
     /**
-     * A book.
+     * The item that is being reviewed/rated
      *
      * @param Book $book
      *

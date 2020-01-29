@@ -1,0 +1,35 @@
+openapi: '3.0.0'
+info:
+  version: 1.0.0
+  title: References override fields when used in properties
+servers:
+  - url: https://acme.localhost/v1/
+
+paths:
+  "parents":
+    get:
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  value:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/parents'
+components:
+  schemas:
+    parents:
+      type: object
+      properties:
+        currency:
+          nullable: true
+          $ref: '#/components/schemas/child'
+    child:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
