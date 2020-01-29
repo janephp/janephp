@@ -250,6 +250,7 @@ class Reference
     public function setTitle(?string $title): self
     {
         $this->title = $title;
+
         return $this;
     }
 
@@ -269,6 +270,7 @@ class Reference
     public function setMultipleOf(?float $multipleOf): self
     {
         $this->multipleOf = $multipleOf;
+
         return $this;
     }
 
@@ -288,6 +290,7 @@ class Reference
     public function setMaximum(?float $maximum): self
     {
         $this->maximum = $maximum;
+
         return $this;
     }
 
@@ -307,6 +310,7 @@ class Reference
     public function setExclusiveMaximum(?bool $exclusiveMaximum): self
     {
         $this->exclusiveMaximum = $exclusiveMaximum;
+
         return $this;
     }
 
@@ -326,6 +330,7 @@ class Reference
     public function setMinimum(?float $minimum): self
     {
         $this->minimum = $minimum;
+
         return $this;
     }
 
@@ -345,6 +350,7 @@ class Reference
     public function setExclusiveMinimum(?bool $exclusiveMinimum): self
     {
         $this->exclusiveMinimum = $exclusiveMinimum;
+
         return $this;
     }
 
@@ -364,6 +370,7 @@ class Reference
     public function setMaxLength(?int $maxLength): self
     {
         $this->maxLength = $maxLength;
+
         return $this;
     }
 
@@ -383,6 +390,7 @@ class Reference
     public function setMinLength(?int $minLength): self
     {
         $this->minLength = $minLength;
+
         return $this;
     }
 
@@ -402,6 +410,7 @@ class Reference
     public function setPattern(?string $pattern): self
     {
         $this->pattern = $pattern;
+
         return $this;
     }
 
@@ -421,6 +430,7 @@ class Reference
     public function setMaxItems(?int $maxItems): self
     {
         $this->maxItems = $maxItems;
+
         return $this;
     }
 
@@ -440,6 +450,7 @@ class Reference
     public function setMinItems(?int $minItems): self
     {
         $this->minItems = $minItems;
+
         return $this;
     }
 
@@ -459,6 +470,7 @@ class Reference
     public function setUniqueItems(?bool $uniqueItems): self
     {
         $this->uniqueItems = $uniqueItems;
+
         return $this;
     }
 
@@ -478,6 +490,7 @@ class Reference
     public function setType(?string $type): self
     {
         $this->type = $type;
+
         return $this;
     }
 
@@ -497,6 +510,7 @@ class Reference
     public function setDescription(?string $description): self
     {
         $this->description = $description;
+
         return $this;
     }
 
@@ -516,6 +530,7 @@ class Reference
     public function setFormat(?string $format): self
     {
         $this->format = $format;
+
         return $this;
     }
 
@@ -535,6 +550,7 @@ class Reference
     public function setNullable(?bool $nullable): self
     {
         $this->nullable = $nullable;
+
         return $this;
     }
 
@@ -554,6 +570,7 @@ class Reference
     public function setReadOnly(?bool $readOnly): self
     {
         $this->readOnly = $readOnly;
+
         return $this;
     }
 
@@ -567,11 +584,13 @@ class Reference
 
     /**
      * @param bool|null $writeOnly
+     *
      * @return Reference
      */
     public function setWriteOnly(?bool $writeOnly): self
     {
         $this->writeOnly = $writeOnly;
+
         return $this;
     }
 
@@ -591,6 +610,7 @@ class Reference
     public function setDeprecated(?bool $deprecated): self
     {
         $this->deprecated = $deprecated;
+
         return $this;
     }
 
