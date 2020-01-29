@@ -92,7 +92,7 @@ class DateTimeType extends ObjectType
         if ($this->inputFormat === 'strtotime') {
             // (new \DateTime())->setTimestamp(strtotime($data))
             return new Expr\MethodCall(new Expr\New_(new Name('\DateTime')), 'setTimestamp', [
-                new Expr\FuncCall(new Name('strtotime'), [new Arg($input)])
+                new Expr\FuncCall(new Name('strtotime'), [new Arg($input)]),
             ]);
         }
 
