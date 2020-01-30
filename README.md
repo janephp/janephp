@@ -1,4 +1,6 @@
-![Jane](./identity/logo_jane_full.svg)
+<p align="center">
+    <img width="500" height="180" src="https://github.com/Korbeil/janephp/tree/master/identity/logo_jane_full.svg" alt="Jane logo" />
+</p>
 --
 
 [![Latest Version](https://img.shields.io/github/release/janephp/janephp.svg?style=flat-square)](https://github.com/janephp/janephp/releases)
@@ -28,6 +30,7 @@ Open Source time sponsored by JoliCode
 ## Credits
 
 * [All contributors](https://github.com/janephp/jane/graphs/contributors)
+* [Digital Ping Pong](https://digitalpingpong.com/) & [Alexandre Godreau](https://twitter.com/coucou__alex) for our logo
 
 ## License
 
