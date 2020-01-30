@@ -4,8 +4,9 @@ namespace Jane\JsonSchema\Guesser\Guess;
 
 use Jane\JsonSchema\Generator\Context\Context;
 use PhpParser\Node\Arg;
-use PhpParser\Node\Name;
 use PhpParser\Node\Expr;
+use PhpParser\Node\Name;
+use PhpParser\Node\Scalar;
 
 /**
  * Represent a Date type.
@@ -33,15 +34,19 @@ class DateType extends ObjectType
     {
         // \DateTime::createFromFormat($format, $data)->setTime(0, 0, 0)
         return new Expr\MethodCall(
-            new Expr\StaticCall(new Name('\DateTime'), 'createFromFormat', [
-                new Arg(new Expr\ConstFetch(new Name('"' . $this->format . '"'))),
-                new Arg($input),
-            ]),
+            new Expr\StaticCall(
+                new Name('\DateTime'),
+                'createFromFormat',
+                [
+                    new Arg(new Scalar\String_($this->format)),
+                    new Arg($input),
+                ]
+            ),
             'setTime',
             [
-                new Arg(new Expr\ConstFetch(new Name('0'))),
-                new Arg(new Expr\ConstFetch(new Name('0'))),
-                new Arg(new Expr\ConstFetch(new Name('0'))),
+                new Arg(new Scalar\LNumber(0)),
+                new Arg(new Scalar\LNumber(0)),
+                new Arg(new Scalar\LNumber(0)),
             ]);
     }
 
@@ -52,7 +57,7 @@ class DateType extends ObjectType
     {
         // $object->format($format);
         return new Expr\MethodCall($input, 'format', [
-            new Arg(new Expr\ConstFetch(new Name('"' . $this->format . '"'))),
+            new Arg(new Scalar\String_($this->format)),
         ]);
     }
 
@@ -68,15 +73,19 @@ class DateType extends ObjectType
             new Expr\BinaryOp\NotIdentical(
                 new Expr\ConstFetch(new Name('false')),
                 new Expr\MethodCall(
-                    new Expr\StaticCall(new Name('\DateTime'), 'createFromFormat', [
-                        new Arg(new Expr\ConstFetch(new Name('"' . $this->format . '"'))),
-                        new Arg($input),
-                    ]),
+                    new Expr\StaticCall(
+                        new Name('\DateTime'),
+                        'createFromFormat',
+                        [
+                            new Arg(new Scalar\String_($this->format)),
+                            new Arg($input),
+                        ]
+                    ),
                     'setTime',
                     [
-                        new Arg(new Expr\ConstFetch(new Name('0'))),
-                        new Arg(new Expr\ConstFetch(new Name('0'))),
-                        new Arg(new Expr\ConstFetch(new Name('0'))),
+                        new Arg(new Scalar\LNumber(0)),
+                        new Arg(new Scalar\LNumber(0)),
+                        new Arg(new Scalar\LNumber(0)),
                     ])
             )
         );

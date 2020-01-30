@@ -35,12 +35,12 @@ class TestNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         }
         $object = new \Jane\JsonSchema\Tests\Expected\Model\Test();
         if (property_exists($data, 'date')) {
-            $object->setDate(\DateTime::createFromFormat("d.m.Y", $data->{'date'})->setTime(0, 0, 0));
+            $object->setDate(\DateTime::createFromFormat('d.m.Y', $data->{'date'})->setTime(0, 0, 0));
         }
         if (property_exists($data, 'dateOrNull') && $data->{'dateOrNull'} !== null) {
             $value = $data->{'dateOrNull'};
-            if (is_string($data->{'dateOrNull'}) and false !== \DateTime::createFromFormat("d.m.Y", $data->{'dateOrNull'})->setTime(0, 0, 0)) {
-                $value = \DateTime::createFromFormat("d.m.Y", $data->{'dateOrNull'})->setTime(0, 0, 0);
+            if (is_string($data->{'dateOrNull'}) and false !== \DateTime::createFromFormat('d.m.Y', $data->{'dateOrNull'})->setTime(0, 0, 0)) {
+                $value = \DateTime::createFromFormat('d.m.Y', $data->{'dateOrNull'})->setTime(0, 0, 0);
             } elseif (is_null($data->{'dateOrNull'})) {
                 $value = $data->{'dateOrNull'};
             }
@@ -51,8 +51,8 @@ class TestNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         }
         if (property_exists($data, 'dateOrNullOrInt') && $data->{'dateOrNullOrInt'} !== null) {
             $value_1 = $data->{'dateOrNullOrInt'};
-            if (is_string($data->{'dateOrNullOrInt'}) and false !== \DateTime::createFromFormat("d.m.Y", $data->{'dateOrNullOrInt'})->setTime(0, 0, 0)) {
-                $value_1 = \DateTime::createFromFormat("d.m.Y", $data->{'dateOrNullOrInt'})->setTime(0, 0, 0);
+            if (is_string($data->{'dateOrNullOrInt'}) and false !== \DateTime::createFromFormat('d.m.Y', $data->{'dateOrNullOrInt'})->setTime(0, 0, 0)) {
+                $value_1 = \DateTime::createFromFormat('d.m.Y', $data->{'dateOrNullOrInt'})->setTime(0, 0, 0);
             } elseif (is_null($data->{'dateOrNullOrInt'})) {
                 $value_1 = $data->{'dateOrNullOrInt'};
             } elseif (is_int($data->{'dateOrNullOrInt'})) {
@@ -69,18 +69,18 @@ class TestNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
     {
         $data = new \stdClass();
         if (null !== $object->getDate()) {
-            $data->{'date'} = $object->getDate()->format("d.m.Y");
+            $data->{'date'} = $object->getDate()->format('d.m.Y');
         }
         $value = $object->getDateOrNull();
         if (is_object($object->getDateOrNull())) {
-            $value = $object->getDateOrNull()->format("d.m.Y");
+            $value = $object->getDateOrNull()->format('d.m.Y');
         } elseif (is_null($object->getDateOrNull())) {
             $value = $object->getDateOrNull();
         }
         $data->{'dateOrNull'} = $value;
         $value_1 = $object->getDateOrNullOrInt();
         if (is_object($object->getDateOrNullOrInt())) {
-            $value_1 = $object->getDateOrNullOrInt()->format("d.m.Y");
+            $value_1 = $object->getDateOrNullOrInt()->format('d.m.Y');
         } elseif (is_null($object->getDateOrNullOrInt())) {
             $value_1 = $object->getDateOrNullOrInt();
         } elseif (is_int($object->getDateOrNullOrInt())) {
