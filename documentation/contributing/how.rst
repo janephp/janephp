@@ -1,7 +1,7 @@
-Internal
-========
+How Jane works
+==============
 
-This documentation describes how JsonSchema & OpenAPI Jane libraries work to generate the code.
+This documentation describes how JSON Schema & OpenAPI Jane libraries work to generate the code.
 It is mainly oriented for people wanting to contribute to theses libraries.
 
 Theses libraries is based on 3 different steps:
