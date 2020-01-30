@@ -1,5 +1,5 @@
 <p align="center">
-    <img width="500" height="180" src="https://github.com/Korbeil/janephp/tree/master/identity/logo_jane_full.svg" alt="Jane logo" />
+    <img width="500" height="180" src="https://raw.githubusercontent.com/janephp/janephp/master/identity/logo_jane_full@4x.png" alt="Jane logo" />
 </p>
 --
 
