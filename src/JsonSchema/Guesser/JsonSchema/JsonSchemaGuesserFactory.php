@@ -15,9 +15,11 @@ class JsonSchemaGuesserFactory
         $chainGuesser = ChainGuesserFactory::create($serializer);
         $naming = new Naming();
         $merger = new JsonSchemaMerger();
-        $dateFormat = isset($options['date-format']) ? $options['date-format'] : \DateTime::RFC3339;
+        $dateFormat = isset($options['full-date-format']) ? $options['full-date-format'] : 'Y-m-d';
+        $dateTimeFormat = isset($options['date-format']) ? $options['date-format'] : \DateTime::RFC3339;
 
-        $chainGuesser->addGuesser(new DateTimeGuesser($dateFormat));
+        $chainGuesser->addGuesser(new DateGuesser($dateFormat));
+        $chainGuesser->addGuesser(new DateTimeGuesser($dateTimeFormat));
         $chainGuesser->addGuesser(new SimpleTypeGuesser());
         $chainGuesser->addGuesser(new ArrayGuesser());
         $chainGuesser->addGuesser(new MultipleGuesser());

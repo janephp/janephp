@@ -82,6 +82,7 @@ class GenerateCommand extends Command
         $optionsResolver->setDefaults([
             'reference' => false,
             'date-format' => \DateTime::RFC3339,
+            'full-date-format' => 'Y-m-d',
             'async' => false,
             'strict' => true,
             'use-fixer' => false,
@@ -122,6 +123,7 @@ class GenerateCommand extends Command
             'openapi-file',
             'reference',
             'date-format',
+            'full-date-format',
             'async',
             'strict',
             'use-fixer',
