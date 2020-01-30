@@ -1,0 +1,47 @@
+openapi: '3.0.0'
+info:
+  version: 1.0.0
+paths:
+  "/test-query":
+    get:
+      operationId: Test Reference Response
+      responses:
+        '200':
+          description: no error
+      tags:
+      - Test
+    post:
+      operationId: post query
+      parameters:
+        contentType:
+          name: Content-Type
+          in: header
+          schema:
+            type: string
+          required: true
+      requestBody:
+        $ref: '#/components/requests/item'
+      responses:
+        201:
+          description: A new item has been succesfully created
+          content:
+            application/json:
+              schema:
+                properties:
+                  id:
+                    type: string
+                    format: uuid
+                  name:
+                    type: string
+      tags:
+        - Test
+components:
+  requests:
+    item:
+      required: true
+      content:
+        application/json:
+          schema:
+            properties:
+              name:
+                type: string
