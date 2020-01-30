@@ -20,11 +20,19 @@ class DateType extends ObjectType
      */
     private $format;
 
-    public function __construct(object $object, string $format = 'Y-m-d')
+    /**
+     * Indicator whether to use DateTime or DateTimeInterface as type hint.
+     *
+     * @var bool
+     */
+    private $preferInterface;
+
+    public function __construct(object $object, string $format = 'Y-m-d', ?bool $preferInterface = null)
     {
         parent::__construct($object, '\DateTime', '', []);
 
         $this->format = $format;
+        $this->preferInterface = $preferInterface ?? false;
     }
 
     /**
@@ -93,7 +101,7 @@ class DateType extends ObjectType
 
     public function getTypeHint(string $namespace)
     {
-        return '\DateTime';
+        return $this->preferInterface ? '\DateTimeInterface' : '\DateTime';
     }
 
     public function __toString(): string

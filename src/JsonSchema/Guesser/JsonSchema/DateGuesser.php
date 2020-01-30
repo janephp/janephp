@@ -14,9 +14,17 @@ class DateGuesser implements GuesserInterface, TypeGuesserInterface
     /** @var string Format of date to use */
     private $dateFormat;
 
-    public function __construct(string $dateFormat = 'Y-m-d')
+    /**
+     * Indicator whether to use DateTime or DateTimeInterface as type hint.
+     *
+     * @var bool
+     */
+    private $preferInterface;
+
+    public function __construct(string $dateFormat = 'Y-m-d', ?bool $preferInterface = null)
     {
         $this->dateFormat = $dateFormat;
+        $this->preferInterface = $preferInterface;
     }
 
     /**
@@ -34,7 +42,7 @@ class DateGuesser implements GuesserInterface, TypeGuesserInterface
      */
     public function guessType($object, string $name, string $reference, Registry $registry): Type
     {
-        return new DateType($object, $this->dateFormat);
+        return new DateType($object, $this->dateFormat, $this->preferInterface);
     }
 
     protected function getSchemaClass(): string
