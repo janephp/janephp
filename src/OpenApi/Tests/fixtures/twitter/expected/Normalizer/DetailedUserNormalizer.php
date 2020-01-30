@@ -35,7 +35,7 @@ class DetailedUserNormalizer implements DenormalizerInterface, NormalizerInterfa
             $object->setId($data->{'id'});
         }
         if (property_exists($data, 'created_at')) {
-            $object->setCreatedAt(\DateTime::createFromFormat("Y-m-d\TH:i:sP", $data->{'created_at'}));
+            $object->setCreatedAt(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data->{'created_at'}));
         }
         if (property_exists($data, 'name')) {
             $object->setName($data->{'name'});
@@ -88,7 +88,7 @@ class DetailedUserNormalizer implements DenormalizerInterface, NormalizerInterfa
             $data->{'id'} = $object->getId();
         }
         if (null !== $object->getCreatedAt()) {
-            $data->{'created_at'} = $object->getCreatedAt()->format("Y-m-d\TH:i:sP");
+            $data->{'created_at'} = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
         }
         if (null !== $object->getName()) {
             $data->{'name'} = $object->getName();

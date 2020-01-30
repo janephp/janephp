@@ -32,7 +32,7 @@ class SchemaNormalizer implements DenormalizerInterface, NormalizerInterface, De
             $object->setStringProperty($data->{'stringProperty'});
         }
         if (property_exists($data, 'dateProperty')) {
-            $object->setDateProperty(\DateTime::createFromFormat("Y-m-d\TH:i:sP", $data->{'dateProperty'}));
+            $object->setDateProperty(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data->{'dateProperty'}));
         }
         if (property_exists($data, 'integerProperty')) {
             $object->setIntegerProperty($data->{'integerProperty'});
@@ -69,7 +69,7 @@ class SchemaNormalizer implements DenormalizerInterface, NormalizerInterface, De
             $data->{'stringProperty'} = $object->getStringProperty();
         }
         if (null !== $object->getDateProperty()) {
-            $data->{'dateProperty'} = $object->getDateProperty()->format("Y-m-d\TH:i:sP");
+            $data->{'dateProperty'} = $object->getDateProperty()->format('Y-m-d\\TH:i:sP');
         }
         if (null !== $object->getIntegerProperty()) {
             $data->{'integerProperty'} = $object->getIntegerProperty();

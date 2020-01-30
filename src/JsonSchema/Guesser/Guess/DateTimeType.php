@@ -4,8 +4,9 @@ namespace Jane\JsonSchema\Guesser\Guess;
 
 use Jane\JsonSchema\Generator\Context\Context;
 use PhpParser\Node\Arg;
-use PhpParser\Node\Name;
 use PhpParser\Node\Expr;
+use PhpParser\Node\Name;
+use PhpParser\Node\Scalar;
 
 /**
  * Represent a DateTime type.
@@ -57,7 +58,7 @@ class DateTimeType extends ObjectType
     {
         // $object->format($format);
         return new Expr\MethodCall($input, 'format', [
-            new Arg(new Expr\ConstFetch(new Name('"' . $this->outputFormat . '"'))),
+            new Arg(new Scalar\String_($this->outputFormat)),
         ]);
     }
 
@@ -98,7 +99,7 @@ class DateTimeType extends ObjectType
 
         // \DateTime::createFromFormat($format, $data)
         return new Expr\StaticCall(new Name('\DateTime'), 'createFromFormat', [
-            new Arg(new Expr\ConstFetch(new Name('"' . $this->inputFormat . '"'))),
+            new Arg(new Scalar\String_($this->inputFormat)),
             new Arg($input),
         ]);
     }

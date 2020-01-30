@@ -69,18 +69,18 @@ class TestNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
     {
         $data = new \stdClass();
         if (null !== $object->getDate()) {
-            $data->{'date'} = $object->getDate()->format("Y-m-d\TH:i:sP");
+            $data->{'date'} = $object->getDate()->format('Y-m-d\\TH:i:sP');
         }
         $value = $object->getDateOrNull();
         if (is_object($object->getDateOrNull())) {
-            $value = $object->getDateOrNull()->format("Y-m-d\TH:i:sP");
+            $value = $object->getDateOrNull()->format('Y-m-d\\TH:i:sP');
         } elseif (is_null($object->getDateOrNull())) {
             $value = $object->getDateOrNull();
         }
         $data->{'dateOrNull'} = $value;
         $value_1 = $object->getDateOrNullOrInt();
         if (is_object($object->getDateOrNullOrInt())) {
-            $value_1 = $object->getDateOrNullOrInt()->format("Y-m-d\TH:i:sP");
+            $value_1 = $object->getDateOrNullOrInt()->format('Y-m-d\\TH:i:sP');
         } elseif (is_null($object->getDateOrNullOrInt())) {
             $value_1 = $object->getDateOrNullOrInt();
         } elseif (is_int($object->getDateOrNullOrInt())) {

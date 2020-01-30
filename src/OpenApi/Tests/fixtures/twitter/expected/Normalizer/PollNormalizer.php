@@ -42,7 +42,7 @@ class PollNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             $object->setVotingStatus($data->{'voting_status'});
         }
         if (property_exists($data, 'end_datetime')) {
-            $object->setEndDatetime(\DateTime::createFromFormat("Y-m-d\TH:i:sP", $data->{'end_datetime'}));
+            $object->setEndDatetime(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data->{'end_datetime'}));
         }
         if (property_exists($data, 'duration_minutes')) {
             $object->setDurationMinutes($data->{'duration_minutes'});
@@ -66,7 +66,7 @@ class PollNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             $data->{'voting_status'} = $object->getVotingStatus();
         }
         if (null !== $object->getEndDatetime()) {
-            $data->{'end_datetime'} = $object->getEndDatetime()->format("Y-m-d\TH:i:sP");
+            $data->{'end_datetime'} = $object->getEndDatetime()->format('Y-m-d\\TH:i:sP');
         }
         if (null !== $object->getDurationMinutes()) {
             $data->{'duration_minutes'} = $object->getDurationMinutes();
