@@ -87,6 +87,10 @@ class NonBodyParameterGenerator extends ParameterGenerator
                     $types[] = new Expr\ArrayItem(new Scalar\String_('null'));
                 }
 
+                if (mb_stripos($parameter->getName(), 'content-type') !== false) {
+                    $types[] = new Expr\ArrayItem(new Scalar\String_('array'));
+                }
+
                 $allowedTypes[] = new Stmt\Expression(new Expr\MethodCall($optionsResolverVariable, 'setAllowedTypes', [
                     new Node\Arg(new Scalar\String_($parameter->getName())),
                     new Node\Arg(new Expr\Array_($types)),
