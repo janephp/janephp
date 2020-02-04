@@ -39,39 +39,53 @@ class GenerateCommand extends Command
         }
 
         $options = $this->resolveConfiguration($options);
-        $registry = new Registry();
+        $registries = [];
 
         if (\array_key_exists('openapi-file', $options)) {
-            $registry->addSchema($this->resolveSchema($options['openapi-file'], $options));
-            $registry->addOutputDirectory($options['directory']);
+            $localRegistry = new Registry();
+            $localRegistry->addSchema($this->resolveSchema($options['openapi-file'], $options));
+            $localRegistry->addOutputDirectory($options['directory']);
+
+            $openApiClass = $this->matchOpenApiClass($localRegistry);
+
+            $registries[$openApiClass] = $localRegistry;
         } else {
             foreach ($options['mapping'] as $schema => $schemaOptions) {
-                $registry->addSchema($this->resolveSchema($schema, $schemaOptions));
-                $registry->addOutputDirectory($schemaOptions['directory']);
+                $localRegistry = new Registry();
+                $localRegistry->addSchema($localSchema = $this->resolveSchema($schema, $schemaOptions));
+                $localRegistry->addOutputDirectory($localDirectory = $schemaOptions['directory']);
+
+                $openApiClass = $this->matchOpenApiClass($localRegistry);
+                if (!\array_key_exists($openApiClass, $registries)) {
+                    $registries[$openApiClass] = new Registry();
+                }
+
+                $registries[$openApiClass]->addSchema($localSchema);
+                $registries[$openApiClass]->addOutputDirectory($localDirectory);
             }
         }
 
-        $openApiClass = $this->matchOpenApiClass($registry);
+        foreach ($registries as $openApiClass => $registry) {
+            /** @var JaneOpenApi $janeOpenApi */
+            $janeOpenApi = $openApiClass::build($options);
+            $fixerConfigFile = '';
 
-        /** @var JaneOpenApi $janeOpenApi */
-        $janeOpenApi = $openApiClass::build($options);
-        $fixerConfigFile = '';
+            if (\array_key_exists('fixer-config-file', $options) && null !== $options['fixer-config-file']) {
+                $fixerConfigFile = $options['fixer-config-file'];
+            }
 
-        if (\array_key_exists('fixer-config-file', $options) && null !== $options['fixer-config-file']) {
-            $fixerConfigFile = $options['fixer-config-file'];
+            $printer = new Printer(new Standard(), $fixerConfigFile);
+
+            if (\array_key_exists('use-fixer', $options) && \is_bool($options['use-fixer'])) {
+                $printer->setUseFixer($options['use-fixer']);
+            }
+            if (\array_key_exists('clean-generated', $options) && \is_bool($options['clean-generated'])) {
+                $printer->setCleanGenerated($options['clean-generated']);
+            }
+
+            $janeOpenApi->generate($registry);
+            $printer->output($registry);
         }
-
-        $printer = new Printer(new Standard(), $fixerConfigFile);
-
-        if (\array_key_exists('use-fixer', $options) && \is_bool($options['use-fixer'])) {
-            $printer->setUseFixer($options['use-fixer']);
-        }
-        if (\array_key_exists('clean-generated', $options) && \is_bool($options['clean-generated'])) {
-            $printer->setCleanGenerated($options['clean-generated']);
-        }
-
-        $janeOpenApi->generate($registry);
-        $printer->output($registry);
 
         return 0;
     }
