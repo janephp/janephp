@@ -17,6 +17,8 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class GenerateCommand extends Command
 {
+    private static $schemaParsers = [];
+
     public function configure()
     {
         $this->setName('generate');
@@ -39,39 +41,53 @@ class GenerateCommand extends Command
         }
 
         $options = $this->resolveConfiguration($options);
-        $registry = new Registry();
+        $registries = [];
 
         if (\array_key_exists('openapi-file', $options)) {
-            $registry->addSchema($this->resolveSchema($options['openapi-file'], $options));
-            $registry->addOutputDirectory($options['directory']);
+            $localRegistry = new Registry();
+            $localRegistry->addSchema($this->resolveSchema($options['openapi-file'], $options));
+            $localRegistry->addOutputDirectory($options['directory']);
+
+            $openApiClass = $this->matchOpenApiClass($localRegistry);
+
+            $registries[$openApiClass] = $localRegistry;
         } else {
             foreach ($options['mapping'] as $schema => $schemaOptions) {
-                $registry->addSchema($this->resolveSchema($schema, $schemaOptions));
-                $registry->addOutputDirectory($schemaOptions['directory']);
+                $localRegistry = new Registry();
+                $localRegistry->addSchema($localSchema = $this->resolveSchema($schema, $schemaOptions));
+                $localRegistry->addOutputDirectory($localDirectory = $schemaOptions['directory']);
+
+                $openApiClass = $this->matchOpenApiClass($localRegistry);
+                if (!\array_key_exists($openApiClass, $registries)) {
+                    $registries[$openApiClass] = new Registry();
+                }
+
+                $registries[$openApiClass]->addSchema($localSchema);
+                $registries[$openApiClass]->addOutputDirectory($localDirectory);
             }
         }
 
-        $openApiClass = $this->matchOpenApiClass($registry);
+        foreach ($registries as $openApiClass => $registry) {
+            /** @var JaneOpenApi $janeOpenApi */
+            $janeOpenApi = $openApiClass::build($options);
+            $fixerConfigFile = '';
 
-        /** @var JaneOpenApi $janeOpenApi */
-        $janeOpenApi = $openApiClass::build($options);
-        $fixerConfigFile = '';
+            if (\array_key_exists('fixer-config-file', $options) && null !== $options['fixer-config-file']) {
+                $fixerConfigFile = $options['fixer-config-file'];
+            }
 
-        if (\array_key_exists('fixer-config-file', $options) && null !== $options['fixer-config-file']) {
-            $fixerConfigFile = $options['fixer-config-file'];
+            $printer = new Printer(new Standard(), $fixerConfigFile);
+
+            if (\array_key_exists('use-fixer', $options) && \is_bool($options['use-fixer'])) {
+                $printer->setUseFixer($options['use-fixer']);
+            }
+            if (\array_key_exists('clean-generated', $options) && \is_bool($options['clean-generated'])) {
+                $printer->setCleanGenerated($options['clean-generated']);
+            }
+
+            $janeOpenApi->generate($registry);
+            $printer->output($registry);
         }
-
-        $printer = new Printer(new Standard(), $fixerConfigFile);
-
-        if (\array_key_exists('use-fixer', $options) && \is_bool($options['use-fixer'])) {
-            $printer->setUseFixer($options['use-fixer']);
-        }
-        if (\array_key_exists('clean-generated', $options) && \is_bool($options['clean-generated'])) {
-            $printer->setCleanGenerated($options['clean-generated']);
-        }
-
-        $janeOpenApi->generate($registry);
-        $printer->output($registry);
 
         return 0;
     }
@@ -155,11 +171,13 @@ class GenerateCommand extends Command
         $openApi3ExceptionMessage = null;
 
         if (class_exists(\Jane\OpenApi2\JaneOpenApi::class)) {
-            $openApi2Serializer = \Jane\OpenApi2\JaneOpenApi::buildSerializer();
-            $openApi2SchemaParser = new \Jane\OpenApi2\SchemaParser\SchemaParser($openApi2Serializer);
+            if (!\array_key_exists(\Jane\OpenApi2\JaneOpenApi::class, self::$schemaParsers)) {
+                $openApi2Serializer = \Jane\OpenApi2\JaneOpenApi::buildSerializer();
+                self::$schemaParsers[\Jane\OpenApi2\JaneOpenApi::class] = new \Jane\OpenApi2\SchemaParser\SchemaParser($openApi2Serializer);
+            }
 
             try {
-                $openApi2SchemaParser->parseSchema($firstSchema->getOrigin());
+                self::$schemaParsers[\Jane\OpenApi2\JaneOpenApi::class]->parseSchema($firstSchema->getOrigin());
                 $openApiClass = \Jane\OpenApi2\JaneOpenApi::class;
             } catch (CouldNotParseException $e) {
                 $openApi2ExceptionMessage = $e->getMessage();
@@ -168,11 +186,13 @@ class GenerateCommand extends Command
             }
         }
         if (null === $openApiClass && class_exists(\Jane\OpenApi\JaneOpenApi::class)) {
-            $openApi3Serializer = \Jane\OpenApi\JaneOpenApi::buildSerializer();
-            $openApi3SchemaParser = new \Jane\OpenApi\SchemaParser\SchemaParser($openApi3Serializer);
+            if (!\array_key_exists(\Jane\OpenApi\JaneOpenApi::class, self::$schemaParsers)) {
+                $openApi3Serializer = \Jane\OpenApi\JaneOpenApi::buildSerializer();
+                self::$schemaParsers[\Jane\OpenApi\JaneOpenApi::class] = new \Jane\OpenApi\SchemaParser\SchemaParser($openApi3Serializer);
+            }
 
             try {
-                $openApi3SchemaParser->parseSchema($firstSchema->getOrigin());
+                self::$schemaParsers[\Jane\OpenApi\JaneOpenApi::class]->parseSchema($firstSchema->getOrigin());
                 $openApiClass = \Jane\OpenApi\JaneOpenApi::class;
             } catch (CouldNotParseException $e) {
                 $openApi3ExceptionMessage = $e->getMessage();
