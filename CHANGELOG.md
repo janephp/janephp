@@ -7,6 +7,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [5.3.1] - 2020-02-04
+
+### Added
+
+- [Jane] [GH#240](https://github.com/janephp/janephp/pull/240) Add date type
+- [Jane] [GH#238](https://github.com/janephp/janephp/pull/238) Allow DateTimeInterface as typehint
+- [Jane] [GH#242](https://github.com/janephp/janephp/pull/242) Add logo for Jane 🎉
+
+### Fixed
+
+- [Jane] Fixing gitsplit
+- [OpenAPI] [GH#234](https://github.com/janephp/janephp/pull/234) Fix variable conflict in authentication generator
+- [JsonSchema] [GH#235](https://github.com/janephp/janephp/pull/235) Fixed JsonSchema dependencies
+
 ## [5.3.0] - 2020-01-15
 
 ### Added
@@ -228,7 +242,8 @@ See :
  * https://github.com/janephp/jane/releases
  * https://github.com/janephp/openapi/releases
 
-[Unreleased]: https://github.com/janephp/janephp/compare/v5.3.0...HEAD
+[Unreleased]: https://github.com/janephp/janephp/compare/v5.3.1...HEAD
+[5.3.1]: https://github.com/janephp/janephp/compare/v5.3.0...v5.3.1
 [5.3.0]: https://github.com/janephp/janephp/compare/v5.2.2...v5.3.0
 [5.2.2]: https://github.com/janephp/janephp/compare/v5.2.1...v5.2.2
 [5.2.1]: https://github.com/janephp/janephp/compare/v5.2.0...v5.2.1
