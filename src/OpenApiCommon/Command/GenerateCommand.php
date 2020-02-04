@@ -17,6 +17,8 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class GenerateCommand extends Command
 {
+    private static $schemaParsers = [];
+
     public function configure()
     {
         $this->setName('generate');
@@ -169,11 +171,13 @@ class GenerateCommand extends Command
         $openApi3ExceptionMessage = null;
 
         if (class_exists(\Jane\OpenApi2\JaneOpenApi::class)) {
-            $openApi2Serializer = \Jane\OpenApi2\JaneOpenApi::buildSerializer();
-            $openApi2SchemaParser = new \Jane\OpenApi2\SchemaParser\SchemaParser($openApi2Serializer);
+            if (!\array_key_exists(\Jane\OpenApi2\JaneOpenApi::class, self::$schemaParsers)) {
+                $openApi2Serializer = \Jane\OpenApi2\JaneOpenApi::buildSerializer();
+                self::$schemaParsers[\Jane\OpenApi2\JaneOpenApi::class] = new \Jane\OpenApi2\SchemaParser\SchemaParser($openApi2Serializer);
+            }
 
             try {
-                $openApi2SchemaParser->parseSchema($firstSchema->getOrigin());
+                self::$schemaParsers[\Jane\OpenApi2\JaneOpenApi::class]->parseSchema($firstSchema->getOrigin());
                 $openApiClass = \Jane\OpenApi2\JaneOpenApi::class;
             } catch (CouldNotParseException $e) {
                 $openApi2ExceptionMessage = $e->getMessage();
@@ -182,11 +186,13 @@ class GenerateCommand extends Command
             }
         }
         if (null === $openApiClass && class_exists(\Jane\OpenApi\JaneOpenApi::class)) {
-            $openApi3Serializer = \Jane\OpenApi\JaneOpenApi::buildSerializer();
-            $openApi3SchemaParser = new \Jane\OpenApi\SchemaParser\SchemaParser($openApi3Serializer);
+            if (!\array_key_exists(\Jane\OpenApi\JaneOpenApi::class, self::$schemaParsers)) {
+                $openApi3Serializer = \Jane\OpenApi\JaneOpenApi::buildSerializer();
+                self::$schemaParsers[\Jane\OpenApi\JaneOpenApi::class] = new \Jane\OpenApi\SchemaParser\SchemaParser($openApi3Serializer);
+            }
 
             try {
-                $openApi3SchemaParser->parseSchema($firstSchema->getOrigin());
+                self::$schemaParsers[\Jane\OpenApi\JaneOpenApi::class]->parseSchema($firstSchema->getOrigin());
                 $openApiClass = \Jane\OpenApi\JaneOpenApi::class;
             } catch (CouldNotParseException $e) {
                 $openApi3ExceptionMessage = $e->getMessage();
