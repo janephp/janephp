@@ -16,8 +16,8 @@ trait JaneObjectNormalizerGenerator
             'type' => Stmt\Class_::MODIFIER_PUBLIC,
             'params' => [
                 new Param(new Expr\Variable('data')),
-                new Param(new Expr\Variable('type')),
-                new Param(new Expr\Variable('format'), new Expr\ConstFetch(new Name('null'))),
+                new Param(new Expr\Variable('type'), null, new Name('string')),
+                new Param(new Expr\Variable('format'), new Expr\ConstFetch(new Name('null')), new Name('string')),
             ],
             'stmts' => [new Stmt\Return_(new Expr\FuncCall(new Name('array_key_exists'), [
                 new Arg(new Expr\Variable('type')),
@@ -32,7 +32,7 @@ trait JaneObjectNormalizerGenerator
             'type' => Stmt\Class_::MODIFIER_PUBLIC,
             'params' => [
                 new Param(new Expr\Variable('data')),
-                new Param(new Expr\Variable('format'), new Expr\ConstFetch(new Name('null'))),
+                new Param(new Expr\Variable('format'), new Expr\ConstFetch(new Name('null')), new Name('string')),
             ],
             'stmts' => [new Stmt\Return_(
                 new Expr\BinaryOp\BooleanAnd(
@@ -51,7 +51,7 @@ trait JaneObjectNormalizerGenerator
             'type' => Stmt\Class_::MODIFIER_PUBLIC,
             'params' => [
                 new Param(new Expr\Variable('object')),
-                new Param(new Expr\Variable('format'), new Expr\ConstFetch(new Name('null'))),
+                new Param(new Expr\Variable('format'), new Expr\ConstFetch(new Name('null')), new Name('string')),
                 new Param(new Expr\Variable('context'), new Expr\Array_(), 'array'),
             ],
             'stmts' => [
@@ -84,7 +84,7 @@ trait JaneObjectNormalizerGenerator
             'params' => [
                 new Param(new Expr\Variable('data')),
                 new Param(new Expr\Variable('class')),
-                new Param(new Expr\Variable('format'), new Expr\ConstFetch(new Name('null'))),
+                new Param(new Expr\Variable('format'), new Expr\ConstFetch(new Name('null')), new Name('string')),
                 new Param(new Expr\Variable('context'), new Expr\Array_(), 'array'),
             ],
             'stmts' => [
