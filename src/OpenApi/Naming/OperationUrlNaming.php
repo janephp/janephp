@@ -10,6 +10,12 @@ use Jane\OpenApiCommon\Operation\Operation;
 
 class OperationUrlNaming extends CommonOperationUrlNaming
 {
+    const POSSIBLE_EXTENSIONS = [
+        '.json',
+        '.php',
+        '.asp',
+    ];
+
     protected function getUniqueName(Operation $operation): string
     {
         $prefix = strtolower($operation->getMethod());
@@ -28,13 +34,14 @@ class OperationUrlNaming extends CommonOperationUrlNaming
             }
         }
 
-        preg_match_all('/(?P<separator>[^a-zA-Z0-9_{}])+(?P<part>[a-zA-Z0-9_{}]*)/', $operation->getPath(), $matches);
+        $matches = [];
+        preg_match_all('/(?<separator>[^a-zA-Z0-9_{}])+(?<part>[a-zA-Z0-9_{}]*)/', $operation->getPath(), $matches);
 
         $methodNameParts = [];
         $lastNonParameterPartIndex = 0;
 
         foreach ($matches[0] as $index => $match) {
-            if ($matches['separator'][$index] === '.') {
+            if ($matches['separator'][$index] === '.' && \in_array(mb_strtolower($match), self::POSSIBLE_EXTENSIONS)) {
                 continue;
             }
 
