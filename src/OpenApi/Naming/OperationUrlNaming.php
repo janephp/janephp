@@ -10,7 +10,7 @@ use Jane\OpenApiCommon\Operation\Operation;
 
 class OperationUrlNaming extends CommonOperationUrlNaming
 {
-    const POSSIBLE_EXTENSIONS = [
+    const FORBIDDEN_EXTENSIONS = [
         '.json',
         '.php',
         '.asp',
@@ -41,7 +41,7 @@ class OperationUrlNaming extends CommonOperationUrlNaming
         $lastNonParameterPartIndex = 0;
 
         foreach ($matches[0] as $index => $match) {
-            if ($matches['separator'][$index] === '.' && \in_array(mb_strtolower($match), self::POSSIBLE_EXTENSIONS)) {
+            if ($matches['separator'][$index] === '.' && \in_array(mb_strtolower($match), self::FORBIDDEN_EXTENSIONS)) {
                 continue;
             }
 
