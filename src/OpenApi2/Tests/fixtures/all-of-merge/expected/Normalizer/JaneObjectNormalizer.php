@@ -13,21 +13,21 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     protected $normalizers = array('Jane\\OpenApi2\\Tests\\Expected\\Model\\Bar' => 'Jane\\OpenApi2\\Tests\\Expected\\Normalizer\\BarNormalizer', 'Jane\\OpenApi2\\Tests\\Expected\\Model\\Foo' => 'Jane\\OpenApi2\\Tests\\Expected\\Normalizer\\FooNormalizer', 'Jane\\OpenApi2\\Tests\\Expected\\Model\\Fuz' => 'Jane\\OpenApi2\\Tests\\Expected\\Normalizer\\FuzNormalizer'), $normalizersCache = array();
-    public function supportsDenormalization($data, $type, $format = null)
+    public function supportsDenormalization($data, string $type, string $format = null)
     {
         return array_key_exists($type, $this->normalizers);
     }
-    public function supportsNormalization($data, $format = null)
+    public function supportsNormalization($data, string $format = null)
     {
         return is_object($data) && array_key_exists(get_class($data), $this->normalizers);
     }
-    public function normalize($object, $format = null, array $context = array())
+    public function normalize($object, string $format = null, array $context = array())
     {
         $normalizerClass = $this->normalizers[get_class($object)];
         $normalizer = $this->getNormalizer($normalizerClass);
         return $normalizer->normalize($object, $format, $context);
     }
-    public function denormalize($data, $class, $format = null, array $context = array())
+    public function denormalize($data, $class, string $format = null, array $context = array())
     {
         $denormalizerClass = $this->normalizers[$class];
         $denormalizer = $this->getNormalizer($denormalizerClass);
