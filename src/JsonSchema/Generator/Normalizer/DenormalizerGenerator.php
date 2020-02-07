@@ -34,8 +34,8 @@ trait DenormalizerGenerator
             'type' => Stmt\Class_::MODIFIER_PUBLIC,
             'params' => [
                 new Param(new Expr\Variable('data')),
-                new Param(new Expr\Variable('type')),
-                new Param(new Expr\Variable('format'), new Expr\ConstFetch(new Name('null'))),
+                new Param(new Expr\Variable('type'), null, new Name('string')),
+                new Param(new Expr\Variable('format'), new Expr\ConstFetch(new Name('null')), new Name('string')),
             ],
             'stmts' => [new Stmt\Return_(new Expr\BinaryOp\Identical(new Expr\Variable('type'), new Scalar\String_($modelFqdn)))],
         ]);
@@ -159,7 +159,7 @@ trait DenormalizerGenerator
             'params' => [
                 new Param(new Expr\Variable('data')),
                 new Param(new Expr\Variable('class')),
-                new Param(new Expr\Variable('format'), new Expr\ConstFetch(new Name('null'))),
+                new Param(new Expr\Variable('format'), new Expr\ConstFetch(new Name('null')), new Name('string')),
                 new Param(new Expr\Variable('context'), new Expr\Array_(), 'array'),
             ],
             'stmts' => $statements,
