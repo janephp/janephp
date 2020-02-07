@@ -90,11 +90,22 @@ class DateTimeType extends ObjectType
 
     protected function generateParseExpression(Expr $input): Expr
     {
-        if ($this->inputFormat === 'strtotime') {
-            // (new \DateTime())->setTimestamp(strtotime($data))
-            return new Expr\MethodCall(new Expr\New_(new Name('\DateTime')), 'setTimestamp', [
-                new Expr\FuncCall(new Name('strtotime'), [new Arg($input)]),
-            ]);
+        if (empty($this->inputFormat)) {
+            // new \DateTime($data)
+            $new = new Expr\New_(new Name('\DateTime'), [new Arg($input)]);
+            // (new \DateTime($data))->getTimezone()->getName()
+            $timezoneName = new Expr\MethodCall(
+                new Expr\MethodCall($new, new Name('getTimezone')),
+                new Name('getName')
+            );
+            // new \DateTimeZone('GMT')
+            $gmtTimezone = new Expr\New_(new Name('\DateTimeZone'), [new Scalar\String_('GMT')]);
+            // (new \DateTime($data))->getTimezone()->getName() === 'Z' ? (new \DateTime($data))->setTimezone(new \DateTimeZone('GMT')) : \DateTime($data)
+            return new Expr\Ternary(
+                new Expr\BinaryOp\Equal($timezoneName, new Scalar\String_('Z')),
+                new Expr\MethodCall($new, new Name('setTimezone'), [new Arg($gmtTimezone)]),
+                $new
+            );
         }
 
         // \DateTime::createFromFormat($format, $data)
