@@ -120,6 +120,7 @@ class GenerateCommand extends Command
             'date-format',
             'full-date-format',
             'date-prefer-interface',
+            'date-input-format',
             'strict',
             'use-fixer',
             'fixer-config-file',
