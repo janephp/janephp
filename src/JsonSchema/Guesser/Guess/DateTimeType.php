@@ -34,7 +34,7 @@ class DateTimeType extends ObjectType
      */
     private $preferInterface;
 
-    public function __construct(object $object, string $outputFormat = \DateTime::RFC3339, string $inputFormat, ?bool $preferInterface = null)
+    public function __construct(object $object, string $outputFormat = \DateTime::RFC3339, ?string $inputFormat = null, ?bool $preferInterface = null)
     {
         parent::__construct($object, '\DateTime', '', []);
 
