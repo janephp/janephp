@@ -5,5 +5,5 @@ return [
     'root-class' => 'Test',
     'namespace' => 'Jane\JsonSchema\Tests\Expected',
     'directory' => __DIR__ . '/generated',
-    'date-input-format' => 'strtotime',
+    'date-input-format' => '',
 ];

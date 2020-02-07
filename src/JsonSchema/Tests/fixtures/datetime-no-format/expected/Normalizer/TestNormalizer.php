@@ -35,12 +35,12 @@ class TestNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         }
         $object = new \Jane\JsonSchema\Tests\Expected\Model\Test();
         if (property_exists($data, 'date')) {
-            $object->setDate((new \DateTime())->setTimestamp(strtotime($data->{'date'})));
+            $object->setDate((new \DateTime($data->{'date'}))->getTimezone()->getName() == 'Z' ? (new \DateTime($data->{'date'}))->setTimezone(new \DateTimeZone('GMT')) : new \DateTime($data->{'date'}));
         }
         if (property_exists($data, 'dateOrNull') && $data->{'dateOrNull'} !== null) {
             $value = $data->{'dateOrNull'};
-            if (is_string($data->{'dateOrNull'}) and false !== (new \DateTime())->setTimestamp(strtotime($data->{'dateOrNull'}))) {
-                $value = (new \DateTime())->setTimestamp(strtotime($data->{'dateOrNull'}));
+            if (is_string($data->{'dateOrNull'}) and false !== ((new \DateTime($data->{'dateOrNull'}))->getTimezone()->getName() == 'Z' ? (new \DateTime($data->{'dateOrNull'}))->setTimezone(new \DateTimeZone('GMT')) : new \DateTime($data->{'dateOrNull'}))) {
+                $value = (new \DateTime($data->{'dateOrNull'}))->getTimezone()->getName() == 'Z' ? (new \DateTime($data->{'dateOrNull'}))->setTimezone(new \DateTimeZone('GMT')) : new \DateTime($data->{'dateOrNull'});
             } elseif (is_null($data->{'dateOrNull'})) {
                 $value = $data->{'dateOrNull'};
             }
@@ -51,8 +51,8 @@ class TestNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         }
         if (property_exists($data, 'dateOrNullOrInt') && $data->{'dateOrNullOrInt'} !== null) {
             $value_1 = $data->{'dateOrNullOrInt'};
-            if (is_string($data->{'dateOrNullOrInt'}) and false !== (new \DateTime())->setTimestamp(strtotime($data->{'dateOrNullOrInt'}))) {
-                $value_1 = (new \DateTime())->setTimestamp(strtotime($data->{'dateOrNullOrInt'}));
+            if (is_string($data->{'dateOrNullOrInt'}) and false !== ((new \DateTime($data->{'dateOrNullOrInt'}))->getTimezone()->getName() == 'Z' ? (new \DateTime($data->{'dateOrNullOrInt'}))->setTimezone(new \DateTimeZone('GMT')) : new \DateTime($data->{'dateOrNullOrInt'}))) {
+                $value_1 = (new \DateTime($data->{'dateOrNullOrInt'}))->getTimezone()->getName() == 'Z' ? (new \DateTime($data->{'dateOrNullOrInt'}))->setTimezone(new \DateTimeZone('GMT')) : new \DateTime($data->{'dateOrNullOrInt'});
             } elseif (is_null($data->{'dateOrNullOrInt'})) {
                 $value_1 = $data->{'dateOrNullOrInt'};
             } elseif (is_int($data->{'dateOrNullOrInt'})) {
