@@ -72,7 +72,7 @@ trait NormalizerGenerator
             'type' => Stmt\Class_::MODIFIER_PUBLIC,
             'params' => [
                 new Param(new Expr\Variable('data')),
-                new Param(new Expr\Variable('format'), new Expr\ConstFetch(new Name('null'))),
+                new Param(new Expr\Variable('format'), new Expr\ConstFetch(new Name('null')), new Name('string')),
             ],
             'stmts' => [
                 new Stmt\Return_(
