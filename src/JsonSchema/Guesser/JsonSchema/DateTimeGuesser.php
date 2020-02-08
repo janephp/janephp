@@ -11,17 +11,21 @@ use Jane\JsonSchema\Registry;
 
 class DateTimeGuesser implements GuesserInterface, TypeGuesserInterface
 {
-    /** @var string Format of date to use */
-    private $dateFormat;
+    /** @var string Format of date to use when normalized */
+    private $outputDateFormat;
+
+    /** @var string Format of date to use when denormalized */
+    private $inputDateFormat;
 
     /**
      * @var bool|null
      */
     private $preferInterface;
 
-    public function __construct(string $dateFormat = \DateTime::RFC3339, ?bool $preferInterface = null)
+    public function __construct(string $outputDateFormat = \DateTime::RFC3339, ?string $inputDateFormat = null, ?bool $preferInterface = null)
     {
-        $this->dateFormat = $dateFormat;
+        $this->outputDateFormat = $outputDateFormat;
+        $this->inputDateFormat = $inputDateFormat;
         $this->preferInterface = $preferInterface;
     }
 
@@ -40,7 +44,7 @@ class DateTimeGuesser implements GuesserInterface, TypeGuesserInterface
      */
     public function guessType($object, string $name, string $reference, Registry $registry): Type
     {
-        return new DateTimeType($object, $this->dateFormat, $this->preferInterface);
+        return new DateTimeType($object, $this->outputDateFormat, $this->inputDateFormat, $this->preferInterface);
     }
 
     protected function getSchemaClass(): string

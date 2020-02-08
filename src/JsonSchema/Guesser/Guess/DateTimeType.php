@@ -4,8 +4,9 @@ namespace Jane\JsonSchema\Guesser\Guess;
 
 use Jane\JsonSchema\Generator\Context\Context;
 use PhpParser\Node\Arg;
-use PhpParser\Node\Name;
 use PhpParser\Node\Expr;
+use PhpParser\Node\Name;
+use PhpParser\Node\Scalar;
 
 /**
  * Represent a DateTime type.
@@ -13,11 +14,18 @@ use PhpParser\Node\Expr;
 class DateTimeType extends ObjectType
 {
     /**
-     * Format of the date to use.
+     * Format of the date to use when normalized.
      *
      * @var string
      */
-    private $format;
+    private $outputFormat;
+
+    /**
+     * Format of the date to use when denormalized.
+     *
+     * @var string
+     */
+    private $inputFormat;
 
     /**
      * Indicator whether to use DateTime or DateTimeInterface as type hint.
@@ -26,11 +34,12 @@ class DateTimeType extends ObjectType
      */
     private $preferInterface;
 
-    public function __construct(object $object, string $format = \DateTime::RFC3339, ?bool $preferInterface = null)
+    public function __construct(object $object, string $outputFormat = \DateTime::RFC3339, ?string $inputFormat = null, ?bool $preferInterface = null)
     {
         parent::__construct($object, '\DateTime', '', []);
 
-        $this->format = $format;
+        $this->outputFormat = $outputFormat;
+        $this->inputFormat = $inputFormat ?? $outputFormat;
         $this->preferInterface = $preferInterface ?? false;
     }
 
@@ -39,11 +48,7 @@ class DateTimeType extends ObjectType
      */
     protected function createDenormalizationValueStatement(Context $context, Expr $input, bool $normalizerFromObject = true): Expr
     {
-        // \DateTime::createFromFormat($format, $data)
-        return new Expr\StaticCall(new Name('\DateTime'), 'createFromFormat', [
-            new Arg(new Expr\ConstFetch(new Name('"' . $this->format . '"'))),
-            new Arg($input),
-        ]);
+        return $this->generateParseExpression($input);
     }
 
     /**
@@ -53,7 +58,7 @@ class DateTimeType extends ObjectType
     {
         // $object->format($format);
         return new Expr\MethodCall($input, 'format', [
-            new Arg(new Expr\ConstFetch(new Name('"' . $this->format . '"'))),
+            new Arg(new Scalar\String_($this->outputFormat)),
         ]);
     }
 
@@ -68,10 +73,7 @@ class DateTimeType extends ObjectType
             ]),
             new Expr\BinaryOp\NotIdentical(
                 new Expr\ConstFetch(new Name('false')),
-                new Expr\StaticCall(new Name('\DateTime'), 'createFromFormat', [
-                    new Arg(new Expr\ConstFetch(new Name('"' . $this->format . '"'))),
-                    new Arg($input),
-                ])
+                $this->generateParseExpression($input)
             )
         );
     }
@@ -84,5 +86,32 @@ class DateTimeType extends ObjectType
     public function __toString(): string
     {
         return '\DateTime';
+    }
+
+    protected function generateParseExpression(Expr $input): Expr
+    {
+        if (empty($this->inputFormat)) {
+            // new \DateTime($data)
+            $new = new Expr\New_(new Name('\DateTime'), [new Arg($input)]);
+            // (new \DateTime($data))->getTimezone()->getName()
+            $timezoneName = new Expr\MethodCall(
+                new Expr\MethodCall($new, new Name('getTimezone')),
+                new Name('getName')
+            );
+            // new \DateTimeZone('GMT')
+            $gmtTimezone = new Expr\New_(new Name('\DateTimeZone'), [new Scalar\String_('GMT')]);
+            // (new \DateTime($data))->getTimezone()->getName() === 'Z' ? (new \DateTime($data))->setTimezone(new \DateTimeZone('GMT')) : \DateTime($data)
+            return new Expr\Ternary(
+                new Expr\BinaryOp\Equal($timezoneName, new Scalar\String_('Z')),
+                new Expr\MethodCall($new, new Name('setTimezone'), [new Arg($gmtTimezone)]),
+                $new
+            );
+        }
+
+        // \DateTime::createFromFormat($format, $data)
+        return new Expr\StaticCall(new Name('\DateTime'), 'createFromFormat', [
+            new Arg(new Scalar\String_($this->inputFormat)),
+            new Arg($input),
+        ]);
     }
 }

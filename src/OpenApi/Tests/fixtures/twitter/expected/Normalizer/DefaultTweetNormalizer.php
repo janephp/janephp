@@ -35,7 +35,7 @@ class DefaultTweetNormalizer implements DenormalizerInterface, NormalizerInterfa
             $object->setId($data->{'id'});
         }
         if (property_exists($data, 'created_at')) {
-            $object->setCreatedAt(\DateTime::createFromFormat("Y-m-d\TH:i:sP", $data->{'created_at'}));
+            $object->setCreatedAt(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data->{'created_at'}));
         }
         if (property_exists($data, 'text')) {
             $object->setText($data->{'text'});
@@ -77,7 +77,7 @@ class DefaultTweetNormalizer implements DenormalizerInterface, NormalizerInterfa
             $data->{'id'} = $object->getId();
         }
         if (null !== $object->getCreatedAt()) {
-            $data->{'created_at'} = $object->getCreatedAt()->format("Y-m-d\TH:i:sP");
+            $data->{'created_at'} = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
         }
         if (null !== $object->getText()) {
             $data->{'text'} = $object->getText();

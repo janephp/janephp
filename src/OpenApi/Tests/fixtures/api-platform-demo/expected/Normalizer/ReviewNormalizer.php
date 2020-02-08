@@ -41,7 +41,7 @@ class ReviewNormalizer implements DenormalizerInterface, NormalizerInterface, De
             $object->setAuthor($data->{'author'});
         }
         if (property_exists($data, 'publicationDate')) {
-            $object->setPublicationDate(\DateTime::createFromFormat("Y-m-d\TH:i:sP", $data->{'publicationDate'}));
+            $object->setPublicationDate(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data->{'publicationDate'}));
         }
         if (property_exists($data, 'book')) {
             $object->setBook($this->denormalizer->denormalize($data->{'book'}, 'ApiPlatform\\Demo\\Model\\Book', 'json', $context));
@@ -64,7 +64,7 @@ class ReviewNormalizer implements DenormalizerInterface, NormalizerInterface, De
             $data->{'author'} = $object->getAuthor();
         }
         if (null !== $object->getPublicationDate()) {
-            $data->{'publicationDate'} = $object->getPublicationDate()->format("Y-m-d\TH:i:sP");
+            $data->{'publicationDate'} = $object->getPublicationDate()->format('Y-m-d\\TH:i:sP');
         }
         if (null !== $object->getBook()) {
             $data->{'book'} = $this->normalizer->normalize($object->getBook(), 'json', $context);

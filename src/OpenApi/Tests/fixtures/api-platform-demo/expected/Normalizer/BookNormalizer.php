@@ -41,7 +41,7 @@ class BookNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             $object->setAuthor($data->{'author'});
         }
         if (property_exists($data, 'publicationDate')) {
-            $object->setPublicationDate(\DateTime::createFromFormat("Y-m-d\TH:i:sP", $data->{'publicationDate'}));
+            $object->setPublicationDate(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data->{'publicationDate'}));
         }
         if (property_exists($data, 'reviews')) {
             $values = array();
@@ -68,7 +68,7 @@ class BookNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             $data->{'author'} = $object->getAuthor();
         }
         if (null !== $object->getPublicationDate()) {
-            $data->{'publicationDate'} = $object->getPublicationDate()->format("Y-m-d\TH:i:sP");
+            $data->{'publicationDate'} = $object->getPublicationDate()->format('Y-m-d\\TH:i:sP');
         }
         if (null !== $object->getReviews()) {
             $values = array();
