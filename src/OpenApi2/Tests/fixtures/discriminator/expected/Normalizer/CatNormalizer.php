@@ -14,15 +14,15 @@ class CatNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
-    public function supportsDenormalization($data, $type, $format = null)
+    public function supportsDenormalization($data, string $type, string $format = null)
     {
         return $type === 'Jane\\OpenApi2\\Tests\\Expected\\Model\\Cat';
     }
-    public function supportsNormalization($data, $format = null)
+    public function supportsNormalization($data, string $format = null)
     {
         return is_object($data) && get_class($data) === 'Jane\\OpenApi2\\Tests\\Expected\\Model\\Cat';
     }
-    public function denormalize($data, $class, $format = null, array $context = array())
+    public function denormalize($data, $class, string $format = null, array $context = array())
     {
         if (!is_object($data)) {
             throw new InvalidArgumentException(sprintf('Given $data is not an object (%s given). We need an object in order to continue denormalize method.', gettype($data)));
@@ -39,7 +39,7 @@ class CatNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
         }
         return $object;
     }
-    public function normalize($object, $format = null, array $context = array())
+    public function normalize($object, string $format = null, array $context = array())
     {
         $data = new \stdClass();
         if (null !== $object->getName()) {

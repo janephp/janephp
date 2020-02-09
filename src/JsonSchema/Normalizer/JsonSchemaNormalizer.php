@@ -23,17 +23,17 @@ class JsonSchemaNormalizer implements DenormalizerInterface, NormalizerInterface
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
 
-    public function supportsDenormalization($data, $type, $format = null)
+    public function supportsDenormalization($data, string $type, string $format = null)
     {
         return $type === 'Jane\\JsonSchema\\Model\\JsonSchema';
     }
 
-    public function supportsNormalization($data, $format = null)
+    public function supportsNormalization($data, string $format = null)
     {
         return $data instanceof \Jane\JsonSchema\Model\JsonSchema;
     }
 
-    public function denormalize($data, $class, $format = null, array $context = [])
+    public function denormalize($data, $class, string $format = null, array $context = [])
     {
         if (!is_object($data)) {
             return null;
@@ -562,7 +562,7 @@ class JsonSchemaNormalizer implements DenormalizerInterface, NormalizerInterface
         return $object;
     }
 
-    public function normalize($object, $format = null, array $context = [])
+    public function normalize($object, string $format = null, array $context = [])
     {
         $data = new \stdClass();
         if (null !== $object->getDefinitions()) {

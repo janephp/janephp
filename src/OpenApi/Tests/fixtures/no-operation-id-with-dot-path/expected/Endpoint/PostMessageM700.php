@@ -5,11 +5,11 @@ namespace Jane\OpenApi\Tests\Expected\Endpoint;
 class PostMessageM700 extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7Endpoint
 {
     /**
-     * 
      *
-     * @param \Jane\OpenApi\Tests\Expected\Model\MessageM700PostBody $requestBody 
+     *
+     * @param \Jane\OpenApi\Tests\Expected\Model\MessageM70047PostBody $requestBody
      */
-    public function __construct(\Jane\OpenApi\Tests\Expected\Model\MessageM700PostBody $requestBody)
+    public function __construct(\Jane\OpenApi\Tests\Expected\Model\MessageM70047PostBody $requestBody)
     {
         $this->body = $requestBody;
     }
@@ -20,11 +20,11 @@ class PostMessageM700 extends \Jane\OpenApiRuntime\Client\BaseEndpoint implement
     }
     public function getUri() : string
     {
-        return '/message/M700';
+        return '/message/M700.47';
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        if ($this->body instanceof \Jane\OpenApi\Tests\Expected\Model\MessageM700PostBody) {
+        if ($this->body instanceof \Jane\OpenApi\Tests\Expected\Model\MessageM70047PostBody) {
             return array(array('Content-Type' => array('application/json')), $serializer->serialize($this->body, 'json'));
         }
         return array(array(), null);
