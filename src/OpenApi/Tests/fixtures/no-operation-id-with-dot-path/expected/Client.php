@@ -5,9 +5,9 @@ namespace Jane\OpenApi\Tests\Expected;
 class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
 {
     /**
+     * 
      *
-     *
-     * @param \Jane\OpenApi\Tests\Expected\Model\MessageM700PostBody $requestBody
+     * @param \Jane\OpenApi\Tests\Expected\Model\MessageM700PostBody $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Psr\Http\Message\ResponseInterface
@@ -17,16 +17,16 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
         return $this->executePsr7Endpoint(new \Jane\OpenApi\Tests\Expected\Endpoint\PostMessageM700($requestBody), $fetch);
     }
     /**
+     * 
      *
-     *
-     * @param \Jane\OpenApi\Tests\Expected\Model\MessageM70047PostBody $requestBody
+     * @param \Jane\OpenApi\Tests\Expected\Model\MessageM70047PostBody $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function postMessageM700(\Jane\OpenApi\Tests\Expected\Model\MessageM70047PostBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function postMessageM70047(\Jane\OpenApi\Tests\Expected\Model\MessageM70047PostBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Jane\OpenApi\Tests\Expected\Endpoint\PostMessageM700($requestBody), $fetch);
+        return $this->executePsr7Endpoint(new \Jane\OpenApi\Tests\Expected\Endpoint\PostMessageM70047($requestBody), $fetch);
     }
     public static function create($httpClient = null)
     {
