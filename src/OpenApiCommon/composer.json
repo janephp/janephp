@@ -22,7 +22,8 @@
     "require": {
         "php": ">=7.2",
         "ext-json": "*",
-        "jane-php/json-schema": "^5.0"
+        "jane-php/json-schema": "^5.0",
+        "symfony/string": "^5.0"
     },
     "suggest": {
         "jane-php/open-api-2": "Allow to generate OpenApi v2 clients",
