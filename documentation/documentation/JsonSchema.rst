@@ -20,6 +20,18 @@ recommended to add the runtime dependency as a requirement through composer:
 
     composer require jane-php/json-schema-runtime "^5.0"
 
+With Symfony ecosystem, we created a recipe to make it easier to use Jane. You just have to allow contrib recipes
+
+.. code-block:: bash
+
+    composer config extra.symfony.allow-contrib true
+
+Then when installing ``jane-php/json-schema``, it will add all required files:
+
+- ``bin/jane-generate``: a binary file to run JSON Schema generation based on ``config/jane/config.php`` configuration.
+- ``config/jane/config.php``: your Jane configuration (see "Configuration file")
+- ``config/packages/jane.yaml``: Symfony Serializer configured to be optimized for Jane
+
 By default, generated code is not formatted, to make it compliant to PSR2 standard and others format norms, you can add
 the `PHP CS Fixer`_ library to your dev dependencies (and it makes it easier to debug!):
 
@@ -127,36 +139,7 @@ To use it out of Symfony ecosystem, you will have to do this::
     $serializer = new Symfony\Component\Serializer\Serializer($normalizers, $encoders);
     $serializer->deserialize('{...}');
 
-With Symfony ecosystem, you will have to add a new ``jane.yaml`` file in ``config/packages`` with following content:
-
-.. code-block:: yaml
-
-    services:
-      jane.serializer.json_encode:
-        class: Symfony\Component\Serializer\Encoder\JsonEncode
-        arguments:
-          - { json_encode_options: 64 } # \JSON_UNESCAPED_SLASHES
-
-      jane.serializer.json_decode:
-        class: Symfony\Component\Serializer\Encoder\JsonDecode
-        arguments:
-          - { json_decode_associative: false }
-
-      jane.serializer.json_encoder:
-        class: Symfony\Component\Serializer\Encoder\JsonEncoder
-        arguments:
-          - '@jane.serializer.json_encode'
-          - '@jane.serializer.json_decode'
-
-      jane.serializer.object:
-        class: Vendor\Library\Generated\Normalizer\JaneObjectNormalizer
-
-      jane.serializer:
-        class: Symfony\Component\Serializer\Serializer
-        arguments:
-          - ['@serializer.denormalizer.array', '@jane.serializer.object']
-          - ['@jane.serializer.json_encoder']
-
+With Symfony ecosystem, you just have to use the recipe and all the configuration will be added automatically.
 This serializer will be able to encode and decode every data respecting your JSON Schema specification.
 
 .. note::
