@@ -60,9 +60,8 @@ The property ``bar`` of the ``Bar`` object will reference the ``Vendor\Library\S
 
 
 .. note::
-    If provided, the options ``fixer-config-file``, ``use-fixer`` and ``clean-generated``have to bee defined at the
+    If provided, the options ``fixer-config-file``, ``use-fixer`` and ``clean-generated`` have to bee defined at the
     root level of the array.
-
 
 Usage
 -----
