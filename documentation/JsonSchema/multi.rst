@@ -58,6 +58,12 @@ The property ``bar`` of the ``Bar`` object will reference the ``Vendor\Library\S
     and generate the ``Foo`` class. However, it will be under the same namespace (``Vendor\Library\BarSchema``),
     and will have ``BarBar`` as the class name, instead of the ``Foo`` one.
 
+
+.. note::
+    If provided, the options ``fixer-config-file``, ``use-fixer`` and ``clean-generated``have to bee defined at the
+    root level of the array.
+
+
 Usage
 -----
 
