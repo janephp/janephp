@@ -1,7 +1,7 @@
 Generating a Model
 ==================
 
-This library provided a PHP console application to generate the Model, you can use it by executing the following command
+This library provides a PHP console application to generate the Model, you can use it by executing the following command
 at the root of your project:
 
 .. code-block:: bash
@@ -17,7 +17,7 @@ like and use the ``--config-file`` option to specify its location and name:
 
 .. note::
     No others options can be passed to this command. Having a config file ensure that a team working on the project always
-    use the same set of parameters and, when it changes, give vision of the new option used to generate the code.
+    use the same set of parameters and, when it changes, give vision of the new option(s) used to generate the code.
 
 Configuration file
 ------------------
