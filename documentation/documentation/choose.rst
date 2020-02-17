@@ -11,7 +11,7 @@ Each of theses schema descriptors have their own use and you should choose the o
 JSON Schema
 -----------
 
-"JSON Schema is a vocabulary that allows you to annotate and validate JSON documents.". So it will allow you to describe
+"JSON Schema is a vocabulary that allows you to annotate and validate JSON documents". So it will allow you to describe
 your existing data format(s) and provides clear human- and machine- readable documentation.
 
 Actually Jane does not support validation but it `will come soon`_. With that descriptor you can describe documents and
@@ -30,7 +30,7 @@ OpenAPI
 
 "The OpenAPI Specification (OAS) defines a standard, language-agnostic interface to RESTful APIs which allows both
 humans and computers to discover and understand the capabilities of the service without access to source code,
-documentation, or through network traffic inspection."
+documentation, or through network traffic inspection".
 
 This descriptor is on top of JSON Schema, so every feature we have in JSON Schema will be in OpenAPI. And Jane will also
 generate a Client, endpoints and needed exceptions (for HTTP error responses). This is used with any API Client, some
