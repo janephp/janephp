@@ -3,6 +3,7 @@
 namespace Jane\OpenApi\Tests\Expected\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
+use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -14,6 +15,7 @@ class DefaultTweetFieldsNormalizer implements DenormalizerInterface, NormalizerI
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
     public function supportsDenormalization($data, $type, $format = null)
     {
         return $type === 'Jane\\OpenApi\\Tests\\Expected\\Model\\DefaultTweetFields';
@@ -24,26 +26,23 @@ class DefaultTweetFieldsNormalizer implements DenormalizerInterface, NormalizerI
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
-        if (!is_object($data)) {
-            throw new InvalidArgumentException(sprintf('Given $data is not an object (%s given). We need an object in order to continue denormalize method.', gettype($data)));
-        }
         $object = new \Jane\OpenApi\Tests\Expected\Model\DefaultTweetFields();
-        if (property_exists($data, 'geo')) {
-            $object->setGeo($this->denormalizer->denormalize($data->{'geo'}, 'Jane\\OpenApi\\Tests\\Expected\\Model\\DefaultTweetFieldsGeo', 'json', $context));
+        if (\array_key_exists('geo', $data)) {
+            $object->setGeo($this->denormalizer->denormalize($data['geo'], 'Jane\\OpenApi\\Tests\\Expected\\Model\\DefaultTweetFieldsGeo', 'json', $context));
         }
-        if (property_exists($data, 'entities')) {
-            $object->setEntities($this->denormalizer->denormalize($data->{'entities'}, 'Jane\\OpenApi\\Tests\\Expected\\Model\\FullTextEntities', 'json', $context));
+        if (\array_key_exists('entities', $data)) {
+            $object->setEntities($this->denormalizer->denormalize($data['entities'], 'Jane\\OpenApi\\Tests\\Expected\\Model\\FullTextEntities', 'json', $context));
         }
         return $object;
     }
     public function normalize($object, $format = null, array $context = array())
     {
-        $data = new \stdClass();
+        $data = array();
         if (null !== $object->getGeo()) {
-            $data->{'geo'} = $this->normalizer->normalize($object->getGeo(), 'json', $context);
+            $data['geo'] = $this->normalizer->normalize($object->getGeo(), 'json', $context);
         }
         if (null !== $object->getEntities()) {
-            $data->{'entities'} = $this->normalizer->normalize($object->getEntities(), 'json', $context);
+            $data['entities'] = $this->normalizer->normalize($object->getEntities(), 'json', $context);
         }
         return $data;
     }

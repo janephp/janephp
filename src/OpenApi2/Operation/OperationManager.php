@@ -2,9 +2,9 @@
 
 namespace Jane\OpenApi2\Operation;
 
-use Jane\OpenApi2\Model\OpenApi;
-use Jane\OpenApi2\Model\Operation as OpenApiOperation;
-use Jane\OpenApi2\Model\PathItem;
+use Jane\OpenApi2\JsonSchema\Model\OpenApi;
+use Jane\OpenApi2\JsonSchema\Model\Operation as OpenApiOperation;
+use Jane\OpenApi2\JsonSchema\Model\PathItem;
 use Jane\OpenApiCommon\Operation\Operation;
 use Jane\OpenApiCommon\Operation\OperationCollection;
 

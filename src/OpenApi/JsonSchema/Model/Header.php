@@ -41,7 +41,7 @@ class Header extends \ArrayObject
      */
     protected $allowReserved = false;
     /**
-     * @var Reference|Schema|null
+     * @var Schema|Reference|null
      */
     protected $schema;
     /**
@@ -198,7 +198,7 @@ class Header extends \ArrayObject
     }
 
     /**
-     * @return Reference|Schema|null
+     * @return Schema|Reference|null
      */
     public function getSchema()
     {
@@ -206,7 +206,7 @@ class Header extends \ArrayObject
     }
 
     /**
-     * @param Reference|Schema|null $schema
+     * @param Schema|Reference|null $schema
      *
      * @return self
      */

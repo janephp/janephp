@@ -5,7 +5,7 @@ namespace Jane\OpenApi2\Generator\Client;
 use Http\Client\Common\Plugin\AddHostPlugin;
 use Http\Client\Common\Plugin\AddPathPlugin;
 use Jane\OpenApi2\Generator\Psr18ClientGenerator;
-use Jane\OpenApi2\Model\OpenApi;
+use Jane\OpenApi2\JsonSchema\Model\OpenApi;
 use Jane\OpenApiCommon\Generator\Client\ServerPluginGenerator as BaseServerPluginGenerator;
 
 trait ServerPluginGenerator

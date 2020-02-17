@@ -39,7 +39,7 @@ abstract class SchemaParser
             try {
                 $content = Yaml::parse(
                     $openApiSpecContents,
-                    Yaml::PARSE_OBJECT | Yaml::PARSE_OBJECT_FOR_MAP | Yaml::PARSE_DATETIME | Yaml::PARSE_EXCEPTION_ON_INVALID_TYPE
+                    Yaml::PARSE_OBJECT | Yaml::PARSE_DATETIME | Yaml::PARSE_EXCEPTION_ON_INVALID_TYPE
                 );
 
                 return static::$parsed[$openApiSpecPath] = $this->denormalize($content, $openApiSpecPath);
@@ -57,7 +57,7 @@ abstract class SchemaParser
 
     protected function deserialize($openApiSpecContents, $openApiSpecPath)
     {
-        $openApiData = json_decode($openApiSpecContents);
+        $openApiData = json_decode($openApiSpecContents, true);
 
         return $this->denormalize($openApiData, $openApiSpecPath);
     }

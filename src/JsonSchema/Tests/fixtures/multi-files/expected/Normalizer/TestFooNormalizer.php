@@ -3,6 +3,7 @@
 namespace Jane\JsonSchema\Tests\Expected\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
+use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -14,6 +15,7 @@ class TestFooNormalizer implements DenormalizerInterface, NormalizerInterface, D
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
     public function supportsDenormalization($data, $type, $format = null)
     {
         return $type === 'Jane\\JsonSchema\\Tests\\Expected\\Model\\TestFoo';
@@ -24,20 +26,17 @@ class TestFooNormalizer implements DenormalizerInterface, NormalizerInterface, D
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
-        if (!is_object($data)) {
-            throw new InvalidArgumentException(sprintf('Given $data is not an object (%s given). We need an object in order to continue denormalize method.', gettype($data)));
-        }
         $object = new \Jane\JsonSchema\Tests\Expected\Model\TestFoo();
-        if (property_exists($data, 'foo')) {
-            $object->setFoo($data->{'foo'});
+        if (\array_key_exists('foo', $data)) {
+            $object->setFoo($data['foo']);
         }
         return $object;
     }
     public function normalize($object, $format = null, array $context = array())
     {
-        $data = new \stdClass();
+        $data = array();
         if (null !== $object->getFoo()) {
-            $data->{'foo'} = $object->getFoo();
+            $data['foo'] = $object->getFoo();
         }
         return $data;
     }

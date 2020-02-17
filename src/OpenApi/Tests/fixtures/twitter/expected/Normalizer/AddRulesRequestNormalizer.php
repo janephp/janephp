@@ -3,6 +3,7 @@
 namespace Jane\OpenApi\Tests\Expected\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
+use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -14,6 +15,7 @@ class AddRulesRequestNormalizer implements DenormalizerInterface, NormalizerInte
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
     public function supportsDenormalization($data, $type, $format = null)
     {
         return $type === 'Jane\\OpenApi\\Tests\\Expected\\Model\\AddRulesRequest';
@@ -24,13 +26,10 @@ class AddRulesRequestNormalizer implements DenormalizerInterface, NormalizerInte
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
-        if (!is_object($data)) {
-            throw new InvalidArgumentException(sprintf('Given $data is not an object (%s given). We need an object in order to continue denormalize method.', gettype($data)));
-        }
         $object = new \Jane\OpenApi\Tests\Expected\Model\AddRulesRequest();
-        if (property_exists($data, 'add')) {
+        if (\array_key_exists('add', $data)) {
             $values = array();
-            foreach ($data->{'add'} as $value) {
+            foreach ($data['add'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, 'Jane\\OpenApi\\Tests\\Expected\\Model\\RuleNoId', 'json', $context);
             }
             $object->setAdd($values);
@@ -39,13 +38,13 @@ class AddRulesRequestNormalizer implements DenormalizerInterface, NormalizerInte
     }
     public function normalize($object, $format = null, array $context = array())
     {
-        $data = new \stdClass();
+        $data = array();
         if (null !== $object->getAdd()) {
             $values = array();
             foreach ($object->getAdd() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
-            $data->{'add'} = $values;
+            $data['add'] = $values;
         }
         return $data;
     }

@@ -7,7 +7,7 @@ use Jane\JsonSchema\Generator\File;
 use Jane\JsonSchema\Generator\GeneratorInterface;
 use Jane\JsonSchema\Schema;
 use Jane\OpenApi2\Generator\Client\ServerPluginGenerator;
-use Jane\OpenApi2\Model\OpenApi;
+use Jane\OpenApi2\JsonSchema\Model\OpenApi;
 use Jane\OpenApiCommon\Generator\Client\HttpClientCreateGenerator;
 use Jane\OpenApiCommon\Naming\OperationNamingInterface;
 use Jane\OpenApi2\Operation\OperationManager;

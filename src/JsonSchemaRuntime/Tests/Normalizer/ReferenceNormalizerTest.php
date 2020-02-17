@@ -30,7 +30,7 @@ class ReferenceNormalizerTest extends TestCase
         $reference = new Reference($referenceString, 'schema');
         $normalized = $this->referenceNormalizer->normalize($reference);
 
-        $this->assertEquals($referenceString, $normalized->{'$ref'});
+        $this->assertEquals($referenceString, $normalized['$ref']);
     }
 
     public function normalizeProvider(): array

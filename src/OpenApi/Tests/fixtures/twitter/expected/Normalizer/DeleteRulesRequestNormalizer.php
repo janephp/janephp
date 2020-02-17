@@ -3,6 +3,7 @@
 namespace Jane\OpenApi\Tests\Expected\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
+use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -14,6 +15,7 @@ class DeleteRulesRequestNormalizer implements DenormalizerInterface, NormalizerI
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
     public function supportsDenormalization($data, $type, $format = null)
     {
         return $type === 'Jane\\OpenApi\\Tests\\Expected\\Model\\DeleteRulesRequest';
@@ -24,20 +26,17 @@ class DeleteRulesRequestNormalizer implements DenormalizerInterface, NormalizerI
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
-        if (!is_object($data)) {
-            throw new InvalidArgumentException(sprintf('Given $data is not an object (%s given). We need an object in order to continue denormalize method.', gettype($data)));
-        }
         $object = new \Jane\OpenApi\Tests\Expected\Model\DeleteRulesRequest();
-        if (property_exists($data, 'ids')) {
+        if (\array_key_exists('ids', $data)) {
             $values = array();
-            foreach ($data->{'ids'} as $value) {
+            foreach ($data['ids'] as $value) {
                 $values[] = $value;
             }
             $object->setIds($values);
         }
-        if (property_exists($data, 'values')) {
+        if (\array_key_exists('values', $data)) {
             $values_1 = array();
-            foreach ($data->{'values'} as $value_1) {
+            foreach ($data['values'] as $value_1) {
                 $values_1[] = $value_1;
             }
             $object->setValues($values_1);
@@ -46,20 +45,20 @@ class DeleteRulesRequestNormalizer implements DenormalizerInterface, NormalizerI
     }
     public function normalize($object, $format = null, array $context = array())
     {
-        $data = new \stdClass();
+        $data = array();
         if (null !== $object->getIds()) {
             $values = array();
             foreach ($object->getIds() as $value) {
                 $values[] = $value;
             }
-            $data->{'ids'} = $values;
+            $data['ids'] = $values;
         }
         if (null !== $object->getValues()) {
             $values_1 = array();
             foreach ($object->getValues() as $value_1) {
                 $values_1[] = $value_1;
             }
-            $data->{'values'} = $values_1;
+            $data['values'] = $values_1;
         }
         return $data;
     }

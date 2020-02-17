@@ -11,6 +11,7 @@ declare(strict_types=1);
 namespace Jane\OpenApi\JsonSchema\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
+use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -22,6 +23,7 @@ class ContactNormalizer implements DenormalizerInterface, NormalizerInterface, D
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
 
     public function supportsDenormalization($data, $type, $format = null)
     {
@@ -35,31 +37,33 @@ class ContactNormalizer implements DenormalizerInterface, NormalizerInterface, D
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        if (!is_object($data)) {
-            return null;
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
         }
-        if (isset($data->{'$ref'})) {
-            return new Reference($data->{'$ref'}, $context['document-origin']);
-        }
-        if (isset($data->{'$recursiveRef'})) {
-            return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Jane\OpenApi\JsonSchema\Model\Contact();
-        $data = clone $data;
-        if (property_exists($data, 'name') && $data->{'name'} !== null) {
-            $object->setName($data->{'name'});
-            unset($data->{'name'});
+        if (\array_key_exists('name', $data) && $data['name'] !== null) {
+            $object->setName($data['name']);
+            unset($data['name']);
+        } elseif (\array_key_exists('name', $data) && $data['name'] === null) {
+            $object->setName(null);
         }
-        if (property_exists($data, 'url') && $data->{'url'} !== null) {
-            $object->setUrl($data->{'url'});
-            unset($data->{'url'});
+        if (\array_key_exists('url', $data) && $data['url'] !== null) {
+            $object->setUrl($data['url']);
+            unset($data['url']);
+        } elseif (\array_key_exists('url', $data) && $data['url'] === null) {
+            $object->setUrl(null);
         }
-        if (property_exists($data, 'email') && $data->{'email'} !== null) {
-            $object->setEmail($data->{'email'});
-            unset($data->{'email'});
+        if (\array_key_exists('email', $data) && $data['email'] !== null) {
+            $object->setEmail($data['email']);
+            unset($data['email']);
+        } elseif (\array_key_exists('email', $data) && $data['email'] === null) {
+            $object->setEmail(null);
         }
         foreach ($data as $key => $value) {
-            if (preg_match('/^x-/', $key)) {
+            if (preg_match('/^x-/', (string) $key)) {
                 $object[$key] = $value;
             }
         }
@@ -69,19 +73,25 @@ class ContactNormalizer implements DenormalizerInterface, NormalizerInterface, D
 
     public function normalize($object, $format = null, array $context = [])
     {
-        $data = new \stdClass();
+        $data = [];
         if (null !== $object->getName()) {
-            $data->{'name'} = $object->getName();
+            $data['name'] = $object->getName();
+        } else {
+            $data['name'] = null;
         }
         if (null !== $object->getUrl()) {
-            $data->{'url'} = $object->getUrl();
+            $data['url'] = $object->getUrl();
+        } else {
+            $data['url'] = null;
         }
         if (null !== $object->getEmail()) {
-            $data->{'email'} = $object->getEmail();
+            $data['email'] = $object->getEmail();
+        } else {
+            $data['email'] = null;
         }
         foreach ($object as $key => $value) {
-            if (preg_match('/^x-/', $key)) {
-                $data->{$key} = $value;
+            if (preg_match('/^x-/', (string) $key)) {
+                $data[$key] = $value;
             }
         }
 

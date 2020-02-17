@@ -11,6 +11,7 @@ declare(strict_types=1);
 namespace Jane\OpenApi\JsonSchema\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
+use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -22,6 +23,7 @@ class OAuth2SecuritySchemeNormalizer implements DenormalizerInterface, Normalize
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
 
     public function supportsDenormalization($data, $type, $format = null)
     {
@@ -35,31 +37,33 @@ class OAuth2SecuritySchemeNormalizer implements DenormalizerInterface, Normalize
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        if (!is_object($data)) {
-            return null;
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
         }
-        if (isset($data->{'$ref'})) {
-            return new Reference($data->{'$ref'}, $context['document-origin']);
-        }
-        if (isset($data->{'$recursiveRef'})) {
-            return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Jane\OpenApi\JsonSchema\Model\OAuth2SecurityScheme();
-        $data = clone $data;
-        if (property_exists($data, 'type') && $data->{'type'} !== null) {
-            $object->setType($data->{'type'});
-            unset($data->{'type'});
+        if (\array_key_exists('type', $data) && $data['type'] !== null) {
+            $object->setType($data['type']);
+            unset($data['type']);
+        } elseif (\array_key_exists('type', $data) && $data['type'] === null) {
+            $object->setType(null);
         }
-        if (property_exists($data, 'flows') && $data->{'flows'} !== null) {
-            $object->setFlows($this->denormalizer->denormalize($data->{'flows'}, 'Jane\\OpenApi\\JsonSchema\\Model\\OAuthFlows', 'json', $context));
-            unset($data->{'flows'});
+        if (\array_key_exists('flows', $data) && $data['flows'] !== null) {
+            $object->setFlows($this->denormalizer->denormalize($data['flows'], 'Jane\\OpenApi\\JsonSchema\\Model\\OAuthFlows', 'json', $context));
+            unset($data['flows']);
+        } elseif (\array_key_exists('flows', $data) && $data['flows'] === null) {
+            $object->setFlows(null);
         }
-        if (property_exists($data, 'description') && $data->{'description'} !== null) {
-            $object->setDescription($data->{'description'});
-            unset($data->{'description'});
+        if (\array_key_exists('description', $data) && $data['description'] !== null) {
+            $object->setDescription($data['description']);
+            unset($data['description']);
+        } elseif (\array_key_exists('description', $data) && $data['description'] === null) {
+            $object->setDescription(null);
         }
         foreach ($data as $key => $value) {
-            if (preg_match('/^x-/', $key)) {
+            if (preg_match('/^x-/', (string) $key)) {
                 $object[$key] = $value;
             }
         }
@@ -69,19 +73,25 @@ class OAuth2SecuritySchemeNormalizer implements DenormalizerInterface, Normalize
 
     public function normalize($object, $format = null, array $context = [])
     {
-        $data = new \stdClass();
+        $data = [];
         if (null !== $object->getType()) {
-            $data->{'type'} = $object->getType();
+            $data['type'] = $object->getType();
+        } else {
+            $data['type'] = null;
         }
         if (null !== $object->getFlows()) {
-            $data->{'flows'} = $this->normalizer->normalize($object->getFlows(), 'json', $context);
+            $data['flows'] = $this->normalizer->normalize($object->getFlows(), 'json', $context);
+        } else {
+            $data['flows'] = null;
         }
         if (null !== $object->getDescription()) {
-            $data->{'description'} = $object->getDescription();
+            $data['description'] = $object->getDescription();
+        } else {
+            $data['description'] = null;
         }
         foreach ($object as $key => $value) {
-            if (preg_match('/^x-/', $key)) {
-                $data->{$key} = $value;
+            if (preg_match('/^x-/', (string) $key)) {
+                $data[$key] = $value;
             }
         }
 

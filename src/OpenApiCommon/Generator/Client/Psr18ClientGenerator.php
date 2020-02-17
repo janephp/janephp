@@ -16,6 +16,7 @@ use Symfony\Component\Serializer\Encoder\JsonDecode;
 use Symfony\Component\Serializer\Encoder\JsonEncode;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Serializer;
+use PhpParser\Node\Scalar;
 
 trait Psr18ClientGenerator
 {
@@ -79,8 +80,11 @@ trait Psr18ClientGenerator
                                         new Expr\ArrayItem(
                                             new Expr\New_(new Name\FullyQualified(JsonEncoder::class), [
                                                 new Node\Arg(new Expr\New_(new Name\FullyQualified(JsonEncode::class))),
-                                                new Node\Arg(new Expr\New_(new Name\FullyQualified(JsonDecode::class))),
-                                            ])
+                                                new Node\Arg(new Expr\New_(new Name\FullyQualified(JsonDecode::class), [
+                                                    new Node\Arg(new Expr\Array_([
+                                                        new Expr\ArrayItem(new Expr\ConstFetch(new Name('true')), new Scalar\String_('json_decode_associative')),
+                                                    ])),
+                                                ])),                                            ])
                                         ),
                                     ])
                                 ),

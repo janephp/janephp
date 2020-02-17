@@ -11,6 +11,7 @@ declare(strict_types=1);
 namespace Jane\OpenApi\JsonSchema\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
+use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -22,6 +23,7 @@ class ServerNormalizer implements DenormalizerInterface, NormalizerInterface, De
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
 
     public function supportsDenormalization($data, $type, $format = null)
     {
@@ -35,35 +37,37 @@ class ServerNormalizer implements DenormalizerInterface, NormalizerInterface, De
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        if (!is_object($data)) {
-            return null;
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
         }
-        if (isset($data->{'$ref'})) {
-            return new Reference($data->{'$ref'}, $context['document-origin']);
-        }
-        if (isset($data->{'$recursiveRef'})) {
-            return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Jane\OpenApi\JsonSchema\Model\Server();
-        $data = clone $data;
-        if (property_exists($data, 'url') && $data->{'url'} !== null) {
-            $object->setUrl($data->{'url'});
-            unset($data->{'url'});
+        if (\array_key_exists('url', $data) && $data['url'] !== null) {
+            $object->setUrl($data['url']);
+            unset($data['url']);
+        } elseif (\array_key_exists('url', $data) && $data['url'] === null) {
+            $object->setUrl(null);
         }
-        if (property_exists($data, 'description') && $data->{'description'} !== null) {
-            $object->setDescription($data->{'description'});
-            unset($data->{'description'});
+        if (\array_key_exists('description', $data) && $data['description'] !== null) {
+            $object->setDescription($data['description']);
+            unset($data['description']);
+        } elseif (\array_key_exists('description', $data) && $data['description'] === null) {
+            $object->setDescription(null);
         }
-        if (property_exists($data, 'variables') && $data->{'variables'} !== null) {
+        if (\array_key_exists('variables', $data) && $data['variables'] !== null) {
             $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
-            foreach ($data->{'variables'} as $key => $value) {
+            foreach ($data['variables'] as $key => $value) {
                 $values[$key] = $this->denormalizer->denormalize($value, 'Jane\\OpenApi\\JsonSchema\\Model\\ServerVariable', 'json', $context);
             }
             $object->setVariables($values);
-            unset($data->{'variables'});
+            unset($data['variables']);
+        } elseif (\array_key_exists('variables', $data) && $data['variables'] === null) {
+            $object->setVariables(null);
         }
         foreach ($data as $key_1 => $value_1) {
-            if (preg_match('/^x-/', $key_1)) {
+            if (preg_match('/^x-/', (string) $key_1)) {
                 $object[$key_1] = $value_1;
             }
         }
@@ -73,23 +77,29 @@ class ServerNormalizer implements DenormalizerInterface, NormalizerInterface, De
 
     public function normalize($object, $format = null, array $context = [])
     {
-        $data = new \stdClass();
+        $data = [];
         if (null !== $object->getUrl()) {
-            $data->{'url'} = $object->getUrl();
+            $data['url'] = $object->getUrl();
+        } else {
+            $data['url'] = null;
         }
         if (null !== $object->getDescription()) {
-            $data->{'description'} = $object->getDescription();
+            $data['description'] = $object->getDescription();
+        } else {
+            $data['description'] = null;
         }
         if (null !== $object->getVariables()) {
-            $values = new \stdClass();
+            $values = [];
             foreach ($object->getVariables() as $key => $value) {
-                $values->{$key} = $this->normalizer->normalize($value, 'json', $context);
+                $values[$key] = $this->normalizer->normalize($value, 'json', $context);
             }
-            $data->{'variables'} = $values;
+            $data['variables'] = $values;
+        } else {
+            $data['variables'] = null;
         }
         foreach ($object as $key_1 => $value_1) {
-            if (preg_match('/^x-/', $key_1)) {
-                $data->{$key_1} = $value_1;
+            if (preg_match('/^x-/', (string) $key_1)) {
+                $data[$key_1] = $value_1;
             }
         }
 

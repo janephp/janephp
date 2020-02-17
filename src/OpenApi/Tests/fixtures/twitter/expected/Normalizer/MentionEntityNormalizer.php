@@ -3,6 +3,7 @@
 namespace Jane\OpenApi\Tests\Expected\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
+use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -14,6 +15,7 @@ class MentionEntityNormalizer implements DenormalizerInterface, NormalizerInterf
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
     public function supportsDenormalization($data, $type, $format = null)
     {
         return $type === 'Jane\\OpenApi\\Tests\\Expected\\Model\\MentionEntity';
@@ -24,32 +26,29 @@ class MentionEntityNormalizer implements DenormalizerInterface, NormalizerInterf
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
-        if (!is_object($data)) {
-            throw new InvalidArgumentException(sprintf('Given $data is not an object (%s given). We need an object in order to continue denormalize method.', gettype($data)));
-        }
         $object = new \Jane\OpenApi\Tests\Expected\Model\MentionEntity();
-        if (property_exists($data, 'start')) {
-            $object->setStart($data->{'start'});
+        if (\array_key_exists('start', $data)) {
+            $object->setStart($data['start']);
         }
-        if (property_exists($data, 'end')) {
-            $object->setEnd($data->{'end'});
+        if (\array_key_exists('end', $data)) {
+            $object->setEnd($data['end']);
         }
-        if (property_exists($data, 'username')) {
-            $object->setUsername($data->{'username'});
+        if (\array_key_exists('username', $data)) {
+            $object->setUsername($data['username']);
         }
         return $object;
     }
     public function normalize($object, $format = null, array $context = array())
     {
-        $data = new \stdClass();
+        $data = array();
         if (null !== $object->getStart()) {
-            $data->{'start'} = $object->getStart();
+            $data['start'] = $object->getStart();
         }
         if (null !== $object->getEnd()) {
-            $data->{'end'} = $object->getEnd();
+            $data['end'] = $object->getEnd();
         }
         if (null !== $object->getUsername()) {
-            $data->{'username'} = $object->getUsername();
+            $data['username'] = $object->getUsername();
         }
         return $data;
     }

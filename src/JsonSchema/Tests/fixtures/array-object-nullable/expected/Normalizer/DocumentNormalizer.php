@@ -3,6 +3,7 @@
 namespace Jane\JsonSchema\Tests\Expected\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
+use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -14,6 +15,7 @@ class DocumentNormalizer implements DenormalizerInterface, NormalizerInterface, 
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
     public function supportsDenormalization($data, $type, $format = null)
     {
         return $type === 'Jane\\JsonSchema\\Tests\\Expected\\Model\\Document';
@@ -24,37 +26,34 @@ class DocumentNormalizer implements DenormalizerInterface, NormalizerInterface, 
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
-        if (!is_object($data)) {
-            throw new InvalidArgumentException(sprintf('Given $data is not an object (%s given). We need an object in order to continue denormalize method.', gettype($data)));
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
         }
-        if (isset($data->{'$ref'})) {
-            return new Reference($data->{'$ref'}, $context['document-origin']);
-        }
-        if (isset($data->{'$recursiveRef'})) {
-            return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Jane\JsonSchema\Tests\Expected\Model\Document();
-        if (property_exists($data, 'attributes') && $data->{'attributes'} !== null) {
-            $value = $data->{'attributes'};
-            if (is_array($data->{'attributes'})) {
+        if (\array_key_exists('attributes', $data) && $data['attributes'] !== null) {
+            $value = $data['attributes'];
+            if (is_array($data['attributes']) && $this->isOnlyNumericKeys($data['attributes'])) {
                 $values = array();
-                foreach ($data->{'attributes'} as $value_1) {
+                foreach ($data['attributes'] as $value_1) {
                     $values[] = $this->denormalizer->denormalize($value_1, 'Jane\\JsonSchema\\Tests\\Expected\\Model\\Attributes', 'json', $context);
                 }
                 $value = $values;
-            } elseif (is_null($data->{'attributes'})) {
-                $value = $data->{'attributes'};
+            } elseif (is_null($data['attributes'])) {
+                $value = $data['attributes'];
             }
             $object->setAttributes($value);
         }
-        elseif (property_exists($data, 'attributes') && $data->{'attributes'} === null) {
+        elseif (\array_key_exists('attributes', $data) && $data['attributes'] === null) {
             $object->setAttributes(null);
         }
         return $object;
     }
     public function normalize($object, $format = null, array $context = array())
     {
-        $data = new \stdClass();
+        $data = array();
         $value = $object->getAttributes();
         if (is_array($object->getAttributes())) {
             $values = array();
@@ -65,7 +64,7 @@ class DocumentNormalizer implements DenormalizerInterface, NormalizerInterface, 
         } elseif (is_null($object->getAttributes())) {
             $value = $object->getAttributes();
         }
-        $data->{'attributes'} = $value;
+        $data['attributes'] = $value;
         return $data;
     }
 }

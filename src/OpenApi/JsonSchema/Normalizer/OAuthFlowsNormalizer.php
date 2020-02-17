@@ -11,6 +11,7 @@ declare(strict_types=1);
 namespace Jane\OpenApi\JsonSchema\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
+use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -22,6 +23,7 @@ class OAuthFlowsNormalizer implements DenormalizerInterface, NormalizerInterface
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
 
     public function supportsDenormalization($data, $type, $format = null)
     {
@@ -35,35 +37,39 @@ class OAuthFlowsNormalizer implements DenormalizerInterface, NormalizerInterface
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        if (!is_object($data)) {
-            return null;
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
         }
-        if (isset($data->{'$ref'})) {
-            return new Reference($data->{'$ref'}, $context['document-origin']);
-        }
-        if (isset($data->{'$recursiveRef'})) {
-            return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Jane\OpenApi\JsonSchema\Model\OAuthFlows();
-        $data = clone $data;
-        if (property_exists($data, 'implicit') && $data->{'implicit'} !== null) {
-            $object->setImplicit($this->denormalizer->denormalize($data->{'implicit'}, 'Jane\\OpenApi\\JsonSchema\\Model\\ImplicitOAuthFlow', 'json', $context));
-            unset($data->{'implicit'});
+        if (\array_key_exists('implicit', $data) && $data['implicit'] !== null) {
+            $object->setImplicit($this->denormalizer->denormalize($data['implicit'], 'Jane\\OpenApi\\JsonSchema\\Model\\ImplicitOAuthFlow', 'json', $context));
+            unset($data['implicit']);
+        } elseif (\array_key_exists('implicit', $data) && $data['implicit'] === null) {
+            $object->setImplicit(null);
         }
-        if (property_exists($data, 'password') && $data->{'password'} !== null) {
-            $object->setPassword($this->denormalizer->denormalize($data->{'password'}, 'Jane\\OpenApi\\JsonSchema\\Model\\PasswordOAuthFlow', 'json', $context));
-            unset($data->{'password'});
+        if (\array_key_exists('password', $data) && $data['password'] !== null) {
+            $object->setPassword($this->denormalizer->denormalize($data['password'], 'Jane\\OpenApi\\JsonSchema\\Model\\PasswordOAuthFlow', 'json', $context));
+            unset($data['password']);
+        } elseif (\array_key_exists('password', $data) && $data['password'] === null) {
+            $object->setPassword(null);
         }
-        if (property_exists($data, 'clientCredentials') && $data->{'clientCredentials'} !== null) {
-            $object->setClientCredentials($this->denormalizer->denormalize($data->{'clientCredentials'}, 'Jane\\OpenApi\\JsonSchema\\Model\\ClientCredentialsFlow', 'json', $context));
-            unset($data->{'clientCredentials'});
+        if (\array_key_exists('clientCredentials', $data) && $data['clientCredentials'] !== null) {
+            $object->setClientCredentials($this->denormalizer->denormalize($data['clientCredentials'], 'Jane\\OpenApi\\JsonSchema\\Model\\ClientCredentialsFlow', 'json', $context));
+            unset($data['clientCredentials']);
+        } elseif (\array_key_exists('clientCredentials', $data) && $data['clientCredentials'] === null) {
+            $object->setClientCredentials(null);
         }
-        if (property_exists($data, 'authorizationCode') && $data->{'authorizationCode'} !== null) {
-            $object->setAuthorizationCode($this->denormalizer->denormalize($data->{'authorizationCode'}, 'Jane\\OpenApi\\JsonSchema\\Model\\AuthorizationCodeOAuthFlow', 'json', $context));
-            unset($data->{'authorizationCode'});
+        if (\array_key_exists('authorizationCode', $data) && $data['authorizationCode'] !== null) {
+            $object->setAuthorizationCode($this->denormalizer->denormalize($data['authorizationCode'], 'Jane\\OpenApi\\JsonSchema\\Model\\AuthorizationCodeOAuthFlow', 'json', $context));
+            unset($data['authorizationCode']);
+        } elseif (\array_key_exists('authorizationCode', $data) && $data['authorizationCode'] === null) {
+            $object->setAuthorizationCode(null);
         }
         foreach ($data as $key => $value) {
-            if (preg_match('/^x-/', $key)) {
+            if (preg_match('/^x-/', (string) $key)) {
                 $object[$key] = $value;
             }
         }
@@ -73,22 +79,30 @@ class OAuthFlowsNormalizer implements DenormalizerInterface, NormalizerInterface
 
     public function normalize($object, $format = null, array $context = [])
     {
-        $data = new \stdClass();
+        $data = [];
         if (null !== $object->getImplicit()) {
-            $data->{'implicit'} = $this->normalizer->normalize($object->getImplicit(), 'json', $context);
+            $data['implicit'] = $this->normalizer->normalize($object->getImplicit(), 'json', $context);
+        } else {
+            $data['implicit'] = null;
         }
         if (null !== $object->getPassword()) {
-            $data->{'password'} = $this->normalizer->normalize($object->getPassword(), 'json', $context);
+            $data['password'] = $this->normalizer->normalize($object->getPassword(), 'json', $context);
+        } else {
+            $data['password'] = null;
         }
         if (null !== $object->getClientCredentials()) {
-            $data->{'clientCredentials'} = $this->normalizer->normalize($object->getClientCredentials(), 'json', $context);
+            $data['clientCredentials'] = $this->normalizer->normalize($object->getClientCredentials(), 'json', $context);
+        } else {
+            $data['clientCredentials'] = null;
         }
         if (null !== $object->getAuthorizationCode()) {
-            $data->{'authorizationCode'} = $this->normalizer->normalize($object->getAuthorizationCode(), 'json', $context);
+            $data['authorizationCode'] = $this->normalizer->normalize($object->getAuthorizationCode(), 'json', $context);
+        } else {
+            $data['authorizationCode'] = null;
         }
         foreach ($object as $key => $value) {
-            if (preg_match('/^x-/', $key)) {
-                $data->{$key} = $value;
+            if (preg_match('/^x-/', (string) $key)) {
+                $data[$key] = $value;
             }
         }
 

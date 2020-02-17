@@ -4,7 +4,7 @@ namespace Jane\OpenApi2\Generator\Authentication;
 
 use Http\Client\Common\Plugin;
 use Http\Message\Authentication;
-use Jane\OpenApi2\Model\ApiKeySecurity;
+use Jane\OpenApi2\JsonSchema\Model\ApiKeySecurity;
 use Jane\OpenApiCommon\Guesser\Guess\SecuritySchemeGuess;
 use PhpParser\Node;
 use PhpParser\Node\Param;

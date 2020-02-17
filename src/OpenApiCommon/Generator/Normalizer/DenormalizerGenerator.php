@@ -26,13 +26,13 @@ trait DenormalizerGenerator
             foreach ($classGuess->getReferences() as $name => $reference) {
                 $statements[] = new Stmt\If_(
                     new Expr\BinaryOp\LogicalAnd(
-                        new Expr\FuncCall(new Name('property_exists'), [
-                            new Arg(new Expr\Variable('data')),
+                        new Expr\FuncCall(new Name('array_key_exists'), [
                             new Arg(new Scalar\String_($classGuess->getDiscriminator())),
+                            new Arg(new Expr\Variable('data')),
                         ]),
                         new Expr\BinaryOp\Identical(
                             new Scalar\String_($name),
-                            new Expr\PropertyFetch(new Expr\Variable('data'), sprintf("{'%s'}", $classGuess->getDiscriminator()))
+                            new Expr\ArrayDimFetch(new Expr\Variable('data'), new Scalar\String_($classGuess->getDiscriminator()))
                         )
                     ),
                     [

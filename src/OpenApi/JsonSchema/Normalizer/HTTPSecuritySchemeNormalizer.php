@@ -11,6 +11,7 @@ declare(strict_types=1);
 namespace Jane\OpenApi\JsonSchema\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
+use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -22,6 +23,7 @@ class HTTPSecuritySchemeNormalizer implements DenormalizerInterface, NormalizerI
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
 
     public function supportsDenormalization($data, $type, $format = null)
     {
@@ -35,35 +37,39 @@ class HTTPSecuritySchemeNormalizer implements DenormalizerInterface, NormalizerI
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        if (!is_object($data)) {
-            return null;
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
         }
-        if (isset($data->{'$ref'})) {
-            return new Reference($data->{'$ref'}, $context['document-origin']);
-        }
-        if (isset($data->{'$recursiveRef'})) {
-            return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Jane\OpenApi\JsonSchema\Model\HTTPSecurityScheme();
-        $data = clone $data;
-        if (property_exists($data, 'scheme') && $data->{'scheme'} !== null) {
-            $object->setScheme($data->{'scheme'});
-            unset($data->{'scheme'});
+        if (\array_key_exists('scheme', $data) && $data['scheme'] !== null) {
+            $object->setScheme($data['scheme']);
+            unset($data['scheme']);
+        } elseif (\array_key_exists('scheme', $data) && $data['scheme'] === null) {
+            $object->setScheme(null);
         }
-        if (property_exists($data, 'bearerFormat') && $data->{'bearerFormat'} !== null) {
-            $object->setBearerFormat($data->{'bearerFormat'});
-            unset($data->{'bearerFormat'});
+        if (\array_key_exists('bearerFormat', $data) && $data['bearerFormat'] !== null) {
+            $object->setBearerFormat($data['bearerFormat']);
+            unset($data['bearerFormat']);
+        } elseif (\array_key_exists('bearerFormat', $data) && $data['bearerFormat'] === null) {
+            $object->setBearerFormat(null);
         }
-        if (property_exists($data, 'description') && $data->{'description'} !== null) {
-            $object->setDescription($data->{'description'});
-            unset($data->{'description'});
+        if (\array_key_exists('description', $data) && $data['description'] !== null) {
+            $object->setDescription($data['description']);
+            unset($data['description']);
+        } elseif (\array_key_exists('description', $data) && $data['description'] === null) {
+            $object->setDescription(null);
         }
-        if (property_exists($data, 'type') && $data->{'type'} !== null) {
-            $object->setType($data->{'type'});
-            unset($data->{'type'});
+        if (\array_key_exists('type', $data) && $data['type'] !== null) {
+            $object->setType($data['type']);
+            unset($data['type']);
+        } elseif (\array_key_exists('type', $data) && $data['type'] === null) {
+            $object->setType(null);
         }
         foreach ($data as $key => $value) {
-            if (preg_match('/^x-/', $key)) {
+            if (preg_match('/^x-/', (string) $key)) {
                 $object[$key] = $value;
             }
         }
@@ -73,22 +79,30 @@ class HTTPSecuritySchemeNormalizer implements DenormalizerInterface, NormalizerI
 
     public function normalize($object, $format = null, array $context = [])
     {
-        $data = new \stdClass();
+        $data = [];
         if (null !== $object->getScheme()) {
-            $data->{'scheme'} = $object->getScheme();
+            $data['scheme'] = $object->getScheme();
+        } else {
+            $data['scheme'] = null;
         }
         if (null !== $object->getBearerFormat()) {
-            $data->{'bearerFormat'} = $object->getBearerFormat();
+            $data['bearerFormat'] = $object->getBearerFormat();
+        } else {
+            $data['bearerFormat'] = null;
         }
         if (null !== $object->getDescription()) {
-            $data->{'description'} = $object->getDescription();
+            $data['description'] = $object->getDescription();
+        } else {
+            $data['description'] = null;
         }
         if (null !== $object->getType()) {
-            $data->{'type'} = $object->getType();
+            $data['type'] = $object->getType();
+        } else {
+            $data['type'] = null;
         }
         foreach ($object as $key => $value) {
-            if (preg_match('/^x-/', $key)) {
-                $data->{$key} = $value;
+            if (preg_match('/^x-/', (string) $key)) {
+                $data[$key] = $value;
             }
         }
 

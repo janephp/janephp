@@ -3,6 +3,7 @@
 namespace Jane\OpenApi\Tests\Expected\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
+use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -14,6 +15,7 @@ class HideReplyResponseDataNormalizer implements DenormalizerInterface, Normaliz
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
     public function supportsDenormalization($data, $type, $format = null)
     {
         return $type === 'Jane\\OpenApi\\Tests\\Expected\\Model\\HideReplyResponseData';
@@ -24,20 +26,17 @@ class HideReplyResponseDataNormalizer implements DenormalizerInterface, Normaliz
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
-        if (!is_object($data)) {
-            throw new InvalidArgumentException(sprintf('Given $data is not an object (%s given). We need an object in order to continue denormalize method.', gettype($data)));
-        }
         $object = new \Jane\OpenApi\Tests\Expected\Model\HideReplyResponseData();
-        if (property_exists($data, 'hidden')) {
-            $object->setHidden($data->{'hidden'});
+        if (\array_key_exists('hidden', $data)) {
+            $object->setHidden($data['hidden']);
         }
         return $object;
     }
     public function normalize($object, $format = null, array $context = array())
     {
-        $data = new \stdClass();
+        $data = array();
         if (null !== $object->getHidden()) {
-            $data->{'hidden'} = $object->getHidden();
+            $data['hidden'] = $object->getHidden();
         }
         return $data;
     }

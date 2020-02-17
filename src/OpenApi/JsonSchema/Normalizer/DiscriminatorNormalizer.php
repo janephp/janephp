@@ -11,6 +11,7 @@ declare(strict_types=1);
 namespace Jane\OpenApi\JsonSchema\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
+use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -22,6 +23,7 @@ class DiscriminatorNormalizer implements DenormalizerInterface, NormalizerInterf
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
 
     public function supportsDenormalization($data, $type, $format = null)
     {
@@ -35,25 +37,26 @@ class DiscriminatorNormalizer implements DenormalizerInterface, NormalizerInterf
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        if (!is_object($data)) {
-            return null;
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
         }
-        if (isset($data->{'$ref'})) {
-            return new Reference($data->{'$ref'}, $context['document-origin']);
-        }
-        if (isset($data->{'$recursiveRef'})) {
-            return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Jane\OpenApi\JsonSchema\Model\Discriminator();
-        if (property_exists($data, 'propertyName') && $data->{'propertyName'} !== null) {
-            $object->setPropertyName($data->{'propertyName'});
+        if (\array_key_exists('propertyName', $data) && $data['propertyName'] !== null) {
+            $object->setPropertyName($data['propertyName']);
+        } elseif (\array_key_exists('propertyName', $data) && $data['propertyName'] === null) {
+            $object->setPropertyName(null);
         }
-        if (property_exists($data, 'mapping') && $data->{'mapping'} !== null) {
+        if (\array_key_exists('mapping', $data) && $data['mapping'] !== null) {
             $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
-            foreach ($data->{'mapping'} as $key => $value) {
+            foreach ($data['mapping'] as $key => $value) {
                 $values[$key] = $value;
             }
             $object->setMapping($values);
+        } elseif (\array_key_exists('mapping', $data) && $data['mapping'] === null) {
+            $object->setMapping(null);
         }
 
         return $object;
@@ -61,16 +64,20 @@ class DiscriminatorNormalizer implements DenormalizerInterface, NormalizerInterf
 
     public function normalize($object, $format = null, array $context = [])
     {
-        $data = new \stdClass();
+        $data = [];
         if (null !== $object->getPropertyName()) {
-            $data->{'propertyName'} = $object->getPropertyName();
+            $data['propertyName'] = $object->getPropertyName();
+        } else {
+            $data['propertyName'] = null;
         }
         if (null !== $object->getMapping()) {
-            $values = new \stdClass();
+            $values = [];
             foreach ($object->getMapping() as $key => $value) {
-                $values->{$key} = $value;
+                $values[$key] = $value;
             }
-            $data->{'mapping'} = $values;
+            $data['mapping'] = $values;
+        } else {
+            $data['mapping'] = null;
         }
 
         return $data;

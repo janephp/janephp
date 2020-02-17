@@ -63,7 +63,7 @@ class PatternMultipleType extends Type
                     new Expr\BinaryOp\BooleanAnd(
                         new Expr\FuncCall(new Name('preg_match'), [
                             new Arg(new Expr\ConstFetch(new Name("'/" . str_replace('/', '\/', $pattern) . "/'"))),
-                            new Arg($loopKeyVar),
+                            new Arg(new Expr\Cast\String_($loopKeyVar)),
                         ]),
                         $type->createConditionStatement($loopValueVar)
                     ),
@@ -107,13 +107,13 @@ class PatternMultipleType extends Type
                     new Expr\BinaryOp\BooleanAnd(
                         new Expr\FuncCall(new Name('preg_match'), [
                             new Arg(new Expr\ConstFetch(new Name("'/" . str_replace('/', '\/', $pattern) . "/'"))),
-                            new Arg($loopKeyVar),
+                            new Arg(new Expr\Cast\String_($loopKeyVar)),
                         ]),
                         $type->createNormalizationConditionStatement($loopValueVar)
                     ),
                     [
                         'stmts' => array_merge($typeStatements, [
-                            new Stmt\Expression(new Expr\Assign(new Expr\PropertyFetch($valuesVar, $loopKeyVar), $typeOutput)),
+                            new Stmt\Expression(new Expr\Assign(new Expr\ArrayDimFetch($valuesVar, $loopKeyVar), $typeOutput)),
                             new Stmt\Continue_(),
                         ]),
                     ]
@@ -145,7 +145,7 @@ class PatternMultipleType extends Type
      */
     protected function createNormalizationArrayValueStatement(): Expr
     {
-        return new Expr\New_(new Name('\stdClass'));
+        return new Expr\Array_();
     }
 
     /**

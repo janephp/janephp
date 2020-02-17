@@ -11,6 +11,7 @@ declare(strict_types=1);
 namespace Jane\OpenApi\JsonSchema\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
+use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -22,6 +23,7 @@ class ExampleNormalizer implements DenormalizerInterface, NormalizerInterface, D
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
 
     public function supportsDenormalization($data, $type, $format = null)
     {
@@ -35,35 +37,39 @@ class ExampleNormalizer implements DenormalizerInterface, NormalizerInterface, D
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        if (!is_object($data)) {
-            return null;
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
         }
-        if (isset($data->{'$ref'})) {
-            return new Reference($data->{'$ref'}, $context['document-origin']);
-        }
-        if (isset($data->{'$recursiveRef'})) {
-            return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Jane\OpenApi\JsonSchema\Model\Example();
-        $data = clone $data;
-        if (property_exists($data, 'summary') && $data->{'summary'} !== null) {
-            $object->setSummary($data->{'summary'});
-            unset($data->{'summary'});
+        if (\array_key_exists('summary', $data) && $data['summary'] !== null) {
+            $object->setSummary($data['summary']);
+            unset($data['summary']);
+        } elseif (\array_key_exists('summary', $data) && $data['summary'] === null) {
+            $object->setSummary(null);
         }
-        if (property_exists($data, 'description') && $data->{'description'} !== null) {
-            $object->setDescription($data->{'description'});
-            unset($data->{'description'});
+        if (\array_key_exists('description', $data) && $data['description'] !== null) {
+            $object->setDescription($data['description']);
+            unset($data['description']);
+        } elseif (\array_key_exists('description', $data) && $data['description'] === null) {
+            $object->setDescription(null);
         }
-        if (property_exists($data, 'value') && $data->{'value'} !== null) {
-            $object->setValue($data->{'value'});
-            unset($data->{'value'});
+        if (\array_key_exists('value', $data) && $data['value'] !== null) {
+            $object->setValue($data['value']);
+            unset($data['value']);
+        } elseif (\array_key_exists('value', $data) && $data['value'] === null) {
+            $object->setValue(null);
         }
-        if (property_exists($data, 'externalValue') && $data->{'externalValue'} !== null) {
-            $object->setExternalValue($data->{'externalValue'});
-            unset($data->{'externalValue'});
+        if (\array_key_exists('externalValue', $data) && $data['externalValue'] !== null) {
+            $object->setExternalValue($data['externalValue']);
+            unset($data['externalValue']);
+        } elseif (\array_key_exists('externalValue', $data) && $data['externalValue'] === null) {
+            $object->setExternalValue(null);
         }
         foreach ($data as $key => $value) {
-            if (preg_match('/^x-/', $key)) {
+            if (preg_match('/^x-/', (string) $key)) {
                 $object[$key] = $value;
             }
         }
@@ -73,22 +79,30 @@ class ExampleNormalizer implements DenormalizerInterface, NormalizerInterface, D
 
     public function normalize($object, $format = null, array $context = [])
     {
-        $data = new \stdClass();
+        $data = [];
         if (null !== $object->getSummary()) {
-            $data->{'summary'} = $object->getSummary();
+            $data['summary'] = $object->getSummary();
+        } else {
+            $data['summary'] = null;
         }
         if (null !== $object->getDescription()) {
-            $data->{'description'} = $object->getDescription();
+            $data['description'] = $object->getDescription();
+        } else {
+            $data['description'] = null;
         }
         if (null !== $object->getValue()) {
-            $data->{'value'} = $object->getValue();
+            $data['value'] = $object->getValue();
+        } else {
+            $data['value'] = null;
         }
         if (null !== $object->getExternalValue()) {
-            $data->{'externalValue'} = $object->getExternalValue();
+            $data['externalValue'] = $object->getExternalValue();
+        } else {
+            $data['externalValue'] = null;
         }
         foreach ($object as $key => $value) {
-            if (preg_match('/^x-/', $key)) {
-                $data->{$key} = $value;
+            if (preg_match('/^x-/', (string) $key)) {
+                $data[$key] = $value;
             }
         }
 

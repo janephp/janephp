@@ -3,6 +3,7 @@
 namespace Jane\OpenApi\Tests\Expected\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
+use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -14,6 +15,7 @@ class InvalidRequestProblemNormalizer implements DenormalizerInterface, Normaliz
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
     public function supportsDenormalization($data, $type, $format = null)
     {
         return $type === 'Jane\\OpenApi\\Tests\\Expected\\Model\\InvalidRequestProblem';
@@ -24,46 +26,43 @@ class InvalidRequestProblemNormalizer implements DenormalizerInterface, Normaliz
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
-        if (!is_object($data)) {
-            throw new InvalidArgumentException(sprintf('Given $data is not an object (%s given). We need an object in order to continue denormalize method.', gettype($data)));
-        }
         $object = new \Jane\OpenApi\Tests\Expected\Model\InvalidRequestProblem();
-        if (property_exists($data, 'type')) {
-            $object->setType($data->{'type'});
+        if (\array_key_exists('type', $data)) {
+            $object->setType($data['type']);
         }
-        if (property_exists($data, 'errors')) {
+        if (\array_key_exists('errors', $data)) {
             $values = array();
-            foreach ($data->{'errors'} as $value) {
+            foreach ($data['errors'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, 'Jane\\OpenApi\\Tests\\Expected\\Model\\InvalidRequestProblemErrorsItem', 'json', $context);
             }
             $object->setErrors($values);
         }
-        if (property_exists($data, 'title')) {
-            $object->setTitle($data->{'title'});
+        if (\array_key_exists('title', $data)) {
+            $object->setTitle($data['title']);
         }
-        if (property_exists($data, 'detail')) {
-            $object->setDetail($data->{'detail'});
+        if (\array_key_exists('detail', $data)) {
+            $object->setDetail($data['detail']);
         }
         return $object;
     }
     public function normalize($object, $format = null, array $context = array())
     {
-        $data = new \stdClass();
+        $data = array();
         if (null !== $object->getType()) {
-            $data->{'type'} = $object->getType();
+            $data['type'] = $object->getType();
         }
         if (null !== $object->getErrors()) {
             $values = array();
             foreach ($object->getErrors() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
-            $data->{'errors'} = $values;
+            $data['errors'] = $values;
         }
         if (null !== $object->getTitle()) {
-            $data->{'title'} = $object->getTitle();
+            $data['title'] = $object->getTitle();
         }
         if (null !== $object->getDetail()) {
-            $data->{'detail'} = $object->getDetail();
+            $data['detail'] = $object->getDetail();
         }
         return $data;
     }

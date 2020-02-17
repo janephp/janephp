@@ -11,6 +11,7 @@ declare(strict_types=1);
 namespace Jane\OpenApi\JsonSchema\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
+use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -22,6 +23,7 @@ class ResponseNormalizer implements DenormalizerInterface, NormalizerInterface, 
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
 
     public function supportsDenormalization($data, $type, $format = null)
     {
@@ -35,59 +37,63 @@ class ResponseNormalizer implements DenormalizerInterface, NormalizerInterface, 
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        if (!is_object($data)) {
-            return null;
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
         }
-        if (isset($data->{'$ref'})) {
-            return new Reference($data->{'$ref'}, $context['document-origin']);
-        }
-        if (isset($data->{'$recursiveRef'})) {
-            return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Jane\OpenApi\JsonSchema\Model\Response();
-        $data = clone $data;
-        if (property_exists($data, 'description') && $data->{'description'} !== null) {
-            $object->setDescription($data->{'description'});
-            unset($data->{'description'});
+        if (\array_key_exists('description', $data) && $data['description'] !== null) {
+            $object->setDescription($data['description']);
+            unset($data['description']);
+        } elseif (\array_key_exists('description', $data) && $data['description'] === null) {
+            $object->setDescription(null);
         }
-        if (property_exists($data, 'headers') && $data->{'headers'} !== null) {
+        if (\array_key_exists('headers', $data) && $data['headers'] !== null) {
             $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
-            foreach ($data->{'headers'} as $key => $value) {
+            foreach ($data['headers'] as $key => $value) {
                 $value_1 = $value;
-                if (is_object($value) and isset($value->{'$ref'})) {
+                if (is_array($value) and isset($value['$ref'])) {
                     $value_1 = $this->denormalizer->denormalize($value, 'Jane\\OpenApi\\JsonSchema\\Model\\Reference', 'json', $context);
-                } elseif (is_object($value)) {
+                } elseif (is_array($value)) {
                     $value_1 = $this->denormalizer->denormalize($value, 'Jane\\OpenApi\\JsonSchema\\Model\\Header', 'json', $context);
                 }
                 $values[$key] = $value_1;
             }
             $object->setHeaders($values);
-            unset($data->{'headers'});
+            unset($data['headers']);
+        } elseif (\array_key_exists('headers', $data) && $data['headers'] === null) {
+            $object->setHeaders(null);
         }
-        if (property_exists($data, 'content') && $data->{'content'} !== null) {
+        if (\array_key_exists('content', $data) && $data['content'] !== null) {
             $values_1 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
-            foreach ($data->{'content'} as $key_1 => $value_2) {
+            foreach ($data['content'] as $key_1 => $value_2) {
                 $values_1[$key_1] = $this->denormalizer->denormalize($value_2, 'Jane\\OpenApi\\JsonSchema\\Model\\MediaType', 'json', $context);
             }
             $object->setContent($values_1);
-            unset($data->{'content'});
+            unset($data['content']);
+        } elseif (\array_key_exists('content', $data) && $data['content'] === null) {
+            $object->setContent(null);
         }
-        if (property_exists($data, 'links') && $data->{'links'} !== null) {
+        if (\array_key_exists('links', $data) && $data['links'] !== null) {
             $values_2 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
-            foreach ($data->{'links'} as $key_2 => $value_3) {
+            foreach ($data['links'] as $key_2 => $value_3) {
                 $value_4 = $value_3;
-                if (is_object($value_3) and isset($value_3->{'$ref'})) {
+                if (is_array($value_3) and isset($value_3['$ref'])) {
                     $value_4 = $this->denormalizer->denormalize($value_3, 'Jane\\OpenApi\\JsonSchema\\Model\\Reference', 'json', $context);
-                } elseif (is_object($value_3)) {
+                } elseif (is_array($value_3)) {
                     $value_4 = $this->denormalizer->denormalize($value_3, 'Jane\\OpenApi\\JsonSchema\\Model\\Link', 'json', $context);
                 }
                 $values_2[$key_2] = $value_4;
             }
             $object->setLinks($values_2);
-            unset($data->{'links'});
+            unset($data['links']);
+        } elseif (\array_key_exists('links', $data) && $data['links'] === null) {
+            $object->setLinks(null);
         }
         foreach ($data as $key_3 => $value_5) {
-            if (preg_match('/^x-/', $key_3)) {
+            if (preg_match('/^x-/', (string) $key_3)) {
                 $object[$key_3] = $value_5;
             }
         }
@@ -97,12 +103,14 @@ class ResponseNormalizer implements DenormalizerInterface, NormalizerInterface, 
 
     public function normalize($object, $format = null, array $context = [])
     {
-        $data = new \stdClass();
+        $data = [];
         if (null !== $object->getDescription()) {
-            $data->{'description'} = $object->getDescription();
+            $data['description'] = $object->getDescription();
+        } else {
+            $data['description'] = null;
         }
         if (null !== $object->getHeaders()) {
-            $values = new \stdClass();
+            $values = [];
             foreach ($object->getHeaders() as $key => $value) {
                 $value_1 = $value;
                 if (is_object($value)) {
@@ -110,19 +118,23 @@ class ResponseNormalizer implements DenormalizerInterface, NormalizerInterface, 
                 } elseif (is_object($value)) {
                     $value_1 = $this->normalizer->normalize($value, 'json', $context);
                 }
-                $values->{$key} = $value_1;
+                $values[$key] = $value_1;
             }
-            $data->{'headers'} = $values;
+            $data['headers'] = $values;
+        } else {
+            $data['headers'] = null;
         }
         if (null !== $object->getContent()) {
-            $values_1 = new \stdClass();
+            $values_1 = [];
             foreach ($object->getContent() as $key_1 => $value_2) {
-                $values_1->{$key_1} = $this->normalizer->normalize($value_2, 'json', $context);
+                $values_1[$key_1] = $this->normalizer->normalize($value_2, 'json', $context);
             }
-            $data->{'content'} = $values_1;
+            $data['content'] = $values_1;
+        } else {
+            $data['content'] = null;
         }
         if (null !== $object->getLinks()) {
-            $values_2 = new \stdClass();
+            $values_2 = [];
             foreach ($object->getLinks() as $key_2 => $value_3) {
                 $value_4 = $value_3;
                 if (is_object($value_3)) {
@@ -130,13 +142,15 @@ class ResponseNormalizer implements DenormalizerInterface, NormalizerInterface, 
                 } elseif (is_object($value_3)) {
                     $value_4 = $this->normalizer->normalize($value_3, 'json', $context);
                 }
-                $values_2->{$key_2} = $value_4;
+                $values_2[$key_2] = $value_4;
             }
-            $data->{'links'} = $values_2;
+            $data['links'] = $values_2;
+        } else {
+            $data['links'] = null;
         }
         foreach ($object as $key_3 => $value_5) {
-            if (preg_match('/^x-/', $key_3)) {
-                $data->{$key_3} = $value_5;
+            if (preg_match('/^x-/', (string) $key_3)) {
+                $data[$key_3] = $value_5;
             }
         }
 

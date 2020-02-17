@@ -39,7 +39,7 @@ class MapType extends ArrayType
      */
     protected function createNormalizationArrayValueStatement(): Expr
     {
-        return new Expr\New_(new Name('\stdClass'));
+        return new Expr\Array_();
     }
 
     /**
@@ -63,6 +63,6 @@ class MapType extends ArrayType
      */
     protected function createNormalizationLoopOutputAssignement(Expr $valuesVar, $loopKeyVar): Expr
     {
-        return new Expr\PropertyFetch($valuesVar, $loopKeyVar);
+        return new Expr\ArrayDimFetch($valuesVar, $loopKeyVar);
     }
 }

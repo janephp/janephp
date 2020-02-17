@@ -3,6 +3,7 @@
 namespace Jane\JsonSchema\Tests\Expected\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
+use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -14,6 +15,7 @@ class TestSubObjectNormalizer implements DenormalizerInterface, NormalizerInterf
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
     public function supportsDenormalization($data, $type, $format = null)
     {
         return $type === 'Jane\\JsonSchema\\Tests\\Expected\\Model\\TestSubObject';
@@ -24,32 +26,29 @@ class TestSubObjectNormalizer implements DenormalizerInterface, NormalizerInterf
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
-        if (!is_object($data)) {
-            return null;
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
         }
-        if (isset($data->{'$ref'})) {
-            return new Reference($data->{'$ref'}, $context['document-origin']);
-        }
-        if (isset($data->{'$recursiveRef'})) {
-            return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Jane\JsonSchema\Tests\Expected\Model\TestSubObject();
-        if (property_exists($data, 'foo') && $data->{'foo'} !== null) {
-            $object->setFoo($data->{'foo'});
+        if (\array_key_exists('foo', $data) && $data['foo'] !== null) {
+            $object->setFoo($data['foo']);
         }
-        elseif (property_exists($data, 'foo') && $data->{'foo'} === null) {
+        elseif (\array_key_exists('foo', $data) && $data['foo'] === null) {
             $object->setFoo(null);
         }
         return $object;
     }
     public function normalize($object, $format = null, array $context = array())
     {
-        $data = new \stdClass();
+        $data = array();
         if (null !== $object->getFoo()) {
-            $data->{'foo'} = $object->getFoo();
+            $data['foo'] = $object->getFoo();
         }
         else {
-            $data->{'foo'} = null;
+            $data['foo'] = null;
         }
         return $data;
     }

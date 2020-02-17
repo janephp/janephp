@@ -71,7 +71,7 @@ class ObjectType extends Type
             $issetCondition = new Expr\FuncCall(
                 new Name('isset'),
                 [
-                    new Arg(new Expr\PropertyFetch($input, sprintf("{'%s'}", $key))),
+                    new Arg(new Expr\ArrayDimFetch($input, new Scalar\String_($key))),
                 ]
             );
 
@@ -81,14 +81,14 @@ class ObjectType extends Type
                 foreach ($values as $value) {
                     if (null === $logicalOr) {
                         $logicalOr = new Expr\BinaryOp\Equal(
-                            new Expr\PropertyFetch($input, sprintf("{'%s'}", $key)),
+                            new Expr\ArrayDimFetch($input, new Scalar\String_($key)),
                             new Scalar\String_($value)
                         );
                     } else {
                         $logicalOr = new Expr\BinaryOp\LogicalOr(
                             $logicalOr,
                             new Expr\BinaryOp\Equal(
-                                new Expr\PropertyFetch($input, sprintf("{'%s'}", $key)),
+                                new Expr\ArrayDimFetch($input, new Scalar\String_($key)),
                                 new Scalar\String_($value)
                             )
                         );

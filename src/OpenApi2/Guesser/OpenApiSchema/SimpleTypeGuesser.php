@@ -3,7 +3,7 @@
 namespace Jane\OpenApi2\Guesser\OpenApiSchema;
 
 use Jane\JsonSchema\Guesser\JsonSchema\SimpleTypeGuesser as BaseSimpleTypeGuesser;
-use Jane\OpenApi2\Model\Schema;
+use Jane\OpenApi2\JsonSchema\Model\Schema;
 
 class SimpleTypeGuesser extends BaseSimpleTypeGuesser
 {

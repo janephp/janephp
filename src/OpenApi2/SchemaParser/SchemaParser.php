@@ -2,7 +2,7 @@
 
 namespace Jane\OpenApi2\SchemaParser;
 
-use Jane\OpenApi2\Model\OpenApi;
+use Jane\OpenApi2\JsonSchema\Model\OpenApi;
 use Jane\OpenApiCommon\SchemaParser\SchemaParser as CommonSchemaParser;
 
 /**
@@ -16,6 +16,6 @@ class SchemaParser extends CommonSchemaParser
 
     protected function validSchema($openApiSpecData): bool
     {
-        return $openApiSpecData instanceof \stdClass && property_exists($openApiSpecData, 'swagger') && version_compare($openApiSpecData->swagger, '2.0', '>=') && version_compare($openApiSpecData->swagger, '3.0', '<');
+        return \is_array($openApiSpecData) && \array_key_exists('swagger', $openApiSpecData) && version_compare($openApiSpecData['swagger'], '2.0', '>=') && version_compare($openApiSpecData['swagger'], '3.0', '<');
     }
 }
