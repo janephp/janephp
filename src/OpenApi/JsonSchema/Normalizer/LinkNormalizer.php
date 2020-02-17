@@ -11,6 +11,7 @@ declare(strict_types=1);
 namespace Jane\OpenApi\JsonSchema\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
+use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -22,6 +23,7 @@ class LinkNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
 
     public function supportsDenormalization($data, $type, $format = null)
     {
@@ -35,47 +37,55 @@ class LinkNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        if (!is_object($data)) {
-            return null;
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
         }
-        if (isset($data->{'$ref'})) {
-            return new Reference($data->{'$ref'}, $context['document-origin']);
-        }
-        if (isset($data->{'$recursiveRef'})) {
-            return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Jane\OpenApi\JsonSchema\Model\Link();
-        $data = clone $data;
-        if (property_exists($data, 'operationId') && $data->{'operationId'} !== null) {
-            $object->setOperationId($data->{'operationId'});
-            unset($data->{'operationId'});
+        if (\array_key_exists('operationId', $data) && $data['operationId'] !== null) {
+            $object->setOperationId($data['operationId']);
+            unset($data['operationId']);
+        } elseif (\array_key_exists('operationId', $data) && $data['operationId'] === null) {
+            $object->setOperationId(null);
         }
-        if (property_exists($data, 'operationRef') && $data->{'operationRef'} !== null) {
-            $object->setOperationRef($data->{'operationRef'});
-            unset($data->{'operationRef'});
+        if (\array_key_exists('operationRef', $data) && $data['operationRef'] !== null) {
+            $object->setOperationRef($data['operationRef']);
+            unset($data['operationRef']);
+        } elseif (\array_key_exists('operationRef', $data) && $data['operationRef'] === null) {
+            $object->setOperationRef(null);
         }
-        if (property_exists($data, 'parameters') && $data->{'parameters'} !== null) {
+        if (\array_key_exists('parameters', $data) && $data['parameters'] !== null) {
             $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
-            foreach ($data->{'parameters'} as $key => $value) {
+            foreach ($data['parameters'] as $key => $value) {
                 $values[$key] = $value;
             }
             $object->setParameters($values);
-            unset($data->{'parameters'});
+            unset($data['parameters']);
+        } elseif (\array_key_exists('parameters', $data) && $data['parameters'] === null) {
+            $object->setParameters(null);
         }
-        if (property_exists($data, 'requestBody') && $data->{'requestBody'} !== null) {
-            $object->setRequestBody($data->{'requestBody'});
-            unset($data->{'requestBody'});
+        if (\array_key_exists('requestBody', $data) && $data['requestBody'] !== null) {
+            $object->setRequestBody($data['requestBody']);
+            unset($data['requestBody']);
+        } elseif (\array_key_exists('requestBody', $data) && $data['requestBody'] === null) {
+            $object->setRequestBody(null);
         }
-        if (property_exists($data, 'description') && $data->{'description'} !== null) {
-            $object->setDescription($data->{'description'});
-            unset($data->{'description'});
+        if (\array_key_exists('description', $data) && $data['description'] !== null) {
+            $object->setDescription($data['description']);
+            unset($data['description']);
+        } elseif (\array_key_exists('description', $data) && $data['description'] === null) {
+            $object->setDescription(null);
         }
-        if (property_exists($data, 'server') && $data->{'server'} !== null) {
-            $object->setServer($this->denormalizer->denormalize($data->{'server'}, 'Jane\\OpenApi\\JsonSchema\\Model\\Server', 'json', $context));
-            unset($data->{'server'});
+        if (\array_key_exists('server', $data) && $data['server'] !== null) {
+            $object->setServer($this->denormalizer->denormalize($data['server'], 'Jane\\OpenApi\\JsonSchema\\Model\\Server', 'json', $context));
+            unset($data['server']);
+        } elseif (\array_key_exists('server', $data) && $data['server'] === null) {
+            $object->setServer(null);
         }
         foreach ($data as $key_1 => $value_1) {
-            if (preg_match('/^x-/', $key_1)) {
+            if (preg_match('/^x-/', (string) $key_1)) {
                 $object[$key_1] = $value_1;
             }
         }
@@ -85,32 +95,44 @@ class LinkNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
 
     public function normalize($object, $format = null, array $context = [])
     {
-        $data = new \stdClass();
+        $data = [];
         if (null !== $object->getOperationId()) {
-            $data->{'operationId'} = $object->getOperationId();
+            $data['operationId'] = $object->getOperationId();
+        } else {
+            $data['operationId'] = null;
         }
         if (null !== $object->getOperationRef()) {
-            $data->{'operationRef'} = $object->getOperationRef();
+            $data['operationRef'] = $object->getOperationRef();
+        } else {
+            $data['operationRef'] = null;
         }
         if (null !== $object->getParameters()) {
-            $values = new \stdClass();
+            $values = [];
             foreach ($object->getParameters() as $key => $value) {
-                $values->{$key} = $value;
+                $values[$key] = $value;
             }
-            $data->{'parameters'} = $values;
+            $data['parameters'] = $values;
+        } else {
+            $data['parameters'] = null;
         }
         if (null !== $object->getRequestBody()) {
-            $data->{'requestBody'} = $object->getRequestBody();
+            $data['requestBody'] = $object->getRequestBody();
+        } else {
+            $data['requestBody'] = null;
         }
         if (null !== $object->getDescription()) {
-            $data->{'description'} = $object->getDescription();
+            $data['description'] = $object->getDescription();
+        } else {
+            $data['description'] = null;
         }
         if (null !== $object->getServer()) {
-            $data->{'server'} = $this->normalizer->normalize($object->getServer(), 'json', $context);
+            $data['server'] = $this->normalizer->normalize($object->getServer(), 'json', $context);
+        } else {
+            $data['server'] = null;
         }
         foreach ($object as $key_1 => $value_1) {
-            if (preg_match('/^x-/', $key_1)) {
-                $data->{$key_1} = $value_1;
+            if (preg_match('/^x-/', (string) $key_1)) {
+                $data[$key_1] = $value_1;
             }
         }
 

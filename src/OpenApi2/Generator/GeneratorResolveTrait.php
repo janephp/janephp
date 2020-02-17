@@ -3,11 +3,11 @@
 namespace Jane\OpenApi2\Generator;
 
 use Jane\JsonSchemaRuntime\Reference;
-use Jane\OpenApi2\Model\BodyParameter;
-use Jane\OpenApi2\Model\FormDataParameterSubSchema;
-use Jane\OpenApi2\Model\HeaderParameterSubSchema;
-use Jane\OpenApi2\Model\PathParameterSubSchema;
-use Jane\OpenApi2\Model\QueryParameterSubSchema;
+use Jane\OpenApi2\JsonSchema\Model\BodyParameter;
+use Jane\OpenApi2\JsonSchema\Model\FormDataParameterSubSchema;
+use Jane\OpenApi2\JsonSchema\Model\HeaderParameterSubSchema;
+use Jane\OpenApi2\JsonSchema\Model\PathParameterSubSchema;
+use Jane\OpenApi2\JsonSchema\Model\QueryParameterSubSchema;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 
 trait GeneratorResolveTrait
@@ -36,30 +36,29 @@ trait GeneratorResolveTrait
         $result = $parameter;
 
         return $parameter->resolve(function ($value) use ($result) {
-            if (isset($value->{'in'}) and 'body' === $value->{'in'}) {
-                return $this->denormalizer->denormalize($value, BodyParameter::class, 'json', [
-                    'document-origin' => (string) $result->getMergedUri()->withFragment(''),
-                ]);
-            }
-            if (isset($value->{'in'}) and 'header' === $value->{'in'}) {
-                return $this->denormalizer->denormalize($value, HeaderParameterSubSchema::class, 'json', [
-                    'document-origin' => (string) $result->getMergedUri()->withFragment(''),
-                ]);
-            }
-            if (isset($value->{'in'}) and 'formData' === $value->{'in'}) {
-                return $this->denormalizer->denormalize($value, FormDataParameterSubSchema::class, 'json', [
-                    'document-origin' => (string) $result->getMergedUri()->withFragment(''),
-                ]);
-            }
-            if (isset($value->{'in'}) and 'query' === $value->{'in'}) {
-                return $this->denormalizer->denormalize($value, QueryParameterSubSchema::class, 'json', [
-                    'document-origin' => (string) $result->getMergedUri()->withFragment(''),
-                ]);
-            }
-            if (isset($value->{'in'}) and 'path' === $value->{'in'}) {
-                return $this->denormalizer->denormalize($value, PathParameterSubSchema::class, 'json', [
-                    'document-origin' => (string) $result->getMergedUri()->withFragment(''),
-                ]);
+            if (\array_key_exists('in', $value)) {
+                switch ($value['in']) {
+                    case 'body':
+                        return $this->denormalizer->denormalize($value, BodyParameter::class, 'json', [
+                            'document-origin' => (string) $result->getMergedUri()->withFragment(''),
+                        ]);
+                    case 'header':
+                        return $this->denormalizer->denormalize($value, HeaderParameterSubSchema::class, 'json', [
+                            'document-origin' => (string) $result->getMergedUri()->withFragment(''),
+                        ]);
+                    case 'formData':
+                        return $this->denormalizer->denormalize($value, FormDataParameterSubSchema::class, 'json', [
+                            'document-origin' => (string) $result->getMergedUri()->withFragment(''),
+                        ]);
+                    case 'query':
+                        return $this->denormalizer->denormalize($value, QueryParameterSubSchema::class, 'json', [
+                            'document-origin' => (string) $result->getMergedUri()->withFragment(''),
+                        ]);
+                    case 'path':
+                        return $this->denormalizer->denormalize($value, PathParameterSubSchema::class, 'json', [
+                            'document-origin' => (string) $result->getMergedUri()->withFragment(''),
+                        ]);
+                }
             }
 
             return $value;

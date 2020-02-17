@@ -18,6 +18,7 @@ use PhpParser\Node\Name;
 use PhpParser\Node\Param;
 use PhpParser\Node\Stmt;
 use PhpParser\Node\Expr;
+use PhpParser\Node\Scalar;
 
 trait NormalizerGenerator
 {
@@ -33,6 +34,7 @@ trait NormalizerGenerator
         $traits = [
             new Stmt\TraitUse([new Name('DenormalizerAwareTrait')]),
             new Stmt\TraitUse([new Name('NormalizerAwareTrait')]),
+            new Stmt\TraitUse([new Name('CheckArray')]),
         ];
 
         $implements = [
@@ -99,7 +101,7 @@ trait NormalizerGenerator
 
                 list($normalizationStatements, $outputVar) = $property->getType()->createNormalizationStatement($context, $propertyVar);
 
-                $normalizationStatements[] = new Stmt\Expression(new Expr\Assign(new Expr\PropertyFetch($dataVariable, sprintf("{'%s'}", $property->getName())), $outputVar));
+                $normalizationStatements[] = new Stmt\Expression(new Expr\Assign(new Expr\ArrayDimFetch($dataVariable, new Scalar\String_($property->getName())), $outputVar));
 
                 if (!$context->isStrict() || $property->isNullable() || ($property->getType() instanceof MultipleType && \count(array_intersect([Type::TYPE_NULL], $property->getType()->getTypes())) === 1) || ($property->getType()->getName() === Type::TYPE_NULL)) {
                     if (!$context->isStrict() || ($property->getType()->getName() !== Type::TYPE_NULL &&
@@ -119,7 +121,7 @@ trait NormalizerGenerator
 
                         if ($normalizerForceNullWhenNullable) {
                             $statements[] = new Stmt\Else_(
-                                [new Stmt\Expression(new Expr\Assign(new Expr\PropertyFetch($dataVariable, sprintf("{'%s'}", $property->getName())), new Expr\ConstFetch(new Name('null'))))]
+                                [new Stmt\Expression(new Expr\Assign(new Expr\ArrayDimFetch($dataVariable, new Scalar\String_($property->getName())), new Expr\ConstFetch(new Name('null'))))]
                             );
                         }
                     } else {
@@ -148,11 +150,11 @@ trait NormalizerGenerator
             $patternCondition[] = new Stmt\If_(
                 new Expr\FuncCall(new Name('preg_match'), [
                     new Arg(new Expr\ConstFetch(new Name("'/" . str_replace('/', '\/', $pattern) . "/'"))),
-                    new Arg($loopKeyVar),
+                    new Arg(new Expr\Cast\String_($loopKeyVar)),
                 ]),
                 [
                     'stmts' => array_merge($denormalizationStatements, [
-                        new Stmt\Expression(new Expr\Assign(new Expr\PropertyFetch($dataVariable, $loopKeyVar), $outputVar)),
+                        new Stmt\Expression(new Expr\Assign(new Expr\ArrayDimFetch($dataVariable, $loopKeyVar), $outputVar)),
                     ]),
                 ]
             );
@@ -197,7 +199,7 @@ trait NormalizerGenerator
     protected function normalizeMethodStatements(Expr\Variable $dataVariable, ClassGuess $classGuess, Context $context): array
     {
         return [
-            new Stmt\Expression(new Expr\Assign($dataVariable, new Expr\New_(new Name('\\stdClass')))),
+            new Stmt\Expression(new Expr\Assign($dataVariable, new Expr\Array_())),
         ];
     }
 }

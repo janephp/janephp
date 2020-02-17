@@ -11,6 +11,7 @@ declare(strict_types=1);
 namespace Jane\OpenApi\JsonSchema\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
+use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -22,6 +23,7 @@ class XMLNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
 
     public function supportsDenormalization($data, $type, $format = null)
     {
@@ -35,39 +37,45 @@ class XMLNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        if (!is_object($data)) {
-            return null;
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
         }
-        if (isset($data->{'$ref'})) {
-            return new Reference($data->{'$ref'}, $context['document-origin']);
-        }
-        if (isset($data->{'$recursiveRef'})) {
-            return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Jane\OpenApi\JsonSchema\Model\XML();
-        $data = clone $data;
-        if (property_exists($data, 'name') && $data->{'name'} !== null) {
-            $object->setName($data->{'name'});
-            unset($data->{'name'});
+        if (\array_key_exists('name', $data) && $data['name'] !== null) {
+            $object->setName($data['name']);
+            unset($data['name']);
+        } elseif (\array_key_exists('name', $data) && $data['name'] === null) {
+            $object->setName(null);
         }
-        if (property_exists($data, 'namespace') && $data->{'namespace'} !== null) {
-            $object->setNamespace($data->{'namespace'});
-            unset($data->{'namespace'});
+        if (\array_key_exists('namespace', $data) && $data['namespace'] !== null) {
+            $object->setNamespace($data['namespace']);
+            unset($data['namespace']);
+        } elseif (\array_key_exists('namespace', $data) && $data['namespace'] === null) {
+            $object->setNamespace(null);
         }
-        if (property_exists($data, 'prefix') && $data->{'prefix'} !== null) {
-            $object->setPrefix($data->{'prefix'});
-            unset($data->{'prefix'});
+        if (\array_key_exists('prefix', $data) && $data['prefix'] !== null) {
+            $object->setPrefix($data['prefix']);
+            unset($data['prefix']);
+        } elseif (\array_key_exists('prefix', $data) && $data['prefix'] === null) {
+            $object->setPrefix(null);
         }
-        if (property_exists($data, 'attribute') && $data->{'attribute'} !== null) {
-            $object->setAttribute($data->{'attribute'});
-            unset($data->{'attribute'});
+        if (\array_key_exists('attribute', $data) && $data['attribute'] !== null) {
+            $object->setAttribute($data['attribute']);
+            unset($data['attribute']);
+        } elseif (\array_key_exists('attribute', $data) && $data['attribute'] === null) {
+            $object->setAttribute(null);
         }
-        if (property_exists($data, 'wrapped') && $data->{'wrapped'} !== null) {
-            $object->setWrapped($data->{'wrapped'});
-            unset($data->{'wrapped'});
+        if (\array_key_exists('wrapped', $data) && $data['wrapped'] !== null) {
+            $object->setWrapped($data['wrapped']);
+            unset($data['wrapped']);
+        } elseif (\array_key_exists('wrapped', $data) && $data['wrapped'] === null) {
+            $object->setWrapped(null);
         }
         foreach ($data as $key => $value) {
-            if (preg_match('/^x-/', $key)) {
+            if (preg_match('/^x-/', (string) $key)) {
                 $object[$key] = $value;
             }
         }
@@ -77,25 +85,35 @@ class XMLNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
 
     public function normalize($object, $format = null, array $context = [])
     {
-        $data = new \stdClass();
+        $data = [];
         if (null !== $object->getName()) {
-            $data->{'name'} = $object->getName();
+            $data['name'] = $object->getName();
+        } else {
+            $data['name'] = null;
         }
         if (null !== $object->getNamespace()) {
-            $data->{'namespace'} = $object->getNamespace();
+            $data['namespace'] = $object->getNamespace();
+        } else {
+            $data['namespace'] = null;
         }
         if (null !== $object->getPrefix()) {
-            $data->{'prefix'} = $object->getPrefix();
+            $data['prefix'] = $object->getPrefix();
+        } else {
+            $data['prefix'] = null;
         }
         if (null !== $object->getAttribute()) {
-            $data->{'attribute'} = $object->getAttribute();
+            $data['attribute'] = $object->getAttribute();
+        } else {
+            $data['attribute'] = null;
         }
         if (null !== $object->getWrapped()) {
-            $data->{'wrapped'} = $object->getWrapped();
+            $data['wrapped'] = $object->getWrapped();
+        } else {
+            $data['wrapped'] = null;
         }
         foreach ($object as $key => $value) {
-            if (preg_match('/^x-/', $key)) {
-                $data->{$key} = $value;
+            if (preg_match('/^x-/', (string) $key)) {
+                $data[$key] = $value;
             }
         }
 

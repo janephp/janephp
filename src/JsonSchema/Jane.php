@@ -9,7 +9,7 @@ use Jane\JsonSchema\Generator\Naming;
 use Jane\JsonSchema\Generator\NormalizerGenerator;
 use Jane\JsonSchema\Guesser\ChainGuesser;
 use Jane\JsonSchema\Guesser\JsonSchema\JsonSchemaGuesserFactory;
-use Jane\JsonSchema\Normalizer\NormalizerFactory;
+use Jane\JsonSchema\Normalizer\JaneObjectNormalizer;
 use PhpParser\ParserFactory;
 use Symfony\Component\Serializer\Encoder\JsonDecode;
 use Symfony\Component\Serializer\Encoder\JsonEncode;
@@ -110,9 +110,8 @@ class Jane extends ChainGenerator
 
     public static function buildSerializer(): SerializerInterface
     {
-        $encoders = [new JsonEncoder(new JsonEncode([JsonEncode::OPTIONS => JSON_UNESCAPED_SLASHES]), new JsonDecode())];
-        $normalizers = NormalizerFactory::create();
+        $encoders = [new JsonEncoder(new JsonEncode([JsonEncode::OPTIONS => JSON_UNESCAPED_SLASHES]), new JsonDecode([JsonDecode::ASSOCIATIVE => true]))];
 
-        return new Serializer($normalizers, $encoders);
+        return new Serializer([new JaneObjectNormalizer()], $encoders);
     }
 }

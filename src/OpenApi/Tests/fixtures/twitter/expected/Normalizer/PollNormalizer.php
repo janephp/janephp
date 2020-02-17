@@ -3,6 +3,7 @@
 namespace Jane\OpenApi\Tests\Expected\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
+use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -14,6 +15,7 @@ class PollNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
     public function supportsDenormalization($data, $type, $format = null)
     {
         return $type === 'Jane\\OpenApi\\Tests\\Expected\\Model\\Poll';
@@ -24,52 +26,49 @@ class PollNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
-        if (!is_object($data)) {
-            throw new InvalidArgumentException(sprintf('Given $data is not an object (%s given). We need an object in order to continue denormalize method.', gettype($data)));
-        }
         $object = new \Jane\OpenApi\Tests\Expected\Model\Poll();
-        if (property_exists($data, 'id')) {
-            $object->setId($data->{'id'});
+        if (\array_key_exists('id', $data)) {
+            $object->setId($data['id']);
         }
-        if (property_exists($data, 'options')) {
+        if (\array_key_exists('options', $data)) {
             $values = array();
-            foreach ($data->{'options'} as $value) {
+            foreach ($data['options'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, 'Jane\\OpenApi\\Tests\\Expected\\Model\\PollOption', 'json', $context);
             }
             $object->setOptions($values);
         }
-        if (property_exists($data, 'voting_status')) {
-            $object->setVotingStatus($data->{'voting_status'});
+        if (\array_key_exists('voting_status', $data)) {
+            $object->setVotingStatus($data['voting_status']);
         }
-        if (property_exists($data, 'end_datetime')) {
-            $object->setEndDatetime(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data->{'end_datetime'}));
+        if (\array_key_exists('end_datetime', $data)) {
+            $object->setEndDatetime(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['end_datetime']));
         }
-        if (property_exists($data, 'duration_minutes')) {
-            $object->setDurationMinutes($data->{'duration_minutes'});
+        if (\array_key_exists('duration_minutes', $data)) {
+            $object->setDurationMinutes($data['duration_minutes']);
         }
         return $object;
     }
     public function normalize($object, $format = null, array $context = array())
     {
-        $data = new \stdClass();
+        $data = array();
         if (null !== $object->getId()) {
-            $data->{'id'} = $object->getId();
+            $data['id'] = $object->getId();
         }
         if (null !== $object->getOptions()) {
             $values = array();
             foreach ($object->getOptions() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
-            $data->{'options'} = $values;
+            $data['options'] = $values;
         }
         if (null !== $object->getVotingStatus()) {
-            $data->{'voting_status'} = $object->getVotingStatus();
+            $data['voting_status'] = $object->getVotingStatus();
         }
         if (null !== $object->getEndDatetime()) {
-            $data->{'end_datetime'} = $object->getEndDatetime()->format('Y-m-d\\TH:i:sP');
+            $data['end_datetime'] = $object->getEndDatetime()->format('Y-m-d\\TH:i:sP');
         }
         if (null !== $object->getDurationMinutes()) {
-            $data->{'duration_minutes'} = $object->getDurationMinutes();
+            $data['duration_minutes'] = $object->getDurationMinutes();
         }
         return $data;
     }

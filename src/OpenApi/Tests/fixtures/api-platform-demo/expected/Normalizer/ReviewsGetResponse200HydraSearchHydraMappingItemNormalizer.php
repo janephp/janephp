@@ -3,6 +3,7 @@
 namespace ApiPlatform\Demo\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
+use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -14,6 +15,7 @@ class ReviewsGetResponse200HydraSearchHydraMappingItemNormalizer implements Deno
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
     public function supportsDenormalization($data, $type, $format = null)
     {
         return $type === 'ApiPlatform\\Demo\\Model\\ReviewsGetResponse200HydraSearchHydraMappingItem';
@@ -24,38 +26,35 @@ class ReviewsGetResponse200HydraSearchHydraMappingItemNormalizer implements Deno
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
-        if (!is_object($data)) {
-            throw new InvalidArgumentException(sprintf('Given $data is not an object (%s given). We need an object in order to continue denormalize method.', gettype($data)));
-        }
         $object = new \ApiPlatform\Demo\Model\ReviewsGetResponse200HydraSearchHydraMappingItem();
-        if (property_exists($data, '@type')) {
-            $object->setType($data->{'@type'});
+        if (\array_key_exists('@type', $data)) {
+            $object->setType($data['@type']);
         }
-        if (property_exists($data, 'variable')) {
-            $object->setVariable($data->{'variable'});
+        if (\array_key_exists('variable', $data)) {
+            $object->setVariable($data['variable']);
         }
-        if (property_exists($data, 'property')) {
-            $object->setProperty($data->{'property'});
+        if (\array_key_exists('property', $data)) {
+            $object->setProperty($data['property']);
         }
-        if (property_exists($data, 'required')) {
-            $object->setRequired($data->{'required'});
+        if (\array_key_exists('required', $data)) {
+            $object->setRequired($data['required']);
         }
         return $object;
     }
     public function normalize($object, $format = null, array $context = array())
     {
-        $data = new \stdClass();
+        $data = array();
         if (null !== $object->getType()) {
-            $data->{'@type'} = $object->getType();
+            $data['@type'] = $object->getType();
         }
         if (null !== $object->getVariable()) {
-            $data->{'variable'} = $object->getVariable();
+            $data['variable'] = $object->getVariable();
         }
         if (null !== $object->getProperty()) {
-            $data->{'property'} = $object->getProperty();
+            $data['property'] = $object->getProperty();
         }
         if (null !== $object->getRequired()) {
-            $data->{'required'} = $object->getRequired();
+            $data['required'] = $object->getRequired();
         }
         return $data;
     }

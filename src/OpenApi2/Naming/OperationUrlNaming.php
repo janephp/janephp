@@ -3,8 +3,8 @@
 namespace Jane\OpenApi2\Naming;
 
 use Doctrine\Common\Inflector\Inflector;
-use Jane\OpenApi2\Model\Response;
-use Jane\OpenApi2\Model\Schema;
+use Jane\OpenApi2\JsonSchema\Model\Response;
+use Jane\OpenApi2\JsonSchema\Model\Schema;
 use Jane\OpenApiCommon\Naming\OperationUrlNaming as CommonOperationUrlNaming;
 use Jane\OpenApiCommon\Operation\Operation;
 

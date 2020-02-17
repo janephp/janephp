@@ -8,7 +8,7 @@ use Jane\OpenApi2\Generator\GeneratorFactory;
 use Jane\OpenApiCommon\Generator\ModelGenerator;
 use Jane\OpenApiCommon\Generator\NormalizerGenerator;
 use Jane\OpenApi2\Guesser\OpenApiSchema\GuesserFactory;
-use Jane\OpenApi2\Normalizer\NormalizerFactory;
+use Jane\OpenApi2\JsonSchema\Normalizer\NormalizerFactory;
 use Jane\OpenApi2\SchemaParser\SchemaParser;
 use PhpParser\ParserFactory;
 use Jane\OpenApiCommon\JaneOpenApi as CommonJaneOpenApi;

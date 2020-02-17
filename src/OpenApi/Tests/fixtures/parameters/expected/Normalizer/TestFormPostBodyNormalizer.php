@@ -3,6 +3,7 @@
 namespace Jane\OpenApi\Tests\Expected\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
+use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -14,6 +15,7 @@ class TestFormPostBodyNormalizer implements DenormalizerInterface, NormalizerInt
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
     public function supportsDenormalization($data, $type, $format = null)
     {
         return $type === 'Jane\\OpenApi\\Tests\\Expected\\Model\\TestFormPostBody';
@@ -24,58 +26,55 @@ class TestFormPostBodyNormalizer implements DenormalizerInterface, NormalizerInt
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
-        if (!is_object($data)) {
-            throw new InvalidArgumentException(sprintf('Given $data is not an object (%s given). We need an object in order to continue denormalize method.', gettype($data)));
-        }
         $object = new \Jane\OpenApi\Tests\Expected\Model\TestFormPostBody();
-        if (property_exists($data, 'testString')) {
-            $object->setTestString($data->{'testString'});
+        if (\array_key_exists('testString', $data)) {
+            $object->setTestString($data['testString']);
         }
-        if (property_exists($data, 'testInteger')) {
-            $object->setTestInteger($data->{'testInteger'});
+        if (\array_key_exists('testInteger', $data)) {
+            $object->setTestInteger($data['testInteger']);
         }
-        if (property_exists($data, 'testFloat')) {
-            $object->setTestFloat($data->{'testFloat'});
+        if (\array_key_exists('testFloat', $data)) {
+            $object->setTestFloat($data['testFloat']);
         }
-        if (property_exists($data, 'testArray')) {
+        if (\array_key_exists('testArray', $data)) {
             $values = array();
-            foreach ($data->{'testArray'} as $value) {
+            foreach ($data['testArray'] as $value) {
                 $values[] = $value;
             }
             $object->setTestArray($values);
         }
-        if (property_exists($data, 'testRequired')) {
-            $object->setTestRequired($data->{'testRequired'});
+        if (\array_key_exists('testRequired', $data)) {
+            $object->setTestRequired($data['testRequired']);
         }
-        if (property_exists($data, 'testDefault')) {
-            $object->setTestDefault($data->{'testDefault'});
+        if (\array_key_exists('testDefault', $data)) {
+            $object->setTestDefault($data['testDefault']);
         }
         return $object;
     }
     public function normalize($object, $format = null, array $context = array())
     {
-        $data = new \stdClass();
+        $data = array();
         if (null !== $object->getTestString()) {
-            $data->{'testString'} = $object->getTestString();
+            $data['testString'] = $object->getTestString();
         }
         if (null !== $object->getTestInteger()) {
-            $data->{'testInteger'} = $object->getTestInteger();
+            $data['testInteger'] = $object->getTestInteger();
         }
         if (null !== $object->getTestFloat()) {
-            $data->{'testFloat'} = $object->getTestFloat();
+            $data['testFloat'] = $object->getTestFloat();
         }
         if (null !== $object->getTestArray()) {
             $values = array();
             foreach ($object->getTestArray() as $value) {
                 $values[] = $value;
             }
-            $data->{'testArray'} = $values;
+            $data['testArray'] = $values;
         }
         if (null !== $object->getTestRequired()) {
-            $data->{'testRequired'} = $object->getTestRequired();
+            $data['testRequired'] = $object->getTestRequired();
         }
         if (null !== $object->getTestDefault()) {
-            $data->{'testDefault'} = $object->getTestDefault();
+            $data['testDefault'] = $object->getTestDefault();
         }
         return $data;
     }

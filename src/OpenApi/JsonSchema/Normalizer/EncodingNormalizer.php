@@ -11,6 +11,7 @@ declare(strict_types=1);
 namespace Jane\OpenApi\JsonSchema\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
+use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -22,6 +23,7 @@ class EncodingNormalizer implements DenormalizerInterface, NormalizerInterface, 
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
 
     public function supportsDenormalization($data, $type, $format = null)
     {
@@ -35,34 +37,41 @@ class EncodingNormalizer implements DenormalizerInterface, NormalizerInterface, 
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        if (!is_object($data)) {
-            return null;
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
         }
-        if (isset($data->{'$ref'})) {
-            return new Reference($data->{'$ref'}, $context['document-origin']);
-        }
-        if (isset($data->{'$recursiveRef'})) {
-            return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Jane\OpenApi\JsonSchema\Model\Encoding();
-        if (property_exists($data, 'contentType') && $data->{'contentType'} !== null) {
-            $object->setContentType($data->{'contentType'});
+        if (\array_key_exists('contentType', $data) && $data['contentType'] !== null) {
+            $object->setContentType($data['contentType']);
+        } elseif (\array_key_exists('contentType', $data) && $data['contentType'] === null) {
+            $object->setContentType(null);
         }
-        if (property_exists($data, 'headers') && $data->{'headers'} !== null) {
+        if (\array_key_exists('headers', $data) && $data['headers'] !== null) {
             $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
-            foreach ($data->{'headers'} as $key => $value) {
+            foreach ($data['headers'] as $key => $value) {
                 $values[$key] = $this->denormalizer->denormalize($value, 'Jane\\OpenApi\\JsonSchema\\Model\\Header', 'json', $context);
             }
             $object->setHeaders($values);
+        } elseif (\array_key_exists('headers', $data) && $data['headers'] === null) {
+            $object->setHeaders(null);
         }
-        if (property_exists($data, 'style') && $data->{'style'} !== null) {
-            $object->setStyle($data->{'style'});
+        if (\array_key_exists('style', $data) && $data['style'] !== null) {
+            $object->setStyle($data['style']);
+        } elseif (\array_key_exists('style', $data) && $data['style'] === null) {
+            $object->setStyle(null);
         }
-        if (property_exists($data, 'explode') && $data->{'explode'} !== null) {
-            $object->setExplode($data->{'explode'});
+        if (\array_key_exists('explode', $data) && $data['explode'] !== null) {
+            $object->setExplode($data['explode']);
+        } elseif (\array_key_exists('explode', $data) && $data['explode'] === null) {
+            $object->setExplode(null);
         }
-        if (property_exists($data, 'allowReserved') && $data->{'allowReserved'} !== null) {
-            $object->setAllowReserved($data->{'allowReserved'});
+        if (\array_key_exists('allowReserved', $data) && $data['allowReserved'] !== null) {
+            $object->setAllowReserved($data['allowReserved']);
+        } elseif (\array_key_exists('allowReserved', $data) && $data['allowReserved'] === null) {
+            $object->setAllowReserved(null);
         }
 
         return $object;
@@ -70,25 +79,35 @@ class EncodingNormalizer implements DenormalizerInterface, NormalizerInterface, 
 
     public function normalize($object, $format = null, array $context = [])
     {
-        $data = new \stdClass();
+        $data = [];
         if (null !== $object->getContentType()) {
-            $data->{'contentType'} = $object->getContentType();
+            $data['contentType'] = $object->getContentType();
+        } else {
+            $data['contentType'] = null;
         }
         if (null !== $object->getHeaders()) {
-            $values = new \stdClass();
+            $values = [];
             foreach ($object->getHeaders() as $key => $value) {
-                $values->{$key} = $this->normalizer->normalize($value, 'json', $context);
+                $values[$key] = $this->normalizer->normalize($value, 'json', $context);
             }
-            $data->{'headers'} = $values;
+            $data['headers'] = $values;
+        } else {
+            $data['headers'] = null;
         }
         if (null !== $object->getStyle()) {
-            $data->{'style'} = $object->getStyle();
+            $data['style'] = $object->getStyle();
+        } else {
+            $data['style'] = null;
         }
         if (null !== $object->getExplode()) {
-            $data->{'explode'} = $object->getExplode();
+            $data['explode'] = $object->getExplode();
+        } else {
+            $data['explode'] = null;
         }
         if (null !== $object->getAllowReserved()) {
-            $data->{'allowReserved'} = $object->getAllowReserved();
+            $data['allowReserved'] = $object->getAllowReserved();
+        } else {
+            $data['allowReserved'] = null;
         }
 
         return $data;

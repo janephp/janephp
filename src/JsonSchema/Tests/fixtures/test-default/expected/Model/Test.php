@@ -39,7 +39,7 @@ class Test
      *
      * @var mixed[]|null
      */
-    protected $object;
+    protected $object = array('key' => 'value');
     /**
      * 
      *

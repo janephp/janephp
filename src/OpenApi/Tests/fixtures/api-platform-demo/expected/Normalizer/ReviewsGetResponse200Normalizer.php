@@ -3,6 +3,7 @@
 namespace ApiPlatform\Demo\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
+use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -14,6 +15,7 @@ class ReviewsGetResponse200Normalizer implements DenormalizerInterface, Normaliz
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
     public function supportsDenormalization($data, $type, $format = null)
     {
         return $type === 'ApiPlatform\\Demo\\Model\\ReviewsGetResponse200';
@@ -24,46 +26,43 @@ class ReviewsGetResponse200Normalizer implements DenormalizerInterface, Normaliz
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
-        if (!is_object($data)) {
-            throw new InvalidArgumentException(sprintf('Given $data is not an object (%s given). We need an object in order to continue denormalize method.', gettype($data)));
-        }
         $object = new \ApiPlatform\Demo\Model\ReviewsGetResponse200();
-        if (property_exists($data, 'hydra:member')) {
+        if (\array_key_exists('hydra:member', $data)) {
             $values = array();
-            foreach ($data->{'hydra:member'} as $value) {
+            foreach ($data['hydra:member'] as $value) {
                 $values[] = $value;
             }
             $object->setHydraMember($values);
         }
-        if (property_exists($data, 'hydra:totalItems')) {
-            $object->setHydraTotalItems($data->{'hydra:totalItems'});
+        if (\array_key_exists('hydra:totalItems', $data)) {
+            $object->setHydraTotalItems($data['hydra:totalItems']);
         }
-        if (property_exists($data, 'hydra:view')) {
-            $object->setHydraView($this->denormalizer->denormalize($data->{'hydra:view'}, 'ApiPlatform\\Demo\\Model\\ReviewsGetResponse200HydraView', 'json', $context));
+        if (\array_key_exists('hydra:view', $data)) {
+            $object->setHydraView($this->denormalizer->denormalize($data['hydra:view'], 'ApiPlatform\\Demo\\Model\\ReviewsGetResponse200HydraView', 'json', $context));
         }
-        if (property_exists($data, 'hydra:search')) {
-            $object->setHydraSearch($this->denormalizer->denormalize($data->{'hydra:search'}, 'ApiPlatform\\Demo\\Model\\ReviewsGetResponse200HydraSearch', 'json', $context));
+        if (\array_key_exists('hydra:search', $data)) {
+            $object->setHydraSearch($this->denormalizer->denormalize($data['hydra:search'], 'ApiPlatform\\Demo\\Model\\ReviewsGetResponse200HydraSearch', 'json', $context));
         }
         return $object;
     }
     public function normalize($object, $format = null, array $context = array())
     {
-        $data = new \stdClass();
+        $data = array();
         if (null !== $object->getHydraMember()) {
             $values = array();
             foreach ($object->getHydraMember() as $value) {
                 $values[] = $value;
             }
-            $data->{'hydra:member'} = $values;
+            $data['hydra:member'] = $values;
         }
         if (null !== $object->getHydraTotalItems()) {
-            $data->{'hydra:totalItems'} = $object->getHydraTotalItems();
+            $data['hydra:totalItems'] = $object->getHydraTotalItems();
         }
         if (null !== $object->getHydraView()) {
-            $data->{'hydra:view'} = $this->normalizer->normalize($object->getHydraView(), 'json', $context);
+            $data['hydra:view'] = $this->normalizer->normalize($object->getHydraView(), 'json', $context);
         }
         if (null !== $object->getHydraSearch()) {
-            $data->{'hydra:search'} = $this->normalizer->normalize($object->getHydraSearch(), 'json', $context);
+            $data['hydra:search'] = $this->normalizer->normalize($object->getHydraSearch(), 'json', $context);
         }
         return $data;
     }

@@ -101,6 +101,7 @@ class NormalizerGenerator implements GeneratorInterface
 
             $useStmts = [
                 new Stmt\Use_([new Stmt\UseUse(new Name('Jane\JsonSchemaRuntime\Reference'))]),
+                new Stmt\Use_([new Stmt\UseUse(new Name('Jane\JsonSchemaRuntime\Normalizer\CheckArray'))]),
                 new Stmt\Use_([new Stmt\UseUse(new Name('Symfony\Component\Serializer\Exception\InvalidArgumentException'))]),
                 new Stmt\Use_([new Stmt\UseUse(new Name('Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface'))]),
                 new Stmt\Use_([new Stmt\UseUse(new Name('Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait'))]),
@@ -215,6 +216,7 @@ EOT;
         );
 
         $useStmts = [
+            new Stmt\Use_([new Stmt\UseUse(new Name('Jane\JsonSchemaRuntime\Normalizer\CheckArray'))]),
             new Stmt\Use_([new Stmt\UseUse(new Name('Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface'))]),
             new Stmt\Use_([new Stmt\UseUse(new Name('Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait'))]),
             new Stmt\Use_([new Stmt\UseUse(new Name('Symfony\Component\Serializer\Normalizer\DenormalizerInterface'))]),

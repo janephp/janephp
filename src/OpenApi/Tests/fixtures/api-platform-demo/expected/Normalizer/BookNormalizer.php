@@ -3,6 +3,7 @@
 namespace ApiPlatform\Demo\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
+use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -14,6 +15,7 @@ class BookNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
     public function supportsDenormalization($data, $type, $format = null)
     {
         return $type === 'ApiPlatform\\Demo\\Model\\Book';
@@ -24,28 +26,25 @@ class BookNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
-        if (!is_object($data)) {
-            throw new InvalidArgumentException(sprintf('Given $data is not an object (%s given). We need an object in order to continue denormalize method.', gettype($data)));
-        }
         $object = new \ApiPlatform\Demo\Model\Book();
-        if (property_exists($data, 'isbn')) {
-            $object->setIsbn($data->{'isbn'});
+        if (\array_key_exists('isbn', $data)) {
+            $object->setIsbn($data['isbn']);
         }
-        if (property_exists($data, 'title')) {
-            $object->setTitle($data->{'title'});
+        if (\array_key_exists('title', $data)) {
+            $object->setTitle($data['title']);
         }
-        if (property_exists($data, 'description')) {
-            $object->setDescription($data->{'description'});
+        if (\array_key_exists('description', $data)) {
+            $object->setDescription($data['description']);
         }
-        if (property_exists($data, 'author')) {
-            $object->setAuthor($data->{'author'});
+        if (\array_key_exists('author', $data)) {
+            $object->setAuthor($data['author']);
         }
-        if (property_exists($data, 'publicationDate')) {
-            $object->setPublicationDate(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data->{'publicationDate'}));
+        if (\array_key_exists('publicationDate', $data)) {
+            $object->setPublicationDate(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['publicationDate']));
         }
-        if (property_exists($data, 'reviews')) {
+        if (\array_key_exists('reviews', $data)) {
             $values = array();
-            foreach ($data->{'reviews'} as $value) {
+            foreach ($data['reviews'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, 'ApiPlatform\\Demo\\Model\\Review', 'json', $context);
             }
             $object->setReviews($values);
@@ -54,28 +53,28 @@ class BookNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
     }
     public function normalize($object, $format = null, array $context = array())
     {
-        $data = new \stdClass();
+        $data = array();
         if (null !== $object->getIsbn()) {
-            $data->{'isbn'} = $object->getIsbn();
+            $data['isbn'] = $object->getIsbn();
         }
         if (null !== $object->getTitle()) {
-            $data->{'title'} = $object->getTitle();
+            $data['title'] = $object->getTitle();
         }
         if (null !== $object->getDescription()) {
-            $data->{'description'} = $object->getDescription();
+            $data['description'] = $object->getDescription();
         }
         if (null !== $object->getAuthor()) {
-            $data->{'author'} = $object->getAuthor();
+            $data['author'] = $object->getAuthor();
         }
         if (null !== $object->getPublicationDate()) {
-            $data->{'publicationDate'} = $object->getPublicationDate()->format('Y-m-d\\TH:i:sP');
+            $data['publicationDate'] = $object->getPublicationDate()->format('Y-m-d\\TH:i:sP');
         }
         if (null !== $object->getReviews()) {
             $values = array();
             foreach ($object->getReviews() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
-            $data->{'reviews'} = $values;
+            $data['reviews'] = $values;
         }
         return $data;
     }

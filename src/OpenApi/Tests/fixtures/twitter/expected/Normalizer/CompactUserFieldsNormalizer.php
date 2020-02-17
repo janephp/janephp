@@ -3,6 +3,7 @@
 namespace Jane\OpenApi\Tests\Expected\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
+use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -14,6 +15,7 @@ class CompactUserFieldsNormalizer implements DenormalizerInterface, NormalizerIn
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
     public function supportsDenormalization($data, $type, $format = null)
     {
         return $type === 'Jane\\OpenApi\\Tests\\Expected\\Model\\CompactUserFields';
@@ -24,62 +26,59 @@ class CompactUserFieldsNormalizer implements DenormalizerInterface, NormalizerIn
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
-        if (!is_object($data)) {
-            throw new InvalidArgumentException(sprintf('Given $data is not an object (%s given). We need an object in order to continue denormalize method.', gettype($data)));
-        }
         $object = new \Jane\OpenApi\Tests\Expected\Model\CompactUserFields();
-        if (property_exists($data, 'id')) {
-            $object->setId($data->{'id'});
+        if (\array_key_exists('id', $data)) {
+            $object->setId($data['id']);
         }
-        if (property_exists($data, 'created_at')) {
-            $object->setCreatedAt(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data->{'created_at'}));
+        if (\array_key_exists('created_at', $data)) {
+            $object->setCreatedAt(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['created_at']));
         }
-        if (property_exists($data, 'name')) {
-            $object->setName($data->{'name'});
+        if (\array_key_exists('name', $data)) {
+            $object->setName($data['name']);
         }
-        if (property_exists($data, 'username')) {
-            $object->setUsername($data->{'username'});
+        if (\array_key_exists('username', $data)) {
+            $object->setUsername($data['username']);
         }
-        if (property_exists($data, 'protected')) {
-            $object->setProtected($data->{'protected'});
+        if (\array_key_exists('protected', $data)) {
+            $object->setProtected($data['protected']);
         }
-        if (property_exists($data, 'verified')) {
-            $object->setVerified($data->{'verified'});
+        if (\array_key_exists('verified', $data)) {
+            $object->setVerified($data['verified']);
         }
-        if (property_exists($data, 'withheld')) {
-            $object->setWithheld($this->denormalizer->denormalize($data->{'withheld'}, 'Jane\\OpenApi\\Tests\\Expected\\Model\\UserWithheld', 'json', $context));
+        if (\array_key_exists('withheld', $data)) {
+            $object->setWithheld($this->denormalizer->denormalize($data['withheld'], 'Jane\\OpenApi\\Tests\\Expected\\Model\\UserWithheld', 'json', $context));
         }
-        if (property_exists($data, 'profile_image_url')) {
-            $object->setProfileImageUrl($data->{'profile_image_url'});
+        if (\array_key_exists('profile_image_url', $data)) {
+            $object->setProfileImageUrl($data['profile_image_url']);
         }
         return $object;
     }
     public function normalize($object, $format = null, array $context = array())
     {
-        $data = new \stdClass();
+        $data = array();
         if (null !== $object->getId()) {
-            $data->{'id'} = $object->getId();
+            $data['id'] = $object->getId();
         }
         if (null !== $object->getCreatedAt()) {
-            $data->{'created_at'} = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
+            $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
         }
         if (null !== $object->getName()) {
-            $data->{'name'} = $object->getName();
+            $data['name'] = $object->getName();
         }
         if (null !== $object->getUsername()) {
-            $data->{'username'} = $object->getUsername();
+            $data['username'] = $object->getUsername();
         }
         if (null !== $object->getProtected()) {
-            $data->{'protected'} = $object->getProtected();
+            $data['protected'] = $object->getProtected();
         }
         if (null !== $object->getVerified()) {
-            $data->{'verified'} = $object->getVerified();
+            $data['verified'] = $object->getVerified();
         }
         if (null !== $object->getWithheld()) {
-            $data->{'withheld'} = $this->normalizer->normalize($object->getWithheld(), 'json', $context);
+            $data['withheld'] = $this->normalizer->normalize($object->getWithheld(), 'json', $context);
         }
         if (null !== $object->getProfileImageUrl()) {
-            $data->{'profile_image_url'} = $object->getProfileImageUrl();
+            $data['profile_image_url'] = $object->getProfileImageUrl();
         }
         return $data;
     }

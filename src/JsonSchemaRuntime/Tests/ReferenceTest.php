@@ -20,7 +20,7 @@ class ReferenceTest extends TestCase
     public function resolveProvider(): array
     {
         return [
-            ['#', __DIR__ . '/schema.json', json_decode(file_get_contents(__DIR__ . '/schema.json')), null],
+            ['#', __DIR__ . '/schema.json', json_decode(file_get_contents(__DIR__ . '/schema.json'), true), null],
             [
                 'http://json-schema.org/draft-04/schema#/id',
                 __DIR__ . '/schema.json',

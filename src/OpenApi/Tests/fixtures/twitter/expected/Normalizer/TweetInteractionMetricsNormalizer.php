@@ -3,6 +3,7 @@
 namespace Jane\OpenApi\Tests\Expected\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
+use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -14,6 +15,7 @@ class TweetInteractionMetricsNormalizer implements DenormalizerInterface, Normal
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
     public function supportsDenormalization($data, $type, $format = null)
     {
         return $type === 'Jane\\OpenApi\\Tests\\Expected\\Model\\TweetInteractionMetrics';
@@ -24,44 +26,41 @@ class TweetInteractionMetricsNormalizer implements DenormalizerInterface, Normal
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
-        if (!is_object($data)) {
-            throw new InvalidArgumentException(sprintf('Given $data is not an object (%s given). We need an object in order to continue denormalize method.', gettype($data)));
-        }
         $object = new \Jane\OpenApi\Tests\Expected\Model\TweetInteractionMetrics();
-        if (property_exists($data, 'like_count')) {
-            $object->setLikeCount($data->{'like_count'});
+        if (\array_key_exists('like_count', $data)) {
+            $object->setLikeCount($data['like_count']);
         }
-        if (property_exists($data, 'retweet_count')) {
-            $object->setRetweetCount($data->{'retweet_count'});
+        if (\array_key_exists('retweet_count', $data)) {
+            $object->setRetweetCount($data['retweet_count']);
         }
-        if (property_exists($data, 'quote_count')) {
-            $object->setQuoteCount($data->{'quote_count'});
+        if (\array_key_exists('quote_count', $data)) {
+            $object->setQuoteCount($data['quote_count']);
         }
-        if (property_exists($data, 'reply_count')) {
-            $object->setReplyCount($data->{'reply_count'});
+        if (\array_key_exists('reply_count', $data)) {
+            $object->setReplyCount($data['reply_count']);
         }
-        if (property_exists($data, 'impression_count')) {
-            $object->setImpressionCount($data->{'impression_count'});
+        if (\array_key_exists('impression_count', $data)) {
+            $object->setImpressionCount($data['impression_count']);
         }
         return $object;
     }
     public function normalize($object, $format = null, array $context = array())
     {
-        $data = new \stdClass();
+        $data = array();
         if (null !== $object->getLikeCount()) {
-            $data->{'like_count'} = $object->getLikeCount();
+            $data['like_count'] = $object->getLikeCount();
         }
         if (null !== $object->getRetweetCount()) {
-            $data->{'retweet_count'} = $object->getRetweetCount();
+            $data['retweet_count'] = $object->getRetweetCount();
         }
         if (null !== $object->getQuoteCount()) {
-            $data->{'quote_count'} = $object->getQuoteCount();
+            $data['quote_count'] = $object->getQuoteCount();
         }
         if (null !== $object->getReplyCount()) {
-            $data->{'reply_count'} = $object->getReplyCount();
+            $data['reply_count'] = $object->getReplyCount();
         }
         if (null !== $object->getImpressionCount()) {
-            $data->{'impression_count'} = $object->getImpressionCount();
+            $data['impression_count'] = $object->getImpressionCount();
         }
         return $data;
     }

@@ -3,6 +3,7 @@
 namespace Jane\OpenApi\Tests\Expected\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
+use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -14,6 +15,7 @@ class URLImageNormalizer implements DenormalizerInterface, NormalizerInterface, 
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
     public function supportsDenormalization($data, $type, $format = null)
     {
         return $type === 'Jane\\OpenApi\\Tests\\Expected\\Model\\URLImage';
@@ -24,32 +26,29 @@ class URLImageNormalizer implements DenormalizerInterface, NormalizerInterface, 
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
-        if (!is_object($data)) {
-            throw new InvalidArgumentException(sprintf('Given $data is not an object (%s given). We need an object in order to continue denormalize method.', gettype($data)));
-        }
         $object = new \Jane\OpenApi\Tests\Expected\Model\URLImage();
-        if (property_exists($data, 'url')) {
-            $object->setUrl($data->{'url'});
+        if (\array_key_exists('url', $data)) {
+            $object->setUrl($data['url']);
         }
-        if (property_exists($data, 'height')) {
-            $object->setHeight($data->{'height'});
+        if (\array_key_exists('height', $data)) {
+            $object->setHeight($data['height']);
         }
-        if (property_exists($data, 'width')) {
-            $object->setWidth($data->{'width'});
+        if (\array_key_exists('width', $data)) {
+            $object->setWidth($data['width']);
         }
         return $object;
     }
     public function normalize($object, $format = null, array $context = array())
     {
-        $data = new \stdClass();
+        $data = array();
         if (null !== $object->getUrl()) {
-            $data->{'url'} = $object->getUrl();
+            $data['url'] = $object->getUrl();
         }
         if (null !== $object->getHeight()) {
-            $data->{'height'} = $object->getHeight();
+            $data['height'] = $object->getHeight();
         }
         if (null !== $object->getWidth()) {
-            $data->{'width'} = $object->getWidth();
+            $data['width'] = $object->getWidth();
         }
         return $data;
     }

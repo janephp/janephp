@@ -3,6 +3,7 @@
 namespace Jane\OpenApi\Tests\Expected\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
+use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -14,6 +15,7 @@ class DefaultPlaceNormalizer implements DenormalizerInterface, NormalizerInterfa
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
     public function supportsDenormalization($data, $type, $format = null)
     {
         return $type === 'Jane\\OpenApi\\Tests\\Expected\\Model\\DefaultPlace';
@@ -24,34 +26,31 @@ class DefaultPlaceNormalizer implements DenormalizerInterface, NormalizerInterfa
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
-        if (!is_object($data)) {
-            throw new InvalidArgumentException(sprintf('Given $data is not an object (%s given). We need an object in order to continue denormalize method.', gettype($data)));
-        }
         $object = new \Jane\OpenApi\Tests\Expected\Model\DefaultPlace();
-        if (property_exists($data, 'format')) {
-            $object->setFormat($data->{'format'});
+        if (\array_key_exists('format', $data)) {
+            $object->setFormat($data['format']);
         }
-        if (property_exists($data, 'id')) {
-            $object->setId($data->{'id'});
+        if (\array_key_exists('id', $data)) {
+            $object->setId($data['id']);
         }
-        if (property_exists($data, 'name')) {
-            $object->setName($data->{'name'});
+        if (\array_key_exists('name', $data)) {
+            $object->setName($data['name']);
         }
-        if (property_exists($data, 'country_code')) {
-            $object->setCountryCode($data->{'country_code'});
+        if (\array_key_exists('country_code', $data)) {
+            $object->setCountryCode($data['country_code']);
         }
-        if (property_exists($data, 'place_type')) {
-            $object->setPlaceType($data->{'place_type'});
+        if (\array_key_exists('place_type', $data)) {
+            $object->setPlaceType($data['place_type']);
         }
-        if (property_exists($data, 'full_name')) {
-            $object->setFullName($data->{'full_name'});
+        if (\array_key_exists('full_name', $data)) {
+            $object->setFullName($data['full_name']);
         }
-        if (property_exists($data, 'country')) {
-            $object->setCountry($data->{'country'});
+        if (\array_key_exists('country', $data)) {
+            $object->setCountry($data['country']);
         }
-        if (property_exists($data, 'contained_within')) {
+        if (\array_key_exists('contained_within', $data)) {
             $values = array();
-            foreach ($data->{'contained_within'} as $value) {
+            foreach ($data['contained_within'] as $value) {
                 $values[] = $value;
             }
             $object->setContainedWithin($values);
@@ -60,34 +59,34 @@ class DefaultPlaceNormalizer implements DenormalizerInterface, NormalizerInterfa
     }
     public function normalize($object, $format = null, array $context = array())
     {
-        $data = new \stdClass();
+        $data = array();
         if (null !== $object->getFormat()) {
-            $data->{'format'} = $object->getFormat();
+            $data['format'] = $object->getFormat();
         }
         if (null !== $object->getId()) {
-            $data->{'id'} = $object->getId();
+            $data['id'] = $object->getId();
         }
         if (null !== $object->getName()) {
-            $data->{'name'} = $object->getName();
+            $data['name'] = $object->getName();
         }
         if (null !== $object->getCountryCode()) {
-            $data->{'country_code'} = $object->getCountryCode();
+            $data['country_code'] = $object->getCountryCode();
         }
         if (null !== $object->getPlaceType()) {
-            $data->{'place_type'} = $object->getPlaceType();
+            $data['place_type'] = $object->getPlaceType();
         }
         if (null !== $object->getFullName()) {
-            $data->{'full_name'} = $object->getFullName();
+            $data['full_name'] = $object->getFullName();
         }
         if (null !== $object->getCountry()) {
-            $data->{'country'} = $object->getCountry();
+            $data['country'] = $object->getCountry();
         }
         if (null !== $object->getContainedWithin()) {
             $values = array();
             foreach ($object->getContainedWithin() as $value) {
                 $values[] = $value;
             }
-            $data->{'contained_within'} = $values;
+            $data['contained_within'] = $values;
         }
         return $data;
     }

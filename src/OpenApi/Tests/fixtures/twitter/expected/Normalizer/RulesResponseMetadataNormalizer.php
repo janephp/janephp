@@ -3,6 +3,7 @@
 namespace Jane\OpenApi\Tests\Expected\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
+use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -14,6 +15,7 @@ class RulesResponseMetadataNormalizer implements DenormalizerInterface, Normaliz
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
     public function supportsDenormalization($data, $type, $format = null)
     {
         return $type === 'Jane\\OpenApi\\Tests\\Expected\\Model\\RulesResponseMetadata';
@@ -24,26 +26,23 @@ class RulesResponseMetadataNormalizer implements DenormalizerInterface, Normaliz
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
-        if (!is_object($data)) {
-            throw new InvalidArgumentException(sprintf('Given $data is not an object (%s given). We need an object in order to continue denormalize method.', gettype($data)));
-        }
         $object = new \Jane\OpenApi\Tests\Expected\Model\RulesResponseMetadata();
-        if (property_exists($data, 'sent')) {
-            $object->setSent($data->{'sent'});
+        if (\array_key_exists('sent', $data)) {
+            $object->setSent($data['sent']);
         }
-        if (property_exists($data, 'summary')) {
-            $object->setSummary($data->{'summary'});
+        if (\array_key_exists('summary', $data)) {
+            $object->setSummary($data['summary']);
         }
         return $object;
     }
     public function normalize($object, $format = null, array $context = array())
     {
-        $data = new \stdClass();
+        $data = array();
         if (null !== $object->getSent()) {
-            $data->{'sent'} = $object->getSent();
+            $data['sent'] = $object->getSent();
         }
         if (null !== $object->getSummary()) {
-            $data->{'summary'} = $object->getSummary();
+            $data['summary'] = $object->getSummary();
         }
         return $data;
     }

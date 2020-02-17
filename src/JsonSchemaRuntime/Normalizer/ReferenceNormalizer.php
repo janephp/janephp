@@ -12,8 +12,8 @@ class ReferenceNormalizer implements NormalizerInterface
      */
     public function normalize($object, $format = null, array $context = [])
     {
-        $ref = new \stdClass();
-        $ref->{'$ref'} = (string) $object->getReferenceUri();
+        $ref = [];
+        $ref['$ref'] = (string) $object->getReferenceUri();
 
         return $ref;
     }

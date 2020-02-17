@@ -37,7 +37,7 @@ class Type
         self::TYPE_NULL => 'is_null',
         self::TYPE_MIXED => 'isset',
         self::TYPE_ARRAY => 'is_array',
-        self::TYPE_OBJECT => 'is_object',
+        self::TYPE_OBJECT => 'is_array',
     ];
 
     protected $normalizationConditionMapping = [

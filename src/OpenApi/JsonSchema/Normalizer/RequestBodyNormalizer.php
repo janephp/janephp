@@ -11,6 +11,7 @@ declare(strict_types=1);
 namespace Jane\OpenApi\JsonSchema\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
+use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -22,6 +23,7 @@ class RequestBodyNormalizer implements DenormalizerInterface, NormalizerInterfac
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
 
     public function supportsDenormalization($data, $type, $format = null)
     {
@@ -35,35 +37,37 @@ class RequestBodyNormalizer implements DenormalizerInterface, NormalizerInterfac
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        if (!is_object($data)) {
-            return null;
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
         }
-        if (isset($data->{'$ref'})) {
-            return new Reference($data->{'$ref'}, $context['document-origin']);
-        }
-        if (isset($data->{'$recursiveRef'})) {
-            return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Jane\OpenApi\JsonSchema\Model\RequestBody();
-        $data = clone $data;
-        if (property_exists($data, 'description') && $data->{'description'} !== null) {
-            $object->setDescription($data->{'description'});
-            unset($data->{'description'});
+        if (\array_key_exists('description', $data) && $data['description'] !== null) {
+            $object->setDescription($data['description']);
+            unset($data['description']);
+        } elseif (\array_key_exists('description', $data) && $data['description'] === null) {
+            $object->setDescription(null);
         }
-        if (property_exists($data, 'content') && $data->{'content'} !== null) {
+        if (\array_key_exists('content', $data) && $data['content'] !== null) {
             $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
-            foreach ($data->{'content'} as $key => $value) {
+            foreach ($data['content'] as $key => $value) {
                 $values[$key] = $this->denormalizer->denormalize($value, 'Jane\\OpenApi\\JsonSchema\\Model\\MediaType', 'json', $context);
             }
             $object->setContent($values);
-            unset($data->{'content'});
+            unset($data['content']);
+        } elseif (\array_key_exists('content', $data) && $data['content'] === null) {
+            $object->setContent(null);
         }
-        if (property_exists($data, 'required') && $data->{'required'} !== null) {
-            $object->setRequired($data->{'required'});
-            unset($data->{'required'});
+        if (\array_key_exists('required', $data) && $data['required'] !== null) {
+            $object->setRequired($data['required']);
+            unset($data['required']);
+        } elseif (\array_key_exists('required', $data) && $data['required'] === null) {
+            $object->setRequired(null);
         }
         foreach ($data as $key_1 => $value_1) {
-            if (preg_match('/^x-/', $key_1)) {
+            if (preg_match('/^x-/', (string) $key_1)) {
                 $object[$key_1] = $value_1;
             }
         }
@@ -73,23 +77,29 @@ class RequestBodyNormalizer implements DenormalizerInterface, NormalizerInterfac
 
     public function normalize($object, $format = null, array $context = [])
     {
-        $data = new \stdClass();
+        $data = [];
         if (null !== $object->getDescription()) {
-            $data->{'description'} = $object->getDescription();
+            $data['description'] = $object->getDescription();
+        } else {
+            $data['description'] = null;
         }
         if (null !== $object->getContent()) {
-            $values = new \stdClass();
+            $values = [];
             foreach ($object->getContent() as $key => $value) {
-                $values->{$key} = $this->normalizer->normalize($value, 'json', $context);
+                $values[$key] = $this->normalizer->normalize($value, 'json', $context);
             }
-            $data->{'content'} = $values;
+            $data['content'] = $values;
+        } else {
+            $data['content'] = null;
         }
         if (null !== $object->getRequired()) {
-            $data->{'required'} = $object->getRequired();
+            $data['required'] = $object->getRequired();
+        } else {
+            $data['required'] = null;
         }
         foreach ($object as $key_1 => $value_1) {
-            if (preg_match('/^x-/', $key_1)) {
-                $data->{$key_1} = $value_1;
+            if (preg_match('/^x-/', (string) $key_1)) {
+                $data[$key_1] = $value_1;
             }
         }
 

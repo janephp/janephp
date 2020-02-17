@@ -11,6 +11,7 @@ declare(strict_types=1);
 namespace Jane\OpenApi\JsonSchema\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
+use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -22,6 +23,7 @@ class ServerVariableNormalizer implements DenormalizerInterface, NormalizerInter
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
 
     public function supportsDenormalization($data, $type, $format = null)
     {
@@ -35,35 +37,37 @@ class ServerVariableNormalizer implements DenormalizerInterface, NormalizerInter
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        if (!is_object($data)) {
-            return null;
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
         }
-        if (isset($data->{'$ref'})) {
-            return new Reference($data->{'$ref'}, $context['document-origin']);
-        }
-        if (isset($data->{'$recursiveRef'})) {
-            return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Jane\OpenApi\JsonSchema\Model\ServerVariable();
-        $data = clone $data;
-        if (property_exists($data, 'enum') && $data->{'enum'} !== null) {
+        if (\array_key_exists('enum', $data) && $data['enum'] !== null) {
             $values = [];
-            foreach ($data->{'enum'} as $value) {
+            foreach ($data['enum'] as $value) {
                 $values[] = $value;
             }
             $object->setEnum($values);
-            unset($data->{'enum'});
+            unset($data['enum']);
+        } elseif (\array_key_exists('enum', $data) && $data['enum'] === null) {
+            $object->setEnum(null);
         }
-        if (property_exists($data, 'default') && $data->{'default'} !== null) {
-            $object->setDefault($data->{'default'});
-            unset($data->{'default'});
+        if (\array_key_exists('default', $data) && $data['default'] !== null) {
+            $object->setDefault($data['default']);
+            unset($data['default']);
+        } elseif (\array_key_exists('default', $data) && $data['default'] === null) {
+            $object->setDefault(null);
         }
-        if (property_exists($data, 'description') && $data->{'description'} !== null) {
-            $object->setDescription($data->{'description'});
-            unset($data->{'description'});
+        if (\array_key_exists('description', $data) && $data['description'] !== null) {
+            $object->setDescription($data['description']);
+            unset($data['description']);
+        } elseif (\array_key_exists('description', $data) && $data['description'] === null) {
+            $object->setDescription(null);
         }
         foreach ($data as $key => $value_1) {
-            if (preg_match('/^x-/', $key)) {
+            if (preg_match('/^x-/', (string) $key)) {
                 $object[$key] = $value_1;
             }
         }
@@ -73,23 +77,29 @@ class ServerVariableNormalizer implements DenormalizerInterface, NormalizerInter
 
     public function normalize($object, $format = null, array $context = [])
     {
-        $data = new \stdClass();
+        $data = [];
         if (null !== $object->getEnum()) {
             $values = [];
             foreach ($object->getEnum() as $value) {
                 $values[] = $value;
             }
-            $data->{'enum'} = $values;
+            $data['enum'] = $values;
+        } else {
+            $data['enum'] = null;
         }
         if (null !== $object->getDefault()) {
-            $data->{'default'} = $object->getDefault();
+            $data['default'] = $object->getDefault();
+        } else {
+            $data['default'] = null;
         }
         if (null !== $object->getDescription()) {
-            $data->{'description'} = $object->getDescription();
+            $data['description'] = $object->getDescription();
+        } else {
+            $data['description'] = null;
         }
         foreach ($object as $key => $value_1) {
-            if (preg_match('/^x-/', $key)) {
-                $data->{$key} = $value_1;
+            if (preg_match('/^x-/', (string) $key)) {
+                $data[$key] = $value_1;
             }
         }
 

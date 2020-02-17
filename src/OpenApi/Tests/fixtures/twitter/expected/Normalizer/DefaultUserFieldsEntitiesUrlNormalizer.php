@@ -3,6 +3,7 @@
 namespace Jane\OpenApi\Tests\Expected\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
+use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -14,6 +15,7 @@ class DefaultUserFieldsEntitiesUrlNormalizer implements DenormalizerInterface, N
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
     public function supportsDenormalization($data, $type, $format = null)
     {
         return $type === 'Jane\\OpenApi\\Tests\\Expected\\Model\\DefaultUserFieldsEntitiesUrl';
@@ -24,13 +26,10 @@ class DefaultUserFieldsEntitiesUrlNormalizer implements DenormalizerInterface, N
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
-        if (!is_object($data)) {
-            throw new InvalidArgumentException(sprintf('Given $data is not an object (%s given). We need an object in order to continue denormalize method.', gettype($data)));
-        }
         $object = new \Jane\OpenApi\Tests\Expected\Model\DefaultUserFieldsEntitiesUrl();
-        if (property_exists($data, 'urls')) {
+        if (\array_key_exists('urls', $data)) {
             $values = array();
-            foreach ($data->{'urls'} as $value) {
+            foreach ($data['urls'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, 'Jane\\OpenApi\\Tests\\Expected\\Model\\UrlEntity', 'json', $context);
             }
             $object->setUrls($values);
@@ -39,13 +38,13 @@ class DefaultUserFieldsEntitiesUrlNormalizer implements DenormalizerInterface, N
     }
     public function normalize($object, $format = null, array $context = array())
     {
-        $data = new \stdClass();
+        $data = array();
         if (null !== $object->getUrls()) {
             $values = array();
             foreach ($object->getUrls() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
-            $data->{'urls'} = $values;
+            $data['urls'] = $values;
         }
         return $data;
     }

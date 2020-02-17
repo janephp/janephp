@@ -17,6 +17,7 @@ use Symfony\Component\Serializer\Encoder\JsonDecode;
 use Symfony\Component\Serializer\Encoder\JsonEncode;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Serializer;
+use PhpParser\Node\Scalar;
 
 @trigger_error(sprintf('The "%s" class is deprecated since Jane 5.1, use "%s" instead.', HttplugClientGenerator::class, Psr18ClientGenerator::class), E_USER_DEPRECATED);
 
@@ -85,7 +86,11 @@ trait HttplugClientGenerator
                                         new Expr\ArrayItem(
                                             new Expr\New_(new Name\FullyQualified(JsonEncoder::class), [
                                                 new Node\Arg(new Expr\New_(new Name\FullyQualified(JsonEncode::class))),
-                                                new Node\Arg(new Expr\New_(new Name\FullyQualified(JsonDecode::class))),
+                                                new Node\Arg(new Expr\New_(new Name\FullyQualified(JsonDecode::class), [
+                                                    new Node\Arg(new Expr\Array_([
+                                                        new Expr\ArrayItem(new Expr\ConstFetch(new Name('true')), new Scalar\String_('json_decode_associative')),
+                                                    ])),
+                                                ])),
                                             ])
                                         ),
                                     ])

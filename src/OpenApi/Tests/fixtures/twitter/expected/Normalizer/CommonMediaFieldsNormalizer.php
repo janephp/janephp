@@ -3,6 +3,7 @@
 namespace Jane\OpenApi\Tests\Expected\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
+use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -14,6 +15,7 @@ class CommonMediaFieldsNormalizer implements DenormalizerInterface, NormalizerIn
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
     public function supportsDenormalization($data, $type, $format = null)
     {
         return $type === 'Jane\\OpenApi\\Tests\\Expected\\Model\\CommonMediaFields';
@@ -24,32 +26,29 @@ class CommonMediaFieldsNormalizer implements DenormalizerInterface, NormalizerIn
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
-        if (!is_object($data)) {
-            throw new InvalidArgumentException(sprintf('Given $data is not an object (%s given). We need an object in order to continue denormalize method.', gettype($data)));
-        }
         $object = new \Jane\OpenApi\Tests\Expected\Model\CommonMediaFields();
-        if (property_exists($data, 'media_key')) {
-            $object->setMediaKey($data->{'media_key'});
+        if (\array_key_exists('media_key', $data)) {
+            $object->setMediaKey($data['media_key']);
         }
-        if (property_exists($data, 'height')) {
-            $object->setHeight($data->{'height'});
+        if (\array_key_exists('height', $data)) {
+            $object->setHeight($data['height']);
         }
-        if (property_exists($data, 'width')) {
-            $object->setWidth($data->{'width'});
+        if (\array_key_exists('width', $data)) {
+            $object->setWidth($data['width']);
         }
         return $object;
     }
     public function normalize($object, $format = null, array $context = array())
     {
-        $data = new \stdClass();
+        $data = array();
         if (null !== $object->getMediaKey()) {
-            $data->{'media_key'} = $object->getMediaKey();
+            $data['media_key'] = $object->getMediaKey();
         }
         if (null !== $object->getHeight()) {
-            $data->{'height'} = $object->getHeight();
+            $data['height'] = $object->getHeight();
         }
         if (null !== $object->getWidth()) {
-            $data->{'width'} = $object->getWidth();
+            $data['width'] = $object->getWidth();
         }
         return $data;
     }

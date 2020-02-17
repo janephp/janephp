@@ -3,6 +3,7 @@
 namespace Jane\OpenApi\Tests\Expected\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
+use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -14,6 +15,7 @@ class SingleTweetLookupResponseNormalizer implements DenormalizerInterface, Norm
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
     public function supportsDenormalization($data, $type, $format = null)
     {
         return $type === 'Jane\\OpenApi\\Tests\\Expected\\Model\\SingleTweetLookupResponse';
@@ -24,19 +26,16 @@ class SingleTweetLookupResponseNormalizer implements DenormalizerInterface, Norm
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
-        if (!is_object($data)) {
-            throw new InvalidArgumentException(sprintf('Given $data is not an object (%s given). We need an object in order to continue denormalize method.', gettype($data)));
-        }
         $object = new \Jane\OpenApi\Tests\Expected\Model\SingleTweetLookupResponse();
-        if (property_exists($data, 'data')) {
-            $object->setData($data->{'data'});
+        if (\array_key_exists('data', $data)) {
+            $object->setData($data['data']);
         }
-        if (property_exists($data, 'includes')) {
-            $object->setIncludes($this->denormalizer->denormalize($data->{'includes'}, 'Jane\\OpenApi\\Tests\\Expected\\Model\\Expansions', 'json', $context));
+        if (\array_key_exists('includes', $data)) {
+            $object->setIncludes($this->denormalizer->denormalize($data['includes'], 'Jane\\OpenApi\\Tests\\Expected\\Model\\Expansions', 'json', $context));
         }
-        if (property_exists($data, 'errors')) {
+        if (\array_key_exists('errors', $data)) {
             $values = array();
-            foreach ($data->{'errors'} as $value) {
+            foreach ($data['errors'] as $value) {
                 $values[] = $value;
             }
             $object->setErrors($values);
@@ -45,19 +44,19 @@ class SingleTweetLookupResponseNormalizer implements DenormalizerInterface, Norm
     }
     public function normalize($object, $format = null, array $context = array())
     {
-        $data = new \stdClass();
+        $data = array();
         if (null !== $object->getData()) {
-            $data->{'data'} = $object->getData();
+            $data['data'] = $object->getData();
         }
         if (null !== $object->getIncludes()) {
-            $data->{'includes'} = $this->normalizer->normalize($object->getIncludes(), 'json', $context);
+            $data['includes'] = $this->normalizer->normalize($object->getIncludes(), 'json', $context);
         }
         if (null !== $object->getErrors()) {
             $values = array();
             foreach ($object->getErrors() as $value) {
                 $values[] = $value;
             }
-            $data->{'errors'} = $values;
+            $data['errors'] = $values;
         }
         return $data;
     }
