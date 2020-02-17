@@ -7,10 +7,10 @@ jobs:
       - name: checkout
         uses: actions/checkout@master
       - name: setup
-        uses: shivammathur/setup-php@master
+        uses: shivammathur/setup-php@2.0.0
         with:
           php-version: 7.2
-          extension-csv: mbstring, fileinfo, json, intl, dom
+          extensions: mbstring, fileinfo, json, intl, dom
       - name: install
         run: composer install
       - name: 'php-cs-fixer check'
@@ -26,10 +26,10 @@ jobs:
       - name: checkout
         uses: actions/checkout@master
       - name: setup
-        uses: shivammathur/setup-php@master
+        uses: shivammathur/setup-php@2.0.0
         with:
           php-version: ${{ matrix.php-versions }}
-          extension-csv: mbstring, fileinfo, json, intl, dom
+          extensions: mbstring, fileinfo, json, intl, dom
       - name: install
         run: composer install
       - name: tests
@@ -40,10 +40,10 @@ jobs:
       - name: checkout
         uses: actions/checkout@master
       - name: setup
-        uses: shivammathur/setup-php@master
+        uses: shivammathur/setup-php@2.0.0
         with:
           php-version: 7.2
-          extension-csv: mbstring, fileinfo, json, intl, dom
+          extensions: mbstring, fileinfo, json, intl, dom
       - name: install
         run: composer update --prefer-lowest --prefer-stable
       - name: tests
