@@ -25,7 +25,7 @@ requirement. Choose your library depending on OpenAPI version you need (you can 
     composer require --dev jane-php/open-api-3 "^5.0"
     composer require jane-php/open-api-runtime "^5.0"
 
-By default, generated code is not formatted, to make it compliant to PSR2 standard and others format norms, you can add
+By default, generated code is not formatted. To make it compliant to PSR2 standard and others format norms, you can add
 the `PHP CS Fixer`_ library to your dev dependencies (and it makes it easier to debug!):
 
 .. code-block:: bash
@@ -39,7 +39,7 @@ the `PHP CS Fixer`_ library to your dev dependencies (and it makes it easier to 
 Generating
 ----------
 
-This library provides a PHP console application to generate the Model, you can use it by executing the following command
+This library provides a PHP console application to generate the Model. You can use it by executing the following command
 at the root of your project:
 
 .. code-block:: bash
@@ -143,7 +143,7 @@ Using the API Client
 --------------------
 
 Generated code has complete `PHPDoc`_ comment on each method, which should correctly describe the endpoint.
-Method names for each endpoint depends on the ``operationId`` property of the OpenAPI specification. And if not present
+Method names for each endpoint depend on the ``operationId`` property of the OpenAPI specification. And if not present
 it will be generated from the endpoint path::
 
     <?php
@@ -152,7 +152,7 @@ it will be generated from the endpoint path::
     // Operation id being listFoo
     $foos = $apiClient->listFoo();
 
-Also depending on the parameters of the endpoint, it may have 2 to more arguments.
+Also depending on the parameters of the endpoint, it may have 2 or more arguments.
 
 For more details about using OpenAPI, you can read ":doc:`/OpenAPI/usage`" documentation.
 

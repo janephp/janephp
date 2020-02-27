@@ -32,7 +32,7 @@ Then when installing ``jane-php/json-schema``, it will add all required files:
 - ``config/jane/config.php``: your Jane configuration (see "Configuration file")
 - ``config/packages/jane.yaml``: Symfony Serializer configured to be optimized for Jane
 
-By default, generated code is not formatted, to make it compliant to PSR2 standard and others format norms, you can add
+By default, generated code is not formatted. To make it compliant to PSR2 standard and others format norms, you can add
 the `PHP CS Fixer`_ library to your dev dependencies (and it makes it easier to debug!):
 
 .. code-block:: bash
@@ -46,7 +46,7 @@ the `PHP CS Fixer`_ library to your dev dependencies (and it makes it easier to 
 Generating
 ----------
 
-This library provides a PHP console application to generate the Model, you can use it by executing the following command
+This library provides a PHP console application to generate the Model. You can use it by executing the following command
 at the root of your project:
 
 .. code-block:: bash
