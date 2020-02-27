@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'openapi-file' => 'https://api.twitter.com/labs/1/openapi.json',
+    'openapi-file' => __DIR__ . '/openapi.json',
     'namespace' => 'Jane\OpenApi\Tests\Expected',
     'directory' => __DIR__ . '/generated',
 ];
