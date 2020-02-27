@@ -44,23 +44,17 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
         return $this->executePsr7Endpoint(new \Jane\OpenApi\Tests\Expected\Endpoint\FindTweetsById($queryParameters), $fetch);
     }
     /**
-     * Returns a variety of information about the Tweet specified by the requested ID
+     * Tweet ID in the path is that of the reply to hide.
      *
-     * @param string $id A single Tweet ID.
-     * @param array $queryParameters {
-     *     @var string $format Format for all the objects returned as part of the response, including expansions.
-     *     @var string $tweet.format Format for all [Tweet](#Tweet) objects returned in response. Can be used together with other format parameters to expand or reduce Tweet objects only.
-     *     @var string $user.format Format for all [User](#User) objects returned in response. Can be used together with other format parameters to expand or reduce User objects only.
-     *     @var string $place.format Format for all place objects returned in response.
-     *     @var array $expansions A comma separated list of fields to expand.
-     * }
+     * @param string $id The ID of the reply that you want to hide.
+     * @param \Jane\OpenApi\Tests\Expected\Model\HideReplyRequest $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Jane\OpenApi\Tests\Expected\Model\SingleTweetLookupResponse|\Jane\OpenApi\Tests\Expected\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return null|\Jane\OpenApi\Tests\Expected\Model\HideReplyResponse|\Jane\OpenApi\Tests\Expected\Model\Error|\Psr\Http\Message\ResponseInterface
      */
-    public function findTweetById(string $id, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function hideReplyById(string $id, \Jane\OpenApi\Tests\Expected\Model\HideReplyRequest $requestBody, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Jane\OpenApi\Tests\Expected\Endpoint\FindTweetById($id, $queryParameters), $fetch);
+        return $this->executePsr7Endpoint(new \Jane\OpenApi\Tests\Expected\Endpoint\HideReplyById($id, $requestBody), $fetch);
     }
     /**
      * Returns various metrics about a Tweet, including metrics for an embedded Video if one exists
