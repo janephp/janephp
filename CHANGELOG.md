@@ -7,6 +7,26 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [5.3.2] - 2020-03-05
+
+### Added
+
+- [JsonSchema] [GH#239](https://github.com/janephp/janephp/pull/239) Allow different datetime formats for parsing and serializing
+
+### Fixed
+
+- [OpenAPI] [GH#247](https://github.com/janephp/janephp/pull/247) Fix multiple OpenAPI version in configuration mapping
+- [OpenAPI] [GH#250](https://github.com/janephp/janephp/pull/250) Fix when no operationId is given and path has a dot
+- [OpenAPI] [GH#251](https://github.com/janephp/janephp/pull/251) Fixing issue where class names could contains dots
+- [CI] [GH#256](https://github.com/janephp/janephp/pull/256) Fix setup-php steps
+- [OpenAPI] [GH#255](https://github.com/janephp/janephp/pull/255) Fix null parameter to empty string transformation to keep zero value
+- [OpenAPI] [GH#259](https://github.com/janephp/janephp/pull/259) & [GH#260](https://github.com/janephp/janephp/pull/260) Update & fix twitter fixtures
+
+### Documentation
+
+- [GH#254](https://github.com/janephp/janephp/pull/254) Improves JSON multi schemas doc
+- [GH#244](https://github.com/janephp/janephp/pull/244) Improved documentation
+
 ## [5.3.1] - 2020-02-04
 
 ### Added
@@ -242,7 +262,8 @@ See :
  * https://github.com/janephp/jane/releases
  * https://github.com/janephp/openapi/releases
 
-[Unreleased]: https://github.com/janephp/janephp/compare/v5.3.1...HEAD
+[Unreleased]: https://github.com/janephp/janephp/compare/v5.3.2...HEAD
+[5.3.2]: https://github.com/janephp/janephp/compare/v5.3.1...v5.3.2
 [5.3.1]: https://github.com/janephp/janephp/compare/v5.3.0...v5.3.1
 [5.3.0]: https://github.com/janephp/janephp/compare/v5.2.2...v5.3.0
 [5.2.2]: https://github.com/janephp/janephp/compare/v5.2.1...v5.2.2
