@@ -107,6 +107,7 @@ class GenerateCommand extends Command
             'fixer-config-file' => null,
             'clean-generated' => true,
             'use-cacheable-supports-method' => null,
+            'normalizer-force-null-when-nullable' => true,
             'client' => JaneOpenApi::CLIENT_HTTPLUG,
         ]);
 
@@ -150,6 +151,7 @@ class GenerateCommand extends Command
             'fixer-config-file',
             'clean-generated',
             'use-cacheable-supports-method',
+            'normalizer-force-null-when-nullable',
             'client',
         ]);
 

@@ -83,7 +83,7 @@ trait NormalizerGenerator
      *
      * @return Stmt\ClassMethod
      */
-    protected function createNormalizeMethod(string $modelFqdn, Context $context, ClassGuess $classGuess)
+    protected function createNormalizeMethod(string $modelFqdn, Context $context, ClassGuess $classGuess, bool $normalizerForceNullWhenNullable = true)
     {
         $context->refreshScope();
         $dataVariable = new Expr\Variable('data');
@@ -116,9 +116,12 @@ trait NormalizerGenerator
                                 'stmts' => $normalizationStatements,
                             ]
                         );
-                        $statements[] = new Stmt\Else_(
-                            [new Stmt\Expression(new Expr\Assign(new Expr\PropertyFetch($dataVariable, sprintf("{'%s'}", $property->getName())), new Expr\ConstFetch(new Name('null'))))]
-                        );
+
+                        if ($normalizerForceNullWhenNullable) {
+                            $statements[] = new Stmt\Else_(
+                                [new Stmt\Expression(new Expr\Assign(new Expr\PropertyFetch($dataVariable, sprintf("{'%s'}", $property->getName())), new Expr\ConstFetch(new Name('null'))))]
+                            );
+                        }
                     } else {
                         $statements = array_merge($statements, $normalizationStatements);
                     }

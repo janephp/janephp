@@ -91,6 +91,7 @@ class GenerateCommand extends Command
             'fixer-config-file' => null,
             'clean-generated' => true,
             'use-cacheable-supports-method' => null,
+            'normalizer-force-null-when-nullable' => true,
         ]);
 
         if (\array_key_exists('json-schema-file', $options)) {
@@ -126,6 +127,7 @@ class GenerateCommand extends Command
             'fixer-config-file',
             'clean-generated',
             'use-cacheable-supports-method',
+            'normalizer-force-null-when-nullable',
         ]);
 
         $optionsResolver->setRequired([
