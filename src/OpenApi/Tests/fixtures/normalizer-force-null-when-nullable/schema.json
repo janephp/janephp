@@ -1,0 +1,53 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "version": "",
+        "title": ""
+    },
+    "paths": {
+        "/test-nullable-query-parameter": {
+            "get": {
+                "operationId": "Test Nullable Query Parameters",
+                "parameters": [
+                    {
+                        "name": "testNullableInteger",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer",
+                            "nullable": true
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "no error"
+                    }
+                },
+                "tags": [
+                    "Test"
+                ]
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Model": {
+                "type": "object",
+                "properties": {
+                    "foo": {
+                        "nullable": true,
+                        "type": "string"
+                    },
+                    "bar": {
+                        "type": "string"
+                    },
+                    "date": {
+                        "nullable": true,
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                }
+            }
+        }
+    }
+}
