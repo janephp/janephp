@@ -2,7 +2,7 @@
 
 namespace Jane\OpenApi\Tests\Expected\One;
 
-class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
+class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
 {
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
@@ -17,11 +17,11 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
     public static function create($httpClient = null)
     {
         if (null === $httpClient) {
-            $httpClient = \Http\Discovery\HttpClientDiscovery::find();
+            $httpClient = \Http\Discovery\Psr18ClientDiscovery::find();
         }
-        $messageFactory = \Http\Discovery\MessageFactoryDiscovery::find();
-        $streamFactory = \Http\Discovery\StreamFactoryDiscovery::find();
+        $requestFactory = \Http\Discovery\Psr17FactoryDiscovery::findRequestFactory();
+        $streamFactory = \Http\Discovery\Psr17FactoryDiscovery::findStreamFactory();
         $serializer = new \Symfony\Component\Serializer\Serializer(array(new \Symfony\Component\Serializer\Normalizer\ArrayDenormalizer(), new \Jane\OpenApi\Tests\Expected\One\Normalizer\JaneObjectNormalizer()), array(new \Symfony\Component\Serializer\Encoder\JsonEncoder(new \Symfony\Component\Serializer\Encoder\JsonEncode(), new \Symfony\Component\Serializer\Encoder\JsonDecode(array('json_decode_associative' => true)))));
-        return new static($httpClient, $messageFactory, $serializer, $streamFactory);
+        return new static($httpClient, $requestFactory, $serializer, $streamFactory);
     }
 }
