@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace Jane\JsonSchema\Normalizer;
 
+use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -21,6 +22,7 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
     protected $normalizers = ['Jane\\JsonSchema\\Model\\JsonSchema' => 'Jane\\JsonSchema\\Normalizer\\JsonSchemaNormalizer', '\\Jane\\JsonSchemaRuntime\\Reference' => '\\Jane\\JsonSchemaRuntime\\Normalizer\\ReferenceNormalizer'];
     protected $normalizersCache = [];
 
@@ -52,11 +54,7 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
 
     private function getNormalizer(string $normalizerClass)
     {
-        if (false === array_key_exists($normalizerClass, $this->normalizersCache)) {
-            $this->normalizersCache[$normalizerClass] = $this->initNormalizer($normalizerClass);
-        }
-
-        return $this->normalizersCache[$normalizerClass];
+        return $this->normalizersCache[$normalizerClass] ?? $this->initNormalizer($normalizerClass);
     }
 
     private function initNormalizer(string $normalizerClass)
@@ -64,6 +62,7 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
         $normalizer = new $normalizerClass();
         $normalizer->setNormalizer($this->normalizer);
         $normalizer->setDenormalizer($this->denormalizer);
+        $this->normalizersCache[$normalizerClass] = $normalizer;
 
         return $normalizer;
     }

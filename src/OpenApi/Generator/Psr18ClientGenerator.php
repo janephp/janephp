@@ -22,8 +22,6 @@ class Psr18ClientGenerator implements GeneratorInterface
     use ServerPluginGenerator;
 
     public const FILE_TYPE_CLIENT = 'client';
-    public const FILE_TYPE_RESOURCE = 'resource';
-    public const FILE_TYPE_RESOURCE_TRAIT = 'resource_trait';
 
     private $operationManager;
 
