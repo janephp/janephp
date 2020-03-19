@@ -8,7 +8,7 @@ use Symfony\Component\Console\Application as BaseApplication;
 class Application extends BaseApplication
 {
     public const COMMAND_CLASS = GenerateCommand::class;
-    public const VERSION = '5.x-dev';
+    public const VERSION = '6.x-dev';
 
     /**
      * Constructor.

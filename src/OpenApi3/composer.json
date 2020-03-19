@@ -16,5 +16,10 @@
     ],
     "require": {
         "jane-php/open-api": "^5.0"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "6-dev"
+        }
     }
 }
