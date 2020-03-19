@@ -2,11 +2,11 @@
 
 namespace Jane\OpenApi\Generator;
 
+use Jane\JsonSchema\Generator\GeneratorInterface;
 use Jane\OpenApi\Generator\Parameter\NonBodyParameterGenerator;
 use Jane\OpenApi\Generator\RequestBodyContent\DefaultBodyContentGenerator;
 use Jane\OpenApi\Generator\RequestBodyContent\FormBodyContentGenerator;
 use Jane\OpenApi\Generator\RequestBodyContent\JsonBodyContentGenerator;
-use Jane\OpenApi\JaneOpenApi;
 use Jane\OpenApiCommon\Generator\ExceptionGenerator;
 use Jane\OpenApiCommon\Naming\ChainOperationNaming;
 use Jane\OpenApi\Naming\OperationUrlNaming;
@@ -17,7 +17,7 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 
 class GeneratorFactory
 {
-    public static function build(DenormalizerInterface $serializer, array $options): array
+    public static function build(DenormalizerInterface $serializer): GeneratorInterface
     {
         $parserFactory = new ParserFactory();
         $parser = $parserFactory->create(ParserFactory::PREFER_PHP7);
@@ -38,12 +38,6 @@ class GeneratorFactory
         $psr7EndpointGenerator = new Psr7EndpointGenerator($operationNaming, $nonBodyParameter, $serializer, $exceptionGenerator, $requestBodyGenerator);
         $psr7OperationGenerator = new Psr7OperationGenerator($psr7EndpointGenerator);
 
-        $generators = [
-            $options['client'] === JaneOpenApi::CLIENT_HTTPLUG
-                ? new HttplugClientGenerator($operationManager, $psr7OperationGenerator, $operationNaming)
-                : new Psr18ClientGenerator($operationManager, $psr7OperationGenerator, $operationNaming),
-        ];
-
-        return $generators;
+        return new Psr18ClientGenerator($operationManager, $psr7OperationGenerator, $operationNaming);
     }
 }

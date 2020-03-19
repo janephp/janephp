@@ -21,9 +21,6 @@ use Symfony\Component\Yaml\Parser;
 
 abstract class JaneOpenApi extends ChainGenerator
 {
-    public const CLIENT_PSR18 = 'psr18';
-    public const CLIENT_HTTPLUG = 'httplug';
-
     protected const NORMALIZER_FACTORY_CLASS = null;
 
     /** @var SchemaParser $schemaParser */

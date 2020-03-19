@@ -108,7 +108,6 @@ class GenerateCommand extends Command
             'clean-generated' => true,
             'use-cacheable-supports-method' => null,
             'normalizer-force-null-when-nullable' => true,
-            'client' => JaneOpenApi::CLIENT_HTTPLUG,
         ]);
 
         if (\array_key_exists('openapi-file', $options)) {
@@ -124,11 +123,6 @@ class GenerateCommand extends Command
                 'mapping',
             ]);
         }
-
-        $optionsResolver->setAllowedValues('client', [
-            JaneOpenApi::CLIENT_PSR18,
-            JaneOpenApi::CLIENT_HTTPLUG,
-        ]);
 
         return $optionsResolver->resolve($options);
     }
@@ -152,7 +146,6 @@ class GenerateCommand extends Command
             'clean-generated',
             'use-cacheable-supports-method',
             'normalizer-force-null-when-nullable',
-            'client',
         ]);
 
         $optionsResolver->setDefault('version', 3);
