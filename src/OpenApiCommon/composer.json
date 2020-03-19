@@ -25,6 +25,11 @@
         "jane-php/json-schema": "^5.0",
         "symfony/string": "^5.0"
     },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "6-dev"
+        }
+    },
     "suggest": {
         "jane-php/open-api-2": "Allow to generate OpenApi v2 clients",
         "jane-php/open-api-3": "Allow to generate OpenApi v3 clients"
