@@ -14,7 +14,7 @@ use Jane\OpenApiCommon\JaneOpenApi as CommonJaneOpenApi;
 
 class JaneOpenApi extends CommonJaneOpenApi
 {
-    protected const NORMALIZER_FACTORY_CLASS = JsonSchema\Normalizer\NormalizerFactory::class;
+    protected const OBJECT_NORMALIZER_CLASS = JsonSchema\Normalizer\JaneObjectNormalizer::class;
 
     public static function build(array $options = [])
     {

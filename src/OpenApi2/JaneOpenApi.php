@@ -5,17 +5,17 @@ namespace Jane\OpenApi2;
 use Jane\JsonSchema\Generator\Naming;
 use Jane\OpenApi2\Generator\AuthenticationGenerator;
 use Jane\OpenApi2\Generator\GeneratorFactory;
+use Jane\OpenApi2\JsonSchema\Normalizer\JaneObjectNormalizer;
 use Jane\OpenApiCommon\Generator\ModelGenerator;
 use Jane\OpenApiCommon\Generator\NormalizerGenerator;
 use Jane\OpenApi2\Guesser\OpenApiSchema\GuesserFactory;
-use Jane\OpenApi2\JsonSchema\Normalizer\NormalizerFactory;
 use Jane\OpenApi2\SchemaParser\SchemaParser;
 use PhpParser\ParserFactory;
 use Jane\OpenApiCommon\JaneOpenApi as CommonJaneOpenApi;
 
 class JaneOpenApi extends CommonJaneOpenApi
 {
-    protected const NORMALIZER_FACTORY_CLASS = NormalizerFactory::class;
+    protected const OBJECT_NORMALIZER_CLASS = JaneObjectNormalizer::class;
 
     public static function build(array $options = [])
     {

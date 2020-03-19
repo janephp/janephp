@@ -8,12 +8,9 @@ use Jane\JsonSchema\Generator\Normalizer\NormalizerGenerator as NormalizerGenera
 use Jane\JsonSchema\Generator\Normalizer\JaneObjectNormalizerGenerator;
 use Jane\JsonSchema\Schema;
 use Jane\JsonSchemaRuntime\Reference;
-use PhpParser\Comment\Doc;
-use PhpParser\Node\Arg;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Name;
 use PhpParser\Node\Stmt;
-use PhpParser\Node\Scalar;
 use PhpParser\Parser;
 
 class NormalizerGenerator implements GeneratorInterface
@@ -129,13 +126,6 @@ class NormalizerGenerator implements GeneratorInterface
             new Stmt\Namespace_(new Name($schema->getNamespace() . '\\Normalizer'), $this->createJaneObjectNormalizerClass($normalizers)),
             self::FILE_TYPE_NORMALIZER
         ));
-        $janeObjectNormalizerClass = sprintf('\\%s\\Normalizer\\%s', $schema->getNamespace(), 'JaneObjectNormalizer');
-
-        $schema->addFile(new File(
-            $schema->getDirectory() . '/Normalizer/NormalizerFactory.php',
-            new Stmt\Namespace_(new Name($schema->getNamespace() . '\\Normalizer'), $this->createNormalizerFactoryClass($janeObjectNormalizerClass)),
-            self::FILE_TYPE_NORMALIZER
-        ));
     }
 
     protected function canUseCacheableSupportsMethod(?bool $useCacheableSupportsMethod): bool
@@ -143,42 +133,6 @@ class NormalizerGenerator implements GeneratorInterface
         return
             true === $useCacheableSupportsMethod ||
             (null === $useCacheableSupportsMethod && class_exists('Symfony\Component\Serializer\Normalizer\CacheableSupportsMethodInterface'));
-    }
-
-    protected function createNormalizerFactoryClass(string $janeObjectNormalizerClass): array
-    {
-        $statements = [
-            new Stmt\Expression(new Expr\Assign(new Expr\Variable('normalizers'), new Expr\Array_())),
-            new Stmt\Expression(new Expr\Assign(new Expr\ArrayDimFetch(new Expr\Variable('normalizers')), new Expr\New_(new Name('\Symfony\Component\Serializer\Normalizer\ArrayDenormalizer')))),
-        ];
-
-        $statements[] = new Stmt\Expression(new Expr\Assign(new Expr\ArrayDimFetch(new Expr\Variable('normalizers')), new Expr\New_(new Name($janeObjectNormalizerClass))));
-        $statements[] = new Stmt\Return_(new Expr\Variable('normalizers'));
-
-        $deprecatedString = 'The "NormalizerFactory" class is deprecated since Jane 5.3, use "JaneObjectNormalizer" instead.';
-        $deprecatedComment = <<<EOT
-/**
- * @deprecated $deprecatedString
- */
-EOT;
-
-        $class = new Stmt\Class_('NormalizerFactory', [
-            'stmts' => [
-                new Stmt\ClassMethod('create', [
-                    'type' => Stmt\Class_::MODIFIER_STATIC | Stmt\Class_::MODIFIER_PUBLIC,
-                    'stmts' => $statements,
-                ]),
-            ],
-        ], [
-            'comments' => [new Doc($deprecatedComment)],
-        ]);
-
-        $stmt = new Stmt\Expression(new Expr\ErrorSuppress(new Expr\FuncCall(new Name('trigger_error'), [
-            new Arg(new Scalar\String_($deprecatedString)),
-            new Arg(new Expr\ConstFetch(new Name('E_USER_DEPRECATED'))),
-        ])));
-
-        return [$stmt, $class];
     }
 
     protected function createJaneObjectNormalizerClass(array $normalizers): array
