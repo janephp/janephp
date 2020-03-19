@@ -3,6 +3,7 @@
 namespace Jane\OpenApi\Tests\Expected\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
+use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -14,6 +15,7 @@ class TestIdGetResponse200Normalizer implements DenormalizerInterface, Normalize
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
     public function supportsDenormalization($data, $type, $format = null)
     {
         return $type === 'Jane\\OpenApi\\Tests\\Expected\\Model\\TestIdGetResponse200';
@@ -24,20 +26,17 @@ class TestIdGetResponse200Normalizer implements DenormalizerInterface, Normalize
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
-        if (!is_object($data)) {
-            throw new InvalidArgumentException(sprintf('Given $data is not an object (%s given). We need an object in order to continue denormalize method.', gettype($data)));
-        }
         $object = new \Jane\OpenApi\Tests\Expected\Model\TestIdGetResponse200();
-        if (property_exists($data, 'id')) {
-            $object->setId($data->{'id'});
+        if (\array_key_exists('id', $data)) {
+            $object->setId($data['id']);
         }
         return $object;
     }
     public function normalize($object, $format = null, array $context = array())
     {
-        $data = new \stdClass();
+        $data = array();
         if (null !== $object->getId()) {
-            $data->{'id'} = $object->getId();
+            $data['id'] = $object->getId();
         }
         return $data;
     }

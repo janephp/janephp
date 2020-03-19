@@ -10,48 +10,17 @@ declare(strict_types=1);
 
 namespace Jane\OpenApi\JsonSchema\Normalizer;
 
+@trigger_error('The "NormalizerFactory" class is deprecated since Jane 5.3, use "JaneObjectNormalizer" instead.', E_USER_DEPRECATED);
+/**
+ * @deprecated The "NormalizerFactory" class is deprecated since Jane 5.3, use "JaneObjectNormalizer" instead.
+ */
 class NormalizerFactory
 {
     public static function create()
     {
         $normalizers = [];
         $normalizers[] = new \Symfony\Component\Serializer\Normalizer\ArrayDenormalizer();
-        $normalizers[] = new \Jane\JsonSchemaRuntime\Normalizer\ReferenceNormalizer();
-        $normalizers[] = new OpenApiNormalizer();
-        $normalizers[] = new ReferenceNormalizer();
-        $normalizers[] = new InfoNormalizer();
-        $normalizers[] = new ContactNormalizer();
-        $normalizers[] = new LicenseNormalizer();
-        $normalizers[] = new ServerNormalizer();
-        $normalizers[] = new ServerVariableNormalizer();
-        $normalizers[] = new ComponentsNormalizer();
-        $normalizers[] = new SchemaNormalizer();
-        $normalizers[] = new DiscriminatorNormalizer();
-        $normalizers[] = new XMLNormalizer();
-        $normalizers[] = new ResponseNormalizer();
-        $normalizers[] = new MediaTypeNormalizer();
-        $normalizers[] = new ExampleNormalizer();
-        $normalizers[] = new HeaderNormalizer();
-        $normalizers[] = new PathItemNormalizer();
-        $normalizers[] = new OperationNormalizer();
-        $normalizers[] = new ResponsesNormalizer();
-        $normalizers[] = new TagNormalizer();
-        $normalizers[] = new ExternalDocumentationNormalizer();
-        $normalizers[] = new ParameterNormalizer();
-        $normalizers[] = new RequestBodyNormalizer();
-        $normalizers[] = new APIKeySecuritySchemeNormalizer();
-        $normalizers[] = new HTTPSecuritySchemeNormalizer();
-        $normalizers[] = new HTTPSecuritySchemeSubNormalizer();
-        $normalizers[] = new HTTPSecuritySchemeSubNormalizer();
-        $normalizers[] = new OAuth2SecuritySchemeNormalizer();
-        $normalizers[] = new OpenIdConnectSecuritySchemeNormalizer();
-        $normalizers[] = new OAuthFlowsNormalizer();
-        $normalizers[] = new ImplicitOAuthFlowNormalizer();
-        $normalizers[] = new PasswordOAuthFlowNormalizer();
-        $normalizers[] = new ClientCredentialsFlowNormalizer();
-        $normalizers[] = new AuthorizationCodeOAuthFlowNormalizer();
-        $normalizers[] = new LinkNormalizer();
-        $normalizers[] = new EncodingNormalizer();
+        $normalizers[] = new \Jane\OpenApi\JsonSchema\Normalizer\JaneObjectNormalizer();
 
         return $normalizers;
     }

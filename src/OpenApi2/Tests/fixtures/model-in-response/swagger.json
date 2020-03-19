@@ -158,6 +158,93 @@
                     "Test"
                 ]
             }
+        },
+        "/test-complex-list": {
+            "get": {
+                "responses": {
+                    "200": {
+                        "description": "Complex list",
+                        "schema": {
+                            "type": "array",
+                            "items": [
+                                {
+                                    "properties": {
+                                        "name": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                },
+                                {
+                                    "properties": {
+                                        "email": {
+                                            "format": "email",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                },
+                                {
+                                    "properties": {
+                                        "image_32": {
+                                            "format": "url",
+                                            "type": "string"
+                                        },
+                                        "image_64": {
+                                            "format": "url",
+                                            "type": "string"
+                                        },
+                                        "image_128": {
+                                            "format": "url",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            ]
+                        }
+                    },
+                    "default": {
+                        "description": "Typical error response",
+                        "schema": {
+                            "properties": {
+                                "error": {
+                                    "enum": [
+                                        "not_authed",
+                                        "invalid_auth",
+                                        "account_inactive",
+                                        "token_revoked",
+                                        "no_permission",
+                                        "org_login_required",
+                                        "user_is_bot",
+                                        "invalid_arg_name",
+                                        "invalid_array_arg",
+                                        "invalid_charset",
+                                        "invalid_form_data",
+                                        "invalid_post_type",
+                                        "missing_post_type",
+                                        "team_added_to_org",
+                                        "invalid_json",
+                                        "json_not_object",
+                                        "request_timeout",
+                                        "upgrade_required",
+                                        "fatal_error"
+                                    ],
+                                    "type": "string"
+                                },
+                                "ok": {
+                                    "enum": [
+                                        false
+                                    ],
+                                    "title": "default failure response",
+                                    "type": "boolean"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
         }
     }
 }

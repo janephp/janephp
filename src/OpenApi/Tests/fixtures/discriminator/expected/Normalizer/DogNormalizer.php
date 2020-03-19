@@ -3,6 +3,7 @@
 namespace Jane\OpenApi\Tests\Expected\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
+use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -14,6 +15,7 @@ class DogNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
     public function supportsDenormalization($data, $type, $format = null)
     {
         return $type === 'Jane\\OpenApi\\Tests\\Expected\\Model\\Dog';
@@ -24,32 +26,29 @@ class DogNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
-        if (!is_object($data)) {
-            throw new InvalidArgumentException(sprintf('Given $data is not an object (%s given). We need an object in order to continue denormalize method.', gettype($data)));
-        }
         $object = new \Jane\OpenApi\Tests\Expected\Model\Dog();
-        if (property_exists($data, 'name')) {
-            $object->setName($data->{'name'});
+        if (\array_key_exists('name', $data)) {
+            $object->setName($data['name']);
         }
-        if (property_exists($data, 'petType')) {
-            $object->setPetType($data->{'petType'});
+        if (\array_key_exists('petType', $data)) {
+            $object->setPetType($data['petType']);
         }
-        if (property_exists($data, 'packSize')) {
-            $object->setPackSize($data->{'packSize'});
+        if (\array_key_exists('packSize', $data)) {
+            $object->setPackSize($data['packSize']);
         }
         return $object;
     }
     public function normalize($object, $format = null, array $context = array())
     {
-        $data = new \stdClass();
+        $data = array();
         if (null !== $object->getName()) {
-            $data->{'name'} = $object->getName();
+            $data['name'] = $object->getName();
         }
         if (null !== $object->getPetType()) {
-            $data->{'petType'} = $object->getPetType();
+            $data['petType'] = $object->getPetType();
         }
         if (null !== $object->getPackSize()) {
-            $data->{'packSize'} = $object->getPackSize();
+            $data['packSize'] = $object->getPackSize();
         }
         return $data;
     }

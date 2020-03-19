@@ -3,6 +3,7 @@
 namespace Jane\OpenApi\Tests\Expected\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
+use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -14,6 +15,7 @@ class TweetWithheldNormalizer implements DenormalizerInterface, NormalizerInterf
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
     public function supportsDenormalization($data, $type, $format = null)
     {
         return $type === 'Jane\\OpenApi\\Tests\\Expected\\Model\\TweetWithheld';
@@ -24,40 +26,37 @@ class TweetWithheldNormalizer implements DenormalizerInterface, NormalizerInterf
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
-        if (!is_object($data)) {
-            throw new InvalidArgumentException(sprintf('Given $data is not an object (%s given). We need an object in order to continue denormalize method.', gettype($data)));
-        }
         $object = new \Jane\OpenApi\Tests\Expected\Model\TweetWithheld();
-        if (property_exists($data, 'copyright')) {
-            $object->setCopyright($data->{'copyright'});
+        if (\array_key_exists('copyright', $data)) {
+            $object->setCopyright($data['copyright']);
         }
-        if (property_exists($data, 'country_codes')) {
+        if (\array_key_exists('country_codes', $data)) {
             $values = array();
-            foreach ($data->{'country_codes'} as $value) {
+            foreach ($data['country_codes'] as $value) {
                 $values[] = $value;
             }
             $object->setCountryCodes($values);
         }
-        if (property_exists($data, 'scope')) {
-            $object->setScope($data->{'scope'});
+        if (\array_key_exists('scope', $data)) {
+            $object->setScope($data['scope']);
         }
         return $object;
     }
     public function normalize($object, $format = null, array $context = array())
     {
-        $data = new \stdClass();
+        $data = array();
         if (null !== $object->getCopyright()) {
-            $data->{'copyright'} = $object->getCopyright();
+            $data['copyright'] = $object->getCopyright();
         }
         if (null !== $object->getCountryCodes()) {
             $values = array();
             foreach ($object->getCountryCodes() as $value) {
                 $values[] = $value;
             }
-            $data->{'country_codes'} = $values;
+            $data['country_codes'] = $values;
         }
         if (null !== $object->getScope()) {
-            $data->{'scope'} = $object->getScope();
+            $data['scope'] = $object->getScope();
         }
         return $data;
     }

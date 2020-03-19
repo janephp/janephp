@@ -49,22 +49,22 @@ trait DenormalizerGenerator
 
         if ($this->useReference) {
             $statements[] = new Stmt\If_(
-                new Expr\Isset_([new Expr\PropertyFetch(new Expr\Variable('data'), "{'\$ref'}")]),
+                new Expr\Isset_([new Expr\ArrayDimFetch(new Expr\Variable('data'), new Scalar\String_('$ref'))]),
                 [
                     'stmts' => [
                         new Stmt\Return_(new Expr\New_(new Name('Reference'), [
-                            new Arg(new Expr\PropertyFetch(new Expr\Variable('data'), "{'\$ref'}")),
+                            new Arg(new Expr\ArrayDimFetch(new Expr\Variable('data'), new Scalar\String_('$ref'))),
                             new Arg(new Expr\ArrayDimFetch(new Expr\Variable('context'), new Scalar\String_('document-origin'))),
                         ])),
                     ],
                 ]
             );
             $statements[] = new Stmt\If_(
-                new Expr\Isset_([new Expr\PropertyFetch(new Expr\Variable('data'), "{'\$recursiveRef'}")]),
+                new Expr\Isset_([new Expr\ArrayDimFetch(new Expr\Variable('data'), new Scalar\String_('$recursiveRef'))]),
                 [
                     'stmts' => [
                         new Stmt\Return_(new Expr\New_(new Name('Reference'), [
-                            new Arg(new Expr\PropertyFetch(new Expr\Variable('data'), "{'\$recursiveRef'}")),
+                            new Arg(new Expr\ArrayDimFetch(new Expr\Variable('data'), new Scalar\String_('$recursiveRef'))),
                             new Arg(new Expr\ArrayDimFetch(new Expr\Variable('context'), new Scalar\String_('document-origin'))),
                         ])),
                     ],
@@ -74,22 +74,20 @@ trait DenormalizerGenerator
 
         $statements[] = new Stmt\Expression(new Expr\Assign($objectVariable, new Expr\New_(new Name('\\' . $modelFqdn))));
 
-        array_unshift($statements, ...$this->denormalizeMethodStatements($classGuess, $context));
+        $denormalizeMethodStatements = $this->denormalizeMethodStatements($classGuess, $context);
+        if (\count($denormalizeMethodStatements) > 0) {
+            array_unshift($statements, ...$denormalizeMethodStatements);
+        }
 
         $unset = \count($classGuess->getExtensionsType()) > 0;
 
-        if ($unset) {
-            // Force cloning when unsetting to not loose data for references
-            $statements[] = new Stmt\Expression(new Expr\Assign(new Expr\Variable('data'), new Expr\Clone_(new Expr\Variable('data'))));
-        }
-
         foreach ($classGuess->getProperties() as $property) {
-            $propertyVar = new Expr\PropertyFetch(new Expr\Variable('data'), sprintf("{'%s'}", $property->getName()));
+            $propertyVar = new Expr\ArrayDimFetch(new Expr\Variable('data'), new Scalar\String_($property->getName()));
             list($denormalizationStatements, $outputVar) = $property->getType()->createDenormalizationStatement($context, $propertyVar);
 
-            $baseCondition = new Expr\FuncCall(new Name('property_exists'), [
-                new Arg(new Expr\Variable('data')),
+            $baseCondition = new Expr\FuncCall(new Name('\array_key_exists'), [
                 new Arg(new Scalar\String_($property->getName())),
+                new Arg(new Expr\Variable('data')),
             ]);
             $fullCondition = $baseCondition;
 
@@ -136,7 +134,7 @@ trait DenormalizerGenerator
             $patternCondition[] = new Stmt\If_(
                 new Expr\FuncCall(new Name('preg_match'), [
                     new Arg(new Expr\ConstFetch(new Name("'/" . str_replace('/', '\/', $pattern) . "/'"))),
-                    new Arg($loopKeyVar),
+                    new Arg(new Expr\Cast\String_($loopKeyVar)),
                 ]),
                 [
                     'stmts' => array_merge($denormalizationStatements, [
@@ -168,20 +166,6 @@ trait DenormalizerGenerator
 
     protected function denormalizeMethodStatements(ClassGuess $classGuess, Context $context): array
     {
-        return [
-            new Stmt\If_(
-                new Expr\BooleanNot(new Expr\FuncCall(new Name('is_object'), [new Arg(new Expr\Variable('data'))])),
-                [
-                    'stmts' => [
-                        $context->isStrict() ?
-                            new Stmt\Throw_(new Expr\New_(new Name('InvalidArgumentException'), [
-                                new Arg(new Expr\FuncCall(new Name('sprintf'), [new Arg(new Scalar\String_('Given $data is not an object (%s given). We need an object in order to continue denormalize method.')), new Arg(new Expr\FuncCall(new Name('gettype'), [new Arg(new Expr\Variable('data'))]))])),
-                            ]))
-                            :
-                            new Stmt\Return_(new Expr\ConstFetch(new Name('null'))),
-                    ],
-                ]
-            ),
-        ];
+        return [];
     }
 }

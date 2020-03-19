@@ -2,6 +2,7 @@
 
 namespace Jane\JsonSchema\Tests\Expected\Normalizer;
 
+use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -12,6 +13,7 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
     protected $normalizers = array('Jane\\JsonSchema\\Tests\\Expected\\Model\\Test' => 'Jane\\JsonSchema\\Tests\\Expected\\Normalizer\\TestNormalizer', 'Jane\\JsonSchema\\Tests\\Expected\\Model\\Otherchildtype' => 'Jane\\JsonSchema\\Tests\\Expected\\Normalizer\\OtherchildtypeNormalizer', 'Jane\\JsonSchema\\Tests\\Expected\\Model\\Childtype' => 'Jane\\JsonSchema\\Tests\\Expected\\Normalizer\\ChildtypeNormalizer', 'Jane\\JsonSchema\\Tests\\Expected\\Model\\Parenttype' => 'Jane\\JsonSchema\\Tests\\Expected\\Normalizer\\ParenttypeNormalizer', 'Jane\\JsonSchema\\Tests\\Expected\\Model\\Foo' => 'Jane\\JsonSchema\\Tests\\Expected\\Normalizer\\FooNormalizer', 'Jane\\JsonSchema\\Tests\\Expected\\Model\\Bar' => 'Jane\\JsonSchema\\Tests\\Expected\\Normalizer\\BarNormalizer', 'Jane\\JsonSchema\\Tests\\Expected\\Model\\Baz' => 'Jane\\JsonSchema\\Tests\\Expected\\Normalizer\\BazNormalizer', 'Jane\\JsonSchema\\Tests\\Expected\\Model\\BazBaz' => 'Jane\\JsonSchema\\Tests\\Expected\\Normalizer\\BazBazNormalizer'), $normalizersCache = array();
     public function supportsDenormalization($data, $type, $format = null)
     {

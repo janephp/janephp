@@ -3,6 +3,7 @@
 namespace Jane\OpenApi\Tests\Expected\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
+use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -14,6 +15,7 @@ class FooGetResponse200Normalizer implements DenormalizerInterface, NormalizerIn
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
     public function supportsDenormalization($data, $type, $format = null)
     {
         return $type === 'Jane\\OpenApi\\Tests\\Expected\\Model\\FooGetResponse200';
@@ -24,26 +26,23 @@ class FooGetResponse200Normalizer implements DenormalizerInterface, NormalizerIn
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
-        if (!is_object($data)) {
-            throw new InvalidArgumentException(sprintf('Given $data is not an object (%s given). We need an object in order to continue denormalize method.', gettype($data)));
-        }
         $object = new \Jane\OpenApi\Tests\Expected\Model\FooGetResponse200();
-        if (property_exists($data, 'id')) {
-            $object->setId($data->{'id'});
+        if (\array_key_exists('id', $data)) {
+            $object->setId($data['id']);
         }
-        if (property_exists($data, 'bar')) {
-            $object->setBar($data->{'bar'});
+        if (\array_key_exists('bar', $data)) {
+            $object->setBar($data['bar']);
         }
         return $object;
     }
     public function normalize($object, $format = null, array $context = array())
     {
-        $data = new \stdClass();
+        $data = array();
         if (null !== $object->getId()) {
-            $data->{'id'} = $object->getId();
+            $data['id'] = $object->getId();
         }
         if (null !== $object->getBar()) {
-            $data->{'bar'} = $object->getBar();
+            $data['bar'] = $object->getBar();
         }
         return $data;
     }

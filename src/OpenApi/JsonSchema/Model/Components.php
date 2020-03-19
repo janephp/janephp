@@ -13,7 +13,7 @@ namespace Jane\OpenApi\JsonSchema\Model;
 class Components extends \ArrayObject
 {
     /**
-     * @var Reference|Schema[]|null
+     * @var Schema|Reference[]|null
      */
     protected $schemas;
     /**
@@ -50,7 +50,7 @@ class Components extends \ArrayObject
     protected $callbacks;
 
     /**
-     * @return Reference|Schema[]
+     * @return Schema|Reference[]
      */
     public function getSchemas()
     {
@@ -58,7 +58,7 @@ class Components extends \ArrayObject
     }
 
     /**
-     * @param Reference|Schema[] $schemas
+     * @param Schema|Reference[] $schemas
      *
      * @return self
      */

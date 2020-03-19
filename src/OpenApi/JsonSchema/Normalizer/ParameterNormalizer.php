@@ -11,6 +11,7 @@ declare(strict_types=1);
 namespace Jane\OpenApi\JsonSchema\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
+use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -22,6 +23,7 @@ class ParameterNormalizer implements DenormalizerInterface, NormalizerInterface,
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
 
     public function supportsDenormalization($data, $type, $format = null)
     {
@@ -35,91 +37,113 @@ class ParameterNormalizer implements DenormalizerInterface, NormalizerInterface,
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        if (!is_object($data)) {
-            return null;
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
         }
-        if (isset($data->{'$ref'})) {
-            return new Reference($data->{'$ref'}, $context['document-origin']);
-        }
-        if (isset($data->{'$recursiveRef'})) {
-            return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Jane\OpenApi\JsonSchema\Model\Parameter();
-        $data = clone $data;
-        if (property_exists($data, 'name') && $data->{'name'} !== null) {
-            $object->setName($data->{'name'});
-            unset($data->{'name'});
+        if (\array_key_exists('name', $data) && $data['name'] !== null) {
+            $object->setName($data['name']);
+            unset($data['name']);
+        } elseif (\array_key_exists('name', $data) && $data['name'] === null) {
+            $object->setName(null);
         }
-        if (property_exists($data, 'in') && $data->{'in'} !== null) {
-            $object->setIn($data->{'in'});
-            unset($data->{'in'});
+        if (\array_key_exists('in', $data) && $data['in'] !== null) {
+            $object->setIn($data['in']);
+            unset($data['in']);
+        } elseif (\array_key_exists('in', $data) && $data['in'] === null) {
+            $object->setIn(null);
         }
-        if (property_exists($data, 'description') && $data->{'description'} !== null) {
-            $object->setDescription($data->{'description'});
-            unset($data->{'description'});
+        if (\array_key_exists('description', $data) && $data['description'] !== null) {
+            $object->setDescription($data['description']);
+            unset($data['description']);
+        } elseif (\array_key_exists('description', $data) && $data['description'] === null) {
+            $object->setDescription(null);
         }
-        if (property_exists($data, 'required') && $data->{'required'} !== null) {
-            $object->setRequired($data->{'required'});
-            unset($data->{'required'});
+        if (\array_key_exists('required', $data) && $data['required'] !== null) {
+            $object->setRequired($data['required']);
+            unset($data['required']);
+        } elseif (\array_key_exists('required', $data) && $data['required'] === null) {
+            $object->setRequired(null);
         }
-        if (property_exists($data, 'deprecated') && $data->{'deprecated'} !== null) {
-            $object->setDeprecated($data->{'deprecated'});
-            unset($data->{'deprecated'});
+        if (\array_key_exists('deprecated', $data) && $data['deprecated'] !== null) {
+            $object->setDeprecated($data['deprecated']);
+            unset($data['deprecated']);
+        } elseif (\array_key_exists('deprecated', $data) && $data['deprecated'] === null) {
+            $object->setDeprecated(null);
         }
-        if (property_exists($data, 'allowEmptyValue') && $data->{'allowEmptyValue'} !== null) {
-            $object->setAllowEmptyValue($data->{'allowEmptyValue'});
-            unset($data->{'allowEmptyValue'});
+        if (\array_key_exists('allowEmptyValue', $data) && $data['allowEmptyValue'] !== null) {
+            $object->setAllowEmptyValue($data['allowEmptyValue']);
+            unset($data['allowEmptyValue']);
+        } elseif (\array_key_exists('allowEmptyValue', $data) && $data['allowEmptyValue'] === null) {
+            $object->setAllowEmptyValue(null);
         }
-        if (property_exists($data, 'style') && $data->{'style'} !== null) {
-            $object->setStyle($data->{'style'});
-            unset($data->{'style'});
+        if (\array_key_exists('style', $data) && $data['style'] !== null) {
+            $object->setStyle($data['style']);
+            unset($data['style']);
+        } elseif (\array_key_exists('style', $data) && $data['style'] === null) {
+            $object->setStyle(null);
         }
-        if (property_exists($data, 'explode') && $data->{'explode'} !== null) {
-            $object->setExplode($data->{'explode'});
-            unset($data->{'explode'});
+        if (\array_key_exists('explode', $data) && $data['explode'] !== null) {
+            $object->setExplode($data['explode']);
+            unset($data['explode']);
+        } elseif (\array_key_exists('explode', $data) && $data['explode'] === null) {
+            $object->setExplode(null);
         }
-        if (property_exists($data, 'allowReserved') && $data->{'allowReserved'} !== null) {
-            $object->setAllowReserved($data->{'allowReserved'});
-            unset($data->{'allowReserved'});
+        if (\array_key_exists('allowReserved', $data) && $data['allowReserved'] !== null) {
+            $object->setAllowReserved($data['allowReserved']);
+            unset($data['allowReserved']);
+        } elseif (\array_key_exists('allowReserved', $data) && $data['allowReserved'] === null) {
+            $object->setAllowReserved(null);
         }
-        if (property_exists($data, 'schema') && $data->{'schema'} !== null) {
-            $value = $data->{'schema'};
-            if (is_object($data->{'schema'}) and isset($data->{'schema'}->{'$ref'})) {
-                $value = $this->denormalizer->denormalize($data->{'schema'}, 'Jane\\OpenApi\\JsonSchema\\Model\\Reference', 'json', $context);
-            } elseif (is_object($data->{'schema'})) {
-                $value = $this->denormalizer->denormalize($data->{'schema'}, 'Jane\\OpenApi\\JsonSchema\\Model\\Schema', 'json', $context);
+        if (\array_key_exists('schema', $data) && $data['schema'] !== null) {
+            $value = $data['schema'];
+            if (is_array($data['schema']) and isset($data['schema']['$ref'])) {
+                $value = $this->denormalizer->denormalize($data['schema'], 'Jane\\OpenApi\\JsonSchema\\Model\\Reference', 'json', $context);
+            } elseif (is_array($data['schema'])) {
+                $value = $this->denormalizer->denormalize($data['schema'], 'Jane\\OpenApi\\JsonSchema\\Model\\Schema', 'json', $context);
             }
             $object->setSchema($value);
-            unset($data->{'schema'});
+            unset($data['schema']);
+        } elseif (\array_key_exists('schema', $data) && $data['schema'] === null) {
+            $object->setSchema(null);
         }
-        if (property_exists($data, 'content') && $data->{'content'} !== null) {
+        if (\array_key_exists('content', $data) && $data['content'] !== null) {
             $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
-            foreach ($data->{'content'} as $key => $value_1) {
+            foreach ($data['content'] as $key => $value_1) {
                 $values[$key] = $this->denormalizer->denormalize($value_1, 'Jane\\OpenApi\\JsonSchema\\Model\\MediaType', 'json', $context);
             }
             $object->setContent($values);
-            unset($data->{'content'});
+            unset($data['content']);
+        } elseif (\array_key_exists('content', $data) && $data['content'] === null) {
+            $object->setContent(null);
         }
-        if (property_exists($data, 'example') && $data->{'example'} !== null) {
-            $object->setExample($data->{'example'});
-            unset($data->{'example'});
+        if (\array_key_exists('example', $data) && $data['example'] !== null) {
+            $object->setExample($data['example']);
+            unset($data['example']);
+        } elseif (\array_key_exists('example', $data) && $data['example'] === null) {
+            $object->setExample(null);
         }
-        if (property_exists($data, 'examples') && $data->{'examples'} !== null) {
+        if (\array_key_exists('examples', $data) && $data['examples'] !== null) {
             $values_1 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
-            foreach ($data->{'examples'} as $key_1 => $value_2) {
+            foreach ($data['examples'] as $key_1 => $value_2) {
                 $value_3 = $value_2;
-                if (is_object($value_2) and isset($value_2->{'$ref'})) {
+                if (is_array($value_2) and isset($value_2['$ref'])) {
                     $value_3 = $this->denormalizer->denormalize($value_2, 'Jane\\OpenApi\\JsonSchema\\Model\\Reference', 'json', $context);
-                } elseif (is_object($value_2)) {
+                } elseif (is_array($value_2)) {
                     $value_3 = $this->denormalizer->denormalize($value_2, 'Jane\\OpenApi\\JsonSchema\\Model\\Example', 'json', $context);
                 }
                 $values_1[$key_1] = $value_3;
             }
             $object->setExamples($values_1);
-            unset($data->{'examples'});
+            unset($data['examples']);
+        } elseif (\array_key_exists('examples', $data) && $data['examples'] === null) {
+            $object->setExamples(null);
         }
         foreach ($data as $key_2 => $value_4) {
-            if (preg_match('/^x-/', $key_2)) {
+            if (preg_match('/^x-/', (string) $key_2)) {
                 $object[$key_2] = $value_4;
             }
         }
@@ -129,33 +153,51 @@ class ParameterNormalizer implements DenormalizerInterface, NormalizerInterface,
 
     public function normalize($object, $format = null, array $context = [])
     {
-        $data = new \stdClass();
+        $data = [];
         if (null !== $object->getName()) {
-            $data->{'name'} = $object->getName();
+            $data['name'] = $object->getName();
+        } else {
+            $data['name'] = null;
         }
         if (null !== $object->getIn()) {
-            $data->{'in'} = $object->getIn();
+            $data['in'] = $object->getIn();
+        } else {
+            $data['in'] = null;
         }
         if (null !== $object->getDescription()) {
-            $data->{'description'} = $object->getDescription();
+            $data['description'] = $object->getDescription();
+        } else {
+            $data['description'] = null;
         }
         if (null !== $object->getRequired()) {
-            $data->{'required'} = $object->getRequired();
+            $data['required'] = $object->getRequired();
+        } else {
+            $data['required'] = null;
         }
         if (null !== $object->getDeprecated()) {
-            $data->{'deprecated'} = $object->getDeprecated();
+            $data['deprecated'] = $object->getDeprecated();
+        } else {
+            $data['deprecated'] = null;
         }
         if (null !== $object->getAllowEmptyValue()) {
-            $data->{'allowEmptyValue'} = $object->getAllowEmptyValue();
+            $data['allowEmptyValue'] = $object->getAllowEmptyValue();
+        } else {
+            $data['allowEmptyValue'] = null;
         }
         if (null !== $object->getStyle()) {
-            $data->{'style'} = $object->getStyle();
+            $data['style'] = $object->getStyle();
+        } else {
+            $data['style'] = null;
         }
         if (null !== $object->getExplode()) {
-            $data->{'explode'} = $object->getExplode();
+            $data['explode'] = $object->getExplode();
+        } else {
+            $data['explode'] = null;
         }
         if (null !== $object->getAllowReserved()) {
-            $data->{'allowReserved'} = $object->getAllowReserved();
+            $data['allowReserved'] = $object->getAllowReserved();
+        } else {
+            $data['allowReserved'] = null;
         }
         if (null !== $object->getSchema()) {
             $value = $object->getSchema();
@@ -164,20 +206,26 @@ class ParameterNormalizer implements DenormalizerInterface, NormalizerInterface,
             } elseif (is_object($object->getSchema())) {
                 $value = $this->normalizer->normalize($object->getSchema(), 'json', $context);
             }
-            $data->{'schema'} = $value;
+            $data['schema'] = $value;
+        } else {
+            $data['schema'] = null;
         }
         if (null !== $object->getContent()) {
-            $values = new \stdClass();
+            $values = [];
             foreach ($object->getContent() as $key => $value_1) {
-                $values->{$key} = $this->normalizer->normalize($value_1, 'json', $context);
+                $values[$key] = $this->normalizer->normalize($value_1, 'json', $context);
             }
-            $data->{'content'} = $values;
+            $data['content'] = $values;
+        } else {
+            $data['content'] = null;
         }
         if (null !== $object->getExample()) {
-            $data->{'example'} = $object->getExample();
+            $data['example'] = $object->getExample();
+        } else {
+            $data['example'] = null;
         }
         if (null !== $object->getExamples()) {
-            $values_1 = new \stdClass();
+            $values_1 = [];
             foreach ($object->getExamples() as $key_1 => $value_2) {
                 $value_3 = $value_2;
                 if (is_object($value_2)) {
@@ -185,13 +233,15 @@ class ParameterNormalizer implements DenormalizerInterface, NormalizerInterface,
                 } elseif (is_object($value_2)) {
                     $value_3 = $this->normalizer->normalize($value_2, 'json', $context);
                 }
-                $values_1->{$key_1} = $value_3;
+                $values_1[$key_1] = $value_3;
             }
-            $data->{'examples'} = $values_1;
+            $data['examples'] = $values_1;
+        } else {
+            $data['examples'] = null;
         }
         foreach ($object as $key_2 => $value_4) {
-            if (preg_match('/^x-/', $key_2)) {
-                $data->{$key_2} = $value_4;
+            if (preg_match('/^x-/', (string) $key_2)) {
+                $data[$key_2] = $value_4;
             }
         }
 

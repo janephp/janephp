@@ -3,6 +3,7 @@
 namespace Jane\JsonSchema\Tests\Expected\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
+use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -14,6 +15,7 @@ class TestNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
     public function supportsDenormalization($data, $type, $format = null)
     {
         return $type === 'Jane\\JsonSchema\\Tests\\Expected\\Model\\Test';
@@ -24,120 +26,117 @@ class TestNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
-        if (!is_object($data)) {
-            return null;
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
         }
-        if (isset($data->{'$ref'})) {
-            return new Reference($data->{'$ref'}, $context['document-origin']);
-        }
-        if (isset($data->{'$recursiveRef'})) {
-            return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Jane\JsonSchema\Tests\Expected\Model\Test();
-        if (property_exists($data, 'string') && $data->{'string'} !== null) {
-            $object->setString($data->{'string'});
+        if (\array_key_exists('string', $data) && $data['string'] !== null) {
+            $object->setString($data['string']);
         }
-        elseif (property_exists($data, 'string') && $data->{'string'} === null) {
+        elseif (\array_key_exists('string', $data) && $data['string'] === null) {
             $object->setString(null);
         }
-        if (property_exists($data, 'bool') && $data->{'bool'} !== null) {
-            $object->setBool($data->{'bool'});
+        if (\array_key_exists('bool', $data) && $data['bool'] !== null) {
+            $object->setBool($data['bool']);
         }
-        elseif (property_exists($data, 'bool') && $data->{'bool'} === null) {
+        elseif (\array_key_exists('bool', $data) && $data['bool'] === null) {
             $object->setBool(null);
         }
-        if (property_exists($data, 'integer') && $data->{'integer'} !== null) {
-            $object->setInteger($data->{'integer'});
+        if (\array_key_exists('integer', $data) && $data['integer'] !== null) {
+            $object->setInteger($data['integer']);
         }
-        elseif (property_exists($data, 'integer') && $data->{'integer'} === null) {
+        elseif (\array_key_exists('integer', $data) && $data['integer'] === null) {
             $object->setInteger(null);
         }
-        if (property_exists($data, 'float') && $data->{'float'} !== null) {
-            $object->setFloat($data->{'float'});
+        if (\array_key_exists('float', $data) && $data['float'] !== null) {
+            $object->setFloat($data['float']);
         }
-        elseif (property_exists($data, 'float') && $data->{'float'} === null) {
+        elseif (\array_key_exists('float', $data) && $data['float'] === null) {
             $object->setFloat(null);
         }
-        if (property_exists($data, 'array') && $data->{'array'} !== null) {
+        if (\array_key_exists('array', $data) && $data['array'] !== null) {
             $values = array();
-            foreach ($data->{'array'} as $value) {
+            foreach ($data['array'] as $value) {
                 $values[] = $value;
             }
             $object->setArray($values);
         }
-        elseif (property_exists($data, 'array') && $data->{'array'} === null) {
+        elseif (\array_key_exists('array', $data) && $data['array'] === null) {
             $object->setArray(null);
         }
-        if (property_exists($data, 'object') && $data->{'object'} !== null) {
+        if (\array_key_exists('object', $data) && $data['object'] !== null) {
             $values_1 = array();
-            foreach ($data->{'object'} as $value_1) {
+            foreach ($data['object'] as $value_1) {
                 $values_1[] = $value_1;
             }
             $object->setObject($values_1);
         }
-        elseif (property_exists($data, 'object') && $data->{'object'} === null) {
+        elseif (\array_key_exists('object', $data) && $data['object'] === null) {
             $object->setObject(null);
         }
-        if (property_exists($data, 'subObject') && $data->{'subObject'} !== null) {
-            $object->setSubObject($this->denormalizer->denormalize($data->{'subObject'}, 'Jane\\JsonSchema\\Tests\\Expected\\Model\\TestSubObject', 'json', $context));
+        if (\array_key_exists('subObject', $data) && $data['subObject'] !== null) {
+            $object->setSubObject($this->denormalizer->denormalize($data['subObject'], 'Jane\\JsonSchema\\Tests\\Expected\\Model\\TestSubObject', 'json', $context));
         }
-        elseif (property_exists($data, 'subObject') && $data->{'subObject'} === null) {
+        elseif (\array_key_exists('subObject', $data) && $data['subObject'] === null) {
             $object->setSubObject(null);
         }
         return $object;
     }
     public function normalize($object, $format = null, array $context = array())
     {
-        $data = new \stdClass();
+        $data = array();
         if (null !== $object->getString()) {
-            $data->{'string'} = $object->getString();
+            $data['string'] = $object->getString();
         }
         else {
-            $data->{'string'} = null;
+            $data['string'] = null;
         }
         if (null !== $object->getBool()) {
-            $data->{'bool'} = $object->getBool();
+            $data['bool'] = $object->getBool();
         }
         else {
-            $data->{'bool'} = null;
+            $data['bool'] = null;
         }
         if (null !== $object->getInteger()) {
-            $data->{'integer'} = $object->getInteger();
+            $data['integer'] = $object->getInteger();
         }
         else {
-            $data->{'integer'} = null;
+            $data['integer'] = null;
         }
         if (null !== $object->getFloat()) {
-            $data->{'float'} = $object->getFloat();
+            $data['float'] = $object->getFloat();
         }
         else {
-            $data->{'float'} = null;
+            $data['float'] = null;
         }
         if (null !== $object->getArray()) {
             $values = array();
             foreach ($object->getArray() as $value) {
                 $values[] = $value;
             }
-            $data->{'array'} = $values;
+            $data['array'] = $values;
         }
         else {
-            $data->{'array'} = null;
+            $data['array'] = null;
         }
         if (null !== $object->getObject()) {
             $values_1 = array();
             foreach ($object->getObject() as $value_1) {
                 $values_1[] = $value_1;
             }
-            $data->{'object'} = $values_1;
+            $data['object'] = $values_1;
         }
         else {
-            $data->{'object'} = null;
+            $data['object'] = null;
         }
         if (null !== $object->getSubObject()) {
-            $data->{'subObject'} = $this->normalizer->normalize($object->getSubObject(), 'json', $context);
+            $data['subObject'] = $this->normalizer->normalize($object->getSubObject(), 'json', $context);
         }
         else {
-            $data->{'subObject'} = null;
+            $data['subObject'] = null;
         }
         return $data;
     }

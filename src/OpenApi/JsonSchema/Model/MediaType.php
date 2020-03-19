@@ -13,7 +13,7 @@ namespace Jane\OpenApi\JsonSchema\Model;
 class MediaType extends \ArrayObject
 {
     /**
-     * @var Reference|Schema|null
+     * @var Schema|Reference|null
      */
     protected $schema;
     /**
@@ -30,7 +30,7 @@ class MediaType extends \ArrayObject
     protected $encoding;
 
     /**
-     * @return Reference|Schema|null
+     * @return Schema|Reference|null
      */
     public function getSchema()
     {
@@ -38,7 +38,7 @@ class MediaType extends \ArrayObject
     }
 
     /**
-     * @param Reference|Schema|null $schema
+     * @param Schema|Reference|null $schema
      *
      * @return self
      */

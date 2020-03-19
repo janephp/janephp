@@ -3,6 +3,7 @@
 namespace ApiPlatform\Demo\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
+use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -14,6 +15,7 @@ class ParchmentNormalizer implements DenormalizerInterface, NormalizerInterface,
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
     public function supportsDenormalization($data, $type, $format = null)
     {
         return $type === 'ApiPlatform\\Demo\\Model\\Parchment';
@@ -24,29 +26,26 @@ class ParchmentNormalizer implements DenormalizerInterface, NormalizerInterface,
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
-        if (!is_object($data)) {
-            throw new InvalidArgumentException(sprintf('Given $data is not an object (%s given). We need an object in order to continue denormalize method.', gettype($data)));
-        }
         $object = new \ApiPlatform\Demo\Model\Parchment();
-        if (property_exists($data, 'title')) {
-            $object->setTitle($data->{'title'});
+        if (\array_key_exists('title', $data)) {
+            $object->setTitle($data['title']);
         }
-        if (property_exists($data, 'description')) {
-            $object->setDescription($data->{'description'});
+        if (\array_key_exists('description', $data)) {
+            $object->setDescription($data['description']);
         }
-        if (property_exists($data, 'id')) {
-            $object->setId($data->{'id'});
+        if (\array_key_exists('id', $data)) {
+            $object->setId($data['id']);
         }
         return $object;
     }
     public function normalize($object, $format = null, array $context = array())
     {
-        $data = new \stdClass();
+        $data = array();
         if (null !== $object->getTitle()) {
-            $data->{'title'} = $object->getTitle();
+            $data['title'] = $object->getTitle();
         }
         if (null !== $object->getDescription()) {
-            $data->{'description'} = $object->getDescription();
+            $data['description'] = $object->getDescription();
         }
         return $data;
     }

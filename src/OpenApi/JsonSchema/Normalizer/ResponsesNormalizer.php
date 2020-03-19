@@ -11,6 +11,7 @@ declare(strict_types=1);
 namespace Jane\OpenApi\JsonSchema\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
+use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -22,6 +23,7 @@ class ResponsesNormalizer implements DenormalizerInterface, NormalizerInterface,
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
 
     public function supportsDenormalization($data, $type, $format = null)
     {
@@ -35,38 +37,36 @@ class ResponsesNormalizer implements DenormalizerInterface, NormalizerInterface,
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        if (!is_object($data)) {
-            return null;
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
         }
-        if (isset($data->{'$ref'})) {
-            return new Reference($data->{'$ref'}, $context['document-origin']);
-        }
-        if (isset($data->{'$recursiveRef'})) {
-            return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Jane\OpenApi\JsonSchema\Model\Responses();
-        $data = clone $data;
-        if (property_exists($data, 'default') && $data->{'default'} !== null) {
-            $value = $data->{'default'};
-            if (is_object($data->{'default'}) and isset($data->{'default'}->{'$ref'})) {
-                $value = $this->denormalizer->denormalize($data->{'default'}, 'Jane\\OpenApi\\JsonSchema\\Model\\Reference', 'json', $context);
-            } elseif (is_object($data->{'default'}) and isset($data->{'default'}->{'description'})) {
-                $value = $this->denormalizer->denormalize($data->{'default'}, 'Jane\\OpenApi\\JsonSchema\\Model\\Response', 'json', $context);
+        if (\array_key_exists('default', $data) && $data['default'] !== null) {
+            $value = $data['default'];
+            if (is_array($data['default']) and isset($data['default']['$ref'])) {
+                $value = $this->denormalizer->denormalize($data['default'], 'Jane\\OpenApi\\JsonSchema\\Model\\Reference', 'json', $context);
+            } elseif (is_array($data['default']) and isset($data['default']['description'])) {
+                $value = $this->denormalizer->denormalize($data['default'], 'Jane\\OpenApi\\JsonSchema\\Model\\Response', 'json', $context);
             }
             $object->setDefault($value);
-            unset($data->{'default'});
+            unset($data['default']);
+        } elseif (\array_key_exists('default', $data) && $data['default'] === null) {
+            $object->setDefault(null);
         }
         foreach ($data as $key => $value_1) {
-            if (preg_match('/^[1-5](?:\d{2}|XX)$/', $key)) {
+            if (preg_match('/^[1-5](?:\d{2}|XX)$/', (string) $key)) {
                 $value_2 = $value_1;
-                if (is_object($value_1) and isset($value_1->{'$ref'})) {
+                if (is_array($value_1) and isset($value_1['$ref'])) {
                     $value_2 = $this->denormalizer->denormalize($value_1, 'Jane\\OpenApi\\JsonSchema\\Model\\Reference', 'json', $context);
-                } elseif (is_object($value_1) and isset($value_1->{'description'})) {
+                } elseif (is_array($value_1) and isset($value_1['description'])) {
                     $value_2 = $this->denormalizer->denormalize($value_1, 'Jane\\OpenApi\\JsonSchema\\Model\\Response', 'json', $context);
                 }
                 $object[$key] = $value_2;
             }
-            if (preg_match('/^x-/', $key)) {
+            if (preg_match('/^x-/', (string) $key)) {
                 $object[$key] = $value_1;
             }
         }
@@ -76,7 +76,7 @@ class ResponsesNormalizer implements DenormalizerInterface, NormalizerInterface,
 
     public function normalize($object, $format = null, array $context = [])
     {
-        $data = new \stdClass();
+        $data = [];
         if (null !== $object->getDefault()) {
             $value = $object->getDefault();
             if (is_object($object->getDefault())) {
@@ -84,20 +84,22 @@ class ResponsesNormalizer implements DenormalizerInterface, NormalizerInterface,
             } elseif (is_object($object->getDefault())) {
                 $value = $this->normalizer->normalize($object->getDefault(), 'json', $context);
             }
-            $data->{'default'} = $value;
+            $data['default'] = $value;
+        } else {
+            $data['default'] = null;
         }
         foreach ($object as $key => $value_1) {
-            if (preg_match('/^[1-5](?:\d{2}|XX)$/', $key)) {
+            if (preg_match('/^[1-5](?:\d{2}|XX)$/', (string) $key)) {
                 $value_2 = $value_1;
                 if (is_object($value_1)) {
                     $value_2 = $this->normalizer->normalize($value_1, 'json', $context);
                 } elseif (is_object($value_1)) {
                     $value_2 = $this->normalizer->normalize($value_1, 'json', $context);
                 }
-                $data->{$key} = $value_2;
+                $data[$key] = $value_2;
             }
-            if (preg_match('/^x-/', $key)) {
-                $data->{$key} = $value_1;
+            if (preg_match('/^x-/', (string) $key)) {
+                $data[$key] = $value_1;
             }
         }
 

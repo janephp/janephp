@@ -128,7 +128,10 @@ class MultipleType extends Type
                 $ifStmt->elseifs[] = new Stmt\ElseIf_($condition, $statement);
             }
         }
-        $statements[] = $ifStmt;
+
+        if (null !== $ifStmt) {
+            $statements[] = $ifStmt;
+        }
 
         return [$statements, $output];
     }
@@ -157,7 +160,10 @@ class MultipleType extends Type
                 $ifStmt->elseifs[] = new Stmt\ElseIf_($condition, $statement);
             }
         }
-        $statements[] = $ifStmt;
+
+        if (null !== $ifStmt) {
+            $statements[] = $ifStmt;
+        }
 
         return [$statements, $output];
     }

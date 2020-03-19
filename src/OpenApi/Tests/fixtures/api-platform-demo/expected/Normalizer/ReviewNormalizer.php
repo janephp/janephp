@@ -3,6 +3,7 @@
 namespace ApiPlatform\Demo\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
+use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -14,6 +15,7 @@ class ReviewNormalizer implements DenormalizerInterface, NormalizerInterface, De
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
     public function supportsDenormalization($data, $type, $format = null)
     {
         return $type === 'ApiPlatform\\Demo\\Model\\Review';
@@ -24,50 +26,47 @@ class ReviewNormalizer implements DenormalizerInterface, NormalizerInterface, De
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
-        if (!is_object($data)) {
-            throw new InvalidArgumentException(sprintf('Given $data is not an object (%s given). We need an object in order to continue denormalize method.', gettype($data)));
-        }
         $object = new \ApiPlatform\Demo\Model\Review();
-        if (property_exists($data, 'body')) {
-            $object->setBody($data->{'body'});
+        if (\array_key_exists('body', $data)) {
+            $object->setBody($data['body']);
         }
-        if (property_exists($data, 'rating')) {
-            $object->setRating($data->{'rating'});
+        if (\array_key_exists('rating', $data)) {
+            $object->setRating($data['rating']);
         }
-        if (property_exists($data, 'letter')) {
-            $object->setLetter($data->{'letter'});
+        if (\array_key_exists('letter', $data)) {
+            $object->setLetter($data['letter']);
         }
-        if (property_exists($data, 'author')) {
-            $object->setAuthor($data->{'author'});
+        if (\array_key_exists('author', $data)) {
+            $object->setAuthor($data['author']);
         }
-        if (property_exists($data, 'publicationDate')) {
-            $object->setPublicationDate(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data->{'publicationDate'}));
+        if (\array_key_exists('publicationDate', $data)) {
+            $object->setPublicationDate(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['publicationDate']));
         }
-        if (property_exists($data, 'book')) {
-            $object->setBook($this->denormalizer->denormalize($data->{'book'}, 'ApiPlatform\\Demo\\Model\\Book', 'json', $context));
+        if (\array_key_exists('book', $data)) {
+            $object->setBook($this->denormalizer->denormalize($data['book'], 'ApiPlatform\\Demo\\Model\\Book', 'json', $context));
         }
         return $object;
     }
     public function normalize($object, $format = null, array $context = array())
     {
-        $data = new \stdClass();
+        $data = array();
         if (null !== $object->getBody()) {
-            $data->{'body'} = $object->getBody();
+            $data['body'] = $object->getBody();
         }
         if (null !== $object->getRating()) {
-            $data->{'rating'} = $object->getRating();
+            $data['rating'] = $object->getRating();
         }
         if (null !== $object->getLetter()) {
-            $data->{'letter'} = $object->getLetter();
+            $data['letter'] = $object->getLetter();
         }
         if (null !== $object->getAuthor()) {
-            $data->{'author'} = $object->getAuthor();
+            $data['author'] = $object->getAuthor();
         }
         if (null !== $object->getPublicationDate()) {
-            $data->{'publicationDate'} = $object->getPublicationDate()->format('Y-m-d\\TH:i:sP');
+            $data['publicationDate'] = $object->getPublicationDate()->format('Y-m-d\\TH:i:sP');
         }
         if (null !== $object->getBook()) {
-            $data->{'book'} = $this->normalizer->normalize($object->getBook(), 'json', $context);
+            $data['book'] = $this->normalizer->normalize($object->getBook(), 'json', $context);
         }
         return $data;
     }

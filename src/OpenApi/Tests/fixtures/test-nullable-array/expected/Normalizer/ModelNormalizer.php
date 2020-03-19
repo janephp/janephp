@@ -3,6 +3,7 @@
 namespace Jane\OpenApi\Tests\Expected\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
+use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -14,6 +15,7 @@ class ModelNormalizer implements DenormalizerInterface, NormalizerInterface, Den
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
     public function supportsDenormalization($data, $type, $format = null)
     {
         return $type === 'Jane\\OpenApi\\Tests\\Expected\\Model\\Model';
@@ -24,41 +26,38 @@ class ModelNormalizer implements DenormalizerInterface, NormalizerInterface, Den
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
-        if (!is_object($data)) {
-            throw new InvalidArgumentException(sprintf('Given $data is not an object (%s given). We need an object in order to continue denormalize method.', gettype($data)));
-        }
         $object = new \Jane\OpenApi\Tests\Expected\Model\Model();
-        if (property_exists($data, 'foo') && $data->{'foo'} !== null) {
-            $object->setFoo($data->{'foo'});
+        if (\array_key_exists('foo', $data) && $data['foo'] !== null) {
+            $object->setFoo($data['foo']);
         }
-        elseif (property_exists($data, 'foo') && $data->{'foo'} === null) {
+        elseif (\array_key_exists('foo', $data) && $data['foo'] === null) {
             $object->setFoo(null);
         }
-        if (property_exists($data, 'bar') && $data->{'bar'} !== null) {
+        if (\array_key_exists('bar', $data) && $data['bar'] !== null) {
             $values = array();
-            foreach ($data->{'bar'} as $value) {
+            foreach ($data['bar'] as $value) {
                 $values[] = $value;
             }
             $object->setBar($values);
         }
-        elseif (property_exists($data, 'bar') && $data->{'bar'} === null) {
+        elseif (\array_key_exists('bar', $data) && $data['bar'] === null) {
             $object->setBar(null);
         }
         return $object;
     }
     public function normalize($object, $format = null, array $context = array())
     {
-        $data = new \stdClass();
-        $data->{'foo'} = $object->getFoo();
+        $data = array();
+        $data['foo'] = $object->getFoo();
         if (null !== $object->getBar()) {
             $values = array();
             foreach ($object->getBar() as $value) {
                 $values[] = $value;
             }
-            $data->{'bar'} = $values;
+            $data['bar'] = $values;
         }
         else {
-            $data->{'bar'} = null;
+            $data['bar'] = null;
         }
         return $data;
     }

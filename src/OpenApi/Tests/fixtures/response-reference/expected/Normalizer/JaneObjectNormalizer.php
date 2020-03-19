@@ -2,6 +2,7 @@
 
 namespace Jane\OpenApi\Tests\Expected\Normalizer;
 
+use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -12,6 +13,7 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
     protected $normalizers = array('Jane\\OpenApi\\Tests\\Expected\\Model\\ResponseCommon' => 'Jane\\OpenApi\\Tests\\Expected\\Normalizer\\ResponseCommonNormalizer'), $normalizersCache = array();
     public function supportsDenormalization($data, $type, $format = null)
     {

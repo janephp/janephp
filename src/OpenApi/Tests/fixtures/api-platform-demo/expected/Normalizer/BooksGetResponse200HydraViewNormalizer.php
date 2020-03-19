@@ -3,6 +3,7 @@
 namespace ApiPlatform\Demo\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
+use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -14,6 +15,7 @@ class BooksGetResponse200HydraViewNormalizer implements DenormalizerInterface, N
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
     public function supportsDenormalization($data, $type, $format = null)
     {
         return $type === 'ApiPlatform\\Demo\\Model\\BooksGetResponse200HydraView';
@@ -24,44 +26,41 @@ class BooksGetResponse200HydraViewNormalizer implements DenormalizerInterface, N
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
-        if (!is_object($data)) {
-            throw new InvalidArgumentException(sprintf('Given $data is not an object (%s given). We need an object in order to continue denormalize method.', gettype($data)));
-        }
         $object = new \ApiPlatform\Demo\Model\BooksGetResponse200HydraView();
-        if (property_exists($data, '@id')) {
-            $object->setId($data->{'@id'});
+        if (\array_key_exists('@id', $data)) {
+            $object->setId($data['@id']);
         }
-        if (property_exists($data, '@type')) {
-            $object->setType($data->{'@type'});
+        if (\array_key_exists('@type', $data)) {
+            $object->setType($data['@type']);
         }
-        if (property_exists($data, 'hydra:first')) {
-            $object->setHydraFirst($data->{'hydra:first'});
+        if (\array_key_exists('hydra:first', $data)) {
+            $object->setHydraFirst($data['hydra:first']);
         }
-        if (property_exists($data, 'hydra:last')) {
-            $object->setHydraLast($data->{'hydra:last'});
+        if (\array_key_exists('hydra:last', $data)) {
+            $object->setHydraLast($data['hydra:last']);
         }
-        if (property_exists($data, 'hydra:next')) {
-            $object->setHydraNext($data->{'hydra:next'});
+        if (\array_key_exists('hydra:next', $data)) {
+            $object->setHydraNext($data['hydra:next']);
         }
         return $object;
     }
     public function normalize($object, $format = null, array $context = array())
     {
-        $data = new \stdClass();
+        $data = array();
         if (null !== $object->getId()) {
-            $data->{'@id'} = $object->getId();
+            $data['@id'] = $object->getId();
         }
         if (null !== $object->getType()) {
-            $data->{'@type'} = $object->getType();
+            $data['@type'] = $object->getType();
         }
         if (null !== $object->getHydraFirst()) {
-            $data->{'hydra:first'} = $object->getHydraFirst();
+            $data['hydra:first'] = $object->getHydraFirst();
         }
         if (null !== $object->getHydraLast()) {
-            $data->{'hydra:last'} = $object->getHydraLast();
+            $data['hydra:last'] = $object->getHydraLast();
         }
         if (null !== $object->getHydraNext()) {
-            $data->{'hydra:next'} = $object->getHydraNext();
+            $data['hydra:next'] = $object->getHydraNext();
         }
         return $data;
     }

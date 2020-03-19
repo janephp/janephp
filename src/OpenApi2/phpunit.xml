@@ -9,12 +9,12 @@
         convertWarningsToExceptions = "true"
         processIsolation            = "false"
         stopOnFailure               = "false"
-        syntaxCheck                 = "false"
         bootstrap                   = "vendor/autoload.php" >
 
     <testsuites>
         <testsuite name="Jane Open Api Unit Test Suite">
             <directory>Tests</directory>
+            <exclude>Tests/fixtures</exclude>
         </testsuite>
     </testsuites>
 </phpunit>

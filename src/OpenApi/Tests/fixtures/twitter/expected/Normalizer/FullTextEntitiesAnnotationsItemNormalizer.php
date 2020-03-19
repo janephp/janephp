@@ -3,6 +3,7 @@
 namespace Jane\OpenApi\Tests\Expected\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
+use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -14,6 +15,7 @@ class FullTextEntitiesAnnotationsItemNormalizer implements DenormalizerInterface
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
     public function supportsDenormalization($data, $type, $format = null)
     {
         return $type === 'Jane\\OpenApi\\Tests\\Expected\\Model\\FullTextEntitiesAnnotationsItem';
@@ -24,44 +26,41 @@ class FullTextEntitiesAnnotationsItemNormalizer implements DenormalizerInterface
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
-        if (!is_object($data)) {
-            throw new InvalidArgumentException(sprintf('Given $data is not an object (%s given). We need an object in order to continue denormalize method.', gettype($data)));
-        }
         $object = new \Jane\OpenApi\Tests\Expected\Model\FullTextEntitiesAnnotationsItem();
-        if (property_exists($data, 'start')) {
-            $object->setStart($data->{'start'});
+        if (\array_key_exists('start', $data)) {
+            $object->setStart($data['start']);
         }
-        if (property_exists($data, 'end')) {
-            $object->setEnd($data->{'end'});
+        if (\array_key_exists('end', $data)) {
+            $object->setEnd($data['end']);
         }
-        if (property_exists($data, 'probability')) {
-            $object->setProbability($data->{'probability'});
+        if (\array_key_exists('probability', $data)) {
+            $object->setProbability($data['probability']);
         }
-        if (property_exists($data, 'type')) {
-            $object->setType($data->{'type'});
+        if (\array_key_exists('type', $data)) {
+            $object->setType($data['type']);
         }
-        if (property_exists($data, 'normalized_text')) {
-            $object->setNormalizedText($data->{'normalized_text'});
+        if (\array_key_exists('normalized_text', $data)) {
+            $object->setNormalizedText($data['normalized_text']);
         }
         return $object;
     }
     public function normalize($object, $format = null, array $context = array())
     {
-        $data = new \stdClass();
+        $data = array();
         if (null !== $object->getStart()) {
-            $data->{'start'} = $object->getStart();
+            $data['start'] = $object->getStart();
         }
         if (null !== $object->getEnd()) {
-            $data->{'end'} = $object->getEnd();
+            $data['end'] = $object->getEnd();
         }
         if (null !== $object->getProbability()) {
-            $data->{'probability'} = $object->getProbability();
+            $data['probability'] = $object->getProbability();
         }
         if (null !== $object->getType()) {
-            $data->{'type'} = $object->getType();
+            $data['type'] = $object->getType();
         }
         if (null !== $object->getNormalizedText()) {
-            $data->{'normalized_text'} = $object->getNormalizedText();
+            $data['normalized_text'] = $object->getNormalizedText();
         }
         return $data;
     }

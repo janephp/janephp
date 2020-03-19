@@ -75,7 +75,7 @@ class Reference
         if (!\array_key_exists($fragment, self::$fileCache)) {
             $contents = file_get_contents($fragment);
 
-            if (!json_decode($contents) || JSON_ERROR_NONE !== json_last_error()) {
+            if (!json_decode($contents, true) || JSON_ERROR_NONE !== json_last_error()) {
                 $decoded = Yaml::parse($contents,
                     Yaml::PARSE_OBJECT | Yaml::PARSE_OBJECT_FOR_MAP | Yaml::PARSE_DATETIME | Yaml::PARSE_EXCEPTION_ON_INVALID_TYPE);
                 $contents = json_encode($decoded);
@@ -86,13 +86,13 @@ class Reference
 
         if (!\array_key_exists($reference, self::$arrayCache)) {
             if ('' === $this->mergedUri->getFragment()) {
-                $array = json_decode(self::$fileCache[$fragment]);
+                $array = json_decode(self::$fileCache[$fragment], true);
             } else {
                 if (!\array_key_exists($fragment, self::$pointerCache)) {
                     self::$pointerCache[$fragment] = new Pointer(self::$fileCache[$fragment]);
                 }
 
-                $array = self::$pointerCache[$fragment]->get($this->mergedUri->getFragment());
+                $array = json_decode(json_encode(self::$pointerCache[$fragment]->get($this->mergedUri->getFragment())), true);
             }
 
             self::$arrayCache[$reference] = $array;

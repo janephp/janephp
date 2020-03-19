@@ -11,6 +11,7 @@ declare(strict_types=1);
 namespace Jane\OpenApi\JsonSchema\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
+use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -22,6 +23,7 @@ class OpenApiNormalizer implements DenormalizerInterface, NormalizerInterface, D
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
 
     public function supportsDenormalization($data, $type, $format = null)
     {
@@ -35,40 +37,44 @@ class OpenApiNormalizer implements DenormalizerInterface, NormalizerInterface, D
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        if (!is_object($data)) {
-            return null;
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
         }
-        if (isset($data->{'$ref'})) {
-            return new Reference($data->{'$ref'}, $context['document-origin']);
-        }
-        if (isset($data->{'$recursiveRef'})) {
-            return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Jane\OpenApi\JsonSchema\Model\OpenApi();
-        $data = clone $data;
-        if (property_exists($data, 'openapi') && $data->{'openapi'} !== null) {
-            $object->setOpenapi($data->{'openapi'});
-            unset($data->{'openapi'});
+        if (\array_key_exists('openapi', $data) && $data['openapi'] !== null) {
+            $object->setOpenapi($data['openapi']);
+            unset($data['openapi']);
+        } elseif (\array_key_exists('openapi', $data) && $data['openapi'] === null) {
+            $object->setOpenapi(null);
         }
-        if (property_exists($data, 'info') && $data->{'info'} !== null) {
-            $object->setInfo($this->denormalizer->denormalize($data->{'info'}, 'Jane\\OpenApi\\JsonSchema\\Model\\Info', 'json', $context));
-            unset($data->{'info'});
+        if (\array_key_exists('info', $data) && $data['info'] !== null) {
+            $object->setInfo($this->denormalizer->denormalize($data['info'], 'Jane\\OpenApi\\JsonSchema\\Model\\Info', 'json', $context));
+            unset($data['info']);
+        } elseif (\array_key_exists('info', $data) && $data['info'] === null) {
+            $object->setInfo(null);
         }
-        if (property_exists($data, 'externalDocs') && $data->{'externalDocs'} !== null) {
-            $object->setExternalDocs($this->denormalizer->denormalize($data->{'externalDocs'}, 'Jane\\OpenApi\\JsonSchema\\Model\\ExternalDocumentation', 'json', $context));
-            unset($data->{'externalDocs'});
+        if (\array_key_exists('externalDocs', $data) && $data['externalDocs'] !== null) {
+            $object->setExternalDocs($this->denormalizer->denormalize($data['externalDocs'], 'Jane\\OpenApi\\JsonSchema\\Model\\ExternalDocumentation', 'json', $context));
+            unset($data['externalDocs']);
+        } elseif (\array_key_exists('externalDocs', $data) && $data['externalDocs'] === null) {
+            $object->setExternalDocs(null);
         }
-        if (property_exists($data, 'servers') && $data->{'servers'} !== null) {
+        if (\array_key_exists('servers', $data) && $data['servers'] !== null) {
             $values = [];
-            foreach ($data->{'servers'} as $value) {
+            foreach ($data['servers'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, 'Jane\\OpenApi\\JsonSchema\\Model\\Server', 'json', $context);
             }
             $object->setServers($values);
-            unset($data->{'servers'});
+            unset($data['servers']);
+        } elseif (\array_key_exists('servers', $data) && $data['servers'] === null) {
+            $object->setServers(null);
         }
-        if (property_exists($data, 'security') && $data->{'security'} !== null) {
+        if (\array_key_exists('security', $data) && $data['security'] !== null) {
             $values_1 = [];
-            foreach ($data->{'security'} as $value_1) {
+            foreach ($data['security'] as $value_1) {
                 $values_2 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
                 foreach ($value_1 as $key => $value_2) {
                     $values_3 = [];
@@ -80,37 +86,45 @@ class OpenApiNormalizer implements DenormalizerInterface, NormalizerInterface, D
                 $values_1[] = $values_2;
             }
             $object->setSecurity($values_1);
-            unset($data->{'security'});
+            unset($data['security']);
+        } elseif (\array_key_exists('security', $data) && $data['security'] === null) {
+            $object->setSecurity(null);
         }
-        if (property_exists($data, 'tags') && $data->{'tags'} !== null) {
+        if (\array_key_exists('tags', $data) && $data['tags'] !== null) {
             $values_4 = [];
-            foreach ($data->{'tags'} as $value_4) {
+            foreach ($data['tags'] as $value_4) {
                 $values_4[] = $this->denormalizer->denormalize($value_4, 'Jane\\OpenApi\\JsonSchema\\Model\\Tag', 'json', $context);
             }
             $object->setTags($values_4);
-            unset($data->{'tags'});
+            unset($data['tags']);
+        } elseif (\array_key_exists('tags', $data) && $data['tags'] === null) {
+            $object->setTags(null);
         }
-        if (property_exists($data, 'paths') && $data->{'paths'} !== null) {
+        if (\array_key_exists('paths', $data) && $data['paths'] !== null) {
             $values_5 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
-            foreach ($data->{'paths'} as $key_1 => $value_5) {
-                if (preg_match('/^\\//', $key_1) && is_object($value_5)) {
+            foreach ($data['paths'] as $key_1 => $value_5) {
+                if (preg_match('/^\\//', (string) $key_1) && is_array($value_5)) {
                     $values_5[$key_1] = $this->denormalizer->denormalize($value_5, 'Jane\\OpenApi\\JsonSchema\\Model\\PathItem', 'json', $context);
                     continue;
                 }
-                if (preg_match('/^x-/', $key_1) && isset($value_5)) {
+                if (preg_match('/^x-/', (string) $key_1) && isset($value_5)) {
                     $values_5[$key_1] = $value_5;
                     continue;
                 }
             }
             $object->setPaths($values_5);
-            unset($data->{'paths'});
+            unset($data['paths']);
+        } elseif (\array_key_exists('paths', $data) && $data['paths'] === null) {
+            $object->setPaths(null);
         }
-        if (property_exists($data, 'components') && $data->{'components'} !== null) {
-            $object->setComponents($this->denormalizer->denormalize($data->{'components'}, 'Jane\\OpenApi\\JsonSchema\\Model\\Components', 'json', $context));
-            unset($data->{'components'});
+        if (\array_key_exists('components', $data) && $data['components'] !== null) {
+            $object->setComponents($this->denormalizer->denormalize($data['components'], 'Jane\\OpenApi\\JsonSchema\\Model\\Components', 'json', $context));
+            unset($data['components']);
+        } elseif (\array_key_exists('components', $data) && $data['components'] === null) {
+            $object->setComponents(null);
         }
         foreach ($data as $key_2 => $value_6) {
-            if (preg_match('/^x-/', $key_2)) {
+            if (preg_match('/^x-/', (string) $key_2)) {
                 $object[$key_2] = $value_6;
             }
         }
@@ -120,65 +134,81 @@ class OpenApiNormalizer implements DenormalizerInterface, NormalizerInterface, D
 
     public function normalize($object, $format = null, array $context = [])
     {
-        $data = new \stdClass();
+        $data = [];
         if (null !== $object->getOpenapi()) {
-            $data->{'openapi'} = $object->getOpenapi();
+            $data['openapi'] = $object->getOpenapi();
+        } else {
+            $data['openapi'] = null;
         }
         if (null !== $object->getInfo()) {
-            $data->{'info'} = $this->normalizer->normalize($object->getInfo(), 'json', $context);
+            $data['info'] = $this->normalizer->normalize($object->getInfo(), 'json', $context);
+        } else {
+            $data['info'] = null;
         }
         if (null !== $object->getExternalDocs()) {
-            $data->{'externalDocs'} = $this->normalizer->normalize($object->getExternalDocs(), 'json', $context);
+            $data['externalDocs'] = $this->normalizer->normalize($object->getExternalDocs(), 'json', $context);
+        } else {
+            $data['externalDocs'] = null;
         }
         if (null !== $object->getServers()) {
             $values = [];
             foreach ($object->getServers() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
-            $data->{'servers'} = $values;
+            $data['servers'] = $values;
+        } else {
+            $data['servers'] = null;
         }
         if (null !== $object->getSecurity()) {
             $values_1 = [];
             foreach ($object->getSecurity() as $value_1) {
-                $values_2 = new \stdClass();
+                $values_2 = [];
                 foreach ($value_1 as $key => $value_2) {
                     $values_3 = [];
                     foreach ($value_2 as $value_3) {
                         $values_3[] = $value_3;
                     }
-                    $values_2->{$key} = $values_3;
+                    $values_2[$key] = $values_3;
                 }
                 $values_1[] = $values_2;
             }
-            $data->{'security'} = $values_1;
+            $data['security'] = $values_1;
+        } else {
+            $data['security'] = null;
         }
         if (null !== $object->getTags()) {
             $values_4 = [];
             foreach ($object->getTags() as $value_4) {
                 $values_4[] = $this->normalizer->normalize($value_4, 'json', $context);
             }
-            $data->{'tags'} = $values_4;
+            $data['tags'] = $values_4;
+        } else {
+            $data['tags'] = null;
         }
         if (null !== $object->getPaths()) {
-            $values_5 = new \stdClass();
+            $values_5 = [];
             foreach ($object->getPaths() as $key_1 => $value_5) {
-                if (preg_match('/^\\//', $key_1) && is_object($value_5)) {
-                    $values_5->{$key_1} = $this->normalizer->normalize($value_5, 'json', $context);
+                if (preg_match('/^\\//', (string) $key_1) && is_object($value_5)) {
+                    $values_5[$key_1] = $this->normalizer->normalize($value_5, 'json', $context);
                     continue;
                 }
-                if (preg_match('/^x-/', $key_1) && !is_null($value_5)) {
-                    $values_5->{$key_1} = $value_5;
+                if (preg_match('/^x-/', (string) $key_1) && !is_null($value_5)) {
+                    $values_5[$key_1] = $value_5;
                     continue;
                 }
             }
-            $data->{'paths'} = $values_5;
+            $data['paths'] = $values_5;
+        } else {
+            $data['paths'] = null;
         }
         if (null !== $object->getComponents()) {
-            $data->{'components'} = $this->normalizer->normalize($object->getComponents(), 'json', $context);
+            $data['components'] = $this->normalizer->normalize($object->getComponents(), 'json', $context);
+        } else {
+            $data['components'] = null;
         }
         foreach ($object as $key_2 => $value_6) {
-            if (preg_match('/^x-/', $key_2)) {
-                $data->{$key_2} = $value_6;
+            if (preg_match('/^x-/', (string) $key_2)) {
+                $data[$key_2] = $value_6;
             }
         }
 

@@ -81,7 +81,7 @@ class Schema extends \ArrayObject
      */
     protected $type;
     /**
-     * @var Reference|Schema|null
+     * @var Schema|Reference|null
      */
     protected $not;
     /**
@@ -97,7 +97,7 @@ class Schema extends \ArrayObject
      */
     protected $anyOf;
     /**
-     * @var Reference|Schema|null
+     * @var Schema|Reference|null
      */
     protected $items;
     /**
@@ -105,7 +105,7 @@ class Schema extends \ArrayObject
      */
     protected $properties;
     /**
-     * @var Reference|Schema|bool|null
+     * @var Schema|Reference|bool|null
      */
     protected $additionalProperties = false;
     /**
@@ -494,7 +494,7 @@ class Schema extends \ArrayObject
     }
 
     /**
-     * @return Reference|Schema|null
+     * @return Schema|Reference|null
      */
     public function getNot()
     {
@@ -502,7 +502,7 @@ class Schema extends \ArrayObject
     }
 
     /**
-     * @param Reference|Schema|null $not
+     * @param Schema|Reference|null $not
      *
      * @return self
      */
@@ -574,7 +574,7 @@ class Schema extends \ArrayObject
     }
 
     /**
-     * @return Reference|Schema|null
+     * @return Schema|Reference|null
      */
     public function getItems()
     {
@@ -582,7 +582,7 @@ class Schema extends \ArrayObject
     }
 
     /**
-     * @param Reference|Schema|null $items
+     * @param Schema|Reference|null $items
      *
      * @return self
      */
@@ -614,7 +614,7 @@ class Schema extends \ArrayObject
     }
 
     /**
-     * @return Reference|Schema|bool|null
+     * @return Schema|Reference|bool|null
      */
     public function getAdditionalProperties()
     {
@@ -622,7 +622,7 @@ class Schema extends \ArrayObject
     }
 
     /**
-     * @param Reference|Schema|bool|null $additionalProperties
+     * @param Schema|Reference|bool|null $additionalProperties
      *
      * @return self
      */

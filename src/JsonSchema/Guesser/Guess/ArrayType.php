@@ -5,6 +5,7 @@ namespace Jane\JsonSchema\Guesser\Guess;
 use Jane\JsonSchema\Generator\Context\Context;
 use PhpParser\Node\Stmt;
 use PhpParser\Node\Expr;
+use PhpParser\Node\Arg;
 
 class ArrayType extends Type
 {
@@ -61,6 +62,16 @@ class ArrayType extends Type
         ]);
 
         return [$statements, $valuesVar];
+    }
+
+    public function createConditionStatement(Expr $input): Expr
+    {
+        return new Expr\BinaryOp\BooleanAnd(
+            parent::createConditionStatement($input),
+            new Expr\MethodCall(new Expr\Variable('this'), 'isOnlyNumericKeys', [
+                new Arg($input),
+            ])
+        );
     }
 
     /**

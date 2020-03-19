@@ -3,6 +3,7 @@
 namespace Jane\OpenApi\Tests\Expected\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
+use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -14,6 +15,7 @@ class PollOptionNormalizer implements DenormalizerInterface, NormalizerInterface
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
     public function supportsDenormalization($data, $type, $format = null)
     {
         return $type === 'Jane\\OpenApi\\Tests\\Expected\\Model\\PollOption';
@@ -24,32 +26,29 @@ class PollOptionNormalizer implements DenormalizerInterface, NormalizerInterface
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
-        if (!is_object($data)) {
-            throw new InvalidArgumentException(sprintf('Given $data is not an object (%s given). We need an object in order to continue denormalize method.', gettype($data)));
-        }
         $object = new \Jane\OpenApi\Tests\Expected\Model\PollOption();
-        if (property_exists($data, 'position')) {
-            $object->setPosition($data->{'position'});
+        if (\array_key_exists('position', $data)) {
+            $object->setPosition($data['position']);
         }
-        if (property_exists($data, 'label')) {
-            $object->setLabel($data->{'label'});
+        if (\array_key_exists('label', $data)) {
+            $object->setLabel($data['label']);
         }
-        if (property_exists($data, 'votes')) {
-            $object->setVotes($data->{'votes'});
+        if (\array_key_exists('votes', $data)) {
+            $object->setVotes($data['votes']);
         }
         return $object;
     }
     public function normalize($object, $format = null, array $context = array())
     {
-        $data = new \stdClass();
+        $data = array();
         if (null !== $object->getPosition()) {
-            $data->{'position'} = $object->getPosition();
+            $data['position'] = $object->getPosition();
         }
         if (null !== $object->getLabel()) {
-            $data->{'label'} = $object->getLabel();
+            $data['label'] = $object->getLabel();
         }
         if (null !== $object->getVotes()) {
-            $data->{'votes'} = $object->getVotes();
+            $data['votes'] = $object->getVotes();
         }
         return $data;
     }

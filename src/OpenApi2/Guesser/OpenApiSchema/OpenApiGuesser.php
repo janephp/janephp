@@ -7,11 +7,11 @@ use Jane\JsonSchema\Guesser\ChainGuesserAwareTrait;
 use Jane\JsonSchema\Guesser\ClassGuesserInterface;
 use Jane\JsonSchema\Guesser\GuesserInterface;
 use Jane\JsonSchema\Registry;
-use Jane\OpenApi2\Model\BodyParameter;
-use Jane\OpenApi2\Model\OpenApi;
-use Jane\OpenApi2\Model\Operation;
-use Jane\OpenApi2\Model\PathItem;
-use Jane\OpenApi2\Model\Response;
+use Jane\OpenApi2\JsonSchema\Model\BodyParameter;
+use Jane\OpenApi2\JsonSchema\Model\OpenApi;
+use Jane\OpenApi2\JsonSchema\Model\Operation;
+use Jane\OpenApi2\JsonSchema\Model\PathItem;
+use Jane\OpenApi2\JsonSchema\Model\Response;
 
 class OpenApiGuesser implements GuesserInterface, ClassGuesserInterface, ChainGuesserAwareInterface
 {

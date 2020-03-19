@@ -2,6 +2,7 @@
 
 namespace Jane\OpenApi2\Tests\Expected\Normalizer;
 
+use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -12,7 +13,8 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
-    protected $normalizers = array('Jane\\OpenApi2\\Tests\\Expected\\Model\\EmptySpace' => 'Jane\\OpenApi2\\Tests\\Expected\\Normalizer\\EmptySpaceNormalizer', 'Jane\\OpenApi2\\Tests\\Expected\\Model\\Schema' => 'Jane\\OpenApi2\\Tests\\Expected\\Normalizer\\SchemaNormalizer', 'Jane\\OpenApi2\\Tests\\Expected\\Model\\SchemaObjectProperty' => 'Jane\\OpenApi2\\Tests\\Expected\\Normalizer\\SchemaObjectPropertyNormalizer', 'Jane\\OpenApi2\\Tests\\Expected\\Model\\Error' => 'Jane\\OpenApi2\\Tests\\Expected\\Normalizer\\ErrorNormalizer', 'Jane\\OpenApi2\\Tests\\Expected\\Model\\TestIdGetResponse200' => 'Jane\\OpenApi2\\Tests\\Expected\\Normalizer\\TestIdGetResponse200Normalizer'), $normalizersCache = array();
+    use CheckArray;
+    protected $normalizers = array('Jane\\OpenApi2\\Tests\\Expected\\Model\\EmptySpace' => 'Jane\\OpenApi2\\Tests\\Expected\\Normalizer\\EmptySpaceNormalizer', 'Jane\\OpenApi2\\Tests\\Expected\\Model\\Schema' => 'Jane\\OpenApi2\\Tests\\Expected\\Normalizer\\SchemaNormalizer', 'Jane\\OpenApi2\\Tests\\Expected\\Model\\SchemaObjectProperty' => 'Jane\\OpenApi2\\Tests\\Expected\\Normalizer\\SchemaObjectPropertyNormalizer', 'Jane\\OpenApi2\\Tests\\Expected\\Model\\Error' => 'Jane\\OpenApi2\\Tests\\Expected\\Normalizer\\ErrorNormalizer', 'Jane\\OpenApi2\\Tests\\Expected\\Model\\TestIdGetResponse200' => 'Jane\\OpenApi2\\Tests\\Expected\\Normalizer\\TestIdGetResponse200Normalizer', 'Jane\\OpenApi2\\Tests\\Expected\\Model\\TestComplexListGetResponse200Item0' => 'Jane\\OpenApi2\\Tests\\Expected\\Normalizer\\TestComplexListGetResponse200Item0Normalizer', 'Jane\\OpenApi2\\Tests\\Expected\\Model\\TestComplexListGetResponse200Item1' => 'Jane\\OpenApi2\\Tests\\Expected\\Normalizer\\TestComplexListGetResponse200Item1Normalizer', 'Jane\\OpenApi2\\Tests\\Expected\\Model\\TestComplexListGetResponse200Item2' => 'Jane\\OpenApi2\\Tests\\Expected\\Normalizer\\TestComplexListGetResponse200Item2Normalizer', 'Jane\\OpenApi2\\Tests\\Expected\\Model\\TestComplexListGetResponsedefault' => 'Jane\\OpenApi2\\Tests\\Expected\\Normalizer\\TestComplexListGetResponsedefaultNormalizer'), $normalizersCache = array();
     public function supportsDenormalization($data, $type, $format = null)
     {
         return array_key_exists($type, $this->normalizers);

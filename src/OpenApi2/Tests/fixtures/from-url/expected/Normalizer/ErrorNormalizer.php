@@ -3,6 +3,7 @@
 namespace Jane\OpenApi2\Tests\Expected\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
+use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -14,6 +15,7 @@ class ErrorNormalizer implements DenormalizerInterface, NormalizerInterface, Den
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
     public function supportsDenormalization($data, $type, $format = null)
     {
         return $type === 'Jane\\OpenApi2\\Tests\\Expected\\Model\\Error';
@@ -24,26 +26,23 @@ class ErrorNormalizer implements DenormalizerInterface, NormalizerInterface, Den
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
-        if (!is_object($data)) {
-            throw new InvalidArgumentException(sprintf('Given $data is not an object (%s given). We need an object in order to continue denormalize method.', gettype($data)));
-        }
         $object = new \Jane\OpenApi2\Tests\Expected\Model\Error();
-        if (property_exists($data, 'code')) {
-            $object->setCode($data->{'code'});
+        if (\array_key_exists('code', $data)) {
+            $object->setCode($data['code']);
         }
-        if (property_exists($data, 'message')) {
-            $object->setMessage($data->{'message'});
+        if (\array_key_exists('message', $data)) {
+            $object->setMessage($data['message']);
         }
         return $object;
     }
     public function normalize($object, $format = null, array $context = array())
     {
-        $data = new \stdClass();
+        $data = array();
         if (null !== $object->getCode()) {
-            $data->{'code'} = $object->getCode();
+            $data['code'] = $object->getCode();
         }
         if (null !== $object->getMessage()) {
-            $data->{'message'} = $object->getMessage();
+            $data['message'] = $object->getMessage();
         }
         return $data;
     }

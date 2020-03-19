@@ -3,6 +3,7 @@
 namespace Jane\JsonSchema\Tests\Expected\Schema1\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
+use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -14,6 +15,7 @@ class TestNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
     public function supportsDenormalization($data, $type, $format = null)
     {
         return $type === 'Jane\\JsonSchema\\Tests\\Expected\\Schema1\\Model\\Test';
@@ -24,20 +26,17 @@ class TestNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
-        if (!is_object($data)) {
-            throw new InvalidArgumentException(sprintf('Given $data is not an object (%s given). We need an object in order to continue denormalize method.', gettype($data)));
-        }
         $object = new \Jane\JsonSchema\Tests\Expected\Schema1\Model\Test();
-        if (property_exists($data, 'foo')) {
-            $object->setFoo($this->denormalizer->denormalize($data->{'foo'}, 'Jane\\JsonSchema\\Tests\\Expected\\Schema2\\Model\\Foo', 'json', $context));
+        if (\array_key_exists('foo', $data)) {
+            $object->setFoo($this->denormalizer->denormalize($data['foo'], 'Jane\\JsonSchema\\Tests\\Expected\\Schema2\\Model\\Foo', 'json', $context));
         }
         return $object;
     }
     public function normalize($object, $format = null, array $context = array())
     {
-        $data = new \stdClass();
+        $data = array();
         if (null !== $object->getFoo()) {
-            $data->{'foo'} = $this->normalizer->normalize($object->getFoo(), 'json', $context);
+            $data['foo'] = $this->normalizer->normalize($object->getFoo(), 'json', $context);
         }
         return $data;
     }
