@@ -46,7 +46,7 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "4-dev"
+            "dev-master": "6-dev"
         }
     },
     "minimum-stability": "dev",
