@@ -18,6 +18,14 @@
             "email": "baptiste.leduc@gmail.com"
         }
     ],
+    "autoload": {
+        "psr-4": {
+            "Jane\\OpenApi3\\": ""
+        },
+        "exclude-from-classmap": [
+            "/Tests/"
+        ]
+    },
     "require": {
         "php": ">=7.2",
         "ext-json": "*",
@@ -34,26 +42,11 @@
     "suggest": {
         "friendsofphp/php-cs-fixer": "To have a nice formatting of the generated files"
     },
-    "config": {
-        "process-timeout": 1800,
-        "sort-packages": true
-    },
     "extra": {
         "branch-alias": {
             "dev-master": "6-dev"
         }
     },
-    "autoload": {
-        "psr-4": {
-            "Jane\\OpenApi3\\": ""
-        },
-        "exclude-from-classmap": [
-            "/Tests/"
-        ]
-    },
     "minimum-stability": "dev",
-    "prefer-stable": true,
-    "scripts": {
-        "test": "vendor/bin/phpunit"
-    }
+    "prefer-stable": true
 }

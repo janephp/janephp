@@ -1,8 +1,12 @@
 {
     "name": "jane-php/open-api-2",
-    "description": "Generate a PHP Client API (PSR7/PSR18 compatible) given a OpenApi 2.x (Swagger) specification",
     "type": "library",
-    "keywords": ["jane", "swagger", "openapi"],
+    "description": "Generate a PHP Client API (PSR7/PSR18 compatible) given a OpenApi 2.x (Swagger) specification",
+    "keywords": [
+        "jane",
+        "swagger",
+        "openapi"
+    ],
     "license": "MIT",
     "authors": [
         {
@@ -37,13 +41,6 @@
     },
     "suggest": {
         "friendsofphp/php-cs-fixer": "To have a nice formatting of the generated files"
-    },
-    "config": {
-        "process-timeout": 1800,
-        "sort-packages": true
-    },
-    "scripts": {
-        "test": "vendor/bin/phpunit"
     },
     "extra": {
         "branch-alias": {

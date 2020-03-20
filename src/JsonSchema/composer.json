@@ -12,6 +12,14 @@
             "email": "baptiste.leduc@gmail.com"
         }
     ],
+    "autoload": {
+        "psr-4": {
+            "Jane\\JsonSchema\\": ""
+        },
+        "exclude-from-classmap": [
+            "/Tests/"
+        ]
+    },
     "require": {
         "php": ">=7.2",
         "ext-json": "*",
@@ -31,29 +39,14 @@
     "suggest": {
         "friendsofphp/php-cs-fixer": "Allow to automatically fix cs on generated code for better visualisation"
     },
-    "config": {
-        "process-timeout": 1800,
-        "sort-packages": true
-    },
     "extra": {
         "branch-alias": {
             "dev-master": "6-dev"
         }
     },
-    "autoload": {
-        "psr-4": {
-            "Jane\\JsonSchema\\": ""
-        },
-        "exclude-from-classmap": [
-            "/Tests/"
-        ]
-    },
-    "minimum-stability": "dev",
-    "prefer-stable": true,
     "bin": [
         "bin/jane"
     ],
-    "scripts": {
-        "test": "vendor/bin/phpunit"
-    }
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }
