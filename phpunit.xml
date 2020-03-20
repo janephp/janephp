@@ -22,7 +22,6 @@
         <testsuite name="Jane Unit Test Suite">
             <directory>./src/*/Tests</directory>
             <exclude>./src/JsonSchema/Tests/fixtures</exclude>
-            <exclude>./src/OpenApi/Tests/fixtures</exclude>
             <exclude>./src/OpenApi2/Tests/fixtures</exclude>
             <exclude>./src/OpenApi3/Tests/fixtures</exclude>
         </testsuite>
@@ -36,8 +35,8 @@
                 <directory>./src/AutoMapper/Bundle/Tests</directory>
                 <directory>./src/JsonSchema/Model</directory>
                 <directory>./src/JsonSchema/Normalizer</directory>
-                <directory>./src/OpenApi/JsonSchema</directory>
                 <directory>./src/OpenApi2/JsonSchema</directory>
+                <directory>./src/OpenApi3/JsonSchema</directory>
             </exclude>
         </whitelist>
     </filter>

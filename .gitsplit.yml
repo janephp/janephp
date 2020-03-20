@@ -16,9 +16,6 @@ splits:
     prefix: "src/OpenApiCommon"
     target: "https://${GH_TOKEN}@github.com/janephp/open-api-common.git"
   -
-    prefix: "src/OpenApi"
-    target: "https://${GH_TOKEN}@github.com/janephp/open-api.git"
-  -
     prefix: "src/OpenApi2"
     target: "https://${GH_TOKEN}@github.com/janephp/open-api-2.git"
   -

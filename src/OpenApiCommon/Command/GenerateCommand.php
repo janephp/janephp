@@ -182,15 +182,15 @@ class GenerateCommand extends Command
                 // We don't need this exception, we will trigger another one if needed ~
             }
         }
-        if (null === $openApiClass && class_exists(\Jane\OpenApi\JaneOpenApi::class)) {
-            if (!\array_key_exists(\Jane\OpenApi\JaneOpenApi::class, self::$schemaParsers)) {
-                $openApi3Serializer = \Jane\OpenApi\JaneOpenApi::buildSerializer();
-                self::$schemaParsers[\Jane\OpenApi\JaneOpenApi::class] = new \Jane\OpenApi\SchemaParser\SchemaParser($openApi3Serializer);
+        if (null === $openApiClass && class_exists(\Jane\OpenApi3\JaneOpenApi::class)) {
+            if (!\array_key_exists(\Jane\OpenApi3\JaneOpenApi::class, self::$schemaParsers)) {
+                $openApi3Serializer = \Jane\OpenApi3\JaneOpenApi::buildSerializer();
+                self::$schemaParsers[\Jane\OpenApi3\JaneOpenApi::class] = new \Jane\OpenApi3\SchemaParser\SchemaParser($openApi3Serializer);
             }
 
             try {
-                self::$schemaParsers[\Jane\OpenApi\JaneOpenApi::class]->parseSchema($firstSchema->getOrigin());
-                $openApiClass = \Jane\OpenApi\JaneOpenApi::class;
+                self::$schemaParsers[\Jane\OpenApi3\JaneOpenApi::class]->parseSchema($firstSchema->getOrigin());
+                $openApiClass = \Jane\OpenApi3\JaneOpenApi::class;
             } catch (CouldNotParseException $e) {
                 $openApi3ExceptionMessage = $e->getMessage();
             } catch (OpenApiVersionSupportException $e) {
