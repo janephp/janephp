@@ -6,7 +6,7 @@ use Http\Client\Common\PluginClient;
 use Http\Discovery\HttpClientDiscovery;
 use Http\Discovery\Psr18ClientDiscovery;
 use Jane\JsonSchema\Generator\Context\Context;
-use Jane\OpenApi\JsonSchema\Model\OpenApi;
+use Jane\OpenApi3\JsonSchema\Model\OpenApi;
 use PhpParser\Node\Stmt;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Name;
