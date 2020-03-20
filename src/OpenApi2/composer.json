@@ -25,17 +25,15 @@
     "require": {
         "php": ">=7.2",
         "ext-json": "*",
-        "jane-php/json-schema": "^5.3",
-        "jane-php/json-schema-runtime": "^5.3",
-        "jane-php/open-api-common": "^5.3",
-        "jane-php/open-api-runtime": "^5.3",
+        "jane-php/json-schema": "^6.0",
+        "jane-php/open-api-common": "^6.0",
         "nikic/php-parser": "^4.0",
-        "symfony/serializer": "^3.2 || ^4.0",
-        "symfony/yaml": "^3.1 || ^4.0"
+        "symfony/serializer": "^4.4 || ^5.0",
+        "symfony/yaml": "^4.4 || ^5.0"
     },
     "require-dev": {
-        "friendsofphp/php-cs-fixer": "2.15.3",
-        "phpunit/phpunit": "^8.0"
+        "phpunit/phpunit": "^8.0",
+        "symfony/finder": "^5.0"
     },
     "suggest": {
         "friendsofphp/php-cs-fixer": "To have a nice formatting of the generated files"

@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Jane\JsonSchemaRuntime;
 
-use League\Uri\AbstractUri;
 use League\Uri\Http;
-use League\Uri\Parser;
+use League\Uri\UriString;
+use Psr\Http\Message\UriInterface;
 use Rs\Json\Pointer;
 use Symfony\Component\Yaml\Yaml;
 
@@ -29,7 +29,7 @@ class Reference
 
     public function __construct(string $reference, string $origin)
     {
-        $originParts = (new Parser())->parse($origin);
+        $originParts = UriString::parse($origin);
         $referenceParts = parse_url($reference);
         $mergedParts = array_merge($originParts, $referenceParts);
 
@@ -119,17 +119,17 @@ class Reference
         ;
     }
 
-    public function getMergedUri(): AbstractUri
+    public function getMergedUri(): UriInterface
     {
         return $this->mergedUri;
     }
 
-    public function getReferenceUri(): AbstractUri
+    public function getReferenceUri(): UriInterface
     {
         return $this->referenceUri;
     }
 
-    public function getOriginUri(): AbstractUri
+    public function getOriginUri(): UriInterface
     {
         return $this->originUri;
     }
