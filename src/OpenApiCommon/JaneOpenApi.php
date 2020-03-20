@@ -21,7 +21,7 @@ use Symfony\Component\Yaml\Parser;
 
 abstract class JaneOpenApi extends ChainGenerator
 {
-    protected const NORMALIZER_FACTORY_CLASS = null;
+    protected const OBJECT_NORMALIZER_CLASS = null;
 
     /** @var SchemaParser $schemaParser */
     protected $schemaParser;
@@ -121,9 +121,8 @@ abstract class JaneOpenApi extends ChainGenerator
             new YamlEncoder(new Dumper(), new Parser()),
         ];
 
-        $normalizerFactoryClass = static::NORMALIZER_FACTORY_CLASS;
-        $normalizers = $normalizerFactoryClass::create();
+        $objectNormalizerClass = static::OBJECT_NORMALIZER_CLASS;
 
-        return new Serializer($normalizers, $encoders);
+        return new Serializer([new $objectNormalizerClass()], $encoders);
     }
 }

@@ -43,7 +43,7 @@ class LibraryTest extends TestCase
 
         $this->assertFileExists(__DIR__ . '/generated/Model/JsonSchema.php');
         $this->assertFileExists(__DIR__ . '/generated/Normalizer/JsonSchemaNormalizer.php');
-        $this->assertFileExists(__DIR__ . '/generated/Normalizer/NormalizerFactory.php');
+        $this->assertFileExists(__DIR__ . '/generated/Normalizer/JaneObjectNormalizer.php');
 
         $this->assertEquals(
             file_get_contents(__DIR__ . '/../Model/JsonSchema.php'),
@@ -56,8 +56,8 @@ class LibraryTest extends TestCase
         );
 
         $this->assertEquals(
-            file_get_contents(__DIR__ . '/../Normalizer/NormalizerFactory.php'),
-            file_get_contents(__DIR__ . '/generated/Normalizer/NormalizerFactory.php')
+            file_get_contents(__DIR__ . '/../Normalizer/JaneObjectNormalizer.php'),
+            file_get_contents(__DIR__ . '/generated/Normalizer/JaneObjectNormalizer.php')
         );
     }
 }
