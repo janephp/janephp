@@ -22,7 +22,8 @@
     "require": {
         "php": ">=7.2",
         "ext-json": "*",
-        "jane-php/json-schema": "^5.0",
+        "jane-php/json-schema": "^6.0",
+        "jane-php/open-api-runtime": "^6.0",
         "symfony/string": "^5.0"
     },
     "extra": {

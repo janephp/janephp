@@ -16,17 +16,17 @@
         "php": ">=7.2",
         "ext-json": "*",
         "doctrine/inflector": "^1.0",
-        "jane-php/json-schema-runtime": "^5.3",
+        "jane-php/json-schema-runtime": "^6.0",
         "nikic/php-parser": "^4.0",
-        "symfony/console": "^3.1 || ^4.0 || ^5.0",
-        "symfony/filesystem": "^3.1 || ^4.0 || ^5.0",
-        "symfony/options-resolver": "^3.1 || ^4.0 || ^5.0",
-        "symfony/serializer": "^4.2 || ^5.0",
-        "symfony/yaml": "^3.1 || ^4.0 || ^5.0"
+        "symfony/console": "^4.4 || ^5.0",
+        "symfony/filesystem": "^4.4 || ^5.0",
+        "symfony/options-resolver": "^4.4 || ^5.0",
+        "symfony/serializer": "^4.4 || ^5.0",
+        "symfony/yaml": "^4.4 || ^5.0"
     },
     "require-dev": {
-        "friendsofphp/php-cs-fixer": "2.15.3",
-        "phpunit/phpunit": "^8.0"
+        "phpunit/phpunit": "^8.0",
+        "symfony/finder": "^5.0"
     },
     "suggest": {
         "friendsofphp/php-cs-fixer": "Allow to automatically fix cs on generated code for better visualisation"
