@@ -1,8 +1,13 @@
 {
     "name": "jane-php/open-api-common",
-    "description": "Utility for OpenApi 2/3 generators",
     "type": "library",
-    "keywords": ["jane", "swagger", "openapi", "utility"],
+    "description": "Utility for OpenApi 2/3 generators",
+    "keywords": [
+        "jane",
+        "swagger",
+        "openapi",
+        "utility"
+    ],
     "license": "MIT",
     "authors": [
         {
@@ -37,5 +42,7 @@
     },
     "bin": [
         "bin/jane-openapi"
-    ]
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }

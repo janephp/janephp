@@ -44,8 +44,7 @@
         "friendsofphp/php-cs-fixer": "2.15.3",
         "phpbench/phpbench": "@dev",
         "phpunit/phpunit": "^8.0",
-        "symfony/framework-bundle": "^4.4 || ^5.0",
-        "symfony/phpunit-bridge": "^4.4 || ^5.0"
+        "symfony/framework-bundle": "^4.4 || ^5.0"
     },
     "suggest": {
         "friendsofphp/php-cs-fixer": "Allow to automatically fix cs on generated code for better visualisation"
@@ -74,9 +73,5 @@
     "bin": [
         "src/JsonSchema/bin/jane",
         "src/OpenApiCommon/bin/jane-openapi"
-    ],
-    "scripts": {
-        "cs-fix": "php-cs-fixer fix",
-        "test": "php vendor/bin/phpunit"
-    }
+    ]
 }
