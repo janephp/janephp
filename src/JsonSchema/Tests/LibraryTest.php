@@ -25,7 +25,6 @@ class LibraryTest extends TestCase
             'strict' => false,
         ]);
         $this->printer = new Printer(new Standard(), '');
-        $this->printer->setUseFixer(true);
         $this->printer->setCleanGenerated(false);
     }
 
