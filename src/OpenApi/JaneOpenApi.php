@@ -18,13 +18,8 @@ class JaneOpenApi extends CommonJaneOpenApi
 
     public static function build(array $options = [])
     {
-        if ($options['client'] === self::CLIENT_HTTPLUG) {
-            @trigger_error(sprintf('Generating "%s" client is deprecated, use the "%s" in the "client" option', self::CLIENT_HTTPLUG, self::CLIENT_PSR18));
-        }
-
         $serializer = self::buildSerializer();
         $schemaParser = new SchemaParser($serializer);
-        $generators = GeneratorFactory::build($serializer, $options);
         $naming = new Naming();
         $parser = (new ParserFactory())->create(ParserFactory::PREFER_PHP7);
         $modelGenerator = new ModelGenerator($naming, $parser);
@@ -41,10 +36,7 @@ class JaneOpenApi extends CommonJaneOpenApi
         $self->addGenerator($modelGenerator);
         $self->addGenerator($normGenerator);
         $self->addGenerator($authGenerator);
-
-        foreach ($generators as $generator) {
-            $self->addGenerator($generator);
-        }
+        $self->addGenerator(GeneratorFactory::build($serializer));
 
         return $self;
     }

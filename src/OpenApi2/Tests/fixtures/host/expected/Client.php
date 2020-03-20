@@ -2,7 +2,7 @@
 
 namespace Jane\OpenApi2\Tests\Expected;
 
-class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
+class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
 {
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
@@ -16,16 +16,16 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
     public static function create($httpClient = null)
     {
         if (null === $httpClient) {
-            $httpClient = \Http\Discovery\HttpClientDiscovery::find();
+            $httpClient = \Http\Discovery\Psr18ClientDiscovery::find();
             $plugins = array();
-            $uri = \Http\Discovery\UriFactoryDiscovery::find()->createUri('https://www.foo-host.com/base-path');
+            $uri = \Http\Discovery\Psr17FactoryDiscovery::findUrlFactory()->createUri('https://www.foo-host.com/base-path');
             $plugins[] = new \Http\Client\Common\Plugin\AddHostPlugin($uri);
             $plugins[] = new \Http\Client\Common\Plugin\AddPathPlugin($uri);
             $httpClient = new \Http\Client\Common\PluginClient($httpClient, $plugins);
         }
-        $messageFactory = \Http\Discovery\MessageFactoryDiscovery::find();
-        $streamFactory = \Http\Discovery\StreamFactoryDiscovery::find();
+        $requestFactory = \Http\Discovery\Psr17FactoryDiscovery::findRequestFactory();
+        $streamFactory = \Http\Discovery\Psr17FactoryDiscovery::findStreamFactory();
         $serializer = new \Symfony\Component\Serializer\Serializer(array(new \Symfony\Component\Serializer\Normalizer\ArrayDenormalizer(), new \Jane\OpenApi2\Tests\Expected\Normalizer\JaneObjectNormalizer()), array(new \Symfony\Component\Serializer\Encoder\JsonEncoder(new \Symfony\Component\Serializer\Encoder\JsonEncode(), new \Symfony\Component\Serializer\Encoder\JsonDecode(array('json_decode_associative' => true)))));
-        return new static($httpClient, $messageFactory, $serializer, $streamFactory);
+        return new static($httpClient, $requestFactory, $serializer, $streamFactory);
     }
 }
