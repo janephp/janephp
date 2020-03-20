@@ -3,7 +3,7 @@
 namespace Jane\OpenApiCommon\Generator\Authentication;
 
 use Jane\OpenApiCommon\Guesser\Guess\SecuritySchemeGuess;
-use Jane\OpenApi\JsonSchema\Model\HTTPSecurityScheme;
+use Jane\OpenApi3\JsonSchema\Model\HTTPSecurityScheme;
 use PhpParser\Node\Name;
 use PhpParser\Node\Param;
 use PhpParser\Node\Stmt;
