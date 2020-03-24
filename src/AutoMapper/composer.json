@@ -40,6 +40,10 @@
             "Bundle/Tests/Resources/app/AppKernel.php"
         ]
     },
+    "config": {
+        "process-timeout": 1800,
+        "sort-packages": true
+    },
     "minimum-stability": "dev",
     "prefer-stable": true
 }

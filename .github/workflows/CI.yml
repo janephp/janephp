@@ -3,13 +3,16 @@ on: [push, pull_request]
 jobs:
   cs-check:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        php-versions:  ['7.2']
     steps:
       - name: checkout
         uses: actions/checkout@master
       - name: setup
         uses: shivammathur/setup-php@2.0.0
         with:
-          php-version: 7.2
+          php-version: ${{ matrix.php-versions }}
           extensions: mbstring, fileinfo, json, intl, dom
       - name: install
         run: composer install
@@ -27,7 +30,7 @@ jobs:
       - name: setup
         uses: shivammathur/setup-php@2.0.0
         with:
-          php-version: 7.4
+          php-version: ${{ matrix.php-versions }}
           extensions: mbstring, fileinfo, json, intl, dom
       - name: install
         run: composer update --no-progress --no-suggest --ansi
