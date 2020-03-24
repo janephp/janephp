@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -e
 
 use_path_repository_in_composer () {
     cd $1
@@ -8,13 +9,11 @@ use_path_repository_in_composer () {
 
     cd -
 }
-export -f use_path_repository_in_composer
 
 install_component () {
     printf "🌱 $1 👇\n"
     cd $1 ; composer update --no-progress --no-suggest --ansi --prefer-stable $2 ; cd -
 }
-export -f install_component
 
 for i in $(find src -maxdepth 2 -type f -name composer.json -printf '%h\n' | sort); do
     use_path_repository_in_composer "$i"

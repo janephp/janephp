@@ -47,6 +47,10 @@
     "bin": [
         "bin/jane"
     ],
+    "config": {
+        "process-timeout": 1800,
+        "sort-packages": true
+    },
     "minimum-stability": "dev",
     "prefer-stable": true
 }
