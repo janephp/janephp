@@ -68,7 +68,8 @@ name it as you like and use the ``--config-file`` option to specify its location
 
 .. note::
     No others options can be passed to this command. Having a config file ensure that a team working on the project
-    always use the same set of parameters and, when it changes, give vision of the new option(s) used to generate the code.
+    always use the same set of parameters and, when it changes, give vision of the new option(s) used to generate the
+    code.
 
 Configuration file
 ------------------

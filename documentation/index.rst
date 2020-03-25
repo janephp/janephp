@@ -47,12 +47,9 @@ Lastly, if you want to contribute there is some details about :doc:`/contributin
 
 .. toctree::
    :hidden:
-   :caption: Json Schema
+   :caption: Components
 
-   Introduction <JsonSchema/introduction>
-   Generating a Model <JsonSchema/generate>
-   Using a generated Model <JsonSchema/usage>
-   Multi schemas <JsonSchema/multi>
+   JSON Schema <components/JsonSchema>
 
 .. toctree::
    :hidden:
