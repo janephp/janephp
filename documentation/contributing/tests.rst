@@ -1,4 +1,33 @@
 How our test suite works
 ========================
 
-In Progress
+This documentation describes how our test suite works and how you can interact with it.
+It is mainly oriented for people wanting to contribute to theses libraries.
+
+We test each components with a global composer configuration.
+On repository root you can find a ``composer.json`` file that contains all components dependencies, in our CI we install
+theses dependencies then we tests all components.
+
+If you want to run it locally, you can do:
+
+.. code-block:: bash
+
+    composer update
+    vendor/bin/phpunit
+
+You can also run same commands to test a single component, you just have to cd inside the component first:
+
+.. code-block:: bash
+
+    cd src/JsonSchema
+    composer update
+    vendor/bin/phpunit
+
+We mainly use JsonSchema / OpenAPI fixtures for our tests. When we add a feature, we create a new folder in related
+component tests folder with a schema related to the added feature. That way when we run tests, it will generate a
+``generated/`` folder that will be compared with a ``expected/`` that contains generated files like they should be.
+
+If you just created a fixture folder and don't have ``expected/`` folder, just run tests and check manually
+``generated/`` files and if everything is ok, you can copy the folder and name it ``expected/``. If you have to do this
+on multiple fixtures, you can use ``./replace-all-expected-fixtures.sh`` script. It will copy all ``generated/`` into
+``expected/`` folder. So please be sure that everything is okay before running this script.
