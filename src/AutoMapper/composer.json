@@ -22,10 +22,6 @@
         "symfony/serializer": "^4.4 || ^5.0",
         "symfony/yaml": "^4.4 || ^5.0"
     },
-    "config": {
-        "process-timeout": 1800,
-        "sort-packages": true
-    },
     "extra": {
         "branch-alias": {
             "dev-master": "6-dev"
@@ -44,9 +40,10 @@
             "Bundle/Tests/Resources/app/AppKernel.php"
         ]
     },
+    "config": {
+        "process-timeout": 1800,
+        "sort-packages": true
+    },
     "minimum-stability": "dev",
-    "prefer-stable": true,
-    "scripts": {
-        "test": "vendor/bin/phpunit"
-    }
+    "prefer-stable": true
 }

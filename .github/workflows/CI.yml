@@ -12,7 +12,7 @@ jobs:
           php-version: 7.2
           extensions: mbstring, fileinfo, json, intl, dom
       - name: install
-        run: composer install
+        run: composer update --prefer-stable
       - name: 'php-cs-fixer check'
         run: 'vendor/bin/php-cs-fixer fix --dry-run --diff'
   tests:
@@ -31,9 +31,9 @@ jobs:
           php-version: ${{ matrix.php-versions }}
           extensions: mbstring, fileinfo, json, intl, dom
       - name: install
-        run: composer install
+        run: composer update --prefer-stable
       - name: tests
-        run: composer test
+        run: vendor/bin/phpunit
   tests-lowest:
     runs-on: ubuntu-latest
     steps:
@@ -47,4 +47,4 @@ jobs:
       - name: install
         run: composer update --prefer-lowest --prefer-stable
       - name: tests
-        run: composer test
+        run: vendor/bin/phpunit

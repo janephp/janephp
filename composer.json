@@ -44,15 +44,10 @@
         "friendsofphp/php-cs-fixer": "2.15.3",
         "phpbench/phpbench": "@dev",
         "phpunit/phpunit": "^8.0",
-        "symfony/framework-bundle": "^4.4 || ^5.0",
-        "symfony/phpunit-bridge": "^4.4 || ^5.0"
+        "symfony/framework-bundle": "^4.4 || ^5.0"
     },
     "suggest": {
         "friendsofphp/php-cs-fixer": "Allow to automatically fix cs on generated code for better visualisation"
-    },
-    "config": {
-        "process-timeout": 1800,
-        "sort-packages": true
     },
     "extra": {
         "branch-alias": {
@@ -69,14 +64,14 @@
             "src/AutoMapper/Bundle/Tests/Resources/app/AppKernel.php"
         ]
     },
-    "minimum-stability": "dev",
-    "prefer-stable": true,
     "bin": [
         "src/JsonSchema/bin/jane",
         "src/OpenApiCommon/bin/jane-openapi"
     ],
-    "scripts": {
-        "cs-fix": "php-cs-fixer fix",
-        "test": "php vendor/bin/phpunit"
-    }
+    "config": {
+        "process-timeout": 1800,
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }
