@@ -18,12 +18,26 @@ requirement. Choose your library depending on OpenAPI version you need (you can 
 .. code-block:: bash
 
     # OpenAPI 2
-    composer require --dev jane-php/open-api-2 "^5.0"
-    composer require jane-php/open-api-runtime "^5.0"
+    composer require --dev jane-php/open-api-2 "^6.0"
+    composer require jane-php/open-api-runtime "^6.0"
 
     # OpenAPI 3
-    composer require --dev jane-php/open-api-3 "^5.0"
-    composer require jane-php/open-api-runtime "^5.0"
+    composer require --dev jane-php/open-api-3 "^6.0"
+    composer require jane-php/open-api-runtime "^6.0"
+
+With Symfony ecosystem, we created a recipe to make it easier to use Jane. You just have to allow contrib recipes before
+installing our packages:
+
+.. code-block:: bash
+
+    composer config extra.symfony.allow-contrib true
+
+Then when installing ``jane-php/open-api-*``, it will add all required files:
+
+- ``bin/open-api-generate``: a binary file to run JSON Schema generation based on ``config/jane/open-api.php``
+  configuration.
+- ``config/jane/open-api.php``: your Jane configuration (see "Configuration file")
+- ``config/packages/open-api.yaml``: Symfony Serializer configured to be optimized for Jane
 
 By default, generated code is not formatted. To make it compliant to PSR2 standard and others format norms, you can add
 the `PHP CS Fixer`_ library to your dev dependencies (and it makes it easier to debug!):
@@ -54,6 +68,10 @@ you can name it as you like and use the ``--config-file`` option to specify its 
     php vendor/bin/jane-openapi generate --config-file=jane-openapi-configuration.php
 
 .. note::
+    If you are using Symfony recipe, this command is embbeded in the ``bin/open-api-generate`` binary file, you only
+    have to run it to make it work 🎉
+
+.. note::
     No others options can be passed to the command. Having a config file ensure that a team working on the project
     always use the same set of parameters and, when it changes, give vision of the new option(s) used to generate the
     code.
@@ -66,10 +84,9 @@ The configuration file consists of a simple PHP script returning an array::
     <?php
 
     return [
-        'openapi-file' => __DIR__ . '/openapi.json',
+        'openapi-file' => __DIR__ . '/open-api.json',
         'namespace' => 'Vendor\Library\Api',
         'directory' => __DIR__ . '/generated',
-        'client' => 'psr18',
     ];
 
 This example shows the minimum configuration required to generate a client:
@@ -78,7 +95,6 @@ This example shows the minimum configuration required to generate a client:
    ``https://my.domain.com/my-api.json``. It can also be a ``yaml`` file.
  * ``namespace``: Root namespace of all of your generated code
  * ``directory``: Directory where the code will be generated
- * ``client``: Client to generate (``httplug`` or ``psr18``, ``httplug`` is deprecated and will be removed in Jane v6)
 
 Given this configuration, you will need to add the following configuration to composer, in order to load the generated
 files:
@@ -117,6 +133,9 @@ Generated ``Client`` class have a static method ``create`` which act like a fact
 
     $apiClient = Vendor\Library\Generated\Client::create();
 
+.. note::
+    If you are using Symfony recipe, the client will be autowired. So you can use it anywhere by using your Client class
+
 Creating the Serializer
 -----------------------
 
@@ -125,19 +144,20 @@ Like in :doc:`/documentation/JsonSchema`, creating a serializer is done by using
     <?php
 
     $normalizers = [
-        new Symfony\Component\Serializer\Normalizer\ArrayDenormalizer(),
-        new Vendor\Library\Generated\Normalizer\JaneObjectNormalizer(),
+        new \Symfony\Component\Serializer\Normalizer\ArrayDenormalizer(),
+        new \Vendor\Library\Generated\Normalizer\JaneObjectNormalizer(),
     ];
-    $encoders = [new Symfony\Component\Serializer\Encoder\JsonEncoder(
-        new Symfony\Component\Serializer\Encoder\JsonEncode([Symfony\Component\Serializer\Encoder\JsonEncode::OPTIONS => \JSON_UNESCAPED_SLASHES]),
-        new Symfony\Component\Serializer\Encoder\JsonDecode([Symfony\Component\Serializer\Encoder\JsonDecode::ASSOCIATIVE => false])),
+    $encoders = [new \Symfony\Component\Serializer\Encoder\JsonEncoder(
+        new \Symfony\Component\Serializer\Encoder\JsonEncode(),
+        new \Symfony\Component\Serializer\Encoder\JsonDecode([\Symfony\Component\Serializer\Encoder\JsonDecode::ASSOCIATIVE => true])),
     ];
 
-    $serializer = new Symfony\Component\Serializer\Serializer($normalizers, $encoders);
+    $serializer = new \Symfony\Component\Serializer\Serializer($normalizers, $encoders);
     $serializer->deserialize('{...}');
 
 With Symfony ecosystem, you just have to use the recipe and all the configuration will be added automatically.
-This serializer will be able to encode and decode every data respecting your OpenAPI specification.
+This serializer will be able to encode and decode every data respecting your OpenAPI specification thanks to autowiring
+of the generated normalizers.
 
 Using the API Client
 --------------------
