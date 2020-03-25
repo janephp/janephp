@@ -3,9 +3,25 @@ on: [push, pull_request]
 jobs:
   cs-check:
     runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@master
+      - name: setup
+        uses: shivammathur/setup-php@2.0.0
+        with:
+          php-version: 7.2
+          extensions: mbstring, fileinfo, json, intl, dom
+      - name: install
+        run: composer install
+      - name: 'php-cs-fixer check'
+        run: 'vendor/bin/php-cs-fixer fix --dry-run --diff'
+  tests:
+    runs-on: ubuntu-latest
     strategy:
+      max-parallel: 15
       matrix:
-        php-versions:  ['7.2']
+        php-versions:  ['7.2', '7.3', '7.4']
+    name: tests-${{ matrix.php-versions }}
     steps:
       - name: checkout
         uses: actions/checkout@master
@@ -16,59 +32,19 @@ jobs:
           extensions: mbstring, fileinfo, json, intl, dom
       - name: install
         run: composer install
-      - name: php-cs-fixer check
-        run: vendor/bin/php-cs-fixer fix --dry-run --diff
-  root-tests:
+      - name: tests
+        run: composer test
+  tests-lowest:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        php-versions:  ['7.4']
-    name: root-tests-${{ matrix.php-versions }}
     steps:
       - name: checkout
         uses: actions/checkout@master
       - name: setup
         uses: shivammathur/setup-php@2.0.0
         with:
-          php-version: ${{ matrix.php-versions }}
+          php-version: 7.2
           extensions: mbstring, fileinfo, json, intl, dom
       - name: install
-        run: composer update --no-progress --no-suggest --ansi
+        run: composer update --prefer-lowest --prefer-stable
       - name: tests
-        run: vendor/bin/phpunit
-  components-tests:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        php-versions:  ['7.2', '7.3', '7.4']
-    name: components-tests-${{ matrix.php-versions }}
-    steps:
-      - name: checkout
-        uses: actions/checkout@master
-      - name: setup
-        uses: shivammathur/setup-php@2.0.0
-        with:
-          php-version: ${{ matrix.php-versions }}
-          extensions: mbstring, fileinfo, json, intl, dom
-      - name: install
-        run: ./.github/workflows/components-install.sh
-      - name: tests
-        run: ./.github/workflows/components-tests.sh
-  components-tests-lowest:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        php-versions:  ['7.2']
-    name: components-tests-lowest-${{ matrix.php-versions }}
-    steps:
-      - name: checkout
-        uses: actions/checkout@master
-      - name: setup
-        uses: shivammathur/setup-php@2.0.0
-        with:
-          php-version: ${{ matrix.php-versions }}
-          extensions: mbstring, fileinfo, json, intl, dom
-      - name: install
-        run: ./.github/workflows/components-install.sh --prefer-lowest
-      - name: tests
-        run: ./.github/workflows/components-tests.sh
+        run: composer test
