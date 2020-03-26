@@ -1,10 +1,9 @@
 OpenAPI
 =======
 
-Jane OpenAPI is a library to generate, in PHP, an http client and its associated models and serializers from a
-`OpenAPI`_ specification: version 2 or 3.
-Jane supports both OpenAPI v2 & v3. Depending on your OpenAPI version, the command line will detect which version to use
-and if this version is actually installed in your dependencies.
+Jane OpenAPI is a library to generate, in PHP, an HTTP client and its associated models and serializers from a
+`OpenAPI`_ specification: version 2 or 3. Jane supports both OpenAPI v2 & v3. Depending on your OpenAPI version, the
+command line will detect which version to use and if this version is actually installed in your dependencies.
 
 Installation
 ------------
@@ -14,8 +13,8 @@ and if this version is actually installed in your dependencies.
 
 You have to add the generation library as a ``dev`` dependency. This library contains a lot of dependencies, to be able
 to generate code, which are not needed on runtime. However, the generated code depends on other libraries and a few
-classes that are available through the runtime package. It is highly recommended to add the runtime dependency as a
-requirement. Choose your library depending on OpenAPI version you need (you can even install both if you want):
+classes that are available through the runtime package. It is mandatory to add the runtime dependency as a requirement.
+Choose your library depending on OpenAPI version you need (you can even install both if you want):
 
 .. code-block:: bash
 
@@ -34,15 +33,15 @@ installing our packages:
 
     composer config extra.symfony.allow-contrib true
 
-Then when installing ``jane-php/open-api-*``, it will add all required files:
+Then when installing ``jane-php/open-api-*``, it will add all the required files:
 
 - ``bin/open-api-generate``: a binary file to run JSON Schema generation based on ``config/jane/open-api.php``
-  configuration.
-- ``config/jane/open-api.php``: your Jane configuration (see "Configuration file")
-- ``config/packages/open-api.yaml``: Symfony Serializer configured to be optimized for Jane
+  configuration;
+- ``config/jane/open-api.php``: your Jane configuration (see "Configuration file");
+- ``config/packages/open-api.yaml``: Symfony Serializer configured to be optimized for Jane.
 
-By default, generated code is not formatted, to make it compliant to PSR2 standard and others format norms, you can add
-the `PHP CS Fixer`_ library to your dev dependencies (and it makes it easier to debug!):
+By default, generated code is not formatted, to make it compliant to PSR2 standard and others coding style formats, you
+can add the `PHP CS Fixer`_ library to your dev dependencies (and it makes it easier to debug!):
 
 .. code-block:: bash
 
@@ -172,8 +171,8 @@ Generated ``Client`` class have a static method ``create`` which act like a fact
 Creating the Http Client
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-The main dependency on the ``Client`` class is an Http Client respecting the `PSR18`_ Client standard. We highly
-recommend you to read the `PSR18`_ specification. This HTTP Client MAY redirect on a 3XX responses (depend on your API),
+The main dependency on the ``Client`` class is an HTTP client respecting the `PSR18`_ client standard. We highly
+recommend you to read the `PSR18`_ specification. This HTTP client MAY redirect on a 3XX responses (depend on your API),
 but it MUST not throw errors on 4XX and 5XX responses, as this can be handle by the generated code directly.
 
 Recommended way of creating an HTTP Client is by using the `discovery`_ library to create the client::

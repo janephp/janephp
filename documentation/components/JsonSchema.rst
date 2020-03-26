@@ -15,9 +15,9 @@ Add this library with composer as a ``dev`` dependency:
 
     composer require --dev jane-php/json-schema "^6.0"
 
-This library contains a lot of dependencies to be able to generate code which are not needed on runtime. However, the generated
-code depends on other libraries and a few classes that are available through the runtime package. It is highly recommended
-to add the runtime dependency as a requirement through composer:
+This library contains a lot of dependencies to be able to generate code which are not needed on runtime. However, the
+generated code depends on other libraries and a few classes that are available through the runtime package. It is
+mandatory to add the runtime dependency as a requirement through composer:
 
 .. code-block:: bash
 
@@ -30,15 +30,15 @@ installing our packages:
 
     composer config extra.symfony.allow-contrib true
 
-Then when installing ``jane-php/json-schema``, it will add all required files:
+Then when installing ``jane-php/json-schema``, it will add all the required files:
 
 - ``bin/json-schema-generate``: a binary file to run JSON Schema generation based on ``config/jane/json-schema.php``
-  configuration.
-- ``config/jane/json-schema.php``: your Jane configuration (see "Configuration file")
-- ``config/packages/json-schema.yaml``: Symfony Serializer configured to be optimized for Jane
+  configuration;
+- ``config/jane/json-schema.php``: your Jane configuration (see "Configuration file");
+- ``config/packages/json-schema.yaml``: Symfony Serializer configured to be optimized for Jane.
 
-By default, generated code is not formatted, to make it compliant to PSR2 standard and others format norms, you can add the
-`PHP CS Fixer`_ library to your dev dependencies (and it makes it easier to debug!):
+By default, generated code is not formatted, to make it compliant to PSR2 standard and others coding style formats, you
+can add the `PHP CS Fixer`_ library to your dev dependencies (and it makes it easier to debug!):
 
 .. code-block:: bash
 
@@ -144,8 +144,8 @@ Other options are available to customize the generated code:
 Using a generated Model
 -----------------------
 
-This library generates basics P.O.P.O. objects (Plain Old PHP Objects) with a bunch of setters / getters. It also generates
-all normalizers to handle denormalization from a json string, and normalization.
+This library generates basics P.O.P.O. objects (Plain Old PHP Objects) with a bunch of setters / getters. It also
+generates all normalizers to handle denormalization from a json string, and normalization.
 
 All normalizers respect the ``Symfony\Component\Serializer\Normalizer\NormalizerInterface`` and
 ``Symfony\Component\Serializer\Normalizer\DenormalizerInterface`` from the `Symfony Serializer Component`_.
