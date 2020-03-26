@@ -107,7 +107,7 @@ files:
         }
     }
 
-For more details about generating JSON Schema, you can read ":doc:`/OpenAPI/generate`" documentation.
+For more details about generating JSON Schema, you can read ":doc:`/components/OpenAPI`" documentation.
 
 Using
 -----
@@ -163,7 +163,7 @@ Using the API Client
 --------------------
 
 Generated code has complete `PHPDoc`_ comment on each method, which should correctly describe the endpoint.
-Method names for each endpoint depend on the ``operationId`` property of the OpenAPI specification. And if not present
+Method names for each endpoint depends on the ``operationId`` property of the OpenAPI specification. And if not present
 it will be generated from the endpoint path::
 
     <?php
@@ -174,7 +174,7 @@ it will be generated from the endpoint path::
 
 Also depending on the parameters of the endpoint, it may have 2 or more arguments.
 
-For more details about using OpenAPI, you can read ":doc:`/OpenAPI/usage`" documentation.
+For more details about using OpenAPI, you can read ":doc:`/components/OpenAPI`" documentation.
 
 .. _PSR18: https://www.php-fig.org/psr/psr-18/
 .. _PHPDoc: https://www.phpdoc.org/

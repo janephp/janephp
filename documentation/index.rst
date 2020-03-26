@@ -50,16 +50,7 @@ Lastly, if you want to contribute there is some details about :doc:`/contributin
    :caption: Components
 
    JSON Schema <components/JsonSchema>
-
-.. toctree::
-   :hidden:
-   :caption: OpenAPI
-
-   Introduction <OpenAPI/introduction>
-   Generating a Client <OpenAPI/generate>
-   Using a generated client <OpenAPI/usage>
-   Example <OpenAPI/example.rst>
-   Extending the Client <OpenAPI/extending>
+   OpenAPI <components/OpenAPI>
 
 .. toctree::
    :hidden:

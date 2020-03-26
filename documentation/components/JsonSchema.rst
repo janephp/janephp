@@ -115,8 +115,18 @@ Options
 Other options are available to customize the generated code:
 
  * ``reference``: A boolean which indicate to add the support for `JSON Reference`_ into the generated code.
- * ``date-format``: A date format to specify how the generated code should encode and decode ``\DateTime`` object to
-   string
+ * ``date-format``: A date-time format to specify how the generated code should encode and decode ``\DateTime`` object
+   to string.  This option is only for format ``date-time``.
+ * ``full-date-format``: A date format to specify how the generated code should encode and decode ``\DateTime`` object
+   to string. This option is only for format ``date``.
+ * ``date-prefer-interface``: The ``\DateTimeInterface`` is the base of every ``\DateTime`` related action. This makes
+   it more compatible with other DateTime libraries like `Carbon`_. This option replace ``\DateTime`` returns with
+   ``\DateTimeInterface``, it's disabled by default.
+ * ``date-input-format``: During denormalization (from array to object), we may have a different format than the output
+   format. This option allows you to specify which format you want. By default it will take ``date-format``
+   configuration.
+ * ``strict``: A boolean which indicate strict mode (true by default), not strict mode generate more permissive client
+   not respecting some standards (nullable field as an example) client.
  * ``use-fixer``: A boolean which indicate if we make a first cs-fix after code generation, is disabled by default.
  * ``fixer-config-file``: A string to specify where to find the custom configuration for the cs-fixer after code
    generation, will remove all Jane default cs-fixer default configuration.
@@ -124,8 +134,12 @@ Other options are available to customize the generated code:
    default.
  * ``use-cacheable-supports-method``: A boolean which indicate if we use ``CacheableSupportsMethodInterface`` interface
    to improve caching performances when used with Symfony Serializer.
+ * ``normalizer-force-null-when-nullable``: When having nullable properties, we enforce normalization to have theses
+   properties even if they are nullable. This option allows you to not have theses properties when they're not set
+   (``null``). By default it is enabled.
 
 .. _`JSON Reference`: https://tools.ietf.org/id/draft-pbryan-zyp-json-ref-03.html
+.. _`Carbon`: https://carbon.nesbot.com/
 
 Using a generated Model
 -----------------------
@@ -154,15 +168,15 @@ You will have to do this::
     <?php
 
     $normalizers = [
-        new Symfony\Component\Serializer\Normalizer\ArrayDenormalizer(),
-        new Vendor\Library\Generated\Normalizer\JaneObjectNormalizer(),
+        new \Symfony\Component\Serializer\Normalizer\ArrayDenormalizer(),
+        new \Vendor\Library\Generated\Normalizer\JaneObjectNormalizer(),
     ];
-    $encoders = [new Symfony\Component\Serializer\Encoder\JsonEncoder(
-        new Symfony\Component\Serializer\Encoder\JsonEncode([Symfony\Component\Serializer\Encoder\JsonEncode::OPTIONS => \JSON_UNESCAPED_SLASHES]),
-        new Symfony\Component\Serializer\Encoder\JsonDecode([Symfony\Component\Serializer\Encoder\JsonDecode::ASSOCIATIVE => false])),
+    $encoders = [new \Symfony\Component\Serializer\Encoder\JsonEncoder(
+        new \Symfony\Component\Serializer\Encoder\JsonEncode(),
+        new \Symfony\Component\Serializer\Encoder\JsonDecode([\Symfony\Component\Serializer\Encoder\JsonDecode::ASSOCIATIVE => true])),
     ];
 
-    $serializer = new Symfony\Component\Serializer\Serializer($normalizers, $encoders);
+    $serializer = new \Symfony\Component\Serializer\Serializer($normalizers, $encoders);
     $serializer->deserialize('{...}');
 
 This serializer will be able to encode and decode every data respecting your json schema specification.
