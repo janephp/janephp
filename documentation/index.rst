@@ -51,11 +51,4 @@ Lastly, if you want to contribute there is some details about :doc:`/contributin
 
    JSON Schema <components/JsonSchema>
    OpenAPI <components/OpenAPI>
-
-.. toctree::
-   :hidden:
-   :caption: AutoMapper
-
-   Introduction <AutoMapper/introduction>
-   Usage <AutoMapper/usage>
-   Features <AutoMapper/features>
+   AutoMapper <components/AutoMapper>
