@@ -1,11 +1,11 @@
 <?php
 
-namespace Jane\OpenApi3\Generator\Client;
+namespace Jane\OpenApi\Generator\Client;
 
 use Http\Client\Common\Plugin\AddHostPlugin;
 use Http\Client\Common\Plugin\AddPathPlugin;
-use Jane\OpenApi3\Generator\Psr18ClientGenerator;
-use Jane\OpenApi3\JsonSchema\Model\OpenApi;
+use Jane\OpenApi\Generator\Psr18ClientGenerator;
+use Jane\OpenApi\JsonSchema\Model\OpenApi;
 use Jane\OpenApiCommon\Generator\Client\ServerPluginGenerator as BaseServerPluginGenerator;
 
 trait ServerPluginGenerator
@@ -30,6 +30,13 @@ trait ServerPluginGenerator
             if (\array_key_exists('host', $url)) {
                 $scheme = $url['scheme'] ?? 'https';
                 $baseUri = $scheme . '://' . trim($url['host'], '/');
+
+                $variables = $server->getVariables();
+
+                if ($variables['port']->getDefault()) {
+                    $baseUri .= ':' . $variables['port']->getDefault();
+                }
+
                 $plugins[] = AddHostPlugin::class;
             }
 
