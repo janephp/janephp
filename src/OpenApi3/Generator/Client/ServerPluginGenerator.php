@@ -1,11 +1,11 @@
 <?php
 
-namespace Jane\OpenApi\Generator\Client;
+namespace Jane\OpenApi3\Generator\Client;
 
 use Http\Client\Common\Plugin\AddHostPlugin;
 use Http\Client\Common\Plugin\AddPathPlugin;
-use Jane\OpenApi\Generator\Psr18ClientGenerator;
-use Jane\OpenApi\JsonSchema\Model\OpenApi;
+use Jane\OpenApi3\Generator\Psr18ClientGenerator;
+use Jane\OpenApi3\JsonSchema\Model\OpenApi;
 use Jane\OpenApiCommon\Generator\Client\ServerPluginGenerator as BaseServerPluginGenerator;
 
 trait ServerPluginGenerator
