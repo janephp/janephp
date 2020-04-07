@@ -75,6 +75,13 @@ name it as you like and use the ``--config-file`` option to specify its location
     always use the same set of parameters and, when it changes, give vision of the new option(s) used to generate the
     code.
 
+.. hint::
+    If you have a really big specification and want to optimize your generation time, you can disable garbage collector
+    during generation, you can read more about it on `Scrutinizer blog post`_ . To do that, use Jane as following:
+    ``php -d zend.enable_gc=0 vendor/bin/jane generate``.
+
+.. _`Scrutinizer blog post`: https://scrutinizer-ci.com/blog/composer-gc-performance-who-is-affected-too
+
 Configuration file
 ~~~~~~~~~~~~~~~~~~
 

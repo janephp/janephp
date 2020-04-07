@@ -105,7 +105,7 @@ autoload for the generated files:
         }
     }
 
-For more details about generating JSON Schema, you can read ":doc:`/JsonSchema/generate`" documentation.
+For more details about generating JSON Schema, you can read ":doc:`/components/JsonSchema`" documentation.
 
 Using
 -----
