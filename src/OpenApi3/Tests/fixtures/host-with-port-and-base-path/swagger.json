@@ -1,0 +1,29 @@
+{
+    "openapi": "3.0.0",
+    "paths": {
+        "/test-exception": {
+            "get": {
+                "operationId": "testHost",
+                "responses": {
+                    "default": {
+                        "description": "Default response"
+                    }
+                }
+            }
+        }
+    },
+    "servers": [
+        {
+            "url": "http://www.foo-host.com/base-path",
+            "variables" : {
+                "port" : {
+                    "default": "8024"
+                }
+            }
+        }
+    ],
+    "info": {
+        "version": "",
+        "title": ""
+    }
+}
