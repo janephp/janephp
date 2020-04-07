@@ -33,6 +33,15 @@ trait ServerPluginGenerator
                 $plugins[] = AddHostPlugin::class;
             }
 
+            $variables = $server->getVariables();
+
+            if (null !== $variables
+                && \array_key_exists('port', $variables)
+                && null !== $variables['port']->getDefault()
+            ) {
+                $baseUri .= ':' . $variables['port']->getDefault();
+            }
+
             if (\array_key_exists('path', $url) && null !== $url['path']) {
                 $baseUri .= '/' . trim($url['path'], '/');
                 $plugins[] = AddPathPlugin::class;
