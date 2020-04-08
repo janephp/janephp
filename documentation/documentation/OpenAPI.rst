@@ -4,6 +4,19 @@ Using OpenAPI
 Jane OpenAPI is a library to generate, in PHP, an http client and its associated models and serializers from a `OpenAPI`_
 specification: version 2 or 3.
 
+Here is a quick schema to understand what Jane does and how does it work with your APIs
+
+.. image:: ../_static/images/open-api-schema.jpeg
+
+From left to right, Jane is gonna take your OpenAPI specification and generate files
+
+ * Generic client will be your starting point for your API, it will contains a ``create`` method to initialize everything
+   we need and will have methods for all your API endpoints;
+ * Endpoint will be generated corresponding to all GET / POST / PUT / ... endpoints your declared, they will be called in
+   the Client instance methods;
+ * Normalizer will allow to convert from array to object and reverse, based on your models specification;
+ * Model are you model specification as PHP classes.
+
 Installation
 ------------
 

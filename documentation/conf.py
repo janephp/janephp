@@ -114,8 +114,8 @@ if not on_rtd:  # only import and set the theme if we're building docs locally
 html_static_path = ['_static']
 
 def setup(app):
-    app.add_stylesheet('custom.css')
-    app.add_stylesheet('highlight.css')
+    app.add_stylesheet('styles/custom.css')
+    app.add_stylesheet('styles/highlight.css')
 
 # Custom sidebar templates, must be a dictionary that maps document names
 # to template names.
