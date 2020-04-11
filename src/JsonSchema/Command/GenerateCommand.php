@@ -15,6 +15,8 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class GenerateCommand extends Command
 {
+    use ConfigLoader;
+
     /**
      * {@inheritdoc}
      */
@@ -22,7 +24,7 @@ class GenerateCommand extends Command
     {
         $this->setName('generate');
         $this->setDescription('Generate a set of class and normalizers given a specific Json Schema file');
-        $this->addOption('config-file', 'c', InputOption::VALUE_REQUIRED, 'File to use for jane configuration', '.jane');
+        $this->addOption('config-file', 'c', InputOption::VALUE_REQUIRED, 'File to use for Jane configuration', '.jane');
     }
 
     /**
@@ -30,19 +32,7 @@ class GenerateCommand extends Command
      */
     public function execute(InputInterface $input, OutputInterface $output)
     {
-        $configFile = $input->getOption('config-file');
-
-        if (!file_exists($configFile)) {
-            throw new \RuntimeException(sprintf('Config file %s does not exist', $configFile));
-        }
-
-        $options = require $configFile;
-
-        if (!\is_array($options)) {
-            throw new \RuntimeException(sprintf('Invalid config file specified or invalid return type in file %s', $configFile));
-        }
-
-        $options = $this->resolveConfiguration($options);
+        $options = $this->loadConfig($input->getOption('config-file'));
         $registry = new Registry();
 
         if (\array_key_exists('json-schema-file', $options)) {
@@ -75,39 +65,6 @@ class GenerateCommand extends Command
         $printer->output($registry);
 
         return 0;
-    }
-
-    protected function resolveConfiguration(array $options = [])
-    {
-        $optionsResolver = new OptionsResolver();
-        $optionsResolver->setDefaults([
-            'reference' => true,
-            'strict' => true,
-            'date-format' => \DateTime::RFC3339,
-            'full-date-format' => 'Y-m-d',
-            'date-prefer-interface' => null,
-            'date-input-format' => null,
-            'use-fixer' => false,
-            'fixer-config-file' => null,
-            'clean-generated' => true,
-            'use-cacheable-supports-method' => null,
-            'normalizer-force-null-when-nullable' => true,
-        ]);
-
-        if (\array_key_exists('json-schema-file', $options)) {
-            $optionsResolver->setRequired([
-                'json-schema-file',
-                'root-class',
-                'namespace',
-                'directory',
-            ]);
-        } else {
-            $optionsResolver->setRequired([
-                'mapping',
-            ]);
-        }
-
-        return $optionsResolver->resolve($options);
     }
 
     protected function resolveSchema($schema, array $options = [])

@@ -2,6 +2,7 @@
 
 namespace Jane\OpenApiCommon\Command;
 
+use Jane\JsonSchema\Command\ConfigLoader;
 use Jane\JsonSchema\Printer;
 use Jane\OpenApiCommon\Exception\CouldNotParseException;
 use Jane\OpenApiCommon\Exception\OpenApiVersionSupportException;
@@ -17,6 +18,8 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class GenerateCommand extends Command
 {
+    use ConfigLoader;
+
     private static $schemaParsers = [];
 
     public function configure()
@@ -28,19 +31,7 @@ class GenerateCommand extends Command
 
     public function execute(InputInterface $input, OutputInterface $output)
     {
-        $configFile = $input->getOption('config-file');
-
-        if (!file_exists($configFile)) {
-            throw new \RuntimeException(sprintf('Config file %s does not exist', $configFile));
-        }
-
-        $options = require $configFile;
-
-        if (!\is_array($options)) {
-            throw new \RuntimeException(sprintf('Invalid config file specified or invalid return type in file %s', $configFile));
-        }
-
-        $options = $this->resolveConfiguration($options);
+        $options = $this->loadConfig($input->getOption('config-file'));
         $registries = [];
 
         if (\array_key_exists('openapi-file', $options)) {

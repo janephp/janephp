@@ -2,12 +2,14 @@
 
 namespace Jane\JsonSchema;
 
+use Jane\JsonSchema\Command\DumpConfigCommand;
 use Jane\JsonSchema\Command\GenerateCommand;
 use Symfony\Component\Console\Application as BaseApplication;
 
 class Application extends BaseApplication
 {
-    public const COMMAND_CLASS = GenerateCommand::class;
+    public const GENERATE_COMMAND = GenerateCommand::class;
+    public const DUMP_CONFIG_COMMAND = DumpConfigCommand::class;
     public const VERSION = '6.x-dev';
 
     /**
@@ -17,7 +19,10 @@ class Application extends BaseApplication
     {
         parent::__construct('Jane', self::VERSION);
 
-        $commandClass = static::COMMAND_CLASS;
-        $this->add(new $commandClass());
+        $generateCommand = static::GENERATE_COMMAND;
+        $dumpConfigCommand = static::DUMP_CONFIG_COMMAND;
+
+        $this->add(new $generateCommand());
+        $this->add(new $dumpConfigCommand());
     }
 }
