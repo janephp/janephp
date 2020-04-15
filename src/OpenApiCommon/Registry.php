@@ -7,6 +7,9 @@ use Jane\OpenApiCommon\Guesser\Guess\SecuritySchemeGuess;
 
 class Registry extends BaseRegistry
 {
+    /** @var array<string>|null */
+    private $whitelistedPaths;
+
     public function getFirstSchema(): Schema
     {
         return reset($this->schemas);
@@ -27,5 +30,15 @@ class Registry extends BaseRegistry
         }
 
         return $schema->getSecurityScheme($securitySchemeReference);
+    }
+
+    public function setWhitelistedPaths(?array $whitelistedPaths): void
+    {
+        $this->whitelistedPaths = $whitelistedPaths;
+    }
+
+    public function getWhitelistedPaths(): ?array
+    {
+        return $this->whitelistedPaths;
     }
 }

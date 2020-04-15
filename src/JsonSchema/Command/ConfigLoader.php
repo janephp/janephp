@@ -21,22 +21,10 @@ trait ConfigLoader
         return $this->resolveConfiguration($options);
     }
 
-    private function resolveConfiguration(array $options = [])
+    protected function resolveConfiguration(array $options = [])
     {
         $optionsResolver = new OptionsResolver();
-        $optionsResolver->setDefaults([
-            'reference' => true,
-            'strict' => true,
-            'date-format' => \DateTime::RFC3339,
-            'full-date-format' => 'Y-m-d',
-            'date-prefer-interface' => null,
-            'date-input-format' => null,
-            'use-fixer' => false,
-            'fixer-config-file' => null,
-            'clean-generated' => true,
-            'use-cacheable-supports-method' => null,
-            'skip-null-values' => true,
-        ]);
+        $optionsResolver->setDefaults($this->resolveConfigurationDefaults());
 
         if (\array_key_exists('json-schema-file', $options)) {
             $optionsResolver->setRequired([
@@ -52,5 +40,22 @@ trait ConfigLoader
         }
 
         return $optionsResolver->resolve($options);
+    }
+
+    protected function resolveConfigurationDefaults(): array
+    {
+        return [
+            'reference' => true,
+            'strict' => true,
+            'date-format' => \DateTime::RFC3339,
+            'full-date-format' => 'Y-m-d',
+            'date-prefer-interface' => null,
+            'date-input-format' => null,
+            'use-fixer' => false,
+            'fixer-config-file' => null,
+            'clean-generated' => true,
+            'use-cacheable-supports-method' => null,
+            'skip-null-values' => true,
+        ];
     }
 }
