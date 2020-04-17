@@ -12,6 +12,8 @@ use Jane\OpenApi3\JsonSchema\Model\OpenApi;
 use Jane\OpenApiCommon\Generator\Client\Psr18ClientGenerator as CommonPsr18ClientGenerator;
 use Jane\OpenApiCommon\Naming\OperationNamingInterface;
 use Jane\OpenApi3\Operation\OperationManager;
+use Jane\OpenApiCommon\Operation\Operation;
+use Jane\OpenApiCommon\Registry;
 use PhpParser\Node\Name;
 use PhpParser\Node\Stmt;
 
@@ -43,7 +45,15 @@ class Psr18ClientGenerator implements GeneratorInterface
         $operations = $this->operationManager->buildOperationCollection($openApi, $schema->getOrigin() . '#');
         $statements = [];
 
+        /** @var Registry $openApiRegistry */
+        $openApiRegistry = $context->getRegistry();
+        $whitelistedPaths = $openApiRegistry->getWhitelistedPaths() ?? [];
+
         foreach ($operations as $operation) {
+            if (\count($whitelistedPaths) > 0 && !$this->isWhitelisted($operation, $whitelistedPaths)) {
+                continue;
+            }
+
             $operationName = $this->operationNaming->getFunctionName($operation);
             $statements[] = $this->operationGenerator->createOperation($operationName, $operation, $context);
         }
@@ -65,5 +75,16 @@ class Psr18ClientGenerator implements GeneratorInterface
             $node,
             self::FILE_TYPE_CLIENT
         ));
+    }
+
+    private function isWhitelisted(Operation $operation, array $whitelistedPaths): bool
+    {
+        foreach ($whitelistedPaths as $whitelistedPath) {
+            if (preg_match(sprintf('#%s#', $whitelistedPath), $operation->getPath())) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }
