@@ -3,10 +3,14 @@
 namespace Jane\OpenApiCommon;
 
 use Jane\JsonSchema\Schema as BaseSchema;
+use Jane\OpenApiCommon\Guesser\Guess\OperationGuess;
 use Jane\OpenApiCommon\Guesser\Guess\SecuritySchemeGuess;
 
 class Schema extends BaseSchema
 {
+    /** @var OperationGuess[] */
+    private $operations = [];
+
     /** @var SecuritySchemeGuess[] List of SecuritySchemes associated to this schema */
     private $securitySchemes = [];
 
@@ -36,5 +40,18 @@ class Schema extends BaseSchema
     public function getSecuritySchemes(): array
     {
         return $this->securitySchemes;
+    }
+
+    public function addOperation(string $reference, OperationGuess $operationGuess): void
+    {
+        $this->operations[urldecode($reference)] = $operationGuess;
+    }
+
+    /**
+     * @return OperationGuess[]
+     */
+    public function getOperations(): array
+    {
+        return $this->operations;
     }
 }

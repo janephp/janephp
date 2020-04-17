@@ -1,8 +1,8 @@
 <?php
 
-namespace Jane\OpenApiCommon\Operation;
+namespace Jane\OpenApiCommon\Guesser\Guess;
 
-class Operation
+class OperationGuess
 {
     public const DELETE = 'DELETE';
     public const GET = 'GET';

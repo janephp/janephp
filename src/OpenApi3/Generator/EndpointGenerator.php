@@ -13,8 +13,8 @@ use Jane\OpenApi3\JsonSchema\Model\RequestBody;
 use Jane\OpenApi3\JsonSchema\Model\Response;
 use Jane\OpenApi3\JsonSchema\Model\Schema;
 use Jane\OpenApiCommon\Generator\ExceptionGenerator;
+use Jane\OpenApiCommon\Guesser\Guess\OperationGuess;
 use Jane\OpenApiCommon\Naming\OperationNamingInterface;
-use Jane\OpenApiCommon\Operation\Operation;
 use Jane\OpenApiRuntime\Client\BaseEndpoint;
 use PhpParser\Comment\Doc;
 use PhpParser\Node\Arg;
@@ -65,7 +65,7 @@ abstract class EndpointGenerator
 
     abstract protected function getTrait(): array;
 
-    public function createEndpointClass(Operation $operation, Context $context): array
+    public function createEndpointClass(OperationGuess $operation, Context $context): array
     {
         $openApi = $context->getCurrentSchema()->getParsed();
         $endpointName = $this->operationNaming->getEndpointName($operation);
@@ -121,7 +121,7 @@ abstract class EndpointGenerator
         return [$context->getCurrentSchema()->getNamespace() . '\\Endpoint\\' . $endpointName, $methodParams, $methodParamsDoc, $outputTypes, $throwTypes];
     }
 
-    private function getConstructor(Operation $operation, Context $context): array
+    private function getConstructor(OperationGuess $operation, Context $context): array
     {
         $pathParams = [];
         $bodyParam = null;
@@ -208,7 +208,7 @@ EOD
         ], ]), $methodParams, $methodParamsDoc, $pathProperties];
     }
 
-    private function getGetMethod(Operation $operation): Stmt\ClassMethod
+    private function getGetMethod(OperationGuess $operation): Stmt\ClassMethod
     {
         return new Stmt\ClassMethod('getMethod', [
             'type' => Stmt\Class_::MODIFIER_PUBLIC,
@@ -219,7 +219,7 @@ EOD
         ]);
     }
 
-    private function getGetUri(Operation $operation): Stmt\ClassMethod
+    private function getGetUri(OperationGuess $operation): Stmt\ClassMethod
     {
         $names = [];
 
@@ -261,7 +261,7 @@ EOD
         ]);
     }
 
-    private function getExtraHeadersMethod(OpenApi $openApi, Operation $operation): ?Stmt\ClassMethod
+    private function getExtraHeadersMethod(OpenApi $openApi, OperationGuess $operation): ?Stmt\ClassMethod
     {
         $headers = [];
         $produces = [];
@@ -323,7 +323,7 @@ EOD
         ]);
     }
 
-    private function getOptionsResolverMethod(Operation $operation, string $parameterIn, string $methodName): ?Stmt\ClassMethod
+    private function getOptionsResolverMethod(OperationGuess $operation, string $parameterIn, string $methodName): ?Stmt\ClassMethod
     {
         $parameters = [];
 
@@ -358,7 +358,7 @@ EOD
         ]);
     }
 
-    private function getGetBody(Operation $operation, Context $context): Stmt\ClassMethod
+    private function getGetBody(OperationGuess $operation, Context $context): Stmt\ClassMethod
     {
         $opRef = $operation->getReference() . '/requestBody';
         $requestBody = $operation->getOperation()->getRequestBody();
@@ -378,7 +378,7 @@ EOD
         ]);
     }
 
-    private function getTransformResponseBody(Operation $operation, string $endpointName, Context $context): array
+    private function getTransformResponseBody(OperationGuess $operation, string $endpointName, Context $context): array
     {
         $outputStatements = [];
         $outputTypes = ['null'];

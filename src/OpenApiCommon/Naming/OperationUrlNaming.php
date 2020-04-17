@@ -3,19 +3,19 @@
 namespace Jane\OpenApiCommon\Naming;
 
 use Doctrine\Common\Inflector\Inflector;
-use Jane\OpenApiCommon\Operation\Operation;
+use Jane\OpenApiCommon\Guesser\Guess\OperationGuess;
 
 abstract class OperationUrlNaming implements OperationNamingInterface
 {
-    public function getFunctionName(Operation $operation): string
+    public function getFunctionName(OperationGuess $operation): string
     {
         return Inflector::camelize($this->getUniqueName($operation));
     }
 
-    public function getEndpointName(Operation $operation): string
+    public function getEndpointName(OperationGuess $operation): string
     {
         return Inflector::classify($this->getUniqueName($operation));
     }
 
-    abstract protected function getUniqueName(Operation $operation): string;
+    abstract protected function getUniqueName(OperationGuess $operation): string;
 }

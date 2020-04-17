@@ -5,12 +5,12 @@ namespace Jane\OpenApi2\Naming;
 use Doctrine\Common\Inflector\Inflector;
 use Jane\OpenApi2\JsonSchema\Model\Response;
 use Jane\OpenApi2\JsonSchema\Model\Schema;
+use Jane\OpenApiCommon\Guesser\Guess\OperationGuess;
 use Jane\OpenApiCommon\Naming\OperationUrlNaming as CommonOperationUrlNaming;
-use Jane\OpenApiCommon\Operation\Operation;
 
 class OperationUrlNaming extends CommonOperationUrlNaming
 {
-    protected function getUniqueName(Operation $operation): string
+    protected function getUniqueName(OperationGuess $operation): string
     {
         $prefix = strtolower($operation->getMethod());
         $shouldSingularize = true;

@@ -12,6 +12,8 @@ use Jane\OpenApi2\JsonSchema\Model\OpenApi;
 use Jane\OpenApi2\JsonSchema\Model\Operation;
 use Jane\OpenApi2\JsonSchema\Model\PathItem;
 use Jane\OpenApi2\JsonSchema\Model\Response;
+use Jane\OpenApiCommon\Guesser\Guess\OperationGuess;
+use Jane\OpenApiCommon\Registry as OpenApiRegistry;
 
 class OpenApiGuesser implements GuesserInterface, ClassGuesserInterface, ChainGuesserAwareInterface
 {
@@ -28,7 +30,8 @@ class OpenApiGuesser implements GuesserInterface, ClassGuesserInterface, ChainGu
     /**
      * {@inheritdoc}
      *
-     * @param OpenApi $object
+     * @param OpenApi         $object
+     * @param OpenApiRegistry $registry
      */
     public function guessClass($object, string $name, string $reference, Registry $registry): void
     {
@@ -52,13 +55,13 @@ class OpenApiGuesser implements GuesserInterface, ClassGuesserInterface, ChainGu
         if ($object->getPaths()) {
             foreach ($object->getPaths() as $pathName => $path) {
                 if ($path instanceof PathItem) {
-                    $this->getClassFromOperation($pathName . 'Delete', $path->getDelete(), $reference . '/' . $pathName . '/delete', $registry);
-                    $this->getClassFromOperation($pathName . 'Get', $path->getGet(), $reference . '/' . $pathName . '/get', $registry);
-                    $this->getClassFromOperation($pathName . 'Head', $path->getHead(), $reference . '/' . $pathName . '/head', $registry);
-                    $this->getClassFromOperation($pathName . 'Options', $path->getOptions(), $reference . '/' . $pathName . '/options', $registry);
-                    $this->getClassFromOperation($pathName . 'Patch', $path->getPatch(), $reference . '/' . $pathName . '/patch', $registry);
-                    $this->getClassFromOperation($pathName . 'Post', $path->getPost(), $reference . '/' . $pathName . '/post', $registry);
-                    $this->getClassFromOperation($pathName . 'Put', $path->getPut(), $reference . '/' . $pathName . '/put', $registry);
+                    $this->guessClassFromOperation($path, $path->getDelete(), $pathName, OperationGuess::DELETE, $reference, $registry);
+                    $this->guessClassFromOperation($path, $path->getGet(), $pathName, OperationGuess::GET, $reference, $registry);
+                    $this->guessClassFromOperation($path, $path->getHead(), $pathName, OperationGuess::HEAD, $reference, $registry);
+                    $this->guessClassFromOperation($path, $path->getOptions(), $pathName, OperationGuess::OPTIONS, $reference, $registry);
+                    $this->guessClassFromOperation($path, $path->getPatch(), $pathName, OperationGuess::PATCH, $reference, $registry);
+                    $this->guessClassFromOperation($path, $path->getPost(), $pathName, OperationGuess::POST, $reference, $registry);
+                    $this->guessClassFromOperation($path, $path->getPut(), $pathName, OperationGuess::PUT, $reference, $registry);
 
                     if ($path->getParameters()) {
                         foreach ($path->getParameters() as $key => $parameter) {
@@ -80,14 +83,18 @@ class OpenApiGuesser implements GuesserInterface, ClassGuesserInterface, ChainGu
         }
     }
 
-    /**
-     * Discover classes in operation.
-     */
-    protected function getClassFromOperation(string $name, ?Operation $operation, string $reference, Registry $registry)
+    protected function guessClassFromOperation(PathItem $pathItem, ?Operation $operation, string $path, string $operationType, string $reference, OpenApiRegistry $registry): void
     {
         if (null === $operation) {
             return;
         }
+
+        $name = $path . ucfirst(strtolower($operationType));
+        $reference = $reference . '/' . $path . '/' . strtolower($operationType);
+        $operationGuess = new OperationGuess($pathItem, $operation, $path, $operationType, $reference);
+
+        $schema = $registry->getSchema($reference);
+        $schema->addOperation($reference, $operationGuess);
 
         if ($operation->getParameters()) {
             foreach ($operation->getParameters() as $key => $parameter) {

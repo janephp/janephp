@@ -8,6 +8,8 @@ use Jane\JsonSchema\Guesser\ClassGuesserInterface;
 use Jane\JsonSchema\Guesser\GuesserInterface;
 use Jane\JsonSchema\Guesser\GuesserResolverTrait;
 use Jane\JsonSchema\Registry;
+use Jane\OpenApiCommon\Guesser\Guess\OperationGuess;
+use Jane\OpenApiCommon\Registry as OpenApiRegistry;
 use Jane\JsonSchemaRuntime\Reference;
 use Jane\OpenApi3\JsonSchema\Model\Components;
 use Jane\OpenApi3\JsonSchema\Model\Operation;
@@ -41,7 +43,8 @@ class OpenApiGuesser implements GuesserInterface, ClassGuesserInterface, ChainGu
     /**
      * {@inheritdoc}
      *
-     * @param OpenApi $object
+     * @param OpenApi         $object
+     * @param OpenApiRegistry $registry
      */
     public function guessClass($object, string $name, string $reference, Registry $registry): void
     {
@@ -67,15 +70,22 @@ class OpenApiGuesser implements GuesserInterface, ClassGuesserInterface, ChainGu
         }
 
         if (is_iterable($object->getPaths())) {
+            $whitelistedPaths = $registry->getWhitelistedPaths() ?? [];
+            $checkWhitelistedPaths = \count($whitelistedPaths) > 0;
+
             foreach ($object->getPaths() as $pathName => $path) {
+                if ($checkWhitelistedPaths && !$this->isWhitelisted($pathName, $whitelistedPaths)) {
+                    continue;
+                }
+
                 if ($path instanceof PathItem) {
-                    $this->getClassFromOperation($pathName . 'Delete', $path->getDelete(), $reference . '/' . $pathName . '/delete', $registry);
-                    $this->getClassFromOperation($pathName . 'Get', $path->getGet(), $reference . '/' . $pathName . '/get', $registry);
-                    $this->getClassFromOperation($pathName . 'Head', $path->getHead(), $reference . '/' . $pathName . '/head', $registry);
-                    $this->getClassFromOperation($pathName . 'Options', $path->getOptions(), $reference . '/' . $pathName . '/options', $registry);
-                    $this->getClassFromOperation($pathName . 'Patch', $path->getPatch(), $reference . '/' . $pathName . '/patch', $registry);
-                    $this->getClassFromOperation($pathName . 'Post', $path->getPost(), $reference . '/' . $pathName . '/post', $registry);
-                    $this->getClassFromOperation($pathName . 'Put', $path->getPut(), $reference . '/' . $pathName . '/put', $registry);
+                    $this->guessClassFromOperation($path, $path->getDelete(), $pathName, OperationGuess::DELETE, $reference, $registry);
+                    $this->guessClassFromOperation($path, $path->getGet(), $pathName, OperationGuess::GET, $reference, $registry);
+                    $this->guessClassFromOperation($path, $path->getHead(), $pathName, OperationGuess::HEAD, $reference, $registry);
+                    $this->guessClassFromOperation($path, $path->getOptions(), $pathName, OperationGuess::OPTIONS, $reference, $registry);
+                    $this->guessClassFromOperation($path, $path->getPatch(), $pathName, OperationGuess::PATCH, $reference, $registry);
+                    $this->guessClassFromOperation($path, $path->getPost(), $pathName, OperationGuess::POST, $reference, $registry);
+                    $this->guessClassFromOperation($path, $path->getPut(), $pathName, OperationGuess::PUT, $reference, $registry);
 
                     if (is_iterable($path->getParameters())) {
                         foreach ($path->getParameters() as $key => $parameter) {
@@ -97,14 +107,29 @@ class OpenApiGuesser implements GuesserInterface, ClassGuesserInterface, ChainGu
         }
     }
 
-    /**
-     * Discover classes in operation.
-     */
-    protected function getClassFromOperation(string $name, ?Operation $operation, string $reference, Registry $registry): void
+    private function isWhitelisted(string $path, array $whitelistedPaths): bool
+    {
+        foreach ($whitelistedPaths as $whitelistedPath) {
+            if (preg_match(sprintf('#%s#', $whitelistedPath), $path)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    protected function guessClassFromOperation(PathItem $pathItem, ?Operation $operation, string $path, string $operationType, string $reference, OpenApiRegistry $registry): void
     {
         if (null === $operation) {
             return;
         }
+
+        $name = $path . ucfirst(strtolower($operationType));
+        $reference = $reference . '/' . $path . '/' . strtolower($operationType);
+        $operationGuess = new OperationGuess($pathItem, $operation, $path, $operationType, $reference);
+
+        $schema = $registry->getSchema($reference);
+        $schema->addOperation($reference, $operationGuess);
 
         if (null !== $operation->getParameters() && \count($operation->getParameters()) > 0) {
             foreach ($operation->getParameters() as $key => $parameter) {

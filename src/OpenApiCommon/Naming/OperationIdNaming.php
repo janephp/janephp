@@ -3,7 +3,7 @@
 namespace Jane\OpenApiCommon\Naming;
 
 use Doctrine\Common\Inflector\Inflector;
-use Jane\OpenApiCommon\Operation\Operation;
+use Jane\OpenApiCommon\Guesser\Guess\OperationGuess;
 use Symfony\Component\String\Slugger\AsciiSlugger;
 use Symfony\Component\String\Slugger\SluggerInterface;
 
@@ -17,12 +17,12 @@ class OperationIdNaming implements OperationNamingInterface
         $this->slugger = new AsciiSlugger();
     }
 
-    public function getFunctionName(Operation $operation): string
+    public function getFunctionName(OperationGuess $operation): string
     {
         return Inflector::camelize((string) $operation->getOperation()->getOperationId());
     }
 
-    public function getEndpointName(Operation $operation): string
+    public function getEndpointName(OperationGuess $operation): string
     {
         $operationId = (string) $operation->getOperation()->getOperationId();
         $operationId = $this->slugger->slug($operationId, '-');
