@@ -13,13 +13,16 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
     {
         return $this->executePsr7Endpoint(new \Jane\OpenApi\Tests\Expected\Endpoint\TestHost(), $fetch);
     }
-    public static function create($httpClient = null)
+    public static function create($httpClient = null, array $additionalPlugins = array())
     {
         if (null === $httpClient) {
             $httpClient = \Http\Discovery\Psr18ClientDiscovery::find();
             $plugins = array();
             $uri = \Http\Discovery\Psr17FactoryDiscovery::findUrlFactory()->createUri('http://www.foo-host.com:8024');
             $plugins[] = new \Http\Client\Common\Plugin\AddHostPlugin($uri);
+            if (count($additionalPlugins) > 0) {
+                $plugins[] = array_merge($plugins, $additionalPlugins);
+            }
             $httpClient = new \Http\Client\Common\PluginClient($httpClient, $plugins);
         }
         $requestFactory = \Http\Discovery\Psr17FactoryDiscovery::findRequestFactory();
