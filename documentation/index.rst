@@ -47,27 +47,8 @@ Lastly, if you want to contribute there is some details about :doc:`/contributin
 
 .. toctree::
    :hidden:
-   :caption: Json Schema
+   :caption: Components
 
-   Introduction <JsonSchema/introduction>
-   Generating a Model <JsonSchema/generate>
-   Using a generated Model <JsonSchema/usage>
-   Multi schemas <JsonSchema/multi>
-
-.. toctree::
-   :hidden:
-   :caption: OpenAPI
-
-   Introduction <OpenAPI/introduction>
-   Generating a Client <OpenAPI/generate>
-   Using a generated client <OpenAPI/usage>
-   Example <OpenAPI/example.rst>
-   Extending the Client <OpenAPI/extending>
-
-.. toctree::
-   :hidden:
-   :caption: AutoMapper
-
-   Introduction <AutoMapper/introduction>
-   Usage <AutoMapper/usage>
-   Features <AutoMapper/features>
+   JSON Schema <components/JsonSchema>
+   OpenAPI <components/OpenAPI>
+   AutoMapper <components/AutoMapper>
