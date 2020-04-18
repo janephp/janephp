@@ -84,7 +84,7 @@ class GenerateCommand extends Command
             'fixer-config-file',
             'clean-generated',
             'use-cacheable-supports-method',
-            'normalizer-force-null-when-nullable',
+            'skip-null-values',
         ]);
 
         $optionsResolver->setRequired([
