@@ -289,6 +289,24 @@ present if ``https`` is not present.
 .. _PHPDoc: https://www.phpdoc.org/
 .. _php-http plugin system: http://docs.php-http.org/en/latest/plugins/introduction.html
 
+Having custom plugins
+~~~~~~~~~~~~~~~~~~~~~
+
+If you want to support more behavior such as authentication or other stuff that need a plugin, you can pass them
+through the second argument of the static ``create`` method.
+
+Authentication
+~~~~~~~~~~~~~~
+
+We do generate a plugin for authentication when needed, it does support:
+
+- ``apiKey`` in header & query for both OpenAPI v2 & v3
+- HTTP Basic & Bearer for OpenAPI v3
+
+When your OpenAPI definition contains it, Jane will generate a Authentication namespace that contains all plugins you
+need for your API. Then you can pass it to your Jane Client (only if you let Jane make a HTTP Client for you, otherwise
+this second parameters is ignored).
+
 Extending the Client
 --------------------
 
