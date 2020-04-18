@@ -91,26 +91,14 @@ class TestNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         if (null !== $object->getString()) {
             $data['string'] = $object->getString();
         }
-        else {
-            $data['string'] = null;
-        }
         if (null !== $object->getBool()) {
             $data['bool'] = $object->getBool();
-        }
-        else {
-            $data['bool'] = null;
         }
         if (null !== $object->getInteger()) {
             $data['integer'] = $object->getInteger();
         }
-        else {
-            $data['integer'] = null;
-        }
         if (null !== $object->getFloat()) {
             $data['float'] = $object->getFloat();
-        }
-        else {
-            $data['float'] = null;
         }
         if (null !== $object->getArray()) {
             $values = array();
@@ -119,9 +107,6 @@ class TestNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             }
             $data['array'] = $values;
         }
-        else {
-            $data['array'] = null;
-        }
         if (null !== $object->getObject()) {
             $values_1 = array();
             foreach ($object->getObject() as $value_1) {
@@ -129,14 +114,8 @@ class TestNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             }
             $data['object'] = $values_1;
         }
-        else {
-            $data['object'] = null;
-        }
         if (null !== $object->getSubObject()) {
             $data['subObject'] = $this->normalizer->normalize($object->getSubObject(), 'json', $context);
-        }
-        else {
-            $data['subObject'] = null;
         }
         return $data;
     }

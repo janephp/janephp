@@ -56,9 +56,6 @@ class ModelNormalizer implements DenormalizerInterface, NormalizerInterface, Den
             }
             $data['bar'] = $values;
         }
-        else {
-            $data['bar'] = null;
-        }
         return $data;
     }
 }

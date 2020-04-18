@@ -47,9 +47,6 @@ class TestSubObjectNormalizer implements DenormalizerInterface, NormalizerInterf
         if (null !== $object->getFoo()) {
             $data['foo'] = $object->getFoo();
         }
-        else {
-            $data['foo'] = null;
-        }
         return $data;
     }
 }

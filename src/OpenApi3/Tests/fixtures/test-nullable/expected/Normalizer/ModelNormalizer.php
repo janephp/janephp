@@ -54,9 +54,6 @@ class ModelNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         if (null !== $object->getDate()) {
             $data['date'] = $object->getDate()->format('Y-m-d\\TH:i:sP');
         }
-        else {
-            $data['date'] = null;
-        }
         return $data;
     }
 }
