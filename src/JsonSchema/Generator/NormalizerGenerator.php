@@ -43,9 +43,9 @@ class NormalizerGenerator implements GeneratorInterface
     protected $useCacheableSupportsMethod;
 
     /**
-     * @var bool Whether to set property to null when objet contains null value for it when property is nullable
+     * @var bool Whether to set property to null when object contains null value for it when property is nullable
      */
-    protected $normalizerForceNullWhenNullable;
+    protected $skipNullValues;
 
     /**
      * @param Naming $naming       Naming Service
@@ -53,13 +53,13 @@ class NormalizerGenerator implements GeneratorInterface
      * @param bool   $useReference Whether to generate the JSON Reference system
      * @param bool   $useCache     Whether to use the CacheableSupportsMethodInterface interface, for >sf 4.1
      */
-    public function __construct(Naming $naming, Parser $parser, bool $useReference = true, bool $useCacheableSupportsMethod = null, bool $normalizerForceNullWhenNullable = true)
+    public function __construct(Naming $naming, Parser $parser, bool $useReference = true, bool $useCacheableSupportsMethod = null, bool $skipNullValues = true)
     {
         $this->naming = $naming;
         $this->parser = $parser;
         $this->useReference = $useReference;
         $this->useCacheableSupportsMethod = $this->canUseCacheableSupportsMethod($useCacheableSupportsMethod);
-        $this->normalizerForceNullWhenNullable = $normalizerForceNullWhenNullable;
+        $this->skipNullValues = $skipNullValues;
     }
 
     /**
@@ -84,7 +84,7 @@ class NormalizerGenerator implements GeneratorInterface
             $methods[] = $this->createSupportsDenormalizationMethod($modelFqdn);
             $methods[] = $this->createSupportsNormalizationMethod($modelFqdn);
             $methods[] = $this->createDenormalizeMethod($modelFqdn, $context, $class);
-            $methods[] = $this->createNormalizeMethod($modelFqdn, $context, $class, $this->normalizerForceNullWhenNullable);
+            $methods[] = $this->createNormalizeMethod($modelFqdn, $context, $class, $this->skipNullValues);
 
             if ($this->useCacheableSupportsMethod) {
                 $methods[] = $this->createHasCacheableSupportsMethod();

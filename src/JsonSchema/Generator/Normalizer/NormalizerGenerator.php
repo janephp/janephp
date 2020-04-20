@@ -85,7 +85,7 @@ trait NormalizerGenerator
      *
      * @return Stmt\ClassMethod
      */
-    protected function createNormalizeMethod(string $modelFqdn, Context $context, ClassGuess $classGuess, bool $normalizerForceNullWhenNullable = true)
+    protected function createNormalizeMethod(string $modelFqdn, Context $context, ClassGuess $classGuess, bool $skipNullValues = true)
     {
         $context->refreshScope();
         $dataVariable = new Expr\Variable('data');
@@ -119,7 +119,7 @@ trait NormalizerGenerator
                             ]
                         );
 
-                        if ($normalizerForceNullWhenNullable) {
+                        if (!$skipNullValues) {
                             $statements[] = new Stmt\Else_(
                                 [new Stmt\Expression(new Expr\Assign(new Expr\ArrayDimFetch($dataVariable, new Scalar\String_($property->getName())), new Expr\ConstFetch(new Name('null'))))]
                             );

@@ -79,9 +79,6 @@ class TestNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         if (null !== $object->getOnlyNull()) {
             $data['onlyNull'] = $object->getOnlyNull();
         }
-        else {
-            $data['onlyNull'] = null;
-        }
         if (null !== $object->getNullOrString()) {
             $value = $object->getNullOrString();
             if (is_string($object->getNullOrString())) {
@@ -91,9 +88,6 @@ class TestNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             }
             $data['nullOrString'] = $value;
         }
-        else {
-            $data['nullOrString'] = null;
-        }
         if (null !== $object->getArray()) {
             $values = array();
             foreach ($object->getArray() as $value_1) {
@@ -101,18 +95,12 @@ class TestNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             }
             $data['array'] = $values;
         }
-        else {
-            $data['array'] = null;
-        }
         if (null !== $object->getObject()) {
             $values_1 = array();
             foreach ($object->getObject() as $key => $value_2) {
                 $values_1[$key] = $value_2;
             }
             $data['object'] = $values_1;
-        }
-        else {
-            $data['object'] = null;
         }
         return $data;
     }

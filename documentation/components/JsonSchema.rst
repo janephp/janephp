@@ -141,7 +141,7 @@ Other options are available to customize the generated code:
    default.
  * ``use-cacheable-supports-method``: A boolean which indicate if we use ``CacheableSupportsMethodInterface`` interface
    to improve caching performances when used with Symfony Serializer.
- * ``normalizer-force-null-when-nullable``: When having nullable properties, we enforce normalization to have theses
+ * ``skip-null-values``: When having nullable properties, you can enforce normalization to skip theses
    properties even if they are nullable. This option allows you to not have theses properties when they're not set
    (``null``). By default it is enabled.
 

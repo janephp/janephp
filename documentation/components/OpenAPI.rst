@@ -135,7 +135,7 @@ Other options are available to customize the generated code:
  * ``fixer-config-file``: A string to specify where to find the custom configuration for the cs-fixer after code generation, will remove all Jane default cs-fixer default configuration.
  * ``clean-generated``: A boolean which indicate if we clean generated output before generating new files, is enabled by default.
  * ``use-cacheable-supports-method``: A boolean which indicate if we use ``CacheableSupportsMethodInterface`` interface to improve caching performances when used with Symfony Serializer.
- * ``normalizer-force-null-when-nullable``: When having nullable properties, we enforce normalization to have theses
+ * ``skip-null-values``: When having nullable properties, you can enforce normalization to skip theses
    properties even if they are nullable. This option allows you to not have theses properties when they're not set
    (``null``). By default it is enabled.
 

@@ -23,6 +23,7 @@ class LibraryTest extends TestCase
         $this->jane = Jane::build([
             'reference' => true,
             'strict' => false,
+            'skip-null-values' => false,
         ]);
         $this->printer = new Printer(new Standard(), '');
         $this->printer->setCleanGenerated(false);

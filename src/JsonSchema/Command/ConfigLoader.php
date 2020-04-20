@@ -35,7 +35,7 @@ trait ConfigLoader
             'fixer-config-file' => null,
             'clean-generated' => true,
             'use-cacheable-supports-method' => null,
-            'normalizer-force-null-when-nullable' => true,
+            'skip-null-values' => true,
         ]);
 
         if (\array_key_exists('json-schema-file', $options)) {
