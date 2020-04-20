@@ -31,7 +31,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
     {
         return $this->executePsr7Endpoint(new \Jane\OpenApi3\Tests\Expected\Endpoint\PatchParentsByParentIdChildChildId($parentId, $childId, $requestBody), $fetch);
     }
-    public static function create($httpClient = null)
+    public static function create($httpClient = null, array $additionalPlugins = array())
     {
         if (null === $httpClient) {
             $httpClient = \Http\Discovery\Psr18ClientDiscovery::find();
@@ -39,6 +39,9 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
             $uri = \Http\Discovery\Psr17FactoryDiscovery::findUrlFactory()->createUri('https://acme.localhost/v1');
             $plugins[] = new \Http\Client\Common\Plugin\AddHostPlugin($uri);
             $plugins[] = new \Http\Client\Common\Plugin\AddPathPlugin($uri);
+            if (count($additionalPlugins) > 0) {
+                $plugins[] = array_merge($plugins, $additionalPlugins);
+            }
             $httpClient = new \Http\Client\Common\PluginClient($httpClient, $plugins);
         }
         $requestFactory = \Http\Discovery\Psr17FactoryDiscovery::findRequestFactory();

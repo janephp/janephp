@@ -2,27 +2,17 @@
 
 namespace Jane\OpenApi3\Tests\Expected\Authentication;
 
-class BearerAuthentication implements \Jane\OpenApiRuntime\Client\Authentication
+class BearerAuthentication implements \Http\Client\Common\Plugin
 {
     private $token;
     public function __construct(string $token)
     {
         $this->{'token'} = $token;
     }
-    public function getPlugin() : \Http\Client\Common\Plugin
+    public function handleRequest(\Psr\Http\Message\RequestInterface $request, callable $next, callable $first) : \Http\Promise\Promise
     {
-        return new \Http\Client\Common\Plugin\AuthenticationPlugin(new class($this->{'token'}) implements \Http\Message\Authentication
-        {
-            private $token;
-            public function __construct(string $token)
-            {
-                $this->{'token'} = $token;
-            }
-            public function authenticate(\Psr\Http\Message\RequestInterface $request)
-            {
-                $header = sprintf('Bearer %s', $this->{'token'});
-                return $request->withHeader('Authorization', $header);
-            }
-        });
+        $header = sprintf('Bearer %s', $this->{'token'});
+        $request = $request->withHeader('Authorization', $header);
+        return $next($request);
     }
 }

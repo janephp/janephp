@@ -37,21 +37,21 @@ trait ConstructGenerator
                 break;
         }
 
-        $stmts = [];
-        $params = [];
-        $properties = [];
+        $constructStmts = [];
+        $constructParams = [];
+        $statements = [];
         foreach ($needs as $field => $type) {
-            $properties[] = new Stmt\Property(Stmt\Class_::MODIFIER_PRIVATE, [new Stmt\PropertyProperty($field)]);
-            $params[] = new Param(new Expr\Variable($field), null, $type);
-            $stmts[] = new Stmt\Expression(new Expr\Assign(new Expr\PropertyFetch(new Expr\Variable('this'), new Scalar\String_($field)), new Expr\Variable($field)));
+            $statements[] = new Stmt\Property(Stmt\Class_::MODIFIER_PRIVATE, [new Stmt\PropertyProperty($field)]);
+            $constructParams[] = new Param(new Expr\Variable($field), null, $type);
+            $constructStmts[] = new Stmt\Expression(new Expr\Assign(new Expr\PropertyFetch(new Expr\Variable('this'), new Scalar\String_($field)), new Expr\Variable($field)));
         }
 
-        $method = new Stmt\ClassMethod('__construct', [
+        $statements[] = new Stmt\ClassMethod('__construct', [
             'type' => Stmt\Class_::MODIFIER_PUBLIC,
-            'params' => $params,
-            'stmts' => $stmts,
+            'stmts' => $constructStmts,
+            'params' => $constructParams,
         ]);
 
-        return [$properties, $method];
+        return $statements;
     }
 }

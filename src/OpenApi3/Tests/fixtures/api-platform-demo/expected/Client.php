@@ -288,13 +288,13 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
     {
         return $this->executePsr7Endpoint(new \ApiPlatform\Demo\Endpoint\PutReviewItem($id, $requestBody), $fetch);
     }
-    public static function create($httpClient = null, \Jane\OpenApiRuntime\Client\Authentication $authentication = null)
+    public static function create($httpClient = null, array $additionalPlugins = array())
     {
         if (null === $httpClient) {
             $httpClient = \Http\Discovery\Psr18ClientDiscovery::find();
             $plugins = array();
-            if (null !== $authentication) {
-                $plugins[] = $authentication->getPlugin();
+            if (count($additionalPlugins) > 0) {
+                $plugins[] = array_merge($plugins, $additionalPlugins);
             }
             $httpClient = new \Http\Client\Common\PluginClient($httpClient, $plugins);
         }

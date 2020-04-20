@@ -2,8 +2,6 @@
 
 namespace Jane\OpenApiCommon\Generator\Client;
 
-use Jane\OpenApiCommon\Schema;
-use Jane\OpenApiRuntime\Client\Authentication;
 use Http\Discovery\Psr17FactoryDiscovery;
 use Jane\JsonSchema\Generator\Context\Context;
 use Jane\JsonSchema\Schema as BaseSchema;
@@ -36,10 +34,10 @@ trait Psr18ClientGenerator
 
     protected function getFactoryMethod(BaseSchema $schema, Context $context): Stmt
     {
-        $params = [new Node\Param(new Expr\Variable('httpClient'), new Expr\ConstFetch(new Name('null')))];
-        if ($schema instanceof Schema && \count($schema->getSecuritySchemes()) > 0) {
-            $params[] = new Node\Param(new Expr\Variable('authentication'), new Expr\ConstFetch(new Name('null')), new Name\FullyQualified(Authentication::class));
-        }
+        $params = [
+            new Node\Param(new Expr\Variable('httpClient'), new Expr\ConstFetch(new Name('null'))),
+            new Node\Param(new Expr\Variable('additionalPlugins'), new Expr\Array_(), 'array'),
+        ];
 
         return new Stmt\ClassMethod(
             'create', [
@@ -84,7 +82,8 @@ trait Psr18ClientGenerator
                                                     new Node\Arg(new Expr\Array_([
                                                         new Expr\ArrayItem(new Expr\ConstFetch(new Name('true')), new Scalar\String_('json_decode_associative')),
                                                     ])),
-                                                ])),                                            ])
+                                                ])),
+                                            ])
                                         ),
                                     ])
                                 ),

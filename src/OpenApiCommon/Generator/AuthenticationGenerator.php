@@ -9,11 +9,12 @@ use Jane\JsonSchema\Generator\Naming;
 use Jane\JsonSchema\Schema as BaseSchema;
 use Jane\OpenApiCommon\Generator\Authentication\ClassGenerator;
 use Jane\OpenApiCommon\Generator\Authentication\ConstructGenerator;
+use Jane\OpenApiCommon\Guesser\Guess\SecuritySchemeGuess;
 use Jane\OpenApiCommon\Schema;
 use PhpParser\Node\Name;
 use PhpParser\Node\Stmt;
 
-class AuthenticationGenerator implements GeneratorInterface
+abstract class AuthenticationGenerator implements GeneratorInterface
 {
     use ClassGenerator;
     use ConstructGenerator;
@@ -42,18 +43,16 @@ class AuthenticationGenerator implements GeneratorInterface
             foreach ($securitySchemes as $securityScheme) {
                 $className = $this->getNaming()->getAuthName($securityScheme->getName());
 
-                [$properties, $constructMethod] = $this->createConstruct($securityScheme);
+                $statements = $this->createConstruct($securityScheme);
+                $statements[] = $this->createHandleRequest($securityScheme);
+                $authentication = $this->createAuthentication($className, $statements);
 
-                $methods = [
-                    $constructMethod,
-                    $this->createGetPlugin($securityScheme),
-                ];
-
-                $authentication = $this->createAuthentication($className, $properties, $methods);
                 $namespace = new Stmt\Namespace_(new Name($baseNamespace), [$authentication]);
 
                 $schema->addFile(new File(sprintf('%s/%s/%s.php', $schema->getDirectory(), self::REFERENCE, $className), $namespace, self::FILE_TYPE_AUTH));
             }
         }
     }
+
+    abstract protected function createHandleRequest(SecuritySchemeGuess $securityScheme): Stmt\ClassMethod;
 }

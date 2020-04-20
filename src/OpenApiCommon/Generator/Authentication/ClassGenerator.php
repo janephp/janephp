@@ -2,17 +2,17 @@
 
 namespace Jane\OpenApiCommon\Generator\Authentication;
 
-use Jane\OpenApiRuntime\Client\Authentication;
 use PhpParser\Node\Stmt;
 use PhpParser\Node\Name;
+use Http\Client\Common\Plugin;
 
 trait ClassGenerator
 {
-    protected function createAuthentication(string $name, array $properties, array $methods): Stmt\Class_
+    protected function createAuthentication(string $name, array $statements): Stmt\Class_
     {
         return new Stmt\Class_($name, [
-            'stmts' => array_merge($properties, $methods),
-            'implements' => [new Name\FullyQualified(Authentication::class)],
+            'stmts' => $statements,
+            'implements' => [new Name\FullyQualified(Plugin::class)],
         ]);
     }
 }

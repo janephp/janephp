@@ -14,8 +14,6 @@ use PhpParser\Node;
 
 trait HttpClientCreateGenerator
 {
-    use AuthenticationPluginGenerator;
-
     abstract protected function getPsr18ClientGeneratorClass(): string;
 
     protected function getHttpClientCreateExpr(Context $context): array
@@ -25,35 +23,44 @@ trait HttpClientCreateGenerator
 
         /** @var OpenApi $openApi */
         $openApi = $context->getCurrentSchema()->getParsed();
-        $httpClientAssign = new Stmt\Expression(new Expr\Assign(
-            new Expr\Variable('httpClient'),
-            new Expr\StaticCall(
-                new Name\FullyQualified($discoveryClientClass),
-                'find'
-            )
-        ));
-
-        $needsServerPlugins = $this->needsServerPlugins($openApi);
-        $needsAuthenticationPlugins = $this->needsAuthenticationPlugins($context->getRegistry());
-
-        if (!$needsServerPlugins && !$needsAuthenticationPlugins) {
-            return [$httpClientAssign];
-        }
-
         $statements = [
-            $httpClientAssign,
             new Stmt\Expression(new Expr\Assign(
-                new Expr\Variable('plugins'),
-                new Expr\Array_()
+                new Expr\Variable('httpClient'),
+                new Expr\StaticCall(
+                    new Name\FullyQualified($discoveryClientClass),
+                    'find'
+                )
             )),
         ];
+
+        $needsServerPlugins = $this->needsServerPlugins($openApi);
+
+        $statements[] = new Stmt\Expression(new Expr\Assign(
+            new Expr\Variable('plugins'),
+            new Expr\Array_()
+        ));
 
         if ($needsServerPlugins) {
             $statements = array_merge($statements, $this->getServerPluginsStatements($openApi));
         }
-        if ($needsAuthenticationPlugins) {
-            $statements = array_merge($statements, $this->getAuthenticationPluginsStatements($context->getRegistry()));
-        }
+
+        $statements[] = new Stmt\If_(
+            new Expr\BinaryOp\Greater(
+                new Expr\FuncCall(new Name('count'), [new Node\Arg(new Expr\Variable('additionalPlugins'))]),
+                new Expr\ConstFetch(new Name('0'))
+            ),
+            [
+                'stmts' => [
+                    new Stmt\Expression(new Expr\Assign(
+                        new Expr\ArrayDimFetch(new Expr\Variable('plugins')),
+                        new Expr\FuncCall(new Name('array_merge'), [
+                            new Node\Arg(new Expr\Variable('plugins')),
+                            new Node\Arg(new Expr\Variable('additionalPlugins')),
+                        ])
+                    )),
+                ],
+            ]
+        );
 
         $statements[] = new Stmt\Expression(new Expr\Assign(
             new Expr\Variable('httpClient'),
