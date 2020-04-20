@@ -17,7 +17,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Jane\OpenApi3\Tests\Expected\Model\TweetLookupResponse|\Jane\OpenApi3\Tests\Expected\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return null|\Jane\OpenApi3\Tests\Expected\Model\TweetLookupResponse|\Psr\Http\Message\ResponseInterface
      */
     public function findTweetsById(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {

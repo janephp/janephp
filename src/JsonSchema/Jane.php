@@ -78,6 +78,7 @@ class Jane extends ChainGenerator
                 }
 
                 $class->setProperties($properties);
+                $schema->addClassRelations($class);
 
                 $extensionsTypes = [];
 

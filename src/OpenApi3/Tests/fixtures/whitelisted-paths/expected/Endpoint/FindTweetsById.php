@@ -55,7 +55,7 @@ class FindTweetsById extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements
      * {@inheritdoc}
      *
      *
-     * @return null|\Jane\OpenApi3\Tests\Expected\Model\TweetLookupResponse|\Jane\OpenApi3\Tests\Expected\Model\Error
+     * @return null|\Jane\OpenApi3\Tests\Expected\Model\TweetLookupResponse
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -63,7 +63,7 @@ class FindTweetsById extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements
             return $serializer->deserialize($body, 'Jane\\OpenApi3\\Tests\\Expected\\Model\\TweetLookupResponse', 'json');
         }
         if (mb_strpos($contentType, 'application/json') !== false) {
-            return $serializer->deserialize($body, 'Jane\\OpenApi3\\Tests\\Expected\\Model\\Error', 'json');
+            return json_decode($body);
         }
     }
 }

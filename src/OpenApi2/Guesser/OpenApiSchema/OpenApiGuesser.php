@@ -52,8 +52,15 @@ class OpenApiGuesser implements GuesserInterface, ClassGuesserInterface, ChainGu
             }
         }
 
-        if ($object->getPaths()) {
+        if (is_iterable($object->getPaths())) {
+            $whitelistedPaths = $registry->getWhitelistedPaths() ?? [];
+            $checkWhitelistedPaths = \count($whitelistedPaths) > 0;
+
             foreach ($object->getPaths() as $pathName => $path) {
+                if ($checkWhitelistedPaths && !$this->isWhitelisted($pathName, $whitelistedPaths)) {
+                    continue;
+                }
+
                 if ($path instanceof PathItem) {
                     $this->guessClassFromOperation($path, $path->getDelete(), $pathName, OperationGuess::DELETE, $reference, $registry);
                     $this->guessClassFromOperation($path, $path->getGet(), $pathName, OperationGuess::GET, $reference, $registry);
@@ -81,6 +88,17 @@ class OpenApiGuesser implements GuesserInterface, ClassGuesserInterface, ChainGu
                 }
             }
         }
+    }
+
+    private function isWhitelisted(string $path, array $whitelistedPaths): bool
+    {
+        foreach ($whitelistedPaths as $whitelistedPath) {
+            if (preg_match(sprintf('#%s#', $whitelistedPath), $path)) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     protected function guessClassFromOperation(PathItem $pathItem, ?Operation $operation, string $path, string $operationType, string $reference, OpenApiRegistry $registry): void

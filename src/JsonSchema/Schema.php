@@ -4,6 +4,7 @@ namespace Jane\JsonSchema;
 
 use Jane\JsonSchema\Generator\File;
 use Jane\JsonSchema\Guesser\Guess\ClassGuess;
+use Jane\JsonSchema\Guesser\Guess\ObjectType;
 
 class Schema
 {
@@ -30,6 +31,9 @@ class Schema
 
     /** @var mixed Parsed schema */
     private $parsed;
+
+    /** @var array Relation between models */
+    protected $relations = [];
 
     public function __construct(string $origin, string $namespace, string $directory, string $rootName)
     {
@@ -63,6 +67,11 @@ class Schema
     public function addClass(string $reference, ClassGuess $class): void
     {
         $this->classes[urldecode($reference)] = $class;
+    }
+
+    public function removeClass(string $reference): void
+    {
+        unset($this->classes[urldecode($reference)]);
     }
 
     public function getClass($reference): ?ClassGuess
@@ -122,6 +131,34 @@ class Schema
     public function setParsed($parsed): void
     {
         $this->parsed = $parsed;
+    }
+
+    public function addRelation(string $model, string $needs): void
+    {
+        if (!\array_key_exists($model, $this->relations)) {
+            $this->relations[$model] = [];
+        }
+
+        $this->relations[$model][] = $needs;
+    }
+
+    public function addClassRelations(ClassGuess $classGuess): void
+    {
+        $baseModel = $classGuess->getName();
+
+        foreach ($classGuess->getProperties() as $property) {
+            // second condition is here to avoid mapping PHP classes such as \DateTime
+            /** @var ObjectType $objectType */
+            if (($objectType = $property->getType()) instanceof ObjectType &&
+                '\\' !== substr($objectType->getClassName(), 0, 1)) {
+                $this->addRelation($baseModel, $objectType->getClassName());
+            }
+        }
+    }
+
+    public function getRelations(): array
+    {
+        return $this->relations;
     }
 
     private function fixPath(string $path): string
