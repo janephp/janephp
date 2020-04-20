@@ -78,4 +78,12 @@ abstract class BaseEndpoint implements Endpoint
     {
         return new OptionsResolver();
     }
+
+    protected function getSerializedBody(SerializerInterface $serializer): array
+    {
+        return [
+            ['Content-Type' => ['application/json']],
+            $serializer->serialize($this->body, 'json'),
+        ];
+    }
 }
