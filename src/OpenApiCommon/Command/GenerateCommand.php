@@ -38,28 +38,38 @@ class GenerateCommand extends Command
             $localRegistry->addSchema($this->resolveSchema($options['openapi-file'], $options));
             $localRegistry->addOutputDirectory($options['directory']);
             $localRegistry->setWhitelistedPaths($options['whitelisted-paths']);
+            $this->matchOpenApiClass($localRegistry);
 
-            $openApiClass = $this->matchOpenApiClass($localRegistry);
-
-            $registries[$openApiClass] = $localRegistry;
+            $registries[] = $localRegistry;
         } else {
+            $defaults = [];
+
             foreach ($options['mapping'] as $schema => $schemaOptions) {
                 $localRegistry = new Registry();
                 $localRegistry->addSchema($localSchema = $this->resolveSchema($schema, $schemaOptions));
                 $localRegistry->addOutputDirectory($localDirectory = $schemaOptions['directory']);
-                $localRegistry->setWhitelistedPaths($options['whitelisted-paths']);
+                $this->matchOpenApiClass($localRegistry);
 
-                $openApiClass = $this->matchOpenApiClass($localRegistry);
-                if (!\array_key_exists($openApiClass, $registries)) {
-                    $registries[$openApiClass] = new Registry();
+                $whitelistedPaths = $schemaOptions['whitelisted-paths'] ?? [];
+                if (!\array_key_exists($localRegistry->getOpenApiClass(), $defaults) && 0 === \count($whitelistedPaths)) {
+                    $defaults[$localRegistry->getOpenApiClass()] = $localRegistry;
+                    $localRegistry->setWhitelistedPaths([]);
+                    $registries[] = $localRegistry;
                 }
 
-                $registries[$openApiClass]->addSchema($localSchema);
-                $registries[$openApiClass]->addOutputDirectory($localDirectory);
+                if (\count($whitelistedPaths) > 0) {
+                    $localRegistry->setWhitelistedPaths($whitelistedPaths);
+                    $registries[] = $localRegistry;
+                } else {
+                    $defaults[$localRegistry->getOpenApiClass()]->addSchema($localSchema);
+                    $defaults[$localRegistry->getOpenApiClass()]->addOutputDirectory($localDirectory);
+                }
             }
         }
 
-        foreach ($registries as $openApiClass => $registry) {
+        /** @var Registry $registry */
+        foreach ($registries as $registry) {
+            $openApiClass = $registry->getOpenApiClass();
             /** @var JaneOpenApi $janeOpenApi */
             $janeOpenApi = $openApiClass::build($options);
             $fixerConfigFile = '';
@@ -117,7 +127,7 @@ class GenerateCommand extends Command
         return new Schema($schema, $options['namespace'], $options['directory'], '');
     }
 
-    private function matchOpenApiClass(Registry $registry): string
+    private function matchOpenApiClass(Registry $registry): void
     {
         $firstSchema = $registry->getFirstSchema();
         $openApiClass = null;
@@ -167,6 +177,6 @@ class GenerateCommand extends Command
             }
         }
 
-        return $openApiClass;
+        $registry->setOpenApiClass($openApiClass);
     }
 }
