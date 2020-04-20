@@ -38,20 +38,22 @@ class WhitelistedSchema
         if ($operationGuess->getOperation()->getResponses()) {
             /** @var Response $response */
             foreach ($operationGuess->getOperation()->getResponses() as $response) {
-                if (!$response->getContent()) {
+                if (null === $response->getContent()) {
                     $classGuess = $this->guessClass(null, $operationGuess->getReference(), $registry, $this->denormalizer);
                     if (null !== $classGuess) {
                         $this->schema->addRelation($baseOperation, $classGuess->getName());
                     }
                 }
 
-                /** @var MediaType $content */
-                foreach ($response->getContent() as $contentType => $content) {
-                    if ('application/json' === $contentType) {
-                        $contentReference = $operationGuess->getReference() . '/content/' . $contentType . '/schema';
-                        $classGuess = $this->guessClass($content->getSchema(), $contentReference, $registry, $this->denormalizer);
-                        if (null !== $classGuess) {
-                            $this->schema->addRelation($baseOperation, $classGuess->getName());
+                if (is_iterable($response->getContent())) {
+                    /** @var MediaType $content */
+                    foreach ($response->getContent() as $contentType => $content) {
+                        if ('application/json' === $contentType) {
+                            $contentReference = $operationGuess->getReference() . '/content/' . $contentType . '/schema';
+                            $classGuess = $this->guessClass($content->getSchema(), $contentReference, $registry, $this->denormalizer);
+                            if (null !== $classGuess) {
+                                $this->schema->addRelation($baseOperation, $classGuess->getName());
+                            }
                         }
                     }
                 }
