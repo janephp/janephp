@@ -57,7 +57,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
     {
         return $this->executePsr7Endpoint(new \Jane\OpenApi2\Tests\Expected\Endpoint\CreateProject($payload), $fetch);
     }
-    public static function create($httpClient = null, \Jane\OpenApiRuntime\Client\Authentication $authentication = null)
+    public static function create($httpClient = null, array $additionalPlugins = array())
     {
         if (null === $httpClient) {
             $httpClient = \Http\Discovery\Psr18ClientDiscovery::find();
@@ -65,8 +65,8 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
             $uri = \Http\Discovery\Psr17FactoryDiscovery::findUrlFactory()->createUri('https://api.harvestapp.com/v2');
             $plugins[] = new \Http\Client\Common\Plugin\AddHostPlugin($uri);
             $plugins[] = new \Http\Client\Common\Plugin\AddPathPlugin($uri);
-            if (null !== $authentication) {
-                $plugins[] = $authentication->getPlugin();
+            if (count($additionalPlugins) > 0) {
+                $plugins[] = array_merge($plugins, $additionalPlugins);
             }
             $httpClient = new \Http\Client\Common\PluginClient($httpClient, $plugins);
         }

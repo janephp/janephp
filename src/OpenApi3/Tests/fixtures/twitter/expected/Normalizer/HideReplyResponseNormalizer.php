@@ -26,6 +26,12 @@ class HideReplyResponseNormalizer implements DenormalizerInterface, NormalizerIn
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
+        }
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
+        }
         $object = new \Jane\OpenApi3\Tests\Expected\Model\HideReplyResponse();
         if (\array_key_exists('data', $data)) {
             $object->setData($this->denormalizer->denormalize($data['data'], 'Jane\\OpenApi3\\Tests\\Expected\\Model\\HideReplyResponseData', 'json', $context));

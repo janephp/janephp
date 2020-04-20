@@ -26,6 +26,12 @@ class BooksGetResponse200HydraSearchHydraMappingItemNormalizer implements Denorm
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
+        }
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
+        }
         $object = new \ApiPlatform\Demo\Model\BooksGetResponse200HydraSearchHydraMappingItem();
         if (\array_key_exists('@type', $data)) {
             $object->setType($data['@type']);

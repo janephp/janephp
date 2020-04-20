@@ -26,6 +26,12 @@ class BarNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
+        }
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
+        }
         $object = new \Jane\OpenApi2\Tests\Expected\Model\Bar();
         if (\array_key_exists('foo', $data)) {
             $object->setFoo($data['foo']);

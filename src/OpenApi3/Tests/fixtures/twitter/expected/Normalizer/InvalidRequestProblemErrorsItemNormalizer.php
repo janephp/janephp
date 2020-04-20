@@ -26,6 +26,12 @@ class InvalidRequestProblemErrorsItemNormalizer implements DenormalizerInterface
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
+        }
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
+        }
         $object = new \Jane\OpenApi3\Tests\Expected\Model\InvalidRequestProblemErrorsItem();
         if (\array_key_exists('parameters', $data)) {
             $values = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);

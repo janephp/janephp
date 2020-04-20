@@ -26,6 +26,12 @@ class ErrorNormalizer implements DenormalizerInterface, NormalizerInterface, Den
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
+        }
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
+        }
         $object = new \Jane\OpenApi2\Tests\Expected\Model\Error();
         if (\array_key_exists('code', $data)) {
             $object->setCode($data['code']);

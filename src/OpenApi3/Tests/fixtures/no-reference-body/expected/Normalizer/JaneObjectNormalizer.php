@@ -14,7 +14,7 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
-    protected $normalizers = array('Jane\\OpenApi3\\Tests\\Expected\\Model\\Foo' => 'Jane\\OpenApi3\\Tests\\Expected\\Normalizer\\FooNormalizer', 'Jane\\OpenApi3\\Tests\\Expected\\Model\\Bar' => 'Jane\\OpenApi3\\Tests\\Expected\\Normalizer\\BarNormalizer', 'Jane\\OpenApi3\\Tests\\Expected\\Model\\TestGetBody' => 'Jane\\OpenApi3\\Tests\\Expected\\Normalizer\\TestGetBodyNormalizer', 'Jane\\OpenApi3\\Tests\\Expected\\Model\\TestGetBodyBaz' => 'Jane\\OpenApi3\\Tests\\Expected\\Normalizer\\TestGetBodyBazNormalizer', 'Jane\\OpenApi3\\Tests\\Expected\\Model\\TestPostBody' => 'Jane\\OpenApi3\\Tests\\Expected\\Normalizer\\TestPostBodyNormalizer'), $normalizersCache = array();
+    protected $normalizers = array('Jane\\OpenApi3\\Tests\\Expected\\Model\\Foo' => 'Jane\\OpenApi3\\Tests\\Expected\\Normalizer\\FooNormalizer', 'Jane\\OpenApi3\\Tests\\Expected\\Model\\Bar' => 'Jane\\OpenApi3\\Tests\\Expected\\Normalizer\\BarNormalizer', 'Jane\\OpenApi3\\Tests\\Expected\\Model\\TestGetBody' => 'Jane\\OpenApi3\\Tests\\Expected\\Normalizer\\TestGetBodyNormalizer', 'Jane\\OpenApi3\\Tests\\Expected\\Model\\TestGetBodyBaz' => 'Jane\\OpenApi3\\Tests\\Expected\\Normalizer\\TestGetBodyBazNormalizer', 'Jane\\OpenApi3\\Tests\\Expected\\Model\\TestPostBody' => 'Jane\\OpenApi3\\Tests\\Expected\\Normalizer\\TestPostBodyNormalizer', '\\Jane\\JsonSchemaRuntime\\Reference' => '\\Jane\\JsonSchemaRuntime\\Normalizer\\ReferenceNormalizer'), $normalizersCache = array();
     public function supportsDenormalization($data, $type, $format = null)
     {
         return array_key_exists($type, $this->normalizers);

@@ -26,6 +26,12 @@ class BooksGetResponse200HydraViewNormalizer implements DenormalizerInterface, N
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
+        }
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
+        }
         $object = new \ApiPlatform\Demo\Model\BooksGetResponse200HydraView();
         if (\array_key_exists('@id', $data)) {
             $object->setId($data['@id']);

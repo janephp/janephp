@@ -26,6 +26,12 @@ class TestOneGetResponse200Normalizer implements DenormalizerInterface, Normaliz
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
+        }
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
+        }
         $object = new \Jane\OpenApi2\Tests\Expected\One\Model\TestOneGetResponse200();
         if (\array_key_exists('message', $data)) {
             $object->setMessage($data['message']);
