@@ -42,27 +42,18 @@ class GenerateCommand extends Command
 
             $registries[] = $localRegistry;
         } else {
-            $defaults = [];
-
             foreach ($options['mapping'] as $schema => $schemaOptions) {
                 $localRegistry = new Registry();
                 $localRegistry->addSchema($localSchema = $this->resolveSchema($schema, $schemaOptions));
                 $localRegistry->addOutputDirectory($localDirectory = $schemaOptions['directory']);
+                $localRegistry->setWhitelistedPaths($schemaOptions['whitelisted-paths'] ?? []);
                 $this->matchOpenApiClass($localRegistry);
 
-                $whitelistedPaths = $schemaOptions['whitelisted-paths'] ?? [];
-                if (!\array_key_exists($localRegistry->getOpenApiClass(), $defaults) && 0 === \count($whitelistedPaths)) {
-                    $defaults[$localRegistry->getOpenApiClass()] = $localRegistry;
-                    $localRegistry->setWhitelistedPaths([]);
-                    $registries[] = $localRegistry;
-                }
-
-                if (\count($whitelistedPaths) > 0) {
-                    $localRegistry->setWhitelistedPaths($whitelistedPaths);
-                    $registries[] = $localRegistry;
+                if (!\array_key_exists($localRegistry->getOptionsHash(), $registries)) {
+                    $registries[$localRegistry->getOptionsHash()] = $localRegistry;
                 } else {
-                    $defaults[$localRegistry->getOpenApiClass()]->addSchema($localSchema);
-                    $defaults[$localRegistry->getOpenApiClass()]->addOutputDirectory($localDirectory);
+                    $registries[$localRegistry->getOptionsHash()]->addSchema($localSchema);
+                    $registries[$localRegistry->getOptionsHash()]->addOutputDirectory($localDirectory);
                 }
             }
         }

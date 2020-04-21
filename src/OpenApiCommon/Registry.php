@@ -54,4 +54,12 @@ class Registry extends BaseRegistry
     {
         return $this->whitelistedPaths;
     }
+
+    public function getOptionsHash(): string
+    {
+        return md5(json_encode([
+            'open-api-class' => $this->getOpenApiClass(),
+            'whitelisted-paths' => $this->getWhitelistedPaths() ?? [],
+        ]));
+    }
 }
