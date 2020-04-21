@@ -104,7 +104,8 @@ This example shows the minimum configuration required to generate a client:
  * ``namespace``: Root namespace of all of your generated code
  * ``directory``: Directory where the code will be generated
 
-Given this configuration, you will need to add the following configuration to composer, in order to load the generated files::
+Given this configuration, you will need to add the following configuration to composer, in order to load the generated
+files::
 
     "autoload": {
         "psr-4": {
@@ -118,7 +119,8 @@ Options
 Other options are available to customize the generated code:
 
  * ``reference``: A boolean which indicate to add the support for `JSON Reference`_ into the generated code.
- * ``date-format``: A date format to specify how the generated code should encode and decode ``\DateTime`` object to string
+ * ``date-format``: A date format to specify how the generated code should encode and decode ``\DateTime`` object to
+   string
  * ``date-format``: A date-time format to specify how the generated code should encode and decode ``\DateTime`` object
    to string.  This option is only for format ``date-time``.
  * ``full-date-format``: A date format to specify how the generated code should encode and decode ``\DateTime`` object
@@ -132,12 +134,35 @@ Other options are available to customize the generated code:
  * ``strict``: A boolean which indicate strict mode (true by default), not strict mode generate more permissive client
    not respecting some standards (nullable field as an example) client.
  * ``use-fixer``: A boolean which indicate if we make a first cs-fix after code generation, is disabled by default.
- * ``fixer-config-file``: A string to specify where to find the custom configuration for the cs-fixer after code generation, will remove all Jane default cs-fixer default configuration.
- * ``clean-generated``: A boolean which indicate if we clean generated output before generating new files, is enabled by default.
- * ``use-cacheable-supports-method``: A boolean which indicate if we use ``CacheableSupportsMethodInterface`` interface to improve caching performances when used with Symfony Serializer.
+ * ``fixer-config-file``: A string to specify where to find the custom configuration for the cs-fixer after code
+   generation, will remove all Jane default cs-fixer default configuration.
+ * ``clean-generated``: A boolean which indicate if we clean generated output before generating new files, is enabled
+   by default.
+ * ``use-cacheable-supports-method``: A boolean which indicate if we use ``CacheableSupportsMethodInterface`` interface
+   to improve caching performances when used with Symfony Serializer.
  * ``skip-null-values``: When having nullable properties, you can enforce normalization to skip theses
    properties even if they are nullable. This option allows you to not have theses properties when they're not set
    (``null``). By default it is enabled.
+ * ``whitelisted-paths``: This option allows you to generate only needed endpoints and related models. Be carefull,
+   that option will filter models used by whitelisted endpoints and generate model & normalizer only for them. Here is
+   some examples about how to use it::
+
+    <?php
+
+    return [
+        // your usual configuration ...
+        'whitelisted-paths' => [
+            '\/foo$',
+            ['\/foo\/(bar|baz)'],
+            ['\/foo$', 'GET'],
+            ['\/foo$', ['POST']],
+            ['\/foo$', ['POST', 'PUT']]
+        ],
+    ];
+
+   There is many ways to use it, first you atleast need a regex defining which endpoint is whitelisted. This endpoint
+   can be either a string or in an array. If you don't provide any HTTP method, we will just accept any methods, but
+   you can provide either a string or array as second argument to specify which method you accept.
 
 .. _`JSON Reference`: https://tools.ietf.org/id/draft-pbryan-zyp-json-ref-03.html
 .. _`Carbon`: https://carbon.nesbot.com/
