@@ -57,18 +57,42 @@ class OpenApiGuesser implements GuesserInterface, ClassGuesserInterface, ChainGu
             $checkWhitelistedPaths = \count($whitelistedPaths) > 0;
 
             foreach ($object->getPaths() as $pathName => $path) {
-                if ($checkWhitelistedPaths && !$this->isWhitelisted($pathName, $whitelistedPaths)) {
+                if ($checkWhitelistedPaths && null === ($allowedMethods = $this->isWhitelisted($pathName, $whitelistedPaths))) {
                     continue;
                 }
 
                 if ($path instanceof PathItem) {
-                    $this->guessClassFromOperation($path, $path->getDelete(), $pathName, OperationGuess::DELETE, $reference, $registry);
-                    $this->guessClassFromOperation($path, $path->getGet(), $pathName, OperationGuess::GET, $reference, $registry);
-                    $this->guessClassFromOperation($path, $path->getHead(), $pathName, OperationGuess::HEAD, $reference, $registry);
-                    $this->guessClassFromOperation($path, $path->getOptions(), $pathName, OperationGuess::OPTIONS, $reference, $registry);
-                    $this->guessClassFromOperation($path, $path->getPatch(), $pathName, OperationGuess::PATCH, $reference, $registry);
-                    $this->guessClassFromOperation($path, $path->getPost(), $pathName, OperationGuess::POST, $reference, $registry);
-                    $this->guessClassFromOperation($path, $path->getPut(), $pathName, OperationGuess::PUT, $reference, $registry);
+                    if ($checkWhitelistedPaths) {
+                        if (\in_array(OperationGuess::DELETE, $allowedMethods)) {
+                            $this->guessClassFromOperation($path, $path->getDelete(), $pathName, OperationGuess::DELETE, $reference, $registry);
+                        }
+                        if (\in_array(OperationGuess::GET, $allowedMethods)) {
+                            $this->guessClassFromOperation($path, $path->getGet(), $pathName, OperationGuess::GET, $reference, $registry);
+                        }
+                        if (\in_array(OperationGuess::HEAD, $allowedMethods)) {
+                            $this->guessClassFromOperation($path, $path->getHead(), $pathName, OperationGuess::HEAD, $reference, $registry);
+                        }
+                        if (\in_array(OperationGuess::OPTIONS, $allowedMethods)) {
+                            $this->guessClassFromOperation($path, $path->getOptions(), $pathName, OperationGuess::OPTIONS, $reference, $registry);
+                        }
+                        if (\in_array(OperationGuess::PATCH, $allowedMethods)) {
+                            $this->guessClassFromOperation($path, $path->getPatch(), $pathName, OperationGuess::PATCH, $reference, $registry);
+                        }
+                        if (\in_array(OperationGuess::POST, $allowedMethods)) {
+                            $this->guessClassFromOperation($path, $path->getPost(), $pathName, OperationGuess::POST, $reference, $registry);
+                        }
+                        if (\in_array(OperationGuess::PUT, $allowedMethods)) {
+                            $this->guessClassFromOperation($path, $path->getPut(), $pathName, OperationGuess::PUT, $reference, $registry);
+                        }
+                    } else {
+                        $this->guessClassFromOperation($path, $path->getDelete(), $pathName, OperationGuess::DELETE, $reference, $registry);
+                        $this->guessClassFromOperation($path, $path->getGet(), $pathName, OperationGuess::GET, $reference, $registry);
+                        $this->guessClassFromOperation($path, $path->getHead(), $pathName, OperationGuess::HEAD, $reference, $registry);
+                        $this->guessClassFromOperation($path, $path->getOptions(), $pathName, OperationGuess::OPTIONS, $reference, $registry);
+                        $this->guessClassFromOperation($path, $path->getPatch(), $pathName, OperationGuess::PATCH, $reference, $registry);
+                        $this->guessClassFromOperation($path, $path->getPost(), $pathName, OperationGuess::POST, $reference, $registry);
+                        $this->guessClassFromOperation($path, $path->getPut(), $pathName, OperationGuess::PUT, $reference, $registry);
+                    }
 
                     if ($path->getParameters()) {
                         foreach ($path->getParameters() as $key => $parameter) {
@@ -90,15 +114,35 @@ class OpenApiGuesser implements GuesserInterface, ClassGuesserInterface, ChainGu
         }
     }
 
-    private function isWhitelisted(string $path, array $whitelistedPaths): bool
+    private function isWhitelisted(string $path, array $whitelistedPaths): ?array
     {
-        foreach ($whitelistedPaths as $whitelistedPath) {
+        foreach ($whitelistedPaths as $data) {
+            $whitelistedPath = $data;
+            $whitelistedMethods = [];
+            if (\is_string($data) || (\is_array($data) && 1 === \count($data))) {
+                $whitelistedMethods = [
+                    OperationGuess::DELETE,
+                    OperationGuess::GET,
+                    OperationGuess::HEAD,
+                    OperationGuess::OPTIONS,
+                    OperationGuess::PATCH,
+                    OperationGuess::POST,
+                    OperationGuess::PUT,
+                ];
+            } elseif (\is_array($data) && 2 === \count($data)) {
+                $whitelistedPath = $data[0];
+                $whitelistedMethods = $data[1];
+                if (\is_string($whitelistedMethods)) {
+                    $whitelistedMethods = [$whitelistedMethods];
+                }
+            }
+
             if (preg_match(sprintf('#%s#', $whitelistedPath), $path)) {
-                return true;
+                return $whitelistedMethods;
             }
         }
 
-        return false;
+        return null;
     }
 
     protected function guessClassFromOperation(PathItem $pathItem, ?Operation $operation, string $path, string $operationType, string $reference, OpenApiRegistry $registry): void
