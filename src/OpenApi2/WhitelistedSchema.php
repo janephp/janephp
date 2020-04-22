@@ -47,6 +47,10 @@ class WhitelistedSchema
                 }
 
                 /** @var Response $response */
+                if (null === $response->getSchema()) {
+                    continue;
+                }
+
                 $classGuess = $this->guessClass($response->getSchema(), $reference, $registry, $this->denormalizer);
                 if (null !== $classGuess) {
                     $this->schema->addRelation($baseOperation, $classGuess->getName());

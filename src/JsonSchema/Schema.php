@@ -3,6 +3,7 @@
 namespace Jane\JsonSchema;
 
 use Jane\JsonSchema\Generator\File;
+use Jane\JsonSchema\Guesser\Guess\ArrayType;
 use Jane\JsonSchema\Guesser\Guess\ClassGuess;
 use Jane\JsonSchema\Guesser\Guess\ObjectType;
 
@@ -152,6 +153,12 @@ class Schema
             if (($objectType = $property->getType()) instanceof ObjectType &&
                 '\\' !== substr($objectType->getClassName(), 0, 1)) {
                 $this->addRelation($baseModel, $objectType->getClassName());
+            }
+
+            if (($arrayType = $property->getType()) instanceof ArrayType &&
+                ($itemType = $arrayType->getItemType()) instanceof ObjectType &&
+                '\\' !== substr($itemType->getClassName(), 0, 1)) {
+                $this->addRelation($baseModel, $itemType->getClassName());
             }
         }
     }
