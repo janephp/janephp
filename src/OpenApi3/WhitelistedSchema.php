@@ -4,6 +4,7 @@ namespace Jane\OpenApi3;
 
 use Jane\OpenApi3\Guesser\GuessClass;
 use Jane\OpenApi3\JsonSchema\Model\MediaType;
+use Jane\OpenApi3\JsonSchema\Model\Parameter;
 use Jane\OpenApi3\JsonSchema\Model\Response;
 use Jane\OpenApi3\Naming\OperationUrlNaming;
 use Jane\OpenApiCommon\Guesser\Guess\OperationGuess;
@@ -35,9 +36,10 @@ class WhitelistedSchema
     {
         $baseOperation = $this->naming->getEndpointName($operationGuess);
 
-        if ($operationGuess->getOperation()->getResponses()) {
-            /** @var Response $response */
-            foreach ($operationGuess->getOperation()->getResponses() as $response) {
+        /** @var Response[]|null $responses */
+        $responses = $operationGuess->getOperation()->getResponses();
+        if (null !== $responses && \count($responses) > 0) {
+            foreach ($responses as $response) {
                 if (null === $response->getContent()) {
                     $classGuess = $this->guessClass(null, $operationGuess->getReference(), $registry, $this->denormalizer);
                     if (null !== $classGuess) {
@@ -45,7 +47,7 @@ class WhitelistedSchema
                     }
                 }
 
-                if (is_iterable($response->getContent())) {
+                if (null !== $response->getContent() && is_iterable($response->getContent())) {
                     /** @var MediaType $content */
                     foreach ($response->getContent() as $contentType => $content) {
                         if ('application/json' === $contentType) {
@@ -55,6 +57,20 @@ class WhitelistedSchema
                                 $this->schema->addRelation($baseOperation, $classGuess->getName());
                             }
                         }
+                    }
+                }
+            }
+        }
+
+        /** @var Parameter[]|null $parameters */
+        $parameters = $operationGuess->getOperation()->getParameters();
+        if (null !== $parameters && \count($parameters) > 0) {
+            foreach ($parameters as $key => $parameter) {
+                if ($parameter instanceof Parameter && 'body' === $parameter->getIn()) {
+                    $reference = $operationGuess->getReference() . '/parameters/' . $key;
+                    $classGuess = $this->guessClass($parameter->getSchema(), $reference, $registry, $this->denormalizer);
+                    if (null !== $classGuess) {
+                        $this->schema->addRelation($baseOperation, $classGuess->getName());
                     }
                 }
             }

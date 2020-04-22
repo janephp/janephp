@@ -3,6 +3,7 @@
 namespace Jane\OpenApi2;
 
 use Jane\JsonSchemaRuntime\Reference;
+use Jane\OpenApi2\JsonSchema\Model\BodyParameter;
 use Jane\OpenApi2\JsonSchema\Model\Operation;
 use Jane\OpenApi2\JsonSchema\Model\Response;
 use Jane\OpenApi2\Guesser\GuessClass;
@@ -38,7 +39,7 @@ class WhitelistedSchema
 
         /** @var Operation $operation */
         $operation = $operationGuess->getOperation();
-        if (\count($operation->getResponses()) > 0) {
+        if (null !== $operation->getResponses() && \count($operation->getResponses()) > 0) {
             foreach ($operation->getResponses() as $status => $response) {
                 $reference = $operationGuess->getReference() . '/responses/' . $status;
                 if ($response instanceof Reference) {
@@ -49,6 +50,18 @@ class WhitelistedSchema
                 $classGuess = $this->guessClass($response->getSchema(), $reference, $registry, $this->denormalizer);
                 if (null !== $classGuess) {
                     $this->schema->addRelation($baseOperation, $classGuess->getName());
+                }
+            }
+        }
+
+        if (null !== $operation->getParameters() && \count($operation->getParameters()) > 0) {
+            foreach ($operation->getParameters() as $key => $parameter) {
+                if ($parameter instanceof BodyParameter && null !== $parameter->getSchema()) {
+                    $reference = $operationGuess->getReference() . '/parameters/' . $key;
+                    $classGuess = $this->guessClass($parameter->getSchema(), $reference, $registry, $this->denormalizer);
+                    if (null !== $classGuess) {
+                        $this->schema->addRelation($baseOperation, $classGuess->getName());
+                    }
                 }
             }
         }
