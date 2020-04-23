@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [5.3.3] - 2020-04-23
+
+### Added
+
+- [JsonSchema] [GH#263](https://github.com/janephp/janephp/pull/263) Else assign null when property has no value is wrong
+- [OpenAPI] [GH#283](https://github.com/janephp/janephp/pull/283) Handle server port of OpenAPI v3 specification
+
+### Changed
+
+- [JsonSchema] [GH#295](https://github.com/janephp/janephp/pull/295) Update `league/uri` dependency
+
 ## [5.3.2] - 2020-03-05
 
 ### Added
@@ -262,7 +273,8 @@ See :
  * https://github.com/janephp/jane/releases
  * https://github.com/janephp/openapi/releases
 
-[Unreleased]: https://github.com/janephp/janephp/compare/v5.3.2...HEAD
+[Unreleased]: https://github.com/janephp/janephp/compare/v5.3.3...5.x
+[5.3.3]: https://github.com/janephp/janephp/compare/v5.3.2...v5.3.3
 [5.3.2]: https://github.com/janephp/janephp/compare/v5.3.1...v5.3.2
 [5.3.1]: https://github.com/janephp/janephp/compare/v5.3.0...v5.3.1
 [5.3.0]: https://github.com/janephp/janephp/compare/v5.2.2...v5.3.0
