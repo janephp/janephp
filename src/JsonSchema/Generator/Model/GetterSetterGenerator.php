@@ -18,11 +18,11 @@ trait GetterSetterGenerator
      */
     abstract protected function getNaming(): Naming;
 
-    protected function createGetter(Property $property, string $namespace, bool $required): Stmt\ClassMethod
+    protected function createGetter(Property $property, string $namespace, bool $strict): Stmt\ClassMethod
     {
         $returnType = $property->getType()->getTypeHint($namespace);
 
-        if ($returnType && !$required) {
+        if ($returnType && (!$strict || $property->isNullable())) {
             $returnType = '?' . $returnType;
         }
 
@@ -40,16 +40,16 @@ trait GetterSetterGenerator
                 ],
                 'returnType' => $returnType,
             ], [
-                'comments' => [$this->createGetterDoc($property, $namespace, $required)],
+                'comments' => [$this->createGetterDoc($property, $namespace, $strict)],
             ]
         );
     }
 
-    protected function createSetter(Property $property, string $namespace, bool $required, bool $fluent = true): Stmt\ClassMethod
+    protected function createSetter(Property $property, string $namespace, bool $strict, bool $fluent = true): Stmt\ClassMethod
     {
         $setType = $property->getType()->getTypeHint($namespace);
 
-        if ($setType && !$required) {
+        if ($setType && (!$strict || $property->isNullable())) {
             $setType = '?' . $setType;
         }
 
@@ -81,12 +81,12 @@ trait GetterSetterGenerator
                 'stmts' => $stmts,
                 'returnType' => $fluent ? 'self' : null,
             ], [
-                'comments' => [$this->createSetterDoc($property, $namespace, $required, $fluent)],
+                'comments' => [$this->createSetterDoc($property, $namespace, $strict, $fluent)],
             ]
         );
     }
 
-    protected function createGetterDoc(Property $property, string $namespace, bool $required): Doc
+    protected function createGetterDoc(Property $property, string $namespace, bool $strict): Doc
     {
         $description = sprintf(<<<EOD
 /**
@@ -108,12 +108,12 @@ EOD;
  * @return %s
  */
 EOD
-            , $this->getDocType($property, $namespace, $required));
+            , $this->getDocType($property, $namespace, $strict));
 
         return new Doc($description);
     }
 
-    protected function createSetterDoc(Property $property, string $namespace, bool $required, bool $fluent): Doc
+    protected function createSetterDoc(Property $property, string $namespace, bool $strict, bool $fluent): Doc
     {
         $description = sprintf(<<<EOD
 /**
@@ -122,7 +122,7 @@ EOD
  * @param %s %s
 
 EOD
-            , $property->getDescription(), $this->getDocType($property, $namespace, $required), '$' . $property->getPhpName());
+            , $property->getDescription(), $this->getDocType($property, $namespace, $strict), '$' . $property->getPhpName());
 
         if ($property->isDeprecated()) {
             $description .= <<<EOD
@@ -147,11 +147,11 @@ EOD;
         return new Doc($description);
     }
 
-    private function getDocType(Property $property, string $namespace, bool $required): string
+    private function getDocType(Property $property, string $namespace, bool $strict): string
     {
         $returnType = $property->getType();
         $returnTypeHint = $returnType->getDocTypeHint($namespace);
-        if ($required) {
+        if ($strict && !$property->isNullable()) {
             return $returnTypeHint;
         }
         $returnTypes = [$returnType];

@@ -19,6 +19,14 @@ class SchemaGuesser extends ObjectGuesser
     }
 
     /**
+     * @param Schema $property
+     */
+    protected function isPropertyNullable($property): bool
+    {
+        return $property->offsetExists('x-nullable') && \is_bool($property->offsetGet('x-nullable')) && $property->offsetGet('x-nullable');
+    }
+
+    /**
      * @param Schema $object
      */
     protected function createClassGuess($object, string $reference, string $name, array $extensions): BaseClassGuess

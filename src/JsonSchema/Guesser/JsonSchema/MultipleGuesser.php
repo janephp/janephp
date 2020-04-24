@@ -13,6 +13,8 @@ use Jane\JsonSchema\Registry;
 
 class MultipleGuesser implements GuesserInterface, TypeGuesserInterface, ChainGuesserAwareInterface
 {
+    protected $bannedTypes = [];
+
     use ChainGuesserAwareTrait;
 
     /**
@@ -39,6 +41,10 @@ class MultipleGuesser implements GuesserInterface, TypeGuesserInterface, ChainGu
         $fakeSchema = clone $object;
 
         foreach ($object->getType() as $type) {
+            if (\in_array($type, $this->bannedTypes)) {
+                continue;
+            }
+
             $fakeSchema->setType($type);
             $typeGuess->addType($this->chainGuesser->guessType($fakeSchema, $name, $reference, $registry));
         }

@@ -21,7 +21,7 @@ trait PropertyGenerator
      */
     abstract protected function getParser(): Parser;
 
-    protected function createProperty(Property $property, string $namespace, $default = null, bool $required = false): Stmt
+    protected function createProperty(Property $property, string $namespace, $default = null, bool $strict = true): Stmt
     {
         $propertyName = $this->getNaming()->getPropertyName($property->getPhpName());
         $propertyStmt = new Stmt\PropertyProperty($propertyName);
@@ -37,14 +37,14 @@ trait PropertyGenerator
         return new Stmt\Property(Stmt\Class_::MODIFIER_PROTECTED, [
             $propertyStmt,
         ], [
-            'comments' => [$this->createPropertyDoc($property, $namespace, $required)],
+            'comments' => [$this->createPropertyDoc($property, $namespace, $strict)],
         ]);
     }
 
-    protected function createPropertyDoc(Property $property, $namespace, bool $required): Doc
+    protected function createPropertyDoc(Property $property, $namespace, bool $strict): Doc
     {
         $docTypeHint = $property->getType()->getDocTypeHint($namespace);
-        if (!$required && strpos($docTypeHint, 'null') === false) {
+        if ((!$strict || $property->isNullable()) && strpos($docTypeHint, 'null') === false) {
             $docTypeHint .= '|null';
         }
 

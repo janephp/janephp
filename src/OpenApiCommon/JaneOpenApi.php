@@ -90,7 +90,6 @@ abstract class JaneOpenApi extends ChainGenerator
                     }
 
                     $names[] = strtolower($property->getPhpName());
-
                     $property->setType($this->chainGuesser->guessType($property->getObject(), $property->getName(), $property->getReference(), $registry));
                 }
 
