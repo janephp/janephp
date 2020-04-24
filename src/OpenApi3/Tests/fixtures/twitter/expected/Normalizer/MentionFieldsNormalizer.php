@@ -26,6 +26,12 @@ class MentionFieldsNormalizer implements DenormalizerInterface, NormalizerInterf
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
+        }
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
+        }
         $object = new \Jane\OpenApi3\Tests\Expected\Model\MentionFields();
         if (\array_key_exists('username', $data)) {
             $object->setUsername($data['username']);

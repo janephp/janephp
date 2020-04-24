@@ -11,7 +11,6 @@ use Jane\OpenApiCommon\Generator\ExceptionGenerator;
 use Jane\OpenApiCommon\Naming\ChainOperationNaming;
 use Jane\OpenApi3\Naming\OperationUrlNaming;
 use Jane\OpenApiCommon\Naming\OperationIdNaming;
-use Jane\OpenApi3\Operation\OperationManager;
 use PhpParser\ParserFactory;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 
@@ -24,7 +23,6 @@ class GeneratorFactory
 
         $nonBodyParameter = new NonBodyParameterGenerator($serializer, $parser);
         $exceptionGenerator = new ExceptionGenerator();
-        $operationManager = new OperationManager();
         $operationNaming = new ChainOperationNaming([
             new OperationIdNaming(),
             new OperationUrlNaming(),
@@ -38,6 +36,6 @@ class GeneratorFactory
         $psr7EndpointGenerator = new Psr7EndpointGenerator($operationNaming, $nonBodyParameter, $serializer, $exceptionGenerator, $requestBodyGenerator);
         $psr7OperationGenerator = new Psr7OperationGenerator($psr7EndpointGenerator);
 
-        return new Psr18ClientGenerator($operationManager, $psr7OperationGenerator, $operationNaming);
+        return new Psr18ClientGenerator($psr7OperationGenerator, $operationNaming);
     }
 }

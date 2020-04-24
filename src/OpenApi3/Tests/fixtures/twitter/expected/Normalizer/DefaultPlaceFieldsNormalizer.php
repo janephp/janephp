@@ -26,6 +26,12 @@ class DefaultPlaceFieldsNormalizer implements DenormalizerInterface, NormalizerI
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
+        }
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
+        }
         $object = new \Jane\OpenApi3\Tests\Expected\Model\DefaultPlaceFields();
         if (\array_key_exists('place_type', $data)) {
             $object->setPlaceType($data['place_type']);

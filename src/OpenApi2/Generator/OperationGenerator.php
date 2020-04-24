@@ -3,7 +3,7 @@
 namespace Jane\OpenApi2\Generator;
 
 use Jane\JsonSchema\Generator\Context\Context;
-use Jane\OpenApiCommon\Operation\Operation;
+use Jane\OpenApiCommon\Guesser\Guess\OperationGuess;
 use PhpParser\Comment;
 use PhpParser\Node\Arg;
 use PhpParser\Node\Expr;
@@ -27,7 +27,7 @@ abstract class OperationGenerator
 
     abstract protected function getReturnDoc(array $returnTypes, array $throwTypes): string;
 
-    public function createOperation(string $name, Operation $operation, Context $context): Stmt\ClassMethod
+    public function createOperation(string $name, OperationGuess $operation, Context $context): Stmt\ClassMethod
     {
         [$endpointName, $methodParams, $methodDoc, $returnTypes, $throwTypes] = $this->endpointGenerator->createEndpointClass($operation, $context);
         $endpointArgs = [];

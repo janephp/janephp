@@ -18,6 +18,11 @@ class ArrayType extends Type
         $this->itemType = $itemType;
     }
 
+    public function getItemType(): Type
+    {
+        return $this->itemType;
+    }
+
     /**
      * (@inheritDoc}.
      */

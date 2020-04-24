@@ -26,6 +26,12 @@ class EmptySpaceNormalizer implements DenormalizerInterface, NormalizerInterface
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
+        }
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
+        }
         $object = new \Jane\OpenApi2\Tests\Expected\Model\EmptySpace();
         if (\array_key_exists('stringProperty', $data)) {
             $object->setStringProperty($data['stringProperty']);

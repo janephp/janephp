@@ -2,7 +2,7 @@
 
 namespace Jane\OpenApiCommon\Naming;
 
-use Jane\OpenApiCommon\Operation\Operation;
+use Jane\OpenApiCommon\Guesser\Guess\OperationGuess;
 
 class ChainOperationNaming implements OperationNamingInterface
 {
@@ -19,7 +19,7 @@ class ChainOperationNaming implements OperationNamingInterface
         $this->operationNamings = $operationNamings;
     }
 
-    public function getFunctionName(Operation $operation): string
+    public function getFunctionName(OperationGuess $operation): string
     {
         foreach ($this->operationNamings as $operationNaming) {
             $functionName = $operationNaming->getFunctionName($operation);
@@ -32,7 +32,7 @@ class ChainOperationNaming implements OperationNamingInterface
         throw new \RuntimeException('Cannot generate function name');
     }
 
-    public function getEndpointName(Operation $operation): string
+    public function getEndpointName(OperationGuess $operation): string
     {
         foreach ($this->operationNamings as $operationNaming) {
             $functionName = $operationNaming->getEndpointName($operation);

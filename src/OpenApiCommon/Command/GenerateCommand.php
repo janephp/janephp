@@ -2,7 +2,6 @@
 
 namespace Jane\OpenApiCommon\Command;
 
-use Jane\JsonSchema\Command\ConfigLoader;
 use Jane\JsonSchema\Printer;
 use Jane\OpenApiCommon\Exception\CouldNotParseException;
 use Jane\OpenApiCommon\Exception\OpenApiVersionSupportException;
@@ -38,27 +37,30 @@ class GenerateCommand extends Command
             $localRegistry = new Registry();
             $localRegistry->addSchema($this->resolveSchema($options['openapi-file'], $options));
             $localRegistry->addOutputDirectory($options['directory']);
+            $localRegistry->setWhitelistedPaths($options['whitelisted-paths']);
+            $this->matchOpenApiClass($localRegistry);
 
-            $openApiClass = $this->matchOpenApiClass($localRegistry);
-
-            $registries[$openApiClass] = $localRegistry;
+            $registries[] = $localRegistry;
         } else {
             foreach ($options['mapping'] as $schema => $schemaOptions) {
                 $localRegistry = new Registry();
                 $localRegistry->addSchema($localSchema = $this->resolveSchema($schema, $schemaOptions));
                 $localRegistry->addOutputDirectory($localDirectory = $schemaOptions['directory']);
+                $localRegistry->setWhitelistedPaths($schemaOptions['whitelisted-paths'] ?? []);
+                $this->matchOpenApiClass($localRegistry);
 
-                $openApiClass = $this->matchOpenApiClass($localRegistry);
-                if (!\array_key_exists($openApiClass, $registries)) {
-                    $registries[$openApiClass] = new Registry();
+                if (!\array_key_exists($localRegistry->getOptionsHash(), $registries)) {
+                    $registries[$localRegistry->getOptionsHash()] = $localRegistry;
+                } else {
+                    $registries[$localRegistry->getOptionsHash()]->addSchema($localSchema);
+                    $registries[$localRegistry->getOptionsHash()]->addOutputDirectory($localDirectory);
                 }
-
-                $registries[$openApiClass]->addSchema($localSchema);
-                $registries[$openApiClass]->addOutputDirectory($localDirectory);
             }
         }
 
-        foreach ($registries as $openApiClass => $registry) {
+        /** @var Registry $registry */
+        foreach ($registries as $registry) {
+            $openApiClass = $registry->getOpenApiClass();
             /** @var JaneOpenApi $janeOpenApi */
             $janeOpenApi = $openApiClass::build($options);
             $fixerConfigFile = '';
@@ -83,40 +85,6 @@ class GenerateCommand extends Command
         return 0;
     }
 
-    protected function resolveConfiguration(array $options = [])
-    {
-        $optionsResolver = new OptionsResolver();
-        $optionsResolver->setDefaults([
-            'reference' => false,
-            'date-format' => \DateTime::RFC3339,
-            'full-date-format' => 'Y-m-d',
-            'date-prefer-interface' => null,
-            'date-input-format' => null,
-            'strict' => true,
-            'use-fixer' => false,
-            'fixer-config-file' => null,
-            'clean-generated' => true,
-            'use-cacheable-supports-method' => null,
-            'skip-null-values' => true,
-        ]);
-
-        if (\array_key_exists('openapi-file', $options)) {
-            $optionsResolver->setRequired([
-                'openapi-file',
-                'namespace',
-                'directory',
-            ]);
-
-            $optionsResolver->setDefault('version', 3);
-        } else {
-            $optionsResolver->setRequired([
-                'mapping',
-            ]);
-        }
-
-        return $optionsResolver->resolve($options);
-    }
-
     protected function resolveSchema($schema, array $options = [])
     {
         $optionsResolver = new OptionsResolver();
@@ -135,6 +103,7 @@ class GenerateCommand extends Command
             'clean-generated',
             'use-cacheable-supports-method',
             'skip-null-values',
+            'whitelisted-paths',
         ]);
 
         $optionsResolver->setDefault('version', 3);
@@ -149,7 +118,7 @@ class GenerateCommand extends Command
         return new Schema($schema, $options['namespace'], $options['directory'], '');
     }
 
-    private function matchOpenApiClass(Registry $registry): string
+    private function matchOpenApiClass(Registry $registry): void
     {
         $firstSchema = $registry->getFirstSchema();
         $openApiClass = null;
@@ -199,6 +168,6 @@ class GenerateCommand extends Command
             }
         }
 
-        return $openApiClass;
+        $registry->setOpenApiClass($openApiClass);
     }
 }

@@ -26,6 +26,12 @@ class ParchmentsGetResponse200Normalizer implements DenormalizerInterface, Norma
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
+        }
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
+        }
         $object = new \ApiPlatform\Demo\Model\ParchmentsGetResponse200();
         if (\array_key_exists('hydra:member', $data)) {
             $values = array();

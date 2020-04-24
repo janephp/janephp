@@ -7,6 +7,22 @@ use Jane\OpenApiCommon\Guesser\Guess\SecuritySchemeGuess;
 
 class Registry extends BaseRegistry
 {
+    /** @var string */
+    private $openApiClass;
+
+    /** @var array<string>|null */
+    private $whitelistedPaths;
+
+    public function getOpenApiClass(): string
+    {
+        return $this->openApiClass;
+    }
+
+    public function setOpenApiClass(string $openApiClass): void
+    {
+        $this->openApiClass = $openApiClass;
+    }
+
     public function getFirstSchema(): Schema
     {
         return reset($this->schemas);
@@ -27,5 +43,23 @@ class Registry extends BaseRegistry
         }
 
         return $schema->getSecurityScheme($securitySchemeReference);
+    }
+
+    public function setWhitelistedPaths(?array $whitelistedPaths): void
+    {
+        $this->whitelistedPaths = $whitelistedPaths;
+    }
+
+    public function getWhitelistedPaths(): ?array
+    {
+        return $this->whitelistedPaths;
+    }
+
+    public function getOptionsHash(): string
+    {
+        return md5(json_encode([
+            'open-api-class' => $this->getOpenApiClass(),
+            'whitelisted-paths' => $this->getWhitelistedPaths() ?? [],
+        ]));
     }
 }

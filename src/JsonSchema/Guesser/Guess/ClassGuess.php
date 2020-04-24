@@ -55,6 +55,9 @@ class ClassGuess
         return $this->reference;
     }
 
+    /**
+     * @return Property[]
+     */
     public function getProperties(): array
     {
         return $this->properties;

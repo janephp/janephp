@@ -5,8 +5,8 @@ namespace Jane\OpenApi3\Naming;
 use Doctrine\Common\Inflector\Inflector;
 use Jane\OpenApi3\JsonSchema\Model\Response;
 use Jane\OpenApi3\JsonSchema\Model\Schema;
+use Jane\OpenApiCommon\Guesser\Guess\OperationGuess;
 use Jane\OpenApiCommon\Naming\OperationUrlNaming as CommonOperationUrlNaming;
-use Jane\OpenApiCommon\Operation\Operation;
 
 class OperationUrlNaming extends CommonOperationUrlNaming
 {
@@ -16,7 +16,7 @@ class OperationUrlNaming extends CommonOperationUrlNaming
         '.asp',
     ];
 
-    protected function getUniqueName(Operation $operation): string
+    protected function getUniqueName(OperationGuess $operation): string
     {
         $prefix = strtolower($operation->getMethod());
         $shouldSingularize = true;

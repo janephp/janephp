@@ -26,6 +26,12 @@ class FooGetResponse200Normalizer implements DenormalizerInterface, NormalizerIn
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
+        }
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
+        }
         $object = new \Jane\OpenApi3\Tests\Expected\Model\FooGetResponse200();
         if (\array_key_exists('id', $data)) {
             $object->setId($data['id']);

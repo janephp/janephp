@@ -26,6 +26,12 @@ class ResourceNotFoundProblemNormalizer implements DenormalizerInterface, Normal
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
+        }
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
+        }
         $object = new \Jane\OpenApi3\Tests\Expected\Model\ResourceNotFoundProblem();
         if (\array_key_exists('type', $data)) {
             $object->setType($data['type']);

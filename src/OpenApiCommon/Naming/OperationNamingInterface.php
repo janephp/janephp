@@ -2,11 +2,11 @@
 
 namespace Jane\OpenApiCommon\Naming;
 
-use Jane\OpenApiCommon\Operation\Operation;
+use Jane\OpenApiCommon\Guesser\Guess\OperationGuess;
 
 interface OperationNamingInterface
 {
-    public function getFunctionName(Operation $operation): string;
+    public function getFunctionName(OperationGuess $operation): string;
 
-    public function getEndpointName(Operation $operation): string;
+    public function getEndpointName(OperationGuess $operation): string;
 }
