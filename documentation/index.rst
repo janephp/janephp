@@ -39,6 +39,12 @@ Lastly, if you want to contribute there is some details about :doc:`/contributin
 
 .. toctree::
    :hidden:
+   :caption: Tips
+
+   How to manage nullable properties <tips/nullable>
+
+.. toctree::
+   :hidden:
    :caption: Contributing
 
    Backwards compatibility <contributing/bc>
