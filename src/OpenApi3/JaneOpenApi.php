@@ -9,15 +9,13 @@ use Jane\OpenApiCommon\Generator\NormalizerGenerator;
 use Jane\OpenApi3\Generator\GeneratorFactory;
 use Jane\OpenApi3\Guesser\OpenApiSchema\GuesserFactory;
 use Jane\OpenApi3\SchemaParser\SchemaParser;
-use Jane\JsonSchema\Registry;
-use Jane\OpenApiCommon\Registry as OpenApiRegistry;
-use Jane\OpenApiCommon\Schema;
 use PhpParser\ParserFactory;
 use Jane\OpenApiCommon\JaneOpenApi as CommonJaneOpenApi;
 
 class JaneOpenApi extends CommonJaneOpenApi
 {
     protected const OBJECT_NORMALIZER_CLASS = JsonSchema\Normalizer\JaneObjectNormalizer::class;
+    protected const WHITELIST_FETCH_CLASS = WhitelistedSchema::class;
 
     public static function build(array $options = [])
     {
@@ -42,23 +40,5 @@ class JaneOpenApi extends CommonJaneOpenApi
         $self->addGenerator(GeneratorFactory::build($serializer));
 
         return $self;
-    }
-
-    /**
-     * @param OpenApiRegistry $registry
-     */
-    protected function whitelistFetch(Schema $schema, Registry $registry): void
-    {
-        $whitelistedSchema = new WhitelistedSchema($schema, self::buildSerializer());
-
-        foreach ($schema->getOperations() as $operation) {
-            $whitelistedSchema->addOperationRelations($operation, $registry);
-        }
-
-        foreach ($schema->getClasses() as $class) {
-            if (!$schema->needsRelation($class->getName())) {
-                $schema->removeClass($class->getReference());
-            }
-        }
     }
 }
