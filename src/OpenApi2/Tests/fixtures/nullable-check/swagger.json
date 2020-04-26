@@ -1,0 +1,18 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "Swagger",
+        "version": "0.0.0"
+    },
+    "definitions": {
+        "Foo": {
+            "type": "object",
+            "properties": {
+                "foo": {"type": "string"},
+                "bar": {"type": ["string", "null"]},
+                "baz": {"type": "string", "x-nullable": true}
+            }
+        }
+    },
+    "paths": {}
+}

@@ -7,6 +7,13 @@ use Jane\OpenApi2\JsonSchema\Model\Schema;
 
 class SimpleTypeGuesser extends BaseSimpleTypeGuesser
 {
+    protected $typesSupported = [
+        'boolean',
+        'integer',
+        'number',
+        'string',
+    ];
+
     protected function getSchemaClass(): string
     {
         return Schema::class;

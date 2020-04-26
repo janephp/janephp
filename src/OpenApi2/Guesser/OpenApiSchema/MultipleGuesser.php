@@ -7,6 +7,8 @@ use Jane\OpenApi2\JsonSchema\Model\Schema;
 
 class MultipleGuesser extends BaseMultipleGuesser
 {
+    protected $bannedTypes = ['null'];
+
     protected function getSchemaClass(): string
     {
         return Schema::class;
