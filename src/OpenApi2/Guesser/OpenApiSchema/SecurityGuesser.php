@@ -4,11 +4,11 @@ namespace Jane\OpenApi2\Guesser\OpenApiSchema;
 
 use Jane\JsonSchema\Guesser\ClassGuesserInterface;
 use Jane\JsonSchema\Guesser\GuesserInterface;
-use Jane\JsonSchema\Registry;
+use Jane\JsonSchema\Registry\Registry;
 use Jane\OpenApi2\JsonSchema\Model\ApiKeySecurity;
 use Jane\OpenApi2\JsonSchema\Model\BasicAuthenticationSecurity;
 use Jane\OpenApiCommon\Guesser\Guess\SecuritySchemeGuess;
-use Jane\OpenApiCommon\Schema;
+use Jane\OpenApiCommon\Registry\Schema;
 
 class SecurityGuesser implements GuesserInterface, ClassGuesserInterface
 {

@@ -10,9 +10,9 @@ use Jane\JsonSchema\Guesser\Guess\Type;
 use Jane\JsonSchema\Guesser\GuesserInterface;
 use Jane\JsonSchema\Guesser\GuesserResolverTrait;
 use Jane\JsonSchema\Guesser\TypeGuesserInterface;
-use Jane\JsonSchema\JsonSchemaMerger;
+use Jane\JsonSchema\Tools\JsonSchemaMerger;
 use Jane\JsonSchema\Model\JsonSchema;
-use Jane\JsonSchema\Registry;
+use Jane\JsonSchema\Registry\Registry;
 use Jane\JsonSchemaRuntime\Reference;
 use Symfony\Component\Serializer\SerializerInterface;
 

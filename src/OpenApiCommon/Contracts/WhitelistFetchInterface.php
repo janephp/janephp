@@ -3,7 +3,7 @@
 namespace Jane\OpenApiCommon\Contracts;
 
 use Jane\OpenApiCommon\Guesser\Guess\OperationGuess;
-use Jane\OpenApiCommon\Registry;
+use Jane\OpenApiCommon\Registry\Registry;
 
 interface WhitelistFetchInterface
 {

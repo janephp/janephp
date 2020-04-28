@@ -6,11 +6,11 @@ use Jane\JsonSchema\Generator\Context\Context;
 use Jane\JsonSchema\Generator\File;
 use Jane\JsonSchema\Generator\GeneratorInterface;
 use Jane\JsonSchema\Generator\Naming;
-use Jane\JsonSchema\Schema as BaseSchema;
+use Jane\JsonSchema\Registry\Schema as BaseSchema;
 use Jane\OpenApiCommon\Generator\Authentication\ClassGenerator;
 use Jane\OpenApiCommon\Generator\Authentication\ConstructGenerator;
 use Jane\OpenApiCommon\Guesser\Guess\SecuritySchemeGuess;
-use Jane\OpenApiCommon\Schema;
+use Jane\OpenApiCommon\Registry\Schema;
 use PhpParser\Node\Name;
 use PhpParser\Node\Stmt;
 

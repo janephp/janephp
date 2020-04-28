@@ -1,11 +1,11 @@
 <?php
 
-namespace Jane\JsonSchema;
+namespace Jane\JsonSchema\Registry;
 
 use Jane\JsonSchema\Guesser\Guess\ClassGuess;
 use League\Uri\Http;
 
-class Registry
+class Registry implements RegistryInterface
 {
     /** @var string[] */
     protected $outputDirectories = [];
@@ -26,7 +26,7 @@ class Registry
         return $this->outputDirectories;
     }
 
-    public function addSchema(Schema $schema): void
+    public function addSchema(SchemaInterface $schema): void
     {
         $this->schemas[] = $schema;
     }
@@ -67,5 +67,10 @@ class Registry
         }
 
         return $schema->getClass($classReference);
+    }
+
+    public function getOptionsHash(): string
+    {
+        return md5(json_encode([]));
     }
 }

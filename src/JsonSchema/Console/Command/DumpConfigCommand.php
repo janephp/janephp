@@ -1,7 +1,8 @@
 <?php
 
-namespace Jane\JsonSchema\Command;
+namespace Jane\JsonSchema\Console\Command;
 
+use Jane\JsonSchema\Console\Loader\ConfigLoaderInterface;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
@@ -10,11 +11,15 @@ use Symfony\Component\VarDumper\VarDumper;
 
 class DumpConfigCommand extends Command
 {
-    use ConfigLoader;
+    /** @var ConfigLoaderInterface */
+    protected $configLoader;
 
-    /**
-     * {@inheritdoc}
-     */
+    public function __construct(ConfigLoaderInterface $configLoader)
+    {
+        parent::__construct(null);
+        $this->configLoader = $configLoader;
+    }
+
     public function configure()
     {
         $this->setName('dump-config');
@@ -22,12 +27,9 @@ class DumpConfigCommand extends Command
         $this->addOption('config-file', 'c', InputOption::VALUE_REQUIRED, 'File to use for Jane configuration', '.jane');
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function execute(InputInterface $input, OutputInterface $output)
     {
-        VarDumper::dump($this->loadConfig($input->getOption('config-file')));
+        VarDumper::dump($this->configLoader->load($input->getOption('config-file')));
 
         return 0;
     }

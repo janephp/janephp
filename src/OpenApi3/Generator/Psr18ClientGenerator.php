@@ -5,7 +5,7 @@ namespace Jane\OpenApi3\Generator;
 use Jane\JsonSchema\Generator\Context\Context;
 use Jane\JsonSchema\Generator\File;
 use Jane\JsonSchema\Generator\GeneratorInterface;
-use Jane\JsonSchema\Schema;
+use Jane\JsonSchema\Registry\Schema;
 use Jane\OpenApi3\Generator\Client\ServerPluginGenerator;
 use Jane\OpenApiCommon\Generator\Client\HttpClientCreateGenerator;
 use Jane\OpenApiCommon\Generator\Client\Psr18ClientGenerator as CommonPsr18ClientGenerator;

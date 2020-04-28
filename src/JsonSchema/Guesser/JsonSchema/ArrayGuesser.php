@@ -11,8 +11,8 @@ use Jane\JsonSchema\Guesser\Guess\Type;
 use Jane\JsonSchema\Guesser\GuesserInterface;
 use Jane\JsonSchema\Guesser\TypeGuesserInterface;
 use Jane\JsonSchema\Model\JsonSchema;
-use Jane\JsonSchema\Registry;
-use Jane\JsonSchema\Schema;
+use Jane\JsonSchema\Registry\Registry;
+use Jane\JsonSchema\Registry\Schema;
 
 class ArrayGuesser implements GuesserInterface, TypeGuesserInterface, ChainGuesserAwareInterface, ClassGuesserInterface
 {

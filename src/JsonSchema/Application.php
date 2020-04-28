@@ -2,14 +2,14 @@
 
 namespace Jane\JsonSchema;
 
-use Jane\JsonSchema\Command\DumpConfigCommand;
-use Jane\JsonSchema\Command\GenerateCommand;
+use Jane\JsonSchema\Console\Loader\ConfigLoader;
+use Jane\JsonSchema\Console\Command\DumpConfigCommand;
+use Jane\JsonSchema\Console\Command\GenerateCommand;
+use Jane\JsonSchema\Console\Loader\SchemaLoader;
 use Symfony\Component\Console\Application as BaseApplication;
 
 class Application extends BaseApplication
 {
-    public const GENERATE_COMMAND = GenerateCommand::class;
-    public const DUMP_CONFIG_COMMAND = DumpConfigCommand::class;
     public const VERSION = '6.x-dev';
 
     /**
@@ -19,10 +19,14 @@ class Application extends BaseApplication
     {
         parent::__construct('Jane', self::VERSION);
 
-        $generateCommand = static::GENERATE_COMMAND;
-        $dumpConfigCommand = static::DUMP_CONFIG_COMMAND;
+        $this->boot();
+    }
 
-        $this->add(new $generateCommand());
-        $this->add(new $dumpConfigCommand());
+    protected function boot(): void
+    {
+        $configLoader = new ConfigLoader();
+
+        $this->add(new GenerateCommand($configLoader, new SchemaLoader()));
+        $this->add(new DumpConfigCommand($configLoader));
     }
 }

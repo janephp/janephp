@@ -1,13 +1,13 @@
 <?php
 
-namespace Jane\JsonSchema;
+namespace Jane\JsonSchema\Registry;
 
 use Jane\JsonSchema\Generator\File;
 use Jane\JsonSchema\Guesser\Guess\ArrayType;
 use Jane\JsonSchema\Guesser\Guess\ClassGuess;
 use Jane\JsonSchema\Guesser\Guess\ObjectType;
 
-class Schema
+class Schema implements SchemaInterface
 {
     /** @var string Origin of the schema (file or url path) */
     private $origin;

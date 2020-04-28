@@ -10,6 +10,8 @@ use Jane\JsonSchema\Generator\NormalizerGenerator;
 use Jane\JsonSchema\Guesser\ChainGuesser;
 use Jane\JsonSchema\Guesser\JsonSchema\JsonSchemaGuesserFactory;
 use Jane\JsonSchema\Normalizer\JaneObjectNormalizer;
+use Jane\JsonSchema\Registry\Registry;
+use Jane\JsonSchema\Registry\Schema;
 use PhpParser\ParserFactory;
 use Symfony\Component\Serializer\Encoder\JsonDecode;
 use Symfony\Component\Serializer\Encoder\JsonEncode;

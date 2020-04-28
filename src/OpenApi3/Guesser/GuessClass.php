@@ -5,7 +5,7 @@ namespace Jane\OpenApi3\Guesser;
 use Jane\JsonSchema\Guesser\Guess\ClassGuess;
 use Jane\JsonSchemaRuntime\Reference;
 use Jane\OpenApi3\JsonSchema\Model\Schema;
-use Jane\OpenApiCommon\Registry;
+use Jane\OpenApiCommon\Registry\Registry;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 
 trait GuessClass

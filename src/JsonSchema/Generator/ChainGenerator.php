@@ -3,7 +3,7 @@
 namespace Jane\JsonSchema\Generator;
 
 use Jane\JsonSchema\Generator\Context\Context;
-use Jane\JsonSchema\Registry;
+use Jane\JsonSchema\Registry\Registry;
 
 abstract class ChainGenerator
 {
