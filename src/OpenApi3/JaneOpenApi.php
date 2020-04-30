@@ -2,7 +2,7 @@
 
 namespace Jane\OpenApi3;
 
-use Jane\OpenApi3\Generator\AuthenticationGenerator;
+use Jane\OpenApiCommon\Generator\AuthenticationGenerator;
 use Jane\OpenApiCommon\Generator\ModelGenerator;
 use Jane\JsonSchema\Generator\Naming;
 use Jane\OpenApiCommon\Generator\NormalizerGenerator;

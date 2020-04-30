@@ -27,10 +27,13 @@ class SecurityGuesser implements GuesserInterface, ClassGuesserInterface
      */
     public function guessClass($object, string $name, string $reference, Registry $registry): void
     {
-        $securitySchemeGuess = new SecuritySchemeGuess($name, $object->getType(), $object);
+        if (SecuritySchemeGuess::TYPE_API_KEY === $object->getType()) {
+            $securitySchemeGuess = new SecuritySchemeGuess($name, $object, $object->getName(), $object->getType());
+            $securitySchemeGuess->setIn($object->getIn());
 
-        /** @var Schema $schema */
-        $schema = $registry->getSchema($reference);
-        $schema->addSecurityScheme($reference, $securitySchemeGuess);
+            /** @var Schema $schema */
+            $schema = $registry->getSchema($reference);
+            $schema->addSecurityScheme($reference, $securitySchemeGuess);
+        }
     }
 }

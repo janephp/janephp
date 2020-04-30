@@ -3,7 +3,7 @@
 namespace Jane\OpenApi2;
 
 use Jane\JsonSchema\Generator\Naming;
-use Jane\OpenApi2\Generator\AuthenticationGenerator;
+use Jane\OpenApiCommon\Generator\AuthenticationGenerator;
 use Jane\OpenApi2\Generator\GeneratorFactory;
 use Jane\OpenApi2\JsonSchema\Normalizer\JaneObjectNormalizer;
 use Jane\OpenApiCommon\Generator\ModelGenerator;
