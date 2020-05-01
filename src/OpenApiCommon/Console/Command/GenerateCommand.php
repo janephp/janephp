@@ -28,6 +28,7 @@ class GenerateCommand extends BaseGenerateCommand
 
     public function configure()
     {
+        $this->setName('generate');
         $this->setDescription('Generate an api client: class, normalizers and resources given a specific Json OpenApi file');
         $this->addOption('config-file', 'c', InputOption::VALUE_REQUIRED, 'File to use for Jane OpenAPI configuration', '.jane-openapi');
     }
