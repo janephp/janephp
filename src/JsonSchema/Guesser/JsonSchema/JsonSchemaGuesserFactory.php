@@ -5,7 +5,7 @@ namespace Jane\JsonSchema\Guesser\JsonSchema;
 use Jane\JsonSchema\Generator\Naming;
 use Jane\JsonSchema\Guesser\ChainGuesser;
 use Jane\JsonSchema\Guesser\ChainGuesserFactory;
-use Jane\JsonSchema\JsonSchemaMerger;
+use Jane\JsonSchema\Tools\JsonSchemaMerger;
 use Symfony\Component\Serializer\SerializerInterface;
 
 class JsonSchemaGuesserFactory

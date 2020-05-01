@@ -3,7 +3,7 @@
 namespace Jane\JsonSchema\Guesser;
 
 use Jane\JsonSchema\Guesser\Guess\Type;
-use Jane\JsonSchema\Registry;
+use Jane\JsonSchema\Registry\Registry;
 
 interface TypeGuesserInterface
 {

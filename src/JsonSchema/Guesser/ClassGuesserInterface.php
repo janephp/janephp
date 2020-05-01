@@ -2,7 +2,7 @@
 
 namespace Jane\JsonSchema\Guesser;
 
-use Jane\JsonSchema\Registry;
+use Jane\JsonSchema\Registry\Registry;
 
 interface ClassGuesserInterface
 {

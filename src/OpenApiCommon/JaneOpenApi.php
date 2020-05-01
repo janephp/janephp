@@ -5,11 +5,13 @@ namespace Jane\OpenApiCommon;
 use Jane\JsonSchema\Generator\ChainGenerator;
 use Jane\JsonSchema\Generator\Naming;
 use Jane\JsonSchema\Guesser\ChainGuesser;
-use Jane\JsonSchema\Registry;
-use Jane\OpenApiCommon\Registry as OpenApiRegistry;
+use Jane\JsonSchema\Registry\Registry;
+use Jane\OpenApiCommon\Contracts\WhitelistFetchInterface;
+use Jane\OpenApiCommon\Registry\Registry as OpenApiRegistry;
 use Jane\OpenApi3\Guesser\GuessClass;
 use Jane\OpenApiCommon\Guesser\Guess\ClassGuess;
 use Jane\OpenApiCommon\Guesser\Guess\MultipleClass;
+use Jane\OpenApiCommon\Registry\Schema;
 use Jane\OpenApiCommon\SchemaParser\SchemaParser;
 use Jane\JsonSchema\Generator\Context\Context;
 use Symfony\Component\Serializer\Encoder\JsonDecode;
@@ -26,6 +28,7 @@ abstract class JaneOpenApi extends ChainGenerator
     use GuessClass;
 
     protected const OBJECT_NORMALIZER_CLASS = null;
+    protected const WHITELIST_FETCH_CLASS = null;
 
     /** @var SchemaParser $schemaParser */
     protected $schemaParser;
@@ -116,7 +119,25 @@ abstract class JaneOpenApi extends ChainGenerator
         return new Context($registry, $this->strict);
     }
 
-    abstract protected function whitelistFetch(Schema $schema, Registry $registry): void;
+    /**
+     * @param OpenApiRegistry $registry
+     */
+    protected function whitelistFetch(Schema $schema, Registry $registry): void
+    {
+        $whitelistFetchClass = static::WHITELIST_FETCH_CLASS;
+        /** @var WhitelistFetchInterface $whitelistedSchema */
+        $whitelistedSchema = new $whitelistFetchClass($schema, self::buildSerializer());
+
+        foreach ($schema->getOperations() as $operation) {
+            $whitelistedSchema->addOperationRelations($operation, $registry);
+        }
+
+        foreach ($schema->getClasses() as $class) {
+            if (!$schema->needsRelation($class->getName())) {
+                $schema->removeClass($class->getReference());
+            }
+        }
+    }
 
     protected function hydrateDiscriminatedClasses(Schema $schema, Registry $registry)
     {

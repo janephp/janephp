@@ -4,7 +4,7 @@ namespace Jane\OpenApiCommon\Generator\Client;
 
 use Http\Discovery\Psr17FactoryDiscovery;
 use Jane\JsonSchema\Generator\Context\Context;
-use Jane\JsonSchema\Schema as BaseSchema;
+use Jane\JsonSchema\Registry\Schema as BaseSchema;
 use Jane\OpenApiRuntime\Client\Psr18Client;
 use PhpParser\Node;
 use PhpParser\Node\Name;

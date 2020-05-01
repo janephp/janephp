@@ -1,18 +1,24 @@
 <?php
 
-namespace Jane\OpenApiCommon;
+namespace Jane\OpenApiCommon\Registry;
 
-use Jane\JsonSchema\Schema as BaseSchema;
+use Jane\JsonSchema\Registry\Schema as BaseSchema;
+use Jane\JsonSchema\Registry\SchemaInterface;
 use Jane\OpenApiCommon\Guesser\Guess\OperationGuess;
 use Jane\OpenApiCommon\Guesser\Guess\SecuritySchemeGuess;
 
-class Schema extends BaseSchema
+class Schema extends BaseSchema implements SchemaInterface
 {
     /** @var OperationGuess[] */
     private $operations = [];
 
     /** @var SecuritySchemeGuess[] List of SecuritySchemes associated to this schema */
     private $securitySchemes = [];
+
+    public function __construct(string $origin, string $namespace, string $directory)
+    {
+        parent::__construct($origin, $namespace, $directory, '');
+    }
 
     public function addSecurityScheme(string $reference, SecuritySchemeGuess $securityScheme)
     {

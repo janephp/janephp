@@ -7,14 +7,15 @@ use Jane\OpenApi3\JsonSchema\Model\MediaType;
 use Jane\OpenApi3\JsonSchema\Model\Parameter;
 use Jane\OpenApi3\JsonSchema\Model\Response;
 use Jane\OpenApi3\Naming\OperationUrlNaming;
+use Jane\OpenApiCommon\Contracts\WhitelistFetchInterface;
 use Jane\OpenApiCommon\Guesser\Guess\OperationGuess;
 use Jane\OpenApiCommon\Naming\ChainOperationNaming;
 use Jane\OpenApiCommon\Naming\OperationIdNaming;
-use Jane\OpenApiCommon\Registry;
-use Jane\OpenApiCommon\Schema;
+use Jane\OpenApiCommon\Registry\Registry;
+use Jane\OpenApiCommon\Registry\Schema;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 
-class WhitelistedSchema
+class WhitelistedSchema implements WhitelistFetchInterface
 {
     use GuessClass;
 

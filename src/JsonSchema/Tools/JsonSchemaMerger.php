@@ -1,6 +1,6 @@
 <?php
 
-namespace Jane\JsonSchema;
+namespace Jane\JsonSchema\Tools;
 
 use Jane\JsonSchema\Model\JsonSchema;
 

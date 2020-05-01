@@ -4,8 +4,8 @@ namespace Jane\JsonSchema\Tests;
 
 use Jane\JsonSchema\Jane;
 use Jane\JsonSchema\Printer;
-use Jane\JsonSchema\Registry;
-use Jane\JsonSchema\Schema;
+use Jane\JsonSchema\Registry\Registry;
+use Jane\JsonSchema\Registry\Schema;
 use PhpParser\PrettyPrinter\Standard;
 use PHPUnit\Framework\TestCase;
 

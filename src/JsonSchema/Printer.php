@@ -2,6 +2,7 @@
 
 namespace Jane\JsonSchema;
 
+use Jane\JsonSchema\Registry\Registry;
 use PhpCsFixer\Console\Command\FixCommand;
 use PhpCsFixer\ToolInfo;
 use PhpParser\PrettyPrinterAbstract;

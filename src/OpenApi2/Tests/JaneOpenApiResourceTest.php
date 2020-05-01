@@ -2,7 +2,10 @@
 
 namespace Jane\OpenApi2\Tests;
 
-use Jane\OpenApiCommon\Command\GenerateCommand;
+use Jane\OpenApiCommon\Console\Loader\ConfigLoader;
+use Jane\OpenApiCommon\Console\Command\GenerateCommand;
+use Jane\OpenApiCommon\Console\Loader\OpenApiMatcher;
+use Jane\OpenApiCommon\Console\Loader\SchemaLoader;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Output\NullOutput;
@@ -27,7 +30,7 @@ class JaneOpenApiResourceTest extends TestCase
         $filesystem->mkdir($testDirectory->getRealPath() . \DIRECTORY_SEPARATOR . 'generated');
 
         // 2. Generate
-        $command = new GenerateCommand();
+        $command = new GenerateCommand(new ConfigLoader(), new SchemaLoader(), new OpenApiMatcher());
         $inputArray = new ArrayInput([
             '--config-file' => $testDirectory->getRealPath() . \DIRECTORY_SEPARATOR . '.jane-openapi',
         ], $command->getDefinition());

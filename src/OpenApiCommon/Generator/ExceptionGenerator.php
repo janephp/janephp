@@ -5,7 +5,7 @@ namespace Jane\OpenApiCommon\Generator;
 use Jane\JsonSchema\Generator\Context\Context;
 use Jane\JsonSchema\Generator\File;
 use Jane\JsonSchema\Guesser\Guess\ClassGuess;
-use Jane\JsonSchema\Schema;
+use Jane\JsonSchema\Registry\Schema;
 use Jane\OpenApiCommon\Naming\ExceptionNaming;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Name;

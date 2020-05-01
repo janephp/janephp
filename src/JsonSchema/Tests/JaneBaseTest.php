@@ -1,8 +1,10 @@
 <?php
 
-namespace Jane\JsonSchema\tests;
+namespace Jane\JsonSchema\Tests;
 
-use Jane\JsonSchema\Command\GenerateCommand;
+use Jane\JsonSchema\Console\Loader\ConfigLoader;
+use Jane\JsonSchema\Console\Command\GenerateCommand;
+use Jane\JsonSchema\Console\Loader\SchemaLoader;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Output\NullOutput;
@@ -17,7 +19,7 @@ class JaneBaseTest extends TestCase
     public function testRessources(SplFileInfo $testDirectory): void
     {
         // 1. Generate
-        $command = new GenerateCommand();
+        $command = new GenerateCommand(new ConfigLoader(), new SchemaLoader());
         $inputArray = new ArrayInput([
             '--config-file' => $testDirectory->getRealPath() . \DIRECTORY_SEPARATOR . '.jane',
         ], $command->getDefinition());

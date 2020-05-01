@@ -1,12 +1,17 @@
 <?php
 
-namespace Jane\JsonSchema\Command;
+namespace Jane\JsonSchema\Console\Loader;
 
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-trait ConfigLoader
+class ConfigLoader implements ConfigLoaderInterface
 {
-    public function loadConfig(string $path): array
+    public function fileKey(): string
+    {
+        return 'json-schema-file';
+    }
+
+    public function load(string $path): array
     {
         if (!file_exists($path)) {
             throw new \RuntimeException(sprintf('Config file %s does not exist', $path));
@@ -26,13 +31,8 @@ trait ConfigLoader
         $optionsResolver = new OptionsResolver();
         $optionsResolver->setDefaults($this->resolveConfigurationDefaults());
 
-        if (\array_key_exists('json-schema-file', $options)) {
-            $optionsResolver->setRequired([
-                'json-schema-file',
-                'root-class',
-                'namespace',
-                'directory',
-            ]);
+        if (\array_key_exists($this->fileKey(), $options)) {
+            $optionsResolver->setRequired($this->resolveConfigurationRequired());
         } else {
             $optionsResolver->setRequired([
                 'mapping',
@@ -40,6 +40,16 @@ trait ConfigLoader
         }
 
         return $optionsResolver->resolve($options);
+    }
+
+    protected function resolveConfigurationRequired(): array
+    {
+        return [
+            $this->fileKey(),
+            'root-class',
+            'namespace',
+            'directory',
+        ];
     }
 
     protected function resolveConfigurationDefaults(): array

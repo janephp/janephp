@@ -3,7 +3,7 @@
 namespace Jane\JsonSchema\Generator;
 
 use Jane\JsonSchema\Generator\Context\Context;
-use Jane\JsonSchema\Schema;
+use Jane\JsonSchema\Registry\Schema;
 
 interface GeneratorInterface
 {

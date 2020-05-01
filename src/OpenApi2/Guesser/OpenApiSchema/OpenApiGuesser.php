@@ -6,14 +6,14 @@ use Jane\JsonSchema\Guesser\ChainGuesserAwareInterface;
 use Jane\JsonSchema\Guesser\ChainGuesserAwareTrait;
 use Jane\JsonSchema\Guesser\ClassGuesserInterface;
 use Jane\JsonSchema\Guesser\GuesserInterface;
-use Jane\JsonSchema\Registry;
+use Jane\JsonSchema\Registry\Registry;
 use Jane\OpenApi2\JsonSchema\Model\BodyParameter;
 use Jane\OpenApi2\JsonSchema\Model\OpenApi;
 use Jane\OpenApi2\JsonSchema\Model\Operation;
 use Jane\OpenApi2\JsonSchema\Model\PathItem;
 use Jane\OpenApi2\JsonSchema\Model\Response;
 use Jane\OpenApiCommon\Guesser\Guess\OperationGuess;
-use Jane\OpenApiCommon\Registry as OpenApiRegistry;
+use Jane\OpenApiCommon\Registry\Registry as OpenApiRegistry;
 
 class OpenApiGuesser implements GuesserInterface, ClassGuesserInterface, ChainGuesserAwareInterface
 {

@@ -19,19 +19,32 @@ class SecuritySchemeGuess
         ];
     }
 
+    public const SCHEME_BEARER = 'Bearer';
+    public const SCHEME_BASIC = 'Basic';
+
     /** @var string */
     private $name;
 
     /** @var string */
     private $type;
 
+    /** @var string */
+    private $variable;
+
+    /** @var string|null */
+    private $scheme;
+
+    /** @var string|null */
+    private $in;
+
     private $object;
 
-    public function __construct(string $name, string $type, object $object)
+    public function __construct(string $name, object $object, string $variable, string $type)
     {
         $this->name = $name;
-        $this->type = $type;
         $this->object = $object;
+        $this->variable = $variable;
+        $this->type = $type;
     }
 
     public function getName(): string
@@ -39,13 +52,38 @@ class SecuritySchemeGuess
         return $this->name;
     }
 
+    public function getObject(): object
+    {
+        return $this->object;
+    }
+
+    public function getVariable(): string
+    {
+        return $this->variable;
+    }
+
     public function getType(): string
     {
         return $this->type;
     }
 
-    public function getObject(): object
+    public function getScheme(): ?string
     {
-        return $this->object;
+        return $this->scheme;
+    }
+
+    public function setScheme(?string $scheme): void
+    {
+        $this->scheme = $scheme;
+    }
+
+    public function getIn(): ?string
+    {
+        return $this->in;
+    }
+
+    public function setIn(?string $in): void
+    {
+        $this->in = $in;
     }
 }

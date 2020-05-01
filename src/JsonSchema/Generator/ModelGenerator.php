@@ -8,7 +8,7 @@ use Jane\JsonSchema\Generator\Model\GetterSetterGenerator;
 use Jane\JsonSchema\Generator\Model\PropertyGenerator;
 use Jane\JsonSchema\Guesser\Guess\ClassGuess;
 use Jane\JsonSchema\Guesser\Guess\Property;
-use Jane\JsonSchema\Schema;
+use Jane\JsonSchema\Registry\Schema;
 use PhpParser\Node\Name;
 use PhpParser\Node\Stmt;
 use PhpParser\Parser;

@@ -2,8 +2,8 @@
 
 namespace Jane\JsonSchema\Generator\Context;
 
-use Jane\JsonSchema\Registry;
-use Jane\JsonSchema\Schema;
+use Jane\JsonSchema\Registry\Registry;
+use Jane\JsonSchema\Registry\Schema;
 
 /**
  * Context when generating a library base on a Schema.

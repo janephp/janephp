@@ -1,31 +1,37 @@
 <?php
 
-namespace Jane\OpenApiCommon;
+namespace Jane\OpenApiCommon\Registry;
 
-use Jane\JsonSchema\Registry as BaseRegistry;
+use Jane\JsonSchema\Registry\Registry as BaseRegistry;
+use Jane\JsonSchema\Registry\RegistryInterface;
 use Jane\OpenApiCommon\Guesser\Guess\SecuritySchemeGuess;
 
-class Registry extends BaseRegistry
+class Registry extends BaseRegistry implements RegistryInterface
 {
     /** @var string */
     private $openApiClass;
 
-    /** @var array<string>|null */
+    /** @var string[] */
     private $whitelistedPaths;
-
-    public function getOpenApiClass(): string
-    {
-        return $this->openApiClass;
-    }
 
     public function setOpenApiClass(string $openApiClass): void
     {
         $this->openApiClass = $openApiClass;
     }
 
-    public function getFirstSchema(): Schema
+    public function getOpenApiClass(): string
     {
-        return reset($this->schemas);
+        return $this->openApiClass;
+    }
+
+    public function setWhitelistedPaths(array $whitelistedPaths): void
+    {
+        $this->whitelistedPaths = $whitelistedPaths;
+    }
+
+    public function getWhitelistedPaths(): array
+    {
+        return $this->whitelistedPaths;
     }
 
     public function hasSecurityScheme($securitySchemeReference): bool
@@ -45,21 +51,11 @@ class Registry extends BaseRegistry
         return $schema->getSecurityScheme($securitySchemeReference);
     }
 
-    public function setWhitelistedPaths(?array $whitelistedPaths): void
-    {
-        $this->whitelistedPaths = $whitelistedPaths;
-    }
-
-    public function getWhitelistedPaths(): ?array
-    {
-        return $this->whitelistedPaths;
-    }
-
     public function getOptionsHash(): string
     {
         return md5(json_encode([
             'open-api-class' => $this->getOpenApiClass(),
-            'whitelisted-paths' => $this->getWhitelistedPaths() ?? [],
+            'whitelisted-paths' => $this->getWhitelistedPaths(),
         ]));
     }
 }

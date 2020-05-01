@@ -1,10 +1,8 @@
 <?php
 
-namespace Jane\OpenApi3\Generator\Authentication;
+namespace Jane\OpenApiCommon\Generator\Authentication;
 
 use Http\Promise\Promise;
-use Jane\OpenApi3\JsonSchema\Model\APIKeySecurityScheme;
-use Jane\OpenApi3\JsonSchema\Model\HTTPSecurityScheme;
 use Jane\OpenApiCommon\Guesser\Guess\SecuritySchemeGuess;
 use PhpParser\Node;
 use PhpParser\Node\Param;
@@ -24,16 +22,11 @@ trait HandleRequestGenerator
 
         switch ($securityScheme->getType()) {
             case SecuritySchemeGuess::TYPE_HTTP:
-                /** @var HTTPSecurityScheme $object */
-                $object = $securityScheme->getObject();
-                $scheme = $object->getScheme() ?? 'Bearer';
-                $scheme = ucfirst(mb_strtolower($scheme));
-
-                switch ($scheme) {
-                    case 'Bearer':
+                switch ($securityScheme->getScheme()) {
+                    case SecuritySchemeGuess::SCHEME_BEARER:
                         $fetchedValue = new Expr\PropertyFetch(new Expr\Variable('this'), new Scalar\String_('token'));
                         break;
-                    case 'Basic':
+                    case SecuritySchemeGuess::SCHEME_BASIC:
                         $fetchedValue = new Expr\FuncCall(new Name('base64_encode'), [
                             new Node\Arg(new Expr\FuncCall(new Name('sprintf'), [
                                 new Node\Arg(new Scalar\String_('%s:%s')),
@@ -45,7 +38,7 @@ trait HandleRequestGenerator
                 }
 
                 $stmts[] = new Stmt\Expression(new Expr\Assign(new Expr\Variable('header'), new Expr\FuncCall(new Name('sprintf'), [
-                    new Node\Arg(new Scalar\String_($scheme . ' %s')),
+                    new Node\Arg(new Scalar\String_($securityScheme->getScheme() . ' %s')),
                     new Node\Arg($fetchedValue),
                 ])));
                 $stmts[] = new Stmt\Expression(new Expr\Assign(new Expr\Variable('request'), new Expr\MethodCall(new Expr\Variable('request'), 'withHeader', [
@@ -54,14 +47,15 @@ trait HandleRequestGenerator
                 ])));
                 break;
             case SecuritySchemeGuess::TYPE_API_KEY:
-                /** @var APIKeySecurityScheme $object */
-                $object = $securityScheme->getObject();
+                if (null === $securityScheme->getIn()) {
+                    break;
+                }
 
-                switch ($object->getIn()) {
+                switch ($securityScheme->getIn()) {
                     case 'header':
                         $stmts = [
                             new Stmt\Expression(new Expr\Assign(new Expr\Variable('request'), new Expr\MethodCall(new Expr\Variable('request'), 'withHeader', [
-                                new Node\Arg(new Scalar\String_($object->getName())),
+                                new Node\Arg(new Scalar\String_($securityScheme->getVariable())),
                                 new Node\Arg(new Expr\PropertyFetch(new Expr\Variable('this'), new Scalar\String_('apiKey'))),
                             ]))),
                         ];
@@ -78,7 +72,7 @@ trait HandleRequestGenerator
                             new Stmt\Expression(new Expr\Assign(new Expr\Variable('params'), new Expr\FuncCall(new Name('array_merge'), [
                                 new Node\Arg(new Expr\Variable('params')),
                                 new Node\Arg(new Expr\Array_([
-                                    new Expr\ArrayItem(new Expr\PropertyFetch(new Expr\Variable('this'), new Scalar\String_('apiKey')), new Scalar\String_($object->getName())),
+                                    new Expr\ArrayItem(new Expr\PropertyFetch(new Expr\Variable('this'), new Scalar\String_('apiKey')), new Scalar\String_($securityScheme->getVariable())),
                                 ])),
                             ]))),
                             new Stmt\Expression(new Expr\Assign(new Expr\Variable('query'), new Expr\FuncCall(new Name('http_build_query'), [
