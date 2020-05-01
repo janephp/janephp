@@ -16,8 +16,6 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class GenerateCommand extends Command
 {
-    protected static $defaultName = 'generate';
-
     /** @var ConfigLoaderInterface */
     protected $configLoader;
 
@@ -36,6 +34,7 @@ class GenerateCommand extends Command
      */
     public function configure()
     {
+        $this->setName('generate');
         $this->setDescription('Generate a set of class and normalizers given a specific Json Schema file');
         $this->addOption('config-file', 'c', InputOption::VALUE_REQUIRED, 'File to use for Jane configuration', '.jane');
     }
