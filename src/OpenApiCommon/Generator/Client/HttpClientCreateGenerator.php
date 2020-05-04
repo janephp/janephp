@@ -52,7 +52,7 @@ trait HttpClientCreateGenerator
             [
                 'stmts' => [
                     new Stmt\Expression(new Expr\Assign(
-                        new Expr\ArrayDimFetch(new Expr\Variable('plugins')),
+                        new Expr\Variable('plugins'),
                         new Expr\FuncCall(new Name('array_merge'), [
                             new Node\Arg(new Expr\Variable('plugins')),
                             new Node\Arg(new Expr\Variable('additionalPlugins')),
