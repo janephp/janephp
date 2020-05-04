@@ -10,7 +10,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
             $httpClient = \Http\Discovery\Psr18ClientDiscovery::find();
             $plugins = array();
             if (count($additionalPlugins) > 0) {
-                $plugins[] = array_merge($plugins, $additionalPlugins);
+                $plugins = array_merge($plugins, $additionalPlugins);
             }
             $httpClient = new \Http\Client\Common\PluginClient($httpClient, $plugins);
         }
