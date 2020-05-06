@@ -7,6 +7,48 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [6.0.0] - 2020-05-06
+
+### Added
+
+- [Jane] [GH#263](https://github.com/janephp/janephp/pull/263) Forcing a null value on non-set property can be opt-out
+- [Jane] [GH#287](https://github.com/janephp/janephp/pull/287) New dump-config command
+- [OpenAPI] [GH#290](https://github.com/janephp/janephp/pull/290) Whitelist paths in OpenApi to generate only needed paths and related models
+
+### Changed
+
+- [Jane] [GH#258](https://github.com/janephp/janephp/pull/258) **BC-BREAK** Array instead of stdClass
+- [Jane] [GH#264](https://github.com/janephp/janephp/pull/264) Update master branch to 6.x version
+- [Jane] [GH#268](https://github.com/janephp/janephp/pull/268) Upgrade dependencies
+- [OpenAPI] [GH#289](https://github.com/janephp/janephp/pull/289) Better use of Guesser for Authentication generation
+
+### Removed
+
+- [OpenAPI] [GH#266](https://github.com/janephp/janephp/pull/266) **Deprecation** Removed HTTPlug Client generation
+- [OpenAPI] [GH#265](https://github.com/janephp/janephp/pull/265) **Deprecation** Removed any NormalizerFactory usage
+- [OpenAPI] [GH#267](https://github.com/janephp/janephp/pull/267) **Deprecation** Remove OpenApi component (replaced by OpenApi3)
+
+### Fixed
+
+- [OpenAPI] [GH#293](https://github.com/janephp/janephp/pull/293) Missing getSerializedBody on OpenApiRuntime BaseEndpoint class
+- [JsonSchema] [GH#292](https://github.com/janephp/janephp/pull/292) Update `null` values handling in normalizers
+- [OpenAPI] [GH#298](https://github.com/janephp/janephp/pull/298) Update OpenAPI v2 `null` support (with `x-nullable` field)
+
+### Documentation
+
+- [Jane] [GH#270](https://github.com/janephp/janephp/pull/270) Update documentation for v6
+
+## [5.3.3] - 2020-04-23
+
+### Added
+
+- [JsonSchema] [GH#263](https://github.com/janephp/janephp/pull/263) Else assign null when property has no value is wrong
+- [OpenAPI] [GH#283](https://github.com/janephp/janephp/pull/283) Handle server port of OpenAPI v3 specification
+
+### Changed
+
+- [JsonSchema] [GH#295](https://github.com/janephp/janephp/pull/295) Update `league/uri` dependency
+
 ## [5.3.2] - 2020-03-05
 
 ### Added
@@ -262,7 +304,9 @@ See :
  * https://github.com/janephp/jane/releases
  * https://github.com/janephp/openapi/releases
 
-[Unreleased]: https://github.com/janephp/janephp/compare/v5.3.2...HEAD
+[Unreleased]: https://github.com/janephp/janephp/compare/v6.0.0...HEAD
+[6.0.0]: https://github.com/janephp/janephp/compare/v5.3.3...v6.0.0
+[5.3.2]: https://github.com/janephp/janephp/compare/v5.3.2...v5.3.3
 [5.3.2]: https://github.com/janephp/janephp/compare/v5.3.1...v5.3.2
 [5.3.1]: https://github.com/janephp/janephp/compare/v5.3.0...v5.3.1
 [5.3.0]: https://github.com/janephp/janephp/compare/v5.2.2...v5.3.0
