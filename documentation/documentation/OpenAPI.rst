@@ -160,12 +160,8 @@ Like in :doc:`/documentation/JsonSchema`, creating a serializer is done by using
         new \Symfony\Component\Serializer\Normalizer\ArrayDenormalizer(),
         new \Vendor\Library\Generated\Normalizer\JaneObjectNormalizer(),
     ];
-    $encoders = [new \Symfony\Component\Serializer\Encoder\JsonEncoder(
-        new \Symfony\Component\Serializer\Encoder\JsonEncode(),
-        new \Symfony\Component\Serializer\Encoder\JsonDecode([\Symfony\Component\Serializer\Encoder\JsonDecode::ASSOCIATIVE => true])),
-    ];
 
-    $serializer = new \Symfony\Component\Serializer\Serializer($normalizers, $encoders);
+    $serializer = new \Symfony\Component\Serializer\Serializer($normalizers, [new \Symfony\Component\Serializer\Encoder\JsonEncoder()]);
     $serializer->deserialize('{...}');
 
 With Symfony ecosystem, you just have to use the recipe and all the configuration will be added automatically.
