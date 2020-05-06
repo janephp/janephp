@@ -8,7 +8,6 @@ use Jane\JsonSchema\Guesser\ChainGuesser;
 use Jane\JsonSchema\Registry\Registry;
 use Jane\OpenApiCommon\Contracts\WhitelistFetchInterface;
 use Jane\OpenApiCommon\Registry\Registry as OpenApiRegistry;
-use Jane\OpenApi3\Guesser\GuessClass;
 use Jane\OpenApiCommon\Guesser\Guess\ClassGuess;
 use Jane\OpenApiCommon\Guesser\Guess\MultipleClass;
 use Jane\OpenApiCommon\Registry\Schema;
@@ -25,8 +24,6 @@ use Symfony\Component\Yaml\Parser;
 
 abstract class JaneOpenApi extends ChainGenerator
 {
-    use GuessClass;
-
     protected const OBJECT_NORMALIZER_CLASS = null;
     protected const WHITELIST_FETCH_CLASS = null;
 
