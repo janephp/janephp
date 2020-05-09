@@ -3,15 +3,19 @@
 namespace Jane\AutoMapper;
 
 use Symfony\Component\Serializer\Normalizer\AbstractNormalizer;
-use Symfony\Component\Serializer\Normalizer\CacheableSupportsMethodInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
-final class AutoMapperNormalizer implements DenormalizerInterface, NormalizerInterface, CacheableSupportsMethodInterface
+/**
+ * Bridge for symfony/serializer.
+ *
+ * @author Joel Wurtz <jwurtz@jolicode.com>
+ */
+class AutoMapperNormalizer implements NormalizerInterface, DenormalizerInterface
 {
     private $autoMapper;
 
-    public function __construct(AutoMapperInterface $autoMapper)
+    public function __construct(AutoMapper $autoMapper)
     {
         $this->autoMapper = $autoMapper;
     }
@@ -32,7 +36,7 @@ final class AutoMapperNormalizer implements DenormalizerInterface, NormalizerInt
 
     public function supportsNormalization($data, $format = null)
     {
-        if (!\is_object($data)) {
+        if (!\is_object($data) || $data instanceof \stdClass) {
             return false;
         }
 
@@ -49,31 +53,24 @@ final class AutoMapperNormalizer implements DenormalizerInterface, NormalizerInt
         return true;
     }
 
-    private function createAutoMapperContext(array $serializerContext = []): Context
+    private function createAutoMapperContext(array $serializerContext = []): array
     {
-        $circularReferenceLimit = 1;
+        $context = [
+            MapperContext::GROUPS => $serializerContext[AbstractNormalizer::GROUPS] ?? null,
+            MapperContext::ALLOWED_ATTRIBUTES => $serializerContext[AbstractNormalizer::ATTRIBUTES] ?? null,
+            MapperContext::IGNORED_ATTRIBUTES => $serializerContext[AbstractNormalizer::IGNORED_ATTRIBUTES] ?? null,
+            MapperContext::TARGET_TO_POPULATE => $serializerContext[AbstractNormalizer::OBJECT_TO_POPULATE] ?? null,
+            MapperContext::CIRCULAR_REFERENCE_LIMIT => $serializerContext[AbstractNormalizer::CIRCULAR_REFERENCE_LIMIT] ?? 1,
+            MapperContext::CIRCULAR_REFERENCE_HANDLER => $serializerContext[AbstractNormalizer::CIRCULAR_REFERENCE_HANDLER] ?? null,
+        ];
 
-        if (isset($serializerContext[AbstractNormalizer::CIRCULAR_REFERENCE_LIMIT]) && \is_int($serializerContext[AbstractNormalizer::CIRCULAR_REFERENCE_LIMIT])) {
-            $circularReferenceLimit = $serializerContext[AbstractNormalizer::CIRCULAR_REFERENCE_LIMIT];
-        }
-
-        $context = new Context(
-            $serializerContext[AbstractNormalizer::GROUPS] ?? null,
-            $serializerContext[AbstractNormalizer::ATTRIBUTES] ?? null,
-            $serializerContextContext[AbstractNormalizer::IGNORED_ATTRIBUTES] ?? null
-        );
-
-        if (isset($serializerContext[AbstractNormalizer::DEFAULT_CONSTRUCTOR_ARGUMENTS])) {
+        if (\array_key_exists(AbstractNormalizer::DEFAULT_CONSTRUCTOR_ARGUMENTS, $serializerContext) && is_iterable($serializerContext[AbstractNormalizer::DEFAULT_CONSTRUCTOR_ARGUMENTS])) {
             foreach ($serializerContext[AbstractNormalizer::DEFAULT_CONSTRUCTOR_ARGUMENTS] as $class => $keyArgs) {
                 foreach ($keyArgs as $key => $value) {
-                    $context->setConstructorArgument($class, $key, $value);
+                    $context[MapperContext::CONSTRUCTOR_ARGUMENTS][$class][$key] = $value;
                 }
             }
         }
-
-        $context->setCircularReferenceLimit($circularReferenceLimit);
-        $context->setObjectToPopulate($serializerContext[AbstractNormalizer::OBJECT_TO_POPULATE] ?? null);
-        $context->setCircularReferenceHandler($serializerContext[AbstractNormalizer::CIRCULAR_REFERENCE_HANDLER] ?? null); // AbstractNormalizer::CIRCULAR_REFERENCE_HANDLER
 
         return $context;
     }

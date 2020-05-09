@@ -2,7 +2,7 @@
 
 **Expiremental Library**
 
-Generate automapper class which allows to automap values from Class to Class. 
+Generate automapper class which allows to automap values from Class to Class.
 
 ## Features
 

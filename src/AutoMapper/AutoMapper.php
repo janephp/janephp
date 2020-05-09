@@ -3,23 +3,22 @@
 namespace Jane\AutoMapper;
 
 use Doctrine\Common\Annotations\AnnotationReader;
-use Jane\AutoMapper\Compiler\Accessor\ReflectionAccessorExtractor;
-use Jane\AutoMapper\Compiler\Compiler;
-use Jane\AutoMapper\Compiler\EvalLoader;
-use Jane\AutoMapper\Compiler\FromSourcePropertiesMappingExtractor;
-use Jane\AutoMapper\Compiler\FromTargetPropertiesMappingExtractor;
-use Jane\AutoMapper\Compiler\MapperClassLoaderInterface;
-use Jane\AutoMapper\Compiler\SourceTargetPropertiesMappingExtractor;
-use Jane\AutoMapper\Compiler\Transformer\ArrayTransformerFactory;
-use Jane\AutoMapper\Compiler\Transformer\BuiltinTransformerFactory;
-use Jane\AutoMapper\Compiler\Transformer\ChainTransformerFactory;
-use Jane\AutoMapper\Compiler\Transformer\DateTimeTransformerFactory;
-use Jane\AutoMapper\Compiler\Transformer\MultipleTransformerFactory;
-use Jane\AutoMapper\Compiler\Transformer\NullableTransformerFactory;
-use Jane\AutoMapper\Compiler\Transformer\ObjectTransformerFactory;
-use Jane\AutoMapper\Compiler\Transformer\UniqueTypeTransformerFactory;
-use Jane\AutoMapper\Extractor\PrivateReflectionExtractor;
 use PhpParser\ParserFactory;
+use Jane\AutoMapper\Exception\NoMappingFoundException;
+use Jane\AutoMapper\Extractor\FromSourceMappingExtractor;
+use Jane\AutoMapper\Extractor\FromTargetMappingExtractor;
+use Jane\AutoMapper\Extractor\SourceTargetMappingExtractor;
+use Jane\AutoMapper\Generator\Generator;
+use Jane\AutoMapper\Loader\ClassLoaderInterface;
+use Jane\AutoMapper\Loader\EvalLoader;
+use Jane\AutoMapper\Transformer\ArrayTransformerFactory;
+use Jane\AutoMapper\Transformer\BuiltinTransformerFactory;
+use Jane\AutoMapper\Transformer\ChainTransformerFactory;
+use Jane\AutoMapper\Transformer\DateTimeTransformerFactory;
+use Jane\AutoMapper\Transformer\MultipleTransformerFactory;
+use Jane\AutoMapper\Transformer\NullableTransformerFactory;
+use Jane\AutoMapper\Transformer\ObjectTransformerFactory;
+use Jane\AutoMapper\Transformer\UniqueTypeTransformerFactory;
 use Symfony\Component\PropertyInfo\Extractor\PhpDocExtractor;
 use Symfony\Component\PropertyInfo\Extractor\ReflectionExtractor;
 use Symfony\Component\PropertyInfo\PropertyInfoExtractor;
@@ -28,29 +27,168 @@ use Symfony\Component\Serializer\Mapping\Factory\ClassMetadataFactory;
 use Symfony\Component\Serializer\Mapping\Loader\AnnotationLoader;
 use Symfony\Component\Serializer\NameConverter\AdvancedNameConverterInterface;
 
-class AutoMapper extends AbstractAutoMapper
+/**
+ * Maps a source data structure (object or array) to a target one.
+ *
+ * @author Joel Wurtz <jwurtz@jolicode.com>
+ */
+class AutoMapper implements AutoMapperInterface, AutoMapperRegistryInterface, MapperGeneratorMetadataRegistryInterface
 {
-    /**
-     * Use this for test, benchmark and fast prototyping.
-     *
-     * @internal
-     */
-    public static function create(bool $private = true, MapperClassLoaderInterface $loader = null, AdvancedNameConverterInterface $nameConverter = null, string $classPrefix = 'Mapper_'): self
+    /** @var MapperGeneratorMetadataInterface[] */
+    private $metadata = [];
+
+    /** @var GeneratedMapper[] */
+    private $mapperRegistry = [];
+
+    private $classLoader;
+
+    private $mapperConfigurationFactory;
+
+    public function __construct(ClassLoaderInterface $classLoader, MapperGeneratorMetadataFactoryInterface $mapperConfigurationFactory = null)
     {
+        $this->classLoader = $classLoader;
+        $this->mapperConfigurationFactory = $mapperConfigurationFactory;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function register(MapperGeneratorMetadataInterface $metadata): void
+    {
+        $this->metadata[$metadata->getSource()][$metadata->getTarget()] = $metadata;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getMapper(string $source, string $target): MapperInterface
+    {
+        $metadata = $this->getMetadata($source, $target);
+
+        if (null === $metadata) {
+            throw new NoMappingFoundException('No mapping found for source ' . $source . ' and target ' . $target);
+        }
+
+        $className = $metadata->getMapperClassName();
+
+        if (\array_key_exists($className, $this->mapperRegistry)) {
+            return $this->mapperRegistry[$className];
+        }
+
+        if (!class_exists($className)) {
+            $this->classLoader->loadClass($metadata);
+        }
+
+        $this->mapperRegistry[$className] = new $className();
+        $this->mapperRegistry[$className]->injectMappers($this);
+
+        foreach ($metadata->getCallbacks() as $property => $callback) {
+            $this->mapperRegistry[$className]->addCallback($property, $callback);
+        }
+
+        return $this->mapperRegistry[$className];
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function hasMapper(string $source, string $target): bool
+    {
+        return null !== $this->getMetadata($source, $target);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function map($sourceData, $targetData, array $context = [])
+    {
+        $source = null;
+        $target = null;
+
+        if (null === $sourceData) {
+            return null;
+        }
+
+        if (\is_object($sourceData)) {
+            $source = \get_class($sourceData);
+        } elseif (\is_array($sourceData)) {
+            $source = 'array';
+        }
+
+        if (null === $source) {
+            throw new NoMappingFoundException('Cannot map this value, source is neither an object or an array.');
+        }
+
+        if (\is_object($targetData)) {
+            $target = \get_class($targetData);
+            $context[MapperContext::TARGET_TO_POPULATE] = $targetData;
+        } elseif (\is_array($targetData)) {
+            $target = 'array';
+            $context[MapperContext::TARGET_TO_POPULATE] = $targetData;
+        } elseif (\is_string($targetData)) {
+            $target = $targetData;
+        }
+
+        if (null === $target) {
+            throw new NoMappingFoundException('Cannot map this value, target is neither an object or an array.');
+        }
+
+        if ('array' === $source && 'array' === $target) {
+            throw new NoMappingFoundException('Cannot map this value, both source and target are array.');
+        }
+
+        return $this->getMapper($source, $target)->map($sourceData, $context);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getMetadata(string $source, string $target): ?MapperGeneratorMetadataInterface
+    {
+        if (!isset($this->metadata[$source][$target])) {
+            if (null === $this->mapperConfigurationFactory) {
+                return null;
+            }
+
+            $this->register($this->mapperConfigurationFactory->create($this, $source, $target));
+        }
+
+        return $this->metadata[$source][$target];
+    }
+
+    /**
+     * Create an automapper.
+     */
+    public static function create(
+        bool $private = true,
+        ClassLoaderInterface $loader = null,
+        AdvancedNameConverterInterface $nameConverter = null,
+        string $classPrefix = 'Mapper_',
+        bool $attributeChecking = true,
+        bool $autoRegister = true
+    ): self {
         $classMetadataFactory = new ClassMetadataFactory(new AnnotationLoader(new AnnotationReader()));
 
-        if ($loader === null) {
-            $loader = new EvalLoader(new Compiler(
+        if (null === $loader) {
+            $loader = new EvalLoader(new Generator(
                 (new ParserFactory())->create(ParserFactory::PREFER_PHP7),
                 new ClassDiscriminatorFromClassMetadata($classMetadataFactory)
             ));
         }
 
+        $flags = ReflectionExtractor::ALLOW_PUBLIC;
+
         if ($private) {
-            $reflectionExtractor = new PrivateReflectionExtractor();
-        } else {
-            $reflectionExtractor = new ReflectionExtractor();
+            $flags |= ReflectionExtractor::ALLOW_PROTECTED | ReflectionExtractor::ALLOW_PRIVATE;
         }
+
+        $reflectionExtractor = new ReflectionExtractor(
+            null,
+            null,
+            null,
+            true,
+            $flags
+        );
 
         $phpDocExtractor = new PhpDocExtractor();
         $propertyInfoExtractor = new PropertyInfoExtractor(
@@ -59,38 +197,41 @@ class AutoMapper extends AbstractAutoMapper
             [$reflectionExtractor],
             [$reflectionExtractor]
         );
-        $accessorExtractor = new ReflectionAccessorExtractor($private);
-        $transformerFactory = new ChainTransformerFactory();
 
-        $sourceTargetMappingExtractor = new SourceTargetPropertiesMappingExtractor(
+        $transformerFactory = new ChainTransformerFactory();
+        $sourceTargetMappingExtractor = new SourceTargetMappingExtractor(
             $propertyInfoExtractor,
-            $accessorExtractor,
+            $reflectionExtractor,
+            $reflectionExtractor,
             $transformerFactory,
             $classMetadataFactory
         );
 
-        $fromTargetMappingExtractor = new FromTargetPropertiesMappingExtractor(
+        $fromTargetMappingExtractor = new FromTargetMappingExtractor(
             $propertyInfoExtractor,
-            $accessorExtractor,
+            $reflectionExtractor,
+            $reflectionExtractor,
             $transformerFactory,
             $classMetadataFactory,
             $nameConverter
         );
 
-        $fromSourceMappingExtractor = new FromSourcePropertiesMappingExtractor(
+        $fromSourceMappingExtractor = new FromSourceMappingExtractor(
             $propertyInfoExtractor,
-            $accessorExtractor,
+            $reflectionExtractor,
+            $reflectionExtractor,
             $transformerFactory,
             $classMetadataFactory,
             $nameConverter
         );
 
-        $autoMapper = new self($loader, new MapperConfigurationFactory(
+        $autoMapper = $autoRegister ? new self($loader, new MapperGeneratorMetadataFactory(
             $sourceTargetMappingExtractor,
             $fromSourceMappingExtractor,
             $fromTargetMappingExtractor,
-            $classPrefix
-        ));
+            $classPrefix,
+            $attributeChecking
+        )) : new self($loader);
 
         $transformerFactory->addTransformerFactory(new MultipleTransformerFactory($transformerFactory));
         $transformerFactory->addTransformerFactory(new NullableTransformerFactory($transformerFactory));

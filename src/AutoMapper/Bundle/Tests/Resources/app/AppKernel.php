@@ -4,9 +4,10 @@ namespace DummyApp;
 
 use Jane\AutoMapper\Bundle\Configuration\ConfigurationPassInterface;
 use Jane\AutoMapper\Bundle\JaneAutoMapperBundle;
-use Jane\AutoMapper\MapperConfiguration;
-use Jane\AutoMapper\MapperConfigurationInterface;
-use Jane\AutoMapper\Tests\Domain\User;
+use Jane\AutoMapper\MapperGeneratorMetadataInterface;
+use Jane\AutoMapper\MapperMetadata;
+use Jane\AutoMapper\Tests\Fixtures\User;
+use Symfony\Bundle\FrameworkBundle\FrameworkBundle;
 use Symfony\Bundle\FrameworkBundle\Kernel\MicroKernelTrait;
 use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -21,13 +22,9 @@ class AppKernel extends Kernel
     public function registerBundles()
     {
         $bundles = [
-            new \Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
+            new FrameworkBundle(),
             new JaneAutoMapperBundle(),
         ];
-
-//        if (\in_array($this->getEnvironment(), array('dev', 'test'))) {
-//            $bundles[] = new Symfony\Bundle\WebProfilerBundle\WebProfilerBundle();
-//        }
 
         return $bundles;
     }
@@ -58,13 +55,13 @@ class AppKernel extends Kernel
 
 class UserConfigurationPass implements ConfigurationPassInterface
 {
-    public function process(MapperConfigurationInterface $configuration)
+    public function process(MapperGeneratorMetadataInterface $metadata): void
     {
-        if (!$configuration instanceof MapperConfiguration) {
+        if (!$metadata instanceof MapperMetadata) {
             return;
         }
 
-        $configuration->forMember('yearOfBirth', function (User $user) {
+        $metadata->forMember('yearOfBirth', function (User $user) {
             return ((int) date('Y')) - ((int) $user->age);
         });
     }

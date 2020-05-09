@@ -2,6 +2,11 @@
 
 namespace Jane\AutoMapper;
 
+/**
+ * Allows to retrieve a mapper.
+ *
+ * @author Joel Wurtz <jwurtz@jolicode.com>
+ */
 interface AutoMapperRegistryInterface
 {
     /**
@@ -19,8 +24,6 @@ interface AutoMapperRegistryInterface
      *
      * @param string $source Source type
      * @param string $target Target type
-     *
-     * @return bool if the mapper exist
      */
     public function hasMapper(string $source, string $target): bool;
 }

@@ -2,7 +2,7 @@
 
 namespace Jane\AutoMapper\Bundle\DependencyInjection\Compiler;
 
-use Jane\AutoMapper\Compiler\Transformer\ChainTransformerFactory;
+use Jane\AutoMapper\Transformer\ChainTransformerFactory;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\Compiler\PriorityTaggedServiceTrait;
 use Symfony\Component\DependencyInjection\ContainerBuilder;

@@ -1,6 +1,9 @@
 {
     "name": "jane-php/automapper",
-    "description": "Generate auto mapping",
+    "type": "library",
+    "description": "Jane AutoMapper Component",
+    "keywords": [],
+    "homepage": "https://github.com/janephp/janephp",
     "license": "MIT",
     "authors": [
         {
@@ -9,18 +12,20 @@
         }
     ],
     "require": {
-        "php": ">=7.2",
-        "doctrine/inflector": "^1.3",
+        "php": "^7.2.5",
         "nikic/php-parser": "^4.0",
-        "symfony/options-resolver": "^4.4 || ^5.0",
-        "symfony/property-info": "^4.4 || ^5.0"
+        "symfony/property-info": "~5.1"
     },
     "require-dev": {
-        "doctrine/annotations": "^1.5",
-        "phpunit/phpunit": "^8.0",
-        "symfony/framework-bundle": "^4.4 || ^5.0",
-        "symfony/serializer": "^4.4 || ^5.0",
-        "symfony/yaml": "^4.4 || ^5.0"
+        "doctrine/annotations": "~1.0",
+        "phpdocumentor/reflection-docblock": "^3.0 || ^4.0",
+        "symfony/serializer": "^4.2 || ^5.0"
+    },
+    "suggest": {
+        "symfony/serializer": "Allow to bridge mappers to normalizer and denormalizer"
+    },
+    "conflict": {
+        "symfony/serializer": "<4.2"
     },
     "extra": {
         "branch-alias": {
