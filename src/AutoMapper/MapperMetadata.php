@@ -168,7 +168,7 @@ class MapperMetadata implements MapperGeneratorMetadataInterface
     {
         $hash = '';
 
-        if (!\in_array($this->source, ['array', \stdClass::class], true)) {
+        if (!\in_array($this->source, ['array', \stdClass::class], true) && class_exists($this->source)) {
             $reflection = new \ReflectionClass($this->source);
             $hash .= filemtime($reflection->getFileName());
         }
