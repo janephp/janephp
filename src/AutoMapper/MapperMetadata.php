@@ -284,7 +284,6 @@ class MapperMetadata implements MapperGeneratorMetadataInterface
     private function checkCircularMapperConfiguration(MapperGeneratorMetadataInterface $configuration, &$checked): bool
     {
         foreach ($configuration->getPropertiesMapping() as $propertyMapping) {
-            /** @var MapperDependency $dependency */
             foreach ($propertyMapping->getTransformer()->getDependencies() as $dependency) {
                 if (isset($checked[$dependency->getName()])) {
                     continue;

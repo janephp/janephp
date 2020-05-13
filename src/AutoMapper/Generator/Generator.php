@@ -94,11 +94,9 @@ final class Generator
             'stmts' => $createObjectStmts,
         ]);
 
-        /** @var PropertyMapping $propertyMapping */
         foreach ($propertiesMapping as $propertyMapping) {
             $transformer = $propertyMapping->getTransformer();
 
-            /* @var PropertyMapping $propertyMapping */
             foreach ($transformer->getDependencies() as $dependency) {
                 if (isset($addedDependencies[$dependency->getName()])) {
                     continue;
@@ -135,7 +133,6 @@ final class Generator
             ));
         }
 
-        /** @var PropertyMapping $propertyMapping */
         foreach ($propertiesMapping as $propertyMapping) {
             $transformer = $propertyMapping->getTransformer();
 
@@ -318,7 +315,6 @@ final class Generator
         $inConstructor = [];
         $constructStatements = [];
         $injectMapperStatements = [];
-        /** @var ClassDiscriminatorMapping $classDiscriminatorMapping */
         $classDiscriminatorMapping = 'array' !== $target && null !== $this->classDiscriminator ? $this->classDiscriminator->getMappingForClass($target) : null;
 
         if (null !== $classDiscriminatorMapping && null !== ($propertyMapping = $mapperMetadata->getPropertyMapping($classDiscriminatorMapping->getTypeProperty()))) {
@@ -356,7 +352,6 @@ final class Generator
         if (null !== $targetConstructor && $mapperMetadata->hasConstructor()) {
             $constructArguments = [];
 
-            /** @var PropertyMapping $propertyMapping */
             foreach ($propertiesMapping as $propertyMapping) {
                 if (null === $propertyMapping->getWriteMutatorConstructor() || null === ($parameter = $propertyMapping->getWriteMutatorConstructor()->getParameter())) {
                     continue;

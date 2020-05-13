@@ -82,7 +82,6 @@ class FromTargetMappingExtractorTest extends AutoMapperBaseTest
         $targetPropertiesMapping = $this->fromTargetMappingExtractor->getPropertiesMapping($mapperMetadata);
 
         self::assertCount(\count($userReflection->getProperties()), $targetPropertiesMapping);
-        /** @var PropertyMapping $propertyMapping */
         foreach ($targetPropertiesMapping as $propertyMapping) {
             self::assertTrue($userReflection->hasProperty($propertyMapping->getProperty()));
         }
@@ -95,7 +94,6 @@ class FromTargetMappingExtractorTest extends AutoMapperBaseTest
         $targetPropertiesMapping = $this->fromTargetMappingExtractor->getPropertiesMapping($mapperMetadata);
 
         self::assertCount(\count($userReflection->getProperties()), $targetPropertiesMapping);
-        /** @var PropertyMapping $propertyMapping */
         foreach ($targetPropertiesMapping as $propertyMapping) {
             self::assertTrue($userReflection->hasProperty($propertyMapping->getProperty()));
         }

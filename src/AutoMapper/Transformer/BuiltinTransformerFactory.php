@@ -29,7 +29,6 @@ final class BuiltinTransformerFactory implements TransformerFactoryInterface
             return null;
         }
 
-        /** @var Type $propertyType */
         $propertyType = $sourcesTypes[0];
 
         if (\in_array($propertyType->getBuiltinType(), self::BUILTIN, true)) {
