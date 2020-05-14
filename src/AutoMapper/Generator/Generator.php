@@ -12,11 +12,9 @@ use PhpParser\Parser;
 use PhpParser\ParserFactory;
 use Jane\AutoMapper\AutoMapperRegistryInterface;
 use Jane\AutoMapper\Exception\CompileException;
-use Jane\AutoMapper\Extractor\PropertyMapping;
 use Jane\AutoMapper\GeneratedMapper;
 use Jane\AutoMapper\MapperContext;
 use Jane\AutoMapper\MapperGeneratorMetadataInterface;
-use Symfony\Component\Serializer\Mapping\ClassDiscriminatorMapping;
 use Symfony\Component\Serializer\Mapping\ClassDiscriminatorResolverInterface;
 
 /**

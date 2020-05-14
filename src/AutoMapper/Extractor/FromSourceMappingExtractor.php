@@ -58,7 +58,7 @@ final class FromSourceMappingExtractor extends MappingExtractor
             $sourceTypes = $this->propertyInfoExtractor->getTypes($mapperMetadata->getSource(), $property);
 
             if (null === $sourceTypes) {
-                continue;
+                $sourceTypes = [new Type(Type::BUILTIN_TYPE_NULL)]; // if no types found, we force a null type
             }
 
             $targetTypes = [];

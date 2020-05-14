@@ -160,7 +160,8 @@ class AutoMapperTest extends AutoMapperBaseTest
         $addressArray = $autoMapper->map($address, 'array');
 
         self::assertIsArray($addressArray);
-        self::assertArrayNotHasKey('city', $addressArray);
+        self::assertArrayHasKey('city', $addressArray);
+        self::assertEquals('test', $addressArray['city']);
     }
 
     public function testNoTransformer(): void

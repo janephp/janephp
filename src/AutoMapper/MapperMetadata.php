@@ -6,7 +6,6 @@ use Jane\AutoMapper\Extractor\MappingExtractorInterface;
 use Jane\AutoMapper\Extractor\PropertyMapping;
 use Jane\AutoMapper\Extractor\ReadAccessor;
 use Jane\AutoMapper\Transformer\CallbackTransformer;
-use Jane\AutoMapper\Transformer\MapperDependency;
 
 /**
  * Mapper metadata.

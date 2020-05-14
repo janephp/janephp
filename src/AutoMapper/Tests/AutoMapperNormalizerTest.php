@@ -66,4 +66,17 @@ class AutoMapperNormalizerTest extends AutoMapperBaseTest
         self::assertTrue($this->normalizer->supportsDenormalization($user, Fixtures\User::class));
         self::assertTrue($this->normalizer->supportsDenormalization($user, \stdClass::class));
     }
+
+    public function testNormalizeWithNoReturnType(): void
+    {
+        $object = new Fixtures\UserWithYearOfBirth(1, 'Foo', 37);
+        $expected = ['id' => 1, 'name' => 'Foo', 'age' => 37, 'yearOfBirth' => (((int) date('Y')) - 37)];
+
+        $normalized = $this->normalizer->normalize($object, null, ['groups' => ['read']]);
+        self::assertIsArray($normalized);
+        self::assertEquals($expected['id'], $normalized['id']);
+        self::assertEquals($expected['name'], $normalized['name']);
+        self::assertEquals($expected['age'], $normalized['age']);
+        self::assertEquals($expected['yearOfBirth'], $normalized['yearOfBirth']);
+    }
 }

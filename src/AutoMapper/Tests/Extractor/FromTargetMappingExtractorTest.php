@@ -5,7 +5,6 @@ namespace Jane\AutoMapper\Tests\Extractor;
 use Doctrine\Common\Annotations\AnnotationReader;
 use Jane\AutoMapper\Exception\InvalidMappingException;
 use Jane\AutoMapper\Extractor\FromTargetMappingExtractor;
-use Jane\AutoMapper\Extractor\PropertyMapping;
 use Jane\AutoMapper\MapperMetadata;
 use Jane\AutoMapper\Tests\AutoMapperBaseTest;
 use Jane\AutoMapper\Tests\Fixtures;
