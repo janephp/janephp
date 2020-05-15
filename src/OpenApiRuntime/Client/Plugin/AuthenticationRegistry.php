@@ -33,6 +33,9 @@ class AuthenticationRegistry implements Plugin
             }
         }
 
+        // clean headers
+        $request = $request->withoutHeader(self::SCOPES_HEADER);
+
         return $next($request);
     }
 }
