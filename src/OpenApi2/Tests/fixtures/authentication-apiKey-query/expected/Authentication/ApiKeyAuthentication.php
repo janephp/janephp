@@ -2,7 +2,7 @@
 
 namespace Jane\OpenApi2\Tests\Expected\Authentication;
 
-class ApiKeyAuthentication implements \Http\Client\Common\Plugin
+class ApiKeyAuthentication implements \Http\Client\Common\Plugin, \Jane\OpenApiRuntime\Client\AuthenticationPlugin
 {
     private $apiKey;
     public function __construct(string $apiKey)
@@ -20,5 +20,9 @@ class ApiKeyAuthentication implements \Http\Client\Common\Plugin
         $uri = $uri->withQuery($query);
         $request = $request->withUri($uri);
         return $next($request);
+    }
+    public function getScopes() : array
+    {
+        return array('api_key');
     }
 }

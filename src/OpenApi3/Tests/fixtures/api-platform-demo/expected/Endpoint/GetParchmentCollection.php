@@ -53,4 +53,8 @@ class GetParchmentCollection extends \Jane\OpenApiRuntime\Client\BaseEndpoint im
             return $serializer->deserialize($body, 'ApiPlatform\\Demo\\Model\\Parchment[]', 'json');
         }
     }
+    public function getAuthenticationScopes() : array
+    {
+        return array('apiKey');
+    }
 }

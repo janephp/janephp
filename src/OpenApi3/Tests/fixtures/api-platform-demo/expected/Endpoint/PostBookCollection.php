@@ -77,4 +77,8 @@ class PostBookCollection extends \Jane\OpenApiRuntime\Client\BaseEndpoint implem
             throw new \ApiPlatform\Demo\Exception\PostBookCollectionNotFoundException();
         }
     }
+    public function getAuthenticationScopes() : array
+    {
+        return array('apiKey');
+    }
 }

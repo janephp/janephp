@@ -29,4 +29,8 @@ class Test extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\Ope
             return $serializer->deserialize($body, 'Jane\\OpenApi2\\Tests\\Expected\\Model\\TestPostResponse201', 'json');
         }
     }
+    public function getAuthenticationScopes() : array
+    {
+        return array();
+    }
 }

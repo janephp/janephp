@@ -47,4 +47,8 @@ class Foo extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\Open
     {
         return null;
     }
+    public function getAuthenticationScopes() : array
+    {
+        return array();
+    }
 }

@@ -20,6 +20,8 @@ abstract class BaseEndpoint implements Endpoint
 
     abstract protected function transformResponseBody(string $body, int $status, SerializerInterface $serializer, ?string $contentType);
 
+    abstract protected function getAuthenticationScopes(): array;
+
     protected function getExtraHeaders(): array
     {
         return [];

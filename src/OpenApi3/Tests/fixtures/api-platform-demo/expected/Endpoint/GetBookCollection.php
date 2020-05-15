@@ -69,4 +69,8 @@ class GetBookCollection extends \Jane\OpenApiRuntime\Client\BaseEndpoint impleme
             return json_decode($body);
         }
     }
+    public function getAuthenticationScopes() : array
+    {
+        return array('apiKey');
+    }
 }

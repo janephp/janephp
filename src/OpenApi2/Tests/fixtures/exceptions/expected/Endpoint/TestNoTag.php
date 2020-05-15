@@ -38,4 +38,8 @@ class TestNoTag extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jan
             throw new \Jane\OpenApi2\Tests\Expected\Exception\TestNoTagInternalServerErrorException();
         }
     }
+    public function getAuthenticationScopes() : array
+    {
+        return array();
+    }
 }

@@ -29,4 +29,8 @@ class GetAnotherThing extends \Jane\OpenApiRuntime\Client\BaseEndpoint implement
             return $serializer->deserialize($body, 'Jane\\OpenApi2\\Tests\\Expected\\Model\\Thing', 'json');
         }
     }
+    public function getAuthenticationScopes() : array
+    {
+        return array();
+    }
 }

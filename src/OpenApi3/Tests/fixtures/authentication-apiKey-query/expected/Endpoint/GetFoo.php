@@ -33,4 +33,8 @@ class GetFoo extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\O
             return $serializer->deserialize($body, 'Jane\\OpenApi3\\Tests\\Expected\\Model\\Foo', 'json');
         }
     }
+    public function getAuthenticationScopes() : array
+    {
+        return array();
+    }
 }

@@ -68,4 +68,8 @@ class FindUsersByIdOrUsername extends \Jane\OpenApiRuntime\Client\BaseEndpoint i
             return $serializer->deserialize($body, 'Jane\\OpenApi3\\Tests\\Expected\\Model\\Error', 'json');
         }
     }
+    public function getAuthenticationScopes() : array
+    {
+        return array();
+    }
 }

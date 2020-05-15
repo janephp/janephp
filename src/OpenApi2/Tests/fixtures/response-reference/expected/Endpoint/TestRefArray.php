@@ -29,4 +29,8 @@ class TestRefArray extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \
             return json_decode($body);
         }
     }
+    public function getAuthenticationScopes() : array
+    {
+        return array();
+    }
 }

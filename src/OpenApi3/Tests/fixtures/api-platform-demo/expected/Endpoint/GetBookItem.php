@@ -47,4 +47,8 @@ class GetBookItem extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \J
             throw new \ApiPlatform\Demo\Exception\GetBookItemNotFoundException();
         }
     }
+    public function getAuthenticationScopes() : array
+    {
+        return array('apiKey');
+    }
 }
