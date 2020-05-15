@@ -77,4 +77,8 @@ class PostParchmentCollection extends \Jane\OpenApiRuntime\Client\BaseEndpoint i
             throw new \ApiPlatform\Demo\Exception\PostParchmentCollectionNotFoundException();
         }
     }
+    public function getAuthenticationScopes() : array
+    {
+        return array('apiKey');
+    }
 }

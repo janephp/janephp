@@ -77,4 +77,8 @@ class PostReviewCollection extends \Jane\OpenApiRuntime\Client\BaseEndpoint impl
             throw new \ApiPlatform\Demo\Exception\PostReviewCollectionNotFoundException();
         }
     }
+    public function getAuthenticationScopes() : array
+    {
+        return array('apiKey');
+    }
 }

@@ -60,4 +60,8 @@ class ListProjects extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \
         }
         return $serializer->deserialize($body, 'Jane\\OpenApi2\\Tests\\Expected\\Model\\Error', 'json');
     }
+    public function getAuthenticationScopes() : array
+    {
+        return array('BearerAuth', 'AccountAuth');
+    }
 }

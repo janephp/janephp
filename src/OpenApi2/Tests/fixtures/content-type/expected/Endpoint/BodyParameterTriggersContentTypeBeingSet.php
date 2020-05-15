@@ -42,4 +42,8 @@ class BodyParameterTriggersContentTypeBeingSet extends \Jane\OpenApiRuntime\Clie
             return null;
         }
     }
+    public function getAuthenticationScopes() : array
+    {
+        return array();
+    }
 }

@@ -80,4 +80,8 @@ class PutReviewItem extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements 
             throw new \ApiPlatform\Demo\Exception\PutReviewItemNotFoundException();
         }
     }
+    public function getAuthenticationScopes() : array
+    {
+        return array('apiKey');
+    }
 }

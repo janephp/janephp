@@ -2,7 +2,7 @@
 
 namespace Jane\OpenApi3\Tests\Expected\Authentication;
 
-class BearerAuthentication implements \Http\Client\Common\Plugin
+class BearerAuthentication implements \Http\Client\Common\Plugin, \Jane\OpenApiRuntime\Client\AuthenticationPlugin
 {
     private $token;
     public function __construct(string $token)
@@ -14,5 +14,9 @@ class BearerAuthentication implements \Http\Client\Common\Plugin
         $header = sprintf('Bearer %s', $this->{'token'});
         $request = $request->withHeader('Authorization', $header);
         return $next($request);
+    }
+    public function getScopes() : array
+    {
+        return array('Bearer');
     }
 }

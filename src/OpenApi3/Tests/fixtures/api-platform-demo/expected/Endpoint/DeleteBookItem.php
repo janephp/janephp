@@ -43,4 +43,8 @@ class DeleteBookItem extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements
             throw new \ApiPlatform\Demo\Exception\DeleteBookItemNotFoundException();
         }
     }
+    public function getAuthenticationScopes() : array
+    {
+        return array('apiKey');
+    }
 }

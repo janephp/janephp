@@ -43,4 +43,8 @@ class DeleteReviewItem extends \Jane\OpenApiRuntime\Client\BaseEndpoint implemen
             throw new \ApiPlatform\Demo\Exception\DeleteReviewItemNotFoundException();
         }
     }
+    public function getAuthenticationScopes() : array
+    {
+        return array('apiKey');
+    }
 }

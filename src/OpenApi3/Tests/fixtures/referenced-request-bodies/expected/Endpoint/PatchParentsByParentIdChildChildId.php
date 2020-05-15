@@ -51,4 +51,8 @@ class PatchParentsByParentIdChildChildId extends \Jane\OpenApiRuntime\Client\Bas
             return $serializer->deserialize($body, 'Jane\\OpenApi3\\Tests\\Expected\\Model\\Child', 'json');
         }
     }
+    public function getAuthenticationScopes() : array
+    {
+        return array();
+    }
 }

@@ -39,4 +39,8 @@ class PostMessageM700 extends \Jane\OpenApiRuntime\Client\BaseEndpoint implement
     {
         return null;
     }
+    public function getAuthenticationScopes() : array
+    {
+        return array();
+    }
 }

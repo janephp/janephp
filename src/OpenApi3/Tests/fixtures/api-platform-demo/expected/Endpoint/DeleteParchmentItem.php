@@ -43,4 +43,8 @@ class DeleteParchmentItem extends \Jane\OpenApiRuntime\Client\BaseEndpoint imple
             throw new \ApiPlatform\Demo\Exception\DeleteParchmentItemNotFoundException();
         }
     }
+    public function getAuthenticationScopes() : array
+    {
+        return array('apiKey');
+    }
 }

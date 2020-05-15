@@ -2,7 +2,7 @@
 
 namespace Jane\OpenApi3\Tests\Expected\Authentication;
 
-class ApiKeyAuthentication implements \Http\Client\Common\Plugin
+class XHeaderAuthentication implements \Http\Client\Common\Plugin, \Jane\OpenApiRuntime\Client\AuthenticationPlugin
 {
     private $apiKey;
     public function __construct(string $apiKey)
@@ -13,5 +13,9 @@ class ApiKeyAuthentication implements \Http\Client\Common\Plugin
     {
         $request = $request->withHeader('X-API-KEY', $this->{'apiKey'});
         return $next($request);
+    }
+    public function getScopes() : array
+    {
+        return array('x-header');
     }
 }

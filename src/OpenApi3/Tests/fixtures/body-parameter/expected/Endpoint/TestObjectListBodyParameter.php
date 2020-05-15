@@ -41,4 +41,8 @@ class TestObjectListBodyParameter extends \Jane\OpenApiRuntime\Client\BaseEndpoi
             return null;
         }
     }
+    public function getAuthenticationScopes() : array
+    {
+        return array();
+    }
 }

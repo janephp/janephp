@@ -61,4 +61,8 @@ class TestGetWithPathParameters extends \Jane\OpenApiRuntime\Client\BaseEndpoint
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType)
     {
     }
+    public function getAuthenticationScopes() : array
+    {
+        return array();
+    }
 }

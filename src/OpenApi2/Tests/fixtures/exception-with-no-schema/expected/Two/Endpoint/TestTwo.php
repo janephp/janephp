@@ -37,4 +37,8 @@ class TestTwo extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\
             throw new \Jane\OpenApi2\Tests\Expected\Two\Exception\TestTwoNotFoundException();
         }
     }
+    public function getAuthenticationScopes() : array
+    {
+        return array();
+    }
 }

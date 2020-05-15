@@ -33,4 +33,8 @@ class GetTestList extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \J
             return $serializer->deserialize($body, 'Jane\\OpenApi3\\Tests\\Expected\\Model\\Schema[]', 'json');
         }
     }
+    public function getAuthenticationScopes() : array
+    {
+        return array();
+    }
 }
