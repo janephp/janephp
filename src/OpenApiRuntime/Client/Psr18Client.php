@@ -2,6 +2,7 @@
 
 namespace Jane\OpenApiRuntime\Client;
 
+use Jane\OpenApiRuntime\Client\Plugin\AuthenticationRegistry;
 use Psr\Http\Client\ClientInterface;
 use Psr\Http\Message\RequestFactoryInterface;
 use Psr\Http\Message\StreamFactoryInterface;
@@ -60,6 +61,10 @@ abstract class Psr18Client extends Client
 
         foreach ($endpoint->getHeaders($bodyHeaders) as $name => $value) {
             $request = $request->withHeader($name, $value);
+        }
+
+        foreach ($endpoint->getAuthenticationScopes() as $scope) {
+            $request = $request->withHeader(AuthenticationRegistry::SCOPES_HEADER, $scope);
         }
 
         return $endpoint->parsePSR7Response($this->httpClient->sendRequest($request), $this->serializer, $fetch);
