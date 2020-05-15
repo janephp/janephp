@@ -21,8 +21,8 @@ class ApiKeyAuthentication implements \Http\Client\Common\Plugin, \Jane\OpenApiR
         $request = $request->withUri($uri);
         return $next($request);
     }
-    public function getScopes() : array
+    public function getScope() : string
     {
-        return array('ApiKey');
+        return 'ApiKey';
     }
 }

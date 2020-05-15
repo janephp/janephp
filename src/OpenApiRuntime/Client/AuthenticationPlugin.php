@@ -6,5 +6,5 @@ namespace Jane\OpenApiRuntime\Client;
 
 interface AuthenticationPlugin
 {
-    public function getScopes(): array;
+    public function getScope(): string;
 }

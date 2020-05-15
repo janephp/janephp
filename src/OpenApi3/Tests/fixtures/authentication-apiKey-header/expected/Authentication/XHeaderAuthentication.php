@@ -14,8 +14,8 @@ class XHeaderAuthentication implements \Http\Client\Common\Plugin, \Jane\OpenApi
         $request = $request->withHeader('X-API-KEY', $this->{'apiKey'});
         return $next($request);
     }
-    public function getScopes() : array
+    public function getScope() : string
     {
-        return array('x-header');
+        return 'x-header';
     }
 }
