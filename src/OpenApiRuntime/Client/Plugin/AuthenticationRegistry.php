@@ -3,6 +3,7 @@
 namespace Jane\OpenApiRuntime\Client\Plugin;
 
 use Http\Client\Common\Plugin;
+use Http\Promise\FulfilledPromise;
 use Http\Promise\Promise;
 use Jane\OpenApiRuntime\Client\AuthenticationPlugin;
 use Psr\Http\Message\RequestInterface;
@@ -25,11 +26,10 @@ class AuthenticationRegistry implements Plugin
 
         foreach ($this->authenticationPlugins as $authenticationPlugin) {
             if (\in_array($authenticationPlugin->getScope(), $scopes)) {
-                $callback = function (RequestInterface $request) {
-                    throw new \RuntimeException('Next / first callback are not implemented in Authentication plugin.');
+                $emptyCallback = function (RequestInterface $request): Promise {
+                    return new FulfilledPromise('ok');
                 };
-
-                $authenticationPlugin->handleRequest($request, $callback, $callback);
+                $authenticationPlugin->handleRequest($request, $emptyCallback, $emptyCallback);
             }
         }
 
