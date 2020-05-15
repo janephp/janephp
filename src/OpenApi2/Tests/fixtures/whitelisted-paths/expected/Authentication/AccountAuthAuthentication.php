@@ -14,8 +14,8 @@ class AccountAuthAuthentication implements \Http\Client\Common\Plugin, \Jane\Ope
         $request = $request->withHeader('Harvest-Account-Id', $this->{'apiKey'});
         return $next($request);
     }
-    public function getScopes() : array
+    public function getScope() : string
     {
-        return array('AccountAuth');
+        return 'AccountAuth';
     }
 }

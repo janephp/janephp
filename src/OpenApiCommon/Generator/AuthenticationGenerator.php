@@ -9,7 +9,7 @@ use Jane\JsonSchema\Generator\Naming;
 use Jane\JsonSchema\Registry\Schema as BaseSchema;
 use Jane\OpenApiCommon\Generator\Authentication\ClassGenerator;
 use Jane\OpenApiCommon\Generator\Authentication\ConstructGenerator;
-use Jane\OpenApiCommon\Generator\Authentication\GetScopesGenerator;
+use Jane\OpenApiCommon\Generator\Authentication\GetScopeGenerator;
 use Jane\OpenApiCommon\Generator\Authentication\HandleRequestGenerator;
 use Jane\OpenApiCommon\Registry\Schema;
 use PhpParser\Node\Name;
@@ -19,7 +19,7 @@ class AuthenticationGenerator implements GeneratorInterface
 {
     use ConstructGenerator;
     use HandleRequestGenerator;
-    use GetScopesGenerator;
+    use GetScopeGenerator;
     use ClassGenerator;
 
     protected const REFERENCE = 'Authentication';
@@ -48,7 +48,7 @@ class AuthenticationGenerator implements GeneratorInterface
 
                 $statements = $this->createConstruct($securityScheme);
                 $statements[] = $this->createHandleRequest($securityScheme);
-                $statements[] = $this->createGetScopes($securityScheme);
+                $statements[] = $this->createGetScope($securityScheme);
                 $authentication = $this->createAuthentication($className, $statements);
 
                 $namespace = new Stmt\Namespace_(new Name($baseNamespace), [$authentication]);

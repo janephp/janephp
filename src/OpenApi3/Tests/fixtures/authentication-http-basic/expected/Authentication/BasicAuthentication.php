@@ -17,8 +17,8 @@ class BasicAuthentication implements \Http\Client\Common\Plugin, \Jane\OpenApiRu
         $request = $request->withHeader('Authorization', $header);
         return $next($request);
     }
-    public function getScopes() : array
+    public function getScope() : string
     {
-        return array('Basic');
+        return 'Basic';
     }
 }

@@ -15,8 +15,8 @@ class BearerAuthentication implements \Http\Client\Common\Plugin, \Jane\OpenApiR
         $request = $request->withHeader('Authorization', $header);
         return $next($request);
     }
-    public function getScopes() : array
+    public function getScope() : string
     {
-        return array('Bearer');
+        return 'Bearer';
     }
 }
