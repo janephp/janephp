@@ -140,6 +140,10 @@ class Schema implements SchemaInterface
             $this->relations[$model] = [];
         }
 
+        if ($needs === $model) {
+            return;
+        }
+
         $this->relations[$model][] = $needs;
     }
 
