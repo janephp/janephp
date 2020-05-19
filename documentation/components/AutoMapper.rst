@@ -1,6 +1,9 @@
 AutoMapper
 ===========
 
+Description
+-----------
+
 Jane AutoMapper is an experimental library that generate AutoMapper class which allows to automap values from Class to Class.
 
 Taken from `AutoMapper/AutoMapper`_:
@@ -83,11 +86,6 @@ Context object allow to pass options for the mapping::
 Features
 --------
 
-Private properties
-~~~~~~~~~~~~~~~~~~
-
-This component map private properties (However this can deactivated).
-
 Nested Mapping
 ~~~~~~~~~~~~~~
 
@@ -130,4 +128,82 @@ This component understand the Discriminator Mapping Annotation of the Serializer
 Type casting
 ~~~~~~~~~~~~
 
-This component will try to correctly map scalar values (going from int to string, etc.).
+This component will try to correctly map scalar values (going from int to string, etc).
+
+Implementation
+--------------
+
+Default implementation use code generation for mapping, it reads once the metadata needed to build the mapper then write PHP code, after this, no metadata reading or analysis is done, only the generated mapper is used.
+
+This allow for very fast mapping, here is some benchmarks using the library:
+
+* `travis-ci.org/idr0id/php-mappers-benchmarks/builds/361253808?utm_source=github_status&utm_medium=notification`_
+* `travis-ci.org/php-serializers/ivory-serializer-benchmark`_
+
+.. _`travis-ci.org/idr0id/php-mappers-benchmarks/builds/361253808?utm_source=github_status&utm_medium=notification`: https://travis-ci.org/idr0id/php-mappers-benchmarks/builds/361253808?utm_source=github_status&utm_medium=notification
+.. _`travis-ci.org/php-serializers/ivory-serializer-benchmark`: https://travis-ci.org/php-serializers/ivory-serializer-benchmark
+
+And here is an `example of generated code`_
+
+.. _`example of generated code`: https://gist.github.com/joelwurtz/7ee48dd768f6d39ccc78d6ab7bdea22a
+
+Bundle
+------
+
+With this component, we made a Bundle to allow a quick integration with Symfony.
+To use it, you just have to add the main bundle class to your ``config/bundles.php`` file::
+
+    return [
+        // ...
+        Jane\AutoMapper\Bundle\JaneAutoMapperBundle::class => ['all' => true],
+    ];
+
+Then configure the bundle to your needs, for example:
+
+.. code-block:: yaml
+
+    jane_auto_mapper:
+      autoregister: true
+      mappings:
+        - source: Jane\AutoMapper\Bundle\Tests\Fixtures\User
+          target: Jane\AutoMapper\Tests\Fixtures\UserDTO
+          pass: DummyApp\UserConfigurationPass
+
+Possible fields:
+
+* ``normalizer`` (default: ``false``):  A boolean which indicate if we inject the AutoMapperNormalizer ;
+* ``cache_dir`` (default: ``%kernel.cache_dir%/automapper``): This settings allows you to customize the output directory for generated mappers ;
+* ``mappings``: This option allows you to customize Mapper metadatas, you have to specify ``source`` and ``target`` data types and related configuration using ``pass`` field. This configuration should implements ``Jane\AutoMapper\Bundle\Configuration\ConfigurationPassInterface``.
+
+Normalizer Bridge
+-----------------
+
+A normalizer Bridge is available where its goal is to be 100% feature compatible with the ObjectNormalizer of the ``symfony/serializer`` component. The goal of this bridge **is not to replace the ObjectNormalizer** but rather providing a very fast alternative.
+
+As shown in the benchmark above, using this bridge leads up to more than 8x speed increase in normalization.
+
+Future consideration
+--------------------
+
+Things that could be done later:
+
+* symfony/form bridge for mapping request data to object
+* symfony/validator integration:
+
+PHP 7.4 may give a problem to the symfony/validator component where typed properties can be problem, given a class like this::
+
+    class Foo {
+        /** @Assert\NotNull() */
+        public int $foo;
+    }
+
+An user may send a null value (in a form by example or json), and PHP will raise an error before the validation, since the validation occurs on the mapped object.
+
+This component can help resolving this case with the actual behavior:
+
+- Create a dummy class with the same properties as Foo but without type checking
+- Mapping user data to this dummy class (using the automapper component)
+- Validating this dummy class with the metadata from the Foo class
+- Mapping the dummy object to the foo class (using the automapper component)
+
+Feel free to challenge as much as possible

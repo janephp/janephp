@@ -105,7 +105,7 @@ This component understand the Max Depth Annotation of the Serializer component a
 Default implementation allows you to pass a Name Converter when converting to or from an array to change the property name used.
 
 ### Discriminator Mapping
-This component understand the Discriminiator Mapping Annotation of the Serializer component and should correctly handle construction of object when having inheritance.
+This component understand the Discriminator Mapping Annotation of the Serializer component and should correctly handle construction of object when having inheritance.
 
 ### Type casting
 This component will try to correctly map scalar values (going from int to string, etc ...).
@@ -113,7 +113,7 @@ This component will try to correctly map scalar values (going from int to string
 ## Implementation
 Default implementation use code generation for mapping, it reads once the metadata needed to build the mapper then write PHP code, after this, no metadata reading or analysis is done, only the generated mapper is used.
 
-This allow for very fast mapping, here is some benchmarks using the library where the code comes from (jane/automapper):
+This allow for very fast mapping, here is some benchmarks using the library:
 
 * [travis-ci.org/idr0id/php-mappers-benchmarks/builds/361253808?utm_source=github_status&utm_medium=notification](https://travis-ci.org/idr0id/php-mappers-benchmarks/builds/361253808?utm_source=github_status&utm_medium=notification)
 * [travis-ci.org/php-serializers/ivory-serializer-benchmark](https://travis-ci.org/php-serializers/ivory-serializer-benchmark)
@@ -148,8 +148,8 @@ jane_auto_mapper:
 Possible properties:
 - `normalizer` (default: `false`):  A boolean which indicate if we inject the AutoMapperNormalizer ;
 - `cache_dir` (default: `%kernel.cache_dir%/automapper`): This settings allows you to customize the output directory for generated mappers ;
-- `mappings`: This option allows you to customize Mapper metadatas, you have to specify ``source`` & ``target`` data types and related configuration using ``pass`` field.
-This configuration should implements ``Jane\AutoMapper\Bundle\Configuration\ConfigurationPassInterface``.
+- `mappings`: This option allows you to customize Mapper metadatas, you have to specify `source` & `target` data types and related configuration using `pass` field.
+This configuration should implements `Jane\AutoMapper\Bundle\Configuration\ConfigurationPassInterface`.
 
 ## Normalizer Bridge
 A normalizer Bridge is available where its goal is to be 100% feature compatible with the ObjectNormalizer of the `symfony/serializer` component. The goal of this bridge **is not to replace the ObjectNormalizer** but rather providing a very fast alternative.
