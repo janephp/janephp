@@ -23,11 +23,20 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Bar'
+  /baz:
+    get:
+      summary: Find baz
+      responses:
+        '200':
+          description: Baz item
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Baz'
 
 components:
   schemas:
     Foo:
-      title: Foo
       type: object
       properties:
         label:
@@ -39,3 +48,15 @@ components:
       properties:
         label:
           type: string
+    Baz:
+      type: object
+      properties:
+        label:
+          type: string
+        sub:
+          $ref: '#/components/schemas/SubBaz'
+    SubBaz:
+      type: object
+      properties:
+        parent:
+          $ref: '#/components/schemas/Baz'

@@ -13,6 +13,15 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
     {
         return $this->executePsr7Endpoint(new \Jane\OpenApi3\Tests\Expected\Endpoint\GetFoo(), $fetch);
     }
+    /**
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\Jane\OpenApi3\Tests\Expected\Model\Baz|\Psr\Http\Message\ResponseInterface
+     */
+    public function getBaz(string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \Jane\OpenApi3\Tests\Expected\Endpoint\GetBaz(), $fetch);
+    }
     public static function create($httpClient = null, array $additionalPlugins = array())
     {
         if (null === $httpClient) {
