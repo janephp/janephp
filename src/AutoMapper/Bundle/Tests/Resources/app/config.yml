@@ -4,7 +4,7 @@ framework:
     test: ~
 
 jane_auto_mapper:
-    autoregister: true
+    normalizer: true
     mappings:
         -
             source: Jane\AutoMapper\Bundle\Tests\Fixtures\User

@@ -33,13 +33,6 @@ class JaneAutoMapperExtension extends Extension
             $this->createMapperConfigurationDefinition($container, $mapping);
         }
 
-        if ($config['autoregister']) {
-            $container
-                ->getDefinition(AutoMapper::class)
-                ->setArgument(1, new Reference(MapperGeneratorMetadataFactory::class))
-            ;
-        }
-
         if ($config['normalizer']) {
             $container
                 ->getDefinition(AutoMapperNormalizer::class)
