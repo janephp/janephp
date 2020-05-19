@@ -6,5 +6,6 @@ return [
     'directory' => __DIR__ . '/generated',
     'whitelisted-paths' => [
         '\/foo$',
+        '\/baz$',
     ],
 ];

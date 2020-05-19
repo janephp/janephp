@@ -37,6 +37,9 @@ class WhitelistedSchema implements WhitelistFetchInterface
     public function addOperationRelations(OperationGuess $operationGuess, Registry $registry): void
     {
         $baseOperation = $this->naming->getEndpointName($operationGuess);
+        if ($this->schema->relationExists($baseOperation)) {
+            return;
+        }
 
         /** @var Response[]|null $responses */
         $responses = $operationGuess->getOperation()->getResponses();

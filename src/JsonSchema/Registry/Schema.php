@@ -136,20 +136,28 @@ class Schema implements SchemaInterface
 
     public function addRelation(string $model, string $needs): void
     {
-        if (!\array_key_exists($model, $this->relations)) {
-            $this->relations[$model] = [];
-        }
-
         if ($needs === $model) {
             return;
+        }
+
+        if (!\array_key_exists($model, $this->relations)) {
+            $this->relations[$model] = [];
         }
 
         $this->relations[$model][] = $needs;
     }
 
+    public function relationExists($model): bool
+    {
+        return \array_key_exists($model, $this->relations);
+    }
+
     public function addClassRelations(ClassGuess $classGuess): void
     {
         $baseModel = $classGuess->getName();
+        if ($this->relationExists($baseModel)) {
+            return;
+        }
 
         foreach ($classGuess->getProperties() as $property) {
             // second condition is here to avoid mapping PHP classes such as \DateTime
@@ -165,11 +173,6 @@ class Schema implements SchemaInterface
                 $this->addRelation($baseModel, $itemType->getClassName());
             }
         }
-    }
-
-    public function getRelations(): array
-    {
-        return $this->relations;
     }
 
     private function fixPath(string $path): string
