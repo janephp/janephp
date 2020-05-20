@@ -39,7 +39,7 @@ class ApiBooksReviewsGetSubresource extends \Jane\OpenApiRuntime\Client\BaseEndp
     {
         return array('Accept' => array('application/json'));
     }
-    protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
+    public function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
         $optionsResolver->setDefined(array('order[id]', 'order[publicationDate]', 'book', 'book[]', 'page'));

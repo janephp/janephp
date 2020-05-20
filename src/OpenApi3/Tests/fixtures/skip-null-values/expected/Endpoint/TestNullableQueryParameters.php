@@ -28,7 +28,7 @@ class TestNullableQueryParameters extends \Jane\OpenApiRuntime\Client\BaseEndpoi
     {
         return array(array(), null);
     }
-    protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
+    public function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
         $optionsResolver->setDefined(array('testNullableInteger'));

@@ -36,7 +36,7 @@ class GetReviewCollection extends \Jane\OpenApiRuntime\Client\BaseEndpoint imple
     {
         return array('Accept' => array('application/json'));
     }
-    protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
+    public function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
         $optionsResolver->setDefined(array('order[id]', 'order[publicationDate]', 'book', 'book[]', 'page'));

@@ -2,6 +2,9 @@
 
 namespace Jane\OpenApiRuntime\Client;
 
+use Http\Client\Common\PluginClient;
+use Jane\OpenApiRuntime\Client\Plugin\HeaderResolver;
+use Jane\OpenApiRuntime\Client\Plugin\QueryResolver;
 use Psr\Http\Client\ClientInterface;
 use Psr\Http\Message\RequestFactoryInterface;
 use Psr\Http\Message\StreamFactoryInterface;
@@ -62,6 +65,11 @@ abstract class Psr18Client extends Client
             $request = $request->withHeader($name, $value);
         }
 
-        return $endpoint->parsePSR7Response($this->httpClient->sendRequest($request), $this->serializer, $fetch);
+        $clientWithOptionsResolvers = new PluginClient($this->httpClient, [
+            new QueryResolver($endpoint->getQueryOptionsResolver()),
+            new HeaderResolver($endpoint->getHeadersOptionsResolver()),
+        ]);
+
+        return $endpoint->parsePSR7Response($clientWithOptionsResolvers->sendRequest($request), $this->serializer, $fetch);
     }
 }

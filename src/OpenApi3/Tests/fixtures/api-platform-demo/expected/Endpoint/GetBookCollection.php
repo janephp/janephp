@@ -40,7 +40,7 @@ class GetBookCollection extends \Jane\OpenApiRuntime\Client\BaseEndpoint impleme
     {
         return array('Accept' => array('application/json'));
     }
-    protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
+    public function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
         $optionsResolver->setDefined(array('properties[]', 'order[id]', 'order[title]', 'order[author]', 'order[isbn]', 'order[publicationDate]', 'title', 'author', 'page'));

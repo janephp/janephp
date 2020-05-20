@@ -344,7 +344,7 @@ EOD
         $optionsResolverVariable = new Expr\Variable('optionsResolver');
 
         return new Stmt\ClassMethod($methodName, [
-            'type' => Stmt\Class_::MODIFIER_PROTECTED,
+            'type' => Stmt\Class_::MODIFIER_PUBLIC,
             'stmts' => array_merge(
                 [
                     new Stmt\Expression(new Expr\Assign($optionsResolverVariable, new Expr\StaticCall(new Name('parent'), $methodName))),

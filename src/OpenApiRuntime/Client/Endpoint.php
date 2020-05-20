@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Jane\OpenApiRuntime\Client;
 
+use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Serializer\SerializerInterface;
 
 interface Endpoint
@@ -35,4 +36,14 @@ interface Endpoint
      * Get the headers of an endpoint.
      */
     public function getHeaders(array $baseHeaders = []): array;
+
+    /**
+     * Get query definition.
+     */
+    public function getQueryOptionsResolver(): OptionsResolver;
+
+    /**
+     * Get headers definition.
+     */
+    public function getHeadersOptionsResolver(): OptionsResolver;
 }

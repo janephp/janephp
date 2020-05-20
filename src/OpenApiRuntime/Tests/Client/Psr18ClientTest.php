@@ -13,6 +13,7 @@ use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\StreamFactoryInterface;
 use Psr\Http\Message\StreamInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Serializer\SerializerInterface;
 
 class Psr18ClientTest extends TestCase
@@ -53,6 +54,10 @@ class Psr18ClientTest extends TestCase
             ->method('withBody')
             ->with($streamMock)
             ->willReturn($requestMock);
+        $requestMock
+            ->expects($this->once())
+            ->method('getHeaders')
+            ->willReturn([]);
 
         $streamFactoryMock
             ->expects($this->once())
@@ -86,6 +91,14 @@ class Psr18ClientTest extends TestCase
             ->expects($this->once())
             ->method('parsePSR7Response')
             ->willReturn('foo');
+        $endpointMock
+            ->expects($this->once())
+            ->method('getQueryOptionsResolver')
+            ->willReturn(new OptionsResolver());
+        $endpointMock
+            ->expects($this->once())
+            ->method('getHeadersOptionsResolver')
+            ->willReturn(new OptionsResolver());
 
         $this->assertSame('foo', $client->executePsr7Endpoint($endpointMock));
     }

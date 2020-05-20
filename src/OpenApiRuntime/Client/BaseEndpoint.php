@@ -27,23 +27,22 @@ abstract class BaseEndpoint implements Endpoint
 
     public function getQueryString(): string
     {
-        $optionsResolved = $this->getQueryOptionsResolver()->resolve($this->queryParameters);
-        $optionsResolved = array_map(function ($value) { return null !== $value ? $value : ''; }, $optionsResolved);
+        $optionsResolved = array_map(function ($value) { return null !== $value ? $value : ''; }, $this->queryParameters);
 
         return http_build_query($optionsResolved, null, '&', PHP_QUERY_RFC3986);
     }
 
     public function getHeaders(array $baseHeaders = []): array
     {
-        return array_merge($this->getExtraHeaders(), $baseHeaders, $this->getHeadersOptionsResolver()->resolve($this->headerParameters));
+        return array_merge($this->getExtraHeaders(), $baseHeaders, $this->headerParameters);
     }
 
-    protected function getQueryOptionsResolver(): OptionsResolver
+    public function getQueryOptionsResolver(): OptionsResolver
     {
         return new OptionsResolver();
     }
 
-    protected function getHeadersOptionsResolver(): OptionsResolver
+    public function getHeadersOptionsResolver(): OptionsResolver
     {
         return new OptionsResolver();
     }

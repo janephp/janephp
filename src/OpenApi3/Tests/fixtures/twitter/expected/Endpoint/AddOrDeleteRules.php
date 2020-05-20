@@ -37,7 +37,7 @@ class AddOrDeleteRules extends \Jane\OpenApiRuntime\Client\BaseEndpoint implemen
     {
         return array('Accept' => array('application/json'));
     }
-    protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
+    public function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
         $optionsResolver->setDefined(array('dry_run'));
