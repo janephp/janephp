@@ -2,7 +2,7 @@
 
 namespace Jane\OpenApi3\Tests\Expected\Authentication;
 
-class BasicAuthentication implements \Http\Client\Common\Plugin, \Jane\OpenApiRuntime\Client\AuthenticationPlugin
+class BasicAuthentication implements \Jane\OpenApiRuntime\Client\AuthenticationPlugin
 {
     private $username;
     private $password;
@@ -11,11 +11,11 @@ class BasicAuthentication implements \Http\Client\Common\Plugin, \Jane\OpenApiRu
         $this->{'username'} = $username;
         $this->{'password'} = $password;
     }
-    public function handleRequest(\Psr\Http\Message\RequestInterface $request, callable $next, callable $first) : \Http\Promise\Promise
+    public function authentication(\Psr\Http\Message\RequestInterface $request) : \Psr\Http\Message\RequestInterface
     {
         $header = sprintf('Basic %s', base64_encode(sprintf('%s:%s', $this->{'username'}, $this->{'password'})));
         $request = $request->withHeader('Authorization', $header);
-        return $next($request);
+        return $request;
     }
     public function getScope() : string
     {

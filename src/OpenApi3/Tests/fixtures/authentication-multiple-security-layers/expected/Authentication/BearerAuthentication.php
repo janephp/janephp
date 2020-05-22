@@ -17,6 +17,6 @@ class BearerAuthentication implements \Jane\OpenApiRuntime\Client\Authentication
     }
     public function getScope() : string
     {
-        return 'Bearer';
+        return 'bearer';
     }
 }

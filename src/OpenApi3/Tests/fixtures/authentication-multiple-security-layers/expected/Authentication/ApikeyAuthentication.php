@@ -2,7 +2,7 @@
 
 namespace Jane\OpenApi3\Tests\Expected\Authentication;
 
-class ApiKeyAuthentication implements \Jane\OpenApiRuntime\Client\AuthenticationPlugin
+class ApikeyAuthentication implements \Jane\OpenApiRuntime\Client\AuthenticationPlugin
 {
     private $apiKey;
     public function __construct(string $apiKey)
@@ -23,6 +23,6 @@ class ApiKeyAuthentication implements \Jane\OpenApiRuntime\Client\Authentication
     }
     public function getScope() : string
     {
-        return 'ApiKey';
+        return 'apikey';
     }
 }
