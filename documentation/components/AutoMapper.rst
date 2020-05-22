@@ -150,7 +150,7 @@ And here is an `example of generated code`_
 Bundle
 ------
 
-With this component, we made a Bundle to allow a quick integration with Symfony.
+The component ships a Bundle to allow a quick integration with Symfony.
 To use it, you just have to add the main bundle class to your ``config/bundles.php`` file::
 
     return [
@@ -171,14 +171,14 @@ Then configure the bundle to your needs, for example:
 
 Possible fields:
 
-* ``normalizer`` (default: ``false``):  A boolean which indicate if we inject the AutoMapperNormalizer ;
-* ``cache_dir`` (default: ``%kernel.cache_dir%/automapper``): This settings allows you to customize the output directory for generated mappers ;
-* ``mappings``: This option allows you to customize Mapper metadatas, you have to specify ``source`` and ``target`` data types and related configuration using ``pass`` field. This configuration should implements ``Jane\AutoMapper\Bundle\Configuration\ConfigurationPassInterface``.
+* ``normalizer`` (default: ``false``):  A boolean which indicate if we inject the AutoMapperNormalizer;
+* ``cache_dir`` (default: ``%kernel.cache_dir%/automapper``): This settings allows you to customize the output directory for generated mappers;
+* ``mappings``: This option allows you to customize Mapper metadata, you have to specify ``source`` and ``target`` data types and related configuration using ``pass`` field. This configuration should implements ``Jane\AutoMapper\Bundle\Configuration\ConfigurationPassInterface``.
 
 Normalizer Bridge
 -----------------
 
-A normalizer Bridge is available where its goal is to be 100% feature compatible with the ObjectNormalizer of the ``symfony/serializer`` component. The goal of this bridge **is not to replace the ObjectNormalizer** but rather providing a very fast alternative.
+A Normalizer Bridge is available, aiming to be 100% feature compatible with the ObjectNormalizer of the ``symfony/serializer`` component. The goal of this bridge **is not to replace the ObjectNormalizer** but rather providing a very fast alternative.
 
 As shown in the benchmark above, using this bridge leads up to more than 8x speed increase in normalization.
 
@@ -197,7 +197,7 @@ PHP 7.4 may give a problem to the symfony/validator component where typed proper
         public int $foo;
     }
 
-An user may send a null value (in a form by example or json), and PHP will raise an error before the validation, since the validation occurs on the mapped object.
+An user may send a null value (in a form by example or JSON), and PHP will raise an error before the validation, since the validation occurs on the mapped object.
 
 This component can help resolving this case with the actual behavior:
 
@@ -206,4 +206,4 @@ This component can help resolving this case with the actual behavior:
 - Validating this dummy class with the metadata from the Foo class
 - Mapping the dummy object to the foo class (using the automapper component)
 
-Feel free to challenge as much as possible
+Feel free to challenge as much as possible.
