@@ -2,7 +2,7 @@
 
 namespace Jane\OpenApi2\Tests\Expected\Two;
 
-class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
+class Client extends \Jane\OpenApiRuntime\Client\Client
 {
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
@@ -12,7 +12,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function testTwo(string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Jane\OpenApi2\Tests\Expected\Two\Endpoint\TestTwo(), $fetch);
+        return $this->executeEndpoint(new \Jane\OpenApi2\Tests\Expected\Two\Endpoint\TestTwo(), $fetch);
     }
     public static function create($httpClient = null, array $additionalPlugins = array())
     {

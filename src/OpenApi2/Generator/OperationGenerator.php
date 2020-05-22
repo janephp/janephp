@@ -11,8 +11,9 @@ use PhpParser\Node\Expr;
 use PhpParser\Node\Name;
 use PhpParser\Node\Param;
 use PhpParser\Node\Stmt;
+use Psr\Http\Message\ResponseInterface;
 
-abstract class OperationGenerator
+class OperationGenerator
 {
     protected $endpointGenerator;
 
@@ -21,11 +22,15 @@ abstract class OperationGenerator
         $this->endpointGenerator = $endpointGenerator;
     }
 
-    abstract protected function getEndpointCallName(): string;
-
-    abstract protected function getResponseClass(): string;
-
-    abstract protected function getReturnDoc(array $returnTypes, array $throwTypes): string;
+    protected function getReturnDoc(array $returnTypes, array $throwTypes): string
+    {
+        return implode('', array_map(function ($value) {
+            return ' * @throws ' . $value . "\n";
+        }, $throwTypes))
+            . " *\n"
+            . ' * @return ' . implode('|', $returnTypes)
+            ;
+    }
 
     public function createOperation(string $name, OperationGuess $operation, Context $context): Stmt\ClassMethod
     {
@@ -35,7 +40,7 @@ abstract class OperationGenerator
         $documentation =
             $methodDoc .
             "\n * @param string \$fetch Fetch mode to use (can be OBJECT or RESPONSE)\n" .
-            $this->getReturnDoc(array_merge($returnTypes, ['\\' . $this->getResponseClass()]), $throwTypes) . "\n" .
+            $this->getReturnDoc(array_merge($returnTypes, ['\\' . ResponseInterface::class]), $throwTypes) . "\n" .
             ' */'
         ;
 
@@ -50,7 +55,7 @@ abstract class OperationGenerator
             'type' => Stmt\Class_::MODIFIER_PUBLIC,
             'params' => $methodParams,
             'stmts' => [
-                new Stmt\Return_(new Expr\MethodCall(new Expr\Variable('this'), $this->getEndpointCallName(), [
+                new Stmt\Return_(new Expr\MethodCall(new Expr\Variable('this'), 'executeEndpoint', [
                     new Arg(new Expr\New_(new Name\FullyQualified($endpointName), $endpointArgs)),
                     new Arg(new Expr\Variable('fetch')),
                 ])),

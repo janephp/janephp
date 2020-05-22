@@ -8,18 +8,16 @@ use Jane\JsonSchema\Generator\GeneratorInterface;
 use Jane\JsonSchema\Registry\Schema;
 use Jane\OpenApi2\Generator\Client\ServerPluginGenerator;
 use Jane\OpenApiCommon\Generator\Client\HttpClientCreateGenerator;
-use Jane\OpenApiCommon\Generator\Client\Psr18ClientGenerator as CommonPsr18ClientGenerator;
+use Jane\OpenApiCommon\Generator\Client\ClientGenerator as CommonClientGenerator;
 use Jane\OpenApiCommon\Naming\OperationNamingInterface;
 use PhpParser\Node\Name;
 use PhpParser\Node\Stmt;
 
-class Psr18ClientGenerator implements GeneratorInterface
+class ClientGenerator implements GeneratorInterface
 {
-    use CommonPsr18ClientGenerator;
+    use CommonClientGenerator;
     use HttpClientCreateGenerator;
     use ServerPluginGenerator;
-
-    public const FILE_TYPE_CLIENT = 'client';
 
     private $operationGenerator;
 
@@ -55,7 +53,7 @@ class Psr18ClientGenerator implements GeneratorInterface
         $schema->addFile(new File(
             $schema->getDirectory() . \DIRECTORY_SEPARATOR . 'Client' . $this->getSuffix() . '.php',
             $node,
-            self::FILE_TYPE_CLIENT
+            'client'
         ));
     }
 }

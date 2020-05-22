@@ -2,7 +2,7 @@
 
 namespace Jane\OpenApi3\Tests\Expected;
 
-class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
+class Client extends \Jane\OpenApiRuntime\Client\Client
 {
     /**
      * Returns a variety of information about the Tweet specified by the requested ID
@@ -21,7 +21,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function findTweetsById(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Jane\OpenApi3\Tests\Expected\Endpoint\FindTweetsById($queryParameters), $fetch);
+        return $this->executeEndpoint(new \Jane\OpenApi3\Tests\Expected\Endpoint\FindTweetsById($queryParameters), $fetch);
     }
     /**
      * Add or delete rules from a user's active rule set. Users can provide unique, optionally tagged rules to add. Users can delete their entire rule set or a subset specified by rule ids or values.
@@ -36,14 +36,14 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function addOrDeleteRules($requestBody, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Jane\OpenApi3\Tests\Expected\Endpoint\AddOrDeleteRules($requestBody, $queryParameters), $fetch);
+        return $this->executeEndpoint(new \Jane\OpenApi3\Tests\Expected\Endpoint\AddOrDeleteRules($requestBody, $queryParameters), $fetch);
     }
     public static function create($httpClient = null, array $additionalPlugins = array())
     {
         if (null === $httpClient) {
             $httpClient = \Http\Discovery\Psr18ClientDiscovery::find();
             $plugins = array();
-            $uri = \Http\Discovery\Psr17FactoryDiscovery::findUrlFactory()->createUri('https://api.twitter.com');
+            $uri = \Http\Discovery\UriFactoryDiscovery::find()->createUri('https://api.twitter.com');
             $plugins[] = new \Http\Client\Common\Plugin\AddHostPlugin($uri);
             if (count($additionalPlugins) > 0) {
                 $plugins = array_merge($plugins, $additionalPlugins);

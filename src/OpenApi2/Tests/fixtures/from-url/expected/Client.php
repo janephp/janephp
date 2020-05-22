@@ -2,7 +2,7 @@
 
 namespace Jane\OpenApi2\Tests\Expected;
 
-class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
+class Client extends \Jane\OpenApiRuntime\Client\Client
 {
     /**
      * 
@@ -16,7 +16,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function listPets(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Jane\OpenApi2\Tests\Expected\Endpoint\ListPets($queryParameters), $fetch);
+        return $this->executeEndpoint(new \Jane\OpenApi2\Tests\Expected\Endpoint\ListPets($queryParameters), $fetch);
     }
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
@@ -25,7 +25,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function createPets(string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Jane\OpenApi2\Tests\Expected\Endpoint\CreatePets(), $fetch);
+        return $this->executeEndpoint(new \Jane\OpenApi2\Tests\Expected\Endpoint\CreatePets(), $fetch);
     }
     /**
      * 
@@ -37,14 +37,14 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function showPetById(string $petId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Jane\OpenApi2\Tests\Expected\Endpoint\ShowPetById($petId), $fetch);
+        return $this->executeEndpoint(new \Jane\OpenApi2\Tests\Expected\Endpoint\ShowPetById($petId), $fetch);
     }
     public static function create($httpClient = null, array $additionalPlugins = array())
     {
         if (null === $httpClient) {
             $httpClient = \Http\Discovery\Psr18ClientDiscovery::find();
             $plugins = array();
-            $uri = \Http\Discovery\Psr17FactoryDiscovery::findUrlFactory()->createUri('http://petstore.swagger.io/v1');
+            $uri = \Http\Discovery\UriFactoryDiscovery::find()->createUri('http://petstore.swagger.io/v1');
             $plugins[] = new \Http\Client\Common\Plugin\AddHostPlugin($uri);
             $plugins[] = new \Http\Client\Common\Plugin\AddPathPlugin($uri);
             if (count($additionalPlugins) > 0) {

@@ -2,7 +2,7 @@
 
 namespace Jane\OpenApi3\Tests\Expected;
 
-class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
+class Client extends \Jane\OpenApiRuntime\Client\Client
 {
     /**
      * This endpoint returns information about users. You can specify users by their ID or screen name, or by a combination of the two.
@@ -22,7 +22,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function findUsersByIdOrUsername(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Jane\OpenApi3\Tests\Expected\Endpoint\FindUsersByIdOrUsername($queryParameters), $fetch);
+        return $this->executeEndpoint(new \Jane\OpenApi3\Tests\Expected\Endpoint\FindUsersByIdOrUsername($queryParameters), $fetch);
     }
     /**
      * Returns a variety of information about the Tweet specified by the requested ID
@@ -41,7 +41,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function findTweetsById(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Jane\OpenApi3\Tests\Expected\Endpoint\FindTweetsById($queryParameters), $fetch);
+        return $this->executeEndpoint(new \Jane\OpenApi3\Tests\Expected\Endpoint\FindTweetsById($queryParameters), $fetch);
     }
     /**
      * Tweet ID in the path is that of the reply to hide.
@@ -54,7 +54,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function hideReplyById(string $id, \Jane\OpenApi3\Tests\Expected\Model\HideReplyRequest $requestBody, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Jane\OpenApi3\Tests\Expected\Endpoint\HideReplyById($id, $requestBody), $fetch);
+        return $this->executeEndpoint(new \Jane\OpenApi3\Tests\Expected\Endpoint\HideReplyById($id, $requestBody), $fetch);
     }
     /**
      * Returns various metrics about a Tweet, including metrics for an embedded Video if one exists
@@ -68,7 +68,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function findPrivateTweetMetricsById(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Jane\OpenApi3\Tests\Expected\Endpoint\FindPrivateTweetMetricsById($queryParameters), $fetch);
+        return $this->executeEndpoint(new \Jane\OpenApi3\Tests\Expected\Endpoint\FindPrivateTweetMetricsById($queryParameters), $fetch);
     }
     /**
      * Returns Tweets from the last 7 days that match a search query.
@@ -93,7 +93,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function tweetsRecentSearch(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Jane\OpenApi3\Tests\Expected\Endpoint\TweetsRecentSearch($queryParameters), $fetch);
+        return $this->executeEndpoint(new \Jane\OpenApi3\Tests\Expected\Endpoint\TweetsRecentSearch($queryParameters), $fetch);
     }
     /**
      * Returns rules from a user's active rule set. Users can fetch all of their rules or a subset, specified by the provided rule ids.
@@ -107,7 +107,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function getRules(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Jane\OpenApi3\Tests\Expected\Endpoint\GetRules($queryParameters), $fetch);
+        return $this->executeEndpoint(new \Jane\OpenApi3\Tests\Expected\Endpoint\GetRules($queryParameters), $fetch);
     }
     /**
      * Add or delete rules from a user's active rule set. Users can provide unique, optionally tagged rules to add. Users can delete their entire rule set or a subset specified by rule ids or values.
@@ -122,7 +122,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function addOrDeleteRules($requestBody, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Jane\OpenApi3\Tests\Expected\Endpoint\AddOrDeleteRules($requestBody, $queryParameters), $fetch);
+        return $this->executeEndpoint(new \Jane\OpenApi3\Tests\Expected\Endpoint\AddOrDeleteRules($requestBody, $queryParameters), $fetch);
     }
     /**
      * Streams tweets matching a user's active rule set.
@@ -136,7 +136,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function streamFilter(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Jane\OpenApi3\Tests\Expected\Endpoint\StreamFilter($queryParameters), $fetch);
+        return $this->executeEndpoint(new \Jane\OpenApi3\Tests\Expected\Endpoint\StreamFilter($queryParameters), $fetch);
     }
     /**
      * Streams a deterministic 1% of public tweets.
@@ -150,7 +150,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function streamSample(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Jane\OpenApi3\Tests\Expected\Endpoint\StreamSample($queryParameters), $fetch);
+        return $this->executeEndpoint(new \Jane\OpenApi3\Tests\Expected\Endpoint\StreamSample($queryParameters), $fetch);
     }
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
@@ -159,14 +159,14 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function getOpenApiSpec(string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Jane\OpenApi3\Tests\Expected\Endpoint\GetOpenApiSpec(), $fetch);
+        return $this->executeEndpoint(new \Jane\OpenApi3\Tests\Expected\Endpoint\GetOpenApiSpec(), $fetch);
     }
     public static function create($httpClient = null, array $additionalPlugins = array())
     {
         if (null === $httpClient) {
             $httpClient = \Http\Discovery\Psr18ClientDiscovery::find();
             $plugins = array();
-            $uri = \Http\Discovery\Psr17FactoryDiscovery::findUrlFactory()->createUri('https://api.twitter.com');
+            $uri = \Http\Discovery\UriFactoryDiscovery::find()->createUri('https://api.twitter.com');
             $plugins[] = new \Http\Client\Common\Plugin\AddHostPlugin($uri);
             if (count($additionalPlugins) > 0) {
                 $plugins = array_merge($plugins, $additionalPlugins);

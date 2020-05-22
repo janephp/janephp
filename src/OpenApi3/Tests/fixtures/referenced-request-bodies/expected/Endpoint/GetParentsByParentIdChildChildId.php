@@ -2,7 +2,7 @@
 
 namespace Jane\OpenApi3\Tests\Expected\Endpoint;
 
-class GetParentsByParentIdChildChildId extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7Endpoint
+class GetParentsByParentIdChildChildId extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
 {
     protected $parent_id;
     protected $child_id;
@@ -17,7 +17,7 @@ class GetParentsByParentIdChildChildId extends \Jane\OpenApiRuntime\Client\BaseE
         $this->parent_id = $parentId;
         $this->child_id = $childId;
     }
-    use \Jane\OpenApiRuntime\Client\Psr7EndpointTrait;
+    use \Jane\OpenApiRuntime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';

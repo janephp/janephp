@@ -2,7 +2,7 @@
 
 namespace Jane\OpenApi3\Tests\Expected;
 
-class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
+class Client extends \Jane\OpenApiRuntime\Client\Client
 {
     /**
      * 
@@ -16,7 +16,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function testNullableQueryParameters(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Jane\OpenApi3\Tests\Expected\Endpoint\TestNullableQueryParameters($queryParameters), $fetch);
+        return $this->executeEndpoint(new \Jane\OpenApi3\Tests\Expected\Endpoint\TestNullableQueryParameters($queryParameters), $fetch);
     }
     public static function create($httpClient = null, array $additionalPlugins = array())
     {

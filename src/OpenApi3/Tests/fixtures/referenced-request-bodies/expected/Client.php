@@ -2,7 +2,7 @@
 
 namespace Jane\OpenApi3\Tests\Expected;
 
-class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
+class Client extends \Jane\OpenApiRuntime\Client\Client
 {
     /**
      * 
@@ -15,7 +15,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function getParentsByParentIdChildChildId(string $parentId, string $childId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Jane\OpenApi3\Tests\Expected\Endpoint\GetParentsByParentIdChildChildId($parentId, $childId), $fetch);
+        return $this->executeEndpoint(new \Jane\OpenApi3\Tests\Expected\Endpoint\GetParentsByParentIdChildChildId($parentId, $childId), $fetch);
     }
     /**
      * 
@@ -29,14 +29,14 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function patchParentsByParentIdChildChildId(string $parentId, string $childId, \Jane\OpenApi3\Tests\Expected\Model\ParentsParentIdChildChildIdPatchBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Jane\OpenApi3\Tests\Expected\Endpoint\PatchParentsByParentIdChildChildId($parentId, $childId, $requestBody), $fetch);
+        return $this->executeEndpoint(new \Jane\OpenApi3\Tests\Expected\Endpoint\PatchParentsByParentIdChildChildId($parentId, $childId, $requestBody), $fetch);
     }
     public static function create($httpClient = null, array $additionalPlugins = array())
     {
         if (null === $httpClient) {
             $httpClient = \Http\Discovery\Psr18ClientDiscovery::find();
             $plugins = array();
-            $uri = \Http\Discovery\Psr17FactoryDiscovery::findUrlFactory()->createUri('https://acme.localhost/v1');
+            $uri = \Http\Discovery\UriFactoryDiscovery::find()->createUri('https://acme.localhost/v1');
             $plugins[] = new \Http\Client\Common\Plugin\AddHostPlugin($uri);
             $plugins[] = new \Http\Client\Common\Plugin\AddPathPlugin($uri);
             if (count($additionalPlugins) > 0) {

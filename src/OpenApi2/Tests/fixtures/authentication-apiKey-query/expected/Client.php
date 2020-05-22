@@ -2,7 +2,7 @@
 
 namespace Jane\OpenApi2\Tests\Expected;
 
-class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
+class Client extends \Jane\OpenApiRuntime\Client\Client
 {
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
@@ -11,14 +11,14 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function getFoo(string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Jane\OpenApi2\Tests\Expected\Endpoint\GetFoo(), $fetch);
+        return $this->executeEndpoint(new \Jane\OpenApi2\Tests\Expected\Endpoint\GetFoo(), $fetch);
     }
     public static function create($httpClient = null, array $additionalPlugins = array())
     {
         if (null === $httpClient) {
             $httpClient = \Http\Discovery\Psr18ClientDiscovery::find();
             $plugins = array();
-            $uri = \Http\Discovery\Psr17FactoryDiscovery::findUrlFactory()->createUri('https://www.foo-host.com/base-path');
+            $uri = \Http\Discovery\UriFactoryDiscovery::find()->createUri('https://www.foo-host.com/base-path');
             $plugins[] = new \Http\Client\Common\Plugin\AddHostPlugin($uri);
             $plugins[] = new \Http\Client\Common\Plugin\AddPathPlugin($uri);
             if (count($additionalPlugins) > 0) {

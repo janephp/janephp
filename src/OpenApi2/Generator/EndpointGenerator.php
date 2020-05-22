@@ -19,6 +19,8 @@ use Jane\OpenApiCommon\Generator\ExceptionGenerator;
 use Jane\OpenApiCommon\Guesser\Guess\OperationGuess;
 use Jane\OpenApiCommon\Naming\OperationNamingInterface;
 use Jane\OpenApiRuntime\Client\BaseEndpoint;
+use Jane\OpenApiRuntime\Client\Endpoint;
+use Jane\OpenApiRuntime\Client\EndpointTrait;
 use PhpParser\Comment\Doc;
 use PhpParser\Node;
 use PhpParser\Node\Arg;
@@ -32,7 +34,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\SerializerInterface;
 
-abstract class EndpointGenerator
+class EndpointGenerator
 {
     use GeneratorResolveTrait;
 
@@ -73,10 +75,6 @@ abstract class EndpointGenerator
         return $this->inflector;
     }
 
-    abstract protected function getInterface(): array;
-
-    abstract protected function getTrait(): array;
-
     public function createEndpointClass(OperationGuess $operation, Context $context): array
     {
         $openApi = $context->getCurrentSchema()->getParsed();
@@ -86,13 +84,9 @@ abstract class EndpointGenerator
         [$transformBodyMethod, $outputTypes, $throwTypes] = $this->getTransformResponseBody($operation, $endpointName, $context);
         $class = new Stmt\Class_($endpointName, [
             'extends' => new Name\FullyQualified(BaseEndpoint::class),
-            'implements' => array_map(function ($interface) {
-                return new Name\FullyQualified($interface);
-            }, $this->getInterface()),
+            'implements' => [new Name\FullyQualified(Endpoint::class)],
             'stmts' => array_merge($pathProperties, $constructorMethod === null ? [] : [$constructorMethod], [
-                new Stmt\Use_(array_map(function ($traitName) {
-                    return new Stmt\UseUse(new Name\FullyQualified($traitName));
-                }, $this->getTrait())),
+                new Stmt\Use_([new Stmt\UseUse(new Name\FullyQualified(EndpointTrait::class))]),
                 $this->getGetMethod($operation),
                 $this->getGetUri($operation),
                 $this->getGetBody($operation, $context),

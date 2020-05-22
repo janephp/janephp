@@ -2,7 +2,7 @@
 
 namespace Jane\OpenApi2\Tests\Expected;
 
-class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
+class Client extends \Jane\OpenApiRuntime\Client\Client
 {
     /**
      * 
@@ -14,7 +14,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function bodyParameterTriggersContentTypeBeingSet(string $testString, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Jane\OpenApi2\Tests\Expected\Endpoint\BodyParameterTriggersContentTypeBeingSet($testString), $fetch);
+        return $this->executeEndpoint(new \Jane\OpenApi2\Tests\Expected\Endpoint\BodyParameterTriggersContentTypeBeingSet($testString), $fetch);
     }
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
@@ -23,7 +23,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function producesTriggersAcceptBeingSet(string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Jane\OpenApi2\Tests\Expected\Endpoint\ProducesTriggersAcceptBeingSet(), $fetch);
+        return $this->executeEndpoint(new \Jane\OpenApi2\Tests\Expected\Endpoint\ProducesTriggersAcceptBeingSet(), $fetch);
     }
     public static function create($httpClient = null, array $additionalPlugins = array())
     {

@@ -2,7 +2,7 @@
 
 namespace Jane\OpenApi2\Tests\Expected;
 
-class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
+class Client extends \Jane\OpenApiRuntime\Client\Client
 {
     /**
      * 
@@ -14,7 +14,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function testSimpleBodyParameter($testString, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Jane\OpenApi2\Tests\Expected\Endpoint\TestSimpleBodyParameter($testString), $fetch);
+        return $this->executeEndpoint(new \Jane\OpenApi2\Tests\Expected\Endpoint\TestSimpleBodyParameter($testString), $fetch);
     }
     /**
      * 
@@ -26,7 +26,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function testObjectBodyParameter(\Jane\OpenApi2\Tests\Expected\Model\Schema $testObject, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Jane\OpenApi2\Tests\Expected\Endpoint\TestObjectBodyParameter($testObject), $fetch);
+        return $this->executeEndpoint(new \Jane\OpenApi2\Tests\Expected\Endpoint\TestObjectBodyParameter($testObject), $fetch);
     }
     /**
      * 
@@ -38,7 +38,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function testObjectListBodyParameter(array $testObjectList, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Jane\OpenApi2\Tests\Expected\Endpoint\TestObjectListBodyParameter($testObjectList), $fetch);
+        return $this->executeEndpoint(new \Jane\OpenApi2\Tests\Expected\Endpoint\TestObjectListBodyParameter($testObjectList), $fetch);
     }
     public static function create($httpClient = null, array $additionalPlugins = array())
     {

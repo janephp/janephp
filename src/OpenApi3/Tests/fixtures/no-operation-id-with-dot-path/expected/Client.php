@@ -2,7 +2,7 @@
 
 namespace Jane\OpenApi3\Tests\Expected;
 
-class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
+class Client extends \Jane\OpenApiRuntime\Client\Client
 {
     /**
      * 
@@ -14,7 +14,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function postMessageM700(\Jane\OpenApi3\Tests\Expected\Model\MessageM700PostBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Jane\OpenApi3\Tests\Expected\Endpoint\PostMessageM700($requestBody), $fetch);
+        return $this->executeEndpoint(new \Jane\OpenApi3\Tests\Expected\Endpoint\PostMessageM700($requestBody), $fetch);
     }
     /**
      * 
@@ -26,7 +26,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function postMessageM70047(\Jane\OpenApi3\Tests\Expected\Model\MessageM70047PostBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Jane\OpenApi3\Tests\Expected\Endpoint\PostMessageM70047($requestBody), $fetch);
+        return $this->executeEndpoint(new \Jane\OpenApi3\Tests\Expected\Endpoint\PostMessageM70047($requestBody), $fetch);
     }
     public static function create($httpClient = null, array $additionalPlugins = array())
     {
