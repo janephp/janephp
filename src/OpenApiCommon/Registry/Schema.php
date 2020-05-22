@@ -66,14 +66,26 @@ class Schema extends BaseSchema implements SchemaInterface
     public function addRelation(string $model, string $needs): void
     {
         parent::addRelation($model, $needs);
+
+        if (\in_array($model, $this->neededModels)) {
+            return;
+        }
+
         $this->neededModels[] = $model;
+    }
+
+    public function relationExists($model): bool
+    {
+        return parent::relationExists($model) && \in_array($model, $this->neededModels);
     }
 
     public function needsRelation(string $reference): bool
     {
+        $passed = [];
         foreach ($this->neededModels as $neededModel) {
             if (\array_key_exists($neededModel, $this->relations) && \count($this->relations[$neededModel]) > 0) {
-                if ($this->reccNeedsRelation($this->relations[$neededModel], $reference)) {
+                $passed[] = $neededModel;
+                if ($this->reccNeedsRelation($this->relations[$neededModel], $reference, $passed)) {
                     return true;
                 }
             }
@@ -82,7 +94,7 @@ class Schema extends BaseSchema implements SchemaInterface
         return false;
     }
 
-    private function reccNeedsRelation(array $neededModels, string $reference): bool
+    private function reccNeedsRelation(array $neededModels, string $reference, array &$passed): bool
     {
         if (\count($neededModels) > 0) {
             if (\in_array($reference, $neededModels)) {
@@ -90,8 +102,13 @@ class Schema extends BaseSchema implements SchemaInterface
             }
 
             foreach ($neededModels as $neededModel) {
+                if (\in_array($neededModel, $passed)) {
+                    return false;
+                }
+
                 if (\array_key_exists($neededModel, $this->relations)) {
-                    if ($this->reccNeedsRelation($this->relations[$neededModel], $reference)) {
+                    $passed[] = $neededModel;
+                    if ($this->reccNeedsRelation($this->relations[$neededModel], $reference, $passed)) {
                         return true;
                     }
                 }
