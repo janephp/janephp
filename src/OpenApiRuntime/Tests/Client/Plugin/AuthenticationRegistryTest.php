@@ -2,9 +2,7 @@
 
 namespace Jane\OpenApiRuntime\Tests\Client\Plugin;
 
-use Http\Client\Common\Plugin;
 use Http\Promise\FulfilledPromise;
-use Http\Promise\Promise;
 use Jane\OpenApiRuntime\Client\AuthenticationPlugin;
 use Jane\OpenApiRuntime\Client\Plugin\AuthenticationRegistry;
 use PHPUnit\Framework\MockObject\Stub\ReturnCallback;
@@ -19,12 +17,12 @@ class AuthenticationRegistryTest extends TestCase
     public function setUp(): void
     {
         $plugins = [];
-        $plugins[] = new class() implements Plugin, AuthenticationPlugin {
-            public function handleRequest(RequestInterface $request, callable $next, callable $first): Promise
+        $plugins[] = new class() implements AuthenticationPlugin {
+            public function authentication(RequestInterface $request): RequestInterface
             {
                 $request->withHeader('A', 'A');
 
-                return $next($request);
+                return $request;
             }
 
             public function getScope(): string
@@ -33,12 +31,12 @@ class AuthenticationRegistryTest extends TestCase
             }
         };
 
-        $plugins[] = new class() implements Plugin, AuthenticationPlugin {
-            public function handleRequest(RequestInterface $request, callable $next, callable $first): Promise
+        $plugins[] = new class() implements AuthenticationPlugin {
+            public function authentication(RequestInterface $request): RequestInterface
             {
                 $request->withHeader('B', 'B');
 
-                return $next($request);
+                return $request;
             }
 
             public function getScope(): string
@@ -47,12 +45,12 @@ class AuthenticationRegistryTest extends TestCase
             }
         };
 
-        $plugins[] = new class() implements Plugin, AuthenticationPlugin {
-            public function handleRequest(RequestInterface $request, callable $next, callable $first): Promise
+        $plugins[] = new class() implements AuthenticationPlugin {
+            public function authentication(RequestInterface $request): RequestInterface
             {
                 $request->withHeader('C', 'C');
 
-                return $next($request);
+                return $request;
             }
 
             public function getScope(): string

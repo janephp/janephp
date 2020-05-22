@@ -2,17 +2,17 @@
 
 namespace Jane\OpenApi2\Tests\Expected\Authentication;
 
-class AccountAuthAuthentication implements \Http\Client\Common\Plugin, \Jane\OpenApiRuntime\Client\AuthenticationPlugin
+class AccountAuthAuthentication implements \Jane\OpenApiRuntime\Client\AuthenticationPlugin
 {
     private $apiKey;
     public function __construct(string $apiKey)
     {
         $this->{'apiKey'} = $apiKey;
     }
-    public function handleRequest(\Psr\Http\Message\RequestInterface $request, callable $next, callable $first) : \Http\Promise\Promise
+    public function authentication(\Psr\Http\Message\RequestInterface $request) : \Psr\Http\Message\RequestInterface
     {
         $request = $request->withHeader('Harvest-Account-Id', $this->{'apiKey'});
-        return $next($request);
+        return $request;
     }
     public function getScope() : string
     {

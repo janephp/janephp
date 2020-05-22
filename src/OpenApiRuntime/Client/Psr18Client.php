@@ -63,8 +63,12 @@ abstract class Psr18Client extends Client
             $request = $request->withHeader($name, $value);
         }
 
-        foreach ($endpoint->getAuthenticationScopes() as $scope) {
-            $request = $request->withHeader(AuthenticationRegistry::SCOPES_HEADER, $scope);
+        if (\count($endpoint->getAuthenticationScopes()) > 0) {
+            $scopes = [];
+            foreach ($endpoint->getAuthenticationScopes() as $scope) {
+                $scopes[] = $scope;
+            }
+            $request = $request->withHeader(AuthenticationRegistry::SCOPES_HEADER, $scopes);
         }
 
         return $endpoint->parsePSR7Response($this->httpClient->sendRequest($request), $this->serializer, $fetch);
