@@ -19,7 +19,6 @@ class NormalizerGenerator implements GeneratorInterface
     use DenormalizerGenerator;
     use NormalizerGeneratorTrait;
     use JaneObjectNormalizerGenerator;
-    use PropertyCheckTrait;
 
     /**
      * @var Naming The naming service
