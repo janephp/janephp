@@ -6,7 +6,7 @@ use Jane\JsonSchema\Guesser\ChainGuesserAwareInterface;
 use Jane\JsonSchema\Guesser\ChainGuesserAwareTrait;
 use Jane\JsonSchema\Guesser\ClassGuesserInterface;
 use Jane\JsonSchema\Guesser\GuesserInterface;
-use Jane\JsonSchema\Model\JsonSchema;
+use Jane\JsonSchema\JsonSchema\Model\JsonSchema;
 use Jane\JsonSchema\Registry\Registry;
 
 class DefinitionGuesser implements ChainGuesserAwareInterface, GuesserInterface, ClassGuesserInterface

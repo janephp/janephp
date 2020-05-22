@@ -3,7 +3,7 @@
 namespace Jane\JsonSchema\Guesser;
 
 use Jane\JsonSchema\Guesser\Guess\Type;
-use Jane\JsonSchema\Model\JsonSchema;
+use Jane\JsonSchema\JsonSchema\Model\JsonSchema;
 use Jane\JsonSchema\Registry\Registry;
 use Jane\JsonSchemaRuntime\Reference;
 use Symfony\Component\Serializer\SerializerInterface;

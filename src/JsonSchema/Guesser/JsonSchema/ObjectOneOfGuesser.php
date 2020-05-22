@@ -10,7 +10,7 @@ use Jane\JsonSchema\Guesser\Guess\Type;
 use Jane\JsonSchema\Guesser\GuesserInterface;
 use Jane\JsonSchema\Guesser\GuesserResolverTrait;
 use Jane\JsonSchema\Guesser\TypeGuesserInterface;
-use Jane\JsonSchema\Model\JsonSchema;
+use Jane\JsonSchema\JsonSchema\Model\JsonSchema;
 use Jane\JsonSchema\Registry\Registry;
 use Jane\JsonSchema\Tools\JsonSchemaMerger;
 use Jane\JsonSchemaRuntime\Reference;
@@ -21,9 +21,7 @@ class ObjectOneOfGuesser implements GuesserInterface, TypeGuesserInterface, Clas
     use ChainGuesserAwareTrait;
     use GuesserResolverTrait;
 
-    /**
-     * @var \Jane\JsonSchema\JsonSchemaMerger
-     */
+    /** @var JsonSchemaMerger */
     private $jsonSchemaMerger;
 
     public function __construct(JsonSchemaMerger $jsonSchemaMerger, SerializerInterface $serializer)
