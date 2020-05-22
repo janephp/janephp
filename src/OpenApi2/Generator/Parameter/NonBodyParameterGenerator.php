@@ -2,7 +2,6 @@
 
 namespace Jane\OpenApi2\Generator\Parameter;
 
-use Doctrine\Common\Inflector\Inflector;
 use Jane\JsonSchema\Generator\Context\Context;
 use Jane\OpenApi2\JsonSchema\Model\FormDataParameterSubSchema;
 use Jane\OpenApi2\JsonSchema\Model\HeaderParameterSubSchema;
@@ -23,7 +22,7 @@ class NonBodyParameterGenerator extends ParameterGenerator
      */
     public function generateMethodParameter($parameter, Context $context, string $reference): Node\Param
     {
-        $name = Inflector::camelize($parameter->getName());
+        $name = $this->getInflector()->camelize($parameter->getName());
         $methodParameter = new Node\Param(new Node\Expr\Variable($name));
 
         if (!$parameter->getRequired() || null !== $parameter->getDefault()) {
@@ -96,7 +95,7 @@ class NonBodyParameterGenerator extends ParameterGenerator
     {
         $type = implode('|', $this->convertParameterType($parameter->getType()));
 
-        return sprintf(' * @param %s $%s %s', $type, Inflector::camelize($parameter->getName()), $parameter->getDescription() ?: '');
+        return sprintf(' * @param %s $%s %s', $type, $this->getInflector()->camelize($parameter->getName()), $parameter->getDescription() ?: '');
     }
 
     /**

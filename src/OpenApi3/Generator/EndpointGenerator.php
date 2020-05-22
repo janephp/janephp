@@ -2,7 +2,8 @@
 
 namespace Jane\OpenApi3\Generator;
 
-use Doctrine\Common\Inflector\Inflector;
+use Doctrine\Inflector\Inflector;
+use Doctrine\Inflector\InflectorFactory;
 use Jane\JsonSchema\Generator\Context\Context;
 use Jane\JsonSchema\Generator\File;
 use Jane\JsonSchemaRuntime\Reference;
@@ -47,6 +48,8 @@ abstract class EndpointGenerator
     /** @var RequestBodyGenerator */
     private $requestBodyGenerator;
 
+    private $inflector = null;
+
     public function __construct(
         OperationNamingInterface $operationNaming,
         NonBodyParameterGenerator $nonBodyParameterGenerator,
@@ -59,6 +62,15 @@ abstract class EndpointGenerator
         $this->denormalizer = $denormalizer;
         $this->exceptionGenerator = $exceptionGenerator;
         $this->requestBodyGenerator = $requestBodyGenerator;
+    }
+
+    protected function getInflector(): Inflector
+    {
+        if (null === $this->inflector) {
+            $this->inflector = InflectorFactory::create()->build();
+        }
+
+        return $this->inflector;
     }
 
     abstract protected function getInterface(): array;
@@ -147,7 +159,7 @@ abstract class EndpointGenerator
             if ($parameter instanceof Parameter && self::IN_PATH === $parameter->getIn()) {
                 $pathParams[] = $this->nonBodyParameterGenerator->generateMethodParameter($parameter, $context, $operation->getReference() . '/parameters/' . $key);
                 $pathParamsDoc[] = $this->nonBodyParameterGenerator->generateMethodDocParameter($parameter, $context, $operation->getReference() . '/parameters/' . $key);
-                $methodStatements[] = new Stmt\Expression(new Expr\Assign(new Expr\PropertyFetch(new Expr\Variable('this'), $parameter->getName()), new Expr\Variable(Inflector::camelize($parameter->getName()))));
+                $methodStatements[] = new Stmt\Expression(new Expr\Assign(new Expr\PropertyFetch(new Expr\Variable('this'), $parameter->getName()), new Expr\Variable($this->getInflector()->camelize($parameter->getName()))));
                 $pathProperties[] = new Stmt\Property(Stmt\Class_::MODIFIER_PROTECTED, [
                     new Stmt\PropertyProperty(new Name($parameter->getName())),
                 ]);

@@ -2,7 +2,6 @@
 
 namespace Jane\OpenApi3\Generator\Parameter;
 
-use Doctrine\Common\Inflector\Inflector;
 use Jane\JsonSchema\Generator\Context\Context;
 use Jane\JsonSchemaRuntime\Reference;
 use Jane\OpenApi3\Generator\GeneratorResolveTrait;
@@ -34,7 +33,7 @@ class NonBodyParameterGenerator extends ParameterGenerator
      */
     public function generateMethodParameter($parameter, Context $context, string $reference): ?Node\Param
     {
-        $name = Inflector::camelize($parameter->getName());
+        $name = $this->getInflector()->camelize($parameter->getName());
         $methodParameter = new Node\Param(new Expr\Variable($name));
 
         if (!$parameter->getSchema()) {
@@ -124,7 +123,7 @@ class NonBodyParameterGenerator extends ParameterGenerator
             $type = implode('|', $this->convertParameterType($parameter->getSchema()->getType(), $parameter->getSchema()->getAdditionalProperties()));
         }
 
-        return sprintf(' * @param %s $%s %s', $type, Inflector::camelize($parameter->getName()), $parameter->getDescription() ?: '');
+        return sprintf(' * @param %s $%s %s', $type, $this->getInflector()->camelize($parameter->getName()), $parameter->getDescription() ?: '');
     }
 
     public function generateOptionDocParameter(Parameter $parameter): string

@@ -2,7 +2,6 @@
 
 namespace Jane\OpenApi2\Generator\Parameter;
 
-use Doctrine\Common\Inflector\Inflector;
 use Jane\JsonSchema\Generator\Context\Context;
 use Jane\JsonSchemaRuntime\Reference;
 use Jane\OpenApi2\Generator\GeneratorResolveTrait;
@@ -32,7 +31,7 @@ class BodyParameterGenerator extends ParameterGenerator
      */
     public function generateMethodParameter($parameter, Context $context, string $reference): ?Node\Param
     {
-        $name = Inflector::camelize($parameter->getName());
+        $name = $this->getInflector()->camelize($parameter->getName());
 
         list($class, $array) = $this->getClass($parameter, $context, $reference);
         $paramType = \count($class) === 1 ? $class[0] : null;
@@ -53,7 +52,7 @@ class BodyParameterGenerator extends ParameterGenerator
     {
         list($class, $array) = $this->getClass($parameter, $context, $reference);
 
-        return sprintf(' * @param %s $%s %s', implode('|', $class), Inflector::camelize($parameter->getName()), $parameter->getDescription() ?: '');
+        return sprintf(' * @param %s $%s %s', implode('|', $class), $this->getInflector()->camelize($parameter->getName()), $parameter->getDescription() ?: '');
     }
 
     protected function getClass(BodyParameter $parameter, Context $context, string $reference): array
