@@ -14,9 +14,7 @@ class Configuration implements ConfigurationInterface
 
         $rootNode
             ->children()
-                ->booleanNode('private')->defaultFalse()->end()
-                ->booleanNode('autoregister')->defaultFalse()->end()
-                ->booleanNode('normalizer')->defaultTrue()->end()
+                ->booleanNode('normalizer')->defaultFalse()->end()
                 ->scalarNode('cache_dir')->defaultValue('%kernel.cache_dir%/automapper')->end()
                 ->arrayNode('mappings')
                     ->prototype('array')

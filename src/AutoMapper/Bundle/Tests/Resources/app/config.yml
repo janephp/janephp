@@ -4,16 +4,12 @@ framework:
     test: ~
 
 jane_auto_mapper:
-    private: true
-    autoregister: true
+    normalizer: true
     mappings:
         -
-            source: Jane\AutoMapper\Tests\Domain\User
-            target: Jane\AutoMapper\Tests\Domain\UserDTO
+            source: Jane\AutoMapper\Bundle\Tests\Fixtures\User
+            target: Jane\AutoMapper\Tests\Fixtures\UserDTO
             pass: DummyApp\UserConfigurationPass
-        -
-            source: array
-            target: Jane\AutoMapper\Tests\Domain\UserDTO
 
 services:
     DummyApp\UserConfigurationPass: ~

@@ -2,9 +2,9 @@
 
 namespace Jane\AutoMapper\Bundle\Configuration;
 
-use Jane\AutoMapper\MapperConfigurationInterface;
+use Jane\AutoMapper\MapperGeneratorMetadataInterface;
 
 interface ConfigurationPassInterface
 {
-    public function process(MapperConfigurationInterface $configuration);
+    public function process(MapperGeneratorMetadataInterface $metadata): void;
 }

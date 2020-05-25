@@ -5,10 +5,9 @@ namespace Jane\AutoMapper\Bundle\DependencyInjection;
 use Jane\AutoMapper\AutoMapperNormalizer;
 use Jane\AutoMapper\Bundle\AutoMapper;
 use Jane\AutoMapper\Bundle\Configuration\RestrictConfigurationPass;
-use Jane\AutoMapper\Extractor\PrivateReflectionExtractor;
-use Jane\AutoMapper\MapperConfiguration;
-use Jane\AutoMapper\MapperConfigurationFactory;
-use Jane\AutoMapper\MapperConfigurationInterface;
+use Jane\AutoMapper\MapperGeneratorMetadataFactory;
+use Jane\AutoMapper\MapperGeneratorMetadataInterface;
+use Jane\AutoMapper\MapperMetadata;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
@@ -25,28 +24,13 @@ class JaneAutoMapperExtension extends Extension
         $configuration = $this->getConfiguration($configs, $container);
         $config = $this->processConfiguration($configuration, $configs);
 
-        $container->registerForAutoconfiguration(MapperConfigurationInterface::class)->addTag('jane_auto_mapper.mapper_configuration');
+        $container->registerForAutoconfiguration(MapperGeneratorMetadataInterface::class)->addTag('jane_auto_mapper.mapper_metadata');
 
         $loader = new XmlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
         $loader->load('services.xml');
 
         foreach ($config['mappings'] as $mapping) {
             $this->createMapperConfigurationDefinition($container, $mapping);
-        }
-
-        if ($config['private']) {
-            $container
-                ->getDefinition(PrivateReflectionExtractor::class)
-                ->addTag('property_info.list_extractor', ['priority' => -500])
-                ->addTag('property_info.access_extractor', ['priority' => -1500])
-            ;
-        }
-
-        if ($config['autoregister']) {
-            $container
-                ->getDefinition(AutoMapper::class)
-                ->setArgument(1, new Reference(MapperConfigurationFactory::class))
-            ;
         }
 
         if ($config['normalizer']) {
@@ -62,14 +46,14 @@ class JaneAutoMapperExtension extends Extension
     private function createMapperConfigurationDefinition(ContainerBuilder $container, $config)
     {
         $serviceName = 'Mapping_' . $config['source'] . '_' . $config['target'];
-        $definition = $container->register($serviceName, MapperConfiguration::class);
-        $definition->setFactory([new Reference(MapperConfigurationFactory::class), 'create']);
+        $definition = $container->register($serviceName, MapperMetadata::class);
+        $definition->setFactory([new Reference(MapperGeneratorMetadataFactory::class), 'create']);
         $definition->addArgument(new Reference(AutoMapper::class));
         $definition->addArgument($config['source']);
         $definition->addArgument($config['target']);
-        $definition->addTag('jane_auto_mapper.mapper_configuration');
+        $definition->addTag('jane_auto_mapper.mapper_metadata');
 
-        if (isset($config['pass'])) {
+        if (\array_key_exists('pass', $config)) {
             $restrictConfigurationPass = $container->register($serviceName . '_RestrictPass', RestrictConfigurationPass::class);
             $restrictConfigurationPass->addArgument($config['source']);
             $restrictConfigurationPass->addArgument($config['target']);

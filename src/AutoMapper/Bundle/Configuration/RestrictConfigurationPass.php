@@ -2,7 +2,7 @@
 
 namespace Jane\AutoMapper\Bundle\Configuration;
 
-use Jane\AutoMapper\MapperConfigurationInterface;
+use Jane\AutoMapper\MapperGeneratorMetadataInterface;
 
 class RestrictConfigurationPass implements ConfigurationPassInterface
 {
@@ -19,12 +19,12 @@ class RestrictConfigurationPass implements ConfigurationPassInterface
         $this->configurationPass = $configurationPass;
     }
 
-    public function process(MapperConfigurationInterface $configuration)
+    public function process(MapperGeneratorMetadataInterface $metadata): void
     {
-        if ($configuration->getSource() !== $this->source || $configuration->getTarget() !== $this->target) {
+        if ($metadata->getSource() !== $this->source || $metadata->getTarget() !== $this->target) {
             return;
         }
 
-        $this->configurationPass->process($configuration);
+        $this->configurationPass->process($metadata);
     }
 }
