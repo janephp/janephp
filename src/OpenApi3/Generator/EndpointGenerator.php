@@ -2,12 +2,12 @@
 
 namespace Jane\OpenApi3\Generator;
 
-use Doctrine\Inflector\Inflector;
-use Doctrine\Inflector\InflectorFactory;
 use Jane\JsonSchema\Generator\Context\Context;
 use Jane\JsonSchema\Generator\File;
+use Jane\JsonSchema\Tools\InflectorTrait;
 use Jane\JsonSchemaRuntime\Reference;
 use Jane\OpenApi3\Generator\Parameter\NonBodyParameterGenerator;
+use Jane\OpenApi3\Guesser\GuessClass;
 use Jane\OpenApi3\JsonSchema\Model\OpenApi;
 use Jane\OpenApi3\JsonSchema\Model\Parameter;
 use Jane\OpenApi3\JsonSchema\Model\RequestBody;
@@ -32,7 +32,7 @@ use Symfony\Component\Serializer\SerializerInterface;
 
 class EndpointGenerator
 {
-    use GeneratorResolveTrait;
+    use InflectorTrait;
 
     private const IN_PATH = 'path';
     private const IN_QUERY = 'query';
@@ -50,7 +50,8 @@ class EndpointGenerator
     /** @var RequestBodyGenerator */
     private $requestBodyGenerator;
 
-    private $inflector = null;
+    /** @var GuessClass */
+    private $guessClass;
 
     public function __construct(
         OperationNamingInterface $operationNaming,
@@ -61,18 +62,9 @@ class EndpointGenerator
     ) {
         $this->operationNaming = $operationNaming;
         $this->nonBodyParameterGenerator = $nonBodyParameterGenerator;
-        $this->denormalizer = $denormalizer;
         $this->exceptionGenerator = $exceptionGenerator;
         $this->requestBodyGenerator = $requestBodyGenerator;
-    }
-
-    protected function getInflector(): Inflector
-    {
-        if (null === $this->inflector) {
-            $this->inflector = InflectorFactory::create()->build();
-        }
-
-        return $this->inflector;
+        $this->guessClass = new GuessClass(Schema::class, $denormalizer);
     }
 
     public function createEndpointClass(OperationGuess $operation, Context $context): array
@@ -142,11 +134,11 @@ class EndpointGenerator
 
         foreach ($operation->getParameters() as $key => $parameter) {
             if ($parameter instanceof Reference) {
-                $parameter = $this->resolveParameter($parameter);
+                $parameter = $this->guessClass->resolveParameter($parameter);
             }
 
             if (!$parameter instanceof \stdClass && $parameter->getSchema() instanceof Reference) {
-                [$_, $schema] = $this->resolve($parameter->getSchema(), Schema::class);
+                [$_, $schema] = $this->guessClass->resolve($parameter->getSchema(), Schema::class);
                 $parameter->setSchema($schema);
             }
 
@@ -232,7 +224,7 @@ EOD
 
         foreach ($operation->getParameters() as $parameter) {
             if ($parameter instanceof Reference) {
-                $parameter = $this->resolveParameter($parameter);
+                $parameter = $this->guessClass->resolveParameter($parameter);
             }
 
             if ($parameter instanceof Parameter && self::IN_PATH === $parameter->getIn()) {
@@ -276,7 +268,7 @@ EOD
         if ($operation->getOperation()->getResponses()) {
             foreach ($operation->getOperation()->getResponses() as $response) {
                 if ($response instanceof Reference) {
-                    [$_, $response] = $this->resolve($response, Response::class);
+                    [$_, $response] = $this->guessClass->resolve($response, Response::class);
                 }
 
                 /** @var Response $response */
@@ -291,7 +283,7 @@ EOD
                 $response = $operation->getOperation()->getResponses()->getDefault();
 
                 if ($response instanceof Reference) {
-                    [$_, $response] = $this->resolve($response, Response::class);
+                    [$_, $response] = $this->guessClass->resolve($response, Response::class);
                 }
 
                 /** @var Response $response */
@@ -336,7 +328,7 @@ EOD
 
         foreach ($operation->getParameters() as $parameter) {
             if ($parameter instanceof Reference) {
-                $parameter = $this->resolveParameter($parameter);
+                $parameter = $this->guessClass->resolveParameter($parameter);
             }
 
             if ($parameter instanceof Parameter && $parameterIn === $parameter->getIn()) {
@@ -371,7 +363,7 @@ EOD
         $requestBody = $operation->getOperation()->getRequestBody();
 
         if ($requestBody instanceof Reference) {
-            [$_, $requestBody] = $this->resolve($requestBody, RequestBody::class);
+            [$_, $requestBody] = $this->guessClass->resolve($requestBody, RequestBody::class);
         }
 
         return new Stmt\ClassMethod('getBody', [
@@ -396,7 +388,7 @@ EOD
                 $reference = $operation->getReference() . '/responses/' . $status;
 
                 if ($response instanceof Reference) {
-                    [$reference, $response] = $this->resolve($response, Response::class);
+                    [$reference, $response] = $this->guessClass->resolve($response, Response::class);
                 }
 
                 /* @var Response $response */
@@ -419,7 +411,7 @@ EOD
                 $reference = $operation->getReference() . '/responses/default';
 
                 if ($response instanceof Reference) {
-                    [$reference, $response] = $this->resolve($response, Response::class);
+                    [$reference, $response] = $this->guessClass->resolve($response, Response::class);
                 }
 
                 /* @var Response $response */
@@ -467,30 +459,6 @@ EOD
                 . ' */'
             ),
         ], ]), $outputTypes, $throwTypes];
-    }
-
-    private function guessClass($schema, string $reference, Context $context)
-    {
-        $jsonReference = $reference;
-        $array = false;
-
-        if ($schema instanceof Reference) {
-            [$jsonReference, $schema] = $this->resolve($schema, Schema::class);
-        }
-
-        if ($schema instanceof Schema && 'array' === $schema->getType()) {
-            $array = true;
-            $jsonReference .= '/items';
-            $items = $schema->getItems();
-
-            if ($items instanceof Reference) {
-                [$jsonReference, $_] = $this->resolve($items, Schema::class);
-            }
-        }
-
-        $classGuess = $context->getRegistry()->getClass($jsonReference);
-
-        return [$classGuess, $array, $schema];
     }
 
     private function createResponseDenormalizationStatement(string $name, string $status, Response $response, Context $context, string $reference, string $description): array
@@ -595,7 +563,7 @@ EOD
 
     private function createContentDenormalizationStatement(string $name, string $status, $schema, Context $context, string $reference, string $description): array
     {
-        [$classGuess, $array, $schema] = $this->guessClass($schema, $reference, $context);
+        $classGuess = $this->guessClass->guessClass($schema, $reference, $context->getRegistry(), $array);
         $returnType = 'null';
         $throwType = null;
         $serializeStmt = new Expr\ConstFetch(new Name('null'));

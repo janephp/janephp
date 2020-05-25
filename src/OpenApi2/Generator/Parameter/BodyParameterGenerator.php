@@ -4,7 +4,7 @@ namespace Jane\OpenApi2\Generator\Parameter;
 
 use Jane\JsonSchema\Generator\Context\Context;
 use Jane\JsonSchemaRuntime\Reference;
-use Jane\OpenApi2\Generator\GeneratorResolveTrait;
+use Jane\OpenApi2\Guesser\GuessClass;
 use Jane\OpenApi2\JsonSchema\Model\BodyParameter;
 use Jane\OpenApi2\JsonSchema\Model\Schema;
 use Jane\OpenApiCommon\Generator\Parameter\ParameterGenerator;
@@ -15,13 +15,14 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 
 class BodyParameterGenerator extends ParameterGenerator
 {
-    use GeneratorResolveTrait;
+    /** @var GuessClass */
+    private $guessClass;
 
     public function __construct(Parser $parser, DenormalizerInterface $denormalizer)
     {
         parent::__construct($parser);
 
-        $this->denormalizer = $denormalizer;
+        $this->guessClass = new GuessClass(Schema::class, $denormalizer);
     }
 
     /**
@@ -63,11 +64,11 @@ class BodyParameterGenerator extends ParameterGenerator
         $schema = $parameter->getSchema();
 
         if ($schema instanceof Reference) {
-            list($jsonReference, $resolvedSchema) = $this->resolve($schema, Schema::class);
+            list($jsonReference, $resolvedSchema) = $this->guessClass->resolve($schema, Schema::class);
         }
 
         if ($schema instanceof Schema && 'array' === $schema->getType() && $schema->getItems() instanceof Reference) {
-            list($jsonReference, $resolvedSchema) = $this->resolve($schema->getItems(), Schema::class);
+            list($jsonReference, $resolvedSchema) = $this->guessClass->resolve($schema->getItems(), Schema::class);
             $array = true;
         }
 

@@ -2,33 +2,23 @@
 
 namespace Jane\OpenApiCommon\Generator\Parameter;
 
-use Doctrine\Inflector\Inflector;
-use Doctrine\Inflector\InflectorFactory;
 use Jane\JsonSchema\Generator\Context\Context;
+use Jane\JsonSchema\Tools\InflectorTrait;
 use PhpParser\Node;
 use PhpParser\Parser;
 
 abstract class ParameterGenerator
 {
+    use InflectorTrait;
+
     /**
      * @var Parser
      */
     protected $parser;
 
-    private $inflector = null;
-
     public function __construct(Parser $parser)
     {
         $this->parser = $parser;
-    }
-
-    protected function getInflector(): Inflector
-    {
-        if (null === $this->inflector) {
-            $this->inflector = InflectorFactory::create()->build();
-        }
-
-        return $this->inflector;
     }
 
     /**

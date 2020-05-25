@@ -20,19 +20,17 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 class WhitelistedSchema implements WhitelistFetchInterface
 {
     private $schema;
-    private $denormalizer;
     private $naming;
     private $guessClass;
 
     public function __construct(Schema $schema, DenormalizerInterface $denormalizer)
     {
         $this->schema = $schema;
-        $this->denormalizer = $denormalizer;
         $this->naming = new ChainOperationNaming([
             new OperationIdNaming(),
             new OperationUrlNaming(),
         ]);
-        $this->guessClass = new GuessClass(SchemaModel::class);
+        $this->guessClass = new GuessClass(SchemaModel::class, $denormalizer);
     }
 
     public function addOperationRelations(OperationGuess $operationGuess, Registry $registry): void
@@ -68,7 +66,8 @@ class WhitelistedSchema implements WhitelistFetchInterface
                 }
 
                 if (null === $response->getContent()) {
-                    $classGuess = $this->guessClass->guessClass(null, $operationGuess->getReference(), $registry, $this->denormalizer);
+                    $schema = null;
+                    $classGuess = $this->guessClass->guessClass($schema, $operationGuess->getReference(), $registry);
                     if (null !== $classGuess) {
                         $this->schema->addRelation($baseOperation, $classGuess->getName());
                     }
@@ -79,7 +78,8 @@ class WhitelistedSchema implements WhitelistFetchInterface
                     foreach ($response->getContent() as $contentType => $content) {
                         if ('application/json' === $contentType) {
                             $contentReference = $operationGuess->getReference() . '/content/' . $contentType . '/schema';
-                            $classGuess = $this->guessClass->guessClass($content->getSchema(), $contentReference, $registry, $this->denormalizer);
+                            $schema = $content->getSchema();
+                            $classGuess = $this->guessClass->guessClass($schema, $contentReference, $registry);
                             if (null !== $classGuess) {
                                 $this->schema->addRelation($baseOperation, $classGuess->getName());
                             }
@@ -95,7 +95,7 @@ class WhitelistedSchema implements WhitelistFetchInterface
             foreach ($parameters as $key => $parameter) {
                 if ($parameter instanceof Parameter && 'body' === $parameter->getIn()) {
                     $reference = $operationGuess->getReference() . '/parameters/' . $key;
-                    $classGuess = $this->guessClass->guessClass($parameter->getSchema(), $reference, $registry, $this->denormalizer);
+                    $classGuess = $this->guessClass->guessClass($parameter->getSchema(), $reference, $registry);
                     if (null !== $classGuess) {
                         $this->schema->addRelation($baseOperation, $classGuess->getName());
                     }

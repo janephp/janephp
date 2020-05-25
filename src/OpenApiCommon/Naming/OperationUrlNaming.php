@@ -2,22 +2,12 @@
 
 namespace Jane\OpenApiCommon\Naming;
 
-use Doctrine\Inflector\Inflector;
-use Doctrine\Inflector\InflectorFactory;
+use Jane\JsonSchema\Tools\InflectorTrait;
 use Jane\OpenApiCommon\Guesser\Guess\OperationGuess;
 
 abstract class OperationUrlNaming implements OperationNamingInterface
 {
-    private $inflector = null;
-
-    protected function getInflector(): Inflector
-    {
-        if (null === $this->inflector) {
-            $this->inflector = InflectorFactory::create()->build();
-        }
-
-        return $this->inflector;
-    }
+    use InflectorTrait;
 
     public function getFunctionName(OperationGuess $operation): string
     {

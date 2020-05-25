@@ -4,7 +4,7 @@ namespace Jane\OpenApi3\Generator\Parameter;
 
 use Jane\JsonSchema\Generator\Context\Context;
 use Jane\JsonSchemaRuntime\Reference;
-use Jane\OpenApi3\Generator\GeneratorResolveTrait;
+use Jane\OpenApi3\Guesser\GuessClass;
 use Jane\OpenApi3\JsonSchema\Model\Parameter;
 use Jane\OpenApi3\JsonSchema\Model\Schema;
 use Jane\OpenApiCommon\Generator\Parameter\ParameterGenerator;
@@ -18,12 +18,13 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 
 class NonBodyParameterGenerator extends ParameterGenerator
 {
-    use GeneratorResolveTrait;
+    /** @var GuessClass */
+    private $guessClass;
 
     public function __construct(DenormalizerInterface $denormalizer, Parser $parser)
     {
         parent::__construct($parser);
-        $this->denormalizer = $denormalizer;
+        $this->guessClass = new GuessClass(Schema::class, $denormalizer);
     }
 
     /**
@@ -72,7 +73,7 @@ class NonBodyParameterGenerator extends ParameterGenerator
             }
 
             if ($schema instanceof Reference) {
-                [$_, $schema] = $this->resolve($schema, Schema::class);
+                [$_, $schema] = $this->guessClass->resolve($schema, Schema::class);
             }
 
             if (null !== $schema && $schema->getType()) {

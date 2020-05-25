@@ -18,7 +18,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Client
         if (null === $httpClient) {
             $httpClient = \Http\Discovery\Psr18ClientDiscovery::find();
             $plugins = array();
-            $uri = \Http\Discovery\UriFactoryDiscovery::find()->createUri('http://www.foo-host.com:8024');
+            $uri = \Http\Discovery\Psr17FactoryDiscovery::findUrlFactory()->createUri('http://www.foo-host.com:8024');
             $plugins[] = new \Http\Client\Common\Plugin\AddHostPlugin($uri);
             if (count($additionalPlugins) > 0) {
                 $plugins = array_merge($plugins, $additionalPlugins);

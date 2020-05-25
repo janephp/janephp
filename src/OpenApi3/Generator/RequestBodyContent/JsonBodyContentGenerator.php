@@ -17,7 +17,8 @@ class JsonBodyContentGenerator extends AbstractBodyContentGenerator
      */
     public function getSerializeStatements(MediaType $content, string $contentType, string $reference, Context $context): array
     {
-        [$classGuess, $array, $schema] = $this->guessClass($content->getSchema(), $reference . '/schema', $context);
+        $schema = $content->getSchema();
+        $classGuess = $this->guessClass->guessClass($schema, $reference . '/schema', $context->getRegistry(), $array);
 
         if (null === $classGuess) {
             return [new Stmt\Return_(new Expr\Array_([
