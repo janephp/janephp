@@ -4,6 +4,7 @@ namespace Jane\OpenApi3;
 
 use Jane\OpenApi3\JsonSchema\Model\MediaType;
 use Jane\OpenApi3\JsonSchema\Model\Parameter;
+use Jane\OpenApi3\JsonSchema\Model\RequestBody;
 use Jane\OpenApi3\JsonSchema\Model\Response;
 use Jane\OpenApi3\Naming\OperationUrlNaming;
 use Jane\OpenApiCommon\Contracts\WhitelistFetchInterface;
@@ -39,6 +40,23 @@ class WhitelistedSchema implements WhitelistFetchInterface
         $baseOperation = $this->naming->getEndpointName($operationGuess);
         if ($this->schema->relationExists($baseOperation)) {
             return;
+        }
+
+        /** @var RequestBody|null $requestBody */
+        $requestBody = $operationGuess->getOperation()->getRequestBody();
+        if (null !== $requestBody) {
+            if (null !== $requestBody->getContent() && is_iterable($requestBody->getContent())) {
+                /** @var MediaType $content */
+                foreach ($requestBody->getContent() as $contentType => $content) {
+                    if (\in_array($contentType, ['application/json', 'application/x-www-form-urlencoded'], true)) {
+                        $contentReference = $operationGuess->getReference() . '/content/' . $contentType . '/schema';
+                        $classGuess = $this->guessClass->guessClass($content->getSchema(), $contentReference, $registry, $this->denormalizer);
+                        if (null !== $classGuess) {
+                            $this->schema->addRelation($baseOperation, $classGuess->getName());
+                        }
+                    }
+                }
+            }
         }
 
         /** @var Response[]|null $responses */
