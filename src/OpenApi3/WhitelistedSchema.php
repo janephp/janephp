@@ -4,6 +4,7 @@ namespace Jane\OpenApi3;
 
 use Jane\OpenApi3\JsonSchema\Model\MediaType;
 use Jane\OpenApi3\JsonSchema\Model\Parameter;
+use Jane\OpenApi3\JsonSchema\Model\RequestBody;
 use Jane\OpenApi3\JsonSchema\Model\Response;
 use Jane\OpenApi3\Naming\OperationUrlNaming;
 use Jane\OpenApiCommon\Contracts\WhitelistFetchInterface;
@@ -41,10 +42,31 @@ class WhitelistedSchema implements WhitelistFetchInterface
             return;
         }
 
+        /** @var RequestBody|null $requestBody */
+        $requestBody = $operationGuess->getOperation()->getRequestBody();
+        if (null !== $requestBody) {
+            if (null !== $requestBody->getContent() && is_iterable($requestBody->getContent())) {
+                /** @var MediaType $content */
+                foreach ($requestBody->getContent() as $contentType => $content) {
+                    if (\in_array($contentType, ['application/json', 'application/x-www-form-urlencoded'], true)) {
+                        $contentReference = $operationGuess->getReference() . '/content/' . $contentType . '/schema';
+                        $classGuess = $this->guessClass->guessClass($content->getSchema(), $contentReference, $registry, $this->denormalizer);
+                        if (null !== $classGuess) {
+                            $this->schema->addRelation($baseOperation, $classGuess->getName());
+                        }
+                    }
+                }
+            }
+        }
+
         /** @var Response[]|null $responses */
         $responses = $operationGuess->getOperation()->getResponses();
         if (null !== $responses && \count($responses) > 0) {
             foreach ($responses as $response) {
+                if (!($response instanceof Response)) {
+                    continue;
+                }
+
                 if (null === $response->getContent()) {
                     $classGuess = $this->guessClass->guessClass(null, $operationGuess->getReference(), $registry, $this->denormalizer);
                     if (null !== $classGuess) {
