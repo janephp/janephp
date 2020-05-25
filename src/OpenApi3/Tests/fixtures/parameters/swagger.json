@@ -324,6 +324,27 @@
                     "Test"
                 ]
             }
+        },
+        "/test-dictionary": {
+            "post": {
+                "tags": [
+                    "example"
+                ],
+                "operationId": "testDictionary",
+                "parameters": [
+                    {
+                        "name": "input",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                ]
+            }
         }
     },
     "info": {
