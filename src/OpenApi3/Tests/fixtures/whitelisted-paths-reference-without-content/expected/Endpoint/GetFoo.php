@@ -37,4 +37,8 @@ class GetFoo extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\O
             throw new \Jane\OpenApi3\Tests\Expected\Exception\GetFooUnauthorizedException();
         }
     }
+    public function getAuthenticationScopes() : array
+    {
+        return array();
+    }
 }

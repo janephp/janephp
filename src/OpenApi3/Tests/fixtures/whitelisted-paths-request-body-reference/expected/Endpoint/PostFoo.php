@@ -41,4 +41,8 @@ class PostFoo extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\
             return null;
         }
     }
+    public function getAuthenticationScopes() : array
+    {
+        return array();
+    }
 }
