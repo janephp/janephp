@@ -1,0 +1,28 @@
+openapi: 3.0.0
+info:
+  title: Whitelist - Response without content
+  version: 1.0.0
+paths:
+  /foo:
+    get:
+      summary: Get foo entity
+      responses:
+        '200':
+          description: Foo item
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Foo'
+        '401':
+          $ref: '#/components/responses/401Unauthorized'
+
+components:
+  schemas:
+    Foo:
+      type: object
+      properties:
+        label:
+          type: string
+  responses:
+    401Unauthorized:
+      description: User must be identified to access this resource

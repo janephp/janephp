@@ -45,6 +45,10 @@ class WhitelistedSchema implements WhitelistFetchInterface
         $responses = $operationGuess->getOperation()->getResponses();
         if (null !== $responses && \count($responses) > 0) {
             foreach ($responses as $response) {
+                if (!($response instanceof Response)) {
+                    continue;
+                }
+
                 if (null === $response->getContent()) {
                     $classGuess = $this->guessClass->guessClass(null, $operationGuess->getReference(), $registry, $this->denormalizer);
                     if (null !== $classGuess) {
