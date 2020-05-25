@@ -140,6 +140,20 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
     {
         return $this->executePsr7Endpoint(new \Jane\OpenApi3\Tests\Expected\Endpoint\GetByTestInteger($testInteger), $fetch);
     }
+    /**
+     * 
+     *
+     * @param array $queryParameters {
+     *     @var string $input 
+     * }
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\Psr\Http\Message\ResponseInterface
+     */
+    public function testDictionary(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \Jane\OpenApi3\Tests\Expected\Endpoint\TestDictionary($queryParameters), $fetch);
+    }
     public static function create($httpClient = null, array $additionalPlugins = array())
     {
         if (null === $httpClient) {
