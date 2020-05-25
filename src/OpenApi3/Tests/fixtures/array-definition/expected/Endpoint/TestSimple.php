@@ -33,4 +33,8 @@ class TestSimple extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Ja
             return $serializer->deserialize($body, 'Jane\\OpenApi3\\Tests\\Expected\\Model\\BarItem[]', 'json');
         }
     }
+    public function getAuthenticationScopes() : array
+    {
+        return array();
+    }
 }

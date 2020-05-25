@@ -61,4 +61,8 @@ class AddOrDeleteRules extends \Jane\OpenApiRuntime\Client\BaseEndpoint implemen
             return json_decode($body);
         }
     }
+    public function getAuthenticationScopes() : array
+    {
+        return array();
+    }
 }

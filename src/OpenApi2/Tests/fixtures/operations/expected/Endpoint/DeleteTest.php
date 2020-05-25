@@ -29,4 +29,8 @@ class DeleteTest extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Ja
             return null;
         }
     }
+    public function getAuthenticationScopes() : array
+    {
+        return array();
+    }
 }

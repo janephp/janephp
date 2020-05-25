@@ -104,6 +104,7 @@ abstract class EndpointGenerator
         }
 
         $class->stmts[] = $transformBodyMethod;
+        $class->stmts[] = $this->getAuthenticationScopesMethod($operation);
 
         $file = new File(
             $context->getCurrentSchema()->getDirectory() . \DIRECTORY_SEPARATOR . 'Endpoint' . \DIRECTORY_SEPARATOR . $endpointName . '.php',
@@ -638,5 +639,19 @@ EOD
         }
 
         return [$returnType, $throwType, $contentStatement];
+    }
+
+    private function getAuthenticationScopesMethod(OperationGuess $operation): Stmt\ClassMethod
+    {
+        $securityScopes = [];
+        foreach ($operation->getSecurityScopes() as $scope) {
+            $securityScopes[] = new Expr\ArrayItem(new Scalar\String_($scope));
+        }
+
+        return new Stmt\ClassMethod('getAuthenticationScopes', [
+            'type' => Stmt\Class_::MODIFIER_PUBLIC,
+            'returnType' => new Name('array'),
+            'stmts' => [new Stmt\Return_(new Expr\Array_($securityScopes))],
+        ]);
     }
 }

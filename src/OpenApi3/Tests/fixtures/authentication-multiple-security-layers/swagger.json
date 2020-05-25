@@ -1,0 +1,68 @@
+{
+    "openapi": "3.0.2",
+    "paths": {
+        "/foo": {
+            "get": {
+                "operationId": "getFoo",
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            }
+        },
+        "/bar": {
+            "get": {
+                "operationId": "getBar",
+                "security": [
+                    {
+                        "x-header": []
+                    }
+                ]
+            }
+        },
+        "/baz": {
+            "get": {
+                "operationId": "getBaz",
+                "security": [
+                    {
+                        "bearer": [],
+                        "x-header": []
+                    }
+                ]
+            }
+        }
+    },
+    "security": [
+        {
+            "apikey": []
+        }
+    ],
+    "info": {
+        "version": "",
+        "title": ""
+    },
+    "servers": [
+        {
+            "url": "http://127.0.0.1:8000/"
+        }
+    ],
+    "components": {
+        "securitySchemes": {
+            "x-header": {
+                "type": "apiKey",
+                "in": "header",
+                "name": "X-API-KEY"
+            },
+            "bearer": {
+                "type": "http",
+                "scheme": "bearer"
+            },
+            "apikey": {
+                "type": "apiKey",
+                "in": "query",
+                "name": "api_key"
+            }
+        }
+    }
+}

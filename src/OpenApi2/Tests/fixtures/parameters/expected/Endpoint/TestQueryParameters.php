@@ -59,4 +59,8 @@ class TestQueryParameters extends \Jane\OpenApiRuntime\Client\BaseEndpoint imple
             return null;
         }
     }
+    public function getAuthenticationScopes() : array
+    {
+        return array();
+    }
 }

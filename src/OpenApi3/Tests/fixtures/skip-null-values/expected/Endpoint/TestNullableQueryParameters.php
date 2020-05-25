@@ -49,4 +49,8 @@ class TestNullableQueryParameters extends \Jane\OpenApiRuntime\Client\BaseEndpoi
             return null;
         }
     }
+    public function getAuthenticationScopes() : array
+    {
+        return array();
+    }
 }

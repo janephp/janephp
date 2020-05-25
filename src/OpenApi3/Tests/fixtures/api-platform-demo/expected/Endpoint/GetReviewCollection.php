@@ -61,4 +61,8 @@ class GetReviewCollection extends \Jane\OpenApiRuntime\Client\BaseEndpoint imple
             return json_decode($body);
         }
     }
+    public function getAuthenticationScopes() : array
+    {
+        return array('apiKey');
+    }
 }

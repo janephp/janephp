@@ -29,4 +29,8 @@ class OptionsTest extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \J
             return null;
         }
     }
+    public function getAuthenticationScopes() : array
+    {
+        return array();
+    }
 }

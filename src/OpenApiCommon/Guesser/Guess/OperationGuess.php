@@ -20,9 +20,11 @@ class OperationGuess
 
     private $reference;
 
-    private $parameters = [];
+    private $parameters;
 
-    public function __construct(object $pathItem, object $operation, string $path, string $method, string $reference)
+    private $securityScopes;
+
+    public function __construct(object $pathItem, object $operation, string $path, string $method, string $reference, array $securityScopes = [])
     {
         $this->operation = $operation;
         $this->path = preg_replace('#^/+#', '/', $path);
@@ -32,6 +34,7 @@ class OperationGuess
             $pathItem->getParameters() ?? [],
             $operation->getParameters() ?? []
         );
+        $this->securityScopes = $securityScopes;
     }
 
     public function getParameters(): array
@@ -57,5 +60,10 @@ class OperationGuess
     public function getReference(): string
     {
         return $this->reference;
+    }
+
+    public function getSecurityScopes(): array
+    {
+        return $this->securityScopes;
     }
 }

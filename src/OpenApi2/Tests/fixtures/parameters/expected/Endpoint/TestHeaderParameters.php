@@ -59,4 +59,8 @@ class TestHeaderParameters extends \Jane\OpenApiRuntime\Client\BaseEndpoint impl
             return null;
         }
     }
+    public function getAuthenticationScopes() : array
+    {
+        return array();
+    }
 }

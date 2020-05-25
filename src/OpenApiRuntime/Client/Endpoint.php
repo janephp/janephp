@@ -35,4 +35,9 @@ interface Endpoint
      * Get the headers of an endpoint.
      */
     public function getHeaders(array $baseHeaders = []): array;
+
+    /**
+     * Get security scopes of an endpoint.
+     */
+    public function getAuthenticationScopes(): array;
 }

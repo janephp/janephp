@@ -47,4 +47,8 @@ class GetParchmentItem extends \Jane\OpenApiRuntime\Client\BaseEndpoint implemen
             throw new \ApiPlatform\Demo\Exception\GetParchmentItemNotFoundException();
         }
     }
+    public function getAuthenticationScopes() : array
+    {
+        return array('apiKey');
+    }
 }

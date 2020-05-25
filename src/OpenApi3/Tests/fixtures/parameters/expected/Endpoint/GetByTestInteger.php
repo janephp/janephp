@@ -39,4 +39,8 @@ class GetByTestInteger extends \Jane\OpenApiRuntime\Client\BaseEndpoint implemen
             return null;
         }
     }
+    public function getAuthenticationScopes() : array
+    {
+        return array();
+    }
 }

@@ -47,4 +47,8 @@ class GetReviewItem extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements 
             throw new \ApiPlatform\Demo\Exception\GetReviewItemNotFoundException();
         }
     }
+    public function getAuthenticationScopes() : array
+    {
+        return array('apiKey');
+    }
 }

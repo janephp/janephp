@@ -63,4 +63,8 @@ class TestGetWithPathParameters extends \Jane\OpenApiRuntime\Client\BaseEndpoint
     {
         return null;
     }
+    public function getAuthenticationScopes() : array
+    {
+        return array();
+    }
 }
