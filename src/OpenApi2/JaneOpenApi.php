@@ -39,7 +39,7 @@ class JaneOpenApi extends CommonJaneOpenApi
         $self->addGenerator($modelGenerator);
         $self->addGenerator($normGenerator);
         $self->addGenerator($authGenerator);
-        $self->addGenerator(GeneratorFactory::build($serializer, $options['endpoint-generator'] ?? Psr7EndpointGenerator::class));
+        $self->addGenerator(GeneratorFactory::build($serializer, $options['endpoint-generator'] ?: Psr7EndpointGenerator::class));
 
         return $self;
     }
