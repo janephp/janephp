@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Jane\OpenApi2\Tests\Fixtures\CustomEndpointGenerator;
 
-use Jane\OpenApiRuntime\Client\Exception\InvalidFetchModeException;
 use Psr\Http\Message\ResponseInterface;
 use Symfony\Component\Serializer\SerializerInterface;
 
