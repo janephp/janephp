@@ -146,6 +146,8 @@ Other options are available to customize the generated code:
  * ``whitelisted-paths``: This option allows you to generate only needed endpoints and related models. Be carefull,
    that option will filter models used by whitelisted endpoints and generate model & normalizer only for them. Here is
    some examples about how to use it::
+ * ``endpoint-generator``: Generator Class (extending `\Jane\OpenApi3\Generator\EndpointGenerator`) which can
+   specify custom endpoint interface & corresponding trait.
 
     <?php
 
