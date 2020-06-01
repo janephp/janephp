@@ -3,11 +3,12 @@
 namespace Jane\OpenApi2;
 
 use Jane\JsonSchema\Generator\Naming;
+use Jane\OpenApiCommon\Generator\AuthenticationGenerator;
+use Jane\OpenApi2\Generator\Psr7EndpointGenerator;
 use Jane\OpenApi2\Generator\GeneratorFactory;
 use Jane\OpenApi2\Guesser\OpenApiSchema\GuesserFactory;
 use Jane\OpenApi2\JsonSchema\Normalizer\JaneObjectNormalizer;
 use Jane\OpenApi2\SchemaParser\SchemaParser;
-use Jane\OpenApiCommon\Generator\AuthenticationGenerator;
 use Jane\OpenApiCommon\Generator\ModelGenerator;
 use Jane\OpenApiCommon\Generator\NormalizerGenerator;
 use Jane\OpenApiCommon\JaneOpenApi as CommonJaneOpenApi;
@@ -38,7 +39,7 @@ class JaneOpenApi extends CommonJaneOpenApi
         $self->addGenerator($modelGenerator);
         $self->addGenerator($normGenerator);
         $self->addGenerator($authGenerator);
-        $self->addGenerator(GeneratorFactory::build($serializer));
+        $self->addGenerator(GeneratorFactory::build($serializer, $options['endpoint-generator'] ?? Psr7EndpointGenerator::class));
 
         return $self;
     }
