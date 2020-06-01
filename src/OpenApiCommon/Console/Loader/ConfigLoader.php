@@ -24,7 +24,8 @@ class ConfigLoader extends BaseConfigLoader implements ConfigLoaderInterface
     protected function resolveConfigurationDefaults(): array
     {
         return array_merge(parent::resolveConfigurationDefaults(), [
-            'whitelisted-paths' => null
+            'whitelisted-paths' => null,
+            'endpoint-generator' => null,
         ]);
     }
 }
