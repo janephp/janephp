@@ -2,6 +2,7 @@
 
 namespace Jane\OpenApi3;
 
+use Jane\OpenApi3\Generator\Psr7EndpointGenerator;
 use Jane\OpenApiCommon\Generator\AuthenticationGenerator;
 use Jane\OpenApiCommon\Generator\ModelGenerator;
 use Jane\JsonSchema\Generator\Naming;
@@ -37,7 +38,7 @@ class JaneOpenApi extends CommonJaneOpenApi
         $self->addGenerator($modelGenerator);
         $self->addGenerator($normGenerator);
         $self->addGenerator($authGenerator);
-        $self->addGenerator(GeneratorFactory::build($serializer));
+        $self->addGenerator(GeneratorFactory::build($serializer, $options['endpoint-generator'] ?: Psr7EndpointGenerator::class));
 
         return $self;
     }

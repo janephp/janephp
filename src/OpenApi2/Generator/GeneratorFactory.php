@@ -2,6 +2,7 @@
 
 namespace Jane\OpenApi2\Generator;
 
+use InvalidArgumentException;
 use Jane\JsonSchema\Generator\GeneratorInterface;
 use Jane\OpenApi2\Generator\Parameter\BodyParameterGenerator;
 use Jane\OpenApi2\Generator\Parameter\NonBodyParameterGenerator;
@@ -14,7 +15,7 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 
 class GeneratorFactory
 {
-    public static function build(DenormalizerInterface $serializer): GeneratorInterface
+    public static function build(DenormalizerInterface $serializer, string $endpointGeneratorClass): GeneratorInterface
     {
         $parserFactory = new ParserFactory();
         $parser = $parserFactory->create(ParserFactory::PREFER_PHP7);
@@ -27,7 +28,11 @@ class GeneratorFactory
             new OperationUrlNaming(),
         ]);
 
-        $psr7EndpointGenerator = new Psr7EndpointGenerator($operationNaming, $bodyParameter, $nonBodyParameter, $serializer, $exceptionGenerator);
+        if (!class_exists($endpointGeneratorClass)) {
+            throw new InvalidArgumentException(sprintf('Unknown generator class %s', $endpointGeneratorClass));
+        }
+
+        $psr7EndpointGenerator = new $endpointGeneratorClass($operationNaming, $bodyParameter, $nonBodyParameter, $serializer, $exceptionGenerator);
         $psr7OperationGenerator = new Psr7OperationGenerator($psr7EndpointGenerator);
 
         return new Psr18ClientGenerator($psr7OperationGenerator, $operationNaming);
