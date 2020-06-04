@@ -3,16 +3,16 @@
 namespace Jane\OpenApiCommon;
 
 use Jane\JsonSchema\Generator\ChainGenerator;
+use Jane\JsonSchema\Generator\Context\Context;
 use Jane\JsonSchema\Generator\Naming;
 use Jane\JsonSchema\Guesser\ChainGuesser;
 use Jane\JsonSchema\Registry\Registry;
 use Jane\OpenApiCommon\Contracts\WhitelistFetchInterface;
-use Jane\OpenApiCommon\Registry\Registry as OpenApiRegistry;
 use Jane\OpenApiCommon\Guesser\Guess\ClassGuess;
 use Jane\OpenApiCommon\Guesser\Guess\MultipleClass;
+use Jane\OpenApiCommon\Registry\Registry as OpenApiRegistry;
 use Jane\OpenApiCommon\Registry\Schema;
 use Jane\OpenApiCommon\SchemaParser\SchemaParser;
-use Jane\JsonSchema\Generator\Context\Context;
 use Symfony\Component\Serializer\Encoder\JsonDecode;
 use Symfony\Component\Serializer\Encoder\JsonEncode;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
@@ -27,19 +27,19 @@ abstract class JaneOpenApi extends ChainGenerator
     protected const OBJECT_NORMALIZER_CLASS = null;
     protected const WHITELIST_FETCH_CLASS = null;
 
-    /** @var SchemaParser $schemaParser */
+    /** @var SchemaParser */
     protected $schemaParser;
 
-    /** @var ChainGuesser $chainGuesser */
+    /** @var ChainGuesser */
     protected $chainGuesser;
 
-    /** @var Naming $naming */
+    /** @var Naming */
     protected $naming;
 
-    /** @var bool $strict */
+    /** @var bool */
     protected $strict;
 
-    /** @var SerializerInterface $serializer */
+    /** @var SerializerInterface */
     protected $serializer;
 
     public function __construct(

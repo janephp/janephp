@@ -7,14 +7,14 @@ use Jane\JsonSchema\Generator\Context\Context;
 use Jane\JsonSchema\Registry\Schema as BaseSchema;
 use Jane\OpenApiRuntime\Client\Psr18Client;
 use PhpParser\Node;
-use PhpParser\Node\Name;
 use PhpParser\Node\Expr;
+use PhpParser\Node\Name;
+use PhpParser\Node\Scalar;
 use PhpParser\Node\Stmt;
 use Symfony\Component\Serializer\Encoder\JsonDecode;
 use Symfony\Component\Serializer\Encoder\JsonEncode;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Serializer;
-use PhpParser\Node\Scalar;
 
 trait Psr18ClientGenerator
 {

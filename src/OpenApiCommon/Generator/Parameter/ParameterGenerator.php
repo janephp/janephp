@@ -20,8 +20,6 @@ abstract class ParameterGenerator
 
     /**
      * @param $parameter
-     *
-     * @return Node\Param|null
      */
     public function generateMethodParameter($parameter, Context $context, string $reference): ?Node\Param
     {
@@ -30,8 +28,6 @@ abstract class ParameterGenerator
 
     /**
      * @param $parameter
-     *
-     * @return string
      */
     public function generateMethodDocParameter($parameter, Context $context, string $reference): string
     {

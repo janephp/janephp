@@ -2,11 +2,11 @@
 
 namespace Jane\AutoMapper\Transformer;
 
+use Jane\AutoMapper\Extractor\PropertyMapping;
+use Jane\AutoMapper\Generator\UniqueVariableScope;
 use PhpParser\Node\Arg;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Name;
-use Jane\AutoMapper\Extractor\PropertyMapping;
-use Jane\AutoMapper\Generator\UniqueVariableScope;
 
 /**
  * Transform DateTime to DateTimeImmutable.

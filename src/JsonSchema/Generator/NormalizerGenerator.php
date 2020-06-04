@@ -4,8 +4,8 @@ namespace Jane\JsonSchema\Generator;
 
 use Jane\JsonSchema\Generator\Context\Context;
 use Jane\JsonSchema\Generator\Normalizer\DenormalizerGenerator;
-use Jane\JsonSchema\Generator\Normalizer\NormalizerGenerator as NormalizerGeneratorTrait;
 use Jane\JsonSchema\Generator\Normalizer\JaneObjectNormalizerGenerator;
+use Jane\JsonSchema\Generator\Normalizer\NormalizerGenerator as NormalizerGeneratorTrait;
 use Jane\JsonSchema\Registry\Schema;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Name;

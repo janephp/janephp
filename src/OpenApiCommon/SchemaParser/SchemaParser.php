@@ -44,11 +44,7 @@ abstract class SchemaParser
 
                 return static::$parsed[$openApiSpecPath] = $this->denormalize($content, $openApiSpecPath);
             } catch (YamlException $yamlException) {
-                throw new CouldNotParseException(sprintf(
-                    "Could not parse schema in JSON nor YAML format:\n- JSON error: \"%s\"\n- YAML error: \"%s\"\n",
-                    $jsonException->getMessage(),
-                    $yamlException->getMessage()
-                ));
+                throw new CouldNotParseException(sprintf("Could not parse schema in JSON nor YAML format:\n- JSON error: \"%s\"\n- YAML error: \"%s\"\n", $jsonException->getMessage(), $yamlException->getMessage()));
             }
         }
 

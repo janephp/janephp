@@ -2,8 +2,8 @@
 
 namespace Jane\AutoMapper\Tests\Generator;
 
-use PHPUnit\Framework\TestCase;
 use Jane\AutoMapper\Generator\UniqueVariableScope;
+use PHPUnit\Framework\TestCase;
 
 class UniqueVariableScopeTest extends TestCase
 {

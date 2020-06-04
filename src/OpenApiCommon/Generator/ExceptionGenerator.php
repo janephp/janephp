@@ -7,12 +7,12 @@ use Jane\JsonSchema\Generator\File;
 use Jane\JsonSchema\Guesser\Guess\ClassGuess;
 use Jane\JsonSchema\Registry\Schema;
 use Jane\OpenApiCommon\Naming\ExceptionNaming;
+use PhpParser\Node;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Name;
 use PhpParser\Node\Param;
 use PhpParser\Node\Scalar;
 use PhpParser\Node\Stmt;
-use PhpParser\Node;
 
 class ExceptionGenerator
 {

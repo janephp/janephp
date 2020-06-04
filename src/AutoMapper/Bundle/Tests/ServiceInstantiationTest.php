@@ -3,8 +3,8 @@
 namespace Jane\AutoMapper\Bundle\Tests;
 
 use Jane\AutoMapper\AutoMapperInterface;
-use Jane\AutoMapper\Tests\Fixtures\AddressDTO;
 use Jane\AutoMapper\Bundle\Tests\Fixtures\User;
+use Jane\AutoMapper\Tests\Fixtures\AddressDTO;
 use Jane\AutoMapper\Tests\Fixtures\UserDTO;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 

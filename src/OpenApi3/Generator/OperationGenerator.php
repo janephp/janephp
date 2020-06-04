@@ -4,12 +4,12 @@ namespace Jane\OpenApi3\Generator;
 
 use Jane\JsonSchema\Generator\Context\Context;
 use Jane\OpenApiCommon\Guesser\Guess\OperationGuess;
+use PhpParser\Comment;
 use PhpParser\Node\Arg;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Name;
 use PhpParser\Node\Param;
 use PhpParser\Node\Stmt;
-use PhpParser\Comment;
 
 abstract class OperationGenerator
 {

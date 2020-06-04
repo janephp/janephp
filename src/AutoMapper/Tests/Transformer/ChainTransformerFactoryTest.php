@@ -2,11 +2,11 @@
 
 namespace Jane\AutoMapper\Tests\Transformer;
 
-use PHPUnit\Framework\TestCase;
 use Jane\AutoMapper\MapperMetadata;
 use Jane\AutoMapper\Transformer\ChainTransformerFactory;
 use Jane\AutoMapper\Transformer\CopyTransformer;
 use Jane\AutoMapper\Transformer\TransformerFactoryInterface;
+use PHPUnit\Framework\TestCase;
 
 class ChainTransformerFactoryTest extends TestCase
 {

@@ -2,13 +2,13 @@
 
 namespace Jane\AutoMapper\Extractor;
 
+use Jane\AutoMapper\Exception\CompileException;
 use PhpParser\Node\Arg;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Name;
 use PhpParser\Node\Param;
 use PhpParser\Node\Scalar;
 use PhpParser\Node\Stmt;
-use Jane\AutoMapper\Exception\CompileException;
 
 /**
  * Writes mutator tell how to write to a property.

@@ -3,7 +3,6 @@
 namespace Jane\AutoMapper;
 
 use Doctrine\Common\Annotations\AnnotationReader;
-use PhpParser\ParserFactory;
 use Jane\AutoMapper\Exception\NoMappingFoundException;
 use Jane\AutoMapper\Extractor\FromSourceMappingExtractor;
 use Jane\AutoMapper\Extractor\FromTargetMappingExtractor;
@@ -19,6 +18,7 @@ use Jane\AutoMapper\Transformer\MultipleTransformerFactory;
 use Jane\AutoMapper\Transformer\NullableTransformerFactory;
 use Jane\AutoMapper\Transformer\ObjectTransformerFactory;
 use Jane\AutoMapper\Transformer\UniqueTypeTransformerFactory;
+use PhpParser\ParserFactory;
 use Symfony\Component\PropertyInfo\Extractor\PhpDocExtractor;
 use Symfony\Component\PropertyInfo\Extractor\ReflectionExtractor;
 use Symfony\Component\PropertyInfo\PropertyInfoExtractor;

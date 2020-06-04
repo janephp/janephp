@@ -14,11 +14,11 @@ use Jane\JsonSchema\Guesser\Guess\PatternMultipleType;
 use Jane\JsonSchema\Guesser\Guess\Property;
 use Jane\JsonSchema\Guesser\Guess\Type;
 use PhpParser\Node\Arg;
+use PhpParser\Node\Expr;
 use PhpParser\Node\Name;
 use PhpParser\Node\Param;
-use PhpParser\Node\Stmt;
-use PhpParser\Node\Expr;
 use PhpParser\Node\Scalar;
+use PhpParser\Node\Stmt;
 
 trait NormalizerGenerator
 {
@@ -78,10 +78,6 @@ trait NormalizerGenerator
 
     /**
      * Create the normalization method.
-     *
-     * @param string     $modelFqdn
-     * @param Context    $context
-     * @param ClassGuess $classGuess
      *
      * @return Stmt\ClassMethod
      */

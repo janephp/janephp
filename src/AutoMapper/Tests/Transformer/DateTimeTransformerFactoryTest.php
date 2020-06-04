@@ -2,7 +2,6 @@
 
 namespace Jane\AutoMapper\Tests\Transformer;
 
-use PHPUnit\Framework\TestCase;
 use Jane\AutoMapper\MapperMetadata;
 use Jane\AutoMapper\Transformer\CopyTransformer;
 use Jane\AutoMapper\Transformer\DateTimeImmutableToMutableTransformer;
@@ -10,6 +9,7 @@ use Jane\AutoMapper\Transformer\DateTimeMutableToImmutableTransformer;
 use Jane\AutoMapper\Transformer\DateTimeToStringTansformer;
 use Jane\AutoMapper\Transformer\DateTimeTransformerFactory;
 use Jane\AutoMapper\Transformer\StringToDateTimeTransformer;
+use PHPUnit\Framework\TestCase;
 use Symfony\Component\PropertyInfo\Type;
 
 class DateTimeTransformerFactoryTest extends TestCase

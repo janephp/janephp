@@ -2,13 +2,13 @@
 
 namespace Jane\OpenApiCommon\Generator\Authentication;
 
-use Jane\OpenApiCommon\Guesser\Guess\SecuritySchemeGuess;
 use Jane\OpenApi3\JsonSchema\Model\HTTPSecurityScheme;
+use Jane\OpenApiCommon\Guesser\Guess\SecuritySchemeGuess;
+use PhpParser\Node\Expr;
 use PhpParser\Node\Name;
 use PhpParser\Node\Param;
-use PhpParser\Node\Stmt;
-use PhpParser\Node\Expr;
 use PhpParser\Node\Scalar;
+use PhpParser\Node\Stmt;
 
 trait ConstructGenerator
 {

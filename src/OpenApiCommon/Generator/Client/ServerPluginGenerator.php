@@ -4,10 +4,10 @@ namespace Jane\OpenApiCommon\Generator\Client;
 
 use Http\Discovery\Psr17FactoryDiscovery;
 use Http\Discovery\UriFactoryDiscovery;
-use PhpParser\Node\Stmt;
+use PhpParser\Node;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Name;
-use PhpParser\Node;
+use PhpParser\Node\Stmt;
 
 trait ServerPluginGenerator
 {

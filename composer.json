@@ -47,10 +47,10 @@
     "require-dev": {
         "doctrine/annotations": "~1.0",
         "phpdocumentor/reflection-docblock": "^3.0 || ^4.0",
-        "friendsofphp/php-cs-fixer": "2.15.3",
+        "friendsofphp/php-cs-fixer": "2.16.3",
         "phpbench/phpbench": "@dev",
         "phpunit/phpunit": "^8.0",
-        "symfony/framework-bundle": "^4.4 || ^5.0"
+        "symfony/framework-bundle": "^4.4 || 5.0.*"
     },
     "suggest": {
         "friendsofphp/php-cs-fixer": "Allow to automatically fix cs on generated code for better visualisation"

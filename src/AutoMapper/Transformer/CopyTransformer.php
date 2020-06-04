@@ -2,9 +2,9 @@
 
 namespace Jane\AutoMapper\Transformer;
 
-use PhpParser\Node\Expr;
 use Jane\AutoMapper\Extractor\PropertyMapping;
 use Jane\AutoMapper\Generator\UniqueVariableScope;
+use PhpParser\Node\Expr;
 
 /**
  * Does not do any transformation, output = input.

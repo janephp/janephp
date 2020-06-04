@@ -2,9 +2,9 @@
 
 namespace Jane\JsonSchema;
 
-use Jane\JsonSchema\Console\Loader\ConfigLoader;
 use Jane\JsonSchema\Console\Command\DumpConfigCommand;
 use Jane\JsonSchema\Console\Command\GenerateCommand;
+use Jane\JsonSchema\Console\Loader\ConfigLoader;
 use Jane\JsonSchema\Console\Loader\SchemaLoader;
 use Symfony\Component\Console\Application as BaseApplication;
 

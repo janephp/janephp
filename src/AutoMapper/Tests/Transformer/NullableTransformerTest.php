@@ -2,9 +2,9 @@
 
 namespace Jane\AutoMapper\Tests\Transformer;
 
-use PHPUnit\Framework\TestCase;
 use Jane\AutoMapper\Transformer\BuiltinTransformer;
 use Jane\AutoMapper\Transformer\NullableTransformer;
+use PHPUnit\Framework\TestCase;
 use Symfony\Component\PropertyInfo\Type;
 
 class NullableTransformerTest extends TestCase

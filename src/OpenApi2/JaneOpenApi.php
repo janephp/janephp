@@ -3,16 +3,16 @@
 namespace Jane\OpenApi2;
 
 use Jane\JsonSchema\Generator\Naming;
-use Jane\OpenApi2\Generator\Psr7EndpointGenerator;
-use Jane\OpenApiCommon\Generator\AuthenticationGenerator;
 use Jane\OpenApi2\Generator\GeneratorFactory;
+use Jane\OpenApi2\Generator\Psr7EndpointGenerator;
+use Jane\OpenApi2\Guesser\OpenApiSchema\GuesserFactory;
 use Jane\OpenApi2\JsonSchema\Normalizer\JaneObjectNormalizer;
+use Jane\OpenApi2\SchemaParser\SchemaParser;
+use Jane\OpenApiCommon\Generator\AuthenticationGenerator;
 use Jane\OpenApiCommon\Generator\ModelGenerator;
 use Jane\OpenApiCommon\Generator\NormalizerGenerator;
-use Jane\OpenApi2\Guesser\OpenApiSchema\GuesserFactory;
-use Jane\OpenApi2\SchemaParser\SchemaParser;
-use PhpParser\ParserFactory;
 use Jane\OpenApiCommon\JaneOpenApi as CommonJaneOpenApi;
+use PhpParser\ParserFactory;
 
 class JaneOpenApi extends CommonJaneOpenApi
 {

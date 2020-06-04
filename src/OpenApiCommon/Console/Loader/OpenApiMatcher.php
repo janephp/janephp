@@ -2,10 +2,10 @@
 
 namespace Jane\OpenApiCommon\Console\Loader;
 
-use Jane\OpenApiCommon\Exception\CouldNotParseException;
-use Jane\OpenApiCommon\Exception\OpenApiVersionSupportException;
 use Jane\OpenApi2\JaneOpenApi as OpenApi2Base;
 use Jane\OpenApi3\JaneOpenApi as OpenApi3Base;
+use Jane\OpenApiCommon\Exception\CouldNotParseException;
+use Jane\OpenApiCommon\Exception\OpenApiVersionSupportException;
 
 class OpenApiMatcher
 {
@@ -21,11 +21,7 @@ class OpenApiMatcher
 
         if (null === $openApiClass) {
             if (null !== $openApi2Message || null !== $openApi3Message) {
-                throw new CouldNotParseException(sprintf(
-                    "Could not parse schema in OpenApi v2 nor v3 format:\n- OpenApi v2 error: \"%s\"\n- OpenApi v3: \"%s\"\n",
-                    (string) $openApi2Message,
-                    (string) $openApi3Message
-                ));
+                throw new CouldNotParseException(sprintf("Could not parse schema in OpenApi v2 nor v3 format:\n- OpenApi v2 error: \"%s\"\n- OpenApi v3: \"%s\"\n", (string) $openApi2Message, (string) $openApi3Message));
             } else {
                 throw new OpenApiVersionSupportException('Only OpenApi v2 / v3 specifications are supported, use an external tool to convert your api files.');
             }

@@ -8,16 +8,16 @@ use Jane\JsonSchema\Guesser\ClassGuesserInterface;
 use Jane\JsonSchema\Guesser\GuesserInterface;
 use Jane\JsonSchema\Guesser\GuesserResolverTrait;
 use Jane\JsonSchema\Registry\Registry;
-use Jane\OpenApiCommon\Guesser\Guess\OperationGuess;
-use Jane\OpenApiCommon\Registry\Registry as OpenApiRegistry;
 use Jane\JsonSchemaRuntime\Reference;
 use Jane\OpenApi3\JsonSchema\Model\Components;
+use Jane\OpenApi3\JsonSchema\Model\OpenApi;
 use Jane\OpenApi3\JsonSchema\Model\Operation;
 use Jane\OpenApi3\JsonSchema\Model\Parameter;
 use Jane\OpenApi3\JsonSchema\Model\PathItem;
 use Jane\OpenApi3\JsonSchema\Model\RequestBody;
 use Jane\OpenApi3\JsonSchema\Model\Response;
-use Jane\OpenApi3\JsonSchema\Model\OpenApi;
+use Jane\OpenApiCommon\Guesser\Guess\OperationGuess;
+use Jane\OpenApiCommon\Registry\Registry as OpenApiRegistry;
 use Symfony\Component\Serializer\SerializerInterface;
 
 class OpenApiGuesser implements GuesserInterface, ClassGuesserInterface, ChainGuesserAwareInterface

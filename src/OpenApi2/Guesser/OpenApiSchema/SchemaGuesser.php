@@ -4,9 +4,9 @@ namespace Jane\OpenApi2\Guesser\OpenApiSchema;
 
 use Jane\JsonSchema\Guesser\Guess\ClassGuess as BaseClassGuess;
 use Jane\JsonSchema\Guesser\JsonSchema\ObjectGuesser;
+use Jane\OpenApi2\JsonSchema\Model\Schema;
 use Jane\OpenApiCommon\Guesser\Guess\ClassGuess;
 use Jane\OpenApiCommon\Guesser\Guess\MultipleClass;
-use Jane\OpenApi2\JsonSchema\Model\Schema;
 
 class SchemaGuesser extends ObjectGuesser
 {
