@@ -4,12 +4,12 @@ namespace Jane\OpenApiCommon\Generator\Authentication;
 
 use Jane\OpenApiCommon\Guesser\Guess\SecuritySchemeGuess;
 use PhpParser\Node;
-use PhpParser\Node\Param;
-use PhpParser\Node\Stmt;
-use PhpParser\Node\Name;
 use PhpParser\Node\Expr;
-use Psr\Http\Message\RequestInterface;
+use PhpParser\Node\Name;
+use PhpParser\Node\Param;
 use PhpParser\Node\Scalar;
+use PhpParser\Node\Stmt;
+use Psr\Http\Message\RequestInterface;
 
 trait AuthenticationGenerator
 {

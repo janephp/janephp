@@ -3,8 +3,8 @@
 namespace Jane\OpenApiCommon\Generator\Authentication;
 
 use Jane\OpenApiRuntime\Client\AuthenticationPlugin;
-use PhpParser\Node\Stmt;
 use PhpParser\Node\Name;
+use PhpParser\Node\Stmt;
 
 trait ClassGenerator
 {

@@ -6,11 +6,11 @@ use Jane\JsonSchema\Generator\Context\Context;
 use Jane\JsonSchema\Generator\Naming;
 use Jane\JsonSchema\Guesser\Guess\ClassGuess;
 use PhpParser\Node\Arg;
+use PhpParser\Node\Expr;
 use PhpParser\Node\Name;
 use PhpParser\Node\Param;
-use PhpParser\Node\Stmt;
-use PhpParser\Node\Expr;
 use PhpParser\Node\Scalar;
+use PhpParser\Node\Stmt;
 
 trait DenormalizerGenerator
 {

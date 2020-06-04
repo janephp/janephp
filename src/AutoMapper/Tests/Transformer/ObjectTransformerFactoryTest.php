@@ -2,11 +2,11 @@
 
 namespace Jane\AutoMapper\Tests\Transformer;
 
-use PHPUnit\Framework\TestCase;
 use Jane\AutoMapper\AutoMapperRegistryInterface;
 use Jane\AutoMapper\MapperMetadata;
 use Jane\AutoMapper\Transformer\ObjectTransformer;
 use Jane\AutoMapper\Transformer\ObjectTransformerFactory;
+use PHPUnit\Framework\TestCase;
 use Symfony\Component\PropertyInfo\Type;
 
 class ObjectTransformerFactoryTest extends TestCase

@@ -2,10 +2,10 @@
 
 namespace Jane\OpenApi3\Guesser\OpenApiSchema;
 
+use Jane\JsonSchema\Guesser\Guess\ClassGuess as BaseClassGuess;
 use Jane\JsonSchema\Guesser\JsonSchema\ObjectGuesser;
 use Jane\OpenApi3\JsonSchema\Model\Discriminator;
 use Jane\OpenApi3\JsonSchema\Model\Schema;
-use Jane\JsonSchema\Guesser\Guess\ClassGuess as BaseClassGuess;
 use Jane\OpenApiCommon\Guesser\Guess\ClassGuess;
 use Jane\OpenApiCommon\Guesser\Guess\MultipleClass;
 

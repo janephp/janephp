@@ -3,9 +3,9 @@
 namespace Jane\OpenApiCommon\Generator\Authentication;
 
 use Jane\OpenApiCommon\Guesser\Guess\SecuritySchemeGuess;
-use PhpParser\Node\Stmt;
 use PhpParser\Node\Name;
 use PhpParser\Node\Scalar;
+use PhpParser\Node\Stmt;
 
 trait GetScopeGenerator
 {

@@ -2,9 +2,9 @@
 
 namespace Jane\AutoMapper\Tests;
 
-use PHPUnit\Framework\TestCase;
-use Jane\AutoMapper\MapperContext;
 use Jane\AutoMapper\Exception\CircularReferenceException;
+use Jane\AutoMapper\MapperContext;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @author Baptiste Leduc <baptiste.leduc@gmail.com>

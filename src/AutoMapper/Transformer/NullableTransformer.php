@@ -2,11 +2,11 @@
 
 namespace Jane\AutoMapper\Transformer;
 
+use Jane\AutoMapper\Extractor\PropertyMapping;
+use Jane\AutoMapper\Generator\UniqueVariableScope;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Name;
 use PhpParser\Node\Stmt;
-use Jane\AutoMapper\Extractor\PropertyMapping;
-use Jane\AutoMapper\Generator\UniqueVariableScope;
 
 /**
  * Tansformer decorator to handle null values.

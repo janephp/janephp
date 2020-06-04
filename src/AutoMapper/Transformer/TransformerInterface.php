@@ -2,10 +2,10 @@
 
 namespace Jane\AutoMapper\Transformer;
 
-use PhpParser\Node\Expr;
-use PhpParser\Node\Stmt;
 use Jane\AutoMapper\Extractor\PropertyMapping;
 use Jane\AutoMapper\Generator\UniqueVariableScope;
+use PhpParser\Node\Expr;
+use PhpParser\Node\Stmt;
 
 /**
  * Transformer tell how to transform a property mapping.

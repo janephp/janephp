@@ -3,12 +3,12 @@
 namespace Jane\AutoMapper\Tests;
 
 use Doctrine\Common\Annotations\AnnotationReader;
-use PhpParser\ParserFactory;
-use PHPUnit\Framework\TestCase;
 use Jane\AutoMapper\AutoMapper;
 use Jane\AutoMapper\Generator\Generator;
 use Jane\AutoMapper\Loader\ClassLoaderInterface;
 use Jane\AutoMapper\Loader\FileLoader;
+use PhpParser\ParserFactory;
+use PHPUnit\Framework\TestCase;
 use Symfony\Component\Serializer\Mapping\ClassDiscriminatorFromClassMetadata;
 use Symfony\Component\Serializer\Mapping\Factory\ClassMetadataFactory;
 use Symfony\Component\Serializer\Mapping\Loader\AnnotationLoader;

@@ -6,10 +6,10 @@ use InvalidArgumentException;
 use Jane\JsonSchema\Generator\GeneratorInterface;
 use Jane\OpenApi2\Generator\Parameter\BodyParameterGenerator;
 use Jane\OpenApi2\Generator\Parameter\NonBodyParameterGenerator;
+use Jane\OpenApi2\Naming\OperationUrlNaming;
 use Jane\OpenApiCommon\Generator\ExceptionGenerator;
 use Jane\OpenApiCommon\Naming\ChainOperationNaming;
 use Jane\OpenApiCommon\Naming\OperationIdNaming;
-use Jane\OpenApi2\Naming\OperationUrlNaming;
 use PhpParser\ParserFactory;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 

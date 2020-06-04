@@ -2,12 +2,12 @@
 
 namespace Jane\AutoMapper\Transformer;
 
+use Jane\AutoMapper\Extractor\PropertyMapping;
+use Jane\AutoMapper\Generator\UniqueVariableScope;
 use PhpParser\Node\Arg;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Expr\Cast;
 use PhpParser\Node\Name;
-use Jane\AutoMapper\Extractor\PropertyMapping;
-use Jane\AutoMapper\Generator\UniqueVariableScope;
 use Symfony\Component\PropertyInfo\Type;
 
 /**

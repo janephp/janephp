@@ -2,6 +2,11 @@
 
 namespace Jane\AutoMapper\Generator;
 
+use Jane\AutoMapper\AutoMapperRegistryInterface;
+use Jane\AutoMapper\Exception\CompileException;
+use Jane\AutoMapper\GeneratedMapper;
+use Jane\AutoMapper\MapperContext;
+use Jane\AutoMapper\MapperGeneratorMetadataInterface;
 use PhpParser\Node\Arg;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Name;
@@ -10,11 +15,6 @@ use PhpParser\Node\Scalar;
 use PhpParser\Node\Stmt;
 use PhpParser\Parser;
 use PhpParser\ParserFactory;
-use Jane\AutoMapper\AutoMapperRegistryInterface;
-use Jane\AutoMapper\Exception\CompileException;
-use Jane\AutoMapper\GeneratedMapper;
-use Jane\AutoMapper\MapperContext;
-use Jane\AutoMapper\MapperGeneratorMetadataInterface;
 use Symfony\Component\Serializer\Mapping\ClassDiscriminatorResolverInterface;
 
 /**

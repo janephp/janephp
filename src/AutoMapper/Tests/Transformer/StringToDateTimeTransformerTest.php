@@ -2,8 +2,8 @@
 
 namespace Jane\AutoMapper\Tests\Transformer;
 
-use PHPUnit\Framework\TestCase;
 use Jane\AutoMapper\Transformer\StringToDateTimeTransformer;
+use PHPUnit\Framework\TestCase;
 
 class StringToDateTimeTransformerTest extends TestCase
 {

@@ -2,11 +2,11 @@
 
 namespace Jane\AutoMapper\Transformer;
 
+use Jane\AutoMapper\Extractor\PropertyMapping;
+use Jane\AutoMapper\Generator\UniqueVariableScope;
 use PhpParser\Node\Arg;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Scalar\String_;
-use Jane\AutoMapper\Extractor\PropertyMapping;
-use Jane\AutoMapper\Generator\UniqueVariableScope;
 
 /**
  * Transform a \DateTimeInterface object to a string.

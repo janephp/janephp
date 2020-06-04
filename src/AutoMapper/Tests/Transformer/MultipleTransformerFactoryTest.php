@@ -2,13 +2,13 @@
 
 namespace Jane\AutoMapper\Tests\Transformer;
 
-use PHPUnit\Framework\TestCase;
 use Jane\AutoMapper\MapperMetadata;
 use Jane\AutoMapper\Transformer\BuiltinTransformer;
 use Jane\AutoMapper\Transformer\BuiltinTransformerFactory;
 use Jane\AutoMapper\Transformer\ChainTransformerFactory;
 use Jane\AutoMapper\Transformer\MultipleTransformer;
 use Jane\AutoMapper\Transformer\MultipleTransformerFactory;
+use PHPUnit\Framework\TestCase;
 use Symfony\Component\PropertyInfo\Type;
 
 class MultipleTransformerFactoryTest extends TestCase

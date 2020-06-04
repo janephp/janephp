@@ -2,8 +2,8 @@
 
 namespace Jane\AutoMapper\Tests\Transformer;
 
-use PHPUnit\Framework\TestCase;
 use Jane\AutoMapper\Transformer\CopyTransformer;
+use PHPUnit\Framework\TestCase;
 
 class CopyTransformerTest extends TestCase
 {

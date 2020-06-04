@@ -2,9 +2,9 @@
 
 namespace Jane\AutoMapper\Loader;
 
-use PhpParser\PrettyPrinter\Standard;
 use Jane\AutoMapper\Generator\Generator;
 use Jane\AutoMapper\MapperGeneratorMetadataInterface;
+use PhpParser\PrettyPrinter\Standard;
 
 /**
  * Use file system to load mapper, and persist them using a registry.

@@ -2,8 +2,8 @@
 
 namespace Jane\AutoMapper\Tests\Transformer;
 
-use PHPUnit\Framework\TestCase;
 use Jane\AutoMapper\Transformer\DateTimeImmutableToMutableTransformer;
+use PHPUnit\Framework\TestCase;
 
 class DateTimeImmutableToMutableTransformerTest extends TestCase
 {

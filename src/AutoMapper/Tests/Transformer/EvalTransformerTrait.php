@@ -2,14 +2,14 @@
 
 namespace Jane\AutoMapper\Tests\Transformer;
 
-use PhpParser\Node\Expr;
-use PhpParser\Node\Stmt;
-use PhpParser\Node\Param;
-use PhpParser\PrettyPrinter\Standard;
 use Jane\AutoMapper\Extractor\PropertyMapping;
 use Jane\AutoMapper\Extractor\ReadAccessor;
 use Jane\AutoMapper\Generator\UniqueVariableScope;
 use Jane\AutoMapper\Transformer\TransformerInterface;
+use PhpParser\Node\Expr;
+use PhpParser\Node\Param;
+use PhpParser\Node\Stmt;
+use PhpParser\PrettyPrinter\Standard;
 
 trait EvalTransformerTrait
 {
