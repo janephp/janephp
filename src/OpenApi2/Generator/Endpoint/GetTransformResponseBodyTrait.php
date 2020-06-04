@@ -10,11 +10,11 @@ use Jane\OpenApi2\JsonSchema\Model\Schema;
 use Jane\OpenApiCommon\Guesser\Guess\OperationGuess;
 use PhpParser\Comment\Doc;
 use PhpParser\Node;
-use PhpParser\Node\Name;
-use PhpParser\Node\Stmt;
-use PhpParser\Node\Expr;
 use PhpParser\Node\Arg;
+use PhpParser\Node\Expr;
+use PhpParser\Node\Name;
 use PhpParser\Node\Scalar;
+use PhpParser\Node\Stmt;
 use Symfony\Component\Serializer\SerializerInterface;
 
 trait GetTransformResponseBodyTrait

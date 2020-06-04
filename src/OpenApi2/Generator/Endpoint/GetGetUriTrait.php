@@ -6,11 +6,11 @@ use Jane\JsonSchemaRuntime\Reference;
 use Jane\OpenApi2\Guesser\GuessClass;
 use Jane\OpenApi2\JsonSchema\Model\PathParameterSubSchema;
 use Jane\OpenApiCommon\Guesser\Guess\OperationGuess;
-use PhpParser\Node\Stmt;
-use PhpParser\Node\Scalar;
-use PhpParser\Node\Name;
-use PhpParser\Node\Expr;
 use PhpParser\Node\Arg;
+use PhpParser\Node\Expr;
+use PhpParser\Node\Name;
+use PhpParser\Node\Scalar;
+use PhpParser\Node\Stmt;
 
 trait GetGetUriTrait
 {

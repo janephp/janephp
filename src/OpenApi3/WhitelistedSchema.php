@@ -48,7 +48,8 @@ class WhitelistedSchema implements WhitelistFetchInterface
                 foreach ($requestBody->getContent() as $contentType => $content) {
                     if (\in_array($contentType, ['application/json', 'application/x-www-form-urlencoded'], true)) {
                         $contentReference = $operationGuess->getReference() . '/content/' . $contentType . '/schema';
-                        $classGuess = $this->guessClass->guessClass($content->getSchema(), $contentReference, $registry, $this->denormalizer);
+                        $schema = $content->getSchema();
+                        $classGuess = $this->guessClass->guessClass($schema, $contentReference, $registry);
                         if (null !== $classGuess) {
                             $this->schema->addRelation($baseOperation, $classGuess->getName());
                         }
@@ -95,7 +96,8 @@ class WhitelistedSchema implements WhitelistFetchInterface
             foreach ($parameters as $key => $parameter) {
                 if ($parameter instanceof Parameter && 'body' === $parameter->getIn()) {
                     $reference = $operationGuess->getReference() . '/parameters/' . $key;
-                    $classGuess = $this->guessClass->guessClass($parameter->getSchema(), $reference, $registry);
+                    $schema = $parameter->getSchema();
+                    $classGuess = $this->guessClass->guessClass($schema, $reference, $registry);
                     if (null !== $classGuess) {
                         $this->schema->addRelation($baseOperation, $classGuess->getName());
                     }

@@ -6,13 +6,13 @@ use Jane\JsonSchema\Generator\Context\Context;
 use Jane\OpenApi2\JsonSchema\Model\BodyParameter;
 use Jane\OpenApi2\JsonSchema\Model\FormDataParameterSubSchema;
 use Jane\OpenApiCommon\Guesser\Guess\OperationGuess;
-use PhpParser\Node\Stmt;
-use PhpParser\Node\Expr;
-use PhpParser\Node\Param;
 use PhpParser\Node;
-use PhpParser\Node\Name;
-use Symfony\Component\Serializer\SerializerInterface;
 use PhpParser\Node\Arg;
+use PhpParser\Node\Expr;
+use PhpParser\Node\Name;
+use PhpParser\Node\Param;
+use PhpParser\Node\Stmt;
+use Symfony\Component\Serializer\SerializerInterface;
 
 trait GetGetBodyTrait
 {

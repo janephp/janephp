@@ -4,10 +4,10 @@ namespace Jane\OpenApi2\Generator\Endpoint;
 
 use Jane\OpenApi2\JsonSchema\Model\OpenApi;
 use Jane\OpenApiCommon\Guesser\Guess\OperationGuess;
-use PhpParser\Node\Stmt;
 use PhpParser\Node\Expr;
-use PhpParser\Node\Scalar;
 use PhpParser\Node\Name;
+use PhpParser\Node\Scalar;
+use PhpParser\Node\Stmt;
 
 trait GetGetExtraHeadersTrait
 {

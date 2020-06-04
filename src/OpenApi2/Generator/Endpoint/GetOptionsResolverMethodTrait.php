@@ -6,10 +6,10 @@ use Jane\JsonSchemaRuntime\Reference;
 use Jane\OpenApi2\Generator\Parameter\NonBodyParameterGenerator;
 use Jane\OpenApi2\Guesser\GuessClass;
 use Jane\OpenApiCommon\Guesser\Guess\OperationGuess;
-use PhpParser\Node\Stmt;
-use PhpParser\Node\Expr;
 use PhpParser\Node;
+use PhpParser\Node\Expr;
 use PhpParser\Node\Name;
+use PhpParser\Node\Stmt;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 trait GetOptionsResolverMethodTrait

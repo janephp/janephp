@@ -152,7 +152,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Client
      */
     public function testDictionary(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Jane\OpenApi3\Tests\Expected\Endpoint\TestDictionary($queryParameters), $fetch);
+        return $this->executeEndpoint(new \Jane\OpenApi3\Tests\Expected\Endpoint\TestDictionary($queryParameters), $fetch);
     }
     public static function create($httpClient = null, array $additionalPlugins = array())
     {
