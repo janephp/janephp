@@ -16,7 +16,7 @@ use Symfony\Component\Serializer\SerializerInterface;
 
 trait GetGetBodyTrait
 {
-    private function getGetBody(OperationGuess $operation, Context $context): Stmt\ClassMethod
+    public function getGetBody(OperationGuess $operation, Context $context): Stmt\ClassMethod
     {
         $hasBody = false;
         $isSerializableBody = false;

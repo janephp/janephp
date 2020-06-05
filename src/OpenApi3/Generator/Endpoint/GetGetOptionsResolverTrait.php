@@ -1,20 +1,20 @@
 <?php
 
-namespace Jane\OpenApi2\Generator\Endpoint;
+namespace Jane\OpenApi3\Generator\Endpoint;
 
 use Jane\JsonSchemaRuntime\Reference;
-use Jane\OpenApi2\Generator\Parameter\NonBodyParameterGenerator;
-use Jane\OpenApi2\Guesser\GuessClass;
+use Jane\OpenApi3\Generator\Parameter\NonBodyParameterGenerator;
+use Jane\OpenApi3\Guesser\GuessClass;
+use Jane\OpenApi3\JsonSchema\Model\Parameter;
 use Jane\OpenApiCommon\Guesser\Guess\OperationGuess;
-use PhpParser\Node;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Name;
 use PhpParser\Node\Stmt;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-trait GetOptionsResolverMethodTrait
+trait GetGetOptionsResolverTrait
 {
-    public function getOptionsResolverMethod(OperationGuess $operation, string $class, string $methodName, GuessClass $guessClass, NonBodyParameterGenerator $nonBodyParameterGenerator): ?Stmt\ClassMethod
+    public function getOptionsResolverMethod(OperationGuess $operation, string $parameterIn, string $methodName, GuessClass $guessClass, NonBodyParameterGenerator $nonBodyParameterGenerator): ?Stmt\ClassMethod
     {
         $parameters = [];
 
@@ -23,7 +23,7 @@ trait GetOptionsResolverMethodTrait
                 $parameter = $guessClass->resolveParameter($parameter);
             }
 
-            if (is_a($parameter, $class)) {
+            if ($parameter instanceof Parameter && $parameterIn === $parameter->getIn()) {
                 $parameters[] = $parameter;
             }
         }
@@ -38,7 +38,7 @@ trait GetOptionsResolverMethodTrait
             'type' => Stmt\Class_::MODIFIER_PROTECTED,
             'stmts' => array_merge(
                 [
-                    new Node\Stmt\Expression(new Expr\Assign($optionsResolverVariable, new Expr\StaticCall(new Name('parent'), $methodName))),
+                    new Stmt\Expression(new Expr\Assign($optionsResolverVariable, new Expr\StaticCall(new Name('parent'), $methodName))),
                 ],
                 $nonBodyParameterGenerator->generateOptionsResolverStatements($optionsResolverVariable, $parameters),
                 [

@@ -1,10 +1,11 @@
 <?php
 
-namespace Jane\OpenApi2\Generator\Endpoint;
+namespace Jane\OpenApi3\Generator\Endpoint;
 
 use Jane\JsonSchemaRuntime\Reference;
-use Jane\OpenApi2\Guesser\GuessClass;
-use Jane\OpenApi2\JsonSchema\Model\PathParameterSubSchema;
+use Jane\OpenApi3\Generator\EndpointGenerator;
+use Jane\OpenApi3\Guesser\GuessClass;
+use Jane\OpenApi3\JsonSchema\Model\Parameter;
 use Jane\OpenApiCommon\Guesser\Guess\OperationGuess;
 use PhpParser\Node\Arg;
 use PhpParser\Node\Expr;
@@ -23,7 +24,7 @@ trait GetGetUriTrait
                 $parameter = $guessClass->resolveParameter($parameter);
             }
 
-            if ($parameter instanceof PathParameterSubSchema) {
+            if ($parameter instanceof Parameter && EndpointGenerator::IN_PATH === $parameter->getIn()) {
                 // $url = str_replace('{param}', $param, $url)
                 $names[] = $parameter->getName();
             }
