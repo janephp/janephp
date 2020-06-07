@@ -1,6 +1,6 @@
 <?php
 
-namespace Jane\OpenApi3\Generator\Endpoint;
+namespace Jane\OpenApiCommon\Generator\Endpoint;
 
 use Jane\OpenApiCommon\Guesser\Guess\OperationGuess;
 use PhpParser\Node\Expr;
