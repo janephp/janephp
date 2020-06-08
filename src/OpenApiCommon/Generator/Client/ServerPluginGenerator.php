@@ -3,7 +3,6 @@
 namespace Jane\OpenApiCommon\Generator\Client;
 
 use Http\Discovery\Psr17FactoryDiscovery;
-use Http\Discovery\UriFactoryDiscovery;
 use PhpParser\Node;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Name;
@@ -11,8 +10,6 @@ use PhpParser\Node\Stmt;
 
 trait ServerPluginGenerator
 {
-    abstract protected function getPsr18ClientGeneratorClass(): string;
-
     abstract protected function discoverServer($openApi): array;
 
     protected function needsServerPlugins($openApi): bool
@@ -26,17 +23,13 @@ trait ServerPluginGenerator
     {
         [$baseUri, $plugins] = $this->discoverServer($openApi);
 
-        $psr18ClientGeneratorClass = $this->getPsr18ClientGeneratorClass();
-        $discoveryFactoryClass = $this instanceof $psr18ClientGeneratorClass ? Psr17FactoryDiscovery::class : UriFactoryDiscovery::class;
-        $discoveryFactoryMethod = $this instanceof $psr18ClientGeneratorClass ? 'findUrlFactory' : 'find';
-
         $stmts = [
             new Stmt\Expression(new Expr\Assign(
                 new Expr\Variable('uri'),
                 new Expr\MethodCall(
                     new Expr\StaticCall(
-                        new Name\FullyQualified($discoveryFactoryClass),
-                        $discoveryFactoryMethod
+                        new Name\FullyQualified(Psr17FactoryDiscovery::class),
+                        'findUrlFactory'
                     ),
                     'createUri',
                     [

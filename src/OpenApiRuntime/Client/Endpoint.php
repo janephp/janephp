@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Jane\OpenApiRuntime\Client;
 
+use Psr\Http\Message\ResponseInterface;
 use Symfony\Component\Serializer\SerializerInterface;
 
 interface Endpoint
@@ -40,4 +41,11 @@ interface Endpoint
      * Get security scopes of an endpoint.
      */
     public function getAuthenticationScopes(): array;
+
+    /**
+     * Parse and transform a PSR7 Response into a different object.
+     *
+     * Implementations may vary depending the status code of the response and the fetch mode used.
+     */
+    public function parseResponse(ResponseInterface $response, SerializerInterface $serializer, string $fetchMode = Client::FETCH_OBJECT);
 }

@@ -2,7 +2,7 @@
 
 namespace Jane\OpenApi2\Tests\Expected;
 
-class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
+class Client extends \Jane\OpenApiRuntime\Client\Client
 {
     /**
      * 
@@ -14,7 +14,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function testGetWithUppercasePathParameters(string $testParameter, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Jane\OpenApi2\Tests\Expected\Endpoint\TestGetWithUppercasePathParameters($testParameter), $fetch);
+        return $this->executeEndpoint(new \Jane\OpenApi2\Tests\Expected\Endpoint\TestGetWithUppercasePathParameters($testParameter), $fetch);
     }
     public static function create($httpClient = null, array $additionalPlugins = array())
     {

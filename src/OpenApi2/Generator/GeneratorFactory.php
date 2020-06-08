@@ -32,9 +32,9 @@ class GeneratorFactory
             throw new InvalidArgumentException(sprintf('Unknown generator class %s', $endpointGeneratorClass));
         }
 
-        $psr7EndpointGenerator = new $endpointGeneratorClass($operationNaming, $bodyParameter, $nonBodyParameter, $serializer, $exceptionGenerator);
-        $psr7OperationGenerator = new Psr7OperationGenerator($psr7EndpointGenerator);
+        $endpointGenerator = new $endpointGeneratorClass($operationNaming, $bodyParameter, $nonBodyParameter, $serializer, $exceptionGenerator);
+        $operationGenerator = new OperationGenerator($endpointGenerator);
 
-        return new Psr18ClientGenerator($psr7OperationGenerator, $operationNaming);
+        return new ClientGenerator($operationGenerator, $operationNaming);
     }
 }

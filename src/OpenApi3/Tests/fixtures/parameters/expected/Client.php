@@ -2,7 +2,7 @@
 
 namespace Jane\OpenApi3\Tests\Expected;
 
-class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
+class Client extends \Jane\OpenApiRuntime\Client\Client
 {
     /**
      * 
@@ -20,7 +20,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function testGetWithPathParameters(string $testPath, array $queryParameters = array(), array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Jane\OpenApi3\Tests\Expected\Endpoint\TestGetWithPathParameters($testPath, $queryParameters, $headerParameters), $fetch);
+        return $this->executeEndpoint(new \Jane\OpenApi3\Tests\Expected\Endpoint\TestGetWithPathParameters($testPath, $queryParameters, $headerParameters), $fetch);
     }
     /**
      * 
@@ -38,7 +38,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function testPostWithPathParameters(string $testPath, array $queryParameters = array(), array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Jane\OpenApi3\Tests\Expected\Endpoint\TestPostWithPathParameters($testPath, $queryParameters, $headerParameters), $fetch);
+        return $this->executeEndpoint(new \Jane\OpenApi3\Tests\Expected\Endpoint\TestPostWithPathParameters($testPath, $queryParameters, $headerParameters), $fetch);
     }
     /**
      * 
@@ -57,7 +57,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function testQueryParameters(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Jane\OpenApi3\Tests\Expected\Endpoint\TestQueryParameters($queryParameters), $fetch);
+        return $this->executeEndpoint(new \Jane\OpenApi3\Tests\Expected\Endpoint\TestQueryParameters($queryParameters), $fetch);
     }
     /**
      * 
@@ -76,7 +76,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function testHeaderParameters(array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Jane\OpenApi3\Tests\Expected\Endpoint\TestHeaderParameters($headerParameters), $fetch);
+        return $this->executeEndpoint(new \Jane\OpenApi3\Tests\Expected\Endpoint\TestHeaderParameters($headerParameters), $fetch);
     }
     /**
      * 
@@ -88,7 +88,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function testFormParameters(\Jane\OpenApi3\Tests\Expected\Model\TestFormPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Jane\OpenApi3\Tests\Expected\Endpoint\TestFormParameters($requestBody), $fetch);
+        return $this->executeEndpoint(new \Jane\OpenApi3\Tests\Expected\Endpoint\TestFormParameters($requestBody), $fetch);
     }
     /**
      * 
@@ -100,7 +100,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function testFormFileParameters(\Jane\OpenApi3\Tests\Expected\Model\TestFormFilePostBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Jane\OpenApi3\Tests\Expected\Endpoint\TestFormFileParameters($requestBody), $fetch);
+        return $this->executeEndpoint(new \Jane\OpenApi3\Tests\Expected\Endpoint\TestFormFileParameters($requestBody), $fetch);
     }
     /**
      * 
@@ -112,7 +112,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function testBinaryBody($requestBody, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Jane\OpenApi3\Tests\Expected\Endpoint\TestBinaryBody($requestBody), $fetch);
+        return $this->executeEndpoint(new \Jane\OpenApi3\Tests\Expected\Endpoint\TestBinaryBody($requestBody), $fetch);
     }
     /**
      * 
@@ -126,7 +126,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function testPathParameters(string $testString, int $testInteger, float $testFloat, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Jane\OpenApi3\Tests\Expected\Endpoint\TestPathParameters($testString, $testInteger, $testFloat), $fetch);
+        return $this->executeEndpoint(new \Jane\OpenApi3\Tests\Expected\Endpoint\TestPathParameters($testString, $testInteger, $testFloat), $fetch);
     }
     /**
      * 
@@ -138,7 +138,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function getByTestInteger(int $testInteger, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Jane\OpenApi3\Tests\Expected\Endpoint\GetByTestInteger($testInteger), $fetch);
+        return $this->executeEndpoint(new \Jane\OpenApi3\Tests\Expected\Endpoint\GetByTestInteger($testInteger), $fetch);
     }
     /**
      * 
@@ -152,7 +152,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function testDictionary(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Jane\OpenApi3\Tests\Expected\Endpoint\TestDictionary($queryParameters), $fetch);
+        return $this->executeEndpoint(new \Jane\OpenApi3\Tests\Expected\Endpoint\TestDictionary($queryParameters), $fetch);
     }
     public static function create($httpClient = null, array $additionalPlugins = array())
     {

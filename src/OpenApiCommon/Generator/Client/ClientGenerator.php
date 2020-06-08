@@ -5,7 +5,7 @@ namespace Jane\OpenApiCommon\Generator\Client;
 use Http\Discovery\Psr17FactoryDiscovery;
 use Jane\JsonSchema\Generator\Context\Context;
 use Jane\JsonSchema\Registry\Schema as BaseSchema;
-use Jane\OpenApiRuntime\Client\Psr18Client;
+use Jane\OpenApiRuntime\Client\Client;
 use PhpParser\Node;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Name;
@@ -16,7 +16,7 @@ use Symfony\Component\Serializer\Encoder\JsonEncode;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Serializer;
 
-trait Psr18ClientGenerator
+trait ClientGenerator
 {
     abstract protected function getHttpClientCreateExpr(Context $context): array;
 
@@ -28,7 +28,7 @@ trait Psr18ClientGenerator
     protected function createResourceClass(string $name): Stmt\Class_
     {
         return new Stmt\Class_($name, [
-            'extends' => new Node\Name\FullyQualified(Psr18Client::class),
+            'extends' => new Node\Name\FullyQualified(Client::class),
         ]);
     }
 

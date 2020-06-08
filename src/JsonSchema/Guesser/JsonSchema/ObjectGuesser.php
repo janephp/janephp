@@ -14,7 +14,7 @@ use Jane\JsonSchema\Guesser\GuesserInterface;
 use Jane\JsonSchema\Guesser\GuesserResolverTrait;
 use Jane\JsonSchema\Guesser\PropertiesGuesserInterface;
 use Jane\JsonSchema\Guesser\TypeGuesserInterface;
-use Jane\JsonSchema\Model\JsonSchema;
+use Jane\JsonSchema\JsonSchema\Model\JsonSchema;
 use Jane\JsonSchema\Registry\Registry;
 use Jane\JsonSchemaRuntime\Reference;
 use Symfony\Component\Serializer\SerializerInterface;

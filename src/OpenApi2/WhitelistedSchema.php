@@ -20,19 +20,17 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 class WhitelistedSchema implements WhitelistFetchInterface
 {
     private $schema;
-    private $denormalizer;
     private $naming;
     private $guessClass;
 
     public function __construct(Schema $schema, DenormalizerInterface $denormalizer)
     {
         $this->schema = $schema;
-        $this->denormalizer = $denormalizer;
         $this->naming = new ChainOperationNaming([
             new OperationIdNaming(),
             new OperationUrlNaming(),
         ]);
-        $this->guessClass = new GuessClass(SchemaModel::class);
+        $this->guessClass = new GuessClass(SchemaModel::class, $denormalizer);
     }
 
     public function addOperationRelations(OperationGuess $operationGuess, Registry $registry): void
@@ -48,7 +46,7 @@ class WhitelistedSchema implements WhitelistFetchInterface
             foreach ($operation->getResponses() as $status => $response) {
                 $reference = $operationGuess->getReference() . '/responses/' . $status;
                 if ($response instanceof Reference) {
-                    [$reference, $response] = $this->guessClass->resolve($response, Response::class, $this->denormalizer);
+                    [$reference, $response] = $this->guessClass->resolve($response, Response::class);
                 }
 
                 /** @var Response $response */
@@ -56,7 +54,8 @@ class WhitelistedSchema implements WhitelistFetchInterface
                     continue;
                 }
 
-                $classGuess = $this->guessClass->guessClass($response->getSchema(), $reference, $registry, $this->denormalizer);
+                $schema = $response->getSchema();
+                $classGuess = $this->guessClass->guessClass($schema, $reference, $registry);
                 if (null !== $classGuess) {
                     $this->schema->addRelation($baseOperation, $classGuess->getName());
                 }
@@ -67,7 +66,8 @@ class WhitelistedSchema implements WhitelistFetchInterface
             foreach ($operation->getParameters() as $key => $parameter) {
                 if ($parameter instanceof BodyParameter && null !== $parameter->getSchema()) {
                     $reference = $operationGuess->getReference() . '/parameters/' . $key;
-                    $classGuess = $this->guessClass->guessClass($parameter->getSchema(), $reference, $registry, $this->denormalizer);
+                    $schema = $parameter->getSchema();
+                    $classGuess = $this->guessClass->guessClass($schema, $reference, $registry);
                     if (null !== $classGuess) {
                         $this->schema->addRelation($baseOperation, $classGuess->getName());
                     }

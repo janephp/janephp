@@ -18,7 +18,6 @@ class ModelGenerator implements GeneratorInterface
     use ClassGenerator;
     use GetterSetterGenerator;
     use PropertyGenerator;
-    use PropertyCheckTrait;
 
     const FILE_TYPE_MODEL = 'model';
 

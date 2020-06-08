@@ -1,8 +1,7 @@
 <?php
 
 $dirs = PhpCsFixer\Finder::create()
-    ->exclude('JsonSchema/Normalizer')
-    ->exclude('JsonSchema/Model')
+    ->exclude('JsonSchema/JsonSchema')
     ->exclude('JsonSchema/Tests/fixtures')
     ->exclude('JsonSchema/Tests/generated')
     ->exclude('OpenApi2/JsonSchema')

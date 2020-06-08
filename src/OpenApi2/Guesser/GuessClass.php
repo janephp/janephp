@@ -1,6 +1,6 @@
 <?php
 
-namespace Jane\OpenApi2\Generator;
+namespace Jane\OpenApi2\Guesser;
 
 use Jane\JsonSchemaRuntime\Reference;
 use Jane\OpenApi2\JsonSchema\Model\BodyParameter;
@@ -8,30 +8,11 @@ use Jane\OpenApi2\JsonSchema\Model\FormDataParameterSubSchema;
 use Jane\OpenApi2\JsonSchema\Model\HeaderParameterSubSchema;
 use Jane\OpenApi2\JsonSchema\Model\PathParameterSubSchema;
 use Jane\OpenApi2\JsonSchema\Model\QueryParameterSubSchema;
-use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
+use Jane\OpenApiCommon\Guesser\GuessClass as BaseGuessClass;
 
-trait GeneratorResolveTrait
+class GuessClass extends BaseGuessClass
 {
-    /** @var DenormalizerInterface */
-    protected $denormalizer;
-
-    protected function resolve(Reference $reference, string $class): array
-    {
-        $result = $reference;
-
-        do {
-            $refString = (string) $reference->getMergedUri();
-            $result = $result->resolve(function ($data) use ($result, $class) {
-                return $this->denormalizer->denormalize($data, $class, 'json', [
-                    'document-origin' => (string) $result->getMergedUri()->withFragment(''),
-                ]);
-            });
-        } while ($result instanceof Reference);
-
-        return [$refString, $result];
-    }
-
-    protected function resolveParameter(Reference $parameter)
+    public function resolveParameter(Reference $parameter)
     {
         $result = $parameter;
 

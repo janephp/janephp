@@ -35,7 +35,7 @@ class LibraryTest extends TestCase
     public function testLibrary(): void
     {
         $registry = new Registry();
-        $registry->addSchema(new Schema(__DIR__ . '/data/json-schema.json', 'Jane\JsonSchema', __DIR__ . '/generated', 'JsonSchema'));
+        $registry->addSchema(new Schema(__DIR__ . '/data/json-schema.json', 'Jane\JsonSchema\JsonSchema', __DIR__ . '/generated', 'JsonSchema'));
         $registry->addOutputDirectory(__DIR__ . '/generated');
 
         $this->jane->generate($registry);
@@ -46,17 +46,17 @@ class LibraryTest extends TestCase
         $this->assertFileExists(__DIR__ . '/generated/Normalizer/JaneObjectNormalizer.php');
 
         $this->assertEquals(
-            file_get_contents(__DIR__ . '/../Model/JsonSchema.php'),
+            file_get_contents(__DIR__ . '/../JsonSchema/Model/JsonSchema.php'),
             file_get_contents(__DIR__ . '/generated/Model/JsonSchema.php')
         );
 
         $this->assertEquals(
-            file_get_contents(__DIR__ . '/../Normalizer/JsonSchemaNormalizer.php'),
+            file_get_contents(__DIR__ . '/../JsonSchema/Normalizer/JsonSchemaNormalizer.php'),
             file_get_contents(__DIR__ . '/generated/Normalizer/JsonSchemaNormalizer.php')
         );
 
         $this->assertEquals(
-            file_get_contents(__DIR__ . '/../Normalizer/JaneObjectNormalizer.php'),
+            file_get_contents(__DIR__ . '/../JsonSchema/Normalizer/JaneObjectNormalizer.php'),
             file_get_contents(__DIR__ . '/generated/Normalizer/JaneObjectNormalizer.php')
         );
     }

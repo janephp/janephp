@@ -2,7 +2,7 @@
 
 namespace Jane\OpenApi2\Tests\Expected;
 
-class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
+class Client extends \Jane\OpenApiRuntime\Client\Client
 {
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
@@ -11,7 +11,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function getEmptyTest(string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Jane\OpenApi2\Tests\Expected\Endpoint\GetEmptyTest(), $fetch);
+        return $this->executeEndpoint(new \Jane\OpenApi2\Tests\Expected\Endpoint\GetEmptyTest(), $fetch);
     }
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
@@ -22,7 +22,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function getTest(string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Jane\OpenApi2\Tests\Expected\Endpoint\GetTest(), $fetch);
+        return $this->executeEndpoint(new \Jane\OpenApi2\Tests\Expected\Endpoint\GetTest(), $fetch);
     }
     /**
      * 
@@ -36,7 +36,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function getTestById(int $id, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Jane\OpenApi2\Tests\Expected\Endpoint\GetTestById($id), $fetch);
+        return $this->executeEndpoint(new \Jane\OpenApi2\Tests\Expected\Endpoint\GetTestById($id), $fetch);
     }
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
@@ -45,7 +45,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function getTestList(string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Jane\OpenApi2\Tests\Expected\Endpoint\GetTestList(), $fetch);
+        return $this->executeEndpoint(new \Jane\OpenApi2\Tests\Expected\Endpoint\GetTestList(), $fetch);
     }
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
@@ -54,7 +54,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function getTestComplexList(string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Jane\OpenApi2\Tests\Expected\Endpoint\GetTestComplexList(), $fetch);
+        return $this->executeEndpoint(new \Jane\OpenApi2\Tests\Expected\Endpoint\GetTestComplexList(), $fetch);
     }
     public static function create($httpClient = null, array $additionalPlugins = array())
     {

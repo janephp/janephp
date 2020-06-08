@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Jane\OpenApiRuntime\Tests\Client;
 
-use Jane\OpenApiRuntime\Client\Psr18Client;
-use Jane\OpenApiRuntime\Client\Psr7Endpoint;
+use Jane\OpenApiRuntime\Client\Client;
+use Jane\OpenApiRuntime\Client\Endpoint;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Client\ClientInterface;
 use Psr\Http\Message\RequestFactoryInterface;
@@ -15,11 +15,11 @@ use Psr\Http\Message\StreamFactoryInterface;
 use Psr\Http\Message\StreamInterface;
 use Symfony\Component\Serializer\SerializerInterface;
 
-class Psr18ClientTest extends TestCase
+class ClientTest extends TestCase
 {
     /**
-     * @covers \Jane\OpenApiRuntime\Client\Psr18Client::__construct
-     * @covers \Jane\OpenApiRuntime\Client\Psr18Client::executePsr7Endpoint
+     * @covers \Jane\OpenApiRuntime\Client\Client::__construct
+     * @covers \Jane\OpenApiRuntime\Client\Client::executeEndpoint
      */
     public function testExecutePsr7Endpoint(): void
     {
@@ -43,7 +43,7 @@ class Psr18ClientTest extends TestCase
 
         $streamFactoryMock = $this->createMock(StreamFactoryInterface::class);
 
-        $client = new class($httpClientMock, $requestFactoryMock, $serializerMock, $streamFactoryMock) extends Psr18Client {
+        $client = new class($httpClientMock, $requestFactoryMock, $serializerMock, $streamFactoryMock) extends Client {
         };
 
         $streamMock = $this->createMock(StreamInterface::class);
@@ -60,7 +60,7 @@ class Psr18ClientTest extends TestCase
             ->with('foo')
             ->willReturn($streamMock);
 
-        $endpointMock = $this->getMockBuilder(Psr7Endpoint::class)->getMock();
+        $endpointMock = $this->getMockBuilder(Endpoint::class)->getMock();
         $endpointMock
             ->expects($this->once())
             ->method('getBody')
@@ -84,9 +84,9 @@ class Psr18ClientTest extends TestCase
             ->willReturn([]);
         $endpointMock
             ->expects($this->once())
-            ->method('parsePSR7Response')
+            ->method('parseResponse')
             ->willReturn('foo');
 
-        $this->assertSame('foo', $client->executePsr7Endpoint($endpointMock));
+        $this->assertSame('foo', $client->executeEndpoint($endpointMock));
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Jane\JsonSchema\Model;
+namespace Jane\JsonSchema\JsonSchema\Model;
 
 class JsonSchema
 {

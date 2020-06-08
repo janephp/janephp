@@ -2,7 +2,7 @@
 
 namespace Jane\JsonSchema\Tools;
 
-use Jane\JsonSchema\Model\JsonSchema;
+use Jane\JsonSchema\JsonSchema\Model\JsonSchema;
 
 class JsonSchemaMerger
 {

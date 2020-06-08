@@ -3,11 +3,14 @@
 namespace Jane\OpenApiCommon\Generator\Parameter;
 
 use Jane\JsonSchema\Generator\Context\Context;
+use Jane\JsonSchema\Tools\InflectorTrait;
 use PhpParser\Node;
 use PhpParser\Parser;
 
 abstract class ParameterGenerator
 {
+    use InflectorTrait;
+
     /**
      * @var Parser
      */

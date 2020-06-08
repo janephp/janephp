@@ -2,10 +2,9 @@
 
 namespace Jane\OpenApi3\Generator\Parameter;
 
-use Doctrine\Common\Inflector\Inflector;
 use Jane\JsonSchema\Generator\Context\Context;
 use Jane\JsonSchemaRuntime\Reference;
-use Jane\OpenApi3\Generator\GeneratorResolveTrait;
+use Jane\OpenApi3\Guesser\GuessClass;
 use Jane\OpenApi3\JsonSchema\Model\Parameter;
 use Jane\OpenApi3\JsonSchema\Model\Schema;
 use Jane\OpenApiCommon\Generator\Parameter\ParameterGenerator;
@@ -19,12 +18,13 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 
 class NonBodyParameterGenerator extends ParameterGenerator
 {
-    use GeneratorResolveTrait;
+    /** @var GuessClass */
+    private $guessClass;
 
     public function __construct(DenormalizerInterface $denormalizer, Parser $parser)
     {
         parent::__construct($parser);
-        $this->denormalizer = $denormalizer;
+        $this->guessClass = new GuessClass(Schema::class, $denormalizer);
     }
 
     /**
@@ -34,7 +34,7 @@ class NonBodyParameterGenerator extends ParameterGenerator
      */
     public function generateMethodParameter($parameter, Context $context, string $reference): ?Node\Param
     {
-        $name = Inflector::camelize($parameter->getName());
+        $name = $this->getInflector()->camelize($parameter->getName());
         $methodParameter = new Node\Param(new Expr\Variable($name));
 
         if (!$parameter->getSchema()) {
@@ -73,7 +73,7 @@ class NonBodyParameterGenerator extends ParameterGenerator
             }
 
             if ($schema instanceof Reference) {
-                [$_, $schema] = $this->resolve($schema, Schema::class);
+                [$_, $schema] = $this->guessClass->resolve($schema, Schema::class);
             }
 
             if (null !== $schema && $schema->getType()) {
@@ -124,7 +124,7 @@ class NonBodyParameterGenerator extends ParameterGenerator
             $type = implode('|', $this->convertParameterType($parameter->getSchema()->getType(), $parameter->getSchema()->getAdditionalProperties()));
         }
 
-        return sprintf(' * @param %s $%s %s', $type, Inflector::camelize($parameter->getName()), $parameter->getDescription() ?: '');
+        return sprintf(' * @param %s $%s %s', $type, $this->getInflector()->camelize($parameter->getName()), $parameter->getDescription() ?: '');
     }
 
     public function generateOptionDocParameter(Parameter $parameter): string

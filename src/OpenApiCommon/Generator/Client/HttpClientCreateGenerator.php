@@ -3,7 +3,6 @@
 namespace Jane\OpenApiCommon\Generator\Client;
 
 use Http\Client\Common\PluginClient;
-use Http\Discovery\HttpClientDiscovery;
 use Http\Discovery\Psr18ClientDiscovery;
 use Jane\JsonSchema\Generator\Context\Context;
 use Jane\OpenApi3\JsonSchema\Model\OpenApi;
@@ -14,20 +13,15 @@ use PhpParser\Node\Stmt;
 
 trait HttpClientCreateGenerator
 {
-    abstract protected function getPsr18ClientGeneratorClass(): string;
-
     protected function getHttpClientCreateExpr(Context $context): array
     {
-        $psr18ClientGeneratorClass = $this->getPsr18ClientGeneratorClass();
-        $discoveryClientClass = $this instanceof $psr18ClientGeneratorClass ? Psr18ClientDiscovery::class : HttpClientDiscovery::class;
-
         /** @var OpenApi $openApi */
         $openApi = $context->getCurrentSchema()->getParsed();
         $statements = [
             new Stmt\Expression(new Expr\Assign(
                 new Expr\Variable('httpClient'),
                 new Expr\StaticCall(
-                    new Name\FullyQualified($discoveryClientClass),
+                    new Name\FullyQualified(Psr18ClientDiscovery::class),
                     'find'
                 )
             )),

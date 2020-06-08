@@ -3,9 +3,8 @@
 namespace Jane\OpenApi3\Generator\RequestBodyContent;
 
 use Jane\JsonSchema\Generator\Context\Context;
-use Jane\JsonSchemaRuntime\Reference;
-use Jane\OpenApi3\Generator\GeneratorResolveTrait;
 use Jane\OpenApi3\Generator\RequestBodyContentGeneratorInterface;
+use Jane\OpenApi3\Guesser\GuessClass;
 use Jane\OpenApi3\JsonSchema\Model\MediaType;
 use Jane\OpenApi3\JsonSchema\Model\Schema;
 use PhpParser\Node;
@@ -17,18 +16,20 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 
 abstract class AbstractBodyContentGenerator implements RequestBodyContentGeneratorInterface
 {
-    use GeneratorResolveTrait;
+    /** @var GuessClass */
+    protected $guessClass;
 
     public const PHP_TYPE_MIXED = 'mixed';
 
     public function __construct(DenormalizerInterface $denormalizer)
     {
-        $this->denormalizer = $denormalizer;
+        $this->guessClass = new GuessClass(Schema::class, $denormalizer);
     }
 
     public function getTypes(MediaType $content, string $reference, Context $context): array
     {
-        [$classGuess, $array, $schema] = $this->guessClass($content->getSchema(), $reference . '/schema', $context);
+        $schema = $content->getSchema();
+        $classGuess = $this->guessClass->guessClass($schema, $reference . '/schema', $context->getRegistry(), $array);
 
         if ($classGuess === null) {
             $types = $this->schemaTypeToPHP($schema->getType(), $schema->getFormat());
@@ -56,9 +57,10 @@ abstract class AbstractBodyContentGenerator implements RequestBodyContentGenerat
      */
     public function getTypeCondition(MediaType $content, string $reference, Context $context): Node
     {
-        [$classGuess, $array, $schema] = $this->guessClass($content->getSchema(), $reference . '/schema', $context);
+        $schema = $content->getSchema();
+        $classGuess = $this->guessClass->guessClass($schema, $reference . '/schema', $context->getRegistry(), $array);
 
-        if ($classGuess === null) {
+        if (null === $classGuess) {
             if ($array) {
                 return new Expr\BinaryOp\LogicalAnd(
                     new Expr\BinaryOp\LogicalAnd(
@@ -107,30 +109,6 @@ abstract class AbstractBodyContentGenerator implements RequestBodyContentGenerat
             new Expr\PropertyFetch(new Expr\Variable('this'), 'body'),
             new Name('\\' . $class)
         );
-    }
-
-    protected function guessClass($schema, string $reference, Context $context): array
-    {
-        $jsonReference = $reference;
-        $array = false;
-
-        if ($schema instanceof Reference) {
-            [$jsonReference, $schema] = $this->resolve($schema, Schema::class);
-        }
-
-        if ($schema instanceof Schema && 'array' === $schema->getType()) {
-            $array = true;
-            $jsonReference .= '/items';
-            $items = $schema->getItems();
-
-            if ($items instanceof Reference) {
-                [$jsonReference, $_] = $this->resolve($items, Schema::class);
-            }
-        }
-
-        $classGuess = $context->getRegistry()->getClass($jsonReference);
-
-        return [$classGuess, $array, $schema];
     }
 
     private function schemaTypeToPHP(?string $type, ?string $format = null): array

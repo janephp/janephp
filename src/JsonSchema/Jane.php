@@ -9,7 +9,7 @@ use Jane\JsonSchema\Generator\Naming;
 use Jane\JsonSchema\Generator\NormalizerGenerator;
 use Jane\JsonSchema\Guesser\ChainGuesser;
 use Jane\JsonSchema\Guesser\JsonSchema\JsonSchemaGuesserFactory;
-use Jane\JsonSchema\Normalizer\JaneObjectNormalizer;
+use Jane\JsonSchema\JsonSchema\Normalizer\JaneObjectNormalizer;
 use Jane\JsonSchema\Registry\Registry;
 use Jane\JsonSchema\Registry\Schema;
 use PhpParser\ParserFactory;
@@ -47,7 +47,7 @@ class Jane extends ChainGenerator
 
         /** @var Schema $schema */
         foreach ($schemas as $schema) {
-            $jsonSchema = $this->serializer->deserialize(file_get_contents($schema->getOrigin()), 'Jane\JsonSchema\Model\JsonSchema', 'json', [
+            $jsonSchema = $this->serializer->deserialize(file_get_contents($schema->getOrigin()), 'Jane\JsonSchema\JsonSchema\Model\JsonSchema', 'json', [
                 'document-origin' => $schema->getOrigin(),
             ]);
 

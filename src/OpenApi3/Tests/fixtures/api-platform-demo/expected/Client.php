@@ -2,7 +2,7 @@
 
 namespace ApiPlatform\Demo;
 
-class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
+class Client extends \Jane\OpenApiRuntime\Client\Client
 {
     /**
      * 
@@ -24,7 +24,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function getBookCollection(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \ApiPlatform\Demo\Endpoint\GetBookCollection($queryParameters), $fetch);
+        return $this->executeEndpoint(new \ApiPlatform\Demo\Endpoint\GetBookCollection($queryParameters), $fetch);
     }
     /**
      * 
@@ -38,7 +38,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function postBookCollection($requestBody, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \ApiPlatform\Demo\Endpoint\PostBookCollection($requestBody), $fetch);
+        return $this->executeEndpoint(new \ApiPlatform\Demo\Endpoint\PostBookCollection($requestBody), $fetch);
     }
     /**
      * 
@@ -51,7 +51,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function deleteBookItem(string $id, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \ApiPlatform\Demo\Endpoint\DeleteBookItem($id), $fetch);
+        return $this->executeEndpoint(new \ApiPlatform\Demo\Endpoint\DeleteBookItem($id), $fetch);
     }
     /**
      * 
@@ -64,7 +64,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function getBookItem(string $id, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \ApiPlatform\Demo\Endpoint\GetBookItem($id), $fetch);
+        return $this->executeEndpoint(new \ApiPlatform\Demo\Endpoint\GetBookItem($id), $fetch);
     }
     /**
      * 
@@ -79,7 +79,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function patchBookItem(string $id, \ApiPlatform\Demo\Model\Book $requestBody, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \ApiPlatform\Demo\Endpoint\PatchBookItem($id, $requestBody), $fetch);
+        return $this->executeEndpoint(new \ApiPlatform\Demo\Endpoint\PatchBookItem($id, $requestBody), $fetch);
     }
     /**
      * 
@@ -94,7 +94,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function putBookItem(string $id, $requestBody, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \ApiPlatform\Demo\Endpoint\PutBookItem($id, $requestBody), $fetch);
+        return $this->executeEndpoint(new \ApiPlatform\Demo\Endpoint\PutBookItem($id, $requestBody), $fetch);
     }
     /**
      * 
@@ -114,7 +114,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function apiBooksReviewsGetSubresource(string $id, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \ApiPlatform\Demo\Endpoint\ApiBooksReviewsGetSubresource($id, $queryParameters), $fetch);
+        return $this->executeEndpoint(new \ApiPlatform\Demo\Endpoint\ApiBooksReviewsGetSubresource($id, $queryParameters), $fetch);
     }
     /**
      * 
@@ -128,7 +128,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function getParchmentCollection(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \ApiPlatform\Demo\Endpoint\GetParchmentCollection($queryParameters), $fetch);
+        return $this->executeEndpoint(new \ApiPlatform\Demo\Endpoint\GetParchmentCollection($queryParameters), $fetch);
     }
     /**
      * 
@@ -142,7 +142,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function postParchmentCollection($requestBody, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \ApiPlatform\Demo\Endpoint\PostParchmentCollection($requestBody), $fetch);
+        return $this->executeEndpoint(new \ApiPlatform\Demo\Endpoint\PostParchmentCollection($requestBody), $fetch);
     }
     /**
      * 
@@ -155,7 +155,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function deleteParchmentItem(string $id, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \ApiPlatform\Demo\Endpoint\DeleteParchmentItem($id), $fetch);
+        return $this->executeEndpoint(new \ApiPlatform\Demo\Endpoint\DeleteParchmentItem($id), $fetch);
     }
     /**
      * 
@@ -168,7 +168,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function getParchmentItem(string $id, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \ApiPlatform\Demo\Endpoint\GetParchmentItem($id), $fetch);
+        return $this->executeEndpoint(new \ApiPlatform\Demo\Endpoint\GetParchmentItem($id), $fetch);
     }
     /**
      * 
@@ -183,7 +183,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function patchParchmentItem(string $id, \ApiPlatform\Demo\Model\Parchment $requestBody, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \ApiPlatform\Demo\Endpoint\PatchParchmentItem($id, $requestBody), $fetch);
+        return $this->executeEndpoint(new \ApiPlatform\Demo\Endpoint\PatchParchmentItem($id, $requestBody), $fetch);
     }
     /**
      * 
@@ -198,7 +198,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function putParchmentItem(string $id, $requestBody, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \ApiPlatform\Demo\Endpoint\PutParchmentItem($id, $requestBody), $fetch);
+        return $this->executeEndpoint(new \ApiPlatform\Demo\Endpoint\PutParchmentItem($id, $requestBody), $fetch);
     }
     /**
      * 
@@ -216,7 +216,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function getReviewCollection(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \ApiPlatform\Demo\Endpoint\GetReviewCollection($queryParameters), $fetch);
+        return $this->executeEndpoint(new \ApiPlatform\Demo\Endpoint\GetReviewCollection($queryParameters), $fetch);
     }
     /**
      * 
@@ -230,7 +230,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function postReviewCollection($requestBody, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \ApiPlatform\Demo\Endpoint\PostReviewCollection($requestBody), $fetch);
+        return $this->executeEndpoint(new \ApiPlatform\Demo\Endpoint\PostReviewCollection($requestBody), $fetch);
     }
     /**
      * 
@@ -243,7 +243,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function deleteReviewItem(string $id, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \ApiPlatform\Demo\Endpoint\DeleteReviewItem($id), $fetch);
+        return $this->executeEndpoint(new \ApiPlatform\Demo\Endpoint\DeleteReviewItem($id), $fetch);
     }
     /**
      * 
@@ -256,7 +256,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function getReviewItem(string $id, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \ApiPlatform\Demo\Endpoint\GetReviewItem($id), $fetch);
+        return $this->executeEndpoint(new \ApiPlatform\Demo\Endpoint\GetReviewItem($id), $fetch);
     }
     /**
      * 
@@ -271,7 +271,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function patchReviewItem(string $id, \ApiPlatform\Demo\Model\Review $requestBody, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \ApiPlatform\Demo\Endpoint\PatchReviewItem($id, $requestBody), $fetch);
+        return $this->executeEndpoint(new \ApiPlatform\Demo\Endpoint\PatchReviewItem($id, $requestBody), $fetch);
     }
     /**
      * 
@@ -286,7 +286,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function putReviewItem(string $id, $requestBody, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \ApiPlatform\Demo\Endpoint\PutReviewItem($id, $requestBody), $fetch);
+        return $this->executeEndpoint(new \ApiPlatform\Demo\Endpoint\PutReviewItem($id, $requestBody), $fetch);
     }
     public static function create($httpClient = null, array $additionalPlugins = array())
     {

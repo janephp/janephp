@@ -2,7 +2,6 @@
 
 namespace Jane\OpenApi2\Naming;
 
-use Doctrine\Common\Inflector\Inflector;
 use Jane\OpenApi2\JsonSchema\Model\Response;
 use Jane\OpenApi2\JsonSchema\Model\Schema;
 use Jane\OpenApiCommon\Guesser\Guess\OperationGuess;
@@ -55,7 +54,7 @@ class OperationUrlNaming extends CommonOperationUrlNaming
         }
 
         if ($shouldSingularize && \count($methodNameParts) > 0) {
-            $methodNameParts[$lastNonParameterPartIndex] = Inflector::singularize($methodNameParts[$lastNonParameterPartIndex]);
+            $methodNameParts[$lastNonParameterPartIndex] = $this->getInflector()->singularize($methodNameParts[$lastNonParameterPartIndex]);
         }
 
         return $prefix . ucfirst(implode('', $methodNameParts));

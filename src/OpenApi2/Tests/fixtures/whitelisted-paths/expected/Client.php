@@ -2,7 +2,7 @@
 
 namespace Jane\OpenApi2\Tests\Expected;
 
-class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
+class Client extends \Jane\OpenApiRuntime\Client\Client
 {
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
@@ -11,7 +11,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      */
     public function retrieveCompany(string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Jane\OpenApi2\Tests\Expected\Endpoint\RetrieveCompany(), $fetch);
+        return $this->executeEndpoint(new \Jane\OpenApi2\Tests\Expected\Endpoint\RetrieveCompany(), $fetch);
     }
     /**
     * Returns a list of your projects. The projects are returned sorted by creation date, with the most recently created projects appearing first.
@@ -31,7 +31,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
     */
     public function listProjects(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Jane\OpenApi2\Tests\Expected\Endpoint\ListProjects($queryParameters), $fetch);
+        return $this->executeEndpoint(new \Jane\OpenApi2\Tests\Expected\Endpoint\ListProjects($queryParameters), $fetch);
     }
     public static function create($httpClient = null, array $additionalPlugins = array())
     {
