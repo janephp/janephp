@@ -84,9 +84,6 @@ class ClassGuess
         $this->extensionsType = $extensionsType;
     }
 
-    /**
-     * @return array
-     */
     public function getExtensionsObject(): array
     {
         return $this->extensionsObject;

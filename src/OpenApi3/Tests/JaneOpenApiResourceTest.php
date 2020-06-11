@@ -2,10 +2,10 @@
 
 namespace Jane\OpenApi3\Tests;
 
+use Jane\OpenApiCommon\Console\Command\GenerateCommand;
+use Jane\OpenApiCommon\Console\Loader\ConfigLoader;
 use Jane\OpenApiCommon\Console\Loader\OpenApiMatcher;
 use Jane\OpenApiCommon\Console\Loader\SchemaLoader;
-use Jane\OpenApiCommon\Console\Loader\ConfigLoader;
-use Jane\OpenApiCommon\Console\Command\GenerateCommand;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Output\NullOutput;

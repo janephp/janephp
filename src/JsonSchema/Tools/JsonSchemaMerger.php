@@ -9,9 +9,6 @@ class JsonSchemaMerger
     /**
      * Create a new JsonSchema based on two merged schema.
      *
-     * @param JsonSchema $left
-     * @param JsonSchema $right
-     *
      * @TODO Handle more fields
      *
      * @return JsonSchema

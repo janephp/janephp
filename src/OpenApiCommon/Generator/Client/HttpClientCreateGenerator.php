@@ -7,10 +7,10 @@ use Http\Discovery\HttpClientDiscovery;
 use Http\Discovery\Psr18ClientDiscovery;
 use Jane\JsonSchema\Generator\Context\Context;
 use Jane\OpenApi3\JsonSchema\Model\OpenApi;
-use PhpParser\Node\Stmt;
+use PhpParser\Node;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Name;
-use PhpParser\Node;
+use PhpParser\Node\Stmt;
 
 trait HttpClientCreateGenerator
 {

@@ -11,8 +11,6 @@ trait ChainGuesserAwareTrait
 
     /**
      * Set the chain guesser.
-     *
-     * @param ChainGuesser $chainGuesser
      */
     public function setChainGuesser(ChainGuesser $chainGuesser)
     {
