@@ -30,7 +30,8 @@
         "symfony/property-info": "^4.4 || ^5.0",
         "symfony/serializer": "^4.4 || ^5.0",
         "symfony/string": "^5.0",
-        "symfony/var-dumper": "^5.0",
+        "symfony/translation-contracts": "^2.0",
+        "symfony/var-dumper": "^4.4 || ^5.0",
         "symfony/yaml": "^4.4 || ^5.0"
     },
     "replace": {
@@ -44,7 +45,7 @@
         "jane-php/open-api-runtime": "self.version"
     },
     "require-dev": {
-        "friendsofphp/php-cs-fixer": "2.15.3",
+        "friendsofphp/php-cs-fixer": "2.16.3",
         "phpbench/phpbench": "@dev",
         "phpunit/phpunit": "^8.0",
         "symfony/framework-bundle": "^4.4 || ^5.0"
