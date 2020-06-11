@@ -7,6 +7,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [6.0.1] - 2020-06-11
+
+### Added
+
+- [OpenAPI] [GH#308](https://github.com/janephp/janephp/pull/308) [Authentication] Registry to handle multiple Auth scopes
+- [OpenAPI] [GH#319](https://github.com/janephp/janephp/pull/319) Add support for custom endpoint generator class
+
+### Changed
+
+- [OpenAPI] [GH#317](https://github.com/janephp/janephp/pull/317) Allow dictionary parameters for OpenAPI 3
+
+### Fixed
+
+- [OpenAPI] [GH#309](https://github.com/janephp/janephp/pull/309) [Whitelist paths] fix infinite loop on circular reference in models
+- [Jane] [GH#327](https://github.com/janephp/janephp/pull/327) Fix composer dependencies
+
 ## [6.0.0] - 2020-05-06
 
 ### Added
@@ -304,7 +320,8 @@ See :
  * https://github.com/janephp/jane/releases
  * https://github.com/janephp/openapi/releases
 
-[Unreleased]: https://github.com/janephp/janephp/compare/v6.0.0...HEAD
+[Unreleased]: https://github.com/janephp/janephp/compare/v6.0.1...HEAD
+[6.0.1]: https://github.com/janephp/janephp/compare/v6.0.0...v6.0.1
 [6.0.0]: https://github.com/janephp/janephp/compare/v5.3.3...v6.0.0
 [5.3.2]: https://github.com/janephp/janephp/compare/v5.3.2...v5.3.3
 [5.3.2]: https://github.com/janephp/janephp/compare/v5.3.1...v5.3.2
