@@ -27,9 +27,9 @@
         "symfony/console": "^4.4 || 5.0.*",
         "symfony/filesystem": "^4.4 || 5.0.*",
         "symfony/options-resolver": "^4.4 || 5.0.*",
-        "symfony/property-info": "^4.4 || 5.0.*",
+        "symfony/property-info": "~5.1",
         "symfony/serializer": "^4.4 || 5.0.*",
-        "symfony/string": "5.0.*",
+        "symfony/string": "^5.0",
         "symfony/translation-contracts": "^2.0",
         "symfony/var-dumper": "^4.4 || 5.0.*",
         "symfony/yaml": "^4.4 || 5.0.*"
