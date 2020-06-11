@@ -8,8 +8,8 @@ use Jane\OpenApi3\JsonSchema\Model\Reference;
 use Jane\OpenApi3\JsonSchema\Model\RequestBody;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Name;
-use PhpParser\Node\Stmt;
 use PhpParser\Node\Param;
+use PhpParser\Node\Stmt;
 
 class RequestBodyGenerator
 {

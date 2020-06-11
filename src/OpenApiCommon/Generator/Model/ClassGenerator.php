@@ -3,10 +3,10 @@
 namespace Jane\OpenApiCommon\Generator\Model;
 
 use Jane\JsonSchema\Generator\Model\ClassGenerator as BaseClassGenerator;
+use PhpParser\Comment\Doc;
 use PhpParser\Node;
 use PhpParser\Node\Name;
 use PhpParser\Node\Stmt;
-use PhpParser\Comment\Doc;
 
 trait ClassGenerator
 {

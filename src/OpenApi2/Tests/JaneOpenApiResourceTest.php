@@ -2,8 +2,8 @@
 
 namespace Jane\OpenApi2\Tests;
 
-use Jane\OpenApiCommon\Console\Loader\ConfigLoader;
 use Jane\OpenApiCommon\Console\Command\GenerateCommand;
+use Jane\OpenApiCommon\Console\Loader\ConfigLoader;
 use Jane\OpenApiCommon\Console\Loader\OpenApiMatcher;
 use Jane\OpenApiCommon\Console\Loader\SchemaLoader;
 use PHPUnit\Framework\TestCase;

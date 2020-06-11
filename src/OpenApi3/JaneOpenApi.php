@@ -2,15 +2,15 @@
 
 namespace Jane\OpenApi3;
 
-use Jane\OpenApiCommon\Generator\AuthenticationGenerator;
-use Jane\OpenApiCommon\Generator\ModelGenerator;
 use Jane\JsonSchema\Generator\Naming;
-use Jane\OpenApiCommon\Generator\NormalizerGenerator;
 use Jane\OpenApi3\Generator\GeneratorFactory;
 use Jane\OpenApi3\Guesser\OpenApiSchema\GuesserFactory;
 use Jane\OpenApi3\SchemaParser\SchemaParser;
-use PhpParser\ParserFactory;
+use Jane\OpenApiCommon\Generator\AuthenticationGenerator;
+use Jane\OpenApiCommon\Generator\ModelGenerator;
+use Jane\OpenApiCommon\Generator\NormalizerGenerator;
 use Jane\OpenApiCommon\JaneOpenApi as CommonJaneOpenApi;
+use PhpParser\ParserFactory;
 
 class JaneOpenApi extends CommonJaneOpenApi
 {

@@ -2,9 +2,9 @@
 
 namespace Jane\AutoMapper\Compiler\Transformer;
 
+use Jane\AutoMapper\Compiler\MapperDependency;
 use Jane\AutoMapper\Compiler\PropertyMapping;
 use Jane\AutoMapper\Compiler\UniqueVariableScope;
-use Jane\AutoMapper\Compiler\MapperDependency;
 use PhpParser\Node\Arg;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Scalar;

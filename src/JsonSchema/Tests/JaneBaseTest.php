@@ -2,8 +2,8 @@
 
 namespace Jane\JsonSchema\Tests;
 
-use Jane\JsonSchema\Console\Loader\ConfigLoader;
 use Jane\JsonSchema\Console\Command\GenerateCommand;
+use Jane\JsonSchema\Console\Loader\ConfigLoader;
 use Jane\JsonSchema\Console\Loader\SchemaLoader;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Console\Input\ArrayInput;

@@ -6,6 +6,7 @@ use Jane\JsonSchemaRuntime\Reference;
 use Jane\OpenApi2\JsonSchema\Model\BodyParameter;
 use Jane\OpenApi2\JsonSchema\Model\Operation;
 use Jane\OpenApi2\JsonSchema\Model\Response;
+use Jane\OpenApi2\JsonSchema\Model\Schema as SchemaModel;
 use Jane\OpenApi2\Naming\OperationUrlNaming;
 use Jane\OpenApiCommon\Contracts\WhitelistFetchInterface;
 use Jane\OpenApiCommon\Guesser\Guess\OperationGuess;
@@ -15,7 +16,6 @@ use Jane\OpenApiCommon\Naming\OperationIdNaming;
 use Jane\OpenApiCommon\Registry\Registry;
 use Jane\OpenApiCommon\Registry\Schema;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
-use Jane\OpenApi2\JsonSchema\Model\Schema as SchemaModel;
 
 class WhitelistedSchema implements WhitelistFetchInterface
 {

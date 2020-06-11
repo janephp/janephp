@@ -2,9 +2,9 @@
 
 namespace Jane\OpenApiCommon\Generator\Authentication;
 
-use PhpParser\Node\Stmt;
-use PhpParser\Node\Name;
 use Http\Client\Common\Plugin;
+use PhpParser\Node\Name;
+use PhpParser\Node\Stmt;
 
 trait ClassGenerator
 {

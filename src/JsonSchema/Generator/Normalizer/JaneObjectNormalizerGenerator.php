@@ -3,10 +3,10 @@
 namespace Jane\JsonSchema\Generator\Normalizer;
 
 use PhpParser\Node\Arg;
+use PhpParser\Node\Expr;
 use PhpParser\Node\Name;
 use PhpParser\Node\Param;
 use PhpParser\Node\Stmt;
-use PhpParser\Node\Expr;
 
 trait JaneObjectNormalizerGenerator
 {
