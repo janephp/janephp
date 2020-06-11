@@ -56,4 +56,8 @@ class GetRules extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane
             return $serializer->deserialize($body, 'Jane\\OpenApi3\\Tests\\Expected\\Model\\Error', 'json');
         }
     }
+    public function getAuthenticationScopes() : array
+    {
+        return array();
+    }
 }

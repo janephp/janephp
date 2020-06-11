@@ -68,4 +68,8 @@ class ApiBooksReviewsGetSubresource extends \Jane\OpenApiRuntime\Client\BaseEndp
             throw new \ApiPlatform\Demo\Exception\ApiBooksReviewsGetSubresourceNotFoundException();
         }
     }
+    public function getAuthenticationScopes() : array
+    {
+        return array('apiKey');
+    }
 }

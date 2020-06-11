@@ -80,4 +80,8 @@ class PutParchmentItem extends \Jane\OpenApiRuntime\Client\BaseEndpoint implemen
             throw new \ApiPlatform\Demo\Exception\PutParchmentItemNotFoundException();
         }
     }
+    public function getAuthenticationScopes() : array
+    {
+        return array('apiKey');
+    }
 }

@@ -33,4 +33,8 @@ class ProducesTriggersAcceptBeingSet extends \Jane\OpenApiRuntime\Client\BaseEnd
             return null;
         }
     }
+    public function getAuthenticationScopes() : array
+    {
+        return array();
+    }
 }

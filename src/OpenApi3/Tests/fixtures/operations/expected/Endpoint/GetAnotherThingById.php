@@ -33,4 +33,8 @@ class GetAnotherThingById extends \Jane\OpenApiRuntime\Client\BaseEndpoint imple
             return $serializer->deserialize($body, 'Jane\\OpenApi3\\Tests\\Expected\\Model\\Thing', 'json');
         }
     }
+    public function getAuthenticationScopes() : array
+    {
+        return array();
+    }
 }

@@ -59,4 +59,8 @@ class PatchBookItem extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements 
             throw new \ApiPlatform\Demo\Exception\PatchBookItemNotFoundException();
         }
     }
+    public function getAuthenticationScopes() : array
+    {
+        return array('apiKey');
+    }
 }

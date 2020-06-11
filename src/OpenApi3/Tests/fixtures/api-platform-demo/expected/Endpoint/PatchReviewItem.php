@@ -59,4 +59,8 @@ class PatchReviewItem extends \Jane\OpenApiRuntime\Client\BaseEndpoint implement
             throw new \ApiPlatform\Demo\Exception\PatchReviewItemNotFoundException();
         }
     }
+    public function getAuthenticationScopes() : array
+    {
+        return array('apiKey');
+    }
 }

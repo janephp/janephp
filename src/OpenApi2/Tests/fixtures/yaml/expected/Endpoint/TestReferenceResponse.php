@@ -29,4 +29,8 @@ class TestReferenceResponse extends \Jane\OpenApiRuntime\Client\BaseEndpoint imp
             return null;
         }
     }
+    public function getAuthenticationScopes() : array
+    {
+        return array();
+    }
 }

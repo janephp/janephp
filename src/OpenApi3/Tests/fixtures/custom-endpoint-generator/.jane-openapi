@@ -1,0 +1,8 @@
+<?php
+
+return [
+    'openapi-file' => __DIR__ . '/swagger.yaml',
+    'namespace' => 'Jane\OpenApi3\Tests\Expected',
+    'directory' => __DIR__ . '/generated',
+    'endpoint-generator' => 'Jane\OpenApi3\Tests\Fixtures\CustomEndpointGenerator\CustomEndpointGenerator'
+];

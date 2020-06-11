@@ -40,7 +40,7 @@
             }
         },
         "securitySchemes": {
-            "ApiKey": {
+            "x-header": {
                 "type": "apiKey",
                 "in": "header",
                 "name": "X-API-KEY"

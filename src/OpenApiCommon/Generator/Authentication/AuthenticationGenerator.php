@@ -2,7 +2,6 @@
 
 namespace Jane\OpenApiCommon\Generator\Authentication;
 
-use Http\Promise\Promise;
 use Jane\OpenApiCommon\Guesser\Guess\SecuritySchemeGuess;
 use PhpParser\Node;
 use PhpParser\Node\Expr;
@@ -12,9 +11,9 @@ use PhpParser\Node\Scalar;
 use PhpParser\Node\Stmt;
 use Psr\Http\Message\RequestInterface;
 
-trait HandleRequestGenerator
+trait AuthenticationGenerator
 {
-    protected function createHandleRequest(SecuritySchemeGuess $securityScheme): Stmt\ClassMethod
+    protected function createAuthentication(SecuritySchemeGuess $securityScheme): Stmt\ClassMethod
     {
         $requestVar = new Expr\Variable('request');
         $nextVar = new Expr\Variable('next');
@@ -95,18 +94,13 @@ trait HandleRequestGenerator
                 break;
         }
 
-        $stmts[] = new Stmt\Return_(new Expr\FuncCall(
-            new Expr\Variable('next'),
-            [new Node\Arg($requestVar)]
-        ));
+        $stmts[] = new Stmt\Return_($requestVar);
 
-        return new Stmt\ClassMethod('handleRequest', [
+        return new Stmt\ClassMethod('authentication', [
             'params' => [
                 new Param($requestVar, null, new Name\FullyQualified(RequestInterface::class)),
-                new Param($nextVar, null, 'callable'),
-                new Param(new Expr\Variable('first'), null, 'callable'),
             ],
-            'returnType' => new Name\FullyQualified(Promise::class),
+            'returnType' => new Name\FullyQualified(RequestInterface::class),
             'stmts' => $stmts,
             'type' => Stmt\Class_::MODIFIER_PUBLIC,
         ]);

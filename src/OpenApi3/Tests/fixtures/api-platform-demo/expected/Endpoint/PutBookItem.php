@@ -80,4 +80,8 @@ class PutBookItem extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \J
             throw new \ApiPlatform\Demo\Exception\PutBookItemNotFoundException();
         }
     }
+    public function getAuthenticationScopes() : array
+    {
+        return array('apiKey');
+    }
 }

@@ -65,7 +65,9 @@
     },
     "autoload-dev": {
         "classmap": [
-            "src/AutoMapper/Bundle/Tests/Resources/app/AppKernel.php"
+            "src/AutoMapper/Bundle/Tests/Resources/app/AppKernel.php",
+            "src/OpenApi2/Tests/",
+            "src/OpenApi3/Tests/"
         ]
     },
     "bin": [

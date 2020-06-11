@@ -39,4 +39,8 @@ class Test extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\Ope
     {
         return null;
     }
+    public function getAuthenticationScopes() : array
+    {
+        return array();
+    }
 }

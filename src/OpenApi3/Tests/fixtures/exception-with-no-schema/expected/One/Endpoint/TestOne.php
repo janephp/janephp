@@ -33,4 +33,8 @@ class TestOne extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\
             throw new \Jane\OpenApi3\Tests\Expected\One\Exception\TestOneNotFoundException();
         }
     }
+    public function getAuthenticationScopes() : array
+    {
+        return array();
+    }
 }

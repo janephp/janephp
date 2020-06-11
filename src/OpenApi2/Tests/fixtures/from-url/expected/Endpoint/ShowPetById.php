@@ -44,4 +44,8 @@ class ShowPetById extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \J
         }
         return $serializer->deserialize($body, 'Jane\\OpenApi2\\Tests\\Expected\\Model\\Error', 'json');
     }
+    public function getAuthenticationScopes() : array
+    {
+        return array();
+    }
 }

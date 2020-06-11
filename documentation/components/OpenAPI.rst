@@ -146,6 +146,8 @@ Other options are available to customize the generated code:
  * ``whitelisted-paths``: This option allows you to generate only needed endpoints and related models. Be carefull,
    that option will filter models used by whitelisted endpoints and generate model & normalizer only for them. Here is
    some examples about how to use it::
+ * ``endpoint-generator``: Generator Class (extending `\Jane\OpenApi3\Generator\EndpointGenerator`) which can
+   specify custom endpoint interface & corresponding trait.
 
     <?php
 
@@ -319,14 +321,20 @@ through the second argument of the static ``create`` method.
 Authentication
 ~~~~~~~~~~~~~~
 
-We do generate a plugin for authentication when needed, it does support:
+We do generate a plugin for each authentication method declared in your scheme. It does support:
 
 - ``apiKey`` in header & query for both OpenAPI v2 & v3
 - HTTP Basic & Bearer for OpenAPI v3
 
 When your OpenAPI definition contains it, Jane will generate a Authentication namespace that contains all plugins you
-need for your API. Then you can pass it to your Jane Client (only if you let Jane make a HTTP Client for you, otherwise
-this second parameters is ignored).
+need for your API.
+Then you give all your authentication plugins to ``Jane\OpenApiRuntime\Client\Plugin\AuthenticationRegistry``. And
+finally you can pass it to your Jane Client (only if you let Jane make a HTTP Client for you, otherwise this second
+parameters is ignored).
+
+This ``AuthenticationRegistry`` class is used to match security scopes in your API, if an Endpoint require a certain
+authentication method, then it will use it. You need to have ``security`` fields correctly made in your scheme in order
+to use this class. If they're not set, you can simply pass the authentication plugin to your Jane Client.
 
 Extending the Client
 --------------------

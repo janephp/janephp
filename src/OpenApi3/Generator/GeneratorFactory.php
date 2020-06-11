@@ -2,6 +2,7 @@
 
 namespace Jane\OpenApi3\Generator;
 
+use InvalidArgumentException;
 use Jane\JsonSchema\Generator\GeneratorInterface;
 use Jane\OpenApi3\Generator\Parameter\NonBodyParameterGenerator;
 use Jane\OpenApi3\Generator\RequestBodyContent\DefaultBodyContentGenerator;
@@ -16,7 +17,7 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 
 class GeneratorFactory
 {
-    public static function build(DenormalizerInterface $serializer): GeneratorInterface
+    public static function build(DenormalizerInterface $serializer, string $endpointGeneratorClass): GeneratorInterface
     {
         $parserFactory = new ParserFactory();
         $parser = $parserFactory->create(ParserFactory::PREFER_PHP7);
@@ -33,7 +34,11 @@ class GeneratorFactory
         $requestBodyGenerator->addRequestBodyGenerator(['application/json'], new JsonBodyContentGenerator($serializer));
         $requestBodyGenerator->addRequestBodyGenerator(['application/x-www-form-urlencoded', 'multipart/form-data'], new FormBodyContentGenerator($serializer));
 
-        $psr7EndpointGenerator = new Psr7EndpointGenerator($operationNaming, $nonBodyParameter, $serializer, $exceptionGenerator, $requestBodyGenerator);
+        if (!class_exists($endpointGeneratorClass)) {
+            throw new InvalidArgumentException(sprintf('Unknown generator class %s', $endpointGeneratorClass));
+        }
+
+        $psr7EndpointGenerator = new $endpointGeneratorClass($operationNaming, $nonBodyParameter, $serializer, $exceptionGenerator, $requestBodyGenerator);
         $psr7OperationGenerator = new Psr7OperationGenerator($psr7EndpointGenerator);
 
         return new Psr18ClientGenerator($psr7OperationGenerator, $operationNaming);

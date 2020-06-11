@@ -29,4 +29,8 @@ class GetTestOperationUrlWithExtension extends \Jane\OpenApiRuntime\Client\BaseE
             return null;
         }
     }
+    public function getAuthenticationScopes() : array
+    {
+        return array();
+    }
 }

@@ -30,4 +30,8 @@ class GetTestComplexList extends \Jane\OpenApiRuntime\Client\BaseEndpoint implem
         }
         return $serializer->deserialize($body, 'Jane\\OpenApi2\\Tests\\Expected\\Model\\TestComplexListGetResponsedefault', 'json');
     }
+    public function getAuthenticationScopes() : array
+    {
+        return array();
+    }
 }

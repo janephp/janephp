@@ -33,4 +33,8 @@ class TestReferenceResponse extends \Jane\OpenApiRuntime\Client\BaseEndpoint imp
             return $serializer->deserialize($body, 'Jane\\OpenApi3\\Tests\\Expected\\Model\\ResponseCommon', 'json');
         }
     }
+    public function getAuthenticationScopes() : array
+    {
+        return array();
+    }
 }

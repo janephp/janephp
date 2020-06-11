@@ -59,4 +59,8 @@ class PatchParchmentItem extends \Jane\OpenApiRuntime\Client\BaseEndpoint implem
             throw new \ApiPlatform\Demo\Exception\PatchParchmentItemNotFoundException();
         }
     }
+    public function getAuthenticationScopes() : array
+    {
+        return array('apiKey');
+    }
 }

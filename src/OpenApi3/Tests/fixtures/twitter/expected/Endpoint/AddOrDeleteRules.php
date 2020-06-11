@@ -61,4 +61,8 @@ class AddOrDeleteRules extends \Jane\OpenApiRuntime\Client\BaseEndpoint implemen
             return $serializer->deserialize($body, 'Jane\\OpenApi3\\Tests\\Expected\\Model\\Error', 'json');
         }
     }
+    public function getAuthenticationScopes() : array
+    {
+        return array();
+    }
 }

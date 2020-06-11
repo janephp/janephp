@@ -59,4 +59,8 @@ class TestFormParameters extends \Jane\OpenApiRuntime\Client\BaseEndpoint implem
             return null;
         }
     }
+    public function getAuthenticationScopes() : array
+    {
+        return array();
+    }
 }

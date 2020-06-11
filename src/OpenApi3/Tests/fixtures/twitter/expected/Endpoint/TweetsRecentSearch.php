@@ -78,4 +78,8 @@ class TweetsRecentSearch extends \Jane\OpenApiRuntime\Client\BaseEndpoint implem
             return $serializer->deserialize($body, 'Jane\\OpenApi3\\Tests\\Expected\\Model\\Error', 'json');
         }
     }
+    public function getAuthenticationScopes() : array
+    {
+        return array();
+    }
 }

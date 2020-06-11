@@ -41,4 +41,8 @@ class GetTest extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\
             throw new \Jane\OpenApi3\Tests\Expected\Exception\GetTestNotFoundException($serializer->deserialize($body, 'Jane\\OpenApi3\\Tests\\Expected\\Model\\Error', 'json'));
         }
     }
+    public function getAuthenticationScopes() : array
+    {
+        return array();
+    }
 }
