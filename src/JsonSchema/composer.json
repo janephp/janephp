@@ -40,6 +40,9 @@
     "suggest": {
         "friendsofphp/php-cs-fixer": "Allow to automatically fix cs on generated code for better visualisation"
     },
+    "conflict": {
+        "symfony/framework-bundle": "5.1.0"
+    },
     "extra": {
         "branch-alias": {
             "dev-master": "6-dev"
