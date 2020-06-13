@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [6.0.2] - 2020-06-13
+
+### Fixed
+
+- [Jane] [GH#335](https://github.com/janephp/janephp/pull/335) Symfony 5.1 compatibility
+
 ## [6.0.1] - 2020-06-11
 
 ### Added

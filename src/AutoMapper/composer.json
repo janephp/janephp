@@ -15,18 +15,19 @@
         "php": "^7.2.5",
         "doctrine/inflector": "^1.4",
         "nikic/php-parser": "^4.0",
-        "symfony/property-info": "~5.1"
+        "symfony/property-info": "^5.1"
     },
     "require-dev": {
         "doctrine/annotations": "~1.0",
         "phpdocumentor/reflection-docblock": "^3.0 || ^4.0",
-        "symfony/serializer": "^4.2 || 5.0.*"
+        "symfony/serializer": "^4.2 || ^5.0"
     },
     "suggest": {
         "symfony/serializer": "Allow to bridge mappers to normalizer and denormalizer"
     },
     "conflict": {
-        "symfony/serializer": "<4.2"
+        "symfony/serializer": "<4.2",
+        "symfony/framework-bundle": "5.1.0"
     },
     "extra": {
         "branch-alias": {
