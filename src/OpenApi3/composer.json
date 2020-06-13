@@ -42,6 +42,9 @@
     "suggest": {
         "friendsofphp/php-cs-fixer": "To have a nice formatting of the generated files"
     },
+    "conflict": {
+        "symfony/framework-bundle": "5.1.0"
+    },
     "extra": {
         "branch-alias": {
             "dev-master": "6-dev"
