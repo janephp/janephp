@@ -45,7 +45,7 @@ class NonBodyParameterGenerator extends ParameterGenerator
             $methodParameter->default = $this->getDefaultAsExpr($parameter);
         }
 
-        $types = $this->convertParameterType($parameter->getSchema()->getType(), $parameter->getSchema()->getAdditionalProperties());
+        $types = $this->convertParameterType($parameter->getSchema());
 
         if (\count($types) === 1) {
             $methodParameter->type = new Node\Name($types[0]);
@@ -79,7 +79,7 @@ class NonBodyParameterGenerator extends ParameterGenerator
             if (null !== $schema && $schema->getType()) {
                 $types = [];
 
-                foreach ($this->convertParameterType($schema->getType(), $schema->getAdditionalProperties()) as $typeString) {
+                foreach ($this->convertParameterType($schema) as $typeString) {
                     $types[] = new Expr\ArrayItem(new Scalar\String_($typeString));
                 }
 
@@ -121,7 +121,7 @@ class NonBodyParameterGenerator extends ParameterGenerator
         $type = 'mixed';
 
         if ($parameter->getSchema()) {
-            $type = implode('|', $this->convertParameterType($parameter->getSchema()->getType(), $parameter->getSchema()->getAdditionalProperties()));
+            $type = implode('|', $this->convertParameterType($parameter->getSchema()));
         }
 
         return sprintf(' * @param %s $%s %s', $type, $this->getInflector()->camelize($parameter->getName()), $parameter->getDescription() ?: '');
@@ -132,7 +132,7 @@ class NonBodyParameterGenerator extends ParameterGenerator
         $type = 'mixed';
 
         if ($parameter->getSchema() instanceof Schema) {
-            $type = implode('|', $this->convertParameterType($parameter->getSchema()->getType(), $parameter->getSchema()->getAdditionalProperties()));
+            $type = implode('|', $this->convertParameterType($parameter->getSchema()));
         }
 
         return sprintf(' *     @var %s $%s %s', $type, $parameter->getName(), $parameter->getDescription() ?: '');
@@ -152,8 +152,15 @@ class NonBodyParameterGenerator extends ParameterGenerator
         return $expr;
     }
 
-    private function convertParameterType(string $type, $additionalProperties): array
+    private function convertParameterType(Schema $schema): array
     {
+        $type = $schema->getType();
+        $additionalProperties = $schema->getAdditionalProperties();
+
+        if (null === $type && null !== $schema->getEnum() && \count($schema->getEnum()) > 0) {
+            $type = 'string';
+        }
+
         if ($additionalProperties instanceof Schema &&
             'object' === $type &&
             'string' === $additionalProperties->getType()) {
