@@ -1,0 +1,75 @@
+<?php
+
+namespace CreditSafe\API\Endpoint;
+
+class FilteredEventRules extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7Endpoint
+{
+    protected $countryCode;
+    /**
+     * Get all available notification event rules for the given `countryCode`. Notification event rules allow you to control which events you wish to monitor for the `companies` contained within a given `portfolio`.
+     *
+     * @param string $countryCode ISO/Alpha 2 format country code for which notification event rules will be retured.
+     * @param array $headerParameters {
+     *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
+     * }
+     */
+    public function __construct(string $countryCode, array $headerParameters = array())
+    {
+        $this->countryCode = $countryCode;
+        $this->headerParameters = $headerParameters;
+    }
+    use \Jane\OpenApiRuntime\Client\Psr7EndpointTrait;
+    public function getMethod() : string
+    {
+        return 'GET';
+    }
+    public function getUri() : string
+    {
+        return str_replace(array('{countryCode}'), array($this->countryCode), '/monitoring/eventRules/{countryCode}');
+    }
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
+    {
+        return array(array(), null);
+    }
+    public function getExtraHeaders() : array
+    {
+        return array('Accept' => array('application/json'));
+    }
+    protected function getHeadersOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
+    {
+        $optionsResolver = parent::getHeadersOptionsResolver();
+        $optionsResolver->setDefined(array('Authorization'));
+        $optionsResolver->setRequired(array('Authorization'));
+        $optionsResolver->setDefaults(array());
+        $optionsResolver->setAllowedTypes('Authorization', array('string'));
+        return $optionsResolver;
+    }
+    /**
+     * {@inheritdoc}
+     *
+     * @throws \CreditSafe\API\Exception\FilteredEventRulesBadRequestException
+     * @throws \CreditSafe\API\Exception\FilteredEventRulesForbiddenException
+     * @throws \CreditSafe\API\Exception\FilteredEventRulesNotFoundException
+     *
+     * @return null|\CreditSafe\API\Model\EventRulesResponse
+     */
+    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    {
+        if (200 === $status && mb_strpos($contentType, 'application/json') !== false) {
+            return $serializer->deserialize($body, 'CreditSafe\\API\\Model\\EventRulesResponse', 'json');
+        }
+        if (400 === $status && mb_strpos($contentType, 'application/json') !== false) {
+            throw new \CreditSafe\API\Exception\FilteredEventRulesBadRequestException($serializer->deserialize($body, 'CreditSafe\\API\\Model\\BadRequestError', 'json'));
+        }
+        if (403 === $status && mb_strpos($contentType, 'application/json') !== false) {
+            throw new \CreditSafe\API\Exception\FilteredEventRulesForbiddenException();
+        }
+        if (404 === $status && mb_strpos($contentType, 'application/json') !== false) {
+            throw new \CreditSafe\API\Exception\FilteredEventRulesNotFoundException();
+        }
+    }
+    public function getAuthenticationScopes() : array
+    {
+        return array('bearerAuth');
+    }
+}
