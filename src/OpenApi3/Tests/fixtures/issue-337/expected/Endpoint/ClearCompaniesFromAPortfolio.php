@@ -8,8 +8,8 @@ class ClearCompaniesFromAPortfolio extends \Jane\OpenApiRuntime\Client\BaseEndpo
     /**
      * Delete companies from current portfolio
      *
-     * @param string $portfolioId 
-     * @param \stdClass $requestBody 
+     * @param string $portfolioId The unique identifier of the portfolio you want to delete companies from, obtained from `/portfolios`.
+     * @param \CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdCompaniesClearPatchBody $requestBody 
      * @param array $queryParameters {
      *     @var bool $clearAll When ClearAll queryparameter is False,Companies List needs to be passed. When ClearAll queryparameter is True, Companies List must be empty. All companies will be deleted
      * }
@@ -17,7 +17,7 @@ class ClearCompaniesFromAPortfolio extends \Jane\OpenApiRuntime\Client\BaseEndpo
      *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * }
      */
-    public function __construct(string $portfolioId, \stdClass $requestBody, array $queryParameters = array(), array $headerParameters = array())
+    public function __construct(string $portfolioId, \CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdCompaniesClearPatchBody $requestBody, array $queryParameters = array(), array $headerParameters = array())
     {
         $this->portfolioId = $portfolioId;
         $this->body = $requestBody;
@@ -35,8 +35,8 @@ class ClearCompaniesFromAPortfolio extends \Jane\OpenApiRuntime\Client\BaseEndpo
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        if ($this->body instanceof \stdClass) {
-            return array(array('Content-Type' => array('application/json')), json_encode($this->body));
+        if ($this->body instanceof \CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdCompaniesClearPatchBody) {
+            return array(array('Content-Type' => array('application/json')), $serializer->serialize($this->body, 'json'));
         }
         return array(array(), null);
     }

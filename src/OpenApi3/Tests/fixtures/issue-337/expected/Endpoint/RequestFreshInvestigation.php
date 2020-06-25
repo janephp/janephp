@@ -5,7 +5,7 @@ namespace CreditSafe\API\Endpoint;
 class RequestFreshInvestigation extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
 {
     /**
-     * Places an order for a Fresh Investigation (Offline Report). Providing as much detail as   possible about the Company, our team will use official sources and registries to quickly answer questions about a company’s stability and financial health. Fresh Investigations take 5.5 days on average to complete.
+     * Places an order for a Fresh Investigation (Offline Report). Providing as much detail as possible about the Company, our team will use official sources and registries to quickly answer questions about a company’s stability and financial health. Fresh Investigations take 5.5 days on average to complete.
      *
      * @param \CreditSafe\API\Model\CreateFreshInvestigationRequest $requestBody 
      * @param array $headerParameters {
@@ -54,10 +54,13 @@ class RequestFreshInvestigation extends \Jane\OpenApiRuntime\Client\BaseEndpoint
      * @throws \CreditSafe\API\Exception\RequestFreshInvestigationForbiddenException
      * @throws \CreditSafe\API\Exception\RequestFreshInvestigationNotFoundException
      *
-     * @return null
+     * @return null|\CreditSafe\API\Model\SubmittedFreshInvestigationRepsonse
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
+        if (200 === $status && mb_strpos($contentType, 'application/json') !== false) {
+            return $serializer->deserialize($body, 'CreditSafe\\API\\Model\\SubmittedFreshInvestigationRepsonse', 'json');
+        }
         if (400 === $status && mb_strpos($contentType, 'application/json') !== false) {
             throw new \CreditSafe\API\Exception\RequestFreshInvestigationBadRequestException();
         }

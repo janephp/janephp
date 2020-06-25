@@ -6,9 +6,9 @@ class ListNotificationEventsInAPortfolioFiltered extends \Jane\OpenApiRuntime\Cl
 {
     protected $portfolioId;
     /**
-     * Get all notificationEvents based on the portfolio id , optionally
+     * Get all notificationEvents based on the portfolio id, optionally filter with query parameters
      *
-     * @param string $portfolioId 
+     * @param string $portfolioId The unique identifier of the portfolio, obtained from `/portfolios`.
      * @param array $queryParameters {
      *     @var string $searchQuery Return notificationEvents that match the given value
      *     @var string $sortDir 

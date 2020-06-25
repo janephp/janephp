@@ -47,12 +47,12 @@ class CountriesInSubscription extends \Jane\OpenApiRuntime\Client\BaseEndpoint i
      * @throws \CreditSafe\API\Exception\CountriesInSubscriptionBadRequestException
      * @throws \CreditSafe\API\Exception\CountriesInSubscriptionUnauthorizedException
      *
-     * @return null
+     * @return null|\CreditSafe\API\Model\AccessCountriesResponse
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         if (200 === $status && mb_strpos($contentType, 'application/json') !== false) {
-            return json_decode($body);
+            return $serializer->deserialize($body, 'CreditSafe\\API\\Model\\AccessCountriesResponse', 'json');
         }
         if (400 === $status && mb_strpos($contentType, 'application/json') !== false) {
             throw new \CreditSafe\API\Exception\CountriesInSubscriptionBadRequestException();
