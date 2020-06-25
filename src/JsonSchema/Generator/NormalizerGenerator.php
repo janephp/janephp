@@ -46,18 +46,24 @@ class NormalizerGenerator implements GeneratorInterface
     protected $skipNullValues;
 
     /**
+     * @var array A list of model FQCN which should be overrided when generating the normalizer
+     */
+    protected $overrideModelFqcns;
+
+    /**
      * @param Naming $naming       Naming Service
      * @param Parser $parser       PHP Parser
      * @param bool   $useReference Whether to generate the JSON Reference system
      * @param bool   $useCache     Whether to use the CacheableSupportsMethodInterface interface, for >sf 4.1
      */
-    public function __construct(Naming $naming, Parser $parser, bool $useReference = true, bool $useCacheableSupportsMethod = null, bool $skipNullValues = true)
+    public function __construct(Naming $naming, Parser $parser, bool $useReference = true, bool $useCacheableSupportsMethod = null, bool $skipNullValues = true, array $overrideModelFqcns = [])
     {
         $this->naming = $naming;
         $this->parser = $parser;
         $this->useReference = $useReference;
         $this->useCacheableSupportsMethod = $this->canUseCacheableSupportsMethod($useCacheableSupportsMethod);
         $this->skipNullValues = $skipNullValues;
+        $this->overrideModelFqcns = $overrideModelFqcns;
     }
 
     /**
@@ -77,6 +83,10 @@ class NormalizerGenerator implements GeneratorInterface
 
         foreach ($schema->getClasses() as $class) {
             $modelFqdn = $schema->getNamespace() . '\\Model\\' . $class->getName();
+
+            if (isset($this->overrideModelFqcns[$modelFqdn])) {
+                $modelFqdn = $this->overrideModelFqcns[$modelFqdn];
+            }
 
             $methods = [];
             $methods[] = $this->createSupportsDenormalizationMethod($modelFqdn);

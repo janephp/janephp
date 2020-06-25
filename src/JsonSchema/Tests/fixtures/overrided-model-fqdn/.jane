@@ -1,0 +1,11 @@
+<?php
+
+return [
+    'json-schema-file' => __DIR__ . '/schema.json',
+    'root-class' => 'Test',
+    'namespace' => 'Jane\JsonSchema\Tests\Expected',
+    'directory' => __DIR__ . '/generated',
+    'override-model-fqcn' => [
+        'Jane\JsonSchema\Tests\Expected\Model\Foo' => 'Custom\Model\Foo',
+    ],
+];

@@ -102,7 +102,7 @@ class Jane extends ChainGenerator
         $naming = new Naming();
         $parser = (new ParserFactory())->create(ParserFactory::PREFER_PHP7);
         $modelGenerator = new ModelGenerator($naming, $parser);
-        $normGenerator = new NormalizerGenerator($naming, $parser, $options['reference'], $options['use-cacheable-supports-method'] ?? false, $options['skip-null-values'] ?? true);
+        $normGenerator = new NormalizerGenerator($naming, $parser, $options['reference'], $options['use-cacheable-supports-method'] ?? false, $options['skip-null-values'] ?? true, $options['override-model-fqcn'] ?? []);
 
         $self = new self($serializer, $chainGuesser, $naming, $options['strict']);
         $self->addGenerator($modelGenerator);
