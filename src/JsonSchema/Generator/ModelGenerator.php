@@ -8,7 +8,9 @@ use Jane\JsonSchema\Generator\Model\GetterSetterGenerator;
 use Jane\JsonSchema\Generator\Model\PropertyGenerator;
 use Jane\JsonSchema\Guesser\Guess\ClassGuess;
 use Jane\JsonSchema\Guesser\Guess\Property;
+use Jane\JsonSchema\Guesser\Guess\Type;
 use Jane\JsonSchema\Registry\Schema;
+use Jane\JsonSchema\Tools\InflectorTrait;
 use PhpParser\Node\Name;
 use PhpParser\Node\Stmt;
 use PhpParser\Parser;
@@ -18,6 +20,7 @@ class ModelGenerator implements GeneratorInterface
     use ClassGenerator;
     use GetterSetterGenerator;
     use PropertyGenerator;
+    use InflectorTrait;
 
     const FILE_TYPE_MODEL = 'model';
 
@@ -86,6 +89,14 @@ class ModelGenerator implements GeneratorInterface
         $methods = [];
         $methods[] = $this->createGetter($property, $namespace, $strict);
         $methods[] = $this->createSetter($property, $namespace, $strict);
+
+        if (Type::TYPE_BOOLEAN === $property->getType()->getName() && $strict) {
+            if ($property->getName() === $this->getInflector()->pluralize($property->getName())) {
+                $methods[] = $this->createGetter($property, $namespace, $strict, 'has');
+            } else {
+                $methods[] = $this->createGetter($property, $namespace, $strict, 'is');
+            }
+        }
 
         return $methods;
     }

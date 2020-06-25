@@ -1,0 +1,14 @@
+{
+    "id": "http://json-schema.org/draft-04/schema#",
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "description": "Schema for object with boolean values",
+    "type": "object",
+    "properties": {
+        "active": {
+            "type": "boolean"
+        },
+        "elements": {
+            "type": "boolean"
+        }
+    }
+}

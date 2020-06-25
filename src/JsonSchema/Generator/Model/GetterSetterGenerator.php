@@ -18,7 +18,7 @@ trait GetterSetterGenerator
      */
     abstract protected function getNaming(): Naming;
 
-    protected function createGetter(Property $property, string $namespace, bool $strict): Stmt\ClassMethod
+    protected function createGetter(Property $property, string $namespace, bool $strict, string $prefix = 'get'): Stmt\ClassMethod
     {
         $returnType = $property->getType()->getTypeHint($namespace);
 
@@ -28,7 +28,7 @@ trait GetterSetterGenerator
 
         return new Stmt\ClassMethod(
             // getProperty
-            $this->getNaming()->getPrefixedMethodName('get', $property->getPhpName()),
+            $this->getNaming()->getPrefixedMethodName($prefix, $property->getPhpName()),
             [
                 // public function
                 'type' => Stmt\Class_::MODIFIER_PUBLIC,
