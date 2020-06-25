@@ -109,7 +109,7 @@ Finally, we create a controller that will fetch the data from the API and show a
 
     class FactController extends AbstractController
     {
-        // Here we will inject the Jane Client, this will allow us to recover the cat fact from the API !
+        // Here we will inject the Jane Client, this will allow us to recover the cat fact from the API!
         public function index(Client $client)
         {
             // We will render our home template with the cat fact from the API
