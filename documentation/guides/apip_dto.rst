@@ -76,5 +76,5 @@ model. Here is this transformer, called ``BeerOutputDataTransformer``, but decom
         }
     }
 
-With only both of theses, you will have clean custom model output with API Platform !
+With only both of theses, you will have clean custom model output with API Platform!
 

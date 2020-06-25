@@ -107,7 +107,7 @@ Here is the home controller code, even if he's really small, I would like to des
 
     class HomeController extends AbstractController
     {
-        // Here we will inject the Jane Client, this will allow us to recover beers from the API !
+        // Here we will inject the Jane Client, this will allow us to recover beers from the API!
         public function index(Client $client)
         {
             // We will render our home template with the beers from the API
@@ -120,7 +120,7 @@ Here is the home controller code, even if he's really small, I would like to des
         }
     }
 
-This will gives us all our data and render them, but we miss a thing ! How this client was injected there ?
+This will gives us all our data and render them, but we miss a thing! How this client was injected there?
 So here is the ``project/front/config/packages/jane.yaml`` file, that contains all Jane related configuration:
 
 .. code-block:: yaml
