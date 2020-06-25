@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'openapi-file' => 'https://raw.githubusercontent.com/creditsafe/connect-docs/master/swagger.json',
+    'openapi-file' => __DIR__ . '/CreditSafe.json',
     'namespace' => 'CreditSafe\API',
     'directory' => __DIR__ . '/generated',
 ];

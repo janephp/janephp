@@ -7,15 +7,16 @@ class ListCompanySpecificNotificationEvents extends \Jane\OpenApiRuntime\Client\
     protected $portfolioId;
     protected $id;
     /**
-     * List of notification events based on the connectId , optionally filtered
+     * List of notification events based on the company id,optionally filtered with query parameters
      *
-     * @param string $portfolioId 
-     * @param string $id 
+     * @param string $portfolioId The unique identifier of the portfolio, obtained from `/portfolios`.
+     * @param string $id A company Safe Number or Connect ID.
      * @param array $queryParameters {
      *     @var string $searchQuery Return notificationEvents that match the given value
      *     @var string $sortDir 
      *     @var int $pageSize Number of items to return per Page (max 1000)
      *     @var int $page Starting page number (indexed from 0)
+     *     @var bool $isProcessed A flag that can be set to `true` boolean value to mark it as an event that has beebn actioned.
      *     @var string $sortBy Sort results by this column. Null values of sort column are listed after non-nulls.
      * }
      * @param array $headerParameters {
@@ -49,13 +50,14 @@ class ListCompanySpecificNotificationEvents extends \Jane\OpenApiRuntime\Client\
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('searchQuery', 'sortDir', 'pageSize', 'page', 'sortBy'));
+        $optionsResolver->setDefined(array('searchQuery', 'sortDir', 'pageSize', 'page', 'isProcessed', 'sortBy'));
         $optionsResolver->setRequired(array());
-        $optionsResolver->setDefaults(array('sortDir' => 'asc', 'pageSize' => 50, 'page' => 0));
+        $optionsResolver->setDefaults(array('sortDir' => 'asc', 'pageSize' => 50, 'page' => 0, 'sortBy' => 'companyName'));
         $optionsResolver->setAllowedTypes('searchQuery', array('string'));
         $optionsResolver->setAllowedTypes('sortDir', array('string'));
         $optionsResolver->setAllowedTypes('pageSize', array('int'));
         $optionsResolver->setAllowedTypes('page', array('int'));
+        $optionsResolver->setAllowedTypes('isProcessed', array('bool'));
         $optionsResolver->setAllowedTypes('sortBy', array('string'));
         return $optionsResolver;
     }

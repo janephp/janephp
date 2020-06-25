@@ -8,7 +8,7 @@ class PortoflioRiskSummary extends \Jane\OpenApiRuntime\Client\BaseEndpoint impl
     /**
      * Get current portfolio risk summary information
      *
-     * @param string $portfolioId 
+     * @param string $portfolioId The unique identifier of the portfolio, obtained from `/portfolios`.
      * @param array $headerParameters {
      *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * }

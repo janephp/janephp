@@ -8,7 +8,7 @@ class ListCountriesOfMonitoredCompanies extends \Jane\OpenApiRuntime\Client\Base
     /**
      * Get a list of distinct countries of companies monitored within a portfolio.
      *
-     * @param string $portfolioId 
+     * @param string $portfolioId The unique identifier of the portfolio, obtained from `/portfolios`.
      * @param array $headerParameters {
      *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * }

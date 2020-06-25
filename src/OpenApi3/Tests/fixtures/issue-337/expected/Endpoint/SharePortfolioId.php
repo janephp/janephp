@@ -8,13 +8,13 @@ class SharePortfolioId extends \Jane\OpenApiRuntime\Client\BaseEndpoint implemen
     /**
      * Update/Create user permissions within the customer for portfolio
      *
-     * @param string $portfolioId 
-     * @param \stdClass $requestBody 
+     * @param string $portfolioId The unique identifier of the portfolio, obtained from `/portfolios`.
+     * @param \CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdSharingPermissionsPatchBody $requestBody 
      * @param array $headerParameters {
      *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * }
      */
-    public function __construct(string $portfolioId, \stdClass $requestBody, array $headerParameters = array())
+    public function __construct(string $portfolioId, \CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdSharingPermissionsPatchBody $requestBody, array $headerParameters = array())
     {
         $this->portfolioId = $portfolioId;
         $this->body = $requestBody;
@@ -31,8 +31,8 @@ class SharePortfolioId extends \Jane\OpenApiRuntime\Client\BaseEndpoint implemen
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        if ($this->body instanceof \stdClass) {
-            return array(array('Content-Type' => array('application/json')), json_encode($this->body));
+        if ($this->body instanceof \CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdSharingPermissionsPatchBody) {
+            return array(array('Content-Type' => array('application/json')), $serializer->serialize($this->body, 'json'));
         }
         return array(array(), null);
     }

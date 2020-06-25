@@ -66,11 +66,12 @@ class DirectorReport extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements
      * @throws \CreditSafe\API\Exception\DirectorReportUnauthorizedException
      * @throws \CreditSafe\API\Exception\DirectorReportNotFoundException
      *
-     * @return null
+     * @return null|\CreditSafe\API\Model\GbPeopleReportReponse
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
-        if (200 === $status) {
+        if (200 === $status && mb_strpos($contentType, 'application/json') !== false) {
+            return $serializer->deserialize($body, 'CreditSafe\\API\\Model\\GbPeopleReportReponse', 'json');
         }
         if (400 === $status && mb_strpos($contentType, 'application/json') !== false) {
             throw new \CreditSafe\API\Exception\DirectorReportBadRequestException();
