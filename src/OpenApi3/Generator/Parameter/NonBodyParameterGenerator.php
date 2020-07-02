@@ -93,7 +93,7 @@ class NonBodyParameterGenerator extends ParameterGenerator
                 ]));
             }
 
-            if (!$parameter->getRequired() && null !== $schema->getDefault()) {
+            if (!$parameter->getRequired() && null !== $schema && null !== $schema->getDefault()) {
                 $defaults[] = new Expr\ArrayItem($this->getDefaultAsExpr($parameter), new Scalar\String_($parameter->getName()));
             }
         }
