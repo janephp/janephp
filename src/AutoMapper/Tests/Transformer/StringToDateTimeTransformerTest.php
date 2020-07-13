@@ -40,4 +40,14 @@ class StringToDateTimeTransformerTest extends TestCase
 
         self::assertInstanceOf(\DateTimeImmutable::class, $output);
     }
+
+    public function testDateTimeTransformerInterface()
+    {
+        $transformer = new StringToDateTimeTransformer(\DateTimeInterface::class);
+
+        $date = new \DateTime();
+        $output = $this->evalTransformer($transformer, $date->format(\DateTime::RFC3339));
+
+        self::assertInstanceOf(\DateTimeImmutable::class, $output);
+    }
 }

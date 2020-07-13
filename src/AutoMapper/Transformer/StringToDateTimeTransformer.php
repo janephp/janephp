@@ -31,7 +31,9 @@ final class StringToDateTimeTransformer implements TransformerInterface
      */
     public function transform(Expr $input, PropertyMapping $propertyMapping, UniqueVariableScope $uniqueVariableScope): array
     {
-        return [new Expr\StaticCall(new Name\FullyQualified($this->className), 'createFromFormat', [
+        $className = \DateTimeInterface::class === $this->className ? \DateTimeImmutable::class : $this->className;
+
+        return [new Expr\StaticCall(new Name\FullyQualified($className), 'createFromFormat', [
             new Arg(new String_($this->format)),
             new Arg($input),
         ]), []];
