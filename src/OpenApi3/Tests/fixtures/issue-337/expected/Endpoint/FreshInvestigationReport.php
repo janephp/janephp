@@ -9,13 +9,17 @@ class FreshInvestigationReport extends \Jane\OpenApiRuntime\Client\BaseEndpoint 
      * Returns a specific Fresh Investigation order.
      *
      * @param string $orderId 
+     * @param array $queryParameters {
+     *     @var string $sections Specify a value to return a single section, or multiple-comma separated sections of the completed Fresh Investigation. Leave null to return the full report. Available sections; - companyIdentification - creditScore - contactInformation - directors - otherInformation - groupStructure - extendedGroupStructure - financialStatements - negativeInformation - additionalInformation - directorships - localFinancialStatements - paymentData - companySummary - alternateSummary
+     * }
      * @param array $headerParameters {
      *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * }
      */
-    public function __construct(string $orderId, array $headerParameters = array())
+    public function __construct(string $orderId, array $queryParameters = array(), array $headerParameters = array())
     {
         $this->orderId = $orderId;
+        $this->queryParameters = $queryParameters;
         $this->headerParameters = $headerParameters;
     }
     use \Jane\OpenApiRuntime\Client\Psr7EndpointTrait;
@@ -34,6 +38,15 @@ class FreshInvestigationReport extends \Jane\OpenApiRuntime\Client\BaseEndpoint 
     public function getExtraHeaders() : array
     {
         return array('Accept' => array('application/json'));
+    }
+    protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
+    {
+        $optionsResolver = parent::getQueryOptionsResolver();
+        $optionsResolver->setDefined(array('sections'));
+        $optionsResolver->setRequired(array());
+        $optionsResolver->setDefaults(array());
+        $optionsResolver->setAllowedTypes('sections', array('string'));
+        return $optionsResolver;
     }
     protected function getHeadersOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {

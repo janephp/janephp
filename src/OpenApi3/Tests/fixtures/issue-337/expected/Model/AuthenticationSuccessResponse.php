@@ -5,13 +5,13 @@ namespace CreditSafe\API\Model;
 class AuthenticationSuccessResponse
 {
     /**
-     * 
+     * Authentication Token
      *
      * @var string
      */
     protected $token;
     /**
-     * 
+     * Authentication Token
      *
      * @return string
      */
@@ -20,7 +20,7 @@ class AuthenticationSuccessResponse
         return $this->token;
     }
     /**
-     * 
+     * Authentication Token
      *
      * @param string $token
      *

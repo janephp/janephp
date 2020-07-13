@@ -6,15 +6,15 @@ class UpdatePortfolioDetails extends \Jane\OpenApiRuntime\Client\BaseEndpoint im
 {
     protected $portfolioId;
     /**
-     * Update Portfolio details
+     * Update Portfolio details such as Name, email reciepients, language and subject line.
      *
-     * @param string $portfolioId 
-     * @param \stdClass $requestBody 
+     * @param string $portfolioId The unique identifier of the portfolio, obtained from `/portfolios`.
+     * @param \CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdPatchBody $requestBody 
      * @param array $headerParameters {
      *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * }
      */
-    public function __construct(string $portfolioId, \stdClass $requestBody, array $headerParameters = array())
+    public function __construct(string $portfolioId, \CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdPatchBody $requestBody, array $headerParameters = array())
     {
         $this->portfolioId = $portfolioId;
         $this->body = $requestBody;
@@ -31,8 +31,8 @@ class UpdatePortfolioDetails extends \Jane\OpenApiRuntime\Client\BaseEndpoint im
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        if ($this->body instanceof \stdClass) {
-            return array(array('Content-Type' => array('application/json')), json_encode($this->body));
+        if ($this->body instanceof \CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdPatchBody) {
+            return array(array('Content-Type' => array('application/json')), $serializer->serialize($this->body, 'json'));
         }
         return array(array(), null);
     }
