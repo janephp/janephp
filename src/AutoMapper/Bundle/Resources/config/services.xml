@@ -38,6 +38,8 @@
             <argument type="service" id="Jane\AutoMapper\Extractor\FromSourceMappingExtractor" />
             <argument type="service" id="Jane\AutoMapper\Extractor\FromTargetMappingExtractor" />
             <argument>Symfony_Mapper_</argument>
+            <argument>true</argument>
+            <argument></argument> <!-- Date time format -->
         </service>
         <service id="Jane\AutoMapper\MapperGeneratorMetadataFactoryInterface" alias="Jane\AutoMapper\MapperGeneratorMetadataFactory" />
 

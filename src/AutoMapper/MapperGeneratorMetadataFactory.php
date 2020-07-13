@@ -18,19 +18,22 @@ final class MapperGeneratorMetadataFactory implements MapperGeneratorMetadataFac
     private $fromTargetPropertiesMappingExtractor;
     private $classPrefix;
     private $attributeChecking;
+    private $dateTimeFormat;
 
     public function __construct(
         SourceTargetMappingExtractor $sourceTargetPropertiesMappingExtractor,
         FromSourceMappingExtractor $fromSourcePropertiesMappingExtractor,
         FromTargetMappingExtractor $fromTargetPropertiesMappingExtractor,
         string $classPrefix = 'Mapper_',
-        bool $attributeChecking = true
+        bool $attributeChecking = true,
+        string $dateTimeFormat = \DateTime::RFC3339
     ) {
         $this->sourceTargetPropertiesMappingExtractor = $sourceTargetPropertiesMappingExtractor;
         $this->fromSourcePropertiesMappingExtractor = $fromSourcePropertiesMappingExtractor;
         $this->fromTargetPropertiesMappingExtractor = $fromTargetPropertiesMappingExtractor;
         $this->classPrefix = $classPrefix;
         $this->attributeChecking = $attributeChecking;
+        $this->dateTimeFormat = $dateTimeFormat;
     }
 
     /**
@@ -50,6 +53,7 @@ final class MapperGeneratorMetadataFactory implements MapperGeneratorMetadataFac
 
         $mapperMetadata = new MapperMetadata($autoMapperRegister, $extractor, $source, $target, $this->classPrefix);
         $mapperMetadata->setAttributeChecking($this->attributeChecking);
+        $mapperMetadata->setDateTimeFormat($this->dateTimeFormat);
 
         return $mapperMetadata;
     }
