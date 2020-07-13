@@ -19,12 +19,12 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
         return $this->executePsr7Endpoint(new \CreditSafe\API\Endpoint\GenerateAuthenticationToken($requestBody), $fetch);
     }
     /**
-     * Endpoint to search for Companies based on the provided Search Criteria. To get the most relevant results, it is recommended to use a unique identifer such as `regNo` where available. If a unique identiifer is not available, use a combination of the companies registered `postCode` and `name` for the next best hit rate.
+     * Endpoint to search for Companies based on the provided Search Criteria. To get the most relevant results, it is recommended to use a unique identifier such as `regNo` where available. If a unique identifier is not available, use a combination of the companies registered `postCode` and `name` for the next best hit rate.
      *
      * @param array $queryParameters {
      *     @var string $countries A Comma-separated list of country codes to search for Companies in. The list takes ISO/Alpha 2 format country codes. For example US,GB represents searching for Companies in the United States and Great Britain.
      *     @var string $language Search Language -  Typically only used for Countries where more than one  Company Names exist in different languages. Such as Companies with a Japanese Kanji and English names.
-     *     @var string $id connectId - The primary Company identifier that is used to uniquely identify all companies across Creditsafe''s Universe and Partner Network. This is returned on all Company Search Results. Use this field to use in other operations such as Ordering Company Credit Report by Id, and Adding Company to Monitoing Portfolio. </br></br> [Searching by connectID is a slightly redundant operation (can be used as a fast-lookup to Search Result fields) as the purpose of Search is to obtain this identifier].
+     *     @var string $id connectId - The primary Company identifier that is used to uniquely identify all companies across Creditsafes Universe and Partner Network. This is returned on all Company Search Results. Use this field to use in other operations such as Ordering Company Credit Report by Id, and Adding Company to Monitoing Portfolio. </br></br> [Searching by connectID is a slightly redundant operation (can be used as a fast-lookup to Search Result fields) as the purpose of Search is to obtain this identifier].
      *     @var string $safeNo Safe Number - Creditsafe's identifier on all Companies owned in the Creditsafe Universe. This is returned on all Company Search Results
      *     @var string $regNo Local Company Identifier - The Company identifier typically associated with a Government Filing Agency. i.e. French SIREN/SIRET, United Kingdom Companies House CRN.
      *     @var string $vatNo Company VAT Number
@@ -135,7 +135,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      * @throws \CreditSafe\API\Exception\CountriesInSubscriptionBadRequestException
      * @throws \CreditSafe\API\Exception\CountriesInSubscriptionUnauthorizedException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return null|\CreditSafe\API\Model\AccessCountriesResponse|\Psr\Http\Message\ResponseInterface
      */
     public function countriesInSubscription(array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
@@ -190,7 +190,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      * @throws \CreditSafe\API\Exception\DirectorReportUnauthorizedException
      * @throws \CreditSafe\API\Exception\DirectorReportNotFoundException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return null|\CreditSafe\API\Model\GbPeopleReportReponse|\Psr\Http\Message\ResponseInterface
      */
     public function directorReport(string $personId, array $queryParameters = array(), array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
@@ -275,28 +275,41 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
         return $this->executePsr7Endpoint(new \CreditSafe\API\Endpoint\CompanyImage($imageId, $headerParameters), $fetch);
     }
     /**
-     * Returns a list of historic and ongoing Fresh Investigations.
+     * Returns a list of your submitted Fresh Investigation Orders.
      *
      * @param array $queryParameters {
-     *     @var string $Id Company connectId.
+     *     @var int $page Starting page number (indexed from 0)
+     *     @var int $pageSize Number of items to return per Page (max 1000)
+     *     @var string $transactionId Fresh Investigation Identifier used internally and with our data partners.
+     *     @var string $reportCreatedAfter Returns Fresh Investigations processed after this date
+     *     @var string $reportCreatedBefore Returns ordered Fresh Investigations that were processed before this date
+     *     @var string $createdBefore Returns Fresh Investigations created before this date
+     *     @var string $createdSince Returns ordered Fresh Investigations created after this date
+     *     @var string $lookUpOrderBy Use to search for your Fresh Investigations by either the returned Company Details in the `GET` `freshInvestigations/{orderId}` endpoint or your supplied Search Criteria in the `POST` `/freshInvestigations` endpoint
+     *     @var string $companyDetailsCountry Looks for your returned Fresh Investigations where the returned Company Country is named this. Use with lookUpOrderBy=CompanyDetails
+     *     @var string $companyDetailsName Looks for your returned Fresh Investigations where the returned Company Name is named this. Use with lookUpOrderBy=CompanyDetails
+     *     @var string $searchCriteriaCountry Looks for your returned Fresh Investigations where your submitted Search Criteria Company Country is this. Use with lookUpOrderBy=searchCriteria
+     *     @var string $searchCriteriaName Looks for your Fresh Investigations where your submitted Search Criteria Company Name is this. Use with lookUpOrderBy=searchCriteria
+     *     @var string $sortBy Sorts  returned Fresh Investigations by this field
+     *     @var string $sortDir Sorts returned Fresh Investigations by this direction
      * }
      * @param array $headerParameters {
      *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \CreditSafe\API\Exception\ListFreshInvestigationsBadRequestException
-     * @throws \CreditSafe\API\Exception\ListFreshInvestigationsUnauthorizedException
-     * @throws \CreditSafe\API\Exception\ListFreshInvestigationsForbiddenException
-     * @throws \CreditSafe\API\Exception\ListFreshInvestigationsNotFoundException
+     * @throws \CreditSafe\API\Exception\ListSubmittedFreshInvestigationsBadRequestException
+     * @throws \CreditSafe\API\Exception\ListSubmittedFreshInvestigationsUnauthorizedException
+     * @throws \CreditSafe\API\Exception\ListSubmittedFreshInvestigationsForbiddenException
+     * @throws \CreditSafe\API\Exception\ListSubmittedFreshInvestigationsNotFoundException
      *
      * @return null|\CreditSafe\API\Model\ListFreshInvestigationResponse|\Psr\Http\Message\ResponseInterface
      */
-    public function listFreshInvestigations(array $queryParameters = array(), array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function listSubmittedFreshInvestigations(array $queryParameters = array(), array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \CreditSafe\API\Endpoint\ListFreshInvestigations($queryParameters, $headerParameters), $fetch);
+        return $this->executePsr7Endpoint(new \CreditSafe\API\Endpoint\ListSubmittedFreshInvestigations($queryParameters, $headerParameters), $fetch);
     }
     /**
-     * Places an order for a Fresh Investigation (Offline Report). Providing as much detail as   possible about the Company, our team will use official sources and registries to quickly answer questions about a company’s stability and financial health. Fresh Investigations take 5.5 days on average to complete.
+     * Places an order for a Fresh Investigation (Offline Report). Providing as much detail as possible about the Company, our team will use official sources and registries to quickly answer questions about a company’s stability and financial health. Fresh Investigations take 5.5 days on average to complete.
      *
      * @param \CreditSafe\API\Model\CreateFreshInvestigationRequest $requestBody 
      * @param array $headerParameters {
@@ -308,7 +321,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      * @throws \CreditSafe\API\Exception\RequestFreshInvestigationForbiddenException
      * @throws \CreditSafe\API\Exception\RequestFreshInvestigationNotFoundException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return null|\CreditSafe\API\Model\SubmittedFreshInvestigationRepsonse|\Psr\Http\Message\ResponseInterface
      */
     public function requestFreshInvestigation(\CreditSafe\API\Model\CreateFreshInvestigationRequest $requestBody, array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
@@ -336,6 +349,9 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      * Returns a specific Fresh Investigation order.
      *
      * @param string $orderId 
+     * @param array $queryParameters {
+     *     @var string $sections Specify a value to return a single section, or multiple-comma separated sections of the completed Fresh Investigation. Leave null to return the full report. Available sections; - companyIdentification - creditScore - contactInformation - directors - otherInformation - groupStructure - extendedGroupStructure - financialStatements - negativeInformation - additionalInformation - directorships - localFinancialStatements - paymentData - companySummary - alternateSummary
+     * }
      * @param array $headerParameters {
      *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * }
@@ -346,9 +362,9 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      *
      * @return null|\CreditSafe\API\Model\CompletedFreshInvestigation|\Psr\Http\Message\ResponseInterface
      */
-    public function freshInvestigationReport(string $orderId, array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function freshInvestigationReport(string $orderId, array $queryParameters = array(), array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \CreditSafe\API\Endpoint\FreshInvestigationReport($orderId, $headerParameters), $fetch);
+        return $this->executePsr7Endpoint(new \CreditSafe\API\Endpoint\FreshInvestigationReport($orderId, $queryParameters, $headerParameters), $fetch);
     }
     /**
      * Currently depreciated as the order may already be in progress with our investigation team. To edit an ongoing Fresh Investigation, please get in touch with us at Group.Help@creditsafe.com quoting the `Transaction Id` against the order in `/freshinvestigations/{orderId}`
@@ -522,7 +538,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
     /**
      * Endpoint to create a new Portfolio based on the supplied criteria. A portfolio can contain any number of `companies` that you wish to monitor changes to.
      *
-     * @param \CreditSafe\API\Model\PortfolioRequest $requestBody 
+     * @param \CreditSafe\API\Model\MonitoringPortfoliosPostBody $requestBody 
      * @param array $headerParameters {
      *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * }
@@ -534,14 +550,14 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function createMonitoringPortfolio(\CreditSafe\API\Model\PortfolioRequest $requestBody, array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function createMonitoringPortfolio(\CreditSafe\API\Model\MonitoringPortfoliosPostBody $requestBody, array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
         return $this->executePsr7Endpoint(new \CreditSafe\API\Endpoint\CreateMonitoringPortfolio($requestBody, $headerParameters), $fetch);
     }
     /**
      * Delete the portfolio with portfolioId
      *
-     * @param string $portfolioId 
+     * @param string $portfolioId The unique identifier of the portfolio that you wish to delete, obtained from `/portfolios`.
      * @param array $headerParameters {
      *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * }
@@ -558,9 +574,9 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
         return $this->executePsr7Endpoint(new \CreditSafe\API\Endpoint\DeleteMonitoringPortfolioByPortfolioId($portfolioId, $headerParameters), $fetch);
     }
     /**
-     * Get the portfolio with portfolioId = portfolioId}
+     * Get the portfolio with portfolioId
      *
-     * @param string $portfolioId 
+     * @param string $portfolioId The unique identifier for the portfolio that you wish to retrieve, obtained from `/portfolios`.
      * @param array $headerParameters {
      *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * }
@@ -577,10 +593,10 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
         return $this->executePsr7Endpoint(new \CreditSafe\API\Endpoint\RetrievePortfolioById($portfolioId, $headerParameters), $fetch);
     }
     /**
-     * Update Portfolio details
+     * Update Portfolio details such as Name, email reciepients, language and subject line.
      *
-     * @param string $portfolioId 
-     * @param \stdClass $requestBody 
+     * @param string $portfolioId The unique identifier of the portfolio, obtained from `/portfolios`.
+     * @param \CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdPatchBody $requestBody 
      * @param array $headerParameters {
      *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * }
@@ -591,14 +607,14 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function updatePortfolioDetails(string $portfolioId, \stdClass $requestBody, array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function updatePortfolioDetails(string $portfolioId, \CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdPatchBody $requestBody, array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
         return $this->executePsr7Endpoint(new \CreditSafe\API\Endpoint\UpdatePortfolioDetails($portfolioId, $requestBody, $headerParameters), $fetch);
     }
     /**
      * Get a list of distinct countries of companies monitored within a portfolio.
      *
-     * @param string $portfolioId 
+     * @param string $portfolioId The unique identifier of the portfolio, obtained from `/portfolios`.
      * @param array $headerParameters {
      *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * }
@@ -634,10 +650,10 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
         return $this->executePsr7Endpoint(new \CreditSafe\API\Endpoint\ListPortfolioEventRules($portfolioId, $headerParameters), $fetch);
     }
     /**
-     * Get all eventRules, optionally filtered
+     * Get all eventRules, optionally filtered by country code
      *
-     * @param string $portfolioId 
-     * @param string $countryCode Country code to show events for
+     * @param string $portfolioId The unique identifier of the portfolio, obtained from `/portfolios`.
+     * @param string $countryCode Country code to show events for.
      * @param array $headerParameters {
      *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * }
@@ -654,11 +670,11 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
         return $this->executePsr7Endpoint(new \CreditSafe\API\Endpoint\GetFilteredPortfolioEventRules($portfolioId, $countryCode, $headerParameters), $fetch);
     }
     /**
-     * Update eventRules
+     * Update eventRules for a portfolio
      *
-     * @param string $portfolioId 
+     * @param string $portfolioId The unique identifier of the portfolio, obtained from `/portfolios`.
      * @param string $countryCode Country code to show events for
-     * @param \stdClass $requestBody 
+     * @param \CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdEventRulesCountryCodePutBodyItem[] $requestBody 
      * @param array $headerParameters {
      *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * }
@@ -670,34 +686,34 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function putMonitoringPortfoliosByPortfolioIdEventRuleByCountryCode(string $portfolioId, string $countryCode, \stdClass $requestBody, array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function putMonitoringPortfoliosByPortfolioIdEventRuleByCountryCode(string $portfolioId, string $countryCode, array $requestBody, array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
         return $this->executePsr7Endpoint(new \CreditSafe\API\Endpoint\PutMonitoringPortfoliosByPortfolioIdEventRuleByCountryCode($portfolioId, $countryCode, $requestBody, $headerParameters), $fetch);
     }
     /**
-     * Update (set) event rules to default based on the portfolio id
+     * Update a portofolios event rules to default state. In Connect, default state means all rules are turned off.
      *
-     * @param string $portfolioId 
+     * @param string $portfolioId The unique identifier of the portfolio, obtained from `/portfolios`.
      * @param array $headerParameters {
      *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \CreditSafe\API\Exception\ResetPortfolioEventRulesBadRequestException
-     * @throws \CreditSafe\API\Exception\ResetPortfolioEventRulesUnauthorizedException
-     * @throws \CreditSafe\API\Exception\ResetPortfolioEventRulesForbiddenException
-     * @throws \CreditSafe\API\Exception\ResetPortfolioEventRulesNotFoundException
+     * @throws \CreditSafe\API\Exception\ResetPortfolioEventRulesToDefaultValuesBadRequestException
+     * @throws \CreditSafe\API\Exception\ResetPortfolioEventRulesToDefaultValuesUnauthorizedException
+     * @throws \CreditSafe\API\Exception\ResetPortfolioEventRulesToDefaultValuesForbiddenException
+     * @throws \CreditSafe\API\Exception\ResetPortfolioEventRulesToDefaultValuesNotFoundException
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function resetPortfolioEventRules(string $portfolioId, array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function resetPortfolioEventRulesToDefaultValues(string $portfolioId, array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \CreditSafe\API\Endpoint\ResetPortfolioEventRules($portfolioId, $headerParameters), $fetch);
+        return $this->executePsr7Endpoint(new \CreditSafe\API\Endpoint\ResetPortfolioEventRulesToDefaultValues($portfolioId, $headerParameters), $fetch);
     }
     /**
-     * Import companies into a portfolio
+     * Import companies into a portfolio using .csv, .xls or .xlsx file. Additionally provide an email address to get notified when the import process is done.
      *
-     * @param string $portfolioId 
-     * @param \stdClass $requestBody 
+     * @param string $portfolioId The unique identifier of the portfolio, obtained from `/portfolios`.
+     * @param \CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdImportPostBody $requestBody 
      * @param array $headerParameters {
      *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * }
@@ -709,15 +725,15 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function postMonitoringPortfoliosByPortfolioIdImport(string $portfolioId, \stdClass $requestBody, array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function postMonitoringPortfoliosByPortfolioIdImport(string $portfolioId, \CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdImportPostBody $requestBody, array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
         return $this->executePsr7Endpoint(new \CreditSafe\API\Endpoint\PostMonitoringPortfoliosByPortfolioIdImport($portfolioId, $requestBody, $headerParameters), $fetch);
     }
     /**
      * Delete companies from portfolio and update new companies from CSV file
      *
-     * @param string $portfolioId 
-     * @param \stdClass $requestBody 
+     * @param string $portfolioId The unique identifier of the portfolio, obtained from `/portfolios`.
+     * @param \CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdSyncPostBody $requestBody 
      * @param array $headerParameters {
      *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * }
@@ -729,14 +745,14 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function syncPortfolioCompaniesToCSVRecords(string $portfolioId, \stdClass $requestBody, array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function syncPortfolioCompaniesToCSVRecords(string $portfolioId, \CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdSyncPostBody $requestBody, array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
         return $this->executePsr7Endpoint(new \CreditSafe\API\Endpoint\SyncPortfolioCompaniesToCSVRecords($portfolioId, $requestBody, $headerParameters), $fetch);
     }
     /**
      * Get current portfolio risk summary information
      *
-     * @param string $portfolioId 
+     * @param string $portfolioId The unique identifier of the portfolio, obtained from `/portfolios`.
      * @param array $headerParameters {
      *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * }
@@ -753,9 +769,9 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
         return $this->executePsr7Endpoint(new \CreditSafe\API\Endpoint\PortoflioRiskSummary($portfolioId, $headerParameters), $fetch);
     }
     /**
-     * Get all notificationEvents based on the portfolio id , optionally
+     * Get all notificationEvents based on the portfolio id, optionally filter with query parameters
      *
-     * @param string $portfolioId 
+     * @param string $portfolioId The unique identifier of the portfolio, obtained from `/portfolios`.
      * @param array $queryParameters {
      *     @var string $searchQuery Return notificationEvents that match the given value
      *     @var string $sortDir 
@@ -779,9 +795,30 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
         return $this->executePsr7Endpoint(new \CreditSafe\API\Endpoint\ListNotificationEventsInAPortfolioFiltered($portfolioId, $queryParameters, $headerParameters), $fetch);
     }
     /**
-     * Get all companies, optionally filtered
+     * Set a `true` or `false` flag on isProcessed for a given event
      *
-     * @param string $portfolioId 
+     * @param string $portfolioId The unique identifier of the portfolio, obtained from `/portfolios`.
+     * @param string $notificationEventId A unique notification event ID.
+     * @param \CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdNotificationEventsNotificationEventIdPatchBody $requestBody 
+     * @param array $headerParameters {
+     *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
+     * }
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \CreditSafe\API\Exception\UpdateIsProcessedFlagOnAnNotificationEventBadRequestException
+     * @throws \CreditSafe\API\Exception\UpdateIsProcessedFlagOnAnNotificationEventUnauthorizedException
+     * @throws \CreditSafe\API\Exception\UpdateIsProcessedFlagOnAnNotificationEventForbiddenException
+     * @throws \CreditSafe\API\Exception\UpdateIsProcessedFlagOnAnNotificationEventNotFoundException
+     *
+     * @return null|\Psr\Http\Message\ResponseInterface
+     */
+    public function updateIsProcessedFlagOnAnNotificationEvent(string $portfolioId, string $notificationEventId, \CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdNotificationEventsNotificationEventIdPatchBody $requestBody, array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \CreditSafe\API\Endpoint\UpdateIsProcessedFlagOnAnNotificationEvent($portfolioId, $notificationEventId, $requestBody, $headerParameters), $fetch);
+    }
+    /**
+     * Get all companies from a specific portfolio based on the portfolio id, optionally filter with query parameters
+     *
+     * @param string $portfolioId The unique identifier of the portfolio, obtained from `/portfolios`.
      * @param array $queryParameters {
      *     @var string $searchQuery Return companies that match the given value
      *     @var int $pageSize Number of items to return per Page (max 1000)
@@ -807,8 +844,8 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
     /**
      * Add new company to portfolio
      *
-     * @param string $portfolioId 
-     * @param \stdClass $requestBody 
+     * @param string $portfolioId The unique identifier of the portfolio, obtained from `/portfolios`.
+     * @param \CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdCompaniesPostBody $requestBody 
      * @param array $headerParameters {
      *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * }
@@ -820,15 +857,15 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function postMonitoringPortfoliosByPortfolioIdCompany(string $portfolioId, \stdClass $requestBody, array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function postMonitoringPortfoliosByPortfolioIdCompany(string $portfolioId, \CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdCompaniesPostBody $requestBody, array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
         return $this->executePsr7Endpoint(new \CreditSafe\API\Endpoint\PostMonitoringPortfoliosByPortfolioIdCompany($portfolioId, $requestBody, $headerParameters), $fetch);
     }
     /**
      * Copy companies from one portfolio to single (or) multiple portfolios.
      *
-     * @param string $portfolioId 
-     * @param \stdClass $requestBody 
+     * @param string $portfolioId The unique identifier of the portfolio you want to copy companies from, obtained from `/portfolios`.
+     * @param \CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdCompaniesCopyPostBody $requestBody 
      * @param array $queryParameters {
      *     @var bool $copyAll When CopyAll queryparameter is False, portfolios and companies list needs to be passed. When CopyAll queryparameter is True, only portfolios need to be passed and companies List must be empty. All companies are copied from current portfolio are considered here.
      * }
@@ -836,22 +873,22 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \CreditSafe\API\Exception\CopyCompaniesToAnotherPortfolioBadRequestException
-     * @throws \CreditSafe\API\Exception\CopyCompaniesToAnotherPortfolioUnauthorizedException
-     * @throws \CreditSafe\API\Exception\CopyCompaniesToAnotherPortfolioForbiddenException
-     * @throws \CreditSafe\API\Exception\CopyCompaniesToAnotherPortfolioNotFoundException
+     * @throws \CreditSafe\API\Exception\CopyCompaniesFromOneToAnotherPortfolioSBadRequestException
+     * @throws \CreditSafe\API\Exception\CopyCompaniesFromOneToAnotherPortfolioSUnauthorizedException
+     * @throws \CreditSafe\API\Exception\CopyCompaniesFromOneToAnotherPortfolioSForbiddenException
+     * @throws \CreditSafe\API\Exception\CopyCompaniesFromOneToAnotherPortfolioSNotFoundException
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function copyCompaniesToAnotherPortfolio(string $portfolioId, \stdClass $requestBody, array $queryParameters = array(), array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function copyCompaniesFromOneToAnotherPortfolio(s)(string $portfolioId, \CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdCompaniesCopyPostBody $requestBody, array $queryParameters = array(), array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \CreditSafe\API\Endpoint\CopyCompaniesToAnotherPortfolio($portfolioId, $requestBody, $queryParameters, $headerParameters), $fetch);
+        return $this->executePsr7Endpoint(new \CreditSafe\API\Endpoint\CopyCompaniesFromOneToAnotherPortfolioS($portfolioId, $requestBody, $queryParameters, $headerParameters), $fetch);
     }
     /**
      * Move companies from one portfolio to single (or) multiple portfolios.
      *
-     * @param string $portfolioId 
-     * @param \stdClass $requestBody 
+     * @param string $portfolioId The unique identifier of the portfolio you want to move companies from, obtained from `/portfolios`.
+     * @param \CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdCompaniesRemovePostBody $requestBody 
      * @param array $queryParameters {
      *     @var bool $removeAll When RemoveAll queryparameter is False, portfolios and companies List needs to be passed. When RemoveAll queryparameter is True, only portfolios need to be passed and companies List must be empty. All companies are moved and deleted from current portfolio
      * }
@@ -859,22 +896,22 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \CreditSafe\API\Exception\MovesCompaniesFromOnePortfolioToAnotherBadRequestException
-     * @throws \CreditSafe\API\Exception\MovesCompaniesFromOnePortfolioToAnotherUnauthorizedException
-     * @throws \CreditSafe\API\Exception\MovesCompaniesFromOnePortfolioToAnotherForbiddenException
-     * @throws \CreditSafe\API\Exception\MovesCompaniesFromOnePortfolioToAnotherNotFoundException
+     * @throws \CreditSafe\API\Exception\MoveCompaniesFromOneToAnotherPortfolioSBadRequestException
+     * @throws \CreditSafe\API\Exception\MoveCompaniesFromOneToAnotherPortfolioSUnauthorizedException
+     * @throws \CreditSafe\API\Exception\MoveCompaniesFromOneToAnotherPortfolioSForbiddenException
+     * @throws \CreditSafe\API\Exception\MoveCompaniesFromOneToAnotherPortfolioSNotFoundException
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function movesCompaniesFromOnePortfolioToAnother(string $portfolioId, \stdClass $requestBody, array $queryParameters = array(), array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function moveCompaniesFromOneToAnotherPortfolio(s)(string $portfolioId, \CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdCompaniesRemovePostBody $requestBody, array $queryParameters = array(), array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \CreditSafe\API\Endpoint\MovesCompaniesFromOnePortfolioToAnother($portfolioId, $requestBody, $queryParameters, $headerParameters), $fetch);
+        return $this->executePsr7Endpoint(new \CreditSafe\API\Endpoint\MoveCompaniesFromOneToAnotherPortfolioS($portfolioId, $requestBody, $queryParameters, $headerParameters), $fetch);
     }
     /**
      * Delete companies from current portfolio
      *
-     * @param string $portfolioId 
-     * @param \stdClass $requestBody 
+     * @param string $portfolioId The unique identifier of the portfolio you want to delete companies from, obtained from `/portfolios`.
+     * @param \CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdCompaniesClearPatchBody $requestBody 
      * @param array $queryParameters {
      *     @var bool $clearAll When ClearAll queryparameter is False,Companies List needs to be passed. When ClearAll queryparameter is True, Companies List must be empty. All companies will be deleted
      * }
@@ -889,15 +926,15 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function clearCompaniesFromAPortfolio(string $portfolioId, \stdClass $requestBody, array $queryParameters = array(), array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function clearCompaniesFromAPortfolio(string $portfolioId, \CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdCompaniesClearPatchBody $requestBody, array $queryParameters = array(), array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
         return $this->executePsr7Endpoint(new \CreditSafe\API\Endpoint\ClearCompaniesFromAPortfolio($portfolioId, $requestBody, $queryParameters, $headerParameters), $fetch);
     }
     /**
      * Delete a Company
      *
-     * @param string $portfolioId 
-     * @param string $id 
+     * @param string $portfolioId The unique identifier of the portfolio, obtained from `/portfolios`.
+     * @param string $id A company Safe Number or Connect ID.
      * @param array $headerParameters {
      *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * }
@@ -914,59 +951,57 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
         return $this->executePsr7Endpoint(new \CreditSafe\API\Endpoint\DeleteMonitoringPortfoliosByPortfolioIdCompanyById($portfolioId, $id, $headerParameters), $fetch);
     }
     /**
-    * Get the company
-    with companyId =
-    {companyId}
-    
-    *
-    * @param string $portfolioId 
-    * @param string $id 
-    * @param array $headerParameters {
-    *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
-    * }
-    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-    * @throws \CreditSafe\API\Exception\MonitoredCompanyFromAPortfolioBadRequestException
-    * @throws \CreditSafe\API\Exception\MonitoredCompanyFromAPortfolioUnauthorizedException
-    * @throws \CreditSafe\API\Exception\MonitoredCompanyFromAPortfolioForbiddenException
-    * @throws \CreditSafe\API\Exception\MonitoredCompanyFromAPortfolioNotFoundException
-    *
-    * @return null|\Psr\Http\Message\ResponseInterface
-    */
-    public function monitoredCompanyFromAPortfolio(string $portfolioId, string $id, array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
-    {
-        return $this->executePsr7Endpoint(new \CreditSafe\API\Endpoint\MonitoredCompanyFromAPortfolio($portfolioId, $id, $headerParameters), $fetch);
-    }
-    /**
-     * Updates a company in a portfolio.
+     * Get a company from a portofolio using a company id
      *
-     * @param string $portfolioId 
-     * @param string $id 
-     * @param \stdClass $requestBody 
+     * @param string $portfolioId The unique identifier of the portfolio, obtained from `/portfolios`.
+     * @param string $id A company Safe Number or Connect ID.
      * @param array $headerParameters {
      *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \CreditSafe\API\Exception\UpdatePortfolioCompanyBadRequestException
-     * @throws \CreditSafe\API\Exception\UpdatePortfolioCompanyUnauthorizedException
-     * @throws \CreditSafe\API\Exception\UpdatePortfolioCompanyForbiddenException
-     * @throws \CreditSafe\API\Exception\UpdatePortfolioCompanyNotFoundException
+     * @throws \CreditSafe\API\Exception\GetAMonitoredCompanyFromAPortfolioBadRequestException
+     * @throws \CreditSafe\API\Exception\GetAMonitoredCompanyFromAPortfolioUnauthorizedException
+     * @throws \CreditSafe\API\Exception\GetAMonitoredCompanyFromAPortfolioForbiddenException
+     * @throws \CreditSafe\API\Exception\GetAMonitoredCompanyFromAPortfolioNotFoundException
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function updatePortfolioCompany(string $portfolioId, string $id, \stdClass $requestBody, array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function getAMonitoredCompanyFromAPortfolio(string $portfolioId, string $id, array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \CreditSafe\API\Endpoint\UpdatePortfolioCompany($portfolioId, $id, $requestBody, $headerParameters), $fetch);
+        return $this->executePsr7Endpoint(new \CreditSafe\API\Endpoint\GetAMonitoredCompanyFromAPortfolio($portfolioId, $id, $headerParameters), $fetch);
     }
     /**
-     * List of notification events based on the connectId , optionally filtered
+     * Updates the company details in a specified portfolio
      *
-     * @param string $portfolioId 
-     * @param string $id 
+     * @param string $portfolioId The unique identifier of the portfolio, obtained from `/portfolios`.
+     * @param string $id A company Safe Number or Connect ID.
+     * @param \CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdCompaniesIdPatchBody $requestBody 
+     * @param array $headerParameters {
+     *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
+     * }
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \CreditSafe\API\Exception\UpdateCompanyDetailsInAPortfolioBadRequestException
+     * @throws \CreditSafe\API\Exception\UpdateCompanyDetailsInAPortfolioUnauthorizedException
+     * @throws \CreditSafe\API\Exception\UpdateCompanyDetailsInAPortfolioForbiddenException
+     * @throws \CreditSafe\API\Exception\UpdateCompanyDetailsInAPortfolioNotFoundException
+     *
+     * @return null|\Psr\Http\Message\ResponseInterface
+     */
+    public function updateCompanyDetailsInAPortfolio(string $portfolioId, string $id, \CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdCompaniesIdPatchBody $requestBody, array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \CreditSafe\API\Endpoint\UpdateCompanyDetailsInAPortfolio($portfolioId, $id, $requestBody, $headerParameters), $fetch);
+    }
+    /**
+     * List of notification events based on the company id,optionally filtered with query parameters
+     *
+     * @param string $portfolioId The unique identifier of the portfolio, obtained from `/portfolios`.
+     * @param string $id A company Safe Number or Connect ID.
      * @param array $queryParameters {
      *     @var string $searchQuery Return notificationEvents that match the given value
      *     @var string $sortDir 
      *     @var int $pageSize Number of items to return per Page (max 1000)
      *     @var int $page Starting page number (indexed from 0)
+     *     @var bool $isProcessed A flag that can be set to `true` boolean value to mark it as an event that has beebn actioned.
      *     @var string $sortBy Sort results by this column. Null values of sort column are listed after non-nulls.
      * }
      * @param array $headerParameters {
@@ -985,9 +1020,9 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
         return $this->executePsr7Endpoint(new \CreditSafe\API\Endpoint\ListCompanySpecificNotificationEvents($portfolioId, $id, $queryParameters, $headerParameters), $fetch);
     }
     /**
-     * Retrieve user permissions within the customer for portfolio Id
+     * Retrieve user permissions within the customer for a portfolio
      *
-     * @param string $portfolioId 
+     * @param string $portfolioId The unique identifier of the portfolio, obtained from `/portfolios`.
      * @param array $headerParameters {
      *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * }
@@ -1006,8 +1041,8 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
     /**
      * Update/Create user permissions within the customer for portfolio
      *
-     * @param string $portfolioId 
-     * @param \stdClass $requestBody 
+     * @param string $portfolioId The unique identifier of the portfolio, obtained from `/portfolios`.
+     * @param \CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdSharingPermissionsPatchBody $requestBody 
      * @param array $headerParameters {
      *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * }
@@ -1019,7 +1054,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function sharePortfolioId(string $portfolioId, \stdClass $requestBody, array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function sharePortfolioId(string $portfolioId, \CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdSharingPermissionsPatchBody $requestBody, array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
         return $this->executePsr7Endpoint(new \CreditSafe\API\Endpoint\SharePortfolioId($portfolioId, $requestBody, $headerParameters), $fetch);
     }

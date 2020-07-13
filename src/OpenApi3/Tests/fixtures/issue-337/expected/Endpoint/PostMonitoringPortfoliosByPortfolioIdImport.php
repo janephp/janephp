@@ -6,15 +6,15 @@ class PostMonitoringPortfoliosByPortfolioIdImport extends \Jane\OpenApiRuntime\C
 {
     protected $portfolioId;
     /**
-     * Import companies into a portfolio
+     * Import companies into a portfolio using .csv, .xls or .xlsx file. Additionally provide an email address to get notified when the import process is done.
      *
-     * @param string $portfolioId 
-     * @param \stdClass $requestBody 
+     * @param string $portfolioId The unique identifier of the portfolio, obtained from `/portfolios`.
+     * @param \CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdImportPostBody $requestBody 
      * @param array $headerParameters {
      *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * }
      */
-    public function __construct(string $portfolioId, \stdClass $requestBody, array $headerParameters = array())
+    public function __construct(string $portfolioId, \CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdImportPostBody $requestBody, array $headerParameters = array())
     {
         $this->portfolioId = $portfolioId;
         $this->body = $requestBody;
@@ -31,8 +31,8 @@ class PostMonitoringPortfoliosByPortfolioIdImport extends \Jane\OpenApiRuntime\C
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        if ($this->body instanceof \stdClass) {
-            return array(array('Content-Type' => array('application/json')), json_encode($this->body));
+        if ($this->body instanceof \CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdImportPostBody) {
+            return array(array('Content-Type' => array('application/json')), $serializer->serialize($this->body, 'json'));
         }
         return array(array(), null);
     }

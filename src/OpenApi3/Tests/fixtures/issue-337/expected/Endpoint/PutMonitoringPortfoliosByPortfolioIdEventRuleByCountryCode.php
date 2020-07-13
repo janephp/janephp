@@ -7,16 +7,16 @@ class PutMonitoringPortfoliosByPortfolioIdEventRuleByCountryCode extends \Jane\O
     protected $portfolioId;
     protected $countryCode;
     /**
-     * Update eventRules
+     * Update eventRules for a portfolio
      *
-     * @param string $portfolioId 
+     * @param string $portfolioId The unique identifier of the portfolio, obtained from `/portfolios`.
      * @param string $countryCode Country code to show events for
-     * @param \stdClass $requestBody 
+     * @param \CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdEventRulesCountryCodePutBodyItem[] $requestBody 
      * @param array $headerParameters {
      *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * }
      */
-    public function __construct(string $portfolioId, string $countryCode, \stdClass $requestBody, array $headerParameters = array())
+    public function __construct(string $portfolioId, string $countryCode, array $requestBody, array $headerParameters = array())
     {
         $this->portfolioId = $portfolioId;
         $this->countryCode = $countryCode;
@@ -34,8 +34,8 @@ class PutMonitoringPortfoliosByPortfolioIdEventRuleByCountryCode extends \Jane\O
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        if ($this->body instanceof \stdClass) {
-            return array(array('Content-Type' => array('application/json')), json_encode($this->body));
+        if (is_array($this->body) and isset($this->body[0]) and $this->body[0] instanceof \CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdEventRulesCountryCodePutBodyItem) {
+            return array(array('Content-Type' => array('application/json')), $serializer->serialize($this->body, 'json'));
         }
         return array(array(), null);
     }

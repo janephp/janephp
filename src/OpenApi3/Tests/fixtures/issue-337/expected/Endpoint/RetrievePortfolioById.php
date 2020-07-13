@@ -6,9 +6,9 @@ class RetrievePortfolioById extends \Jane\OpenApiRuntime\Client\BaseEndpoint imp
 {
     protected $portfolioId;
     /**
-     * Get the portfolio with portfolioId = portfolioId}
+     * Get the portfolio with portfolioId
      *
-     * @param string $portfolioId 
+     * @param string $portfolioId The unique identifier for the portfolio that you wish to retrieve, obtained from `/portfolios`.
      * @param array $headerParameters {
      *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * }

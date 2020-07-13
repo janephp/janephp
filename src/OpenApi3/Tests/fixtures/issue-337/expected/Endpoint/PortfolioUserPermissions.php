@@ -6,9 +6,9 @@ class PortfolioUserPermissions extends \Jane\OpenApiRuntime\Client\BaseEndpoint 
 {
     protected $portfolioId;
     /**
-     * Retrieve user permissions within the customer for portfolio Id
+     * Retrieve user permissions within the customer for a portfolio
      *
-     * @param string $portfolioId 
+     * @param string $portfolioId The unique identifier of the portfolio, obtained from `/portfolios`.
      * @param array $headerParameters {
      *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * }

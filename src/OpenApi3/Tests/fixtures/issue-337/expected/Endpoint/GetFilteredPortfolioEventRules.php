@@ -7,10 +7,10 @@ class GetFilteredPortfolioEventRules extends \Jane\OpenApiRuntime\Client\BaseEnd
     protected $portfolioId;
     protected $countryCode;
     /**
-     * Get all eventRules, optionally filtered
+     * Get all eventRules, optionally filtered by country code
      *
-     * @param string $portfolioId 
-     * @param string $countryCode Country code to show events for
+     * @param string $portfolioId The unique identifier of the portfolio, obtained from `/portfolios`.
+     * @param string $countryCode Country code to show events for.
      * @param array $headerParameters {
      *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * }
