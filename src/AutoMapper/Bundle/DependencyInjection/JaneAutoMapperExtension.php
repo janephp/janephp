@@ -29,6 +29,8 @@ class JaneAutoMapperExtension extends Extension
         $loader = new XmlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
         $loader->load('services.xml');
 
+        $container->getDefinition(MapperGeneratorMetadataFactory::class)->replaceArgument(5, $config['date_time_format']);
+
         foreach ($config['mappings'] as $mapping) {
             $this->createMapperConfigurationDefinition($container, $mapping);
         }
