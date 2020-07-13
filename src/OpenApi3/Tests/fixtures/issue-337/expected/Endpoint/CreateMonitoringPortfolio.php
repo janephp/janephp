@@ -7,12 +7,12 @@ class CreateMonitoringPortfolio extends \Jane\OpenApiRuntime\Client\BaseEndpoint
     /**
      * Endpoint to create a new Portfolio based on the supplied criteria. A portfolio can contain any number of `companies` that you wish to monitor changes to.
      *
-     * @param \CreditSafe\API\Model\PortfolioRequest $requestBody 
+     * @param \CreditSafe\API\Model\MonitoringPortfoliosPostBody $requestBody 
      * @param array $headerParameters {
      *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * }
      */
-    public function __construct(\CreditSafe\API\Model\PortfolioRequest $requestBody, array $headerParameters = array())
+    public function __construct(\CreditSafe\API\Model\MonitoringPortfoliosPostBody $requestBody, array $headerParameters = array())
     {
         $this->body = $requestBody;
         $this->headerParameters = $headerParameters;
@@ -28,7 +28,7 @@ class CreateMonitoringPortfolio extends \Jane\OpenApiRuntime\Client\BaseEndpoint
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        if ($this->body instanceof \CreditSafe\API\Model\PortfolioRequest) {
+        if ($this->body instanceof \CreditSafe\API\Model\MonitoringPortfoliosPostBody) {
             return array(array('Content-Type' => array('application/json')), $serializer->serialize($this->body, 'json'));
         }
         return array(array(), null);
