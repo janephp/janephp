@@ -14,6 +14,9 @@ class Registry extends BaseRegistry implements RegistryInterface
     /** @var string[] */
     private $whitelistedPaths;
 
+    /** @var array */
+    private $customQueryResolver;
+
     public function setOpenApiClass(string $openApiClass): void
     {
         $this->openApiClass = $openApiClass;
@@ -32,6 +35,16 @@ class Registry extends BaseRegistry implements RegistryInterface
     public function getWhitelistedPaths(): array
     {
         return $this->whitelistedPaths;
+    }
+
+    public function setCustomQueryResolver(array $customQueryResolver): void
+    {
+        $this->customQueryResolver = $customQueryResolver;
+    }
+
+    public function getCustomQueryResolver(): array
+    {
+        return $this->customQueryResolver;
     }
 
     public function hasSecurityScheme($securitySchemeReference): bool

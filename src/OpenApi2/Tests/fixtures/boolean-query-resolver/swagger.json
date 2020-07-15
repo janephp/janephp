@@ -1,0 +1,16 @@
+{
+    "swagger": "2.0",
+    "paths": {
+        "/foo": {
+            "get": {
+                "parameters": [
+                    {
+                        "name": "testBoolean",
+                        "in": "query",
+                        "type": "boolean"
+                    }
+                ]
+            }
+        }
+    }
+}
