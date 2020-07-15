@@ -68,12 +68,12 @@ class NonBodyParameterGenerator extends ParameterGenerator
             $defined[] = new Expr\ArrayItem(new Scalar\String_($parameter->getName()));
             $schema = $parameter->getSchema();
 
-            if ($parameter->getRequired() && (null !== $schema && null === $schema->getDefault())) {
-                $required[] = new Expr\ArrayItem(new Scalar\String_($parameter->getName()));
-            }
-
             if ($schema instanceof Reference) {
                 [$_, $schema] = $this->resolve($schema, Schema::class);
+            }
+
+            if ($parameter->getRequired() && (null !== $schema && null === $schema->getDefault())) {
+                $required[] = new Expr\ArrayItem(new Scalar\String_($parameter->getName()));
             }
 
             if (null !== $schema && $schema->getType()) {
