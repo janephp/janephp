@@ -90,9 +90,15 @@ abstract class EndpointGenerator
 
         /** @var Registry $registry */
         $registry = $context->getRegistry();
+        $customQueryResolver = $registry->getCustomQueryResolver();
+        $operationCustomQueryResolver = [];
+        if (\array_key_exists($operation->getPath(), $customQueryResolver) &&
+            \array_key_exists(mb_strtolower($operation->getMethod()), $customQueryResolver[$operation->getPath()])) {
+            $operationCustomQueryResolver = $customQueryResolver[$operation->getPath()][mb_strtolower($operation->getMethod())];
+        }
 
         $extraHeadersMethod = $this->getExtraHeadersMethod($openApi, $operation);
-        $queryResolverMethod = $this->getOptionsResolverMethod($operation, QueryParameterSubSchema::class, 'getQueryOptionsResolver', $registry->getCustomQueryResolver());
+        $queryResolverMethod = $this->getOptionsResolverMethod($operation, QueryParameterSubSchema::class, 'getQueryOptionsResolver', $operationCustomQueryResolver);
         $formResolverMethod = $this->getOptionsResolverMethod($operation, FormDataParameterSubSchema::class, 'getFormOptionsResolver');
         $headerResolverMethod = $this->getOptionsResolverMethod($operation, HeaderParameterSubSchema::class, 'getHeadersOptionsResolver');
 

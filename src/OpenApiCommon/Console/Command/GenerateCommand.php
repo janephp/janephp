@@ -73,9 +73,26 @@ class GenerateCommand extends BaseGenerateCommand
         $registry->setOpenApiClass($this->matcher->match($schemaFile));
         $registry->setWhitelistedPaths($options['whitelisted-paths'] ?? []);
 
-        $customQueryResolver = $options['custom-query-resolver'] ?? [];
-        foreach ($customQueryResolver as $name => $file) {
-            $customQueryResolver[$name] = $this->getCallbackAsExpr($file);
+        $customQueryResolver = [];
+        foreach ($options['custom-query-resolver'] ?? [] as $path => $methods) {
+            if (!\array_key_exists($path, $customQueryResolver)) {
+                $customQueryResolver[$path] = [];
+            }
+
+            foreach ($methods as $method => $parameters) {
+                $method = mb_strtolower($method);
+                if (!\array_key_exists($method, $customQueryResolver[$path])) {
+                    $customQueryResolver[$path][$method] = [];
+                }
+
+                foreach ($parameters as $name => $file) {
+                    if (!\array_key_exists($name, $customQueryResolver[$path][$method])) {
+                        $customQueryResolver[$path][$method][$name] = [];
+                    }
+
+                    $customQueryResolver[$path][$method][$name] = $this->getCallbackAsExpr($file);
+                }
+            }
         }
         $registry->setCustomQueryResolver($customQueryResolver);
 

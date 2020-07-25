@@ -5,6 +5,10 @@ return [
     'namespace' => 'Jane\OpenApi2\Tests\Expected',
     'directory' => __DIR__ . '/generated',
     'custom-query-resolver' => [
-        'testBoolean' => __DIR__ . '/customQueryResolver.php',
+        '/foo' => [
+            'get' => [
+                'testBoolean' => __DIR__ . '/customQueryResolver.php',
+            ],
+        ],
     ],
 ];
