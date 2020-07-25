@@ -91,14 +91,17 @@ abstract class EndpointGenerator
         /** @var Registry $registry */
         $registry = $context->getRegistry();
         $customQueryResolver = $registry->getCustomQueryResolver();
-        $operationCustomQueryResolver = [];
+        $genericCustomQueryResolver = $operationCustomQueryResolver = [];
+        if (\array_key_exists('__type', $customQueryResolver)) {
+            $genericCustomQueryResolver = $customQueryResolver['__type'];
+        }
         if (\array_key_exists($operation->getPath(), $customQueryResolver) &&
             \array_key_exists(mb_strtolower($operation->getMethod()), $customQueryResolver[$operation->getPath()])) {
             $operationCustomQueryResolver = $customQueryResolver[$operation->getPath()][mb_strtolower($operation->getMethod())];
         }
 
         $extraHeadersMethod = $this->getExtraHeadersMethod($openApi, $operation);
-        $queryResolverMethod = $this->getOptionsResolverMethod($operation, QueryParameterSubSchema::class, 'getQueryOptionsResolver', $operationCustomQueryResolver);
+        $queryResolverMethod = $this->getOptionsResolverMethod($operation, QueryParameterSubSchema::class, 'getQueryOptionsResolver', $operationCustomQueryResolver, $genericCustomQueryResolver);
         $formResolverMethod = $this->getOptionsResolverMethod($operation, FormDataParameterSubSchema::class, 'getFormOptionsResolver');
         $headerResolverMethod = $this->getOptionsResolverMethod($operation, HeaderParameterSubSchema::class, 'getHeadersOptionsResolver');
 
@@ -316,7 +319,7 @@ EOD
         ]);
     }
 
-    private function getOptionsResolverMethod(OperationGuess $operation, string $class, string $methodName, array $customResolver = []): ?Stmt\ClassMethod
+    private function getOptionsResolverMethod(OperationGuess $operation, string $class, string $methodName, array $customResolver = [], array $genericResolver = []): ?Stmt\ClassMethod
     {
         $parameters = [];
         $customResolverKeys = array_keys($customResolver);
@@ -347,7 +350,7 @@ EOD
                 [
                     new Node\Stmt\Expression(new Expr\Assign($optionsResolverVariable, new Expr\StaticCall(new Name('parent'), $methodName))),
                 ],
-                $this->nonBodyParameterGenerator->generateOptionsResolverStatements($optionsResolverVariable, $parameters),
+                $this->nonBodyParameterGenerator->generateOptionsResolverStatements($optionsResolverVariable, $parameters, $genericResolver),
                 $queryResolverNormalizerStms,
                 [
                     new Stmt\Return_($optionsResolverVariable),

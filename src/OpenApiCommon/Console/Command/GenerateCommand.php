@@ -85,6 +85,15 @@ class GenerateCommand extends BaseGenerateCommand
                     $customQueryResolver[$path][$method] = [];
                 }
 
+                if ('__type' === $path) {
+                    // here, variables has a different meaning:
+                    // - path => '__type', meta-key to handle all types of ...
+                    // - method => will contains the type of the query parameter where to apply this normalizer
+                    // - parameters => will contains the file to apply
+                    $customQueryResolver['__type'][$method] = $this->getCallbackAsExpr($parameters);
+                    continue;
+                }
+
                 foreach ($parameters as $name => $file) {
                     if (!\array_key_exists($name, $customQueryResolver[$path][$method])) {
                         $customQueryResolver[$path][$method][$name] = [];
