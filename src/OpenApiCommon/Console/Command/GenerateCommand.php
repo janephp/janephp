@@ -88,7 +88,7 @@ class GenerateCommand extends BaseGenerateCommand
                     // - path => '__type', meta-key to handle all types of ...
                     // - method => will contains the type of the query parameter where to apply this normalizer
                     // - parameters => will contains the class to apply
-                    $customQueryResolver['__type'][$method] = $parameters;
+                    $customQueryResolver['__type'][$method] = $this->formatClassName($parameters);
                     continue;
                 }
 
@@ -97,12 +97,21 @@ class GenerateCommand extends BaseGenerateCommand
                         $customQueryResolver[$path][$method][$name] = [];
                     }
 
-                    $customQueryResolver[$path][$method][$name] = $class;
+                    $customQueryResolver[$path][$method][$name] = $this->formatClassName($class);
                 }
             }
         }
         $registry->setCustomQueryResolver($customQueryResolver);
 
         return $registry;
+    }
+
+    private function formatClassName(string $class): string
+    {
+        if ('\\' === $class[0]) {
+            return $class;
+        }
+
+        return '\\' . $class;
     }
 }
