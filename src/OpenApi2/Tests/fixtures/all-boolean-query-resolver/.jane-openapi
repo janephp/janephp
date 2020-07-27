@@ -1,12 +1,14 @@
 <?php
 
+require_once __DIR__ . '/CustomQueryResolver.php';
+
 return [
     'openapi-file' => __DIR__ .  '/swagger.json',
     'namespace' => 'Jane\OpenApi2\Tests\Expected',
     'directory' => __DIR__ . '/generated',
     'custom-query-resolver' => [
         '__type' => [
-            'bool' => __DIR__ . '/customQueryResolver.php',
+            'bool' => \Jane\OpenApi2\Tests\Expected\AllBooleanQueryResolver\BooleanCustomQueryResolver::class,
         ],
     ],
 ];

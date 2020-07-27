@@ -10,8 +10,6 @@ use Jane\JsonSchema\Registry\RegistryInterface;
 use Jane\OpenApiCommon\Console\Loader\OpenApiMatcher;
 use Jane\OpenApiCommon\JaneOpenApi;
 use Jane\OpenApiCommon\Registry\Registry;
-use PhpParser\Node\Expr;
-use PhpParser\ParserFactory;
 use PhpParser\PrettyPrinter\Standard;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
@@ -89,31 +87,22 @@ class GenerateCommand extends BaseGenerateCommand
                     // here, variables has a different meaning:
                     // - path => '__type', meta-key to handle all types of ...
                     // - method => will contains the type of the query parameter where to apply this normalizer
-                    // - parameters => will contains the file to apply
-                    $customQueryResolver['__type'][$method] = $this->getCallbackAsExpr($parameters);
+                    // - parameters => will contains the class to apply
+                    $customQueryResolver['__type'][$method] = $parameters;
                     continue;
                 }
 
-                foreach ($parameters as $name => $file) {
+                foreach ($parameters as $name => $class) {
                     if (!\array_key_exists($name, $customQueryResolver[$path][$method])) {
                         $customQueryResolver[$path][$method][$name] = [];
                     }
 
-                    $customQueryResolver[$path][$method][$name] = $this->getCallbackAsExpr($file);
+                    $customQueryResolver[$path][$method][$name] = $class;
                 }
             }
         }
         $registry->setCustomQueryResolver($customQueryResolver);
 
         return $registry;
-    }
-
-    private function getCallbackAsExpr($file): Expr
-    {
-        $parser = (new ParserFactory())->create(ParserFactory::PREFER_PHP7);
-        $code = file_get_contents($file);
-        $stmts = $parser->parse($code);
-
-        return $stmts[0]->expr;
     }
 }

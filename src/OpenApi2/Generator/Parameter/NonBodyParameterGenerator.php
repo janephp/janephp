@@ -94,7 +94,7 @@ class NonBodyParameterGenerator extends ParameterGenerator
         ], $allowedTypes);
     }
 
-    private function generateOptionResolverNormalizationStatement(string $optionName, Expr $callback): Node\Stmt\Expression
+    private function generateOptionResolverNormalizationStatement(string $optionName, string $class): Node\Stmt\Expression
     {
         return new Node\Stmt\Expression(
             new Expr\MethodCall(
@@ -102,7 +102,7 @@ class NonBodyParameterGenerator extends ParameterGenerator
                 'setNormalizer',
                 [
                     new Node\Arg(new Scalar\String_($optionName)),
-                    new Node\Arg($callback),
+                    new Node\Arg(new Expr\New_(new Node\Name($class))),
                 ]
             )
         );

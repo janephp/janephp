@@ -360,7 +360,7 @@ EOD
         ]);
     }
 
-    private function generateOptionResolverNormalizationStatement(string $optionName, Expr $callback): Stmt\Expression
+    private function generateOptionResolverNormalizationStatement(string $optionName, string $class): Stmt\Expression
     {
         return new Stmt\Expression(
             new Expr\MethodCall(
@@ -368,10 +368,12 @@ EOD
                 'setNormalizer',
                 [
                     new Arg(new Scalar\String_($optionName)),
-                    new Arg($callback),
+                    new Arg(new Expr\New_(new Name($class))),
                 ]
             )
         );
+
+        // $optionsResolver->setNormalizer('option', new Class());
     }
 
     private function getGetBody(OperationGuess $operation, Context $context): Stmt\ClassMethod
