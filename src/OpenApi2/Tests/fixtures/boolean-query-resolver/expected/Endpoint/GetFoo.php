@@ -35,7 +35,7 @@ class GetFoo extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\O
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array());
         $optionsResolver->setAllowedTypes('testBoolean', array('bool'));
-        $optionsResolver->setNormalizer('testBoolean', new \Jane\OpenApi2\Tests\Expected\BooleanQueryResolver\BooleanCustomQueryResolver());
+        $optionsResolver->setNormalizer('testBoolean', \Closure::fromCallable(array(new \Jane\OpenApi2\Tests\Expected\BooleanQueryResolver\BooleanCustomQueryResolver(), '__invoke')));
         return $optionsResolver;
     }
     /**

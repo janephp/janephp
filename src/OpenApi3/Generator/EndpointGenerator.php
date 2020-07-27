@@ -389,7 +389,12 @@ EOD
                 'setNormalizer',
                 [
                     new Arg(new Scalar\String_($optionName)),
-                    new Arg(new Expr\New_(new Name($class))),
+                    new Arg(new Expr\StaticCall(new Name('\\Closure'), 'fromCallable', [
+                        new Arg(new Expr\Array_([
+                            new Expr\ArrayItem(new Expr\New_(new Name($class))),
+                            new Expr\ArrayItem(new Scalar\String_('__invoke')),
+                        ])),
+                    ])),
                 ]
             )
         );

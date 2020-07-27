@@ -102,7 +102,12 @@ class NonBodyParameterGenerator extends ParameterGenerator
                 'setNormalizer',
                 [
                     new Node\Arg(new Scalar\String_($optionName)),
-                    new Node\Arg(new Expr\New_(new Node\Name($class))),
+                    new Node\Arg(new Expr\StaticCall(new Node\Name('\\Closure'), 'fromCallable', [
+                        new Node\Arg(new Expr\Array_([
+                            new Expr\ArrayItem(new Expr\New_(new Node\Name($class))),
+                            new Expr\ArrayItem(new Scalar\String_('__invoke')),
+                        ])),
+                    ])),
                 ]
             )
         );
