@@ -32,6 +32,7 @@ class SchemaLoader extends BaseSchemaLoader implements SchemaLoaderInterface
             'version',
             'whitelisted-paths',
             'endpoint-generator',
+            'custom-query-resolver',
         ];
     }
 

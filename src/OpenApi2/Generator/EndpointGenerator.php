@@ -17,6 +17,7 @@ use Jane\OpenApi2\JsonSchema\Model\Schema;
 use Jane\OpenApiCommon\Generator\ExceptionGenerator;
 use Jane\OpenApiCommon\Guesser\Guess\OperationGuess;
 use Jane\OpenApiCommon\Naming\OperationNamingInterface;
+use Jane\OpenApiCommon\Registry\Registry;
 use Jane\OpenApiRuntime\Client\BaseEndpoint;
 use PhpParser\Comment\Doc;
 use PhpParser\Node;
@@ -87,8 +88,20 @@ abstract class EndpointGenerator
             ]),
         ]);
 
+        /** @var Registry $registry */
+        $registry = $context->getRegistry();
+        $customQueryResolver = $registry->getCustomQueryResolver();
+        $genericCustomQueryResolver = $operationCustomQueryResolver = [];
+        if (\array_key_exists('__type', $customQueryResolver)) {
+            $genericCustomQueryResolver = $customQueryResolver['__type'];
+        }
+        if (\array_key_exists($operation->getPath(), $customQueryResolver) &&
+            \array_key_exists(mb_strtolower($operation->getMethod()), $customQueryResolver[$operation->getPath()])) {
+            $operationCustomQueryResolver = $customQueryResolver[$operation->getPath()][mb_strtolower($operation->getMethod())];
+        }
+
         $extraHeadersMethod = $this->getExtraHeadersMethod($openApi, $operation);
-        $queryResolverMethod = $this->getOptionsResolverMethod($operation, QueryParameterSubSchema::class, 'getQueryOptionsResolver');
+        $queryResolverMethod = $this->getOptionsResolverMethod($operation, QueryParameterSubSchema::class, 'getQueryOptionsResolver', $operationCustomQueryResolver, $genericCustomQueryResolver);
         $formResolverMethod = $this->getOptionsResolverMethod($operation, FormDataParameterSubSchema::class, 'getFormOptionsResolver');
         $headerResolverMethod = $this->getOptionsResolverMethod($operation, HeaderParameterSubSchema::class, 'getHeadersOptionsResolver');
 
@@ -306,9 +319,11 @@ EOD
         ]);
     }
 
-    private function getOptionsResolverMethod(OperationGuess $operation, string $class, string $methodName): ?Stmt\ClassMethod
+    private function getOptionsResolverMethod(OperationGuess $operation, string $class, string $methodName, array $customResolver = [], array $genericResolver = []): ?Stmt\ClassMethod
     {
         $parameters = [];
+        $customResolverKeys = array_keys($customResolver);
+        $queryResolverNormalizerStms = [];
 
         foreach ($operation->getParameters() as $parameter) {
             if ($parameter instanceof Reference) {
@@ -317,6 +332,9 @@ EOD
 
             if (is_a($parameter, $class)) {
                 $parameters[] = $parameter;
+                if (\in_array($parameter->getName(), $customResolverKeys)) {
+                    $queryResolverNormalizerStms[] = $this->generateOptionResolverNormalizationStatement($parameter->getName(), $customResolver[$parameter->getName()]);
+                }
             }
         }
 
@@ -332,13 +350,33 @@ EOD
                 [
                     new Node\Stmt\Expression(new Expr\Assign($optionsResolverVariable, new Expr\StaticCall(new Name('parent'), $methodName))),
                 ],
-                $this->nonBodyParameterGenerator->generateOptionsResolverStatements($optionsResolverVariable, $parameters),
+                $this->nonBodyParameterGenerator->generateOptionsResolverStatements($optionsResolverVariable, $parameters, $genericResolver),
+                $queryResolverNormalizerStms,
                 [
                     new Stmt\Return_($optionsResolverVariable),
                 ]
             ),
             'returnType' => new Name\FullyQualified(OptionsResolver::class),
         ]);
+    }
+
+    private function generateOptionResolverNormalizationStatement(string $optionName, string $class): Stmt\Expression
+    {
+        return new Stmt\Expression(
+            new Expr\MethodCall(
+                new Expr\Variable('optionsResolver'),
+                'setNormalizer',
+                [
+                    new Arg(new Scalar\String_($optionName)),
+                    new Arg(new Expr\StaticCall(new Name('\\Closure'), 'fromCallable', [
+                        new Arg(new Expr\Array_([
+                            new Expr\ArrayItem(new Expr\New_(new Name($class))),
+                            new Expr\ArrayItem(new Scalar\String_('__invoke')),
+                        ])),
+                    ])),
+                ]
+            )
+        );
     }
 
     private function getGetBody(OperationGuess $operation, Context $context): Stmt\ClassMethod
