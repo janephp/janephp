@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [6.0.3] - 2020-07-29
+
+### Added
+- [OpenAPI] [GH#318](https://github.com/janephp/janephp/pull/318) Handle references in operation responses
+- [OpenAPI] [GH#358](https://github.com/janephp/janephp/pull/358) Being able to introduce custom QueryResolver normalizers
+
+### Fixed
+- [Jane] [GH#342](https://github.com/janephp/janephp/pull/342) Guess type for Schema when only enum property is set
+- [Jane] [GH#350](https://github.com/janephp/janephp/pull/350) Deal with null schema
+
 ## [6.0.2] - 2020-06-13
 
 ### Fixed
@@ -326,7 +336,9 @@ See :
  * https://github.com/janephp/jane/releases
  * https://github.com/janephp/openapi/releases
 
-[Unreleased]: https://github.com/janephp/janephp/compare/v6.0.1...HEAD
+[Unreleased]: https://github.com/janephp/janephp/compare/v6.0.3...HEAD
+[6.0.3]: https://github.com/janephp/janephp/compare/v6.0.2...v6.0.3
+[6.0.2]: https://github.com/janephp/janephp/compare/v6.0.1...v6.0.2
 [6.0.1]: https://github.com/janephp/janephp/compare/v6.0.0...v6.0.1
 [6.0.0]: https://github.com/janephp/janephp/compare/v5.3.3...v6.0.0
 [5.3.2]: https://github.com/janephp/janephp/compare/v5.3.2...v5.3.3
