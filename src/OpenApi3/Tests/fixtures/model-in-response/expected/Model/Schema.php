@@ -31,7 +31,7 @@ class Schema
     /**
      * 
      *
-     * @var string[]
+     * @var \ArrayObject
      */
     protected $mapProperty;
     /**
@@ -133,7 +133,7 @@ class Schema
     /**
      * 
      *
-     * @return string[]
+     * @return \ArrayObject
      */
     public function getMapProperty() : \ArrayObject
     {
@@ -142,7 +142,7 @@ class Schema
     /**
      * 
      *
-     * @param string[] $mapProperty
+     * @param \ArrayObject $mapProperty
      *
      * @return self
      */

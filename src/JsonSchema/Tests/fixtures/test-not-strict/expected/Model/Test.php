@@ -25,7 +25,7 @@ class Test
     /**
      * 
      *
-     * @var string[]|null
+     * @var \ArrayObject|null
      */
     protected $object;
     /**
@@ -94,7 +94,7 @@ class Test
     /**
      * 
      *
-     * @return string[]|null
+     * @return \ArrayObject|null
      */
     public function getObject() : ?\ArrayObject
     {
@@ -103,7 +103,7 @@ class Test
     /**
      * 
      *
-     * @param string[]|null $object
+     * @param \ArrayObject|null $object
      *
      * @return self
      */

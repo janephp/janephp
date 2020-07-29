@@ -7,7 +7,7 @@ class InvalidRequestProblemErrorsItem
     /**
      * 
      *
-     * @var string[][]
+     * @var \ArrayObject
      */
     protected $parameters;
     /**
@@ -19,7 +19,7 @@ class InvalidRequestProblemErrorsItem
     /**
      * 
      *
-     * @return string[][]
+     * @return \ArrayObject
      */
     public function getParameters() : \ArrayObject
     {
@@ -28,7 +28,7 @@ class InvalidRequestProblemErrorsItem
     /**
      * 
      *
-     * @param string[][] $parameters
+     * @param \ArrayObject $parameters
      *
      * @return self
      */

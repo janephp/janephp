@@ -6,9 +6,9 @@ class ListFilteredCompaniesInAPortfolio extends \Jane\OpenApiRuntime\Client\Base
 {
     protected $portfolioId;
     /**
-     * Get all companies, optionally filtered
+     * Get all companies from a specific portfolio based on the portfolio id, optionally filter with query parameters
      *
-     * @param string $portfolioId 
+     * @param string $portfolioId The unique identifier of the portfolio, obtained from `/portfolios`.
      * @param array $queryParameters {
      *     @var string $searchQuery Return companies that match the given value
      *     @var int $pageSize Number of items to return per Page (max 1000)
