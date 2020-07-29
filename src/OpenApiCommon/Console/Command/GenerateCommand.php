@@ -71,6 +71,47 @@ class GenerateCommand extends BaseGenerateCommand
         $registry->setOpenApiClass($this->matcher->match($schemaFile));
         $registry->setWhitelistedPaths($options['whitelisted-paths'] ?? []);
 
+        $customQueryResolver = [];
+        foreach ($options['custom-query-resolver'] ?? [] as $path => $methods) {
+            if (!\array_key_exists($path, $customQueryResolver)) {
+                $customQueryResolver[$path] = [];
+            }
+
+            foreach ($methods as $method => $parameters) {
+                $method = mb_strtolower($method);
+                if (!\array_key_exists($method, $customQueryResolver[$path])) {
+                    $customQueryResolver[$path][$method] = [];
+                }
+
+                if ('__type' === $path) {
+                    // here, variables has a different meaning:
+                    // - path => '__type', meta-key to handle all types of ...
+                    // - method => will contains the type of the query parameter where to apply this normalizer
+                    // - parameters => will contains the class to apply
+                    $customQueryResolver['__type'][$method] = $this->formatClassName($parameters);
+                    continue;
+                }
+
+                foreach ($parameters as $name => $class) {
+                    if (!\array_key_exists($name, $customQueryResolver[$path][$method])) {
+                        $customQueryResolver[$path][$method][$name] = [];
+                    }
+
+                    $customQueryResolver[$path][$method][$name] = $this->formatClassName($class);
+                }
+            }
+        }
+        $registry->setCustomQueryResolver($customQueryResolver);
+
         return $registry;
+    }
+
+    private function formatClassName(string $class): string
+    {
+        if ('\\' === $class[0]) {
+            return $class;
+        }
+
+        return '\\' . $class;
     }
 }

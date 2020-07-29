@@ -18,6 +18,7 @@ use Jane\OpenApiCommon\Generator\Endpoint\GetGetMethodTrait;
 use Jane\OpenApiCommon\Generator\ExceptionGenerator;
 use Jane\OpenApiCommon\Guesser\Guess\OperationGuess;
 use Jane\OpenApiCommon\Naming\OperationNamingInterface;
+use Jane\OpenApiCommon\Registry\Registry;
 use Jane\OpenApiRuntime\Client\BaseEndpoint;
 use Jane\OpenApiRuntime\Client\Endpoint;
 use Jane\OpenApiRuntime\Client\EndpointTrait;
@@ -86,8 +87,20 @@ class EndpointGenerator
             ]),
         ]);
 
+        /** @var Registry $registry */
+        $registry = $context->getRegistry();
+        $customQueryResolver = $registry->getCustomQueryResolver();
+        $genericCustomQueryResolver = $operationCustomQueryResolver = [];
+        if (\array_key_exists('__type', $customQueryResolver)) {
+            $genericCustomQueryResolver = $customQueryResolver['__type'];
+        }
+        if (\array_key_exists($operation->getPath(), $customQueryResolver) &&
+            \array_key_exists(mb_strtolower($operation->getMethod()), $customQueryResolver[$operation->getPath()])) {
+            $operationCustomQueryResolver = $customQueryResolver[$operation->getPath()][mb_strtolower($operation->getMethod())];
+        }
+
         $extraHeadersMethod = $this->getExtraHeadersMethod($operation, $this->guessClass);
-        $queryResolverMethod = $this->getOptionsResolverMethod($operation, self::IN_QUERY, 'getQueryOptionsResolver', $this->guessClass, $this->nonBodyParameterGenerator);
+        $queryResolverMethod = $this->getOptionsResolverMethod($operation, self::IN_QUERY, 'getQueryOptionsResolver', $this->guessClass, $this->nonBodyParameterGenerator, $operationCustomQueryResolver, $genericCustomQueryResolver);
         $headerResolverMethod = $this->getOptionsResolverMethod($operation, self::IN_HEADER, 'getHeadersOptionsResolver', $this->guessClass, $this->nonBodyParameterGenerator);
 
         if ($extraHeadersMethod) {

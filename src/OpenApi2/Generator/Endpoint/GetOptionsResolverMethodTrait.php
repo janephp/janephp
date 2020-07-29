@@ -14,9 +14,11 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 trait GetOptionsResolverMethodTrait
 {
-    public function getOptionsResolverMethod(OperationGuess $operation, string $class, string $methodName, GuessClass $guessClass, NonBodyParameterGenerator $nonBodyParameterGenerator): ?Stmt\ClassMethod
+    public function getOptionsResolverMethod(OperationGuess $operation, string $class, string $methodName, GuessClass $guessClass, NonBodyParameterGenerator $nonBodyParameterGenerator, array $customResolver = [], array $genericResolver = []): ?Stmt\ClassMethod
     {
         $parameters = [];
+        $customResolverKeys = array_keys($customResolver);
+        $queryResolverNormalizerStms = [];
 
         foreach ($operation->getParameters() as $parameter) {
             if ($parameter instanceof Reference) {
@@ -25,6 +27,9 @@ trait GetOptionsResolverMethodTrait
 
             if (is_a($parameter, $class)) {
                 $parameters[] = $parameter;
+                if (\in_array($parameter->getName(), $customResolverKeys)) {
+                    $queryResolverNormalizerStms[] = $this->generateOptionResolverNormalizationStatement($parameter->getName(), $customResolver[$parameter->getName()]);
+                }
             }
         }
 
@@ -40,12 +45,32 @@ trait GetOptionsResolverMethodTrait
                 [
                     new Node\Stmt\Expression(new Expr\Assign($optionsResolverVariable, new Expr\StaticCall(new Name('parent'), $methodName))),
                 ],
-                $nonBodyParameterGenerator->generateOptionsResolverStatements($optionsResolverVariable, $parameters),
+                $nonBodyParameterGenerator->generateOptionsResolverStatements($optionsResolverVariable, $parameters, $genericResolver),
+                $queryResolverNormalizerStms,
                 [
                     new Stmt\Return_($optionsResolverVariable),
                 ]
             ),
             'returnType' => new Name\FullyQualified(OptionsResolver::class),
         ]);
+    }
+
+    private function generateOptionResolverNormalizationStatement(string $optionName, string $class): Stmt\Expression
+    {
+        return new Stmt\Expression(
+            new Expr\MethodCall(
+                new Expr\Variable('optionsResolver'),
+                'setNormalizer',
+                [
+                    new Node\Arg(new Node\Scalar\String_($optionName)),
+                    new Node\Arg(new Expr\StaticCall(new Name('\\Closure'), 'fromCallable', [
+                        new Node\Arg(new Expr\Array_([
+                            new Expr\ArrayItem(new Expr\New_(new Name($class))),
+                            new Expr\ArrayItem(new Node\Scalar\String_('__invoke')),
+                        ])),
+                    ])),
+                ]
+            )
+        );
     }
 }

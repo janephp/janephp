@@ -57,29 +57,32 @@ class NonBodyParameterGenerator extends ParameterGenerator
     /**
      * @param Parameter[] $parameters
      */
-    public function generateOptionsResolverStatements(Expr\Variable $optionsResolverVariable, array $parameters): array
+    public function generateOptionsResolverStatements(Expr\Variable $optionsResolverVariable, array $parameters, array $genericResolver = []): array
     {
-        $required = [];
-        $allowedTypes = [];
-        $defined = [];
-        $defaults = [];
+        $required = $allowedTypes = $defined = $defaults = [];
+        $genericResolverKeys = array_keys($genericResolver);
 
         foreach ($parameters as $parameter) {
             $defined[] = new Expr\ArrayItem(new Scalar\String_($parameter->getName()));
             $schema = $parameter->getSchema();
 
-            if ($parameter->getRequired() && (null !== $schema && null === $schema->getDefault())) {
-                $required[] = new Expr\ArrayItem(new Scalar\String_($parameter->getName()));
-            }
-
             if ($schema instanceof Reference) {
                 [$_, $schema] = $this->guessClass->resolve($schema, Schema::class);
             }
 
+            if ($parameter->getRequired() && (null !== $schema && null === $schema->getDefault())) {
+                $required[] = new Expr\ArrayItem(new Scalar\String_($parameter->getName()));
+            }
+
+            $matchGenericResolver = null;
             if (null !== $schema && $schema->getType()) {
                 $types = [];
 
                 foreach ($this->convertParameterType($schema) as $typeString) {
+                    if (\in_array($typeString, $genericResolverKeys)) {
+                        $matchGenericResolver = $typeString;
+                    }
+
                     $types[] = new Expr\ArrayItem(new Scalar\String_($typeString));
                 }
 
@@ -93,8 +96,12 @@ class NonBodyParameterGenerator extends ParameterGenerator
                 ]));
             }
 
-            if (!$parameter->getRequired() && null !== $schema->getDefault()) {
+            if (!$parameter->getRequired() && null !== $schema && null !== $schema->getDefault()) {
                 $defaults[] = new Expr\ArrayItem($this->getDefaultAsExpr($parameter), new Scalar\String_($parameter->getName()));
+            }
+
+            if (null !== $matchGenericResolver) {
+                $allowedTypes[] = $this->generateOptionResolverNormalizationStatement($parameter->getName(), $genericResolver[$matchGenericResolver]);
             }
         }
 
@@ -109,6 +116,25 @@ class NonBodyParameterGenerator extends ParameterGenerator
                 new Node\Arg(new Expr\Array_($defaults)),
             ])),
         ], $allowedTypes);
+    }
+
+    private function generateOptionResolverNormalizationStatement(string $optionName, string $class): Node\Stmt\Expression
+    {
+        return new Node\Stmt\Expression(
+            new Expr\MethodCall(
+                new Expr\Variable('optionsResolver'),
+                'setNormalizer',
+                [
+                    new Node\Arg(new Scalar\String_($optionName)),
+                    new Node\Arg(new Expr\StaticCall(new Node\Name('\\Closure'), 'fromCallable', [
+                        new Node\Arg(new Expr\Array_([
+                            new Expr\ArrayItem(new Expr\New_(new Node\Name($class))),
+                            new Expr\ArrayItem(new Scalar\String_('__invoke')),
+                        ])),
+                    ])),
+                ]
+            )
+        );
     }
 
     /**
