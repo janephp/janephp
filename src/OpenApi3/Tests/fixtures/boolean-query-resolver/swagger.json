@@ -1,0 +1,23 @@
+{
+    "openapi": "3.0.2",
+    "paths": {
+        "/foo": {
+            "get": {
+                "parameters": [
+                    {
+                        "name": "testBoolean",
+                        "in": "query",
+                        "schema": {
+                            "type": "boolean"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "no error"
+                    }
+                }
+            }
+        }
+    }
+}

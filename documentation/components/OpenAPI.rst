@@ -143,8 +143,6 @@ Other options are available to customize the generated code:
  * ``skip-null-values``: When having nullable properties, you can enforce normalization to skip theses
    properties even if they are nullable. This option allows you to not have theses properties when they're not set
    (``null``). By default it is enabled.
- * ``endpoint-generator``: Generator Class (extending `\Jane\OpenApi3\Generator\EndpointGenerator`) which can
-   specify custom endpoint interface & corresponding trait.
  * ``whitelisted-paths``: This option allows you to generate only needed endpoints and related models. Be carefull,
    that option will filter models used by whitelisted endpoints and generate model & normalizer only for them. Here is
    some examples about how to use it::
@@ -165,6 +163,42 @@ Other options are available to customize the generated code:
    There is many ways to use it, first you atleast need a regex defining which endpoint is whitelisted. This endpoint
    can be either a string or in an array. If you don't provide any HTTP method, we will just accept any methods, but
    you can provide either a string or array as second argument to specify which method you accept.
+
+ * ``endpoint-generator``: Generator Class which can specify custom endpoint interface & corresponding trait (this class
+   should extends ``\Jane\OpenApi3\Generator\EndpointGenerator``)
+ * ``custom-query-resolver``: This option allows you to customize the query parameter normalizer for each of the API
+   endpoint with a userland callback. Here is all possible combinations::
+
+    <?php
+
+    use App\BoolCustomQueryResolver;
+    use App\IntCustomQueryResolver;
+    use App\BarCustomQueryResolver;
+    use App\BazCustomQueryResolver;
+
+    return [
+        // your usual configuration ...
+        'custom-query-resolver' => [
+            '__type' => [
+                'bool' => BoolCustomQueryResolver::class,
+                'int' => IntCustomQueryResolver::class,
+            ],
+            '/foo' => [
+                'get' => [
+                    'bar' => BarCustomQueryResolver::class,
+                    'baz' => BazCustomQueryResolver::class,
+                ],
+                'post' => [
+                    'bar' => BarCustomQueryResolver::class,
+                ],
+            ],
+        ],
+    ];
+
+   There are many ways to use it. You can either use the ``__type`` key to specify a custom query normalizer for a
+   given type (``bool``, ``int``, ``string``, ...) and give it your class that contains the custom normalizer by
+   extending the ``\Jane\OpenApiRuntime\Client\CustomQueryResolver``. You can also filter the usage of your custom
+   normalizer by giving the exact path, method and parameter name where you want to apply it.
 
 .. _`JSON Reference`: https://tools.ietf.org/id/draft-pbryan-zyp-json-ref-03.html
 .. _`Carbon`: https://carbon.nesbot.com/

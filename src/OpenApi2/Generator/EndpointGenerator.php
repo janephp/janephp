@@ -20,6 +20,7 @@ use Jane\OpenApiCommon\Generator\Endpoint\GetGetMethodTrait;
 use Jane\OpenApiCommon\Generator\ExceptionGenerator;
 use Jane\OpenApiCommon\Guesser\Guess\OperationGuess;
 use Jane\OpenApiCommon\Naming\OperationNamingInterface;
+use Jane\OpenApiCommon\Registry\Registry;
 use Jane\OpenApiRuntime\Client\BaseEndpoint;
 use Jane\OpenApiRuntime\Client\Endpoint;
 use Jane\OpenApiRuntime\Client\EndpointTrait;
@@ -85,8 +86,20 @@ class EndpointGenerator
             ]),
         ]);
 
+        /** @var Registry $registry */
+        $registry = $context->getRegistry();
+        $customQueryResolver = $registry->getCustomQueryResolver();
+        $genericCustomQueryResolver = $operationCustomQueryResolver = [];
+        if (\array_key_exists('__type', $customQueryResolver)) {
+            $genericCustomQueryResolver = $customQueryResolver['__type'];
+        }
+        if (\array_key_exists($operation->getPath(), $customQueryResolver) &&
+            \array_key_exists(mb_strtolower($operation->getMethod()), $customQueryResolver[$operation->getPath()])) {
+            $operationCustomQueryResolver = $customQueryResolver[$operation->getPath()][mb_strtolower($operation->getMethod())];
+        }
+
         $extraHeadersMethod = $this->getExtraHeadersMethod($openApi, $operation);
-        $queryResolverMethod = $this->getOptionsResolverMethod($operation, QueryParameterSubSchema::class, 'getQueryOptionsResolver', $this->guessClass, $this->nonBodyParameterGenerator);
+        $queryResolverMethod = $this->getOptionsResolverMethod($operation, QueryParameterSubSchema::class, 'getQueryOptionsResolver', $this->guessClass, $this->nonBodyParameterGenerator, $operationCustomQueryResolver, $genericCustomQueryResolver);
         $formResolverMethod = $this->getOptionsResolverMethod($operation, FormDataParameterSubSchema::class, 'getFormOptionsResolver', $this->guessClass, $this->nonBodyParameterGenerator);
         $headerResolverMethod = $this->getOptionsResolverMethod($operation, HeaderParameterSubSchema::class, 'getHeadersOptionsResolver', $this->guessClass, $this->nonBodyParameterGenerator);
 
