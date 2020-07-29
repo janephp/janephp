@@ -17,6 +17,9 @@
                     },
                     "500": {
                         "description": "Internal server error on test exception"
+                    },
+                    "600": {
+                        "description": "New update available"
                     }
                 }
             }
