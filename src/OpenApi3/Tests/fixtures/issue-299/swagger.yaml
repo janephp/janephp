@@ -1,0 +1,51 @@
+openapi: 3.0.2
+info:
+  title: Test
+  version: 0.0.0
+servers:
+  - url: https://example.com/rest/v1
+paths:
+  /users:
+    get:
+      operationId: getUsers
+      summary: List all users
+      description: |
+        Foo bar
+      tags:
+        - Users
+      parameters:
+        - $ref: '#/components/parameters/userState'
+      responses:
+        '200':
+          $ref: '#/components/responses/UserList'
+components:
+  parameters:
+    userState:
+      in: query
+      name: userState
+      required: true
+      description: "User state"
+      schema:
+        $ref: "#/components/schemas/userState"
+  schemas:
+    userNames:
+      type: string
+      description: username
+      example: 'User name'
+    userState:
+      type: string
+      enum:
+        - ACTIVE
+        - BOTH
+        - INACTIVE
+      description: User state
+      example: ACTIVE
+  responses:
+    UserList:
+      description: Return the response of user names.
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/userNames'
