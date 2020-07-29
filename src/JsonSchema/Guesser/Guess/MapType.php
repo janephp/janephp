@@ -24,6 +24,14 @@ class MapType extends ArrayType
     }
 
     /**
+     * (@inheritDoc}.
+     */
+    public function getDocTypeHint(string $namespace)
+    {
+        return new Name('\ArrayObject');
+    }
+
+    /**
      * {@inheritdoc}
      */
     protected function createArrayValueStatement(): Expr
