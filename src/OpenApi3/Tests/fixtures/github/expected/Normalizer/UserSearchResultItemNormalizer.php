@@ -1,0 +1,266 @@
+<?php
+
+namespace Github\Normalizer;
+
+use Jane\JsonSchemaRuntime\Reference;
+use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
+use Symfony\Component\Serializer\Exception\InvalidArgumentException;
+use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
+use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
+use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
+use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
+use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
+use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+class UserSearchResultItemNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+{
+    use DenormalizerAwareTrait;
+    use NormalizerAwareTrait;
+    use CheckArray;
+    public function supportsDenormalization($data, $type, $format = null)
+    {
+        return $type === 'Github\\Model\\UserSearchResultItem';
+    }
+    public function supportsNormalization($data, $format = null)
+    {
+        return is_object($data) && get_class($data) === 'Github\\Model\\UserSearchResultItem';
+    }
+    public function denormalize($data, $class, $format = null, array $context = array())
+    {
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
+        }
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
+        }
+        $object = new \Github\Model\UserSearchResultItem();
+        if (\array_key_exists('login', $data)) {
+            $object->setLogin($data['login']);
+        }
+        if (\array_key_exists('id', $data)) {
+            $object->setId($data['id']);
+        }
+        if (\array_key_exists('node_id', $data)) {
+            $object->setNodeId($data['node_id']);
+        }
+        if (\array_key_exists('avatar_url', $data)) {
+            $object->setAvatarUrl($data['avatar_url']);
+        }
+        if (\array_key_exists('gravatar_id', $data) && $data['gravatar_id'] !== null) {
+            $object->setGravatarId($data['gravatar_id']);
+        }
+        elseif (\array_key_exists('gravatar_id', $data) && $data['gravatar_id'] === null) {
+            $object->setGravatarId(null);
+        }
+        if (\array_key_exists('url', $data)) {
+            $object->setUrl($data['url']);
+        }
+        if (\array_key_exists('html_url', $data)) {
+            $object->setHtmlUrl($data['html_url']);
+        }
+        if (\array_key_exists('followers_url', $data)) {
+            $object->setFollowersUrl($data['followers_url']);
+        }
+        if (\array_key_exists('subscriptions_url', $data)) {
+            $object->setSubscriptionsUrl($data['subscriptions_url']);
+        }
+        if (\array_key_exists('organizations_url', $data)) {
+            $object->setOrganizationsUrl($data['organizations_url']);
+        }
+        if (\array_key_exists('repos_url', $data)) {
+            $object->setReposUrl($data['repos_url']);
+        }
+        if (\array_key_exists('received_events_url', $data)) {
+            $object->setReceivedEventsUrl($data['received_events_url']);
+        }
+        if (\array_key_exists('type', $data)) {
+            $object->setType($data['type']);
+        }
+        if (\array_key_exists('score', $data)) {
+            $object->setScore($data['score']);
+        }
+        if (\array_key_exists('following_url', $data)) {
+            $object->setFollowingUrl($data['following_url']);
+        }
+        if (\array_key_exists('gists_url', $data)) {
+            $object->setGistsUrl($data['gists_url']);
+        }
+        if (\array_key_exists('starred_url', $data)) {
+            $object->setStarredUrl($data['starred_url']);
+        }
+        if (\array_key_exists('events_url', $data)) {
+            $object->setEventsUrl($data['events_url']);
+        }
+        if (\array_key_exists('public_repos', $data)) {
+            $object->setPublicRepos($data['public_repos']);
+        }
+        if (\array_key_exists('public_gists', $data)) {
+            $object->setPublicGists($data['public_gists']);
+        }
+        if (\array_key_exists('followers', $data)) {
+            $object->setFollowers($data['followers']);
+        }
+        if (\array_key_exists('following', $data)) {
+            $object->setFollowing($data['following']);
+        }
+        if (\array_key_exists('created_at', $data)) {
+            $object->setCreatedAt(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['created_at']));
+        }
+        if (\array_key_exists('updated_at', $data)) {
+            $object->setUpdatedAt(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['updated_at']));
+        }
+        if (\array_key_exists('name', $data) && $data['name'] !== null) {
+            $object->setName($data['name']);
+        }
+        elseif (\array_key_exists('name', $data) && $data['name'] === null) {
+            $object->setName(null);
+        }
+        if (\array_key_exists('bio', $data) && $data['bio'] !== null) {
+            $object->setBio($data['bio']);
+        }
+        elseif (\array_key_exists('bio', $data) && $data['bio'] === null) {
+            $object->setBio(null);
+        }
+        if (\array_key_exists('email', $data) && $data['email'] !== null) {
+            $object->setEmail($data['email']);
+        }
+        elseif (\array_key_exists('email', $data) && $data['email'] === null) {
+            $object->setEmail(null);
+        }
+        if (\array_key_exists('location', $data) && $data['location'] !== null) {
+            $object->setLocation($data['location']);
+        }
+        elseif (\array_key_exists('location', $data) && $data['location'] === null) {
+            $object->setLocation(null);
+        }
+        if (\array_key_exists('site_admin', $data)) {
+            $object->setSiteAdmin($data['site_admin']);
+        }
+        if (\array_key_exists('hireable', $data) && $data['hireable'] !== null) {
+            $object->setHireable($data['hireable']);
+        }
+        elseif (\array_key_exists('hireable', $data) && $data['hireable'] === null) {
+            $object->setHireable(null);
+        }
+        if (\array_key_exists('text_matches', $data)) {
+            $values = array();
+            foreach ($data['text_matches'] as $value) {
+                $values[] = $this->denormalizer->denormalize($value, 'Github\\Model\\SearchResultTextMatchesItem', 'json', $context);
+            }
+            $object->setTextMatches($values);
+        }
+        if (\array_key_exists('blog', $data) && $data['blog'] !== null) {
+            $object->setBlog($data['blog']);
+        }
+        elseif (\array_key_exists('blog', $data) && $data['blog'] === null) {
+            $object->setBlog(null);
+        }
+        if (\array_key_exists('company', $data) && $data['company'] !== null) {
+            $object->setCompany($data['company']);
+        }
+        elseif (\array_key_exists('company', $data) && $data['company'] === null) {
+            $object->setCompany(null);
+        }
+        if (\array_key_exists('suspended_at', $data) && $data['suspended_at'] !== null) {
+            $object->setSuspendedAt(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['suspended_at']));
+        }
+        elseif (\array_key_exists('suspended_at', $data) && $data['suspended_at'] === null) {
+            $object->setSuspendedAt(null);
+        }
+        return $object;
+    }
+    public function normalize($object, $format = null, array $context = array())
+    {
+        $data = array();
+        if (null !== $object->getLogin()) {
+            $data['login'] = $object->getLogin();
+        }
+        if (null !== $object->getId()) {
+            $data['id'] = $object->getId();
+        }
+        if (null !== $object->getNodeId()) {
+            $data['node_id'] = $object->getNodeId();
+        }
+        if (null !== $object->getAvatarUrl()) {
+            $data['avatar_url'] = $object->getAvatarUrl();
+        }
+        $data['gravatar_id'] = $object->getGravatarId();
+        if (null !== $object->getUrl()) {
+            $data['url'] = $object->getUrl();
+        }
+        if (null !== $object->getHtmlUrl()) {
+            $data['html_url'] = $object->getHtmlUrl();
+        }
+        if (null !== $object->getFollowersUrl()) {
+            $data['followers_url'] = $object->getFollowersUrl();
+        }
+        if (null !== $object->getSubscriptionsUrl()) {
+            $data['subscriptions_url'] = $object->getSubscriptionsUrl();
+        }
+        if (null !== $object->getOrganizationsUrl()) {
+            $data['organizations_url'] = $object->getOrganizationsUrl();
+        }
+        if (null !== $object->getReposUrl()) {
+            $data['repos_url'] = $object->getReposUrl();
+        }
+        if (null !== $object->getReceivedEventsUrl()) {
+            $data['received_events_url'] = $object->getReceivedEventsUrl();
+        }
+        if (null !== $object->getType()) {
+            $data['type'] = $object->getType();
+        }
+        if (null !== $object->getScore()) {
+            $data['score'] = $object->getScore();
+        }
+        if (null !== $object->getFollowingUrl()) {
+            $data['following_url'] = $object->getFollowingUrl();
+        }
+        if (null !== $object->getGistsUrl()) {
+            $data['gists_url'] = $object->getGistsUrl();
+        }
+        if (null !== $object->getStarredUrl()) {
+            $data['starred_url'] = $object->getStarredUrl();
+        }
+        if (null !== $object->getEventsUrl()) {
+            $data['events_url'] = $object->getEventsUrl();
+        }
+        if (null !== $object->getPublicRepos()) {
+            $data['public_repos'] = $object->getPublicRepos();
+        }
+        if (null !== $object->getPublicGists()) {
+            $data['public_gists'] = $object->getPublicGists();
+        }
+        if (null !== $object->getFollowers()) {
+            $data['followers'] = $object->getFollowers();
+        }
+        if (null !== $object->getFollowing()) {
+            $data['following'] = $object->getFollowing();
+        }
+        if (null !== $object->getCreatedAt()) {
+            $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
+        }
+        if (null !== $object->getUpdatedAt()) {
+            $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
+        }
+        $data['name'] = $object->getName();
+        $data['bio'] = $object->getBio();
+        $data['email'] = $object->getEmail();
+        $data['location'] = $object->getLocation();
+        if (null !== $object->getSiteAdmin()) {
+            $data['site_admin'] = $object->getSiteAdmin();
+        }
+        $data['hireable'] = $object->getHireable();
+        if (null !== $object->getTextMatches()) {
+            $values = array();
+            foreach ($object->getTextMatches() as $value) {
+                $values[] = $this->normalizer->normalize($value, 'json', $context);
+            }
+            $data['text_matches'] = $values;
+        }
+        $data['blog'] = $object->getBlog();
+        $data['company'] = $object->getCompany();
+        if (null !== $object->getSuspendedAt()) {
+            $data['suspended_at'] = $object->getSuspendedAt()->format('Y-m-d\\TH:i:sP');
+        }
+        return $data;
+    }
+}

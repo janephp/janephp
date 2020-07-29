@@ -19,7 +19,7 @@ class OperationIdNaming implements OperationNamingInterface
 
     public function getFunctionName(OperationGuess $operation): string
     {
-        return Inflector::camelize((string) $operation->getOperation()->getOperationId());
+        return Inflector::camelize($this->slugger->slug((string) $operation->getOperation()->getOperationId()));
     }
 
     public function getEndpointName(OperationGuess $operation): string
