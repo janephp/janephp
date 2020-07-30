@@ -9,6 +9,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      * @throws \Jane\OpenApi3\Tests\Expected\Exception\TestNoTagBadRequestException
      * @throws \Jane\OpenApi3\Tests\Expected\Exception\TestNoTagNotFoundException
      * @throws \Jane\OpenApi3\Tests\Expected\Exception\TestNoTagInternalServerErrorException
+     * @throws \Jane\OpenApi3\Tests\Expected\Exception\TestNoTag600Exception
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */

@@ -23,6 +23,7 @@ class TestNoTag extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jan
      * @throws \Jane\OpenApi2\Tests\Expected\Exception\TestNoTagBadRequestException
      * @throws \Jane\OpenApi2\Tests\Expected\Exception\TestNoTagNotFoundException
      * @throws \Jane\OpenApi2\Tests\Expected\Exception\TestNoTagInternalServerErrorException
+     * @throws \Jane\OpenApi2\Tests\Expected\Exception\TestNoTag600Exception
      *
      * @return null
      */
@@ -36,6 +37,9 @@ class TestNoTag extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jan
         }
         if (500 === $status) {
             throw new \Jane\OpenApi2\Tests\Expected\Exception\TestNoTagInternalServerErrorException();
+        }
+        if (600 === $status) {
+            throw new \Jane\OpenApi2\Tests\Expected\Exception\TestNoTag600Exception();
         }
     }
     public function getAuthenticationScopes() : array
