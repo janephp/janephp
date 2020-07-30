@@ -44,7 +44,7 @@ class Discriminator
     /**
      * @return string[]|null
      */
-    public function getMapping(): ?\ArrayObject
+    public function getMapping(): ?iterable
     {
         return $this->mapping;
     }
@@ -54,7 +54,7 @@ class Discriminator
      *
      * @return self
      */
-    public function setMapping(?\ArrayObject $mapping): self
+    public function setMapping(?iterable $mapping): self
     {
         $this->mapping = $mapping;
 

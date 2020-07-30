@@ -162,7 +162,7 @@ class Schema
      *
      * @return string[]
      */
-    public function getMapProperty() : \ArrayObject
+    public function getMapProperty() : iterable
     {
         return $this->mapProperty;
     }
@@ -173,7 +173,7 @@ class Schema
      *
      * @return self
      */
-    public function setMapProperty(\ArrayObject $mapProperty) : self
+    public function setMapProperty(iterable $mapProperty) : self
     {
         $this->mapProperty = $mapProperty;
         return $this;

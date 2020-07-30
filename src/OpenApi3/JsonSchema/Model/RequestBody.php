@@ -48,7 +48,7 @@ class RequestBody extends \ArrayObject
     /**
      * @return MediaType[]|null
      */
-    public function getContent(): ?\ArrayObject
+    public function getContent(): ?iterable
     {
         return $this->content;
     }
@@ -58,7 +58,7 @@ class RequestBody extends \ArrayObject
      *
      * @return self
      */
-    public function setContent(?\ArrayObject $content): self
+    public function setContent(?iterable $content): self
     {
         $this->content = $content;
 
