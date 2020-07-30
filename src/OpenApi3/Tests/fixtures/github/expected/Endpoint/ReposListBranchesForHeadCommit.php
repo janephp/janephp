@@ -1,0 +1,66 @@
+<?php
+
+namespace Github\Endpoint;
+
+class ReposListBranchesForHeadCommit extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7Endpoint
+{
+    protected $owner;
+    protected $repo;
+    protected $commit_sha;
+    /**
+    * Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://help.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+    
+    Returns all branches where the given commit SHA is the HEAD, or latest commit for the branch.
+    *
+    * @param string $owner 
+    * @param string $repo 
+    * @param string $commitSha commit_sha+ parameter
+    */
+    public function __construct(string $owner, string $repo, string $commitSha)
+    {
+        $this->owner = $owner;
+        $this->repo = $repo;
+        $this->commit_sha = $commitSha;
+    }
+    use \Jane\OpenApiRuntime\Client\Psr7EndpointTrait;
+    public function getMethod() : string
+    {
+        return 'GET';
+    }
+    public function getUri() : string
+    {
+        return str_replace(array('{owner}', '{repo}', '{commit_sha}'), array($this->owner, $this->repo, $this->commit_sha), '/repos/{owner}/{repo}/commits/{commit_sha}/branches-where-head');
+    }
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
+    {
+        return array(array(), null);
+    }
+    public function getExtraHeaders() : array
+    {
+        return array('Accept' => array('application/json'));
+    }
+    /**
+     * {@inheritdoc}
+     *
+     * @throws \Github\Exception\ReposListBranchesForHeadCommitUnsupportedMediaTypeException
+     * @throws \Github\Exception\ReposListBranchesForHeadCommitUnprocessableEntityException
+     *
+     * @return null|\Github\Model\BranchShort[]
+     */
+    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    {
+        if (200 === $status && mb_strpos($contentType, 'application/json') !== false) {
+            return $serializer->deserialize($body, 'Github\\Model\\BranchShort[]', 'json');
+        }
+        if (415 === $status && mb_strpos($contentType, 'application/json') !== false) {
+            throw new \Github\Exception\ReposListBranchesForHeadCommitUnsupportedMediaTypeException($serializer->deserialize($body, 'Github\\Model\\ResponsePreviewHeaderMissing', 'json'));
+        }
+        if (422 === $status && mb_strpos($contentType, 'application/json') !== false) {
+            throw new \Github\Exception\ReposListBranchesForHeadCommitUnprocessableEntityException($serializer->deserialize($body, 'Github\\Model\\ValidationError', 'json'));
+        }
+    }
+    public function getAuthenticationScopes() : array
+    {
+        return array();
+    }
+}

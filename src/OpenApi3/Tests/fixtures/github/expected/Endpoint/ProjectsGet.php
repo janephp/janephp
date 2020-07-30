@@ -1,0 +1,61 @@
+<?php
+
+namespace Github\Endpoint;
+
+class ProjectsGet extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7Endpoint
+{
+    protected $project_id;
+    /**
+     * Gets a project by its `id`. Returns a `404 Not Found` status if projects are disabled. If you do not have sufficient privileges to perform this action, a `401 Unauthorized` or `410 Gone` status is returned.
+     *
+     * @param int $projectId 
+     */
+    public function __construct(int $projectId)
+    {
+        $this->project_id = $projectId;
+    }
+    use \Jane\OpenApiRuntime\Client\Psr7EndpointTrait;
+    public function getMethod() : string
+    {
+        return 'GET';
+    }
+    public function getUri() : string
+    {
+        return str_replace(array('{project_id}'), array($this->project_id), '/projects/{project_id}');
+    }
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
+    {
+        return array(array(), null);
+    }
+    public function getExtraHeaders() : array
+    {
+        return array('Accept' => array('application/json'));
+    }
+    /**
+     * {@inheritdoc}
+     *
+     * @throws \Github\Exception\ProjectsGetForbiddenException
+     * @throws \Github\Exception\ProjectsGetUnauthorizedException
+     *
+     * @return null|\Github\Model\Project
+     */
+    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    {
+        if (200 === $status && mb_strpos($contentType, 'application/json') !== false) {
+            return $serializer->deserialize($body, 'Github\\Model\\Project', 'json');
+        }
+        if (304 === $status) {
+            return null;
+        }
+        if (403 === $status && mb_strpos($contentType, 'application/json') !== false) {
+            throw new \Github\Exception\ProjectsGetForbiddenException($serializer->deserialize($body, 'Github\\Model\\BasicError', 'json'));
+        }
+        if (401 === $status && mb_strpos($contentType, 'application/json') !== false) {
+            throw new \Github\Exception\ProjectsGetUnauthorizedException($serializer->deserialize($body, 'Github\\Model\\BasicError', 'json'));
+        }
+    }
+    public function getAuthenticationScopes() : array
+    {
+        return array();
+    }
+}

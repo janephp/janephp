@@ -20,7 +20,7 @@
         "phpunit/phpunit": "^8.0",
         "symfony/framework-bundle": "^4.4 || ^5.0",
         "symfony/serializer": "^4.4 || ^5.0",
-        "symfony/yaml": "^4.4 || ^5.0"
+        "symfony/yaml": "~4.4.9 || ^5.0"
     },
     "extra": {
         "branch-alias": {
