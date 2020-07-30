@@ -268,7 +268,7 @@ class Parameter extends \ArrayObject
     /**
      * @return MediaType[]|null
      */
-    public function getContent(): ?\ArrayObject
+    public function getContent(): ?iterable
     {
         return $this->content;
     }
@@ -278,7 +278,7 @@ class Parameter extends \ArrayObject
      *
      * @return self
      */
-    public function setContent(?\ArrayObject $content): self
+    public function setContent(?iterable $content): self
     {
         $this->content = $content;
 
@@ -308,7 +308,7 @@ class Parameter extends \ArrayObject
     /**
      * @return Example[]|Reference[]|null
      */
-    public function getExamples(): ?\ArrayObject
+    public function getExamples(): ?iterable
     {
         return $this->examples;
     }
@@ -318,7 +318,7 @@ class Parameter extends \ArrayObject
      *
      * @return self
      */
-    public function setExamples(?\ArrayObject $examples): self
+    public function setExamples(?iterable $examples): self
     {
         $this->examples = $examples;
 

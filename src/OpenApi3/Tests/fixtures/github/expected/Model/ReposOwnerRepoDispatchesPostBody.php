@@ -42,7 +42,7 @@ class ReposOwnerRepoDispatchesPostBody
      *
      * @return mixed[]
      */
-    public function getClientPayload() : \ArrayObject
+    public function getClientPayload() : iterable
     {
         return $this->clientPayload;
     }
@@ -53,7 +53,7 @@ class ReposOwnerRepoDispatchesPostBody
      *
      * @return self
      */
-    public function setClientPayload(\ArrayObject $clientPayload) : self
+    public function setClientPayload(iterable $clientPayload) : self
     {
         $this->clientPayload = $clientPayload;
         return $this;

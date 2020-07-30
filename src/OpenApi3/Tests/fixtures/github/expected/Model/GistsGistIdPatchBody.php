@@ -42,7 +42,7 @@ class GistsGistIdPatchBody
      *
      * @return GistsGistIdPatchBodyFilesItem[]
      */
-    public function getFiles() : \ArrayObject
+    public function getFiles() : iterable
     {
         return $this->files;
     }
@@ -53,7 +53,7 @@ class GistsGistIdPatchBody
      *
      * @return self
      */
-    public function setFiles(\ArrayObject $files) : self
+    public function setFiles(iterable $files) : self
     {
         $this->files = $files;
         return $this;

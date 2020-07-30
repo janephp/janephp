@@ -52,7 +52,7 @@ class Response extends \ArrayObject
     /**
      * @return Header[]|Reference[]|null
      */
-    public function getHeaders(): ?\ArrayObject
+    public function getHeaders(): ?iterable
     {
         return $this->headers;
     }
@@ -62,7 +62,7 @@ class Response extends \ArrayObject
      *
      * @return self
      */
-    public function setHeaders(?\ArrayObject $headers): self
+    public function setHeaders(?iterable $headers): self
     {
         $this->headers = $headers;
 
@@ -72,7 +72,7 @@ class Response extends \ArrayObject
     /**
      * @return MediaType[]|null
      */
-    public function getContent(): ?\ArrayObject
+    public function getContent(): ?iterable
     {
         return $this->content;
     }
@@ -82,7 +82,7 @@ class Response extends \ArrayObject
      *
      * @return self
      */
-    public function setContent(?\ArrayObject $content): self
+    public function setContent(?iterable $content): self
     {
         $this->content = $content;
 
@@ -92,7 +92,7 @@ class Response extends \ArrayObject
     /**
      * @return Link[]|Reference[]|null
      */
-    public function getLinks(): ?\ArrayObject
+    public function getLinks(): ?iterable
     {
         return $this->links;
     }
@@ -102,7 +102,7 @@ class Response extends \ArrayObject
      *
      * @return self
      */
-    public function setLinks(?\ArrayObject $links): self
+    public function setLinks(?iterable $links): self
     {
         $this->links = $links;
 

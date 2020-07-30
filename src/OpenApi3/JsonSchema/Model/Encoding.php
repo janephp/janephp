@@ -56,7 +56,7 @@ class Encoding
     /**
      * @return Header[]|null
      */
-    public function getHeaders(): ?\ArrayObject
+    public function getHeaders(): ?iterable
     {
         return $this->headers;
     }
@@ -66,7 +66,7 @@ class Encoding
      *
      * @return self
      */
-    public function setHeaders(?\ArrayObject $headers): self
+    public function setHeaders(?iterable $headers): self
     {
         $this->headers = $headers;
 
