@@ -363,7 +363,7 @@ class JsonSchema
      *
      * @return JsonSchema[]|bool[]|null
      */
-    public function getDefinitions() : ?\ArrayObject
+    public function getDefinitions() : ?iterable
     {
         return $this->definitions;
     }
@@ -374,7 +374,7 @@ class JsonSchema
      *
      * @return self
      */
-    public function setDefinitions(?\ArrayObject $definitions) : self
+    public function setDefinitions(?iterable $definitions) : self
     {
         $this->definitions = $definitions;
         return $this;
@@ -384,7 +384,7 @@ class JsonSchema
      *
      * @return JsonSchema[]|bool[]|string[][]|null
      */
-    public function getDependencies() : ?\ArrayObject
+    public function getDependencies() : ?iterable
     {
         return $this->dependencies;
     }
@@ -395,7 +395,7 @@ class JsonSchema
      *
      * @return self
      */
-    public function setDependencies(?\ArrayObject $dependencies) : self
+    public function setDependencies(?iterable $dependencies) : self
     {
         $this->dependencies = $dependencies;
         return $this;
@@ -510,7 +510,7 @@ class JsonSchema
      *
      * @return JsonSchema[]|bool[]|null
      */
-    public function getUnevaluatedProperties() : ?\ArrayObject
+    public function getUnevaluatedProperties() : ?iterable
     {
         return $this->unevaluatedProperties;
     }
@@ -521,7 +521,7 @@ class JsonSchema
      *
      * @return self
      */
-    public function setUnevaluatedProperties(?\ArrayObject $unevaluatedProperties) : self
+    public function setUnevaluatedProperties(?iterable $unevaluatedProperties) : self
     {
         $this->unevaluatedProperties = $unevaluatedProperties;
         return $this;
@@ -531,7 +531,7 @@ class JsonSchema
      *
      * @return JsonSchema[]|bool[]|null
      */
-    public function getProperties() : ?\ArrayObject
+    public function getProperties() : ?iterable
     {
         return $this->properties;
     }
@@ -542,7 +542,7 @@ class JsonSchema
      *
      * @return self
      */
-    public function setProperties(?\ArrayObject $properties) : self
+    public function setProperties(?iterable $properties) : self
     {
         $this->properties = $properties;
         return $this;
@@ -552,7 +552,7 @@ class JsonSchema
      *
      * @return JsonSchema[]|bool[]|null
      */
-    public function getPatternProperties() : ?\ArrayObject
+    public function getPatternProperties() : ?iterable
     {
         return $this->patternProperties;
     }
@@ -563,7 +563,7 @@ class JsonSchema
      *
      * @return self
      */
-    public function setPatternProperties(?\ArrayObject $patternProperties) : self
+    public function setPatternProperties(?iterable $patternProperties) : self
     {
         $this->patternProperties = $patternProperties;
         return $this;
@@ -573,7 +573,7 @@ class JsonSchema
      *
      * @return JsonSchema[]|bool[]|null
      */
-    public function getDependentSchemas() : ?\ArrayObject
+    public function getDependentSchemas() : ?iterable
     {
         return $this->dependentSchemas;
     }
@@ -584,7 +584,7 @@ class JsonSchema
      *
      * @return self
      */
-    public function setDependentSchemas(?\ArrayObject $dependentSchemas) : self
+    public function setDependentSchemas(?iterable $dependentSchemas) : self
     {
         $this->dependentSchemas = $dependentSchemas;
         return $this;
@@ -951,7 +951,7 @@ class JsonSchema
      *
      * @return bool[]|null
      */
-    public function getDollarVocabulary() : ?\ArrayObject
+    public function getDollarVocabulary() : ?iterable
     {
         return $this->dollarVocabulary;
     }
@@ -962,7 +962,7 @@ class JsonSchema
      *
      * @return self
      */
-    public function setDollarVocabulary(?\ArrayObject $dollarVocabulary) : self
+    public function setDollarVocabulary(?iterable $dollarVocabulary) : self
     {
         $this->dollarVocabulary = $dollarVocabulary;
         return $this;
@@ -993,7 +993,7 @@ class JsonSchema
      *
      * @return JsonSchema[]|bool[]|null
      */
-    public function getDollarDefs() : ?\ArrayObject
+    public function getDollarDefs() : ?iterable
     {
         return $this->dollarDefs;
     }
@@ -1004,7 +1004,7 @@ class JsonSchema
      *
      * @return self
      */
-    public function setDollarDefs(?\ArrayObject $dollarDefs) : self
+    public function setDollarDefs(?iterable $dollarDefs) : self
     {
         $this->dollarDefs = $dollarDefs;
         return $this;
@@ -1518,7 +1518,7 @@ class JsonSchema
      *
      * @return string[][]|null
      */
-    public function getDependentRequired() : ?\ArrayObject
+    public function getDependentRequired() : ?iterable
     {
         return $this->dependentRequired;
     }
@@ -1529,7 +1529,7 @@ class JsonSchema
      *
      * @return self
      */
-    public function setDependentRequired(?\ArrayObject $dependentRequired) : self
+    public function setDependentRequired(?iterable $dependentRequired) : self
     {
         $this->dependentRequired = $dependentRequired;
         return $this;

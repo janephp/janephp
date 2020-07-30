@@ -68,7 +68,7 @@ class Server extends \ArrayObject
     /**
      * @return ServerVariable[]|null
      */
-    public function getVariables(): ?\ArrayObject
+    public function getVariables(): ?iterable
     {
         return $this->variables;
     }
@@ -78,7 +78,7 @@ class Server extends \ArrayObject
      *
      * @return self
      */
-    public function setVariables(?\ArrayObject $variables): self
+    public function setVariables(?iterable $variables): self
     {
         $this->variables = $variables;
 

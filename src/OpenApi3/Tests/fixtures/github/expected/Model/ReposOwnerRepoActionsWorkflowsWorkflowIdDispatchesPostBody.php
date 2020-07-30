@@ -42,7 +42,7 @@ class ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody
      *
      * @return string[]
      */
-    public function getInputs() : \ArrayObject
+    public function getInputs() : iterable
     {
         return $this->inputs;
     }
@@ -53,7 +53,7 @@ class ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody
      *
      * @return self
      */
-    public function setInputs(\ArrayObject $inputs) : self
+    public function setInputs(iterable $inputs) : self
     {
         $this->inputs = $inputs;
         return $this;

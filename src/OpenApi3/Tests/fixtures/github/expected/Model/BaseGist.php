@@ -297,7 +297,7 @@ class BaseGist
      *
      * @return BaseGistFilesItem[]
      */
-    public function getFiles() : \ArrayObject
+    public function getFiles() : iterable
     {
         return $this->files;
     }
@@ -308,7 +308,7 @@ class BaseGist
      *
      * @return self
      */
-    public function setFiles(\ArrayObject $files) : self
+    public function setFiles(iterable $files) : self
     {
         $this->files = $files;
         return $this;

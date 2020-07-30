@@ -20,7 +20,7 @@ class MapType extends ArrayType
      */
     public function getTypeHint(string $namespace)
     {
-        return new Name('\ArrayObject');
+        return new Name('iterable');
     }
 
     /**

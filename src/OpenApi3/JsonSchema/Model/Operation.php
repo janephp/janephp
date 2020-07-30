@@ -224,7 +224,7 @@ class Operation extends \ArrayObject
     /**
      * @return mixed[][]|Reference[]|null
      */
-    public function getCallbacks(): ?\ArrayObject
+    public function getCallbacks(): ?iterable
     {
         return $this->callbacks;
     }
@@ -234,7 +234,7 @@ class Operation extends \ArrayObject
      *
      * @return self
      */
-    public function setCallbacks(?\ArrayObject $callbacks): self
+    public function setCallbacks(?iterable $callbacks): self
     {
         $this->callbacks = $callbacks;
 
