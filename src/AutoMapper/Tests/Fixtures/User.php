@@ -49,6 +49,11 @@ class User
      */
     public $languages;
 
+    /**
+     * @var mixed[]
+     */
+    protected $properties = [];
+
     public function __construct($id, $name, $age)
     {
         $this->id = $id;
@@ -66,5 +71,15 @@ class User
     public function getId()
     {
         return $this->id;
+    }
+
+    public function getProperties(): iterable
+    {
+        return $this->properties;
+    }
+
+    public function setProperties(iterable $properties): void
+    {
+        $this->properties = $properties;
     }
 }
