@@ -80,7 +80,7 @@ class Link extends \ArrayObject
     /**
      * @return mixed[]|null
      */
-    public function getParameters(): ?\ArrayObject
+    public function getParameters(): ?iterable
     {
         return $this->parameters;
     }
@@ -90,7 +90,7 @@ class Link extends \ArrayObject
      *
      * @return self
      */
-    public function setParameters(?\ArrayObject $parameters): self
+    public function setParameters(?iterable $parameters): self
     {
         $this->parameters = $parameters;
 

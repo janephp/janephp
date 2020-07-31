@@ -68,7 +68,7 @@ class ClientCredentialsFlow extends \ArrayObject
     /**
      * @return string[]|null
      */
-    public function getScopes(): ?\ArrayObject
+    public function getScopes(): ?iterable
     {
         return $this->scopes;
     }
@@ -78,7 +78,7 @@ class ClientCredentialsFlow extends \ArrayObject
      *
      * @return self
      */
-    public function setScopes(?\ArrayObject $scopes): self
+    public function setScopes(?iterable $scopes): self
     {
         $this->scopes = $scopes;
 

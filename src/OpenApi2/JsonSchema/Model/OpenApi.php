@@ -294,7 +294,7 @@ class OpenApi extends \ArrayObject
      *
      * @return Schema[]|null
      */
-    public function getDefinitions(): ?\ArrayObject
+    public function getDefinitions(): ?iterable
     {
         return $this->definitions;
     }
@@ -306,7 +306,7 @@ class OpenApi extends \ArrayObject
      *
      * @return self
      */
-    public function setDefinitions(?\ArrayObject $definitions): self
+    public function setDefinitions(?iterable $definitions): self
     {
         $this->definitions = $definitions;
 
@@ -318,7 +318,7 @@ class OpenApi extends \ArrayObject
      *
      * @return BodyParameter[]|HeaderParameterSubSchema[]|FormDataParameterSubSchema[]|QueryParameterSubSchema[]|PathParameterSubSchema[]|null
      */
-    public function getParameters(): ?\ArrayObject
+    public function getParameters(): ?iterable
     {
         return $this->parameters;
     }
@@ -330,7 +330,7 @@ class OpenApi extends \ArrayObject
      *
      * @return self
      */
-    public function setParameters(?\ArrayObject $parameters): self
+    public function setParameters(?iterable $parameters): self
     {
         $this->parameters = $parameters;
 
@@ -342,7 +342,7 @@ class OpenApi extends \ArrayObject
      *
      * @return Response[]|null
      */
-    public function getResponses(): ?\ArrayObject
+    public function getResponses(): ?iterable
     {
         return $this->responses;
     }
@@ -354,7 +354,7 @@ class OpenApi extends \ArrayObject
      *
      * @return self
      */
-    public function setResponses(?\ArrayObject $responses): self
+    public function setResponses(?iterable $responses): self
     {
         $this->responses = $responses;
 
@@ -384,7 +384,7 @@ class OpenApi extends \ArrayObject
     /**
      * @return BasicAuthenticationSecurity[]|ApiKeySecurity[]|Oauth2ImplicitSecurity[]|Oauth2PasswordSecurity[]|Oauth2ApplicationSecurity[]|Oauth2AccessCodeSecurity[]|null
      */
-    public function getSecurityDefinitions(): ?\ArrayObject
+    public function getSecurityDefinitions(): ?iterable
     {
         return $this->securityDefinitions;
     }
@@ -394,7 +394,7 @@ class OpenApi extends \ArrayObject
      *
      * @return self
      */
-    public function setSecurityDefinitions(?\ArrayObject $securityDefinitions): self
+    public function setSecurityDefinitions(?iterable $securityDefinitions): self
     {
         $this->securityDefinitions = $securityDefinitions;
 

@@ -596,7 +596,7 @@ class Schema extends \ArrayObject
     /**
      * @return Schema[]|Reference[]|null
      */
-    public function getProperties(): ?\ArrayObject
+    public function getProperties(): ?iterable
     {
         return $this->properties;
     }
@@ -606,7 +606,7 @@ class Schema extends \ArrayObject
      *
      * @return self
      */
-    public function setProperties(?\ArrayObject $properties): self
+    public function setProperties(?iterable $properties): self
     {
         $this->properties = $properties;
 

@@ -72,7 +72,7 @@ class MediaType extends \ArrayObject
     /**
      * @return Example[]|Reference[]|null
      */
-    public function getExamples(): ?\ArrayObject
+    public function getExamples(): ?iterable
     {
         return $this->examples;
     }
@@ -82,7 +82,7 @@ class MediaType extends \ArrayObject
      *
      * @return self
      */
-    public function setExamples(?\ArrayObject $examples): self
+    public function setExamples(?iterable $examples): self
     {
         $this->examples = $examples;
 
@@ -92,7 +92,7 @@ class MediaType extends \ArrayObject
     /**
      * @return Encoding[]|null
      */
-    public function getEncoding(): ?\ArrayObject
+    public function getEncoding(): ?iterable
     {
         return $this->encoding;
     }
@@ -102,7 +102,7 @@ class MediaType extends \ArrayObject
      *
      * @return self
      */
-    public function setEncoding(?\ArrayObject $encoding): self
+    public function setEncoding(?iterable $encoding): self
     {
         $this->encoding = $encoding;
 

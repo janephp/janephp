@@ -72,7 +72,7 @@ class Response extends \ArrayObject
     /**
      * @return Header[]|null
      */
-    public function getHeaders(): ?\ArrayObject
+    public function getHeaders(): ?iterable
     {
         return $this->headers;
     }
@@ -82,7 +82,7 @@ class Response extends \ArrayObject
      *
      * @return self
      */
-    public function setHeaders(?\ArrayObject $headers): self
+    public function setHeaders(?iterable $headers): self
     {
         $this->headers = $headers;
 
@@ -92,7 +92,7 @@ class Response extends \ArrayObject
     /**
      * @return mixed[]|null
      */
-    public function getExamples(): ?\ArrayObject
+    public function getExamples(): ?iterable
     {
         return $this->examples;
     }
@@ -102,7 +102,7 @@ class Response extends \ArrayObject
      *
      * @return self
      */
-    public function setExamples(?\ArrayObject $examples): self
+    public function setExamples(?iterable $examples): self
     {
         $this->examples = $examples;
 

@@ -96,7 +96,7 @@ class Test
      *
      * @return string[]|null
      */
-    public function getObject() : ?\ArrayObject
+    public function getObject() : ?iterable
     {
         return $this->object;
     }
@@ -107,7 +107,7 @@ class Test
      *
      * @return self
      */
-    public function setObject(?\ArrayObject $object) : self
+    public function setObject(?iterable $object) : self
     {
         $this->object = $object;
         return $this;
