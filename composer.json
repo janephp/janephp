@@ -64,7 +64,10 @@
     "autoload": {
         "psr-4": {
             "Jane\\": "src/"
-        }
+        },
+        "exclude-from-classmap": [
+            "*/Tests/"
+        ]
     },
     "autoload-dev": {
         "classmap": [
