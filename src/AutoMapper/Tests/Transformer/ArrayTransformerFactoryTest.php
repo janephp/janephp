@@ -3,9 +3,9 @@
 namespace Jane\AutoMapper\Tests\Transformer;
 
 use Jane\AutoMapper\MapperMetadata;
-use Jane\AutoMapper\Transformer\ArrayTransformer;
 use Jane\AutoMapper\Transformer\ArrayTransformerFactory;
 use Jane\AutoMapper\Transformer\ChainTransformerFactory;
+use Jane\AutoMapper\Transformer\CopyTransformer;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\PropertyInfo\Type;
 
@@ -19,7 +19,7 @@ class ArrayTransformerFactoryTest extends TestCase
 
         $transformer = $factory->getTransformer([new Type('array', false, null, true)], [new Type('array', false, null, true)], $mapperMetadata);
 
-        self::assertInstanceOf(ArrayTransformer::class, $transformer);
+        self::assertInstanceOf(CopyTransformer::class, $transformer);
     }
 
     public function testNoTransformerTargetNoCollection(): void

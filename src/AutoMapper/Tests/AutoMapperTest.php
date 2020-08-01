@@ -627,4 +627,16 @@ class AutoMapperTest extends AutoMapperBaseTest
         $automapper = AutoMapper::create(false, null, null, 'Mapper_', true, false);
         $automapper->getMapper(Fixtures\User::class, Fixtures\UserDTO::class);
     }
+
+    public function testWithMixedArray(): void
+    {
+        $user = new Fixtures\User(1, 'yolo', '13');
+        $user->setProperties(['foo' => 'bar']);
+
+        /** @var Fixtures\UserDTOProperties $dto */
+        $dto = $this->autoMapper->map($user, Fixtures\UserDTOProperties::class);
+
+        self::assertInstanceOf(Fixtures\UserDTOProperties::class, $dto);
+        self::assertSame(['foo' => 'bar'], $dto->getProperties());
+    }
 }
