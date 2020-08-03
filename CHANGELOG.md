@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [6.0.4] - 2020-08-03
+
+### Changed
+- [OpenAPI] [GH#362](https://github.com/janephp/janephp/pull/362) Allow non-standard HTTP codes
+- [Jane] [GH#364](https://github.com/janephp/janephp/pull/364) Use iterable instead of ArrayObject type hint
+
+### Fixed
+- [OpenAPI] [GH#365](https://github.com/janephp/janephp/pull/365) Client methods with invalid characters (Support for GitHub OpenAPI)
+
 ## [6.0.3] - 2020-07-29
 
 ### Added
