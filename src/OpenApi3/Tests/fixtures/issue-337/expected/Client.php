@@ -170,7 +170,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Client
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function people/DirectorSearch(array $queryParameters = array(), array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function peopleDirectorSearch(array $queryParameters = array(), array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\PeopleDirectorSearch($queryParameters, $headerParameters), $fetch);
     }
@@ -212,7 +212,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Client
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function people/DirectorSearchCriteria(array $queryParameters = array(), array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function peopleDirectorSearchCriteria(array $queryParameters = array(), array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\PeopleDirectorSearchCriteria($queryParameters, $headerParameters), $fetch);
     }
@@ -880,7 +880,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Client
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function copyCompaniesFromOneToAnotherPortfolio(s)(string $portfolioId, \CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdCompaniesCopyPostBody $requestBody, array $queryParameters = array(), array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function copyCompaniesFromOneToAnotherPortfolioS(string $portfolioId, \CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdCompaniesCopyPostBody $requestBody, array $queryParameters = array(), array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\CopyCompaniesFromOneToAnotherPortfolioS($portfolioId, $requestBody, $queryParameters, $headerParameters), $fetch);
     }
@@ -903,7 +903,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Client
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function moveCompaniesFromOneToAnotherPortfolio(s)(string $portfolioId, \CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdCompaniesRemovePostBody $requestBody, array $queryParameters = array(), array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function moveCompaniesFromOneToAnotherPortfolioS(string $portfolioId, \CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdCompaniesRemovePostBody $requestBody, array $queryParameters = array(), array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\MoveCompaniesFromOneToAnotherPortfolioS($portfolioId, $requestBody, $queryParameters, $headerParameters), $fetch);
     }
@@ -1228,7 +1228,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Client
      *
      * @return null|\CreditSafe\API\Model\ComplianceSearchResult|\Psr\Http\Message\ResponseInterface
      */
-    public function individual/PersonComplianceSearch(string $predefinedSearch, array $queryParameters = array(), array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function individualPersonComplianceSearch(string $predefinedSearch, array $queryParameters = array(), array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\IndividualPersonComplianceSearch($predefinedSearch, $queryParameters, $headerParameters), $fetch);
     }

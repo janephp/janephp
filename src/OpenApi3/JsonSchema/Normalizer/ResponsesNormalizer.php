@@ -57,7 +57,7 @@ class ResponsesNormalizer implements DenormalizerInterface, NormalizerInterface,
             $object->setDefault(null);
         }
         foreach ($data as $key => $value_1) {
-            if (preg_match('/^[1-5](?:\d{2}|XX)$/', (string) $key)) {
+            if (preg_match('/^[1-9](?:\d{2}|XX)$/', (string) $key)) {
                 $value_2 = $value_1;
                 if (is_array($value_1) and isset($value_1['$ref'])) {
                     $value_2 = $this->denormalizer->denormalize($value_1, 'Jane\\OpenApi3\\JsonSchema\\Model\\Reference', 'json', $context);
