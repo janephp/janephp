@@ -43,7 +43,7 @@ class ArrayGuesser implements GuesserInterface, TypeGuesserInterface, ChainGuess
     {
         $items = $object->getItems();
 
-        if (null === $items) {
+        if (null === $items || (\is_array($items) && 0 === \count($items))) {
             return new ArrayType($object, new Type($object, 'mixed'));
         }
 
