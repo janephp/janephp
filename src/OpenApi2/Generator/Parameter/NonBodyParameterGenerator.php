@@ -8,6 +8,7 @@ use Jane\OpenApi2\JsonSchema\Model\HeaderParameterSubSchema;
 use Jane\OpenApi2\JsonSchema\Model\PathParameterSubSchema;
 use Jane\OpenApi2\JsonSchema\Model\QueryParameterSubSchema;
 use Jane\OpenApiCommon\Generator\Parameter\ParameterGenerator;
+use Jane\OpenApiCommon\Generator\Traits\OptionResolverNormalizationTrait;
 use PhpParser\Node;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Scalar;
@@ -15,6 +16,8 @@ use Psr\Http\Message\StreamInterface;
 
 class NonBodyParameterGenerator extends ParameterGenerator
 {
+    use OptionResolverNormalizationTrait;
+
     /**
      * {@inheritdoc}
      *
@@ -91,25 +94,6 @@ class NonBodyParameterGenerator extends ParameterGenerator
                 new Node\Arg(new Expr\Array_($defaults)),
             ])),
         ], $allowedTypes);
-    }
-
-    private function generateOptionResolverNormalizationStatement(string $optionName, string $class): Node\Stmt\Expression
-    {
-        return new Node\Stmt\Expression(
-            new Expr\MethodCall(
-                new Expr\Variable('optionsResolver'),
-                'setNormalizer',
-                [
-                    new Node\Arg(new Scalar\String_($optionName)),
-                    new Node\Arg(new Expr\StaticCall(new Node\Name('\\Closure'), 'fromCallable', [
-                        new Node\Arg(new Expr\Array_([
-                            new Expr\ArrayItem(new Expr\New_(new Node\Name($class))),
-                            new Expr\ArrayItem(new Scalar\String_('__invoke')),
-                        ])),
-                    ])),
-                ]
-            )
-        );
     }
 
     /**
