@@ -1,10 +1,11 @@
 <?php
 
-namespace Jane\OpenApi3\Generator;
+namespace Jane\OpenApiCommon\Generator;
 
 use Jane\JsonSchema\Generator\Context\Context;
 use Jane\OpenApiCommon\Guesser\Guess\OperationGuess;
 use PhpParser\Comment;
+use PhpParser\Node;
 use PhpParser\Node\Arg;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Name;
@@ -16,7 +17,7 @@ class OperationGenerator
 {
     protected $endpointGenerator;
 
-    public function __construct(EndpointGenerator $endpointGenerator)
+    public function __construct(EndpointGeneratorInterface $endpointGenerator)
     {
         $this->endpointGenerator = $endpointGenerator;
     }
@@ -33,6 +34,7 @@ class OperationGenerator
 
     public function createOperation(string $name, OperationGuess $operation, Context $context): Stmt\ClassMethod
     {
+        /** @var Param[] $methodParams */
         [$endpointName, $methodParams, $methodDoc, $returnTypes, $throwTypes] = $this->endpointGenerator->createEndpointClass($operation, $context);
         $endpointArgs = [];
 
@@ -43,12 +45,11 @@ class OperationGenerator
             ' */'
         ;
 
-        /** @var Param $param */
         foreach ($methodParams as $param) {
-            $endpointArgs[] = new Arg(new Expr\Variable($param->var->name));
+            $endpointArgs[] = new Arg($param->var);
         }
 
-        $methodParams[] = new Param(new Expr\Variable('fetch'), new Expr\ClassConstFetch(new Name('self'), 'FETCH_OBJECT'), new Name('string'));
+        $methodParams[] = new Param(new Node\Expr\Variable('fetch'), new Expr\ClassConstFetch(new Name('self'), 'FETCH_OBJECT'), new Name('string'));
 
         return new Stmt\ClassMethod($name, [
             'type' => Stmt\Class_::MODIFIER_PUBLIC,

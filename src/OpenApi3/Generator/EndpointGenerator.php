@@ -15,6 +15,7 @@ use Jane\OpenApi3\Guesser\GuessClass;
 use Jane\OpenApi3\JsonSchema\Model\Schema;
 use Jane\OpenApiCommon\Generator\Endpoint\GetAuthenticationScopesTrait;
 use Jane\OpenApiCommon\Generator\Endpoint\GetGetMethodTrait;
+use Jane\OpenApiCommon\Generator\EndpointGeneratorInterface;
 use Jane\OpenApiCommon\Generator\ExceptionGenerator;
 use Jane\OpenApiCommon\Guesser\Guess\OperationGuess;
 use Jane\OpenApiCommon\Naming\OperationNamingInterface;
@@ -26,7 +27,7 @@ use PhpParser\Node\Name;
 use PhpParser\Node\Stmt;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 
-class EndpointGenerator
+class EndpointGenerator implements EndpointGeneratorInterface
 {
     use GetConstructorTrait;
     use GetTransformResponseBodyTrait;

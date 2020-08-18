@@ -8,6 +8,7 @@ use Jane\OpenApi2\Generator\Parameter\BodyParameterGenerator;
 use Jane\OpenApi2\Generator\Parameter\NonBodyParameterGenerator;
 use Jane\OpenApi2\Naming\OperationUrlNaming;
 use Jane\OpenApiCommon\Generator\ExceptionGenerator;
+use Jane\OpenApiCommon\Generator\OperationGenerator;
 use Jane\OpenApiCommon\Naming\ChainOperationNaming;
 use Jane\OpenApiCommon\Naming\OperationIdNaming;
 use PhpParser\ParserFactory;
