@@ -6,6 +6,8 @@ use Jane\JsonSchema\Guesser\JsonSchema\ArrayGuesser as BaseArrayGuesser;
 
 class ArrayGuesser extends BaseArrayGuesser
 {
+    use SchemaClassTrait;
+
     /**
      * {@inheritdoc}
      */
