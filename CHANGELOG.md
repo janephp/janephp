@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [6.0.5] - 2020-08-18
+
+## Fixed
+- [JsonSchema] [GH#379](https://github.com/janephp/janephp/pull/379) Fixed array items with mixed types
+
 ## [6.0.4] - 2020-08-03
 
 ### Changed
@@ -345,7 +350,8 @@ See :
  * https://github.com/janephp/jane/releases
  * https://github.com/janephp/openapi/releases
 
-[Unreleased]: https://github.com/janephp/janephp/compare/v6.0.3...HEAD
+[Unreleased]: https://github.com/janephp/janephp/compare/v6.0.4...HEAD
+[6.0.4]: https://github.com/janephp/janephp/compare/v6.0.3...v6.0.4
 [6.0.3]: https://github.com/janephp/janephp/compare/v6.0.2...v6.0.3
 [6.0.2]: https://github.com/janephp/janephp/compare/v6.0.1...v6.0.2
 [6.0.1]: https://github.com/janephp/janephp/compare/v6.0.0...v6.0.1
