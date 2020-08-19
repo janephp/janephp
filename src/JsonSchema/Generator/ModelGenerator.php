@@ -31,10 +31,6 @@ class ModelGenerator implements GeneratorInterface
      */
     protected $parser;
 
-    /**
-     * @param Naming $naming Naming Service
-     * @param Parser $parser PHP Parser
-     */
     public function __construct(Naming $naming, Parser $parser)
     {
         $this->naming = $naming;
