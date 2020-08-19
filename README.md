@@ -29,7 +29,7 @@ Open Source time sponsored by JoliCode
 ## Credits
 
 * [All contributors](https://github.com/janephp/jane/graphs/contributors)
-* [Digital Ping Pong](https://digitalpingpong.com/) & [Alexandre Godreau](https://twitter.com/coucou__alex) for our logo
+* [Digital Ping Pong](https://digitalpingpong.com/) & [Alexandre Godreau](https://www.instagram.com/coucou.alex/) for our logo
 
 ## License
 
