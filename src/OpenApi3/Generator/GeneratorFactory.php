@@ -8,10 +8,10 @@ use Jane\OpenApi3\Generator\Parameter\NonBodyParameterGenerator;
 use Jane\OpenApi3\Generator\RequestBodyContent\DefaultBodyContentGenerator;
 use Jane\OpenApi3\Generator\RequestBodyContent\FormBodyContentGenerator;
 use Jane\OpenApi3\Generator\RequestBodyContent\JsonBodyContentGenerator;
-use Jane\OpenApi3\Naming\OperationUrlNaming;
 use Jane\OpenApiCommon\Generator\ExceptionGenerator;
 use Jane\OpenApiCommon\Naming\ChainOperationNaming;
 use Jane\OpenApiCommon\Naming\OperationIdNaming;
+use Jane\OpenApiCommon\Naming\OperationUrlNaming;
 use PhpParser\ParserFactory;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 
