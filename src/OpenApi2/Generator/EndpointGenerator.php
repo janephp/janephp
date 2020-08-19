@@ -17,10 +17,11 @@ use Jane\OpenApi2\JsonSchema\Model\QueryParameterSubSchema;
 use Jane\OpenApi2\JsonSchema\Model\Schema;
 use Jane\OpenApiCommon\Generator\Endpoint\GetAuthenticationScopesTrait;
 use Jane\OpenApiCommon\Generator\Endpoint\GetGetMethodTrait;
+use Jane\OpenApiCommon\Generator\EndpointGeneratorInterface;
 use Jane\OpenApiCommon\Generator\ExceptionGenerator;
+use Jane\OpenApiCommon\Generator\Traits\OptionResolverNormalizationTrait;
 use Jane\OpenApiCommon\Guesser\Guess\OperationGuess;
 use Jane\OpenApiCommon\Naming\OperationNamingInterface;
-use Jane\OpenApiCommon\Registry\Registry;
 use Jane\OpenApiRuntime\Client\BaseEndpoint;
 use Jane\OpenApiRuntime\Client\Endpoint;
 use Jane\OpenApiRuntime\Client\EndpointTrait;
@@ -28,7 +29,7 @@ use PhpParser\Node\Name;
 use PhpParser\Node\Stmt;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 
-class EndpointGenerator
+class EndpointGenerator implements EndpointGeneratorInterface
 {
     use GetConstructorTrait;
     use GetTransformResponseBodyTrait;
@@ -38,6 +39,7 @@ class EndpointGenerator
     use GetGetExtraHeadersTrait;
     use GetOptionsResolverMethodTrait;
     use GetAuthenticationScopesTrait;
+    use OptionResolverNormalizationTrait;
 
     /** @var OperationNamingInterface */
     private $operationNaming;
@@ -86,17 +88,7 @@ class EndpointGenerator
             ]),
         ]);
 
-        /** @var Registry $registry */
-        $registry = $context->getRegistry();
-        $customQueryResolver = $registry->getCustomQueryResolver();
-        $genericCustomQueryResolver = $operationCustomQueryResolver = [];
-        if (\array_key_exists('__type', $customQueryResolver)) {
-            $genericCustomQueryResolver = $customQueryResolver['__type'];
-        }
-        if (\array_key_exists($operation->getPath(), $customQueryResolver) &&
-            \array_key_exists(mb_strtolower($operation->getMethod()), $customQueryResolver[$operation->getPath()])) {
-            $operationCustomQueryResolver = $customQueryResolver[$operation->getPath()][mb_strtolower($operation->getMethod())];
-        }
+        [$genericCustomQueryResolver, $operationCustomQueryResolver] = $this->customOptionResolvers($operation, $context);
 
         $extraHeadersMethod = $this->getExtraHeadersMethod($openApi, $operation);
         $queryResolverMethod = $this->getOptionsResolverMethod($operation, QueryParameterSubSchema::class, 'getQueryOptionsResolver', $this->guessClass, $this->nonBodyParameterGenerator, $operationCustomQueryResolver, $genericCustomQueryResolver);

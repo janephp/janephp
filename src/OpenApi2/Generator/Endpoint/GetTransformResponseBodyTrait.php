@@ -34,7 +34,6 @@ trait GetTransformResponseBodyTrait
                 }
 
                 /* @var Response $response */
-
                 [$outputType, $throwType, $ifStatus] = $this->createResponseDenormalizationStatement(
                     $endpointName,
                     $status,

@@ -54,23 +54,4 @@ trait GetOptionsResolverMethodTrait
             'returnType' => new Name\FullyQualified(OptionsResolver::class),
         ]);
     }
-
-    private function generateOptionResolverNormalizationStatement(string $optionName, string $class): Stmt\Expression
-    {
-        return new Stmt\Expression(
-            new Expr\MethodCall(
-                new Expr\Variable('optionsResolver'),
-                'setNormalizer',
-                [
-                    new Node\Arg(new Node\Scalar\String_($optionName)),
-                    new Node\Arg(new Expr\StaticCall(new Name('\\Closure'), 'fromCallable', [
-                        new Node\Arg(new Expr\Array_([
-                            new Expr\ArrayItem(new Expr\New_(new Name($class))),
-                            new Expr\ArrayItem(new Node\Scalar\String_('__invoke')),
-                        ])),
-                    ])),
-                ]
-            )
-        );
-    }
 }

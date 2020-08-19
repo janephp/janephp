@@ -7,6 +7,7 @@ use Jane\JsonSchema\Generator\GeneratorInterface;
 use Jane\OpenApi2\Generator\Parameter\BodyParameterGenerator;
 use Jane\OpenApi2\Generator\Parameter\NonBodyParameterGenerator;
 use Jane\OpenApiCommon\Generator\ExceptionGenerator;
+use Jane\OpenApiCommon\Generator\OperationGenerator;
 use Jane\OpenApiCommon\Naming\ChainOperationNaming;
 use Jane\OpenApiCommon\Naming\OperationIdNaming;
 use Jane\OpenApiCommon\Naming\OperationUrlNaming;
