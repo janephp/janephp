@@ -46,10 +46,9 @@ class NormalizerGenerator implements GeneratorInterface
     protected $skipNullValues;
 
     /**
-     * @param Naming $naming       Naming Service
-     * @param Parser $parser       PHP Parser
-     * @param bool   $useReference Whether to generate the JSON Reference system
-     * @param bool   $useCache     Whether to use the CacheableSupportsMethodInterface interface, for >sf 4.1
+     * @param bool $useReference               Whether to generate the JSON Reference system
+     * @param bool $useCacheableSupportsMethod Whether to use the CacheableSupportsMethodInterface interface, for >sf 4.1
+     * @param bool $skipNullValues             Skip null values or not
      */
     public function __construct(Naming $naming, Parser $parser, bool $useReference = true, bool $useCacheableSupportsMethod = null, bool $skipNullValues = true)
     {

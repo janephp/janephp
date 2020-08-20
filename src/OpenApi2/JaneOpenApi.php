@@ -13,34 +13,32 @@ use Jane\OpenApiCommon\Generator\ModelGenerator;
 use Jane\OpenApiCommon\Generator\NormalizerGenerator;
 use Jane\OpenApiCommon\JaneOpenApi as CommonJaneOpenApi;
 use PhpParser\ParserFactory;
+use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 
 class JaneOpenApi extends CommonJaneOpenApi
 {
     protected const OBJECT_NORMALIZER_CLASS = JaneObjectNormalizer::class;
     protected const WHITELIST_FETCH_CLASS = WhitelistedSchema::class;
 
-    public static function build(array $options = [])
+    protected static function create(array $options = []): CommonJaneOpenApi
     {
         $serializer = self::buildSerializer();
-        $schemaParser = new SchemaParser($serializer);
-        $naming = new Naming();
-        $parser = (new ParserFactory())->create(ParserFactory::PREFER_PHP7);
-        $modelGenerator = new ModelGenerator($naming, $parser);
-        $normGenerator = new NormalizerGenerator($naming, $parser, $options['reference'] ?? false, $options['use-cacheable-supports-method'] ?? false, $options['skip-null-values'] ?? true);
-        $authGenerator = new AuthenticationGenerator($naming);
 
-        $self = new self(
-            $schemaParser,
+        return new self(
+            SchemaParser::class,
             GuesserFactory::create($serializer, $options),
-            $naming,
             $options['strict'] ?? true
         );
+    }
 
-        $self->addGenerator($modelGenerator);
-        $self->addGenerator($normGenerator);
-        $self->addGenerator($authGenerator);
-        $self->addGenerator(GeneratorFactory::build($serializer, $options['endpoint-generator'] ?: EndpointGenerator::class));
+    protected static function generators(DenormalizerInterface $denormalizer, array $options = []): \Generator
+    {
+        $naming = new Naming();
+        $parser = (new ParserFactory())->create(ParserFactory::PREFER_PHP7);
 
-        return $self;
+        yield new ModelGenerator($naming, $parser);
+        yield new NormalizerGenerator($naming, $parser, $options['reference'] ?? false, $options['use-cacheable-supports-method'] ?? false, $options['skip-null-values'] ?? true);
+        yield new AuthenticationGenerator();
+        yield GeneratorFactory::build($denormalizer, $options['endpoint-generator'] ?: EndpointGenerator::class);
     }
 }

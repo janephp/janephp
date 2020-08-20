@@ -27,9 +27,9 @@ class AuthenticationGenerator implements GeneratorInterface
 
     protected $naming;
 
-    public function __construct(Naming $naming)
+    public function __construct()
     {
-        $this->naming = $naming;
+        $this->naming = new Naming();
     }
 
     protected function getNaming(): Naming

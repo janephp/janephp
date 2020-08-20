@@ -17,6 +17,7 @@ use Symfony\Component\Serializer\Encoder\JsonDecode;
 use Symfony\Component\Serializer\Encoder\JsonEncode;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Encoder\YamlEncoder;
+use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Serializer;
 use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Component\Yaml\Dumper;
@@ -42,17 +43,18 @@ abstract class JaneOpenApi extends ChainGenerator
     /** @var SerializerInterface */
     protected $serializer;
 
-    public function __construct(
-        SchemaParser $schemaParser,
-        ChainGuesser $chainGuesser,
-        Naming $naming,
-        bool $strict = true
-    ) {
-        $this->schemaParser = $schemaParser;
+    public function __construct(string $schemaParserClass, ChainGuesser $chainGuesser, bool $strict = true)
+    {
+        $this->serializer = self::buildSerializer();
+        $this->schemaParser = new $schemaParserClass($this->serializer);
         $this->chainGuesser = $chainGuesser;
         $this->strict = $strict;
-        $this->naming = $naming;
-        $this->serializer = self::buildSerializer();
+        $this->naming = new Naming();
+    }
+
+    public function getSerializer(): SerializerInterface
+    {
+        return $this->serializer;
     }
 
     /**
@@ -160,5 +162,24 @@ abstract class JaneOpenApi extends ChainGenerator
         $objectNormalizerClass = static::OBJECT_NORMALIZER_CLASS;
 
         return new Serializer([new $objectNormalizerClass()], $encoders);
+    }
+
+    abstract protected static function create(array $options = []): self;
+
+    abstract protected static function generators(DenormalizerInterface $denormalizer, array $options = []): \Generator;
+
+    public static function build(array $options = [])
+    {
+        $instance = static::create($options);
+
+        /** @var DenormalizerInterface $denormalizer */
+        $denormalizer = $instance->getSerializer();
+        $generators = static::generators($denormalizer, $options);
+
+        foreach ($generators as $generator) {
+            $instance->addGenerator($generator);
+        }
+
+        return $instance;
     }
 }
