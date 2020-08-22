@@ -45,7 +45,7 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "6-dev"
+            "dev-next": "6-dev"
         }
     },
     "bin": [
