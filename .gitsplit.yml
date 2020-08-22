@@ -30,5 +30,5 @@ splits:
 
 # List of references to split (defined as regexp)
 origins:
-  - ^master$
+  - ^next$
   - ^v\d+\.\d+\.\d+$

@@ -29,7 +29,7 @@
         "psr/http-client": "^1.0",
         "psr/http-factory": "^1.0",
         "symfony/options-resolver": "^4.4 || ^5.0",
-        "jane-php/json-schema-runtime": "^6.0"
+        "jane-php/json-schema-runtime": "~6.1.0"
     },
     "require-dev": {
         "phpunit/phpunit": "^8.0",
@@ -37,7 +37,7 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "6-dev"
+            "dev-next": "6-dev"
         }
     },
     "config": {
