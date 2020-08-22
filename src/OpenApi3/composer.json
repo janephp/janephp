@@ -29,8 +29,8 @@
     "require": {
         "php": ">=7.2",
         "ext-json": "*",
-        "jane-php/json-schema": "^6.0",
-        "jane-php/open-api-common": "^6.0",
+        "jane-php/json-schema": "~6.1.0",
+        "jane-php/open-api-common": "~6.1.0",
         "nikic/php-parser": "^4.0",
         "symfony/serializer": "^4.4 || ^5.0",
         "symfony/yaml": "~4.4.9 || ^5.0"
