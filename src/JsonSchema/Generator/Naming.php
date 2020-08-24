@@ -2,13 +2,15 @@
 
 namespace Jane\JsonSchema\Generator;
 
-use Doctrine\Common\Inflector\Inflector;
+use Jane\JsonSchema\Tools\InflectorTrait;
 
 /**
  * Helper to generate name for property / class / ....
  */
 class Naming
 {
+    use InflectorTrait;
+
     const BAD_CLASS_NAME_REGEX = '/^
         ([0-9])|
         \b(
@@ -40,7 +42,7 @@ class Naming
     {
         $name = $this->cleaning($name);
 
-        return sprintf('%s%s', $prefix, Inflector::classify($name));
+        return sprintf('%s%s', $prefix, $this->getInflector()->classify($name));
     }
 
     public function getClassName(string $name): string
@@ -76,9 +78,9 @@ class Naming
         $name = trim(preg_replace('/[^a-z0-9 ]+/iu', '_', $name));
 
         if ($class) {
-            return Inflector::classify($name);
+            return $this->getInflector()->classify($name);
         }
 
-        return Inflector::camelize($name);
+        return $this->getInflector()->camelize($name);
     }
 }
