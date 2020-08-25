@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class ActivityListWatchedReposForAuthenticatedUser extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class ActivityListWatchedReposForAuthenticatedUser extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     /**
      * Lists repositories the authenticated user is watching.
@@ -16,7 +16,7 @@ class ActivityListWatchedReposForAuthenticatedUser extends \Jane\OpenApiRuntime\
     {
         $this->queryParameters = $queryParameters;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';

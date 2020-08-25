@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class OrgsRemoveMember extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class OrgsRemoveMember extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $org;
     protected $username;
@@ -17,7 +17,7 @@ class OrgsRemoveMember extends \Jane\OpenApiRuntime\Client\BaseEndpoint implemen
         $this->org = $org;
         $this->username = $username;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'DELETE';

@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class ActivityListNotificationsForAuthenticatedUser extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class ActivityListNotificationsForAuthenticatedUser extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     /**
      * List all notifications for the current user, sorted by most recently updated.
@@ -20,7 +20,7 @@ class ActivityListNotificationsForAuthenticatedUser extends \Jane\OpenApiRuntime
     {
         $this->queryParameters = $queryParameters;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';

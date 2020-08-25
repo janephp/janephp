@@ -7,6 +7,7 @@ use Jane\JsonSchema\Generator\Context\Context;
 use Jane\JsonSchema\Generator\ModelGenerator;
 use Jane\JsonSchema\Generator\Naming;
 use Jane\JsonSchema\Generator\NormalizerGenerator;
+use Jane\JsonSchema\Generator\RuntimeGenerator;
 use Jane\JsonSchema\Guesser\ChainGuesser;
 use Jane\JsonSchema\Guesser\JsonSchema\JsonSchemaGuesserFactory;
 use Jane\JsonSchema\JsonSchema\Normalizer\JaneObjectNormalizer;
@@ -101,12 +102,11 @@ class Jane extends ChainGenerator
         $chainGuesser = JsonSchemaGuesserFactory::create($serializer, $options);
         $naming = new Naming();
         $parser = (new ParserFactory())->create(ParserFactory::PREFER_PHP7);
-        $modelGenerator = new ModelGenerator($naming, $parser);
-        $normGenerator = new NormalizerGenerator($naming, $parser, $options['reference'], $options['use-cacheable-supports-method'] ?? false, $options['skip-null-values'] ?? true);
 
         $self = new self($serializer, $chainGuesser, $naming, $options['strict']);
-        $self->addGenerator($modelGenerator);
-        $self->addGenerator($normGenerator);
+        $self->addGenerator(new ModelGenerator($naming, $parser));
+        $self->addGenerator(new NormalizerGenerator($naming, $parser, $options['reference'], $options['use-cacheable-supports-method'] ?? false, $options['skip-null-values'] ?? true));
+        $self->addGenerator(new RuntimeGenerator($naming, $parser));
 
         return $self;
     }

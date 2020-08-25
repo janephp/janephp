@@ -2,7 +2,7 @@
 
 namespace CreditSafe\API;
 
-class Client extends \Jane\OpenApiRuntime\Client\Client
+class Client extends \CreditSafe\API\Runtime\Client\Client
 {
     /**
      * Enter your username and password into the request schema to generate an Authorization Token

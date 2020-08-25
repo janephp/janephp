@@ -95,7 +95,7 @@ class NormalizerGenerator implements GeneratorInterface
 
             $useStmts = [
                 new Stmt\Use_([new Stmt\UseUse(new Name('Jane\JsonSchemaRuntime\Reference'))]),
-                new Stmt\Use_([new Stmt\UseUse(new Name('Jane\JsonSchemaRuntime\Normalizer\CheckArray'))]),
+                new Stmt\Use_([new Stmt\UseUse(new Name($this->naming->getRuntimeClassFQCN($schema->getNamespace(), ['Normalizer'], 'CheckArray')))]),
                 new Stmt\Use_([new Stmt\UseUse(new Name('Symfony\Component\Serializer\Exception\InvalidArgumentException'))]),
                 new Stmt\Use_([new Stmt\UseUse(new Name('Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface'))]),
                 new Stmt\Use_([new Stmt\UseUse(new Name('Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait'))]),
@@ -120,7 +120,7 @@ class NormalizerGenerator implements GeneratorInterface
 
         $schema->addFile(new File(
             $schema->getDirectory() . '/Normalizer/JaneObjectNormalizer.php',
-            new Stmt\Namespace_(new Name($schema->getNamespace() . '\\Normalizer'), $this->createJaneObjectNormalizerClass($normalizers)),
+            new Stmt\Namespace_(new Name($schema->getNamespace() . '\\Normalizer'), $this->createJaneObjectNormalizerClass($schema, $normalizers)),
             self::FILE_TYPE_NORMALIZER
         ));
     }
@@ -132,10 +132,10 @@ class NormalizerGenerator implements GeneratorInterface
             (null === $useCacheableSupportsMethod && class_exists('Symfony\Component\Serializer\Normalizer\CacheableSupportsMethodInterface'));
     }
 
-    protected function createJaneObjectNormalizerClass(array $normalizers): array
+    protected function createJaneObjectNormalizerClass(Schema $schema, array $normalizers): array
     {
         if ($this->useReference) {
-            $normalizers['\\Jane\\JsonSchemaRuntime\\Reference'] = '\\Jane\\JsonSchemaRuntime\\Normalizer\\ReferenceNormalizer';
+            $normalizers['\\Jane\\JsonSchemaRuntime\\Reference'] = '\\' . $this->naming->getRuntimeClassFQCN($schema->getNamespace(), ['Normalizer'], 'ReferenceNormalizer');
         }
 
         $properties = [];
@@ -167,7 +167,7 @@ class NormalizerGenerator implements GeneratorInterface
         );
 
         $useStmts = [
-            new Stmt\Use_([new Stmt\UseUse(new Name('Jane\JsonSchemaRuntime\Normalizer\CheckArray'))]),
+            new Stmt\Use_([new Stmt\UseUse(new Name($this->naming->getRuntimeClassFQCN($schema->getNamespace(), ['Normalizer'], 'CheckArray')))]),
             new Stmt\Use_([new Stmt\UseUse(new Name('Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface'))]),
             new Stmt\Use_([new Stmt\UseUse(new Name('Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait'))]),
             new Stmt\Use_([new Stmt\UseUse(new Name('Symfony\Component\Serializer\Normalizer\DenormalizerInterface'))]),

@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class ReactionsDeleteForTeamDiscussion extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class ReactionsDeleteForTeamDiscussion extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $org;
     protected $team_slug;
@@ -25,7 +25,7 @@ class ReactionsDeleteForTeamDiscussion extends \Jane\OpenApiRuntime\Client\BaseE
         $this->discussion_number = $discussionNumber;
         $this->reaction_id = $reactionId;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'DELETE';

@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class MigrationsStartForAuthenticatedUser extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class MigrationsStartForAuthenticatedUser extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     /**
      * Initiates the generation of a user migration archive.
@@ -13,7 +13,7 @@ class MigrationsStartForAuthenticatedUser extends \Jane\OpenApiRuntime\Client\Ba
     {
         $this->body = $requestBody;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'POST';

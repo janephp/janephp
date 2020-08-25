@@ -2,7 +2,7 @@
 
 namespace CreditSafe\API\Endpoint;
 
-class UpdateCompanyDetailsInAPortfolio extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class UpdateCompanyDetailsInAPortfolio extends \CreditSafe\API\Runtime\Client\BaseEndpoint implements \CreditSafe\API\Runtime\Client\Endpoint
 {
     protected $portfolioId;
     protected $id;
@@ -23,7 +23,7 @@ class UpdateCompanyDetailsInAPortfolio extends \Jane\OpenApiRuntime\Client\BaseE
         $this->body = $requestBody;
         $this->headerParameters = $headerParameters;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \CreditSafe\API\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'PATCH';

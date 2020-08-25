@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class ProjectsRemoveCollaborator extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class ProjectsRemoveCollaborator extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $project_id;
     protected $username;
@@ -17,7 +17,7 @@ class ProjectsRemoveCollaborator extends \Jane\OpenApiRuntime\Client\BaseEndpoin
         $this->project_id = $projectId;
         $this->username = $username;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'DELETE';

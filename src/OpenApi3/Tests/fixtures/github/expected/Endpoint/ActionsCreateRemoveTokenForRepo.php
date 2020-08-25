@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class ActionsCreateRemoveTokenForRepo extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class ActionsCreateRemoveTokenForRepo extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $owner;
     protected $repo;
@@ -26,7 +26,7 @@ class ActionsCreateRemoveTokenForRepo extends \Jane\OpenApiRuntime\Client\BaseEn
         $this->owner = $owner;
         $this->repo = $repo;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'POST';

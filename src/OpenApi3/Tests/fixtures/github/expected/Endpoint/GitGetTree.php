@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class GitGetTree extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class GitGetTree extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $owner;
     protected $repo;
@@ -26,7 +26,7 @@ class GitGetTree extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Ja
         $this->tree_sha = $treeSha;
         $this->queryParameters = $queryParameters;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';

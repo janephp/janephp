@@ -10,6 +10,7 @@ use Jane\OpenApi3\SchemaParser\SchemaParser;
 use Jane\OpenApiCommon\Generator\AuthenticationGenerator;
 use Jane\OpenApiCommon\Generator\ModelGenerator;
 use Jane\OpenApiCommon\Generator\NormalizerGenerator;
+use Jane\OpenApiCommon\Generator\RuntimeGenerator;
 use Jane\OpenApiCommon\JaneOpenApi as CommonJaneOpenApi;
 use PhpParser\ParserFactory;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -39,5 +40,6 @@ class JaneOpenApi extends CommonJaneOpenApi
         yield new NormalizerGenerator($naming, $parser, $options['reference'] ?? false, $options['use-cacheable-supports-method'] ?? false, $options['skip-null-values'] ?? true);
         yield new AuthenticationGenerator();
         yield GeneratorFactory::build($denormalizer, $options['endpoint-generator'] ?: EndpointGenerator::class);
+        yield new RuntimeGenerator($naming, $parser);
     }
 }

@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class IssuesGetMilestone extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class IssuesGetMilestone extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $owner;
     protected $repo;
@@ -20,7 +20,7 @@ class IssuesGetMilestone extends \Jane\OpenApiRuntime\Client\BaseEndpoint implem
         $this->repo = $repo;
         $this->milestone_number = $milestoneNumber;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';

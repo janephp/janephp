@@ -5,6 +5,9 @@ namespace Jane\JsonSchemaRuntime\Normalizer;
 use Jane\JsonSchemaRuntime\Reference;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
+/**
+ * @deprecated Deprecated since v6.2.0, will removed in v7.0.0 and is already replaced by generated Runtime
+ */
 class ReferenceNormalizer implements NormalizerInterface
 {
     /**

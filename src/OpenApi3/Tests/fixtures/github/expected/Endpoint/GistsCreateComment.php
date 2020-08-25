@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class GistsCreateComment extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class GistsCreateComment extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $gist_id;
     /**
@@ -16,7 +16,7 @@ class GistsCreateComment extends \Jane\OpenApiRuntime\Client\BaseEndpoint implem
         $this->gist_id = $gistId;
         $this->body = $requestBody;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'POST';

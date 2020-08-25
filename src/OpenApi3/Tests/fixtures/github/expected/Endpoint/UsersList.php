@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class UsersList extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class UsersList extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     /**
     * Lists all users, in the order that they signed up on GitHub. This list includes personal user accounts and organization accounts.
@@ -18,7 +18,7 @@ class UsersList extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jan
     {
         $this->queryParameters = $queryParameters;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';

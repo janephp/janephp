@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class ActionsCreateWorkflowDispatch extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class ActionsCreateWorkflowDispatch extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $owner;
     protected $repo;
@@ -26,7 +26,7 @@ class ActionsCreateWorkflowDispatch extends \Jane\OpenApiRuntime\Client\BaseEndp
         $this->workflow_id = $workflowId;
         $this->body = $requestBody;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'POST';

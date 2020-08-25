@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class AppsResetAuthorization extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class AppsResetAuthorization extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $client_id;
     protected $access_token;
@@ -19,7 +19,7 @@ class AppsResetAuthorization extends \Jane\OpenApiRuntime\Client\BaseEndpoint im
         $this->client_id = $clientId;
         $this->access_token = $accessToken;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'POST';

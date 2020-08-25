@@ -2,7 +2,7 @@
 
 namespace Jane\OpenApi2\Tests\Expected\Two;
 
-class Client extends \Jane\OpenApiRuntime\Client\Client
+class Client extends \Jane\OpenApi2\Tests\Expected\Two\Runtime\Client\Client
 {
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)

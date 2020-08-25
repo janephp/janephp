@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class ActivitySetThreadSubscription extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class ActivitySetThreadSubscription extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $thread_id;
     /**
@@ -20,7 +20,7 @@ class ActivitySetThreadSubscription extends \Jane\OpenApiRuntime\Client\BaseEndp
         $this->thread_id = $threadId;
         $this->body = $requestBody;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'PUT';

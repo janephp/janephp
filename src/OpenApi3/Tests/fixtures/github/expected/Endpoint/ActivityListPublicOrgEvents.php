@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class ActivityListPublicOrgEvents extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class ActivityListPublicOrgEvents extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $org;
     /**
@@ -19,7 +19,7 @@ class ActivityListPublicOrgEvents extends \Jane\OpenApiRuntime\Client\BaseEndpoi
         $this->org = $org;
         $this->queryParameters = $queryParameters;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';

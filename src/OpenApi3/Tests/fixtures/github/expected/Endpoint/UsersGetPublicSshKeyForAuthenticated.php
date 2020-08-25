@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class UsersGetPublicSshKeyForAuthenticated extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class UsersGetPublicSshKeyForAuthenticated extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $key_id;
     /**
@@ -14,7 +14,7 @@ class UsersGetPublicSshKeyForAuthenticated extends \Jane\OpenApiRuntime\Client\B
     {
         $this->key_id = $keyId;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';

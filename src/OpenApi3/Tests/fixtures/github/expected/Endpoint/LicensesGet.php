@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class LicensesGet extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class LicensesGet extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $license;
     /**
@@ -14,7 +14,7 @@ class LicensesGet extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \J
     {
         $this->license = $license;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';

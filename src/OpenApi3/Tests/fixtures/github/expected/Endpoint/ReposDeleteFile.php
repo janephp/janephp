@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class ReposDeleteFile extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class ReposDeleteFile extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $owner;
     protected $repo;
@@ -28,7 +28,7 @@ class ReposDeleteFile extends \Jane\OpenApiRuntime\Client\BaseEndpoint implement
         $this->path = $path;
         $this->body = $requestBody;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'DELETE';

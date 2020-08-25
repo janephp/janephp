@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class ReposGetCommitSignatureProtection extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class ReposGetCommitSignatureProtection extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $owner;
     protected $repo;
@@ -24,7 +24,7 @@ class ReposGetCommitSignatureProtection extends \Jane\OpenApiRuntime\Client\Base
         $this->repo = $repo;
         $this->branch = $branch;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';

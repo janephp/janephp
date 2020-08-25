@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class InteractionsRemoveRestrictionsForRepo extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class InteractionsRemoveRestrictionsForRepo extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $owner;
     protected $repo;
@@ -17,7 +17,7 @@ class InteractionsRemoveRestrictionsForRepo extends \Jane\OpenApiRuntime\Client\
         $this->owner = $owner;
         $this->repo = $repo;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'DELETE';

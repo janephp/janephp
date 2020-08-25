@@ -2,7 +2,7 @@
 
 namespace CreditSafe\API\Endpoint;
 
-class ListSubmittedFreshInvestigations extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class ListSubmittedFreshInvestigations extends \CreditSafe\API\Runtime\Client\BaseEndpoint implements \CreditSafe\API\Runtime\Client\Endpoint
 {
     /**
      * Returns a list of your submitted Fresh Investigation Orders.
@@ -32,7 +32,7 @@ class ListSubmittedFreshInvestigations extends \Jane\OpenApiRuntime\Client\BaseE
         $this->queryParameters = $queryParameters;
         $this->headerParameters = $headerParameters;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \CreditSafe\API\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';

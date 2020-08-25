@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class MigrationsListReposForOrg extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class MigrationsListReposForOrg extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $org;
     protected $migration_id;
@@ -22,7 +22,7 @@ class MigrationsListReposForOrg extends \Jane\OpenApiRuntime\Client\BaseEndpoint
         $this->migration_id = $migrationId;
         $this->queryParameters = $queryParameters;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';

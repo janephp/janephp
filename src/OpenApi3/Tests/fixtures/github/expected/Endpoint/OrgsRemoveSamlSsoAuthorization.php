@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class OrgsRemoveSamlSsoAuthorization extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class OrgsRemoveSamlSsoAuthorization extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $org;
     protected $credential_id;
@@ -19,7 +19,7 @@ class OrgsRemoveSamlSsoAuthorization extends \Jane\OpenApiRuntime\Client\BaseEnd
         $this->org = $org;
         $this->credential_id = $credentialId;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'DELETE';

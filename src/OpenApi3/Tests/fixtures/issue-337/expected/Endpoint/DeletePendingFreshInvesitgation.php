@@ -2,7 +2,7 @@
 
 namespace CreditSafe\API\Endpoint;
 
-class DeletePendingFreshInvesitgation extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class DeletePendingFreshInvesitgation extends \CreditSafe\API\Runtime\Client\BaseEndpoint implements \CreditSafe\API\Runtime\Client\Endpoint
 {
     protected $orderId;
     /**
@@ -18,7 +18,7 @@ class DeletePendingFreshInvesitgation extends \Jane\OpenApiRuntime\Client\BaseEn
         $this->orderId = $orderId;
         $this->headerParameters = $headerParameters;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \CreditSafe\API\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'DELETE';

@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class UsersDeleteEmailForAuthenticated extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class UsersDeleteEmailForAuthenticated extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     /**
      * This endpoint is accessible with the `user` scope.
@@ -13,7 +13,7 @@ class UsersDeleteEmailForAuthenticated extends \Jane\OpenApiRuntime\Client\BaseE
     {
         $this->body = $requestBody;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'DELETE';

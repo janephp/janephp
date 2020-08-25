@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class UsersCheckBlocked extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class UsersCheckBlocked extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $username;
     /**
@@ -16,7 +16,7 @@ class UsersCheckBlocked extends \Jane\OpenApiRuntime\Client\BaseEndpoint impleme
     {
         $this->username = $username;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';

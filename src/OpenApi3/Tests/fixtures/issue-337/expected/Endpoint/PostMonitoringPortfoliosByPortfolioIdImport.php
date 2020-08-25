@@ -2,7 +2,7 @@
 
 namespace CreditSafe\API\Endpoint;
 
-class PostMonitoringPortfoliosByPortfolioIdImport extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class PostMonitoringPortfoliosByPortfolioIdImport extends \CreditSafe\API\Runtime\Client\BaseEndpoint implements \CreditSafe\API\Runtime\Client\Endpoint
 {
     protected $portfolioId;
     /**
@@ -20,7 +20,7 @@ class PostMonitoringPortfoliosByPortfolioIdImport extends \Jane\OpenApiRuntime\C
         $this->body = $requestBody;
         $this->headerParameters = $headerParameters;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \CreditSafe\API\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'POST';

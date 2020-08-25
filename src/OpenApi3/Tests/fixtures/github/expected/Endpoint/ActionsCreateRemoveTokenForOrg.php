@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class ActionsCreateRemoveTokenForOrg extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class ActionsCreateRemoveTokenForOrg extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $org;
     /**
@@ -28,7 +28,7 @@ class ActionsCreateRemoveTokenForOrg extends \Jane\OpenApiRuntime\Client\BaseEnd
     {
         $this->org = $org;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'POST';

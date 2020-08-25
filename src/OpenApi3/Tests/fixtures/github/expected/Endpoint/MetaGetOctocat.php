@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class MetaGetOctocat extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class MetaGetOctocat extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     /**
      * Get the octocat as ASCII art
@@ -15,7 +15,7 @@ class MetaGetOctocat extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements
     {
         $this->queryParameters = $queryParameters;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';

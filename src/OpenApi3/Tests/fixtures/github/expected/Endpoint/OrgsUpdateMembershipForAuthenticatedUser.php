@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class OrgsUpdateMembershipForAuthenticatedUser extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class OrgsUpdateMembershipForAuthenticatedUser extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $org;
     /**
@@ -16,7 +16,7 @@ class OrgsUpdateMembershipForAuthenticatedUser extends \Jane\OpenApiRuntime\Clie
         $this->org = $org;
         $this->body = $requestBody;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'PATCH';

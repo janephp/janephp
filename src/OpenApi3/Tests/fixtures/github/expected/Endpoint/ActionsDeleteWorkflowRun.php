@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class ActionsDeleteWorkflowRun extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class ActionsDeleteWorkflowRun extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $owner;
     protected $repo;
@@ -22,7 +22,7 @@ class ActionsDeleteWorkflowRun extends \Jane\OpenApiRuntime\Client\BaseEndpoint 
         $this->repo = $repo;
         $this->run_id = $runId;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'DELETE';

@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class ProjectsGet extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class ProjectsGet extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $project_id;
     /**
@@ -14,7 +14,7 @@ class ProjectsGet extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \J
     {
         $this->project_id = $projectId;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';

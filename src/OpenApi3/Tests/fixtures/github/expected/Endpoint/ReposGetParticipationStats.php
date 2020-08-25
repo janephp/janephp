@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class ReposGetParticipationStats extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class ReposGetParticipationStats extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $owner;
     protected $repo;
@@ -19,7 +19,7 @@ class ReposGetParticipationStats extends \Jane\OpenApiRuntime\Client\BaseEndpoin
         $this->owner = $owner;
         $this->repo = $repo;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';

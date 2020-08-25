@@ -2,7 +2,7 @@
 
 namespace CreditSafe\API\Endpoint;
 
-class RunDecisionTree extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class RunDecisionTree extends \CreditSafe\API\Runtime\Client\BaseEndpoint implements \CreditSafe\API\Runtime\Client\Endpoint
 {
     protected $provenirId;
     /**
@@ -26,7 +26,7 @@ class RunDecisionTree extends \Jane\OpenApiRuntime\Client\BaseEndpoint implement
         $this->queryParameters = $queryParameters;
         $this->headerParameters = $headerParameters;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \CreditSafe\API\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'POST';

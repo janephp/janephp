@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class GistsGetRevision extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class GistsGetRevision extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $gist_id;
     protected $sha;
@@ -17,7 +17,7 @@ class GistsGetRevision extends \Jane\OpenApiRuntime\Client\BaseEndpoint implemen
         $this->gist_id = $gistId;
         $this->sha = $sha;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';

@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class ProjectsAddCollaborator extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class ProjectsAddCollaborator extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $project_id;
     protected $username;
@@ -19,7 +19,7 @@ class ProjectsAddCollaborator extends \Jane\OpenApiRuntime\Client\BaseEndpoint i
         $this->username = $username;
         $this->body = $requestBody;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'PUT';

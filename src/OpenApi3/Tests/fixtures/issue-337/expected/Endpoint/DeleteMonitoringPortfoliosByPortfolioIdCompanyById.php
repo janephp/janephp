@@ -2,7 +2,7 @@
 
 namespace CreditSafe\API\Endpoint;
 
-class DeleteMonitoringPortfoliosByPortfolioIdCompanyById extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class DeleteMonitoringPortfoliosByPortfolioIdCompanyById extends \CreditSafe\API\Runtime\Client\BaseEndpoint implements \CreditSafe\API\Runtime\Client\Endpoint
 {
     protected $portfolioId;
     protected $id;
@@ -21,7 +21,7 @@ class DeleteMonitoringPortfoliosByPortfolioIdCompanyById extends \Jane\OpenApiRu
         $this->id = $id;
         $this->headerParameters = $headerParameters;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \CreditSafe\API\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'DELETE';

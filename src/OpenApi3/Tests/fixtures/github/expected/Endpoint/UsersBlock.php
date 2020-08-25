@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class UsersBlock extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class UsersBlock extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $username;
     /**
@@ -14,7 +14,7 @@ class UsersBlock extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Ja
     {
         $this->username = $username;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'PUT';

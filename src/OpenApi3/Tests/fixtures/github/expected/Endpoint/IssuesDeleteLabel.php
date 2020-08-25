@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class IssuesDeleteLabel extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class IssuesDeleteLabel extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $owner;
     protected $repo;
@@ -20,7 +20,7 @@ class IssuesDeleteLabel extends \Jane\OpenApiRuntime\Client\BaseEndpoint impleme
         $this->repo = $repo;
         $this->name = $name;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'DELETE';

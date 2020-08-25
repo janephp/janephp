@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class ReposUpdateCommitComment extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class ReposUpdateCommitComment extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $owner;
     protected $repo;
@@ -22,7 +22,7 @@ class ReposUpdateCommitComment extends \Jane\OpenApiRuntime\Client\BaseEndpoint 
         $this->comment_id = $commentId;
         $this->body = $requestBody;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'PATCH';

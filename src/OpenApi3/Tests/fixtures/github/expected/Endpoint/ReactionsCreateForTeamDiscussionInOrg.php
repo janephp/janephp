@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class ReactionsCreateForTeamDiscussionInOrg extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class ReactionsCreateForTeamDiscussionInOrg extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $org;
     protected $team_slug;
@@ -23,7 +23,7 @@ class ReactionsCreateForTeamDiscussionInOrg extends \Jane\OpenApiRuntime\Client\
         $this->discussion_number = $discussionNumber;
         $this->body = $requestBody;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'POST';

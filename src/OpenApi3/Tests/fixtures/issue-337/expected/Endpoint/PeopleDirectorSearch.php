@@ -2,7 +2,7 @@
 
 namespace CreditSafe\API\Endpoint;
 
-class PeopleDirectorSearch extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class PeopleDirectorSearch extends \CreditSafe\API\Runtime\Client\BaseEndpoint implements \CreditSafe\API\Runtime\Client\Endpoint
 {
     /**
      * Endpoint to find Directors based on search criteria to order a Creditsafe Director Report.
@@ -32,7 +32,7 @@ class PeopleDirectorSearch extends \Jane\OpenApiRuntime\Client\BaseEndpoint impl
         $this->queryParameters = $queryParameters;
         $this->headerParameters = $headerParameters;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \CreditSafe\API\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';

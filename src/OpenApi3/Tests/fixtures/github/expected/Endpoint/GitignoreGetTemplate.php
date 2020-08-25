@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class GitignoreGetTemplate extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class GitignoreGetTemplate extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $name;
     /**
@@ -15,7 +15,7 @@ class GitignoreGetTemplate extends \Jane\OpenApiRuntime\Client\BaseEndpoint impl
     {
         $this->name = $name;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';

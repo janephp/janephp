@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class UsersCheckPersonIsFollowedByAuthenticated extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class UsersCheckPersonIsFollowedByAuthenticated extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $username;
     /**
@@ -14,7 +14,7 @@ class UsersCheckPersonIsFollowedByAuthenticated extends \Jane\OpenApiRuntime\Cli
     {
         $this->username = $username;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';

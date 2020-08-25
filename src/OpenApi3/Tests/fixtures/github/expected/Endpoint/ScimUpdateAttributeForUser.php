@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class ScimUpdateAttributeForUser extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class ScimUpdateAttributeForUser extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $org;
     protected $scim_user_id;
@@ -34,7 +34,7 @@ class ScimUpdateAttributeForUser extends \Jane\OpenApiRuntime\Client\BaseEndpoin
         $this->scim_user_id = $scimUserId;
         $this->body = $requestBody;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'PATCH';

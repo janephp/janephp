@@ -2,7 +2,7 @@
 
 namespace CreditSafe\API\Endpoint;
 
-class GenerateAuthenticationToken extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class GenerateAuthenticationToken extends \CreditSafe\API\Runtime\Client\BaseEndpoint implements \CreditSafe\API\Runtime\Client\Endpoint
 {
     /**
      * Enter your username and password into the request schema to generate an Authorization Token
@@ -13,7 +13,7 @@ class GenerateAuthenticationToken extends \Jane\OpenApiRuntime\Client\BaseEndpoi
     {
         $this->body = $requestBody;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \CreditSafe\API\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'POST';

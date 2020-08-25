@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class ReposGetReleaseByTag extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class ReposGetReleaseByTag extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $owner;
     protected $repo;
@@ -20,7 +20,7 @@ class ReposGetReleaseByTag extends \Jane\OpenApiRuntime\Client\BaseEndpoint impl
         $this->repo = $repo;
         $this->tag = $tag;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';

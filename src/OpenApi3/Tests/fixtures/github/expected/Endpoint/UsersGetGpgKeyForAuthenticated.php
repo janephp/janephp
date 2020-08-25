@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class UsersGetGpgKeyForAuthenticated extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class UsersGetGpgKeyForAuthenticated extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $gpg_key_id;
     /**
@@ -14,7 +14,7 @@ class UsersGetGpgKeyForAuthenticated extends \Jane\OpenApiRuntime\Client\BaseEnd
     {
         $this->gpg_key_id = $gpgKeyId;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';

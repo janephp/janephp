@@ -2,7 +2,7 @@
 
 namespace Jane\OpenApi2\Tests\Expected;
 
-class Client extends \Jane\OpenApiRuntime\Client\Client
+class Client extends \Jane\OpenApi2\Tests\Expected\Runtime\Client\Client
 {
     public static function create($httpClient = null, array $additionalPlugins = array())
     {

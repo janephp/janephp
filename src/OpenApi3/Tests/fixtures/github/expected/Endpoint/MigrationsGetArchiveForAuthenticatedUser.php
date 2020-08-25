@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class MigrationsGetArchiveForAuthenticatedUser extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class MigrationsGetArchiveForAuthenticatedUser extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $migration_id;
     /**
@@ -34,7 +34,7 @@ class MigrationsGetArchiveForAuthenticatedUser extends \Jane\OpenApiRuntime\Clie
     {
         $this->migration_id = $migrationId;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';

@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class ReposCreateCommitStatus extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class ReposCreateCommitStatus extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $owner;
     protected $repo;
@@ -24,7 +24,7 @@ class ReposCreateCommitStatus extends \Jane\OpenApiRuntime\Client\BaseEndpoint i
         $this->sha = $sha;
         $this->body = $requestBody;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'POST';

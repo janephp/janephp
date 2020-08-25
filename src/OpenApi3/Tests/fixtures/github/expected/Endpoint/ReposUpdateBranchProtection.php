@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class ReposUpdateBranchProtection extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class ReposUpdateBranchProtection extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $owner;
     protected $repo;
@@ -28,7 +28,7 @@ class ReposUpdateBranchProtection extends \Jane\OpenApiRuntime\Client\BaseEndpoi
         $this->branch = $branch;
         $this->body = $requestBody;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'PUT';

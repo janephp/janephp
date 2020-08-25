@@ -2,7 +2,7 @@
 
 namespace CreditSafe\API\Endpoint;
 
-class IndividualsComplianceSearchCriteria extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class IndividualsComplianceSearchCriteria extends \CreditSafe\API\Runtime\Client\BaseEndpoint implements \CreditSafe\API\Runtime\Client\Endpoint
 {
     /**
      * Returns the search parameters available to use when making a compliance search request against any Individual/Person `predefined Search`.
@@ -15,7 +15,7 @@ class IndividualsComplianceSearchCriteria extends \Jane\OpenApiRuntime\Client\Ba
     {
         $this->headerParameters = $headerParameters;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \CreditSafe\API\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';

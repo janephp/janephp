@@ -2,7 +2,7 @@
 
 namespace CreditSafe\API\Endpoint;
 
-class ResetPortfolioEventRulesToDefaultValues extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class ResetPortfolioEventRulesToDefaultValues extends \CreditSafe\API\Runtime\Client\BaseEndpoint implements \CreditSafe\API\Runtime\Client\Endpoint
 {
     protected $portfolioId;
     /**
@@ -18,7 +18,7 @@ class ResetPortfolioEventRulesToDefaultValues extends \Jane\OpenApiRuntime\Clien
         $this->portfolioId = $portfolioId;
         $this->headerParameters = $headerParameters;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \CreditSafe\API\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'PUT';

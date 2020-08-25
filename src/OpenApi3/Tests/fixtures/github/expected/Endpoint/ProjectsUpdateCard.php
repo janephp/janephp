@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class ProjectsUpdateCard extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class ProjectsUpdateCard extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $card_id;
     /**
@@ -16,7 +16,7 @@ class ProjectsUpdateCard extends \Jane\OpenApiRuntime\Client\BaseEndpoint implem
         $this->card_id = $cardId;
         $this->body = $requestBody;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'PATCH';

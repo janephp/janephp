@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class AppsListPlans extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class AppsListPlans extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     /**
     * Lists all plans that are part of your GitHub Marketplace listing.
@@ -18,7 +18,7 @@ class AppsListPlans extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements 
     {
         $this->queryParameters = $queryParameters;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';

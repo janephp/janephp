@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class OrgsList extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class OrgsList extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     /**
      * Lists all organizations, in the order that they were created on GitHub.
@@ -17,7 +17,7 @@ class OrgsList extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane
     {
         $this->queryParameters = $queryParameters;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';

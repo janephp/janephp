@@ -2,7 +2,7 @@
 
 namespace CreditSafe\API\Endpoint;
 
-class SyncPortfolioCompaniesToCSVRecords extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class SyncPortfolioCompaniesToCSVRecords extends \CreditSafe\API\Runtime\Client\BaseEndpoint implements \CreditSafe\API\Runtime\Client\Endpoint
 {
     protected $portfolioId;
     /**
@@ -20,7 +20,7 @@ class SyncPortfolioCompaniesToCSVRecords extends \Jane\OpenApiRuntime\Client\Bas
         $this->body = $requestBody;
         $this->headerParameters = $headerParameters;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \CreditSafe\API\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'POST';

@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class LicensesGetAllCommonlyUsed extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class LicensesGetAllCommonlyUsed extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     /**
      * 
@@ -16,7 +16,7 @@ class LicensesGetAllCommonlyUsed extends \Jane\OpenApiRuntime\Client\BaseEndpoin
     {
         $this->queryParameters = $queryParameters;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';

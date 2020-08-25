@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class PullsListRequestedReviewers extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class PullsListRequestedReviewers extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $owner;
     protected $repo;
@@ -25,7 +25,7 @@ class PullsListRequestedReviewers extends \Jane\OpenApiRuntime\Client\BaseEndpoi
         $this->pull_number = $pullNumber;
         $this->queryParameters = $queryParameters;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';

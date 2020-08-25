@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class ReposCreateOrUpdateFileContents extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class ReposCreateOrUpdateFileContents extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $owner;
     protected $repo;
@@ -22,7 +22,7 @@ class ReposCreateOrUpdateFileContents extends \Jane\OpenApiRuntime\Client\BaseEn
         $this->path = $path;
         $this->body = $requestBody;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'PUT';

@@ -2,7 +2,7 @@
 
 namespace Jane\OpenApi3\Tests\Expected;
 
-class Client extends \Jane\OpenApiRuntime\Client\Client
+class Client extends \Jane\OpenApi3\Tests\Expected\Runtime\Client\Client
 {
     /**
      * This endpoint returns information about users. You can specify users by their ID or screen name, or by a combination of the two.

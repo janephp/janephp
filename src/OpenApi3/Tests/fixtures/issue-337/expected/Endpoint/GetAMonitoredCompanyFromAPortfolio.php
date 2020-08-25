@@ -2,7 +2,7 @@
 
 namespace CreditSafe\API\Endpoint;
 
-class GetAMonitoredCompanyFromAPortfolio extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class GetAMonitoredCompanyFromAPortfolio extends \CreditSafe\API\Runtime\Client\BaseEndpoint implements \CreditSafe\API\Runtime\Client\Endpoint
 {
     protected $portfolioId;
     protected $id;
@@ -21,7 +21,7 @@ class GetAMonitoredCompanyFromAPortfolio extends \Jane\OpenApiRuntime\Client\Bas
         $this->id = $id;
         $this->headerParameters = $headerParameters;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \CreditSafe\API\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';

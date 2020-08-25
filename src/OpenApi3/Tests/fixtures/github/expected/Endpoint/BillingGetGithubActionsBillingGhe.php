@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class BillingGetGithubActionsBillingGhe extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class BillingGetGithubActionsBillingGhe extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $enterprise_id;
     /**
@@ -20,7 +20,7 @@ class BillingGetGithubActionsBillingGhe extends \Jane\OpenApiRuntime\Client\Base
     {
         $this->enterprise_id = $enterpriseId;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';

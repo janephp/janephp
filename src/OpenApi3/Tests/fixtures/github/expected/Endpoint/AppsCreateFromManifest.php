@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class AppsCreateFromManifest extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class AppsCreateFromManifest extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $code;
     /**
@@ -14,7 +14,7 @@ class AppsCreateFromManifest extends \Jane\OpenApiRuntime\Client\BaseEndpoint im
     {
         $this->code = $code;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'POST';

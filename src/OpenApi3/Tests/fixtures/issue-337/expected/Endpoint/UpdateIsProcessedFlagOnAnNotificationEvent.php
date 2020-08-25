@@ -2,7 +2,7 @@
 
 namespace CreditSafe\API\Endpoint;
 
-class UpdateIsProcessedFlagOnAnNotificationEvent extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class UpdateIsProcessedFlagOnAnNotificationEvent extends \CreditSafe\API\Runtime\Client\BaseEndpoint implements \CreditSafe\API\Runtime\Client\Endpoint
 {
     protected $portfolioId;
     protected $notificationEventId;
@@ -23,7 +23,7 @@ class UpdateIsProcessedFlagOnAnNotificationEvent extends \Jane\OpenApiRuntime\Cl
         $this->body = $requestBody;
         $this->headerParameters = $headerParameters;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \CreditSafe\API\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'PATCH';

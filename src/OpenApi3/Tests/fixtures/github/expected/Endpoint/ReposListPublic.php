@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class ReposListPublic extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class ReposListPublic extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     /**
     * Lists all public repositories in the order that they were created.
@@ -19,7 +19,7 @@ class ReposListPublic extends \Jane\OpenApiRuntime\Client\BaseEndpoint implement
     {
         $this->queryParameters = $queryParameters;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';

@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class ReactionsDeleteLegacy extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class ReactionsDeleteLegacy extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $reaction_id;
     /**
@@ -16,7 +16,7 @@ class ReactionsDeleteLegacy extends \Jane\OpenApiRuntime\Client\BaseEndpoint imp
     {
         $this->reaction_id = $reactionId;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'DELETE';

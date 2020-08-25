@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class ChecksGet extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class ChecksGet extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $owner;
     protected $repo;
@@ -22,7 +22,7 @@ class ChecksGet extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jan
         $this->repo = $repo;
         $this->check_run_id = $checkRunId;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';

@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class OrgsDeleteWebhook extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class OrgsDeleteWebhook extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $org;
     protected $hook_id;
@@ -17,7 +17,7 @@ class OrgsDeleteWebhook extends \Jane\OpenApiRuntime\Client\BaseEndpoint impleme
         $this->org = $org;
         $this->hook_id = $hookId;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'DELETE';

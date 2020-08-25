@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class TeamsAddOrUpdateProjectPermissionsLegacy extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class TeamsAddOrUpdateProjectPermissionsLegacy extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $team_id;
     protected $project_id;
@@ -21,7 +21,7 @@ class TeamsAddOrUpdateProjectPermissionsLegacy extends \Jane\OpenApiRuntime\Clie
         $this->project_id = $projectId;
         $this->body = $requestBody;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'PUT';

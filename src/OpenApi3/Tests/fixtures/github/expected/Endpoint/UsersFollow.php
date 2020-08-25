@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class UsersFollow extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class UsersFollow extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $username;
     /**
@@ -16,7 +16,7 @@ class UsersFollow extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \J
     {
         $this->username = $username;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'PUT';

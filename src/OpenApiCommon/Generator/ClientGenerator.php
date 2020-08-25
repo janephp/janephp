@@ -38,7 +38,7 @@ abstract class ClientGenerator implements GeneratorInterface
             $statements[] = $this->operationGenerator->createOperation($operationName, $operation, $context);
         }
 
-        $client = $this->createResourceClass('Client' . $this->getSuffix());
+        $client = $this->createResourceClass($schema, 'Client' . $this->getSuffix());
         $client->stmts = array_merge(
             $statements,
             [

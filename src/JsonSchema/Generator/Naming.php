@@ -61,6 +61,21 @@ class Naming
         return $this->getClassName(sprintf('%sAuthentication', $name));
     }
 
+    public function getRuntimeNamespace(string $schemaNamespace, array $namespace): string
+    {
+        $namespaceSuffix = '';
+        if (\count($namespace) > 0) {
+            $namespaceSuffix = '\\' . implode('\\', $namespace);
+        }
+
+        return $schemaNamespace . '\\Runtime' . $namespaceSuffix;
+    }
+
+    public function getRuntimeClassFQCN(string $schemaNamespace, array $namespace, string $class): string
+    {
+        return sprintf('%s\\%s', $this->getRuntimeNamespace($schemaNamespace, $namespace), $class);
+    }
+
     protected function cleaning(string $name, bool $class = false): string
     {
         if (preg_match('/\$/', $name)) {

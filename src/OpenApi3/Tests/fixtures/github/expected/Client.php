@@ -2,7 +2,7 @@
 
 namespace Github;
 
-class Client extends \Jane\OpenApiRuntime\Client\Client
+class Client extends \Github\Runtime\Client\Client
 {
     /**
      * Lists repositories for the specified organization.

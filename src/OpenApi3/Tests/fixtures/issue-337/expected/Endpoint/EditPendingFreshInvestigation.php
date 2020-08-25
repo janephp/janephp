@@ -2,7 +2,7 @@
 
 namespace CreditSafe\API\Endpoint;
 
-class EditPendingFreshInvestigation extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class EditPendingFreshInvestigation extends \CreditSafe\API\Runtime\Client\BaseEndpoint implements \CreditSafe\API\Runtime\Client\Endpoint
 {
     protected $orderId;
     /**
@@ -18,7 +18,7 @@ class EditPendingFreshInvestigation extends \Jane\OpenApiRuntime\Client\BaseEndp
         $this->orderId = $orderId;
         $this->headerParameters = $headerParameters;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \CreditSafe\API\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'PUT';

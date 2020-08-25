@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class AppsAddRepoToInstallation extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class AppsAddRepoToInstallation extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $installation_id;
     protected $repository_id;
@@ -19,7 +19,7 @@ class AppsAddRepoToInstallation extends \Jane\OpenApiRuntime\Client\BaseEndpoint
         $this->installation_id = $installationId;
         $this->repository_id = $repositoryId;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'PUT';

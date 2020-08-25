@@ -2,7 +2,7 @@
 
 namespace CreditSafe\API\Endpoint;
 
-class ListDecisionTrees extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class ListDecisionTrees extends \CreditSafe\API\Runtime\Client\BaseEndpoint implements \CreditSafe\API\Runtime\Client\Endpoint
 {
     /**
      * List available decision trees available.
@@ -22,7 +22,7 @@ class ListDecisionTrees extends \Jane\OpenApiRuntime\Client\BaseEndpoint impleme
         $this->queryParameters = $queryParameters;
         $this->headerParameters = $headerParameters;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \CreditSafe\API\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';

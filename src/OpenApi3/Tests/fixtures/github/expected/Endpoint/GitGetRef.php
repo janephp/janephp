@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class GitGetRef extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class GitGetRef extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $owner;
     protected $repo;
@@ -21,7 +21,7 @@ class GitGetRef extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jan
         $this->repo = $repo;
         $this->ref = $ref;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';

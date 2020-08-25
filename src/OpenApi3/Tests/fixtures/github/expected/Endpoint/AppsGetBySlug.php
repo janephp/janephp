@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class AppsGetBySlug extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class AppsGetBySlug extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $app_slug;
     /**
@@ -16,7 +16,7 @@ class AppsGetBySlug extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements 
     {
         $this->app_slug = $appSlug;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';

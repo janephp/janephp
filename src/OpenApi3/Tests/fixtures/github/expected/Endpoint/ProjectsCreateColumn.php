@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class ProjectsCreateColumn extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class ProjectsCreateColumn extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $project_id;
     /**
@@ -16,7 +16,7 @@ class ProjectsCreateColumn extends \Jane\OpenApiRuntime\Client\BaseEndpoint impl
         $this->project_id = $projectId;
         $this->body = $requestBody;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'POST';
