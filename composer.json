@@ -15,7 +15,7 @@
     "require": {
         "php": ">=7.2",
         "ext-json": "*",
-        "doctrine/inflector": "^2.0",
+        "doctrine/inflector": "^1.4 || ^2.0",
         "league/uri": "^6.0",
         "nikic/php-parser": "^4.0",
         "php-http/client-common": "^2.0",
