@@ -33,6 +33,9 @@ class CheckSuitePreferenceNormalizer implements DenormalizerInterface, Normalize
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\CheckSuitePreference();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('preferences', $data)) {
             $object->setPreferences($this->denormalizer->denormalize($data['preferences'], 'Github\\Model\\CheckSuitePreferencePreferences', 'json', $context));
         }

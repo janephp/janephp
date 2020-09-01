@@ -33,6 +33,9 @@ class ListFreshInvestigationResponseOrdersItemSearchCriteriaAddressNormalizer im
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \CreditSafe\API\Model\ListFreshInvestigationResponseOrdersItemSearchCriteriaAddress();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('simple', $data)) {
             $object->setSimple($data['simple']);
         }

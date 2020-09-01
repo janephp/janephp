@@ -33,6 +33,9 @@ class PullRequestBaseRepoOwnerNormalizer implements DenormalizerInterface, Norma
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\PullRequestBaseRepoOwner();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('avatar_url', $data)) {
             $object->setAvatarUrl($data['avatar_url']);
         }

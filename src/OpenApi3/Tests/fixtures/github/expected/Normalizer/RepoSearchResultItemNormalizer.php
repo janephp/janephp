@@ -33,6 +33,9 @@ class RepoSearchResultItemNormalizer implements DenormalizerInterface, Normalize
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\RepoSearchResultItem();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('id', $data)) {
             $object->setId($data['id']);
         }

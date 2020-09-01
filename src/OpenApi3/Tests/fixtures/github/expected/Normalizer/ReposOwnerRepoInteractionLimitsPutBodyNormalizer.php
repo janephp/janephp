@@ -33,6 +33,9 @@ class ReposOwnerRepoInteractionLimitsPutBodyNormalizer implements DenormalizerIn
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ReposOwnerRepoInteractionLimitsPutBody();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('limit', $data)) {
             $object->setLimit($data['limit']);
         }

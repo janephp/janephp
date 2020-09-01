@@ -33,6 +33,9 @@ class ActionsBillingUsageMinutesUsedBreakdownNormalizer implements DenormalizerI
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ActionsBillingUsageMinutesUsedBreakdown();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('UBUNTU', $data)) {
             $object->setUBUNTU($data['UBUNTU']);
         }

@@ -33,6 +33,9 @@ class TeamDiscussionCommentNormalizer implements DenormalizerInterface, Normaliz
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\TeamDiscussionComment();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('author', $data) && $data['author'] !== null) {
             $object->setAuthor($this->denormalizer->denormalize($data['author'], 'Github\\Model\\TeamDiscussionCommentAuthor', 'json', $context));
         }

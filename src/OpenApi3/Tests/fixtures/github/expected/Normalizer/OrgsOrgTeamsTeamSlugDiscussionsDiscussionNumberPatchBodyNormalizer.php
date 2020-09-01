@@ -33,6 +33,9 @@ class OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBodyNormalizer impleme
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBody();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('title', $data)) {
             $object->setTitle($data['title']);
         }

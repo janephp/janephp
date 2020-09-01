@@ -33,6 +33,9 @@ class AuthorizationsClientsClientIdFingerprintPutBodyNormalizer implements Denor
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\AuthorizationsClientsClientIdFingerprintPutBody();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('client_secret', $data)) {
             $object->setClientSecret($data['client_secret']);
         }

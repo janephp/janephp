@@ -33,6 +33,9 @@ class SingleTweetLookupResponseNormalizer implements DenormalizerInterface, Norm
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Jane\OpenApi3\Tests\Expected\Model\SingleTweetLookupResponse();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('data', $data)) {
             $object->setData($data['data']);
         }

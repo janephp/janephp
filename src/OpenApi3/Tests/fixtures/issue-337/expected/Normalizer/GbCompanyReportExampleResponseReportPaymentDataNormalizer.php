@@ -33,6 +33,9 @@ class GbCompanyReportExampleResponseReportPaymentDataNormalizer implements Denor
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \CreditSafe\API\Model\GbCompanyReportExampleResponseReportPaymentData();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('paymentsOnFile', $data)) {
             $object->setPaymentsOnFile($data['paymentsOnFile']);
         }

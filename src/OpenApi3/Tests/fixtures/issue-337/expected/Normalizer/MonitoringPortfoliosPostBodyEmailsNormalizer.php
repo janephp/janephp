@@ -33,6 +33,9 @@ class MonitoringPortfoliosPostBodyEmailsNormalizer implements DenormalizerInterf
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \CreditSafe\API\Model\MonitoringPortfoliosPostBodyEmails();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('firstName', $data)) {
             $object->setFirstName($data['firstName']);
         }

@@ -33,6 +33,9 @@ class ImportProjectChoicesItemNormalizer implements DenormalizerInterface, Norma
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ImportProjectChoicesItem();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('vcs', $data)) {
             $object->setVcs($data['vcs']);
         }

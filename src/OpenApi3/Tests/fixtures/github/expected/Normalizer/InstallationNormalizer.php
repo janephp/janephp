@@ -33,6 +33,9 @@ class InstallationNormalizer implements DenormalizerInterface, NormalizerInterfa
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\Installation();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('id', $data)) {
             $object->setId($data['id']);
         }

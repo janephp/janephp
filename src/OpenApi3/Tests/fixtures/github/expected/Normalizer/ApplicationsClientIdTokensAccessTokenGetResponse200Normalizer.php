@@ -33,6 +33,9 @@ class ApplicationsClientIdTokensAccessTokenGetResponse200Normalizer implements D
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ApplicationsClientIdTokensAccessTokenGetResponse200();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('id', $data)) {
             $object->setId($data['id']);
         }

@@ -33,6 +33,9 @@ class PagesSourceHashNormalizer implements DenormalizerInterface, NormalizerInte
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\PagesSourceHash();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('branch', $data)) {
             $object->setBranch($data['branch']);
         }

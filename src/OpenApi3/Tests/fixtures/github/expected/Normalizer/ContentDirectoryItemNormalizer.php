@@ -33,6 +33,9 @@ class ContentDirectoryItemNormalizer implements DenormalizerInterface, Normalize
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ContentDirectoryItem();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('type', $data)) {
             $object->setType($data['type']);
         }

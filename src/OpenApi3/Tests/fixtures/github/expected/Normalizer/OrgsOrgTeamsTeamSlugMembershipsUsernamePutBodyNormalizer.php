@@ -33,6 +33,9 @@ class OrgsOrgTeamsTeamSlugMembershipsUsernamePutBodyNormalizer implements Denorm
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\OrgsOrgTeamsTeamSlugMembershipsUsernamePutBody();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('role', $data)) {
             $object->setRole($data['role']);
         }

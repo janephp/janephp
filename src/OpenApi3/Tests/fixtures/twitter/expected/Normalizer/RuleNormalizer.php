@@ -33,6 +33,9 @@ class RuleNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Jane\OpenApi3\Tests\Expected\Model\Rule();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('value', $data)) {
             $object->setValue($data['value']);
         }

@@ -33,6 +33,9 @@ class CombinedCommitStatusNormalizer implements DenormalizerInterface, Normalize
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\CombinedCommitStatus();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('state', $data)) {
             $object->setState($data['state']);
         }

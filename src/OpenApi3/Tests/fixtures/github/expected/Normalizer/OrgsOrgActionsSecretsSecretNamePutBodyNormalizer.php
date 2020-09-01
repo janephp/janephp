@@ -33,6 +33,9 @@ class OrgsOrgActionsSecretsSecretNamePutBodyNormalizer implements DenormalizerIn
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\OrgsOrgActionsSecretsSecretNamePutBody();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('encrypted_value', $data)) {
             $object->setEncryptedValue($data['encrypted_value']);
         }

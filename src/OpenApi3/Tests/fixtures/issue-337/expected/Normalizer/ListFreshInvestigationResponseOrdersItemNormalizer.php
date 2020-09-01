@@ -33,6 +33,9 @@ class ListFreshInvestigationResponseOrdersItemNormalizer implements Denormalizer
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \CreditSafe\API\Model\ListFreshInvestigationResponseOrdersItem();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('orderID', $data)) {
             $object->setOrderID($data['orderID']);
         }

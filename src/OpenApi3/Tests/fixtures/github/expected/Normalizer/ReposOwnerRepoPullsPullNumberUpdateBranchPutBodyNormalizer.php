@@ -33,6 +33,9 @@ class ReposOwnerRepoPullsPullNumberUpdateBranchPutBodyNormalizer implements Deno
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ReposOwnerRepoPullsPullNumberUpdateBranchPutBody();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('expected_head_sha', $data)) {
             $object->setExpectedHeadSha($data['expected_head_sha']);
         }

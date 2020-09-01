@@ -33,6 +33,9 @@ class ActionsBillingUsageNormalizer implements DenormalizerInterface, Normalizer
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ActionsBillingUsage();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('total_minutes_used', $data)) {
             $object->setTotalMinutesUsed($data['total_minutes_used']);
         }

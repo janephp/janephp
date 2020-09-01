@@ -33,6 +33,9 @@ class ReposOwnerRepoPullsPullNumberCommentsPostBodyNormalizer implements Denorma
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ReposOwnerRepoPullsPullNumberCommentsPostBody();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('body', $data)) {
             $object->setBody($data['body']);
         }

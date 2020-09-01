@@ -33,6 +33,9 @@ class ReposOwnerRepoCommitsCommitShaCommentsPostBodyNormalizer implements Denorm
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ReposOwnerRepoCommitsCommitShaCommentsPostBody();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('body', $data)) {
             $object->setBody($data['body']);
         }

@@ -33,6 +33,9 @@ class ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyNormalizer imple
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('ref', $data)) {
             $object->setRef($data['ref']);
         }

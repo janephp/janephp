@@ -33,6 +33,9 @@ class ReposOwnerRepoPullsPostBodyNormalizer implements DenormalizerInterface, No
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ReposOwnerRepoPullsPostBody();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('title', $data)) {
             $object->setTitle($data['title']);
         }

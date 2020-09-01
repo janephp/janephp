@@ -33,6 +33,9 @@ class DefaultUserFieldsEntitiesNormalizer implements DenormalizerInterface, Norm
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Jane\OpenApi3\Tests\Expected\Model\DefaultUserFieldsEntities();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('url', $data)) {
             $object->setUrl($this->denormalizer->denormalize($data['url'], 'Jane\\OpenApi3\\Tests\\Expected\\Model\\DefaultUserFieldsEntitiesUrl', 'json', $context));
         }

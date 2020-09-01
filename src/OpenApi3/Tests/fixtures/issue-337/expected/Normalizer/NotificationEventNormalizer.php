@@ -33,6 +33,9 @@ class NotificationEventNormalizer implements DenormalizerInterface, NormalizerIn
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \CreditSafe\API\Model\NotificationEvent();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('company', $data)) {
             $object->setCompany($this->denormalizer->denormalize($data['company'], 'CreditSafe\\API\\Model\\Company', 'json', $context));
         }

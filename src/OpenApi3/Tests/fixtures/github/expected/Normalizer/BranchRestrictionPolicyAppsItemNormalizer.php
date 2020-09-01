@@ -33,6 +33,9 @@ class BranchRestrictionPolicyAppsItemNormalizer implements DenormalizerInterface
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\BranchRestrictionPolicyAppsItem();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('id', $data)) {
             $object->setId($data['id']);
         }

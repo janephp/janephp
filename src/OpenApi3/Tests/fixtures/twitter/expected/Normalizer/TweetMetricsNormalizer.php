@@ -33,6 +33,9 @@ class TweetMetricsNormalizer implements DenormalizerInterface, NormalizerInterfa
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Jane\OpenApi3\Tests\Expected\Model\TweetMetrics();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('tweet_id', $data)) {
             $object->setTweetId($data['tweet_id']);
         }

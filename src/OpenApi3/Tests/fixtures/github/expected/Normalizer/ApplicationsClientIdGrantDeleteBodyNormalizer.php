@@ -33,6 +33,9 @@ class ApplicationsClientIdGrantDeleteBodyNormalizer implements DenormalizerInter
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ApplicationsClientIdGrantDeleteBody();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('access_token', $data)) {
             $object->setAccessToken($data['access_token']);
         }

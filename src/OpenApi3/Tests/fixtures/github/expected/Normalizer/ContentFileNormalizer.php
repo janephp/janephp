@@ -33,6 +33,9 @@ class ContentFileNormalizer implements DenormalizerInterface, NormalizerInterfac
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ContentFile();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('type', $data)) {
             $object->setType($data['type']);
         }

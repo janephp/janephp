@@ -33,6 +33,9 @@ class BooksGetResponse200HydraSearchNormalizer implements DenormalizerInterface,
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \ApiPlatform\Demo\Model\BooksGetResponse200HydraSearch();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('@type', $data)) {
             $object->setType($data['@type']);
         }

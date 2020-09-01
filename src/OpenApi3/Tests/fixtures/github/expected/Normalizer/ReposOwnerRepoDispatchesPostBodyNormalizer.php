@@ -33,6 +33,9 @@ class ReposOwnerRepoDispatchesPostBodyNormalizer implements DenormalizerInterfac
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ReposOwnerRepoDispatchesPostBody();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('event_type', $data)) {
             $object->setEventType($data['event_type']);
         }

@@ -33,6 +33,9 @@ class DeleteRulesResponseNormalizer implements DenormalizerInterface, Normalizer
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Jane\OpenApi3\Tests\Expected\Model\DeleteRulesResponse();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('meta', $data)) {
             $object->setMeta($this->denormalizer->denormalize($data['meta'], 'Jane\\OpenApi3\\Tests\\Expected\\Model\\RulesResponseMetadata', 'json', $context));
         }

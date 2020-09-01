@@ -33,6 +33,9 @@ class ReposTemplateOwnerTemplateRepoGeneratePostBodyNormalizer implements Denorm
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ReposTemplateOwnerTemplateRepoGeneratePostBody();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('owner', $data)) {
             $object->setOwner($data['owner']);
         }

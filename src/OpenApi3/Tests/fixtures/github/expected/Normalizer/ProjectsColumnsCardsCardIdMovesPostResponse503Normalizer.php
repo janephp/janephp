@@ -33,6 +33,9 @@ class ProjectsColumnsCardsCardIdMovesPostResponse503Normalizer implements Denorm
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ProjectsColumnsCardsCardIdMovesPostResponse503();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('code', $data)) {
             $object->setCode($data['code']);
         }

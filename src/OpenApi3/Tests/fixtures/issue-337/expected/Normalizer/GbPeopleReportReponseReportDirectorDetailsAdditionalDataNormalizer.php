@@ -33,6 +33,9 @@ class GbPeopleReportReponseReportDirectorDetailsAdditionalDataNormalizer impleme
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \CreditSafe\API\Model\GbPeopleReportReponseReportDirectorDetailsAdditionalData();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('disqualified', $data)) {
             $object->setDisqualified($data['disqualified']);
         }

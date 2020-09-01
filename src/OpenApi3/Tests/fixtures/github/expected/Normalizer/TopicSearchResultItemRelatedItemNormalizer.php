@@ -33,6 +33,9 @@ class TopicSearchResultItemRelatedItemNormalizer implements DenormalizerInterfac
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\TopicSearchResultItemRelatedItem();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('topic_relation', $data)) {
             $object->setTopicRelation($this->denormalizer->denormalize($data['topic_relation'], 'Github\\Model\\TopicSearchResultItemRelatedItemTopicRelation', 'json', $context));
         }

@@ -33,6 +33,9 @@ class ScimUserListNormalizer implements DenormalizerInterface, NormalizerInterfa
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ScimUserList();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('schemas', $data)) {
             $values = array();
             foreach ($data['schemas'] as $value) {

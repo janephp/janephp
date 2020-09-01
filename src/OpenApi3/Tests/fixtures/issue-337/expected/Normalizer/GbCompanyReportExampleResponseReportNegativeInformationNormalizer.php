@@ -33,6 +33,9 @@ class GbCompanyReportExampleResponseReportNegativeInformationNormalizer implemen
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \CreditSafe\API\Model\GbCompanyReportExampleResponseReportNegativeInformation();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('ccjSummary', $data)) {
             $object->setCcjSummary($this->denormalizer->denormalize($data['ccjSummary'], 'CreditSafe\\API\\Model\\GbCompanyReportExampleResponseReportNegativeInformationCcjSummary', 'json', $context));
         }

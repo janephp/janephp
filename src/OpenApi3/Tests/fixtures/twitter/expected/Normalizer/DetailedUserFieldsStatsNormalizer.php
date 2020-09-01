@@ -33,6 +33,9 @@ class DetailedUserFieldsStatsNormalizer implements DenormalizerInterface, Normal
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Jane\OpenApi3\Tests\Expected\Model\DetailedUserFieldsStats();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('followers_count', $data)) {
             $object->setFollowersCount($data['followers_count']);
         }

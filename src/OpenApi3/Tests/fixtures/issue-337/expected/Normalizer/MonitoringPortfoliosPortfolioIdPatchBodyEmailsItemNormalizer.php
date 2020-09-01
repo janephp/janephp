@@ -33,6 +33,9 @@ class MonitoringPortfoliosPortfolioIdPatchBodyEmailsItemNormalizer implements De
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdPatchBodyEmailsItem();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('firstName', $data)) {
             $object->setFirstName($data['firstName']);
         }

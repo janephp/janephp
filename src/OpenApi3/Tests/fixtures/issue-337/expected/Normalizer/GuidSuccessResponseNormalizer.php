@@ -33,6 +33,9 @@ class GuidSuccessResponseNormalizer implements DenormalizerInterface, Normalizer
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \CreditSafe\API\Model\GuidSuccessResponse();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('GUIDList', $data)) {
             $values = array();
             foreach ($data['GUIDList'] as $value) {

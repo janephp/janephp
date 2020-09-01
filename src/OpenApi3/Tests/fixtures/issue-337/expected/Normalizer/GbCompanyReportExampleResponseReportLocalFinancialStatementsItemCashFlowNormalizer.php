@@ -33,6 +33,9 @@ class GbCompanyReportExampleResponseReportLocalFinancialStatementsItemCashFlowNo
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \CreditSafe\API\Model\GbCompanyReportExampleResponseReportLocalFinancialStatementsItemCashFlow();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('netCashFlowFromOperations', $data)) {
             $object->setNetCashFlowFromOperations($data['netCashFlowFromOperations']);
         }

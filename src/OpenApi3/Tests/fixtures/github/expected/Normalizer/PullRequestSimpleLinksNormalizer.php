@@ -33,6 +33,9 @@ class PullRequestSimpleLinksNormalizer implements DenormalizerInterface, Normali
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\PullRequestSimpleLinks();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('comments', $data)) {
             $object->setComments($this->denormalizer->denormalize($data['comments'], 'Github\\Model\\Link', 'json', $context));
         }

@@ -33,6 +33,9 @@ class CompanySearchSuccessResultCompaniesItemAddressNormalizer implements Denorm
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \CreditSafe\API\Model\CompanySearchSuccessResultCompaniesItemAddress();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('simpleValue', $data)) {
             $object->setSimpleValue($data['simpleValue']);
         }

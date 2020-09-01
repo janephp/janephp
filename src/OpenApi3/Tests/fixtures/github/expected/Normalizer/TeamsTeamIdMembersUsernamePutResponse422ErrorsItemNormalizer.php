@@ -33,6 +33,9 @@ class TeamsTeamIdMembersUsernamePutResponse422ErrorsItemNormalizer implements De
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\TeamsTeamIdMembersUsernamePutResponse422ErrorsItem();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('code', $data)) {
             $object->setCode($data['code']);
         }

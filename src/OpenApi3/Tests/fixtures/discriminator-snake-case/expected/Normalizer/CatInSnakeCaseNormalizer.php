@@ -33,6 +33,9 @@ class CatInSnakeCaseNormalizer implements DenormalizerInterface, NormalizerInter
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Jane\OpenApi3\Tests\Expected\Model\CatInSnakeCase();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('name', $data)) {
             $object->setName($data['name']);
         }

@@ -33,6 +33,9 @@ class GbCompanyReportExampleResponseReportCompanySummaryNormalizer implements De
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \CreditSafe\API\Model\GbCompanyReportExampleResponseReportCompanySummary();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('businessName', $data)) {
             $object->setBusinessName($data['businessName']);
         }

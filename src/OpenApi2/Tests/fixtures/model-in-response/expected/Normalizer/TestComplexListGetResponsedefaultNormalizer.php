@@ -33,6 +33,9 @@ class TestComplexListGetResponsedefaultNormalizer implements DenormalizerInterfa
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Jane\OpenApi2\Tests\Expected\Model\TestComplexListGetResponsedefault();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('error', $data)) {
             $object->setError($data['error']);
         }

@@ -33,6 +33,9 @@ class FuzNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Jane\OpenApi2\Tests\Expected\Model\Fuz();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('bar', $data)) {
             $object->setBar($data['bar']);
         }

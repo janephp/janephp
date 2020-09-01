@@ -33,6 +33,9 @@ class SearchUsersGetResponse200Normalizer implements DenormalizerInterface, Norm
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\SearchUsersGetResponse200();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('total_count', $data)) {
             $object->setTotalCount($data['total_count']);
         }

@@ -33,6 +33,9 @@ class PullRequestBaseRepoNormalizer implements DenormalizerInterface, Normalizer
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\PullRequestBaseRepo();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('archive_url', $data)) {
             $object->setArchiveUrl($data['archive_url']);
         }

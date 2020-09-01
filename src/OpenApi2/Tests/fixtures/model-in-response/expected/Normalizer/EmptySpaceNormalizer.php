@@ -33,6 +33,9 @@ class EmptySpaceNormalizer implements DenormalizerInterface, NormalizerInterface
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Jane\OpenApi2\Tests\Expected\Model\EmptySpace();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('stringProperty', $data)) {
             $object->setStringProperty($data['stringProperty']);
         }

@@ -33,6 +33,9 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistNormalizer i
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \CreditSafe\API\Model\ComplianceSearchResultDataBodySearchResultRecordsItemWatchlist();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('matches', $data)) {
             $values = array();
             foreach ($data['matches'] as $value) {

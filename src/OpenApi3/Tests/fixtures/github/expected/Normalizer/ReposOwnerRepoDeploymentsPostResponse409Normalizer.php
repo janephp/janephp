@@ -33,6 +33,9 @@ class ReposOwnerRepoDeploymentsPostResponse409Normalizer implements Denormalizer
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ReposOwnerRepoDeploymentsPostResponse409();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('message', $data)) {
             $object->setMessage($data['message']);
         }

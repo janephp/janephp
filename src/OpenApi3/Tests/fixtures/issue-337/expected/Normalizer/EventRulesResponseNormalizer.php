@@ -33,6 +33,9 @@ class EventRulesResponseNormalizer implements DenormalizerInterface, NormalizerI
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \CreditSafe\API\Model\EventRulesResponse();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('isActive', $data)) {
             $object->setIsActive($data['isActive']);
         }

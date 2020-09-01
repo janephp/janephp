@@ -33,6 +33,9 @@ class ReposOwnerRepoHooksHookIdPatchBodyNormalizer implements DenormalizerInterf
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ReposOwnerRepoHooksHookIdPatchBody();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('config', $data)) {
             $object->setConfig($this->denormalizer->denormalize($data['config'], 'Github\\Model\\ReposOwnerRepoHooksHookIdPatchBodyConfig', 'json', $context));
         }

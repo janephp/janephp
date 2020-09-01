@@ -33,6 +33,9 @@ class DetailedTweetFieldsStatsNormalizer implements DenormalizerInterface, Norma
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Jane\OpenApi3\Tests\Expected\Model\DetailedTweetFieldsStats();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('retweet_count', $data)) {
             $object->setRetweetCount($data['retweet_count']);
         }

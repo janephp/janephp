@@ -33,6 +33,9 @@ class OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberPatchB
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberPatchBody();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('body', $data)) {
             $object->setBody($data['body']);
         }

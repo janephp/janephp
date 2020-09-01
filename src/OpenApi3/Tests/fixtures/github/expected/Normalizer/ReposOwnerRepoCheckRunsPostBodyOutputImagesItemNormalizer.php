@@ -33,6 +33,9 @@ class ReposOwnerRepoCheckRunsPostBodyOutputImagesItemNormalizer implements Denor
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ReposOwnerRepoCheckRunsPostBodyOutputImagesItem();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('alt', $data)) {
             $object->setAlt($data['alt']);
         }

@@ -33,6 +33,9 @@ class ReposOwnerRepoPullsPullNumberMergePutBodyNormalizer implements Denormalize
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ReposOwnerRepoPullsPullNumberMergePutBody();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('commit_title', $data)) {
             $object->setCommitTitle($data['commit_title']);
         }

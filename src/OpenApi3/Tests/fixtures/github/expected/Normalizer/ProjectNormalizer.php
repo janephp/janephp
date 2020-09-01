@@ -33,6 +33,9 @@ class ProjectNormalizer implements DenormalizerInterface, NormalizerInterface, D
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\Project();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('owner_url', $data)) {
             $object->setOwnerUrl($data['owner_url']);
         }

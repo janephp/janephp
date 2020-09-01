@@ -33,6 +33,9 @@ class SubmittedFreshInvestigationRepsonseNormalizer implements DenormalizerInter
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \CreditSafe\API\Model\SubmittedFreshInvestigationRepsonse();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('correlationId', $data)) {
             $object->setCorrelationId($data['correlationId']);
         }

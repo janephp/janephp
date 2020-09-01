@@ -33,6 +33,9 @@ class CompactTweetFieldsAttachmentsNormalizer implements DenormalizerInterface, 
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Jane\OpenApi3\Tests\Expected\Model\CompactTweetFieldsAttachments();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('media_keys', $data)) {
             $values = array();
             foreach ($data['media_keys'] as $value) {

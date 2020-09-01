@@ -33,6 +33,9 @@ class ReposOwnerRepoIssuesIssueNumberPatchBodyNormalizer implements Denormalizer
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ReposOwnerRepoIssuesIssueNumberPatchBody();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('title', $data)) {
             $object->setTitle($data['title']);
         }

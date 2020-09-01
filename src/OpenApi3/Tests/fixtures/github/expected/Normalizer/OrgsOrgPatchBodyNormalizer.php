@@ -33,6 +33,9 @@ class OrgsOrgPatchBodyNormalizer implements DenormalizerInterface, NormalizerInt
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\OrgsOrgPatchBody();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('billing_email', $data)) {
             $object->setBillingEmail($data['billing_email']);
         }

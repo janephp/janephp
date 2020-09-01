@@ -33,6 +33,9 @@ class JsonSchemaNormalizer implements DenormalizerInterface, NormalizerInterface
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Jane\JsonSchema\JsonSchema\Model\JsonSchema();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('definitions', $data) && $data['definitions'] !== null) {
             $values = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
             foreach ($data['definitions'] as $key => $value) {

@@ -33,6 +33,9 @@ class CheckSuitePreferencePreferencesAutoTriggerChecksItemNormalizer implements 
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\CheckSuitePreferencePreferencesAutoTriggerChecksItem();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('app_id', $data)) {
             $object->setAppId($data['app_id']);
         }

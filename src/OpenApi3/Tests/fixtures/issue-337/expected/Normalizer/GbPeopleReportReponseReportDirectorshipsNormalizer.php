@@ -33,6 +33,9 @@ class GbPeopleReportReponseReportDirectorshipsNormalizer implements Denormalizer
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \CreditSafe\API\Model\GbPeopleReportReponseReportDirectorships();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('current', $data)) {
             $values = array();
             foreach ($data['current'] as $value) {

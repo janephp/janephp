@@ -33,6 +33,9 @@ class PullRequestReviewCommentLinksPullRequestNormalizer implements Denormalizer
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\PullRequestReviewCommentLinksPullRequest();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('href', $data)) {
             $object->setHref($data['href']);
         }

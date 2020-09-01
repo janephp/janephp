@@ -33,6 +33,9 @@ class CommitStatsNormalizer implements DenormalizerInterface, NormalizerInterfac
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\CommitStats();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('additions', $data)) {
             $object->setAdditions($data['additions']);
         }

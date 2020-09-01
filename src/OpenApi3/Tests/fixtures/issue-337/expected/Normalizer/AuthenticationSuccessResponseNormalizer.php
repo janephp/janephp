@@ -33,6 +33,9 @@ class AuthenticationSuccessResponseNormalizer implements DenormalizerInterface, 
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \CreditSafe\API\Model\AuthenticationSuccessResponse();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('token', $data)) {
             $object->setToken($data['token']);
         }

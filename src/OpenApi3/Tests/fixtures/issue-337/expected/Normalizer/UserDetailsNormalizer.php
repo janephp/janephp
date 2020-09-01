@@ -33,6 +33,9 @@ class UserDetailsNormalizer implements DenormalizerInterface, NormalizerInterfac
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \CreditSafe\API\Model\UserDetails();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('countryCode', $data)) {
             $object->setCountryCode($data['countryCode']);
         }

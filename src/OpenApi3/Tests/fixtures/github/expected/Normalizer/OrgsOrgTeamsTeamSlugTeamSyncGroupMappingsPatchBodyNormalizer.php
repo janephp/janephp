@@ -33,6 +33,9 @@ class OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyNormalizer implements De
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBody();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('groups', $data)) {
             $values = array();
             foreach ($data['groups'] as $value) {

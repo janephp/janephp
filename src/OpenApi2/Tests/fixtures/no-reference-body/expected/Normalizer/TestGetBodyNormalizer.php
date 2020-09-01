@@ -33,6 +33,9 @@ class TestGetBodyNormalizer implements DenormalizerInterface, NormalizerInterfac
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Jane\OpenApi2\Tests\Expected\Model\TestGetBody();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('foo', $data)) {
             $object->setFoo($data['foo']);
         }

@@ -33,6 +33,9 @@ class ApiOverviewNormalizer implements DenormalizerInterface, NormalizerInterfac
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ApiOverview();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('verifiable_password_authentication', $data)) {
             $object->setVerifiablePasswordAuthentication($data['verifiable_password_authentication']);
         }

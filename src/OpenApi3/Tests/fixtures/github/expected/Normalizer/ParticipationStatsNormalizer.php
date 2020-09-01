@@ -33,6 +33,9 @@ class ParticipationStatsNormalizer implements DenormalizerInterface, NormalizerI
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ParticipationStats();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('all', $data)) {
             $values = array();
             foreach ($data['all'] as $value) {

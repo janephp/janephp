@@ -33,6 +33,9 @@ class MinimalRepositoryLicenseNormalizer implements DenormalizerInterface, Norma
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\MinimalRepositoryLicense();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('key', $data)) {
             $object->setKey($data['key']);
         }

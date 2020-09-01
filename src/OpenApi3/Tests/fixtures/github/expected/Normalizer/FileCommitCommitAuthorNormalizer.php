@@ -33,6 +33,9 @@ class FileCommitCommitAuthorNormalizer implements DenormalizerInterface, Normali
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\FileCommitCommitAuthor();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('date', $data)) {
             $object->setDate($data['date']);
         }

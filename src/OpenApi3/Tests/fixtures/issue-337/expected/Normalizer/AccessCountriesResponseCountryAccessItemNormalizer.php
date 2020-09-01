@@ -33,6 +33,9 @@ class AccessCountriesResponseCountryAccessItemNormalizer implements Denormalizer
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \CreditSafe\API\Model\AccessCountriesResponseCountryAccessItem();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('creditsafeConnectOnlineReports', $data)) {
             $values = array();
             foreach ($data['creditsafeConnectOnlineReports'] as $value) {

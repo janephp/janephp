@@ -33,6 +33,9 @@ class FileCommitNormalizer implements DenormalizerInterface, NormalizerInterface
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\FileCommit();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('content', $data) && $data['content'] !== null) {
             $object->setContent($this->denormalizer->denormalize($data['content'], 'Github\\Model\\FileCommitContent', 'json', $context));
         }

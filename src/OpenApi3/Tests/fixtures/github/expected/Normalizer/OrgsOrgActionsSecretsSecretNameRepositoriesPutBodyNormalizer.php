@@ -33,6 +33,9 @@ class OrgsOrgActionsSecretsSecretNameRepositoriesPutBodyNormalizer implements De
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\OrgsOrgActionsSecretsSecretNameRepositoriesPutBody();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('selected_repository_ids', $data)) {
             $values = array();
             foreach ($data['selected_repository_ids'] as $value) {

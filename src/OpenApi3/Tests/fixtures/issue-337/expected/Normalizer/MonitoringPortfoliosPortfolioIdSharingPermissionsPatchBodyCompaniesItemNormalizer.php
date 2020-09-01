@@ -33,6 +33,9 @@ class MonitoringPortfoliosPortfolioIdSharingPermissionsPatchBodyCompaniesItemNor
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdSharingPermissionsPatchBodyCompaniesItem();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('csUserId', $data)) {
             $object->setCsUserId($data['csUserId']);
         }

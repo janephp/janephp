@@ -33,6 +33,9 @@ class ReposOwnerRepoImportLfsPatchBodyNormalizer implements DenormalizerInterfac
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ReposOwnerRepoImportLfsPatchBody();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('use_lfs', $data)) {
             $object->setUseLfs($data['use_lfs']);
         }

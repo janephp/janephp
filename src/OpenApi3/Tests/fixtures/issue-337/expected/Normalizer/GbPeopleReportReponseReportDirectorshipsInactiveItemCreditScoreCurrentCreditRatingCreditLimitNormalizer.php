@@ -33,6 +33,9 @@ class GbPeopleReportReponseReportDirectorshipsInactiveItemCreditScoreCurrentCred
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \CreditSafe\API\Model\GbPeopleReportReponseReportDirectorshipsInactiveItemCreditScoreCurrentCreditRatingCreditLimit();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('currency', $data)) {
             $object->setCurrency($data['currency']);
         }

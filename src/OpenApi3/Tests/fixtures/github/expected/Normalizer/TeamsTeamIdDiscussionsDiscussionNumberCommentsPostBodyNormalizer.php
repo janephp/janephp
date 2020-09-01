@@ -33,6 +33,9 @@ class TeamsTeamIdDiscussionsDiscussionNumberCommentsPostBodyNormalizer implement
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\TeamsTeamIdDiscussionsDiscussionNumberCommentsPostBody();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('body', $data)) {
             $object->setBody($data['body']);
         }

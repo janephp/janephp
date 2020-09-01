@@ -33,6 +33,9 @@ class PublicUserPlanNormalizer implements DenormalizerInterface, NormalizerInter
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\PublicUserPlan();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('collaborators', $data)) {
             $object->setCollaborators($data['collaborators']);
         }

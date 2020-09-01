@@ -33,6 +33,9 @@ class ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBodyNormalizer implements D
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBody();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('body', $data)) {
             $object->setBody($data['body']);
         }

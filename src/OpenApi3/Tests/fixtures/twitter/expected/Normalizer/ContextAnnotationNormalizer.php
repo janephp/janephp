@@ -33,6 +33,9 @@ class ContextAnnotationNormalizer implements DenormalizerInterface, NormalizerIn
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Jane\OpenApi3\Tests\Expected\Model\ContextAnnotation();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('domain', $data)) {
             $object->setDomain($this->denormalizer->denormalize($data['domain'], 'Jane\\OpenApi3\\Tests\\Expected\\Model\\ContextAnnotationDomainFields', 'json', $context));
         }

@@ -27,6 +27,9 @@ class BarNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
     public function denormalize($data, $class, $format = null, array $context = array())
     {
         $object = new \Jane\JsonSchema\Tests\Expected\Model\Bar();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('foo', $data)) {
             $object->setFoo($data['foo']);
         }

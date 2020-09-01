@@ -33,6 +33,9 @@ class StargazerNormalizer implements DenormalizerInterface, NormalizerInterface,
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\Stargazer();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('starred_at', $data)) {
             $object->setStarredAt(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['starred_at']));
         }

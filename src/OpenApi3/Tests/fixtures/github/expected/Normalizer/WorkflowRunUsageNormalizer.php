@@ -33,6 +33,9 @@ class WorkflowRunUsageNormalizer implements DenormalizerInterface, NormalizerInt
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\WorkflowRunUsage();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('billable', $data)) {
             $object->setBillable($this->denormalizer->denormalize($data['billable'], 'Github\\Model\\WorkflowRunUsageBillable', 'json', $context));
         }

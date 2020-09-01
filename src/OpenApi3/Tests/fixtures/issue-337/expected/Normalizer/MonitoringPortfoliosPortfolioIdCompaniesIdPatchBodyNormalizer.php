@@ -33,6 +33,9 @@ class MonitoringPortfoliosPortfolioIdCompaniesIdPatchBodyNormalizer implements D
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdCompaniesIdPatchBody();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('personalReference', $data)) {
             $object->setPersonalReference($data['personalReference']);
         }

@@ -33,6 +33,9 @@ class PeopleSearchSuccessResultNormalizer implements DenormalizerInterface, Norm
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \CreditSafe\API\Model\PeopleSearchSuccessResult();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('totalSize', $data)) {
             $object->setTotalSize($data['totalSize']);
         }

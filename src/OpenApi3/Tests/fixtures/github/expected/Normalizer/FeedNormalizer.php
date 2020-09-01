@@ -33,6 +33,9 @@ class FeedNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\Feed();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('timeline_url', $data)) {
             $object->setTimelineUrl($data['timeline_url']);
         }

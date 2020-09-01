@@ -33,6 +33,9 @@ class LicenseNormalizer implements DenormalizerInterface, NormalizerInterface, D
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\License();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('key', $data)) {
             $object->setKey($data['key']);
         }

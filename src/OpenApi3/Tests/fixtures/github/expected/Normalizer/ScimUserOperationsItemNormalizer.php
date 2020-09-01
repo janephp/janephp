@@ -33,6 +33,9 @@ class ScimUserOperationsItemNormalizer implements DenormalizerInterface, Normali
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ScimUserOperationsItem();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('op', $data)) {
             $object->setOp($data['op']);
         }

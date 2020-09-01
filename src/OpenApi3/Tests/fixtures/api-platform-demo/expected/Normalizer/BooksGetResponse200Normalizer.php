@@ -33,6 +33,9 @@ class BooksGetResponse200Normalizer implements DenormalizerInterface, Normalizer
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \ApiPlatform\Demo\Model\BooksGetResponse200();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('hydra:member', $data)) {
             $values = array();
             foreach ($data['hydra:member'] as $value) {

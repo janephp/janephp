@@ -33,6 +33,9 @@ class MonitoringPortfoliosPortfolioIdEventRulesCountryCodePutBodyItemNormalizer 
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdEventRulesCountryCodePutBodyItem();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('ruleCode', $data)) {
             $object->setRuleCode($data['ruleCode']);
         }

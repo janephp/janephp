@@ -33,6 +33,9 @@ class GbPeopleReportReponseReportDirectorDetailsAddressNormalizer implements Den
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \CreditSafe\API\Model\GbPeopleReportReponseReportDirectorDetailsAddress();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('type', $data)) {
             $object->setType($data['type']);
         }

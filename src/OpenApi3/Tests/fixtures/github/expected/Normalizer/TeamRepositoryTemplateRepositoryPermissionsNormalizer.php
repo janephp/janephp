@@ -33,6 +33,9 @@ class TeamRepositoryTemplateRepositoryPermissionsNormalizer implements Denormali
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\TeamRepositoryTemplateRepositoryPermissions();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('admin', $data)) {
             $object->setAdmin($data['admin']);
         }

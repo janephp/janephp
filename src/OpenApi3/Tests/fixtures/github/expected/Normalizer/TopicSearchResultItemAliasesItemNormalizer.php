@@ -33,6 +33,9 @@ class TopicSearchResultItemAliasesItemNormalizer implements DenormalizerInterfac
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\TopicSearchResultItemAliasesItem();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('topic_relation', $data)) {
             $object->setTopicRelation($this->denormalizer->denormalize($data['topic_relation'], 'Github\\Model\\TopicSearchResultItemAliasesItemTopicRelation', 'json', $context));
         }

@@ -33,6 +33,9 @@ class ResponseForbiddenGistNormalizer implements DenormalizerInterface, Normaliz
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ResponseForbiddenGist();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('block', $data)) {
             $object->setBlock($this->denormalizer->denormalize($data['block'], 'Github\\Model\\ResponseForbiddenGistBlock', 'json', $context));
         }

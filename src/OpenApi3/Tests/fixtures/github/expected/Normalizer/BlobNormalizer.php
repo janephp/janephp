@@ -33,6 +33,9 @@ class BlobNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\Blob();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('content', $data)) {
             $object->setContent($data['content']);
         }

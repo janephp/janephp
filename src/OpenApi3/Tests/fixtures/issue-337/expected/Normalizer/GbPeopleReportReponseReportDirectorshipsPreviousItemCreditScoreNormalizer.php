@@ -33,6 +33,9 @@ class GbPeopleReportReponseReportDirectorshipsPreviousItemCreditScoreNormalizer 
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \CreditSafe\API\Model\GbPeopleReportReponseReportDirectorshipsPreviousItemCreditScore();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('currentCreditRating', $data)) {
             $object->setCurrentCreditRating($this->denormalizer->denormalize($data['currentCreditRating'], 'CreditSafe\\API\\Model\\GbPeopleReportReponseReportDirectorshipsPreviousItemCreditScoreCurrentCreditRating', 'json', $context));
         }

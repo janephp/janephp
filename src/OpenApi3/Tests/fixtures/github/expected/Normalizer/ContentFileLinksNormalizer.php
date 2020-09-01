@@ -33,6 +33,9 @@ class ContentFileLinksNormalizer implements DenormalizerInterface, NormalizerInt
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ContentFileLinks();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('git', $data) && $data['git'] !== null) {
             $object->setGit($data['git']);
         }

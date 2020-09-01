@@ -33,6 +33,9 @@ class DetailedTweetNormalizer implements DenormalizerInterface, NormalizerInterf
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Jane\OpenApi3\Tests\Expected\Model\DetailedTweet();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('format', $data)) {
             $object->setFormat($data['format']);
         }

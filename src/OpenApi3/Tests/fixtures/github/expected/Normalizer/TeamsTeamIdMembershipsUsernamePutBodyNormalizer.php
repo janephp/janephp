@@ -33,6 +33,9 @@ class TeamsTeamIdMembershipsUsernamePutBodyNormalizer implements DenormalizerInt
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\TeamsTeamIdMembershipsUsernamePutBody();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('role', $data)) {
             $object->setRole($data['role']);
         }

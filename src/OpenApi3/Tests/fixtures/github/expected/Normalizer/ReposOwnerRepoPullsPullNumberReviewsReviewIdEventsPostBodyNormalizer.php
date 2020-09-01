@@ -33,6 +33,9 @@ class ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBodyNormalizer imple
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBody();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('body', $data)) {
             $object->setBody($data['body']);
         }

@@ -33,6 +33,9 @@ class OperationalDisconnectProblemNormalizer implements DenormalizerInterface, N
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Jane\OpenApi3\Tests\Expected\Model\OperationalDisconnectProblem();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('type', $data)) {
             $object->setType($data['type']);
         }

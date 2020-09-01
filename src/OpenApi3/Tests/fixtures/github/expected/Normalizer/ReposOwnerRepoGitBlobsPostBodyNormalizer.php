@@ -33,6 +33,9 @@ class ReposOwnerRepoGitBlobsPostBodyNormalizer implements DenormalizerInterface,
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ReposOwnerRepoGitBlobsPostBody();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('content', $data)) {
             $object->setContent($data['content']);
         }

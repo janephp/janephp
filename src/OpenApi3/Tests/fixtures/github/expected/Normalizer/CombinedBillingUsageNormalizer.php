@@ -33,6 +33,9 @@ class CombinedBillingUsageNormalizer implements DenormalizerInterface, Normalize
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\CombinedBillingUsage();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('days_left_in_billing_cycle', $data)) {
             $object->setDaysLeftInBillingCycle($data['days_left_in_billing_cycle']);
         }

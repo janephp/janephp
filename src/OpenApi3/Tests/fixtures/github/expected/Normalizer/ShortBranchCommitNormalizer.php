@@ -33,6 +33,9 @@ class ShortBranchCommitNormalizer implements DenormalizerInterface, NormalizerIn
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ShortBranchCommit();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('sha', $data)) {
             $object->setSha($data['sha']);
         }

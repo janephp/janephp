@@ -33,6 +33,9 @@ class WorkflowRunUsageBillableNormalizer implements DenormalizerInterface, Norma
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\WorkflowRunUsageBillable();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('UBUNTU', $data)) {
             $object->setUBUNTU($this->denormalizer->denormalize($data['UBUNTU'], 'Github\\Model\\WorkflowRunUsageBillableUBUNTU', 'json', $context));
         }

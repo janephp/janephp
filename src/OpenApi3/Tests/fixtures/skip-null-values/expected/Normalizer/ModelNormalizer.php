@@ -33,6 +33,9 @@ class ModelNormalizer implements DenormalizerInterface, NormalizerInterface, Den
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Jane\OpenApi3\Tests\Expected\Model\Model();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('foo', $data) && $data['foo'] !== null) {
             $object->setFoo($data['foo']);
         }

@@ -33,6 +33,9 @@ class TweetInteractionMetricsNormalizer implements DenormalizerInterface, Normal
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Jane\OpenApi3\Tests\Expected\Model\TweetInteractionMetrics();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('like_count', $data)) {
             $object->setLikeCount($data['like_count']);
         }

@@ -33,6 +33,9 @@ class CompanySearchSuccessResultNormalizer implements DenormalizerInterface, Nor
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \CreditSafe\API\Model\CompanySearchSuccessResult();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('totalSize', $data)) {
             $object->setTotalSize($data['totalSize']);
         }

@@ -33,6 +33,9 @@ class ContentSubmoduleNormalizer implements DenormalizerInterface, NormalizerInt
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ContentSubmodule();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('type', $data)) {
             $object->setType($data['type']);
         }

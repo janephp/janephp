@@ -33,6 +33,9 @@ class GuidSuccessResponseGUIDListItemNormalizer implements DenormalizerInterface
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \CreditSafe\API\Model\GuidSuccessResponseGUIDListItem();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('friendlyName', $data)) {
             $object->setFriendlyName($data['friendlyName']);
         }

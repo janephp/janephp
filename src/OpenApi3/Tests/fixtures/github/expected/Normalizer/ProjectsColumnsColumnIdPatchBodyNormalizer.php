@@ -33,6 +33,9 @@ class ProjectsColumnsColumnIdPatchBodyNormalizer implements DenormalizerInterfac
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ProjectsColumnsColumnIdPatchBody();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('name', $data)) {
             $object->setName($data['name']);
         }

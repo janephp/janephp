@@ -33,6 +33,9 @@ class ReposOwnerRepoMilestonesPostBodyNormalizer implements DenormalizerInterfac
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ReposOwnerRepoMilestonesPostBody();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('title', $data)) {
             $object->setTitle($data['title']);
         }

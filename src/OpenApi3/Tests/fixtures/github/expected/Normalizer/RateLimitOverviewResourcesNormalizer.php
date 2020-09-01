@@ -33,6 +33,9 @@ class RateLimitOverviewResourcesNormalizer implements DenormalizerInterface, Nor
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\RateLimitOverviewResources();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('core', $data)) {
             $object->setCore($this->denormalizer->denormalize($data['core'], 'Github\\Model\\RateLimit', 'json', $context));
         }

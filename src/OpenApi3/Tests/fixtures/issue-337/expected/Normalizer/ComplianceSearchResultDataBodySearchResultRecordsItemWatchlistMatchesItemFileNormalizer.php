@@ -33,6 +33,9 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemF
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \CreditSafe\API\Model\ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemFile();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('build', $data)) {
             $object->setBuild($data['build']);
         }

@@ -33,6 +33,9 @@ class ReposOwnerRepoCheckRunsPostBodyOutputAnnotationsItemNormalizer implements 
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ReposOwnerRepoCheckRunsPostBodyOutputAnnotationsItem();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('path', $data)) {
             $object->setPath($data['path']);
         }

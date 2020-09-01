@@ -33,6 +33,9 @@ class GbCompanyReportExampleResponseReportFinancialStatementsItemBalanceSheetNor
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \CreditSafe\API\Model\GbCompanyReportExampleResponseReportFinancialStatementsItemBalanceSheet();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('totalTangibleAssets', $data)) {
             $object->setTotalTangibleAssets($data['totalTangibleAssets']);
         }

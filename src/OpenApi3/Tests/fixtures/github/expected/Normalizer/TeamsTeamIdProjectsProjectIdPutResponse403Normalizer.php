@@ -33,6 +33,9 @@ class TeamsTeamIdProjectsProjectIdPutResponse403Normalizer implements Denormaliz
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\TeamsTeamIdProjectsProjectIdPutResponse403();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('message', $data)) {
             $object->setMessage($data['message']);
         }

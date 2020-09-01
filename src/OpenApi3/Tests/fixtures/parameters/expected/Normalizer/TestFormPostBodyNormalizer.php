@@ -33,6 +33,9 @@ class TestFormPostBodyNormalizer implements DenormalizerInterface, NormalizerInt
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Jane\OpenApi3\Tests\Expected\Model\TestFormPostBody();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('testString', $data)) {
             $object->setTestString($data['testString']);
         }

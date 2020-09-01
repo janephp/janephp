@@ -33,6 +33,9 @@ class PeopleSearchSuccessResultDirectorsItemNormalizer implements DenormalizerIn
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \CreditSafe\API\Model\PeopleSearchSuccessResultDirectorsItem();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('peopleId', $data)) {
             $object->setPeopleId($data['peopleId']);
         }

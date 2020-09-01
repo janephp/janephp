@@ -33,6 +33,9 @@ class ReposOwnerRepoImportPatchBodyNormalizer implements DenormalizerInterface, 
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ReposOwnerRepoImportPatchBody();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('vcs_username', $data)) {
             $object->setVcsUsername($data['vcs_username']);
         }

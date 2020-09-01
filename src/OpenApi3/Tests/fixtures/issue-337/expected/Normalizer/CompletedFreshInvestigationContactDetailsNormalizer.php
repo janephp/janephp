@@ -33,6 +33,9 @@ class CompletedFreshInvestigationContactDetailsNormalizer implements Denormalize
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \CreditSafe\API\Model\CompletedFreshInvestigationContactDetails();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('emailAddress', $data)) {
             $object->setEmailAddress($data['emailAddress']);
         }

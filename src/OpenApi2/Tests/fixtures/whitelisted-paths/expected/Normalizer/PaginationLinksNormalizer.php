@@ -33,6 +33,9 @@ class PaginationLinksNormalizer implements DenormalizerInterface, NormalizerInte
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Jane\OpenApi2\Tests\Expected\Model\PaginationLinks();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('first', $data)) {
             $object->setFirst($data['first']);
         }

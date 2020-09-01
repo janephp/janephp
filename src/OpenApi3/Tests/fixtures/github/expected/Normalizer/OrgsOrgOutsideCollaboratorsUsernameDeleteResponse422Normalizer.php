@@ -33,6 +33,9 @@ class OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422Normalizer implements 
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('message', $data)) {
             $object->setMessage($data['message']);
         }

@@ -33,6 +33,9 @@ class GbCompanyReportExampleResponseReportNormalizer implements DenormalizerInte
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \CreditSafe\API\Model\GbCompanyReportExampleResponseReport();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('companyId', $data)) {
             $object->setCompanyId($data['companyId']);
         }

@@ -33,6 +33,9 @@ class DefaultUserFieldsNormalizer implements DenormalizerInterface, NormalizerIn
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Jane\OpenApi3\Tests\Expected\Model\DefaultUserFields();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('location', $data)) {
             $object->setLocation($data['location']);
         }

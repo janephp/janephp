@@ -33,6 +33,9 @@ class NotificationsThreadsThreadIdSubscriptionPutBodyNormalizer implements Denor
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\NotificationsThreadsThreadIdSubscriptionPutBody();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('ignored', $data)) {
             $object->setIgnored($data['ignored']);
         }

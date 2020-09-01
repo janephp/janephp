@@ -33,6 +33,9 @@ class OrgsOrgTeamsTeamSlugProjectsProjectIdPutBodyNormalizer implements Denormal
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\OrgsOrgTeamsTeamSlugProjectsProjectIdPutBody();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('permission', $data)) {
             $object->setPermission($data['permission']);
         }

@@ -33,6 +33,9 @@ class PullRequestBaseRepoLicenseNormalizer implements DenormalizerInterface, Nor
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\PullRequestBaseRepoLicense();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('key', $data)) {
             $object->setKey($data['key']);
         }

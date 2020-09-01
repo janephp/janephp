@@ -33,6 +33,9 @@ class FeedLinksNormalizer implements DenormalizerInterface, NormalizerInterface,
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\FeedLinks();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('timeline', $data)) {
             $object->setTimeline($this->denormalizer->denormalize($data['timeline'], 'Github\\Model\\LinkWithType', 'json', $context));
         }

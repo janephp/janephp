@@ -33,6 +33,9 @@ class CheckAnnotationNormalizer implements DenormalizerInterface, NormalizerInte
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\CheckAnnotation();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('path', $data)) {
             $object->setPath($data['path']);
         }

@@ -33,6 +33,9 @@ class GbCompanyReportExampleResponseReportAdditionalInformationCreditLimitHistor
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \CreditSafe\API\Model\GbCompanyReportExampleResponseReportAdditionalInformationCreditLimitHistoryItem();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('date', $data)) {
             $object->setDate($data['date']);
         }

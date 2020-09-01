@@ -33,6 +33,9 @@ class CommitCommitterNormalizer implements DenormalizerInterface, NormalizerInte
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\CommitCommitter();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('login', $data)) {
             $object->setLogin($data['login']);
         }

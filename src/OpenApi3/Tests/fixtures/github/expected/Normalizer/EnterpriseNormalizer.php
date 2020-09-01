@@ -33,6 +33,9 @@ class EnterpriseNormalizer implements DenormalizerInterface, NormalizerInterface
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\Enterprise();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('description', $data) && $data['description'] !== null) {
             $object->setDescription($data['description']);
         }

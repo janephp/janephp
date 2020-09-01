@@ -33,6 +33,9 @@ class ProtectedBranchAdminEnforcedNormalizer implements DenormalizerInterface, N
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ProtectedBranchAdminEnforced();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('url', $data)) {
             $object->setUrl($data['url']);
         }

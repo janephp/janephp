@@ -33,6 +33,9 @@ class GbCompanyReportExampleResponseReportOtherInformationEmployeesInformationIt
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \CreditSafe\API\Model\GbCompanyReportExampleResponseReportOtherInformationEmployeesInformationItem();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('year', $data)) {
             $object->setYear($data['year']);
         }

@@ -33,6 +33,9 @@ class AuthenticationTokenNormalizer implements DenormalizerInterface, Normalizer
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\AuthenticationToken();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('token', $data)) {
             $object->setToken($data['token']);
         }

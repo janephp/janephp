@@ -33,6 +33,9 @@ class ReposOwnerRepoBranchesBranchProtectionPutBodyRequiredPullRequestReviewsNor
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ReposOwnerRepoBranchesBranchProtectionPutBodyRequiredPullRequestReviews();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('dismissal_restrictions', $data)) {
             $object->setDismissalRestrictions($this->denormalizer->denormalize($data['dismissal_restrictions'], 'Github\\Model\\ReposOwnerRepoBranchesBranchProtectionPutBodyRequiredPullRequestReviewsDismissalRestrictions', 'json', $context));
         }

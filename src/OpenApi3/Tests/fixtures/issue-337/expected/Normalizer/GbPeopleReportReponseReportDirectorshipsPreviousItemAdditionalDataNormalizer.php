@@ -33,6 +33,9 @@ class GbPeopleReportReponseReportDirectorshipsPreviousItemAdditionalDataNormaliz
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \CreditSafe\API\Model\GbPeopleReportReponseReportDirectorshipsPreviousItemAdditionalData();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('occupation', $data)) {
             $object->setOccupation($data['occupation']);
         }

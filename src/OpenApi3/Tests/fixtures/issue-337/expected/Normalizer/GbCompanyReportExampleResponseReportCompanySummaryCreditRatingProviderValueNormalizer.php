@@ -33,6 +33,9 @@ class GbCompanyReportExampleResponseReportCompanySummaryCreditRatingProviderValu
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \CreditSafe\API\Model\GbCompanyReportExampleResponseReportCompanySummaryCreditRatingProviderValue();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('maxValue', $data)) {
             $object->setMaxValue($data['maxValue']);
         }

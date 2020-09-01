@@ -33,6 +33,9 @@ class ReposOwnerRepoGitTreesPostBodyNormalizer implements DenormalizerInterface,
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ReposOwnerRepoGitTreesPostBody();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('tree', $data)) {
             $values = array();
             foreach ($data['tree'] as $value) {

@@ -33,6 +33,9 @@ class GbCompanyReportExampleResponseReportNegativeInformationCountyCourtJudgemen
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \CreditSafe\API\Model\GbCompanyReportExampleResponseReportNegativeInformationCountyCourtJudgements();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('registered', $data)) {
             $object->setRegistered($this->denormalizer->denormalize($data['registered'], 'CreditSafe\\API\\Model\\GbCompanyReportExampleResponseReportNegativeInformationCountyCourtJudgementsRegistered', 'json', $context));
         }

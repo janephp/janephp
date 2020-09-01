@@ -33,6 +33,9 @@ class MarketplacePurchaseMarketplacePendingChangeNormalizer implements Denormali
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\MarketplacePurchaseMarketplacePendingChange();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('is_installed', $data)) {
             $object->setIsInstalled($data['is_installed']);
         }

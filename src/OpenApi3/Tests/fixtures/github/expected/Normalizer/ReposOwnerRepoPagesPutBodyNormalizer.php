@@ -33,6 +33,9 @@ class ReposOwnerRepoPagesPutBodyNormalizer implements DenormalizerInterface, Nor
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ReposOwnerRepoPagesPutBody();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('cname', $data) && $data['cname'] !== null) {
             $object->setCname($data['cname']);
         }

@@ -33,6 +33,9 @@ class GbImageTypesResponseAvailableTypesItemNormalizer implements DenormalizerIn
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \CreditSafe\API\Model\GbImageTypesResponseAvailableTypesItem();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('name', $data)) {
             $object->setName($data['name']);
         }

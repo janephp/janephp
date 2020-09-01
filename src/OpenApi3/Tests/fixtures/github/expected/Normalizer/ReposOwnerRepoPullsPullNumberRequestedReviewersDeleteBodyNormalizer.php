@@ -33,6 +33,9 @@ class ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBodyNormalizer implem
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBody();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('reviewers', $data)) {
             $values = array();
             foreach ($data['reviewers'] as $value) {

@@ -27,6 +27,9 @@ class BazBazNormalizer implements DenormalizerInterface, NormalizerInterface, De
     public function denormalize($data, $class, $format = null, array $context = array())
     {
         $object = new \Jane\JsonSchema\Tests\Expected\Model\BazBaz();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('baz', $data)) {
             $object->setBaz($data['baz']);
         }

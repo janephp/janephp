@@ -33,6 +33,9 @@ class AccessCountriesResponseCountryAccessItemCreditsafeConnectOnlineReportsItem
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \CreditSafe\API\Model\AccessCountriesResponseCountryAccessItemCreditsafeConnectOnlineReportsItem();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('countryName', $data)) {
             $object->setCountryName($data['countryName']);
         }

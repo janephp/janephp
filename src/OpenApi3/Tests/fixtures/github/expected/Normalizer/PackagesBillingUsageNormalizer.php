@@ -33,6 +33,9 @@ class PackagesBillingUsageNormalizer implements DenormalizerInterface, Normalize
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\PackagesBillingUsage();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('total_gigabytes_bandwidth_used', $data)) {
             $object->setTotalGigabytesBandwidthUsed($data['total_gigabytes_bandwidth_used']);
         }

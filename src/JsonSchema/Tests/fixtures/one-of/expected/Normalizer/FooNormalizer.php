@@ -33,6 +33,9 @@ class FooNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Jane\JsonSchema\Tests\Expected\Model\Foo();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('foo', $data)) {
             $value = $data['foo'];
             if (is_string($data['foo'])) {

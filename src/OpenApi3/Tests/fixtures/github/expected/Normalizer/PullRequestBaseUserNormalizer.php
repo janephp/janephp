@@ -33,6 +33,9 @@ class PullRequestBaseUserNormalizer implements DenormalizerInterface, Normalizer
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\PullRequestBaseUser();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('avatar_url', $data)) {
             $object->setAvatarUrl($data['avatar_url']);
         }

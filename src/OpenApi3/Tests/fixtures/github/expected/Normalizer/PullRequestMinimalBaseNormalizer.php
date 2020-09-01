@@ -33,6 +33,9 @@ class PullRequestMinimalBaseNormalizer implements DenormalizerInterface, Normali
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\PullRequestMinimalBase();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('ref', $data)) {
             $object->setRef($data['ref']);
         }

@@ -33,6 +33,9 @@ class GistsPostBodyNormalizer implements DenormalizerInterface, NormalizerInterf
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\GistsPostBody();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('description', $data)) {
             $object->setDescription($data['description']);
         }

@@ -33,6 +33,9 @@ class ScimV2OrganizationsOrgUsersPostBodyEmailsItemNormalizer implements Denorma
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ScimV2OrganizationsOrgUsersPostBodyEmailsItem();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('value', $data)) {
             $object->setValue($data['value']);
         }

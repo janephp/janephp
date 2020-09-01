@@ -33,6 +33,9 @@ class GistFullforksItemNormalizer implements DenormalizerInterface, NormalizerIn
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\GistFullforksItem();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('user', $data)) {
             $object->setUser($this->denormalizer->denormalize($data['user'], 'Github\\Model\\GistFullforksItemUser', 'json', $context));
         }

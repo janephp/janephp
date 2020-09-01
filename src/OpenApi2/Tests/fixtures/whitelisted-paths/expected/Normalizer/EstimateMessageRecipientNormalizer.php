@@ -33,6 +33,9 @@ class EstimateMessageRecipientNormalizer implements DenormalizerInterface, Norma
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Jane\OpenApi2\Tests\Expected\Model\EstimateMessageRecipient();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('name', $data)) {
             $object->setName($data['name']);
         }

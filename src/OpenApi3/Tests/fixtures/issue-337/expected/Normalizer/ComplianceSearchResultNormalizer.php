@@ -33,6 +33,9 @@ class ComplianceSearchResultNormalizer implements DenormalizerInterface, Normali
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \CreditSafe\API\Model\ComplianceSearchResult();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('data', $data)) {
             $object->setData($this->denormalizer->denormalize($data['data'], 'CreditSafe\\API\\Model\\ComplianceSearchResultData', 'json', $context));
         }

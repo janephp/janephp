@@ -33,6 +33,9 @@ class KeyNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\Key();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('key_id', $data)) {
             $object->setKeyId($data['key_id']);
         }

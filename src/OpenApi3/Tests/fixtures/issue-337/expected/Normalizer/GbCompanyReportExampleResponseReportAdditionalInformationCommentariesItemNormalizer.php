@@ -33,6 +33,9 @@ class GbCompanyReportExampleResponseReportAdditionalInformationCommentariesItemN
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \CreditSafe\API\Model\GbCompanyReportExampleResponseReportAdditionalInformationCommentariesItem();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('commentaryText', $data)) {
             $object->setCommentaryText($data['commentaryText']);
         }

@@ -33,6 +33,9 @@ class CommunityProfileNormalizer implements DenormalizerInterface, NormalizerInt
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\CommunityProfile();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('health_percentage', $data)) {
             $object->setHealthPercentage($data['health_percentage']);
         }

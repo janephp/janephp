@@ -33,6 +33,9 @@ class ImportNormalizer implements DenormalizerInterface, NormalizerInterface, De
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\Import();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('vcs', $data) && $data['vcs'] !== null) {
             $object->setVcs($data['vcs']);
         }

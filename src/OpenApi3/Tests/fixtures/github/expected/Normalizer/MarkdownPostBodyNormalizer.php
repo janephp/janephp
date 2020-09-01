@@ -33,6 +33,9 @@ class MarkdownPostBodyNormalizer implements DenormalizerInterface, NormalizerInt
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\MarkdownPostBody();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('text', $data)) {
             $object->setText($data['text']);
         }

@@ -33,6 +33,9 @@ class SubBazNormalizer implements DenormalizerInterface, NormalizerInterface, De
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Jane\OpenApi3\Tests\Expected\Model\SubBaz();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('parent', $data)) {
             $object->setParent($this->denormalizer->denormalize($data['parent'], 'Jane\\OpenApi3\\Tests\\Expected\\Model\\Baz', 'json', $context));
         }

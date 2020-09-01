@@ -33,6 +33,9 @@ class UserGpgKeysPostBodyNormalizer implements DenormalizerInterface, Normalizer
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\UserGpgKeysPostBody();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('armored_public_key', $data)) {
             $object->setArmoredPublicKey($data['armored_public_key']);
         }

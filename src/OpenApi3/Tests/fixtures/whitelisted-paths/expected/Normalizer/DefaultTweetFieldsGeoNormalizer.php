@@ -33,6 +33,9 @@ class DefaultTweetFieldsGeoNormalizer implements DenormalizerInterface, Normaliz
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Jane\OpenApi3\Tests\Expected\Model\DefaultTweetFieldsGeo();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('coordinates', $data)) {
             $object->setCoordinates($this->denormalizer->denormalize($data['coordinates'], 'Jane\\OpenApi3\\Tests\\Expected\\Model\\Point', 'json', $context));
         }

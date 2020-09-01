@@ -33,6 +33,9 @@ class ReferrerTrafficNormalizer implements DenormalizerInterface, NormalizerInte
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ReferrerTraffic();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('referrer', $data)) {
             $object->setReferrer($data['referrer']);
         }

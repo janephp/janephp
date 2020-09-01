@@ -33,6 +33,9 @@ class GbCompanyReportExampleResponseReportFinancialStatementsItemRatiosNormalize
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \CreditSafe\API\Model\GbCompanyReportExampleResponseReportFinancialStatementsItemRatios();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('preTaxProfitMargin', $data)) {
             $object->setPreTaxProfitMargin($data['preTaxProfitMargin']);
         }

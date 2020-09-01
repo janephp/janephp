@@ -33,6 +33,9 @@ class AuthenticationRequestNormalizer implements DenormalizerInterface, Normaliz
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \CreditSafe\API\Model\AuthenticationRequest();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('username', $data)) {
             $object->setUsername($data['username']);
         }

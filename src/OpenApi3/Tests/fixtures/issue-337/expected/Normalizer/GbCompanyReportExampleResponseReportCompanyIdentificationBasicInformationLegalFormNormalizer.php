@@ -33,6 +33,9 @@ class GbCompanyReportExampleResponseReportCompanyIdentificationBasicInformationL
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \CreditSafe\API\Model\GbCompanyReportExampleResponseReportCompanyIdentificationBasicInformationLegalForm();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('description', $data)) {
             $object->setDescription($data['description']);
         }

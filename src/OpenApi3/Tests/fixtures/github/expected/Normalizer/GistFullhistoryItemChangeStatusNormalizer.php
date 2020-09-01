@@ -33,6 +33,9 @@ class GistFullhistoryItemChangeStatusNormalizer implements DenormalizerInterface
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\GistFullhistoryItemChangeStatus();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('deletions', $data)) {
             $object->setDeletions($data['deletions']);
         }

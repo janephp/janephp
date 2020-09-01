@@ -33,6 +33,9 @@ class ProjectsNormalizer implements DenormalizerInterface, NormalizerInterface, 
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Jane\OpenApi2\Tests\Expected\Model\Projects();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('projects', $data)) {
             $values = array();
             foreach ($data['projects'] as $value) {

@@ -33,6 +33,9 @@ class GbPeopleReportReponseReportDirectorshipsPreviousItemNormalizer implements 
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \CreditSafe\API\Model\GbPeopleReportReponseReportDirectorshipsPreviousItem();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('companyName', $data)) {
             $object->setCompanyName($data['companyName']);
         }

@@ -33,6 +33,9 @@ class AppInstallationsInstallationIdAccessTokensPostBodyNormalizer implements De
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\AppInstallationsInstallationIdAccessTokensPostBody();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('repositories', $data)) {
             $values = array();
             foreach ($data['repositories'] as $value) {

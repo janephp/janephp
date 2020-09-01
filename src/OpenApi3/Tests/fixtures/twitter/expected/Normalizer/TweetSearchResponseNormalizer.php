@@ -33,6 +33,9 @@ class TweetSearchResponseNormalizer implements DenormalizerInterface, Normalizer
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Jane\OpenApi3\Tests\Expected\Model\TweetSearchResponse();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('data', $data)) {
             $values = array();
             foreach ($data['data'] as $value) {
