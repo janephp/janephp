@@ -7,6 +7,7 @@ use Jane\JsonSchemaRuntime\Reference;
 use Jane\OpenApi2\Guesser\GuessClass;
 use Jane\OpenApi2\JsonSchema\Model\Response;
 use Jane\OpenApi2\JsonSchema\Model\Schema;
+use Jane\OpenApiCommon\Generator\ExceptionGenerator;
 use Jane\OpenApiCommon\Guesser\Guess\OperationGuess;
 use PhpParser\Comment\Doc;
 use PhpParser\Node;
@@ -19,7 +20,7 @@ use Symfony\Component\Serializer\SerializerInterface;
 
 trait GetTransformResponseBodyTrait
 {
-    public function getTransformResponseBody(OperationGuess $operation, string $endpointName, GuessClass $guessClass, Context $context): array
+    public function getTransformResponseBody(OperationGuess $operation, string $endpointName, GuessClass $guessClass, ExceptionGenerator $exceptionGenerator, Context $context): array
     {
         $outputStatements = [];
         $outputTypes = ['null'];
@@ -55,6 +56,16 @@ trait GetTransformResponseBodyTrait
                     $outputStatements[] = $ifStatus;
                 }
             }
+        }
+
+        if ($context->getRegistry()->getThrowUnexpectedStatusCode()) {
+            $exceptionGenerator->createBaseExceptions($context);
+
+            $throwType = '\\' . $context->getCurrentSchema()->getNamespace() . '\\Exception\\UnexpectedStatusCodeException';
+            $throwTypes[] = $throwType;
+            $outputStatements = array_merge($outputStatements, [
+                new Stmt\Throw_(new Expr\New_(new Name($throwType))),
+            ]);
         }
 
         $returnDoc = implode('', array_map(function ($value) {

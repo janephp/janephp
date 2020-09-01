@@ -17,6 +17,9 @@ class Registry extends BaseRegistry implements RegistryInterface
     /** @var array */
     private $customQueryResolver;
 
+    /** @var bool */
+    private $throwUnexpectedStatusCode;
+
     public function setOpenApiClass(string $openApiClass): void
     {
         $this->openApiClass = $openApiClass;
@@ -47,6 +50,16 @@ class Registry extends BaseRegistry implements RegistryInterface
         return $this->customQueryResolver;
     }
 
+    public function setThrowUnexpectedStatusCode(bool $throwUnexpectedStatusCode): void
+    {
+        $this->throwUnexpectedStatusCode = $throwUnexpectedStatusCode;
+    }
+
+    public function getThrowUnexpectedStatusCode(): bool
+    {
+        return $this->throwUnexpectedStatusCode;
+    }
+
     public function hasSecurityScheme($securitySchemeReference): bool
     {
         return null !== $this->getClass($securitySchemeReference);
@@ -69,6 +82,7 @@ class Registry extends BaseRegistry implements RegistryInterface
         return md5(json_encode([
             'open-api-class' => $this->getOpenApiClass(),
             'whitelisted-paths' => $this->getWhitelistedPaths(),
+            'throw-unexpected-status-code' => $this->getThrowUnexpectedStatusCode(),
         ]));
     }
 }
