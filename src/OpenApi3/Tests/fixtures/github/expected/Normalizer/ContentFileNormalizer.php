@@ -113,9 +113,15 @@ class ContentFileNormalizer implements DenormalizerInterface, NormalizerInterfac
         if (null !== $object->getUrl()) {
             $data['url'] = $object->getUrl();
         }
-        $data['git_url'] = $object->getGitUrl();
-        $data['html_url'] = $object->getHtmlUrl();
-        $data['download_url'] = $object->getDownloadUrl();
+        if (null !== $object->getGitUrl()) {
+            $data['git_url'] = $object->getGitUrl();
+        }
+        if (null !== $object->getHtmlUrl()) {
+            $data['html_url'] = $object->getHtmlUrl();
+        }
+        if (null !== $object->getDownloadUrl()) {
+            $data['download_url'] = $object->getDownloadUrl();
+        }
         if (null !== $object->getLinks()) {
             $data['_links'] = $this->normalizer->normalize($object->getLinks(), 'json', $context);
         }

@@ -80,8 +80,12 @@ class MarketplaceAccountNormalizer implements DenormalizerInterface, NormalizerI
         if (null !== $object->getLogin()) {
             $data['login'] = $object->getLogin();
         }
-        $data['email'] = $object->getEmail();
-        $data['organization_billing_email'] = $object->getOrganizationBillingEmail();
+        if (null !== $object->getEmail()) {
+            $data['email'] = $object->getEmail();
+        }
+        if (null !== $object->getOrganizationBillingEmail()) {
+            $data['organization_billing_email'] = $object->getOrganizationBillingEmail();
+        }
         return $data;
     }
 }

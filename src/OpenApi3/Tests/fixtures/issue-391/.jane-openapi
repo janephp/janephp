@@ -6,5 +6,5 @@ return [
     'namespace' => 'Gounlaf\JanephpBug',
     'date-prefer-interface' => true,
     'date-format' => DATE_ATOM,
-    'strict' => false,
+    'strict' => true,
 ];

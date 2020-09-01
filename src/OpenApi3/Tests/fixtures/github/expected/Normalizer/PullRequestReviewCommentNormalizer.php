@@ -140,7 +140,9 @@ class PullRequestReviewCommentNormalizer implements DenormalizerInterface, Norma
         if (null !== $object->getUrl()) {
             $data['url'] = $object->getUrl();
         }
-        $data['pull_request_review_id'] = $object->getPullRequestReviewId();
+        if (null !== $object->getPullRequestReviewId()) {
+            $data['pull_request_review_id'] = $object->getPullRequestReviewId();
+        }
         if (null !== $object->getId()) {
             $data['id'] = $object->getId();
         }
@@ -192,9 +194,15 @@ class PullRequestReviewCommentNormalizer implements DenormalizerInterface, Norma
         if (null !== $object->getLinks()) {
             $data['_links'] = $this->normalizer->normalize($object->getLinks(), 'json', $context);
         }
-        $data['start_line'] = $object->getStartLine();
-        $data['original_start_line'] = $object->getOriginalStartLine();
-        $data['start_side'] = $object->getStartSide();
+        if (null !== $object->getStartLine()) {
+            $data['start_line'] = $object->getStartLine();
+        }
+        if (null !== $object->getOriginalStartLine()) {
+            $data['original_start_line'] = $object->getOriginalStartLine();
+        }
+        if (null !== $object->getStartSide()) {
+            $data['start_side'] = $object->getStartSide();
+        }
         if (null !== $object->getLine()) {
             $data['line'] = $object->getLine();
         }

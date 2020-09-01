@@ -97,7 +97,9 @@ class GpgKeyNormalizer implements DenormalizerInterface, NormalizerInterface, De
         if (null !== $object->getId()) {
             $data['id'] = $object->getId();
         }
-        $data['primary_key_id'] = $object->getPrimaryKeyId();
+        if (null !== $object->getPrimaryKeyId()) {
+            $data['primary_key_id'] = $object->getPrimaryKeyId();
+        }
         if (null !== $object->getKeyId()) {
             $data['key_id'] = $object->getKeyId();
         }
@@ -136,7 +138,9 @@ class GpgKeyNormalizer implements DenormalizerInterface, NormalizerInterface, De
         if (null !== $object->getExpiresAt()) {
             $data['expires_at'] = $object->getExpiresAt()->format('Y-m-d\\TH:i:sP');
         }
-        $data['raw_key'] = $object->getRawKey();
+        if (null !== $object->getRawKey()) {
+            $data['raw_key'] = $object->getRawKey();
+        }
         return $data;
     }
 }

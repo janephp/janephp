@@ -74,15 +74,21 @@ class MarketplacePurchaseMarketplacePurchaseNormalizer implements DenormalizerIn
         if (null !== $object->getBillingCycle()) {
             $data['billing_cycle'] = $object->getBillingCycle();
         }
-        $data['next_billing_date'] = $object->getNextBillingDate();
+        if (null !== $object->getNextBillingDate()) {
+            $data['next_billing_date'] = $object->getNextBillingDate();
+        }
         if (null !== $object->getIsInstalled()) {
             $data['is_installed'] = $object->getIsInstalled();
         }
-        $data['unit_count'] = $object->getUnitCount();
+        if (null !== $object->getUnitCount()) {
+            $data['unit_count'] = $object->getUnitCount();
+        }
         if (null !== $object->getOnFreeTrial()) {
             $data['on_free_trial'] = $object->getOnFreeTrial();
         }
-        $data['free_trial_ends_on'] = $object->getFreeTrialEndsOn();
+        if (null !== $object->getFreeTrialEndsOn()) {
+            $data['free_trial_ends_on'] = $object->getFreeTrialEndsOn();
+        }
         if (null !== $object->getUpdatedAt()) {
             $data['updated_at'] = $object->getUpdatedAt();
         }

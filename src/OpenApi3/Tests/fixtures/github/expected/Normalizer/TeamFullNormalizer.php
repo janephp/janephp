@@ -116,7 +116,9 @@ class TeamFullNormalizer implements DenormalizerInterface, NormalizerInterface, 
         if (null !== $object->getSlug()) {
             $data['slug'] = $object->getSlug();
         }
-        $data['description'] = $object->getDescription();
+        if (null !== $object->getDescription()) {
+            $data['description'] = $object->getDescription();
+        }
         if (null !== $object->getPrivacy()) {
             $data['privacy'] = $object->getPrivacy();
         }

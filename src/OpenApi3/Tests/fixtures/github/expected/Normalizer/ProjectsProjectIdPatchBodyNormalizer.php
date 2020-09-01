@@ -59,7 +59,9 @@ class ProjectsProjectIdPatchBodyNormalizer implements DenormalizerInterface, Nor
         if (null !== $object->getName()) {
             $data['name'] = $object->getName();
         }
-        $data['body'] = $object->getBody();
+        if (null !== $object->getBody()) {
+            $data['body'] = $object->getBody();
+        }
         if (null !== $object->getState()) {
             $data['state'] = $object->getState();
         }

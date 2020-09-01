@@ -129,15 +129,27 @@ class CheckSuiteNormalizer implements DenormalizerInterface, NormalizerInterface
         if (null !== $object->getNodeId()) {
             $data['node_id'] = $object->getNodeId();
         }
-        $data['head_branch'] = $object->getHeadBranch();
+        if (null !== $object->getHeadBranch()) {
+            $data['head_branch'] = $object->getHeadBranch();
+        }
         if (null !== $object->getHeadSha()) {
             $data['head_sha'] = $object->getHeadSha();
         }
-        $data['status'] = $object->getStatus();
-        $data['conclusion'] = $object->getConclusion();
-        $data['url'] = $object->getUrl();
-        $data['before'] = $object->getBefore();
-        $data['after'] = $object->getAfter();
+        if (null !== $object->getStatus()) {
+            $data['status'] = $object->getStatus();
+        }
+        if (null !== $object->getConclusion()) {
+            $data['conclusion'] = $object->getConclusion();
+        }
+        if (null !== $object->getUrl()) {
+            $data['url'] = $object->getUrl();
+        }
+        if (null !== $object->getBefore()) {
+            $data['before'] = $object->getBefore();
+        }
+        if (null !== $object->getAfter()) {
+            $data['after'] = $object->getAfter();
+        }
         if (null !== $object->getPullRequests()) {
             $values = array();
             foreach ($object->getPullRequests() as $value) {

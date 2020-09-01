@@ -128,11 +128,21 @@ class TopicSearchResultItemNormalizer implements DenormalizerInterface, Normaliz
         if (null !== $object->getName()) {
             $data['name'] = $object->getName();
         }
-        $data['display_name'] = $object->getDisplayName();
-        $data['short_description'] = $object->getShortDescription();
-        $data['description'] = $object->getDescription();
-        $data['created_by'] = $object->getCreatedBy();
-        $data['released'] = $object->getReleased();
+        if (null !== $object->getDisplayName()) {
+            $data['display_name'] = $object->getDisplayName();
+        }
+        if (null !== $object->getShortDescription()) {
+            $data['short_description'] = $object->getShortDescription();
+        }
+        if (null !== $object->getDescription()) {
+            $data['description'] = $object->getDescription();
+        }
+        if (null !== $object->getCreatedBy()) {
+            $data['created_by'] = $object->getCreatedBy();
+        }
+        if (null !== $object->getReleased()) {
+            $data['released'] = $object->getReleased();
+        }
         if (null !== $object->getCreatedAt()) {
             $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
         }
@@ -148,8 +158,12 @@ class TopicSearchResultItemNormalizer implements DenormalizerInterface, Normaliz
         if (null !== $object->getScore()) {
             $data['score'] = $object->getScore();
         }
-        $data['repository_count'] = $object->getRepositoryCount();
-        $data['logo_url'] = $object->getLogoUrl();
+        if (null !== $object->getRepositoryCount()) {
+            $data['repository_count'] = $object->getRepositoryCount();
+        }
+        if (null !== $object->getLogoUrl()) {
+            $data['logo_url'] = $object->getLogoUrl();
+        }
         if (null !== $object->getTextMatches()) {
             $values = array();
             foreach ($object->getTextMatches() as $value) {

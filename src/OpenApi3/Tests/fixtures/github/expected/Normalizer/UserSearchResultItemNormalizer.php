@@ -183,7 +183,9 @@ class UserSearchResultItemNormalizer implements DenormalizerInterface, Normalize
         if (null !== $object->getAvatarUrl()) {
             $data['avatar_url'] = $object->getAvatarUrl();
         }
-        $data['gravatar_id'] = $object->getGravatarId();
+        if (null !== $object->getGravatarId()) {
+            $data['gravatar_id'] = $object->getGravatarId();
+        }
         if (null !== $object->getUrl()) {
             $data['url'] = $object->getUrl();
         }
@@ -241,14 +243,24 @@ class UserSearchResultItemNormalizer implements DenormalizerInterface, Normalize
         if (null !== $object->getUpdatedAt()) {
             $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
         }
-        $data['name'] = $object->getName();
-        $data['bio'] = $object->getBio();
-        $data['email'] = $object->getEmail();
-        $data['location'] = $object->getLocation();
+        if (null !== $object->getName()) {
+            $data['name'] = $object->getName();
+        }
+        if (null !== $object->getBio()) {
+            $data['bio'] = $object->getBio();
+        }
+        if (null !== $object->getEmail()) {
+            $data['email'] = $object->getEmail();
+        }
+        if (null !== $object->getLocation()) {
+            $data['location'] = $object->getLocation();
+        }
         if (null !== $object->getSiteAdmin()) {
             $data['site_admin'] = $object->getSiteAdmin();
         }
-        $data['hireable'] = $object->getHireable();
+        if (null !== $object->getHireable()) {
+            $data['hireable'] = $object->getHireable();
+        }
         if (null !== $object->getTextMatches()) {
             $values = array();
             foreach ($object->getTextMatches() as $value) {
@@ -256,8 +268,12 @@ class UserSearchResultItemNormalizer implements DenormalizerInterface, Normalize
             }
             $data['text_matches'] = $values;
         }
-        $data['blog'] = $object->getBlog();
-        $data['company'] = $object->getCompany();
+        if (null !== $object->getBlog()) {
+            $data['blog'] = $object->getBlog();
+        }
+        if (null !== $object->getCompany()) {
+            $data['company'] = $object->getCompany();
+        }
         if (null !== $object->getSuspendedAt()) {
             $data['suspended_at'] = $object->getSuspendedAt()->format('Y-m-d\\TH:i:sP');
         }

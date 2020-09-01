@@ -86,7 +86,9 @@ class ProjectCardNormalizer implements DenormalizerInterface, NormalizerInterfac
         if (null !== $object->getNodeId()) {
             $data['node_id'] = $object->getNodeId();
         }
-        $data['note'] = $object->getNote();
+        if (null !== $object->getNote()) {
+            $data['note'] = $object->getNote();
+        }
         if (null !== $object->getCreator()) {
             $data['creator'] = $this->normalizer->normalize($object->getCreator(), 'json', $context);
         }

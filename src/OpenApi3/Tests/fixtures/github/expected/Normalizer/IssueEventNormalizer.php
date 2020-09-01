@@ -140,8 +140,12 @@ class IssueEventNormalizer implements DenormalizerInterface, NormalizerInterface
         if (null !== $object->getEvent()) {
             $data['event'] = $object->getEvent();
         }
-        $data['commit_id'] = $object->getCommitId();
-        $data['commit_url'] = $object->getCommitUrl();
+        if (null !== $object->getCommitId()) {
+            $data['commit_id'] = $object->getCommitId();
+        }
+        if (null !== $object->getCommitUrl()) {
+            $data['commit_url'] = $object->getCommitUrl();
+        }
         if (null !== $object->getCreatedAt()) {
             $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
         }
@@ -181,7 +185,9 @@ class IssueEventNormalizer implements DenormalizerInterface, NormalizerInterface
         if (null !== $object->getAuthorAssociation()) {
             $data['author_association'] = $object->getAuthorAssociation();
         }
-        $data['lock_reason'] = $object->getLockReason();
+        if (null !== $object->getLockReason()) {
+            $data['lock_reason'] = $object->getLockReason();
+        }
         return $data;
     }
 }

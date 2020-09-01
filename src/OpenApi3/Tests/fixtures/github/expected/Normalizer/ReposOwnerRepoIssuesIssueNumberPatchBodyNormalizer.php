@@ -82,7 +82,9 @@ class ReposOwnerRepoIssuesIssueNumberPatchBodyNormalizer implements Denormalizer
         if (null !== $object->getState()) {
             $data['state'] = $object->getState();
         }
-        $data['milestone'] = $object->getMilestone();
+        if (null !== $object->getMilestone()) {
+            $data['milestone'] = $object->getMilestone();
+        }
         if (null !== $object->getLabels()) {
             $values = array();
             foreach ($object->getLabels() as $value) {

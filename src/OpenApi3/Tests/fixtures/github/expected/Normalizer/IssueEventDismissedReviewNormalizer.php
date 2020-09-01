@@ -62,8 +62,12 @@ class IssueEventDismissedReviewNormalizer implements DenormalizerInterface, Norm
         if (null !== $object->getReviewId()) {
             $data['review_id'] = $object->getReviewId();
         }
-        $data['dismissal_message'] = $object->getDismissalMessage();
-        $data['dismissal_commit_id'] = $object->getDismissalCommitId();
+        if (null !== $object->getDismissalMessage()) {
+            $data['dismissal_message'] = $object->getDismissalMessage();
+        }
+        if (null !== $object->getDismissalCommitId()) {
+            $data['dismissal_commit_id'] = $object->getDismissalCommitId();
+        }
         return $data;
     }
 }

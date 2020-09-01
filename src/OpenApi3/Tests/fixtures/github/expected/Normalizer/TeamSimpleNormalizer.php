@@ -92,7 +92,9 @@ class TeamSimpleNormalizer implements DenormalizerInterface, NormalizerInterface
         if (null !== $object->getName()) {
             $data['name'] = $object->getName();
         }
-        $data['description'] = $object->getDescription();
+        if (null !== $object->getDescription()) {
+            $data['description'] = $object->getDescription();
+        }
         if (null !== $object->getPermission()) {
             $data['permission'] = $object->getPermission();
         }

@@ -330,7 +330,9 @@ class PullRequestBaseRepoNormalizer implements DenormalizerInterface, Normalizer
         if (null !== $object->getDeploymentsUrl()) {
             $data['deployments_url'] = $object->getDeploymentsUrl();
         }
-        $data['description'] = $object->getDescription();
+        if (null !== $object->getDescription()) {
+            $data['description'] = $object->getDescription();
+        }
         if (null !== $object->getDownloadsUrl()) {
             $data['downloads_url'] = $object->getDownloadsUrl();
         }
@@ -463,8 +465,12 @@ class PullRequestBaseRepoNormalizer implements DenormalizerInterface, Normalizer
         if (null !== $object->getHasPages()) {
             $data['has_pages'] = $object->getHasPages();
         }
-        $data['homepage'] = $object->getHomepage();
-        $data['language'] = $object->getLanguage();
+        if (null !== $object->getHomepage()) {
+            $data['homepage'] = $object->getHomepage();
+        }
+        if (null !== $object->getLanguage()) {
+            $data['language'] = $object->getLanguage();
+        }
         if (null !== $object->getMasterBranch()) {
             $data['master_branch'] = $object->getMasterBranch();
         }
@@ -474,7 +480,9 @@ class PullRequestBaseRepoNormalizer implements DenormalizerInterface, Normalizer
         if (null !== $object->getDisabled()) {
             $data['disabled'] = $object->getDisabled();
         }
-        $data['mirror_url'] = $object->getMirrorUrl();
+        if (null !== $object->getMirrorUrl()) {
+            $data['mirror_url'] = $object->getMirrorUrl();
+        }
         if (null !== $object->getOpenIssues()) {
             $data['open_issues'] = $object->getOpenIssues();
         }

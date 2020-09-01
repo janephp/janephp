@@ -86,7 +86,9 @@ class ThreadNormalizer implements DenormalizerInterface, NormalizerInterface, De
         if (null !== $object->getUpdatedAt()) {
             $data['updated_at'] = $object->getUpdatedAt();
         }
-        $data['last_read_at'] = $object->getLastReadAt();
+        if (null !== $object->getLastReadAt()) {
+            $data['last_read_at'] = $object->getLastReadAt();
+        }
         if (null !== $object->getUrl()) {
             $data['url'] = $object->getUrl();
         }

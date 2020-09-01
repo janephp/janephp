@@ -79,7 +79,9 @@ class AuthenticationTokenNormalizer implements DenormalizerInterface, Normalizer
             }
             $data['repositories'] = $values;
         }
-        $data['single_file'] = $object->getSingleFile();
+        if (null !== $object->getSingleFile()) {
+            $data['single_file'] = $object->getSingleFile();
+        }
         if (null !== $object->getRepositorySelection()) {
             $data['repository_selection'] = $object->getRepositorySelection();
         }

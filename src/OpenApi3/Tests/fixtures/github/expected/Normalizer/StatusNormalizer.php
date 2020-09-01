@@ -80,7 +80,9 @@ class StatusNormalizer implements DenormalizerInterface, NormalizerInterface, De
         if (null !== $object->getUrl()) {
             $data['url'] = $object->getUrl();
         }
-        $data['avatar_url'] = $object->getAvatarUrl();
+        if (null !== $object->getAvatarUrl()) {
+            $data['avatar_url'] = $object->getAvatarUrl();
+        }
         if (null !== $object->getId()) {
             $data['id'] = $object->getId();
         }

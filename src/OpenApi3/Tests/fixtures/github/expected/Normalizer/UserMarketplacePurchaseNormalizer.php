@@ -80,7 +80,9 @@ class UserMarketplacePurchaseNormalizer implements DenormalizerInterface, Normal
         if (null !== $object->getNextBillingDate()) {
             $data['next_billing_date'] = $object->getNextBillingDate()->format('Y-m-d\\TH:i:sP');
         }
-        $data['unit_count'] = $object->getUnitCount();
+        if (null !== $object->getUnitCount()) {
+            $data['unit_count'] = $object->getUnitCount();
+        }
         if (null !== $object->getOnFreeTrial()) {
             $data['on_free_trial'] = $object->getOnFreeTrial();
         }

@@ -103,8 +103,12 @@ class ScimUserNormalizer implements DenormalizerInterface, NormalizerInterface, 
         if (null !== $object->getId()) {
             $data['id'] = $object->getId();
         }
-        $data['externalId'] = $object->getExternalId();
-        $data['userName'] = $object->getUserName();
+        if (null !== $object->getExternalId()) {
+            $data['externalId'] = $object->getExternalId();
+        }
+        if (null !== $object->getUserName()) {
+            $data['userName'] = $object->getUserName();
+        }
         if (null !== $object->getName()) {
             $data['name'] = $this->normalizer->normalize($object->getName(), 'json', $context);
         }

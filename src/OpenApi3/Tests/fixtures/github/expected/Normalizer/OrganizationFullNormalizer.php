@@ -227,7 +227,9 @@ class OrganizationFullNormalizer implements DenormalizerInterface, NormalizerInt
         if (null !== $object->getAvatarUrl()) {
             $data['avatar_url'] = $object->getAvatarUrl();
         }
-        $data['description'] = $object->getDescription();
+        if (null !== $object->getDescription()) {
+            $data['description'] = $object->getDescription();
+        }
         if (null !== $object->getName()) {
             $data['name'] = $object->getName();
         }
@@ -243,7 +245,9 @@ class OrganizationFullNormalizer implements DenormalizerInterface, NormalizerInt
         if (null !== $object->getEmail()) {
             $data['email'] = $object->getEmail();
         }
-        $data['twitter_username'] = $object->getTwitterUsername();
+        if (null !== $object->getTwitterUsername()) {
+            $data['twitter_username'] = $object->getTwitterUsername();
+        }
         if (null !== $object->getIsVerified()) {
             $data['is_verified'] = $object->getIsVerified();
         }
@@ -280,16 +284,30 @@ class OrganizationFullNormalizer implements DenormalizerInterface, NormalizerInt
         if (null !== $object->getOwnedPrivateRepos()) {
             $data['owned_private_repos'] = $object->getOwnedPrivateRepos();
         }
-        $data['private_gists'] = $object->getPrivateGists();
-        $data['disk_usage'] = $object->getDiskUsage();
-        $data['collaborators'] = $object->getCollaborators();
-        $data['billing_email'] = $object->getBillingEmail();
+        if (null !== $object->getPrivateGists()) {
+            $data['private_gists'] = $object->getPrivateGists();
+        }
+        if (null !== $object->getDiskUsage()) {
+            $data['disk_usage'] = $object->getDiskUsage();
+        }
+        if (null !== $object->getCollaborators()) {
+            $data['collaborators'] = $object->getCollaborators();
+        }
+        if (null !== $object->getBillingEmail()) {
+            $data['billing_email'] = $object->getBillingEmail();
+        }
         if (null !== $object->getPlan()) {
             $data['plan'] = $this->normalizer->normalize($object->getPlan(), 'json', $context);
         }
-        $data['default_repository_permission'] = $object->getDefaultRepositoryPermission();
-        $data['members_can_create_repositories'] = $object->getMembersCanCreateRepositories();
-        $data['two_factor_requirement_enabled'] = $object->getTwoFactorRequirementEnabled();
+        if (null !== $object->getDefaultRepositoryPermission()) {
+            $data['default_repository_permission'] = $object->getDefaultRepositoryPermission();
+        }
+        if (null !== $object->getMembersCanCreateRepositories()) {
+            $data['members_can_create_repositories'] = $object->getMembersCanCreateRepositories();
+        }
+        if (null !== $object->getTwoFactorRequirementEnabled()) {
+            $data['two_factor_requirement_enabled'] = $object->getTwoFactorRequirementEnabled();
+        }
         if (null !== $object->getMembersAllowedRepositoryCreationType()) {
             $data['members_allowed_repository_creation_type'] = $object->getMembersAllowedRepositoryCreationType();
         }

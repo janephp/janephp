@@ -110,7 +110,9 @@ class OrganizationSimpleNormalizer implements DenormalizerInterface, NormalizerI
         if (null !== $object->getAvatarUrl()) {
             $data['avatar_url'] = $object->getAvatarUrl();
         }
-        $data['description'] = $object->getDescription();
+        if (null !== $object->getDescription()) {
+            $data['description'] = $object->getDescription();
+        }
         return $data;
     }
 }

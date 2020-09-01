@@ -107,9 +107,15 @@ class CommitCommentNormalizer implements DenormalizerInterface, NormalizerInterf
         if (null !== $object->getBody()) {
             $data['body'] = $object->getBody();
         }
-        $data['path'] = $object->getPath();
-        $data['position'] = $object->getPosition();
-        $data['line'] = $object->getLine();
+        if (null !== $object->getPath()) {
+            $data['path'] = $object->getPath();
+        }
+        if (null !== $object->getPosition()) {
+            $data['position'] = $object->getPosition();
+        }
+        if (null !== $object->getLine()) {
+            $data['line'] = $object->getLine();
+        }
         if (null !== $object->getCommitId()) {
             $data['commit_id'] = $object->getCommitId();
         }

@@ -50,8 +50,12 @@ class ScimUserNameNormalizer implements DenormalizerInterface, NormalizerInterfa
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        $data['givenName'] = $object->getGivenName();
-        $data['familyName'] = $object->getFamilyName();
+        if (null !== $object->getGivenName()) {
+            $data['givenName'] = $object->getGivenName();
+        }
+        if (null !== $object->getFamilyName()) {
+            $data['familyName'] = $object->getFamilyName();
+        }
         return $data;
     }
 }

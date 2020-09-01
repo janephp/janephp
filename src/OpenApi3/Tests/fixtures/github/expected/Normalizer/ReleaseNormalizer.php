@@ -132,8 +132,12 @@ class ReleaseNormalizer implements DenormalizerInterface, NormalizerInterface, D
         if (null !== $object->getUploadUrl()) {
             $data['upload_url'] = $object->getUploadUrl();
         }
-        $data['tarball_url'] = $object->getTarballUrl();
-        $data['zipball_url'] = $object->getZipballUrl();
+        if (null !== $object->getTarballUrl()) {
+            $data['tarball_url'] = $object->getTarballUrl();
+        }
+        if (null !== $object->getZipballUrl()) {
+            $data['zipball_url'] = $object->getZipballUrl();
+        }
         if (null !== $object->getId()) {
             $data['id'] = $object->getId();
         }
@@ -146,8 +150,12 @@ class ReleaseNormalizer implements DenormalizerInterface, NormalizerInterface, D
         if (null !== $object->getTargetCommitish()) {
             $data['target_commitish'] = $object->getTargetCommitish();
         }
-        $data['name'] = $object->getName();
-        $data['body'] = $object->getBody();
+        if (null !== $object->getName()) {
+            $data['name'] = $object->getName();
+        }
+        if (null !== $object->getBody()) {
+            $data['body'] = $object->getBody();
+        }
         if (null !== $object->getDraft()) {
             $data['draft'] = $object->getDraft();
         }

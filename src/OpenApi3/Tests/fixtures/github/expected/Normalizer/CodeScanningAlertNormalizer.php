@@ -98,7 +98,9 @@ class CodeScanningAlertNormalizer implements DenormalizerInterface, NormalizerIn
         if (null !== $object->getRuleDescription()) {
             $data['rule_description'] = $object->getRuleDescription();
         }
-        $data['tool'] = $object->getTool();
+        if (null !== $object->getTool()) {
+            $data['tool'] = $object->getTool();
+        }
         if (null !== $object->getCreatedAt()) {
             $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
         }
@@ -117,7 +119,9 @@ class CodeScanningAlertNormalizer implements DenormalizerInterface, NormalizerIn
         if (null !== $object->getHtmlUrl()) {
             $data['html_url'] = $object->getHtmlUrl();
         }
-        $data['closed_reason'] = $object->getClosedReason();
+        if (null !== $object->getClosedReason()) {
+            $data['closed_reason'] = $object->getClosedReason();
+        }
         return $data;
     }
 }

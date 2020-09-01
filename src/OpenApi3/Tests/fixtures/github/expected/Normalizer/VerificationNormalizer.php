@@ -62,8 +62,12 @@ class VerificationNormalizer implements DenormalizerInterface, NormalizerInterfa
         if (null !== $object->getReason()) {
             $data['reason'] = $object->getReason();
         }
-        $data['payload'] = $object->getPayload();
-        $data['signature'] = $object->getSignature();
+        if (null !== $object->getPayload()) {
+            $data['payload'] = $object->getPayload();
+        }
+        if (null !== $object->getSignature()) {
+            $data['signature'] = $object->getSignature();
+        }
         return $data;
     }
 }

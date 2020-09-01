@@ -68,7 +68,9 @@ class TeamsTeamIdPatchBodyNormalizer implements DenormalizerInterface, Normalize
         if (null !== $object->getPermission()) {
             $data['permission'] = $object->getPermission();
         }
-        $data['parent_team_id'] = $object->getParentTeamId();
+        if (null !== $object->getParentTeamId()) {
+            $data['parent_team_id'] = $object->getParentTeamId();
+        }
         return $data;
     }
 }

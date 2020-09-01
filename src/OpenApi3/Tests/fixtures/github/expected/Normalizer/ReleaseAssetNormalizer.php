@@ -98,7 +98,9 @@ class ReleaseAssetNormalizer implements DenormalizerInterface, NormalizerInterfa
         if (null !== $object->getName()) {
             $data['name'] = $object->getName();
         }
-        $data['label'] = $object->getLabel();
+        if (null !== $object->getLabel()) {
+            $data['label'] = $object->getLabel();
+        }
         if (null !== $object->getState()) {
             $data['state'] = $object->getState();
         }

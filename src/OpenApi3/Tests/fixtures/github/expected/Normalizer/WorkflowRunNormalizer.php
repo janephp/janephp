@@ -141,7 +141,9 @@ class WorkflowRunNormalizer implements DenormalizerInterface, NormalizerInterfac
         if (null !== $object->getNodeId()) {
             $data['node_id'] = $object->getNodeId();
         }
-        $data['head_branch'] = $object->getHeadBranch();
+        if (null !== $object->getHeadBranch()) {
+            $data['head_branch'] = $object->getHeadBranch();
+        }
         if (null !== $object->getHeadSha()) {
             $data['head_sha'] = $object->getHeadSha();
         }
@@ -151,8 +153,12 @@ class WorkflowRunNormalizer implements DenormalizerInterface, NormalizerInterfac
         if (null !== $object->getEvent()) {
             $data['event'] = $object->getEvent();
         }
-        $data['status'] = $object->getStatus();
-        $data['conclusion'] = $object->getConclusion();
+        if (null !== $object->getStatus()) {
+            $data['status'] = $object->getStatus();
+        }
+        if (null !== $object->getConclusion()) {
+            $data['conclusion'] = $object->getConclusion();
+        }
         if (null !== $object->getWorkflowId()) {
             $data['workflow_id'] = $object->getWorkflowId();
         }

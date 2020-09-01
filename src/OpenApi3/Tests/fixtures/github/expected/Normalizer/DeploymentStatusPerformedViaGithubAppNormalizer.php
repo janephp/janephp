@@ -114,7 +114,9 @@ class DeploymentStatusPerformedViaGithubAppNormalizer implements DenormalizerInt
         if (null !== $object->getName()) {
             $data['name'] = $object->getName();
         }
-        $data['description'] = $object->getDescription();
+        if (null !== $object->getDescription()) {
+            $data['description'] = $object->getDescription();
+        }
         if (null !== $object->getExternalUrl()) {
             $data['external_url'] = $object->getExternalUrl();
         }

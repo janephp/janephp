@@ -65,7 +65,9 @@ class EventPayloadPagesItemNormalizer implements DenormalizerInterface, Normaliz
         if (null !== $object->getTitle()) {
             $data['title'] = $object->getTitle();
         }
-        $data['summary'] = $object->getSummary();
+        if (null !== $object->getSummary()) {
+            $data['summary'] = $object->getSummary();
+        }
         if (null !== $object->getAction()) {
             $data['action'] = $object->getAction();
         }

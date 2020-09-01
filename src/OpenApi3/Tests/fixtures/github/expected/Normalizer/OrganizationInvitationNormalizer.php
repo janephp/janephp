@@ -80,8 +80,12 @@ class OrganizationInvitationNormalizer implements DenormalizerInterface, Normali
         if (null !== $object->getId()) {
             $data['id'] = $object->getId();
         }
-        $data['login'] = $object->getLogin();
-        $data['email'] = $object->getEmail();
+        if (null !== $object->getLogin()) {
+            $data['login'] = $object->getLogin();
+        }
+        if (null !== $object->getEmail()) {
+            $data['email'] = $object->getEmail();
+        }
         if (null !== $object->getRole()) {
             $data['role'] = $object->getRole();
         }

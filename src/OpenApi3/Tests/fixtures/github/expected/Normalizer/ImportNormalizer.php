@@ -135,7 +135,9 @@ class ImportNormalizer implements DenormalizerInterface, NormalizerInterface, De
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        $data['vcs'] = $object->getVcs();
+        if (null !== $object->getVcs()) {
+            $data['vcs'] = $object->getVcs();
+        }
         if (null !== $object->getUseLfs()) {
             $data['use_lfs'] = $object->getUseLfs();
         }
@@ -151,12 +153,24 @@ class ImportNormalizer implements DenormalizerInterface, NormalizerInterface, De
         if (null !== $object->getStatus()) {
             $data['status'] = $object->getStatus();
         }
-        $data['status_text'] = $object->getStatusText();
-        $data['failed_step'] = $object->getFailedStep();
-        $data['error_message'] = $object->getErrorMessage();
-        $data['import_percent'] = $object->getImportPercent();
-        $data['commit_count'] = $object->getCommitCount();
-        $data['push_percent'] = $object->getPushPercent();
+        if (null !== $object->getStatusText()) {
+            $data['status_text'] = $object->getStatusText();
+        }
+        if (null !== $object->getFailedStep()) {
+            $data['failed_step'] = $object->getFailedStep();
+        }
+        if (null !== $object->getErrorMessage()) {
+            $data['error_message'] = $object->getErrorMessage();
+        }
+        if (null !== $object->getImportPercent()) {
+            $data['import_percent'] = $object->getImportPercent();
+        }
+        if (null !== $object->getCommitCount()) {
+            $data['commit_count'] = $object->getCommitCount();
+        }
+        if (null !== $object->getPushPercent()) {
+            $data['push_percent'] = $object->getPushPercent();
+        }
         if (null !== $object->getHasLargeFiles()) {
             $data['has_large_files'] = $object->getHasLargeFiles();
         }
@@ -176,7 +190,9 @@ class ImportNormalizer implements DenormalizerInterface, NormalizerInterface, De
         if (null !== $object->getMessage()) {
             $data['message'] = $object->getMessage();
         }
-        $data['authors_count'] = $object->getAuthorsCount();
+        if (null !== $object->getAuthorsCount()) {
+            $data['authors_count'] = $object->getAuthorsCount();
+        }
         if (null !== $object->getUrl()) {
             $data['url'] = $object->getUrl();
         }

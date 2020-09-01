@@ -76,8 +76,12 @@ class ReposOwnerRepoIssuesPostBodyNormalizer implements DenormalizerInterface, N
         if (null !== $object->getBody()) {
             $data['body'] = $object->getBody();
         }
-        $data['assignee'] = $object->getAssignee();
-        $data['milestone'] = $object->getMilestone();
+        if (null !== $object->getAssignee()) {
+            $data['assignee'] = $object->getAssignee();
+        }
+        if (null !== $object->getMilestone()) {
+            $data['milestone'] = $object->getMilestone();
+        }
         if (null !== $object->getLabels()) {
             $values = array();
             foreach ($object->getLabels() as $value) {

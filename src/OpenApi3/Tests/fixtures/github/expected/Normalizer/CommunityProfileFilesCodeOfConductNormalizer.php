@@ -62,7 +62,9 @@ class CommunityProfileFilesCodeOfConductNormalizer implements DenormalizerInterf
         if (null !== $object->getName()) {
             $data['name'] = $object->getName();
         }
-        $data['html_url'] = $object->getHtmlUrl();
+        if (null !== $object->getHtmlUrl()) {
+            $data['html_url'] = $object->getHtmlUrl();
+        }
         return $data;
     }
 }

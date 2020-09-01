@@ -116,7 +116,9 @@ class ProjectNormalizer implements DenormalizerInterface, NormalizerInterface, D
         if (null !== $object->getName()) {
             $data['name'] = $object->getName();
         }
-        $data['body'] = $object->getBody();
+        if (null !== $object->getBody()) {
+            $data['body'] = $object->getBody();
+        }
         if (null !== $object->getNumber()) {
             $data['number'] = $object->getNumber();
         }

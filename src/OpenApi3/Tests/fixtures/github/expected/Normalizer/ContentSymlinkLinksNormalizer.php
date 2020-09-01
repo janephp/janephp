@@ -53,8 +53,12 @@ class ContentSymlinkLinksNormalizer implements DenormalizerInterface, Normalizer
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        $data['git'] = $object->getGit();
-        $data['html'] = $object->getHtml();
+        if (null !== $object->getGit()) {
+            $data['git'] = $object->getGit();
+        }
+        if (null !== $object->getHtml()) {
+            $data['html'] = $object->getHtml();
+        }
         if (null !== $object->getSelf()) {
             $data['self'] = $object->getSelf();
         }

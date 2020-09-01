@@ -334,7 +334,9 @@ class RepoSearchResultItemNormalizer implements DenormalizerInterface, Normalize
         if (null !== $object->getHtmlUrl()) {
             $data['html_url'] = $object->getHtmlUrl();
         }
-        $data['description'] = $object->getDescription();
+        if (null !== $object->getDescription()) {
+            $data['description'] = $object->getDescription();
+        }
         if (null !== $object->getFork()) {
             $data['fork'] = $object->getFork();
         }
@@ -350,7 +352,9 @@ class RepoSearchResultItemNormalizer implements DenormalizerInterface, Normalize
         if (null !== $object->getPushedAt()) {
             $data['pushed_at'] = $object->getPushedAt()->format('Y-m-d\\TH:i:sP');
         }
-        $data['homepage'] = $object->getHomepage();
+        if (null !== $object->getHomepage()) {
+            $data['homepage'] = $object->getHomepage();
+        }
         if (null !== $object->getSize()) {
             $data['size'] = $object->getSize();
         }
@@ -360,7 +364,9 @@ class RepoSearchResultItemNormalizer implements DenormalizerInterface, Normalize
         if (null !== $object->getWatchersCount()) {
             $data['watchers_count'] = $object->getWatchersCount();
         }
-        $data['language'] = $object->getLanguage();
+        if (null !== $object->getLanguage()) {
+            $data['language'] = $object->getLanguage();
+        }
         if (null !== $object->getForksCount()) {
             $data['forks_count'] = $object->getForksCount();
         }
@@ -512,7 +518,9 @@ class RepoSearchResultItemNormalizer implements DenormalizerInterface, Normalize
             }
             $data['topics'] = $values;
         }
-        $data['mirror_url'] = $object->getMirrorUrl();
+        if (null !== $object->getMirrorUrl()) {
+            $data['mirror_url'] = $object->getMirrorUrl();
+        }
         if (null !== $object->getHasIssues()) {
             $data['has_issues'] = $object->getHasIssues();
         }

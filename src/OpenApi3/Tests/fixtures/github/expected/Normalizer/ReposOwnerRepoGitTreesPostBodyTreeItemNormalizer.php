@@ -65,7 +65,9 @@ class ReposOwnerRepoGitTreesPostBodyTreeItemNormalizer implements DenormalizerIn
         if (null !== $object->getType()) {
             $data['type'] = $object->getType();
         }
-        $data['sha'] = $object->getSha();
+        if (null !== $object->getSha()) {
+            $data['sha'] = $object->getSha();
+        }
         if (null !== $object->getContent()) {
             $data['content'] = $object->getContent();
         }
