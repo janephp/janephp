@@ -1,0 +1,10 @@
+<?php
+
+return [
+    'openapi-file' => __DIR__ . '/swagger.yaml',
+    'directory' => __DIR__ . '/generated',
+    'namespace' => 'Gounlaf\JanephpBug',
+    'date-prefer-interface' => true,
+    'date-format' => DATE_ATOM,
+    'strict' => false,
+];

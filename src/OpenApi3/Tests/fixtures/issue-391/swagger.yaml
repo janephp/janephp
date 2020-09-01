@@ -1,0 +1,51 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: Bug example for Jane PHP
+
+paths:
+  '/patchable/entity/{id}':
+    patch:
+      operationId: 'patchEntity'
+      summary: 'Update (partially) an entity'
+      parameters:
+        - name: id
+          in: path
+          description: ID of the entity
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchableEntity'
+      responses:
+        '202':
+          $ref: '#/components/responses/Accepted'
+        '400':
+          $ref: '#/components/responses/InvalidRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  responses:
+    Accepted:
+      description: Request accepted
+    InvalidRequest:
+      description: Invalid request
+    NotFound:
+      description: Entity not found
+  schemas:
+    PatchableEntity:
+      type: object
+      properties:
+        nullable_property:
+          type: string
+          nullable: true
+        nullable_and_required_property:
+          type: string
+          nullable: true
+      required:
+        - nullable_and_required_property
