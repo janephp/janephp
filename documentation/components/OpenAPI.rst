@@ -199,6 +199,8 @@ Other options are available to customize the generated code:
    given type (``bool``, ``int``, ``string``, ...) and give it your class that contains the custom normalizer by
    extending the ``\Jane\OpenApiRuntime\Client\CustomQueryResolver``. You can also filter the usage of your custom
    normalizer by giving the exact path, method and parameter name where you want to apply it.
+ * ``throw-unexpected-status-code``: Will return a ``UnexpectedStatusCodeException`` if nothing has been matched during
+   the transformation of the Endpoint body (including described exceptions). By default, it's disabled.
 
 .. _`JSON Reference`: https://tools.ietf.org/id/draft-pbryan-zyp-json-ref-03.html
 .. _`Carbon`: https://carbon.nesbot.com/
