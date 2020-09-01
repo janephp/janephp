@@ -179,6 +179,20 @@ class ExceptionGenerator
                             new Name('ClientException'),
                         ],
                         'flags' => Stmt\Class_::MODIFIER_FINAL,
+                        'stmts' => [
+                            new Stmt\ClassMethod('__construct', [
+                                'type' => Stmt\Class_::MODIFIER_PUBLIC,
+                                'params' => [
+                                    new Param(new Expr\Variable('status')),
+                                ],
+                                'stmts' => [
+                                    new Expr\StaticCall(new Name('parent'), '__construct', [
+                                        new Node\Arg(new Scalar\String_('')),
+                                        new Node\Arg(new Expr\Variable('status')),
+                                    ]),
+                                ],
+                            ]),
+                        ],
                     ]
                 ),
             ]);

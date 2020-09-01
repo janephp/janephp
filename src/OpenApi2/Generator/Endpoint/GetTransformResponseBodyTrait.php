@@ -64,7 +64,7 @@ trait GetTransformResponseBodyTrait
             $throwType = '\\' . $context->getCurrentSchema()->getNamespace() . '\\Exception\\UnexpectedStatusCodeException';
             $throwTypes[] = $throwType;
             $outputStatements = array_merge($outputStatements, [
-                new Stmt\Throw_(new Expr\New_(new Name($throwType))),
+                new Stmt\Throw_(new Expr\New_(new Name($throwType)), [new Arg(new Node\Expr\Variable('status'))]),
             ]);
         }
 
