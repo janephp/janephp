@@ -183,7 +183,7 @@ class Schema implements SchemaInterface
             return '/';
         }
 
-        if(DIRECTORY_SEPARATOR === '\\') {
+        if (\DIRECTORY_SEPARATOR === '\\') {
             $path = preg_replace_callback('#^[A-Z]\:#', function ($arg) {
                 return strtolower($arg[0]);
             }, $path);
