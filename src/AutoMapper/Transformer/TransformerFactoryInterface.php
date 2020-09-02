@@ -19,4 +19,9 @@ interface TransformerFactoryInterface
      * @param Type[] $targetTypes
      */
     public function getTransformer(?array $sourcesTypes, ?array $targetTypes, MapperMetadataInterface $mapperMetadata): ?TransformerInterface;
+
+    /**
+     * TransformerFactory priority.
+     */
+    public function getPriority(): int;
 }

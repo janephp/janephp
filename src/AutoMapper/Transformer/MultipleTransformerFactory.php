@@ -48,4 +48,12 @@ final class MultipleTransformerFactory implements TransformerFactoryInterface
 
         return null;
     }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getPriority(): int
+    {
+        return 128;
+    }
 }

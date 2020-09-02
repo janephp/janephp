@@ -48,4 +48,12 @@ final class UniqueTypeTransformerFactory implements TransformerFactoryInterface
 
         return null;
     }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getPriority(): int
+    {
+        return 32;
+    }
 }

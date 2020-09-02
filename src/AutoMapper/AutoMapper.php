@@ -17,6 +17,7 @@ use Jane\AutoMapper\Transformer\DateTimeTransformerFactory;
 use Jane\AutoMapper\Transformer\MultipleTransformerFactory;
 use Jane\AutoMapper\Transformer\NullableTransformerFactory;
 use Jane\AutoMapper\Transformer\ObjectTransformerFactory;
+use Jane\AutoMapper\Transformer\TransformerFactoryInterface;
 use Jane\AutoMapper\Transformer\UniqueTypeTransformerFactory;
 use PhpParser\ParserFactory;
 use Symfony\Component\PropertyInfo\Extractor\PhpDocExtractor;
@@ -40,14 +41,20 @@ class AutoMapper implements AutoMapperInterface, AutoMapperRegistryInterface, Ma
     /** @var GeneratedMapper[] */
     private $mapperRegistry = [];
 
+    /** @var ClassLoaderInterface */
     private $classLoader;
 
+    /** @var MapperGeneratorMetadataFactoryInterface|null */
     private $mapperConfigurationFactory;
 
-    public function __construct(ClassLoaderInterface $classLoader, MapperGeneratorMetadataFactoryInterface $mapperConfigurationFactory = null)
+    /** @var ChainTransformerFactory */
+    private $chainTransformerFactory;
+
+    public function __construct(ClassLoaderInterface $classLoader, ChainTransformerFactory $chainTransformerFactory, MapperGeneratorMetadataFactoryInterface $mapperConfigurationFactory = null)
     {
         $this->classLoader = $classLoader;
         $this->mapperConfigurationFactory = $mapperConfigurationFactory;
+        $this->chainTransformerFactory = $chainTransformerFactory;
     }
 
     /**
@@ -157,6 +164,14 @@ class AutoMapper implements AutoMapperInterface, AutoMapperRegistryInterface, Ma
     }
 
     /**
+     * {@inheritdoc}
+     */
+    public function bindTransformerFactory(TransformerFactoryInterface $transformerFactory): void
+    {
+        $this->chainTransformerFactory->addTransformerFactory($transformerFactory);
+    }
+
+    /**
      * Create an automapper.
      */
     public static function create(
@@ -225,13 +240,13 @@ class AutoMapper implements AutoMapperInterface, AutoMapperRegistryInterface, Ma
             $nameConverter
         );
 
-        $autoMapper = $autoRegister ? new self($loader, new MapperGeneratorMetadataFactory(
+        $autoMapper = $autoRegister ? new self($loader, $transformerFactory, new MapperGeneratorMetadataFactory(
             $sourceTargetMappingExtractor,
             $fromSourceMappingExtractor,
             $fromTargetMappingExtractor,
             $classPrefix,
             $attributeChecking
-        )) : new self($loader);
+        )) : new self($loader, $transformerFactory);
 
         $transformerFactory->addTransformerFactory(new MultipleTransformerFactory($transformerFactory));
         $transformerFactory->addTransformerFactory(new NullableTransformerFactory($transformerFactory));
