@@ -6,6 +6,6 @@ final class UnexpectedStatusCodeException implements ClientException
 {
     public function __construct($status)
     {
-        parent::__construct('', $status)
+        parent::__construct('', $status);
     }
 }

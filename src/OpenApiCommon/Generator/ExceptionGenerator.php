@@ -186,10 +186,10 @@ class ExceptionGenerator
                                     new Param(new Expr\Variable('status')),
                                 ],
                                 'stmts' => [
-                                    new Expr\StaticCall(new Name('parent'), '__construct', [
+                                    new Stmt\Expression(new Expr\StaticCall(new Name('parent'), '__construct', [
                                         new Node\Arg(new Scalar\String_('')),
                                         new Node\Arg(new Expr\Variable('status')),
-                                    ]),
+                                    ])),
                                 ],
                             ]),
                         ],

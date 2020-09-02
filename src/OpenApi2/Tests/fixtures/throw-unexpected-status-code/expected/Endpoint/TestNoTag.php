@@ -29,7 +29,7 @@ class TestNoTag extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jan
         if (200 === $status) {
             return null;
         }
-        throw new \Jane\OpenApi2\Tests\Expected\Exception\UnexpectedStatusCodeException();
+        throw new \Jane\OpenApi2\Tests\Expected\Exception\UnexpectedStatusCodeException($status);
     }
     public function getAuthenticationScopes() : array
     {
