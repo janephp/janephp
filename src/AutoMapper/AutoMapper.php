@@ -168,7 +168,9 @@ class AutoMapper implements AutoMapperInterface, AutoMapperRegistryInterface, Ma
      */
     public function bindTransformerFactory(TransformerFactoryInterface $transformerFactory): void
     {
-        $this->chainTransformerFactory->addTransformerFactory($transformerFactory);
+        if (!$this->chainTransformerFactory->hasTransformerFactory($transformerFactory)) {
+            $this->chainTransformerFactory->addTransformerFactory($transformerFactory);
+        }
     }
 
     /**

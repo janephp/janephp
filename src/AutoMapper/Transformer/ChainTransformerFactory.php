@@ -21,6 +21,18 @@ final class ChainTransformerFactory implements TransformerFactoryInterface
         $this->factories[$transformerFactory->getPriority()] = $transformerFactory;
     }
 
+    public function hasTransformerFactory(TransformerFactoryInterface $transformerFactory): bool
+    {
+        $transformerFactoryClass = \get_class($transformerFactory);
+        foreach ($this->factories as $factory) {
+            if (is_a($factory, $transformerFactoryClass)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     /**
      * {@inheritdoc}
      */
