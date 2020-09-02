@@ -6,7 +6,7 @@ use Jane\AutoMapper\MapperMetadata;
 use Jane\AutoMapper\Transformer\CopyTransformer;
 use Jane\AutoMapper\Transformer\DateTimeImmutableToMutableTransformer;
 use Jane\AutoMapper\Transformer\DateTimeMutableToImmutableTransformer;
-use Jane\AutoMapper\Transformer\DateTimeToStringTansformer;
+use Jane\AutoMapper\Transformer\DateTimeToStringTransformer;
 use Jane\AutoMapper\Transformer\DateTimeTransformerFactory;
 use Jane\AutoMapper\Transformer\StringToDateTimeTransformer;
 use PHPUnit\Framework\TestCase;
@@ -27,7 +27,7 @@ class DateTimeTransformerFactoryTest extends TestCase
         $transformer = $factory->getTransformer([new Type('object', false, \DateTime::class)], [new Type('string')], $mapperMetadata);
 
         self::assertNotNull($transformer);
-        self::assertInstanceOf(DateTimeToStringTansformer::class, $transformer);
+        self::assertInstanceOf(DateTimeToStringTransformer::class, $transformer);
 
         $transformer = $factory->getTransformer([new Type('string')], [new Type('object', false, \DateTime::class)], $mapperMetadata);
 

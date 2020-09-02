@@ -2,7 +2,7 @@
 
 namespace Jane\AutoMapper\Tests\Transformer;
 
-use Jane\AutoMapper\Transformer\DateTimeToStringTansformer;
+use Jane\AutoMapper\Transformer\DateTimeToStringTransformer;
 use PHPUnit\Framework\TestCase;
 
 class DateTimeToStringTransformerTest extends TestCase
@@ -11,7 +11,7 @@ class DateTimeToStringTransformerTest extends TestCase
 
     public function testDateTimeTransformer()
     {
-        $transformer = new DateTimeToStringTansformer();
+        $transformer = new DateTimeToStringTransformer();
 
         $date = new \DateTime();
         $output = $this->evalTransformer($transformer, new \DateTime());
@@ -21,7 +21,7 @@ class DateTimeToStringTransformerTest extends TestCase
 
     public function testDateTimeTransformerCustomFormat()
     {
-        $transformer = new DateTimeToStringTansformer(\DateTime::COOKIE);
+        $transformer = new DateTimeToStringTransformer(\DateTime::COOKIE);
 
         $date = new \DateTime();
         $output = $this->evalTransformer($transformer, new \DateTime());

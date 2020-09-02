@@ -13,7 +13,7 @@ use PhpParser\Node\Scalar\String_;
  *
  * @author Joel Wurtz <jwurtz@jolicode.com>
  */
-final class DateTimeToStringTansformer implements TransformerInterface
+final class DateTimeToStringTransformer implements TransformerInterface
 {
     private $format;
 
