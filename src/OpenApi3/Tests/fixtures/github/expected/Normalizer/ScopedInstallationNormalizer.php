@@ -65,7 +65,9 @@ class ScopedInstallationNormalizer implements DenormalizerInterface, NormalizerI
         if (null !== $object->getRepositorySelection()) {
             $data['repository_selection'] = $object->getRepositorySelection();
         }
-        $data['single_file_name'] = $object->getSingleFileName();
+        if (null !== $object->getSingleFileName()) {
+            $data['single_file_name'] = $object->getSingleFileName();
+        }
         if (null !== $object->getRepositoriesUrl()) {
             $data['repositories_url'] = $object->getRepositoriesUrl();
         }

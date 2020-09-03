@@ -77,7 +77,9 @@ class ReposOwnerRepoBranchesBranchProtectionPutBodyNormalizer implements Denorma
         if (null !== $object->getRequiredStatusChecks()) {
             $data['required_status_checks'] = $this->normalizer->normalize($object->getRequiredStatusChecks(), 'json', $context);
         }
-        $data['enforce_admins'] = $object->getEnforceAdmins();
+        if (null !== $object->getEnforceAdmins()) {
+            $data['enforce_admins'] = $object->getEnforceAdmins();
+        }
         if (null !== $object->getRequiredPullRequestReviews()) {
             $data['required_pull_request_reviews'] = $this->normalizer->normalize($object->getRequiredPullRequestReviews(), 'json', $context);
         }
@@ -87,7 +89,9 @@ class ReposOwnerRepoBranchesBranchProtectionPutBodyNormalizer implements Denorma
         if (null !== $object->getRequiredLinearHistory()) {
             $data['required_linear_history'] = $object->getRequiredLinearHistory();
         }
-        $data['allow_force_pushes'] = $object->getAllowForcePushes();
+        if (null !== $object->getAllowForcePushes()) {
+            $data['allow_force_pushes'] = $object->getAllowForcePushes();
+        }
         if (null !== $object->getAllowDeletions()) {
             $data['allow_deletions'] = $object->getAllowDeletions();
         }

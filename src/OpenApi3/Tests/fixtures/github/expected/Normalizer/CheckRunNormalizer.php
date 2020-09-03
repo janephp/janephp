@@ -119,16 +119,24 @@ class CheckRunNormalizer implements DenormalizerInterface, NormalizerInterface, 
         if (null !== $object->getNodeId()) {
             $data['node_id'] = $object->getNodeId();
         }
-        $data['external_id'] = $object->getExternalId();
+        if (null !== $object->getExternalId()) {
+            $data['external_id'] = $object->getExternalId();
+        }
         if (null !== $object->getUrl()) {
             $data['url'] = $object->getUrl();
         }
-        $data['html_url'] = $object->getHtmlUrl();
-        $data['details_url'] = $object->getDetailsUrl();
+        if (null !== $object->getHtmlUrl()) {
+            $data['html_url'] = $object->getHtmlUrl();
+        }
+        if (null !== $object->getDetailsUrl()) {
+            $data['details_url'] = $object->getDetailsUrl();
+        }
         if (null !== $object->getStatus()) {
             $data['status'] = $object->getStatus();
         }
-        $data['conclusion'] = $object->getConclusion();
+        if (null !== $object->getConclusion()) {
+            $data['conclusion'] = $object->getConclusion();
+        }
         if (null !== $object->getStartedAt()) {
             $data['started_at'] = $object->getStartedAt()->format('Y-m-d\\TH:i:sP');
         }

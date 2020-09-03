@@ -110,7 +110,9 @@ class PullRequestHeadUserNormalizer implements DenormalizerInterface, Normalizer
         if (null !== $object->getGistsUrl()) {
             $data['gists_url'] = $object->getGistsUrl();
         }
-        $data['gravatar_id'] = $object->getGravatarId();
+        if (null !== $object->getGravatarId()) {
+            $data['gravatar_id'] = $object->getGravatarId();
+        }
         if (null !== $object->getHtmlUrl()) {
             $data['html_url'] = $object->getHtmlUrl();
         }

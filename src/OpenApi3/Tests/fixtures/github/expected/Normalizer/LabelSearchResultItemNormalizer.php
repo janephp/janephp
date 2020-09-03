@@ -90,7 +90,9 @@ class LabelSearchResultItemNormalizer implements DenormalizerInterface, Normaliz
         if (null !== $object->getDefault()) {
             $data['default'] = $object->getDefault();
         }
-        $data['description'] = $object->getDescription();
+        if (null !== $object->getDescription()) {
+            $data['description'] = $object->getDescription();
+        }
         if (null !== $object->getScore()) {
             $data['score'] = $object->getScore();
         }

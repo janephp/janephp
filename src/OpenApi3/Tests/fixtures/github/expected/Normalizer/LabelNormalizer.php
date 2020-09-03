@@ -74,7 +74,9 @@ class LabelNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         if (null !== $object->getName()) {
             $data['name'] = $object->getName();
         }
-        $data['description'] = $object->getDescription();
+        if (null !== $object->getDescription()) {
+            $data['description'] = $object->getDescription();
+        }
         if (null !== $object->getColor()) {
             $data['color'] = $object->getColor();
         }

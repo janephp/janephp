@@ -65,8 +65,12 @@ class CommunityProfileNormalizer implements DenormalizerInterface, NormalizerInt
         if (null !== $object->getHealthPercentage()) {
             $data['health_percentage'] = $object->getHealthPercentage();
         }
-        $data['description'] = $object->getDescription();
-        $data['documentation'] = $object->getDocumentation();
+        if (null !== $object->getDescription()) {
+            $data['description'] = $object->getDescription();
+        }
+        if (null !== $object->getDocumentation()) {
+            $data['documentation'] = $object->getDocumentation();
+        }
         if (null !== $object->getFiles()) {
             $data['files'] = $this->normalizer->normalize($object->getFiles(), 'json', $context);
         }

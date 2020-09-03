@@ -115,7 +115,9 @@ class CodeSearchResultItemNormalizer implements DenormalizerInterface, Normalize
         if (null !== $object->getFileSize()) {
             $data['file_size'] = $object->getFileSize();
         }
-        $data['language'] = $object->getLanguage();
+        if (null !== $object->getLanguage()) {
+            $data['language'] = $object->getLanguage();
+        }
         if (null !== $object->getLastModifiedAt()) {
             $data['last_modified_at'] = $object->getLastModifiedAt()->format('Y-m-d\\TH:i:sP');
         }

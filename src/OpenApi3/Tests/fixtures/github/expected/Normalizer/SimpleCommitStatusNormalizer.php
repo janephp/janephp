@@ -80,7 +80,9 @@ class SimpleCommitStatusNormalizer implements DenormalizerInterface, NormalizerI
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        $data['description'] = $object->getDescription();
+        if (null !== $object->getDescription()) {
+            $data['description'] = $object->getDescription();
+        }
         if (null !== $object->getId()) {
             $data['id'] = $object->getId();
         }
@@ -96,8 +98,12 @@ class SimpleCommitStatusNormalizer implements DenormalizerInterface, NormalizerI
         if (null !== $object->getTargetUrl()) {
             $data['target_url'] = $object->getTargetUrl();
         }
-        $data['required'] = $object->getRequired();
-        $data['avatar_url'] = $object->getAvatarUrl();
+        if (null !== $object->getRequired()) {
+            $data['required'] = $object->getRequired();
+        }
+        if (null !== $object->getAvatarUrl()) {
+            $data['avatar_url'] = $object->getAvatarUrl();
+        }
         if (null !== $object->getUrl()) {
             $data['url'] = $object->getUrl();
         }

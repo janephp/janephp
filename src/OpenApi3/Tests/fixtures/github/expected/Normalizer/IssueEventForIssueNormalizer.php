@@ -125,8 +125,12 @@ class IssueEventForIssueNormalizer implements DenormalizerInterface, NormalizerI
         if (null !== $object->getEvent()) {
             $data['event'] = $object->getEvent();
         }
-        $data['commit_id'] = $object->getCommitId();
-        $data['commit_url'] = $object->getCommitUrl();
+        if (null !== $object->getCommitId()) {
+            $data['commit_id'] = $object->getCommitId();
+        }
+        if (null !== $object->getCommitUrl()) {
+            $data['commit_url'] = $object->getCommitUrl();
+        }
         if (null !== $object->getCreatedAt()) {
             $data['created_at'] = $object->getCreatedAt();
         }

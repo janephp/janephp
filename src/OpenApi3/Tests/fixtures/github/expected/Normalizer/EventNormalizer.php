@@ -71,7 +71,9 @@ class EventNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         if (null !== $object->getId()) {
             $data['id'] = $object->getId();
         }
-        $data['type'] = $object->getType();
+        if (null !== $object->getType()) {
+            $data['type'] = $object->getType();
+        }
         if (null !== $object->getActor()) {
             $data['actor'] = $this->normalizer->normalize($object->getActor(), 'json', $context);
         }

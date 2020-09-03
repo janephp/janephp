@@ -50,7 +50,9 @@ class UserProjectsPostBodyNormalizer implements DenormalizerInterface, Normalize
         if (null !== $object->getName()) {
             $data['name'] = $object->getName();
         }
-        $data['body'] = $object->getBody();
+        if (null !== $object->getBody()) {
+            $data['body'] = $object->getBody();
+        }
         return $data;
     }
 }

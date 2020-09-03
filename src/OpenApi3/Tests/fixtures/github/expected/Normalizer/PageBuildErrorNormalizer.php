@@ -44,7 +44,9 @@ class PageBuildErrorNormalizer implements DenormalizerInterface, NormalizerInter
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        $data['message'] = $object->getMessage();
+        if (null !== $object->getMessage()) {
+            $data['message'] = $object->getMessage();
+        }
         return $data;
     }
 }

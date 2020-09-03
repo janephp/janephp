@@ -54,17 +54,19 @@ class DocumentNormalizer implements DenormalizerInterface, NormalizerInterface, 
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        $value = $object->getAttributes();
-        if (is_array($object->getAttributes())) {
-            $values = array();
-            foreach ($object->getAttributes() as $value_1) {
-                $values[] = $this->normalizer->normalize($value_1, 'json', $context);
-            }
-            $value = $values;
-        } elseif (is_null($object->getAttributes())) {
+        if (null !== $object->getAttributes()) {
             $value = $object->getAttributes();
+            if (is_array($object->getAttributes())) {
+                $values = array();
+                foreach ($object->getAttributes() as $value_1) {
+                    $values[] = $this->normalizer->normalize($value_1, 'json', $context);
+                }
+                $value = $values;
+            } elseif (is_null($object->getAttributes())) {
+                $value = $object->getAttributes();
+            }
+            $data['attributes'] = $value;
         }
-        $data['attributes'] = $value;
         return $data;
     }
 }

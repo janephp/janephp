@@ -145,11 +145,15 @@ class GistFullforkOfNormalizer implements DenormalizerInterface, NormalizerInter
         if (null !== $object->getUpdatedAt()) {
             $data['updated_at'] = $object->getUpdatedAt();
         }
-        $data['description'] = $object->getDescription();
+        if (null !== $object->getDescription()) {
+            $data['description'] = $object->getDescription();
+        }
         if (null !== $object->getComments()) {
             $data['comments'] = $object->getComments();
         }
-        $data['user'] = $object->getUser();
+        if (null !== $object->getUser()) {
+            $data['user'] = $object->getUser();
+        }
         if (null !== $object->getCommentsUrl()) {
             $data['comments_url'] = $object->getCommentsUrl();
         }

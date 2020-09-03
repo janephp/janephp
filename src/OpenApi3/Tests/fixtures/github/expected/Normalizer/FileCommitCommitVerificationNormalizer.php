@@ -62,8 +62,12 @@ class FileCommitCommitVerificationNormalizer implements DenormalizerInterface, N
         if (null !== $object->getReason()) {
             $data['reason'] = $object->getReason();
         }
-        $data['signature'] = $object->getSignature();
-        $data['payload'] = $object->getPayload();
+        if (null !== $object->getSignature()) {
+            $data['signature'] = $object->getSignature();
+        }
+        if (null !== $object->getPayload()) {
+            $data['payload'] = $object->getPayload();
+        }
         return $data;
     }
 }

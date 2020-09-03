@@ -243,7 +243,9 @@ class PullRequestSimpleNormalizer implements DenormalizerInterface, NormalizerIn
         if (null !== $object->getUser()) {
             $data['user'] = $this->normalizer->normalize($object->getUser(), 'json', $context);
         }
-        $data['body'] = $object->getBody();
+        if (null !== $object->getBody()) {
+            $data['body'] = $object->getBody();
+        }
         if (null !== $object->getLabels()) {
             $values = array();
             foreach ($object->getLabels() as $value) {
@@ -254,7 +256,9 @@ class PullRequestSimpleNormalizer implements DenormalizerInterface, NormalizerIn
         if (null !== $object->getMilestone()) {
             $data['milestone'] = $this->normalizer->normalize($object->getMilestone(), 'json', $context);
         }
-        $data['active_lock_reason'] = $object->getActiveLockReason();
+        if (null !== $object->getActiveLockReason()) {
+            $data['active_lock_reason'] = $object->getActiveLockReason();
+        }
         if (null !== $object->getCreatedAt()) {
             $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
         }
@@ -267,7 +271,9 @@ class PullRequestSimpleNormalizer implements DenormalizerInterface, NormalizerIn
         if (null !== $object->getMergedAt()) {
             $data['merged_at'] = $object->getMergedAt()->format('Y-m-d\\TH:i:sP');
         }
-        $data['merge_commit_sha'] = $object->getMergeCommitSha();
+        if (null !== $object->getMergeCommitSha()) {
+            $data['merge_commit_sha'] = $object->getMergeCommitSha();
+        }
         if (null !== $object->getAssignee()) {
             $data['assignee'] = $this->normalizer->normalize($object->getAssignee(), 'json', $context);
         }

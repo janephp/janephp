@@ -68,7 +68,9 @@ class JobStepsItemNormalizer implements DenormalizerInterface, NormalizerInterfa
         if (null !== $object->getStatus()) {
             $data['status'] = $object->getStatus();
         }
-        $data['conclusion'] = $object->getConclusion();
+        if (null !== $object->getConclusion()) {
+            $data['conclusion'] = $object->getConclusion();
+        }
         if (null !== $object->getName()) {
             $data['name'] = $object->getName();
         }

@@ -140,7 +140,9 @@ class ReviewCommentNormalizer implements DenormalizerInterface, NormalizerInterf
         if (null !== $object->getUrl()) {
             $data['url'] = $object->getUrl();
         }
-        $data['pull_request_review_id'] = $object->getPullRequestReviewId();
+        if (null !== $object->getPullRequestReviewId()) {
+            $data['pull_request_review_id'] = $object->getPullRequestReviewId();
+        }
         if (null !== $object->getId()) {
             $data['id'] = $object->getId();
         }
@@ -153,7 +155,9 @@ class ReviewCommentNormalizer implements DenormalizerInterface, NormalizerInterf
         if (null !== $object->getPath()) {
             $data['path'] = $object->getPath();
         }
-        $data['position'] = $object->getPosition();
+        if (null !== $object->getPosition()) {
+            $data['position'] = $object->getPosition();
+        }
         if (null !== $object->getOriginalPosition()) {
             $data['original_position'] = $object->getOriginalPosition();
         }
@@ -199,15 +203,21 @@ class ReviewCommentNormalizer implements DenormalizerInterface, NormalizerInterf
         if (null !== $object->getSide()) {
             $data['side'] = $object->getSide();
         }
-        $data['start_side'] = $object->getStartSide();
+        if (null !== $object->getStartSide()) {
+            $data['start_side'] = $object->getStartSide();
+        }
         if (null !== $object->getLine()) {
             $data['line'] = $object->getLine();
         }
         if (null !== $object->getOriginalLine()) {
             $data['original_line'] = $object->getOriginalLine();
         }
-        $data['start_line'] = $object->getStartLine();
-        $data['original_start_line'] = $object->getOriginalStartLine();
+        if (null !== $object->getStartLine()) {
+            $data['start_line'] = $object->getStartLine();
+        }
+        if (null !== $object->getOriginalStartLine()) {
+            $data['original_start_line'] = $object->getOriginalStartLine();
+        }
         return $data;
     }
 }

@@ -114,7 +114,9 @@ class InstallationNormalizer implements DenormalizerInterface, NormalizerInterfa
         if (null !== $object->getId()) {
             $data['id'] = $object->getId();
         }
-        $data['account'] = $object->getAccount();
+        if (null !== $object->getAccount()) {
+            $data['account'] = $object->getAccount();
+        }
         if (null !== $object->getRepositorySelection()) {
             $data['repository_selection'] = $object->getRepositorySelection();
         }
@@ -152,7 +154,9 @@ class InstallationNormalizer implements DenormalizerInterface, NormalizerInterfa
         if (null !== $object->getUpdatedAt()) {
             $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
         }
-        $data['single_file_name'] = $object->getSingleFileName();
+        if (null !== $object->getSingleFileName()) {
+            $data['single_file_name'] = $object->getSingleFileName();
+        }
         if (null !== $object->getAppSlug()) {
             $data['app_slug'] = $object->getAppSlug();
         }
@@ -162,7 +166,9 @@ class InstallationNormalizer implements DenormalizerInterface, NormalizerInterfa
         if (null !== $object->getSuspendedAt()) {
             $data['suspended_at'] = $object->getSuspendedAt()->format('Y-m-d\\TH:i:sP');
         }
-        $data['contact_email'] = $object->getContactEmail();
+        if (null !== $object->getContactEmail()) {
+            $data['contact_email'] = $object->getContactEmail();
+        }
         return $data;
     }
 }

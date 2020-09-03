@@ -122,7 +122,9 @@ class PullRequestSimpleMilestoneNormalizer implements DenormalizerInterface, Nor
         if (null !== $object->getTitle()) {
             $data['title'] = $object->getTitle();
         }
-        $data['description'] = $object->getDescription();
+        if (null !== $object->getDescription()) {
+            $data['description'] = $object->getDescription();
+        }
         if (null !== $object->getCreator()) {
             $data['creator'] = $this->normalizer->normalize($object->getCreator(), 'json', $context);
         }

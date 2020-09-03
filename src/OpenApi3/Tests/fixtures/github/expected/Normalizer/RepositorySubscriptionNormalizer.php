@@ -65,7 +65,9 @@ class RepositorySubscriptionNormalizer implements DenormalizerInterface, Normali
         if (null !== $object->getIgnored()) {
             $data['ignored'] = $object->getIgnored();
         }
-        $data['reason'] = $object->getReason();
+        if (null !== $object->getReason()) {
+            $data['reason'] = $object->getReason();
+        }
         if (null !== $object->getCreatedAt()) {
             $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
         }

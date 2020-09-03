@@ -159,7 +159,9 @@ class BaseGistNormalizer implements DenormalizerInterface, NormalizerInterface, 
         if (null !== $object->getUpdatedAt()) {
             $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
         }
-        $data['description'] = $object->getDescription();
+        if (null !== $object->getDescription()) {
+            $data['description'] = $object->getDescription();
+        }
         if (null !== $object->getComments()) {
             $data['comments'] = $object->getComments();
         }

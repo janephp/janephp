@@ -80,7 +80,9 @@ class IssueSearchResultItemLabelsItemNormalizer implements DenormalizerInterface
         if (null !== $object->getDefault()) {
             $data['default'] = $object->getDefault();
         }
-        $data['description'] = $object->getDescription();
+        if (null !== $object->getDescription()) {
+            $data['description'] = $object->getDescription();
+        }
         return $data;
     }
 }

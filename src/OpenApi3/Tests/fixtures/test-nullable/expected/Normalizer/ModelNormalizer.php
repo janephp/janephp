@@ -53,7 +53,9 @@ class ModelNormalizer implements DenormalizerInterface, NormalizerInterface, Den
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        $data['foo'] = $object->getFoo();
+        if (null !== $object->getFoo()) {
+            $data['foo'] = $object->getFoo();
+        }
         if (null !== $object->getBar()) {
             $data['bar'] = $object->getBar();
         }

@@ -111,11 +111,15 @@ class JobNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
         if (null !== $object->getUrl()) {
             $data['url'] = $object->getUrl();
         }
-        $data['html_url'] = $object->getHtmlUrl();
+        if (null !== $object->getHtmlUrl()) {
+            $data['html_url'] = $object->getHtmlUrl();
+        }
         if (null !== $object->getStatus()) {
             $data['status'] = $object->getStatus();
         }
-        $data['conclusion'] = $object->getConclusion();
+        if (null !== $object->getConclusion()) {
+            $data['conclusion'] = $object->getConclusion();
+        }
         if (null !== $object->getStartedAt()) {
             $data['started_at'] = $object->getStartedAt()->format('Y-m-d\\TH:i:sP');
         }

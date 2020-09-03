@@ -56,7 +56,9 @@ class ResponseForbiddenGistBlockNormalizer implements DenormalizerInterface, Nor
         if (null !== $object->getCreatedAt()) {
             $data['created_at'] = $object->getCreatedAt();
         }
-        $data['html_url'] = $object->getHtmlUrl();
+        if (null !== $object->getHtmlUrl()) {
+            $data['html_url'] = $object->getHtmlUrl();
+        }
         return $data;
     }
 }

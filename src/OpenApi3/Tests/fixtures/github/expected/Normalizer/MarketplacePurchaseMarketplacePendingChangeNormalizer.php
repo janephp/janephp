@@ -62,7 +62,9 @@ class MarketplacePurchaseMarketplacePendingChangeNormalizer implements Denormali
         if (null !== $object->getEffectiveDate()) {
             $data['effective_date'] = $object->getEffectiveDate();
         }
-        $data['unit_count'] = $object->getUnitCount();
+        if (null !== $object->getUnitCount()) {
+            $data['unit_count'] = $object->getUnitCount();
+        }
         if (null !== $object->getId()) {
             $data['id'] = $object->getId();
         }

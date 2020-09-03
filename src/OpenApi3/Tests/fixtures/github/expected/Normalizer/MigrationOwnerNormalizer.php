@@ -110,7 +110,9 @@ class MigrationOwnerNormalizer implements DenormalizerInterface, NormalizerInter
         if (null !== $object->getAvatarUrl()) {
             $data['avatar_url'] = $object->getAvatarUrl();
         }
-        $data['gravatar_id'] = $object->getGravatarId();
+        if (null !== $object->getGravatarId()) {
+            $data['gravatar_id'] = $object->getGravatarId();
+        }
         if (null !== $object->getUrl()) {
             $data['url'] = $object->getUrl();
         }

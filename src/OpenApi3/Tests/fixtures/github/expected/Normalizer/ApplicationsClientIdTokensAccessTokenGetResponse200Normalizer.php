@@ -124,20 +124,30 @@ class ApplicationsClientIdTokensAccessTokenGetResponse200Normalizer implements D
         if (null !== $object->getToken()) {
             $data['token'] = $object->getToken();
         }
-        $data['token_last_eight'] = $object->getTokenLastEight();
-        $data['hashed_token'] = $object->getHashedToken();
+        if (null !== $object->getTokenLastEight()) {
+            $data['token_last_eight'] = $object->getTokenLastEight();
+        }
+        if (null !== $object->getHashedToken()) {
+            $data['hashed_token'] = $object->getHashedToken();
+        }
         if (null !== $object->getApp()) {
             $data['app'] = $this->normalizer->normalize($object->getApp(), 'json', $context);
         }
-        $data['note'] = $object->getNote();
-        $data['note_url'] = $object->getNoteUrl();
+        if (null !== $object->getNote()) {
+            $data['note'] = $object->getNote();
+        }
+        if (null !== $object->getNoteUrl()) {
+            $data['note_url'] = $object->getNoteUrl();
+        }
         if (null !== $object->getUpdatedAt()) {
             $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
         }
         if (null !== $object->getCreatedAt()) {
             $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
         }
-        $data['fingerprint'] = $object->getFingerprint();
+        if (null !== $object->getFingerprint()) {
+            $data['fingerprint'] = $object->getFingerprint();
+        }
         if (null !== $object->getUser()) {
             $data['user'] = $this->normalizer->normalize($object->getUser(), 'json', $context);
         }

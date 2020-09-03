@@ -363,7 +363,9 @@ class FullRepositoryTemplateRepositoryNormalizer implements DenormalizerInterfac
         if (null !== $object->getHtmlUrl()) {
             $data['html_url'] = $object->getHtmlUrl();
         }
-        $data['description'] = $object->getDescription();
+        if (null !== $object->getDescription()) {
+            $data['description'] = $object->getDescription();
+        }
         if (null !== $object->getFork()) {
             $data['fork'] = $object->getFork();
         }
@@ -484,15 +486,21 @@ class FullRepositoryTemplateRepositoryNormalizer implements DenormalizerInterfac
         if (null !== $object->getCloneUrl()) {
             $data['clone_url'] = $object->getCloneUrl();
         }
-        $data['mirror_url'] = $object->getMirrorUrl();
+        if (null !== $object->getMirrorUrl()) {
+            $data['mirror_url'] = $object->getMirrorUrl();
+        }
         if (null !== $object->getHooksUrl()) {
             $data['hooks_url'] = $object->getHooksUrl();
         }
         if (null !== $object->getSvnUrl()) {
             $data['svn_url'] = $object->getSvnUrl();
         }
-        $data['homepage'] = $object->getHomepage();
-        $data['language'] = $object->getLanguage();
+        if (null !== $object->getHomepage()) {
+            $data['homepage'] = $object->getHomepage();
+        }
+        if (null !== $object->getLanguage()) {
+            $data['language'] = $object->getLanguage();
+        }
         if (null !== $object->getForksCount()) {
             $data['forks_count'] = $object->getForksCount();
         }

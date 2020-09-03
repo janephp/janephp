@@ -95,12 +95,24 @@ class CheckAnnotationNormalizer implements DenormalizerInterface, NormalizerInte
         if (null !== $object->getEndLine()) {
             $data['end_line'] = $object->getEndLine();
         }
-        $data['start_column'] = $object->getStartColumn();
-        $data['end_column'] = $object->getEndColumn();
-        $data['annotation_level'] = $object->getAnnotationLevel();
-        $data['title'] = $object->getTitle();
-        $data['message'] = $object->getMessage();
-        $data['raw_details'] = $object->getRawDetails();
+        if (null !== $object->getStartColumn()) {
+            $data['start_column'] = $object->getStartColumn();
+        }
+        if (null !== $object->getEndColumn()) {
+            $data['end_column'] = $object->getEndColumn();
+        }
+        if (null !== $object->getAnnotationLevel()) {
+            $data['annotation_level'] = $object->getAnnotationLevel();
+        }
+        if (null !== $object->getTitle()) {
+            $data['title'] = $object->getTitle();
+        }
+        if (null !== $object->getMessage()) {
+            $data['message'] = $object->getMessage();
+        }
+        if (null !== $object->getRawDetails()) {
+            $data['raw_details'] = $object->getRawDetails();
+        }
         if (null !== $object->getBlobHref()) {
             $data['blob_href'] = $object->getBlobHref();
         }

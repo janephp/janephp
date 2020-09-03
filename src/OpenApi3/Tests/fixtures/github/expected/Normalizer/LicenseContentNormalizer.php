@@ -104,9 +104,15 @@ class LicenseContentNormalizer implements DenormalizerInterface, NormalizerInter
         if (null !== $object->getUrl()) {
             $data['url'] = $object->getUrl();
         }
-        $data['html_url'] = $object->getHtmlUrl();
-        $data['git_url'] = $object->getGitUrl();
-        $data['download_url'] = $object->getDownloadUrl();
+        if (null !== $object->getHtmlUrl()) {
+            $data['html_url'] = $object->getHtmlUrl();
+        }
+        if (null !== $object->getGitUrl()) {
+            $data['git_url'] = $object->getGitUrl();
+        }
+        if (null !== $object->getDownloadUrl()) {
+            $data['download_url'] = $object->getDownloadUrl();
+        }
         if (null !== $object->getType()) {
             $data['type'] = $object->getType();
         }

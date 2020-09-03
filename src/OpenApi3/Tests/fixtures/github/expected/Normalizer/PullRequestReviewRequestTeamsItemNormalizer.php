@@ -98,7 +98,9 @@ class PullRequestReviewRequestTeamsItemNormalizer implements DenormalizerInterfa
         if (null !== $object->getSlug()) {
             $data['slug'] = $object->getSlug();
         }
-        $data['description'] = $object->getDescription();
+        if (null !== $object->getDescription()) {
+            $data['description'] = $object->getDescription();
+        }
         if (null !== $object->getPrivacy()) {
             $data['privacy'] = $object->getPrivacy();
         }
@@ -111,7 +113,9 @@ class PullRequestReviewRequestTeamsItemNormalizer implements DenormalizerInterfa
         if (null !== $object->getRepositoriesUrl()) {
             $data['repositories_url'] = $object->getRepositoriesUrl();
         }
-        $data['parent'] = $object->getParent();
+        if (null !== $object->getParent()) {
+            $data['parent'] = $object->getParent();
+        }
         return $data;
     }
 }

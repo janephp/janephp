@@ -228,7 +228,9 @@ class IssueNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         if (null !== $object->getLocked()) {
             $data['locked'] = $object->getLocked();
         }
-        $data['active_lock_reason'] = $object->getActiveLockReason();
+        if (null !== $object->getActiveLockReason()) {
+            $data['active_lock_reason'] = $object->getActiveLockReason();
+        }
         if (null !== $object->getComments()) {
             $data['comments'] = $object->getComments();
         }

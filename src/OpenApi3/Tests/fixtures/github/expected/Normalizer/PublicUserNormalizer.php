@@ -197,7 +197,9 @@ class PublicUserNormalizer implements DenormalizerInterface, NormalizerInterface
         if (null !== $object->getAvatarUrl()) {
             $data['avatar_url'] = $object->getAvatarUrl();
         }
-        $data['gravatar_id'] = $object->getGravatarId();
+        if (null !== $object->getGravatarId()) {
+            $data['gravatar_id'] = $object->getGravatarId();
+        }
         if (null !== $object->getUrl()) {
             $data['url'] = $object->getUrl();
         }
@@ -237,14 +239,30 @@ class PublicUserNormalizer implements DenormalizerInterface, NormalizerInterface
         if (null !== $object->getSiteAdmin()) {
             $data['site_admin'] = $object->getSiteAdmin();
         }
-        $data['name'] = $object->getName();
-        $data['company'] = $object->getCompany();
-        $data['blog'] = $object->getBlog();
-        $data['location'] = $object->getLocation();
-        $data['email'] = $object->getEmail();
-        $data['hireable'] = $object->getHireable();
-        $data['bio'] = $object->getBio();
-        $data['twitter_username'] = $object->getTwitterUsername();
+        if (null !== $object->getName()) {
+            $data['name'] = $object->getName();
+        }
+        if (null !== $object->getCompany()) {
+            $data['company'] = $object->getCompany();
+        }
+        if (null !== $object->getBlog()) {
+            $data['blog'] = $object->getBlog();
+        }
+        if (null !== $object->getLocation()) {
+            $data['location'] = $object->getLocation();
+        }
+        if (null !== $object->getEmail()) {
+            $data['email'] = $object->getEmail();
+        }
+        if (null !== $object->getHireable()) {
+            $data['hireable'] = $object->getHireable();
+        }
+        if (null !== $object->getBio()) {
+            $data['bio'] = $object->getBio();
+        }
+        if (null !== $object->getTwitterUsername()) {
+            $data['twitter_username'] = $object->getTwitterUsername();
+        }
         if (null !== $object->getPublicRepos()) {
             $data['public_repos'] = $object->getPublicRepos();
         }

@@ -161,7 +161,9 @@ class OrganizationNormalizer implements DenormalizerInterface, NormalizerInterfa
         if (null !== $object->getAvatarUrl()) {
             $data['avatar_url'] = $object->getAvatarUrl();
         }
-        $data['description'] = $object->getDescription();
+        if (null !== $object->getDescription()) {
+            $data['description'] = $object->getDescription();
+        }
         if (null !== $object->getBlog()) {
             $data['blog'] = $object->getBlog();
         }

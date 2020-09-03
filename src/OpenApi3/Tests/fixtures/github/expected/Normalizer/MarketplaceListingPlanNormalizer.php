@@ -114,7 +114,9 @@ class MarketplaceListingPlanNormalizer implements DenormalizerInterface, Normali
         if (null !== $object->getHasFreeTrial()) {
             $data['has_free_trial'] = $object->getHasFreeTrial();
         }
-        $data['unit_name'] = $object->getUnitName();
+        if (null !== $object->getUnitName()) {
+            $data['unit_name'] = $object->getUnitName();
+        }
         if (null !== $object->getState()) {
             $data['state'] = $object->getState();
         }
