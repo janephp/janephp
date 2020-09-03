@@ -3,7 +3,7 @@
 namespace Gounlaf\JanephpBug\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
-use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
+use Gounlaf\JanephpBug\Runtime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -33,6 +33,9 @@ class PatchableEntityNormalizer implements DenormalizerInterface, NormalizerInte
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Gounlaf\JanephpBug\Model\PatchableEntity();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('nullable_property', $data) && $data['nullable_property'] !== null) {
             $object->setNullableProperty($data['nullable_property']);
         }

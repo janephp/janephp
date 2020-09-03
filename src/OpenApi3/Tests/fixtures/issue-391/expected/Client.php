@@ -2,7 +2,7 @@
 
 namespace Gounlaf\JanephpBug;
 
-class Client extends \Jane\OpenApiRuntime\Client\Client
+class Client extends \Gounlaf\JanephpBug\Runtime\Client\Client
 {
     /**
      * 
