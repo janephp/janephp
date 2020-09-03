@@ -2,7 +2,7 @@
 
 namespace Jane\JsonSchema\Tests\Expected\Normalizer;
 
-use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
+use Jane\JsonSchema\Tests\Expected\Runtime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -14,7 +14,7 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
-    protected $normalizers = array('Jane\\JsonSchema\\Tests\\Expected\\Model\\AdditionalProperties' => 'Jane\\JsonSchema\\Tests\\Expected\\Normalizer\\AdditionalPropertiesNormalizer', 'Jane\\JsonSchema\\Tests\\Expected\\Model\\PatternProperties' => 'Jane\\JsonSchema\\Tests\\Expected\\Normalizer\\PatternPropertiesNormalizer', '\\Jane\\JsonSchemaRuntime\\Reference' => '\\Jane\\JsonSchemaRuntime\\Normalizer\\ReferenceNormalizer'), $normalizersCache = array();
+    protected $normalizers = array('Jane\\JsonSchema\\Tests\\Expected\\Model\\AdditionalProperties' => 'Jane\\JsonSchema\\Tests\\Expected\\Normalizer\\AdditionalPropertiesNormalizer', 'Jane\\JsonSchema\\Tests\\Expected\\Model\\PatternProperties' => 'Jane\\JsonSchema\\Tests\\Expected\\Normalizer\\PatternPropertiesNormalizer', '\\Jane\\JsonSchemaRuntime\\Reference' => '\\Jane\\JsonSchema\\Tests\\Expected\\Runtime\\Normalizer\\ReferenceNormalizer'), $normalizersCache = array();
     public function supportsDenormalization($data, $type, $format = null)
     {
         return array_key_exists($type, $this->normalizers);

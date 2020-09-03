@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class TeamsUpdateLegacy extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class TeamsUpdateLegacy extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $team_id;
     /**
@@ -20,7 +20,7 @@ class TeamsUpdateLegacy extends \Jane\OpenApiRuntime\Client\BaseEndpoint impleme
         $this->team_id = $teamId;
         $this->body = $requestBody;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'PATCH';

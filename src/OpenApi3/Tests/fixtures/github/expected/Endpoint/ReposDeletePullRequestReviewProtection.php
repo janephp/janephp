@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class ReposDeletePullRequestReviewProtection extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class ReposDeletePullRequestReviewProtection extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $owner;
     protected $repo;
@@ -20,7 +20,7 @@ class ReposDeletePullRequestReviewProtection extends \Jane\OpenApiRuntime\Client
         $this->repo = $repo;
         $this->branch = $branch;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'DELETE';

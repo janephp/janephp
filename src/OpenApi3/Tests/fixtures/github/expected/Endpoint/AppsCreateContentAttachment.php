@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class AppsCreateContentAttachment extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class AppsCreateContentAttachment extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $content_reference_id;
     /**
@@ -20,7 +20,7 @@ class AppsCreateContentAttachment extends \Jane\OpenApiRuntime\Client\BaseEndpoi
         $this->content_reference_id = $contentReferenceId;
         $this->body = $requestBody;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'POST';

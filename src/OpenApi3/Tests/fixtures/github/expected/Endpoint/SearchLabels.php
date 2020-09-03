@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class SearchLabels extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class SearchLabels extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     /**
     * Find labels in a repository with names or descriptions that match search keywords. Returns up to 100 results [per page](https://developer.github.com/v3/#pagination).
@@ -26,7 +26,7 @@ class SearchLabels extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \
     {
         $this->queryParameters = $queryParameters;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';

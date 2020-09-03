@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class TeamsUpdateDiscussionCommentLegacy extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class TeamsUpdateDiscussionCommentLegacy extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $team_id;
     protected $discussion_number;
@@ -24,7 +24,7 @@ class TeamsUpdateDiscussionCommentLegacy extends \Jane\OpenApiRuntime\Client\Bas
         $this->comment_number = $commentNumber;
         $this->body = $requestBody;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'PATCH';

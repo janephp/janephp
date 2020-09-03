@@ -11,7 +11,7 @@ declare(strict_types=1);
 namespace Jane\OpenApi2\JsonSchema\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
-use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
+use Jane\OpenApi2\JsonSchema\Runtime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;

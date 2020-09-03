@@ -2,7 +2,7 @@
 
 namespace ApiPlatform\Demo\Endpoint;
 
-class PostParchmentCollection extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class PostParchmentCollection extends \ApiPlatform\Demo\Runtime\Client\BaseEndpoint implements \ApiPlatform\Demo\Runtime\Client\Endpoint
 {
     /**
      * 
@@ -13,7 +13,7 @@ class PostParchmentCollection extends \Jane\OpenApiRuntime\Client\BaseEndpoint i
     {
         $this->body = $requestBody;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \ApiPlatform\Demo\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'POST';

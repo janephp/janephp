@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class ChecksRerequestSuite extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class ChecksRerequestSuite extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $owner;
     protected $repo;
@@ -22,7 +22,7 @@ class ChecksRerequestSuite extends \Jane\OpenApiRuntime\Client\BaseEndpoint impl
         $this->repo = $repo;
         $this->check_suite_id = $checkSuiteId;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'POST';

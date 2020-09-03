@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class ActionsDeleteRepoSecret extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class ActionsDeleteRepoSecret extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $owner;
     protected $repo;
@@ -20,7 +20,7 @@ class ActionsDeleteRepoSecret extends \Jane\OpenApiRuntime\Client\BaseEndpoint i
         $this->repo = $repo;
         $this->secret_name = $secretName;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'DELETE';

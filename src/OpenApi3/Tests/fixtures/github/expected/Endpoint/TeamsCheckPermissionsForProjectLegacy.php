@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class TeamsCheckPermissionsForProjectLegacy extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class TeamsCheckPermissionsForProjectLegacy extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $team_id;
     protected $project_id;
@@ -19,7 +19,7 @@ class TeamsCheckPermissionsForProjectLegacy extends \Jane\OpenApiRuntime\Client\
         $this->team_id = $teamId;
         $this->project_id = $projectId;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';

@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class ReposGetCodeFrequencyStats extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class ReposGetCodeFrequencyStats extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $owner;
     protected $repo;
@@ -17,7 +17,7 @@ class ReposGetCodeFrequencyStats extends \Jane\OpenApiRuntime\Client\BaseEndpoin
         $this->owner = $owner;
         $this->repo = $repo;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';

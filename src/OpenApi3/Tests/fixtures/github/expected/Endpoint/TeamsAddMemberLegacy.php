@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class TeamsAddMemberLegacy extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class TeamsAddMemberLegacy extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $team_id;
     protected $username;
@@ -27,7 +27,7 @@ class TeamsAddMemberLegacy extends \Jane\OpenApiRuntime\Client\BaseEndpoint impl
         $this->team_id = $teamId;
         $this->username = $username;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'PUT';

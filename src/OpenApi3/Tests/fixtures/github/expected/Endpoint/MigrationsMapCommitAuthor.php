@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class MigrationsMapCommitAuthor extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class MigrationsMapCommitAuthor extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $owner;
     protected $repo;
@@ -22,7 +22,7 @@ class MigrationsMapCommitAuthor extends \Jane\OpenApiRuntime\Client\BaseEndpoint
         $this->author_id = $authorId;
         $this->body = $requestBody;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'PATCH';

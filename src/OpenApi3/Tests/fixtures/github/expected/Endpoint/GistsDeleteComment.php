@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class GistsDeleteComment extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class GistsDeleteComment extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $gist_id;
     protected $comment_id;
@@ -17,7 +17,7 @@ class GistsDeleteComment extends \Jane\OpenApiRuntime\Client\BaseEndpoint implem
         $this->gist_id = $gistId;
         $this->comment_id = $commentId;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'DELETE';

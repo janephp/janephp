@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class ReposCompareCommits extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class ReposCompareCommits extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $owner;
     protected $repo;
@@ -55,7 +55,7 @@ class ReposCompareCommits extends \Jane\OpenApiRuntime\Client\BaseEndpoint imple
         $this->base = $base;
         $this->head = $head;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';

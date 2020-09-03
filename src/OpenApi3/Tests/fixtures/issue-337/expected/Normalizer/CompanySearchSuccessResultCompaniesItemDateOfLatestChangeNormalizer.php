@@ -3,7 +3,7 @@
 namespace CreditSafe\API\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
-use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
+use CreditSafe\API\Runtime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;

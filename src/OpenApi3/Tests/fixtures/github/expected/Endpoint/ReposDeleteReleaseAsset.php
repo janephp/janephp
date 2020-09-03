@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class ReposDeleteReleaseAsset extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class ReposDeleteReleaseAsset extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $owner;
     protected $repo;
@@ -20,7 +20,7 @@ class ReposDeleteReleaseAsset extends \Jane\OpenApiRuntime\Client\BaseEndpoint i
         $this->repo = $repo;
         $this->asset_id = $assetId;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'DELETE';

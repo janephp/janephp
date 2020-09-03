@@ -2,9 +2,9 @@
 
 namespace Jane\OpenApi2\Tests\Expected\Endpoint;
 
-class GetAnotherThing extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class GetAnotherThing extends \Jane\OpenApi2\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\OpenApi2\Tests\Expected\Runtime\Client\Endpoint
 {
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Jane\OpenApi2\Tests\Expected\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';

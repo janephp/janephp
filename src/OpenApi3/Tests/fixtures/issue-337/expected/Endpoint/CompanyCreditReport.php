@@ -2,7 +2,7 @@
 
 namespace CreditSafe\API\Endpoint;
 
-class CompanyCreditReport extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class CompanyCreditReport extends \CreditSafe\API\Runtime\Client\BaseEndpoint implements \CreditSafe\API\Runtime\Client\Endpoint
 {
     protected $id;
     /**
@@ -25,7 +25,7 @@ class CompanyCreditReport extends \Jane\OpenApiRuntime\Client\BaseEndpoint imple
         $this->queryParameters = $queryParameters;
         $this->headerParameters = $headerParameters;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \CreditSafe\API\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';

@@ -2,7 +2,7 @@
 
 namespace Jane\OpenApi3\Tests\Expected\Endpoint;
 
-class GetTest extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class GetTest extends \Jane\OpenApi3\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\OpenApi3\Tests\Expected\Runtime\Client\Endpoint
 {
     /**
      * 
@@ -13,7 +13,7 @@ class GetTest extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\
     {
         $this->body = $requestBody;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Jane\OpenApi3\Tests\Expected\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';

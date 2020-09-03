@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class ReposListCommitCommentsForRepo extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class ReposListCommitCommentsForRepo extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $owner;
     protected $repo;
@@ -24,7 +24,7 @@ class ReposListCommitCommentsForRepo extends \Jane\OpenApiRuntime\Client\BaseEnd
         $this->repo = $repo;
         $this->queryParameters = $queryParameters;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';

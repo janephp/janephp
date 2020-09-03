@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class TeamsDeleteInOrg extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class TeamsDeleteInOrg extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $org;
     protected $team_slug;
@@ -21,7 +21,7 @@ class TeamsDeleteInOrg extends \Jane\OpenApiRuntime\Client\BaseEndpoint implemen
         $this->org = $org;
         $this->team_slug = $teamSlug;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'DELETE';

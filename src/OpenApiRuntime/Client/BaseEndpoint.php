@@ -6,6 +6,9 @@ use Http\Message\MultipartStream\MultipartStreamBuilder;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Serializer\SerializerInterface;
 
+/**
+ * @deprecated Deprecated since v6.2.0, will removed in v7.0.0 and is already replaced by generated Runtime
+ */
 abstract class BaseEndpoint implements Endpoint
 {
     protected $queryParameters = [];

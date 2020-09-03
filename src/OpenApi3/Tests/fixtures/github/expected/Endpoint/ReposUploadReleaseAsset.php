@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class ReposUploadReleaseAsset extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class ReposUploadReleaseAsset extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $owner;
     protected $repo;
@@ -44,7 +44,7 @@ class ReposUploadReleaseAsset extends \Jane\OpenApiRuntime\Client\BaseEndpoint i
         $this->body = $requestBody;
         $this->queryParameters = $queryParameters;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'POST';

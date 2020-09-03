@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class ReposDownloadZipballArchive extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class ReposDownloadZipballArchive extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $owner;
     protected $repo;
@@ -23,7 +23,7 @@ class ReposDownloadZipballArchive extends \Jane\OpenApiRuntime\Client\BaseEndpoi
         $this->repo = $repo;
         $this->ref = $ref;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';

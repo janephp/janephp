@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class AppsDeleteInstallation extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class AppsDeleteInstallation extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $installation_id;
     /**
@@ -16,7 +16,7 @@ class AppsDeleteInstallation extends \Jane\OpenApiRuntime\Client\BaseEndpoint im
     {
         $this->installation_id = $installationId;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'DELETE';

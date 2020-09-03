@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class TeamsListIdpGroupsForLegacy extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class TeamsListIdpGroupsForLegacy extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $team_id;
     /**
@@ -18,7 +18,7 @@ class TeamsListIdpGroupsForLegacy extends \Jane\OpenApiRuntime\Client\BaseEndpoi
     {
         $this->team_id = $teamId;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';

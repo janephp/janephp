@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class MigrationsDeleteArchiveForAuthenticatedUser extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class MigrationsDeleteArchiveForAuthenticatedUser extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $migration_id;
     /**
@@ -14,7 +14,7 @@ class MigrationsDeleteArchiveForAuthenticatedUser extends \Jane\OpenApiRuntime\C
     {
         $this->migration_id = $migrationId;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'DELETE';

@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class IssuesRemoveAssignees extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class IssuesRemoveAssignees extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $owner;
     protected $repo;
@@ -22,7 +22,7 @@ class IssuesRemoveAssignees extends \Jane\OpenApiRuntime\Client\BaseEndpoint imp
         $this->issue_number = $issueNumber;
         $this->body = $requestBody;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'DELETE';

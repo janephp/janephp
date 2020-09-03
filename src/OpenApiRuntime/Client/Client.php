@@ -9,6 +9,9 @@ use Psr\Http\Message\StreamFactoryInterface;
 use Psr\Http\Message\StreamInterface;
 use Symfony\Component\Serializer\SerializerInterface;
 
+/**
+ * @deprecated Deprecated since v6.2.0, will removed in v7.0.0 and is already replaced by generated Runtime
+ */
 abstract class Client
 {
     public const FETCH_RESPONSE = 'response';

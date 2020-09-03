@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class BillingGetSharedStorageBillingOrg extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class BillingGetSharedStorageBillingOrg extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $org;
     /**
@@ -20,7 +20,7 @@ class BillingGetSharedStorageBillingOrg extends \Jane\OpenApiRuntime\Client\Base
     {
         $this->org = $org;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';

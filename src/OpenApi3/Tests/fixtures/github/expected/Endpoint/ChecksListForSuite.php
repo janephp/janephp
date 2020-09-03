@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class ChecksListForSuite extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class ChecksListForSuite extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $owner;
     protected $repo;
@@ -30,7 +30,7 @@ class ChecksListForSuite extends \Jane\OpenApiRuntime\Client\BaseEndpoint implem
         $this->check_suite_id = $checkSuiteId;
         $this->queryParameters = $queryParameters;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';

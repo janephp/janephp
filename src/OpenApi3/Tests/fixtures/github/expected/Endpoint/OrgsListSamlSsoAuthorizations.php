@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class OrgsListSamlSsoAuthorizations extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class OrgsListSamlSsoAuthorizations extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $org;
     /**
@@ -16,7 +16,7 @@ class OrgsListSamlSsoAuthorizations extends \Jane\OpenApiRuntime\Client\BaseEndp
     {
         $this->org = $org;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';

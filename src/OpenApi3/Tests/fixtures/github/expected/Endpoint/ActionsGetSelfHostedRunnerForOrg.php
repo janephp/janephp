@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class ActionsGetSelfHostedRunnerForOrg extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class ActionsGetSelfHostedRunnerForOrg extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $org;
     protected $runner_id;
@@ -19,7 +19,7 @@ class ActionsGetSelfHostedRunnerForOrg extends \Jane\OpenApiRuntime\Client\BaseE
         $this->org = $org;
         $this->runner_id = $runnerId;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';

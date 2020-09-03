@@ -2,7 +2,7 @@
 
 namespace Jane\OpenApi2\Tests\Expected\Endpoint;
 
-class TestPostWithPathParameters extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class TestPostWithPathParameters extends \Jane\OpenApi2\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\OpenApi2\Tests\Expected\Runtime\Client\Endpoint
 {
     /**
      * 
@@ -21,7 +21,7 @@ class TestPostWithPathParameters extends \Jane\OpenApiRuntime\Client\BaseEndpoin
         $this->queryParameters = $queryParameters;
         $this->headerParameters = $headerParameters;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Jane\OpenApi2\Tests\Expected\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'POST';

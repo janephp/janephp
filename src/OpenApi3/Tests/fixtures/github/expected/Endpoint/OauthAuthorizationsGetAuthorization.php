@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class OauthAuthorizationsGetAuthorization extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class OauthAuthorizationsGetAuthorization extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $authorization_id;
     /**
@@ -14,7 +14,7 @@ class OauthAuthorizationsGetAuthorization extends \Jane\OpenApiRuntime\Client\Ba
     {
         $this->authorization_id = $authorizationId;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';

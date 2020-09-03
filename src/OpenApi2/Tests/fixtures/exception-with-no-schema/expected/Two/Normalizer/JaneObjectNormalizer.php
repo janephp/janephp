@@ -2,7 +2,7 @@
 
 namespace Jane\OpenApi2\Tests\Expected\Two\Normalizer;
 
-use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
+use Jane\OpenApi2\Tests\Expected\Two\Runtime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -14,7 +14,7 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
-    protected $normalizers = array('Jane\\OpenApi2\\Tests\\Expected\\Two\\Model\\TestTwoGetResponse200' => 'Jane\\OpenApi2\\Tests\\Expected\\Two\\Normalizer\\TestTwoGetResponse200Normalizer', '\\Jane\\JsonSchemaRuntime\\Reference' => '\\Jane\\JsonSchemaRuntime\\Normalizer\\ReferenceNormalizer'), $normalizersCache = array();
+    protected $normalizers = array('Jane\\OpenApi2\\Tests\\Expected\\Two\\Model\\TestTwoGetResponse200' => 'Jane\\OpenApi2\\Tests\\Expected\\Two\\Normalizer\\TestTwoGetResponse200Normalizer', '\\Jane\\JsonSchemaRuntime\\Reference' => '\\Jane\\OpenApi2\\Tests\\Expected\\Two\\Runtime\\Normalizer\\ReferenceNormalizer'), $normalizersCache = array();
     public function supportsDenormalization($data, $type, $format = null)
     {
         return array_key_exists($type, $this->normalizers);

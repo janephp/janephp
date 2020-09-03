@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class ReposSetAdminBranchProtection extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class ReposSetAdminBranchProtection extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $owner;
     protected $repo;
@@ -22,7 +22,7 @@ class ReposSetAdminBranchProtection extends \Jane\OpenApiRuntime\Client\BaseEndp
         $this->repo = $repo;
         $this->branch = $branch;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'POST';

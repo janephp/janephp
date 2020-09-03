@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class PullsMerge extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class PullsMerge extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $owner;
     protected $repo;
@@ -22,7 +22,7 @@ class PullsMerge extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Ja
         $this->pull_number = $pullNumber;
         $this->body = $requestBody;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'PUT';

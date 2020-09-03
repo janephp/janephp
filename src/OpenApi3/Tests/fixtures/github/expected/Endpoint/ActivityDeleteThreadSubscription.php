@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class ActivityDeleteThreadSubscription extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class ActivityDeleteThreadSubscription extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $thread_id;
     /**
@@ -14,7 +14,7 @@ class ActivityDeleteThreadSubscription extends \Jane\OpenApiRuntime\Client\BaseE
     {
         $this->thread_id = $threadId;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'DELETE';

@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class SearchUsers extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class SearchUsers extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     /**
     * Find users via various criteria. This method returns up to 100 results [per page](https://developer.github.com/v3/#pagination).
@@ -27,7 +27,7 @@ class SearchUsers extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \J
     {
         $this->queryParameters = $queryParameters;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';

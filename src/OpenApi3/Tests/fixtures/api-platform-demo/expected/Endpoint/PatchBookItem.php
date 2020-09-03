@@ -2,7 +2,7 @@
 
 namespace ApiPlatform\Demo\Endpoint;
 
-class PatchBookItem extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class PatchBookItem extends \ApiPlatform\Demo\Runtime\Client\BaseEndpoint implements \ApiPlatform\Demo\Runtime\Client\Endpoint
 {
     protected $id;
     /**
@@ -16,7 +16,7 @@ class PatchBookItem extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements 
         $this->id = $id;
         $this->body = $requestBody;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \ApiPlatform\Demo\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'PATCH';

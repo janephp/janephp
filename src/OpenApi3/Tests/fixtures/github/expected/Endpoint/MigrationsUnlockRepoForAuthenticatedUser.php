@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class MigrationsUnlockRepoForAuthenticatedUser extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class MigrationsUnlockRepoForAuthenticatedUser extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $migration_id;
     protected $repo_name;
@@ -17,7 +17,7 @@ class MigrationsUnlockRepoForAuthenticatedUser extends \Jane\OpenApiRuntime\Clie
         $this->migration_id = $migrationId;
         $this->repo_name = $repoName;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'DELETE';

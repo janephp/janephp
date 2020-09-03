@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class IssuesGetLabel extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class IssuesGetLabel extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $owner;
     protected $repo;
@@ -20,7 +20,7 @@ class IssuesGetLabel extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements
         $this->repo = $repo;
         $this->name = $name;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';

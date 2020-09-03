@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class ReposListPullRequestsAssociatedWithCommit extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class ReposListPullRequestsAssociatedWithCommit extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $owner;
     protected $repo;
@@ -25,7 +25,7 @@ class ReposListPullRequestsAssociatedWithCommit extends \Jane\OpenApiRuntime\Cli
         $this->commit_sha = $commitSha;
         $this->queryParameters = $queryParameters;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';

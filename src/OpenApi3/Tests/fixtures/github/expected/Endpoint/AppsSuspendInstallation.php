@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class AppsSuspendInstallation extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class AppsSuspendInstallation extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $installation_id;
     /**
@@ -20,7 +20,7 @@ class AppsSuspendInstallation extends \Jane\OpenApiRuntime\Client\BaseEndpoint i
     {
         $this->installation_id = $installationId;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'PUT';

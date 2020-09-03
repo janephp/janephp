@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class CodeScanningGetAlert extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class CodeScanningGetAlert extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $owner;
     protected $repo;
@@ -22,7 +22,7 @@ class CodeScanningGetAlert extends \Jane\OpenApiRuntime\Client\BaseEndpoint impl
         $this->repo = $repo;
         $this->alert_id = $alertId;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';

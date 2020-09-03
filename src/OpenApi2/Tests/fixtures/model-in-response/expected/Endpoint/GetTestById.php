@@ -2,7 +2,7 @@
 
 namespace Jane\OpenApi2\Tests\Expected\Endpoint;
 
-class GetTestById extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class GetTestById extends \Jane\OpenApi2\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\OpenApi2\Tests\Expected\Runtime\Client\Endpoint
 {
     protected $id;
     /**
@@ -14,7 +14,7 @@ class GetTestById extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \J
     {
         $this->id = $id;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Jane\OpenApi2\Tests\Expected\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';

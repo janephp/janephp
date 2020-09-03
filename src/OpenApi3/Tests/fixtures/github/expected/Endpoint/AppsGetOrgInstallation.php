@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class AppsGetOrgInstallation extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class AppsGetOrgInstallation extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $org;
     /**
@@ -16,7 +16,7 @@ class AppsGetOrgInstallation extends \Jane\OpenApiRuntime\Client\BaseEndpoint im
     {
         $this->org = $org;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';

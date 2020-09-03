@@ -2,7 +2,7 @@
 
 namespace Jane\OpenApi3\Tests\Expected\Endpoint;
 
-class TweetsRecentSearch extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class TweetsRecentSearch extends \Jane\OpenApi3\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\OpenApi3\Tests\Expected\Runtime\Client\Endpoint
 {
     /**
      * Returns Tweets from the last 7 days that match a search query.
@@ -26,7 +26,7 @@ class TweetsRecentSearch extends \Jane\OpenApiRuntime\Client\BaseEndpoint implem
     {
         $this->queryParameters = $queryParameters;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Jane\OpenApi3\Tests\Expected\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';

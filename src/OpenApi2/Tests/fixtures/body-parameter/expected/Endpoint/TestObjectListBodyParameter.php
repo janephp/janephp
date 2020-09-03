@@ -2,7 +2,7 @@
 
 namespace Jane\OpenApi2\Tests\Expected\Endpoint;
 
-class TestObjectListBodyParameter extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class TestObjectListBodyParameter extends \Jane\OpenApi2\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\OpenApi2\Tests\Expected\Runtime\Client\Endpoint
 {
     /**
      * 
@@ -13,7 +13,7 @@ class TestObjectListBodyParameter extends \Jane\OpenApiRuntime\Client\BaseEndpoi
     {
         $this->body = $testObjectList;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Jane\OpenApi2\Tests\Expected\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'POST';

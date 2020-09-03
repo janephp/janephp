@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class IssuesList extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class IssuesList extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     /**
     * List issues assigned to the authenticated user across all visible repositories including owned repositories, member
@@ -40,7 +40,7 @@ class IssuesList extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Ja
     {
         $this->queryParameters = $queryParameters;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';

@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class TeamsRemoveRepoInOrg extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class TeamsRemoveRepoInOrg extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $org;
     protected $team_slug;
@@ -24,7 +24,7 @@ class TeamsRemoveRepoInOrg extends \Jane\OpenApiRuntime\Client\BaseEndpoint impl
         $this->owner = $owner;
         $this->repo = $repo;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'DELETE';

@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class ReposListCommitStatusesForRef extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class ReposListCommitStatusesForRef extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $owner;
     protected $repo;
@@ -27,7 +27,7 @@ class ReposListCommitStatusesForRef extends \Jane\OpenApiRuntime\Client\BaseEndp
         $this->ref = $ref;
         $this->queryParameters = $queryParameters;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';

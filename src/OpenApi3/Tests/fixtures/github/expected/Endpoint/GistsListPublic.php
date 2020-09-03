@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class GistsListPublic extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class GistsListPublic extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     /**
     * List public gists sorted by most recently updated to least recently updated.
@@ -19,7 +19,7 @@ class GistsListPublic extends \Jane\OpenApiRuntime\Client\BaseEndpoint implement
     {
         $this->queryParameters = $queryParameters;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';

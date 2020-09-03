@@ -2,7 +2,7 @@
 
 namespace ApiPlatform\Demo\Endpoint;
 
-class PutReviewItem extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class PutReviewItem extends \ApiPlatform\Demo\Runtime\Client\BaseEndpoint implements \ApiPlatform\Demo\Runtime\Client\Endpoint
 {
     protected $id;
     /**
@@ -16,7 +16,7 @@ class PutReviewItem extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements 
         $this->id = $id;
         $this->body = $requestBody;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \ApiPlatform\Demo\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'PUT';

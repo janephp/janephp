@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class TeamsAddOrUpdateMembershipForUserInOrg extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class TeamsAddOrUpdateMembershipForUserInOrg extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $org;
     protected $team_slug;
@@ -32,7 +32,7 @@ class TeamsAddOrUpdateMembershipForUserInOrg extends \Jane\OpenApiRuntime\Client
         $this->username = $username;
         $this->body = $requestBody;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'PUT';

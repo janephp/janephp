@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class OrgsListBlockedUsers extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class OrgsListBlockedUsers extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $org;
     /**
@@ -14,7 +14,7 @@ class OrgsListBlockedUsers extends \Jane\OpenApiRuntime\Client\BaseEndpoint impl
     {
         $this->org = $org;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';

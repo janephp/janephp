@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class TeamsUpdateInOrg extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class TeamsUpdateInOrg extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $org;
     protected $team_slug;
@@ -20,7 +20,7 @@ class TeamsUpdateInOrg extends \Jane\OpenApiRuntime\Client\BaseEndpoint implemen
         $this->team_slug = $teamSlug;
         $this->body = $requestBody;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'PATCH';

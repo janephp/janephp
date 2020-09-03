@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class ProjectsUpdateColumn extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class ProjectsUpdateColumn extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $column_id;
     /**
@@ -16,7 +16,7 @@ class ProjectsUpdateColumn extends \Jane\OpenApiRuntime\Client\BaseEndpoint impl
         $this->column_id = $columnId;
         $this->body = $requestBody;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'PATCH';

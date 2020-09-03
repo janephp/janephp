@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class MarkdownRender extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class MarkdownRender extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     /**
      * 
@@ -13,7 +13,7 @@ class MarkdownRender extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements
     {
         $this->body = $requestBody;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'POST';

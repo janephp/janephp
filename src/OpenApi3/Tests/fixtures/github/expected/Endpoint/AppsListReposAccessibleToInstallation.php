@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class AppsListReposAccessibleToInstallation extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class AppsListReposAccessibleToInstallation extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     /**
     * List repositories that an app installation can access.
@@ -18,7 +18,7 @@ class AppsListReposAccessibleToInstallation extends \Jane\OpenApiRuntime\Client\
     {
         $this->queryParameters = $queryParameters;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';

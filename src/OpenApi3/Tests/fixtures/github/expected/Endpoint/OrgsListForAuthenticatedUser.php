@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class OrgsListForAuthenticatedUser extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class OrgsListForAuthenticatedUser extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     /**
     * List organizations for the authenticated user.
@@ -20,7 +20,7 @@ class OrgsListForAuthenticatedUser extends \Jane\OpenApiRuntime\Client\BaseEndpo
     {
         $this->queryParameters = $queryParameters;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';

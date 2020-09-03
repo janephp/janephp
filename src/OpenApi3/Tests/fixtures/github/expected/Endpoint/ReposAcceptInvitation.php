@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class ReposAcceptInvitation extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class ReposAcceptInvitation extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $invitation_id;
     /**
@@ -14,7 +14,7 @@ class ReposAcceptInvitation extends \Jane\OpenApiRuntime\Client\BaseEndpoint imp
     {
         $this->invitation_id = $invitationId;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'PATCH';

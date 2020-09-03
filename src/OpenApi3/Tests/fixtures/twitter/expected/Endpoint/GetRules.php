@@ -2,7 +2,7 @@
 
 namespace Jane\OpenApi3\Tests\Expected\Endpoint;
 
-class GetRules extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class GetRules extends \Jane\OpenApi3\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\OpenApi3\Tests\Expected\Runtime\Client\Endpoint
 {
     /**
      * Returns rules from a user's active rule set. Users can fetch all of their rules or a subset, specified by the provided rule ids.
@@ -15,7 +15,7 @@ class GetRules extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane
     {
         $this->queryParameters = $queryParameters;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Jane\OpenApi3\Tests\Expected\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';

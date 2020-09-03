@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class ActivityListReposStarredByAuthenticatedUser extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class ActivityListReposStarredByAuthenticatedUser extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     /**
     * Lists repositories the authenticated user has starred.
@@ -20,7 +20,7 @@ class ActivityListReposStarredByAuthenticatedUser extends \Jane\OpenApiRuntime\C
     {
         $this->queryParameters = $queryParameters;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';

@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class TeamsDeleteDiscussionCommentLegacy extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class TeamsDeleteDiscussionCommentLegacy extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $team_id;
     protected $discussion_number;
@@ -22,7 +22,7 @@ class TeamsDeleteDiscussionCommentLegacy extends \Jane\OpenApiRuntime\Client\Bas
         $this->discussion_number = $discussionNumber;
         $this->comment_number = $commentNumber;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'DELETE';

@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class ReposGetCollaboratorPermissionLevel extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class ReposGetCollaboratorPermissionLevel extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $owner;
     protected $repo;
@@ -20,7 +20,7 @@ class ReposGetCollaboratorPermissionLevel extends \Jane\OpenApiRuntime\Client\Ba
         $this->repo = $repo;
         $this->username = $username;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';

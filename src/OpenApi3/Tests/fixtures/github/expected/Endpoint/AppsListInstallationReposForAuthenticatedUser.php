@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class AppsListInstallationReposForAuthenticatedUser extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class AppsListInstallationReposForAuthenticatedUser extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $installation_id;
     /**
@@ -25,7 +25,7 @@ class AppsListInstallationReposForAuthenticatedUser extends \Jane\OpenApiRuntime
         $this->installation_id = $installationId;
         $this->queryParameters = $queryParameters;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';

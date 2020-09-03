@@ -2,7 +2,7 @@
 
 namespace Jane\JsonSchema\Tests\Expected\Schema2\Normalizer;
 
-use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
+use Jane\JsonSchema\Tests\Expected\Schema2\Runtime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;

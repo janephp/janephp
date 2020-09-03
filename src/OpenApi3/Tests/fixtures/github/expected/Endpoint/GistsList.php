@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class GistsList extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class GistsList extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     /**
      * Lists the authenticated user's gists or if called anonymously, this endpoint returns all public gists:
@@ -17,7 +17,7 @@ class GistsList extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jan
     {
         $this->queryParameters = $queryParameters;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';

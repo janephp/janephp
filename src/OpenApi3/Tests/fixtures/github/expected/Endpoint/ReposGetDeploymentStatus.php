@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class ReposGetDeploymentStatus extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class ReposGetDeploymentStatus extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $owner;
     protected $repo;
@@ -23,7 +23,7 @@ class ReposGetDeploymentStatus extends \Jane\OpenApiRuntime\Client\BaseEndpoint 
         $this->deployment_id = $deploymentId;
         $this->status_id = $statusId;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';

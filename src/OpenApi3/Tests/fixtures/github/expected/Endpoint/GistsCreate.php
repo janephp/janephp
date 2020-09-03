@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class GistsCreate extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class GistsCreate extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     /**
      * Allows you to add a new gist with one or more files.
@@ -14,7 +14,7 @@ class GistsCreate extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \J
     {
         $this->body = $requestBody;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'POST';

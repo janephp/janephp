@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class AppsResetToken extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class AppsResetToken extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $client_id;
     /**
@@ -16,7 +16,7 @@ class AppsResetToken extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements
         $this->client_id = $clientId;
         $this->body = $requestBody;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'PATCH';

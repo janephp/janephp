@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class AppsGetSubscriptionPlanForAccount extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class AppsGetSubscriptionPlanForAccount extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $account_id;
     /**
@@ -16,7 +16,7 @@ class AppsGetSubscriptionPlanForAccount extends \Jane\OpenApiRuntime\Client\Base
     {
         $this->account_id = $accountId;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';

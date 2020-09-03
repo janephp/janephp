@@ -2,7 +2,7 @@
 
 namespace CreditSafe\API\Endpoint;
 
-class CountriesInSubscription extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class CountriesInSubscription extends \CreditSafe\API\Runtime\Client\BaseEndpoint implements \CreditSafe\API\Runtime\Client\Endpoint
 {
     /**
      * Returns the available countries in your subscription by operation - Company Report, Director Report, Offline Reports and Monitoring.
@@ -15,7 +15,7 @@ class CountriesInSubscription extends \Jane\OpenApiRuntime\Client\BaseEndpoint i
     {
         $this->headerParameters = $headerParameters;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \CreditSafe\API\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';

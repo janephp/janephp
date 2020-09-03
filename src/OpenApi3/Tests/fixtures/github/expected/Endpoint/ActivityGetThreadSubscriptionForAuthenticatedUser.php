@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class ActivityGetThreadSubscriptionForAuthenticatedUser extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class ActivityGetThreadSubscriptionForAuthenticatedUser extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $thread_id;
     /**
@@ -16,7 +16,7 @@ class ActivityGetThreadSubscriptionForAuthenticatedUser extends \Jane\OpenApiRun
     {
         $this->thread_id = $threadId;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';

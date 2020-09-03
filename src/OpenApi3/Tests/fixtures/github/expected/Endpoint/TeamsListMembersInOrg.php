@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class TeamsListMembersInOrg extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class TeamsListMembersInOrg extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $org;
     protected $team_slug;
@@ -28,7 +28,7 @@ class TeamsListMembersInOrg extends \Jane\OpenApiRuntime\Client\BaseEndpoint imp
         $this->team_slug = $teamSlug;
         $this->queryParameters = $queryParameters;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';

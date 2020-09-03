@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class ActionsDownloadArtifact extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class ActionsDownloadArtifact extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $owner;
     protected $repo;
@@ -26,7 +26,7 @@ class ActionsDownloadArtifact extends \Jane\OpenApiRuntime\Client\BaseEndpoint i
         $this->artifact_id = $artifactId;
         $this->archive_format = $archiveFormat;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';

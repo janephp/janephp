@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class ProjectsGetPermissionForUser extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class ProjectsGetPermissionForUser extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $project_id;
     protected $username;
@@ -17,7 +17,7 @@ class ProjectsGetPermissionForUser extends \Jane\OpenApiRuntime\Client\BaseEndpo
         $this->project_id = $projectId;
         $this->username = $username;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';

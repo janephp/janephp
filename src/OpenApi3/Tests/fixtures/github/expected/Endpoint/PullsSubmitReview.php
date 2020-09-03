@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class PullsSubmitReview extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class PullsSubmitReview extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $owner;
     protected $repo;
@@ -25,7 +25,7 @@ class PullsSubmitReview extends \Jane\OpenApiRuntime\Client\BaseEndpoint impleme
         $this->review_id = $reviewId;
         $this->body = $requestBody;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'POST';

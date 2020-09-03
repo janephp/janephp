@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class PullsCreateReplyForReviewComment extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class PullsCreateReplyForReviewComment extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $owner;
     protected $repo;
@@ -27,7 +27,7 @@ class PullsCreateReplyForReviewComment extends \Jane\OpenApiRuntime\Client\BaseE
         $this->comment_id = $commentId;
         $this->body = $requestBody;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'POST';

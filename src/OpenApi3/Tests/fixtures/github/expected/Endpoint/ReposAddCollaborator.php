@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class ReposAddCollaborator extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class ReposAddCollaborator extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $owner;
     protected $repo;
@@ -32,7 +32,7 @@ class ReposAddCollaborator extends \Jane\OpenApiRuntime\Client\BaseEndpoint impl
         $this->username = $username;
         $this->body = $requestBody;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'PUT';

@@ -4,8 +4,9 @@ namespace Jane\OpenApiCommon\Generator\Client;
 
 use Http\Discovery\Psr17FactoryDiscovery;
 use Jane\JsonSchema\Generator\Context\Context;
+use Jane\JsonSchema\Generator\Naming;
+use Jane\JsonSchema\Registry\Schema;
 use Jane\JsonSchema\Registry\Schema as BaseSchema;
-use Jane\OpenApiRuntime\Client\Client;
 use PhpParser\Node;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Name;
@@ -25,10 +26,12 @@ trait ClientGenerator
         return '';
     }
 
-    protected function createResourceClass(string $name): Stmt\Class_
+    protected function createResourceClass(Schema $schema, string $name): Stmt\Class_
     {
+        $naming = new Naming();
+
         return new Stmt\Class_($name, [
-            'extends' => new Node\Name\FullyQualified(Client::class),
+            'extends' => new Node\Name\FullyQualified($naming->getRuntimeClassFQCN($schema->getNamespace(), ['Client'], 'Client')),
         ]);
     }
 

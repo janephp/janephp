@@ -2,7 +2,7 @@
 
 namespace Jane\OpenApi3\Tests\Expected\Endpoint;
 
-class TestPathParameters extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class TestPathParameters extends \Jane\OpenApi3\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\OpenApi3\Tests\Expected\Runtime\Client\Endpoint
 {
     protected $testString;
     protected $testInteger;
@@ -20,7 +20,7 @@ class TestPathParameters extends \Jane\OpenApiRuntime\Client\BaseEndpoint implem
         $this->testInteger = $testInteger;
         $this->testFloat = $testFloat;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Jane\OpenApi3\Tests\Expected\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';

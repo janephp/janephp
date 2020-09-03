@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class IssuesLock extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class IssuesLock extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $owner;
     protected $repo;
@@ -24,7 +24,7 @@ class IssuesLock extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Ja
         $this->issue_number = $issueNumber;
         $this->body = $requestBody;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'PUT';

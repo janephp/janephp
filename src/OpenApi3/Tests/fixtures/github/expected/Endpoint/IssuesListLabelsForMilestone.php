@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class IssuesListLabelsForMilestone extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class IssuesListLabelsForMilestone extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $owner;
     protected $repo;
@@ -25,7 +25,7 @@ class IssuesListLabelsForMilestone extends \Jane\OpenApiRuntime\Client\BaseEndpo
         $this->milestone_number = $milestoneNumber;
         $this->queryParameters = $queryParameters;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';

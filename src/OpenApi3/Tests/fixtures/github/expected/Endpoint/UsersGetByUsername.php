@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class UsersGetByUsername extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class UsersGetByUsername extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $username;
     /**
@@ -20,7 +20,7 @@ class UsersGetByUsername extends \Jane\OpenApiRuntime\Client\BaseEndpoint implem
     {
         $this->username = $username;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';

@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class ReposGetDeployKey extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class ReposGetDeployKey extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $owner;
     protected $repo;
@@ -20,7 +20,7 @@ class ReposGetDeployKey extends \Jane\OpenApiRuntime\Client\BaseEndpoint impleme
         $this->repo = $repo;
         $this->key_id = $keyId;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';

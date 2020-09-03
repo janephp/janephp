@@ -2,7 +2,7 @@
 
 namespace CreditSafe\API\Endpoint;
 
-class AllEventRules extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class AllEventRules extends \CreditSafe\API\Runtime\Client\BaseEndpoint implements \CreditSafe\API\Runtime\Client\Endpoint
 {
     /**
      * Get all available notification event rules. Notification event rules allow you to control which events you wish to monitor for the `companies` contained within a given `portfolio`.
@@ -15,7 +15,7 @@ class AllEventRules extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements 
     {
         $this->headerParameters = $headerParameters;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \CreditSafe\API\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';

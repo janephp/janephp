@@ -2,7 +2,7 @@
 
 namespace Jane\OpenApi3\Tests\Expected\Endpoint;
 
-class StreamFilter extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class StreamFilter extends \Jane\OpenApi3\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\OpenApi3\Tests\Expected\Runtime\Client\Endpoint
 {
     /**
      * Streams tweets matching a user's active rule set.
@@ -15,7 +15,7 @@ class StreamFilter extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \
     {
         $this->queryParameters = $queryParameters;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Jane\OpenApi3\Tests\Expected\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';

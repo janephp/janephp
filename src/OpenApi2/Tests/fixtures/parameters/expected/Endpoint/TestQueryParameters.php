@@ -2,7 +2,7 @@
 
 namespace Jane\OpenApi2\Tests\Expected\Endpoint;
 
-class TestQueryParameters extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class TestQueryParameters extends \Jane\OpenApi2\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\OpenApi2\Tests\Expected\Runtime\Client\Endpoint
 {
     /**
      * 
@@ -20,7 +20,7 @@ class TestQueryParameters extends \Jane\OpenApiRuntime\Client\BaseEndpoint imple
     {
         $this->queryParameters = $queryParameters;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Jane\OpenApi2\Tests\Expected\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';

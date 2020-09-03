@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class OrgsGetMembershipForAuthenticatedUser extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class OrgsGetMembershipForAuthenticatedUser extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $org;
     /**
@@ -14,7 +14,7 @@ class OrgsGetMembershipForAuthenticatedUser extends \Jane\OpenApiRuntime\Client\
     {
         $this->org = $org;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';

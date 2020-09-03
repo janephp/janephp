@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class ReposListInvitationsForAuthenticatedUser extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class ReposListInvitationsForAuthenticatedUser extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     /**
      * When authenticating as a user, this endpoint will list all currently open repository invitations for that user.
@@ -16,7 +16,7 @@ class ReposListInvitationsForAuthenticatedUser extends \Jane\OpenApiRuntime\Clie
     {
         $this->queryParameters = $queryParameters;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';

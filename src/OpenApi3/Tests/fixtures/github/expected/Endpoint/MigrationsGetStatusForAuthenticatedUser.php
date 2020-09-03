@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class MigrationsGetStatusForAuthenticatedUser extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class MigrationsGetStatusForAuthenticatedUser extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $migration_id;
     /**
@@ -25,7 +25,7 @@ class MigrationsGetStatusForAuthenticatedUser extends \Jane\OpenApiRuntime\Clien
         $this->migration_id = $migrationId;
         $this->queryParameters = $queryParameters;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';

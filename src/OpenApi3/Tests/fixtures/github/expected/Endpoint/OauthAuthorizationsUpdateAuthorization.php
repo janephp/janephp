@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class OauthAuthorizationsUpdateAuthorization extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class OauthAuthorizationsUpdateAuthorization extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $authorization_id;
     /**
@@ -20,7 +20,7 @@ class OauthAuthorizationsUpdateAuthorization extends \Jane\OpenApiRuntime\Client
         $this->authorization_id = $authorizationId;
         $this->body = $requestBody;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'PATCH';

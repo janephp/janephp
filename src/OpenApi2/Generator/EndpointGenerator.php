@@ -4,6 +4,7 @@ namespace Jane\OpenApi2\Generator;
 
 use Jane\JsonSchema\Generator\Context\Context;
 use Jane\JsonSchema\Generator\File;
+use Jane\JsonSchema\Generator\Naming;
 use Jane\OpenApi2\Generator\Endpoint\GetConstructorTrait;
 use Jane\OpenApi2\Generator\Endpoint\GetGetBodyTrait;
 use Jane\OpenApi2\Generator\Endpoint\GetGetExtraHeadersTrait;
@@ -22,9 +23,6 @@ use Jane\OpenApiCommon\Generator\ExceptionGenerator;
 use Jane\OpenApiCommon\Generator\Traits\OptionResolverNormalizationTrait;
 use Jane\OpenApiCommon\Guesser\Guess\OperationGuess;
 use Jane\OpenApiCommon\Naming\OperationNamingInterface;
-use Jane\OpenApiRuntime\Client\BaseEndpoint;
-use Jane\OpenApiRuntime\Client\Endpoint;
-use Jane\OpenApiRuntime\Client\EndpointTrait;
 use PhpParser\Node\Name;
 use PhpParser\Node\Stmt;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -72,16 +70,17 @@ class EndpointGenerator implements EndpointGeneratorInterface
 
     public function createEndpointClass(OperationGuess $operation, Context $context): array
     {
+        $naming = new Naming();
         $openApi = $context->getCurrentSchema()->getParsed();
         $endpointName = $this->operationNaming->getEndpointName($operation);
 
         [$constructorMethod, $methodParams, $methodParamsDoc, $pathProperties] = $this->getConstructor($operation, $context, $this->guessClass, $this->bodyParameterGenerator, $this->nonBodyParameterGenerator);
         [$transformBodyMethod, $outputTypes, $throwTypes] = $this->getTransformResponseBody($operation, $endpointName, $this->guessClass, $this->exceptionGenerator, $context);
         $class = new Stmt\Class_($endpointName, [
-            'extends' => new Name\FullyQualified(BaseEndpoint::class),
-            'implements' => [new Name\FullyQualified(Endpoint::class)],
+            'extends' => new Name\FullyQualified($naming->getRuntimeClassFQCN($context->getCurrentSchema()->getNamespace(), ['Client'], 'BaseEndpoint')),
+            'implements' => [new Name\FullyQualified($naming->getRuntimeClassFQCN($context->getCurrentSchema()->getNamespace(), ['Client'], 'Endpoint'))],
             'stmts' => array_merge($pathProperties, $constructorMethod === null ? [] : [$constructorMethod], [
-                new Stmt\Use_([new Stmt\UseUse(new Name\FullyQualified(EndpointTrait::class))]),
+                new Stmt\Use_([new Stmt\UseUse(new Name\FullyQualified($naming->getRuntimeClassFQCN($context->getCurrentSchema()->getNamespace(), ['Client'], 'EndpointTrait')))]),
                 $this->getGetMethod($operation),
                 $this->getGetUri($operation, $this->guessClass),
                 $this->getGetBody($operation, $context),

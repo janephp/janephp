@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class ActionsGetWorkflowRun extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class ActionsGetWorkflowRun extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $owner;
     protected $repo;
@@ -20,7 +20,7 @@ class ActionsGetWorkflowRun extends \Jane\OpenApiRuntime\Client\BaseEndpoint imp
         $this->repo = $repo;
         $this->run_id = $runId;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';

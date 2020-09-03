@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class GistsStar extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class GistsStar extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $gist_id;
     /**
@@ -14,7 +14,7 @@ class GistsStar extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jan
     {
         $this->gist_id = $gistId;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'PUT';

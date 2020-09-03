@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class ProjectsListCollaborators extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class ProjectsListCollaborators extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $project_id;
     /**
@@ -23,7 +23,7 @@ class ProjectsListCollaborators extends \Jane\OpenApiRuntime\Client\BaseEndpoint
         $this->project_id = $projectId;
         $this->queryParameters = $queryParameters;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';

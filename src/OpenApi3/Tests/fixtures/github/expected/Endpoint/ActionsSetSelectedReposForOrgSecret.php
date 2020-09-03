@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class ActionsSetSelectedReposForOrgSecret extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class ActionsSetSelectedReposForOrgSecret extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $org;
     protected $secret_name;
@@ -19,7 +19,7 @@ class ActionsSetSelectedReposForOrgSecret extends \Jane\OpenApiRuntime\Client\Ba
         $this->secret_name = $secretName;
         $this->body = $requestBody;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'PUT';

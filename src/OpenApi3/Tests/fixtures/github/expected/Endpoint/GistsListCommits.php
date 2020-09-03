@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class GistsListCommits extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class GistsListCommits extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $gist_id;
     /**
@@ -19,7 +19,7 @@ class GistsListCommits extends \Jane\OpenApiRuntime\Client\BaseEndpoint implemen
         $this->gist_id = $gistId;
         $this->queryParameters = $queryParameters;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';

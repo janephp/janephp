@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class ActionsDeleteSelfHostedRunnerFromRepo extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class ActionsDeleteSelfHostedRunnerFromRepo extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $owner;
     protected $repo;
@@ -20,7 +20,7 @@ class ActionsDeleteSelfHostedRunnerFromRepo extends \Jane\OpenApiRuntime\Client\
         $this->repo = $repo;
         $this->runner_id = $runnerId;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'DELETE';

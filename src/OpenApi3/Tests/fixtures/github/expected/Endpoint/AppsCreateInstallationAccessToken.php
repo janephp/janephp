@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class AppsCreateInstallationAccessToken extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class AppsCreateInstallationAccessToken extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $installation_id;
     /**
@@ -18,7 +18,7 @@ class AppsCreateInstallationAccessToken extends \Jane\OpenApiRuntime\Client\Base
         $this->installation_id = $installationId;
         $this->body = $requestBody;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'POST';

@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class ProjectsMoveCard extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class ProjectsMoveCard extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $card_id;
     /**
@@ -16,7 +16,7 @@ class ProjectsMoveCard extends \Jane\OpenApiRuntime\Client\BaseEndpoint implemen
         $this->card_id = $cardId;
         $this->body = $requestBody;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'POST';

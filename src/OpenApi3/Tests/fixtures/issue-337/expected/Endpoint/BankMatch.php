@@ -2,7 +2,7 @@
 
 namespace CreditSafe\API\Endpoint;
 
-class BankMatch extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class BankMatch extends \CreditSafe\API\Runtime\Client\BaseEndpoint implements \CreditSafe\API\Runtime\Client\Endpoint
 {
     /**
      * The Bank Verification tool allows customers to instantly verify that small and medium sized companies you are working with are providing correct bank details, to reduce fraud and avoid delays in your on boarding process. The bank data for these companies is provided to Creditsafe by various financial providers, including major banks. When you provides us with a company number and their bank details, we are able to perform instant checks to verify that those bank details are associated with that company and return - </br> • Match – We have bank information on the company, and the data provided by the customer matches this company’s records </br> • No Match – We have bank information on the company, but the data provided does not match any of the company’s records </br> • Data Unavailable – We do not have bank information on the company.
@@ -24,7 +24,7 @@ class BankMatch extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jan
         $this->queryParameters = $queryParameters;
         $this->headerParameters = $headerParameters;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \CreditSafe\API\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';

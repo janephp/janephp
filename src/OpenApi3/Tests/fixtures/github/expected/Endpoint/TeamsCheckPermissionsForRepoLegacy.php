@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class TeamsCheckPermissionsForRepoLegacy extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class TeamsCheckPermissionsForRepoLegacy extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $team_id;
     protected $owner;
@@ -24,7 +24,7 @@ class TeamsCheckPermissionsForRepoLegacy extends \Jane\OpenApiRuntime\Client\Bas
         $this->owner = $owner;
         $this->repo = $repo;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';

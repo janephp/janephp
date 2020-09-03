@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class AppsDeleteAuthorization extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class AppsDeleteAuthorization extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $client_id;
     /**
@@ -17,7 +17,7 @@ class AppsDeleteAuthorization extends \Jane\OpenApiRuntime\Client\BaseEndpoint i
         $this->client_id = $clientId;
         $this->body = $requestBody;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'DELETE';

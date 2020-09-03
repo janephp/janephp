@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class ReactionsDeleteForCommitComment extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class ReactionsDeleteForCommitComment extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $owner;
     protected $repo;
@@ -25,7 +25,7 @@ class ReactionsDeleteForCommitComment extends \Jane\OpenApiRuntime\Client\BaseEn
         $this->comment_id = $commentId;
         $this->reaction_id = $reactionId;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'DELETE';

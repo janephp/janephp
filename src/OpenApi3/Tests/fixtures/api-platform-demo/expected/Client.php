@@ -2,7 +2,7 @@
 
 namespace ApiPlatform\Demo;
 
-class Client extends \Jane\OpenApiRuntime\Client\Client
+class Client extends \ApiPlatform\Demo\Runtime\Client\Client
 {
     /**
      * 

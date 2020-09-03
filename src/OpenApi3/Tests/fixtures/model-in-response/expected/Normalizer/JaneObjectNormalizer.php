@@ -2,7 +2,7 @@
 
 namespace Jane\OpenApi3\Tests\Expected\Normalizer;
 
-use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
+use Jane\OpenApi3\Tests\Expected\Runtime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -14,7 +14,7 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
-    protected $normalizers = array('Jane\\OpenApi3\\Tests\\Expected\\Model\\Schema' => 'Jane\\OpenApi3\\Tests\\Expected\\Normalizer\\SchemaNormalizer', 'Jane\\OpenApi3\\Tests\\Expected\\Model\\SchemaObjectProperty' => 'Jane\\OpenApi3\\Tests\\Expected\\Normalizer\\SchemaObjectPropertyNormalizer', 'Jane\\OpenApi3\\Tests\\Expected\\Model\\Error' => 'Jane\\OpenApi3\\Tests\\Expected\\Normalizer\\ErrorNormalizer', 'Jane\\OpenApi3\\Tests\\Expected\\Model\\EmptySpace' => 'Jane\\OpenApi3\\Tests\\Expected\\Normalizer\\EmptySpaceNormalizer', 'Jane\\OpenApi3\\Tests\\Expected\\Model\\TestIdGetResponse200' => 'Jane\\OpenApi3\\Tests\\Expected\\Normalizer\\TestIdGetResponse200Normalizer', '\\Jane\\JsonSchemaRuntime\\Reference' => '\\Jane\\JsonSchemaRuntime\\Normalizer\\ReferenceNormalizer'), $normalizersCache = array();
+    protected $normalizers = array('Jane\\OpenApi3\\Tests\\Expected\\Model\\Schema' => 'Jane\\OpenApi3\\Tests\\Expected\\Normalizer\\SchemaNormalizer', 'Jane\\OpenApi3\\Tests\\Expected\\Model\\SchemaObjectProperty' => 'Jane\\OpenApi3\\Tests\\Expected\\Normalizer\\SchemaObjectPropertyNormalizer', 'Jane\\OpenApi3\\Tests\\Expected\\Model\\Error' => 'Jane\\OpenApi3\\Tests\\Expected\\Normalizer\\ErrorNormalizer', 'Jane\\OpenApi3\\Tests\\Expected\\Model\\EmptySpace' => 'Jane\\OpenApi3\\Tests\\Expected\\Normalizer\\EmptySpaceNormalizer', 'Jane\\OpenApi3\\Tests\\Expected\\Model\\TestIdGetResponse200' => 'Jane\\OpenApi3\\Tests\\Expected\\Normalizer\\TestIdGetResponse200Normalizer', '\\Jane\\JsonSchemaRuntime\\Reference' => '\\Jane\\OpenApi3\\Tests\\Expected\\Runtime\\Normalizer\\ReferenceNormalizer'), $normalizersCache = array();
     public function supportsDenormalization($data, $type, $format = null)
     {
         return array_key_exists($type, $this->normalizers);

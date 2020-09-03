@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class TeamsDeleteLegacy extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class TeamsDeleteLegacy extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $team_id;
     /**
@@ -18,7 +18,7 @@ class TeamsDeleteLegacy extends \Jane\OpenApiRuntime\Client\BaseEndpoint impleme
     {
         $this->team_id = $teamId;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'DELETE';

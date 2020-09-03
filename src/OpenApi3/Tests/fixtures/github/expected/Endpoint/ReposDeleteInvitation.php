@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class ReposDeleteInvitation extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class ReposDeleteInvitation extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $owner;
     protected $repo;
@@ -20,7 +20,7 @@ class ReposDeleteInvitation extends \Jane\OpenApiRuntime\Client\BaseEndpoint imp
         $this->repo = $repo;
         $this->invitation_id = $invitationId;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'DELETE';

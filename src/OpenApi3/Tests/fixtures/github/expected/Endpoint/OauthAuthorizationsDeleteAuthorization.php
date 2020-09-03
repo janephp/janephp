@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class OauthAuthorizationsDeleteAuthorization extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class OauthAuthorizationsDeleteAuthorization extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $authorization_id;
     /**
@@ -14,7 +14,7 @@ class OauthAuthorizationsDeleteAuthorization extends \Jane\OpenApiRuntime\Client
     {
         $this->authorization_id = $authorizationId;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'DELETE';

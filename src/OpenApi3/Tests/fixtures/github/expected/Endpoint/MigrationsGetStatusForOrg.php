@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class MigrationsGetStatusForOrg extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class MigrationsGetStatusForOrg extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $org;
     protected $migration_id;
@@ -24,7 +24,7 @@ class MigrationsGetStatusForOrg extends \Jane\OpenApiRuntime\Client\BaseEndpoint
         $this->org = $org;
         $this->migration_id = $migrationId;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';

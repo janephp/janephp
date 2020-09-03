@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class ReposGetReadme extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class ReposGetReadme extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $owner;
     protected $repo;
@@ -23,7 +23,7 @@ class ReposGetReadme extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements
         $this->repo = $repo;
         $this->queryParameters = $queryParameters;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';

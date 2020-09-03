@@ -2,7 +2,7 @@
 
 namespace Jane\OpenApi3\Tests\Expected\Normalizer;
 
-use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
+use Jane\OpenApi3\Tests\Expected\Runtime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -14,7 +14,7 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
-    protected $normalizers = array('Jane\\OpenApi3\\Tests\\Expected\\Model\\Foo' => 'Jane\\OpenApi3\\Tests\\Expected\\Normalizer\\FooNormalizer', 'Jane\\OpenApi3\\Tests\\Expected\\Model\\Baz' => 'Jane\\OpenApi3\\Tests\\Expected\\Normalizer\\BazNormalizer', 'Jane\\OpenApi3\\Tests\\Expected\\Model\\SubBaz' => 'Jane\\OpenApi3\\Tests\\Expected\\Normalizer\\SubBazNormalizer', '\\Jane\\JsonSchemaRuntime\\Reference' => '\\Jane\\JsonSchemaRuntime\\Normalizer\\ReferenceNormalizer'), $normalizersCache = array();
+    protected $normalizers = array('Jane\\OpenApi3\\Tests\\Expected\\Model\\Foo' => 'Jane\\OpenApi3\\Tests\\Expected\\Normalizer\\FooNormalizer', 'Jane\\OpenApi3\\Tests\\Expected\\Model\\Baz' => 'Jane\\OpenApi3\\Tests\\Expected\\Normalizer\\BazNormalizer', 'Jane\\OpenApi3\\Tests\\Expected\\Model\\SubBaz' => 'Jane\\OpenApi3\\Tests\\Expected\\Normalizer\\SubBazNormalizer', '\\Jane\\JsonSchemaRuntime\\Reference' => '\\Jane\\OpenApi3\\Tests\\Expected\\Runtime\\Normalizer\\ReferenceNormalizer'), $normalizersCache = array();
     public function supportsDenormalization($data, $type, $format = null)
     {
         return array_key_exists($type, $this->normalizers);

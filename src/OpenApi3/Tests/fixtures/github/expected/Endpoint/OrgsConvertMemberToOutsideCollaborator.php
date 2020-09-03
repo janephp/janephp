@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class OrgsConvertMemberToOutsideCollaborator extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class OrgsConvertMemberToOutsideCollaborator extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $org;
     protected $username;
@@ -17,7 +17,7 @@ class OrgsConvertMemberToOutsideCollaborator extends \Jane\OpenApiRuntime\Client
         $this->org = $org;
         $this->username = $username;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'PUT';

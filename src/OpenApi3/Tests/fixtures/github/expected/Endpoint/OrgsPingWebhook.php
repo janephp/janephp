@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class OrgsPingWebhook extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class OrgsPingWebhook extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $org;
     protected $hook_id;
@@ -17,7 +17,7 @@ class OrgsPingWebhook extends \Jane\OpenApiRuntime\Client\BaseEndpoint implement
         $this->org = $org;
         $this->hook_id = $hookId;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'POST';

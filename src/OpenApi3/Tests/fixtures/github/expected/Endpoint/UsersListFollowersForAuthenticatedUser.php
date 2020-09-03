@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class UsersListFollowersForAuthenticatedUser extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class UsersListFollowersForAuthenticatedUser extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     /**
      * Lists the people following the authenticated user.
@@ -16,7 +16,7 @@ class UsersListFollowersForAuthenticatedUser extends \Jane\OpenApiRuntime\Client
     {
         $this->queryParameters = $queryParameters;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';

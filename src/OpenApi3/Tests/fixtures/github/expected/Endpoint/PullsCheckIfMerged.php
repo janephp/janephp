@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class PullsCheckIfMerged extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class PullsCheckIfMerged extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $owner;
     protected $repo;
@@ -20,7 +20,7 @@ class PullsCheckIfMerged extends \Jane\OpenApiRuntime\Client\BaseEndpoint implem
         $this->repo = $repo;
         $this->pull_number = $pullNumber;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';

@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class GitGetBlob extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class GitGetBlob extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $owner;
     protected $repo;
@@ -22,7 +22,7 @@ class GitGetBlob extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Ja
         $this->repo = $repo;
         $this->file_sha = $fileSha;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';

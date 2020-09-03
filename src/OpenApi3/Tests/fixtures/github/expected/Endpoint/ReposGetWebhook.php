@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class ReposGetWebhook extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class ReposGetWebhook extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $owner;
     protected $repo;
@@ -20,7 +20,7 @@ class ReposGetWebhook extends \Jane\OpenApiRuntime\Client\BaseEndpoint implement
         $this->repo = $repo;
         $this->hook_id = $hookId;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';

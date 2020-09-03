@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class OauthAuthorizationsGetOrCreateAuthorizationForApp extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class OauthAuthorizationsGetOrCreateAuthorizationForApp extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $client_id;
     /**
@@ -24,7 +24,7 @@ class OauthAuthorizationsGetOrCreateAuthorizationForApp extends \Jane\OpenApiRun
         $this->client_id = $clientId;
         $this->body = $requestBody;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'PUT';

@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class ReposSetUserAccessRestrictions extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class ReposSetUserAccessRestrictions extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $owner;
     protected $repo;
@@ -28,7 +28,7 @@ class ReposSetUserAccessRestrictions extends \Jane\OpenApiRuntime\Client\BaseEnd
         $this->branch = $branch;
         $this->body = $requestBody;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'PUT';

@@ -2,7 +2,7 @@
 
 namespace Github\Endpoint;
 
-class ActivityListPublicEvents extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class ActivityListPublicEvents extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     /**
      * We delay the public events feed by five minutes, which means the most recent event returned by the public events API actually occurred at least five minutes ago.
@@ -16,7 +16,7 @@ class ActivityListPublicEvents extends \Jane\OpenApiRuntime\Client\BaseEndpoint 
     {
         $this->queryParameters = $queryParameters;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';
