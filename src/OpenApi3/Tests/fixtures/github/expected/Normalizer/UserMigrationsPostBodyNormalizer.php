@@ -33,6 +33,9 @@ class UserMigrationsPostBodyNormalizer implements DenormalizerInterface, Normali
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\UserMigrationsPostBody();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('lock_repositories', $data)) {
             $object->setLockRepositories($data['lock_repositories']);
         }

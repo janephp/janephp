@@ -33,6 +33,9 @@ class TeamsTeamIdReposOwnerRepoPutBodyNormalizer implements DenormalizerInterfac
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\TeamsTeamIdReposOwnerRepoPutBody();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('permission', $data)) {
             $object->setPermission($data['permission']);
         }

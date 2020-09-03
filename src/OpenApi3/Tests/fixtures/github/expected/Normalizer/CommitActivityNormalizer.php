@@ -33,6 +33,9 @@ class CommitActivityNormalizer implements DenormalizerInterface, NormalizerInter
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\CommitActivity();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('days', $data)) {
             $values = array();
             foreach ($data['days'] as $value) {

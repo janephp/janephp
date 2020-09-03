@@ -33,6 +33,9 @@ class GbCompanyReportExampleResponseReportAdditionalInformationBadDebtDetailsIte
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \CreditSafe\API\Model\GbCompanyReportExampleResponseReportAdditionalInformationBadDebtDetailsItem();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('statementDate', $data)) {
             $object->setStatementDate($data['statementDate']);
         }

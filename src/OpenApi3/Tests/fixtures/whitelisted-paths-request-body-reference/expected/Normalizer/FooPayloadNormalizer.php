@@ -33,6 +33,9 @@ class FooPayloadNormalizer implements DenormalizerInterface, NormalizerInterface
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Jane\OpenApi3\Tests\Expected\Model\FooPayload();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('label', $data)) {
             $object->setLabel($data['label']);
         }

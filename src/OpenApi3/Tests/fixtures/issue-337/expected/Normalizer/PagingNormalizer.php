@@ -33,6 +33,9 @@ class PagingNormalizer implements DenormalizerInterface, NormalizerInterface, De
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \CreditSafe\API\Model\Paging();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('size', $data)) {
             $object->setSize($data['size']);
         }

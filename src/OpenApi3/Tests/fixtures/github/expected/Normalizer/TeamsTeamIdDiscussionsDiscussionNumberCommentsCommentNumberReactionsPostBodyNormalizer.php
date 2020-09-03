@@ -33,6 +33,9 @@ class TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBo
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBody();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('content', $data)) {
             $object->setContent($data['content']);
         }

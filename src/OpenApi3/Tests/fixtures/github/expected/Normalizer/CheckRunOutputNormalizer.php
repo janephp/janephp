@@ -33,6 +33,9 @@ class CheckRunOutputNormalizer implements DenormalizerInterface, NormalizerInter
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\CheckRunOutput();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('title', $data) && $data['title'] !== null) {
             $object->setTitle($data['title']);
         }

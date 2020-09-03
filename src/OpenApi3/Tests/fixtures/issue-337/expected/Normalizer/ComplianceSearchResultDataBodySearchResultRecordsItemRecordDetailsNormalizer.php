@@ -33,6 +33,9 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsNormaliz
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \CreditSafe\API\Model\ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetails();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('acceptListID', $data)) {
             $object->setAcceptListID($data['acceptListID']);
         }

@@ -33,6 +33,9 @@ class PorterLargeFileNormalizer implements DenormalizerInterface, NormalizerInte
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\PorterLargeFile();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('ref_name', $data)) {
             $object->setRefName($data['ref_name']);
         }

@@ -33,6 +33,9 @@ class SearchResultTextMatchesItemNormalizer implements DenormalizerInterface, No
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\SearchResultTextMatchesItem();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('object_url', $data)) {
             $object->setObjectUrl($data['object_url']);
         }

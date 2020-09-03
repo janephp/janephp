@@ -33,6 +33,9 @@ class OrgMembershipPermissionsNormalizer implements DenormalizerInterface, Norma
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\OrgMembershipPermissions();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('can_create_repository', $data)) {
             $object->setCanCreateRepository($data['can_create_repository']);
         }

@@ -33,6 +33,9 @@ class GbCompanyReportExampleResponseReportCompanySummaryMainActivityNormalizer i
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \CreditSafe\API\Model\GbCompanyReportExampleResponseReportCompanySummaryMainActivity();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('code', $data)) {
             $object->setCode($data['code']);
         }

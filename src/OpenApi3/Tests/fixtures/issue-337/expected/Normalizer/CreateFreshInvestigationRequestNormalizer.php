@@ -33,6 +33,9 @@ class CreateFreshInvestigationRequestNormalizer implements DenormalizerInterface
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \CreditSafe\API\Model\CreateFreshInvestigationRequest();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('consent', $data)) {
             $object->setConsent($data['consent']);
         }

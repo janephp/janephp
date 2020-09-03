@@ -33,6 +33,9 @@ class AppManifestsCodeConversionsPostResponse201Normalizer implements Denormaliz
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\AppManifestsCodeConversionsPostResponse201();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('id', $data)) {
             $object->setId($data['id']);
         }

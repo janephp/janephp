@@ -33,6 +33,9 @@ class GbPeopleReportReponseReportDirectorshipsInactiveItemPositionNormalizer imp
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \CreditSafe\API\Model\GbPeopleReportReponseReportDirectorshipsInactiveItemPosition();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('resignationDate', $data)) {
             $object->setResignationDate($data['resignationDate']);
         }

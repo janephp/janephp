@@ -33,6 +33,9 @@ class ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyNormalizer implements Deno
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ReposOwnerRepoIssuesIssueNumberAssigneesPostBody();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('assignees', $data)) {
             $values = array();
             foreach ($data['assignees'] as $value) {

@@ -33,6 +33,9 @@ class TeamProjectNormalizer implements DenormalizerInterface, NormalizerInterfac
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\TeamProject();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('owner_url', $data)) {
             $object->setOwnerUrl($data['owner_url']);
         }

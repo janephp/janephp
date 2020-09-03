@@ -33,6 +33,9 @@ class ScimUserMetaNormalizer implements DenormalizerInterface, NormalizerInterfa
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ScimUserMeta();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('resourceType', $data)) {
             $object->setResourceType($data['resourceType']);
         }

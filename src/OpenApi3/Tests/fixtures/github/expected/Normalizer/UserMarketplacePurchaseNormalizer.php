@@ -33,6 +33,9 @@ class UserMarketplacePurchaseNormalizer implements DenormalizerInterface, Normal
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\UserMarketplacePurchase();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('billing_cycle', $data)) {
             $object->setBillingCycle($data['billing_cycle']);
         }

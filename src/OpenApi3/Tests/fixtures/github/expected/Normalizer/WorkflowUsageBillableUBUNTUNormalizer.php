@@ -33,6 +33,9 @@ class WorkflowUsageBillableUBUNTUNormalizer implements DenormalizerInterface, No
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\WorkflowUsageBillableUBUNTU();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('total_ms', $data)) {
             $object->setTotalMs($data['total_ms']);
         }

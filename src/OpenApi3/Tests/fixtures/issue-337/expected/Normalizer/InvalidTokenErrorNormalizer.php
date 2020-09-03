@@ -33,6 +33,9 @@ class InvalidTokenErrorNormalizer implements DenormalizerInterface, NormalizerIn
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \CreditSafe\API\Model\InvalidTokenError();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('error', $data)) {
             $object->setError($data['error']);
         }

@@ -33,6 +33,9 @@ class GistsGistIdCommentsCommentIdPatchBodyNormalizer implements DenormalizerInt
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\GistsGistIdCommentsCommentIdPatchBody();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('body', $data)) {
             $object->setBody($data['body']);
         }

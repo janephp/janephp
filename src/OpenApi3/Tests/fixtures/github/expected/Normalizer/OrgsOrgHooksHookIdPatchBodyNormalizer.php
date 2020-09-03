@@ -33,6 +33,9 @@ class OrgsOrgHooksHookIdPatchBodyNormalizer implements DenormalizerInterface, No
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\OrgsOrgHooksHookIdPatchBody();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('config', $data)) {
             $object->setConfig($this->denormalizer->denormalize($data['config'], 'Github\\Model\\OrgsOrgHooksHookIdPatchBodyConfig', 'json', $context));
         }

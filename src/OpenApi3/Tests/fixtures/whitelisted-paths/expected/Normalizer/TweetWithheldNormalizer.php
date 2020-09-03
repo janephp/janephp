@@ -33,6 +33,9 @@ class TweetWithheldNormalizer implements DenormalizerInterface, NormalizerInterf
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Jane\OpenApi3\Tests\Expected\Model\TweetWithheld();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('copyright', $data)) {
             $object->setCopyright($data['copyright']);
         }

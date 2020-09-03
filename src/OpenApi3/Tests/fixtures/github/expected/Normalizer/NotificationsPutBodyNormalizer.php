@@ -33,6 +33,9 @@ class NotificationsPutBodyNormalizer implements DenormalizerInterface, Normalize
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\NotificationsPutBody();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('last_read_at', $data)) {
             $object->setLastReadAt(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['last_read_at']));
         }

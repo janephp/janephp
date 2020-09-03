@@ -33,6 +33,9 @@ class ApplicationGrantAppNormalizer implements DenormalizerInterface, Normalizer
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ApplicationGrantApp();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('client_id', $data)) {
             $object->setClientId($data['client_id']);
         }

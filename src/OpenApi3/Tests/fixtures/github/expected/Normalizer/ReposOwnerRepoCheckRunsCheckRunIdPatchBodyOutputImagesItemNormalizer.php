@@ -33,6 +33,9 @@ class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyOutputImagesItemNormalizer imple
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ReposOwnerRepoCheckRunsCheckRunIdPatchBodyOutputImagesItem();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('alt', $data)) {
             $object->setAlt($data['alt']);
         }

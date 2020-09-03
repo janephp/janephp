@@ -33,6 +33,9 @@ class ReposOwnerRepoCheckRunsPostBodyActionsItemNormalizer implements Denormaliz
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ReposOwnerRepoCheckRunsPostBodyActionsItem();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('label', $data)) {
             $object->setLabel($data['label']);
         }

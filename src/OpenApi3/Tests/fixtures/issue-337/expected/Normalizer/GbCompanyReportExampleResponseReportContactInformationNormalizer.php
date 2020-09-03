@@ -33,6 +33,9 @@ class GbCompanyReportExampleResponseReportContactInformationNormalizer implement
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \CreditSafe\API\Model\GbCompanyReportExampleResponseReportContactInformation();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('mainAddress', $data)) {
             $object->setMainAddress($this->denormalizer->denormalize($data['mainAddress'], 'CreditSafe\\API\\Model\\GbCompanyReportExampleResponseReportContactInformationMainAddress', 'json', $context));
         }

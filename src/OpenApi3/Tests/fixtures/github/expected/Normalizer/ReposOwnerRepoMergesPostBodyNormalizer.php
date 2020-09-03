@@ -33,6 +33,9 @@ class ReposOwnerRepoMergesPostBodyNormalizer implements DenormalizerInterface, N
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ReposOwnerRepoMergesPostBody();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('base', $data)) {
             $object->setBase($data['base']);
         }

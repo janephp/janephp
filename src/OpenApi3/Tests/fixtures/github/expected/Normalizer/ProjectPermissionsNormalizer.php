@@ -33,6 +33,9 @@ class ProjectPermissionsNormalizer implements DenormalizerInterface, NormalizerI
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ProjectPermissions();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('read', $data)) {
             $object->setRead($data['read']);
         }

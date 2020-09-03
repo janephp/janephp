@@ -33,6 +33,9 @@ class ReposOwnerRepoCommitsRefCheckSuitesGetResponse200Normalizer implements Den
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ReposOwnerRepoCommitsRefCheckSuitesGetResponse200();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('total_count', $data)) {
             $object->setTotalCount($data['total_count']);
         }

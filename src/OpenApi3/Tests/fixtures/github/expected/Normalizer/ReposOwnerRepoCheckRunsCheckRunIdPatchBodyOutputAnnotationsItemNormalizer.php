@@ -33,6 +33,9 @@ class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyOutputAnnotationsItemNormalizer 
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ReposOwnerRepoCheckRunsCheckRunIdPatchBodyOutputAnnotationsItem();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('path', $data)) {
             $object->setPath($data['path']);
         }

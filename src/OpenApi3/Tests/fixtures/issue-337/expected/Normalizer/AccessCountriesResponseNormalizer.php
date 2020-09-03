@@ -33,6 +33,9 @@ class AccessCountriesResponseNormalizer implements DenormalizerInterface, Normal
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \CreditSafe\API\Model\AccessCountriesResponse();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('correlationId', $data)) {
             $object->setCorrelationId($data['correlationId']);
         }

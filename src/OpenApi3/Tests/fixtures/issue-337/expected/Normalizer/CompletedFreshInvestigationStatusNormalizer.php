@@ -33,6 +33,9 @@ class CompletedFreshInvestigationStatusNormalizer implements DenormalizerInterfa
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \CreditSafe\API\Model\CompletedFreshInvestigationStatus();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('code', $data)) {
             $object->setCode($data['code']);
         }

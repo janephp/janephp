@@ -33,6 +33,9 @@ class ReposOwnerRepoInvitationsInvitationIdPatchBodyNormalizer implements Denorm
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ReposOwnerRepoInvitationsInvitationIdPatchBody();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('permissions', $data)) {
             $object->setPermissions($data['permissions']);
         }

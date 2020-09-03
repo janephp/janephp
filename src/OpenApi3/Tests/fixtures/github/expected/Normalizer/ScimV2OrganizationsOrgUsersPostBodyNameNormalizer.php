@@ -33,6 +33,9 @@ class ScimV2OrganizationsOrgUsersPostBodyNameNormalizer implements DenormalizerI
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ScimV2OrganizationsOrgUsersPostBodyName();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('givenName', $data)) {
             $object->setGivenName($data['givenName']);
         }

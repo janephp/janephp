@@ -33,6 +33,9 @@ class ReposOwnerRepoIssuesIssueNumberLabelsPostBodyNormalizer implements Denorma
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ReposOwnerRepoIssuesIssueNumberLabelsPostBody();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('labels', $data)) {
             $values = array();
             foreach ($data['labels'] as $value) {

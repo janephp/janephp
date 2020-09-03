@@ -33,6 +33,9 @@ class UserWithheldNormalizer implements DenormalizerInterface, NormalizerInterfa
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Jane\OpenApi3\Tests\Expected\Model\UserWithheld();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('country_codes', $data)) {
             $values = array();
             foreach ($data['country_codes'] as $value) {

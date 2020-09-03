@@ -33,6 +33,9 @@ class ComplianceSearchResultDataBodyNormalizer implements DenormalizerInterface,
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \CreditSafe\API\Model\ComplianceSearchResultDataBody();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('searchResult', $data)) {
             $object->setSearchResult($this->denormalizer->denormalize($data['searchResult'], 'CreditSafe\\API\\Model\\ComplianceSearchResultDataBodySearchResult', 'json', $context));
         }

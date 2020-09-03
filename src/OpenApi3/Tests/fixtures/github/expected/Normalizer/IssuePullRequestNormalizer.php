@@ -33,6 +33,9 @@ class IssuePullRequestNormalizer implements DenormalizerInterface, NormalizerInt
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\IssuePullRequest();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('merged_at', $data) && $data['merged_at'] !== null) {
             $object->setMergedAt(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['merged_at']));
         }

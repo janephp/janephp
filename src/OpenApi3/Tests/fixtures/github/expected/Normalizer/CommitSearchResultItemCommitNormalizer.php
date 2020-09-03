@@ -33,6 +33,9 @@ class CommitSearchResultItemCommitNormalizer implements DenormalizerInterface, N
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\CommitSearchResultItemCommit();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('author', $data)) {
             $object->setAuthor($this->denormalizer->denormalize($data['author'], 'Github\\Model\\CommitSearchResultItemCommitAuthor', 'json', $context));
         }

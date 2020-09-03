@@ -33,6 +33,9 @@ class GbCompanyReportExampleResponseReportAdditionalInformationMortgageSummaryNo
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \CreditSafe\API\Model\GbCompanyReportExampleResponseReportAdditionalInformationMortgageSummary();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('outstanding', $data)) {
             $object->setOutstanding($data['outstanding']);
         }

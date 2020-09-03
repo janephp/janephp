@@ -33,6 +33,9 @@ class CommunityProfileFilesIssueTemplateNormalizer implements DenormalizerInterf
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\CommunityProfileFilesIssueTemplate();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('url', $data)) {
             $object->setUrl($data['url']);
         }

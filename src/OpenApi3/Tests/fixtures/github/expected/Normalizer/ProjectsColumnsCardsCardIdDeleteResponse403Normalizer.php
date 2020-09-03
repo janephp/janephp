@@ -33,6 +33,9 @@ class ProjectsColumnsCardsCardIdDeleteResponse403Normalizer implements Denormali
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ProjectsColumnsCardsCardIdDeleteResponse403();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('message', $data)) {
             $object->setMessage($data['message']);
         }

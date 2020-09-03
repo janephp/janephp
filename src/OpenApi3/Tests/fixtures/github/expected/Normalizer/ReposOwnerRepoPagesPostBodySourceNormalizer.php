@@ -33,6 +33,9 @@ class ReposOwnerRepoPagesPostBodySourceNormalizer implements DenormalizerInterfa
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ReposOwnerRepoPagesPostBodySource();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('branch', $data)) {
             $object->setBranch($data['branch']);
         }

@@ -33,6 +33,9 @@ class CommunityProfileFilesNormalizer implements DenormalizerInterface, Normaliz
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\CommunityProfileFiles();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('code_of_conduct', $data) && $data['code_of_conduct'] !== null) {
             $object->setCodeOfConduct($this->denormalizer->denormalize($data['code_of_conduct'], 'Github\\Model\\CommunityProfileFilesCodeOfConduct', 'json', $context));
         }

@@ -33,6 +33,9 @@ class GitCommitParentsItemNormalizer implements DenormalizerInterface, Normalize
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\GitCommitParentsItem();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('sha', $data)) {
             $object->setSha($data['sha']);
         }

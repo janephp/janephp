@@ -33,6 +33,9 @@ class RunnerApplicationNormalizer implements DenormalizerInterface, NormalizerIn
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\RunnerApplication();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('os', $data)) {
             $object->setOs($data['os']);
         }

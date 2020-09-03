@@ -33,6 +33,9 @@ class GbPeopleReportReponseReportDirectorSummaryNormalizer implements Denormaliz
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \CreditSafe\API\Model\GbPeopleReportReponseReportDirectorSummary();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('currentAppointments', $data)) {
             $object->setCurrentAppointments($data['currentAppointments']);
         }

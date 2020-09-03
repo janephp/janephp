@@ -33,6 +33,9 @@ class ReviewsGetResponse200HydraSearchHydraMappingItemNormalizer implements Deno
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \ApiPlatform\Demo\Model\ReviewsGetResponse200HydraSearchHydraMappingItem();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('@type', $data)) {
             $object->setType($data['@type']);
         }

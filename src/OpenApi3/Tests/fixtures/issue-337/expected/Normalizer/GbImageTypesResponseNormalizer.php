@@ -33,6 +33,9 @@ class GbImageTypesResponseNormalizer implements DenormalizerInterface, Normalize
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \CreditSafe\API\Model\GbImageTypesResponse();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('country', $data)) {
             $object->setCountry($data['country']);
         }

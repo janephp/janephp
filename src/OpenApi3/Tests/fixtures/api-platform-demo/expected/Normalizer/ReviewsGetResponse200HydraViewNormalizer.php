@@ -33,6 +33,9 @@ class ReviewsGetResponse200HydraViewNormalizer implements DenormalizerInterface,
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \ApiPlatform\Demo\Model\ReviewsGetResponse200HydraView();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('@id', $data)) {
             $object->setId($data['@id']);
         }

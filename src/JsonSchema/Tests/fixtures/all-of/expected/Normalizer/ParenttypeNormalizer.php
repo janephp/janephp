@@ -27,6 +27,9 @@ class ParenttypeNormalizer implements DenormalizerInterface, NormalizerInterface
     public function denormalize($data, $class, $format = null, array $context = array())
     {
         $object = new \Jane\JsonSchema\Tests\Expected\Model\Parenttype();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('inheritedProperty', $data)) {
             $object->setInheritedProperty($data['inheritedProperty']);
         }

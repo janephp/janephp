@@ -33,6 +33,9 @@ class UserEmailVisibilityPatchBodyNormalizer implements DenormalizerInterface, N
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\UserEmailVisibilityPatchBody();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('email', $data)) {
             $object->setEmail($data['email']);
         }

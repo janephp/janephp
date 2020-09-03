@@ -33,6 +33,9 @@ class GbCompanyReportExampleResponseReportFinancialStatementsItemProfitAndLossNo
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \CreditSafe\API\Model\GbCompanyReportExampleResponseReportFinancialStatementsItemProfitAndLoss();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('revenue', $data)) {
             $object->setRevenue($data['revenue']);
         }

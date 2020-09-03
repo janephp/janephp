@@ -33,6 +33,9 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemE
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \CreditSafe\API\Model\ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemEntityDetailsAkAsItem();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('category', $data)) {
             $object->setCategory($data['category']);
         }

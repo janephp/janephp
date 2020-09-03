@@ -33,6 +33,9 @@ class ApplicationsClientIdTokenPostBodyNormalizer implements DenormalizerInterfa
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ApplicationsClientIdTokenPostBody();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('access_token', $data)) {
             $object->setAccessToken($data['access_token']);
         }

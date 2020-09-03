@@ -81,6 +81,10 @@ trait DenormalizerGenerator
 
         $unset = \count($classGuess->getExtensionsType()) > 0;
 
+        $statements[] = new Stmt\If_(new Expr\BinaryOp\Identical(new Expr\ConstFetch(new Name('null')), new Expr\Variable('data')), [
+            'stmts' => [new Stmt\Return_($objectVariable)],
+        ]);
+
         foreach ($classGuess->getProperties() as $property) {
             $propertyVar = new Expr\ArrayDimFetch(new Expr\Variable('data'), new Scalar\String_($property->getName()));
             list($denormalizationStatements, $outputVar) = $property->getType()->createDenormalizationStatement($context, $propertyVar);

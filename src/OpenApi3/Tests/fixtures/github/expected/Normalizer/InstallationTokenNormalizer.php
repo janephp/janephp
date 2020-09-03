@@ -33,6 +33,9 @@ class InstallationTokenNormalizer implements DenormalizerInterface, NormalizerIn
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\InstallationToken();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('token', $data)) {
             $object->setToken($data['token']);
         }

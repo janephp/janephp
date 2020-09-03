@@ -33,6 +33,9 @@ class ValidationErrorErrorsItemNormalizer implements DenormalizerInterface, Norm
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ValidationErrorErrorsItem();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('resource', $data)) {
             $object->setResource($data['resource']);
         }

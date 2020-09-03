@@ -33,6 +33,9 @@ class AuthorizationsClientsClientIdPutBodyNormalizer implements DenormalizerInte
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\AuthorizationsClientsClientIdPutBody();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('client_secret', $data)) {
             $object->setClientSecret($data['client_secret']);
         }

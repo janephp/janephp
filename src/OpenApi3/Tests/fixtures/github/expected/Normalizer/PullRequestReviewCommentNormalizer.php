@@ -33,6 +33,9 @@ class PullRequestReviewCommentNormalizer implements DenormalizerInterface, Norma
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\PullRequestReviewComment();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('url', $data)) {
             $object->setUrl($data['url']);
         }

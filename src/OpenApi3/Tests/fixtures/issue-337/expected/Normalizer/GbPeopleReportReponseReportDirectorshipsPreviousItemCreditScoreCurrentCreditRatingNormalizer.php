@@ -33,6 +33,9 @@ class GbPeopleReportReponseReportDirectorshipsPreviousItemCreditScoreCurrentCred
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \CreditSafe\API\Model\GbPeopleReportReponseReportDirectorshipsPreviousItemCreditScoreCurrentCreditRating();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('commonValue', $data)) {
             $object->setCommonValue($data['commonValue']);
         }

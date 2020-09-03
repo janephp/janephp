@@ -33,6 +33,9 @@ class PullRequestHeadRepoLicenseNormalizer implements DenormalizerInterface, Nor
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\PullRequestHeadRepoLicense();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('key', $data)) {
             $object->setKey($data['key']);
         }

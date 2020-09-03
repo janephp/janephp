@@ -33,6 +33,9 @@ class ReposOwnerRepoIssuesIssueNumberLockPutBodyNormalizer implements Denormaliz
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ReposOwnerRepoIssuesIssueNumberLockPutBody();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('lock_reason', $data)) {
             $object->setLockReason($data['lock_reason']);
         }

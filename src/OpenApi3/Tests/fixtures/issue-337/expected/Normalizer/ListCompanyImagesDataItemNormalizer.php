@@ -33,6 +33,9 @@ class ListCompanyImagesDataItemNormalizer implements DenormalizerInterface, Norm
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \CreditSafe\API\Model\ListCompanyImagesDataItem();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('imageId', $data)) {
             $object->setImageId($data['imageId']);
         }

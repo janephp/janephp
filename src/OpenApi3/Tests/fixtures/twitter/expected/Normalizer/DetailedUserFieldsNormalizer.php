@@ -33,6 +33,9 @@ class DetailedUserFieldsNormalizer implements DenormalizerInterface, NormalizerI
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Jane\OpenApi3\Tests\Expected\Model\DetailedUserFields();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('stats', $data)) {
             $object->setStats($this->denormalizer->denormalize($data['stats'], 'Jane\\OpenApi3\\Tests\\Expected\\Model\\DetailedUserFieldsStats', 'json', $context));
         }

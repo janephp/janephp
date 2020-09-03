@@ -33,6 +33,9 @@ class EventPayloadNormalizer implements DenormalizerInterface, NormalizerInterfa
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\EventPayload();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('action', $data)) {
             $object->setAction($data['action']);
         }

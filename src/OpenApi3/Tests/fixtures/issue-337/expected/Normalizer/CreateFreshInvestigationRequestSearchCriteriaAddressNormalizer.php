@@ -33,6 +33,9 @@ class CreateFreshInvestigationRequestSearchCriteriaAddressNormalizer implements 
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \CreditSafe\API\Model\CreateFreshInvestigationRequestSearchCriteriaAddress();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('simple', $data)) {
             $object->setSimple($data['simple']);
         }

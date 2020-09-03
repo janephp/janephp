@@ -33,6 +33,9 @@ class SimpleCommitStatusNormalizer implements DenormalizerInterface, NormalizerI
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\SimpleCommitStatus();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('description', $data) && $data['description'] !== null) {
             $object->setDescription($data['description']);
         }

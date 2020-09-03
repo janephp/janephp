@@ -33,6 +33,9 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsIDsItemN
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \CreditSafe\API\Model\ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsIDsItem();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('number', $data)) {
             $object->setNumber($data['number']);
         }

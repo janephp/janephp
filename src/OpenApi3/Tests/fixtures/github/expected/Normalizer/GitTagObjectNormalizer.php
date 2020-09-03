@@ -33,6 +33,9 @@ class GitTagObjectNormalizer implements DenormalizerInterface, NormalizerInterfa
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\GitTagObject();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('sha', $data)) {
             $object->setSha($data['sha']);
         }

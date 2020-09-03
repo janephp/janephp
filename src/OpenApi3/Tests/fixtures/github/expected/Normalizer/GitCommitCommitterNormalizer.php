@@ -33,6 +33,9 @@ class GitCommitCommitterNormalizer implements DenormalizerInterface, NormalizerI
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\GitCommitCommitter();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('date', $data)) {
             $object->setDate(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['date']));
         }

@@ -33,6 +33,9 @@ class TestComplexListGetResponse200Item1Normalizer implements DenormalizerInterf
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Jane\OpenApi2\Tests\Expected\Model\TestComplexListGetResponse200Item1();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('email', $data)) {
             $object->setEmail($data['email']);
         }

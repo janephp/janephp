@@ -33,6 +33,9 @@ class CompletedFreshInvestigationSearchCriteriaAddressNormalizer implements Deno
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \CreditSafe\API\Model\CompletedFreshInvestigationSearchCriteriaAddress();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('city', $data)) {
             $object->setCity($data['city']);
         }

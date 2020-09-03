@@ -33,6 +33,9 @@ class CompanyNormalizer implements DenormalizerInterface, NormalizerInterface, D
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Jane\OpenApi2\Tests\Expected\Model\Company();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('base_uri', $data)) {
             $object->setBaseUri($data['base_uri']);
         }

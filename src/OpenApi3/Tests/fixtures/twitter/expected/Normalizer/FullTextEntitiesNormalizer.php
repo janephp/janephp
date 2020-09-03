@@ -33,6 +33,9 @@ class FullTextEntitiesNormalizer implements DenormalizerInterface, NormalizerInt
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Jane\OpenApi3\Tests\Expected\Model\FullTextEntities();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('urls', $data)) {
             $values = array();
             foreach ($data['urls'] as $value) {

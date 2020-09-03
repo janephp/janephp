@@ -33,6 +33,9 @@ class IssueEventAssigneeNormalizer implements DenormalizerInterface, NormalizerI
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\IssueEventAssignee();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('login', $data)) {
             $object->setLogin($data['login']);
         }

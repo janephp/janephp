@@ -33,6 +33,9 @@ class GitTagNormalizer implements DenormalizerInterface, NormalizerInterface, De
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\GitTag();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('node_id', $data)) {
             $object->setNodeId($data['node_id']);
         }

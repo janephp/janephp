@@ -33,6 +33,9 @@ class OrganizationFullNormalizer implements DenormalizerInterface, NormalizerInt
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\OrganizationFull();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('login', $data)) {
             $object->setLogin($data['login']);
         }

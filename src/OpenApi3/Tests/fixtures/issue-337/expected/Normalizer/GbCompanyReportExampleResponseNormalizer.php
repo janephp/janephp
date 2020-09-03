@@ -33,6 +33,9 @@ class GbCompanyReportExampleResponseNormalizer implements DenormalizerInterface,
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \CreditSafe\API\Model\GbCompanyReportExampleResponse();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('orderId', $data)) {
             $object->setOrderId($data['orderId']);
         }

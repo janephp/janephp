@@ -33,6 +33,9 @@ class PrivateUserPlanNormalizer implements DenormalizerInterface, NormalizerInte
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\PrivateUserPlan();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('collaborators', $data)) {
             $object->setCollaborators($data['collaborators']);
         }

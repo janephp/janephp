@@ -33,6 +33,9 @@ class ReposOwnerRepoNotificationsPutBodyNormalizer implements DenormalizerInterf
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ReposOwnerRepoNotificationsPutBody();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('last_read_at', $data)) {
             $object->setLastReadAt($data['last_read_at']);
         }

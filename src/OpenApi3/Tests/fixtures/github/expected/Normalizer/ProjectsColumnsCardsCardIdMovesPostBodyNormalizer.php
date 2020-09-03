@@ -33,6 +33,9 @@ class ProjectsColumnsCardsCardIdMovesPostBodyNormalizer implements DenormalizerI
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ProjectsColumnsCardsCardIdMovesPostBody();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('position', $data)) {
             $object->setPosition($data['position']);
         }

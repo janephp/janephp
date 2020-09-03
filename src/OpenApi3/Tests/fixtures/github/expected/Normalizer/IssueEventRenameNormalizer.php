@@ -33,6 +33,9 @@ class IssueEventRenameNormalizer implements DenormalizerInterface, NormalizerInt
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\IssueEventRename();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('from', $data)) {
             $object->setFrom($data['from']);
         }

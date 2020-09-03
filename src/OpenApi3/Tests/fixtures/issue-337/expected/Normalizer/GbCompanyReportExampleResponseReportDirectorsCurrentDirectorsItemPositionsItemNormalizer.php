@@ -33,6 +33,9 @@ class GbCompanyReportExampleResponseReportDirectorsCurrentDirectorsItemPositions
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \CreditSafe\API\Model\GbCompanyReportExampleResponseReportDirectorsCurrentDirectorsItemPositionsItem();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('dateAppointed', $data)) {
             $object->setDateAppointed($data['dateAppointed']);
         }

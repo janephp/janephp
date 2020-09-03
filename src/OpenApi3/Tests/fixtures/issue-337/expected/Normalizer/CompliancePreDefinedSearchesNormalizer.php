@@ -33,6 +33,9 @@ class CompliancePreDefinedSearchesNormalizer implements DenormalizerInterface, N
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \CreditSafe\API\Model\CompliancePreDefinedSearches();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('totalSize', $data)) {
             $object->setTotalSize($data['totalSize']);
         }

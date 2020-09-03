@@ -33,6 +33,9 @@ class BookNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \ApiPlatform\Demo\Model\Book();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('isbn', $data)) {
             $object->setIsbn($data['isbn']);
         }

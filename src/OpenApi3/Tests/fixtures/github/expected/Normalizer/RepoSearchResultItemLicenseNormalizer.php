@@ -33,6 +33,9 @@ class RepoSearchResultItemLicenseNormalizer implements DenormalizerInterface, No
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\RepoSearchResultItemLicense();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('key', $data)) {
             $object->setKey($data['key']);
         }

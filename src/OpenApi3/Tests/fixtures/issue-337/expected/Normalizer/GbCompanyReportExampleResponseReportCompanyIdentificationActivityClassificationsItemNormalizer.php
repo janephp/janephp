@@ -33,6 +33,9 @@ class GbCompanyReportExampleResponseReportCompanyIdentificationActivityClassific
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \CreditSafe\API\Model\GbCompanyReportExampleResponseReportCompanyIdentificationActivityClassificationsItem();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('classification', $data)) {
             $object->setClassification($data['classification']);
         }

@@ -33,6 +33,9 @@ class GitCommitVerificationNormalizer implements DenormalizerInterface, Normaliz
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\GitCommitVerification();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('verified', $data)) {
             $object->setVerified($data['verified']);
         }

@@ -33,6 +33,9 @@ class EventPayloadPagesItemNormalizer implements DenormalizerInterface, Normaliz
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\EventPayloadPagesItem();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('page_name', $data)) {
             $object->setPageName($data['page_name']);
         }

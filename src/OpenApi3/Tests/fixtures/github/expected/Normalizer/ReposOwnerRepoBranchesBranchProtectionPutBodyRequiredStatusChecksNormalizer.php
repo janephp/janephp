@@ -33,6 +33,9 @@ class ReposOwnerRepoBranchesBranchProtectionPutBodyRequiredStatusChecksNormalize
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ReposOwnerRepoBranchesBranchProtectionPutBodyRequiredStatusChecks();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('strict', $data)) {
             $object->setStrict($data['strict']);
         }

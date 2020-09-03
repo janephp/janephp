@@ -33,6 +33,9 @@ class ThreadSubscriptionNormalizer implements DenormalizerInterface, NormalizerI
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ThreadSubscription();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('subscribed', $data)) {
             $object->setSubscribed($data['subscribed']);
         }

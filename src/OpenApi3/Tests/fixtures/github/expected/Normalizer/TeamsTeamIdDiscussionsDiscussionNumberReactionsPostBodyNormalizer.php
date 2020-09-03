@@ -33,6 +33,9 @@ class TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBodyNormalizer implemen
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBody();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('content', $data)) {
             $object->setContent($data['content']);
         }

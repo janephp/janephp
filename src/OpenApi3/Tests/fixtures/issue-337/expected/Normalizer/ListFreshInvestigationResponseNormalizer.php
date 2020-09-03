@@ -33,6 +33,9 @@ class ListFreshInvestigationResponseNormalizer implements DenormalizerInterface,
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \CreditSafe\API\Model\ListFreshInvestigationResponse();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('totalCount', $data)) {
             $object->setTotalCount($data['totalCount']);
         }

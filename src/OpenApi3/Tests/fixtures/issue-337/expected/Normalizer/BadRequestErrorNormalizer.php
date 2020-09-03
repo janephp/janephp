@@ -33,6 +33,9 @@ class BadRequestErrorNormalizer implements DenormalizerInterface, NormalizerInte
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \CreditSafe\API\Model\BadRequestError();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('correlationId', $data)) {
             $object->setCorrelationId($data['correlationId']);
         }

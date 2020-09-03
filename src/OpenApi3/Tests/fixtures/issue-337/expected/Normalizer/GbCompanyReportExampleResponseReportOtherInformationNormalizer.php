@@ -33,6 +33,9 @@ class GbCompanyReportExampleResponseReportOtherInformationNormalizer implements 
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \CreditSafe\API\Model\GbCompanyReportExampleResponseReportOtherInformation();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('advisors', $data)) {
             $values = array();
             foreach ($data['advisors'] as $value) {

@@ -33,6 +33,9 @@ class BankMatchValidateNormalizer implements DenormalizerInterface, NormalizerIn
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \CreditSafe\API\Model\BankMatchValidate();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('accountNumber', $data)) {
             $object->setAccountNumber($data['accountNumber']);
         }

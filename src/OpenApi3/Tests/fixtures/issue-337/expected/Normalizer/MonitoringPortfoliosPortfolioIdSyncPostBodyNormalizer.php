@@ -33,6 +33,9 @@ class MonitoringPortfoliosPortfolioIdSyncPostBodyNormalizer implements Denormali
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdSyncPostBody();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('importCsv', $data)) {
             $object->setImportCsv($data['importCsv']);
         }

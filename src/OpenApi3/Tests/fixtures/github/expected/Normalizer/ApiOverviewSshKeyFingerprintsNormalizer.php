@@ -33,6 +33,9 @@ class ApiOverviewSshKeyFingerprintsNormalizer implements DenormalizerInterface, 
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ApiOverviewSshKeyFingerprints();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('MD5_RSA', $data)) {
             $object->setMD5RSA($data['MD5_RSA']);
         }

@@ -33,6 +33,9 @@ class GbCompanyReportExampleResponseReportGroupStructureNormalizer implements De
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \CreditSafe\API\Model\GbCompanyReportExampleResponseReportGroupStructure();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('subsidiaryCompanies', $data)) {
             $values = array();
             foreach ($data['subsidiaryCompanies'] as $value) {

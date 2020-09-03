@@ -33,6 +33,9 @@ class GistsGistIdPatchBodyNormalizer implements DenormalizerInterface, Normalize
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\GistsGistIdPatchBody();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('description', $data)) {
             $object->setDescription($data['description']);
         }

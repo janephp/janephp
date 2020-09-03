@@ -33,6 +33,9 @@ class IntegrationPermissionsNormalizer implements DenormalizerInterface, Normali
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\IntegrationPermissions();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('issues', $data)) {
             $object->setIssues($data['issues']);
             unset($data['issues']);

@@ -33,6 +33,9 @@ class CheckSuitePreferencePreferencesNormalizer implements DenormalizerInterface
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\CheckSuitePreferencePreferences();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('auto_trigger_checks', $data)) {
             $values = array();
             foreach ($data['auto_trigger_checks'] as $value) {

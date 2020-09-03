@@ -33,6 +33,9 @@ class SearchNoResultsErrorMessagesNormalizer implements DenormalizerInterface, N
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \CreditSafe\API\Model\SearchNoResultsErrorMessages();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('code', $data)) {
             $object->setCode($data['code']);
         }

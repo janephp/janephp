@@ -27,6 +27,9 @@ class TestNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
     public function denormalize($data, $class, $format = null, array $context = array())
     {
         $object = new \Jane\JsonSchema\Tests\Expected\Model\Test();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('child', $data)) {
             $object->setChild($this->denormalizer->denormalize($data['child'], 'Jane\\JsonSchema\\Tests\\Expected\\Model\\Childtype', 'json', $context));
         }

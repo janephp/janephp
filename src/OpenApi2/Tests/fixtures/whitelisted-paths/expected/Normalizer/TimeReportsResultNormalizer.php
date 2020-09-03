@@ -33,6 +33,9 @@ class TimeReportsResultNormalizer implements DenormalizerInterface, NormalizerIn
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Jane\OpenApi2\Tests\Expected\Model\TimeReportsResult();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('client_id', $data)) {
             $object->setClientId($data['client_id']);
         }

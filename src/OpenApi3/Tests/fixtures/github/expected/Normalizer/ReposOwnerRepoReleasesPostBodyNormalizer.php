@@ -33,6 +33,9 @@ class ReposOwnerRepoReleasesPostBodyNormalizer implements DenormalizerInterface,
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ReposOwnerRepoReleasesPostBody();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('tag_name', $data)) {
             $object->setTagName($data['tag_name']);
         }

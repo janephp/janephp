@@ -33,6 +33,9 @@ class ReposOwnerRepoGitRefsRefPatchBodyNormalizer implements DenormalizerInterfa
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ReposOwnerRepoGitRefsRefPatchBody();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('sha', $data)) {
             $object->setSha($data['sha']);
         }

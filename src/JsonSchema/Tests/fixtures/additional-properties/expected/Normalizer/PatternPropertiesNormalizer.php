@@ -33,6 +33,9 @@ class PatternPropertiesNormalizer implements DenormalizerInterface, NormalizerIn
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Jane\JsonSchema\Tests\Expected\Model\PatternProperties();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('foo', $data)) {
             $object->setFoo($data['foo']);
             unset($data['foo']);

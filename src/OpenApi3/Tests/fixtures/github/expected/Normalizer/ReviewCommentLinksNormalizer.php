@@ -33,6 +33,9 @@ class ReviewCommentLinksNormalizer implements DenormalizerInterface, NormalizerI
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ReviewCommentLinks();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('self', $data)) {
             $object->setSelf($this->denormalizer->denormalize($data['self'], 'Github\\Model\\Link', 'json', $context));
         }

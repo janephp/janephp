@@ -33,6 +33,9 @@ class ContentDirectoryItemLinksNormalizer implements DenormalizerInterface, Norm
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ContentDirectoryItemLinks();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('git', $data) && $data['git'] !== null) {
             $object->setGit($data['git']);
         }

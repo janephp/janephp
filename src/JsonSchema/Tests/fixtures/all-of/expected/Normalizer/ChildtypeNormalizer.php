@@ -27,6 +27,9 @@ class ChildtypeNormalizer implements DenormalizerInterface, NormalizerInterface,
     public function denormalize($data, $class, $format = null, array $context = array())
     {
         $object = new \Jane\JsonSchema\Tests\Expected\Model\Childtype();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('childProperty', $data)) {
             $object->setChildProperty($data['childProperty']);
         }

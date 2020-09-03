@@ -33,6 +33,9 @@ class TestNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Jane\JsonSchema\Tests\Expected\Model\Test();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('onlyNull', $data) && $data['onlyNull'] !== null) {
             $object->setOnlyNull($data['onlyNull']);
         }

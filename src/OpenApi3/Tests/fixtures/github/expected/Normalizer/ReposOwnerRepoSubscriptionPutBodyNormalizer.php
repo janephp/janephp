@@ -33,6 +33,9 @@ class ReposOwnerRepoSubscriptionPutBodyNormalizer implements DenormalizerInterfa
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ReposOwnerRepoSubscriptionPutBody();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('subscribed', $data)) {
             $object->setSubscribed($data['subscribed']);
         }

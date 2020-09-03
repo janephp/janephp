@@ -33,6 +33,9 @@ class ReposOwnerRepoPullsCommentsCommentIdReactionsPostBodyNormalizer implements
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ReposOwnerRepoPullsCommentsCommentIdReactionsPostBody();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('content', $data)) {
             $object->setContent($data['content']);
         }

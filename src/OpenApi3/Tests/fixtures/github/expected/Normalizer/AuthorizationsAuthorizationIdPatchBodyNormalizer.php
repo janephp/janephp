@@ -33,6 +33,9 @@ class AuthorizationsAuthorizationIdPatchBodyNormalizer implements DenormalizerIn
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\AuthorizationsAuthorizationIdPatchBody();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('scopes', $data) && $data['scopes'] !== null) {
             $values = array();
             foreach ($data['scopes'] as $value) {

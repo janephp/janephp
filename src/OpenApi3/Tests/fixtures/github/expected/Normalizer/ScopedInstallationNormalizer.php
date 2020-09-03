@@ -33,6 +33,9 @@ class ScopedInstallationNormalizer implements DenormalizerInterface, NormalizerI
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ScopedInstallation();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('permissions', $data)) {
             $object->setPermissions($data['permissions']);
         }

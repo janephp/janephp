@@ -33,6 +33,9 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsRecordSt
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \CreditSafe\API\Model\ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsRecordStateMatchStatesItem();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('matchID', $data)) {
             $object->setMatchID($data['matchID']);
         }

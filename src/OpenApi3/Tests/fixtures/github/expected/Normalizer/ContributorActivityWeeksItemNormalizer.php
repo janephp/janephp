@@ -33,6 +33,9 @@ class ContributorActivityWeeksItemNormalizer implements DenormalizerInterface, N
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ContributorActivityWeeksItem();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('w', $data)) {
             $object->setW($data['w']);
         }

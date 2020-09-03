@@ -33,6 +33,9 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsNameNorm
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \CreditSafe\API\Model\ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsName();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('full', $data)) {
             $object->setFull($data['full']);
         }

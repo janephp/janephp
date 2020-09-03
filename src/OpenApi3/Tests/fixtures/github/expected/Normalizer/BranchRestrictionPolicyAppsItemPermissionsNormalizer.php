@@ -33,6 +33,9 @@ class BranchRestrictionPolicyAppsItemPermissionsNormalizer implements Denormaliz
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\BranchRestrictionPolicyAppsItemPermissions();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('metadata', $data)) {
             $object->setMetadata($data['metadata']);
         }

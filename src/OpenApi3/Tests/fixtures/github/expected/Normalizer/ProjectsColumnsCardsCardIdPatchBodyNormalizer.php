@@ -33,6 +33,9 @@ class ProjectsColumnsCardsCardIdPatchBodyNormalizer implements DenormalizerInter
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ProjectsColumnsCardsCardIdPatchBody();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('note', $data) && $data['note'] !== null) {
             $object->setNote($data['note']);
         }

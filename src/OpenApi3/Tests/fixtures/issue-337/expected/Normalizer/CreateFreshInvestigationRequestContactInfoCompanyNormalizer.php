@@ -33,6 +33,9 @@ class CreateFreshInvestigationRequestContactInfoCompanyNormalizer implements Den
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \CreditSafe\API\Model\CreateFreshInvestigationRequestContactInfoCompany();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('name', $data)) {
             $object->setName($data['name']);
         }

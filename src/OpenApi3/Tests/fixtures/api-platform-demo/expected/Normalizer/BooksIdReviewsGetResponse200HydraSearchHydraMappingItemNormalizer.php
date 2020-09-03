@@ -33,6 +33,9 @@ class BooksIdReviewsGetResponse200HydraSearchHydraMappingItemNormalizer implemen
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \ApiPlatform\Demo\Model\BooksIdReviewsGetResponse200HydraSearchHydraMappingItem();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('@type', $data)) {
             $object->setType($data['@type']);
         }

@@ -33,6 +33,9 @@ class HookConfigNormalizer implements DenormalizerInterface, NormalizerInterface
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\HookConfig();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('email', $data)) {
             $object->setEmail($data['email']);
         }

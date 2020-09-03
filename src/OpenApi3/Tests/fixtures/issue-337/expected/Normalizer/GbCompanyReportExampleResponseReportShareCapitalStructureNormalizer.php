@@ -33,6 +33,9 @@ class GbCompanyReportExampleResponseReportShareCapitalStructureNormalizer implem
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \CreditSafe\API\Model\GbCompanyReportExampleResponseReportShareCapitalStructure();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('issuedShareCapital', $data)) {
             $object->setIssuedShareCapital($this->denormalizer->denormalize($data['issuedShareCapital'], 'CreditSafe\\API\\Model\\GbCompanyReportExampleResponseReportShareCapitalStructureIssuedShareCapital', 'json', $context));
         }

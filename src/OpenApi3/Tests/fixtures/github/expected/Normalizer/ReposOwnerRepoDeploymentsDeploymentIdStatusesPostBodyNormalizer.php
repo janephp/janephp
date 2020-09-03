@@ -33,6 +33,9 @@ class ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBodyNormalizer implements
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBody();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('state', $data)) {
             $object->setState($data['state']);
         }

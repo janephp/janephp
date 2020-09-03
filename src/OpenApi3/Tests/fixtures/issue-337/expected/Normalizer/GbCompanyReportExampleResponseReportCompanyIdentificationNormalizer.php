@@ -33,6 +33,9 @@ class GbCompanyReportExampleResponseReportCompanyIdentificationNormalizer implem
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \CreditSafe\API\Model\GbCompanyReportExampleResponseReportCompanyIdentification();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('basicInformation', $data)) {
             $object->setBasicInformation($this->denormalizer->denormalize($data['basicInformation'], 'CreditSafe\\API\\Model\\GbCompanyReportExampleResponseReportCompanyIdentificationBasicInformation', 'json', $context));
         }

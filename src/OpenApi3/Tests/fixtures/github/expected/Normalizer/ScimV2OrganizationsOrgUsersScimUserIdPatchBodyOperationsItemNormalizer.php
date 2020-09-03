@@ -33,6 +33,9 @@ class ScimV2OrganizationsOrgUsersScimUserIdPatchBodyOperationsItemNormalizer imp
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ScimV2OrganizationsOrgUsersScimUserIdPatchBodyOperationsItem();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('op', $data)) {
             $object->setOp($data['op']);
         }

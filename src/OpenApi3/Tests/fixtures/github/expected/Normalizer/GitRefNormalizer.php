@@ -33,6 +33,9 @@ class GitRefNormalizer implements DenormalizerInterface, NormalizerInterface, De
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\GitRef();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('ref', $data)) {
             $object->setRef($data['ref']);
         }

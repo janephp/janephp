@@ -33,6 +33,9 @@ class GbCompanyReportExampleResponseReportAdditionalInformationMortgageDetailsIt
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \CreditSafe\API\Model\GbCompanyReportExampleResponseReportAdditionalInformationMortgageDetailsItem();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('mortgageType', $data)) {
             $object->setMortgageType($data['mortgageType']);
         }

@@ -33,6 +33,9 @@ class PageNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\Page();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('url', $data)) {
             $object->setUrl($data['url']);
         }

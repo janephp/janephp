@@ -33,6 +33,9 @@ class RepositoryTemplateRepositoryPermissionsNormalizer implements DenormalizerI
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\RepositoryTemplateRepositoryPermissions();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('admin', $data)) {
             $object->setAdmin($data['admin']);
         }

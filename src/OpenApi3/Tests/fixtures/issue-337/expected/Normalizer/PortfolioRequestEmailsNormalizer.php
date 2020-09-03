@@ -33,6 +33,9 @@ class PortfolioRequestEmailsNormalizer implements DenormalizerInterface, Normali
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \CreditSafe\API\Model\PortfolioRequestEmails();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('firstName', $data)) {
             $object->setFirstName($data['firstName']);
         }

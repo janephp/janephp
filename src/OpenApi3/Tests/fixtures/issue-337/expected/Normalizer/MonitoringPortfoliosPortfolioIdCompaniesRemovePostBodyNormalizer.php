@@ -33,6 +33,9 @@ class MonitoringPortfoliosPortfolioIdCompaniesRemovePostBodyNormalizer implement
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdCompaniesRemovePostBody();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('portfolios', $data)) {
             $values = array();
             foreach ($data['portfolios'] as $value) {

@@ -33,6 +33,9 @@ class OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyGroupsItemNormalizer imp
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyGroupsItem();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('group_id', $data)) {
             $object->setGroupId($data['group_id']);
         }

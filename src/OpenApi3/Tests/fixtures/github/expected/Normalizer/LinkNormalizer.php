@@ -33,6 +33,9 @@ class LinkNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\Link();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('href', $data)) {
             $object->setHref($data['href']);
         }
