@@ -52,7 +52,7 @@ final class DateTimeTransformerFactory extends AbstractUniqueTypeTransformerFact
     protected function createTransformerForSource(Type $targetType, MapperMetadataInterface $mapperMetadata): ?TransformerInterface
     {
         if (Type::BUILTIN_TYPE_STRING === $targetType->getBuiltinType()) {
-            return new DateTimeToStringTansformer($mapperMetadata->getDateTimeFormat());
+            return new DateTimeToStringTransformer($mapperMetadata->getDateTimeFormat());
         }
 
         return null;
