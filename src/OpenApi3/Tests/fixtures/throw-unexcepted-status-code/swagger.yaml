@@ -1,0 +1,26 @@
+openapi: 3.0.0
+info:
+  title: Whitelist - Request body processing
+  version: 1.0.0
+paths:
+  /foo:
+    post:
+      summary: Add foo entity
+      requestBody:
+        description: Foo item to add
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FooPayload'
+      responses:
+        '200':
+          description: Foo item created
+
+components:
+  schemas:
+    FooPayload:
+      type: object
+      properties:
+        label:
+          type: string
+

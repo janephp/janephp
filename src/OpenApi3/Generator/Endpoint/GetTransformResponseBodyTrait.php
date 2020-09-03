@@ -79,6 +79,16 @@ trait GetTransformResponseBodyTrait
             $throwTypes = array_unique($throwTypes);
         }
 
+        if ($context->getRegistry()->getThrowUnexpectedStatusCode()) {
+            $exceptionGenerator->createBaseExceptions($context);
+
+            $throwType = '\\' . $context->getCurrentSchema()->getNamespace() . '\\Exception\\UnexpectedStatusCodeException';
+            $throwTypes[] = $throwType;
+            $outputStatements = array_merge($outputStatements, [
+                new Stmt\Throw_(new Expr\New_(new Name($throwType), [new Node\Arg(new Node\Expr\Variable('status'))])),
+            ]);
+        }
+
         $returnDoc = implode('', array_map(function ($value) {
             return ' * @throws ' . $value . "\n";
         }, $throwTypes))

@@ -1,0 +1,16 @@
+{
+    "swagger": "2.0",
+    "basePath": "/",
+    "paths": {
+        "/test-exception": {
+            "get": {
+                "operationId": "Test No Tag",
+                "responses": {
+                    "200": {
+                        "description": "Bad request on test exception",
+                    }
+                }
+            }
+        }
+    }
+}

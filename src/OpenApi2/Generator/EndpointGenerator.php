@@ -76,7 +76,7 @@ class EndpointGenerator implements EndpointGeneratorInterface
         $endpointName = $this->operationNaming->getEndpointName($operation);
 
         [$constructorMethod, $methodParams, $methodParamsDoc, $pathProperties] = $this->getConstructor($operation, $context, $this->guessClass, $this->bodyParameterGenerator, $this->nonBodyParameterGenerator);
-        [$transformBodyMethod, $outputTypes, $throwTypes] = $this->getTransformResponseBody($operation, $endpointName, $this->guessClass, $context);
+        [$transformBodyMethod, $outputTypes, $throwTypes] = $this->getTransformResponseBody($operation, $endpointName, $this->guessClass, $this->exceptionGenerator, $context);
         $class = new Stmt\Class_($endpointName, [
             'extends' => new Name\FullyQualified(BaseEndpoint::class),
             'implements' => [new Name\FullyQualified(Endpoint::class)],
