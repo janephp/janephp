@@ -2,7 +2,7 @@
 
 namespace Gounlaf\JanephpBug\Endpoint;
 
-class PatchEntity extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class PatchEntity extends \Gounlaf\JanephpBug\Runtime\Client\BaseEndpoint implements \Gounlaf\JanephpBug\Runtime\Client\Endpoint
 {
     protected $id;
     /**
@@ -16,7 +16,7 @@ class PatchEntity extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \J
         $this->id = $id;
         $this->body = $requestBody;
     }
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \Gounlaf\JanephpBug\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'PATCH';

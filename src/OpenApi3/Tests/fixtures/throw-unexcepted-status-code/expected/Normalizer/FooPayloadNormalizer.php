@@ -3,7 +3,7 @@
 namespace Jane\OpenApi3\Tests\Expected\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
-use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
+use Jane\OpenApi3\Tests\Expected\Runtime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -33,6 +33,9 @@ class FooPayloadNormalizer implements DenormalizerInterface, NormalizerInterface
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Jane\OpenApi3\Tests\Expected\Model\FooPayload();
+        if (null === $data) {
+            return $object;
+        }
         if (\array_key_exists('label', $data)) {
             $object->setLabel($data['label']);
         }
