@@ -360,15 +360,44 @@ We do generate a plugin for each authentication method declared in your scheme. 
 - ``apiKey`` in header & query for both OpenAPI v2 & v3
 - HTTP Basic & Bearer for OpenAPI v3
 
+Quick example of how your authentication definition could look (OpenAPI v3):
+
+.. code-block:: yaml
+
+    components:
+      securitySchemes:
+        BasicAuth:
+          type: http
+          scheme: basic
+        BearerAuth:
+          type: http
+          scheme: bearer
+        ApiKeyAuth:
+          type: apiKey
+          in: header
+          name: X-API-Key
+
 When your OpenAPI definition contains it, Jane will generate a Authentication namespace that contains all plugins you
 need for your API.
 Then you give all your authentication plugins to ``Jane\OpenApiRuntime\Client\Plugin\AuthenticationRegistry``. And
 finally you can pass it to your Jane Client (only if you let Jane make a HTTP Client for you, otherwise this second
 parameters is ignored).
 
+An example Authentification directory:
+
+.. image:: ../_static/images/authentication.png
+
 This ``AuthenticationRegistry`` class is used to match security scopes in your API, if an Endpoint require a certain
 authentication method, then it will use it. You need to have ``security`` fields correctly made in your scheme in order
 to use this class. If they're not set, you can simply pass the authentication plugin to your Jane Client.
+
+Here is how you can use it::
+
+    $authenticationRegistry = new AuthenticationRegistry([new ApiKeyAuthentication($this->apiKey)]);
+    $client = Client::create(null, [$authenticationRegistry]);
+    $foo = $client->foo();
+
+You can replace ``Client::create`` first argument with your custom HttpClient if needed as usual.
 
 Extending the Client
 --------------------
