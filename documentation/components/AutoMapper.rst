@@ -130,6 +130,21 @@ Type casting
 
 This component will try to correctly map scalar values (going from int to string, etc).
 
+Transformer extension
+~~~~~~~~~~~~~~~~~~~~~
+
+Sometimes you have to convert special objects (such as ``\Money\Money`` from ``moneyphp\money`` package), to do that you should create a
+custom TransformerFactory and its Transformers. We made `an example in the AutoMapper tests files`_ that you can look at.
+
+To use a custom TransformerFactory class, you have to do as following::
+
+    $autoMapper->bindTransformer(new TransformerFactory());
+
+With the Symfony bundle, you have to tag your TransformerFactory class with a ``jane_auto_mapper.transformer_factory`` tag.
+This will use automatically the TransformerFactory.
+
+.. _`an example in the AutoMapper tests files`: https://github.com/janephp/janephp/tree/next/src/AutoMapper/Tests/Fixtures/Transformer
+
 Implementation
 --------------
 

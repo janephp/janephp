@@ -44,4 +44,12 @@ final class ArrayTransformerFactory extends AbstractUniqueTypeTransformerFactory
 
         return null;
     }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getPriority(): int
+    {
+        return 4;
+    }
 }

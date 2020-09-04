@@ -12,9 +12,25 @@ final class ChainTransformerFactory implements TransformerFactoryInterface
     /** @var TransformerFactoryInterface[] */
     private $factories = [];
 
+    /** @var TransformerFactoryInterface[]|null */
+    private $sorted = null;
+
     public function addTransformerFactory(TransformerFactoryInterface $transformerFactory): void
     {
-        $this->factories[] = $transformerFactory;
+        $this->sorted = null;
+        $this->factories[$transformerFactory->getPriority()] = $transformerFactory;
+    }
+
+    public function hasTransformerFactory(TransformerFactoryInterface $transformerFactory): bool
+    {
+        $transformerFactoryClass = \get_class($transformerFactory);
+        foreach ($this->factories as $factory) {
+            if (is_a($factory, $transformerFactoryClass)) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     /**
@@ -22,7 +38,12 @@ final class ChainTransformerFactory implements TransformerFactoryInterface
      */
     public function getTransformer(?array $sourcesTypes, ?array $targetTypes, MapperMetadataInterface $mapperMetadata): ?TransformerInterface
     {
-        foreach ($this->factories as $factory) {
+        if (null === $this->sorted) {
+            $this->sorted = $this->factories;
+            krsort($this->sorted);
+        }
+
+        foreach ($this->sorted as $factory) {
             $transformer = $factory->getTransformer($sourcesTypes, $targetTypes, $mapperMetadata);
 
             if (null !== $transformer) {
@@ -31,5 +52,10 @@ final class ChainTransformerFactory implements TransformerFactoryInterface
         }
 
         return null;
+    }
+
+    public function getPriority(): int
+    {
+        return 0;
     }
 }

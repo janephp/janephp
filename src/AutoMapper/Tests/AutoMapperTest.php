@@ -6,6 +6,8 @@ use Jane\AutoMapper\AutoMapper;
 use Jane\AutoMapper\Exception\CircularReferenceException;
 use Jane\AutoMapper\Exception\NoMappingFoundException;
 use Jane\AutoMapper\MapperContext;
+use Jane\AutoMapper\Tests\Fixtures\Order;
+use Jane\AutoMapper\Tests\Fixtures\Transformer\MoneyTransformerFactory;
 use Symfony\Component\Serializer\NameConverter\AdvancedNameConverterInterface;
 
 /**
@@ -638,5 +640,56 @@ class AutoMapperTest extends AutoMapperBaseTest
 
         self::assertInstanceOf(Fixtures\UserDTOProperties::class, $dto);
         self::assertSame(['foo' => 'bar'], $dto->getProperties());
+    }
+
+    public function testCustomTransformerFromArrayToObject(): void
+    {
+        $this->autoMapper->bindTransformerFactory(new MoneyTransformerFactory());
+
+        $data = [
+            'id' => 4582,
+            'price' => [
+                'amount' => 1000,
+                'currency' => 'EUR',
+            ],
+        ];
+        $order = $this->autoMapper->map($data, Fixtures\Order::class);
+
+        self::assertInstanceOf(Fixtures\Order::class, $order);
+        self::assertInstanceOf(\Money\Money::class, $order->price);
+        self::assertEquals(1000, $order->price->getAmount());
+        self::assertEquals('EUR', $order->price->getCurrency()->getCode());
+    }
+
+    public function testCustomTransformerFromObjectToArray(): void
+    {
+        $this->autoMapper->bindTransformerFactory(new MoneyTransformerFactory());
+
+        $order = new Order();
+        $order->id = 4582;
+        $order->price = new \Money\Money(1000, new \Money\Currency('EUR'));
+        $data = $this->autoMapper->map($order, 'array');
+
+        self::assertIsArray($data);
+        self::assertEquals(4582, $data['id']);
+        self::assertIsArray($data['price']);
+        self::assertEquals(1000, $data['price']['amount']);
+        self::assertEquals('EUR', $data['price']['currency']);
+    }
+
+    public function testCustomTransformerFromObjectToObject(): void
+    {
+        $this->autoMapper->bindTransformerFactory(new MoneyTransformerFactory());
+
+        $order = new Order();
+        $order->id = 4582;
+        $order->price = new \Money\Money(1000, new \Money\Currency('EUR'));
+        $newOrder = new Order();
+        $newOrder = $this->autoMapper->map($order, $newOrder);
+
+        self::assertInstanceOf(Fixtures\Order::class, $newOrder);
+        self::assertInstanceOf(\Money\Money::class, $newOrder->price);
+        self::assertEquals(1000, $newOrder->price->getAmount());
+        self::assertEquals('EUR', $newOrder->price->getCurrency()->getCode());
     }
 }

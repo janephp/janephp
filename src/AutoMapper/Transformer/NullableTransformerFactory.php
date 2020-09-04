@@ -60,4 +60,12 @@ final class NullableTransformerFactory implements TransformerFactoryInterface
         // Remove nullable property here to avoid infinite loop
         return new NullableTransformer($subTransformer, $isTargetNullable);
     }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getPriority(): int
+    {
+        return 64;
+    }
 }

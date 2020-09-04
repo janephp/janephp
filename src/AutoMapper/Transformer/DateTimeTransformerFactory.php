@@ -97,4 +97,12 @@ final class DateTimeTransformerFactory extends AbstractUniqueTypeTransformerFact
 
         return true;
     }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getPriority(): int
+    {
+        return 16;
+    }
 }

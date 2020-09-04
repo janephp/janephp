@@ -2,6 +2,8 @@
 
 namespace Jane\AutoMapper;
 
+use Jane\AutoMapper\Transformer\TransformerFactoryInterface;
+
 /**
  * Registry of metadata.
  *
@@ -13,6 +15,11 @@ interface MapperGeneratorMetadataRegistryInterface
      * Register metadata.
      */
     public function register(MapperGeneratorMetadataInterface $configuration): void;
+
+    /**
+     * Bind custom TransformerFactory to the AutoMapper.
+     */
+    public function bindTransformerFactory(TransformerFactoryInterface $transformerFactory): void;
 
     /**
      * Get metadata for a source and a target.

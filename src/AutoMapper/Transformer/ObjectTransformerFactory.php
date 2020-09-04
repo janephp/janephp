@@ -54,4 +54,12 @@ final class ObjectTransformerFactory extends AbstractUniqueTypeTransformerFactor
             (Type::BUILTIN_TYPE_ARRAY === $type->getBuiltinType() && !$type->isCollection())
         ;
     }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getPriority(): int
+    {
+        return 2;
+    }
 }
