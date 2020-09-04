@@ -1,5 +1,5 @@
 <p align="center">
-    <img width="500" height="180" src="https://raw.githubusercontent.com/janephp/janephp/master/identity/logo_jane_full@4x.png" alt="Jane logo" />
+    <img width="500" height="180" src="https://raw.githubusercontent.com/janephp/janephp/next/identity/logo_jane_full@4x.png" alt="Jane logo" />
 </p>
 
 [![Latest Version](https://img.shields.io/github/release/janephp/janephp.svg?style=flat-square)](https://github.com/janephp/janephp/releases)
