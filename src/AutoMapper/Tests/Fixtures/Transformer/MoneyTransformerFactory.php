@@ -21,6 +21,10 @@ final class MoneyTransformerFactory extends AbstractUniqueTypeTransformerFactory
         $isSourceMoney = $this->isMoneyType($sourceType);
         $isTargetMoney = $this->isMoneyType($targetType);
 
+        if ($isSourceMoney && $isTargetMoney) {
+            return $this->createTransformerForSourceAndTarget();
+        }
+
         if ($isSourceMoney && !$isTargetMoney) {
             return $this->createTransformerForSource($targetType);
         }
@@ -48,6 +52,11 @@ final class MoneyTransformerFactory extends AbstractUniqueTypeTransformerFactory
         }
 
         return null;
+    }
+
+    protected function createTransformerForSourceAndTarget(): TransformerInterface
+    {
+        return new MoneyToMoneyTransformer();
     }
 
     private function isMoneyType(Type $type): bool

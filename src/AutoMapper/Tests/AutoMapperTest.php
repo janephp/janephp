@@ -676,4 +676,20 @@ class AutoMapperTest extends AutoMapperBaseTest
         self::assertEquals(1000, $data['price']['amount']);
         self::assertEquals('EUR', $data['price']['currency']);
     }
+
+    public function testCustomTransformerFromObjectToObject(): void
+    {
+        $this->autoMapper->bindTransformerFactory(new MoneyTransformerFactory());
+
+        $order = new Order();
+        $order->id = 4582;
+        $order->price = new \Money\Money(1000, new \Money\Currency('EUR'));
+        $newOrder = new Order();
+        $newOrder = $this->autoMapper->map($order, $newOrder);
+
+        self::assertInstanceOf(Fixtures\Order::class, $newOrder);
+        self::assertInstanceOf(\Money\Money::class, $newOrder->price);
+        self::assertEquals(1000, $newOrder->price->getAmount());
+        self::assertEquals('EUR', $newOrder->price->getCurrency()->getCode());
+    }
 }
