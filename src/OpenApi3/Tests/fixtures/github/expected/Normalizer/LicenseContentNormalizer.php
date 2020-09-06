@@ -92,45 +92,19 @@ class LicenseContentNormalizer implements DenormalizerInterface, NormalizerInter
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getName()) {
-            $data['name'] = $object->getName();
-        }
-        if (null !== $object->getPath()) {
-            $data['path'] = $object->getPath();
-        }
-        if (null !== $object->getSha()) {
-            $data['sha'] = $object->getSha();
-        }
-        if (null !== $object->getSize()) {
-            $data['size'] = $object->getSize();
-        }
-        if (null !== $object->getUrl()) {
-            $data['url'] = $object->getUrl();
-        }
-        if (null !== $object->getHtmlUrl()) {
-            $data['html_url'] = $object->getHtmlUrl();
-        }
-        if (null !== $object->getGitUrl()) {
-            $data['git_url'] = $object->getGitUrl();
-        }
-        if (null !== $object->getDownloadUrl()) {
-            $data['download_url'] = $object->getDownloadUrl();
-        }
-        if (null !== $object->getType()) {
-            $data['type'] = $object->getType();
-        }
-        if (null !== $object->getContent()) {
-            $data['content'] = $object->getContent();
-        }
-        if (null !== $object->getEncoding()) {
-            $data['encoding'] = $object->getEncoding();
-        }
-        if (null !== $object->getLinks()) {
-            $data['_links'] = $this->normalizer->normalize($object->getLinks(), 'json', $context);
-        }
-        if (null !== $object->getLicense()) {
-            $data['license'] = $this->normalizer->normalize($object->getLicense(), 'json', $context);
-        }
+        $data['name'] = $object->getName();
+        $data['path'] = $object->getPath();
+        $data['sha'] = $object->getSha();
+        $data['size'] = $object->getSize();
+        $data['url'] = $object->getUrl();
+        $data['html_url'] = $object->getHtmlUrl();
+        $data['git_url'] = $object->getGitUrl();
+        $data['download_url'] = $object->getDownloadUrl();
+        $data['type'] = $object->getType();
+        $data['content'] = $object->getContent();
+        $data['encoding'] = $object->getEncoding();
+        $data['_links'] = $this->normalizer->normalize($object->getLinks(), 'json', $context);
+        $data['license'] = $this->normalizer->normalize($object->getLicense(), 'json', $context);
         return $data;
     }
 }

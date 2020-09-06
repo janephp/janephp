@@ -53,18 +53,10 @@ class DetailedUserFieldsStatsNormalizer implements DenormalizerInterface, Normal
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getFollowersCount()) {
-            $data['followers_count'] = $object->getFollowersCount();
-        }
-        if (null !== $object->getFollowingCount()) {
-            $data['following_count'] = $object->getFollowingCount();
-        }
-        if (null !== $object->getTweetCount()) {
-            $data['tweet_count'] = $object->getTweetCount();
-        }
-        if (null !== $object->getListedCount()) {
-            $data['listed_count'] = $object->getListedCount();
-        }
+        $data['followers_count'] = $object->getFollowersCount();
+        $data['following_count'] = $object->getFollowingCount();
+        $data['tweet_count'] = $object->getTweetCount();
+        $data['listed_count'] = $object->getListedCount();
         return $data;
     }
 }

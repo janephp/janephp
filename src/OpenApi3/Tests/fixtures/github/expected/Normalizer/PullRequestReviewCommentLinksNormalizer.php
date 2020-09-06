@@ -50,15 +50,9 @@ class PullRequestReviewCommentLinksNormalizer implements DenormalizerInterface, 
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getSelf()) {
-            $data['self'] = $this->normalizer->normalize($object->getSelf(), 'json', $context);
-        }
-        if (null !== $object->getHtml()) {
-            $data['html'] = $this->normalizer->normalize($object->getHtml(), 'json', $context);
-        }
-        if (null !== $object->getPullRequest()) {
-            $data['pull_request'] = $this->normalizer->normalize($object->getPullRequest(), 'json', $context);
-        }
+        $data['self'] = $this->normalizer->normalize($object->getSelf(), 'json', $context);
+        $data['html'] = $this->normalizer->normalize($object->getHtml(), 'json', $context);
+        $data['pull_request'] = $this->normalizer->normalize($object->getPullRequest(), 'json', $context);
         return $data;
     }
 }

@@ -56,9 +56,7 @@ class ProtectedBranchRequiredPullRequestReviewsNormalizer implements Denormalize
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getUrl()) {
-            $data['url'] = $object->getUrl();
-        }
+        $data['url'] = $object->getUrl();
         if (null !== $object->getDismissStaleReviews()) {
             $data['dismiss_stale_reviews'] = $object->getDismissStaleReviews();
         }

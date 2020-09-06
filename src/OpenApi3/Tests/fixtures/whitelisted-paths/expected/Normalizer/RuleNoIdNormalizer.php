@@ -47,9 +47,7 @@ class RuleNoIdNormalizer implements DenormalizerInterface, NormalizerInterface, 
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getValue()) {
-            $data['value'] = $object->getValue();
-        }
+        $data['value'] = $object->getValue();
         if (null !== $object->getTag()) {
             $data['tag'] = $object->getTag();
         }

@@ -53,12 +53,8 @@ class IssueEventLabelNormalizer implements DenormalizerInterface, NormalizerInte
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getName()) {
-            $data['name'] = $object->getName();
-        }
-        if (null !== $object->getColor()) {
-            $data['color'] = $object->getColor();
-        }
+        $data['name'] = $object->getName();
+        $data['color'] = $object->getColor();
         return $data;
     }
 }

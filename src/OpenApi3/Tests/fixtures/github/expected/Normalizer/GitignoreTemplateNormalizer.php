@@ -47,12 +47,8 @@ class GitignoreTemplateNormalizer implements DenormalizerInterface, NormalizerIn
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getName()) {
-            $data['name'] = $object->getName();
-        }
-        if (null !== $object->getSource()) {
-            $data['source'] = $object->getSource();
-        }
+        $data['name'] = $object->getName();
+        $data['source'] = $object->getSource();
         return $data;
     }
 }

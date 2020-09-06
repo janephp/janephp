@@ -94,37 +94,19 @@ class CommitNormalizer implements DenormalizerInterface, NormalizerInterface, De
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getUrl()) {
-            $data['url'] = $object->getUrl();
+        $data['url'] = $object->getUrl();
+        $data['sha'] = $object->getSha();
+        $data['node_id'] = $object->getNodeId();
+        $data['html_url'] = $object->getHtmlUrl();
+        $data['comments_url'] = $object->getCommentsUrl();
+        $data['commit'] = $this->normalizer->normalize($object->getCommit(), 'json', $context);
+        $data['author'] = $this->normalizer->normalize($object->getAuthor(), 'json', $context);
+        $data['committer'] = $this->normalizer->normalize($object->getCommitter(), 'json', $context);
+        $values = array();
+        foreach ($object->getParents() as $value) {
+            $values[] = $this->normalizer->normalize($value, 'json', $context);
         }
-        if (null !== $object->getSha()) {
-            $data['sha'] = $object->getSha();
-        }
-        if (null !== $object->getNodeId()) {
-            $data['node_id'] = $object->getNodeId();
-        }
-        if (null !== $object->getHtmlUrl()) {
-            $data['html_url'] = $object->getHtmlUrl();
-        }
-        if (null !== $object->getCommentsUrl()) {
-            $data['comments_url'] = $object->getCommentsUrl();
-        }
-        if (null !== $object->getCommit()) {
-            $data['commit'] = $this->normalizer->normalize($object->getCommit(), 'json', $context);
-        }
-        if (null !== $object->getAuthor()) {
-            $data['author'] = $this->normalizer->normalize($object->getAuthor(), 'json', $context);
-        }
-        if (null !== $object->getCommitter()) {
-            $data['committer'] = $this->normalizer->normalize($object->getCommitter(), 'json', $context);
-        }
-        if (null !== $object->getParents()) {
-            $values = array();
-            foreach ($object->getParents() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
-            }
-            $data['parents'] = $values;
-        }
+        $data['parents'] = $values;
         if (null !== $object->getStats()) {
             $data['stats'] = $this->normalizer->normalize($object->getStats(), 'json', $context);
         }

@@ -68,24 +68,12 @@ class CommitCommitNormalizer implements DenormalizerInterface, NormalizerInterfa
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getUrl()) {
-            $data['url'] = $object->getUrl();
-        }
-        if (null !== $object->getAuthor()) {
-            $data['author'] = $this->normalizer->normalize($object->getAuthor(), 'json', $context);
-        }
-        if (null !== $object->getCommitter()) {
-            $data['committer'] = $this->normalizer->normalize($object->getCommitter(), 'json', $context);
-        }
-        if (null !== $object->getMessage()) {
-            $data['message'] = $object->getMessage();
-        }
-        if (null !== $object->getCommentCount()) {
-            $data['comment_count'] = $object->getCommentCount();
-        }
-        if (null !== $object->getTree()) {
-            $data['tree'] = $this->normalizer->normalize($object->getTree(), 'json', $context);
-        }
+        $data['url'] = $object->getUrl();
+        $data['author'] = $this->normalizer->normalize($object->getAuthor(), 'json', $context);
+        $data['committer'] = $this->normalizer->normalize($object->getCommitter(), 'json', $context);
+        $data['message'] = $object->getMessage();
+        $data['comment_count'] = $object->getCommentCount();
+        $data['tree'] = $this->normalizer->normalize($object->getTree(), 'json', $context);
         if (null !== $object->getVerification()) {
             $data['verification'] = $this->normalizer->normalize($object->getVerification(), 'json', $context);
         }

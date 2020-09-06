@@ -54,19 +54,13 @@ class CommitActivityNormalizer implements DenormalizerInterface, NormalizerInter
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getDays()) {
-            $values = array();
-            foreach ($object->getDays() as $value) {
-                $values[] = $value;
-            }
-            $data['days'] = $values;
+        $values = array();
+        foreach ($object->getDays() as $value) {
+            $values[] = $value;
         }
-        if (null !== $object->getTotal()) {
-            $data['total'] = $object->getTotal();
-        }
-        if (null !== $object->getWeek()) {
-            $data['week'] = $object->getWeek();
-        }
+        $data['days'] = $values;
+        $data['total'] = $object->getTotal();
+        $data['week'] = $object->getWeek();
         return $data;
     }
 }

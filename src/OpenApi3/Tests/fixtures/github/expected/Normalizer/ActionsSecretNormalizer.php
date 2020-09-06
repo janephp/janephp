@@ -50,15 +50,9 @@ class ActionsSecretNormalizer implements DenormalizerInterface, NormalizerInterf
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getName()) {
-            $data['name'] = $object->getName();
-        }
-        if (null !== $object->getCreatedAt()) {
-            $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
-        }
-        if (null !== $object->getUpdatedAt()) {
-            $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
-        }
+        $data['name'] = $object->getName();
+        $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
+        $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
         return $data;
     }
 }

@@ -155,15 +155,11 @@ class ContributorNormalizer implements DenormalizerInterface, NormalizerInterfac
         if (null !== $object->getReceivedEventsUrl()) {
             $data['received_events_url'] = $object->getReceivedEventsUrl();
         }
-        if (null !== $object->getType()) {
-            $data['type'] = $object->getType();
-        }
+        $data['type'] = $object->getType();
         if (null !== $object->getSiteAdmin()) {
             $data['site_admin'] = $object->getSiteAdmin();
         }
-        if (null !== $object->getContributions()) {
-            $data['contributions'] = $object->getContributions();
-        }
+        $data['contributions'] = $object->getContributions();
         if (null !== $object->getEmail()) {
             $data['email'] = $object->getEmail();
         }

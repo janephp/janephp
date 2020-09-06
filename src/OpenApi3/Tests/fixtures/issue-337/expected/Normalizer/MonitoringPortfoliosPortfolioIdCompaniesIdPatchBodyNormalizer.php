@@ -50,15 +50,9 @@ class MonitoringPortfoliosPortfolioIdCompaniesIdPatchBodyNormalizer implements D
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getPersonalReference()) {
-            $data['personalReference'] = $object->getPersonalReference();
-        }
-        if (null !== $object->getFreeText()) {
-            $data['freeText'] = $object->getFreeText();
-        }
-        if (null !== $object->getPersonalLimit()) {
-            $data['personalLimit'] = $object->getPersonalLimit();
-        }
+        $data['personalReference'] = $object->getPersonalReference();
+        $data['freeText'] = $object->getFreeText();
+        $data['personalLimit'] = $object->getPersonalLimit();
         return $data;
     }
 }

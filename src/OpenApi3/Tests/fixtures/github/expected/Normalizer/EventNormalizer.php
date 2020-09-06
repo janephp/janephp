@@ -71,30 +71,16 @@ class EventNormalizer implements DenormalizerInterface, NormalizerInterface, Den
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getId()) {
-            $data['id'] = $object->getId();
-        }
-        if (null !== $object->getType()) {
-            $data['type'] = $object->getType();
-        }
-        if (null !== $object->getActor()) {
-            $data['actor'] = $this->normalizer->normalize($object->getActor(), 'json', $context);
-        }
-        if (null !== $object->getRepo()) {
-            $data['repo'] = $this->normalizer->normalize($object->getRepo(), 'json', $context);
-        }
+        $data['id'] = $object->getId();
+        $data['type'] = $object->getType();
+        $data['actor'] = $this->normalizer->normalize($object->getActor(), 'json', $context);
+        $data['repo'] = $this->normalizer->normalize($object->getRepo(), 'json', $context);
         if (null !== $object->getOrg()) {
             $data['org'] = $this->normalizer->normalize($object->getOrg(), 'json', $context);
         }
-        if (null !== $object->getPayload()) {
-            $data['payload'] = $this->normalizer->normalize($object->getPayload(), 'json', $context);
-        }
-        if (null !== $object->getPublic()) {
-            $data['public'] = $object->getPublic();
-        }
-        if (null !== $object->getCreatedAt()) {
-            $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
-        }
+        $data['payload'] = $this->normalizer->normalize($object->getPayload(), 'json', $context);
+        $data['public'] = $object->getPublic();
+        $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
         return $data;
     }
 }

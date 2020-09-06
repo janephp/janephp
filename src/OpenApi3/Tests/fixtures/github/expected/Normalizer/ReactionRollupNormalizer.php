@@ -71,36 +71,16 @@ class ReactionRollupNormalizer implements DenormalizerInterface, NormalizerInter
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getUrl()) {
-            $data['url'] = $object->getUrl();
-        }
-        if (null !== $object->getTotalCount()) {
-            $data['total_count'] = $object->getTotalCount();
-        }
-        if (null !== $object->get1()) {
-            $data['+1'] = $object->get1();
-        }
-        if (null !== $object->get12()) {
-            $data['-1'] = $object->get12();
-        }
-        if (null !== $object->getLaugh()) {
-            $data['laugh'] = $object->getLaugh();
-        }
-        if (null !== $object->getConfused()) {
-            $data['confused'] = $object->getConfused();
-        }
-        if (null !== $object->getHeart()) {
-            $data['heart'] = $object->getHeart();
-        }
-        if (null !== $object->getHooray()) {
-            $data['hooray'] = $object->getHooray();
-        }
-        if (null !== $object->getEyes()) {
-            $data['eyes'] = $object->getEyes();
-        }
-        if (null !== $object->getRocket()) {
-            $data['rocket'] = $object->getRocket();
-        }
+        $data['url'] = $object->getUrl();
+        $data['total_count'] = $object->getTotalCount();
+        $data['+1'] = $object->get1();
+        $data['-1'] = $object->get12();
+        $data['laugh'] = $object->getLaugh();
+        $data['confused'] = $object->getConfused();
+        $data['heart'] = $object->getHeart();
+        $data['hooray'] = $object->getHooray();
+        $data['eyes'] = $object->getEyes();
+        $data['rocket'] = $object->getRocket();
         return $data;
     }
 }

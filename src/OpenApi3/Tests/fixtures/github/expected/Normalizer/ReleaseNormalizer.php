@@ -123,64 +123,30 @@ class ReleaseNormalizer implements DenormalizerInterface, NormalizerInterface, D
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getUrl()) {
-            $data['url'] = $object->getUrl();
-        }
-        if (null !== $object->getHtmlUrl()) {
-            $data['html_url'] = $object->getHtmlUrl();
-        }
-        if (null !== $object->getAssetsUrl()) {
-            $data['assets_url'] = $object->getAssetsUrl();
-        }
-        if (null !== $object->getUploadUrl()) {
-            $data['upload_url'] = $object->getUploadUrl();
-        }
-        if (null !== $object->getTarballUrl()) {
-            $data['tarball_url'] = $object->getTarballUrl();
-        }
-        if (null !== $object->getZipballUrl()) {
-            $data['zipball_url'] = $object->getZipballUrl();
-        }
-        if (null !== $object->getId()) {
-            $data['id'] = $object->getId();
-        }
-        if (null !== $object->getNodeId()) {
-            $data['node_id'] = $object->getNodeId();
-        }
-        if (null !== $object->getTagName()) {
-            $data['tag_name'] = $object->getTagName();
-        }
-        if (null !== $object->getTargetCommitish()) {
-            $data['target_commitish'] = $object->getTargetCommitish();
-        }
-        if (null !== $object->getName()) {
-            $data['name'] = $object->getName();
-        }
+        $data['url'] = $object->getUrl();
+        $data['html_url'] = $object->getHtmlUrl();
+        $data['assets_url'] = $object->getAssetsUrl();
+        $data['upload_url'] = $object->getUploadUrl();
+        $data['tarball_url'] = $object->getTarballUrl();
+        $data['zipball_url'] = $object->getZipballUrl();
+        $data['id'] = $object->getId();
+        $data['node_id'] = $object->getNodeId();
+        $data['tag_name'] = $object->getTagName();
+        $data['target_commitish'] = $object->getTargetCommitish();
+        $data['name'] = $object->getName();
         if (null !== $object->getBody()) {
             $data['body'] = $object->getBody();
         }
-        if (null !== $object->getDraft()) {
-            $data['draft'] = $object->getDraft();
+        $data['draft'] = $object->getDraft();
+        $data['prerelease'] = $object->getPrerelease();
+        $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
+        $data['published_at'] = $object->getPublishedAt()->format('Y-m-d\\TH:i:sP');
+        $data['author'] = $this->normalizer->normalize($object->getAuthor(), 'json', $context);
+        $values = array();
+        foreach ($object->getAssets() as $value) {
+            $values[] = $this->normalizer->normalize($value, 'json', $context);
         }
-        if (null !== $object->getPrerelease()) {
-            $data['prerelease'] = $object->getPrerelease();
-        }
-        if (null !== $object->getCreatedAt()) {
-            $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
-        }
-        if (null !== $object->getPublishedAt()) {
-            $data['published_at'] = $object->getPublishedAt()->format('Y-m-d\\TH:i:sP');
-        }
-        if (null !== $object->getAuthor()) {
-            $data['author'] = $this->normalizer->normalize($object->getAuthor(), 'json', $context);
-        }
-        if (null !== $object->getAssets()) {
-            $values = array();
-            foreach ($object->getAssets() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
-            }
-            $data['assets'] = $values;
-        }
+        $data['assets'] = $values;
         if (null !== $object->getBodyHtml()) {
             $data['body_html'] = $object->getBodyHtml();
         }

@@ -51,16 +51,12 @@ class GetRulesResponseNormalizer implements DenormalizerInterface, NormalizerInt
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getData()) {
-            $values = array();
-            foreach ($object->getData() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
-            }
-            $data['data'] = $values;
+        $values = array();
+        foreach ($object->getData() as $value) {
+            $values[] = $this->normalizer->normalize($value, 'json', $context);
         }
-        if (null !== $object->getMeta()) {
-            $data['meta'] = $this->normalizer->normalize($object->getMeta(), 'json', $context);
-        }
+        $data['data'] = $values;
+        $data['meta'] = $this->normalizer->normalize($object->getMeta(), 'json', $context);
         return $data;
     }
 }

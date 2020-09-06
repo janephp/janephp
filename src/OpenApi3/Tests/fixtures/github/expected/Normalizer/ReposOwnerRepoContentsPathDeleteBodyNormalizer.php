@@ -56,12 +56,8 @@ class ReposOwnerRepoContentsPathDeleteBodyNormalizer implements DenormalizerInte
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getMessage()) {
-            $data['message'] = $object->getMessage();
-        }
-        if (null !== $object->getSha()) {
-            $data['sha'] = $object->getSha();
-        }
+        $data['message'] = $object->getMessage();
+        $data['sha'] = $object->getSha();
         if (null !== $object->getBranch()) {
             $data['branch'] = $object->getBranch();
         }

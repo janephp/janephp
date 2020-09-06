@@ -60,9 +60,7 @@ class DetailedTweetFieldsNormalizer implements DenormalizerInterface, Normalizer
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getStats()) {
-            $data['stats'] = $this->normalizer->normalize($object->getStats(), 'json', $context);
-        }
+        $data['stats'] = $this->normalizer->normalize($object->getStats(), 'json', $context);
         if (null !== $object->getContextAnnotation()) {
             $values = array();
             foreach ($object->getContextAnnotation() as $value) {
@@ -70,9 +68,7 @@ class DetailedTweetFieldsNormalizer implements DenormalizerInterface, Normalizer
             }
             $data['context_annotation'] = $values;
         }
-        if (null !== $object->getPossiblySensitive()) {
-            $data['possibly_sensitive'] = $object->getPossiblySensitive();
-        }
+        $data['possibly_sensitive'] = $object->getPossiblySensitive();
         if (null !== $object->getLang()) {
             $data['lang'] = $object->getLang();
         }

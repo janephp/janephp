@@ -2,7 +2,7 @@
 
 namespace Jane\JsonSchema\Tests\Expected\Model;
 
-class Test
+class Nullable
 {
     /**
      * 
@@ -16,6 +16,18 @@ class Test
      * @var string|null
      */
     protected $nullOrString;
+    /**
+     * 
+     *
+     * @var string
+     */
+    protected $required;
+    /**
+     * 
+     *
+     * @var string|null
+     */
+    protected $requiredNull;
     /**
      * 
      *
@@ -56,6 +68,48 @@ class Test
     public function setNullOrString(?string $nullOrString) : self
     {
         $this->nullOrString = $nullOrString;
+        return $this;
+    }
+    /**
+     * 
+     *
+     * @return string
+     */
+    public function getRequired() : string
+    {
+        return $this->required;
+    }
+    /**
+     * 
+     *
+     * @param string $required
+     *
+     * @return self
+     */
+    public function setRequired(string $required) : self
+    {
+        $this->required = $required;
+        return $this;
+    }
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getRequiredNull() : ?string
+    {
+        return $this->requiredNull;
+    }
+    /**
+     * 
+     *
+     * @param string|null $requiredNull
+     *
+     * @return self
+     */
+    public function setRequiredNull(?string $requiredNull) : self
+    {
+        $this->requiredNull = $requiredNull;
         return $this;
     }
 }

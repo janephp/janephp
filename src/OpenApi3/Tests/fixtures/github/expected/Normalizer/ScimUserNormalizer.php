@@ -96,38 +96,22 @@ class ScimUserNormalizer implements DenormalizerInterface, NormalizerInterface, 
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getSchemas()) {
-            $values = array();
-            foreach ($object->getSchemas() as $value) {
-                $values[] = $value;
-            }
-            $data['schemas'] = $values;
+        $values = array();
+        foreach ($object->getSchemas() as $value) {
+            $values[] = $value;
         }
-        if (null !== $object->getId()) {
-            $data['id'] = $object->getId();
+        $data['schemas'] = $values;
+        $data['id'] = $object->getId();
+        $data['externalId'] = $object->getExternalId();
+        $data['userName'] = $object->getUserName();
+        $data['name'] = $this->normalizer->normalize($object->getName(), 'json', $context);
+        $values_1 = array();
+        foreach ($object->getEmails() as $value_1) {
+            $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
         }
-        if (null !== $object->getExternalId()) {
-            $data['externalId'] = $object->getExternalId();
-        }
-        if (null !== $object->getUserName()) {
-            $data['userName'] = $object->getUserName();
-        }
-        if (null !== $object->getName()) {
-            $data['name'] = $this->normalizer->normalize($object->getName(), 'json', $context);
-        }
-        if (null !== $object->getEmails()) {
-            $values_1 = array();
-            foreach ($object->getEmails() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
-            }
-            $data['emails'] = $values_1;
-        }
-        if (null !== $object->getActive()) {
-            $data['active'] = $object->getActive();
-        }
-        if (null !== $object->getMeta()) {
-            $data['meta'] = $this->normalizer->normalize($object->getMeta(), 'json', $context);
-        }
+        $data['emails'] = $values_1;
+        $data['active'] = $object->getActive();
+        $data['meta'] = $this->normalizer->normalize($object->getMeta(), 'json', $context);
         if (null !== $object->getOrganizationId()) {
             $data['organization_id'] = $object->getOrganizationId();
         }

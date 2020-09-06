@@ -62,21 +62,11 @@ class ScopedInstallationNormalizer implements DenormalizerInterface, NormalizerI
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getPermissions()) {
-            $data['permissions'] = $object->getPermissions();
-        }
-        if (null !== $object->getRepositorySelection()) {
-            $data['repository_selection'] = $object->getRepositorySelection();
-        }
-        if (null !== $object->getSingleFileName()) {
-            $data['single_file_name'] = $object->getSingleFileName();
-        }
-        if (null !== $object->getRepositoriesUrl()) {
-            $data['repositories_url'] = $object->getRepositoriesUrl();
-        }
-        if (null !== $object->getAccount()) {
-            $data['account'] = $this->normalizer->normalize($object->getAccount(), 'json', $context);
-        }
+        $data['permissions'] = $object->getPermissions();
+        $data['repository_selection'] = $object->getRepositorySelection();
+        $data['single_file_name'] = $object->getSingleFileName();
+        $data['repositories_url'] = $object->getRepositoriesUrl();
+        $data['account'] = $this->normalizer->normalize($object->getAccount(), 'json', $context);
         return $data;
     }
 }

@@ -131,48 +131,22 @@ class OrganizationNormalizer implements DenormalizerInterface, NormalizerInterfa
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getLogin()) {
-            $data['login'] = $object->getLogin();
-        }
-        if (null !== $object->getUrl()) {
-            $data['url'] = $object->getUrl();
-        }
-        if (null !== $object->getId()) {
-            $data['id'] = $object->getId();
-        }
-        if (null !== $object->getNodeId()) {
-            $data['node_id'] = $object->getNodeId();
-        }
-        if (null !== $object->getReposUrl()) {
-            $data['repos_url'] = $object->getReposUrl();
-        }
-        if (null !== $object->getEventsUrl()) {
-            $data['events_url'] = $object->getEventsUrl();
-        }
-        if (null !== $object->getHooksUrl()) {
-            $data['hooks_url'] = $object->getHooksUrl();
-        }
-        if (null !== $object->getIssuesUrl()) {
-            $data['issues_url'] = $object->getIssuesUrl();
-        }
-        if (null !== $object->getMembersUrl()) {
-            $data['members_url'] = $object->getMembersUrl();
-        }
-        if (null !== $object->getPublicMembersUrl()) {
-            $data['public_members_url'] = $object->getPublicMembersUrl();
-        }
-        if (null !== $object->getAvatarUrl()) {
-            $data['avatar_url'] = $object->getAvatarUrl();
-        }
-        if (null !== $object->getDescription()) {
-            $data['description'] = $object->getDescription();
-        }
+        $data['login'] = $object->getLogin();
+        $data['url'] = $object->getUrl();
+        $data['id'] = $object->getId();
+        $data['node_id'] = $object->getNodeId();
+        $data['repos_url'] = $object->getReposUrl();
+        $data['events_url'] = $object->getEventsUrl();
+        $data['hooks_url'] = $object->getHooksUrl();
+        $data['issues_url'] = $object->getIssuesUrl();
+        $data['members_url'] = $object->getMembersUrl();
+        $data['public_members_url'] = $object->getPublicMembersUrl();
+        $data['avatar_url'] = $object->getAvatarUrl();
+        $data['description'] = $object->getDescription();
         if (null !== $object->getBlog()) {
             $data['blog'] = $object->getBlog();
         }
-        if (null !== $object->getHtmlUrl()) {
-            $data['html_url'] = $object->getHtmlUrl();
-        }
+        $data['html_url'] = $object->getHtmlUrl();
         if (null !== $object->getName()) {
             $data['name'] = $object->getName();
         }
@@ -185,36 +159,18 @@ class OrganizationNormalizer implements DenormalizerInterface, NormalizerInterfa
         if (null !== $object->getEmail()) {
             $data['email'] = $object->getEmail();
         }
-        if (null !== $object->getHasOrganizationProjects()) {
-            $data['has_organization_projects'] = $object->getHasOrganizationProjects();
-        }
-        if (null !== $object->getHasRepositoryProjects()) {
-            $data['has_repository_projects'] = $object->getHasRepositoryProjects();
-        }
+        $data['has_organization_projects'] = $object->getHasOrganizationProjects();
+        $data['has_repository_projects'] = $object->getHasRepositoryProjects();
         if (null !== $object->getIsVerified()) {
             $data['is_verified'] = $object->getIsVerified();
         }
-        if (null !== $object->getPublicRepos()) {
-            $data['public_repos'] = $object->getPublicRepos();
-        }
-        if (null !== $object->getPublicGists()) {
-            $data['public_gists'] = $object->getPublicGists();
-        }
-        if (null !== $object->getFollowers()) {
-            $data['followers'] = $object->getFollowers();
-        }
-        if (null !== $object->getFollowing()) {
-            $data['following'] = $object->getFollowing();
-        }
-        if (null !== $object->getType()) {
-            $data['type'] = $object->getType();
-        }
-        if (null !== $object->getCreatedAt()) {
-            $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
-        }
-        if (null !== $object->getUpdatedAt()) {
-            $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
-        }
+        $data['public_repos'] = $object->getPublicRepos();
+        $data['public_gists'] = $object->getPublicGists();
+        $data['followers'] = $object->getFollowers();
+        $data['following'] = $object->getFollowing();
+        $data['type'] = $object->getType();
+        $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
+        $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
         if (null !== $object->getPlan()) {
             $data['plan'] = $this->normalizer->normalize($object->getPlan(), 'json', $context);
         }

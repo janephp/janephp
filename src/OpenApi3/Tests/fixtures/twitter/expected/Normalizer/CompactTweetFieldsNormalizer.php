@@ -69,18 +69,10 @@ class CompactTweetFieldsNormalizer implements DenormalizerInterface, NormalizerI
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getId()) {
-            $data['id'] = $object->getId();
-        }
-        if (null !== $object->getCreatedAt()) {
-            $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
-        }
-        if (null !== $object->getText()) {
-            $data['text'] = $object->getText();
-        }
-        if (null !== $object->getAuthorId()) {
-            $data['author_id'] = $object->getAuthorId();
-        }
+        $data['id'] = $object->getId();
+        $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
+        $data['text'] = $object->getText();
+        $data['author_id'] = $object->getAuthorId();
         if (null !== $object->getInReplyToUserId()) {
             $data['in_reply_to_user_id'] = $object->getInReplyToUserId();
         }

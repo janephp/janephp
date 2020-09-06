@@ -53,18 +53,10 @@ class ContentTrafficNormalizer implements DenormalizerInterface, NormalizerInter
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getPath()) {
-            $data['path'] = $object->getPath();
-        }
-        if (null !== $object->getTitle()) {
-            $data['title'] = $object->getTitle();
-        }
-        if (null !== $object->getCount()) {
-            $data['count'] = $object->getCount();
-        }
-        if (null !== $object->getUniques()) {
-            $data['uniques'] = $object->getUniques();
-        }
+        $data['path'] = $object->getPath();
+        $data['title'] = $object->getTitle();
+        $data['count'] = $object->getCount();
+        $data['uniques'] = $object->getUniques();
         return $data;
     }
 }

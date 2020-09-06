@@ -50,12 +50,8 @@ class RepositoryCollaboratorPermissionNormalizer implements DenormalizerInterfac
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getPermission()) {
-            $data['permission'] = $object->getPermission();
-        }
-        if (null !== $object->getUser()) {
-            $data['user'] = $this->normalizer->normalize($object->getUser(), 'json', $context);
-        }
+        $data['permission'] = $object->getPermission();
+        $data['user'] = $this->normalizer->normalize($object->getUser(), 'json', $context);
         return $data;
     }
 }

@@ -188,102 +188,40 @@ class PublicUserNormalizer implements DenormalizerInterface, NormalizerInterface
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getLogin()) {
-            $data['login'] = $object->getLogin();
-        }
-        if (null !== $object->getId()) {
-            $data['id'] = $object->getId();
-        }
-        if (null !== $object->getNodeId()) {
-            $data['node_id'] = $object->getNodeId();
-        }
-        if (null !== $object->getAvatarUrl()) {
-            $data['avatar_url'] = $object->getAvatarUrl();
-        }
-        if (null !== $object->getGravatarId()) {
-            $data['gravatar_id'] = $object->getGravatarId();
-        }
-        if (null !== $object->getUrl()) {
-            $data['url'] = $object->getUrl();
-        }
-        if (null !== $object->getHtmlUrl()) {
-            $data['html_url'] = $object->getHtmlUrl();
-        }
-        if (null !== $object->getFollowersUrl()) {
-            $data['followers_url'] = $object->getFollowersUrl();
-        }
-        if (null !== $object->getFollowingUrl()) {
-            $data['following_url'] = $object->getFollowingUrl();
-        }
-        if (null !== $object->getGistsUrl()) {
-            $data['gists_url'] = $object->getGistsUrl();
-        }
-        if (null !== $object->getStarredUrl()) {
-            $data['starred_url'] = $object->getStarredUrl();
-        }
-        if (null !== $object->getSubscriptionsUrl()) {
-            $data['subscriptions_url'] = $object->getSubscriptionsUrl();
-        }
-        if (null !== $object->getOrganizationsUrl()) {
-            $data['organizations_url'] = $object->getOrganizationsUrl();
-        }
-        if (null !== $object->getReposUrl()) {
-            $data['repos_url'] = $object->getReposUrl();
-        }
-        if (null !== $object->getEventsUrl()) {
-            $data['events_url'] = $object->getEventsUrl();
-        }
-        if (null !== $object->getReceivedEventsUrl()) {
-            $data['received_events_url'] = $object->getReceivedEventsUrl();
-        }
-        if (null !== $object->getType()) {
-            $data['type'] = $object->getType();
-        }
-        if (null !== $object->getSiteAdmin()) {
-            $data['site_admin'] = $object->getSiteAdmin();
-        }
-        if (null !== $object->getName()) {
-            $data['name'] = $object->getName();
-        }
-        if (null !== $object->getCompany()) {
-            $data['company'] = $object->getCompany();
-        }
-        if (null !== $object->getBlog()) {
-            $data['blog'] = $object->getBlog();
-        }
-        if (null !== $object->getLocation()) {
-            $data['location'] = $object->getLocation();
-        }
-        if (null !== $object->getEmail()) {
-            $data['email'] = $object->getEmail();
-        }
-        if (null !== $object->getHireable()) {
-            $data['hireable'] = $object->getHireable();
-        }
-        if (null !== $object->getBio()) {
-            $data['bio'] = $object->getBio();
-        }
+        $data['login'] = $object->getLogin();
+        $data['id'] = $object->getId();
+        $data['node_id'] = $object->getNodeId();
+        $data['avatar_url'] = $object->getAvatarUrl();
+        $data['gravatar_id'] = $object->getGravatarId();
+        $data['url'] = $object->getUrl();
+        $data['html_url'] = $object->getHtmlUrl();
+        $data['followers_url'] = $object->getFollowersUrl();
+        $data['following_url'] = $object->getFollowingUrl();
+        $data['gists_url'] = $object->getGistsUrl();
+        $data['starred_url'] = $object->getStarredUrl();
+        $data['subscriptions_url'] = $object->getSubscriptionsUrl();
+        $data['organizations_url'] = $object->getOrganizationsUrl();
+        $data['repos_url'] = $object->getReposUrl();
+        $data['events_url'] = $object->getEventsUrl();
+        $data['received_events_url'] = $object->getReceivedEventsUrl();
+        $data['type'] = $object->getType();
+        $data['site_admin'] = $object->getSiteAdmin();
+        $data['name'] = $object->getName();
+        $data['company'] = $object->getCompany();
+        $data['blog'] = $object->getBlog();
+        $data['location'] = $object->getLocation();
+        $data['email'] = $object->getEmail();
+        $data['hireable'] = $object->getHireable();
+        $data['bio'] = $object->getBio();
         if (null !== $object->getTwitterUsername()) {
             $data['twitter_username'] = $object->getTwitterUsername();
         }
-        if (null !== $object->getPublicRepos()) {
-            $data['public_repos'] = $object->getPublicRepos();
-        }
-        if (null !== $object->getPublicGists()) {
-            $data['public_gists'] = $object->getPublicGists();
-        }
-        if (null !== $object->getFollowers()) {
-            $data['followers'] = $object->getFollowers();
-        }
-        if (null !== $object->getFollowing()) {
-            $data['following'] = $object->getFollowing();
-        }
-        if (null !== $object->getCreatedAt()) {
-            $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
-        }
-        if (null !== $object->getUpdatedAt()) {
-            $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
-        }
+        $data['public_repos'] = $object->getPublicRepos();
+        $data['public_gists'] = $object->getPublicGists();
+        $data['followers'] = $object->getFollowers();
+        $data['following'] = $object->getFollowing();
+        $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
+        $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
         if (null !== $object->getPlan()) {
             $data['plan'] = $this->normalizer->normalize($object->getPlan(), 'json', $context);
         }

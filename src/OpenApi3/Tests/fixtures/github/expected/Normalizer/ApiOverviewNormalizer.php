@@ -95,9 +95,7 @@ class ApiOverviewNormalizer implements DenormalizerInterface, NormalizerInterfac
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getVerifiablePasswordAuthentication()) {
-            $data['verifiable_password_authentication'] = $object->getVerifiablePasswordAuthentication();
-        }
+        $data['verifiable_password_authentication'] = $object->getVerifiablePasswordAuthentication();
         if (null !== $object->getSshKeyFingerprints()) {
             $data['ssh_key_fingerprints'] = $this->normalizer->normalize($object->getSshKeyFingerprints(), 'json', $context);
         }

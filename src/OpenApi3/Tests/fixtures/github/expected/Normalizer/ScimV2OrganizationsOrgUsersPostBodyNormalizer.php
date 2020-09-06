@@ -77,19 +77,13 @@ class ScimV2OrganizationsOrgUsersPostBodyNormalizer implements DenormalizerInter
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getUserName()) {
-            $data['userName'] = $object->getUserName();
+        $data['userName'] = $object->getUserName();
+        $data['name'] = $this->normalizer->normalize($object->getName(), 'json', $context);
+        $values = array();
+        foreach ($object->getEmails() as $value) {
+            $values[] = $this->normalizer->normalize($value, 'json', $context);
         }
-        if (null !== $object->getName()) {
-            $data['name'] = $this->normalizer->normalize($object->getName(), 'json', $context);
-        }
-        if (null !== $object->getEmails()) {
-            $values = array();
-            foreach ($object->getEmails() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
-            }
-            $data['emails'] = $values;
-        }
+        $data['emails'] = $values;
         if (null !== $object->getSchemas()) {
             $values_1 = array();
             foreach ($object->getSchemas() as $value_1) {

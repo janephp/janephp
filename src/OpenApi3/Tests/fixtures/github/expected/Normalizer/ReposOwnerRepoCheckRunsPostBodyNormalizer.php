@@ -75,12 +75,8 @@ class ReposOwnerRepoCheckRunsPostBodyNormalizer implements DenormalizerInterface
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getName()) {
-            $data['name'] = $object->getName();
-        }
-        if (null !== $object->getHeadSha()) {
-            $data['head_sha'] = $object->getHeadSha();
-        }
+        $data['name'] = $object->getName();
+        $data['head_sha'] = $object->getHeadSha();
         if (null !== $object->getDetailsUrl()) {
             $data['details_url'] = $object->getDetailsUrl();
         }

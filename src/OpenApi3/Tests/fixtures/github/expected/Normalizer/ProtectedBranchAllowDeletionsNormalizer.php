@@ -44,9 +44,7 @@ class ProtectedBranchAllowDeletionsNormalizer implements DenormalizerInterface, 
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getEnabled()) {
-            $data['enabled'] = $object->getEnabled();
-        }
+        $data['enabled'] = $object->getEnabled();
         return $data;
     }
 }

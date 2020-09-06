@@ -51,16 +51,12 @@ class PointNormalizer implements DenormalizerInterface, NormalizerInterface, Den
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getType()) {
-            $data['type'] = $object->getType();
+        $data['type'] = $object->getType();
+        $values = array();
+        foreach ($object->getCoordinates() as $value) {
+            $values[] = $value;
         }
-        if (null !== $object->getCoordinates()) {
-            $values = array();
-            foreach ($object->getCoordinates() as $value) {
-                $values[] = $value;
-            }
-            $data['coordinates'] = $values;
-        }
+        $data['coordinates'] = $values;
         return $data;
     }
 }

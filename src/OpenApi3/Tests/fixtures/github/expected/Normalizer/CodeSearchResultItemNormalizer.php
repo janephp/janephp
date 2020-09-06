@@ -91,30 +91,14 @@ class CodeSearchResultItemNormalizer implements DenormalizerInterface, Normalize
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getName()) {
-            $data['name'] = $object->getName();
-        }
-        if (null !== $object->getPath()) {
-            $data['path'] = $object->getPath();
-        }
-        if (null !== $object->getSha()) {
-            $data['sha'] = $object->getSha();
-        }
-        if (null !== $object->getUrl()) {
-            $data['url'] = $object->getUrl();
-        }
-        if (null !== $object->getGitUrl()) {
-            $data['git_url'] = $object->getGitUrl();
-        }
-        if (null !== $object->getHtmlUrl()) {
-            $data['html_url'] = $object->getHtmlUrl();
-        }
-        if (null !== $object->getRepository()) {
-            $data['repository'] = $this->normalizer->normalize($object->getRepository(), 'json', $context);
-        }
-        if (null !== $object->getScore()) {
-            $data['score'] = $object->getScore();
-        }
+        $data['name'] = $object->getName();
+        $data['path'] = $object->getPath();
+        $data['sha'] = $object->getSha();
+        $data['url'] = $object->getUrl();
+        $data['git_url'] = $object->getGitUrl();
+        $data['html_url'] = $object->getHtmlUrl();
+        $data['repository'] = $this->normalizer->normalize($object->getRepository(), 'json', $context);
+        $data['score'] = $object->getScore();
         if (null !== $object->getFileSize()) {
             $data['file_size'] = $object->getFileSize();
         }

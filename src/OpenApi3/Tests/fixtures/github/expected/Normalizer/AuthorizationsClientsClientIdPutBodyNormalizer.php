@@ -63,9 +63,7 @@ class AuthorizationsClientsClientIdPutBodyNormalizer implements DenormalizerInte
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getClientSecret()) {
-            $data['client_secret'] = $object->getClientSecret();
-        }
+        $data['client_secret'] = $object->getClientSecret();
         if (null !== $object->getScopes()) {
             $values = array();
             foreach ($object->getScopes() as $value) {

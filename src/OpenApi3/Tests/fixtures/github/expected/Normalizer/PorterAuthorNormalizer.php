@@ -62,27 +62,13 @@ class PorterAuthorNormalizer implements DenormalizerInterface, NormalizerInterfa
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getId()) {
-            $data['id'] = $object->getId();
-        }
-        if (null !== $object->getRemoteId()) {
-            $data['remote_id'] = $object->getRemoteId();
-        }
-        if (null !== $object->getRemoteName()) {
-            $data['remote_name'] = $object->getRemoteName();
-        }
-        if (null !== $object->getEmail()) {
-            $data['email'] = $object->getEmail();
-        }
-        if (null !== $object->getName()) {
-            $data['name'] = $object->getName();
-        }
-        if (null !== $object->getUrl()) {
-            $data['url'] = $object->getUrl();
-        }
-        if (null !== $object->getImportUrl()) {
-            $data['import_url'] = $object->getImportUrl();
-        }
+        $data['id'] = $object->getId();
+        $data['remote_id'] = $object->getRemoteId();
+        $data['remote_name'] = $object->getRemoteName();
+        $data['email'] = $object->getEmail();
+        $data['name'] = $object->getName();
+        $data['url'] = $object->getUrl();
+        $data['import_url'] = $object->getImportUrl();
         return $data;
     }
 }

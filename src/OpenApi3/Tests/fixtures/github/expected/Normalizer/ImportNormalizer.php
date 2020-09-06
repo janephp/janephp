@@ -138,24 +138,18 @@ class ImportNormalizer implements DenormalizerInterface, NormalizerInterface, De
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getVcs()) {
-            $data['vcs'] = $object->getVcs();
-        }
+        $data['vcs'] = $object->getVcs();
         if (null !== $object->getUseLfs()) {
             $data['use_lfs'] = $object->getUseLfs();
         }
-        if (null !== $object->getVcsUrl()) {
-            $data['vcs_url'] = $object->getVcsUrl();
-        }
+        $data['vcs_url'] = $object->getVcsUrl();
         if (null !== $object->getSvcRoot()) {
             $data['svc_root'] = $object->getSvcRoot();
         }
         if (null !== $object->getTfvcProject()) {
             $data['tfvc_project'] = $object->getTfvcProject();
         }
-        if (null !== $object->getStatus()) {
-            $data['status'] = $object->getStatus();
-        }
+        $data['status'] = $object->getStatus();
         if (null !== $object->getStatusText()) {
             $data['status_text'] = $object->getStatusText();
         }
@@ -196,18 +190,10 @@ class ImportNormalizer implements DenormalizerInterface, NormalizerInterface, De
         if (null !== $object->getAuthorsCount()) {
             $data['authors_count'] = $object->getAuthorsCount();
         }
-        if (null !== $object->getUrl()) {
-            $data['url'] = $object->getUrl();
-        }
-        if (null !== $object->getHtmlUrl()) {
-            $data['html_url'] = $object->getHtmlUrl();
-        }
-        if (null !== $object->getAuthorsUrl()) {
-            $data['authors_url'] = $object->getAuthorsUrl();
-        }
-        if (null !== $object->getRepositoryUrl()) {
-            $data['repository_url'] = $object->getRepositoryUrl();
-        }
+        $data['url'] = $object->getUrl();
+        $data['html_url'] = $object->getHtmlUrl();
+        $data['authors_url'] = $object->getAuthorsUrl();
+        $data['repository_url'] = $object->getRepositoryUrl();
         if (null !== $object->getSvnRoot()) {
             $data['svn_root'] = $object->getSvnRoot();
         }

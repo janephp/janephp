@@ -92,24 +92,12 @@ class DetailedUserNormalizer implements DenormalizerInterface, NormalizerInterfa
         if (null !== $object->getFormat()) {
             $data['format'] = $object->getFormat();
         }
-        if (null !== $object->getId()) {
-            $data['id'] = $object->getId();
-        }
-        if (null !== $object->getCreatedAt()) {
-            $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
-        }
-        if (null !== $object->getName()) {
-            $data['name'] = $object->getName();
-        }
-        if (null !== $object->getUsername()) {
-            $data['username'] = $object->getUsername();
-        }
-        if (null !== $object->getProtected()) {
-            $data['protected'] = $object->getProtected();
-        }
-        if (null !== $object->getVerified()) {
-            $data['verified'] = $object->getVerified();
-        }
+        $data['id'] = $object->getId();
+        $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
+        $data['name'] = $object->getName();
+        $data['username'] = $object->getUsername();
+        $data['protected'] = $object->getProtected();
+        $data['verified'] = $object->getVerified();
         if (null !== $object->getWithheld()) {
             $data['withheld'] = $this->normalizer->normalize($object->getWithheld(), 'json', $context);
         }
@@ -119,12 +107,8 @@ class DetailedUserNormalizer implements DenormalizerInterface, NormalizerInterfa
         if (null !== $object->getLocation()) {
             $data['location'] = $object->getLocation();
         }
-        if (null !== $object->getUrl()) {
-            $data['url'] = $object->getUrl();
-        }
-        if (null !== $object->getDescription()) {
-            $data['description'] = $object->getDescription();
-        }
+        $data['url'] = $object->getUrl();
+        $data['description'] = $object->getDescription();
         if (null !== $object->getEntities()) {
             $data['entities'] = $this->normalizer->normalize($object->getEntities(), 'json', $context);
         }

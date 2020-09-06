@@ -77,9 +77,7 @@ class BranchProtectionNormalizer implements DenormalizerInterface, NormalizerInt
         if (null !== $object->getUrl()) {
             $data['url'] = $object->getUrl();
         }
-        if (null !== $object->getRequiredStatusChecks()) {
-            $data['required_status_checks'] = $this->normalizer->normalize($object->getRequiredStatusChecks(), 'json', $context);
-        }
+        $data['required_status_checks'] = $this->normalizer->normalize($object->getRequiredStatusChecks(), 'json', $context);
         if (null !== $object->getEnforceAdmins()) {
             $data['enforce_admins'] = $this->normalizer->normalize($object->getEnforceAdmins(), 'json', $context);
         }
@@ -98,9 +96,7 @@ class BranchProtectionNormalizer implements DenormalizerInterface, NormalizerInt
         if (null !== $object->getAllowDeletions()) {
             $data['allow_deletions'] = $this->normalizer->normalize($object->getAllowDeletions(), 'json', $context);
         }
-        if (null !== $object->getEnabled()) {
-            $data['enabled'] = $object->getEnabled();
-        }
+        $data['enabled'] = $object->getEnabled();
         if (null !== $object->getName()) {
             $data['name'] = $object->getName();
         }

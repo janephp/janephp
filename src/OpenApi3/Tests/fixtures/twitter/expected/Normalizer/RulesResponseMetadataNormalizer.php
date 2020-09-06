@@ -47,9 +47,7 @@ class RulesResponseMetadataNormalizer implements DenormalizerInterface, Normaliz
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getSent()) {
-            $data['sent'] = $object->getSent();
-        }
+        $data['sent'] = $object->getSent();
         if (null !== $object->getSummary()) {
             $data['summary'] = $object->getSummary();
         }

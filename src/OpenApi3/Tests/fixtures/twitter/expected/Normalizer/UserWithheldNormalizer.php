@@ -51,13 +51,11 @@ class UserWithheldNormalizer implements DenormalizerInterface, NormalizerInterfa
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getCountryCodes()) {
-            $values = array();
-            foreach ($object->getCountryCodes() as $value) {
-                $values[] = $value;
-            }
-            $data['country_codes'] = $values;
+        $values = array();
+        foreach ($object->getCountryCodes() as $value) {
+            $values[] = $value;
         }
+        $data['country_codes'] = $values;
         if (null !== $object->getScope()) {
             $data['scope'] = $object->getScope();
         }

@@ -44,9 +44,7 @@ class UserMembershipsOrgsOrgPatchBodyNormalizer implements DenormalizerInterface
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getState()) {
-            $data['state'] = $object->getState();
-        }
+        $data['state'] = $object->getState();
         return $data;
     }
 }

@@ -47,9 +47,7 @@ class MonitoringPortfoliosPortfolioIdSyncPostBodyNormalizer implements Denormali
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getImportCsv()) {
-            $data['importCsv'] = $object->getImportCsv();
-        }
+        $data['importCsv'] = $object->getImportCsv();
         if (null !== $object->getEmail()) {
             $data['email'] = $object->getEmail();
         }

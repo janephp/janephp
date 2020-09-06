@@ -87,33 +87,15 @@ class ContentTreeNormalizer implements DenormalizerInterface, NormalizerInterfac
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getType()) {
-            $data['type'] = $object->getType();
-        }
-        if (null !== $object->getSize()) {
-            $data['size'] = $object->getSize();
-        }
-        if (null !== $object->getName()) {
-            $data['name'] = $object->getName();
-        }
-        if (null !== $object->getPath()) {
-            $data['path'] = $object->getPath();
-        }
-        if (null !== $object->getSha()) {
-            $data['sha'] = $object->getSha();
-        }
-        if (null !== $object->getUrl()) {
-            $data['url'] = $object->getUrl();
-        }
-        if (null !== $object->getGitUrl()) {
-            $data['git_url'] = $object->getGitUrl();
-        }
-        if (null !== $object->getHtmlUrl()) {
-            $data['html_url'] = $object->getHtmlUrl();
-        }
-        if (null !== $object->getDownloadUrl()) {
-            $data['download_url'] = $object->getDownloadUrl();
-        }
+        $data['type'] = $object->getType();
+        $data['size'] = $object->getSize();
+        $data['name'] = $object->getName();
+        $data['path'] = $object->getPath();
+        $data['sha'] = $object->getSha();
+        $data['url'] = $object->getUrl();
+        $data['git_url'] = $object->getGitUrl();
+        $data['html_url'] = $object->getHtmlUrl();
+        $data['download_url'] = $object->getDownloadUrl();
         if (null !== $object->getEntries()) {
             $values = array();
             foreach ($object->getEntries() as $value) {
@@ -121,9 +103,7 @@ class ContentTreeNormalizer implements DenormalizerInterface, NormalizerInterfac
             }
             $data['entries'] = $values;
         }
-        if (null !== $object->getLinks()) {
-            $data['_links'] = $this->normalizer->normalize($object->getLinks(), 'json', $context);
-        }
+        $data['_links'] = $this->normalizer->normalize($object->getLinks(), 'json', $context);
         return $data;
     }
 }

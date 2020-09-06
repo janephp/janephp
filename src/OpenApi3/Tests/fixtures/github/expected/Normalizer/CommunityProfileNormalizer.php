@@ -65,21 +65,11 @@ class CommunityProfileNormalizer implements DenormalizerInterface, NormalizerInt
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getHealthPercentage()) {
-            $data['health_percentage'] = $object->getHealthPercentage();
-        }
-        if (null !== $object->getDescription()) {
-            $data['description'] = $object->getDescription();
-        }
-        if (null !== $object->getDocumentation()) {
-            $data['documentation'] = $object->getDocumentation();
-        }
-        if (null !== $object->getFiles()) {
-            $data['files'] = $this->normalizer->normalize($object->getFiles(), 'json', $context);
-        }
-        if (null !== $object->getUpdatedAt()) {
-            $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
-        }
+        $data['health_percentage'] = $object->getHealthPercentage();
+        $data['description'] = $object->getDescription();
+        $data['documentation'] = $object->getDocumentation();
+        $data['files'] = $this->normalizer->normalize($object->getFiles(), 'json', $context);
+        $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
         return $data;
     }
 }

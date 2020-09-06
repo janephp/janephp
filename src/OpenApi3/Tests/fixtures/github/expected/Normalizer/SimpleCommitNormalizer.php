@@ -65,24 +65,12 @@ class SimpleCommitNormalizer implements DenormalizerInterface, NormalizerInterfa
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getId()) {
-            $data['id'] = $object->getId();
-        }
-        if (null !== $object->getTreeId()) {
-            $data['tree_id'] = $object->getTreeId();
-        }
-        if (null !== $object->getMessage()) {
-            $data['message'] = $object->getMessage();
-        }
-        if (null !== $object->getTimestamp()) {
-            $data['timestamp'] = $object->getTimestamp()->format('Y-m-d\\TH:i:sP');
-        }
-        if (null !== $object->getAuthor()) {
-            $data['author'] = $this->normalizer->normalize($object->getAuthor(), 'json', $context);
-        }
-        if (null !== $object->getCommitter()) {
-            $data['committer'] = $this->normalizer->normalize($object->getCommitter(), 'json', $context);
-        }
+        $data['id'] = $object->getId();
+        $data['tree_id'] = $object->getTreeId();
+        $data['message'] = $object->getMessage();
+        $data['timestamp'] = $object->getTimestamp()->format('Y-m-d\\TH:i:sP');
+        $data['author'] = $this->normalizer->normalize($object->getAuthor(), 'json', $context);
+        $data['committer'] = $this->normalizer->normalize($object->getCommitter(), 'json', $context);
         return $data;
     }
 }

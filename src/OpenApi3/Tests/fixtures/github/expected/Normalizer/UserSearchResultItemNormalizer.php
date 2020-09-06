@@ -174,60 +174,24 @@ class UserSearchResultItemNormalizer implements DenormalizerInterface, Normalize
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getLogin()) {
-            $data['login'] = $object->getLogin();
-        }
-        if (null !== $object->getId()) {
-            $data['id'] = $object->getId();
-        }
-        if (null !== $object->getNodeId()) {
-            $data['node_id'] = $object->getNodeId();
-        }
-        if (null !== $object->getAvatarUrl()) {
-            $data['avatar_url'] = $object->getAvatarUrl();
-        }
-        if (null !== $object->getGravatarId()) {
-            $data['gravatar_id'] = $object->getGravatarId();
-        }
-        if (null !== $object->getUrl()) {
-            $data['url'] = $object->getUrl();
-        }
-        if (null !== $object->getHtmlUrl()) {
-            $data['html_url'] = $object->getHtmlUrl();
-        }
-        if (null !== $object->getFollowersUrl()) {
-            $data['followers_url'] = $object->getFollowersUrl();
-        }
-        if (null !== $object->getSubscriptionsUrl()) {
-            $data['subscriptions_url'] = $object->getSubscriptionsUrl();
-        }
-        if (null !== $object->getOrganizationsUrl()) {
-            $data['organizations_url'] = $object->getOrganizationsUrl();
-        }
-        if (null !== $object->getReposUrl()) {
-            $data['repos_url'] = $object->getReposUrl();
-        }
-        if (null !== $object->getReceivedEventsUrl()) {
-            $data['received_events_url'] = $object->getReceivedEventsUrl();
-        }
-        if (null !== $object->getType()) {
-            $data['type'] = $object->getType();
-        }
-        if (null !== $object->getScore()) {
-            $data['score'] = $object->getScore();
-        }
-        if (null !== $object->getFollowingUrl()) {
-            $data['following_url'] = $object->getFollowingUrl();
-        }
-        if (null !== $object->getGistsUrl()) {
-            $data['gists_url'] = $object->getGistsUrl();
-        }
-        if (null !== $object->getStarredUrl()) {
-            $data['starred_url'] = $object->getStarredUrl();
-        }
-        if (null !== $object->getEventsUrl()) {
-            $data['events_url'] = $object->getEventsUrl();
-        }
+        $data['login'] = $object->getLogin();
+        $data['id'] = $object->getId();
+        $data['node_id'] = $object->getNodeId();
+        $data['avatar_url'] = $object->getAvatarUrl();
+        $data['gravatar_id'] = $object->getGravatarId();
+        $data['url'] = $object->getUrl();
+        $data['html_url'] = $object->getHtmlUrl();
+        $data['followers_url'] = $object->getFollowersUrl();
+        $data['subscriptions_url'] = $object->getSubscriptionsUrl();
+        $data['organizations_url'] = $object->getOrganizationsUrl();
+        $data['repos_url'] = $object->getReposUrl();
+        $data['received_events_url'] = $object->getReceivedEventsUrl();
+        $data['type'] = $object->getType();
+        $data['score'] = $object->getScore();
+        $data['following_url'] = $object->getFollowingUrl();
+        $data['gists_url'] = $object->getGistsUrl();
+        $data['starred_url'] = $object->getStarredUrl();
+        $data['events_url'] = $object->getEventsUrl();
         if (null !== $object->getPublicRepos()) {
             $data['public_repos'] = $object->getPublicRepos();
         }
@@ -258,9 +222,7 @@ class UserSearchResultItemNormalizer implements DenormalizerInterface, Normalize
         if (null !== $object->getLocation()) {
             $data['location'] = $object->getLocation();
         }
-        if (null !== $object->getSiteAdmin()) {
-            $data['site_admin'] = $object->getSiteAdmin();
-        }
+        $data['site_admin'] = $object->getSiteAdmin();
         if (null !== $object->getHireable()) {
             $data['hireable'] = $object->getHireable();
         }

@@ -59,9 +59,7 @@ class ReposOwnerRepoReleasesPostBodyNormalizer implements DenormalizerInterface,
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getTagName()) {
-            $data['tag_name'] = $object->getTagName();
-        }
+        $data['tag_name'] = $object->getTagName();
         if (null !== $object->getTargetCommitish()) {
             $data['target_commitish'] = $object->getTargetCommitish();
         }

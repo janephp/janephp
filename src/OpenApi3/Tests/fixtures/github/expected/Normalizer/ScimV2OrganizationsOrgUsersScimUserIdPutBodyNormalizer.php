@@ -100,19 +100,13 @@ class ScimV2OrganizationsOrgUsersScimUserIdPutBodyNormalizer implements Denormal
         if (null !== $object->getActive()) {
             $data['active'] = $object->getActive();
         }
-        if (null !== $object->getUserName()) {
-            $data['userName'] = $object->getUserName();
+        $data['userName'] = $object->getUserName();
+        $data['name'] = $this->normalizer->normalize($object->getName(), 'json', $context);
+        $values_2 = array();
+        foreach ($object->getEmails() as $value_2) {
+            $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
         }
-        if (null !== $object->getName()) {
-            $data['name'] = $this->normalizer->normalize($object->getName(), 'json', $context);
-        }
-        if (null !== $object->getEmails()) {
-            $values_2 = array();
-            foreach ($object->getEmails() as $value_2) {
-                $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
-            }
-            $data['emails'] = $values_2;
-        }
+        $data['emails'] = $values_2;
         return $data;
     }
 }

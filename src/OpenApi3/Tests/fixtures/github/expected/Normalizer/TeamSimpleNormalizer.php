@@ -80,39 +80,19 @@ class TeamSimpleNormalizer implements DenormalizerInterface, NormalizerInterface
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getId()) {
-            $data['id'] = $object->getId();
-        }
-        if (null !== $object->getNodeId()) {
-            $data['node_id'] = $object->getNodeId();
-        }
-        if (null !== $object->getUrl()) {
-            $data['url'] = $object->getUrl();
-        }
-        if (null !== $object->getMembersUrl()) {
-            $data['members_url'] = $object->getMembersUrl();
-        }
-        if (null !== $object->getName()) {
-            $data['name'] = $object->getName();
-        }
-        if (null !== $object->getDescription()) {
-            $data['description'] = $object->getDescription();
-        }
-        if (null !== $object->getPermission()) {
-            $data['permission'] = $object->getPermission();
-        }
+        $data['id'] = $object->getId();
+        $data['node_id'] = $object->getNodeId();
+        $data['url'] = $object->getUrl();
+        $data['members_url'] = $object->getMembersUrl();
+        $data['name'] = $object->getName();
+        $data['description'] = $object->getDescription();
+        $data['permission'] = $object->getPermission();
         if (null !== $object->getPrivacy()) {
             $data['privacy'] = $object->getPrivacy();
         }
-        if (null !== $object->getHtmlUrl()) {
-            $data['html_url'] = $object->getHtmlUrl();
-        }
-        if (null !== $object->getRepositoriesUrl()) {
-            $data['repositories_url'] = $object->getRepositoriesUrl();
-        }
-        if (null !== $object->getSlug()) {
-            $data['slug'] = $object->getSlug();
-        }
+        $data['html_url'] = $object->getHtmlUrl();
+        $data['repositories_url'] = $object->getRepositoriesUrl();
+        $data['slug'] = $object->getSlug();
         if (null !== $object->getLdapDn()) {
             $data['ldap_dn'] = $object->getLdapDn();
         }

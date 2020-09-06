@@ -50,15 +50,9 @@ class TeamMembershipNormalizer implements DenormalizerInterface, NormalizerInter
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getUrl()) {
-            $data['url'] = $object->getUrl();
-        }
-        if (null !== $object->getRole()) {
-            $data['role'] = $object->getRole();
-        }
-        if (null !== $object->getState()) {
-            $data['state'] = $object->getState();
-        }
+        $data['url'] = $object->getUrl();
+        $data['role'] = $object->getRole();
+        $data['state'] = $object->getState();
         return $data;
     }
 }

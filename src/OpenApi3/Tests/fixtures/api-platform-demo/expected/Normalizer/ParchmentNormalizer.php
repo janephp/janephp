@@ -50,12 +50,8 @@ class ParchmentNormalizer implements DenormalizerInterface, NormalizerInterface,
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getTitle()) {
-            $data['title'] = $object->getTitle();
-        }
-        if (null !== $object->getDescription()) {
-            $data['description'] = $object->getDescription();
-        }
+        $data['title'] = $object->getTitle();
+        $data['description'] = $object->getDescription();
         return $data;
     }
 }

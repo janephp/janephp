@@ -62,13 +62,11 @@ class ScimV2OrganizationsOrgUsersScimUserIdPatchBodyNormalizer implements Denorm
             }
             $data['schemas'] = $values;
         }
-        if (null !== $object->getOperations()) {
-            $values_1 = array();
-            foreach ($object->getOperations() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
-            }
-            $data['Operations'] = $values_1;
+        $values_1 = array();
+        foreach ($object->getOperations() as $value_1) {
+            $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
         }
+        $data['Operations'] = $values_1;
         return $data;
     }
 }

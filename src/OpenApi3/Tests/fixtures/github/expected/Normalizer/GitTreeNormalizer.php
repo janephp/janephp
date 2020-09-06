@@ -57,22 +57,14 @@ class GitTreeNormalizer implements DenormalizerInterface, NormalizerInterface, D
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getSha()) {
-            $data['sha'] = $object->getSha();
+        $data['sha'] = $object->getSha();
+        $data['url'] = $object->getUrl();
+        $data['truncated'] = $object->getTruncated();
+        $values = array();
+        foreach ($object->getTree() as $value) {
+            $values[] = $this->normalizer->normalize($value, 'json', $context);
         }
-        if (null !== $object->getUrl()) {
-            $data['url'] = $object->getUrl();
-        }
-        if (null !== $object->getTruncated()) {
-            $data['truncated'] = $object->getTruncated();
-        }
-        if (null !== $object->getTree()) {
-            $values = array();
-            foreach ($object->getTree() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
-            }
-            $data['tree'] = $values;
-        }
+        $data['tree'] = $values;
         return $data;
     }
 }

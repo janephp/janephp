@@ -56,15 +56,11 @@ class RateLimitOverviewResourcesNormalizer implements DenormalizerInterface, Nor
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getCore()) {
-            $data['core'] = $this->normalizer->normalize($object->getCore(), 'json', $context);
-        }
+        $data['core'] = $this->normalizer->normalize($object->getCore(), 'json', $context);
         if (null !== $object->getGraphql()) {
             $data['graphql'] = $this->normalizer->normalize($object->getGraphql(), 'json', $context);
         }
-        if (null !== $object->getSearch()) {
-            $data['search'] = $this->normalizer->normalize($object->getSearch(), 'json', $context);
-        }
+        $data['search'] = $this->normalizer->normalize($object->getSearch(), 'json', $context);
         if (null !== $object->getSourceImport()) {
             $data['source_import'] = $this->normalizer->normalize($object->getSourceImport(), 'json', $context);
         }

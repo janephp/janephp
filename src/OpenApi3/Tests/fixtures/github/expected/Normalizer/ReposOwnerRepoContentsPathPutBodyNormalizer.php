@@ -59,12 +59,8 @@ class ReposOwnerRepoContentsPathPutBodyNormalizer implements DenormalizerInterfa
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getMessage()) {
-            $data['message'] = $object->getMessage();
-        }
-        if (null !== $object->getContent()) {
-            $data['content'] = $object->getContent();
-        }
+        $data['message'] = $object->getMessage();
+        $data['content'] = $object->getContent();
         if (null !== $object->getSha()) {
             $data['sha'] = $object->getSha();
         }

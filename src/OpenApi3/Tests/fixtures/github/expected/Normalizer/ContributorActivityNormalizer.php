@@ -57,19 +57,13 @@ class ContributorActivityNormalizer implements DenormalizerInterface, Normalizer
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getAuthor()) {
-            $data['author'] = $this->normalizer->normalize($object->getAuthor(), 'json', $context);
+        $data['author'] = $this->normalizer->normalize($object->getAuthor(), 'json', $context);
+        $data['total'] = $object->getTotal();
+        $values = array();
+        foreach ($object->getWeeks() as $value) {
+            $values[] = $this->normalizer->normalize($value, 'json', $context);
         }
-        if (null !== $object->getTotal()) {
-            $data['total'] = $object->getTotal();
-        }
-        if (null !== $object->getWeeks()) {
-            $values = array();
-            foreach ($object->getWeeks() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
-            }
-            $data['weeks'] = $values;
-        }
+        $data['weeks'] = $values;
         return $data;
     }
 }

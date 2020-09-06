@@ -44,9 +44,7 @@ class PullRequestReviewLinksPullRequestNormalizer implements DenormalizerInterfa
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getHref()) {
-            $data['href'] = $object->getHref();
-        }
+        $data['href'] = $object->getHref();
         return $data;
     }
 }

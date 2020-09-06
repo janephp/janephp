@@ -71,24 +71,12 @@ class CompactUserNormalizer implements DenormalizerInterface, NormalizerInterfac
         if (null !== $object->getFormat()) {
             $data['format'] = $object->getFormat();
         }
-        if (null !== $object->getId()) {
-            $data['id'] = $object->getId();
-        }
-        if (null !== $object->getCreatedAt()) {
-            $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
-        }
-        if (null !== $object->getName()) {
-            $data['name'] = $object->getName();
-        }
-        if (null !== $object->getUsername()) {
-            $data['username'] = $object->getUsername();
-        }
-        if (null !== $object->getProtected()) {
-            $data['protected'] = $object->getProtected();
-        }
-        if (null !== $object->getVerified()) {
-            $data['verified'] = $object->getVerified();
-        }
+        $data['id'] = $object->getId();
+        $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
+        $data['name'] = $object->getName();
+        $data['username'] = $object->getUsername();
+        $data['protected'] = $object->getProtected();
+        $data['verified'] = $object->getVerified();
         if (null !== $object->getWithheld()) {
             $data['withheld'] = $this->normalizer->normalize($object->getWithheld(), 'json', $context);
         }

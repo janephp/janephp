@@ -50,15 +50,9 @@ class RateLimitNormalizer implements DenormalizerInterface, NormalizerInterface,
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getLimit()) {
-            $data['limit'] = $object->getLimit();
-        }
-        if (null !== $object->getRemaining()) {
-            $data['remaining'] = $object->getRemaining();
-        }
-        if (null !== $object->getReset()) {
-            $data['reset'] = $object->getReset();
-        }
+        $data['limit'] = $object->getLimit();
+        $data['remaining'] = $object->getRemaining();
+        $data['reset'] = $object->getReset();
         return $data;
     }
 }

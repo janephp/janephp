@@ -53,15 +53,9 @@ class ContentReferenceAttachmentNormalizer implements DenormalizerInterface, Nor
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getId()) {
-            $data['id'] = $object->getId();
-        }
-        if (null !== $object->getTitle()) {
-            $data['title'] = $object->getTitle();
-        }
-        if (null !== $object->getBody()) {
-            $data['body'] = $object->getBody();
-        }
+        $data['id'] = $object->getId();
+        $data['title'] = $object->getTitle();
+        $data['body'] = $object->getBody();
         if (null !== $object->getNodeId()) {
             $data['node_id'] = $object->getNodeId();
         }

@@ -59,18 +59,10 @@ class VerificationNormalizer implements DenormalizerInterface, NormalizerInterfa
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getVerified()) {
-            $data['verified'] = $object->getVerified();
-        }
-        if (null !== $object->getReason()) {
-            $data['reason'] = $object->getReason();
-        }
-        if (null !== $object->getPayload()) {
-            $data['payload'] = $object->getPayload();
-        }
-        if (null !== $object->getSignature()) {
-            $data['signature'] = $object->getSignature();
-        }
+        $data['verified'] = $object->getVerified();
+        $data['reason'] = $object->getReason();
+        $data['payload'] = $object->getPayload();
+        $data['signature'] = $object->getSignature();
         return $data;
     }
 }

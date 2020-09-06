@@ -50,12 +50,8 @@ class PetNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getId()) {
-            $data['id'] = $object->getId();
-        }
-        if (null !== $object->getName()) {
-            $data['name'] = $object->getName();
-        }
+        $data['id'] = $object->getId();
+        $data['name'] = $object->getName();
         if (null !== $object->getTag()) {
             $data['tag'] = $object->getTag();
         }

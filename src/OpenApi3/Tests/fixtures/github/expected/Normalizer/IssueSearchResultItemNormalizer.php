@@ -173,39 +173,17 @@ class IssueSearchResultItemNormalizer implements DenormalizerInterface, Normaliz
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getUrl()) {
-            $data['url'] = $object->getUrl();
-        }
-        if (null !== $object->getRepositoryUrl()) {
-            $data['repository_url'] = $object->getRepositoryUrl();
-        }
-        if (null !== $object->getLabelsUrl()) {
-            $data['labels_url'] = $object->getLabelsUrl();
-        }
-        if (null !== $object->getCommentsUrl()) {
-            $data['comments_url'] = $object->getCommentsUrl();
-        }
-        if (null !== $object->getEventsUrl()) {
-            $data['events_url'] = $object->getEventsUrl();
-        }
-        if (null !== $object->getHtmlUrl()) {
-            $data['html_url'] = $object->getHtmlUrl();
-        }
-        if (null !== $object->getId()) {
-            $data['id'] = $object->getId();
-        }
-        if (null !== $object->getNodeId()) {
-            $data['node_id'] = $object->getNodeId();
-        }
-        if (null !== $object->getNumber()) {
-            $data['number'] = $object->getNumber();
-        }
-        if (null !== $object->getTitle()) {
-            $data['title'] = $object->getTitle();
-        }
-        if (null !== $object->getLocked()) {
-            $data['locked'] = $object->getLocked();
-        }
+        $data['url'] = $object->getUrl();
+        $data['repository_url'] = $object->getRepositoryUrl();
+        $data['labels_url'] = $object->getLabelsUrl();
+        $data['comments_url'] = $object->getCommentsUrl();
+        $data['events_url'] = $object->getEventsUrl();
+        $data['html_url'] = $object->getHtmlUrl();
+        $data['id'] = $object->getId();
+        $data['node_id'] = $object->getNodeId();
+        $data['number'] = $object->getNumber();
+        $data['title'] = $object->getTitle();
+        $data['locked'] = $object->getLocked();
         if (null !== $object->getActiveLockReason()) {
             $data['active_lock_reason'] = $object->getActiveLockReason();
         }
@@ -216,37 +194,19 @@ class IssueSearchResultItemNormalizer implements DenormalizerInterface, Normaliz
             }
             $data['assignees'] = $values;
         }
-        if (null !== $object->getUser()) {
-            $data['user'] = $this->normalizer->normalize($object->getUser(), 'json', $context);
+        $data['user'] = $this->normalizer->normalize($object->getUser(), 'json', $context);
+        $values_1 = array();
+        foreach ($object->getLabels() as $value_1) {
+            $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
         }
-        if (null !== $object->getLabels()) {
-            $values_1 = array();
-            foreach ($object->getLabels() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
-            }
-            $data['labels'] = $values_1;
-        }
-        if (null !== $object->getState()) {
-            $data['state'] = $object->getState();
-        }
-        if (null !== $object->getAssignee()) {
-            $data['assignee'] = $this->normalizer->normalize($object->getAssignee(), 'json', $context);
-        }
-        if (null !== $object->getMilestone()) {
-            $data['milestone'] = $this->normalizer->normalize($object->getMilestone(), 'json', $context);
-        }
-        if (null !== $object->getComments()) {
-            $data['comments'] = $object->getComments();
-        }
-        if (null !== $object->getCreatedAt()) {
-            $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
-        }
-        if (null !== $object->getUpdatedAt()) {
-            $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
-        }
-        if (null !== $object->getClosedAt()) {
-            $data['closed_at'] = $object->getClosedAt()->format('Y-m-d\\TH:i:sP');
-        }
+        $data['labels'] = $values_1;
+        $data['state'] = $object->getState();
+        $data['assignee'] = $this->normalizer->normalize($object->getAssignee(), 'json', $context);
+        $data['milestone'] = $this->normalizer->normalize($object->getMilestone(), 'json', $context);
+        $data['comments'] = $object->getComments();
+        $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
+        $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
+        $data['closed_at'] = $object->getClosedAt()->format('Y-m-d\\TH:i:sP');
         if (null !== $object->getTextMatches()) {
             $values_2 = array();
             foreach ($object->getTextMatches() as $value_2) {
@@ -260,12 +220,8 @@ class IssueSearchResultItemNormalizer implements DenormalizerInterface, Normaliz
         if (null !== $object->getBody()) {
             $data['body'] = $object->getBody();
         }
-        if (null !== $object->getScore()) {
-            $data['score'] = $object->getScore();
-        }
-        if (null !== $object->getAuthorAssociation()) {
-            $data['author_association'] = $object->getAuthorAssociation();
-        }
+        $data['score'] = $object->getScore();
+        $data['author_association'] = $object->getAuthorAssociation();
         if (null !== $object->getDraft()) {
             $data['draft'] = $object->getDraft();
         }

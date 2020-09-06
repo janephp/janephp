@@ -50,15 +50,9 @@ class GroupMappingGroupsItemNormalizer implements DenormalizerInterface, Normali
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getGroupId()) {
-            $data['group_id'] = $object->getGroupId();
-        }
-        if (null !== $object->getGroupName()) {
-            $data['group_name'] = $object->getGroupName();
-        }
-        if (null !== $object->getGroupDescription()) {
-            $data['group_description'] = $object->getGroupDescription();
-        }
+        $data['group_id'] = $object->getGroupId();
+        $data['group_name'] = $object->getGroupName();
+        $data['group_description'] = $object->getGroupDescription();
         return $data;
     }
 }

@@ -83,39 +83,19 @@ class TeamNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getId()) {
-            $data['id'] = $object->getId();
-        }
-        if (null !== $object->getNodeId()) {
-            $data['node_id'] = $object->getNodeId();
-        }
-        if (null !== $object->getName()) {
-            $data['name'] = $object->getName();
-        }
-        if (null !== $object->getSlug()) {
-            $data['slug'] = $object->getSlug();
-        }
-        if (null !== $object->getDescription()) {
-            $data['description'] = $object->getDescription();
-        }
+        $data['id'] = $object->getId();
+        $data['node_id'] = $object->getNodeId();
+        $data['name'] = $object->getName();
+        $data['slug'] = $object->getSlug();
+        $data['description'] = $object->getDescription();
         if (null !== $object->getPrivacy()) {
             $data['privacy'] = $object->getPrivacy();
         }
-        if (null !== $object->getPermission()) {
-            $data['permission'] = $object->getPermission();
-        }
-        if (null !== $object->getUrl()) {
-            $data['url'] = $object->getUrl();
-        }
-        if (null !== $object->getHtmlUrl()) {
-            $data['html_url'] = $object->getHtmlUrl();
-        }
-        if (null !== $object->getMembersUrl()) {
-            $data['members_url'] = $object->getMembersUrl();
-        }
-        if (null !== $object->getRepositoriesUrl()) {
-            $data['repositories_url'] = $object->getRepositoriesUrl();
-        }
+        $data['permission'] = $object->getPermission();
+        $data['url'] = $object->getUrl();
+        $data['html_url'] = $object->getHtmlUrl();
+        $data['members_url'] = $object->getMembersUrl();
+        $data['repositories_url'] = $object->getRepositoriesUrl();
         if (null !== $object->getParent()) {
             $data['parent'] = $this->normalizer->normalize($object->getParent(), 'json', $context);
         }

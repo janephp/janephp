@@ -47,12 +47,8 @@ class IssueEventRenameNormalizer implements DenormalizerInterface, NormalizerInt
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getFrom()) {
-            $data['from'] = $object->getFrom();
-        }
-        if (null !== $object->getTo()) {
-            $data['to'] = $object->getTo();
-        }
+        $data['from'] = $object->getFrom();
+        $data['to'] = $object->getTo();
         return $data;
     }
 }

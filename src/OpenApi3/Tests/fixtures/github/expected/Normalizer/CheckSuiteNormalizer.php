@@ -126,61 +126,27 @@ class CheckSuiteNormalizer implements DenormalizerInterface, NormalizerInterface
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getId()) {
-            $data['id'] = $object->getId();
+        $data['id'] = $object->getId();
+        $data['node_id'] = $object->getNodeId();
+        $data['head_branch'] = $object->getHeadBranch();
+        $data['head_sha'] = $object->getHeadSha();
+        $data['status'] = $object->getStatus();
+        $data['conclusion'] = $object->getConclusion();
+        $data['url'] = $object->getUrl();
+        $data['before'] = $object->getBefore();
+        $data['after'] = $object->getAfter();
+        $values = array();
+        foreach ($object->getPullRequests() as $value) {
+            $values[] = $this->normalizer->normalize($value, 'json', $context);
         }
-        if (null !== $object->getNodeId()) {
-            $data['node_id'] = $object->getNodeId();
-        }
-        if (null !== $object->getHeadBranch()) {
-            $data['head_branch'] = $object->getHeadBranch();
-        }
-        if (null !== $object->getHeadSha()) {
-            $data['head_sha'] = $object->getHeadSha();
-        }
-        if (null !== $object->getStatus()) {
-            $data['status'] = $object->getStatus();
-        }
-        if (null !== $object->getConclusion()) {
-            $data['conclusion'] = $object->getConclusion();
-        }
-        if (null !== $object->getUrl()) {
-            $data['url'] = $object->getUrl();
-        }
-        if (null !== $object->getBefore()) {
-            $data['before'] = $object->getBefore();
-        }
-        if (null !== $object->getAfter()) {
-            $data['after'] = $object->getAfter();
-        }
-        if (null !== $object->getPullRequests()) {
-            $values = array();
-            foreach ($object->getPullRequests() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
-            }
-            $data['pull_requests'] = $values;
-        }
-        if (null !== $object->getApp()) {
-            $data['app'] = $this->normalizer->normalize($object->getApp(), 'json', $context);
-        }
-        if (null !== $object->getRepository()) {
-            $data['repository'] = $this->normalizer->normalize($object->getRepository(), 'json', $context);
-        }
-        if (null !== $object->getCreatedAt()) {
-            $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
-        }
-        if (null !== $object->getUpdatedAt()) {
-            $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
-        }
-        if (null !== $object->getHeadCommit()) {
-            $data['head_commit'] = $this->normalizer->normalize($object->getHeadCommit(), 'json', $context);
-        }
-        if (null !== $object->getLatestCheckRunsCount()) {
-            $data['latest_check_runs_count'] = $object->getLatestCheckRunsCount();
-        }
-        if (null !== $object->getCheckRunsUrl()) {
-            $data['check_runs_url'] = $object->getCheckRunsUrl();
-        }
+        $data['pull_requests'] = $values;
+        $data['app'] = $this->normalizer->normalize($object->getApp(), 'json', $context);
+        $data['repository'] = $this->normalizer->normalize($object->getRepository(), 'json', $context);
+        $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
+        $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
+        $data['head_commit'] = $this->normalizer->normalize($object->getHeadCommit(), 'json', $context);
+        $data['latest_check_runs_count'] = $object->getLatestCheckRunsCount();
+        $data['check_runs_url'] = $object->getCheckRunsUrl();
         return $data;
     }
 }

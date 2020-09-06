@@ -101,57 +101,27 @@ class TeamFullNormalizer implements DenormalizerInterface, NormalizerInterface, 
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getId()) {
-            $data['id'] = $object->getId();
-        }
-        if (null !== $object->getNodeId()) {
-            $data['node_id'] = $object->getNodeId();
-        }
-        if (null !== $object->getUrl()) {
-            $data['url'] = $object->getUrl();
-        }
-        if (null !== $object->getHtmlUrl()) {
-            $data['html_url'] = $object->getHtmlUrl();
-        }
-        if (null !== $object->getName()) {
-            $data['name'] = $object->getName();
-        }
-        if (null !== $object->getSlug()) {
-            $data['slug'] = $object->getSlug();
-        }
-        if (null !== $object->getDescription()) {
-            $data['description'] = $object->getDescription();
-        }
+        $data['id'] = $object->getId();
+        $data['node_id'] = $object->getNodeId();
+        $data['url'] = $object->getUrl();
+        $data['html_url'] = $object->getHtmlUrl();
+        $data['name'] = $object->getName();
+        $data['slug'] = $object->getSlug();
+        $data['description'] = $object->getDescription();
         if (null !== $object->getPrivacy()) {
             $data['privacy'] = $object->getPrivacy();
         }
-        if (null !== $object->getPermission()) {
-            $data['permission'] = $object->getPermission();
-        }
-        if (null !== $object->getMembersUrl()) {
-            $data['members_url'] = $object->getMembersUrl();
-        }
-        if (null !== $object->getRepositoriesUrl()) {
-            $data['repositories_url'] = $object->getRepositoriesUrl();
-        }
+        $data['permission'] = $object->getPermission();
+        $data['members_url'] = $object->getMembersUrl();
+        $data['repositories_url'] = $object->getRepositoriesUrl();
         if (null !== $object->getParent()) {
             $data['parent'] = $this->normalizer->normalize($object->getParent(), 'json', $context);
         }
-        if (null !== $object->getMembersCount()) {
-            $data['members_count'] = $object->getMembersCount();
-        }
-        if (null !== $object->getReposCount()) {
-            $data['repos_count'] = $object->getReposCount();
-        }
-        if (null !== $object->getCreatedAt()) {
-            $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
-        }
-        if (null !== $object->getUpdatedAt()) {
-            $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
-        }
-        if (null !== $object->getOrganization()) {
-            $data['organization'] = $this->normalizer->normalize($object->getOrganization(), 'json', $context);
-        }
+        $data['members_count'] = $object->getMembersCount();
+        $data['repos_count'] = $object->getReposCount();
+        $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
+        $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
+        $data['organization'] = $this->normalizer->normalize($object->getOrganization(), 'json', $context);
         if (null !== $object->getLdapDn()) {
             $data['ldap_dn'] = $object->getLdapDn();
         }

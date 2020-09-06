@@ -62,15 +62,9 @@ class PhotoNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         if (null !== $object->getUrl()) {
             $data['url'] = $object->getUrl();
         }
-        if (null !== $object->getMediaKey()) {
-            $data['media_key'] = $object->getMediaKey();
-        }
-        if (null !== $object->getHeight()) {
-            $data['height'] = $object->getHeight();
-        }
-        if (null !== $object->getWidth()) {
-            $data['width'] = $object->getWidth();
-        }
+        $data['media_key'] = $object->getMediaKey();
+        $data['height'] = $object->getHeight();
+        $data['width'] = $object->getWidth();
         return $data;
     }
 }

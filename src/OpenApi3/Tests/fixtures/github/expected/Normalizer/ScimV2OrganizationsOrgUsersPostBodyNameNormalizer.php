@@ -47,12 +47,8 @@ class ScimV2OrganizationsOrgUsersPostBodyNameNormalizer implements DenormalizerI
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getGivenName()) {
-            $data['givenName'] = $object->getGivenName();
-        }
-        if (null !== $object->getFamilyName()) {
-            $data['familyName'] = $object->getFamilyName();
-        }
+        $data['givenName'] = $object->getGivenName();
+        $data['familyName'] = $object->getFamilyName();
         return $data;
     }
 }

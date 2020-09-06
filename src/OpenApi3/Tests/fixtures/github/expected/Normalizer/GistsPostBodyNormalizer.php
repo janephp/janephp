@@ -57,13 +57,11 @@ class GistsPostBodyNormalizer implements DenormalizerInterface, NormalizerInterf
         if (null !== $object->getDescription()) {
             $data['description'] = $object->getDescription();
         }
-        if (null !== $object->getFiles()) {
-            $values = array();
-            foreach ($object->getFiles() as $key => $value) {
-                $values[$key] = $this->normalizer->normalize($value, 'json', $context);
-            }
-            $data['files'] = $values;
+        $values = array();
+        foreach ($object->getFiles() as $key => $value) {
+            $values[$key] = $this->normalizer->normalize($value, 'json', $context);
         }
+        $data['files'] = $values;
         if (null !== $object->getPublic()) {
             $data['public'] = $object->getPublic();
         }

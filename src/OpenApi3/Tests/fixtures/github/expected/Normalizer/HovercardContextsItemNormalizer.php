@@ -47,12 +47,8 @@ class HovercardContextsItemNormalizer implements DenormalizerInterface, Normaliz
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getMessage()) {
-            $data['message'] = $object->getMessage();
-        }
-        if (null !== $object->getOcticon()) {
-            $data['octicon'] = $object->getOcticon();
-        }
+        $data['message'] = $object->getMessage();
+        $data['octicon'] = $object->getOcticon();
         return $data;
     }
 }

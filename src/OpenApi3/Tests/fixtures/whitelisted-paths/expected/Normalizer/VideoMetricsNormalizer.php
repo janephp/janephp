@@ -62,12 +62,8 @@ class VideoMetricsNormalizer implements DenormalizerInterface, NormalizerInterfa
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getMediaKey()) {
-            $data['media_key'] = $object->getMediaKey();
-        }
-        if (null !== $object->getViewCount()) {
-            $data['view_count'] = $object->getViewCount();
-        }
+        $data['media_key'] = $object->getMediaKey();
+        $data['view_count'] = $object->getViewCount();
         if (null !== $object->getPlayback0Count()) {
             $data['playback_0_count'] = $object->getPlayback0Count();
         }

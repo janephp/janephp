@@ -68,30 +68,14 @@ class GistCommentNormalizer implements DenormalizerInterface, NormalizerInterfac
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getId()) {
-            $data['id'] = $object->getId();
-        }
-        if (null !== $object->getNodeId()) {
-            $data['node_id'] = $object->getNodeId();
-        }
-        if (null !== $object->getUrl()) {
-            $data['url'] = $object->getUrl();
-        }
-        if (null !== $object->getBody()) {
-            $data['body'] = $object->getBody();
-        }
-        if (null !== $object->getUser()) {
-            $data['user'] = $this->normalizer->normalize($object->getUser(), 'json', $context);
-        }
-        if (null !== $object->getCreatedAt()) {
-            $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
-        }
-        if (null !== $object->getUpdatedAt()) {
-            $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
-        }
-        if (null !== $object->getAuthorAssociation()) {
-            $data['author_association'] = $object->getAuthorAssociation();
-        }
+        $data['id'] = $object->getId();
+        $data['node_id'] = $object->getNodeId();
+        $data['url'] = $object->getUrl();
+        $data['body'] = $object->getBody();
+        $data['user'] = $this->normalizer->normalize($object->getUser(), 'json', $context);
+        $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
+        $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
+        $data['author_association'] = $object->getAuthorAssociation();
         return $data;
     }
 }

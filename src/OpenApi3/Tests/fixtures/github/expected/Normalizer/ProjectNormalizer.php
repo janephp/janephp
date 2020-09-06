@@ -98,45 +98,19 @@ class ProjectNormalizer implements DenormalizerInterface, NormalizerInterface, D
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getOwnerUrl()) {
-            $data['owner_url'] = $object->getOwnerUrl();
-        }
-        if (null !== $object->getUrl()) {
-            $data['url'] = $object->getUrl();
-        }
-        if (null !== $object->getHtmlUrl()) {
-            $data['html_url'] = $object->getHtmlUrl();
-        }
-        if (null !== $object->getColumnsUrl()) {
-            $data['columns_url'] = $object->getColumnsUrl();
-        }
-        if (null !== $object->getId()) {
-            $data['id'] = $object->getId();
-        }
-        if (null !== $object->getNodeId()) {
-            $data['node_id'] = $object->getNodeId();
-        }
-        if (null !== $object->getName()) {
-            $data['name'] = $object->getName();
-        }
-        if (null !== $object->getBody()) {
-            $data['body'] = $object->getBody();
-        }
-        if (null !== $object->getNumber()) {
-            $data['number'] = $object->getNumber();
-        }
-        if (null !== $object->getState()) {
-            $data['state'] = $object->getState();
-        }
-        if (null !== $object->getCreator()) {
-            $data['creator'] = $this->normalizer->normalize($object->getCreator(), 'json', $context);
-        }
-        if (null !== $object->getCreatedAt()) {
-            $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
-        }
-        if (null !== $object->getUpdatedAt()) {
-            $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
-        }
+        $data['owner_url'] = $object->getOwnerUrl();
+        $data['url'] = $object->getUrl();
+        $data['html_url'] = $object->getHtmlUrl();
+        $data['columns_url'] = $object->getColumnsUrl();
+        $data['id'] = $object->getId();
+        $data['node_id'] = $object->getNodeId();
+        $data['name'] = $object->getName();
+        $data['body'] = $object->getBody();
+        $data['number'] = $object->getNumber();
+        $data['state'] = $object->getState();
+        $data['creator'] = $this->normalizer->normalize($object->getCreator(), 'json', $context);
+        $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
+        $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
         if (null !== $object->getOrganizationPermission()) {
             $data['organization_permission'] = $object->getOrganizationPermission();
         }

@@ -68,9 +68,7 @@ class ProtectedBranchNormalizer implements DenormalizerInterface, NormalizerInte
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getUrl()) {
-            $data['url'] = $object->getUrl();
-        }
+        $data['url'] = $object->getUrl();
         if (null !== $object->getRequiredStatusChecks()) {
             $data['required_status_checks'] = $this->normalizer->normalize($object->getRequiredStatusChecks(), 'json', $context);
         }

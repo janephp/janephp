@@ -67,9 +67,7 @@ class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyOutputNormalizer implements Deno
         if (null !== $object->getTitle()) {
             $data['title'] = $object->getTitle();
         }
-        if (null !== $object->getSummary()) {
-            $data['summary'] = $object->getSummary();
-        }
+        $data['summary'] = $object->getSummary();
         if (null !== $object->getText()) {
             $data['text'] = $object->getText();
         }

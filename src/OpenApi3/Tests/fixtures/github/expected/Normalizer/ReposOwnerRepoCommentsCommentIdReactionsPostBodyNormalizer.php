@@ -44,9 +44,7 @@ class ReposOwnerRepoCommentsCommentIdReactionsPostBodyNormalizer implements Deno
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getContent()) {
-            $data['content'] = $object->getContent();
-        }
+        $data['content'] = $object->getContent();
         return $data;
     }
 }

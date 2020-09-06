@@ -77,30 +77,14 @@ class UserMarketplacePurchaseNormalizer implements DenormalizerInterface, Normal
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getBillingCycle()) {
-            $data['billing_cycle'] = $object->getBillingCycle();
-        }
-        if (null !== $object->getNextBillingDate()) {
-            $data['next_billing_date'] = $object->getNextBillingDate()->format('Y-m-d\\TH:i:sP');
-        }
-        if (null !== $object->getUnitCount()) {
-            $data['unit_count'] = $object->getUnitCount();
-        }
-        if (null !== $object->getOnFreeTrial()) {
-            $data['on_free_trial'] = $object->getOnFreeTrial();
-        }
-        if (null !== $object->getFreeTrialEndsOn()) {
-            $data['free_trial_ends_on'] = $object->getFreeTrialEndsOn()->format('Y-m-d\\TH:i:sP');
-        }
-        if (null !== $object->getUpdatedAt()) {
-            $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
-        }
-        if (null !== $object->getAccount()) {
-            $data['account'] = $this->normalizer->normalize($object->getAccount(), 'json', $context);
-        }
-        if (null !== $object->getPlan()) {
-            $data['plan'] = $this->normalizer->normalize($object->getPlan(), 'json', $context);
-        }
+        $data['billing_cycle'] = $object->getBillingCycle();
+        $data['next_billing_date'] = $object->getNextBillingDate()->format('Y-m-d\\TH:i:sP');
+        $data['unit_count'] = $object->getUnitCount();
+        $data['on_free_trial'] = $object->getOnFreeTrial();
+        $data['free_trial_ends_on'] = $object->getFreeTrialEndsOn()->format('Y-m-d\\TH:i:sP');
+        $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
+        $data['account'] = $this->normalizer->normalize($object->getAccount(), 'json', $context);
+        $data['plan'] = $this->normalizer->normalize($object->getPlan(), 'json', $context);
         return $data;
     }
 }

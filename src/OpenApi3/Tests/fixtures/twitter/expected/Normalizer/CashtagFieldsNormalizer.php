@@ -44,9 +44,7 @@ class CashtagFieldsNormalizer implements DenormalizerInterface, NormalizerInterf
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getTag()) {
-            $data['tag'] = $object->getTag();
-        }
+        $data['tag'] = $object->getTag();
         return $data;
     }
 }

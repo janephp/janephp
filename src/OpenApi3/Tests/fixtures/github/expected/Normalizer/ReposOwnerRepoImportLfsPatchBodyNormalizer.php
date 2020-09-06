@@ -44,9 +44,7 @@ class ReposOwnerRepoImportLfsPatchBodyNormalizer implements DenormalizerInterfac
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getUseLfs()) {
-            $data['use_lfs'] = $object->getUseLfs();
-        }
+        $data['use_lfs'] = $object->getUseLfs();
         return $data;
     }
 }

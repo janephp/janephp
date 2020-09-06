@@ -66,31 +66,17 @@ class CombinedCommitStatusNormalizer implements DenormalizerInterface, Normalize
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getState()) {
-            $data['state'] = $object->getState();
+        $data['state'] = $object->getState();
+        $values = array();
+        foreach ($object->getStatuses() as $value) {
+            $values[] = $this->normalizer->normalize($value, 'json', $context);
         }
-        if (null !== $object->getStatuses()) {
-            $values = array();
-            foreach ($object->getStatuses() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
-            }
-            $data['statuses'] = $values;
-        }
-        if (null !== $object->getSha()) {
-            $data['sha'] = $object->getSha();
-        }
-        if (null !== $object->getTotalCount()) {
-            $data['total_count'] = $object->getTotalCount();
-        }
-        if (null !== $object->getRepository()) {
-            $data['repository'] = $this->normalizer->normalize($object->getRepository(), 'json', $context);
-        }
-        if (null !== $object->getCommitUrl()) {
-            $data['commit_url'] = $object->getCommitUrl();
-        }
-        if (null !== $object->getUrl()) {
-            $data['url'] = $object->getUrl();
-        }
+        $data['statuses'] = $values;
+        $data['sha'] = $object->getSha();
+        $data['total_count'] = $object->getTotalCount();
+        $data['repository'] = $this->normalizer->normalize($object->getRepository(), 'json', $context);
+        $data['commit_url'] = $object->getCommitUrl();
+        $data['url'] = $object->getUrl();
         return $data;
     }
 }

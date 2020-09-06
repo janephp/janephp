@@ -98,57 +98,31 @@ class LicenseNormalizer implements DenormalizerInterface, NormalizerInterface, D
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getKey()) {
-            $data['key'] = $object->getKey();
+        $data['key'] = $object->getKey();
+        $data['name'] = $object->getName();
+        $data['spdx_id'] = $object->getSpdxId();
+        $data['url'] = $object->getUrl();
+        $data['node_id'] = $object->getNodeId();
+        $data['html_url'] = $object->getHtmlUrl();
+        $data['description'] = $object->getDescription();
+        $data['implementation'] = $object->getImplementation();
+        $values = array();
+        foreach ($object->getPermissions() as $value) {
+            $values[] = $value;
         }
-        if (null !== $object->getName()) {
-            $data['name'] = $object->getName();
+        $data['permissions'] = $values;
+        $values_1 = array();
+        foreach ($object->getConditions() as $value_1) {
+            $values_1[] = $value_1;
         }
-        if (null !== $object->getSpdxId()) {
-            $data['spdx_id'] = $object->getSpdxId();
+        $data['conditions'] = $values_1;
+        $values_2 = array();
+        foreach ($object->getLimitations() as $value_2) {
+            $values_2[] = $value_2;
         }
-        if (null !== $object->getUrl()) {
-            $data['url'] = $object->getUrl();
-        }
-        if (null !== $object->getNodeId()) {
-            $data['node_id'] = $object->getNodeId();
-        }
-        if (null !== $object->getHtmlUrl()) {
-            $data['html_url'] = $object->getHtmlUrl();
-        }
-        if (null !== $object->getDescription()) {
-            $data['description'] = $object->getDescription();
-        }
-        if (null !== $object->getImplementation()) {
-            $data['implementation'] = $object->getImplementation();
-        }
-        if (null !== $object->getPermissions()) {
-            $values = array();
-            foreach ($object->getPermissions() as $value) {
-                $values[] = $value;
-            }
-            $data['permissions'] = $values;
-        }
-        if (null !== $object->getConditions()) {
-            $values_1 = array();
-            foreach ($object->getConditions() as $value_1) {
-                $values_1[] = $value_1;
-            }
-            $data['conditions'] = $values_1;
-        }
-        if (null !== $object->getLimitations()) {
-            $values_2 = array();
-            foreach ($object->getLimitations() as $value_2) {
-                $values_2[] = $value_2;
-            }
-            $data['limitations'] = $values_2;
-        }
-        if (null !== $object->getBody()) {
-            $data['body'] = $object->getBody();
-        }
-        if (null !== $object->getFeatured()) {
-            $data['featured'] = $object->getFeatured();
-        }
+        $data['limitations'] = $values_2;
+        $data['body'] = $object->getBody();
+        $data['featured'] = $object->getFeatured();
         return $data;
     }
 }

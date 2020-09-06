@@ -128,39 +128,17 @@ class TopicSearchResultItemNormalizer implements DenormalizerInterface, Normaliz
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getName()) {
-            $data['name'] = $object->getName();
-        }
-        if (null !== $object->getDisplayName()) {
-            $data['display_name'] = $object->getDisplayName();
-        }
-        if (null !== $object->getShortDescription()) {
-            $data['short_description'] = $object->getShortDescription();
-        }
-        if (null !== $object->getDescription()) {
-            $data['description'] = $object->getDescription();
-        }
-        if (null !== $object->getCreatedBy()) {
-            $data['created_by'] = $object->getCreatedBy();
-        }
-        if (null !== $object->getReleased()) {
-            $data['released'] = $object->getReleased();
-        }
-        if (null !== $object->getCreatedAt()) {
-            $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
-        }
-        if (null !== $object->getUpdatedAt()) {
-            $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
-        }
-        if (null !== $object->getFeatured()) {
-            $data['featured'] = $object->getFeatured();
-        }
-        if (null !== $object->getCurated()) {
-            $data['curated'] = $object->getCurated();
-        }
-        if (null !== $object->getScore()) {
-            $data['score'] = $object->getScore();
-        }
+        $data['name'] = $object->getName();
+        $data['display_name'] = $object->getDisplayName();
+        $data['short_description'] = $object->getShortDescription();
+        $data['description'] = $object->getDescription();
+        $data['created_by'] = $object->getCreatedBy();
+        $data['released'] = $object->getReleased();
+        $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
+        $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
+        $data['featured'] = $object->getFeatured();
+        $data['curated'] = $object->getCurated();
+        $data['score'] = $object->getScore();
         if (null !== $object->getRepositoryCount()) {
             $data['repository_count'] = $object->getRepositoryCount();
         }

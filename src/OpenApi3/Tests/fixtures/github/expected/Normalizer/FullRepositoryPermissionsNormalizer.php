@@ -50,15 +50,9 @@ class FullRepositoryPermissionsNormalizer implements DenormalizerInterface, Norm
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getAdmin()) {
-            $data['admin'] = $object->getAdmin();
-        }
-        if (null !== $object->getPull()) {
-            $data['pull'] = $object->getPull();
-        }
-        if (null !== $object->getPush()) {
-            $data['push'] = $object->getPush();
-        }
+        $data['admin'] = $object->getAdmin();
+        $data['pull'] = $object->getPull();
+        $data['push'] = $object->getPush();
         return $data;
     }
 }

@@ -50,15 +50,9 @@ class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyActionsItemNormalizer implements
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getLabel()) {
-            $data['label'] = $object->getLabel();
-        }
-        if (null !== $object->getDescription()) {
-            $data['description'] = $object->getDescription();
-        }
-        if (null !== $object->getIdentifier()) {
-            $data['identifier'] = $object->getIdentifier();
-        }
+        $data['label'] = $object->getLabel();
+        $data['description'] = $object->getDescription();
+        $data['identifier'] = $object->getIdentifier();
         return $data;
     }
 }

@@ -74,39 +74,25 @@ class BranchRestrictionPolicyNormalizer implements DenormalizerInterface, Normal
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getUrl()) {
-            $data['url'] = $object->getUrl();
+        $data['url'] = $object->getUrl();
+        $data['users_url'] = $object->getUsersUrl();
+        $data['teams_url'] = $object->getTeamsUrl();
+        $data['apps_url'] = $object->getAppsUrl();
+        $values = array();
+        foreach ($object->getUsers() as $value) {
+            $values[] = $this->normalizer->normalize($value, 'json', $context);
         }
-        if (null !== $object->getUsersUrl()) {
-            $data['users_url'] = $object->getUsersUrl();
+        $data['users'] = $values;
+        $values_1 = array();
+        foreach ($object->getTeams() as $value_1) {
+            $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
         }
-        if (null !== $object->getTeamsUrl()) {
-            $data['teams_url'] = $object->getTeamsUrl();
+        $data['teams'] = $values_1;
+        $values_2 = array();
+        foreach ($object->getApps() as $value_2) {
+            $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
         }
-        if (null !== $object->getAppsUrl()) {
-            $data['apps_url'] = $object->getAppsUrl();
-        }
-        if (null !== $object->getUsers()) {
-            $values = array();
-            foreach ($object->getUsers() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
-            }
-            $data['users'] = $values;
-        }
-        if (null !== $object->getTeams()) {
-            $values_1 = array();
-            foreach ($object->getTeams() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
-            }
-            $data['teams'] = $values_1;
-        }
-        if (null !== $object->getApps()) {
-            $values_2 = array();
-            foreach ($object->getApps() as $value_2) {
-                $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
-            }
-            $data['apps'] = $values_2;
-        }
+        $data['apps'] = $values_2;
         return $data;
     }
 }

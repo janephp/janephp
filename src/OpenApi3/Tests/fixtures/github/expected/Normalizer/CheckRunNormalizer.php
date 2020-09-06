@@ -113,54 +113,22 @@ class CheckRunNormalizer implements DenormalizerInterface, NormalizerInterface, 
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getId()) {
-            $data['id'] = $object->getId();
-        }
-        if (null !== $object->getHeadSha()) {
-            $data['head_sha'] = $object->getHeadSha();
-        }
-        if (null !== $object->getNodeId()) {
-            $data['node_id'] = $object->getNodeId();
-        }
-        if (null !== $object->getExternalId()) {
-            $data['external_id'] = $object->getExternalId();
-        }
-        if (null !== $object->getUrl()) {
-            $data['url'] = $object->getUrl();
-        }
-        if (null !== $object->getHtmlUrl()) {
-            $data['html_url'] = $object->getHtmlUrl();
-        }
-        if (null !== $object->getDetailsUrl()) {
-            $data['details_url'] = $object->getDetailsUrl();
-        }
-        if (null !== $object->getStatus()) {
-            $data['status'] = $object->getStatus();
-        }
-        if (null !== $object->getConclusion()) {
-            $data['conclusion'] = $object->getConclusion();
-        }
-        if (null !== $object->getStartedAt()) {
-            $data['started_at'] = $object->getStartedAt()->format('Y-m-d\\TH:i:sP');
-        }
-        if (null !== $object->getCompletedAt()) {
-            $data['completed_at'] = $object->getCompletedAt()->format('Y-m-d\\TH:i:sP');
-        }
-        if (null !== $object->getOutput()) {
-            $data['output'] = $this->normalizer->normalize($object->getOutput(), 'json', $context);
-        }
-        if (null !== $object->getName()) {
-            $data['name'] = $object->getName();
-        }
-        if (null !== $object->getCheckSuite()) {
-            $data['check_suite'] = $this->normalizer->normalize($object->getCheckSuite(), 'json', $context);
-        }
-        if (null !== $object->getApp()) {
-            $data['app'] = $this->normalizer->normalize($object->getApp(), 'json', $context);
-        }
-        if (null !== $object->getPullRequests()) {
-            $data['pull_requests'] = $object->getPullRequests();
-        }
+        $data['id'] = $object->getId();
+        $data['head_sha'] = $object->getHeadSha();
+        $data['node_id'] = $object->getNodeId();
+        $data['external_id'] = $object->getExternalId();
+        $data['url'] = $object->getUrl();
+        $data['html_url'] = $object->getHtmlUrl();
+        $data['details_url'] = $object->getDetailsUrl();
+        $data['status'] = $object->getStatus();
+        $data['conclusion'] = $object->getConclusion();
+        $data['started_at'] = $object->getStartedAt()->format('Y-m-d\\TH:i:sP');
+        $data['completed_at'] = $object->getCompletedAt()->format('Y-m-d\\TH:i:sP');
+        $data['output'] = $this->normalizer->normalize($object->getOutput(), 'json', $context);
+        $data['name'] = $object->getName();
+        $data['check_suite'] = $this->normalizer->normalize($object->getCheckSuite(), 'json', $context);
+        $data['app'] = $this->normalizer->normalize($object->getApp(), 'json', $context);
+        $data['pull_requests'] = $object->getPullRequests();
         return $data;
     }
 }

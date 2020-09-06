@@ -122,58 +122,26 @@ class BaseGistNormalizer implements DenormalizerInterface, NormalizerInterface, 
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getUrl()) {
-            $data['url'] = $object->getUrl();
+        $data['url'] = $object->getUrl();
+        $data['forks_url'] = $object->getForksUrl();
+        $data['commits_url'] = $object->getCommitsUrl();
+        $data['id'] = $object->getId();
+        $data['node_id'] = $object->getNodeId();
+        $data['git_pull_url'] = $object->getGitPullUrl();
+        $data['git_push_url'] = $object->getGitPushUrl();
+        $data['html_url'] = $object->getHtmlUrl();
+        $values = array();
+        foreach ($object->getFiles() as $key => $value) {
+            $values[$key] = $this->normalizer->normalize($value, 'json', $context);
         }
-        if (null !== $object->getForksUrl()) {
-            $data['forks_url'] = $object->getForksUrl();
-        }
-        if (null !== $object->getCommitsUrl()) {
-            $data['commits_url'] = $object->getCommitsUrl();
-        }
-        if (null !== $object->getId()) {
-            $data['id'] = $object->getId();
-        }
-        if (null !== $object->getNodeId()) {
-            $data['node_id'] = $object->getNodeId();
-        }
-        if (null !== $object->getGitPullUrl()) {
-            $data['git_pull_url'] = $object->getGitPullUrl();
-        }
-        if (null !== $object->getGitPushUrl()) {
-            $data['git_push_url'] = $object->getGitPushUrl();
-        }
-        if (null !== $object->getHtmlUrl()) {
-            $data['html_url'] = $object->getHtmlUrl();
-        }
-        if (null !== $object->getFiles()) {
-            $values = array();
-            foreach ($object->getFiles() as $key => $value) {
-                $values[$key] = $this->normalizer->normalize($value, 'json', $context);
-            }
-            $data['files'] = $values;
-        }
-        if (null !== $object->getPublic()) {
-            $data['public'] = $object->getPublic();
-        }
-        if (null !== $object->getCreatedAt()) {
-            $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
-        }
-        if (null !== $object->getUpdatedAt()) {
-            $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
-        }
-        if (null !== $object->getDescription()) {
-            $data['description'] = $object->getDescription();
-        }
-        if (null !== $object->getComments()) {
-            $data['comments'] = $object->getComments();
-        }
-        if (null !== $object->getUser()) {
-            $data['user'] = $this->normalizer->normalize($object->getUser(), 'json', $context);
-        }
-        if (null !== $object->getCommentsUrl()) {
-            $data['comments_url'] = $object->getCommentsUrl();
-        }
+        $data['files'] = $values;
+        $data['public'] = $object->getPublic();
+        $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
+        $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
+        $data['description'] = $object->getDescription();
+        $data['comments'] = $object->getComments();
+        $data['user'] = $this->normalizer->normalize($object->getUser(), 'json', $context);
+        $data['comments_url'] = $object->getCommentsUrl();
         if (null !== $object->getOwner()) {
             $data['owner'] = $this->normalizer->normalize($object->getOwner(), 'json', $context);
         }

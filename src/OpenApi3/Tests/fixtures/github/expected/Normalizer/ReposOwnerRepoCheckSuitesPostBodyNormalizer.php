@@ -44,9 +44,7 @@ class ReposOwnerRepoCheckSuitesPostBodyNormalizer implements DenormalizerInterfa
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getHeadSha()) {
-            $data['head_sha'] = $object->getHeadSha();
-        }
+        $data['head_sha'] = $object->getHeadSha();
         return $data;
     }
 }

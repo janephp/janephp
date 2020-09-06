@@ -44,9 +44,7 @@ class OrgMembershipPermissionsNormalizer implements DenormalizerInterface, Norma
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getCanCreateRepository()) {
-            $data['can_create_repository'] = $object->getCanCreateRepository();
-        }
+        $data['can_create_repository'] = $object->getCanCreateRepository();
         return $data;
     }
 }

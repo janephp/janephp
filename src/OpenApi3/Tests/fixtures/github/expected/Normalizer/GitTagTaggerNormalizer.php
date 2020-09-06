@@ -50,15 +50,9 @@ class GitTagTaggerNormalizer implements DenormalizerInterface, NormalizerInterfa
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getDate()) {
-            $data['date'] = $object->getDate();
-        }
-        if (null !== $object->getEmail()) {
-            $data['email'] = $object->getEmail();
-        }
-        if (null !== $object->getName()) {
-            $data['name'] = $object->getName();
-        }
+        $data['date'] = $object->getDate();
+        $data['email'] = $object->getEmail();
+        $data['name'] = $object->getName();
         return $data;
     }
 }

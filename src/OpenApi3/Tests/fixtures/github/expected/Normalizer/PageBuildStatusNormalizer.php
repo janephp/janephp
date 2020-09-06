@@ -47,12 +47,8 @@ class PageBuildStatusNormalizer implements DenormalizerInterface, NormalizerInte
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getUrl()) {
-            $data['url'] = $object->getUrl();
-        }
-        if (null !== $object->getStatus()) {
-            $data['status'] = $object->getStatus();
-        }
+        $data['url'] = $object->getUrl();
+        $data['status'] = $object->getStatus();
         return $data;
     }
 }

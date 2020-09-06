@@ -102,46 +102,24 @@ class DeploymentStatusPerformedViaGithubAppNormalizer implements DenormalizerInt
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getId()) {
-            $data['id'] = $object->getId();
-        }
+        $data['id'] = $object->getId();
         if (null !== $object->getSlug()) {
             $data['slug'] = $object->getSlug();
         }
-        if (null !== $object->getNodeId()) {
-            $data['node_id'] = $object->getNodeId();
+        $data['node_id'] = $object->getNodeId();
+        $data['owner'] = $this->normalizer->normalize($object->getOwner(), 'json', $context);
+        $data['name'] = $object->getName();
+        $data['description'] = $object->getDescription();
+        $data['external_url'] = $object->getExternalUrl();
+        $data['html_url'] = $object->getHtmlUrl();
+        $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
+        $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
+        $data['permissions'] = $this->normalizer->normalize($object->getPermissions(), 'json', $context);
+        $values = array();
+        foreach ($object->getEvents() as $value) {
+            $values[] = $value;
         }
-        if (null !== $object->getOwner()) {
-            $data['owner'] = $this->normalizer->normalize($object->getOwner(), 'json', $context);
-        }
-        if (null !== $object->getName()) {
-            $data['name'] = $object->getName();
-        }
-        if (null !== $object->getDescription()) {
-            $data['description'] = $object->getDescription();
-        }
-        if (null !== $object->getExternalUrl()) {
-            $data['external_url'] = $object->getExternalUrl();
-        }
-        if (null !== $object->getHtmlUrl()) {
-            $data['html_url'] = $object->getHtmlUrl();
-        }
-        if (null !== $object->getCreatedAt()) {
-            $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
-        }
-        if (null !== $object->getUpdatedAt()) {
-            $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
-        }
-        if (null !== $object->getPermissions()) {
-            $data['permissions'] = $this->normalizer->normalize($object->getPermissions(), 'json', $context);
-        }
-        if (null !== $object->getEvents()) {
-            $values = array();
-            foreach ($object->getEvents() as $value) {
-                $values[] = $value;
-            }
-            $data['events'] = $values;
-        }
+        $data['events'] = $values;
         if (null !== $object->getInstallationsCount()) {
             $data['installations_count'] = $object->getInstallationsCount();
         }

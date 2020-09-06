@@ -47,12 +47,8 @@ class PagesSourceHashNormalizer implements DenormalizerInterface, NormalizerInte
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getBranch()) {
-            $data['branch'] = $object->getBranch();
-        }
-        if (null !== $object->getPath()) {
-            $data['path'] = $object->getPath();
-        }
+        $data['branch'] = $object->getBranch();
+        $data['path'] = $object->getPath();
         return $data;
     }
 }

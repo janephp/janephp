@@ -47,12 +47,8 @@ class EntityIndicesNormalizer implements DenormalizerInterface, NormalizerInterf
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getStart()) {
-            $data['start'] = $object->getStart();
-        }
-        if (null !== $object->getEnd()) {
-            $data['end'] = $object->getEnd();
-        }
+        $data['start'] = $object->getStart();
+        $data['end'] = $object->getEnd();
         return $data;
     }
 }

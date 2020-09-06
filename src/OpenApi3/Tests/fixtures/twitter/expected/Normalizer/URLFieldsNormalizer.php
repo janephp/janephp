@@ -66,9 +66,7 @@ class URLFieldsNormalizer implements DenormalizerInterface, NormalizerInterface,
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getUrl()) {
-            $data['url'] = $object->getUrl();
-        }
+        $data['url'] = $object->getUrl();
         if (null !== $object->getExpandedUrl()) {
             $data['expanded_url'] = $object->getExpandedUrl();
         }

@@ -47,12 +47,8 @@ class StarredRepositoryNormalizer implements DenormalizerInterface, NormalizerIn
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getStarredAt()) {
-            $data['starred_at'] = $object->getStarredAt()->format('Y-m-d\\TH:i:sP');
-        }
-        if (null !== $object->getRepo()) {
-            $data['repo'] = $this->normalizer->normalize($object->getRepo(), 'json', $context);
-        }
+        $data['starred_at'] = $object->getStarredAt()->format('Y-m-d\\TH:i:sP');
+        $data['repo'] = $this->normalizer->normalize($object->getRepo(), 'json', $context);
         return $data;
     }
 }

@@ -50,9 +50,7 @@ class UserKeysPostBodyNormalizer implements DenormalizerInterface, NormalizerInt
         if (null !== $object->getTitle()) {
             $data['title'] = $object->getTitle();
         }
-        if (null !== $object->getKey()) {
-            $data['key'] = $object->getKey();
-        }
+        $data['key'] = $object->getKey();
         return $data;
     }
 }

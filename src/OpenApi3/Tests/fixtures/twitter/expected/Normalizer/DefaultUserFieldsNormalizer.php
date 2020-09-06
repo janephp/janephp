@@ -62,12 +62,8 @@ class DefaultUserFieldsNormalizer implements DenormalizerInterface, NormalizerIn
         if (null !== $object->getLocation()) {
             $data['location'] = $object->getLocation();
         }
-        if (null !== $object->getUrl()) {
-            $data['url'] = $object->getUrl();
-        }
-        if (null !== $object->getDescription()) {
-            $data['description'] = $object->getDescription();
-        }
+        $data['url'] = $object->getUrl();
+        $data['description'] = $object->getDescription();
         if (null !== $object->getEntities()) {
             $data['entities'] = $this->normalizer->normalize($object->getEntities(), 'json', $context);
         }

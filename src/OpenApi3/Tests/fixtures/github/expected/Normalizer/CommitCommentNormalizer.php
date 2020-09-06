@@ -95,45 +95,19 @@ class CommitCommentNormalizer implements DenormalizerInterface, NormalizerInterf
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getHtmlUrl()) {
-            $data['html_url'] = $object->getHtmlUrl();
-        }
-        if (null !== $object->getUrl()) {
-            $data['url'] = $object->getUrl();
-        }
-        if (null !== $object->getId()) {
-            $data['id'] = $object->getId();
-        }
-        if (null !== $object->getNodeId()) {
-            $data['node_id'] = $object->getNodeId();
-        }
-        if (null !== $object->getBody()) {
-            $data['body'] = $object->getBody();
-        }
-        if (null !== $object->getPath()) {
-            $data['path'] = $object->getPath();
-        }
-        if (null !== $object->getPosition()) {
-            $data['position'] = $object->getPosition();
-        }
-        if (null !== $object->getLine()) {
-            $data['line'] = $object->getLine();
-        }
-        if (null !== $object->getCommitId()) {
-            $data['commit_id'] = $object->getCommitId();
-        }
-        if (null !== $object->getUser()) {
-            $data['user'] = $this->normalizer->normalize($object->getUser(), 'json', $context);
-        }
-        if (null !== $object->getCreatedAt()) {
-            $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
-        }
-        if (null !== $object->getUpdatedAt()) {
-            $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
-        }
-        if (null !== $object->getAuthorAssociation()) {
-            $data['author_association'] = $object->getAuthorAssociation();
-        }
+        $data['html_url'] = $object->getHtmlUrl();
+        $data['url'] = $object->getUrl();
+        $data['id'] = $object->getId();
+        $data['node_id'] = $object->getNodeId();
+        $data['body'] = $object->getBody();
+        $data['path'] = $object->getPath();
+        $data['position'] = $object->getPosition();
+        $data['line'] = $object->getLine();
+        $data['commit_id'] = $object->getCommitId();
+        $data['user'] = $this->normalizer->normalize($object->getUser(), 'json', $context);
+        $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
+        $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
+        $data['author_association'] = $object->getAuthorAssociation();
         if (null !== $object->getReactions()) {
             $data['reactions'] = $this->normalizer->normalize($object->getReactions(), 'json', $context);
         }

@@ -60,16 +60,12 @@ class BranchProtectionRequiredStatusChecksNormalizer implements DenormalizerInte
         if (null !== $object->getUrl()) {
             $data['url'] = $object->getUrl();
         }
-        if (null !== $object->getEnforcementLevel()) {
-            $data['enforcement_level'] = $object->getEnforcementLevel();
+        $data['enforcement_level'] = $object->getEnforcementLevel();
+        $values = array();
+        foreach ($object->getContexts() as $value) {
+            $values[] = $value;
         }
-        if (null !== $object->getContexts()) {
-            $values = array();
-            foreach ($object->getContexts() as $value) {
-                $values[] = $value;
-            }
-            $data['contexts'] = $values;
-        }
+        $data['contexts'] = $values;
         if (null !== $object->getContextsUrl()) {
             $data['contexts_url'] = $object->getContextsUrl();
         }

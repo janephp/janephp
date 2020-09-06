@@ -65,24 +65,12 @@ class OrgMembershipNormalizer implements DenormalizerInterface, NormalizerInterf
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getUrl()) {
-            $data['url'] = $object->getUrl();
-        }
-        if (null !== $object->getState()) {
-            $data['state'] = $object->getState();
-        }
-        if (null !== $object->getRole()) {
-            $data['role'] = $object->getRole();
-        }
-        if (null !== $object->getOrganizationUrl()) {
-            $data['organization_url'] = $object->getOrganizationUrl();
-        }
-        if (null !== $object->getOrganization()) {
-            $data['organization'] = $this->normalizer->normalize($object->getOrganization(), 'json', $context);
-        }
-        if (null !== $object->getUser()) {
-            $data['user'] = $this->normalizer->normalize($object->getUser(), 'json', $context);
-        }
+        $data['url'] = $object->getUrl();
+        $data['state'] = $object->getState();
+        $data['role'] = $object->getRole();
+        $data['organization_url'] = $object->getOrganizationUrl();
+        $data['organization'] = $this->normalizer->normalize($object->getOrganization(), 'json', $context);
+        $data['user'] = $this->normalizer->normalize($object->getUser(), 'json', $context);
         if (null !== $object->getPermissions()) {
             $data['permissions'] = $this->normalizer->normalize($object->getPermissions(), 'json', $context);
         }

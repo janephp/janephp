@@ -74,13 +74,11 @@ class UserMigrationsPostBodyNormalizer implements DenormalizerInterface, Normali
             }
             $data['exclude'] = $values;
         }
-        if (null !== $object->getRepositories()) {
-            $values_1 = array();
-            foreach ($object->getRepositories() as $value_1) {
-                $values_1[] = $value_1;
-            }
-            $data['repositories'] = $values_1;
+        $values_1 = array();
+        foreach ($object->getRepositories() as $value_1) {
+            $values_1[] = $value_1;
         }
+        $data['repositories'] = $values_1;
         return $data;
     }
 }

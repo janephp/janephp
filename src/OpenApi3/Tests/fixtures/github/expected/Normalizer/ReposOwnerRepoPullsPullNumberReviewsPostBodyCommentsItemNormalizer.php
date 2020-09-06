@@ -62,15 +62,11 @@ class ReposOwnerRepoPullsPullNumberReviewsPostBodyCommentsItemNormalizer impleme
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getPath()) {
-            $data['path'] = $object->getPath();
-        }
+        $data['path'] = $object->getPath();
         if (null !== $object->getPosition()) {
             $data['position'] = $object->getPosition();
         }
-        if (null !== $object->getBody()) {
-            $data['body'] = $object->getBody();
-        }
+        $data['body'] = $object->getBody();
         if (null !== $object->getLine()) {
             $data['line'] = $object->getLine();
         }

@@ -68,15 +68,11 @@ class ReposOwnerRepoPullsPullNumberCommentsPostBodyNormalizer implements Denorma
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getBody()) {
-            $data['body'] = $object->getBody();
-        }
+        $data['body'] = $object->getBody();
         if (null !== $object->getCommitId()) {
             $data['commit_id'] = $object->getCommitId();
         }
-        if (null !== $object->getPath()) {
-            $data['path'] = $object->getPath();
-        }
+        $data['path'] = $object->getPath();
         if (null !== $object->getPosition()) {
             $data['position'] = $object->getPosition();
         }

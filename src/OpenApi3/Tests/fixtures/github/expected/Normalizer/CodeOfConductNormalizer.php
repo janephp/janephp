@@ -59,21 +59,13 @@ class CodeOfConductNormalizer implements DenormalizerInterface, NormalizerInterf
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getKey()) {
-            $data['key'] = $object->getKey();
-        }
-        if (null !== $object->getName()) {
-            $data['name'] = $object->getName();
-        }
-        if (null !== $object->getUrl()) {
-            $data['url'] = $object->getUrl();
-        }
+        $data['key'] = $object->getKey();
+        $data['name'] = $object->getName();
+        $data['url'] = $object->getUrl();
         if (null !== $object->getBody()) {
             $data['body'] = $object->getBody();
         }
-        if (null !== $object->getHtmlUrl()) {
-            $data['html_url'] = $object->getHtmlUrl();
-        }
+        $data['html_url'] = $object->getHtmlUrl();
         return $data;
     }
 }

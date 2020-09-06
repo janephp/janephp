@@ -50,15 +50,9 @@ class PullRequestMergeResultNormalizer implements DenormalizerInterface, Normali
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getSha()) {
-            $data['sha'] = $object->getSha();
-        }
-        if (null !== $object->getMerged()) {
-            $data['merged'] = $object->getMerged();
-        }
-        if (null !== $object->getMessage()) {
-            $data['message'] = $object->getMessage();
-        }
+        $data['sha'] = $object->getSha();
+        $data['merged'] = $object->getMerged();
+        $data['message'] = $object->getMessage();
         return $data;
     }
 }

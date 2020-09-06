@@ -65,24 +65,12 @@ class BlobNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getContent()) {
-            $data['content'] = $object->getContent();
-        }
-        if (null !== $object->getEncoding()) {
-            $data['encoding'] = $object->getEncoding();
-        }
-        if (null !== $object->getUrl()) {
-            $data['url'] = $object->getUrl();
-        }
-        if (null !== $object->getSha()) {
-            $data['sha'] = $object->getSha();
-        }
-        if (null !== $object->getSize()) {
-            $data['size'] = $object->getSize();
-        }
-        if (null !== $object->getNodeId()) {
-            $data['node_id'] = $object->getNodeId();
-        }
+        $data['content'] = $object->getContent();
+        $data['encoding'] = $object->getEncoding();
+        $data['url'] = $object->getUrl();
+        $data['sha'] = $object->getSha();
+        $data['size'] = $object->getSize();
+        $data['node_id'] = $object->getNodeId();
         if (null !== $object->getHighlightedContent()) {
             $data['highlighted_content'] = $object->getHighlightedContent();
         }

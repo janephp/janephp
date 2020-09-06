@@ -56,21 +56,15 @@ class ClientForbiddenProblemNormalizer implements DenormalizerInterface, Normali
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getType()) {
-            $data['type'] = $object->getType();
-        }
+        $data['type'] = $object->getType();
         if (null !== $object->getReason()) {
             $data['reason'] = $object->getReason();
         }
         if (null !== $object->getRegistrationUrl()) {
             $data['registration_url'] = $object->getRegistrationUrl();
         }
-        if (null !== $object->getTitle()) {
-            $data['title'] = $object->getTitle();
-        }
-        if (null !== $object->getDetail()) {
-            $data['detail'] = $object->getDetail();
-        }
+        $data['title'] = $object->getTitle();
+        $data['detail'] = $object->getDetail();
         return $data;
     }
 }

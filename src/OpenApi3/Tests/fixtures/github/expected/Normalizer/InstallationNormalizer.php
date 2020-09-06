@@ -114,55 +114,25 @@ class InstallationNormalizer implements DenormalizerInterface, NormalizerInterfa
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getId()) {
-            $data['id'] = $object->getId();
+        $data['id'] = $object->getId();
+        $data['account'] = $object->getAccount();
+        $data['repository_selection'] = $object->getRepositorySelection();
+        $data['access_tokens_url'] = $object->getAccessTokensUrl();
+        $data['repositories_url'] = $object->getRepositoriesUrl();
+        $data['html_url'] = $object->getHtmlUrl();
+        $data['app_id'] = $object->getAppId();
+        $data['target_id'] = $object->getTargetId();
+        $data['target_type'] = $object->getTargetType();
+        $data['permissions'] = $this->normalizer->normalize($object->getPermissions(), 'json', $context);
+        $values = array();
+        foreach ($object->getEvents() as $value) {
+            $values[] = $value;
         }
-        if (null !== $object->getAccount()) {
-            $data['account'] = $object->getAccount();
-        }
-        if (null !== $object->getRepositorySelection()) {
-            $data['repository_selection'] = $object->getRepositorySelection();
-        }
-        if (null !== $object->getAccessTokensUrl()) {
-            $data['access_tokens_url'] = $object->getAccessTokensUrl();
-        }
-        if (null !== $object->getRepositoriesUrl()) {
-            $data['repositories_url'] = $object->getRepositoriesUrl();
-        }
-        if (null !== $object->getHtmlUrl()) {
-            $data['html_url'] = $object->getHtmlUrl();
-        }
-        if (null !== $object->getAppId()) {
-            $data['app_id'] = $object->getAppId();
-        }
-        if (null !== $object->getTargetId()) {
-            $data['target_id'] = $object->getTargetId();
-        }
-        if (null !== $object->getTargetType()) {
-            $data['target_type'] = $object->getTargetType();
-        }
-        if (null !== $object->getPermissions()) {
-            $data['permissions'] = $this->normalizer->normalize($object->getPermissions(), 'json', $context);
-        }
-        if (null !== $object->getEvents()) {
-            $values = array();
-            foreach ($object->getEvents() as $value) {
-                $values[] = $value;
-            }
-            $data['events'] = $values;
-        }
-        if (null !== $object->getCreatedAt()) {
-            $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
-        }
-        if (null !== $object->getUpdatedAt()) {
-            $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
-        }
-        if (null !== $object->getSingleFileName()) {
-            $data['single_file_name'] = $object->getSingleFileName();
-        }
-        if (null !== $object->getAppSlug()) {
-            $data['app_slug'] = $object->getAppSlug();
-        }
+        $data['events'] = $values;
+        $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
+        $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
+        $data['single_file_name'] = $object->getSingleFileName();
+        $data['app_slug'] = $object->getAppSlug();
         if (null !== $object->getSuspendedBy()) {
             $data['suspended_by'] = $this->normalizer->normalize($object->getSuspendedBy(), 'json', $context);
         }

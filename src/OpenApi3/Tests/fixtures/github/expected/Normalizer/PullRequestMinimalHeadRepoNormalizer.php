@@ -50,15 +50,9 @@ class PullRequestMinimalHeadRepoNormalizer implements DenormalizerInterface, Nor
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getId()) {
-            $data['id'] = $object->getId();
-        }
-        if (null !== $object->getUrl()) {
-            $data['url'] = $object->getUrl();
-        }
-        if (null !== $object->getName()) {
-            $data['name'] = $object->getName();
-        }
+        $data['id'] = $object->getId();
+        $data['url'] = $object->getUrl();
+        $data['name'] = $object->getName();
         return $data;
     }
 }

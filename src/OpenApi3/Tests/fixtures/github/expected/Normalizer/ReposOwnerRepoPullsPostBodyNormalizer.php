@@ -65,12 +65,8 @@ class ReposOwnerRepoPullsPostBodyNormalizer implements DenormalizerInterface, No
         if (null !== $object->getTitle()) {
             $data['title'] = $object->getTitle();
         }
-        if (null !== $object->getHead()) {
-            $data['head'] = $object->getHead();
-        }
-        if (null !== $object->getBase()) {
-            $data['base'] = $object->getBase();
-        }
+        $data['head'] = $object->getHead();
+        $data['base'] = $object->getBase();
         if (null !== $object->getBody()) {
             $data['body'] = $object->getBody();
         }

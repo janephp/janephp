@@ -65,21 +65,11 @@ class CheckRunOutputNormalizer implements DenormalizerInterface, NormalizerInter
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getTitle()) {
-            $data['title'] = $object->getTitle();
-        }
-        if (null !== $object->getSummary()) {
-            $data['summary'] = $object->getSummary();
-        }
-        if (null !== $object->getText()) {
-            $data['text'] = $object->getText();
-        }
-        if (null !== $object->getAnnotationsCount()) {
-            $data['annotations_count'] = $object->getAnnotationsCount();
-        }
-        if (null !== $object->getAnnotationsUrl()) {
-            $data['annotations_url'] = $object->getAnnotationsUrl();
-        }
+        $data['title'] = $object->getTitle();
+        $data['summary'] = $object->getSummary();
+        $data['text'] = $object->getText();
+        $data['annotations_count'] = $object->getAnnotationsCount();
+        $data['annotations_url'] = $object->getAnnotationsUrl();
         return $data;
     }
 }

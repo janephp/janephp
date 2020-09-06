@@ -47,12 +47,8 @@ class CommunityHealthFileNormalizer implements DenormalizerInterface, Normalizer
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getUrl()) {
-            $data['url'] = $object->getUrl();
-        }
-        if (null !== $object->getHtmlUrl()) {
-            $data['html_url'] = $object->getHtmlUrl();
-        }
+        $data['url'] = $object->getUrl();
+        $data['html_url'] = $object->getHtmlUrl();
         return $data;
     }
 }

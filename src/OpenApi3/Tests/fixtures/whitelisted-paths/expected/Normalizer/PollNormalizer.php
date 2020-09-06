@@ -60,22 +60,14 @@ class PollNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getId()) {
-            $data['id'] = $object->getId();
+        $data['id'] = $object->getId();
+        $values = array();
+        foreach ($object->getOptions() as $value) {
+            $values[] = $this->normalizer->normalize($value, 'json', $context);
         }
-        if (null !== $object->getOptions()) {
-            $values = array();
-            foreach ($object->getOptions() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
-            }
-            $data['options'] = $values;
-        }
-        if (null !== $object->getVotingStatus()) {
-            $data['voting_status'] = $object->getVotingStatus();
-        }
-        if (null !== $object->getEndDatetime()) {
-            $data['end_datetime'] = $object->getEndDatetime()->format('Y-m-d\\TH:i:sP');
-        }
+        $data['options'] = $values;
+        $data['voting_status'] = $object->getVotingStatus();
+        $data['end_datetime'] = $object->getEndDatetime()->format('Y-m-d\\TH:i:sP');
         if (null !== $object->getDurationMinutes()) {
             $data['duration_minutes'] = $object->getDurationMinutes();
         }

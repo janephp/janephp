@@ -128,30 +128,14 @@ class IssueEventNormalizer implements DenormalizerInterface, NormalizerInterface
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getId()) {
-            $data['id'] = $object->getId();
-        }
-        if (null !== $object->getNodeId()) {
-            $data['node_id'] = $object->getNodeId();
-        }
-        if (null !== $object->getUrl()) {
-            $data['url'] = $object->getUrl();
-        }
-        if (null !== $object->getActor()) {
-            $data['actor'] = $this->normalizer->normalize($object->getActor(), 'json', $context);
-        }
-        if (null !== $object->getEvent()) {
-            $data['event'] = $object->getEvent();
-        }
-        if (null !== $object->getCommitId()) {
-            $data['commit_id'] = $object->getCommitId();
-        }
-        if (null !== $object->getCommitUrl()) {
-            $data['commit_url'] = $object->getCommitUrl();
-        }
-        if (null !== $object->getCreatedAt()) {
-            $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
-        }
+        $data['id'] = $object->getId();
+        $data['node_id'] = $object->getNodeId();
+        $data['url'] = $object->getUrl();
+        $data['actor'] = $this->normalizer->normalize($object->getActor(), 'json', $context);
+        $data['event'] = $object->getEvent();
+        $data['commit_id'] = $object->getCommitId();
+        $data['commit_url'] = $object->getCommitUrl();
+        $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
         if (null !== $object->getIssue()) {
             $data['issue'] = $this->normalizer->normalize($object->getIssue(), 'json', $context);
         }

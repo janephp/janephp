@@ -86,33 +86,17 @@ class EnterpriseNormalizer implements DenormalizerInterface, NormalizerInterface
         if (null !== $object->getDescription()) {
             $data['description'] = $object->getDescription();
         }
-        if (null !== $object->getHtmlUrl()) {
-            $data['html_url'] = $object->getHtmlUrl();
-        }
+        $data['html_url'] = $object->getHtmlUrl();
         if (null !== $object->getWebsiteUrl()) {
             $data['website_url'] = $object->getWebsiteUrl();
         }
-        if (null !== $object->getId()) {
-            $data['id'] = $object->getId();
-        }
-        if (null !== $object->getNodeId()) {
-            $data['node_id'] = $object->getNodeId();
-        }
-        if (null !== $object->getName()) {
-            $data['name'] = $object->getName();
-        }
-        if (null !== $object->getSlug()) {
-            $data['slug'] = $object->getSlug();
-        }
-        if (null !== $object->getCreatedAt()) {
-            $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
-        }
-        if (null !== $object->getUpdatedAt()) {
-            $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
-        }
-        if (null !== $object->getAvatarUrl()) {
-            $data['avatar_url'] = $object->getAvatarUrl();
-        }
+        $data['id'] = $object->getId();
+        $data['node_id'] = $object->getNodeId();
+        $data['name'] = $object->getName();
+        $data['slug'] = $object->getSlug();
+        $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
+        $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
+        $data['avatar_url'] = $object->getAvatarUrl();
         return $data;
     }
 }

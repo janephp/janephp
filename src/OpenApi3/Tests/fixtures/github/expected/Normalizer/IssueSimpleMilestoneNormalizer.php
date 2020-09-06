@@ -101,54 +101,22 @@ class IssueSimpleMilestoneNormalizer implements DenormalizerInterface, Normalize
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getUrl()) {
-            $data['url'] = $object->getUrl();
-        }
-        if (null !== $object->getHtmlUrl()) {
-            $data['html_url'] = $object->getHtmlUrl();
-        }
-        if (null !== $object->getLabelsUrl()) {
-            $data['labels_url'] = $object->getLabelsUrl();
-        }
-        if (null !== $object->getId()) {
-            $data['id'] = $object->getId();
-        }
-        if (null !== $object->getNodeId()) {
-            $data['node_id'] = $object->getNodeId();
-        }
-        if (null !== $object->getNumber()) {
-            $data['number'] = $object->getNumber();
-        }
-        if (null !== $object->getState()) {
-            $data['state'] = $object->getState();
-        }
-        if (null !== $object->getTitle()) {
-            $data['title'] = $object->getTitle();
-        }
-        if (null !== $object->getDescription()) {
-            $data['description'] = $object->getDescription();
-        }
-        if (null !== $object->getCreator()) {
-            $data['creator'] = $this->normalizer->normalize($object->getCreator(), 'json', $context);
-        }
-        if (null !== $object->getOpenIssues()) {
-            $data['open_issues'] = $object->getOpenIssues();
-        }
-        if (null !== $object->getClosedIssues()) {
-            $data['closed_issues'] = $object->getClosedIssues();
-        }
-        if (null !== $object->getCreatedAt()) {
-            $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
-        }
-        if (null !== $object->getUpdatedAt()) {
-            $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
-        }
-        if (null !== $object->getClosedAt()) {
-            $data['closed_at'] = $object->getClosedAt()->format('Y-m-d\\TH:i:sP');
-        }
-        if (null !== $object->getDueOn()) {
-            $data['due_on'] = $object->getDueOn()->format('Y-m-d\\TH:i:sP');
-        }
+        $data['url'] = $object->getUrl();
+        $data['html_url'] = $object->getHtmlUrl();
+        $data['labels_url'] = $object->getLabelsUrl();
+        $data['id'] = $object->getId();
+        $data['node_id'] = $object->getNodeId();
+        $data['number'] = $object->getNumber();
+        $data['state'] = $object->getState();
+        $data['title'] = $object->getTitle();
+        $data['description'] = $object->getDescription();
+        $data['creator'] = $this->normalizer->normalize($object->getCreator(), 'json', $context);
+        $data['open_issues'] = $object->getOpenIssues();
+        $data['closed_issues'] = $object->getClosedIssues();
+        $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
+        $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
+        $data['closed_at'] = $object->getClosedAt()->format('Y-m-d\\TH:i:sP');
+        $data['due_on'] = $object->getDueOn()->format('Y-m-d\\TH:i:sP');
         return $data;
     }
 }

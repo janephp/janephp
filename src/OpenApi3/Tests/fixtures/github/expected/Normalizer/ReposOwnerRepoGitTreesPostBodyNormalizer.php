@@ -51,13 +51,11 @@ class ReposOwnerRepoGitTreesPostBodyNormalizer implements DenormalizerInterface,
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getTree()) {
-            $values = array();
-            foreach ($object->getTree() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
-            }
-            $data['tree'] = $values;
+        $values = array();
+        foreach ($object->getTree() as $value) {
+            $values[] = $this->normalizer->normalize($value, 'json', $context);
         }
+        $data['tree'] = $values;
         if (null !== $object->getBaseTree()) {
             $data['base_tree'] = $object->getBaseTree();
         }

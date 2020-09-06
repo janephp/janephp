@@ -47,12 +47,8 @@ class ProtectedBranchEnforceAdminsNormalizer implements DenormalizerInterface, N
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getUrl()) {
-            $data['url'] = $object->getUrl();
-        }
-        if (null !== $object->getEnabled()) {
-            $data['enabled'] = $object->getEnabled();
-        }
+        $data['url'] = $object->getUrl();
+        $data['enabled'] = $object->getEnabled();
         return $data;
     }
 }

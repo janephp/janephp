@@ -57,22 +57,16 @@ class GeoNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getType()) {
-            $data['type'] = $object->getType();
+        $data['type'] = $object->getType();
+        $values = array();
+        foreach ($object->getBbox() as $value) {
+            $values[] = $value;
         }
-        if (null !== $object->getBbox()) {
-            $values = array();
-            foreach ($object->getBbox() as $value) {
-                $values[] = $value;
-            }
-            $data['bbox'] = $values;
-        }
+        $data['bbox'] = $values;
         if (null !== $object->getGeometry()) {
             $data['geometry'] = $this->normalizer->normalize($object->getGeometry(), 'json', $context);
         }
-        if (null !== $object->getProperties()) {
-            $data['properties'] = $object->getProperties();
-        }
+        $data['properties'] = $object->getProperties();
         return $data;
     }
 }

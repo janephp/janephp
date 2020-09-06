@@ -11,18 +11,18 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class TestNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+class NullableNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
     public function supportsDenormalization($data, $type, $format = null)
     {
-        return $type === 'Jane\\JsonSchema\\Tests\\Expected\\Model\\Test';
+        return $type === 'Jane\\JsonSchema\\Tests\\Expected\\Model\\Nullable';
     }
     public function supportsNormalization($data, $format = null)
     {
-        return $data instanceof \Jane\JsonSchema\Tests\Expected\Model\Test;
+        return $data instanceof \Jane\JsonSchema\Tests\Expected\Model\Nullable;
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
@@ -32,7 +32,7 @@ class TestNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Jane\JsonSchema\Tests\Expected\Model\Test();
+        $object = new \Jane\JsonSchema\Tests\Expected\Model\Nullable();
         if (null === $data) {
             return $object;
         }
@@ -54,6 +54,21 @@ class TestNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         elseif (\array_key_exists('nullOrString', $data) && $data['nullOrString'] === null) {
             $object->setNullOrString(null);
         }
+        if (\array_key_exists('required', $data)) {
+            $object->setRequired($data['required']);
+        }
+        if (\array_key_exists('requiredNull', $data) && $data['requiredNull'] !== null) {
+            $value_1 = $data['requiredNull'];
+            if (is_string($data['requiredNull'])) {
+                $value_1 = $data['requiredNull'];
+            } elseif (is_null($data['requiredNull'])) {
+                $value_1 = $data['requiredNull'];
+            }
+            $object->setRequiredNull($value_1);
+        }
+        elseif (\array_key_exists('requiredNull', $data) && $data['requiredNull'] === null) {
+            $object->setRequiredNull(null);
+        }
         return $object;
     }
     public function normalize($object, $format = null, array $context = array())
@@ -71,6 +86,14 @@ class TestNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             }
             $data['nullOrString'] = $value;
         }
+        $data['required'] = $object->getRequired();
+        $value_1 = $object->getRequiredNull();
+        if (is_string($object->getRequiredNull())) {
+            $value_1 = $object->getRequiredNull();
+        } elseif (is_null($object->getRequiredNull())) {
+            $value_1 = $object->getRequiredNull();
+        }
+        $data['requiredNull'] = $value_1;
         return $data;
     }
 }

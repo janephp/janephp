@@ -56,18 +56,10 @@ class ReposOwnerRepoGitTagsPostBodyNormalizer implements DenormalizerInterface, 
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getTag()) {
-            $data['tag'] = $object->getTag();
-        }
-        if (null !== $object->getMessage()) {
-            $data['message'] = $object->getMessage();
-        }
-        if (null !== $object->getObject()) {
-            $data['object'] = $object->getObject();
-        }
-        if (null !== $object->getType()) {
-            $data['type'] = $object->getType();
-        }
+        $data['tag'] = $object->getTag();
+        $data['message'] = $object->getMessage();
+        $data['object'] = $object->getObject();
+        $data['type'] = $object->getType();
         if (null !== $object->getTagger()) {
             $data['tagger'] = $this->normalizer->normalize($object->getTagger(), 'json', $context);
         }

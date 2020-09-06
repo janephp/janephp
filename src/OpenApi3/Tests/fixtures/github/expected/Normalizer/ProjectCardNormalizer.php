@@ -80,39 +80,21 @@ class ProjectCardNormalizer implements DenormalizerInterface, NormalizerInterfac
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getUrl()) {
-            $data['url'] = $object->getUrl();
-        }
-        if (null !== $object->getId()) {
-            $data['id'] = $object->getId();
-        }
-        if (null !== $object->getNodeId()) {
-            $data['node_id'] = $object->getNodeId();
-        }
-        if (null !== $object->getNote()) {
-            $data['note'] = $object->getNote();
-        }
-        if (null !== $object->getCreator()) {
-            $data['creator'] = $this->normalizer->normalize($object->getCreator(), 'json', $context);
-        }
-        if (null !== $object->getCreatedAt()) {
-            $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
-        }
-        if (null !== $object->getUpdatedAt()) {
-            $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
-        }
+        $data['url'] = $object->getUrl();
+        $data['id'] = $object->getId();
+        $data['node_id'] = $object->getNodeId();
+        $data['note'] = $object->getNote();
+        $data['creator'] = $this->normalizer->normalize($object->getCreator(), 'json', $context);
+        $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
+        $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
         if (null !== $object->getArchived()) {
             $data['archived'] = $object->getArchived();
         }
-        if (null !== $object->getColumnUrl()) {
-            $data['column_url'] = $object->getColumnUrl();
-        }
+        $data['column_url'] = $object->getColumnUrl();
         if (null !== $object->getContentUrl()) {
             $data['content_url'] = $object->getContentUrl();
         }
-        if (null !== $object->getProjectUrl()) {
-            $data['project_url'] = $object->getProjectUrl();
-        }
+        $data['project_url'] = $object->getProjectUrl();
         return $data;
     }
 }

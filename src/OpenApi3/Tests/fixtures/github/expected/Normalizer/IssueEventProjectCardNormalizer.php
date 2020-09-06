@@ -59,21 +59,11 @@ class IssueEventProjectCardNormalizer implements DenormalizerInterface, Normaliz
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getUrl()) {
-            $data['url'] = $object->getUrl();
-        }
-        if (null !== $object->getId()) {
-            $data['id'] = $object->getId();
-        }
-        if (null !== $object->getProjectUrl()) {
-            $data['project_url'] = $object->getProjectUrl();
-        }
-        if (null !== $object->getProjectId()) {
-            $data['project_id'] = $object->getProjectId();
-        }
-        if (null !== $object->getColumnName()) {
-            $data['column_name'] = $object->getColumnName();
-        }
+        $data['url'] = $object->getUrl();
+        $data['id'] = $object->getId();
+        $data['project_url'] = $object->getProjectUrl();
+        $data['project_id'] = $object->getProjectId();
+        $data['column_name'] = $object->getColumnName();
         if (null !== $object->getPreviousColumnName()) {
             $data['previous_column_name'] = $object->getPreviousColumnName();
         }

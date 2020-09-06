@@ -53,18 +53,10 @@ class PorterLargeFileNormalizer implements DenormalizerInterface, NormalizerInte
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getRefName()) {
-            $data['ref_name'] = $object->getRefName();
-        }
-        if (null !== $object->getPath()) {
-            $data['path'] = $object->getPath();
-        }
-        if (null !== $object->getOid()) {
-            $data['oid'] = $object->getOid();
-        }
-        if (null !== $object->getSize()) {
-            $data['size'] = $object->getSize();
-        }
+        $data['ref_name'] = $object->getRefName();
+        $data['path'] = $object->getPath();
+        $data['oid'] = $object->getOid();
+        $data['size'] = $object->getSize();
         return $data;
     }
 }

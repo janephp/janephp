@@ -50,15 +50,9 @@ class ReferrerTrafficNormalizer implements DenormalizerInterface, NormalizerInte
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getReferrer()) {
-            $data['referrer'] = $object->getReferrer();
-        }
-        if (null !== $object->getCount()) {
-            $data['count'] = $object->getCount();
-        }
-        if (null !== $object->getUniques()) {
-            $data['uniques'] = $object->getUniques();
-        }
+        $data['referrer'] = $object->getReferrer();
+        $data['count'] = $object->getCount();
+        $data['uniques'] = $object->getUniques();
         return $data;
     }
 }

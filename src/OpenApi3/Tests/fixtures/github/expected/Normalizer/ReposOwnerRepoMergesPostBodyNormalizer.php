@@ -50,12 +50,8 @@ class ReposOwnerRepoMergesPostBodyNormalizer implements DenormalizerInterface, N
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getBase()) {
-            $data['base'] = $object->getBase();
-        }
-        if (null !== $object->getHead()) {
-            $data['head'] = $object->getHead();
-        }
+        $data['base'] = $object->getBase();
+        $data['head'] = $object->getHead();
         if (null !== $object->getCommitMessage()) {
             $data['commit_message'] = $object->getCommitMessage();
         }

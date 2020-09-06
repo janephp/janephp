@@ -50,15 +50,9 @@ class DogInSnakeCaseNormalizer implements DenormalizerInterface, NormalizerInter
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getName()) {
-            $data['name'] = $object->getName();
-        }
-        if (null !== $object->getPetType()) {
-            $data['petType'] = $object->getPetType();
-        }
-        if (null !== $object->getPackSize()) {
-            $data['packSize'] = $object->getPackSize();
-        }
+        $data['name'] = $object->getName();
+        $data['petType'] = $object->getPetType();
+        $data['packSize'] = $object->getPackSize();
         return $data;
     }
 }
