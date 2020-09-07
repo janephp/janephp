@@ -53,9 +53,7 @@ class MonitoringPortfoliosPortfolioIdCompaniesPostBodyNormalizer implements Deno
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getId()) {
-            $data['id'] = $object->getId();
-        }
+        $data['id'] = $object->getId();
         if (null !== $object->getPersonalReference()) {
             $data['personalReference'] = $object->getPersonalReference();
         }

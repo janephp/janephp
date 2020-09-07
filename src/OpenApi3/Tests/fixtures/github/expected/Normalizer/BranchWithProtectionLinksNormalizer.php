@@ -47,12 +47,8 @@ class BranchWithProtectionLinksNormalizer implements DenormalizerInterface, Norm
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getHtml()) {
-            $data['html'] = $object->getHtml();
-        }
-        if (null !== $object->getSelf()) {
-            $data['self'] = $object->getSelf();
-        }
+        $data['html'] = $object->getHtml();
+        $data['self'] = $object->getSelf();
         return $data;
     }
 }

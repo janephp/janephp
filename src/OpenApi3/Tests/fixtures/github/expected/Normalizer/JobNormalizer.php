@@ -96,42 +96,18 @@ class JobNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getId()) {
-            $data['id'] = $object->getId();
-        }
-        if (null !== $object->getRunId()) {
-            $data['run_id'] = $object->getRunId();
-        }
-        if (null !== $object->getRunUrl()) {
-            $data['run_url'] = $object->getRunUrl();
-        }
-        if (null !== $object->getNodeId()) {
-            $data['node_id'] = $object->getNodeId();
-        }
-        if (null !== $object->getHeadSha()) {
-            $data['head_sha'] = $object->getHeadSha();
-        }
-        if (null !== $object->getUrl()) {
-            $data['url'] = $object->getUrl();
-        }
-        if (null !== $object->getHtmlUrl()) {
-            $data['html_url'] = $object->getHtmlUrl();
-        }
-        if (null !== $object->getStatus()) {
-            $data['status'] = $object->getStatus();
-        }
-        if (null !== $object->getConclusion()) {
-            $data['conclusion'] = $object->getConclusion();
-        }
-        if (null !== $object->getStartedAt()) {
-            $data['started_at'] = $object->getStartedAt()->format('Y-m-d\\TH:i:sP');
-        }
-        if (null !== $object->getCompletedAt()) {
-            $data['completed_at'] = $object->getCompletedAt()->format('Y-m-d\\TH:i:sP');
-        }
-        if (null !== $object->getName()) {
-            $data['name'] = $object->getName();
-        }
+        $data['id'] = $object->getId();
+        $data['run_id'] = $object->getRunId();
+        $data['run_url'] = $object->getRunUrl();
+        $data['node_id'] = $object->getNodeId();
+        $data['head_sha'] = $object->getHeadSha();
+        $data['url'] = $object->getUrl();
+        $data['html_url'] = $object->getHtmlUrl();
+        $data['status'] = $object->getStatus();
+        $data['conclusion'] = $object->getConclusion();
+        $data['started_at'] = $object->getStartedAt()->format('Y-m-d\\TH:i:sP');
+        $data['completed_at'] = $object->getCompletedAt()->format('Y-m-d\\TH:i:sP');
+        $data['name'] = $object->getName();
         if (null !== $object->getSteps()) {
             $values = array();
             foreach ($object->getSteps() as $value) {
@@ -139,9 +115,7 @@ class JobNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
             }
             $data['steps'] = $values;
         }
-        if (null !== $object->getCheckRunUrl()) {
-            $data['check_run_url'] = $object->getCheckRunUrl();
-        }
+        $data['check_run_url'] = $object->getCheckRunUrl();
         return $data;
     }
 }

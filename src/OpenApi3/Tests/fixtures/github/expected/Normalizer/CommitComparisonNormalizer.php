@@ -88,53 +88,27 @@ class CommitComparisonNormalizer implements DenormalizerInterface, NormalizerInt
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getUrl()) {
-            $data['url'] = $object->getUrl();
+        $data['url'] = $object->getUrl();
+        $data['html_url'] = $object->getHtmlUrl();
+        $data['permalink_url'] = $object->getPermalinkUrl();
+        $data['diff_url'] = $object->getDiffUrl();
+        $data['patch_url'] = $object->getPatchUrl();
+        $data['base_commit'] = $this->normalizer->normalize($object->getBaseCommit(), 'json', $context);
+        $data['merge_base_commit'] = $this->normalizer->normalize($object->getMergeBaseCommit(), 'json', $context);
+        $data['status'] = $object->getStatus();
+        $data['ahead_by'] = $object->getAheadBy();
+        $data['behind_by'] = $object->getBehindBy();
+        $data['total_commits'] = $object->getTotalCommits();
+        $values = array();
+        foreach ($object->getCommits() as $value) {
+            $values[] = $this->normalizer->normalize($value, 'json', $context);
         }
-        if (null !== $object->getHtmlUrl()) {
-            $data['html_url'] = $object->getHtmlUrl();
+        $data['commits'] = $values;
+        $values_1 = array();
+        foreach ($object->getFiles() as $value_1) {
+            $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
         }
-        if (null !== $object->getPermalinkUrl()) {
-            $data['permalink_url'] = $object->getPermalinkUrl();
-        }
-        if (null !== $object->getDiffUrl()) {
-            $data['diff_url'] = $object->getDiffUrl();
-        }
-        if (null !== $object->getPatchUrl()) {
-            $data['patch_url'] = $object->getPatchUrl();
-        }
-        if (null !== $object->getBaseCommit()) {
-            $data['base_commit'] = $this->normalizer->normalize($object->getBaseCommit(), 'json', $context);
-        }
-        if (null !== $object->getMergeBaseCommit()) {
-            $data['merge_base_commit'] = $this->normalizer->normalize($object->getMergeBaseCommit(), 'json', $context);
-        }
-        if (null !== $object->getStatus()) {
-            $data['status'] = $object->getStatus();
-        }
-        if (null !== $object->getAheadBy()) {
-            $data['ahead_by'] = $object->getAheadBy();
-        }
-        if (null !== $object->getBehindBy()) {
-            $data['behind_by'] = $object->getBehindBy();
-        }
-        if (null !== $object->getTotalCommits()) {
-            $data['total_commits'] = $object->getTotalCommits();
-        }
-        if (null !== $object->getCommits()) {
-            $values = array();
-            foreach ($object->getCommits() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
-            }
-            $data['commits'] = $values;
-        }
-        if (null !== $object->getFiles()) {
-            $values_1 = array();
-            foreach ($object->getFiles() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
-            }
-            $data['files'] = $values_1;
-        }
+        $data['files'] = $values_1;
         return $data;
     }
 }

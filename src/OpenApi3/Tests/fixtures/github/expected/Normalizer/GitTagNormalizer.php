@@ -65,27 +65,13 @@ class GitTagNormalizer implements DenormalizerInterface, NormalizerInterface, De
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getNodeId()) {
-            $data['node_id'] = $object->getNodeId();
-        }
-        if (null !== $object->getTag()) {
-            $data['tag'] = $object->getTag();
-        }
-        if (null !== $object->getSha()) {
-            $data['sha'] = $object->getSha();
-        }
-        if (null !== $object->getUrl()) {
-            $data['url'] = $object->getUrl();
-        }
-        if (null !== $object->getMessage()) {
-            $data['message'] = $object->getMessage();
-        }
-        if (null !== $object->getTagger()) {
-            $data['tagger'] = $this->normalizer->normalize($object->getTagger(), 'json', $context);
-        }
-        if (null !== $object->getObject()) {
-            $data['object'] = $this->normalizer->normalize($object->getObject(), 'json', $context);
-        }
+        $data['node_id'] = $object->getNodeId();
+        $data['tag'] = $object->getTag();
+        $data['sha'] = $object->getSha();
+        $data['url'] = $object->getUrl();
+        $data['message'] = $object->getMessage();
+        $data['tagger'] = $this->normalizer->normalize($object->getTagger(), 'json', $context);
+        $data['object'] = $this->normalizer->normalize($object->getObject(), 'json', $context);
         if (null !== $object->getVerification()) {
             $data['verification'] = $this->normalizer->normalize($object->getVerification(), 'json', $context);
         }

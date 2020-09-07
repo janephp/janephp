@@ -56,21 +56,11 @@ class TagNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getName()) {
-            $data['name'] = $object->getName();
-        }
-        if (null !== $object->getCommit()) {
-            $data['commit'] = $this->normalizer->normalize($object->getCommit(), 'json', $context);
-        }
-        if (null !== $object->getZipballUrl()) {
-            $data['zipball_url'] = $object->getZipballUrl();
-        }
-        if (null !== $object->getTarballUrl()) {
-            $data['tarball_url'] = $object->getTarballUrl();
-        }
-        if (null !== $object->getNodeId()) {
-            $data['node_id'] = $object->getNodeId();
-        }
+        $data['name'] = $object->getName();
+        $data['commit'] = $this->normalizer->normalize($object->getCommit(), 'json', $context);
+        $data['zipball_url'] = $object->getZipballUrl();
+        $data['tarball_url'] = $object->getTarballUrl();
+        $data['node_id'] = $object->getNodeId();
         return $data;
     }
 }

@@ -75,24 +75,12 @@ class DetailedPlaceNormalizer implements DenormalizerInterface, NormalizerInterf
         if (null !== $object->getFormat()) {
             $data['format'] = $object->getFormat();
         }
-        if (null !== $object->getId()) {
-            $data['id'] = $object->getId();
-        }
-        if (null !== $object->getName()) {
-            $data['name'] = $object->getName();
-        }
-        if (null !== $object->getCountryCode()) {
-            $data['country_code'] = $object->getCountryCode();
-        }
-        if (null !== $object->getPlaceType()) {
-            $data['place_type'] = $object->getPlaceType();
-        }
-        if (null !== $object->getFullName()) {
-            $data['full_name'] = $object->getFullName();
-        }
-        if (null !== $object->getCountry()) {
-            $data['country'] = $object->getCountry();
-        }
+        $data['id'] = $object->getId();
+        $data['name'] = $object->getName();
+        $data['country_code'] = $object->getCountryCode();
+        $data['place_type'] = $object->getPlaceType();
+        $data['full_name'] = $object->getFullName();
+        $data['country'] = $object->getCountry();
         if (null !== $object->getContainedWithin()) {
             $values = array();
             foreach ($object->getContainedWithin() as $value) {

@@ -72,12 +72,8 @@ class FeedNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getTimelineUrl()) {
-            $data['timeline_url'] = $object->getTimelineUrl();
-        }
-        if (null !== $object->getUserUrl()) {
-            $data['user_url'] = $object->getUserUrl();
-        }
+        $data['timeline_url'] = $object->getTimelineUrl();
+        $data['user_url'] = $object->getUserUrl();
         if (null !== $object->getCurrentUserPublicUrl()) {
             $data['current_user_public_url'] = $object->getCurrentUserPublicUrl();
         }
@@ -100,9 +96,7 @@ class FeedNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         if (null !== $object->getSecurityAdvisoriesUrl()) {
             $data['security_advisories_url'] = $object->getSecurityAdvisoriesUrl();
         }
-        if (null !== $object->getLinks()) {
-            $data['_links'] = $this->normalizer->normalize($object->getLinks(), 'json', $context);
-        }
+        $data['_links'] = $this->normalizer->normalize($object->getLinks(), 'json', $context);
         return $data;
     }
 }

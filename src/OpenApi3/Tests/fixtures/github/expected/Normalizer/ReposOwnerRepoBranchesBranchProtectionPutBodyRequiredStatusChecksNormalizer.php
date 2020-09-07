@@ -51,16 +51,12 @@ class ReposOwnerRepoBranchesBranchProtectionPutBodyRequiredStatusChecksNormalize
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getStrict()) {
-            $data['strict'] = $object->getStrict();
+        $data['strict'] = $object->getStrict();
+        $values = array();
+        foreach ($object->getContexts() as $value) {
+            $values[] = $value;
         }
-        if (null !== $object->getContexts()) {
-            $values = array();
-            foreach ($object->getContexts() as $value) {
-                $values[] = $value;
-            }
-            $data['contexts'] = $values;
-        }
+        $data['contexts'] = $values;
         return $data;
     }
 }

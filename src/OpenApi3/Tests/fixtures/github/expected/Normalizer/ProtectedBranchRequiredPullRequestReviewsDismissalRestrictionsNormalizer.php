@@ -64,29 +64,19 @@ class ProtectedBranchRequiredPullRequestReviewsDismissalRestrictionsNormalizer i
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getUrl()) {
-            $data['url'] = $object->getUrl();
+        $data['url'] = $object->getUrl();
+        $data['users_url'] = $object->getUsersUrl();
+        $data['teams_url'] = $object->getTeamsUrl();
+        $values = array();
+        foreach ($object->getUsers() as $value) {
+            $values[] = $this->normalizer->normalize($value, 'json', $context);
         }
-        if (null !== $object->getUsersUrl()) {
-            $data['users_url'] = $object->getUsersUrl();
+        $data['users'] = $values;
+        $values_1 = array();
+        foreach ($object->getTeams() as $value_1) {
+            $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
         }
-        if (null !== $object->getTeamsUrl()) {
-            $data['teams_url'] = $object->getTeamsUrl();
-        }
-        if (null !== $object->getUsers()) {
-            $values = array();
-            foreach ($object->getUsers() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
-            }
-            $data['users'] = $values;
-        }
-        if (null !== $object->getTeams()) {
-            $values_1 = array();
-            foreach ($object->getTeams() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
-            }
-            $data['teams'] = $values_1;
-        }
+        $data['teams'] = $values_1;
         return $data;
     }
 }

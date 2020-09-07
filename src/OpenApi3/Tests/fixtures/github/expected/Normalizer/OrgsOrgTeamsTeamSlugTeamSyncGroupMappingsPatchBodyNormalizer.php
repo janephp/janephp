@@ -48,13 +48,11 @@ class OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyNormalizer implements De
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getGroups()) {
-            $values = array();
-            foreach ($object->getGroups() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
-            }
-            $data['groups'] = $values;
+        $values = array();
+        foreach ($object->getGroups() as $value) {
+            $values[] = $this->normalizer->normalize($value, 'json', $context);
         }
+        $data['groups'] = $values;
         return $data;
     }
 }

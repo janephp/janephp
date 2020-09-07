@@ -56,18 +56,10 @@ class CommunityProfileFilesCodeOfConductNormalizer implements DenormalizerInterf
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getUrl()) {
-            $data['url'] = $object->getUrl();
-        }
-        if (null !== $object->getKey()) {
-            $data['key'] = $object->getKey();
-        }
-        if (null !== $object->getName()) {
-            $data['name'] = $object->getName();
-        }
-        if (null !== $object->getHtmlUrl()) {
-            $data['html_url'] = $object->getHtmlUrl();
-        }
+        $data['url'] = $object->getUrl();
+        $data['key'] = $object->getKey();
+        $data['name'] = $object->getName();
+        $data['html_url'] = $object->getHtmlUrl();
         return $data;
     }
 }

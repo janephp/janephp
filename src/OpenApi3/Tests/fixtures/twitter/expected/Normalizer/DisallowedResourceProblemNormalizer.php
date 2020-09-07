@@ -59,24 +59,12 @@ class DisallowedResourceProblemNormalizer implements DenormalizerInterface, Norm
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getType()) {
-            $data['type'] = $object->getType();
-        }
-        if (null !== $object->getResourceId()) {
-            $data['resource_id'] = $object->getResourceId();
-        }
-        if (null !== $object->getResourceType()) {
-            $data['resource_type'] = $object->getResourceType();
-        }
-        if (null !== $object->getSection()) {
-            $data['section'] = $object->getSection();
-        }
-        if (null !== $object->getTitle()) {
-            $data['title'] = $object->getTitle();
-        }
-        if (null !== $object->getDetail()) {
-            $data['detail'] = $object->getDetail();
-        }
+        $data['type'] = $object->getType();
+        $data['resource_id'] = $object->getResourceId();
+        $data['resource_type'] = $object->getResourceType();
+        $data['section'] = $object->getSection();
+        $data['title'] = $object->getTitle();
+        $data['detail'] = $object->getDetail();
         return $data;
     }
 }

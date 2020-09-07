@@ -59,15 +59,9 @@ class HookResponseNormalizer implements DenormalizerInterface, NormalizerInterfa
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getCode()) {
-            $data['code'] = $object->getCode();
-        }
-        if (null !== $object->getStatus()) {
-            $data['status'] = $object->getStatus();
-        }
-        if (null !== $object->getMessage()) {
-            $data['message'] = $object->getMessage();
-        }
+        $data['code'] = $object->getCode();
+        $data['status'] = $object->getStatus();
+        $data['message'] = $object->getMessage();
         return $data;
     }
 }

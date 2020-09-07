@@ -74,18 +74,10 @@ class IssuePullRequestNormalizer implements DenormalizerInterface, NormalizerInt
         if (null !== $object->getMergedAt()) {
             $data['merged_at'] = $object->getMergedAt()->format('Y-m-d\\TH:i:sP');
         }
-        if (null !== $object->getDiffUrl()) {
-            $data['diff_url'] = $object->getDiffUrl();
-        }
-        if (null !== $object->getHtmlUrl()) {
-            $data['html_url'] = $object->getHtmlUrl();
-        }
-        if (null !== $object->getPatchUrl()) {
-            $data['patch_url'] = $object->getPatchUrl();
-        }
-        if (null !== $object->getUrl()) {
-            $data['url'] = $object->getUrl();
-        }
+        $data['diff_url'] = $object->getDiffUrl();
+        $data['html_url'] = $object->getHtmlUrl();
+        $data['patch_url'] = $object->getPatchUrl();
+        $data['url'] = $object->getUrl();
         return $data;
     }
 }

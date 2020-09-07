@@ -68,18 +68,10 @@ class JobStepsItemNormalizer implements DenormalizerInterface, NormalizerInterfa
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getStatus()) {
-            $data['status'] = $object->getStatus();
-        }
-        if (null !== $object->getConclusion()) {
-            $data['conclusion'] = $object->getConclusion();
-        }
-        if (null !== $object->getName()) {
-            $data['name'] = $object->getName();
-        }
-        if (null !== $object->getNumber()) {
-            $data['number'] = $object->getNumber();
-        }
+        $data['status'] = $object->getStatus();
+        $data['conclusion'] = $object->getConclusion();
+        $data['name'] = $object->getName();
+        $data['number'] = $object->getNumber();
         if (null !== $object->getStartedAt()) {
             $data['started_at'] = $object->getStartedAt()->format('Y-m-d\\TH:i:sP');
         }

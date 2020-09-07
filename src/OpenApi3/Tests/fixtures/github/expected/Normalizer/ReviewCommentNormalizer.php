@@ -140,63 +140,27 @@ class ReviewCommentNormalizer implements DenormalizerInterface, NormalizerInterf
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getUrl()) {
-            $data['url'] = $object->getUrl();
-        }
-        if (null !== $object->getPullRequestReviewId()) {
-            $data['pull_request_review_id'] = $object->getPullRequestReviewId();
-        }
-        if (null !== $object->getId()) {
-            $data['id'] = $object->getId();
-        }
-        if (null !== $object->getNodeId()) {
-            $data['node_id'] = $object->getNodeId();
-        }
-        if (null !== $object->getDiffHunk()) {
-            $data['diff_hunk'] = $object->getDiffHunk();
-        }
-        if (null !== $object->getPath()) {
-            $data['path'] = $object->getPath();
-        }
-        if (null !== $object->getPosition()) {
-            $data['position'] = $object->getPosition();
-        }
-        if (null !== $object->getOriginalPosition()) {
-            $data['original_position'] = $object->getOriginalPosition();
-        }
-        if (null !== $object->getCommitId()) {
-            $data['commit_id'] = $object->getCommitId();
-        }
-        if (null !== $object->getOriginalCommitId()) {
-            $data['original_commit_id'] = $object->getOriginalCommitId();
-        }
+        $data['url'] = $object->getUrl();
+        $data['pull_request_review_id'] = $object->getPullRequestReviewId();
+        $data['id'] = $object->getId();
+        $data['node_id'] = $object->getNodeId();
+        $data['diff_hunk'] = $object->getDiffHunk();
+        $data['path'] = $object->getPath();
+        $data['position'] = $object->getPosition();
+        $data['original_position'] = $object->getOriginalPosition();
+        $data['commit_id'] = $object->getCommitId();
+        $data['original_commit_id'] = $object->getOriginalCommitId();
         if (null !== $object->getInReplyToId()) {
             $data['in_reply_to_id'] = $object->getInReplyToId();
         }
-        if (null !== $object->getUser()) {
-            $data['user'] = $this->normalizer->normalize($object->getUser(), 'json', $context);
-        }
-        if (null !== $object->getBody()) {
-            $data['body'] = $object->getBody();
-        }
-        if (null !== $object->getCreatedAt()) {
-            $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
-        }
-        if (null !== $object->getUpdatedAt()) {
-            $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
-        }
-        if (null !== $object->getHtmlUrl()) {
-            $data['html_url'] = $object->getHtmlUrl();
-        }
-        if (null !== $object->getPullRequestUrl()) {
-            $data['pull_request_url'] = $object->getPullRequestUrl();
-        }
-        if (null !== $object->getAuthorAssociation()) {
-            $data['author_association'] = $object->getAuthorAssociation();
-        }
-        if (null !== $object->getLinks()) {
-            $data['_links'] = $this->normalizer->normalize($object->getLinks(), 'json', $context);
-        }
+        $data['user'] = $this->normalizer->normalize($object->getUser(), 'json', $context);
+        $data['body'] = $object->getBody();
+        $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
+        $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
+        $data['html_url'] = $object->getHtmlUrl();
+        $data['pull_request_url'] = $object->getPullRequestUrl();
+        $data['author_association'] = $object->getAuthorAssociation();
+        $data['_links'] = $this->normalizer->normalize($object->getLinks(), 'json', $context);
         if (null !== $object->getBodyText()) {
             $data['body_text'] = $object->getBodyText();
         }

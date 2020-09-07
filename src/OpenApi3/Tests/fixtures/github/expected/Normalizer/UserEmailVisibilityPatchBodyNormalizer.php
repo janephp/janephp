@@ -47,12 +47,8 @@ class UserEmailVisibilityPatchBodyNormalizer implements DenormalizerInterface, N
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getEmail()) {
-            $data['email'] = $object->getEmail();
-        }
-        if (null !== $object->getVisibility()) {
-            $data['visibility'] = $object->getVisibility();
-        }
+        $data['email'] = $object->getEmail();
+        $data['visibility'] = $object->getVisibility();
         return $data;
     }
 }

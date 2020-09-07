@@ -69,28 +69,16 @@ class ApplicationGrantNormalizer implements DenormalizerInterface, NormalizerInt
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getId()) {
-            $data['id'] = $object->getId();
+        $data['id'] = $object->getId();
+        $data['url'] = $object->getUrl();
+        $data['app'] = $this->normalizer->normalize($object->getApp(), 'json', $context);
+        $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
+        $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
+        $values = array();
+        foreach ($object->getScopes() as $value) {
+            $values[] = $value;
         }
-        if (null !== $object->getUrl()) {
-            $data['url'] = $object->getUrl();
-        }
-        if (null !== $object->getApp()) {
-            $data['app'] = $this->normalizer->normalize($object->getApp(), 'json', $context);
-        }
-        if (null !== $object->getCreatedAt()) {
-            $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
-        }
-        if (null !== $object->getUpdatedAt()) {
-            $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
-        }
-        if (null !== $object->getScopes()) {
-            $values = array();
-            foreach ($object->getScopes() as $value) {
-                $values[] = $value;
-            }
-            $data['scopes'] = $values;
-        }
+        $data['scopes'] = $values;
         if (null !== $object->getUser()) {
             $data['user'] = $this->normalizer->normalize($object->getUser(), 'json', $context);
         }

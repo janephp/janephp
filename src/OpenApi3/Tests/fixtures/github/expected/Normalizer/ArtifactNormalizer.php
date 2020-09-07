@@ -77,36 +77,16 @@ class ArtifactNormalizer implements DenormalizerInterface, NormalizerInterface, 
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getId()) {
-            $data['id'] = $object->getId();
-        }
-        if (null !== $object->getNodeId()) {
-            $data['node_id'] = $object->getNodeId();
-        }
-        if (null !== $object->getName()) {
-            $data['name'] = $object->getName();
-        }
-        if (null !== $object->getSizeInBytes()) {
-            $data['size_in_bytes'] = $object->getSizeInBytes();
-        }
-        if (null !== $object->getUrl()) {
-            $data['url'] = $object->getUrl();
-        }
-        if (null !== $object->getArchiveDownloadUrl()) {
-            $data['archive_download_url'] = $object->getArchiveDownloadUrl();
-        }
-        if (null !== $object->getExpired()) {
-            $data['expired'] = $object->getExpired();
-        }
-        if (null !== $object->getCreatedAt()) {
-            $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
-        }
-        if (null !== $object->getExpiresAt()) {
-            $data['expires_at'] = $object->getExpiresAt();
-        }
-        if (null !== $object->getUpdatedAt()) {
-            $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
-        }
+        $data['id'] = $object->getId();
+        $data['node_id'] = $object->getNodeId();
+        $data['name'] = $object->getName();
+        $data['size_in_bytes'] = $object->getSizeInBytes();
+        $data['url'] = $object->getUrl();
+        $data['archive_download_url'] = $object->getArchiveDownloadUrl();
+        $data['expired'] = $object->getExpired();
+        $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
+        $data['expires_at'] = $object->getExpiresAt();
+        $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
         return $data;
     }
 }

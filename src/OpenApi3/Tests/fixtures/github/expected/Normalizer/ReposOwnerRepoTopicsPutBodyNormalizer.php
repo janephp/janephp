@@ -48,13 +48,11 @@ class ReposOwnerRepoTopicsPutBodyNormalizer implements DenormalizerInterface, No
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getNames()) {
-            $values = array();
-            foreach ($object->getNames() as $value) {
-                $values[] = $value;
-            }
-            $data['names'] = $values;
+        $values = array();
+        foreach ($object->getNames() as $value) {
+            $values[] = $value;
         }
+        $data['names'] = $values;
         return $data;
     }
 }

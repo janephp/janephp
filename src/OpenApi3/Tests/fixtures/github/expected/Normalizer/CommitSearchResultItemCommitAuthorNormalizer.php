@@ -50,15 +50,9 @@ class CommitSearchResultItemCommitAuthorNormalizer implements DenormalizerInterf
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getName()) {
-            $data['name'] = $object->getName();
-        }
-        if (null !== $object->getEmail()) {
-            $data['email'] = $object->getEmail();
-        }
-        if (null !== $object->getDate()) {
-            $data['date'] = $object->getDate()->format('Y-m-d\\TH:i:sP');
-        }
+        $data['name'] = $object->getName();
+        $data['email'] = $object->getEmail();
+        $data['date'] = $object->getDate()->format('Y-m-d\\TH:i:sP');
         return $data;
     }
 }

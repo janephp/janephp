@@ -138,82 +138,34 @@ class WorkflowRunNormalizer implements DenormalizerInterface, NormalizerInterfac
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getId()) {
-            $data['id'] = $object->getId();
+        $data['id'] = $object->getId();
+        $data['node_id'] = $object->getNodeId();
+        $data['head_branch'] = $object->getHeadBranch();
+        $data['head_sha'] = $object->getHeadSha();
+        $data['run_number'] = $object->getRunNumber();
+        $data['event'] = $object->getEvent();
+        $data['status'] = $object->getStatus();
+        $data['conclusion'] = $object->getConclusion();
+        $data['workflow_id'] = $object->getWorkflowId();
+        $data['url'] = $object->getUrl();
+        $data['html_url'] = $object->getHtmlUrl();
+        $values = array();
+        foreach ($object->getPullRequests() as $value) {
+            $values[] = $this->normalizer->normalize($value, 'json', $context);
         }
-        if (null !== $object->getNodeId()) {
-            $data['node_id'] = $object->getNodeId();
-        }
-        if (null !== $object->getHeadBranch()) {
-            $data['head_branch'] = $object->getHeadBranch();
-        }
-        if (null !== $object->getHeadSha()) {
-            $data['head_sha'] = $object->getHeadSha();
-        }
-        if (null !== $object->getRunNumber()) {
-            $data['run_number'] = $object->getRunNumber();
-        }
-        if (null !== $object->getEvent()) {
-            $data['event'] = $object->getEvent();
-        }
-        if (null !== $object->getStatus()) {
-            $data['status'] = $object->getStatus();
-        }
-        if (null !== $object->getConclusion()) {
-            $data['conclusion'] = $object->getConclusion();
-        }
-        if (null !== $object->getWorkflowId()) {
-            $data['workflow_id'] = $object->getWorkflowId();
-        }
-        if (null !== $object->getUrl()) {
-            $data['url'] = $object->getUrl();
-        }
-        if (null !== $object->getHtmlUrl()) {
-            $data['html_url'] = $object->getHtmlUrl();
-        }
-        if (null !== $object->getPullRequests()) {
-            $values = array();
-            foreach ($object->getPullRequests() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
-            }
-            $data['pull_requests'] = $values;
-        }
-        if (null !== $object->getCreatedAt()) {
-            $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
-        }
-        if (null !== $object->getUpdatedAt()) {
-            $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
-        }
-        if (null !== $object->getJobsUrl()) {
-            $data['jobs_url'] = $object->getJobsUrl();
-        }
-        if (null !== $object->getLogsUrl()) {
-            $data['logs_url'] = $object->getLogsUrl();
-        }
-        if (null !== $object->getCheckSuiteUrl()) {
-            $data['check_suite_url'] = $object->getCheckSuiteUrl();
-        }
-        if (null !== $object->getArtifactsUrl()) {
-            $data['artifacts_url'] = $object->getArtifactsUrl();
-        }
-        if (null !== $object->getCancelUrl()) {
-            $data['cancel_url'] = $object->getCancelUrl();
-        }
-        if (null !== $object->getRerunUrl()) {
-            $data['rerun_url'] = $object->getRerunUrl();
-        }
-        if (null !== $object->getWorkflowUrl()) {
-            $data['workflow_url'] = $object->getWorkflowUrl();
-        }
-        if (null !== $object->getHeadCommit()) {
-            $data['head_commit'] = $this->normalizer->normalize($object->getHeadCommit(), 'json', $context);
-        }
-        if (null !== $object->getRepository()) {
-            $data['repository'] = $this->normalizer->normalize($object->getRepository(), 'json', $context);
-        }
-        if (null !== $object->getHeadRepository()) {
-            $data['head_repository'] = $this->normalizer->normalize($object->getHeadRepository(), 'json', $context);
-        }
+        $data['pull_requests'] = $values;
+        $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
+        $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
+        $data['jobs_url'] = $object->getJobsUrl();
+        $data['logs_url'] = $object->getLogsUrl();
+        $data['check_suite_url'] = $object->getCheckSuiteUrl();
+        $data['artifacts_url'] = $object->getArtifactsUrl();
+        $data['cancel_url'] = $object->getCancelUrl();
+        $data['rerun_url'] = $object->getRerunUrl();
+        $data['workflow_url'] = $object->getWorkflowUrl();
+        $data['head_commit'] = $this->normalizer->normalize($object->getHeadCommit(), 'json', $context);
+        $data['repository'] = $this->normalizer->normalize($object->getRepository(), 'json', $context);
+        $data['head_repository'] = $this->normalizer->normalize($object->getHeadRepository(), 'json', $context);
         if (null !== $object->getHeadRepositoryId()) {
             $data['head_repository_id'] = $object->getHeadRepositoryId();
         }

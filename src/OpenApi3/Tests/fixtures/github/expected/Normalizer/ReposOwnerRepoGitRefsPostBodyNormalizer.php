@@ -50,12 +50,8 @@ class ReposOwnerRepoGitRefsPostBodyNormalizer implements DenormalizerInterface, 
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getRef()) {
-            $data['ref'] = $object->getRef();
-        }
-        if (null !== $object->getSha()) {
-            $data['sha'] = $object->getSha();
-        }
+        $data['ref'] = $object->getRef();
+        $data['sha'] = $object->getSha();
         if (null !== $object->getKey()) {
             $data['key'] = $object->getKey();
         }

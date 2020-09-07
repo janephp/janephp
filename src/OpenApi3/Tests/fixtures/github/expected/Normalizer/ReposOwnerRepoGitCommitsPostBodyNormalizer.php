@@ -63,12 +63,8 @@ class ReposOwnerRepoGitCommitsPostBodyNormalizer implements DenormalizerInterfac
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getMessage()) {
-            $data['message'] = $object->getMessage();
-        }
-        if (null !== $object->getTree()) {
-            $data['tree'] = $object->getTree();
-        }
+        $data['message'] = $object->getMessage();
+        $data['tree'] = $object->getTree();
         if (null !== $object->getParents()) {
             $values = array();
             foreach ($object->getParents() as $value) {

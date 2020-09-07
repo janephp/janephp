@@ -61,13 +61,11 @@ class OrgsOrgMigrationsPostBodyNormalizer implements DenormalizerInterface, Norm
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getRepositories()) {
-            $values = array();
-            foreach ($object->getRepositories() as $value) {
-                $values[] = $value;
-            }
-            $data['repositories'] = $values;
+        $values = array();
+        foreach ($object->getRepositories() as $value) {
+            $values[] = $value;
         }
+        $data['repositories'] = $values;
         if (null !== $object->getLockRepositories()) {
             $data['lock_repositories'] = $object->getLockRepositories();
         }

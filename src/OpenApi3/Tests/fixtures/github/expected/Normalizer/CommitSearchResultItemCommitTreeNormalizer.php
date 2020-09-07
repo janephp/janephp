@@ -47,12 +47,8 @@ class CommitSearchResultItemCommitTreeNormalizer implements DenormalizerInterfac
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getSha()) {
-            $data['sha'] = $object->getSha();
-        }
-        if (null !== $object->getUrl()) {
-            $data['url'] = $object->getUrl();
-        }
+        $data['sha'] = $object->getSha();
+        $data['url'] = $object->getUrl();
         return $data;
     }
 }

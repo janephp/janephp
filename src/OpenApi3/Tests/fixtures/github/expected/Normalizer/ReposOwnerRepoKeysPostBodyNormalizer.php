@@ -53,9 +53,7 @@ class ReposOwnerRepoKeysPostBodyNormalizer implements DenormalizerInterface, Nor
         if (null !== $object->getTitle()) {
             $data['title'] = $object->getTitle();
         }
-        if (null !== $object->getKey()) {
-            $data['key'] = $object->getKey();
-        }
+        $data['key'] = $object->getKey();
         if (null !== $object->getReadOnly()) {
             $data['read_only'] = $object->getReadOnly();
         }

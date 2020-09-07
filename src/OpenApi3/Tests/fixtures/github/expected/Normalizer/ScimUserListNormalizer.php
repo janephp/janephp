@@ -64,29 +64,19 @@ class ScimUserListNormalizer implements DenormalizerInterface, NormalizerInterfa
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getSchemas()) {
-            $values = array();
-            foreach ($object->getSchemas() as $value) {
-                $values[] = $value;
-            }
-            $data['schemas'] = $values;
+        $values = array();
+        foreach ($object->getSchemas() as $value) {
+            $values[] = $value;
         }
-        if (null !== $object->getTotalResults()) {
-            $data['totalResults'] = $object->getTotalResults();
+        $data['schemas'] = $values;
+        $data['totalResults'] = $object->getTotalResults();
+        $data['itemsPerPage'] = $object->getItemsPerPage();
+        $data['startIndex'] = $object->getStartIndex();
+        $values_1 = array();
+        foreach ($object->getResources() as $value_1) {
+            $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
         }
-        if (null !== $object->getItemsPerPage()) {
-            $data['itemsPerPage'] = $object->getItemsPerPage();
-        }
-        if (null !== $object->getStartIndex()) {
-            $data['startIndex'] = $object->getStartIndex();
-        }
-        if (null !== $object->getResources()) {
-            $values_1 = array();
-            foreach ($object->getResources() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
-            }
-            $data['Resources'] = $values_1;
-        }
+        $data['Resources'] = $values_1;
         return $data;
     }
 }

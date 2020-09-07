@@ -47,12 +47,8 @@ class KeySimpleNormalizer implements DenormalizerInterface, NormalizerInterface,
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getId()) {
-            $data['id'] = $object->getId();
-        }
-        if (null !== $object->getKey()) {
-            $data['key'] = $object->getKey();
-        }
+        $data['id'] = $object->getId();
+        $data['key'] = $object->getKey();
         return $data;
     }
 }

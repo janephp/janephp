@@ -59,24 +59,12 @@ class ResourceNotFoundProblemNormalizer implements DenormalizerInterface, Normal
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getType()) {
-            $data['type'] = $object->getType();
-        }
-        if (null !== $object->getParameter()) {
-            $data['parameter'] = $object->getParameter();
-        }
-        if (null !== $object->getValue()) {
-            $data['value'] = $object->getValue();
-        }
-        if (null !== $object->getResourceType()) {
-            $data['resource_type'] = $object->getResourceType();
-        }
-        if (null !== $object->getTitle()) {
-            $data['title'] = $object->getTitle();
-        }
-        if (null !== $object->getDetail()) {
-            $data['detail'] = $object->getDetail();
-        }
+        $data['type'] = $object->getType();
+        $data['parameter'] = $object->getParameter();
+        $data['value'] = $object->getValue();
+        $data['resource_type'] = $object->getResourceType();
+        $data['title'] = $object->getTitle();
+        $data['detail'] = $object->getDetail();
         return $data;
     }
 }

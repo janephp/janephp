@@ -86,45 +86,19 @@ class ReleaseAssetNormalizer implements DenormalizerInterface, NormalizerInterfa
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getUrl()) {
-            $data['url'] = $object->getUrl();
-        }
-        if (null !== $object->getBrowserDownloadUrl()) {
-            $data['browser_download_url'] = $object->getBrowserDownloadUrl();
-        }
-        if (null !== $object->getId()) {
-            $data['id'] = $object->getId();
-        }
-        if (null !== $object->getNodeId()) {
-            $data['node_id'] = $object->getNodeId();
-        }
-        if (null !== $object->getName()) {
-            $data['name'] = $object->getName();
-        }
-        if (null !== $object->getLabel()) {
-            $data['label'] = $object->getLabel();
-        }
-        if (null !== $object->getState()) {
-            $data['state'] = $object->getState();
-        }
-        if (null !== $object->getContentType()) {
-            $data['content_type'] = $object->getContentType();
-        }
-        if (null !== $object->getSize()) {
-            $data['size'] = $object->getSize();
-        }
-        if (null !== $object->getDownloadCount()) {
-            $data['download_count'] = $object->getDownloadCount();
-        }
-        if (null !== $object->getCreatedAt()) {
-            $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
-        }
-        if (null !== $object->getUpdatedAt()) {
-            $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
-        }
-        if (null !== $object->getUploader()) {
-            $data['uploader'] = $this->normalizer->normalize($object->getUploader(), 'json', $context);
-        }
+        $data['url'] = $object->getUrl();
+        $data['browser_download_url'] = $object->getBrowserDownloadUrl();
+        $data['id'] = $object->getId();
+        $data['node_id'] = $object->getNodeId();
+        $data['name'] = $object->getName();
+        $data['label'] = $object->getLabel();
+        $data['state'] = $object->getState();
+        $data['content_type'] = $object->getContentType();
+        $data['size'] = $object->getSize();
+        $data['download_count'] = $object->getDownloadCount();
+        $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
+        $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
+        $data['uploader'] = $this->normalizer->normalize($object->getUploader(), 'json', $context);
         return $data;
     }
 }

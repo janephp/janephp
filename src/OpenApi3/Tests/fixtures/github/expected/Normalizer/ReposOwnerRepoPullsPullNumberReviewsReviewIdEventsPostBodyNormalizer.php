@@ -50,9 +50,7 @@ class ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBodyNormalizer imple
         if (null !== $object->getBody()) {
             $data['body'] = $object->getBody();
         }
-        if (null !== $object->getEvent()) {
-            $data['event'] = $object->getEvent();
-        }
+        $data['event'] = $object->getEvent();
         return $data;
     }
 }

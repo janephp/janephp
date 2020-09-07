@@ -53,9 +53,7 @@ class ScimV2OrganizationsOrgUsersScimUserIdPutBodyEmailsItemNormalizer implement
         if (null !== $object->getType()) {
             $data['type'] = $object->getType();
         }
-        if (null !== $object->getValue()) {
-            $data['value'] = $object->getValue();
-        }
+        $data['value'] = $object->getValue();
         if (null !== $object->getPrimary()) {
             $data['primary'] = $object->getPrimary();
         }

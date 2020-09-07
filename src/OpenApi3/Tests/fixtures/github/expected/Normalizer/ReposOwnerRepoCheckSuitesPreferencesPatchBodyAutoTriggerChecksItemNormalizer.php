@@ -47,12 +47,8 @@ class ReposOwnerRepoCheckSuitesPreferencesPatchBodyAutoTriggerChecksItemNormaliz
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getAppId()) {
-            $data['app_id'] = $object->getAppId();
-        }
-        if (null !== $object->getSetting()) {
-            $data['setting'] = $object->getSetting();
-        }
+        $data['app_id'] = $object->getAppId();
+        $data['setting'] = $object->getSetting();
         return $data;
     }
 }

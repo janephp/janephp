@@ -75,40 +75,20 @@ class OrgHookNormalizer implements DenormalizerInterface, NormalizerInterface, D
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getId()) {
-            $data['id'] = $object->getId();
+        $data['id'] = $object->getId();
+        $data['url'] = $object->getUrl();
+        $data['ping_url'] = $object->getPingUrl();
+        $data['name'] = $object->getName();
+        $values = array();
+        foreach ($object->getEvents() as $value) {
+            $values[] = $value;
         }
-        if (null !== $object->getUrl()) {
-            $data['url'] = $object->getUrl();
-        }
-        if (null !== $object->getPingUrl()) {
-            $data['ping_url'] = $object->getPingUrl();
-        }
-        if (null !== $object->getName()) {
-            $data['name'] = $object->getName();
-        }
-        if (null !== $object->getEvents()) {
-            $values = array();
-            foreach ($object->getEvents() as $value) {
-                $values[] = $value;
-            }
-            $data['events'] = $values;
-        }
-        if (null !== $object->getActive()) {
-            $data['active'] = $object->getActive();
-        }
-        if (null !== $object->getConfig()) {
-            $data['config'] = $this->normalizer->normalize($object->getConfig(), 'json', $context);
-        }
-        if (null !== $object->getUpdatedAt()) {
-            $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
-        }
-        if (null !== $object->getCreatedAt()) {
-            $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
-        }
-        if (null !== $object->getType()) {
-            $data['type'] = $object->getType();
-        }
+        $data['events'] = $values;
+        $data['active'] = $object->getActive();
+        $data['config'] = $this->normalizer->normalize($object->getConfig(), 'json', $context);
+        $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
+        $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
+        $data['type'] = $object->getType();
         return $data;
     }
 }

@@ -104,51 +104,23 @@ class DeploymentNormalizer implements DenormalizerInterface, NormalizerInterface
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getUrl()) {
-            $data['url'] = $object->getUrl();
-        }
-        if (null !== $object->getId()) {
-            $data['id'] = $object->getId();
-        }
-        if (null !== $object->getNodeId()) {
-            $data['node_id'] = $object->getNodeId();
-        }
-        if (null !== $object->getSha()) {
-            $data['sha'] = $object->getSha();
-        }
-        if (null !== $object->getRef()) {
-            $data['ref'] = $object->getRef();
-        }
-        if (null !== $object->getTask()) {
-            $data['task'] = $object->getTask();
-        }
-        if (null !== $object->getPayload()) {
-            $data['payload'] = $this->normalizer->normalize($object->getPayload(), 'json', $context);
-        }
+        $data['url'] = $object->getUrl();
+        $data['id'] = $object->getId();
+        $data['node_id'] = $object->getNodeId();
+        $data['sha'] = $object->getSha();
+        $data['ref'] = $object->getRef();
+        $data['task'] = $object->getTask();
+        $data['payload'] = $this->normalizer->normalize($object->getPayload(), 'json', $context);
         if (null !== $object->getOriginalEnvironment()) {
             $data['original_environment'] = $object->getOriginalEnvironment();
         }
-        if (null !== $object->getEnvironment()) {
-            $data['environment'] = $object->getEnvironment();
-        }
-        if (null !== $object->getDescription()) {
-            $data['description'] = $object->getDescription();
-        }
-        if (null !== $object->getCreator()) {
-            $data['creator'] = $this->normalizer->normalize($object->getCreator(), 'json', $context);
-        }
-        if (null !== $object->getCreatedAt()) {
-            $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
-        }
-        if (null !== $object->getUpdatedAt()) {
-            $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
-        }
-        if (null !== $object->getStatusesUrl()) {
-            $data['statuses_url'] = $object->getStatusesUrl();
-        }
-        if (null !== $object->getRepositoryUrl()) {
-            $data['repository_url'] = $object->getRepositoryUrl();
-        }
+        $data['environment'] = $object->getEnvironment();
+        $data['description'] = $object->getDescription();
+        $data['creator'] = $this->normalizer->normalize($object->getCreator(), 'json', $context);
+        $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
+        $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
+        $data['statuses_url'] = $object->getStatusesUrl();
+        $data['repository_url'] = $object->getRepositoryUrl();
         if (null !== $object->getTransientEnvironment()) {
             $data['transient_environment'] = $object->getTransientEnvironment();
         }

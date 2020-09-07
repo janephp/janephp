@@ -51,9 +51,7 @@ class ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyNormalizer imple
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getRef()) {
-            $data['ref'] = $object->getRef();
-        }
+        $data['ref'] = $object->getRef();
         if (null !== $object->getInputs()) {
             $values = array();
             foreach ($object->getInputs() as $key => $value) {

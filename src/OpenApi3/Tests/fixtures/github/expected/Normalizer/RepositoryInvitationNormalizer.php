@@ -74,33 +74,15 @@ class RepositoryInvitationNormalizer implements DenormalizerInterface, Normalize
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getId()) {
-            $data['id'] = $object->getId();
-        }
-        if (null !== $object->getRepository()) {
-            $data['repository'] = $this->normalizer->normalize($object->getRepository(), 'json', $context);
-        }
-        if (null !== $object->getInvitee()) {
-            $data['invitee'] = $this->normalizer->normalize($object->getInvitee(), 'json', $context);
-        }
-        if (null !== $object->getInviter()) {
-            $data['inviter'] = $this->normalizer->normalize($object->getInviter(), 'json', $context);
-        }
-        if (null !== $object->getPermissions()) {
-            $data['permissions'] = $object->getPermissions();
-        }
-        if (null !== $object->getCreatedAt()) {
-            $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
-        }
-        if (null !== $object->getUrl()) {
-            $data['url'] = $object->getUrl();
-        }
-        if (null !== $object->getHtmlUrl()) {
-            $data['html_url'] = $object->getHtmlUrl();
-        }
-        if (null !== $object->getNodeId()) {
-            $data['node_id'] = $object->getNodeId();
-        }
+        $data['id'] = $object->getId();
+        $data['repository'] = $this->normalizer->normalize($object->getRepository(), 'json', $context);
+        $data['invitee'] = $this->normalizer->normalize($object->getInvitee(), 'json', $context);
+        $data['inviter'] = $this->normalizer->normalize($object->getInviter(), 'json', $context);
+        $data['permissions'] = $object->getPermissions();
+        $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
+        $data['url'] = $object->getUrl();
+        $data['html_url'] = $object->getHtmlUrl();
+        $data['node_id'] = $object->getNodeId();
         return $data;
     }
 }

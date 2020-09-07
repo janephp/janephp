@@ -91,43 +91,21 @@ class MigrationNormalizer implements DenormalizerInterface, NormalizerInterface,
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getId()) {
-            $data['id'] = $object->getId();
+        $data['id'] = $object->getId();
+        $data['owner'] = $this->normalizer->normalize($object->getOwner(), 'json', $context);
+        $data['guid'] = $object->getGuid();
+        $data['state'] = $object->getState();
+        $data['lock_repositories'] = $object->getLockRepositories();
+        $data['exclude_attachments'] = $object->getExcludeAttachments();
+        $values = array();
+        foreach ($object->getRepositories() as $value) {
+            $values[] = $this->normalizer->normalize($value, 'json', $context);
         }
-        if (null !== $object->getOwner()) {
-            $data['owner'] = $this->normalizer->normalize($object->getOwner(), 'json', $context);
-        }
-        if (null !== $object->getGuid()) {
-            $data['guid'] = $object->getGuid();
-        }
-        if (null !== $object->getState()) {
-            $data['state'] = $object->getState();
-        }
-        if (null !== $object->getLockRepositories()) {
-            $data['lock_repositories'] = $object->getLockRepositories();
-        }
-        if (null !== $object->getExcludeAttachments()) {
-            $data['exclude_attachments'] = $object->getExcludeAttachments();
-        }
-        if (null !== $object->getRepositories()) {
-            $values = array();
-            foreach ($object->getRepositories() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
-            }
-            $data['repositories'] = $values;
-        }
-        if (null !== $object->getUrl()) {
-            $data['url'] = $object->getUrl();
-        }
-        if (null !== $object->getCreatedAt()) {
-            $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
-        }
-        if (null !== $object->getUpdatedAt()) {
-            $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
-        }
-        if (null !== $object->getNodeId()) {
-            $data['node_id'] = $object->getNodeId();
-        }
+        $data['repositories'] = $values;
+        $data['url'] = $object->getUrl();
+        $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
+        $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
+        $data['node_id'] = $object->getNodeId();
         if (null !== $object->getArchiveUrl()) {
             $data['archive_url'] = $object->getArchiveUrl();
         }

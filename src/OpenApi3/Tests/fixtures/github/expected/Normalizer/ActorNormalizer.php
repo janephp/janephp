@@ -62,24 +62,14 @@ class ActorNormalizer implements DenormalizerInterface, NormalizerInterface, Den
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getId()) {
-            $data['id'] = $object->getId();
-        }
-        if (null !== $object->getLogin()) {
-            $data['login'] = $object->getLogin();
-        }
+        $data['id'] = $object->getId();
+        $data['login'] = $object->getLogin();
         if (null !== $object->getDisplayLogin()) {
             $data['display_login'] = $object->getDisplayLogin();
         }
-        if (null !== $object->getGravatarId()) {
-            $data['gravatar_id'] = $object->getGravatarId();
-        }
-        if (null !== $object->getUrl()) {
-            $data['url'] = $object->getUrl();
-        }
-        if (null !== $object->getAvatarUrl()) {
-            $data['avatar_url'] = $object->getAvatarUrl();
-        }
+        $data['gravatar_id'] = $object->getGravatarId();
+        $data['url'] = $object->getUrl();
+        $data['avatar_url'] = $object->getAvatarUrl();
         return $data;
     }
 }

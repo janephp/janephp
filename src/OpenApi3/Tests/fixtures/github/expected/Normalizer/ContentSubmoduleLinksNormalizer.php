@@ -56,15 +56,9 @@ class ContentSubmoduleLinksNormalizer implements DenormalizerInterface, Normaliz
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getGit()) {
-            $data['git'] = $object->getGit();
-        }
-        if (null !== $object->getHtml()) {
-            $data['html'] = $object->getHtml();
-        }
-        if (null !== $object->getSelf()) {
-            $data['self'] = $object->getSelf();
-        }
+        $data['git'] = $object->getGit();
+        $data['html'] = $object->getHtml();
+        $data['self'] = $object->getSelf();
         return $data;
     }
 }

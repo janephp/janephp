@@ -50,15 +50,9 @@ class PollOptionNormalizer implements DenormalizerInterface, NormalizerInterface
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getPosition()) {
-            $data['position'] = $object->getPosition();
-        }
-        if (null !== $object->getLabel()) {
-            $data['label'] = $object->getLabel();
-        }
-        if (null !== $object->getVotes()) {
-            $data['votes'] = $object->getVotes();
-        }
+        $data['position'] = $object->getPosition();
+        $data['label'] = $object->getLabel();
+        $data['votes'] = $object->getVotes();
         return $data;
     }
 }

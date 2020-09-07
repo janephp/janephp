@@ -57,22 +57,14 @@ class StatusCheckPolicyNormalizer implements DenormalizerInterface, NormalizerIn
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getUrl()) {
-            $data['url'] = $object->getUrl();
+        $data['url'] = $object->getUrl();
+        $data['strict'] = $object->getStrict();
+        $values = array();
+        foreach ($object->getContexts() as $value) {
+            $values[] = $value;
         }
-        if (null !== $object->getStrict()) {
-            $data['strict'] = $object->getStrict();
-        }
-        if (null !== $object->getContexts()) {
-            $values = array();
-            foreach ($object->getContexts() as $value) {
-                $values[] = $value;
-            }
-            $data['contexts'] = $values;
-        }
-        if (null !== $object->getContextsUrl()) {
-            $data['contexts_url'] = $object->getContextsUrl();
-        }
+        $data['contexts'] = $values;
+        $data['contexts_url'] = $object->getContextsUrl();
         return $data;
     }
 }

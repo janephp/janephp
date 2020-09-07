@@ -57,15 +57,9 @@ class DefaultPlaceFieldsNormalizer implements DenormalizerInterface, NormalizerI
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getPlaceType()) {
-            $data['place_type'] = $object->getPlaceType();
-        }
-        if (null !== $object->getFullName()) {
-            $data['full_name'] = $object->getFullName();
-        }
-        if (null !== $object->getCountry()) {
-            $data['country'] = $object->getCountry();
-        }
+        $data['place_type'] = $object->getPlaceType();
+        $data['full_name'] = $object->getFullName();
+        $data['country'] = $object->getCountry();
         if (null !== $object->getContainedWithin()) {
             $values = array();
             foreach ($object->getContainedWithin() as $value) {

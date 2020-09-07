@@ -44,9 +44,7 @@ class UserGpgKeysPostBodyNormalizer implements DenormalizerInterface, Normalizer
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getArmoredPublicKey()) {
-            $data['armored_public_key'] = $object->getArmoredPublicKey();
-        }
+        $data['armored_public_key'] = $object->getArmoredPublicKey();
         return $data;
     }
 }

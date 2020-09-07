@@ -44,9 +44,7 @@ class TeamsTeamIdDiscussionsDiscussionNumberCommentsPostBodyNormalizer implement
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getBody()) {
-            $data['body'] = $object->getBody();
-        }
+        $data['body'] = $object->getBody();
         return $data;
     }
 }

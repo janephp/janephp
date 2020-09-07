@@ -50,15 +50,9 @@ class MentionEntityNormalizer implements DenormalizerInterface, NormalizerInterf
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getStart()) {
-            $data['start'] = $object->getStart();
-        }
-        if (null !== $object->getEnd()) {
-            $data['end'] = $object->getEnd();
-        }
-        if (null !== $object->getUsername()) {
-            $data['username'] = $object->getUsername();
-        }
+        $data['start'] = $object->getStart();
+        $data['end'] = $object->getEnd();
+        $data['username'] = $object->getUsername();
         return $data;
     }
 }

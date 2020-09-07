@@ -59,12 +59,8 @@ class ActionsPublicKeyNormalizer implements DenormalizerInterface, NormalizerInt
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getKeyId()) {
-            $data['key_id'] = $object->getKeyId();
-        }
-        if (null !== $object->getKey()) {
-            $data['key'] = $object->getKey();
-        }
+        $data['key_id'] = $object->getKeyId();
+        $data['key'] = $object->getKey();
         if (null !== $object->getId()) {
             $data['id'] = $object->getId();
         }

@@ -59,9 +59,7 @@ class ReposOwnerRepoHooksPostBodyConfigNormalizer implements DenormalizerInterfa
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getUrl()) {
-            $data['url'] = $object->getUrl();
-        }
+        $data['url'] = $object->getUrl();
         if (null !== $object->getContentType()) {
             $data['content_type'] = $object->getContentType();
         }

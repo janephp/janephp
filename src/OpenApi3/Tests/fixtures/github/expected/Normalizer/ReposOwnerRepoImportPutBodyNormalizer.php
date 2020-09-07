@@ -56,9 +56,7 @@ class ReposOwnerRepoImportPutBodyNormalizer implements DenormalizerInterface, No
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getVcsUrl()) {
-            $data['vcs_url'] = $object->getVcsUrl();
-        }
+        $data['vcs_url'] = $object->getVcsUrl();
         if (null !== $object->getVcs()) {
             $data['vcs'] = $object->getVcs();
         }

@@ -86,6 +86,7 @@ class ObjectGuesser implements GuesserInterface, PropertiesGuesserInterface, Typ
      */
     public function guessProperties($object, string $name, string $reference, Registry $registry): array
     {
+        /** @var JsonSchema $object */
         $properties = [];
 
         foreach ($object->getProperties() as $key => $property) {
@@ -97,7 +98,12 @@ class ObjectGuesser implements GuesserInterface, PropertiesGuesserInterface, Typ
 
             $nullable = $this->isPropertyNullable($propertyObj);
 
-            $properties[$key] = new Property($property, $key, $reference . '/properties/' . $key, $nullable, null, $propertyObj->getDescription(), $propertyObj->getDefault(), $propertyObj->getReadOnly());
+            $required = false;
+            if (\is_array($object->getRequired())) {
+                $required = \in_array($key, $object->getRequired());
+            }
+
+            $properties[$key] = new Property($property, $key, $reference . '/properties/' . $key, $nullable, $required, null, $propertyObj->getDescription(), $propertyObj->getDefault(), $propertyObj->getReadOnly());
             if (method_exists($propertyObj, 'getDeprecated')) {
                 $properties[$key]->setDeprecated($propertyObj->getDeprecated());
             }

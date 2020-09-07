@@ -47,12 +47,8 @@ class SimpleCommitCommitterNormalizer implements DenormalizerInterface, Normaliz
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getName()) {
-            $data['name'] = $object->getName();
-        }
-        if (null !== $object->getEmail()) {
-            $data['email'] = $object->getEmail();
-        }
+        $data['name'] = $object->getName();
+        $data['email'] = $object->getEmail();
         return $data;
     }
 }

@@ -78,9 +78,7 @@ class ReposOwnerRepoDeploymentsPostBodyNormalizer implements DenormalizerInterfa
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getRef()) {
-            $data['ref'] = $object->getRef();
-        }
+        $data['ref'] = $object->getRef();
         if (null !== $object->getTask()) {
             $data['task'] = $object->getTask();
         }

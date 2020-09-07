@@ -72,15 +72,9 @@ class UrlEntityNormalizer implements DenormalizerInterface, NormalizerInterface,
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getStart()) {
-            $data['start'] = $object->getStart();
-        }
-        if (null !== $object->getEnd()) {
-            $data['end'] = $object->getEnd();
-        }
-        if (null !== $object->getUrl()) {
-            $data['url'] = $object->getUrl();
-        }
+        $data['start'] = $object->getStart();
+        $data['end'] = $object->getEnd();
+        $data['url'] = $object->getUrl();
         if (null !== $object->getExpandedUrl()) {
             $data['expanded_url'] = $object->getExpandedUrl();
         }

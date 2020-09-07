@@ -44,9 +44,7 @@ class ProjectsColumnsColumnIdMovesPostBodyNormalizer implements DenormalizerInte
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getPosition()) {
-            $data['position'] = $object->getPosition();
-        }
+        $data['position'] = $object->getPosition();
         return $data;
     }
 }

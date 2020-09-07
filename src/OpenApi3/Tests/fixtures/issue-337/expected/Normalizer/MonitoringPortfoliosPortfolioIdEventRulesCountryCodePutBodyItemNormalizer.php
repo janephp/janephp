@@ -56,12 +56,8 @@ class MonitoringPortfoliosPortfolioIdEventRulesCountryCodePutBodyItemNormalizer 
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getRuleCode()) {
-            $data['ruleCode'] = $object->getRuleCode();
-        }
-        if (null !== $object->getIsActive()) {
-            $data['isActive'] = $object->getIsActive();
-        }
+        $data['ruleCode'] = $object->getRuleCode();
+        $data['isActive'] = $object->getIsActive();
         if (null !== $object->getParam0()) {
             $data['param0'] = $object->getParam0();
         }

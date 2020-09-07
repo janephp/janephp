@@ -50,12 +50,8 @@ class ReposOwnerRepoCheckRunsPostBodyOutputImagesItemNormalizer implements Denor
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getAlt()) {
-            $data['alt'] = $object->getAlt();
-        }
-        if (null !== $object->getImageUrl()) {
-            $data['image_url'] = $object->getImageUrl();
-        }
+        $data['alt'] = $object->getAlt();
+        $data['image_url'] = $object->getImageUrl();
         if (null !== $object->getCaption()) {
             $data['caption'] = $object->getCaption();
         }

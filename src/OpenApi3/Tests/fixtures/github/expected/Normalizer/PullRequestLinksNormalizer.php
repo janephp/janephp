@@ -65,30 +65,14 @@ class PullRequestLinksNormalizer implements DenormalizerInterface, NormalizerInt
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getComments()) {
-            $data['comments'] = $this->normalizer->normalize($object->getComments(), 'json', $context);
-        }
-        if (null !== $object->getCommits()) {
-            $data['commits'] = $this->normalizer->normalize($object->getCommits(), 'json', $context);
-        }
-        if (null !== $object->getStatuses()) {
-            $data['statuses'] = $this->normalizer->normalize($object->getStatuses(), 'json', $context);
-        }
-        if (null !== $object->getHtml()) {
-            $data['html'] = $this->normalizer->normalize($object->getHtml(), 'json', $context);
-        }
-        if (null !== $object->getIssue()) {
-            $data['issue'] = $this->normalizer->normalize($object->getIssue(), 'json', $context);
-        }
-        if (null !== $object->getReviewComments()) {
-            $data['review_comments'] = $this->normalizer->normalize($object->getReviewComments(), 'json', $context);
-        }
-        if (null !== $object->getReviewComment()) {
-            $data['review_comment'] = $this->normalizer->normalize($object->getReviewComment(), 'json', $context);
-        }
-        if (null !== $object->getSelf()) {
-            $data['self'] = $this->normalizer->normalize($object->getSelf(), 'json', $context);
-        }
+        $data['comments'] = $this->normalizer->normalize($object->getComments(), 'json', $context);
+        $data['commits'] = $this->normalizer->normalize($object->getCommits(), 'json', $context);
+        $data['statuses'] = $this->normalizer->normalize($object->getStatuses(), 'json', $context);
+        $data['html'] = $this->normalizer->normalize($object->getHtml(), 'json', $context);
+        $data['issue'] = $this->normalizer->normalize($object->getIssue(), 'json', $context);
+        $data['review_comments'] = $this->normalizer->normalize($object->getReviewComments(), 'json', $context);
+        $data['review_comment'] = $this->normalizer->normalize($object->getReviewComment(), 'json', $context);
+        $data['self'] = $this->normalizer->normalize($object->getSelf(), 'json', $context);
         return $data;
     }
 }

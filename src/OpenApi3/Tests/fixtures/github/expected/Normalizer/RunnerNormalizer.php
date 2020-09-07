@@ -53,18 +53,10 @@ class RunnerNormalizer implements DenormalizerInterface, NormalizerInterface, De
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getId()) {
-            $data['id'] = $object->getId();
-        }
-        if (null !== $object->getName()) {
-            $data['name'] = $object->getName();
-        }
-        if (null !== $object->getOs()) {
-            $data['os'] = $object->getOs();
-        }
-        if (null !== $object->getStatus()) {
-            $data['status'] = $object->getStatus();
-        }
+        $data['id'] = $object->getId();
+        $data['name'] = $object->getName();
+        $data['os'] = $object->getOs();
+        $data['status'] = $object->getStatus();
         return $data;
     }
 }

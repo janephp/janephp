@@ -47,12 +47,8 @@ class ContextAnnotationNormalizer implements DenormalizerInterface, NormalizerIn
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getDomain()) {
-            $data['domain'] = $this->normalizer->normalize($object->getDomain(), 'json', $context);
-        }
-        if (null !== $object->getEntity()) {
-            $data['entity'] = $this->normalizer->normalize($object->getEntity(), 'json', $context);
-        }
+        $data['domain'] = $this->normalizer->normalize($object->getDomain(), 'json', $context);
+        $data['entity'] = $this->normalizer->normalize($object->getEntity(), 'json', $context);
         return $data;
     }
 }

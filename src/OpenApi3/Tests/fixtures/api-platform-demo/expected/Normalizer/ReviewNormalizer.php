@@ -74,9 +74,7 @@ class ReviewNormalizer implements DenormalizerInterface, NormalizerInterface, De
         if (null !== $object->getPublicationDate()) {
             $data['publicationDate'] = $object->getPublicationDate()->format('Y-m-d\\TH:i:sP');
         }
-        if (null !== $object->getBook()) {
-            $data['book'] = $this->normalizer->normalize($object->getBook(), 'json', $context);
-        }
+        $data['book'] = $this->normalizer->normalize($object->getBook(), 'json', $context);
         return $data;
     }
 }

@@ -57,13 +57,11 @@ class BooksIdReviewsGetResponse200Normalizer implements DenormalizerInterface, N
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getHydraMember()) {
-            $values = array();
-            foreach ($object->getHydraMember() as $value) {
-                $values[] = $value;
-            }
-            $data['hydra:member'] = $values;
+        $values = array();
+        foreach ($object->getHydraMember() as $value) {
+            $values[] = $value;
         }
+        $data['hydra:member'] = $values;
         if (null !== $object->getHydraTotalItems()) {
             $data['hydra:totalItems'] = $object->getHydraTotalItems();
         }

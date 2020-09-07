@@ -101,57 +101,23 @@ class TeamDiscussionNormalizer implements DenormalizerInterface, NormalizerInter
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getAuthor()) {
-            $data['author'] = $this->normalizer->normalize($object->getAuthor(), 'json', $context);
-        }
-        if (null !== $object->getBody()) {
-            $data['body'] = $object->getBody();
-        }
-        if (null !== $object->getBodyHtml()) {
-            $data['body_html'] = $object->getBodyHtml();
-        }
-        if (null !== $object->getBodyVersion()) {
-            $data['body_version'] = $object->getBodyVersion();
-        }
-        if (null !== $object->getCommentsCount()) {
-            $data['comments_count'] = $object->getCommentsCount();
-        }
-        if (null !== $object->getCommentsUrl()) {
-            $data['comments_url'] = $object->getCommentsUrl();
-        }
-        if (null !== $object->getCreatedAt()) {
-            $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
-        }
-        if (null !== $object->getLastEditedAt()) {
-            $data['last_edited_at'] = $object->getLastEditedAt()->format('Y-m-d\\TH:i:sP');
-        }
-        if (null !== $object->getHtmlUrl()) {
-            $data['html_url'] = $object->getHtmlUrl();
-        }
-        if (null !== $object->getNodeId()) {
-            $data['node_id'] = $object->getNodeId();
-        }
-        if (null !== $object->getNumber()) {
-            $data['number'] = $object->getNumber();
-        }
-        if (null !== $object->getPinned()) {
-            $data['pinned'] = $object->getPinned();
-        }
-        if (null !== $object->getPrivate()) {
-            $data['private'] = $object->getPrivate();
-        }
-        if (null !== $object->getTeamUrl()) {
-            $data['team_url'] = $object->getTeamUrl();
-        }
-        if (null !== $object->getTitle()) {
-            $data['title'] = $object->getTitle();
-        }
-        if (null !== $object->getUpdatedAt()) {
-            $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
-        }
-        if (null !== $object->getUrl()) {
-            $data['url'] = $object->getUrl();
-        }
+        $data['author'] = $this->normalizer->normalize($object->getAuthor(), 'json', $context);
+        $data['body'] = $object->getBody();
+        $data['body_html'] = $object->getBodyHtml();
+        $data['body_version'] = $object->getBodyVersion();
+        $data['comments_count'] = $object->getCommentsCount();
+        $data['comments_url'] = $object->getCommentsUrl();
+        $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
+        $data['last_edited_at'] = $object->getLastEditedAt()->format('Y-m-d\\TH:i:sP');
+        $data['html_url'] = $object->getHtmlUrl();
+        $data['node_id'] = $object->getNodeId();
+        $data['number'] = $object->getNumber();
+        $data['pinned'] = $object->getPinned();
+        $data['private'] = $object->getPrivate();
+        $data['team_url'] = $object->getTeamUrl();
+        $data['title'] = $object->getTitle();
+        $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
+        $data['url'] = $object->getUrl();
         if (null !== $object->getReactions()) {
             $data['reactions'] = $this->normalizer->normalize($object->getReactions(), 'json', $context);
         }

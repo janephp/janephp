@@ -44,9 +44,7 @@ class ApplicationsClientIdTokenPostBodyNormalizer implements DenormalizerInterfa
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getAccessToken()) {
-            $data['access_token'] = $object->getAccessToken();
-        }
+        $data['access_token'] = $object->getAccessToken();
         return $data;
     }
 }

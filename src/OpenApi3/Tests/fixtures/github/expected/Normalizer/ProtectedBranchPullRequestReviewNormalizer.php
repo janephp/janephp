@@ -62,12 +62,8 @@ class ProtectedBranchPullRequestReviewNormalizer implements DenormalizerInterfac
         if (null !== $object->getDismissalRestrictions()) {
             $data['dismissal_restrictions'] = $this->normalizer->normalize($object->getDismissalRestrictions(), 'json', $context);
         }
-        if (null !== $object->getDismissStaleReviews()) {
-            $data['dismiss_stale_reviews'] = $object->getDismissStaleReviews();
-        }
-        if (null !== $object->getRequireCodeOwnerReviews()) {
-            $data['require_code_owner_reviews'] = $object->getRequireCodeOwnerReviews();
-        }
+        $data['dismiss_stale_reviews'] = $object->getDismissStaleReviews();
+        $data['require_code_owner_reviews'] = $object->getRequireCodeOwnerReviews();
         if (null !== $object->getRequiredApprovingReviewCount()) {
             $data['required_approving_review_count'] = $object->getRequiredApprovingReviewCount();
         }

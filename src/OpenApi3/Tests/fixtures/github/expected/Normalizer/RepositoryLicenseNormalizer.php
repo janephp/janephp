@@ -65,21 +65,11 @@ class RepositoryLicenseNormalizer implements DenormalizerInterface, NormalizerIn
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getKey()) {
-            $data['key'] = $object->getKey();
-        }
-        if (null !== $object->getName()) {
-            $data['name'] = $object->getName();
-        }
-        if (null !== $object->getUrl()) {
-            $data['url'] = $object->getUrl();
-        }
-        if (null !== $object->getSpdxId()) {
-            $data['spdx_id'] = $object->getSpdxId();
-        }
-        if (null !== $object->getNodeId()) {
-            $data['node_id'] = $object->getNodeId();
-        }
+        $data['key'] = $object->getKey();
+        $data['name'] = $object->getName();
+        $data['url'] = $object->getUrl();
+        $data['spdx_id'] = $object->getSpdxId();
+        $data['node_id'] = $object->getNodeId();
         if (null !== $object->getHtmlUrl()) {
             $data['html_url'] = $object->getHtmlUrl();
         }

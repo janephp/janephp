@@ -51,13 +51,11 @@ class TeamsTeamIdTeamSyncGroupMappingsPatchBodyNormalizer implements Denormalize
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getGroups()) {
-            $values = array();
-            foreach ($object->getGroups() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
-            }
-            $data['groups'] = $values;
+        $values = array();
+        foreach ($object->getGroups() as $value) {
+            $values[] = $this->normalizer->normalize($value, 'json', $context);
         }
+        $data['groups'] = $values;
         if (null !== $object->getSyncedAt()) {
             $data['synced_at'] = $object->getSyncedAt();
         }

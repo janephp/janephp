@@ -57,9 +57,7 @@ class InvalidRequestProblemNormalizer implements DenormalizerInterface, Normaliz
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getType()) {
-            $data['type'] = $object->getType();
-        }
+        $data['type'] = $object->getType();
         if (null !== $object->getErrors()) {
             $values = array();
             foreach ($object->getErrors() as $value) {
@@ -67,12 +65,8 @@ class InvalidRequestProblemNormalizer implements DenormalizerInterface, Normaliz
             }
             $data['errors'] = $values;
         }
-        if (null !== $object->getTitle()) {
-            $data['title'] = $object->getTitle();
-        }
-        if (null !== $object->getDetail()) {
-            $data['detail'] = $object->getDetail();
-        }
+        $data['title'] = $object->getTitle();
+        $data['detail'] = $object->getDetail();
         return $data;
     }
 }

@@ -53,12 +53,8 @@ class GitCommitCommitterNormalizer implements DenormalizerInterface, NormalizerI
         if (null !== $object->getDate()) {
             $data['date'] = $object->getDate()->format('Y-m-d\\TH:i:sP');
         }
-        if (null !== $object->getEmail()) {
-            $data['email'] = $object->getEmail();
-        }
-        if (null !== $object->getName()) {
-            $data['name'] = $object->getName();
-        }
+        $data['email'] = $object->getEmail();
+        $data['name'] = $object->getName();
         return $data;
     }
 }

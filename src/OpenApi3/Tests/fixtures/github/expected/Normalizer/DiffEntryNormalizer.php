@@ -74,33 +74,15 @@ class DiffEntryNormalizer implements DenormalizerInterface, NormalizerInterface,
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getSha()) {
-            $data['sha'] = $object->getSha();
-        }
-        if (null !== $object->getFilename()) {
-            $data['filename'] = $object->getFilename();
-        }
-        if (null !== $object->getStatus()) {
-            $data['status'] = $object->getStatus();
-        }
-        if (null !== $object->getAdditions()) {
-            $data['additions'] = $object->getAdditions();
-        }
-        if (null !== $object->getDeletions()) {
-            $data['deletions'] = $object->getDeletions();
-        }
-        if (null !== $object->getChanges()) {
-            $data['changes'] = $object->getChanges();
-        }
-        if (null !== $object->getBlobUrl()) {
-            $data['blob_url'] = $object->getBlobUrl();
-        }
-        if (null !== $object->getRawUrl()) {
-            $data['raw_url'] = $object->getRawUrl();
-        }
-        if (null !== $object->getContentsUrl()) {
-            $data['contents_url'] = $object->getContentsUrl();
-        }
+        $data['sha'] = $object->getSha();
+        $data['filename'] = $object->getFilename();
+        $data['status'] = $object->getStatus();
+        $data['additions'] = $object->getAdditions();
+        $data['deletions'] = $object->getDeletions();
+        $data['changes'] = $object->getChanges();
+        $data['blob_url'] = $object->getBlobUrl();
+        $data['raw_url'] = $object->getRawUrl();
+        $data['contents_url'] = $object->getContentsUrl();
         if (null !== $object->getPatch()) {
             $data['patch'] = $object->getPatch();
         }

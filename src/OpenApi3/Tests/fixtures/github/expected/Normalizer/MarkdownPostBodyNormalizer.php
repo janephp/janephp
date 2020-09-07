@@ -50,9 +50,7 @@ class MarkdownPostBodyNormalizer implements DenormalizerInterface, NormalizerInt
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getText()) {
-            $data['text'] = $object->getText();
-        }
+        $data['text'] = $object->getText();
         if (null !== $object->getMode()) {
             $data['mode'] = $object->getMode();
         }

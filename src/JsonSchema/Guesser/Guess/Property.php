@@ -30,6 +30,11 @@ class Property
     private $nullable;
 
     /**
+     * @var bool
+     */
+    private $required;
+
+    /**
      * @var string
      */
     private $description;
@@ -50,12 +55,13 @@ class Property
     /** @var bool */
     private $deprecated = false;
 
-    public function __construct(object $object, string $name, string $reference, bool $nullable = false, Type $type = null, string $description = null, $default = null, ?bool $readOnly = null)
+    public function __construct(object $object, string $name, string $reference, bool $nullable = false, bool $required = false, Type $type = null, string $description = null, $default = null, ?bool $readOnly = null)
     {
         $this->name = $name;
         $this->object = $object;
         $this->reference = $reference;
         $this->nullable = $nullable;
+        $this->required = $required;
         $this->type = $type;
         $this->description = $description;
         $this->default = $default;
@@ -90,6 +96,11 @@ class Property
     public function isNullable(): bool
     {
         return $this->nullable;
+    }
+
+    public function isRequired(): bool
+    {
+        return $this->required;
     }
 
     public function getType(): Type

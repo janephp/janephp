@@ -87,49 +87,23 @@ class MarketplaceListingPlanNormalizer implements DenormalizerInterface, Normali
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getUrl()) {
-            $data['url'] = $object->getUrl();
+        $data['url'] = $object->getUrl();
+        $data['accounts_url'] = $object->getAccountsUrl();
+        $data['id'] = $object->getId();
+        $data['number'] = $object->getNumber();
+        $data['name'] = $object->getName();
+        $data['description'] = $object->getDescription();
+        $data['monthly_price_in_cents'] = $object->getMonthlyPriceInCents();
+        $data['yearly_price_in_cents'] = $object->getYearlyPriceInCents();
+        $data['price_model'] = $object->getPriceModel();
+        $data['has_free_trial'] = $object->getHasFreeTrial();
+        $data['unit_name'] = $object->getUnitName();
+        $data['state'] = $object->getState();
+        $values = array();
+        foreach ($object->getBullets() as $value) {
+            $values[] = $value;
         }
-        if (null !== $object->getAccountsUrl()) {
-            $data['accounts_url'] = $object->getAccountsUrl();
-        }
-        if (null !== $object->getId()) {
-            $data['id'] = $object->getId();
-        }
-        if (null !== $object->getNumber()) {
-            $data['number'] = $object->getNumber();
-        }
-        if (null !== $object->getName()) {
-            $data['name'] = $object->getName();
-        }
-        if (null !== $object->getDescription()) {
-            $data['description'] = $object->getDescription();
-        }
-        if (null !== $object->getMonthlyPriceInCents()) {
-            $data['monthly_price_in_cents'] = $object->getMonthlyPriceInCents();
-        }
-        if (null !== $object->getYearlyPriceInCents()) {
-            $data['yearly_price_in_cents'] = $object->getYearlyPriceInCents();
-        }
-        if (null !== $object->getPriceModel()) {
-            $data['price_model'] = $object->getPriceModel();
-        }
-        if (null !== $object->getHasFreeTrial()) {
-            $data['has_free_trial'] = $object->getHasFreeTrial();
-        }
-        if (null !== $object->getUnitName()) {
-            $data['unit_name'] = $object->getUnitName();
-        }
-        if (null !== $object->getState()) {
-            $data['state'] = $object->getState();
-        }
-        if (null !== $object->getBullets()) {
-            $values = array();
-            foreach ($object->getBullets() as $value) {
-                $values[] = $value;
-            }
-            $data['bullets'] = $values;
-        }
+        $data['bullets'] = $values;
         return $data;
     }
 }

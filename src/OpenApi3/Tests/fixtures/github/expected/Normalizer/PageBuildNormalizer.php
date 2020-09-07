@@ -68,30 +68,14 @@ class PageBuildNormalizer implements DenormalizerInterface, NormalizerInterface,
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getUrl()) {
-            $data['url'] = $object->getUrl();
-        }
-        if (null !== $object->getStatus()) {
-            $data['status'] = $object->getStatus();
-        }
-        if (null !== $object->getError()) {
-            $data['error'] = $this->normalizer->normalize($object->getError(), 'json', $context);
-        }
-        if (null !== $object->getPusher()) {
-            $data['pusher'] = $this->normalizer->normalize($object->getPusher(), 'json', $context);
-        }
-        if (null !== $object->getCommit()) {
-            $data['commit'] = $object->getCommit();
-        }
-        if (null !== $object->getDuration()) {
-            $data['duration'] = $object->getDuration();
-        }
-        if (null !== $object->getCreatedAt()) {
-            $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
-        }
-        if (null !== $object->getUpdatedAt()) {
-            $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
-        }
+        $data['url'] = $object->getUrl();
+        $data['status'] = $object->getStatus();
+        $data['error'] = $this->normalizer->normalize($object->getError(), 'json', $context);
+        $data['pusher'] = $this->normalizer->normalize($object->getPusher(), 'json', $context);
+        $data['commit'] = $object->getCommit();
+        $data['duration'] = $object->getDuration();
+        $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
+        $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
         return $data;
     }
 }

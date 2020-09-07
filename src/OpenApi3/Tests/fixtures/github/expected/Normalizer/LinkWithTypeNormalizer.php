@@ -47,12 +47,8 @@ class LinkWithTypeNormalizer implements DenormalizerInterface, NormalizerInterfa
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getHref()) {
-            $data['href'] = $object->getHref();
-        }
-        if (null !== $object->getType()) {
-            $data['type'] = $object->getType();
-        }
+        $data['href'] = $object->getHref();
+        $data['type'] = $object->getType();
         return $data;
     }
 }

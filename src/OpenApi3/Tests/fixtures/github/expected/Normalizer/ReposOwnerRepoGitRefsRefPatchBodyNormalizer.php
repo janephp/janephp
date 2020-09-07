@@ -47,9 +47,7 @@ class ReposOwnerRepoGitRefsRefPatchBodyNormalizer implements DenormalizerInterfa
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getSha()) {
-            $data['sha'] = $object->getSha();
-        }
+        $data['sha'] = $object->getSha();
         if (null !== $object->getForce()) {
             $data['force'] = $object->getForce();
         }

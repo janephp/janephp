@@ -48,13 +48,11 @@ class ReposOwnerRepoIssuesIssueNumberLabelsPostBodyNormalizer implements Denorma
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getLabels()) {
-            $values = array();
-            foreach ($object->getLabels() as $value) {
-                $values[] = $value;
-            }
-            $data['labels'] = $values;
+        $values = array();
+        foreach ($object->getLabels() as $value) {
+            $values[] = $value;
         }
+        $data['labels'] = $values;
         return $data;
     }
 }

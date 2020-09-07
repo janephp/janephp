@@ -59,12 +59,8 @@ class PortfolioRequestNormalizer implements DenormalizerInterface, NormalizerInt
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getName()) {
-            $data['name'] = $object->getName();
-        }
-        if (null !== $object->getIsDefault()) {
-            $data['isDefault'] = $object->getIsDefault();
-        }
+        $data['name'] = $object->getName();
+        $data['isDefault'] = $object->getIsDefault();
         if (null !== $object->getEmails()) {
             $data['emails'] = $this->normalizer->normalize($object->getEmails(), 'json', $context);
         }

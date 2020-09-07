@@ -62,20 +62,16 @@ class ReposOwnerRepoBranchesBranchProtectionPutBodyRestrictionsNormalizer implem
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getUsers()) {
-            $values = array();
-            foreach ($object->getUsers() as $value) {
-                $values[] = $value;
-            }
-            $data['users'] = $values;
+        $values = array();
+        foreach ($object->getUsers() as $value) {
+            $values[] = $value;
         }
-        if (null !== $object->getTeams()) {
-            $values_1 = array();
-            foreach ($object->getTeams() as $value_1) {
-                $values_1[] = $value_1;
-            }
-            $data['teams'] = $values_1;
+        $data['users'] = $values;
+        $values_1 = array();
+        foreach ($object->getTeams() as $value_1) {
+            $values_1[] = $value_1;
         }
+        $data['teams'] = $values_1;
         if (null !== $object->getApps()) {
             $values_2 = array();
             foreach ($object->getApps() as $value_2) {

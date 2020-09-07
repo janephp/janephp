@@ -80,42 +80,18 @@ class OrganizationSimpleNormalizer implements DenormalizerInterface, NormalizerI
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getLogin()) {
-            $data['login'] = $object->getLogin();
-        }
-        if (null !== $object->getId()) {
-            $data['id'] = $object->getId();
-        }
-        if (null !== $object->getNodeId()) {
-            $data['node_id'] = $object->getNodeId();
-        }
-        if (null !== $object->getUrl()) {
-            $data['url'] = $object->getUrl();
-        }
-        if (null !== $object->getReposUrl()) {
-            $data['repos_url'] = $object->getReposUrl();
-        }
-        if (null !== $object->getEventsUrl()) {
-            $data['events_url'] = $object->getEventsUrl();
-        }
-        if (null !== $object->getHooksUrl()) {
-            $data['hooks_url'] = $object->getHooksUrl();
-        }
-        if (null !== $object->getIssuesUrl()) {
-            $data['issues_url'] = $object->getIssuesUrl();
-        }
-        if (null !== $object->getMembersUrl()) {
-            $data['members_url'] = $object->getMembersUrl();
-        }
-        if (null !== $object->getPublicMembersUrl()) {
-            $data['public_members_url'] = $object->getPublicMembersUrl();
-        }
-        if (null !== $object->getAvatarUrl()) {
-            $data['avatar_url'] = $object->getAvatarUrl();
-        }
-        if (null !== $object->getDescription()) {
-            $data['description'] = $object->getDescription();
-        }
+        $data['login'] = $object->getLogin();
+        $data['id'] = $object->getId();
+        $data['node_id'] = $object->getNodeId();
+        $data['url'] = $object->getUrl();
+        $data['repos_url'] = $object->getReposUrl();
+        $data['events_url'] = $object->getEventsUrl();
+        $data['hooks_url'] = $object->getHooksUrl();
+        $data['issues_url'] = $object->getIssuesUrl();
+        $data['members_url'] = $object->getMembersUrl();
+        $data['public_members_url'] = $object->getPublicMembersUrl();
+        $data['avatar_url'] = $object->getAvatarUrl();
+        $data['description'] = $object->getDescription();
         return $data;
     }
 }

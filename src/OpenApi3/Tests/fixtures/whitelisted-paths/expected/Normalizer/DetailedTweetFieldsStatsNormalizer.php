@@ -53,15 +53,9 @@ class DetailedTweetFieldsStatsNormalizer implements DenormalizerInterface, Norma
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getRetweetCount()) {
-            $data['retweet_count'] = $object->getRetweetCount();
-        }
-        if (null !== $object->getReplyCount()) {
-            $data['reply_count'] = $object->getReplyCount();
-        }
-        if (null !== $object->getLikeCount()) {
-            $data['like_count'] = $object->getLikeCount();
-        }
+        $data['retweet_count'] = $object->getRetweetCount();
+        $data['reply_count'] = $object->getReplyCount();
+        $data['like_count'] = $object->getLikeCount();
         if (null !== $object->getQuoteCount()) {
             $data['quote_count'] = $object->getQuoteCount();
         }

@@ -50,15 +50,9 @@ class ProjectPermissionsNormalizer implements DenormalizerInterface, NormalizerI
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getRead()) {
-            $data['read'] = $object->getRead();
-        }
-        if (null !== $object->getWrite()) {
-            $data['write'] = $object->getWrite();
-        }
-        if (null !== $object->getAdmin()) {
-            $data['admin'] = $object->getAdmin();
-        }
+        $data['read'] = $object->getRead();
+        $data['write'] = $object->getWrite();
+        $data['admin'] = $object->getAdmin();
         return $data;
     }
 }

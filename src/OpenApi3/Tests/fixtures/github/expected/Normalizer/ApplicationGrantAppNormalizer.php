@@ -50,15 +50,9 @@ class ApplicationGrantAppNormalizer implements DenormalizerInterface, Normalizer
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getClientId()) {
-            $data['client_id'] = $object->getClientId();
-        }
-        if (null !== $object->getName()) {
-            $data['name'] = $object->getName();
-        }
-        if (null !== $object->getUrl()) {
-            $data['url'] = $object->getUrl();
-        }
+        $data['client_id'] = $object->getClientId();
+        $data['name'] = $object->getName();
+        $data['url'] = $object->getUrl();
         return $data;
     }
 }

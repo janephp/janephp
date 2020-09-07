@@ -56,21 +56,11 @@ class PullRequestBaseNormalizer implements DenormalizerInterface, NormalizerInte
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getLabel()) {
-            $data['label'] = $object->getLabel();
-        }
-        if (null !== $object->getRef()) {
-            $data['ref'] = $object->getRef();
-        }
-        if (null !== $object->getRepo()) {
-            $data['repo'] = $this->normalizer->normalize($object->getRepo(), 'json', $context);
-        }
-        if (null !== $object->getSha()) {
-            $data['sha'] = $object->getSha();
-        }
-        if (null !== $object->getUser()) {
-            $data['user'] = $this->normalizer->normalize($object->getUser(), 'json', $context);
-        }
+        $data['label'] = $object->getLabel();
+        $data['ref'] = $object->getRef();
+        $data['repo'] = $this->normalizer->normalize($object->getRepo(), 'json', $context);
+        $data['sha'] = $object->getSha();
+        $data['user'] = $this->normalizer->normalize($object->getUser(), 'json', $context);
         return $data;
     }
 }

@@ -300,198 +300,72 @@ class PullRequestHeadRepoNormalizer implements DenormalizerInterface, Normalizer
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getArchiveUrl()) {
-            $data['archive_url'] = $object->getArchiveUrl();
-        }
-        if (null !== $object->getAssigneesUrl()) {
-            $data['assignees_url'] = $object->getAssigneesUrl();
-        }
-        if (null !== $object->getBlobsUrl()) {
-            $data['blobs_url'] = $object->getBlobsUrl();
-        }
-        if (null !== $object->getBranchesUrl()) {
-            $data['branches_url'] = $object->getBranchesUrl();
-        }
-        if (null !== $object->getCollaboratorsUrl()) {
-            $data['collaborators_url'] = $object->getCollaboratorsUrl();
-        }
-        if (null !== $object->getCommentsUrl()) {
-            $data['comments_url'] = $object->getCommentsUrl();
-        }
-        if (null !== $object->getCommitsUrl()) {
-            $data['commits_url'] = $object->getCommitsUrl();
-        }
-        if (null !== $object->getCompareUrl()) {
-            $data['compare_url'] = $object->getCompareUrl();
-        }
-        if (null !== $object->getContentsUrl()) {
-            $data['contents_url'] = $object->getContentsUrl();
-        }
-        if (null !== $object->getContributorsUrl()) {
-            $data['contributors_url'] = $object->getContributorsUrl();
-        }
-        if (null !== $object->getDeploymentsUrl()) {
-            $data['deployments_url'] = $object->getDeploymentsUrl();
-        }
-        if (null !== $object->getDescription()) {
-            $data['description'] = $object->getDescription();
-        }
-        if (null !== $object->getDownloadsUrl()) {
-            $data['downloads_url'] = $object->getDownloadsUrl();
-        }
-        if (null !== $object->getEventsUrl()) {
-            $data['events_url'] = $object->getEventsUrl();
-        }
-        if (null !== $object->getFork()) {
-            $data['fork'] = $object->getFork();
-        }
-        if (null !== $object->getForksUrl()) {
-            $data['forks_url'] = $object->getForksUrl();
-        }
-        if (null !== $object->getFullName()) {
-            $data['full_name'] = $object->getFullName();
-        }
-        if (null !== $object->getGitCommitsUrl()) {
-            $data['git_commits_url'] = $object->getGitCommitsUrl();
-        }
-        if (null !== $object->getGitRefsUrl()) {
-            $data['git_refs_url'] = $object->getGitRefsUrl();
-        }
-        if (null !== $object->getGitTagsUrl()) {
-            $data['git_tags_url'] = $object->getGitTagsUrl();
-        }
-        if (null !== $object->getHooksUrl()) {
-            $data['hooks_url'] = $object->getHooksUrl();
-        }
-        if (null !== $object->getHtmlUrl()) {
-            $data['html_url'] = $object->getHtmlUrl();
-        }
-        if (null !== $object->getId()) {
-            $data['id'] = $object->getId();
-        }
-        if (null !== $object->getNodeId()) {
-            $data['node_id'] = $object->getNodeId();
-        }
-        if (null !== $object->getIssueCommentUrl()) {
-            $data['issue_comment_url'] = $object->getIssueCommentUrl();
-        }
-        if (null !== $object->getIssueEventsUrl()) {
-            $data['issue_events_url'] = $object->getIssueEventsUrl();
-        }
-        if (null !== $object->getIssuesUrl()) {
-            $data['issues_url'] = $object->getIssuesUrl();
-        }
-        if (null !== $object->getKeysUrl()) {
-            $data['keys_url'] = $object->getKeysUrl();
-        }
-        if (null !== $object->getLabelsUrl()) {
-            $data['labels_url'] = $object->getLabelsUrl();
-        }
-        if (null !== $object->getLanguagesUrl()) {
-            $data['languages_url'] = $object->getLanguagesUrl();
-        }
-        if (null !== $object->getMergesUrl()) {
-            $data['merges_url'] = $object->getMergesUrl();
-        }
-        if (null !== $object->getMilestonesUrl()) {
-            $data['milestones_url'] = $object->getMilestonesUrl();
-        }
-        if (null !== $object->getName()) {
-            $data['name'] = $object->getName();
-        }
-        if (null !== $object->getNotificationsUrl()) {
-            $data['notifications_url'] = $object->getNotificationsUrl();
-        }
-        if (null !== $object->getOwner()) {
-            $data['owner'] = $this->normalizer->normalize($object->getOwner(), 'json', $context);
-        }
-        if (null !== $object->getPrivate()) {
-            $data['private'] = $object->getPrivate();
-        }
-        if (null !== $object->getPullsUrl()) {
-            $data['pulls_url'] = $object->getPullsUrl();
-        }
-        if (null !== $object->getReleasesUrl()) {
-            $data['releases_url'] = $object->getReleasesUrl();
-        }
-        if (null !== $object->getStargazersUrl()) {
-            $data['stargazers_url'] = $object->getStargazersUrl();
-        }
-        if (null !== $object->getStatusesUrl()) {
-            $data['statuses_url'] = $object->getStatusesUrl();
-        }
-        if (null !== $object->getSubscribersUrl()) {
-            $data['subscribers_url'] = $object->getSubscribersUrl();
-        }
-        if (null !== $object->getSubscriptionUrl()) {
-            $data['subscription_url'] = $object->getSubscriptionUrl();
-        }
-        if (null !== $object->getTagsUrl()) {
-            $data['tags_url'] = $object->getTagsUrl();
-        }
-        if (null !== $object->getTeamsUrl()) {
-            $data['teams_url'] = $object->getTeamsUrl();
-        }
-        if (null !== $object->getTreesUrl()) {
-            $data['trees_url'] = $object->getTreesUrl();
-        }
-        if (null !== $object->getUrl()) {
-            $data['url'] = $object->getUrl();
-        }
-        if (null !== $object->getCloneUrl()) {
-            $data['clone_url'] = $object->getCloneUrl();
-        }
-        if (null !== $object->getDefaultBranch()) {
-            $data['default_branch'] = $object->getDefaultBranch();
-        }
-        if (null !== $object->getForks()) {
-            $data['forks'] = $object->getForks();
-        }
-        if (null !== $object->getForksCount()) {
-            $data['forks_count'] = $object->getForksCount();
-        }
-        if (null !== $object->getGitUrl()) {
-            $data['git_url'] = $object->getGitUrl();
-        }
-        if (null !== $object->getHasDownloads()) {
-            $data['has_downloads'] = $object->getHasDownloads();
-        }
-        if (null !== $object->getHasIssues()) {
-            $data['has_issues'] = $object->getHasIssues();
-        }
-        if (null !== $object->getHasProjects()) {
-            $data['has_projects'] = $object->getHasProjects();
-        }
-        if (null !== $object->getHasWiki()) {
-            $data['has_wiki'] = $object->getHasWiki();
-        }
-        if (null !== $object->getHasPages()) {
-            $data['has_pages'] = $object->getHasPages();
-        }
-        if (null !== $object->getHomepage()) {
-            $data['homepage'] = $object->getHomepage();
-        }
-        if (null !== $object->getLanguage()) {
-            $data['language'] = $object->getLanguage();
-        }
+        $data['archive_url'] = $object->getArchiveUrl();
+        $data['assignees_url'] = $object->getAssigneesUrl();
+        $data['blobs_url'] = $object->getBlobsUrl();
+        $data['branches_url'] = $object->getBranchesUrl();
+        $data['collaborators_url'] = $object->getCollaboratorsUrl();
+        $data['comments_url'] = $object->getCommentsUrl();
+        $data['commits_url'] = $object->getCommitsUrl();
+        $data['compare_url'] = $object->getCompareUrl();
+        $data['contents_url'] = $object->getContentsUrl();
+        $data['contributors_url'] = $object->getContributorsUrl();
+        $data['deployments_url'] = $object->getDeploymentsUrl();
+        $data['description'] = $object->getDescription();
+        $data['downloads_url'] = $object->getDownloadsUrl();
+        $data['events_url'] = $object->getEventsUrl();
+        $data['fork'] = $object->getFork();
+        $data['forks_url'] = $object->getForksUrl();
+        $data['full_name'] = $object->getFullName();
+        $data['git_commits_url'] = $object->getGitCommitsUrl();
+        $data['git_refs_url'] = $object->getGitRefsUrl();
+        $data['git_tags_url'] = $object->getGitTagsUrl();
+        $data['hooks_url'] = $object->getHooksUrl();
+        $data['html_url'] = $object->getHtmlUrl();
+        $data['id'] = $object->getId();
+        $data['node_id'] = $object->getNodeId();
+        $data['issue_comment_url'] = $object->getIssueCommentUrl();
+        $data['issue_events_url'] = $object->getIssueEventsUrl();
+        $data['issues_url'] = $object->getIssuesUrl();
+        $data['keys_url'] = $object->getKeysUrl();
+        $data['labels_url'] = $object->getLabelsUrl();
+        $data['languages_url'] = $object->getLanguagesUrl();
+        $data['merges_url'] = $object->getMergesUrl();
+        $data['milestones_url'] = $object->getMilestonesUrl();
+        $data['name'] = $object->getName();
+        $data['notifications_url'] = $object->getNotificationsUrl();
+        $data['owner'] = $this->normalizer->normalize($object->getOwner(), 'json', $context);
+        $data['private'] = $object->getPrivate();
+        $data['pulls_url'] = $object->getPullsUrl();
+        $data['releases_url'] = $object->getReleasesUrl();
+        $data['stargazers_url'] = $object->getStargazersUrl();
+        $data['statuses_url'] = $object->getStatusesUrl();
+        $data['subscribers_url'] = $object->getSubscribersUrl();
+        $data['subscription_url'] = $object->getSubscriptionUrl();
+        $data['tags_url'] = $object->getTagsUrl();
+        $data['teams_url'] = $object->getTeamsUrl();
+        $data['trees_url'] = $object->getTreesUrl();
+        $data['url'] = $object->getUrl();
+        $data['clone_url'] = $object->getCloneUrl();
+        $data['default_branch'] = $object->getDefaultBranch();
+        $data['forks'] = $object->getForks();
+        $data['forks_count'] = $object->getForksCount();
+        $data['git_url'] = $object->getGitUrl();
+        $data['has_downloads'] = $object->getHasDownloads();
+        $data['has_issues'] = $object->getHasIssues();
+        $data['has_projects'] = $object->getHasProjects();
+        $data['has_wiki'] = $object->getHasWiki();
+        $data['has_pages'] = $object->getHasPages();
+        $data['homepage'] = $object->getHomepage();
+        $data['language'] = $object->getLanguage();
         if (null !== $object->getMasterBranch()) {
             $data['master_branch'] = $object->getMasterBranch();
         }
-        if (null !== $object->getArchived()) {
-            $data['archived'] = $object->getArchived();
-        }
-        if (null !== $object->getDisabled()) {
-            $data['disabled'] = $object->getDisabled();
-        }
-        if (null !== $object->getMirrorUrl()) {
-            $data['mirror_url'] = $object->getMirrorUrl();
-        }
-        if (null !== $object->getOpenIssues()) {
-            $data['open_issues'] = $object->getOpenIssues();
-        }
-        if (null !== $object->getOpenIssuesCount()) {
-            $data['open_issues_count'] = $object->getOpenIssuesCount();
-        }
+        $data['archived'] = $object->getArchived();
+        $data['disabled'] = $object->getDisabled();
+        $data['mirror_url'] = $object->getMirrorUrl();
+        $data['open_issues'] = $object->getOpenIssues();
+        $data['open_issues_count'] = $object->getOpenIssuesCount();
         if (null !== $object->getPermissions()) {
             $data['permissions'] = $this->normalizer->normalize($object->getPermissions(), 'json', $context);
         }
@@ -507,24 +381,12 @@ class PullRequestHeadRepoNormalizer implements DenormalizerInterface, Normalizer
         if (null !== $object->getAllowRebaseMerge()) {
             $data['allow_rebase_merge'] = $object->getAllowRebaseMerge();
         }
-        if (null !== $object->getLicense()) {
-            $data['license'] = $this->normalizer->normalize($object->getLicense(), 'json', $context);
-        }
-        if (null !== $object->getPushedAt()) {
-            $data['pushed_at'] = $object->getPushedAt()->format('Y-m-d\\TH:i:sP');
-        }
-        if (null !== $object->getSize()) {
-            $data['size'] = $object->getSize();
-        }
-        if (null !== $object->getSshUrl()) {
-            $data['ssh_url'] = $object->getSshUrl();
-        }
-        if (null !== $object->getStargazersCount()) {
-            $data['stargazers_count'] = $object->getStargazersCount();
-        }
-        if (null !== $object->getSvnUrl()) {
-            $data['svn_url'] = $object->getSvnUrl();
-        }
+        $data['license'] = $this->normalizer->normalize($object->getLicense(), 'json', $context);
+        $data['pushed_at'] = $object->getPushedAt()->format('Y-m-d\\TH:i:sP');
+        $data['size'] = $object->getSize();
+        $data['ssh_url'] = $object->getSshUrl();
+        $data['stargazers_count'] = $object->getStargazersCount();
+        $data['svn_url'] = $object->getSvnUrl();
         if (null !== $object->getTopics()) {
             $values = array();
             foreach ($object->getTopics() as $value) {
@@ -532,18 +394,10 @@ class PullRequestHeadRepoNormalizer implements DenormalizerInterface, Normalizer
             }
             $data['topics'] = $values;
         }
-        if (null !== $object->getWatchers()) {
-            $data['watchers'] = $object->getWatchers();
-        }
-        if (null !== $object->getWatchersCount()) {
-            $data['watchers_count'] = $object->getWatchersCount();
-        }
-        if (null !== $object->getCreatedAt()) {
-            $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
-        }
-        if (null !== $object->getUpdatedAt()) {
-            $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
-        }
+        $data['watchers'] = $object->getWatchers();
+        $data['watchers_count'] = $object->getWatchersCount();
+        $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
+        $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
         return $data;
     }
 }

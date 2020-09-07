@@ -50,15 +50,9 @@ class TrafficNormalizer implements DenormalizerInterface, NormalizerInterface, D
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getTimestamp()) {
-            $data['timestamp'] = $object->getTimestamp()->format('Y-m-d\\TH:i:sP');
-        }
-        if (null !== $object->getUniques()) {
-            $data['uniques'] = $object->getUniques();
-        }
-        if (null !== $object->getCount()) {
-            $data['count'] = $object->getCount();
-        }
+        $data['timestamp'] = $object->getTimestamp()->format('Y-m-d\\TH:i:sP');
+        $data['uniques'] = $object->getUniques();
+        $data['count'] = $object->getCount();
         return $data;
     }
 }

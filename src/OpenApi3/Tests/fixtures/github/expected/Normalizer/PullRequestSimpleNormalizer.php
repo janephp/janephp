@@ -195,91 +195,39 @@ class PullRequestSimpleNormalizer implements DenormalizerInterface, NormalizerIn
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getUrl()) {
-            $data['url'] = $object->getUrl();
+        $data['url'] = $object->getUrl();
+        $data['id'] = $object->getId();
+        $data['node_id'] = $object->getNodeId();
+        $data['html_url'] = $object->getHtmlUrl();
+        $data['diff_url'] = $object->getDiffUrl();
+        $data['patch_url'] = $object->getPatchUrl();
+        $data['issue_url'] = $object->getIssueUrl();
+        $data['commits_url'] = $object->getCommitsUrl();
+        $data['review_comments_url'] = $object->getReviewCommentsUrl();
+        $data['review_comment_url'] = $object->getReviewCommentUrl();
+        $data['comments_url'] = $object->getCommentsUrl();
+        $data['statuses_url'] = $object->getStatusesUrl();
+        $data['number'] = $object->getNumber();
+        $data['state'] = $object->getState();
+        $data['locked'] = $object->getLocked();
+        $data['title'] = $object->getTitle();
+        $data['user'] = $this->normalizer->normalize($object->getUser(), 'json', $context);
+        $data['body'] = $object->getBody();
+        $values = array();
+        foreach ($object->getLabels() as $value) {
+            $values[] = $this->normalizer->normalize($value, 'json', $context);
         }
-        if (null !== $object->getId()) {
-            $data['id'] = $object->getId();
-        }
-        if (null !== $object->getNodeId()) {
-            $data['node_id'] = $object->getNodeId();
-        }
-        if (null !== $object->getHtmlUrl()) {
-            $data['html_url'] = $object->getHtmlUrl();
-        }
-        if (null !== $object->getDiffUrl()) {
-            $data['diff_url'] = $object->getDiffUrl();
-        }
-        if (null !== $object->getPatchUrl()) {
-            $data['patch_url'] = $object->getPatchUrl();
-        }
-        if (null !== $object->getIssueUrl()) {
-            $data['issue_url'] = $object->getIssueUrl();
-        }
-        if (null !== $object->getCommitsUrl()) {
-            $data['commits_url'] = $object->getCommitsUrl();
-        }
-        if (null !== $object->getReviewCommentsUrl()) {
-            $data['review_comments_url'] = $object->getReviewCommentsUrl();
-        }
-        if (null !== $object->getReviewCommentUrl()) {
-            $data['review_comment_url'] = $object->getReviewCommentUrl();
-        }
-        if (null !== $object->getCommentsUrl()) {
-            $data['comments_url'] = $object->getCommentsUrl();
-        }
-        if (null !== $object->getStatusesUrl()) {
-            $data['statuses_url'] = $object->getStatusesUrl();
-        }
-        if (null !== $object->getNumber()) {
-            $data['number'] = $object->getNumber();
-        }
-        if (null !== $object->getState()) {
-            $data['state'] = $object->getState();
-        }
-        if (null !== $object->getLocked()) {
-            $data['locked'] = $object->getLocked();
-        }
-        if (null !== $object->getTitle()) {
-            $data['title'] = $object->getTitle();
-        }
-        if (null !== $object->getUser()) {
-            $data['user'] = $this->normalizer->normalize($object->getUser(), 'json', $context);
-        }
-        if (null !== $object->getBody()) {
-            $data['body'] = $object->getBody();
-        }
-        if (null !== $object->getLabels()) {
-            $values = array();
-            foreach ($object->getLabels() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
-            }
-            $data['labels'] = $values;
-        }
-        if (null !== $object->getMilestone()) {
-            $data['milestone'] = $this->normalizer->normalize($object->getMilestone(), 'json', $context);
-        }
+        $data['labels'] = $values;
+        $data['milestone'] = $this->normalizer->normalize($object->getMilestone(), 'json', $context);
         if (null !== $object->getActiveLockReason()) {
             $data['active_lock_reason'] = $object->getActiveLockReason();
         }
-        if (null !== $object->getCreatedAt()) {
-            $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
-        }
-        if (null !== $object->getUpdatedAt()) {
-            $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
-        }
-        if (null !== $object->getClosedAt()) {
-            $data['closed_at'] = $object->getClosedAt()->format('Y-m-d\\TH:i:sP');
-        }
-        if (null !== $object->getMergedAt()) {
-            $data['merged_at'] = $object->getMergedAt()->format('Y-m-d\\TH:i:sP');
-        }
-        if (null !== $object->getMergeCommitSha()) {
-            $data['merge_commit_sha'] = $object->getMergeCommitSha();
-        }
-        if (null !== $object->getAssignee()) {
-            $data['assignee'] = $this->normalizer->normalize($object->getAssignee(), 'json', $context);
-        }
+        $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
+        $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
+        $data['closed_at'] = $object->getClosedAt()->format('Y-m-d\\TH:i:sP');
+        $data['merged_at'] = $object->getMergedAt()->format('Y-m-d\\TH:i:sP');
+        $data['merge_commit_sha'] = $object->getMergeCommitSha();
+        $data['assignee'] = $this->normalizer->normalize($object->getAssignee(), 'json', $context);
         if (null !== $object->getAssignees()) {
             $values_1 = array();
             foreach ($object->getAssignees() as $value_1) {
@@ -301,18 +249,10 @@ class PullRequestSimpleNormalizer implements DenormalizerInterface, NormalizerIn
             }
             $data['requested_teams'] = $values_3;
         }
-        if (null !== $object->getHead()) {
-            $data['head'] = $this->normalizer->normalize($object->getHead(), 'json', $context);
-        }
-        if (null !== $object->getBase()) {
-            $data['base'] = $this->normalizer->normalize($object->getBase(), 'json', $context);
-        }
-        if (null !== $object->getLinks()) {
-            $data['_links'] = $this->normalizer->normalize($object->getLinks(), 'json', $context);
-        }
-        if (null !== $object->getAuthorAssociation()) {
-            $data['author_association'] = $object->getAuthorAssociation();
-        }
+        $data['head'] = $this->normalizer->normalize($object->getHead(), 'json', $context);
+        $data['base'] = $this->normalizer->normalize($object->getBase(), 'json', $context);
+        $data['_links'] = $this->normalizer->normalize($object->getLinks(), 'json', $context);
+        $data['author_association'] = $object->getAuthorAssociation();
         if (null !== $object->getDraft()) {
             $data['draft'] = $object->getDraft();
         }

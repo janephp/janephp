@@ -69,34 +69,18 @@ class ProjectsNormalizer implements DenormalizerInterface, NormalizerInterface, 
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getProjects()) {
-            $values = array();
-            foreach ($object->getProjects() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
-            }
-            $data['projects'] = $values;
+        $values = array();
+        foreach ($object->getProjects() as $value) {
+            $values[] = $this->normalizer->normalize($value, 'json', $context);
         }
-        if (null !== $object->getPerPage()) {
-            $data['per_page'] = $object->getPerPage();
-        }
-        if (null !== $object->getTotalPages()) {
-            $data['total_pages'] = $object->getTotalPages();
-        }
-        if (null !== $object->getTotalEntries()) {
-            $data['total_entries'] = $object->getTotalEntries();
-        }
-        if (null !== $object->getNextPage()) {
-            $data['next_page'] = $object->getNextPage();
-        }
-        if (null !== $object->getPreviousPage()) {
-            $data['previous_page'] = $object->getPreviousPage();
-        }
-        if (null !== $object->getPage()) {
-            $data['page'] = $object->getPage();
-        }
-        if (null !== $object->getLinks()) {
-            $data['links'] = $this->normalizer->normalize($object->getLinks(), 'json', $context);
-        }
+        $data['projects'] = $values;
+        $data['per_page'] = $object->getPerPage();
+        $data['total_pages'] = $object->getTotalPages();
+        $data['total_entries'] = $object->getTotalEntries();
+        $data['next_page'] = $object->getNextPage();
+        $data['previous_page'] = $object->getPreviousPage();
+        $data['page'] = $object->getPage();
+        $data['links'] = $this->normalizer->normalize($object->getLinks(), 'json', $context);
         return $data;
     }
 }

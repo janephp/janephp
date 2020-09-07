@@ -56,21 +56,11 @@ class PullRequestMinimalNormalizer implements DenormalizerInterface, NormalizerI
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getId()) {
-            $data['id'] = $object->getId();
-        }
-        if (null !== $object->getNumber()) {
-            $data['number'] = $object->getNumber();
-        }
-        if (null !== $object->getUrl()) {
-            $data['url'] = $object->getUrl();
-        }
-        if (null !== $object->getHead()) {
-            $data['head'] = $this->normalizer->normalize($object->getHead(), 'json', $context);
-        }
-        if (null !== $object->getBase()) {
-            $data['base'] = $this->normalizer->normalize($object->getBase(), 'json', $context);
-        }
+        $data['id'] = $object->getId();
+        $data['number'] = $object->getNumber();
+        $data['url'] = $object->getUrl();
+        $data['head'] = $this->normalizer->normalize($object->getHead(), 'json', $context);
+        $data['base'] = $this->normalizer->normalize($object->getBase(), 'json', $context);
         return $data;
     }
 }

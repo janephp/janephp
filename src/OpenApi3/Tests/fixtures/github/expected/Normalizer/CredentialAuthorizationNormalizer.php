@@ -72,21 +72,13 @@ class CredentialAuthorizationNormalizer implements DenormalizerInterface, Normal
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getLogin()) {
-            $data['login'] = $object->getLogin();
-        }
-        if (null !== $object->getCredentialId()) {
-            $data['credential_id'] = $object->getCredentialId();
-        }
-        if (null !== $object->getCredentialType()) {
-            $data['credential_type'] = $object->getCredentialType();
-        }
+        $data['login'] = $object->getLogin();
+        $data['credential_id'] = $object->getCredentialId();
+        $data['credential_type'] = $object->getCredentialType();
         if (null !== $object->getTokenLastEight()) {
             $data['token_last_eight'] = $object->getTokenLastEight();
         }
-        if (null !== $object->getCredentialAuthorizedAt()) {
-            $data['credential_authorized_at'] = $object->getCredentialAuthorizedAt()->format('Y-m-d\\TH:i:sP');
-        }
+        $data['credential_authorized_at'] = $object->getCredentialAuthorizedAt()->format('Y-m-d\\TH:i:sP');
         if (null !== $object->getScopes()) {
             $values = array();
             foreach ($object->getScopes() as $value) {

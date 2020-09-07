@@ -77,24 +77,12 @@ class CommunityProfileFilesNormalizer implements DenormalizerInterface, Normaliz
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getCodeOfConduct()) {
-            $data['code_of_conduct'] = $this->normalizer->normalize($object->getCodeOfConduct(), 'json', $context);
-        }
-        if (null !== $object->getLicense()) {
-            $data['license'] = $this->normalizer->normalize($object->getLicense(), 'json', $context);
-        }
-        if (null !== $object->getContributing()) {
-            $data['contributing'] = $this->normalizer->normalize($object->getContributing(), 'json', $context);
-        }
-        if (null !== $object->getReadme()) {
-            $data['readme'] = $this->normalizer->normalize($object->getReadme(), 'json', $context);
-        }
-        if (null !== $object->getIssueTemplate()) {
-            $data['issue_template'] = $this->normalizer->normalize($object->getIssueTemplate(), 'json', $context);
-        }
-        if (null !== $object->getPullRequestTemplate()) {
-            $data['pull_request_template'] = $this->normalizer->normalize($object->getPullRequestTemplate(), 'json', $context);
-        }
+        $data['code_of_conduct'] = $this->normalizer->normalize($object->getCodeOfConduct(), 'json', $context);
+        $data['license'] = $this->normalizer->normalize($object->getLicense(), 'json', $context);
+        $data['contributing'] = $this->normalizer->normalize($object->getContributing(), 'json', $context);
+        $data['readme'] = $this->normalizer->normalize($object->getReadme(), 'json', $context);
+        $data['issue_template'] = $this->normalizer->normalize($object->getIssueTemplate(), 'json', $context);
+        $data['pull_request_template'] = $this->normalizer->normalize($object->getPullRequestTemplate(), 'json', $context);
         return $data;
     }
 }

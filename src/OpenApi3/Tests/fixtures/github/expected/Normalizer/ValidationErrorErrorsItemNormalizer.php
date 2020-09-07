@@ -68,9 +68,7 @@ class ValidationErrorErrorsItemNormalizer implements DenormalizerInterface, Norm
         if (null !== $object->getMessage()) {
             $data['message'] = $object->getMessage();
         }
-        if (null !== $object->getCode()) {
-            $data['code'] = $object->getCode();
-        }
+        $data['code'] = $object->getCode();
         if (null !== $object->getIndex()) {
             $data['index'] = $object->getIndex();
         }

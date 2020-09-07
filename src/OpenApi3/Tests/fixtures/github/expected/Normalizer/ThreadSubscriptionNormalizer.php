@@ -68,21 +68,11 @@ class ThreadSubscriptionNormalizer implements DenormalizerInterface, NormalizerI
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getSubscribed()) {
-            $data['subscribed'] = $object->getSubscribed();
-        }
-        if (null !== $object->getIgnored()) {
-            $data['ignored'] = $object->getIgnored();
-        }
-        if (null !== $object->getReason()) {
-            $data['reason'] = $object->getReason();
-        }
-        if (null !== $object->getCreatedAt()) {
-            $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
-        }
-        if (null !== $object->getUrl()) {
-            $data['url'] = $object->getUrl();
-        }
+        $data['subscribed'] = $object->getSubscribed();
+        $data['ignored'] = $object->getIgnored();
+        $data['reason'] = $object->getReason();
+        $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
+        $data['url'] = $object->getUrl();
         if (null !== $object->getThreadUrl()) {
             $data['thread_url'] = $object->getThreadUrl();
         }

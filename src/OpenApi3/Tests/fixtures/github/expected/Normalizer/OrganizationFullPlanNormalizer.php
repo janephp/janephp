@@ -56,15 +56,9 @@ class OrganizationFullPlanNormalizer implements DenormalizerInterface, Normalize
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getName()) {
-            $data['name'] = $object->getName();
-        }
-        if (null !== $object->getSpace()) {
-            $data['space'] = $object->getSpace();
-        }
-        if (null !== $object->getPrivateRepos()) {
-            $data['private_repos'] = $object->getPrivateRepos();
-        }
+        $data['name'] = $object->getName();
+        $data['space'] = $object->getSpace();
+        $data['private_repos'] = $object->getPrivateRepos();
         if (null !== $object->getFilledSeats()) {
             $data['filled_seats'] = $object->getFilledSeats();
         }

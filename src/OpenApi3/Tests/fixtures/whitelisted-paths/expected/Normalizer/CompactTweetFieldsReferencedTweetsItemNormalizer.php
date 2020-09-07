@@ -47,12 +47,8 @@ class CompactTweetFieldsReferencedTweetsItemNormalizer implements DenormalizerIn
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getType()) {
-            $data['type'] = $object->getType();
-        }
-        if (null !== $object->getId()) {
-            $data['id'] = $object->getId();
-        }
+        $data['type'] = $object->getType();
+        $data['id'] = $object->getId();
         return $data;
     }
 }

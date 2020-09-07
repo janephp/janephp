@@ -97,53 +97,27 @@ class GpgKeyNormalizer implements DenormalizerInterface, NormalizerInterface, De
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getId()) {
-            $data['id'] = $object->getId();
+        $data['id'] = $object->getId();
+        $data['primary_key_id'] = $object->getPrimaryKeyId();
+        $data['key_id'] = $object->getKeyId();
+        $data['public_key'] = $object->getPublicKey();
+        $values = array();
+        foreach ($object->getEmails() as $value) {
+            $values[] = $this->normalizer->normalize($value, 'json', $context);
         }
-        if (null !== $object->getPrimaryKeyId()) {
-            $data['primary_key_id'] = $object->getPrimaryKeyId();
+        $data['emails'] = $values;
+        $values_1 = array();
+        foreach ($object->getSubkeys() as $value_1) {
+            $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
         }
-        if (null !== $object->getKeyId()) {
-            $data['key_id'] = $object->getKeyId();
-        }
-        if (null !== $object->getPublicKey()) {
-            $data['public_key'] = $object->getPublicKey();
-        }
-        if (null !== $object->getEmails()) {
-            $values = array();
-            foreach ($object->getEmails() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
-            }
-            $data['emails'] = $values;
-        }
-        if (null !== $object->getSubkeys()) {
-            $values_1 = array();
-            foreach ($object->getSubkeys() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
-            }
-            $data['subkeys'] = $values_1;
-        }
-        if (null !== $object->getCanSign()) {
-            $data['can_sign'] = $object->getCanSign();
-        }
-        if (null !== $object->getCanEncryptComms()) {
-            $data['can_encrypt_comms'] = $object->getCanEncryptComms();
-        }
-        if (null !== $object->getCanEncryptStorage()) {
-            $data['can_encrypt_storage'] = $object->getCanEncryptStorage();
-        }
-        if (null !== $object->getCanCertify()) {
-            $data['can_certify'] = $object->getCanCertify();
-        }
-        if (null !== $object->getCreatedAt()) {
-            $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
-        }
-        if (null !== $object->getExpiresAt()) {
-            $data['expires_at'] = $object->getExpiresAt()->format('Y-m-d\\TH:i:sP');
-        }
-        if (null !== $object->getRawKey()) {
-            $data['raw_key'] = $object->getRawKey();
-        }
+        $data['subkeys'] = $values_1;
+        $data['can_sign'] = $object->getCanSign();
+        $data['can_encrypt_comms'] = $object->getCanEncryptComms();
+        $data['can_encrypt_storage'] = $object->getCanEncryptStorage();
+        $data['can_certify'] = $object->getCanCertify();
+        $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
+        $data['expires_at'] = $object->getExpiresAt()->format('Y-m-d\\TH:i:sP');
+        $data['raw_key'] = $object->getRawKey();
         return $data;
     }
 }

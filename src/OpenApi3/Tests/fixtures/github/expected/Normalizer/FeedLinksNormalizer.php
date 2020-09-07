@@ -69,12 +69,8 @@ class FeedLinksNormalizer implements DenormalizerInterface, NormalizerInterface,
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getTimeline()) {
-            $data['timeline'] = $this->normalizer->normalize($object->getTimeline(), 'json', $context);
-        }
-        if (null !== $object->getUser()) {
-            $data['user'] = $this->normalizer->normalize($object->getUser(), 'json', $context);
-        }
+        $data['timeline'] = $this->normalizer->normalize($object->getTimeline(), 'json', $context);
+        $data['user'] = $this->normalizer->normalize($object->getUser(), 'json', $context);
         if (null !== $object->getSecurityAdvisories()) {
             $data['security_advisories'] = $this->normalizer->normalize($object->getSecurityAdvisories(), 'json', $context);
         }

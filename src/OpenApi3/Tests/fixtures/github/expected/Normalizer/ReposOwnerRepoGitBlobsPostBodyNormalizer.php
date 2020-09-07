@@ -47,9 +47,7 @@ class ReposOwnerRepoGitBlobsPostBodyNormalizer implements DenormalizerInterface,
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getContent()) {
-            $data['content'] = $object->getContent();
-        }
+        $data['content'] = $object->getContent();
         if (null !== $object->getEncoding()) {
             $data['encoding'] = $object->getEncoding();
         }

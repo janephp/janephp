@@ -50,12 +50,8 @@ class StargazerNormalizer implements DenormalizerInterface, NormalizerInterface,
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getStarredAt()) {
-            $data['starred_at'] = $object->getStarredAt()->format('Y-m-d\\TH:i:sP');
-        }
-        if (null !== $object->getUser()) {
-            $data['user'] = $this->normalizer->normalize($object->getUser(), 'json', $context);
-        }
+        $data['starred_at'] = $object->getStarredAt()->format('Y-m-d\\TH:i:sP');
+        $data['user'] = $this->normalizer->normalize($object->getUser(), 'json', $context);
         return $data;
     }
 }

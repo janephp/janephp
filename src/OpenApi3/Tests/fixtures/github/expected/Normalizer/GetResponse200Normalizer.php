@@ -140,105 +140,41 @@ class GetResponse200Normalizer implements DenormalizerInterface, NormalizerInter
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getCurrentUserUrl()) {
-            $data['current_user_url'] = $object->getCurrentUserUrl();
-        }
-        if (null !== $object->getCurrentUserAuthorizationsHtmlUrl()) {
-            $data['current_user_authorizations_html_url'] = $object->getCurrentUserAuthorizationsHtmlUrl();
-        }
-        if (null !== $object->getAuthorizationsUrl()) {
-            $data['authorizations_url'] = $object->getAuthorizationsUrl();
-        }
-        if (null !== $object->getCodeSearchUrl()) {
-            $data['code_search_url'] = $object->getCodeSearchUrl();
-        }
-        if (null !== $object->getCommitSearchUrl()) {
-            $data['commit_search_url'] = $object->getCommitSearchUrl();
-        }
-        if (null !== $object->getEmailsUrl()) {
-            $data['emails_url'] = $object->getEmailsUrl();
-        }
-        if (null !== $object->getEmojisUrl()) {
-            $data['emojis_url'] = $object->getEmojisUrl();
-        }
-        if (null !== $object->getEventsUrl()) {
-            $data['events_url'] = $object->getEventsUrl();
-        }
-        if (null !== $object->getFeedsUrl()) {
-            $data['feeds_url'] = $object->getFeedsUrl();
-        }
-        if (null !== $object->getFollowersUrl()) {
-            $data['followers_url'] = $object->getFollowersUrl();
-        }
-        if (null !== $object->getFollowingUrl()) {
-            $data['following_url'] = $object->getFollowingUrl();
-        }
-        if (null !== $object->getGistsUrl()) {
-            $data['gists_url'] = $object->getGistsUrl();
-        }
-        if (null !== $object->getHubUrl()) {
-            $data['hub_url'] = $object->getHubUrl();
-        }
-        if (null !== $object->getIssueSearchUrl()) {
-            $data['issue_search_url'] = $object->getIssueSearchUrl();
-        }
-        if (null !== $object->getIssuesUrl()) {
-            $data['issues_url'] = $object->getIssuesUrl();
-        }
-        if (null !== $object->getKeysUrl()) {
-            $data['keys_url'] = $object->getKeysUrl();
-        }
-        if (null !== $object->getLabelSearchUrl()) {
-            $data['label_search_url'] = $object->getLabelSearchUrl();
-        }
-        if (null !== $object->getNotificationsUrl()) {
-            $data['notifications_url'] = $object->getNotificationsUrl();
-        }
-        if (null !== $object->getOrganizationUrl()) {
-            $data['organization_url'] = $object->getOrganizationUrl();
-        }
-        if (null !== $object->getOrganizationRepositoriesUrl()) {
-            $data['organization_repositories_url'] = $object->getOrganizationRepositoriesUrl();
-        }
-        if (null !== $object->getOrganizationTeamsUrl()) {
-            $data['organization_teams_url'] = $object->getOrganizationTeamsUrl();
-        }
-        if (null !== $object->getPublicGistsUrl()) {
-            $data['public_gists_url'] = $object->getPublicGistsUrl();
-        }
-        if (null !== $object->getRateLimitUrl()) {
-            $data['rate_limit_url'] = $object->getRateLimitUrl();
-        }
-        if (null !== $object->getRepositoryUrl()) {
-            $data['repository_url'] = $object->getRepositoryUrl();
-        }
-        if (null !== $object->getRepositorySearchUrl()) {
-            $data['repository_search_url'] = $object->getRepositorySearchUrl();
-        }
-        if (null !== $object->getCurrentUserRepositoriesUrl()) {
-            $data['current_user_repositories_url'] = $object->getCurrentUserRepositoriesUrl();
-        }
-        if (null !== $object->getStarredUrl()) {
-            $data['starred_url'] = $object->getStarredUrl();
-        }
-        if (null !== $object->getStarredGistsUrl()) {
-            $data['starred_gists_url'] = $object->getStarredGistsUrl();
-        }
+        $data['current_user_url'] = $object->getCurrentUserUrl();
+        $data['current_user_authorizations_html_url'] = $object->getCurrentUserAuthorizationsHtmlUrl();
+        $data['authorizations_url'] = $object->getAuthorizationsUrl();
+        $data['code_search_url'] = $object->getCodeSearchUrl();
+        $data['commit_search_url'] = $object->getCommitSearchUrl();
+        $data['emails_url'] = $object->getEmailsUrl();
+        $data['emojis_url'] = $object->getEmojisUrl();
+        $data['events_url'] = $object->getEventsUrl();
+        $data['feeds_url'] = $object->getFeedsUrl();
+        $data['followers_url'] = $object->getFollowersUrl();
+        $data['following_url'] = $object->getFollowingUrl();
+        $data['gists_url'] = $object->getGistsUrl();
+        $data['hub_url'] = $object->getHubUrl();
+        $data['issue_search_url'] = $object->getIssueSearchUrl();
+        $data['issues_url'] = $object->getIssuesUrl();
+        $data['keys_url'] = $object->getKeysUrl();
+        $data['label_search_url'] = $object->getLabelSearchUrl();
+        $data['notifications_url'] = $object->getNotificationsUrl();
+        $data['organization_url'] = $object->getOrganizationUrl();
+        $data['organization_repositories_url'] = $object->getOrganizationRepositoriesUrl();
+        $data['organization_teams_url'] = $object->getOrganizationTeamsUrl();
+        $data['public_gists_url'] = $object->getPublicGistsUrl();
+        $data['rate_limit_url'] = $object->getRateLimitUrl();
+        $data['repository_url'] = $object->getRepositoryUrl();
+        $data['repository_search_url'] = $object->getRepositorySearchUrl();
+        $data['current_user_repositories_url'] = $object->getCurrentUserRepositoriesUrl();
+        $data['starred_url'] = $object->getStarredUrl();
+        $data['starred_gists_url'] = $object->getStarredGistsUrl();
         if (null !== $object->getTopicSearchUrl()) {
             $data['topic_search_url'] = $object->getTopicSearchUrl();
         }
-        if (null !== $object->getUserUrl()) {
-            $data['user_url'] = $object->getUserUrl();
-        }
-        if (null !== $object->getUserOrganizationsUrl()) {
-            $data['user_organizations_url'] = $object->getUserOrganizationsUrl();
-        }
-        if (null !== $object->getUserRepositoriesUrl()) {
-            $data['user_repositories_url'] = $object->getUserRepositoriesUrl();
-        }
-        if (null !== $object->getUserSearchUrl()) {
-            $data['user_search_url'] = $object->getUserSearchUrl();
-        }
+        $data['user_url'] = $object->getUserUrl();
+        $data['user_organizations_url'] = $object->getUserOrganizationsUrl();
+        $data['user_repositories_url'] = $object->getUserRepositoriesUrl();
+        $data['user_search_url'] = $object->getUserSearchUrl();
         return $data;
     }
 }

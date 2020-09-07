@@ -83,39 +83,19 @@ class SimpleCommitStatusNormalizer implements DenormalizerInterface, NormalizerI
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getDescription()) {
-            $data['description'] = $object->getDescription();
-        }
-        if (null !== $object->getId()) {
-            $data['id'] = $object->getId();
-        }
-        if (null !== $object->getNodeId()) {
-            $data['node_id'] = $object->getNodeId();
-        }
-        if (null !== $object->getState()) {
-            $data['state'] = $object->getState();
-        }
-        if (null !== $object->getContext()) {
-            $data['context'] = $object->getContext();
-        }
-        if (null !== $object->getTargetUrl()) {
-            $data['target_url'] = $object->getTargetUrl();
-        }
+        $data['description'] = $object->getDescription();
+        $data['id'] = $object->getId();
+        $data['node_id'] = $object->getNodeId();
+        $data['state'] = $object->getState();
+        $data['context'] = $object->getContext();
+        $data['target_url'] = $object->getTargetUrl();
         if (null !== $object->getRequired()) {
             $data['required'] = $object->getRequired();
         }
-        if (null !== $object->getAvatarUrl()) {
-            $data['avatar_url'] = $object->getAvatarUrl();
-        }
-        if (null !== $object->getUrl()) {
-            $data['url'] = $object->getUrl();
-        }
-        if (null !== $object->getCreatedAt()) {
-            $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
-        }
-        if (null !== $object->getUpdatedAt()) {
-            $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
-        }
+        $data['avatar_url'] = $object->getAvatarUrl();
+        $data['url'] = $object->getUrl();
+        $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
+        $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
         return $data;
     }
 }

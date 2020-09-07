@@ -65,27 +65,15 @@ class LabelNormalizer implements DenormalizerInterface, NormalizerInterface, Den
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getId()) {
-            $data['id'] = $object->getId();
-        }
-        if (null !== $object->getNodeId()) {
-            $data['node_id'] = $object->getNodeId();
-        }
-        if (null !== $object->getUrl()) {
-            $data['url'] = $object->getUrl();
-        }
-        if (null !== $object->getName()) {
-            $data['name'] = $object->getName();
-        }
+        $data['id'] = $object->getId();
+        $data['node_id'] = $object->getNodeId();
+        $data['url'] = $object->getUrl();
+        $data['name'] = $object->getName();
         if (null !== $object->getDescription()) {
             $data['description'] = $object->getDescription();
         }
-        if (null !== $object->getColor()) {
-            $data['color'] = $object->getColor();
-        }
-        if (null !== $object->getDefault()) {
-            $data['default'] = $object->getDefault();
-        }
+        $data['color'] = $object->getColor();
+        $data['default'] = $object->getDefault();
         return $data;
     }
 }

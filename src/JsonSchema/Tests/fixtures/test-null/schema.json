@@ -9,6 +9,16 @@
         },
         "nullOrString": {
             "type": ["string", "null"]
+        },
+        "required": {
+            "type": "string"
+        },
+        "requiredNull": {
+            "type": ["string", "null"]
         }
-    }
+    },
+    "required": [
+        "required",
+        "requiredNull"
+    ]
 }

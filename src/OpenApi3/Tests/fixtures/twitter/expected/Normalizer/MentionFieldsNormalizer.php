@@ -44,9 +44,7 @@ class MentionFieldsNormalizer implements DenormalizerInterface, NormalizerInterf
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getUsername()) {
-            $data['username'] = $object->getUsername();
-        }
+        $data['username'] = $object->getUsername();
         return $data;
     }
 }

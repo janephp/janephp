@@ -50,15 +50,9 @@ class InteractionLimitNormalizer implements DenormalizerInterface, NormalizerInt
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getLimit()) {
-            $data['limit'] = $object->getLimit();
-        }
-        if (null !== $object->getOrigin()) {
-            $data['origin'] = $object->getOrigin();
-        }
-        if (null !== $object->getExpiresAt()) {
-            $data['expires_at'] = $object->getExpiresAt()->format('Y-m-d\\TH:i:sP');
-        }
+        $data['limit'] = $object->getLimit();
+        $data['origin'] = $object->getOrigin();
+        $data['expires_at'] = $object->getExpiresAt()->format('Y-m-d\\TH:i:sP');
         return $data;
     }
 }

@@ -50,15 +50,9 @@ class CompactPlaceFieldsNormalizer implements DenormalizerInterface, NormalizerI
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getId()) {
-            $data['id'] = $object->getId();
-        }
-        if (null !== $object->getName()) {
-            $data['name'] = $object->getName();
-        }
-        if (null !== $object->getCountryCode()) {
-            $data['country_code'] = $object->getCountryCode();
-        }
+        $data['id'] = $object->getId();
+        $data['name'] = $object->getName();
+        $data['country_code'] = $object->getCountryCode();
         return $data;
     }
 }

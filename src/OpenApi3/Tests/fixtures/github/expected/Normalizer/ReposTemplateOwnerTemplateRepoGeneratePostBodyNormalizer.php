@@ -56,9 +56,7 @@ class ReposTemplateOwnerTemplateRepoGeneratePostBodyNormalizer implements Denorm
         if (null !== $object->getOwner()) {
             $data['owner'] = $object->getOwner();
         }
-        if (null !== $object->getName()) {
-            $data['name'] = $object->getName();
-        }
+        $data['name'] = $object->getName();
         if (null !== $object->getDescription()) {
             $data['description'] = $object->getDescription();
         }

@@ -66,12 +66,8 @@ class AuthenticationTokenNormalizer implements DenormalizerInterface, Normalizer
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getToken()) {
-            $data['token'] = $object->getToken();
-        }
-        if (null !== $object->getExpiresAt()) {
-            $data['expires_at'] = $object->getExpiresAt()->format('Y-m-d\\TH:i:sP');
-        }
+        $data['token'] = $object->getToken();
+        $data['expires_at'] = $object->getExpiresAt()->format('Y-m-d\\TH:i:sP');
         if (null !== $object->getPermissions()) {
             $data['permissions'] = $object->getPermissions();
         }

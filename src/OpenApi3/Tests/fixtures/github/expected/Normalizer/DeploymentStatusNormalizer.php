@@ -92,42 +92,20 @@ class DeploymentStatusNormalizer implements DenormalizerInterface, NormalizerInt
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getUrl()) {
-            $data['url'] = $object->getUrl();
-        }
-        if (null !== $object->getId()) {
-            $data['id'] = $object->getId();
-        }
-        if (null !== $object->getNodeId()) {
-            $data['node_id'] = $object->getNodeId();
-        }
-        if (null !== $object->getState()) {
-            $data['state'] = $object->getState();
-        }
-        if (null !== $object->getCreator()) {
-            $data['creator'] = $this->normalizer->normalize($object->getCreator(), 'json', $context);
-        }
-        if (null !== $object->getDescription()) {
-            $data['description'] = $object->getDescription();
-        }
+        $data['url'] = $object->getUrl();
+        $data['id'] = $object->getId();
+        $data['node_id'] = $object->getNodeId();
+        $data['state'] = $object->getState();
+        $data['creator'] = $this->normalizer->normalize($object->getCreator(), 'json', $context);
+        $data['description'] = $object->getDescription();
         if (null !== $object->getEnvironment()) {
             $data['environment'] = $object->getEnvironment();
         }
-        if (null !== $object->getTargetUrl()) {
-            $data['target_url'] = $object->getTargetUrl();
-        }
-        if (null !== $object->getCreatedAt()) {
-            $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
-        }
-        if (null !== $object->getUpdatedAt()) {
-            $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
-        }
-        if (null !== $object->getDeploymentUrl()) {
-            $data['deployment_url'] = $object->getDeploymentUrl();
-        }
-        if (null !== $object->getRepositoryUrl()) {
-            $data['repository_url'] = $object->getRepositoryUrl();
-        }
+        $data['target_url'] = $object->getTargetUrl();
+        $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
+        $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
+        $data['deployment_url'] = $object->getDeploymentUrl();
+        $data['repository_url'] = $object->getRepositoryUrl();
         if (null !== $object->getEnvironmentUrl()) {
             $data['environment_url'] = $object->getEnvironmentUrl();
         }

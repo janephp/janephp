@@ -44,9 +44,7 @@ class ReposOwnerRepoInteractionLimitsPutBodyNormalizer implements DenormalizerIn
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getLimit()) {
-            $data['limit'] = $object->getLimit();
-        }
+        $data['limit'] = $object->getLimit();
         return $data;
     }
 }

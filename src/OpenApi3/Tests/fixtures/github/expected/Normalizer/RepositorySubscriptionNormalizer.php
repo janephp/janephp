@@ -62,24 +62,12 @@ class RepositorySubscriptionNormalizer implements DenormalizerInterface, Normali
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getSubscribed()) {
-            $data['subscribed'] = $object->getSubscribed();
-        }
-        if (null !== $object->getIgnored()) {
-            $data['ignored'] = $object->getIgnored();
-        }
-        if (null !== $object->getReason()) {
-            $data['reason'] = $object->getReason();
-        }
-        if (null !== $object->getCreatedAt()) {
-            $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
-        }
-        if (null !== $object->getUrl()) {
-            $data['url'] = $object->getUrl();
-        }
-        if (null !== $object->getRepositoryUrl()) {
-            $data['repository_url'] = $object->getRepositoryUrl();
-        }
+        $data['subscribed'] = $object->getSubscribed();
+        $data['ignored'] = $object->getIgnored();
+        $data['reason'] = $object->getReason();
+        $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
+        $data['url'] = $object->getUrl();
+        $data['repository_url'] = $object->getRepositoryUrl();
         return $data;
     }
 }
