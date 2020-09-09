@@ -54,7 +54,8 @@
         "moneyphp/money": "^3.0"
     },
     "suggest": {
-        "friendsofphp/php-cs-fixer": "Allow to automatically fix cs on generated code for better visualisation"
+        "friendsofphp/php-cs-fixer": "Allow to automatically fix cs on generated code for better visualisation",
+        "phpdocumentor/reflection-docblock": "Allow to extract informations from PHP Doc blocks"
     },
     "conflict": {
         "symfony/framework-bundle": "5.1.0"

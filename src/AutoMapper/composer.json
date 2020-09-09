@@ -24,7 +24,8 @@
         "moneyphp/money": "^3.0"
     },
     "suggest": {
-        "symfony/serializer": "Allow to bridge mappers to normalizer and denormalizer"
+        "symfony/serializer": "Allow to bridge mappers to normalizer and denormalizer",
+        "phpdocumentor/reflection-docblock": "Allow to extract informations from PHP Doc blocks"
     },
     "conflict": {
         "symfony/serializer": "<4.2",
