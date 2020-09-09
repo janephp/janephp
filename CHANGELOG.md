@@ -7,6 +7,56 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [6.2.0] - 2020-09-09
+### Added
+- [OpenAPI] [GH#393](https://github.com/janephp/janephp/pull/393) Throw unexpected status code when nothing matched in Endpoint
+- [Jane] [GH#390](https://github.com/janephp/janephp/pull/390) Bring Runtime with generated files
+- [AutoMapper] [GH#397](https://github.com/janephp/janephp/pull/397) Update AutoMapper to be able to bind custom TransformerFactory
+- [JsonSchema] [GH#404](https://github.com/janephp/janephp/pull/404) Handle required fields
+
+### Changed
+- [Jane] [GH#388](https://github.com/janephp/janephp/pull/388) [GH#389](https://github.com/janephp/janephp/pull/389) Update `doctrine/inflector` to support both v1 & v2
+- [AutoMapper] [GH#403](https://github.com/janephp/janephp/pull/403)  Allow ^5.0 for phpdocumentor/reflection-docblock
+
+### Fixed
+- [AutoMapper] [GH#396](https://github.com/janephp/janephp/pull/396) Typo in DateTime transformer
+- [JsonSchema] [GH#394](https://github.com/janephp/janephp/pull/394) Return object in denormalize if data is null
+- [JsonSchema] [GH#392](https://github.com/janephp/janephp/pull/392) Nullable property handling
+
+### Documentation
+- [OpenAPI] [GH#395](https://github.com/janephp/janephp/pull/395) Better Authentication documentation
+
+## [6.1.0] - 2020-08-20
+### Changed
+- [OpenAPI] [GH#316](https://github.com/janephp/janephp/pull/316) Improvement & fix on whitelisted path feature
+- [AutoMapper] [GH#306](https://github.com/janephp/janephp/pull/306) AutoMapper update
+
+### Fixed
+- [AutoMapper] [GH#354](https://github.com/janephp/janephp/pull/354) Do not try to create an instance of an interface
+- [AutoMapper] [GH#353](https://github.com/janephp/janephp/pull/353) Allow date_time_format override from bundle
+- [AutoMapper] [GH#372](https://github.com/janephp/janephp/pull/372) Use copy transformer for sibling arrays
+- [Jane] [GH#371](https://github.com/janephp/janephp/pull/371) Exclude tests from classmap
+- [Jane] [GH#378](https://github.com/janephp/janephp/pull/378) Remove Tests and fixtures from distributed composer installs using .gitattributes
+
+### Refactoring
+- [Jane] [GH#315](https://github.com/janephp/janephp/pull/315) Normalize components
+- [OpenAPI] [GH#384](https://github.com/janephp/janephp/pull/384) Naming
+- [OpenAPI] [GH#382](https://github.com/janephp/janephp/pull/382) Guessers
+- [OpenAPI] [GH#381](https://github.com/janephp/janephp/pull/381) Generators
+- [OpenAPI] [GH#385](https://github.com/janephp/janephp/pull/385) Builder
+
+## [6.0.5] - 2020-08-18
+## Fixed
+- [JsonSchema] [GH#379](https://github.com/janephp/janephp/pull/379) Fixed array items with mixed types
+
+## [6.0.4] - 2020-08-03
+### Changed
+- [OpenAPI] [GH#362](https://github.com/janephp/janephp/pull/362) Allow non-standard HTTP codes
+- [Jane] [GH#364](https://github.com/janephp/janephp/pull/364) Use iterable instead of ArrayObject type hint
+
+### Fixed
+- [OpenAPI] [GH#365](https://github.com/janephp/janephp/pull/365) Client methods with invalid characters (Support for GitHub OpenAPI)
+
 ## [6.0.3] - 2020-07-29
 
 ### Added
@@ -336,7 +386,11 @@ See :
  * https://github.com/janephp/jane/releases
  * https://github.com/janephp/openapi/releases
 
-[Unreleased]: https://github.com/janephp/janephp/compare/v6.0.3...HEAD
+[Unreleased]: https://github.com/janephp/janephp/compare/v6.2.0...HEAD
+[6.2.0]: https://github.com/janephp/janephp/compare/v6.1.0...v6.2.0
+[6.1.0]: https://github.com/janephp/janephp/compare/v6.0.5...v6.1.0
+[6.0.5]: https://github.com/janephp/janephp/compare/v6.0.4...v6.0.5
+[6.0.4]: https://github.com/janephp/janephp/compare/v6.0.3...v6.0.4
 [6.0.3]: https://github.com/janephp/janephp/compare/v6.0.2...v6.0.3
 [6.0.2]: https://github.com/janephp/janephp/compare/v6.0.1...v6.0.2
 [6.0.1]: https://github.com/janephp/janephp/compare/v6.0.0...v6.0.1
