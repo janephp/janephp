@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [6.2.1] - 2020-09-10
+### Fixed
+- [OpenAPI] [GH#408](https://github.com/janephp/janephp/pull/408) Fix http_build_query method calls
+- [Jane] [GH#409](https://github.com/janephp/janephp/pull/409) Fix version constraints for Jane Packages
+
 ## [6.2.0] - 2020-09-09
 ### Added
 - [OpenAPI] [GH#393](https://github.com/janephp/janephp/pull/393) Throw unexpected status code when nothing matched in Endpoint
@@ -386,7 +391,8 @@ See :
  * https://github.com/janephp/jane/releases
  * https://github.com/janephp/openapi/releases
 
-[Unreleased]: https://github.com/janephp/janephp/compare/v6.2.0...HEAD
+[Unreleased]: https://github.com/janephp/janephp/compare/v6.2.1...HEAD
+[6.2.1]: https://github.com/janephp/janephp/compare/v6.2.0...v6.2.1
 [6.2.0]: https://github.com/janephp/janephp/compare/v6.1.0...v6.2.0
 [6.1.0]: https://github.com/janephp/janephp/compare/v6.0.5...v6.1.0
 [6.0.5]: https://github.com/janephp/janephp/compare/v6.0.4...v6.0.5
