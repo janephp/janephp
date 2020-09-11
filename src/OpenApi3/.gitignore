@@ -3,3 +3,4 @@ vendor/
 composer.lock
 Tests/fixtures/*/generated
 .php_cs.cache
+nohup.out

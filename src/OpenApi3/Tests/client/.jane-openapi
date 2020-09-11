@@ -1,0 +1,7 @@
+<?php
+
+return [
+    'openapi-file' => __DIR__ .  '/petstore.yaml',
+    'namespace' => 'Jane\OpenApi3\Tests\Client\PetStore',
+    'directory' => __DIR__ . '/generated',
+];

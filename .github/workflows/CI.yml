@@ -30,8 +30,12 @@ jobs:
         with:
           php-version: ${{ matrix.php-versions }}
           extensions: mbstring, fileinfo, json, intl, dom
-      - name: install
+      - name: composer install
         run: composer update --prefer-stable
+      - name: install prism
+        run: curl -L https://raw.githack.com/stoplightio/prism/master/install | sh
+      - name: run prism server
+        run: nohup prism mock -p 4010 -m src/OpenApi3/Tests/client/petstore.yaml &
       - name: tests
         run: vendor/bin/phpunit
   tests-lowest:
@@ -44,7 +48,11 @@ jobs:
         with:
           php-version: 7.2
           extensions: mbstring, fileinfo, json, intl, dom
-      - name: install
+      - name: composer install
         run: composer update --prefer-lowest --prefer-stable
+      - name: install prism
+        run: curl -L https://raw.githack.com/stoplightio/prism/master/install | sh
+      - name: run prism server
+        run: nohup prism mock -p 4010 -m src/OpenApi3/Tests/client/petstore.yaml &
       - name: tests
         run: vendor/bin/phpunit

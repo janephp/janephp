@@ -2,6 +2,8 @@
 
 namespace Jane\OpenApi3\Tests;
 
+use Jane\OpenApi3\Tests\Client\PetStore\Client;
+use Jane\OpenApi3\Tests\Client\PetStore\Model\Pet;
 use Jane\OpenApiCommon\Console\Command\GenerateCommand;
 use Jane\OpenApiCommon\Console\Loader\ConfigLoader;
 use Jane\OpenApiCommon\Console\Loader\OpenApiMatcher;
@@ -68,5 +70,21 @@ class JaneOpenApiResourceTest extends TestCase
         }
 
         return $data;
+    }
+
+    public function testClients(): void
+    {
+        // 1. Generate
+        $command = new GenerateCommand(new ConfigLoader(), new SchemaLoader(), new OpenApiMatcher());
+        $input = new ArrayInput(['--config-file' => __DIR__ . '/client' . \DIRECTORY_SEPARATOR . '.jane-openapi'], $command->getDefinition());
+        $command->execute($input, new NullOutput());
+
+        // 2. Test
+        $client = Client::create();
+        $pet = $client->showPetById(1);
+        $this->assertInstanceOf(Pet::class, $pet);
+        $this->assertIsInt($pet->getId());
+        $this->assertIsString($pet->getName());
+        $this->assertIsString($pet->getTag());
     }
 }
