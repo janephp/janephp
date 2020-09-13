@@ -2,10 +2,16 @@
 
 namespace Jane\OpenApi2\Tests;
 
+use Jane\OpenApi2\Tests\Client\Authentication\ApiKeyAuthAuthentication;
+use Jane\OpenApi2\Tests\Client\Client;
+use Jane\OpenApi2\Tests\Client\Exception\GetEndpointUnauthorizedException;
+use Jane\OpenApi2\Tests\Client\Model\Error;
+use Jane\OpenApi2\Tests\Client\Model\SimpleResponse;
 use Jane\OpenApiCommon\Console\Command\GenerateCommand;
 use Jane\OpenApiCommon\Console\Loader\ConfigLoader;
 use Jane\OpenApiCommon\Console\Loader\OpenApiMatcher;
 use Jane\OpenApiCommon\Console\Loader\SchemaLoader;
+use Jane\OpenApiRuntime\Client\Plugin\AuthenticationRegistry;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Output\NullOutput;
@@ -81,5 +87,27 @@ class JaneOpenApiResourceTest extends TestCase
         }
 
         return $data;
+    }
+
+    public function testClient(): void
+    {
+        // 1. Generate
+        $command = new GenerateCommand(new ConfigLoader(), new SchemaLoader(), new OpenApiMatcher());
+        $input = new ArrayInput(['--config-file' => __DIR__ . '/client' . \DIRECTORY_SEPARATOR . '.jane-openapi'], $command->getDefinition());
+        $command->execute($input, new NullOutput());
+
+        // 2. Test unauthorized
+        $client = Client::create();
+        try {
+            $client->getEndpoint();
+        } catch (GetEndpointUnauthorizedException $e) {
+            $this->assertEquals(401, $e->getCode());
+            $this->assertInstanceOf(Error::class, $e->getError());
+        }
+
+        // 3. Test
+        $client = Client::create(null, [new AuthenticationRegistry([new ApiKeyAuthAuthentication('api_key')])]);
+        $response = $client->getEndpoint();
+        $this->assertInstanceOf(SimpleResponse::class, $response);
     }
 }

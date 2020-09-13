@@ -2,6 +2,6 @@
 
 return [
     'openapi-file' => __DIR__ .  '/openapi.yaml',
-    'namespace' => 'Jane\OpenApi3\Tests\Client\PetStore',
+    'namespace' => 'Jane\OpenApi3\Tests\Client',
     'directory' => __DIR__ . '/generated',
 ];

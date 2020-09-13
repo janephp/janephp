@@ -28,7 +28,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Jane\\OpenApi3\\Tests\\Client\\PetStore\\": "/Tests/client/generated/"
+            "Jane\\OpenApi3\\Tests\\Client\\": "/Tests/client/generated/"
         }
     },
     "require": {

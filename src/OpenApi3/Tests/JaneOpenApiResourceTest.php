@@ -2,11 +2,11 @@
 
 namespace Jane\OpenApi3\Tests;
 
-use Jane\OpenApi3\Tests\Client\PetStore\Authentication\ApiKeyAuthAuthentication;
-use Jane\OpenApi3\Tests\Client\PetStore\Client;
-use Jane\OpenApi3\Tests\Client\PetStore\Exception\GetEndpointUnauthorizedException;
-use Jane\OpenApi3\Tests\Client\PetStore\Model\Error;
-use Jane\OpenApi3\Tests\Client\PetStore\Model\SimpleResponse;
+use Jane\OpenApi3\Tests\Client\Authentication\ApiKeyAuthAuthentication;
+use Jane\OpenApi3\Tests\Client\Client;
+use Jane\OpenApi3\Tests\Client\Exception\GetEndpointUnauthorizedException;
+use Jane\OpenApi3\Tests\Client\Model\Error;
+use Jane\OpenApi3\Tests\Client\Model\SimpleResponse;
 use Jane\OpenApiCommon\Console\Command\GenerateCommand;
 use Jane\OpenApiCommon\Console\Loader\ConfigLoader;
 use Jane\OpenApiCommon\Console\Loader\OpenApiMatcher;
@@ -76,7 +76,7 @@ class JaneOpenApiResourceTest extends TestCase
         return $data;
     }
 
-    public function testClients(): void
+    public function testClient(): void
     {
         // 1. Generate
         $command = new GenerateCommand(new ConfigLoader(), new SchemaLoader(), new OpenApiMatcher());

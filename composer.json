@@ -83,7 +83,8 @@
             "src/OpenApi3/Tests/"
         ],
         "psr-4": {
-            "Jane\\OpenApi3\\Tests\\Client\\PetStore\\": "src/OpenApi3/Tests/client/generated/"
+            "Jane\\OpenApi2\\Tests\\Client\\": "src/OpenApi2/Tests/client/generated/",
+            "Jane\\OpenApi3\\Tests\\Client\\": "src/OpenApi3/Tests/client/generated/"
         }
     },
     "bin": [

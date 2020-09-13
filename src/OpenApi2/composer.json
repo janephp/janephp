@@ -26,6 +26,11 @@
             "/Tests/"
         ]
     },
+    "autoload-dev": {
+        "psr-4": {
+            "Jane\\OpenApi2\\Tests\\Client\\": "/Tests/client/generated/"
+        }
+    },
     "require": {
         "php": ">=7.2",
         "ext-json": "*",

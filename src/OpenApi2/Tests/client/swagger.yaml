@@ -1,0 +1,46 @@
+swagger: '2.0'
+host: 127.0.0.1:4011
+basePath: "/"
+schemes:
+  - http
+info:
+  version: 1.0.0
+  title: Jane test client
+  license:
+    name: MIT
+paths:
+  "/endpoint":
+    get:
+      summary: Simple endpoint
+      operationId: getEndpoint
+      responses:
+        '200':
+          description: Simple endpoint response
+          schema:
+            "$ref": "#/definitions/SimpleResponse"
+        '401':
+          description: Unauthaurized response
+          schema:
+            "$ref": "#/definitions/Error"
+      produces:
+        - application/json
+definitions:
+  SimpleResponse:
+    type: object
+    properties:
+      foo:
+        type: string
+      baz:
+        type: boolean
+  Error:
+    type: object
+    properties:
+      message:
+        type: string
+security:
+  - ApiKeyAuth: []
+securityDefinitions:
+  ApiKeyAuth:
+    type: apiKey
+    in: header
+    name: X-API-Key

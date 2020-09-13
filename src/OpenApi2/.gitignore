@@ -1,5 +1,6 @@
 .idea
 vendor/
 composer.lock
+Tests/client/generated
 Tests/fixtures/*/generated
 .php_cs.cache

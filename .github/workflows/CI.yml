@@ -34,8 +34,10 @@ jobs:
         run: composer update --prefer-stable
       - name: install prism
         run: curl -L https://raw.githack.com/stoplightio/prism/master/install | sh
-      - name: run prism server
+      - name: run OpenApi3 prism server
         run: nohup prism mock -p 4010 -m src/OpenApi3/Tests/client/openapi.yaml &
+      - name: run OpenApi2 prism server
+        run: nohup prism mock -p 4011 -m src/OpenApi2/Tests/client/swagger.yaml &
       - name: tests
         run: vendor/bin/phpunit
   tests-lowest:
@@ -52,7 +54,9 @@ jobs:
         run: composer update --prefer-lowest --prefer-stable
       - name: install prism
         run: curl -L https://raw.githack.com/stoplightio/prism/master/install | sh
-      - name: run prism server
+      - name: run OpenApi3 prism server
         run: nohup prism mock -p 4010 -m src/OpenApi3/Tests/client/openapi.yaml &
+      - name: run OpenApi2 prism server
+        run: nohup prism mock -p 4011 -m src/OpenApi2/Tests/client/swagger.yaml &
       - name: tests
         run: vendor/bin/phpunit
