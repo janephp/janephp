@@ -15,7 +15,7 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
-    protected $normalizers = ['Jane\\OpenApi3\\Tests\\Client\\PetStore\\Model\\Pet' => 'Jane\\OpenApi3\\Tests\\Client\\PetStore\\Normalizer\\PetNormalizer', 'Jane\\OpenApi3\\Tests\\Client\\PetStore\\Model\\Error' => 'Jane\\OpenApi3\\Tests\\Client\\PetStore\\Normalizer\\ErrorNormalizer', '\\Jane\\JsonSchemaRuntime\\Reference' => '\\Jane\\OpenApi3\\Tests\\Client\\PetStore\\Runtime\\Normalizer\\ReferenceNormalizer'];
+    protected $normalizers = ['Jane\\OpenApi3\\Tests\\Client\\PetStore\\Model\\SimpleResponse' => 'Jane\\OpenApi3\\Tests\\Client\\PetStore\\Normalizer\\SimpleResponseNormalizer', 'Jane\\OpenApi3\\Tests\\Client\\PetStore\\Model\\Error' => 'Jane\\OpenApi3\\Tests\\Client\\PetStore\\Normalizer\\ErrorNormalizer', '\\Jane\\JsonSchemaRuntime\\Reference' => '\\Jane\\OpenApi3\\Tests\\Client\\PetStore\\Runtime\\Normalizer\\ReferenceNormalizer'];
     protected $normalizersCache = [];
 
     public function supportsDenormalization($data, $type, $format = null)

@@ -35,7 +35,7 @@ jobs:
       - name: install prism
         run: curl -L https://raw.githack.com/stoplightio/prism/master/install | sh
       - name: run prism server
-        run: nohup prism mock -p 4010 -m src/OpenApi3/Tests/client/petstore.yaml &
+        run: nohup prism mock -p 4010 -m src/OpenApi3/Tests/client/openapi.yaml &
       - name: tests
         run: vendor/bin/phpunit
   tests-lowest:
@@ -53,6 +53,6 @@ jobs:
       - name: install prism
         run: curl -L https://raw.githack.com/stoplightio/prism/master/install | sh
       - name: run prism server
-        run: nohup prism mock -p 4010 -m src/OpenApi3/Tests/client/petstore.yaml &
+        run: nohup prism mock -p 4010 -m src/OpenApi3/Tests/client/openapi.yaml &
       - name: tests
         run: vendor/bin/phpunit

@@ -2,12 +2,16 @@
 
 namespace Jane\OpenApi3\Tests;
 
+use Jane\OpenApi3\Tests\Client\PetStore\Authentication\ApiKeyAuthAuthentication;
 use Jane\OpenApi3\Tests\Client\PetStore\Client;
-use Jane\OpenApi3\Tests\Client\PetStore\Model\Pet;
+use Jane\OpenApi3\Tests\Client\PetStore\Exception\GetEndpointUnauthorizedException;
+use Jane\OpenApi3\Tests\Client\PetStore\Model\Error;
+use Jane\OpenApi3\Tests\Client\PetStore\Model\SimpleResponse;
 use Jane\OpenApiCommon\Console\Command\GenerateCommand;
 use Jane\OpenApiCommon\Console\Loader\ConfigLoader;
 use Jane\OpenApiCommon\Console\Loader\OpenApiMatcher;
 use Jane\OpenApiCommon\Console\Loader\SchemaLoader;
+use Jane\OpenApiRuntime\Client\Plugin\AuthenticationRegistry;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Output\NullOutput;
@@ -79,12 +83,18 @@ class JaneOpenApiResourceTest extends TestCase
         $input = new ArrayInput(['--config-file' => __DIR__ . '/client' . \DIRECTORY_SEPARATOR . '.jane-openapi'], $command->getDefinition());
         $command->execute($input, new NullOutput());
 
-        // 2. Test
+        // 2. Test unauthorized
         $client = Client::create();
-        $pet = $client->showPetById(1);
-        $this->assertInstanceOf(Pet::class, $pet);
-        $this->assertIsInt($pet->getId());
-        $this->assertIsString($pet->getName());
-        $this->assertIsString($pet->getTag());
+        try {
+            $client->getEndpoint();
+        } catch (GetEndpointUnauthorizedException $e) {
+            $this->assertEquals(401, $e->getCode());
+            $this->assertInstanceOf(Error::class, $e->getError());
+        }
+
+        // 3. Test
+        $client = Client::create(null, [new AuthenticationRegistry([new ApiKeyAuthAuthentication('api_key')])]);
+        $response = $client->getEndpoint();
+        $this->assertInstanceOf(SimpleResponse::class, $response);
     }
 }

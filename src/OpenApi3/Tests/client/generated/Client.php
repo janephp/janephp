@@ -5,39 +5,15 @@ namespace Jane\OpenApi3\Tests\Client\PetStore;
 class Client extends \Jane\OpenApi3\Tests\Client\PetStore\Runtime\Client\Client
 {
     /**
-     * @param array $queryParameters {
-     *
-     *     @var int $limit How many items to return at one time (max 100)
-     * }
-     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Jane\OpenApi3\Tests\Client\PetStore\Model\Pet[]|\Jane\OpenApi3\Tests\Client\PetStore\Model\Error|\Psr\Http\Message\ResponseInterface|null
-     */
-    public function listPets(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
-    {
-        return $this->executeEndpoint(new \Jane\OpenApi3\Tests\Client\PetStore\Endpoint\ListPets($queryParameters), $fetch);
-    }
-
-    /**
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \Jane\OpenApi3\Tests\Client\PetStore\Exception\GetEndpointUnauthorizedException
      *
-     * @return \Jane\OpenApi3\Tests\Client\PetStore\Model\Error|\Psr\Http\Message\ResponseInterface|null
+     * @return \Jane\OpenApi3\Tests\Client\PetStore\Model\SimpleResponse|\Psr\Http\Message\ResponseInterface|null
      */
-    public function createPets(string $fetch = self::FETCH_OBJECT)
+    public function getEndpoint(string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Jane\OpenApi3\Tests\Client\PetStore\Endpoint\CreatePets(), $fetch);
-    }
-
-    /**
-     * @param string $petId The id of the pet to retrieve
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     *
-     * @return \Jane\OpenApi3\Tests\Client\PetStore\Model\Pet|\Jane\OpenApi3\Tests\Client\PetStore\Model\Error|\Psr\Http\Message\ResponseInterface|null
-     */
-    public function showPetById(string $petId, string $fetch = self::FETCH_OBJECT)
-    {
-        return $this->executeEndpoint(new \Jane\OpenApi3\Tests\Client\PetStore\Endpoint\ShowPetById($petId), $fetch);
+        return $this->executeEndpoint(new \Jane\OpenApi3\Tests\Client\PetStore\Endpoint\GetEndpoint(), $fetch);
     }
 
     public static function create($httpClient = null, array $additionalPlugins = [])

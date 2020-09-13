@@ -1,0 +1,49 @@
+openapi: '3.0.3'
+info:
+  version: 1.0.0
+  title: Jane test client
+  license:
+    name: MIT
+servers:
+  - url: http://127.0.0.1/
+    variables:
+      port: { default: '4010' }
+paths:
+  /endpoint:
+    get:
+      summary: Simple endpoint
+      operationId: getEndpoint
+      responses:
+        '200':
+          description: Simple endpoint response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SimpleResponse'
+        '401':
+          description: Unauthaurized response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+security:
+  - ApiKeyAuth: []
+components:
+  schemas:
+    SimpleResponse:
+      type: object
+      properties:
+        foo:
+          type: string
+        baz:
+          type: boolean
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-Key
