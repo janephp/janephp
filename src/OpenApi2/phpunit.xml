@@ -10,4 +10,10 @@
             <exclude>Tests/fixtures</exclude>
         </testsuite>
     </testsuites>
+
+    <groups>
+        <exclude>
+            <group>prism</group>
+        </exclude>
+    </groups>
 </phpunit>

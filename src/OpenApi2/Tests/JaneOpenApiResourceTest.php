@@ -89,6 +89,9 @@ class JaneOpenApiResourceTest extends TestCase
         return $data;
     }
 
+    /**
+     * @group prism
+     */
     public function testClient(): void
     {
         // 1. Generate

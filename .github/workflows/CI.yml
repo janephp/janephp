@@ -39,7 +39,7 @@ jobs:
       - name: run OpenApi2 prism server
         run: nohup prism mock -p 4011 -m src/OpenApi2/Tests/client/swagger.yaml &
       - name: tests
-        run: vendor/bin/phpunit
+        run: vendor/bin/phpunit --exclude-group none
   tests-lowest:
     runs-on: ubuntu-latest
     steps:
@@ -59,4 +59,4 @@ jobs:
       - name: run OpenApi2 prism server
         run: nohup prism mock -p 4011 -m src/OpenApi2/Tests/client/swagger.yaml &
       - name: tests
-        run: vendor/bin/phpunit
+        run: vendor/bin/phpunit --exclude-group none
