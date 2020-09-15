@@ -7,6 +7,41 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [6.1.1] - 2020-09-15
+### Fixed
+- [Jane] [GH#414](https://github.com/janephp/janephp/pull/414) Fix dependencies for 6.1.x
+
+## [6.1.0] - 2020-08-20
+### Changed
+- [OpenAPI] [GH#316](https://github.com/janephp/janephp/pull/316) Improvement & fix on whitelisted path feature
+- [AutoMapper] [GH#306](https://github.com/janephp/janephp/pull/306) AutoMapper update
+
+### Fixed
+- [AutoMapper] [GH#354](https://github.com/janephp/janephp/pull/354) Do not try to create an instance of an interface
+- [AutoMapper] [GH#353](https://github.com/janephp/janephp/pull/353) Allow date_time_format override from bundle
+- [AutoMapper] [GH#372](https://github.com/janephp/janephp/pull/372) Use copy transformer for sibling arrays
+- [Jane] [GH#371](https://github.com/janephp/janephp/pull/371) Exclude tests from classmap
+- [Jane] [GH#378](https://github.com/janephp/janephp/pull/378) Remove Tests and fixtures from distributed composer installs using .gitattributes
+
+### Refactoring
+- [Jane] [GH#315](https://github.com/janephp/janephp/pull/315) Normalize components
+- [OpenAPI] [GH#384](https://github.com/janephp/janephp/pull/384) Naming
+- [OpenAPI] [GH#382](https://github.com/janephp/janephp/pull/382) Guessers
+- [OpenAPI] [GH#381](https://github.com/janephp/janephp/pull/381) Generators
+- [OpenAPI] [GH#385](https://github.com/janephp/janephp/pull/385) Builder
+
+## [6.0.5] - 2020-08-18
+## Fixed
+- [JsonSchema] [GH#379](https://github.com/janephp/janephp/pull/379) Fixed array items with mixed types
+
+## [6.0.4] - 2020-08-03
+### Changed
+- [OpenAPI] [GH#362](https://github.com/janephp/janephp/pull/362) Allow non-standard HTTP codes
+- [Jane] [GH#364](https://github.com/janephp/janephp/pull/364) Use iterable instead of ArrayObject type hint
+
+### Fixed
+- [OpenAPI] [GH#365](https://github.com/janephp/janephp/pull/365) Client methods with invalid characters (Support for GitHub OpenAPI)
+
 ## [6.0.3] - 2020-07-29
 
 ### Added
