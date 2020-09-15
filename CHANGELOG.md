@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [6.2.2] - 2020-09-15
+### Fixed
+- [Jane] [GH#416](https://github.com/janephp/janephp/pull/416) Fix version constraints for json-schema
+
 ## [6.2.1] - 2020-09-10
 ### Fixed
 - [OpenAPI] [GH#408](https://github.com/janephp/janephp/pull/408) Fix http_build_query method calls
@@ -30,6 +34,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Documentation
 - [OpenAPI] [GH#395](https://github.com/janephp/janephp/pull/395) Better Authentication documentation
+
+## [6.1.1] - 2020-09-15
+### Fixed
+- [Jane] [GH#414](https://github.com/janephp/janephp/pull/414) Fix dependencies for 6.1.x
 
 ## [6.1.0] - 2020-08-20
 ### Changed
@@ -391,9 +399,11 @@ See :
  * https://github.com/janephp/jane/releases
  * https://github.com/janephp/openapi/releases
 
-[Unreleased]: https://github.com/janephp/janephp/compare/v6.2.1...HEAD
+[Unreleased]: https://github.com/janephp/janephp/compare/v6.2.2...HEAD
+[6.2.2]: https://github.com/janephp/janephp/compare/v6.2.1...v6.2.2
 [6.2.1]: https://github.com/janephp/janephp/compare/v6.2.0...v6.2.1
-[6.2.0]: https://github.com/janephp/janephp/compare/v6.1.0...v6.2.0
+[6.2.0]: https://github.com/janephp/janephp/compare/v6.1.1...v6.2.0
+[6.1.1]: https://github.com/janephp/janephp/compare/v6.1.0...v6.1.1
 [6.1.0]: https://github.com/janephp/janephp/compare/v6.0.5...v6.1.0
 [6.0.5]: https://github.com/janephp/janephp/compare/v6.0.4...v6.0.5
 [6.0.4]: https://github.com/janephp/janephp/compare/v6.0.3...v6.0.4
