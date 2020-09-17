@@ -9,6 +9,7 @@ stub
 build
 .token
 
+tests/client/generated
 tests/generated/*
 !tests/generated/.gitkeep
 tests/fixtures/*/generated

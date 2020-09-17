@@ -34,6 +34,12 @@
         </whitelist>
     </filter>
 
+    <groups>
+        <exclude>
+            <group>prism</group>
+        </exclude>
+    </groups>
+
     <php>
         <server name="KERNEL_DIR" value="./src/AutoMapper/Bundle/Tests/Resources/app" />
         <server name="KERNEL_CLASS" value="DummyApp\AppKernel" />
