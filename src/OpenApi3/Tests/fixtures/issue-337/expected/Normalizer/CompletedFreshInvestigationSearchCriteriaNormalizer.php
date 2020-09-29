@@ -33,7 +33,7 @@ class CompletedFreshInvestigationSearchCriteriaNormalizer implements Denormalize
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \CreditSafe\API\Model\CompletedFreshInvestigationSearchCriteria();
-        if (null === $data) {
+        if (null === $data || false === \is_array($data)) {
             return $object;
         }
         if (\array_key_exists('additionalInfo', $data)) {

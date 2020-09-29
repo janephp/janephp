@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [6.2.3] - 2020-09-29
+### Fixed
+- [Jane] [GH#421](https://github.com/janephp/janephp/pull/421)  Fix non-array data in denormalize
+
+### Added
+- [OpenAPI] [GH#412](https://github.com/janephp/janephp/pull/412) Test generated client in CI
+
 ## [6.2.2] - 2020-09-15
 ### Fixed
 - [Jane] [GH#416](https://github.com/janephp/janephp/pull/416) Fix version constraints for json-schema
@@ -399,7 +406,8 @@ See :
  * https://github.com/janephp/jane/releases
  * https://github.com/janephp/openapi/releases
 
-[Unreleased]: https://github.com/janephp/janephp/compare/v6.2.2...HEAD
+[Unreleased]: https://github.com/janephp/janephp/compare/v6.2.3...HEAD
+[6.2.2]: https://github.com/janephp/janephp/compare/v6.2.2...v6.2.3
 [6.2.2]: https://github.com/janephp/janephp/compare/v6.2.1...v6.2.2
 [6.2.1]: https://github.com/janephp/janephp/compare/v6.2.0...v6.2.1
 [6.2.0]: https://github.com/janephp/janephp/compare/v6.1.1...v6.2.0
