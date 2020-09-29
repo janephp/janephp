@@ -33,7 +33,7 @@ class VideoMetricsNormalizer implements DenormalizerInterface, NormalizerInterfa
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Jane\OpenApi3\Tests\Expected\Model\VideoMetrics();
-        if (null === $data) {
+        if (null === $data || false === \is_array($data)) {
             return $object;
         }
         if (\array_key_exists('media_key', $data)) {

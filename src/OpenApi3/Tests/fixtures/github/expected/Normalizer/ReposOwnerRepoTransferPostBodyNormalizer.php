@@ -33,7 +33,7 @@ class ReposOwnerRepoTransferPostBodyNormalizer implements DenormalizerInterface,
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ReposOwnerRepoTransferPostBody();
-        if (null === $data) {
+        if (null === $data || false === \is_array($data)) {
             return $object;
         }
         if (\array_key_exists('new_owner', $data)) {

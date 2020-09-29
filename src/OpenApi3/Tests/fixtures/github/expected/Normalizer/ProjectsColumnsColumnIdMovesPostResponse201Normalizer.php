@@ -33,7 +33,7 @@ class ProjectsColumnsColumnIdMovesPostResponse201Normalizer implements Denormali
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ProjectsColumnsColumnIdMovesPostResponse201();
-        if (null === $data) {
+        if (null === $data || false === \is_array($data)) {
             return $object;
         }
         return $object;

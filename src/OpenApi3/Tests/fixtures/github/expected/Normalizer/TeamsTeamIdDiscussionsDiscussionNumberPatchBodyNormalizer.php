@@ -33,7 +33,7 @@ class TeamsTeamIdDiscussionsDiscussionNumberPatchBodyNormalizer implements Denor
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\TeamsTeamIdDiscussionsDiscussionNumberPatchBody();
-        if (null === $data) {
+        if (null === $data || false === \is_array($data)) {
             return $object;
         }
         if (\array_key_exists('title', $data)) {

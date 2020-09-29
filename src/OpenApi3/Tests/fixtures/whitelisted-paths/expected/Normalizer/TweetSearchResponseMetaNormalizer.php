@@ -33,7 +33,7 @@ class TweetSearchResponseMetaNormalizer implements DenormalizerInterface, Normal
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Jane\OpenApi3\Tests\Expected\Model\TweetSearchResponseMeta();
-        if (null === $data) {
+        if (null === $data || false === \is_array($data)) {
             return $object;
         }
         if (\array_key_exists('newest_id', $data)) {

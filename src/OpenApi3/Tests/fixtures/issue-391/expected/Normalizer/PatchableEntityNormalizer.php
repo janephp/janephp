@@ -33,7 +33,7 @@ class PatchableEntityNormalizer implements DenormalizerInterface, NormalizerInte
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Gounlaf\JanephpBug\Model\PatchableEntity();
-        if (null === $data) {
+        if (null === $data || false === \is_array($data)) {
             return $object;
         }
         if (\array_key_exists('nullable_property', $data) && $data['nullable_property'] !== null) {

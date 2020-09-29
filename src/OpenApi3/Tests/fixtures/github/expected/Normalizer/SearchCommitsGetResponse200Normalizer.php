@@ -33,7 +33,7 @@ class SearchCommitsGetResponse200Normalizer implements DenormalizerInterface, No
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\SearchCommitsGetResponse200();
-        if (null === $data) {
+        if (null === $data || false === \is_array($data)) {
             return $object;
         }
         if (\array_key_exists('total_count', $data)) {

@@ -33,7 +33,7 @@ class ReposOwnerRepoCheckSuitesPostBodyNormalizer implements DenormalizerInterfa
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ReposOwnerRepoCheckSuitesPostBody();
-        if (null === $data) {
+        if (null === $data || false === \is_array($data)) {
             return $object;
         }
         if (\array_key_exists('head_sha', $data)) {

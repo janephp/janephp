@@ -33,7 +33,7 @@ class InvoiceRetainerNormalizer implements DenormalizerInterface, NormalizerInte
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Jane\OpenApi2\Tests\Expected\Model\InvoiceRetainer();
-        if (null === $data) {
+        if (null === $data || false === \is_array($data)) {
             return $object;
         }
         if (\array_key_exists('id', $data)) {

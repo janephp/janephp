@@ -33,7 +33,7 @@ class ReposOwnerRepoLabelsNamePatchBodyNormalizer implements DenormalizerInterfa
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ReposOwnerRepoLabelsNamePatchBody();
-        if (null === $data) {
+        if (null === $data || false === \is_array($data)) {
             return $object;
         }
         if (\array_key_exists('new_name', $data)) {
