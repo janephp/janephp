@@ -33,7 +33,7 @@ class ReposOwnerRepoReleasesReleaseIdPatchBodyNormalizer implements Denormalizer
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ReposOwnerRepoReleasesReleaseIdPatchBody();
-        if (null === $data) {
+        if (null === $data || false === \is_array($data)) {
             return $object;
         }
         if (\array_key_exists('tag_name', $data)) {

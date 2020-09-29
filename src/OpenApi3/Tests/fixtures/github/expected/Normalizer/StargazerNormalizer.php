@@ -33,7 +33,7 @@ class StargazerNormalizer implements DenormalizerInterface, NormalizerInterface,
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\Stargazer();
-        if (null === $data) {
+        if (null === $data || false === \is_array($data)) {
             return $object;
         }
         if (\array_key_exists('starred_at', $data)) {

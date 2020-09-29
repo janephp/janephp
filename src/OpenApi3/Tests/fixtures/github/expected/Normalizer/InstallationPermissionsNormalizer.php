@@ -33,7 +33,7 @@ class InstallationPermissionsNormalizer implements DenormalizerInterface, Normal
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\InstallationPermissions();
-        if (null === $data) {
+        if (null === $data || false === \is_array($data)) {
             return $object;
         }
         if (\array_key_exists('deployments', $data)) {

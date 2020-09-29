@@ -33,7 +33,7 @@ class ScimUserNameNormalizer implements DenormalizerInterface, NormalizerInterfa
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ScimUserName();
-        if (null === $data) {
+        if (null === $data || false === \is_array($data)) {
             return $object;
         }
         if (\array_key_exists('givenName', $data) && $data['givenName'] !== null) {

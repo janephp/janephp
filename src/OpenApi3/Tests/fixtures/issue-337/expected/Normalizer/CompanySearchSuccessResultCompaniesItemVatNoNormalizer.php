@@ -33,7 +33,7 @@ class CompanySearchSuccessResultCompaniesItemVatNoNormalizer implements Denormal
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \CreditSafe\API\Model\CompanySearchSuccessResultCompaniesItemVatNo();
-        if (null === $data) {
+        if (null === $data || false === \is_array($data)) {
             return $object;
         }
         return $object;

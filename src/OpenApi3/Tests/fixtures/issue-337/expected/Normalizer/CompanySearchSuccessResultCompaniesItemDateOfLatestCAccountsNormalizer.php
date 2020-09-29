@@ -33,7 +33,7 @@ class CompanySearchSuccessResultCompaniesItemDateOfLatestCAccountsNormalizer imp
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \CreditSafe\API\Model\CompanySearchSuccessResultCompaniesItemDateOfLatestCAccounts();
-        if (null === $data) {
+        if (null === $data || false === \is_array($data)) {
             return $object;
         }
         return $object;

@@ -33,7 +33,7 @@ class SchemaObjectPropertyNormalizer implements DenormalizerInterface, Normalize
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Jane\OpenApi2\Tests\Expected\Model\SchemaObjectProperty();
-        if (null === $data) {
+        if (null === $data || false === \is_array($data)) {
             return $object;
         }
         if (\array_key_exists('stringProperty', $data)) {

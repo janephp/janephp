@@ -33,7 +33,7 @@ class BooksIdReviewsGetResponse200Normalizer implements DenormalizerInterface, N
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \ApiPlatform\Demo\Model\BooksIdReviewsGetResponse200();
-        if (null === $data) {
+        if (null === $data || false === \is_array($data)) {
             return $object;
         }
         if (\array_key_exists('hydra:member', $data)) {

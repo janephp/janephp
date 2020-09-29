@@ -45,26 +45,27 @@ trait DenormalizerGenerator
     {
         $context->refreshScope();
         $objectVariable = new Expr\Variable('object');
+        $dataVariable = new Expr\Variable('data');
         $statements = [];
 
         if ($this->useReference) {
             $statements[] = new Stmt\If_(
-                new Expr\Isset_([new Expr\ArrayDimFetch(new Expr\Variable('data'), new Scalar\String_('$ref'))]),
+                new Expr\Isset_([new Expr\ArrayDimFetch($dataVariable, new Scalar\String_('$ref'))]),
                 [
                     'stmts' => [
                         new Stmt\Return_(new Expr\New_(new Name('Reference'), [
-                            new Arg(new Expr\ArrayDimFetch(new Expr\Variable('data'), new Scalar\String_('$ref'))),
+                            new Arg(new Expr\ArrayDimFetch($dataVariable, new Scalar\String_('$ref'))),
                             new Arg(new Expr\ArrayDimFetch(new Expr\Variable('context'), new Scalar\String_('document-origin'))),
                         ])),
                     ],
                 ]
             );
             $statements[] = new Stmt\If_(
-                new Expr\Isset_([new Expr\ArrayDimFetch(new Expr\Variable('data'), new Scalar\String_('$recursiveRef'))]),
+                new Expr\Isset_([new Expr\ArrayDimFetch($dataVariable, new Scalar\String_('$recursiveRef'))]),
                 [
                     'stmts' => [
                         new Stmt\Return_(new Expr\New_(new Name('Reference'), [
-                            new Arg(new Expr\ArrayDimFetch(new Expr\Variable('data'), new Scalar\String_('$recursiveRef'))),
+                            new Arg(new Expr\ArrayDimFetch($dataVariable, new Scalar\String_('$recursiveRef'))),
                             new Arg(new Expr\ArrayDimFetch(new Expr\Variable('context'), new Scalar\String_('document-origin'))),
                         ])),
                     ],
@@ -81,17 +82,17 @@ trait DenormalizerGenerator
 
         $unset = \count($classGuess->getExtensionsType()) > 0;
 
-        $statements[] = new Stmt\If_(new Expr\BinaryOp\Identical(new Expr\ConstFetch(new Name('null')), new Expr\Variable('data')), [
+        $statements[] = new Stmt\If_(new Expr\BinaryOp\BooleanOr(new Expr\BinaryOp\Identical(new Expr\ConstFetch(new Name('null')), $dataVariable), new Expr\BinaryOp\Identical(new Expr\ConstFetch(new Name('false')), new Expr\FuncCall(new Name('\is_array'), [new Arg($dataVariable)]))), [
             'stmts' => [new Stmt\Return_($objectVariable)],
         ]);
 
         foreach ($classGuess->getProperties() as $property) {
-            $propertyVar = new Expr\ArrayDimFetch(new Expr\Variable('data'), new Scalar\String_($property->getName()));
+            $propertyVar = new Expr\ArrayDimFetch($dataVariable, new Scalar\String_($property->getName()));
             list($denormalizationStatements, $outputVar) = $property->getType()->createDenormalizationStatement($context, $propertyVar);
 
             $baseCondition = new Expr\FuncCall(new Name('\array_key_exists'), [
                 new Arg(new Scalar\String_($property->getName())),
-                new Arg(new Expr\Variable('data')),
+                new Arg($dataVariable),
             ]);
             $fullCondition = $baseCondition;
 
@@ -149,7 +150,7 @@ trait DenormalizerGenerator
         }
 
         if (\count($patternCondition) > 0) {
-            $statements[] = new Stmt\Foreach_(new Expr\Variable('data'), $loopValueVar, [
+            $statements[] = new Stmt\Foreach_($dataVariable, $loopValueVar, [
                 'keyVar' => $loopKeyVar,
                 'stmts' => $patternCondition,
             ]);
@@ -159,7 +160,7 @@ trait DenormalizerGenerator
         return new Stmt\ClassMethod('denormalize', [
             'type' => Stmt\Class_::MODIFIER_PUBLIC,
             'params' => [
-                new Param(new Expr\Variable('data')),
+                new Param($dataVariable),
                 new Param(new Expr\Variable('class')),
                 new Param(new Expr\Variable('format'), new Expr\ConstFetch(new Name('null'))),
                 new Param(new Expr\Variable('context'), new Expr\Array_(), 'array'),

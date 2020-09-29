@@ -33,7 +33,7 @@ class PullRequestHeadRepoOwnerNormalizer implements DenormalizerInterface, Norma
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\PullRequestHeadRepoOwner();
-        if (null === $data) {
+        if (null === $data || false === \is_array($data)) {
             return $object;
         }
         if (\array_key_exists('avatar_url', $data)) {

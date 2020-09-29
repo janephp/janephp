@@ -33,7 +33,7 @@ class ProjectsColumnsCardsCardIdMovesPostResponse503ErrorsItemNormalizer impleme
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ProjectsColumnsCardsCardIdMovesPostResponse503ErrorsItem();
-        if (null === $data) {
+        if (null === $data || false === \is_array($data)) {
             return $object;
         }
         if (\array_key_exists('code', $data)) {

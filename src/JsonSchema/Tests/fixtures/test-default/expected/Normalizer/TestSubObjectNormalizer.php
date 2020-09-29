@@ -33,7 +33,7 @@ class TestSubObjectNormalizer implements DenormalizerInterface, NormalizerInterf
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Jane\JsonSchema\Tests\Expected\Model\TestSubObject();
-        if (null === $data) {
+        if (null === $data || false === \is_array($data)) {
             return $object;
         }
         if (\array_key_exists('foo', $data) && $data['foo'] !== null) {

@@ -33,7 +33,7 @@ class CommitCommitTreeNormalizer implements DenormalizerInterface, NormalizerInt
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\CommitCommitTree();
-        if (null === $data) {
+        if (null === $data || false === \is_array($data)) {
             return $object;
         }
         if (\array_key_exists('sha', $data)) {

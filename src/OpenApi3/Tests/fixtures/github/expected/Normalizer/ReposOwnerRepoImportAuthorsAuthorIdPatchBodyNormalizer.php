@@ -33,7 +33,7 @@ class ReposOwnerRepoImportAuthorsAuthorIdPatchBodyNormalizer implements Denormal
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ReposOwnerRepoImportAuthorsAuthorIdPatchBody();
-        if (null === $data) {
+        if (null === $data || false === \is_array($data)) {
             return $object;
         }
         if (\array_key_exists('email', $data)) {

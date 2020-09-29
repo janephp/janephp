@@ -33,7 +33,7 @@ class BodyNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Jane\OpenApi2\Tests\Expected\Api1\Model\Body();
-        if (null === $data) {
+        if (null === $data || false === \is_array($data)) {
             return $object;
         }
         if (\array_key_exists('foo', $data)) {

@@ -33,7 +33,7 @@ class CommitNormalizer implements DenormalizerInterface, NormalizerInterface, De
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\Commit();
-        if (null === $data) {
+        if (null === $data || false === \is_array($data)) {
             return $object;
         }
         if (\array_key_exists('url', $data) && $data['url'] !== null) {

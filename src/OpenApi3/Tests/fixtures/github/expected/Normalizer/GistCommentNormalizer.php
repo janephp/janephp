@@ -33,7 +33,7 @@ class GistCommentNormalizer implements DenormalizerInterface, NormalizerInterfac
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\GistComment();
-        if (null === $data) {
+        if (null === $data || false === \is_array($data)) {
             return $object;
         }
         if (\array_key_exists('id', $data)) {

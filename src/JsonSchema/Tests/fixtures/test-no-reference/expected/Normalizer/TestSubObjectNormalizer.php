@@ -27,7 +27,7 @@ class TestSubObjectNormalizer implements DenormalizerInterface, NormalizerInterf
     public function denormalize($data, $class, $format = null, array $context = array())
     {
         $object = new \Jane\JsonSchema\Tests\Expected\Model\TestSubObject();
-        if (null === $data) {
+        if (null === $data || false === \is_array($data)) {
             return $object;
         }
         if (\array_key_exists('foo', $data)) {
