@@ -76,7 +76,7 @@ trait NormalizerGenerator
      *
      * @return Stmt\ClassMethod
      */
-    protected function createNormalizeMethod(string $modelFqdn, Context $context, ClassGuess $classGuess, bool $skipNullValues = true)
+    protected function createNormalizeMethod(string $modelFqdn, Context $context, ClassGuess $classGuess, bool $skipNullValues = true, bool $skipRequiredFields = false)
     {
         $context->refreshScope();
         $dataVariable = new Expr\Variable('data');
@@ -94,7 +94,7 @@ trait NormalizerGenerator
 
                 $normalizationStatements[] = new Stmt\Expression(new Expr\Assign(new Expr\ArrayDimFetch($dataVariable, new Scalar\String_($property->getName())), $outputVar));
 
-                if ($property->isRequired()) {
+                if (!$skipRequiredFields && $property->isRequired()) {
                     $statements = array_merge($statements, $normalizationStatements);
 
                     continue;
