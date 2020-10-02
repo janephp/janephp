@@ -144,6 +144,8 @@ Other options are available to customize the generated code:
  * ``skip-null-values``: When having nullable properties, you can enforce normalization to skip theses
    properties even if they are nullable. This option allows you to not have theses properties when they're not set
    (``null``). By default it is enabled.
+ * ``skip-required-fields``: If your model has required fields, this option allows you to skip the required behavior
+   that forces them to be present during denormalization. By default it is disabled.
 
 .. _`JSON Reference`: https://tools.ietf.org/id/draft-pbryan-zyp-json-ref-03.html
 .. _`Carbon`: https://carbon.nesbot.com/
