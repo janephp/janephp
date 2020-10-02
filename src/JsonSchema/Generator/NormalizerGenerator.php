@@ -46,17 +46,23 @@ class NormalizerGenerator implements GeneratorInterface
     protected $skipNullValues;
 
     /**
+     * @var bool if we handle required fields or not during Normalizer generation
+     */
+    protected $skipRequiedFields;
+
+    /**
      * @param bool $useReference               Whether to generate the JSON Reference system
      * @param bool $useCacheableSupportsMethod Whether to use the CacheableSupportsMethodInterface interface, for >sf 4.1
      * @param bool $skipNullValues             Skip null values or not
      */
-    public function __construct(Naming $naming, Parser $parser, bool $useReference = true, bool $useCacheableSupportsMethod = null, bool $skipNullValues = true)
+    public function __construct(Naming $naming, Parser $parser, bool $useReference = true, bool $useCacheableSupportsMethod = null, bool $skipNullValues = true, bool $skipRequiedFields = false)
     {
         $this->naming = $naming;
         $this->parser = $parser;
         $this->useReference = $useReference;
         $this->useCacheableSupportsMethod = $this->canUseCacheableSupportsMethod($useCacheableSupportsMethod);
         $this->skipNullValues = $skipNullValues;
+        $this->skipRequiedFields = $skipRequiedFields;
     }
 
     /**
@@ -81,7 +87,7 @@ class NormalizerGenerator implements GeneratorInterface
             $methods[] = $this->createSupportsDenormalizationMethod($modelFqdn);
             $methods[] = $this->createSupportsNormalizationMethod($modelFqdn);
             $methods[] = $this->createDenormalizeMethod($modelFqdn, $context, $class);
-            $methods[] = $this->createNormalizeMethod($modelFqdn, $context, $class, $this->skipNullValues);
+            $methods[] = $this->createNormalizeMethod($modelFqdn, $context, $class, $this->skipNullValues, $this->skipRequiedFields);
 
             if ($this->useCacheableSupportsMethod) {
                 $methods[] = $this->createHasCacheableSupportsMethod();

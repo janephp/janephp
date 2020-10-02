@@ -1,0 +1,10 @@
+<?php
+
+return [
+    'json-schema-file' => __DIR__ . '/schema.json',
+    'root-class' => 'Nullable',
+    'namespace' => 'Jane\JsonSchema\Tests\Expected',
+    'directory' => __DIR__ . '/generated',
+    'strict' => false,
+    'skip-required-fields' => true,
+];

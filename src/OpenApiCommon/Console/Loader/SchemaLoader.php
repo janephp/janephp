@@ -29,6 +29,7 @@ class SchemaLoader extends BaseSchemaLoader implements SchemaLoaderInterface
             'clean-generated',
             'use-cacheable-supports-method',
             'skip-null-values',
+            'skip-required-fields',
             'version',
             'whitelisted-paths',
             'endpoint-generator',
