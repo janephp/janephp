@@ -39,6 +39,7 @@ class SchemaLoader implements SchemaLoaderInterface
             'clean-generated',
             'use-cacheable-supports-method',
             'skip-null-values',
+            'skip-required-fields',
         ];
     }
 

@@ -66,6 +66,7 @@ class ConfigLoader implements ConfigLoaderInterface
             'clean-generated' => true,
             'use-cacheable-supports-method' => null,
             'skip-null-values' => true,
+            'skip-required-fields' => false,
         ];
     }
 }
