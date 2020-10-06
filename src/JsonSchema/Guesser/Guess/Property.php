@@ -2,6 +2,8 @@
 
 namespace Jane\JsonSchema\Guesser\Guess;
 
+use Jane\JsonSchema\Guesser\Validator\ValidatorGuess;
+
 class Property
 {
     /**
@@ -54,6 +56,9 @@ class Property
 
     /** @var bool */
     private $deprecated = false;
+
+    /** @var ValidatorGuess[] */
+    private $validators = [];
 
     public function __construct(object $object, string $name, string $reference, bool $nullable = false, bool $required = false, Type $type = null, string $description = null, $default = null, ?bool $readOnly = null)
     {
@@ -136,5 +141,15 @@ class Property
     public function isDeprecated(): bool
     {
         return $this->deprecated;
+    }
+
+    public function addValidatorGuess(ValidatorGuess $validatorGuess): void
+    {
+        $this->validators[] = $validatorGuess;
+    }
+
+    public function getValidatorGuesses(): array
+    {
+        return $this->validators;
     }
 }

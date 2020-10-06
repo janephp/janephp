@@ -8,6 +8,7 @@ use Jane\JsonSchema\Generator\ModelGenerator;
 use Jane\JsonSchema\Generator\Naming;
 use Jane\JsonSchema\Generator\NormalizerGenerator;
 use Jane\JsonSchema\Generator\RuntimeGenerator;
+use Jane\JsonSchema\Generator\ValidatorGenerator;
 use Jane\JsonSchema\Guesser\ChainGuesser;
 use Jane\JsonSchema\Guesser\JsonSchema\JsonSchemaGuesserFactory;
 use Jane\JsonSchema\JsonSchema\Normalizer\JaneObjectNormalizer;
@@ -107,6 +108,7 @@ class Jane extends ChainGenerator
         $self->addGenerator(new ModelGenerator($naming, $parser));
         $self->addGenerator(new NormalizerGenerator($naming, $parser, $options['reference'], $options['use-cacheable-supports-method'] ?? false, $options['skip-null-values'] ?? true, $options['skip-required-fields'] ?? false));
         $self->addGenerator(new RuntimeGenerator($naming, $parser));
+        $self->addGenerator(new ValidatorGenerator($naming));
 
         return $self;
     }

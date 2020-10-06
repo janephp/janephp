@@ -63,6 +63,17 @@ class ClassGuess
         return $this->properties;
     }
 
+    public function getProperty(string $name): ?Property
+    {
+        foreach ($this->properties as $property) {
+            if ($name === $property->getName()) {
+                return $property;
+            }
+        }
+
+        return null;
+    }
+
     public function setProperties(array $properties): void
     {
         $this->properties = $properties;
@@ -102,5 +113,17 @@ class ClassGuess
     public function isDeprecated(): bool
     {
         return $this->deprecated;
+    }
+
+    public function getValidatorGuesses(): array
+    {
+        $validatorGuesses = [];
+        foreach ($this->properties as $property) {
+            if (\count($propGuesses = $property->getValidatorGuesses()) > 0) {
+                $validatorGuesses[$property->getName()] = $propGuesses;
+            }
+        }
+
+        return $validatorGuesses;
     }
 }

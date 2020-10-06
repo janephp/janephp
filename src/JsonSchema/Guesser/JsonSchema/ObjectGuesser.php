@@ -14,6 +14,8 @@ use Jane\JsonSchema\Guesser\GuesserInterface;
 use Jane\JsonSchema\Guesser\GuesserResolverTrait;
 use Jane\JsonSchema\Guesser\PropertiesGuesserInterface;
 use Jane\JsonSchema\Guesser\TypeGuesserInterface;
+use Jane\JsonSchema\Guesser\Validator\ChainValidatorFactory;
+use Jane\JsonSchema\Guesser\Validator\ValidatorInterface;
 use Jane\JsonSchema\JsonSchema\Model\JsonSchema;
 use Jane\JsonSchema\Registry\Registry;
 use Jane\JsonSchemaRuntime\Reference;
@@ -29,10 +31,14 @@ class ObjectGuesser implements GuesserInterface, PropertiesGuesserInterface, Typ
      */
     protected $naming;
 
+    /** @var ValidatorInterface */
+    protected $chainValidator;
+
     public function __construct(Naming $naming, SerializerInterface $serializer)
     {
         $this->naming = $naming;
         $this->serializer = $serializer;
+        $this->chainValidator = ChainValidatorFactory::create();
     }
 
     /**
@@ -50,7 +56,7 @@ class ObjectGuesser implements GuesserInterface, PropertiesGuesserInterface, Typ
      */
     public function guessClass($object, string $name, string $reference, Registry $registry): void
     {
-        if (!$registry->hasClass($reference)) {
+        if (!($classGuess = $registry->getClass($reference)) instanceof ClassGuess) {
             $extensions = [];
 
             if ($object->getAdditionalProperties()) {
@@ -73,7 +79,8 @@ class ObjectGuesser implements GuesserInterface, PropertiesGuesserInterface, Typ
                 }
             }
 
-            $registry->getSchema($reference)->addClass($reference, $this->createClassGuess($object, $reference, $name, $extensions));
+            $classGuess = $this->createClassGuess($object, $reference, $name, $extensions);
+            $registry->getSchema($reference)->addClass($reference, $classGuess);
         }
 
         foreach ($object->getProperties() as $key => $property) {
@@ -103,10 +110,12 @@ class ObjectGuesser implements GuesserInterface, PropertiesGuesserInterface, Typ
                 $required = \in_array($key, $object->getRequired());
             }
 
-            $properties[$key] = new Property($property, $key, $reference . '/properties/' . $key, $nullable, $required, null, $propertyObj->getDescription(), $propertyObj->getDefault(), $propertyObj->getReadOnly());
+            $newProperty = new Property($property, $key, $reference . '/properties/' . $key, $nullable, $required, null, $propertyObj->getDescription(), $propertyObj->getDefault(), $propertyObj->getReadOnly());
             if (method_exists($propertyObj, 'getDeprecated')) {
-                $properties[$key]->setDeprecated($propertyObj->getDeprecated());
+                $newProperty->setDeprecated($propertyObj->getDeprecated());
             }
+            $this->chainValidator->guess($property, $name, $newProperty);
+            $properties[$key] = $newProperty;
         }
 
         return $properties;

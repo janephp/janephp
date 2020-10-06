@@ -1,0 +1,16 @@
+{
+    "type": "object",
+    "properties": {
+        "enumString": {
+            "type": "string",
+            "enum": ["foo", "bar", "baz"]
+        },
+        "enumArrayString": {
+            "type": ["string"],
+            "enum": ["foo", "bar", "baz"]
+        },
+        "enumNoType": {
+            "enum": ["foo", "bar", "baz"]
+        }
+    }
+}
