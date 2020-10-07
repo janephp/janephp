@@ -61,7 +61,8 @@
         "phpdocumentor/reflection-docblock": "Allow to extract informations from PHP Doc blocks"
     },
     "conflict": {
-        "symfony/framework-bundle": "5.1.0"
+        "symfony/framework-bundle": "5.1.0",
+        "symfony/property-info": "5.1.6 || 5.1.7"
     },
     "extra": {
         "branch-alias": {
