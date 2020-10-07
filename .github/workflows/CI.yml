@@ -9,7 +9,7 @@ jobs:
       - name: setup
         uses: shivammathur/setup-php@2.5.0
         with:
-          php-version: 7.2
+          php-version: 7.4
           extensions: mbstring, fileinfo, json, intl, dom
       - name: install
         run: composer update --prefer-stable
