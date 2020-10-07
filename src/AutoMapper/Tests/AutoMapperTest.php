@@ -692,4 +692,16 @@ class AutoMapperTest extends AutoMapperBaseTest
         self::assertEquals(1000, $newOrder->price->getAmount());
         self::assertEquals('EUR', $newOrder->price->getCurrency()->getCode());
     }
+
+    /**
+     * @requires PHP >= 7.4
+     */
+    public function testIssue425(): void
+    {
+        $data = [1, 2, 3, 4, 5];
+        $foo = new Fixtures\Issue425\Foo($data);
+        $bar = $this->autoMapper->map($foo, Fixtures\Issue425\Bar::class);
+
+        self::assertEquals($data, $bar->property);
+    }
 }

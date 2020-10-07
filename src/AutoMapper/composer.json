@@ -29,7 +29,8 @@
     },
     "conflict": {
         "symfony/serializer": "<4.2",
-        "symfony/framework-bundle": "5.1.0"
+        "symfony/framework-bundle": "5.1.0",
+        "symfony/property-info": "5.1.6 || 5.1.7"
     },
     "extra": {
         "branch-alias": {
