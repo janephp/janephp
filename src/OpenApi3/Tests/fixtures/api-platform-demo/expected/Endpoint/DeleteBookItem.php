@@ -21,7 +21,7 @@ class DeleteBookItem extends \ApiPlatform\Demo\Runtime\Client\BaseEndpoint imple
     }
     public function getUri() : string
     {
-        return str_replace(array('{id}'), array($this->id), '/books/{id}');
+        return (new \Rize\UriTemplate\UriTemplate())->expand('/books/{id}', array('id' => $this->id));
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {

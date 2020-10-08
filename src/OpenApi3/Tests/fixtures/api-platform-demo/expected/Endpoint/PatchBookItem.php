@@ -23,7 +23,7 @@ class PatchBookItem extends \ApiPlatform\Demo\Runtime\Client\BaseEndpoint implem
     }
     public function getUri() : string
     {
-        return str_replace(array('{id}'), array($this->id), '/books/{id}');
+        return (new \Rize\UriTemplate\UriTemplate())->expand('/books/{id}', array('id' => $this->id));
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {

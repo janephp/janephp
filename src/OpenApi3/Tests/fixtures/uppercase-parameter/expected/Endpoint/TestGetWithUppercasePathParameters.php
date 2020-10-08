@@ -21,7 +21,7 @@ class TestGetWithUppercasePathParameters extends \Jane\OpenApi3\Tests\Expected\R
     }
     public function getUri() : string
     {
-        return str_replace(array('{TestParameter}'), array($this->TestParameter), '/test-uppercase-path-parameters/{TestParameter}');
+        return (new \Rize\UriTemplate\UriTemplate())->expand('/test-uppercase-path-parameters/{TestParameter}', array('TestParameter' => $this->TestParameter));
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {

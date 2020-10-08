@@ -23,7 +23,7 @@ class PatchReviewItem extends \ApiPlatform\Demo\Runtime\Client\BaseEndpoint impl
     }
     public function getUri() : string
     {
-        return str_replace(array('{id}'), array($this->id), '/reviews/{id}');
+        return (new \Rize\UriTemplate\UriTemplate())->expand('/reviews/{id}', array('id' => $this->id));
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {

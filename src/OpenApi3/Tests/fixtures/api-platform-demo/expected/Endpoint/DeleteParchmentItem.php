@@ -21,7 +21,7 @@ class DeleteParchmentItem extends \ApiPlatform\Demo\Runtime\Client\BaseEndpoint 
     }
     public function getUri() : string
     {
-        return str_replace(array('{id}'), array($this->id), '/parchments/{id}');
+        return (new \Rize\UriTemplate\UriTemplate())->expand('/parchments/{id}', array('id' => $this->id));
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {

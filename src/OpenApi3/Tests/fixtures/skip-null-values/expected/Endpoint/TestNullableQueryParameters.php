@@ -28,6 +28,14 @@ class TestNullableQueryParameters extends \Jane\OpenApi3\Tests\Expected\Runtime\
     {
         return array(array(), null);
     }
+    public function getQueryString() : string
+    {
+        $optionsResolved = $this->getQueryOptionsResolver()->resolve($this->queryParameters);
+        $optionsResolved = array_map(static function ($value) {
+            return null !== $value ? $value : '';
+        }, $optionsResolved);
+        return ltrim((new \Rize\UriTemplate\UriTemplate())->expand('{?testNullableInteger}', $optionsResolved), '?');
+    }
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();

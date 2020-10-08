@@ -24,7 +24,7 @@ class GetParentsByParentIdChildChildId extends \Jane\OpenApi3\Tests\Expected\Run
     }
     public function getUri() : string
     {
-        return str_replace(array('{parent_id}', '{child_id}'), array($this->parent_id, $this->child_id), '/parents/{parent_id}/child/child_id/');
+        return (new \Rize\UriTemplate\UriTemplate())->expand('/parents/{parent_id}/child/child_id/', array('parent_id' => $this->parent_id, 'child_id' => $this->child_id));
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {

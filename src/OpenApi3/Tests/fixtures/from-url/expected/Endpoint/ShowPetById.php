@@ -21,7 +21,7 @@ class ShowPetById extends \Jane\OpenApi3\Tests\Expected\Runtime\Client\BaseEndpo
     }
     public function getUri() : string
     {
-        return str_replace(array('{petId}'), array($this->petId), '/pets/{petId}');
+        return (new \Rize\UriTemplate\UriTemplate())->expand('/pets/{petId}', array('petId' => $this->petId));
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {

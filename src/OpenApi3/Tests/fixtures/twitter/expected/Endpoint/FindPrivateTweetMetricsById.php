@@ -28,6 +28,14 @@ class FindPrivateTweetMetricsById extends \Jane\OpenApi3\Tests\Expected\Runtime\
     {
         return array(array(), null);
     }
+    public function getQueryString() : string
+    {
+        $optionsResolved = $this->getQueryOptionsResolver()->resolve($this->queryParameters);
+        $optionsResolved = array_map(static function ($value) {
+            return null !== $value ? $value : '';
+        }, $optionsResolved);
+        return ltrim((new \Rize\UriTemplate\UriTemplate())->expand('{?ids}', $optionsResolved), '?');
+    }
     public function getExtraHeaders() : array
     {
         return array('Accept' => array('application/json'));

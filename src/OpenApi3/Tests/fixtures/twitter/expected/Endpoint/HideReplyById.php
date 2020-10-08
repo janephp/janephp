@@ -23,7 +23,7 @@ class HideReplyById extends \Jane\OpenApi3\Tests\Expected\Runtime\Client\BaseEnd
     }
     public function getUri() : string
     {
-        return str_replace(array('{id}'), array($this->id), '/labs/1/tweets/{id}/hidden');
+        return (new \Rize\UriTemplate\UriTemplate())->expand('/labs/1/tweets/{id}/hidden', array('id' => $this->id));
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {

@@ -29,11 +29,19 @@ class ApiBooksReviewsGetSubresource extends \ApiPlatform\Demo\Runtime\Client\Bas
     }
     public function getUri() : string
     {
-        return str_replace(array('{id}'), array($this->id), '/books/{id}/reviews');
+        return (new \Rize\UriTemplate\UriTemplate())->expand('/books/{id}/reviews', array('id' => $this->id));
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
         return array(array(), null);
+    }
+    public function getQueryString() : string
+    {
+        $optionsResolved = $this->getQueryOptionsResolver()->resolve($this->queryParameters);
+        $optionsResolved = array_map(static function ($value) {
+            return null !== $value ? $value : '';
+        }, $optionsResolved);
+        return ltrim((new \Rize\UriTemplate\UriTemplate())->expand('{?order[id],order[publicationDate],book,book[]*,page}', $optionsResolved), '?');
     }
     public function getExtraHeaders() : array
     {

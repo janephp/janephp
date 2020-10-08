@@ -36,6 +36,14 @@ class GetBookCollection extends \ApiPlatform\Demo\Runtime\Client\BaseEndpoint im
     {
         return array(array(), null);
     }
+    public function getQueryString() : string
+    {
+        $optionsResolved = $this->getQueryOptionsResolver()->resolve($this->queryParameters);
+        $optionsResolved = array_map(static function ($value) {
+            return null !== $value ? $value : '';
+        }, $optionsResolved);
+        return ltrim((new \Rize\UriTemplate\UriTemplate())->expand('{?properties[]*,order[id],order[title],order[author],order[isbn],order[publicationDate],title,author,page}', $optionsResolved), '?');
+    }
     public function getExtraHeaders() : array
     {
         return array('Accept' => array('application/json'));
