@@ -78,7 +78,7 @@ trait GetGetUriTrait
                 if (self::$styleExpansionPrefixMap[$parameter->getStyle()] !== null) {
                     $prefix = self::$styleExpansionPrefixMap[$parameter->getStyle()];
                 }
-                $path = \str_replace(
+                $path = str_replace(
                     '{' . $parameter->getName() . '}',
                     '{' . $prefix . $parameter->getName() . $suffix . '}',
                     $path

@@ -50,7 +50,7 @@ trait GetGetQueryStringTrait
                     [
                         new Arg(new Expr\Closure([
                             'static' => true,
-                            'params' => [new Param(new Expr\Variable('value')),],
+                            'params' => [new Param(new Expr\Variable('value'))],
                             'stmts' => [new Stmt\Return_(new Expr\Ternary(
                                 new Expr\BinaryOp\NotIdentical(new Expr\ConstFetch(new Name('null')), new Expr\Variable('value')),
                                 new Expr\Variable('value'),
@@ -67,7 +67,7 @@ trait GetGetQueryStringTrait
                     'expand',
                     [
                         new Arg(new Scalar\String_($this->createQueryStringUriTemplate($operation, $guessClass))),
-                        new Arg(new Expr\Variable('optionsResolved'))
+                        new Arg(new Expr\Variable('optionsResolved')),
                     ]
                 ),
                 new Arg(new Scalar\String_('?')),
@@ -102,6 +102,6 @@ trait GetGetQueryStringTrait
             return '';
         }
 
-        return \rtrim($queryString, ',') . '}';
+        return rtrim($queryString, ',') . '}';
     }
 }
