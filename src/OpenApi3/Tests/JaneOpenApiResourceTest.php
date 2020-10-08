@@ -52,9 +52,9 @@ class JaneOpenApiResourceTest extends TestCase
                 $expectedPath = $expectedFile->getRealPath();
                 $actualPath = $generatedData[$expectedFile->getRelativePathname()];
 
-                $this->assertEquals(
-                    file_get_contents($expectedPath),
-                    file_get_contents($actualPath),
+                $this->assertFileEquals(
+                    $expectedPath,
+                    $actualPath,
                     'Expected ' . $expectedPath . ' got ' . $actualPath . ' in ' . $name
                 );
             }
