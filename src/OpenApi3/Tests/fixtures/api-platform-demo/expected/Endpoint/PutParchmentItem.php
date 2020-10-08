@@ -6,10 +6,10 @@ class PutParchmentItem extends \ApiPlatform\Demo\Runtime\Client\BaseEndpoint imp
 {
     protected $id;
     /**
-     * 
      *
-     * @param string $id 
-     * @param \stdClass|\ApiPlatform\Demo\Model\Parchment $requestBody 
+     *
+     * @param string $id
+     * @param \stdClass|\ApiPlatform\Demo\Model\Parchment $requestBody
      */
     public function __construct(string $id, $requestBody)
     {
@@ -23,7 +23,7 @@ class PutParchmentItem extends \ApiPlatform\Demo\Runtime\Client\BaseEndpoint imp
     }
     public function getUri() : string
     {
-        return (new \Rize\UriTemplate\UriTemplate())->expand('/parchments/{id}', array('id' => $this->id));
+        return str_replace(array('{id}'), array($this->id), '/parchments/{id}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {

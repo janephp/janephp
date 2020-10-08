@@ -6,14 +6,14 @@ class ApiBooksReviewsGetSubresource extends \ApiPlatform\Demo\Runtime\Client\Bas
 {
     protected $id;
     /**
-     * 
      *
-     * @param string $id 
+     *
+     * @param string $id
      * @param array $queryParameters {
-     *     @var string $order[id] 
-     *     @var string $order[publicationDate] 
-     *     @var string $book 
-     *     @var array $book[] 
+     *     @var string $order[id]
+     *     @var string $order[publicationDate]
+     *     @var string $book
+     *     @var array $book[]
      *     @var int $page The collection page number
      * }
      */
@@ -29,19 +29,11 @@ class ApiBooksReviewsGetSubresource extends \ApiPlatform\Demo\Runtime\Client\Bas
     }
     public function getUri() : string
     {
-        return (new \Rize\UriTemplate\UriTemplate())->expand('/books/{id}/reviews', array('id' => $this->id));
+        return str_replace(array('{id}'), array($this->id), '/books/{id}/reviews');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
         return array(array(), null);
-    }
-    public function getQueryString() : string
-    {
-        $optionsResolved = $this->getQueryOptionsResolver()->resolve($this->queryParameters);
-        $optionsResolved = array_map(static function ($value) {
-            return null !== $value ? $value : '';
-        }, $optionsResolved);
-        return ltrim((new \Rize\UriTemplate\UriTemplate())->expand('{?order[id],order[publicationDate],book,book[]*,page}', $optionsResolved), '?');
     }
     public function getExtraHeaders() : array
     {

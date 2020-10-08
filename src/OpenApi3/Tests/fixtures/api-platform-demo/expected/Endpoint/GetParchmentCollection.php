@@ -5,7 +5,7 @@ namespace ApiPlatform\Demo\Endpoint;
 class GetParchmentCollection extends \ApiPlatform\Demo\Runtime\Client\BaseEndpoint implements \ApiPlatform\Demo\Runtime\Client\Endpoint
 {
     /**
-     * 
+     *
      *
      * @param array $queryParameters {
      *     @var int $page The collection page number
@@ -27,14 +27,6 @@ class GetParchmentCollection extends \ApiPlatform\Demo\Runtime\Client\BaseEndpoi
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
         return array(array(), null);
-    }
-    public function getQueryString() : string
-    {
-        $optionsResolved = $this->getQueryOptionsResolver()->resolve($this->queryParameters);
-        $optionsResolved = array_map(static function ($value) {
-            return null !== $value ? $value : '';
-        }, $optionsResolved);
-        return ltrim((new \Rize\UriTemplate\UriTemplate())->expand('{?page}', $optionsResolved), '?');
     }
     public function getExtraHeaders() : array
     {

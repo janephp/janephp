@@ -6,9 +6,9 @@ class GetBookItem extends \ApiPlatform\Demo\Runtime\Client\BaseEndpoint implemen
 {
     protected $id;
     /**
-     * 
      *
-     * @param string $id 
+     *
+     * @param string $id
      */
     public function __construct(string $id)
     {
@@ -21,7 +21,7 @@ class GetBookItem extends \ApiPlatform\Demo\Runtime\Client\BaseEndpoint implemen
     }
     public function getUri() : string
     {
-        return (new \Rize\UriTemplate\UriTemplate())->expand('/books/{id}', array('id' => $this->id));
+        return str_replace(array('{id}'), array($this->id), '/books/{id}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {

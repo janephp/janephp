@@ -5,17 +5,17 @@ namespace ApiPlatform\Demo\Endpoint;
 class GetBookCollection extends \ApiPlatform\Demo\Runtime\Client\BaseEndpoint implements \ApiPlatform\Demo\Runtime\Client\Endpoint
 {
     /**
-     * 
+     *
      *
      * @param array $queryParameters {
      *     @var array $properties[] Allows you to reduce the response to contain only the properties you need. If your desired property is nested, you can address it using nested arrays. Example: properties[]={propertyName}&properties[]={anotherPropertyName}&properties[{nestedPropertyParent}][]={nestedProperty}
-     *     @var string $order[id] 
-     *     @var string $order[title] 
-     *     @var string $order[author] 
-     *     @var string $order[isbn] 
-     *     @var string $order[publicationDate] 
-     *     @var string $title 
-     *     @var string $author 
+     *     @var string $order[id]
+     *     @var string $order[title]
+     *     @var string $order[author]
+     *     @var string $order[isbn]
+     *     @var string $order[publicationDate]
+     *     @var string $title
+     *     @var string $author
      *     @var int $page The collection page number
      * }
      */
@@ -35,14 +35,6 @@ class GetBookCollection extends \ApiPlatform\Demo\Runtime\Client\BaseEndpoint im
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
         return array(array(), null);
-    }
-    public function getQueryString() : string
-    {
-        $optionsResolved = $this->getQueryOptionsResolver()->resolve($this->queryParameters);
-        $optionsResolved = array_map(static function ($value) {
-            return null !== $value ? $value : '';
-        }, $optionsResolved);
-        return ltrim((new \Rize\UriTemplate\UriTemplate())->expand('{?properties[]*,order[id],order[title],order[author],order[isbn],order[publicationDate],title,author,page}', $optionsResolved), '?');
     }
     public function getExtraHeaders() : array
     {

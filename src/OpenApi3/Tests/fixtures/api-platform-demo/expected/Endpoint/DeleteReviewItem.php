@@ -6,9 +6,9 @@ class DeleteReviewItem extends \ApiPlatform\Demo\Runtime\Client\BaseEndpoint imp
 {
     protected $id;
     /**
-     * 
      *
-     * @param string $id 
+     *
+     * @param string $id
      */
     public function __construct(string $id)
     {
@@ -21,7 +21,7 @@ class DeleteReviewItem extends \ApiPlatform\Demo\Runtime\Client\BaseEndpoint imp
     }
     public function getUri() : string
     {
-        return (new \Rize\UriTemplate\UriTemplate())->expand('/reviews/{id}', array('id' => $this->id));
+        return str_replace(array('{id}'), array($this->id), '/reviews/{id}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {

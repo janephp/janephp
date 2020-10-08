@@ -6,10 +6,10 @@ class PatchReviewItem extends \ApiPlatform\Demo\Runtime\Client\BaseEndpoint impl
 {
     protected $id;
     /**
-     * 
      *
-     * @param string $id 
-     * @param \ApiPlatform\Demo\Model\Review $requestBody 
+     *
+     * @param string $id
+     * @param \ApiPlatform\Demo\Model\Review $requestBody
      */
     public function __construct(string $id, \ApiPlatform\Demo\Model\Review $requestBody)
     {
@@ -23,7 +23,7 @@ class PatchReviewItem extends \ApiPlatform\Demo\Runtime\Client\BaseEndpoint impl
     }
     public function getUri() : string
     {
-        return (new \Rize\UriTemplate\UriTemplate())->expand('/reviews/{id}', array('id' => $this->id));
+        return str_replace(array('{id}'), array($this->id), '/reviews/{id}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
