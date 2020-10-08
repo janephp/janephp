@@ -33,7 +33,8 @@
         "symfony/string": "^5.0",
         "symfony/translation-contracts": "^2.0",
         "symfony/var-dumper": "^4.4 || ^5.0",
-        "symfony/yaml": "~4.4.9 || ^5.0"
+        "symfony/yaml": "~4.4.9 || ^5.0",
+        "rize/uri-template": "^0.3"
     },
     "replace": {
         "jane-php/automapper": "self.version",
