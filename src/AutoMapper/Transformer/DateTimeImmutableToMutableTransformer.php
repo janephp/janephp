@@ -19,7 +19,7 @@ final class DateTimeImmutableToMutableTransformer implements TransformerInterfac
     /**
      * {@inheritdoc}
      */
-    public function transform(Expr $input, PropertyMapping $propertyMapping, UniqueVariableScope $uniqueVariableScope): array
+    public function transform(Expr $input, Expr $target, PropertyMapping $propertyMapping, UniqueVariableScope $uniqueVariableScope): array
     {
         return [
             new Expr\StaticCall(new Name\FullyQualified(\DateTime::class), 'createFromFormat', [

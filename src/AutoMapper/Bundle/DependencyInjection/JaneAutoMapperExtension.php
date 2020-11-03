@@ -2,12 +2,12 @@
 
 namespace Jane\AutoMapper\Bundle\DependencyInjection;
 
-use Jane\AutoMapper\AutoMapperNormalizer;
 use Jane\AutoMapper\Bundle\AutoMapper;
 use Jane\AutoMapper\Bundle\Configuration\RestrictConfigurationPass;
 use Jane\AutoMapper\MapperGeneratorMetadataFactory;
 use Jane\AutoMapper\MapperGeneratorMetadataInterface;
 use Jane\AutoMapper\MapperMetadata;
+use Jane\AutoMapper\Normalizer\AutoMapperNormalizer;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;

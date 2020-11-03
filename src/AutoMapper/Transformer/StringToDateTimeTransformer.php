@@ -29,7 +29,7 @@ final class StringToDateTimeTransformer implements TransformerInterface
     /**
      * {@inheritdoc}
      */
-    public function transform(Expr $input, PropertyMapping $propertyMapping, UniqueVariableScope $uniqueVariableScope): array
+    public function transform(Expr $input, Expr $target, PropertyMapping $propertyMapping, UniqueVariableScope $uniqueVariableScope): array
     {
         $className = \DateTimeInterface::class === $this->className ? \DateTimeImmutable::class : $this->className;
 

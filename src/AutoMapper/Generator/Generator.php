@@ -138,7 +138,7 @@ final class Generator
                 continue;
             }
 
-            [$output, $propStatements] = $transformer->transform($propertyMapping->getReadAccessor()->getExpression($sourceInput), $propertyMapping, $uniqueVariableScope);
+            [$output, $propStatements] = $transformer->transform($propertyMapping->getReadAccessor()->getExpression($sourceInput), $result, $propertyMapping, $uniqueVariableScope);
             $writeExpression = $propertyMapping->getWriteMutator()->getExpression($result, $output, $transformer->assignByRef());
 
             if (null === $writeExpression) {
@@ -316,7 +316,7 @@ final class Generator
         $classDiscriminatorMapping = 'array' !== $target && null !== $this->classDiscriminator ? $this->classDiscriminator->getMappingForClass($target) : null;
 
         if (null !== $classDiscriminatorMapping && null !== ($propertyMapping = $mapperMetadata->getPropertyMapping($classDiscriminatorMapping->getTypeProperty()))) {
-            [$output, $createObjectStatements] = $propertyMapping->getTransformer()->transform($propertyMapping->getReadAccessor()->getExpression($sourceInput), $propertyMapping, $uniqueVariableScope);
+            [$output, $createObjectStatements] = $propertyMapping->getTransformer()->transform($propertyMapping->getReadAccessor()->getExpression($sourceInput), $result, $propertyMapping, $uniqueVariableScope);
 
             foreach ($classDiscriminatorMapping->getTypesMapping() as $typeValue => $typeTarget) {
                 $mapperName = 'Discriminator_Mapper_' . $source . '_' . $typeTarget;
@@ -357,7 +357,7 @@ final class Generator
 
                 $constructVar = new Expr\Variable($uniqueVariableScope->getUniqueName('constructArg'));
 
-                [$output, $propStatements] = $propertyMapping->getTransformer()->transform($propertyMapping->getReadAccessor()->getExpression($sourceInput), $propertyMapping, $uniqueVariableScope);
+                [$output, $propStatements] = $propertyMapping->getTransformer()->transform($propertyMapping->getReadAccessor()->getExpression($sourceInput), $constructVar, $propertyMapping, $uniqueVariableScope);
                 $constructArguments[$parameter->getPosition()] = new Arg($constructVar);
 
                 $propStatements[] = new Stmt\Expression(new Expr\Assign($constructVar, $output));

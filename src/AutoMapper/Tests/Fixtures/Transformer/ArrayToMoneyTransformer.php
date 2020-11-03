@@ -22,7 +22,7 @@ final class ArrayToMoneyTransformer implements TransformerInterface
     /**
      * {@inheritdoc}
      */
-    public function transform(Expr $input, PropertyMapping $propertyMapping, UniqueVariableScope $uniqueVariableScope): array
+    public function transform(Expr $input, Expr $target, PropertyMapping $propertyMapping, UniqueVariableScope $uniqueVariableScope): array
     {
         return [new Expr\New_(new Name\FullyQualified(Money::class), [
             new Arg(new Expr\ArrayDimFetch($input, new String_('amount'))),

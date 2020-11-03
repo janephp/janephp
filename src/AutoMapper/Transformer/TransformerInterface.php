@@ -19,7 +19,7 @@ interface TransformerInterface
      *
      * @return [Expr, Stmt[]] First value is the output expression, second value is an array of stmt needed to get the output
      */
-    public function transform(Expr $input, PropertyMapping $propertyMapping, UniqueVariableScope $uniqueVariableScope): array;
+    public function transform(Expr $input, Expr $target, PropertyMapping $propertyMapping, UniqueVariableScope $uniqueVariableScope): array;
 
     /**
      * Get dependencies for this transformer.

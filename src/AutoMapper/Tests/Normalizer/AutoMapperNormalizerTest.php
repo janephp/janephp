@@ -1,8 +1,10 @@
 <?php
 
-namespace Jane\AutoMapper\Tests;
+namespace Jane\AutoMapper\Tests\Normalizer;
 
-use Jane\AutoMapper\AutoMapperNormalizer;
+use Jane\AutoMapper\Normalizer\AutoMapperNormalizer;
+use Jane\AutoMapper\Tests\AutoMapperBaseTest;
+use Jane\AutoMapper\Tests\Fixtures;
 
 /**
  * @author Baptiste Leduc <baptiste.leduc@gmail.com>
