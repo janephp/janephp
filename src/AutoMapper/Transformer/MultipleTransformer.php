@@ -43,7 +43,7 @@ final class MultipleTransformer implements TransformerInterface
     /**
      * {@inheritdoc}
      */
-    public function transform(Expr $input, PropertyMapping $propertyMapping, UniqueVariableScope $uniqueVariableScope): array
+    public function transform(Expr $input, Expr $target, PropertyMapping $propertyMapping, UniqueVariableScope $uniqueVariableScope): array
     {
         $output = new Expr\Variable($uniqueVariableScope->getUniqueName('value'));
         $statements = [
@@ -54,7 +54,7 @@ final class MultipleTransformer implements TransformerInterface
             $transformer = $transformerData['transformer'];
             $type = $transformerData['type'];
 
-            [$transformerOutput, $transformerStatements] = $transformer->transform($input, $propertyMapping, $uniqueVariableScope);
+            [$transformerOutput, $transformerStatements] = $transformer->transform($input, $target, $propertyMapping, $uniqueVariableScope);
 
             $assignClass = $transformer->assignByRef() ? Expr\AssignRef::class : Expr\Assign::class;
             $statements[] = new Stmt\If_(

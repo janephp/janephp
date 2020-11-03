@@ -24,7 +24,7 @@ final class ArrayTransformer implements TransformerInterface
     /**
      * {@inheritdoc}
      */
-    public function transform(Expr $input, PropertyMapping $propertyMapping, UniqueVariableScope $uniqueVariableScope): array
+    public function transform(Expr $input, Expr $target, PropertyMapping $propertyMapping, UniqueVariableScope $uniqueVariableScope): array
     {
         $valuesVar = new Expr\Variable($uniqueVariableScope->getUniqueName('values'));
         $statements = [
@@ -34,7 +34,7 @@ final class ArrayTransformer implements TransformerInterface
 
         $loopValueVar = new Expr\Variable($uniqueVariableScope->getUniqueName('value'));
 
-        [$output, $itemStatements] = $this->itemTransformer->transform($loopValueVar, $propertyMapping, $uniqueVariableScope);
+        [$output, $itemStatements] = $this->itemTransformer->transform($loopValueVar, $target, $propertyMapping, $uniqueVariableScope);
 
         if ($this->itemTransformer->assignByRef()) {
             $itemStatements[] = new Stmt\Expression(new Expr\AssignRef(new Expr\ArrayDimFetch($valuesVar), $output));

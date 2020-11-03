@@ -55,7 +55,7 @@
         <service id="Jane\AutoMapper\Transformer\ChainTransformerFactory" />
         <service id="Jane\AutoMapper\Transformer\TransformerFactoryInterface" alias="Jane\AutoMapper\Transformer\ChainTransformerFactory" />
 
-        <service id="Jane\AutoMapper\AutoMapperNormalizer">
+        <service id="Jane\AutoMapper\Normalizer\AutoMapperNormalizer">
             <argument type="service" id="Jane\AutoMapper\AutoMapperInterface" />
         </service>
 

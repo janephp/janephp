@@ -533,6 +533,45 @@ class AutoMapperTest extends AutoMapperBaseTest
         self::assertNull($userDto->getName());
     }
 
+    public function testMappingWithTargetObjectWithNoObjectToPopulate(): void
+    {
+        $configurationUser = $this->autoMapper->getMetadata(Fixtures\User::class, Fixtures\UserDTOMerged::class);
+        $configurationUser->forMember('properties', function (Fixtures\User $user, Fixtures\UserDTOMerged $target) {
+            return array_merge($target->getProperties(), [
+                'name' => $user->name,
+                'age' => $user->age,
+            ]);
+        });
+
+        $user = new Fixtures\User(1, 'yolo', '13');
+        $userDto = $this->autoMapper->map($user, Fixtures\UserDTOMerged::class);
+
+        self::assertArrayHasKey('name', $userDto->getProperties());
+        self::assertArrayHasKey('age', $userDto->getProperties());
+        self::assertArrayNotHasKey('gender', $userDto->getProperties());
+    }
+
+    public function testMappingWithTargetObjectWithObjectToPopulate(): void
+    {
+        $configurationUser = $this->autoMapper->getMetadata(Fixtures\User::class, Fixtures\UserDTOMerged::class);
+        $configurationUser->forMember('properties', function (Fixtures\User $user, Fixtures\UserDTOMerged $target) {
+            return array_merge($target->getProperties(), [
+                'name' => $user->name,
+                'age' => $user->age,
+            ]);
+        });
+
+        $user = new Fixtures\User(1, 'yolo', '13');
+        $dto = new Fixtures\UserDTOMerged();
+        $dto->setProperties(['gender' => 1]);
+
+        $userDto = $this->autoMapper->map($user, $dto);
+
+        self::assertArrayHasKey('name', $userDto->getProperties());
+        self::assertArrayHasKey('age', $userDto->getProperties());
+        self::assertArrayHasKey('gender', $userDto->getProperties());
+    }
+
     public function testNameConverter(): void
     {
         $nameConverter = new class() implements AdvancedNameConverterInterface {

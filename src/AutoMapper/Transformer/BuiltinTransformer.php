@@ -69,7 +69,7 @@ final class BuiltinTransformer implements TransformerInterface
     /**
      * {@inheritdoc}
      */
-    public function transform(Expr $input, PropertyMapping $propertyMapping, UniqueVariableScope $uniqueVariableScope): array
+    public function transform(Expr $input, Expr $target, PropertyMapping $propertyMapping, UniqueVariableScope $uniqueVariableScope): array
     {
         $targetTypes = array_map(function (Type $type) {
             return $type->getBuiltinType();

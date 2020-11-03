@@ -27,9 +27,9 @@ final class NullableTransformer implements TransformerInterface
     /**
      * {@inheritdoc}
      */
-    public function transform(Expr $input, PropertyMapping $propertyMapping, UniqueVariableScope $uniqueVariableScope): array
+    public function transform(Expr $input, Expr $target, PropertyMapping $propertyMapping, UniqueVariableScope $uniqueVariableScope): array
     {
-        [$output, $itemStatements] = $this->itemTransformer->transform($input, $propertyMapping, $uniqueVariableScope);
+        [$output, $itemStatements] = $this->itemTransformer->transform($input, $target, $propertyMapping, $uniqueVariableScope);
 
         $newOutput = null;
         $statements = [];

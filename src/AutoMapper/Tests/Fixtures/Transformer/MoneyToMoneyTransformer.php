@@ -21,7 +21,7 @@ final class MoneyToMoneyTransformer implements TransformerInterface
     /**
      * {@inheritdoc}
      */
-    public function transform(Expr $input, PropertyMapping $propertyMapping, UniqueVariableScope $uniqueVariableScope): array
+    public function transform(Expr $input, Expr $target, PropertyMapping $propertyMapping, UniqueVariableScope $uniqueVariableScope): array
     {
         return [
             new Expr\New_(new Name\FullyQualified(Money::class), [

@@ -1,7 +1,9 @@
 <?php
 
-namespace Jane\AutoMapper;
+namespace Jane\AutoMapper\Normalizer;
 
+use Jane\AutoMapper\AutoMapper;
+use Jane\AutoMapper\MapperContext;
 use Symfony\Component\Serializer\Normalizer\AbstractNormalizer;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
@@ -22,16 +24,12 @@ class AutoMapperNormalizer implements NormalizerInterface, DenormalizerInterface
 
     public function normalize($object, $format = null, array $context = [])
     {
-        $autoMapperContext = $this->createAutoMapperContext($context);
-
-        return $this->autoMapper->map($object, 'array', $autoMapperContext);
+        return $this->autoMapper->map($object, 'array', $this->createAutoMapperContext($context));
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        $autoMapperContext = $this->createAutoMapperContext($context);
-
-        return $this->autoMapper->map($data, $class, $autoMapperContext);
+        return $this->autoMapper->map($data, $class, $this->createAutoMapperContext($context));
     }
 
     public function supportsNormalization($data, $format = null)
