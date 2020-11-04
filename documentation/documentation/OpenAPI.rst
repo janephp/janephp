@@ -98,7 +98,7 @@ The configuration file consists of a simple PHP script returning an array::
 
     return [
         'openapi-file' => __DIR__ . '/open-api.json',
-        'namespace' => 'Vendor\Library\Api',
+        'namespace' => 'Vendor\Library\Generated',
         'directory' => __DIR__ . '/generated',
     ];
 
@@ -116,7 +116,7 @@ files:
 
     "autoload": {
         "psr-4": {
-            "Vendor\\Library\\Api\\": "generated/"
+            "Vendor\\Library\\Generated\\": "generated/"
         }
     }
 
