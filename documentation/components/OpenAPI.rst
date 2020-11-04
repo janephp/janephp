@@ -93,7 +93,7 @@ The configuration file consists of a simple PHP script returning an array::
 
     return [
         'openapi-file' => __DIR__ . '/open-api.json',
-        'namespace' => 'Vendor\Library\Api',
+        'namespace' => 'Vendor\Library\Generated',
         'directory' => __DIR__ . '/generated',
     ];
 
@@ -109,7 +109,7 @@ files::
 
     "autoload": {
         "psr-4": {
-            "Vendor\\Library\\Api\\": "generated/"
+            "Vendor\\Library\\Generated\\": "generated/"
         }
     }
 
@@ -415,9 +415,9 @@ own Endpoint extending the generated one::
 
     <?php
 
-    namespace Vendor\Library\Api\Endpoint;
+    namespace Vendor\Library\Generated\Endpoint;
 
-    use Vendor\Library\Api\Endpoint\FooEndpoint as BaseEndpoint;
+    use Vendor\Library\Generated\Endpoint\FooEndpoint as BaseEndpoint;
     use Symfony\Component\OptionsResolver\Options;
     use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -439,10 +439,10 @@ that you can extends the generated client and override the method that use this 
 
     <?php
 
-    namespace Vendor\Library\Api;
+    namespace Vendor\Library\Generated;
 
-    use Vendor\Library\Api\Client as BaseClient;
-    use Vendor\Library\Api\Endpoint\FooEndpoint;
+    use Vendor\Library\Generated\Client as BaseClient;
+    use Vendor\Library\Generated\Endpoint\FooEndpoint;
 
     class Client extends BaseClient
     {
