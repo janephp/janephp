@@ -46,7 +46,6 @@
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "2.15.3",
-        "localheinz/composer-normalize": "~0.8.0",
         "phpbench/phpbench": "@dev",
         "phpunit/phpunit": "^8.0",
         "symfony/framework-bundle": "^4.4 || ^5.0",
