@@ -21,7 +21,7 @@ class HostConfigLogConfig
     /**
      * 
      *
-     * @var string[]
+     * @var array<string, string>
      */
     protected $config;
     /**
@@ -49,7 +49,7 @@ class HostConfigLogConfig
     /**
      * 
      *
-     * @return string[]
+     * @return array<string, string>
      */
     public function getConfig() : iterable
     {
@@ -58,7 +58,7 @@ class HostConfigLogConfig
     /**
      * 
      *
-     * @param string[] $config
+     * @param array<string, string> $config
      *
      * @return self
      */

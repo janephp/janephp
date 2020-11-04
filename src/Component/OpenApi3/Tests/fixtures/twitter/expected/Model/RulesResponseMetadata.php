@@ -21,7 +21,7 @@ class RulesResponseMetadata extends \ArrayObject
     /**
      * 
      *
-     * @var mixed[]
+     * @var array<string, mixed>
      */
     protected $summary;
     /**
@@ -49,7 +49,7 @@ class RulesResponseMetadata extends \ArrayObject
     /**
      * 
      *
-     * @return mixed[]
+     * @return array<string, mixed>
      */
     public function getSummary() : iterable
     {
@@ -58,7 +58,7 @@ class RulesResponseMetadata extends \ArrayObject
     /**
      * 
      *
-     * @param mixed[] $summary
+     * @param array<string, mixed> $summary
      *
      * @return self
      */

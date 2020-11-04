@@ -21,7 +21,7 @@ class TaskSpecContainerSpec
     /**
      * User-defined key/value data.
      *
-     * @var string[]
+     * @var array<string, string>
      */
     protected $labels;
     /**
@@ -183,7 +183,7 @@ class TaskSpecContainerSpec
     Service.
     
     *
-    * @var string[]
+    * @var array<string, string>
     */
     protected $sysctls;
     /**
@@ -233,7 +233,7 @@ class TaskSpecContainerSpec
     /**
      * User-defined key/value data.
      *
-     * @return string[]
+     * @return array<string, string>
      */
     public function getLabels() : iterable
     {
@@ -242,7 +242,7 @@ class TaskSpecContainerSpec
     /**
      * User-defined key/value data.
      *
-     * @param string[] $labels
+     * @param array<string, string> $labels
      *
      * @return self
      */
@@ -770,7 +770,7 @@ class TaskSpecContainerSpec
     Service.
     
     *
-    * @return string[]
+    * @return array<string, string>
     */
     public function getSysctls() : iterable
     {
@@ -786,7 +786,7 @@ class TaskSpecContainerSpec
     Service.
     
     *
-    * @param string[] $sysctls
+    * @param array<string, string> $sysctls
     *
     * @return self
     */

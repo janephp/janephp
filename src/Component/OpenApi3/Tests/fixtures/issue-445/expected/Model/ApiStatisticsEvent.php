@@ -15,13 +15,13 @@ class ApiStatisticsEvent extends ApplicationEvent
     /**
      * 
      *
-     * @var int[]|null
+     * @var array<string, int>|null
      */
     protected $requestsPerClient;
     /**
      * 
      *
-     * @return int[]|null
+     * @return array<string, int>|null
      */
     public function getRequestsPerClient() : ?iterable
     {
@@ -30,7 +30,7 @@ class ApiStatisticsEvent extends ApplicationEvent
     /**
      * 
      *
-     * @param int[]|null $requestsPerClient
+     * @param array<string, int>|null $requestsPerClient
      *
      * @return self
      */

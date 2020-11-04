@@ -63,7 +63,7 @@ class BaseGist extends \ArrayObject
     /**
      * 
      *
-     * @var BaseGistFilesItem[]
+     * @var array<string, BaseGistFilesItem>
      */
     protected $files;
     /**
@@ -311,7 +311,7 @@ class BaseGist extends \ArrayObject
     /**
      * 
      *
-     * @return BaseGistFilesItem[]
+     * @return array<string, BaseGistFilesItem>
      */
     public function getFiles() : iterable
     {
@@ -320,7 +320,7 @@ class BaseGist extends \ArrayObject
     /**
      * 
      *
-     * @param BaseGistFilesItem[] $files
+     * @param array<string, BaseGistFilesItem> $files
      *
      * @return self
      */

@@ -63,7 +63,7 @@ class GistSimple extends \ArrayObject
     /**
      * 
      *
-     * @var GistSimpleFilesItem[]
+     * @var array<string, GistSimpleFilesItem>
      */
     protected $files;
     /**
@@ -299,7 +299,7 @@ class GistSimple extends \ArrayObject
     /**
      * 
      *
-     * @return GistSimpleFilesItem[]
+     * @return array<string, GistSimpleFilesItem>
      */
     public function getFiles() : iterable
     {
@@ -308,7 +308,7 @@ class GistSimple extends \ArrayObject
     /**
      * 
      *
-     * @param GistSimpleFilesItem[] $files
+     * @param array<string, GistSimpleFilesItem> $files
      *
      * @return self
      */

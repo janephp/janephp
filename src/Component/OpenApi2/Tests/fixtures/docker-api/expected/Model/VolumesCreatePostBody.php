@@ -29,13 +29,13 @@ class VolumesCreatePostBody
     passed directly to the driver and are driver specific.
     
     *
-    * @var string[]
+    * @var array<string, string>
     */
     protected $driverOpts;
     /**
      * User-defined key/value metadata.
      *
-     * @var string[]
+     * @var array<string, string>
      */
     protected $labels;
     /**
@@ -87,7 +87,7 @@ class VolumesCreatePostBody
     passed directly to the driver and are driver specific.
     
     *
-    * @return string[]
+    * @return array<string, string>
     */
     public function getDriverOpts() : iterable
     {
@@ -98,7 +98,7 @@ class VolumesCreatePostBody
     passed directly to the driver and are driver specific.
     
     *
-    * @param string[] $driverOpts
+    * @param array<string, string> $driverOpts
     *
     * @return self
     */
@@ -111,7 +111,7 @@ class VolumesCreatePostBody
     /**
      * User-defined key/value metadata.
      *
-     * @return string[]
+     * @return array<string, string>
      */
     public function getLabels() : iterable
     {
@@ -120,7 +120,7 @@ class VolumesCreatePostBody
     /**
      * User-defined key/value metadata.
      *
-     * @param string[] $labels
+     * @param array<string, string> $labels
      *
      * @return self
      */

@@ -51,7 +51,7 @@ class NetworkSettings
     are added to the mapping table.
     
     *
-    * @var PortBinding[][]
+    * @var array<string, PortBinding[]>
     */
     protected $ports;
     /**
@@ -195,7 +195,7 @@ class NetworkSettings
     /**
      * Information about all networks that the container is connected to.
      *
-     * @var EndpointSettings[]
+     * @var array<string, EndpointSettings>
      */
     protected $networks;
     /**
@@ -317,7 +317,7 @@ class NetworkSettings
     are added to the mapping table.
     
     *
-    * @return PortBinding[][]
+    * @return array<string, PortBinding[]>
     */
     public function getPorts() : iterable
     {
@@ -332,7 +332,7 @@ class NetworkSettings
     are added to the mapping table.
     
     *
-    * @param PortBinding[][] $ports
+    * @param array<string, PortBinding[]> $ports
     *
     * @return self
     */
@@ -731,7 +731,7 @@ class NetworkSettings
     /**
      * Information about all networks that the container is connected to.
      *
-     * @return EndpointSettings[]
+     * @return array<string, EndpointSettings>
      */
     public function getNetworks() : iterable
     {
@@ -740,7 +740,7 @@ class NetworkSettings
     /**
      * Information about all networks that the container is connected to.
      *
-     * @param EndpointSettings[] $networks
+     * @param array<string, EndpointSettings> $networks
      *
      * @return self
      */

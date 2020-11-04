@@ -97,7 +97,7 @@ class RegistryServiceConfig
     /**
      * 
      *
-     * @var IndexInfo[]
+     * @var array<string, IndexInfo>
      */
     protected $indexConfigs;
     /**
@@ -305,7 +305,7 @@ class RegistryServiceConfig
     /**
      * 
      *
-     * @return IndexInfo[]
+     * @return array<string, IndexInfo>
      */
     public function getIndexConfigs() : iterable
     {
@@ -314,7 +314,7 @@ class RegistryServiceConfig
     /**
      * 
      *
-     * @param IndexInfo[] $indexConfigs
+     * @param array<string, IndexInfo> $indexConfigs
      *
      * @return self
      */

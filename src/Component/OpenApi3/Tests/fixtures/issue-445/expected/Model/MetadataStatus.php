@@ -33,7 +33,7 @@ class MetadataStatus
     /**
      * The field ids that that cannot be used and needs to be cleaned up after updating the outdated contents and list items.
      *
-     * @var string[][]|null
+     * @var array<string, string[]>|null
      */
     protected $fieldIdsToCleanup;
     /**
@@ -105,7 +105,7 @@ class MetadataStatus
     /**
      * The field ids that that cannot be used and needs to be cleaned up after updating the outdated contents and list items.
      *
-     * @return string[][]|null
+     * @return array<string, string[]>|null
      */
     public function getFieldIdsToCleanup() : ?iterable
     {
@@ -114,7 +114,7 @@ class MetadataStatus
     /**
      * The field ids that that cannot be used and needs to be cleaned up after updating the outdated contents and list items.
      *
-     * @param string[][]|null $fieldIdsToCleanup
+     * @param array<string, string[]>|null $fieldIdsToCleanup
      *
      * @return self
      */

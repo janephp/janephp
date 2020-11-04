@@ -41,7 +41,7 @@ class DeviceRequest
     are passed directly to the driver.
     
     *
-    * @var string[]
+    * @var array<string, string>
     */
     protected $options;
     /**
@@ -137,7 +137,7 @@ class DeviceRequest
     are passed directly to the driver.
     
     *
-    * @return string[]
+    * @return array<string, string>
     */
     public function getOptions() : iterable
     {
@@ -148,7 +148,7 @@ class DeviceRequest
     are passed directly to the driver.
     
     *
-    * @param string[] $options
+    * @param array<string, string> $options
     *
     * @return self
     */

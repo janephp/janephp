@@ -75,19 +75,19 @@ class Network
     /**
      * 
      *
-     * @var NetworkContainer[]
+     * @var array<string, NetworkContainer>
      */
     protected $containers;
     /**
      * 
      *
-     * @var string[]
+     * @var array<string, string>
      */
     protected $options;
     /**
      * 
      *
-     * @var string[]
+     * @var array<string, string>
      */
     protected $labels;
     /**
@@ -313,7 +313,7 @@ class Network
     /**
      * 
      *
-     * @return NetworkContainer[]
+     * @return array<string, NetworkContainer>
      */
     public function getContainers() : iterable
     {
@@ -322,7 +322,7 @@ class Network
     /**
      * 
      *
-     * @param NetworkContainer[] $containers
+     * @param array<string, NetworkContainer> $containers
      *
      * @return self
      */
@@ -335,7 +335,7 @@ class Network
     /**
      * 
      *
-     * @return string[]
+     * @return array<string, string>
      */
     public function getOptions() : iterable
     {
@@ -344,7 +344,7 @@ class Network
     /**
      * 
      *
-     * @param string[] $options
+     * @param array<string, string> $options
      *
      * @return self
      */
@@ -357,7 +357,7 @@ class Network
     /**
      * 
      *
-     * @return string[]
+     * @return array<string, string>
      */
     public function getLabels() : iterable
     {
@@ -366,7 +366,7 @@ class Network
     /**
      * 
      *
-     * @param string[] $labels
+     * @param array<string, string> $labels
      *
      * @return self
      */

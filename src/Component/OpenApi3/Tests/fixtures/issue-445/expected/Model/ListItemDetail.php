@@ -28,7 +28,7 @@ class ListItemDetail
     * The content data of the list item. It's an object of dynamic metadata whose structure is defined in the Content schema specified
     by the ContentSchemaId property.
     *
-    * @var mixed[]|null
+    * @var array<string, mixed>|null
     */
     protected $content;
     /**
@@ -116,7 +116,7 @@ class ListItemDetail
     * The content data of the list item. It's an object of dynamic metadata whose structure is defined in the Content schema specified
     by the ContentSchemaId property.
     *
-    * @return mixed[]|null
+    * @return array<string, mixed>|null
     */
     public function getContent() : ?iterable
     {
@@ -126,7 +126,7 @@ class ListItemDetail
     * The content data of the list item. It's an object of dynamic metadata whose structure is defined in the Content schema specified
     by the ContentSchemaId property.
     *
-    * @param mixed[]|null $content
+    * @param array<string, mixed>|null $content
     *
     * @return self
     */

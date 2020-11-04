@@ -54,7 +54,7 @@ class ContainerConfig
     `{"<port>/<tcp|udp|sctp>": {}}`
     
     *
-    * @var mixed[]
+    * @var array<string, mixed>
     */
     protected $exposedPorts;
     /**
@@ -113,7 +113,7 @@ class ContainerConfig
     objects.
     
     *
-    * @var mixed[]
+    * @var array<string, mixed>
     */
     protected $volumes;
     /**
@@ -154,7 +154,7 @@ class ContainerConfig
     /**
      * User-defined key/value metadata.
      *
-     * @var string[]
+     * @var array<string, string>
      */
     protected $labels;
     /**
@@ -313,7 +313,7 @@ class ContainerConfig
     `{"<port>/<tcp|udp|sctp>": {}}`
     
     *
-    * @return mixed[]
+    * @return array<string, mixed>
     */
     public function getExposedPorts() : iterable
     {
@@ -325,7 +325,7 @@ class ContainerConfig
     `{"<port>/<tcp|udp|sctp>": {}}`
     
     *
-    * @param mixed[] $exposedPorts
+    * @param array<string, mixed> $exposedPorts
     *
     * @return self
     */
@@ -522,7 +522,7 @@ class ContainerConfig
     objects.
     
     *
-    * @return mixed[]
+    * @return array<string, mixed>
     */
     public function getVolumes() : iterable
     {
@@ -533,7 +533,7 @@ class ContainerConfig
     objects.
     
     *
-    * @param mixed[] $volumes
+    * @param array<string, mixed> $volumes
     *
     * @return self
     */
@@ -666,7 +666,7 @@ class ContainerConfig
     /**
      * User-defined key/value metadata.
      *
-     * @return string[]
+     * @return array<string, string>
      */
     public function getLabels() : iterable
     {
@@ -675,7 +675,7 @@ class ContainerConfig
     /**
      * User-defined key/value metadata.
      *
-     * @param string[] $labels
+     * @param array<string, string> $labels
      *
      * @return self
      */

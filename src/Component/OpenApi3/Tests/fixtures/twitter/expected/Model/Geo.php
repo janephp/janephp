@@ -33,7 +33,7 @@ class Geo extends \ArrayObject
     /**
      * 
      *
-     * @var mixed[]
+     * @var array<string, mixed>
      */
     protected $properties;
     /**
@@ -105,7 +105,7 @@ class Geo extends \ArrayObject
     /**
      * 
      *
-     * @return mixed[]
+     * @return array<string, mixed>
      */
     public function getProperties() : iterable
     {
@@ -114,7 +114,7 @@ class Geo extends \ArrayObject
     /**
      * 
      *
-     * @param mixed[] $properties
+     * @param array<string, mixed> $properties
      *
      * @return self
      */

@@ -25,7 +25,7 @@ class ContentMetadataUpdateRequest
     whose ContentType is Virtual).
     Update of content data will be done only if this attribute has any data, i.e. if it's not null or empty.
     *
-    * @var mixed[]|null
+    * @var array<string, mixed>|null
     */
     protected $content;
     /**
@@ -34,7 +34,7 @@ class ContentMetadataUpdateRequest
     by the LayerSchemaIds property.
     If there are no data for a specified LayerSchemaId, it is treated as empty.
     *
-    * @var mixed[]|null
+    * @var array<string, mixed>|null
     */
     protected $metadata;
     /**
@@ -96,7 +96,7 @@ class ContentMetadataUpdateRequest
     whose ContentType is Virtual).
     Update of content data will be done only if this attribute has any data, i.e. if it's not null or empty.
     *
-    * @return mixed[]|null
+    * @return array<string, mixed>|null
     */
     public function getContent() : ?iterable
     {
@@ -108,7 +108,7 @@ class ContentMetadataUpdateRequest
     whose ContentType is Virtual).
     Update of content data will be done only if this attribute has any data, i.e. if it's not null or empty.
     *
-    * @param mixed[]|null $content
+    * @param array<string, mixed>|null $content
     *
     * @return self
     */
@@ -124,7 +124,7 @@ class ContentMetadataUpdateRequest
     by the LayerSchemaIds property.
     If there are no data for a specified LayerSchemaId, it is treated as empty.
     *
-    * @return mixed[]|null
+    * @return array<string, mixed>|null
     */
     public function getMetadata() : ?iterable
     {
@@ -136,7 +136,7 @@ class ContentMetadataUpdateRequest
     by the LayerSchemaIds property.
     If there are no data for a specified LayerSchemaId, it is treated as empty.
     *
-    * @param mixed[]|null $metadata
+    * @param array<string, mixed>|null $metadata
     *
     * @return self
     */

@@ -21,7 +21,7 @@ class EventActor
     /**
      * Various key/value attributes of the object, depending on its type.
      *
-     * @var string[]
+     * @var array<string, string>
      */
     protected $attributes;
     /**
@@ -49,7 +49,7 @@ class EventActor
     /**
      * Various key/value attributes of the object, depending on its type.
      *
-     * @return string[]
+     * @return array<string, string>
      */
     public function getAttributes() : iterable
     {
@@ -58,7 +58,7 @@ class EventActor
     /**
      * Various key/value attributes of the object, depending on its type.
      *
-     * @param string[] $attributes
+     * @param array<string, string> $attributes
      *
      * @return self
      */

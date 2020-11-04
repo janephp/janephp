@@ -459,7 +459,7 @@ class SystemInfo
     runtimes can be configured by the user and will be listed here.
     
     *
-    * @var Runtime[]
+    * @var array<string, Runtime>
     */
     protected $runtimes;
     /**
@@ -1951,7 +1951,7 @@ class SystemInfo
     runtimes can be configured by the user and will be listed here.
     
     *
-    * @return Runtime[]
+    * @return array<string, Runtime>
     */
     public function getRuntimes() : iterable
     {
@@ -1970,7 +1970,7 @@ class SystemInfo
     runtimes can be configured by the user and will be listed here.
     
     *
-    * @param Runtime[] $runtimes
+    * @param array<string, Runtime> $runtimes
     *
     * @return self
     */

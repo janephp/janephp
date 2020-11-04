@@ -39,7 +39,7 @@ class Schema
     /**
      * 
      *
-     * @var string[]
+     * @var array<string, string>
      */
     protected $mapProperty;
     /**
@@ -145,7 +145,7 @@ class Schema
     /**
      * 
      *
-     * @return string[]
+     * @return array<string, string>
      */
     public function getMapProperty() : iterable
     {
@@ -154,7 +154,7 @@ class Schema
     /**
      * 
      *
-     * @param string[] $mapProperty
+     * @param array<string, string> $mapProperty
      *
      * @return self
      */

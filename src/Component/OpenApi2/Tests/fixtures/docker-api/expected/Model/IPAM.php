@@ -26,13 +26,13 @@ class IPAM
     ```
     
     *
-    * @var string[][]
+    * @var array<string, string>[]
     */
     protected $config;
     /**
      * Driver-specific options, specified as a map.
      *
-     * @var string[]
+     * @var array<string, string>
      */
     protected $options;
     /**
@@ -65,7 +65,7 @@ class IPAM
     ```
     
     *
-    * @return string[][]
+    * @return array<string, string>[]
     */
     public function getConfig() : array
     {
@@ -79,7 +79,7 @@ class IPAM
     ```
     
     *
-    * @param string[][] $config
+    * @param array<string, string>[] $config
     *
     * @return self
     */
@@ -92,7 +92,7 @@ class IPAM
     /**
      * Driver-specific options, specified as a map.
      *
-     * @return string[]
+     * @return array<string, string>
      */
     public function getOptions() : iterable
     {
@@ -101,7 +101,7 @@ class IPAM
     /**
      * Driver-specific options, specified as a map.
      *
-     * @param string[] $options
+     * @param array<string, string> $options
      *
      * @return self
      */

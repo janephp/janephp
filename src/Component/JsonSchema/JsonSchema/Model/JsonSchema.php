@@ -15,13 +15,13 @@ class JsonSchema
     /**
      * 
      *
-     * @var JsonSchema[]|bool[]|null
+     * @var array<string, JsonSchema|bool>|null
      */
     protected $definitions;
     /**
      * 
      *
-     * @var JsonSchema[]|bool[]|string[][]|null
+     * @var array<string, JsonSchema|bool|string[]>|null
      */
     protected $dependencies;
     /**
@@ -57,25 +57,25 @@ class JsonSchema
     /**
      * 
      *
-     * @var JsonSchema[]|bool[]|null
+     * @var array<string, JsonSchema|bool>|null
      */
     protected $unevaluatedProperties;
     /**
      * 
      *
-     * @var JsonSchema[]|bool[]|null
+     * @var array<string, JsonSchema|bool>|null
      */
     protected $properties;
     /**
      * 
      *
-     * @var JsonSchema[]|bool[]|null
+     * @var array<string, JsonSchema|bool>|null
      */
     protected $patternProperties;
     /**
      * 
      *
-     * @var JsonSchema[]|bool[]|null
+     * @var array<string, JsonSchema|bool>|null
      */
     protected $dependentSchemas;
     /**
@@ -183,7 +183,7 @@ class JsonSchema
     /**
      * 
      *
-     * @var bool[]|null
+     * @var array<string, bool>|null
      */
     protected $dollarVocabulary;
     /**
@@ -195,7 +195,7 @@ class JsonSchema
     /**
      * 
      *
-     * @var JsonSchema[]|bool[]|null
+     * @var array<string, JsonSchema|bool>|null
      */
     protected $dollarDefs;
     /**
@@ -345,7 +345,7 @@ class JsonSchema
     /**
      * 
      *
-     * @var string[][]|null
+     * @var array<string, string[]>|null
      */
     protected $dependentRequired;
     /**
@@ -369,7 +369,7 @@ class JsonSchema
     /**
      * 
      *
-     * @return JsonSchema[]|bool[]|null
+     * @return array<string, JsonSchema|bool>|null
      */
     public function getDefinitions() : ?iterable
     {
@@ -378,7 +378,7 @@ class JsonSchema
     /**
      * 
      *
-     * @param JsonSchema[]|bool[]|null $definitions
+     * @param array<string, JsonSchema|bool>|null $definitions
      *
      * @return self
      */
@@ -391,7 +391,7 @@ class JsonSchema
     /**
      * 
      *
-     * @return JsonSchema[]|bool[]|string[][]|null
+     * @return array<string, JsonSchema|bool|string[]>|null
      */
     public function getDependencies() : ?iterable
     {
@@ -400,7 +400,7 @@ class JsonSchema
     /**
      * 
      *
-     * @param JsonSchema[]|bool[]|string[][]|null $dependencies
+     * @param array<string, JsonSchema|bool|string[]>|null $dependencies
      *
      * @return self
      */
@@ -523,7 +523,7 @@ class JsonSchema
     /**
      * 
      *
-     * @return JsonSchema[]|bool[]|null
+     * @return array<string, JsonSchema|bool>|null
      */
     public function getUnevaluatedProperties() : ?iterable
     {
@@ -532,7 +532,7 @@ class JsonSchema
     /**
      * 
      *
-     * @param JsonSchema[]|bool[]|null $unevaluatedProperties
+     * @param array<string, JsonSchema|bool>|null $unevaluatedProperties
      *
      * @return self
      */
@@ -545,7 +545,7 @@ class JsonSchema
     /**
      * 
      *
-     * @return JsonSchema[]|bool[]|null
+     * @return array<string, JsonSchema|bool>|null
      */
     public function getProperties() : ?iterable
     {
@@ -554,7 +554,7 @@ class JsonSchema
     /**
      * 
      *
-     * @param JsonSchema[]|bool[]|null $properties
+     * @param array<string, JsonSchema|bool>|null $properties
      *
      * @return self
      */
@@ -567,7 +567,7 @@ class JsonSchema
     /**
      * 
      *
-     * @return JsonSchema[]|bool[]|null
+     * @return array<string, JsonSchema|bool>|null
      */
     public function getPatternProperties() : ?iterable
     {
@@ -576,7 +576,7 @@ class JsonSchema
     /**
      * 
      *
-     * @param JsonSchema[]|bool[]|null $patternProperties
+     * @param array<string, JsonSchema|bool>|null $patternProperties
      *
      * @return self
      */
@@ -589,7 +589,7 @@ class JsonSchema
     /**
      * 
      *
-     * @return JsonSchema[]|bool[]|null
+     * @return array<string, JsonSchema|bool>|null
      */
     public function getDependentSchemas() : ?iterable
     {
@@ -598,7 +598,7 @@ class JsonSchema
     /**
      * 
      *
-     * @param JsonSchema[]|bool[]|null $dependentSchemas
+     * @param array<string, JsonSchema|bool>|null $dependentSchemas
      *
      * @return self
      */
@@ -985,7 +985,7 @@ class JsonSchema
     /**
      * 
      *
-     * @return bool[]|null
+     * @return array<string, bool>|null
      */
     public function getDollarVocabulary() : ?iterable
     {
@@ -994,7 +994,7 @@ class JsonSchema
     /**
      * 
      *
-     * @param bool[]|null $dollarVocabulary
+     * @param array<string, bool>|null $dollarVocabulary
      *
      * @return self
      */
@@ -1029,7 +1029,7 @@ class JsonSchema
     /**
      * 
      *
-     * @return JsonSchema[]|bool[]|null
+     * @return array<string, JsonSchema|bool>|null
      */
     public function getDollarDefs() : ?iterable
     {
@@ -1038,7 +1038,7 @@ class JsonSchema
     /**
      * 
      *
-     * @param JsonSchema[]|bool[]|null $dollarDefs
+     * @param array<string, JsonSchema|bool>|null $dollarDefs
      *
      * @return self
      */
@@ -1579,7 +1579,7 @@ class JsonSchema
     /**
      * 
      *
-     * @return string[][]|null
+     * @return array<string, string[]>|null
      */
     public function getDependentRequired() : ?iterable
     {
@@ -1588,7 +1588,7 @@ class JsonSchema
     /**
      * 
      *
-     * @param string[][]|null $dependentRequired
+     * @param array<string, string[]>|null $dependentRequired
      *
      * @return self
      */

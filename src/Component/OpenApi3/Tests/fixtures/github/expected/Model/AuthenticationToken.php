@@ -27,7 +27,7 @@ class AuthenticationToken extends \ArrayObject
     /**
      * 
      *
-     * @var mixed[]
+     * @var array<string, mixed>
      */
     protected $permissions;
     /**
@@ -95,7 +95,7 @@ class AuthenticationToken extends \ArrayObject
     /**
      * 
      *
-     * @return mixed[]
+     * @return array<string, mixed>
      */
     public function getPermissions() : iterable
     {
@@ -104,7 +104,7 @@ class AuthenticationToken extends \ArrayObject
     /**
      * 
      *
-     * @param mixed[] $permissions
+     * @param array<string, mixed> $permissions
      *
      * @return self
      */

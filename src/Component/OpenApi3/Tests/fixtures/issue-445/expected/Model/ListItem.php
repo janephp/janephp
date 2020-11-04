@@ -39,7 +39,7 @@ class ListItem
     /**
      * The content data of the list item.
      *
-     * @var mixed[]|null
+     * @var array<string, mixed>|null
      */
     protected $content;
     /**
@@ -157,7 +157,7 @@ class ListItem
     /**
      * The content data of the list item.
      *
-     * @return mixed[]|null
+     * @return array<string, mixed>|null
      */
     public function getContent() : ?iterable
     {
@@ -166,7 +166,7 @@ class ListItem
     /**
      * The content data of the list item.
      *
-     * @param mixed[]|null $content
+     * @param array<string, mixed>|null $content
      *
      * @return self
      */

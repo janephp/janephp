@@ -15,13 +15,13 @@ class ContainerSummaryNetworkSettings
     /**
      * 
      *
-     * @var EndpointSettings[]
+     * @var array<string, EndpointSettings>
      */
     protected $networks;
     /**
      * 
      *
-     * @return EndpointSettings[]
+     * @return array<string, EndpointSettings>
      */
     public function getNetworks() : iterable
     {
@@ -30,7 +30,7 @@ class ContainerSummaryNetworkSettings
     /**
      * 
      *
-     * @param EndpointSettings[] $networks
+     * @param array<string, EndpointSettings> $networks
      *
      * @return self
      */

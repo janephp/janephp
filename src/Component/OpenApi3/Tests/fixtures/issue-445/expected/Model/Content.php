@@ -39,7 +39,7 @@ class Content
     /**
      * Contains display values of the specified language, rendered according to the content schema's display pattern configuration.
      *
-     * @var string[]
+     * @var array<string, string>
      */
     protected $displayValues;
     /**
@@ -163,7 +163,7 @@ class Content
     /**
      * Contains display values of the specified language, rendered according to the content schema's display pattern configuration.
      *
-     * @return string[]
+     * @return array<string, string>
      */
     public function getDisplayValues() : iterable
     {
@@ -172,7 +172,7 @@ class Content
     /**
      * Contains display values of the specified language, rendered according to the content schema's display pattern configuration.
      *
-     * @param string[] $displayValues
+     * @param array<string, string> $displayValues
      *
      * @return self
      */

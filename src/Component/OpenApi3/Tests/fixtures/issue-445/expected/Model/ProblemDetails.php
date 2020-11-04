@@ -45,7 +45,7 @@ class ProblemDetails
     /**
      * 
      *
-     * @var mixed[]|null
+     * @var array<string, mixed>|null
      */
     protected $extensions;
     /**
@@ -161,7 +161,7 @@ class ProblemDetails
     /**
      * 
      *
-     * @return mixed[]|null
+     * @return array<string, mixed>|null
      */
     public function getExtensions() : ?iterable
     {
@@ -170,7 +170,7 @@ class ProblemDetails
     /**
      * 
      *
-     * @param mixed[]|null $extensions
+     * @param array<string, mixed>|null $extensions
      *
      * @return self
      */

@@ -28,14 +28,14 @@ class ShareContentDetail
     * The content data. It's an object of dynamic metadata whose structure is defined in the Content schema specified
     by the ContentSchemaId property.
     *
-    * @var mixed[]
+    * @var array<string, mixed>
     */
     protected $content;
     /**
     * The metadata belonging to the layers of the content. It's a dictionary of dynamic metadata whose structure is defined in the Layer schemas identified
     by the LayerSchemaIds property.
     *
-    * @var mixed[]|null
+    * @var array<string, mixed>|null
     */
     protected $metadata;
     /**
@@ -116,7 +116,7 @@ class ShareContentDetail
     * The content data. It's an object of dynamic metadata whose structure is defined in the Content schema specified
     by the ContentSchemaId property.
     *
-    * @return mixed[]
+    * @return array<string, mixed>
     */
     public function getContent() : iterable
     {
@@ -126,7 +126,7 @@ class ShareContentDetail
     * The content data. It's an object of dynamic metadata whose structure is defined in the Content schema specified
     by the ContentSchemaId property.
     *
-    * @param mixed[] $content
+    * @param array<string, mixed> $content
     *
     * @return self
     */
@@ -140,7 +140,7 @@ class ShareContentDetail
     * The metadata belonging to the layers of the content. It's a dictionary of dynamic metadata whose structure is defined in the Layer schemas identified
     by the LayerSchemaIds property.
     *
-    * @return mixed[]|null
+    * @return array<string, mixed>|null
     */
     public function getMetadata() : ?iterable
     {
@@ -150,7 +150,7 @@ class ShareContentDetail
     * The metadata belonging to the layers of the content. It's a dictionary of dynamic metadata whose structure is defined in the Layer schemas identified
     by the LayerSchemaIds property.
     *
-    * @param mixed[]|null $metadata
+    * @param array<string, mixed>|null $metadata
     *
     * @return self
     */

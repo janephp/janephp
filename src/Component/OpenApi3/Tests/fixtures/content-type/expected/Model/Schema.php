@@ -45,7 +45,7 @@ class Schema extends \ArrayObject
     /**
      * 
      *
-     * @var string[]
+     * @var array<string, string>
      */
     protected $mapProperty;
     /**
@@ -173,7 +173,7 @@ class Schema extends \ArrayObject
     /**
      * 
      *
-     * @return string[]
+     * @return array<string, string>
      */
     public function getMapProperty() : iterable
     {
@@ -182,7 +182,7 @@ class Schema extends \ArrayObject
     /**
      * 
      *
-     * @param string[] $mapProperty
+     * @param array<string, string> $mapProperty
      *
      * @return self
      */

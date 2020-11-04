@@ -348,7 +348,7 @@ class HostConfig
     are added to the mapping table.
     
     *
-    * @var PortBinding[][]
+    * @var array<string, PortBinding[]>
     */
     protected $portBindings;
     /**
@@ -535,7 +535,7 @@ class HostConfig
     /**
      * Storage driver options for this container, in the form `{"size": "120G"}`.
      *
-     * @var string[]
+     * @var array<string, string>
      */
     protected $storageOpt;
     /**
@@ -547,7 +547,7 @@ class HostConfig
     ```
     
     *
-    * @var string[]
+    * @var array<string, string>
     */
     protected $tmpfs;
     /**
@@ -579,7 +579,7 @@ class HostConfig
     ```
     
     *
-    * @var string[]
+    * @var array<string, string>
     */
     protected $sysctls;
     /**
@@ -1639,7 +1639,7 @@ class HostConfig
     are added to the mapping table.
     
     *
-    * @return PortBinding[][]
+    * @return array<string, PortBinding[]>
     */
     public function getPortBindings() : iterable
     {
@@ -1654,7 +1654,7 @@ class HostConfig
     are added to the mapping table.
     
     *
-    * @param PortBinding[][] $portBindings
+    * @param array<string, PortBinding[]> $portBindings
     *
     * @return self
     */
@@ -2249,7 +2249,7 @@ class HostConfig
     /**
      * Storage driver options for this container, in the form `{"size": "120G"}`.
      *
-     * @return string[]
+     * @return array<string, string>
      */
     public function getStorageOpt() : iterable
     {
@@ -2258,7 +2258,7 @@ class HostConfig
     /**
      * Storage driver options for this container, in the form `{"size": "120G"}`.
      *
-     * @param string[] $storageOpt
+     * @param array<string, string> $storageOpt
      *
      * @return self
      */
@@ -2277,7 +2277,7 @@ class HostConfig
     ```
     
     *
-    * @return string[]
+    * @return array<string, string>
     */
     public function getTmpfs() : iterable
     {
@@ -2292,7 +2292,7 @@ class HostConfig
     ```
     
     *
-    * @param string[] $tmpfs
+    * @param array<string, string> $tmpfs
     *
     * @return self
     */
@@ -2381,7 +2381,7 @@ class HostConfig
     ```
     
     *
-    * @return string[]
+    * @return array<string, string>
     */
     public function getSysctls() : iterable
     {
@@ -2396,7 +2396,7 @@ class HostConfig
     ```
     
     *
-    * @param string[] $sysctls
+    * @param array<string, string> $sysctls
     *
     * @return self
     */

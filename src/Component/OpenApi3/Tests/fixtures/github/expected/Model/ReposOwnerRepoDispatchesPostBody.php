@@ -21,7 +21,7 @@ class ReposOwnerRepoDispatchesPostBody extends \ArrayObject
     /**
      * JSON payload with extra information about the webhook event that your action or worklow may use.
      *
-     * @var mixed[]
+     * @var array<string, mixed>
      */
     protected $clientPayload;
     /**
@@ -49,7 +49,7 @@ class ReposOwnerRepoDispatchesPostBody extends \ArrayObject
     /**
      * JSON payload with extra information about the webhook event that your action or worklow may use.
      *
-     * @return mixed[]
+     * @return array<string, mixed>
      */
     public function getClientPayload() : iterable
     {
@@ -58,7 +58,7 @@ class ReposOwnerRepoDispatchesPostBody extends \ArrayObject
     /**
      * JSON payload with extra information about the webhook event that your action or worklow may use.
      *
-     * @param mixed[] $clientPayload
+     * @param array<string, mixed> $clientPayload
      *
      * @return self
      */
