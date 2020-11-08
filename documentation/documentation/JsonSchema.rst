@@ -1,5 +1,5 @@
-Using JSON Schema
-=================
+Getting started: using JSON Schema
+==================================
 
 Jane JSON Schema is a library to generate models and serializers in PHP from a `JSON Schema`_ draft `2019-09`_.
 

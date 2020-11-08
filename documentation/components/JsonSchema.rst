@@ -1,5 +1,5 @@
-JSON Schema
-===========
+Component: JSON Schema
+======================
 
 Introduction
 ------------

@@ -1,5 +1,5 @@
-AutoMapper
-===========
+Component: AutoMapper
+=====================
 
 Description
 -----------
