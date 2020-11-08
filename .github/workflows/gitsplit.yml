@@ -2,7 +2,7 @@ name: gitsplit
 on:
   push:
     branches:
-      - master
+      - next
   release:
     types: [published]
 jobs:
