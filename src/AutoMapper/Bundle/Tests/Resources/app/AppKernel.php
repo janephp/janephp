@@ -14,6 +14,7 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\Routing\RouteCollectionBuilder;
+use Symfony\Component\Serializer\NameConverter\AdvancedNameConverterInterface;
 
 class AppKernel extends Kernel
 {
@@ -64,5 +65,26 @@ class UserConfigurationPass implements ConfigurationPassInterface
         $metadata->forMember('yearOfBirth', function (User $user) {
             return ((int) date('Y')) - ((int) $user->age);
         });
+    }
+}
+
+class IdNameConverter implements AdvancedNameConverterInterface
+{
+    public function normalize($propertyName, string $class = null, string $format = null, array $context = [])
+    {
+        if ('id' === $propertyName) {
+            return '@id';
+        }
+
+        return $propertyName;
+    }
+
+    public function denormalize($propertyName, string $class = null, string $format = null, array $context = [])
+    {
+        if ('@id' === $propertyName) {
+            return 'id';
+        }
+
+        return $propertyName;
     }
 }

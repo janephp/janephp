@@ -4,6 +4,8 @@ namespace Jane\AutoMapper\Bundle\DependencyInjection;
 
 use Jane\AutoMapper\Bundle\AutoMapper;
 use Jane\AutoMapper\Bundle\Configuration\RestrictConfigurationPass;
+use Jane\AutoMapper\Extractor\FromSourceMappingExtractor;
+use Jane\AutoMapper\Extractor\FromTargetMappingExtractor;
 use Jane\AutoMapper\MapperGeneratorMetadataFactory;
 use Jane\AutoMapper\MapperGeneratorMetadataInterface;
 use Jane\AutoMapper\MapperMetadata;
@@ -40,6 +42,16 @@ class JaneAutoMapperExtension extends Extension
                 ->getDefinition(AutoMapperNormalizer::class)
                 ->addTag('serializer.normalizer', ['priority' => 1000])
             ;
+        }
+
+        if (null !== $config['nameConverter']) {
+            $container
+                ->getDefinition(FromTargetMappingExtractor::class)
+                ->addArgument(new Reference($config['nameConverter']));
+
+            $container
+                ->getDefinition(FromSourceMappingExtractor::class)
+                ->addArgument(new Reference($config['nameConverter']));
         }
 
         $container->setParameter('automapper.cache_dir', $config['cache_dir']);

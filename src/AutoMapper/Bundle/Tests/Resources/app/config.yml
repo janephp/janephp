@@ -5,6 +5,7 @@ framework:
 
 jane_auto_mapper:
     normalizer: true
+    nameConverter: DummyApp\IdNameConverter
     mappings:
         -
             source: Jane\AutoMapper\Bundle\Tests\Fixtures\User
@@ -12,4 +13,5 @@ jane_auto_mapper:
             pass: DummyApp\UserConfigurationPass
 
 services:
-    DummyApp\UserConfigurationPass: ~
+  DummyApp\UserConfigurationPass: ~
+  DummyApp\IdNameConverter: ~

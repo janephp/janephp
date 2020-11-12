@@ -15,6 +15,7 @@ class Configuration implements ConfigurationInterface
         $rootNode
             ->children()
                 ->booleanNode('normalizer')->defaultFalse()->end()
+                ->scalarNode('nameConverter')->defaultNull()->end()
                 ->scalarNode('cache_dir')->defaultValue('%kernel.cache_dir%/automapper')->end()
                 ->scalarNode('date_time_format')->defaultValue(\DateTime::RFC3339)->end()
                 ->arrayNode('mappings')
