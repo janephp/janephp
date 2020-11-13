@@ -38,5 +38,10 @@ class ServiceInstantiationTest extends WebTestCase
         self::assertInstanceOf(AddressDTO::class, $userDto->addresses[0]);
         self::assertSame('Toulon', $userDto->address->city);
         self::assertSame('Toulon', $userDto->addresses[0]->city);
+
+        $userArray = $autoMapper->map($user, 'array');
+        self::assertIsArray($userArray);
+        self::assertArrayHasKey('@id', $userArray);
+        self::assertSame(1, $userArray['@id']);
     }
 }
