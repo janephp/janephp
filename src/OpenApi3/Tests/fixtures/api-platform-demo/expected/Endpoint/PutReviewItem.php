@@ -6,10 +6,10 @@ class PutReviewItem extends \ApiPlatform\Demo\Runtime\Client\BaseEndpoint implem
 {
     protected $id;
     /**
-     * 
      *
-     * @param string $id 
-     * @param \stdClass|\ApiPlatform\Demo\Model\Review $requestBody 
+     *
+     * @param string $id
+     * @param \stdClass|\ApiPlatform\Demo\Model\Review $requestBody
      */
     public function __construct(string $id, $requestBody)
     {

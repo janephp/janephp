@@ -6,10 +6,10 @@ class PatchReviewItem extends \ApiPlatform\Demo\Runtime\Client\BaseEndpoint impl
 {
     protected $id;
     /**
-     * 
      *
-     * @param string $id 
-     * @param \ApiPlatform\Demo\Model\Review $requestBody 
+     *
+     * @param string $id
+     * @param \ApiPlatform\Demo\Model\Review $requestBody
      */
     public function __construct(string $id, \ApiPlatform\Demo\Model\Review $requestBody)
     {

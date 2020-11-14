@@ -6,9 +6,9 @@ class DeleteBookItem extends \ApiPlatform\Demo\Runtime\Client\BaseEndpoint imple
 {
     protected $id;
     /**
-     * 
      *
-     * @param string $id 
+     *
+     * @param string $id
      */
     public function __construct(string $id)
     {

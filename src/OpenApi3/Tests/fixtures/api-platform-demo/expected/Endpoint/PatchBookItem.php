@@ -6,10 +6,10 @@ class PatchBookItem extends \ApiPlatform\Demo\Runtime\Client\BaseEndpoint implem
 {
     protected $id;
     /**
-     * 
      *
-     * @param string $id 
-     * @param \ApiPlatform\Demo\Model\Book $requestBody 
+     *
+     * @param string $id
+     * @param \ApiPlatform\Demo\Model\Book $requestBody
      */
     public function __construct(string $id, \ApiPlatform\Demo\Model\Book $requestBody)
     {

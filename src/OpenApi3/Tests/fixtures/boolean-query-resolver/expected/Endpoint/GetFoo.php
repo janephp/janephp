@@ -28,6 +28,14 @@ class GetFoo extends \Jane\OpenApi3\Tests\Expected\Runtime\Client\BaseEndpoint i
     {
         return array(array(), null);
     }
+    public function getQueryString() : string
+    {
+        $optionsResolved = $this->getQueryOptionsResolver()->resolve($this->queryParameters);
+        $optionsResolved = array_map(static function ($value) {
+            return null !== $value ? $value : '';
+        }, $optionsResolved);
+        return ltrim((new \Rize\UriTemplate\UriTemplate())->expand('{?testBoolean}', $optionsResolved), '?');
+    }
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();

@@ -6,9 +6,9 @@ class DeleteParchmentItem extends \ApiPlatform\Demo\Runtime\Client\BaseEndpoint 
 {
     protected $id;
     /**
-     * 
      *
-     * @param string $id 
+     *
+     * @param string $id
      */
     public function __construct(string $id)
     {

@@ -6,9 +6,9 @@ class DeleteReviewItem extends \ApiPlatform\Demo\Runtime\Client\BaseEndpoint imp
 {
     protected $id;
     /**
-     * 
      *
-     * @param string $id 
+     *
+     * @param string $id
      */
     public function __construct(string $id)
     {

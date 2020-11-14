@@ -6,10 +6,10 @@ class PutParchmentItem extends \ApiPlatform\Demo\Runtime\Client\BaseEndpoint imp
 {
     protected $id;
     /**
-     * 
      *
-     * @param string $id 
-     * @param \stdClass|\ApiPlatform\Demo\Model\Parchment $requestBody 
+     *
+     * @param string $id
+     * @param \stdClass|\ApiPlatform\Demo\Model\Parchment $requestBody
      */
     public function __construct(string $id, $requestBody)
     {

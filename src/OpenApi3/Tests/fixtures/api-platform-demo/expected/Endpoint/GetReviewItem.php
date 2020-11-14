@@ -6,9 +6,9 @@ class GetReviewItem extends \ApiPlatform\Demo\Runtime\Client\BaseEndpoint implem
 {
     protected $id;
     /**
-     * 
      *
-     * @param string $id 
+     *
+     * @param string $id
      */
     public function __construct(string $id)
     {

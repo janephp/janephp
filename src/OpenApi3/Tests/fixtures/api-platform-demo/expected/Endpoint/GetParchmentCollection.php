@@ -5,7 +5,7 @@ namespace ApiPlatform\Demo\Endpoint;
 class GetParchmentCollection extends \ApiPlatform\Demo\Runtime\Client\BaseEndpoint implements \ApiPlatform\Demo\Runtime\Client\Endpoint
 {
     /**
-     * 
+     *
      *
      * @param array $queryParameters {
      *     @var int $page The collection page number

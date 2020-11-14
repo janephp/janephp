@@ -34,6 +34,14 @@ class FindUsersByIdOrUsername extends \Jane\OpenApi3\Tests\Expected\Runtime\Clie
     {
         return array(array(), null);
     }
+    public function getQueryString() : string
+    {
+        $optionsResolved = $this->getQueryOptionsResolver()->resolve($this->queryParameters);
+        $optionsResolved = array_map(static function ($value) {
+            return null !== $value ? $value : '';
+        }, $optionsResolved);
+        return ltrim((new \Rize\UriTemplate\UriTemplate())->expand('{?ids,usernames,format,tweet.format,user.format,place.format,expansions}', $optionsResolved), '?');
+    }
     public function getExtraHeaders() : array
     {
         return array('Accept' => array('application/json'));

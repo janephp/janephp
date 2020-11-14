@@ -9,6 +9,7 @@ use Jane\OpenApi3\Generator\Endpoint\GetConstructorTrait;
 use Jane\OpenApi3\Generator\Endpoint\GetGetBodyTrait;
 use Jane\OpenApi3\Generator\Endpoint\GetGetExtraHeadersTrait;
 use Jane\OpenApi3\Generator\Endpoint\GetGetOptionsResolverTrait;
+use Jane\OpenApi3\Generator\Endpoint\GetGetQueryStringTrait;
 use Jane\OpenApi3\Generator\Endpoint\GetGetUriTrait;
 use Jane\OpenApi3\Generator\Endpoint\GetTransformResponseBodyTrait;
 use Jane\OpenApi3\Generator\Parameter\NonBodyParameterGenerator;
@@ -31,6 +32,7 @@ class EndpointGenerator implements EndpointGeneratorInterface
     use GetTransformResponseBodyTrait;
     use GetGetMethodTrait;
     use GetGetUriTrait;
+    use GetGetQueryStringTrait;
     use GetGetExtraHeadersTrait;
     use GetGetOptionsResolverTrait;
     use GetGetBodyTrait;
@@ -87,6 +89,11 @@ class EndpointGenerator implements EndpointGeneratorInterface
                 $this->getGetBody($operation, $context, $this->guessClass, $this->requestBodyGenerator),
             ]),
         ]);
+
+        $getQueryStringMethod = $this->getGetQueryString($operation, $this->guessClass);
+        if ($getQueryStringMethod) {
+            $class->stmts[] = $getQueryStringMethod;
+        }
 
         [$genericCustomQueryResolver, $operationCustomQueryResolver] = $this->customOptionResolvers($operation, $context);
 

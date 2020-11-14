@@ -6,10 +6,10 @@ class PutBookItem extends \ApiPlatform\Demo\Runtime\Client\BaseEndpoint implemen
 {
     protected $id;
     /**
-     * 
      *
-     * @param string $id 
-     * @param \stdClass|\ApiPlatform\Demo\Model\Book $requestBody 
+     *
+     * @param string $id
+     * @param \stdClass|\ApiPlatform\Demo\Model\Book $requestBody
      */
     public function __construct(string $id, $requestBody)
     {
