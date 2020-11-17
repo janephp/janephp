@@ -13,7 +13,7 @@ class GistsPostBody
     /**
      * Names and content for the files that make up the gist
      *
-     * @var GistsPostBodyFilesItem[]
+     * @var array<string, GistsPostBodyFilesItem>
      */
     protected $files;
     /**
@@ -46,7 +46,7 @@ class GistsPostBody
     /**
      * Names and content for the files that make up the gist
      *
-     * @return GistsPostBodyFilesItem[]
+     * @return array<string, GistsPostBodyFilesItem>
      */
     public function getFiles() : iterable
     {
@@ -55,7 +55,7 @@ class GistsPostBody
     /**
      * Names and content for the files that make up the gist
      *
-     * @param GistsPostBodyFilesItem[] $files
+     * @param array<string, GistsPostBodyFilesItem> $files
      *
      * @return self
      */

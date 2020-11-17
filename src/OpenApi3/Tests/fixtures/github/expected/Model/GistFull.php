@@ -55,7 +55,7 @@ class GistFull
     /**
      * 
      *
-     * @var GistSimpleFilesItem[]
+     * @var array<string, GistSimpleFilesItem>
      */
     protected $files;
     /**
@@ -301,7 +301,7 @@ class GistFull
     /**
      * 
      *
-     * @return GistSimpleFilesItem[]
+     * @return array<string, GistSimpleFilesItem>
      */
     public function getFiles() : iterable
     {
@@ -310,7 +310,7 @@ class GistFull
     /**
      * 
      *
-     * @param GistSimpleFilesItem[] $files
+     * @param array<string, GistSimpleFilesItem> $files
      *
      * @return self
      */

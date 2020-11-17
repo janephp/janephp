@@ -25,7 +25,7 @@ class Test
     /**
      * 
      *
-     * @var string[]|null
+     * @var array<string, string>|null
      */
     protected $object;
     /**
@@ -94,7 +94,7 @@ class Test
     /**
      * 
      *
-     * @return string[]|null
+     * @return array<string, string>|null
      */
     public function getObject() : ?iterable
     {
@@ -103,7 +103,7 @@ class Test
     /**
      * 
      *
-     * @param string[]|null $object
+     * @param array<string, string>|null $object
      *
      * @return self
      */

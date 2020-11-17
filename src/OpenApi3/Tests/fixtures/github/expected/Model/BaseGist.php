@@ -55,7 +55,7 @@ class BaseGist
     /**
      * 
      *
-     * @var BaseGistFilesItem[]
+     * @var array<string, BaseGistFilesItem>
      */
     protected $files;
     /**
@@ -295,7 +295,7 @@ class BaseGist
     /**
      * 
      *
-     * @return BaseGistFilesItem[]
+     * @return array<string, BaseGistFilesItem>
      */
     public function getFiles() : iterable
     {
@@ -304,7 +304,7 @@ class BaseGist
     /**
      * 
      *
-     * @param BaseGistFilesItem[] $files
+     * @param array<string, BaseGistFilesItem> $files
      *
      * @return self
      */

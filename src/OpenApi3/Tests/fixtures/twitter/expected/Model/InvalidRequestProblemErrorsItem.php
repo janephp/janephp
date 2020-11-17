@@ -7,7 +7,7 @@ class InvalidRequestProblemErrorsItem
     /**
      * 
      *
-     * @var string[][]
+     * @var array<string, string[]>
      */
     protected $parameters;
     /**
@@ -19,7 +19,7 @@ class InvalidRequestProblemErrorsItem
     /**
      * 
      *
-     * @return string[][]
+     * @return array<string, string[]>
      */
     public function getParameters() : iterable
     {
@@ -28,7 +28,7 @@ class InvalidRequestProblemErrorsItem
     /**
      * 
      *
-     * @param string[][] $parameters
+     * @param array<string, string[]> $parameters
      *
      * @return self
      */

@@ -55,7 +55,7 @@ class GistFullforkOf
     /**
      * 
      *
-     * @var GistSimpleFilesItem[]
+     * @var array<string, GistSimpleFilesItem>
      */
     protected $files;
     /**
@@ -283,7 +283,7 @@ class GistFullforkOf
     /**
      * 
      *
-     * @return GistSimpleFilesItem[]
+     * @return array<string, GistSimpleFilesItem>
      */
     public function getFiles() : iterable
     {
@@ -292,7 +292,7 @@ class GistFullforkOf
     /**
      * 
      *
-     * @param GistSimpleFilesItem[] $files
+     * @param array<string, GistSimpleFilesItem> $files
      *
      * @return self
      */
