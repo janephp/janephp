@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [6.2.5] - 2020-11-18
+### Fixed
+- [AutoMapper] [GH#426](https://github.com/janephp/janephp/pull/426) Fix mapping for empty collection value on an array property
+- [OpenAPI] [GH#444](https://github.com/janephp/janephp/pull/444) Remove unused files
+- [OpenAPI] [GH#447](https://github.com/janephp/janephp/pull/447) Fix errors caused by empty responses in OpenAPI specs
+
+### Documentation
+- [OpenAPI] [GH#438](https://github.com/janephp/janephp/pull/438) Fix documentation namespaces for consistency
+
 ## [6.2.4] - 2020-10-02
 ### Fixed
 - [Jane] [GH#423](https://github.com/janephp/janephp/pull/423) Skip required fields in Normalizer generation
