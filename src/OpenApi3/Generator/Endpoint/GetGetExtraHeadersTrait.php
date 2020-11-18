@@ -5,6 +5,7 @@ namespace Jane\OpenApi3\Generator\Endpoint;
 use Jane\JsonSchemaRuntime\Reference;
 use Jane\OpenApi3\Guesser\GuessClass;
 use Jane\OpenApi3\JsonSchema\Model\Response;
+use Jane\OpenApi3\JsonSchema\Normalizer\ResponseNormalizer;
 use Jane\OpenApiCommon\Guesser\Guess\OperationGuess;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Name;
@@ -22,6 +23,11 @@ trait GetGetExtraHeadersTrait
             foreach ($operation->getOperation()->getResponses() as $response) {
                 if ($response instanceof Reference) {
                     [$_, $response] = $guessClass->resolve($response, Response::class);
+                }
+                if (\is_array($response)) {
+                    $normalizer = new ResponseNormalizer();
+                    $normalizer->setDenormalizer($this->denormalizer);
+                    $response = $normalizer->denormalize($response, Response::class);
                 }
 
                 /** @var Response $response */

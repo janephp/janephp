@@ -1,0 +1,7 @@
+<?php
+
+return [
+    'openapi-file' => __DIR__ . '/PictureparkSwagger.json',
+    'namespace' => 'PicturePark\API',
+    'directory' => __DIR__ . '/generated',
+];
