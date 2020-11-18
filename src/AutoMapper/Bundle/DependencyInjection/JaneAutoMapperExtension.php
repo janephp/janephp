@@ -10,6 +10,7 @@ use Jane\AutoMapper\MapperGeneratorMetadataFactory;
 use Jane\AutoMapper\MapperGeneratorMetadataInterface;
 use Jane\AutoMapper\MapperMetadata;
 use Jane\AutoMapper\Normalizer\AutoMapperNormalizer;
+use Jane\AutoMapper\Transformer\TransformerFactoryInterface;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
@@ -32,6 +33,7 @@ class JaneAutoMapperExtension extends Extension
         $loader->load('services.xml');
 
         $container->getDefinition(MapperGeneratorMetadataFactory::class)->replaceArgument(5, $config['date_time_format']);
+        $container->registerForAutoconfiguration(TransformerFactoryInterface::class)->addTag('jane_auto_mapper.transformer_factory');
 
         foreach ($config['mappings'] as $mapping) {
             $this->createMapperConfigurationDefinition($container, $mapping);

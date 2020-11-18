@@ -5,11 +5,17 @@ namespace Jane\AutoMapper\Bundle\Tests;
 use Jane\AutoMapper\AutoMapperInterface;
 use Jane\AutoMapper\Bundle\Tests\Fixtures\User;
 use Jane\AutoMapper\Tests\Fixtures\AddressDTO;
+use Jane\AutoMapper\Tests\Fixtures\Order;
 use Jane\AutoMapper\Tests\Fixtures\UserDTO;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class ServiceInstantiationTest extends WebTestCase
 {
+    public function setUp(): void
+    {
+        @unlink(__DIR__ . '/Resources/var/cache/test');
+    }
+
     public function testAutoMapper()
     {
         static::bootKernel();
@@ -43,5 +49,19 @@ class ServiceInstantiationTest extends WebTestCase
         self::assertIsArray($userArray);
         self::assertArrayHasKey('@id', $userArray);
         self::assertSame(1, $userArray['@id']);
+
+        $data = [
+            '@id' => 4582,
+            'price' => [
+                'amount' => 1000,
+                'currency' => 'EUR',
+            ],
+        ];
+        $order = $autoMapper->map($data, Order::class);
+
+        self::assertInstanceOf(Order::class, $order);
+        self::assertInstanceOf(\Money\Money::class, $order->price);
+        self::assertEquals(1000, $order->price->getAmount());
+        self::assertEquals('EUR', $order->price->getCurrency()->getCode());
     }
 }
