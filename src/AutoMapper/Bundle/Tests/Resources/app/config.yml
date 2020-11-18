@@ -13,5 +13,9 @@ jane_auto_mapper:
             pass: DummyApp\UserConfigurationPass
 
 services:
+  _defaults:
+    autoconfigure: true
+
   DummyApp\UserConfigurationPass: ~
   DummyApp\IdNameConverter: ~
+  DummyApp\Transformer\MoneyTransformerFactory: ~

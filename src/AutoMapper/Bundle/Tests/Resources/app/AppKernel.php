@@ -2,6 +2,13 @@
 
 namespace DummyApp;
 
+require_once __DIR__ . '/Transformer/MoneyTransformerFactory.php';
+require_once __DIR__ . '/Transformer/ArrayToMoneyTransformer.php';
+require_once __DIR__ . '/Transformer/MoneyToArrayTransformer.php';
+require_once __DIR__ . '/Transformer/MoneyToMoneyTransformer.php';
+
+namespace DummyApp;
+
 use Jane\AutoMapper\Bundle\Configuration\ConfigurationPassInterface;
 use Jane\AutoMapper\Bundle\JaneAutoMapperBundle;
 use Jane\AutoMapper\MapperGeneratorMetadataInterface;
