@@ -53,6 +53,9 @@ class EndpointGenerator implements EndpointGeneratorInterface
     /** @var RequestBodyGenerator */
     private $requestBodyGenerator;
 
+    /** @var DenormalizerInterface */
+    private $denormalizer;
+
     /** @var GuessClass */
     private $guessClass;
 
@@ -67,6 +70,7 @@ class EndpointGenerator implements EndpointGeneratorInterface
         $this->nonBodyParameterGenerator = $nonBodyParameterGenerator;
         $this->exceptionGenerator = $exceptionGenerator;
         $this->requestBodyGenerator = $requestBodyGenerator;
+        $this->denormalizer = $denormalizer;
         $this->guessClass = new GuessClass(Schema::class, $denormalizer);
     }
 

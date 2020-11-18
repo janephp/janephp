@@ -7,6 +7,7 @@ use Jane\JsonSchemaRuntime\Reference;
 use Jane\OpenApi3\Guesser\GuessClass;
 use Jane\OpenApi3\JsonSchema\Model\Response;
 use Jane\OpenApi3\JsonSchema\Model\Schema;
+use Jane\OpenApi3\JsonSchema\Normalizer\ResponseNormalizer;
 use Jane\OpenApiCommon\Generator\ExceptionGenerator;
 use Jane\OpenApiCommon\Guesser\Guess\OperationGuess;
 use PhpParser\Comment\Doc;
@@ -32,6 +33,11 @@ trait GetTransformResponseBodyTrait
                 if ($response instanceof Reference) {
                     [$reference, $response] = $guessClass->resolve($response, Response::class);
                 }
+                if (\is_array($response)) {
+                    $normalizer = new ResponseNormalizer();
+                    $normalizer->setDenormalizer($this->denormalizer);
+                    $response = $normalizer->denormalize($response, Response::class);
+                }
 
                 /* @var Response $response */
                 [$newOutputTypes, $newThrowTypes, $ifStatements] = $this->createResponseDenormalizationStatement(
@@ -40,7 +46,7 @@ trait GetTransformResponseBodyTrait
                     $response,
                     $context,
                     $reference,
-                    $response->getDescription(),
+                    $response->getDescription() ?? '',
                     $guessClass,
                     $exceptionGenerator
                 );
