@@ -5,7 +5,7 @@
 
     <services>
         <service id="Jane\AutoMapper\Bundle\AutoMapper">
-            <argument type="service" id="Jane\AutoMapper\Loader\FileLoader" />
+            <argument type="service" id="Jane\AutoMapper\Loader\ClassLoaderInterface" />
             <argument type="service" id="Jane\AutoMapper\Transformer\ChainTransformerFactory" />
             <argument type="service" id="Jane\AutoMapper\MapperGeneratorMetadataFactoryInterface" />
         </service>
