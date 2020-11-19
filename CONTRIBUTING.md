@@ -4,7 +4,7 @@ First, thank you!
 
 Here are a few rules to follow in order to ease code reviews, and discussions before maintainers accept and merge your work.
 
-* You **MUST** follow the [PSR-1](http://www.php-fig.org/psr/1/) and [PSR-2](http://www.php-fig.org/psr/2/).
+* You **MUST** follow the [PSR-1](https://www.php-fig.org/psr/psr-1/) and [PSR-2](https://www.php-fig.org/psr/psr-2/).
 * You **MUST** run the test suite.
 * You **MUST** write (or update) unit tests.
 * You **SHOULD** write documentation.
