@@ -17,5 +17,6 @@ services:
     autoconfigure: true
 
   DummyApp\UserConfigurationPass: ~
+  DummyApp\UserMapperConfiguration: ~
   DummyApp\IdNameConverter: ~
   DummyApp\Transformer\MoneyTransformerFactory: ~

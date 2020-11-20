@@ -3,25 +3,13 @@
 namespace Jane\AutoMapper\Bundle;
 
 use Jane\AutoMapper\AutoMapper as BaseAutoMapper;
-use Jane\AutoMapper\Bundle\Configuration\ConfigurationPassInterface;
-use Jane\AutoMapper\MapperGeneratorMetadataInterface;
+use Jane\AutoMapper\Bundle\Configuration\MapperConfigurationInterface;
 
 class AutoMapper extends BaseAutoMapper
 {
-    /** @var ConfigurationPassInterface[] */
-    private $configurationPass = [];
-
-    public function addConfigurationPass(ConfigurationPassInterface $configurationPass): void
+    public function addMapperConfiguration(MapperConfigurationInterface $mapperConfiguration): void
     {
-        $this->configurationPass[] = $configurationPass;
-    }
-
-    public function register(MapperGeneratorMetadataInterface $metadata): void
-    {
-        foreach ($this->configurationPass as $configurationPass) {
-            $configurationPass->process($metadata);
-        }
-
-        parent::register($metadata);
+        $metadata = $this->getMetadata($mapperConfiguration->getSource(), $mapperConfiguration->getTarget());
+        $mapperConfiguration->process($metadata);
     }
 }

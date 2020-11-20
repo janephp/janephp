@@ -10,6 +10,7 @@ require_once __DIR__ . '/Transformer/MoneyToMoneyTransformer.php';
 namespace DummyApp;
 
 use Jane\AutoMapper\Bundle\Configuration\ConfigurationPassInterface;
+use Jane\AutoMapper\Bundle\Configuration\MapperConfigurationInterface;
 use Jane\AutoMapper\Bundle\JaneAutoMapperBundle;
 use Jane\AutoMapper\MapperGeneratorMetadataInterface;
 use Jane\AutoMapper\MapperMetadata;
@@ -63,6 +64,30 @@ class AppKernel extends Kernel
 
 class UserConfigurationPass implements ConfigurationPassInterface
 {
+    public function process(MapperGeneratorMetadataInterface $metadata): void
+    {
+        if (!$metadata instanceof MapperMetadata) {
+            return;
+        }
+
+        $metadata->forMember('email', function (User $user) {
+            return $user->email ?? 'fallback@foobar.org';
+        });
+    }
+}
+
+class UserMapperConfiguration implements MapperConfigurationInterface
+{
+    public function getSource(): string
+    {
+        return \Jane\AutoMapper\Bundle\Tests\Fixtures\User::class;
+    }
+
+    public function getTarget(): string
+    {
+        return \Jane\AutoMapper\Tests\Fixtures\UserDTO::class;
+    }
+
     public function process(MapperGeneratorMetadataInterface $metadata): void
     {
         if (!$metadata instanceof MapperMetadata) {
