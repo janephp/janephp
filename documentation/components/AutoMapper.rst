@@ -194,14 +194,14 @@ Normalizer Bridge
 ~~~~~~~~~~~~~~~~~
 
 A Normalizer Bridge is available, aiming to be 100% feature compatible with the ObjectNormalizer of the ``symfony/serializer`` component. The goal of this bridge **is not to replace the ObjectNormalizer** but rather providing a very fast alternative.
-To use it, you have to opt-in in bundle configuration as stated in Bundle section.
+To use it, you have to opt-in in bundle configuration as stated in the Bundle section.
 
 As shown in the benchmark above, using this bridge leads up to more than 8x speed increase in normalization.
 
 Extending the bundle
 --------------------
 
-The AutoMapper comes with multiple elements to make it work, but you can custom many of them, this section will describe each of theses customizable elements.
+The AutoMapper comes with multiple elements to make it work, but you can custom many of them, this section will describe each of these customizable elements.
 
 Mapper configuration
 ~~~~~~~~~~~~~~~~~~~~
@@ -209,14 +209,14 @@ Mapper configuration
 During automapping, we will build metadata about source & target data.
 Most of the time this process will be handled by one of our builtin extractor or the Symfony PropertyInfo component.
 
-But you can custom this with a ``MapperConfigurationInterface``. For example if you have an in input array as following::
+But you can customize this with a ``MapperConfigurationInterface``. For example if you have an in input array as following::
 
     ['name' => 'Jane Doe', 'age' => 25]
 
-And we want to automap this array to an object that have a property `yearOfBirth`. With no configuration, this property
+And we want to automap this array to an object that has a property `yearOfBirth`. With no configuration, this property
 will be skipped since there is no matching field in the array, but we can make a custom Mapper configuration to fill it.
 
-We want to calculate this field based on current year minus the ``age`` field. Here is a custom
+We want to calculate this field based on the current year minus the ``age`` field. Here is a custom
 Mapper configuration definition following our example::
 
     use Jane\AutoMapper\Bundle\Configuration\MapperConfigurationInterface;
@@ -241,7 +241,7 @@ Mapper configuration definition following our example::
         }
     }
 
-This example will map the `yearOfBirth` field as stated !
+This example will map the `yearOfBirth` field as stated!
 
 If you are using the Bundle, any class implementing the ``MapperConfigurationInterface`` interface will be
 autoconfigured and linked to the AutoMapper instance.
@@ -265,8 +265,7 @@ NameConverter
 
 As in Symfony, we have the possibility to overload the property names with NameConverter (see. `related serializer documentation`_).
 
-We can use same behavior in the AutoMapper thanks to the ``name_converter`` configuration field. You have to give a
+We can use the same behavior in the AutoMapper thanks to the ``name_converter`` configuration field. You have to give a
 service implementing the ``AdvancedNameConverterInterface`` interface.
 
 .. _`related serializer documentation`: https://symfony.com/doc/current/components/serializer.html#configure-name-conversion-using-metadata
-
