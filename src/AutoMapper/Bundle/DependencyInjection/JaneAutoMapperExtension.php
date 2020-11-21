@@ -2,13 +2,12 @@
 
 namespace Jane\AutoMapper\Bundle\DependencyInjection;
 
-use Jane\AutoMapper\Bundle\AutoMapper;
-use Jane\AutoMapper\Bundle\Configuration\RestrictConfigurationPass;
+use Jane\AutoMapper\Bundle\Configuration\LegacyConfigurationPassDecorator;
+use Jane\AutoMapper\Bundle\Configuration\MapperConfigurationInterface;
 use Jane\AutoMapper\Extractor\FromSourceMappingExtractor;
 use Jane\AutoMapper\Extractor\FromTargetMappingExtractor;
 use Jane\AutoMapper\MapperGeneratorMetadataFactory;
 use Jane\AutoMapper\MapperGeneratorMetadataInterface;
-use Jane\AutoMapper\MapperMetadata;
 use Jane\AutoMapper\Normalizer\AutoMapperNormalizer;
 use Jane\AutoMapper\Transformer\TransformerFactoryInterface;
 use Symfony\Component\Config\FileLocator;
@@ -28,6 +27,7 @@ class JaneAutoMapperExtension extends Extension
         $config = $this->processConfiguration($configuration, $configs);
 
         $container->registerForAutoconfiguration(MapperGeneratorMetadataInterface::class)->addTag('jane_auto_mapper.mapper_metadata');
+        $container->registerForAutoconfiguration(MapperConfigurationInterface::class)->addTag('jane_auto_mapper.mapper_configuration');
 
         $loader = new XmlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
         $loader->load('services.xml');
@@ -61,22 +61,11 @@ class JaneAutoMapperExtension extends Extension
 
     private function createMapperConfigurationDefinition(ContainerBuilder $container, $config)
     {
-        $serviceName = 'Mapping_' . $config['source'] . '_' . $config['target'];
-        $definition = $container->register($serviceName, MapperMetadata::class);
-        $definition->setFactory([new Reference(MapperGeneratorMetadataFactory::class), 'create']);
-        $definition->addArgument(new Reference(AutoMapper::class));
+        $serviceName = 'LegacyDecorator_' . $config['pass'];
+        $definition = $container->register($serviceName, LegacyConfigurationPassDecorator::class);
+        $definition->addArgument(new Reference($config['pass']));
         $definition->addArgument($config['source']);
         $definition->addArgument($config['target']);
-        $definition->addTag('jane_auto_mapper.mapper_metadata');
-
-        if (\array_key_exists('pass', $config)) {
-            $restrictConfigurationPass = $container->register($serviceName . '_RestrictPass', RestrictConfigurationPass::class);
-            $restrictConfigurationPass->addArgument($config['source']);
-            $restrictConfigurationPass->addArgument($config['target']);
-            $restrictConfigurationPass->addArgument(new Reference($config['pass']));
-
-            $definition = $container->getDefinition(AutoMapper::class);
-            $definition->addMethodCall('addConfigurationPass', [new Reference($serviceName . '_RestrictPass')]);
-        }
+        $definition->addTag('jane_auto_mapper.mapper_configuration');
     }
 }

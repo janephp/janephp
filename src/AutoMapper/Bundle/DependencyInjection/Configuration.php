@@ -19,6 +19,11 @@ class Configuration implements ConfigurationInterface
                 ->scalarNode('cache_dir')->defaultValue('%kernel.cache_dir%/automapper')->end()
                 ->scalarNode('date_time_format')->defaultValue(\DateTime::RFC3339)->end()
                 ->arrayNode('mappings')
+                    ->setDeprecated(
+                        'jane-php/automapper',
+                        '6.3',
+                        'The "%node%" option is deprecated. Use the new ' . MapperConfigurationInterface::class . ' interface to automatically register your mapper configuration.'
+                    )
                     ->prototype('array')
                     ->children()
                         ->scalarNode('source')->isRequired()->end()
