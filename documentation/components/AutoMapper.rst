@@ -178,19 +178,16 @@ Then configure the bundle to your needs, for example:
 .. code-block:: yaml
 
     jane_auto_mapper:
-      autoregister: true
+      normalizer: false
+      nameConverter: ~
+      cache_dir: '%kernel.cache_dir%/automapper'
       date_time_format: !php/const \DateTimeInterface::RFC3339_EXTENDED
-      mappings:
-        - source: Jane\AutoMapper\Bundle\Tests\Fixtures\User
-          target: Jane\AutoMapper\Tests\Fixtures\UserDTO
-          pass: DummyApp\UserConfigurationPass
 
 Possible fields:
 
 * ``normalizer`` (default: ``false``):  A boolean which indicate if we inject the AutoMapperNormalizer;
 * ``nameConverter`` (default: ``null``): A NameConverter based on your needs;
 * ``cache_dir`` (default: ``%kernel.cache_dir%/automapper``): This settings allows you to customize the output directory for generated mappers;
-* ``mappings``: This option allows you to customize Mapper metadata, you have to specify ``source`` and ``target`` data types and related configuration using ``pass`` field. This configuration should implements ``Jane\AutoMapper\Bundle\Configuration\ConfigurationPassInterface``.
 * ``date_time_format``: This option allows you to change the date time format used to transform strings to ``\DateTimeInterface`` (default: ``\DateTimeInterface::RFC3339``).
 
 Normalizer Bridge
