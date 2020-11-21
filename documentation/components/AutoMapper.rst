@@ -179,14 +179,14 @@ Then configure the bundle to your needs, for example:
 
     jane_auto_mapper:
       normalizer: false
-      nameConverter: ~
+      name_converter: ~
       cache_dir: '%kernel.cache_dir%/automapper'
       date_time_format: !php/const \DateTimeInterface::RFC3339_EXTENDED
 
 Possible fields:
 
 * ``normalizer`` (default: ``false``):  A boolean which indicate if we inject the AutoMapperNormalizer;
-* ``nameConverter`` (default: ``null``): A NameConverter based on your needs;
+* ``name_converter`` (default: ``null``): A NameConverter based on your needs;
 * ``cache_dir`` (default: ``%kernel.cache_dir%/automapper``): This settings allows you to customize the output directory for generated mappers;
 * ``date_time_format``: This option allows you to change the date time format used to transform strings to ``\DateTimeInterface`` (default: ``\DateTimeInterface::RFC3339``).
 

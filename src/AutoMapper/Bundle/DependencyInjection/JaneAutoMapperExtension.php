@@ -46,14 +46,14 @@ class JaneAutoMapperExtension extends Extension
             ;
         }
 
-        if (null !== $config['nameConverter']) {
+        if (null !== $config['name_converter']) {
             $container
                 ->getDefinition(FromTargetMappingExtractor::class)
-                ->addArgument(new Reference($config['nameConverter']));
+                ->addArgument(new Reference($config['name_converter']));
 
             $container
                 ->getDefinition(FromSourceMappingExtractor::class)
-                ->addArgument(new Reference($config['nameConverter']));
+                ->addArgument(new Reference($config['name_converter']));
         }
 
         $container->setParameter('automapper.cache_dir', $config['cache_dir']);
