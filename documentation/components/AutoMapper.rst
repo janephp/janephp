@@ -183,7 +183,7 @@ Then configure the bundle to your needs, for example:
       cache_dir: '%kernel.cache_dir%/automapper'
       date_time_format: !php/const \DateTimeInterface::RFC3339_EXTENDED
 
-Possible fields:
+Possible configuration fields:
 
 * ``normalizer`` (default: ``false``):  A boolean which indicate if we inject the AutoMapperNormalizer;
 * ``name_converter`` (default: ``null``): A NameConverter based on your needs;
@@ -191,34 +191,82 @@ Possible fields:
 * ``date_time_format``: This option allows you to change the date time format used to transform strings to ``\DateTimeInterface`` (default: ``\DateTimeInterface::RFC3339``).
 
 Normalizer Bridge
------------------
+~~~~~~~~~~~~~~~~~
 
 A Normalizer Bridge is available, aiming to be 100% feature compatible with the ObjectNormalizer of the ``symfony/serializer`` component. The goal of this bridge **is not to replace the ObjectNormalizer** but rather providing a very fast alternative.
+To use it, you have to opt-in in bundle configuration as stated in Bundle section.
 
 As shown in the benchmark above, using this bridge leads up to more than 8x speed increase in normalization.
 
-Future consideration
+Extending the bundle
 --------------------
 
-Things that could be done later:
+The AutoMapper comes with multiple elements to make it work, but you can custom many of them, this section will describe each of theses customizable elements.
 
-* symfony/form bridge for mapping request data to object
-* symfony/validator integration:
+Mapper configuration
+~~~~~~~~~~~~~~~~~~~~
 
-PHP 7.4 may give a problem to the symfony/validator component where typed properties can be problem, given a class like this::
+During automapping, we will build metadata about source & target data.
+Most of the time this process will be handled by one of our builtin extractor or the Symfony PropertyInfo component.
 
-    class Foo {
-        /** @Assert\NotNull() */
-        public int $foo;
+But you can custom this with a ``MapperConfigurationInterface``. For example if you have an in input array as following::
+
+    ['name' => 'Jane Doe', 'age' => 25]
+
+And we want to automap this array to an object that have a property `yearOfBirth`. With no configuration, this property
+will be skipped since there is no matching field in the array, but we can make a custom Mapper configuration to fill it.
+
+We want to calculate this field based on current year minus the ``age`` field. Here is a custom
+Mapper configuration definition following our example::
+
+    use Jane\AutoMapper\Bundle\Configuration\MapperConfigurationInterface;
+
+    class UserMapperConfiguration implements Configuration\MapperConfigurationInterface
+    {
+        public function getSource(): string
+        {
+            return 'array';
+        }
+
+        public function getTarget(): string
+        {
+            return \Jane\AutoMapper\Tests\Fixtures\UserDTO::class;
+        }
+
+        public function process(MapperGeneratorMetadataInterface $metadata): void
+        {
+            $metadata->forMember('yearOfBirth', function (array $user) {
+                return ((int) date('Y')) - ((int) $user['age']);
+            });
+        }
     }
 
-An user may send a null value (in a form by example or JSON), and PHP will raise an error before the validation, since the validation occurs on the mapped object.
+This example will map the `yearOfBirth` field as stated !
 
-This component can help resolving this case with the actual behavior:
+If you are using the Bundle, any class implementing the ``MapperConfigurationInterface`` interface will be
+autoconfigured and linked to the AutoMapper instance.
 
-- Create a dummy class with the same properties as Foo but without type checking
-- Mapping user data to this dummy class (using the automapper component)
-- Validating this dummy class with the metadata from the Foo class
-- Mapping the dummy object to the foo class (using the automapper component)
+Transformer
+~~~~~~~~~~~
 
-Feel free to challenge as much as possible.
+Sometimes we need to manage more complex objects that need specific behavior during mapping. For example the
+``Money\Money`` object `from the Money PHP library`_ has a lot of properties we don't want to manage and can confuse
+the AutoMapper since it will try to map any properties.
+
+For this kind of objects we need a custom TransformerFactory, you can see `such a class in our test suite`_. You also
+need to implement the ``TransformerFactoryInterface`` interface in order to autoregister this factory in the
+AutoMapper.
+
+.. _`from the Money PHP library`: https://github.com/moneyphp/money
+.. _`such a class in our test suite`: https://github.com/janephp/janephp/tree/next/src/AutoMapper/Bundle/Tests/Resources/app/Transformer
+
+NameConverter
+~~~~~~~~~~~~~
+
+As in Symfony, we have the possibility to overload the property names with NameConverter (see. `related serializer documentation`_).
+
+We can use same behavior in the AutoMapper thanks to the ``name_converter`` configuration field. You have to give a
+service implementing the ``AdvancedNameConverterInterface`` interface.
+
+.. _`related serializer documentation`: https://symfony.com/doc/current/components/serializer.html#configure-name-conversion-using-metadata
+
