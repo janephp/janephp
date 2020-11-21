@@ -5,7 +5,7 @@ framework:
 
 jane_auto_mapper:
     normalizer: true
-    nameConverter: DummyApp\IdNameConverter
+    name_converter: DummyApp\IdNameConverter
     mappings:
         -
             source: Jane\AutoMapper\Bundle\Tests\Fixtures\User
