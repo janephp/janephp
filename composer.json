@@ -79,18 +79,18 @@
     },
     "autoload-dev": {
         "classmap": [
-            "src/AutoMapper/Bundle/Tests/Resources/app/AppKernel.php",
-            "src/OpenApi2/Tests/",
-            "src/OpenApi3/Tests/"
+            "src/Component/AutoMapper/Bundle/Tests/Resources/app/AppKernel.php",
+            "src/Component/OpenApi2/Tests/",
+            "src/Component/OpenApi3/Tests/"
         ],
         "psr-4": {
-            "Jane\\OpenApi2\\Tests\\Client\\": "src/OpenApi2/Tests/client/generated/",
-            "Jane\\OpenApi3\\Tests\\Client\\": "src/OpenApi3/Tests/client/generated/"
+            "Jane\\OpenApi2\\Tests\\Client\\": "src/Component/OpenApi2/Tests/client/generated/",
+            "Jane\\OpenApi3\\Tests\\Client\\": "src/Component/OpenApi3/Tests/client/generated/"
         }
     },
     "bin": [
-        "src/JsonSchema/bin/jane",
-        "src/OpenApiCommon/bin/jane-openapi"
+        "src/Component/JsonSchema/bin/jane",
+        "src/Component/OpenApiCommon/bin/jane-openapi"
     ],
     "config": {
         "process-timeout": 1800,

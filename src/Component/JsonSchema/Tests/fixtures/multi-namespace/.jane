@@ -1,0 +1,18 @@
+<?php
+
+return [
+    'mapping' => [
+        // Order of schema matters for naming
+        __DIR__ . '/schema2.json' => [
+            'root-class' => 'Test',
+            'namespace' => 'Jane\Component\JsonSchema\Tests\Expected\Schema2',
+            'directory' => __DIR__ . '/generated/Schema2',
+        ],
+        __DIR__ . '/schema1.json' => [
+            'root-class' => 'Test',
+            'namespace' => 'Jane\Component\JsonSchema\Tests\Expected\Schema1',
+            'directory' => __DIR__ . '/generated/Schema1',
+        ],
+    ],
+    'reference' => false,
+];
