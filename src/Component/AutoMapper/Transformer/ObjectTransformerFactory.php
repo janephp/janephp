@@ -9,7 +9,7 @@ use Symfony\Component\PropertyInfo\Type;
 /**
  * @author Joel Wurtz <jwurtz@jolicode.com>
  */
-final class ObjectTransformerFactory extends AbstractUniqueTypeTransformerFactory
+final class ObjectTransformerFactory extends AbstractUniqueTypeTransformerFactory implements PrioritizedTransformerFactoryInterface
 {
     private $autoMapper;
 

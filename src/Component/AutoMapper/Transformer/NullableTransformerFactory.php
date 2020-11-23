@@ -8,7 +8,7 @@ use Symfony\Component\PropertyInfo\Type;
 /**
  * @author Joel Wurtz <jwurtz@jolicode.com>
  */
-final class NullableTransformerFactory implements TransformerFactoryInterface
+final class NullableTransformerFactory implements TransformerFactoryInterface, PrioritizedTransformerFactoryInterface
 {
     private $chainTransformerFactory;
 

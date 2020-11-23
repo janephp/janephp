@@ -71,12 +71,4 @@ final class MoneyTransformerFactory extends AbstractUniqueTypeTransformerFactory
 
         return true;
     }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getPriority(): int
-    {
-        return 3;
-    }
 }
