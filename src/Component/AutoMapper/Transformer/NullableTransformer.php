@@ -13,7 +13,7 @@ use PhpParser\Node\Stmt;
  *
  * @author Joel Wurtz <jwurtz@jolicode.com>
  */
-final class NullableTransformer implements TransformerInterface
+final class NullableTransformer implements TransformerInterface, DependentTransformerInterface
 {
     private $itemTransformer;
     private $isTargetNullable;
@@ -53,6 +53,10 @@ final class NullableTransformer implements TransformerInterface
      */
     public function getDependencies(): array
     {
+        if (!$this->itemTransformer instanceof DependentTransformerInterface) {
+            return [];
+        }
+
         return $this->itemTransformer->getDependencies();
     }
 

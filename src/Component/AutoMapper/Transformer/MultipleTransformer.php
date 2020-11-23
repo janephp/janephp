@@ -18,7 +18,7 @@ use Symfony\Component\PropertyInfo\Type;
  *
  * @author Joel Wurtz <jwurtz@jolicode.com>
  */
-final class MultipleTransformer implements TransformerInterface
+final class MultipleTransformer implements TransformerInterface, DependentTransformerInterface
 {
     private const CONDITION_MAPPING = [
         Type::BUILTIN_TYPE_BOOL => 'is_bool',
@@ -93,7 +93,9 @@ final class MultipleTransformer implements TransformerInterface
         $dependencies = [];
 
         foreach ($this->transformers as $transformerData) {
-            $dependencies = array_merge($dependencies, $transformerData['transformer']->getDependencies());
+            if ($transformerData['transformer'] instanceof DependentTransformerInterface) {
+                $dependencies = array_merge($dependencies, $transformerData['transformer']->getDependencies());
+            }
         }
 
         return $dependencies;

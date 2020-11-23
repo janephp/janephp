@@ -6,6 +6,7 @@ use Jane\Component\AutoMapper\Extractor\MappingExtractorInterface;
 use Jane\Component\AutoMapper\Extractor\PropertyMapping;
 use Jane\Component\AutoMapper\Extractor\ReadAccessor;
 use Jane\Component\AutoMapper\Transformer\CallbackTransformer;
+use Jane\Component\AutoMapper\Transformer\DependentTransformerInterface;
 
 /**
  * Mapper metadata.
@@ -283,6 +284,10 @@ class MapperMetadata implements MapperGeneratorMetadataInterface
     private function checkCircularMapperConfiguration(MapperGeneratorMetadataInterface $configuration, &$checked): bool
     {
         foreach ($configuration->getPropertiesMapping() as $propertyMapping) {
+            if (!$propertyMapping->getTransformer() instanceof DependentTransformerInterface) {
+                continue;
+            }
+
             foreach ($propertyMapping->getTransformer()->getDependencies() as $dependency) {
                 if (isset($checked[$dependency->getName()])) {
                     continue;

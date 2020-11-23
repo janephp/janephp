@@ -7,6 +7,7 @@ use Jane\Component\AutoMapper\Exception\CompileException;
 use Jane\Component\AutoMapper\GeneratedMapper;
 use Jane\Component\AutoMapper\MapperContext;
 use Jane\Component\AutoMapper\MapperGeneratorMetadataInterface;
+use Jane\Component\AutoMapper\Transformer\DependentTransformerInterface;
 use PhpParser\Node\Arg;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Name;
@@ -93,9 +94,11 @@ final class Generator
         ]);
 
         foreach ($propertiesMapping as $propertyMapping) {
-            $transformer = $propertyMapping->getTransformer();
+            if (!$propertyMapping->getTransformer() instanceof DependentTransformerInterface) {
+                continue;
+            }
 
-            foreach ($transformer->getDependencies() as $dependency) {
+            foreach ($propertyMapping->getTransformer()->getDependencies() as $dependency) {
                 if (isset($addedDependencies[$dependency->getName()])) {
                     continue;
                 }
