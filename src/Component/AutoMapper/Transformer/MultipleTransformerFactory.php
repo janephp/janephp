@@ -19,15 +19,15 @@ final class MultipleTransformerFactory implements TransformerFactoryInterface, P
     /**
      * {@inheritdoc}
      */
-    public function getTransformer(?array $sourcesTypes, ?array $targetTypes, MapperMetadataInterface $mapperMetadata): ?TransformerInterface
+    public function getTransformer(?array $sourceTypes, ?array $targetTypes, MapperMetadataInterface $mapperMetadata): ?TransformerInterface
     {
-        if (null === $sourcesTypes || \count($sourcesTypes) <= 1) {
+        if (null === $sourceTypes || \count($sourceTypes) <= 1) {
             return null;
         }
 
         $transformers = [];
 
-        foreach ($sourcesTypes as $sourceType) {
+        foreach ($sourceTypes as $sourceType) {
             $transformer = $this->chainTransformerFactory->getTransformer([$sourceType], $targetTypes, $mapperMetadata);
 
             if (null !== $transformer) {

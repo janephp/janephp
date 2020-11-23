@@ -20,15 +20,15 @@ final class NullableTransformerFactory implements TransformerFactoryInterface, P
     /**
      * {@inheritdoc}
      */
-    public function getTransformer(?array $sourcesTypes, ?array $targetTypes, MapperMetadataInterface $mapperMetadata): ?TransformerInterface
+    public function getTransformer(?array $sourceTypes, ?array $targetTypes, MapperMetadataInterface $mapperMetadata): ?TransformerInterface
     {
-        $nbSourcesTypes = $sourcesTypes ? \count($sourcesTypes) : 0;
+        $nbSourceTypes = $sourceTypes ? \count($sourceTypes) : 0;
 
-        if (null === $sourcesTypes || 0 === $nbSourcesTypes || $nbSourcesTypes > 1) {
+        if (null === $sourceTypes || 0 === $nbSourceTypes || $nbSourceTypes > 1) {
             return null;
         }
 
-        $propertyType = $sourcesTypes[0];
+        $propertyType = $sourceTypes[0];
 
         if (!$propertyType->isNullable()) {
             return null;
