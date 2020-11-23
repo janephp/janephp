@@ -4,25 +4,25 @@ cache_url: "/cache/gitsplit"
 # List of splits.
 splits:
   -
-    prefix: "src/AutoMapper"
+    prefix: "src/Component/AutoMapper"
     target: "https://${GH_TOKEN}@github.com/janephp/automapper.git"
   -
-    prefix: "src/JsonSchema"
+    prefix: "src/Component/JsonSchema"
     target: "https://${GH_TOKEN}@github.com/janephp/json-schema.git"
   -
-    prefix: "src/JsonSchemaRuntime"
+    prefix: "src/Component/JsonSchemaRuntime"
     target: "https://${GH_TOKEN}@github.com/janephp/json-schema-runtime.git"
   -
-    prefix: "src/OpenApiCommon"
+    prefix: "src/Component/OpenApiCommon"
     target: "https://${GH_TOKEN}@github.com/janephp/open-api-common.git"
   -
-    prefix: "src/OpenApi2"
+    prefix: "src/Component/OpenApi2"
     target: "https://${GH_TOKEN}@github.com/janephp/open-api-2.git"
   -
-    prefix: "src/OpenApi3"
+    prefix: "src/Component/OpenApi3"
     target: "https://${GH_TOKEN}@github.com/janephp/open-api-3.git"
   -
-    prefix: "src/OpenApiRuntime"
+    prefix: "src/Component/OpenApiRuntime"
     target: "https://${GH_TOKEN}@github.com/janephp/open-api-runtime.git"
   -
     prefix: "documentation"

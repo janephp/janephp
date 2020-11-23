@@ -1,0 +1,22 @@
+framework:
+    secret: jane-automapper
+    property_info: ~
+    test: ~
+
+jane_auto_mapper:
+    normalizer: true
+    name_converter: DummyApp\IdNameConverter
+    mappings:
+        -
+            source: Jane\Component\AutoMapper\Bundle\Tests\Fixtures\User
+            target: Jane\Component\AutoMapper\Tests\Fixtures\UserDTO
+            pass: DummyApp\UserConfigurationPass
+
+services:
+  _defaults:
+    autoconfigure: true
+
+  DummyApp\UserConfigurationPass: ~
+  DummyApp\UserMapperConfiguration: ~
+  DummyApp\IdNameConverter: ~
+  DummyApp\Transformer\MoneyTransformerFactory: ~

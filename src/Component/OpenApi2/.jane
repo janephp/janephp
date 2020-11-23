@@ -1,0 +1,11 @@
+<?php
+
+return [
+    'json-schema-file' => __DIR__ . '/version2.json',
+    'root-class' => 'OpenApi',
+    'namespace' => 'Jane\Component\OpenApi2\JsonSchema',
+    'directory' => __DIR__ . DIRECTORY_SEPARATOR . 'JsonSchema',
+    'reference' => true,
+    'use-fixer' => true,
+    'strict' => false,
+];

@@ -1,0 +1,5 @@
+.idea
+vendor/
+composer.lock
+Tests/fixtures/*/generated
+.php_cs.cache

@@ -1,0 +1,56 @@
+{
+    "name": "jane-php/open-api-common",
+    "type": "library",
+    "description": "Utility for OpenApi 2/3 generators",
+    "keywords": [
+        "jane",
+        "swagger",
+        "openapi",
+        "utility"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Joel Wurtz",
+            "email": "jwurtz@jolicode.com"
+        },
+        {
+            "name": "Baptiste Leduc",
+            "email": "baptiste.leduc@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Jane\\Component\\OpenApiCommon\\": ""
+        }
+    },
+    "require": {
+        "php": ">=7.2",
+        "ext-json": "*",
+        "jane-php/json-schema": "~6.2.0",
+        "jane-php/open-api-runtime": "~6.2.0",
+        "symfony/console": "^4.4 || ^5.0",
+        "symfony/filesystem": "^4.4 || ^5.0",
+        "symfony/string": "^5.0",
+        "symfony/translation-contracts": "^2.0",
+        "symfony/var-dumper": "^4.4 || ^5.0"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-next": "6-dev"
+        }
+    },
+    "suggest": {
+        "jane-php/open-api-2": "Allow to generate OpenApi v2 clients",
+        "jane-php/open-api-3": "Allow to generate OpenApi v3 clients"
+    },
+    "bin": [
+        "bin/jane-openapi"
+    ],
+    "config": {
+        "process-timeout": 1800,
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

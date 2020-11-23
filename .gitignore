@@ -13,9 +13,9 @@ tests/client/generated
 tests/generated/*
 !tests/generated/.gitkeep
 tests/fixtures/*/generated
-src/AutoMapper/Bundle/Tests/Resources/app/cache/
+src/Component/AutoMapper/Bundle/Tests/Resources/app/cache/
 
 cache/*
 !cache/.gitkeep
-src/AutoMapper/Tests/cache/*
-!src/AutoMapper/Tests/cache/.gitkeep
+src/Component/AutoMapper/Tests/cache/*
+!src/Component/AutoMapper/Tests/cache/.gitkeep

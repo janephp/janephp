@@ -1,0 +1,15 @@
+<?php
+
+return [
+    'mapping' => [
+        __DIR__ . '/swagger1.json' => [
+            'namespace' => 'Jane\Component\OpenApi2\Tests\Expected\Api1',
+            'directory' => __DIR__ . '/generated/Api1',
+        ],
+        __DIR__ . '/swagger2.json' => [
+            'namespace' => 'Jane\Component\OpenApi2\Tests\Expected\Api2',
+            'directory' => __DIR__ . '/generated/Api2',
+        ],
+    ],
+    'use-fixer' => false,
+];

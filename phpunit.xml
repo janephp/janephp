@@ -9,14 +9,14 @@
 
     <testsuites>
         <testsuite name="Jane AutoMapper Bundle Test Suite">
-            <directory>./src/AutoMapper/Bundle/Tests</directory>
+            <directory>./src/Component/AutoMapper/Bundle/Tests</directory>
         </testsuite>
 
         <testsuite name="Jane Unit Test Suite">
-            <directory>./src/*/Tests</directory>
-            <exclude>./src/JsonSchema/Tests/fixtures</exclude>
-            <exclude>./src/OpenApi2/Tests/fixtures</exclude>
-            <exclude>./src/OpenApi3/Tests/fixtures</exclude>
+            <directory>./src/Component/*/Tests</directory>
+            <exclude>./src/Component/JsonSchema/Tests/fixtures</exclude>
+            <exclude>./src/Component/OpenApi2/Tests/fixtures</exclude>
+            <exclude>./src/Component/OpenApi3/Tests/fixtures</exclude>
         </testsuite>
     </testsuites>
 
@@ -24,12 +24,12 @@
         <whitelist>
             <directory suffix=".php">./src</directory>
             <exclude>
-                <directory>./src/*/Tests</directory>
-                <directory>./src/AutoMapper/Bundle/Tests</directory>
-                <directory>./src/JsonSchema/Model</directory>
-                <directory>./src/JsonSchema/Normalizer</directory>
-                <directory>./src/OpenApi2/JsonSchema</directory>
-                <directory>./src/OpenApi3/JsonSchema</directory>
+                <directory>./src/Component/*/Tests</directory>
+                <directory>./src/Component/AutoMapper/Bundle/Tests</directory>
+                <directory>./src/Component/JsonSchema/Model</directory>
+                <directory>./src/Component/JsonSchema/Normalizer</directory>
+                <directory>./src/Component/OpenApi2/JsonSchema</directory>
+                <directory>./src/Component/OpenApi3/JsonSchema</directory>
             </exclude>
         </whitelist>
     </filter>
@@ -41,7 +41,7 @@
     </groups>
 
     <php>
-        <server name="KERNEL_DIR" value="./src/AutoMapper/Bundle/Tests/Resources/app" />
+        <server name="KERNEL_DIR" value="./src/Component/AutoMapper/Bundle/Tests/Resources/app" />
         <server name="KERNEL_CLASS" value="DummyApp\AppKernel" />
     </php>
 </phpunit>
