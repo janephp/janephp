@@ -46,12 +46,4 @@ final class StringToDateTimeTransformer implements TransformerInterface
     {
         return false;
     }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getDependencies(): array
-    {
-        return [];
-    }
 }

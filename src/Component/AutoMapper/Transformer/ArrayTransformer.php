@@ -12,7 +12,7 @@ use PhpParser\Node\Stmt;
  *
  * @author Joel Wurtz <jwurtz@jolicode.com>
  */
-final class ArrayTransformer implements TransformerInterface
+final class ArrayTransformer implements TransformerInterface, DependentTransformerInterface
 {
     private $itemTransformer;
 

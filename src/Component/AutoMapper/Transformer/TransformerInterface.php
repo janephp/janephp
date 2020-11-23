@@ -22,13 +22,6 @@ interface TransformerInterface
     public function transform(Expr $input, Expr $target, PropertyMapping $propertyMapping, UniqueVariableScope $uniqueVariableScope): array;
 
     /**
-     * Get dependencies for this transformer.
-     *
-     * @return MapperDependency[]
-     */
-    public function getDependencies(): array;
-
-    /**
      * Should the resulting output be assigned by ref.
      */
     public function assignByRef(): bool;

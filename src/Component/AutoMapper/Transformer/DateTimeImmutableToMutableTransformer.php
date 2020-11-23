@@ -35,14 +35,6 @@ final class DateTimeImmutableToMutableTransformer implements TransformerInterfac
     /**
      * {@inheritdoc}
      */
-    public function getDependencies(): array
-    {
-        return [];
-    }
-
-    /**
-     * {@inheritdoc}
-     */
     public function assignByRef(): bool
     {
         return false;

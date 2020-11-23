@@ -26,11 +26,4 @@ class DateTimeImmutableToMutableTransformerTest extends TestCase
 
         self::assertFalse($transformer->assignByRef());
     }
-
-    public function testEmptyDependencies()
-    {
-        $transformer = new DateTimeImmutableToMutableTransformer();
-
-        self::assertEmpty($transformer->getDependencies());
-    }
 }

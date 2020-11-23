@@ -97,14 +97,6 @@ final class BuiltinTransformer implements TransformerInterface
     /**
      * {@inheritdoc}
      */
-    public function getDependencies(): array
-    {
-        return [];
-    }
-
-    /**
-     * {@inheritdoc}
-     */
     public function assignByRef(): bool
     {
         return false;
