@@ -27,12 +27,4 @@ final class DateTimeMutableToImmutableTransformer implements TransformerInterfac
             [],
         ];
     }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function assignByRef(): bool
-    {
-        return false;
-    }
 }

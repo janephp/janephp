@@ -31,12 +31,4 @@ final class DateTimeToStringTransformer implements TransformerInterface
             new Arg(new String_($this->format)),
         ]), []];
     }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function assignByRef(): bool
-    {
-        return false;
-    }
 }

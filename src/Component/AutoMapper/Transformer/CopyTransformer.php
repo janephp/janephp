@@ -20,12 +20,4 @@ final class CopyTransformer implements TransformerInterface
     {
         return [$input, []];
     }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function assignByRef(): bool
-    {
-        return false;
-    }
 }

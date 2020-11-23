@@ -56,7 +56,7 @@ final class MultipleTransformer implements TransformerInterface, DependentTransf
 
             [$transformerOutput, $transformerStatements] = $transformer->transform($input, $target, $propertyMapping, $uniqueVariableScope);
 
-            $assignClass = $transformer->assignByRef() ? Expr\AssignRef::class : Expr\Assign::class;
+            $assignClass = ($transformer instanceof AssignedByReferenceTransformerInterface && $transformer->assignByRef()) ? Expr\AssignRef::class : Expr\Assign::class;
             $statements[] = new Stmt\If_(
                 new Expr\FuncCall(
                     new Name(self::CONDITION_MAPPING[$type->getBuiltinType()]),
@@ -75,14 +75,6 @@ final class MultipleTransformer implements TransformerInterface, DependentTransf
         }
 
         return [$output, $statements];
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function assignByRef(): bool
-    {
-        return false;
     }
 
     /**

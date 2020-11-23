@@ -38,12 +38,4 @@ final class StringToDateTimeTransformer implements TransformerInterface
             new Arg($input),
         ]), []];
     }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function assignByRef(): bool
-    {
-        return false;
-    }
 }

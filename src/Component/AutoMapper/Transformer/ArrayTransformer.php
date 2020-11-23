@@ -36,7 +36,7 @@ final class ArrayTransformer implements TransformerInterface, DependentTransform
 
         [$output, $itemStatements] = $this->itemTransformer->transform($loopValueVar, $target, $propertyMapping, $uniqueVariableScope);
 
-        if ($this->itemTransformer->assignByRef()) {
+        if ($this->itemTransformer instanceof AssignedByReferenceTransformerInterface && $this->itemTransformer->assignByRef()) {
             $itemStatements[] = new Stmt\Expression(new Expr\AssignRef(new Expr\ArrayDimFetch($valuesVar), $output));
         } else {
             $itemStatements[] = new Stmt\Expression(new Expr\Assign(new Expr\ArrayDimFetch($valuesVar), $output));
@@ -47,14 +47,6 @@ final class ArrayTransformer implements TransformerInterface, DependentTransform
         ]);
 
         return [$valuesVar, $statements];
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function assignByRef(): bool
-    {
-        return false;
     }
 
     /**

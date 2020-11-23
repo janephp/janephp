@@ -19,11 +19,4 @@ class DateTimeImmutableToMutableTransformerTest extends TestCase
         self::assertInstanceOf(\DateTime::class, $output);
         self::assertSame($date->format(\DateTime::RFC3339), $output->format(\DateTime::RFC3339));
     }
-
-    public function testAssignByRef()
-    {
-        $transformer = new DateTimeImmutableToMutableTransformer();
-
-        self::assertFalse($transformer->assignByRef());
-    }
 }
