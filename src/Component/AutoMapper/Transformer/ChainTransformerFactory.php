@@ -50,12 +50,12 @@ final class ChainTransformerFactory implements TransformerFactoryInterface
     /**
      * {@inheritdoc}
      */
-    public function getTransformer(?array $sourcesTypes, ?array $targetTypes, MapperMetadataInterface $mapperMetadata): ?TransformerInterface
+    public function getTransformer(?array $sourceTypes, ?array $targetTypes, MapperMetadataInterface $mapperMetadata): ?TransformerInterface
     {
         $this->sortFactories();
 
         foreach ($this->sorted as $factory) {
-            $transformer = $factory->getTransformer($sourcesTypes, $targetTypes, $mapperMetadata);
+            $transformer = $factory->getTransformer($sourceTypes, $targetTypes, $mapperMetadata);
 
             if (null !== $transformer) {
                 return $transformer;

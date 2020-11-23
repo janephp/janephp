@@ -15,20 +15,20 @@ abstract class AbstractUniqueTypeTransformerFactory implements TransformerFactor
     /**
      * {@inheritdoc}
      */
-    public function getTransformer(?array $sourcesTypes, ?array $targetTypes, MapperMetadataInterface $mapperMetadata): ?TransformerInterface
+    public function getTransformer(?array $sourceTypes, ?array $targetTypes, MapperMetadataInterface $mapperMetadata): ?TransformerInterface
     {
-        $nbSourcesTypes = $sourcesTypes ? \count($sourcesTypes) : 0;
-        $nbTargetsTypes = $targetTypes ? \count($targetTypes) : 0;
+        $nbSourceTypes = $sourceTypes ? \count($sourceTypes) : 0;
+        $nbTargetTypes = $targetTypes ? \count($targetTypes) : 0;
 
-        if (0 === $nbSourcesTypes || $nbSourcesTypes > 1 || !$sourcesTypes[0] instanceof Type) {
+        if (0 === $nbSourceTypes || $nbSourceTypes > 1 || !$sourceTypes[0] instanceof Type) {
             return null;
         }
 
-        if (0 === $nbTargetsTypes || $nbTargetsTypes > 1 || !$targetTypes[0] instanceof Type) {
+        if (0 === $nbTargetTypes || $nbTargetTypes > 1 || !$targetTypes[0] instanceof Type) {
             return null;
         }
 
-        return $this->createTransformer($sourcesTypes[0], $targetTypes[0], $mapperMetadata);
+        return $this->createTransformer($sourceTypes[0], $targetTypes[0], $mapperMetadata);
     }
 
     abstract protected function createTransformer(Type $sourceType, Type $targetType, MapperMetadataInterface $mapperMetadata): ?TransformerInterface;

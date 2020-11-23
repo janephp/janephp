@@ -21,16 +21,16 @@ final class UniqueTypeTransformerFactory implements TransformerFactoryInterface,
     /**
      * {@inheritdoc}
      */
-    public function getTransformer(?array $sourcesTypes, ?array $targetTypes, MapperMetadataInterface $mapperMetadata): ?TransformerInterface
+    public function getTransformer(?array $sourceTypes, ?array $targetTypes, MapperMetadataInterface $mapperMetadata): ?TransformerInterface
     {
-        $nbSourcesTypes = $sourcesTypes ? \count($sourcesTypes) : 0;
-        $nbTargetsTypes = $targetTypes ? \count($targetTypes) : 0;
+        $nbSourceTypes = $sourceTypes ? \count($sourceTypes) : 0;
+        $nbTargetTypes = $targetTypes ? \count($targetTypes) : 0;
 
-        if (null === $sourcesTypes || 0 === $nbSourcesTypes || $nbSourcesTypes > 1) {
+        if (null === $sourceTypes || 0 === $nbSourceTypes || $nbSourceTypes > 1) {
             return null;
         }
 
-        if (null === $targetTypes || $nbTargetsTypes <= 1) {
+        if (null === $targetTypes || $nbTargetTypes <= 1) {
             return null;
         }
 
@@ -39,7 +39,7 @@ final class UniqueTypeTransformerFactory implements TransformerFactoryInterface,
                 continue;
             }
 
-            $transformer = $this->chainTransformerFactory->getTransformer($sourcesTypes, [$targetType], $mapperMetadata);
+            $transformer = $this->chainTransformerFactory->getTransformer($sourceTypes, [$targetType], $mapperMetadata);
 
             if (null !== $transformer) {
                 return $transformer;
