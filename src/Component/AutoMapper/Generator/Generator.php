@@ -7,6 +7,7 @@ use Jane\Component\AutoMapper\Exception\CompileException;
 use Jane\Component\AutoMapper\GeneratedMapper;
 use Jane\Component\AutoMapper\MapperContext;
 use Jane\Component\AutoMapper\MapperGeneratorMetadataInterface;
+use Jane\Component\AutoMapper\Transformer\AssignedByReferenceTransformerInterface;
 use Jane\Component\AutoMapper\Transformer\DependentTransformerInterface;
 use PhpParser\Node\Arg;
 use PhpParser\Node\Expr;
@@ -142,7 +143,7 @@ final class Generator
             }
 
             [$output, $propStatements] = $transformer->transform($propertyMapping->getReadAccessor()->getExpression($sourceInput), $result, $propertyMapping, $uniqueVariableScope);
-            $writeExpression = $propertyMapping->getWriteMutator()->getExpression($result, $output, $transformer->assignByRef());
+            $writeExpression = $propertyMapping->getWriteMutator()->getExpression($result, $output, $transformer instanceof AssignedByReferenceTransformerInterface ? $transformer->assignByRef() : false);
 
             if (null === $writeExpression) {
                 continue;

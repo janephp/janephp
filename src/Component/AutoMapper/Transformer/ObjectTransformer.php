@@ -16,7 +16,7 @@ use Symfony\Component\PropertyInfo\Type;
  *
  * @author Joel Wurtz <jwurtz@jolicode.com>
  */
-final class ObjectTransformer implements TransformerInterface, DependentTransformerInterface
+final class ObjectTransformer implements TransformerInterface, DependentTransformerInterface, AssignedByReferenceTransformerInterface
 {
     private $sourceType;
 

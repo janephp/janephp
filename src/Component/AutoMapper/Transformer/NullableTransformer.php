@@ -33,7 +33,7 @@ final class NullableTransformer implements TransformerInterface, DependentTransf
 
         $newOutput = null;
         $statements = [];
-        $assignClass = $this->itemTransformer->assignByRef() ? Expr\AssignRef::class : Expr\Assign::class;
+        $assignClass = ($this->itemTransformer instanceof AssignedByReferenceTransformerInterface && $this->itemTransformer->assignByRef()) ? Expr\AssignRef::class : Expr\Assign::class;
 
         if ($this->isTargetNullable) {
             $newOutput = new Expr\Variable($uniqueVariableScope->getUniqueName('value'));
@@ -58,13 +58,5 @@ final class NullableTransformer implements TransformerInterface, DependentTransf
         }
 
         return $this->itemTransformer->getDependencies();
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function assignByRef(): bool
-    {
-        return false;
     }
 }

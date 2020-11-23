@@ -20,9 +20,4 @@ interface TransformerInterface
      * @return [Expr, Stmt[]] First value is the output expression, second value is an array of stmt needed to get the output
      */
     public function transform(Expr $input, Expr $target, PropertyMapping $propertyMapping, UniqueVariableScope $uniqueVariableScope): array;
-
-    /**
-     * Should the resulting output be assigned by ref.
-     */
-    public function assignByRef(): bool;
 }

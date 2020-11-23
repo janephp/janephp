@@ -94,14 +94,6 @@ final class BuiltinTransformer implements TransformerInterface
         return [$input, []];
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function assignByRef(): bool
-    {
-        return false;
-    }
-
     private function toArray(Expr $input)
     {
         return new Expr\Array_([new Expr\ArrayItem($input)]);
