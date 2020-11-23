@@ -9,7 +9,7 @@ use Jane\Component\AutoMapper\MapperMetadataInterface;
  *
  * @author Joel Wurtz <jwurtz@jolicode.com>
  */
-final class UniqueTypeTransformerFactory implements TransformerFactoryInterface
+final class UniqueTypeTransformerFactory implements TransformerFactoryInterface, PrioritizedTransformerFactoryInterface
 {
     private $chainTransformerFactory;
 

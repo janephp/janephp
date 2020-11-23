@@ -8,7 +8,7 @@ use Symfony\Component\PropertyInfo\Type;
 /**
  * @author Joel Wurtz <jwurtz@jolicode.com>
  */
-final class BuiltinTransformerFactory implements TransformerFactoryInterface
+final class BuiltinTransformerFactory implements TransformerFactoryInterface, PrioritizedTransformerFactoryInterface
 {
     private const BUILTIN = [
         Type::BUILTIN_TYPE_BOOL,

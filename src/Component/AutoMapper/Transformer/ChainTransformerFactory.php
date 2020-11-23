@@ -15,16 +15,30 @@ final class ChainTransformerFactory implements TransformerFactoryInterface
     /** @var TransformerFactoryInterface[]|null */
     private $sorted = null;
 
-    public function addTransformerFactory(TransformerFactoryInterface $transformerFactory): void
+    /**
+     * Biggest priority is MultipleTransformerFactory with 128, so default priority will be bigger in order to
+     * be used before it, 256 should be enought.
+     */
+    public function addTransformerFactory(TransformerFactoryInterface $transformerFactory, int $priority = 256): void
     {
         $this->sorted = null;
-        $this->factories[$transformerFactory->getPriority()] = $transformerFactory;
+
+        if ($transformerFactory instanceof PrioritizedTransformerFactoryInterface) {
+            $priority = $transformerFactory->getPriority();
+        }
+
+        if (!\array_key_exists($priority, $this->factories)) {
+            $this->factories[$priority] = [];
+        }
+        $this->factories[$priority][] = $transformerFactory;
     }
 
     public function hasTransformerFactory(TransformerFactoryInterface $transformerFactory): bool
     {
+        $this->sortFactories();
+
         $transformerFactoryClass = \get_class($transformerFactory);
-        foreach ($this->factories as $factory) {
+        foreach ($this->sorted as $factory) {
             if (is_a($factory, $transformerFactoryClass)) {
                 return true;
             }
@@ -38,10 +52,7 @@ final class ChainTransformerFactory implements TransformerFactoryInterface
      */
     public function getTransformer(?array $sourcesTypes, ?array $targetTypes, MapperMetadataInterface $mapperMetadata): ?TransformerInterface
     {
-        if (null === $this->sorted) {
-            $this->sorted = $this->factories;
-            krsort($this->sorted);
-        }
+        $this->sortFactories();
 
         foreach ($this->sorted as $factory) {
             $transformer = $factory->getTransformer($sourcesTypes, $targetTypes, $mapperMetadata);
@@ -54,8 +65,17 @@ final class ChainTransformerFactory implements TransformerFactoryInterface
         return null;
     }
 
-    public function getPriority(): int
+    private function sortFactories(): void
     {
-        return 0;
+        if (null === $this->sorted) {
+            $this->sorted = [];
+            krsort($this->factories);
+
+            foreach ($this->factories as $prioritisedFactories) {
+                foreach ($prioritisedFactories as $factory) {
+                    $this->sorted[] = $factory;
+                }
+            }
+        }
     }
 }

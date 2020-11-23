@@ -8,7 +8,7 @@ use Symfony\Component\PropertyInfo\Type;
 /**
  * @author Joel Wurtz <jwurtz@jolicode.com>
  */
-final class DateTimeTransformerFactory extends AbstractUniqueTypeTransformerFactory
+final class DateTimeTransformerFactory extends AbstractUniqueTypeTransformerFactory implements PrioritizedTransformerFactoryInterface
 {
     /**
      * {@inheritdoc}

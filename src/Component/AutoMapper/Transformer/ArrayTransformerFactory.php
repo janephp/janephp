@@ -10,7 +10,7 @@ use Symfony\Component\PropertyInfo\Type;
  *
  * @author Joel Wurtz <jwurtz@jolicode.com>
  */
-final class ArrayTransformerFactory extends AbstractUniqueTypeTransformerFactory
+final class ArrayTransformerFactory extends AbstractUniqueTypeTransformerFactory implements PrioritizedTransformerFactoryInterface
 {
     private $chainTransformerFactory;
 
