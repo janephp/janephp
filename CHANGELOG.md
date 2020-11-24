@@ -432,7 +432,8 @@ See :
  * https://github.com/janephp/jane/releases
  * https://github.com/janephp/openapi/releases
 
-[Unreleased]: https://github.com/janephp/janephp/compare/v6.3.0...HEAD
+[Unreleased]: https://github.com/janephp/janephp/compare/v6.3.1...HEAD
+[6.3.1]: https://github.com/janephp/janephp/compare/v6.2.3...v6.3.1
 [6.3.0]: https://github.com/janephp/janephp/compare/v6.2.5...v6.3.0
 [6.2.5]: https://github.com/janephp/janephp/compare/v6.2.4...v6.2.5
 [6.2.4]: https://github.com/janephp/janephp/compare/v6.2.3...v6.2.4
