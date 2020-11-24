@@ -1,9 +1,9 @@
 <?php
 
-namespace Jane\Component\AutoMapper\Bundle;
+namespace Jane\Bundle\AutoMapperBundle;
 
-use Jane\Component\AutoMapper\Bundle\DependencyInjection\Compiler\MapperConfigurationPass;
-use Jane\Component\AutoMapper\Bundle\DependencyInjection\Compiler\TransformerFactoryPass;
+use Jane\Bundle\AutoMapperBundle\DependencyInjection\Compiler\MapperConfigurationPass;
+use Jane\Bundle\AutoMapperBundle\DependencyInjection\Compiler\TransformerFactoryPass;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 

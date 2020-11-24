@@ -1,11 +1,11 @@
 <?php
 
-namespace Jane\Component\AutoMapper\Bundle\Configuration;
+namespace Jane\Bundle\AutoMapperBundle\Configuration;
 
 use Jane\Component\AutoMapper\MapperGeneratorMetadataInterface;
 
 /**
- * @deprecated since 6.3, will be removed in 7.0. Please use `Jane\Component\AutoMapper\Bundle\Configuration\MapperConfigurationInterface` instead.
+ * @deprecated since 6.3, will be removed in 7.0. Please use `Jane\Bundle\AutoMapperBundle\Configuration\MapperConfigurationInterface` instead.
  */
 class RestrictConfigurationPass implements ConfigurationPassInterface
 {

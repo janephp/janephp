@@ -1,6 +1,6 @@
 <?php
 
-namespace Jane\Component\AutoMapper\Bundle\DependencyInjection\Compiler;
+namespace Jane\Bundle\AutoMapperBundle\DependencyInjection\Compiler;
 
 use Jane\Component\AutoMapper\Transformer\ChainTransformerFactory;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;

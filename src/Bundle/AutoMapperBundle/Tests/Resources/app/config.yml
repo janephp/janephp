@@ -8,8 +8,8 @@ jane_auto_mapper:
     name_converter: DummyApp\IdNameConverter
     mappings:
         -
-            source: Jane\Component\AutoMapper\Bundle\Tests\Fixtures\User
-            target: Jane\Component\AutoMapper\Tests\Fixtures\UserDTO
+            source: Jane\Bundle\AutoMapperBundle\Tests\Fixtures\User
+            target: Jane\Bundle\AutoMapperBundle\Tests\Fixtures\UserDTO
             pass: DummyApp\UserConfigurationPass
 
 services:

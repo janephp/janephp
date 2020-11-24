@@ -1,9 +1,9 @@
 <?php
 
-namespace Jane\Component\AutoMapper\Bundle\DependencyInjection;
+namespace Jane\Bundle\AutoMapperBundle\DependencyInjection;
 
-use Jane\Component\AutoMapper\Bundle\Configuration\LegacyConfigurationPassDecorator;
-use Jane\Component\AutoMapper\Bundle\Configuration\MapperConfigurationInterface;
+use Jane\Bundle\AutoMapperBundle\Configuration\LegacyConfigurationPassDecorator;
+use Jane\Bundle\AutoMapperBundle\Configuration\MapperConfigurationInterface;
 use Jane\Component\AutoMapper\Extractor\FromSourceMappingExtractor;
 use Jane\Component\AutoMapper\Extractor\FromTargetMappingExtractor;
 use Jane\Component\AutoMapper\MapperGeneratorMetadataFactory;

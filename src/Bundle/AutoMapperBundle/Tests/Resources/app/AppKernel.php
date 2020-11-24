@@ -9,12 +9,13 @@ require_once __DIR__ . '/Transformer/MoneyToMoneyTransformer.php';
 
 namespace DummyApp;
 
-use Jane\Component\AutoMapper\Bundle\Configuration\ConfigurationPassInterface;
-use Jane\Component\AutoMapper\Bundle\Configuration\MapperConfigurationInterface;
-use Jane\Component\AutoMapper\Bundle\JaneAutoMapperBundle;
+use Jane\Bundle\AutoMapperBundle\Configuration\ConfigurationPassInterface;
+use Jane\Bundle\AutoMapperBundle\Configuration\MapperConfigurationInterface;
+use Jane\Bundle\AutoMapperBundle\JaneAutoMapperBundle;
+use Jane\Bundle\AutoMapperBundle\Tests\Fixtures\UserDTO;
 use Jane\Component\AutoMapper\MapperGeneratorMetadataInterface;
 use Jane\Component\AutoMapper\MapperMetadata;
-use Jane\Component\AutoMapper\Tests\Fixtures\User;
+use Jane\Bundle\AutoMapperBundle\Tests\Fixtures\User;
 use Symfony\Bundle\FrameworkBundle\FrameworkBundle;
 use Symfony\Bundle\FrameworkBundle\Kernel\MicroKernelTrait;
 use Symfony\Component\Config\Loader\LoaderInterface;
@@ -80,12 +81,12 @@ class UserMapperConfiguration implements MapperConfigurationInterface
 {
     public function getSource(): string
     {
-        return \Jane\Component\AutoMapper\Bundle\Tests\Fixtures\User::class;
+        return User::class;
     }
 
     public function getTarget(): string
     {
-        return \Jane\Component\AutoMapper\Tests\Fixtures\UserDTO::class;
+        return UserDTO::class;
     }
 
     public function process(MapperGeneratorMetadataInterface $metadata): void

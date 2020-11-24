@@ -1,9 +1,9 @@
 <?php
 
-namespace Jane\Component\AutoMapper\Bundle;
+namespace Jane\Bundle\AutoMapperBundle;
 
+use Jane\Bundle\AutoMapperBundle\Configuration\MapperConfigurationInterface;
 use Jane\Component\AutoMapper\AutoMapper as BaseAutoMapper;
-use Jane\Component\AutoMapper\Bundle\Configuration\MapperConfigurationInterface;
 
 class AutoMapper extends BaseAutoMapper
 {
