@@ -66,7 +66,7 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-next": "6-dev"
+            "dev-next": "7-dev"
         }
     },
     "autoload": {

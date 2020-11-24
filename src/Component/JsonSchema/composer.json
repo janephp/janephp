@@ -24,7 +24,7 @@
         "php": ">=7.2",
         "ext-json": "*",
         "doctrine/inflector": "^1.4 || ^2.0",
-        "jane-php/json-schema-runtime": "~6.3.0",
+        "jane-php/json-schema-runtime": "~7.0.0",
         "nikic/php-parser": "^4.0",
         "symfony/console": "^4.4 || ^5.0",
         "symfony/filesystem": "^4.4 || ^5.0",
@@ -45,7 +45,7 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-next": "6-dev"
+            "dev-next": "7-dev"
         }
     },
     "bin": [
