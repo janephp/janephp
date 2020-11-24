@@ -9,6 +9,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - [Jane] [GH#457](https://github.com/janephp/janephp/pull/457) **BC-BREAK** Move components into `component` folder and update namespaces
 
+## [6.3.1] - 2020-11-24
+### Fixed
+- [Jane] [GH#463](https://github.com/janephp/janephp/pull/463) Update version deps
+
 ## [6.3.0] - 2020-11-22
 ### Added
 - [AutoMapper] [GH#443](https://github.com/janephp/janephp/pull/443) Add configuration to use custom NameConverter
