@@ -182,7 +182,8 @@ class AutoMapper implements AutoMapperInterface, AutoMapperRegistryInterface, Ma
         AdvancedNameConverterInterface $nameConverter = null,
         string $classPrefix = 'Mapper_',
         bool $attributeChecking = true,
-        bool $autoRegister = true
+        bool $autoRegister = true,
+        string $dateTimeFormat = \DateTime::RFC3339
     ): self {
         $classMetadataFactory = new ClassMetadataFactory(new AnnotationLoader(new AnnotationReader()));
 
@@ -247,7 +248,8 @@ class AutoMapper implements AutoMapperInterface, AutoMapperRegistryInterface, Ma
             $fromSourceMappingExtractor,
             $fromTargetMappingExtractor,
             $classPrefix,
-            $attributeChecking
+            $attributeChecking,
+            $dateTimeFormat
         )) : new self($loader, $transformerFactory);
 
         $transformerFactory->addTransformerFactory(new MultipleTransformerFactory($transformerFactory));
