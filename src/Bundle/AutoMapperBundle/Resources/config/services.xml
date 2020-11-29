@@ -4,12 +4,13 @@
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <services>
-        <service id="Jane\Component\AutoMapper\Bundle\AutoMapper">
+        <service id="Jane\Bundle\AutoMapperBundle\AutoMapper">
             <argument type="service" id="Jane\Component\AutoMapper\Loader\ClassLoaderInterface" />
             <argument type="service" id="Jane\Component\AutoMapper\Transformer\ChainTransformerFactory" />
             <argument type="service" id="Jane\Component\AutoMapper\MapperGeneratorMetadataFactoryInterface" />
         </service>
-        <service id="Jane\Component\AutoMapper\AutoMapperInterface" alias="Jane\Component\AutoMapper\Bundle\AutoMapper" public="true" />
+        <service id="Jane\Component\AutoMapper\AutoMapperInterface" alias="Jane\Bundle\AutoMapperBundle\AutoMapper" public="true" />
+        <service id="Jane\Component\AutoMapper\AutoMapperRegistryInterface" alias="Jane\Bundle\AutoMapperBundle\AutoMapper" public="true" />
 
         <service id="Jane\Component\AutoMapper\Extractor\SourceTargetMappingExtractor">
             <argument type="service" id="property_info" />
@@ -88,7 +89,7 @@
         </service>
 
         <service id="Jane\Component\AutoMapper\Transformer\ObjectTransformerFactory">
-            <argument type="service" id="Jane\Component\AutoMapper\Bundle\AutoMapper" />
+            <argument type="service" id="Jane\Component\AutoMapper\AutoMapperRegistryInterface" />
             <tag name="jane_auto_mapper.transformer_factory" priority="-1003" />
         </service>
     </services>

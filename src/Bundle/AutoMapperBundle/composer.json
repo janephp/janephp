@@ -1,8 +1,8 @@
 {
-    "name": "jane-php/automapper",
+    "name": "jane-php/automapper-bundle",
     "type": "library",
-    "description": "Jane AutoMapper Component",
-    "keywords": [],
+    "description": "Jane AutoMapper Symfony Bundle",
+    "keywords": ["bundle", "symfony"],
     "homepage": "https://github.com/janephp/janephp",
     "license": "MIT",
     "authors": [
@@ -17,24 +17,13 @@
     ],
     "require": {
         "php": "^7.2.5",
-        "doctrine/inflector": "^1.4 || ^2.0",
-        "nikic/php-parser": "^4.0",
-        "symfony/property-info": "^5.1"
+        "jane-php/automapper": "^7.0"
     },
     "require-dev": {
-        "doctrine/annotations": "~1.0",
-        "phpdocumentor/reflection-docblock": "^3.0 || ^4.0 || ^5.0",
-        "symfony/serializer": "^4.2 || ^5.0",
-        "moneyphp/money": "^3.0",
         "phpunit/phpunit": "^8.0"
     },
-    "suggest": {
-        "symfony/serializer": "Allow to bridge mappers to normalizer and denormalizer",
-        "phpdocumentor/reflection-docblock": "Allow to extract informations from PHP Doc blocks"
-    },
     "conflict": {
-        "symfony/serializer": "<4.2",
-        "symfony/property-info": "5.1.6 || 5.1.7"
+        "symfony/framework-bundle": "5.1.0"
     },
     "extra": {
         "branch-alias": {
@@ -43,10 +32,15 @@
     },
     "autoload": {
         "psr-4": {
-            "Jane\\Component\\AutoMapper\\": ""
+            "Jane\\Bundle\\AutoMapper\\": ""
         },
         "exclude-from-classmap": [
             "/Tests/"
+        ]
+    },
+    "autoload-dev": {
+        "classmap": [
+            "Tests/Resources/app/AppKernel.php"
         ]
     },
     "config": {

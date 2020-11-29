@@ -1,8 +1,8 @@
 <?php
 
-namespace Jane\Component\AutoMapper\Bundle\DependencyInjection\Compiler;
+namespace Jane\Bundle\AutoMapperBundle\DependencyInjection\Compiler;
 
-use Jane\Component\AutoMapper\Bundle\AutoMapper;
+use Jane\Bundle\AutoMapperBundle\AutoMapper;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\Compiler\PriorityTaggedServiceTrait;
 use Symfony\Component\DependencyInjection\ContainerBuilder;

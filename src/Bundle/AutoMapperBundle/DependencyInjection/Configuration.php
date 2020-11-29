@@ -1,6 +1,6 @@
 <?php
 
-namespace Jane\Component\AutoMapper\Bundle\DependencyInjection;
+namespace Jane\Bundle\AutoMapperBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;

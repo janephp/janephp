@@ -1,12 +1,12 @@
 <?php
 
-namespace Jane\Component\AutoMapper\Bundle\Tests;
+namespace Jane\Bundle\AutoMapperBundle\Tests;
 
+use Jane\Bundle\AutoMapperBundle\Tests\Fixtures\AddressDTO;
+use Jane\Bundle\AutoMapperBundle\Tests\Fixtures\Order;
+use Jane\Bundle\AutoMapperBundle\Tests\Fixtures\User;
+use Jane\Bundle\AutoMapperBundle\Tests\Fixtures\UserDTO;
 use Jane\Component\AutoMapper\AutoMapperInterface;
-use Jane\Component\AutoMapper\Bundle\Tests\Fixtures\User;
-use Jane\Component\AutoMapper\Tests\Fixtures\AddressDTO;
-use Jane\Component\AutoMapper\Tests\Fixtures\Order;
-use Jane\Component\AutoMapper\Tests\Fixtures\UserDTO;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class ServiceInstantiationTest extends WebTestCase

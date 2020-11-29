@@ -4,6 +4,9 @@ cache_url: "/cache/gitsplit"
 # List of splits.
 splits:
   -
+    prefix: "src/Bundle/AutoMapperBundle"
+    target: "https://${GH_TOKEN}@github.com/janephp/automapper-bundle.git"
+  -
     prefix: "src/Component/AutoMapper"
     target: "https://${GH_TOKEN}@github.com/janephp/automapper.git"
   - # to remove after v5 / v6 support is dropped

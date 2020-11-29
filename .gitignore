@@ -13,7 +13,6 @@ tests/client/generated
 tests/generated/*
 !tests/generated/.gitkeep
 tests/fixtures/*/generated
-src/Component/AutoMapper/Bundle/Tests/Resources/app/cache/
 
 cache/*
 !cache/.gitkeep

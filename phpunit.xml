@@ -9,7 +9,7 @@
 
     <testsuites>
         <testsuite name="Jane AutoMapper Bundle Test Suite">
-            <directory>./src/Component/AutoMapper/Bundle/Tests</directory>
+            <directory>./src/Bundle/AutoMapperBundle/Tests</directory>
         </testsuite>
 
         <testsuite name="Jane Unit Test Suite">
@@ -25,7 +25,7 @@
             <directory suffix=".php">./src</directory>
             <exclude>
                 <directory>./src/Component/*/Tests</directory>
-                <directory>./src/Component/AutoMapper/Bundle/Tests</directory>
+                <directory>./src/Bundle/AutoMapperBundle/Tests</directory>
                 <directory>./src/Component/JsonSchema/Model</directory>
                 <directory>./src/Component/JsonSchema/Normalizer</directory>
                 <directory>./src/Component/OpenApi2/JsonSchema</directory>
@@ -41,7 +41,7 @@
     </groups>
 
     <php>
-        <server name="KERNEL_DIR" value="./src/Component/AutoMapper/Bundle/Tests/Resources/app" />
+        <server name="KERNEL_DIR" value="./src/Bundle/AutoMapperBundle/Tests/Resources/app" />
         <server name="KERNEL_CLASS" value="DummyApp\AppKernel" />
     </php>
 </phpunit>

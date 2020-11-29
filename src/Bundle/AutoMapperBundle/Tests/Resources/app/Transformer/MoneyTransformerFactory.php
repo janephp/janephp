@@ -4,7 +4,6 @@ namespace DummyApp\Transformer;
 
 use Jane\Component\AutoMapper\MapperMetadataInterface;
 use Jane\Component\AutoMapper\Transformer\AbstractUniqueTypeTransformerFactory;
-use Jane\Component\AutoMapper\Transformer\PrioritizedTransformerFactoryInterface;
 use Jane\Component\AutoMapper\Transformer\TransformerInterface;
 use Money\Money;
 use Symfony\Component\PropertyInfo\Type;

@@ -1,6 +1,6 @@
 <?php
 
-namespace Jane\Component\AutoMapper\Bundle\Configuration;
+namespace Jane\Bundle\AutoMapperBundle\Configuration;
 
 use Jane\Component\AutoMapper\MapperGeneratorMetadataInterface;
 
