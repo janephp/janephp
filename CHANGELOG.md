@@ -7,7 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ### Changed
+- [Jane] [GH#464](https://github.com/janephp/janephp/pull/464) Update version deps for 7-dev
 - [Jane] [GH#457](https://github.com/janephp/janephp/pull/457) **BC-BREAK** Move components into `component` folder and update namespaces
+- [AutoMapper] [GH#458](https://github.com/janephp/janephp/pull/458) Add PrioritizedTransformerFactoryInterface and implementation
+- [AutoMapper] [GH#459](https://github.com/janephp/janephp/pull/459) Add DependentTransformerInterface and implementation
+- [AutoMapper] [GH#460](https://github.com/janephp/janephp/pull/460) Add AssignedByReferenceTransformerInterface and implementation
+
+### Fixed
+- [AutoMapper] [GH#461](https://github.com/janephp/janephp/pull/461) Transformer arguments typo
 
 ## [6.3.1] - 2020-11-24
 ### Fixed

@@ -34,8 +34,8 @@
     "require": {
         "php": ">=7.2",
         "ext-json": "*",
-        "jane-php/json-schema": "~6.3.0",
-        "jane-php/open-api-common": "~6.3.0",
+        "jane-php/json-schema": "~7.0.0",
+        "jane-php/open-api-common": "~7.0.0",
         "nikic/php-parser": "^4.0",
         "symfony/serializer": "^4.4 || ^5.0",
         "symfony/yaml": "~4.4.9 || ^5.0"
@@ -52,7 +52,7 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-next": "6-dev"
+            "dev-next": "7-dev"
         }
     },
     "config": {
