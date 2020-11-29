@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: checkout
-        run: git clone https://github.com/janephp/janephp /home/runner/work/janephp/janephp && cd /home/runner/work/janephp/janephp
+        uses: actions/checkout@master
       - name: gitsplit
         run: docker run --rm -t -e GH_TOKEN -v /cache/gitsplit:/cache/gitsplit -v ${PWD}:/srv jderusse/gitsplit gitsplit
         env:
