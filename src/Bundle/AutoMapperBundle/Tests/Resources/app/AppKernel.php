@@ -63,20 +63,6 @@ class AppKernel extends Kernel
     }
 }
 
-class UserConfigurationPass implements ConfigurationPassInterface
-{
-    public function process(MapperGeneratorMetadataInterface $metadata): void
-    {
-        if (!$metadata instanceof MapperMetadata) {
-            return;
-        }
-
-        $metadata->forMember('email', function (User $user) {
-            return $user->email ?? 'fallback@foobar.org';
-        });
-    }
-}
-
 class UserMapperConfiguration implements MapperConfigurationInterface
 {
     public function getSource(): string

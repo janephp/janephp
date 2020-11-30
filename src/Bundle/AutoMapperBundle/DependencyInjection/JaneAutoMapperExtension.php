@@ -2,7 +2,6 @@
 
 namespace Jane\Bundle\AutoMapperBundle\DependencyInjection;
 
-use Jane\Bundle\AutoMapperBundle\Configuration\LegacyConfigurationPassDecorator;
 use Jane\Bundle\AutoMapperBundle\Configuration\MapperConfigurationInterface;
 use Jane\Component\AutoMapper\Extractor\FromSourceMappingExtractor;
 use Jane\Component\AutoMapper\Extractor\FromTargetMappingExtractor;
@@ -35,10 +34,6 @@ class JaneAutoMapperExtension extends Extension
         $container->getDefinition(MapperGeneratorMetadataFactory::class)->replaceArgument(5, $config['date_time_format']);
         $container->registerForAutoconfiguration(TransformerFactoryInterface::class)->addTag('jane_auto_mapper.transformer_factory');
 
-        foreach ($config['mappings'] as $mapping) {
-            $this->createMapperConfigurationDefinition($container, $mapping);
-        }
-
         if ($config['normalizer']) {
             $container
                 ->getDefinition(AutoMapperNormalizer::class)
@@ -57,15 +52,5 @@ class JaneAutoMapperExtension extends Extension
         }
 
         $container->setParameter('automapper.cache_dir', $config['cache_dir']);
-    }
-
-    private function createMapperConfigurationDefinition(ContainerBuilder $container, $config)
-    {
-        $serviceName = 'LegacyDecorator_' . $config['pass'];
-        $definition = $container->register($serviceName, LegacyConfigurationPassDecorator::class);
-        $definition->addArgument(new Reference($config['pass']));
-        $definition->addArgument($config['source']);
-        $definition->addArgument($config['target']);
-        $definition->addTag('jane_auto_mapper.mapper_configuration');
     }
 }
