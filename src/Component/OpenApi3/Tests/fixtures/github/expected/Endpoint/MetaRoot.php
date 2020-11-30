@@ -29,7 +29,7 @@ class MetaRoot extends \Github\Runtime\Client\BaseEndpoint implements \Github\Ru
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
-        if (200 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Github\\Model\\GetResponse200', 'json');
         }
     }

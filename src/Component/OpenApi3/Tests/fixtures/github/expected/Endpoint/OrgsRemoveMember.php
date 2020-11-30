@@ -46,7 +46,7 @@ class OrgsRemoveMember extends \Github\Runtime\Client\BaseEndpoint implements \G
         if (204 === $status) {
             return null;
         }
-        if (403 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (403 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Github\Exception\OrgsRemoveMemberForbiddenException($serializer->deserialize($body, 'Github\\Model\\BasicError', 'json'));
         }
     }

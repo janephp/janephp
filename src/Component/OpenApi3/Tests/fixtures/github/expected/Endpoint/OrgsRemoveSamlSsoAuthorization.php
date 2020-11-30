@@ -48,7 +48,7 @@ class OrgsRemoveSamlSsoAuthorization extends \Github\Runtime\Client\BaseEndpoint
         if (204 === $status) {
             return null;
         }
-        if (404 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Github\Exception\OrgsRemoveSamlSsoAuthorizationNotFoundException($serializer->deserialize($body, 'Github\\Model\\BasicError', 'json'));
         }
     }

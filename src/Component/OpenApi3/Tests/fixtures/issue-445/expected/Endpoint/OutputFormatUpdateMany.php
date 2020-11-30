@@ -48,28 +48,28 @@ class OutputFormatUpdateMany extends \PicturePark\API\Runtime\Client\BaseEndpoin
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
-        if (200 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return $serializer->deserialize($body, 'PicturePark\\API\\Model\\BusinessProcess', 'json');
         }
-        if (400 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (400 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \PicturePark\API\Exception\OutputFormatUpdateManyBadRequestException($serializer->deserialize($body, 'PicturePark\\API\\Model\\PictureparkValidationException', 'json'));
         }
         if (401 === $status) {
             throw new \PicturePark\API\Exception\OutputFormatUpdateManyUnauthorizedException();
         }
-        if (404 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \PicturePark\API\Exception\OutputFormatUpdateManyNotFoundException($serializer->deserialize($body, 'PicturePark\\API\\Model\\PictureparkNotFoundException', 'json'));
         }
         if (405 === $status) {
             throw new \PicturePark\API\Exception\OutputFormatUpdateManyMethodNotAllowedException();
         }
-        if (409 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (409 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \PicturePark\API\Exception\OutputFormatUpdateManyConflictException($serializer->deserialize($body, 'PicturePark\\API\\Model\\PictureparkConflictException', 'json'));
         }
         if (429 === $status) {
             throw new \PicturePark\API\Exception\OutputFormatUpdateManyTooManyRequestsException();
         }
-        if (500 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (500 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \PicturePark\API\Exception\OutputFormatUpdateManyInternalServerErrorException($serializer->deserialize($body, 'PicturePark\\API\\Model\\PictureparkException', 'json'));
         }
     }

@@ -36,28 +36,28 @@ class IdentityProviderGetSynchronizableAttributes extends \PicturePark\API\Runti
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
-        if (200 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return json_decode($body);
         }
-        if (400 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (400 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \PicturePark\API\Exception\IdentityProviderGetSynchronizableAttributesBadRequestException($serializer->deserialize($body, 'PicturePark\\API\\Model\\PictureparkValidationException', 'json'));
         }
         if (401 === $status) {
             throw new \PicturePark\API\Exception\IdentityProviderGetSynchronizableAttributesUnauthorizedException();
         }
-        if (404 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \PicturePark\API\Exception\IdentityProviderGetSynchronizableAttributesNotFoundException($serializer->deserialize($body, 'PicturePark\\API\\Model\\PictureparkNotFoundException', 'json'));
         }
         if (405 === $status) {
             throw new \PicturePark\API\Exception\IdentityProviderGetSynchronizableAttributesMethodNotAllowedException();
         }
-        if (409 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (409 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \PicturePark\API\Exception\IdentityProviderGetSynchronizableAttributesConflictException($serializer->deserialize($body, 'PicturePark\\API\\Model\\PictureparkConflictException', 'json'));
         }
         if (429 === $status) {
             throw new \PicturePark\API\Exception\IdentityProviderGetSynchronizableAttributesTooManyRequestsException();
         }
-        if (500 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (500 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \PicturePark\API\Exception\IdentityProviderGetSynchronizableAttributesInternalServerErrorException($serializer->deserialize($body, 'PicturePark\\API\\Model\\PictureparkException', 'json'));
         }
     }

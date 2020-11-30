@@ -54,25 +54,25 @@ class BusinessProcessUpdateNotification extends \PicturePark\API\Runtime\Client\
         if (200 === $status) {
             return null;
         }
-        if (400 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (400 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \PicturePark\API\Exception\BusinessProcessUpdateNotificationBadRequestException($serializer->deserialize($body, 'PicturePark\\API\\Model\\PictureparkValidationException', 'json'));
         }
         if (401 === $status) {
             throw new \PicturePark\API\Exception\BusinessProcessUpdateNotificationUnauthorizedException();
         }
-        if (404 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \PicturePark\API\Exception\BusinessProcessUpdateNotificationNotFoundException($serializer->deserialize($body, 'PicturePark\\API\\Model\\PictureparkNotFoundException', 'json'));
         }
         if (405 === $status) {
             throw new \PicturePark\API\Exception\BusinessProcessUpdateNotificationMethodNotAllowedException();
         }
-        if (409 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (409 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \PicturePark\API\Exception\BusinessProcessUpdateNotificationConflictException($serializer->deserialize($body, 'PicturePark\\API\\Model\\PictureparkConflictException', 'json'));
         }
         if (429 === $status) {
             throw new \PicturePark\API\Exception\BusinessProcessUpdateNotificationTooManyRequestsException();
         }
-        if (500 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (500 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \PicturePark\API\Exception\BusinessProcessUpdateNotificationInternalServerErrorException($serializer->deserialize($body, 'PicturePark\\API\\Model\\PictureparkException', 'json'));
         }
     }

@@ -54,19 +54,19 @@ class ScimProvisionAndInviteUser extends \Github\Runtime\Client\BaseEndpoint imp
         if (304 === $status) {
             return null;
         }
-        if (404 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Github\Exception\ScimProvisionAndInviteUserNotFoundException($serializer->deserialize($body, 'Github\\Model\\ScimError', 'json'));
         }
-        if (403 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (403 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Github\Exception\ScimProvisionAndInviteUserForbiddenException($serializer->deserialize($body, 'Github\\Model\\ScimError', 'json'));
         }
-        if (500 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (500 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Github\Exception\ScimProvisionAndInviteUserInternalServerErrorException($serializer->deserialize($body, 'Github\\Model\\ScimError', 'json'));
         }
-        if (409 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (409 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Github\Exception\ScimProvisionAndInviteUserConflictException($serializer->deserialize($body, 'Github\\Model\\ScimError', 'json'));
         }
-        if (400 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (400 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Github\Exception\ScimProvisionAndInviteUserBadRequestException($serializer->deserialize($body, 'Github\\Model\\ScimError', 'json'));
         }
     }

@@ -41,13 +41,13 @@ class AppsCreateFromManifest extends \Github\Runtime\Client\BaseEndpoint impleme
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
-        if (201 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (201 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Github\\Model\\AppManifestsCodeConversionsPostResponse201', 'json');
         }
-        if (404 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Github\Exception\AppsCreateFromManifestNotFoundException($serializer->deserialize($body, 'Github\\Model\\BasicError', 'json'));
         }
-        if (422 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (422 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Github\Exception\AppsCreateFromManifestUnprocessableEntityException($serializer->deserialize($body, 'Github\\Model\\ValidationErrorSimple', 'json'));
         }
     }

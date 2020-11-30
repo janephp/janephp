@@ -54,25 +54,25 @@ class ContentPermissionSetTransferOwnership extends \PicturePark\API\Runtime\Cli
         if (200 === $status) {
             return null;
         }
-        if (400 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (400 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \PicturePark\API\Exception\ContentPermissionSetTransferOwnershipBadRequestException($serializer->deserialize($body, 'PicturePark\\API\\Model\\PictureparkValidationException', 'json'));
         }
         if (401 === $status) {
             throw new \PicturePark\API\Exception\ContentPermissionSetTransferOwnershipUnauthorizedException();
         }
-        if (404 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \PicturePark\API\Exception\ContentPermissionSetTransferOwnershipNotFoundException($serializer->deserialize($body, 'PicturePark\\API\\Model\\PictureparkNotFoundException', 'json'));
         }
         if (405 === $status) {
             throw new \PicturePark\API\Exception\ContentPermissionSetTransferOwnershipMethodNotAllowedException();
         }
-        if (409 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (409 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \PicturePark\API\Exception\ContentPermissionSetTransferOwnershipConflictException($serializer->deserialize($body, 'PicturePark\\API\\Model\\PictureparkConflictException', 'json'));
         }
         if (429 === $status) {
             throw new \PicturePark\API\Exception\ContentPermissionSetTransferOwnershipTooManyRequestsException();
         }
-        if (500 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (500 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \PicturePark\API\Exception\ContentPermissionSetTransferOwnershipInternalServerErrorException($serializer->deserialize($body, 'PicturePark\\API\\Model\\PictureparkException', 'json'));
         }
     }

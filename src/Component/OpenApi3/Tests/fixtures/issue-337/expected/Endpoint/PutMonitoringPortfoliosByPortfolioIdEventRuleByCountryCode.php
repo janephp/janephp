@@ -66,16 +66,16 @@ class PutMonitoringPortfoliosByPortfolioIdEventRuleByCountryCode extends \Credit
     {
         if (204 === $status) {
         }
-        if (400 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (400 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \CreditSafe\API\Exception\PutMonitoringPortfoliosByPortfolioIdEventRuleByCountryCodeBadRequestException();
         }
-        if (401 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (401 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \CreditSafe\API\Exception\PutMonitoringPortfoliosByPortfolioIdEventRuleByCountryCodeUnauthorizedException();
         }
-        if (403 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (403 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \CreditSafe\API\Exception\PutMonitoringPortfoliosByPortfolioIdEventRuleByCountryCodeForbiddenException();
         }
-        if (404 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \CreditSafe\API\Exception\PutMonitoringPortfoliosByPortfolioIdEventRuleByCountryCodeNotFoundException();
         }
     }

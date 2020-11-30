@@ -58,13 +58,13 @@ class CompanyImage extends \CreditSafe\API\Runtime\Client\BaseEndpoint implement
         if (200 === $status) {
             return null;
         }
-        if (400 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (400 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \CreditSafe\API\Exception\CompanyImageBadRequestException();
         }
-        if (403 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (403 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \CreditSafe\API\Exception\CompanyImageForbiddenException();
         }
-        if (404 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \CreditSafe\API\Exception\CompanyImageNotFoundException();
         }
     }

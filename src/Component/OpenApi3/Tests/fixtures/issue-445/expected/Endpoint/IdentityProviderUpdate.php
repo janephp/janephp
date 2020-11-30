@@ -51,28 +51,28 @@ class IdentityProviderUpdate extends \PicturePark\API\Runtime\Client\BaseEndpoin
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
-        if (200 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return $serializer->deserialize($body, 'PicturePark\\API\\Model\\IdentityProvider', 'json');
         }
-        if (400 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (400 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \PicturePark\API\Exception\IdentityProviderUpdateBadRequestException($serializer->deserialize($body, 'PicturePark\\API\\Model\\PictureparkValidationException', 'json'));
         }
         if (401 === $status) {
             throw new \PicturePark\API\Exception\IdentityProviderUpdateUnauthorizedException();
         }
-        if (404 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \PicturePark\API\Exception\IdentityProviderUpdateNotFoundException($serializer->deserialize($body, 'PicturePark\\API\\Model\\PictureparkNotFoundException', 'json'));
         }
         if (405 === $status) {
             throw new \PicturePark\API\Exception\IdentityProviderUpdateMethodNotAllowedException();
         }
-        if (409 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (409 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \PicturePark\API\Exception\IdentityProviderUpdateConflictException($serializer->deserialize($body, 'PicturePark\\API\\Model\\PictureparkConflictException', 'json'));
         }
         if (429 === $status) {
             throw new \PicturePark\API\Exception\IdentityProviderUpdateTooManyRequestsException();
         }
-        if (500 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (500 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \PicturePark\API\Exception\IdentityProviderUpdateInternalServerErrorException($serializer->deserialize($body, 'PicturePark\\API\\Model\\PictureparkException', 'json'));
         }
     }

@@ -48,13 +48,13 @@ class ReposDeletePagesSite extends \Github\Runtime\Client\BaseEndpoint implement
         if (204 === $status) {
             return null;
         }
-        if (422 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (422 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Github\Exception\ReposDeletePagesSiteUnprocessableEntityException($serializer->deserialize($body, 'Github\\Model\\ValidationError', 'json'));
         }
-        if (415 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (415 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Github\Exception\ReposDeletePagesSiteUnsupportedMediaTypeException($serializer->deserialize($body, 'Github\\Model\\ResponsePreviewHeaderMissing', 'json'));
         }
-        if (404 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Github\Exception\ReposDeletePagesSiteNotFoundException($serializer->deserialize($body, 'Github\\Model\\BasicError', 'json'));
         }
     }

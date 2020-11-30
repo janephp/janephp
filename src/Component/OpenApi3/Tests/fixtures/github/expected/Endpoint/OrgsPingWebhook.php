@@ -46,7 +46,7 @@ class OrgsPingWebhook extends \Github\Runtime\Client\BaseEndpoint implements \Gi
         if (204 === $status) {
             return null;
         }
-        if (404 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Github\Exception\OrgsPingWebhookNotFoundException($serializer->deserialize($body, 'Github\\Model\\BasicError', 'json'));
         }
     }

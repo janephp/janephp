@@ -45,16 +45,16 @@ class MigrationsDeleteArchiveForAuthenticatedUser extends \Github\Runtime\Client
         if (204 === $status) {
             return null;
         }
-        if (404 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Github\Exception\MigrationsDeleteArchiveForAuthenticatedUserNotFoundException($serializer->deserialize($body, 'Github\\Model\\BasicError', 'json'));
         }
         if (304 === $status) {
             return null;
         }
-        if (403 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (403 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Github\Exception\MigrationsDeleteArchiveForAuthenticatedUserForbiddenException($serializer->deserialize($body, 'Github\\Model\\BasicError', 'json'));
         }
-        if (401 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (401 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Github\Exception\MigrationsDeleteArchiveForAuthenticatedUserUnauthorizedException($serializer->deserialize($body, 'Github\\Model\\BasicError', 'json'));
         }
     }

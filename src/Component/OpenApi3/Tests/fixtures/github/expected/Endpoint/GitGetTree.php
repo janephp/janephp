@@ -62,13 +62,13 @@ class GitGetTree extends \Github\Runtime\Client\BaseEndpoint implements \Github\
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
-        if (200 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Github\\Model\\GitTree', 'json');
         }
-        if (422 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (422 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Github\Exception\GitGetTreeUnprocessableEntityException($serializer->deserialize($body, 'Github\\Model\\ValidationError', 'json'));
         }
-        if (404 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Github\Exception\GitGetTreeNotFoundException($serializer->deserialize($body, 'Github\\Model\\BasicError', 'json'));
         }
     }
