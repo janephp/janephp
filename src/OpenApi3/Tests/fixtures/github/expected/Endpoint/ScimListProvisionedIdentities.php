@@ -85,13 +85,13 @@ class ScimListProvisionedIdentities extends \Github\Runtime\Client\BaseEndpoint 
         if (304 === $status) {
             return null;
         }
-        if (404 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Github\Exception\ScimListProvisionedIdentitiesNotFoundException($serializer->deserialize($body, 'Github\\Model\\ScimError', 'json'));
         }
-        if (403 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (403 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Github\Exception\ScimListProvisionedIdentitiesForbiddenException($serializer->deserialize($body, 'Github\\Model\\ScimError', 'json'));
         }
-        if (400 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (400 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Github\Exception\ScimListProvisionedIdentitiesBadRequestException($serializer->deserialize($body, 'Github\\Model\\ScimError', 'json'));
         }
     }

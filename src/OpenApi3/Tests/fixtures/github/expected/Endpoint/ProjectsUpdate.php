@@ -49,7 +49,7 @@ class ProjectsUpdate extends \Github\Runtime\Client\BaseEndpoint implements \Git
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
-        if (200 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Github\\Model\\Project', 'json');
         }
         if (404 === $status) {
@@ -58,16 +58,16 @@ class ProjectsUpdate extends \Github\Runtime\Client\BaseEndpoint implements \Git
         if (304 === $status) {
             return null;
         }
-        if (403 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (403 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Github\Exception\ProjectsUpdateForbiddenException($serializer->deserialize($body, 'Github\\Model\\ProjectsProjectIdPatchResponse403', 'json'));
         }
-        if (401 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (401 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Github\Exception\ProjectsUpdateUnauthorizedException($serializer->deserialize($body, 'Github\\Model\\BasicError', 'json'));
         }
-        if (410 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (410 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Github\Exception\ProjectsUpdateGoneException($serializer->deserialize($body, 'Github\\Model\\BasicError', 'json'));
         }
-        if (422 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (422 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Github\Exception\ProjectsUpdateUnprocessableEntityException($serializer->deserialize($body, 'Github\\Model\\ValidationErrorSimple', 'json'));
         }
     }

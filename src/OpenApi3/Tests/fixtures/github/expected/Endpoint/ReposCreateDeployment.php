@@ -93,16 +93,16 @@ class ReposCreateDeployment extends \Github\Runtime\Client\BaseEndpoint implemen
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
-        if (201 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (201 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Github\\Model\\Deployment', 'json');
         }
-        if (202 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (202 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Github\\Model\\ReposOwnerRepoDeploymentsPostResponse202', 'json');
         }
-        if (409 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (409 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Github\Exception\ReposCreateDeploymentConflictException($serializer->deserialize($body, 'Github\\Model\\ReposOwnerRepoDeploymentsPostResponse409', 'json'));
         }
-        if (422 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (422 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Github\Exception\ReposCreateDeploymentUnprocessableEntityException($serializer->deserialize($body, 'Github\\Model\\ValidationError', 'json'));
         }
     }

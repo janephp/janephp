@@ -46,13 +46,13 @@ class TeamsCheckPermissionsForProjectLegacy extends \Github\Runtime\Client\BaseE
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
-        if (200 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Github\\Model\\TeamProject', 'json');
         }
         if (404 === $status) {
             throw new \Github\Exception\TeamsCheckPermissionsForProjectLegacyNotFoundException();
         }
-        if (415 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (415 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Github\Exception\TeamsCheckPermissionsForProjectLegacyUnsupportedMediaTypeException($serializer->deserialize($body, 'Github\\Model\\ResponsePreviewHeaderMissing', 'json'));
         }
     }

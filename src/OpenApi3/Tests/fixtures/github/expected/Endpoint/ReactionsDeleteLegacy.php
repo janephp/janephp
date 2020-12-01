@@ -51,16 +51,16 @@ class ReactionsDeleteLegacy extends \Github\Runtime\Client\BaseEndpoint implemen
         if (304 === $status) {
             return null;
         }
-        if (403 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (403 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Github\Exception\ReactionsDeleteLegacyForbiddenException($serializer->deserialize($body, 'Github\\Model\\BasicError', 'json'));
         }
-        if (401 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (401 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Github\Exception\ReactionsDeleteLegacyUnauthorizedException($serializer->deserialize($body, 'Github\\Model\\BasicError', 'json'));
         }
-        if (410 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (410 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Github\Exception\ReactionsDeleteLegacyGoneException($serializer->deserialize($body, 'Github\\Model\\BasicError', 'json'));
         }
-        if (415 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (415 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Github\Exception\ReactionsDeleteLegacyUnsupportedMediaTypeException($serializer->deserialize($body, 'Github\\Model\\ResponsePreviewHeaderMissing', 'json'));
         }
     }

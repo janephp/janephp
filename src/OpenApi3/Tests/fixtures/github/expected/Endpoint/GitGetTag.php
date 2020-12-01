@@ -66,10 +66,10 @@ class GitGetTag extends \Github\Runtime\Client\BaseEndpoint implements \Github\R
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
-        if (200 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Github\\Model\\GitTag', 'json');
         }
-        if (404 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Github\Exception\GitGetTagNotFoundException($serializer->deserialize($body, 'Github\\Model\\BasicError', 'json'));
         }
     }

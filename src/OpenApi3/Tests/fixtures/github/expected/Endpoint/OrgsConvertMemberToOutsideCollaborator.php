@@ -50,10 +50,10 @@ class OrgsConvertMemberToOutsideCollaborator extends \Github\Runtime\Client\Base
         if (204 === $status) {
             return null;
         }
-        if (403 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (403 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Github\Exception\OrgsConvertMemberToOutsideCollaboratorForbiddenException($serializer->deserialize($body, 'Github\\Model\\OrgsOrgOutsideCollaboratorsUsernamePutResponse403', 'json'));
         }
-        if (404 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Github\Exception\OrgsConvertMemberToOutsideCollaboratorNotFoundException($serializer->deserialize($body, 'Github\\Model\\BasicError', 'json'));
         }
     }
