@@ -49,7 +49,7 @@ class StreamSample extends \Jane\OpenApi3\Tests\Expected\Runtime\Client\BaseEndp
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
-        if (200 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return json_decode($body);
         }
         if (mb_strpos($contentType, 'application/json') !== false) {
