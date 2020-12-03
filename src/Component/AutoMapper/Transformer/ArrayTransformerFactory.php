@@ -39,6 +39,10 @@ final class ArrayTransformerFactory extends AbstractUniqueTypeTransformerFactory
         $subItemTransformer = $this->chainTransformerFactory->getTransformer([$sourceType->getCollectionValueType()], [$targetType->getCollectionValueType()], $mapperMetadata);
 
         if (null !== $subItemTransformer) {
+            if (Type::BUILTIN_TYPE_INT !== $sourceType->getCollectionKeyType()->getBuiltinType()) {
+                return new DictionaryTransformer($subItemTransformer);
+            }
+
             return new ArrayTransformer($subItemTransformer);
         }
 
