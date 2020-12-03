@@ -19,7 +19,7 @@
         "php": "^7.2.5",
         "doctrine/inflector": "^1.4 || ^2.0",
         "nikic/php-parser": "^4.0",
-        "symfony/property-info": "^5.1"
+        "symfony/property-info": "^5.2"
     },
     "require-dev": {
         "doctrine/annotations": "~1.0",

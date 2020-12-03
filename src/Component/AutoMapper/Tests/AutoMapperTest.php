@@ -743,4 +743,54 @@ class AutoMapperTest extends AutoMapperBaseTest
 
         self::assertEquals($data, $bar->property);
     }
+
+    public function testArrayWithKeys(): void
+    {
+        $arguments = ['foo', 'azerty' => 'bar', 'baz'];
+        $parameters = new Fixtures\Parameters($arguments);
+
+        $data = $this->autoMapper->map($parameters, 'array');
+        self::assertEquals($arguments, $data['parameters']);
+
+        // ----------------------------------------------------------------------------------------------------
+
+        $arguments = ['foo', 'bar', 'baz'];
+        $parameters = new Fixtures\Parameters($arguments);
+
+        $data = $this->autoMapper->map($parameters, 'array');
+        self::assertEquals($arguments, $data['parameters']);
+
+        // ----------------------------------------------------------------------------------------------------
+
+        $arguments = ['foo' => 'azerty', 'bar' => 'qwerty', 'baz' => 'dvorak'];
+        $parameters = new Fixtures\Parameters($arguments);
+
+        $data = $this->autoMapper->map($parameters, 'array');
+        self::assertEquals($arguments, $data['parameters']);
+    }
+
+    public function testArrayWithFailedKeys(): void
+    {
+        $arguments = ['foo', 'azerty' => 'bar', 'baz'];
+        $parameters = new Fixtures\WrongParameters($arguments);
+
+        $data = $this->autoMapper->map($parameters, 'array');
+        self::assertNotEquals($arguments, $data['parameters']);
+
+        // ----------------------------------------------------------------------------------------------------
+
+        $arguments = ['foo', 'bar', 'baz'];
+        $parameters = new Fixtures\WrongParameters($arguments);
+
+        $data = $this->autoMapper->map($parameters, 'array');
+        self::assertEquals($arguments, $data['parameters']);
+
+        // ----------------------------------------------------------------------------------------------------
+
+        $arguments = ['foo' => 'azerty', 'bar' => 'qwerty', 'baz' => 'dvorak'];
+        $parameters = new Fixtures\WrongParameters($arguments);
+
+        $data = $this->autoMapper->map($parameters, 'array');
+        self::assertNotEquals($arguments, $data['parameters']);
+    }
 }
