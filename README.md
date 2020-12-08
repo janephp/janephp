@@ -2,6 +2,7 @@
     <img width="500" height="180" src="https://raw.githubusercontent.com/janephp/janephp/next/identity/logo_jane_full@4x.png" alt="Jane logo" />
 </p>
 
+
 [![Latest Version](https://img.shields.io/github/release/janephp/janephp.svg?style=flat-square)](https://github.com/janephp/janephp/releases)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE)
 [![Build Status](https://img.shields.io/travis/janephp/janephp.svg?style=flat-square)](https://travis-ci.org/janephp/janephp)
