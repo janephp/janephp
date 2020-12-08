@@ -6,6 +6,11 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@master
+      - name: cache-composer
+        uses: actions/cache@v2
+        with:
+          path: ~/.composer/cache/
+          key: composer-7.4-${{ github.sha }}
       - name: setup
         uses: shivammathur/setup-php@2.5.0
         with:
@@ -25,6 +30,11 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@master
+      - name: cache-composer
+        uses: actions/cache@v2
+        with:
+          path: ~/.composer/cache/
+          key: composer-${{ matrix.php-versions }}-${{ github.sha }}
       - name: setup
         uses: shivammathur/setup-php@2.5.0
         with:
@@ -45,6 +55,11 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@master
+      - name: cache-composer-lowest
+        uses: actions/cache@v2
+        with:
+          path: ~/.composer/cache/
+          key: composer-lowest-${{ github.sha }}
       - name: setup
         uses: shivammathur/setup-php@2.5.0
         with:
