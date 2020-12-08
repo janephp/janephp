@@ -11,16 +11,16 @@ jobs:
     steps:
       - name: checkout
         run: git clone https://github.com/janephp/janephp /home/runner/work/janephp/janephp && cd /home/runner/work/janephp/janephp
-      - name: move into gitsplit older
-        run: cd /home/runner/work/janephp/janephp/.github/gitsplit/older
+      - name: use gitsplit older
+        run: ln -s /home/runner/work/janephp/janephp/.github/gitsplit/older/.gitsplit /github/workspace/.gitsplit
       - name: gitsplit-older
         uses: docker://jderusse/gitsplit:latest
         with:
           args: gitsplit
         env:
           GH_TOKEN: ${{ secrets.PRIVATE_TOKEN }}
-      - name: move into gitsplit 7-plus
-        run: cd /home/runner/work/janephp/janephp/.github/gitsplit/7-plus
+      - name: use gitsplit 7-plus
+        run: rm /github/workspace/.gitsplit && ln -s /home/runner/work/janephp/janephp/.github/gitsplit/7-plus/.gitsplit /github/workspace/.gitsplit
       - name: gitsplit-7-plus
         uses: docker://jderusse/gitsplit:latest
         with:
