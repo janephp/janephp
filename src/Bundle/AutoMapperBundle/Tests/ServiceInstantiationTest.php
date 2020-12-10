@@ -13,6 +13,10 @@ class ServiceInstantiationTest extends WebTestCase
 {
     protected function setUp(): void
     {
+        static::$class = null;
+        $_SERVER['KERNEL_DIR'] = __DIR__ . '/Resources/app';
+        $_SERVER['KERNEL_CLASS'] = 'DummyApp\AppKernel';
+
         @unlink(__DIR__ . '/Resources/var/cache/test');
     }
 

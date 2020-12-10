@@ -9,7 +9,6 @@ require_once __DIR__ . '/Transformer/MoneyToMoneyTransformer.php';
 
 namespace DummyApp;
 
-use Jane\Bundle\AutoMapperBundle\Configuration\ConfigurationPassInterface;
 use Jane\Bundle\AutoMapperBundle\Configuration\MapperConfigurationInterface;
 use Jane\Bundle\AutoMapperBundle\JaneAutoMapperBundle;
 use Jane\Bundle\AutoMapperBundle\Tests\Fixtures\UserDTO;

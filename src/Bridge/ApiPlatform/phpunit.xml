@@ -14,7 +14,7 @@
 
 
     <testsuites>
-        <testsuite name="Jane AutoMapper Bundle Test Suite">
+        <testsuite name="Jane AutoMapper Api Platform Bridge Test Suite">
             <directory>./Tests</directory>
         </testsuite>
     </testsuites>

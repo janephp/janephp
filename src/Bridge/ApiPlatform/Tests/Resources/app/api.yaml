@@ -1,0 +1,16 @@
+resources:
+  Bridge\ApiPlatform\App\Foo:
+    shortName: 'foo'
+    attributes:
+      normalization_context:
+        groups: ['foo:read']
+        swagger_definition_name: 'foo-read'
+      denormalization_context:
+        groups: ['foo:write']
+        swagger_definition_name: 'foo-write'
+        disable_type_enforcement: true
+    collectionOperations:
+      get: ~
+      post: ~
+    itemOperations:
+      get: ~
