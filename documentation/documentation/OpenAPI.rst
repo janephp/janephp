@@ -81,7 +81,7 @@ you can name it as you like and use the ``--config-file`` option to specify its 
     php vendor/bin/jane-openapi generate --config-file=jane-openapi-configuration.php
 
 .. note::
-    If you are using Symfony recipe, this command is embbeded in the ``bin/open-api-generate`` binary file, you only
+    If you are using Symfony recipe, this command is embbeded in the ``bin/jane-open-api-generate`` binary file, you only
     have to run it to make it work 🎉
 
 .. note::
