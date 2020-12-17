@@ -9,7 +9,7 @@ class RunDecisionTree extends \CreditSafe\API\Runtime\Client\BaseEndpoint implem
      * Calls a Decision Tree with the provided parameters to return a Decision.
      *
      * @param string $provenirId Decision Tree GUID
-     * @param \stdClass $requestBody 
+     * @param null|\stdClass $requestBody 
      * @param array $queryParameters {
      *     @var string $companyId the connectId of the company to be evaluated in the  deicison tree.
      *     @var string $originationId the origin id of the company we want a decision on. Only up to 100 characters are allowed, the rest will be truncated.
@@ -19,7 +19,7 @@ class RunDecisionTree extends \CreditSafe\API\Runtime\Client\BaseEndpoint implem
      *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * }
      */
-    public function __construct(string $provenirId, \stdClass $requestBody, array $queryParameters = array(), array $headerParameters = array())
+    public function __construct(string $provenirId, ?\stdClass $requestBody = null, array $queryParameters = array(), array $headerParameters = array())
     {
         $this->provenirId = $provenirId;
         $this->body = $requestBody;

@@ -13,9 +13,9 @@ class ReactionsCreateForIssueComment extends \Github\Runtime\Client\BaseEndpoint
      * @param string $owner 
      * @param string $repo 
      * @param int $commentId comment_id parameter
-     * @param \Github\Model\ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBody $requestBody 
+     * @param null|\Github\Model\ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBody $requestBody 
      */
-    public function __construct(string $owner, string $repo, int $commentId, \Github\Model\ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBody $requestBody)
+    public function __construct(string $owner, string $repo, int $commentId, ?\Github\Model\ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBody $requestBody = null)
     {
         $this->owner = $owner;
         $this->repo = $repo;

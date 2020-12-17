@@ -13,9 +13,9 @@ class IssuesCreate extends \Github\Runtime\Client\BaseEndpoint implements \Githu
     *
     * @param string $owner 
     * @param string $repo 
-    * @param \Github\Model\ReposOwnerRepoIssuesPostBody $requestBody 
+    * @param null|\Github\Model\ReposOwnerRepoIssuesPostBody $requestBody 
     */
-    public function __construct(string $owner, string $repo, \Github\Model\ReposOwnerRepoIssuesPostBody $requestBody)
+    public function __construct(string $owner, string $repo, ?\Github\Model\ReposOwnerRepoIssuesPostBody $requestBody = null)
     {
         $this->owner = $owner;
         $this->repo = $repo;

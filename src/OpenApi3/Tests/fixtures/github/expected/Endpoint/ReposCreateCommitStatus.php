@@ -15,9 +15,9 @@ class ReposCreateCommitStatus extends \Github\Runtime\Client\BaseEndpoint implem
     * @param string $owner 
     * @param string $repo 
     * @param string $sha sha parameter
-    * @param \Github\Model\ReposOwnerRepoStatusesShaPostBody $requestBody 
+    * @param null|\Github\Model\ReposOwnerRepoStatusesShaPostBody $requestBody 
     */
-    public function __construct(string $owner, string $repo, string $sha, \Github\Model\ReposOwnerRepoStatusesShaPostBody $requestBody)
+    public function __construct(string $owner, string $repo, string $sha, ?\Github\Model\ReposOwnerRepoStatusesShaPostBody $requestBody = null)
     {
         $this->owner = $owner;
         $this->repo = $repo;

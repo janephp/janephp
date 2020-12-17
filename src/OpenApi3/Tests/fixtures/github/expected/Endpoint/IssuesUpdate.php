@@ -13,9 +13,9 @@ class IssuesUpdate extends \Github\Runtime\Client\BaseEndpoint implements \Githu
      * @param string $owner 
      * @param string $repo 
      * @param int $issueNumber issue_number parameter
-     * @param \Github\Model\ReposOwnerRepoIssuesIssueNumberPatchBody $requestBody 
+     * @param null|\Github\Model\ReposOwnerRepoIssuesIssueNumberPatchBody $requestBody 
      */
-    public function __construct(string $owner, string $repo, int $issueNumber, \Github\Model\ReposOwnerRepoIssuesIssueNumberPatchBody $requestBody)
+    public function __construct(string $owner, string $repo, int $issueNumber, ?\Github\Model\ReposOwnerRepoIssuesIssueNumberPatchBody $requestBody = null)
     {
         $this->owner = $owner;
         $this->repo = $repo;

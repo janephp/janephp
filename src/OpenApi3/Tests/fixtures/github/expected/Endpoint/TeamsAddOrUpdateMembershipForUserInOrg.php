@@ -23,9 +23,9 @@ class TeamsAddOrUpdateMembershipForUserInOrg extends \Github\Runtime\Client\Base
     * @param string $org 
     * @param string $teamSlug team_slug parameter
     * @param string $username 
-    * @param \Github\Model\OrgsOrgTeamsTeamSlugMembershipsUsernamePutBody $requestBody 
+    * @param null|\Github\Model\OrgsOrgTeamsTeamSlugMembershipsUsernamePutBody $requestBody 
     */
-    public function __construct(string $org, string $teamSlug, string $username, \Github\Model\OrgsOrgTeamsTeamSlugMembershipsUsernamePutBody $requestBody)
+    public function __construct(string $org, string $teamSlug, string $username, ?\Github\Model\OrgsOrgTeamsTeamSlugMembershipsUsernamePutBody $requestBody = null)
     {
         $this->org = $org;
         $this->team_slug = $teamSlug;

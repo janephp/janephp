@@ -7,12 +7,12 @@ class RequestFreshInvestigation extends \CreditSafe\API\Runtime\Client\BaseEndpo
     /**
      * Places an order for a Fresh Investigation (Offline Report). Providing as much detail as possible about the Company, our team will use official sources and registries to quickly answer questions about a company’s stability and financial health. Fresh Investigations take 5.5 days on average to complete.
      *
-     * @param \CreditSafe\API\Model\CreateFreshInvestigationRequest $requestBody 
+     * @param null|\CreditSafe\API\Model\CreateFreshInvestigationRequest $requestBody 
      * @param array $headerParameters {
      *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * }
      */
-    public function __construct(\CreditSafe\API\Model\CreateFreshInvestigationRequest $requestBody, array $headerParameters = array())
+    public function __construct(?\CreditSafe\API\Model\CreateFreshInvestigationRequest $requestBody = null, array $headerParameters = array())
     {
         $this->body = $requestBody;
         $this->headerParameters = $headerParameters;

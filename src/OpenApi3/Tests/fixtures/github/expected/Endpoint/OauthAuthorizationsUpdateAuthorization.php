@@ -13,9 +13,9 @@ class OauthAuthorizationsUpdateAuthorization extends \Github\Runtime\Client\Base
     You can only send one of these scope keys at a time.
     *
     * @param int $authorizationId authorization_id parameter
-    * @param \Github\Model\AuthorizationsAuthorizationIdPatchBody $requestBody 
+    * @param null|\Github\Model\AuthorizationsAuthorizationIdPatchBody $requestBody 
     */
-    public function __construct(int $authorizationId, \Github\Model\AuthorizationsAuthorizationIdPatchBody $requestBody)
+    public function __construct(int $authorizationId, ?\Github\Model\AuthorizationsAuthorizationIdPatchBody $requestBody = null)
     {
         $this->authorization_id = $authorizationId;
         $this->body = $requestBody;

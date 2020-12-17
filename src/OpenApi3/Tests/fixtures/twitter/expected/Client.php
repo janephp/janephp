@@ -47,12 +47,12 @@ class Client extends \Jane\OpenApi3\Tests\Expected\Runtime\Client\Client
      * Tweet ID in the path is that of the reply to hide.
      *
      * @param string $id The ID of the reply that you want to hide.
-     * @param \Jane\OpenApi3\Tests\Expected\Model\HideReplyRequest $requestBody 
+     * @param null|\Jane\OpenApi3\Tests\Expected\Model\HideReplyRequest $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Jane\OpenApi3\Tests\Expected\Model\HideReplyResponse|\Jane\OpenApi3\Tests\Expected\Model\Error|\Psr\Http\Message\ResponseInterface
      */
-    public function hideReplyById(string $id, \Jane\OpenApi3\Tests\Expected\Model\HideReplyRequest $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function hideReplyById(string $id, ?\Jane\OpenApi3\Tests\Expected\Model\HideReplyRequest $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Jane\OpenApi3\Tests\Expected\Endpoint\HideReplyById($id, $requestBody), $fetch);
     }

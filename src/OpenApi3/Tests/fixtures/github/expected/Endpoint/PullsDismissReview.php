@@ -15,9 +15,9 @@ class PullsDismissReview extends \Github\Runtime\Client\BaseEndpoint implements 
      * @param string $repo 
      * @param int $pullNumber 
      * @param int $reviewId review_id parameter
-     * @param \Github\Model\ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBody $requestBody 
+     * @param null|\Github\Model\ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBody $requestBody 
      */
-    public function __construct(string $owner, string $repo, int $pullNumber, int $reviewId, \Github\Model\ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBody $requestBody)
+    public function __construct(string $owner, string $repo, int $pullNumber, int $reviewId, ?\Github\Model\ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBody $requestBody = null)
     {
         $this->owner = $owner;
         $this->repo = $repo;

@@ -33,9 +33,9 @@ class GitCreateTag extends \Github\Runtime\Client\BaseEndpoint implements \Githu
     *
     * @param string $owner 
     * @param string $repo 
-    * @param \Github\Model\ReposOwnerRepoGitTagsPostBody $requestBody 
+    * @param null|\Github\Model\ReposOwnerRepoGitTagsPostBody $requestBody 
     */
-    public function __construct(string $owner, string $repo, \Github\Model\ReposOwnerRepoGitTagsPostBody $requestBody)
+    public function __construct(string $owner, string $repo, ?\Github\Model\ReposOwnerRepoGitTagsPostBody $requestBody = null)
     {
         $this->owner = $owner;
         $this->repo = $repo;

@@ -13,9 +13,9 @@ class ActivitySetThreadSubscription extends \Github\Runtime\Client\BaseEndpoint 
     Unsubscribing from a conversation in a repository that you are not watching is functionally equivalent to the [Delete a thread subscription](https://developer.github.com/v3/activity/notifications/#delete-a-thread-subscription) endpoint.
     *
     * @param int $threadId thread_id parameter
-    * @param \Github\Model\NotificationsThreadsThreadIdSubscriptionPutBody $requestBody 
+    * @param null|\Github\Model\NotificationsThreadsThreadIdSubscriptionPutBody $requestBody 
     */
-    public function __construct(int $threadId, \Github\Model\NotificationsThreadsThreadIdSubscriptionPutBody $requestBody)
+    public function __construct(int $threadId, ?\Github\Model\NotificationsThreadsThreadIdSubscriptionPutBody $requestBody = null)
     {
         $this->thread_id = $threadId;
         $this->body = $requestBody;

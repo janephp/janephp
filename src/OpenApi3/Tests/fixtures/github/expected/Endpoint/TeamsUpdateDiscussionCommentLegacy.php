@@ -15,9 +15,9 @@ class TeamsUpdateDiscussionCommentLegacy extends \Github\Runtime\Client\BaseEndp
     * @param int $teamId 
     * @param int $discussionNumber 
     * @param int $commentNumber 
-    * @param \Github\Model\TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberPatchBody $requestBody 
+    * @param null|\Github\Model\TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberPatchBody $requestBody 
     */
-    public function __construct(int $teamId, int $discussionNumber, int $commentNumber, \Github\Model\TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberPatchBody $requestBody)
+    public function __construct(int $teamId, int $discussionNumber, int $commentNumber, ?\Github\Model\TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberPatchBody $requestBody = null)
     {
         $this->team_id = $teamId;
         $this->discussion_number = $discussionNumber;

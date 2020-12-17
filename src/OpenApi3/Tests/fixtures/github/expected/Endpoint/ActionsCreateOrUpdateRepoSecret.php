@@ -87,9 +87,9 @@ class ActionsCreateOrUpdateRepoSecret extends \Github\Runtime\Client\BaseEndpoin
     * @param string $owner 
     * @param string $repo 
     * @param string $secretName secret_name parameter
-    * @param \Github\Model\ReposOwnerRepoActionsSecretsSecretNamePutBody $requestBody 
+    * @param null|\Github\Model\ReposOwnerRepoActionsSecretsSecretNamePutBody $requestBody 
     */
-    public function __construct(string $owner, string $repo, string $secretName, \Github\Model\ReposOwnerRepoActionsSecretsSecretNamePutBody $requestBody)
+    public function __construct(string $owner, string $repo, string $secretName, ?\Github\Model\ReposOwnerRepoActionsSecretsSecretNamePutBody $requestBody = null)
     {
         $this->owner = $owner;
         $this->repo = $repo;

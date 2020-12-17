@@ -11,9 +11,9 @@ class ProjectsCreateForRepo extends \Github\Runtime\Client\BaseEndpoint implemen
      *
      * @param string $owner 
      * @param string $repo 
-     * @param \Github\Model\ReposOwnerRepoProjectsPostBody $requestBody 
+     * @param null|\Github\Model\ReposOwnerRepoProjectsPostBody $requestBody 
      */
-    public function __construct(string $owner, string $repo, \Github\Model\ReposOwnerRepoProjectsPostBody $requestBody)
+    public function __construct(string $owner, string $repo, ?\Github\Model\ReposOwnerRepoProjectsPostBody $requestBody = null)
     {
         $this->owner = $owner;
         $this->repo = $repo;

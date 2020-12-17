@@ -9,9 +9,9 @@ class OrgsUpdateMembershipForAuthenticatedUser extends \Github\Runtime\Client\Ba
      * 
      *
      * @param string $org 
-     * @param \Github\Model\UserMembershipsOrgsOrgPatchBody $requestBody 
+     * @param null|\Github\Model\UserMembershipsOrgsOrgPatchBody $requestBody 
      */
-    public function __construct(string $org, \Github\Model\UserMembershipsOrgsOrgPatchBody $requestBody)
+    public function __construct(string $org, ?\Github\Model\UserMembershipsOrgsOrgPatchBody $requestBody = null)
     {
         $this->org = $org;
         $this->body = $requestBody;

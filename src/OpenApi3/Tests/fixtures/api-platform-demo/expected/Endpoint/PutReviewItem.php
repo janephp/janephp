@@ -9,9 +9,9 @@ class PutReviewItem extends \ApiPlatform\Demo\Runtime\Client\BaseEndpoint implem
      * 
      *
      * @param string $id 
-     * @param \stdClass|\ApiPlatform\Demo\Model\Review $requestBody 
+     * @param null|\stdClass|\ApiPlatform\Demo\Model\Review $requestBody 
      */
-    public function __construct(string $id, $requestBody)
+    public function __construct(string $id, $requestBody = null)
     {
         $this->id = $id;
         $this->body = $requestBody;

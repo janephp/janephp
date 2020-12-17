@@ -7,9 +7,9 @@ class TestFormParameters extends \Jane\OpenApi3\Tests\Expected\Runtime\Client\Ba
     /**
      * 
      *
-     * @param \Jane\OpenApi3\Tests\Expected\Model\TestFormPostBody $requestBody 
+     * @param null|\Jane\OpenApi3\Tests\Expected\Model\TestFormPostBody $requestBody 
      */
-    public function __construct(\Jane\OpenApi3\Tests\Expected\Model\TestFormPostBody $requestBody)
+    public function __construct(?\Jane\OpenApi3\Tests\Expected\Model\TestFormPostBody $requestBody = null)
     {
         $this->body = $requestBody;
     }

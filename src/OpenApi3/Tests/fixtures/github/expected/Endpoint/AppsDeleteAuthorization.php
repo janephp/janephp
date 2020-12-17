@@ -10,9 +10,9 @@ class AppsDeleteAuthorization extends \Github\Runtime\Client\BaseEndpoint implem
     Deleting an OAuth application's grant will also delete all OAuth tokens associated with the application for the user. Once deleted, the application will have no access to the user's account and will no longer be listed on [the application authorizations settings screen within GitHub](https://github.com/settings/applications#authorized).
     *
     * @param string $clientId 
-    * @param \Github\Model\ApplicationsClientIdGrantDeleteBody $requestBody 
+    * @param null|\Github\Model\ApplicationsClientIdGrantDeleteBody $requestBody 
     */
-    public function __construct(string $clientId, \Github\Model\ApplicationsClientIdGrantDeleteBody $requestBody)
+    public function __construct(string $clientId, ?\Github\Model\ApplicationsClientIdGrantDeleteBody $requestBody = null)
     {
         $this->client_id = $clientId;
         $this->body = $requestBody;

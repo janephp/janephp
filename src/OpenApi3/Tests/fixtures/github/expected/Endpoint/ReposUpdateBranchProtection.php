@@ -19,9 +19,9 @@ class ReposUpdateBranchProtection extends \Github\Runtime\Client\BaseEndpoint im
     * @param string $owner 
     * @param string $repo 
     * @param string $branch branch+ parameter
-    * @param \Github\Model\ReposOwnerRepoBranchesBranchProtectionPutBody $requestBody 
+    * @param null|\Github\Model\ReposOwnerRepoBranchesBranchProtectionPutBody $requestBody 
     */
-    public function __construct(string $owner, string $repo, string $branch, \Github\Model\ReposOwnerRepoBranchesBranchProtectionPutBody $requestBody)
+    public function __construct(string $owner, string $repo, string $branch, ?\Github\Model\ReposOwnerRepoBranchesBranchProtectionPutBody $requestBody = null)
     {
         $this->owner = $owner;
         $this->repo = $repo;

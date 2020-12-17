@@ -13,9 +13,9 @@ class ReposUpdateCommitComment extends \Github\Runtime\Client\BaseEndpoint imple
      * @param string $owner 
      * @param string $repo 
      * @param int $commentId comment_id parameter
-     * @param \Github\Model\ReposOwnerRepoCommentsCommentIdPatchBody $requestBody 
+     * @param null|\Github\Model\ReposOwnerRepoCommentsCommentIdPatchBody $requestBody 
      */
-    public function __construct(string $owner, string $repo, int $commentId, \Github\Model\ReposOwnerRepoCommentsCommentIdPatchBody $requestBody)
+    public function __construct(string $owner, string $repo, int $commentId, ?\Github\Model\ReposOwnerRepoCommentsCommentIdPatchBody $requestBody = null)
     {
         $this->owner = $owner;
         $this->repo = $repo;

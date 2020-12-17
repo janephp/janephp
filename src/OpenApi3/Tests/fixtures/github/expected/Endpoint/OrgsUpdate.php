@@ -11,9 +11,9 @@ class OrgsUpdate extends \Github\Runtime\Client\BaseEndpoint implements \Github\
     Enables an authenticated organization owner with the `admin:org` scope to update the organization's profile and member privileges.
     *
     * @param string $org 
-    * @param \Github\Model\OrgsOrgPatchBody $requestBody 
+    * @param null|\Github\Model\OrgsOrgPatchBody $requestBody 
     */
-    public function __construct(string $org, \Github\Model\OrgsOrgPatchBody $requestBody)
+    public function __construct(string $org, ?\Github\Model\OrgsOrgPatchBody $requestBody = null)
     {
         $this->org = $org;
         $this->body = $requestBody;

@@ -11,9 +11,9 @@ class ProjectsAddCollaborator extends \Github\Runtime\Client\BaseEndpoint implem
      *
      * @param int $projectId 
      * @param string $username 
-     * @param \Github\Model\ProjectsProjectIdCollaboratorsUsernamePutBody $requestBody 
+     * @param null|\Github\Model\ProjectsProjectIdCollaboratorsUsernamePutBody $requestBody 
      */
-    public function __construct(int $projectId, string $username, \Github\Model\ProjectsProjectIdCollaboratorsUsernamePutBody $requestBody)
+    public function __construct(int $projectId, string $username, ?\Github\Model\ProjectsProjectIdCollaboratorsUsernamePutBody $requestBody = null)
     {
         $this->project_id = $projectId;
         $this->username = $username;

@@ -9,7 +9,7 @@ class ClearCompaniesFromAPortfolio extends \CreditSafe\API\Runtime\Client\BaseEn
      * Delete companies from current portfolio
      *
      * @param string $portfolioId The unique identifier of the portfolio you want to delete companies from, obtained from `/portfolios`.
-     * @param \CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdCompaniesClearPatchBody $requestBody 
+     * @param null|\CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdCompaniesClearPatchBody $requestBody 
      * @param array $queryParameters {
      *     @var bool $clearAll When ClearAll queryparameter is False,Companies List needs to be passed. When ClearAll queryparameter is True, Companies List must be empty. All companies will be deleted
      * }
@@ -17,7 +17,7 @@ class ClearCompaniesFromAPortfolio extends \CreditSafe\API\Runtime\Client\BaseEn
      *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * }
      */
-    public function __construct(string $portfolioId, \CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdCompaniesClearPatchBody $requestBody, array $queryParameters = array(), array $headerParameters = array())
+    public function __construct(string $portfolioId, ?\CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdCompaniesClearPatchBody $requestBody = null, array $queryParameters = array(), array $headerParameters = array())
     {
         $this->portfolioId = $portfolioId;
         $this->body = $requestBody;

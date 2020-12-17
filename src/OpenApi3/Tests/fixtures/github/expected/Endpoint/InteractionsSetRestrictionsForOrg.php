@@ -9,9 +9,9 @@ class InteractionsSetRestrictionsForOrg extends \Github\Runtime\Client\BaseEndpo
      * Temporarily restricts interactions to certain GitHub users in any public repository in the given organization. You must be an organization owner to set these restrictions.
      *
      * @param string $org 
-     * @param \Github\Model\OrgsOrgInteractionLimitsPutBody $requestBody 
+     * @param null|\Github\Model\OrgsOrgInteractionLimitsPutBody $requestBody 
      */
-    public function __construct(string $org, \Github\Model\OrgsOrgInteractionLimitsPutBody $requestBody)
+    public function __construct(string $org, ?\Github\Model\OrgsOrgInteractionLimitsPutBody $requestBody = null)
     {
         $this->org = $org;
         $this->body = $requestBody;

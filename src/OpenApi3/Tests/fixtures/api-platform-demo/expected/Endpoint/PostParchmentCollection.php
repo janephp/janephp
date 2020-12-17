@@ -7,9 +7,9 @@ class PostParchmentCollection extends \ApiPlatform\Demo\Runtime\Client\BaseEndpo
     /**
      * 
      *
-     * @param \stdClass|\ApiPlatform\Demo\Model\Parchment $requestBody 
+     * @param null|\stdClass|\ApiPlatform\Demo\Model\Parchment $requestBody 
      */
-    public function __construct($requestBody)
+    public function __construct($requestBody = null)
     {
         $this->body = $requestBody;
     }

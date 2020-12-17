@@ -13,9 +13,9 @@ class IssuesCreateComment extends \Github\Runtime\Client\BaseEndpoint implements
      * @param string $owner 
      * @param string $repo 
      * @param int $issueNumber issue_number parameter
-     * @param \Github\Model\ReposOwnerRepoIssuesIssueNumberCommentsPostBody $requestBody 
+     * @param null|\Github\Model\ReposOwnerRepoIssuesIssueNumberCommentsPostBody $requestBody 
      */
-    public function __construct(string $owner, string $repo, int $issueNumber, \Github\Model\ReposOwnerRepoIssuesIssueNumberCommentsPostBody $requestBody)
+    public function __construct(string $owner, string $repo, int $issueNumber, ?\Github\Model\ReposOwnerRepoIssuesIssueNumberCommentsPostBody $requestBody = null)
     {
         $this->owner = $owner;
         $this->repo = $repo;

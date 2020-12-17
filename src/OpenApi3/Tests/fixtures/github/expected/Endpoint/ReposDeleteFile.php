@@ -19,9 +19,9 @@ class ReposDeleteFile extends \Github\Runtime\Client\BaseEndpoint implements \Gi
     * @param string $owner 
     * @param string $repo 
     * @param string $path path+ parameter
-    * @param \Github\Model\ReposOwnerRepoContentsPathDeleteBody $requestBody 
+    * @param null|\Github\Model\ReposOwnerRepoContentsPathDeleteBody $requestBody 
     */
-    public function __construct(string $owner, string $repo, string $path, \Github\Model\ReposOwnerRepoContentsPathDeleteBody $requestBody)
+    public function __construct(string $owner, string $repo, string $path, ?\Github\Model\ReposOwnerRepoContentsPathDeleteBody $requestBody = null)
     {
         $this->owner = $owner;
         $this->repo = $repo;

@@ -37,9 +37,9 @@ class PullsCreateReviewComment extends \Github\Runtime\Client\BaseEndpoint imple
     * @param string $owner 
     * @param string $repo 
     * @param int $pullNumber 
-    * @param \Github\Model\ReposOwnerRepoPullsPullNumberCommentsPostBody $requestBody 
+    * @param null|\Github\Model\ReposOwnerRepoPullsPullNumberCommentsPostBody $requestBody 
     */
-    public function __construct(string $owner, string $repo, int $pullNumber, \Github\Model\ReposOwnerRepoPullsPullNumberCommentsPostBody $requestBody)
+    public function __construct(string $owner, string $repo, int $pullNumber, ?\Github\Model\ReposOwnerRepoPullsPullNumberCommentsPostBody $requestBody = null)
     {
         $this->owner = $owner;
         $this->repo = $repo;
