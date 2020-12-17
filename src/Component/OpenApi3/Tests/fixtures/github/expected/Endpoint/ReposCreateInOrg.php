@@ -16,9 +16,9 @@ class ReposCreateInOrg extends \Github\Runtime\Client\BaseEndpoint implements \G
     *   `repo` scope to create a private repository
     *
     * @param string $org 
-    * @param \Github\Model\OrgsOrgReposPostBody $requestBody 
+    * @param null|\Github\Model\OrgsOrgReposPostBody $requestBody 
     */
-    public function __construct(string $org, \Github\Model\OrgsOrgReposPostBody $requestBody)
+    public function __construct(string $org, ?\Github\Model\OrgsOrgReposPostBody $requestBody = null)
     {
         $this->org = $org;
         $this->body = $requestBody;

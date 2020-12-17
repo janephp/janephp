@@ -13,9 +13,9 @@ class ReposUpdateRelease extends \Github\Runtime\Client\BaseEndpoint implements 
      * @param string $owner 
      * @param string $repo 
      * @param int $releaseId release_id parameter
-     * @param \Github\Model\ReposOwnerRepoReleasesReleaseIdPatchBody $requestBody 
+     * @param null|\Github\Model\ReposOwnerRepoReleasesReleaseIdPatchBody $requestBody 
      */
-    public function __construct(string $owner, string $repo, int $releaseId, \Github\Model\ReposOwnerRepoReleasesReleaseIdPatchBody $requestBody)
+    public function __construct(string $owner, string $repo, int $releaseId, ?\Github\Model\ReposOwnerRepoReleasesReleaseIdPatchBody $requestBody = null)
     {
         $this->owner = $owner;
         $this->repo = $repo;

@@ -9,9 +9,9 @@ class ProjectsMoveColumn extends \Github\Runtime\Client\BaseEndpoint implements 
      * 
      *
      * @param int $columnId column_id parameter
-     * @param \Github\Model\ProjectsColumnsColumnIdMovesPostBody $requestBody 
+     * @param null|\Github\Model\ProjectsColumnsColumnIdMovesPostBody $requestBody 
      */
-    public function __construct(int $columnId, \Github\Model\ProjectsColumnsColumnIdMovesPostBody $requestBody)
+    public function __construct(int $columnId, ?\Github\Model\ProjectsColumnsColumnIdMovesPostBody $requestBody = null)
     {
         $this->column_id = $columnId;
         $this->body = $requestBody;

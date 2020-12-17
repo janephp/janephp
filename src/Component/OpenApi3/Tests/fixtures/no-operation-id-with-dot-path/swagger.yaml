@@ -10,7 +10,6 @@ paths:
                             properties:
                               bar:
                                 type: string
-                required: true
             responses:
                 default:
                     description: Default response

@@ -7,9 +7,9 @@ class ProjectsCreateForAuthenticatedUser extends \Github\Runtime\Client\BaseEndp
     /**
      * 
      *
-     * @param \Github\Model\UserProjectsPostBody $requestBody 
+     * @param null|\Github\Model\UserProjectsPostBody $requestBody 
      */
-    public function __construct(\Github\Model\UserProjectsPostBody $requestBody)
+    public function __construct(?\Github\Model\UserProjectsPostBody $requestBody = null)
     {
         $this->body = $requestBody;
     }

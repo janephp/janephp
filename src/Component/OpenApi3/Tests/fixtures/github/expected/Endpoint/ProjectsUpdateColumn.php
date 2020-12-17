@@ -9,9 +9,9 @@ class ProjectsUpdateColumn extends \Github\Runtime\Client\BaseEndpoint implement
      * 
      *
      * @param int $columnId column_id parameter
-     * @param \Github\Model\ProjectsColumnsColumnIdPatchBody $requestBody 
+     * @param null|\Github\Model\ProjectsColumnsColumnIdPatchBody $requestBody 
      */
-    public function __construct(int $columnId, \Github\Model\ProjectsColumnsColumnIdPatchBody $requestBody)
+    public function __construct(int $columnId, ?\Github\Model\ProjectsColumnsColumnIdPatchBody $requestBody = null)
     {
         $this->column_id = $columnId;
         $this->body = $requestBody;

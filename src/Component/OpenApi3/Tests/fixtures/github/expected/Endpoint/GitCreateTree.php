@@ -13,9 +13,9 @@ class GitCreateTree extends \Github\Runtime\Client\BaseEndpoint implements \Gith
     *
     * @param string $owner 
     * @param string $repo 
-    * @param \Github\Model\ReposOwnerRepoGitTreesPostBody $requestBody 
+    * @param null|\Github\Model\ReposOwnerRepoGitTreesPostBody $requestBody 
     */
-    public function __construct(string $owner, string $repo, \Github\Model\ReposOwnerRepoGitTreesPostBody $requestBody)
+    public function __construct(string $owner, string $repo, ?\Github\Model\ReposOwnerRepoGitTreesPostBody $requestBody = null)
     {
         $this->owner = $owner;
         $this->repo = $repo;

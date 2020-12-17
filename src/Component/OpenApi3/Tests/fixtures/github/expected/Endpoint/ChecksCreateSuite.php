@@ -13,9 +13,9 @@ class ChecksCreateSuite extends \Github\Runtime\Client\BaseEndpoint implements \
     *
     * @param string $owner 
     * @param string $repo 
-    * @param \Github\Model\ReposOwnerRepoCheckSuitesPostBody $requestBody 
+    * @param null|\Github\Model\ReposOwnerRepoCheckSuitesPostBody $requestBody 
     */
-    public function __construct(string $owner, string $repo, \Github\Model\ReposOwnerRepoCheckSuitesPostBody $requestBody)
+    public function __construct(string $owner, string $repo, ?\Github\Model\ReposOwnerRepoCheckSuitesPostBody $requestBody = null)
     {
         $this->owner = $owner;
         $this->repo = $repo;

@@ -17,9 +17,9 @@ class OauthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprint extends \G
     *
     * @param string $clientId 
     * @param string $fingerprint fingerprint parameter
-    * @param \Github\Model\AuthorizationsClientsClientIdFingerprintPutBody $requestBody 
+    * @param null|\Github\Model\AuthorizationsClientsClientIdFingerprintPutBody $requestBody 
     */
-    public function __construct(string $clientId, string $fingerprint, \Github\Model\AuthorizationsClientsClientIdFingerprintPutBody $requestBody)
+    public function __construct(string $clientId, string $fingerprint, ?\Github\Model\AuthorizationsClientsClientIdFingerprintPutBody $requestBody = null)
     {
         $this->client_id = $clientId;
         $this->fingerprint = $fingerprint;

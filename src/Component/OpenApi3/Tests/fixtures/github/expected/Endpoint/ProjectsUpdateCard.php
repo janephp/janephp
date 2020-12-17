@@ -9,9 +9,9 @@ class ProjectsUpdateCard extends \Github\Runtime\Client\BaseEndpoint implements 
      * 
      *
      * @param int $cardId card_id parameter
-     * @param \Github\Model\ProjectsColumnsCardsCardIdPatchBody $requestBody 
+     * @param null|\Github\Model\ProjectsColumnsCardsCardIdPatchBody $requestBody 
      */
-    public function __construct(int $cardId, \Github\Model\ProjectsColumnsCardsCardIdPatchBody $requestBody)
+    public function __construct(int $cardId, ?\Github\Model\ProjectsColumnsCardsCardIdPatchBody $requestBody = null)
     {
         $this->card_id = $cardId;
         $this->body = $requestBody;

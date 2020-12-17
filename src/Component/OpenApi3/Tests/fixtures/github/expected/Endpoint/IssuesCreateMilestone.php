@@ -11,9 +11,9 @@ class IssuesCreateMilestone extends \Github\Runtime\Client\BaseEndpoint implemen
      *
      * @param string $owner 
      * @param string $repo 
-     * @param \Github\Model\ReposOwnerRepoMilestonesPostBody $requestBody 
+     * @param null|\Github\Model\ReposOwnerRepoMilestonesPostBody $requestBody 
      */
-    public function __construct(string $owner, string $repo, \Github\Model\ReposOwnerRepoMilestonesPostBody $requestBody)
+    public function __construct(string $owner, string $repo, ?\Github\Model\ReposOwnerRepoMilestonesPostBody $requestBody = null)
     {
         $this->owner = $owner;
         $this->repo = $repo;

@@ -37,9 +37,9 @@ class GitCreateCommit extends \Github\Runtime\Client\BaseEndpoint implements \Gi
     *
     * @param string $owner 
     * @param string $repo 
-    * @param \Github\Model\ReposOwnerRepoGitCommitsPostBody $requestBody 
+    * @param null|\Github\Model\ReposOwnerRepoGitCommitsPostBody $requestBody 
     */
-    public function __construct(string $owner, string $repo, \Github\Model\ReposOwnerRepoGitCommitsPostBody $requestBody)
+    public function __construct(string $owner, string $repo, ?\Github\Model\ReposOwnerRepoGitCommitsPostBody $requestBody = null)
     {
         $this->owner = $owner;
         $this->repo = $repo;

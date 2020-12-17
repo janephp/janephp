@@ -55,9 +55,9 @@ class ReposCreateDeployment extends \Github\Runtime\Client\BaseEndpoint implemen
     *
     * @param string $owner 
     * @param string $repo 
-    * @param \Github\Model\ReposOwnerRepoDeploymentsPostBody $requestBody 
+    * @param null|\Github\Model\ReposOwnerRepoDeploymentsPostBody $requestBody 
     */
-    public function __construct(string $owner, string $repo, \Github\Model\ReposOwnerRepoDeploymentsPostBody $requestBody)
+    public function __construct(string $owner, string $repo, ?\Github\Model\ReposOwnerRepoDeploymentsPostBody $requestBody = null)
     {
         $this->owner = $owner;
         $this->repo = $repo;

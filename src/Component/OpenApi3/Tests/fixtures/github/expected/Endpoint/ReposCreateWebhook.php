@@ -12,9 +12,9 @@ class ReposCreateWebhook extends \Github\Runtime\Client\BaseEndpoint implements 
     *
     * @param string $owner 
     * @param string $repo 
-    * @param \Github\Model\ReposOwnerRepoHooksPostBody $requestBody 
+    * @param null|\Github\Model\ReposOwnerRepoHooksPostBody $requestBody 
     */
-    public function __construct(string $owner, string $repo, \Github\Model\ReposOwnerRepoHooksPostBody $requestBody)
+    public function __construct(string $owner, string $repo, ?\Github\Model\ReposOwnerRepoHooksPostBody $requestBody = null)
     {
         $this->owner = $owner;
         $this->repo = $repo;

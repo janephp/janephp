@@ -11,9 +11,9 @@ class InteractionsSetRestrictionsForRepo extends \Github\Runtime\Client\BaseEndp
      *
      * @param string $owner 
      * @param string $repo 
-     * @param \Github\Model\ReposOwnerRepoInteractionLimitsPutBody $requestBody 
+     * @param null|\Github\Model\ReposOwnerRepoInteractionLimitsPutBody $requestBody 
      */
-    public function __construct(string $owner, string $repo, \Github\Model\ReposOwnerRepoInteractionLimitsPutBody $requestBody)
+    public function __construct(string $owner, string $repo, ?\Github\Model\ReposOwnerRepoInteractionLimitsPutBody $requestBody = null)
     {
         $this->owner = $owner;
         $this->repo = $repo;

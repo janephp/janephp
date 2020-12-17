@@ -9,9 +9,9 @@ class PatchReviewItem extends \ApiPlatform\Demo\Runtime\Client\BaseEndpoint impl
      * 
      *
      * @param string $id 
-     * @param \ApiPlatform\Demo\Model\Review $requestBody 
+     * @param null|\ApiPlatform\Demo\Model\Review $requestBody 
      */
-    public function __construct(string $id, \ApiPlatform\Demo\Model\Review $requestBody)
+    public function __construct(string $id, ?\ApiPlatform\Demo\Model\Review $requestBody = null)
     {
         $this->id = $id;
         $this->body = $requestBody;

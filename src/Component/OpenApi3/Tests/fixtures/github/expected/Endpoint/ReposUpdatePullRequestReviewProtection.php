@@ -17,9 +17,9 @@ class ReposUpdatePullRequestReviewProtection extends \Github\Runtime\Client\Base
     * @param string $owner 
     * @param string $repo 
     * @param string $branch branch+ parameter
-    * @param \Github\Model\ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBody $requestBody 
+    * @param null|\Github\Model\ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBody $requestBody 
     */
-    public function __construct(string $owner, string $repo, string $branch, \Github\Model\ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBody $requestBody)
+    public function __construct(string $owner, string $repo, string $branch, ?\Github\Model\ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBody $requestBody = null)
     {
         $this->owner = $owner;
         $this->repo = $repo;

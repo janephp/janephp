@@ -81,24 +81,24 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
     /**
      * 
      *
-     * @param \Jane\Component\OpenApi3\Tests\Expected\Model\TestFormPostBody $requestBody 
+     * @param null|\Jane\Component\OpenApi3\Tests\Expected\Model\TestFormPostBody $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function testFormParameters(\Jane\Component\OpenApi3\Tests\Expected\Model\TestFormPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function testFormParameters(?\Jane\Component\OpenApi3\Tests\Expected\Model\TestFormPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Endpoint\TestFormParameters($requestBody), $fetch);
     }
     /**
      * 
      *
-     * @param \Jane\Component\OpenApi3\Tests\Expected\Model\TestFormFilePostBody $requestBody 
+     * @param null|\Jane\Component\OpenApi3\Tests\Expected\Model\TestFormFilePostBody $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function testFormFileParameters(\Jane\Component\OpenApi3\Tests\Expected\Model\TestFormFilePostBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function testFormFileParameters(?\Jane\Component\OpenApi3\Tests\Expected\Model\TestFormFilePostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Endpoint\TestFormFileParameters($requestBody), $fetch);
     }

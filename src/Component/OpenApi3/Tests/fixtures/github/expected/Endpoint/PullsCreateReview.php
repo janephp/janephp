@@ -19,9 +19,9 @@ class PullsCreateReview extends \Github\Runtime\Client\BaseEndpoint implements \
     * @param string $owner 
     * @param string $repo 
     * @param int $pullNumber 
-    * @param \Github\Model\ReposOwnerRepoPullsPullNumberReviewsPostBody $requestBody 
+    * @param null|\Github\Model\ReposOwnerRepoPullsPullNumberReviewsPostBody $requestBody 
     */
-    public function __construct(string $owner, string $repo, int $pullNumber, \Github\Model\ReposOwnerRepoPullsPullNumberReviewsPostBody $requestBody)
+    public function __construct(string $owner, string $repo, int $pullNumber, ?\Github\Model\ReposOwnerRepoPullsPullNumberReviewsPostBody $requestBody = null)
     {
         $this->owner = $owner;
         $this->repo = $repo;

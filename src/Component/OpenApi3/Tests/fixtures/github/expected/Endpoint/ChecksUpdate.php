@@ -15,9 +15,9 @@ class ChecksUpdate extends \Github\Runtime\Client\BaseEndpoint implements \Githu
     * @param string $owner 
     * @param string $repo 
     * @param int $checkRunId check_run_id parameter
-    * @param \Github\Model\ReposOwnerRepoCheckRunsCheckRunIdPatchBody $requestBody 
+    * @param null|\Github\Model\ReposOwnerRepoCheckRunsCheckRunIdPatchBody $requestBody 
     */
-    public function __construct(string $owner, string $repo, int $checkRunId, \Github\Model\ReposOwnerRepoCheckRunsCheckRunIdPatchBody $requestBody)
+    public function __construct(string $owner, string $repo, int $checkRunId, ?\Github\Model\ReposOwnerRepoCheckRunsCheckRunIdPatchBody $requestBody = null)
     {
         $this->owner = $owner;
         $this->repo = $repo;

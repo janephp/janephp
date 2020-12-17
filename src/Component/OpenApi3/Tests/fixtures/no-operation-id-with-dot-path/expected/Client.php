@@ -7,12 +7,12 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
     /**
      * 
      *
-     * @param \Jane\Component\OpenApi3\Tests\Expected\Model\MessageM700PostBody $requestBody 
+     * @param null|\Jane\Component\OpenApi3\Tests\Expected\Model\MessageM700PostBody $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function postMessageM700(\Jane\Component\OpenApi3\Tests\Expected\Model\MessageM700PostBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function postMessageM700(?\Jane\Component\OpenApi3\Tests\Expected\Model\MessageM700PostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Endpoint\PostMessageM700($requestBody), $fetch);
     }

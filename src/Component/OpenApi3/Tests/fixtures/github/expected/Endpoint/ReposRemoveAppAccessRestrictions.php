@@ -19,9 +19,9 @@ class ReposRemoveAppAccessRestrictions extends \Github\Runtime\Client\BaseEndpoi
     * @param string $owner 
     * @param string $repo 
     * @param string $branch branch+ parameter
-    * @param array[] $requestBody 
+    * @param null|array[] $requestBody 
     */
-    public function __construct(string $owner, string $repo, string $branch, array $requestBody)
+    public function __construct(string $owner, string $repo, string $branch, ?array $requestBody = null)
     {
         $this->owner = $owner;
         $this->repo = $repo;

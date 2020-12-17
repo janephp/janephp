@@ -9,9 +9,9 @@ class PutParchmentItem extends \ApiPlatform\Demo\Runtime\Client\BaseEndpoint imp
      * 
      *
      * @param string $id 
-     * @param \stdClass|\ApiPlatform\Demo\Model\Parchment $requestBody 
+     * @param null|\stdClass|\ApiPlatform\Demo\Model\Parchment $requestBody 
      */
-    public function __construct(string $id, $requestBody)
+    public function __construct(string $id, $requestBody = null)
     {
         $this->id = $id;
         $this->body = $requestBody;

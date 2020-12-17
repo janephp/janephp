@@ -7,9 +7,9 @@ class GenerateAuthenticationToken extends \CreditSafe\API\Runtime\Client\BaseEnd
     /**
      * Enter your username and password into the request schema to generate an Authorization Token
      *
-     * @param \CreditSafe\API\Model\AuthenticationRequest $requestBody 
+     * @param null|\CreditSafe\API\Model\AuthenticationRequest $requestBody 
      */
-    public function __construct(\CreditSafe\API\Model\AuthenticationRequest $requestBody)
+    public function __construct(?\CreditSafe\API\Model\AuthenticationRequest $requestBody = null)
     {
         $this->body = $requestBody;
     }

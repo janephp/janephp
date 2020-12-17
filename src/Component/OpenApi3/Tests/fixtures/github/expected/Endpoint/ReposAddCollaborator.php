@@ -23,9 +23,9 @@ class ReposAddCollaborator extends \Github\Runtime\Client\BaseEndpoint implement
     * @param string $owner 
     * @param string $repo 
     * @param string $username 
-    * @param \Github\Model\ReposOwnerRepoCollaboratorsUsernamePutBody $requestBody 
+    * @param null|\Github\Model\ReposOwnerRepoCollaboratorsUsernamePutBody $requestBody 
     */
-    public function __construct(string $owner, string $repo, string $username, \Github\Model\ReposOwnerRepoCollaboratorsUsernamePutBody $requestBody)
+    public function __construct(string $owner, string $repo, string $username, ?\Github\Model\ReposOwnerRepoCollaboratorsUsernamePutBody $requestBody = null)
     {
         $this->owner = $owner;
         $this->repo = $repo;

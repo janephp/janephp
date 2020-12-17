@@ -13,9 +13,9 @@ class IssuesAddAssignees extends \Github\Runtime\Client\BaseEndpoint implements 
      * @param string $owner 
      * @param string $repo 
      * @param int $issueNumber issue_number parameter
-     * @param \Github\Model\ReposOwnerRepoIssuesIssueNumberAssigneesPostBody $requestBody 
+     * @param null|\Github\Model\ReposOwnerRepoIssuesIssueNumberAssigneesPostBody $requestBody 
      */
-    public function __construct(string $owner, string $repo, int $issueNumber, \Github\Model\ReposOwnerRepoIssuesIssueNumberAssigneesPostBody $requestBody)
+    public function __construct(string $owner, string $repo, int $issueNumber, ?\Github\Model\ReposOwnerRepoIssuesIssueNumberAssigneesPostBody $requestBody = null)
     {
         $this->owner = $owner;
         $this->repo = $repo;

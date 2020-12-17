@@ -7,9 +7,9 @@ class PostReviewCollection extends \ApiPlatform\Demo\Runtime\Client\BaseEndpoint
     /**
      * 
      *
-     * @param \stdClass|\ApiPlatform\Demo\Model\Review $requestBody 
+     * @param null|\stdClass|\ApiPlatform\Demo\Model\Review $requestBody 
      */
-    public function __construct($requestBody)
+    public function __construct($requestBody = null)
     {
         $this->body = $requestBody;
     }

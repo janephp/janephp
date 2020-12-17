@@ -15,9 +15,9 @@ class TeamsCreateDiscussionInOrg extends \Github\Runtime\Client\BaseEndpoint imp
     *
     * @param string $org 
     * @param string $teamSlug team_slug parameter
-    * @param \Github\Model\OrgsOrgTeamsTeamSlugDiscussionsPostBody $requestBody 
+    * @param null|\Github\Model\OrgsOrgTeamsTeamSlugDiscussionsPostBody $requestBody 
     */
-    public function __construct(string $org, string $teamSlug, \Github\Model\OrgsOrgTeamsTeamSlugDiscussionsPostBody $requestBody)
+    public function __construct(string $org, string $teamSlug, ?\Github\Model\OrgsOrgTeamsTeamSlugDiscussionsPostBody $requestBody = null)
     {
         $this->org = $org;
         $this->team_slug = $teamSlug;

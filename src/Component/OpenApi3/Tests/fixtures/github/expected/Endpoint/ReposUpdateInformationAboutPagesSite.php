@@ -11,9 +11,9 @@ class ReposUpdateInformationAboutPagesSite extends \Github\Runtime\Client\BaseEn
      *
      * @param string $owner 
      * @param string $repo 
-     * @param \Github\Model\ReposOwnerRepoPagesPutBody $requestBody 
+     * @param null|\Github\Model\ReposOwnerRepoPagesPutBody $requestBody 
      */
-    public function __construct(string $owner, string $repo, \Github\Model\ReposOwnerRepoPagesPutBody $requestBody)
+    public function __construct(string $owner, string $repo, ?\Github\Model\ReposOwnerRepoPagesPutBody $requestBody = null)
     {
         $this->owner = $owner;
         $this->repo = $repo;

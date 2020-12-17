@@ -13,9 +13,9 @@ class TeamsUpdateLegacy extends \Github\Runtime\Client\BaseEndpoint implements \
     **Note:** With nested teams, the `privacy` for parent teams cannot be `secret`.
     *
     * @param int $teamId 
-    * @param \Github\Model\TeamsTeamIdPatchBody $requestBody 
+    * @param null|\Github\Model\TeamsTeamIdPatchBody $requestBody 
     */
-    public function __construct(int $teamId, \Github\Model\TeamsTeamIdPatchBody $requestBody)
+    public function __construct(int $teamId, ?\Github\Model\TeamsTeamIdPatchBody $requestBody = null)
     {
         $this->team_id = $teamId;
         $this->body = $requestBody;

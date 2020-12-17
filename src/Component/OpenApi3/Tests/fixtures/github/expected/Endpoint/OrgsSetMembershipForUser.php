@@ -19,9 +19,9 @@ class OrgsSetMembershipForUser extends \Github\Runtime\Client\BaseEndpoint imple
     *
     * @param string $org 
     * @param string $username 
-    * @param \Github\Model\OrgsOrgMembershipsUsernamePutBody $requestBody 
+    * @param null|\Github\Model\OrgsOrgMembershipsUsernamePutBody $requestBody 
     */
-    public function __construct(string $org, string $username, \Github\Model\OrgsOrgMembershipsUsernamePutBody $requestBody)
+    public function __construct(string $org, string $username, ?\Github\Model\OrgsOrgMembershipsUsernamePutBody $requestBody = null)
     {
         $this->org = $org;
         $this->username = $username;

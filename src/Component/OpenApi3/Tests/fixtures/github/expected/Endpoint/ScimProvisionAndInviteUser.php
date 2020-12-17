@@ -9,9 +9,9 @@ class ScimProvisionAndInviteUser extends \Github\Runtime\Client\BaseEndpoint imp
      * Provision organization membership for a user, and send an activation email to the email address.
      *
      * @param string $org 
-     * @param \Github\Model\ScimV2OrganizationsOrgUsersPostBody $requestBody 
+     * @param null|\Github\Model\ScimV2OrganizationsOrgUsersPostBody $requestBody 
      */
-    public function __construct(string $org, \Github\Model\ScimV2OrganizationsOrgUsersPostBody $requestBody)
+    public function __construct(string $org, ?\Github\Model\ScimV2OrganizationsOrgUsersPostBody $requestBody = null)
     {
         $this->org = $org;
         $this->body = $requestBody;

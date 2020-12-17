@@ -17,9 +17,9 @@ class PullsCreate extends \Github\Runtime\Client\BaseEndpoint implements \Github
     *
     * @param string $owner 
     * @param string $repo 
-    * @param \Github\Model\ReposOwnerRepoPullsPostBody $requestBody 
+    * @param null|\Github\Model\ReposOwnerRepoPullsPostBody $requestBody 
     */
-    public function __construct(string $owner, string $repo, \Github\Model\ReposOwnerRepoPullsPostBody $requestBody)
+    public function __construct(string $owner, string $repo, ?\Github\Model\ReposOwnerRepoPullsPostBody $requestBody = null)
     {
         $this->owner = $owner;
         $this->repo = $repo;

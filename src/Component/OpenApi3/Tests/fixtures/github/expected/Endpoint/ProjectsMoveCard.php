@@ -9,9 +9,9 @@ class ProjectsMoveCard extends \Github\Runtime\Client\BaseEndpoint implements \G
      * 
      *
      * @param int $cardId card_id parameter
-     * @param \Github\Model\ProjectsColumnsCardsCardIdMovesPostBody $requestBody 
+     * @param null|\Github\Model\ProjectsColumnsCardsCardIdMovesPostBody $requestBody 
      */
-    public function __construct(int $cardId, \Github\Model\ProjectsColumnsCardsCardIdMovesPostBody $requestBody)
+    public function __construct(int $cardId, ?\Github\Model\ProjectsColumnsCardsCardIdMovesPostBody $requestBody = null)
     {
         $this->card_id = $cardId;
         $this->body = $requestBody;

@@ -31,9 +31,9 @@ class PullsUpdateReviewComment extends \Github\Runtime\Client\BaseEndpoint imple
     * @param string $owner 
     * @param string $repo 
     * @param int $commentId comment_id parameter
-    * @param \Github\Model\ReposOwnerRepoPullsCommentsCommentIdPatchBody $requestBody 
+    * @param null|\Github\Model\ReposOwnerRepoPullsCommentsCommentIdPatchBody $requestBody 
     */
-    public function __construct(string $owner, string $repo, int $commentId, \Github\Model\ReposOwnerRepoPullsCommentsCommentIdPatchBody $requestBody)
+    public function __construct(string $owner, string $repo, int $commentId, ?\Github\Model\ReposOwnerRepoPullsCommentsCommentIdPatchBody $requestBody = null)
     {
         $this->owner = $owner;
         $this->repo = $repo;

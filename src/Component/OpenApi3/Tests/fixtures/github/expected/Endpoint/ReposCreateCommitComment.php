@@ -15,9 +15,9 @@ class ReposCreateCommitComment extends \Github\Runtime\Client\BaseEndpoint imple
     * @param string $owner 
     * @param string $repo 
     * @param string $commitSha commit_sha+ parameter
-    * @param \Github\Model\ReposOwnerRepoCommitsCommitShaCommentsPostBody $requestBody 
+    * @param null|\Github\Model\ReposOwnerRepoCommitsCommitShaCommentsPostBody $requestBody 
     */
-    public function __construct(string $owner, string $repo, string $commitSha, \Github\Model\ReposOwnerRepoCommitsCommitShaCommentsPostBody $requestBody)
+    public function __construct(string $owner, string $repo, string $commitSha, ?\Github\Model\ReposOwnerRepoCommitsCommitShaCommentsPostBody $requestBody = null)
     {
         $this->owner = $owner;
         $this->repo = $repo;

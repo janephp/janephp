@@ -18,9 +18,9 @@ class ReposCreateUsingTemplate extends \Github\Runtime\Client\BaseEndpoint imple
     *
     * @param string $templateOwner template_owner parameter
     * @param string $templateRepo template_repo parameter
-    * @param \Github\Model\ReposTemplateOwnerTemplateRepoGeneratePostBody $requestBody 
+    * @param null|\Github\Model\ReposTemplateOwnerTemplateRepoGeneratePostBody $requestBody 
     */
-    public function __construct(string $templateOwner, string $templateRepo, \Github\Model\ReposTemplateOwnerTemplateRepoGeneratePostBody $requestBody)
+    public function __construct(string $templateOwner, string $templateRepo, ?\Github\Model\ReposTemplateOwnerTemplateRepoGeneratePostBody $requestBody = null)
     {
         $this->template_owner = $templateOwner;
         $this->template_repo = $templateRepo;

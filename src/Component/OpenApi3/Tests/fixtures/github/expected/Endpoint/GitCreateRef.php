@@ -11,9 +11,9 @@ class GitCreateRef extends \Github\Runtime\Client\BaseEndpoint implements \Githu
      *
      * @param string $owner 
      * @param string $repo 
-     * @param \Github\Model\ReposOwnerRepoGitRefsPostBody $requestBody 
+     * @param null|\Github\Model\ReposOwnerRepoGitRefsPostBody $requestBody 
      */
-    public function __construct(string $owner, string $repo, \Github\Model\ReposOwnerRepoGitRefsPostBody $requestBody)
+    public function __construct(string $owner, string $repo, ?\Github\Model\ReposOwnerRepoGitRefsPostBody $requestBody = null)
     {
         $this->owner = $owner;
         $this->repo = $repo;

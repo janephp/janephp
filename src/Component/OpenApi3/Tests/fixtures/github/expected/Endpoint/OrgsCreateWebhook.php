@@ -9,9 +9,9 @@ class OrgsCreateWebhook extends \Github\Runtime\Client\BaseEndpoint implements \
      * Here's how you can create a hook that posts payloads in JSON format:
      *
      * @param string $org 
-     * @param \Github\Model\OrgsOrgHooksPostBody $requestBody 
+     * @param null|\Github\Model\OrgsOrgHooksPostBody $requestBody 
      */
-    public function __construct(string $org, \Github\Model\OrgsOrgHooksPostBody $requestBody)
+    public function __construct(string $org, ?\Github\Model\OrgsOrgHooksPostBody $requestBody = null)
     {
         $this->org = $org;
         $this->body = $requestBody;

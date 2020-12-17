@@ -11,9 +11,9 @@ class MigrationsStartImport extends \Github\Runtime\Client\BaseEndpoint implemen
      *
      * @param string $owner 
      * @param string $repo 
-     * @param \Github\Model\ReposOwnerRepoImportPutBody $requestBody 
+     * @param null|\Github\Model\ReposOwnerRepoImportPutBody $requestBody 
      */
-    public function __construct(string $owner, string $repo, \Github\Model\ReposOwnerRepoImportPutBody $requestBody)
+    public function __construct(string $owner, string $repo, ?\Github\Model\ReposOwnerRepoImportPutBody $requestBody = null)
     {
         $this->owner = $owner;
         $this->repo = $repo;

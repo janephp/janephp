@@ -11,9 +11,9 @@ class AppsCreateInstallationAccessToken extends \Github\Runtime\Client\BaseEndpo
     You must use a [JWT](https://developer.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
     *
     * @param int $installationId installation_id parameter
-    * @param \Github\Model\AppInstallationsInstallationIdAccessTokensPostBody $requestBody 
+    * @param null|\Github\Model\AppInstallationsInstallationIdAccessTokensPostBody $requestBody 
     */
-    public function __construct(int $installationId, \Github\Model\AppInstallationsInstallationIdAccessTokensPostBody $requestBody)
+    public function __construct(int $installationId, ?\Github\Model\AppInstallationsInstallationIdAccessTokensPostBody $requestBody = null)
     {
         $this->installation_id = $installationId;
         $this->body = $requestBody;

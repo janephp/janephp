@@ -13,9 +13,9 @@ class PullsMerge extends \Github\Runtime\Client\BaseEndpoint implements \Github\
      * @param string $owner 
      * @param string $repo 
      * @param int $pullNumber 
-     * @param \Github\Model\ReposOwnerRepoPullsPullNumberMergePutBody $requestBody 
+     * @param null|\Github\Model\ReposOwnerRepoPullsPullNumberMergePutBody $requestBody 
      */
-    public function __construct(string $owner, string $repo, int $pullNumber, \Github\Model\ReposOwnerRepoPullsPullNumberMergePutBody $requestBody)
+    public function __construct(string $owner, string $repo, int $pullNumber, ?\Github\Model\ReposOwnerRepoPullsPullNumberMergePutBody $requestBody = null)
     {
         $this->owner = $owner;
         $this->repo = $repo;

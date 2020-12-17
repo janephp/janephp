@@ -13,9 +13,9 @@ class IssuesAddLabels extends \Github\Runtime\Client\BaseEndpoint implements \Gi
      * @param string $owner 
      * @param string $repo 
      * @param int $issueNumber issue_number parameter
-     * @param \Github\Model\ReposOwnerRepoIssuesIssueNumberLabelsPostBody $requestBody 
+     * @param null|\Github\Model\ReposOwnerRepoIssuesIssueNumberLabelsPostBody $requestBody 
      */
-    public function __construct(string $owner, string $repo, int $issueNumber, \Github\Model\ReposOwnerRepoIssuesIssueNumberLabelsPostBody $requestBody)
+    public function __construct(string $owner, string $repo, int $issueNumber, ?\Github\Model\ReposOwnerRepoIssuesIssueNumberLabelsPostBody $requestBody = null)
     {
         $this->owner = $owner;
         $this->repo = $repo;

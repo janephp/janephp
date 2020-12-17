@@ -7,9 +7,9 @@ class PostBookCollection extends \ApiPlatform\Demo\Runtime\Client\BaseEndpoint i
     /**
      * 
      *
-     * @param \stdClass|\ApiPlatform\Demo\Model\Book $requestBody 
+     * @param null|\stdClass|\ApiPlatform\Demo\Model\Book $requestBody 
      */
-    public function __construct($requestBody)
+    public function __construct($requestBody = null)
     {
         $this->body = $requestBody;
     }

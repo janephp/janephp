@@ -11,9 +11,9 @@ class ActivitySetRepoSubscription extends \Github\Runtime\Client\BaseEndpoint im
      *
      * @param string $owner 
      * @param string $repo 
-     * @param \Github\Model\ReposOwnerRepoSubscriptionPutBody $requestBody 
+     * @param null|\Github\Model\ReposOwnerRepoSubscriptionPutBody $requestBody 
      */
-    public function __construct(string $owner, string $repo, \Github\Model\ReposOwnerRepoSubscriptionPutBody $requestBody)
+    public function __construct(string $owner, string $repo, ?\Github\Model\ReposOwnerRepoSubscriptionPutBody $requestBody = null)
     {
         $this->owner = $owner;
         $this->repo = $repo;

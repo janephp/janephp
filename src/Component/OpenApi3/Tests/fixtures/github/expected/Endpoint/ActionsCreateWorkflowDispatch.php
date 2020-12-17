@@ -17,9 +17,9 @@ class ActionsCreateWorkflowDispatch extends \Github\Runtime\Client\BaseEndpoint 
     * @param string $owner 
     * @param string $repo 
     * @param int $workflowId 
-    * @param \Github\Model\ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody $requestBody 
+    * @param null|\Github\Model\ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody $requestBody 
     */
-    public function __construct(string $owner, string $repo, int $workflowId, \Github\Model\ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody $requestBody)
+    public function __construct(string $owner, string $repo, int $workflowId, ?\Github\Model\ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody $requestBody = null)
     {
         $this->owner = $owner;
         $this->repo = $repo;

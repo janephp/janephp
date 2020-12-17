@@ -9,12 +9,12 @@ class UpdatePortfolioDetails extends \CreditSafe\API\Runtime\Client\BaseEndpoint
      * Update Portfolio details such as Name, email reciepients, language and subject line.
      *
      * @param string $portfolioId The unique identifier of the portfolio, obtained from `/portfolios`.
-     * @param \CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdPatchBody $requestBody 
+     * @param null|\CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdPatchBody $requestBody 
      * @param array $headerParameters {
      *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * }
      */
-    public function __construct(string $portfolioId, \CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdPatchBody $requestBody, array $headerParameters = array())
+    public function __construct(string $portfolioId, ?\CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdPatchBody $requestBody = null, array $headerParameters = array())
     {
         $this->portfolioId = $portfolioId;
         $this->body = $requestBody;

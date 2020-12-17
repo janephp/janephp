@@ -13,9 +13,9 @@ class TeamsAddOrUpdateProjectPermissionsLegacy extends \Github\Runtime\Client\Ba
     *
     * @param int $teamId 
     * @param int $projectId 
-    * @param \Github\Model\TeamsTeamIdProjectsProjectIdPutBody $requestBody 
+    * @param null|\Github\Model\TeamsTeamIdProjectsProjectIdPutBody $requestBody 
     */
-    public function __construct(int $teamId, int $projectId, \Github\Model\TeamsTeamIdProjectsProjectIdPutBody $requestBody)
+    public function __construct(int $teamId, int $projectId, ?\Github\Model\TeamsTeamIdProjectsProjectIdPutBody $requestBody = null)
     {
         $this->team_id = $teamId;
         $this->project_id = $projectId;

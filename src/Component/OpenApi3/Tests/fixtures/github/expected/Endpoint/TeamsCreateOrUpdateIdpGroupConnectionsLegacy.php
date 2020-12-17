@@ -13,9 +13,9 @@ class TeamsCreateOrUpdateIdpGroupConnectionsLegacy extends \Github\Runtime\Clien
     Creates, updates, or removes a connection between a team and an IdP group. When adding groups to a team, you must include all new and existing groups to avoid replacing existing groups with the new ones. Specifying an empty `groups` array will remove all connections for a team.
     *
     * @param int $teamId 
-    * @param \Github\Model\TeamsTeamIdTeamSyncGroupMappingsPatchBody $requestBody 
+    * @param null|\Github\Model\TeamsTeamIdTeamSyncGroupMappingsPatchBody $requestBody 
     */
-    public function __construct(int $teamId, \Github\Model\TeamsTeamIdTeamSyncGroupMappingsPatchBody $requestBody)
+    public function __construct(int $teamId, ?\Github\Model\TeamsTeamIdTeamSyncGroupMappingsPatchBody $requestBody = null)
     {
         $this->team_id = $teamId;
         $this->body = $requestBody;

@@ -9,9 +9,9 @@ class PatchParchmentItem extends \ApiPlatform\Demo\Runtime\Client\BaseEndpoint i
      * 
      *
      * @param string $id 
-     * @param \ApiPlatform\Demo\Model\Parchment $requestBody 
+     * @param null|\ApiPlatform\Demo\Model\Parchment $requestBody 
      */
-    public function __construct(string $id, \ApiPlatform\Demo\Model\Parchment $requestBody)
+    public function __construct(string $id, ?\ApiPlatform\Demo\Model\Parchment $requestBody = null)
     {
         $this->id = $id;
         $this->body = $requestBody;

@@ -15,9 +15,9 @@ class IssuesLock extends \Github\Runtime\Client\BaseEndpoint implements \Github\
     * @param string $owner 
     * @param string $repo 
     * @param int $issueNumber issue_number parameter
-    * @param \Github\Model\ReposOwnerRepoIssuesIssueNumberLockPutBody $requestBody 
+    * @param null|\Github\Model\ReposOwnerRepoIssuesIssueNumberLockPutBody $requestBody 
     */
-    public function __construct(string $owner, string $repo, int $issueNumber, \Github\Model\ReposOwnerRepoIssuesIssueNumberLockPutBody $requestBody)
+    public function __construct(string $owner, string $repo, int $issueNumber, ?\Github\Model\ReposOwnerRepoIssuesIssueNumberLockPutBody $requestBody = null)
     {
         $this->owner = $owner;
         $this->repo = $repo;

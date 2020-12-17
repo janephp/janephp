@@ -15,9 +15,9 @@ class ScimSetInformationForProvisionedUser extends \Github\Runtime\Client\BaseEn
     *
     * @param string $org 
     * @param string $scimUserId scim_user_id parameter
-    * @param \Github\Model\ScimV2OrganizationsOrgUsersScimUserIdPutBody $requestBody 
+    * @param null|\Github\Model\ScimV2OrganizationsOrgUsersScimUserIdPutBody $requestBody 
     */
-    public function __construct(string $org, string $scimUserId, \Github\Model\ScimV2OrganizationsOrgUsersScimUserIdPutBody $requestBody)
+    public function __construct(string $org, string $scimUserId, ?\Github\Model\ScimV2OrganizationsOrgUsersScimUserIdPutBody $requestBody = null)
     {
         $this->org = $org;
         $this->scim_user_id = $scimUserId;

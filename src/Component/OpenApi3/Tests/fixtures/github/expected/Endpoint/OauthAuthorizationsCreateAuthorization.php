@@ -17,9 +17,9 @@ class OauthAuthorizationsCreateAuthorization extends \Github\Runtime\Client\Base
     
     Organizations that enforce SAML SSO require personal access tokens to be allowed. Read more about allowing tokens in [the GitHub Help documentation](https://help.github.com/articles/about-identity-and-access-management-with-saml-single-sign-on).
     *
-    * @param \Github\Model\AuthorizationsPostBody $requestBody 
+    * @param null|\Github\Model\AuthorizationsPostBody $requestBody 
     */
-    public function __construct(\Github\Model\AuthorizationsPostBody $requestBody)
+    public function __construct(?\Github\Model\AuthorizationsPostBody $requestBody = null)
     {
         $this->body = $requestBody;
     }

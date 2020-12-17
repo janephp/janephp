@@ -13,9 +13,9 @@ class PullsRequestReviewers extends \Github\Runtime\Client\BaseEndpoint implemen
      * @param string $owner 
      * @param string $repo 
      * @param int $pullNumber 
-     * @param \Github\Model\ReposOwnerRepoPullsPullNumberRequestedReviewersPostBody $requestBody 
+     * @param null|\Github\Model\ReposOwnerRepoPullsPullNumberRequestedReviewersPostBody $requestBody 
      */
-    public function __construct(string $owner, string $repo, int $pullNumber, \Github\Model\ReposOwnerRepoPullsPullNumberRequestedReviewersPostBody $requestBody)
+    public function __construct(string $owner, string $repo, int $pullNumber, ?\Github\Model\ReposOwnerRepoPullsPullNumberRequestedReviewersPostBody $requestBody = null)
     {
         $this->owner = $owner;
         $this->repo = $repo;

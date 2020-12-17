@@ -14,9 +14,9 @@ class TeamsAddOrUpdateProjectPermissionsInOrg extends \Github\Runtime\Client\Bas
      * @param string $org 
      * @param string $teamSlug team_slug parameter
      * @param int $projectId 
-     * @param \Github\Model\OrgsOrgTeamsTeamSlugProjectsProjectIdPutBody $requestBody 
+     * @param null|\Github\Model\OrgsOrgTeamsTeamSlugProjectsProjectIdPutBody $requestBody 
      */
-    public function __construct(string $org, string $teamSlug, int $projectId, \Github\Model\OrgsOrgTeamsTeamSlugProjectsProjectIdPutBody $requestBody)
+    public function __construct(string $org, string $teamSlug, int $projectId, ?\Github\Model\OrgsOrgTeamsTeamSlugProjectsProjectIdPutBody $requestBody = null)
     {
         $this->org = $org;
         $this->team_slug = $teamSlug;

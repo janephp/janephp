@@ -7,9 +7,9 @@ class PostMessageM700 extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Cl
     /**
      * 
      *
-     * @param \Jane\Component\OpenApi3\Tests\Expected\Model\MessageM700PostBody $requestBody 
+     * @param null|\Jane\Component\OpenApi3\Tests\Expected\Model\MessageM700PostBody $requestBody 
      */
-    public function __construct(\Jane\Component\OpenApi3\Tests\Expected\Model\MessageM700PostBody $requestBody)
+    public function __construct(?\Jane\Component\OpenApi3\Tests\Expected\Model\MessageM700PostBody $requestBody = null)
     {
         $this->body = $requestBody;
     }

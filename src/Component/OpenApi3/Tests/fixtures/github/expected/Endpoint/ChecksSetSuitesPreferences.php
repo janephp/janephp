@@ -11,9 +11,9 @@ class ChecksSetSuitesPreferences extends \Github\Runtime\Client\BaseEndpoint imp
      *
      * @param string $owner 
      * @param string $repo 
-     * @param \Github\Model\ReposOwnerRepoCheckSuitesPreferencesPatchBody $requestBody 
+     * @param null|\Github\Model\ReposOwnerRepoCheckSuitesPreferencesPatchBody $requestBody 
      */
-    public function __construct(string $owner, string $repo, \Github\Model\ReposOwnerRepoCheckSuitesPreferencesPatchBody $requestBody)
+    public function __construct(string $owner, string $repo, ?\Github\Model\ReposOwnerRepoCheckSuitesPreferencesPatchBody $requestBody = null)
     {
         $this->owner = $owner;
         $this->repo = $repo;

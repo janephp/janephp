@@ -13,9 +13,9 @@ class IssuesUpdateMilestone extends \Github\Runtime\Client\BaseEndpoint implemen
      * @param string $owner 
      * @param string $repo 
      * @param int $milestoneNumber milestone_number parameter
-     * @param \Github\Model\ReposOwnerRepoMilestonesMilestoneNumberPatchBody $requestBody 
+     * @param null|\Github\Model\ReposOwnerRepoMilestonesMilestoneNumberPatchBody $requestBody 
      */
-    public function __construct(string $owner, string $repo, int $milestoneNumber, \Github\Model\ReposOwnerRepoMilestonesMilestoneNumberPatchBody $requestBody)
+    public function __construct(string $owner, string $repo, int $milestoneNumber, ?\Github\Model\ReposOwnerRepoMilestonesMilestoneNumberPatchBody $requestBody = null)
     {
         $this->owner = $owner;
         $this->repo = $repo;

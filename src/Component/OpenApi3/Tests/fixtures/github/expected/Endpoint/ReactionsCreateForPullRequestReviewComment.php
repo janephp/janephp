@@ -13,9 +13,9 @@ class ReactionsCreateForPullRequestReviewComment extends \Github\Runtime\Client\
      * @param string $owner 
      * @param string $repo 
      * @param int $commentId comment_id parameter
-     * @param \Github\Model\ReposOwnerRepoPullsCommentsCommentIdReactionsPostBody $requestBody 
+     * @param null|\Github\Model\ReposOwnerRepoPullsCommentsCommentIdReactionsPostBody $requestBody 
      */
-    public function __construct(string $owner, string $repo, int $commentId, \Github\Model\ReposOwnerRepoPullsCommentsCommentIdReactionsPostBody $requestBody)
+    public function __construct(string $owner, string $repo, int $commentId, ?\Github\Model\ReposOwnerRepoPullsCommentsCommentIdReactionsPostBody $requestBody = null)
     {
         $this->owner = $owner;
         $this->repo = $repo;

@@ -26,9 +26,9 @@ class ScimUpdateAttributeForUser extends \Github\Runtime\Client\BaseEndpoint imp
     *
     * @param string $org 
     * @param string $scimUserId scim_user_id parameter
-    * @param \Github\Model\ScimV2OrganizationsOrgUsersScimUserIdPatchBody $requestBody 
+    * @param null|\Github\Model\ScimV2OrganizationsOrgUsersScimUserIdPatchBody $requestBody 
     */
-    public function __construct(string $org, string $scimUserId, \Github\Model\ScimV2OrganizationsOrgUsersScimUserIdPatchBody $requestBody)
+    public function __construct(string $org, string $scimUserId, ?\Github\Model\ScimV2OrganizationsOrgUsersScimUserIdPatchBody $requestBody = null)
     {
         $this->org = $org;
         $this->scim_user_id = $scimUserId;

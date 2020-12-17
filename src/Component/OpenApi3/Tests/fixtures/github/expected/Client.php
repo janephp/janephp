@@ -34,14 +34,14 @@ class Client extends \Github\Runtime\Client\Client
     *   `repo` scope to create a private repository
     *
     * @param string $org 
-    * @param \Github\Model\OrgsOrgReposPostBody $requestBody 
+    * @param null|\Github\Model\OrgsOrgReposPostBody $requestBody 
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Github\Exception\ReposCreateInOrgForbiddenException
     * @throws \Github\Exception\ReposCreateInOrgUnprocessableEntityException
     *
     * @return null|\Github\Model\Repository|\Psr\Http\Message\ResponseInterface
     */
-    public function reposCreateInOrg(string $org, \Github\Model\OrgsOrgReposPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function reposCreateInOrg(string $org, ?\Github\Model\OrgsOrgReposPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ReposCreateInOrg($org, $requestBody), $fetch);
     }
@@ -57,13 +57,13 @@ class Client extends \Github\Runtime\Client\Client
     * @param string $owner 
     * @param string $repo 
     * @param string $branch branch+ parameter
-    * @param array[] $requestBody 
+    * @param null|array[] $requestBody 
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Github\Exception\ReposRemoveTeamAccessRestrictionsUnprocessableEntityException
     *
     * @return null|\Github\Model\Team[]|\Psr\Http\Message\ResponseInterface
     */
-    public function reposRemoveTeamAccessRestrictions(string $owner, string $repo, string $branch, array $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function reposRemoveTeamAccessRestrictions(string $owner, string $repo, string $branch, ?array $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ReposRemoveTeamAccessRestrictions($owner, $repo, $branch, $requestBody), $fetch);
     }
@@ -96,13 +96,13 @@ class Client extends \Github\Runtime\Client\Client
     * @param string $owner 
     * @param string $repo 
     * @param string $branch branch+ parameter
-    * @param array[] $requestBody 
+    * @param null|array[] $requestBody 
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Github\Exception\ReposAddTeamAccessRestrictionsUnprocessableEntityException
     *
     * @return null|\Github\Model\Team[]|\Psr\Http\Message\ResponseInterface
     */
-    public function reposAddTeamAccessRestrictions(string $owner, string $repo, string $branch, array $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function reposAddTeamAccessRestrictions(string $owner, string $repo, string $branch, ?array $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ReposAddTeamAccessRestrictions($owner, $repo, $branch, $requestBody), $fetch);
     }
@@ -118,13 +118,13 @@ class Client extends \Github\Runtime\Client\Client
     * @param string $owner 
     * @param string $repo 
     * @param string $branch branch+ parameter
-    * @param array[] $requestBody 
+    * @param null|array[] $requestBody 
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Github\Exception\ReposSetTeamAccessRestrictionsUnprocessableEntityException
     *
     * @return null|\Github\Model\Team[]|\Psr\Http\Message\ResponseInterface
     */
-    public function reposSetTeamAccessRestrictions(string $owner, string $repo, string $branch, array $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function reposSetTeamAccessRestrictions(string $owner, string $repo, string $branch, ?array $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ReposSetTeamAccessRestrictions($owner, $repo, $branch, $requestBody), $fetch);
     }
@@ -234,12 +234,12 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner 
      * @param string $repo 
      * @param int $assetId asset_id parameter
-     * @param \Github\Model\ReposOwnerRepoReleasesAssetsAssetIdPatchBody $requestBody 
+     * @param null|\Github\Model\ReposOwnerRepoReleasesAssetsAssetIdPatchBody $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\ReleaseAsset|\Psr\Http\Message\ResponseInterface
      */
-    public function reposUpdateReleaseAsset(string $owner, string $repo, int $assetId, \Github\Model\ReposOwnerRepoReleasesAssetsAssetIdPatchBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function reposUpdateReleaseAsset(string $owner, string $repo, int $assetId, ?\Github\Model\ReposOwnerRepoReleasesAssetsAssetIdPatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ReposUpdateReleaseAsset($owner, $repo, $assetId, $requestBody), $fetch);
     }
@@ -249,14 +249,14 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner 
      * @param string $repo 
      * @param string $branch branch+ parameter
-     * @param array[] $requestBody 
+     * @param null|array[] $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposRemoveStatusCheckContextsNotFoundException
      * @throws \Github\Exception\ReposRemoveStatusCheckContextsUnprocessableEntityException
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function reposRemoveStatusCheckContexts(string $owner, string $repo, string $branch, array $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function reposRemoveStatusCheckContexts(string $owner, string $repo, string $branch, ?array $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ReposRemoveStatusCheckContexts($owner, $repo, $branch, $requestBody), $fetch);
     }
@@ -281,7 +281,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner 
      * @param string $repo 
      * @param string $branch branch+ parameter
-     * @param array[] $requestBody 
+     * @param null|array[] $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposAddStatusCheckContextsUnprocessableEntityException
      * @throws \Github\Exception\ReposAddStatusCheckContextsForbiddenException
@@ -289,7 +289,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function reposAddStatusCheckContexts(string $owner, string $repo, string $branch, array $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function reposAddStatusCheckContexts(string $owner, string $repo, string $branch, ?array $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ReposAddStatusCheckContexts($owner, $repo, $branch, $requestBody), $fetch);
     }
@@ -299,14 +299,14 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner 
      * @param string $repo 
      * @param string $branch branch+ parameter
-     * @param array[] $requestBody 
+     * @param null|array[] $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposSetStatusCheckContextsUnprocessableEntityException
      * @throws \Github\Exception\ReposSetStatusCheckContextsNotFoundException
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function reposSetStatusCheckContexts(string $owner, string $repo, string $branch, array $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function reposSetStatusCheckContexts(string $owner, string $repo, string $branch, ?array $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ReposSetStatusCheckContexts($owner, $repo, $branch, $requestBody), $fetch);
     }
@@ -322,7 +322,7 @@ class Client extends \Github\Runtime\Client\Client
     * @param string $owner 
     * @param string $repo 
     * @param string $path path+ parameter
-    * @param \Github\Model\ReposOwnerRepoContentsPathDeleteBody $requestBody 
+    * @param null|\Github\Model\ReposOwnerRepoContentsPathDeleteBody $requestBody 
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Github\Exception\ReposDeleteFileUnprocessableEntityException
     * @throws \Github\Exception\ReposDeleteFileNotFoundException
@@ -331,7 +331,7 @@ class Client extends \Github\Runtime\Client\Client
     *
     * @return null|\Github\Model\FileCommit|\Psr\Http\Message\ResponseInterface
     */
-    public function reposDeleteFile(string $owner, string $repo, string $path, \Github\Model\ReposOwnerRepoContentsPathDeleteBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function reposDeleteFile(string $owner, string $repo, string $path, ?\Github\Model\ReposOwnerRepoContentsPathDeleteBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ReposDeleteFile($owner, $repo, $path, $requestBody), $fetch);
     }
@@ -391,7 +391,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner 
      * @param string $repo 
      * @param string $path path+ parameter
-     * @param \Github\Model\ReposOwnerRepoContentsPathPutBody $requestBody 
+     * @param null|\Github\Model\ReposOwnerRepoContentsPathPutBody $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposCreateOrUpdateFileContentsNotFoundException
      * @throws \Github\Exception\ReposCreateOrUpdateFileContentsUnprocessableEntityException
@@ -399,7 +399,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\FileCommit|\Psr\Http\Message\ResponseInterface
      */
-    public function reposCreateOrUpdateFileContents(string $owner, string $repo, string $path, \Github\Model\ReposOwnerRepoContentsPathPutBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function reposCreateOrUpdateFileContents(string $owner, string $repo, string $path, ?\Github\Model\ReposOwnerRepoContentsPathPutBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ReposCreateOrUpdateFileContents($owner, $repo, $path, $requestBody), $fetch);
     }
@@ -423,7 +423,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @param string $owner 
      * @param string $repo 
-     * @param \Github\Model\ReposOwnerRepoTopicsPutBody $requestBody 
+     * @param null|\Github\Model\ReposOwnerRepoTopicsPutBody $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposReplaceAllTopicsUnsupportedMediaTypeException
      * @throws \Github\Exception\ReposReplaceAllTopicsNotFoundException
@@ -431,7 +431,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\Topic|\Psr\Http\Message\ResponseInterface
      */
-    public function reposReplaceAllTopics(string $owner, string $repo, \Github\Model\ReposOwnerRepoTopicsPutBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function reposReplaceAllTopics(string $owner, string $repo, ?\Github\Model\ReposOwnerRepoTopicsPutBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ReposReplaceAllTopics($owner, $repo, $requestBody), $fetch);
     }
@@ -545,14 +545,14 @@ class Client extends \Github\Runtime\Client\Client
     *
     * @param string $owner 
     * @param string $repo 
-    * @param \Github\Model\ReposOwnerRepoDeploymentsPostBody $requestBody 
+    * @param null|\Github\Model\ReposOwnerRepoDeploymentsPostBody $requestBody 
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Github\Exception\ReposCreateDeploymentConflictException
     * @throws \Github\Exception\ReposCreateDeploymentUnprocessableEntityException
     *
     * @return null|\Github\Model\Deployment|\Github\Model\ReposOwnerRepoDeploymentsPostResponse202|\Psr\Http\Message\ResponseInterface
     */
-    public function reposCreateDeployment(string $owner, string $repo, \Github\Model\ReposOwnerRepoDeploymentsPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function reposCreateDeployment(string $owner, string $repo, ?\Github\Model\ReposOwnerRepoDeploymentsPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ReposCreateDeployment($owner, $repo, $requestBody), $fetch);
     }
@@ -604,7 +604,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @param string $owner 
      * @param string $repo 
-     * @param \Github\Model\ReposOwnerRepoPagesPostBody $requestBody 
+     * @param null|\Github\Model\ReposOwnerRepoPagesPostBody $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposCreatePagesSiteUnprocessableEntityException
      * @throws \Github\Exception\ReposCreatePagesSiteUnsupportedMediaTypeException
@@ -612,7 +612,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\Page|\Psr\Http\Message\ResponseInterface
      */
-    public function reposCreatePagesSite(string $owner, string $repo, \Github\Model\ReposOwnerRepoPagesPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function reposCreatePagesSite(string $owner, string $repo, ?\Github\Model\ReposOwnerRepoPagesPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ReposCreatePagesSite($owner, $repo, $requestBody), $fetch);
     }
@@ -621,14 +621,14 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @param string $owner 
      * @param string $repo 
-     * @param \Github\Model\ReposOwnerRepoPagesPutBody $requestBody 
+     * @param null|\Github\Model\ReposOwnerRepoPagesPutBody $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposUpdateInformationAboutPagesSiteUnprocessableEntityException
      * @throws \Github\Exception\ReposUpdateInformationAboutPagesSiteBadRequestException
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function reposUpdateInformationAboutPagesSite(string $owner, string $repo, \Github\Model\ReposOwnerRepoPagesPutBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function reposUpdateInformationAboutPagesSite(string $owner, string $repo, ?\Github\Model\ReposOwnerRepoPagesPutBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ReposUpdateInformationAboutPagesSite($owner, $repo, $requestBody), $fetch);
     }
@@ -671,13 +671,13 @@ class Client extends \Github\Runtime\Client\Client
     * @param string $owner 
     * @param string $repo 
     * @param string $branch branch+ parameter
-    * @param \Github\Model\ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBody $requestBody 
+    * @param null|\Github\Model\ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBody $requestBody 
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Github\Exception\ReposUpdatePullRequestReviewProtectionUnprocessableEntityException
     *
     * @return null|\Github\Model\ProtectedBranchPullRequestReview|\Psr\Http\Message\ResponseInterface
     */
-    public function reposUpdatePullRequestReviewProtection(string $owner, string $repo, string $branch, \Github\Model\ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function reposUpdatePullRequestReviewProtection(string $owner, string $repo, string $branch, ?\Github\Model\ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ReposUpdatePullRequestReviewProtection($owner, $repo, $branch, $requestBody), $fetch);
     }
@@ -938,13 +938,13 @@ class Client extends \Github\Runtime\Client\Client
     * @param string $owner 
     * @param string $repo 
     * @param string $branch branch+ parameter
-    * @param array[] $requestBody 
+    * @param null|array[] $requestBody 
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Github\Exception\ReposRemoveUserAccessRestrictionsUnprocessableEntityException
     *
     * @return null|\Github\Model\SimpleUser[]|\Psr\Http\Message\ResponseInterface
     */
-    public function reposRemoveUserAccessRestrictions(string $owner, string $repo, string $branch, array $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function reposRemoveUserAccessRestrictions(string $owner, string $repo, string $branch, ?array $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ReposRemoveUserAccessRestrictions($owner, $repo, $branch, $requestBody), $fetch);
     }
@@ -977,13 +977,13 @@ class Client extends \Github\Runtime\Client\Client
     * @param string $owner 
     * @param string $repo 
     * @param string $branch branch+ parameter
-    * @param array[] $requestBody 
+    * @param null|array[] $requestBody 
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Github\Exception\ReposAddUserAccessRestrictionsUnprocessableEntityException
     *
     * @return null|\Github\Model\SimpleUser[]|\Psr\Http\Message\ResponseInterface
     */
-    public function reposAddUserAccessRestrictions(string $owner, string $repo, string $branch, array $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function reposAddUserAccessRestrictions(string $owner, string $repo, string $branch, ?array $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ReposAddUserAccessRestrictions($owner, $repo, $branch, $requestBody), $fetch);
     }
@@ -999,13 +999,13 @@ class Client extends \Github\Runtime\Client\Client
     * @param string $owner 
     * @param string $repo 
     * @param string $branch branch+ parameter
-    * @param array[] $requestBody 
+    * @param null|array[] $requestBody 
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Github\Exception\ReposSetUserAccessRestrictionsUnprocessableEntityException
     *
     * @return null|\Github\Model\SimpleUser[]|\Psr\Http\Message\ResponseInterface
     */
-    public function reposSetUserAccessRestrictions(string $owner, string $repo, string $branch, array $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function reposSetUserAccessRestrictions(string $owner, string $repo, string $branch, ?array $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ReposSetUserAccessRestrictions($owner, $repo, $branch, $requestBody), $fetch);
     }
@@ -1103,13 +1103,13 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @param string $owner 
      * @param string $repo 
-     * @param \Github\Model\ReposOwnerRepoKeysPostBody $requestBody 
+     * @param null|\Github\Model\ReposOwnerRepoKeysPostBody $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposCreateDeployKeyUnprocessableEntityException
      *
      * @return null|\Github\Model\DeployKey|\Psr\Http\Message\ResponseInterface
      */
-    public function reposCreateDeployKey(string $owner, string $repo, \Github\Model\ReposOwnerRepoKeysPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function reposCreateDeployKey(string $owner, string $repo, ?\Github\Model\ReposOwnerRepoKeysPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ReposCreateDeployKey($owner, $repo, $requestBody), $fetch);
     }
@@ -1180,14 +1180,14 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner 
      * @param string $repo 
      * @param int $hookId 
-     * @param \Github\Model\ReposOwnerRepoHooksHookIdPatchBody $requestBody 
+     * @param null|\Github\Model\ReposOwnerRepoHooksHookIdPatchBody $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposUpdateWebhookUnprocessableEntityException
      * @throws \Github\Exception\ReposUpdateWebhookNotFoundException
      *
      * @return null|\Github\Model\Hook|\Psr\Http\Message\ResponseInterface
      */
-    public function reposUpdateWebhook(string $owner, string $repo, int $hookId, \Github\Model\ReposOwnerRepoHooksHookIdPatchBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function reposUpdateWebhook(string $owner, string $repo, int $hookId, ?\Github\Model\ReposOwnerRepoHooksHookIdPatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ReposUpdateWebhook($owner, $repo, $hookId, $requestBody), $fetch);
     }
@@ -1218,13 +1218,13 @@ class Client extends \Github\Runtime\Client\Client
     *
     * @param string $owner 
     * @param string $repo 
-    * @param \Github\Model\ReposOwnerRepoReleasesPostBody $requestBody 
+    * @param null|\Github\Model\ReposOwnerRepoReleasesPostBody $requestBody 
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Github\Exception\ReposCreateReleaseUnprocessableEntityException
     *
     * @return null|\Github\Model\Release|\Psr\Http\Message\ResponseInterface
     */
-    public function reposCreateRelease(string $owner, string $repo, \Github\Model\ReposOwnerRepoReleasesPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function reposCreateRelease(string $owner, string $repo, ?\Github\Model\ReposOwnerRepoReleasesPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ReposCreateRelease($owner, $repo, $requestBody), $fetch);
     }
@@ -1240,12 +1240,12 @@ class Client extends \Github\Runtime\Client\Client
     *
     * @param string $templateOwner template_owner parameter
     * @param string $templateRepo template_repo parameter
-    * @param \Github\Model\ReposTemplateOwnerTemplateRepoGeneratePostBody $requestBody 
+    * @param null|\Github\Model\ReposTemplateOwnerTemplateRepoGeneratePostBody $requestBody 
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     *
     * @return null|\Github\Model\Repository|\Psr\Http\Message\ResponseInterface
     */
-    public function reposCreateUsingTemplate(string $templateOwner, string $templateRepo, \Github\Model\ReposTemplateOwnerTemplateRepoGeneratePostBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function reposCreateUsingTemplate(string $templateOwner, string $templateRepo, ?\Github\Model\ReposTemplateOwnerTemplateRepoGeneratePostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ReposCreateUsingTemplate($templateOwner, $templateRepo, $requestBody), $fetch);
     }
@@ -1305,14 +1305,14 @@ class Client extends \Github\Runtime\Client\Client
     * @param string $owner 
     * @param string $repo 
     * @param string $branch branch+ parameter
-    * @param \Github\Model\ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBody $requestBody 
+    * @param null|\Github\Model\ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBody $requestBody 
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Github\Exception\ReposUpdateStatusCheckProtectionNotFoundException
     * @throws \Github\Exception\ReposUpdateStatusCheckProtectionUnprocessableEntityException
     *
     * @return null|\Github\Model\StatusCheckPolicy|\Psr\Http\Message\ResponseInterface
     */
-    public function reposUpdateStatusCheckProtection(string $owner, string $repo, string $branch, \Github\Model\ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function reposUpdateStatusCheckProtection(string $owner, string $repo, string $branch, ?\Github\Model\ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ReposUpdateStatusCheckProtection($owner, $repo, $branch, $requestBody), $fetch);
     }
@@ -1356,7 +1356,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @param string $owner 
      * @param string $repo 
-     * @param \Github\Model\ReposOwnerRepoPatchBody $requestBody 
+     * @param null|\Github\Model\ReposOwnerRepoPatchBody $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposUpdateForbiddenException
      * @throws \Github\Exception\ReposUpdateUnprocessableEntityException
@@ -1364,7 +1364,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\FullRepository|\Psr\Http\Message\ResponseInterface
      */
-    public function reposUpdate(string $owner, string $repo, \Github\Model\ReposOwnerRepoPatchBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function reposUpdate(string $owner, string $repo, ?\Github\Model\ReposOwnerRepoPatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ReposUpdate($owner, $repo, $requestBody), $fetch);
     }
@@ -1467,12 +1467,12 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner 
      * @param string $repo 
      * @param int $releaseId release_id parameter
-     * @param \Github\Model\ReposOwnerRepoReleasesReleaseIdPatchBody $requestBody 
+     * @param null|\Github\Model\ReposOwnerRepoReleasesReleaseIdPatchBody $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\Release|\Psr\Http\Message\ResponseInterface
      */
-    public function reposUpdateRelease(string $owner, string $repo, int $releaseId, \Github\Model\ReposOwnerRepoReleasesReleaseIdPatchBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function reposUpdateRelease(string $owner, string $repo, int $releaseId, ?\Github\Model\ReposOwnerRepoReleasesReleaseIdPatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ReposUpdateRelease($owner, $repo, $releaseId, $requestBody), $fetch);
     }
@@ -1518,7 +1518,7 @@ class Client extends \Github\Runtime\Client\Client
     * @param string $owner 
     * @param string $repo 
     * @param string $branch branch+ parameter
-    * @param \Github\Model\ReposOwnerRepoBranchesBranchProtectionPutBody $requestBody 
+    * @param null|\Github\Model\ReposOwnerRepoBranchesBranchProtectionPutBody $requestBody 
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Github\Exception\ReposUpdateBranchProtectionForbiddenException
     * @throws \Github\Exception\ReposUpdateBranchProtectionUnsupportedMediaTypeException
@@ -1527,7 +1527,7 @@ class Client extends \Github\Runtime\Client\Client
     *
     * @return null|\Github\Model\ProtectedBranch|\Psr\Http\Message\ResponseInterface
     */
-    public function reposUpdateBranchProtection(string $owner, string $repo, string $branch, \Github\Model\ReposOwnerRepoBranchesBranchProtectionPutBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function reposUpdateBranchProtection(string $owner, string $repo, string $branch, ?\Github\Model\ReposOwnerRepoBranchesBranchProtectionPutBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ReposUpdateBranchProtection($owner, $repo, $branch, $requestBody), $fetch);
     }
@@ -1664,13 +1664,13 @@ class Client extends \Github\Runtime\Client\Client
     *
     * @param string $owner 
     * @param string $repo 
-    * @param \Github\Model\ReposOwnerRepoDispatchesPostBody $requestBody 
+    * @param null|\Github\Model\ReposOwnerRepoDispatchesPostBody $requestBody 
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Github\Exception\ReposCreateDispatchEventUnprocessableEntityException
     *
     * @return null|\Psr\Http\Message\ResponseInterface
     */
-    public function reposCreateDispatchEvent(string $owner, string $repo, \Github\Model\ReposOwnerRepoDispatchesPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function reposCreateDispatchEvent(string $owner, string $repo, ?\Github\Model\ReposOwnerRepoDispatchesPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ReposCreateDispatchEvent($owner, $repo, $requestBody), $fetch);
     }
@@ -1698,12 +1698,12 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @param string $owner 
      * @param string $repo 
-     * @param \Github\Model\ReposOwnerRepoTransferPostBody $requestBody 
+     * @param null|\Github\Model\ReposOwnerRepoTransferPostBody $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\Repository|\Psr\Http\Message\ResponseInterface
      */
-    public function reposTransfer(string $owner, string $repo, \Github\Model\ReposOwnerRepoTransferPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function reposTransfer(string $owner, string $repo, ?\Github\Model\ReposOwnerRepoTransferPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ReposTransfer($owner, $repo, $requestBody), $fetch);
     }
@@ -1750,7 +1750,7 @@ class Client extends \Github\Runtime\Client\Client
     *   `public_repo` scope or `repo` scope to create a public repository
     *   `repo` scope to create a private repository
     *
-    * @param \Github\Model\UserReposPostBody $requestBody 
+    * @param null|\Github\Model\UserReposPostBody $requestBody 
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Github\Exception\ReposCreateForAuthenticatedUserUnauthorizedException
     * @throws \Github\Exception\ReposCreateForAuthenticatedUserNotFoundException
@@ -1760,7 +1760,7 @@ class Client extends \Github\Runtime\Client\Client
     *
     * @return null|\Github\Model\Repository|\Psr\Http\Message\ResponseInterface
     */
-    public function reposCreateForAuthenticatedUser(\Github\Model\UserReposPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function reposCreateForAuthenticatedUser(?\Github\Model\UserReposPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ReposCreateForAuthenticatedUser($requestBody), $fetch);
     }
@@ -1843,14 +1843,14 @@ class Client extends \Github\Runtime\Client\Client
     * @param string $owner 
     * @param string $repo 
     * @param string $username 
-    * @param \Github\Model\ReposOwnerRepoCollaboratorsUsernamePutBody $requestBody 
+    * @param null|\Github\Model\ReposOwnerRepoCollaboratorsUsernamePutBody $requestBody 
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Github\Exception\ReposAddCollaboratorUnprocessableEntityException
     * @throws \Github\Exception\ReposAddCollaboratorForbiddenException
     *
     * @return null|\Github\Model\RepositoryInvitation|\Psr\Http\Message\ResponseInterface
     */
-    public function reposAddCollaborator(string $owner, string $repo, string $username, \Github\Model\ReposOwnerRepoCollaboratorsUsernamePutBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function reposAddCollaborator(string $owner, string $repo, string $username, ?\Github\Model\ReposOwnerRepoCollaboratorsUsernamePutBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ReposAddCollaborator($owner, $repo, $username, $requestBody), $fetch);
     }
@@ -1879,7 +1879,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @param string $owner 
      * @param string $repo 
-     * @param \Github\Model\ReposOwnerRepoForksPostBody $requestBody 
+     * @param null|\Github\Model\ReposOwnerRepoForksPostBody $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposCreateForkBadRequestException
      * @throws \Github\Exception\ReposCreateForkUnprocessableEntityException
@@ -1888,7 +1888,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\Repository|\Psr\Http\Message\ResponseInterface
      */
-    public function reposCreateFork(string $owner, string $repo, \Github\Model\ReposOwnerRepoForksPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function reposCreateFork(string $owner, string $repo, ?\Github\Model\ReposOwnerRepoForksPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ReposCreateFork($owner, $repo, $requestBody), $fetch);
     }
@@ -1950,7 +1950,7 @@ class Client extends \Github\Runtime\Client\Client
     * @param string $owner 
     * @param string $repo 
     * @param int $releaseId release_id parameter
-    * @param string $requestBody 
+    * @param null|string $requestBody 
     * @param array $queryParameters {
     *     @var string $name name parameter
     *     @var string $label label parameter
@@ -1959,7 +1959,7 @@ class Client extends \Github\Runtime\Client\Client
     *
     * @return null|\Github\Model\ReleaseAsset|\Psr\Http\Message\ResponseInterface
     */
-    public function reposUploadReleaseAsset(string $owner, string $repo, int $releaseId, string $requestBody, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function reposUploadReleaseAsset(string $owner, string $repo, int $releaseId, ?string $requestBody = null, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ReposUploadReleaseAsset($owner, $repo, $releaseId, $requestBody, $queryParameters), $fetch);
     }
@@ -1999,13 +1999,13 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner 
      * @param string $repo 
      * @param int $commentId comment_id parameter
-     * @param \Github\Model\ReposOwnerRepoCommentsCommentIdPatchBody $requestBody 
+     * @param null|\Github\Model\ReposOwnerRepoCommentsCommentIdPatchBody $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposUpdateCommitCommentNotFoundException
      *
      * @return null|\Github\Model\CommitComment|\Psr\Http\Message\ResponseInterface
      */
-    public function reposUpdateCommitComment(string $owner, string $repo, int $commentId, \Github\Model\ReposOwnerRepoCommentsCommentIdPatchBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function reposUpdateCommitComment(string $owner, string $repo, int $commentId, ?\Github\Model\ReposOwnerRepoCommentsCommentIdPatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ReposUpdateCommitComment($owner, $repo, $commentId, $requestBody), $fetch);
     }
@@ -2049,7 +2049,7 @@ class Client extends \Github\Runtime\Client\Client
     *
     * @param string $owner 
     * @param string $repo 
-    * @param \Github\Model\ReposOwnerRepoHooksPostBody $requestBody 
+    * @param null|\Github\Model\ReposOwnerRepoHooksPostBody $requestBody 
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Github\Exception\ReposCreateWebhookNotFoundException
     * @throws \Github\Exception\ReposCreateWebhookUnprocessableEntityException
@@ -2057,7 +2057,7 @@ class Client extends \Github\Runtime\Client\Client
     *
     * @return null|\Github\Model\Hook|\Psr\Http\Message\ResponseInterface
     */
-    public function reposCreateWebhook(string $owner, string $repo, \Github\Model\ReposOwnerRepoHooksPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function reposCreateWebhook(string $owner, string $repo, ?\Github\Model\ReposOwnerRepoHooksPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ReposCreateWebhook($owner, $repo, $requestBody), $fetch);
     }
@@ -2100,14 +2100,14 @@ class Client extends \Github\Runtime\Client\Client
     * @param string $owner 
     * @param string $repo 
     * @param string $commitSha commit_sha+ parameter
-    * @param \Github\Model\ReposOwnerRepoCommitsCommitShaCommentsPostBody $requestBody 
+    * @param null|\Github\Model\ReposOwnerRepoCommitsCommitShaCommentsPostBody $requestBody 
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Github\Exception\ReposCreateCommitCommentForbiddenException
     * @throws \Github\Exception\ReposCreateCommitCommentUnprocessableEntityException
     *
     * @return null|\Github\Model\CommitComment|\Psr\Http\Message\ResponseInterface
     */
-    public function reposCreateCommitComment(string $owner, string $repo, string $commitSha, \Github\Model\ReposOwnerRepoCommitsCommitShaCommentsPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function reposCreateCommitComment(string $owner, string $repo, string $commitSha, ?\Github\Model\ReposOwnerRepoCommitsCommitShaCommentsPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ReposCreateCommitComment($owner, $repo, $commitSha, $requestBody), $fetch);
     }
@@ -2185,13 +2185,13 @@ class Client extends \Github\Runtime\Client\Client
     * @param string $owner 
     * @param string $repo 
     * @param string $branch branch+ parameter
-    * @param array[] $requestBody 
+    * @param null|array[] $requestBody 
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Github\Exception\ReposRemoveAppAccessRestrictionsUnprocessableEntityException
     *
     * @return null|\Github\Model\Integration[]|\Psr\Http\Message\ResponseInterface
     */
-    public function reposRemoveAppAccessRestrictions(string $owner, string $repo, string $branch, array $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function reposRemoveAppAccessRestrictions(string $owner, string $repo, string $branch, ?array $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ReposRemoveAppAccessRestrictions($owner, $repo, $branch, $requestBody), $fetch);
     }
@@ -2224,13 +2224,13 @@ class Client extends \Github\Runtime\Client\Client
     * @param string $owner 
     * @param string $repo 
     * @param string $branch branch+ parameter
-    * @param array[] $requestBody 
+    * @param null|array[] $requestBody 
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Github\Exception\ReposAddAppAccessRestrictionsUnprocessableEntityException
     *
     * @return null|\Github\Model\Integration[]|\Psr\Http\Message\ResponseInterface
     */
-    public function reposAddAppAccessRestrictions(string $owner, string $repo, string $branch, array $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function reposAddAppAccessRestrictions(string $owner, string $repo, string $branch, ?array $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ReposAddAppAccessRestrictions($owner, $repo, $branch, $requestBody), $fetch);
     }
@@ -2246,13 +2246,13 @@ class Client extends \Github\Runtime\Client\Client
     * @param string $owner 
     * @param string $repo 
     * @param string $branch branch+ parameter
-    * @param array[] $requestBody 
+    * @param null|array[] $requestBody 
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Github\Exception\ReposSetAppAccessRestrictionsUnprocessableEntityException
     *
     * @return null|\Github\Model\Integration[]|\Psr\Http\Message\ResponseInterface
     */
-    public function reposSetAppAccessRestrictions(string $owner, string $repo, string $branch, array $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function reposSetAppAccessRestrictions(string $owner, string $repo, string $branch, ?array $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ReposSetAppAccessRestrictions($owner, $repo, $branch, $requestBody), $fetch);
     }
@@ -2308,12 +2308,12 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner 
      * @param string $repo 
      * @param int $invitationId invitation_id parameter
-     * @param \Github\Model\ReposOwnerRepoInvitationsInvitationIdPatchBody $requestBody 
+     * @param null|\Github\Model\ReposOwnerRepoInvitationsInvitationIdPatchBody $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\RepositoryInvitation|\Psr\Http\Message\ResponseInterface
      */
-    public function reposUpdateInvitation(string $owner, string $repo, int $invitationId, \Github\Model\ReposOwnerRepoInvitationsInvitationIdPatchBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function reposUpdateInvitation(string $owner, string $repo, int $invitationId, ?\Github\Model\ReposOwnerRepoInvitationsInvitationIdPatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ReposUpdateInvitation($owner, $repo, $invitationId, $requestBody), $fetch);
     }
@@ -2348,12 +2348,12 @@ class Client extends \Github\Runtime\Client\Client
     * @param string $owner 
     * @param string $repo 
     * @param string $sha sha parameter
-    * @param \Github\Model\ReposOwnerRepoStatusesShaPostBody $requestBody 
+    * @param null|\Github\Model\ReposOwnerRepoStatusesShaPostBody $requestBody 
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     *
     * @return null|\Github\Model\Status|\Psr\Http\Message\ResponseInterface
     */
-    public function reposCreateCommitStatus(string $owner, string $repo, string $sha, \Github\Model\ReposOwnerRepoStatusesShaPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function reposCreateCommitStatus(string $owner, string $repo, string $sha, ?\Github\Model\ReposOwnerRepoStatusesShaPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ReposCreateCommitStatus($owner, $repo, $sha, $requestBody), $fetch);
     }
@@ -2384,13 +2384,13 @@ class Client extends \Github\Runtime\Client\Client
     * @param string $owner 
     * @param string $repo 
     * @param int $deploymentId deployment_id parameter
-    * @param \Github\Model\ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBody $requestBody 
+    * @param null|\Github\Model\ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBody $requestBody 
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Github\Exception\ReposCreateDeploymentStatusUnprocessableEntityException
     *
     * @return null|\Github\Model\DeploymentStatus|\Psr\Http\Message\ResponseInterface
     */
-    public function reposCreateDeploymentStatus(string $owner, string $repo, int $deploymentId, \Github\Model\ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function reposCreateDeploymentStatus(string $owner, string $repo, int $deploymentId, ?\Github\Model\ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ReposCreateDeploymentStatus($owner, $repo, $deploymentId, $requestBody), $fetch);
     }
@@ -2591,7 +2591,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @param string $owner 
      * @param string $repo 
-     * @param \Github\Model\ReposOwnerRepoMergesPostBody $requestBody 
+     * @param null|\Github\Model\ReposOwnerRepoMergesPostBody $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposMergeNotFoundException
      * @throws \Github\Exception\ReposMergeConflictException
@@ -2600,7 +2600,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\Commit|\Psr\Http\Message\ResponseInterface
      */
-    public function reposMerge(string $owner, string $repo, \Github\Model\ReposOwnerRepoMergesPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function reposMerge(string $owner, string $repo, ?\Github\Model\ReposOwnerRepoMergesPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ReposMerge($owner, $repo, $requestBody), $fetch);
     }
@@ -2669,7 +2669,7 @@ class Client extends \Github\Runtime\Client\Client
     *
     * @param string $org 
     * @param string $scimUserId scim_user_id parameter
-    * @param \Github\Model\ScimV2OrganizationsOrgUsersScimUserIdPatchBody $requestBody 
+    * @param null|\Github\Model\ScimV2OrganizationsOrgUsersScimUserIdPatchBody $requestBody 
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Github\Exception\ScimUpdateAttributeForUserNotFoundException
     * @throws \Github\Exception\ScimUpdateAttributeForUserForbiddenException
@@ -2678,7 +2678,7 @@ class Client extends \Github\Runtime\Client\Client
     *
     * @return null|\Psr\Http\Message\ResponseInterface
     */
-    public function scimUpdateAttributeForUser(string $org, string $scimUserId, \Github\Model\ScimV2OrganizationsOrgUsersScimUserIdPatchBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function scimUpdateAttributeForUser(string $org, string $scimUserId, ?\Github\Model\ScimV2OrganizationsOrgUsersScimUserIdPatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ScimUpdateAttributeForUser($org, $scimUserId, $requestBody), $fetch);
     }
@@ -2691,14 +2691,14 @@ class Client extends \Github\Runtime\Client\Client
     *
     * @param string $org 
     * @param string $scimUserId scim_user_id parameter
-    * @param \Github\Model\ScimV2OrganizationsOrgUsersScimUserIdPutBody $requestBody 
+    * @param null|\Github\Model\ScimV2OrganizationsOrgUsersScimUserIdPutBody $requestBody 
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Github\Exception\ScimSetInformationForProvisionedUserNotFoundException
     * @throws \Github\Exception\ScimSetInformationForProvisionedUserForbiddenException
     *
     * @return null|\Psr\Http\Message\ResponseInterface
     */
-    public function scimSetInformationForProvisionedUser(string $org, string $scimUserId, \Github\Model\ScimV2OrganizationsOrgUsersScimUserIdPutBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function scimSetInformationForProvisionedUser(string $org, string $scimUserId, ?\Github\Model\ScimV2OrganizationsOrgUsersScimUserIdPutBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ScimSetInformationForProvisionedUser($org, $scimUserId, $requestBody), $fetch);
     }
@@ -2747,7 +2747,7 @@ class Client extends \Github\Runtime\Client\Client
      * Provision organization membership for a user, and send an activation email to the email address.
      *
      * @param string $org 
-     * @param \Github\Model\ScimV2OrganizationsOrgUsersPostBody $requestBody 
+     * @param null|\Github\Model\ScimV2OrganizationsOrgUsersPostBody $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ScimProvisionAndInviteUserNotFoundException
      * @throws \Github\Exception\ScimProvisionAndInviteUserForbiddenException
@@ -2757,7 +2757,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function scimProvisionAndInviteUser(string $org, \Github\Model\ScimV2OrganizationsOrgUsersPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function scimProvisionAndInviteUser(string $org, ?\Github\Model\ScimV2OrganizationsOrgUsersPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ScimProvisionAndInviteUser($org, $requestBody), $fetch);
     }
@@ -2781,14 +2781,14 @@ class Client extends \Github\Runtime\Client\Client
      * Initiates the generation of a migration archive.
      *
      * @param string $org 
-     * @param \Github\Model\OrgsOrgMigrationsPostBody $requestBody 
+     * @param null|\Github\Model\OrgsOrgMigrationsPostBody $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\MigrationsStartForOrgNotFoundException
      * @throws \Github\Exception\MigrationsStartForOrgUnprocessableEntityException
      *
      * @return null|\Github\Model\Migration|\Psr\Http\Message\ResponseInterface
      */
-    public function migrationsStartForOrg(string $org, \Github\Model\OrgsOrgMigrationsPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function migrationsStartForOrg(string $org, ?\Github\Model\OrgsOrgMigrationsPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\MigrationsStartForOrg($org, $requestBody), $fetch);
     }
@@ -2927,12 +2927,12 @@ class Client extends \Github\Runtime\Client\Client
     *
     * @param string $owner 
     * @param string $repo 
-    * @param \Github\Model\ReposOwnerRepoImportPatchBody $requestBody 
+    * @param null|\Github\Model\ReposOwnerRepoImportPatchBody $requestBody 
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     *
     * @return null|\Github\Model\Import|\Psr\Http\Message\ResponseInterface
     */
-    public function migrationsUpdateImport(string $owner, string $repo, \Github\Model\ReposOwnerRepoImportPatchBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function migrationsUpdateImport(string $owner, string $repo, ?\Github\Model\ReposOwnerRepoImportPatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\MigrationsUpdateImport($owner, $repo, $requestBody), $fetch);
     }
@@ -2941,14 +2941,14 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @param string $owner 
      * @param string $repo 
-     * @param \Github\Model\ReposOwnerRepoImportPutBody $requestBody 
+     * @param null|\Github\Model\ReposOwnerRepoImportPutBody $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\MigrationsStartImportUnprocessableEntityException
      * @throws \Github\Exception\MigrationsStartImportNotFoundException
      *
      * @return null|\Github\Model\Import|\Psr\Http\Message\ResponseInterface
      */
-    public function migrationsStartImport(string $owner, string $repo, \Github\Model\ReposOwnerRepoImportPutBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function migrationsStartImport(string $owner, string $repo, ?\Github\Model\ReposOwnerRepoImportPutBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\MigrationsStartImport($owner, $repo, $requestBody), $fetch);
     }
@@ -3007,7 +3007,7 @@ class Client extends \Github\Runtime\Client\Client
     /**
      * Initiates the generation of a user migration archive.
      *
-     * @param \Github\Model\UserMigrationsPostBody $requestBody 
+     * @param null|\Github\Model\UserMigrationsPostBody $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\MigrationsStartForAuthenticatedUserUnprocessableEntityException
      * @throws \Github\Exception\MigrationsStartForAuthenticatedUserForbiddenException
@@ -3015,7 +3015,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\Migration|\Psr\Http\Message\ResponseInterface
      */
-    public function migrationsStartForAuthenticatedUser(\Github\Model\UserMigrationsPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function migrationsStartForAuthenticatedUser(?\Github\Model\UserMigrationsPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\MigrationsStartForAuthenticatedUser($requestBody), $fetch);
     }
@@ -3123,14 +3123,14 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner 
      * @param string $repo 
      * @param int $authorId author_id parameter
-     * @param \Github\Model\ReposOwnerRepoImportAuthorsAuthorIdPatchBody $requestBody 
+     * @param null|\Github\Model\ReposOwnerRepoImportAuthorsAuthorIdPatchBody $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\MigrationsMapCommitAuthorUnprocessableEntityException
      * @throws \Github\Exception\MigrationsMapCommitAuthorNotFoundException
      *
      * @return null|\Github\Model\PorterAuthor|\Psr\Http\Message\ResponseInterface
      */
-    public function migrationsMapCommitAuthor(string $owner, string $repo, int $authorId, \Github\Model\ReposOwnerRepoImportAuthorsAuthorIdPatchBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function migrationsMapCommitAuthor(string $owner, string $repo, int $authorId, ?\Github\Model\ReposOwnerRepoImportAuthorsAuthorIdPatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\MigrationsMapCommitAuthor($owner, $repo, $authorId, $requestBody), $fetch);
     }
@@ -3158,13 +3158,13 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @param string $owner 
      * @param string $repo 
-     * @param \Github\Model\ReposOwnerRepoImportLfsPatchBody $requestBody 
+     * @param null|\Github\Model\ReposOwnerRepoImportLfsPatchBody $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\MigrationsSetLfsPreferenceUnprocessableEntityException
      *
      * @return null|\Github\Model\Import|\Psr\Http\Message\ResponseInterface
      */
-    public function migrationsSetLfsPreference(string $owner, string $repo, \Github\Model\ReposOwnerRepoImportLfsPatchBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function migrationsSetLfsPreference(string $owner, string $repo, ?\Github\Model\ReposOwnerRepoImportLfsPatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\MigrationsSetLfsPreference($owner, $repo, $requestBody), $fetch);
     }
@@ -3199,12 +3199,12 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @param string $owner 
      * @param string $repo 
-     * @param \Github\Model\ReposOwnerRepoInteractionLimitsPutBody $requestBody 
+     * @param null|\Github\Model\ReposOwnerRepoInteractionLimitsPutBody $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\InteractionLimit|\Psr\Http\Message\ResponseInterface
      */
-    public function interactionsSetRestrictionsForRepo(string $owner, string $repo, \Github\Model\ReposOwnerRepoInteractionLimitsPutBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function interactionsSetRestrictionsForRepo(string $owner, string $repo, ?\Github\Model\ReposOwnerRepoInteractionLimitsPutBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\InteractionsSetRestrictionsForRepo($owner, $repo, $requestBody), $fetch);
     }
@@ -3236,13 +3236,13 @@ class Client extends \Github\Runtime\Client\Client
      * Temporarily restricts interactions to certain GitHub users in any public repository in the given organization. You must be an organization owner to set these restrictions.
      *
      * @param string $org 
-     * @param \Github\Model\OrgsOrgInteractionLimitsPutBody $requestBody 
+     * @param null|\Github\Model\OrgsOrgInteractionLimitsPutBody $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\InteractionsSetRestrictionsForOrgUnprocessableEntityException
      *
      * @return null|\Github\Model\InteractionLimit|\Psr\Http\Message\ResponseInterface
      */
-    public function interactionsSetRestrictionsForOrg(string $org, \Github\Model\OrgsOrgInteractionLimitsPutBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function interactionsSetRestrictionsForOrg(string $org, ?\Github\Model\OrgsOrgInteractionLimitsPutBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\InteractionsSetRestrictionsForOrg($org, $requestBody), $fetch);
     }
@@ -3323,12 +3323,12 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @param string $owner 
      * @param string $repo 
-     * @param \Github\Model\ReposOwnerRepoSubscriptionPutBody $requestBody 
+     * @param null|\Github\Model\ReposOwnerRepoSubscriptionPutBody $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\RepositorySubscription|\Psr\Http\Message\ResponseInterface
      */
-    public function activitySetRepoSubscription(string $owner, string $repo, \Github\Model\ReposOwnerRepoSubscriptionPutBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function activitySetRepoSubscription(string $owner, string $repo, ?\Github\Model\ReposOwnerRepoSubscriptionPutBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ActivitySetRepoSubscription($owner, $repo, $requestBody), $fetch);
     }
@@ -3475,12 +3475,12 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @param string $owner 
      * @param string $repo 
-     * @param \Github\Model\ReposOwnerRepoNotificationsPutBody $requestBody 
+     * @param null|\Github\Model\ReposOwnerRepoNotificationsPutBody $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function activityMarkRepoNotificationsAsRead(string $owner, string $repo, \Github\Model\ReposOwnerRepoNotificationsPutBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function activityMarkRepoNotificationsAsRead(string $owner, string $repo, ?\Github\Model\ReposOwnerRepoNotificationsPutBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ActivityMarkRepoNotificationsAsRead($owner, $repo, $requestBody), $fetch);
     }
@@ -3660,14 +3660,14 @@ class Client extends \Github\Runtime\Client\Client
     Unsubscribing from a conversation in a repository that you are not watching is functionally equivalent to the [Delete a thread subscription](https://developer.github.com/v3/activity/notifications/#delete-a-thread-subscription) endpoint.
     *
     * @param int $threadId thread_id parameter
-    * @param \Github\Model\NotificationsThreadsThreadIdSubscriptionPutBody $requestBody 
+    * @param null|\Github\Model\NotificationsThreadsThreadIdSubscriptionPutBody $requestBody 
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Github\Exception\ActivitySetThreadSubscriptionForbiddenException
     * @throws \Github\Exception\ActivitySetThreadSubscriptionUnauthorizedException
     *
     * @return null|\Github\Model\ThreadSubscription|\Psr\Http\Message\ResponseInterface
     */
-    public function activitySetThreadSubscription(int $threadId, \Github\Model\NotificationsThreadsThreadIdSubscriptionPutBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function activitySetThreadSubscription(int $threadId, ?\Github\Model\NotificationsThreadsThreadIdSubscriptionPutBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ActivitySetThreadSubscription($threadId, $requestBody), $fetch);
     }
@@ -3712,14 +3712,14 @@ class Client extends \Github\Runtime\Client\Client
     /**
      * Marks all notifications as "read" removes it from the [default view on GitHub](https://github.com/notifications). If the number of notifications is too large to complete in one request, you will receive a `202 Accepted` status and GitHub will run an asynchronous process to mark notifications as "read." To check whether any "unread" notifications remain, you can use the [List notifications for the authenticated user](https://developer.github.com/v3/activity/notifications/#list-notifications-for-the-authenticated-user) endpoint and pass the query parameter `all=false`.
      *
-     * @param \Github\Model\NotificationsPutBody $requestBody 
+     * @param null|\Github\Model\NotificationsPutBody $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ActivityMarkNotificationsAsReadForbiddenException
      * @throws \Github\Exception\ActivityMarkNotificationsAsReadUnauthorizedException
      *
      * @return null|\Github\Model\NotificationsPutResponse202|\Psr\Http\Message\ResponseInterface
      */
-    public function activityMarkNotificationsAsRead(\Github\Model\NotificationsPutBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function activityMarkNotificationsAsRead(?\Github\Model\NotificationsPutBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ActivityMarkNotificationsAsRead($requestBody), $fetch);
     }
@@ -3907,12 +3907,12 @@ class Client extends \Github\Runtime\Client\Client
     * @param string $owner 
     * @param string $repo 
     * @param int $checkRunId check_run_id parameter
-    * @param \Github\Model\ReposOwnerRepoCheckRunsCheckRunIdPatchBody $requestBody 
+    * @param null|\Github\Model\ReposOwnerRepoCheckRunsCheckRunIdPatchBody $requestBody 
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     *
     * @return null|\Github\Model\CheckRun|\Psr\Http\Message\ResponseInterface
     */
-    public function checksUpdate(string $owner, string $repo, int $checkRunId, \Github\Model\ReposOwnerRepoCheckRunsCheckRunIdPatchBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function checksUpdate(string $owner, string $repo, int $checkRunId, ?\Github\Model\ReposOwnerRepoCheckRunsCheckRunIdPatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ChecksUpdate($owner, $repo, $checkRunId, $requestBody), $fetch);
     }
@@ -3923,12 +3923,12 @@ class Client extends \Github\Runtime\Client\Client
     *
     * @param string $owner 
     * @param string $repo 
-    * @param \Github\Model\ReposOwnerRepoCheckSuitesPostBody $requestBody 
+    * @param null|\Github\Model\ReposOwnerRepoCheckSuitesPostBody $requestBody 
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     *
     * @return null|\Github\Model\CheckSuite|\Psr\Http\Message\ResponseInterface
     */
-    public function checksCreateSuite(string $owner, string $repo, \Github\Model\ReposOwnerRepoCheckSuitesPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function checksCreateSuite(string $owner, string $repo, ?\Github\Model\ReposOwnerRepoCheckSuitesPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ChecksCreateSuite($owner, $repo, $requestBody), $fetch);
     }
@@ -3953,12 +3953,12 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @param string $owner 
      * @param string $repo 
-     * @param \Github\Model\ReposOwnerRepoCheckSuitesPreferencesPatchBody $requestBody 
+     * @param null|\Github\Model\ReposOwnerRepoCheckSuitesPreferencesPatchBody $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\CheckSuitePreference|\Psr\Http\Message\ResponseInterface
      */
-    public function checksSetSuitesPreferences(string $owner, string $repo, \Github\Model\ReposOwnerRepoCheckSuitesPreferencesPatchBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function checksSetSuitesPreferences(string $owner, string $repo, ?\Github\Model\ReposOwnerRepoCheckSuitesPreferencesPatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ChecksSetSuitesPreferences($owner, $repo, $requestBody), $fetch);
     }
@@ -3969,12 +3969,12 @@ class Client extends \Github\Runtime\Client\Client
     *
     * @param string $owner 
     * @param string $repo 
-    * @param \Github\Model\ReposOwnerRepoCheckRunsPostBody $requestBody 
+    * @param null|\Github\Model\ReposOwnerRepoCheckRunsPostBody $requestBody 
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     *
     * @return null|\Github\Model\CheckRun|\Psr\Http\Message\ResponseInterface
     */
-    public function checksCreate(string $owner, string $repo, \Github\Model\ReposOwnerRepoCheckRunsPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function checksCreate(string $owner, string $repo, ?\Github\Model\ReposOwnerRepoCheckRunsPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ChecksCreate($owner, $repo, $requestBody), $fetch);
     }
@@ -3997,24 +3997,24 @@ class Client extends \Github\Runtime\Client\Client
     /**
      * 
      *
-     * @param \Github\Model\MarkdownPostBody $requestBody 
+     * @param null|\Github\Model\MarkdownPostBody $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function markdownRender(\Github\Model\MarkdownPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function markdownRender(?\Github\Model\MarkdownPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\MarkdownRender($requestBody), $fetch);
     }
     /**
      * You must send Markdown as plain text (using a `Content-Type` header of `text/plain` or `text/x-markdown`) to this endpoint, rather than using JSON format. In raw mode, [GitHub Flavored Markdown](https://github.github.com/gfm/) is not supported and Markdown will be rendered in plain format like a README.md file. Markdown content must be 400 KB or less.
      *
-     * @param string $requestBody 
+     * @param null|string $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function markdownRenderRaw(string $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function markdownRenderRaw(?string $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\MarkdownRenderRaw($requestBody), $fetch);
     }
@@ -4040,7 +4040,7 @@ class Client extends \Github\Runtime\Client\Client
      * Creates an organization project board. Returns a `404 Not Found` status if projects are disabled in the organization. If you do not have sufficient privileges to perform this action, a `401 Unauthorized` or `410 Gone` status is returned.
      *
      * @param string $org 
-     * @param \Github\Model\OrgsOrgProjectsPostBody $requestBody 
+     * @param null|\Github\Model\OrgsOrgProjectsPostBody $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ProjectsCreateForOrgUnauthorizedException
      * @throws \Github\Exception\ProjectsCreateForOrgForbiddenException
@@ -4050,7 +4050,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\Project|\Psr\Http\Message\ResponseInterface
      */
-    public function projectsCreateForOrg(string $org, \Github\Model\OrgsOrgProjectsPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function projectsCreateForOrg(string $org, ?\Github\Model\OrgsOrgProjectsPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ProjectsCreateForOrg($org, $requestBody), $fetch);
     }
@@ -4058,7 +4058,7 @@ class Client extends \Github\Runtime\Client\Client
      * 
      *
      * @param int $columnId column_id parameter
-     * @param \Github\Model\ProjectsColumnsColumnIdMovesPostBody $requestBody 
+     * @param null|\Github\Model\ProjectsColumnsColumnIdMovesPostBody $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ProjectsMoveColumnForbiddenException
      * @throws \Github\Exception\ProjectsMoveColumnUnprocessableEntityException
@@ -4066,7 +4066,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\ProjectsColumnsColumnIdMovesPostResponse201|\Psr\Http\Message\ResponseInterface
      */
-    public function projectsMoveColumn(int $columnId, \Github\Model\ProjectsColumnsColumnIdMovesPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function projectsMoveColumn(int $columnId, ?\Github\Model\ProjectsColumnsColumnIdMovesPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ProjectsMoveColumn($columnId, $requestBody), $fetch);
     }
@@ -4104,7 +4104,7 @@ class Client extends \Github\Runtime\Client\Client
      * 
      *
      * @param int $cardId card_id parameter
-     * @param \Github\Model\ProjectsColumnsCardsCardIdPatchBody $requestBody 
+     * @param null|\Github\Model\ProjectsColumnsCardsCardIdPatchBody $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ProjectsUpdateCardForbiddenException
      * @throws \Github\Exception\ProjectsUpdateCardUnauthorizedException
@@ -4113,7 +4113,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\ProjectCard|\Psr\Http\Message\ResponseInterface
      */
-    public function projectsUpdateCard(int $cardId, \Github\Model\ProjectsColumnsCardsCardIdPatchBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function projectsUpdateCard(int $cardId, ?\Github\Model\ProjectsColumnsCardsCardIdPatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ProjectsUpdateCard($cardId, $requestBody), $fetch);
     }
@@ -4150,14 +4150,14 @@ class Client extends \Github\Runtime\Client\Client
      * 
      *
      * @param int $columnId column_id parameter
-     * @param \Github\Model\ProjectsColumnsColumnIdPatchBody $requestBody 
+     * @param null|\Github\Model\ProjectsColumnsColumnIdPatchBody $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ProjectsUpdateColumnForbiddenException
      * @throws \Github\Exception\ProjectsUpdateColumnUnauthorizedException
      *
      * @return null|\Github\Model\ProjectColumn|\Psr\Http\Message\ResponseInterface
      */
-    public function projectsUpdateColumn(int $columnId, \Github\Model\ProjectsColumnsColumnIdPatchBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function projectsUpdateColumn(int $columnId, ?\Github\Model\ProjectsColumnsColumnIdPatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ProjectsUpdateColumn($columnId, $requestBody), $fetch);
     }
@@ -4214,7 +4214,7 @@ class Client extends \Github\Runtime\Client\Client
      * Updates a project board's information. Returns a `404 Not Found` status if projects are disabled. If you do not have sufficient privileges to perform this action, a `401 Unauthorized` or `410 Gone` status is returned.
      *
      * @param int $projectId 
-     * @param \Github\Model\ProjectsProjectIdPatchBody $requestBody 
+     * @param null|\Github\Model\ProjectsProjectIdPatchBody $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ProjectsUpdateNotFoundException
      * @throws \Github\Exception\ProjectsUpdateForbiddenException
@@ -4224,7 +4224,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\Project|\Psr\Http\Message\ResponseInterface
      */
-    public function projectsUpdate(int $projectId, \Github\Model\ProjectsProjectIdPatchBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function projectsUpdate(int $projectId, ?\Github\Model\ProjectsProjectIdPatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ProjectsUpdate($projectId, $requestBody), $fetch);
     }
@@ -4250,7 +4250,7 @@ class Client extends \Github\Runtime\Client\Client
      * 
      *
      * @param int $projectId 
-     * @param \Github\Model\ProjectsProjectIdColumnsPostBody $requestBody 
+     * @param null|\Github\Model\ProjectsProjectIdColumnsPostBody $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ProjectsCreateColumnForbiddenException
      * @throws \Github\Exception\ProjectsCreateColumnUnprocessableEntityException
@@ -4258,7 +4258,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\ProjectColumn|\Psr\Http\Message\ResponseInterface
      */
-    public function projectsCreateColumn(int $projectId, \Github\Model\ProjectsProjectIdColumnsPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function projectsCreateColumn(int $projectId, ?\Github\Model\ProjectsProjectIdColumnsPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ProjectsCreateColumn($projectId, $requestBody), $fetch);
     }
@@ -4287,7 +4287,7 @@ class Client extends \Github\Runtime\Client\Client
     Be aware that the `id` of a pull request returned from "Issues" endpoints will be an _issue id_. To find out the pull request id, use the "[List pull requests](https://developer.github.com/v3/pulls/#list-pull-requests)" endpoint.
     *
     * @param int $columnId column_id parameter
-    * @param mixed $requestBody 
+    * @param null|mixed $requestBody 
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Github\Exception\ProjectsCreateCardForbiddenException
     * @throws \Github\Exception\ProjectsCreateCardUnauthorizedException
@@ -4296,14 +4296,14 @@ class Client extends \Github\Runtime\Client\Client
     *
     * @return null|\Github\Model\ProjectCard|\Psr\Http\Message\ResponseInterface
     */
-    public function projectsCreateCard(int $columnId, $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function projectsCreateCard(int $columnId, $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ProjectsCreateCard($columnId, $requestBody), $fetch);
     }
     /**
      * 
      *
-     * @param \Github\Model\UserProjectsPostBody $requestBody 
+     * @param null|\Github\Model\UserProjectsPostBody $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ProjectsCreateForAuthenticatedUserForbiddenException
      * @throws \Github\Exception\ProjectsCreateForAuthenticatedUserUnauthorizedException
@@ -4312,7 +4312,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\Project|\Psr\Http\Message\ResponseInterface
      */
-    public function projectsCreateForAuthenticatedUser(\Github\Model\UserProjectsPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function projectsCreateForAuthenticatedUser(?\Github\Model\UserProjectsPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ProjectsCreateForAuthenticatedUser($requestBody), $fetch);
     }
@@ -4339,7 +4339,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @param int $projectId 
      * @param string $username 
-     * @param \Github\Model\ProjectsProjectIdCollaboratorsUsernamePutBody $requestBody 
+     * @param null|\Github\Model\ProjectsProjectIdCollaboratorsUsernamePutBody $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ProjectsAddCollaboratorNotFoundException
      * @throws \Github\Exception\ProjectsAddCollaboratorUnsupportedMediaTypeException
@@ -4349,7 +4349,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function projectsAddCollaborator(int $projectId, string $username, \Github\Model\ProjectsProjectIdCollaboratorsUsernamePutBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function projectsAddCollaborator(int $projectId, string $username, ?\Github\Model\ProjectsProjectIdCollaboratorsUsernamePutBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ProjectsAddCollaborator($projectId, $username, $requestBody), $fetch);
     }
@@ -4399,7 +4399,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @param string $owner 
      * @param string $repo 
-     * @param \Github\Model\ReposOwnerRepoProjectsPostBody $requestBody 
+     * @param null|\Github\Model\ReposOwnerRepoProjectsPostBody $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ProjectsCreateForRepoUnauthorizedException
      * @throws \Github\Exception\ProjectsCreateForRepoForbiddenException
@@ -4409,7 +4409,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\Project|\Psr\Http\Message\ResponseInterface
      */
-    public function projectsCreateForRepo(string $owner, string $repo, \Github\Model\ReposOwnerRepoProjectsPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function projectsCreateForRepo(string $owner, string $repo, ?\Github\Model\ReposOwnerRepoProjectsPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ProjectsCreateForRepo($owner, $repo, $requestBody), $fetch);
     }
@@ -4417,7 +4417,7 @@ class Client extends \Github\Runtime\Client\Client
      * 
      *
      * @param int $cardId card_id parameter
-     * @param \Github\Model\ProjectsColumnsCardsCardIdMovesPostBody $requestBody 
+     * @param null|\Github\Model\ProjectsColumnsCardsCardIdMovesPostBody $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ProjectsMoveCardForbiddenException
      * @throws \Github\Exception\ProjectsMoveCardUnauthorizedException
@@ -4426,7 +4426,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\ProjectsColumnsCardsCardIdMovesPostResponse201|\Psr\Http\Message\ResponseInterface
      */
-    public function projectsMoveCard(int $cardId, \Github\Model\ProjectsColumnsCardsCardIdMovesPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function projectsMoveCard(int $cardId, ?\Github\Model\ProjectsColumnsCardsCardIdMovesPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ProjectsMoveCard($cardId, $requestBody), $fetch);
     }
@@ -4484,12 +4484,12 @@ class Client extends \Github\Runtime\Client\Client
     * @param int $teamId 
     * @param int $discussionNumber 
     * @param int $commentNumber 
-    * @param \Github\Model\TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBody $requestBody 
+    * @param null|\Github\Model\TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBody $requestBody 
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     *
     * @return null|\Github\Model\Reaction|\Psr\Http\Message\ResponseInterface
     */
-    public function reactionsCreateForTeamDiscussionCommentLegacy(int $teamId, int $discussionNumber, int $commentNumber, \Github\Model\TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function reactionsCreateForTeamDiscussionCommentLegacy(int $teamId, int $discussionNumber, int $commentNumber, ?\Github\Model\TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ReactionsCreateForTeamDiscussionCommentLegacy($teamId, $discussionNumber, $commentNumber, $requestBody), $fetch);
     }
@@ -4520,12 +4520,12 @@ class Client extends \Github\Runtime\Client\Client
     *
     * @param int $teamId 
     * @param int $discussionNumber 
-    * @param \Github\Model\TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBody $requestBody 
+    * @param null|\Github\Model\TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBody $requestBody 
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     *
     * @return null|\Github\Model\Reaction|\Psr\Http\Message\ResponseInterface
     */
-    public function reactionsCreateForTeamDiscussionLegacy(int $teamId, int $discussionNumber, \Github\Model\TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function reactionsCreateForTeamDiscussionLegacy(int $teamId, int $discussionNumber, ?\Github\Model\TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ReactionsCreateForTeamDiscussionLegacy($teamId, $discussionNumber, $requestBody), $fetch);
     }
@@ -4556,14 +4556,14 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner 
      * @param string $repo 
      * @param int $commentId comment_id parameter
-     * @param \Github\Model\ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBody $requestBody 
+     * @param null|\Github\Model\ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBody $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReactionsCreateForIssueCommentUnsupportedMediaTypeException
      * @throws \Github\Exception\ReactionsCreateForIssueCommentUnprocessableEntityException
      *
      * @return null|\Github\Model\Reaction|\Psr\Http\Message\ResponseInterface
      */
-    public function reactionsCreateForIssueComment(string $owner, string $repo, int $commentId, \Github\Model\ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function reactionsCreateForIssueComment(string $owner, string $repo, int $commentId, ?\Github\Model\ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ReactionsCreateForIssueComment($owner, $repo, $commentId, $requestBody), $fetch);
     }
@@ -4612,14 +4612,14 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner 
      * @param string $repo 
      * @param int $issueNumber issue_number parameter
-     * @param \Github\Model\ReposOwnerRepoIssuesIssueNumberReactionsPostBody $requestBody 
+     * @param null|\Github\Model\ReposOwnerRepoIssuesIssueNumberReactionsPostBody $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReactionsCreateForIssueUnsupportedMediaTypeException
      * @throws \Github\Exception\ReactionsCreateForIssueUnprocessableEntityException
      *
      * @return null|\Github\Model\Reaction|\Psr\Http\Message\ResponseInterface
      */
-    public function reactionsCreateForIssue(string $owner, string $repo, int $issueNumber, \Github\Model\ReposOwnerRepoIssuesIssueNumberReactionsPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function reactionsCreateForIssue(string $owner, string $repo, int $issueNumber, ?\Github\Model\ReposOwnerRepoIssuesIssueNumberReactionsPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ReactionsCreateForIssue($owner, $repo, $issueNumber, $requestBody), $fetch);
     }
@@ -4650,14 +4650,14 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner 
      * @param string $repo 
      * @param int $commentId comment_id parameter
-     * @param \Github\Model\ReposOwnerRepoPullsCommentsCommentIdReactionsPostBody $requestBody 
+     * @param null|\Github\Model\ReposOwnerRepoPullsCommentsCommentIdReactionsPostBody $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReactionsCreateForPullRequestReviewCommentUnsupportedMediaTypeException
      * @throws \Github\Exception\ReactionsCreateForPullRequestReviewCommentUnprocessableEntityException
      *
      * @return null|\Github\Model\Reaction|\Psr\Http\Message\ResponseInterface
      */
-    public function reactionsCreateForPullRequestReviewComment(string $owner, string $repo, int $commentId, \Github\Model\ReposOwnerRepoPullsCommentsCommentIdReactionsPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function reactionsCreateForPullRequestReviewComment(string $owner, string $repo, int $commentId, ?\Github\Model\ReposOwnerRepoPullsCommentsCommentIdReactionsPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ReactionsCreateForPullRequestReviewComment($owner, $repo, $commentId, $requestBody), $fetch);
     }
@@ -4777,12 +4777,12 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $teamSlug team_slug parameter
      * @param int $discussionNumber 
      * @param int $commentNumber 
-     * @param \Github\Model\OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBody $requestBody 
+     * @param null|\Github\Model\OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBody $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\Reaction|\Psr\Http\Message\ResponseInterface
      */
-    public function reactionsCreateForTeamDiscussionCommentInOrg(string $org, string $teamSlug, int $discussionNumber, int $commentNumber, \Github\Model\OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function reactionsCreateForTeamDiscussionCommentInOrg(string $org, string $teamSlug, int $discussionNumber, int $commentNumber, ?\Github\Model\OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ReactionsCreateForTeamDiscussionCommentInOrg($org, $teamSlug, $discussionNumber, $commentNumber, $requestBody), $fetch);
     }
@@ -4813,12 +4813,12 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $org 
      * @param string $teamSlug team_slug parameter
      * @param int $discussionNumber 
-     * @param \Github\Model\OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberReactionsPostBody $requestBody 
+     * @param null|\Github\Model\OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberReactionsPostBody $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\Reaction|\Psr\Http\Message\ResponseInterface
      */
-    public function reactionsCreateForTeamDiscussionInOrg(string $org, string $teamSlug, int $discussionNumber, \Github\Model\OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberReactionsPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function reactionsCreateForTeamDiscussionInOrg(string $org, string $teamSlug, int $discussionNumber, ?\Github\Model\OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberReactionsPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ReactionsCreateForTeamDiscussionInOrg($org, $teamSlug, $discussionNumber, $requestBody), $fetch);
     }
@@ -4866,14 +4866,14 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner 
      * @param string $repo 
      * @param int $commentId comment_id parameter
-     * @param \Github\Model\ReposOwnerRepoCommentsCommentIdReactionsPostBody $requestBody 
+     * @param null|\Github\Model\ReposOwnerRepoCommentsCommentIdReactionsPostBody $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReactionsCreateForCommitCommentUnsupportedMediaTypeException
      * @throws \Github\Exception\ReactionsCreateForCommitCommentUnprocessableEntityException
      *
      * @return null|\Github\Model\Reaction|\Psr\Http\Message\ResponseInterface
      */
-    public function reactionsCreateForCommitComment(string $owner, string $repo, int $commentId, \Github\Model\ReposOwnerRepoCommentsCommentIdReactionsPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function reactionsCreateForCommitComment(string $owner, string $repo, int $commentId, ?\Github\Model\ReposOwnerRepoCommentsCommentIdReactionsPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ReactionsCreateForCommitComment($owner, $repo, $commentId, $requestBody), $fetch);
     }
@@ -5016,7 +5016,7 @@ class Client extends \Github\Runtime\Client\Client
      * 
      *
      * @param string $org 
-     * @param \Github\Model\UserMembershipsOrgsOrgPatchBody $requestBody 
+     * @param null|\Github\Model\UserMembershipsOrgsOrgPatchBody $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\OrgsUpdateMembershipForAuthenticatedUserForbiddenException
      * @throws \Github\Exception\OrgsUpdateMembershipForAuthenticatedUserNotFoundException
@@ -5024,7 +5024,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\OrgMembership|\Psr\Http\Message\ResponseInterface
      */
-    public function orgsUpdateMembershipForAuthenticatedUser(string $org, \Github\Model\UserMembershipsOrgsOrgPatchBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function orgsUpdateMembershipForAuthenticatedUser(string $org, ?\Github\Model\UserMembershipsOrgsOrgPatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\OrgsUpdateMembershipForAuthenticatedUser($org, $requestBody), $fetch);
     }
@@ -5073,14 +5073,14 @@ class Client extends \Github\Runtime\Client\Client
     *
     * @param string $org 
     * @param string $username 
-    * @param \Github\Model\OrgsOrgMembershipsUsernamePutBody $requestBody 
+    * @param null|\Github\Model\OrgsOrgMembershipsUsernamePutBody $requestBody 
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Github\Exception\OrgsSetMembershipForUserUnprocessableEntityException
     * @throws \Github\Exception\OrgsSetMembershipForUserForbiddenException
     *
     * @return null|\Github\Model\OrgMembership|\Psr\Http\Message\ResponseInterface
     */
-    public function orgsSetMembershipForUser(string $org, string $username, \Github\Model\OrgsOrgMembershipsUsernamePutBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function orgsSetMembershipForUser(string $org, string $username, ?\Github\Model\OrgsOrgMembershipsUsernamePutBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\OrgsSetMembershipForUser($org, $username, $requestBody), $fetch);
     }
@@ -5117,14 +5117,14 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @param string $org 
      * @param int $hookId 
-     * @param \Github\Model\OrgsOrgHooksHookIdPatchBody $requestBody 
+     * @param null|\Github\Model\OrgsOrgHooksHookIdPatchBody $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\OrgsUpdateWebhookUnprocessableEntityException
      * @throws \Github\Exception\OrgsUpdateWebhookNotFoundException
      *
      * @return null|\Github\Model\OrgHook|\Psr\Http\Message\ResponseInterface
      */
-    public function orgsUpdateWebhook(string $org, int $hookId, \Github\Model\OrgsOrgHooksHookIdPatchBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function orgsUpdateWebhook(string $org, int $hookId, ?\Github\Model\OrgsOrgHooksHookIdPatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\OrgsUpdateWebhook($org, $hookId, $requestBody), $fetch);
     }
@@ -5167,7 +5167,7 @@ class Client extends \Github\Runtime\Client\Client
     Enables an authenticated organization owner with the `admin:org` scope to update the organization's profile and member privileges.
     *
     * @param string $org 
-    * @param \Github\Model\OrgsOrgPatchBody $requestBody 
+    * @param null|\Github\Model\OrgsOrgPatchBody $requestBody 
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Github\Exception\OrgsUpdateUnprocessableEntityException
     * @throws \Github\Exception\OrgsUpdateConflictException
@@ -5175,7 +5175,7 @@ class Client extends \Github\Runtime\Client\Client
     *
     * @return null|\Github\Model\OrganizationFull|\Psr\Http\Message\ResponseInterface
     */
-    public function orgsUpdate(string $org, \Github\Model\OrgsOrgPatchBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function orgsUpdate(string $org, ?\Github\Model\OrgsOrgPatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\OrgsUpdate($org, $requestBody), $fetch);
     }
@@ -5322,14 +5322,14 @@ class Client extends \Github\Runtime\Client\Client
     This endpoint triggers [notifications](https://help.github.com/articles/about-notifications/). Creating content too quickly using this endpoint may result in abuse rate limiting. See "[Abuse rate limits](https://developer.github.com/v3/#abuse-rate-limits)" and "[Dealing with abuse rate limits](https://developer.github.com/v3/guides/best-practices-for-integrators/#dealing-with-abuse-rate-limits)" for details.
     *
     * @param string $org 
-    * @param \Github\Model\OrgsOrgInvitationsPostBody $requestBody 
+    * @param null|\Github\Model\OrgsOrgInvitationsPostBody $requestBody 
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Github\Exception\OrgsCreateInvitationUnprocessableEntityException
     * @throws \Github\Exception\OrgsCreateInvitationNotFoundException
     *
     * @return null|\Github\Model\OrganizationInvitation|\Psr\Http\Message\ResponseInterface
     */
-    public function orgsCreateInvitation(string $org, \Github\Model\OrgsOrgInvitationsPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function orgsCreateInvitation(string $org, ?\Github\Model\OrgsOrgInvitationsPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\OrgsCreateInvitation($org, $requestBody), $fetch);
     }
@@ -5370,14 +5370,14 @@ class Client extends \Github\Runtime\Client\Client
      * Here's how you can create a hook that posts payloads in JSON format:
      *
      * @param string $org 
-     * @param \Github\Model\OrgsOrgHooksPostBody $requestBody 
+     * @param null|\Github\Model\OrgsOrgHooksPostBody $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\OrgsCreateWebhookUnprocessableEntityException
      * @throws \Github\Exception\OrgsCreateWebhookNotFoundException
      *
      * @return null|\Github\Model\OrgHook|\Psr\Http\Message\ResponseInterface
      */
-    public function orgsCreateWebhook(string $org, \Github\Model\OrgsOrgHooksPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function orgsCreateWebhook(string $org, ?\Github\Model\OrgsOrgHooksPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\OrgsCreateWebhook($org, $requestBody), $fetch);
     }
@@ -5798,7 +5798,7 @@ class Client extends \Github\Runtime\Client\Client
     
     Organizations that enforce SAML SSO require personal access tokens to be allowed. Read more about allowing tokens in [the GitHub Help documentation](https://help.github.com/articles/about-identity-and-access-management-with-saml-single-sign-on).
     *
-    * @param \Github\Model\AuthorizationsPostBody $requestBody 
+    * @param null|\Github\Model\AuthorizationsPostBody $requestBody 
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Github\Exception\OauthAuthorizationsCreateAuthorizationUnprocessableEntityException
     * @throws \Github\Exception\OauthAuthorizationsCreateAuthorizationGoneException
@@ -5807,7 +5807,7 @@ class Client extends \Github\Runtime\Client\Client
     *
     * @return null|\Github\Model\Authorization|\Psr\Http\Message\ResponseInterface
     */
-    public function oauthAuthorizationsCreateAuthorization(\Github\Model\AuthorizationsPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function oauthAuthorizationsCreateAuthorization(?\Github\Model\AuthorizationsPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\OauthAuthorizationsCreateAuthorization($requestBody), $fetch);
     }
@@ -5822,13 +5822,13 @@ class Client extends \Github\Runtime\Client\Client
     *
     * @param string $clientId 
     * @param string $fingerprint fingerprint parameter
-    * @param \Github\Model\AuthorizationsClientsClientIdFingerprintPutBody $requestBody 
+    * @param null|\Github\Model\AuthorizationsClientsClientIdFingerprintPutBody $requestBody 
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Github\Exception\OauthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintUnprocessableEntityException
     *
     * @return null|\Github\Model\Authorization|\Psr\Http\Message\ResponseInterface
     */
-    public function oauthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprint(string $clientId, string $fingerprint, \Github\Model\AuthorizationsClientsClientIdFingerprintPutBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function oauthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprint(string $clientId, string $fingerprint, ?\Github\Model\AuthorizationsClientsClientIdFingerprintPutBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\OauthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprint($clientId, $fingerprint, $requestBody), $fetch);
     }
@@ -5868,13 +5868,13 @@ class Client extends \Github\Runtime\Client\Client
     You can only send one of these scope keys at a time.
     *
     * @param int $authorizationId authorization_id parameter
-    * @param \Github\Model\AuthorizationsAuthorizationIdPatchBody $requestBody 
+    * @param null|\Github\Model\AuthorizationsAuthorizationIdPatchBody $requestBody 
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Github\Exception\OauthAuthorizationsUpdateAuthorizationUnprocessableEntityException
     *
     * @return null|\Github\Model\Authorization|\Psr\Http\Message\ResponseInterface
     */
-    public function oauthAuthorizationsUpdateAuthorization(int $authorizationId, \Github\Model\AuthorizationsAuthorizationIdPatchBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function oauthAuthorizationsUpdateAuthorization(int $authorizationId, ?\Github\Model\AuthorizationsAuthorizationIdPatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\OauthAuthorizationsUpdateAuthorization($authorizationId, $requestBody), $fetch);
     }
@@ -5890,7 +5890,7 @@ class Client extends \Github\Runtime\Client\Client
     **Deprecation Notice:** GitHub will discontinue the [OAuth Authorizations API](https://developer.github.com/v3/oauth_authorizations/), which is used by integrations to create personal access tokens and OAuth tokens, and you must now create these tokens using our [web application flow](https://developer.github.com/apps/building-oauth-apps/authorizing-oauth-apps/#web-application-flow). The [OAuth Authorizations API](https://developer.github.com/v3/oauth_authorizations/) will be removed on November, 13, 2020. For more information, including scheduled brownouts, see the [blog post](https://developer.github.com/changes/2020-02-14-deprecating-oauth-auth-endpoint/).
     *
     * @param string $clientId 
-    * @param \Github\Model\AuthorizationsClientsClientIdPutBody $requestBody 
+    * @param null|\Github\Model\AuthorizationsClientsClientIdPutBody $requestBody 
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Github\Exception\OauthAuthorizationsGetOrCreateAuthorizationForAppUnprocessableEntityException
     * @throws \Github\Exception\OauthAuthorizationsGetOrCreateAuthorizationForAppForbiddenException
@@ -5898,7 +5898,7 @@ class Client extends \Github\Runtime\Client\Client
     *
     * @return null|\Github\Model\Authorization|\Psr\Http\Message\ResponseInterface
     */
-    public function oauthAuthorizationsGetOrCreateAuthorizationForApp(string $clientId, \Github\Model\AuthorizationsClientsClientIdPutBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function oauthAuthorizationsGetOrCreateAuthorizationForApp(string $clientId, ?\Github\Model\AuthorizationsClientsClientIdPutBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\OauthAuthorizationsGetOrCreateAuthorizationForApp($clientId, $requestBody), $fetch);
     }
@@ -5994,7 +5994,7 @@ class Client extends \Github\Runtime\Client\Client
     /**
      * Adds a GPG key to the authenticated user's GitHub account. Requires that you are authenticated via Basic Auth, or OAuth with at least `write:gpg_key` [scope](https://developer.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
      *
-     * @param \Github\Model\UserGpgKeysPostBody $requestBody 
+     * @param null|\Github\Model\UserGpgKeysPostBody $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\UsersCreateGpgKeyForAuthenticatedUnprocessableEntityException
      * @throws \Github\Exception\UsersCreateGpgKeyForAuthenticatedNotFoundException
@@ -6003,7 +6003,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\GpgKey|\Psr\Http\Message\ResponseInterface
      */
-    public function usersCreateGpgKeyForAuthenticated(\Github\Model\UserGpgKeysPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function usersCreateGpgKeyForAuthenticated(?\Github\Model\UserGpgKeysPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\UsersCreateGpgKeyForAuthenticated($requestBody), $fetch);
     }
@@ -6071,7 +6071,7 @@ class Client extends \Github\Runtime\Client\Client
     /**
      * This endpoint is accessible with the `user` scope.
      *
-     * @param mixed $requestBody 
+     * @param null|mixed $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\UsersDeleteEmailForAuthenticatedNotFoundException
      * @throws \Github\Exception\UsersDeleteEmailForAuthenticatedForbiddenException
@@ -6080,7 +6080,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function usersDeleteEmailForAuthenticated($requestBody, string $fetch = self::FETCH_OBJECT)
+    public function usersDeleteEmailForAuthenticated($requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\UsersDeleteEmailForAuthenticated($requestBody), $fetch);
     }
@@ -6105,7 +6105,7 @@ class Client extends \Github\Runtime\Client\Client
     /**
      * This endpoint is accessible with the `user` scope.
      *
-     * @param mixed $requestBody 
+     * @param null|mixed $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\UsersAddEmailForAuthenticatedUnprocessableEntityException
      * @throws \Github\Exception\UsersAddEmailForAuthenticatedNotFoundException
@@ -6114,7 +6114,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function usersAddEmailForAuthenticated($requestBody, string $fetch = self::FETCH_OBJECT)
+    public function usersAddEmailForAuthenticated($requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\UsersAddEmailForAuthenticated($requestBody), $fetch);
     }
@@ -6330,7 +6330,7 @@ class Client extends \Github\Runtime\Client\Client
     /**
      * Adds a public SSH key to the authenticated user's GitHub account. Requires that you are authenticated via Basic Auth, or OAuth with at least `write:public_key` [scope](https://developer.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
      *
-     * @param \Github\Model\UserKeysPostBody $requestBody 
+     * @param null|\Github\Model\UserKeysPostBody $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\UsersCreatePublicSshKeyForAuthenticatedUnprocessableEntityException
      * @throws \Github\Exception\UsersCreatePublicSshKeyForAuthenticatedNotFoundException
@@ -6339,7 +6339,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\Key|\Psr\Http\Message\ResponseInterface
      */
-    public function usersCreatePublicSshKeyForAuthenticated(\Github\Model\UserKeysPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function usersCreatePublicSshKeyForAuthenticated(?\Github\Model\UserKeysPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\UsersCreatePublicSshKeyForAuthenticated($requestBody), $fetch);
     }
@@ -6357,7 +6357,7 @@ class Client extends \Github\Runtime\Client\Client
     /**
      * **Note:** If your email is set to private and you send an `email` parameter as part of this request to update your profile, your privacy settings are still enforced: the email address will not be displayed on your public profile or via the API.
      *
-     * @param \Github\Model\UserPatchBody $requestBody 
+     * @param null|\Github\Model\UserPatchBody $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\UsersUpdateAuthenticatedNotFoundException
      * @throws \Github\Exception\UsersUpdateAuthenticatedForbiddenException
@@ -6366,7 +6366,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\PrivateUser|\Psr\Http\Message\ResponseInterface
      */
-    public function usersUpdateAuthenticated(\Github\Model\UserPatchBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function usersUpdateAuthenticated(?\Github\Model\UserPatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\UsersUpdateAuthenticated($requestBody), $fetch);
     }
@@ -6415,7 +6415,7 @@ class Client extends \Github\Runtime\Client\Client
     /**
      * Sets the visibility for your primary email addresses.
      *
-     * @param \Github\Model\UserEmailVisibilityPatchBody $requestBody 
+     * @param null|\Github\Model\UserEmailVisibilityPatchBody $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\UsersSetPrimaryEmailVisibilityForAuthenticatedNotFoundException
      * @throws \Github\Exception\UsersSetPrimaryEmailVisibilityForAuthenticatedForbiddenException
@@ -6424,7 +6424,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function usersSetPrimaryEmailVisibilityForAuthenticated(\Github\Model\UserEmailVisibilityPatchBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function usersSetPrimaryEmailVisibilityForAuthenticated(?\Github\Model\UserEmailVisibilityPatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\UsersSetPrimaryEmailVisibilityForAuthenticated($requestBody), $fetch);
     }
@@ -6487,12 +6487,12 @@ class Client extends \Github\Runtime\Client\Client
     * @param string $owner 
     * @param string $repo 
     * @param int $workflowId 
-    * @param \Github\Model\ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody $requestBody 
+    * @param null|\Github\Model\ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody $requestBody 
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     *
     * @return null|\Psr\Http\Message\ResponseInterface
     */
-    public function actionsCreateWorkflowDispatch(string $owner, string $repo, int $workflowId, \Github\Model\ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function actionsCreateWorkflowDispatch(string $owner, string $repo, int $workflowId, ?\Github\Model\ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ActionsCreateWorkflowDispatch($owner, $repo, $workflowId, $requestBody), $fetch);
     }
@@ -6696,12 +6696,12 @@ class Client extends \Github\Runtime\Client\Client
     *
     * @param string $org 
     * @param string $secretName secret_name parameter
-    * @param \Github\Model\OrgsOrgActionsSecretsSecretNamePutBody $requestBody 
+    * @param null|\Github\Model\OrgsOrgActionsSecretsSecretNamePutBody $requestBody 
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     *
     * @return null|\Psr\Http\Message\ResponseInterface
     */
-    public function actionsCreateOrUpdateOrgSecret(string $org, string $secretName, \Github\Model\OrgsOrgActionsSecretsSecretNamePutBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function actionsCreateOrUpdateOrgSecret(string $org, string $secretName, ?\Github\Model\OrgsOrgActionsSecretsSecretNamePutBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ActionsCreateOrUpdateOrgSecret($org, $secretName, $requestBody), $fetch);
     }
@@ -6875,12 +6875,12 @@ class Client extends \Github\Runtime\Client\Client
     * @param string $owner 
     * @param string $repo 
     * @param string $secretName secret_name parameter
-    * @param \Github\Model\ReposOwnerRepoActionsSecretsSecretNamePutBody $requestBody 
+    * @param null|\Github\Model\ReposOwnerRepoActionsSecretsSecretNamePutBody $requestBody 
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     *
     * @return null|\Psr\Http\Message\ResponseInterface
     */
-    public function actionsCreateOrUpdateRepoSecret(string $owner, string $repo, string $secretName, \Github\Model\ReposOwnerRepoActionsSecretsSecretNamePutBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function actionsCreateOrUpdateRepoSecret(string $owner, string $repo, string $secretName, ?\Github\Model\ReposOwnerRepoActionsSecretsSecretNamePutBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ActionsCreateOrUpdateRepoSecret($owner, $repo, $secretName, $requestBody), $fetch);
     }
@@ -7232,12 +7232,12 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @param string $org 
      * @param string $secretName secret_name parameter
-     * @param \Github\Model\OrgsOrgActionsSecretsSecretNameRepositoriesPutBody $requestBody 
+     * @param null|\Github\Model\OrgsOrgActionsSecretsSecretNameRepositoriesPutBody $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function actionsSetSelectedReposForOrgSecret(string $org, string $secretName, \Github\Model\OrgsOrgActionsSecretsSecretNameRepositoriesPutBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function actionsSetSelectedReposForOrgSecret(string $org, string $secretName, ?\Github\Model\OrgsOrgActionsSecretsSecretNameRepositoriesPutBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ActionsSetSelectedReposForOrgSecret($org, $secretName, $requestBody), $fetch);
     }
@@ -7490,12 +7490,12 @@ class Client extends \Github\Runtime\Client\Client
     * @param string $teamSlug team_slug parameter
     * @param string $owner 
     * @param string $repo 
-    * @param \Github\Model\OrgsOrgTeamsTeamSlugReposOwnerRepoPutBody $requestBody 
+    * @param null|\Github\Model\OrgsOrgTeamsTeamSlugReposOwnerRepoPutBody $requestBody 
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     *
     * @return null|\Psr\Http\Message\ResponseInterface
     */
-    public function teamsAddOrUpdateRepoPermissionsInOrg(string $org, string $teamSlug, string $owner, string $repo, \Github\Model\OrgsOrgTeamsTeamSlugReposOwnerRepoPutBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function teamsAddOrUpdateRepoPermissionsInOrg(string $org, string $teamSlug, string $owner, string $repo, ?\Github\Model\OrgsOrgTeamsTeamSlugReposOwnerRepoPutBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\TeamsAddOrUpdateRepoPermissionsInOrg($org, $teamSlug, $owner, $repo, $requestBody), $fetch);
     }
@@ -7562,12 +7562,12 @@ class Client extends \Github\Runtime\Client\Client
     * @param int $teamId 
     * @param int $discussionNumber 
     * @param int $commentNumber 
-    * @param \Github\Model\TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberPatchBody $requestBody 
+    * @param null|\Github\Model\TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberPatchBody $requestBody 
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     *
     * @return null|\Github\Model\TeamDiscussionComment|\Psr\Http\Message\ResponseInterface
     */
-    public function teamsUpdateDiscussionCommentLegacy(int $teamId, int $discussionNumber, int $commentNumber, \Github\Model\TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberPatchBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function teamsUpdateDiscussionCommentLegacy(int $teamId, int $discussionNumber, int $commentNumber, ?\Github\Model\TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberPatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\TeamsUpdateDiscussionCommentLegacy($teamId, $discussionNumber, $commentNumber, $requestBody), $fetch);
     }
@@ -7616,14 +7616,14 @@ class Client extends \Github\Runtime\Client\Client
     * @param int $teamId 
     * @param string $owner 
     * @param string $repo 
-    * @param \Github\Model\TeamsTeamIdReposOwnerRepoPutBody $requestBody 
+    * @param null|\Github\Model\TeamsTeamIdReposOwnerRepoPutBody $requestBody 
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Github\Exception\TeamsAddOrUpdateRepoPermissionsLegacyForbiddenException
     * @throws \Github\Exception\TeamsAddOrUpdateRepoPermissionsLegacyUnprocessableEntityException
     *
     * @return null|\Psr\Http\Message\ResponseInterface
     */
-    public function teamsAddOrUpdateRepoPermissionsLegacy(int $teamId, string $owner, string $repo, \Github\Model\TeamsTeamIdReposOwnerRepoPutBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function teamsAddOrUpdateRepoPermissionsLegacy(int $teamId, string $owner, string $repo, ?\Github\Model\TeamsTeamIdReposOwnerRepoPutBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\TeamsAddOrUpdateRepoPermissionsLegacy($teamId, $owner, $repo, $requestBody), $fetch);
     }
@@ -7682,7 +7682,7 @@ class Client extends \Github\Runtime\Client\Client
     *
     * @param int $teamId 
     * @param string $username 
-    * @param \Github\Model\TeamsTeamIdMembershipsUsernamePutBody $requestBody 
+    * @param null|\Github\Model\TeamsTeamIdMembershipsUsernamePutBody $requestBody 
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Github\Exception\TeamsAddOrUpdateMembershipForUserLegacyForbiddenException
     * @throws \Github\Exception\TeamsAddOrUpdateMembershipForUserLegacyUnprocessableEntityException
@@ -7690,7 +7690,7 @@ class Client extends \Github\Runtime\Client\Client
     *
     * @return null|\Github\Model\TeamMembership|\Psr\Http\Message\ResponseInterface
     */
-    public function teamsAddOrUpdateMembershipForUserLegacy(int $teamId, string $username, \Github\Model\TeamsTeamIdMembershipsUsernamePutBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function teamsAddOrUpdateMembershipForUserLegacy(int $teamId, string $username, ?\Github\Model\TeamsTeamIdMembershipsUsernamePutBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\TeamsAddOrUpdateMembershipForUserLegacy($teamId, $username, $requestBody), $fetch);
     }
@@ -7724,12 +7724,12 @@ class Client extends \Github\Runtime\Client\Client
     * @param string $org 
     * @param string $teamSlug team_slug parameter
     * @param int $discussionNumber 
-    * @param \Github\Model\OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsPostBody $requestBody 
+    * @param null|\Github\Model\OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsPostBody $requestBody 
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     *
     * @return null|\Github\Model\TeamDiscussionComment|\Psr\Http\Message\ResponseInterface
     */
-    public function teamsCreateDiscussionCommentInOrg(string $org, string $teamSlug, int $discussionNumber, \Github\Model\OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function teamsCreateDiscussionCommentInOrg(string $org, string $teamSlug, int $discussionNumber, ?\Github\Model\OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\TeamsCreateDiscussionCommentInOrg($org, $teamSlug, $discussionNumber, $requestBody), $fetch);
     }
@@ -7770,12 +7770,12 @@ class Client extends \Github\Runtime\Client\Client
     *
     * @param int $teamId 
     * @param int $discussionNumber 
-    * @param \Github\Model\TeamsTeamIdDiscussionsDiscussionNumberPatchBody $requestBody 
+    * @param null|\Github\Model\TeamsTeamIdDiscussionsDiscussionNumberPatchBody $requestBody 
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     *
     * @return null|\Github\Model\TeamDiscussion|\Psr\Http\Message\ResponseInterface
     */
-    public function teamsUpdateDiscussionLegacy(int $teamId, int $discussionNumber, \Github\Model\TeamsTeamIdDiscussionsDiscussionNumberPatchBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function teamsUpdateDiscussionLegacy(int $teamId, int $discussionNumber, ?\Github\Model\TeamsTeamIdDiscussionsDiscussionNumberPatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\TeamsUpdateDiscussionLegacy($teamId, $discussionNumber, $requestBody), $fetch);
     }
@@ -7818,7 +7818,7 @@ class Client extends \Github\Runtime\Client\Client
     **Note:** With nested teams, the `privacy` for parent teams cannot be `secret`.
     *
     * @param int $teamId 
-    * @param \Github\Model\TeamsTeamIdPatchBody $requestBody 
+    * @param null|\Github\Model\TeamsTeamIdPatchBody $requestBody 
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Github\Exception\TeamsUpdateLegacyNotFoundException
     * @throws \Github\Exception\TeamsUpdateLegacyUnprocessableEntityException
@@ -7826,7 +7826,7 @@ class Client extends \Github\Runtime\Client\Client
     *
     * @return null|\Github\Model\TeamFull|\Psr\Http\Message\ResponseInterface
     */
-    public function teamsUpdateLegacy(int $teamId, \Github\Model\TeamsTeamIdPatchBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function teamsUpdateLegacy(int $teamId, ?\Github\Model\TeamsTeamIdPatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\TeamsUpdateLegacy($teamId, $requestBody), $fetch);
     }
@@ -7858,12 +7858,12 @@ class Client extends \Github\Runtime\Client\Client
     *
     * @param string $org 
     * @param string $teamSlug team_slug parameter
-    * @param \Github\Model\OrgsOrgTeamsTeamSlugDiscussionsPostBody $requestBody 
+    * @param null|\Github\Model\OrgsOrgTeamsTeamSlugDiscussionsPostBody $requestBody 
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     *
     * @return null|\Github\Model\TeamDiscussion|\Psr\Http\Message\ResponseInterface
     */
-    public function teamsCreateDiscussionInOrg(string $org, string $teamSlug, \Github\Model\OrgsOrgTeamsTeamSlugDiscussionsPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function teamsCreateDiscussionInOrg(string $org, string $teamSlug, ?\Github\Model\OrgsOrgTeamsTeamSlugDiscussionsPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\TeamsCreateDiscussionInOrg($org, $teamSlug, $requestBody), $fetch);
     }
@@ -7893,14 +7893,14 @@ class Client extends \Github\Runtime\Client\Client
     Creates, updates, or removes a connection between a team and an IdP group. When adding groups to a team, you must include all new and existing groups to avoid replacing existing groups with the new ones. Specifying an empty `groups` array will remove all connections for a team.
     *
     * @param int $teamId 
-    * @param \Github\Model\TeamsTeamIdTeamSyncGroupMappingsPatchBody $requestBody 
+    * @param null|\Github\Model\TeamsTeamIdTeamSyncGroupMappingsPatchBody $requestBody 
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Github\Exception\TeamsCreateOrUpdateIdpGroupConnectionsLegacyUnprocessableEntityException
     * @throws \Github\Exception\TeamsCreateOrUpdateIdpGroupConnectionsLegacyForbiddenException
     *
     * @return null|\Github\Model\GroupMapping|\Psr\Http\Message\ResponseInterface
     */
-    public function teamsCreateOrUpdateIdpGroupConnectionsLegacy(int $teamId, \Github\Model\TeamsTeamIdTeamSyncGroupMappingsPatchBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function teamsCreateOrUpdateIdpGroupConnectionsLegacy(int $teamId, ?\Github\Model\TeamsTeamIdTeamSyncGroupMappingsPatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\TeamsCreateOrUpdateIdpGroupConnectionsLegacy($teamId, $requestBody), $fetch);
     }
@@ -7941,12 +7941,12 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $org 
      * @param string $teamSlug team_slug parameter
      * @param int $discussionNumber 
-     * @param \Github\Model\OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBody $requestBody 
+     * @param null|\Github\Model\OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBody $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\TeamDiscussion|\Psr\Http\Message\ResponseInterface
      */
-    public function teamsUpdateDiscussionInOrg(string $org, string $teamSlug, int $discussionNumber, \Github\Model\OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function teamsUpdateDiscussionInOrg(string $org, string $teamSlug, int $discussionNumber, ?\Github\Model\OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\TeamsUpdateDiscussionInOrg($org, $teamSlug, $discussionNumber, $requestBody), $fetch);
     }
@@ -7997,12 +7997,12 @@ class Client extends \Github\Runtime\Client\Client
     *
     * @param int $teamId 
     * @param int $discussionNumber 
-    * @param \Github\Model\TeamsTeamIdDiscussionsDiscussionNumberCommentsPostBody $requestBody 
+    * @param null|\Github\Model\TeamsTeamIdDiscussionsDiscussionNumberCommentsPostBody $requestBody 
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     *
     * @return null|\Github\Model\TeamDiscussionComment|\Psr\Http\Message\ResponseInterface
     */
-    public function teamsCreateDiscussionCommentLegacy(int $teamId, int $discussionNumber, \Github\Model\TeamsTeamIdDiscussionsDiscussionNumberCommentsPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function teamsCreateDiscussionCommentLegacy(int $teamId, int $discussionNumber, ?\Github\Model\TeamsTeamIdDiscussionsDiscussionNumberCommentsPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\TeamsCreateDiscussionCommentLegacy($teamId, $discussionNumber, $requestBody), $fetch);
     }
@@ -8079,13 +8079,13 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $org 
      * @param string $teamSlug team_slug parameter
      * @param int $projectId 
-     * @param \Github\Model\OrgsOrgTeamsTeamSlugProjectsProjectIdPutBody $requestBody 
+     * @param null|\Github\Model\OrgsOrgTeamsTeamSlugProjectsProjectIdPutBody $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\TeamsAddOrUpdateProjectPermissionsInOrgForbiddenException
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function teamsAddOrUpdateProjectPermissionsInOrg(string $org, string $teamSlug, int $projectId, \Github\Model\OrgsOrgTeamsTeamSlugProjectsProjectIdPutBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function teamsAddOrUpdateProjectPermissionsInOrg(string $org, string $teamSlug, int $projectId, ?\Github\Model\OrgsOrgTeamsTeamSlugProjectsProjectIdPutBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\TeamsAddOrUpdateProjectPermissionsInOrg($org, $teamSlug, $projectId, $requestBody), $fetch);
     }
@@ -8129,12 +8129,12 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $teamSlug team_slug parameter
      * @param int $discussionNumber 
      * @param int $commentNumber 
-     * @param \Github\Model\OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberPatchBody $requestBody 
+     * @param null|\Github\Model\OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberPatchBody $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\TeamDiscussionComment|\Psr\Http\Message\ResponseInterface
      */
-    public function teamsUpdateDiscussionCommentInOrg(string $org, string $teamSlug, int $discussionNumber, int $commentNumber, \Github\Model\OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberPatchBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function teamsUpdateDiscussionCommentInOrg(string $org, string $teamSlug, int $discussionNumber, int $commentNumber, ?\Github\Model\OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberPatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\TeamsUpdateDiscussionCommentInOrg($org, $teamSlug, $discussionNumber, $commentNumber, $requestBody), $fetch);
     }
@@ -8237,7 +8237,7 @@ class Client extends \Github\Runtime\Client\Client
     *
     * @param int $teamId 
     * @param int $projectId 
-    * @param \Github\Model\TeamsTeamIdProjectsProjectIdPutBody $requestBody 
+    * @param null|\Github\Model\TeamsTeamIdProjectsProjectIdPutBody $requestBody 
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Github\Exception\TeamsAddOrUpdateProjectPermissionsLegacyForbiddenException
     * @throws \Github\Exception\TeamsAddOrUpdateProjectPermissionsLegacyNotFoundException
@@ -8246,7 +8246,7 @@ class Client extends \Github\Runtime\Client\Client
     *
     * @return null|\Psr\Http\Message\ResponseInterface
     */
-    public function teamsAddOrUpdateProjectPermissionsLegacy(int $teamId, int $projectId, \Github\Model\TeamsTeamIdProjectsProjectIdPutBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function teamsAddOrUpdateProjectPermissionsLegacy(int $teamId, int $projectId, ?\Github\Model\TeamsTeamIdProjectsProjectIdPutBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\TeamsAddOrUpdateProjectPermissionsLegacy($teamId, $projectId, $requestBody), $fetch);
     }
@@ -8308,14 +8308,14 @@ class Client extends \Github\Runtime\Client\Client
     * @param string $org 
     * @param string $teamSlug team_slug parameter
     * @param string $username 
-    * @param \Github\Model\OrgsOrgTeamsTeamSlugMembershipsUsernamePutBody $requestBody 
+    * @param null|\Github\Model\OrgsOrgTeamsTeamSlugMembershipsUsernamePutBody $requestBody 
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Github\Exception\TeamsAddOrUpdateMembershipForUserInOrgForbiddenException
     * @throws \Github\Exception\TeamsAddOrUpdateMembershipForUserInOrgUnprocessableEntityException
     *
     * @return null|\Github\Model\TeamMembership|\Psr\Http\Message\ResponseInterface
     */
-    public function teamsAddOrUpdateMembershipForUserInOrg(string $org, string $teamSlug, string $username, \Github\Model\OrgsOrgTeamsTeamSlugMembershipsUsernamePutBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function teamsAddOrUpdateMembershipForUserInOrg(string $org, string $teamSlug, string $username, ?\Github\Model\OrgsOrgTeamsTeamSlugMembershipsUsernamePutBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\TeamsAddOrUpdateMembershipForUserInOrg($org, $teamSlug, $username, $requestBody), $fetch);
     }
@@ -8395,12 +8395,12 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @param string $org 
      * @param string $teamSlug team_slug parameter
-     * @param \Github\Model\OrgsOrgTeamsTeamSlugPatchBody $requestBody 
+     * @param null|\Github\Model\OrgsOrgTeamsTeamSlugPatchBody $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\TeamFull|\Psr\Http\Message\ResponseInterface
      */
-    public function teamsUpdateInOrg(string $org, string $teamSlug, \Github\Model\OrgsOrgTeamsTeamSlugPatchBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function teamsUpdateInOrg(string $org, string $teamSlug, ?\Github\Model\OrgsOrgTeamsTeamSlugPatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\TeamsUpdateInOrg($org, $teamSlug, $requestBody), $fetch);
     }
@@ -8427,14 +8427,14 @@ class Client extends \Github\Runtime\Client\Client
     When you create a new team, you automatically become a team maintainer without explicitly adding yourself to the optional array of `maintainers`. For more information, see "[About teams](https://help.github.com/en/github/setting-up-and-managing-organizations-and-teams/about-teams)".
     *
     * @param string $org 
-    * @param \Github\Model\OrgsOrgTeamsPostBody $requestBody 
+    * @param null|\Github\Model\OrgsOrgTeamsPostBody $requestBody 
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Github\Exception\TeamsCreateUnprocessableEntityException
     * @throws \Github\Exception\TeamsCreateForbiddenException
     *
     * @return null|\Github\Model\TeamFull|\Psr\Http\Message\ResponseInterface
     */
-    public function teamsCreate(string $org, \Github\Model\OrgsOrgTeamsPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function teamsCreate(string $org, ?\Github\Model\OrgsOrgTeamsPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\TeamsCreate($org, $requestBody), $fetch);
     }
@@ -8483,12 +8483,12 @@ class Client extends \Github\Runtime\Client\Client
     This endpoint triggers [notifications](https://help.github.com/articles/about-notifications/). Creating content too quickly using this endpoint may result in abuse rate limiting. See "[Abuse rate limits](https://developer.github.com/v3/#abuse-rate-limits)" and "[Dealing with abuse rate limits](https://developer.github.com/v3/guides/best-practices-for-integrators/#dealing-with-abuse-rate-limits)" for details.
     *
     * @param int $teamId 
-    * @param \Github\Model\TeamsTeamIdDiscussionsPostBody $requestBody 
+    * @param null|\Github\Model\TeamsTeamIdDiscussionsPostBody $requestBody 
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     *
     * @return null|\Github\Model\TeamDiscussion|\Psr\Http\Message\ResponseInterface
     */
-    public function teamsCreateDiscussionLegacy(int $teamId, \Github\Model\TeamsTeamIdDiscussionsPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function teamsCreateDiscussionLegacy(int $teamId, ?\Github\Model\TeamsTeamIdDiscussionsPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\TeamsCreateDiscussionLegacy($teamId, $requestBody), $fetch);
     }
@@ -8518,12 +8518,12 @@ class Client extends \Github\Runtime\Client\Client
     *
     * @param string $org 
     * @param string $teamSlug team_slug parameter
-    * @param \Github\Model\OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBody $requestBody 
+    * @param null|\Github\Model\OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBody $requestBody 
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     *
     * @return null|\Github\Model\GroupMapping|\Psr\Http\Message\ResponseInterface
     */
-    public function teamsCreateOrUpdateIdpGroupConnectionsInOrg(string $org, string $teamSlug, \Github\Model\OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function teamsCreateOrUpdateIdpGroupConnectionsInOrg(string $org, string $teamSlug, ?\Github\Model\OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\TeamsCreateOrUpdateIdpGroupConnectionsInOrg($org, $teamSlug, $requestBody), $fetch);
     }
@@ -8641,12 +8641,12 @@ class Client extends \Github\Runtime\Client\Client
     * @param string $owner 
     * @param string $repo 
     * @param int $commentId comment_id parameter
-    * @param \Github\Model\ReposOwnerRepoPullsCommentsCommentIdPatchBody $requestBody 
+    * @param null|\Github\Model\ReposOwnerRepoPullsCommentsCommentIdPatchBody $requestBody 
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     *
     * @return null|\Github\Model\PullRequestReviewComment|\Psr\Http\Message\ResponseInterface
     */
-    public function pullsUpdateReviewComment(string $owner, string $repo, int $commentId, \Github\Model\ReposOwnerRepoPullsCommentsCommentIdPatchBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function pullsUpdateReviewComment(string $owner, string $repo, int $commentId, ?\Github\Model\ReposOwnerRepoPullsCommentsCommentIdPatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\PullsUpdateReviewComment($owner, $repo, $commentId, $requestBody), $fetch);
     }
@@ -8721,14 +8721,14 @@ class Client extends \Github\Runtime\Client\Client
     * @param string $owner 
     * @param string $repo 
     * @param int $pullNumber 
-    * @param \Github\Model\ReposOwnerRepoPullsPullNumberCommentsPostBody $requestBody 
+    * @param null|\Github\Model\ReposOwnerRepoPullsPullNumberCommentsPostBody $requestBody 
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Github\Exception\PullsCreateReviewCommentUnprocessableEntityException
     * @throws \Github\Exception\PullsCreateReviewCommentForbiddenException
     *
     * @return null|\Github\Model\PullRequestReviewComment|\Psr\Http\Message\ResponseInterface
     */
-    public function pullsCreateReviewComment(string $owner, string $repo, int $pullNumber, \Github\Model\ReposOwnerRepoPullsPullNumberCommentsPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function pullsCreateReviewComment(string $owner, string $repo, int $pullNumber, ?\Github\Model\ReposOwnerRepoPullsPullNumberCommentsPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\PullsCreateReviewComment($owner, $repo, $pullNumber, $requestBody), $fetch);
     }
@@ -8812,13 +8812,13 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $repo 
      * @param int $pullNumber 
      * @param int $reviewId review_id parameter
-     * @param \Github\Model\ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBody $requestBody 
+     * @param null|\Github\Model\ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBody $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\PullsUpdateReviewUnprocessableEntityException
      *
      * @return null|\Github\Model\PullRequestReview|\Psr\Http\Message\ResponseInterface
      */
-    public function pullsUpdateReview(string $owner, string $repo, int $pullNumber, int $reviewId, \Github\Model\ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function pullsUpdateReview(string $owner, string $repo, int $pullNumber, int $reviewId, ?\Github\Model\ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\PullsUpdateReview($owner, $repo, $pullNumber, $reviewId, $requestBody), $fetch);
     }
@@ -8829,14 +8829,14 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $repo 
      * @param int $pullNumber 
      * @param int $reviewId review_id parameter
-     * @param \Github\Model\ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBody $requestBody 
+     * @param null|\Github\Model\ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBody $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\PullsDismissReviewNotFoundException
      * @throws \Github\Exception\PullsDismissReviewUnprocessableEntityException
      *
      * @return null|\Github\Model\PullRequestReview|\Psr\Http\Message\ResponseInterface
      */
-    public function pullsDismissReview(string $owner, string $repo, int $pullNumber, int $reviewId, \Github\Model\ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function pullsDismissReview(string $owner, string $repo, int $pullNumber, int $reviewId, ?\Github\Model\ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\PullsDismissReview($owner, $repo, $pullNumber, $reviewId, $requestBody), $fetch);
     }
@@ -8846,13 +8846,13 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner 
      * @param string $repo 
      * @param int $pullNumber 
-     * @param \Github\Model\ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBody $requestBody 
+     * @param null|\Github\Model\ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBody $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\PullsRemoveRequestedReviewersUnprocessableEntityException
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function pullsRemoveRequestedReviewers(string $owner, string $repo, int $pullNumber, \Github\Model\ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function pullsRemoveRequestedReviewers(string $owner, string $repo, int $pullNumber, ?\Github\Model\ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\PullsRemoveRequestedReviewers($owner, $repo, $pullNumber, $requestBody), $fetch);
     }
@@ -8880,14 +8880,14 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner 
      * @param string $repo 
      * @param int $pullNumber 
-     * @param \Github\Model\ReposOwnerRepoPullsPullNumberRequestedReviewersPostBody $requestBody 
+     * @param null|\Github\Model\ReposOwnerRepoPullsPullNumberRequestedReviewersPostBody $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\PullsRequestReviewersUnprocessableEntityException
      * @throws \Github\Exception\PullsRequestReviewersForbiddenException
      *
      * @return null|\Github\Model\PullRequestSimple|\Psr\Http\Message\ResponseInterface
      */
-    public function pullsRequestReviewers(string $owner, string $repo, int $pullNumber, \Github\Model\ReposOwnerRepoPullsPullNumberRequestedReviewersPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function pullsRequestReviewers(string $owner, string $repo, int $pullNumber, ?\Github\Model\ReposOwnerRepoPullsPullNumberRequestedReviewersPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\PullsRequestReviewers($owner, $repo, $pullNumber, $requestBody), $fetch);
     }
@@ -8929,14 +8929,14 @@ class Client extends \Github\Runtime\Client\Client
     * @param string $owner 
     * @param string $repo 
     * @param int $pullNumber 
-    * @param \Github\Model\ReposOwnerRepoPullsPullNumberPatchBody $requestBody 
+    * @param null|\Github\Model\ReposOwnerRepoPullsPullNumberPatchBody $requestBody 
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Github\Exception\PullsUpdateUnprocessableEntityException
     * @throws \Github\Exception\PullsUpdateForbiddenException
     *
     * @return null|\Github\Model\PullRequest|\Psr\Http\Message\ResponseInterface
     */
-    public function pullsUpdate(string $owner, string $repo, int $pullNumber, \Github\Model\ReposOwnerRepoPullsPullNumberPatchBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function pullsUpdate(string $owner, string $repo, int $pullNumber, ?\Github\Model\ReposOwnerRepoPullsPullNumberPatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\PullsUpdate($owner, $repo, $pullNumber, $requestBody), $fetch);
     }
@@ -8970,14 +8970,14 @@ class Client extends \Github\Runtime\Client\Client
     * @param string $owner 
     * @param string $repo 
     * @param int $pullNumber 
-    * @param \Github\Model\ReposOwnerRepoPullsPullNumberReviewsPostBody $requestBody 
+    * @param null|\Github\Model\ReposOwnerRepoPullsPullNumberReviewsPostBody $requestBody 
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Github\Exception\PullsCreateReviewUnprocessableEntityException
     * @throws \Github\Exception\PullsCreateReviewForbiddenException
     *
     * @return null|\Github\Model\PullRequestReview|\Psr\Http\Message\ResponseInterface
     */
-    public function pullsCreateReview(string $owner, string $repo, int $pullNumber, \Github\Model\ReposOwnerRepoPullsPullNumberReviewsPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function pullsCreateReview(string $owner, string $repo, int $pullNumber, ?\Github\Model\ReposOwnerRepoPullsPullNumberReviewsPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\PullsCreateReview($owner, $repo, $pullNumber, $requestBody), $fetch);
     }
@@ -9002,7 +9002,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner 
      * @param string $repo 
      * @param int $pullNumber 
-     * @param \Github\Model\ReposOwnerRepoPullsPullNumberMergePutBody $requestBody 
+     * @param null|\Github\Model\ReposOwnerRepoPullsPullNumberMergePutBody $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\PullsMergeMethodNotAllowedException
      * @throws \Github\Exception\PullsMergeConflictException
@@ -9012,7 +9012,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\PullRequestMergeResult|\Psr\Http\Message\ResponseInterface
      */
-    public function pullsMerge(string $owner, string $repo, int $pullNumber, \Github\Model\ReposOwnerRepoPullsPullNumberMergePutBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function pullsMerge(string $owner, string $repo, int $pullNumber, ?\Github\Model\ReposOwnerRepoPullsPullNumberMergePutBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\PullsMerge($owner, $repo, $pullNumber, $requestBody), $fetch);
     }
@@ -9022,7 +9022,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner 
      * @param string $repo 
      * @param int $pullNumber 
-     * @param \Github\Model\ReposOwnerRepoPullsPullNumberUpdateBranchPutBody $requestBody 
+     * @param null|\Github\Model\ReposOwnerRepoPullsPullNumberUpdateBranchPutBody $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\PullsUpdateBranchUnprocessableEntityException
      * @throws \Github\Exception\PullsUpdateBranchForbiddenException
@@ -9030,7 +9030,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202|\Psr\Http\Message\ResponseInterface
      */
-    public function pullsUpdateBranch(string $owner, string $repo, int $pullNumber, \Github\Model\ReposOwnerRepoPullsPullNumberUpdateBranchPutBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function pullsUpdateBranch(string $owner, string $repo, int $pullNumber, ?\Github\Model\ReposOwnerRepoPullsPullNumberUpdateBranchPutBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\PullsUpdateBranch($owner, $repo, $pullNumber, $requestBody), $fetch);
     }
@@ -9088,14 +9088,14 @@ class Client extends \Github\Runtime\Client\Client
     *
     * @param string $owner 
     * @param string $repo 
-    * @param \Github\Model\ReposOwnerRepoPullsPostBody $requestBody 
+    * @param null|\Github\Model\ReposOwnerRepoPullsPostBody $requestBody 
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Github\Exception\PullsCreateForbiddenException
     * @throws \Github\Exception\PullsCreateUnprocessableEntityException
     *
     * @return null|\Github\Model\PullRequest|\Psr\Http\Message\ResponseInterface
     */
-    public function pullsCreate(string $owner, string $repo, \Github\Model\ReposOwnerRepoPullsPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function pullsCreate(string $owner, string $repo, ?\Github\Model\ReposOwnerRepoPullsPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\PullsCreate($owner, $repo, $requestBody), $fetch);
     }
@@ -9108,13 +9108,13 @@ class Client extends \Github\Runtime\Client\Client
     * @param string $repo 
     * @param int $pullNumber 
     * @param int $commentId comment_id parameter
-    * @param \Github\Model\ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBody $requestBody 
+    * @param null|\Github\Model\ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBody $requestBody 
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Github\Exception\PullsCreateReplyForReviewCommentNotFoundException
     *
     * @return null|\Github\Model\PullRequestReviewComment|\Psr\Http\Message\ResponseInterface
     */
-    public function pullsCreateReplyForReviewComment(string $owner, string $repo, int $pullNumber, int $commentId, \Github\Model\ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function pullsCreateReplyForReviewComment(string $owner, string $repo, int $pullNumber, int $commentId, ?\Github\Model\ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\PullsCreateReplyForReviewComment($owner, $repo, $pullNumber, $commentId, $requestBody), $fetch);
     }
@@ -9143,7 +9143,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $repo 
      * @param int $pullNumber 
      * @param int $reviewId review_id parameter
-     * @param \Github\Model\ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBody $requestBody 
+     * @param null|\Github\Model\ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBody $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\PullsSubmitReviewNotFoundException
      * @throws \Github\Exception\PullsSubmitReviewUnprocessableEntityException
@@ -9151,7 +9151,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\PullRequestReview|\Psr\Http\Message\ResponseInterface
      */
-    public function pullsSubmitReview(string $owner, string $repo, int $pullNumber, int $reviewId, \Github\Model\ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function pullsSubmitReview(string $owner, string $repo, int $pullNumber, int $reviewId, ?\Github\Model\ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\PullsSubmitReview($owner, $repo, $pullNumber, $reviewId, $requestBody), $fetch);
     }
@@ -9278,7 +9278,7 @@ class Client extends \Github\Runtime\Client\Client
     * @param string $owner 
     * @param string $repo 
     * @param int $issueNumber issue_number parameter
-    * @param \Github\Model\ReposOwnerRepoIssuesIssueNumberLockPutBody $requestBody 
+    * @param null|\Github\Model\ReposOwnerRepoIssuesIssueNumberLockPutBody $requestBody 
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Github\Exception\IssuesLockForbiddenException
     * @throws \Github\Exception\IssuesLockGoneException
@@ -9287,7 +9287,7 @@ class Client extends \Github\Runtime\Client\Client
     *
     * @return null|\Psr\Http\Message\ResponseInterface
     */
-    public function issuesLock(string $owner, string $repo, int $issueNumber, \Github\Model\ReposOwnerRepoIssuesIssueNumberLockPutBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function issuesLock(string $owner, string $repo, int $issueNumber, ?\Github\Model\ReposOwnerRepoIssuesIssueNumberLockPutBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\IssuesLock($owner, $repo, $issueNumber, $requestBody), $fetch);
     }
@@ -9327,12 +9327,12 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner 
      * @param string $repo 
      * @param int $milestoneNumber milestone_number parameter
-     * @param \Github\Model\ReposOwnerRepoMilestonesMilestoneNumberPatchBody $requestBody 
+     * @param null|\Github\Model\ReposOwnerRepoMilestonesMilestoneNumberPatchBody $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\Milestone|\Psr\Http\Message\ResponseInterface
      */
-    public function issuesUpdateMilestone(string $owner, string $repo, int $milestoneNumber, \Github\Model\ReposOwnerRepoMilestonesMilestoneNumberPatchBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function issuesUpdateMilestone(string $owner, string $repo, int $milestoneNumber, ?\Github\Model\ReposOwnerRepoMilestonesMilestoneNumberPatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\IssuesUpdateMilestone($owner, $repo, $milestoneNumber, $requestBody), $fetch);
     }
@@ -9379,14 +9379,14 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @param string $owner 
      * @param string $repo 
-     * @param \Github\Model\ReposOwnerRepoMilestonesPostBody $requestBody 
+     * @param null|\Github\Model\ReposOwnerRepoMilestonesPostBody $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\IssuesCreateMilestoneNotFoundException
      * @throws \Github\Exception\IssuesCreateMilestoneUnprocessableEntityException
      *
      * @return null|\Github\Model\Milestone|\Psr\Http\Message\ResponseInterface
      */
-    public function issuesCreateMilestone(string $owner, string $repo, \Github\Model\ReposOwnerRepoMilestonesPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function issuesCreateMilestone(string $owner, string $repo, ?\Github\Model\ReposOwnerRepoMilestonesPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\IssuesCreateMilestone($owner, $repo, $requestBody), $fetch);
     }
@@ -9425,13 +9425,13 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner 
      * @param string $repo 
      * @param int $commentId comment_id parameter
-     * @param \Github\Model\ReposOwnerRepoIssuesCommentsCommentIdPatchBody $requestBody 
+     * @param null|\Github\Model\ReposOwnerRepoIssuesCommentsCommentIdPatchBody $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\IssuesUpdateCommentUnprocessableEntityException
      *
      * @return null|\Github\Model\IssueComment|\Psr\Http\Message\ResponseInterface
      */
-    public function issuesUpdateComment(string $owner, string $repo, int $commentId, \Github\Model\ReposOwnerRepoIssuesCommentsCommentIdPatchBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function issuesUpdateComment(string $owner, string $repo, int $commentId, ?\Github\Model\ReposOwnerRepoIssuesCommentsCommentIdPatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\IssuesUpdateComment($owner, $repo, $commentId, $requestBody), $fetch);
     }
@@ -9467,7 +9467,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner 
      * @param string $repo 
      * @param int $issueNumber issue_number parameter
-     * @param \Github\Model\ReposOwnerRepoIssuesIssueNumberPatchBody $requestBody 
+     * @param null|\Github\Model\ReposOwnerRepoIssuesIssueNumberPatchBody $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\IssuesUpdateUnprocessableEntityException
      * @throws \Github\Exception\IssuesUpdateServiceUnavailableException
@@ -9477,7 +9477,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\Issue|\Psr\Http\Message\ResponseInterface
      */
-    public function issuesUpdate(string $owner, string $repo, int $issueNumber, \Github\Model\ReposOwnerRepoIssuesIssueNumberPatchBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function issuesUpdate(string $owner, string $repo, int $issueNumber, ?\Github\Model\ReposOwnerRepoIssuesIssueNumberPatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\IssuesUpdate($owner, $repo, $issueNumber, $requestBody), $fetch);
     }
@@ -9516,12 +9516,12 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner 
      * @param string $repo 
      * @param string $name name parameter
-     * @param \Github\Model\ReposOwnerRepoLabelsNamePatchBody $requestBody 
+     * @param null|\Github\Model\ReposOwnerRepoLabelsNamePatchBody $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\Label|\Psr\Http\Message\ResponseInterface
      */
-    public function issuesUpdateLabel(string $owner, string $repo, string $name, \Github\Model\ReposOwnerRepoLabelsNamePatchBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function issuesUpdateLabel(string $owner, string $repo, string $name, ?\Github\Model\ReposOwnerRepoLabelsNamePatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\IssuesUpdateLabel($owner, $repo, $name, $requestBody), $fetch);
     }
@@ -9548,14 +9548,14 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @param string $owner 
      * @param string $repo 
-     * @param \Github\Model\ReposOwnerRepoLabelsPostBody $requestBody 
+     * @param null|\Github\Model\ReposOwnerRepoLabelsPostBody $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\IssuesCreateLabelUnprocessableEntityException
      * @throws \Github\Exception\IssuesCreateLabelNotFoundException
      *
      * @return null|\Github\Model\Label|\Psr\Http\Message\ResponseInterface
      */
-    public function issuesCreateLabel(string $owner, string $repo, \Github\Model\ReposOwnerRepoLabelsPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function issuesCreateLabel(string $owner, string $repo, ?\Github\Model\ReposOwnerRepoLabelsPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\IssuesCreateLabel($owner, $repo, $requestBody), $fetch);
     }
@@ -9679,14 +9679,14 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner 
      * @param string $repo 
      * @param int $issueNumber issue_number parameter
-     * @param \Github\Model\ReposOwnerRepoIssuesIssueNumberLabelsPostBody $requestBody 
+     * @param null|\Github\Model\ReposOwnerRepoIssuesIssueNumberLabelsPostBody $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\IssuesAddLabelsGoneException
      * @throws \Github\Exception\IssuesAddLabelsUnprocessableEntityException
      *
      * @return null|\Github\Model\Label[]|\Psr\Http\Message\ResponseInterface
      */
-    public function issuesAddLabels(string $owner, string $repo, int $issueNumber, \Github\Model\ReposOwnerRepoIssuesIssueNumberLabelsPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function issuesAddLabels(string $owner, string $repo, int $issueNumber, ?\Github\Model\ReposOwnerRepoIssuesIssueNumberLabelsPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\IssuesAddLabels($owner, $repo, $issueNumber, $requestBody), $fetch);
     }
@@ -9696,14 +9696,14 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner 
      * @param string $repo 
      * @param int $issueNumber issue_number parameter
-     * @param \Github\Model\ReposOwnerRepoIssuesIssueNumberLabelsPutBody $requestBody 
+     * @param null|\Github\Model\ReposOwnerRepoIssuesIssueNumberLabelsPutBody $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\IssuesSetLabelsGoneException
      * @throws \Github\Exception\IssuesSetLabelsUnprocessableEntityException
      *
      * @return null|\Github\Model\Label[]|\Psr\Http\Message\ResponseInterface
      */
-    public function issuesSetLabels(string $owner, string $repo, int $issueNumber, \Github\Model\ReposOwnerRepoIssuesIssueNumberLabelsPutBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function issuesSetLabels(string $owner, string $repo, int $issueNumber, ?\Github\Model\ReposOwnerRepoIssuesIssueNumberLabelsPutBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\IssuesSetLabels($owner, $repo, $issueNumber, $requestBody), $fetch);
     }
@@ -9766,7 +9766,7 @@ class Client extends \Github\Runtime\Client\Client
     *
     * @param string $owner 
     * @param string $repo 
-    * @param \Github\Model\ReposOwnerRepoIssuesPostBody $requestBody 
+    * @param null|\Github\Model\ReposOwnerRepoIssuesPostBody $requestBody 
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Github\Exception\IssuesCreateForbiddenException
     * @throws \Github\Exception\IssuesCreateUnprocessableEntityException
@@ -9776,7 +9776,7 @@ class Client extends \Github\Runtime\Client\Client
     *
     * @return null|\Github\Model\Issue|\Psr\Http\Message\ResponseInterface
     */
-    public function issuesCreate(string $owner, string $repo, \Github\Model\ReposOwnerRepoIssuesPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function issuesCreate(string $owner, string $repo, ?\Github\Model\ReposOwnerRepoIssuesPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\IssuesCreate($owner, $repo, $requestBody), $fetch);
     }
@@ -9807,7 +9807,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner 
      * @param string $repo 
      * @param int $issueNumber issue_number parameter
-     * @param \Github\Model\ReposOwnerRepoIssuesIssueNumberCommentsPostBody $requestBody 
+     * @param null|\Github\Model\ReposOwnerRepoIssuesIssueNumberCommentsPostBody $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\IssuesCreateCommentForbiddenException
      * @throws \Github\Exception\IssuesCreateCommentGoneException
@@ -9816,7 +9816,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\IssueComment|\Psr\Http\Message\ResponseInterface
      */
-    public function issuesCreateComment(string $owner, string $repo, int $issueNumber, \Github\Model\ReposOwnerRepoIssuesIssueNumberCommentsPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function issuesCreateComment(string $owner, string $repo, int $issueNumber, ?\Github\Model\ReposOwnerRepoIssuesIssueNumberCommentsPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\IssuesCreateComment($owner, $repo, $issueNumber, $requestBody), $fetch);
     }
@@ -9826,12 +9826,12 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner 
      * @param string $repo 
      * @param int $issueNumber issue_number parameter
-     * @param \Github\Model\ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBody $requestBody 
+     * @param null|\Github\Model\ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBody $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\IssueSimple|\Psr\Http\Message\ResponseInterface
      */
-    public function issuesRemoveAssignees(string $owner, string $repo, int $issueNumber, \Github\Model\ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function issuesRemoveAssignees(string $owner, string $repo, int $issueNumber, ?\Github\Model\ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\IssuesRemoveAssignees($owner, $repo, $issueNumber, $requestBody), $fetch);
     }
@@ -9841,12 +9841,12 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner 
      * @param string $repo 
      * @param int $issueNumber issue_number parameter
-     * @param \Github\Model\ReposOwnerRepoIssuesIssueNumberAssigneesPostBody $requestBody 
+     * @param null|\Github\Model\ReposOwnerRepoIssuesIssueNumberAssigneesPostBody $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\IssueSimple|\Psr\Http\Message\ResponseInterface
      */
-    public function issuesAddAssignees(string $owner, string $repo, int $issueNumber, \Github\Model\ReposOwnerRepoIssuesIssueNumberAssigneesPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function issuesAddAssignees(string $owner, string $repo, int $issueNumber, ?\Github\Model\ReposOwnerRepoIssuesIssueNumberAssigneesPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\IssuesAddAssignees($owner, $repo, $issueNumber, $requestBody), $fetch);
     }
@@ -9980,13 +9980,13 @@ class Client extends \Github\Runtime\Client\Client
      * OAuth application owners can revoke a single token for an OAuth application. You must use [Basic Authentication](https://developer.github.com/v3/auth#basic-authentication) when accessing this endpoint, using the OAuth application's `client_id` and `client_secret` as the username and password.
      *
      * @param string $clientId 
-     * @param \Github\Model\ApplicationsClientIdTokenDeleteBody $requestBody 
+     * @param null|\Github\Model\ApplicationsClientIdTokenDeleteBody $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\AppsDeleteTokenUnprocessableEntityException
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function appsDeleteToken(string $clientId, \Github\Model\ApplicationsClientIdTokenDeleteBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function appsDeleteToken(string $clientId, ?\Github\Model\ApplicationsClientIdTokenDeleteBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\AppsDeleteToken($clientId, $requestBody), $fetch);
     }
@@ -9994,13 +9994,13 @@ class Client extends \Github\Runtime\Client\Client
      * OAuth applications can use this API method to reset a valid OAuth token without end-user involvement. Applications must save the "token" property in the response because changes take effect immediately. You must use [Basic Authentication](https://developer.github.com/v3/auth#basic-authentication) when accessing this endpoint, using the OAuth application's `client_id` and `client_secret` as the username and password. Invalid tokens will return `404 NOT FOUND`.
      *
      * @param string $clientId 
-     * @param \Github\Model\ApplicationsClientIdTokenPatchBody $requestBody 
+     * @param null|\Github\Model\ApplicationsClientIdTokenPatchBody $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\AppsResetTokenUnprocessableEntityException
      *
      * @return null|\Github\Model\Authorization|\Psr\Http\Message\ResponseInterface
      */
-    public function appsResetToken(string $clientId, \Github\Model\ApplicationsClientIdTokenPatchBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function appsResetToken(string $clientId, ?\Github\Model\ApplicationsClientIdTokenPatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\AppsResetToken($clientId, $requestBody), $fetch);
     }
@@ -10008,14 +10008,14 @@ class Client extends \Github\Runtime\Client\Client
      * OAuth applications can use a special API method for checking OAuth token validity without exceeding the normal rate limits for failed login attempts. Authentication works differently with this particular endpoint. You must use [Basic Authentication](https://developer.github.com/v3/auth#basic-authentication) to use this endpoint, where the username is the OAuth application `client_id` and the password is its `client_secret`. Invalid tokens will return `404 NOT FOUND`.
      *
      * @param string $clientId 
-     * @param \Github\Model\ApplicationsClientIdTokenPostBody $requestBody 
+     * @param null|\Github\Model\ApplicationsClientIdTokenPostBody $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\AppsCheckTokenUnprocessableEntityException
      * @throws \Github\Exception\AppsCheckTokenNotFoundException
      *
      * @return null|\Github\Model\Authorization|\Psr\Http\Message\ResponseInterface
      */
-    public function appsCheckToken(string $clientId, \Github\Model\ApplicationsClientIdTokenPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function appsCheckToken(string $clientId, ?\Github\Model\ApplicationsClientIdTokenPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\AppsCheckToken($clientId, $requestBody), $fetch);
     }
@@ -10064,7 +10064,7 @@ class Client extends \Github\Runtime\Client\Client
     You must use an [installation access token](https://developer.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-an-installation) to access this endpoint.
     *
     * @param int $contentReferenceId content_reference_id parameter
-    * @param \Github\Model\ContentReferencesContentReferenceIdAttachmentsPostBody $requestBody 
+    * @param null|\Github\Model\ContentReferencesContentReferenceIdAttachmentsPostBody $requestBody 
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Github\Exception\AppsCreateContentAttachmentUnprocessableEntityException
     * @throws \Github\Exception\AppsCreateContentAttachmentNotFoundException
@@ -10074,7 +10074,7 @@ class Client extends \Github\Runtime\Client\Client
     *
     * @return null|\Github\Model\ContentReferenceAttachment|\Psr\Http\Message\ResponseInterface
     */
-    public function appsCreateContentAttachment(int $contentReferenceId, \Github\Model\ContentReferencesContentReferenceIdAttachmentsPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function appsCreateContentAttachment(int $contentReferenceId, ?\Github\Model\ContentReferencesContentReferenceIdAttachmentsPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\AppsCreateContentAttachment($contentReferenceId, $requestBody), $fetch);
     }
@@ -10275,7 +10275,7 @@ class Client extends \Github\Runtime\Client\Client
     You must use a [JWT](https://developer.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
     *
     * @param int $installationId installation_id parameter
-    * @param \Github\Model\AppInstallationsInstallationIdAccessTokensPostBody $requestBody 
+    * @param null|\Github\Model\AppInstallationsInstallationIdAccessTokensPostBody $requestBody 
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Github\Exception\AppsCreateInstallationAccessTokenForbiddenException
     * @throws \Github\Exception\AppsCreateInstallationAccessTokenUnsupportedMediaTypeException
@@ -10285,7 +10285,7 @@ class Client extends \Github\Runtime\Client\Client
     *
     * @return null|\Github\Model\InstallationToken|\Psr\Http\Message\ResponseInterface
     */
-    public function appsCreateInstallationAccessToken(int $installationId, \Github\Model\AppInstallationsInstallationIdAccessTokensPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function appsCreateInstallationAccessToken(int $installationId, ?\Github\Model\AppInstallationsInstallationIdAccessTokensPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\AppsCreateInstallationAccessToken($installationId, $requestBody), $fetch);
     }
@@ -10400,13 +10400,13 @@ class Client extends \Github\Runtime\Client\Client
     Deleting an OAuth application's grant will also delete all OAuth tokens associated with the application for the user. Once deleted, the application will have no access to the user's account and will no longer be listed on [the application authorizations settings screen within GitHub](https://github.com/settings/applications#authorized).
     *
     * @param string $clientId 
-    * @param \Github\Model\ApplicationsClientIdGrantDeleteBody $requestBody 
+    * @param null|\Github\Model\ApplicationsClientIdGrantDeleteBody $requestBody 
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Github\Exception\AppsDeleteAuthorizationUnprocessableEntityException
     *
     * @return null|\Psr\Http\Message\ResponseInterface
     */
-    public function appsDeleteAuthorization(string $clientId, \Github\Model\ApplicationsClientIdGrantDeleteBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function appsDeleteAuthorization(string $clientId, ?\Github\Model\ApplicationsClientIdGrantDeleteBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\AppsDeleteAuthorization($clientId, $requestBody), $fetch);
     }
@@ -10662,13 +10662,13 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @param string $gistId gist_id parameter
      * @param int $commentId comment_id parameter
-     * @param \Github\Model\GistsGistIdCommentsCommentIdPatchBody $requestBody 
+     * @param null|\Github\Model\GistsGistIdCommentsCommentIdPatchBody $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\GistsUpdateCommentNotFoundException
      *
      * @return null|\Github\Model\GistComment|\Psr\Http\Message\ResponseInterface
      */
-    public function gistsUpdateComment(string $gistId, int $commentId, \Github\Model\GistsGistIdCommentsCommentIdPatchBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function gistsUpdateComment(string $gistId, int $commentId, ?\Github\Model\GistsGistIdCommentsCommentIdPatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\GistsUpdateComment($gistId, $commentId, $requestBody), $fetch);
     }
@@ -10742,14 +10742,14 @@ class Client extends \Github\Runtime\Client\Client
      * Allows you to update or delete a gist file and rename gist files. Files from the previous version of the gist that aren't explicitly changed during an edit are unchanged.
      *
      * @param string $gistId gist_id parameter
-     * @param \Github\Model\GistsGistIdPatchBody $requestBody 
+     * @param null|\Github\Model\GistsGistIdPatchBody $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\GistsUpdateUnprocessableEntityException
      * @throws \Github\Exception\GistsUpdateNotFoundException
      *
      * @return null|\Github\Model\GistFull|\Psr\Http\Message\ResponseInterface
      */
-    public function gistsUpdate(string $gistId, \Github\Model\GistsGistIdPatchBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function gistsUpdate(string $gistId, ?\Github\Model\GistsGistIdPatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\GistsUpdate($gistId, $requestBody), $fetch);
     }
@@ -10807,7 +10807,7 @@ class Client extends \Github\Runtime\Client\Client
      * Allows you to add a new gist with one or more files.
      **Note:** Don't name your files "gistfile" with a numerical suffix. This is the format of the automatic naming scheme that Gist uses internally.
      *
-     * @param \Github\Model\GistsPostBody $requestBody 
+     * @param null|\Github\Model\GistsPostBody $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\GistsCreateUnprocessableEntityException
      * @throws \Github\Exception\GistsCreateNotFoundException
@@ -10815,7 +10815,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\GistFull|\Psr\Http\Message\ResponseInterface
      */
-    public function gistsCreate(\Github\Model\GistsPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function gistsCreate(?\Github\Model\GistsPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\GistsCreate($requestBody), $fetch);
     }
@@ -10859,14 +10859,14 @@ class Client extends \Github\Runtime\Client\Client
      * 
      *
      * @param string $gistId gist_id parameter
-     * @param \Github\Model\GistsGistIdCommentsPostBody $requestBody 
+     * @param null|\Github\Model\GistsGistIdCommentsPostBody $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\GistsCreateCommentNotFoundException
      * @throws \Github\Exception\GistsCreateCommentForbiddenException
      *
      * @return null|\Github\Model\GistComment|\Psr\Http\Message\ResponseInterface
      */
-    public function gistsCreateComment(string $gistId, \Github\Model\GistsGistIdCommentsPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function gistsCreateComment(string $gistId, ?\Github\Model\GistsGistIdCommentsPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\GistsCreateComment($gistId, $requestBody), $fetch);
     }
@@ -11124,13 +11124,13 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner 
      * @param string $repo 
      * @param string $ref ref+ parameter
-     * @param \Github\Model\ReposOwnerRepoGitRefsRefPatchBody $requestBody 
+     * @param null|\Github\Model\ReposOwnerRepoGitRefsRefPatchBody $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\GitUpdateRefUnprocessableEntityException
      *
      * @return null|\Github\Model\GitRef|\Psr\Http\Message\ResponseInterface
      */
-    public function gitUpdateRef(string $owner, string $repo, string $ref, \Github\Model\ReposOwnerRepoGitRefsRefPatchBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function gitUpdateRef(string $owner, string $repo, string $ref, ?\Github\Model\ReposOwnerRepoGitRefsRefPatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\GitUpdateRef($owner, $repo, $ref, $requestBody), $fetch);
     }
@@ -11165,14 +11165,14 @@ class Client extends \Github\Runtime\Client\Client
     *
     * @param string $owner 
     * @param string $repo 
-    * @param \Github\Model\ReposOwnerRepoGitCommitsPostBody $requestBody 
+    * @param null|\Github\Model\ReposOwnerRepoGitCommitsPostBody $requestBody 
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Github\Exception\GitCreateCommitUnprocessableEntityException
     * @throws \Github\Exception\GitCreateCommitNotFoundException
     *
     * @return null|\Github\Model\GitCommit|\Psr\Http\Message\ResponseInterface
     */
-    public function gitCreateCommit(string $owner, string $repo, \Github\Model\ReposOwnerRepoGitCommitsPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function gitCreateCommit(string $owner, string $repo, ?\Github\Model\ReposOwnerRepoGitCommitsPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\GitCreateCommit($owner, $repo, $requestBody), $fetch);
     }
@@ -11218,7 +11218,7 @@ class Client extends \Github\Runtime\Client\Client
     *
     * @param string $owner 
     * @param string $repo 
-    * @param \Github\Model\ReposOwnerRepoGitTreesPostBody $requestBody 
+    * @param null|\Github\Model\ReposOwnerRepoGitTreesPostBody $requestBody 
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Github\Exception\GitCreateTreeUnprocessableEntityException
     * @throws \Github\Exception\GitCreateTreeNotFoundException
@@ -11226,7 +11226,7 @@ class Client extends \Github\Runtime\Client\Client
     *
     * @return null|\Github\Model\GitTree|\Psr\Http\Message\ResponseInterface
     */
-    public function gitCreateTree(string $owner, string $repo, \Github\Model\ReposOwnerRepoGitTreesPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function gitCreateTree(string $owner, string $repo, ?\Github\Model\ReposOwnerRepoGitTreesPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\GitCreateTree($owner, $repo, $requestBody), $fetch);
     }
@@ -11235,13 +11235,13 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @param string $owner 
      * @param string $repo 
-     * @param \Github\Model\ReposOwnerRepoGitRefsPostBody $requestBody 
+     * @param null|\Github\Model\ReposOwnerRepoGitRefsPostBody $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\GitCreateRefUnprocessableEntityException
      *
      * @return null|\Github\Model\GitRef|\Psr\Http\Message\ResponseInterface
      */
-    public function gitCreateRef(string $owner, string $repo, \Github\Model\ReposOwnerRepoGitRefsPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function gitCreateRef(string $owner, string $repo, ?\Github\Model\ReposOwnerRepoGitRefsPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\GitCreateRef($owner, $repo, $requestBody), $fetch);
     }
@@ -11272,13 +11272,13 @@ class Client extends \Github\Runtime\Client\Client
     *
     * @param string $owner 
     * @param string $repo 
-    * @param \Github\Model\ReposOwnerRepoGitTagsPostBody $requestBody 
+    * @param null|\Github\Model\ReposOwnerRepoGitTagsPostBody $requestBody 
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Github\Exception\GitCreateTagUnprocessableEntityException
     *
     * @return null|\Github\Model\GitTag|\Psr\Http\Message\ResponseInterface
     */
-    public function gitCreateTag(string $owner, string $repo, \Github\Model\ReposOwnerRepoGitTagsPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function gitCreateTag(string $owner, string $repo, ?\Github\Model\ReposOwnerRepoGitTagsPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\GitCreateTag($owner, $repo, $requestBody), $fetch);
     }
@@ -11303,7 +11303,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @param string $owner 
      * @param string $repo 
-     * @param \Github\Model\ReposOwnerRepoGitBlobsPostBody $requestBody 
+     * @param null|\Github\Model\ReposOwnerRepoGitBlobsPostBody $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\GitCreateBlobNotFoundException
      * @throws \Github\Exception\GitCreateBlobConflictException
@@ -11312,7 +11312,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\ShortBlob|\Psr\Http\Message\ResponseInterface
      */
-    public function gitCreateBlob(string $owner, string $repo, \Github\Model\ReposOwnerRepoGitBlobsPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function gitCreateBlob(string $owner, string $repo, ?\Github\Model\ReposOwnerRepoGitBlobsPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\GitCreateBlob($owner, $repo, $requestBody), $fetch);
     }

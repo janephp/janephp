@@ -14,9 +14,9 @@ class ReposCreateForAuthenticatedUser extends \Github\Runtime\Client\BaseEndpoin
     *   `public_repo` scope or `repo` scope to create a public repository
     *   `repo` scope to create a private repository
     *
-    * @param \Github\Model\UserReposPostBody $requestBody 
+    * @param null|\Github\Model\UserReposPostBody $requestBody 
     */
-    public function __construct(\Github\Model\UserReposPostBody $requestBody)
+    public function __construct(?\Github\Model\UserReposPostBody $requestBody = null)
     {
         $this->body = $requestBody;
     }

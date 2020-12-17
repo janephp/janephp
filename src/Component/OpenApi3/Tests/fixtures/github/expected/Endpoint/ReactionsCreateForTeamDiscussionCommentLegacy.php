@@ -15,9 +15,9 @@ class ReactionsCreateForTeamDiscussionCommentLegacy extends \Github\Runtime\Clie
     * @param int $teamId 
     * @param int $discussionNumber 
     * @param int $commentNumber 
-    * @param \Github\Model\TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBody $requestBody 
+    * @param null|\Github\Model\TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBody $requestBody 
     */
-    public function __construct(int $teamId, int $discussionNumber, int $commentNumber, \Github\Model\TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBody $requestBody)
+    public function __construct(int $teamId, int $discussionNumber, int $commentNumber, ?\Github\Model\TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBody $requestBody = null)
     {
         $this->team_id = $teamId;
         $this->discussion_number = $discussionNumber;

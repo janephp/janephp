@@ -11,9 +11,9 @@ class ActionsSetSelectedReposForOrgSecret extends \Github\Runtime\Client\BaseEnd
      *
      * @param string $org 
      * @param string $secretName secret_name parameter
-     * @param \Github\Model\OrgsOrgActionsSecretsSecretNameRepositoriesPutBody $requestBody 
+     * @param null|\Github\Model\OrgsOrgActionsSecretsSecretNameRepositoriesPutBody $requestBody 
      */
-    public function __construct(string $org, string $secretName, \Github\Model\OrgsOrgActionsSecretsSecretNameRepositoriesPutBody $requestBody)
+    public function __construct(string $org, string $secretName, ?\Github\Model\OrgsOrgActionsSecretsSecretNameRepositoriesPutBody $requestBody = null)
     {
         $this->org = $org;
         $this->secret_name = $secretName;

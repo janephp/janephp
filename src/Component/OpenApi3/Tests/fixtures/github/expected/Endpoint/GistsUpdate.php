@@ -9,9 +9,9 @@ class GistsUpdate extends \Github\Runtime\Client\BaseEndpoint implements \Github
      * Allows you to update or delete a gist file and rename gist files. Files from the previous version of the gist that aren't explicitly changed during an edit are unchanged.
      *
      * @param string $gistId gist_id parameter
-     * @param \Github\Model\GistsGistIdPatchBody $requestBody 
+     * @param null|\Github\Model\GistsGistIdPatchBody $requestBody 
      */
-    public function __construct(string $gistId, \Github\Model\GistsGistIdPatchBody $requestBody)
+    public function __construct(string $gistId, ?\Github\Model\GistsGistIdPatchBody $requestBody = null)
     {
         $this->gist_id = $gistId;
         $this->body = $requestBody;

@@ -15,9 +15,9 @@ class ReposCreateDeploymentStatus extends \Github\Runtime\Client\BaseEndpoint im
     * @param string $owner 
     * @param string $repo 
     * @param int $deploymentId deployment_id parameter
-    * @param \Github\Model\ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBody $requestBody 
+    * @param null|\Github\Model\ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBody $requestBody 
     */
-    public function __construct(string $owner, string $repo, int $deploymentId, \Github\Model\ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBody $requestBody)
+    public function __construct(string $owner, string $repo, int $deploymentId, ?\Github\Model\ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBody $requestBody = null)
     {
         $this->owner = $owner;
         $this->repo = $repo;

@@ -12,9 +12,9 @@ class MigrationsUpdateImport extends \Github\Runtime\Client\BaseEndpoint impleme
     *
     * @param string $owner 
     * @param string $repo 
-    * @param \Github\Model\ReposOwnerRepoImportPatchBody $requestBody 
+    * @param null|\Github\Model\ReposOwnerRepoImportPatchBody $requestBody 
     */
-    public function __construct(string $owner, string $repo, \Github\Model\ReposOwnerRepoImportPatchBody $requestBody)
+    public function __construct(string $owner, string $repo, ?\Github\Model\ReposOwnerRepoImportPatchBody $requestBody = null)
     {
         $this->owner = $owner;
         $this->repo = $repo;

@@ -11,9 +11,9 @@ class MigrationsSetLfsPreference extends \Github\Runtime\Client\BaseEndpoint imp
      *
      * @param string $owner 
      * @param string $repo 
-     * @param \Github\Model\ReposOwnerRepoImportLfsPatchBody $requestBody 
+     * @param null|\Github\Model\ReposOwnerRepoImportLfsPatchBody $requestBody 
      */
-    public function __construct(string $owner, string $repo, \Github\Model\ReposOwnerRepoImportLfsPatchBody $requestBody)
+    public function __construct(string $owner, string $repo, ?\Github\Model\ReposOwnerRepoImportLfsPatchBody $requestBody = null)
     {
         $this->owner = $owner;
         $this->repo = $repo;

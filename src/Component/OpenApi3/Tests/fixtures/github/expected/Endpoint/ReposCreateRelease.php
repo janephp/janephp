@@ -13,9 +13,9 @@ class ReposCreateRelease extends \Github\Runtime\Client\BaseEndpoint implements 
     *
     * @param string $owner 
     * @param string $repo 
-    * @param \Github\Model\ReposOwnerRepoReleasesPostBody $requestBody 
+    * @param null|\Github\Model\ReposOwnerRepoReleasesPostBody $requestBody 
     */
-    public function __construct(string $owner, string $repo, \Github\Model\ReposOwnerRepoReleasesPostBody $requestBody)
+    public function __construct(string $owner, string $repo, ?\Github\Model\ReposOwnerRepoReleasesPostBody $requestBody = null)
     {
         $this->owner = $owner;
         $this->repo = $repo;

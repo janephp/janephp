@@ -12,9 +12,9 @@ class ReposCreateFork extends \Github\Runtime\Client\BaseEndpoint implements \Gi
      *
      * @param string $owner 
      * @param string $repo 
-     * @param \Github\Model\ReposOwnerRepoForksPostBody $requestBody 
+     * @param null|\Github\Model\ReposOwnerRepoForksPostBody $requestBody 
      */
-    public function __construct(string $owner, string $repo, \Github\Model\ReposOwnerRepoForksPostBody $requestBody)
+    public function __construct(string $owner, string $repo, ?\Github\Model\ReposOwnerRepoForksPostBody $requestBody = null)
     {
         $this->owner = $owner;
         $this->repo = $repo;

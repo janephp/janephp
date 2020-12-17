@@ -9,9 +9,9 @@ class PutBookItem extends \ApiPlatform\Demo\Runtime\Client\BaseEndpoint implemen
      * 
      *
      * @param string $id 
-     * @param \stdClass|\ApiPlatform\Demo\Model\Book $requestBody 
+     * @param null|\stdClass|\ApiPlatform\Demo\Model\Book $requestBody 
      */
-    public function __construct(string $id, $requestBody)
+    public function __construct(string $id, $requestBody = null)
     {
         $this->id = $id;
         $this->body = $requestBody;

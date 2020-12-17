@@ -11,9 +11,9 @@ class OrgsUpdateWebhook extends \Github\Runtime\Client\BaseEndpoint implements \
      *
      * @param string $org 
      * @param int $hookId 
-     * @param \Github\Model\OrgsOrgHooksHookIdPatchBody $requestBody 
+     * @param null|\Github\Model\OrgsOrgHooksHookIdPatchBody $requestBody 
      */
-    public function __construct(string $org, int $hookId, \Github\Model\OrgsOrgHooksHookIdPatchBody $requestBody)
+    public function __construct(string $org, int $hookId, ?\Github\Model\OrgsOrgHooksHookIdPatchBody $requestBody = null)
     {
         $this->org = $org;
         $this->hook_id = $hookId;
