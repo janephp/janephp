@@ -11,9 +11,9 @@ class ReposUpdate extends \Github\Runtime\Client\BaseEndpoint implements \Github
      *
      * @param string $owner 
      * @param string $repo 
-     * @param \Github\Model\ReposOwnerRepoPatchBody $requestBody 
+     * @param null|\Github\Model\ReposOwnerRepoPatchBody $requestBody 
      */
-    public function __construct(string $owner, string $repo, \Github\Model\ReposOwnerRepoPatchBody $requestBody)
+    public function __construct(string $owner, string $repo, ?\Github\Model\ReposOwnerRepoPatchBody $requestBody = null)
     {
         $this->owner = $owner;
         $this->repo = $repo;

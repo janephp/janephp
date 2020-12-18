@@ -29,14 +29,14 @@ class Client extends \ApiPlatform\Demo\Runtime\Client\Client
     /**
      * 
      *
-     * @param \stdClass|\ApiPlatform\Demo\Model\Book $requestBody 
+     * @param null|\stdClass|\ApiPlatform\Demo\Model\Book $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \ApiPlatform\Demo\Exception\PostBookCollectionBadRequestException
      * @throws \ApiPlatform\Demo\Exception\PostBookCollectionNotFoundException
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function postBookCollection($requestBody, string $fetch = self::FETCH_OBJECT)
+    public function postBookCollection($requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \ApiPlatform\Demo\Endpoint\PostBookCollection($requestBody), $fetch);
     }
@@ -70,14 +70,14 @@ class Client extends \ApiPlatform\Demo\Runtime\Client\Client
      * 
      *
      * @param string $id 
-     * @param \ApiPlatform\Demo\Model\Book $requestBody 
+     * @param null|\ApiPlatform\Demo\Model\Book $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \ApiPlatform\Demo\Exception\PatchBookItemBadRequestException
      * @throws \ApiPlatform\Demo\Exception\PatchBookItemNotFoundException
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function patchBookItem(string $id, \ApiPlatform\Demo\Model\Book $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function patchBookItem(string $id, ?\ApiPlatform\Demo\Model\Book $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \ApiPlatform\Demo\Endpoint\PatchBookItem($id, $requestBody), $fetch);
     }
@@ -85,14 +85,14 @@ class Client extends \ApiPlatform\Demo\Runtime\Client\Client
      * 
      *
      * @param string $id 
-     * @param \stdClass|\ApiPlatform\Demo\Model\Book $requestBody 
+     * @param null|\stdClass|\ApiPlatform\Demo\Model\Book $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \ApiPlatform\Demo\Exception\PutBookItemBadRequestException
      * @throws \ApiPlatform\Demo\Exception\PutBookItemNotFoundException
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function putBookItem(string $id, $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function putBookItem(string $id, $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \ApiPlatform\Demo\Endpoint\PutBookItem($id, $requestBody), $fetch);
     }
@@ -133,14 +133,14 @@ class Client extends \ApiPlatform\Demo\Runtime\Client\Client
     /**
      * 
      *
-     * @param \stdClass|\ApiPlatform\Demo\Model\Parchment $requestBody 
+     * @param null|\stdClass|\ApiPlatform\Demo\Model\Parchment $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \ApiPlatform\Demo\Exception\PostParchmentCollectionBadRequestException
      * @throws \ApiPlatform\Demo\Exception\PostParchmentCollectionNotFoundException
      *
      * @return null|\ApiPlatform\Demo\Model\Parchment|\Psr\Http\Message\ResponseInterface
      */
-    public function postParchmentCollection($requestBody, string $fetch = self::FETCH_OBJECT)
+    public function postParchmentCollection($requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \ApiPlatform\Demo\Endpoint\PostParchmentCollection($requestBody), $fetch);
     }
@@ -174,14 +174,14 @@ class Client extends \ApiPlatform\Demo\Runtime\Client\Client
      * 
      *
      * @param string $id 
-     * @param \ApiPlatform\Demo\Model\Parchment $requestBody 
+     * @param null|\ApiPlatform\Demo\Model\Parchment $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \ApiPlatform\Demo\Exception\PatchParchmentItemBadRequestException
      * @throws \ApiPlatform\Demo\Exception\PatchParchmentItemNotFoundException
      *
      * @return null|\ApiPlatform\Demo\Model\Parchment|\Psr\Http\Message\ResponseInterface
      */
-    public function patchParchmentItem(string $id, \ApiPlatform\Demo\Model\Parchment $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function patchParchmentItem(string $id, ?\ApiPlatform\Demo\Model\Parchment $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \ApiPlatform\Demo\Endpoint\PatchParchmentItem($id, $requestBody), $fetch);
     }
@@ -189,14 +189,14 @@ class Client extends \ApiPlatform\Demo\Runtime\Client\Client
      * 
      *
      * @param string $id 
-     * @param \stdClass|\ApiPlatform\Demo\Model\Parchment $requestBody 
+     * @param null|\stdClass|\ApiPlatform\Demo\Model\Parchment $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \ApiPlatform\Demo\Exception\PutParchmentItemBadRequestException
      * @throws \ApiPlatform\Demo\Exception\PutParchmentItemNotFoundException
      *
      * @return null|\ApiPlatform\Demo\Model\Parchment|\Psr\Http\Message\ResponseInterface
      */
-    public function putParchmentItem(string $id, $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function putParchmentItem(string $id, $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \ApiPlatform\Demo\Endpoint\PutParchmentItem($id, $requestBody), $fetch);
     }
@@ -221,14 +221,14 @@ class Client extends \ApiPlatform\Demo\Runtime\Client\Client
     /**
      * 
      *
-     * @param \stdClass|\ApiPlatform\Demo\Model\Review $requestBody 
+     * @param null|\stdClass|\ApiPlatform\Demo\Model\Review $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \ApiPlatform\Demo\Exception\PostReviewCollectionBadRequestException
      * @throws \ApiPlatform\Demo\Exception\PostReviewCollectionNotFoundException
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function postReviewCollection($requestBody, string $fetch = self::FETCH_OBJECT)
+    public function postReviewCollection($requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \ApiPlatform\Demo\Endpoint\PostReviewCollection($requestBody), $fetch);
     }
@@ -262,14 +262,14 @@ class Client extends \ApiPlatform\Demo\Runtime\Client\Client
      * 
      *
      * @param string $id 
-     * @param \ApiPlatform\Demo\Model\Review $requestBody 
+     * @param null|\ApiPlatform\Demo\Model\Review $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \ApiPlatform\Demo\Exception\PatchReviewItemBadRequestException
      * @throws \ApiPlatform\Demo\Exception\PatchReviewItemNotFoundException
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function patchReviewItem(string $id, \ApiPlatform\Demo\Model\Review $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function patchReviewItem(string $id, ?\ApiPlatform\Demo\Model\Review $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \ApiPlatform\Demo\Endpoint\PatchReviewItem($id, $requestBody), $fetch);
     }
@@ -277,14 +277,14 @@ class Client extends \ApiPlatform\Demo\Runtime\Client\Client
      * 
      *
      * @param string $id 
-     * @param \stdClass|\ApiPlatform\Demo\Model\Review $requestBody 
+     * @param null|\stdClass|\ApiPlatform\Demo\Model\Review $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \ApiPlatform\Demo\Exception\PutReviewItemBadRequestException
      * @throws \ApiPlatform\Demo\Exception\PutReviewItemNotFoundException
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function putReviewItem(string $id, $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function putReviewItem(string $id, $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \ApiPlatform\Demo\Endpoint\PutReviewItem($id, $requestBody), $fetch);
     }

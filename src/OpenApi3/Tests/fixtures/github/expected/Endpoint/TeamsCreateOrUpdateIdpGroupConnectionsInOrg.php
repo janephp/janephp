@@ -15,9 +15,9 @@ class TeamsCreateOrUpdateIdpGroupConnectionsInOrg extends \Github\Runtime\Client
     *
     * @param string $org 
     * @param string $teamSlug team_slug parameter
-    * @param \Github\Model\OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBody $requestBody 
+    * @param null|\Github\Model\OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBody $requestBody 
     */
-    public function __construct(string $org, string $teamSlug, \Github\Model\OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBody $requestBody)
+    public function __construct(string $org, string $teamSlug, ?\Github\Model\OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBody $requestBody = null)
     {
         $this->org = $org;
         $this->team_slug = $teamSlug;

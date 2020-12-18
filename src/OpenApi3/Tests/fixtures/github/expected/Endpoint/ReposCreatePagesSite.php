@@ -11,9 +11,9 @@ class ReposCreatePagesSite extends \Github\Runtime\Client\BaseEndpoint implement
      *
      * @param string $owner 
      * @param string $repo 
-     * @param \Github\Model\ReposOwnerRepoPagesPostBody $requestBody 
+     * @param null|\Github\Model\ReposOwnerRepoPagesPostBody $requestBody 
      */
-    public function __construct(string $owner, string $repo, \Github\Model\ReposOwnerRepoPagesPostBody $requestBody)
+    public function __construct(string $owner, string $repo, ?\Github\Model\ReposOwnerRepoPagesPostBody $requestBody = null)
     {
         $this->owner = $owner;
         $this->repo = $repo;

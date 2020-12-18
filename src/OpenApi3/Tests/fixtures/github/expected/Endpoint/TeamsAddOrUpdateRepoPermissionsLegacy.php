@@ -17,9 +17,9 @@ class TeamsAddOrUpdateRepoPermissionsLegacy extends \Github\Runtime\Client\BaseE
     * @param int $teamId 
     * @param string $owner 
     * @param string $repo 
-    * @param \Github\Model\TeamsTeamIdReposOwnerRepoPutBody $requestBody 
+    * @param null|\Github\Model\TeamsTeamIdReposOwnerRepoPutBody $requestBody 
     */
-    public function __construct(int $teamId, string $owner, string $repo, \Github\Model\TeamsTeamIdReposOwnerRepoPutBody $requestBody)
+    public function __construct(int $teamId, string $owner, string $repo, ?\Github\Model\TeamsTeamIdReposOwnerRepoPutBody $requestBody = null)
     {
         $this->team_id = $teamId;
         $this->owner = $owner;

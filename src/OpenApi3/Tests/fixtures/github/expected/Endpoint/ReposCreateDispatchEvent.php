@@ -17,9 +17,9 @@ class ReposCreateDispatchEvent extends \Github\Runtime\Client\BaseEndpoint imple
     *
     * @param string $owner 
     * @param string $repo 
-    * @param \Github\Model\ReposOwnerRepoDispatchesPostBody $requestBody 
+    * @param null|\Github\Model\ReposOwnerRepoDispatchesPostBody $requestBody 
     */
-    public function __construct(string $owner, string $repo, \Github\Model\ReposOwnerRepoDispatchesPostBody $requestBody)
+    public function __construct(string $owner, string $repo, ?\Github\Model\ReposOwnerRepoDispatchesPostBody $requestBody = null)
     {
         $this->owner = $owner;
         $this->repo = $repo;

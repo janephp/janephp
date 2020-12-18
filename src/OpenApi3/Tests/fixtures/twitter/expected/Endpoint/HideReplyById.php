@@ -9,9 +9,9 @@ class HideReplyById extends \Jane\OpenApi3\Tests\Expected\Runtime\Client\BaseEnd
      * Tweet ID in the path is that of the reply to hide.
      *
      * @param string $id The ID of the reply that you want to hide.
-     * @param \Jane\OpenApi3\Tests\Expected\Model\HideReplyRequest $requestBody 
+     * @param null|\Jane\OpenApi3\Tests\Expected\Model\HideReplyRequest $requestBody 
      */
-    public function __construct(string $id, \Jane\OpenApi3\Tests\Expected\Model\HideReplyRequest $requestBody)
+    public function __construct(string $id, ?\Jane\OpenApi3\Tests\Expected\Model\HideReplyRequest $requestBody = null)
     {
         $this->id = $id;
         $this->body = $requestBody;

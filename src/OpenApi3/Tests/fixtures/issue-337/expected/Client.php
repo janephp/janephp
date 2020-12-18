@@ -7,14 +7,14 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
     /**
      * Enter your username and password into the request schema to generate an Authorization Token
      *
-     * @param \CreditSafe\API\Model\AuthenticationRequest $requestBody 
+     * @param null|\CreditSafe\API\Model\AuthenticationRequest $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \CreditSafe\API\Exception\GenerateAuthenticationTokenUnauthorizedException
      * @throws \CreditSafe\API\Exception\GenerateAuthenticationTokenNotFoundException
      *
      * @return null|\CreditSafe\API\Model\AuthenticationSuccessResponse|\Psr\Http\Message\ResponseInterface
      */
-    public function generateAuthenticationToken(\CreditSafe\API\Model\AuthenticationRequest $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function generateAuthenticationToken(?\CreditSafe\API\Model\AuthenticationRequest $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\GenerateAuthenticationToken($requestBody), $fetch);
     }
@@ -311,7 +311,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
     /**
      * Places an order for a Fresh Investigation (Offline Report). Providing as much detail as possible about the Company, our team will use official sources and registries to quickly answer questions about a company’s stability and financial health. Fresh Investigations take 5.5 days on average to complete.
      *
-     * @param \CreditSafe\API\Model\CreateFreshInvestigationRequest $requestBody 
+     * @param null|\CreditSafe\API\Model\CreateFreshInvestigationRequest $requestBody 
      * @param array $headerParameters {
      *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * }
@@ -323,7 +323,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      *
      * @return null|\CreditSafe\API\Model\SubmittedFreshInvestigationRepsonse|\Psr\Http\Message\ResponseInterface
      */
-    public function requestFreshInvestigation(\CreditSafe\API\Model\CreateFreshInvestigationRequest $requestBody, array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function requestFreshInvestigation(?\CreditSafe\API\Model\CreateFreshInvestigationRequest $requestBody = null, array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\RequestFreshInvestigation($requestBody, $headerParameters), $fetch);
     }
@@ -596,7 +596,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * Update Portfolio details such as Name, email reciepients, language and subject line.
      *
      * @param string $portfolioId The unique identifier of the portfolio, obtained from `/portfolios`.
-     * @param \CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdPatchBody $requestBody 
+     * @param null|\CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdPatchBody $requestBody 
      * @param array $headerParameters {
      *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * }
@@ -607,7 +607,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function updatePortfolioDetails(string $portfolioId, \CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdPatchBody $requestBody, array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function updatePortfolioDetails(string $portfolioId, ?\CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdPatchBody $requestBody = null, array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\UpdatePortfolioDetails($portfolioId, $requestBody, $headerParameters), $fetch);
     }
@@ -674,7 +674,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      *
      * @param string $portfolioId The unique identifier of the portfolio, obtained from `/portfolios`.
      * @param string $countryCode Country code to show events for
-     * @param \CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdEventRulesCountryCodePutBodyItem[] $requestBody 
+     * @param null|\CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdEventRulesCountryCodePutBodyItem[] $requestBody 
      * @param array $headerParameters {
      *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * }
@@ -686,7 +686,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function putMonitoringPortfoliosByPortfolioIdEventRuleByCountryCode(string $portfolioId, string $countryCode, array $requestBody, array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function putMonitoringPortfoliosByPortfolioIdEventRuleByCountryCode(string $portfolioId, string $countryCode, ?array $requestBody = null, array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\PutMonitoringPortfoliosByPortfolioIdEventRuleByCountryCode($portfolioId, $countryCode, $requestBody, $headerParameters), $fetch);
     }
@@ -799,7 +799,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      *
      * @param string $portfolioId The unique identifier of the portfolio, obtained from `/portfolios`.
      * @param string $notificationEventId A unique notification event ID.
-     * @param \CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdNotificationEventsNotificationEventIdPatchBody $requestBody 
+     * @param null|\CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdNotificationEventsNotificationEventIdPatchBody $requestBody 
      * @param array $headerParameters {
      *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * }
@@ -811,7 +811,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function updateIsProcessedFlagOnAnNotificationEvent(string $portfolioId, string $notificationEventId, \CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdNotificationEventsNotificationEventIdPatchBody $requestBody, array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function updateIsProcessedFlagOnAnNotificationEvent(string $portfolioId, string $notificationEventId, ?\CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdNotificationEventsNotificationEventIdPatchBody $requestBody = null, array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\UpdateIsProcessedFlagOnAnNotificationEvent($portfolioId, $notificationEventId, $requestBody, $headerParameters), $fetch);
     }
@@ -845,7 +845,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * Add new company to portfolio
      *
      * @param string $portfolioId The unique identifier of the portfolio, obtained from `/portfolios`.
-     * @param \CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdCompaniesPostBody $requestBody 
+     * @param null|\CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdCompaniesPostBody $requestBody 
      * @param array $headerParameters {
      *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * }
@@ -857,7 +857,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function postMonitoringPortfoliosByPortfolioIdCompany(string $portfolioId, \CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdCompaniesPostBody $requestBody, array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function postMonitoringPortfoliosByPortfolioIdCompany(string $portfolioId, ?\CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdCompaniesPostBody $requestBody = null, array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\PostMonitoringPortfoliosByPortfolioIdCompany($portfolioId, $requestBody, $headerParameters), $fetch);
     }
@@ -888,7 +888,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * Move companies from one portfolio to single (or) multiple portfolios.
      *
      * @param string $portfolioId The unique identifier of the portfolio you want to move companies from, obtained from `/portfolios`.
-     * @param \CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdCompaniesRemovePostBody $requestBody 
+     * @param null|\CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdCompaniesRemovePostBody $requestBody 
      * @param array $queryParameters {
      *     @var bool $removeAll When RemoveAll queryparameter is False, portfolios and companies List needs to be passed. When RemoveAll queryparameter is True, only portfolios need to be passed and companies List must be empty. All companies are moved and deleted from current portfolio
      * }
@@ -903,7 +903,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function moveCompaniesFromOneToAnotherPortfolioS(string $portfolioId, \CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdCompaniesRemovePostBody $requestBody, array $queryParameters = array(), array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function moveCompaniesFromOneToAnotherPortfolioS(string $portfolioId, ?\CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdCompaniesRemovePostBody $requestBody = null, array $queryParameters = array(), array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\MoveCompaniesFromOneToAnotherPortfolioS($portfolioId, $requestBody, $queryParameters, $headerParameters), $fetch);
     }
@@ -911,7 +911,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * Delete companies from current portfolio
      *
      * @param string $portfolioId The unique identifier of the portfolio you want to delete companies from, obtained from `/portfolios`.
-     * @param \CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdCompaniesClearPatchBody $requestBody 
+     * @param null|\CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdCompaniesClearPatchBody $requestBody 
      * @param array $queryParameters {
      *     @var bool $clearAll When ClearAll queryparameter is False,Companies List needs to be passed. When ClearAll queryparameter is True, Companies List must be empty. All companies will be deleted
      * }
@@ -926,7 +926,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function clearCompaniesFromAPortfolio(string $portfolioId, \CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdCompaniesClearPatchBody $requestBody, array $queryParameters = array(), array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function clearCompaniesFromAPortfolio(string $portfolioId, ?\CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdCompaniesClearPatchBody $requestBody = null, array $queryParameters = array(), array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\ClearCompaniesFromAPortfolio($portfolioId, $requestBody, $queryParameters, $headerParameters), $fetch);
     }
@@ -975,7 +975,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      *
      * @param string $portfolioId The unique identifier of the portfolio, obtained from `/portfolios`.
      * @param string $id A company Safe Number or Connect ID.
-     * @param \CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdCompaniesIdPatchBody $requestBody 
+     * @param null|\CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdCompaniesIdPatchBody $requestBody 
      * @param array $headerParameters {
      *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * }
@@ -987,7 +987,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function updateCompanyDetailsInAPortfolio(string $portfolioId, string $id, \CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdCompaniesIdPatchBody $requestBody, array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function updateCompanyDetailsInAPortfolio(string $portfolioId, string $id, ?\CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdCompaniesIdPatchBody $requestBody = null, array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\UpdateCompanyDetailsInAPortfolio($portfolioId, $id, $requestBody, $headerParameters), $fetch);
     }
@@ -1042,7 +1042,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * Update/Create user permissions within the customer for portfolio
      *
      * @param string $portfolioId The unique identifier of the portfolio, obtained from `/portfolios`.
-     * @param \CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdSharingPermissionsPatchBody $requestBody 
+     * @param null|\CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdSharingPermissionsPatchBody $requestBody 
      * @param array $headerParameters {
      *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * }
@@ -1054,7 +1054,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function sharePortfolioId(string $portfolioId, \CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdSharingPermissionsPatchBody $requestBody, array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function sharePortfolioId(string $portfolioId, ?\CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdSharingPermissionsPatchBody $requestBody = null, array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\SharePortfolioId($portfolioId, $requestBody, $headerParameters), $fetch);
     }
@@ -1085,7 +1085,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * Calls a Decision Tree with the provided parameters to return a Decision.
      *
      * @param string $provenirId Decision Tree GUID
-     * @param \stdClass $requestBody 
+     * @param null|\stdClass $requestBody 
      * @param array $queryParameters {
      *     @var string $companyId the connectId of the company to be evaluated in the  deicison tree.
      *     @var string $originationId the origin id of the company we want a decision on. Only up to 100 characters are allowed, the rest will be truncated.
@@ -1102,7 +1102,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function runDecisionTree(string $provenirId, \stdClass $requestBody, array $queryParameters = array(), array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function runDecisionTree(string $provenirId, ?\stdClass $requestBody = null, array $queryParameters = array(), array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\RunDecisionTree($provenirId, $requestBody, $queryParameters, $headerParameters), $fetch);
     }

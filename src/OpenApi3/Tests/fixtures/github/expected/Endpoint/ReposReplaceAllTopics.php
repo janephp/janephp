@@ -11,9 +11,9 @@ class ReposReplaceAllTopics extends \Github\Runtime\Client\BaseEndpoint implemen
      *
      * @param string $owner 
      * @param string $repo 
-     * @param \Github\Model\ReposOwnerRepoTopicsPutBody $requestBody 
+     * @param null|\Github\Model\ReposOwnerRepoTopicsPutBody $requestBody 
      */
-    public function __construct(string $owner, string $repo, \Github\Model\ReposOwnerRepoTopicsPutBody $requestBody)
+    public function __construct(string $owner, string $repo, ?\Github\Model\ReposOwnerRepoTopicsPutBody $requestBody = null)
     {
         $this->owner = $owner;
         $this->repo = $repo;

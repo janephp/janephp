@@ -13,9 +13,9 @@ class ReposCreateOrUpdateFileContents extends \Github\Runtime\Client\BaseEndpoin
      * @param string $owner 
      * @param string $repo 
      * @param string $path path+ parameter
-     * @param \Github\Model\ReposOwnerRepoContentsPathPutBody $requestBody 
+     * @param null|\Github\Model\ReposOwnerRepoContentsPathPutBody $requestBody 
      */
-    public function __construct(string $owner, string $repo, string $path, \Github\Model\ReposOwnerRepoContentsPathPutBody $requestBody)
+    public function __construct(string $owner, string $repo, string $path, ?\Github\Model\ReposOwnerRepoContentsPathPutBody $requestBody = null)
     {
         $this->owner = $owner;
         $this->repo = $repo;

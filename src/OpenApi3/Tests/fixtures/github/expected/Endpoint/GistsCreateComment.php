@@ -9,9 +9,9 @@ class GistsCreateComment extends \Github\Runtime\Client\BaseEndpoint implements 
      * 
      *
      * @param string $gistId gist_id parameter
-     * @param \Github\Model\GistsGistIdCommentsPostBody $requestBody 
+     * @param null|\Github\Model\GistsGistIdCommentsPostBody $requestBody 
      */
-    public function __construct(string $gistId, \Github\Model\GistsGistIdCommentsPostBody $requestBody)
+    public function __construct(string $gistId, ?\Github\Model\GistsGistIdCommentsPostBody $requestBody = null)
     {
         $this->gist_id = $gistId;
         $this->body = $requestBody;

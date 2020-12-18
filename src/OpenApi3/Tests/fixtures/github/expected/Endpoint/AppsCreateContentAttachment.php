@@ -13,9 +13,9 @@ class AppsCreateContentAttachment extends \Github\Runtime\Client\BaseEndpoint im
     You must use an [installation access token](https://developer.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-an-installation) to access this endpoint.
     *
     * @param int $contentReferenceId content_reference_id parameter
-    * @param \Github\Model\ContentReferencesContentReferenceIdAttachmentsPostBody $requestBody 
+    * @param null|\Github\Model\ContentReferencesContentReferenceIdAttachmentsPostBody $requestBody 
     */
-    public function __construct(int $contentReferenceId, \Github\Model\ContentReferencesContentReferenceIdAttachmentsPostBody $requestBody)
+    public function __construct(int $contentReferenceId, ?\Github\Model\ContentReferencesContentReferenceIdAttachmentsPostBody $requestBody = null)
     {
         $this->content_reference_id = $contentReferenceId;
         $this->body = $requestBody;

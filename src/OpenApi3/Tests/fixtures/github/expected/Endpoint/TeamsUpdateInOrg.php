@@ -12,9 +12,9 @@ class TeamsUpdateInOrg extends \Github\Runtime\Client\BaseEndpoint implements \G
      *
      * @param string $org 
      * @param string $teamSlug team_slug parameter
-     * @param \Github\Model\OrgsOrgTeamsTeamSlugPatchBody $requestBody 
+     * @param null|\Github\Model\OrgsOrgTeamsTeamSlugPatchBody $requestBody 
      */
-    public function __construct(string $org, string $teamSlug, \Github\Model\OrgsOrgTeamsTeamSlugPatchBody $requestBody)
+    public function __construct(string $org, string $teamSlug, ?\Github\Model\OrgsOrgTeamsTeamSlugPatchBody $requestBody = null)
     {
         $this->org = $org;
         $this->team_slug = $teamSlug;

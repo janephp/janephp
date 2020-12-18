@@ -13,9 +13,9 @@ class MigrationsMapCommitAuthor extends \Github\Runtime\Client\BaseEndpoint impl
      * @param string $owner 
      * @param string $repo 
      * @param int $authorId author_id parameter
-     * @param \Github\Model\ReposOwnerRepoImportAuthorsAuthorIdPatchBody $requestBody 
+     * @param null|\Github\Model\ReposOwnerRepoImportAuthorsAuthorIdPatchBody $requestBody 
      */
-    public function __construct(string $owner, string $repo, int $authorId, \Github\Model\ReposOwnerRepoImportAuthorsAuthorIdPatchBody $requestBody)
+    public function __construct(string $owner, string $repo, int $authorId, ?\Github\Model\ReposOwnerRepoImportAuthorsAuthorIdPatchBody $requestBody = null)
     {
         $this->owner = $owner;
         $this->repo = $repo;

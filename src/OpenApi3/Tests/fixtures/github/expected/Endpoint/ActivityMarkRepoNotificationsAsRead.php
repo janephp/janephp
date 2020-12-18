@@ -11,9 +11,9 @@ class ActivityMarkRepoNotificationsAsRead extends \Github\Runtime\Client\BaseEnd
      *
      * @param string $owner 
      * @param string $repo 
-     * @param \Github\Model\ReposOwnerRepoNotificationsPutBody $requestBody 
+     * @param null|\Github\Model\ReposOwnerRepoNotificationsPutBody $requestBody 
      */
-    public function __construct(string $owner, string $repo, \Github\Model\ReposOwnerRepoNotificationsPutBody $requestBody)
+    public function __construct(string $owner, string $repo, ?\Github\Model\ReposOwnerRepoNotificationsPutBody $requestBody = null)
     {
         $this->owner = $owner;
         $this->repo = $repo;

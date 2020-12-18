@@ -16,9 +16,9 @@ class ReactionsCreateForTeamDiscussionCommentInOrg extends \Github\Runtime\Clien
      * @param string $teamSlug team_slug parameter
      * @param int $discussionNumber 
      * @param int $commentNumber 
-     * @param \Github\Model\OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBody $requestBody 
+     * @param null|\Github\Model\OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBody $requestBody 
      */
-    public function __construct(string $org, string $teamSlug, int $discussionNumber, int $commentNumber, \Github\Model\OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBody $requestBody)
+    public function __construct(string $org, string $teamSlug, int $discussionNumber, int $commentNumber, ?\Github\Model\OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBody $requestBody = null)
     {
         $this->org = $org;
         $this->team_slug = $teamSlug;

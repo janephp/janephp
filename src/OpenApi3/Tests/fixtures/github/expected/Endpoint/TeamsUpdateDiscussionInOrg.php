@@ -14,9 +14,9 @@ class TeamsUpdateDiscussionInOrg extends \Github\Runtime\Client\BaseEndpoint imp
      * @param string $org 
      * @param string $teamSlug team_slug parameter
      * @param int $discussionNumber 
-     * @param \Github\Model\OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBody $requestBody 
+     * @param null|\Github\Model\OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBody $requestBody 
      */
-    public function __construct(string $org, string $teamSlug, int $discussionNumber, \Github\Model\OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBody $requestBody)
+    public function __construct(string $org, string $teamSlug, int $discussionNumber, ?\Github\Model\OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBody $requestBody = null)
     {
         $this->org = $org;
         $this->team_slug = $teamSlug;

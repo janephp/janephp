@@ -16,9 +16,9 @@ class TeamsUpdateDiscussionCommentInOrg extends \Github\Runtime\Client\BaseEndpo
      * @param string $teamSlug team_slug parameter
      * @param int $discussionNumber 
      * @param int $commentNumber 
-     * @param \Github\Model\OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberPatchBody $requestBody 
+     * @param null|\Github\Model\OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberPatchBody $requestBody 
      */
-    public function __construct(string $org, string $teamSlug, int $discussionNumber, int $commentNumber, \Github\Model\OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberPatchBody $requestBody)
+    public function __construct(string $org, string $teamSlug, int $discussionNumber, int $commentNumber, ?\Github\Model\OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberPatchBody $requestBody = null)
     {
         $this->org = $org;
         $this->team_slug = $teamSlug;

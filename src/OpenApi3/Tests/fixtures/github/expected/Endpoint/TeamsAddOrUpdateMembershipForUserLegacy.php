@@ -21,9 +21,9 @@ class TeamsAddOrUpdateMembershipForUserLegacy extends \Github\Runtime\Client\Bas
     *
     * @param int $teamId 
     * @param string $username 
-    * @param \Github\Model\TeamsTeamIdMembershipsUsernamePutBody $requestBody 
+    * @param null|\Github\Model\TeamsTeamIdMembershipsUsernamePutBody $requestBody 
     */
-    public function __construct(int $teamId, string $username, \Github\Model\TeamsTeamIdMembershipsUsernamePutBody $requestBody)
+    public function __construct(int $teamId, string $username, ?\Github\Model\TeamsTeamIdMembershipsUsernamePutBody $requestBody = null)
     {
         $this->team_id = $teamId;
         $this->username = $username;

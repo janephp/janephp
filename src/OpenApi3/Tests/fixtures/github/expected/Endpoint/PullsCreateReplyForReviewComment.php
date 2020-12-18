@@ -17,9 +17,9 @@ class PullsCreateReplyForReviewComment extends \Github\Runtime\Client\BaseEndpoi
     * @param string $repo 
     * @param int $pullNumber 
     * @param int $commentId comment_id parameter
-    * @param \Github\Model\ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBody $requestBody 
+    * @param null|\Github\Model\ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBody $requestBody 
     */
-    public function __construct(string $owner, string $repo, int $pullNumber, int $commentId, \Github\Model\ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBody $requestBody)
+    public function __construct(string $owner, string $repo, int $pullNumber, int $commentId, ?\Github\Model\ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBody $requestBody = null)
     {
         $this->owner = $owner;
         $this->repo = $repo;

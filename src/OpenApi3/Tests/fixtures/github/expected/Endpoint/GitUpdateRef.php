@@ -13,9 +13,9 @@ class GitUpdateRef extends \Github\Runtime\Client\BaseEndpoint implements \Githu
      * @param string $owner 
      * @param string $repo 
      * @param string $ref ref+ parameter
-     * @param \Github\Model\ReposOwnerRepoGitRefsRefPatchBody $requestBody 
+     * @param null|\Github\Model\ReposOwnerRepoGitRefsRefPatchBody $requestBody 
      */
-    public function __construct(string $owner, string $repo, string $ref, \Github\Model\ReposOwnerRepoGitRefsRefPatchBody $requestBody)
+    public function __construct(string $owner, string $repo, string $ref, ?\Github\Model\ReposOwnerRepoGitRefsRefPatchBody $requestBody = null)
     {
         $this->owner = $owner;
         $this->repo = $repo;

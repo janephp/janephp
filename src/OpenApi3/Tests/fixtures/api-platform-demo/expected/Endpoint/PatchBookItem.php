@@ -9,9 +9,9 @@ class PatchBookItem extends \ApiPlatform\Demo\Runtime\Client\BaseEndpoint implem
      * 
      *
      * @param string $id 
-     * @param \ApiPlatform\Demo\Model\Book $requestBody 
+     * @param null|\ApiPlatform\Demo\Model\Book $requestBody 
      */
-    public function __construct(string $id, \ApiPlatform\Demo\Model\Book $requestBody)
+    public function __construct(string $id, ?\ApiPlatform\Demo\Model\Book $requestBody = null)
     {
         $this->id = $id;
         $this->body = $requestBody;

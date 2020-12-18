@@ -11,9 +11,9 @@ class ReposMerge extends \Github\Runtime\Client\BaseEndpoint implements \Github\
      *
      * @param string $owner 
      * @param string $repo 
-     * @param \Github\Model\ReposOwnerRepoMergesPostBody $requestBody 
+     * @param null|\Github\Model\ReposOwnerRepoMergesPostBody $requestBody 
      */
-    public function __construct(string $owner, string $repo, \Github\Model\ReposOwnerRepoMergesPostBody $requestBody)
+    public function __construct(string $owner, string $repo, ?\Github\Model\ReposOwnerRepoMergesPostBody $requestBody = null)
     {
         $this->owner = $owner;
         $this->repo = $repo;

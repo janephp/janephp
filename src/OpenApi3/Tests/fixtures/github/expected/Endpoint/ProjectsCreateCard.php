@@ -11,9 +11,9 @@ class ProjectsCreateCard extends \Github\Runtime\Client\BaseEndpoint implements 
     Be aware that the `id` of a pull request returned from "Issues" endpoints will be an _issue id_. To find out the pull request id, use the "[List pull requests](https://developer.github.com/v3/pulls/#list-pull-requests)" endpoint.
     *
     * @param int $columnId column_id parameter
-    * @param mixed $requestBody 
+    * @param null|mixed $requestBody 
     */
-    public function __construct(int $columnId, $requestBody)
+    public function __construct(int $columnId, $requestBody = null)
     {
         $this->column_id = $columnId;
         $this->body = $requestBody;

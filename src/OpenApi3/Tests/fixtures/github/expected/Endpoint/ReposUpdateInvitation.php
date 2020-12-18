@@ -13,9 +13,9 @@ class ReposUpdateInvitation extends \Github\Runtime\Client\BaseEndpoint implemen
      * @param string $owner 
      * @param string $repo 
      * @param int $invitationId invitation_id parameter
-     * @param \Github\Model\ReposOwnerRepoInvitationsInvitationIdPatchBody $requestBody 
+     * @param null|\Github\Model\ReposOwnerRepoInvitationsInvitationIdPatchBody $requestBody 
      */
-    public function __construct(string $owner, string $repo, int $invitationId, \Github\Model\ReposOwnerRepoInvitationsInvitationIdPatchBody $requestBody)
+    public function __construct(string $owner, string $repo, int $invitationId, ?\Github\Model\ReposOwnerRepoInvitationsInvitationIdPatchBody $requestBody = null)
     {
         $this->owner = $owner;
         $this->repo = $repo;

@@ -7,9 +7,9 @@ class MarkdownRender extends \Github\Runtime\Client\BaseEndpoint implements \Git
     /**
      * 
      *
-     * @param \Github\Model\MarkdownPostBody $requestBody 
+     * @param null|\Github\Model\MarkdownPostBody $requestBody 
      */
-    public function __construct(\Github\Model\MarkdownPostBody $requestBody)
+    public function __construct(?\Github\Model\MarkdownPostBody $requestBody = null)
     {
         $this->body = $requestBody;
     }
