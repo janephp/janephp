@@ -9,9 +9,9 @@ class PatchParchmentItem extends \ApiPlatform\Demo\Runtime\Client\BaseEndpoint i
      * 
      *
      * @param string $id 
-     * @param \ApiPlatform\Demo\Model\Parchment $requestBody 
+     * @param null|\ApiPlatform\Demo\Model\Parchment $requestBody 
      */
-    public function __construct(string $id, \ApiPlatform\Demo\Model\Parchment $requestBody)
+    public function __construct(string $id, ?\ApiPlatform\Demo\Model\Parchment $requestBody = null)
     {
         $this->id = $id;
         $this->body = $requestBody;
@@ -49,7 +49,7 @@ class PatchParchmentItem extends \ApiPlatform\Demo\Runtime\Client\BaseEndpoint i
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
-        if (200 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return $serializer->deserialize($body, 'ApiPlatform\\Demo\\Model\\Parchment', 'json');
         }
         if (400 === $status) {

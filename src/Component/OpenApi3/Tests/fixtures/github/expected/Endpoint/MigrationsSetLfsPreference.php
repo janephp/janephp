@@ -11,9 +11,9 @@ class MigrationsSetLfsPreference extends \Github\Runtime\Client\BaseEndpoint imp
      *
      * @param string $owner 
      * @param string $repo 
-     * @param \Github\Model\ReposOwnerRepoImportLfsPatchBody $requestBody 
+     * @param null|\Github\Model\ReposOwnerRepoImportLfsPatchBody $requestBody 
      */
-    public function __construct(string $owner, string $repo, \Github\Model\ReposOwnerRepoImportLfsPatchBody $requestBody)
+    public function __construct(string $owner, string $repo, ?\Github\Model\ReposOwnerRepoImportLfsPatchBody $requestBody = null)
     {
         $this->owner = $owner;
         $this->repo = $repo;
@@ -48,10 +48,10 @@ class MigrationsSetLfsPreference extends \Github\Runtime\Client\BaseEndpoint imp
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
-        if (200 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Github\\Model\\Import', 'json');
         }
-        if (422 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (422 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Github\Exception\MigrationsSetLfsPreferenceUnprocessableEntityException($serializer->deserialize($body, 'Github\\Model\\ValidationError', 'json'));
         }
     }

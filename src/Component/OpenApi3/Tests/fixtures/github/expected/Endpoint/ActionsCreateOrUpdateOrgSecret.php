@@ -85,9 +85,9 @@ class ActionsCreateOrUpdateOrgSecret extends \Github\Runtime\Client\BaseEndpoint
     *
     * @param string $org 
     * @param string $secretName secret_name parameter
-    * @param \Github\Model\OrgsOrgActionsSecretsSecretNamePutBody $requestBody 
+    * @param null|\Github\Model\OrgsOrgActionsSecretsSecretNamePutBody $requestBody 
     */
-    public function __construct(string $org, string $secretName, \Github\Model\OrgsOrgActionsSecretsSecretNamePutBody $requestBody)
+    public function __construct(string $org, string $secretName, ?\Github\Model\OrgsOrgActionsSecretsSecretNamePutBody $requestBody = null)
     {
         $this->org = $org;
         $this->secret_name = $secretName;

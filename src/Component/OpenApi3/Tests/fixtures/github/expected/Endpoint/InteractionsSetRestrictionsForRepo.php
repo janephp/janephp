@@ -11,9 +11,9 @@ class InteractionsSetRestrictionsForRepo extends \Github\Runtime\Client\BaseEndp
      *
      * @param string $owner 
      * @param string $repo 
-     * @param \Github\Model\ReposOwnerRepoInteractionLimitsPutBody $requestBody 
+     * @param null|\Github\Model\ReposOwnerRepoInteractionLimitsPutBody $requestBody 
      */
-    public function __construct(string $owner, string $repo, \Github\Model\ReposOwnerRepoInteractionLimitsPutBody $requestBody)
+    public function __construct(string $owner, string $repo, ?\Github\Model\ReposOwnerRepoInteractionLimitsPutBody $requestBody = null)
     {
         $this->owner = $owner;
         $this->repo = $repo;
@@ -47,7 +47,7 @@ class InteractionsSetRestrictionsForRepo extends \Github\Runtime\Client\BaseEndp
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
-        if (200 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Github\\Model\\InteractionLimit', 'json');
         }
     }

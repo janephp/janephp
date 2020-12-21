@@ -11,9 +11,9 @@ class ProjectsCreateCard extends \Github\Runtime\Client\BaseEndpoint implements 
     Be aware that the `id` of a pull request returned from "Issues" endpoints will be an _issue id_. To find out the pull request id, use the "[List pull requests](https://developer.github.com/v3/pulls/#list-pull-requests)" endpoint.
     *
     * @param int $columnId column_id parameter
-    * @param mixed $requestBody 
+    * @param null|mixed $requestBody 
     */
-    public function __construct(int $columnId, $requestBody)
+    public function __construct(int $columnId, $requestBody = null)
     {
         $this->column_id = $columnId;
         $this->body = $requestBody;
@@ -50,22 +50,22 @@ class ProjectsCreateCard extends \Github\Runtime\Client\BaseEndpoint implements 
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
-        if (201 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (201 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Github\\Model\\ProjectCard', 'json');
         }
         if (304 === $status) {
             return null;
         }
-        if (403 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (403 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Github\Exception\ProjectsCreateCardForbiddenException($serializer->deserialize($body, 'Github\\Model\\BasicError', 'json'));
         }
-        if (401 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (401 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Github\Exception\ProjectsCreateCardUnauthorizedException($serializer->deserialize($body, 'Github\\Model\\BasicError', 'json'));
         }
-        if (422 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (422 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Github\Exception\ProjectsCreateCardUnprocessableEntityException();
         }
-        if (503 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (503 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Github\Exception\ProjectsCreateCardServiceUnavailableException($serializer->deserialize($body, 'Github\\Model\\ProjectsColumnsColumnIdCardsPostResponse503', 'json'));
         }
     }

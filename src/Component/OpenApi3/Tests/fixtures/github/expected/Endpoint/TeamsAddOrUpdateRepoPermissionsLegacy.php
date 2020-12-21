@@ -17,9 +17,9 @@ class TeamsAddOrUpdateRepoPermissionsLegacy extends \Github\Runtime\Client\BaseE
     * @param int $teamId 
     * @param string $owner 
     * @param string $repo 
-    * @param \Github\Model\TeamsTeamIdReposOwnerRepoPutBody $requestBody 
+    * @param null|\Github\Model\TeamsTeamIdReposOwnerRepoPutBody $requestBody 
     */
-    public function __construct(int $teamId, string $owner, string $repo, \Github\Model\TeamsTeamIdReposOwnerRepoPutBody $requestBody)
+    public function __construct(int $teamId, string $owner, string $repo, ?\Github\Model\TeamsTeamIdReposOwnerRepoPutBody $requestBody = null)
     {
         $this->team_id = $teamId;
         $this->owner = $owner;
@@ -59,10 +59,10 @@ class TeamsAddOrUpdateRepoPermissionsLegacy extends \Github\Runtime\Client\BaseE
         if (204 === $status) {
             return null;
         }
-        if (403 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (403 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Github\Exception\TeamsAddOrUpdateRepoPermissionsLegacyForbiddenException($serializer->deserialize($body, 'Github\\Model\\BasicError', 'json'));
         }
-        if (422 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (422 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Github\Exception\TeamsAddOrUpdateRepoPermissionsLegacyUnprocessableEntityException($serializer->deserialize($body, 'Github\\Model\\ValidationError', 'json'));
         }
     }

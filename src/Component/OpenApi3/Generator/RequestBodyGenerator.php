@@ -51,7 +51,13 @@ class RequestBodyGenerator
             $paramType = 'array';
         }
 
-        return new Param(new Expr\Variable($name), null, $paramType === null ? $paramType : new Name($paramType));
+        $default = null;
+        if (!$requestBody->getRequired() || !$context->isStrict()) {
+            $default = new Expr\ConstFetch(new Name('null'));
+            $paramType = null === $paramType ? $paramType : "?$paramType";
+        }
+
+        return new Param(new Expr\Variable($name), $default, $paramType === null ? $paramType : new Name($paramType));
     }
 
     /**
@@ -60,6 +66,10 @@ class RequestBodyGenerator
     public function generateMethodDocParameter($requestBody, string $reference, Context $context)
     {
         [$types, $_] = $this->getTypes($requestBody, $reference, $context);
+
+        if (!$requestBody->getRequired() || !$context->isStrict()) {
+            array_unshift($types, 'null');
+        }
 
         return sprintf(' * @param %s $%s %s', implode('|', $types), 'requestBody', '');
     }

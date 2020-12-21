@@ -11,9 +11,9 @@ class ReposUpdateInformationAboutPagesSite extends \Github\Runtime\Client\BaseEn
      *
      * @param string $owner 
      * @param string $repo 
-     * @param \Github\Model\ReposOwnerRepoPagesPutBody $requestBody 
+     * @param null|\Github\Model\ReposOwnerRepoPagesPutBody $requestBody 
      */
-    public function __construct(string $owner, string $repo, \Github\Model\ReposOwnerRepoPagesPutBody $requestBody)
+    public function __construct(string $owner, string $repo, ?\Github\Model\ReposOwnerRepoPagesPutBody $requestBody = null)
     {
         $this->owner = $owner;
         $this->repo = $repo;
@@ -52,10 +52,10 @@ class ReposUpdateInformationAboutPagesSite extends \Github\Runtime\Client\BaseEn
         if (204 === $status) {
             return null;
         }
-        if (422 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (422 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Github\Exception\ReposUpdateInformationAboutPagesSiteUnprocessableEntityException($serializer->deserialize($body, 'Github\\Model\\ValidationError', 'json'));
         }
-        if (400 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (400 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Github\Exception\ReposUpdateInformationAboutPagesSiteBadRequestException($serializer->deserialize($body, 'Github\\Model\\BasicError', 'json'));
         }
     }

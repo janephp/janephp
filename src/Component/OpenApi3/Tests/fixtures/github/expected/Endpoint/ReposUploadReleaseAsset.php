@@ -30,13 +30,13 @@ class ReposUploadReleaseAsset extends \Github\Runtime\Client\BaseEndpoint implem
     * @param string $owner 
     * @param string $repo 
     * @param int $releaseId release_id parameter
-    * @param string $requestBody 
+    * @param null|string $requestBody 
     * @param array $queryParameters {
     *     @var string $name name parameter
     *     @var string $label label parameter
     * }
     */
-    public function __construct(string $owner, string $repo, int $releaseId, string $requestBody, array $queryParameters = array())
+    public function __construct(string $owner, string $repo, int $releaseId, ?string $requestBody = null, array $queryParameters = array())
     {
         $this->owner = $owner;
         $this->repo = $repo;
@@ -82,7 +82,7 @@ class ReposUploadReleaseAsset extends \Github\Runtime\Client\BaseEndpoint implem
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
-        if (201 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (201 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Github\\Model\\ReleaseAsset', 'json');
         }
     }

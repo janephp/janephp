@@ -9,9 +9,9 @@ class AppsDeleteToken extends \Github\Runtime\Client\BaseEndpoint implements \Gi
      * OAuth application owners can revoke a single token for an OAuth application. You must use [Basic Authentication](https://developer.github.com/v3/auth#basic-authentication) when accessing this endpoint, using the OAuth application's `client_id` and `client_secret` as the username and password.
      *
      * @param string $clientId 
-     * @param \Github\Model\ApplicationsClientIdTokenDeleteBody $requestBody 
+     * @param null|\Github\Model\ApplicationsClientIdTokenDeleteBody $requestBody 
      */
-    public function __construct(string $clientId, \Github\Model\ApplicationsClientIdTokenDeleteBody $requestBody)
+    public function __construct(string $clientId, ?\Github\Model\ApplicationsClientIdTokenDeleteBody $requestBody = null)
     {
         $this->client_id = $clientId;
         $this->body = $requestBody;
@@ -48,7 +48,7 @@ class AppsDeleteToken extends \Github\Runtime\Client\BaseEndpoint implements \Gi
         if (204 === $status) {
             return null;
         }
-        if (422 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (422 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Github\Exception\AppsDeleteTokenUnprocessableEntityException($serializer->deserialize($body, 'Github\\Model\\ValidationError', 'json'));
         }
     }

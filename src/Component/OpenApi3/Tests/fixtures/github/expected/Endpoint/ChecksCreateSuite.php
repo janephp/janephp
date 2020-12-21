@@ -13,9 +13,9 @@ class ChecksCreateSuite extends \Github\Runtime\Client\BaseEndpoint implements \
     *
     * @param string $owner 
     * @param string $repo 
-    * @param \Github\Model\ReposOwnerRepoCheckSuitesPostBody $requestBody 
+    * @param null|\Github\Model\ReposOwnerRepoCheckSuitesPostBody $requestBody 
     */
-    public function __construct(string $owner, string $repo, \Github\Model\ReposOwnerRepoCheckSuitesPostBody $requestBody)
+    public function __construct(string $owner, string $repo, ?\Github\Model\ReposOwnerRepoCheckSuitesPostBody $requestBody = null)
     {
         $this->owner = $owner;
         $this->repo = $repo;
@@ -49,7 +49,7 @@ class ChecksCreateSuite extends \Github\Runtime\Client\BaseEndpoint implements \
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
-        if (201 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (201 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Github\\Model\\CheckSuite', 'json');
         }
     }

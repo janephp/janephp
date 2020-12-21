@@ -13,9 +13,9 @@ class ReposUpdateInvitation extends \Github\Runtime\Client\BaseEndpoint implemen
      * @param string $owner 
      * @param string $repo 
      * @param int $invitationId invitation_id parameter
-     * @param \Github\Model\ReposOwnerRepoInvitationsInvitationIdPatchBody $requestBody 
+     * @param null|\Github\Model\ReposOwnerRepoInvitationsInvitationIdPatchBody $requestBody 
      */
-    public function __construct(string $owner, string $repo, int $invitationId, \Github\Model\ReposOwnerRepoInvitationsInvitationIdPatchBody $requestBody)
+    public function __construct(string $owner, string $repo, int $invitationId, ?\Github\Model\ReposOwnerRepoInvitationsInvitationIdPatchBody $requestBody = null)
     {
         $this->owner = $owner;
         $this->repo = $repo;
@@ -50,7 +50,7 @@ class ReposUpdateInvitation extends \Github\Runtime\Client\BaseEndpoint implemen
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
-        if (200 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Github\\Model\\RepositoryInvitation', 'json');
         }
     }

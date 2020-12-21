@@ -19,9 +19,9 @@ class ReposAddAppAccessRestrictions extends \Github\Runtime\Client\BaseEndpoint 
     * @param string $owner 
     * @param string $repo 
     * @param string $branch branch+ parameter
-    * @param array[] $requestBody 
+    * @param null|array[] $requestBody 
     */
-    public function __construct(string $owner, string $repo, string $branch, array $requestBody)
+    public function __construct(string $owner, string $repo, string $branch, ?array $requestBody = null)
     {
         $this->owner = $owner;
         $this->repo = $repo;
@@ -57,10 +57,10 @@ class ReposAddAppAccessRestrictions extends \Github\Runtime\Client\BaseEndpoint 
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
-        if (200 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Github\\Model\\Integration[]', 'json');
         }
-        if (422 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (422 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Github\Exception\ReposAddAppAccessRestrictionsUnprocessableEntityException($serializer->deserialize($body, 'Github\\Model\\ValidationError', 'json'));
         }
     }

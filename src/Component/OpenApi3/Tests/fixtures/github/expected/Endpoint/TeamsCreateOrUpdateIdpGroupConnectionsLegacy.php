@@ -13,9 +13,9 @@ class TeamsCreateOrUpdateIdpGroupConnectionsLegacy extends \Github\Runtime\Clien
     Creates, updates, or removes a connection between a team and an IdP group. When adding groups to a team, you must include all new and existing groups to avoid replacing existing groups with the new ones. Specifying an empty `groups` array will remove all connections for a team.
     *
     * @param int $teamId 
-    * @param \Github\Model\TeamsTeamIdTeamSyncGroupMappingsPatchBody $requestBody 
+    * @param null|\Github\Model\TeamsTeamIdTeamSyncGroupMappingsPatchBody $requestBody 
     */
-    public function __construct(int $teamId, \Github\Model\TeamsTeamIdTeamSyncGroupMappingsPatchBody $requestBody)
+    public function __construct(int $teamId, ?\Github\Model\TeamsTeamIdTeamSyncGroupMappingsPatchBody $requestBody = null)
     {
         $this->team_id = $teamId;
         $this->body = $requestBody;
@@ -50,13 +50,13 @@ class TeamsCreateOrUpdateIdpGroupConnectionsLegacy extends \Github\Runtime\Clien
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
-        if (200 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Github\\Model\\GroupMapping', 'json');
         }
-        if (422 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (422 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Github\Exception\TeamsCreateOrUpdateIdpGroupConnectionsLegacyUnprocessableEntityException($serializer->deserialize($body, 'Github\\Model\\ValidationError', 'json'));
         }
-        if (403 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (403 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Github\Exception\TeamsCreateOrUpdateIdpGroupConnectionsLegacyForbiddenException($serializer->deserialize($body, 'Github\\Model\\BasicError', 'json'));
         }
     }

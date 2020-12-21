@@ -15,9 +15,9 @@ class ReposCreateCommitStatus extends \Github\Runtime\Client\BaseEndpoint implem
     * @param string $owner 
     * @param string $repo 
     * @param string $sha sha parameter
-    * @param \Github\Model\ReposOwnerRepoStatusesShaPostBody $requestBody 
+    * @param null|\Github\Model\ReposOwnerRepoStatusesShaPostBody $requestBody 
     */
-    public function __construct(string $owner, string $repo, string $sha, \Github\Model\ReposOwnerRepoStatusesShaPostBody $requestBody)
+    public function __construct(string $owner, string $repo, string $sha, ?\Github\Model\ReposOwnerRepoStatusesShaPostBody $requestBody = null)
     {
         $this->owner = $owner;
         $this->repo = $repo;
@@ -52,7 +52,7 @@ class ReposCreateCommitStatus extends \Github\Runtime\Client\BaseEndpoint implem
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
-        if (201 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (201 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Github\\Model\\Status', 'json');
         }
     }

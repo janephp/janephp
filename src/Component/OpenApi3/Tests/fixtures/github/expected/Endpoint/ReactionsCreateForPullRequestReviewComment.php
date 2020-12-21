@@ -13,9 +13,9 @@ class ReactionsCreateForPullRequestReviewComment extends \Github\Runtime\Client\
      * @param string $owner 
      * @param string $repo 
      * @param int $commentId comment_id parameter
-     * @param \Github\Model\ReposOwnerRepoPullsCommentsCommentIdReactionsPostBody $requestBody 
+     * @param null|\Github\Model\ReposOwnerRepoPullsCommentsCommentIdReactionsPostBody $requestBody 
      */
-    public function __construct(string $owner, string $repo, int $commentId, \Github\Model\ReposOwnerRepoPullsCommentsCommentIdReactionsPostBody $requestBody)
+    public function __construct(string $owner, string $repo, int $commentId, ?\Github\Model\ReposOwnerRepoPullsCommentsCommentIdReactionsPostBody $requestBody = null)
     {
         $this->owner = $owner;
         $this->repo = $repo;
@@ -52,16 +52,16 @@ class ReactionsCreateForPullRequestReviewComment extends \Github\Runtime\Client\
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
-        if (200 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Github\\Model\\Reaction', 'json');
         }
-        if (201 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (201 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Github\\Model\\Reaction', 'json');
         }
-        if (415 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (415 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Github\Exception\ReactionsCreateForPullRequestReviewCommentUnsupportedMediaTypeException($serializer->deserialize($body, 'Github\\Model\\ResponsePreviewHeaderMissing', 'json'));
         }
-        if (422 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (422 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Github\Exception\ReactionsCreateForPullRequestReviewCommentUnprocessableEntityException($serializer->deserialize($body, 'Github\\Model\\ValidationError', 'json'));
         }
     }

@@ -12,9 +12,9 @@ class ReposCreateWebhook extends \Github\Runtime\Client\BaseEndpoint implements 
     *
     * @param string $owner 
     * @param string $repo 
-    * @param \Github\Model\ReposOwnerRepoHooksPostBody $requestBody 
+    * @param null|\Github\Model\ReposOwnerRepoHooksPostBody $requestBody 
     */
-    public function __construct(string $owner, string $repo, \Github\Model\ReposOwnerRepoHooksPostBody $requestBody)
+    public function __construct(string $owner, string $repo, ?\Github\Model\ReposOwnerRepoHooksPostBody $requestBody = null)
     {
         $this->owner = $owner;
         $this->repo = $repo;
@@ -51,16 +51,16 @@ class ReposCreateWebhook extends \Github\Runtime\Client\BaseEndpoint implements 
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
-        if (201 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (201 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Github\\Model\\Hook', 'json');
         }
-        if (404 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Github\Exception\ReposCreateWebhookNotFoundException($serializer->deserialize($body, 'Github\\Model\\BasicError', 'json'));
         }
-        if (422 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (422 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Github\Exception\ReposCreateWebhookUnprocessableEntityException($serializer->deserialize($body, 'Github\\Model\\ValidationError', 'json'));
         }
-        if (403 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (403 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Github\Exception\ReposCreateWebhookForbiddenException($serializer->deserialize($body, 'Github\\Model\\BasicError', 'json'));
         }
     }

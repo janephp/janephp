@@ -19,9 +19,9 @@ class TeamsAddOrUpdateRepoPermissionsInOrg extends \Github\Runtime\Client\BaseEn
     * @param string $teamSlug team_slug parameter
     * @param string $owner 
     * @param string $repo 
-    * @param \Github\Model\OrgsOrgTeamsTeamSlugReposOwnerRepoPutBody $requestBody 
+    * @param null|\Github\Model\OrgsOrgTeamsTeamSlugReposOwnerRepoPutBody $requestBody 
     */
-    public function __construct(string $org, string $teamSlug, string $owner, string $repo, \Github\Model\OrgsOrgTeamsTeamSlugReposOwnerRepoPutBody $requestBody)
+    public function __construct(string $org, string $teamSlug, string $owner, string $repo, ?\Github\Model\OrgsOrgTeamsTeamSlugReposOwnerRepoPutBody $requestBody = null)
     {
         $this->org = $org;
         $this->team_slug = $teamSlug;

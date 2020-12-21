@@ -13,9 +13,9 @@ class IssuesRemoveAssignees extends \Github\Runtime\Client\BaseEndpoint implemen
      * @param string $owner 
      * @param string $repo 
      * @param int $issueNumber issue_number parameter
-     * @param \Github\Model\ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBody $requestBody 
+     * @param null|\Github\Model\ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBody $requestBody 
      */
-    public function __construct(string $owner, string $repo, int $issueNumber, \Github\Model\ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBody $requestBody)
+    public function __construct(string $owner, string $repo, int $issueNumber, ?\Github\Model\ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBody $requestBody = null)
     {
         $this->owner = $owner;
         $this->repo = $repo;
@@ -50,7 +50,7 @@ class IssuesRemoveAssignees extends \Github\Runtime\Client\BaseEndpoint implemen
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
-        if (200 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Github\\Model\\IssueSimple', 'json');
         }
     }

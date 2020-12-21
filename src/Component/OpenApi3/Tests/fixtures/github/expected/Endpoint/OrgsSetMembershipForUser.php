@@ -19,9 +19,9 @@ class OrgsSetMembershipForUser extends \Github\Runtime\Client\BaseEndpoint imple
     *
     * @param string $org 
     * @param string $username 
-    * @param \Github\Model\OrgsOrgMembershipsUsernamePutBody $requestBody 
+    * @param null|\Github\Model\OrgsOrgMembershipsUsernamePutBody $requestBody 
     */
-    public function __construct(string $org, string $username, \Github\Model\OrgsOrgMembershipsUsernamePutBody $requestBody)
+    public function __construct(string $org, string $username, ?\Github\Model\OrgsOrgMembershipsUsernamePutBody $requestBody = null)
     {
         $this->org = $org;
         $this->username = $username;
@@ -57,13 +57,13 @@ class OrgsSetMembershipForUser extends \Github\Runtime\Client\BaseEndpoint imple
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
-        if (200 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Github\\Model\\OrgMembership', 'json');
         }
-        if (422 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (422 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Github\Exception\OrgsSetMembershipForUserUnprocessableEntityException($serializer->deserialize($body, 'Github\\Model\\ValidationError', 'json'));
         }
-        if (403 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (403 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Github\Exception\OrgsSetMembershipForUserForbiddenException($serializer->deserialize($body, 'Github\\Model\\BasicError', 'json'));
         }
     }

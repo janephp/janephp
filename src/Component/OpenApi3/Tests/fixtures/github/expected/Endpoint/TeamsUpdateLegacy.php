@@ -13,9 +13,9 @@ class TeamsUpdateLegacy extends \Github\Runtime\Client\BaseEndpoint implements \
     **Note:** With nested teams, the `privacy` for parent teams cannot be `secret`.
     *
     * @param int $teamId 
-    * @param \Github\Model\TeamsTeamIdPatchBody $requestBody 
+    * @param null|\Github\Model\TeamsTeamIdPatchBody $requestBody 
     */
-    public function __construct(int $teamId, \Github\Model\TeamsTeamIdPatchBody $requestBody)
+    public function __construct(int $teamId, ?\Github\Model\TeamsTeamIdPatchBody $requestBody = null)
     {
         $this->team_id = $teamId;
         $this->body = $requestBody;
@@ -51,16 +51,16 @@ class TeamsUpdateLegacy extends \Github\Runtime\Client\BaseEndpoint implements \
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
-        if (201 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (201 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Github\\Model\\TeamFull', 'json');
         }
-        if (404 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Github\Exception\TeamsUpdateLegacyNotFoundException($serializer->deserialize($body, 'Github\\Model\\BasicError', 'json'));
         }
-        if (422 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (422 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Github\Exception\TeamsUpdateLegacyUnprocessableEntityException($serializer->deserialize($body, 'Github\\Model\\ValidationError', 'json'));
         }
-        if (403 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (403 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Github\Exception\TeamsUpdateLegacyForbiddenException($serializer->deserialize($body, 'Github\\Model\\BasicError', 'json'));
         }
     }

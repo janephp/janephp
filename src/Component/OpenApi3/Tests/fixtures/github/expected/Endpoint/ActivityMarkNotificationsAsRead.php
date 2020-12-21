@@ -7,9 +7,9 @@ class ActivityMarkNotificationsAsRead extends \Github\Runtime\Client\BaseEndpoin
     /**
      * Marks all notifications as "read" removes it from the [default view on GitHub](https://github.com/notifications). If the number of notifications is too large to complete in one request, you will receive a `202 Accepted` status and GitHub will run an asynchronous process to mark notifications as "read." To check whether any "unread" notifications remain, you can use the [List notifications for the authenticated user](https://developer.github.com/v3/activity/notifications/#list-notifications-for-the-authenticated-user) endpoint and pass the query parameter `all=false`.
      *
-     * @param \Github\Model\NotificationsPutBody $requestBody 
+     * @param null|\Github\Model\NotificationsPutBody $requestBody 
      */
-    public function __construct(\Github\Model\NotificationsPutBody $requestBody)
+    public function __construct(?\Github\Model\NotificationsPutBody $requestBody = null)
     {
         $this->body = $requestBody;
     }
@@ -43,7 +43,7 @@ class ActivityMarkNotificationsAsRead extends \Github\Runtime\Client\BaseEndpoin
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
-        if (202 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (202 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Github\\Model\\NotificationsPutResponse202', 'json');
         }
         if (205 === $status) {
@@ -52,10 +52,10 @@ class ActivityMarkNotificationsAsRead extends \Github\Runtime\Client\BaseEndpoin
         if (304 === $status) {
             return null;
         }
-        if (403 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (403 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Github\Exception\ActivityMarkNotificationsAsReadForbiddenException($serializer->deserialize($body, 'Github\\Model\\BasicError', 'json'));
         }
-        if (401 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (401 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Github\Exception\ActivityMarkNotificationsAsReadUnauthorizedException($serializer->deserialize($body, 'Github\\Model\\BasicError', 'json'));
         }
     }

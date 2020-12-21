@@ -17,9 +17,9 @@ class TeamsCreateDiscussionCommentInOrg extends \Github\Runtime\Client\BaseEndpo
     * @param string $org 
     * @param string $teamSlug team_slug parameter
     * @param int $discussionNumber 
-    * @param \Github\Model\OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsPostBody $requestBody 
+    * @param null|\Github\Model\OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsPostBody $requestBody 
     */
-    public function __construct(string $org, string $teamSlug, int $discussionNumber, \Github\Model\OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsPostBody $requestBody)
+    public function __construct(string $org, string $teamSlug, int $discussionNumber, ?\Github\Model\OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsPostBody $requestBody = null)
     {
         $this->org = $org;
         $this->team_slug = $teamSlug;
@@ -54,7 +54,7 @@ class TeamsCreateDiscussionCommentInOrg extends \Github\Runtime\Client\BaseEndpo
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
-        if (201 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (201 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Github\\Model\\TeamDiscussionComment', 'json');
         }
     }

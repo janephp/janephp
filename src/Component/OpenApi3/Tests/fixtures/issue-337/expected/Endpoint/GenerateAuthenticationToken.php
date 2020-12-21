@@ -7,9 +7,9 @@ class GenerateAuthenticationToken extends \CreditSafe\API\Runtime\Client\BaseEnd
     /**
      * Enter your username and password into the request schema to generate an Authorization Token
      *
-     * @param \CreditSafe\API\Model\AuthenticationRequest $requestBody 
+     * @param null|\CreditSafe\API\Model\AuthenticationRequest $requestBody 
      */
-    public function __construct(\CreditSafe\API\Model\AuthenticationRequest $requestBody)
+    public function __construct(?\CreditSafe\API\Model\AuthenticationRequest $requestBody = null)
     {
         $this->body = $requestBody;
     }
@@ -43,13 +43,13 @@ class GenerateAuthenticationToken extends \CreditSafe\API\Runtime\Client\BaseEnd
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
-        if (200 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return $serializer->deserialize($body, 'CreditSafe\\API\\Model\\AuthenticationSuccessResponse', 'json');
         }
-        if (401 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (401 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \CreditSafe\API\Exception\GenerateAuthenticationTokenUnauthorizedException();
         }
-        if (404 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \CreditSafe\API\Exception\GenerateAuthenticationTokenNotFoundException();
         }
     }

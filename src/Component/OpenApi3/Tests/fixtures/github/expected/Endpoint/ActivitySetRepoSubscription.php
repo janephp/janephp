@@ -11,9 +11,9 @@ class ActivitySetRepoSubscription extends \Github\Runtime\Client\BaseEndpoint im
      *
      * @param string $owner 
      * @param string $repo 
-     * @param \Github\Model\ReposOwnerRepoSubscriptionPutBody $requestBody 
+     * @param null|\Github\Model\ReposOwnerRepoSubscriptionPutBody $requestBody 
      */
-    public function __construct(string $owner, string $repo, \Github\Model\ReposOwnerRepoSubscriptionPutBody $requestBody)
+    public function __construct(string $owner, string $repo, ?\Github\Model\ReposOwnerRepoSubscriptionPutBody $requestBody = null)
     {
         $this->owner = $owner;
         $this->repo = $repo;
@@ -47,7 +47,7 @@ class ActivitySetRepoSubscription extends \Github\Runtime\Client\BaseEndpoint im
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
-        if (200 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Github\\Model\\RepositorySubscription', 'json');
         }
     }

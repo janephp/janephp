@@ -9,9 +9,9 @@ class MigrationsStartForOrg extends \Github\Runtime\Client\BaseEndpoint implemen
      * Initiates the generation of a migration archive.
      *
      * @param string $org 
-     * @param \Github\Model\OrgsOrgMigrationsPostBody $requestBody 
+     * @param null|\Github\Model\OrgsOrgMigrationsPostBody $requestBody 
      */
-    public function __construct(string $org, \Github\Model\OrgsOrgMigrationsPostBody $requestBody)
+    public function __construct(string $org, ?\Github\Model\OrgsOrgMigrationsPostBody $requestBody = null)
     {
         $this->org = $org;
         $this->body = $requestBody;
@@ -46,13 +46,13 @@ class MigrationsStartForOrg extends \Github\Runtime\Client\BaseEndpoint implemen
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
-        if (201 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (201 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Github\\Model\\Migration', 'json');
         }
-        if (404 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Github\Exception\MigrationsStartForOrgNotFoundException($serializer->deserialize($body, 'Github\\Model\\BasicError', 'json'));
         }
-        if (422 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (422 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Github\Exception\MigrationsStartForOrgUnprocessableEntityException($serializer->deserialize($body, 'Github\\Model\\ValidationError', 'json'));
         }
     }

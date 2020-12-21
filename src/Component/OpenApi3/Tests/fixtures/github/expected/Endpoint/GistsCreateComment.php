@@ -9,9 +9,9 @@ class GistsCreateComment extends \Github\Runtime\Client\BaseEndpoint implements 
      * 
      *
      * @param string $gistId gist_id parameter
-     * @param \Github\Model\GistsGistIdCommentsPostBody $requestBody 
+     * @param null|\Github\Model\GistsGistIdCommentsPostBody $requestBody 
      */
-    public function __construct(string $gistId, \Github\Model\GistsGistIdCommentsPostBody $requestBody)
+    public function __construct(string $gistId, ?\Github\Model\GistsGistIdCommentsPostBody $requestBody = null)
     {
         $this->gist_id = $gistId;
         $this->body = $requestBody;
@@ -46,16 +46,16 @@ class GistsCreateComment extends \Github\Runtime\Client\BaseEndpoint implements 
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
-        if (201 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (201 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Github\\Model\\GistComment', 'json');
         }
         if (304 === $status) {
             return null;
         }
-        if (404 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Github\Exception\GistsCreateCommentNotFoundException($serializer->deserialize($body, 'Github\\Model\\BasicError', 'json'));
         }
-        if (403 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (403 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Github\Exception\GistsCreateCommentForbiddenException($serializer->deserialize($body, 'Github\\Model\\BasicError', 'json'));
         }
     }

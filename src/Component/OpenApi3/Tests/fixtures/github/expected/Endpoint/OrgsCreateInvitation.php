@@ -11,9 +11,9 @@ class OrgsCreateInvitation extends \Github\Runtime\Client\BaseEndpoint implement
     This endpoint triggers [notifications](https://help.github.com/articles/about-notifications/). Creating content too quickly using this endpoint may result in abuse rate limiting. See "[Abuse rate limits](https://developer.github.com/v3/#abuse-rate-limits)" and "[Dealing with abuse rate limits](https://developer.github.com/v3/guides/best-practices-for-integrators/#dealing-with-abuse-rate-limits)" for details.
     *
     * @param string $org 
-    * @param \Github\Model\OrgsOrgInvitationsPostBody $requestBody 
+    * @param null|\Github\Model\OrgsOrgInvitationsPostBody $requestBody 
     */
-    public function __construct(string $org, \Github\Model\OrgsOrgInvitationsPostBody $requestBody)
+    public function __construct(string $org, ?\Github\Model\OrgsOrgInvitationsPostBody $requestBody = null)
     {
         $this->org = $org;
         $this->body = $requestBody;
@@ -48,13 +48,13 @@ class OrgsCreateInvitation extends \Github\Runtime\Client\BaseEndpoint implement
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
-        if (201 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (201 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Github\\Model\\OrganizationInvitation', 'json');
         }
-        if (422 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (422 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Github\Exception\OrgsCreateInvitationUnprocessableEntityException($serializer->deserialize($body, 'Github\\Model\\ValidationError', 'json'));
         }
-        if (404 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Github\Exception\OrgsCreateInvitationNotFoundException($serializer->deserialize($body, 'Github\\Model\\BasicError', 'json'));
         }
     }

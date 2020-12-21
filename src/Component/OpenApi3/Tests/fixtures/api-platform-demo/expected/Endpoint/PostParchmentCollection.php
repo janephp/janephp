@@ -7,9 +7,9 @@ class PostParchmentCollection extends \ApiPlatform\Demo\Runtime\Client\BaseEndpo
     /**
      * 
      *
-     * @param \stdClass|\ApiPlatform\Demo\Model\Parchment $requestBody 
+     * @param null|\stdClass|\ApiPlatform\Demo\Model\Parchment $requestBody 
      */
-    public function __construct($requestBody)
+    public function __construct($requestBody = null)
     {
         $this->body = $requestBody;
     }
@@ -67,7 +67,7 @@ class PostParchmentCollection extends \ApiPlatform\Demo\Runtime\Client\BaseEndpo
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
-        if (201 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (201 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return $serializer->deserialize($body, 'ApiPlatform\\Demo\\Model\\Parchment', 'json');
         }
         if (400 === $status) {

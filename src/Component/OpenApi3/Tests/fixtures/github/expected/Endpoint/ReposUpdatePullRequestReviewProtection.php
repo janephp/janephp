@@ -17,9 +17,9 @@ class ReposUpdatePullRequestReviewProtection extends \Github\Runtime\Client\Base
     * @param string $owner 
     * @param string $repo 
     * @param string $branch branch+ parameter
-    * @param \Github\Model\ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBody $requestBody 
+    * @param null|\Github\Model\ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBody $requestBody 
     */
-    public function __construct(string $owner, string $repo, string $branch, \Github\Model\ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBody $requestBody)
+    public function __construct(string $owner, string $repo, string $branch, ?\Github\Model\ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBody $requestBody = null)
     {
         $this->owner = $owner;
         $this->repo = $repo;
@@ -55,10 +55,10 @@ class ReposUpdatePullRequestReviewProtection extends \Github\Runtime\Client\Base
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
-        if (200 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Github\\Model\\ProtectedBranchPullRequestReview', 'json');
         }
-        if (422 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (422 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Github\Exception\ReposUpdatePullRequestReviewProtectionUnprocessableEntityException($serializer->deserialize($body, 'Github\\Model\\ValidationError', 'json'));
         }
     }

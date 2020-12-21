@@ -3344,7 +3344,7 @@ class Client extends \PicturePark\API\Runtime\Client\Client
     *
     * @param string $transferId ID of transfer.
     * @param string $requestId Identifier of file.
-    * @param string|resource|\Psr\Http\Message\StreamInterface $requestBody 
+    * @param null|string|resource|\Psr\Http\Message\StreamInterface $requestBody 
     * @param array $queryParameters {
     *     @var int $ChunkNumber Information about chunk.
     *     @var int $CurrentChunkSize Information about chunk.
@@ -3362,7 +3362,7 @@ class Client extends \PicturePark\API\Runtime\Client\Client
     *
     * @return null|\Psr\Http\Message\ResponseInterface
     */
-    public function transferUploadFile(string $transferId, string $requestId, $requestBody, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function transferUploadFile(string $transferId, string $requestId, $requestBody = null, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \PicturePark\API\Endpoint\TransferUploadFile($transferId, $requestId, $requestBody, $queryParameters), $fetch);
     }

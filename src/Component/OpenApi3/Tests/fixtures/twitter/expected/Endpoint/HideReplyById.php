@@ -9,9 +9,9 @@ class HideReplyById extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Clie
      * Tweet ID in the path is that of the reply to hide.
      *
      * @param string $id The ID of the reply that you want to hide.
-     * @param \Jane\Component\OpenApi3\Tests\Expected\Model\HideReplyRequest $requestBody 
+     * @param null|\Jane\Component\OpenApi3\Tests\Expected\Model\HideReplyRequest $requestBody 
      */
-    public function __construct(string $id, \Jane\Component\OpenApi3\Tests\Expected\Model\HideReplyRequest $requestBody)
+    public function __construct(string $id, ?\Jane\Component\OpenApi3\Tests\Expected\Model\HideReplyRequest $requestBody = null)
     {
         $this->id = $id;
         $this->body = $requestBody;
@@ -44,7 +44,7 @@ class HideReplyById extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Clie
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
-        if (200 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Model\\HideReplyResponse', 'json');
         }
         if (mb_strpos($contentType, 'application/json') !== false) {

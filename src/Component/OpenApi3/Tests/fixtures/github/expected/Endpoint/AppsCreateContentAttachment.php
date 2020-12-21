@@ -13,9 +13,9 @@ class AppsCreateContentAttachment extends \Github\Runtime\Client\BaseEndpoint im
     You must use an [installation access token](https://developer.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-an-installation) to access this endpoint.
     *
     * @param int $contentReferenceId content_reference_id parameter
-    * @param \Github\Model\ContentReferencesContentReferenceIdAttachmentsPostBody $requestBody 
+    * @param null|\Github\Model\ContentReferencesContentReferenceIdAttachmentsPostBody $requestBody 
     */
-    public function __construct(int $contentReferenceId, \Github\Model\ContentReferencesContentReferenceIdAttachmentsPostBody $requestBody)
+    public function __construct(int $contentReferenceId, ?\Github\Model\ContentReferencesContentReferenceIdAttachmentsPostBody $requestBody = null)
     {
         $this->content_reference_id = $contentReferenceId;
         $this->body = $requestBody;
@@ -53,25 +53,25 @@ class AppsCreateContentAttachment extends \Github\Runtime\Client\BaseEndpoint im
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
-        if (200 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Github\\Model\\ContentReferenceAttachment', 'json');
         }
-        if (422 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (422 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Github\Exception\AppsCreateContentAttachmentUnprocessableEntityException($serializer->deserialize($body, 'Github\\Model\\ValidationError', 'json'));
         }
-        if (404 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Github\Exception\AppsCreateContentAttachmentNotFoundException($serializer->deserialize($body, 'Github\\Model\\BasicError', 'json'));
         }
-        if (410 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (410 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Github\Exception\AppsCreateContentAttachmentGoneException($serializer->deserialize($body, 'Github\\Model\\BasicError', 'json'));
         }
-        if (415 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (415 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Github\Exception\AppsCreateContentAttachmentUnsupportedMediaTypeException($serializer->deserialize($body, 'Github\\Model\\ResponsePreviewHeaderMissing', 'json'));
         }
         if (304 === $status) {
             return null;
         }
-        if (403 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (403 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Github\Exception\AppsCreateContentAttachmentForbiddenException($serializer->deserialize($body, 'Github\\Model\\BasicError', 'json'));
         }
     }

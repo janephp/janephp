@@ -9,9 +9,9 @@ class PatchReviewItem extends \ApiPlatform\Demo\Runtime\Client\BaseEndpoint impl
      * 
      *
      * @param string $id 
-     * @param \ApiPlatform\Demo\Model\Review $requestBody 
+     * @param null|\ApiPlatform\Demo\Model\Review $requestBody 
      */
-    public function __construct(string $id, \ApiPlatform\Demo\Model\Review $requestBody)
+    public function __construct(string $id, ?\ApiPlatform\Demo\Model\Review $requestBody = null)
     {
         $this->id = $id;
         $this->body = $requestBody;
@@ -49,7 +49,7 @@ class PatchReviewItem extends \ApiPlatform\Demo\Runtime\Client\BaseEndpoint impl
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
-        if (200 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return json_decode($body);
         }
         if (400 === $status) {

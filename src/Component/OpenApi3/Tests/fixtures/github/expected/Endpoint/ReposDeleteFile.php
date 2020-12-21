@@ -19,9 +19,9 @@ class ReposDeleteFile extends \Github\Runtime\Client\BaseEndpoint implements \Gi
     * @param string $owner 
     * @param string $repo 
     * @param string $path path+ parameter
-    * @param \Github\Model\ReposOwnerRepoContentsPathDeleteBody $requestBody 
+    * @param null|\Github\Model\ReposOwnerRepoContentsPathDeleteBody $requestBody 
     */
-    public function __construct(string $owner, string $repo, string $path, \Github\Model\ReposOwnerRepoContentsPathDeleteBody $requestBody)
+    public function __construct(string $owner, string $repo, string $path, ?\Github\Model\ReposOwnerRepoContentsPathDeleteBody $requestBody = null)
     {
         $this->owner = $owner;
         $this->repo = $repo;
@@ -60,19 +60,19 @@ class ReposDeleteFile extends \Github\Runtime\Client\BaseEndpoint implements \Gi
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
-        if (200 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Github\\Model\\FileCommit', 'json');
         }
-        if (422 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (422 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Github\Exception\ReposDeleteFileUnprocessableEntityException($serializer->deserialize($body, 'Github\\Model\\ValidationError', 'json'));
         }
-        if (404 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Github\Exception\ReposDeleteFileNotFoundException($serializer->deserialize($body, 'Github\\Model\\BasicError', 'json'));
         }
-        if (409 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (409 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Github\Exception\ReposDeleteFileConflictException($serializer->deserialize($body, 'Github\\Model\\BasicError', 'json'));
         }
-        if (503 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (503 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Github\Exception\ReposDeleteFileServiceUnavailableException($serializer->deserialize($body, 'Github\\Model\\ResponseServiceUnavailable', 'json'));
         }
     }

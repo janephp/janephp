@@ -19,9 +19,9 @@ class PullsCreateReview extends \Github\Runtime\Client\BaseEndpoint implements \
     * @param string $owner 
     * @param string $repo 
     * @param int $pullNumber 
-    * @param \Github\Model\ReposOwnerRepoPullsPullNumberReviewsPostBody $requestBody 
+    * @param null|\Github\Model\ReposOwnerRepoPullsPullNumberReviewsPostBody $requestBody 
     */
-    public function __construct(string $owner, string $repo, int $pullNumber, \Github\Model\ReposOwnerRepoPullsPullNumberReviewsPostBody $requestBody)
+    public function __construct(string $owner, string $repo, int $pullNumber, ?\Github\Model\ReposOwnerRepoPullsPullNumberReviewsPostBody $requestBody = null)
     {
         $this->owner = $owner;
         $this->repo = $repo;
@@ -58,13 +58,13 @@ class PullsCreateReview extends \Github\Runtime\Client\BaseEndpoint implements \
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
-        if (200 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Github\\Model\\PullRequestReview', 'json');
         }
-        if (422 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (422 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Github\Exception\PullsCreateReviewUnprocessableEntityException($serializer->deserialize($body, 'Github\\Model\\ValidationErrorSimple', 'json'));
         }
-        if (403 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (403 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Github\Exception\PullsCreateReviewForbiddenException($serializer->deserialize($body, 'Github\\Model\\BasicError', 'json'));
         }
     }

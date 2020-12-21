@@ -13,9 +13,9 @@ class ActivitySetThreadSubscription extends \Github\Runtime\Client\BaseEndpoint 
     Unsubscribing from a conversation in a repository that you are not watching is functionally equivalent to the [Delete a thread subscription](https://developer.github.com/v3/activity/notifications/#delete-a-thread-subscription) endpoint.
     *
     * @param int $threadId thread_id parameter
-    * @param \Github\Model\NotificationsThreadsThreadIdSubscriptionPutBody $requestBody 
+    * @param null|\Github\Model\NotificationsThreadsThreadIdSubscriptionPutBody $requestBody 
     */
-    public function __construct(int $threadId, \Github\Model\NotificationsThreadsThreadIdSubscriptionPutBody $requestBody)
+    public function __construct(int $threadId, ?\Github\Model\NotificationsThreadsThreadIdSubscriptionPutBody $requestBody = null)
     {
         $this->thread_id = $threadId;
         $this->body = $requestBody;
@@ -50,16 +50,16 @@ class ActivitySetThreadSubscription extends \Github\Runtime\Client\BaseEndpoint 
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
-        if (200 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Github\\Model\\ThreadSubscription', 'json');
         }
         if (304 === $status) {
             return null;
         }
-        if (403 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (403 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Github\Exception\ActivitySetThreadSubscriptionForbiddenException($serializer->deserialize($body, 'Github\\Model\\BasicError', 'json'));
         }
-        if (401 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (401 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Github\Exception\ActivitySetThreadSubscriptionUnauthorizedException($serializer->deserialize($body, 'Github\\Model\\BasicError', 'json'));
         }
     }

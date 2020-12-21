@@ -17,9 +17,9 @@ class OauthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprint extends \G
     *
     * @param string $clientId 
     * @param string $fingerprint fingerprint parameter
-    * @param \Github\Model\AuthorizationsClientsClientIdFingerprintPutBody $requestBody 
+    * @param null|\Github\Model\AuthorizationsClientsClientIdFingerprintPutBody $requestBody 
     */
-    public function __construct(string $clientId, string $fingerprint, \Github\Model\AuthorizationsClientsClientIdFingerprintPutBody $requestBody)
+    public function __construct(string $clientId, string $fingerprint, ?\Github\Model\AuthorizationsClientsClientIdFingerprintPutBody $requestBody = null)
     {
         $this->client_id = $clientId;
         $this->fingerprint = $fingerprint;
@@ -54,13 +54,13 @@ class OauthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprint extends \G
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
-        if (200 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Github\\Model\\Authorization', 'json');
         }
-        if (201 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (201 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Github\\Model\\Authorization', 'json');
         }
-        if (422 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (422 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Github\Exception\OauthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintUnprocessableEntityException($serializer->deserialize($body, 'Github\\Model\\ValidationError', 'json'));
         }
     }

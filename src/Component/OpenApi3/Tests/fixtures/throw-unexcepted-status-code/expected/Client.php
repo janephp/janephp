@@ -7,13 +7,13 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
     /**
      * 
      *
-     * @param \Jane\Component\OpenApi3\Tests\Expected\Model\FooPayload $requestBody 
+     * @param null|\Jane\Component\OpenApi3\Tests\Expected\Model\FooPayload $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UnexpectedStatusCodeException
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function postFoo(\Jane\Component\OpenApi3\Tests\Expected\Model\FooPayload $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function postFoo(?\Jane\Component\OpenApi3\Tests\Expected\Model\FooPayload $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Endpoint\PostFoo($requestBody), $fetch);
     }

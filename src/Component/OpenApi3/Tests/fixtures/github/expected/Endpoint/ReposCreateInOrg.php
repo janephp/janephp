@@ -16,9 +16,9 @@ class ReposCreateInOrg extends \Github\Runtime\Client\BaseEndpoint implements \G
     *   `repo` scope to create a private repository
     *
     * @param string $org 
-    * @param \Github\Model\OrgsOrgReposPostBody $requestBody 
+    * @param null|\Github\Model\OrgsOrgReposPostBody $requestBody 
     */
-    public function __construct(string $org, \Github\Model\OrgsOrgReposPostBody $requestBody)
+    public function __construct(string $org, ?\Github\Model\OrgsOrgReposPostBody $requestBody = null)
     {
         $this->org = $org;
         $this->body = $requestBody;
@@ -53,13 +53,13 @@ class ReposCreateInOrg extends \Github\Runtime\Client\BaseEndpoint implements \G
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
-        if (201 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (201 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Github\\Model\\Repository', 'json');
         }
-        if (403 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (403 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Github\Exception\ReposCreateInOrgForbiddenException($serializer->deserialize($body, 'Github\\Model\\BasicError', 'json'));
         }
-        if (422 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (422 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Github\Exception\ReposCreateInOrgUnprocessableEntityException($serializer->deserialize($body, 'Github\\Model\\ValidationError', 'json'));
         }
     }

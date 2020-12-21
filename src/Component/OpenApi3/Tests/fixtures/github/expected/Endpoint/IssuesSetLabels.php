@@ -13,9 +13,9 @@ class IssuesSetLabels extends \Github\Runtime\Client\BaseEndpoint implements \Gi
      * @param string $owner 
      * @param string $repo 
      * @param int $issueNumber issue_number parameter
-     * @param \Github\Model\ReposOwnerRepoIssuesIssueNumberLabelsPutBody $requestBody 
+     * @param null|\Github\Model\ReposOwnerRepoIssuesIssueNumberLabelsPutBody $requestBody 
      */
-    public function __construct(string $owner, string $repo, int $issueNumber, \Github\Model\ReposOwnerRepoIssuesIssueNumberLabelsPutBody $requestBody)
+    public function __construct(string $owner, string $repo, int $issueNumber, ?\Github\Model\ReposOwnerRepoIssuesIssueNumberLabelsPutBody $requestBody = null)
     {
         $this->owner = $owner;
         $this->repo = $repo;
@@ -52,13 +52,13 @@ class IssuesSetLabels extends \Github\Runtime\Client\BaseEndpoint implements \Gi
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
-        if (200 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Github\\Model\\Label[]', 'json');
         }
-        if (410 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (410 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Github\Exception\IssuesSetLabelsGoneException($serializer->deserialize($body, 'Github\\Model\\BasicError', 'json'));
         }
-        if (422 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (422 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Github\Exception\IssuesSetLabelsUnprocessableEntityException($serializer->deserialize($body, 'Github\\Model\\ValidationError', 'json'));
         }
     }

@@ -13,9 +13,9 @@ class ChecksCreate extends \Github\Runtime\Client\BaseEndpoint implements \Githu
     *
     * @param string $owner 
     * @param string $repo 
-    * @param \Github\Model\ReposOwnerRepoCheckRunsPostBody $requestBody 
+    * @param null|\Github\Model\ReposOwnerRepoCheckRunsPostBody $requestBody 
     */
-    public function __construct(string $owner, string $repo, \Github\Model\ReposOwnerRepoCheckRunsPostBody $requestBody)
+    public function __construct(string $owner, string $repo, ?\Github\Model\ReposOwnerRepoCheckRunsPostBody $requestBody = null)
     {
         $this->owner = $owner;
         $this->repo = $repo;
@@ -49,7 +49,7 @@ class ChecksCreate extends \Github\Runtime\Client\BaseEndpoint implements \Githu
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
-        if (201 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (201 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Github\\Model\\CheckRun', 'json');
         }
     }

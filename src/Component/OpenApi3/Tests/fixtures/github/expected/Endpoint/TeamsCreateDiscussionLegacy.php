@@ -13,9 +13,9 @@ class TeamsCreateDiscussionLegacy extends \Github\Runtime\Client\BaseEndpoint im
     This endpoint triggers [notifications](https://help.github.com/articles/about-notifications/). Creating content too quickly using this endpoint may result in abuse rate limiting. See "[Abuse rate limits](https://developer.github.com/v3/#abuse-rate-limits)" and "[Dealing with abuse rate limits](https://developer.github.com/v3/guides/best-practices-for-integrators/#dealing-with-abuse-rate-limits)" for details.
     *
     * @param int $teamId 
-    * @param \Github\Model\TeamsTeamIdDiscussionsPostBody $requestBody 
+    * @param null|\Github\Model\TeamsTeamIdDiscussionsPostBody $requestBody 
     */
-    public function __construct(int $teamId, \Github\Model\TeamsTeamIdDiscussionsPostBody $requestBody)
+    public function __construct(int $teamId, ?\Github\Model\TeamsTeamIdDiscussionsPostBody $requestBody = null)
     {
         $this->team_id = $teamId;
         $this->body = $requestBody;
@@ -48,7 +48,7 @@ class TeamsCreateDiscussionLegacy extends \Github\Runtime\Client\BaseEndpoint im
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
-        if (201 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (201 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Github\\Model\\TeamDiscussion', 'json');
         }
     }

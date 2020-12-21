@@ -12,9 +12,9 @@ class MigrationsUpdateImport extends \Github\Runtime\Client\BaseEndpoint impleme
     *
     * @param string $owner 
     * @param string $repo 
-    * @param \Github\Model\ReposOwnerRepoImportPatchBody $requestBody 
+    * @param null|\Github\Model\ReposOwnerRepoImportPatchBody $requestBody 
     */
-    public function __construct(string $owner, string $repo, \Github\Model\ReposOwnerRepoImportPatchBody $requestBody)
+    public function __construct(string $owner, string $repo, ?\Github\Model\ReposOwnerRepoImportPatchBody $requestBody = null)
     {
         $this->owner = $owner;
         $this->repo = $repo;
@@ -48,7 +48,7 @@ class MigrationsUpdateImport extends \Github\Runtime\Client\BaseEndpoint impleme
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
-        if (200 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Github\\Model\\Import', 'json');
         }
     }

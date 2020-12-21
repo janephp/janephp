@@ -11,9 +11,9 @@ class ReposTransfer extends \Github\Runtime\Client\BaseEndpoint implements \Gith
      *
      * @param string $owner 
      * @param string $repo 
-     * @param \Github\Model\ReposOwnerRepoTransferPostBody $requestBody 
+     * @param null|\Github\Model\ReposOwnerRepoTransferPostBody $requestBody 
      */
-    public function __construct(string $owner, string $repo, \Github\Model\ReposOwnerRepoTransferPostBody $requestBody)
+    public function __construct(string $owner, string $repo, ?\Github\Model\ReposOwnerRepoTransferPostBody $requestBody = null)
     {
         $this->owner = $owner;
         $this->repo = $repo;
@@ -47,7 +47,7 @@ class ReposTransfer extends \Github\Runtime\Client\BaseEndpoint implements \Gith
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
-        if (202 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (202 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Github\\Model\\Repository', 'json');
         }
     }

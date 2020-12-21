@@ -11,9 +11,9 @@ class ChecksSetSuitesPreferences extends \Github\Runtime\Client\BaseEndpoint imp
      *
      * @param string $owner 
      * @param string $repo 
-     * @param \Github\Model\ReposOwnerRepoCheckSuitesPreferencesPatchBody $requestBody 
+     * @param null|\Github\Model\ReposOwnerRepoCheckSuitesPreferencesPatchBody $requestBody 
      */
-    public function __construct(string $owner, string $repo, \Github\Model\ReposOwnerRepoCheckSuitesPreferencesPatchBody $requestBody)
+    public function __construct(string $owner, string $repo, ?\Github\Model\ReposOwnerRepoCheckSuitesPreferencesPatchBody $requestBody = null)
     {
         $this->owner = $owner;
         $this->repo = $repo;
@@ -47,7 +47,7 @@ class ChecksSetSuitesPreferences extends \Github\Runtime\Client\BaseEndpoint imp
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
-        if (200 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Github\\Model\\CheckSuitePreference', 'json');
         }
     }

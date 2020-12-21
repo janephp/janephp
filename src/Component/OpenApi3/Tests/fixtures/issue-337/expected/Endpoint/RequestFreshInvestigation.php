@@ -7,12 +7,12 @@ class RequestFreshInvestigation extends \CreditSafe\API\Runtime\Client\BaseEndpo
     /**
      * Places an order for a Fresh Investigation (Offline Report). Providing as much detail as possible about the Company, our team will use official sources and registries to quickly answer questions about a company’s stability and financial health. Fresh Investigations take 5.5 days on average to complete.
      *
-     * @param \CreditSafe\API\Model\CreateFreshInvestigationRequest $requestBody 
+     * @param null|\CreditSafe\API\Model\CreateFreshInvestigationRequest $requestBody 
      * @param array $headerParameters {
      *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * }
      */
-    public function __construct(\CreditSafe\API\Model\CreateFreshInvestigationRequest $requestBody, array $headerParameters = array())
+    public function __construct(?\CreditSafe\API\Model\CreateFreshInvestigationRequest $requestBody = null, array $headerParameters = array())
     {
         $this->body = $requestBody;
         $this->headerParameters = $headerParameters;
@@ -58,19 +58,19 @@ class RequestFreshInvestigation extends \CreditSafe\API\Runtime\Client\BaseEndpo
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
-        if (200 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return $serializer->deserialize($body, 'CreditSafe\\API\\Model\\SubmittedFreshInvestigationRepsonse', 'json');
         }
-        if (400 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (400 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \CreditSafe\API\Exception\RequestFreshInvestigationBadRequestException();
         }
-        if (401 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (401 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \CreditSafe\API\Exception\RequestFreshInvestigationUnauthorizedException();
         }
-        if (403 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (403 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \CreditSafe\API\Exception\RequestFreshInvestigationForbiddenException();
         }
-        if (404 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \CreditSafe\API\Exception\RequestFreshInvestigationNotFoundException();
         }
     }

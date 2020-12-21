@@ -17,9 +17,9 @@ class ReposCreateDispatchEvent extends \Github\Runtime\Client\BaseEndpoint imple
     *
     * @param string $owner 
     * @param string $repo 
-    * @param \Github\Model\ReposOwnerRepoDispatchesPostBody $requestBody 
+    * @param null|\Github\Model\ReposOwnerRepoDispatchesPostBody $requestBody 
     */
-    public function __construct(string $owner, string $repo, \Github\Model\ReposOwnerRepoDispatchesPostBody $requestBody)
+    public function __construct(string $owner, string $repo, ?\Github\Model\ReposOwnerRepoDispatchesPostBody $requestBody = null)
     {
         $this->owner = $owner;
         $this->repo = $repo;
@@ -57,7 +57,7 @@ class ReposCreateDispatchEvent extends \Github\Runtime\Client\BaseEndpoint imple
         if (204 === $status) {
             return null;
         }
-        if (422 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (422 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Github\Exception\ReposCreateDispatchEventUnprocessableEntityException($serializer->deserialize($body, 'Github\\Model\\ValidationError', 'json'));
         }
     }

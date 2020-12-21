@@ -17,9 +17,9 @@ class OauthAuthorizationsCreateAuthorization extends \Github\Runtime\Client\Base
     
     Organizations that enforce SAML SSO require personal access tokens to be allowed. Read more about allowing tokens in [the GitHub Help documentation](https://help.github.com/articles/about-identity-and-access-management-with-saml-single-sign-on).
     *
-    * @param \Github\Model\AuthorizationsPostBody $requestBody 
+    * @param null|\Github\Model\AuthorizationsPostBody $requestBody 
     */
-    public function __construct(\Github\Model\AuthorizationsPostBody $requestBody)
+    public function __construct(?\Github\Model\AuthorizationsPostBody $requestBody = null)
     {
         $this->body = $requestBody;
     }
@@ -55,22 +55,22 @@ class OauthAuthorizationsCreateAuthorization extends \Github\Runtime\Client\Base
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
-        if (201 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (201 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Github\\Model\\Authorization', 'json');
         }
-        if (422 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (422 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Github\Exception\OauthAuthorizationsCreateAuthorizationUnprocessableEntityException($serializer->deserialize($body, 'Github\\Model\\ValidationError', 'json'));
         }
-        if (410 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (410 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Github\Exception\OauthAuthorizationsCreateAuthorizationGoneException($serializer->deserialize($body, 'Github\\Model\\BasicError', 'json'));
         }
         if (304 === $status) {
             return null;
         }
-        if (403 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (403 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Github\Exception\OauthAuthorizationsCreateAuthorizationForbiddenException($serializer->deserialize($body, 'Github\\Model\\BasicError', 'json'));
         }
-        if (401 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (401 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Github\Exception\OauthAuthorizationsCreateAuthorizationUnauthorizedException($serializer->deserialize($body, 'Github\\Model\\BasicError', 'json'));
         }
     }

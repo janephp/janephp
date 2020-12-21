@@ -13,9 +13,9 @@ class PullsRemoveRequestedReviewers extends \Github\Runtime\Client\BaseEndpoint 
      * @param string $owner 
      * @param string $repo 
      * @param int $pullNumber 
-     * @param \Github\Model\ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBody $requestBody 
+     * @param null|\Github\Model\ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBody $requestBody 
      */
-    public function __construct(string $owner, string $repo, int $pullNumber, \Github\Model\ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBody $requestBody)
+    public function __construct(string $owner, string $repo, int $pullNumber, ?\Github\Model\ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBody $requestBody = null)
     {
         $this->owner = $owner;
         $this->repo = $repo;
@@ -54,7 +54,7 @@ class PullsRemoveRequestedReviewers extends \Github\Runtime\Client\BaseEndpoint 
         if (200 === $status) {
             return null;
         }
-        if (422 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (422 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Github\Exception\PullsRemoveRequestedReviewersUnprocessableEntityException($serializer->deserialize($body, 'Github\\Model\\ValidationError', 'json'));
         }
     }

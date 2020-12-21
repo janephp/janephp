@@ -23,9 +23,9 @@ class ReposAddCollaborator extends \Github\Runtime\Client\BaseEndpoint implement
     * @param string $owner 
     * @param string $repo 
     * @param string $username 
-    * @param \Github\Model\ReposOwnerRepoCollaboratorsUsernamePutBody $requestBody 
+    * @param null|\Github\Model\ReposOwnerRepoCollaboratorsUsernamePutBody $requestBody 
     */
-    public function __construct(string $owner, string $repo, string $username, \Github\Model\ReposOwnerRepoCollaboratorsUsernamePutBody $requestBody)
+    public function __construct(string $owner, string $repo, string $username, ?\Github\Model\ReposOwnerRepoCollaboratorsUsernamePutBody $requestBody = null)
     {
         $this->owner = $owner;
         $this->repo = $repo;
@@ -62,16 +62,16 @@ class ReposAddCollaborator extends \Github\Runtime\Client\BaseEndpoint implement
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
-        if (201 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (201 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Github\\Model\\RepositoryInvitation', 'json');
         }
         if (204 === $status) {
             return null;
         }
-        if (422 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (422 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Github\Exception\ReposAddCollaboratorUnprocessableEntityException($serializer->deserialize($body, 'Github\\Model\\ValidationError', 'json'));
         }
-        if (403 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (403 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Github\Exception\ReposAddCollaboratorForbiddenException($serializer->deserialize($body, 'Github\\Model\\BasicError', 'json'));
         }
     }

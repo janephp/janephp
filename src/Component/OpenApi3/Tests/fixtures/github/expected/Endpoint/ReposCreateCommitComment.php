@@ -15,9 +15,9 @@ class ReposCreateCommitComment extends \Github\Runtime\Client\BaseEndpoint imple
     * @param string $owner 
     * @param string $repo 
     * @param string $commitSha commit_sha+ parameter
-    * @param \Github\Model\ReposOwnerRepoCommitsCommitShaCommentsPostBody $requestBody 
+    * @param null|\Github\Model\ReposOwnerRepoCommitsCommitShaCommentsPostBody $requestBody 
     */
-    public function __construct(string $owner, string $repo, string $commitSha, \Github\Model\ReposOwnerRepoCommitsCommitShaCommentsPostBody $requestBody)
+    public function __construct(string $owner, string $repo, string $commitSha, ?\Github\Model\ReposOwnerRepoCommitsCommitShaCommentsPostBody $requestBody = null)
     {
         $this->owner = $owner;
         $this->repo = $repo;
@@ -54,13 +54,13 @@ class ReposCreateCommitComment extends \Github\Runtime\Client\BaseEndpoint imple
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
-        if (201 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (201 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Github\\Model\\CommitComment', 'json');
         }
-        if (403 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (403 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Github\Exception\ReposCreateCommitCommentForbiddenException($serializer->deserialize($body, 'Github\\Model\\BasicError', 'json'));
         }
-        if (422 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (422 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Github\Exception\ReposCreateCommitCommentUnprocessableEntityException($serializer->deserialize($body, 'Github\\Model\\ValidationError', 'json'));
         }
     }

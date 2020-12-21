@@ -11,9 +11,9 @@ class GitCreateRef extends \Github\Runtime\Client\BaseEndpoint implements \Githu
      *
      * @param string $owner 
      * @param string $repo 
-     * @param \Github\Model\ReposOwnerRepoGitRefsPostBody $requestBody 
+     * @param null|\Github\Model\ReposOwnerRepoGitRefsPostBody $requestBody 
      */
-    public function __construct(string $owner, string $repo, \Github\Model\ReposOwnerRepoGitRefsPostBody $requestBody)
+    public function __construct(string $owner, string $repo, ?\Github\Model\ReposOwnerRepoGitRefsPostBody $requestBody = null)
     {
         $this->owner = $owner;
         $this->repo = $repo;
@@ -48,10 +48,10 @@ class GitCreateRef extends \Github\Runtime\Client\BaseEndpoint implements \Githu
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
-        if (201 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (201 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Github\\Model\\GitRef', 'json');
         }
-        if (422 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (422 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Github\Exception\GitCreateRefUnprocessableEntityException($serializer->deserialize($body, 'Github\\Model\\ValidationError', 'json'));
         }
     }

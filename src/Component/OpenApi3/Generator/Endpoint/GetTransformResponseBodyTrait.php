@@ -205,10 +205,18 @@ EOD
             return [$returnTypes, $throwTypes, [new Stmt\If_(
                 new Expr\BinaryOp\BooleanAnd(
                     new Expr\BinaryOp\Identical(
-                        new Scalar\LNumber((int) $status),
-                        new Expr\Variable('status')
+                        new Expr\FuncCall(new Name('is_null'), [
+                            new Node\Arg(new Expr\Variable('contentType')),
+                        ]),
+                        new Expr\ConstFetch(new Name('false'))
                     ),
-                    $statements[0]->cond
+                    new Expr\BinaryOp\BooleanAnd(
+                        new Expr\BinaryOp\Identical(
+                            new Scalar\LNumber((int) $status),
+                            new Expr\Variable('status')
+                        ),
+                        $statements[0]->cond
+                    )
                 ),
                 [
                     'stmts' => $statements[0]->stmts,

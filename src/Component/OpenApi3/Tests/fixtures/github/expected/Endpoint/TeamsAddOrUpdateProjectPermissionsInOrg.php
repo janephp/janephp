@@ -14,9 +14,9 @@ class TeamsAddOrUpdateProjectPermissionsInOrg extends \Github\Runtime\Client\Bas
      * @param string $org 
      * @param string $teamSlug team_slug parameter
      * @param int $projectId 
-     * @param \Github\Model\OrgsOrgTeamsTeamSlugProjectsProjectIdPutBody $requestBody 
+     * @param null|\Github\Model\OrgsOrgTeamsTeamSlugProjectsProjectIdPutBody $requestBody 
      */
-    public function __construct(string $org, string $teamSlug, int $projectId, \Github\Model\OrgsOrgTeamsTeamSlugProjectsProjectIdPutBody $requestBody)
+    public function __construct(string $org, string $teamSlug, int $projectId, ?\Github\Model\OrgsOrgTeamsTeamSlugProjectsProjectIdPutBody $requestBody = null)
     {
         $this->org = $org;
         $this->team_slug = $teamSlug;
@@ -55,7 +55,7 @@ class TeamsAddOrUpdateProjectPermissionsInOrg extends \Github\Runtime\Client\Bas
         if (204 === $status) {
             return null;
         }
-        if (403 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (403 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Github\Exception\TeamsAddOrUpdateProjectPermissionsInOrgForbiddenException($serializer->deserialize($body, 'Github\\Model\\OrgsOrgTeamsTeamSlugProjectsProjectIdPutResponse403', 'json'));
         }
     }

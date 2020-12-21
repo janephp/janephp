@@ -46,10 +46,10 @@ class ScimGetProvisioningInformationForUser extends \Github\Runtime\Client\BaseE
     {
         if (200 === $status) {
         }
-        if (404 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Github\Exception\ScimGetProvisioningInformationForUserNotFoundException($serializer->deserialize($body, 'Github\\Model\\ScimError', 'json'));
         }
-        if (403 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (403 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Github\Exception\ScimGetProvisioningInformationForUserForbiddenException($serializer->deserialize($body, 'Github\\Model\\ScimError', 'json'));
         }
         if (304 === $status) {

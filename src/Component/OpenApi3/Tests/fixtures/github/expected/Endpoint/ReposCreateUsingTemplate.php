@@ -18,9 +18,9 @@ class ReposCreateUsingTemplate extends \Github\Runtime\Client\BaseEndpoint imple
     *
     * @param string $templateOwner template_owner parameter
     * @param string $templateRepo template_repo parameter
-    * @param \Github\Model\ReposTemplateOwnerTemplateRepoGeneratePostBody $requestBody 
+    * @param null|\Github\Model\ReposTemplateOwnerTemplateRepoGeneratePostBody $requestBody 
     */
-    public function __construct(string $templateOwner, string $templateRepo, \Github\Model\ReposTemplateOwnerTemplateRepoGeneratePostBody $requestBody)
+    public function __construct(string $templateOwner, string $templateRepo, ?\Github\Model\ReposTemplateOwnerTemplateRepoGeneratePostBody $requestBody = null)
     {
         $this->template_owner = $templateOwner;
         $this->template_repo = $templateRepo;
@@ -54,7 +54,7 @@ class ReposCreateUsingTemplate extends \Github\Runtime\Client\BaseEndpoint imple
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
-        if (201 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (201 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Github\\Model\\Repository', 'json');
         }
     }

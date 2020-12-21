@@ -13,9 +13,9 @@ class TeamsUpdateDiscussionLegacy extends \Github\Runtime\Client\BaseEndpoint im
     *
     * @param int $teamId 
     * @param int $discussionNumber 
-    * @param \Github\Model\TeamsTeamIdDiscussionsDiscussionNumberPatchBody $requestBody 
+    * @param null|\Github\Model\TeamsTeamIdDiscussionsDiscussionNumberPatchBody $requestBody 
     */
-    public function __construct(int $teamId, int $discussionNumber, \Github\Model\TeamsTeamIdDiscussionsDiscussionNumberPatchBody $requestBody)
+    public function __construct(int $teamId, int $discussionNumber, ?\Github\Model\TeamsTeamIdDiscussionsDiscussionNumberPatchBody $requestBody = null)
     {
         $this->team_id = $teamId;
         $this->discussion_number = $discussionNumber;
@@ -49,7 +49,7 @@ class TeamsUpdateDiscussionLegacy extends \Github\Runtime\Client\BaseEndpoint im
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
-        if (200 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Github\\Model\\TeamDiscussion', 'json');
         }
     }

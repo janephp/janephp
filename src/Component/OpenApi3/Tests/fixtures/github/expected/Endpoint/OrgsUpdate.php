@@ -11,9 +11,9 @@ class OrgsUpdate extends \Github\Runtime\Client\BaseEndpoint implements \Github\
     Enables an authenticated organization owner with the `admin:org` scope to update the organization's profile and member privileges.
     *
     * @param string $org 
-    * @param \Github\Model\OrgsOrgPatchBody $requestBody 
+    * @param null|\Github\Model\OrgsOrgPatchBody $requestBody 
     */
-    public function __construct(string $org, \Github\Model\OrgsOrgPatchBody $requestBody)
+    public function __construct(string $org, ?\Github\Model\OrgsOrgPatchBody $requestBody = null)
     {
         $this->org = $org;
         $this->body = $requestBody;
@@ -49,16 +49,16 @@ class OrgsUpdate extends \Github\Runtime\Client\BaseEndpoint implements \Github\
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
-        if (200 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Github\\Model\\OrganizationFull', 'json');
         }
-        if (422 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (422 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Github\Exception\OrgsUpdateUnprocessableEntityException();
         }
-        if (409 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (409 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Github\Exception\OrgsUpdateConflictException($serializer->deserialize($body, 'Github\\Model\\BasicError', 'json'));
         }
-        if (415 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (415 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Github\Exception\OrgsUpdateUnsupportedMediaTypeException($serializer->deserialize($body, 'Github\\Model\\ResponsePreviewHeaderMissing', 'json'));
         }
     }

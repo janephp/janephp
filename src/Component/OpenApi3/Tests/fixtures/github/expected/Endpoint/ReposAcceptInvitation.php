@@ -45,13 +45,13 @@ class ReposAcceptInvitation extends \Github\Runtime\Client\BaseEndpoint implemen
         if (204 === $status) {
             return null;
         }
-        if (403 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (403 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Github\Exception\ReposAcceptInvitationForbiddenException($serializer->deserialize($body, 'Github\\Model\\BasicError', 'json'));
         }
-        if (409 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (409 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Github\Exception\ReposAcceptInvitationConflictException($serializer->deserialize($body, 'Github\\Model\\BasicError', 'json'));
         }
-        if (404 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Github\Exception\ReposAcceptInvitationNotFoundException($serializer->deserialize($body, 'Github\\Model\\BasicError', 'json'));
         }
         if (304 === $status) {

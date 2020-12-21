@@ -7,9 +7,9 @@ class PostReviewCollection extends \ApiPlatform\Demo\Runtime\Client\BaseEndpoint
     /**
      * 
      *
-     * @param \stdClass|\ApiPlatform\Demo\Model\Review $requestBody 
+     * @param null|\stdClass|\ApiPlatform\Demo\Model\Review $requestBody 
      */
-    public function __construct($requestBody)
+    public function __construct($requestBody = null)
     {
         $this->body = $requestBody;
     }
@@ -67,7 +67,7 @@ class PostReviewCollection extends \ApiPlatform\Demo\Runtime\Client\BaseEndpoint
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
-        if (201 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (201 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return json_decode($body);
         }
         if (400 === $status) {

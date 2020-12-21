@@ -31,9 +31,9 @@ class PullsUpdateReviewComment extends \Github\Runtime\Client\BaseEndpoint imple
     * @param string $owner 
     * @param string $repo 
     * @param int $commentId comment_id parameter
-    * @param \Github\Model\ReposOwnerRepoPullsCommentsCommentIdPatchBody $requestBody 
+    * @param null|\Github\Model\ReposOwnerRepoPullsCommentsCommentIdPatchBody $requestBody 
     */
-    public function __construct(string $owner, string $repo, int $commentId, \Github\Model\ReposOwnerRepoPullsCommentsCommentIdPatchBody $requestBody)
+    public function __construct(string $owner, string $repo, int $commentId, ?\Github\Model\ReposOwnerRepoPullsCommentsCommentIdPatchBody $requestBody = null)
     {
         $this->owner = $owner;
         $this->repo = $repo;
@@ -68,7 +68,7 @@ class PullsUpdateReviewComment extends \Github\Runtime\Client\BaseEndpoint imple
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
-        if (200 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Github\\Model\\PullRequestReviewComment', 'json');
         }
     }

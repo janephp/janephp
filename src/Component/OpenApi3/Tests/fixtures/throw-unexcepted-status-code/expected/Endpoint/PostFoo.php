@@ -7,9 +7,9 @@ class PostFoo extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Bas
     /**
      * 
      *
-     * @param \Jane\Component\OpenApi3\Tests\Expected\Model\FooPayload $requestBody 
+     * @param null|\Jane\Component\OpenApi3\Tests\Expected\Model\FooPayload $requestBody 
      */
-    public function __construct(\Jane\Component\OpenApi3\Tests\Expected\Model\FooPayload $requestBody)
+    public function __construct(?\Jane\Component\OpenApi3\Tests\Expected\Model\FooPayload $requestBody = null)
     {
         $this->body = $requestBody;
     }

@@ -13,9 +13,9 @@ class ReactionsCreateForTeamDiscussionLegacy extends \Github\Runtime\Client\Base
     *
     * @param int $teamId 
     * @param int $discussionNumber 
-    * @param \Github\Model\TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBody $requestBody 
+    * @param null|\Github\Model\TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBody $requestBody 
     */
-    public function __construct(int $teamId, int $discussionNumber, \Github\Model\TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBody $requestBody)
+    public function __construct(int $teamId, int $discussionNumber, ?\Github\Model\TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBody $requestBody = null)
     {
         $this->team_id = $teamId;
         $this->discussion_number = $discussionNumber;
@@ -49,7 +49,7 @@ class ReactionsCreateForTeamDiscussionLegacy extends \Github\Runtime\Client\Base
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
-        if (201 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (201 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Github\\Model\\Reaction', 'json');
         }
     }

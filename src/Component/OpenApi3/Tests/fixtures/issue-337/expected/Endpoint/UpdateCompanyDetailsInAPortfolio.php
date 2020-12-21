@@ -11,12 +11,12 @@ class UpdateCompanyDetailsInAPortfolio extends \CreditSafe\API\Runtime\Client\Ba
      *
      * @param string $portfolioId The unique identifier of the portfolio, obtained from `/portfolios`.
      * @param string $id A company Safe Number or Connect ID.
-     * @param \CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdCompaniesIdPatchBody $requestBody 
+     * @param null|\CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdCompaniesIdPatchBody $requestBody 
      * @param array $headerParameters {
      *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * }
      */
-    public function __construct(string $portfolioId, string $id, \CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdCompaniesIdPatchBody $requestBody, array $headerParameters = array())
+    public function __construct(string $portfolioId, string $id, ?\CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdCompaniesIdPatchBody $requestBody = null, array $headerParameters = array())
     {
         $this->portfolioId = $portfolioId;
         $this->id = $id;
@@ -66,16 +66,16 @@ class UpdateCompanyDetailsInAPortfolio extends \CreditSafe\API\Runtime\Client\Ba
     {
         if (204 === $status) {
         }
-        if (400 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (400 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \CreditSafe\API\Exception\UpdateCompanyDetailsInAPortfolioBadRequestException();
         }
-        if (401 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (401 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \CreditSafe\API\Exception\UpdateCompanyDetailsInAPortfolioUnauthorizedException();
         }
-        if (403 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (403 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \CreditSafe\API\Exception\UpdateCompanyDetailsInAPortfolioForbiddenException();
         }
-        if (404 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \CreditSafe\API\Exception\UpdateCompanyDetailsInAPortfolioNotFoundException();
         }
     }

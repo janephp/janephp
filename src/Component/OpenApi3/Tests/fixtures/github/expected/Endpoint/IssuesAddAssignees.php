@@ -13,9 +13,9 @@ class IssuesAddAssignees extends \Github\Runtime\Client\BaseEndpoint implements 
      * @param string $owner 
      * @param string $repo 
      * @param int $issueNumber issue_number parameter
-     * @param \Github\Model\ReposOwnerRepoIssuesIssueNumberAssigneesPostBody $requestBody 
+     * @param null|\Github\Model\ReposOwnerRepoIssuesIssueNumberAssigneesPostBody $requestBody 
      */
-    public function __construct(string $owner, string $repo, int $issueNumber, \Github\Model\ReposOwnerRepoIssuesIssueNumberAssigneesPostBody $requestBody)
+    public function __construct(string $owner, string $repo, int $issueNumber, ?\Github\Model\ReposOwnerRepoIssuesIssueNumberAssigneesPostBody $requestBody = null)
     {
         $this->owner = $owner;
         $this->repo = $repo;
@@ -50,7 +50,7 @@ class IssuesAddAssignees extends \Github\Runtime\Client\BaseEndpoint implements 
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
-        if (201 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (201 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Github\\Model\\IssueSimple', 'json');
         }
     }

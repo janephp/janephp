@@ -11,9 +11,9 @@ class AppsCreateInstallationAccessToken extends \Github\Runtime\Client\BaseEndpo
     You must use a [JWT](https://developer.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
     *
     * @param int $installationId installation_id parameter
-    * @param \Github\Model\AppInstallationsInstallationIdAccessTokensPostBody $requestBody 
+    * @param null|\Github\Model\AppInstallationsInstallationIdAccessTokensPostBody $requestBody 
     */
-    public function __construct(int $installationId, \Github\Model\AppInstallationsInstallationIdAccessTokensPostBody $requestBody)
+    public function __construct(int $installationId, ?\Github\Model\AppInstallationsInstallationIdAccessTokensPostBody $requestBody = null)
     {
         $this->installation_id = $installationId;
         $this->body = $requestBody;
@@ -51,22 +51,22 @@ class AppsCreateInstallationAccessToken extends \Github\Runtime\Client\BaseEndpo
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
-        if (201 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (201 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Github\\Model\\InstallationToken', 'json');
         }
-        if (403 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (403 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Github\Exception\AppsCreateInstallationAccessTokenForbiddenException($serializer->deserialize($body, 'Github\\Model\\BasicError', 'json'));
         }
-        if (415 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (415 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Github\Exception\AppsCreateInstallationAccessTokenUnsupportedMediaTypeException($serializer->deserialize($body, 'Github\\Model\\ResponsePreviewHeaderMissing', 'json'));
         }
-        if (401 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (401 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Github\Exception\AppsCreateInstallationAccessTokenUnauthorizedException($serializer->deserialize($body, 'Github\\Model\\BasicError', 'json'));
         }
-        if (404 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Github\Exception\AppsCreateInstallationAccessTokenNotFoundException($serializer->deserialize($body, 'Github\\Model\\BasicError', 'json'));
         }
-        if (422 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (422 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Github\Exception\AppsCreateInstallationAccessTokenUnprocessableEntityException($serializer->deserialize($body, 'Github\\Model\\ValidationError', 'json'));
         }
     }

@@ -15,9 +15,9 @@ class ReposUpdateStatusCheckProtection extends \Github\Runtime\Client\BaseEndpoi
     * @param string $owner 
     * @param string $repo 
     * @param string $branch branch+ parameter
-    * @param \Github\Model\ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBody $requestBody 
+    * @param null|\Github\Model\ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBody $requestBody 
     */
-    public function __construct(string $owner, string $repo, string $branch, \Github\Model\ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBody $requestBody)
+    public function __construct(string $owner, string $repo, string $branch, ?\Github\Model\ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBody $requestBody = null)
     {
         $this->owner = $owner;
         $this->repo = $repo;
@@ -54,13 +54,13 @@ class ReposUpdateStatusCheckProtection extends \Github\Runtime\Client\BaseEndpoi
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
-        if (200 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Github\\Model\\StatusCheckPolicy', 'json');
         }
-        if (404 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Github\Exception\ReposUpdateStatusCheckProtectionNotFoundException($serializer->deserialize($body, 'Github\\Model\\BasicError', 'json'));
         }
-        if (422 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (422 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Github\Exception\ReposUpdateStatusCheckProtectionUnprocessableEntityException($serializer->deserialize($body, 'Github\\Model\\ValidationError', 'json'));
         }
     }

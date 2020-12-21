@@ -16,7 +16,7 @@ class TransferUploadFile extends \PicturePark\API\Runtime\Client\BaseEndpoint im
     *
     * @param string $transferId ID of transfer.
     * @param string $requestId Identifier of file.
-    * @param string|resource|\Psr\Http\Message\StreamInterface $requestBody 
+    * @param null|string|resource|\Psr\Http\Message\StreamInterface $requestBody 
     * @param array $queryParameters {
     *     @var int $ChunkNumber Information about chunk.
     *     @var int $CurrentChunkSize Information about chunk.
@@ -24,7 +24,7 @@ class TransferUploadFile extends \PicturePark\API\Runtime\Client\BaseEndpoint im
     *     @var int $TotalChunks Information about chunk.
     * }
     */
-    public function __construct(string $transferId, string $requestId, $requestBody, array $queryParameters = array())
+    public function __construct(string $transferId, string $requestId, $requestBody = null, array $queryParameters = array())
     {
         $this->transferId = $transferId;
         $this->requestId = $requestId;
@@ -81,25 +81,25 @@ class TransferUploadFile extends \PicturePark\API\Runtime\Client\BaseEndpoint im
         if (200 === $status) {
             return null;
         }
-        if (400 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (400 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \PicturePark\API\Exception\TransferUploadFileBadRequestException($serializer->deserialize($body, 'PicturePark\\API\\Model\\PictureparkValidationException', 'json'));
         }
         if (401 === $status) {
             throw new \PicturePark\API\Exception\TransferUploadFileUnauthorizedException();
         }
-        if (404 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \PicturePark\API\Exception\TransferUploadFileNotFoundException($serializer->deserialize($body, 'PicturePark\\API\\Model\\PictureparkNotFoundException', 'json'));
         }
         if (405 === $status) {
             throw new \PicturePark\API\Exception\TransferUploadFileMethodNotAllowedException();
         }
-        if (409 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (409 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \PicturePark\API\Exception\TransferUploadFileConflictException($serializer->deserialize($body, 'PicturePark\\API\\Model\\PictureparkConflictException', 'json'));
         }
         if (429 === $status) {
             throw new \PicturePark\API\Exception\TransferUploadFileTooManyRequestsException();
         }
-        if (500 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (500 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \PicturePark\API\Exception\TransferUploadFileInternalServerErrorException($serializer->deserialize($body, 'PicturePark\\API\\Model\\PictureparkException', 'json'));
         }
     }

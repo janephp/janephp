@@ -11,9 +11,9 @@ class TeamsCreate extends \Github\Runtime\Client\BaseEndpoint implements \Github
     When you create a new team, you automatically become a team maintainer without explicitly adding yourself to the optional array of `maintainers`. For more information, see "[About teams](https://help.github.com/en/github/setting-up-and-managing-organizations-and-teams/about-teams)".
     *
     * @param string $org 
-    * @param \Github\Model\OrgsOrgTeamsPostBody $requestBody 
+    * @param null|\Github\Model\OrgsOrgTeamsPostBody $requestBody 
     */
-    public function __construct(string $org, \Github\Model\OrgsOrgTeamsPostBody $requestBody)
+    public function __construct(string $org, ?\Github\Model\OrgsOrgTeamsPostBody $requestBody = null)
     {
         $this->org = $org;
         $this->body = $requestBody;
@@ -48,13 +48,13 @@ class TeamsCreate extends \Github\Runtime\Client\BaseEndpoint implements \Github
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
-        if (201 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (201 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Github\\Model\\TeamFull', 'json');
         }
-        if (422 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (422 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Github\Exception\TeamsCreateUnprocessableEntityException($serializer->deserialize($body, 'Github\\Model\\ValidationError', 'json'));
         }
-        if (403 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (is_null($contentType) === false && (403 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Github\Exception\TeamsCreateForbiddenException($serializer->deserialize($body, 'Github\\Model\\BasicError', 'json'));
         }
     }
