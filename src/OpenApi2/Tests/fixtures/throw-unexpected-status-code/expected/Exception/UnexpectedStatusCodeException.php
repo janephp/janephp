@@ -2,7 +2,7 @@
 
 namespace Jane\OpenApi2\Tests\Expected\Exception;
 
-final class UnexpectedStatusCodeException implements ClientException
+final class UnexpectedStatusCodeException extends \RuntimeException implements ClientException
 {
     public function __construct($status)
     {
