@@ -178,6 +178,7 @@ class ExceptionGenerator
                         'implements' => [
                             new Name('ClientException'),
                         ],
+                        'extends' => new Name('\\RuntimeException'),
                         'flags' => Stmt\Class_::MODIFIER_FINAL,
                         'stmts' => [
                             new Stmt\ClassMethod('__construct', [
