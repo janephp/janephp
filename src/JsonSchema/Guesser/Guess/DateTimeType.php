@@ -43,17 +43,11 @@ class DateTimeType extends ObjectType
         $this->preferInterface = $preferInterface ?? false;
     }
 
-    /**
-     * (@inheritDoc}.
-     */
     protected function createDenormalizationValueStatement(Context $context, Expr $input, bool $normalizerFromObject = true): Expr
     {
         return $this->generateParseExpression($input);
     }
 
-    /**
-     * (@inheritDoc}.
-     */
     protected function createNormalizationValueStatement(Context $context, Expr $input, bool $normalizerFromObject = true): Expr
     {
         // $object->format($format);
@@ -62,9 +56,6 @@ class DateTimeType extends ObjectType
         ]);
     }
 
-    /**
-     * (@inheritDoc}.
-     */
     public function createConditionStatement(Expr $input): Expr
     {
         return new Expr\BinaryOp\LogicalAnd(new Expr\FuncCall(

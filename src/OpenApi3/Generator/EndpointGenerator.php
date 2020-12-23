@@ -27,14 +27,14 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 
 class EndpointGenerator implements EndpointGeneratorInterface
 {
-    use GetConstructorTrait;
-    use GetTransformResponseBodyTrait;
-    use GetGetMethodTrait;
-    use GetGetUriTrait;
-    use GetGetExtraHeadersTrait;
-    use GetGetOptionsResolverTrait;
-    use GetGetBodyTrait;
     use GetAuthenticationScopesTrait;
+    use GetConstructorTrait;
+    use GetGetBodyTrait;
+    use GetGetExtraHeadersTrait;
+    use GetGetMethodTrait;
+    use GetGetOptionsResolverTrait;
+    use GetGetUriTrait;
+    use GetTransformResponseBodyTrait;
     use OptionResolverNormalizationTrait;
 
     public const IN_PATH = 'path';

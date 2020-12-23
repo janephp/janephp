@@ -27,7 +27,7 @@ class CreatePets extends \Jane\OpenApi2\Tests\Expected\Runtime\Client\BaseEndpoi
      *
      * @return null|\Jane\OpenApi2\Tests\Expected\Model\Error
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType)
+    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         if (201 === $status) {
             return null;

@@ -107,7 +107,7 @@ trait GetTransformResponseBodyTrait
                 new Node\Param(new Expr\Variable('body'), null, new Name('string')),
                 new Node\Param(new Expr\Variable('status'), null, new Name('int')),
                 new Node\Param(new Expr\Variable('serializer'), null, new Name\FullyQualified(SerializerInterface::class)),
-                new Node\Param(new Expr\Variable('contentType'), new Expr\ConstFetch(new Name('null')), '?string'),
+                new Node\Param(new Expr\Variable('contentType'), new Expr\ConstFetch(new Name('null')), new Node\NullableType(new Name('string'))),
             ],
             'stmts' => $outputStatements,
         ], [

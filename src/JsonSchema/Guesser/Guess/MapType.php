@@ -15,9 +15,6 @@ class MapType extends ArrayType
         $this->itemType = $itemType;
     }
 
-    /**
-     * (@inheritDoc}.
-     */
     public function getTypeHint(string $namespace)
     {
         return new Name('iterable');

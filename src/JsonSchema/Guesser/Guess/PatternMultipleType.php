@@ -41,9 +41,6 @@ class PatternMultipleType extends Type
         return implode('|', $stringTypes);
     }
 
-    /**
-     * (@inheritDoc}.
-     */
     public function createDenormalizationStatement(Context $context, Expr $input, bool $normalizerFromObject = true): array
     {
         $valuesVar = new Expr\Variable($context->getUniqueVariableName('values'));
@@ -85,9 +82,6 @@ class PatternMultipleType extends Type
         return [$statements, $valuesVar];
     }
 
-    /**
-     * (@inheritDoc}.
-     */
     public function createNormalizationStatement(Context $context, Expr $input, bool $normalizerFromObject = true): array
     {
         $valuesVar = new Expr\Variable($context->getUniqueVariableName('values'));

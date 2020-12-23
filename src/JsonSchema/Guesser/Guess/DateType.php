@@ -35,9 +35,6 @@ class DateType extends ObjectType
         $this->preferInterface = $preferInterface ?? false;
     }
 
-    /**
-     * (@inheritDoc}.
-     */
     protected function createDenormalizationValueStatement(Context $context, Expr $input, bool $normalizerFromObject = true): Expr
     {
         // \DateTime::createFromFormat($format, $data)->setTime(0, 0, 0)
@@ -58,9 +55,6 @@ class DateType extends ObjectType
             ]);
     }
 
-    /**
-     * (@inheritDoc}.
-     */
     protected function createNormalizationValueStatement(Context $context, Expr $input, bool $normalizerFromObject = true): Expr
     {
         // $object->format($format);
@@ -69,9 +63,6 @@ class DateType extends ObjectType
         ]);
     }
 
-    /**
-     * (@inheritDoc}.
-     */
     public function createConditionStatement(Expr $input): Expr
     {
         return new Expr\BinaryOp\LogicalAnd(new Expr\FuncCall(

@@ -8,6 +8,6 @@ use Jane\OpenApiCommon\Generator\Normalizer\NormalizerGenerator as NormalizerGen
 
 class NormalizerGenerator extends BaseNormalizerGenerator
 {
-    use NormalizerGeneratorTrait;
     use DenormalizerGeneratorTrait;
+    use NormalizerGeneratorTrait;
 }

@@ -14,7 +14,7 @@ class AutoMapperNormalizerTest extends AutoMapperBaseTest
     /** @var AutoMapperNormalizer */
     protected $normalizer;
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         parent::setUp();
         $this->normalizer = new AutoMapperNormalizer($this->autoMapper);

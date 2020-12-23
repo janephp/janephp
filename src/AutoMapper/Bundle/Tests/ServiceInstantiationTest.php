@@ -11,7 +11,7 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class ServiceInstantiationTest extends WebTestCase
 {
-    public function setUp(): void
+    protected function setUp(): void
     {
         @unlink(__DIR__ . '/Resources/var/cache/test');
     }
