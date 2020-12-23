@@ -14,7 +14,7 @@ class AuthenticationRegistryTest extends TestCase
     /** @var AuthenticationRegistry */
     private $authenticationRegistry;
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         $plugins = [];
         $plugins[] = new class() implements AuthenticationPlugin {

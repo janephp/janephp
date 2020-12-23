@@ -24,7 +24,7 @@ abstract class AutoMapperBaseTest extends TestCase
     /** @var ClassLoaderInterface */
     protected $loader;
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         @unlink(__DIR__ . '/cache/registry.php');
         $classMetadataFactory = new ClassMetadataFactory(new AnnotationLoader(new AnnotationReader()));

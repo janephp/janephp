@@ -30,7 +30,7 @@ class FromTargetMappingExtractorTest extends AutoMapperBaseTest
     /** @var FromTargetMappingExtractor */
     protected $fromTargetMappingExtractor;
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         parent::setUp();
         $this->fromTargetMappingExtractorBootstrap();

@@ -31,7 +31,7 @@ class FromSourceMappingExtractorTest extends AutoMapperBaseTest
     /** @var FromSourceMappingExtractor */
     protected $fromSourceMappingExtractor;
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         parent::setUp();
         $this->fromSourceMappingExtractorBootstrap();

@@ -23,9 +23,6 @@ class ArrayType extends Type
         return $this->itemType;
     }
 
-    /**
-     * (@inheritDoc}.
-     */
     public function getDocTypeHint(string $namespace)
     {
         if ($this->itemType instanceof MultipleType) {
@@ -41,9 +38,6 @@ class ArrayType extends Type
         return $this->itemType->getDocTypeHint($namespace) . '[]';
     }
 
-    /**
-     * (@inheritDoc}.
-     */
     public function createDenormalizationStatement(Context $context, Expr $input, bool $normalizerFromObject = true): array
     {
         $valuesVar = new Expr\Variable($context->getUniqueVariableName('values'));
@@ -79,9 +73,6 @@ class ArrayType extends Type
         );
     }
 
-    /**
-     * (@inheritDoc}.
-     */
     public function createNormalizationStatement(Context $context, Expr $input, bool $normalizerFromObject = true): array
     {
         $valuesVar = new Expr\Variable($context->getUniqueVariableName('values'));

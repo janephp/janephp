@@ -17,10 +17,10 @@ use PhpParser\Node\Stmt;
 
 class AuthenticationGenerator implements GeneratorInterface
 {
-    use ConstructGenerator;
     use AuthenticationMethodGenerator;
-    use GetScopeGenerator;
     use ClassGenerator;
+    use ConstructGenerator;
+    use GetScopeGenerator;
 
     protected const REFERENCE = 'Authentication';
     protected const FILE_TYPE_AUTH = 'auth';

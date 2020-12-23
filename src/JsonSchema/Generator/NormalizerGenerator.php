@@ -17,8 +17,8 @@ class NormalizerGenerator implements GeneratorInterface
     const FILE_TYPE_NORMALIZER = 'normalizer';
 
     use DenormalizerGenerator;
-    use NormalizerGeneratorTrait;
     use JaneObjectNormalizerGenerator;
+    use NormalizerGeneratorTrait;
 
     /**
      * @var Naming The naming service

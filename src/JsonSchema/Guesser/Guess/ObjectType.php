@@ -25,9 +25,6 @@ class ObjectType extends Type
         $this->discriminants = $discriminants;
     }
 
-    /**
-     * (@inheritDoc}.
-     */
     protected function createDenormalizationValueStatement(Context $context, Expr $input, bool $normalizerFromObject = true): Expr
     {
         $denormalizerVar = new Expr\PropertyFetch(new Expr\Variable('this'), 'denormalizer');
@@ -43,9 +40,6 @@ class ObjectType extends Type
         ]);
     }
 
-    /**
-     * (@inheritDoc}.
-     */
     protected function createNormalizationValueStatement(Context $context, Expr $input, bool $normalizerFromObject = true): Expr
     {
         $normalizerVar = new Expr\PropertyFetch(new Expr\Variable('this'), 'normalizer');
@@ -60,9 +54,6 @@ class ObjectType extends Type
         ]);
     }
 
-    /**
-     * (@inheritDoc}.
-     */
     public function createConditionStatement(Expr $input): Expr
     {
         $conditionStatement = parent::createConditionStatement($input);
@@ -106,9 +97,6 @@ class ObjectType extends Type
         return $conditionStatement;
     }
 
-    /**
-     * (@inheritDoc}.
-     */
     public function getTypeHint(string $currentNamespace)
     {
         if ('\\' . $currentNamespace . '\\' . $this->className === $this->getFqdn()) {
@@ -118,9 +106,6 @@ class ObjectType extends Type
         return $this->getFqdn();
     }
 
-    /**
-     * (@inheritDoc}.
-     */
     public function getDocTypeHint(string $namespace)
     {
         return $this->getTypeHint($namespace);
