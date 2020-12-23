@@ -1,0 +1,37 @@
+# Path to a cache directory Used to speed up the split over time by reusing git's objects
+cache_url: "cache/gitsplit/7-plus/"
+
+# List of splits.
+splits:
+  -
+    prefix: "src/Bundle/AutoMapperBundle"
+    target: "https://${GH_TOKEN}@github.com/janephp/automapper-bundle.git"
+  -
+    prefix: "src/Component/AutoMapper"
+    target: "https://${GH_TOKEN}@github.com/janephp/automapper.git"
+  -
+    prefix: "src/Component/JsonSchema"
+    target: "https://${GH_TOKEN}@github.com/janephp/json-schema.git"
+  -
+    prefix: "src/Component/JsonSchemaRuntime"
+    target: "https://${GH_TOKEN}@github.com/janephp/json-schema-runtime.git"
+  -
+    prefix: "src/Component/OpenApiCommon"
+    target: "https://${GH_TOKEN}@github.com/janephp/open-api-common.git"
+  -
+    prefix: "src/Component/OpenApi2"
+    target: "https://${GH_TOKEN}@github.com/janephp/open-api-2.git"
+  -
+    prefix: "src/Component/OpenApi3"
+    target: "https://${GH_TOKEN}@github.com/janephp/open-api-3.git"
+  -
+    prefix: "src/Component/OpenApiRuntime"
+    target: "https://${GH_TOKEN}@github.com/janephp/open-api-runtime.git"
+  -
+    prefix: "documentation"
+    target: "https://${GH_TOKEN}@github.com/janephp/documentation.git"
+
+# List of references to split (defined as regexp)
+origins:
+  - ^next$
+  - ^v[7]+\.\d+\.\d+$

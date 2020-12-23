@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - next
+      - 6.*.x
   release:
     types: [published]
 jobs:
@@ -11,7 +12,30 @@ jobs:
     steps:
       - name: checkout
         run: git clone https://github.com/janephp/janephp /home/runner/work/janephp/janephp && cd /home/runner/work/janephp/janephp
-      - name: gitsplit
-        run: docker run --rm -t -e GH_TOKEN -v /cache/gitsplit:/cache/gitsplit -v ${PWD}:/srv jderusse/gitsplit gitsplit
+
+      - name: docker-cache
+        uses: satackey/action-docker-layer-caching@v0.0.8
+        continue-on-error: true
+        with:
+          key: docker-{hash}
+          restore-keys: docker-
+      - name: gitsplit-cache
+        uses: actions/cache@v2
+        with:
+          path: cache/gitsplit
+          key: gitsplit-${{ github.sha }}
+          restore-keys: gitsplit-
+
+      - name: prepare gitsplit-older
+        run: cp /home/runner/work/janephp/janephp/.github/gitsplit/older/.gitsplit.yml /home/runner/work/janephp/janephp/.gitsplit.yml
+      - name: gitsplit-older
+        run: docker run --rm -t -e GH_TOKEN -v /cache/gitsplit:/cache/gitsplit -v /home/runner/work/janephp/janephp:/srv jderusse/gitsplit gitsplit
+        env:
+          GH_TOKEN: ${{ secrets.PRIVATE_TOKEN }}
+
+      - name: prepare gitsplit-7-plus
+        run: cp /home/runner/work/janephp/janephp/.github/gitsplit/7-plus/.gitsplit.yml /home/runner/work/janephp/janephp/.gitsplit.yml
+      - name: gitsplit-7-plus
+        run: docker run --rm -t -e GH_TOKEN -v /cache/gitsplit:/cache/gitsplit -v /home/runner/work/janephp/janephp:/srv jderusse/gitsplit gitsplit
         env:
           GH_TOKEN: ${{ secrets.PRIVATE_TOKEN }}
