@@ -6,6 +6,20 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+## [6.3.2] - 2020-12-23
+### Changed
+- [AutoMapper] [GH#465](https://github.com/janephp/janephp/pull/465) Allow dateTimeFormat customisation when initialising
+- [Jane] [GH#483](https://github.com/janephp/janephp/pull/483) PHP 8 support
+
+### Fixed
+- [OpenAPI] [GH#472](https://github.com/janephp/janephp/pull/472) Check if contentType is null before passing to mb_strpos
+- [OpenAPI] [GH#480](https://github.com/janephp/janephp/pull/480) Allow null for non required request body
+- [OpenAPI] [GH#482](https://github.com/janephp/janephp/pull/482) Fix ExceptionGenerator
+- [OpenAPI] [GH#484](https://github.com/janephp/janephp/pull/484) Handle multipart body integer as string
+
+### Documentation
+- [OpenAPI] [GH#477](https://github.com/janephp/janephp/pull/477) Fixed typo about usage with Symfony recipe
+
 ## [6.3.1] - 2020-11-24
 ### Fixed
 - [Jane] [GH#463](https://github.com/janephp/janephp/pull/463) Update version deps
@@ -432,8 +446,9 @@ See :
  * https://github.com/janephp/jane/releases
  * https://github.com/janephp/openapi/releases
 
-[Unreleased]: https://github.com/janephp/janephp/compare/v6.3.1...HEAD
-[6.3.1]: https://github.com/janephp/janephp/compare/v6.2.3...v6.3.1
+[Unreleased]: https://github.com/janephp/janephp/compare/v6.3.2...HEAD
+[6.3.2]: https://github.com/janephp/janephp/compare/v6.3.1...v6.3.2
+[6.3.1]: https://github.com/janephp/janephp/compare/v6.3.0...v6.3.1
 [6.3.0]: https://github.com/janephp/janephp/compare/v6.2.5...v6.3.0
 [6.2.5]: https://github.com/janephp/janephp/compare/v6.2.4...v6.2.5
 [6.2.4]: https://github.com/janephp/janephp/compare/v6.2.3...v6.2.4
