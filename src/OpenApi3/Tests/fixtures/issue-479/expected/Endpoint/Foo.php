@@ -2,14 +2,14 @@
 
 namespace Jane\OpenApi3\Tests\Expected\Endpoint;
 
-class TestFormFileParameters extends \Jane\OpenApi3\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\OpenApi3\Tests\Expected\Runtime\Client\Endpoint
+class Foo extends \Jane\OpenApi3\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\OpenApi3\Tests\Expected\Runtime\Client\Endpoint
 {
     /**
-     * 
+     * foo
      *
-     * @param null|\Jane\OpenApi3\Tests\Expected\Model\TestFormFilePostBody $requestBody 
+     * @param \Jane\OpenApi3\Tests\Expected\Model\FooPostBody $requestBody 
      */
-    public function __construct(?\Jane\OpenApi3\Tests\Expected\Model\TestFormFilePostBody $requestBody = null)
+    public function __construct(\Jane\OpenApi3\Tests\Expected\Model\FooPostBody $requestBody)
     {
         $this->body = $requestBody;
     }
@@ -20,11 +20,11 @@ class TestFormFileParameters extends \Jane\OpenApi3\Tests\Expected\Runtime\Clien
     }
     public function getUri() : string
     {
-        return '/test-form-file';
+        return '/foo';
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        if ($this->body instanceof \Jane\OpenApi3\Tests\Expected\Model\TestFormFilePostBody) {
+        if ($this->body instanceof \Jane\OpenApi3\Tests\Expected\Model\FooPostBody) {
             $bodyBuilder = new \Http\Message\MultipartStream\MultipartStreamBuilder($streamFactory);
             $formParameters = $serializer->normalize($this->body, 'json');
             foreach ($formParameters as $key => $value) {
@@ -43,9 +43,7 @@ class TestFormFileParameters extends \Jane\OpenApi3\Tests\Expected\Runtime\Clien
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
-        if (200 === $status) {
-            return null;
-        }
+        return null;
     }
     public function getAuthenticationScopes() : array
     {
