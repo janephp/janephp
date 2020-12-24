@@ -24,7 +24,7 @@ class ArrayType extends Type
     }
 
     /**
-     * (@inheritDoc}.
+     * ({@inheritDoc}.
      */
     public function getDocTypeHint(string $namespace)
     {
@@ -42,7 +42,7 @@ class ArrayType extends Type
     }
 
     /**
-     * (@inheritDoc}.
+     * ({@inheritDoc}.
      */
     public function createDenormalizationStatement(Context $context, Expr $input, bool $normalizerFromObject = true): array
     {
@@ -80,7 +80,7 @@ class ArrayType extends Type
     }
 
     /**
-     * (@inheritDoc}.
+     * ({@inheritDoc}.
      */
     public function createNormalizationStatement(Context $context, Expr $input, bool $normalizerFromObject = true): array
     {

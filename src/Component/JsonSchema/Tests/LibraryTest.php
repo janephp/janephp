@@ -18,7 +18,7 @@ class LibraryTest extends TestCase
 
     protected $printer;
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         $this->jane = Jane::build([
             'reference' => true,

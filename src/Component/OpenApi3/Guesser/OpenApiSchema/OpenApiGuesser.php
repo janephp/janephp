@@ -22,8 +22,8 @@ use Symfony\Component\Serializer\SerializerInterface;
 
 class OpenApiGuesser implements GuesserInterface, ClassGuesserInterface, ChainGuesserAwareInterface
 {
-    use GuesserResolverTrait;
     use ChainGuesserAwareTrait;
+    use GuesserResolverTrait;
 
     private const IN_BODY = 'body';
 

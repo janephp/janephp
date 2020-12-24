@@ -11,7 +11,10 @@ trait ServerPluginGenerator
 {
     use BaseServerPluginGenerator;
 
-    private function discoverServer(OpenApi $openApi): array
+    /**
+     * @param OpenApi $openApi
+     */
+    private function discoverServer($openApi): array
     {
         $servers = $openApi->getServers();
         $server = $servers !== null && !empty($servers[0]) ? $servers[0] : null;
@@ -29,9 +32,9 @@ trait ServerPluginGenerator
 
             $variables = $server->getVariables();
 
-            if (null !== $variables
-                && \array_key_exists('port', $variables)
-                && null !== $variables['port']->getDefault()
+            if ($variables instanceof \ArrayObject
+                && $variables->offsetExists('port')
+                && null !== $variables->offsetGet('port')->getDefault()
             ) {
                 $baseUri .= ':' . $variables['port']->getDefault();
             }

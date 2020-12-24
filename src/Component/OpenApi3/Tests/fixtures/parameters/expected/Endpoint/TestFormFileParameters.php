@@ -28,6 +28,7 @@ class TestFormFileParameters extends \Jane\Component\OpenApi3\Tests\Expected\Run
             $bodyBuilder = new \Http\Message\MultipartStream\MultipartStreamBuilder($streamFactory);
             $formParameters = $serializer->normalize($this->body, 'json');
             foreach ($formParameters as $key => $value) {
+                $value = is_int($value) ? (string) $value : $value;
                 $bodyBuilder->addResource($key, $value);
             }
             return array(array('Content-Type' => array('multipart/form-data; boundary="' . ($bodyBuilder->getBoundary() . '""'))), $bodyBuilder->build());

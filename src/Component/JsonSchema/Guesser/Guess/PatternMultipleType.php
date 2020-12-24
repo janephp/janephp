@@ -42,7 +42,7 @@ class PatternMultipleType extends Type
     }
 
     /**
-     * (@inheritDoc}.
+     * ({@inheritDoc}.
      */
     public function createDenormalizationStatement(Context $context, Expr $input, bool $normalizerFromObject = true): array
     {
@@ -86,7 +86,7 @@ class PatternMultipleType extends Type
     }
 
     /**
-     * (@inheritDoc}.
+     * ({@inheritDoc}.
      */
     public function createNormalizationStatement(Context $context, Expr $input, bool $normalizerFromObject = true): array
     {

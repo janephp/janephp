@@ -23,7 +23,7 @@ class GetThings extends \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\B
      *
      * @return null|\Jane\Component\OpenApi2\Tests\Expected\Model\Thing[]
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType)
+    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         if (200 === $status) {
             return $serializer->deserialize($body, 'Jane\\Component\\OpenApi2\\Tests\\Expected\\Model\\Thing[]', 'json');

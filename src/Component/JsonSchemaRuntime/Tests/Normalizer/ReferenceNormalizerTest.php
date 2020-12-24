@@ -11,7 +11,7 @@ class ReferenceNormalizerTest extends TestCase
     /** @var ReferenceNormalizer */
     private $referenceNormalizer;
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         $this->referenceNormalizer = new ReferenceNormalizer();
     }

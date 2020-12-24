@@ -29,14 +29,14 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 
 class EndpointGenerator implements EndpointGeneratorInterface
 {
+    use GetAuthenticationScopesTrait;
     use GetConstructorTrait;
-    use GetTransformResponseBodyTrait;
-    use GetGetMethodTrait;
-    use GetGetUriTrait;
     use GetGetBodyTrait;
     use GetGetExtraHeadersTrait;
+    use GetGetMethodTrait;
+    use GetGetUriTrait;
     use GetOptionsResolverMethodTrait;
-    use GetAuthenticationScopesTrait;
+    use GetTransformResponseBodyTrait;
     use OptionResolverNormalizationTrait;
 
     /** @var OperationNamingInterface */

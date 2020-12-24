@@ -58,7 +58,7 @@ class TestPostWithPathParameters extends \Jane\Component\OpenApi2\Tests\Expected
      *
      * @return null
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType)
+    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
     }
     public function getAuthenticationScopes() : array

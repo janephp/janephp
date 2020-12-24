@@ -11,7 +11,10 @@ trait ServerPluginGenerator
 {
     use BaseServerPluginGenerator;
 
-    private function discoverServer(OpenApi $openApi): array
+    /**
+     * @param OpenApi $openApi
+     */
+    private function discoverServer($openApi): array
     {
         if (null !== ($host = $openApi->getHost())) {
             $scheme = 'https';

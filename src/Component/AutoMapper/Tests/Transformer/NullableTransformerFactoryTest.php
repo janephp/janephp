@@ -14,7 +14,7 @@ class NullableTransformerFactoryTest extends TestCase
 {
     private $isTargetNullableProperty;
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         $this->isTargetNullableProperty = (new \ReflectionClass(NullableTransformer::class))->getProperty('isTargetNullable');
         $this->isTargetNullableProperty->setAccessible(true);

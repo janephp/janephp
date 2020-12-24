@@ -36,7 +36,7 @@ class DateType extends ObjectType
     }
 
     /**
-     * (@inheritDoc}.
+     * ({@inheritDoc}.
      */
     protected function createDenormalizationValueStatement(Context $context, Expr $input, bool $normalizerFromObject = true): Expr
     {
@@ -59,7 +59,7 @@ class DateType extends ObjectType
     }
 
     /**
-     * (@inheritDoc}.
+     * ({@inheritDoc}.
      */
     protected function createNormalizationValueStatement(Context $context, Expr $input, bool $normalizerFromObject = true): Expr
     {
@@ -70,7 +70,7 @@ class DateType extends ObjectType
     }
 
     /**
-     * (@inheritDoc}.
+     * ({@inheritDoc}.
      */
     public function createConditionStatement(Expr $input): Expr
     {

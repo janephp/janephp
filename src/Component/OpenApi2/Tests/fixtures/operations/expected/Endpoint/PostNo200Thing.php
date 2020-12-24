@@ -23,7 +23,7 @@ class PostNo200Thing extends \Jane\Component\OpenApi2\Tests\Expected\Runtime\Cli
      *
      * @return null
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType)
+    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         if (204 === $status) {
             return null;

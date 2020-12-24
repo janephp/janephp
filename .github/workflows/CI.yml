@@ -12,20 +12,22 @@ jobs:
           path: ~/.composer/cache/
           key: composer-7.4-${{ github.sha }}
       - name: setup
-        uses: shivammathur/setup-php@2.5.0
+        uses: shivammathur/setup-php@2.9.0
         with:
-          php-version: 7.4
+          php-version: 8.0
           extensions: mbstring, fileinfo, json, intl, dom
       - name: install
         run: composer update --prefer-stable
       - name: 'php-cs-fixer check'
         run: 'vendor/bin/php-cs-fixer fix --dry-run --diff'
+        env:
+          PHP_CS_FIXER_IGNORE_ENV: 1
   tests:
     runs-on: ubuntu-latest
     strategy:
       max-parallel: 15
       matrix:
-        php-versions:  ['7.2', '7.3', '7.4']
+        php-versions:  ['7.2', '7.3', '7.4', '8.0']
     name: tests-${{ matrix.php-versions }}
     steps:
       - name: checkout
@@ -36,7 +38,7 @@ jobs:
           path: ~/.composer/cache/
           key: composer-${{ matrix.php-versions }}-${{ github.sha }}
       - name: setup
-        uses: shivammathur/setup-php@2.5.0
+        uses: shivammathur/setup-php@2.9.0
         with:
           php-version: ${{ matrix.php-versions }}
           extensions: mbstring, fileinfo, json, intl, dom
@@ -61,7 +63,7 @@ jobs:
           path: ~/.composer/cache/
           key: composer-lowest-${{ github.sha }}
       - name: setup
-        uses: shivammathur/setup-php@2.5.0
+        uses: shivammathur/setup-php@2.9.0
         with:
           php-version: 7.2
           extensions: mbstring, fileinfo, json, intl, dom

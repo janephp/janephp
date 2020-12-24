@@ -26,7 +26,7 @@ class ObjectType extends Type
     }
 
     /**
-     * (@inheritDoc}.
+     * ({@inheritDoc}.
      */
     protected function createDenormalizationValueStatement(Context $context, Expr $input, bool $normalizerFromObject = true): Expr
     {
@@ -44,7 +44,7 @@ class ObjectType extends Type
     }
 
     /**
-     * (@inheritDoc}.
+     * ({@inheritDoc}.
      */
     protected function createNormalizationValueStatement(Context $context, Expr $input, bool $normalizerFromObject = true): Expr
     {
@@ -61,7 +61,7 @@ class ObjectType extends Type
     }
 
     /**
-     * (@inheritDoc}.
+     * ({@inheritDoc}.
      */
     public function createConditionStatement(Expr $input): Expr
     {
@@ -107,7 +107,7 @@ class ObjectType extends Type
     }
 
     /**
-     * (@inheritDoc}.
+     * ({@inheritDoc}.
      */
     public function getTypeHint(string $currentNamespace)
     {
@@ -119,7 +119,7 @@ class ObjectType extends Type
     }
 
     /**
-     * (@inheritDoc}.
+     * ({@inheritDoc}.
      */
     public function getDocTypeHint(string $namespace)
     {

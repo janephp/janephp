@@ -32,7 +32,7 @@ class GetTest extends \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\Bas
      *
      * @return null
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType)
+    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
     }
     public function getAuthenticationScopes() : array

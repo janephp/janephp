@@ -27,7 +27,7 @@ class TestSimple extends \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\
      *
      * @return null|\Jane\Component\OpenApi2\Tests\Expected\Model\BarItem[]
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType)
+    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         if (200 === $status) {
             return $serializer->deserialize($body, 'Jane\\Component\\OpenApi2\\Tests\\Expected\\Model\\BarItem[]', 'json');
