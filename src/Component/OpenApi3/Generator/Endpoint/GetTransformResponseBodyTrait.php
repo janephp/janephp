@@ -127,7 +127,7 @@ EOD
     {
         // No content response
         if (!$response->getContent()) {
-            [$returnType, $throwType, $returnStatement] = $this->createContentDenormalizationStatement(
+            [$returnType, $throwType, $returnStatements] = $this->createContentDenormalizationStatement(
                 $name,
                 $status,
                 null,
@@ -142,7 +142,7 @@ EOD
             $throwTypes = $throwType === null ? [] : [$throwType];
 
             if ('default' === $status) {
-                return [$returnTypes, $throwTypes, [$returnStatement]];
+                return [$returnTypes, $throwTypes, $returnStatements];
             }
 
             return [$returnTypes, $throwTypes, [new Stmt\If_(
@@ -151,7 +151,7 @@ EOD
                     new Expr\Variable('status')
                 ),
                 [
-                    'stmts' => [$returnStatement],
+                    'stmts' => $returnStatements,
                 ]
             )]];
         }
@@ -162,7 +162,7 @@ EOD
 
         foreach ($response->getContent() as $contentType => $content) {
             if ($contentType === 'application/json') {
-                [$returnType, $throwType, $returnStatement] = $this->createContentDenormalizationStatement(
+                [$returnType, $throwType, $returnStatements] = $this->createContentDenormalizationStatement(
                     $name,
                     $status,
                     $content->getSchema(),
@@ -190,7 +190,7 @@ EOD
                         new Expr\ConstFetch(new Name('false'))
                     ),
                     [
-                        'stmts' => [$returnStatement],
+                        'stmts' => $returnStatements,
                     ]
                 );
             }
@@ -240,8 +240,9 @@ EOD
         $classGuess = $guessClass->guessClass($schema, $reference, $context->getRegistry(), $array);
         $returnType = 'null';
         $throwType = null;
-        $serializeStmt = new Expr\ConstFetch(new Name('null'));
         $class = null;
+        $serializeStmt = new Expr\ConstFetch(new Name('null'));
+        $contentStatements = [new Stmt\Return_($serializeStmt)];
 
         if (null !== $classGuess) {
             $class = $context->getRegistry()->getSchema($classGuess->getReference())->getNamespace() . '\\Model\\' . $classGuess->getName();
@@ -250,23 +251,12 @@ EOD
                 $class .= '[]';
             }
 
-            $returnType = '\\' . $class;
-            $serializeStmt = new Expr\MethodCall(
-                new Expr\Variable('serializer'),
-                'deserialize',
-                [
-                    new Node\Arg(new Expr\Variable('body')),
-                    new Node\Arg(new Scalar\String_($class)),
-                    new Node\Arg(new Scalar\String_('json')),
-                ]
-            );
+            list($returnType, $serializeStmt, $contentStatements) = $this->generateSingleResponseContent($class);
+        } elseif ($schema instanceof Schema && null !== $schema->getDiscriminator()) {
+            list($returnType, $contentStatements) = $this->generateMultipleResponseContent($schema, $context);
         } elseif ($schema instanceof Schema) {
-            $serializeStmt = new Expr\FuncCall(new Name('json_decode'), [
-                new Node\Arg(new Expr\Variable('body')),
-            ]);
+            list($returnType, $contentStatements) = $this->generateDefaultResponseContent();
         }
-
-        $contentStatement = new Stmt\Return_($serializeStmt);
 
         if ((int) $status >= 400) {
             $exceptionName = $exceptionGenerator->generate(
@@ -281,11 +271,107 @@ EOD
 
             $returnType = null;
             $throwType = '\\' . $context->getCurrentSchema()->getNamespace() . '\\Exception\\' . $exceptionName;
-            $contentStatement = new Stmt\Throw_(new Expr\New_(new Name($throwType), $classGuess ? [
-                $serializeStmt,
-            ] : []));
+            $contentStatements = [new Stmt\Throw_(new Expr\New_(new Name($throwType), $classGuess ? [$serializeStmt] : []))];
         }
 
-        return [$returnType, $throwType, $contentStatement];
+        return [$returnType, $throwType, $contentStatements];
+    }
+
+    private function generateSingleResponseContent(string $class): array
+    {
+        $returnType = '\\' . $class;
+        $serializeStmt = new Expr\MethodCall(
+            new Expr\Variable('serializer'),
+            'deserialize',
+            [
+                new Node\Arg(new Expr\Variable('body')),
+                new Node\Arg(new Scalar\String_($class)),
+                new Node\Arg(new Scalar\String_('json')),
+            ]
+        );
+
+        return [$returnType, $serializeStmt, [new Stmt\Return_($serializeStmt)]];
+    }
+
+    private function generateMultipleResponseContent(Schema $schema, Context $context): array
+    {
+        // Fallback to default response content if oneOf is not used
+        if (null === $schema->getOneOf()) {
+            return $this->generateDefaultResponseContent();
+        }
+
+        $returnType = '';
+        $statements = [];
+
+        $decodeStmt = new Expr\Assign(
+            new Expr\Variable('decoded'),
+            new Expr\MethodCall(
+                new Expr\Variable('serializer'),
+                'decode',
+                [
+                    new Node\Arg(new Expr\Variable('body')),
+                    new Node\Arg(new Scalar\String_('json')),
+                ]
+            )
+        );
+
+        $statements[] = new Stmt\Expression($decodeStmt);
+
+        foreach ($schema->getOneOf() as $objectReference) {
+            $statements[] = $this->generateObjectDenormalizeStatement($objectReference, $context, $schema, $returnType);
+        }
+
+        return [$returnType, $statements];
+    }
+
+    private function generateObjectDenormalizeStatement(Reference $objectReference, Context $context, Schema $schema, string &$returnType): Stmt
+    {
+        $classGuess = $context->getRegistry()->getClass((string) $objectReference->getMergedUri());
+        $class = $context->getRegistry()->getSchema($classGuess->getReference())->getNamespace() . '\\Model\\' . $classGuess->getName();
+
+        $returnType .= '' === $returnType ? '\\' . $class : '|\\' . $class;
+
+        $propertyValue = $classGuess->getName();
+
+        if ($schema->getDiscriminator()->getMapping()) {
+            $mapping = array_flip((array) $schema->getDiscriminator()->getMapping());
+            $propertyValue = $mapping[(string) $objectReference->getReferenceUri()];
+        }
+
+        return new Stmt\If_(
+            new Expr\BinaryOp\BooleanAnd(
+                new Expr\Isset_([
+                    new Expr\ArrayDimFetch(
+                        new Expr\Variable('decoded'),
+                        new Scalar\String_($schema->getDiscriminator()->getPropertyName())
+                    ),
+                ]),
+                new Expr\BinaryOp\Identical(
+                    new Expr\ArrayDimFetch(new Expr\Variable('decoded'), new Scalar\String_($schema->getDiscriminator()->getPropertyName())),
+                    new Scalar\String_($propertyValue)
+                )
+            ),
+            [
+                'stmts' => [
+                    new Stmt\Return_(new Expr\MethodCall(
+                        new Expr\Variable('serializer'),
+                        'denormalize',
+                        [
+                            new Node\Arg(new Expr\Variable('decoded')),
+                            new Node\Arg(new Scalar\String_($class)),
+                        ]
+                    )),
+                ],
+            ]
+        );
+    }
+
+    private function generateDefaultResponseContent(): array
+    {
+        $serializeStmt = new Expr\FuncCall(new Name('json_decode'), [
+            new Node\Arg(new Expr\Variable('body')),
+        ]);
+
+        return [null, [new Stmt\Return_($serializeStmt)]];
     }
 }
