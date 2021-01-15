@@ -87,6 +87,10 @@ abstract class MappingExtractor implements MappingExtractorInterface
             $type = WriteMutator::TYPE_METHOD;
         }
 
+        if (PropertyWriteInfo::TYPE_ADDER_AND_REMOVER === $writeInfo->getType()) {
+            $writeInfo = $writeInfo->getAdderInfo();
+        }
+
         return new WriteMutator(
             $type,
             $writeInfo->getName(),
