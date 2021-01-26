@@ -12,6 +12,10 @@
             <directory>./src/Bundle/AutoMapperBundle/Tests</directory>
         </testsuite>
 
+        <testsuite name="Jane AutoMapper Api Platform Bridge Test Suite">
+            <directory>./src/Bridge/ApiPlatform/Tests</directory>
+        </testsuite>
+
         <testsuite name="Jane Unit Test Suite">
             <directory>./src/Component/*/Tests</directory>
             <exclude>./src/Component/JsonSchema/Tests/fixtures</exclude>
@@ -26,6 +30,7 @@
             <exclude>
                 <directory>./src/Component/*/Tests</directory>
                 <directory>./src/Bundle/AutoMapperBundle/Tests</directory>
+                <directory>./src/Bridge/ApiPlatform/Tests</directory>
                 <directory>./src/Component/JsonSchema/Model</directory>
                 <directory>./src/Component/JsonSchema/Normalizer</directory>
                 <directory>./src/Component/OpenApi2/JsonSchema</directory>
@@ -39,9 +44,4 @@
             <group>prism</group>
         </exclude>
     </groups>
-
-    <php>
-        <server name="KERNEL_DIR" value="./src/Bundle/AutoMapperBundle/Tests/Resources/app" />
-        <server name="KERNEL_CLASS" value="DummyApp\AppKernel" />
-    </php>
 </phpunit>

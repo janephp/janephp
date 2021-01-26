@@ -1,0 +1,13 @@
+framework:
+    secret: jane-automapper-apip-bridge
+    property_info: ~
+    test: ~
+
+jane_auto_mapper:
+    normalizer: true
+
+api_platform:
+  mapping:
+    paths: ['%kernel.project_dir%/app/api.yaml']
+
+services: ~
