@@ -26,7 +26,7 @@
         "php-http/client-common": "^2.0",
         "php-http/message-factory": "^1.0.2",
         "php-http/multipart-stream-builder": "^1.0",
-        "php-http/discovery": "^1.6",
+        "php-http/discovery": "^2.0",
         "psr/http-client": "^1.0",
         "psr/http-factory": "^1.0",
         "symfony/options-resolver": "^4.4 || ^5.0",
