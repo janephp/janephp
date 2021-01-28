@@ -13,10 +13,10 @@
     ],
     "require": {
         "php": "^7.2.5",
-        "api-platform/core": "^2.5",
         "jane-php/automapper": "^7.0"
     },
     "require-dev": {
+        "api-platform/core": "^2.5",
         "phpunit/phpunit": "^8.0",
         "symfony/framework-bundle": "^4.4 || ^5.0",
         "sensio/framework-extra-bundle": "^5.6",
