@@ -42,10 +42,6 @@ final class SymfonyUidTransformerFactory extends AbstractUniqueTypeTransformerFa
 
     private function isUid(Type $type): bool
     {
-        if (!class_exists(AbstractUid::class)) {
-            return false;
-        }
-
         if (Type::BUILTIN_TYPE_OBJECT !== $type->getBuiltinType()) {
             return false;
         }

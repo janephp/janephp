@@ -28,6 +28,7 @@ use Symfony\Component\Serializer\Mapping\ClassDiscriminatorFromClassMetadata;
 use Symfony\Component\Serializer\Mapping\Factory\ClassMetadataFactory;
 use Symfony\Component\Serializer\Mapping\Loader\AnnotationLoader;
 use Symfony\Component\Serializer\NameConverter\AdvancedNameConverterInterface;
+use Symfony\Component\Uid\AbstractUid;
 
 /**
  * Maps a source data structure (object or array) to a target one.
@@ -260,7 +261,10 @@ class AutoMapper implements AutoMapperInterface, AutoMapperRegistryInterface, Ma
         $transformerFactory->addTransformerFactory(new BuiltinTransformerFactory());
         $transformerFactory->addTransformerFactory(new ArrayTransformerFactory($transformerFactory));
         $transformerFactory->addTransformerFactory(new ObjectTransformerFactory($autoMapper));
-        $transformerFactory->addTransformerFactory(new SymfonyUidTransformerFactory());
+
+        if (class_exists(AbstractUid::class)) {
+            $transformerFactory->addTransformerFactory(new SymfonyUidTransformerFactory());
+        }
 
         return $autoMapper;
     }

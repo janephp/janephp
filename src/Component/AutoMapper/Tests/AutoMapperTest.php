@@ -834,7 +834,6 @@ class AutoMapperTest extends AutoMapperBaseTest
         self::assertInstanceOf(Uuid::class, $user->getUuid());
         self::assertEquals($uuidV1->toRfc4122(), $user->getUuid()->toRfc4122());
         self::assertEquals('Grégoire Pineau', $user->name);
-
         // object -> array // uuid v3
         $uuidV3 = Uuid::v3(Uuid::v4(), 'jolicode');
         $user = new Fixtures\SymfonyUuidUser($uuidV3, 'Grégoire Pineau');
