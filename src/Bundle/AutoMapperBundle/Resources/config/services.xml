@@ -92,5 +92,7 @@
             <argument type="service" id="Jane\Component\AutoMapper\AutoMapperRegistryInterface" />
             <tag name="jane_auto_mapper.transformer_factory" priority="-1003" />
         </service>
+
+        <service id="Jane\Component\AutoMapper\Transformer\SymfonyUidTransformerFactory" />
     </services>
 </container>

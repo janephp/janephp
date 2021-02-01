@@ -8,12 +8,14 @@ use Jane\Component\AutoMapper\Extractor\FromTargetMappingExtractor;
 use Jane\Component\AutoMapper\MapperGeneratorMetadataFactory;
 use Jane\Component\AutoMapper\MapperGeneratorMetadataInterface;
 use Jane\Component\AutoMapper\Normalizer\AutoMapperNormalizer;
+use Jane\Component\AutoMapper\Transformer\SymfonyUidTransformerFactory;
 use Jane\Component\AutoMapper\Transformer\TransformerFactoryInterface;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
 use Symfony\Component\DependencyInjection\Reference;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
+use Symfony\Component\Uid\AbstractUid;
 
 class JaneAutoMapperExtension extends Extension
 {
@@ -33,6 +35,12 @@ class JaneAutoMapperExtension extends Extension
 
         $container->getDefinition(MapperGeneratorMetadataFactory::class)->replaceArgument(5, $config['date_time_format']);
         $container->registerForAutoconfiguration(TransformerFactoryInterface::class)->addTag('jane_auto_mapper.transformer_factory');
+
+        if (class_exists(AbstractUid::class)) {
+            $container
+                ->getDefinition(SymfonyUidTransformerFactory::class)
+                ->addTag('jane_auto_mapper.transformer_factory', ['priority' => '-1004']);
+        }
 
         if ($config['normalizer']) {
             $container
