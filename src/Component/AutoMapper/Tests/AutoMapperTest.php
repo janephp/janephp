@@ -10,6 +10,7 @@ use Jane\Component\AutoMapper\Tests\Fixtures\Order;
 use Jane\Component\AutoMapper\Tests\Fixtures\Transformer\MoneyTransformerFactory;
 use Symfony\Component\Serializer\NameConverter\AdvancedNameConverterInterface;
 use Symfony\Component\Uid\Ulid;
+use Symfony\Component\Uid\Uuid;
 
 /**
  * @author Joel Wurtz <jwurtz@jolicode.com>
@@ -802,24 +803,52 @@ class AutoMapperTest extends AutoMapperBaseTest
             'ulid' => '01EXE87A54256F05N8P6SB2M9M',
             'name' => 'Grégoire Pineau',
         ];
-        /** @var Fixtures\SymfonyUidUser $user */
-        $user = $this->autoMapper->map($data, Fixtures\SymfonyUidUser::class);
+        /** @var Fixtures\SymfonyUlidUser $user */
+        $user = $this->autoMapper->map($data, Fixtures\SymfonyUlidUser::class);
         self::assertInstanceOf(Ulid::class, $user->getUlid());
         self::assertEquals('01EXE87A54256F05N8P6SB2M9M', $user->getUlid()->toBase32());
         self::assertEquals('Grégoire Pineau', $user->name);
 
         // object -> array
-        $user = new Fixtures\SymfonyUidUser(new Ulid('01EXE89XR69GERC6GV3J4X38FJ'), 'Grégoire Pineau');
+        $user = new Fixtures\SymfonyUlidUser(new Ulid('01EXE89XR69GERC6GV3J4X38FJ'), 'Grégoire Pineau');
         $data = $this->autoMapper->map($user, 'array');
         self::assertEquals('01EXE89XR69GERC6GV3J4X38FJ', $data['ulid']);
         self::assertEquals('Grégoire Pineau', $data['name']);
 
         // object -> object
-        $user = new Fixtures\SymfonyUidUser(new Ulid('01EXE8A6TNWVCEGMZ36AX8N9MC'), 'Grégoire Pineau');
-        /** @var Fixtures\SymfonyUidUser $newUser */
-        $newUser = $this->autoMapper->map($user, Fixtures\SymfonyUidUser::class);
+        $user = new Fixtures\SymfonyUlidUser(new Ulid('01EXE8A6TNWVCEGMZ36AX8N9MC'), 'Grégoire Pineau');
+        /** @var Fixtures\SymfonyUlidUser $newUser */
+        $newUser = $this->autoMapper->map($user, Fixtures\SymfonyUlidUser::class);
         self::assertInstanceOf(Ulid::class, $user->getUlid());
         self::assertEquals('01EXE8A6TNWVCEGMZ36AX8N9MC', $newUser->getUlid()->toBase32());
+        self::assertEquals('Grégoire Pineau', $newUser->name);
+
+        // array -> object // uuid v1
+        $uuidV1 = Uuid::v1();
+        $data = [
+            'uuid' => $uuidV1->toRfc4122(),
+            'name' => 'Grégoire Pineau',
+        ];
+        /** @var Fixtures\SymfonyUuidUser $user */
+        $user = $this->autoMapper->map($data, Fixtures\SymfonyUuidUser::class);
+        self::assertInstanceOf(Uuid::class, $user->getUuid());
+        self::assertEquals($uuidV1->toRfc4122(), $user->getUuid()->toRfc4122());
+        self::assertEquals('Grégoire Pineau', $user->name);
+
+        // object -> array // uuid v3
+        $uuidV3 = Uuid::v3(Uuid::v4(), 'jolicode');
+        $user = new Fixtures\SymfonyUuidUser($uuidV3, 'Grégoire Pineau');
+        $data = $this->autoMapper->map($user, 'array');
+        self::assertEquals($uuidV3->toRfc4122(), $data['uuid']);
+        self::assertEquals('Grégoire Pineau', $data['name']);
+
+        // object -> object // uuid v4
+        $uuidV4 = Uuid::v4();
+        $user = new Fixtures\SymfonyUuidUser($uuidV4, 'Grégoire Pineau');
+        /** @var Fixtures\SymfonyUuidUser $newUser */
+        $newUser = $this->autoMapper->map($user, Fixtures\SymfonyUuidUser::class);
+        self::assertInstanceOf(Uuid::class, $user->getUuid());
+        self::assertEquals($uuidV4->toRfc4122(), $newUser->getUuid()->toRfc4122());
         self::assertEquals('Grégoire Pineau', $newUser->name);
     }
 }

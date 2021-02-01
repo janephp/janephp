@@ -4,7 +4,7 @@ namespace Jane\Component\AutoMapper\Tests\Fixtures;
 
 use Symfony\Component\Uid\Ulid;
 
-class SymfonyUidUser
+class SymfonyUlidUser
 {
     /**
      * @var Ulid
