@@ -17,6 +17,7 @@ use Jane\Component\AutoMapper\Transformer\DateTimeTransformerFactory;
 use Jane\Component\AutoMapper\Transformer\MultipleTransformerFactory;
 use Jane\Component\AutoMapper\Transformer\NullableTransformerFactory;
 use Jane\Component\AutoMapper\Transformer\ObjectTransformerFactory;
+use Jane\Component\AutoMapper\Transformer\SymfonyUidTransformerFactory;
 use Jane\Component\AutoMapper\Transformer\TransformerFactoryInterface;
 use Jane\Component\AutoMapper\Transformer\UniqueTypeTransformerFactory;
 use PhpParser\ParserFactory;
@@ -259,6 +260,7 @@ class AutoMapper implements AutoMapperInterface, AutoMapperRegistryInterface, Ma
         $transformerFactory->addTransformerFactory(new BuiltinTransformerFactory());
         $transformerFactory->addTransformerFactory(new ArrayTransformerFactory($transformerFactory));
         $transformerFactory->addTransformerFactory(new ObjectTransformerFactory($autoMapper));
+        $transformerFactory->addTransformerFactory(new SymfonyUidTransformerFactory());
 
         return $autoMapper;
     }

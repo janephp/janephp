@@ -48,6 +48,7 @@
         "jane-php/open-api-runtime": "self.version"
     },
     "require-dev": {
+        "api-platform/core": "^2.5",
         "doctrine/annotations": "~1.0",
         "friendsofphp/php-cs-fixer": "2.17.2",
         "kriswallsmith/buzz": "^1.1",
@@ -59,7 +60,7 @@
         "sensio/framework-extra-bundle": "^5.6",
         "symfony/framework-bundle": "^4.4 || ^5.0",
         "symfony/twig-bundle": "^4.4 || ^5.0",
-        "api-platform/core": "^2.5"
+        "symfony/uid": "^5.2"
     },
     "suggest": {
         "friendsofphp/php-cs-fixer": "Allow to automatically fix cs on generated code for better visualisation",
