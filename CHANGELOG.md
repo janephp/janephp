@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ### Added
 - [AutoMapper] [GH#462](https://github.com/janephp/janephp/pull/462) Move bundle out of the component
+- [AutoMapper] [GH#433](https://github.com/janephp/janephp/pull/433) Handle dictionaries with ArrayTransformer
+- [AutoMapper] [GH#432](https://github.com/janephp/janephp/pull/432) Ignore API Platform resources when using AutoMapper normalizer
+- [AutoMapper] [GH#495](https://github.com/janephp/janephp/pull/495) Add Symfony Uid transformers #495
 
 ### Changed
 - [Jane] [GH#464](https://github.com/janephp/janephp/pull/464) Update version deps for 7-dev
@@ -18,6 +21,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 - [AutoMapper] [GH#461](https://github.com/janephp/janephp/pull/461) Transformer arguments typo
+- [AutoMapper] [GH#487](https://github.com/janephp/janephp/pull/487)  Can not call getName when type is adders/removers
 
 ## [6.3.2] - 2020-12-23
 ### Changed
