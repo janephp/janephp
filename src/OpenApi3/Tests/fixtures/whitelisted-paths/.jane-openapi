@@ -6,6 +6,8 @@ return [
     'directory' => __DIR__ . '/generated',
     'whitelisted-paths' => [
         '\/tweets$',
+        ['\/tweets/metrics/private$']
+        ['\/tweets\/search$', ['GET']]
         ['\/filter\/rules$', 'POST']
     ],
 ];
