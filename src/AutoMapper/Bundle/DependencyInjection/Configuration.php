@@ -7,6 +7,16 @@ use Symfony\Component\Config\Definition\ConfigurationInterface;
 
 class Configuration implements ConfigurationInterface
 {
+    private $debug;
+
+    /**
+     * @param bool $debug Whether debugging is enabled or not
+     */
+    public function __construct(bool $debug)
+    {
+        $this->debug = $debug;
+    }
+
     public function getConfigTreeBuilder()
     {
         $treeBuilder = new TreeBuilder('jane_auto_mapper');
@@ -18,6 +28,7 @@ class Configuration implements ConfigurationInterface
                 ->scalarNode('name_converter')->defaultNull()->end()
                 ->scalarNode('cache_dir')->defaultValue('%kernel.cache_dir%/automapper')->end()
                 ->scalarNode('date_time_format')->defaultValue(\DateTime::RFC3339)->end()
+                ->booleanNode('hot_reload')->defaultValue($this->debug)->end()
                 ->arrayNode('mappings')
                     ->setDeprecated(
                         'jane-php/automapper',
