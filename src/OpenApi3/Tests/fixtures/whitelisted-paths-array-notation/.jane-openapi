@@ -5,7 +5,7 @@ return [
     'namespace' => 'Jane\OpenApi3\Tests\Expected',
     'directory' => __DIR__ . '/generated',
     'whitelisted-paths' => [
-        '\/tweets$',
-        ['\/filter\/rules$', 'POST']
+        ['\/tweets$'],
+        ['\/filter\/rules$', ['POST']]
     ],
 ];

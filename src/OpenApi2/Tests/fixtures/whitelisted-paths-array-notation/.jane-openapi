@@ -6,7 +6,7 @@ return [
     'directory' => __DIR__ . '/generated',
     'use-fixer' => false,
     'whitelisted-paths' => [
-        '^/company$',
-        ['^/projects$'],
+        ['^/company$'],
+        ['^/projects$', ['GET']],
     ],
 ];
