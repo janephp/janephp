@@ -6,6 +6,7 @@ use Jane\AutoMapper\Bundle\Configuration\LegacyConfigurationPassDecorator;
 use Jane\AutoMapper\Bundle\Configuration\MapperConfigurationInterface;
 use Jane\AutoMapper\Extractor\FromSourceMappingExtractor;
 use Jane\AutoMapper\Extractor\FromTargetMappingExtractor;
+use Jane\AutoMapper\Loader\FileLoader;
 use Jane\AutoMapper\MapperGeneratorMetadataFactory;
 use Jane\AutoMapper\MapperGeneratorMetadataInterface;
 use Jane\AutoMapper\Normalizer\AutoMapperNormalizer;
@@ -33,6 +34,7 @@ class JaneAutoMapperExtension extends Extension
         $loader->load('services.xml');
 
         $container->getDefinition(MapperGeneratorMetadataFactory::class)->replaceArgument(5, $config['date_time_format']);
+        $container->getDefinition(FileLoader::class)->replaceArgument(2, $config['hot_reload']);
         $container->registerForAutoconfiguration(TransformerFactoryInterface::class)->addTag('jane_auto_mapper.transformer_factory');
 
         foreach ($config['mappings'] as $mapping) {
@@ -57,6 +59,14 @@ class JaneAutoMapperExtension extends Extension
         }
 
         $container->setParameter('automapper.cache_dir', $config['cache_dir']);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getConfiguration(array $config, ContainerBuilder $container)
+    {
+        return new Configuration($container->getParameter('kernel.debug'));
     }
 
     private function createMapperConfigurationDefinition(ContainerBuilder $container, $config)

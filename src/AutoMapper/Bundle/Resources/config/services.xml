@@ -47,6 +47,7 @@
         <service id="Jane\AutoMapper\Loader\FileLoader">
             <argument type="service" id="Jane\AutoMapper\Generator\Generator" />
             <argument type="string">%automapper.cache_dir%</argument>
+            <argument></argument> <!-- Hot reload -->
         </service>
         <service id="Jane\AutoMapper\Loader\ClassLoaderInterface" alias="Jane\AutoMapper\Loader\FileLoader" />
 
