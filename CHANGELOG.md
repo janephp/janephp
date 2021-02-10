@@ -6,9 +6,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+## [6.3.3] - 2021-02-10
+### Added
+- [OpenAPI] [GH#500](https://github.com/janephp/janephp/pull/500) Bring ability skip query / header check
+
 ### Changed
 - [AutoMapper] [GH#498](https://github.com/janephp/janephp/pull/498) Improve FileLoader: do not use registry at all when hot reload is disabled.
 - [AutoMapper] [GH#498](https://github.com/janephp/janephp/pull/498) When using bundle: automatically disable hot reload when not in debug mode.
+
+### Fixed
+- [OpenAPI] [GH#497](https://github.com/janephp/janephp/pull/497) Fixing a whitelisted paths notation in OpenAPI 2 and 3 guessers
 
 ## [6.3.2] - 2020-12-23
 ### Changed
@@ -450,7 +458,8 @@ See :
  * https://github.com/janephp/jane/releases
  * https://github.com/janephp/openapi/releases
 
-[Unreleased]: https://github.com/janephp/janephp/compare/v6.3.2...HEAD
+[Unreleased]: https://github.com/janephp/janephp/compare/v6.3.3...HEAD
+[6.3.3]: https://github.com/janephp/janephp/compare/v6.3.2...v6.3.3
 [6.3.2]: https://github.com/janephp/janephp/compare/v6.3.1...v6.3.2
 [6.3.1]: https://github.com/janephp/janephp/compare/v6.3.0...v6.3.1
 [6.3.0]: https://github.com/janephp/janephp/compare/v6.2.5...v6.3.0
