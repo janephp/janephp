@@ -14,6 +14,18 @@ class Client extends \Jane\OpenApi2\Tests\Expected\Runtime\Client\Client
         return $this->executeEndpoint(new \Jane\OpenApi2\Tests\Expected\Endpoint\RetrieveCompany(), $fetch);
     }
     /**
+     * Updates the company setting the values of the parameters passed. Any parameters not provided will be left unchanged. Returns a company object and a 200 OK response code if the call succeeded.
+     *
+     * @param \Jane\OpenApi2\Tests\Expected\Model\CompanyPatchBody $payload json payload
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\Jane\OpenApi2\Tests\Expected\Model\Company|\Jane\OpenApi2\Tests\Expected\Model\Error|\Psr\Http\Message\ResponseInterface
+     */
+    public function updateCompany(\Jane\OpenApi2\Tests\Expected\Model\CompanyPatchBody $payload, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Jane\OpenApi2\Tests\Expected\Endpoint\UpdateCompany($payload), $fetch);
+    }
+    /**
     * Returns a list of your projects. The projects are returned sorted by creation date, with the most recently created projects appearing first.
     
     The response contains an object with a projects property that contains an array of up to per_page projects. Each entry in the array is a separate project object. If no more projects are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your projects.
@@ -32,6 +44,18 @@ class Client extends \Jane\OpenApi2\Tests\Expected\Runtime\Client\Client
     public function listProjects(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Jane\OpenApi2\Tests\Expected\Endpoint\ListProjects($queryParameters), $fetch);
+    }
+    /**
+     * Creates a new project object. Returns a project object and a 201 Created response code if the call succeeded.
+     *
+     * @param \Jane\OpenApi2\Tests\Expected\Model\ProjectsPostBody $payload json payload
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\Jane\OpenApi2\Tests\Expected\Model\Project|\Jane\OpenApi2\Tests\Expected\Model\Error|\Psr\Http\Message\ResponseInterface
+     */
+    public function createProject(\Jane\OpenApi2\Tests\Expected\Model\ProjectsPostBody $payload, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Jane\OpenApi2\Tests\Expected\Endpoint\CreateProject($payload), $fetch);
     }
     public static function create($httpClient = null, array $additionalPlugins = array())
     {
