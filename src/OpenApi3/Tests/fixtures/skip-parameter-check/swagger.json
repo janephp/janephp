@@ -1,0 +1,73 @@
+{
+    "openapi": "3.0.0",
+    "paths": {
+        "/test-path-parameters/{testPath}": {
+            "parameters": [
+                {
+                    "$ref": "#/components/parameters/testPath"
+                },
+                {
+                    "name": "testQuery",
+                    "in": "query",
+                    "schema": {
+                        "type": "string"
+                    },
+                    "required": true
+                },
+                {
+                    "name": "testQuerySkipped",
+                    "in": "query",
+                    "schema": {
+                        "type": "string"
+                    },
+                    "required": true,
+                    "x-jane-skip-validation": true
+                },
+                {
+                    "name": "testHeader",
+                    "in": "header",
+                    "schema": {
+                        "type": "string"
+                    },
+                    "required": true
+                },
+                {
+                    "name": "testHeaderSkipped",
+                    "in": "header",
+                    "schema": {
+                        "type": "string"
+                    },
+                    "required": true,
+                    "x-jane-skip-validation": true
+                }
+            ],
+            "get": {
+                "operationId": "testGetWithPathParameters",
+                "tags": [
+                    "Test"
+                ],
+                "responses": {
+                    "default": {
+                        "description": "Default response"
+                    }
+                }
+            }
+        }
+    },
+    "info": {
+        "version": "3.0.3",
+        "title": ""
+    },
+    "components": {
+        "parameters": {
+            "testPath": {
+                "name": "testPath",
+                "in": "path",
+                "required": true,
+                "schema": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}
