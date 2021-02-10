@@ -26,6 +26,10 @@ trait GetGetOptionsResolverTrait
             }
 
             if ($parameter instanceof Parameter && $parameterIn === $parameter->getIn()) {
+                if ($parameter->offsetExists('x-jane-skip-validation') && $parameter->offsetGet('x-jane-skip-validation')) {
+                    continue;
+                }
+
                 $parameters[] = $parameter;
                 if (\in_array($parameter->getName(), $customResolverKeys)) {
                     $queryResolverNormalizerStms[] = $this->generateOptionResolverNormalizationStatement($parameter->getName(), $customResolver[$parameter->getName()]);

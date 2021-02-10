@@ -1,0 +1,72 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "Skip parameter check",
+        "version": "1.0.0"
+    },
+    "parameters": {
+        "testPath": {
+            "name": "testPath",
+            "in": "path",
+            "type": "string",
+            "required": true
+        }
+    },
+    "paths": {
+        "/test-path-parameters/{testPath}": {
+            "parameters": [
+                {
+                    "name": "testBody",
+                    "in": "body",
+                    "schema": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                },
+                {
+                    "$ref": "#/parameters/testPath"
+                },
+                {
+                    "name": "testQuery",
+                    "in": "query",
+                    "type": "string",
+                    "required": true
+                },
+                {
+                    "name": "testQuerySkipped",
+                    "in": "query",
+                    "type": "string",
+                    "required": true,
+                    "x-jane-skip-validation": true
+                },
+                {
+                    "name": "testHeader",
+                    "in": "header",
+                    "type": "string"
+                },
+                {
+                    "name": "testHeaderSkipped",
+                    "in": "header",
+                    "type": "string",
+                    "x-jane-skip-validation": true
+                }
+            ],
+            "get": {
+                "operationId": "testGetWithPathParameters",
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Test"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "no error"
+                    }
+                }
+            }
+        }
+    }
+}

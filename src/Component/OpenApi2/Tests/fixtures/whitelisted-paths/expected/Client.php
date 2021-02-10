@@ -1,17 +1,29 @@
 <?php
 
-namespace Jane\Component\OpenApi2\Tests\Expected;
+namespace Jane\OpenApi2\Tests\Expected;
 
-class Client extends \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\Client
+class Client extends \Jane\OpenApi2\Tests\Expected\Runtime\Client\Client
 {
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Jane\Component\OpenApi2\Tests\Expected\Model\Company|\Jane\Component\OpenApi2\Tests\Expected\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return null|\Jane\OpenApi2\Tests\Expected\Model\Company|\Jane\OpenApi2\Tests\Expected\Model\Error|\Psr\Http\Message\ResponseInterface
      */
     public function retrieveCompany(string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi2\Tests\Expected\Endpoint\RetrieveCompany(), $fetch);
+        return $this->executeEndpoint(new \Jane\OpenApi2\Tests\Expected\Endpoint\RetrieveCompany(), $fetch);
+    }
+    /**
+     * Updates the company setting the values of the parameters passed. Any parameters not provided will be left unchanged. Returns a company object and a 200 OK response code if the call succeeded.
+     *
+     * @param \Jane\OpenApi2\Tests\Expected\Model\CompanyPatchBody $payload json payload
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\Jane\OpenApi2\Tests\Expected\Model\Company|\Jane\OpenApi2\Tests\Expected\Model\Error|\Psr\Http\Message\ResponseInterface
+     */
+    public function updateCompany(\Jane\OpenApi2\Tests\Expected\Model\CompanyPatchBody $payload, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Jane\OpenApi2\Tests\Expected\Endpoint\UpdateCompany($payload), $fetch);
     }
     /**
     * Returns a list of your projects. The projects are returned sorted by creation date, with the most recently created projects appearing first.
@@ -27,11 +39,23 @@ class Client extends \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\Clie
     * }
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     *
-    * @return null|\Jane\Component\OpenApi2\Tests\Expected\Model\Projects|\Jane\Component\OpenApi2\Tests\Expected\Model\Error|\Psr\Http\Message\ResponseInterface
+    * @return null|\Jane\OpenApi2\Tests\Expected\Model\Projects|\Jane\OpenApi2\Tests\Expected\Model\Error|\Psr\Http\Message\ResponseInterface
     */
     public function listProjects(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi2\Tests\Expected\Endpoint\ListProjects($queryParameters), $fetch);
+        return $this->executeEndpoint(new \Jane\OpenApi2\Tests\Expected\Endpoint\ListProjects($queryParameters), $fetch);
+    }
+    /**
+     * Creates a new project object. Returns a project object and a 201 Created response code if the call succeeded.
+     *
+     * @param \Jane\OpenApi2\Tests\Expected\Model\ProjectsPostBody $payload json payload
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\Jane\OpenApi2\Tests\Expected\Model\Project|\Jane\OpenApi2\Tests\Expected\Model\Error|\Psr\Http\Message\ResponseInterface
+     */
+    public function createProject(\Jane\OpenApi2\Tests\Expected\Model\ProjectsPostBody $payload, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Jane\OpenApi2\Tests\Expected\Endpoint\CreateProject($payload), $fetch);
     }
     public static function create($httpClient = null, array $additionalPlugins = array())
     {
@@ -48,7 +72,7 @@ class Client extends \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\Clie
         }
         $requestFactory = \Http\Discovery\Psr17FactoryDiscovery::findRequestFactory();
         $streamFactory = \Http\Discovery\Psr17FactoryDiscovery::findStreamFactory();
-        $serializer = new \Symfony\Component\Serializer\Serializer(array(new \Symfony\Component\Serializer\Normalizer\ArrayDenormalizer(), new \Jane\Component\OpenApi2\Tests\Expected\Normalizer\JaneObjectNormalizer()), array(new \Symfony\Component\Serializer\Encoder\JsonEncoder(new \Symfony\Component\Serializer\Encoder\JsonEncode(), new \Symfony\Component\Serializer\Encoder\JsonDecode(array('json_decode_associative' => true)))));
+        $serializer = new \Symfony\Component\Serializer\Serializer(array(new \Symfony\Component\Serializer\Normalizer\ArrayDenormalizer(), new \Jane\OpenApi2\Tests\Expected\Normalizer\JaneObjectNormalizer()), array(new \Symfony\Component\Serializer\Encoder\JsonEncoder(new \Symfony\Component\Serializer\Encoder\JsonEncode(), new \Symfony\Component\Serializer\Encoder\JsonDecode(array('json_decode_associative' => true)))));
         return new static($httpClient, $requestFactory, $serializer, $streamFactory);
     }
 }

@@ -137,11 +137,13 @@ class OpenApiGuesser implements GuesserInterface, ClassGuesserInterface, ChainGu
                     OperationGuess::PUT,
                 ];
             } elseif (\is_array($data) && 2 === \count($data)) {
-                $whitelistedPath = $data[0];
                 $whitelistedMethods = $data[1];
                 if (\is_string($whitelistedMethods)) {
                     $whitelistedMethods = [$whitelistedMethods];
                 }
+            }
+            if (\is_array($data)) {
+                $whitelistedPath = $data[0];
             }
 
             if (preg_match(sprintf('#%s#', $whitelistedPath), $path)) {

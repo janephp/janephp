@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <service id="Jane\AutoMapper\Bundle\AutoMapper">
+            <argument type="service" id="Jane\AutoMapper\Loader\ClassLoaderInterface" />
+            <argument type="service" id="Jane\AutoMapper\Transformer\ChainTransformerFactory" />
+            <argument type="service" id="Jane\AutoMapper\MapperGeneratorMetadataFactoryInterface" />
+        </service>
+        <service id="Jane\AutoMapper\AutoMapperInterface" alias="Jane\AutoMapper\Bundle\AutoMapper" public="true" />
+
+        <service id="Jane\AutoMapper\Extractor\SourceTargetMappingExtractor">
+            <argument type="service" id="property_info" />
+            <argument type="service" id="property_info.reflection_extractor" />
+            <argument type="service" id="property_info.reflection_extractor" />
+            <argument type="service" id="Jane\AutoMapper\Transformer\TransformerFactoryInterface" />
+        </service>
+
+        <service id="Jane\AutoMapper\Extractor\FromTargetMappingExtractor">
+            <argument type="service" id="property_info" />
+            <argument type="service" id="property_info.reflection_extractor" />
+            <argument type="service" id="property_info.reflection_extractor" />
+            <argument type="service" id="Jane\AutoMapper\Transformer\TransformerFactoryInterface" />
+            <argument type="service" id="serializer.mapping.class_metadata_factory" />
+        </service>
+
+        <service id="Jane\AutoMapper\Extractor\FromSourceMappingExtractor">
+            <argument type="service" id="property_info" />
+            <argument type="service" id="property_info.reflection_extractor" />
+            <argument type="service" id="property_info.reflection_extractor" />
+            <argument type="service" id="Jane\AutoMapper\Transformer\TransformerFactoryInterface" />
+            <argument type="service" id="serializer.mapping.class_metadata_factory" />
+        </service>
+
+        <service id="Jane\AutoMapper\MapperGeneratorMetadataFactory">
+            <argument type="service" id="Jane\AutoMapper\Extractor\SourceTargetMappingExtractor" />
+            <argument type="service" id="Jane\AutoMapper\Extractor\FromSourceMappingExtractor" />
+            <argument type="service" id="Jane\AutoMapper\Extractor\FromTargetMappingExtractor" />
+            <argument>Symfony_Mapper_</argument>
+            <argument>true</argument>
+            <argument></argument> <!-- Date time format -->
+        </service>
+        <service id="Jane\AutoMapper\MapperGeneratorMetadataFactoryInterface" alias="Jane\AutoMapper\MapperGeneratorMetadataFactory" />
+
+        <service id="Jane\AutoMapper\Loader\FileLoader">
+            <argument type="service" id="Jane\AutoMapper\Generator\Generator" />
+            <argument type="string">%automapper.cache_dir%</argument>
+            <argument></argument> <!-- Hot reload -->
+        </service>
+        <service id="Jane\AutoMapper\Loader\ClassLoaderInterface" alias="Jane\AutoMapper\Loader\FileLoader" />
+
+        <service id="Jane\AutoMapper\Generator\Generator" />
+
+        <service id="Jane\AutoMapper\Transformer\ChainTransformerFactory" />
+        <service id="Jane\AutoMapper\Transformer\TransformerFactoryInterface" alias="Jane\AutoMapper\Transformer\ChainTransformerFactory" />
+
+        <service id="Jane\AutoMapper\Normalizer\AutoMapperNormalizer">
+            <argument type="service" id="Jane\AutoMapper\AutoMapperInterface" />
+        </service>
+
+        <service id="Jane\AutoMapper\Transformer\MultipleTransformerFactory">
+            <argument type="service" id="Jane\AutoMapper\Transformer\ChainTransformerFactory" />
+            <tag name="jane_auto_mapper.transformer_factory" priority="1002" />
+        </service>
+
+        <service id="Jane\AutoMapper\Transformer\NullableTransformerFactory">
+            <argument type="service" id="Jane\AutoMapper\Transformer\ChainTransformerFactory" />
+            <tag name="jane_auto_mapper.transformer_factory" priority="1001" />
+        </service>
+
+        <service id="Jane\AutoMapper\Transformer\UniqueTypeTransformerFactory">
+            <argument type="service" id="Jane\AutoMapper\Transformer\ChainTransformerFactory" />
+            <tag name="jane_auto_mapper.transformer_factory" priority="1000" />
+        </service>
+
+        <service id="Jane\AutoMapper\Transformer\DateTimeTransformerFactory">
+            <tag name="jane_auto_mapper.transformer_factory" priority="-1000" />
+        </service>
+
+        <service id="Jane\AutoMapper\Transformer\BuiltinTransformerFactory">
+            <tag name="jane_auto_mapper.transformer_factory" priority="-1001" />
+        </service>
+
+        <service id="Jane\AutoMapper\Transformer\ArrayTransformerFactory">
+            <argument type="service" id="Jane\AutoMapper\Transformer\ChainTransformerFactory" />
+            <tag name="jane_auto_mapper.transformer_factory" priority="-1002" />
+        </service>
+
+        <service id="Jane\AutoMapper\Transformer\ObjectTransformerFactory">
+            <argument type="service" id="Jane\AutoMapper\Bundle\AutoMapper" />
+            <tag name="jane_auto_mapper.transformer_factory" priority="-1003" />
+        </service>
+    </services>
+</container>
