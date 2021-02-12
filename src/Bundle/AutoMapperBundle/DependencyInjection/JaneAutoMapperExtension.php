@@ -2,6 +2,7 @@
 
 namespace Jane\Bundle\AutoMapperBundle\DependencyInjection;
 
+use Jane\AutoMapper\Loader\FileLoader;
 use Jane\Bundle\AutoMapperBundle\Configuration\MapperConfigurationInterface;
 use Jane\Component\AutoMapper\Extractor\FromSourceMappingExtractor;
 use Jane\Component\AutoMapper\Extractor\FromTargetMappingExtractor;
@@ -22,6 +23,14 @@ class JaneAutoMapperExtension extends Extension
     /**
      * {@inheritdoc}
      */
+    public function getConfiguration(array $config, ContainerBuilder $container)
+    {
+        return new Configuration($container->getParameter('kernel.debug'));
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function load(array $configs, ContainerBuilder $container)
     {
         $configuration = $this->getConfiguration($configs, $container);
@@ -34,6 +43,7 @@ class JaneAutoMapperExtension extends Extension
         $loader->load('services.xml');
 
         $container->getDefinition(MapperGeneratorMetadataFactory::class)->replaceArgument(5, $config['date_time_format']);
+        $container->getDefinition(FileLoader::class)->replaceArgument(2, $config['hot_reload']);
         $container->registerForAutoconfiguration(TransformerFactoryInterface::class)->addTag('jane_auto_mapper.transformer_factory');
 
         if (class_exists(AbstractUid::class)) {

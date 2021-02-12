@@ -39,8 +39,10 @@ final class FileLoader implements ClassLoaderInterface
         $className = $mapperGeneratorMetadata->getMapperClassName();
         $classPath = $this->directory . \DIRECTORY_SEPARATOR . $className . '.php';
 
-        if (!$this->hotReload) {
+        if (!$this->hotReload && file_exists($classPath)) {
             require $classPath;
+
+            return;
         }
 
         $hash = $mapperGeneratorMetadata->getHash();

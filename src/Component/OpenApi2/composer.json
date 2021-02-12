@@ -32,7 +32,7 @@
         }
     },
     "require": {
-        "php": ">=7.2",
+        "php": "^7.2 || ^8.0",
         "ext-json": "*",
         "jane-php/json-schema": "~7.0.0",
         "jane-php/open-api-common": "~7.0.0",
