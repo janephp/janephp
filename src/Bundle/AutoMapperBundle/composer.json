@@ -33,7 +33,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Jane\\Bundle\\AutoMapper\\": ""
+            "Jane\\Bundle\\AutoMapperBundle\\": ""
         },
         "exclude-from-classmap": [
             "/Tests/"

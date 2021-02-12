@@ -2,10 +2,10 @@
 
 namespace Jane\Bundle\AutoMapperBundle\DependencyInjection;
 
-use Jane\AutoMapper\Loader\FileLoader;
 use Jane\Bundle\AutoMapperBundle\Configuration\MapperConfigurationInterface;
 use Jane\Component\AutoMapper\Extractor\FromSourceMappingExtractor;
 use Jane\Component\AutoMapper\Extractor\FromTargetMappingExtractor;
+use Jane\Component\AutoMapper\Loader\FileLoader;
 use Jane\Component\AutoMapper\MapperGeneratorMetadataFactory;
 use Jane\Component\AutoMapper\MapperGeneratorMetadataInterface;
 use Jane\Component\AutoMapper\Normalizer\AutoMapperNormalizer;
