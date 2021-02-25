@@ -66,7 +66,7 @@ send them as JSON. Here is the controller code, decomposed to explain each steps
 
     use App\Entity\Beer as BeerEntity;
     use App\Repository\BeerRepository;
-    use Jane\AutoMapper\AutoMapperInterface;
+    use Jane\Component\AutoMapper\AutoMapperInterface;
     use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
     use Generated\Model\Beer as BeerModel;
     use Symfony\Component\HttpFoundation\JsonResponse;

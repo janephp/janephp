@@ -167,7 +167,7 @@ Other options are available to customize the generated code:
    you can provide either a string or array as second argument to specify which method you accept.
 
  * ``endpoint-generator``: Generator Class which can specify custom endpoint interface & corresponding trait (this class
-   should extends ``\Jane\OpenApi3\Generator\EndpointGenerator``)
+   should extends ``\Jane\Component\OpenApi3\Generator\EndpointGenerator``)
  * ``custom-query-resolver``: This option allows you to customize the query parameter normalizer for each of the API
    endpoint with a userland callback. Here is all possible combinations::
 
@@ -199,7 +199,7 @@ Other options are available to customize the generated code:
 
    There are many ways to use it. You can either use the ``__type`` key to specify a custom query normalizer for a
    given type (``bool``, ``int``, ``string``, ...) and give it your class that contains the custom normalizer by
-   extending the ``\Jane\OpenApiRuntime\Client\CustomQueryResolver``. You can also filter the usage of your custom
+   extending the generated runtime ``CustomQueryResolver`` class. You can also filter the usage of your custom
    normalizer by giving the exact path, method and parameter name where you want to apply it.
  * ``throw-unexpected-status-code``: Will return a ``UnexpectedStatusCodeException`` if nothing has been matched during
    the transformation of the Endpoint body (including described exceptions). By default, it's disabled.
@@ -383,8 +383,8 @@ Quick example of how your authentication definition could look (OpenAPI v3):
 
 When your OpenAPI definition contains it, Jane will generate a Authentication namespace that contains all plugins you
 need for your API.
-Then you give all your authentication plugins to ``Jane\OpenApiRuntime\Client\Plugin\AuthenticationRegistry``. And
-finally you can pass it to your Jane Client (only if you let Jane make a HTTP Client for you, otherwise this second
+Then you give all your authentication plugins to ``Jane\Component\OpenApiRuntime\Client\Plugin\AuthenticationRegistry``.
+And finally you can pass it to your Jane Client (only if you let Jane make a HTTP Client for you, otherwise this second
 parameters is ignored).
 
 An example Authentification directory:

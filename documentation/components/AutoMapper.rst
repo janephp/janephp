@@ -170,7 +170,7 @@ To use it, you just have to add the main bundle class to your ``config/bundles.p
 
     return [
         // ...
-        Jane\AutoMapper\Bundle\JaneAutoMapperBundle::class => ['all' => true],
+        Jane\Bundle\AutoMapperBundle\JaneAutoMapperBundle::class => ['all' => true],
     ];
 
 Then configure the bundle to your needs, for example:
@@ -219,7 +219,7 @@ will be skipped since there is no matching field in the array, but we can make a
 We want to calculate this field based on the current year minus the ``age`` field. Here is a custom
 Mapper configuration definition following our example::
 
-    use Jane\AutoMapper\Bundle\Configuration\MapperConfigurationInterface;
+    use Jane\Bundle\AutoMapperBundle\Configuration\MapperConfigurationInterface;
 
     class UserMapperConfiguration implements Configuration\MapperConfigurationInterface
     {
@@ -230,7 +230,7 @@ Mapper configuration definition following our example::
 
         public function getTarget(): string
         {
-            return \Jane\AutoMapper\Tests\Fixtures\UserDTO::class;
+            return \Jane\Component\AutoMapper\Tests\Fixtures\UserDTO::class;
         }
 
         public function process(MapperGeneratorMetadataInterface $metadata): void

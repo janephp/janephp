@@ -41,7 +41,7 @@ model. Here is this transformer, called ``BeerOutputDataTransformer``, but decom
     use ApiPlatform\Core\DataTransformer\DataTransformerInterface;
     use App\Entity\Beer;
     use Generated\Model\BeerOutput;
-    use Jane\AutoMapper\AutoMapperInterface;
+    use Jane\Component\AutoMapper\AutoMapperInterface;
 
     class BeerOutputDataTransformer implements DataTransformerInterface
     {
