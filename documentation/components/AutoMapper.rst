@@ -162,18 +162,23 @@ And here is an `example of generated code`_
 
 .. _`example of generated code`: https://gist.github.com/joelwurtz/7ee48dd768f6d39ccc78d6ab7bdea22a
 
-Bundle
-------
+Symfony Bundle
+--------------
 
-The component ships a Bundle to allow a quick integration with Symfony.
-To use it, you just have to add the main bundle class to your ``config/bundles.php`` file::
+If you want to use the AutoMapper with Symfony, you can require the related bundle:
+
+.. code-block:: bash
+
+    composer require jane-php/automapper-bundle
+
+Then you have to add the bundle class in your ``config/bundles.php`` file::
 
     return [
         // ...
         Jane\Bundle\AutoMapperBundle\JaneAutoMapperBundle::class => ['all' => true],
     ];
 
-Then configure the bundle to your needs, for example:
+Then configure the bundle to your needs thanks to ``config/packages/jane.yaml`` file, for example:
 
 .. code-block:: yaml
 
@@ -182,21 +187,18 @@ Then configure the bundle to your needs, for example:
       name_converter: ~
       cache_dir: '%kernel.cache_dir%/automapper'
       date_time_format: !php/const \DateTimeInterface::RFC3339_EXTENDED
+      hot_reload: '%kernel.debug%'
 
 Possible configuration fields:
 
-* ``normalizer`` (default: ``false``):  A boolean which indicate if we inject the AutoMapperNormalizer;
+* ``normalizer`` (default: ``false``):  A boolean which indicate if we inject the ``AutoMapperNormalizer``;
 * ``name_converter`` (default: ``null``): A NameConverter based on your needs;
-* ``cache_dir`` (default: ``%kernel.cache_dir%/automapper``): This settings allows you to customize the output directory for generated mappers;
-* ``date_time_format``: This option allows you to change the date time format used to transform strings to ``\DateTimeInterface`` (default: ``\DateTimeInterface::RFC3339``).
-
-Normalizer Bridge
-~~~~~~~~~~~~~~~~~
-
-A Normalizer Bridge is available, aiming to be 100% feature compatible with the ObjectNormalizer of the ``symfony/serializer`` component. The goal of this bridge **is not to replace the ObjectNormalizer** but rather providing a very fast alternative.
-To use it, you have to opt-in in bundle configuration as stated in the Bundle section.
-
-As shown in the benchmark above, using this bridge leads up to more than 8x speed increase in normalization.
+* ``cache_dir`` (default: ``%kernel.cache_dir%/automapper``): This settings allows you to customize the output directory
+  for generated mappers;
+* ``date_time_format`` (default: ``\DateTime::RFC3339``): This option allows you to change the date time format used to
+  transform strings to ``\DateTime``;
+* ``hot_reload`` (default: ``%kernel.debug%``): Will reload the AutoMapper registry every time you try to load new
+  Mapper class, we recommend to put this option at ``false`` in production.
 
 Extending the bundle
 --------------------

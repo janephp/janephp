@@ -14,13 +14,9 @@ use PhpParser\PrettyPrinter\Standard;
 final class FileLoader implements ClassLoaderInterface
 {
     private $generator;
-
     private $directory;
-
     private $hotReload;
-
     private $printer;
-
     private $registry;
 
     public function __construct(Generator $generator, string $directory, bool $hotReload = true)

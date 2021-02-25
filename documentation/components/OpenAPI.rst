@@ -19,12 +19,12 @@ Choose your library depending on OpenAPI version you need (you can even install 
 .. code-block:: bash
 
     # OpenAPI 2
-    composer require --dev jane-php/open-api-2 "~6.1.0"
-    composer require jane-php/open-api-runtime "~6.1.0"
+    composer require --dev jane-php/open-api-2 "~6.3.0"
+    composer require jane-php/open-api-runtime "~6.3.0"
 
     # OpenAPI 3
-    composer require --dev jane-php/open-api-3 "~6.1.0"
-    composer require jane-php/open-api-runtime "~6.1.0"
+    composer require --dev jane-php/open-api-3 "~6.3.0"
+    composer require jane-php/open-api-runtime "~6.3.0"
 
 With Symfony ecosystem, we created a recipe to make it easier to use Jane. You just have to allow contrib recipes before
 installing our packages:
