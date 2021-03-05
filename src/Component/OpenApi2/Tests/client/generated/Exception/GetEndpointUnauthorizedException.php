@@ -2,7 +2,7 @@
 
 namespace Jane\Component\OpenApi2\Tests\Client\Exception;
 
-class GetEndpointUnauthorizedException extends \RuntimeException implements ClientException
+class GetEndpointUnauthorizedException extends UnauthorizedException
 {
     private $error;
     public function __construct(\Jane\Component\OpenApi2\Tests\Client\Model\Error $error)
