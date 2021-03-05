@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Exception;
 
-class ContentGetReferencesNotFoundException extends \RuntimeException implements ClientException
+class ContentGetReferencesNotFoundException extends NotFoundException
 {
     private $pictureparkNotFoundException;
     public function __construct(\PicturePark\API\Model\PictureparkNotFoundException $pictureparkNotFoundException)

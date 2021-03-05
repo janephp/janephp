@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Exception;
 
-class IdentityProviderGetNotFoundException extends \RuntimeException implements ClientException
+class IdentityProviderGetNotFoundException extends NotFoundException
 {
     private $pictureparkNotFoundException;
     public function __construct(\PicturePark\API\Model\PictureparkNotFoundException $pictureparkNotFoundException)

@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Exception;
 
-class ListItemUpdateManyNotFoundException extends \RuntimeException implements ClientException
+class ListItemUpdateManyNotFoundException extends NotFoundException
 {
     private $pictureparkNotFoundException;
     public function __construct(\PicturePark\API\Model\PictureparkNotFoundException $pictureparkNotFoundException)

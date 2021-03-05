@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Exception;
 
-class OutputResetRetryAttemptsBadRequestException extends \RuntimeException implements ClientException
+class OutputResetRetryAttemptsBadRequestException extends BadRequestException
 {
     private $pictureparkValidationException;
     public function __construct(\PicturePark\API\Model\PictureparkValidationException $pictureparkValidationException)

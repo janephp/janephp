@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class ProjectsCreateColumnUnprocessableEntityException extends \RuntimeException implements ClientException
+class ProjectsCreateColumnUnprocessableEntityException extends UnprocessableEntityException
 {
     private $validationErrorSimple;
     public function __construct(\Github\Model\ValidationErrorSimple $validationErrorSimple)

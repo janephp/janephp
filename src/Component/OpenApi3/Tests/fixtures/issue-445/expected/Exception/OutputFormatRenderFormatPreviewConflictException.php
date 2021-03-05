@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Exception;
 
-class OutputFormatRenderFormatPreviewConflictException extends \RuntimeException implements ClientException
+class OutputFormatRenderFormatPreviewConflictException extends ConflictException
 {
     private $pictureparkConflictException;
     public function __construct(\PicturePark\API\Model\PictureparkConflictException $pictureparkConflictException)

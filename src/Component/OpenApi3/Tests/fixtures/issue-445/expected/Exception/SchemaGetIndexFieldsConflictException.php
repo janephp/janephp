@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Exception;
 
-class SchemaGetIndexFieldsConflictException extends \RuntimeException implements ClientException
+class SchemaGetIndexFieldsConflictException extends ConflictException
 {
     private $pictureparkConflictException;
     public function __construct(\PicturePark\API\Model\PictureparkConflictException $pictureparkConflictException)

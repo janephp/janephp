@@ -2,7 +2,7 @@
 
 namespace Jane\Component\OpenApi2\Tests\Expected\Exception;
 
-class GetTestNotFoundException extends \RuntimeException implements ClientException
+class GetTestNotFoundException extends NotFoundException
 {
     private $error;
     public function __construct(\Jane\Component\OpenApi2\Tests\Expected\Model\Error $error)

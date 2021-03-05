@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class ReposGetTeamsWithAccessToProtectedBranchNotFoundException extends \RuntimeException implements ClientException
+class ReposGetTeamsWithAccessToProtectedBranchNotFoundException extends NotFoundException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

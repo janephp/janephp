@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Exception;
 
-class BusinessProcessGetNotFoundException extends \RuntimeException implements ClientException
+class BusinessProcessGetNotFoundException extends NotFoundException
 {
     private $pictureparkNotFoundException;
     public function __construct(\PicturePark\API\Model\PictureparkNotFoundException $pictureparkNotFoundException)

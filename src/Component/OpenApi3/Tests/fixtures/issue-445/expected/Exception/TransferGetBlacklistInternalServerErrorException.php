@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Exception;
 
-class TransferGetBlacklistInternalServerErrorException extends \RuntimeException implements ServerException
+class TransferGetBlacklistInternalServerErrorException extends InternalServerErrorException
 {
     private $pictureparkException;
     public function __construct(\PicturePark\API\Model\PictureparkException $pictureparkException)

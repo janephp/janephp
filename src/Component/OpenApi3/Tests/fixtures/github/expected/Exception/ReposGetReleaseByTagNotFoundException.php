@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class ReposGetReleaseByTagNotFoundException extends \RuntimeException implements ClientException
+class ReposGetReleaseByTagNotFoundException extends NotFoundException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

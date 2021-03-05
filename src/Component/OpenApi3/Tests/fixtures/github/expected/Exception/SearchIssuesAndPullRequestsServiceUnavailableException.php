@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class SearchIssuesAndPullRequestsServiceUnavailableException extends \RuntimeException implements ServerException
+class SearchIssuesAndPullRequestsServiceUnavailableException extends ServiceUnavailableException
 {
     private $responseServiceUnavailable;
     public function __construct(\Github\Model\ResponseServiceUnavailable $responseServiceUnavailable)

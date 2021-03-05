@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class OauthAuthorizationsDeleteAuthorizationForbiddenException extends \RuntimeException implements ClientException
+class OauthAuthorizationsDeleteAuthorizationForbiddenException extends ForbiddenException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

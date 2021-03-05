@@ -2,10 +2,10 @@
 
 namespace Github\Exception;
 
-class TeamsAddOrUpdateMembershipForUserInOrgForbiddenException extends \RuntimeException implements ClientException
+class TeamsAddOrUpdateMembershipForUserInOrgForbiddenException extends ForbiddenException
 {
     public function __construct()
     {
-        parent::__construct('Response if team synchronization is set up', 403);
+        parent::__construct('Response if team synchronization is set up');
     }
 }

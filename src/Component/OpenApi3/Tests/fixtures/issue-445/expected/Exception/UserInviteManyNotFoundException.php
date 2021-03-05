@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Exception;
 
-class UserInviteManyNotFoundException extends \RuntimeException implements ClientException
+class UserInviteManyNotFoundException extends NotFoundException
 {
     private $pictureparkNotFoundException;
     public function __construct(\PicturePark\API\Model\PictureparkNotFoundException $pictureparkNotFoundException)

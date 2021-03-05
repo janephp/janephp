@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class IssuesUnlockNotFoundException extends \RuntimeException implements ClientException
+class IssuesUnlockNotFoundException extends NotFoundException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class IssuesListForOrgNotFoundException extends \RuntimeException implements ClientException
+class IssuesListForOrgNotFoundException extends NotFoundException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

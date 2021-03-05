@@ -2,10 +2,10 @@
 
 namespace CreditSafe\API\Exception;
 
-class CompanyEventsUnauthorizedException extends \RuntimeException implements ClientException
+class CompanyEventsUnauthorizedException extends UnauthorizedException
 {
     public function __construct()
     {
-        parent::__construct('', 401);
+        parent::__construct('');
     }
 }

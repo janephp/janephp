@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class OauthAuthorizationsCreateAuthorizationGoneException extends \RuntimeException implements ClientException
+class OauthAuthorizationsCreateAuthorizationGoneException extends GoneException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

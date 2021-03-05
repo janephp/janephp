@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class ReposGetPagesNotFoundException extends \RuntimeException implements ClientException
+class ReposGetPagesNotFoundException extends NotFoundException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

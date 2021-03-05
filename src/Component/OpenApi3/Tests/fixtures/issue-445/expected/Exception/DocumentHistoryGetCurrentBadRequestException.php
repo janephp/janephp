@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Exception;
 
-class DocumentHistoryGetCurrentBadRequestException extends \RuntimeException implements ClientException
+class DocumentHistoryGetCurrentBadRequestException extends BadRequestException
 {
     private $pictureparkValidationException;
     public function __construct(\PicturePark\API\Model\PictureparkValidationException $pictureparkValidationException)

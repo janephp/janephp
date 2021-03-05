@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class UsersGetContextForUserNotFoundException extends \RuntimeException implements ClientException
+class UsersGetContextForUserNotFoundException extends NotFoundException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

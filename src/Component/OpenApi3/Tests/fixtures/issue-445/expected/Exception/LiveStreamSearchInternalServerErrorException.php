@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Exception;
 
-class LiveStreamSearchInternalServerErrorException extends \RuntimeException implements ServerException
+class LiveStreamSearchInternalServerErrorException extends InternalServerErrorException
 {
     private $pictureparkException;
     public function __construct(\PicturePark\API\Model\PictureparkException $pictureparkException)

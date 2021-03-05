@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Exception;
 
-class ContentUpdatePermissionsManyNotFoundException extends \RuntimeException implements ClientException
+class ContentUpdatePermissionsManyNotFoundException extends NotFoundException
 {
     private $pictureparkNotFoundException;
     public function __construct(\PicturePark\API\Model\PictureparkNotFoundException $pictureparkNotFoundException)

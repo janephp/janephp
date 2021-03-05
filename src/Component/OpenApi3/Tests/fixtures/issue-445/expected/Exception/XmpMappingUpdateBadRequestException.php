@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Exception;
 
-class XmpMappingUpdateBadRequestException extends \RuntimeException implements ClientException
+class XmpMappingUpdateBadRequestException extends BadRequestException
 {
     private $pictureparkValidationException;
     public function __construct(\PicturePark\API\Model\PictureparkValidationException $pictureparkValidationException)

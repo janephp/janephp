@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Exception;
 
-class ListItemAggregateNotFoundException extends \RuntimeException implements ClientException
+class ListItemAggregateNotFoundException extends NotFoundException
 {
     private $pictureparkNotFoundException;
     public function __construct(\PicturePark\API\Model\PictureparkNotFoundException $pictureparkNotFoundException)

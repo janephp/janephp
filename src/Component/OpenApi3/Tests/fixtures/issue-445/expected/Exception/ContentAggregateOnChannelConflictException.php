@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Exception;
 
-class ContentAggregateOnChannelConflictException extends \RuntimeException implements ClientException
+class ContentAggregateOnChannelConflictException extends ConflictException
 {
     private $pictureparkConflictException;
     public function __construct(\PicturePark\API\Model\PictureparkConflictException $pictureparkConflictException)

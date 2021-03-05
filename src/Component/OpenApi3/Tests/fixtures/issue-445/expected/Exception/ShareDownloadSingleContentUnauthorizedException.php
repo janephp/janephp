@@ -2,10 +2,10 @@
 
 namespace PicturePark\API\Exception;
 
-class ShareDownloadSingleContentUnauthorizedException extends \RuntimeException implements ClientException
+class ShareDownloadSingleContentUnauthorizedException extends UnauthorizedException
 {
     public function __construct()
     {
-        parent::__construct('Unauthorized', 401);
+        parent::__construct('Unauthorized');
     }
 }

@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class ReposCreatePagesSiteConflictException extends \RuntimeException implements ClientException
+class ReposCreatePagesSiteConflictException extends ConflictException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

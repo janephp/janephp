@@ -2,10 +2,10 @@
 
 namespace PicturePark\API\Exception;
 
-class ContentGetReferencesManyMethodNotAllowedException extends \RuntimeException implements ClientException
+class ContentGetReferencesManyMethodNotAllowedException extends MethodNotAllowedException
 {
     public function __construct()
     {
-        parent::__construct('Method not allowed', 405);
+        parent::__construct('Method not allowed');
     }
 }

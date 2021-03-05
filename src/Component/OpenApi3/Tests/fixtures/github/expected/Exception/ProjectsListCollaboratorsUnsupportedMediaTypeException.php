@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class ProjectsListCollaboratorsUnsupportedMediaTypeException extends \RuntimeException implements ClientException
+class ProjectsListCollaboratorsUnsupportedMediaTypeException extends UnsupportedMediaTypeException
 {
     private $responsePreviewHeaderMissing;
     public function __construct(\Github\Model\ResponsePreviewHeaderMissing $responsePreviewHeaderMissing)

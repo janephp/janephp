@@ -2,10 +2,10 @@
 
 namespace CreditSafe\API\Exception;
 
-class ListDecisionTreesBadRequestException extends \RuntimeException implements ClientException
+class ListDecisionTreesBadRequestException extends BadRequestException
 {
     public function __construct()
     {
-        parent::__construct('', 400);
+        parent::__construct('');
     }
 }

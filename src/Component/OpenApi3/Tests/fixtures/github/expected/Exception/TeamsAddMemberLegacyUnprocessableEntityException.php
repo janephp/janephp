@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class TeamsAddMemberLegacyUnprocessableEntityException extends \RuntimeException implements ClientException
+class TeamsAddMemberLegacyUnprocessableEntityException extends UnprocessableEntityException
 {
     private $teamsTeamIdMembersUsernamePutResponse422;
     public function __construct(\Github\Model\TeamsTeamIdMembersUsernamePutResponse422 $teamsTeamIdMembersUsernamePutResponse422)

@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class ActivityListNotificationsForAuthenticatedUserForbiddenException extends \RuntimeException implements ClientException
+class ActivityListNotificationsForAuthenticatedUserForbiddenException extends ForbiddenException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

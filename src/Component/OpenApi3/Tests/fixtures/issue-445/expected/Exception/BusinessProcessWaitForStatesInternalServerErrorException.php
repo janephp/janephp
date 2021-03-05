@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Exception;
 
-class BusinessProcessWaitForStatesInternalServerErrorException extends \RuntimeException implements ServerException
+class BusinessProcessWaitForStatesInternalServerErrorException extends InternalServerErrorException
 {
     private $pictureparkException;
     public function __construct(\PicturePark\API\Model\PictureparkException $pictureparkException)

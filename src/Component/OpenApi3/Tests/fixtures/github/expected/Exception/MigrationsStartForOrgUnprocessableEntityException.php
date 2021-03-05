@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class MigrationsStartForOrgUnprocessableEntityException extends \RuntimeException implements ClientException
+class MigrationsStartForOrgUnprocessableEntityException extends UnprocessableEntityException
 {
     private $validationError;
     public function __construct(\Github\Model\ValidationError $validationError)

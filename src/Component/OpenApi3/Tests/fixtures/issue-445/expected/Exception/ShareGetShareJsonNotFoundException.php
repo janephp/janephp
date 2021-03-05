@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Exception;
 
-class ShareGetShareJsonNotFoundException extends \RuntimeException implements ClientException
+class ShareGetShareJsonNotFoundException extends NotFoundException
 {
     private $pictureparkNotFoundException;
     public function __construct(\PicturePark\API\Model\PictureparkNotFoundException $pictureparkNotFoundException)

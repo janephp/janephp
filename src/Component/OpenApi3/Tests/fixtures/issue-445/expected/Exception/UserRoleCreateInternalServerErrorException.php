@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Exception;
 
-class UserRoleCreateInternalServerErrorException extends \RuntimeException implements ServerException
+class UserRoleCreateInternalServerErrorException extends InternalServerErrorException
 {
     private $pictureparkException;
     public function __construct(\PicturePark\API\Model\PictureparkException $pictureparkException)

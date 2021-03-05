@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class TeamsAddOrUpdateProjectPermissionsLegacyForbiddenException extends \RuntimeException implements ClientException
+class TeamsAddOrUpdateProjectPermissionsLegacyForbiddenException extends ForbiddenException
 {
     private $teamsTeamIdProjectsProjectIdPutResponse403;
     public function __construct(\Github\Model\TeamsTeamIdProjectsProjectIdPutResponse403 $teamsTeamIdProjectsProjectIdPutResponse403)

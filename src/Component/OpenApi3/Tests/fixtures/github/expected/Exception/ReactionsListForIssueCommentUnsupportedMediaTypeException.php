@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class ReactionsListForIssueCommentUnsupportedMediaTypeException extends \RuntimeException implements ClientException
+class ReactionsListForIssueCommentUnsupportedMediaTypeException extends UnsupportedMediaTypeException
 {
     private $responsePreviewHeaderMissing;
     public function __construct(\Github\Model\ResponsePreviewHeaderMissing $responsePreviewHeaderMissing)

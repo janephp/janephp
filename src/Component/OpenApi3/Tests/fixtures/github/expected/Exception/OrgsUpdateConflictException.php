@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class OrgsUpdateConflictException extends \RuntimeException implements ClientException
+class OrgsUpdateConflictException extends ConflictException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

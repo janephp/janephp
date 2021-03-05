@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Exception;
 
-class ShareDownloadSingleContentNotFoundException extends \RuntimeException implements ClientException
+class ShareDownloadSingleContentNotFoundException extends NotFoundException
 {
     private $pictureparkNotFoundException;
     public function __construct(\PicturePark\API\Model\PictureparkNotFoundException $pictureparkNotFoundException)

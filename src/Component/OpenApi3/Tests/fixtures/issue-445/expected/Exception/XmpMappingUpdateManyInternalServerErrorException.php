@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Exception;
 
-class XmpMappingUpdateManyInternalServerErrorException extends \RuntimeException implements ServerException
+class XmpMappingUpdateManyInternalServerErrorException extends InternalServerErrorException
 {
     private $pictureparkException;
     public function __construct(\PicturePark\API\Model\PictureparkException $pictureparkException)

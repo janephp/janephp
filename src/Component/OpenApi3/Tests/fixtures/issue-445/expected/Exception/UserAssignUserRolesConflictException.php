@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Exception;
 
-class UserAssignUserRolesConflictException extends \RuntimeException implements ClientException
+class UserAssignUserRolesConflictException extends ConflictException
 {
     private $pictureparkConflictException;
     public function __construct(\PicturePark\API\Model\PictureparkConflictException $pictureparkConflictException)

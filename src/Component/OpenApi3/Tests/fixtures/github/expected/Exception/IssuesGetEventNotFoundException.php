@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class IssuesGetEventNotFoundException extends \RuntimeException implements ClientException
+class IssuesGetEventNotFoundException extends NotFoundException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

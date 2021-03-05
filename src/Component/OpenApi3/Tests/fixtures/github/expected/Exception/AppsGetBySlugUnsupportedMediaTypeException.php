@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class AppsGetBySlugUnsupportedMediaTypeException extends \RuntimeException implements ClientException
+class AppsGetBySlugUnsupportedMediaTypeException extends UnsupportedMediaTypeException
 {
     private $responsePreviewHeaderMissing;
     public function __construct(\Github\Model\ResponsePreviewHeaderMissing $responsePreviewHeaderMissing)

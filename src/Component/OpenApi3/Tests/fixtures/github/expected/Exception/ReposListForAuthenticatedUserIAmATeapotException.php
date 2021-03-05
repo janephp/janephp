@@ -2,10 +2,10 @@
 
 namespace Github\Exception;
 
-class ReposListForAuthenticatedUserIAmATeapotException extends \RuntimeException implements ClientException
+class ReposListForAuthenticatedUserIAmATeapotException extends IAmATeapotException
 {
     public function __construct()
     {
-        parent::__construct('Response definition missing', 418);
+        parent::__construct('Response definition missing');
     }
 }

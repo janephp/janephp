@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class AppsListInstallationReposForAuthenticatedUserNotFoundException extends \RuntimeException implements ClientException
+class AppsListInstallationReposForAuthenticatedUserNotFoundException extends NotFoundException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Exception;
 
-class DisplayValueRerenderInternalServerErrorException extends \RuntimeException implements ServerException
+class DisplayValueRerenderInternalServerErrorException extends InternalServerErrorException
 {
     private $pictureparkException;
     public function __construct(\PicturePark\API\Model\PictureparkException $pictureparkException)

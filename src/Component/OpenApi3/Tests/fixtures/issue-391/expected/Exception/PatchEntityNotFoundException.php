@@ -2,10 +2,10 @@
 
 namespace Gounlaf\JanephpBug\Exception;
 
-class PatchEntityNotFoundException extends \RuntimeException implements ClientException
+class PatchEntityNotFoundException extends NotFoundException
 {
     public function __construct()
     {
-        parent::__construct('Entity not found', 404);
+        parent::__construct('Entity not found');
     }
 }

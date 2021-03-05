@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class AppsCreateInstallationAccessTokenUnauthorizedException extends \RuntimeException implements ClientException
+class AppsCreateInstallationAccessTokenUnauthorizedException extends UnauthorizedException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

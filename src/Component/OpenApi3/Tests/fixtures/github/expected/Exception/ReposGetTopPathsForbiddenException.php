@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class ReposGetTopPathsForbiddenException extends \RuntimeException implements ClientException
+class ReposGetTopPathsForbiddenException extends ForbiddenException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

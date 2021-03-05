@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Exception;
 
-class UserRoleDeleteManyConflictException extends \RuntimeException implements ClientException
+class UserRoleDeleteManyConflictException extends ConflictException
 {
     private $pictureparkConflictException;
     public function __construct(\PicturePark\API\Model\PictureparkConflictException $pictureparkConflictException)

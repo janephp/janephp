@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Exception;
 
-class ContentTransferOwnershipManyInternalServerErrorException extends \RuntimeException implements ServerException
+class ContentTransferOwnershipManyInternalServerErrorException extends InternalServerErrorException
 {
     private $pictureparkException;
     public function __construct(\PicturePark\API\Model\PictureparkException $pictureparkException)

@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class GistsListCommentsNotFoundException extends \RuntimeException implements ClientException
+class GistsListCommentsNotFoundException extends NotFoundException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

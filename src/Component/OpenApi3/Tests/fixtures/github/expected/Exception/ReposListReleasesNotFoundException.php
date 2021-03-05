@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class ReposListReleasesNotFoundException extends \RuntimeException implements ClientException
+class ReposListReleasesNotFoundException extends NotFoundException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

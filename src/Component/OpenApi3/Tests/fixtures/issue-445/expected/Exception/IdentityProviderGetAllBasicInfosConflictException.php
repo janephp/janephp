@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Exception;
 
-class IdentityProviderGetAllBasicInfosConflictException extends \RuntimeException implements ClientException
+class IdentityProviderGetAllBasicInfosConflictException extends ConflictException
 {
     private $pictureparkConflictException;
     public function __construct(\PicturePark\API\Model\PictureparkConflictException $pictureparkConflictException)

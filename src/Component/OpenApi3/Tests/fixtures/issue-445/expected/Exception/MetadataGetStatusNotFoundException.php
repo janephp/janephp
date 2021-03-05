@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Exception;
 
-class MetadataGetStatusNotFoundException extends \RuntimeException implements ClientException
+class MetadataGetStatusNotFoundException extends NotFoundException
 {
     private $pictureparkNotFoundException;
     public function __construct(\PicturePark\API\Model\PictureparkNotFoundException $pictureparkNotFoundException)

@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Exception;
 
-class ContentDownloadNotFoundException extends \RuntimeException implements ClientException
+class ContentDownloadNotFoundException extends NotFoundException
 {
     private $pictureparkNotFoundException;
     public function __construct(\PicturePark\API\Model\PictureparkNotFoundException $pictureparkNotFoundException)

@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Exception;
 
-class BusinessProcessWaitForLifeCyclesConflictException extends \RuntimeException implements ClientException
+class BusinessProcessWaitForLifeCyclesConflictException extends ConflictException
 {
     private $pictureparkConflictException;
     public function __construct(\PicturePark\API\Model\PictureparkConflictException $pictureparkConflictException)

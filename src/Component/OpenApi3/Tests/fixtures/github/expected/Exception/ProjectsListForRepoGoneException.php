@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class ProjectsListForRepoGoneException extends \RuntimeException implements ClientException
+class ProjectsListForRepoGoneException extends GoneException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class PullsRemoveRequestedReviewersUnprocessableEntityException extends \RuntimeException implements ClientException
+class PullsRemoveRequestedReviewersUnprocessableEntityException extends UnprocessableEntityException
 {
     private $validationError;
     public function __construct(\Github\Model\ValidationError $validationError)

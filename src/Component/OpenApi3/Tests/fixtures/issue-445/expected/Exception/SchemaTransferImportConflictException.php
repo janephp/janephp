@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Exception;
 
-class SchemaTransferImportConflictException extends \RuntimeException implements ClientException
+class SchemaTransferImportConflictException extends ConflictException
 {
     private $pictureparkConflictException;
     public function __construct(\PicturePark\API\Model\PictureparkConflictException $pictureparkConflictException)

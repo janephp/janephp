@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Exception;
 
-class SchemaPermissionSetGetPermissionsInternalServerErrorException extends \RuntimeException implements ServerException
+class SchemaPermissionSetGetPermissionsInternalServerErrorException extends InternalServerErrorException
 {
     private $pictureparkException;
     public function __construct(\PicturePark\API\Model\PictureparkException $pictureparkException)

@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Exception;
 
-class BusinessRuleGetConfigurationInternalServerErrorException extends \RuntimeException implements ServerException
+class BusinessRuleGetConfigurationInternalServerErrorException extends InternalServerErrorException
 {
     private $pictureparkException;
     public function __construct(\PicturePark\API\Model\PictureparkException $pictureparkException)

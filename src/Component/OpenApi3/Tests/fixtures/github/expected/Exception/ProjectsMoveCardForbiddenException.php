@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class ProjectsMoveCardForbiddenException extends \RuntimeException implements ClientException
+class ProjectsMoveCardForbiddenException extends ForbiddenException
 {
     private $projectsColumnsCardsCardIdMovesPostResponse403;
     public function __construct(\Github\Model\ProjectsColumnsCardsCardIdMovesPostResponse403 $projectsColumnsCardsCardIdMovesPostResponse403)

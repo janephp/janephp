@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class UsersSetPrimaryEmailVisibilityForAuthenticatedUnprocessableEntityException extends \RuntimeException implements ClientException
+class UsersSetPrimaryEmailVisibilityForAuthenticatedUnprocessableEntityException extends UnprocessableEntityException
 {
     private $validationError;
     public function __construct(\Github\Model\ValidationError $validationError)

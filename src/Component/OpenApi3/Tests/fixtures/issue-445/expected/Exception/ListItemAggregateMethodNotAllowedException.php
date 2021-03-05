@@ -2,10 +2,10 @@
 
 namespace PicturePark\API\Exception;
 
-class ListItemAggregateMethodNotAllowedException extends \RuntimeException implements ClientException
+class ListItemAggregateMethodNotAllowedException extends MethodNotAllowedException
 {
     public function __construct()
     {
-        parent::__construct('Method not allowed', 405);
+        parent::__construct('Method not allowed');
     }
 }

@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Exception;
 
-class OutputFormatSetXmpWritebackState2NotFoundException extends \RuntimeException implements ClientException
+class OutputFormatSetXmpWritebackState2NotFoundException extends NotFoundException
 {
     private $pictureparkNotFoundException;
     public function __construct(\PicturePark\API\Model\PictureparkNotFoundException $pictureparkNotFoundException)

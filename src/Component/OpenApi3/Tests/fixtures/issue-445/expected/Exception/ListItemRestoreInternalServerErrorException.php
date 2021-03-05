@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Exception;
 
-class ListItemRestoreInternalServerErrorException extends \RuntimeException implements ServerException
+class ListItemRestoreInternalServerErrorException extends InternalServerErrorException
 {
     private $pictureparkException;
     public function __construct(\PicturePark\API\Model\PictureparkException $pictureparkException)

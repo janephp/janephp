@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Exception;
 
-class IdentityProviderUpdateBadRequestException extends \RuntimeException implements ClientException
+class IdentityProviderUpdateBadRequestException extends BadRequestException
 {
     private $pictureparkValidationException;
     public function __construct(\PicturePark\API\Model\PictureparkValidationException $pictureparkValidationException)

@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class UsersDeletePublicSshKeyForAuthenticatedUnauthorizedException extends \RuntimeException implements ClientException
+class UsersDeletePublicSshKeyForAuthenticatedUnauthorizedException extends UnauthorizedException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

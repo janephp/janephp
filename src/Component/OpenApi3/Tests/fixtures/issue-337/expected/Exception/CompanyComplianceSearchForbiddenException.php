@@ -2,10 +2,10 @@
 
 namespace CreditSafe\API\Exception;
 
-class CompanyComplianceSearchForbiddenException extends \RuntimeException implements ClientException
+class CompanyComplianceSearchForbiddenException extends ForbiddenException
 {
     public function __construct()
     {
-        parent::__construct('', 403);
+        parent::__construct('');
     }
 }

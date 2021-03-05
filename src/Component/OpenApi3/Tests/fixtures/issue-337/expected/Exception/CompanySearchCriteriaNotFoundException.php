@@ -2,10 +2,10 @@
 
 namespace CreditSafe\API\Exception;
 
-class CompanySearchCriteriaNotFoundException extends \RuntimeException implements ClientException
+class CompanySearchCriteriaNotFoundException extends NotFoundException
 {
     public function __construct()
     {
-        parent::__construct('', 404);
+        parent::__construct('');
     }
 }

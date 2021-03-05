@@ -2,10 +2,10 @@
 
 namespace PicturePark\API\Exception;
 
-class ShareDownloadSingleContentPreconditionFailedException extends \RuntimeException implements ClientException
+class ShareDownloadSingleContentPreconditionFailedException extends PreconditionFailedException
 {
     public function __construct()
     {
-        parent::__construct('', 412);
+        parent::__construct('');
     }
 }

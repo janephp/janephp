@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Exception;
 
-class ContentGetOutputsInternalServerErrorException extends \RuntimeException implements ServerException
+class ContentGetOutputsInternalServerErrorException extends InternalServerErrorException
 {
     private $pictureparkException;
     public function __construct(\PicturePark\API\Model\PictureparkException $pictureparkException)

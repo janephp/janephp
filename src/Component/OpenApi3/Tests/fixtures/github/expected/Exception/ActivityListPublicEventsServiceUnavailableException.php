@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class ActivityListPublicEventsServiceUnavailableException extends \RuntimeException implements ServerException
+class ActivityListPublicEventsServiceUnavailableException extends ServiceUnavailableException
 {
     private $responseServiceUnavailable;
     public function __construct(\Github\Model\ResponseServiceUnavailable $responseServiceUnavailable)

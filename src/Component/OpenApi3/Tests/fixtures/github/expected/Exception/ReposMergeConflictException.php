@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class ReposMergeConflictException extends \RuntimeException implements ClientException
+class ReposMergeConflictException extends ConflictException
 {
     private $reposOwnerRepoMergesPostResponse409;
     public function __construct(\Github\Model\ReposOwnerRepoMergesPostResponse409 $reposOwnerRepoMergesPostResponse409)

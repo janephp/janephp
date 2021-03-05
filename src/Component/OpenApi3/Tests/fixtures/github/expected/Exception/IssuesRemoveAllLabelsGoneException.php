@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class IssuesRemoveAllLabelsGoneException extends \RuntimeException implements ClientException
+class IssuesRemoveAllLabelsGoneException extends GoneException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

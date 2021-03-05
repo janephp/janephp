@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class UsersCreateGpgKeyForAuthenticatedUnprocessableEntityException extends \RuntimeException implements ClientException
+class UsersCreateGpgKeyForAuthenticatedUnprocessableEntityException extends UnprocessableEntityException
 {
     private $validationError;
     public function __construct(\Github\Model\ValidationError $validationError)

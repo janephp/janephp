@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Exception;
 
-class OutputFormatSetXmpWritebackState2ConflictException extends \RuntimeException implements ClientException
+class OutputFormatSetXmpWritebackState2ConflictException extends ConflictException
 {
     private $pictureparkConflictException;
     public function __construct(\PicturePark\API\Model\PictureparkConflictException $pictureparkConflictException)

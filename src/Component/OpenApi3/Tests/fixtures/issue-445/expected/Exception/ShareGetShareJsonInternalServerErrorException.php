@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Exception;
 
-class ShareGetShareJsonInternalServerErrorException extends \RuntimeException implements ServerException
+class ShareGetShareJsonInternalServerErrorException extends InternalServerErrorException
 {
     private $pictureparkException;
     public function __construct(\PicturePark\API\Model\PictureparkException $pictureparkException)

@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class ProjectsUpdateCardNotFoundException extends \RuntimeException implements ClientException
+class ProjectsUpdateCardNotFoundException extends NotFoundException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

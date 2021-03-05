@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Exception;
 
-class XmpMappingGetManyConflictException extends \RuntimeException implements ClientException
+class XmpMappingGetManyConflictException extends ConflictException
 {
     private $pictureparkConflictException;
     public function __construct(\PicturePark\API\Model\PictureparkConflictException $pictureparkConflictException)

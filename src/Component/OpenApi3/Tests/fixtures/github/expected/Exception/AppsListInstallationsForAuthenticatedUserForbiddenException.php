@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class AppsListInstallationsForAuthenticatedUserForbiddenException extends \RuntimeException implements ClientException
+class AppsListInstallationsForAuthenticatedUserForbiddenException extends ForbiddenException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

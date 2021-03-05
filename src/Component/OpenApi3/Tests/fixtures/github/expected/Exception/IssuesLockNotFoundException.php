@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class IssuesLockNotFoundException extends \RuntimeException implements ClientException
+class IssuesLockNotFoundException extends NotFoundException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

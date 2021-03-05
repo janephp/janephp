@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class ScimUpdateAttributeForUserBadRequestException extends \RuntimeException implements ClientException
+class ScimUpdateAttributeForUserBadRequestException extends BadRequestException
 {
     private $scimError;
     public function __construct(\Github\Model\ScimError $scimError)

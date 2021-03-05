@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class AppsCreateFromManifestNotFoundException extends \RuntimeException implements ClientException
+class AppsCreateFromManifestNotFoundException extends NotFoundException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

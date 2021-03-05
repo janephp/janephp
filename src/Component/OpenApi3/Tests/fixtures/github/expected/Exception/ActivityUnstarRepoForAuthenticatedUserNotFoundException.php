@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class ActivityUnstarRepoForAuthenticatedUserNotFoundException extends \RuntimeException implements ClientException
+class ActivityUnstarRepoForAuthenticatedUserNotFoundException extends NotFoundException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

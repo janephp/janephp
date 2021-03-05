@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class IssuesListEventsForTimelineNotFoundException extends \RuntimeException implements ClientException
+class IssuesListEventsForTimelineNotFoundException extends NotFoundException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

@@ -2,10 +2,10 @@
 
 namespace PicturePark\API\Exception;
 
-class ContentDownloadThumbnailPreconditionFailedException extends \RuntimeException implements ClientException
+class ContentDownloadThumbnailPreconditionFailedException extends PreconditionFailedException
 {
     public function __construct()
     {
-        parent::__construct('', 412);
+        parent::__construct('');
     }
 }

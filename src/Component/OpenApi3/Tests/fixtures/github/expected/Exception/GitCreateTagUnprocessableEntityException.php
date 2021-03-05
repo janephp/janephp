@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class GitCreateTagUnprocessableEntityException extends \RuntimeException implements ClientException
+class GitCreateTagUnprocessableEntityException extends UnprocessableEntityException
 {
     private $validationError;
     public function __construct(\Github\Model\ValidationError $validationError)

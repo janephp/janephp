@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class OrgsListForAuthenticatedUserUnauthorizedException extends \RuntimeException implements ClientException
+class OrgsListForAuthenticatedUserUnauthorizedException extends UnauthorizedException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

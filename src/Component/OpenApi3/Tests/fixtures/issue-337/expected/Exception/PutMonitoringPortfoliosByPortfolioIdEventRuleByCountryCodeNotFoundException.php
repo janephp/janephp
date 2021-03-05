@@ -2,10 +2,10 @@
 
 namespace CreditSafe\API\Exception;
 
-class PutMonitoringPortfoliosByPortfolioIdEventRuleByCountryCodeNotFoundException extends \RuntimeException implements ClientException
+class PutMonitoringPortfoliosByPortfolioIdEventRuleByCountryCodeNotFoundException extends NotFoundException
 {
     public function __construct()
     {
-        parent::__construct('', 404);
+        parent::__construct('');
     }
 }

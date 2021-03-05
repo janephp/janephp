@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class PullsDeletePendingReviewNotFoundException extends \RuntimeException implements ClientException
+class PullsDeletePendingReviewNotFoundException extends NotFoundException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

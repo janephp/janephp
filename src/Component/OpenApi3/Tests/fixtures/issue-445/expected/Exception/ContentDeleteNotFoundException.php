@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Exception;
 
-class ContentDeleteNotFoundException extends \RuntimeException implements ClientException
+class ContentDeleteNotFoundException extends NotFoundException
 {
     private $pictureparkNotFoundException;
     public function __construct(\PicturePark\API\Model\PictureparkNotFoundException $pictureparkNotFoundException)

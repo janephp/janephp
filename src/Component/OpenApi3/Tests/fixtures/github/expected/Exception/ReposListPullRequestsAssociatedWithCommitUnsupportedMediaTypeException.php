@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class ReposListPullRequestsAssociatedWithCommitUnsupportedMediaTypeException extends \RuntimeException implements ClientException
+class ReposListPullRequestsAssociatedWithCommitUnsupportedMediaTypeException extends UnsupportedMediaTypeException
 {
     private $responsePreviewHeaderMissing;
     public function __construct(\Github\Model\ResponsePreviewHeaderMissing $responsePreviewHeaderMissing)

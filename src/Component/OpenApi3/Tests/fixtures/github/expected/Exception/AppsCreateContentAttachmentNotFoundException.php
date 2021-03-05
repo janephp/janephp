@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class AppsCreateContentAttachmentNotFoundException extends \RuntimeException implements ClientException
+class AppsCreateContentAttachmentNotFoundException extends NotFoundException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

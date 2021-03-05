@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class ReactionsDeleteLegacyUnsupportedMediaTypeException extends \RuntimeException implements ClientException
+class ReactionsDeleteLegacyUnsupportedMediaTypeException extends UnsupportedMediaTypeException
 {
     private $responsePreviewHeaderMissing;
     public function __construct(\Github\Model\ResponsePreviewHeaderMissing $responsePreviewHeaderMissing)

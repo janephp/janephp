@@ -2,10 +2,10 @@
 
 namespace PicturePark\API\Exception;
 
-class OutputFormatRenderFormatPreviewPreconditionFailedException extends \RuntimeException implements ClientException
+class OutputFormatRenderFormatPreviewPreconditionFailedException extends PreconditionFailedException
 {
     public function __construct()
     {
-        parent::__construct('', 412);
+        parent::__construct('');
     }
 }

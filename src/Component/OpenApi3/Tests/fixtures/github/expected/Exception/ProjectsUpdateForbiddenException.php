@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class ProjectsUpdateForbiddenException extends \RuntimeException implements ClientException
+class ProjectsUpdateForbiddenException extends ForbiddenException
 {
     private $projectsProjectIdPatchResponse403;
     public function __construct(\Github\Model\ProjectsProjectIdPatchResponse403 $projectsProjectIdPatchResponse403)

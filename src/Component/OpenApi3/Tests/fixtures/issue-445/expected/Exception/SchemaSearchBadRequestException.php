@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Exception;
 
-class SchemaSearchBadRequestException extends \RuntimeException implements ClientException
+class SchemaSearchBadRequestException extends BadRequestException
 {
     private $pictureparkValidationException;
     public function __construct(\PicturePark\API\Model\PictureparkValidationException $pictureparkValidationException)

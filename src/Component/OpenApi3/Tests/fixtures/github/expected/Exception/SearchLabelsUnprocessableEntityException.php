@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class SearchLabelsUnprocessableEntityException extends \RuntimeException implements ClientException
+class SearchLabelsUnprocessableEntityException extends UnprocessableEntityException
 {
     private $validationError;
     public function __construct(\Github\Model\ValidationError $validationError)

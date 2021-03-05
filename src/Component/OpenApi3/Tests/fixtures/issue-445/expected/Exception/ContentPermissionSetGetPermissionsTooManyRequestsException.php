@@ -2,10 +2,10 @@
 
 namespace PicturePark\API\Exception;
 
-class ContentPermissionSetGetPermissionsTooManyRequestsException extends \RuntimeException implements ClientException
+class ContentPermissionSetGetPermissionsTooManyRequestsException extends TooManyRequestsException
 {
     public function __construct()
     {
-        parent::__construct('Too many requests', 429);
+        parent::__construct('Too many requests');
     }
 }

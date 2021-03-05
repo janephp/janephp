@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Exception;
 
-class DisplayValueRerenderConflictException extends \RuntimeException implements ClientException
+class DisplayValueRerenderConflictException extends ConflictException
 {
     private $pictureparkConflictException;
     public function __construct(\PicturePark\API\Model\PictureparkConflictException $pictureparkConflictException)

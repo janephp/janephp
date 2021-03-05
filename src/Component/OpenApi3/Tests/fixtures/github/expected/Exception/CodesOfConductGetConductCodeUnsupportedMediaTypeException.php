@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class CodesOfConductGetConductCodeUnsupportedMediaTypeException extends \RuntimeException implements ClientException
+class CodesOfConductGetConductCodeUnsupportedMediaTypeException extends UnsupportedMediaTypeException
 {
     private $responsePreviewHeaderMissing;
     public function __construct(\Github\Model\ResponsePreviewHeaderMissing $responsePreviewHeaderMissing)

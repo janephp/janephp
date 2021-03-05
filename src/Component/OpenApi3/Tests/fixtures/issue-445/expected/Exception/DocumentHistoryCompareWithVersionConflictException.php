@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Exception;
 
-class DocumentHistoryCompareWithVersionConflictException extends \RuntimeException implements ClientException
+class DocumentHistoryCompareWithVersionConflictException extends ConflictException
 {
     private $pictureparkConflictException;
     public function __construct(\PicturePark\API\Model\PictureparkConflictException $pictureparkConflictException)

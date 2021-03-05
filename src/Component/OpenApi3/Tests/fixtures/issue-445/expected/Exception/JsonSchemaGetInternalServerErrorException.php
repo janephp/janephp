@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Exception;
 
-class JsonSchemaGetInternalServerErrorException extends \RuntimeException implements ServerException
+class JsonSchemaGetInternalServerErrorException extends InternalServerErrorException
 {
     private $pictureparkException;
     public function __construct(\PicturePark\API\Model\PictureparkException $pictureparkException)

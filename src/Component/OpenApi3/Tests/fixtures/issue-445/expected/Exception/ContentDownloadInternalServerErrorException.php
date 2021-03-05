@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Exception;
 
-class ContentDownloadInternalServerErrorException extends \RuntimeException implements ServerException
+class ContentDownloadInternalServerErrorException extends InternalServerErrorException
 {
     private $pictureparkException;
     public function __construct(\PicturePark\API\Model\PictureparkException $pictureparkException)

@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class TeamsUpdateLegacyUnprocessableEntityException extends \RuntimeException implements ClientException
+class TeamsUpdateLegacyUnprocessableEntityException extends UnprocessableEntityException
 {
     private $validationError;
     public function __construct(\Github\Model\ValidationError $validationError)

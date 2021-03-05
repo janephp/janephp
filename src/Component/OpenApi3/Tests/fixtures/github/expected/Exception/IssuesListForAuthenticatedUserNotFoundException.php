@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class IssuesListForAuthenticatedUserNotFoundException extends \RuntimeException implements ClientException
+class IssuesListForAuthenticatedUserNotFoundException extends NotFoundException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

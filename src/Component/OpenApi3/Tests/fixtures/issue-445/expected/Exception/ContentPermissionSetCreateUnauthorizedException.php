@@ -2,10 +2,10 @@
 
 namespace PicturePark\API\Exception;
 
-class ContentPermissionSetCreateUnauthorizedException extends \RuntimeException implements ClientException
+class ContentPermissionSetCreateUnauthorizedException extends UnauthorizedException
 {
     public function __construct()
     {
-        parent::__construct('Unauthorized', 401);
+        parent::__construct('Unauthorized');
     }
 }

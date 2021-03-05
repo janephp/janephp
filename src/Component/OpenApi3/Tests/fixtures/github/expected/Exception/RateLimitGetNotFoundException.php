@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class RateLimitGetNotFoundException extends \RuntimeException implements ClientException
+class RateLimitGetNotFoundException extends NotFoundException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

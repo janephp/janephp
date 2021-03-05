@@ -2,10 +2,10 @@
 
 namespace PicturePark\API\Exception;
 
-class SchemaGetReferencedMethodNotAllowedException extends \RuntimeException implements ClientException
+class SchemaGetReferencedMethodNotAllowedException extends MethodNotAllowedException
 {
     public function __construct()
     {
-        parent::__construct('Method not allowed', 405);
+        parent::__construct('Method not allowed');
     }
 }

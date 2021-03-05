@@ -2,10 +2,10 @@
 
 namespace CreditSafe\API\Exception;
 
-class PutMonitoringPortfoliosByPortfolioIdEventRuleByCountryCodeUnauthorizedException extends \RuntimeException implements ClientException
+class PutMonitoringPortfoliosByPortfolioIdEventRuleByCountryCodeUnauthorizedException extends UnauthorizedException
 {
     public function __construct()
     {
-        parent::__construct('', 401);
+        parent::__construct('');
     }
 }

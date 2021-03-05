@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class IssuesGetEventGoneException extends \RuntimeException implements ClientException
+class IssuesGetEventGoneException extends GoneException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

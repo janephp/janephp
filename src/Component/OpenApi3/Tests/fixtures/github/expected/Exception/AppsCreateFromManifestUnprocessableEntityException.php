@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class AppsCreateFromManifestUnprocessableEntityException extends \RuntimeException implements ClientException
+class AppsCreateFromManifestUnprocessableEntityException extends UnprocessableEntityException
 {
     private $validationErrorSimple;
     public function __construct(\Github\Model\ValidationErrorSimple $validationErrorSimple)

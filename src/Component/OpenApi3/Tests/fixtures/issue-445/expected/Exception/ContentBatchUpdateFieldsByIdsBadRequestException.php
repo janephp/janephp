@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Exception;
 
-class ContentBatchUpdateFieldsByIdsBadRequestException extends \RuntimeException implements ClientException
+class ContentBatchUpdateFieldsByIdsBadRequestException extends BadRequestException
 {
     private $pictureparkValidationException;
     public function __construct(\PicturePark\API\Model\PictureparkValidationException $pictureparkValidationException)

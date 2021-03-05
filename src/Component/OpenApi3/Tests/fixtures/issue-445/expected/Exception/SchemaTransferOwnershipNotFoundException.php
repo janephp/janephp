@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Exception;
 
-class SchemaTransferOwnershipNotFoundException extends \RuntimeException implements ClientException
+class SchemaTransferOwnershipNotFoundException extends NotFoundException
 {
     private $pictureparkNotFoundException;
     public function __construct(\PicturePark\API\Model\PictureparkNotFoundException $pictureparkNotFoundException)

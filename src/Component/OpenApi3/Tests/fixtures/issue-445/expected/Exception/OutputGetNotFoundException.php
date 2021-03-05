@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Exception;
 
-class OutputGetNotFoundException extends \RuntimeException implements ClientException
+class OutputGetNotFoundException extends NotFoundException
 {
     private $pictureparkNotFoundException;
     public function __construct(\PicturePark\API\Model\PictureparkNotFoundException $pictureparkNotFoundException)

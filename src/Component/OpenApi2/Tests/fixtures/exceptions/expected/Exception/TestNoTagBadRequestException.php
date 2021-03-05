@@ -2,7 +2,7 @@
 
 namespace Jane\Component\OpenApi2\Tests\Expected\Exception;
 
-class TestNoTagBadRequestException extends \RuntimeException implements ClientException
+class TestNoTagBadRequestException extends BadRequestException
 {
     private $error;
     public function __construct(\Jane\Component\OpenApi2\Tests\Expected\Model\Error $error)

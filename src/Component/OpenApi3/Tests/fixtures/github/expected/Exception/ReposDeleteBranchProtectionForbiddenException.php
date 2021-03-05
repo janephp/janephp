@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class ReposDeleteBranchProtectionForbiddenException extends \RuntimeException implements ClientException
+class ReposDeleteBranchProtectionForbiddenException extends ForbiddenException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

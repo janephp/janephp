@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class ReposAddStatusCheckContextsForbiddenException extends \RuntimeException implements ClientException
+class ReposAddStatusCheckContextsForbiddenException extends ForbiddenException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

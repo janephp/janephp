@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class ReposDeletePullRequestReviewProtectionNotFoundException extends \RuntimeException implements ClientException
+class ReposDeletePullRequestReviewProtectionNotFoundException extends NotFoundException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

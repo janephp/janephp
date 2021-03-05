@@ -2,10 +2,10 @@
 
 namespace CreditSafe\API\Exception;
 
-class GenerateAuthenticationTokenUnauthorizedException extends \RuntimeException implements ClientException
+class GenerateAuthenticationTokenUnauthorizedException extends UnauthorizedException
 {
     public function __construct()
     {
-        parent::__construct('', 401);
+        parent::__construct('');
     }
 }

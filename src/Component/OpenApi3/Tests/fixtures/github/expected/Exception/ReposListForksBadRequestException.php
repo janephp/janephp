@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class ReposListForksBadRequestException extends \RuntimeException implements ClientException
+class ReposListForksBadRequestException extends BadRequestException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

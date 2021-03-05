@@ -2,10 +2,10 @@
 
 namespace PicturePark\API\Exception;
 
-class SchemaGetReferencedTooManyRequestsException extends \RuntimeException implements ClientException
+class SchemaGetReferencedTooManyRequestsException extends TooManyRequestsException
 {
     public function __construct()
     {
-        parent::__construct('Too many requests', 429);
+        parent::__construct('Too many requests');
     }
 }

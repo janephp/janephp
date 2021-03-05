@@ -2,10 +2,10 @@
 
 namespace CreditSafe\API\Exception;
 
-class UpdateIsProcessedFlagOnAnNotificationEventBadRequestException extends \RuntimeException implements ClientException
+class UpdateIsProcessedFlagOnAnNotificationEventBadRequestException extends BadRequestException
 {
     public function __construct()
     {
-        parent::__construct('', 400);
+        parent::__construct('');
     }
 }

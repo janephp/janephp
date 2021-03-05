@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class ReposUpdateBranchProtectionUnprocessableEntityException extends \RuntimeException implements ClientException
+class ReposUpdateBranchProtectionUnprocessableEntityException extends UnprocessableEntityException
 {
     private $validationErrorSimple;
     public function __construct(\Github\Model\ValidationErrorSimple $validationErrorSimple)

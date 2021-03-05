@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class IssuesUpdateGoneException extends \RuntimeException implements ClientException
+class IssuesUpdateGoneException extends GoneException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Exception;
 
-class SchemaCreateInternalServerErrorException extends \RuntimeException implements ServerException
+class SchemaCreateInternalServerErrorException extends InternalServerErrorException
 {
     private $pictureparkException;
     public function __construct(\PicturePark\API\Model\PictureparkException $pictureparkException)

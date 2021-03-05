@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Exception;
 
-class SchemaDeleteBadRequestException extends \RuntimeException implements ClientException
+class SchemaDeleteBadRequestException extends BadRequestException
 {
     private $pictureparkValidationException;
     public function __construct(\PicturePark\API\Model\PictureparkValidationException $pictureparkValidationException)

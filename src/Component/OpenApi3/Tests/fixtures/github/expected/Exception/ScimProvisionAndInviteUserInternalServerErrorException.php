@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class ScimProvisionAndInviteUserInternalServerErrorException extends \RuntimeException implements ServerException
+class ScimProvisionAndInviteUserInternalServerErrorException extends InternalServerErrorException
 {
     private $scimError;
     public function __construct(\Github\Model\ScimError $scimError)

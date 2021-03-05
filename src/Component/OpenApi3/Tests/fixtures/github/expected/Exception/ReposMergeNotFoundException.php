@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class ReposMergeNotFoundException extends \RuntimeException implements ClientException
+class ReposMergeNotFoundException extends NotFoundException
 {
     private $reposOwnerRepoMergesPostResponse404;
     public function __construct(\Github\Model\ReposOwnerRepoMergesPostResponse404 $reposOwnerRepoMergesPostResponse404)

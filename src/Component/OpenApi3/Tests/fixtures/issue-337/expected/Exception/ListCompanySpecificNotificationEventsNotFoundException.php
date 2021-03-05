@@ -2,10 +2,10 @@
 
 namespace CreditSafe\API\Exception;
 
-class ListCompanySpecificNotificationEventsNotFoundException extends \RuntimeException implements ClientException
+class ListCompanySpecificNotificationEventsNotFoundException extends NotFoundException
 {
     public function __construct()
     {
-        parent::__construct('', 404);
+        parent::__construct('');
     }
 }

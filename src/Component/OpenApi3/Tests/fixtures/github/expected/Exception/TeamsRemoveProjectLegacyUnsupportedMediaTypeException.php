@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class TeamsRemoveProjectLegacyUnsupportedMediaTypeException extends \RuntimeException implements ClientException
+class TeamsRemoveProjectLegacyUnsupportedMediaTypeException extends UnsupportedMediaTypeException
 {
     private $responsePreviewHeaderMissing;
     public function __construct(\Github\Model\ResponsePreviewHeaderMissing $responsePreviewHeaderMissing)

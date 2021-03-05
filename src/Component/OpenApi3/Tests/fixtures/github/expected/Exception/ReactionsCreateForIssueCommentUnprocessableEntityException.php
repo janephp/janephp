@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class ReactionsCreateForIssueCommentUnprocessableEntityException extends \RuntimeException implements ClientException
+class ReactionsCreateForIssueCommentUnprocessableEntityException extends UnprocessableEntityException
 {
     private $validationError;
     public function __construct(\Github\Model\ValidationError $validationError)

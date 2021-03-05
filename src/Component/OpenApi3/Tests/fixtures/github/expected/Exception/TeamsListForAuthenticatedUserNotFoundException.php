@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class TeamsListForAuthenticatedUserNotFoundException extends \RuntimeException implements ClientException
+class TeamsListForAuthenticatedUserNotFoundException extends NotFoundException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)
