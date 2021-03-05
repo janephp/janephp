@@ -2,10 +2,10 @@
 
 namespace CreditSafe\API\Exception;
 
-class DirectorReportUnauthorizedException extends \RuntimeException implements ClientException
+class DirectorReportUnauthorizedException extends UnauthorizedException
 {
     public function __construct()
     {
-        parent::__construct('', 401);
+        parent::__construct('');
     }
 }

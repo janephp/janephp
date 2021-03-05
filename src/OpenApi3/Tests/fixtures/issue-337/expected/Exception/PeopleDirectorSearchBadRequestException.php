@@ -2,10 +2,10 @@
 
 namespace CreditSafe\API\Exception;
 
-class PeopleDirectorSearchBadRequestException extends \RuntimeException implements ClientException
+class PeopleDirectorSearchBadRequestException extends BadRequestException
 {
     public function __construct()
     {
-        parent::__construct('', 400);
+        parent::__construct('');
     }
 }

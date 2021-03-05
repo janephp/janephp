@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class ReactionsListForIssueCommentNotFoundException extends \RuntimeException implements ClientException
+class ReactionsListForIssueCommentNotFoundException extends NotFoundException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

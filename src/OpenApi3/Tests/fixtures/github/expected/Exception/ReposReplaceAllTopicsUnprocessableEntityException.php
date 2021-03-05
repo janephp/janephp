@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class ReposReplaceAllTopicsUnprocessableEntityException extends \RuntimeException implements ClientException
+class ReposReplaceAllTopicsUnprocessableEntityException extends UnprocessableEntityException
 {
     private $validationErrorSimple;
     public function __construct(\Github\Model\ValidationErrorSimple $validationErrorSimple)

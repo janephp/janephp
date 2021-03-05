@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class MigrationsUnlockRepoForAuthenticatedUserNotFoundException extends \RuntimeException implements ClientException
+class MigrationsUnlockRepoForAuthenticatedUserNotFoundException extends NotFoundException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

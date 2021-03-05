@@ -2,10 +2,10 @@
 
 namespace CreditSafe\API\Exception;
 
-class DirectorReportBadRequestException extends \RuntimeException implements ClientException
+class DirectorReportBadRequestException extends BadRequestException
 {
     public function __construct()
     {
-        parent::__construct('', 400);
+        parent::__construct('');
     }
 }

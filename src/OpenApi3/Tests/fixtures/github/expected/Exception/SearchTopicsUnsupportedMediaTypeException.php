@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class SearchTopicsUnsupportedMediaTypeException extends \RuntimeException implements ClientException
+class SearchTopicsUnsupportedMediaTypeException extends UnsupportedMediaTypeException
 {
     private $responsePreviewHeaderMissing;
     public function __construct(\Github\Model\ResponsePreviewHeaderMissing $responsePreviewHeaderMissing)

@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class OauthAuthorizationsListAuthorizationsNotFoundException extends \RuntimeException implements ClientException
+class OauthAuthorizationsListAuthorizationsNotFoundException extends NotFoundException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

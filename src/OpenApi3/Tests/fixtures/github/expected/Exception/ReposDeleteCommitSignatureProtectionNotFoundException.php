@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class ReposDeleteCommitSignatureProtectionNotFoundException extends \RuntimeException implements ClientException
+class ReposDeleteCommitSignatureProtectionNotFoundException extends NotFoundException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

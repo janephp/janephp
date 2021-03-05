@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class ProjectsMoveCardServiceUnavailableException extends \RuntimeException implements ServerException
+class ProjectsMoveCardServiceUnavailableException extends ServiceUnavailableException
 {
     private $projectsColumnsCardsCardIdMovesPostResponse503;
     public function __construct(\Github\Model\ProjectsColumnsCardsCardIdMovesPostResponse503 $projectsColumnsCardsCardIdMovesPostResponse503)

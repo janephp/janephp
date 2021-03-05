@@ -2,10 +2,10 @@
 
 namespace PicturePark\API\Exception;
 
-class DocumentHistoryGetCurrentUnauthorizedException extends \RuntimeException implements ClientException
+class DocumentHistoryGetCurrentUnauthorizedException extends UnauthorizedException
 {
     public function __construct()
     {
-        parent::__construct('Unauthorized', 401);
+        parent::__construct('Unauthorized');
     }
 }

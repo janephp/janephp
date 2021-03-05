@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Exception;
 
-class DocumentHistoryCompareWithCurrentInternalServerErrorException extends \RuntimeException implements ServerException
+class DocumentHistoryCompareWithCurrentInternalServerErrorException extends InternalServerErrorException
 {
     private $pictureparkException;
     public function __construct(\PicturePark\API\Model\PictureparkException $pictureparkException)

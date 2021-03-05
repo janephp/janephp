@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class ScimDeleteUserFromOrgForbiddenException extends \RuntimeException implements ClientException
+class ScimDeleteUserFromOrgForbiddenException extends ForbiddenException
 {
     private $scimError;
     public function __construct(\Github\Model\ScimError $scimError)

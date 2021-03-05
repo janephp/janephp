@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class ReposDeleteForbiddenException extends \RuntimeException implements ClientException
+class ReposDeleteForbiddenException extends ForbiddenException
 {
     private $reposOwnerRepoDeleteResponse403;
     public function __construct(\Github\Model\ReposOwnerRepoDeleteResponse403 $reposOwnerRepoDeleteResponse403)

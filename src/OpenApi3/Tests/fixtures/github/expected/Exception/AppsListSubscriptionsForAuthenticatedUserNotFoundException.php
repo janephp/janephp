@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class AppsListSubscriptionsForAuthenticatedUserNotFoundException extends \RuntimeException implements ClientException
+class AppsListSubscriptionsForAuthenticatedUserNotFoundException extends NotFoundException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

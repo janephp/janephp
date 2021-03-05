@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class GitGetRefNotFoundException extends \RuntimeException implements ClientException
+class GitGetRefNotFoundException extends NotFoundException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

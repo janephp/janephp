@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Exception;
 
-class LiveStreamSearchBadRequestException extends \RuntimeException implements ClientException
+class LiveStreamSearchBadRequestException extends BadRequestException
 {
     private $pictureparkValidationException;
     public function __construct(\PicturePark\API\Model\PictureparkValidationException $pictureparkValidationException)

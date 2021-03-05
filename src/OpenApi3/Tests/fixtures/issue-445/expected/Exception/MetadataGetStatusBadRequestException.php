@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Exception;
 
-class MetadataGetStatusBadRequestException extends \RuntimeException implements ClientException
+class MetadataGetStatusBadRequestException extends BadRequestException
 {
     private $pictureparkValidationException;
     public function __construct(\PicturePark\API\Model\PictureparkValidationException $pictureparkValidationException)

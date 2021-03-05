@@ -2,10 +2,10 @@
 
 namespace Github\Exception;
 
-class ReposCheckCollaboratorNotFoundException extends \RuntimeException implements ClientException
+class ReposCheckCollaboratorNotFoundException extends NotFoundException
 {
     public function __construct()
     {
-        parent::__construct('Response if user is not a collaborator', 404);
+        parent::__construct('Response if user is not a collaborator');
     }
 }

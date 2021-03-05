@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class UsersAddEmailForAuthenticatedForbiddenException extends \RuntimeException implements ClientException
+class UsersAddEmailForAuthenticatedForbiddenException extends ForbiddenException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

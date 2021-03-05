@@ -2,10 +2,10 @@
 
 namespace CreditSafe\API\Exception;
 
-class RunDecisionTreeForbiddenException extends \RuntimeException implements ClientException
+class RunDecisionTreeForbiddenException extends ForbiddenException
 {
     public function __construct()
     {
-        parent::__construct('', 403);
+        parent::__construct('');
     }
 }

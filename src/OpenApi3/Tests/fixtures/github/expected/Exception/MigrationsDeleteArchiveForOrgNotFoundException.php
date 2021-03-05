@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class MigrationsDeleteArchiveForOrgNotFoundException extends \RuntimeException implements ClientException
+class MigrationsDeleteArchiveForOrgNotFoundException extends NotFoundException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

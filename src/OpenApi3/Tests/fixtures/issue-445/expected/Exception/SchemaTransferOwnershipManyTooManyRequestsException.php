@@ -2,10 +2,10 @@
 
 namespace PicturePark\API\Exception;
 
-class SchemaTransferOwnershipManyTooManyRequestsException extends \RuntimeException implements ClientException
+class SchemaTransferOwnershipManyTooManyRequestsException extends TooManyRequestsException
 {
     public function __construct()
     {
-        parent::__construct('Too many requests', 429);
+        parent::__construct('Too many requests');
     }
 }

@@ -2,10 +2,10 @@
 
 namespace PicturePark\API\Exception;
 
-class ShareGetUnauthorizedException extends \RuntimeException implements ClientException
+class ShareGetUnauthorizedException extends UnauthorizedException
 {
     public function __construct()
     {
-        parent::__construct('Unauthorized', 401);
+        parent::__construct('Unauthorized');
     }
 }

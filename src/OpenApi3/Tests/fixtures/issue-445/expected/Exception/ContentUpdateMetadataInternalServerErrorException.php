@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Exception;
 
-class ContentUpdateMetadataInternalServerErrorException extends \RuntimeException implements ServerException
+class ContentUpdateMetadataInternalServerErrorException extends InternalServerErrorException
 {
     private $pictureparkException;
     public function __construct(\PicturePark\API\Model\PictureparkException $pictureparkException)

@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Exception;
 
-class SchemaTransferImportNotFoundException extends \RuntimeException implements ClientException
+class SchemaTransferImportNotFoundException extends NotFoundException
 {
     private $pictureparkNotFoundException;
     public function __construct(\PicturePark\API\Model\PictureparkNotFoundException $pictureparkNotFoundException)

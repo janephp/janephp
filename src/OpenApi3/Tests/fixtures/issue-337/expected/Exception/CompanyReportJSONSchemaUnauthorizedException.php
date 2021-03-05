@@ -2,10 +2,10 @@
 
 namespace CreditSafe\API\Exception;
 
-class CompanyReportJSONSchemaUnauthorizedException extends \RuntimeException implements ClientException
+class CompanyReportJSONSchemaUnauthorizedException extends UnauthorizedException
 {
     public function __construct()
     {
-        parent::__construct('', 401);
+        parent::__construct('');
     }
 }

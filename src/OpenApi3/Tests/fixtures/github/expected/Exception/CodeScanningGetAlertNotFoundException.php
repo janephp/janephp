@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class CodeScanningGetAlertNotFoundException extends \RuntimeException implements ClientException
+class CodeScanningGetAlertNotFoundException extends NotFoundException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

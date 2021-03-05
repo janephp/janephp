@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class ProjectsGetColumnNotFoundException extends \RuntimeException implements ClientException
+class ProjectsGetColumnNotFoundException extends NotFoundException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

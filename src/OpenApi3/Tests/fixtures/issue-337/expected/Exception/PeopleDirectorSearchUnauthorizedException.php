@@ -2,10 +2,10 @@
 
 namespace CreditSafe\API\Exception;
 
-class PeopleDirectorSearchUnauthorizedException extends \RuntimeException implements ClientException
+class PeopleDirectorSearchUnauthorizedException extends UnauthorizedException
 {
     public function __construct()
     {
-        parent::__construct('', 401);
+        parent::__construct('');
     }
 }

@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class UsersListFollowedByAuthenticatedForbiddenException extends \RuntimeException implements ClientException
+class UsersListFollowedByAuthenticatedForbiddenException extends ForbiddenException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

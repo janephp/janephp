@@ -2,10 +2,10 @@
 
 namespace Github\Exception;
 
-class TeamsRemoveMemberLegacyNotFoundException extends \RuntimeException implements ClientException
+class TeamsRemoveMemberLegacyNotFoundException extends NotFoundException
 {
     public function __construct()
     {
-        parent::__construct('Response if team synchronization is setup', 404);
+        parent::__construct('Response if team synchronization is setup');
     }
 }

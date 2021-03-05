@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class AppsSuspendInstallationNotFoundException extends \RuntimeException implements ClientException
+class AppsSuspendInstallationNotFoundException extends NotFoundException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

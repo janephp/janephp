@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class AppsListAccountsForPlanStubbedUnauthorizedException extends \RuntimeException implements ClientException
+class AppsListAccountsForPlanStubbedUnauthorizedException extends UnauthorizedException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

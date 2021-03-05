@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Exception;
 
-class ShareCreateConflictException extends \RuntimeException implements ClientException
+class ShareCreateConflictException extends ConflictException
 {
     private $pictureparkConflictException;
     public function __construct(\PicturePark\API\Model\PictureparkConflictException $pictureparkConflictException)

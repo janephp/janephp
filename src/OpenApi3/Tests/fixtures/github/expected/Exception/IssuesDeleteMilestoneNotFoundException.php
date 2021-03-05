@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class IssuesDeleteMilestoneNotFoundException extends \RuntimeException implements ClientException
+class IssuesDeleteMilestoneNotFoundException extends NotFoundException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

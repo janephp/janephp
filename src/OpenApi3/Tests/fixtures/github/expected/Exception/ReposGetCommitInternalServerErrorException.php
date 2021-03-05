@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class ReposGetCommitInternalServerErrorException extends \RuntimeException implements ServerException
+class ReposGetCommitInternalServerErrorException extends InternalServerErrorException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class ReposUpdateInformationAboutPagesSiteUnprocessableEntityException extends \RuntimeException implements ClientException
+class ReposUpdateInformationAboutPagesSiteUnprocessableEntityException extends UnprocessableEntityException
 {
     private $validationError;
     public function __construct(\Github\Model\ValidationError $validationError)

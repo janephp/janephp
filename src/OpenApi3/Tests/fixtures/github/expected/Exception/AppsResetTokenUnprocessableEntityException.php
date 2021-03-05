@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class AppsResetTokenUnprocessableEntityException extends \RuntimeException implements ClientException
+class AppsResetTokenUnprocessableEntityException extends UnprocessableEntityException
 {
     private $validationError;
     public function __construct(\Github\Model\ValidationError $validationError)

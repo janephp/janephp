@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Exception;
 
-class ListItemDeleteNotFoundException extends \RuntimeException implements ClientException
+class ListItemDeleteNotFoundException extends NotFoundException
 {
     private $pictureparkNotFoundException;
     public function __construct(\PicturePark\API\Model\PictureparkNotFoundException $pictureparkNotFoundException)

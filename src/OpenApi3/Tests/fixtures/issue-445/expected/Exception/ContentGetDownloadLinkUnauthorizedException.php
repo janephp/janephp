@@ -2,10 +2,10 @@
 
 namespace PicturePark\API\Exception;
 
-class ContentGetDownloadLinkUnauthorizedException extends \RuntimeException implements ClientException
+class ContentGetDownloadLinkUnauthorizedException extends UnauthorizedException
 {
     public function __construct()
     {
-        parent::__construct('Unauthorized', 401);
+        parent::__construct('Unauthorized');
     }
 }

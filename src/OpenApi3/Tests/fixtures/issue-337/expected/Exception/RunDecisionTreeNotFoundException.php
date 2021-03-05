@@ -2,10 +2,10 @@
 
 namespace CreditSafe\API\Exception;
 
-class RunDecisionTreeNotFoundException extends \RuntimeException implements ClientException
+class RunDecisionTreeNotFoundException extends NotFoundException
 {
     public function __construct()
     {
-        parent::__construct('', 404);
+        parent::__construct('');
     }
 }

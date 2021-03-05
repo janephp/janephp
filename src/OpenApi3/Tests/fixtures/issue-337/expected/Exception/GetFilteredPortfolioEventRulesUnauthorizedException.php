@@ -2,10 +2,10 @@
 
 namespace CreditSafe\API\Exception;
 
-class GetFilteredPortfolioEventRulesUnauthorizedException extends \RuntimeException implements ClientException
+class GetFilteredPortfolioEventRulesUnauthorizedException extends UnauthorizedException
 {
     public function __construct()
     {
-        parent::__construct('', 401);
+        parent::__construct('');
     }
 }

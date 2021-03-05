@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class UsersDeleteEmailForAuthenticatedUnprocessableEntityException extends \RuntimeException implements ClientException
+class UsersDeleteEmailForAuthenticatedUnprocessableEntityException extends UnprocessableEntityException
 {
     private $validationError;
     public function __construct(\Github\Model\ValidationError $validationError)

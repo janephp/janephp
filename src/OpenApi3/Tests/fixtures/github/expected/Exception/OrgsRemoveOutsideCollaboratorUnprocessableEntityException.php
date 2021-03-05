@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class OrgsRemoveOutsideCollaboratorUnprocessableEntityException extends \RuntimeException implements ClientException
+class OrgsRemoveOutsideCollaboratorUnprocessableEntityException extends UnprocessableEntityException
 {
     private $orgsOrgOutsideCollaboratorsUsernameDeleteResponse422;
     public function __construct(\Github\Model\OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422 $orgsOrgOutsideCollaboratorsUsernameDeleteResponse422)

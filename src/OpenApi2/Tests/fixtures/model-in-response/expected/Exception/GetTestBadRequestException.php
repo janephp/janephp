@@ -2,7 +2,7 @@
 
 namespace Jane\OpenApi2\Tests\Expected\Exception;
 
-class GetTestBadRequestException extends \RuntimeException implements ClientException
+class GetTestBadRequestException extends BadRequestException
 {
     private $error;
     public function __construct(\Jane\OpenApi2\Tests\Expected\Model\Error $error)

@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class TeamsAddOrUpdateMembershipForUserLegacyNotFoundException extends \RuntimeException implements ClientException
+class TeamsAddOrUpdateMembershipForUserLegacyNotFoundException extends NotFoundException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

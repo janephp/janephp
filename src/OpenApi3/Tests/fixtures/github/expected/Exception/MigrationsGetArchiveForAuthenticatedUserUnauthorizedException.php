@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class MigrationsGetArchiveForAuthenticatedUserUnauthorizedException extends \RuntimeException implements ClientException
+class MigrationsGetArchiveForAuthenticatedUserUnauthorizedException extends UnauthorizedException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

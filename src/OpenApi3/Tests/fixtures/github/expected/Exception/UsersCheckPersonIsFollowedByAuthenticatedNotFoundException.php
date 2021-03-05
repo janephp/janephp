@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class UsersCheckPersonIsFollowedByAuthenticatedNotFoundException extends \RuntimeException implements ClientException
+class UsersCheckPersonIsFollowedByAuthenticatedNotFoundException extends NotFoundException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

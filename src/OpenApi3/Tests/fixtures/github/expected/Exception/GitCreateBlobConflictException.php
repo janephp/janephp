@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class GitCreateBlobConflictException extends \RuntimeException implements ClientException
+class GitCreateBlobConflictException extends ConflictException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

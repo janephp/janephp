@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Exception;
 
-class XmpMappingGetManyBadRequestException extends \RuntimeException implements ClientException
+class XmpMappingGetManyBadRequestException extends BadRequestException
 {
     private $requestSizeLimitExceededException;
     public function __construct(\PicturePark\API\Model\RequestSizeLimitExceededException $requestSizeLimitExceededException)

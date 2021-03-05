@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Exception;
 
-class ListItemRestoreBadRequestException extends \RuntimeException implements ClientException
+class ListItemRestoreBadRequestException extends BadRequestException
 {
     private $pictureparkValidationException;
     public function __construct(\PicturePark\API\Model\PictureparkValidationException $pictureparkValidationException)

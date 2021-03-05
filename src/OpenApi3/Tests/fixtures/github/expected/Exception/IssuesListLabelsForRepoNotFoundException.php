@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class IssuesListLabelsForRepoNotFoundException extends \RuntimeException implements ClientException
+class IssuesListLabelsForRepoNotFoundException extends NotFoundException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

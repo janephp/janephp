@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class OauthAuthorizationsCreateAuthorizationUnauthorizedException extends \RuntimeException implements ClientException
+class OauthAuthorizationsCreateAuthorizationUnauthorizedException extends UnauthorizedException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

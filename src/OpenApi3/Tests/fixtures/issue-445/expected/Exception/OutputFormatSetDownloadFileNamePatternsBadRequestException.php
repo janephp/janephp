@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Exception;
 
-class OutputFormatSetDownloadFileNamePatternsBadRequestException extends \RuntimeException implements ClientException
+class OutputFormatSetDownloadFileNamePatternsBadRequestException extends BadRequestException
 {
     private $pictureparkValidationException;
     public function __construct(\PicturePark\API\Model\PictureparkValidationException $pictureparkValidationException)

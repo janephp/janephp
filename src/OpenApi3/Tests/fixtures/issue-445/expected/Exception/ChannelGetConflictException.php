@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Exception;
 
-class ChannelGetConflictException extends \RuntimeException implements ClientException
+class ChannelGetConflictException extends ConflictException
 {
     private $pictureparkConflictException;
     public function __construct(\PicturePark\API\Model\PictureparkConflictException $pictureparkConflictException)

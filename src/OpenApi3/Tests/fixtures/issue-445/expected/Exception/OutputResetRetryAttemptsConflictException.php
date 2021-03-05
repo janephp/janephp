@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Exception;
 
-class OutputResetRetryAttemptsConflictException extends \RuntimeException implements ClientException
+class OutputResetRetryAttemptsConflictException extends ConflictException
 {
     private $pictureparkConflictException;
     public function __construct(\PicturePark\API\Model\PictureparkConflictException $pictureparkConflictException)

@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Exception;
 
-class OutputFormatSetXmpWritebackStateBadRequestException extends \RuntimeException implements ClientException
+class OutputFormatSetXmpWritebackStateBadRequestException extends BadRequestException
 {
     private $pictureparkValidationException;
     public function __construct(\PicturePark\API\Model\PictureparkValidationException $pictureparkValidationException)

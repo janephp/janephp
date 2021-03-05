@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class TeamsListIdpGroupsForLegacyNotFoundException extends \RuntimeException implements ClientException
+class TeamsListIdpGroupsForLegacyNotFoundException extends NotFoundException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class ReposGetParticipationStatsNotFoundException extends \RuntimeException implements ClientException
+class ReposGetParticipationStatsNotFoundException extends NotFoundException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

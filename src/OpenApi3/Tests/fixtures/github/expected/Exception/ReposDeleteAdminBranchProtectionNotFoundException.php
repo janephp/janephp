@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class ReposDeleteAdminBranchProtectionNotFoundException extends \RuntimeException implements ClientException
+class ReposDeleteAdminBranchProtectionNotFoundException extends NotFoundException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

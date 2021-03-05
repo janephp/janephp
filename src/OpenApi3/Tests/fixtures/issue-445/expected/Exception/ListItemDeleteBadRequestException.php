@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Exception;
 
-class ListItemDeleteBadRequestException extends \RuntimeException implements ClientException
+class ListItemDeleteBadRequestException extends BadRequestException
 {
     private $pictureparkValidationException;
     public function __construct(\PicturePark\API\Model\PictureparkValidationException $pictureparkValidationException)

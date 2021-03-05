@@ -2,10 +2,10 @@
 
 namespace PicturePark\API\Exception;
 
-class ContentRestoreMethodNotAllowedException extends \RuntimeException implements ClientException
+class ContentRestoreMethodNotAllowedException extends MethodNotAllowedException
 {
     public function __construct()
     {
-        parent::__construct('Method not allowed', 405);
+        parent::__construct('Method not allowed');
     }
 }

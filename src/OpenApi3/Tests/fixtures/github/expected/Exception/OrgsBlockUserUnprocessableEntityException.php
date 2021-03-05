@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class OrgsBlockUserUnprocessableEntityException extends \RuntimeException implements ClientException
+class OrgsBlockUserUnprocessableEntityException extends UnprocessableEntityException
 {
     private $validationError;
     public function __construct(\Github\Model\ValidationError $validationError)

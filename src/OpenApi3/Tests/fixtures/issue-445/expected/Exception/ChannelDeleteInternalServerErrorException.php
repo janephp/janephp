@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Exception;
 
-class ChannelDeleteInternalServerErrorException extends \RuntimeException implements ServerException
+class ChannelDeleteInternalServerErrorException extends InternalServerErrorException
 {
     private $pictureparkException;
     public function __construct(\PicturePark\API\Model\PictureparkException $pictureparkException)

@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class ProjectsListCollaboratorsNotFoundException extends \RuntimeException implements ClientException
+class ProjectsListCollaboratorsNotFoundException extends NotFoundException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

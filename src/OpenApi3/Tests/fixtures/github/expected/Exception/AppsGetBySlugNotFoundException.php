@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class AppsGetBySlugNotFoundException extends \RuntimeException implements ClientException
+class AppsGetBySlugNotFoundException extends NotFoundException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class UsersCreatePublicSshKeyForAuthenticatedUnprocessableEntityException extends \RuntimeException implements ClientException
+class UsersCreatePublicSshKeyForAuthenticatedUnprocessableEntityException extends UnprocessableEntityException
 {
     private $validationError;
     public function __construct(\Github\Model\ValidationError $validationError)

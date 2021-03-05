@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Exception;
 
-class BusinessRuleSearchTracesNotFoundException extends \RuntimeException implements ClientException
+class BusinessRuleSearchTracesNotFoundException extends NotFoundException
 {
     private $pictureparkNotFoundException;
     public function __construct(\PicturePark\API\Model\PictureparkNotFoundException $pictureparkNotFoundException)

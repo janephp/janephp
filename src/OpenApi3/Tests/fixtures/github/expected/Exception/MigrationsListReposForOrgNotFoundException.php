@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class MigrationsListReposForOrgNotFoundException extends \RuntimeException implements ClientException
+class MigrationsListReposForOrgNotFoundException extends NotFoundException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

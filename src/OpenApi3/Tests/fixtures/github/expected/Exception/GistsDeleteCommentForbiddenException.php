@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class GistsDeleteCommentForbiddenException extends \RuntimeException implements ClientException
+class GistsDeleteCommentForbiddenException extends ForbiddenException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

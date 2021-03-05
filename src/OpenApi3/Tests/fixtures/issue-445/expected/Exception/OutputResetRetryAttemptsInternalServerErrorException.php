@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Exception;
 
-class OutputResetRetryAttemptsInternalServerErrorException extends \RuntimeException implements ServerException
+class OutputResetRetryAttemptsInternalServerErrorException extends InternalServerErrorException
 {
     private $pictureparkException;
     public function __construct(\PicturePark\API\Model\PictureparkException $pictureparkException)

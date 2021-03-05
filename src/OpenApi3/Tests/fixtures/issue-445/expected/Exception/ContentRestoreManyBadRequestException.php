@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Exception;
 
-class ContentRestoreManyBadRequestException extends \RuntimeException implements ClientException
+class ContentRestoreManyBadRequestException extends BadRequestException
 {
     private $pictureparkValidationException;
     public function __construct(\PicturePark\API\Model\PictureparkValidationException $pictureparkValidationException)

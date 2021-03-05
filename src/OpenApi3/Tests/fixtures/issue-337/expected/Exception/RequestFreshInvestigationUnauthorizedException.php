@@ -2,10 +2,10 @@
 
 namespace CreditSafe\API\Exception;
 
-class RequestFreshInvestigationUnauthorizedException extends \RuntimeException implements ClientException
+class RequestFreshInvestigationUnauthorizedException extends UnauthorizedException
 {
     public function __construct()
     {
-        parent::__construct('', 401);
+        parent::__construct('');
     }
 }

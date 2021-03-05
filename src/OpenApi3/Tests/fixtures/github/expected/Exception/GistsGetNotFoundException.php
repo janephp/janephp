@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class GistsGetNotFoundException extends \RuntimeException implements ClientException
+class GistsGetNotFoundException extends NotFoundException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

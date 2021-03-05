@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Exception;
 
-class OutputFormatSetDownloadFileNamePatternsManyConflictException extends \RuntimeException implements ClientException
+class OutputFormatSetDownloadFileNamePatternsManyConflictException extends ConflictException
 {
     private $pictureparkConflictException;
     public function __construct(\PicturePark\API\Model\PictureparkConflictException $pictureparkConflictException)

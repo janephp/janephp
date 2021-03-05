@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Exception;
 
-class TransferDeleteFilesInternalServerErrorException extends \RuntimeException implements ServerException
+class TransferDeleteFilesInternalServerErrorException extends InternalServerErrorException
 {
     private $pictureparkException;
     public function __construct(\PicturePark\API\Model\PictureparkException $pictureparkException)

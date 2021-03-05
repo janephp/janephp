@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Exception;
 
-class SchemaCreateNotFoundException extends \RuntimeException implements ClientException
+class SchemaCreateNotFoundException extends NotFoundException
 {
     private $pictureparkNotFoundException;
     public function __construct(\PicturePark\API\Model\PictureparkNotFoundException $pictureparkNotFoundException)

@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class MigrationsGetStatusForAuthenticatedUserNotFoundException extends \RuntimeException implements ClientException
+class MigrationsGetStatusForAuthenticatedUserNotFoundException extends NotFoundException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

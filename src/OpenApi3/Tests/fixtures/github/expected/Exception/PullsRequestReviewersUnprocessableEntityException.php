@@ -2,10 +2,10 @@
 
 namespace Github\Exception;
 
-class PullsRequestReviewersUnprocessableEntityException extends \RuntimeException implements ClientException
+class PullsRequestReviewersUnprocessableEntityException extends UnprocessableEntityException
 {
     public function __construct()
     {
-        parent::__construct('Response if user is not a collaborator', 422);
+        parent::__construct('Response if user is not a collaborator');
     }
 }

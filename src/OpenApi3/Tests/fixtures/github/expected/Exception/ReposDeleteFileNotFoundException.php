@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class ReposDeleteFileNotFoundException extends \RuntimeException implements ClientException
+class ReposDeleteFileNotFoundException extends NotFoundException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class UsersUnfollowNotFoundException extends \RuntimeException implements ClientException
+class UsersUnfollowNotFoundException extends NotFoundException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

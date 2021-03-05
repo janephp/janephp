@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class IssuesListAssigneesNotFoundException extends \RuntimeException implements ClientException
+class IssuesListAssigneesNotFoundException extends NotFoundException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

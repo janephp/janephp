@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class OauthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintUnprocessableEntityException extends \RuntimeException implements ClientException
+class OauthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintUnprocessableEntityException extends UnprocessableEntityException
 {
     private $validationError;
     public function __construct(\Github\Model\ValidationError $validationError)

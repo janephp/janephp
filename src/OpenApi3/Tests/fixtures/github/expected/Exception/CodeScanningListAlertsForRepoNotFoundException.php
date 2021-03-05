@@ -2,10 +2,10 @@
 
 namespace Github\Exception;
 
-class CodeScanningListAlertsForRepoNotFoundException extends \RuntimeException implements ClientException
+class CodeScanningListAlertsForRepoNotFoundException extends NotFoundException
 {
     public function __construct()
     {
-        parent::__construct('Response if the ref doesn\'t match an existing ref', 404);
+        parent::__construct('Response if the ref doesn\'t match an existing ref');
     }
 }

@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class MigrationsGetStatusForOrgNotFoundException extends \RuntimeException implements ClientException
+class MigrationsGetStatusForOrgNotFoundException extends NotFoundException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

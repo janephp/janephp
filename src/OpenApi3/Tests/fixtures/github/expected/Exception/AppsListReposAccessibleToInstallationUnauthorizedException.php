@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class AppsListReposAccessibleToInstallationUnauthorizedException extends \RuntimeException implements ClientException
+class AppsListReposAccessibleToInstallationUnauthorizedException extends UnauthorizedException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

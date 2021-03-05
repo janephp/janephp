@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Exception;
 
-class OutputFormatRenderFormatPreviewInternalServerErrorException extends \RuntimeException implements ServerException
+class OutputFormatRenderFormatPreviewInternalServerErrorException extends InternalServerErrorException
 {
     private $pictureparkException;
     public function __construct(\PicturePark\API\Model\PictureparkException $pictureparkException)

@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class PullsMergeMethodNotAllowedException extends \RuntimeException implements ClientException
+class PullsMergeMethodNotAllowedException extends MethodNotAllowedException
 {
     private $reposOwnerRepoPullsPullNumberMergePutResponse405;
     public function __construct(\Github\Model\ReposOwnerRepoPullsPullNumberMergePutResponse405 $reposOwnerRepoPullsPullNumberMergePutResponse405)

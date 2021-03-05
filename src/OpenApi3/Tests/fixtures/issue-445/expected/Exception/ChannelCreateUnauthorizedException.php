@@ -2,10 +2,10 @@
 
 namespace PicturePark\API\Exception;
 
-class ChannelCreateUnauthorizedException extends \RuntimeException implements ClientException
+class ChannelCreateUnauthorizedException extends UnauthorizedException
 {
     public function __construct()
     {
-        parent::__construct('Unauthorized', 401);
+        parent::__construct('Unauthorized');
     }
 }

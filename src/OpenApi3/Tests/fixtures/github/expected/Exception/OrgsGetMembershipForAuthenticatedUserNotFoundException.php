@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class OrgsGetMembershipForAuthenticatedUserNotFoundException extends \RuntimeException implements ClientException
+class OrgsGetMembershipForAuthenticatedUserNotFoundException extends NotFoundException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

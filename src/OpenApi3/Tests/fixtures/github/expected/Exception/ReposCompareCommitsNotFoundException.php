@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class ReposCompareCommitsNotFoundException extends \RuntimeException implements ClientException
+class ReposCompareCommitsNotFoundException extends NotFoundException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

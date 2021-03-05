@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class GistsListStarredUnauthorizedException extends \RuntimeException implements ClientException
+class GistsListStarredUnauthorizedException extends UnauthorizedException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

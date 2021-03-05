@@ -2,10 +2,10 @@
 
 namespace CreditSafe\API\Exception;
 
-class ImageDocumentCategoryTypesNotFoundException extends \RuntimeException implements ClientException
+class ImageDocumentCategoryTypesNotFoundException extends NotFoundException
 {
     public function __construct()
     {
-        parent::__construct('', 404);
+        parent::__construct('');
     }
 }

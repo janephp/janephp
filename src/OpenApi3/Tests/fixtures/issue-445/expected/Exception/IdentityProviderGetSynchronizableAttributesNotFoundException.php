@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Exception;
 
-class IdentityProviderGetSynchronizableAttributesNotFoundException extends \RuntimeException implements ClientException
+class IdentityProviderGetSynchronizableAttributesNotFoundException extends NotFoundException
 {
     private $pictureparkNotFoundException;
     public function __construct(\PicturePark\API\Model\PictureparkNotFoundException $pictureparkNotFoundException)

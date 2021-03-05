@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class ScimUpdateAttributeForUserTooManyRequestsException extends \RuntimeException implements ClientException
+class ScimUpdateAttributeForUserTooManyRequestsException extends TooManyRequestsException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class MigrationsSetLfsPreferenceUnprocessableEntityException extends \RuntimeException implements ClientException
+class MigrationsSetLfsPreferenceUnprocessableEntityException extends UnprocessableEntityException
 {
     private $validationError;
     public function __construct(\Github\Model\ValidationError $validationError)

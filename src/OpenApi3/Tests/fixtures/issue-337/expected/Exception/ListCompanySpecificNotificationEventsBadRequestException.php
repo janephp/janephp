@@ -2,10 +2,10 @@
 
 namespace CreditSafe\API\Exception;
 
-class ListCompanySpecificNotificationEventsBadRequestException extends \RuntimeException implements ClientException
+class ListCompanySpecificNotificationEventsBadRequestException extends BadRequestException
 {
     public function __construct()
     {
-        parent::__construct('', 400);
+        parent::__construct('');
     }
 }

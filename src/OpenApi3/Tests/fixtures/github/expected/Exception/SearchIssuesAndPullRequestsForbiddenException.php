@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class SearchIssuesAndPullRequestsForbiddenException extends \RuntimeException implements ClientException
+class SearchIssuesAndPullRequestsForbiddenException extends ForbiddenException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

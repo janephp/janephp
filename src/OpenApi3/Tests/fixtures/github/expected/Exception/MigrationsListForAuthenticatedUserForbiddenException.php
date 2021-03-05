@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class MigrationsListForAuthenticatedUserForbiddenException extends \RuntimeException implements ClientException
+class MigrationsListForAuthenticatedUserForbiddenException extends ForbiddenException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

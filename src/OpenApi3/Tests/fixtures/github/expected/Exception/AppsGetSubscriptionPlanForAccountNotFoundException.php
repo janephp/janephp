@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class AppsGetSubscriptionPlanForAccountNotFoundException extends \RuntimeException implements ClientException
+class AppsGetSubscriptionPlanForAccountNotFoundException extends NotFoundException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class OrgsListInvitationTeamsNotFoundException extends \RuntimeException implements ClientException
+class OrgsListInvitationTeamsNotFoundException extends NotFoundException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

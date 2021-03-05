@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class ProjectsDeleteForbiddenException extends \RuntimeException implements ClientException
+class ProjectsDeleteForbiddenException extends ForbiddenException
 {
     private $projectsProjectIdDeleteResponse403;
     public function __construct(\Github\Model\ProjectsProjectIdDeleteResponse403 $projectsProjectIdDeleteResponse403)

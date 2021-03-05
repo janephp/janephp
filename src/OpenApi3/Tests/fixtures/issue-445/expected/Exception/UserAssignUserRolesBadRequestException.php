@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Exception;
 
-class UserAssignUserRolesBadRequestException extends \RuntimeException implements ClientException
+class UserAssignUserRolesBadRequestException extends BadRequestException
 {
     private $pictureparkValidationException;
     public function __construct(\PicturePark\API\Model\PictureparkValidationException $pictureparkValidationException)

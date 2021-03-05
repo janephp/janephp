@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class AppsCreateContentAttachmentGoneException extends \RuntimeException implements ClientException
+class AppsCreateContentAttachmentGoneException extends GoneException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

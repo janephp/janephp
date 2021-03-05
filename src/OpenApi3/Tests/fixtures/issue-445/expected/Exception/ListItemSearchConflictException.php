@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Exception;
 
-class ListItemSearchConflictException extends \RuntimeException implements ClientException
+class ListItemSearchConflictException extends ConflictException
 {
     private $pictureparkConflictException;
     public function __construct(\PicturePark\API\Model\PictureparkConflictException $pictureparkConflictException)

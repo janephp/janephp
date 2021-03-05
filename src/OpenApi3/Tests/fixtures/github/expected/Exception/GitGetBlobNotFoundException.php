@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class GitGetBlobNotFoundException extends \RuntimeException implements ClientException
+class GitGetBlobNotFoundException extends NotFoundException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

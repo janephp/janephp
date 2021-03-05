@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class AppsCreateContentAttachmentUnprocessableEntityException extends \RuntimeException implements ClientException
+class AppsCreateContentAttachmentUnprocessableEntityException extends UnprocessableEntityException
 {
     private $validationError;
     public function __construct(\Github\Model\ValidationError $validationError)

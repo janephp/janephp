@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class ReposCreateDeploymentConflictException extends \RuntimeException implements ClientException
+class ReposCreateDeploymentConflictException extends ConflictException
 {
     private $reposOwnerRepoDeploymentsPostResponse409;
     public function __construct(\Github\Model\ReposOwnerRepoDeploymentsPostResponse409 $reposOwnerRepoDeploymentsPostResponse409)

@@ -2,10 +2,10 @@
 
 namespace PicturePark\API\Exception;
 
-class OutputFormatSetXmpWritebackState2UnauthorizedException extends \RuntimeException implements ClientException
+class OutputFormatSetXmpWritebackState2UnauthorizedException extends UnauthorizedException
 {
     public function __construct()
     {
-        parent::__construct('Unauthorized', 401);
+        parent::__construct('Unauthorized');
     }
 }

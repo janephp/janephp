@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class ScimProvisionAndInviteUserForbiddenException extends \RuntimeException implements ClientException
+class ScimProvisionAndInviteUserForbiddenException extends ForbiddenException
 {
     private $scimError;
     public function __construct(\Github\Model\ScimError $scimError)

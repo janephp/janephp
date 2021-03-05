@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class CodeScanningGetAlertServiceUnavailableException extends \RuntimeException implements ServerException
+class CodeScanningGetAlertServiceUnavailableException extends ServiceUnavailableException
 {
     private $responseServiceUnavailable;
     public function __construct(\Github\Model\ResponseServiceUnavailable $responseServiceUnavailable)

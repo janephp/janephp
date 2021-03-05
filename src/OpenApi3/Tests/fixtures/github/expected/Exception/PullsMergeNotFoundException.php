@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class PullsMergeNotFoundException extends \RuntimeException implements ClientException
+class PullsMergeNotFoundException extends NotFoundException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

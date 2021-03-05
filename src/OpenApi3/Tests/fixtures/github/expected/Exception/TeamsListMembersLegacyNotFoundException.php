@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class TeamsListMembersLegacyNotFoundException extends \RuntimeException implements ClientException
+class TeamsListMembersLegacyNotFoundException extends NotFoundException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

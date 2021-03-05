@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class MigrationsGetCommitAuthorsNotFoundException extends \RuntimeException implements ClientException
+class MigrationsGetCommitAuthorsNotFoundException extends NotFoundException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Exception;
 
-class UserRestoreNotFoundException extends \RuntimeException implements ClientException
+class UserRestoreNotFoundException extends NotFoundException
 {
     private $pictureparkNotFoundException;
     public function __construct(\PicturePark\API\Model\PictureparkNotFoundException $pictureparkNotFoundException)

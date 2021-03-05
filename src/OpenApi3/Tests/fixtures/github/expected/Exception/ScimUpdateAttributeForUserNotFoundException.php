@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class ScimUpdateAttributeForUserNotFoundException extends \RuntimeException implements ClientException
+class ScimUpdateAttributeForUserNotFoundException extends NotFoundException
 {
     private $scimError;
     public function __construct(\Github\Model\ScimError $scimError)

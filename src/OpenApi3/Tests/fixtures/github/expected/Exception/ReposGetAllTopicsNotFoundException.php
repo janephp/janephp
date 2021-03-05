@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class ReposGetAllTopicsNotFoundException extends \RuntimeException implements ClientException
+class ReposGetAllTopicsNotFoundException extends NotFoundException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

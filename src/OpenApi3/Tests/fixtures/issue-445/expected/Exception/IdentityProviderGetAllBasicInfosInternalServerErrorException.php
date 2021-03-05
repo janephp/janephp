@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Exception;
 
-class IdentityProviderGetAllBasicInfosInternalServerErrorException extends \RuntimeException implements ServerException
+class IdentityProviderGetAllBasicInfosInternalServerErrorException extends InternalServerErrorException
 {
     private $pictureparkException;
     public function __construct(\PicturePark\API\Model\PictureparkException $pictureparkException)

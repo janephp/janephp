@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class IssuesListMilestonesNotFoundException extends \RuntimeException implements ClientException
+class IssuesListMilestonesNotFoundException extends NotFoundException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

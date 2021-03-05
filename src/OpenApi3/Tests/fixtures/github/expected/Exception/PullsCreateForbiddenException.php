@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class PullsCreateForbiddenException extends \RuntimeException implements ClientException
+class PullsCreateForbiddenException extends ForbiddenException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class UsersSetPrimaryEmailVisibilityForAuthenticatedNotFoundException extends \RuntimeException implements ClientException
+class UsersSetPrimaryEmailVisibilityForAuthenticatedNotFoundException extends NotFoundException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

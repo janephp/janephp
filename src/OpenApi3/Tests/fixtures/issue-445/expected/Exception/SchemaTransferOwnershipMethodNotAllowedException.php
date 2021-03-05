@@ -2,10 +2,10 @@
 
 namespace PicturePark\API\Exception;
 
-class SchemaTransferOwnershipMethodNotAllowedException extends \RuntimeException implements ClientException
+class SchemaTransferOwnershipMethodNotAllowedException extends MethodNotAllowedException
 {
     public function __construct()
     {
-        parent::__construct('Method not allowed', 405);
+        parent::__construct('Method not allowed');
     }
 }

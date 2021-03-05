@@ -2,10 +2,10 @@
 
 namespace PicturePark\API\Exception;
 
-class BusinessProcessGetTooManyRequestsException extends \RuntimeException implements ClientException
+class BusinessProcessGetTooManyRequestsException extends TooManyRequestsException
 {
     public function __construct()
     {
-        parent::__construct('Too many requests', 429);
+        parent::__construct('Too many requests');
     }
 }

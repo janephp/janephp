@@ -33,6 +33,7 @@ class ExceptionGenerator
         $schema = $context->getCurrentSchema();
         $this->createBaseExceptions($context);
 
+        $highLevelExceptionName = $this->createHighLevelException($context, $status);
         $exceptionName = $this->exceptionNaming->generateExceptionName($status, $functionName);
 
         if ($classGuess) {
@@ -47,10 +48,7 @@ class ExceptionGenerator
                 new Stmt\Class_(
                     new Name($exceptionName),
                     [
-                        'implements' => [
-                            new Name($status >= 500 ? 'ServerException' : 'ClientException'),
-                        ],
-                        'extends' => new Name('\\RuntimeException'),
+                        'extends' => new Name($highLevelExceptionName),
                         'stmts' => [
                             new Stmt\Property(Stmt\Class_::MODIFIER_PRIVATE, [
                                 new Stmt\PropertyProperty($propertyName),
@@ -98,17 +96,13 @@ class ExceptionGenerator
             new Stmt\Class_(
                 new Name($exceptionName),
                 [
-                    'implements' => [
-                        new Name($status >= 500 ? 'ServerException' : 'ClientException'),
-                    ],
-                    'extends' => new Name('\\RuntimeException'),
+                    'extends' => new Name($highLevelExceptionName),
                     'stmts' => [
                         new Stmt\ClassMethod('__construct', [
                             'type' => Stmt\Class_::MODIFIER_PUBLIC,
                             'stmts' => [
                                 new Node\Stmt\Expression(new Expr\StaticCall(new Name('parent'), '__construct', [
-                                    new Scalar\String_($description),
-                                    new Scalar\LNumber($status),
+                                    new Node\Arg(new Scalar\String_($description)),
                                 ])),
                             ],
                         ]),
@@ -128,10 +122,10 @@ class ExceptionGenerator
         $registry = $context->getRegistry();
 
         $unique = $schema->getRootName() . $schema->getDirectory();
-        if (\array_key_exists($unique, $this->intialized)) {
+        if (\array_key_exists($unique, $this->intialized) && $this->intialized[$unique]['base'] ?? false) {
             return;
         }
-        $this->intialized[$unique] = true;
+        $this->intialized[$unique]['base'] = true;
 
         $apiException = new Stmt\Namespace_(new Name($schema->getNamespace() . '\\Exception'), [
             new Stmt\Interface_(
@@ -200,5 +194,45 @@ class ExceptionGenerator
 
             $schema->addFile(new File($schema->getDirectory() . '/Exception/UnexpectedStatusCodeException.php', $unexpectedStatusCodeException, 'Exception'));
         }
+    }
+
+    private function createHighLevelException(Context $context, int $code): string
+    {
+        $schema = $context->getCurrentSchema();
+        $highLevelExceptionName = $this->exceptionNaming->generateExceptionName($code);
+        $unique = $schema->getRootName() . $schema->getDirectory();
+
+        if (\array_key_exists($unique, $this->intialized) && ($this->intialized[$unique] ?? false) && ($this->intialized[$unique][$code] ?? false)) {
+            return $highLevelExceptionName;
+        }
+        $this->intialized[$unique][$code] = true;
+
+        $highLevelException = new Stmt\Namespace_(new Name($schema->getNamespace() . '\\Exception'), [
+            new Stmt\Class_(
+                new Name($highLevelExceptionName),
+                [
+                    'extends' => new Name('\\RuntimeException'),
+                    'implements' => [new Name($code >= 500 ? 'ServerException' : 'ClientException')],
+                    'stmts' => [
+                        new Stmt\ClassMethod('__construct', [
+                            'type' => Stmt\Class_::MODIFIER_PUBLIC,
+                            'params' => [
+                                new Param(new Expr\Variable('message'), null, new Name('string')),
+                            ],
+                            'stmts' => [
+                                new Node\Stmt\Expression(new Expr\StaticCall(new Name('parent'), '__construct', [
+                                    new Node\Arg(new Expr\Variable('message')),
+                                    new Node\Arg(new Scalar\LNumber($code)),
+                                ])),
+                            ],
+                        ]),
+                    ],
+                ]
+            ),
+        ]);
+
+        $schema->addFile(new File(sprintf('%s/Exception/%s.php', $schema->getDirectory(), $highLevelExceptionName), $highLevelException, 'Exception'));
+
+        return $highLevelExceptionName;
     }
 }

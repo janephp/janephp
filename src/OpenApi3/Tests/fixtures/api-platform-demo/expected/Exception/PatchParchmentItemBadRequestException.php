@@ -2,10 +2,10 @@
 
 namespace ApiPlatform\Demo\Exception;
 
-class PatchParchmentItemBadRequestException extends \RuntimeException implements ClientException
+class PatchParchmentItemBadRequestException extends BadRequestException
 {
     public function __construct()
     {
-        parent::__construct('Invalid input', 400);
+        parent::__construct('Invalid input');
     }
 }

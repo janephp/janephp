@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class ProjectsUpdateCardForbiddenException extends \RuntimeException implements ClientException
+class ProjectsUpdateCardForbiddenException extends ForbiddenException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

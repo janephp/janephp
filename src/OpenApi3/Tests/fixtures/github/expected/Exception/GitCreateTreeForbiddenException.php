@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class GitCreateTreeForbiddenException extends \RuntimeException implements ClientException
+class GitCreateTreeForbiddenException extends ForbiddenException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

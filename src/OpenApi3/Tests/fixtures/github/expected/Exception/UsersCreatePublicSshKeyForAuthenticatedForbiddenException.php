@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class UsersCreatePublicSshKeyForAuthenticatedForbiddenException extends \RuntimeException implements ClientException
+class UsersCreatePublicSshKeyForAuthenticatedForbiddenException extends ForbiddenException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class ReactionsDeleteLegacyUnauthorizedException extends \RuntimeException implements ClientException
+class ReactionsDeleteLegacyUnauthorizedException extends UnauthorizedException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

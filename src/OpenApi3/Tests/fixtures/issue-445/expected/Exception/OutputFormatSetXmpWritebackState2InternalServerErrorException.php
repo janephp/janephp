@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Exception;
 
-class OutputFormatSetXmpWritebackState2InternalServerErrorException extends \RuntimeException implements ServerException
+class OutputFormatSetXmpWritebackState2InternalServerErrorException extends InternalServerErrorException
 {
     private $pictureparkException;
     public function __construct(\PicturePark\API\Model\PictureparkException $pictureparkException)

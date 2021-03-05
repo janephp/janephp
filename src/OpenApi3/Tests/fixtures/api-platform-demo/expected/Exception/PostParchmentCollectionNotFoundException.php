@@ -2,10 +2,10 @@
 
 namespace ApiPlatform\Demo\Exception;
 
-class PostParchmentCollectionNotFoundException extends \RuntimeException implements ClientException
+class PostParchmentCollectionNotFoundException extends NotFoundException
 {
     public function __construct()
     {
-        parent::__construct('Resource not found', 404);
+        parent::__construct('Resource not found');
     }
 }

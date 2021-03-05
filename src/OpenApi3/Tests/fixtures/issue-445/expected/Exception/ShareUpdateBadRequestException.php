@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Exception;
 
-class ShareUpdateBadRequestException extends \RuntimeException implements ClientException
+class ShareUpdateBadRequestException extends BadRequestException
 {
     private $pictureparkValidationException;
     public function __construct(\PicturePark\API\Model\PictureparkValidationException $pictureparkValidationException)

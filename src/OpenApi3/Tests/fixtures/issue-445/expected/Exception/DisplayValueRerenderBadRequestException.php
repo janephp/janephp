@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Exception;
 
-class DisplayValueRerenderBadRequestException extends \RuntimeException implements ClientException
+class DisplayValueRerenderBadRequestException extends BadRequestException
 {
     private $pictureparkValidationException;
     public function __construct(\PicturePark\API\Model\PictureparkValidationException $pictureparkValidationException)

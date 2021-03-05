@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class GitGetBlobForbiddenException extends \RuntimeException implements ClientException
+class GitGetBlobForbiddenException extends ForbiddenException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

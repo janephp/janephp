@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class OrgsListBlockedUsersUnsupportedMediaTypeException extends \RuntimeException implements ClientException
+class OrgsListBlockedUsersUnsupportedMediaTypeException extends UnsupportedMediaTypeException
 {
     private $responsePreviewHeaderMissing;
     public function __construct(\Github\Model\ResponsePreviewHeaderMissing $responsePreviewHeaderMissing)

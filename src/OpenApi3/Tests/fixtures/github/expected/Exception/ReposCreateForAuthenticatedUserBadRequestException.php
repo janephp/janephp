@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class ReposCreateForAuthenticatedUserBadRequestException extends \RuntimeException implements ClientException
+class ReposCreateForAuthenticatedUserBadRequestException extends BadRequestException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class ProjectsCreateCardServiceUnavailableException extends \RuntimeException implements ServerException
+class ProjectsCreateCardServiceUnavailableException extends ServiceUnavailableException
 {
     private $projectsColumnsColumnIdCardsPostResponse503;
     public function __construct(\Github\Model\ProjectsColumnsColumnIdCardsPostResponse503 $projectsColumnsColumnIdCardsPostResponse503)

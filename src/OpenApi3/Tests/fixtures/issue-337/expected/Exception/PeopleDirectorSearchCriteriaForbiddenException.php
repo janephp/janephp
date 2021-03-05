@@ -2,10 +2,10 @@
 
 namespace CreditSafe\API\Exception;
 
-class PeopleDirectorSearchCriteriaForbiddenException extends \RuntimeException implements ClientException
+class PeopleDirectorSearchCriteriaForbiddenException extends ForbiddenException
 {
     public function __construct()
     {
-        parent::__construct('', 403);
+        parent::__construct('');
     }
 }

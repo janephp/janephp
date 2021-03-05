@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Exception;
 
-class ShareRevokeNotFoundException extends \RuntimeException implements ClientException
+class ShareRevokeNotFoundException extends NotFoundException
 {
     private $pictureparkNotFoundException;
     public function __construct(\PicturePark\API\Model\PictureparkNotFoundException $pictureparkNotFoundException)

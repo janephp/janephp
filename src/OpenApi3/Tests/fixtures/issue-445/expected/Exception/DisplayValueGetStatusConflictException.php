@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Exception;
 
-class DisplayValueGetStatusConflictException extends \RuntimeException implements ClientException
+class DisplayValueGetStatusConflictException extends ConflictException
 {
     private $pictureparkConflictException;
     public function __construct(\PicturePark\API\Model\PictureparkConflictException $pictureparkConflictException)

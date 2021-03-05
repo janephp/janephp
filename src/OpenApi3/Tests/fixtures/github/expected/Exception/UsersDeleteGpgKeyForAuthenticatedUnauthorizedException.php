@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class UsersDeleteGpgKeyForAuthenticatedUnauthorizedException extends \RuntimeException implements ClientException
+class UsersDeleteGpgKeyForAuthenticatedUnauthorizedException extends UnauthorizedException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

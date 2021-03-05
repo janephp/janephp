@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class GistsCheckIsStarredForbiddenException extends \RuntimeException implements ClientException
+class GistsCheckIsStarredForbiddenException extends ForbiddenException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class ActivityGetThreadForbiddenException extends \RuntimeException implements ClientException
+class ActivityGetThreadForbiddenException extends ForbiddenException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)
