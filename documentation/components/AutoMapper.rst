@@ -145,6 +145,37 @@ This will use automatically the TransformerFactory.
 
 .. _`an example in the AutoMapper tests files`: https://github.com/janephp/janephp/tree/next/src/AutoMapper/Tests/Fixtures/Transformer
 
+Skip null values
+~~~~~~~~~~~~~~~~
+
+This context option allows us to ignore ``null`` values from source attributes. So if we use that option and our target
+object has a value, it will keep it.
+
+Here is a quick example::
+
+    class Input
+    {
+      public ?string $name = null;
+    }
+
+    class MyEntity
+    {
+      private string $name;
+      public function setName(string $name) {
+        $this->name = $name;
+      }
+      public function getName() {
+        return $this->name;
+      }
+    }
+
+    $myEntity = new MyEntity();
+    $myEntity->setName('foobar');
+    $input = new Input();
+
+    $autoMapper->map($input, $myEntity, ['skip_null_values' => true]);
+    echo $myEntity->getName(); // "foobar"
+
 Implementation
 --------------
 
