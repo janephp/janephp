@@ -23,6 +23,7 @@ class MapperContext
     public const DEPTH = 'depth';
     public const TARGET_TO_POPULATE = 'target_to_populate';
     public const CONSTRUCTOR_ARGUMENTS = 'constructor_arguments';
+    public const SKIP_NULL_VALUES = 'skip_null_values';
 
     private $context = [
         self::DEPTH => 0,
@@ -156,8 +157,12 @@ class MapperContext
     /**
      * Check whether an attribute is allowed to be mapped.
      */
-    public static function isAllowedAttribute(array $context, string $attribute): bool
+    public static function isAllowedAttribute(array $context, string $attribute, $value): bool
     {
+        if (($context[self::SKIP_NULL_VALUES] ?? false) && null === $value) {
+            return false;
+        }
+
         if (($context[self::IGNORED_ATTRIBUTES] ?? false) && \in_array($attribute, $context[self::IGNORED_ATTRIBUTES], true)) {
             return false;
         }
