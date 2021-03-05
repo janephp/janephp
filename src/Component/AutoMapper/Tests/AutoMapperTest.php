@@ -850,4 +850,15 @@ class AutoMapperTest extends AutoMapperBaseTest
         self::assertEquals($uuidV4->toRfc4122(), $newUser->getUuid()->toRfc4122());
         self::assertEquals('Grégoire Pineau', $newUser->name);
     }
+
+    public function testSkipNullValues(): void
+    {
+        $entity = new Fixtures\SkipNullValues\Entity();
+        $entity->setName('foobar');
+        $input = new Fixtures\SkipNullValues\Input();
+
+        /** @var Fixtures\SkipNullValues\Entity $entity */
+        $entity = $this->autoMapper->map($input, $entity, ['skip_null_values' => true]);
+        self::assertEquals('foobar', $entity->getName());
+    }
 }

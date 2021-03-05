@@ -142,7 +142,8 @@ final class Generator
                 continue;
             }
 
-            [$output, $propStatements] = $transformer->transform($propertyMapping->getReadAccessor()->getExpression($sourceInput), $result, $propertyMapping, $uniqueVariableScope);
+            $sourcePropertyAccessor = $propertyMapping->getReadAccessor()->getExpression($sourceInput);
+            [$output, $propStatements] = $transformer->transform($sourcePropertyAccessor, $result, $propertyMapping, $uniqueVariableScope);
             $writeExpression = $propertyMapping->getWriteMutator()->getExpression($result, $output, $transformer instanceof AssignedByReferenceTransformerInterface ? $transformer->assignByRef() : false);
 
             if (null === $writeExpression) {
@@ -189,6 +190,7 @@ final class Generator
                 $conditions[] = new Expr\StaticCall(new Name\FullyQualified(MapperContext::class), 'isAllowedAttribute', [
                     new Arg($contextVariable),
                     new Arg(new Scalar\String_($propertyMapping->getProperty())),
+                    new Arg($sourcePropertyAccessor),
                 ]);
             }
 
