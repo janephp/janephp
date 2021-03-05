@@ -2,10 +2,10 @@
 
 namespace Jane\OpenApi2\Tests\Expected\Exception;
 
-class TestNoTagInternalServerErrorException extends \RuntimeException implements ServerException
+class TestNoTagInternalServerErrorException extends InternalServerErrorException
 {
     public function __construct()
     {
-        parent::__construct('Internal server error on test exception', 500);
+        parent::__construct('Internal server error on test exception');
     }
 }

@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Exception;
 
-class TransferSearchFilesNotFoundException extends \RuntimeException implements ClientException
+class TransferSearchFilesNotFoundException extends NotFoundException
 {
     private $pictureparkNotFoundException;
     public function __construct(\PicturePark\API\Model\PictureparkNotFoundException $pictureparkNotFoundException)

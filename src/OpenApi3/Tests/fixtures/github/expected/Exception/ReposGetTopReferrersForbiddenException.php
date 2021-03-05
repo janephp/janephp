@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class ReposGetTopReferrersForbiddenException extends \RuntimeException implements ClientException
+class ReposGetTopReferrersForbiddenException extends ForbiddenException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

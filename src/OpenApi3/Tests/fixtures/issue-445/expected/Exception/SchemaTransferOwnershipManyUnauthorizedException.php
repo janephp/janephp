@@ -2,10 +2,10 @@
 
 namespace PicturePark\API\Exception;
 
-class SchemaTransferOwnershipManyUnauthorizedException extends \RuntimeException implements ClientException
+class SchemaTransferOwnershipManyUnauthorizedException extends UnauthorizedException
 {
     public function __construct()
     {
-        parent::__construct('Unauthorized', 401);
+        parent::__construct('Unauthorized');
     }
 }

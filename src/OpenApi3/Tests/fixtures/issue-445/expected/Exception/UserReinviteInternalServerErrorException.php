@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Exception;
 
-class UserReinviteInternalServerErrorException extends \RuntimeException implements ServerException
+class UserReinviteInternalServerErrorException extends InternalServerErrorException
 {
     private $pictureparkException;
     public function __construct(\PicturePark\API\Model\PictureparkException $pictureparkException)

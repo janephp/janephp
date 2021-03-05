@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Exception;
 
-class UserReviewBadRequestException extends \RuntimeException implements ClientException
+class UserReviewBadRequestException extends BadRequestException
 {
     private $pictureparkValidationException;
     public function __construct(\PicturePark\API\Model\PictureparkValidationException $pictureparkValidationException)

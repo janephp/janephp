@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Exception;
 
-class ContentBatchUpdateFieldsByIdsConflictException extends \RuntimeException implements ClientException
+class ContentBatchUpdateFieldsByIdsConflictException extends ConflictException
 {
     private $pictureparkConflictException;
     public function __construct(\PicturePark\API\Model\PictureparkConflictException $pictureparkConflictException)

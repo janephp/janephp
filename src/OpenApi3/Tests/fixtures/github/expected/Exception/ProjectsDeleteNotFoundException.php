@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class ProjectsDeleteNotFoundException extends \RuntimeException implements ClientException
+class ProjectsDeleteNotFoundException extends NotFoundException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

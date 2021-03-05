@@ -2,10 +2,10 @@
 
 namespace CreditSafe\API\Exception;
 
-class ListCountriesOfMonitoredCompaniesNotFoundException extends \RuntimeException implements ClientException
+class ListCountriesOfMonitoredCompaniesNotFoundException extends NotFoundException
 {
     public function __construct()
     {
-        parent::__construct('', 404);
+        parent::__construct('');
     }
 }

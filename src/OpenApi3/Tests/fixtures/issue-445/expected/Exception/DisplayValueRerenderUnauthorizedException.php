@@ -2,10 +2,10 @@
 
 namespace PicturePark\API\Exception;
 
-class DisplayValueRerenderUnauthorizedException extends \RuntimeException implements ClientException
+class DisplayValueRerenderUnauthorizedException extends UnauthorizedException
 {
     public function __construct()
     {
-        parent::__construct('Unauthorized', 401);
+        parent::__construct('Unauthorized');
     }
 }

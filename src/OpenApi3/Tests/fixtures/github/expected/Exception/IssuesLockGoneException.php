@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class IssuesLockGoneException extends \RuntimeException implements ClientException
+class IssuesLockGoneException extends GoneException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

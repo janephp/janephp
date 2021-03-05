@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class ReposAddStatusCheckContextsNotFoundException extends \RuntimeException implements ClientException
+class ReposAddStatusCheckContextsNotFoundException extends NotFoundException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

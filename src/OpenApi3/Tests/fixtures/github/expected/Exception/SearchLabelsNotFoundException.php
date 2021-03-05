@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class SearchLabelsNotFoundException extends \RuntimeException implements ClientException
+class SearchLabelsNotFoundException extends NotFoundException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class ReposDeclineInvitationConflictException extends \RuntimeException implements ClientException
+class ReposDeclineInvitationConflictException extends ConflictException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

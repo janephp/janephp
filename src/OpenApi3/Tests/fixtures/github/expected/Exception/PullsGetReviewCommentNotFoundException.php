@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class PullsGetReviewCommentNotFoundException extends \RuntimeException implements ClientException
+class PullsGetReviewCommentNotFoundException extends NotFoundException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

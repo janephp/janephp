@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class UsersBlockNotFoundException extends \RuntimeException implements ClientException
+class UsersBlockNotFoundException extends NotFoundException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

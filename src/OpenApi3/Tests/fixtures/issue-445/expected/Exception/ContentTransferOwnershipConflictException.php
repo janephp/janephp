@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Exception;
 
-class ContentTransferOwnershipConflictException extends \RuntimeException implements ClientException
+class ContentTransferOwnershipConflictException extends ConflictException
 {
     private $pictureparkConflictException;
     public function __construct(\PicturePark\API\Model\PictureparkConflictException $pictureparkConflictException)

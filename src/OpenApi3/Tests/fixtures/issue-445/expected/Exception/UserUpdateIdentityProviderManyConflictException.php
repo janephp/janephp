@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Exception;
 
-class UserUpdateIdentityProviderManyConflictException extends \RuntimeException implements ClientException
+class UserUpdateIdentityProviderManyConflictException extends ConflictException
 {
     private $pictureparkConflictException;
     public function __construct(\PicturePark\API\Model\PictureparkConflictException $pictureparkConflictException)

@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Exception;
 
-class UserReInviteManyConflictException extends \RuntimeException implements ClientException
+class UserReInviteManyConflictException extends ConflictException
 {
     private $pictureparkConflictException;
     public function __construct(\PicturePark\API\Model\PictureparkConflictException $pictureparkConflictException)

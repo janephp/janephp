@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Exception;
 
-class UserRestoreConflictException extends \RuntimeException implements ClientException
+class UserRestoreConflictException extends ConflictException
 {
     private $pictureparkConflictException;
     public function __construct(\PicturePark\API\Model\PictureparkConflictException $pictureparkConflictException)

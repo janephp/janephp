@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class PullsMergeForbiddenException extends \RuntimeException implements ClientException
+class PullsMergeForbiddenException extends ForbiddenException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class ProjectsRemoveCollaboratorUnprocessableEntityException extends \RuntimeException implements ClientException
+class ProjectsRemoveCollaboratorUnprocessableEntityException extends UnprocessableEntityException
 {
     private $validationError;
     public function __construct(\Github\Model\ValidationError $validationError)

@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class ProjectsDeleteCardForbiddenException extends \RuntimeException implements ClientException
+class ProjectsDeleteCardForbiddenException extends ForbiddenException
 {
     private $projectsColumnsCardsCardIdDeleteResponse403;
     public function __construct(\Github\Model\ProjectsColumnsCardsCardIdDeleteResponse403 $projectsColumnsCardsCardIdDeleteResponse403)

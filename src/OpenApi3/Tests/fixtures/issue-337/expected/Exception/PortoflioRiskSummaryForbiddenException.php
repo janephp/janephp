@@ -2,10 +2,10 @@
 
 namespace CreditSafe\API\Exception;
 
-class PortoflioRiskSummaryForbiddenException extends \RuntimeException implements ClientException
+class PortoflioRiskSummaryForbiddenException extends ForbiddenException
 {
     public function __construct()
     {
-        parent::__construct('', 403);
+        parent::__construct('');
     }
 }

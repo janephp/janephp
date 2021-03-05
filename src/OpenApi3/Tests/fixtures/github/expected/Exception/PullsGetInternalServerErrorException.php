@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class PullsGetInternalServerErrorException extends \RuntimeException implements ServerException
+class PullsGetInternalServerErrorException extends InternalServerErrorException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

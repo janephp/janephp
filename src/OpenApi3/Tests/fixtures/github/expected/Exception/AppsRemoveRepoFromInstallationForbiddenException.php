@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class AppsRemoveRepoFromInstallationForbiddenException extends \RuntimeException implements ClientException
+class AppsRemoveRepoFromInstallationForbiddenException extends ForbiddenException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

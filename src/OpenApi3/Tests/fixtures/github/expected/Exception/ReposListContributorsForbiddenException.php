@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class ReposListContributorsForbiddenException extends \RuntimeException implements ClientException
+class ReposListContributorsForbiddenException extends ForbiddenException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

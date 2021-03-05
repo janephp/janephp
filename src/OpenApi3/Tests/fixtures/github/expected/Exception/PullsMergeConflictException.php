@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class PullsMergeConflictException extends \RuntimeException implements ClientException
+class PullsMergeConflictException extends ConflictException
 {
     private $reposOwnerRepoPullsPullNumberMergePutResponse409;
     public function __construct(\Github\Model\ReposOwnerRepoPullsPullNumberMergePutResponse409 $reposOwnerRepoPullsPullNumberMergePutResponse409)

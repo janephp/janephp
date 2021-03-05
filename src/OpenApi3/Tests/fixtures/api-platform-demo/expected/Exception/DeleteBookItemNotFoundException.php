@@ -2,10 +2,10 @@
 
 namespace ApiPlatform\Demo\Exception;
 
-class DeleteBookItemNotFoundException extends \RuntimeException implements ClientException
+class DeleteBookItemNotFoundException extends NotFoundException
 {
     public function __construct()
     {
-        parent::__construct('Resource not found', 404);
+        parent::__construct('Resource not found');
     }
 }

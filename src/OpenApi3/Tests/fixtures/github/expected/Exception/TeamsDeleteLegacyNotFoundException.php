@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class TeamsDeleteLegacyNotFoundException extends \RuntimeException implements ClientException
+class TeamsDeleteLegacyNotFoundException extends NotFoundException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

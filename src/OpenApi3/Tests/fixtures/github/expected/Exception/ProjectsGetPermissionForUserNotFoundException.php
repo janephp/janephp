@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class ProjectsGetPermissionForUserNotFoundException extends \RuntimeException implements ClientException
+class ProjectsGetPermissionForUserNotFoundException extends NotFoundException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

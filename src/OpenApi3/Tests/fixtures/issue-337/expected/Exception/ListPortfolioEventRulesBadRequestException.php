@@ -2,7 +2,7 @@
 
 namespace CreditSafe\API\Exception;
 
-class ListPortfolioEventRulesBadRequestException extends \RuntimeException implements ClientException
+class ListPortfolioEventRulesBadRequestException extends BadRequestException
 {
     private $badRequestError;
     public function __construct(\CreditSafe\API\Model\BadRequestError $badRequestError)

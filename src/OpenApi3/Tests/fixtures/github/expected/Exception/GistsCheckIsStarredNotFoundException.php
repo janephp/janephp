@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class GistsCheckIsStarredNotFoundException extends \RuntimeException implements ClientException
+class GistsCheckIsStarredNotFoundException extends NotFoundException
 {
     private $gistsGistIdStarGetResponse404;
     public function __construct(\Github\Model\GistsGistIdStarGetResponse404 $gistsGistIdStarGetResponse404)

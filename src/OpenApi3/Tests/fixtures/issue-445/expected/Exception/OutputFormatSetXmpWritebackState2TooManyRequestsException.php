@@ -2,10 +2,10 @@
 
 namespace PicturePark\API\Exception;
 
-class OutputFormatSetXmpWritebackState2TooManyRequestsException extends \RuntimeException implements ClientException
+class OutputFormatSetXmpWritebackState2TooManyRequestsException extends TooManyRequestsException
 {
     public function __construct()
     {
-        parent::__construct('Too many requests', 429);
+        parent::__construct('Too many requests');
     }
 }

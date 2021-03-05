@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Exception;
 
-class DisplayValueRerenderNotFoundException extends \RuntimeException implements ClientException
+class DisplayValueRerenderNotFoundException extends NotFoundException
 {
     private $pictureparkNotFoundException;
     public function __construct(\PicturePark\API\Model\PictureparkNotFoundException $pictureparkNotFoundException)

@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class ActivityListPublicEventsForRepoNetworkNotFoundException extends \RuntimeException implements ClientException
+class ActivityListPublicEventsForRepoNetworkNotFoundException extends NotFoundException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

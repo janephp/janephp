@@ -2,10 +2,10 @@
 
 namespace CreditSafe\API\Exception;
 
-class DeletePendingFreshInvesitgationUnauthorizedException extends \RuntimeException implements ClientException
+class DeletePendingFreshInvesitgationUnauthorizedException extends UnauthorizedException
 {
     public function __construct()
     {
-        parent::__construct('', 401);
+        parent::__construct('');
     }
 }

@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class OrgsConvertMemberToOutsideCollaboratorForbiddenException extends \RuntimeException implements ClientException
+class OrgsConvertMemberToOutsideCollaboratorForbiddenException extends ForbiddenException
 {
     private $orgsOrgOutsideCollaboratorsUsernamePutResponse403;
     public function __construct(\Github\Model\OrgsOrgOutsideCollaboratorsUsernamePutResponse403 $orgsOrgOutsideCollaboratorsUsernamePutResponse403)

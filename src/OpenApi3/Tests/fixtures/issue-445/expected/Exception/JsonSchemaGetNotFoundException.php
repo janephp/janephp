@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Exception;
 
-class JsonSchemaGetNotFoundException extends \RuntimeException implements ClientException
+class JsonSchemaGetNotFoundException extends NotFoundException
 {
     private $pictureparkNotFoundException;
     public function __construct(\PicturePark\API\Model\PictureparkNotFoundException $pictureparkNotFoundException)

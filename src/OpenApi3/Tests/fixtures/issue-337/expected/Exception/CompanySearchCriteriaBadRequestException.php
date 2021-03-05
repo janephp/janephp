@@ -2,10 +2,10 @@
 
 namespace CreditSafe\API\Exception;
 
-class CompanySearchCriteriaBadRequestException extends \RuntimeException implements ClientException
+class CompanySearchCriteriaBadRequestException extends BadRequestException
 {
     public function __construct()
     {
-        parent::__construct('', 400);
+        parent::__construct('');
     }
 }

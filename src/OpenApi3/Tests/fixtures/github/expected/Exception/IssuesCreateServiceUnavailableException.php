@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class IssuesCreateServiceUnavailableException extends \RuntimeException implements ServerException
+class IssuesCreateServiceUnavailableException extends ServiceUnavailableException
 {
     private $responseServiceUnavailable;
     public function __construct(\Github\Model\ResponseServiceUnavailable $responseServiceUnavailable)

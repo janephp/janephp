@@ -2,10 +2,10 @@
 
 namespace PicturePark\API\Exception;
 
-class TransferGetFileUnauthorizedException extends \RuntimeException implements ClientException
+class TransferGetFileUnauthorizedException extends UnauthorizedException
 {
     public function __construct()
     {
-        parent::__construct('Unauthorized', 401);
+        parent::__construct('Unauthorized');
     }
 }

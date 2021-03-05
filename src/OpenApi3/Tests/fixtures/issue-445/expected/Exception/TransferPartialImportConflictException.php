@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Exception;
 
-class TransferPartialImportConflictException extends \RuntimeException implements ClientException
+class TransferPartialImportConflictException extends ConflictException
 {
     private $pictureparkConflictException;
     public function __construct(\PicturePark\API\Model\PictureparkConflictException $pictureparkConflictException)

@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Exception;
 
-class IdentityProviderGetSynchronizableAttributesInternalServerErrorException extends \RuntimeException implements ServerException
+class IdentityProviderGetSynchronizableAttributesInternalServerErrorException extends InternalServerErrorException
 {
     private $pictureparkException;
     public function __construct(\PicturePark\API\Model\PictureparkException $pictureparkException)

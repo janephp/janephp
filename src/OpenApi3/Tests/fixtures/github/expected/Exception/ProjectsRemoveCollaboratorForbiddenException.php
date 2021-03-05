@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class ProjectsRemoveCollaboratorForbiddenException extends \RuntimeException implements ClientException
+class ProjectsRemoveCollaboratorForbiddenException extends ForbiddenException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

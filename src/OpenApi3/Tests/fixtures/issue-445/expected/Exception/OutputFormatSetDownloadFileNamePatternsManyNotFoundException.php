@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Exception;
 
-class OutputFormatSetDownloadFileNamePatternsManyNotFoundException extends \RuntimeException implements ClientException
+class OutputFormatSetDownloadFileNamePatternsManyNotFoundException extends NotFoundException
 {
     private $pictureparkNotFoundException;
     public function __construct(\PicturePark\API\Model\PictureparkNotFoundException $pictureparkNotFoundException)

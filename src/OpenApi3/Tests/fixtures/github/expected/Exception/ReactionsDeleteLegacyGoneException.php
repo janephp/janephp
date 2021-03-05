@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class ReactionsDeleteLegacyGoneException extends \RuntimeException implements ClientException
+class ReactionsDeleteLegacyGoneException extends GoneException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class ActivityMarkNotificationsAsReadForbiddenException extends \RuntimeException implements ClientException
+class ActivityMarkNotificationsAsReadForbiddenException extends ForbiddenException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

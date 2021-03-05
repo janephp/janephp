@@ -2,10 +2,10 @@
 
 namespace PicturePark\API\Exception;
 
-class IdentityProviderGetTooManyRequestsException extends \RuntimeException implements ClientException
+class IdentityProviderGetTooManyRequestsException extends TooManyRequestsException
 {
     public function __construct()
     {
-        parent::__construct('Too many requests', 429);
+        parent::__construct('Too many requests');
     }
 }

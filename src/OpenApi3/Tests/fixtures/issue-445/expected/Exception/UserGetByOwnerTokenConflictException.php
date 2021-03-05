@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Exception;
 
-class UserGetByOwnerTokenConflictException extends \RuntimeException implements ClientException
+class UserGetByOwnerTokenConflictException extends ConflictException
 {
     private $pictureparkConflictException;
     public function __construct(\PicturePark\API\Model\PictureparkConflictException $pictureparkConflictException)

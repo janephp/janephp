@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Exception;
 
-class ShareSearchNotFoundException extends \RuntimeException implements ClientException
+class ShareSearchNotFoundException extends NotFoundException
 {
     private $pictureparkNotFoundException;
     public function __construct(\PicturePark\API\Model\PictureparkNotFoundException $pictureparkNotFoundException)

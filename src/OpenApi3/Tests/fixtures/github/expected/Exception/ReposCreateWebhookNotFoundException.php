@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class ReposCreateWebhookNotFoundException extends \RuntimeException implements ClientException
+class ReposCreateWebhookNotFoundException extends NotFoundException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

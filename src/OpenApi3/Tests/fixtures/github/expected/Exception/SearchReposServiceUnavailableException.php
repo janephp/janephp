@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class SearchReposServiceUnavailableException extends \RuntimeException implements ServerException
+class SearchReposServiceUnavailableException extends ServiceUnavailableException
 {
     private $responseServiceUnavailable;
     public function __construct(\Github\Model\ResponseServiceUnavailable $responseServiceUnavailable)

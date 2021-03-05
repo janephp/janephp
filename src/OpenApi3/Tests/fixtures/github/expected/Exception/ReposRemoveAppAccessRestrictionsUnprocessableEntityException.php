@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class ReposRemoveAppAccessRestrictionsUnprocessableEntityException extends \RuntimeException implements ClientException
+class ReposRemoveAppAccessRestrictionsUnprocessableEntityException extends UnprocessableEntityException
 {
     private $validationError;
     public function __construct(\Github\Model\ValidationError $validationError)

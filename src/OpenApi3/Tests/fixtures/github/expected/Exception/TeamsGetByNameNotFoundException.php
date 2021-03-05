@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class TeamsGetByNameNotFoundException extends \RuntimeException implements ClientException
+class TeamsGetByNameNotFoundException extends NotFoundException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

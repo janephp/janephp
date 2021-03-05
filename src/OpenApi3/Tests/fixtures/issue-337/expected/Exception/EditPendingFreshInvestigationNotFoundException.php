@@ -2,10 +2,10 @@
 
 namespace CreditSafe\API\Exception;
 
-class EditPendingFreshInvestigationNotFoundException extends \RuntimeException implements ClientException
+class EditPendingFreshInvestigationNotFoundException extends NotFoundException
 {
     public function __construct()
     {
-        parent::__construct('', 404);
+        parent::__construct('');
     }
 }

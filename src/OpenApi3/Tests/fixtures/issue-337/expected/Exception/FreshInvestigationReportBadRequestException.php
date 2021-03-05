@@ -2,10 +2,10 @@
 
 namespace CreditSafe\API\Exception;
 
-class FreshInvestigationReportBadRequestException extends \RuntimeException implements ClientException
+class FreshInvestigationReportBadRequestException extends BadRequestException
 {
     public function __construct()
     {
-        parent::__construct('', 400);
+        parent::__construct('');
     }
 }

@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class MigrationsMapCommitAuthorUnprocessableEntityException extends \RuntimeException implements ClientException
+class MigrationsMapCommitAuthorUnprocessableEntityException extends UnprocessableEntityException
 {
     private $validationError;
     public function __construct(\Github\Model\ValidationError $validationError)

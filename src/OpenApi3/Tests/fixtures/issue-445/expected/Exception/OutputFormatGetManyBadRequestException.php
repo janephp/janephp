@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Exception;
 
-class OutputFormatGetManyBadRequestException extends \RuntimeException implements ClientException
+class OutputFormatGetManyBadRequestException extends BadRequestException
 {
     private $requestSizeLimitExceededException;
     public function __construct(\PicturePark\API\Model\RequestSizeLimitExceededException $requestSizeLimitExceededException)

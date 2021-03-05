@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class ScimProvisionAndInviteUserConflictException extends \RuntimeException implements ClientException
+class ScimProvisionAndInviteUserConflictException extends ConflictException
 {
     private $scimError;
     public function __construct(\Github\Model\ScimError $scimError)

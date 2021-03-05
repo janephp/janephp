@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class ReposUpdateWebhookUnprocessableEntityException extends \RuntimeException implements ClientException
+class ReposUpdateWebhookUnprocessableEntityException extends UnprocessableEntityException
 {
     private $validationError;
     public function __construct(\Github\Model\ValidationError $validationError)

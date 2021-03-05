@@ -2,10 +2,10 @@
 
 namespace Github\Exception;
 
-class ActivityGetRepoSubscriptionNotFoundException extends \RuntimeException implements ClientException
+class ActivityGetRepoSubscriptionNotFoundException extends NotFoundException
 {
     public function __construct()
     {
-        parent::__construct('Response if you don\'t subscribe to the repository', 404);
+        parent::__construct('Response if you don\'t subscribe to the repository');
     }
 }

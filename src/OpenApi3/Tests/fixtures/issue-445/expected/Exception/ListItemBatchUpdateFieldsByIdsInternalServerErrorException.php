@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Exception;
 
-class ListItemBatchUpdateFieldsByIdsInternalServerErrorException extends \RuntimeException implements ServerException
+class ListItemBatchUpdateFieldsByIdsInternalServerErrorException extends InternalServerErrorException
 {
     private $pictureparkException;
     public function __construct(\PicturePark\API\Model\PictureparkException $pictureparkException)

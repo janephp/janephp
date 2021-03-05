@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class ActivityListNotificationsForAuthenticatedUserUnprocessableEntityException extends \RuntimeException implements ClientException
+class ActivityListNotificationsForAuthenticatedUserUnprocessableEntityException extends UnprocessableEntityException
 {
     private $validationError;
     public function __construct(\Github\Model\ValidationError $validationError)

@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Exception;
 
-class TransferDeleteConflictException extends \RuntimeException implements ClientException
+class TransferDeleteConflictException extends ConflictException
 {
     private $pictureparkConflictException;
     public function __construct(\PicturePark\API\Model\PictureparkConflictException $pictureparkConflictException)

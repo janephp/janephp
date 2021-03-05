@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Exception;
 
-class OutputResetRetryAttemptsNotFoundException extends \RuntimeException implements ClientException
+class OutputResetRetryAttemptsNotFoundException extends NotFoundException
 {
     private $pictureparkNotFoundException;
     public function __construct(\PicturePark\API\Model\PictureparkNotFoundException $pictureparkNotFoundException)

@@ -2,10 +2,10 @@
 
 namespace CreditSafe\API\Exception;
 
-class UpdateIsProcessedFlagOnAnNotificationEventNotFoundException extends \RuntimeException implements ClientException
+class UpdateIsProcessedFlagOnAnNotificationEventNotFoundException extends NotFoundException
 {
     public function __construct()
     {
-        parent::__construct('', 404);
+        parent::__construct('');
     }
 }

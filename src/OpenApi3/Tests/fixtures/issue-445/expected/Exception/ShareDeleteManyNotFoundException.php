@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Exception;
 
-class ShareDeleteManyNotFoundException extends \RuntimeException implements ClientException
+class ShareDeleteManyNotFoundException extends NotFoundException
 {
     private $pictureparkNotFoundException;
     public function __construct(\PicturePark\API\Model\PictureparkNotFoundException $pictureparkNotFoundException)

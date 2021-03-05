@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class OrgsConvertMemberToOutsideCollaboratorNotFoundException extends \RuntimeException implements ClientException
+class OrgsConvertMemberToOutsideCollaboratorNotFoundException extends NotFoundException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

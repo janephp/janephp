@@ -2,10 +2,10 @@
 
 namespace ApiPlatform\Demo\Exception;
 
-class PutReviewItemBadRequestException extends \RuntimeException implements ClientException
+class PutReviewItemBadRequestException extends BadRequestException
 {
     public function __construct()
     {
-        parent::__construct('Invalid input', 400);
+        parent::__construct('Invalid input');
     }
 }

@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Exception;
 
-class UserLockInternalServerErrorException extends \RuntimeException implements ServerException
+class UserLockInternalServerErrorException extends InternalServerErrorException
 {
     private $pictureparkException;
     public function __construct(\PicturePark\API\Model\PictureparkException $pictureparkException)

@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class UsersDeleteGpgKeyForAuthenticatedForbiddenException extends \RuntimeException implements ClientException
+class UsersDeleteGpgKeyForAuthenticatedForbiddenException extends ForbiddenException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

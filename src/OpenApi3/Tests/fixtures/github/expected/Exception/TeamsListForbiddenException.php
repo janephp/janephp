@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class TeamsListForbiddenException extends \RuntimeException implements ClientException
+class TeamsListForbiddenException extends ForbiddenException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

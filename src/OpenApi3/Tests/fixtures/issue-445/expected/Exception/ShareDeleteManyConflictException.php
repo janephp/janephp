@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Exception;
 
-class ShareDeleteManyConflictException extends \RuntimeException implements ClientException
+class ShareDeleteManyConflictException extends ConflictException
 {
     private $pictureparkConflictException;
     public function __construct(\PicturePark\API\Model\PictureparkConflictException $pictureparkConflictException)

@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class IssuesListEventsForTimelineUnsupportedMediaTypeException extends \RuntimeException implements ClientException
+class IssuesListEventsForTimelineUnsupportedMediaTypeException extends UnsupportedMediaTypeException
 {
     private $responsePreviewHeaderMissing;
     public function __construct(\Github\Model\ResponsePreviewHeaderMissing $responsePreviewHeaderMissing)

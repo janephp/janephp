@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class ReposGetBranchNotFoundException extends \RuntimeException implements ClientException
+class ReposGetBranchNotFoundException extends NotFoundException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

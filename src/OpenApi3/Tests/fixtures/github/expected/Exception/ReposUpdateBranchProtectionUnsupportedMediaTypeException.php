@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class ReposUpdateBranchProtectionUnsupportedMediaTypeException extends \RuntimeException implements ClientException
+class ReposUpdateBranchProtectionUnsupportedMediaTypeException extends UnsupportedMediaTypeException
 {
     private $responsePreviewHeaderMissing;
     public function __construct(\Github\Model\ResponsePreviewHeaderMissing $responsePreviewHeaderMissing)

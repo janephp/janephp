@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class ReposGetViewsForbiddenException extends \RuntimeException implements ClientException
+class ReposGetViewsForbiddenException extends ForbiddenException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Exception;
 
-class ListItemSearchNotFoundException extends \RuntimeException implements ClientException
+class ListItemSearchNotFoundException extends NotFoundException
 {
     private $pictureparkNotFoundException;
     public function __construct(\PicturePark\API\Model\PictureparkNotFoundException $pictureparkNotFoundException)

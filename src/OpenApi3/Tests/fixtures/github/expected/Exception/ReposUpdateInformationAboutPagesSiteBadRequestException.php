@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class ReposUpdateInformationAboutPagesSiteBadRequestException extends \RuntimeException implements ClientException
+class ReposUpdateInformationAboutPagesSiteBadRequestException extends BadRequestException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

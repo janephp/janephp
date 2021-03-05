@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class ActivityGetRepoSubscriptionForbiddenException extends \RuntimeException implements ClientException
+class ActivityGetRepoSubscriptionForbiddenException extends ForbiddenException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

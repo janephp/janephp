@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class OauthAuthorizationsListGrantsNotFoundException extends \RuntimeException implements ClientException
+class OauthAuthorizationsListGrantsNotFoundException extends NotFoundException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

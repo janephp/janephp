@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class ReposGetCollaboratorPermissionLevelNotFoundException extends \RuntimeException implements ClientException
+class ReposGetCollaboratorPermissionLevelNotFoundException extends NotFoundException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

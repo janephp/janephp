@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class ProjectsListColumnsUnauthorizedException extends \RuntimeException implements ClientException
+class ProjectsListColumnsUnauthorizedException extends UnauthorizedException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

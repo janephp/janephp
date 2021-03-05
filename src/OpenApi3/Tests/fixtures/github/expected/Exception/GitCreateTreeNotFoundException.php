@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class GitCreateTreeNotFoundException extends \RuntimeException implements ClientException
+class GitCreateTreeNotFoundException extends NotFoundException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

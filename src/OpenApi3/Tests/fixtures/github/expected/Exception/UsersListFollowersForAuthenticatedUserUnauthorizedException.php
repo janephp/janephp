@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class UsersListFollowersForAuthenticatedUserUnauthorizedException extends \RuntimeException implements ClientException
+class UsersListFollowersForAuthenticatedUserUnauthorizedException extends UnauthorizedException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

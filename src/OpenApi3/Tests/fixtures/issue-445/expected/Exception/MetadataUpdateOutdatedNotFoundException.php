@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Exception;
 
-class MetadataUpdateOutdatedNotFoundException extends \RuntimeException implements ClientException
+class MetadataUpdateOutdatedNotFoundException extends NotFoundException
 {
     private $pictureparkNotFoundException;
     public function __construct(\PicturePark\API\Model\PictureparkNotFoundException $pictureparkNotFoundException)

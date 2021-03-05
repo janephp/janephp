@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class ReposDeletePagesSiteNotFoundException extends \RuntimeException implements ClientException
+class ReposDeletePagesSiteNotFoundException extends NotFoundException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class TeamsListIdpGroupsForLegacyForbiddenException extends \RuntimeException implements ClientException
+class TeamsListIdpGroupsForLegacyForbiddenException extends ForbiddenException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

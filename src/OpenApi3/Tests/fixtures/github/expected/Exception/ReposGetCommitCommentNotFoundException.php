@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class ReposGetCommitCommentNotFoundException extends \RuntimeException implements ClientException
+class ReposGetCommitCommentNotFoundException extends NotFoundException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

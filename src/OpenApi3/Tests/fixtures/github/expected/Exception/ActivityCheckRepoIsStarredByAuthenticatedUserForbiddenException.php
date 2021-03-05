@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class ActivityCheckRepoIsStarredByAuthenticatedUserForbiddenException extends \RuntimeException implements ClientException
+class ActivityCheckRepoIsStarredByAuthenticatedUserForbiddenException extends ForbiddenException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

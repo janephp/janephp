@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Exception;
 
-class UserGetByOwnerTokenBadRequestException extends \RuntimeException implements ClientException
+class UserGetByOwnerTokenBadRequestException extends BadRequestException
 {
     private $pictureparkValidationException;
     public function __construct(\PicturePark\API\Model\PictureparkValidationException $pictureparkValidationException)

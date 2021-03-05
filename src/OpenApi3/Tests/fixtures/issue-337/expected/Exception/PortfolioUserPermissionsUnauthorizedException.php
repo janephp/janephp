@@ -2,10 +2,10 @@
 
 namespace CreditSafe\API\Exception;
 
-class PortfolioUserPermissionsUnauthorizedException extends \RuntimeException implements ClientException
+class PortfolioUserPermissionsUnauthorizedException extends UnauthorizedException
 {
     public function __construct()
     {
-        parent::__construct('', 401);
+        parent::__construct('');
     }
 }

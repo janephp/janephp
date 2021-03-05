@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class AppsCheckAuthorizationNotFoundException extends \RuntimeException implements ClientException
+class AppsCheckAuthorizationNotFoundException extends NotFoundException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

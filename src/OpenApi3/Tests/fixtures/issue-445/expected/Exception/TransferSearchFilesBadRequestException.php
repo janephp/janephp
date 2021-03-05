@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Exception;
 
-class TransferSearchFilesBadRequestException extends \RuntimeException implements ClientException
+class TransferSearchFilesBadRequestException extends BadRequestException
 {
     private $pictureparkValidationException;
     public function __construct(\PicturePark\API\Model\PictureparkValidationException $pictureparkValidationException)

@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class OrgsGetMembershipForUserForbiddenException extends \RuntimeException implements ClientException
+class OrgsGetMembershipForUserForbiddenException extends ForbiddenException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

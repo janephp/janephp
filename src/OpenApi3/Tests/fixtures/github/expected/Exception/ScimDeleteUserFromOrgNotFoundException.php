@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class ScimDeleteUserFromOrgNotFoundException extends \RuntimeException implements ClientException
+class ScimDeleteUserFromOrgNotFoundException extends NotFoundException
 {
     private $scimError;
     public function __construct(\Github\Model\ScimError $scimError)

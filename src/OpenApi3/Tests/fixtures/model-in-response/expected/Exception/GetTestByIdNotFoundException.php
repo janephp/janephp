@@ -2,7 +2,7 @@
 
 namespace Jane\OpenApi3\Tests\Expected\Exception;
 
-class GetTestByIdNotFoundException extends \RuntimeException implements ClientException
+class GetTestByIdNotFoundException extends NotFoundException
 {
     private $error;
     public function __construct(\Jane\OpenApi3\Tests\Expected\Model\Error $error)

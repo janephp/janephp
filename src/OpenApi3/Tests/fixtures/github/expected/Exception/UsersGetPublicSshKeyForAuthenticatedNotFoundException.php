@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class UsersGetPublicSshKeyForAuthenticatedNotFoundException extends \RuntimeException implements ClientException
+class UsersGetPublicSshKeyForAuthenticatedNotFoundException extends NotFoundException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class ActivityUnstarRepoForAuthenticatedUserUnauthorizedException extends \RuntimeException implements ClientException
+class ActivityUnstarRepoForAuthenticatedUserUnauthorizedException extends UnauthorizedException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class IssuesUpdateNotFoundException extends \RuntimeException implements ClientException
+class IssuesUpdateNotFoundException extends NotFoundException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

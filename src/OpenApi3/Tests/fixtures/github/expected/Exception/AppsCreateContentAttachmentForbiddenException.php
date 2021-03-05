@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class AppsCreateContentAttachmentForbiddenException extends \RuntimeException implements ClientException
+class AppsCreateContentAttachmentForbiddenException extends ForbiddenException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

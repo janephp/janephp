@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class AppsGetBySlugForbiddenException extends \RuntimeException implements ClientException
+class AppsGetBySlugForbiddenException extends ForbiddenException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

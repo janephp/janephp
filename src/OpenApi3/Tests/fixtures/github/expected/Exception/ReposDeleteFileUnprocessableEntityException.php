@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class ReposDeleteFileUnprocessableEntityException extends \RuntimeException implements ClientException
+class ReposDeleteFileUnprocessableEntityException extends UnprocessableEntityException
 {
     private $validationError;
     public function __construct(\Github\Model\ValidationError $validationError)

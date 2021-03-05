@@ -2,10 +2,10 @@
 
 namespace CreditSafe\API\Exception;
 
-class BankMatchBadRequestException extends \RuntimeException implements ClientException
+class BankMatchBadRequestException extends BadRequestException
 {
     public function __construct()
     {
-        parent::__construct('', 400);
+        parent::__construct('');
     }
 }

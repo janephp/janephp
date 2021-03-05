@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class MigrationsStartImportNotFoundException extends \RuntimeException implements ClientException
+class MigrationsStartImportNotFoundException extends NotFoundException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

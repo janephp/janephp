@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class ActivitySetThreadSubscriptionUnauthorizedException extends \RuntimeException implements ClientException
+class ActivitySetThreadSubscriptionUnauthorizedException extends UnauthorizedException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

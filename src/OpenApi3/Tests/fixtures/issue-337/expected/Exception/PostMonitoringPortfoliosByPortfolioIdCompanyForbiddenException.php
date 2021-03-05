@@ -2,10 +2,10 @@
 
 namespace CreditSafe\API\Exception;
 
-class PostMonitoringPortfoliosByPortfolioIdCompanyForbiddenException extends \RuntimeException implements ClientException
+class PostMonitoringPortfoliosByPortfolioIdCompanyForbiddenException extends ForbiddenException
 {
     public function __construct()
     {
-        parent::__construct('', 403);
+        parent::__construct('');
     }
 }

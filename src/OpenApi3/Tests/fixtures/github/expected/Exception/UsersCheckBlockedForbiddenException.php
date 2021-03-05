@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class UsersCheckBlockedForbiddenException extends \RuntimeException implements ClientException
+class UsersCheckBlockedForbiddenException extends ForbiddenException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

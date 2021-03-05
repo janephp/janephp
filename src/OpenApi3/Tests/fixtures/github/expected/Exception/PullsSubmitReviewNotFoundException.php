@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class PullsSubmitReviewNotFoundException extends \RuntimeException implements ClientException
+class PullsSubmitReviewNotFoundException extends NotFoundException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

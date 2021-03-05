@@ -2,10 +2,10 @@
 
 namespace CreditSafe\API\Exception;
 
-class GetAMonitoredCompanyFromAPortfolioNotFoundException extends \RuntimeException implements ClientException
+class GetAMonitoredCompanyFromAPortfolioNotFoundException extends NotFoundException
 {
     public function __construct()
     {
-        parent::__construct('', 404);
+        parent::__construct('');
     }
 }

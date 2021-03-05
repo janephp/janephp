@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class ActivityListNotificationsForAuthenticatedUserUnauthorizedException extends \RuntimeException implements ClientException
+class ActivityListNotificationsForAuthenticatedUserUnauthorizedException extends UnauthorizedException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

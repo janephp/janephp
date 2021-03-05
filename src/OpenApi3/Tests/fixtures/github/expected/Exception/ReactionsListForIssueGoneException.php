@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class ReactionsListForIssueGoneException extends \RuntimeException implements ClientException
+class ReactionsListForIssueGoneException extends GoneException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

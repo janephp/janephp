@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class ProjectsCreateForRepoNotFoundException extends \RuntimeException implements ClientException
+class ProjectsCreateForRepoNotFoundException extends NotFoundException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

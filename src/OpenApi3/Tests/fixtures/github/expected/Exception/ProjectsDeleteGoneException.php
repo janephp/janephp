@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class ProjectsDeleteGoneException extends \RuntimeException implements ClientException
+class ProjectsDeleteGoneException extends GoneException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

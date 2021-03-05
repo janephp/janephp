@@ -2,10 +2,10 @@
 
 namespace Jane\OpenApi2\Tests\Expected\One\Exception;
 
-class TestOneNotFoundException extends \RuntimeException implements ClientException
+class TestOneNotFoundException extends NotFoundException
 {
     public function __construct()
     {
-        parent::__construct('Not found', 404);
+        parent::__construct('Not found');
     }
 }

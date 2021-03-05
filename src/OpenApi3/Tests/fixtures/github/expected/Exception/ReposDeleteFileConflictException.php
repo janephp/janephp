@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class ReposDeleteFileConflictException extends \RuntimeException implements ClientException
+class ReposDeleteFileConflictException extends ConflictException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

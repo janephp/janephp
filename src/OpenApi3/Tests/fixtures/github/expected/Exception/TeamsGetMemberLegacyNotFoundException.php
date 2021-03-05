@@ -2,10 +2,10 @@
 
 namespace Github\Exception;
 
-class TeamsGetMemberLegacyNotFoundException extends \RuntimeException implements ClientException
+class TeamsGetMemberLegacyNotFoundException extends NotFoundException
 {
     public function __construct()
     {
-        parent::__construct('Response if user is not a member', 404);
+        parent::__construct('Response if user is not a member');
     }
 }

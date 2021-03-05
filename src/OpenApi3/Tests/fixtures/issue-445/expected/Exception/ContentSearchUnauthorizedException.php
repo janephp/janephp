@@ -2,10 +2,10 @@
 
 namespace PicturePark\API\Exception;
 
-class ContentSearchUnauthorizedException extends \RuntimeException implements ClientException
+class ContentSearchUnauthorizedException extends UnauthorizedException
 {
     public function __construct()
     {
-        parent::__construct('Unauthorized', 401);
+        parent::__construct('Unauthorized');
     }
 }

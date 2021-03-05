@@ -2,10 +2,10 @@
 
 namespace CreditSafe\API\Exception;
 
-class GetFilteredPortfolioEventRulesNotFoundException extends \RuntimeException implements ClientException
+class GetFilteredPortfolioEventRulesNotFoundException extends NotFoundException
 {
     public function __construct()
     {
-        parent::__construct('', 404);
+        parent::__construct('');
     }
 }

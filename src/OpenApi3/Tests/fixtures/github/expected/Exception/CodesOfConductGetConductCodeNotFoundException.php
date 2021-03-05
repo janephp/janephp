@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class CodesOfConductGetConductCodeNotFoundException extends \RuntimeException implements ClientException
+class CodesOfConductGetConductCodeNotFoundException extends NotFoundException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

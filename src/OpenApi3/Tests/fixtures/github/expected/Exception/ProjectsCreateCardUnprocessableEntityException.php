@@ -2,10 +2,10 @@
 
 namespace Github\Exception;
 
-class ProjectsCreateCardUnprocessableEntityException extends \RuntimeException implements ClientException
+class ProjectsCreateCardUnprocessableEntityException extends UnprocessableEntityException
 {
     public function __construct()
     {
-        parent::__construct('Validation Failed', 422);
+        parent::__construct('Validation Failed');
     }
 }

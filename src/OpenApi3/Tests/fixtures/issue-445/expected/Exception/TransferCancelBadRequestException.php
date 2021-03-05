@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Exception;
 
-class TransferCancelBadRequestException extends \RuntimeException implements ClientException
+class TransferCancelBadRequestException extends BadRequestException
 {
     private $pictureparkValidationException;
     public function __construct(\PicturePark\API\Model\PictureparkValidationException $pictureparkValidationException)

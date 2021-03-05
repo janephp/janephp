@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class PullsMergeUnprocessableEntityException extends \RuntimeException implements ClientException
+class PullsMergeUnprocessableEntityException extends UnprocessableEntityException
 {
     private $validationError;
     public function __construct(\Github\Model\ValidationError $validationError)

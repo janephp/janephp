@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class IssuesCheckUserCanBeAssignedNotFoundException extends \RuntimeException implements ClientException
+class IssuesCheckUserCanBeAssignedNotFoundException extends NotFoundException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

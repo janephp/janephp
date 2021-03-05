@@ -2,10 +2,10 @@
 
 namespace PicturePark\API\Exception;
 
-class SchemaCreateManyUnauthorizedException extends \RuntimeException implements ClientException
+class SchemaCreateManyUnauthorizedException extends UnauthorizedException
 {
     public function __construct()
     {
-        parent::__construct('Unauthorized', 401);
+        parent::__construct('Unauthorized');
     }
 }

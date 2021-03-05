@@ -2,10 +2,10 @@
 
 namespace PicturePark\API\Exception;
 
-class DisplayValueGetStatusTooManyRequestsException extends \RuntimeException implements ClientException
+class DisplayValueGetStatusTooManyRequestsException extends TooManyRequestsException
 {
     public function __construct()
     {
-        parent::__construct('Too many requests', 429);
+        parent::__construct('Too many requests');
     }
 }

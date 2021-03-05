@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class ReposCreateWebhookForbiddenException extends \RuntimeException implements ClientException
+class ReposCreateWebhookForbiddenException extends ForbiddenException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

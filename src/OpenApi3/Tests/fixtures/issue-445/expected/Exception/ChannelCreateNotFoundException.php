@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Exception;
 
-class ChannelCreateNotFoundException extends \RuntimeException implements ClientException
+class ChannelCreateNotFoundException extends NotFoundException
 {
     private $pictureparkNotFoundException;
     public function __construct(\PicturePark\API\Model\PictureparkNotFoundException $pictureparkNotFoundException)

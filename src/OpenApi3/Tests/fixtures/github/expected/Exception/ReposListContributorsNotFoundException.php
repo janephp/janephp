@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class ReposListContributorsNotFoundException extends \RuntimeException implements ClientException
+class ReposListContributorsNotFoundException extends NotFoundException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

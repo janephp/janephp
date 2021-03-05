@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class SearchCodeForbiddenException extends \RuntimeException implements ClientException
+class SearchCodeForbiddenException extends ForbiddenException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

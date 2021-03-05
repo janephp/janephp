@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class ReposListInvitationsForAuthenticatedUserNotFoundException extends \RuntimeException implements ClientException
+class ReposListInvitationsForAuthenticatedUserNotFoundException extends NotFoundException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

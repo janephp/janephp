@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class ScimGetProvisioningInformationForUserNotFoundException extends \RuntimeException implements ClientException
+class ScimGetProvisioningInformationForUserNotFoundException extends NotFoundException
 {
     private $scimError;
     public function __construct(\Github\Model\ScimError $scimError)

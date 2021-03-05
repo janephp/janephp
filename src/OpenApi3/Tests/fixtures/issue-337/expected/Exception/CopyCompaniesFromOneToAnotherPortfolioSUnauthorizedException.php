@@ -2,10 +2,10 @@
 
 namespace CreditSafe\API\Exception;
 
-class CopyCompaniesFromOneToAnotherPortfolioSUnauthorizedException extends \RuntimeException implements ClientException
+class CopyCompaniesFromOneToAnotherPortfolioSUnauthorizedException extends UnauthorizedException
 {
     public function __construct()
     {
-        parent::__construct('', 401);
+        parent::__construct('');
     }
 }

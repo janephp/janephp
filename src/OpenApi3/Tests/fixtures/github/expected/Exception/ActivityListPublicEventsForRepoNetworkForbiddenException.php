@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class ActivityListPublicEventsForRepoNetworkForbiddenException extends \RuntimeException implements ClientException
+class ActivityListPublicEventsForRepoNetworkForbiddenException extends ForbiddenException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

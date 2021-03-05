@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class ReposDeleteFileServiceUnavailableException extends \RuntimeException implements ServerException
+class ReposDeleteFileServiceUnavailableException extends ServiceUnavailableException
 {
     private $responseServiceUnavailable;
     public function __construct(\Github\Model\ResponseServiceUnavailable $responseServiceUnavailable)

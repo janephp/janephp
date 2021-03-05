@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class ActivityListStargazersForRepoUnprocessableEntityException extends \RuntimeException implements ClientException
+class ActivityListStargazersForRepoUnprocessableEntityException extends UnprocessableEntityException
 {
     private $validationError;
     public function __construct(\Github\Model\ValidationError $validationError)

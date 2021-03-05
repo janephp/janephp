@@ -2,10 +2,10 @@
 
 namespace CreditSafe\API\Exception;
 
-class PortoflioRiskSummaryNotFoundException extends \RuntimeException implements ClientException
+class PortoflioRiskSummaryNotFoundException extends NotFoundException
 {
     public function __construct()
     {
-        parent::__construct('', 404);
+        parent::__construct('');
     }
 }

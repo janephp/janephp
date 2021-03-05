@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class ReposCreateForkNotFoundException extends \RuntimeException implements ClientException
+class ReposCreateForkNotFoundException extends NotFoundException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

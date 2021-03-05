@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class AppsCheckTokenNotFoundException extends \RuntimeException implements ClientException
+class AppsCheckTokenNotFoundException extends NotFoundException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

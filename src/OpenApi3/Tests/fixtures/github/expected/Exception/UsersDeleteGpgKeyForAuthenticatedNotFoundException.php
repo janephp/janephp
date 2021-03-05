@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class UsersDeleteGpgKeyForAuthenticatedNotFoundException extends \RuntimeException implements ClientException
+class UsersDeleteGpgKeyForAuthenticatedNotFoundException extends NotFoundException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

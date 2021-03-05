@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class AppsAddRepoToInstallationNotFoundException extends \RuntimeException implements ClientException
+class AppsAddRepoToInstallationNotFoundException extends NotFoundException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

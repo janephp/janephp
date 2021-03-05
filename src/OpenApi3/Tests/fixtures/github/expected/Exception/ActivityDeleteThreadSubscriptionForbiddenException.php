@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class ActivityDeleteThreadSubscriptionForbiddenException extends \RuntimeException implements ClientException
+class ActivityDeleteThreadSubscriptionForbiddenException extends ForbiddenException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

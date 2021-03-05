@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class IssuesCreateLabelNotFoundException extends \RuntimeException implements ClientException
+class IssuesCreateLabelNotFoundException extends NotFoundException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)

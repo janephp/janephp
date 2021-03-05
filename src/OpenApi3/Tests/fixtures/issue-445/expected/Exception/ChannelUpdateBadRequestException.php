@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Exception;
 
-class ChannelUpdateBadRequestException extends \RuntimeException implements ClientException
+class ChannelUpdateBadRequestException extends BadRequestException
 {
     private $pictureparkValidationException;
     public function __construct(\PicturePark\API\Model\PictureparkValidationException $pictureparkValidationException)

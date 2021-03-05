@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class GitGetTagNotFoundException extends \RuntimeException implements ClientException
+class GitGetTagNotFoundException extends NotFoundException
 {
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)
