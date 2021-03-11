@@ -15,8 +15,8 @@ use PhpParser\Node\Stmt;
 
 class ExceptionGenerator
 {
+    private const BANNED_VARIABLES = ['message', 'code', 'file', 'line'];
     private $exceptionNaming;
-
     private $intialized = [];
 
     public function __construct()
@@ -37,13 +37,17 @@ class ExceptionGenerator
         $exceptionName = $this->exceptionNaming->generateExceptionName($status, $functionName);
 
         if ($classGuess) {
-            $propertyName = lcfirst($classGuess->getName());
-
+            $realPropertyName = $propertyName = lcfirst($classGuess->getName());
             if ($isArray) {
                 $propertyName .= 'List';
+                $realPropertyName = $propertyName;
             }
 
-            $methodName = 'get' . ucfirst($propertyName);
+            if (\in_array($propertyName, self::BANNED_VARIABLES)) {
+                $propertyName = sprintf('_%s', $propertyName);
+            }
+
+            $methodName = 'get' . ucfirst($realPropertyName);
             $exception = new Stmt\Namespace_(new Name($schema->getNamespace() . '\\Exception'), [
                 new Stmt\Class_(
                     new Name($exceptionName),
@@ -56,7 +60,7 @@ class ExceptionGenerator
                             new Stmt\ClassMethod('__construct', [
                                 'type' => Stmt\Class_::MODIFIER_PUBLIC,
                                 'params' => [
-                                    new Param(new Node\Expr\Variable($propertyName), null, $isArray ? null : new Name('\\' . $classFqdn)),
+                                    new Param(new Node\Expr\Variable($realPropertyName), null, $isArray ? null : new Name('\\' . $classFqdn)),
                                 ],
                                 'stmts' => [
                                     new Node\Stmt\Expression(new Expr\StaticCall(new Name('parent'), '__construct', [
@@ -67,7 +71,7 @@ class ExceptionGenerator
                                         new Expr\PropertyFetch(
                                             new Expr\Variable('this'),
                                             $propertyName
-                                        ), new Expr\Variable($propertyName)
+                                        ), new Expr\Variable($realPropertyName)
                                     )),
                                 ],
                             ]),
