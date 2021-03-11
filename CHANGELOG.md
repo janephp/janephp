@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [6.3.4] - 2021-03-11
+### Changed
+- [OpenApi] [GH#508](https://github.com/janephp/janephp/pull/508) Improve exceptions to have higher-level exceptions
+
+### Fixed
+- [Jane] [GH#502](https://github.com/janephp/janephp/pull/502) PHP 8 support
+- [OpenAPI] [GH#509](https://github.com/janephp/janephp/pull/509) Fix exception reserved variable keywords
+
 ## [6.3.3] - 2021-02-10
 ### Added
 - [OpenAPI] [GH#500](https://github.com/janephp/janephp/pull/500) Bring ability skip query / header check
@@ -458,7 +466,8 @@ See :
  * https://github.com/janephp/jane/releases
  * https://github.com/janephp/openapi/releases
 
-[Unreleased]: https://github.com/janephp/janephp/compare/v6.3.3...HEAD
+[Unreleased]: https://github.com/janephp/janephp/compare/v6.3.4...HEAD
+[6.3.4]: https://github.com/janephp/janephp/compare/v6.3.3...v6.3.4
 [6.3.3]: https://github.com/janephp/janephp/compare/v6.3.2...v6.3.3
 [6.3.2]: https://github.com/janephp/janephp/compare/v6.3.1...v6.3.2
 [6.3.1]: https://github.com/janephp/janephp/compare/v6.3.0...v6.3.1
