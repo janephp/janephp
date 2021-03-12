@@ -47,7 +47,8 @@ abstract class Client
                 $request = $request->withBody($body);
             } elseif (is_resource($body)) {
                 $request = $request->withBody($this->streamFactory->createStreamFromResource($body));
-            } elseif (is_file($body)) {
+            } elseif (strlen($body) <= 4000 && is_file($body)) {
+                // more than 4096 chars will trigger an error
                 $request = $request->withBody($this->streamFactory->createStreamFromFile($body));
             } else {
                 $request = $request->withBody($this->streamFactory->createStream($body));
