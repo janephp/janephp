@@ -34,7 +34,7 @@ class TestNoTag extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\B
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         if (is_null($contentType) === false && (400 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\TestNoTagBadRequestException($serializer->deserialize($body, 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Model\\Error', 'json'));
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\TestNoTagBadRequestException($serializer->deserialize($body, 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Model\\Message', 'json'));
         }
         if (404 === $status) {
             throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\TestNoTagNotFoundException();

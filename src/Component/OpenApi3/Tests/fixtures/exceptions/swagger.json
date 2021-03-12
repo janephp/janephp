@@ -10,7 +10,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/Error"
+                                    "$ref": "#/components/schemas/Message"
                                 }
                             }
                         }
@@ -39,7 +39,7 @@
     },
     "components": {
         "schemas": {
-            "Error": {
+            "Message": {
                 "type": "object",
                 "properties": {
                     "message": {
