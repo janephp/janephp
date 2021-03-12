@@ -7,9 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [6.3.5] - 2021-03-12
+### Fixed
+- [OpenAPI] [GH#511](https://github.com/janephp/janephp/pull/511) Fix `is_file` char limit
+
 ## [6.3.4] - 2021-03-11
 ### Changed
-- [OpenApi] [GH#508](https://github.com/janephp/janephp/pull/508) Improve exceptions to have higher-level exceptions
+- [OpenAPI] [GH#508](https://github.com/janephp/janephp/pull/508) Improve exceptions to have higher-level exceptions
 
 ### Fixed
 - [Jane] [GH#502](https://github.com/janephp/janephp/pull/502) PHP 8 support
@@ -466,7 +470,8 @@ See :
  * https://github.com/janephp/jane/releases
  * https://github.com/janephp/openapi/releases
 
-[Unreleased]: https://github.com/janephp/janephp/compare/v6.3.4...HEAD
+[Unreleased]: https://github.com/janephp/janephp/compare/v6.3.5...HEAD
+[6.3.5]: https://github.com/janephp/janephp/compare/v6.3.4...v6.3.5
 [6.3.4]: https://github.com/janephp/janephp/compare/v6.3.3...v6.3.4
 [6.3.3]: https://github.com/janephp/janephp/compare/v6.3.2...v6.3.3
 [6.3.2]: https://github.com/janephp/janephp/compare/v6.3.1...v6.3.2
