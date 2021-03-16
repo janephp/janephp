@@ -4,14 +4,14 @@ namespace Jane\OpenApi3\Tests\Expected\Exception;
 
 class TestNoTagBadRequestException extends BadRequestException
 {
-    private $_message;
+    private $messageObject;
     public function __construct(\Jane\OpenApi3\Tests\Expected\Model\Message $message)
     {
         parent::__construct('Bad request on test exception', 400);
-        $this->_message = $message;
+        $this->messageObject = $message;
     }
-    public function getMessage()
+    public function getMessageObject()
     {
-        return $this->_message;
+        return $this->messageObject;
     }
 }

@@ -44,10 +44,10 @@ class ExceptionGenerator
             }
 
             if (\in_array($propertyName, self::BANNED_VARIABLES)) {
-                $propertyName = sprintf('_%s', $propertyName);
+                $propertyName = sprintf('%sObject', $propertyName);
             }
 
-            $methodName = 'get' . ucfirst($realPropertyName);
+            $methodName = 'get' . ucfirst($propertyName);
             $exception = new Stmt\Namespace_(new Name($schema->getNamespace() . '\\Exception'), [
                 new Stmt\Class_(
                     new Name($exceptionName),
