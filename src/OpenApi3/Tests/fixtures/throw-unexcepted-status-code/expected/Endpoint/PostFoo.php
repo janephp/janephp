@@ -41,7 +41,7 @@ class PostFoo extends \Jane\OpenApi3\Tests\Expected\Runtime\Client\BaseEndpoint 
         if (200 === $status) {
             return null;
         }
-        throw new \Jane\OpenApi3\Tests\Expected\Exception\UnexpectedStatusCodeException($status);
+        throw new \Jane\OpenApi3\Tests\Expected\Exception\UnexpectedStatusCodeException($status, $body);
     }
     public function getAuthenticationScopes() : array
     {

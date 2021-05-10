@@ -183,10 +183,11 @@ class ExceptionGenerator
                                 'type' => Stmt\Class_::MODIFIER_PUBLIC,
                                 'params' => [
                                     new Param(new Expr\Variable('status')),
+                                    new Param(new Expr\Variable('message'), new Scalar\String_('')),
                                 ],
                                 'stmts' => [
                                     new Stmt\Expression(new Expr\StaticCall(new Name('parent'), '__construct', [
-                                        new Node\Arg(new Scalar\String_('')),
+                                        new Node\Arg(new Expr\Variable('message')),
                                         new Node\Arg(new Expr\Variable('status')),
                                     ])),
                                 ],
