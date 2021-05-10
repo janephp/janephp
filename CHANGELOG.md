@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [6.3.8] - 2021-05-10
+### Changed
+- [OpenApi] [GH#528](https://github.com/janephp/janephp/pull/528) Added message to exception UnexpectedStatusCodeException
+
+### Fixed
+- [Jane] [GH#530](https://github.com/janephp/janephp/pull/530) Fix usage of PHP-CS-Fixer
+- [OpenApi] [GH#531](https://github.com/janephp/janephp/pull/531) Fix file_exists check
+
 ## [6.3.7] - 2021-03-26
 ### Fixed
 - [JsonSchema] [GH#521](https://github.com/janephp/janephp/pull/521) Fix normalizer mapping for reserved PHP names in JaneObjectNormalizer
@@ -479,7 +487,8 @@ See :
  * https://github.com/janephp/jane/releases
  * https://github.com/janephp/openapi/releases
 
-[Unreleased]: https://github.com/janephp/janephp/compare/v6.3.7...HEAD
+[Unreleased]: https://github.com/janephp/janephp/compare/v6.3.8...HEAD
+[6.3.8]: https://github.com/janephp/janephp/compare/v6.3.7...v6.3.8
 [6.3.7]: https://github.com/janephp/janephp/compare/v6.3.6...v6.3.7
 [6.3.6]: https://github.com/janephp/janephp/compare/v6.3.5...v6.3.6
 [6.3.5]: https://github.com/janephp/janephp/compare/v6.3.4...v6.3.5
