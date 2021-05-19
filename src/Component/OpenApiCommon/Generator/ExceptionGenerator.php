@@ -44,10 +44,10 @@ class ExceptionGenerator
             }
 
             if (\in_array($propertyName, self::BANNED_VARIABLES)) {
-                $propertyName = sprintf('_%s', $propertyName);
+                $propertyName = sprintf('%sObject', $propertyName);
             }
 
-            $methodName = 'get' . ucfirst($realPropertyName);
+            $methodName = 'get' . ucfirst($propertyName);
             $exception = new Stmt\Namespace_(new Name($schema->getNamespace() . '\\Exception'), [
                 new Stmt\Class_(
                     new Name($exceptionName),
@@ -183,10 +183,11 @@ class ExceptionGenerator
                                 'type' => Stmt\Class_::MODIFIER_PUBLIC,
                                 'params' => [
                                     new Param(new Expr\Variable('status')),
+                                    new Param(new Expr\Variable('message'), new Scalar\String_('')),
                                 ],
                                 'stmts' => [
                                     new Stmt\Expression(new Expr\StaticCall(new Name('parent'), '__construct', [
-                                        new Node\Arg(new Scalar\String_('')),
+                                        new Node\Arg(new Expr\Variable('message')),
                                         new Node\Arg(new Expr\Variable('status')),
                                     ])),
                                 ],

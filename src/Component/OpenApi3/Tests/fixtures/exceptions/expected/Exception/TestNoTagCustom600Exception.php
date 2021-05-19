@@ -2,12 +2,12 @@
 
 namespace Jane\Component\OpenApi3\Tests\Expected\Exception;
 
-class TestNoTagBadRequestException extends BadRequestException
+class TestNoTagCustom600Exception extends Custom600Exception
 {
     private $messageObject;
     public function __construct(\Jane\Component\OpenApi3\Tests\Expected\Model\Message $message)
     {
-        parent::__construct('Bad request on test exception', 400);
+        parent::__construct('New update available', 600);
         $this->messageObject = $message;
     }
     public function getMessageObject()

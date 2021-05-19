@@ -22,7 +22,14 @@
                         "description": "Internal server error on test exception"
                     },
                     "600": {
-                        "description": "New update available"
+                        "description": "New update available",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Message"
+                                }
+                            }
+                        }
                     }
                 }
             }

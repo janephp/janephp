@@ -52,6 +52,8 @@ class ExceptionNaming
         $genericName = (string) $status;
         if (\array_key_exists($status, $this->statusNamingMapping)) {
             $genericName = $this->statusNamingMapping[$status];
+        } else {
+            $genericName = sprintf('Custom%s', $genericName);
         }
 
         $exceptionName = sprintf('%sException', $genericName);

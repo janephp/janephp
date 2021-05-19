@@ -24,6 +24,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - [AutoMapper] [GH#461](https://github.com/janephp/janephp/pull/461) Transformer arguments typo
 - [AutoMapper] [GH#487](https://github.com/janephp/janephp/pull/487)  Can not call getName when type is adders/removers
 
+## [6.3.8] - 2021-05-10
+### Changed
+- [OpenApi] [GH#528](https://github.com/janephp/janephp/pull/528) Added message to exception UnexpectedStatusCodeException
+
+### Fixed
+- [Jane] [GH#530](https://github.com/janephp/janephp/pull/530) Fix usage of PHP-CS-Fixer
+- [OpenApi] [GH#531](https://github.com/janephp/janephp/pull/531) Fix file_exists check
+
+## [6.3.7] - 2021-03-26
+### Fixed
+- [JsonSchema] [GH#521](https://github.com/janephp/janephp/pull/521) Fix normalizer mapping for reserved PHP names in JaneObjectNormalizer
+
+## [6.3.6] - 2021-03-16
+### Fixed
+- [OpenAPI] [GH#513](https://github.com/janephp/janephp/pull/513) Fix method name in exceptions
+- [OpenAPI] [GH#514](https://github.com/janephp/janephp/pull/514) Fix high level exception that can start with number
+
 ## [6.3.5] - 2021-03-12
 ### Fixed
 - [OpenAPI] [GH#511](https://github.com/janephp/janephp/pull/511) Fix `is_file` char limit
@@ -487,7 +504,10 @@ See :
  * https://github.com/janephp/jane/releases
  * https://github.com/janephp/openapi/releases
 
-[Unreleased]: https://github.com/janephp/janephp/compare/v6.3.5...HEAD
+[Unreleased]: https://github.com/janephp/janephp/compare/v6.3.8...HEAD
+[6.3.8]: https://github.com/janephp/janephp/compare/v6.3.7...v6.3.8
+[6.3.7]: https://github.com/janephp/janephp/compare/v6.3.6...v6.3.7
+[6.3.6]: https://github.com/janephp/janephp/compare/v6.3.5...v6.3.6
 [6.3.5]: https://github.com/janephp/janephp/compare/v6.3.4...v6.3.5
 [6.3.4]: https://github.com/janephp/janephp/compare/v6.3.3...v6.3.4
 [6.3.3]: https://github.com/janephp/janephp/compare/v6.3.2...v6.3.3

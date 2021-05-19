@@ -2,7 +2,7 @@
 
 namespace Jane\Component\OpenApi3\Tests\Expected\Exception;
 
-class 600Exception extends \RuntimeException implements ServerException
+class Custom600Exception extends \RuntimeException implements ServerException
 {
     public function __construct(string $message)
     {

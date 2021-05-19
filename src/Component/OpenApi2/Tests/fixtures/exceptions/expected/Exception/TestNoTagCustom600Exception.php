@@ -2,7 +2,7 @@
 
 namespace Jane\Component\OpenApi2\Tests\Expected\Exception;
 
-class TestNoTag600Exception extends 600Exception
+class TestNoTagCustom600Exception extends Custom600Exception
 {
     public function __construct()
     {

@@ -118,9 +118,7 @@ class NormalizerGenerator implements GeneratorInterface
             $useStmts[] = $normalizerClass;
 
             $namespace = new Stmt\Namespace_(new Name($schema->getNamespace() . '\\Normalizer'), $useStmts);
-
-            $normalizers[$modelFqdn] = $schema->getNamespace() . '\\Normalizer\\' . $class->getName() . 'Normalizer';
-
+            $normalizers[$modelFqdn] = $schema->getNamespace() . '\\Normalizer\\' . $normalizerClass->name;
             $schema->addFile(new File($schema->getDirectory() . '/Normalizer/' . $normalizerClass->name . '.php', $namespace, self::FILE_TYPE_NORMALIZER));
         }
 
