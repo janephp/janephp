@@ -1,13 +1,10 @@
 {
-    "bootstrap": "bootstrap.php",
-    "path": "src/Benchmark",
-    "reports": {
+    "runner.bootstrap": "bootstrap.php",
+    "runner.path": "src/Benchmark",
+    "report.generators": {
         "bench": {
             "extends": "aggregate",
-            "break": ["params"],
-            "cols": [ "suite", "benchmark", "mean", "diff", "worst", "best", "mem_real" ],
-            "sort": {"mean": "asc"}
+            "cols": [ "benchmark", "its", "revs", "mean", "stdev", "worst", "best", "mem_peak" ]
         }
-    },
-    "php_wrapper": "blackfire run -q"
+    }
 }
