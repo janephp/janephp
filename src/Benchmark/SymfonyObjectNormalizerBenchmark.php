@@ -11,6 +11,7 @@ use PhpBench\Benchmark\Metadata\Annotations\Revs;
 use PhpBench\Benchmark\Metadata\Annotations\Warmup;
 use Symfony\Component\Cache\Adapter\FilesystemAdapter;
 use Symfony\Component\PropertyAccess\PropertyAccess;
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Mapping\Factory\CacheClassMetadataFactory;
 use Symfony\Component\Serializer\Mapping\Factory\ClassMetadataFactory;
 use Symfony\Component\Serializer\Mapping\Loader\AnnotationLoader;
@@ -24,7 +25,7 @@ use Symfony\Component\Serializer\Serializer;
  * @Revs(60)
  * @Iterations(60)
  */
-class ObjectNormalizerBenchmark
+class SymfonyObjectNormalizerBenchmark
 {
     private $objectNormalizer;
 
@@ -39,7 +40,10 @@ class ObjectNormalizerBenchmark
             ->setCacheItemPool(new FilesystemAdapter('SymfonyPropertyAccessor'))
             ->getPropertyAccessor();
 
-        $this->objectNormalizer = new Serializer([new DateTimeNormalizer(), new ObjectNormalizer($classMetadataFactory, null, $propertyAccessor)], []);
+        $this->objectNormalizer = new Serializer(
+            [new DateTimeNormalizer(), new ObjectNormalizer($classMetadataFactory, null, $propertyAccessor)],
+            [new JsonEncoder()]
+        );
     }
 
     public function benchObjectNormalizer()
@@ -50,6 +54,6 @@ class ObjectNormalizerBenchmark
         $user->address = $address;
         $user->addresses[] = $address;
 
-        $this->objectNormalizer->normalize($user);
+        $this->objectNormalizer->normalize($user, 'json');
     }
 }

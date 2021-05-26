@@ -23,7 +23,7 @@ use Symfony\Component\Serializer\Mapping\Loader\AnnotationLoader;
  * @Revs(60)
  * @Iterations(60)
  */
-class AutoMapperBenchmark
+class JaneAutoMapperBenchmark
 {
     private $autoMapper;
 
@@ -48,6 +48,6 @@ class AutoMapperBenchmark
         $user->address = $address;
         $user->addresses[] = $address;
 
-        $this->autoMapper->map($user, 'array');
+        json_encode($this->autoMapper->map($user, 'array'));
     }
 }
