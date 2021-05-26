@@ -1,13 +1,18 @@
 {
-    "bootstrap": "bootstrap.php",
-    "path": "src/Benchmark",
-    "reports": {
+    "runner.bootstrap": "bootstrap.php",
+    "runner.path": "src/Benchmark",
+    "report.generators": {
         "bench": {
             "extends": "aggregate",
-            "break": ["params"],
-            "cols": [ "suite", "benchmark", "mean", "diff", "worst", "best", "mem_real" ],
-            "sort": {"mean": "asc"}
+            "cols": {
+                "benchmark": null,
+                "its": null,
+                "revs": null,
+                "mean": null,
+                "worst": null,
+                "best": null,
+                "diff": "percent_diff(mode(suite[subject_name = \"benchAutoMapper\"][\"result_time_avg\"]), mode(result_time_avg))"
+            }
         }
-    },
-    "php_wrapper": "blackfire run -q"
+    }
 }
