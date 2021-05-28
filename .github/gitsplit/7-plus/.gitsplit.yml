@@ -7,6 +7,12 @@ splits:
     prefix: "src/Bundle/AutoMapperBundle"
     target: "https://${GH_TOKEN}@github.com/janephp/automapper-bundle.git"
   -
+    prefix: "src/Bundle/JsonSchemaBundle"
+    target: "https://${GH_TOKEN}@github.com/janephp/json-schema-bundle.git"
+  -
+    prefix: "src/Bundle/OpenApiBundle"
+    target: "https://${GH_TOKEN}@github.com/janephp/open-api-bundle.git"
+  -
     prefix: "src/Bridge/ApiPlatform"
     target: "https://${GH_TOKEN}@github.com/janephp/apiplatform-bridge.git"
   -

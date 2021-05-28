@@ -1,0 +1,49 @@
+{
+    "name": "jane-php/json-schema-bundle",
+    "type": "library",
+    "description": "Jane JsonSchema Symfony Bundle",
+    "keywords": ["bundle", "symfony"],
+    "homepage": "https://github.com/janephp/janephp",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Baptiste Leduc",
+            "email": "baptiste.leduc@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^7.2 || ^8.0",
+        "jane-php/json-schema": "~7.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^8.0",
+        "symfony/framework-bundle": "^4.4 || ^5.0"
+    },
+    "conflict": {
+        "symfony/framework-bundle": "5.1.0"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-next": "7-dev"
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Jane\\Bundle\\JsonSchemaBundle\\": ""
+        },
+        "exclude-from-classmap": [
+            "/Tests/"
+        ]
+    },
+    "autoload-dev": {
+        "classmap": [
+            "Tests/Resources/app/AppKernel.php"
+        ]
+    },
+    "config": {
+        "process-timeout": 1800,
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
