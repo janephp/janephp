@@ -97,6 +97,7 @@ EOH
         $command = new FixCommand(new ToolInfo());
         $config = [
             'path' => [$path],
+            '--allow-risky' => true,
         ];
 
         if (!empty($this->fixerConfig)) {
