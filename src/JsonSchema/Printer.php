@@ -104,7 +104,7 @@ EOH
         if (!empty($this->fixerConfig)) {
             $config['--config'] = $this->fixerConfig;
         } else {
-            $config['--allow-risky'] = true;
+            $config['--allow-risky'] = 'yes';
             $config['--rules'] = $this->getDefaultRules();
         }
 
