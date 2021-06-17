@@ -16,7 +16,7 @@ In PHP libraries and application mapping from one object to another is fairly co
 
 The goal of this component is to offer an abstraction on top of this subject. For that goal it provides an unique interface (other code is only implementation detail):
 
-```
+```php
 interface AutoMapperInterface
 {
     /**
@@ -40,7 +40,7 @@ Current implementation handle all of those possiblities at the exception of the 
 ## Usage
 Someone who wants to map an object will only have to do this:
 
-```
+```php
 // With class name
 $target = $automapper->map($source, Foo::class);
 // With existing object
@@ -56,7 +56,7 @@ $target = $automapper->map($source, Foo::class);
 ## Context
 Context object allow to pass options for the mapping:
 
-```
+```php
 // Using context
 $context = new Context();
 $target = $automapper->map($source, Foo::class, $context);
@@ -80,7 +80,7 @@ This component map nested class when it's possible.
 ### Circular Reference
 Default circular reference implementation is to keep them during mapping, which means somethings like:
 
-```
+```php
 $foo = new Foo();
 $foo->setFoo($foo);
 
@@ -91,7 +91,7 @@ will produce an array where the `foo` property will be a reference to the parent
 
 Having that allow using this component as a DeepCloning service by mapping to the same object:
 
-```
+```php
 $foo = new Foo();
 $foo->setFoo($foo);
 
@@ -128,7 +128,7 @@ Benchmark on the component on serializer part only (code source here [joelwurtz/
 
 The component ships a Bundle to allow a quick integration with Symfony.
 To use it, you just have to add the main bundle class to your `config/bundles.php` file.
-```
+```php
 return [
     // ...
     Jane\Component\AutoMapper\Bundle\JaneAutoMapperBundle::class => ['all' => true],
@@ -136,7 +136,7 @@ return [
 ```
 
 Then configure the bundle to your needs, for example:
-```
+```yaml
 jane_auto_mapper:
   autoregister: true
   mappings:
@@ -164,7 +164,7 @@ Things that could be done later:
 
 PHP 7.4 may give a problem to the symfony/validator component where typed properties can be problem, given a class like this:
 
-```
+```php
 class Foo {
     /** @Assert\NotNull() */
     public int $foo;
