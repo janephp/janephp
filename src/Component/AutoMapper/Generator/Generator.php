@@ -309,7 +309,9 @@ final class Generator
             return [[new Stmt\Expression(new Expr\Assign($result, new Expr\Array_()))], [], [], []];
         }
 
-        if (\stdClass::class === $target) {
+        if (\stdClass::class === $target && \stdClass::class === $source) {
+            return [[new Stmt\Expression(new Expr\Assign($result, new Expr\FuncCall(new Name('unserialize'), [new Arg(new Expr\FuncCall(new Name('serialize'), [new Arg($sourceInput)]))])))], [], [], []];
+        } else if (\stdClass::class === $target) {
             return [[new Stmt\Expression(new Expr\Assign($result, new Expr\New_(new Name(\stdClass::class))))], [], [], []];
         }
 

@@ -132,6 +132,21 @@ class AutoMapperTest extends AutoMapperBaseTest
         self::assertEquals(1, $user->id);
     }
 
+    public function testAutoMapperStdObjectToStdObject(): void
+    {
+        $user = new \stdClass();
+        $user->id = 1;
+        $nestedStd = new \stdClass();
+        $nestedStd->id = 2;
+        $user->nestedStd = $nestedStd;
+        $userStd = $this->autoMapper->map($user, \stdClass::class);
+
+        self::assertInstanceOf(\stdClass::class, $userStd);
+        self::assertNotSame($user, $userStd);
+        self::assertNotSame($user->nestedStd, $userStd->nestedStd);
+        self::assertEquals($user, $userStd);
+    }
+
     public function testNotReadable(): void
     {
         $autoMapper = AutoMapper::create(false, $this->loader, null, 'NotReadable_');
