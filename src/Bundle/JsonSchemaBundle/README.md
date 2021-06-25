@@ -5,6 +5,6 @@ To use it, you just have to add the main bundle class to your `config/bundles.ph
 ```
 return [
     // ...
-    Jane\Bundle\AutoMapper\JaneJsonSchemaBundle::class => ['dev' => true],
+    Jane\Bundle\JsonSchemaBundle\JaneJsonSchemaBundle::class => ['dev' => true],
 ];
 ```
