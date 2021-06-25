@@ -12,6 +12,8 @@ $dirs = PhpCsFixer\Finder::create()
     ->exclude('Component/OpenApi3/Tests/client/generated')
     ->exclude('Component/AutoMapper/Tests/cache')
     ->exclude('Bundle/AutoMapperBundle/Tests/Resources')
+    ->exclude('Bundle/JsonSchemaBundle/Tests/Resources')
+    ->exclude('Bundle/OpenApiBundle/Tests/Resources')
     ->exclude('cache')
     ->in(__DIR__ . '/src')
 ;

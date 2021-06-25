@@ -17,7 +17,7 @@ class Configuration implements ConfigurationInterface
         $this->debug = $debug;
     }
 
-    public function getConfigTreeBuilder()
+    public function getConfigTreeBuilder(): TreeBuilder
     {
         $treeBuilder = new TreeBuilder('jane_auto_mapper');
         $rootNode = $treeBuilder->getRootNode($treeBuilder, 'jane_auto_mapper');
@@ -27,7 +27,7 @@ class Configuration implements ConfigurationInterface
                 ->booleanNode('normalizer')->defaultFalse()->end()
                 ->scalarNode('name_converter')->defaultNull()->end()
                 ->scalarNode('cache_dir')->defaultValue('%kernel.cache_dir%/automapper')->end()
-                ->scalarNode('date_time_format')->defaultValue(\DateTime::RFC3339)->end()
+                ->scalarNode('date_time_format')->defaultValue(\DateTimeInterface::RFC3339)->end()
                 ->booleanNode('hot_reload')->defaultValue($this->debug)->end()
             ->end()
         ;
