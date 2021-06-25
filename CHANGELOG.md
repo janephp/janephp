@@ -6,8 +6,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+## [7.1.0] - 2021-06-25
 ### Added
-- Added JsonSchema & OpenApi bundles
+- [Jane] [GH#537](https://github.com/janephp/janephp/pull/537) Added JsonSchema & OpenApi bundles
+- [AutoMapper] [GH#546](https://github.com/janephp/janephp/pull/546) Add stdClass to stdClass transformation support
+
+### Changed
+- [AutoMapper] [GH#536](https://github.com/janephp/janephp/pull/536) Update benchmark scripts
+
+### Fixed
+- [OpenAPI] [GH#543](https://github.com/janephp/janephp/pull/543) Fix jane-openapi binary file
 
 ## [7.0.0] - 2021-05-19
 ### Added
@@ -30,7 +39,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [6.3.8] - 2021-05-10
 ### Changed
-- [OpenApi] [GH#528](https://github.com/janephp/janephp/pull/528) Added message to exception UnexpectedStatusCodeException
+- [OpenAPI] [GH#528](https://github.com/janephp/janephp/pull/528) Added message to exception UnexpectedStatusCodeException
 
 ### Fixed
 - [Jane] [GH#530](https://github.com/janephp/janephp/pull/530) Fix usage of PHP-CS-Fixer
@@ -508,7 +517,8 @@ See :
  * https://github.com/janephp/jane/releases
  * https://github.com/janephp/openapi/releases
 
-[Unreleased]: https://github.com/janephp/janephp/compare/v7.0.0...HEAD
+[Unreleased]: https://github.com/janephp/janephp/compare/v7.1.0...HEAD
+[7.1.0]: https://github.com/janephp/janephp/compare/v7.0.0...v7.1.0
 [7.0.0]: https://github.com/janephp/janephp/compare/v6.3.8...v7.0.0
 [6.3.8]: https://github.com/janephp/janephp/compare/v6.3.7...v6.3.8
 [6.3.7]: https://github.com/janephp/janephp/compare/v6.3.6...v6.3.7
