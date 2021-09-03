@@ -52,7 +52,14 @@
         </service>
         <service id="Jane\Component\AutoMapper\Loader\ClassLoaderInterface" alias="Jane\Component\AutoMapper\Loader\FileLoader" />
 
-        <service id="Jane\Component\AutoMapper\Generator\Generator" />
+        <service id="Jane\Component\AutoMapper\Generator\Generator">
+            <argument>null</argument>
+            <argument type="service" id="jane.mapping.class_discriminator_from_class_metadata" />
+        </service>
+
+        <service id="jane.mapping.class_discriminator_from_class_metadata" class="Symfony\Component\Serializer\Mapping\ClassDiscriminatorFromClassMetadata">
+            <argument type="service" id="serializer.mapping.class_metadata_factory" />
+        </service>
 
         <service id="Jane\Component\AutoMapper\Transformer\ChainTransformerFactory" />
         <service id="Jane\Component\AutoMapper\Transformer\TransformerFactoryInterface" alias="Jane\Component\AutoMapper\Transformer\ChainTransformerFactory" />

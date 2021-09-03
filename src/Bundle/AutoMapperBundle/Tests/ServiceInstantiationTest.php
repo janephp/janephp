@@ -68,4 +68,20 @@ class ServiceInstantiationTest extends WebTestCase
         self::assertEquals(1000, $order->price->getAmount());
         self::assertEquals('EUR', $order->price->getCurrency()->getCode());
     }
+
+    public function testDiscriminator(): void
+    {
+        static::bootKernel();
+        $container = static::$kernel->getContainer();
+        $this->assertTrue($container->has(AutoMapperInterface::class));
+        $autoMapper = $container->get(AutoMapperInterface::class);
+        $this->assertInstanceOf(AutoMapperInterface::class, $autoMapper);
+
+        $data = [
+            'type' => 'cat',
+        ];
+
+        $pet = $autoMapper->map($data, Fixtures\Pet::class);
+        self::assertInstanceOf(Fixtures\Cat::class, $pet);
+    }
 }
