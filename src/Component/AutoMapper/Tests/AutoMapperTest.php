@@ -7,6 +7,7 @@ use Jane\Component\AutoMapper\Exception\CircularReferenceException;
 use Jane\Component\AutoMapper\Exception\NoMappingFoundException;
 use Jane\Component\AutoMapper\MapperContext;
 use Jane\Component\AutoMapper\Tests\Fixtures\Order;
+use Jane\Component\AutoMapper\Tests\Fixtures\PetOwner;
 use Jane\Component\AutoMapper\Tests\Fixtures\Transformer\MoneyTransformerFactory;
 use Symfony\Component\Serializer\NameConverter\AdvancedNameConverterInterface;
 use Symfony\Component\Uid\Ulid;
@@ -875,5 +876,39 @@ class AutoMapperTest extends AutoMapperBaseTest
         /** @var Fixtures\SkipNullValues\Entity $entity */
         $entity = $this->autoMapper->map($input, $entity, ['skip_null_values' => true]);
         self::assertEquals('foobar', $entity->getName());
+    }
+
+    public function testAdderAndRemover()
+    {
+        $petOwner = [
+            'pets' => [
+                ['type' => 'cat', 'name' => 'Félix'],
+                ['type' => 'dog', 'name' => 'Coco'],
+            ],
+        ];
+
+        $petOwnerData = $this->autoMapper->map($petOwner, PetOwner::class);
+
+        self::assertIsArray($petOwnerData->getPets());
+        self::assertCount(2, $petOwnerData->getPets());
+        self::assertSame('Félix', $petOwnerData->getPets()[0]->name);
+        self::assertSame('cat', $petOwnerData->getPets()[0]->type);
+        self::assertSame('Coco', $petOwnerData->getPets()[1]->name);
+        self::assertSame('dog', $petOwnerData->getPets()[1]->type);
+    }
+
+    public function testAdderAndRemoverWithNull()
+    {
+        $petOwner = [
+            'pets' => [
+                null,
+                null,
+            ],
+        ];
+
+        $petOwnerData = $this->autoMapper->map($petOwner, PetOwner::class);
+
+        self::assertIsArray($petOwnerData->getPets());
+        self::assertCount(0, $petOwnerData->getPets());
     }
 }

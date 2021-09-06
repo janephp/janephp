@@ -14,4 +14,10 @@ class Pet
 {
     /** @var string */
     public $type;
+
+    /** @var string */
+    public $name;
+
+    /** @var PetOwner */
+    public $owner;
 }

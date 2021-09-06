@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ### Fixed
 - [Jane] [GH#554](https://github.com/janephp/janephp/pull/554) Relax dependency constraints for 7.1 upgrade
+- [AutoMapper] [GH#553](https://github.com/janephp/janephp/pull/553) Fix generated Mappers with adder calls
 
 ## [7.1.0] - 2021-06-25
 ### Added
