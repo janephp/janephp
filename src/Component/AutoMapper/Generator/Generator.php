@@ -4,6 +4,7 @@ namespace Jane\Component\AutoMapper\Generator;
 
 use Jane\Component\AutoMapper\AutoMapperRegistryInterface;
 use Jane\Component\AutoMapper\Exception\CompileException;
+use Jane\Component\AutoMapper\Extractor\WriteMutator;
 use Jane\Component\AutoMapper\GeneratedMapper;
 use Jane\Component\AutoMapper\MapperContext;
 use Jane\Component\AutoMapper\MapperGeneratorMetadataInterface;
@@ -144,13 +145,16 @@ final class Generator
 
             $sourcePropertyAccessor = $propertyMapping->getReadAccessor()->getExpression($sourceInput);
             [$output, $propStatements] = $transformer->transform($sourcePropertyAccessor, $result, $propertyMapping, $uniqueVariableScope);
-            $writeExpression = $propertyMapping->getWriteMutator()->getExpression($result, $output, $transformer instanceof AssignedByReferenceTransformerInterface ? $transformer->assignByRef() : false);
 
-            if (null === $writeExpression) {
-                continue;
+            if ($propertyMapping->getWriteMutator()->getType() !== WriteMutator::TYPE_ADDER_AND_REMOVER) {
+                $writeExpression = $propertyMapping->getWriteMutator()->getExpression($result, $output, $transformer instanceof AssignedByReferenceTransformerInterface ? $transformer->assignByRef() : false);
+                if (null === $writeExpression) {
+                    continue;
+                }
+
+                $propStatements[] = new Stmt\Expression($writeExpression);
             }
 
-            $propStatements[] = new Stmt\Expression($writeExpression);
             $conditions = [];
 
             $extractCallback = $propertyMapping->getReadAccessor()->getExtractCallback($mapperGeneratorMetadata->getSource());

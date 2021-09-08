@@ -21,6 +21,7 @@ final class WriteMutator
     public const TYPE_PROPERTY = 2;
     public const TYPE_ARRAY_DIMENSION = 3;
     public const TYPE_CONSTRUCTOR = 4;
+    public const TYPE_ADDER_AND_REMOVER = 5;
 
     private $type;
     private $name;
@@ -47,7 +48,7 @@ final class WriteMutator
      */
     public function getExpression(Expr\Variable $output, Expr $value, bool $byRef = false): ?Expr
     {
-        if (self::TYPE_METHOD === $this->type) {
+        if (self::TYPE_METHOD === $this->type || self::TYPE_ADDER_AND_REMOVER === $this->type) {
             return new Expr\MethodCall($output, $this->name, [
                 new Arg($value),
             ]);

@@ -3,8 +3,10 @@
 namespace Jane\Component\AutoMapper\Transformer;
 
 use Jane\Component\AutoMapper\Extractor\PropertyMapping;
+use Jane\Component\AutoMapper\Extractor\WriteMutator;
 use Jane\Component\AutoMapper\Generator\UniqueVariableScope;
 use PhpParser\Node\Expr;
+use PhpParser\Node\Name;
 use PhpParser\Node\Stmt;
 
 /**
@@ -37,7 +39,18 @@ abstract class AbstractArrayTransformer implements TransformerInterface, Depende
         $assignByRef = $this->itemTransformer instanceof AssignedByReferenceTransformerInterface ? $this->itemTransformer->assignByRef() : false;
 
         [$output, $itemStatements] = $this->itemTransformer->transform($loopValueVar, $target, $propertyMapping, $uniqueVariableScope);
-        $itemStatements[] = new Stmt\Expression($this->getAssignExpr($valuesVar, $output, $loopKeyVar, $assignByRef));
+
+        if ($propertyMapping->getWriteMutator() && $propertyMapping->getWriteMutator()->getType() === WriteMutator::TYPE_ADDER_AND_REMOVER) {
+            $mappedValueVar = new Expr\Variable($uniqueVariableScope->getUniqueName('mappedValue'));
+            $itemStatements[] = new Stmt\Expression(new Expr\Assign($mappedValueVar, $output));
+            $itemStatements[] = new Stmt\If_(new Expr\BinaryOp\NotIdentical(new Expr\ConstFetch(new Name('null')), $mappedValueVar), [
+                'stmts' => [
+                    new Stmt\Expression($propertyMapping->getWriteMutator()->getExpression($target, $mappedValueVar, $assignByRef)),
+                ],
+            ]);
+        } else {
+            $itemStatements[] = new Stmt\Expression($this->getAssignExpr($valuesVar, $output, $loopKeyVar, $assignByRef));
+        }
 
         $statements[] = new Stmt\Foreach_($input, $loopValueVar, [
             'stmts' => $itemStatements,
