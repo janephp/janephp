@@ -10,7 +10,7 @@ Add this library with composer as a ``dev`` dependency:
 
 .. code-block:: bash
 
-    composer require --dev jane-php/json-schema "~6.3.0"
+    composer require --dev jane-php/json-schema
 
 This library contains a lot of dependencies to be able to generate code which are not needed on runtime. However, the
 generated code depends on other libraries and a few classes that are available through the runtime package. It is highly
@@ -18,7 +18,7 @@ recommended to add the runtime dependency as a requirement through composer:
 
 .. code-block:: bash
 
-    composer require jane-php/json-schema-runtime "~6.3.0"
+    composer require jane-php/json-schema-runtime
 
 With Symfony ecosystem, we created a recipe to make it easier to use Jane. You just have to allow contrib recipes before
 installing our packages:

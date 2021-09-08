@@ -24,7 +24,7 @@
         "php": "^7.2 || ^8.0",
         "ext-json": "*",
         "doctrine/inflector": "^1.4 || ^2.0",
-        "jane-php/json-schema-runtime": "~7.0.0",
+        "jane-php/json-schema-runtime": "^7.0",
         "nikic/php-parser": "^4.0",
         "symfony/console": "^4.4 || ^5.0",
         "symfony/filesystem": "^4.4 || ^5.0",
