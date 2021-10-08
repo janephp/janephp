@@ -40,6 +40,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - [AutoMapper] [GH#461](https://github.com/janephp/janephp/pull/461) Transformer arguments typo
 - [AutoMapper] [GH#487](https://github.com/janephp/janephp/pull/487)  Can not call getName when type is adders/removers
 
+## [6.3.9] - 2021-10-08
+### Added
+- [JsonSchema] [GH#556](https://github.com/janephp/janephp/pull/556) Support for $defs field
+
+### Fixed
+- [JsonSchema] [GH#542](https://github.com/janephp/janephp/pull/542) Fix cs fixer >= 3 compatibility
+
 ## [6.3.8] - 2021-05-10
 ### Changed
 - [OpenAPI] [GH#528](https://github.com/janephp/janephp/pull/528) Added message to exception UnexpectedStatusCodeException
@@ -523,6 +530,7 @@ See :
 [Unreleased]: https://github.com/janephp/janephp/compare/v7.1.0...HEAD
 [7.1.0]: https://github.com/janephp/janephp/compare/v7.0.0...v7.1.0
 [7.0.0]: https://github.com/janephp/janephp/compare/v6.3.8...v7.0.0
+[6.3.9]: https://github.com/janephp/janephp/compare/v6.3.8...v6.3.9
 [6.3.8]: https://github.com/janephp/janephp/compare/v6.3.7...v6.3.8
 [6.3.7]: https://github.com/janephp/janephp/compare/v6.3.6...v6.3.7
 [6.3.6]: https://github.com/janephp/janephp/compare/v6.3.5...v6.3.6

@@ -1,0 +1,34 @@
+{
+    "id": "http://json-schema.org/draft-04/schema#",
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "description": "Schema with definitions",
+    "$defs": {
+        "Foo": {
+            "type": "object",
+            "properties": {
+                "foo": {
+                    "type": "string"
+                }
+            }
+        },
+        "Bar": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "bar": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "hello.world": {
+            "type": "object",
+            "properties": {
+                "foo": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}
