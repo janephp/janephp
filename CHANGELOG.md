@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+## [6.3.9] - 2021-10-08
 ### Added
 - [JsonSchema] [GH#556](https://github.com/janephp/janephp/pull/556) Support for $defs field
 
@@ -492,7 +494,8 @@ See :
  * https://github.com/janephp/jane/releases
  * https://github.com/janephp/openapi/releases
 
-[Unreleased]: https://github.com/janephp/janephp/compare/v6.3.8...HEAD
+[Unreleased]: https://github.com/janephp/janephp/compare/v6.3.9...HEAD
+[6.3.9]: https://github.com/janephp/janephp/compare/v6.3.8...v6.3.9
 [6.3.8]: https://github.com/janephp/janephp/compare/v6.3.7...v6.3.8
 [6.3.7]: https://github.com/janephp/janephp/compare/v6.3.6...v6.3.7
 [6.3.6]: https://github.com/janephp/janephp/compare/v6.3.5...v6.3.6
