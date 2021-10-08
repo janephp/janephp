@@ -2,7 +2,7 @@
 
 namespace Jane\JsonSchema\Tests\Expected\Runtime\Normalizer;
 
-use Jane\JsonSchemaRuntime\Reference;
+use Jane\Component\JsonSchemaRuntime\Reference;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 class ReferenceNormalizer implements NormalizerInterface
 {
