@@ -81,7 +81,9 @@ EOH
             ],
         ];
 
-        if (version_compare(\PhpCsFixer\Console\Application::VERSION, '2.6.0', '>=')) {
+        if (version_compare(\PhpCsFixer\Console\Application::VERSION, '3.0.0', '>=')) {
+            $rules['yoda_style'] = false;
+        } elseif (version_compare(\PhpCsFixer\Console\Application::VERSION, '2.6.0', '>=')) {
             $rules['yoda_style'] = null;
         }
 
@@ -102,6 +104,7 @@ EOH
         if (!empty($this->fixerConfig)) {
             $config['--config'] = $this->fixerConfig;
         } else {
+            $config['--allow-risky'] = 'yes';
             $config['--rules'] = $this->getDefaultRules();
         }
 
