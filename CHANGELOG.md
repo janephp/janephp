@@ -9,6 +9,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - [JsonSchema] [GH#556](https://github.com/janephp/janephp/pull/556) Support for $defs field
 
+### Fixed
+- [JsonSchema] [GH#542](https://github.com/janephp/janephp/pull/542) Fix cs fixer >= 3 compatibility
+
 ## [6.3.8] - 2021-05-10
 ### Changed
 - [OpenApi] [GH#528](https://github.com/janephp/janephp/pull/528) Added message to exception UnexpectedStatusCodeException
