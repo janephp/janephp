@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+## [7.1.1] - 2021-10-08
 ### Fixed
 - [Jane] [GH#554](https://github.com/janephp/janephp/pull/554) Relax dependency constraints for 7.1 upgrade
 - [AutoMapper] [GH#553](https://github.com/janephp/janephp/pull/553) Fix generated Mappers with adder calls
@@ -527,7 +529,8 @@ See :
  * https://github.com/janephp/jane/releases
  * https://github.com/janephp/openapi/releases
 
-[Unreleased]: https://github.com/janephp/janephp/compare/v7.1.0...HEAD
+[Unreleased]: https://github.com/janephp/janephp/compare/v7.1.1...HEAD
+[7.1.1]: https://github.com/janephp/janephp/compare/v7.1.0...v7.1.1
 [7.1.0]: https://github.com/janephp/janephp/compare/v7.0.0...v7.1.0
 [7.0.0]: https://github.com/janephp/janephp/compare/v6.3.8...v7.0.0
 [6.3.9]: https://github.com/janephp/janephp/compare/v6.3.8...v6.3.9
