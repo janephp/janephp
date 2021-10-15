@@ -46,6 +46,10 @@ final class SymfonyUidTransformerFactory extends AbstractUniqueTypeTransformerFa
             return false;
         }
 
+        if (null === $type->getClassName()) {
+            return false;
+        }
+
         if (!\array_key_exists($type->getClassName(), $this->reflectionCache)) {
             $reflClass = new \ReflectionClass($type->getClassName());
             $this->reflectionCache[$type->getClassName()] = [$reflClass->isSubclassOf(AbstractUid::class), $type->getClassName() === Ulid::class];
