@@ -27,7 +27,7 @@ jobs:
     strategy:
       max-parallel: 15
       matrix:
-        php-versions:  ['7.2', '7.3', '7.4', '8.0']
+        php-versions:  ['7.2', '7.3', '7.4', '8.0', '8.1']
     name: tests-${{ matrix.php-versions }}
     steps:
       - name: checkout
