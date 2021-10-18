@@ -12,7 +12,7 @@ use Symfony\Component\Uid\Ulid;
 
 class SymfonyUidTransformerFactoryTest extends TestCase
 {
-    public function testNoTransformer()
+    public function testNoTransformer(): void
     {
         $factory = new SymfonyUidTransformerFactory();
         $mapperMetadata = $this->getMockBuilder(MapperMetadata::class)->disableOriginalConstructor()->getMock();
@@ -22,7 +22,7 @@ class SymfonyUidTransformerFactoryTest extends TestCase
         self::assertNull($transformer);
     }
 
-    public function testGetUlidCopyTransformer()
+    public function testGetUlidCopyTransformer(): void
     {
         $factory = new SymfonyUidTransformerFactory();
         $mapperMetadata = $this->getMockBuilder(MapperMetadata::class)->disableOriginalConstructor()->getMock();
