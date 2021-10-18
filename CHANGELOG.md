@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [7.1.2] - 2021-10-18
+### Fixed
+- [AutoMapper] [GH#560](https://github.com/janephp/janephp/pull/560) Fix fail on generic object without explicit classname
+
 ## [7.1.1] - 2021-10-08
 ### Fixed
 - [Jane] [GH#554](https://github.com/janephp/janephp/pull/554) Relax dependency constraints for 7.1 upgrade
@@ -529,7 +533,8 @@ See :
  * https://github.com/janephp/jane/releases
  * https://github.com/janephp/openapi/releases
 
-[Unreleased]: https://github.com/janephp/janephp/compare/v7.1.1...HEAD
+[Unreleased]: https://github.com/janephp/janephp/compare/v7.1.2...HEAD
+[7.1.2]: https://github.com/janephp/janephp/compare/v7.1.1...v7.1.2
 [7.1.1]: https://github.com/janephp/janephp/compare/v7.1.0...v7.1.1
 [7.1.0]: https://github.com/janephp/janephp/compare/v7.0.0...v7.1.0
 [7.0.0]: https://github.com/janephp/janephp/compare/v6.3.8...v7.0.0
