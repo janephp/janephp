@@ -3,11 +3,10 @@
 namespace Jane\Component\AutoMapper\Tests\Transformer;
 
 use Jane\Component\AutoMapper\MapperMetadata;
-use Jane\Component\AutoMapper\Transformer\SymfonyUidTransformerFactory;
 use Jane\Component\AutoMapper\Transformer\SymfonyUidCopyTransformer;
+use Jane\Component\AutoMapper\Transformer\SymfonyUidTransformerFactory;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\PropertyInfo\Type;
-use Symfony\Component\Uid\AbstractUid;
 use Symfony\Component\Uid\Ulid;
 
 class SymfonyUidTransformerFactoryTest extends TestCase
@@ -28,8 +27,8 @@ class SymfonyUidTransformerFactoryTest extends TestCase
         $mapperMetadata = $this->getMockBuilder(MapperMetadata::class)->disableOriginalConstructor()->getMock();
 
         $transformer = $factory->getTransformer(
-            [new Type('object', false, Ulid::class)], 
-            [new Type('object', false, Ulid::class)], 
+            [new Type('object', false, Ulid::class)],
+            [new Type('object', false, Ulid::class)],
             $mapperMetadata
         );
 
