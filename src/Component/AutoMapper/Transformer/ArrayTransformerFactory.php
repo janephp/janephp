@@ -32,14 +32,14 @@ final class ArrayTransformerFactory extends AbstractUniqueTypeTransformerFactory
             return null;
         }
 
-        if (null === $sourceType->getCollectionValueType() || null === $targetType->getCollectionValueType()) {
+        if (null === $sourceType->getCollectionValueTypes() || null === $targetType->getCollectionValueTypes()) {
             return new CopyTransformer();
         }
 
-        $subItemTransformer = $this->chainTransformerFactory->getTransformer([$sourceType->getCollectionValueType()], [$targetType->getCollectionValueType()], $mapperMetadata);
+        $subItemTransformer = $this->chainTransformerFactory->getTransformer([$sourceType->getCollectionValueTypes()], [$targetType->getCollectionValueTypes()], $mapperMetadata);
 
         if (null !== $subItemTransformer) {
-            if (Type::BUILTIN_TYPE_INT !== $sourceType->getCollectionKeyType()->getBuiltinType()) {
+            if (Type::BUILTIN_TYPE_INT !== $sourceType->getCollectionKeyTypes()->getBuiltinType()) {
                 return new DictionaryTransformer($subItemTransformer);
             }
 
