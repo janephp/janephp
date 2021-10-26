@@ -125,13 +125,16 @@ final class FromTargetMappingExtractor extends MappingExtractor
             $builtinType = 'string';
         }
 
+        [$keyType] = $type->getCollectionKeyTypes();
+        [$valueType] = $type->getCollectionValueTypes();
+
         return new Type(
             $builtinType,
             $type->isNullable(),
             $className,
             $type->isCollection(),
-            $this->transformType($source, $type->getCollectionKeyTypes()),
-            $this->transformType($source, $type->getCollectionValueTypes())
+            $this->transformType($source, $keyType),
+            $this->transformType($source, $valueType)
         );
     }
 }
