@@ -3,6 +3,7 @@
 namespace Jane\Component\OpenApi3;
 
 use Jane\Component\JsonSchema\Generator\Naming;
+use Jane\Component\JsonSchema\Generator\ValidatorGenerator;
 use Jane\Component\OpenApi3\Generator\EndpointGenerator;
 use Jane\Component\OpenApi3\Generator\GeneratorFactory;
 use Jane\Component\OpenApi3\Guesser\OpenApiSchema\GuesserFactory;
@@ -37,9 +38,12 @@ class JaneOpenApi extends CommonJaneOpenApi
         $parser = (new ParserFactory())->create(ParserFactory::PREFER_PHP7);
 
         yield new ModelGenerator($naming, $parser);
-        yield new NormalizerGenerator($naming, $parser, $options['reference'] ?? false, $options['use-cacheable-supports-method'] ?? false, $options['skip-null-values'] ?? true, $options['skip-required-fields'] ?? false);
+        yield new NormalizerGenerator($naming, $parser, $options['reference'] ?? false, $options['use-cacheable-supports-method'] ?? false, $options['skip-null-values'] ?? true, $options['skip-required-fields'] ?? false, $options['validation'] ?? false);
         yield new AuthenticationGenerator();
         yield GeneratorFactory::build($denormalizer, $options['endpoint-generator'] ?: EndpointGenerator::class);
-        yield new RuntimeGenerator($naming, $parser);
+        yield new RuntimeGenerator($naming, $parser, $options['validation'] ?? false);
+        if ($options['validation'] ?? false) {
+            yield new ValidatorGenerator($naming);
+        }
     }
 }

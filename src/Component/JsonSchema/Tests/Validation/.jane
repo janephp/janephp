@@ -1,0 +1,9 @@
+<?php
+
+return [
+    'json-schema-file' => __DIR__ . '/schema.json',
+    'root-class' => 'Model',
+    'namespace' => 'Jane\Component\JsonSchema\Tests\Validation\Generated',
+    'directory' => __DIR__ . '/Generated',
+    'validation' => true,
+];

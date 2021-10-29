@@ -1,0 +1,177 @@
+{
+    "definitions": {
+        "StringObject": {
+            "type": "object",
+            "required": [
+                "enumString",
+                "enumNoType"
+            ],
+            "properties": {
+                "enumString": {
+                    "type": "string",
+                    "enum": [
+                        "foo",
+                        "bar",
+                        "baz"
+                    ]
+                },
+                "enumArrayString": {
+                    "type": [
+                        "string"
+                    ],
+                    "enum": [
+                        "foo",
+                        "bar",
+                        "baz"
+                    ]
+                },
+                "enumNoType": {
+                    "enum": [
+                        "foo",
+                        "bar",
+                        "baz"
+                    ]
+                },
+                "constString": {
+                    "type": "string",
+                    "const": "Michel"
+                },
+                "minLengthString": {
+                    "type": "string",
+                    "minLength": 10
+                },
+                "maxLengthString": {
+                    "type": "string",
+                    "maxLength": 36
+                },
+                "minMaxLengthString": {
+                    "type": "string",
+                    "minLength": 10,
+                    "maxLength": 36
+                },
+                "patternString": {
+                    "type": "string",
+                    "pattern": "[a-z0-9\\-]{36}"
+                }
+            }
+        },
+        "NumericObject": {
+            "type": "object",
+            "properties": {
+                "numericMultipleOf": {
+                    "type": "integer",
+                    "multipleOf": 2
+                },
+                "numericMaximum": {
+                    "type": "integer",
+                    "maximum": 10
+                },
+                "numericExclusiveMaximum": {
+                    "type": "integer",
+                    "exclusiveMaximum": 10
+                },
+                "numericMinimum": {
+                    "type": "integer",
+                    "minimum": 10
+                },
+                "numericExclusiveMinimum": {
+                    "type": "integer",
+                    "exclusiveMinimum": 10
+                }
+            }
+        },
+        "ArrayObject": {
+            "type": "object",
+            "properties": {
+                "arrayMinItems": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "minItems": 1
+                },
+                "arrayMaxItems": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "maxItems": 5
+                },
+                "arrayMinMaxItems": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "minItems": 1,
+                    "maxItems": 5
+                },
+                "arrayUnique": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "uniqueItems": true
+                }
+            }
+        },
+        "ObjectObject": {
+            "type": "object",
+            "properties": {
+                "stringProperty": {
+                    "type": "string"
+                }
+            },
+            "minProperties": 1,
+            "maxProperties": 5
+        },
+        "FormatObject": {
+            "type": "object",
+            "properties": {
+                "emailFormat": {
+                    "type": "string",
+                    "format": "email"
+                },
+                "hostnameFormat": {
+                    "type": "string",
+                    "format": "hostname"
+                },
+                "ipv4Format": {
+                    "type": "string",
+                    "format": "ipv4"
+                },
+                "ipv6Format": {
+                    "type": "string",
+                    "format": "ipv6"
+                },
+                "uriFormat": {
+                    "type": "string",
+                    "format": "uri"
+                },
+                "uuidFormat": {
+                    "type": "string",
+                    "format": "uuid"
+                }
+            }
+        },
+        "TypeObject": {
+            "type": "object",
+            "properties": {
+                "stringProperty": {
+                    "type": "string"
+                },
+                "integerProperty": {
+                    "type": "integer"
+                },
+                "booleanProperty": {
+                    "type": "boolean"
+                },
+                "arrayProperty": {
+                    "type": "array"
+                },
+                "numberProperty": {
+                    "type": "number"
+                }
+            }
+        }
+    }
+}

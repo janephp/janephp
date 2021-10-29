@@ -4,6 +4,8 @@ namespace Jane\Component\JsonSchema\Guesser\Guess;
 
 class Property
 {
+    use ValidatorGuessTrait;
+
     /**
      * @var string
      */

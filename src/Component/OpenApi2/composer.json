@@ -48,7 +48,8 @@
         "friendsofphp/php-cs-fixer": "To have a nice formatting of the generated files"
     },
     "conflict": {
-        "symfony/framework-bundle": "5.1.0"
+        "symfony/framework-bundle": "5.1.0",
+        "nikic/php-parser": "<4.0.4"
     },
     "extra": {
         "branch-alias": {

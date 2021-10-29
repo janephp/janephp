@@ -146,6 +146,7 @@ Other options are available to customize the generated code:
    (``null``). By default it is enabled.
  * ``skip-required-fields``: If your model has required fields, this option allows you to skip the required behavior
    that forces them to be present during denormalization. By default it is disabled.
+ * ``validation``: Will enable validation following JSON Schema validation specification. By default it is disabled.
 
 .. _`JSON Reference`: https://tools.ietf.org/id/draft-pbryan-zyp-json-ref-03.html
 .. _`Carbon`: https://carbon.nesbot.com/

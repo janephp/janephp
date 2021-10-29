@@ -89,9 +89,7 @@ EOD
         $context->refreshScope();
         $dataVariable = new Expr\Variable('data');
         $objectVariable = new Expr\Variable('object');
-        $statements = [];
-
-        $statements = array_merge($statements, $this->normalizeMethodStatements($dataVariable, $classGuess, $context));
+        $statements = $this->normalizeMethodStatements($dataVariable, $classGuess, $context);
 
         /** @var Property $property */
         foreach ($classGuess->getProperties() as $property) {
@@ -150,6 +148,15 @@ EOD
                 'keyVar' => $loopKeyVar,
                 'stmts' => $patternCondition,
             ]);
+        }
+
+        if ($this->validation) {
+            $schema = $context->getCurrentSchema();
+            $validatorFqdn = $schema->getNamespace() . '\\Validator\\' . $this->naming->getValidatorName($classGuess->getName());
+
+            $validatorVariable = new Expr\Variable('validator');
+            $statements[] = new Stmt\Expression(new Expr\Assign($validatorVariable, new Expr\New_(new Name('\\' . $validatorFqdn))));
+            $statements[] = new Stmt\Expression(new Expr\MethodCall($validatorVariable, 'validate', [new Arg($dataVariable)]));
         }
 
         $statements[] = new Stmt\Return_($dataVariable);

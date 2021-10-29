@@ -87,6 +87,11 @@ class Naming
         return $this->getClassName(sprintf('%sAuthentication', $name));
     }
 
+    public function getValidatorName(string $name): string
+    {
+        return $this->getClassName(sprintf('%sValidator', $name));
+    }
+
     public function getRuntimeNamespace(string $schemaNamespace, array $namespace): string
     {
         $namespaceSuffix = '';
