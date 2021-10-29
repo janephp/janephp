@@ -9,6 +9,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
  - Run test suite with PHP 8.1
 
+### Changed
+- [AutoMapper] [GH#564](https://github.com/janephp/janephp/pull/564) Remove deprecations
+
 ## [7.1.2] - 2021-10-18
 ### Fixed
 - [AutoMapper] [GH#560](https://github.com/janephp/janephp/pull/560) Fix fail on generic object without explicit classname

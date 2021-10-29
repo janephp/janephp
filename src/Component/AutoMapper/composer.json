@@ -19,7 +19,7 @@
         "php": "^7.2.5 || ^8.0",
         "doctrine/inflector": "^1.4 || ^2.0",
         "nikic/php-parser": "^4.0",
-        "symfony/property-info": "^5.2",
+        "symfony/property-info": "^5.3",
         "symfony/serializer": "^4.2 || ^5.0"
     },
     "require-dev": {
