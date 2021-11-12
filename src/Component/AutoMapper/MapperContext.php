@@ -206,6 +206,8 @@ class MapperContext
      */
     public static function withNewContext(array $context, string $attribute): array
     {
+        $context[self::TARGET_TO_POPULATE] = null;
+
         if (!($context[self::ALLOWED_ATTRIBUTES] ?? false) && !($context[self::IGNORED_ATTRIBUTES] ?? false)) {
             return $context;
         }

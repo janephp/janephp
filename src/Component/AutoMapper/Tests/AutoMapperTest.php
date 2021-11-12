@@ -6,6 +6,7 @@ use Jane\Component\AutoMapper\AutoMapper;
 use Jane\Component\AutoMapper\Exception\CircularReferenceException;
 use Jane\Component\AutoMapper\Exception\NoMappingFoundException;
 use Jane\Component\AutoMapper\MapperContext;
+use Jane\Component\AutoMapper\Tests\Fixtures\Fish;
 use Jane\Component\AutoMapper\Tests\Fixtures\Order;
 use Jane\Component\AutoMapper\Tests\Fixtures\PetOwner;
 use Jane\Component\AutoMapper\Tests\Fixtures\Transformer\MoneyTransformerFactory;
@@ -878,7 +879,7 @@ class AutoMapperTest extends AutoMapperBaseTest
         self::assertEquals('foobar', $entity->getName());
     }
 
-    public function testAdderAndRemover()
+    public function testAdderAndRemoverWithClass()
     {
         $petOwner = [
             'pets' => [
@@ -895,6 +896,34 @@ class AutoMapperTest extends AutoMapperBaseTest
         self::assertSame('cat', $petOwnerData->getPets()[0]->type);
         self::assertSame('Coco', $petOwnerData->getPets()[1]->name);
         self::assertSame('dog', $petOwnerData->getPets()[1]->type);
+    }
+
+    public function testAdderAndRemoverWithInstance()
+    {
+        $fish = new Fish();
+        $fish->name = 'Nemo';
+        $fish->type = 'fish';
+
+        $petOwner = new PetOwner();
+        $petOwner->addPet($fish);
+
+        $petOwnerAsArray = [
+            'pets' => [
+                ['type' => 'cat', 'name' => 'Félix'],
+                ['type' => 'dog', 'name' => 'Coco'],
+            ],
+        ];
+
+        $this->autoMapper->map($petOwnerAsArray, $petOwner);
+
+        self::assertIsArray($petOwner->getPets());
+        self::assertCount(3, $petOwner->getPets());
+        self::assertSame('Nemo', $petOwner->getPets()[0]->name);
+        self::assertSame('fish', $petOwner->getPets()[0]->type);
+        self::assertSame('Félix', $petOwner->getPets()[1]->name);
+        self::assertSame('cat', $petOwner->getPets()[1]->type);
+        self::assertSame('Coco', $petOwner->getPets()[2]->name);
+        self::assertSame('dog', $petOwner->getPets()[2]->type);
     }
 
     public function testAdderAndRemoverWithNull()

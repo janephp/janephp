@@ -12,6 +12,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - [AutoMapper] [GH#564](https://github.com/janephp/janephp/pull/564) Remove deprecations
 
+### Fixed
+- [AutoMapper] [GH#567](https://github.com/janephp/janephp/pull/567) Fix the value of `target_to_populate` on `MapperContext::withNewContext` call
+
 ## [7.1.2] - 2021-10-18
 ### Fixed
 - [AutoMapper] [GH#560](https://github.com/janephp/janephp/pull/560) Fix fail on generic object without explicit classname

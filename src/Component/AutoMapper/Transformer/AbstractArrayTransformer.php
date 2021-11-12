@@ -36,7 +36,7 @@ abstract class AbstractArrayTransformer implements TransformerInterface, Depende
         $loopValueVar = new Expr\Variable($uniqueVariableScope->getUniqueName('value'));
         $loopKeyVar = new Expr\Variable($uniqueVariableScope->getUniqueName('key'));
 
-        $assignByRef = $this->itemTransformer instanceof AssignedByReferenceTransformerInterface ? $this->itemTransformer->assignByRef() : false;
+        $assignByRef = $this->itemTransformer instanceof AssignedByReferenceTransformerInterface && $this->itemTransformer->assignByRef();
 
         [$output, $itemStatements] = $this->itemTransformer->transform($loopValueVar, $target, $propertyMapping, $uniqueVariableScope);
 
