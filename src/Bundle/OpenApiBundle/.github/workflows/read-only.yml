@@ -1,0 +1,14 @@
+name: read-only
+on: pull_request_target
+jobs:
+  write_message:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: superbrothers/close-pull-request@v3
+        with:
+          comment: |
+            Hey!
+            Thanks for your PR and contributing to Jane!
+            But this repository is read-only, if you want to contribute to Jane, please submit your PR to https://github.com/janephp/janephp.
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
