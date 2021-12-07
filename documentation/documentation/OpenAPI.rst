@@ -35,7 +35,7 @@ requirement. Choose your library depending on OpenAPI version you need (you can 
     composer require jane-php/open-api-runtime
 
     # OpenAPI 3
-    composer require --dev jane-php/open-api-3"
+    composer require --dev jane-php/open-api-3
     composer require jane-php/open-api-runtime
 
 With Symfony ecosystem, we created a recipe to make it easier to use Jane. You just have to allow contrib recipes before
