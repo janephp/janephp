@@ -172,7 +172,7 @@ EOD
         $statements = [];
 
         foreach ($response->getContent() as $contentType => $content) {
-            if ($contentType === 'application/json') {
+            if ($contentType === 'application/json' || $contentType === 'application/problem+json') {
                 [$returnType, $throwType, $returnStatement] = $this->createContentDenormalizationStatement(
                     $name,
                     $status,
