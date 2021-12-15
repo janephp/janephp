@@ -70,7 +70,7 @@ class JaneOpenApiResourceTest extends TestCase
         $data = [];
 
         foreach ($finder as $directory) {
-            $data[] = [$directory->getFilename(), $directory];
+            $data[$directory->getFilename()] = [$directory->getFilename(), $directory];
         }
 
         return $data;
