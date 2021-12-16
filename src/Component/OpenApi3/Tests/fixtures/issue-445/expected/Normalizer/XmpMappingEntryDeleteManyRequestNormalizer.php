@@ -16,6 +16,9 @@ class XmpMappingEntryDeleteManyRequestNormalizer implements DenormalizerInterfac
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
+    /**
+     * @return bool
+     */
     public function supportsDenormalization($data, $type, $format = null)
     {
         return $type === 'PicturePark\\API\\Model\\XmpMappingEntryDeleteManyRequest';
@@ -24,6 +27,9 @@ class XmpMappingEntryDeleteManyRequestNormalizer implements DenormalizerInterfac
     {
         return is_object($data) && get_class($data) === 'PicturePark\\API\\Model\\XmpMappingEntryDeleteManyRequest';
     }
+    /**
+     * @return mixed
+     */
     public function denormalize($data, $class, $format = null, array $context = array())
     {
         if (isset($data['$ref'])) {
@@ -48,6 +54,9 @@ class XmpMappingEntryDeleteManyRequestNormalizer implements DenormalizerInterfac
         }
         return $object;
     }
+    /**
+     * @return array|string|int|float|bool|\ArrayObject|null
+     */
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();

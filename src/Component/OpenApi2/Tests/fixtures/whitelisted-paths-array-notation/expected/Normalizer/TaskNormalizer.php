@@ -16,6 +16,9 @@ class TaskNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
+    /**
+     * @return bool
+     */
     public function supportsDenormalization($data, $type, $format = null)
     {
         return $type === 'Jane\\OpenApi2\\Tests\\Expected\\Model\\Task';
@@ -24,6 +27,9 @@ class TaskNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
     {
         return is_object($data) && get_class($data) === 'Jane\\OpenApi2\\Tests\\Expected\\Model\\Task';
     }
+    /**
+     * @return mixed
+     */
     public function denormalize($data, $class, $format = null, array $context = array())
     {
         if (isset($data['$ref'])) {
@@ -62,6 +68,9 @@ class TaskNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         }
         return $object;
     }
+    /**
+     * @return array|string|int|float|bool|\ArrayObject|null
+     */
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();

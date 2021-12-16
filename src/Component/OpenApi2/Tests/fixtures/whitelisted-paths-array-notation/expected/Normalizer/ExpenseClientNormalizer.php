@@ -16,6 +16,9 @@ class ExpenseClientNormalizer implements DenormalizerInterface, NormalizerInterf
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
+    /**
+     * @return bool
+     */
     public function supportsDenormalization($data, $type, $format = null)
     {
         return $type === 'Jane\\OpenApi2\\Tests\\Expected\\Model\\ExpenseClient';
@@ -24,6 +27,9 @@ class ExpenseClientNormalizer implements DenormalizerInterface, NormalizerInterf
     {
         return is_object($data) && get_class($data) === 'Jane\\OpenApi2\\Tests\\Expected\\Model\\ExpenseClient';
     }
+    /**
+     * @return mixed
+     */
     public function denormalize($data, $class, $format = null, array $context = array())
     {
         if (isset($data['$ref'])) {
@@ -47,6 +53,9 @@ class ExpenseClientNormalizer implements DenormalizerInterface, NormalizerInterf
         }
         return $object;
     }
+    /**
+     * @return array|string|int|float|bool|\ArrayObject|null
+     */
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();

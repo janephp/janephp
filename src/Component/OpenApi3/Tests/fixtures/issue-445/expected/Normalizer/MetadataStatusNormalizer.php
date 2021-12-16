@@ -16,6 +16,9 @@ class MetadataStatusNormalizer implements DenormalizerInterface, NormalizerInter
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
+    /**
+     * @return bool
+     */
     public function supportsDenormalization($data, $type, $format = null)
     {
         return $type === 'PicturePark\\API\\Model\\MetadataStatus';
@@ -24,6 +27,9 @@ class MetadataStatusNormalizer implements DenormalizerInterface, NormalizerInter
     {
         return is_object($data) && get_class($data) === 'PicturePark\\API\\Model\\MetadataStatus';
     }
+    /**
+     * @return mixed
+     */
     public function denormalize($data, $class, $format = null, array $context = array())
     {
         if (isset($data['$ref'])) {
@@ -75,6 +81,9 @@ class MetadataStatusNormalizer implements DenormalizerInterface, NormalizerInter
         }
         return $object;
     }
+    /**
+     * @return array|string|int|float|bool|\ArrayObject|null
+     */
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();

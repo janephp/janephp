@@ -16,6 +16,9 @@ class PullRequestReviewUserNormalizer implements DenormalizerInterface, Normaliz
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
+    /**
+     * @return bool
+     */
     public function supportsDenormalization($data, $type, $format = null)
     {
         return $type === 'Github\\Model\\PullRequestReviewUser';
@@ -24,6 +27,9 @@ class PullRequestReviewUserNormalizer implements DenormalizerInterface, Normaliz
     {
         return is_object($data) && get_class($data) === 'Github\\Model\\PullRequestReviewUser';
     }
+    /**
+     * @return mixed
+     */
     public function denormalize($data, $class, $format = null, array $context = array())
     {
         if (isset($data['$ref'])) {
@@ -98,6 +104,9 @@ class PullRequestReviewUserNormalizer implements DenormalizerInterface, Normaliz
         }
         return $object;
     }
+    /**
+     * @return array|string|int|float|bool|\ArrayObject|null
+     */
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();

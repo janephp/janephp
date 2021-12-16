@@ -16,6 +16,9 @@ class ReposOwnerRepoSubscriptionPutBodyNormalizer implements DenormalizerInterfa
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
+    /**
+     * @return bool
+     */
     public function supportsDenormalization($data, $type, $format = null)
     {
         return $type === 'Github\\Model\\ReposOwnerRepoSubscriptionPutBody';
@@ -24,6 +27,9 @@ class ReposOwnerRepoSubscriptionPutBodyNormalizer implements DenormalizerInterfa
     {
         return is_object($data) && get_class($data) === 'Github\\Model\\ReposOwnerRepoSubscriptionPutBody';
     }
+    /**
+     * @return mixed
+     */
     public function denormalize($data, $class, $format = null, array $context = array())
     {
         if (isset($data['$ref'])) {
@@ -44,6 +50,9 @@ class ReposOwnerRepoSubscriptionPutBodyNormalizer implements DenormalizerInterfa
         }
         return $object;
     }
+    /**
+     * @return array|string|int|float|bool|\ArrayObject|null
+     */
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();

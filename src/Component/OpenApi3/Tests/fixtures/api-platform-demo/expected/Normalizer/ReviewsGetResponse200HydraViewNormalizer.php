@@ -16,6 +16,9 @@ class ReviewsGetResponse200HydraViewNormalizer implements DenormalizerInterface,
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
+    /**
+     * @return bool
+     */
     public function supportsDenormalization($data, $type, $format = null)
     {
         return $type === 'ApiPlatform\\Demo\\Model\\ReviewsGetResponse200HydraView';
@@ -24,6 +27,9 @@ class ReviewsGetResponse200HydraViewNormalizer implements DenormalizerInterface,
     {
         return is_object($data) && get_class($data) === 'ApiPlatform\\Demo\\Model\\ReviewsGetResponse200HydraView';
     }
+    /**
+     * @return mixed
+     */
     public function denormalize($data, $class, $format = null, array $context = array())
     {
         if (isset($data['$ref'])) {
@@ -53,6 +59,9 @@ class ReviewsGetResponse200HydraViewNormalizer implements DenormalizerInterface,
         }
         return $object;
     }
+    /**
+     * @return array|string|int|float|bool|\ArrayObject|null
+     */
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();

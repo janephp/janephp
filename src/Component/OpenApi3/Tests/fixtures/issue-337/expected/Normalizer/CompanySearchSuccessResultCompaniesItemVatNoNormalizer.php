@@ -16,6 +16,9 @@ class CompanySearchSuccessResultCompaniesItemVatNoNormalizer implements Denormal
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
+    /**
+     * @return bool
+     */
     public function supportsDenormalization($data, $type, $format = null)
     {
         return $type === 'CreditSafe\\API\\Model\\CompanySearchSuccessResultCompaniesItemVatNo';
@@ -24,6 +27,9 @@ class CompanySearchSuccessResultCompaniesItemVatNoNormalizer implements Denormal
     {
         return is_object($data) && get_class($data) === 'CreditSafe\\API\\Model\\CompanySearchSuccessResultCompaniesItemVatNo';
     }
+    /**
+     * @return mixed
+     */
     public function denormalize($data, $class, $format = null, array $context = array())
     {
         if (isset($data['$ref'])) {
@@ -38,6 +44,9 @@ class CompanySearchSuccessResultCompaniesItemVatNoNormalizer implements Denormal
         }
         return $object;
     }
+    /**
+     * @return array|string|int|float|bool|\ArrayObject|null
+     */
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();

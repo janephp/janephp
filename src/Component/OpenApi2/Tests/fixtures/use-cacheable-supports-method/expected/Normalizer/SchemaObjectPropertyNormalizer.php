@@ -17,6 +17,9 @@ class SchemaObjectPropertyNormalizer implements DenormalizerInterface, Normalize
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
+    /**
+     * @return bool
+     */
     public function supportsDenormalization($data, $type, $format = null)
     {
         return $type === 'Jane\\Component\\OpenApi2\\Tests\\Expected\\Model\\SchemaObjectProperty';
@@ -25,6 +28,9 @@ class SchemaObjectPropertyNormalizer implements DenormalizerInterface, Normalize
     {
         return is_object($data) && get_class($data) === 'Jane\\Component\\OpenApi2\\Tests\\Expected\\Model\\SchemaObjectProperty';
     }
+    /**
+     * @return mixed
+     */
     public function denormalize($data, $class, $format = null, array $context = array())
     {
         if (isset($data['$ref'])) {
@@ -42,6 +48,9 @@ class SchemaObjectPropertyNormalizer implements DenormalizerInterface, Normalize
         }
         return $object;
     }
+    /**
+     * @return array|string|int|float|bool|\ArrayObject|null
+     */
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();

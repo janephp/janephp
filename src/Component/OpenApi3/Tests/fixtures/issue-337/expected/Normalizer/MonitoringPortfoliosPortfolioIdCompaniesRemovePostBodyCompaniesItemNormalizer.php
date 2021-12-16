@@ -16,6 +16,9 @@ class MonitoringPortfoliosPortfolioIdCompaniesRemovePostBodyCompaniesItemNormali
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
+    /**
+     * @return bool
+     */
     public function supportsDenormalization($data, $type, $format = null)
     {
         return $type === 'CreditSafe\\API\\Model\\MonitoringPortfoliosPortfolioIdCompaniesRemovePostBodyCompaniesItem';
@@ -24,6 +27,9 @@ class MonitoringPortfoliosPortfolioIdCompaniesRemovePostBodyCompaniesItemNormali
     {
         return is_object($data) && get_class($data) === 'CreditSafe\\API\\Model\\MonitoringPortfoliosPortfolioIdCompaniesRemovePostBodyCompaniesItem';
     }
+    /**
+     * @return mixed
+     */
     public function denormalize($data, $class, $format = null, array $context = array())
     {
         if (isset($data['$ref'])) {
@@ -41,6 +47,9 @@ class MonitoringPortfoliosPortfolioIdCompaniesRemovePostBodyCompaniesItemNormali
         }
         return $object;
     }
+    /**
+     * @return array|string|int|float|bool|\ArrayObject|null
+     */
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();

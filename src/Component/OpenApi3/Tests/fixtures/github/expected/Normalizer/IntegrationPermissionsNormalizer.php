@@ -16,6 +16,9 @@ class IntegrationPermissionsNormalizer implements DenormalizerInterface, Normali
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
+    /**
+     * @return bool
+     */
     public function supportsDenormalization($data, $type, $format = null)
     {
         return $type === 'Github\\Model\\IntegrationPermissions';
@@ -24,6 +27,9 @@ class IntegrationPermissionsNormalizer implements DenormalizerInterface, Normali
     {
         return is_object($data) && get_class($data) === 'Github\\Model\\IntegrationPermissions';
     }
+    /**
+     * @return mixed
+     */
     public function denormalize($data, $class, $format = null, array $context = array())
     {
         if (isset($data['$ref'])) {
@@ -63,6 +69,9 @@ class IntegrationPermissionsNormalizer implements DenormalizerInterface, Normali
         }
         return $object;
     }
+    /**
+     * @return array|string|int|float|bool|\ArrayObject|null
+     */
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();

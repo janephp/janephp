@@ -8,6 +8,7 @@ use Jane\Component\JsonSchema\Guesser\Guess\ClassGuess;
 use Jane\Component\JsonSchema\Guesser\Guess\MultipleType;
 use Jane\Component\JsonSchema\Guesser\Guess\Property;
 use Jane\Component\JsonSchema\Guesser\Guess\Type;
+use PhpParser\Comment\Doc;
 use PhpParser\Node\Arg;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Name;
@@ -68,6 +69,13 @@ trait NormalizerGenerator
                 new Param(new Expr\Variable('format'), new Expr\ConstFetch(new Name('null'))),
             ],
             'stmts' => [new Stmt\Return_(new Expr\Instanceof_(new Expr\Variable('data'), new Name('\\' . $modelFqdn)))],
+        ], [
+            'comments' => [new Doc(<<<EOD
+/**
+ * @return bool
+ */
+EOD
+            )],
         ]);
     }
 
@@ -154,6 +162,13 @@ trait NormalizerGenerator
                 new Param(new Expr\Variable('context'), new Expr\Array_(), 'array'),
             ],
             'stmts' => $statements,
+        ], [
+            'comments' => [new Doc(<<<EOD
+/**
+ * @return array|string|int|float|bool|\ArrayObject|null
+ */
+EOD
+            )],
         ]);
     }
 

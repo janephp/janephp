@@ -16,6 +16,9 @@ class ShareOutputEmbedNormalizer implements DenormalizerInterface, NormalizerInt
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
+    /**
+     * @return bool
+     */
     public function supportsDenormalization($data, $type, $format = null)
     {
         return $type === 'PicturePark\\API\\Model\\ShareOutputEmbed';
@@ -24,6 +27,9 @@ class ShareOutputEmbedNormalizer implements DenormalizerInterface, NormalizerInt
     {
         return is_object($data) && get_class($data) === 'PicturePark\\API\\Model\\ShareOutputEmbed';
     }
+    /**
+     * @return mixed
+     */
     public function denormalize($data, $class, $format = null, array $context = array())
     {
         if (isset($data['$ref'])) {
@@ -74,6 +80,9 @@ class ShareOutputEmbedNormalizer implements DenormalizerInterface, NormalizerInt
         }
         return $object;
     }
+    /**
+     * @return array|string|int|float|bool|\ArrayObject|null
+     */
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();

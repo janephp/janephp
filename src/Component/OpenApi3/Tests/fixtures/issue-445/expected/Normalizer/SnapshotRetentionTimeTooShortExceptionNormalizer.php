@@ -16,6 +16,9 @@ class SnapshotRetentionTimeTooShortExceptionNormalizer implements DenormalizerIn
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
+    /**
+     * @return bool
+     */
     public function supportsDenormalization($data, $type, $format = null)
     {
         return $type === 'PicturePark\\API\\Model\\SnapshotRetentionTimeTooShortException';
@@ -24,6 +27,9 @@ class SnapshotRetentionTimeTooShortExceptionNormalizer implements DenormalizerIn
     {
         return is_object($data) && get_class($data) === 'PicturePark\\API\\Model\\SnapshotRetentionTimeTooShortException';
     }
+    /**
+     * @return mixed
+     */
     public function denormalize($data, $class, $format = null, array $context = array())
     {
         if (isset($data['$ref'])) {
@@ -89,6 +95,9 @@ class SnapshotRetentionTimeTooShortExceptionNormalizer implements DenormalizerIn
         }
         return $object;
     }
+    /**
+     * @return array|string|int|float|bool|\ArrayObject|null
+     */
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();

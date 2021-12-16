@@ -16,6 +16,9 @@ class ProjectsColumnsCardsCardIdMovesPostResponse503Normalizer implements Denorm
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
+    /**
+     * @return bool
+     */
     public function supportsDenormalization($data, $type, $format = null)
     {
         return $type === 'Github\\Model\\ProjectsColumnsCardsCardIdMovesPostResponse503';
@@ -24,6 +27,9 @@ class ProjectsColumnsCardsCardIdMovesPostResponse503Normalizer implements Denorm
     {
         return is_object($data) && get_class($data) === 'Github\\Model\\ProjectsColumnsCardsCardIdMovesPostResponse503';
     }
+    /**
+     * @return mixed
+     */
     public function denormalize($data, $class, $format = null, array $context = array())
     {
         if (isset($data['$ref'])) {
@@ -54,6 +60,9 @@ class ProjectsColumnsCardsCardIdMovesPostResponse503Normalizer implements Denorm
         }
         return $object;
     }
+    /**
+     * @return array|string|int|float|bool|\ArrayObject|null
+     */
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();

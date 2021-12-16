@@ -16,6 +16,9 @@ class SearchCodeGetResponse200Normalizer implements DenormalizerInterface, Norma
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
+    /**
+     * @return bool
+     */
     public function supportsDenormalization($data, $type, $format = null)
     {
         return $type === 'Github\\Model\\SearchCodeGetResponse200';
@@ -24,6 +27,9 @@ class SearchCodeGetResponse200Normalizer implements DenormalizerInterface, Norma
     {
         return is_object($data) && get_class($data) === 'Github\\Model\\SearchCodeGetResponse200';
     }
+    /**
+     * @return mixed
+     */
     public function denormalize($data, $class, $format = null, array $context = array())
     {
         if (isset($data['$ref'])) {
@@ -51,6 +57,9 @@ class SearchCodeGetResponse200Normalizer implements DenormalizerInterface, Norma
         }
         return $object;
     }
+    /**
+     * @return array|string|int|float|bool|\ArrayObject|null
+     */
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();

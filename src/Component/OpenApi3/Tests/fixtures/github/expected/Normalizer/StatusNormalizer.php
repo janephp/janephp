@@ -16,6 +16,9 @@ class StatusNormalizer implements DenormalizerInterface, NormalizerInterface, De
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
+    /**
+     * @return bool
+     */
     public function supportsDenormalization($data, $type, $format = null)
     {
         return $type === 'Github\\Model\\Status';
@@ -24,6 +27,9 @@ class StatusNormalizer implements DenormalizerInterface, NormalizerInterface, De
     {
         return is_object($data) && get_class($data) === 'Github\\Model\\Status';
     }
+    /**
+     * @return mixed
+     */
     public function denormalize($data, $class, $format = null, array $context = array())
     {
         if (isset($data['$ref'])) {
@@ -77,6 +83,9 @@ class StatusNormalizer implements DenormalizerInterface, NormalizerInterface, De
         }
         return $object;
     }
+    /**
+     * @return array|string|int|float|bool|\ArrayObject|null
+     */
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();

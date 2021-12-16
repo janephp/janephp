@@ -16,6 +16,9 @@ class OrConditionNormalizer implements DenormalizerInterface, NormalizerInterfac
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
+    /**
+     * @return bool
+     */
     public function supportsDenormalization($data, $type, $format = null)
     {
         return $type === 'PicturePark\\API\\Model\\OrCondition';
@@ -24,6 +27,9 @@ class OrConditionNormalizer implements DenormalizerInterface, NormalizerInterfac
     {
         return is_object($data) && get_class($data) === 'PicturePark\\API\\Model\\OrCondition';
     }
+    /**
+     * @return mixed
+     */
     public function denormalize($data, $class, $format = null, array $context = array())
     {
         if (isset($data['$ref'])) {
@@ -57,6 +63,9 @@ class OrConditionNormalizer implements DenormalizerInterface, NormalizerInterfac
         }
         return $object;
     }
+    /**
+     * @return array|string|int|float|bool|\ArrayObject|null
+     */
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
