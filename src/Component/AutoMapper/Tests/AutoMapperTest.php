@@ -10,6 +10,7 @@ use Jane\Component\AutoMapper\Tests\Fixtures\Fish;
 use Jane\Component\AutoMapper\Tests\Fixtures\Order;
 use Jane\Component\AutoMapper\Tests\Fixtures\PetOwner;
 use Jane\Component\AutoMapper\Tests\Fixtures\Transformer\MoneyTransformerFactory;
+use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\Serializer\NameConverter\AdvancedNameConverterInterface;
 use Symfony\Component\Uid\Ulid;
 use Symfony\Component\Uid\Uuid;
@@ -593,25 +594,47 @@ class AutoMapperTest extends AutoMapperBaseTest
 
     public function testNameConverter(): void
     {
-        $nameConverter = new class() implements AdvancedNameConverterInterface {
-            public function normalize($propertyName, string $class = null, string $format = null, array $context = [])
-            {
-                if ('id' === $propertyName) {
-                    return '@id';
+        if (Kernel::MAJOR_VERSION < 6) {
+            $nameConverter = new class() implements AdvancedNameConverterInterface {
+                public function normalize($propertyName, ?string $class = null, ?string $format = null, array $context = [])
+                {
+                    if ('id' === $propertyName) {
+                        return '@id';
+                    }
+
+                    return $propertyName;
                 }
 
-                return $propertyName;
-            }
+                public function denormalize($propertyName, ?string $class = null, ?string $format = null, array $context = [])
+                {
+                    if ('@id' === $propertyName) {
+                        return 'id';
+                    }
 
-            public function denormalize($propertyName, string $class = null, string $format = null, array $context = [])
-            {
-                if ('@id' === $propertyName) {
-                    return 'id';
+                    return $propertyName;
+                }
+            };
+        } else {
+            $nameConverter = new class() implements AdvancedNameConverterInterface {
+                public function normalize(string $propertyName, ?string $class = null, ?string $format = null, array $context = []): string
+                {
+                    if ('id' === $propertyName) {
+                        return '@id';
+                    }
+
+                    return $propertyName;
                 }
 
-                return $propertyName;
-            }
-        };
+                public function denormalize(string $propertyName, ?string $class = null, ?string $format = null, array $context = []): string
+                {
+                    if ('@id' === $propertyName) {
+                        return 'id';
+                    }
+
+                    return $propertyName;
+                }
+            };
+        }
 
         $autoMapper = AutoMapper::create(true, null, $nameConverter, 'Mapper2_');
         $user = new Fixtures\User(1, 'yolo', '13');

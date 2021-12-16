@@ -86,23 +86,46 @@ class UserMapperConfiguration implements MapperConfigurationInterface
     }
 }
 
-class IdNameConverter implements AdvancedNameConverterInterface
-{
-    public function normalize($propertyName, string $class = null, string $format = null, array $context = [])
+if (Kernel::MAJOR_VERSION < 6) {
+    class IdNameConverter implements AdvancedNameConverterInterface
     {
-        if ('id' === $propertyName) {
-            return '@id';
+        public function normalize($propertyName, ?string $class = null, ?string $format = null, array $context = [])
+        {
+            if ('id' === $propertyName) {
+                return '@id';
+            }
+
+            return $propertyName;
         }
 
-        return $propertyName;
+        public function denormalize($propertyName, ?string $class = null, ?string $format = null, array $context = [])
+        {
+            if ('@id' === $propertyName) {
+                return 'id';
+            }
+
+            return $propertyName;
+        }
     }
-
-    public function denormalize($propertyName, string $class = null, string $format = null, array $context = [])
+} else {
+    class IdNameConverter implements AdvancedNameConverterInterface
     {
-        if ('@id' === $propertyName) {
-            return 'id';
+        public function normalize(string $propertyName, ?string $class = null, ?string $format = null, array $context = []): string
+        {
+            if ('id' === $propertyName) {
+                return '@id';
+            }
+
+            return $propertyName;
         }
 
-        return $propertyName;
+        public function denormalize(string $propertyName, ?string $class = null, ?string $format = null, array $context = []): string
+        {
+            if ('@id' === $propertyName) {
+                return 'id';
+            }
+
+            return $propertyName;
+        }
     }
 }
