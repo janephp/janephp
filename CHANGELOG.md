@@ -6,8 +6,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+## [7.1.4] - 2021-12-16
+### Added
+- [OpenApi] [GH#577](https://github.com/janephp/janephp/pull/577) Handle application/problem+json error responses
+
 ### Changed
-- Symfony 6 compatibility
+- [Jane] [GH#571](https://github.com/janephp/janephp/pull/571) Symfony 6 compatibility
+
+### Fixed
+- [AutoMapper] [GH#567](https://github.com/janephp/janephp/pull/567) Fixed MapperContext::withNewContext target_to_populate value
 
 ## [7.1.3] - 2021-11-12
 ### Added
