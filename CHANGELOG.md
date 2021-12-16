@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ### Added
-- [JsonSchema] Add typehint for generated Normalizer & Dernomalizer
+- [JsonSchema] [GH#580](https://github.com/janephp/janephp/pull/580) Add typehint for generated Normalizer & Dernomalizer
 
 ## [7.1.4] - 2021-12-16
 ### Added
