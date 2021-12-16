@@ -13,9 +13,6 @@ splits:
     prefix: "src/Bundle/OpenApiBundle"
     target: "https://${GH_TOKEN}@github.com/janephp/open-api-bundle.git"
   -
-    prefix: "src/Bridge/ApiPlatform"
-    target: "https://${GH_TOKEN}@github.com/janephp/apiplatform-bridge.git"
-  -
     prefix: "src/Component/AutoMapper"
     target: "https://${GH_TOKEN}@github.com/janephp/automapper.git"
   -
