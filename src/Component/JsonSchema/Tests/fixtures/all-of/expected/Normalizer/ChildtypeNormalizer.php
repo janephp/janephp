@@ -16,14 +16,23 @@ class ChildtypeNormalizer implements DenormalizerInterface, NormalizerInterface,
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
+    /**
+     * @return bool
+     */
     public function supportsDenormalization($data, $type, $format = null)
     {
         return $type === 'Jane\\Component\\JsonSchema\\Tests\\Expected\\Model\\Childtype';
     }
+    /**
+     * @return bool
+     */
     public function supportsNormalization($data, $format = null)
     {
         return $data instanceof \Jane\Component\JsonSchema\Tests\Expected\Model\Childtype;
     }
+    /**
+     * @return mixed
+     */
     public function denormalize($data, $class, $format = null, array $context = array())
     {
         $object = new \Jane\Component\JsonSchema\Tests\Expected\Model\Childtype();
@@ -38,6 +47,9 @@ class ChildtypeNormalizer implements DenormalizerInterface, NormalizerInterface,
         }
         return $object;
     }
+    /**
+     * @return array|string|int|float|bool|\ArrayObject|null
+     */
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();

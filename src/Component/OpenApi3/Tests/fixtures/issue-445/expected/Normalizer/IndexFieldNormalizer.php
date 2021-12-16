@@ -16,6 +16,9 @@ class IndexFieldNormalizer implements DenormalizerInterface, NormalizerInterface
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
+    /**
+     * @return bool
+     */
     public function supportsDenormalization($data, $type, $format = null)
     {
         return $type === 'PicturePark\\API\\Model\\IndexField';
@@ -24,6 +27,9 @@ class IndexFieldNormalizer implements DenormalizerInterface, NormalizerInterface
     {
         return is_object($data) && get_class($data) === 'PicturePark\\API\\Model\\IndexField';
     }
+    /**
+     * @return mixed
+     */
     public function denormalize($data, $class, $format = null, array $context = array())
     {
         if (isset($data['$ref'])) {
@@ -94,6 +100,9 @@ class IndexFieldNormalizer implements DenormalizerInterface, NormalizerInterface
         }
         return $object;
     }
+    /**
+     * @return array|string|int|float|bool|\ArrayObject|null
+     */
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();

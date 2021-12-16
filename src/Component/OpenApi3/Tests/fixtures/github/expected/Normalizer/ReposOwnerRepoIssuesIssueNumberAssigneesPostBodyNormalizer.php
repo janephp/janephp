@@ -16,6 +16,9 @@ class ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyNormalizer implements Deno
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
+    /**
+     * @return bool
+     */
     public function supportsDenormalization($data, $type, $format = null)
     {
         return $type === 'Github\\Model\\ReposOwnerRepoIssuesIssueNumberAssigneesPostBody';
@@ -24,6 +27,9 @@ class ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyNormalizer implements Deno
     {
         return is_object($data) && get_class($data) === 'Github\\Model\\ReposOwnerRepoIssuesIssueNumberAssigneesPostBody';
     }
+    /**
+     * @return mixed
+     */
     public function denormalize($data, $class, $format = null, array $context = array())
     {
         if (isset($data['$ref'])) {
@@ -45,6 +51,9 @@ class ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyNormalizer implements Deno
         }
         return $object;
     }
+    /**
+     * @return array|string|int|float|bool|\ArrayObject|null
+     */
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();

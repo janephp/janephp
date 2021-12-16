@@ -16,6 +16,9 @@ class ReposOwnerRepoCheckRunsPostBodyOutputAnnotationsItemNormalizer implements 
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
+    /**
+     * @return bool
+     */
     public function supportsDenormalization($data, $type, $format = null)
     {
         return $type === 'Github\\Model\\ReposOwnerRepoCheckRunsPostBodyOutputAnnotationsItem';
@@ -24,6 +27,9 @@ class ReposOwnerRepoCheckRunsPostBodyOutputAnnotationsItemNormalizer implements 
     {
         return is_object($data) && get_class($data) === 'Github\\Model\\ReposOwnerRepoCheckRunsPostBodyOutputAnnotationsItem';
     }
+    /**
+     * @return mixed
+     */
     public function denormalize($data, $class, $format = null, array $context = array())
     {
         if (isset($data['$ref'])) {
@@ -65,6 +71,9 @@ class ReposOwnerRepoCheckRunsPostBodyOutputAnnotationsItemNormalizer implements 
         }
         return $object;
     }
+    /**
+     * @return array|string|int|float|bool|\ArrayObject|null
+     */
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();

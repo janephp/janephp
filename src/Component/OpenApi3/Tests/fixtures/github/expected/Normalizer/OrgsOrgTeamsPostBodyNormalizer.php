@@ -16,6 +16,9 @@ class OrgsOrgTeamsPostBodyNormalizer implements DenormalizerInterface, Normalize
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
+    /**
+     * @return bool
+     */
     public function supportsDenormalization($data, $type, $format = null)
     {
         return $type === 'Github\\Model\\OrgsOrgTeamsPostBody';
@@ -24,6 +27,9 @@ class OrgsOrgTeamsPostBodyNormalizer implements DenormalizerInterface, Normalize
     {
         return is_object($data) && get_class($data) === 'Github\\Model\\OrgsOrgTeamsPostBody';
     }
+    /**
+     * @return mixed
+     */
     public function denormalize($data, $class, $format = null, array $context = array())
     {
         if (isset($data['$ref'])) {
@@ -67,6 +73,9 @@ class OrgsOrgTeamsPostBodyNormalizer implements DenormalizerInterface, Normalize
         }
         return $object;
     }
+    /**
+     * @return array|string|int|float|bool|\ArrayObject|null
+     */
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();

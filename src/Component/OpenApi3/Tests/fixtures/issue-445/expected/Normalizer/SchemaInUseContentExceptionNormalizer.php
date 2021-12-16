@@ -16,6 +16,9 @@ class SchemaInUseContentExceptionNormalizer implements DenormalizerInterface, No
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
+    /**
+     * @return bool
+     */
     public function supportsDenormalization($data, $type, $format = null)
     {
         return $type === 'PicturePark\\API\\Model\\SchemaInUseContentException';
@@ -24,6 +27,9 @@ class SchemaInUseContentExceptionNormalizer implements DenormalizerInterface, No
     {
         return is_object($data) && get_class($data) === 'PicturePark\\API\\Model\\SchemaInUseContentException';
     }
+    /**
+     * @return mixed
+     */
     public function denormalize($data, $class, $format = null, array $context = array())
     {
         if (isset($data['$ref'])) {
@@ -92,6 +98,9 @@ class SchemaInUseContentExceptionNormalizer implements DenormalizerInterface, No
         }
         return $object;
     }
+    /**
+     * @return array|string|int|float|bool|\ArrayObject|null
+     */
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();

@@ -16,6 +16,9 @@ class ReposOwnerRepoCommitsRefCheckRunsGetResponse200Normalizer implements Denor
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
+    /**
+     * @return bool
+     */
     public function supportsDenormalization($data, $type, $format = null)
     {
         return $type === 'Github\\Model\\ReposOwnerRepoCommitsRefCheckRunsGetResponse200';
@@ -24,6 +27,9 @@ class ReposOwnerRepoCommitsRefCheckRunsGetResponse200Normalizer implements Denor
     {
         return is_object($data) && get_class($data) === 'Github\\Model\\ReposOwnerRepoCommitsRefCheckRunsGetResponse200';
     }
+    /**
+     * @return mixed
+     */
     public function denormalize($data, $class, $format = null, array $context = array())
     {
         if (isset($data['$ref'])) {
@@ -48,6 +54,9 @@ class ReposOwnerRepoCommitsRefCheckRunsGetResponse200Normalizer implements Denor
         }
         return $object;
     }
+    /**
+     * @return array|string|int|float|bool|\ArrayObject|null
+     */
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();

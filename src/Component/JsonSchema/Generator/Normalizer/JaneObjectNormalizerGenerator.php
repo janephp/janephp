@@ -2,6 +2,7 @@
 
 namespace Jane\Component\JsonSchema\Generator\Normalizer;
 
+use PhpParser\Comment\Doc;
 use PhpParser\Node\Arg;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Name;
@@ -23,6 +24,13 @@ trait JaneObjectNormalizerGenerator
                 new Arg(new Expr\Variable('type')),
                 new Arg(new Expr\PropertyFetch(new Expr\Variable('this'), 'normalizers')),
             ]))],
+        ], [
+            'comments' => [new Doc(<<<EOD
+/**
+ * @return bool
+ */
+EOD
+            )],
         ]);
     }
 
@@ -42,6 +50,13 @@ trait JaneObjectNormalizerGenerator
                         new Arg(new Expr\PropertyFetch(new Expr\Variable('this'), 'normalizers')),
                     ])
                 ))],
+        ], [
+            'comments' => [new Doc(<<<EOD
+/**
+ * @return bool
+ */
+EOD
+            )],
         ]);
     }
 
@@ -74,6 +89,13 @@ trait JaneObjectNormalizerGenerator
                     new Arg(new Expr\Variable('context')),
                 ])),
             ],
+        ], [
+            'comments' => [new Doc(<<<EOD
+/**
+ * @return array|string|int|float|bool|\ArrayObject|null
+ */
+EOD
+            )],
         ]);
     }
 
@@ -108,6 +130,13 @@ trait JaneObjectNormalizerGenerator
                     new Arg(new Expr\Variable('context')),
                 ])),
             ],
+        ], [
+            'comments' => [new Doc(<<<EOD
+/**
+ * @return mixed
+ */
+EOD
+            )],
         ]);
     }
 

@@ -16,14 +16,23 @@ class BazNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
+    /**
+     * @return bool
+     */
     public function supportsDenormalization($data, $type, $format = null)
     {
         return $type === 'Jane\\Component\\JsonSchema\\Tests\\Expected\\Model\\Baz';
     }
+    /**
+     * @return bool
+     */
     public function supportsNormalization($data, $format = null)
     {
         return $data instanceof \Jane\Component\JsonSchema\Tests\Expected\Model\Baz;
     }
+    /**
+     * @return mixed
+     */
     public function denormalize($data, $class, $format = null, array $context = array())
     {
         $object = new \Jane\Component\JsonSchema\Tests\Expected\Model\Baz();
@@ -41,6 +50,9 @@ class BazNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
         }
         return $object;
     }
+    /**
+     * @return array|string|int|float|bool|\ArrayObject|null
+     */
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();

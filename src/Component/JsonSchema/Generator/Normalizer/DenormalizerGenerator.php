@@ -5,6 +5,7 @@ namespace Jane\Component\JsonSchema\Generator\Normalizer;
 use Jane\Component\JsonSchema\Generator\Context\Context;
 use Jane\Component\JsonSchema\Generator\Naming;
 use Jane\Component\JsonSchema\Guesser\Guess\ClassGuess;
+use PhpParser\Comment\Doc;
 use PhpParser\Node\Arg;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Name;
@@ -38,6 +39,13 @@ trait DenormalizerGenerator
                 new Param(new Expr\Variable('format'), new Expr\ConstFetch(new Name('null'))),
             ],
             'stmts' => [new Stmt\Return_(new Expr\BinaryOp\Identical(new Expr\Variable('type'), new Scalar\String_($modelFqdn)))],
+        ], [
+            'comments' => [new Doc(<<<EOD
+/**
+ * @return bool
+ */
+EOD
+            )],
         ]);
     }
 
@@ -166,6 +174,13 @@ trait DenormalizerGenerator
                 new Param(new Expr\Variable('context'), new Expr\Array_(), 'array'),
             ],
             'stmts' => $statements,
+        ], [
+            'comments' => [new Doc(<<<EOD
+/**
+ * @return mixed
+ */
+EOD
+            )],
         ]);
     }
 

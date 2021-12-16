@@ -15,20 +15,32 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
     use NormalizerAwareTrait;
     use CheckArray;
     protected $normalizers = array('Jane\\Component\\OpenApi2\\Tests\\Expected\\Model\\Foo' => 'Jane\\Component\\OpenApi2\\Tests\\Expected\\Normalizer\\FooNormalizer', 'Jane\\Component\\OpenApi2\\Tests\\Expected\\Model\\Bar' => 'Jane\\Component\\OpenApi2\\Tests\\Expected\\Normalizer\\BarNormalizer', 'Jane\\Component\\OpenApi2\\Tests\\Expected\\Model\\TestGetBody' => 'Jane\\Component\\OpenApi2\\Tests\\Expected\\Normalizer\\TestGetBodyNormalizer', 'Jane\\Component\\OpenApi2\\Tests\\Expected\\Model\\TestGetBodyBaz' => 'Jane\\Component\\OpenApi2\\Tests\\Expected\\Normalizer\\TestGetBodyBazNormalizer', 'Jane\\Component\\OpenApi2\\Tests\\Expected\\Model\\TestPostBody' => 'Jane\\Component\\OpenApi2\\Tests\\Expected\\Normalizer\\TestPostBodyNormalizer', '\\Jane\\Component\\JsonSchemaRuntime\\Reference' => '\\Jane\\Component\\OpenApi2\\Tests\\Expected\\Runtime\\Normalizer\\ReferenceNormalizer'), $normalizersCache = array();
+    /**
+     * @return bool
+     */
     public function supportsDenormalization($data, $type, $format = null)
     {
         return array_key_exists($type, $this->normalizers);
     }
+    /**
+     * @return bool
+     */
     public function supportsNormalization($data, $format = null)
     {
         return is_object($data) && array_key_exists(get_class($data), $this->normalizers);
     }
+    /**
+     * @return array|string|int|float|bool|\ArrayObject|null
+     */
     public function normalize($object, $format = null, array $context = array())
     {
         $normalizerClass = $this->normalizers[get_class($object)];
         $normalizer = $this->getNormalizer($normalizerClass);
         return $normalizer->normalize($object, $format, $context);
     }
+    /**
+     * @return mixed
+     */
     public function denormalize($data, $class, $format = null, array $context = array())
     {
         $denormalizerClass = $this->normalizers[$class];

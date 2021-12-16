@@ -16,6 +16,9 @@ class XmpMappingEntryNormalizer implements DenormalizerInterface, NormalizerInte
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
+    /**
+     * @return bool
+     */
     public function supportsDenormalization($data, $type, $format = null)
     {
         return $type === 'PicturePark\\API\\Model\\XmpMappingEntry';
@@ -24,6 +27,9 @@ class XmpMappingEntryNormalizer implements DenormalizerInterface, NormalizerInte
     {
         return is_object($data) && get_class($data) === 'PicturePark\\API\\Model\\XmpMappingEntry';
     }
+    /**
+     * @return mixed
+     */
     public function denormalize($data, $class, $format = null, array $context = array())
     {
         if (isset($data['$ref'])) {
@@ -62,6 +68,9 @@ class XmpMappingEntryNormalizer implements DenormalizerInterface, NormalizerInte
         }
         return $object;
     }
+    /**
+     * @return array|string|int|float|bool|\ArrayObject|null
+     */
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
