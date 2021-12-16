@@ -2,7 +2,7 @@
 
 namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 
-class ResponseProblemDetailsResponse400
+class ResponseProblemDetailsResponse400 extends \ArrayObject
 {
     /**
      * 
@@ -13,7 +13,7 @@ class ResponseProblemDetailsResponse400
     /**
      * 
      *
-     * @var string|null
+     * @var string
      */
     protected $title;
     /**
@@ -25,7 +25,7 @@ class ResponseProblemDetailsResponse400
     /**
      * 
      *
-     * @var string|null
+     * @var string
      */
     protected $detail;
     /**
@@ -52,20 +52,20 @@ class ResponseProblemDetailsResponse400
     /**
      * 
      *
-     * @return string|null
+     * @return string
      */
-    public function getTitle() : ?string
+    public function getTitle() : string
     {
         return $this->title;
     }
     /**
      * 
      *
-     * @param string|null $title
+     * @param string $title
      *
      * @return self
      */
-    public function setTitle(?string $title) : self
+    public function setTitle(string $title) : self
     {
         $this->title = $title;
         return $this;
@@ -94,20 +94,20 @@ class ResponseProblemDetailsResponse400
     /**
      * 
      *
-     * @return string|null
+     * @return string
      */
-    public function getDetail() : ?string
+    public function getDetail() : string
     {
         return $this->detail;
     }
     /**
      * 
      *
-     * @param string|null $detail
+     * @param string $detail
      *
      * @return self
      */
-    public function setDetail(?string $detail) : self
+    public function setDetail(string $detail) : self
     {
         $this->detail = $detail;
         return $this;

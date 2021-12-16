@@ -244,6 +244,7 @@ class OpenApiGuesser implements GuesserInterface, ClassGuesserInterface, ChainGu
                         ->setType('string'),
                 ])
             )
+            ->setAdditionalProperties(true)
             ->setRequired(['type']);
     }
 }

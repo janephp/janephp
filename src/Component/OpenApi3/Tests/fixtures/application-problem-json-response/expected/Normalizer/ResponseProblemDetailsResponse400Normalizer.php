@@ -38,34 +38,44 @@ class ResponseProblemDetailsResponse400Normalizer implements DenormalizerInterfa
         }
         if (\array_key_exists('status', $data)) {
             $object->setStatus($data['status']);
+            unset($data['status']);
         }
-        if (\array_key_exists('title', $data) && $data['title'] !== null) {
+        if (\array_key_exists('title', $data)) {
             $object->setTitle($data['title']);
-        }
-        elseif (\array_key_exists('title', $data) && $data['title'] === null) {
-            $object->setTitle(null);
+            unset($data['title']);
         }
         if (\array_key_exists('type', $data)) {
             $object->setType($data['type']);
+            unset($data['type']);
         }
-        if (\array_key_exists('detail', $data) && $data['detail'] !== null) {
+        if (\array_key_exists('detail', $data)) {
             $object->setDetail($data['detail']);
+            unset($data['detail']);
         }
-        elseif (\array_key_exists('detail', $data) && $data['detail'] === null) {
-            $object->setDetail(null);
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        $data['status'] = $object->getStatus();
+        if (null !== $object->getStatus()) {
+            $data['status'] = $object->getStatus();
+        }
         if (null !== $object->getTitle()) {
             $data['title'] = $object->getTitle();
         }
         $data['type'] = $object->getType();
         if (null !== $object->getDetail()) {
             $data['detail'] = $object->getDetail();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }
