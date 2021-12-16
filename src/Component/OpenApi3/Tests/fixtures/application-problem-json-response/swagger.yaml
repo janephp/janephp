@@ -1,0 +1,62 @@
+openapi: 3.0.0
+info:
+  title: Whitelist - Request body processing
+  version: 1.0.0
+paths:
+  /foo:
+    post:
+      summary: Add foo entity
+      requestBody:
+        description: Foo item to add
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FooPayload'
+      responses:
+        '200':
+          description: Foo item created
+        '400':
+          $ref: '#/components/responses/problemDetailsResponse400'
+        '500':
+          $ref: '#/components/responses/problemDetailsResponse500'
+
+components:
+  schemas:
+    FooPayload:
+      type: object
+      properties:
+        label:
+          type: string
+  responses:
+    problemDetailsResponse400:
+      description: 'An error occurred'
+      content:
+        application/problem+json: {}
+    problemDetailsResponse500:
+      description: 'An error occurred'
+      content:
+        application/problem+json:
+          schema:
+            type: object
+            properties:
+              status:
+                type: integer
+                description: 'http or custom status code corresponding to this operation'
+                example: 500
+              title:
+                type: string
+                description: 'http or custom status message corresponding to this operation'
+                example: 'Internal Server Error'
+              type:
+                description: 'Explanation for the status.'
+                type: string
+                example: 'https://httpstatus.es/500'
+              detail:
+                description: 'More details about the error.'
+                type: string
+                example: 'Something really bad happened'
+            required:
+              - status
+              - title
+              - type
+              - detail

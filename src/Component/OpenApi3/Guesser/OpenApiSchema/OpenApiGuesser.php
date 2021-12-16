@@ -16,6 +16,7 @@ use Jane\Component\OpenApi3\JsonSchema\Model\Parameter;
 use Jane\Component\OpenApi3\JsonSchema\Model\PathItem;
 use Jane\Component\OpenApi3\JsonSchema\Model\RequestBody;
 use Jane\Component\OpenApi3\JsonSchema\Model\Response;
+use Jane\Component\OpenApi3\JsonSchema\Model\Schema;
 use Jane\Component\OpenApiCommon\Guesser\Guess\OperationGuess;
 use Jane\Component\OpenApiCommon\Registry\Registry as OpenApiRegistry;
 use Symfony\Component\Serializer\SerializerInterface;
@@ -63,6 +64,10 @@ class OpenApiGuesser implements GuesserInterface, ClassGuesserInterface, ChainGu
             foreach ($object->getComponents()->getResponses() as $responseName => $response) {
                 if (is_iterable($response->getContent())) {
                     foreach ($response->getContent() as $contentType => $content) {
+                        if ($contentType === 'application/problem+json' && $content->getSchema() === null) {
+                            $content->setSchema($this->getApplicationProblemJsonDefaultSchema());
+                        }
+
                         $this->chainGuesser->guessClass($content->getSchema(), 'Response' . ucfirst($responseName), $reference . '/components/responses/' . $responseName . '/content/' . $contentType . '/schema', $registry);
                     }
                 }
@@ -220,5 +225,26 @@ class OpenApiGuesser implements GuesserInterface, ClassGuesserInterface, ChainGu
                 }
             }
         }
+    }
+
+    private function getApplicationProblemJsonDefaultSchema(): Schema
+    {
+        return (new Schema())
+            ->setType('object')
+            ->setProperties(
+                new \ArrayObject([
+                    'status' => (new Schema())
+                        ->setType('integer'),
+                    'title' => (new Schema())
+                        ->setType('string'),
+                    'type' => (new Schema())
+                        ->setType('string')
+                        ->setDefault('about:blank'),
+                    'detail' => (new Schema())
+                        ->setType('string'),
+                ])
+            )
+            ->setAdditionalProperties(true)
+            ->setRequired(['type']);
     }
 }
