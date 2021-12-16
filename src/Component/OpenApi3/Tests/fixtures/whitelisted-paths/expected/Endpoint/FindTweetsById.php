@@ -65,6 +65,9 @@ class FindTweetsById extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Cli
         if (mb_strpos($contentType, 'application/json') !== false) {
             return json_decode($body);
         }
+        if (mb_strpos($contentType, 'application/problem+json') !== false) {
+            return json_decode($body);
+        }
     }
     public function getAuthenticationScopes() : array
     {
