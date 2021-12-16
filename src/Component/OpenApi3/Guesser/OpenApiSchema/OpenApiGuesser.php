@@ -236,18 +236,14 @@ class OpenApiGuesser implements GuesserInterface, ClassGuesserInterface, ChainGu
                     'status' => (new Schema())
                         ->setType('integer'),
                     'title' => (new Schema())
-                        ->setType('string')
-                        ->setNullable(true),
+                        ->setType('string'),
                     'type' => (new Schema())
                         ->setType('string')
                         ->setDefault('about:blank'),
                     'detail' => (new Schema())
-                        ->setType('string')
-                        ->setNullable(true),
+                        ->setType('string'),
                 ])
             )
-            ->setRequired(['status', 'type']);
-
-        return $newSchema;
+            ->setRequired(['type']);
     }
 }
