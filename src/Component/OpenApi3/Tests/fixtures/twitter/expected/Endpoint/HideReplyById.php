@@ -50,6 +50,9 @@ class HideReplyById extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Clie
         if (mb_strpos($contentType, 'application/json') !== false) {
             return $serializer->deserialize($body, 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Model\\Error', 'json');
         }
+        if (mb_strpos($contentType, 'application/problem+json') !== false) {
+            return json_decode($body);
+        }
     }
     public function getAuthenticationScopes() : array
     {
