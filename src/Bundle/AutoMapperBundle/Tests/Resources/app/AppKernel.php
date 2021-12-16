@@ -28,7 +28,7 @@ class AppKernel extends Kernel
 {
     use MicroKernelTrait;
 
-    public function registerBundles()
+    public function registerBundles(): array
     {
         $bundles = [
             new FrameworkBundle(),
@@ -56,7 +56,7 @@ class AppKernel extends Kernel
         return new Response();
     }
 
-    public function getProjectDir()
+    public function getProjectDir(): string
     {
         return __DIR__ . '/..';
     }

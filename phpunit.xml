@@ -12,10 +12,6 @@
             <directory>./src/Bundle/AutoMapperBundle/Tests</directory>
         </testsuite>
 
-        <testsuite name="Jane AutoMapper Api Platform Bridge Test Suite">
-            <directory>./src/Bridge/ApiPlatform/Tests</directory>
-        </testsuite>
-
         <testsuite name="Jane Unit Test Suite">
             <directory>./src/Component/*/Tests</directory>
             <exclude>./src/Component/JsonSchema/Tests/fixtures</exclude>
