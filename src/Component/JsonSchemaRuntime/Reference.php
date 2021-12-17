@@ -63,6 +63,35 @@ class Reference
     }
 
     /**
+     * Return true if reference and origin are in the same document.
+     */
+    public function isInCurrentDocument(): bool
+    {
+        return
+            $this->mergedUri->getScheme() === $this->originUri->getScheme()
+            && $this->mergedUri->getHost() === $this->originUri->getHost()
+            && $this->mergedUri->getPort() === $this->originUri->getPort()
+            && $this->mergedUri->getPath() === $this->originUri->getPath()
+            && $this->mergedUri->getQuery() === $this->originUri->getQuery()
+        ;
+    }
+
+    public function getMergedUri(): UriInterface
+    {
+        return $this->mergedUri;
+    }
+
+    public function getReferenceUri(): UriInterface
+    {
+        return $this->referenceUri;
+    }
+
+    public function getOriginUri(): UriInterface
+    {
+        return $this->originUri;
+    }
+
+    /**
      * Resolve a JSON Reference for a Schema.
      *
      * @return mixed Return the json value referenced
@@ -75,9 +104,11 @@ class Reference
         if (!\array_key_exists($fragment, self::$fileCache)) {
             $contents = file_get_contents($fragment);
 
-            if (!json_decode($contents, true) || JSON_ERROR_NONE !== json_last_error()) {
-                $decoded = Yaml::parse($contents,
-                    Yaml::PARSE_OBJECT | Yaml::PARSE_OBJECT_FOR_MAP | Yaml::PARSE_DATETIME | Yaml::PARSE_EXCEPTION_ON_INVALID_TYPE);
+            if (!json_decode($contents, true) || \JSON_ERROR_NONE !== json_last_error()) {
+                $decoded = Yaml::parse(
+                    $contents,
+                    Yaml::PARSE_OBJECT | Yaml::PARSE_OBJECT_FOR_MAP | Yaml::PARSE_DATETIME | Yaml::PARSE_EXCEPTION_ON_INVALID_TYPE
+                );
                 $contents = json_encode($decoded);
             }
 
@@ -99,39 +130,6 @@ class Reference
         }
 
         return self::$arrayCache[$reference];
-    }
-
-    /**
-     * Return true if reference and origin are in the same document.
-     */
-    public function isInCurrentDocument(): bool
-    {
-        return
-            $this->mergedUri->getScheme() === $this->originUri->getScheme()
-            &&
-            $this->mergedUri->getHost() === $this->originUri->getHost()
-            &&
-            $this->mergedUri->getPort() === $this->originUri->getPort()
-            &&
-            $this->mergedUri->getPath() === $this->originUri->getPath()
-            &&
-            $this->mergedUri->getQuery() === $this->originUri->getQuery()
-        ;
-    }
-
-    public function getMergedUri(): UriInterface
-    {
-        return $this->mergedUri;
-    }
-
-    public function getReferenceUri(): UriInterface
-    {
-        return $this->referenceUri;
-    }
-
-    public function getOriginUri(): UriInterface
-    {
-        return $this->originUri;
     }
 
     /**
@@ -167,6 +165,7 @@ class Reference
 
             if ('..' === $part && \count($resultPathParts) > 0) {
                 array_pop($resultPathParts);
+
                 continue;
             }
 

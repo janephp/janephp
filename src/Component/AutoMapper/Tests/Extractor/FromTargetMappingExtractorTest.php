@@ -36,44 +36,6 @@ class FromTargetMappingExtractorTest extends AutoMapperBaseTest
         $this->fromTargetMappingExtractorBootstrap();
     }
 
-    private function fromTargetMappingExtractorBootstrap(bool $private = true): void
-    {
-        $classMetadataFactory = new ClassMetadataFactory(new AnnotationLoader(new AnnotationReader()));
-        $flags = ReflectionExtractor::ALLOW_PUBLIC;
-
-        if ($private) {
-            $flags |= ReflectionExtractor::ALLOW_PROTECTED | ReflectionExtractor::ALLOW_PRIVATE;
-        }
-
-        $reflectionExtractor = new ReflectionExtractor(null, null, null, true, $flags);
-
-        $phpDocExtractor = new PhpDocExtractor();
-        $propertyInfoExtractor = new PropertyInfoExtractor(
-            [$reflectionExtractor],
-            [$phpDocExtractor, $reflectionExtractor],
-            [$reflectionExtractor],
-            [$reflectionExtractor]
-        );
-
-        $transformerFactory = new ChainTransformerFactory();
-
-        $this->fromTargetMappingExtractor = new FromTargetMappingExtractor(
-            $propertyInfoExtractor,
-            $reflectionExtractor,
-            $reflectionExtractor,
-            $transformerFactory,
-            $classMetadataFactory
-        );
-
-        $transformerFactory->addTransformerFactory(new MultipleTransformerFactory($transformerFactory));
-        $transformerFactory->addTransformerFactory(new NullableTransformerFactory($transformerFactory));
-        $transformerFactory->addTransformerFactory(new UniqueTypeTransformerFactory($transformerFactory));
-        $transformerFactory->addTransformerFactory(new DateTimeTransformerFactory());
-        $transformerFactory->addTransformerFactory(new BuiltinTransformerFactory());
-        $transformerFactory->addTransformerFactory(new ArrayTransformerFactory($transformerFactory));
-        $transformerFactory->addTransformerFactory(new ObjectTransformerFactory($this->autoMapper));
-    }
-
     public function testWithSourceAsArray(): void
     {
         $userReflection = new \ReflectionClass(Fixtures\User::class);
@@ -135,5 +97,43 @@ class FromTargetMappingExtractorTest extends AutoMapperBaseTest
 
         $mapperMetadata = new MapperMetadata($this->autoMapper, $this->fromTargetMappingExtractor, Fixtures\User::class, 'stdClass');
         $this->fromTargetMappingExtractor->getPropertiesMapping($mapperMetadata);
+    }
+
+    private function fromTargetMappingExtractorBootstrap(bool $private = true): void
+    {
+        $classMetadataFactory = new ClassMetadataFactory(new AnnotationLoader(new AnnotationReader()));
+        $flags = ReflectionExtractor::ALLOW_PUBLIC;
+
+        if ($private) {
+            $flags |= ReflectionExtractor::ALLOW_PROTECTED | ReflectionExtractor::ALLOW_PRIVATE;
+        }
+
+        $reflectionExtractor = new ReflectionExtractor(null, null, null, true, $flags);
+
+        $phpDocExtractor = new PhpDocExtractor();
+        $propertyInfoExtractor = new PropertyInfoExtractor(
+            [$reflectionExtractor],
+            [$phpDocExtractor, $reflectionExtractor],
+            [$reflectionExtractor],
+            [$reflectionExtractor]
+        );
+
+        $transformerFactory = new ChainTransformerFactory();
+
+        $this->fromTargetMappingExtractor = new FromTargetMappingExtractor(
+            $propertyInfoExtractor,
+            $reflectionExtractor,
+            $reflectionExtractor,
+            $transformerFactory,
+            $classMetadataFactory
+        );
+
+        $transformerFactory->addTransformerFactory(new MultipleTransformerFactory($transformerFactory));
+        $transformerFactory->addTransformerFactory(new NullableTransformerFactory($transformerFactory));
+        $transformerFactory->addTransformerFactory(new UniqueTypeTransformerFactory($transformerFactory));
+        $transformerFactory->addTransformerFactory(new DateTimeTransformerFactory());
+        $transformerFactory->addTransformerFactory(new BuiltinTransformerFactory());
+        $transformerFactory->addTransformerFactory(new ArrayTransformerFactory($transformerFactory));
+        $transformerFactory->addTransformerFactory(new ObjectTransformerFactory($this->autoMapper));
     }
 }

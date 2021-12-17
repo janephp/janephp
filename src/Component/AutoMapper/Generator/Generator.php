@@ -62,9 +62,10 @@ final class Generator
         ];
 
         if ($canHaveCircularDependency) {
-            $statements[] = new Stmt\Expression(new Expr\Assign($hashVariable, new Expr\BinaryOp\Concat(new Expr\FuncCall(new Name('spl_object_hash'), [
-                new Arg($sourceInput),
-            ]),
+            $statements[] = new Stmt\Expression(new Expr\Assign($hashVariable, new Expr\BinaryOp\Concat(
+                new Expr\FuncCall(new Name('spl_object_hash'), [
+                    new Arg($sourceInput),
+                ]),
                 new Scalar\String_($mapperGeneratorMetadata->getTarget())
             )));
             $statements[] = new Stmt\If_(new Expr\StaticCall(new Name\FullyQualified(MapperContext::class), new Name('shouldHandleCircularReference'), [
@@ -146,7 +147,7 @@ final class Generator
             $sourcePropertyAccessor = $propertyMapping->getReadAccessor()->getExpression($sourceInput);
             [$output, $propStatements] = $transformer->transform($sourcePropertyAccessor, $result, $propertyMapping, $uniqueVariableScope);
 
-            if ($propertyMapping->getWriteMutator()->getType() !== WriteMutator::TYPE_ADDER_AND_REMOVER) {
+            if (WriteMutator::TYPE_ADDER_AND_REMOVER !== $propertyMapping->getWriteMutator()->getType()) {
                 $writeExpression = $propertyMapping->getWriteMutator()->getExpression($result, $output, $transformer instanceof AssignedByReferenceTransformerInterface ? $transformer->assignByRef() : false);
                 if (null === $writeExpression) {
                     continue;
@@ -315,7 +316,8 @@ final class Generator
 
         if (\stdClass::class === $target && \stdClass::class === $source) {
             return [[new Stmt\Expression(new Expr\Assign($result, new Expr\FuncCall(new Name('unserialize'), [new Arg(new Expr\FuncCall(new Name('serialize'), [new Arg($sourceInput)]))])))], [], [], []];
-        } elseif (\stdClass::class === $target) {
+        }
+        if (\stdClass::class === $target) {
             return [[new Stmt\Expression(new Expr\Assign($result, new Expr\New_(new Name(\stdClass::class))))], [], [], []];
         }
 

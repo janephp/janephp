@@ -16,10 +16,9 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 
 abstract class AbstractBodyContentGenerator implements RequestBodyContentGeneratorInterface
 {
+    public const PHP_TYPE_MIXED = 'mixed';
     /** @var GuessClass */
     protected $guessClass;
-
-    public const PHP_TYPE_MIXED = 'mixed';
 
     public function __construct(DenormalizerInterface $denormalizer)
     {
@@ -31,7 +30,7 @@ abstract class AbstractBodyContentGenerator implements RequestBodyContentGenerat
         $schema = $content->getSchema();
         $classGuess = $this->guessClass->guessClass($schema, $reference . '/schema', $context->getRegistry(), $array);
 
-        if ($classGuess === null) {
+        if (null === $classGuess) {
             $types = $this->schemaTypeToPHP($schema->getType(), $schema->getFormat());
 
             if ($array) {

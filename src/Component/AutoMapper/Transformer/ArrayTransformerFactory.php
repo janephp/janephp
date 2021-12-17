@@ -22,6 +22,14 @@ final class ArrayTransformerFactory extends AbstractUniqueTypeTransformerFactory
     /**
      * {@inheritdoc}
      */
+    public function getPriority(): int
+    {
+        return 4;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     protected function createTransformer(Type $sourceType, Type $targetType, MapperMetadataInterface $mapperMetadata): ?TransformerInterface
     {
         if (!$sourceType->isCollection()) {
@@ -50,13 +58,5 @@ final class ArrayTransformerFactory extends AbstractUniqueTypeTransformerFactory
         }
 
         return null;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getPriority(): int
-    {
-        return 4;
     }
 }

@@ -11,7 +11,7 @@ class Naming
 {
     use InflectorTrait;
 
-    const BAD_CLASS_NAME_REGEX = '/^
+    public const BAD_CLASS_NAME_REGEX = '/^
         ([0-9])|
         \b(
             (a(bstract|nd|rray|s))|
@@ -33,9 +33,7 @@ class Naming
 
     public function getPropertyName(string $name): string
     {
-        $name = $this->cleaning($name);
-
-        return $name;
+        return $this->cleaning($name);
     }
 
     public function getPrefixedMethodName(string $prefix, string $name): string

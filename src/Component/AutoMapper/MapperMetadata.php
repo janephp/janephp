@@ -37,7 +37,7 @@ class MapperMetadata implements MapperGeneratorMetadataInterface
 
     private $attributeChecking;
 
-    private $targetReflectionClass = null;
+    private $targetReflectionClass;
 
     public function __construct(MapperGeneratorMetadataRegistryInterface $metadataRegistry, MappingExtractorInterface $mappingExtractor, string $source, string $target, string $classPrefix = 'Mapper_')
     {
@@ -49,15 +49,6 @@ class MapperMetadata implements MapperGeneratorMetadataInterface
         $this->dateTimeFormat = \DateTime::RFC3339;
         $this->classPrefix = $classPrefix;
         $this->attributeChecking = true;
-    }
-
-    private function getCachedTargetReflectionClass(): \ReflectionClass
-    {
-        if (null === $this->targetReflectionClass) {
-            $this->targetReflectionClass = new \ReflectionClass($this->getTarget());
-        }
-
-        return $this->targetReflectionClass;
     }
 
     /**
@@ -259,6 +250,15 @@ class MapperMetadata implements MapperGeneratorMetadataInterface
     public function setAttributeChecking(bool $attributeChecking): void
     {
         $this->attributeChecking = $attributeChecking;
+    }
+
+    private function getCachedTargetReflectionClass(): \ReflectionClass
+    {
+        if (null === $this->targetReflectionClass) {
+            $this->targetReflectionClass = new \ReflectionClass($this->getTarget());
+        }
+
+        return $this->targetReflectionClass;
     }
 
     private function buildPropertyMapping(): void

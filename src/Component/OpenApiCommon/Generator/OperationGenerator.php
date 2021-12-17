@@ -22,16 +22,6 @@ class OperationGenerator
         $this->endpointGenerator = $endpointGenerator;
     }
 
-    protected function getReturnDoc(array $returnTypes, array $throwTypes): string
-    {
-        return implode('', array_map(function ($value) {
-            return ' * @throws ' . $value . "\n";
-        }, $throwTypes))
-            . " *\n"
-            . ' * @return ' . implode('|', $returnTypes)
-            ;
-    }
-
     public function createOperation(string $name, OperationGuess $operation, Context $context): Stmt\ClassMethod
     {
         /** @var Param[] $methodParams */
@@ -63,5 +53,15 @@ class OperationGenerator
         ], [
             'comments' => [new Comment\Doc($documentation)],
         ]);
+    }
+
+    protected function getReturnDoc(array $returnTypes, array $throwTypes): string
+    {
+        return implode('', array_map(function ($value) {
+            return ' * @throws ' . $value . "\n";
+        }, $throwTypes))
+            . " *\n"
+            . ' * @return ' . implode('|', $returnTypes)
+            ;
     }
 }

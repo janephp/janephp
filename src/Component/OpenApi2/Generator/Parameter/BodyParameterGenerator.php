@@ -34,8 +34,8 @@ class BodyParameterGenerator extends ParameterGenerator
     {
         $name = $this->getInflector()->camelize($parameter->getName());
 
-        list($class, $array) = $this->getClass($parameter, $context, $reference);
-        $paramType = \count($class) === 1 ? $class[0] : null;
+        [$class, $array] = $this->getClass($parameter, $context, $reference);
+        $paramType = 1 === \count($class) ? $class[0] : null;
 
         if ($array) {
             $paramType = 'array';
@@ -51,7 +51,7 @@ class BodyParameterGenerator extends ParameterGenerator
      */
     public function generateMethodDocParameter($parameter, Context $context, string $reference): string
     {
-        list($class, $array) = $this->getClass($parameter, $context, $reference);
+        [$class, $array] = $this->getClass($parameter, $context, $reference);
 
         return sprintf(' * @param %s $%s %s', implode('|', $class), $this->getInflector()->camelize($parameter->getName()), $parameter->getDescription() ?: '');
     }
@@ -64,11 +64,11 @@ class BodyParameterGenerator extends ParameterGenerator
         $schema = $parameter->getSchema();
 
         if ($schema instanceof Reference) {
-            list($jsonReference, $resolvedSchema) = $this->guessClass->resolve($schema, Schema::class);
+            [$jsonReference, $resolvedSchema] = $this->guessClass->resolve($schema, Schema::class);
         }
 
         if ($schema instanceof Schema && 'array' === $schema->getType() && $schema->getItems() instanceof Reference) {
-            list($jsonReference, $resolvedSchema) = $this->guessClass->resolve($schema->getItems(), Schema::class);
+            [$jsonReference, $resolvedSchema] = $this->guessClass->resolve($schema->getItems(), Schema::class);
             $array = true;
         }
 

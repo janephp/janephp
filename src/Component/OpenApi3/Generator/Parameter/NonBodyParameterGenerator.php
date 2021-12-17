@@ -50,7 +50,7 @@ class NonBodyParameterGenerator extends ParameterGenerator
 
         $types = $this->convertParameterType($parameter->getSchema());
 
-        if (\count($types) === 1) {
+        if (1 === \count($types)) {
             $methodParameter->type = new Node\Name($types[0]);
         }
 
@@ -171,9 +171,9 @@ class NonBodyParameterGenerator extends ParameterGenerator
             $type = 'string';
         }
 
-        if ($additionalProperties instanceof Schema &&
-            'object' === $type &&
-            'string' === $additionalProperties->getType()) {
+        if ($additionalProperties instanceof Schema
+            && 'object' === $type
+            && 'string' === $additionalProperties->getType()) {
             return ['string'];
         }
 

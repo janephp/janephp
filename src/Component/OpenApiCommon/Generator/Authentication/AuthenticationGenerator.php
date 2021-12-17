@@ -24,6 +24,7 @@ trait AuthenticationGenerator
                 switch ($securityScheme->getScheme()) {
                     case SecuritySchemeGuess::SCHEME_BEARER:
                         $fetchedValue = new Expr\PropertyFetch(new Expr\Variable('this'), new Scalar\String_('token'));
+
                         break;
                     case SecuritySchemeGuess::SCHEME_BASIC:
                         $fetchedValue = new Expr\FuncCall(new Name('base64_encode'), [
@@ -33,6 +34,7 @@ trait AuthenticationGenerator
                                 new Node\Arg(new Expr\PropertyFetch(new Expr\Variable('this'), new Scalar\String_('password'))),
                             ])),
                         ]);
+
                         break;
                 }
 
@@ -44,6 +46,7 @@ trait AuthenticationGenerator
                     new Node\Arg(new Scalar\String_('Authorization')),
                     new Node\Arg(new Expr\Variable('header')),
                 ])));
+
                 break;
             case SecuritySchemeGuess::TYPE_API_KEY:
                 if (null === $securityScheme->getIn()) {
@@ -58,6 +61,7 @@ trait AuthenticationGenerator
                                 new Node\Arg(new Expr\PropertyFetch(new Expr\Variable('this'), new Scalar\String_('apiKey'))),
                             ]))),
                         ];
+
                         break;
                     case 'query':
                         $stmts = [
@@ -86,11 +90,14 @@ trait AuthenticationGenerator
                                 new Node\Arg(new Expr\Variable('uri')),
                             ]))),
                         ];
+
                         break;
                 }
+
                 break;
             default:
                 throw new \Exception(sprintf('Jane actually does not support Security type %s generation', $securityScheme->getType()));
+
                 break;
         }
 

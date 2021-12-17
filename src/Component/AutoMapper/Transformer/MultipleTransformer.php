@@ -66,7 +66,8 @@ final class MultipleTransformer implements TransformerInterface, DependentTransf
                 ),
                 [
                     'stmts' => array_merge(
-                        $transformerStatements, [
+                        $transformerStatements,
+                        [
                             new Stmt\Expression(new $assignClass($output, $transformerOutput)),
                         ]
                     ),

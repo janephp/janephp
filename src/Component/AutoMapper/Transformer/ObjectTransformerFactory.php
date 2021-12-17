@@ -21,6 +21,14 @@ final class ObjectTransformerFactory extends AbstractUniqueTypeTransformerFactor
     /**
      * {@inheritdoc}
      */
+    public function getPriority(): int
+    {
+        return 2;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     protected function createTransformer(Type $sourceType, Type $targetType, MapperMetadataInterface $mapperMetadata): ?TransformerInterface
     {
         // Only deal with source type being an object or an array that is not a collection
@@ -50,16 +58,7 @@ final class ObjectTransformerFactory extends AbstractUniqueTypeTransformerFactor
     {
         return
             Type::BUILTIN_TYPE_OBJECT === $type->getBuiltinType()
-            ||
-            (Type::BUILTIN_TYPE_ARRAY === $type->getBuiltinType() && !$type->isCollection())
+            || (Type::BUILTIN_TYPE_ARRAY === $type->getBuiltinType() && !$type->isCollection())
         ;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getPriority(): int
-    {
-        return 2;
     }
 }

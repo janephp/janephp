@@ -44,11 +44,11 @@ trait PropertyGenerator
     protected function createPropertyDoc(Property $property, $namespace, bool $strict): Doc
     {
         $docTypeHint = $property->getType()->getDocTypeHint($namespace);
-        if ((!$strict || $property->isNullable()) && strpos($docTypeHint, 'null') === false) {
+        if ((!$strict || $property->isNullable()) && false === strpos($docTypeHint, 'null')) {
             $docTypeHint .= '|null';
         }
 
-        $description = sprintf(<<<EOD
+        $description = sprintf(<<<'EOD'
 /**
  * %s
  *
@@ -57,14 +57,14 @@ EOD
         , $property->getDescription());
 
         if ($property->isDeprecated()) {
-            $description .= <<<EOD
+            $description .= <<<'EOD'
  * @deprecated
  *
 
 EOD;
         }
 
-        $description .= sprintf(<<<EOD
+        $description .= sprintf(<<<'EOD'
  * @var %s
  */
 EOD

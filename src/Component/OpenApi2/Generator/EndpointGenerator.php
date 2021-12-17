@@ -79,7 +79,7 @@ class EndpointGenerator implements EndpointGeneratorInterface
         $class = new Stmt\Class_($endpointName, [
             'extends' => new Name\FullyQualified($naming->getRuntimeClassFQCN($context->getCurrentSchema()->getNamespace(), ['Client'], 'BaseEndpoint')),
             'implements' => [new Name\FullyQualified($naming->getRuntimeClassFQCN($context->getCurrentSchema()->getNamespace(), ['Client'], 'Endpoint'))],
-            'stmts' => array_merge($pathProperties, $constructorMethod === null ? [] : [$constructorMethod], [
+            'stmts' => array_merge($pathProperties, null === $constructorMethod ? [] : [$constructorMethod], [
                 new Stmt\Use_([new Stmt\UseUse(new Name\FullyQualified($naming->getRuntimeClassFQCN($context->getCurrentSchema()->getNamespace(), ['Client'], 'EndpointTrait')))]),
                 $this->getGetMethod($operation),
                 $this->getGetUri($operation, $this->guessClass),

@@ -16,7 +16,7 @@ trait ServerPluginGenerator
     {
         [$baseUri, $_] = $this->discoverServer($openApi);
 
-        return !(empty($baseUri) || $baseUri === '/');
+        return !(empty($baseUri) || '/' === $baseUri);
     }
 
     protected function getServerPluginsStatements($openApi): array

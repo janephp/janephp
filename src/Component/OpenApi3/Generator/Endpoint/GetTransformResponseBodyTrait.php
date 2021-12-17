@@ -39,7 +39,7 @@ trait GetTransformResponseBodyTrait
                     $response = $normalizer->denormalize($response, Response::class);
                 }
 
-                /* @var Response $response */
+                // @var Response $response
                 [$newOutputTypes, $newThrowTypes, $ifStatements] = $this->createResponseDenormalizationStatement(
                     $endpointName,
                     $status,
@@ -64,7 +64,7 @@ trait GetTransformResponseBodyTrait
                     [$reference, $response] = $guessClass->resolve($response, Response::class);
                 }
 
-                /* @var Response $response */
+                // @var Response $response
                 [$newOutputTypes, $newThrowTypes, $ifStatements] = $this->createResponseDenormalizationStatement(
                     $endpointName,
                     'default',
@@ -122,7 +122,8 @@ trait GetTransformResponseBodyTrait
             ],
             'stmts' => $outputStatements,
         ], [
-            'comments' => [new Doc(<<<EOD
+            'comments' => [new Doc(
+                <<<'EOD'
 /**
  * {@inheritdoc}
  *
@@ -149,8 +150,8 @@ EOD
                 $exceptionGenerator
             );
 
-            $returnTypes = $returnType === null ? [] : [$returnType];
-            $throwTypes = $throwType === null ? [] : [$throwType];
+            $returnTypes = null === $returnType ? [] : [$returnType];
+            $throwTypes = null === $throwType ? [] : [$throwType];
 
             if ('default' === $status) {
                 return [$returnTypes, $throwTypes, [$returnStatement]];
@@ -172,7 +173,7 @@ EOD
         $statements = [];
 
         foreach ($response->getContent() as $contentType => $content) {
-            if ($contentType === 'application/json' || $contentType === 'application/problem+json') {
+            if ('application/json' === $contentType || 'application/problem+json' === $contentType) {
                 [$returnType, $throwType, $returnStatement] = $this->createContentDenormalizationStatement(
                     $name,
                     $status,
@@ -184,11 +185,11 @@ EOD
                     $exceptionGenerator
                 );
 
-                if ($returnType !== null) {
+                if (null !== $returnType) {
                     $returnTypes[] = $returnType;
                 }
 
-                if ($throwType !== null) {
+                if (null !== $throwType) {
                     $throwTypes[] = $throwType;
                 }
 
@@ -212,7 +213,7 @@ EOD
         }
 
         // Avoid useless imbrication of ifs
-        if (\count($statements) === 1 && $statements[0] instanceof Stmt\If_) {
+        if (1 === \count($statements) && $statements[0] instanceof Stmt\If_) {
             return [$returnTypes, $throwTypes, [new Stmt\If_(
                 new Expr\BinaryOp\BooleanAnd(
                     new Expr\BinaryOp\Identical(

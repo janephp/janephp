@@ -9,16 +9,6 @@ class SecuritySchemeGuess
     public const TYPE_OAUTH2 = 'oauth2';
     public const TYPE_OPEN_ID_CONNECT = 'openIdConnect';
 
-    public static function getAvailableTypes(): array
-    {
-        return [
-            self::TYPE_API_KEY,
-            self::TYPE_HTTP,
-            self::TYPE_OAUTH2,
-            self::TYPE_OPEN_ID_CONNECT,
-        ];
-    }
-
     public const SCHEME_BEARER = 'Bearer';
     public const SCHEME_BASIC = 'Basic';
 
@@ -45,6 +35,16 @@ class SecuritySchemeGuess
         $this->object = $object;
         $this->variable = $variable;
         $this->type = $type;
+    }
+
+    public static function getAvailableTypes(): array
+    {
+        return [
+            self::TYPE_API_KEY,
+            self::TYPE_HTTP,
+            self::TYPE_OAUTH2,
+            self::TYPE_OPEN_ID_CONNECT,
+        ];
     }
 
     public function getName(): string

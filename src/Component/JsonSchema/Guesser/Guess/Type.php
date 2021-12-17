@@ -9,14 +9,14 @@ use PhpParser\Node\Name;
 
 class Type
 {
-    const TYPE_BOOLEAN = 'bool';
-    const TYPE_INTEGER = 'int';
-    const TYPE_FLOAT = 'float';
-    const TYPE_STRING = 'string';
-    const TYPE_NULL = 'null';
-    const TYPE_MIXED = 'mixed';
-    const TYPE_ARRAY = 'array';
-    const TYPE_OBJECT = 'object';
+    public const TYPE_BOOLEAN = 'bool';
+    public const TYPE_INTEGER = 'int';
+    public const TYPE_FLOAT = 'float';
+    public const TYPE_STRING = 'string';
+    public const TYPE_NULL = 'null';
+    public const TYPE_MIXED = 'mixed';
+    public const TYPE_ARRAY = 'array';
+    public const TYPE_OBJECT = 'object';
 
     protected $phpMapping = [
         self::TYPE_BOOLEAN => 'bool',
@@ -61,6 +61,11 @@ class Type
         $this->object = $object;
     }
 
+    public function __toString(): string
+    {
+        return $this->name;
+    }
+
     public function getName()
     {
         return $this->name;
@@ -71,11 +76,6 @@ class Type
         return $this->object;
     }
 
-    public function __toString(): string
-    {
-        return $this->name;
-    }
-
     public function createDenormalizationStatement(Context $context, Expr $input, bool $normalizerFromObject = true): array
     {
         return [[], $this->createDenormalizationValueStatement($context, $input, $normalizerFromObject)];
@@ -84,16 +84,6 @@ class Type
     public function createNormalizationStatement(Context $context, Expr $input, bool $normalizerFromObject = true): array
     {
         return [[], $this->createNormalizationValueStatement($context, $input, $normalizerFromObject)];
-    }
-
-    protected function createDenormalizationValueStatement(Context $context, Expr $input, bool $normalizerFromObject = true): Expr
-    {
-        return $input;
-    }
-
-    protected function createNormalizationValueStatement(Context $context, Expr $input, bool $normalizerFromObject = true): Expr
-    {
-        return $input;
     }
 
     public function createConditionStatement(Expr $input): Expr
@@ -117,7 +107,7 @@ class Type
     }
 
     /**
-     * @return string|Name|null
+     * @return Name|string|null
      */
     public function getTypeHint(string $namespace)
     {
@@ -125,10 +115,20 @@ class Type
     }
 
     /**
-     * @return string|Name|null
+     * @return Name|string|null
      */
     public function getDocTypeHint(string $namespace)
     {
         return (string) $this;
+    }
+
+    protected function createDenormalizationValueStatement(Context $context, Expr $input, bool $normalizerFromObject = true): Expr
+    {
+        return $input;
+    }
+
+    protected function createNormalizationValueStatement(Context $context, Expr $input, bool $normalizerFromObject = true): Expr
+    {
+        return $input;
     }
 }

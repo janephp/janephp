@@ -10,10 +10,9 @@ use Symfony\Component\Yaml\Yaml;
 
 abstract class SchemaParser
 {
-    protected static $parsed = [];
-
     protected const OPEN_API_MODEL = null;
     protected const OPEN_API_VERSION_MAJOR = null;
+    protected static $parsed = [];
 
     /** @var SerializerInterface */
     private $serializer;

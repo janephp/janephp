@@ -71,7 +71,8 @@ class ExceptionGenerator
                                         new Expr\PropertyFetch(
                                             new Expr\Variable('this'),
                                             $propertyName
-                                        ), new Expr\Variable($realPropertyName)
+                                        ),
+                                        new Expr\Variable($realPropertyName)
                                     )),
                                 ],
                             ]),

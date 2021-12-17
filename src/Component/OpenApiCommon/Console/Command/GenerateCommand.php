@@ -90,6 +90,7 @@ class GenerateCommand extends BaseGenerateCommand
                     // - method => will contains the type of the query parameter where to apply this normalizer
                     // - parameters => will contains the class to apply
                     $customQueryResolver['__type'][$method] = $this->formatClassName($parameters);
+
                     continue;
                 }
 

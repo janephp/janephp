@@ -9,13 +9,6 @@ class UserWithYearOfBirth
     /**
      * @Groups({"read"})
      *
-     * @var int
-     */
-    private $id;
-
-    /**
-     * @Groups({"read"})
-     *
      * @var string
      */
     public $name;
@@ -23,9 +16,15 @@ class UserWithYearOfBirth
     /**
      * @Groups({"read"})
      *
-     * @var string|int
+     * @var int|string
      */
     public $age;
+    /**
+     * @Groups({"read"})
+     *
+     * @var int
+     */
+    private $id;
 
     public function __construct($id, $name, $age)
     {

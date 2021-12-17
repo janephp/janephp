@@ -13,6 +13,14 @@ final class DateTimeTransformerFactory extends AbstractUniqueTypeTransformerFact
     /**
      * {@inheritdoc}
      */
+    public function getPriority(): int
+    {
+        return 16;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     protected function createTransformer(Type $sourceType, Type $targetType, MapperMetadataInterface $mapperMetadata): ?TransformerInterface
     {
         $isSourceDate = $this->isDateTimeType($sourceType);
@@ -96,13 +104,5 @@ final class DateTimeTransformerFactory extends AbstractUniqueTypeTransformerFact
         }
 
         return true;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getPriority(): int
-    {
-        return 16;
     }
 }

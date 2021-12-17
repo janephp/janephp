@@ -44,6 +44,7 @@ class AllOfGuesser implements GuesserInterface, TypeGuesserInterface, ChainGuess
             }
             if ('object' === $allOf->getType()) {
                 $hasSubObject = true;
+
                 break;
             }
         }
@@ -63,7 +64,7 @@ class AllOfGuesser implements GuesserInterface, TypeGuesserInterface, ChainGuess
                         'object' => $extensionObject,
                         'reference' => $reference . '/additionalProperties',
                     ];
-                } elseif (method_exists($object, 'getPatternProperties') && $object->getPatternProperties() !== null) {
+                } elseif (method_exists($object, 'getPatternProperties') && null !== $object->getPatternProperties()) {
                     foreach ($object->getPatternProperties() as $pattern => $patternProperty) {
                         $extensions[$pattern] = [
                             'object' => $patternProperty,

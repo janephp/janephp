@@ -9,8 +9,8 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 
 class GuessClass
 {
-    private $schemaClass;
     protected $denormalizer;
+    private $schemaClass;
 
     public function __construct(string $schemaClass, DenormalizerInterface $denormalizer)
     {

@@ -43,7 +43,8 @@ trait ClientGenerator
         ];
 
         return new Stmt\ClassMethod(
-            'create', [
+            'create',
+            [
                 'flags' => Stmt\Class_::MODIFIER_STATIC | Stmt\Class_::MODIFIER_PUBLIC,
                 'params' => $params,
                 'stmts' => [
@@ -95,7 +96,8 @@ trait ClientGenerator
                     )),
                     new Stmt\Return_(
                         new Expr\New_(
-                            new Name('static'), [
+                            new Name('static'),
+                            [
                                 new Node\Arg(new Expr\Variable('httpClient')),
                                 new Node\Arg(new Expr\Variable('requestFactory')),
                                 new Node\Arg(new Expr\Variable('serializer')),

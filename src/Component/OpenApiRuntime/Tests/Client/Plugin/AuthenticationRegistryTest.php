@@ -70,10 +70,12 @@ class AuthenticationRegistryTest extends TestCase
         $request = $this->createMock(RequestInterface::class);
         $request
             ->method('withHeader')
-            ->willReturnCallback(function (string $name, string $value) {});
+            ->willReturnCallback(function (string $name, string $value) {})
+        ;
         $request
             ->method('withoutHeader')
-            ->willReturn($request);
+            ->willReturn($request)
+        ;
 
         $fakeCallback = function (RequestInterface $request) {
             $this->assertTrue(true);
@@ -89,16 +91,19 @@ class AuthenticationRegistryTest extends TestCase
         $request
             ->method('getHeader')
             ->with(AuthenticationRegistry::SCOPES_HEADER)
-            ->willReturn(['A']);
+            ->willReturn(['A'])
+        ;
         $request
             ->method('withHeader')
             ->willReturnCallback(function (string $name, string $value) {
                 $this->assertEquals('A', $name);
                 $this->assertEquals('A', $value);
-            });
+            })
+        ;
         $request
             ->method('withoutHeader')
-            ->willReturn($request);
+            ->willReturn($request)
+        ;
 
         $fakeCallback = function (RequestInterface $request) {
             $this->assertTrue(true);
@@ -114,7 +119,8 @@ class AuthenticationRegistryTest extends TestCase
         $request
             ->method('getHeader')
             ->with(AuthenticationRegistry::SCOPES_HEADER)
-            ->willReturn(['A', 'C']);
+            ->willReturn(['A', 'C'])
+        ;
         $request
             ->method('withHeader')
             ->willReturnOnConsecutiveCalls([
@@ -126,10 +132,12 @@ class AuthenticationRegistryTest extends TestCase
                     $this->assertEquals('C', $name);
                     $this->assertEquals('C', $value);
                 }),
-            ]);
+            ])
+        ;
         $request
             ->method('withoutHeader')
-            ->willReturn($request);
+            ->willReturn($request)
+        ;
 
         $fakeCallback = function (RequestInterface $request) {
             $this->assertTrue(true);

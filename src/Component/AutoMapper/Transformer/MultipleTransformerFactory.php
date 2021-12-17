@@ -42,7 +42,7 @@ final class MultipleTransformerFactory implements TransformerFactoryInterface, P
             return new MultipleTransformer($transformers);
         }
 
-        if (\count($transformers) === 1) {
+        if (1 === \count($transformers)) {
             return $transformers[0]['transformer'];
         }
 

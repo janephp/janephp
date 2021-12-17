@@ -10,7 +10,7 @@ use PhpParser\Parser;
 
 class RuntimeGenerator implements GeneratorInterface
 {
-    const FILE_TYPE_RUNTIME = 'runtime';
+    public const FILE_TYPE_RUNTIME = 'runtime';
 
     private $naming;
     private $parser;
@@ -44,6 +44,11 @@ class RuntimeGenerator implements GeneratorInterface
         }
     }
 
+    protected function directories(): \Generator
+    {
+        yield __DIR__ . '/Runtime/data';
+    }
+
     private function collectFiles(): \Generator
     {
         foreach ($this->directories() as $directory) {
@@ -70,10 +75,5 @@ class RuntimeGenerator implements GeneratorInterface
                 yield $fullPath;
             }
         }
-    }
-
-    protected function directories(): \Generator
-    {
-        yield __DIR__ . '/Runtime/data';
     }
 }

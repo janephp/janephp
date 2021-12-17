@@ -49,7 +49,8 @@ class JaneAutoMapperExtension extends Extension
         if (class_exists(AbstractUid::class)) {
             $container
                 ->getDefinition(SymfonyUidTransformerFactory::class)
-                ->addTag('jane_auto_mapper.transformer_factory', ['priority' => '-1004']);
+                ->addTag('jane_auto_mapper.transformer_factory', ['priority' => '-1004'])
+            ;
         }
 
         if ($config['normalizer']) {
@@ -62,11 +63,13 @@ class JaneAutoMapperExtension extends Extension
         if (null !== $config['name_converter']) {
             $container
                 ->getDefinition(FromTargetMappingExtractor::class)
-                ->addArgument(new Reference($config['name_converter']));
+                ->addArgument(new Reference($config['name_converter']))
+            ;
 
             $container
                 ->getDefinition(FromSourceMappingExtractor::class)
-                ->addArgument(new Reference($config['name_converter']));
+                ->addArgument(new Reference($config['name_converter']))
+            ;
         }
 
         $container->setParameter('automapper.cache_dir', $config['cache_dir']);

@@ -29,7 +29,7 @@ class PetOwner
     {
         $index = array_search($pet, $this->pets);
 
-        if ($index !== false) {
+        if (false !== $index) {
             unset($this->pets[$index]);
         }
     }

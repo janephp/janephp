@@ -25,7 +25,7 @@ trait GetGetBodyTrait
         $consumes = \is_array($operation->getOperation()->getConsumes()) ? $operation->getOperation()->getConsumes() : [$operation->getOperation()->getConsumes()];
 
         foreach ($operation->getParameters() as $key => $parameter) {
-            if ($parameter instanceof BodyParameter && $parameter->getSchema() !== null) {
+            if ($parameter instanceof BodyParameter && null !== $parameter->getSchema()) {
                 $hasBody = true;
 
                 $schema = $parameter->getSchema();
@@ -43,7 +43,7 @@ trait GetGetBodyTrait
             if ($parameter instanceof FormDataParameterSubSchema) {
                 $isFormBody = true;
 
-                if ($parameter->getType() === 'file') {
+                if ('file' === $parameter->getType()) {
                     $hasFileInForm = true;
                 }
             }

@@ -18,24 +18,24 @@ abstract class BaseEndpoint implements Endpoint
 
     abstract public function getAuthenticationScopes(): array;
 
-    abstract protected function transformResponseBody(string $body, int $status, SerializerInterface $serializer, ?string $contentType = null);
-
-    protected function getExtraHeaders(): array
-    {
-        return [];
-    }
-
     public function getQueryString(): string
     {
         $optionsResolved = $this->getQueryOptionsResolver()->resolve($this->queryParameters);
         $optionsResolved = array_map(function ($value) { return null !== $value ? $value : ''; }, $optionsResolved);
 
-        return http_build_query($optionsResolved, '', '&', PHP_QUERY_RFC3986);
+        return http_build_query($optionsResolved, '', '&', \PHP_QUERY_RFC3986);
     }
 
     public function getHeaders(array $baseHeaders = []): array
     {
         return array_merge($this->getExtraHeaders(), $baseHeaders, $this->getHeadersOptionsResolver()->resolve($this->headerParameters));
+    }
+
+    abstract protected function transformResponseBody(string $body, int $status, SerializerInterface $serializer, ?string $contentType = null);
+
+    protected function getExtraHeaders(): array
+    {
+        return [];
     }
 
     protected function getQueryOptionsResolver(): OptionsResolver

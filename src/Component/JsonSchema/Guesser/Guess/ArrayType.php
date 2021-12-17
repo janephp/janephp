@@ -55,7 +55,7 @@ class ArrayType extends Type
         $loopValueVar = new Expr\Variable($context->getUniqueVariableName('value'));
         $loopKeyVar = $this->createLoopKeyStatement($context);
 
-        list($subStatements, $outputExpr) = $this->itemType->createDenormalizationStatement($context, $loopValueVar, $normalizerFromObject);
+        [$subStatements, $outputExpr] = $this->itemType->createDenormalizationStatement($context, $loopValueVar, $normalizerFromObject);
 
         $loopStatements = array_merge($subStatements, [
             new Stmt\Expression(new Expr\Assign($this->createLoopOutputAssignement($valuesVar, $loopKeyVar), $outputExpr)),
@@ -93,7 +93,7 @@ class ArrayType extends Type
         $loopValueVar = new Expr\Variable($context->getUniqueVariableName('value'));
         $loopKeyVar = $this->createLoopKeyStatement($context);
 
-        list($subStatements, $outputExpr) = $this->itemType->createNormalizationStatement($context, $loopValueVar, $normalizerFromObject);
+        [$subStatements, $outputExpr] = $this->itemType->createNormalizationStatement($context, $loopValueVar, $normalizerFromObject);
 
         $loopStatements = array_merge($subStatements, [
             new Stmt\Expression(new Expr\Assign($this->createNormalizationLoopOutputAssignement($valuesVar, $loopKeyVar), $outputExpr)),

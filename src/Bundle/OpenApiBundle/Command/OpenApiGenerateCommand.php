@@ -32,7 +32,8 @@ final class OpenApiGenerateCommand extends Command
         $this
             ->setName('jane:open-api:generate')
             ->setDescription('Generate an api client: class, normalizers and resources given a specific OpenApi file')
-            ->addOption('config-file', 'c', InputOption::VALUE_REQUIRED, 'File to use for Jane OpenAPI configuration');
+            ->addOption('config-file', 'c', InputOption::VALUE_REQUIRED, 'File to use for Jane OpenAPI configuration')
+        ;
     }
 
     protected function execute(InputInterface $input, OutputInterface $output): int

@@ -39,6 +39,7 @@ class MapperContextTest extends TestCase
         for ($i = 0; $i <= 2; ++$i) {
             if (2 === $i) {
                 self::assertTrue(MapperContext::shouldHandleCircularReference($context, 'reference'));
+
                 break;
             }
 

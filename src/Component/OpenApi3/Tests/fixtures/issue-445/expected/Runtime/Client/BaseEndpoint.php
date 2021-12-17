@@ -14,22 +14,22 @@ abstract class BaseEndpoint implements Endpoint
     public abstract function getBody(SerializerInterface $serializer, $streamFactory = null) : array;
     public abstract function getUri() : string;
     public abstract function getAuthenticationScopes() : array;
-    protected abstract function transformResponseBody(string $body, int $status, SerializerInterface $serializer, ?string $contentType = null);
-    protected function getExtraHeaders() : array
-    {
-        return [];
-    }
     public function getQueryString() : string
     {
         $optionsResolved = $this->getQueryOptionsResolver()->resolve($this->queryParameters);
         $optionsResolved = array_map(function ($value) {
             return null !== $value ? $value : '';
         }, $optionsResolved);
-        return http_build_query($optionsResolved, '', '&', PHP_QUERY_RFC3986);
+        return http_build_query($optionsResolved, '', '&', \PHP_QUERY_RFC3986);
     }
     public function getHeaders(array $baseHeaders = []) : array
     {
         return array_merge($this->getExtraHeaders(), $baseHeaders, $this->getHeadersOptionsResolver()->resolve($this->headerParameters));
+    }
+    protected abstract function transformResponseBody(string $body, int $status, SerializerInterface $serializer, ?string $contentType = null);
+    protected function getExtraHeaders() : array
+    {
+        return [];
     }
     protected function getQueryOptionsResolver() : OptionsResolver
     {

@@ -40,7 +40,8 @@ trait DenormalizerGenerator
             ],
             'stmts' => [new Stmt\Return_(new Expr\BinaryOp\Identical(new Expr\Variable('type'), new Scalar\String_($modelFqdn)))],
         ], [
-            'comments' => [new Doc(<<<EOD
+            'comments' => [new Doc(
+                <<<'EOD'
 /**
  * @return bool
  */
@@ -96,7 +97,7 @@ EOD
 
         foreach ($classGuess->getProperties() as $property) {
             $propertyVar = new Expr\ArrayDimFetch($dataVariable, new Scalar\String_($property->getName()));
-            list($denormalizationStatements, $outputVar) = $property->getType()->createDenormalizationStatement($context, $propertyVar);
+            [$denormalizationStatements, $outputVar] = $property->getType()->createDenormalizationStatement($context, $propertyVar);
 
             $baseCondition = new Expr\FuncCall(new Name('\array_key_exists'), [
                 new Arg(new Scalar\String_($property->getName())),
@@ -142,7 +143,7 @@ EOD
         $loopValueVar = new Expr\Variable($context->getUniqueVariableName('value'));
 
         foreach ($classGuess->getExtensionsType() as $pattern => $type) {
-            list($denormalizationStatements, $outputVar) = $type->createDenormalizationStatement($context, $loopValueVar);
+            [$denormalizationStatements, $outputVar] = $type->createDenormalizationStatement($context, $loopValueVar);
 
             $patternCondition[] = new Stmt\If_(
                 new Expr\FuncCall(new Name('preg_match'), [
@@ -175,7 +176,8 @@ EOD
             ],
             'stmts' => $statements,
         ], [
-            'comments' => [new Doc(<<<EOD
+            'comments' => [new Doc(
+                <<<'EOD'
 /**
  * @return mixed
  */

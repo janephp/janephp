@@ -11,13 +11,22 @@ use Jane\Component\OpenApiCommon\Guesser\Guess\OperationGuess;
 
 class OperationUrlNaming implements OperationNamingInterface
 {
-    const FORBIDDEN_EXTENSIONS = [
+    use InflectorTrait;
+    public const FORBIDDEN_EXTENSIONS = [
         '.json',
         '.php',
         '.asp',
     ];
 
-    use InflectorTrait;
+    public function getFunctionName(OperationGuess $operation): string
+    {
+        return $this->getInflector()->camelize($this->getUniqueName($operation));
+    }
+
+    public function getEndpointName(OperationGuess $operation): string
+    {
+        return $this->getInflector()->classify($this->getUniqueName($operation));
+    }
 
     protected function getUniqueName(OperationGuess $operation): string
     {
@@ -47,7 +56,7 @@ class OperationUrlNaming implements OperationNamingInterface
         $lastNonParameterPartIndex = 0;
 
         foreach ($matches[0] as $index => $match) {
-            if ($matches['separator'][$index] === '.' && \in_array(mb_strtolower($match), self::FORBIDDEN_EXTENSIONS)) {
+            if ('.' === $matches['separator'][$index] && \in_array(mb_strtolower($match), self::FORBIDDEN_EXTENSIONS)) {
                 continue;
             }
 
@@ -76,15 +85,5 @@ class OperationUrlNaming implements OperationNamingInterface
         }
 
         return $prefix . ucfirst(implode('', $methodNameParts));
-    }
-
-    public function getFunctionName(OperationGuess $operation): string
-    {
-        return $this->getInflector()->camelize($this->getUniqueName($operation));
-    }
-
-    public function getEndpointName(OperationGuess $operation): string
-    {
-        return $this->getInflector()->classify($this->getUniqueName($operation));
     }
 }

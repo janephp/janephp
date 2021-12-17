@@ -29,7 +29,7 @@ trait GetGetUriTrait
             }
         }
 
-        if (\count($names) === 0) {
+        if (0 === \count($names)) {
             return new Stmt\ClassMethod('getUri', [
                 'type' => Stmt\Class_::MODIFIER_PUBLIC,
                 'stmts' => [

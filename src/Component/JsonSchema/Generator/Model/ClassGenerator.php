@@ -26,7 +26,8 @@ trait ClassGenerator
         $attributes = [];
 
         if ($deprecated) {
-            $attributes['comments'] = [new Doc(<<<EOD
+            $attributes['comments'] = [new Doc(
+                <<<'EOD'
 /**
  *
  * @deprecated

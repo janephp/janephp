@@ -39,9 +39,11 @@ class SecurityGuesser implements GuesserInterface, ClassGuesserInterface
                 $scheme = $object->getScheme() ?? SecuritySchemeGuess::SCHEME_BEARER;
                 $scheme = ucfirst(mb_strtolower($scheme));
                 $securitySchemeGuess->setScheme($scheme);
+
                 break;
             case SecuritySchemeGuess::TYPE_API_KEY:
                 $securitySchemeGuess->setIn($object->getIn());
+
                 break;
         }
 

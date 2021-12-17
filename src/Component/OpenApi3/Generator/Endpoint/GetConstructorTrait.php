@@ -70,12 +70,12 @@ trait GetConstructorTrait
 
         $methodStatements = array_merge(
             $methodStatements,
-            $bodyAssign !== null ? [$bodyAssign] : [],
+            null !== $bodyAssign ? [$bodyAssign] : [],
             \count($queryParamsDoc) > 0 ? [new Stmt\Expression(new Expr\Assign(new Expr\PropertyFetch(new Expr\Variable('this'), 'queryParameters'), new Expr\Variable('queryParameters')))] : [],
             \count($headerParamsDoc) > 0 ? [new Stmt\Expression(new Expr\Assign(new Expr\PropertyFetch(new Expr\Variable('this'), 'headerParameters'), new Expr\Variable('headerParameters')))] : []
         );
 
-        if (\count($methodStatements) === 0) {
+        if (0 === \count($methodStatements)) {
             return [null, [], '/**', []];
         }
 

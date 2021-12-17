@@ -7,14 +7,13 @@ use Symfony\Component\Uid\Uuid;
 class SymfonyUuidUser
 {
     /**
-     * @var Uuid
-     */
-    private $uuid;
-
-    /**
      * @var string
      */
     public $name;
+    /**
+     * @var Uuid
+     */
+    private $uuid;
 
     public function __construct(Uuid $uuid, string $name)
     {

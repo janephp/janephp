@@ -64,7 +64,7 @@ class ObjectGuesser implements GuesserInterface, PropertiesGuesserInterface, Typ
                     'object' => $extensionObject,
                     'reference' => $reference . '/additionalProperties',
                 ];
-            } elseif (method_exists($object, 'getPatternProperties') && $object->getPatternProperties() !== null) {
+            } elseif (method_exists($object, 'getPatternProperties') && null !== $object->getPatternProperties()) {
                 foreach ($object->getPatternProperties() as $pattern => $patternProperty) {
                     $extensions[$pattern] = [
                         'object' => $patternProperty,
@@ -112,11 +112,6 @@ class ObjectGuesser implements GuesserInterface, PropertiesGuesserInterface, Typ
         return $properties;
     }
 
-    protected function isPropertyNullable($property): bool
-    {
-        return 'null' == $property->getType() || (\is_array($property->getType()) && \in_array('null', $property->getType()));
-    }
-
     /**
      * {@inheritdoc}
      */
@@ -154,6 +149,11 @@ class ObjectGuesser implements GuesserInterface, PropertiesGuesserInterface, Typ
         }
 
         return new Type($object, 'object');
+    }
+
+    protected function isPropertyNullable($property): bool
+    {
+        return 'null' == $property->getType() || (\is_array($property->getType()) && \in_array('null', $property->getType()));
     }
 
     protected function getSchemaClass(): string

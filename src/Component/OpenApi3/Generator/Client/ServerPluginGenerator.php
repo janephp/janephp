@@ -17,7 +17,7 @@ trait ServerPluginGenerator
     private function discoverServer($openApi): array
     {
         $servers = $openApi->getServers();
-        $server = $servers !== null && !empty($servers[0]) ? $servers[0] : null;
+        $server = null !== $servers && !empty($servers[0]) ? $servers[0] : null;
 
         if (null !== $server) {
             $url = parse_url($server->getUrl());

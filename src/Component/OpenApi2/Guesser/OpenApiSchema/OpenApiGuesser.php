@@ -121,39 +121,6 @@ class OpenApiGuesser implements GuesserInterface, ClassGuesserInterface, ChainGu
         }
     }
 
-    private function isWhitelisted(string $path, array $whitelistedPaths): ?array
-    {
-        foreach ($whitelistedPaths as $data) {
-            $whitelistedPath = $data;
-            $whitelistedMethods = [];
-            if (\is_string($data) || (\is_array($data) && 1 === \count($data))) {
-                $whitelistedMethods = [
-                    OperationGuess::DELETE,
-                    OperationGuess::GET,
-                    OperationGuess::HEAD,
-                    OperationGuess::OPTIONS,
-                    OperationGuess::PATCH,
-                    OperationGuess::POST,
-                    OperationGuess::PUT,
-                ];
-            } elseif (\is_array($data) && 2 === \count($data)) {
-                $whitelistedMethods = $data[1];
-                if (\is_string($whitelistedMethods)) {
-                    $whitelistedMethods = [$whitelistedMethods];
-                }
-            }
-            if (\is_array($data)) {
-                $whitelistedPath = $data[0];
-            }
-
-            if (preg_match(sprintf('#%s#', $whitelistedPath), $path)) {
-                return $whitelistedMethods;
-            }
-        }
-
-        return null;
-    }
-
     protected function guessClassFromOperation(PathItem $pathItem, ?Operation $operation, string $path, string $operationType, string $reference, array $globalSecurityScopes, OpenApiRegistry $registry): void
     {
         if (null === $operation) {
@@ -190,5 +157,38 @@ class OpenApiGuesser implements GuesserInterface, ClassGuesserInterface, ChainGu
                 }
             }
         }
+    }
+
+    private function isWhitelisted(string $path, array $whitelistedPaths): ?array
+    {
+        foreach ($whitelistedPaths as $data) {
+            $whitelistedPath = $data;
+            $whitelistedMethods = [];
+            if (\is_string($data) || (\is_array($data) && 1 === \count($data))) {
+                $whitelistedMethods = [
+                    OperationGuess::DELETE,
+                    OperationGuess::GET,
+                    OperationGuess::HEAD,
+                    OperationGuess::OPTIONS,
+                    OperationGuess::PATCH,
+                    OperationGuess::POST,
+                    OperationGuess::PUT,
+                ];
+            } elseif (\is_array($data) && 2 === \count($data)) {
+                $whitelistedMethods = $data[1];
+                if (\is_string($whitelistedMethods)) {
+                    $whitelistedMethods = [$whitelistedMethods];
+                }
+            }
+            if (\is_array($data)) {
+                $whitelistedPath = $data[0];
+            }
+
+            if (preg_match(sprintf('#%s#', $whitelistedPath), $path)) {
+                return $whitelistedMethods;
+            }
+        }
+
+        return null;
     }
 }

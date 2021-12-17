@@ -43,6 +43,35 @@ class DateTimeType extends ObjectType
         $this->preferInterface = $preferInterface ?? false;
     }
 
+    public function __toString(): string
+    {
+        return '\DateTime';
+    }
+
+    /**
+     * ({@inheritDoc}.
+     */
+    public function createConditionStatement(Expr $input): Expr
+    {
+        return new Expr\BinaryOp\LogicalAnd(
+            new Expr\FuncCall(
+                new Name('is_string'),
+                [
+                    new Arg($input),
+                ]
+            ),
+            new Expr\BinaryOp\NotIdentical(
+                new Expr\ConstFetch(new Name('false')),
+                $this->generateParseExpression($input)
+            )
+        );
+    }
+
+    public function getTypeHint(string $namespace)
+    {
+        return $this->preferInterface ? '\DateTimeInterface' : '\DateTime';
+    }
+
     /**
      * ({@inheritDoc}.
      */
@@ -60,32 +89,6 @@ class DateTimeType extends ObjectType
         return new Expr\MethodCall($input, 'format', [
             new Arg(new Scalar\String_($this->outputFormat)),
         ]);
-    }
-
-    /**
-     * ({@inheritDoc}.
-     */
-    public function createConditionStatement(Expr $input): Expr
-    {
-        return new Expr\BinaryOp\LogicalAnd(new Expr\FuncCall(
-            new Name('is_string'), [
-                new Arg($input),
-            ]),
-            new Expr\BinaryOp\NotIdentical(
-                new Expr\ConstFetch(new Name('false')),
-                $this->generateParseExpression($input)
-            )
-        );
-    }
-
-    public function getTypeHint(string $namespace)
-    {
-        return $this->preferInterface ? '\DateTimeInterface' : '\DateTime';
-    }
-
-    public function __toString(): string
-    {
-        return '\DateTime';
     }
 
     protected function generateParseExpression(Expr $input): Expr

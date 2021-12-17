@@ -118,6 +118,33 @@ abstract class JaneOpenApi extends ChainGenerator
         return new Context($registry, $this->strict);
     }
 
+    public static function buildSerializer()
+    {
+        $encoders = [
+            new JsonEncoder(new JsonEncode([JsonEncode::OPTIONS => \JSON_UNESCAPED_SLASHES]), new JsonDecode()),
+            new YamlEncoder(new Dumper(), new Parser()),
+        ];
+
+        $objectNormalizerClass = static::OBJECT_NORMALIZER_CLASS;
+
+        return new Serializer([new $objectNormalizerClass()], $encoders);
+    }
+
+    public static function build(array $options = [])
+    {
+        $instance = static::create($options);
+
+        /** @var DenormalizerInterface $denormalizer */
+        $denormalizer = $instance->getSerializer();
+        $generators = static::generators($denormalizer, $options);
+
+        foreach ($generators as $generator) {
+            $instance->addGenerator($generator);
+        }
+
+        return $instance;
+    }
+
     /**
      * @param OpenApiRegistry $registry
      */
@@ -152,34 +179,7 @@ abstract class JaneOpenApi extends ChainGenerator
         }
     }
 
-    public static function buildSerializer()
-    {
-        $encoders = [
-            new JsonEncoder(new JsonEncode([JsonEncode::OPTIONS => JSON_UNESCAPED_SLASHES]), new JsonDecode()),
-            new YamlEncoder(new Dumper(), new Parser()),
-        ];
-
-        $objectNormalizerClass = static::OBJECT_NORMALIZER_CLASS;
-
-        return new Serializer([new $objectNormalizerClass()], $encoders);
-    }
-
     abstract protected static function create(array $options = []): self;
 
     abstract protected static function generators(DenormalizerInterface $denormalizer, array $options = []): \Generator;
-
-    public static function build(array $options = [])
-    {
-        $instance = static::create($options);
-
-        /** @var DenormalizerInterface $denormalizer */
-        $denormalizer = $instance->getSerializer();
-        $generators = static::generators($denormalizer, $options);
-
-        foreach ($generators as $generator) {
-            $instance->addGenerator($generator);
-        }
-
-        return $instance;
-    }
 }

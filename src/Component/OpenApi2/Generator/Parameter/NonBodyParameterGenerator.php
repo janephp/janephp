@@ -21,7 +21,7 @@ class NonBodyParameterGenerator extends ParameterGenerator
     /**
      * {@inheritdoc}
      *
-     * @param PathParameterSubSchema|HeaderParameterSubSchema|FormDataParameterSubSchema|QueryParameterSubSchema $parameter
+     * @param FormDataParameterSubSchema|HeaderParameterSubSchema|PathParameterSubSchema|QueryParameterSubSchema $parameter
      */
     public function generateMethodParameter($parameter, Context $context, string $reference): Node\Param
     {
@@ -34,7 +34,7 @@ class NonBodyParameterGenerator extends ParameterGenerator
 
         $types = $this->convertParameterType($parameter->getType());
 
-        if (\count($types) === 1) {
+        if (1 === \count($types)) {
             $methodParameter->type = new Node\Name($types[0]);
         }
 
@@ -42,7 +42,7 @@ class NonBodyParameterGenerator extends ParameterGenerator
     }
 
     /**
-     * @param PathParameterSubSchema[]|HeaderParameterSubSchema[]|FormDataParameterSubSchema[]|QueryParameterSubSchema[] $parameters
+     * @param FormDataParameterSubSchema[]|HeaderParameterSubSchema[]|PathParameterSubSchema[]|QueryParameterSubSchema[] $parameters
      */
     public function generateOptionsResolverStatements(Expr\Variable $optionsResolverVariable, array $parameters, array $genericResolver = []): array
     {
@@ -99,7 +99,7 @@ class NonBodyParameterGenerator extends ParameterGenerator
     /**
      * {@inheritdoc}
      *
-     * @param PathParameterSubSchema|HeaderParameterSubSchema|FormDataParameterSubSchema|QueryParameterSubSchema $parameter
+     * @param FormDataParameterSubSchema|HeaderParameterSubSchema|PathParameterSubSchema|QueryParameterSubSchema $parameter
      */
     public function generateMethodDocParameter($parameter, Context $context, string $reference): string
     {
@@ -109,7 +109,7 @@ class NonBodyParameterGenerator extends ParameterGenerator
     }
 
     /**
-     * @param PathParameterSubSchema|HeaderParameterSubSchema|FormDataParameterSubSchema|QueryParameterSubSchema $parameter
+     * @param FormDataParameterSubSchema|HeaderParameterSubSchema|PathParameterSubSchema|QueryParameterSubSchema $parameter
      */
     public function generateOptionDocParameter($parameter): string
     {
@@ -121,7 +121,7 @@ class NonBodyParameterGenerator extends ParameterGenerator
     /**
      * Generate a default value as an Expr.
      *
-     * @param PathParameterSubSchema|HeaderParameterSubSchema|FormDataParameterSubSchema|QueryParameterSubSchema $parameter
+     * @param FormDataParameterSubSchema|HeaderParameterSubSchema|PathParameterSubSchema|QueryParameterSubSchema $parameter
      */
     private function getDefaultAsExpr($parameter): Expr
     {

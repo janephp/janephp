@@ -20,6 +20,14 @@ final class SymfonyUidTransformerFactory extends AbstractUniqueTypeTransformerFa
     /**
      * {@inheritdoc}
      */
+    public function getPriority(): int
+    {
+        return 24;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     protected function createTransformer(Type $sourceType, Type $targetType, MapperMetadataInterface $mapperMetadata): ?TransformerInterface
     {
         $isSourceUid = $this->isUid($sourceType);
@@ -52,17 +60,9 @@ final class SymfonyUidTransformerFactory extends AbstractUniqueTypeTransformerFa
 
         if (!\array_key_exists($type->getClassName(), $this->reflectionCache)) {
             $reflClass = new \ReflectionClass($type->getClassName());
-            $this->reflectionCache[$type->getClassName()] = [$reflClass->isSubclassOf(AbstractUid::class), $type->getClassName() === Ulid::class];
+            $this->reflectionCache[$type->getClassName()] = [$reflClass->isSubclassOf(AbstractUid::class), Ulid::class === $type->getClassName()];
         }
 
         return $this->reflectionCache[$type->getClassName()][0];
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getPriority(): int
-    {
-        return 24;
     }
 }

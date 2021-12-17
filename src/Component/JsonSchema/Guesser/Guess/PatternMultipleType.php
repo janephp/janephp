@@ -57,7 +57,7 @@ class PatternMultipleType extends Type
         $loopStatements = [];
 
         foreach ($this->types as $pattern => $type) {
-            list($typeStatements, $typeOutput) = $type->createDenormalizationStatement($context, $loopValueVar, $normalizerFromObject);
+            [$typeStatements, $typeOutput] = $type->createDenormalizationStatement($context, $loopValueVar, $normalizerFromObject);
             $loopStatements = array_merge($loopStatements, [
                 new Stmt\If_(
                     new Expr\BinaryOp\BooleanAnd(
@@ -101,7 +101,7 @@ class PatternMultipleType extends Type
         $loopStatements = [];
 
         foreach ($this->types as $pattern => $type) {
-            list($typeStatements, $typeOutput) = $type->createNormalizationStatement($context, $loopValueVar, $normalizerFromObject);
+            [$typeStatements, $typeOutput] = $type->createNormalizationStatement($context, $loopValueVar, $normalizerFromObject);
             $loopStatements = array_merge($loopStatements, [
                 new Stmt\If_(
                     new Expr\BinaryOp\BooleanAnd(

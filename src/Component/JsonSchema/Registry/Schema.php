@@ -9,6 +9,8 @@ use Jane\Component\JsonSchema\Guesser\Guess\ObjectType;
 
 class Schema implements SchemaInterface
 {
+    /** @var array Relation between models */
+    protected $relations = [];
     /** @var string Origin of the schema (file or url path) */
     private $origin;
 
@@ -32,9 +34,6 @@ class Schema implements SchemaInterface
 
     /** @var mixed Parsed schema */
     private $parsed;
-
-    /** @var array Relation between models */
-    protected $relations = [];
 
     public function __construct(string $origin, string $namespace, string $directory, string $rootName)
     {
@@ -162,14 +161,14 @@ class Schema implements SchemaInterface
         foreach ($classGuess->getProperties() as $property) {
             // second condition is here to avoid mapping PHP classes such as \DateTime
             /** @var ObjectType $objectType */
-            if (($objectType = $property->getType()) instanceof ObjectType &&
-                '\\' !== substr($objectType->getClassName(), 0, 1)) {
+            if (($objectType = $property->getType()) instanceof ObjectType
+                && '\\' !== substr($objectType->getClassName(), 0, 1)) {
                 $this->addRelation($baseModel, $objectType->getClassName());
             }
 
-            if (($arrayType = $property->getType()) instanceof ArrayType &&
-                ($itemType = $arrayType->getItemType()) instanceof ObjectType &&
-                '\\' !== substr($itemType->getClassName(), 0, 1)) {
+            if (($arrayType = $property->getType()) instanceof ArrayType
+                && ($itemType = $arrayType->getItemType()) instanceof ObjectType
+                && '\\' !== substr($itemType->getClassName(), 0, 1)) {
                 $this->addRelation($baseModel, $itemType->getClassName());
             }
         }
@@ -191,6 +190,7 @@ class Schema implements SchemaInterface
 
             if ('..' === $part && \count($pathParts) > 0) {
                 array_pop($pathParts);
+
                 continue;
             }
 

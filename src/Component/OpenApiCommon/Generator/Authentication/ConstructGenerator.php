@@ -25,15 +25,19 @@ trait ConstructGenerator
                 switch ($scheme) {
                     case 'Bearer':
                         $needs['token'] = new Name('string');
+
                         break;
                     case 'Basic':
                         $needs['username'] = new Name('string');
                         $needs['password'] = new Name('string');
+
                         break;
                 }
+
                 break;
             case SecuritySchemeGuess::TYPE_API_KEY:
                 $needs['apiKey'] = new Name('string');
+
                 break;
         }
 

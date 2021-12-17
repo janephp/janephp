@@ -8,6 +8,14 @@ class ReflectionExtractorTestFixture
     {
     }
 
+    public function __get($name)
+    {
+    }
+
+    public function __set($name, $value)
+    {
+    }
+
     public function getFoo(): string
     {
         return 'string';
@@ -30,13 +38,5 @@ class ReflectionExtractorTestFixture
     public function hasFoz(): bool
     {
         return false;
-    }
-
-    public function __get($name)
-    {
-    }
-
-    public function __set($name, $value)
-    {
     }
 }

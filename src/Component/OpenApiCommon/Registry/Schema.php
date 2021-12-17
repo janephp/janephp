@@ -15,6 +15,8 @@ class Schema extends BaseSchema implements SchemaInterface
     /** @var SecuritySchemeGuess[] List of SecuritySchemes associated to this schema */
     private $securitySchemes = [];
 
+    private $neededModels = [];
+
     public function __construct(string $origin, string $namespace, string $directory)
     {
         parent::__construct($origin, $namespace, $directory, '');
@@ -60,8 +62,6 @@ class Schema extends BaseSchema implements SchemaInterface
     {
         return $this->operations;
     }
-
-    private $neededModels = [];
 
     public function addRelation(string $model, string $needs): void
     {

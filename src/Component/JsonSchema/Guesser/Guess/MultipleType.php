@@ -46,27 +46,6 @@ class MultipleType extends Type
     }
 
     /**
-     * We have to place mixed normalization path at the last.
-     *
-     * @return Type[]
-     */
-    protected function getTypesSorted(): array
-    {
-        $types = $this->getTypes();
-        usort($types, function ($first, $second) {
-            /* @var Type $first */
-            /* @var Type $second */
-            if (($second instanceof ObjectType && 'Reference' === $second->getClassName()) || 'mixed' === $first->getName()) {
-                return 1;
-            }
-
-            return 0;
-        });
-
-        return $types;
-    }
-
-    /**
      * {@inheritdoc}
      */
     public function getDocTypeHint(string $namespace)
@@ -91,7 +70,7 @@ class MultipleType extends Type
 
         // We have exactly two types: one null and an object
         if (2 === \count($this->types)) {
-            list($type1, $type2) = $this->types;
+            [$type1, $type2] = $this->types;
 
             if ($this->isOptionalType($type1)) {
                 return $type2->getTypeHint($namespace);
@@ -103,11 +82,6 @@ class MultipleType extends Type
         }
 
         return null;
-    }
-
-    private function isOptionalType(Type $nullType): bool
-    {
-        return 'null' === $nullType->getName();
     }
 
     /**
@@ -123,12 +97,12 @@ class MultipleType extends Type
         /** @var Stmt\If_|null $ifStmt */
         $ifStmt = null;
         foreach ($this->getTypesSorted() as $type) {
-            list($typeStatements, $typeOutput) = $type->createDenormalizationStatement($context, $input, $normalizerFromObject);
+            [$typeStatements, $typeOutput] = $type->createDenormalizationStatement($context, $input, $normalizerFromObject);
 
             $condition = $type->createConditionStatement($input);
             $statement = array_merge($typeStatements, [new Stmt\Expression(new Expr\Assign($output, $typeOutput))]);
 
-            if ($ifStmt === null) {
+            if (null === $ifStmt) {
                 $ifStmt = new Stmt\If_($condition, ['stmts' => $statement]);
             } else {
                 $ifStmt->elseifs[] = new Stmt\ElseIf_($condition, $statement);
@@ -155,12 +129,12 @@ class MultipleType extends Type
         /** @var Stmt\If_|null $ifStmt */
         $ifStmt = null;
         foreach ($this->getTypesSorted() as $type) {
-            list($typeStatements, $typeOutput) = $type->createNormalizationStatement($context, $input, $normalizerFromObject);
+            [$typeStatements, $typeOutput] = $type->createNormalizationStatement($context, $input, $normalizerFromObject);
 
             $condition = $type->createNormalizationConditionStatement($input);
             $statement = array_merge($typeStatements, [new Stmt\Expression(new Expr\Assign($output, $typeOutput))]);
 
-            if ($ifStmt === null) {
+            if (null === $ifStmt) {
                 $ifStmt = new Stmt\If_($condition, ['stmts' => $statement]);
             } else {
                 $ifStmt->elseifs[] = new Stmt\ElseIf_($condition, $statement);
@@ -172,5 +146,31 @@ class MultipleType extends Type
         }
 
         return [$statements, $output];
+    }
+
+    /**
+     * We have to place mixed normalization path at the last.
+     *
+     * @return Type[]
+     */
+    protected function getTypesSorted(): array
+    {
+        $types = $this->getTypes();
+        usort($types, function ($first, $second) {
+            // @var Type $first
+            // @var Type $second
+            if (($second instanceof ObjectType && 'Reference' === $second->getClassName()) || 'mixed' === $first->getName()) {
+                return 1;
+            }
+
+            return 0;
+        });
+
+        return $types;
+    }
+
+    private function isOptionalType(Type $nullType): bool
+    {
+        return 'null' === $nullType->getName();
     }
 }

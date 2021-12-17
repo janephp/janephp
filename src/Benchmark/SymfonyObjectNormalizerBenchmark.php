@@ -38,7 +38,8 @@ class SymfonyObjectNormalizerBenchmark
 
         $propertyAccessor = PropertyAccess::createPropertyAccessorBuilder()
             ->setCacheItemPool(new FilesystemAdapter('SymfonyPropertyAccessor'))
-            ->getPropertyAccessor();
+            ->getPropertyAccessor()
+        ;
 
         $this->objectNormalizer = new Serializer(
             [new DateTimeNormalizer(), new ObjectNormalizer($classMetadataFactory, null, $propertyAccessor)],

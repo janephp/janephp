@@ -8,6 +8,6 @@ trait CheckArray
     {
         return count(array_filter($array, function ($key) {
             return is_numeric($key);
-        }, ARRAY_FILTER_USE_KEY)) === count($array);
+        }, \ARRAY_FILTER_USE_KEY)) === count($array);
     }
 }

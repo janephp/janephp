@@ -31,8 +31,8 @@ class SchemaGuesser extends ObjectGuesser
     {
         $classGuess = new ClassGuess($object, $reference, $this->naming->getClassName($name), $extensions, $object->getDeprecated() ?? false);
 
-        if ($object->getDiscriminator() instanceof Discriminator &&
-            \is_array($object->getEnum()) && \count($object->getEnum()) > 0) {
+        if ($object->getDiscriminator() instanceof Discriminator
+            && \is_array($object->getEnum()) && \count($object->getEnum()) > 0) {
             $classGuess = new MultipleClass($classGuess, $object->getDiscriminator()->getPropertyName());
 
             foreach ($object->getEnum() as $subClassName) {

@@ -25,7 +25,8 @@ trait JaneObjectNormalizerGenerator
                 new Arg(new Expr\PropertyFetch(new Expr\Variable('this'), 'normalizers')),
             ]))],
         ], [
-            'comments' => [new Doc(<<<EOD
+            'comments' => [new Doc(
+                <<<'EOD'
 /**
  * @return bool
  */
@@ -49,9 +50,11 @@ EOD
                         new Arg(new Expr\FuncCall(new Name('get_class'), [new Arg(new Expr\Variable('data'))])),
                         new Arg(new Expr\PropertyFetch(new Expr\Variable('this'), 'normalizers')),
                     ])
-                ))],
+                )
+            )],
         ], [
-            'comments' => [new Doc(<<<EOD
+            'comments' => [new Doc(
+                <<<'EOD'
 /**
  * @return bool
  */
@@ -90,7 +93,8 @@ EOD
                 ])),
             ],
         ], [
-            'comments' => [new Doc(<<<EOD
+            'comments' => [new Doc(
+                <<<'EOD'
 /**
  * @return array|string|int|float|bool|\ArrayObject|null
  */
@@ -131,7 +135,8 @@ EOD
                 ])),
             ],
         ], [
-            'comments' => [new Doc(<<<EOD
+            'comments' => [new Doc(
+                <<<'EOD'
 /**
  * @return mixed
  */

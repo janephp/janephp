@@ -70,7 +70,8 @@ trait NormalizerGenerator
             ],
             'stmts' => [new Stmt\Return_(new Expr\Instanceof_(new Expr\Variable('data'), new Name('\\' . $modelFqdn)))],
         ], [
-            'comments' => [new Doc(<<<EOD
+            'comments' => [new Doc(
+                <<<'EOD'
 /**
  * @return bool
  */
@@ -98,7 +99,7 @@ EOD
             if (!$property->isReadOnly()) {
                 $propertyVar = new Expr\MethodCall($objectVariable, $this->getNaming()->getPrefixedMethodName('get', $property->getPhpName()));
 
-                list($normalizationStatements, $outputVar) = $property->getType()->createNormalizationStatement($context, $propertyVar);
+                [$normalizationStatements, $outputVar] = $property->getType()->createNormalizationStatement($context, $propertyVar);
 
                 $normalizationStatements[] = new Stmt\Expression(new Expr\Assign(new Expr\ArrayDimFetch($dataVariable, new Scalar\String_($property->getName())), $outputVar));
 
@@ -115,9 +116,9 @@ EOD
                     ]
                 );
 
-                if ((!$context->isStrict() || $property->isNullable() ||
-                    ($property->getType() instanceof MultipleType && \count(array_intersect([Type::TYPE_NULL], $property->getType()->getTypes())) === 1) ||
-                    ($property->getType()->getName() === Type::TYPE_NULL)) && !$skipNullValues) {
+                if ((!$context->isStrict() || $property->isNullable()
+                    || ($property->getType() instanceof MultipleType && 1 === \count(array_intersect([Type::TYPE_NULL], $property->getType()->getTypes())))
+                    || (Type::TYPE_NULL === $property->getType()->getName())) && !$skipNullValues) {
                     $statements[] = new Stmt\Else_(
                         [new Stmt\Expression(new Expr\Assign(new Expr\ArrayDimFetch($dataVariable, new Scalar\String_($property->getName())), new Expr\ConstFetch(new Name('null'))))]
                     );
@@ -130,7 +131,7 @@ EOD
         $loopValueVar = new Expr\Variable($context->getUniqueVariableName('value'));
 
         foreach ($classGuess->getExtensionsType() as $pattern => $type) {
-            list($denormalizationStatements, $outputVar) = $type->createNormalizationStatement($context, $loopValueVar);
+            [$denormalizationStatements, $outputVar] = $type->createNormalizationStatement($context, $loopValueVar);
 
             $patternCondition[] = new Stmt\If_(
                 new Expr\FuncCall(new Name('preg_match'), [
@@ -163,7 +164,8 @@ EOD
             ],
             'stmts' => $statements,
         ], [
-            'comments' => [new Doc(<<<EOD
+            'comments' => [new Doc(
+                <<<'EOD'
 /**
  * @return array|string|int|float|bool|\ArrayObject|null
  */

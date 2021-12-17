@@ -89,6 +89,24 @@ final class FromSourceMappingExtractor extends MappingExtractor
         return $mapping;
     }
 
+    /**
+     * {@inheritdoc}
+     */
+    public function getWriteMutator(string $source, string $target, string $property, array $context = []): WriteMutator
+    {
+        if (null !== $this->nameConverter) {
+            $property = $this->nameConverter->normalize($property, $source, $target);
+        }
+
+        $targetMutator = new WriteMutator(WriteMutator::TYPE_ARRAY_DIMENSION, $property, false);
+
+        if (\stdClass::class === $target) {
+            $targetMutator = new WriteMutator(WriteMutator::TYPE_PROPERTY, $property, false);
+        }
+
+        return $targetMutator;
+    }
+
     private function transformType(string $target, Type $type = null): ?Type
     {
         if (null === $type) {
@@ -119,23 +137,5 @@ final class FromSourceMappingExtractor extends MappingExtractor
             $this->transformType($target, $collectionKeyTypes[0] ?? null),
             $this->transformType($target, $collectionValueTypes[0] ?? null)
         );
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getWriteMutator(string $source, string $target, string $property, array $context = []): WriteMutator
-    {
-        if (null !== $this->nameConverter) {
-            $property = $this->nameConverter->normalize($property, $source, $target);
-        }
-
-        $targetMutator = new WriteMutator(WriteMutator::TYPE_ARRAY_DIMENSION, $property, false);
-
-        if (\stdClass::class === $target) {
-            $targetMutator = new WriteMutator(WriteMutator::TYPE_PROPERTY, $property, false);
-        }
-
-        return $targetMutator;
     }
 }

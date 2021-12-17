@@ -40,20 +40,12 @@ class SimpleTypeGuesser implements GuesserInterface, TypeGuesserInterface
         $class = $this->getSchemaClass();
 
         return ($object instanceof $class)
-            &&
-            \in_array($object->getType(), $this->typesSupported)
-            &&
-            (
+            && \in_array($object->getType(), $this->typesSupported)
+            && (
                 !\in_array($object->getType(), $this->excludeFormat)
-                ||
-                !\in_array($object->getFormat(), $this->excludeFormat[$object->getType()])
+                || !\in_array($object->getFormat(), $this->excludeFormat[$object->getType()])
             )
         ;
-    }
-
-    protected function getSchemaClass(): string
-    {
-        return JsonSchema::class;
     }
 
     /**
@@ -62,5 +54,10 @@ class SimpleTypeGuesser implements GuesserInterface, TypeGuesserInterface
     public function guessType($object, string $name, string $reference, Registry $registry): Type
     {
         return new Type($object, $this->phpTypesMapping[$object->getType()]);
+    }
+
+    protected function getSchemaClass(): string
+    {
+        return JsonSchema::class;
     }
 }

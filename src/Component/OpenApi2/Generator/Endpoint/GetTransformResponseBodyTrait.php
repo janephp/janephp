@@ -34,7 +34,7 @@ trait GetTransformResponseBodyTrait
                     [$reference, $response] = $guessClass->resolve($response, Response::class);
                 }
 
-                /* @var Response $response */
+                // @var Response $response
                 [$outputType, $throwType, $ifStatus] = $this->createResponseDenormalizationStatement(
                     $endpointName,
                     $status,
@@ -95,7 +95,8 @@ trait GetTransformResponseBodyTrait
             ],
             'stmts' => $outputStatements,
         ], [
-            'comments' => [new Doc(<<<EOD
+            'comments' => [new Doc(
+                <<<'EOD'
 /**
  * {@inheritdoc}
  *

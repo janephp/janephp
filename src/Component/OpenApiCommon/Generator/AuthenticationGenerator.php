@@ -32,11 +32,6 @@ class AuthenticationGenerator implements GeneratorInterface
         $this->naming = new Naming();
     }
 
-    protected function getNaming(): Naming
-    {
-        return $this->naming;
-    }
-
     public function generate(BaseSchema $schema, string $className, Context $context): void
     {
         if ($schema instanceof Schema) {
@@ -56,5 +51,10 @@ class AuthenticationGenerator implements GeneratorInterface
                 $schema->addFile(new File(sprintf('%s/%s/%s.php', $schema->getDirectory(), self::REFERENCE, $className), $namespace, self::FILE_TYPE_AUTH));
             }
         }
+    }
+
+    protected function getNaming(): Naming
+    {
+        return $this->naming;
     }
 }

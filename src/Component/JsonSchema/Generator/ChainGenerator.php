@@ -15,8 +15,6 @@ abstract class ChainGenerator
         $this->generators[] = $generator;
     }
 
-    abstract protected function createContext(Registry $registry): Context;
-
     public function generate(Registry $registry): void
     {
         $context = $this->createContext($registry);
@@ -29,4 +27,6 @@ abstract class ChainGenerator
             }
         }
     }
+
+    abstract protected function createContext(Registry $registry): Context;
 }

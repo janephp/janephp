@@ -37,7 +37,7 @@ trait GetGetOptionsResolverTrait
             }
         }
 
-        if (\count($parameters) === 0) {
+        if (0 === \count($parameters)) {
             return null;
         }
 

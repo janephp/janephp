@@ -84,7 +84,7 @@ final class BuiltinTransformer implements TransformerInterface
         foreach (self::CAST_MAPPING[$this->sourceType->getBuiltinType()] as $castType => $castMethod) {
             if (\in_array($castType, $targetTypes, true)) {
                 if (method_exists($this, $castMethod)) {
-                    return [$this->$castMethod($input), []];
+                    return [$this->{$castMethod}($input), []];
                 }
 
                 return [new $castMethod($input), []];

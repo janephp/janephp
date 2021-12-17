@@ -5,24 +5,14 @@ namespace Jane\Bundle\AutoMapperBundle\Tests\Fixtures;
 class BaseUser
 {
     /**
-     * @var int
-     */
-    private $id;
-
-    /**
      * @var string
      */
     public $name;
 
     /**
-     * @var string|int
+     * @var int|string
      */
     public $age;
-
-    /**
-     * @var string
-     */
-    private $email;
 
     /**
      * @var Address
@@ -53,6 +43,15 @@ class BaseUser
      * @var mixed[]
      */
     protected $properties = [];
+    /**
+     * @var int
+     */
+    private $id;
+
+    /**
+     * @var string
+     */
+    private $email;
 
     public function __construct($id, $name, $age)
     {

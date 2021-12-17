@@ -28,41 +28,6 @@ class ObjectType extends Type
     /**
      * ({@inheritDoc}.
      */
-    protected function createDenormalizationValueStatement(Context $context, Expr $input, bool $normalizerFromObject = true): Expr
-    {
-        $denormalizerVar = new Expr\PropertyFetch(new Expr\Variable('this'), 'denormalizer');
-        if (!$normalizerFromObject) {
-            $denormalizerVar = new Expr\Variable('denormalizer');
-        }
-
-        return new Expr\MethodCall($denormalizerVar, 'denormalize', [
-            new Arg($input),
-            new Arg(new Scalar\String_($this->getFqdn(false))),
-            new Arg(new Scalar\String_('json')),
-            new Arg(new Expr\Variable('context')),
-        ]);
-    }
-
-    /**
-     * ({@inheritDoc}.
-     */
-    protected function createNormalizationValueStatement(Context $context, Expr $input, bool $normalizerFromObject = true): Expr
-    {
-        $normalizerVar = new Expr\PropertyFetch(new Expr\Variable('this'), 'normalizer');
-        if (!$normalizerFromObject) {
-            $normalizerVar = new Expr\Variable('normalizer');
-        }
-
-        return new Expr\MethodCall($normalizerVar, 'normalize', [
-            new Arg($input),
-            new Arg(new Scalar\String_('json')),
-            new Arg(new Expr\Variable('context')),
-        ]);
-    }
-
-    /**
-     * ({@inheritDoc}.
-     */
     public function createConditionStatement(Expr $input): Expr
     {
         $conditionStatement = parent::createConditionStatement($input);
@@ -129,6 +94,41 @@ class ObjectType extends Type
     public function getClassName(): string
     {
         return $this->className;
+    }
+
+    /**
+     * ({@inheritDoc}.
+     */
+    protected function createDenormalizationValueStatement(Context $context, Expr $input, bool $normalizerFromObject = true): Expr
+    {
+        $denormalizerVar = new Expr\PropertyFetch(new Expr\Variable('this'), 'denormalizer');
+        if (!$normalizerFromObject) {
+            $denormalizerVar = new Expr\Variable('denormalizer');
+        }
+
+        return new Expr\MethodCall($denormalizerVar, 'denormalize', [
+            new Arg($input),
+            new Arg(new Scalar\String_($this->getFqdn(false))),
+            new Arg(new Scalar\String_('json')),
+            new Arg(new Expr\Variable('context')),
+        ]);
+    }
+
+    /**
+     * ({@inheritDoc}.
+     */
+    protected function createNormalizationValueStatement(Context $context, Expr $input, bool $normalizerFromObject = true): Expr
+    {
+        $normalizerVar = new Expr\PropertyFetch(new Expr\Variable('this'), 'normalizer');
+        if (!$normalizerFromObject) {
+            $normalizerVar = new Expr\Variable('normalizer');
+        }
+
+        return new Expr\MethodCall($normalizerVar, 'normalize', [
+            new Arg($input),
+            new Arg(new Scalar\String_('json')),
+            new Arg(new Expr\Variable('context')),
+        ]);
     }
 
     private function getFqdn(bool $withRoot = true): string

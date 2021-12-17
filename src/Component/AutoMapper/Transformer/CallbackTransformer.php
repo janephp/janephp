@@ -27,9 +27,7 @@ final class CallbackTransformer implements TransformerInterface
      */
     public function transform(Expr $input, Expr $target, PropertyMapping $propertyMapping, UniqueVariableScope $uniqueVariableScope): array
     {
-        /*
-         * $output = $this->callbacks[$callbackName]($input);
-         */
+        // $output = $this->callbacks[$callbackName]($input);
 
         $arguments = [
             new Arg($input),
@@ -39,7 +37,9 @@ final class CallbackTransformer implements TransformerInterface
         }
 
         return [new Expr\FuncCall(
-            new Expr\ArrayDimFetch(new Expr\PropertyFetch(new Expr\Variable('this'), 'callbacks'), new Scalar\String_($this->callbackName)), $arguments),
+            new Expr\ArrayDimFetch(new Expr\PropertyFetch(new Expr\Variable('this'), 'callbacks'), new Scalar\String_($this->callbackName)),
+            $arguments
+        ),
             [],
         ];
     }

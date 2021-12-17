@@ -19,7 +19,7 @@ class ModelGenerator implements GeneratorInterface
     use GetterSetterGenerator;
     use PropertyGenerator;
 
-    const FILE_TYPE_MODEL = 'model';
+    public const FILE_TYPE_MODEL = 'model';
 
     /**
      * @var Naming Naming Service
@@ -35,22 +35,6 @@ class ModelGenerator implements GeneratorInterface
     {
         $this->naming = $naming;
         $this->parser = $parser;
-    }
-
-    /**
-     * The naming service.
-     */
-    protected function getNaming(): Naming
-    {
-        return $this->naming;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    protected function getParser(): Parser
-    {
-        return $this->parser;
     }
 
     /**
@@ -75,6 +59,22 @@ class ModelGenerator implements GeneratorInterface
             $namespaceStmt = new Stmt\Namespace_(new Name($namespace), [$model]);
             $schema->addFile(new File($schema->getDirectory() . '/Model/' . $class->getName() . '.php', $namespaceStmt, self::FILE_TYPE_MODEL));
         }
+    }
+
+    /**
+     * The naming service.
+     */
+    protected function getNaming(): Naming
+    {
+        return $this->naming;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function getParser(): Parser
+    {
+        return $this->parser;
     }
 
     protected function doCreateClassMethods(ClassGuess $classGuess, Property $property, string $namespace, bool $strict): array

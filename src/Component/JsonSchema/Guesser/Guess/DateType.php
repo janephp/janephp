@@ -35,6 +35,50 @@ class DateType extends ObjectType
         $this->preferInterface = $preferInterface ?? false;
     }
 
+    public function __toString(): string
+    {
+        return '\DateTime';
+    }
+
+    /**
+     * ({@inheritDoc}.
+     */
+    public function createConditionStatement(Expr $input): Expr
+    {
+        return new Expr\BinaryOp\LogicalAnd(
+            new Expr\FuncCall(
+                new Name('is_string'),
+                [
+                    new Arg($input),
+                ]
+            ),
+            new Expr\BinaryOp\NotIdentical(
+                new Expr\ConstFetch(new Name('false')),
+                new Expr\MethodCall(
+                    new Expr\StaticCall(
+                        new Name('\DateTime'),
+                        'createFromFormat',
+                        [
+                            new Arg(new Scalar\String_($this->format)),
+                            new Arg($input),
+                        ]
+                    ),
+                    'setTime',
+                    [
+                        new Arg(new Scalar\LNumber(0)),
+                        new Arg(new Scalar\LNumber(0)),
+                        new Arg(new Scalar\LNumber(0)),
+                    ]
+                )
+            )
+        );
+    }
+
+    public function getTypeHint(string $namespace)
+    {
+        return $this->preferInterface ? '\DateTimeInterface' : '\DateTime';
+    }
+
     /**
      * ({@inheritDoc}.
      */
@@ -55,7 +99,8 @@ class DateType extends ObjectType
                 new Arg(new Scalar\LNumber(0)),
                 new Arg(new Scalar\LNumber(0)),
                 new Arg(new Scalar\LNumber(0)),
-            ]);
+            ]
+        );
     }
 
     /**
@@ -67,45 +112,5 @@ class DateType extends ObjectType
         return new Expr\MethodCall($input, 'format', [
             new Arg(new Scalar\String_($this->format)),
         ]);
-    }
-
-    /**
-     * ({@inheritDoc}.
-     */
-    public function createConditionStatement(Expr $input): Expr
-    {
-        return new Expr\BinaryOp\LogicalAnd(new Expr\FuncCall(
-            new Name('is_string'), [
-                new Arg($input),
-            ]),
-            new Expr\BinaryOp\NotIdentical(
-                new Expr\ConstFetch(new Name('false')),
-                new Expr\MethodCall(
-                    new Expr\StaticCall(
-                        new Name('\DateTime'),
-                        'createFromFormat',
-                        [
-                            new Arg(new Scalar\String_($this->format)),
-                            new Arg($input),
-                        ]
-                    ),
-                    'setTime',
-                    [
-                        new Arg(new Scalar\LNumber(0)),
-                        new Arg(new Scalar\LNumber(0)),
-                        new Arg(new Scalar\LNumber(0)),
-                    ])
-            )
-        );
-    }
-
-    public function getTypeHint(string $namespace)
-    {
-        return $this->preferInterface ? '\DateTimeInterface' : '\DateTime';
-    }
-
-    public function __toString(): string
-    {
-        return '\DateTime';
     }
 }

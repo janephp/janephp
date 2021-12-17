@@ -31,7 +31,8 @@ final class JsonSchemaGenerateCommand extends Command
         $this
             ->setName('jane:json-schema:generate')
             ->setDescription('Generate a set of class and normalizers given a specific Json Schema file')
-            ->addOption('config-file', 'c', InputOption::VALUE_REQUIRED, 'File to use for Jane configuration');
+            ->addOption('config-file', 'c', InputOption::VALUE_REQUIRED, 'File to use for Jane configuration')
+        ;
     }
 
     protected function execute(InputInterface $input, OutputInterface $output): int

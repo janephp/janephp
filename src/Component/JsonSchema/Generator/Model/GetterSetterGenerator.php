@@ -39,7 +39,8 @@ trait GetterSetterGenerator
                     ),
                 ],
                 'returnType' => $returnType,
-            ], [
+            ],
+            [
                 'comments' => [$this->createGetterDoc($property, $namespace, $strict)],
             ]
         );
@@ -59,7 +60,8 @@ trait GetterSetterGenerator
                 new Expr\PropertyFetch(
                     new Expr\Variable('this'),
                     $this->getNaming()->getPropertyName($property->getPhpName())
-                ), new Expr\Variable($this->getNaming()->getPropertyName($property->getPhpName()))
+                ),
+                new Expr\Variable($this->getNaming()->getPropertyName($property->getPhpName()))
             )),
         ];
 
@@ -80,7 +82,8 @@ trait GetterSetterGenerator
                 ],
                 'stmts' => $stmts,
                 'returnType' => $fluent ? 'self' : null,
-            ], [
+            ],
+            [
                 'comments' => [$this->createSetterDoc($property, $namespace, $strict, $fluent)],
             ]
         );
@@ -88,7 +91,7 @@ trait GetterSetterGenerator
 
     protected function createGetterDoc(Property $property, string $namespace, bool $strict): Doc
     {
-        $description = sprintf(<<<EOD
+        $description = sprintf(<<<'EOD'
 /**
  * %s
  *
@@ -97,14 +100,14 @@ EOD
             , $property->getDescription());
 
         if ($property->isDeprecated()) {
-            $description .= <<<EOD
+            $description .= <<<'EOD'
  * @deprecated
  *
 
 EOD;
         }
 
-        $description .= sprintf(<<<EOD
+        $description .= sprintf(<<<'EOD'
  * @return %s
  */
 EOD
@@ -115,7 +118,7 @@ EOD
 
     protected function createSetterDoc(Property $property, string $namespace, bool $strict, bool $fluent): Doc
     {
-        $description = sprintf(<<<EOD
+        $description = sprintf(<<<'EOD'
 /**
  * %s
  *
@@ -125,7 +128,7 @@ EOD
             , $property->getDescription(), $this->getDocType($property, $namespace, $strict), '$' . $property->getPhpName());
 
         if ($property->isDeprecated()) {
-            $description .= <<<EOD
+            $description .= <<<'EOD'
  *
  * @deprecated
 
@@ -133,14 +136,14 @@ EOD;
         }
 
         if ($fluent) {
-            $description .= <<<EOD
+            $description .= <<<'EOD'
  *
  * @return self
 
 EOD;
         }
 
-        $description .= <<<EOD
+        $description .= <<<'EOD'
  */
 EOD;
 

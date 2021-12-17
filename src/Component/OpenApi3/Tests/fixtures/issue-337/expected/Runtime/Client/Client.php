@@ -40,7 +40,7 @@ abstract class Client
         [$bodyHeaders, $body] = $endpoint->getBody($this->serializer, $this->streamFactory);
         $queryString = $endpoint->getQueryString();
         $uriGlue = false === strpos($endpoint->getUri(), '?') ? '?' : '&';
-        $uri = $queryString !== '' ? $endpoint->getUri() . $uriGlue . $queryString : $endpoint->getUri();
+        $uri = '' !== $queryString ? $endpoint->getUri() . $uriGlue . $queryString : $endpoint->getUri();
         $request = $this->requestFactory->createRequest($endpoint->getMethod(), $uri);
         if ($body) {
             if ($body instanceof StreamInterface) {

@@ -26,12 +26,12 @@ class ModelGenerator extends BaseModelGenerator
     protected function doCreateModel(BaseClassGuess $class, array $properties, array $methods): Stmt\Class_
     {
         $extends = null;
-        if ($class instanceof ClassGuess &&
-            $class->getMultipleClass() instanceof MultipleClass) {
+        if ($class instanceof ClassGuess
+            && $class->getMultipleClass() instanceof MultipleClass) {
             $extends = $this->getNaming()->getClassName($class->getMultipleClass()->getName());
         }
 
-        $classModel = $this->createModel(
+        return $this->createModel(
             $class->getName(),
             $properties,
             $methods,
@@ -39,7 +39,5 @@ class ModelGenerator extends BaseModelGenerator
             $class->isDeprecated(),
             $extends
         );
-
-        return $classModel;
     }
 }

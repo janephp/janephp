@@ -43,7 +43,7 @@ class RequestBodyGenerator
         $name = 'requestBody';
         [$types, $onlyArray] = $this->getTypes($requestBody, $reference, $context);
         $paramType = null;
-        if (\count($types) === 1 && $types[0] !== AbstractBodyContentGenerator::PHP_TYPE_MIXED) {
+        if (1 === \count($types) && AbstractBodyContentGenerator::PHP_TYPE_MIXED !== $types[0]) {
             $paramType = $types[0];
         }
 
@@ -54,14 +54,14 @@ class RequestBodyGenerator
         $default = null;
         if (!$requestBody->getRequired() || !$context->isStrict()) {
             $default = new Expr\ConstFetch(new Name('null'));
-            $paramType = null === $paramType ? $paramType : "?$paramType";
+            $paramType = null === $paramType ? $paramType : "?{$paramType}";
         }
 
-        return new Param(new Expr\Variable($name), $default, $paramType === null ? $paramType : new Name($paramType));
+        return new Param(new Expr\Variable($name), $default, null === $paramType ? $paramType : new Name($paramType));
     }
 
     /**
-     * @param RequestBody|Reference $requestBody
+     * @param Reference|RequestBody $requestBody
      */
     public function generateMethodDocParameter($requestBody, string $reference, Context $context)
     {
@@ -72,37 +72,6 @@ class RequestBodyGenerator
         }
 
         return sprintf(' * @param %s $%s %s', implode('|', $types), 'requestBody', '');
-    }
-
-    private function getTypes(?RequestBody $requestBody, string $reference, Context $context): array
-    {
-        $types = [];
-
-        if (!$requestBody || !$requestBody->getContent()) {
-            return $types;
-        }
-
-        $onlyArray = null;
-
-        foreach ($requestBody->getContent() as $contentType => $content) {
-            $generator = $this->defaultRequestBodyGenerator;
-
-            if (isset($this->generators[$contentType])) {
-                $generator = $this->generators[$contentType];
-            }
-
-            [$newTypes, $isArray] = $generator->getTypes($content, $reference . '/content/' . $contentType, $context);
-
-            if ($onlyArray === null) {
-                $onlyArray = $isArray;
-            } else {
-                $onlyArray = $onlyArray && $isArray;
-            }
-
-            $types = array_merge($types, $newTypes);
-        }
-
-        return [array_unique($types), $onlyArray];
     }
 
     public function getSerializeStatements(?RequestBody $requestBody, string $reference, Context $context): array
@@ -139,5 +108,36 @@ class RequestBodyGenerator
         ]));
 
         return $statements;
+    }
+
+    private function getTypes(?RequestBody $requestBody, string $reference, Context $context): array
+    {
+        $types = [];
+
+        if (!$requestBody || !$requestBody->getContent()) {
+            return $types;
+        }
+
+        $onlyArray = null;
+
+        foreach ($requestBody->getContent() as $contentType => $content) {
+            $generator = $this->defaultRequestBodyGenerator;
+
+            if (isset($this->generators[$contentType])) {
+                $generator = $this->generators[$contentType];
+            }
+
+            [$newTypes, $isArray] = $generator->getTypes($content, $reference . '/content/' . $contentType, $context);
+
+            if (null === $onlyArray) {
+                $onlyArray = $isArray;
+            } else {
+                $onlyArray = $onlyArray && $isArray;
+            }
+
+            $types = array_merge($types, $newTypes);
+        }
+
+        return [array_unique($types), $onlyArray];
     }
 }

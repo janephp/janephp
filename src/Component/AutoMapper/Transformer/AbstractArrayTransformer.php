@@ -21,8 +21,6 @@ abstract class AbstractArrayTransformer implements TransformerInterface, Depende
         $this->itemTransformer = $itemTransformer;
     }
 
-    abstract protected function getAssignExpr(Expr $valuesVar, Expr $outputVar, Expr $loopKeyVar, bool $assignByRef): Expr;
-
     /**
      * {@inheritdoc}
      */
@@ -40,7 +38,7 @@ abstract class AbstractArrayTransformer implements TransformerInterface, Depende
 
         [$output, $itemStatements] = $this->itemTransformer->transform($loopValueVar, $target, $propertyMapping, $uniqueVariableScope);
 
-        if ($propertyMapping->getWriteMutator() && $propertyMapping->getWriteMutator()->getType() === WriteMutator::TYPE_ADDER_AND_REMOVER) {
+        if ($propertyMapping->getWriteMutator() && WriteMutator::TYPE_ADDER_AND_REMOVER === $propertyMapping->getWriteMutator()->getType()) {
             $mappedValueVar = new Expr\Variable($uniqueVariableScope->getUniqueName('mappedValue'));
             $itemStatements[] = new Stmt\Expression(new Expr\Assign($mappedValueVar, $output));
             $itemStatements[] = new Stmt\If_(new Expr\BinaryOp\NotIdentical(new Expr\ConstFetch(new Name('null')), $mappedValueVar), [
@@ -71,4 +69,6 @@ abstract class AbstractArrayTransformer implements TransformerInterface, Depende
 
         return $this->itemTransformer->getDependencies();
     }
+
+    abstract protected function getAssignExpr(Expr $valuesVar, Expr $outputVar, Expr $loopKeyVar, bool $assignByRef): Expr;
 }

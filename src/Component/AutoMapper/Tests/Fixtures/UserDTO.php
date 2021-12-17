@@ -10,11 +10,6 @@ class UserDTO
     public $id;
 
     /**
-     * @var string
-     */
-    private $name;
-
-    /**
      * @var int
      */
     public $age;
@@ -53,6 +48,11 @@ class UserDTO
      * @var array
      */
     public $languages = [];
+
+    /**
+     * @var string
+     */
+    private $name;
 
     public function setName($name)
     {

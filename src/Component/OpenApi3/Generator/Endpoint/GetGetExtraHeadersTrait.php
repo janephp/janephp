@@ -68,7 +68,7 @@ trait GetGetExtraHeadersTrait
             );
         }
 
-        if (\count($headers) === 0) {
+        if (0 === \count($headers)) {
             return null;
         }
 
