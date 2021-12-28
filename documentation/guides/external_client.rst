@@ -4,7 +4,9 @@ External API Client
 Here is a demo Symfony application of Jane with an external API integration.
 We will see a working example of OpenApi v3 client onto a simple API that gives facts about cats and
 comment it. You can find this API documentation on following url:
-[https://alexwohlbruck.github.io/cat-facts/](https://alexwohlbruck.github.io/cat-facts/).
+`https://alexwohlbruck.github.io/cat-facts/`_.
+
+.. _`https://alexwohlbruck.github.io/cat-facts/`: https://alexwohlbruck.github.io/cat-facts/
 
 You can find the fully working example on this repository: `janephp/demo-external-api`_.
 
