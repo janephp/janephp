@@ -35,6 +35,7 @@ class SchemaLoader extends BaseSchemaLoader implements SchemaLoaderInterface
             'endpoint-generator',
             'custom-query-resolver',
             'throw-unexpected-status-code',
+            'custom-string-format-mapping'
         ];
     }
 
