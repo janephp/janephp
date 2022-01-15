@@ -40,6 +40,7 @@ trait ClientGenerator
         $params = [
             new Node\Param(new Expr\Variable('httpClient'), new Expr\ConstFetch(new Name('null'))),
             new Node\Param(new Expr\Variable('additionalPlugins'), new Expr\Array_(), 'array'),
+            new Node\Param(new Expr\Variable('additionalNormalizers'), new Expr\Array_(), 'array'),
         ];
 
         return new Stmt\ClassMethod(
@@ -68,14 +69,35 @@ trait ClientGenerator
                         )
                     )),
                     new Stmt\Expression(new Expr\Assign(
+                        new Expr\Variable('normalizers'),
+                        new Expr\Array_([
+                            new Expr\ArrayItem(new Expr\New_(new Name('\\Symfony\\Component\\Serializer\\Normalizer\\ArrayDenormalizer'))),
+                            new Expr\ArrayItem(new Expr\New_(new Name('\\' . $context->getCurrentSchema()->getNamespace() . '\\Normalizer\\JaneObjectNormalizer'))),
+                        ])
+                    )),
+                    new Stmt\If_(
+                        new Expr\BinaryOp\Greater(
+                            new Expr\FuncCall(new Name('count'), [new Node\Arg(new Expr\Variable('additionalNormalizers'))]),
+                            new Expr\ConstFetch(new Name('0'))
+                        ),
+                        [
+                            'stmts' => [
+                                new Stmt\Expression(new Expr\Assign(
+                                    new Expr\Variable('normalizers'),
+                                    new Expr\FuncCall(new Name('array_merge'), [
+                                        new Node\Arg(new Expr\Variable('normalizers')),
+                                        new Node\Arg(new Expr\Variable('additionalNormalizers')),
+                                    ])
+                                )),
+                            ],
+                        ]
+                    ),
+                    new Stmt\Expression(new Expr\Assign(
                         new Expr\Variable('serializer'),
                         new Expr\New_(
                             new Name\FullyQualified(Serializer::class),
                             [
-                                new Node\Arg(new Expr\Array_([
-                                    new Expr\ArrayItem(new Expr\New_(new Name('\\Symfony\\Component\\Serializer\\Normalizer\\ArrayDenormalizer'))),
-                                    new Expr\ArrayItem(new Expr\New_(new Name('\\' . $context->getCurrentSchema()->getNamespace() . '\\Normalizer\\JaneObjectNormalizer'))),
-                                ])),
+                                new Node\Arg(new Expr\Variable('normalizers')),
                                 new Node\Arg(
                                     new Expr\Array_([
                                         new Expr\ArrayItem(
