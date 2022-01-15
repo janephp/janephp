@@ -74,24 +74,14 @@ abstract class JaneOpenApi extends ChainGenerator
         foreach ($schemas as $schema) {
             foreach ($schema->getClasses() as $class) {
                 $properties = $this->chainGuesser->guessProperties($class->getObject(), $schema->getRootName(), $class->getReference(), $registry);
+
                 $names = [];
-
                 foreach ($properties as $property) {
-                    $property->setPhpName($this->naming->getPropertyName($property->getName()));
+                    $deduplicatedName = $this->naming->getDeduplicatedName($property->getName(), $names);
 
-                    $i = 2;
-                    $newName = $property->getPhpName();
+                    $property->setAccessorName($deduplicatedName);
+                    $property->setPhpName($this->naming->getPropertyName($deduplicatedName));
 
-                    while (\in_array(strtolower($newName), $names, true)) {
-                        $newName = $property->getPhpName() . $i;
-                        ++$i;
-                    }
-
-                    if ($newName !== $property->getPhpName()) {
-                        $property->setPhpName($newName);
-                    }
-
-                    $names[] = strtolower($property->getPhpName());
                     $property->setType($this->chainGuesser->guessType($property->getObject(), $property->getName(), $property->getReference(), $registry));
                 }
 

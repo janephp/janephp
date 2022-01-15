@@ -96,7 +96,7 @@ EOD
         /** @var Property $property */
         foreach ($classGuess->getProperties() as $property) {
             if (!$property->isReadOnly()) {
-                $propertyVar = new Expr\MethodCall($objectVariable, $this->getNaming()->getPrefixedMethodName('get', $property->getPhpName()));
+                $propertyVar = new Expr\MethodCall($objectVariable, $this->getNaming()->getPrefixedMethodName('get', $property->getAccessorName()));
 
                 list($normalizationStatements, $outputVar) = $property->getType()->createNormalizationStatement($context, $propertyVar);
 

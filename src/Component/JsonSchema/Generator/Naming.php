@@ -3,6 +3,8 @@
 namespace Jane\Component\JsonSchema\Generator;
 
 use Jane\Component\JsonSchema\Tools\InflectorTrait;
+use function strtolower;
+use function substr;
 
 /**
  * Helper to generate name for property / class / ....
@@ -34,13 +36,37 @@ class Naming
     public function getPropertyName(string $name): string
     {
         $name = $this->cleaning($name);
+        // php property can't start with a number
+        if (is_numeric(substr($name, 0, 1))) {
+            $name = 'n' . $name;
+        }
 
         return $name;
+    }
+
+    /**
+     * @param string             $name                Property name to be cleaned/deduplicated
+     * @param array<string, int> $otherPropertiesName
+     */
+    public function getDeduplicatedName(string $name, array &$otherPropertiesName): string
+    {
+        $cleanedName = $this->cleaning($name);
+
+        $duplicateName = strtolower($cleanedName);
+        if (\array_key_exists($duplicateName, $otherPropertiesName)) {
+            ++$otherPropertiesName[$duplicateName];
+            $cleanedName .= '' . $otherPropertiesName[$duplicateName];
+        } else {
+            $otherPropertiesName[$duplicateName] = 1;
+        }
+
+        return $cleanedName;
     }
 
     public function getPrefixedMethodName(string $prefix, string $name): string
     {
         $name = $this->cleaning($name);
+        // since it's prefixed, it doesn't require to check if it start with a number
 
         return sprintf('%s%s', $prefix, $this->getInflector()->classify($name));
     }
