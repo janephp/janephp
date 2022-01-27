@@ -139,12 +139,12 @@ final class Generator
         foreach ($propertiesMapping as $propertyMapping) {
             $transformer = $propertyMapping->getTransformer();
 
-            if (\in_array($propertyMapping->getProperty(), $inConstructor, true)) {
-                continue;
-            }
-
             $sourcePropertyAccessor = $propertyMapping->getReadAccessor()->getExpression($sourceInput);
             [$output, $propStatements] = $transformer->transform($sourcePropertyAccessor, $result, $propertyMapping, $uniqueVariableScope);
+
+            if (null === $propertyMapping->getWriteMutator()) {
+                continue;
+            }
 
             if ($propertyMapping->getWriteMutator()->getType() !== WriteMutator::TYPE_ADDER_AND_REMOVER) {
                 $writeExpression = $propertyMapping->getWriteMutator()->getExpression($result, $output, $transformer instanceof AssignedByReferenceTransformerInterface ? $transformer->assignByRef() : false);
