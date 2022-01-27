@@ -6,6 +6,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+## [7.1.6] - 2022-01-27
 - [AutoMapper] [GH#589](https://github.com/janephp/janephp/pull/589) Fix setting properties when using target to populate object
 
 ## [7.1.5] - 2021-12-16
@@ -558,7 +559,10 @@ See :
  * https://github.com/janephp/jane/releases
  * https://github.com/janephp/openapi/releases
 
-[Unreleased]: https://github.com/janephp/janephp/compare/v7.1.3...HEAD
+[Unreleased]: https://github.com/janephp/janephp/compare/v7.1.6...HEAD
+[7.1.6]: https://github.com/janephp/janephp/compare/v7.1.5...v7.1.6
+[7.1.5]: https://github.com/janephp/janephp/compare/v7.1.4...v7.1.5
+[7.1.4]: https://github.com/janephp/janephp/compare/v7.1.3...v7.1.4
 [7.1.3]: https://github.com/janephp/janephp/compare/v7.1.2...v7.1.3
 [7.1.2]: https://github.com/janephp/janephp/compare/v7.1.1...v7.1.2
 [7.1.1]: https://github.com/janephp/janephp/compare/v7.1.0...v7.1.1
