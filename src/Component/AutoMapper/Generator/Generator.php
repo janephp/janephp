@@ -116,9 +116,10 @@ final class Generator
             }
         }
 
+        $addedDependenciesStatements = [];
         if ($addedDependencies) {
             if ($canHaveCircularDependency) {
-                $statements[] = new Stmt\Expression(new Expr\Assign(
+                $addedDependenciesStatements[] = new Stmt\Expression(new Expr\Assign(
                     $contextVariable,
                     new Expr\StaticCall(new Name\FullyQualified(MapperContext::class), 'withReference', [
                         new Arg($contextVariable),
@@ -128,7 +129,7 @@ final class Generator
                 ));
             }
 
-            $statements[] = new Stmt\Expression(new Expr\Assign(
+            $addedDependenciesStatements[] = new Stmt\Expression(new Expr\Assign(
                 $contextVariable,
                 new Expr\StaticCall(new Name\FullyQualified(MapperContext::class), 'withIncrementedDepth', [
                     new Arg($contextVariable),
@@ -136,15 +137,17 @@ final class Generator
             ));
         }
 
+        $duplicatedStatements = [];
+        $setterStatements = [];
         foreach ($propertiesMapping as $propertyMapping) {
             $transformer = $propertyMapping->getTransformer();
 
-            if (\in_array($propertyMapping->getProperty(), $inConstructor, true)) {
-                continue;
-            }
-
             $sourcePropertyAccessor = $propertyMapping->getReadAccessor()->getExpression($sourceInput);
             [$output, $propStatements] = $transformer->transform($sourcePropertyAccessor, $result, $propertyMapping, $uniqueVariableScope);
+
+            if (null === $propertyMapping->getWriteMutator()) {
+                continue;
+            }
 
             if ($propertyMapping->getWriteMutator()->getType() !== WriteMutator::TYPE_ADDER_AND_REMOVER) {
                 $writeExpression = $propertyMapping->getWriteMutator()->getExpression($result, $output, $transformer instanceof AssignedByReferenceTransformerInterface ? $transformer->assignByRef() : false);
@@ -262,9 +265,26 @@ final class Generator
                 ])];
             }
 
+            $propInConstructor = \in_array($propertyMapping->getProperty(), $inConstructor, true);
             foreach ($propStatements as $propStatement) {
-                $statements[] = $propStatement;
+                if ($propInConstructor) {
+                    $duplicatedStatements[] = $propStatement;
+                } else {
+                    $setterStatements[] = $propStatement;
+                }
             }
+        }
+
+        if (\count($duplicatedStatements) > 0 && \count($inConstructor)) {
+            $statements[] = new Stmt\Else_(array_merge($addedDependenciesStatements, $duplicatedStatements));
+        } else {
+            foreach ($addedDependenciesStatements as $statement) {
+                $statements[] = $statement;
+            }
+        }
+
+        foreach ($setterStatements as $propStatement) {
+            $statements[] = $propStatement;
         }
 
         $statements[] = new Stmt\Return_($result);

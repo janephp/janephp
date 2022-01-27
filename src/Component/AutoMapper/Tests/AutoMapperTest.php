@@ -963,4 +963,36 @@ class AutoMapperTest extends AutoMapperBaseTest
         self::assertIsArray($petOwnerData->getPets());
         self::assertCount(0, $petOwnerData->getPets());
     }
+
+    public function testIssueTargetToPopulate()
+    {
+        $source = new Fixtures\IssueTargetToPopulate\VatModel();
+        $source->setCountryCode('fr');
+        $source->setStandardVatRate(21.0);
+        $source->setReducedVatRate(5.5);
+        $source->setDisplayIncVatPrices(true);
+
+        $target = new Fixtures\IssueTargetToPopulate\VatEntity('en');
+        $target->setId(1);
+
+        /** @var Fixtures\IssueTargetToPopulate\VatEntity $target */
+        $target = $this->autoMapper->map($source, $target);
+
+        self::assertEquals(1, $target->getId());
+        self::assertEquals('fr', $target->getCountryCode());
+        self::assertEquals(21.0, $target->getStandardVatRate());
+        self::assertEquals(5.5, $target->getReducedVatRate());
+        self::assertTrue($target->isDisplayIncVatPrices());
+    }
+
+    public function testPartialConstructorWithTargetToPopulate()
+    {
+        $source = new Fixtures\User(1, 'Jack', 37);
+        /** @var Fixtures\UserPartialConstructor $target */
+        $target = $this->autoMapper->map($source, Fixtures\UserPartialConstructor::class);
+
+        self::assertEquals(1, $target->getId());
+        self::assertEquals('Jack', $target->name);
+        self::assertEquals(37, $target->age);
+    }
 }
