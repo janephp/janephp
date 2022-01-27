@@ -984,4 +984,15 @@ class AutoMapperTest extends AutoMapperBaseTest
         self::assertEquals(5.5, $target->getReducedVatRate());
         self::assertTrue($target->isDisplayIncVatPrices());
     }
+
+    public function testPartialConstructorWithTargetToPopulate()
+    {
+        $source = new Fixtures\User(1, 'Jack', 37);
+        /** @var Fixtures\UserPartialConstructor $target */
+        $target = $this->autoMapper->map($source, Fixtures\UserPartialConstructor::class);
+
+        self::assertEquals(1, $target->getId());
+        self::assertEquals('Jack', $target->name);
+        self::assertEquals(37, $target->age);
+    }
 }
