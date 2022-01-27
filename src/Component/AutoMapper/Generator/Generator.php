@@ -136,6 +136,8 @@ final class Generator
             ));
         }
 
+        $duplicatedStatements = [];
+        $setterStatements = [];
         foreach ($propertiesMapping as $propertyMapping) {
             $transformer = $propertyMapping->getTransformer();
 
@@ -262,9 +264,29 @@ final class Generator
                 ])];
             }
 
+            $propInConstructor = \in_array($propertyMapping->getProperty(), $inConstructor, true);
             foreach ($propStatements as $propStatement) {
-                $statements[] = $propStatement;
+                if ($propInConstructor) {
+                    $duplicatedStatements[] = $propStatement;
+                } else {
+                    $setterStatements[] = $propStatement;
+                }
             }
+        }
+
+        if (\count($duplicatedStatements) > 0 && \count($inConstructor)) {
+            $statements[] = new Stmt\If_(
+                new Expr\BinaryOp\NotIdentical(new Expr\ConstFetch(new Name('null')),
+                new Expr\BinaryOp\Coalesce(
+                    new Expr\ArrayDimFetch($contextVariable, new Scalar\String_(MapperContext::TARGET_TO_POPULATE)),
+                    new Expr\ConstFetch(new Name('null'))
+                )),
+                ['stmts' => $duplicatedStatements]
+            );
+        }
+
+        foreach ($setterStatements as $propStatement) {
+            $statements[] = $propStatement;
         }
 
         $statements[] = new Stmt\Return_($result);
