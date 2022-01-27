@@ -116,9 +116,10 @@ final class Generator
             }
         }
 
+        $addedDependenciesStatements = [];
         if ($addedDependencies) {
             if ($canHaveCircularDependency) {
-                $statements[] = new Stmt\Expression(new Expr\Assign(
+                $addedDependenciesStatements[] = new Stmt\Expression(new Expr\Assign(
                     $contextVariable,
                     new Expr\StaticCall(new Name\FullyQualified(MapperContext::class), 'withReference', [
                         new Arg($contextVariable),
@@ -128,7 +129,7 @@ final class Generator
                 ));
             }
 
-            $statements[] = new Stmt\Expression(new Expr\Assign(
+            $addedDependenciesStatements[] = new Stmt\Expression(new Expr\Assign(
                 $contextVariable,
                 new Expr\StaticCall(new Name\FullyQualified(MapperContext::class), 'withIncrementedDepth', [
                     new Arg($contextVariable),
@@ -275,14 +276,11 @@ final class Generator
         }
 
         if (\count($duplicatedStatements) > 0 && \count($inConstructor)) {
-            $statements[] = new Stmt\If_(
-                new Expr\BinaryOp\NotIdentical(new Expr\ConstFetch(new Name('null')),
-                new Expr\BinaryOp\Coalesce(
-                    new Expr\ArrayDimFetch($contextVariable, new Scalar\String_(MapperContext::TARGET_TO_POPULATE)),
-                    new Expr\ConstFetch(new Name('null'))
-                )),
-                ['stmts' => $duplicatedStatements]
-            );
+            $statements[] = new Stmt\Else_(array_merge($addedDependenciesStatements, $duplicatedStatements));
+        } else {
+            foreach ($addedDependenciesStatements as $statement) {
+                $statements[] = $statement;
+            }
         }
 
         foreach ($setterStatements as $propStatement) {
