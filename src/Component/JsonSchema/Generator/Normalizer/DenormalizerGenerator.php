@@ -105,7 +105,7 @@ EOD
             $fullCondition = $baseCondition;
 
             $mutatorStmt = array_merge($denormalizationStatements, [
-                new Stmt\Expression(new Expr\MethodCall($objectVariable, $this->getNaming()->getPrefixedMethodName('set', $property->getPhpName()), [$outputVar])),
+                new Stmt\Expression(new Expr\MethodCall($objectVariable, $this->getNaming()->getPrefixedMethodName('set', $property->getAccessorName()), [$outputVar])),
             ], $unset ? [new Stmt\Unset_([$propertyVar])] : []);
 
             if (!$context->isStrict() || $property->isNullable()) {
@@ -132,7 +132,7 @@ EOD
                 );
 
                 $statements[] = new Stmt\ElseIf_($invertCondition, [
-                    new Stmt\Expression(new Expr\MethodCall($objectVariable, $this->getNaming()->getPrefixedMethodName('set', $property->getPhpName()), [new Expr\ConstFetch(new Name('null'))])),
+                    new Stmt\Expression(new Expr\MethodCall($objectVariable, $this->getNaming()->getPrefixedMethodName('set', $property->getAccessorName()), [new Expr\ConstFetch(new Name('null'))])),
                 ]);
             }
         }

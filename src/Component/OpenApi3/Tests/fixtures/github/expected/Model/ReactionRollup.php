@@ -21,13 +21,13 @@ class ReactionRollup
      *
      * @var int
      */
-    protected $1;
+    protected $n1;
     /**
      * 
      *
      * @var int
      */
-    protected $12;
+    protected $n12;
     /**
      * 
      *
@@ -113,18 +113,18 @@ class ReactionRollup
      */
     public function get1() : int
     {
-        return $this->1;
+        return $this->n1;
     }
     /**
      * 
      *
-     * @param int $1
+     * @param int $n1
      *
      * @return self
      */
-    public function set1(int $1) : self
+    public function set1(int $n1) : self
     {
-        $this->1 = $1;
+        $this->n1 = $n1;
         return $this;
     }
     /**
@@ -134,18 +134,18 @@ class ReactionRollup
      */
     public function get12() : int
     {
-        return $this->12;
+        return $this->n12;
     }
     /**
      * 
      *
-     * @param int $12
+     * @param int $n12
      *
      * @return self
      */
-    public function set12(int $12) : self
+    public function set12(int $n12) : self
     {
-        $this->12 = $12;
+        $this->n12 = $n12;
         return $this;
     }
     /**

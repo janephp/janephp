@@ -45,7 +45,7 @@ class Property
     private $default;
 
     /**
-     * @var string
+     * @var string Used for generate class properties
      */
     private $phpName;
 
@@ -54,6 +54,11 @@ class Property
 
     /** @var bool */
     private $deprecated = false;
+
+    /**
+     * @var string Used for generate getter/setter name
+     */
+    private $accessorName;
 
     public function __construct(object $object, string $name, string $reference, bool $nullable = false, bool $required = false, Type $type = null, string $description = null, $default = null, ?bool $readOnly = null)
     {
@@ -76,6 +81,16 @@ class Property
     public function getPhpName(): string
     {
         return $this->phpName;
+    }
+
+    public function setAccessorName(string $name): void
+    {
+        $this->accessorName = $name;
+    }
+
+    public function getAccessorName(): string
+    {
+        return $this->accessorName;
     }
 
     public function getObject(): object
