@@ -1,0 +1,79 @@
+{
+    "openapi": "3.0.0",
+    "paths": {
+        "/test-exception": {
+            "get": {
+                "operationId": "Test",
+                "responses": {
+                    "400": {
+                        "$ref": "#/components/responses/400"
+                    }
+                }
+            }
+        }
+    },
+    "servers": [
+        {
+            "url": "/"
+        }
+    ],
+    "info": {
+        "version": "",
+        "title": ""
+    },
+    "components": {
+        "schemas": {
+            "error": {
+                "additionalProperties": false,
+                "properties": {
+                    "code": {
+                        "description": "An application-specific error code, expressed as a string value.",
+                        "type": "string"
+                    },
+                    "title": {
+                        "description": "A short, human-readable summary of the problem.",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "failure": {
+                "additionalProperties": false,
+                "properties": {
+                    "errors": {
+                        "items": {
+                            "$ref": "#/components/schemas/error"
+                        },
+                        "type": "array",
+                        "uniqueItems": true
+                    }
+                },
+                "required": [
+                    "errors"
+                ],
+                "type": "object"
+            }
+        },
+        "responses": {
+            "400": {
+                "content": {
+                    "application/json": {
+                        "example": {
+                            "errors": [
+                                {
+                                    "status": "400",
+                                    "title": "Bad Request",
+                                    "description": "Bad parameters for this endpoint."
+                                }
+                            ]
+                        },
+                        "schema": {
+                            "$ref": "#/components/schemas/failure"
+                        }
+                    }
+                },
+                "description": "Bad Request"
+            }
+        }
+    }
+}
