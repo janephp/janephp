@@ -4,13 +4,16 @@ namespace Github\Exception;
 
 class IssuesLockGoneException extends GoneException
 {
+    /**
+     * @var \Github\Model\BasicError
+     */
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)
     {
-        parent::__construct('Gone', 410);
+        parent::__construct('Gone');
         $this->basicError = $basicError;
     }
-    public function getBasicError()
+    public function getBasicError() : \Github\Model\BasicError
     {
         return $this->basicError;
     }

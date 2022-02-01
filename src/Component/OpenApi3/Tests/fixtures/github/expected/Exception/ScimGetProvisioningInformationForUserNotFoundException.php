@@ -4,13 +4,16 @@ namespace Github\Exception;
 
 class ScimGetProvisioningInformationForUserNotFoundException extends NotFoundException
 {
+    /**
+     * @var \Github\Model\ScimError
+     */
     private $scimError;
     public function __construct(\Github\Model\ScimError $scimError)
     {
-        parent::__construct('Resource Not Found', 404);
+        parent::__construct('Resource Not Found');
         $this->scimError = $scimError;
     }
-    public function getScimError()
+    public function getScimError() : \Github\Model\ScimError
     {
         return $this->scimError;
     }

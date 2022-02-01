@@ -4,13 +4,16 @@ namespace Github\Exception;
 
 class ProjectsAddCollaboratorUnprocessableEntityException extends UnprocessableEntityException
 {
+    /**
+     * @var \Github\Model\ValidationError
+     */
     private $validationError;
     public function __construct(\Github\Model\ValidationError $validationError)
     {
-        parent::__construct('Validation Failed', 422);
+        parent::__construct('Validation Failed');
         $this->validationError = $validationError;
     }
-    public function getValidationError()
+    public function getValidationError() : \Github\Model\ValidationError
     {
         return $this->validationError;
     }

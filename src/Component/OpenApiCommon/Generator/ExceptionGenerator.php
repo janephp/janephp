@@ -6,6 +6,7 @@ use Jane\Component\JsonSchema\Generator\Context\Context;
 use Jane\Component\JsonSchema\Generator\File;
 use Jane\Component\JsonSchema\Guesser\Guess\ClassGuess;
 use Jane\Component\OpenApiCommon\Naming\ExceptionNaming;
+use PhpParser\Comment\Doc;
 use PhpParser\Node;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Name;
@@ -47,6 +48,13 @@ class ExceptionGenerator
                 $propertyName = sprintf('%sObject', $propertyName);
             }
 
+            $propertyComment = sprintf(<<<EOD
+/**
+ * @var %s%s
+ */
+EOD
+                , '\\' . $classFqdn, ($isArray ? '[]' : ''));
+
             $methodName = 'get' . ucfirst($propertyName);
             $exception = new Stmt\Namespace_(new Name($schema->getNamespace() . '\\Exception'), [
                 new Stmt\Class_(
@@ -56,7 +64,7 @@ class ExceptionGenerator
                         'stmts' => [
                             new Stmt\Property(Stmt\Class_::MODIFIER_PRIVATE, [
                                 new Stmt\PropertyProperty($propertyName),
-                            ]),
+                            ], ['comments' => [new Doc($propertyComment)]]),
                             new Stmt\ClassMethod('__construct', [
                                 'type' => Stmt\Class_::MODIFIER_PUBLIC,
                                 'params' => [
@@ -65,7 +73,6 @@ class ExceptionGenerator
                                 'stmts' => [
                                     new Node\Stmt\Expression(new Expr\StaticCall(new Name('parent'), '__construct', [
                                         new Scalar\String_($description),
-                                        new Scalar\LNumber($status),
                                     ])),
                                     new Node\Stmt\Expression(new Expr\Assign(
                                         new Expr\PropertyFetch(
@@ -85,6 +92,7 @@ class ExceptionGenerator
                                         )
                                     ),
                                 ],
+                                'returnType' => ($isArray ? null : new Name('\\' . $classFqdn)),
                             ]),
                         ],
                     ]

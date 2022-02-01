@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ### Fixed
 - [JsonSchema] [OpenApi] [GH#587](https://github.com/janephp/janephp/pull/587) Prefix property starting with number with 'n'
+- [OpenApi] [GH#593](https://github.com/janephp/janephp/pull/593) Add type hints to exceptions, cleanup parent constructor call
 
 ## [7.1.6] - 2022-01-27
 - [AutoMapper] [GH#589](https://github.com/janephp/janephp/pull/589) Fix setting properties when using target to populate object
