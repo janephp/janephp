@@ -4,13 +4,16 @@ namespace Github\Exception;
 
 class ScimUpdateAttributeForUserBadRequestException extends BadRequestException
 {
+    /**
+     * @var \Github\Model\ScimError
+     */
     private $scimError;
     public function __construct(\Github\Model\ScimError $scimError)
     {
         parent::__construct('Bad Request', 400);
         $this->scimError = $scimError;
     }
-    public function getScimError()
+    public function getScimError() : \Github\Model\ScimError
     {
         return $this->scimError;
     }
