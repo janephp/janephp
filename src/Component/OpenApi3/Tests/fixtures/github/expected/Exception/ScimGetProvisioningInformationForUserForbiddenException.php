@@ -10,7 +10,7 @@ class ScimGetProvisioningInformationForUserForbiddenException extends ForbiddenE
     private $scimError;
     public function __construct(\Github\Model\ScimError $scimError)
     {
-        parent::__construct('Forbidden', 403);
+        parent::__construct('Forbidden');
         $this->scimError = $scimError;
     }
     public function getScimError() : \Github\Model\ScimError

@@ -10,7 +10,7 @@ class ProjectsCreateCardServiceUnavailableException extends ServiceUnavailableEx
     private $projectsColumnsColumnIdCardsPostResponse503;
     public function __construct(\Github\Model\ProjectsColumnsColumnIdCardsPostResponse503 $projectsColumnsColumnIdCardsPostResponse503)
     {
-        parent::__construct('Service Unavailable', 503);
+        parent::__construct('Service Unavailable');
         $this->projectsColumnsColumnIdCardsPostResponse503 = $projectsColumnsColumnIdCardsPostResponse503;
     }
     public function getProjectsColumnsColumnIdCardsPostResponse503() : \Github\Model\ProjectsColumnsColumnIdCardsPostResponse503

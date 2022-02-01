@@ -10,7 +10,7 @@ class ReposListCommitsInternalServerErrorException extends InternalServerErrorEx
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)
     {
-        parent::__construct('Internal Error', 500);
+        parent::__construct('Internal Error');
         $this->basicError = $basicError;
     }
     public function getBasicError() : \Github\Model\BasicError

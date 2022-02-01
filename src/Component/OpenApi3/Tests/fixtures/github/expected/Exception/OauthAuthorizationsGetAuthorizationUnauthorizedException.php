@@ -10,7 +10,7 @@ class OauthAuthorizationsGetAuthorizationUnauthorizedException extends Unauthori
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)
     {
-        parent::__construct('Requires Authentication', 401);
+        parent::__construct('Requires Authentication');
         $this->basicError = $basicError;
     }
     public function getBasicError() : \Github\Model\BasicError

@@ -73,7 +73,6 @@ EOD
                                 'stmts' => [
                                     new Node\Stmt\Expression(new Expr\StaticCall(new Name('parent'), '__construct', [
                                         new Scalar\String_($description),
-                                        new Scalar\LNumber($status),
                                     ])),
                                     new Node\Stmt\Expression(new Expr\Assign(
                                         new Expr\PropertyFetch(

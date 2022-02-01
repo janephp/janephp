@@ -10,7 +10,7 @@ class ReposGetAllTopicsUnsupportedMediaTypeException extends UnsupportedMediaTyp
     private $responsePreviewHeaderMissing;
     public function __construct(\Github\Model\ResponsePreviewHeaderMissing $responsePreviewHeaderMissing)
     {
-        parent::__construct('Preview Header Missing', 415);
+        parent::__construct('Preview Header Missing');
         $this->responsePreviewHeaderMissing = $responsePreviewHeaderMissing;
     }
     public function getResponsePreviewHeaderMissing() : \Github\Model\ResponsePreviewHeaderMissing

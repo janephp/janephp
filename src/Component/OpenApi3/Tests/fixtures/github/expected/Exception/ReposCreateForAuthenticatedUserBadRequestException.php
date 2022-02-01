@@ -10,7 +10,7 @@ class ReposCreateForAuthenticatedUserBadRequestException extends BadRequestExcep
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)
     {
-        parent::__construct('Bad Request', 400);
+        parent::__construct('Bad Request');
         $this->basicError = $basicError;
     }
     public function getBasicError() : \Github\Model\BasicError

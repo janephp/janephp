@@ -10,7 +10,7 @@ class ScimProvisionAndInviteUserBadRequestException extends BadRequestException
     private $scimError;
     public function __construct(\Github\Model\ScimError $scimError)
     {
-        parent::__construct('Bad Request', 400);
+        parent::__construct('Bad Request');
         $this->scimError = $scimError;
     }
     public function getScimError() : \Github\Model\ScimError

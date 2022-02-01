@@ -10,7 +10,7 @@ class ProjectsUpdateForbiddenException extends ForbiddenException
     private $projectsProjectIdPatchResponse403;
     public function __construct(\Github\Model\ProjectsProjectIdPatchResponse403 $projectsProjectIdPatchResponse403)
     {
-        parent::__construct('Forbidden', 403);
+        parent::__construct('Forbidden');
         $this->projectsProjectIdPatchResponse403 = $projectsProjectIdPatchResponse403;
     }
     public function getProjectsProjectIdPatchResponse403() : \Github\Model\ProjectsProjectIdPatchResponse403

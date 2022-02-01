@@ -10,7 +10,7 @@ class ScimProvisionAndInviteUserInternalServerErrorException extends InternalSer
     private $scimError;
     public function __construct(\Github\Model\ScimError $scimError)
     {
-        parent::__construct('Internal Error', 500);
+        parent::__construct('Internal Error');
         $this->scimError = $scimError;
     }
     public function getScimError() : \Github\Model\ScimError

@@ -10,7 +10,7 @@ class ReposMergeConflictException extends ConflictException
     private $reposOwnerRepoMergesPostResponse409;
     public function __construct(\Github\Model\ReposOwnerRepoMergesPostResponse409 $reposOwnerRepoMergesPostResponse409)
     {
-        parent::__construct('Merge conflict response', 409);
+        parent::__construct('Merge conflict response');
         $this->reposOwnerRepoMergesPostResponse409 = $reposOwnerRepoMergesPostResponse409;
     }
     public function getReposOwnerRepoMergesPostResponse409() : \Github\Model\ReposOwnerRepoMergesPostResponse409

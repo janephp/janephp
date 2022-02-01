@@ -10,7 +10,7 @@ class GetTestByIdNotFoundException extends NotFoundException
     private $error;
     public function __construct(\Jane\Component\OpenApi2\Tests\Expected\Model\Error $error)
     {
-        parent::__construct('not found', 404);
+        parent::__construct('not found');
         $this->error = $error;
     }
     public function getError() : \Jane\Component\OpenApi2\Tests\Expected\Model\Error

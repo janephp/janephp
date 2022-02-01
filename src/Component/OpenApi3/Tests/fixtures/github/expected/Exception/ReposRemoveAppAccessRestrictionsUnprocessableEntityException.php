@@ -10,7 +10,7 @@ class ReposRemoveAppAccessRestrictionsUnprocessableEntityException extends Unpro
     private $validationError;
     public function __construct(\Github\Model\ValidationError $validationError)
     {
-        parent::__construct('Validation Failed', 422);
+        parent::__construct('Validation Failed');
         $this->validationError = $validationError;
     }
     public function getValidationError() : \Github\Model\ValidationError

@@ -10,7 +10,7 @@ class OrgsConvertMemberToOutsideCollaboratorForbiddenException extends Forbidden
     private $orgsOrgOutsideCollaboratorsUsernamePutResponse403;
     public function __construct(\Github\Model\OrgsOrgOutsideCollaboratorsUsernamePutResponse403 $orgsOrgOutsideCollaboratorsUsernamePutResponse403)
     {
-        parent::__construct('response', 403);
+        parent::__construct('response');
         $this->orgsOrgOutsideCollaboratorsUsernamePutResponse403 = $orgsOrgOutsideCollaboratorsUsernamePutResponse403;
     }
     public function getOrgsOrgOutsideCollaboratorsUsernamePutResponse403() : \Github\Model\OrgsOrgOutsideCollaboratorsUsernamePutResponse403

@@ -10,7 +10,7 @@ class ReposCreateDeploymentConflictException extends ConflictException
     private $reposOwnerRepoDeploymentsPostResponse409;
     public function __construct(\Github\Model\ReposOwnerRepoDeploymentsPostResponse409 $reposOwnerRepoDeploymentsPostResponse409)
     {
-        parent::__construct('response', 409);
+        parent::__construct('response');
         $this->reposOwnerRepoDeploymentsPostResponse409 = $reposOwnerRepoDeploymentsPostResponse409;
     }
     public function getReposOwnerRepoDeploymentsPostResponse409() : \Github\Model\ReposOwnerRepoDeploymentsPostResponse409

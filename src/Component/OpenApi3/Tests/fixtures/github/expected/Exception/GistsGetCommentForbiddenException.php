@@ -10,7 +10,7 @@ class GistsGetCommentForbiddenException extends ForbiddenException
     private $responseForbiddenGist;
     public function __construct(\Github\Model\ResponseForbiddenGist $responseForbiddenGist)
     {
-        parent::__construct('Forbidden Gist', 403);
+        parent::__construct('Forbidden Gist');
         $this->responseForbiddenGist = $responseForbiddenGist;
     }
     public function getResponseForbiddenGist() : \Github\Model\ResponseForbiddenGist

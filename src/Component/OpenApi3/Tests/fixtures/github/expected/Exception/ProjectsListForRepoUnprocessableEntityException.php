@@ -10,7 +10,7 @@ class ProjectsListForRepoUnprocessableEntityException extends UnprocessableEntit
     private $validationErrorSimple;
     public function __construct(\Github\Model\ValidationErrorSimple $validationErrorSimple)
     {
-        parent::__construct('Validation Failed', 422);
+        parent::__construct('Validation Failed');
         $this->validationErrorSimple = $validationErrorSimple;
     }
     public function getValidationErrorSimple() : \Github\Model\ValidationErrorSimple

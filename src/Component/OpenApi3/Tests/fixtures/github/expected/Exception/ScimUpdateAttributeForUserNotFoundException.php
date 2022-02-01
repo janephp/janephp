@@ -10,7 +10,7 @@ class ScimUpdateAttributeForUserNotFoundException extends NotFoundException
     private $scimError;
     public function __construct(\Github\Model\ScimError $scimError)
     {
-        parent::__construct('Resource Not Found', 404);
+        parent::__construct('Resource Not Found');
         $this->scimError = $scimError;
     }
     public function getScimError() : \Github\Model\ScimError

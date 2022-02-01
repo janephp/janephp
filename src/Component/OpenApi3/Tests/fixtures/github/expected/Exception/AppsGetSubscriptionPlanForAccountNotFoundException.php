@@ -10,7 +10,7 @@ class AppsGetSubscriptionPlanForAccountNotFoundException extends NotFoundExcepti
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)
     {
-        parent::__construct('Response when the account has not purchased the listing', 404);
+        parent::__construct('Response when the account has not purchased the listing');
         $this->basicError = $basicError;
     }
     public function getBasicError() : \Github\Model\BasicError

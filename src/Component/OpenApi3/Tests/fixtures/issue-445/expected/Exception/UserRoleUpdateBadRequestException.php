@@ -10,7 +10,7 @@ class UserRoleUpdateBadRequestException extends BadRequestException
     private $pictureparkValidationException;
     public function __construct(\PicturePark\API\Model\PictureparkValidationException $pictureparkValidationException)
     {
-        parent::__construct('Validation exception', 400);
+        parent::__construct('Validation exception');
         $this->pictureparkValidationException = $pictureparkValidationException;
     }
     public function getPictureparkValidationException() : \PicturePark\API\Model\PictureparkValidationException

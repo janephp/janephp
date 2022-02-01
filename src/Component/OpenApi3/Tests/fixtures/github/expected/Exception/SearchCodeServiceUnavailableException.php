@@ -10,7 +10,7 @@ class SearchCodeServiceUnavailableException extends ServiceUnavailableException
     private $responseServiceUnavailable;
     public function __construct(\Github\Model\ResponseServiceUnavailable $responseServiceUnavailable)
     {
-        parent::__construct('Service Unavailable', 503);
+        parent::__construct('Service Unavailable');
         $this->responseServiceUnavailable = $responseServiceUnavailable;
     }
     public function getResponseServiceUnavailable() : \Github\Model\ResponseServiceUnavailable

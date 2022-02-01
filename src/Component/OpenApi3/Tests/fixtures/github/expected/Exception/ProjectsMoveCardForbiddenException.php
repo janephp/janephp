@@ -10,7 +10,7 @@ class ProjectsMoveCardForbiddenException extends ForbiddenException
     private $projectsColumnsCardsCardIdMovesPostResponse403;
     public function __construct(\Github\Model\ProjectsColumnsCardsCardIdMovesPostResponse403 $projectsColumnsCardsCardIdMovesPostResponse403)
     {
-        parent::__construct('Forbidden', 403);
+        parent::__construct('Forbidden');
         $this->projectsColumnsCardsCardIdMovesPostResponse403 = $projectsColumnsCardsCardIdMovesPostResponse403;
     }
     public function getProjectsColumnsCardsCardIdMovesPostResponse403() : \Github\Model\ProjectsColumnsCardsCardIdMovesPostResponse403

@@ -10,7 +10,7 @@ class UsersDeletePublicSshKeyForAuthenticatedNotFoundException extends NotFoundE
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)
     {
-        parent::__construct('Resource Not Found', 404);
+        parent::__construct('Resource Not Found');
         $this->basicError = $basicError;
     }
     public function getBasicError() : \Github\Model\BasicError

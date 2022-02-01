@@ -10,7 +10,7 @@ class ActivityCheckRepoIsStarredByAuthenticatedUserNotFoundException extends Not
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)
     {
-        parent::__construct('Response if this repository is not starred by you', 404);
+        parent::__construct('Response if this repository is not starred by you');
         $this->basicError = $basicError;
     }
     public function getBasicError() : \Github\Model\BasicError

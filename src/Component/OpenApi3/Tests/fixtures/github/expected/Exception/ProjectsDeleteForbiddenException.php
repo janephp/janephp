@@ -10,7 +10,7 @@ class ProjectsDeleteForbiddenException extends ForbiddenException
     private $projectsProjectIdDeleteResponse403;
     public function __construct(\Github\Model\ProjectsProjectIdDeleteResponse403 $projectsProjectIdDeleteResponse403)
     {
-        parent::__construct('Forbidden', 403);
+        parent::__construct('Forbidden');
         $this->projectsProjectIdDeleteResponse403 = $projectsProjectIdDeleteResponse403;
     }
     public function getProjectsProjectIdDeleteResponse403() : \Github\Model\ProjectsProjectIdDeleteResponse403

@@ -10,7 +10,7 @@ class SchemaUpdateManyInternalServerErrorException extends InternalServerErrorEx
     private $pictureparkException;
     public function __construct(\PicturePark\API\Model\PictureparkException $pictureparkException)
     {
-        parent::__construct('Internal server error', 500);
+        parent::__construct('Internal server error');
         $this->pictureparkException = $pictureparkException;
     }
     public function getPictureparkException() : \PicturePark\API\Model\PictureparkException

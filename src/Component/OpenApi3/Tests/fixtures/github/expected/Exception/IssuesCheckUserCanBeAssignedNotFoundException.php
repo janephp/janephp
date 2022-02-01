@@ -10,7 +10,7 @@ class IssuesCheckUserCanBeAssignedNotFoundException extends NotFoundException
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)
     {
-        parent::__construct('Otherwise a `404` status code is returned.', 404);
+        parent::__construct('Otherwise a `404` status code is returned.');
         $this->basicError = $basicError;
     }
     public function getBasicError() : \Github\Model\BasicError

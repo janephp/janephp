@@ -10,7 +10,7 @@ class ScimProvisionAndInviteUserConflictException extends ConflictException
     private $scimError;
     public function __construct(\Github\Model\ScimError $scimError)
     {
-        parent::__construct('Conflict', 409);
+        parent::__construct('Conflict');
         $this->scimError = $scimError;
     }
     public function getScimError() : \Github\Model\ScimError

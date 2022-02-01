@@ -10,7 +10,7 @@ class UsersCheckPersonIsFollowedByAuthenticatedNotFoundException extends NotFoun
     private $basicError;
     public function __construct(\Github\Model\BasicError $basicError)
     {
-        parent::__construct('Response if the person is not followed by the authenticated user', 404);
+        parent::__construct('Response if the person is not followed by the authenticated user');
         $this->basicError = $basicError;
     }
     public function getBasicError() : \Github\Model\BasicError
