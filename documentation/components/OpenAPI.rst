@@ -136,8 +136,8 @@ Other options are available to customize the generated code:
  * ``use-fixer``: A boolean which indicate if we make a first cs-fix after code generation, is disabled by default.
  * ``fixer-config-file``: A string to specify where to find the custom configuration for the cs-fixer after code
    generation, will remove all Jane default cs-fixer default configuration.
- * ``clean-generated``: A boolean which indicate if we clean generated output before generating new files, is enabled
-   by default.
+ * ``clean-generated``: A boolean which indicate if we clean generated output before generating new files, is enabled by
+   default.
  * ``use-cacheable-supports-method``: A boolean which indicate if we use ``CacheableSupportsMethodInterface`` interface
    to improve caching performances when used with Symfony Serializer.
  * ``skip-null-values``: When having nullable properties, you can enforce normalization to skip theses
@@ -203,6 +203,10 @@ Other options are available to customize the generated code:
    normalizer by giving the exact path, method and parameter name where you want to apply it.
  * ``throw-unexpected-status-code``: Will return a ``UnexpectedStatusCodeException`` if nothing has been matched during
    the transformation of the Endpoint body (including described exceptions). By default, it's disabled.
+ * ``custom-string-format-mapping``: This option allows you to specify in which class a string property will be
+   deserialized according to it's format option.
+   It can be used to customize a date-time field, or to add non supported formats.
+   More details in the dedicated section.
 
 .. _`JSON Reference`: https://tools.ietf.org/id/draft-pbryan-zyp-json-ref-03.html
 .. _`Carbon`: https://carbon.nesbot.com/
@@ -457,3 +461,87 @@ look at the generated code.
 
 .. _PSR18: https://www.php-fig.org/psr/psr-18/
 
+
+Custom string formats
+---------------------
+
+Jane support some strings format, but it can't support all of them because it's an open keyword.
+You may want to serialize a property to an UUID, or have a specific datetime format for a field (a datetime format that
+is not the same as the one configured with ``date-format`` or ``full-date-format``.
+
+To do so, you need to provide:
+
+ * while generating the client: an associative array for the key ``custom-string-format-mapping``
+ * at runtime: one or more Normalizer (which implement ``Symfony\Component\Serializer\Normalizer\NormalizerInterface``)
+
+
+Example
+~~~~~~~
+
+Configuration file:
+
+.. code-block:: php
+
+    <?php
+
+    return [
+        'json-schema-file' => __DIR__ . '/json-schema.json',
+        'root-class' => 'MyModel',
+        'namespace' => 'Vendor\Library\Generated',
+        'directory' => __DIR__ . '/generated',
+        'custom-string-format-mapping' => [
+            'uuid' => \Symfony\Component\Uid\UuidV4::class
+        ]
+    ];
+
+
+Your OpenAPI schema:
+
+.. code-block:: yaml
+
+    openapi: "3.0.0"
+    info:
+      version: 1.0.0
+      title: Example
+    paths:
+      /some-path:
+        get:
+          summary: Get something
+          operationId: getSomething
+          responses:
+            '200':
+              description: Expected response to a valid request
+              content:
+                application/json:
+                  schema:
+                    $ref: "#/components/schemas/Something"
+    components:
+      schemas:
+        Something:
+          type: object
+          required:
+            - id
+            - uuid
+          properties:
+            id:
+              type: 'integer'
+            uuid:
+              type: 'string'
+              # the following keyword is important
+              format: 'uuid'
+
+
+Usage of the generated client:
+
+.. code-block:: php
+
+    <?php
+
+    $client = \Vendor\Library\Generated\Client::create(
+        $httpClient,
+        [], // additional http client plugins
+        // additional normalizers
+        [
+            new \Symfony\Component\Serializer\Normalizer\UidNormalizer()
+        ]
+    );
