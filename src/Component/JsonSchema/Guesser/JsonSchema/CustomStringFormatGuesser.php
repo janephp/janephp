@@ -14,9 +14,9 @@ use function array_key_exists;
 class CustomStringFormatGuesser implements GuesserInterface, TypeGuesserInterface
 {
     /**
-     * @var array
+     * @var array<string, string> key: format, value: classname of the normalizer
      */
-    private $mapping;
+    protected $mapping;
 
     public function __construct(array $mapping)
     {

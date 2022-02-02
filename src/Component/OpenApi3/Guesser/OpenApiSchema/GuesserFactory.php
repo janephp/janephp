@@ -27,7 +27,7 @@ class GuesserFactory
         $inputDateTimeFormat = isset($options['date-input-format']) ? $options['date-input-format'] : null;
         $datePreferInterface = isset($options['date-prefer-interface']) ? $options['date-prefer-interface'] : null;
 
-        $customStringFormatMapping = isset($options['custom-string-format-mapping']) ? $options['custom-string-format-mapping'] : null;;
+        $customStringFormatMapping = isset($options['custom-string-format-mapping']) ? $options['custom-string-format-mapping'] : [];
 
         $chainGuesser = new ChainGuesser();
         $chainGuesser->addGuesser(new SecurityGuesser());
