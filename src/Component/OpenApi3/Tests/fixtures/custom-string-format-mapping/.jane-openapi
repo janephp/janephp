@@ -1,0 +1,10 @@
+<?php
+
+return [
+    'openapi-file' => 'something.yml',
+    'namespace' => 'Jane\Component\OpenApi3\Tests\Expected',
+    'directory' => __DIR__ . '/generated',
+    'custom-string-format-mapping' => [
+        'uuid' => \Symfony\Component\Uid\UuidV4::class
+    ]
+];
