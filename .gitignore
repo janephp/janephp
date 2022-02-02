@@ -8,7 +8,6 @@ bin/*
 stub
 build
 .token
-generated
 
 tests/client/generated
 tests/generated/*
