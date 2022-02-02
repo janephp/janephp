@@ -9,8 +9,6 @@ use Jane\Component\JsonSchema\Guesser\TypeGuesserInterface;
 use Jane\Component\JsonSchema\JsonSchema\Model\JsonSchema;
 use Jane\Component\JsonSchema\Registry\Registry;
 
-use function array_key_exists;
-
 class CustomStringFormatGuesser implements GuesserInterface, TypeGuesserInterface
 {
     /**
@@ -27,7 +25,7 @@ class CustomStringFormatGuesser implements GuesserInterface, TypeGuesserInterfac
     {
         $class = $this->getSchemaClass();
 
-        return ($object instanceof $class) && 'string' === $object->getType() && array_key_exists(
+        return ($object instanceof $class) && 'string' === $object->getType() && \array_key_exists(
                 $object->getFormat(),
                 $this->mapping
             );

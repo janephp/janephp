@@ -67,7 +67,7 @@ class ConfigLoader implements ConfigLoaderInterface
             'use-cacheable-supports-method' => null,
             'skip-null-values' => true,
             'skip-required-fields' => false,
-            'custom-string-format-mapping' => []
+            'custom-string-format-mapping' => [],
         ];
     }
 }

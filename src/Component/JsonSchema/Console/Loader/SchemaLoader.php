@@ -40,7 +40,7 @@ class SchemaLoader implements SchemaLoaderInterface
             'use-cacheable-supports-method',
             'skip-null-values',
             'skip-required-fields',
-            'custom-string-format-mapping'
+            'custom-string-format-mapping',
         ];
     }
 
