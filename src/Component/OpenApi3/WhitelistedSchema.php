@@ -2,6 +2,7 @@
 
 namespace Jane\Component\OpenApi3;
 
+use Jane\Component\JsonSchemaRuntime\Reference;
 use Jane\Component\OpenApi3\JsonSchema\Model\MediaType;
 use Jane\Component\OpenApi3\JsonSchema\Model\Parameter;
 use Jane\Component\OpenApi3\JsonSchema\Model\RequestBody;
@@ -62,6 +63,9 @@ class WhitelistedSchema implements WhitelistFetchInterface
         $responses = $operationGuess->getOperation()->getResponses();
         if (null !== $responses && \count($responses) > 0) {
             foreach ($responses as $response) {
+                if ($response instanceof Reference) {
+                    [$_, $response] = $this->guessClass->resolve($response, Response::class);
+                }
                 if (!($response instanceof Response)) {
                     continue;
                 }
