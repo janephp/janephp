@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace Jane\Component\JsonSchema\Guesser\Guess;
 
 use Jane\Component\JsonSchema\Generator\Context\Context;

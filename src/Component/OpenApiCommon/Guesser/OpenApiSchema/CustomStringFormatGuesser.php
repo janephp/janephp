@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace Jane\Component\OpenApiCommon\Guesser\OpenApiSchema;
 
 use Jane\Component\JsonSchema\Guesser\JsonSchema\CustomStringFormatGuesser as BaseCustomStringFormatGuesser;

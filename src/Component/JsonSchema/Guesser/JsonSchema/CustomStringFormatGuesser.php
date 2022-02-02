@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace Jane\Component\JsonSchema\Guesser\JsonSchema;
 
 use Jane\Component\JsonSchema\Guesser\Guess\CustomObjectType;
