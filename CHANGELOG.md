@@ -5,7 +5,9 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+## [Unreleased
+
+## [7.1.7] - 2022-02-03
 ### Added
 - [OpenApi3] [GH#586](https://github.com/janephp/janephp/pull/586) Ability to customize strings field normalization/denormalization based on format keyword
 
@@ -569,7 +571,11 @@ See :
  * https://github.com/janephp/jane/releases
  * https://github.com/janephp/openapi/releases
 
-[Unreleased]: https://github.com/janephp/janephp/compare/v7.1.3...HEAD
+[Unreleased]: https://github.com/janephp/janephp/compare/v7.1.7...HEAD
+[7.1.7]: https://github.com/janephp/janephp/compare/v7.1.6...v7.1.7
+[7.1.6]: https://github.com/janephp/janephp/compare/v7.1.5...v7.1.6
+[7.1.5]: https://github.com/janephp/janephp/compare/v7.1.4...v7.1.5
+[7.1.4]: https://github.com/janephp/janephp/compare/v7.1.3...v7.1.4
 [7.1.3]: https://github.com/janephp/janephp/compare/v7.1.2...v7.1.3
 [7.1.2]: https://github.com/janephp/janephp/compare/v7.1.1...v7.1.2
 [7.1.1]: https://github.com/janephp/janephp/compare/v7.1.0...v7.1.1
