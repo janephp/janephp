@@ -31,7 +31,7 @@ final class BuiltinTransformerFactory implements TransformerFactoryInterface, Pr
 
         $propertyType = $sourceTypes[0];
 
-        if (\in_array($propertyType->getBuiltinType(), self::BUILTIN, true)) {
+        if (null !== $targetTypes && \in_array($propertyType->getBuiltinType(), self::BUILTIN, true)) {
             return new BuiltinTransformer($propertyType, $targetTypes);
         }
 
