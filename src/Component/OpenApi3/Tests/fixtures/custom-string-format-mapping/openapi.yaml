@@ -1,0 +1,29 @@
+openapi: "3.0.0"
+info:
+  version: 1.0.0
+  title: Example
+paths:
+  /some-path:
+    get:
+      summary: Get something
+      operationId: getSomething
+      responses:
+        '200':
+          description: Expected response to a valid request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Something"
+components:
+  schemas:
+    Something:
+      type: object
+      required:
+        - id
+        - uuid
+      properties:
+        id:
+          type: integer
+        uuid:
+          type: string
+          format: uuid

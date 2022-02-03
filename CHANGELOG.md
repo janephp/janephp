@@ -6,6 +6,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Added
+- [OpenApi3] [GH#586](https://github.com/janephp/janephp/pull/586) Ability to customize strings field normalization/denormalization based on format keyword
+
 ### Fixed
 - [JsonSchema] [GH#587](https://github.com/janephp/janephp/pull/587) Prefix property starting with number with 'n'
 - [OpenApi] [GH#593](https://github.com/janephp/janephp/pull/593) Add type hints to exceptions, cleanup parent constructor call
