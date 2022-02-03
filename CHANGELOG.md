@@ -7,11 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ### Fixed
-- [JsonSchema] [OpenApi] [GH#587](https://github.com/janephp/janephp/pull/587) Prefix property starting with number with 'n'
+- [JsonSchema] [GH#587](https://github.com/janephp/janephp/pull/587) Prefix property starting with number with 'n'
 - [OpenApi] [GH#593](https://github.com/janephp/janephp/pull/593) Add type hints to exceptions, cleanup parent constructor call
 - [OpenApi3] [GH#592](https://github.com/janephp/janephp/pull/592) Fix issue in whitelisting when having referenced schema in referenced responses
+- [AutoMapper] [GH#594](https://github.com/janephp/janephp/pull/594) Issue when no targetTypes in BuiltinTransformer
 
 ## [7.1.6] - 2022-01-27
+### Fixed
 - [AutoMapper] [GH#589](https://github.com/janephp/janephp/pull/589) Fix setting properties when using target to populate object
 
 ## [7.1.5] - 2021-12-16
