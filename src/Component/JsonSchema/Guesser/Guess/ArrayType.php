@@ -5,6 +5,7 @@ namespace Jane\Component\JsonSchema\Guesser\Guess;
 use Jane\Component\JsonSchema\Generator\Context\Context;
 use PhpParser\Node\Arg;
 use PhpParser\Node\Expr;
+use PhpParser\Node\Name;
 use PhpParser\Node\Stmt;
 
 class ArrayType extends Type
@@ -57,7 +58,37 @@ class ArrayType extends Type
 
         list($subStatements, $outputExpr) = $this->itemType->createDenormalizationStatement($context, $loopValueVar, $normalizerFromObject);
 
-        $loopStatements = array_merge($subStatements, [
+        $preStatements = [];
+        if ($loopKeyVar !== null) {
+            $preStatements = [
+                new Stmt\If_(
+                    new Expr\BinaryOp\Identical(
+                        $loopValueVar,
+                        new Expr\ConstFetch(
+                            new Name('null')
+                        )
+                    ),
+                    [
+                        'stmts' => [
+                            new Stmt\Expression(
+                                new Expr\Assign(
+                                    new Expr\ArrayDimFetch(
+                                        $valuesVar,
+                                        $loopKeyVar
+                                    ),
+                                    new Expr\ConstFetch(
+                                        new Name('null')
+                                    )
+                                )
+                            ),
+                            new Stmt\Continue_(),
+                        ],
+                    ]
+                ),
+            ];
+        }
+
+        $loopStatements = array_merge($preStatements, $subStatements, [
             new Stmt\Expression(new Expr\Assign($this->createLoopOutputAssignement($valuesVar, $loopKeyVar), $outputExpr)),
         ]);
 
