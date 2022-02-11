@@ -143,10 +143,6 @@
                     "type": "string",
                     "format": "ipv6"
                 },
-                "uriFormat": {
-                    "type": "string",
-                    "format": "uri"
-                },
                 "uuidFormat": {
                     "type": "string",
                     "format": "uuid"

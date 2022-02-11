@@ -29,8 +29,6 @@ class ChainValidatorFactory
         $chainValidator->addValidator(new Format\HostnameValidator());
         $chainValidator->addValidator(new Format\IPv4Validator());
         $chainValidator->addValidator(new Format\IPv6Validator());
-        $chainValidator->addValidator(new Format\UriValidator());
-        $chainValidator->addValidator(new Format\IriValidator());
         $chainValidator->addValidator(new Format\UuidValidator());
         // Others
         $chainValidator->addValidator(new Any\TypeValidator());

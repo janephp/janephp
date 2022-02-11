@@ -548,25 +548,6 @@ class ValidationTest extends TestCase
         $this->assertEquals('[ipv6Format]', $caughtException->getViolationList()->get(0)->getPropertyPath());
 
         $data = $normalizer->denormalize([
-            'uriFormat' => 'https://fr.wikipedia.org/wiki/IPv6',
-        ], FormatObject::class);
-        $this->assertInstanceOf(FormatObject::class, $data);
-
-        $caughtException = null;
-        try {
-            $normalizer->denormalize([
-                'uriFormat' => 'wikipedia.org/wiki/IPv6',
-            ], FormatObject::class);
-        } catch (ValidationException $exception) {
-            $caughtException = $exception;
-        }
-
-        $this->assertInstanceOf(ValidationException::class, $caughtException);
-        $this->assertEquals(400, $caughtException->getCode());
-        $this->assertEquals(1, $caughtException->getViolationList()->count());
-        $this->assertEquals('[uriFormat]', $caughtException->getViolationList()->get(0)->getPropertyPath());
-
-        $data = $normalizer->denormalize([
             'uuidFormat' => '8309e3b3-0c6c-4ab8-b450-e7564f6d07fd',
         ], FormatObject::class);
         $this->assertInstanceOf(FormatObject::class, $data);
@@ -746,7 +727,6 @@ class ValidationTest extends TestCase
         $object->setHostnameFormat('google.com');
         $object->setIpv4Format('1.2.3.4');
         $object->setIpv6Format('2001:db8:0:85a3:0:0:ac1f:8001');
-        $object->setUriFormat('https://fr.wikipedia.org/wiki/IPv6');
         $object->setUuidFormat('8309e3b3-0c6c-4ab8-b450-e7564f6d07fd');
 
         $data = $normalizer->normalize($object, 'json');
@@ -755,7 +735,6 @@ class ValidationTest extends TestCase
         $this->assertArrayHasKey('hostnameFormat', $data);
         $this->assertArrayHasKey('ipv4Format', $data);
         $this->assertArrayHasKey('ipv6Format', $data);
-        $this->assertArrayHasKey('uriFormat', $data);
         $this->assertArrayHasKey('uuidFormat', $data);
 
         $caughtException = null;
