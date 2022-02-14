@@ -1,0 +1,26 @@
+{
+    "id": "Test",
+    "type": "object",
+    "properties": {
+        "id": {
+            "oneOf": [
+                {
+                    "type": "null"
+                },
+                {
+                    "$ref": "#/definitions/id"
+                }
+            ]
+        }
+    },
+    "definitions": {
+        "id": {
+            "properties": {
+                "uuid": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        }
+    }
+}

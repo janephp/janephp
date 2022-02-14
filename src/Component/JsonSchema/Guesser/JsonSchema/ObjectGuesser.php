@@ -114,7 +114,23 @@ class ObjectGuesser implements GuesserInterface, PropertiesGuesserInterface, Typ
 
     protected function isPropertyNullable($property): bool
     {
-        return 'null' == $property->getType() || (\is_array($property->getType()) && \in_array('null', $property->getType()));
+        $oneOf = $property->getOneOf();
+        if (!empty($oneOf)) {
+            foreach ($oneOf as $oneOfProperty) {
+                if (!($oneOfProperty instanceof JsonSchema)) {
+                    continue;
+                }
+                if ($this->isPropertyNullable($oneOfProperty)) {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        $type = $property->getType();
+
+        return 'null' == $type || (\is_array($type) && \in_array('null', $type));
     }
 
     /**
