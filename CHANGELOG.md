@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+## [7.2.0] - 2022-02-17
 ### Added
 - [JsonSchema] [GH#405](https://github.com/janephp/janephp/pull/405) Validation
 
@@ -576,7 +578,8 @@ See :
  * https://github.com/janephp/jane/releases
  * https://github.com/janephp/openapi/releases
 
-[Unreleased]: https://github.com/janephp/janephp/compare/v7.1.7...HEAD
+[Unreleased]: https://github.com/janephp/janephp/compare/v7.2.0...HEAD
+[7.2.0]: https://github.com/janephp/janephp/compare/v7.1.7...v7.2.0
 [7.1.7]: https://github.com/janephp/janephp/compare/v7.1.6...v7.1.7
 [7.1.6]: https://github.com/janephp/janephp/compare/v7.1.5...v7.1.6
 [7.1.5]: https://github.com/janephp/janephp/compare/v7.1.4...v7.1.5
