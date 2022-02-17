@@ -41,6 +41,7 @@ class SchemaLoader implements SchemaLoaderInterface
             'skip-null-values',
             'skip-required-fields',
             'custom-string-format-mapping',
+            'validation',
         ];
     }
 

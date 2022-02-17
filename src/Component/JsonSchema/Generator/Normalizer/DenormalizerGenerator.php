@@ -83,6 +83,15 @@ EOD
 
         $statements[] = new Stmt\Expression(new Expr\Assign($objectVariable, new Expr\New_(new Name('\\' . $modelFqdn))));
 
+        if ($this->validation) {
+            $schema = $context->getCurrentSchema();
+            $validatorFqdn = $schema->getNamespace() . '\\Validator\\' . $this->naming->getValidatorName($classGuess->getName());
+
+            $validatorVariable = new Expr\Variable('validator');
+            $statements[] = new Stmt\Expression(new Expr\Assign($validatorVariable, new Expr\New_(new Name('\\' . $validatorFqdn))));
+            $statements[] = new Stmt\Expression(new Expr\MethodCall($validatorVariable, 'validate', [new Arg($dataVariable)]));
+        }
+
         $denormalizeMethodStatements = $this->denormalizeMethodStatements($classGuess, $context);
         if (\count($denormalizeMethodStatements) > 0) {
             array_unshift($statements, ...$denormalizeMethodStatements);

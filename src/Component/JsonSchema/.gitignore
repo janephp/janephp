@@ -4,3 +4,5 @@ composer.lock
 Tests/generated/*
 !Tests/generated/.gitkeep
 Tests/fixtures/*/generated
+Tests/Validation/Generated
+!Tests/Validation/Generated/.gitkeep

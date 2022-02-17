@@ -44,6 +44,7 @@ Lastly, if you want to contribute there is some details about :doc:`/contributin
    API Platform DTO <guides/apip_dto>
    External API Client <guides/external_client>
    Between two Symfony apps <guides/two_symfony_apps>
+   Validation <guides/validation>
 
 .. toctree::
    :hidden:

@@ -4,6 +4,8 @@ namespace Jane\Component\JsonSchema\Guesser\Guess;
 
 class ClassGuess
 {
+    use ValidatorGuessTrait;
+
     /**
      * @var string Name of the class
      */
@@ -18,6 +20,8 @@ class ClassGuess
      * @var Property[]
      */
     private $properties = [];
+
+    private $required = [];
 
     private $reference;
 
@@ -63,6 +67,30 @@ class ClassGuess
         return $this->properties;
     }
 
+    public function getProperty(string $name): ?Property
+    {
+        foreach ($this->properties as $property) {
+            if ($name === $property->getName()) {
+                return $property;
+            }
+        }
+
+        return null;
+    }
+
+    public function isRequired(string $propertyName): bool
+    {
+        return \in_array($propertyName, $this->required);
+    }
+
+    /**
+     * @param string[] $required
+     */
+    public function setRequired(array $required): void
+    {
+        $this->required = $required;
+    }
+
     public function setProperties(array $properties): void
     {
         $this->properties = $properties;
@@ -102,5 +130,32 @@ class ClassGuess
     public function isDeprecated(): bool
     {
         return $this->deprecated;
+    }
+
+    public function hasValidatorGuesses(): bool
+    {
+        if (\count($this->getValidatorGuesses()) > 0) {
+            return true;
+        }
+
+        foreach ($this->properties as $property) {
+            if (\count($property->getValidatorGuesses()) > 0) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public function getPropertyValidatorGuesses(): array
+    {
+        $validatorGuesses = [];
+        foreach ($this->properties as $property) {
+            if (\count($propGuesses = $property->getValidatorGuesses()) > 0) {
+                $validatorGuesses[$property->getName()] = $propGuesses;
+            }
+        }
+
+        return $validatorGuesses;
     }
 }

@@ -51,11 +51,16 @@ class NormalizerGenerator implements GeneratorInterface
     protected $skipRequiedFields;
 
     /**
+     * @var bool if we run validation or not during normalization/denormalization
+     */
+    protected $validation;
+
+    /**
      * @param bool $useReference               Whether to generate the JSON Reference system
      * @param bool $useCacheableSupportsMethod Whether to use the CacheableSupportsMethodInterface interface, for >sf 4.1
      * @param bool $skipNullValues             Skip null values or not
      */
-    public function __construct(Naming $naming, Parser $parser, bool $useReference = true, bool $useCacheableSupportsMethod = null, bool $skipNullValues = true, bool $skipRequiedFields = false)
+    public function __construct(Naming $naming, Parser $parser, bool $useReference = true, bool $useCacheableSupportsMethod = null, bool $skipNullValues = true, bool $skipRequiedFields = false, bool $validation = false)
     {
         $this->naming = $naming;
         $this->parser = $parser;
@@ -63,6 +68,7 @@ class NormalizerGenerator implements GeneratorInterface
         $this->useCacheableSupportsMethod = $this->canUseCacheableSupportsMethod($useCacheableSupportsMethod);
         $this->skipNullValues = $skipNullValues;
         $this->skipRequiedFields = $skipRequiedFields;
+        $this->validation = $validation;
     }
 
     /**

@@ -4,21 +4,31 @@ namespace Jane\Component\JsonSchema\Generator;
 
 use Jane\Component\JsonSchema\Generator\Context\Context;
 use Jane\Component\JsonSchema\Registry\Schema;
+use PhpParser\BuilderFactory;
+use PhpParser\Node;
+use PhpParser\Node\Expr;
 use PhpParser\Node\Name;
+use PhpParser\Node\Scalar;
 use PhpParser\Node\Stmt\Namespace_;
 use PhpParser\Parser;
+use Symfony\Component\Validator\ConstraintViolationListInterface;
 
 class RuntimeGenerator implements GeneratorInterface
 {
     const FILE_TYPE_RUNTIME = 'runtime';
+    const FILE_TYPE_VALIDATOR = 'validator';
+    const VALIDATOR_INTERFACE_NAME = 'ValidatorInterface';
+    const VALIDATOR_EXCEPTION_NAME = 'ValidationException';
 
     private $naming;
     private $parser;
+    private $validator;
 
-    public function __construct(Naming $naming, Parser $parser)
+    public function __construct(Naming $naming, Parser $parser, bool $validator)
     {
         $this->naming = $naming;
         $this->parser = $parser;
+        $this->validator = $validator;
     }
 
     /**
@@ -42,6 +52,69 @@ class RuntimeGenerator implements GeneratorInterface
             $stmts = new Namespace_(new Name($this->naming->getRuntimeNamespace($schema->getNamespace(), $namespace)), $ast);
             $schema->addFile(new File($schema->getDirectory() . '/Runtime/' . $prefixNamespace . $fileBasename, $stmts, self::FILE_TYPE_RUNTIME));
         }
+
+        if ($this->validator) {
+            $this->addValidatorRuntimeFiles($schema);
+        }
+    }
+
+    private function addValidatorRuntimeFiles(Schema $schema): void
+    {
+        $factory = new BuilderFactory();
+        $namespace = $schema->getNamespace() . '\\Validator';
+
+        $node = $factory
+            ->namespace($namespace)
+            ->addStmt($factory
+                ->interface(self::VALIDATOR_INTERFACE_NAME)
+                ->addStmt($factory
+                    ->method('validate')
+                    ->makePublic()
+                    ->addParam($factory->param('data'))
+                    ->setReturnType('void')
+                )
+            )
+            ->getNode();
+
+        $schema->addFile(new File($schema->getDirectory() . '/Validator/' . self::VALIDATOR_INTERFACE_NAME . '.php', $node, self::FILE_TYPE_VALIDATOR));
+
+        $thisVariable = new Expr\Variable('this');
+        $violationListVariable = new Expr\Variable('violationList');
+
+        $node = $factory
+            ->namespace($namespace)
+            ->addStmt($factory->use(ConstraintViolationListInterface::class))
+            ->addStmt($factory
+                ->class(self::VALIDATOR_EXCEPTION_NAME)
+                ->extend('\RuntimeException')
+                ->addStmt($factory
+                    ->property('violationList')
+                    ->makePrivate()
+                    ->setDocComment('/** @var ConstraintViolationListInterface */')
+                )
+                ->addStmt($factory
+                    ->method('__construct')
+                    ->makePublic()
+                    ->addParam($factory->param('violationList')->setType('ConstraintViolationListInterface'))
+                    ->addStmt(new Expr\Assign(new Expr\PropertyFetch($thisVariable, 'violationList'), $violationListVariable))
+                    ->addStmt(new Expr\StaticCall(new Node\Name('parent'), '__construct', [
+                        new Node\Arg(new Expr\FuncCall(new Node\Name('sprintf'), [
+                            new Node\Arg(new Scalar\String_('Model validation failed with %d errors.')),
+                            new Node\Arg(new Expr\MethodCall($violationListVariable, 'count')),
+                        ])),
+                        new Node\Arg(new Expr\ConstFetch(new Node\Name('400'))),
+                    ]))
+                )
+                ->addStmt($factory
+                    ->method('getViolationList')
+                    ->makePublic()
+                    ->setReturnType('ConstraintViolationListInterface')
+                    ->addStmt(new Node\Stmt\Return_(new Expr\PropertyFetch($thisVariable, 'violationList')))
+                )
+            )
+            ->getNode();
+
+        $schema->addFile(new File($schema->getDirectory() . '/Validator/' . self::VALIDATOR_EXCEPTION_NAME . '.php', $node, self::FILE_TYPE_VALIDATOR));
     }
 
     private function collectFiles(): \Generator

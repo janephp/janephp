@@ -8,6 +8,7 @@ use Jane\Component\JsonSchema\Generator\ModelGenerator;
 use Jane\Component\JsonSchema\Generator\Naming;
 use Jane\Component\JsonSchema\Generator\NormalizerGenerator;
 use Jane\Component\JsonSchema\Generator\RuntimeGenerator;
+use Jane\Component\JsonSchema\Generator\ValidatorGenerator;
 use Jane\Component\JsonSchema\Guesser\ChainGuesser;
 use Jane\Component\JsonSchema\Guesser\JsonSchema\JsonSchemaGuesserFactory;
 use Jane\Component\JsonSchema\JsonSchema\Normalizer\JaneObjectNormalizer;
@@ -94,8 +95,11 @@ class Jane extends ChainGenerator
 
         $self = new self($serializer, $chainGuesser, $naming, $options['strict']);
         $self->addGenerator(new ModelGenerator($naming, $parser));
-        $self->addGenerator(new NormalizerGenerator($naming, $parser, $options['reference'], $options['use-cacheable-supports-method'] ?? false, $options['skip-null-values'] ?? true, $options['skip-required-fields'] ?? false));
-        $self->addGenerator(new RuntimeGenerator($naming, $parser));
+        $self->addGenerator(new NormalizerGenerator($naming, $parser, $options['reference'], $options['use-cacheable-supports-method'] ?? false, $options['skip-null-values'] ?? true, $options['skip-required-fields'] ?? false, $options['validation'] ?? false));
+        $self->addGenerator(new RuntimeGenerator($naming, $parser, $options['validation'] ?? false));
+        if ($options['validation'] ?? false) {
+            $self->addGenerator(new ValidatorGenerator($naming));
+        }
 
         return $self;
     }
