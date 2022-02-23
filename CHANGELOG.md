@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Documentation
+- [AutoMapper] [GH#600](https://github.com/janephp/janephp/pull/600) Fixed link to transformer examples
 
 ## [7.2.0] - 2022-02-17
 ### Added
