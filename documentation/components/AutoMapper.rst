@@ -143,7 +143,7 @@ To use a custom TransformerFactory class, you have to do as following::
 With the Symfony bundle, you have to tag your TransformerFactory class with a ``jane_auto_mapper.transformer_factory`` tag.
 This will use automatically the TransformerFactory.
 
-.. _`an example in the AutoMapper tests files`: https://github.com/janephp/janephp/tree/next/src/AutoMapper/Tests/Fixtures/Transformer
+.. _`an example in the AutoMapper tests files`: https://github.com/janephp/janephp/tree/next/src/Component/AutoMapper/Tests/Fixtures/Transformer
 
 Skip null values
 ~~~~~~~~~~~~~~~~
