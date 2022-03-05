@@ -39,6 +39,8 @@ class GenericResourcesItemDiscreteResourceSpecNormalizer implements Denormalizer
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\GenericResourcesItemDiscreteResourceSpec();
+        $validator = new \Docker\Api\Validator\GenericResourcesItemDiscreteResourceSpecValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -62,6 +64,8 @@ class GenericResourcesItemDiscreteResourceSpecNormalizer implements Denormalizer
         if (null !== $object->getValue()) {
             $data['Value'] = $object->getValue();
         }
+        $validator = new \Docker\Api\Validator\GenericResourcesItemDiscreteResourceSpecValidator();
+        $validator->validate($data);
         return $data;
     }
 }

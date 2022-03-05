@@ -39,6 +39,8 @@ class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyOutputImagesItemNormalizer imple
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ReposOwnerRepoCheckRunsCheckRunIdPatchBodyOutputImagesItem();
+        $validator = new \Github\Validator\ReposOwnerRepoCheckRunsCheckRunIdPatchBodyOutputImagesItemValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -64,6 +66,8 @@ class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyOutputImagesItemNormalizer imple
         if (null !== $object->getCaption()) {
             $data['caption'] = $object->getCaption();
         }
+        $validator = new \Github\Validator\ReposOwnerRepoCheckRunsCheckRunIdPatchBodyOutputImagesItemValidator();
+        $validator->validate($data);
         return $data;
     }
 }

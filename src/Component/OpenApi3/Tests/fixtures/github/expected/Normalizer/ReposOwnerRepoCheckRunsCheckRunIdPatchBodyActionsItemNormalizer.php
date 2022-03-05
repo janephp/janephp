@@ -39,6 +39,8 @@ class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyActionsItemNormalizer implements
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ReposOwnerRepoCheckRunsCheckRunIdPatchBodyActionsItem();
+        $validator = new \Github\Validator\ReposOwnerRepoCheckRunsCheckRunIdPatchBodyActionsItemValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -62,6 +64,8 @@ class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyActionsItemNormalizer implements
         $data['label'] = $object->getLabel();
         $data['description'] = $object->getDescription();
         $data['identifier'] = $object->getIdentifier();
+        $validator = new \Github\Validator\ReposOwnerRepoCheckRunsCheckRunIdPatchBodyActionsItemValidator();
+        $validator->validate($data);
         return $data;
     }
 }

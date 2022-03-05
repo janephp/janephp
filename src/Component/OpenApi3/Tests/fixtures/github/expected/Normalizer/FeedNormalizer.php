@@ -39,6 +39,8 @@ class FeedNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\Feed();
+        $validator = new \Github\Validator\FeedValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -106,6 +108,8 @@ class FeedNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             $data['security_advisories_url'] = $object->getSecurityAdvisoriesUrl();
         }
         $data['_links'] = $this->normalizer->normalize($object->getLinks(), 'json', $context);
+        $validator = new \Github\Validator\FeedValidator();
+        $validator->validate($data);
         return $data;
     }
 }

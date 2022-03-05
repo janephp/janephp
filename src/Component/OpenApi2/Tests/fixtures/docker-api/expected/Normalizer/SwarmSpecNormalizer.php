@@ -39,6 +39,8 @@ class SwarmSpecNormalizer implements DenormalizerInterface, NormalizerInterface,
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\SwarmSpec();
+        $validator = new \Docker\Api\Validator\SwarmSpecValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -115,6 +117,8 @@ class SwarmSpecNormalizer implements DenormalizerInterface, NormalizerInterface,
         if (null !== $object->getTaskDefaults()) {
             $data['TaskDefaults'] = $this->normalizer->normalize($object->getTaskDefaults(), 'json', $context);
         }
+        $validator = new \Docker\Api\Validator\SwarmSpecValidator();
+        $validator->validate($data);
         return $data;
     }
 }

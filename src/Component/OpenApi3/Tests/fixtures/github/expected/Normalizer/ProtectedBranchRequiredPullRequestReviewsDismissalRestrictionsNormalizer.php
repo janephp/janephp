@@ -39,6 +39,8 @@ class ProtectedBranchRequiredPullRequestReviewsDismissalRestrictionsNormalizer i
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ProtectedBranchRequiredPullRequestReviewsDismissalRestrictions();
+        $validator = new \Github\Validator\ProtectedBranchRequiredPullRequestReviewsDismissalRestrictionsValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -86,6 +88,8 @@ class ProtectedBranchRequiredPullRequestReviewsDismissalRestrictionsNormalizer i
             $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
         }
         $data['teams'] = $values_1;
+        $validator = new \Github\Validator\ProtectedBranchRequiredPullRequestReviewsDismissalRestrictionsValidator();
+        $validator->validate($data);
         return $data;
     }
 }

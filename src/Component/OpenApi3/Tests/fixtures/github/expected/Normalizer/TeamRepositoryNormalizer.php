@@ -39,6 +39,8 @@ class TeamRepositoryNormalizer implements DenormalizerInterface, NormalizerInter
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\TeamRepository();
+        $validator = new \Github\Validator\TeamRepositoryValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -458,6 +460,8 @@ class TeamRepositoryNormalizer implements DenormalizerInterface, NormalizerInter
         if (null !== $object->getMasterBranch()) {
             $data['master_branch'] = $object->getMasterBranch();
         }
+        $validator = new \Github\Validator\TeamRepositoryValidator();
+        $validator->validate($data);
         return $data;
     }
 }

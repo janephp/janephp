@@ -39,6 +39,8 @@ class IssueEventLabelNormalizer implements DenormalizerInterface, NormalizerInte
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\IssueEventLabel();
+        $validator = new \Github\Validator\IssueEventLabelValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -64,6 +66,8 @@ class IssueEventLabelNormalizer implements DenormalizerInterface, NormalizerInte
         $data = array();
         $data['name'] = $object->getName();
         $data['color'] = $object->getColor();
+        $validator = new \Github\Validator\IssueEventLabelValidator();
+        $validator->validate($data);
         return $data;
     }
 }

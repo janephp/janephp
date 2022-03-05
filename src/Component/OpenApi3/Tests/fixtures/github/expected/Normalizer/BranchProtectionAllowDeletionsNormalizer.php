@@ -39,6 +39,8 @@ class BranchProtectionAllowDeletionsNormalizer implements DenormalizerInterface,
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\BranchProtectionAllowDeletions();
+        $validator = new \Github\Validator\BranchProtectionAllowDeletionsValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -56,6 +58,8 @@ class BranchProtectionAllowDeletionsNormalizer implements DenormalizerInterface,
         if (null !== $object->getEnabled()) {
             $data['enabled'] = $object->getEnabled();
         }
+        $validator = new \Github\Validator\BranchProtectionAllowDeletionsValidator();
+        $validator->validate($data);
         return $data;
     }
 }

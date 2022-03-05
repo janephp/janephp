@@ -39,6 +39,8 @@ class OCIPlatformNormalizer implements DenormalizerInterface, NormalizerInterfac
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\OCIPlatform();
+        $validator = new \Docker\Api\Validator\OCIPlatformValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -88,6 +90,8 @@ class OCIPlatformNormalizer implements DenormalizerInterface, NormalizerInterfac
         if (null !== $object->getVariant()) {
             $data['variant'] = $object->getVariant();
         }
+        $validator = new \Docker\Api\Validator\OCIPlatformValidator();
+        $validator->validate($data);
         return $data;
     }
 }

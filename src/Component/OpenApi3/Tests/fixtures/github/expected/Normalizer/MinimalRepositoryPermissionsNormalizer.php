@@ -39,6 +39,8 @@ class MinimalRepositoryPermissionsNormalizer implements DenormalizerInterface, N
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\MinimalRepositoryPermissions();
+        $validator = new \Github\Validator\MinimalRepositoryPermissionsValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -68,6 +70,8 @@ class MinimalRepositoryPermissionsNormalizer implements DenormalizerInterface, N
         if (null !== $object->getPull()) {
             $data['pull'] = $object->getPull();
         }
+        $validator = new \Github\Validator\MinimalRepositoryPermissionsValidator();
+        $validator->validate($data);
         return $data;
     }
 }

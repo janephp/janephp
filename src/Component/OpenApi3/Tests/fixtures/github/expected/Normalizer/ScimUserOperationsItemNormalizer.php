@@ -39,6 +39,8 @@ class ScimUserOperationsItemNormalizer implements DenormalizerInterface, Normali
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ScimUserOperationsItem();
+        $validator = new \Github\Validator\ScimUserOperationsItemValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -66,6 +68,8 @@ class ScimUserOperationsItemNormalizer implements DenormalizerInterface, Normali
         if (null !== $object->getValue()) {
             $data['value'] = $object->getValue();
         }
+        $validator = new \Github\Validator\ScimUserOperationsItemValidator();
+        $validator->validate($data);
         return $data;
     }
 }

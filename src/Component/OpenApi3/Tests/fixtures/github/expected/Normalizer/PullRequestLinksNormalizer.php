@@ -39,6 +39,8 @@ class PullRequestLinksNormalizer implements DenormalizerInterface, NormalizerInt
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\PullRequestLinks();
+        $validator = new \Github\Validator\PullRequestLinksValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -82,6 +84,8 @@ class PullRequestLinksNormalizer implements DenormalizerInterface, NormalizerInt
         $data['review_comments'] = $this->normalizer->normalize($object->getReviewComments(), 'json', $context);
         $data['review_comment'] = $this->normalizer->normalize($object->getReviewComment(), 'json', $context);
         $data['self'] = $this->normalizer->normalize($object->getSelf(), 'json', $context);
+        $validator = new \Github\Validator\PullRequestLinksValidator();
+        $validator->validate($data);
         return $data;
     }
 }

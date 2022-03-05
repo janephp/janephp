@@ -39,6 +39,8 @@ class InstallationTokenNormalizer implements DenormalizerInterface, NormalizerIn
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\InstallationToken();
+        $validator = new \Github\Validator\InstallationTokenValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -94,6 +96,8 @@ class InstallationTokenNormalizer implements DenormalizerInterface, NormalizerIn
         if (null !== $object->getSingleFile()) {
             $data['single_file'] = $object->getSingleFile();
         }
+        $validator = new \Github\Validator\InstallationTokenValidator();
+        $validator->validate($data);
         return $data;
     }
 }

@@ -39,6 +39,8 @@ class ReposOwnerRepoPullsCommentsCommentIdPatchBodyNormalizer implements Denorma
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ReposOwnerRepoPullsCommentsCommentIdPatchBody();
+        $validator = new \Github\Validator\ReposOwnerRepoPullsCommentsCommentIdPatchBodyValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -54,6 +56,8 @@ class ReposOwnerRepoPullsCommentsCommentIdPatchBodyNormalizer implements Denorma
     {
         $data = array();
         $data['body'] = $object->getBody();
+        $validator = new \Github\Validator\ReposOwnerRepoPullsCommentsCommentIdPatchBodyValidator();
+        $validator->validate($data);
         return $data;
     }
 }

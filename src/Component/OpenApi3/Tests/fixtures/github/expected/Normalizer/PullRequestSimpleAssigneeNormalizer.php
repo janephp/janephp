@@ -39,6 +39,8 @@ class PullRequestSimpleAssigneeNormalizer implements DenormalizerInterface, Norm
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\PullRequestSimpleAssignee();
+        $validator = new \Github\Validator\PullRequestSimpleAssigneeValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -131,6 +133,8 @@ class PullRequestSimpleAssigneeNormalizer implements DenormalizerInterface, Norm
         if (null !== $object->getStarredAt()) {
             $data['starred_at'] = $object->getStarredAt();
         }
+        $validator = new \Github\Validator\PullRequestSimpleAssigneeValidator();
+        $validator->validate($data);
         return $data;
     }
 }

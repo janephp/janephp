@@ -39,6 +39,8 @@ class ShortBranchNormalizer implements DenormalizerInterface, NormalizerInterfac
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ShortBranch();
+        $validator = new \Github\Validator\ShortBranchValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -74,6 +76,8 @@ class ShortBranchNormalizer implements DenormalizerInterface, NormalizerInterfac
         if (null !== $object->getProtectionUrl()) {
             $data['protection_url'] = $object->getProtectionUrl();
         }
+        $validator = new \Github\Validator\ShortBranchValidator();
+        $validator->validate($data);
         return $data;
     }
 }

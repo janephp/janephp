@@ -39,6 +39,8 @@ class ValidationErrorErrorsItemNormalizer implements DenormalizerInterface, Norm
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ValidationErrorErrorsItem();
+        $validator = new \Github\Validator\ValidationErrorErrorsItemValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -84,6 +86,8 @@ class ValidationErrorErrorsItemNormalizer implements DenormalizerInterface, Norm
         if (null !== $object->getValue()) {
             $data['value'] = $object->getValue();
         }
+        $validator = new \Github\Validator\ValidationErrorErrorsItemValidator();
+        $validator->validate($data);
         return $data;
     }
 }

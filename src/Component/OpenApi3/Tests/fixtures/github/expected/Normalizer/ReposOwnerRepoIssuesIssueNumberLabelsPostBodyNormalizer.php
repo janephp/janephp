@@ -39,6 +39,8 @@ class ReposOwnerRepoIssuesIssueNumberLabelsPostBodyNormalizer implements Denorma
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ReposOwnerRepoIssuesIssueNumberLabelsPostBody();
+        $validator = new \Github\Validator\ReposOwnerRepoIssuesIssueNumberLabelsPostBodyValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -62,6 +64,8 @@ class ReposOwnerRepoIssuesIssueNumberLabelsPostBodyNormalizer implements Denorma
             $values[] = $value;
         }
         $data['labels'] = $values;
+        $validator = new \Github\Validator\ReposOwnerRepoIssuesIssueNumberLabelsPostBodyValidator();
+        $validator->validate($data);
         return $data;
     }
 }

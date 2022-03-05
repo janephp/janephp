@@ -39,6 +39,8 @@ class ReposOwnerRepoActionsRunsGetResponse200Normalizer implements DenormalizerI
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ReposOwnerRepoActionsRunsGetResponse200();
+        $validator = new \Github\Validator\ReposOwnerRepoActionsRunsGetResponse200Validator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -70,6 +72,8 @@ class ReposOwnerRepoActionsRunsGetResponse200Normalizer implements DenormalizerI
             }
             $data['workflow_runs'] = $values;
         }
+        $validator = new \Github\Validator\ReposOwnerRepoActionsRunsGetResponse200Validator();
+        $validator->validate($data);
         return $data;
     }
 }

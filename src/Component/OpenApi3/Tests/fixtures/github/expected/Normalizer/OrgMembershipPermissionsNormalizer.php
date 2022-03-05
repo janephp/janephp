@@ -39,6 +39,8 @@ class OrgMembershipPermissionsNormalizer implements DenormalizerInterface, Norma
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\OrgMembershipPermissions();
+        $validator = new \Github\Validator\OrgMembershipPermissionsValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -54,6 +56,8 @@ class OrgMembershipPermissionsNormalizer implements DenormalizerInterface, Norma
     {
         $data = array();
         $data['can_create_repository'] = $object->getCanCreateRepository();
+        $validator = new \Github\Validator\OrgMembershipPermissionsValidator();
+        $validator->validate($data);
         return $data;
     }
 }

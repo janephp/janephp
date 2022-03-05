@@ -39,6 +39,8 @@ class ReposOwnerRepoBranchesBranchProtectionPutBodyNormalizer implements Denorma
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ReposOwnerRepoBranchesBranchProtectionPutBody();
+        $validator = new \Github\Validator\ReposOwnerRepoBranchesBranchProtectionPutBodyValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -99,6 +101,8 @@ class ReposOwnerRepoBranchesBranchProtectionPutBodyNormalizer implements Denorma
         if (null !== $object->getAllowDeletions()) {
             $data['allow_deletions'] = $object->getAllowDeletions();
         }
+        $validator = new \Github\Validator\ReposOwnerRepoBranchesBranchProtectionPutBodyValidator();
+        $validator->validate($data);
         return $data;
     }
 }

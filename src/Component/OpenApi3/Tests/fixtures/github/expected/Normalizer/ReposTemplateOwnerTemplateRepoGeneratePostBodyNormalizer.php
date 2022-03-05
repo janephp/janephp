@@ -39,6 +39,8 @@ class ReposTemplateOwnerTemplateRepoGeneratePostBodyNormalizer implements Denorm
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ReposTemplateOwnerTemplateRepoGeneratePostBody();
+        $validator = new \Github\Validator\ReposTemplateOwnerTemplateRepoGeneratePostBodyValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -72,6 +74,8 @@ class ReposTemplateOwnerTemplateRepoGeneratePostBodyNormalizer implements Denorm
         if (null !== $object->getPrivate()) {
             $data['private'] = $object->getPrivate();
         }
+        $validator = new \Github\Validator\ReposTemplateOwnerTemplateRepoGeneratePostBodyValidator();
+        $validator->validate($data);
         return $data;
     }
 }

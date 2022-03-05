@@ -39,6 +39,8 @@ class RepositoryCollaboratorPermissionUserNormalizer implements DenormalizerInte
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\RepositoryCollaboratorPermissionUser();
+        $validator = new \Github\Validator\RepositoryCollaboratorPermissionUserValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -131,6 +133,8 @@ class RepositoryCollaboratorPermissionUserNormalizer implements DenormalizerInte
         if (null !== $object->getStarredAt()) {
             $data['starred_at'] = $object->getStarredAt();
         }
+        $validator = new \Github\Validator\RepositoryCollaboratorPermissionUserValidator();
+        $validator->validate($data);
         return $data;
     }
 }

@@ -39,6 +39,8 @@ class ReposOwnerRepoCommitsRefCheckRunsGetResponse200Normalizer implements Denor
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ReposOwnerRepoCommitsRefCheckRunsGetResponse200();
+        $validator = new \Github\Validator\ReposOwnerRepoCommitsRefCheckRunsGetResponse200Validator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -70,6 +72,8 @@ class ReposOwnerRepoCommitsRefCheckRunsGetResponse200Normalizer implements Denor
             }
             $data['check_runs'] = $values;
         }
+        $validator = new \Github\Validator\ReposOwnerRepoCommitsRefCheckRunsGetResponse200Validator();
+        $validator->validate($data);
         return $data;
     }
 }

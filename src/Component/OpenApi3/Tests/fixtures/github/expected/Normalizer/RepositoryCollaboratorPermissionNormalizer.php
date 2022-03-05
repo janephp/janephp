@@ -39,6 +39,8 @@ class RepositoryCollaboratorPermissionNormalizer implements DenormalizerInterfac
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\RepositoryCollaboratorPermission();
+        $validator = new \Github\Validator\RepositoryCollaboratorPermissionValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -61,6 +63,8 @@ class RepositoryCollaboratorPermissionNormalizer implements DenormalizerInterfac
         $data = array();
         $data['permission'] = $object->getPermission();
         $data['user'] = $this->normalizer->normalize($object->getUser(), 'json', $context);
+        $validator = new \Github\Validator\RepositoryCollaboratorPermissionValidator();
+        $validator->validate($data);
         return $data;
     }
 }

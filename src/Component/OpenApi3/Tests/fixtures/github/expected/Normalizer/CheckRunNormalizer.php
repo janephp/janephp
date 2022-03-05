@@ -39,6 +39,8 @@ class CheckRunNormalizer implements DenormalizerInterface, NormalizerInterface, 
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\CheckRun();
+        $validator = new \Github\Validator\CheckRunValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -138,6 +140,8 @@ class CheckRunNormalizer implements DenormalizerInterface, NormalizerInterface, 
         $data['check_suite'] = $this->normalizer->normalize($object->getCheckSuite(), 'json', $context);
         $data['app'] = $this->normalizer->normalize($object->getApp(), 'json', $context);
         $data['pull_requests'] = $object->getPullRequests();
+        $validator = new \Github\Validator\CheckRunValidator();
+        $validator->validate($data);
         return $data;
     }
 }

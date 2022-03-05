@@ -39,6 +39,8 @@ class IssueEventForIssueNormalizer implements DenormalizerInterface, NormalizerI
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\IssueEventForIssue();
+        $validator = new \Github\Validator\IssueEventForIssueValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -185,6 +187,8 @@ class IssueEventForIssueNormalizer implements DenormalizerInterface, NormalizerI
         if (null !== $object->getBodyText()) {
             $data['body_text'] = $object->getBodyText();
         }
+        $validator = new \Github\Validator\IssueEventForIssueValidator();
+        $validator->validate($data);
         return $data;
     }
 }

@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ### Fixed
 - [JsonSchema] [GH#602](https://github.com/janephp/janephp/pull/602) Add defensive code to avoid null object usage
+- [JsonSchema] [GH#603](https://github.com/janephp/janephp/pull/603) Add Validation compatibility for OpenApi components
 
 ### Documentation
 - [AutoMapper] [GH#600](https://github.com/janephp/janephp/pull/600) Fixed link to transformer examples

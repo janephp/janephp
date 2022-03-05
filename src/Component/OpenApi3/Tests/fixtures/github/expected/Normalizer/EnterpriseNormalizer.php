@@ -39,6 +39,8 @@ class EnterpriseNormalizer implements DenormalizerInterface, NormalizerInterface
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\Enterprise();
+        $validator = new \Github\Validator\EnterpriseValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -106,6 +108,8 @@ class EnterpriseNormalizer implements DenormalizerInterface, NormalizerInterface
         $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
         $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
         $data['avatar_url'] = $object->getAvatarUrl();
+        $validator = new \Github\Validator\EnterpriseValidator();
+        $validator->validate($data);
         return $data;
     }
 }

@@ -39,6 +39,8 @@ class ReposOwnerRepoPagesPostBodyNormalizer implements DenormalizerInterface, No
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ReposOwnerRepoPagesPostBody();
+        $validator = new \Github\Validator\ReposOwnerRepoPagesPostBodyValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -56,6 +58,8 @@ class ReposOwnerRepoPagesPostBodyNormalizer implements DenormalizerInterface, No
         if (null !== $object->getSource()) {
             $data['source'] = $this->normalizer->normalize($object->getSource(), 'json', $context);
         }
+        $validator = new \Github\Validator\ReposOwnerRepoPagesPostBodyValidator();
+        $validator->validate($data);
         return $data;
     }
 }

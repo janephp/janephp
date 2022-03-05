@@ -39,6 +39,8 @@ class WorkflowUsageBillableNormalizer implements DenormalizerInterface, Normaliz
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\WorkflowUsageBillable();
+        $validator = new \Github\Validator\WorkflowUsageBillableValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -68,6 +70,8 @@ class WorkflowUsageBillableNormalizer implements DenormalizerInterface, Normaliz
         if (null !== $object->getWINDOWS()) {
             $data['WINDOWS'] = $this->normalizer->normalize($object->getWINDOWS(), 'json', $context);
         }
+        $validator = new \Github\Validator\WorkflowUsageBillableValidator();
+        $validator->validate($data);
         return $data;
     }
 }

@@ -39,6 +39,8 @@ class PublicUserNormalizer implements DenormalizerInterface, NormalizerInterface
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\PublicUser();
+        $validator = new \Github\Validator\PublicUserValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -252,6 +254,8 @@ class PublicUserNormalizer implements DenormalizerInterface, NormalizerInterface
         if (null !== $object->getCollaborators()) {
             $data['collaborators'] = $object->getCollaborators();
         }
+        $validator = new \Github\Validator\PublicUserValidator();
+        $validator->validate($data);
         return $data;
     }
 }

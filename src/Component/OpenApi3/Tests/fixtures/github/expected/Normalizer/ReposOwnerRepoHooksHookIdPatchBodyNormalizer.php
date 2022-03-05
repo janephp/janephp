@@ -39,6 +39,8 @@ class ReposOwnerRepoHooksHookIdPatchBodyNormalizer implements DenormalizerInterf
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ReposOwnerRepoHooksHookIdPatchBody();
+        $validator = new \Github\Validator\ReposOwnerRepoHooksHookIdPatchBodyValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -104,6 +106,8 @@ class ReposOwnerRepoHooksHookIdPatchBodyNormalizer implements DenormalizerInterf
         if (null !== $object->getActive()) {
             $data['active'] = $object->getActive();
         }
+        $validator = new \Github\Validator\ReposOwnerRepoHooksHookIdPatchBodyValidator();
+        $validator->validate($data);
         return $data;
     }
 }

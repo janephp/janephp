@@ -39,6 +39,8 @@ class ScimV2OrganizationsOrgUsersPostBodyEmailsItemNormalizer implements Denorma
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ScimV2OrganizationsOrgUsersPostBodyEmailsItem();
+        $validator = new \Github\Validator\ScimV2OrganizationsOrgUsersPostBodyEmailsItemValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -66,6 +68,8 @@ class ScimV2OrganizationsOrgUsersPostBodyEmailsItemNormalizer implements Denorma
         if (null !== $object->getType()) {
             $data['type'] = $object->getType();
         }
+        $validator = new \Github\Validator\ScimV2OrganizationsOrgUsersPostBodyEmailsItemValidator();
+        $validator->validate($data);
         return $data;
     }
 }

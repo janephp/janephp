@@ -39,6 +39,8 @@ class IssueEventProjectCardNormalizer implements DenormalizerInterface, Normaliz
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\IssueEventProjectCard();
+        $validator = new \Github\Validator\IssueEventProjectCardValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -76,6 +78,8 @@ class IssueEventProjectCardNormalizer implements DenormalizerInterface, Normaliz
         if (null !== $object->getPreviousColumnName()) {
             $data['previous_column_name'] = $object->getPreviousColumnName();
         }
+        $validator = new \Github\Validator\IssueEventProjectCardValidator();
+        $validator->validate($data);
         return $data;
     }
 }

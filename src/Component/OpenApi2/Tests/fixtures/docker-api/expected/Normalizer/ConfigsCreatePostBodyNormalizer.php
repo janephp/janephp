@@ -39,6 +39,8 @@ class ConfigsCreatePostBodyNormalizer implements DenormalizerInterface, Normaliz
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\ConfigsCreatePostBody();
+        $validator = new \Docker\Api\Validator\ConfigsCreatePostBodyValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -82,6 +84,8 @@ class ConfigsCreatePostBodyNormalizer implements DenormalizerInterface, Normaliz
         if (null !== $object->getTemplating()) {
             $data['Templating'] = $this->normalizer->normalize($object->getTemplating(), 'json', $context);
         }
+        $validator = new \Docker\Api\Validator\ConfigsCreatePostBodyValidator();
+        $validator->validate($data);
         return $data;
     }
 }

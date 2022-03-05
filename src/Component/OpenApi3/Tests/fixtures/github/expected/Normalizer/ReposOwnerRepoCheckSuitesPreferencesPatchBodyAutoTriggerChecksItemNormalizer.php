@@ -39,6 +39,8 @@ class ReposOwnerRepoCheckSuitesPreferencesPatchBodyAutoTriggerChecksItemNormaliz
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ReposOwnerRepoCheckSuitesPreferencesPatchBodyAutoTriggerChecksItem();
+        $validator = new \Github\Validator\ReposOwnerRepoCheckSuitesPreferencesPatchBodyAutoTriggerChecksItemValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -58,6 +60,8 @@ class ReposOwnerRepoCheckSuitesPreferencesPatchBodyAutoTriggerChecksItemNormaliz
         $data = array();
         $data['app_id'] = $object->getAppId();
         $data['setting'] = $object->getSetting();
+        $validator = new \Github\Validator\ReposOwnerRepoCheckSuitesPreferencesPatchBodyAutoTriggerChecksItemValidator();
+        $validator->validate($data);
         return $data;
     }
 }

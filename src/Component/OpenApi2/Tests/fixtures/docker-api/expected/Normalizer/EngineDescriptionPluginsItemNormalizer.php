@@ -39,6 +39,8 @@ class EngineDescriptionPluginsItemNormalizer implements DenormalizerInterface, N
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\EngineDescriptionPluginsItem();
+        $validator = new \Docker\Api\Validator\EngineDescriptionPluginsItemValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -62,6 +64,8 @@ class EngineDescriptionPluginsItemNormalizer implements DenormalizerInterface, N
         if (null !== $object->getName()) {
             $data['Name'] = $object->getName();
         }
+        $validator = new \Docker\Api\Validator\EngineDescriptionPluginsItemValidator();
+        $validator->validate($data);
         return $data;
     }
 }

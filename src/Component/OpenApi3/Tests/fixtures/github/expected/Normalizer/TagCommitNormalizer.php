@@ -39,6 +39,8 @@ class TagCommitNormalizer implements DenormalizerInterface, NormalizerInterface,
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\TagCommit();
+        $validator = new \Github\Validator\TagCommitValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -58,6 +60,8 @@ class TagCommitNormalizer implements DenormalizerInterface, NormalizerInterface,
         $data = array();
         $data['sha'] = $object->getSha();
         $data['url'] = $object->getUrl();
+        $validator = new \Github\Validator\TagCommitValidator();
+        $validator->validate($data);
         return $data;
     }
 }

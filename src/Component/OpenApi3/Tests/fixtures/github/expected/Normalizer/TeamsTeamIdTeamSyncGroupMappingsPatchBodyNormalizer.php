@@ -39,6 +39,8 @@ class TeamsTeamIdTeamSyncGroupMappingsPatchBodyNormalizer implements Denormalize
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\TeamsTeamIdTeamSyncGroupMappingsPatchBody();
+        $validator = new \Github\Validator\TeamsTeamIdTeamSyncGroupMappingsPatchBodyValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -68,6 +70,8 @@ class TeamsTeamIdTeamSyncGroupMappingsPatchBodyNormalizer implements Denormalize
         if (null !== $object->getSyncedAt()) {
             $data['synced_at'] = $object->getSyncedAt();
         }
+        $validator = new \Github\Validator\TeamsTeamIdTeamSyncGroupMappingsPatchBodyValidator();
+        $validator->validate($data);
         return $data;
     }
 }

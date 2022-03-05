@@ -39,6 +39,8 @@ class RepositoryInvitationNormalizer implements DenormalizerInterface, Normalize
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\RepositoryInvitation();
+        $validator = new \Github\Validator\RepositoryInvitationValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -92,6 +94,8 @@ class RepositoryInvitationNormalizer implements DenormalizerInterface, Normalize
         $data['url'] = $object->getUrl();
         $data['html_url'] = $object->getHtmlUrl();
         $data['node_id'] = $object->getNodeId();
+        $validator = new \Github\Validator\RepositoryInvitationValidator();
+        $validator->validate($data);
         return $data;
     }
 }

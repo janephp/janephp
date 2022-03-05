@@ -39,6 +39,8 @@ class IssueSimpleMilestoneNormalizer implements DenormalizerInterface, Normalize
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\IssueSimpleMilestone();
+        $validator = new \Github\Validator\IssueSimpleMilestoneValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -126,6 +128,8 @@ class IssueSimpleMilestoneNormalizer implements DenormalizerInterface, Normalize
         $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
         $data['closed_at'] = $object->getClosedAt()->format('Y-m-d\\TH:i:sP');
         $data['due_on'] = $object->getDueOn()->format('Y-m-d\\TH:i:sP');
+        $validator = new \Github\Validator\IssueSimpleMilestoneValidator();
+        $validator->validate($data);
         return $data;
     }
 }

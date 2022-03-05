@@ -39,6 +39,8 @@ class LicenseContentNormalizer implements DenormalizerInterface, NormalizerInter
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\LicenseContent();
+        $validator = new \Github\Validator\LicenseContentValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -114,6 +116,8 @@ class LicenseContentNormalizer implements DenormalizerInterface, NormalizerInter
         $data['encoding'] = $object->getEncoding();
         $data['_links'] = $this->normalizer->normalize($object->getLinks(), 'json', $context);
         $data['license'] = $this->normalizer->normalize($object->getLicense(), 'json', $context);
+        $validator = new \Github\Validator\LicenseContentValidator();
+        $validator->validate($data);
         return $data;
     }
 }

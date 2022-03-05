@@ -39,6 +39,8 @@ class PublicUserPlanNormalizer implements DenormalizerInterface, NormalizerInter
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\PublicUserPlan();
+        $validator = new \Github\Validator\PublicUserPlanValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -66,6 +68,8 @@ class PublicUserPlanNormalizer implements DenormalizerInterface, NormalizerInter
         $data['name'] = $object->getName();
         $data['space'] = $object->getSpace();
         $data['private_repos'] = $object->getPrivateRepos();
+        $validator = new \Github\Validator\PublicUserPlanValidator();
+        $validator->validate($data);
         return $data;
     }
 }

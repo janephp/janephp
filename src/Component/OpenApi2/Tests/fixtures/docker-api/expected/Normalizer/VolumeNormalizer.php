@@ -39,6 +39,8 @@ class VolumeNormalizer implements DenormalizerInterface, NormalizerInterface, De
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\Volume();
+        $validator = new \Docker\Api\Validator\VolumeValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -119,6 +121,8 @@ class VolumeNormalizer implements DenormalizerInterface, NormalizerInterface, De
         if (null !== $object->getUsageData()) {
             $data['UsageData'] = $this->normalizer->normalize($object->getUsageData(), 'json', $context);
         }
+        $validator = new \Docker\Api\Validator\VolumeValidator();
+        $validator->validate($data);
         return $data;
     }
 }

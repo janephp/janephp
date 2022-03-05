@@ -39,6 +39,8 @@ class DeviceMappingNormalizer implements DenormalizerInterface, NormalizerInterf
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\DeviceMapping();
+        $validator = new \Docker\Api\Validator\DeviceMappingValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -68,6 +70,8 @@ class DeviceMappingNormalizer implements DenormalizerInterface, NormalizerInterf
         if (null !== $object->getCgroupPermissions()) {
             $data['CgroupPermissions'] = $object->getCgroupPermissions();
         }
+        $validator = new \Docker\Api\Validator\DeviceMappingValidator();
+        $validator->validate($data);
         return $data;
     }
 }

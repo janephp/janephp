@@ -39,6 +39,8 @@ class ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBodyNormalizer implements
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBody();
+        $validator = new \Github\Validator\ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBodyValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -90,6 +92,8 @@ class ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBodyNormalizer implements
         if (null !== $object->getAutoInactive()) {
             $data['auto_inactive'] = $object->getAutoInactive();
         }
+        $validator = new \Github\Validator\ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBodyValidator();
+        $validator->validate($data);
         return $data;
     }
 }

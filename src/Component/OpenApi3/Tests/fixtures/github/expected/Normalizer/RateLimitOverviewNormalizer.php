@@ -39,6 +39,8 @@ class RateLimitOverviewNormalizer implements DenormalizerInterface, NormalizerIn
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\RateLimitOverview();
+        $validator = new \Github\Validator\RateLimitOverviewValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -58,6 +60,8 @@ class RateLimitOverviewNormalizer implements DenormalizerInterface, NormalizerIn
         $data = array();
         $data['resources'] = $this->normalizer->normalize($object->getResources(), 'json', $context);
         $data['rate'] = $this->normalizer->normalize($object->getRate(), 'json', $context);
+        $validator = new \Github\Validator\RateLimitOverviewValidator();
+        $validator->validate($data);
         return $data;
     }
 }

@@ -39,6 +39,8 @@ class ServiceSpecModeReplicatedJobNormalizer implements DenormalizerInterface, N
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\ServiceSpecModeReplicatedJob();
+        $validator = new \Docker\Api\Validator\ServiceSpecModeReplicatedJobValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -62,6 +64,8 @@ class ServiceSpecModeReplicatedJobNormalizer implements DenormalizerInterface, N
         if (null !== $object->getTotalCompletions()) {
             $data['TotalCompletions'] = $object->getTotalCompletions();
         }
+        $validator = new \Docker\Api\Validator\ServiceSpecModeReplicatedJobValidator();
+        $validator->validate($data);
         return $data;
     }
 }

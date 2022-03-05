@@ -39,6 +39,8 @@ class ProtectedBranchPullRequestReviewNormalizer implements DenormalizerInterfac
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ProtectedBranchPullRequestReview();
+        $validator = new \Github\Validator\ProtectedBranchPullRequestReviewValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -76,6 +78,8 @@ class ProtectedBranchPullRequestReviewNormalizer implements DenormalizerInterfac
         if (null !== $object->getRequiredApprovingReviewCount()) {
             $data['required_approving_review_count'] = $object->getRequiredApprovingReviewCount();
         }
+        $validator = new \Github\Validator\ProtectedBranchPullRequestReviewValidator();
+        $validator->validate($data);
         return $data;
     }
 }

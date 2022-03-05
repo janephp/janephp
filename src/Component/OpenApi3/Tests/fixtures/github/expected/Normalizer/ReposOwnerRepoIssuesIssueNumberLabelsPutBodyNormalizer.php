@@ -39,6 +39,8 @@ class ReposOwnerRepoIssuesIssueNumberLabelsPutBodyNormalizer implements Denormal
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ReposOwnerRepoIssuesIssueNumberLabelsPutBody();
+        $validator = new \Github\Validator\ReposOwnerRepoIssuesIssueNumberLabelsPutBodyValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -64,6 +66,8 @@ class ReposOwnerRepoIssuesIssueNumberLabelsPutBodyNormalizer implements Denormal
             }
             $data['labels'] = $values;
         }
+        $validator = new \Github\Validator\ReposOwnerRepoIssuesIssueNumberLabelsPutBodyValidator();
+        $validator->validate($data);
         return $data;
     }
 }

@@ -39,6 +39,8 @@ class ErrorResponseNormalizer implements DenormalizerInterface, NormalizerInterf
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\ErrorResponse();
+        $validator = new \Docker\Api\Validator\ErrorResponseValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -54,6 +56,8 @@ class ErrorResponseNormalizer implements DenormalizerInterface, NormalizerInterf
     {
         $data = array();
         $data['message'] = $object->getMessage();
+        $validator = new \Docker\Api\Validator\ErrorResponseValidator();
+        $validator->validate($data);
         return $data;
     }
 }

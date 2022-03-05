@@ -39,6 +39,8 @@ class BasicErrorNormalizer implements DenormalizerInterface, NormalizerInterface
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\BasicError();
+        $validator = new \Github\Validator\BasicErrorValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -62,6 +64,8 @@ class BasicErrorNormalizer implements DenormalizerInterface, NormalizerInterface
         if (null !== $object->getDocumentationUrl()) {
             $data['documentation_url'] = $object->getDocumentationUrl();
         }
+        $validator = new \Github\Validator\BasicErrorValidator();
+        $validator->validate($data);
         return $data;
     }
 }

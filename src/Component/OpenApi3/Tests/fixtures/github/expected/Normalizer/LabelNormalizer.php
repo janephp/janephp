@@ -39,6 +39,8 @@ class LabelNormalizer implements DenormalizerInterface, NormalizerInterface, Den
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\Label();
+        $validator = new \Github\Validator\LabelValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -83,6 +85,8 @@ class LabelNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         }
         $data['color'] = $object->getColor();
         $data['default'] = $object->getDefault();
+        $validator = new \Github\Validator\LabelValidator();
+        $validator->validate($data);
         return $data;
     }
 }

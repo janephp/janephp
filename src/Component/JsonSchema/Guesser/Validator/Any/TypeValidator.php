@@ -4,6 +4,7 @@ namespace Jane\Component\JsonSchema\Guesser\Validator\Any;
 
 use Jane\Component\JsonSchema\Guesser\Guess\ClassGuess;
 use Jane\Component\JsonSchema\Guesser\Guess\Property;
+use Jane\Component\JsonSchema\Guesser\Validator\ObjectCheckTrait;
 use Jane\Component\JsonSchema\Guesser\Validator\ValidatorGuess;
 use Jane\Component\JsonSchema\Guesser\Validator\ValidatorInterface;
 use Jane\Component\JsonSchema\JsonSchema\Model\JsonSchema;
@@ -11,6 +12,8 @@ use Symfony\Component\Validator\Constraints\Type;
 
 class TypeValidator implements ValidatorInterface
 {
+    use ObjectCheckTrait;
+
     private const TYPES_MAPPING = [
         'boolean' => 'bool',
         'number' => 'float',
@@ -18,7 +21,7 @@ class TypeValidator implements ValidatorInterface
 
     public function supports($object): bool
     {
-        return $object instanceof JsonSchema && $object->getType() !== null && (\is_string($object->getType()) || (\is_array($object->getType() && null !== $object->getType()[0])));
+        return $this->checkObject($object) && $object->getType() !== null && (\is_string($object->getType()) || (\is_array($object->getType() && null !== $object->getType()[0])));
     }
 
     /**

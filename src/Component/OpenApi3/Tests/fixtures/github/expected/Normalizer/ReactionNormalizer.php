@@ -39,6 +39,8 @@ class ReactionNormalizer implements DenormalizerInterface, NormalizerInterface, 
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\Reaction();
+        $validator = new \Github\Validator\ReactionValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -73,6 +75,8 @@ class ReactionNormalizer implements DenormalizerInterface, NormalizerInterface, 
         $data['user'] = $this->normalizer->normalize($object->getUser(), 'json', $context);
         $data['content'] = $object->getContent();
         $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
+        $validator = new \Github\Validator\ReactionValidator();
+        $validator->validate($data);
         return $data;
     }
 }

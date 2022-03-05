@@ -39,6 +39,8 @@ class DeployKeyNormalizer implements DenormalizerInterface, NormalizerInterface,
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\DeployKey();
+        $validator = new \Github\Validator\DeployKeyValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -92,6 +94,8 @@ class DeployKeyNormalizer implements DenormalizerInterface, NormalizerInterface,
         if (null !== $object->getReadOnly()) {
             $data['read_only'] = $object->getReadOnly();
         }
+        $validator = new \Github\Validator\DeployKeyValidator();
+        $validator->validate($data);
         return $data;
     }
 }

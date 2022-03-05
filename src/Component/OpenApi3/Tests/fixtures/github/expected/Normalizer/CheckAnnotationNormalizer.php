@@ -39,6 +39,8 @@ class CheckAnnotationNormalizer implements DenormalizerInterface, NormalizerInte
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\CheckAnnotation();
+        $validator = new \Github\Validator\CheckAnnotationValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -108,6 +110,8 @@ class CheckAnnotationNormalizer implements DenormalizerInterface, NormalizerInte
         $data['message'] = $object->getMessage();
         $data['raw_details'] = $object->getRawDetails();
         $data['blob_href'] = $object->getBlobHref();
+        $validator = new \Github\Validator\CheckAnnotationValidator();
+        $validator->validate($data);
         return $data;
     }
 }

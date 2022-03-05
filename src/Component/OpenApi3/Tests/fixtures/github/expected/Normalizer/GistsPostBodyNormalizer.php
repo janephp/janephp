@@ -39,6 +39,8 @@ class GistsPostBodyNormalizer implements DenormalizerInterface, NormalizerInterf
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\GistsPostBody();
+        $validator = new \Github\Validator\GistsPostBodyValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -74,6 +76,8 @@ class GistsPostBodyNormalizer implements DenormalizerInterface, NormalizerInterf
         if (null !== $object->getPublic()) {
             $data['public'] = $object->getPublic();
         }
+        $validator = new \Github\Validator\GistsPostBodyValidator();
+        $validator->validate($data);
         return $data;
     }
 }

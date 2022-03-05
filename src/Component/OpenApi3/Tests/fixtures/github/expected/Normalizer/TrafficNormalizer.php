@@ -39,6 +39,8 @@ class TrafficNormalizer implements DenormalizerInterface, NormalizerInterface, D
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\Traffic();
+        $validator = new \Github\Validator\TrafficValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -62,6 +64,8 @@ class TrafficNormalizer implements DenormalizerInterface, NormalizerInterface, D
         $data['timestamp'] = $object->getTimestamp()->format('Y-m-d\\TH:i:sP');
         $data['uniques'] = $object->getUniques();
         $data['count'] = $object->getCount();
+        $validator = new \Github\Validator\TrafficValidator();
+        $validator->validate($data);
         return $data;
     }
 }

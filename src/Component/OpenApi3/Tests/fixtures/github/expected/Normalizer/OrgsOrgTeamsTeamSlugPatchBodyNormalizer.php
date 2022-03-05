@@ -39,6 +39,8 @@ class OrgsOrgTeamsTeamSlugPatchBodyNormalizer implements DenormalizerInterface, 
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\OrgsOrgTeamsTeamSlugPatchBody();
+        $validator = new \Github\Validator\OrgsOrgTeamsTeamSlugPatchBodyValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -78,6 +80,8 @@ class OrgsOrgTeamsTeamSlugPatchBodyNormalizer implements DenormalizerInterface, 
         if (null !== $object->getParentTeamId()) {
             $data['parent_team_id'] = $object->getParentTeamId();
         }
+        $validator = new \Github\Validator\OrgsOrgTeamsTeamSlugPatchBodyValidator();
+        $validator->validate($data);
         return $data;
     }
 }

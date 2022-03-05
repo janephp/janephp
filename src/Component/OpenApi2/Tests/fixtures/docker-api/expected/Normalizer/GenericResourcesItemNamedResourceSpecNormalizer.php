@@ -39,6 +39,8 @@ class GenericResourcesItemNamedResourceSpecNormalizer implements DenormalizerInt
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\GenericResourcesItemNamedResourceSpec();
+        $validator = new \Docker\Api\Validator\GenericResourcesItemNamedResourceSpecValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -62,6 +64,8 @@ class GenericResourcesItemNamedResourceSpecNormalizer implements DenormalizerInt
         if (null !== $object->getValue()) {
             $data['Value'] = $object->getValue();
         }
+        $validator = new \Docker\Api\Validator\GenericResourcesItemNamedResourceSpecValidator();
+        $validator->validate($data);
         return $data;
     }
 }

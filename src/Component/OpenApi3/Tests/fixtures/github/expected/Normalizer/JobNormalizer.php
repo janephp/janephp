@@ -39,6 +39,8 @@ class JobNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\Job();
+        $validator = new \Github\Validator\JobValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -125,6 +127,8 @@ class JobNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
             $data['steps'] = $values;
         }
         $data['check_run_url'] = $object->getCheckRunUrl();
+        $validator = new \Github\Validator\JobValidator();
+        $validator->validate($data);
         return $data;
     }
 }

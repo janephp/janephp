@@ -39,6 +39,8 @@ class PullRequestReviewRequestNormalizer implements DenormalizerInterface, Norma
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\PullRequestReviewRequest();
+        $validator = new \Github\Validator\PullRequestReviewRequestValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -78,6 +80,8 @@ class PullRequestReviewRequestNormalizer implements DenormalizerInterface, Norma
             }
             $data['teams'] = $values_1;
         }
+        $validator = new \Github\Validator\PullRequestReviewRequestValidator();
+        $validator->validate($data);
         return $data;
     }
 }

@@ -39,6 +39,8 @@ class AuthorizationAppNormalizer implements DenormalizerInterface, NormalizerInt
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\AuthorizationApp();
+        $validator = new \Github\Validator\AuthorizationAppValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -62,6 +64,8 @@ class AuthorizationAppNormalizer implements DenormalizerInterface, NormalizerInt
         $data['client_id'] = $object->getClientId();
         $data['name'] = $object->getName();
         $data['url'] = $object->getUrl();
+        $validator = new \Github\Validator\AuthorizationAppValidator();
+        $validator->validate($data);
         return $data;
     }
 }

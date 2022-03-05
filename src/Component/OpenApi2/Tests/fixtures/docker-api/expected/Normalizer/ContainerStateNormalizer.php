@@ -39,6 +39,8 @@ class ContainerStateNormalizer implements DenormalizerInterface, NormalizerInter
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\ContainerState();
+        $validator = new \Docker\Api\Validator\ContainerStateValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -122,6 +124,8 @@ class ContainerStateNormalizer implements DenormalizerInterface, NormalizerInter
         if (null !== $object->getHealth()) {
             $data['Health'] = $this->normalizer->normalize($object->getHealth(), 'json', $context);
         }
+        $validator = new \Docker\Api\Validator\ContainerStateValidator();
+        $validator->validate($data);
         return $data;
     }
 }

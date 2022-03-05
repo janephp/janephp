@@ -39,6 +39,8 @@ class ContributorActivityNormalizer implements DenormalizerInterface, Normalizer
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ContributorActivity();
+        $validator = new \Github\Validator\ContributorActivityValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -73,6 +75,8 @@ class ContributorActivityNormalizer implements DenormalizerInterface, Normalizer
             $values[] = $this->normalizer->normalize($value, 'json', $context);
         }
         $data['weeks'] = $values;
+        $validator = new \Github\Validator\ContributorActivityValidator();
+        $validator->validate($data);
         return $data;
     }
 }

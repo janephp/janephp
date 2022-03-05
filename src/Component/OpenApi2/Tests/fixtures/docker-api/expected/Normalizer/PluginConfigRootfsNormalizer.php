@@ -39,6 +39,8 @@ class PluginConfigRootfsNormalizer implements DenormalizerInterface, NormalizerI
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\PluginConfigRootfs();
+        $validator = new \Docker\Api\Validator\PluginConfigRootfsValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -70,6 +72,8 @@ class PluginConfigRootfsNormalizer implements DenormalizerInterface, NormalizerI
             }
             $data['diff_ids'] = $values;
         }
+        $validator = new \Docker\Api\Validator\PluginConfigRootfsValidator();
+        $validator->validate($data);
         return $data;
     }
 }

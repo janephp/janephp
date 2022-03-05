@@ -39,6 +39,8 @@ class IntegrationPermissionsNormalizer implements DenormalizerInterface, Normali
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\IntegrationPermissions();
+        $validator = new \Github\Validator\IntegrationPermissionsValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -95,6 +97,8 @@ class IntegrationPermissionsNormalizer implements DenormalizerInterface, Normali
                 $data[$key] = $value;
             }
         }
+        $validator = new \Github\Validator\IntegrationPermissionsValidator();
+        $validator->validate($data);
         return $data;
     }
 }

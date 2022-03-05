@@ -39,6 +39,8 @@ class GitignoreTemplateNormalizer implements DenormalizerInterface, NormalizerIn
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\GitignoreTemplate();
+        $validator = new \Github\Validator\GitignoreTemplateValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -58,6 +60,8 @@ class GitignoreTemplateNormalizer implements DenormalizerInterface, NormalizerIn
         $data = array();
         $data['name'] = $object->getName();
         $data['source'] = $object->getSource();
+        $validator = new \Github\Validator\GitignoreTemplateValidator();
+        $validator->validate($data);
         return $data;
     }
 }

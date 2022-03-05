@@ -39,6 +39,8 @@ class TaskStatusNormalizer implements DenormalizerInterface, NormalizerInterface
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\TaskStatus();
+        $validator = new \Docker\Api\Validator\TaskStatusValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -80,6 +82,8 @@ class TaskStatusNormalizer implements DenormalizerInterface, NormalizerInterface
         if (null !== $object->getContainerStatus()) {
             $data['ContainerStatus'] = $this->normalizer->normalize($object->getContainerStatus(), 'json', $context);
         }
+        $validator = new \Docker\Api\Validator\TaskStatusValidator();
+        $validator->validate($data);
         return $data;
     }
 }

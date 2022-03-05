@@ -39,6 +39,8 @@ class AuthenticationTokenNormalizer implements DenormalizerInterface, Normalizer
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\AuthenticationToken();
+        $validator = new \Github\Validator\AuthenticationTokenValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -93,6 +95,8 @@ class AuthenticationTokenNormalizer implements DenormalizerInterface, Normalizer
         if (null !== $object->getRepositorySelection()) {
             $data['repository_selection'] = $object->getRepositorySelection();
         }
+        $validator = new \Github\Validator\AuthenticationTokenValidator();
+        $validator->validate($data);
         return $data;
     }
 }

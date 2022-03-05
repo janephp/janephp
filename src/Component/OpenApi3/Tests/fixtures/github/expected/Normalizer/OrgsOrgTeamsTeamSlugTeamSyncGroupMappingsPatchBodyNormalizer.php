@@ -39,6 +39,8 @@ class OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyNormalizer implements De
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBody();
+        $validator = new \Github\Validator\OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -62,6 +64,8 @@ class OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyNormalizer implements De
             $values[] = $this->normalizer->normalize($value, 'json', $context);
         }
         $data['groups'] = $values;
+        $validator = new \Github\Validator\OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyValidator();
+        $validator->validate($data);
         return $data;
     }
 }

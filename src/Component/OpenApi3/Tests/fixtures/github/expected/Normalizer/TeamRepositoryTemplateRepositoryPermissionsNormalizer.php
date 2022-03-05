@@ -39,6 +39,8 @@ class TeamRepositoryTemplateRepositoryPermissionsNormalizer implements Denormali
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\TeamRepositoryTemplateRepositoryPermissions();
+        $validator = new \Github\Validator\TeamRepositoryTemplateRepositoryPermissionsValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -68,6 +70,8 @@ class TeamRepositoryTemplateRepositoryPermissionsNormalizer implements Denormali
         if (null !== $object->getPull()) {
             $data['pull'] = $object->getPull();
         }
+        $validator = new \Github\Validator\TeamRepositoryTemplateRepositoryPermissionsValidator();
+        $validator->validate($data);
         return $data;
     }
 }

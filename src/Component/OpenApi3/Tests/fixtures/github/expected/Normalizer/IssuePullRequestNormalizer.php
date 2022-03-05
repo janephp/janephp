@@ -39,6 +39,8 @@ class IssuePullRequestNormalizer implements DenormalizerInterface, NormalizerInt
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\IssuePullRequest();
+        $validator = new \Github\Validator\IssuePullRequestValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -87,6 +89,8 @@ class IssuePullRequestNormalizer implements DenormalizerInterface, NormalizerInt
         $data['html_url'] = $object->getHtmlUrl();
         $data['patch_url'] = $object->getPatchUrl();
         $data['url'] = $object->getUrl();
+        $validator = new \Github\Validator\IssuePullRequestValidator();
+        $validator->validate($data);
         return $data;
     }
 }

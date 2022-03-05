@@ -39,6 +39,8 @@ class ProjectPermissionsNormalizer implements DenormalizerInterface, NormalizerI
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ProjectPermissions();
+        $validator = new \Github\Validator\ProjectPermissionsValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -62,6 +64,8 @@ class ProjectPermissionsNormalizer implements DenormalizerInterface, NormalizerI
         $data['read'] = $object->getRead();
         $data['write'] = $object->getWrite();
         $data['admin'] = $object->getAdmin();
+        $validator = new \Github\Validator\ProjectPermissionsValidator();
+        $validator->validate($data);
         return $data;
     }
 }

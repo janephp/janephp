@@ -39,6 +39,8 @@ class ReposOwnerRepoTransferPostBodyNormalizer implements DenormalizerInterface,
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ReposOwnerRepoTransferPostBody();
+        $validator = new \Github\Validator\ReposOwnerRepoTransferPostBodyValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -70,6 +72,8 @@ class ReposOwnerRepoTransferPostBodyNormalizer implements DenormalizerInterface,
             }
             $data['team_ids'] = $values;
         }
+        $validator = new \Github\Validator\ReposOwnerRepoTransferPostBodyValidator();
+        $validator->validate($data);
         return $data;
     }
 }

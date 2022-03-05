@@ -39,6 +39,8 @@ class EndpointSpecNormalizer implements DenormalizerInterface, NormalizerInterfa
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\EndpointSpec();
+        $validator = new \Docker\Api\Validator\EndpointSpecValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -70,6 +72,8 @@ class EndpointSpecNormalizer implements DenormalizerInterface, NormalizerInterfa
             }
             $data['Ports'] = $values;
         }
+        $validator = new \Docker\Api\Validator\EndpointSpecValidator();
+        $validator->validate($data);
         return $data;
     }
 }

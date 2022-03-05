@@ -39,6 +39,8 @@ class PullRequestReviewRequestTeamsItemNormalizer implements DenormalizerInterfa
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\PullRequestReviewRequestTeamsItem();
+        $validator = new \Github\Validator\PullRequestReviewRequestTeamsItemValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -128,6 +130,8 @@ class PullRequestReviewRequestTeamsItemNormalizer implements DenormalizerInterfa
         if (null !== $object->getParent()) {
             $data['parent'] = $object->getParent();
         }
+        $validator = new \Github\Validator\PullRequestReviewRequestTeamsItemValidator();
+        $validator->validate($data);
         return $data;
     }
 }

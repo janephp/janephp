@@ -39,6 +39,8 @@ class PeerNodeNormalizer implements DenormalizerInterface, NormalizerInterface, 
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\PeerNode();
+        $validator = new \Docker\Api\Validator\PeerNodeValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -62,6 +64,8 @@ class PeerNodeNormalizer implements DenormalizerInterface, NormalizerInterface, 
         if (null !== $object->getAddr()) {
             $data['Addr'] = $object->getAddr();
         }
+        $validator = new \Docker\Api\Validator\PeerNodeValidator();
+        $validator->validate($data);
         return $data;
     }
 }

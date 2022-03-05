@@ -39,6 +39,8 @@ class ProjectCardCreatorNormalizer implements DenormalizerInterface, NormalizerI
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ProjectCardCreator();
+        $validator = new \Github\Validator\ProjectCardCreatorValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -131,6 +133,8 @@ class ProjectCardCreatorNormalizer implements DenormalizerInterface, NormalizerI
         if (null !== $object->getStarredAt()) {
             $data['starred_at'] = $object->getStarredAt();
         }
+        $validator = new \Github\Validator\ProjectCardCreatorValidator();
+        $validator->validate($data);
         return $data;
     }
 }

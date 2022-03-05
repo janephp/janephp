@@ -39,6 +39,8 @@ class ThreadNormalizer implements DenormalizerInterface, NormalizerInterface, De
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\Thread();
+        $validator = new \Github\Validator\ThreadValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -107,6 +109,8 @@ class ThreadNormalizer implements DenormalizerInterface, NormalizerInterface, De
         if (null !== $object->getSubscriptionUrl()) {
             $data['subscription_url'] = $object->getSubscriptionUrl();
         }
+        $validator = new \Github\Validator\ThreadValidator();
+        $validator->validate($data);
         return $data;
     }
 }

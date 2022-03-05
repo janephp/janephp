@@ -39,6 +39,8 @@ class ReposOwnerRepoIssuesIssueNumberReactionsPostBodyNormalizer implements Deno
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ReposOwnerRepoIssuesIssueNumberReactionsPostBody();
+        $validator = new \Github\Validator\ReposOwnerRepoIssuesIssueNumberReactionsPostBodyValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -54,6 +56,8 @@ class ReposOwnerRepoIssuesIssueNumberReactionsPostBodyNormalizer implements Deno
     {
         $data = array();
         $data['content'] = $object->getContent();
+        $validator = new \Github\Validator\ReposOwnerRepoIssuesIssueNumberReactionsPostBodyValidator();
+        $validator->validate($data);
         return $data;
     }
 }

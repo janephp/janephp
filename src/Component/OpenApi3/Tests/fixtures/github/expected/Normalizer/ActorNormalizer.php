@@ -39,6 +39,8 @@ class ActorNormalizer implements DenormalizerInterface, NormalizerInterface, Den
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\Actor();
+        $validator = new \Github\Validator\ActorValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -79,6 +81,8 @@ class ActorNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         $data['gravatar_id'] = $object->getGravatarId();
         $data['url'] = $object->getUrl();
         $data['avatar_url'] = $object->getAvatarUrl();
+        $validator = new \Github\Validator\ActorValidator();
+        $validator->validate($data);
         return $data;
     }
 }

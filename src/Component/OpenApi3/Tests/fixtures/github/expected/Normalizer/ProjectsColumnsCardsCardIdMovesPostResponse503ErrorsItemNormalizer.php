@@ -39,6 +39,8 @@ class ProjectsColumnsCardsCardIdMovesPostResponse503ErrorsItemNormalizer impleme
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ProjectsColumnsCardsCardIdMovesPostResponse503ErrorsItem();
+        $validator = new \Github\Validator\ProjectsColumnsCardsCardIdMovesPostResponse503ErrorsItemValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -62,6 +64,8 @@ class ProjectsColumnsCardsCardIdMovesPostResponse503ErrorsItemNormalizer impleme
         if (null !== $object->getMessage()) {
             $data['message'] = $object->getMessage();
         }
+        $validator = new \Github\Validator\ProjectsColumnsCardsCardIdMovesPostResponse503ErrorsItemValidator();
+        $validator->validate($data);
         return $data;
     }
 }

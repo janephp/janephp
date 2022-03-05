@@ -39,6 +39,8 @@ class EventPayloadNormalizer implements DenormalizerInterface, NormalizerInterfa
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\EventPayload();
+        $validator = new \Github\Validator\EventPayloadValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -82,6 +84,8 @@ class EventPayloadNormalizer implements DenormalizerInterface, NormalizerInterfa
             }
             $data['pages'] = $values;
         }
+        $validator = new \Github\Validator\EventPayloadValidator();
+        $validator->validate($data);
         return $data;
     }
 }

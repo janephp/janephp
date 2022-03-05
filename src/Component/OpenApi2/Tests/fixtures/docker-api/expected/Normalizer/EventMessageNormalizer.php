@@ -39,6 +39,8 @@ class EventMessageNormalizer implements DenormalizerInterface, NormalizerInterfa
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\EventMessage();
+        $validator = new \Docker\Api\Validator\EventMessageValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -86,6 +88,8 @@ class EventMessageNormalizer implements DenormalizerInterface, NormalizerInterfa
         if (null !== $object->getTimeNano()) {
             $data['timeNano'] = $object->getTimeNano();
         }
+        $validator = new \Docker\Api\Validator\EventMessageValidator();
+        $validator->validate($data);
         return $data;
     }
 }

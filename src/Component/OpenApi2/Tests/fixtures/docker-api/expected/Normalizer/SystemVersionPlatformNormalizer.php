@@ -39,6 +39,8 @@ class SystemVersionPlatformNormalizer implements DenormalizerInterface, Normaliz
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\SystemVersionPlatform();
+        $validator = new \Docker\Api\Validator\SystemVersionPlatformValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -54,6 +56,8 @@ class SystemVersionPlatformNormalizer implements DenormalizerInterface, Normaliz
     {
         $data = array();
         $data['Name'] = $object->getName();
+        $validator = new \Docker\Api\Validator\SystemVersionPlatformValidator();
+        $validator->validate($data);
         return $data;
     }
 }

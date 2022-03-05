@@ -39,6 +39,8 @@ class ViewTrafficNormalizer implements DenormalizerInterface, NormalizerInterfac
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ViewTraffic();
+        $validator = new \Github\Validator\ViewTrafficValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -70,6 +72,8 @@ class ViewTrafficNormalizer implements DenormalizerInterface, NormalizerInterfac
             $values[] = $this->normalizer->normalize($value, 'json', $context);
         }
         $data['views'] = $values;
+        $validator = new \Github\Validator\ViewTrafficValidator();
+        $validator->validate($data);
         return $data;
     }
 }

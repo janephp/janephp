@@ -39,6 +39,8 @@ class PageBuildPusherNormalizer implements DenormalizerInterface, NormalizerInte
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\PageBuildPusher();
+        $validator = new \Github\Validator\PageBuildPusherValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -131,6 +133,8 @@ class PageBuildPusherNormalizer implements DenormalizerInterface, NormalizerInte
         if (null !== $object->getStarredAt()) {
             $data['starred_at'] = $object->getStarredAt();
         }
+        $validator = new \Github\Validator\PageBuildPusherValidator();
+        $validator->validate($data);
         return $data;
     }
 }

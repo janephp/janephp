@@ -39,6 +39,8 @@ class TeamMembershipNormalizer implements DenormalizerInterface, NormalizerInter
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\TeamMembership();
+        $validator = new \Github\Validator\TeamMembershipValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -62,6 +64,8 @@ class TeamMembershipNormalizer implements DenormalizerInterface, NormalizerInter
         $data['url'] = $object->getUrl();
         $data['role'] = $object->getRole();
         $data['state'] = $object->getState();
+        $validator = new \Github\Validator\TeamMembershipValidator();
+        $validator->validate($data);
         return $data;
     }
 }

@@ -39,6 +39,8 @@ class CommunityProfileFilesCodeOfConductNormalizer implements DenormalizerInterf
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\CommunityProfileFilesCodeOfConduct();
+        $validator = new \Github\Validator\CommunityProfileFilesCodeOfConductValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -69,6 +71,8 @@ class CommunityProfileFilesCodeOfConductNormalizer implements DenormalizerInterf
         $data['key'] = $object->getKey();
         $data['name'] = $object->getName();
         $data['html_url'] = $object->getHtmlUrl();
+        $validator = new \Github\Validator\CommunityProfileFilesCodeOfConductValidator();
+        $validator->validate($data);
         return $data;
     }
 }

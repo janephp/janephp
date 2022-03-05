@@ -39,6 +39,8 @@ class GistSimpleNormalizer implements DenormalizerInterface, NormalizerInterface
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\GistSimple();
+        $validator = new \Github\Validator\GistSimpleValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -175,6 +177,8 @@ class GistSimpleNormalizer implements DenormalizerInterface, NormalizerInterface
         if (null !== $object->getTruncated()) {
             $data['truncated'] = $object->getTruncated();
         }
+        $validator = new \Github\Validator\GistSimpleValidator();
+        $validator->validate($data);
         return $data;
     }
 }

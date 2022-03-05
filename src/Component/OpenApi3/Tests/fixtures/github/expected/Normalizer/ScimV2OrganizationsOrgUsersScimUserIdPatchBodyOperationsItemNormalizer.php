@@ -39,6 +39,8 @@ class ScimV2OrganizationsOrgUsersScimUserIdPatchBodyOperationsItemNormalizer imp
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ScimV2OrganizationsOrgUsersScimUserIdPatchBodyOperationsItem();
+        $validator = new \Github\Validator\ScimV2OrganizationsOrgUsersScimUserIdPatchBodyOperationsItemValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -66,6 +68,8 @@ class ScimV2OrganizationsOrgUsersScimUserIdPatchBodyOperationsItemNormalizer imp
         if (null !== $object->getValue()) {
             $data['value'] = $object->getValue();
         }
+        $validator = new \Github\Validator\ScimV2OrganizationsOrgUsersScimUserIdPatchBodyOperationsItemValidator();
+        $validator->validate($data);
         return $data;
     }
 }

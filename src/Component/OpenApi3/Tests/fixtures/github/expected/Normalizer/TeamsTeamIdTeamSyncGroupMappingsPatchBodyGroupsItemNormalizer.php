@@ -39,6 +39,8 @@ class TeamsTeamIdTeamSyncGroupMappingsPatchBodyGroupsItemNormalizer implements D
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\TeamsTeamIdTeamSyncGroupMappingsPatchBodyGroupsItem();
+        $validator = new \Github\Validator\TeamsTeamIdTeamSyncGroupMappingsPatchBodyGroupsItemValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -80,6 +82,8 @@ class TeamsTeamIdTeamSyncGroupMappingsPatchBodyGroupsItemNormalizer implements D
         if (null !== $object->getDescription()) {
             $data['description'] = $object->getDescription();
         }
+        $validator = new \Github\Validator\TeamsTeamIdTeamSyncGroupMappingsPatchBodyGroupsItemValidator();
+        $validator->validate($data);
         return $data;
     }
 }

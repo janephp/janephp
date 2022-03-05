@@ -39,6 +39,8 @@ class AuthorizationNormalizer implements DenormalizerInterface, NormalizerInterf
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\Authorization();
+        $validator = new \Github\Validator\AuthorizationValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -142,6 +144,8 @@ class AuthorizationNormalizer implements DenormalizerInterface, NormalizerInterf
         if (null !== $object->getInstallation()) {
             $data['installation'] = $this->normalizer->normalize($object->getInstallation(), 'json', $context);
         }
+        $validator = new \Github\Validator\AuthorizationValidator();
+        $validator->validate($data);
         return $data;
     }
 }

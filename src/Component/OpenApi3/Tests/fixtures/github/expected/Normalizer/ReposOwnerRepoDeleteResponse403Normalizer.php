@@ -39,6 +39,8 @@ class ReposOwnerRepoDeleteResponse403Normalizer implements DenormalizerInterface
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ReposOwnerRepoDeleteResponse403();
+        $validator = new \Github\Validator\ReposOwnerRepoDeleteResponse403Validator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -62,6 +64,8 @@ class ReposOwnerRepoDeleteResponse403Normalizer implements DenormalizerInterface
         if (null !== $object->getDocumentationUrl()) {
             $data['documentation_url'] = $object->getDocumentationUrl();
         }
+        $validator = new \Github\Validator\ReposOwnerRepoDeleteResponse403Validator();
+        $validator->validate($data);
         return $data;
     }
 }

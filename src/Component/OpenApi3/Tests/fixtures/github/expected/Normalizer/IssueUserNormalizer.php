@@ -39,6 +39,8 @@ class IssueUserNormalizer implements DenormalizerInterface, NormalizerInterface,
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\IssueUser();
+        $validator = new \Github\Validator\IssueUserValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -131,6 +133,8 @@ class IssueUserNormalizer implements DenormalizerInterface, NormalizerInterface,
         if (null !== $object->getStarredAt()) {
             $data['starred_at'] = $object->getStarredAt();
         }
+        $validator = new \Github\Validator\IssueUserValidator();
+        $validator->validate($data);
         return $data;
     }
 }

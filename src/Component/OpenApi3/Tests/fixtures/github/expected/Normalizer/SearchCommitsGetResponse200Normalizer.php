@@ -39,6 +39,8 @@ class SearchCommitsGetResponse200Normalizer implements DenormalizerInterface, No
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\SearchCommitsGetResponse200();
+        $validator = new \Github\Validator\SearchCommitsGetResponse200Validator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -76,6 +78,8 @@ class SearchCommitsGetResponse200Normalizer implements DenormalizerInterface, No
             }
             $data['items'] = $values;
         }
+        $validator = new \Github\Validator\SearchCommitsGetResponse200Validator();
+        $validator->validate($data);
         return $data;
     }
 }

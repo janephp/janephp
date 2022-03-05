@@ -39,6 +39,8 @@ class ContentReferencesContentReferenceIdAttachmentsPostBodyNormalizer implement
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ContentReferencesContentReferenceIdAttachmentsPostBody();
+        $validator = new \Github\Validator\ContentReferencesContentReferenceIdAttachmentsPostBodyValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -58,6 +60,8 @@ class ContentReferencesContentReferenceIdAttachmentsPostBodyNormalizer implement
         $data = array();
         $data['title'] = $object->getTitle();
         $data['body'] = $object->getBody();
+        $validator = new \Github\Validator\ContentReferencesContentReferenceIdAttachmentsPostBodyValidator();
+        $validator->validate($data);
         return $data;
     }
 }

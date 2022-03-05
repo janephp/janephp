@@ -39,6 +39,8 @@ class ReposOwnerRepoPullsPullNumberPatchBodyNormalizer implements DenormalizerIn
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ReposOwnerRepoPullsPullNumberPatchBody();
+        $validator = new \Github\Validator\ReposOwnerRepoPullsPullNumberPatchBodyValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -80,6 +82,8 @@ class ReposOwnerRepoPullsPullNumberPatchBodyNormalizer implements DenormalizerIn
         if (null !== $object->getMaintainerCanModify()) {
             $data['maintainer_can_modify'] = $object->getMaintainerCanModify();
         }
+        $validator = new \Github\Validator\ReposOwnerRepoPullsPullNumberPatchBodyValidator();
+        $validator->validate($data);
         return $data;
     }
 }

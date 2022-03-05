@@ -39,6 +39,8 @@ class CommitCommentNormalizer implements DenormalizerInterface, NormalizerInterf
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\CommitComment();
+        $validator = new \Github\Validator\CommitCommentValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -120,6 +122,8 @@ class CommitCommentNormalizer implements DenormalizerInterface, NormalizerInterf
         if (null !== $object->getReactions()) {
             $data['reactions'] = $this->normalizer->normalize($object->getReactions(), 'json', $context);
         }
+        $validator = new \Github\Validator\CommitCommentValidator();
+        $validator->validate($data);
         return $data;
     }
 }

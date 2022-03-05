@@ -39,6 +39,8 @@ class ExecIdStartPostBodyNormalizer implements DenormalizerInterface, Normalizer
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\ExecIdStartPostBody();
+        $validator = new \Docker\Api\Validator\ExecIdStartPostBodyValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -62,6 +64,8 @@ class ExecIdStartPostBodyNormalizer implements DenormalizerInterface, Normalizer
         if (null !== $object->getTty()) {
             $data['Tty'] = $object->getTty();
         }
+        $validator = new \Docker\Api\Validator\ExecIdStartPostBodyValidator();
+        $validator->validate($data);
         return $data;
     }
 }

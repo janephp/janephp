@@ -39,6 +39,8 @@ class JobStepsItemNormalizer implements DenormalizerInterface, NormalizerInterfa
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\JobStepsItem();
+        $validator = new \Github\Validator\JobStepsItemValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -87,6 +89,8 @@ class JobStepsItemNormalizer implements DenormalizerInterface, NormalizerInterfa
         if (null !== $object->getCompletedAt()) {
             $data['completed_at'] = $object->getCompletedAt()->format('Y-m-d\\TH:i:sP');
         }
+        $validator = new \Github\Validator\JobStepsItemValidator();
+        $validator->validate($data);
         return $data;
     }
 }

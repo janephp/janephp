@@ -39,6 +39,8 @@ class OrgsOrgMembershipsUsernamePutBodyNormalizer implements DenormalizerInterfa
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\OrgsOrgMembershipsUsernamePutBody();
+        $validator = new \Github\Validator\OrgsOrgMembershipsUsernamePutBodyValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -56,6 +58,8 @@ class OrgsOrgMembershipsUsernamePutBodyNormalizer implements DenormalizerInterfa
         if (null !== $object->getRole()) {
             $data['role'] = $object->getRole();
         }
+        $validator = new \Github\Validator\OrgsOrgMembershipsUsernamePutBodyValidator();
+        $validator->validate($data);
         return $data;
     }
 }

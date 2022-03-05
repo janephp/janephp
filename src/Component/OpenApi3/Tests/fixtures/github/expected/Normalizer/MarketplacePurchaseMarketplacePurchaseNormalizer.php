@@ -39,6 +39,8 @@ class MarketplacePurchaseMarketplacePurchaseNormalizer implements DenormalizerIn
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\MarketplacePurchaseMarketplacePurchase();
+        $validator = new \Github\Validator\MarketplacePurchaseMarketplacePurchaseValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -107,6 +109,8 @@ class MarketplacePurchaseMarketplacePurchaseNormalizer implements DenormalizerIn
         if (null !== $object->getPlan()) {
             $data['plan'] = $this->normalizer->normalize($object->getPlan(), 'json', $context);
         }
+        $validator = new \Github\Validator\MarketplacePurchaseMarketplacePurchaseValidator();
+        $validator->validate($data);
         return $data;
     }
 }

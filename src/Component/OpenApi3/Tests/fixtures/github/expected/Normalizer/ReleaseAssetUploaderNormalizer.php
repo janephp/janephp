@@ -39,6 +39,8 @@ class ReleaseAssetUploaderNormalizer implements DenormalizerInterface, Normalize
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ReleaseAssetUploader();
+        $validator = new \Github\Validator\ReleaseAssetUploaderValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -131,6 +133,8 @@ class ReleaseAssetUploaderNormalizer implements DenormalizerInterface, Normalize
         if (null !== $object->getStarredAt()) {
             $data['starred_at'] = $object->getStarredAt();
         }
+        $validator = new \Github\Validator\ReleaseAssetUploaderValidator();
+        $validator->validate($data);
         return $data;
     }
 }

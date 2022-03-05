@@ -39,6 +39,8 @@ class ProjectsProjectIdDeleteResponse403Normalizer implements DenormalizerInterf
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ProjectsProjectIdDeleteResponse403();
+        $validator = new \Github\Validator\ProjectsProjectIdDeleteResponse403Validator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -76,6 +78,8 @@ class ProjectsProjectIdDeleteResponse403Normalizer implements DenormalizerInterf
             }
             $data['errors'] = $values;
         }
+        $validator = new \Github\Validator\ProjectsProjectIdDeleteResponse403Validator();
+        $validator->validate($data);
         return $data;
     }
 }

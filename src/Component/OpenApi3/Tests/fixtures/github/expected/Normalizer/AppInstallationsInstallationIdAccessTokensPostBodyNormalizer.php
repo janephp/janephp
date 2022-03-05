@@ -39,6 +39,8 @@ class AppInstallationsInstallationIdAccessTokensPostBodyNormalizer implements De
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\AppInstallationsInstallationIdAccessTokensPostBody();
+        $validator = new \Github\Validator\AppInstallationsInstallationIdAccessTokensPostBodyValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -84,6 +86,8 @@ class AppInstallationsInstallationIdAccessTokensPostBodyNormalizer implements De
         if (null !== $object->getPermissions()) {
             $data['permissions'] = $this->normalizer->normalize($object->getPermissions(), 'json', $context);
         }
+        $validator = new \Github\Validator\AppInstallationsInstallationIdAccessTokensPostBodyValidator();
+        $validator->validate($data);
         return $data;
     }
 }

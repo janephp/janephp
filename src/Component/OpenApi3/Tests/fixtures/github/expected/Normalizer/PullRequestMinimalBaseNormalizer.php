@@ -39,6 +39,8 @@ class PullRequestMinimalBaseNormalizer implements DenormalizerInterface, Normali
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\PullRequestMinimalBase();
+        $validator = new \Github\Validator\PullRequestMinimalBaseValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -62,6 +64,8 @@ class PullRequestMinimalBaseNormalizer implements DenormalizerInterface, Normali
         $data['ref'] = $object->getRef();
         $data['sha'] = $object->getSha();
         $data['repo'] = $this->normalizer->normalize($object->getRepo(), 'json', $context);
+        $validator = new \Github\Validator\PullRequestMinimalBaseValidator();
+        $validator->validate($data);
         return $data;
     }
 }

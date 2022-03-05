@@ -39,6 +39,8 @@ class ReposOwnerRepoIssuesIssueNumberLockPutBodyNormalizer implements Denormaliz
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ReposOwnerRepoIssuesIssueNumberLockPutBody();
+        $validator = new \Github\Validator\ReposOwnerRepoIssuesIssueNumberLockPutBodyValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -56,6 +58,8 @@ class ReposOwnerRepoIssuesIssueNumberLockPutBodyNormalizer implements Denormaliz
         if (null !== $object->getLockReason()) {
             $data['lock_reason'] = $object->getLockReason();
         }
+        $validator = new \Github\Validator\ReposOwnerRepoIssuesIssueNumberLockPutBodyValidator();
+        $validator->validate($data);
         return $data;
     }
 }

@@ -39,6 +39,8 @@ class VolumeUsageDataNormalizer implements DenormalizerInterface, NormalizerInte
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\VolumeUsageData();
+        $validator = new \Docker\Api\Validator\VolumeUsageDataValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -58,6 +60,8 @@ class VolumeUsageDataNormalizer implements DenormalizerInterface, NormalizerInte
         $data = array();
         $data['Size'] = $object->getSize();
         $data['RefCount'] = $object->getRefCount();
+        $validator = new \Docker\Api\Validator\VolumeUsageDataValidator();
+        $validator->validate($data);
         return $data;
     }
 }

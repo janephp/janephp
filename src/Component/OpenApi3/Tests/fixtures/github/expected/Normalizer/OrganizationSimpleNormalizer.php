@@ -39,6 +39,8 @@ class OrganizationSimpleNormalizer implements DenormalizerInterface, NormalizerI
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\OrganizationSimple();
+        $validator = new \Github\Validator\OrganizationSimpleValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -101,6 +103,8 @@ class OrganizationSimpleNormalizer implements DenormalizerInterface, NormalizerI
         $data['public_members_url'] = $object->getPublicMembersUrl();
         $data['avatar_url'] = $object->getAvatarUrl();
         $data['description'] = $object->getDescription();
+        $validator = new \Github\Validator\OrganizationSimpleValidator();
+        $validator->validate($data);
         return $data;
     }
 }

@@ -39,6 +39,8 @@ class ReposOwnerRepoContentsPathPutBodyNormalizer implements DenormalizerInterfa
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ReposOwnerRepoContentsPathPutBody();
+        $validator = new \Github\Validator\ReposOwnerRepoContentsPathPutBodyValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -82,6 +84,8 @@ class ReposOwnerRepoContentsPathPutBodyNormalizer implements DenormalizerInterfa
         if (null !== $object->getAuthor()) {
             $data['author'] = $this->normalizer->normalize($object->getAuthor(), 'json', $context);
         }
+        $validator = new \Github\Validator\ReposOwnerRepoContentsPathPutBodyValidator();
+        $validator->validate($data);
         return $data;
     }
 }

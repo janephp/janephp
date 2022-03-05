@@ -39,6 +39,8 @@ class AuthorizationsPostBodyNormalizer implements DenormalizerInterface, Normali
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\AuthorizationsPostBody();
+        $validator = new \Github\Validator\AuthorizationsPostBodyValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -97,6 +99,8 @@ class AuthorizationsPostBodyNormalizer implements DenormalizerInterface, Normali
         if (null !== $object->getFingerprint()) {
             $data['fingerprint'] = $object->getFingerprint();
         }
+        $validator = new \Github\Validator\AuthorizationsPostBodyValidator();
+        $validator->validate($data);
         return $data;
     }
 }

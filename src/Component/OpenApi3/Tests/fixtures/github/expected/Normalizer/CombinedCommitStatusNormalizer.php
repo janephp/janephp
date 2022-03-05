@@ -39,6 +39,8 @@ class CombinedCommitStatusNormalizer implements DenormalizerInterface, Normalize
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\CombinedCommitStatus();
+        $validator = new \Github\Validator\CombinedCommitStatusValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -86,6 +88,8 @@ class CombinedCommitStatusNormalizer implements DenormalizerInterface, Normalize
         $data['repository'] = $this->normalizer->normalize($object->getRepository(), 'json', $context);
         $data['commit_url'] = $object->getCommitUrl();
         $data['url'] = $object->getUrl();
+        $validator = new \Github\Validator\CombinedCommitStatusValidator();
+        $validator->validate($data);
         return $data;
     }
 }

@@ -39,6 +39,8 @@ class CheckRunAppNormalizer implements DenormalizerInterface, NormalizerInterfac
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\CheckRunApp();
+        $validator = new \Github\Validator\CheckRunAppValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -144,6 +146,8 @@ class CheckRunAppNormalizer implements DenormalizerInterface, NormalizerInterfac
         if (null !== $object->getPem()) {
             $data['pem'] = $object->getPem();
         }
+        $validator = new \Github\Validator\CheckRunAppValidator();
+        $validator->validate($data);
         return $data;
     }
 }

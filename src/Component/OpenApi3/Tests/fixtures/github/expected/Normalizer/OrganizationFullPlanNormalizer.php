@@ -39,6 +39,8 @@ class OrganizationFullPlanNormalizer implements DenormalizerInterface, Normalize
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\OrganizationFullPlan();
+        $validator = new \Github\Validator\OrganizationFullPlanValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -74,6 +76,8 @@ class OrganizationFullPlanNormalizer implements DenormalizerInterface, Normalize
         if (null !== $object->getSeats()) {
             $data['seats'] = $object->getSeats();
         }
+        $validator = new \Github\Validator\OrganizationFullPlanValidator();
+        $validator->validate($data);
         return $data;
     }
 }

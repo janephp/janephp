@@ -39,6 +39,8 @@ class CommitCommitCommitterNormalizer implements DenormalizerInterface, Normaliz
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\CommitCommitCommitter();
+        $validator = new \Github\Validator\CommitCommitCommitterValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -68,6 +70,8 @@ class CommitCommitCommitterNormalizer implements DenormalizerInterface, Normaliz
         if (null !== $object->getDate()) {
             $data['date'] = $object->getDate();
         }
+        $validator = new \Github\Validator\CommitCommitCommitterValidator();
+        $validator->validate($data);
         return $data;
     }
 }

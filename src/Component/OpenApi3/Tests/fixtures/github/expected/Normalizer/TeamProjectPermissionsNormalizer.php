@@ -39,6 +39,8 @@ class TeamProjectPermissionsNormalizer implements DenormalizerInterface, Normali
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\TeamProjectPermissions();
+        $validator = new \Github\Validator\TeamProjectPermissionsValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -68,6 +70,8 @@ class TeamProjectPermissionsNormalizer implements DenormalizerInterface, Normali
         if (null !== $object->getAdmin()) {
             $data['admin'] = $object->getAdmin();
         }
+        $validator = new \Github\Validator\TeamProjectPermissionsValidator();
+        $validator->validate($data);
         return $data;
     }
 }

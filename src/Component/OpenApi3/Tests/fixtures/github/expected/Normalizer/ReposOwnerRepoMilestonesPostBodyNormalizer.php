@@ -39,6 +39,8 @@ class ReposOwnerRepoMilestonesPostBodyNormalizer implements DenormalizerInterfac
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ReposOwnerRepoMilestonesPostBody();
+        $validator = new \Github\Validator\ReposOwnerRepoMilestonesPostBodyValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -72,6 +74,8 @@ class ReposOwnerRepoMilestonesPostBodyNormalizer implements DenormalizerInterfac
         if (null !== $object->getDueOn()) {
             $data['due_on'] = $object->getDueOn();
         }
+        $validator = new \Github\Validator\ReposOwnerRepoMilestonesPostBodyValidator();
+        $validator->validate($data);
         return $data;
     }
 }

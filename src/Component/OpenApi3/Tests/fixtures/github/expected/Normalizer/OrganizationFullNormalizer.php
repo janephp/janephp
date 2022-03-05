@@ -39,6 +39,8 @@ class OrganizationFullNormalizer implements DenormalizerInterface, NormalizerInt
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\OrganizationFull();
+        $validator = new \Github\Validator\OrganizationFullValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -291,6 +293,8 @@ class OrganizationFullNormalizer implements DenormalizerInterface, NormalizerInt
             $data['members_can_create_internal_repositories'] = $object->getMembersCanCreateInternalRepositories();
         }
         $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
+        $validator = new \Github\Validator\OrganizationFullValidator();
+        $validator->validate($data);
         return $data;
     }
 }

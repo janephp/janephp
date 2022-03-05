@@ -39,6 +39,8 @@ class ReposOwnerRepoGitTagsPostBodyNormalizer implements DenormalizerInterface, 
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ReposOwnerRepoGitTagsPostBody();
+        $validator = new \Github\Validator\ReposOwnerRepoGitTagsPostBodyValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -72,6 +74,8 @@ class ReposOwnerRepoGitTagsPostBodyNormalizer implements DenormalizerInterface, 
         if (null !== $object->getTagger()) {
             $data['tagger'] = $this->normalizer->normalize($object->getTagger(), 'json', $context);
         }
+        $validator = new \Github\Validator\ReposOwnerRepoGitTagsPostBodyValidator();
+        $validator->validate($data);
         return $data;
     }
 }

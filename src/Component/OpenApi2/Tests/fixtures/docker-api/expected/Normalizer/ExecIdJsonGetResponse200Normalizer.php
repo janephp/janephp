@@ -39,6 +39,8 @@ class ExecIdJsonGetResponse200Normalizer implements DenormalizerInterface, Norma
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\ExecIdJsonGetResponse200();
+        $validator = new \Docker\Api\Validator\ExecIdJsonGetResponse200Validator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -116,6 +118,8 @@ class ExecIdJsonGetResponse200Normalizer implements DenormalizerInterface, Norma
         if (null !== $object->getPid()) {
             $data['Pid'] = $object->getPid();
         }
+        $validator = new \Docker\Api\Validator\ExecIdJsonGetResponse200Validator();
+        $validator->validate($data);
         return $data;
     }
 }

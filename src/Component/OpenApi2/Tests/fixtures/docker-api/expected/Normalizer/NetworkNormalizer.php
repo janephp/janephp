@@ -39,6 +39,8 @@ class NetworkNormalizer implements DenormalizerInterface, NormalizerInterface, D
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\Network();
+        $validator = new \Docker\Api\Validator\NetworkValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -152,6 +154,8 @@ class NetworkNormalizer implements DenormalizerInterface, NormalizerInterface, D
             }
             $data['Labels'] = $values_2;
         }
+        $validator = new \Docker\Api\Validator\NetworkValidator();
+        $validator->validate($data);
         return $data;
     }
 }

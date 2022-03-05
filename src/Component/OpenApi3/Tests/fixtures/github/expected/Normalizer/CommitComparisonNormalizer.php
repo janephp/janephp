@@ -39,6 +39,8 @@ class CommitComparisonNormalizer implements DenormalizerInterface, NormalizerInt
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\CommitComparison();
+        $validator = new \Github\Validator\CommitComparisonValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -118,6 +120,8 @@ class CommitComparisonNormalizer implements DenormalizerInterface, NormalizerInt
             $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
         }
         $data['files'] = $values_1;
+        $validator = new \Github\Validator\CommitComparisonValidator();
+        $validator->validate($data);
         return $data;
     }
 }

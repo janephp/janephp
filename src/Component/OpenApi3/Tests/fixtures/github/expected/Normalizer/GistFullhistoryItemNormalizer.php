@@ -39,6 +39,8 @@ class GistFullhistoryItemNormalizer implements DenormalizerInterface, Normalizer
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\GistFullhistoryItem();
+        $validator = new \Github\Validator\GistFullhistoryItemValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -83,6 +85,8 @@ class GistFullhistoryItemNormalizer implements DenormalizerInterface, Normalizer
         if (null !== $object->getCommittedAt()) {
             $data['committed_at'] = $object->getCommittedAt();
         }
+        $validator = new \Github\Validator\GistFullhistoryItemValidator();
+        $validator->validate($data);
         return $data;
     }
 }

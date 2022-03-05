@@ -39,6 +39,8 @@ class ActionsBillingUsageMinutesUsedBreakdownNormalizer implements DenormalizerI
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ActionsBillingUsageMinutesUsedBreakdown();
+        $validator = new \Github\Validator\ActionsBillingUsageMinutesUsedBreakdownValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -68,6 +70,8 @@ class ActionsBillingUsageMinutesUsedBreakdownNormalizer implements DenormalizerI
         if (null !== $object->getWINDOWS()) {
             $data['WINDOWS'] = $object->getWINDOWS();
         }
+        $validator = new \Github\Validator\ActionsBillingUsageMinutesUsedBreakdownValidator();
+        $validator->validate($data);
         return $data;
     }
 }

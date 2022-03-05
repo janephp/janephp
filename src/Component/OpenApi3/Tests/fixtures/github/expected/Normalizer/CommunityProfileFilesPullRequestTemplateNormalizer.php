@@ -39,6 +39,8 @@ class CommunityProfileFilesPullRequestTemplateNormalizer implements Denormalizer
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\CommunityProfileFilesPullRequestTemplate();
+        $validator = new \Github\Validator\CommunityProfileFilesPullRequestTemplateValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -58,6 +60,8 @@ class CommunityProfileFilesPullRequestTemplateNormalizer implements Denormalizer
         $data = array();
         $data['url'] = $object->getUrl();
         $data['html_url'] = $object->getHtmlUrl();
+        $validator = new \Github\Validator\CommunityProfileFilesPullRequestTemplateValidator();
+        $validator->validate($data);
         return $data;
     }
 }

@@ -39,6 +39,8 @@ class CommitCommitNormalizer implements DenormalizerInterface, NormalizerInterfa
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\CommitCommit();
+        $validator = new \Github\Validator\CommitCommitValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -86,6 +88,8 @@ class CommitCommitNormalizer implements DenormalizerInterface, NormalizerInterfa
         if (null !== $object->getVerification()) {
             $data['verification'] = $this->normalizer->normalize($object->getVerification(), 'json', $context);
         }
+        $validator = new \Github\Validator\CommitCommitValidator();
+        $validator->validate($data);
         return $data;
     }
 }

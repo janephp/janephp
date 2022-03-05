@@ -39,6 +39,8 @@ class ContainersIdExecPostBodyNormalizer implements DenormalizerInterface, Norma
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\ContainersIdExecPostBody();
+        $validator = new \Docker\Api\Validator\ContainersIdExecPostBodyValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -126,6 +128,8 @@ class ContainersIdExecPostBodyNormalizer implements DenormalizerInterface, Norma
         if (null !== $object->getWorkingDir()) {
             $data['WorkingDir'] = $object->getWorkingDir();
         }
+        $validator = new \Docker\Api\Validator\ContainersIdExecPostBodyValidator();
+        $validator->validate($data);
         return $data;
     }
 }

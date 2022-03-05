@@ -39,6 +39,8 @@ class CheckSuitePreferenceNormalizer implements DenormalizerInterface, Normalize
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\CheckSuitePreference();
+        $validator = new \Github\Validator\CheckSuitePreferenceValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -62,6 +64,8 @@ class CheckSuitePreferenceNormalizer implements DenormalizerInterface, Normalize
         if (null !== $object->getRepository()) {
             $data['repository'] = $this->normalizer->normalize($object->getRepository(), 'json', $context);
         }
+        $validator = new \Github\Validator\CheckSuitePreferenceValidator();
+        $validator->validate($data);
         return $data;
     }
 }

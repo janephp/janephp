@@ -39,6 +39,8 @@ class ProtectedBranchAdminEnforcedNormalizer implements DenormalizerInterface, N
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ProtectedBranchAdminEnforced();
+        $validator = new \Github\Validator\ProtectedBranchAdminEnforcedValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -58,6 +60,8 @@ class ProtectedBranchAdminEnforcedNormalizer implements DenormalizerInterface, N
         $data = array();
         $data['url'] = $object->getUrl();
         $data['enabled'] = $object->getEnabled();
+        $validator = new \Github\Validator\ProtectedBranchAdminEnforcedValidator();
+        $validator->validate($data);
         return $data;
     }
 }

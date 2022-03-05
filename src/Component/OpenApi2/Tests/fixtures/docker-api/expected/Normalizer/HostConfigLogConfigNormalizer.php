@@ -39,6 +39,8 @@ class HostConfigLogConfigNormalizer implements DenormalizerInterface, Normalizer
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\HostConfigLogConfig();
+        $validator = new \Docker\Api\Validator\HostConfigLogConfigValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -70,6 +72,8 @@ class HostConfigLogConfigNormalizer implements DenormalizerInterface, Normalizer
             }
             $data['Config'] = $values;
         }
+        $validator = new \Docker\Api\Validator\HostConfigLogConfigValidator();
+        $validator->validate($data);
         return $data;
     }
 }

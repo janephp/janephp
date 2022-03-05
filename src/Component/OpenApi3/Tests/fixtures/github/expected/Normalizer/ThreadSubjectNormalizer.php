@@ -39,6 +39,8 @@ class ThreadSubjectNormalizer implements DenormalizerInterface, NormalizerInterf
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ThreadSubject();
+        $validator = new \Github\Validator\ThreadSubjectValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -74,6 +76,8 @@ class ThreadSubjectNormalizer implements DenormalizerInterface, NormalizerInterf
         if (null !== $object->getType()) {
             $data['type'] = $object->getType();
         }
+        $validator = new \Github\Validator\ThreadSubjectValidator();
+        $validator->validate($data);
         return $data;
     }
 }

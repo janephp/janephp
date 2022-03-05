@@ -39,6 +39,8 @@ class UserSearchResultItemNormalizer implements DenormalizerInterface, Normalize
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\UserSearchResultItem();
+        $validator = new \Github\Validator\UserSearchResultItemValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -251,6 +253,8 @@ class UserSearchResultItemNormalizer implements DenormalizerInterface, Normalize
         if (null !== $object->getSuspendedAt()) {
             $data['suspended_at'] = $object->getSuspendedAt()->format('Y-m-d\\TH:i:sP');
         }
+        $validator = new \Github\Validator\UserSearchResultItemValidator();
+        $validator->validate($data);
         return $data;
     }
 }

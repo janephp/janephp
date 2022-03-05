@@ -39,6 +39,8 @@ class WorkflowRunUsageBillableNormalizer implements DenormalizerInterface, Norma
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\WorkflowRunUsageBillable();
+        $validator = new \Github\Validator\WorkflowRunUsageBillableValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -68,6 +70,8 @@ class WorkflowRunUsageBillableNormalizer implements DenormalizerInterface, Norma
         if (null !== $object->getWINDOWS()) {
             $data['WINDOWS'] = $this->normalizer->normalize($object->getWINDOWS(), 'json', $context);
         }
+        $validator = new \Github\Validator\WorkflowRunUsageBillableValidator();
+        $validator->validate($data);
         return $data;
     }
 }

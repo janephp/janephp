@@ -39,6 +39,8 @@ class ObjectVersionNormalizer implements DenormalizerInterface, NormalizerInterf
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\ObjectVersion();
+        $validator = new \Docker\Api\Validator\ObjectVersionValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -56,6 +58,8 @@ class ObjectVersionNormalizer implements DenormalizerInterface, NormalizerInterf
         if (null !== $object->getIndex()) {
             $data['Index'] = $object->getIndex();
         }
+        $validator = new \Docker\Api\Validator\ObjectVersionValidator();
+        $validator->validate($data);
         return $data;
     }
 }

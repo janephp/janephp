@@ -39,6 +39,8 @@ class ServiceSpecModeNormalizer implements DenormalizerInterface, NormalizerInte
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\ServiceSpecMode();
+        $validator = new \Docker\Api\Validator\ServiceSpecModeValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -74,6 +76,8 @@ class ServiceSpecModeNormalizer implements DenormalizerInterface, NormalizerInte
         if (null !== $object->getGlobalJob()) {
             $data['GlobalJob'] = $object->getGlobalJob();
         }
+        $validator = new \Docker\Api\Validator\ServiceSpecModeValidator();
+        $validator->validate($data);
         return $data;
     }
 }

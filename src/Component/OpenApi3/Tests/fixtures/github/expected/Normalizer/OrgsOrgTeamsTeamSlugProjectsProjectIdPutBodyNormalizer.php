@@ -39,6 +39,8 @@ class OrgsOrgTeamsTeamSlugProjectsProjectIdPutBodyNormalizer implements Denormal
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\OrgsOrgTeamsTeamSlugProjectsProjectIdPutBody();
+        $validator = new \Github\Validator\OrgsOrgTeamsTeamSlugProjectsProjectIdPutBodyValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -56,6 +58,8 @@ class OrgsOrgTeamsTeamSlugProjectsProjectIdPutBodyNormalizer implements Denormal
         if (null !== $object->getPermission()) {
             $data['permission'] = $object->getPermission();
         }
+        $validator = new \Github\Validator\OrgsOrgTeamsTeamSlugProjectsProjectIdPutBodyValidator();
+        $validator->validate($data);
         return $data;
     }
 }

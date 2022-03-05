@@ -39,6 +39,8 @@ class NotificationsPutResponse202Normalizer implements DenormalizerInterface, No
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\NotificationsPutResponse202();
+        $validator = new \Github\Validator\NotificationsPutResponse202Validator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -56,6 +58,8 @@ class NotificationsPutResponse202Normalizer implements DenormalizerInterface, No
         if (null !== $object->getMessage()) {
             $data['message'] = $object->getMessage();
         }
+        $validator = new \Github\Validator\NotificationsPutResponse202Validator();
+        $validator->validate($data);
         return $data;
     }
 }

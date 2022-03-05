@@ -39,6 +39,8 @@ class OrgsOrgTeamsTeamSlugDiscussionsPostBodyNormalizer implements DenormalizerI
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\OrgsOrgTeamsTeamSlugDiscussionsPostBody();
+        $validator = new \Github\Validator\OrgsOrgTeamsTeamSlugDiscussionsPostBodyValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -64,6 +66,8 @@ class OrgsOrgTeamsTeamSlugDiscussionsPostBodyNormalizer implements DenormalizerI
         if (null !== $object->getPrivate()) {
             $data['private'] = $object->getPrivate();
         }
+        $validator = new \Github\Validator\OrgsOrgTeamsTeamSlugDiscussionsPostBodyValidator();
+        $validator->validate($data);
         return $data;
     }
 }

@@ -39,6 +39,8 @@ class GistCommitNormalizer implements DenormalizerInterface, NormalizerInterface
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\GistCommit();
+        $validator = new \Github\Validator\GistCommitValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -73,6 +75,8 @@ class GistCommitNormalizer implements DenormalizerInterface, NormalizerInterface
         $data['user'] = $this->normalizer->normalize($object->getUser(), 'json', $context);
         $data['change_status'] = $this->normalizer->normalize($object->getChangeStatus(), 'json', $context);
         $data['committed_at'] = $object->getCommittedAt()->format('Y-m-d\\TH:i:sP');
+        $validator = new \Github\Validator\GistCommitValidator();
+        $validator->validate($data);
         return $data;
     }
 }

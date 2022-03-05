@@ -39,6 +39,8 @@ class ResourcesUlimitsItemNormalizer implements DenormalizerInterface, Normalize
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\ResourcesUlimitsItem();
+        $validator = new \Docker\Api\Validator\ResourcesUlimitsItemValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -68,6 +70,8 @@ class ResourcesUlimitsItemNormalizer implements DenormalizerInterface, Normalize
         if (null !== $object->getHard()) {
             $data['Hard'] = $object->getHard();
         }
+        $validator = new \Docker\Api\Validator\ResourcesUlimitsItemValidator();
+        $validator->validate($data);
         return $data;
     }
 }

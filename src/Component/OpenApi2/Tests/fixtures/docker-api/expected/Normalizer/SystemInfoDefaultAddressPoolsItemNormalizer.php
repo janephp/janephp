@@ -39,6 +39,8 @@ class SystemInfoDefaultAddressPoolsItemNormalizer implements DenormalizerInterfa
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\SystemInfoDefaultAddressPoolsItem();
+        $validator = new \Docker\Api\Validator\SystemInfoDefaultAddressPoolsItemValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -62,6 +64,8 @@ class SystemInfoDefaultAddressPoolsItemNormalizer implements DenormalizerInterfa
         if (null !== $object->getSize()) {
             $data['Size'] = $object->getSize();
         }
+        $validator = new \Docker\Api\Validator\SystemInfoDefaultAddressPoolsItemValidator();
+        $validator->validate($data);
         return $data;
     }
 }

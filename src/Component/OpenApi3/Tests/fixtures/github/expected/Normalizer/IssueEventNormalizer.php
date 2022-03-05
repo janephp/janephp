@@ -39,6 +39,8 @@ class IssueEventNormalizer implements DenormalizerInterface, NormalizerInterface
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\IssueEvent();
+        $validator = new \Github\Validator\IssueEventValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -184,6 +186,8 @@ class IssueEventNormalizer implements DenormalizerInterface, NormalizerInterface
         if (null !== $object->getLockReason()) {
             $data['lock_reason'] = $object->getLockReason();
         }
+        $validator = new \Github\Validator\IssueEventValidator();
+        $validator->validate($data);
         return $data;
     }
 }

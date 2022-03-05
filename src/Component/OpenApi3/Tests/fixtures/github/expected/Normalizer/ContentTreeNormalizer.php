@@ -39,6 +39,8 @@ class ContentTreeNormalizer implements DenormalizerInterface, NormalizerInterfac
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ContentTree();
+        $validator = new \Github\Validator\ContentTreeValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -113,6 +115,8 @@ class ContentTreeNormalizer implements DenormalizerInterface, NormalizerInterfac
             $data['entries'] = $values;
         }
         $data['_links'] = $this->normalizer->normalize($object->getLinks(), 'json', $context);
+        $validator = new \Github\Validator\ContentTreeValidator();
+        $validator->validate($data);
         return $data;
     }
 }

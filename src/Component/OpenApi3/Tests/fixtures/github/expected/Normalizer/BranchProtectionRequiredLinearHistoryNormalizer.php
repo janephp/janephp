@@ -39,6 +39,8 @@ class BranchProtectionRequiredLinearHistoryNormalizer implements DenormalizerInt
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\BranchProtectionRequiredLinearHistory();
+        $validator = new \Github\Validator\BranchProtectionRequiredLinearHistoryValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -56,6 +58,8 @@ class BranchProtectionRequiredLinearHistoryNormalizer implements DenormalizerInt
         if (null !== $object->getEnabled()) {
             $data['enabled'] = $object->getEnabled();
         }
+        $validator = new \Github\Validator\BranchProtectionRequiredLinearHistoryValidator();
+        $validator->validate($data);
         return $data;
     }
 }

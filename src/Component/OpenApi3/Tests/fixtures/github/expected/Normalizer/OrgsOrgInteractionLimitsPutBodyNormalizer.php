@@ -39,6 +39,8 @@ class OrgsOrgInteractionLimitsPutBodyNormalizer implements DenormalizerInterface
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\OrgsOrgInteractionLimitsPutBody();
+        $validator = new \Github\Validator\OrgsOrgInteractionLimitsPutBodyValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -54,6 +56,8 @@ class OrgsOrgInteractionLimitsPutBodyNormalizer implements DenormalizerInterface
     {
         $data = array();
         $data['limit'] = $object->getLimit();
+        $validator = new \Github\Validator\OrgsOrgInteractionLimitsPutBodyValidator();
+        $validator->validate($data);
         return $data;
     }
 }

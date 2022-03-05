@@ -39,6 +39,8 @@ class ReposOwnerRepoCheckRunsPostBodyOutputAnnotationsItemNormalizer implements 
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ReposOwnerRepoCheckRunsPostBodyOutputAnnotationsItem();
+        $validator = new \Github\Validator\ReposOwnerRepoCheckRunsPostBodyOutputAnnotationsItemValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -94,6 +96,8 @@ class ReposOwnerRepoCheckRunsPostBodyOutputAnnotationsItemNormalizer implements 
         if (null !== $object->getRawDetails()) {
             $data['raw_details'] = $object->getRawDetails();
         }
+        $validator = new \Github\Validator\ReposOwnerRepoCheckRunsPostBodyOutputAnnotationsItemValidator();
+        $validator->validate($data);
         return $data;
     }
 }

@@ -39,6 +39,8 @@ class ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyNormalizer implemen
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ReposOwnerRepoPullsPullNumberRequestedReviewersPostBody();
+        $validator = new \Github\Validator\ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -78,6 +80,8 @@ class ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyNormalizer implemen
             }
             $data['team_reviewers'] = $values_1;
         }
+        $validator = new \Github\Validator\ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyValidator();
+        $validator->validate($data);
         return $data;
     }
 }

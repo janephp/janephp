@@ -39,6 +39,8 @@ class SystemVersionNormalizer implements DenormalizerInterface, NormalizerInterf
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\SystemVersion();
+        $validator = new \Docker\Api\Validator\SystemVersionValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -130,6 +132,8 @@ class SystemVersionNormalizer implements DenormalizerInterface, NormalizerInterf
         if (null !== $object->getBuildTime()) {
             $data['BuildTime'] = $object->getBuildTime();
         }
+        $validator = new \Docker\Api\Validator\SystemVersionValidator();
+        $validator->validate($data);
         return $data;
     }
 }

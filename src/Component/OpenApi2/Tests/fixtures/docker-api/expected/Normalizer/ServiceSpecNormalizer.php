@@ -39,6 +39,8 @@ class ServiceSpecNormalizer implements DenormalizerInterface, NormalizerInterfac
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\ServiceSpec();
+        $validator = new \Docker\Api\Validator\ServiceSpecValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -114,6 +116,8 @@ class ServiceSpecNormalizer implements DenormalizerInterface, NormalizerInterfac
         if (null !== $object->getEndpointSpec()) {
             $data['EndpointSpec'] = $this->normalizer->normalize($object->getEndpointSpec(), 'json', $context);
         }
+        $validator = new \Docker\Api\Validator\ServiceSpecValidator();
+        $validator->validate($data);
         return $data;
     }
 }

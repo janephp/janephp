@@ -39,6 +39,8 @@ class IssueClosedByNormalizer implements DenormalizerInterface, NormalizerInterf
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\IssueClosedBy();
+        $validator = new \Github\Validator\IssueClosedByValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -131,6 +133,8 @@ class IssueClosedByNormalizer implements DenormalizerInterface, NormalizerInterf
         if (null !== $object->getStarredAt()) {
             $data['starred_at'] = $object->getStarredAt();
         }
+        $validator = new \Github\Validator\IssueClosedByValidator();
+        $validator->validate($data);
         return $data;
     }
 }

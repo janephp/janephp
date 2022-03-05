@@ -39,6 +39,8 @@ class EndpointSettingsNormalizer implements DenormalizerInterface, NormalizerInt
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\EndpointSettings();
+        $validator = new \Docker\Api\Validator\EndpointSettingsValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -158,6 +160,8 @@ class EndpointSettingsNormalizer implements DenormalizerInterface, NormalizerInt
             }
             $data['DriverOpts'] = $values_2;
         }
+        $validator = new \Docker\Api\Validator\EndpointSettingsValidator();
+        $validator->validate($data);
         return $data;
     }
 }

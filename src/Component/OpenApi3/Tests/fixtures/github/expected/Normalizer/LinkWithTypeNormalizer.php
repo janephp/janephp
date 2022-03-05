@@ -39,6 +39,8 @@ class LinkWithTypeNormalizer implements DenormalizerInterface, NormalizerInterfa
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\LinkWithType();
+        $validator = new \Github\Validator\LinkWithTypeValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -58,6 +60,8 @@ class LinkWithTypeNormalizer implements DenormalizerInterface, NormalizerInterfa
         $data = array();
         $data['href'] = $object->getHref();
         $data['type'] = $object->getType();
+        $validator = new \Github\Validator\LinkWithTypeValidator();
+        $validator->validate($data);
         return $data;
     }
 }

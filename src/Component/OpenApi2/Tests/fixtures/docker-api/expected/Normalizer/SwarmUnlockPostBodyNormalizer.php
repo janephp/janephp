@@ -39,6 +39,8 @@ class SwarmUnlockPostBodyNormalizer implements DenormalizerInterface, Normalizer
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\SwarmUnlockPostBody();
+        $validator = new \Docker\Api\Validator\SwarmUnlockPostBodyValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -56,6 +58,8 @@ class SwarmUnlockPostBodyNormalizer implements DenormalizerInterface, Normalizer
         if (null !== $object->getUnlockKey()) {
             $data['UnlockKey'] = $object->getUnlockKey();
         }
+        $validator = new \Docker\Api\Validator\SwarmUnlockPostBodyValidator();
+        $validator->validate($data);
         return $data;
     }
 }

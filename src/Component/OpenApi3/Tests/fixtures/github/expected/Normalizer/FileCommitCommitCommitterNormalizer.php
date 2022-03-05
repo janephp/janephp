@@ -39,6 +39,8 @@ class FileCommitCommitCommitterNormalizer implements DenormalizerInterface, Norm
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\FileCommitCommitCommitter();
+        $validator = new \Github\Validator\FileCommitCommitCommitterValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -68,6 +70,8 @@ class FileCommitCommitCommitterNormalizer implements DenormalizerInterface, Norm
         if (null !== $object->getEmail()) {
             $data['email'] = $object->getEmail();
         }
+        $validator = new \Github\Validator\FileCommitCommitCommitterValidator();
+        $validator->validate($data);
         return $data;
     }
 }

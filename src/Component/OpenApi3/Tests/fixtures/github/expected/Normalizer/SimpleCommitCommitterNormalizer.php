@@ -39,6 +39,8 @@ class SimpleCommitCommitterNormalizer implements DenormalizerInterface, Normaliz
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\SimpleCommitCommitter();
+        $validator = new \Github\Validator\SimpleCommitCommitterValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -58,6 +60,8 @@ class SimpleCommitCommitterNormalizer implements DenormalizerInterface, Normaliz
         $data = array();
         $data['name'] = $object->getName();
         $data['email'] = $object->getEmail();
+        $validator = new \Github\Validator\SimpleCommitCommitterValidator();
+        $validator->validate($data);
         return $data;
     }
 }

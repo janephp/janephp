@@ -39,6 +39,8 @@ class PlatformNormalizer implements DenormalizerInterface, NormalizerInterface, 
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\Platform();
+        $validator = new \Docker\Api\Validator\PlatformValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -62,6 +64,8 @@ class PlatformNormalizer implements DenormalizerInterface, NormalizerInterface, 
         if (null !== $object->getOS()) {
             $data['OS'] = $object->getOS();
         }
+        $validator = new \Docker\Api\Validator\PlatformValidator();
+        $validator->validate($data);
         return $data;
     }
 }

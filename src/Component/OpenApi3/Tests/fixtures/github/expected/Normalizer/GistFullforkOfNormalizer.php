@@ -39,6 +39,8 @@ class GistFullforkOfNormalizer implements DenormalizerInterface, NormalizerInter
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\GistFullforkOf();
+        $validator = new \Github\Validator\GistFullforkOfValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -175,6 +177,8 @@ class GistFullforkOfNormalizer implements DenormalizerInterface, NormalizerInter
         if (null !== $object->getTruncated()) {
             $data['truncated'] = $object->getTruncated();
         }
+        $validator = new \Github\Validator\GistFullforkOfValidator();
+        $validator->validate($data);
         return $data;
     }
 }

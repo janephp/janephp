@@ -39,6 +39,8 @@ class PullRequestSimpleHeadNormalizer implements DenormalizerInterface, Normaliz
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\PullRequestSimpleHead();
+        $validator = new \Github\Validator\PullRequestSimpleHeadValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -73,6 +75,8 @@ class PullRequestSimpleHeadNormalizer implements DenormalizerInterface, Normaliz
         $data['repo'] = $this->normalizer->normalize($object->getRepo(), 'json', $context);
         $data['sha'] = $object->getSha();
         $data['user'] = $this->normalizer->normalize($object->getUser(), 'json', $context);
+        $validator = new \Github\Validator\PullRequestSimpleHeadValidator();
+        $validator->validate($data);
         return $data;
     }
 }

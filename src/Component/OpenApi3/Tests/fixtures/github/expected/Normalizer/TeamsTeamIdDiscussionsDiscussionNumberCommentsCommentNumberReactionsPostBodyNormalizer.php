@@ -39,6 +39,8 @@ class TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBo
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBody();
+        $validator = new \Github\Validator\TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBodyValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -54,6 +56,8 @@ class TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBo
     {
         $data = array();
         $data['content'] = $object->getContent();
+        $validator = new \Github\Validator\TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBodyValidator();
+        $validator->validate($data);
         return $data;
     }
 }

@@ -39,6 +39,8 @@ class ApplicationGrantUserNormalizer implements DenormalizerInterface, Normalize
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ApplicationGrantUser();
+        $validator = new \Github\Validator\ApplicationGrantUserValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -131,6 +133,8 @@ class ApplicationGrantUserNormalizer implements DenormalizerInterface, Normalize
         if (null !== $object->getStarredAt()) {
             $data['starred_at'] = $object->getStarredAt();
         }
+        $validator = new \Github\Validator\ApplicationGrantUserValidator();
+        $validator->validate($data);
         return $data;
     }
 }

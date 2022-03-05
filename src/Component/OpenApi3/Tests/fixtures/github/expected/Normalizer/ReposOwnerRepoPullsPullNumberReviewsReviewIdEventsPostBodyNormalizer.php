@@ -39,6 +39,8 @@ class ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBodyNormalizer imple
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBody();
+        $validator = new \Github\Validator\ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBodyValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -60,6 +62,8 @@ class ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBodyNormalizer imple
             $data['body'] = $object->getBody();
         }
         $data['event'] = $object->getEvent();
+        $validator = new \Github\Validator\ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBodyValidator();
+        $validator->validate($data);
         return $data;
     }
 }

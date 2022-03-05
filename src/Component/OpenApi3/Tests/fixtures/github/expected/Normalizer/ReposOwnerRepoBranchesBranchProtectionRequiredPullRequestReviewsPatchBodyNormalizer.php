@@ -39,6 +39,8 @@ class ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyN
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBody();
+        $validator = new \Github\Validator\ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -74,6 +76,8 @@ class ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyN
         if (null !== $object->getRequiredApprovingReviewCount()) {
             $data['required_approving_review_count'] = $object->getRequiredApprovingReviewCount();
         }
+        $validator = new \Github\Validator\ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyValidator();
+        $validator->validate($data);
         return $data;
     }
 }

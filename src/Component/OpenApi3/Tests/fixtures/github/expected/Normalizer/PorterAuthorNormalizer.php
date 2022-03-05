@@ -39,6 +39,8 @@ class PorterAuthorNormalizer implements DenormalizerInterface, NormalizerInterfa
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\PorterAuthor();
+        $validator = new \Github\Validator\PorterAuthorValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -78,6 +80,8 @@ class PorterAuthorNormalizer implements DenormalizerInterface, NormalizerInterfa
         $data['name'] = $object->getName();
         $data['url'] = $object->getUrl();
         $data['import_url'] = $object->getImportUrl();
+        $validator = new \Github\Validator\PorterAuthorValidator();
+        $validator->validate($data);
         return $data;
     }
 }

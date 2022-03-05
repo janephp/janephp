@@ -39,6 +39,8 @@ class FileCommitCommitParentsItemNormalizer implements DenormalizerInterface, No
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\FileCommitCommitParentsItem();
+        $validator = new \Github\Validator\FileCommitCommitParentsItemValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -68,6 +70,8 @@ class FileCommitCommitParentsItemNormalizer implements DenormalizerInterface, No
         if (null !== $object->getSha()) {
             $data['sha'] = $object->getSha();
         }
+        $validator = new \Github\Validator\FileCommitCommitParentsItemValidator();
+        $validator->validate($data);
         return $data;
     }
 }

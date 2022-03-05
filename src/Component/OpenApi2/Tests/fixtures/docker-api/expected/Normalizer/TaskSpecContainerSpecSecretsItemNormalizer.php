@@ -39,6 +39,8 @@ class TaskSpecContainerSpecSecretsItemNormalizer implements DenormalizerInterfac
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\TaskSpecContainerSpecSecretsItem();
+        $validator = new \Docker\Api\Validator\TaskSpecContainerSpecSecretsItemValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -68,6 +70,8 @@ class TaskSpecContainerSpecSecretsItemNormalizer implements DenormalizerInterfac
         if (null !== $object->getSecretName()) {
             $data['SecretName'] = $object->getSecretName();
         }
+        $validator = new \Docker\Api\Validator\TaskSpecContainerSpecSecretsItemValidator();
+        $validator->validate($data);
         return $data;
     }
 }

@@ -39,6 +39,8 @@ class BranchRestrictionPolicyAppsItemPermissionsNormalizer implements Denormaliz
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\BranchRestrictionPolicyAppsItemPermissions();
+        $validator = new \Github\Validator\BranchRestrictionPolicyAppsItemPermissionsValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -74,6 +76,8 @@ class BranchRestrictionPolicyAppsItemPermissionsNormalizer implements Denormaliz
         if (null !== $object->getSingleFile()) {
             $data['single_file'] = $object->getSingleFile();
         }
+        $validator = new \Github\Validator\BranchRestrictionPolicyAppsItemPermissionsValidator();
+        $validator->validate($data);
         return $data;
     }
 }

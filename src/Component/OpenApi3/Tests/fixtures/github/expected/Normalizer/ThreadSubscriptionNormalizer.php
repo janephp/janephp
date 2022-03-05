@@ -39,6 +39,8 @@ class ThreadSubscriptionNormalizer implements DenormalizerInterface, NormalizerI
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ThreadSubscription();
+        $validator = new \Github\Validator\ThreadSubscriptionValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -88,6 +90,8 @@ class ThreadSubscriptionNormalizer implements DenormalizerInterface, NormalizerI
         if (null !== $object->getRepositoryUrl()) {
             $data['repository_url'] = $object->getRepositoryUrl();
         }
+        $validator = new \Github\Validator\ThreadSubscriptionValidator();
+        $validator->validate($data);
         return $data;
     }
 }

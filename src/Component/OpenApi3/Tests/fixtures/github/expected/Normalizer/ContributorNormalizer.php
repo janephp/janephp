@@ -39,6 +39,8 @@ class ContributorNormalizer implements DenormalizerInterface, NormalizerInterfac
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\Contributor();
+        $validator = new \Github\Validator\ContributorValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -175,6 +177,8 @@ class ContributorNormalizer implements DenormalizerInterface, NormalizerInterfac
         if (null !== $object->getName()) {
             $data['name'] = $object->getName();
         }
+        $validator = new \Github\Validator\ContributorValidator();
+        $validator->validate($data);
         return $data;
     }
 }

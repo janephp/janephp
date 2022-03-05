@@ -39,6 +39,8 @@ class ReposOwnerRepoCommentsCommentIdReactionsPostBodyNormalizer implements Deno
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ReposOwnerRepoCommentsCommentIdReactionsPostBody();
+        $validator = new \Github\Validator\ReposOwnerRepoCommentsCommentIdReactionsPostBodyValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -54,6 +56,8 @@ class ReposOwnerRepoCommentsCommentIdReactionsPostBodyNormalizer implements Deno
     {
         $data = array();
         $data['content'] = $object->getContent();
+        $validator = new \Github\Validator\ReposOwnerRepoCommentsCommentIdReactionsPostBodyValidator();
+        $validator->validate($data);
         return $data;
     }
 }

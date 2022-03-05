@@ -39,6 +39,8 @@ class ScimUserEmailsItemNormalizer implements DenormalizerInterface, NormalizerI
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ScimUserEmailsItem();
+        $validator = new \Github\Validator\ScimUserEmailsItemValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -60,6 +62,8 @@ class ScimUserEmailsItemNormalizer implements DenormalizerInterface, NormalizerI
         if (null !== $object->getPrimary()) {
             $data['primary'] = $object->getPrimary();
         }
+        $validator = new \Github\Validator\ScimUserEmailsItemValidator();
+        $validator->validate($data);
         return $data;
     }
 }

@@ -39,6 +39,8 @@ class NotificationsPutBodyNormalizer implements DenormalizerInterface, Normalize
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\NotificationsPutBody();
+        $validator = new \Github\Validator\NotificationsPutBodyValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -62,6 +64,8 @@ class NotificationsPutBodyNormalizer implements DenormalizerInterface, Normalize
         if (null !== $object->getRead()) {
             $data['read'] = $object->getRead();
         }
+        $validator = new \Github\Validator\NotificationsPutBodyValidator();
+        $validator->validate($data);
         return $data;
     }
 }

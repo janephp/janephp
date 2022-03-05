@@ -39,6 +39,8 @@ class PullRequestMilestoneNormalizer implements DenormalizerInterface, Normalize
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\PullRequestMilestone();
+        $validator = new \Github\Validator\PullRequestMilestoneValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -126,6 +128,8 @@ class PullRequestMilestoneNormalizer implements DenormalizerInterface, Normalize
         $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
         $data['closed_at'] = $object->getClosedAt()->format('Y-m-d\\TH:i:sP');
         $data['due_on'] = $object->getDueOn()->format('Y-m-d\\TH:i:sP');
+        $validator = new \Github\Validator\PullRequestMilestoneValidator();
+        $validator->validate($data);
         return $data;
     }
 }

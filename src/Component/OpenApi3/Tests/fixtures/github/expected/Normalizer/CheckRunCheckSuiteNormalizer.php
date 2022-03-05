@@ -39,6 +39,8 @@ class CheckRunCheckSuiteNormalizer implements DenormalizerInterface, NormalizerI
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\CheckRunCheckSuite();
+        $validator = new \Github\Validator\CheckRunCheckSuiteValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -54,6 +56,8 @@ class CheckRunCheckSuiteNormalizer implements DenormalizerInterface, NormalizerI
     {
         $data = array();
         $data['id'] = $object->getId();
+        $validator = new \Github\Validator\CheckRunCheckSuiteValidator();
+        $validator->validate($data);
         return $data;
     }
 }

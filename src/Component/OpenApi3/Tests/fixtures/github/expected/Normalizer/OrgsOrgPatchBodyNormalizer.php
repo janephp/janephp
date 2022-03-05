@@ -39,6 +39,8 @@ class OrgsOrgPatchBodyNormalizer implements DenormalizerInterface, NormalizerInt
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\OrgsOrgPatchBody();
+        $validator = new \Github\Validator\OrgsOrgPatchBodyValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -146,6 +148,8 @@ class OrgsOrgPatchBodyNormalizer implements DenormalizerInterface, NormalizerInt
         if (null !== $object->getBlog()) {
             $data['blog'] = $object->getBlog();
         }
+        $validator = new \Github\Validator\OrgsOrgPatchBodyValidator();
+        $validator->validate($data);
         return $data;
     }
 }

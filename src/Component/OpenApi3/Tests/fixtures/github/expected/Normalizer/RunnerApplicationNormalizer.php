@@ -39,6 +39,8 @@ class RunnerApplicationNormalizer implements DenormalizerInterface, NormalizerIn
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\RunnerApplication();
+        $validator = new \Github\Validator\RunnerApplicationValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -74,6 +76,8 @@ class RunnerApplicationNormalizer implements DenormalizerInterface, NormalizerIn
         if (null !== $object->getFilename()) {
             $data['filename'] = $object->getFilename();
         }
+        $validator = new \Github\Validator\RunnerApplicationValidator();
+        $validator->validate($data);
         return $data;
     }
 }

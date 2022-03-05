@@ -39,6 +39,8 @@ class ProjectsColumnsColumnIdCardsPostResponse503Normalizer implements Denormali
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ProjectsColumnsColumnIdCardsPostResponse503();
+        $validator = new \Github\Validator\ProjectsColumnsColumnIdCardsPostResponse503Validator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -82,6 +84,8 @@ class ProjectsColumnsColumnIdCardsPostResponse503Normalizer implements Denormali
             }
             $data['errors'] = $values;
         }
+        $validator = new \Github\Validator\ProjectsColumnsColumnIdCardsPostResponse503Validator();
+        $validator->validate($data);
         return $data;
     }
 }

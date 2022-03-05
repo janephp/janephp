@@ -39,6 +39,8 @@ class HookResponseNormalizer implements DenormalizerInterface, NormalizerInterfa
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\HookResponse();
+        $validator = new \Github\Validator\HookResponseValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -71,6 +73,8 @@ class HookResponseNormalizer implements DenormalizerInterface, NormalizerInterfa
         $data['code'] = $object->getCode();
         $data['status'] = $object->getStatus();
         $data['message'] = $object->getMessage();
+        $validator = new \Github\Validator\HookResponseValidator();
+        $validator->validate($data);
         return $data;
     }
 }

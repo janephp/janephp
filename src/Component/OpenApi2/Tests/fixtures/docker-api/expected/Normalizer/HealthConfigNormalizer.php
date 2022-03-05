@@ -39,6 +39,8 @@ class HealthConfigNormalizer implements DenormalizerInterface, NormalizerInterfa
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\HealthConfig();
+        $validator = new \Docker\Api\Validator\HealthConfigValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -88,6 +90,8 @@ class HealthConfigNormalizer implements DenormalizerInterface, NormalizerInterfa
         if (null !== $object->getStartPeriod()) {
             $data['StartPeriod'] = $object->getStartPeriod();
         }
+        $validator = new \Docker\Api\Validator\HealthConfigValidator();
+        $validator->validate($data);
         return $data;
     }
 }

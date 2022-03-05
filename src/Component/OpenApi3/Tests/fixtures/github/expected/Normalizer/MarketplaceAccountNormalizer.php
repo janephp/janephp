@@ -39,6 +39,8 @@ class MarketplaceAccountNormalizer implements DenormalizerInterface, NormalizerI
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\MarketplaceAccount();
+        $validator = new \Github\Validator\MarketplaceAccountValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -90,6 +92,8 @@ class MarketplaceAccountNormalizer implements DenormalizerInterface, NormalizerI
         if (null !== $object->getOrganizationBillingEmail()) {
             $data['organization_billing_email'] = $object->getOrganizationBillingEmail();
         }
+        $validator = new \Github\Validator\MarketplaceAccountValidator();
+        $validator->validate($data);
         return $data;
     }
 }

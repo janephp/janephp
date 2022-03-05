@@ -39,6 +39,8 @@ class CredentialAuthorizationNormalizer implements DenormalizerInterface, Normal
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\CredentialAuthorization();
+        $validator = new \Github\Validator\CredentialAuthorizationValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -101,6 +103,8 @@ class CredentialAuthorizationNormalizer implements DenormalizerInterface, Normal
         if (null !== $object->getCredentialAccessedAt()) {
             $data['credential_accessed_at'] = $object->getCredentialAccessedAt()->format('Y-m-d\\TH:i:sP');
         }
+        $validator = new \Github\Validator\CredentialAuthorizationValidator();
+        $validator->validate($data);
         return $data;
     }
 }

@@ -39,6 +39,8 @@ class ReferrerTrafficNormalizer implements DenormalizerInterface, NormalizerInte
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ReferrerTraffic();
+        $validator = new \Github\Validator\ReferrerTrafficValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -62,6 +64,8 @@ class ReferrerTrafficNormalizer implements DenormalizerInterface, NormalizerInte
         $data['referrer'] = $object->getReferrer();
         $data['count'] = $object->getCount();
         $data['uniques'] = $object->getUniques();
+        $validator = new \Github\Validator\ReferrerTrafficValidator();
+        $validator->validate($data);
         return $data;
     }
 }

@@ -39,6 +39,8 @@ class ScopedInstallationNormalizer implements DenormalizerInterface, NormalizerI
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ScopedInstallation();
+        $validator = new \Github\Validator\ScopedInstallationValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -76,6 +78,8 @@ class ScopedInstallationNormalizer implements DenormalizerInterface, NormalizerI
         $data['single_file_name'] = $object->getSingleFileName();
         $data['repositories_url'] = $object->getRepositoriesUrl();
         $data['account'] = $this->normalizer->normalize($object->getAccount(), 'json', $context);
+        $validator = new \Github\Validator\ScopedInstallationValidator();
+        $validator->validate($data);
         return $data;
     }
 }

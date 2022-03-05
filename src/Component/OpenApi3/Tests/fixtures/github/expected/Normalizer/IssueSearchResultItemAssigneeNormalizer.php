@@ -39,6 +39,8 @@ class IssueSearchResultItemAssigneeNormalizer implements DenormalizerInterface, 
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\IssueSearchResultItemAssignee();
+        $validator = new \Github\Validator\IssueSearchResultItemAssigneeValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -131,6 +133,8 @@ class IssueSearchResultItemAssigneeNormalizer implements DenormalizerInterface, 
         if (null !== $object->getStarredAt()) {
             $data['starred_at'] = $object->getStarredAt();
         }
+        $validator = new \Github\Validator\IssueSearchResultItemAssigneeValidator();
+        $validator->validate($data);
         return $data;
     }
 }

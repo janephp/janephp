@@ -39,6 +39,8 @@ class DistributionInspectNormalizer implements DenormalizerInterface, Normalizer
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\DistributionInspect();
+        $validator = new \Docker\Api\Validator\DistributionInspectValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -66,6 +68,8 @@ class DistributionInspectNormalizer implements DenormalizerInterface, Normalizer
             $values[] = $this->normalizer->normalize($value, 'json', $context);
         }
         $data['Platforms'] = $values;
+        $validator = new \Docker\Api\Validator\DistributionInspectValidator();
+        $validator->validate($data);
         return $data;
     }
 }

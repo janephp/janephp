@@ -39,6 +39,8 @@ class OrgsOrgActionsSecretsSecretNameRepositoriesPutBodyNormalizer implements De
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\OrgsOrgActionsSecretsSecretNameRepositoriesPutBody();
+        $validator = new \Github\Validator\OrgsOrgActionsSecretsSecretNameRepositoriesPutBodyValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -64,6 +66,8 @@ class OrgsOrgActionsSecretsSecretNameRepositoriesPutBodyNormalizer implements De
             }
             $data['selected_repository_ids'] = $values;
         }
+        $validator = new \Github\Validator\OrgsOrgActionsSecretsSecretNameRepositoriesPutBodyValidator();
+        $validator->validate($data);
         return $data;
     }
 }

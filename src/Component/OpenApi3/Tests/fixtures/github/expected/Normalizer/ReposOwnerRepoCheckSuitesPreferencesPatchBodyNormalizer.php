@@ -39,6 +39,8 @@ class ReposOwnerRepoCheckSuitesPreferencesPatchBodyNormalizer implements Denorma
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ReposOwnerRepoCheckSuitesPreferencesPatchBody();
+        $validator = new \Github\Validator\ReposOwnerRepoCheckSuitesPreferencesPatchBodyValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -64,6 +66,8 @@ class ReposOwnerRepoCheckSuitesPreferencesPatchBodyNormalizer implements Denorma
             }
             $data['auto_trigger_checks'] = $values;
         }
+        $validator = new \Github\Validator\ReposOwnerRepoCheckSuitesPreferencesPatchBodyValidator();
+        $validator->validate($data);
         return $data;
     }
 }

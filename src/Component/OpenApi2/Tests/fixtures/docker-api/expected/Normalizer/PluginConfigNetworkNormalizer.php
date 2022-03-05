@@ -39,6 +39,8 @@ class PluginConfigNetworkNormalizer implements DenormalizerInterface, Normalizer
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\PluginConfigNetwork();
+        $validator = new \Docker\Api\Validator\PluginConfigNetworkValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -54,6 +56,8 @@ class PluginConfigNetworkNormalizer implements DenormalizerInterface, Normalizer
     {
         $data = array();
         $data['Type'] = $object->getType();
+        $validator = new \Docker\Api\Validator\PluginConfigNetworkValidator();
+        $validator->validate($data);
         return $data;
     }
 }

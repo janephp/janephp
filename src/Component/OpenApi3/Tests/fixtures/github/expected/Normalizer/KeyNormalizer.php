@@ -39,6 +39,8 @@ class KeyNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\Key();
+        $validator = new \Github\Validator\KeyValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -98,6 +100,8 @@ class KeyNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
         if (null !== $object->getReadOnly()) {
             $data['read_only'] = $object->getReadOnly();
         }
+        $validator = new \Github\Validator\KeyValidator();
+        $validator->validate($data);
         return $data;
     }
 }

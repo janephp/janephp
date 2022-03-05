@@ -39,6 +39,8 @@ class ContainersCreatePostBodyNormalizer implements DenormalizerInterface, Norma
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\ContainersCreatePostBody();
+        $validator = new \Docker\Api\Validator\ContainersCreatePostBodyValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -276,6 +278,8 @@ class ContainersCreatePostBodyNormalizer implements DenormalizerInterface, Norma
         if (null !== $object->getNetworkingConfig()) {
             $data['NetworkingConfig'] = $this->normalizer->normalize($object->getNetworkingConfig(), 'json', $context);
         }
+        $validator = new \Docker\Api\Validator\ContainersCreatePostBodyValidator();
+        $validator->validate($data);
         return $data;
     }
 }

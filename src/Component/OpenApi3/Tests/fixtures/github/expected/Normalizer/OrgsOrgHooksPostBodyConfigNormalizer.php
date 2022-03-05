@@ -39,6 +39,8 @@ class OrgsOrgHooksPostBodyConfigNormalizer implements DenormalizerInterface, Nor
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\OrgsOrgHooksPostBodyConfig();
+        $validator = new \Github\Validator\OrgsOrgHooksPostBodyConfigValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -84,6 +86,8 @@ class OrgsOrgHooksPostBodyConfigNormalizer implements DenormalizerInterface, Nor
         if (null !== $object->getPassword()) {
             $data['password'] = $object->getPassword();
         }
+        $validator = new \Github\Validator\OrgsOrgHooksPostBodyConfigValidator();
+        $validator->validate($data);
         return $data;
     }
 }

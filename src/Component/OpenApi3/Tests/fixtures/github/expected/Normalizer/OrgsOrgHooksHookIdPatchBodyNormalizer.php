@@ -39,6 +39,8 @@ class OrgsOrgHooksHookIdPatchBodyNormalizer implements DenormalizerInterface, No
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\OrgsOrgHooksHookIdPatchBody();
+        $validator = new \Github\Validator\OrgsOrgHooksHookIdPatchBodyValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -82,6 +84,8 @@ class OrgsOrgHooksHookIdPatchBodyNormalizer implements DenormalizerInterface, No
         if (null !== $object->getName()) {
             $data['name'] = $object->getName();
         }
+        $validator = new \Github\Validator\OrgsOrgHooksHookIdPatchBodyValidator();
+        $validator->validate($data);
         return $data;
     }
 }

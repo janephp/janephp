@@ -39,6 +39,8 @@ class ArtifactNormalizer implements DenormalizerInterface, NormalizerInterface, 
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\Artifact();
+        $validator = new \Github\Validator\ArtifactValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -96,6 +98,8 @@ class ArtifactNormalizer implements DenormalizerInterface, NormalizerInterface, 
         $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
         $data['expires_at'] = $object->getExpiresAt();
         $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
+        $validator = new \Github\Validator\ArtifactValidator();
+        $validator->validate($data);
         return $data;
     }
 }

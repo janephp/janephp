@@ -39,6 +39,8 @@ class HovercardNormalizer implements DenormalizerInterface, NormalizerInterface,
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\Hovercard();
+        $validator = new \Github\Validator\HovercardValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -62,6 +64,8 @@ class HovercardNormalizer implements DenormalizerInterface, NormalizerInterface,
             $values[] = $this->normalizer->normalize($value, 'json', $context);
         }
         $data['contexts'] = $values;
+        $validator = new \Github\Validator\HovercardValidator();
+        $validator->validate($data);
         return $data;
     }
 }

@@ -39,6 +39,8 @@ class CommunityHealthFileNormalizer implements DenormalizerInterface, Normalizer
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\CommunityHealthFile();
+        $validator = new \Github\Validator\CommunityHealthFileValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -58,6 +60,8 @@ class CommunityHealthFileNormalizer implements DenormalizerInterface, Normalizer
         $data = array();
         $data['url'] = $object->getUrl();
         $data['html_url'] = $object->getHtmlUrl();
+        $validator = new \Github\Validator\CommunityHealthFileValidator();
+        $validator->validate($data);
         return $data;
     }
 }

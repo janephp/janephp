@@ -39,6 +39,8 @@ class IssueSearchResultItemNormalizer implements DenormalizerInterface, Normaliz
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\IssueSearchResultItem();
+        $validator = new \Github\Validator\IssueSearchResultItemValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -249,6 +251,8 @@ class IssueSearchResultItemNormalizer implements DenormalizerInterface, Normaliz
         if (null !== $object->getPerformedViaGithubApp()) {
             $data['performed_via_github_app'] = $this->normalizer->normalize($object->getPerformedViaGithubApp(), 'json', $context);
         }
+        $validator = new \Github\Validator\IssueSearchResultItemValidator();
+        $validator->validate($data);
         return $data;
     }
 }

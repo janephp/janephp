@@ -39,6 +39,8 @@ class CollaboratorPermissionsNormalizer implements DenormalizerInterface, Normal
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\CollaboratorPermissions();
+        $validator = new \Github\Validator\CollaboratorPermissionsValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -62,6 +64,8 @@ class CollaboratorPermissionsNormalizer implements DenormalizerInterface, Normal
         $data['pull'] = $object->getPull();
         $data['push'] = $object->getPush();
         $data['admin'] = $object->getAdmin();
+        $validator = new \Github\Validator\CollaboratorPermissionsValidator();
+        $validator->validate($data);
         return $data;
     }
 }

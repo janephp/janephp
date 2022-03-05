@@ -39,6 +39,8 @@ class RegistryServiceConfigNormalizer implements DenormalizerInterface, Normaliz
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\RegistryServiceConfig();
+        $validator = new \Docker\Api\Validator\RegistryServiceConfigValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -120,6 +122,8 @@ class RegistryServiceConfigNormalizer implements DenormalizerInterface, Normaliz
             }
             $data['Mirrors'] = $values_4;
         }
+        $validator = new \Docker\Api\Validator\RegistryServiceConfigValidator();
+        $validator->validate($data);
         return $data;
     }
 }

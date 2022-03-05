@@ -39,6 +39,8 @@ class ReleaseNormalizer implements DenormalizerInterface, NormalizerInterface, D
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\Release();
+        $validator = new \Github\Validator\ReleaseValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -162,6 +164,8 @@ class ReleaseNormalizer implements DenormalizerInterface, NormalizerInterface, D
         if (null !== $object->getBodyText()) {
             $data['body_text'] = $object->getBodyText();
         }
+        $validator = new \Github\Validator\ReleaseValidator();
+        $validator->validate($data);
         return $data;
     }
 }

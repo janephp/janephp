@@ -39,6 +39,8 @@ class ReviewCommentLinksNormalizer implements DenormalizerInterface, NormalizerI
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ReviewCommentLinks();
+        $validator = new \Github\Validator\ReviewCommentLinksValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -62,6 +64,8 @@ class ReviewCommentLinksNormalizer implements DenormalizerInterface, NormalizerI
         $data['self'] = $this->normalizer->normalize($object->getSelf(), 'json', $context);
         $data['html'] = $this->normalizer->normalize($object->getHtml(), 'json', $context);
         $data['pull_request'] = $this->normalizer->normalize($object->getPullRequest(), 'json', $context);
+        $validator = new \Github\Validator\ReviewCommentLinksValidator();
+        $validator->validate($data);
         return $data;
     }
 }

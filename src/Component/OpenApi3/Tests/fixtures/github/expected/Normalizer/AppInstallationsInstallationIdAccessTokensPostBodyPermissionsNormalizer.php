@@ -39,6 +39,8 @@ class AppInstallationsInstallationIdAccessTokensPostBodyPermissionsNormalizer im
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\AppInstallationsInstallationIdAccessTokensPostBodyPermissions();
+        $validator = new \Github\Validator\AppInstallationsInstallationIdAccessTokensPostBodyPermissionsValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -80,6 +82,8 @@ class AppInstallationsInstallationIdAccessTokensPostBodyPermissionsNormalizer im
         if (null !== $object->getDefNotARepo()) {
             $data['def_not_a_repo'] = $object->getDefNotARepo();
         }
+        $validator = new \Github\Validator\AppInstallationsInstallationIdAccessTokensPostBodyPermissionsValidator();
+        $validator->validate($data);
         return $data;
     }
 }

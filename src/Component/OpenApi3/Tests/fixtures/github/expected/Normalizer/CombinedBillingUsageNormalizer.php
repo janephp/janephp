@@ -39,6 +39,8 @@ class CombinedBillingUsageNormalizer implements DenormalizerInterface, Normalize
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\CombinedBillingUsage();
+        $validator = new \Github\Validator\CombinedBillingUsageValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -68,6 +70,8 @@ class CombinedBillingUsageNormalizer implements DenormalizerInterface, Normalize
         if (null !== $object->getEstimatedStorageForMonth()) {
             $data['estimated_storage_for_month'] = $object->getEstimatedStorageForMonth();
         }
+        $validator = new \Github\Validator\CombinedBillingUsageValidator();
+        $validator->validate($data);
         return $data;
     }
 }

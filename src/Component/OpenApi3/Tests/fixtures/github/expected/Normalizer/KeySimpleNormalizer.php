@@ -39,6 +39,8 @@ class KeySimpleNormalizer implements DenormalizerInterface, NormalizerInterface,
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\KeySimple();
+        $validator = new \Github\Validator\KeySimpleValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -58,6 +60,8 @@ class KeySimpleNormalizer implements DenormalizerInterface, NormalizerInterface,
         $data = array();
         $data['id'] = $object->getId();
         $data['key'] = $object->getKey();
+        $validator = new \Github\Validator\KeySimpleValidator();
+        $validator->validate($data);
         return $data;
     }
 }

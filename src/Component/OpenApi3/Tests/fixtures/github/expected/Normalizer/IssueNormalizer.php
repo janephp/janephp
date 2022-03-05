@@ -39,6 +39,8 @@ class IssueNormalizer implements DenormalizerInterface, NormalizerInterface, Den
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\Issue();
+        $validator = new \Github\Validator\IssueValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -240,6 +242,8 @@ class IssueNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         if (null !== $object->getReactions()) {
             $data['reactions'] = $this->normalizer->normalize($object->getReactions(), 'json', $context);
         }
+        $validator = new \Github\Validator\IssueValidator();
+        $validator->validate($data);
         return $data;
     }
 }

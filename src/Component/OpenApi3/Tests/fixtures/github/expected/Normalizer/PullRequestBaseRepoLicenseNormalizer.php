@@ -39,6 +39,8 @@ class PullRequestBaseRepoLicenseNormalizer implements DenormalizerInterface, Nor
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\PullRequestBaseRepoLicense();
+        $validator = new \Github\Validator\PullRequestBaseRepoLicenseValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -82,6 +84,8 @@ class PullRequestBaseRepoLicenseNormalizer implements DenormalizerInterface, Nor
         if (null !== $object->getHtmlUrl()) {
             $data['html_url'] = $object->getHtmlUrl();
         }
+        $validator = new \Github\Validator\PullRequestBaseRepoLicenseValidator();
+        $validator->validate($data);
         return $data;
     }
 }

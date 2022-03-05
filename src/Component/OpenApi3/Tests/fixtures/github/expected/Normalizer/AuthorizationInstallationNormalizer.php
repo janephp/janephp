@@ -39,6 +39,8 @@ class AuthorizationInstallationNormalizer implements DenormalizerInterface, Norm
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\AuthorizationInstallation();
+        $validator = new \Github\Validator\AuthorizationInstallationValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -76,6 +78,8 @@ class AuthorizationInstallationNormalizer implements DenormalizerInterface, Norm
         $data['single_file_name'] = $object->getSingleFileName();
         $data['repositories_url'] = $object->getRepositoriesUrl();
         $data['account'] = $this->normalizer->normalize($object->getAccount(), 'json', $context);
+        $validator = new \Github\Validator\AuthorizationInstallationValidator();
+        $validator->validate($data);
         return $data;
     }
 }

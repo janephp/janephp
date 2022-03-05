@@ -39,6 +39,8 @@ class PullRequestSimpleLabelsItemNormalizer implements DenormalizerInterface, No
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\PullRequestSimpleLabelsItem();
+        $validator = new \Github\Validator\PullRequestSimpleLabelsItemValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -92,6 +94,8 @@ class PullRequestSimpleLabelsItemNormalizer implements DenormalizerInterface, No
         if (null !== $object->getDefault()) {
             $data['default'] = $object->getDefault();
         }
+        $validator = new \Github\Validator\PullRequestSimpleLabelsItemValidator();
+        $validator->validate($data);
         return $data;
     }
 }

@@ -39,6 +39,8 @@ class ProtectedBranchPullRequestReviewDismissalRestrictionsNormalizer implements
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ProtectedBranchPullRequestReviewDismissalRestrictions();
+        $validator = new \Github\Validator\ProtectedBranchPullRequestReviewDismissalRestrictionsValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -96,6 +98,8 @@ class ProtectedBranchPullRequestReviewDismissalRestrictionsNormalizer implements
         if (null !== $object->getTeamsUrl()) {
             $data['teams_url'] = $object->getTeamsUrl();
         }
+        $validator = new \Github\Validator\ProtectedBranchPullRequestReviewDismissalRestrictionsValidator();
+        $validator->validate($data);
         return $data;
     }
 }

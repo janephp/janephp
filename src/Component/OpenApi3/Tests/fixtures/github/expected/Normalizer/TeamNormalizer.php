@@ -39,6 +39,8 @@ class TeamNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\Team();
+        $validator = new \Github\Validator\TeamValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -108,6 +110,8 @@ class TeamNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         if (null !== $object->getParent()) {
             $data['parent'] = $this->normalizer->normalize($object->getParent(), 'json', $context);
         }
+        $validator = new \Github\Validator\TeamValidator();
+        $validator->validate($data);
         return $data;
     }
 }

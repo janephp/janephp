@@ -39,6 +39,8 @@ class OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberReactionsPostBodyNormalizer
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberReactionsPostBody();
+        $validator = new \Github\Validator\OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberReactionsPostBodyValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -54,6 +56,8 @@ class OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberReactionsPostBodyNormalizer
     {
         $data = array();
         $data['content'] = $object->getContent();
+        $validator = new \Github\Validator\OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberReactionsPostBodyValidator();
+        $validator->validate($data);
         return $data;
     }
 }

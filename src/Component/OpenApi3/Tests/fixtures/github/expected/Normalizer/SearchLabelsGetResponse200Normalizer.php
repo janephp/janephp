@@ -39,6 +39,8 @@ class SearchLabelsGetResponse200Normalizer implements DenormalizerInterface, Nor
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\SearchLabelsGetResponse200();
+        $validator = new \Github\Validator\SearchLabelsGetResponse200Validator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -76,6 +78,8 @@ class SearchLabelsGetResponse200Normalizer implements DenormalizerInterface, Nor
             }
             $data['items'] = $values;
         }
+        $validator = new \Github\Validator\SearchLabelsGetResponse200Validator();
+        $validator->validate($data);
         return $data;
     }
 }

@@ -39,6 +39,8 @@ class ReposOwnerRepoNotificationsPutBodyNormalizer implements DenormalizerInterf
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ReposOwnerRepoNotificationsPutBody();
+        $validator = new \Github\Validator\ReposOwnerRepoNotificationsPutBodyValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -56,6 +58,8 @@ class ReposOwnerRepoNotificationsPutBodyNormalizer implements DenormalizerInterf
         if (null !== $object->getLastReadAt()) {
             $data['last_read_at'] = $object->getLastReadAt();
         }
+        $validator = new \Github\Validator\ReposOwnerRepoNotificationsPutBodyValidator();
+        $validator->validate($data);
         return $data;
     }
 }

@@ -39,6 +39,8 @@ class ContainersIdTopGetResponse200Normalizer implements DenormalizerInterface, 
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\ContainersIdTopGetResponse200();
+        $validator = new \Docker\Api\Validator\ContainersIdTopGetResponse200Validator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -86,6 +88,8 @@ class ContainersIdTopGetResponse200Normalizer implements DenormalizerInterface, 
             }
             $data['Processes'] = $values_1;
         }
+        $validator = new \Docker\Api\Validator\ContainersIdTopGetResponse200Validator();
+        $validator->validate($data);
         return $data;
     }
 }

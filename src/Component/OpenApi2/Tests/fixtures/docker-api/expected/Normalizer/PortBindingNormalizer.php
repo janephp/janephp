@@ -39,6 +39,8 @@ class PortBindingNormalizer implements DenormalizerInterface, NormalizerInterfac
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\PortBinding();
+        $validator = new \Docker\Api\Validator\PortBindingValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -62,6 +64,8 @@ class PortBindingNormalizer implements DenormalizerInterface, NormalizerInterfac
         if (null !== $object->getHostPort()) {
             $data['HostPort'] = $object->getHostPort();
         }
+        $validator = new \Docker\Api\Validator\PortBindingValidator();
+        $validator->validate($data);
         return $data;
     }
 }

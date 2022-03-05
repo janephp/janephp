@@ -39,6 +39,8 @@ class HovercardContextsItemNormalizer implements DenormalizerInterface, Normaliz
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\HovercardContextsItem();
+        $validator = new \Github\Validator\HovercardContextsItemValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -58,6 +60,8 @@ class HovercardContextsItemNormalizer implements DenormalizerInterface, Normaliz
         $data = array();
         $data['message'] = $object->getMessage();
         $data['octicon'] = $object->getOcticon();
+        $validator = new \Github\Validator\HovercardContextsItemValidator();
+        $validator->validate($data);
         return $data;
     }
 }

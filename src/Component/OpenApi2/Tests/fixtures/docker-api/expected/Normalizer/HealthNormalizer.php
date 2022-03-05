@@ -39,6 +39,8 @@ class HealthNormalizer implements DenormalizerInterface, NormalizerInterface, De
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\Health();
+        $validator = new \Docker\Api\Validator\HealthValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -76,6 +78,8 @@ class HealthNormalizer implements DenormalizerInterface, NormalizerInterface, De
             }
             $data['Log'] = $values;
         }
+        $validator = new \Docker\Api\Validator\HealthValidator();
+        $validator->validate($data);
         return $data;
     }
 }

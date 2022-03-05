@@ -39,6 +39,8 @@ class GistFullhistoryItemChangeStatusNormalizer implements DenormalizerInterface
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\GistFullhistoryItemChangeStatus();
+        $validator = new \Github\Validator\GistFullhistoryItemChangeStatusValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -68,6 +70,8 @@ class GistFullhistoryItemChangeStatusNormalizer implements DenormalizerInterface
         if (null !== $object->getTotal()) {
             $data['total'] = $object->getTotal();
         }
+        $validator = new \Github\Validator\GistFullhistoryItemChangeStatusValidator();
+        $validator->validate($data);
         return $data;
     }
 }

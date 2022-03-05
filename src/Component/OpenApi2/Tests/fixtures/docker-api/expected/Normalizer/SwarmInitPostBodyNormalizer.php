@@ -39,6 +39,8 @@ class SwarmInitPostBodyNormalizer implements DenormalizerInterface, NormalizerIn
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\SwarmInitPostBody();
+        $validator = new \Docker\Api\Validator\SwarmInitPostBodyValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -106,6 +108,8 @@ class SwarmInitPostBodyNormalizer implements DenormalizerInterface, NormalizerIn
         if (null !== $object->getSpec()) {
             $data['Spec'] = $this->normalizer->normalize($object->getSpec(), 'json', $context);
         }
+        $validator = new \Docker\Api\Validator\SwarmInitPostBodyValidator();
+        $validator->validate($data);
         return $data;
     }
 }

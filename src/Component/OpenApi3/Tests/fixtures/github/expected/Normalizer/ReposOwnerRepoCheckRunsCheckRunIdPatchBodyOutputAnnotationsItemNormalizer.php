@@ -39,6 +39,8 @@ class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyOutputAnnotationsItemNormalizer 
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ReposOwnerRepoCheckRunsCheckRunIdPatchBodyOutputAnnotationsItem();
+        $validator = new \Github\Validator\ReposOwnerRepoCheckRunsCheckRunIdPatchBodyOutputAnnotationsItemValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -94,6 +96,8 @@ class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyOutputAnnotationsItemNormalizer 
         if (null !== $object->getRawDetails()) {
             $data['raw_details'] = $object->getRawDetails();
         }
+        $validator = new \Github\Validator\ReposOwnerRepoCheckRunsCheckRunIdPatchBodyOutputAnnotationsItemValidator();
+        $validator->validate($data);
         return $data;
     }
 }

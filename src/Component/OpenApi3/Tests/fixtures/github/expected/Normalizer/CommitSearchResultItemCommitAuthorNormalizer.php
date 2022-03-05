@@ -39,6 +39,8 @@ class CommitSearchResultItemCommitAuthorNormalizer implements DenormalizerInterf
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\CommitSearchResultItemCommitAuthor();
+        $validator = new \Github\Validator\CommitSearchResultItemCommitAuthorValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -62,6 +64,8 @@ class CommitSearchResultItemCommitAuthorNormalizer implements DenormalizerInterf
         $data['name'] = $object->getName();
         $data['email'] = $object->getEmail();
         $data['date'] = $object->getDate()->format('Y-m-d\\TH:i:sP');
+        $validator = new \Github\Validator\CommitSearchResultItemCommitAuthorValidator();
+        $validator->validate($data);
         return $data;
     }
 }

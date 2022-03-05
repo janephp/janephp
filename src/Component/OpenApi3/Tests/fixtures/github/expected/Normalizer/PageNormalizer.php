@@ -39,6 +39,8 @@ class PageNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\Page();
+        $validator = new \Github\Validator\PageValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -84,6 +86,8 @@ class PageNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         if (null !== $object->getSource()) {
             $data['source'] = $this->normalizer->normalize($object->getSource(), 'json', $context);
         }
+        $validator = new \Github\Validator\PageValidator();
+        $validator->validate($data);
         return $data;
     }
 }

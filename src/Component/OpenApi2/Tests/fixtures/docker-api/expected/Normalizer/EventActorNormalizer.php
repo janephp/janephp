@@ -39,6 +39,8 @@ class EventActorNormalizer implements DenormalizerInterface, NormalizerInterface
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\EventActor();
+        $validator = new \Docker\Api\Validator\EventActorValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -70,6 +72,8 @@ class EventActorNormalizer implements DenormalizerInterface, NormalizerInterface
             }
             $data['Attributes'] = $values;
         }
+        $validator = new \Docker\Api\Validator\EventActorValidator();
+        $validator->validate($data);
         return $data;
     }
 }

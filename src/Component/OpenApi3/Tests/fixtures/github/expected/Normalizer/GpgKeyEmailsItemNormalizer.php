@@ -39,6 +39,8 @@ class GpgKeyEmailsItemNormalizer implements DenormalizerInterface, NormalizerInt
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\GpgKeyEmailsItem();
+        $validator = new \Github\Validator\GpgKeyEmailsItemValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -62,6 +64,8 @@ class GpgKeyEmailsItemNormalizer implements DenormalizerInterface, NormalizerInt
         if (null !== $object->getVerified()) {
             $data['verified'] = $object->getVerified();
         }
+        $validator = new \Github\Validator\GpgKeyEmailsItemValidator();
+        $validator->validate($data);
         return $data;
     }
 }

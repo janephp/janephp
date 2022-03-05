@@ -39,6 +39,8 @@ class IssueEventReviewRequesterNormalizer implements DenormalizerInterface, Norm
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\IssueEventReviewRequester();
+        $validator = new \Github\Validator\IssueEventReviewRequesterValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -131,6 +133,8 @@ class IssueEventReviewRequesterNormalizer implements DenormalizerInterface, Norm
         if (null !== $object->getStarredAt()) {
             $data['starred_at'] = $object->getStarredAt();
         }
+        $validator = new \Github\Validator\IssueEventReviewRequesterValidator();
+        $validator->validate($data);
         return $data;
     }
 }

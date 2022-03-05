@@ -39,6 +39,8 @@ class FeedLinksNormalizer implements DenormalizerInterface, NormalizerInterface,
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\FeedLinks();
+        $validator = new \Github\Validator\FeedLinksValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -102,6 +104,8 @@ class FeedLinksNormalizer implements DenormalizerInterface, NormalizerInterface,
             }
             $data['current_user_organizations'] = $values;
         }
+        $validator = new \Github\Validator\FeedLinksValidator();
+        $validator->validate($data);
         return $data;
     }
 }

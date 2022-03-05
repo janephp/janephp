@@ -39,6 +39,8 @@ class UserMarketplacePurchaseNormalizer implements DenormalizerInterface, Normal
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\UserMarketplacePurchase();
+        $validator = new \Github\Validator\UserMarketplacePurchaseValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -94,6 +96,8 @@ class UserMarketplacePurchaseNormalizer implements DenormalizerInterface, Normal
         $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
         $data['account'] = $this->normalizer->normalize($object->getAccount(), 'json', $context);
         $data['plan'] = $this->normalizer->normalize($object->getPlan(), 'json', $context);
+        $validator = new \Github\Validator\UserMarketplacePurchaseValidator();
+        $validator->validate($data);
         return $data;
     }
 }

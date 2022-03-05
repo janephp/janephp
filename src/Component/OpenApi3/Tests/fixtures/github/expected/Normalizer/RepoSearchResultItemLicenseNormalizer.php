@@ -39,6 +39,8 @@ class RepoSearchResultItemLicenseNormalizer implements DenormalizerInterface, No
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\RepoSearchResultItemLicense();
+        $validator = new \Github\Validator\RepoSearchResultItemLicenseValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -82,6 +84,8 @@ class RepoSearchResultItemLicenseNormalizer implements DenormalizerInterface, No
         if (null !== $object->getHtmlUrl()) {
             $data['html_url'] = $object->getHtmlUrl();
         }
+        $validator = new \Github\Validator\RepoSearchResultItemLicenseValidator();
+        $validator->validate($data);
         return $data;
     }
 }

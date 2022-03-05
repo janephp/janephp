@@ -39,6 +39,8 @@ class ContainersCreatePostResponse201Normalizer implements DenormalizerInterface
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\ContainersCreatePostResponse201();
+        $validator = new \Docker\Api\Validator\ContainersCreatePostResponse201Validator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -66,6 +68,8 @@ class ContainersCreatePostResponse201Normalizer implements DenormalizerInterface
             $values[] = $value;
         }
         $data['Warnings'] = $values;
+        $validator = new \Docker\Api\Validator\ContainersCreatePostResponse201Validator();
+        $validator->validate($data);
         return $data;
     }
 }

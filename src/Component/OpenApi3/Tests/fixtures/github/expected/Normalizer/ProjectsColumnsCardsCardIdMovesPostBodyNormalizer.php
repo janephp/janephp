@@ -39,6 +39,8 @@ class ProjectsColumnsCardsCardIdMovesPostBodyNormalizer implements DenormalizerI
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ProjectsColumnsCardsCardIdMovesPostBody();
+        $validator = new \Github\Validator\ProjectsColumnsCardsCardIdMovesPostBodyValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -60,6 +62,8 @@ class ProjectsColumnsCardsCardIdMovesPostBodyNormalizer implements DenormalizerI
         if (null !== $object->getColumnId()) {
             $data['column_id'] = $object->getColumnId();
         }
+        $validator = new \Github\Validator\ProjectsColumnsCardsCardIdMovesPostBodyValidator();
+        $validator->validate($data);
         return $data;
     }
 }

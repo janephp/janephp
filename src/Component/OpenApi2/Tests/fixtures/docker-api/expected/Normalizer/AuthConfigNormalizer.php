@@ -39,6 +39,8 @@ class AuthConfigNormalizer implements DenormalizerInterface, NormalizerInterface
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\AuthConfig();
+        $validator = new \Docker\Api\Validator\AuthConfigValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -74,6 +76,8 @@ class AuthConfigNormalizer implements DenormalizerInterface, NormalizerInterface
         if (null !== $object->getServeraddress()) {
             $data['serveraddress'] = $object->getServeraddress();
         }
+        $validator = new \Docker\Api\Validator\AuthConfigValidator();
+        $validator->validate($data);
         return $data;
     }
 }

@@ -39,6 +39,8 @@ class MigrationOwnerNormalizer implements DenormalizerInterface, NormalizerInter
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\MigrationOwner();
+        $validator = new \Github\Validator\MigrationOwnerValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -131,6 +133,8 @@ class MigrationOwnerNormalizer implements DenormalizerInterface, NormalizerInter
         if (null !== $object->getStarredAt()) {
             $data['starred_at'] = $object->getStarredAt();
         }
+        $validator = new \Github\Validator\MigrationOwnerValidator();
+        $validator->validate($data);
         return $data;
     }
 }

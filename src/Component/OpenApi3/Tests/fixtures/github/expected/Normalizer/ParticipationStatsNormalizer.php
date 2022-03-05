@@ -39,6 +39,8 @@ class ParticipationStatsNormalizer implements DenormalizerInterface, NormalizerI
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ParticipationStats();
+        $validator = new \Github\Validator\ParticipationStatsValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -78,6 +80,8 @@ class ParticipationStatsNormalizer implements DenormalizerInterface, NormalizerI
             }
             $data['owner'] = $values_1;
         }
+        $validator = new \Github\Validator\ParticipationStatsValidator();
+        $validator->validate($data);
         return $data;
     }
 }

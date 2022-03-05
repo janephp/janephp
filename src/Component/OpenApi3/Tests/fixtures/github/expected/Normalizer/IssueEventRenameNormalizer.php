@@ -39,6 +39,8 @@ class IssueEventRenameNormalizer implements DenormalizerInterface, NormalizerInt
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\IssueEventRename();
+        $validator = new \Github\Validator\IssueEventRenameValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -58,6 +60,8 @@ class IssueEventRenameNormalizer implements DenormalizerInterface, NormalizerInt
         $data = array();
         $data['from'] = $object->getFrom();
         $data['to'] = $object->getTo();
+        $validator = new \Github\Validator\IssueEventRenameValidator();
+        $validator->validate($data);
         return $data;
     }
 }

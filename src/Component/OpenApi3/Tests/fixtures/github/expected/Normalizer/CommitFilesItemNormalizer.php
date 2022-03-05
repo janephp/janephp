@@ -39,6 +39,8 @@ class CommitFilesItemNormalizer implements DenormalizerInterface, NormalizerInte
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\CommitFilesItem();
+        $validator = new \Github\Validator\CommitFilesItemValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -116,6 +118,8 @@ class CommitFilesItemNormalizer implements DenormalizerInterface, NormalizerInte
         if (null !== $object->getPreviousFilename()) {
             $data['previous_filename'] = $object->getPreviousFilename();
         }
+        $validator = new \Github\Validator\CommitFilesItemValidator();
+        $validator->validate($data);
         return $data;
     }
 }

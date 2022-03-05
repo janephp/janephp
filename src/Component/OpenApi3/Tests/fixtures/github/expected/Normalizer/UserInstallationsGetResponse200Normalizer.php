@@ -39,6 +39,8 @@ class UserInstallationsGetResponse200Normalizer implements DenormalizerInterface
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\UserInstallationsGetResponse200();
+        $validator = new \Github\Validator\UserInstallationsGetResponse200Validator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -70,6 +72,8 @@ class UserInstallationsGetResponse200Normalizer implements DenormalizerInterface
             }
             $data['installations'] = $values;
         }
+        $validator = new \Github\Validator\UserInstallationsGetResponse200Validator();
+        $validator->validate($data);
         return $data;
     }
 }

@@ -39,6 +39,8 @@ class SwarmSpecRaftNormalizer implements DenormalizerInterface, NormalizerInterf
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\SwarmSpecRaft();
+        $validator = new \Docker\Api\Validator\SwarmSpecRaftValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -80,6 +82,8 @@ class SwarmSpecRaftNormalizer implements DenormalizerInterface, NormalizerInterf
         if (null !== $object->getHeartbeatTick()) {
             $data['HeartbeatTick'] = $object->getHeartbeatTick();
         }
+        $validator = new \Docker\Api\Validator\SwarmSpecRaftValidator();
+        $validator->validate($data);
         return $data;
     }
 }

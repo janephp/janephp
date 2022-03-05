@@ -39,6 +39,8 @@ class MountPointNormalizer implements DenormalizerInterface, NormalizerInterface
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\MountPoint();
+        $validator = new \Docker\Api\Validator\MountPointValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -98,6 +100,8 @@ class MountPointNormalizer implements DenormalizerInterface, NormalizerInterface
         if (null !== $object->getPropagation()) {
             $data['Propagation'] = $object->getPropagation();
         }
+        $validator = new \Docker\Api\Validator\MountPointValidator();
+        $validator->validate($data);
         return $data;
     }
 }

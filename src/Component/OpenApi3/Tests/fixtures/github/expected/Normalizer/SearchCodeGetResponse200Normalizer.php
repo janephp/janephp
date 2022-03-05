@@ -39,6 +39,8 @@ class SearchCodeGetResponse200Normalizer implements DenormalizerInterface, Norma
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\SearchCodeGetResponse200();
+        $validator = new \Github\Validator\SearchCodeGetResponse200Validator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -76,6 +78,8 @@ class SearchCodeGetResponse200Normalizer implements DenormalizerInterface, Norma
             }
             $data['items'] = $values;
         }
+        $validator = new \Github\Validator\SearchCodeGetResponse200Validator();
+        $validator->validate($data);
         return $data;
     }
 }

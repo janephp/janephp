@@ -39,6 +39,8 @@ class ReposOwnerRepoGitTreesPostBodyTreeItemNormalizer implements DenormalizerIn
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ReposOwnerRepoGitTreesPostBodyTreeItem();
+        $validator = new \Github\Validator\ReposOwnerRepoGitTreesPostBodyTreeItemValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -83,6 +85,8 @@ class ReposOwnerRepoGitTreesPostBodyTreeItemNormalizer implements DenormalizerIn
         if (null !== $object->getContent()) {
             $data['content'] = $object->getContent();
         }
+        $validator = new \Github\Validator\ReposOwnerRepoGitTreesPostBodyTreeItemValidator();
+        $validator->validate($data);
         return $data;
     }
 }

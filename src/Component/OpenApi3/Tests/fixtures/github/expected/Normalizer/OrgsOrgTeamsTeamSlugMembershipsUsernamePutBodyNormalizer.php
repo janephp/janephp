@@ -39,6 +39,8 @@ class OrgsOrgTeamsTeamSlugMembershipsUsernamePutBodyNormalizer implements Denorm
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\OrgsOrgTeamsTeamSlugMembershipsUsernamePutBody();
+        $validator = new \Github\Validator\OrgsOrgTeamsTeamSlugMembershipsUsernamePutBodyValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -56,6 +58,8 @@ class OrgsOrgTeamsTeamSlugMembershipsUsernamePutBodyNormalizer implements Denorm
         if (null !== $object->getRole()) {
             $data['role'] = $object->getRole();
         }
+        $validator = new \Github\Validator\OrgsOrgTeamsTeamSlugMembershipsUsernamePutBodyValidator();
+        $validator->validate($data);
         return $data;
     }
 }

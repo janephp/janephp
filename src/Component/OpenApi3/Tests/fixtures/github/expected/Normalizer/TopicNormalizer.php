@@ -39,6 +39,8 @@ class TopicNormalizer implements DenormalizerInterface, NormalizerInterface, Den
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\Topic();
+        $validator = new \Github\Validator\TopicValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -64,6 +66,8 @@ class TopicNormalizer implements DenormalizerInterface, NormalizerInterface, Den
             }
             $data['names'] = $values;
         }
+        $validator = new \Github\Validator\TopicValidator();
+        $validator->validate($data);
         return $data;
     }
 }

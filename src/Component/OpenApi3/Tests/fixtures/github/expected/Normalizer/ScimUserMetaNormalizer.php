@@ -39,6 +39,8 @@ class ScimUserMetaNormalizer implements DenormalizerInterface, NormalizerInterfa
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ScimUserMeta();
+        $validator = new \Github\Validator\ScimUserMetaValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -74,6 +76,8 @@ class ScimUserMetaNormalizer implements DenormalizerInterface, NormalizerInterfa
         if (null !== $object->getLocation()) {
             $data['location'] = $object->getLocation();
         }
+        $validator = new \Github\Validator\ScimUserMetaValidator();
+        $validator->validate($data);
         return $data;
     }
 }

@@ -39,6 +39,8 @@ class PluginDeviceNormalizer implements DenormalizerInterface, NormalizerInterfa
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\PluginDevice();
+        $validator = new \Docker\Api\Validator\PluginDeviceValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -74,6 +76,8 @@ class PluginDeviceNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         $data['Settable'] = $values;
         $data['Path'] = $object->getPath();
+        $validator = new \Docker\Api\Validator\PluginDeviceValidator();
+        $validator->validate($data);
         return $data;
     }
 }

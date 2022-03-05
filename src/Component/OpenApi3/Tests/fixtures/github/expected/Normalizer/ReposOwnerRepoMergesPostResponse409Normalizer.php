@@ -39,6 +39,8 @@ class ReposOwnerRepoMergesPostResponse409Normalizer implements DenormalizerInter
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ReposOwnerRepoMergesPostResponse409();
+        $validator = new \Github\Validator\ReposOwnerRepoMergesPostResponse409Validator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -62,6 +64,8 @@ class ReposOwnerRepoMergesPostResponse409Normalizer implements DenormalizerInter
         if (null !== $object->getDocumentationUrl()) {
             $data['documentation_url'] = $object->getDocumentationUrl();
         }
+        $validator = new \Github\Validator\ReposOwnerRepoMergesPostResponse409Validator();
+        $validator->validate($data);
         return $data;
     }
 }

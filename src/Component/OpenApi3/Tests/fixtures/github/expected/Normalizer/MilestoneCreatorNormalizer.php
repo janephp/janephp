@@ -39,6 +39,8 @@ class MilestoneCreatorNormalizer implements DenormalizerInterface, NormalizerInt
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\MilestoneCreator();
+        $validator = new \Github\Validator\MilestoneCreatorValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -131,6 +133,8 @@ class MilestoneCreatorNormalizer implements DenormalizerInterface, NormalizerInt
         if (null !== $object->getStarredAt()) {
             $data['starred_at'] = $object->getStarredAt();
         }
+        $validator = new \Github\Validator\MilestoneCreatorValidator();
+        $validator->validate($data);
         return $data;
     }
 }

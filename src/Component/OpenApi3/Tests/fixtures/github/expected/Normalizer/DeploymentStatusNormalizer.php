@@ -39,6 +39,8 @@ class DeploymentStatusNormalizer implements DenormalizerInterface, NormalizerInt
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\DeploymentStatus();
+        $validator = new \Github\Validator\DeploymentStatusValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -124,6 +126,8 @@ class DeploymentStatusNormalizer implements DenormalizerInterface, NormalizerInt
         if (null !== $object->getPerformedViaGithubApp()) {
             $data['performed_via_github_app'] = $this->normalizer->normalize($object->getPerformedViaGithubApp(), 'json', $context);
         }
+        $validator = new \Github\Validator\DeploymentStatusValidator();
+        $validator->validate($data);
         return $data;
     }
 }

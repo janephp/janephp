@@ -39,6 +39,8 @@ class ReactionRollupNormalizer implements DenormalizerInterface, NormalizerInter
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ReactionRollup();
+        $validator = new \Github\Validator\ReactionRollupValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -90,6 +92,8 @@ class ReactionRollupNormalizer implements DenormalizerInterface, NormalizerInter
         $data['hooray'] = $object->getHooray();
         $data['eyes'] = $object->getEyes();
         $data['rocket'] = $object->getRocket();
+        $validator = new \Github\Validator\ReactionRollupValidator();
+        $validator->validate($data);
         return $data;
     }
 }

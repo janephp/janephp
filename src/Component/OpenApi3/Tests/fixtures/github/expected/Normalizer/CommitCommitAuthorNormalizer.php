@@ -39,6 +39,8 @@ class CommitCommitAuthorNormalizer implements DenormalizerInterface, NormalizerI
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\CommitCommitAuthor();
+        $validator = new \Github\Validator\CommitCommitAuthorValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -68,6 +70,8 @@ class CommitCommitAuthorNormalizer implements DenormalizerInterface, NormalizerI
         if (null !== $object->getDate()) {
             $data['date'] = $object->getDate();
         }
+        $validator = new \Github\Validator\CommitCommitAuthorValidator();
+        $validator->validate($data);
         return $data;
     }
 }

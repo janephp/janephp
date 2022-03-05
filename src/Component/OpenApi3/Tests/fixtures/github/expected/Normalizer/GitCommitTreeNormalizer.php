@@ -39,6 +39,8 @@ class GitCommitTreeNormalizer implements DenormalizerInterface, NormalizerInterf
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\GitCommitTree();
+        $validator = new \Github\Validator\GitCommitTreeValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -62,6 +64,8 @@ class GitCommitTreeNormalizer implements DenormalizerInterface, NormalizerInterf
         if (null !== $object->getUrl()) {
             $data['url'] = $object->getUrl();
         }
+        $validator = new \Github\Validator\GitCommitTreeValidator();
+        $validator->validate($data);
         return $data;
     }
 }

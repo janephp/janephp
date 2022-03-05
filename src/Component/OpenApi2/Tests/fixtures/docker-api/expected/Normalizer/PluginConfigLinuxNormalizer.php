@@ -39,6 +39,8 @@ class PluginConfigLinuxNormalizer implements DenormalizerInterface, NormalizerIn
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\PluginConfigLinux();
+        $validator = new \Docker\Api\Validator\PluginConfigLinuxValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -78,6 +80,8 @@ class PluginConfigLinuxNormalizer implements DenormalizerInterface, NormalizerIn
             $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
         }
         $data['Devices'] = $values_1;
+        $validator = new \Docker\Api\Validator\PluginConfigLinuxValidator();
+        $validator->validate($data);
         return $data;
     }
 }

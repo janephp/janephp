@@ -39,6 +39,8 @@ class ReposOwnerRepoDeploymentsPostResponse202Normalizer implements Denormalizer
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ReposOwnerRepoDeploymentsPostResponse202();
+        $validator = new \Github\Validator\ReposOwnerRepoDeploymentsPostResponse202Validator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -56,6 +58,8 @@ class ReposOwnerRepoDeploymentsPostResponse202Normalizer implements Denormalizer
         if (null !== $object->getMessage()) {
             $data['message'] = $object->getMessage();
         }
+        $validator = new \Github\Validator\ReposOwnerRepoDeploymentsPostResponse202Validator();
+        $validator->validate($data);
         return $data;
     }
 }

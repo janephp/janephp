@@ -39,6 +39,8 @@ class ResourcesNormalizer implements DenormalizerInterface, NormalizerInterface,
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\Resources();
+        $validator = new \Docker\Api\Validator\ResourcesValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -320,6 +322,8 @@ class ResourcesNormalizer implements DenormalizerInterface, NormalizerInterface,
         if (null !== $object->getIOMaximumBandwidth()) {
             $data['IOMaximumBandwidth'] = $object->getIOMaximumBandwidth();
         }
+        $validator = new \Docker\Api\Validator\ResourcesValidator();
+        $validator->validate($data);
         return $data;
     }
 }

@@ -39,6 +39,8 @@ class ReposOwnerRepoForksPostBodyNormalizer implements DenormalizerInterface, No
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ReposOwnerRepoForksPostBody();
+        $validator = new \Github\Validator\ReposOwnerRepoForksPostBodyValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -56,6 +58,8 @@ class ReposOwnerRepoForksPostBodyNormalizer implements DenormalizerInterface, No
         if (null !== $object->getOrganization()) {
             $data['organization'] = $object->getOrganization();
         }
+        $validator = new \Github\Validator\ReposOwnerRepoForksPostBodyValidator();
+        $validator->validate($data);
         return $data;
     }
 }

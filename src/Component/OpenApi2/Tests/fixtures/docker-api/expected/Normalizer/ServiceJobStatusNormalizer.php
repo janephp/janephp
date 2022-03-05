@@ -39,6 +39,8 @@ class ServiceJobStatusNormalizer implements DenormalizerInterface, NormalizerInt
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\ServiceJobStatus();
+        $validator = new \Docker\Api\Validator\ServiceJobStatusValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -62,6 +64,8 @@ class ServiceJobStatusNormalizer implements DenormalizerInterface, NormalizerInt
         if (null !== $object->getLastExecution()) {
             $data['LastExecution'] = $object->getLastExecution();
         }
+        $validator = new \Docker\Api\Validator\ServiceJobStatusValidator();
+        $validator->validate($data);
         return $data;
     }
 }

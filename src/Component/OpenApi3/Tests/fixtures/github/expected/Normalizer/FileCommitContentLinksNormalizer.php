@@ -39,6 +39,8 @@ class FileCommitContentLinksNormalizer implements DenormalizerInterface, Normali
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\FileCommitContentLinks();
+        $validator = new \Github\Validator\FileCommitContentLinksValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -68,6 +70,8 @@ class FileCommitContentLinksNormalizer implements DenormalizerInterface, Normali
         if (null !== $object->getHtml()) {
             $data['html'] = $object->getHtml();
         }
+        $validator = new \Github\Validator\FileCommitContentLinksValidator();
+        $validator->validate($data);
         return $data;
     }
 }

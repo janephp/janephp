@@ -39,6 +39,8 @@ class HealthcheckResultNormalizer implements DenormalizerInterface, NormalizerIn
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\HealthcheckResult();
+        $validator = new \Docker\Api\Validator\HealthcheckResultValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -74,6 +76,8 @@ class HealthcheckResultNormalizer implements DenormalizerInterface, NormalizerIn
         if (null !== $object->getOutput()) {
             $data['Output'] = $object->getOutput();
         }
+        $validator = new \Docker\Api\Validator\HealthcheckResultValidator();
+        $validator->validate($data);
         return $data;
     }
 }
