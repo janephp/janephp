@@ -39,6 +39,8 @@ class CommitStatsNormalizer implements DenormalizerInterface, NormalizerInterfac
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\CommitStats();
+        $validator = new \Github\Validator\CommitStatsValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -68,6 +70,8 @@ class CommitStatsNormalizer implements DenormalizerInterface, NormalizerInterfac
         if (null !== $object->getTotal()) {
             $data['total'] = $object->getTotal();
         }
+        $validator = new \Github\Validator\CommitStatsValidator();
+        $validator->validate($data);
         return $data;
     }
 }

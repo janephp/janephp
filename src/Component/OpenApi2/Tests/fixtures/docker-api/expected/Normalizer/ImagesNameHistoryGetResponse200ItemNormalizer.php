@@ -39,6 +39,8 @@ class ImagesNameHistoryGetResponse200ItemNormalizer implements DenormalizerInter
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\ImagesNameHistoryGetResponse200Item();
+        $validator = new \Docker\Api\Validator\ImagesNameHistoryGetResponse200ItemValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -82,6 +84,8 @@ class ImagesNameHistoryGetResponse200ItemNormalizer implements DenormalizerInter
         $data['Tags'] = $values;
         $data['Size'] = $object->getSize();
         $data['Comment'] = $object->getComment();
+        $validator = new \Docker\Api\Validator\ImagesNameHistoryGetResponse200ItemValidator();
+        $validator->validate($data);
         return $data;
     }
 }

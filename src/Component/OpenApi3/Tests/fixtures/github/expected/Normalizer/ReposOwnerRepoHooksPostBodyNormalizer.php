@@ -39,6 +39,8 @@ class ReposOwnerRepoHooksPostBodyNormalizer implements DenormalizerInterface, No
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ReposOwnerRepoHooksPostBody();
+        $validator = new \Github\Validator\ReposOwnerRepoHooksPostBodyValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -80,6 +82,8 @@ class ReposOwnerRepoHooksPostBodyNormalizer implements DenormalizerInterface, No
         if (null !== $object->getActive()) {
             $data['active'] = $object->getActive();
         }
+        $validator = new \Github\Validator\ReposOwnerRepoHooksPostBodyValidator();
+        $validator->validate($data);
         return $data;
     }
 }

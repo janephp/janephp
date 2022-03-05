@@ -39,6 +39,8 @@ class WorkflowUsageBillableWINDOWSNormalizer implements DenormalizerInterface, N
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\WorkflowUsageBillableWINDOWS();
+        $validator = new \Github\Validator\WorkflowUsageBillableWINDOWSValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -56,6 +58,8 @@ class WorkflowUsageBillableWINDOWSNormalizer implements DenormalizerInterface, N
         if (null !== $object->getTotalMs()) {
             $data['total_ms'] = $object->getTotalMs();
         }
+        $validator = new \Github\Validator\WorkflowUsageBillableWINDOWSValidator();
+        $validator->validate($data);
         return $data;
     }
 }

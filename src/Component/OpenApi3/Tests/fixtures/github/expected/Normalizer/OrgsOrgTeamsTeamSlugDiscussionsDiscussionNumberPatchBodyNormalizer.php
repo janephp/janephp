@@ -39,6 +39,8 @@ class OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBodyNormalizer impleme
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBody();
+        $validator = new \Github\Validator\OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBodyValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -62,6 +64,8 @@ class OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBodyNormalizer impleme
         if (null !== $object->getBody()) {
             $data['body'] = $object->getBody();
         }
+        $validator = new \Github\Validator\OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBodyValidator();
+        $validator->validate($data);
         return $data;
     }
 }

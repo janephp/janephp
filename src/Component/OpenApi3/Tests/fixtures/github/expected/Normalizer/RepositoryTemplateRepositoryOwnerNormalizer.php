@@ -39,6 +39,8 @@ class RepositoryTemplateRepositoryOwnerNormalizer implements DenormalizerInterfa
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\RepositoryTemplateRepositoryOwner();
+        $validator = new \Github\Validator\RepositoryTemplateRepositoryOwnerValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -158,6 +160,8 @@ class RepositoryTemplateRepositoryOwnerNormalizer implements DenormalizerInterfa
         if (null !== $object->getSiteAdmin()) {
             $data['site_admin'] = $object->getSiteAdmin();
         }
+        $validator = new \Github\Validator\RepositoryTemplateRepositoryOwnerValidator();
+        $validator->validate($data);
         return $data;
     }
 }

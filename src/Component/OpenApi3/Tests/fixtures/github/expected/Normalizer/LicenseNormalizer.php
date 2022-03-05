@@ -39,6 +39,8 @@ class LicenseNormalizer implements DenormalizerInterface, NormalizerInterface, D
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\License();
+        $validator = new \Github\Validator\LicenseValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -132,6 +134,8 @@ class LicenseNormalizer implements DenormalizerInterface, NormalizerInterface, D
         $data['limitations'] = $values_2;
         $data['body'] = $object->getBody();
         $data['featured'] = $object->getFeatured();
+        $validator = new \Github\Validator\LicenseValidator();
+        $validator->validate($data);
         return $data;
     }
 }

@@ -39,6 +39,8 @@ class JoinTokensNormalizer implements DenormalizerInterface, NormalizerInterface
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\JoinTokens();
+        $validator = new \Docker\Api\Validator\JoinTokensValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -62,6 +64,8 @@ class JoinTokensNormalizer implements DenormalizerInterface, NormalizerInterface
         if (null !== $object->getManager()) {
             $data['Manager'] = $object->getManager();
         }
+        $validator = new \Docker\Api\Validator\JoinTokensValidator();
+        $validator->validate($data);
         return $data;
     }
 }

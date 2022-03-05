@@ -39,6 +39,8 @@ class TaskSpecContainerSpecPrivilegesCredentialSpecNormalizer implements Denorma
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\TaskSpecContainerSpecPrivilegesCredentialSpec();
+        $validator = new \Docker\Api\Validator\TaskSpecContainerSpecPrivilegesCredentialSpecValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -68,6 +70,8 @@ class TaskSpecContainerSpecPrivilegesCredentialSpecNormalizer implements Denorma
         if (null !== $object->getRegistry()) {
             $data['Registry'] = $object->getRegistry();
         }
+        $validator = new \Docker\Api\Validator\TaskSpecContainerSpecPrivilegesCredentialSpecValidator();
+        $validator->validate($data);
         return $data;
     }
 }

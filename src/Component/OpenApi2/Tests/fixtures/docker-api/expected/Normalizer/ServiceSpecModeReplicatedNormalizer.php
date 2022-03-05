@@ -39,6 +39,8 @@ class ServiceSpecModeReplicatedNormalizer implements DenormalizerInterface, Norm
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\ServiceSpecModeReplicated();
+        $validator = new \Docker\Api\Validator\ServiceSpecModeReplicatedValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -56,6 +58,8 @@ class ServiceSpecModeReplicatedNormalizer implements DenormalizerInterface, Norm
         if (null !== $object->getReplicas()) {
             $data['Replicas'] = $object->getReplicas();
         }
+        $validator = new \Docker\Api\Validator\ServiceSpecModeReplicatedValidator();
+        $validator->validate($data);
         return $data;
     }
 }

@@ -39,6 +39,8 @@ class ReposOwnerRepoReleasesReleaseIdPatchBodyNormalizer implements Denormalizer
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ReposOwnerRepoReleasesReleaseIdPatchBody();
+        $validator = new \Github\Validator\ReposOwnerRepoReleasesReleaseIdPatchBodyValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -86,6 +88,8 @@ class ReposOwnerRepoReleasesReleaseIdPatchBodyNormalizer implements Denormalizer
         if (null !== $object->getPrerelease()) {
             $data['prerelease'] = $object->getPrerelease();
         }
+        $validator = new \Github\Validator\ReposOwnerRepoReleasesReleaseIdPatchBodyValidator();
+        $validator->validate($data);
         return $data;
     }
 }

@@ -39,6 +39,8 @@ class InstallationNormalizer implements DenormalizerInterface, NormalizerInterfa
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\Installation();
+        $validator = new \Github\Validator\InstallationValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -151,6 +153,8 @@ class InstallationNormalizer implements DenormalizerInterface, NormalizerInterfa
         if (null !== $object->getContactEmail()) {
             $data['contact_email'] = $object->getContactEmail();
         }
+        $validator = new \Github\Validator\InstallationValidator();
+        $validator->validate($data);
         return $data;
     }
 }

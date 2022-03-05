@@ -4,6 +4,7 @@ namespace Jane\Component\JsonSchema\Guesser\Validator\Object_;
 
 use Jane\Component\JsonSchema\Guesser\Guess\ClassGuess;
 use Jane\Component\JsonSchema\Guesser\Guess\Property;
+use Jane\Component\JsonSchema\Guesser\Validator\ObjectCheckTrait;
 use Jane\Component\JsonSchema\Guesser\Validator\ValidatorGuess;
 use Jane\Component\JsonSchema\Guesser\Validator\ValidatorInterface;
 use Jane\Component\JsonSchema\JsonSchema\Model\JsonSchema;
@@ -11,9 +12,11 @@ use Symfony\Component\Validator\Constraints\Count;
 
 class MaxPropertiesValidator implements ValidatorInterface
 {
+    use ObjectCheckTrait;
+
     public function supports($object): bool
     {
-        return $object instanceof JsonSchema && ((\is_array($object->getType()) ? \in_array('object', $object->getType()) : 'object' === $object->getType()) || (null === $object->getType() && \is_array($object->getProperties()) && \count($object->getProperties()) > 0)) && \is_int($object->getMaxProperties());
+        return $this->checkObject($object) && ((\is_array($object->getType()) ? \in_array('object', $object->getType()) : 'object' === $object->getType()) || (null === $object->getType() && \is_array($object->getProperties()) && \count($object->getProperties()) > 0)) && \is_int($object->getMaxProperties());
     }
 
     /**

@@ -39,6 +39,8 @@ class VerificationNormalizer implements DenormalizerInterface, NormalizerInterfa
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\Verification();
+        $validator = new \Github\Validator\VerificationValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -72,6 +74,8 @@ class VerificationNormalizer implements DenormalizerInterface, NormalizerInterfa
         $data['reason'] = $object->getReason();
         $data['payload'] = $object->getPayload();
         $data['signature'] = $object->getSignature();
+        $validator = new \Github\Validator\VerificationValidator();
+        $validator->validate($data);
         return $data;
     }
 }

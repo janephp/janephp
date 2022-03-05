@@ -39,6 +39,8 @@ class SwarmNormalizer implements DenormalizerInterface, NormalizerInterface, Den
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\Swarm();
+        $validator = new \Docker\Api\Validator\SwarmValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -124,6 +126,8 @@ class SwarmNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         if (null !== $object->getJoinTokens()) {
             $data['JoinTokens'] = $this->normalizer->normalize($object->getJoinTokens(), 'json', $context);
         }
+        $validator = new \Docker\Api\Validator\SwarmValidator();
+        $validator->validate($data);
         return $data;
     }
 }

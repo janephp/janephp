@@ -39,6 +39,8 @@ class ScimV2OrganizationsOrgUsersScimUserIdPutBodyNormalizer implements Denormal
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ScimV2OrganizationsOrgUsersScimUserIdPutBody();
+        $validator = new \Github\Validator\ScimV2OrganizationsOrgUsersScimUserIdPutBodyValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -116,6 +118,8 @@ class ScimV2OrganizationsOrgUsersScimUserIdPutBodyNormalizer implements Denormal
             $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
         }
         $data['emails'] = $values_2;
+        $validator = new \Github\Validator\ScimV2OrganizationsOrgUsersScimUserIdPutBodyValidator();
+        $validator->validate($data);
         return $data;
     }
 }

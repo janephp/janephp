@@ -39,6 +39,8 @@ class TopicSearchResultItemRelatedItemNormalizer implements DenormalizerInterfac
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\TopicSearchResultItemRelatedItem();
+        $validator = new \Github\Validator\TopicSearchResultItemRelatedItemValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -56,6 +58,8 @@ class TopicSearchResultItemRelatedItemNormalizer implements DenormalizerInterfac
         if (null !== $object->getTopicRelation()) {
             $data['topic_relation'] = $this->normalizer->normalize($object->getTopicRelation(), 'json', $context);
         }
+        $validator = new \Github\Validator\TopicSearchResultItemRelatedItemValidator();
+        $validator->validate($data);
         return $data;
     }
 }

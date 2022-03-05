@@ -39,6 +39,8 @@ class CodeOfConductNormalizer implements DenormalizerInterface, NormalizerInterf
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\CodeOfConduct();
+        $validator = new \Github\Validator\CodeOfConductValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -75,6 +77,8 @@ class CodeOfConductNormalizer implements DenormalizerInterface, NormalizerInterf
             $data['body'] = $object->getBody();
         }
         $data['html_url'] = $object->getHtmlUrl();
+        $validator = new \Github\Validator\CodeOfConductValidator();
+        $validator->validate($data);
         return $data;
     }
 }

@@ -39,6 +39,8 @@ class ReposOwnerRepoCheckRunsPostBodyOutputImagesItemNormalizer implements Denor
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ReposOwnerRepoCheckRunsPostBodyOutputImagesItem();
+        $validator = new \Github\Validator\ReposOwnerRepoCheckRunsPostBodyOutputImagesItemValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -64,6 +66,8 @@ class ReposOwnerRepoCheckRunsPostBodyOutputImagesItemNormalizer implements Denor
         if (null !== $object->getCaption()) {
             $data['caption'] = $object->getCaption();
         }
+        $validator = new \Github\Validator\ReposOwnerRepoCheckRunsPostBodyOutputImagesItemValidator();
+        $validator->validate($data);
         return $data;
     }
 }

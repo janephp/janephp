@@ -39,6 +39,8 @@ class CommitNormalizer implements DenormalizerInterface, NormalizerInterface, De
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\Commit();
+        $validator = new \Github\Validator\CommitValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -126,6 +128,8 @@ class CommitNormalizer implements DenormalizerInterface, NormalizerInterface, De
             }
             $data['files'] = $values_1;
         }
+        $validator = new \Github\Validator\CommitValidator();
+        $validator->validate($data);
         return $data;
     }
 }

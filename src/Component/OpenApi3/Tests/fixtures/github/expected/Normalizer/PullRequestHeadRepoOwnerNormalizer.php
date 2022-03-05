@@ -39,6 +39,8 @@ class PullRequestHeadRepoOwnerNormalizer implements DenormalizerInterface, Norma
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\PullRequestHeadRepoOwner();
+        $validator = new \Github\Validator\PullRequestHeadRepoOwnerValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -125,6 +127,8 @@ class PullRequestHeadRepoOwnerNormalizer implements DenormalizerInterface, Norma
         $data['subscriptions_url'] = $object->getSubscriptionsUrl();
         $data['type'] = $object->getType();
         $data['url'] = $object->getUrl();
+        $validator = new \Github\Validator\PullRequestHeadRepoOwnerValidator();
+        $validator->validate($data);
         return $data;
     }
 }

@@ -39,6 +39,8 @@ class OrgMembershipNormalizer implements DenormalizerInterface, NormalizerInterf
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\OrgMembership();
+        $validator = new \Github\Validator\OrgMembershipValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -83,6 +85,8 @@ class OrgMembershipNormalizer implements DenormalizerInterface, NormalizerInterf
         if (null !== $object->getPermissions()) {
             $data['permissions'] = $this->normalizer->normalize($object->getPermissions(), 'json', $context);
         }
+        $validator = new \Github\Validator\OrgMembershipValidator();
+        $validator->validate($data);
         return $data;
     }
 }

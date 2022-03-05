@@ -39,6 +39,8 @@ class TeamsTeamIdMembershipsUsernamePutResponse422ErrorsItemNormalizer implement
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\TeamsTeamIdMembershipsUsernamePutResponse422ErrorsItem();
+        $validator = new \Github\Validator\TeamsTeamIdMembershipsUsernamePutResponse422ErrorsItemValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -68,6 +70,8 @@ class TeamsTeamIdMembershipsUsernamePutResponse422ErrorsItemNormalizer implement
         if (null !== $object->getResource()) {
             $data['resource'] = $object->getResource();
         }
+        $validator = new \Github\Validator\TeamsTeamIdMembershipsUsernamePutResponse422ErrorsItemValidator();
+        $validator->validate($data);
         return $data;
     }
 }

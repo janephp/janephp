@@ -39,6 +39,8 @@ class UserPatchBodyNormalizer implements DenormalizerInterface, NormalizerInterf
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\UserPatchBody();
+        $validator = new \Github\Validator\UserPatchBodyValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -101,6 +103,8 @@ class UserPatchBodyNormalizer implements DenormalizerInterface, NormalizerInterf
         if (null !== $object->getBio()) {
             $data['bio'] = $object->getBio();
         }
+        $validator = new \Github\Validator\UserPatchBodyValidator();
+        $validator->validate($data);
         return $data;
     }
 }

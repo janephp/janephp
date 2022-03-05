@@ -39,6 +39,8 @@ class ReposOwnerRepoContentsPathDeleteBodyAuthorNormalizer implements Denormaliz
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ReposOwnerRepoContentsPathDeleteBodyAuthor();
+        $validator = new \Github\Validator\ReposOwnerRepoContentsPathDeleteBodyAuthorValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -62,6 +64,8 @@ class ReposOwnerRepoContentsPathDeleteBodyAuthorNormalizer implements Denormaliz
         if (null !== $object->getEmail()) {
             $data['email'] = $object->getEmail();
         }
+        $validator = new \Github\Validator\ReposOwnerRepoContentsPathDeleteBodyAuthorValidator();
+        $validator->validate($data);
         return $data;
     }
 }

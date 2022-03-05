@@ -39,6 +39,8 @@ class AppManifestsCodeConversionsPostResponse201Normalizer implements Denormaliz
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\AppManifestsCodeConversionsPostResponse201();
+        $validator = new \Github\Validator\AppManifestsCodeConversionsPostResponse201Validator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -136,6 +138,8 @@ class AppManifestsCodeConversionsPostResponse201Normalizer implements Denormaliz
         $data['client_secret'] = $object->getClientSecret();
         $data['webhook_secret'] = $object->getWebhookSecret();
         $data['pem'] = $object->getPem();
+        $validator = new \Github\Validator\AppManifestsCodeConversionsPostResponse201Validator();
+        $validator->validate($data);
         return $data;
     }
 }

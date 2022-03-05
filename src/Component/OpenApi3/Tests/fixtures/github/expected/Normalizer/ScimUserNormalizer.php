@@ -39,6 +39,8 @@ class ScimUserNormalizer implements DenormalizerInterface, NormalizerInterface, 
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ScimUser();
+        $validator = new \Github\Validator\ScimUserValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -138,6 +140,8 @@ class ScimUserNormalizer implements DenormalizerInterface, NormalizerInterface, 
             }
             $data['groups'] = $values_3;
         }
+        $validator = new \Github\Validator\ScimUserValidator();
+        $validator->validate($data);
         return $data;
     }
 }

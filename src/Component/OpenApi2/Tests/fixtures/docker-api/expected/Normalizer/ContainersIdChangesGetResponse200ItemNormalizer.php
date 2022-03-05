@@ -39,6 +39,8 @@ class ContainersIdChangesGetResponse200ItemNormalizer implements DenormalizerInt
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\ContainersIdChangesGetResponse200Item();
+        $validator = new \Docker\Api\Validator\ContainersIdChangesGetResponse200ItemValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -58,6 +60,8 @@ class ContainersIdChangesGetResponse200ItemNormalizer implements DenormalizerInt
         $data = array();
         $data['Path'] = $object->getPath();
         $data['Kind'] = $object->getKind();
+        $validator = new \Docker\Api\Validator\ContainersIdChangesGetResponse200ItemValidator();
+        $validator->validate($data);
         return $data;
     }
 }

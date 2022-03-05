@@ -39,6 +39,8 @@ class DiffEntryNormalizer implements DenormalizerInterface, NormalizerInterface,
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\DiffEntry();
+        $validator = new \Github\Validator\DiffEntryValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -98,6 +100,8 @@ class DiffEntryNormalizer implements DenormalizerInterface, NormalizerInterface,
         if (null !== $object->getPreviousFilename()) {
             $data['previous_filename'] = $object->getPreviousFilename();
         }
+        $validator = new \Github\Validator\DiffEntryValidator();
+        $validator->validate($data);
         return $data;
     }
 }

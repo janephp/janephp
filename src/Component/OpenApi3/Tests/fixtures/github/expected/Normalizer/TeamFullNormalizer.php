@@ -39,6 +39,8 @@ class TeamFullNormalizer implements DenormalizerInterface, NormalizerInterface, 
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\TeamFull();
+        $validator = new \Github\Validator\TeamFullValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -134,6 +136,8 @@ class TeamFullNormalizer implements DenormalizerInterface, NormalizerInterface, 
         if (null !== $object->getLdapDn()) {
             $data['ldap_dn'] = $object->getLdapDn();
         }
+        $validator = new \Github\Validator\TeamFullValidator();
+        $validator->validate($data);
         return $data;
     }
 }

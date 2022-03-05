@@ -39,6 +39,8 @@ class PullRequestReviewCommentLinksSelfNormalizer implements DenormalizerInterfa
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\PullRequestReviewCommentLinksSelf();
+        $validator = new \Github\Validator\PullRequestReviewCommentLinksSelfValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -54,6 +56,8 @@ class PullRequestReviewCommentLinksSelfNormalizer implements DenormalizerInterfa
     {
         $data = array();
         $data['href'] = $object->getHref();
+        $validator = new \Github\Validator\PullRequestReviewCommentLinksSelfValidator();
+        $validator->validate($data);
         return $data;
     }
 }

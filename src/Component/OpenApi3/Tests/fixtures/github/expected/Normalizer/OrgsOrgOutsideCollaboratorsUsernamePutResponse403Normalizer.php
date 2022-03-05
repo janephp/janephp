@@ -39,6 +39,8 @@ class OrgsOrgOutsideCollaboratorsUsernamePutResponse403Normalizer implements Den
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\OrgsOrgOutsideCollaboratorsUsernamePutResponse403();
+        $validator = new \Github\Validator\OrgsOrgOutsideCollaboratorsUsernamePutResponse403Validator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -62,6 +64,8 @@ class OrgsOrgOutsideCollaboratorsUsernamePutResponse403Normalizer implements Den
         if (null !== $object->getDocumentationUrl()) {
             $data['documentation_url'] = $object->getDocumentationUrl();
         }
+        $validator = new \Github\Validator\OrgsOrgOutsideCollaboratorsUsernamePutResponse403Validator();
+        $validator->validate($data);
         return $data;
     }
 }

@@ -39,6 +39,8 @@ class BaseGistOwnerNormalizer implements DenormalizerInterface, NormalizerInterf
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\BaseGistOwner();
+        $validator = new \Github\Validator\BaseGistOwnerValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -131,6 +133,8 @@ class BaseGistOwnerNormalizer implements DenormalizerInterface, NormalizerInterf
         if (null !== $object->getStarredAt()) {
             $data['starred_at'] = $object->getStarredAt();
         }
+        $validator = new \Github\Validator\BaseGistOwnerValidator();
+        $validator->validate($data);
         return $data;
     }
 }

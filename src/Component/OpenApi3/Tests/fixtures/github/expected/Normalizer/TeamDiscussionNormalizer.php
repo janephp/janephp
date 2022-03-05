@@ -39,6 +39,8 @@ class TeamDiscussionNormalizer implements DenormalizerInterface, NormalizerInter
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\TeamDiscussion();
+        $validator = new \Github\Validator\TeamDiscussionValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -130,6 +132,8 @@ class TeamDiscussionNormalizer implements DenormalizerInterface, NormalizerInter
         if (null !== $object->getReactions()) {
             $data['reactions'] = $this->normalizer->normalize($object->getReactions(), 'json', $context);
         }
+        $validator = new \Github\Validator\TeamDiscussionValidator();
+        $validator->validate($data);
         return $data;
     }
 }

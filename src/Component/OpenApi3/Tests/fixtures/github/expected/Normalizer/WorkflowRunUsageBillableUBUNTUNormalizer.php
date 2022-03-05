@@ -39,6 +39,8 @@ class WorkflowRunUsageBillableUBUNTUNormalizer implements DenormalizerInterface,
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\WorkflowRunUsageBillableUBUNTU();
+        $validator = new \Github\Validator\WorkflowRunUsageBillableUBUNTUValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -62,6 +64,8 @@ class WorkflowRunUsageBillableUBUNTUNormalizer implements DenormalizerInterface,
         if (null !== $object->getJobs()) {
             $data['jobs'] = $object->getJobs();
         }
+        $validator = new \Github\Validator\WorkflowRunUsageBillableUBUNTUValidator();
+        $validator->validate($data);
         return $data;
     }
 }

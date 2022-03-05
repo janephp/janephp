@@ -39,6 +39,8 @@ class PluginConfigUserNormalizer implements DenormalizerInterface, NormalizerInt
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\PluginConfigUser();
+        $validator = new \Docker\Api\Validator\PluginConfigUserValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -62,6 +64,8 @@ class PluginConfigUserNormalizer implements DenormalizerInterface, NormalizerInt
         if (null !== $object->getGID()) {
             $data['GID'] = $object->getGID();
         }
+        $validator = new \Docker\Api\Validator\PluginConfigUserValidator();
+        $validator->validate($data);
         return $data;
     }
 }

@@ -39,6 +39,8 @@ class ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyNormalizer imple
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody();
+        $validator = new \Github\Validator\ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -68,6 +70,8 @@ class ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyNormalizer imple
             }
             $data['inputs'] = $values;
         }
+        $validator = new \Github\Validator\ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyValidator();
+        $validator->validate($data);
         return $data;
     }
 }

@@ -39,6 +39,8 @@ class AddressNormalizer implements DenormalizerInterface, NormalizerInterface, D
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\Address();
+        $validator = new \Docker\Api\Validator\AddressValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -62,6 +64,8 @@ class AddressNormalizer implements DenormalizerInterface, NormalizerInterface, D
         if (null !== $object->getPrefixLen()) {
             $data['PrefixLen'] = $object->getPrefixLen();
         }
+        $validator = new \Docker\Api\Validator\AddressValidator();
+        $validator->validate($data);
         return $data;
     }
 }

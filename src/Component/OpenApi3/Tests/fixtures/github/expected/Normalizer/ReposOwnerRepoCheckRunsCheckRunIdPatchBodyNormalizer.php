@@ -39,6 +39,8 @@ class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyNormalizer implements Denormaliz
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ReposOwnerRepoCheckRunsCheckRunIdPatchBody();
+        $validator = new \Github\Validator\ReposOwnerRepoCheckRunsCheckRunIdPatchBodyValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -112,6 +114,8 @@ class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyNormalizer implements Denormaliz
             }
             $data['actions'] = $values;
         }
+        $validator = new \Github\Validator\ReposOwnerRepoCheckRunsCheckRunIdPatchBodyValidator();
+        $validator->validate($data);
         return $data;
     }
 }

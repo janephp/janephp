@@ -39,6 +39,8 @@ class PluginSettingsNormalizer implements DenormalizerInterface, NormalizerInter
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\PluginSettings();
+        $validator = new \Docker\Api\Validator\PluginSettingsValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -98,6 +100,8 @@ class PluginSettingsNormalizer implements DenormalizerInterface, NormalizerInter
             $values_3[] = $this->normalizer->normalize($value_3, 'json', $context);
         }
         $data['Devices'] = $values_3;
+        $validator = new \Docker\Api\Validator\PluginSettingsValidator();
+        $validator->validate($data);
         return $data;
     }
 }

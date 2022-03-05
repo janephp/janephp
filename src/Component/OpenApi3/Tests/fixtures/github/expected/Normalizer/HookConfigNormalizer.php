@@ -39,6 +39,8 @@ class HookConfigNormalizer implements DenormalizerInterface, NormalizerInterface
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\HookConfig();
+        $validator = new \Github\Validator\HookConfigValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -110,6 +112,8 @@ class HookConfigNormalizer implements DenormalizerInterface, NormalizerInterface
         if (null !== $object->getToken()) {
             $data['token'] = $object->getToken();
         }
+        $validator = new \Github\Validator\HookConfigValidator();
+        $validator->validate($data);
         return $data;
     }
 }

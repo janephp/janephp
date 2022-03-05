@@ -39,6 +39,8 @@ class ImageRootFSNormalizer implements DenormalizerInterface, NormalizerInterfac
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\ImageRootFS();
+        $validator = new \Docker\Api\Validator\ImageRootFSValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -74,6 +76,8 @@ class ImageRootFSNormalizer implements DenormalizerInterface, NormalizerInterfac
         if (null !== $object->getBaseLayer()) {
             $data['BaseLayer'] = $object->getBaseLayer();
         }
+        $validator = new \Docker\Api\Validator\ImageRootFSValidator();
+        $validator->validate($data);
         return $data;
     }
 }

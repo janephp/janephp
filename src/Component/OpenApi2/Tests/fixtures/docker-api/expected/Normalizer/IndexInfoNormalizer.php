@@ -39,6 +39,8 @@ class IndexInfoNormalizer implements DenormalizerInterface, NormalizerInterface,
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\IndexInfo();
+        $validator = new \Docker\Api\Validator\IndexInfoValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -82,6 +84,8 @@ class IndexInfoNormalizer implements DenormalizerInterface, NormalizerInterface,
         if (null !== $object->getOfficial()) {
             $data['Official'] = $object->getOfficial();
         }
+        $validator = new \Docker\Api\Validator\IndexInfoValidator();
+        $validator->validate($data);
         return $data;
     }
 }

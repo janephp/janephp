@@ -39,6 +39,8 @@ class RepoSearchResultItemNormalizer implements DenormalizerInterface, Normalize
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\RepoSearchResultItem();
+        $validator = new \Github\Validator\RepoSearchResultItemValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -434,6 +436,8 @@ class RepoSearchResultItemNormalizer implements DenormalizerInterface, Normalize
         if (null !== $object->getDeleteBranchOnMerge()) {
             $data['delete_branch_on_merge'] = $object->getDeleteBranchOnMerge();
         }
+        $validator = new \Github\Validator\RepoSearchResultItemValidator();
+        $validator->validate($data);
         return $data;
     }
 }

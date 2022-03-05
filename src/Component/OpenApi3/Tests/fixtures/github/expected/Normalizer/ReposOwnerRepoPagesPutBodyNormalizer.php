@@ -39,6 +39,8 @@ class ReposOwnerRepoPagesPutBodyNormalizer implements DenormalizerInterface, Nor
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ReposOwnerRepoPagesPutBody();
+        $validator = new \Github\Validator\ReposOwnerRepoPagesPutBodyValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -65,6 +67,8 @@ class ReposOwnerRepoPagesPutBodyNormalizer implements DenormalizerInterface, Nor
         if (null !== $object->getSource()) {
             $data['source'] = $object->getSource();
         }
+        $validator = new \Github\Validator\ReposOwnerRepoPagesPutBodyValidator();
+        $validator->validate($data);
         return $data;
     }
 }

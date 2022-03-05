@@ -39,6 +39,8 @@ class AuthorizationsClientsClientIdFingerprintPutBodyNormalizer implements Denor
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\AuthorizationsClientsClientIdFingerprintPutBody();
+        $validator = new \Github\Validator\AuthorizationsClientsClientIdFingerprintPutBodyValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -83,6 +85,8 @@ class AuthorizationsClientsClientIdFingerprintPutBodyNormalizer implements Denor
         if (null !== $object->getNoteUrl()) {
             $data['note_url'] = $object->getNoteUrl();
         }
+        $validator = new \Github\Validator\AuthorizationsClientsClientIdFingerprintPutBodyValidator();
+        $validator->validate($data);
         return $data;
     }
 }

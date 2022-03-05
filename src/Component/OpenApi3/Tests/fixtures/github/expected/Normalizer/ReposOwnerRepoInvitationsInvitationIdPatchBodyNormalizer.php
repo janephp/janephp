@@ -39,6 +39,8 @@ class ReposOwnerRepoInvitationsInvitationIdPatchBodyNormalizer implements Denorm
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ReposOwnerRepoInvitationsInvitationIdPatchBody();
+        $validator = new \Github\Validator\ReposOwnerRepoInvitationsInvitationIdPatchBodyValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -56,6 +58,8 @@ class ReposOwnerRepoInvitationsInvitationIdPatchBodyNormalizer implements Denorm
         if (null !== $object->getPermissions()) {
             $data['permissions'] = $object->getPermissions();
         }
+        $validator = new \Github\Validator\ReposOwnerRepoInvitationsInvitationIdPatchBodyValidator();
+        $validator->validate($data);
         return $data;
     }
 }

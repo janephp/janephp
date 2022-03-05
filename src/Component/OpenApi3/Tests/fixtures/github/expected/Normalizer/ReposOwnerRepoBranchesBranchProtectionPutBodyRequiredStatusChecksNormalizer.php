@@ -39,6 +39,8 @@ class ReposOwnerRepoBranchesBranchProtectionPutBodyRequiredStatusChecksNormalize
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ReposOwnerRepoBranchesBranchProtectionPutBodyRequiredStatusChecks();
+        $validator = new \Github\Validator\ReposOwnerRepoBranchesBranchProtectionPutBodyRequiredStatusChecksValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -66,6 +68,8 @@ class ReposOwnerRepoBranchesBranchProtectionPutBodyRequiredStatusChecksNormalize
             $values[] = $value;
         }
         $data['contexts'] = $values;
+        $validator = new \Github\Validator\ReposOwnerRepoBranchesBranchProtectionPutBodyRequiredStatusChecksValidator();
+        $validator->validate($data);
         return $data;
     }
 }

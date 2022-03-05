@@ -39,6 +39,8 @@ class ReposOwnerRepoPatchBodyNormalizer implements DenormalizerInterface, Normal
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ReposOwnerRepoPatchBody();
+        $validator = new \Github\Validator\ReposOwnerRepoPatchBodyValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -140,6 +142,8 @@ class ReposOwnerRepoPatchBodyNormalizer implements DenormalizerInterface, Normal
         if (null !== $object->getArchived()) {
             $data['archived'] = $object->getArchived();
         }
+        $validator = new \Github\Validator\ReposOwnerRepoPatchBodyValidator();
+        $validator->validate($data);
         return $data;
     }
 }

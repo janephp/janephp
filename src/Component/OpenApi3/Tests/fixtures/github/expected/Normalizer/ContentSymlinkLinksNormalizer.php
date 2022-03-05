@@ -39,6 +39,8 @@ class ContentSymlinkLinksNormalizer implements DenormalizerInterface, Normalizer
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ContentSymlinkLinks();
+        $validator = new \Github\Validator\ContentSymlinkLinksValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -68,6 +70,8 @@ class ContentSymlinkLinksNormalizer implements DenormalizerInterface, Normalizer
         $data['git'] = $object->getGit();
         $data['html'] = $object->getHtml();
         $data['self'] = $object->getSelf();
+        $validator = new \Github\Validator\ContentSymlinkLinksValidator();
+        $validator->validate($data);
         return $data;
     }
 }

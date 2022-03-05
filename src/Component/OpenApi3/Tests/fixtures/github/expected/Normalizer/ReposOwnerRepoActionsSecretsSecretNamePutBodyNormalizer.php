@@ -39,6 +39,8 @@ class ReposOwnerRepoActionsSecretsSecretNamePutBodyNormalizer implements Denorma
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ReposOwnerRepoActionsSecretsSecretNamePutBody();
+        $validator = new \Github\Validator\ReposOwnerRepoActionsSecretsSecretNamePutBodyValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -62,6 +64,8 @@ class ReposOwnerRepoActionsSecretsSecretNamePutBodyNormalizer implements Denorma
         if (null !== $object->getKeyId()) {
             $data['key_id'] = $object->getKeyId();
         }
+        $validator = new \Github\Validator\ReposOwnerRepoActionsSecretsSecretNamePutBodyValidator();
+        $validator->validate($data);
         return $data;
     }
 }

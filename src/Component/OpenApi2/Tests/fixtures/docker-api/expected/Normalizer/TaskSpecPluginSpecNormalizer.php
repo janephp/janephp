@@ -39,6 +39,8 @@ class TaskSpecPluginSpecNormalizer implements DenormalizerInterface, NormalizerI
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\TaskSpecPluginSpec();
+        $validator = new \Docker\Api\Validator\TaskSpecPluginSpecValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -82,6 +84,8 @@ class TaskSpecPluginSpecNormalizer implements DenormalizerInterface, NormalizerI
             }
             $data['PluginPrivilege'] = $values;
         }
+        $validator = new \Docker\Api\Validator\TaskSpecPluginSpecValidator();
+        $validator->validate($data);
         return $data;
     }
 }

@@ -39,6 +39,8 @@ class GitCommitVerificationNormalizer implements DenormalizerInterface, Normaliz
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\GitCommitVerification();
+        $validator = new \Github\Validator\GitCommitVerificationValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -80,6 +82,8 @@ class GitCommitVerificationNormalizer implements DenormalizerInterface, Normaliz
         if (null !== $object->getPayload()) {
             $data['payload'] = $object->getPayload();
         }
+        $validator = new \Github\Validator\GitCommitVerificationValidator();
+        $validator->validate($data);
         return $data;
     }
 }

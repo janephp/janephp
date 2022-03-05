@@ -39,6 +39,8 @@ class GitTagTaggerNormalizer implements DenormalizerInterface, NormalizerInterfa
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\GitTagTagger();
+        $validator = new \Github\Validator\GitTagTaggerValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -62,6 +64,8 @@ class GitTagTaggerNormalizer implements DenormalizerInterface, NormalizerInterfa
         $data['date'] = $object->getDate();
         $data['email'] = $object->getEmail();
         $data['name'] = $object->getName();
+        $validator = new \Github\Validator\GitTagTaggerValidator();
+        $validator->validate($data);
         return $data;
     }
 }

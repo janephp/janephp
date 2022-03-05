@@ -39,6 +39,8 @@ class WorkflowRunNormalizer implements DenormalizerInterface, NormalizerInterfac
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\WorkflowRun();
+        $validator = new \Github\Validator\WorkflowRunValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -178,6 +180,8 @@ class WorkflowRunNormalizer implements DenormalizerInterface, NormalizerInterfac
         if (null !== $object->getHeadRepositoryId()) {
             $data['head_repository_id'] = $object->getHeadRepositoryId();
         }
+        $validator = new \Github\Validator\WorkflowRunValidator();
+        $validator->validate($data);
         return $data;
     }
 }

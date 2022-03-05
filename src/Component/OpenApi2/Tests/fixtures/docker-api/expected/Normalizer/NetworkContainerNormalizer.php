@@ -39,6 +39,8 @@ class NetworkContainerNormalizer implements DenormalizerInterface, NormalizerInt
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\NetworkContainer();
+        $validator = new \Docker\Api\Validator\NetworkContainerValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -80,6 +82,8 @@ class NetworkContainerNormalizer implements DenormalizerInterface, NormalizerInt
         if (null !== $object->getIPv6Address()) {
             $data['IPv6Address'] = $object->getIPv6Address();
         }
+        $validator = new \Docker\Api\Validator\NetworkContainerValidator();
+        $validator->validate($data);
         return $data;
     }
 }

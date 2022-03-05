@@ -39,6 +39,8 @@ class ContainersIdArchiveHeadResponse400Normalizer implements DenormalizerInterf
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\ContainersIdArchiveHeadResponse400();
+        $validator = new \Docker\Api\Validator\ContainersIdArchiveHeadResponse400Validator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -56,6 +58,8 @@ class ContainersIdArchiveHeadResponse400Normalizer implements DenormalizerInterf
         if (null !== $object->getMessage()) {
             $data['message'] = $object->getMessage();
         }
+        $validator = new \Docker\Api\Validator\ContainersIdArchiveHeadResponse400Validator();
+        $validator->validate($data);
         return $data;
     }
 }

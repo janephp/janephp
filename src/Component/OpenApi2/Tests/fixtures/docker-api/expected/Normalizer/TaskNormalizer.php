@@ -39,6 +39,8 @@ class TaskNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\Task();
+        $validator = new \Docker\Api\Validator\TaskValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -150,6 +152,8 @@ class TaskNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         if (null !== $object->getJobIteration()) {
             $data['JobIteration'] = $this->normalizer->normalize($object->getJobIteration(), 'json', $context);
         }
+        $validator = new \Docker\Api\Validator\TaskValidator();
+        $validator->validate($data);
         return $data;
     }
 }

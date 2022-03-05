@@ -39,6 +39,8 @@ class CommitParentsItemNormalizer implements DenormalizerInterface, NormalizerIn
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\CommitParentsItem();
+        $validator = new \Github\Validator\CommitParentsItemValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -64,6 +66,8 @@ class CommitParentsItemNormalizer implements DenormalizerInterface, NormalizerIn
         if (null !== $object->getHtmlUrl()) {
             $data['html_url'] = $object->getHtmlUrl();
         }
+        $validator = new \Github\Validator\CommitParentsItemValidator();
+        $validator->validate($data);
         return $data;
     }
 }

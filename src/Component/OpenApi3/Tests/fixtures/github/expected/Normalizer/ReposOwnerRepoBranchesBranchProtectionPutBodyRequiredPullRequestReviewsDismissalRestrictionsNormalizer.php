@@ -39,6 +39,8 @@ class ReposOwnerRepoBranchesBranchProtectionPutBodyRequiredPullRequestReviewsDis
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ReposOwnerRepoBranchesBranchProtectionPutBodyRequiredPullRequestReviewsDismissalRestrictions();
+        $validator = new \Github\Validator\ReposOwnerRepoBranchesBranchProtectionPutBodyRequiredPullRequestReviewsDismissalRestrictionsValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -78,6 +80,8 @@ class ReposOwnerRepoBranchesBranchProtectionPutBodyRequiredPullRequestReviewsDis
             }
             $data['teams'] = $values_1;
         }
+        $validator = new \Github\Validator\ReposOwnerRepoBranchesBranchProtectionPutBodyRequiredPullRequestReviewsDismissalRestrictionsValidator();
+        $validator->validate($data);
         return $data;
     }
 }

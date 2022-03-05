@@ -39,6 +39,8 @@ class OrganizationNormalizer implements DenormalizerInterface, NormalizerInterfa
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\Organization();
+        $validator = new \Github\Validator\OrganizationValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -183,6 +185,8 @@ class OrganizationNormalizer implements DenormalizerInterface, NormalizerInterfa
         if (null !== $object->getPlan()) {
             $data['plan'] = $this->normalizer->normalize($object->getPlan(), 'json', $context);
         }
+        $validator = new \Github\Validator\OrganizationValidator();
+        $validator->validate($data);
         return $data;
     }
 }

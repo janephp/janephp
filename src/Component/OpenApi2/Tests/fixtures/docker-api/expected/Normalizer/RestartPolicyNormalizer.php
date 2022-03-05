@@ -39,6 +39,8 @@ class RestartPolicyNormalizer implements DenormalizerInterface, NormalizerInterf
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\RestartPolicy();
+        $validator = new \Docker\Api\Validator\RestartPolicyValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -62,6 +64,8 @@ class RestartPolicyNormalizer implements DenormalizerInterface, NormalizerInterf
         if (null !== $object->getMaximumRetryCount()) {
             $data['MaximumRetryCount'] = $object->getMaximumRetryCount();
         }
+        $validator = new \Docker\Api\Validator\RestartPolicyValidator();
+        $validator->validate($data);
         return $data;
     }
 }

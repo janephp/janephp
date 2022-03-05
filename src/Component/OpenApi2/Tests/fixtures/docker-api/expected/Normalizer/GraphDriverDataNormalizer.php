@@ -39,6 +39,8 @@ class GraphDriverDataNormalizer implements DenormalizerInterface, NormalizerInte
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\GraphDriverData();
+        $validator = new \Docker\Api\Validator\GraphDriverDataValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -66,6 +68,8 @@ class GraphDriverDataNormalizer implements DenormalizerInterface, NormalizerInte
             $values[$key] = $value;
         }
         $data['Data'] = $values;
+        $validator = new \Docker\Api\Validator\GraphDriverDataValidator();
+        $validator->validate($data);
         return $data;
     }
 }

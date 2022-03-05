@@ -39,6 +39,8 @@ class ProtectedBranchAllowForcePushesNormalizer implements DenormalizerInterface
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ProtectedBranchAllowForcePushes();
+        $validator = new \Github\Validator\ProtectedBranchAllowForcePushesValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -54,6 +56,8 @@ class ProtectedBranchAllowForcePushesNormalizer implements DenormalizerInterface
     {
         $data = array();
         $data['enabled'] = $object->getEnabled();
+        $validator = new \Github\Validator\ProtectedBranchAllowForcePushesValidator();
+        $validator->validate($data);
         return $data;
     }
 }

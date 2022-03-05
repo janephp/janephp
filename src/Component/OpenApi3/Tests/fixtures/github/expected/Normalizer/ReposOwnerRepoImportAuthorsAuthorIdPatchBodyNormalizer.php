@@ -39,6 +39,8 @@ class ReposOwnerRepoImportAuthorsAuthorIdPatchBodyNormalizer implements Denormal
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ReposOwnerRepoImportAuthorsAuthorIdPatchBody();
+        $validator = new \Github\Validator\ReposOwnerRepoImportAuthorsAuthorIdPatchBodyValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -68,6 +70,8 @@ class ReposOwnerRepoImportAuthorsAuthorIdPatchBodyNormalizer implements Denormal
         if (null !== $object->getRemoteId()) {
             $data['remote_id'] = $object->getRemoteId();
         }
+        $validator = new \Github\Validator\ReposOwnerRepoImportAuthorsAuthorIdPatchBodyValidator();
+        $validator->validate($data);
         return $data;
     }
 }

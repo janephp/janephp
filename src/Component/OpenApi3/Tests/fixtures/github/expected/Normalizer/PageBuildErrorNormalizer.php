@@ -39,6 +39,8 @@ class PageBuildErrorNormalizer implements DenormalizerInterface, NormalizerInter
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\PageBuildError();
+        $validator = new \Github\Validator\PageBuildErrorValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -57,6 +59,8 @@ class PageBuildErrorNormalizer implements DenormalizerInterface, NormalizerInter
     {
         $data = array();
         $data['message'] = $object->getMessage();
+        $validator = new \Github\Validator\PageBuildErrorValidator();
+        $validator->validate($data);
         return $data;
     }
 }

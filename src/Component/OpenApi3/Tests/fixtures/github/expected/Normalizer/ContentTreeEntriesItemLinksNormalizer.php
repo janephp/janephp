@@ -39,6 +39,8 @@ class ContentTreeEntriesItemLinksNormalizer implements DenormalizerInterface, No
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ContentTreeEntriesItemLinks();
+        $validator = new \Github\Validator\ContentTreeEntriesItemLinksValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -68,6 +70,8 @@ class ContentTreeEntriesItemLinksNormalizer implements DenormalizerInterface, No
         $data['git'] = $object->getGit();
         $data['html'] = $object->getHtml();
         $data['self'] = $object->getSelf();
+        $validator = new \Github\Validator\ContentTreeEntriesItemLinksValidator();
+        $validator->validate($data);
         return $data;
     }
 }

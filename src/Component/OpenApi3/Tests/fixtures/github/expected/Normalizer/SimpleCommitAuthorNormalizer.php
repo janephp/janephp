@@ -39,6 +39,8 @@ class SimpleCommitAuthorNormalizer implements DenormalizerInterface, NormalizerI
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\SimpleCommitAuthor();
+        $validator = new \Github\Validator\SimpleCommitAuthorValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -58,6 +60,8 @@ class SimpleCommitAuthorNormalizer implements DenormalizerInterface, NormalizerI
         $data = array();
         $data['name'] = $object->getName();
         $data['email'] = $object->getEmail();
+        $validator = new \Github\Validator\SimpleCommitAuthorValidator();
+        $validator->validate($data);
         return $data;
     }
 }

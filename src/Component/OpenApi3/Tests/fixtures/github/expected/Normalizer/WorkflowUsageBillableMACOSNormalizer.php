@@ -39,6 +39,8 @@ class WorkflowUsageBillableMACOSNormalizer implements DenormalizerInterface, Nor
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\WorkflowUsageBillableMACOS();
+        $validator = new \Github\Validator\WorkflowUsageBillableMACOSValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -56,6 +58,8 @@ class WorkflowUsageBillableMACOSNormalizer implements DenormalizerInterface, Nor
         if (null !== $object->getTotalMs()) {
             $data['total_ms'] = $object->getTotalMs();
         }
+        $validator = new \Github\Validator\WorkflowUsageBillableMACOSValidator();
+        $validator->validate($data);
         return $data;
     }
 }

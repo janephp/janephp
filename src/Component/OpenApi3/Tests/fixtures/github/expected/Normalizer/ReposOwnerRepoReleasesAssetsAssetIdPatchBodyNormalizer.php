@@ -39,6 +39,8 @@ class ReposOwnerRepoReleasesAssetsAssetIdPatchBodyNormalizer implements Denormal
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ReposOwnerRepoReleasesAssetsAssetIdPatchBody();
+        $validator = new \Github\Validator\ReposOwnerRepoReleasesAssetsAssetIdPatchBodyValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -68,6 +70,8 @@ class ReposOwnerRepoReleasesAssetsAssetIdPatchBodyNormalizer implements Denormal
         if (null !== $object->getState()) {
             $data['state'] = $object->getState();
         }
+        $validator = new \Github\Validator\ReposOwnerRepoReleasesAssetsAssetIdPatchBodyValidator();
+        $validator->validate($data);
         return $data;
     }
 }

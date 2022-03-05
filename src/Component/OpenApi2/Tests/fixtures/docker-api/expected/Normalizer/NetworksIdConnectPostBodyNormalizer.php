@@ -39,6 +39,8 @@ class NetworksIdConnectPostBodyNormalizer implements DenormalizerInterface, Norm
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\NetworksIdConnectPostBody();
+        $validator = new \Docker\Api\Validator\NetworksIdConnectPostBodyValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -62,6 +64,8 @@ class NetworksIdConnectPostBodyNormalizer implements DenormalizerInterface, Norm
         if (null !== $object->getEndpointConfig()) {
             $data['EndpointConfig'] = $this->normalizer->normalize($object->getEndpointConfig(), 'json', $context);
         }
+        $validator = new \Docker\Api\Validator\NetworksIdConnectPostBodyValidator();
+        $validator->validate($data);
         return $data;
     }
 }

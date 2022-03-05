@@ -39,6 +39,8 @@ class SwarmSpecOrchestrationNormalizer implements DenormalizerInterface, Normali
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\SwarmSpecOrchestration();
+        $validator = new \Docker\Api\Validator\SwarmSpecOrchestrationValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -56,6 +58,8 @@ class SwarmSpecOrchestrationNormalizer implements DenormalizerInterface, Normali
         if (null !== $object->getTaskHistoryRetentionLimit()) {
             $data['TaskHistoryRetentionLimit'] = $object->getTaskHistoryRetentionLimit();
         }
+        $validator = new \Docker\Api\Validator\SwarmSpecOrchestrationValidator();
+        $validator->validate($data);
         return $data;
     }
 }

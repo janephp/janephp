@@ -39,6 +39,8 @@ class ImportProjectChoicesItemNormalizer implements DenormalizerInterface, Norma
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ImportProjectChoicesItem();
+        $validator = new \Github\Validator\ImportProjectChoicesItemValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -68,6 +70,8 @@ class ImportProjectChoicesItemNormalizer implements DenormalizerInterface, Norma
         if (null !== $object->getHumanName()) {
             $data['human_name'] = $object->getHumanName();
         }
+        $validator = new \Github\Validator\ImportProjectChoicesItemValidator();
+        $validator->validate($data);
         return $data;
     }
 }

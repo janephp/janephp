@@ -39,6 +39,8 @@ class TeamsTeamIdDiscussionsPostBodyNormalizer implements DenormalizerInterface,
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\TeamsTeamIdDiscussionsPostBody();
+        $validator = new \Github\Validator\TeamsTeamIdDiscussionsPostBodyValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -64,6 +66,8 @@ class TeamsTeamIdDiscussionsPostBodyNormalizer implements DenormalizerInterface,
         if (null !== $object->getPrivate()) {
             $data['private'] = $object->getPrivate();
         }
+        $validator = new \Github\Validator\TeamsTeamIdDiscussionsPostBodyValidator();
+        $validator->validate($data);
         return $data;
     }
 }

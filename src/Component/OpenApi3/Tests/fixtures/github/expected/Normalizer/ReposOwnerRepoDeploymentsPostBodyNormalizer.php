@@ -39,6 +39,8 @@ class ReposOwnerRepoDeploymentsPostBodyNormalizer implements DenormalizerInterfa
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ReposOwnerRepoDeploymentsPostBody();
+        $validator = new \Github\Validator\ReposOwnerRepoDeploymentsPostBodyValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -119,6 +121,8 @@ class ReposOwnerRepoDeploymentsPostBodyNormalizer implements DenormalizerInterfa
         if (null !== $object->getCreatedAt()) {
             $data['created_at'] = $object->getCreatedAt();
         }
+        $validator = new \Github\Validator\ReposOwnerRepoDeploymentsPostBodyValidator();
+        $validator->validate($data);
         return $data;
     }
 }

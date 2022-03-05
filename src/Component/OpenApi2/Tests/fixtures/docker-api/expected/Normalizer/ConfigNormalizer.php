@@ -39,6 +39,8 @@ class ConfigNormalizer implements DenormalizerInterface, NormalizerInterface, De
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\Config();
+        $validator = new \Docker\Api\Validator\ConfigValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -80,6 +82,8 @@ class ConfigNormalizer implements DenormalizerInterface, NormalizerInterface, De
         if (null !== $object->getSpec()) {
             $data['Spec'] = $this->normalizer->normalize($object->getSpec(), 'json', $context);
         }
+        $validator = new \Docker\Api\Validator\ConfigValidator();
+        $validator->validate($data);
         return $data;
     }
 }

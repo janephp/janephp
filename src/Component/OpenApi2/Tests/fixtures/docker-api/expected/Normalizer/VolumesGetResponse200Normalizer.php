@@ -39,6 +39,8 @@ class VolumesGetResponse200Normalizer implements DenormalizerInterface, Normaliz
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\VolumesGetResponse200();
+        $validator = new \Docker\Api\Validator\VolumesGetResponse200Validator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -74,6 +76,8 @@ class VolumesGetResponse200Normalizer implements DenormalizerInterface, Normaliz
             $values_1[] = $value_1;
         }
         $data['Warnings'] = $values_1;
+        $validator = new \Docker\Api\Validator\VolumesGetResponse200Validator();
+        $validator->validate($data);
         return $data;
     }
 }

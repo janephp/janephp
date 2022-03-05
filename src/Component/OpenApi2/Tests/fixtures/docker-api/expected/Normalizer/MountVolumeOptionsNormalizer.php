@@ -39,6 +39,8 @@ class MountVolumeOptionsNormalizer implements DenormalizerInterface, NormalizerI
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\MountVolumeOptions();
+        $validator = new \Docker\Api\Validator\MountVolumeOptionsValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -76,6 +78,8 @@ class MountVolumeOptionsNormalizer implements DenormalizerInterface, NormalizerI
         if (null !== $object->getDriverConfig()) {
             $data['DriverConfig'] = $this->normalizer->normalize($object->getDriverConfig(), 'json', $context);
         }
+        $validator = new \Docker\Api\Validator\MountVolumeOptionsValidator();
+        $validator->validate($data);
         return $data;
     }
 }

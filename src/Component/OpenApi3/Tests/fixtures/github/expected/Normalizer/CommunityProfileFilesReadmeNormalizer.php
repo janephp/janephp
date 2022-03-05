@@ -39,6 +39,8 @@ class CommunityProfileFilesReadmeNormalizer implements DenormalizerInterface, No
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\CommunityProfileFilesReadme();
+        $validator = new \Github\Validator\CommunityProfileFilesReadmeValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -58,6 +60,8 @@ class CommunityProfileFilesReadmeNormalizer implements DenormalizerInterface, No
         $data = array();
         $data['url'] = $object->getUrl();
         $data['html_url'] = $object->getHtmlUrl();
+        $validator = new \Github\Validator\CommunityProfileFilesReadmeValidator();
+        $validator->validate($data);
         return $data;
     }
 }

@@ -39,6 +39,8 @@ class PullRequestSimpleNormalizer implements DenormalizerInterface, NormalizerIn
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\PullRequestSimple();
+        $validator = new \Github\Validator\PullRequestSimpleValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -265,6 +267,8 @@ class PullRequestSimpleNormalizer implements DenormalizerInterface, NormalizerIn
         if (null !== $object->getDraft()) {
             $data['draft'] = $object->getDraft();
         }
+        $validator = new \Github\Validator\PullRequestSimpleValidator();
+        $validator->validate($data);
         return $data;
     }
 }

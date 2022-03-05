@@ -39,6 +39,8 @@ class IssueSimpleLabelsItemNormalizer implements DenormalizerInterface, Normaliz
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\IssueSimpleLabelsItem();
+        $validator = new \Github\Validator\IssueSimpleLabelsItemValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -95,6 +97,8 @@ class IssueSimpleLabelsItemNormalizer implements DenormalizerInterface, Normaliz
         if (null !== $object->getDefault()) {
             $data['default'] = $object->getDefault();
         }
+        $validator = new \Github\Validator\IssueSimpleLabelsItemValidator();
+        $validator->validate($data);
         return $data;
     }
 }

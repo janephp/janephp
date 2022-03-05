@@ -39,6 +39,8 @@ class BranchProtectionRequiredStatusChecksNormalizer implements DenormalizerInte
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\BranchProtectionRequiredStatusChecks();
+        $validator = new \Github\Validator\BranchProtectionRequiredStatusChecksValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -78,6 +80,8 @@ class BranchProtectionRequiredStatusChecksNormalizer implements DenormalizerInte
         if (null !== $object->getContextsUrl()) {
             $data['contexts_url'] = $object->getContextsUrl();
         }
+        $validator = new \Github\Validator\BranchProtectionRequiredStatusChecksValidator();
+        $validator->validate($data);
         return $data;
     }
 }

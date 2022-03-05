@@ -39,6 +39,8 @@ class ApiOverviewNormalizer implements DenormalizerInterface, NormalizerInterfac
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ApiOverview();
+        $validator = new \Github\Validator\ApiOverviewValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -156,6 +158,8 @@ class ApiOverviewNormalizer implements DenormalizerInterface, NormalizerInterfac
         if (null !== $object->getInstalledVersion()) {
             $data['installed_version'] = $object->getInstalledVersion();
         }
+        $validator = new \Github\Validator\ApiOverviewValidator();
+        $validator->validate($data);
         return $data;
     }
 }

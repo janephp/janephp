@@ -39,6 +39,8 @@ class OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200Normalizer implem
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200();
+        $validator = new \Github\Validator\OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200Validator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -70,6 +72,8 @@ class OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200Normalizer implem
             }
             $data['repositories'] = $values;
         }
+        $validator = new \Github\Validator\OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200Validator();
+        $validator->validate($data);
         return $data;
     }
 }

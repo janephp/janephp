@@ -39,6 +39,8 @@ class ApplicationsClientIdGrantDeleteBodyNormalizer implements DenormalizerInter
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ApplicationsClientIdGrantDeleteBody();
+        $validator = new \Github\Validator\ApplicationsClientIdGrantDeleteBodyValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -56,6 +58,8 @@ class ApplicationsClientIdGrantDeleteBodyNormalizer implements DenormalizerInter
         if (null !== $object->getAccessToken()) {
             $data['access_token'] = $object->getAccessToken();
         }
+        $validator = new \Github\Validator\ApplicationsClientIdGrantDeleteBodyValidator();
+        $validator->validate($data);
         return $data;
     }
 }

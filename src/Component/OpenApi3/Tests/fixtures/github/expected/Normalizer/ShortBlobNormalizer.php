@@ -39,6 +39,8 @@ class ShortBlobNormalizer implements DenormalizerInterface, NormalizerInterface,
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ShortBlob();
+        $validator = new \Github\Validator\ShortBlobValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -62,6 +64,8 @@ class ShortBlobNormalizer implements DenormalizerInterface, NormalizerInterface,
         if (null !== $object->getSha()) {
             $data['sha'] = $object->getSha();
         }
+        $validator = new \Github\Validator\ShortBlobValidator();
+        $validator->validate($data);
         return $data;
     }
 }

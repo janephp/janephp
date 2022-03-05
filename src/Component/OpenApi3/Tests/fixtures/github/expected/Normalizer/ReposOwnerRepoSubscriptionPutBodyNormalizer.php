@@ -39,6 +39,8 @@ class ReposOwnerRepoSubscriptionPutBodyNormalizer implements DenormalizerInterfa
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ReposOwnerRepoSubscriptionPutBody();
+        $validator = new \Github\Validator\ReposOwnerRepoSubscriptionPutBodyValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -62,6 +64,8 @@ class ReposOwnerRepoSubscriptionPutBodyNormalizer implements DenormalizerInterfa
         if (null !== $object->getIgnored()) {
             $data['ignored'] = $object->getIgnored();
         }
+        $validator = new \Github\Validator\ReposOwnerRepoSubscriptionPutBodyValidator();
+        $validator->validate($data);
         return $data;
     }
 }

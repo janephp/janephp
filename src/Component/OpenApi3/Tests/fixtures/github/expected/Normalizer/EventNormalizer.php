@@ -39,6 +39,8 @@ class EventNormalizer implements DenormalizerInterface, NormalizerInterface, Den
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\Event();
+        $validator = new \Github\Validator\EventValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -90,6 +92,8 @@ class EventNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         $data['payload'] = $this->normalizer->normalize($object->getPayload(), 'json', $context);
         $data['public'] = $object->getPublic();
         $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
+        $validator = new \Github\Validator\EventValidator();
+        $validator->validate($data);
         return $data;
     }
 }

@@ -39,6 +39,8 @@ class MarketplaceListingPlanNormalizer implements DenormalizerInterface, Normali
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\MarketplaceListingPlan();
+        $validator = new \Github\Validator\MarketplaceListingPlanValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -113,6 +115,8 @@ class MarketplaceListingPlanNormalizer implements DenormalizerInterface, Normali
             $values[] = $value;
         }
         $data['bullets'] = $values;
+        $validator = new \Github\Validator\MarketplaceListingPlanValidator();
+        $validator->validate($data);
         return $data;
     }
 }

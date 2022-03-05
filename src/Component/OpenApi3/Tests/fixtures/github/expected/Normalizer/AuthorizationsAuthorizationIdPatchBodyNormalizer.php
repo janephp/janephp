@@ -39,6 +39,8 @@ class AuthorizationsAuthorizationIdPatchBodyNormalizer implements DenormalizerIn
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\AuthorizationsAuthorizationIdPatchBody();
+        $validator = new \Github\Validator\AuthorizationsAuthorizationIdPatchBodyValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -113,6 +115,8 @@ class AuthorizationsAuthorizationIdPatchBodyNormalizer implements DenormalizerIn
         if (null !== $object->getFingerprint()) {
             $data['fingerprint'] = $object->getFingerprint();
         }
+        $validator = new \Github\Validator\AuthorizationsAuthorizationIdPatchBodyValidator();
+        $validator->validate($data);
         return $data;
     }
 }

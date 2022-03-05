@@ -39,6 +39,8 @@ class TagNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\Tag();
+        $validator = new \Github\Validator\TagValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -70,6 +72,8 @@ class TagNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
         $data['zipball_url'] = $object->getZipballUrl();
         $data['tarball_url'] = $object->getTarballUrl();
         $data['node_id'] = $object->getNodeId();
+        $validator = new \Github\Validator\TagValidator();
+        $validator->validate($data);
         return $data;
     }
 }

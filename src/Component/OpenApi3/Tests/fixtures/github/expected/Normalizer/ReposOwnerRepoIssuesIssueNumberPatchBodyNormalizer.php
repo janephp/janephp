@@ -39,6 +39,8 @@ class ReposOwnerRepoIssuesIssueNumberPatchBodyNormalizer implements Denormalizer
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ReposOwnerRepoIssuesIssueNumberPatchBody();
+        $validator = new \Github\Validator\ReposOwnerRepoIssuesIssueNumberPatchBodyValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -111,6 +113,8 @@ class ReposOwnerRepoIssuesIssueNumberPatchBodyNormalizer implements Denormalizer
             }
             $data['assignees'] = $values_1;
         }
+        $validator = new \Github\Validator\ReposOwnerRepoIssuesIssueNumberPatchBodyValidator();
+        $validator->validate($data);
         return $data;
     }
 }

@@ -39,6 +39,8 @@ class ImagesPrunePostResponse200Normalizer implements DenormalizerInterface, Nor
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\ImagesPrunePostResponse200();
+        $validator = new \Docker\Api\Validator\ImagesPrunePostResponse200Validator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -70,6 +72,8 @@ class ImagesPrunePostResponse200Normalizer implements DenormalizerInterface, Nor
         if (null !== $object->getSpaceReclaimed()) {
             $data['SpaceReclaimed'] = $object->getSpaceReclaimed();
         }
+        $validator = new \Docker\Api\Validator\ImagesPrunePostResponse200Validator();
+        $validator->validate($data);
         return $data;
     }
 }

@@ -39,6 +39,8 @@ class ReviewCommentNormalizer implements DenormalizerInterface, NormalizerInterf
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ReviewComment();
+        $validator = new \Github\Validator\ReviewCommentValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -194,6 +196,8 @@ class ReviewCommentNormalizer implements DenormalizerInterface, NormalizerInterf
         if (null !== $object->getOriginalStartLine()) {
             $data['original_start_line'] = $object->getOriginalStartLine();
         }
+        $validator = new \Github\Validator\ReviewCommentValidator();
+        $validator->validate($data);
         return $data;
     }
 }

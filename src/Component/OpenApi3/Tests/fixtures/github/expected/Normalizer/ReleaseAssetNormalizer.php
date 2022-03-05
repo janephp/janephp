@@ -39,6 +39,8 @@ class ReleaseAssetNormalizer implements DenormalizerInterface, NormalizerInterfa
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ReleaseAsset();
+        $validator = new \Github\Validator\ReleaseAssetValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -108,6 +110,8 @@ class ReleaseAssetNormalizer implements DenormalizerInterface, NormalizerInterfa
         $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
         $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
         $data['uploader'] = $this->normalizer->normalize($object->getUploader(), 'json', $context);
+        $validator = new \Github\Validator\ReleaseAssetValidator();
+        $validator->validate($data);
         return $data;
     }
 }

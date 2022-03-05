@@ -39,6 +39,8 @@ class OrgsOrgActionsRunnersGetResponse200Normalizer implements DenormalizerInter
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\OrgsOrgActionsRunnersGetResponse200();
+        $validator = new \Github\Validator\OrgsOrgActionsRunnersGetResponse200Validator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -70,6 +72,8 @@ class OrgsOrgActionsRunnersGetResponse200Normalizer implements DenormalizerInter
             }
             $data['runners'] = $values;
         }
+        $validator = new \Github\Validator\OrgsOrgActionsRunnersGetResponse200Validator();
+        $validator->validate($data);
         return $data;
     }
 }

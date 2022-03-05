@@ -39,6 +39,8 @@ class ScimV2OrganizationsOrgUsersScimUserIdPutBodyNameNormalizer implements Deno
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ScimV2OrganizationsOrgUsersScimUserIdPutBodyName();
+        $validator = new \Github\Validator\ScimV2OrganizationsOrgUsersScimUserIdPutBodyNameValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -58,6 +60,8 @@ class ScimV2OrganizationsOrgUsersScimUserIdPutBodyNameNormalizer implements Deno
         $data = array();
         $data['givenName'] = $object->getGivenName();
         $data['familyName'] = $object->getFamilyName();
+        $validator = new \Github\Validator\ScimV2OrganizationsOrgUsersScimUserIdPutBodyNameValidator();
+        $validator->validate($data);
         return $data;
     }
 }

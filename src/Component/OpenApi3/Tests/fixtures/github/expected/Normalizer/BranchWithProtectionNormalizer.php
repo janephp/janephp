@@ -39,6 +39,8 @@ class BranchWithProtectionNormalizer implements DenormalizerInterface, Normalize
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\BranchWithProtection();
+        $validator = new \Github\Validator\BranchWithProtectionValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -86,6 +88,8 @@ class BranchWithProtectionNormalizer implements DenormalizerInterface, Normalize
         if (null !== $object->getRequiredApprovingReviewCount()) {
             $data['required_approving_review_count'] = $object->getRequiredApprovingReviewCount();
         }
+        $validator = new \Github\Validator\BranchWithProtectionValidator();
+        $validator->validate($data);
         return $data;
     }
 }

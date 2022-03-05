@@ -39,6 +39,8 @@ class PortNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\Port();
+        $validator = new \Docker\Api\Validator\PortValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -70,6 +72,8 @@ class PortNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             $data['PublicPort'] = $object->getPublicPort();
         }
         $data['Type'] = $object->getType();
+        $validator = new \Docker\Api\Validator\PortValidator();
+        $validator->validate($data);
         return $data;
     }
 }

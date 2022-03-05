@@ -39,6 +39,8 @@ class HostConfigNormalizer implements DenormalizerInterface, NormalizerInterface
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\HostConfig();
+        $validator = new \Docker\Api\Validator\HostConfigValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -708,6 +710,8 @@ class HostConfigNormalizer implements DenormalizerInterface, NormalizerInterface
             }
             $data['ReadonlyPaths'] = $values_28;
         }
+        $validator = new \Docker\Api\Validator\HostConfigValidator();
+        $validator->validate($data);
         return $data;
     }
 }

@@ -39,6 +39,8 @@ class ReposOwnerRepoGitCommitsPostBodyAuthorNormalizer implements DenormalizerIn
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ReposOwnerRepoGitCommitsPostBodyAuthor();
+        $validator = new \Github\Validator\ReposOwnerRepoGitCommitsPostBodyAuthorValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -68,6 +70,8 @@ class ReposOwnerRepoGitCommitsPostBodyAuthorNormalizer implements DenormalizerIn
         if (null !== $object->getDate()) {
             $data['date'] = $object->getDate();
         }
+        $validator = new \Github\Validator\ReposOwnerRepoGitCommitsPostBodyAuthorValidator();
+        $validator->validate($data);
         return $data;
     }
 }

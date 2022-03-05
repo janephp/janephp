@@ -39,6 +39,8 @@ class SystemInfoNormalizer implements DenormalizerInterface, NormalizerInterface
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\SystemInfo();
+        $validator = new \Docker\Api\Validator\SystemInfoValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -489,6 +491,8 @@ class SystemInfoNormalizer implements DenormalizerInterface, NormalizerInterface
             }
             $data['Warnings'] = $values_7;
         }
+        $validator = new \Docker\Api\Validator\SystemInfoValidator();
+        $validator->validate($data);
         return $data;
     }
 }

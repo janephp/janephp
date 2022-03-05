@@ -39,6 +39,8 @@ class TeamsTeamIdReposOwnerRepoPutBodyNormalizer implements DenormalizerInterfac
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\TeamsTeamIdReposOwnerRepoPutBody();
+        $validator = new \Github\Validator\TeamsTeamIdReposOwnerRepoPutBodyValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -56,6 +58,8 @@ class TeamsTeamIdReposOwnerRepoPutBodyNormalizer implements DenormalizerInterfac
         if (null !== $object->getPermission()) {
             $data['permission'] = $object->getPermission();
         }
+        $validator = new \Github\Validator\TeamsTeamIdReposOwnerRepoPutBodyValidator();
+        $validator->validate($data);
         return $data;
     }
 }

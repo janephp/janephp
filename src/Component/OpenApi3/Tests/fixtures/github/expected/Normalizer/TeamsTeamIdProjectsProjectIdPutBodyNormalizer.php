@@ -39,6 +39,8 @@ class TeamsTeamIdProjectsProjectIdPutBodyNormalizer implements DenormalizerInter
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\TeamsTeamIdProjectsProjectIdPutBody();
+        $validator = new \Github\Validator\TeamsTeamIdProjectsProjectIdPutBodyValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -56,6 +58,8 @@ class TeamsTeamIdProjectsProjectIdPutBodyNormalizer implements DenormalizerInter
         if (null !== $object->getPermission()) {
             $data['permission'] = $object->getPermission();
         }
+        $validator = new \Github\Validator\TeamsTeamIdProjectsProjectIdPutBodyValidator();
+        $validator->validate($data);
         return $data;
     }
 }

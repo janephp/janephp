@@ -39,6 +39,8 @@ class TaskSpecContainerSpecConfigsItemNormalizer implements DenormalizerInterfac
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\TaskSpecContainerSpecConfigsItem();
+        $validator = new \Docker\Api\Validator\TaskSpecContainerSpecConfigsItemValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -74,6 +76,8 @@ class TaskSpecContainerSpecConfigsItemNormalizer implements DenormalizerInterfac
         if (null !== $object->getConfigName()) {
             $data['ConfigName'] = $object->getConfigName();
         }
+        $validator = new \Docker\Api\Validator\TaskSpecContainerSpecConfigsItemValidator();
+        $validator->validate($data);
         return $data;
     }
 }

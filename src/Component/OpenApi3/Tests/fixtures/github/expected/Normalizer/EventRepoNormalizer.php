@@ -39,6 +39,8 @@ class EventRepoNormalizer implements DenormalizerInterface, NormalizerInterface,
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\EventRepo();
+        $validator = new \Github\Validator\EventRepoValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -62,6 +64,8 @@ class EventRepoNormalizer implements DenormalizerInterface, NormalizerInterface,
         $data['id'] = $object->getId();
         $data['name'] = $object->getName();
         $data['url'] = $object->getUrl();
+        $validator = new \Github\Validator\EventRepoValidator();
+        $validator->validate($data);
         return $data;
     }
 }

@@ -39,6 +39,8 @@ class RepositorySubscriptionNormalizer implements DenormalizerInterface, Normali
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\RepositorySubscription();
+        $validator = new \Github\Validator\RepositorySubscriptionValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -77,6 +79,8 @@ class RepositorySubscriptionNormalizer implements DenormalizerInterface, Normali
         $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
         $data['url'] = $object->getUrl();
         $data['repository_url'] = $object->getRepositoryUrl();
+        $validator = new \Github\Validator\RepositorySubscriptionValidator();
+        $validator->validate($data);
         return $data;
     }
 }

@@ -39,6 +39,8 @@ class CommitSearchResultItemCommitCommitterNormalizer implements DenormalizerInt
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\CommitSearchResultItemCommitCommitter();
+        $validator = new \Github\Validator\CommitSearchResultItemCommitCommitterValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -68,6 +70,8 @@ class CommitSearchResultItemCommitCommitterNormalizer implements DenormalizerInt
         if (null !== $object->getDate()) {
             $data['date'] = $object->getDate();
         }
+        $validator = new \Github\Validator\CommitSearchResultItemCommitCommitterValidator();
+        $validator->validate($data);
         return $data;
     }
 }

@@ -4,4 +4,5 @@ return [
     'openapi-file' => __DIR__ . '/openapi.yaml',
     'namespace' => 'Github',
     'directory' => __DIR__ . '/generated',
+    'validation' => true,
 ];

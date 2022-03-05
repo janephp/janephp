@@ -39,6 +39,8 @@ class PullRequestSimpleUserNormalizer implements DenormalizerInterface, Normaliz
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\PullRequestSimpleUser();
+        $validator = new \Github\Validator\PullRequestSimpleUserValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -131,6 +133,8 @@ class PullRequestSimpleUserNormalizer implements DenormalizerInterface, Normaliz
         if (null !== $object->getStarredAt()) {
             $data['starred_at'] = $object->getStarredAt();
         }
+        $validator = new \Github\Validator\PullRequestSimpleUserValidator();
+        $validator->validate($data);
         return $data;
     }
 }

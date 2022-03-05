@@ -39,6 +39,8 @@ class SwarmSpecDispatcherNormalizer implements DenormalizerInterface, Normalizer
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\SwarmSpecDispatcher();
+        $validator = new \Docker\Api\Validator\SwarmSpecDispatcherValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -56,6 +58,8 @@ class SwarmSpecDispatcherNormalizer implements DenormalizerInterface, Normalizer
         if (null !== $object->getHeartbeatPeriod()) {
             $data['HeartbeatPeriod'] = $object->getHeartbeatPeriod();
         }
+        $validator = new \Docker\Api\Validator\SwarmSpecDispatcherValidator();
+        $validator->validate($data);
         return $data;
     }
 }

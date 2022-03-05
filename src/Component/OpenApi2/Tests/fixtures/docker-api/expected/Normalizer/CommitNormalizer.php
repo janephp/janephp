@@ -39,6 +39,8 @@ class CommitNormalizer implements DenormalizerInterface, NormalizerInterface, De
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\Commit();
+        $validator = new \Docker\Api\Validator\CommitValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -62,6 +64,8 @@ class CommitNormalizer implements DenormalizerInterface, NormalizerInterface, De
         if (null !== $object->getExpected()) {
             $data['Expected'] = $object->getExpected();
         }
+        $validator = new \Docker\Api\Validator\CommitValidator();
+        $validator->validate($data);
         return $data;
     }
 }

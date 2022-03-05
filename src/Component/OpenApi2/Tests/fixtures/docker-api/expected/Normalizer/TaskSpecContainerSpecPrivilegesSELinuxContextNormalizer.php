@@ -39,6 +39,8 @@ class TaskSpecContainerSpecPrivilegesSELinuxContextNormalizer implements Denorma
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\TaskSpecContainerSpecPrivilegesSELinuxContext();
+        $validator = new \Docker\Api\Validator\TaskSpecContainerSpecPrivilegesSELinuxContextValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -80,6 +82,8 @@ class TaskSpecContainerSpecPrivilegesSELinuxContextNormalizer implements Denorma
         if (null !== $object->getLevel()) {
             $data['Level'] = $object->getLevel();
         }
+        $validator = new \Docker\Api\Validator\TaskSpecContainerSpecPrivilegesSELinuxContextValidator();
+        $validator->validate($data);
         return $data;
     }
 }

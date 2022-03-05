@@ -39,6 +39,8 @@ class NodeNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\Node();
+        $validator = new \Docker\Api\Validator\NodeValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -101,6 +103,8 @@ class NodeNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         if (null !== $object->getManagerStatus()) {
             $data['ManagerStatus'] = $this->normalizer->normalize($object->getManagerStatus(), 'json', $context);
         }
+        $validator = new \Docker\Api\Validator\NodeValidator();
+        $validator->validate($data);
         return $data;
     }
 }

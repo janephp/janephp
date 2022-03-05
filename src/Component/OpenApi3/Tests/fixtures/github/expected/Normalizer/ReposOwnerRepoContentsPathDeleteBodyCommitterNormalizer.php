@@ -39,6 +39,8 @@ class ReposOwnerRepoContentsPathDeleteBodyCommitterNormalizer implements Denorma
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ReposOwnerRepoContentsPathDeleteBodyCommitter();
+        $validator = new \Github\Validator\ReposOwnerRepoContentsPathDeleteBodyCommitterValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -62,6 +64,8 @@ class ReposOwnerRepoContentsPathDeleteBodyCommitterNormalizer implements Denorma
         if (null !== $object->getEmail()) {
             $data['email'] = $object->getEmail();
         }
+        $validator = new \Github\Validator\ReposOwnerRepoContentsPathDeleteBodyCommitterValidator();
+        $validator->validate($data);
         return $data;
     }
 }

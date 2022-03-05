@@ -39,6 +39,8 @@ class TeamsTeamIdMembershipsUsernamePutBodyNormalizer implements DenormalizerInt
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\TeamsTeamIdMembershipsUsernamePutBody();
+        $validator = new \Github\Validator\TeamsTeamIdMembershipsUsernamePutBodyValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -56,6 +58,8 @@ class TeamsTeamIdMembershipsUsernamePutBodyNormalizer implements DenormalizerInt
         if (null !== $object->getRole()) {
             $data['role'] = $object->getRole();
         }
+        $validator = new \Github\Validator\TeamsTeamIdMembershipsUsernamePutBodyValidator();
+        $validator->validate($data);
         return $data;
     }
 }

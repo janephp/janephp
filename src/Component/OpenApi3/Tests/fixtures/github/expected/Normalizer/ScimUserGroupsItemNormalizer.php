@@ -39,6 +39,8 @@ class ScimUserGroupsItemNormalizer implements DenormalizerInterface, NormalizerI
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ScimUserGroupsItem();
+        $validator = new \Github\Validator\ScimUserGroupsItemValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -62,6 +64,8 @@ class ScimUserGroupsItemNormalizer implements DenormalizerInterface, NormalizerI
         if (null !== $object->getDisplay()) {
             $data['display'] = $object->getDisplay();
         }
+        $validator = new \Github\Validator\ScimUserGroupsItemValidator();
+        $validator->validate($data);
         return $data;
     }
 }

@@ -39,6 +39,8 @@ class GistFullNormalizer implements DenormalizerInterface, NormalizerInterface, 
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\GistFull();
+        $validator = new \Github\Validator\GistFullValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -212,6 +214,8 @@ class GistFullNormalizer implements DenormalizerInterface, NormalizerInterface, 
         if (null !== $object->getForkOf()) {
             $data['fork_of'] = $this->normalizer->normalize($object->getForkOf(), 'json', $context);
         }
+        $validator = new \Github\Validator\GistFullValidator();
+        $validator->validate($data);
         return $data;
     }
 }

@@ -39,6 +39,8 @@ class PullRequestBaseRepoNormalizer implements DenormalizerInterface, Normalizer
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\PullRequestBaseRepo();
+        $validator = new \Github\Validator\PullRequestBaseRepoValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -407,6 +409,8 @@ class PullRequestBaseRepoNormalizer implements DenormalizerInterface, Normalizer
         $data['watchers_count'] = $object->getWatchersCount();
         $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
         $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
+        $validator = new \Github\Validator\PullRequestBaseRepoValidator();
+        $validator->validate($data);
         return $data;
     }
 }

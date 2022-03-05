@@ -39,6 +39,8 @@ class UserGpgKeysPostBodyNormalizer implements DenormalizerInterface, Normalizer
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\UserGpgKeysPostBody();
+        $validator = new \Github\Validator\UserGpgKeysPostBodyValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -54,6 +56,8 @@ class UserGpgKeysPostBodyNormalizer implements DenormalizerInterface, Normalizer
     {
         $data = array();
         $data['armored_public_key'] = $object->getArmoredPublicKey();
+        $validator = new \Github\Validator\UserGpgKeysPostBodyValidator();
+        $validator->validate($data);
         return $data;
     }
 }

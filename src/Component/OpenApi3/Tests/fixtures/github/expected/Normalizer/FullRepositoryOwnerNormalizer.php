@@ -39,6 +39,8 @@ class FullRepositoryOwnerNormalizer implements DenormalizerInterface, Normalizer
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\FullRepositoryOwner();
+        $validator = new \Github\Validator\FullRepositoryOwnerValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -131,6 +133,8 @@ class FullRepositoryOwnerNormalizer implements DenormalizerInterface, Normalizer
         if (null !== $object->getStarredAt()) {
             $data['starred_at'] = $object->getStarredAt();
         }
+        $validator = new \Github\Validator\FullRepositoryOwnerValidator();
+        $validator->validate($data);
         return $data;
     }
 }

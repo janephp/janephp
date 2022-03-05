@@ -39,6 +39,8 @@ class PluginConfigInterfaceNormalizer implements DenormalizerInterface, Normaliz
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\PluginConfigInterface();
+        $validator = new \Docker\Api\Validator\PluginConfigInterfaceValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -72,6 +74,8 @@ class PluginConfigInterfaceNormalizer implements DenormalizerInterface, Normaliz
         if (null !== $object->getProtocolScheme()) {
             $data['ProtocolScheme'] = $object->getProtocolScheme();
         }
+        $validator = new \Docker\Api\Validator\PluginConfigInterfaceValidator();
+        $validator->validate($data);
         return $data;
     }
 }

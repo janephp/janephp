@@ -39,6 +39,8 @@ class CommitActivityNormalizer implements DenormalizerInterface, NormalizerInter
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\CommitActivity();
+        $validator = new \Github\Validator\CommitActivityValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -70,6 +72,8 @@ class CommitActivityNormalizer implements DenormalizerInterface, NormalizerInter
         $data['days'] = $values;
         $data['total'] = $object->getTotal();
         $data['week'] = $object->getWeek();
+        $validator = new \Github\Validator\CommitActivityValidator();
+        $validator->validate($data);
         return $data;
     }
 }

@@ -39,6 +39,8 @@ class PullRequestMergeResultNormalizer implements DenormalizerInterface, Normali
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\PullRequestMergeResult();
+        $validator = new \Github\Validator\PullRequestMergeResultValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -62,6 +64,8 @@ class PullRequestMergeResultNormalizer implements DenormalizerInterface, Normali
         $data['sha'] = $object->getSha();
         $data['merged'] = $object->getMerged();
         $data['message'] = $object->getMessage();
+        $validator = new \Github\Validator\PullRequestMergeResultValidator();
+        $validator->validate($data);
         return $data;
     }
 }

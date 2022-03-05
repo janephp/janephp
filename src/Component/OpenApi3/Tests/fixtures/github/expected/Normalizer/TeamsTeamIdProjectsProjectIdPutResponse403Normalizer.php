@@ -39,6 +39,8 @@ class TeamsTeamIdProjectsProjectIdPutResponse403Normalizer implements Denormaliz
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\TeamsTeamIdProjectsProjectIdPutResponse403();
+        $validator = new \Github\Validator\TeamsTeamIdProjectsProjectIdPutResponse403Validator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -62,6 +64,8 @@ class TeamsTeamIdProjectsProjectIdPutResponse403Normalizer implements Denormaliz
         if (null !== $object->getDocumentationUrl()) {
             $data['documentation_url'] = $object->getDocumentationUrl();
         }
+        $validator = new \Github\Validator\TeamsTeamIdProjectsProjectIdPutResponse403Validator();
+        $validator->validate($data);
         return $data;
     }
 }

@@ -39,6 +39,8 @@ class SecretSpecNormalizer implements DenormalizerInterface, NormalizerInterface
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\SecretSpec();
+        $validator = new \Docker\Api\Validator\SecretSpecValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -88,6 +90,8 @@ class SecretSpecNormalizer implements DenormalizerInterface, NormalizerInterface
         if (null !== $object->getTemplating()) {
             $data['Templating'] = $this->normalizer->normalize($object->getTemplating(), 'json', $context);
         }
+        $validator = new \Docker\Api\Validator\SecretSpecValidator();
+        $validator->validate($data);
         return $data;
     }
 }

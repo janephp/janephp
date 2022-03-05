@@ -39,6 +39,8 @@ class ContentFileLinksNormalizer implements DenormalizerInterface, NormalizerInt
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ContentFileLinks();
+        $validator = new \Github\Validator\ContentFileLinksValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -68,6 +70,8 @@ class ContentFileLinksNormalizer implements DenormalizerInterface, NormalizerInt
         $data['git'] = $object->getGit();
         $data['html'] = $object->getHtml();
         $data['self'] = $object->getSelf();
+        $validator = new \Github\Validator\ContentFileLinksValidator();
+        $validator->validate($data);
         return $data;
     }
 }

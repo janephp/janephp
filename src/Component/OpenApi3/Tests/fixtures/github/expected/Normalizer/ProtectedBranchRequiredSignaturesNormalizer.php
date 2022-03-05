@@ -39,6 +39,8 @@ class ProtectedBranchRequiredSignaturesNormalizer implements DenormalizerInterfa
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ProtectedBranchRequiredSignatures();
+        $validator = new \Github\Validator\ProtectedBranchRequiredSignaturesValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -58,6 +60,8 @@ class ProtectedBranchRequiredSignaturesNormalizer implements DenormalizerInterfa
         $data = array();
         $data['url'] = $object->getUrl();
         $data['enabled'] = $object->getEnabled();
+        $validator = new \Github\Validator\ProtectedBranchRequiredSignaturesValidator();
+        $validator->validate($data);
         return $data;
     }
 }

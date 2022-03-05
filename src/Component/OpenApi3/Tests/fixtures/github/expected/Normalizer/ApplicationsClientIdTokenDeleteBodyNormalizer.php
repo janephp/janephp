@@ -39,6 +39,8 @@ class ApplicationsClientIdTokenDeleteBodyNormalizer implements DenormalizerInter
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ApplicationsClientIdTokenDeleteBody();
+        $validator = new \Github\Validator\ApplicationsClientIdTokenDeleteBodyValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -56,6 +58,8 @@ class ApplicationsClientIdTokenDeleteBodyNormalizer implements DenormalizerInter
         if (null !== $object->getAccessToken()) {
             $data['access_token'] = $object->getAccessToken();
         }
+        $validator = new \Github\Validator\ApplicationsClientIdTokenDeleteBodyValidator();
+        $validator->validate($data);
         return $data;
     }
 }

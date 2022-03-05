@@ -39,6 +39,8 @@ class PullRequestNormalizer implements DenormalizerInterface, NormalizerInterfac
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\PullRequest();
+        $validator = new \Github\Validator\PullRequestValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -324,6 +326,8 @@ class PullRequestNormalizer implements DenormalizerInterface, NormalizerInterfac
         $data['additions'] = $object->getAdditions();
         $data['deletions'] = $object->getDeletions();
         $data['changed_files'] = $object->getChangedFiles();
+        $validator = new \Github\Validator\PullRequestValidator();
+        $validator->validate($data);
         return $data;
     }
 }

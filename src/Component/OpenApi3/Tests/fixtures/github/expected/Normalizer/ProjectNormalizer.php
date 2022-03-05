@@ -39,6 +39,8 @@ class ProjectNormalizer implements DenormalizerInterface, NormalizerInterface, D
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\Project();
+        $validator = new \Github\Validator\ProjectValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -132,6 +134,8 @@ class ProjectNormalizer implements DenormalizerInterface, NormalizerInterface, D
         if (null !== $object->getPermissions()) {
             $data['permissions'] = $this->normalizer->normalize($object->getPermissions(), 'json', $context);
         }
+        $validator = new \Github\Validator\ProjectValidator();
+        $validator->validate($data);
         return $data;
     }
 }

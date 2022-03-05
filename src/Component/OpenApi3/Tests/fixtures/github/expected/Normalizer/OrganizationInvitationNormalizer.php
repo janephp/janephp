@@ -39,6 +39,8 @@ class OrganizationInvitationNormalizer implements DenormalizerInterface, Normali
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\OrganizationInvitation();
+        $validator = new \Github\Validator\OrganizationInvitationValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -119,6 +121,8 @@ class OrganizationInvitationNormalizer implements DenormalizerInterface, Normali
         if (null !== $object->getInvitationTeamsUrl()) {
             $data['invitation_teams_url'] = $object->getInvitationTeamsUrl();
         }
+        $validator = new \Github\Validator\OrganizationInvitationValidator();
+        $validator->validate($data);
         return $data;
     }
 }

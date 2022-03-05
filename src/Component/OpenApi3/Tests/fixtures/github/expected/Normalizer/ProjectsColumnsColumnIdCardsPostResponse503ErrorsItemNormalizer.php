@@ -39,6 +39,8 @@ class ProjectsColumnsColumnIdCardsPostResponse503ErrorsItemNormalizer implements
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ProjectsColumnsColumnIdCardsPostResponse503ErrorsItem();
+        $validator = new \Github\Validator\ProjectsColumnsColumnIdCardsPostResponse503ErrorsItemValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -62,6 +64,8 @@ class ProjectsColumnsColumnIdCardsPostResponse503ErrorsItemNormalizer implements
         if (null !== $object->getMessage()) {
             $data['message'] = $object->getMessage();
         }
+        $validator = new \Github\Validator\ProjectsColumnsColumnIdCardsPostResponse503ErrorsItemValidator();
+        $validator->validate($data);
         return $data;
     }
 }

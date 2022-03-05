@@ -39,6 +39,8 @@ class FileCommitCommitVerificationNormalizer implements DenormalizerInterface, N
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\FileCommitCommitVerification();
+        $validator = new \Github\Validator\FileCommitCommitVerificationValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -80,6 +82,8 @@ class FileCommitCommitVerificationNormalizer implements DenormalizerInterface, N
         if (null !== $object->getPayload()) {
             $data['payload'] = $object->getPayload();
         }
+        $validator = new \Github\Validator\FileCommitCommitVerificationValidator();
+        $validator->validate($data);
         return $data;
     }
 }

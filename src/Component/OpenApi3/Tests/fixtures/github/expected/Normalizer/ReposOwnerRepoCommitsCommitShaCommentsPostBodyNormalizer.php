@@ -39,6 +39,8 @@ class ReposOwnerRepoCommitsCommitShaCommentsPostBodyNormalizer implements Denorm
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ReposOwnerRepoCommitsCommitShaCommentsPostBody();
+        $validator = new \Github\Validator\ReposOwnerRepoCommitsCommitShaCommentsPostBodyValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -72,6 +74,8 @@ class ReposOwnerRepoCommitsCommitShaCommentsPostBodyNormalizer implements Denorm
         if (null !== $object->getLine()) {
             $data['line'] = $object->getLine();
         }
+        $validator = new \Github\Validator\ReposOwnerRepoCommitsCommitShaCommentsPostBodyValidator();
+        $validator->validate($data);
         return $data;
     }
 }

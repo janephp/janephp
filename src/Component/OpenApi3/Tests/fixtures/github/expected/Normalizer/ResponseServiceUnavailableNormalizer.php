@@ -39,6 +39,8 @@ class ResponseServiceUnavailableNormalizer implements DenormalizerInterface, Nor
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ResponseServiceUnavailable();
+        $validator = new \Github\Validator\ResponseServiceUnavailableValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -68,6 +70,8 @@ class ResponseServiceUnavailableNormalizer implements DenormalizerInterface, Nor
         if (null !== $object->getDocumentationUrl()) {
             $data['documentation_url'] = $object->getDocumentationUrl();
         }
+        $validator = new \Github\Validator\ResponseServiceUnavailableValidator();
+        $validator->validate($data);
         return $data;
     }
 }

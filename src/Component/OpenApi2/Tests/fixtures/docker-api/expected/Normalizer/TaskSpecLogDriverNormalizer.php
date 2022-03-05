@@ -39,6 +39,8 @@ class TaskSpecLogDriverNormalizer implements DenormalizerInterface, NormalizerIn
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\TaskSpecLogDriver();
+        $validator = new \Docker\Api\Validator\TaskSpecLogDriverValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -70,6 +72,8 @@ class TaskSpecLogDriverNormalizer implements DenormalizerInterface, NormalizerIn
             }
             $data['Options'] = $values;
         }
+        $validator = new \Docker\Api\Validator\TaskSpecLogDriverValidator();
+        $validator->validate($data);
         return $data;
     }
 }

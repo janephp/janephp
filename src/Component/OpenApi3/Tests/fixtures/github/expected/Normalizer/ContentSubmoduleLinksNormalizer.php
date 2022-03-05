@@ -39,6 +39,8 @@ class ContentSubmoduleLinksNormalizer implements DenormalizerInterface, Normaliz
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ContentSubmoduleLinks();
+        $validator = new \Github\Validator\ContentSubmoduleLinksValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -68,6 +70,8 @@ class ContentSubmoduleLinksNormalizer implements DenormalizerInterface, Normaliz
         $data['git'] = $object->getGit();
         $data['html'] = $object->getHtml();
         $data['self'] = $object->getSelf();
+        $validator = new \Github\Validator\ContentSubmoduleLinksValidator();
+        $validator->validate($data);
         return $data;
     }
 }

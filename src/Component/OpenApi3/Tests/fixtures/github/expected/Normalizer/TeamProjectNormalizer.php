@@ -39,6 +39,8 @@ class TeamProjectNormalizer implements DenormalizerInterface, NormalizerInterfac
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\TeamProject();
+        $validator = new \Github\Validator\TeamProjectValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -152,6 +154,8 @@ class TeamProjectNormalizer implements DenormalizerInterface, NormalizerInterfac
         if (null !== $object->getPermissions()) {
             $data['permissions'] = $this->normalizer->normalize($object->getPermissions(), 'json', $context);
         }
+        $validator = new \Github\Validator\TeamProjectValidator();
+        $validator->validate($data);
         return $data;
     }
 }

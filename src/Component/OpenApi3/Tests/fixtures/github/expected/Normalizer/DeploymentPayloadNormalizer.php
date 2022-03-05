@@ -39,6 +39,8 @@ class DeploymentPayloadNormalizer implements DenormalizerInterface, NormalizerIn
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\DeploymentPayload();
+        $validator = new \Github\Validator\DeploymentPayloadValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -50,6 +52,8 @@ class DeploymentPayloadNormalizer implements DenormalizerInterface, NormalizerIn
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
+        $validator = new \Github\Validator\DeploymentPayloadValidator();
+        $validator->validate($data);
         return $data;
     }
 }

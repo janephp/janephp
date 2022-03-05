@@ -39,6 +39,8 @@ class BranchRestrictionPolicyAppsItemOwnerNormalizer implements DenormalizerInte
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\BranchRestrictionPolicyAppsItemOwner();
+        $validator = new \Github\Validator\BranchRestrictionPolicyAppsItemOwnerValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -182,6 +184,8 @@ class BranchRestrictionPolicyAppsItemOwnerNormalizer implements DenormalizerInte
         if (null !== $object->getType()) {
             $data['type'] = $object->getType();
         }
+        $validator = new \Github\Validator\BranchRestrictionPolicyAppsItemOwnerValidator();
+        $validator->validate($data);
         return $data;
     }
 }

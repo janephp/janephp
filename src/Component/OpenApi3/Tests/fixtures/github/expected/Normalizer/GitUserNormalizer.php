@@ -39,6 +39,8 @@ class GitUserNormalizer implements DenormalizerInterface, NormalizerInterface, D
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\GitUser();
+        $validator = new \Github\Validator\GitUserValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -68,6 +70,8 @@ class GitUserNormalizer implements DenormalizerInterface, NormalizerInterface, D
         if (null !== $object->getDate()) {
             $data['date'] = $object->getDate();
         }
+        $validator = new \Github\Validator\GitUserValidator();
+        $validator->validate($data);
         return $data;
     }
 }

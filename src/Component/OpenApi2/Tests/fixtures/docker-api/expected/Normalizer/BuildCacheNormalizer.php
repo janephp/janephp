@@ -39,6 +39,8 @@ class BuildCacheNormalizer implements DenormalizerInterface, NormalizerInterface
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\BuildCache();
+        $validator = new \Docker\Api\Validator\BuildCacheValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -113,6 +115,8 @@ class BuildCacheNormalizer implements DenormalizerInterface, NormalizerInterface
         if (null !== $object->getUsageCount()) {
             $data['UsageCount'] = $object->getUsageCount();
         }
+        $validator = new \Docker\Api\Validator\BuildCacheValidator();
+        $validator->validate($data);
         return $data;
     }
 }

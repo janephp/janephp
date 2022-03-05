@@ -39,6 +39,8 @@ class ProjectsProjectIdCollaboratorsUsernamePutBodyNormalizer implements Denorma
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ProjectsProjectIdCollaboratorsUsernamePutBody();
+        $validator = new \Github\Validator\ProjectsProjectIdCollaboratorsUsernamePutBodyValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -56,6 +58,8 @@ class ProjectsProjectIdCollaboratorsUsernamePutBodyNormalizer implements Denorma
         if (null !== $object->getPermission()) {
             $data['permission'] = $object->getPermission();
         }
+        $validator = new \Github\Validator\ProjectsProjectIdCollaboratorsUsernamePutBodyValidator();
+        $validator->validate($data);
         return $data;
     }
 }

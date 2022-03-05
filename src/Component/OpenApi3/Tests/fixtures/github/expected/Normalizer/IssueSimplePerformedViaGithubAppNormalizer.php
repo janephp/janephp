@@ -39,6 +39,8 @@ class IssueSimplePerformedViaGithubAppNormalizer implements DenormalizerInterfac
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\IssueSimplePerformedViaGithubApp();
+        $validator = new \Github\Validator\IssueSimplePerformedViaGithubAppValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -144,6 +146,8 @@ class IssueSimplePerformedViaGithubAppNormalizer implements DenormalizerInterfac
         if (null !== $object->getPem()) {
             $data['pem'] = $object->getPem();
         }
+        $validator = new \Github\Validator\IssueSimplePerformedViaGithubAppValidator();
+        $validator->validate($data);
         return $data;
     }
 }

@@ -39,6 +39,8 @@ class CheckRunOutputNormalizer implements DenormalizerInterface, NormalizerInter
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\CheckRunOutput();
+        $validator = new \Github\Validator\CheckRunOutputValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -79,6 +81,8 @@ class CheckRunOutputNormalizer implements DenormalizerInterface, NormalizerInter
         $data['text'] = $object->getText();
         $data['annotations_count'] = $object->getAnnotationsCount();
         $data['annotations_url'] = $object->getAnnotationsUrl();
+        $validator = new \Github\Validator\CheckRunOutputValidator();
+        $validator->validate($data);
         return $data;
     }
 }

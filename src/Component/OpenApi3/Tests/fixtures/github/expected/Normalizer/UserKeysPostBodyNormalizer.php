@@ -39,6 +39,8 @@ class UserKeysPostBodyNormalizer implements DenormalizerInterface, NormalizerInt
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\UserKeysPostBody();
+        $validator = new \Github\Validator\UserKeysPostBodyValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -60,6 +62,8 @@ class UserKeysPostBodyNormalizer implements DenormalizerInterface, NormalizerInt
             $data['title'] = $object->getTitle();
         }
         $data['key'] = $object->getKey();
+        $validator = new \Github\Validator\UserKeysPostBodyValidator();
+        $validator->validate($data);
         return $data;
     }
 }

@@ -39,6 +39,8 @@ class ApiOverviewSshKeyFingerprintsNormalizer implements DenormalizerInterface, 
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ApiOverviewSshKeyFingerprints();
+        $validator = new \Github\Validator\ApiOverviewSshKeyFingerprintsValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -74,6 +76,8 @@ class ApiOverviewSshKeyFingerprintsNormalizer implements DenormalizerInterface, 
         if (null !== $object->getSHA256DSA()) {
             $data['SHA256_DSA'] = $object->getSHA256DSA();
         }
+        $validator = new \Github\Validator\ApiOverviewSshKeyFingerprintsValidator();
+        $validator->validate($data);
         return $data;
     }
 }

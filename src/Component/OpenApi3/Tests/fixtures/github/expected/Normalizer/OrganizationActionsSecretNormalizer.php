@@ -39,6 +39,8 @@ class OrganizationActionsSecretNormalizer implements DenormalizerInterface, Norm
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\OrganizationActionsSecret();
+        $validator = new \Github\Validator\OrganizationActionsSecretValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -72,6 +74,8 @@ class OrganizationActionsSecretNormalizer implements DenormalizerInterface, Norm
         if (null !== $object->getSelectedRepositoriesUrl()) {
             $data['selected_repositories_url'] = $object->getSelectedRepositoriesUrl();
         }
+        $validator = new \Github\Validator\OrganizationActionsSecretValidator();
+        $validator->validate($data);
         return $data;
     }
 }

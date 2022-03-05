@@ -39,6 +39,8 @@ class TaskSpecPlacementPreferencesItemSpreadNormalizer implements DenormalizerIn
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\TaskSpecPlacementPreferencesItemSpread();
+        $validator = new \Docker\Api\Validator\TaskSpecPlacementPreferencesItemSpreadValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -56,6 +58,8 @@ class TaskSpecPlacementPreferencesItemSpreadNormalizer implements DenormalizerIn
         if (null !== $object->getSpreadDescriptor()) {
             $data['SpreadDescriptor'] = $object->getSpreadDescriptor();
         }
+        $validator = new \Docker\Api\Validator\TaskSpecPlacementPreferencesItemSpreadValidator();
+        $validator->validate($data);
         return $data;
     }
 }

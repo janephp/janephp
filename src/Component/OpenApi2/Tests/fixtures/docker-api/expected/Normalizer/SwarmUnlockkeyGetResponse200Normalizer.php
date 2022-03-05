@@ -39,6 +39,8 @@ class SwarmUnlockkeyGetResponse200Normalizer implements DenormalizerInterface, N
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\SwarmUnlockkeyGetResponse200();
+        $validator = new \Docker\Api\Validator\SwarmUnlockkeyGetResponse200Validator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -56,6 +58,8 @@ class SwarmUnlockkeyGetResponse200Normalizer implements DenormalizerInterface, N
         if (null !== $object->getUnlockKey()) {
             $data['UnlockKey'] = $object->getUnlockKey();
         }
+        $validator = new \Docker\Api\Validator\SwarmUnlockkeyGetResponse200Validator();
+        $validator->validate($data);
         return $data;
     }
 }

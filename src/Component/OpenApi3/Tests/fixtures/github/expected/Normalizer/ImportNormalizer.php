@@ -39,6 +39,8 @@ class ImportNormalizer implements DenormalizerInterface, NormalizerInterface, De
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\Import();
+        $validator = new \Github\Validator\ImportValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -206,6 +208,8 @@ class ImportNormalizer implements DenormalizerInterface, NormalizerInterface, De
         if (null !== $object->getSvnRoot()) {
             $data['svn_root'] = $object->getSvnRoot();
         }
+        $validator = new \Github\Validator\ImportValidator();
+        $validator->validate($data);
         return $data;
     }
 }

@@ -39,6 +39,8 @@ class ReposOwnerRepoIssuesIssueNumberCommentsPostBodyNormalizer implements Denor
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ReposOwnerRepoIssuesIssueNumberCommentsPostBody();
+        $validator = new \Github\Validator\ReposOwnerRepoIssuesIssueNumberCommentsPostBodyValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -54,6 +56,8 @@ class ReposOwnerRepoIssuesIssueNumberCommentsPostBodyNormalizer implements Denor
     {
         $data = array();
         $data['body'] = $object->getBody();
+        $validator = new \Github\Validator\ReposOwnerRepoIssuesIssueNumberCommentsPostBodyValidator();
+        $validator->validate($data);
         return $data;
     }
 }

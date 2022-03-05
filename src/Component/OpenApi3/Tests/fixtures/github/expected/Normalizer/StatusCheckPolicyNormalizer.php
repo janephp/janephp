@@ -39,6 +39,8 @@ class StatusCheckPolicyNormalizer implements DenormalizerInterface, NormalizerIn
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\StatusCheckPolicy();
+        $validator = new \Github\Validator\StatusCheckPolicyValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -74,6 +76,8 @@ class StatusCheckPolicyNormalizer implements DenormalizerInterface, NormalizerIn
         }
         $data['contexts'] = $values;
         $data['contexts_url'] = $object->getContextsUrl();
+        $validator = new \Github\Validator\StatusCheckPolicyValidator();
+        $validator->validate($data);
         return $data;
     }
 }

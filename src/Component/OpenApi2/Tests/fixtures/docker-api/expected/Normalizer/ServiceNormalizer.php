@@ -39,6 +39,8 @@ class ServiceNormalizer implements DenormalizerInterface, NormalizerInterface, D
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\Service();
+        $validator = new \Docker\Api\Validator\ServiceValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -104,6 +106,8 @@ class ServiceNormalizer implements DenormalizerInterface, NormalizerInterface, D
         if (null !== $object->getJobStatus()) {
             $data['JobStatus'] = $this->normalizer->normalize($object->getJobStatus(), 'json', $context);
         }
+        $validator = new \Docker\Api\Validator\ServiceValidator();
+        $validator->validate($data);
         return $data;
     }
 }

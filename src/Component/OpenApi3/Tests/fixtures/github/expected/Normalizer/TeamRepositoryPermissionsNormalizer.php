@@ -39,6 +39,8 @@ class TeamRepositoryPermissionsNormalizer implements DenormalizerInterface, Norm
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\TeamRepositoryPermissions();
+        $validator = new \Github\Validator\TeamRepositoryPermissionsValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -74,6 +76,8 @@ class TeamRepositoryPermissionsNormalizer implements DenormalizerInterface, Norm
         if (null !== $object->getMaintain()) {
             $data['maintain'] = $object->getMaintain();
         }
+        $validator = new \Github\Validator\TeamRepositoryPermissionsValidator();
+        $validator->validate($data);
         return $data;
     }
 }

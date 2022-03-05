@@ -39,6 +39,8 @@ class GitTreeNormalizer implements DenormalizerInterface, NormalizerInterface, D
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\GitTree();
+        $validator = new \Github\Validator\GitTreeValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -74,6 +76,8 @@ class GitTreeNormalizer implements DenormalizerInterface, NormalizerInterface, D
             $values[] = $this->normalizer->normalize($value, 'json', $context);
         }
         $data['tree'] = $values;
+        $validator = new \Github\Validator\GitTreeValidator();
+        $validator->validate($data);
         return $data;
     }
 }

@@ -39,6 +39,8 @@ class SimpleCommitNormalizer implements DenormalizerInterface, NormalizerInterfa
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\SimpleCommit();
+        $validator = new \Github\Validator\SimpleCommitValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -80,6 +82,8 @@ class SimpleCommitNormalizer implements DenormalizerInterface, NormalizerInterfa
         $data['timestamp'] = $object->getTimestamp()->format('Y-m-d\\TH:i:sP');
         $data['author'] = $this->normalizer->normalize($object->getAuthor(), 'json', $context);
         $data['committer'] = $this->normalizer->normalize($object->getCommitter(), 'json', $context);
+        $validator = new \Github\Validator\SimpleCommitValidator();
+        $validator->validate($data);
         return $data;
     }
 }

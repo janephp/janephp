@@ -39,6 +39,8 @@ class GistsGistIdCommentsCommentIdPatchBodyNormalizer implements DenormalizerInt
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\GistsGistIdCommentsCommentIdPatchBody();
+        $validator = new \Github\Validator\GistsGistIdCommentsCommentIdPatchBodyValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -54,6 +56,8 @@ class GistsGistIdCommentsCommentIdPatchBodyNormalizer implements DenormalizerInt
     {
         $data = array();
         $data['body'] = $object->getBody();
+        $validator = new \Github\Validator\GistsGistIdCommentsCommentIdPatchBodyValidator();
+        $validator->validate($data);
         return $data;
     }
 }

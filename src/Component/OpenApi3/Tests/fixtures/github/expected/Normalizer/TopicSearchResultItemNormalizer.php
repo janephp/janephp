@@ -39,6 +39,8 @@ class TopicSearchResultItemNormalizer implements DenormalizerInterface, Normaliz
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\TopicSearchResultItem();
+        $validator = new \Github\Validator\TopicSearchResultItemValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -175,6 +177,8 @@ class TopicSearchResultItemNormalizer implements DenormalizerInterface, Normaliz
             }
             $data['aliases'] = $values_2;
         }
+        $validator = new \Github\Validator\TopicSearchResultItemValidator();
+        $validator->validate($data);
         return $data;
     }
 }

@@ -39,6 +39,8 @@ class ApplicationsClientIdTokenPostBodyNormalizer implements DenormalizerInterfa
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ApplicationsClientIdTokenPostBody();
+        $validator = new \Github\Validator\ApplicationsClientIdTokenPostBodyValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -54,6 +56,8 @@ class ApplicationsClientIdTokenPostBodyNormalizer implements DenormalizerInterfa
     {
         $data = array();
         $data['access_token'] = $object->getAccessToken();
+        $validator = new \Github\Validator\ApplicationsClientIdTokenPostBodyValidator();
+        $validator->validate($data);
         return $data;
     }
 }

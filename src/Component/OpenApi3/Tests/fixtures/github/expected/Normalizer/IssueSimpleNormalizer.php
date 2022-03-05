@@ -39,6 +39,8 @@ class IssueSimpleNormalizer implements DenormalizerInterface, NormalizerInterfac
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\IssueSimple();
+        $validator = new \Github\Validator\IssueSimpleValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -225,6 +227,8 @@ class IssueSimpleNormalizer implements DenormalizerInterface, NormalizerInterfac
         if (null !== $object->getPerformedViaGithubApp()) {
             $data['performed_via_github_app'] = $this->normalizer->normalize($object->getPerformedViaGithubApp(), 'json', $context);
         }
+        $validator = new \Github\Validator\IssueSimpleValidator();
+        $validator->validate($data);
         return $data;
     }
 }

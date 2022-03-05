@@ -39,6 +39,8 @@ class InstallationRepositoriesGetResponse200Normalizer implements DenormalizerIn
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\InstallationRepositoriesGetResponse200();
+        $validator = new \Github\Validator\InstallationRepositoriesGetResponse200Validator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -76,6 +78,8 @@ class InstallationRepositoriesGetResponse200Normalizer implements DenormalizerIn
         if (null !== $object->getRepositorySelection()) {
             $data['repository_selection'] = $object->getRepositorySelection();
         }
+        $validator = new \Github\Validator\InstallationRepositoriesGetResponse200Validator();
+        $validator->validate($data);
         return $data;
     }
 }

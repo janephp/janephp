@@ -39,6 +39,8 @@ class ContentDirectoryItemLinksNormalizer implements DenormalizerInterface, Norm
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ContentDirectoryItemLinks();
+        $validator = new \Github\Validator\ContentDirectoryItemLinksValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -68,6 +70,8 @@ class ContentDirectoryItemLinksNormalizer implements DenormalizerInterface, Norm
         $data['git'] = $object->getGit();
         $data['html'] = $object->getHtml();
         $data['self'] = $object->getSelf();
+        $validator = new \Github\Validator\ContentDirectoryItemLinksValidator();
+        $validator->validate($data);
         return $data;
     }
 }

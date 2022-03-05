@@ -39,6 +39,8 @@ class ContentTrafficNormalizer implements DenormalizerInterface, NormalizerInter
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ContentTraffic();
+        $validator = new \Github\Validator\ContentTrafficValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -66,6 +68,8 @@ class ContentTrafficNormalizer implements DenormalizerInterface, NormalizerInter
         $data['title'] = $object->getTitle();
         $data['count'] = $object->getCount();
         $data['uniques'] = $object->getUniques();
+        $validator = new \Github\Validator\ContentTrafficValidator();
+        $validator->validate($data);
         return $data;
     }
 }

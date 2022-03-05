@@ -39,6 +39,8 @@ class GroupMappingNormalizer implements DenormalizerInterface, NormalizerInterfa
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\GroupMapping();
+        $validator = new \Github\Validator\GroupMappingValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -94,6 +96,8 @@ class GroupMappingNormalizer implements DenormalizerInterface, NormalizerInterfa
         if (null !== $object->getSyncedAt()) {
             $data['synced_at'] = $object->getSyncedAt();
         }
+        $validator = new \Github\Validator\GroupMappingValidator();
+        $validator->validate($data);
         return $data;
     }
 }

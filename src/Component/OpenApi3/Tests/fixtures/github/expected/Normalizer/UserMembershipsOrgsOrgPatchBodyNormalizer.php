@@ -39,6 +39,8 @@ class UserMembershipsOrgsOrgPatchBodyNormalizer implements DenormalizerInterface
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\UserMembershipsOrgsOrgPatchBody();
+        $validator = new \Github\Validator\UserMembershipsOrgsOrgPatchBodyValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -54,6 +56,8 @@ class UserMembershipsOrgsOrgPatchBodyNormalizer implements DenormalizerInterface
     {
         $data = array();
         $data['state'] = $object->getState();
+        $validator = new \Github\Validator\UserMembershipsOrgsOrgPatchBodyValidator();
+        $validator->validate($data);
         return $data;
     }
 }

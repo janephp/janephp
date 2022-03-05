@@ -39,6 +39,8 @@ class ProcessConfigNormalizer implements DenormalizerInterface, NormalizerInterf
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\ProcessConfig();
+        $validator = new \Docker\Api\Validator\ProcessConfigValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -88,6 +90,8 @@ class ProcessConfigNormalizer implements DenormalizerInterface, NormalizerInterf
             }
             $data['arguments'] = $values;
         }
+        $validator = new \Docker\Api\Validator\ProcessConfigValidator();
+        $validator->validate($data);
         return $data;
     }
 }

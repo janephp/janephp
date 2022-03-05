@@ -39,6 +39,8 @@ class ActionsBillingUsageNormalizer implements DenormalizerInterface, Normalizer
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ActionsBillingUsage();
+        $validator = new \Github\Validator\ActionsBillingUsageValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -74,6 +76,8 @@ class ActionsBillingUsageNormalizer implements DenormalizerInterface, Normalizer
         if (null !== $object->getMinutesUsedBreakdown()) {
             $data['minutes_used_breakdown'] = $this->normalizer->normalize($object->getMinutesUsedBreakdown(), 'json', $context);
         }
+        $validator = new \Github\Validator\ActionsBillingUsageValidator();
+        $validator->validate($data);
         return $data;
     }
 }

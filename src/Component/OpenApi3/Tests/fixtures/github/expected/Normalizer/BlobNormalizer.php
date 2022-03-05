@@ -39,6 +39,8 @@ class BlobNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\Blob();
+        $validator = new \Github\Validator\BlobValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -83,6 +85,8 @@ class BlobNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         if (null !== $object->getHighlightedContent()) {
             $data['highlighted_content'] = $object->getHighlightedContent();
         }
+        $validator = new \Github\Validator\BlobValidator();
+        $validator->validate($data);
         return $data;
     }
 }

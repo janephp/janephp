@@ -39,6 +39,8 @@ class UserMigrationsPostBodyNormalizer implements DenormalizerInterface, Normali
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\UserMigrationsPostBody();
+        $validator = new \Github\Validator\UserMigrationsPostBodyValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -88,6 +90,8 @@ class UserMigrationsPostBodyNormalizer implements DenormalizerInterface, Normali
             $values_1[] = $value_1;
         }
         $data['repositories'] = $values_1;
+        $validator = new \Github\Validator\UserMigrationsPostBodyValidator();
+        $validator->validate($data);
         return $data;
     }
 }

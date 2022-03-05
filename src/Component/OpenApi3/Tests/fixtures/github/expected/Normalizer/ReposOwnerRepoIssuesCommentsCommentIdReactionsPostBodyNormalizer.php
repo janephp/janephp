@@ -39,6 +39,8 @@ class ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBodyNormalizer implement
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBody();
+        $validator = new \Github\Validator\ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBodyValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -54,6 +56,8 @@ class ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBodyNormalizer implement
     {
         $data = array();
         $data['content'] = $object->getContent();
+        $validator = new \Github\Validator\ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBodyValidator();
+        $validator->validate($data);
         return $data;
     }
 }

@@ -39,6 +39,8 @@ class PluginConfigNormalizer implements DenormalizerInterface, NormalizerInterfa
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\PluginConfig();
+        $validator = new \Docker\Api\Validator\PluginConfigValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -144,6 +146,8 @@ class PluginConfigNormalizer implements DenormalizerInterface, NormalizerInterfa
         if (null !== $object->getRootfs()) {
             $data['rootfs'] = $this->normalizer->normalize($object->getRootfs(), 'json', $context);
         }
+        $validator = new \Docker\Api\Validator\PluginConfigValidator();
+        $validator->validate($data);
         return $data;
     }
 }

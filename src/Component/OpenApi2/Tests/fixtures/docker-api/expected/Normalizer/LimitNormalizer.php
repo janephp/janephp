@@ -39,6 +39,8 @@ class LimitNormalizer implements DenormalizerInterface, NormalizerInterface, Den
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\Limit();
+        $validator = new \Docker\Api\Validator\LimitValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -68,6 +70,8 @@ class LimitNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         if (null !== $object->getPids()) {
             $data['Pids'] = $object->getPids();
         }
+        $validator = new \Docker\Api\Validator\LimitValidator();
+        $validator->validate($data);
         return $data;
     }
 }

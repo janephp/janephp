@@ -39,6 +39,8 @@ class RuntimeNormalizer implements DenormalizerInterface, NormalizerInterface, D
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\Runtime();
+        $validator = new \Docker\Api\Validator\RuntimeValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -73,6 +75,8 @@ class RuntimeNormalizer implements DenormalizerInterface, NormalizerInterface, D
             }
             $data['runtimeArgs'] = $values;
         }
+        $validator = new \Docker\Api\Validator\RuntimeValidator();
+        $validator->validate($data);
         return $data;
     }
 }

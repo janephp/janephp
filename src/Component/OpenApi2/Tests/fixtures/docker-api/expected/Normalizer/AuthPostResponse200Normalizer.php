@@ -39,6 +39,8 @@ class AuthPostResponse200Normalizer implements DenormalizerInterface, Normalizer
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\AuthPostResponse200();
+        $validator = new \Docker\Api\Validator\AuthPostResponse200Validator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -60,6 +62,8 @@ class AuthPostResponse200Normalizer implements DenormalizerInterface, Normalizer
         if (null !== $object->getIdentityToken()) {
             $data['IdentityToken'] = $object->getIdentityToken();
         }
+        $validator = new \Docker\Api\Validator\AuthPostResponse200Validator();
+        $validator->validate($data);
         return $data;
     }
 }

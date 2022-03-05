@@ -39,6 +39,8 @@ class ContainerSummaryNetworkSettingsNormalizer implements DenormalizerInterface
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\ContainerSummaryNetworkSettings();
+        $validator = new \Docker\Api\Validator\ContainerSummaryNetworkSettingsValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -64,6 +66,8 @@ class ContainerSummaryNetworkSettingsNormalizer implements DenormalizerInterface
             }
             $data['Networks'] = $values;
         }
+        $validator = new \Docker\Api\Validator\ContainerSummaryNetworkSettingsValidator();
+        $validator->validate($data);
         return $data;
     }
 }

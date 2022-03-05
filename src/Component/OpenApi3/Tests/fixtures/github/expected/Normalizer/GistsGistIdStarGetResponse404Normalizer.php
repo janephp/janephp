@@ -39,6 +39,8 @@ class GistsGistIdStarGetResponse404Normalizer implements DenormalizerInterface, 
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\GistsGistIdStarGetResponse404();
+        $validator = new \Github\Validator\GistsGistIdStarGetResponse404Validator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -50,6 +52,8 @@ class GistsGistIdStarGetResponse404Normalizer implements DenormalizerInterface, 
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
+        $validator = new \Github\Validator\GistsGistIdStarGetResponse404Validator();
+        $validator->validate($data);
         return $data;
     }
 }

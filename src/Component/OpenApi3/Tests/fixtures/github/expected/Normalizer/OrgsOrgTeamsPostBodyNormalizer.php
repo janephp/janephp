@@ -39,6 +39,8 @@ class OrgsOrgTeamsPostBodyNormalizer implements DenormalizerInterface, Normalize
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\OrgsOrgTeamsPostBody();
+        $validator = new \Github\Validator\OrgsOrgTeamsPostBodyValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -106,6 +108,8 @@ class OrgsOrgTeamsPostBodyNormalizer implements DenormalizerInterface, Normalize
         if (null !== $object->getParentTeamId()) {
             $data['parent_team_id'] = $object->getParentTeamId();
         }
+        $validator = new \Github\Validator\OrgsOrgTeamsPostBodyValidator();
+        $validator->validate($data);
         return $data;
     }
 }

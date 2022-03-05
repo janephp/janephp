@@ -39,6 +39,8 @@ class ImageNormalizer implements DenormalizerInterface, NormalizerInterface, Den
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\Image();
+        $validator = new \Docker\Api\Validator\ImageValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -154,6 +156,8 @@ class ImageNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         if (null !== $object->getMetadata()) {
             $data['Metadata'] = $this->normalizer->normalize($object->getMetadata(), 'json', $context);
         }
+        $validator = new \Docker\Api\Validator\ImageValidator();
+        $validator->validate($data);
         return $data;
     }
 }

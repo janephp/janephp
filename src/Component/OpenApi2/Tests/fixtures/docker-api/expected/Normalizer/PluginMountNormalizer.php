@@ -39,6 +39,8 @@ class PluginMountNormalizer implements DenormalizerInterface, NormalizerInterfac
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\PluginMount();
+        $validator = new \Docker\Api\Validator\PluginMountValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -94,6 +96,8 @@ class PluginMountNormalizer implements DenormalizerInterface, NormalizerInterfac
             $values_1[] = $value_1;
         }
         $data['Options'] = $values_1;
+        $validator = new \Docker\Api\Validator\PluginMountValidator();
+        $validator->validate($data);
         return $data;
     }
 }

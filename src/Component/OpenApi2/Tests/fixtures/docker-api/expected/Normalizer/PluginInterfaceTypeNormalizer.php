@@ -39,6 +39,8 @@ class PluginInterfaceTypeNormalizer implements DenormalizerInterface, Normalizer
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\PluginInterfaceType();
+        $validator = new \Docker\Api\Validator\PluginInterfaceTypeValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -62,6 +64,8 @@ class PluginInterfaceTypeNormalizer implements DenormalizerInterface, Normalizer
         $data['Prefix'] = $object->getPrefix();
         $data['Capability'] = $object->getCapability();
         $data['Version'] = $object->getVersion();
+        $validator = new \Docker\Api\Validator\PluginInterfaceTypeValidator();
+        $validator->validate($data);
         return $data;
     }
 }

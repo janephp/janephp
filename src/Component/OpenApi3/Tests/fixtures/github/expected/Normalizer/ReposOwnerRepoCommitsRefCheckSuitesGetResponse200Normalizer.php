@@ -39,6 +39,8 @@ class ReposOwnerRepoCommitsRefCheckSuitesGetResponse200Normalizer implements Den
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ReposOwnerRepoCommitsRefCheckSuitesGetResponse200();
+        $validator = new \Github\Validator\ReposOwnerRepoCommitsRefCheckSuitesGetResponse200Validator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -70,6 +72,8 @@ class ReposOwnerRepoCommitsRefCheckSuitesGetResponse200Normalizer implements Den
             }
             $data['check_suites'] = $values;
         }
+        $validator = new \Github\Validator\ReposOwnerRepoCommitsRefCheckSuitesGetResponse200Validator();
+        $validator->validate($data);
         return $data;
     }
 }

@@ -39,6 +39,8 @@ class ScimUserListNormalizer implements DenormalizerInterface, NormalizerInterfa
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ScimUserList();
+        $validator = new \Github\Validator\ScimUserListValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -86,6 +88,8 @@ class ScimUserListNormalizer implements DenormalizerInterface, NormalizerInterfa
             $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
         }
         $data['Resources'] = $values_1;
+        $validator = new \Github\Validator\ScimUserListValidator();
+        $validator->validate($data);
         return $data;
     }
 }

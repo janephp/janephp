@@ -39,6 +39,8 @@ class MountTmpfsOptionsNormalizer implements DenormalizerInterface, NormalizerIn
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\MountTmpfsOptions();
+        $validator = new \Docker\Api\Validator\MountTmpfsOptionsValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -62,6 +64,8 @@ class MountTmpfsOptionsNormalizer implements DenormalizerInterface, NormalizerIn
         if (null !== $object->getMode()) {
             $data['Mode'] = $object->getMode();
         }
+        $validator = new \Docker\Api\Validator\MountTmpfsOptionsValidator();
+        $validator->validate($data);
         return $data;
     }
 }

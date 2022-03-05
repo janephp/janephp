@@ -39,6 +39,8 @@ class ReposOwnerRepoStatusesShaPostBodyNormalizer implements DenormalizerInterfa
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ReposOwnerRepoStatusesShaPostBody();
+        $validator = new \Github\Validator\ReposOwnerRepoStatusesShaPostBodyValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -72,6 +74,8 @@ class ReposOwnerRepoStatusesShaPostBodyNormalizer implements DenormalizerInterfa
         if (null !== $object->getContext()) {
             $data['context'] = $object->getContext();
         }
+        $validator = new \Github\Validator\ReposOwnerRepoStatusesShaPostBodyValidator();
+        $validator->validate($data);
         return $data;
     }
 }

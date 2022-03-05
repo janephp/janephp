@@ -5,4 +5,5 @@ return [
     'namespace' => 'Docker\Api',
     'directory' => __DIR__ . '/generated',
     'use-fixer' => false,
+    'validation' => true,
 ];

@@ -39,6 +39,8 @@ class CodeScanningAlertNormalizer implements DenormalizerInterface, NormalizerIn
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\CodeScanningAlert();
+        $validator = new \Github\Validator\CodeScanningAlertValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -134,6 +136,8 @@ class CodeScanningAlertNormalizer implements DenormalizerInterface, NormalizerIn
         if (null !== $object->getClosedReason()) {
             $data['closed_reason'] = $object->getClosedReason();
         }
+        $validator = new \Github\Validator\CodeScanningAlertValidator();
+        $validator->validate($data);
         return $data;
     }
 }

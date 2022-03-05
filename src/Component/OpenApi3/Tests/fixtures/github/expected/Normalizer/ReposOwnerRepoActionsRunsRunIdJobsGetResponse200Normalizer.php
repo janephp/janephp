@@ -39,6 +39,8 @@ class ReposOwnerRepoActionsRunsRunIdJobsGetResponse200Normalizer implements Deno
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ReposOwnerRepoActionsRunsRunIdJobsGetResponse200();
+        $validator = new \Github\Validator\ReposOwnerRepoActionsRunsRunIdJobsGetResponse200Validator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -70,6 +72,8 @@ class ReposOwnerRepoActionsRunsRunIdJobsGetResponse200Normalizer implements Deno
             }
             $data['jobs'] = $values;
         }
+        $validator = new \Github\Validator\ReposOwnerRepoActionsRunsRunIdJobsGetResponse200Validator();
+        $validator->validate($data);
         return $data;
     }
 }

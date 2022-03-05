@@ -39,6 +39,8 @@ class OrgHookNormalizer implements DenormalizerInterface, NormalizerInterface, D
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\OrgHook();
+        $validator = new \Github\Validator\OrgHookValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -98,6 +100,8 @@ class OrgHookNormalizer implements DenormalizerInterface, NormalizerInterface, D
         $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
         $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
         $data['type'] = $object->getType();
+        $validator = new \Github\Validator\OrgHookValidator();
+        $validator->validate($data);
         return $data;
     }
 }

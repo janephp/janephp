@@ -39,6 +39,8 @@ class MinimalRepositoryLicenseNormalizer implements DenormalizerInterface, Norma
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\MinimalRepositoryLicense();
+        $validator = new \Github\Validator\MinimalRepositoryLicenseValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -80,6 +82,8 @@ class MinimalRepositoryLicenseNormalizer implements DenormalizerInterface, Norma
         if (null !== $object->getNodeId()) {
             $data['node_id'] = $object->getNodeId();
         }
+        $validator = new \Github\Validator\MinimalRepositoryLicenseValidator();
+        $validator->validate($data);
         return $data;
     }
 }

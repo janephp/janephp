@@ -39,6 +39,8 @@ class GistCommentNormalizer implements DenormalizerInterface, NormalizerInterfac
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\GistComment();
+        $validator = new \Github\Validator\GistCommentValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -85,6 +87,8 @@ class GistCommentNormalizer implements DenormalizerInterface, NormalizerInterfac
         $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
         $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
         $data['author_association'] = $object->getAuthorAssociation();
+        $validator = new \Github\Validator\GistCommentValidator();
+        $validator->validate($data);
         return $data;
     }
 }

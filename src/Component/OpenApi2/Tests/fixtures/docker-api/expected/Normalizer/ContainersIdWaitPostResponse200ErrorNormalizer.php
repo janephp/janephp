@@ -39,6 +39,8 @@ class ContainersIdWaitPostResponse200ErrorNormalizer implements DenormalizerInte
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\ContainersIdWaitPostResponse200Error();
+        $validator = new \Docker\Api\Validator\ContainersIdWaitPostResponse200ErrorValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -56,6 +58,8 @@ class ContainersIdWaitPostResponse200ErrorNormalizer implements DenormalizerInte
         if (null !== $object->getMessage()) {
             $data['Message'] = $object->getMessage();
         }
+        $validator = new \Docker\Api\Validator\ContainersIdWaitPostResponse200ErrorValidator();
+        $validator->validate($data);
         return $data;
     }
 }

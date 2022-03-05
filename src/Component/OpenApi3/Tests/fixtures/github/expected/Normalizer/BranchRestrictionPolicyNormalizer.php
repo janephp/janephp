@@ -39,6 +39,8 @@ class BranchRestrictionPolicyNormalizer implements DenormalizerInterface, Normal
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\BranchRestrictionPolicy();
+        $validator = new \Github\Validator\BranchRestrictionPolicyValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -102,6 +104,8 @@ class BranchRestrictionPolicyNormalizer implements DenormalizerInterface, Normal
             $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
         }
         $data['apps'] = $values_2;
+        $validator = new \Github\Validator\BranchRestrictionPolicyValidator();
+        $validator->validate($data);
         return $data;
     }
 }

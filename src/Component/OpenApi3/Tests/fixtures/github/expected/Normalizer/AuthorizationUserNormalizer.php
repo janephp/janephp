@@ -39,6 +39,8 @@ class AuthorizationUserNormalizer implements DenormalizerInterface, NormalizerIn
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\AuthorizationUser();
+        $validator = new \Github\Validator\AuthorizationUserValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -131,6 +133,8 @@ class AuthorizationUserNormalizer implements DenormalizerInterface, NormalizerIn
         if (null !== $object->getStarredAt()) {
             $data['starred_at'] = $object->getStarredAt();
         }
+        $validator = new \Github\Validator\AuthorizationUserValidator();
+        $validator->validate($data);
         return $data;
     }
 }

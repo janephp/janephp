@@ -39,6 +39,8 @@ class InstallationTokenPermissionsNormalizer implements DenormalizerInterface, N
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\InstallationTokenPermissions();
+        $validator = new \Github\Validator\InstallationTokenPermissionsValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -74,6 +76,8 @@ class InstallationTokenPermissionsNormalizer implements DenormalizerInterface, N
         if (null !== $object->getSingleFile()) {
             $data['single_file'] = $object->getSingleFile();
         }
+        $validator = new \Github\Validator\InstallationTokenPermissionsValidator();
+        $validator->validate($data);
         return $data;
     }
 }

@@ -39,6 +39,8 @@ class GitCommitCommitterNormalizer implements DenormalizerInterface, NormalizerI
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\GitCommitCommitter();
+        $validator = new \Github\Validator\GitCommitCommitterValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -64,6 +66,8 @@ class GitCommitCommitterNormalizer implements DenormalizerInterface, NormalizerI
         }
         $data['email'] = $object->getEmail();
         $data['name'] = $object->getName();
+        $validator = new \Github\Validator\GitCommitCommitterValidator();
+        $validator->validate($data);
         return $data;
     }
 }

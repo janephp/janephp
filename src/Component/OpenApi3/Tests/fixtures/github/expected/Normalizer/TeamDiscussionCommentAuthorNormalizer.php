@@ -39,6 +39,8 @@ class TeamDiscussionCommentAuthorNormalizer implements DenormalizerInterface, No
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\TeamDiscussionCommentAuthor();
+        $validator = new \Github\Validator\TeamDiscussionCommentAuthorValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -131,6 +133,8 @@ class TeamDiscussionCommentAuthorNormalizer implements DenormalizerInterface, No
         if (null !== $object->getStarredAt()) {
             $data['starred_at'] = $object->getStarredAt();
         }
+        $validator = new \Github\Validator\TeamDiscussionCommentAuthorValidator();
+        $validator->validate($data);
         return $data;
     }
 }

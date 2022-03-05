@@ -39,6 +39,8 @@ class ResponsePreviewHeaderMissingNormalizer implements DenormalizerInterface, N
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ResponsePreviewHeaderMissing();
+        $validator = new \Github\Validator\ResponsePreviewHeaderMissingValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -58,6 +60,8 @@ class ResponsePreviewHeaderMissingNormalizer implements DenormalizerInterface, N
         $data = array();
         $data['message'] = $object->getMessage();
         $data['documentation_url'] = $object->getDocumentationUrl();
+        $validator = new \Github\Validator\ResponsePreviewHeaderMissingValidator();
+        $validator->validate($data);
         return $data;
     }
 }

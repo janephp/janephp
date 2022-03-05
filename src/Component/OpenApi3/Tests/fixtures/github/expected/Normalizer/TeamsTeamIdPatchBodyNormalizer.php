@@ -39,6 +39,8 @@ class TeamsTeamIdPatchBodyNormalizer implements DenormalizerInterface, Normalize
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\TeamsTeamIdPatchBody();
+        $validator = new \Github\Validator\TeamsTeamIdPatchBodyValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -81,6 +83,8 @@ class TeamsTeamIdPatchBodyNormalizer implements DenormalizerInterface, Normalize
         if (null !== $object->getParentTeamId()) {
             $data['parent_team_id'] = $object->getParentTeamId();
         }
+        $validator = new \Github\Validator\TeamsTeamIdPatchBodyValidator();
+        $validator->validate($data);
         return $data;
     }
 }

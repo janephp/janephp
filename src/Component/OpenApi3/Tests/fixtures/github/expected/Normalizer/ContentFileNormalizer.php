@@ -39,6 +39,8 @@ class ContentFileNormalizer implements DenormalizerInterface, NormalizerInterfac
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ContentFile();
+        $validator = new \Github\Validator\ContentFileValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -119,6 +121,8 @@ class ContentFileNormalizer implements DenormalizerInterface, NormalizerInterfac
         if (null !== $object->getSubmoduleGitUrl()) {
             $data['submodule_git_url'] = $object->getSubmoduleGitUrl();
         }
+        $validator = new \Github\Validator\ContentFileValidator();
+        $validator->validate($data);
         return $data;
     }
 }

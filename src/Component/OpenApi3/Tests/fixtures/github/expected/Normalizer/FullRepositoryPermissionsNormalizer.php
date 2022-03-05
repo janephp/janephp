@@ -39,6 +39,8 @@ class FullRepositoryPermissionsNormalizer implements DenormalizerInterface, Norm
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\FullRepositoryPermissions();
+        $validator = new \Github\Validator\FullRepositoryPermissionsValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -62,6 +64,8 @@ class FullRepositoryPermissionsNormalizer implements DenormalizerInterface, Norm
         $data['admin'] = $object->getAdmin();
         $data['pull'] = $object->getPull();
         $data['push'] = $object->getPush();
+        $validator = new \Github\Validator\FullRepositoryPermissionsValidator();
+        $validator->validate($data);
         return $data;
     }
 }

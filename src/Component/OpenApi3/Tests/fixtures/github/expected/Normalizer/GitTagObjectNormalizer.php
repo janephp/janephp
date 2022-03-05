@@ -39,6 +39,8 @@ class GitTagObjectNormalizer implements DenormalizerInterface, NormalizerInterfa
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\GitTagObject();
+        $validator = new \Github\Validator\GitTagObjectValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -62,6 +64,8 @@ class GitTagObjectNormalizer implements DenormalizerInterface, NormalizerInterfa
         $data['sha'] = $object->getSha();
         $data['type'] = $object->getType();
         $data['url'] = $object->getUrl();
+        $validator = new \Github\Validator\GitTagObjectValidator();
+        $validator->validate($data);
         return $data;
     }
 }

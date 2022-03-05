@@ -39,6 +39,8 @@ class CommunityProfileFilesContributingNormalizer implements DenormalizerInterfa
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\CommunityProfileFilesContributing();
+        $validator = new \Github\Validator\CommunityProfileFilesContributingValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -58,6 +60,8 @@ class CommunityProfileFilesContributingNormalizer implements DenormalizerInterfa
         $data = array();
         $data['url'] = $object->getUrl();
         $data['html_url'] = $object->getHtmlUrl();
+        $validator = new \Github\Validator\CommunityProfileFilesContributingValidator();
+        $validator->validate($data);
         return $data;
     }
 }

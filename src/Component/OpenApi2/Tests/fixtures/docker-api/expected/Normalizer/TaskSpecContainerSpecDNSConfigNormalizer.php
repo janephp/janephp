@@ -39,6 +39,8 @@ class TaskSpecContainerSpecDNSConfigNormalizer implements DenormalizerInterface,
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\TaskSpecContainerSpecDNSConfig();
+        $validator = new \Docker\Api\Validator\TaskSpecContainerSpecDNSConfigValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -92,6 +94,8 @@ class TaskSpecContainerSpecDNSConfigNormalizer implements DenormalizerInterface,
             }
             $data['Options'] = $values_2;
         }
+        $validator = new \Docker\Api\Validator\TaskSpecContainerSpecDNSConfigValidator();
+        $validator->validate($data);
         return $data;
     }
 }

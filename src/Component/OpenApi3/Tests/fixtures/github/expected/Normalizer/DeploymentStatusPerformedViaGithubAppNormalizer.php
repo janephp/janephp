@@ -39,6 +39,8 @@ class DeploymentStatusPerformedViaGithubAppNormalizer implements DenormalizerInt
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\DeploymentStatusPerformedViaGithubApp();
+        $validator = new \Github\Validator\DeploymentStatusPerformedViaGithubAppValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -144,6 +146,8 @@ class DeploymentStatusPerformedViaGithubAppNormalizer implements DenormalizerInt
         if (null !== $object->getPem()) {
             $data['pem'] = $object->getPem();
         }
+        $validator = new \Github\Validator\DeploymentStatusPerformedViaGithubAppValidator();
+        $validator->validate($data);
         return $data;
     }
 }

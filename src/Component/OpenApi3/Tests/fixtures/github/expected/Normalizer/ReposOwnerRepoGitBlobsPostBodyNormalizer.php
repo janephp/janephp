@@ -39,6 +39,8 @@ class ReposOwnerRepoGitBlobsPostBodyNormalizer implements DenormalizerInterface,
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ReposOwnerRepoGitBlobsPostBody();
+        $validator = new \Github\Validator\ReposOwnerRepoGitBlobsPostBodyValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -60,6 +62,8 @@ class ReposOwnerRepoGitBlobsPostBodyNormalizer implements DenormalizerInterface,
         if (null !== $object->getEncoding()) {
             $data['encoding'] = $object->getEncoding();
         }
+        $validator = new \Github\Validator\ReposOwnerRepoGitBlobsPostBodyValidator();
+        $validator->validate($data);
         return $data;
     }
 }

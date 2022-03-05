@@ -39,6 +39,8 @@ class EventPayloadPagesItemNormalizer implements DenormalizerInterface, Normaliz
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\EventPayloadPagesItem();
+        $validator = new \Github\Validator\EventPayloadPagesItemValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -89,6 +91,8 @@ class EventPayloadPagesItemNormalizer implements DenormalizerInterface, Normaliz
         if (null !== $object->getHtmlUrl()) {
             $data['html_url'] = $object->getHtmlUrl();
         }
+        $validator = new \Github\Validator\EventPayloadPagesItemValidator();
+        $validator->validate($data);
         return $data;
     }
 }

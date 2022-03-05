@@ -39,6 +39,8 @@ class NodeStatusNormalizer implements DenormalizerInterface, NormalizerInterface
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\NodeStatus();
+        $validator = new \Docker\Api\Validator\NodeStatusValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -68,6 +70,8 @@ class NodeStatusNormalizer implements DenormalizerInterface, NormalizerInterface
         if (null !== $object->getAddr()) {
             $data['Addr'] = $object->getAddr();
         }
+        $validator = new \Docker\Api\Validator\NodeStatusValidator();
+        $validator->validate($data);
         return $data;
     }
 }

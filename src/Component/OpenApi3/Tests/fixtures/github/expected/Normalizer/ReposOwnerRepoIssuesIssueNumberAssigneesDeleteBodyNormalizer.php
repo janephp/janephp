@@ -39,6 +39,8 @@ class ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBodyNormalizer implements De
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBody();
+        $validator = new \Github\Validator\ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBodyValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -64,6 +66,8 @@ class ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBodyNormalizer implements De
             }
             $data['assignees'] = $values;
         }
+        $validator = new \Github\Validator\ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBodyValidator();
+        $validator->validate($data);
         return $data;
     }
 }

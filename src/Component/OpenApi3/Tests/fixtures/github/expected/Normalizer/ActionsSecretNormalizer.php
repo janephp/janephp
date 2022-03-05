@@ -39,6 +39,8 @@ class ActionsSecretNormalizer implements DenormalizerInterface, NormalizerInterf
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ActionsSecret();
+        $validator = new \Github\Validator\ActionsSecretValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -62,6 +64,8 @@ class ActionsSecretNormalizer implements DenormalizerInterface, NormalizerInterf
         $data['name'] = $object->getName();
         $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
         $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
+        $validator = new \Github\Validator\ActionsSecretValidator();
+        $validator->validate($data);
         return $data;
     }
 }

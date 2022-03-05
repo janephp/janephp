@@ -39,6 +39,8 @@ class BaseGistNormalizer implements DenormalizerInterface, NormalizerInterface, 
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\BaseGist();
+        $validator = new \Github\Validator\BaseGistValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -171,6 +173,8 @@ class BaseGistNormalizer implements DenormalizerInterface, NormalizerInterface, 
             }
             $data['history'] = $values_2;
         }
+        $validator = new \Github\Validator\BaseGistValidator();
+        $validator->validate($data);
         return $data;
     }
 }

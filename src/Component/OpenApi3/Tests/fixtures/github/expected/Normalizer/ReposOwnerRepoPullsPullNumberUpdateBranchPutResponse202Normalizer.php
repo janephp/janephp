@@ -39,6 +39,8 @@ class ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202Normalizer implemen
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202();
+        $validator = new \Github\Validator\ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202Validator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -62,6 +64,8 @@ class ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202Normalizer implemen
         if (null !== $object->getUrl()) {
             $data['url'] = $object->getUrl();
         }
+        $validator = new \Github\Validator\ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202Validator();
+        $validator->validate($data);
         return $data;
     }
 }

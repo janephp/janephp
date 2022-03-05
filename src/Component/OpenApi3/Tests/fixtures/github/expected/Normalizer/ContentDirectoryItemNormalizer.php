@@ -39,6 +39,8 @@ class ContentDirectoryItemNormalizer implements DenormalizerInterface, Normalize
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ContentDirectoryItem();
+        $validator = new \Github\Validator\ContentDirectoryItemValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -105,6 +107,8 @@ class ContentDirectoryItemNormalizer implements DenormalizerInterface, Normalize
         $data['html_url'] = $object->getHtmlUrl();
         $data['download_url'] = $object->getDownloadUrl();
         $data['_links'] = $this->normalizer->normalize($object->getLinks(), 'json', $context);
+        $validator = new \Github\Validator\ContentDirectoryItemValidator();
+        $validator->validate($data);
         return $data;
     }
 }

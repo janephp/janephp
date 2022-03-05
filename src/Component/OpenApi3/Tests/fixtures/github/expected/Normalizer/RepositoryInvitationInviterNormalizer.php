@@ -39,6 +39,8 @@ class RepositoryInvitationInviterNormalizer implements DenormalizerInterface, No
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\RepositoryInvitationInviter();
+        $validator = new \Github\Validator\RepositoryInvitationInviterValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -131,6 +133,8 @@ class RepositoryInvitationInviterNormalizer implements DenormalizerInterface, No
         if (null !== $object->getStarredAt()) {
             $data['starred_at'] = $object->getStarredAt();
         }
+        $validator = new \Github\Validator\RepositoryInvitationInviterValidator();
+        $validator->validate($data);
         return $data;
     }
 }

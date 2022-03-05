@@ -39,6 +39,8 @@ class ManagerStatusNormalizer implements DenormalizerInterface, NormalizerInterf
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\ManagerStatus();
+        $validator = new \Docker\Api\Validator\ManagerStatusValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -68,6 +70,8 @@ class ManagerStatusNormalizer implements DenormalizerInterface, NormalizerInterf
         if (null !== $object->getAddr()) {
             $data['Addr'] = $object->getAddr();
         }
+        $validator = new \Docker\Api\Validator\ManagerStatusValidator();
+        $validator->validate($data);
         return $data;
     }
 }

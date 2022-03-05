@@ -39,6 +39,8 @@ class ApplicationsClientIdTokensAccessTokenGetResponse200Normalizer implements D
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ApplicationsClientIdTokensAccessTokenGetResponse200();
+        $validator = new \Github\Validator\ApplicationsClientIdTokensAccessTokenGetResponse200Validator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -142,6 +144,8 @@ class ApplicationsClientIdTokensAccessTokenGetResponse200Normalizer implements D
         if (null !== $object->getInstallation()) {
             $data['installation'] = $this->normalizer->normalize($object->getInstallation(), 'json', $context);
         }
+        $validator = new \Github\Validator\ApplicationsClientIdTokensAccessTokenGetResponse200Validator();
+        $validator->validate($data);
         return $data;
     }
 }

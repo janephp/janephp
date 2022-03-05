@@ -39,6 +39,8 @@ class DeploymentStatusCreatorNormalizer implements DenormalizerInterface, Normal
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\DeploymentStatusCreator();
+        $validator = new \Github\Validator\DeploymentStatusCreatorValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -131,6 +133,8 @@ class DeploymentStatusCreatorNormalizer implements DenormalizerInterface, Normal
         if (null !== $object->getStarredAt()) {
             $data['starred_at'] = $object->getStarredAt();
         }
+        $validator = new \Github\Validator\DeploymentStatusCreatorValidator();
+        $validator->validate($data);
         return $data;
     }
 }

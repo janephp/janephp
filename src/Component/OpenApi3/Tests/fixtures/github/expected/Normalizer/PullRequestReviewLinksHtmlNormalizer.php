@@ -39,6 +39,8 @@ class PullRequestReviewLinksHtmlNormalizer implements DenormalizerInterface, Nor
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\PullRequestReviewLinksHtml();
+        $validator = new \Github\Validator\PullRequestReviewLinksHtmlValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -54,6 +56,8 @@ class PullRequestReviewLinksHtmlNormalizer implements DenormalizerInterface, Nor
     {
         $data = array();
         $data['href'] = $object->getHref();
+        $validator = new \Github\Validator\PullRequestReviewLinksHtmlValidator();
+        $validator->validate($data);
         return $data;
     }
 }

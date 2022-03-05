@@ -39,6 +39,8 @@ class ResourceObjectNormalizer implements DenormalizerInterface, NormalizerInter
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\ResourceObject();
+        $validator = new \Docker\Api\Validator\ResourceObjectValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -76,6 +78,8 @@ class ResourceObjectNormalizer implements DenormalizerInterface, NormalizerInter
             }
             $data['GenericResources'] = $values;
         }
+        $validator = new \Docker\Api\Validator\ResourceObjectValidator();
+        $validator->validate($data);
         return $data;
     }
 }

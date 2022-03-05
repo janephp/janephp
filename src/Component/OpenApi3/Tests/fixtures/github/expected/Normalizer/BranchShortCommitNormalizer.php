@@ -39,6 +39,8 @@ class BranchShortCommitNormalizer implements DenormalizerInterface, NormalizerIn
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\BranchShortCommit();
+        $validator = new \Github\Validator\BranchShortCommitValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -62,6 +64,8 @@ class BranchShortCommitNormalizer implements DenormalizerInterface, NormalizerIn
         if (null !== $object->getUrl()) {
             $data['url'] = $object->getUrl();
         }
+        $validator = new \Github\Validator\BranchShortCommitValidator();
+        $validator->validate($data);
         return $data;
     }
 }

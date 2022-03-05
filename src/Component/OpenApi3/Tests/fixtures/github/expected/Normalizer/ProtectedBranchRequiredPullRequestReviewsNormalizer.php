@@ -39,6 +39,8 @@ class ProtectedBranchRequiredPullRequestReviewsNormalizer implements Denormalize
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ProtectedBranchRequiredPullRequestReviews();
+        $validator = new \Github\Validator\ProtectedBranchRequiredPullRequestReviewsValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -78,6 +80,8 @@ class ProtectedBranchRequiredPullRequestReviewsNormalizer implements Denormalize
         if (null !== $object->getDismissalRestrictions()) {
             $data['dismissal_restrictions'] = $this->normalizer->normalize($object->getDismissalRestrictions(), 'json', $context);
         }
+        $validator = new \Github\Validator\ProtectedBranchRequiredPullRequestReviewsValidator();
+        $validator->validate($data);
         return $data;
     }
 }

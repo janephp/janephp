@@ -39,6 +39,8 @@ class ContainerSummaryNormalizer implements DenormalizerInterface, NormalizerInt
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\ContainerSummary();
+        $validator = new \Docker\Api\Validator\ContainerSummaryValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -172,6 +174,8 @@ class ContainerSummaryNormalizer implements DenormalizerInterface, NormalizerInt
             }
             $data['Mounts'] = $values_3;
         }
+        $validator = new \Docker\Api\Validator\ContainerSummaryValidator();
+        $validator->validate($data);
         return $data;
     }
 }

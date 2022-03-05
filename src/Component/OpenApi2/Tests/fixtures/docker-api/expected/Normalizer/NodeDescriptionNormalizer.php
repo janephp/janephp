@@ -39,6 +39,8 @@ class NodeDescriptionNormalizer implements DenormalizerInterface, NormalizerInte
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\NodeDescription();
+        $validator = new \Docker\Api\Validator\NodeDescriptionValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -80,6 +82,8 @@ class NodeDescriptionNormalizer implements DenormalizerInterface, NormalizerInte
         if (null !== $object->getTLSInfo()) {
             $data['TLSInfo'] = $this->normalizer->normalize($object->getTLSInfo(), 'json', $context);
         }
+        $validator = new \Docker\Api\Validator\NodeDescriptionValidator();
+        $validator->validate($data);
         return $data;
     }
 }

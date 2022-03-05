@@ -39,6 +39,8 @@ class PullRequestReviewNormalizer implements DenormalizerInterface, NormalizerIn
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\PullRequestReview();
+        $validator = new \Github\Validator\PullRequestReviewValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -111,6 +113,8 @@ class PullRequestReviewNormalizer implements DenormalizerInterface, NormalizerIn
             $data['body_text'] = $object->getBodyText();
         }
         $data['author_association'] = $object->getAuthorAssociation();
+        $validator = new \Github\Validator\PullRequestReviewValidator();
+        $validator->validate($data);
         return $data;
     }
 }

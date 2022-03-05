@@ -39,6 +39,8 @@ class BranchProtectionNormalizer implements DenormalizerInterface, NormalizerInt
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\BranchProtection();
+        $validator = new \Github\Validator\BranchProtectionValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -112,6 +114,8 @@ class BranchProtectionNormalizer implements DenormalizerInterface, NormalizerInt
         if (null !== $object->getProtectionUrl()) {
             $data['protection_url'] = $object->getProtectionUrl();
         }
+        $validator = new \Github\Validator\BranchProtectionValidator();
+        $validator->validate($data);
         return $data;
     }
 }

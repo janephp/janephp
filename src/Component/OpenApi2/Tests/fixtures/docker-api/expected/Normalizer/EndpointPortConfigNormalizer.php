@@ -39,6 +39,8 @@ class EndpointPortConfigNormalizer implements DenormalizerInterface, NormalizerI
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\EndpointPortConfig();
+        $validator = new \Docker\Api\Validator\EndpointPortConfigValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -80,6 +82,8 @@ class EndpointPortConfigNormalizer implements DenormalizerInterface, NormalizerI
         if (null !== $object->getPublishMode()) {
             $data['PublishMode'] = $object->getPublishMode();
         }
+        $validator = new \Docker\Api\Validator\EndpointPortConfigValidator();
+        $validator->validate($data);
         return $data;
     }
 }

@@ -39,6 +39,8 @@ class SwarmJoinPostBodyNormalizer implements DenormalizerInterface, NormalizerIn
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\SwarmJoinPostBody();
+        $validator = new \Docker\Api\Validator\SwarmJoinPostBodyValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -88,6 +90,8 @@ class SwarmJoinPostBodyNormalizer implements DenormalizerInterface, NormalizerIn
         if (null !== $object->getJoinToken()) {
             $data['JoinToken'] = $object->getJoinToken();
         }
+        $validator = new \Docker\Api\Validator\SwarmJoinPostBodyValidator();
+        $validator->validate($data);
         return $data;
     }
 }

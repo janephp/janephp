@@ -39,6 +39,8 @@ class StargazerNormalizer implements DenormalizerInterface, NormalizerInterface,
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\Stargazer();
+        $validator = new \Github\Validator\StargazerValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -61,6 +63,8 @@ class StargazerNormalizer implements DenormalizerInterface, NormalizerInterface,
         $data = array();
         $data['starred_at'] = $object->getStarredAt()->format('Y-m-d\\TH:i:sP');
         $data['user'] = $this->normalizer->normalize($object->getUser(), 'json', $context);
+        $validator = new \Github\Validator\StargazerValidator();
+        $validator->validate($data);
         return $data;
     }
 }

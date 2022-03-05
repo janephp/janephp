@@ -39,6 +39,8 @@ class TaskSpecContainerSpecSecretsItemFileNormalizer implements DenormalizerInte
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\TaskSpecContainerSpecSecretsItemFile();
+        $validator = new \Docker\Api\Validator\TaskSpecContainerSpecSecretsItemFileValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -74,6 +76,8 @@ class TaskSpecContainerSpecSecretsItemFileNormalizer implements DenormalizerInte
         if (null !== $object->getMode()) {
             $data['Mode'] = $object->getMode();
         }
+        $validator = new \Docker\Api\Validator\TaskSpecContainerSpecSecretsItemFileValidator();
+        $validator->validate($data);
         return $data;
     }
 }

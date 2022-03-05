@@ -39,6 +39,8 @@ class ReposOwnerRepoCommentsCommentIdPatchBodyNormalizer implements Denormalizer
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ReposOwnerRepoCommentsCommentIdPatchBody();
+        $validator = new \Github\Validator\ReposOwnerRepoCommentsCommentIdPatchBodyValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -54,6 +56,8 @@ class ReposOwnerRepoCommentsCommentIdPatchBodyNormalizer implements Denormalizer
     {
         $data = array();
         $data['body'] = $object->getBody();
+        $validator = new \Github\Validator\ReposOwnerRepoCommentsCommentIdPatchBodyValidator();
+        $validator->validate($data);
         return $data;
     }
 }

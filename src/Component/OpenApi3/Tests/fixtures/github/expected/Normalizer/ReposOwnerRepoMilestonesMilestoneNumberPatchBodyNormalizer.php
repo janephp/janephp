@@ -39,6 +39,8 @@ class ReposOwnerRepoMilestonesMilestoneNumberPatchBodyNormalizer implements Deno
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ReposOwnerRepoMilestonesMilestoneNumberPatchBody();
+        $validator = new \Github\Validator\ReposOwnerRepoMilestonesMilestoneNumberPatchBodyValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -74,6 +76,8 @@ class ReposOwnerRepoMilestonesMilestoneNumberPatchBodyNormalizer implements Deno
         if (null !== $object->getDueOn()) {
             $data['due_on'] = $object->getDueOn();
         }
+        $validator = new \Github\Validator\ReposOwnerRepoMilestonesMilestoneNumberPatchBodyValidator();
+        $validator->validate($data);
         return $data;
     }
 }

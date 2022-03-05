@@ -39,6 +39,8 @@ class TLSInfoNormalizer implements DenormalizerInterface, NormalizerInterface, D
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\TLSInfo();
+        $validator = new \Docker\Api\Validator\TLSInfoValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -68,6 +70,8 @@ class TLSInfoNormalizer implements DenormalizerInterface, NormalizerInterface, D
         if (null !== $object->getCertIssuerPublicKey()) {
             $data['CertIssuerPublicKey'] = $object->getCertIssuerPublicKey();
         }
+        $validator = new \Docker\Api\Validator\TLSInfoValidator();
+        $validator->validate($data);
         return $data;
     }
 }

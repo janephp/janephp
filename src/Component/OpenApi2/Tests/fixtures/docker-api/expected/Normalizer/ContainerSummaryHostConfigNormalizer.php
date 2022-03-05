@@ -39,6 +39,8 @@ class ContainerSummaryHostConfigNormalizer implements DenormalizerInterface, Nor
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\ContainerSummaryHostConfig();
+        $validator = new \Docker\Api\Validator\ContainerSummaryHostConfigValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -56,6 +58,8 @@ class ContainerSummaryHostConfigNormalizer implements DenormalizerInterface, Nor
         if (null !== $object->getNetworkMode()) {
             $data['NetworkMode'] = $object->getNetworkMode();
         }
+        $validator = new \Docker\Api\Validator\ContainerSummaryHostConfigValidator();
+        $validator->validate($data);
         return $data;
     }
 }

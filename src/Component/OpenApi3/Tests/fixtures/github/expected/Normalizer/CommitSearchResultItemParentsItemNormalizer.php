@@ -39,6 +39,8 @@ class CommitSearchResultItemParentsItemNormalizer implements DenormalizerInterfa
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\CommitSearchResultItemParentsItem();
+        $validator = new \Github\Validator\CommitSearchResultItemParentsItemValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -68,6 +70,8 @@ class CommitSearchResultItemParentsItemNormalizer implements DenormalizerInterfa
         if (null !== $object->getSha()) {
             $data['sha'] = $object->getSha();
         }
+        $validator = new \Github\Validator\CommitSearchResultItemParentsItemValidator();
+        $validator->validate($data);
         return $data;
     }
 }

@@ -39,6 +39,8 @@ class ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBodyNormalizer im
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBody();
+        $validator = new \Github\Validator\ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBodyValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -60,6 +62,8 @@ class ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBodyNormalizer im
         if (null !== $object->getEvent()) {
             $data['event'] = $object->getEvent();
         }
+        $validator = new \Github\Validator\ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBodyValidator();
+        $validator->validate($data);
         return $data;
     }
 }

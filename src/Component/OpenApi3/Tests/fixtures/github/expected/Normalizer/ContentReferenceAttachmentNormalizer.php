@@ -39,6 +39,8 @@ class ContentReferenceAttachmentNormalizer implements DenormalizerInterface, Nor
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ContentReferenceAttachment();
+        $validator = new \Github\Validator\ContentReferenceAttachmentValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -68,6 +70,8 @@ class ContentReferenceAttachmentNormalizer implements DenormalizerInterface, Nor
         if (null !== $object->getNodeId()) {
             $data['node_id'] = $object->getNodeId();
         }
+        $validator = new \Github\Validator\ContentReferenceAttachmentValidator();
+        $validator->validate($data);
         return $data;
     }
 }

@@ -39,6 +39,8 @@ class ResourcesBlkioWeightDeviceItemNormalizer implements DenormalizerInterface,
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\ResourcesBlkioWeightDeviceItem();
+        $validator = new \Docker\Api\Validator\ResourcesBlkioWeightDeviceItemValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -62,6 +64,8 @@ class ResourcesBlkioWeightDeviceItemNormalizer implements DenormalizerInterface,
         if (null !== $object->getWeight()) {
             $data['Weight'] = $object->getWeight();
         }
+        $validator = new \Docker\Api\Validator\ResourcesBlkioWeightDeviceItemValidator();
+        $validator->validate($data);
         return $data;
     }
 }

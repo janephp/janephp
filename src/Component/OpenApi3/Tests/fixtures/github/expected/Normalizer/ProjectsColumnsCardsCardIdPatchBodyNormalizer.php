@@ -39,6 +39,8 @@ class ProjectsColumnsCardsCardIdPatchBodyNormalizer implements DenormalizerInter
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ProjectsColumnsCardsCardIdPatchBody();
+        $validator = new \Github\Validator\ProjectsColumnsCardsCardIdPatchBodyValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -65,6 +67,8 @@ class ProjectsColumnsCardsCardIdPatchBodyNormalizer implements DenormalizerInter
         if (null !== $object->getArchived()) {
             $data['archived'] = $object->getArchived();
         }
+        $validator = new \Github\Validator\ProjectsColumnsCardsCardIdPatchBodyValidator();
+        $validator->validate($data);
         return $data;
     }
 }

@@ -39,6 +39,8 @@ class IntegrationNormalizer implements DenormalizerInterface, NormalizerInterfac
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\Integration();
+        $validator = new \Github\Validator\IntegrationValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -171,6 +173,8 @@ class IntegrationNormalizer implements DenormalizerInterface, NormalizerInterfac
                 $data[$key] = $value_1;
             }
         }
+        $validator = new \Github\Validator\IntegrationValidator();
+        $validator->validate($data);
         return $data;
     }
 }

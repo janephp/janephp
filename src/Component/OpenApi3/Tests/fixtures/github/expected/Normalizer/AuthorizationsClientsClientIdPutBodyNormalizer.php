@@ -39,6 +39,8 @@ class AuthorizationsClientsClientIdPutBodyNormalizer implements DenormalizerInte
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\AuthorizationsClientsClientIdPutBody();
+        $validator = new \Github\Validator\AuthorizationsClientsClientIdPutBodyValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -89,6 +91,8 @@ class AuthorizationsClientsClientIdPutBodyNormalizer implements DenormalizerInte
         if (null !== $object->getFingerprint()) {
             $data['fingerprint'] = $object->getFingerprint();
         }
+        $validator = new \Github\Validator\AuthorizationsClientsClientIdPutBodyValidator();
+        $validator->validate($data);
         return $data;
     }
 }

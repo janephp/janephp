@@ -39,6 +39,8 @@ class ProjectsColumnsCardsCardIdMovesPostResponse403ErrorsItemNormalizer impleme
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ProjectsColumnsCardsCardIdMovesPostResponse403ErrorsItem();
+        $validator = new \Github\Validator\ProjectsColumnsCardsCardIdMovesPostResponse403ErrorsItemValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -74,6 +76,8 @@ class ProjectsColumnsCardsCardIdMovesPostResponse403ErrorsItemNormalizer impleme
         if (null !== $object->getField()) {
             $data['field'] = $object->getField();
         }
+        $validator = new \Github\Validator\ProjectsColumnsCardsCardIdMovesPostResponse403ErrorsItemValidator();
+        $validator->validate($data);
         return $data;
     }
 }

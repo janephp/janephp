@@ -39,6 +39,8 @@ class OrgsOrgInvitationsPostBodyNormalizer implements DenormalizerInterface, Nor
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\OrgsOrgInvitationsPostBody();
+        $validator = new \Github\Validator\OrgsOrgInvitationsPostBodyValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -82,6 +84,8 @@ class OrgsOrgInvitationsPostBodyNormalizer implements DenormalizerInterface, Nor
             }
             $data['team_ids'] = $values;
         }
+        $validator = new \Github\Validator\OrgsOrgInvitationsPostBodyValidator();
+        $validator->validate($data);
         return $data;
     }
 }

@@ -39,6 +39,8 @@ class ReposOwnerRepoLabelsNamePatchBodyNormalizer implements DenormalizerInterfa
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ReposOwnerRepoLabelsNamePatchBody();
+        $validator = new \Github\Validator\ReposOwnerRepoLabelsNamePatchBodyValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -74,6 +76,8 @@ class ReposOwnerRepoLabelsNamePatchBodyNormalizer implements DenormalizerInterfa
         if (null !== $object->getName()) {
             $data['name'] = $object->getName();
         }
+        $validator = new \Github\Validator\ReposOwnerRepoLabelsNamePatchBodyValidator();
+        $validator->validate($data);
         return $data;
     }
 }

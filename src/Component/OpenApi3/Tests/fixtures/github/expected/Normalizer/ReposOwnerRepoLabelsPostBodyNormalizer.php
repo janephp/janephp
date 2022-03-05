@@ -39,6 +39,8 @@ class ReposOwnerRepoLabelsPostBodyNormalizer implements DenormalizerInterface, N
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ReposOwnerRepoLabelsPostBody();
+        $validator = new \Github\Validator\ReposOwnerRepoLabelsPostBodyValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -66,6 +68,8 @@ class ReposOwnerRepoLabelsPostBodyNormalizer implements DenormalizerInterface, N
         if (null !== $object->getDescription()) {
             $data['description'] = $object->getDescription();
         }
+        $validator = new \Github\Validator\ReposOwnerRepoLabelsPostBodyValidator();
+        $validator->validate($data);
         return $data;
     }
 }

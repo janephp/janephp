@@ -39,6 +39,8 @@ class RepositoryPermissionsNormalizer implements DenormalizerInterface, Normaliz
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\RepositoryPermissions();
+        $validator = new \Github\Validator\RepositoryPermissionsValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -74,6 +76,8 @@ class RepositoryPermissionsNormalizer implements DenormalizerInterface, Normaliz
         if (null !== $object->getMaintain()) {
             $data['maintain'] = $object->getMaintain();
         }
+        $validator = new \Github\Validator\RepositoryPermissionsValidator();
+        $validator->validate($data);
         return $data;
     }
 }

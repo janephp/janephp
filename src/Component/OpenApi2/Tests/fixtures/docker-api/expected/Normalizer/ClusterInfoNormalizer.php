@@ -39,6 +39,8 @@ class ClusterInfoNormalizer implements DenormalizerInterface, NormalizerInterfac
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\ClusterInfo();
+        $validator = new \Docker\Api\Validator\ClusterInfoValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -118,6 +120,8 @@ class ClusterInfoNormalizer implements DenormalizerInterface, NormalizerInterfac
         if (null !== $object->getSubnetSize()) {
             $data['SubnetSize'] = $object->getSubnetSize();
         }
+        $validator = new \Docker\Api\Validator\ClusterInfoValidator();
+        $validator->validate($data);
         return $data;
     }
 }

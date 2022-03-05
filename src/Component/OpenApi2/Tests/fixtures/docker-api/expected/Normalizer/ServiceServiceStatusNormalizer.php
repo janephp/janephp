@@ -39,6 +39,8 @@ class ServiceServiceStatusNormalizer implements DenormalizerInterface, Normalize
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\ServiceServiceStatus();
+        $validator = new \Docker\Api\Validator\ServiceServiceStatusValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -68,6 +70,8 @@ class ServiceServiceStatusNormalizer implements DenormalizerInterface, Normalize
         if (null !== $object->getCompletedTasks()) {
             $data['CompletedTasks'] = $object->getCompletedTasks();
         }
+        $validator = new \Docker\Api\Validator\ServiceServiceStatusValidator();
+        $validator->validate($data);
         return $data;
     }
 }

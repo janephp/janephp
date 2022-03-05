@@ -39,6 +39,8 @@ class ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200Normalizer imp
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200();
+        $validator = new \Github\Validator\ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200Validator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -70,6 +72,8 @@ class ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200Normalizer imp
             }
             $data['check_runs'] = $values;
         }
+        $validator = new \Github\Validator\ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200Validator();
+        $validator->validate($data);
         return $data;
     }
 }

@@ -39,6 +39,8 @@ class GistFullforksItemNormalizer implements DenormalizerInterface, NormalizerIn
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\GistFullforksItem();
+        $validator = new \Github\Validator\GistFullforksItemValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -80,6 +82,8 @@ class GistFullforksItemNormalizer implements DenormalizerInterface, NormalizerIn
         if (null !== $object->getUpdatedAt()) {
             $data['updated_at'] = $object->getUpdatedAt();
         }
+        $validator = new \Github\Validator\GistFullforksItemValidator();
+        $validator->validate($data);
         return $data;
     }
 }

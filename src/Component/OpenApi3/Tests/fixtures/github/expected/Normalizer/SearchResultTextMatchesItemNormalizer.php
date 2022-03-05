@@ -39,6 +39,8 @@ class SearchResultTextMatchesItemNormalizer implements DenormalizerInterface, No
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\SearchResultTextMatchesItem();
+        $validator = new \Github\Validator\SearchResultTextMatchesItemValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -91,6 +93,8 @@ class SearchResultTextMatchesItemNormalizer implements DenormalizerInterface, No
             }
             $data['matches'] = $values;
         }
+        $validator = new \Github\Validator\SearchResultTextMatchesItemValidator();
+        $validator->validate($data);
         return $data;
     }
 }

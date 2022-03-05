@@ -39,6 +39,8 @@ class ImageIDNormalizer implements DenormalizerInterface, NormalizerInterface, D
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\ImageID();
+        $validator = new \Docker\Api\Validator\ImageIDValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -56,6 +58,8 @@ class ImageIDNormalizer implements DenormalizerInterface, NormalizerInterface, D
         if (null !== $object->getID()) {
             $data['ID'] = $object->getID();
         }
+        $validator = new \Docker\Api\Validator\ImageIDValidator();
+        $validator->validate($data);
         return $data;
     }
 }

@@ -39,6 +39,8 @@ class GitRefNormalizer implements DenormalizerInterface, NormalizerInterface, De
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\GitRef();
+        $validator = new \Github\Validator\GitRefValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -74,6 +76,8 @@ class GitRefNormalizer implements DenormalizerInterface, NormalizerInterface, De
         if (null !== $object->getObject()) {
             $data['object'] = $this->normalizer->normalize($object->getObject(), 'json', $context);
         }
+        $validator = new \Github\Validator\GitRefValidator();
+        $validator->validate($data);
         return $data;
     }
 }

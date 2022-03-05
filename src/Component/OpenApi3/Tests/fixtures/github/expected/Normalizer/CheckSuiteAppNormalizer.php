@@ -39,6 +39,8 @@ class CheckSuiteAppNormalizer implements DenormalizerInterface, NormalizerInterf
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\CheckSuiteApp();
+        $validator = new \Github\Validator\CheckSuiteAppValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -144,6 +146,8 @@ class CheckSuiteAppNormalizer implements DenormalizerInterface, NormalizerInterf
         if (null !== $object->getPem()) {
             $data['pem'] = $object->getPem();
         }
+        $validator = new \Github\Validator\CheckSuiteAppValidator();
+        $validator->validate($data);
         return $data;
     }
 }

@@ -39,6 +39,8 @@ class TaskSpecContainerSpecPrivilegesNormalizer implements DenormalizerInterface
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\TaskSpecContainerSpecPrivileges();
+        $validator = new \Docker\Api\Validator\TaskSpecContainerSpecPrivilegesValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -62,6 +64,8 @@ class TaskSpecContainerSpecPrivilegesNormalizer implements DenormalizerInterface
         if (null !== $object->getSELinuxContext()) {
             $data['SELinuxContext'] = $this->normalizer->normalize($object->getSELinuxContext(), 'json', $context);
         }
+        $validator = new \Docker\Api\Validator\TaskSpecContainerSpecPrivilegesValidator();
+        $validator->validate($data);
         return $data;
     }
 }

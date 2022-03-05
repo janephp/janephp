@@ -39,6 +39,8 @@ class ReposOwnerRepoCheckRunsPostBodyOutputNormalizer implements DenormalizerInt
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ReposOwnerRepoCheckRunsPostBodyOutput();
+        $validator = new \Github\Validator\ReposOwnerRepoCheckRunsPostBodyOutputValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -92,6 +94,8 @@ class ReposOwnerRepoCheckRunsPostBodyOutputNormalizer implements DenormalizerInt
             }
             $data['images'] = $values_1;
         }
+        $validator = new \Github\Validator\ReposOwnerRepoCheckRunsPostBodyOutputValidator();
+        $validator->validate($data);
         return $data;
     }
 }

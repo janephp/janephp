@@ -39,6 +39,8 @@ class ReposOwnerRepoActionsArtifactsGetResponse200Normalizer implements Denormal
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ReposOwnerRepoActionsArtifactsGetResponse200();
+        $validator = new \Github\Validator\ReposOwnerRepoActionsArtifactsGetResponse200Validator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -70,6 +72,8 @@ class ReposOwnerRepoActionsArtifactsGetResponse200Normalizer implements Denormal
             }
             $data['artifacts'] = $values;
         }
+        $validator = new \Github\Validator\ReposOwnerRepoActionsArtifactsGetResponse200Validator();
+        $validator->validate($data);
         return $data;
     }
 }

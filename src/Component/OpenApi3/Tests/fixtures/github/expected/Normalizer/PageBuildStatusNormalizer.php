@@ -39,6 +39,8 @@ class PageBuildStatusNormalizer implements DenormalizerInterface, NormalizerInte
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\PageBuildStatus();
+        $validator = new \Github\Validator\PageBuildStatusValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -58,6 +60,8 @@ class PageBuildStatusNormalizer implements DenormalizerInterface, NormalizerInte
         $data = array();
         $data['url'] = $object->getUrl();
         $data['status'] = $object->getStatus();
+        $validator = new \Github\Validator\PageBuildStatusValidator();
+        $validator->validate($data);
         return $data;
     }
 }

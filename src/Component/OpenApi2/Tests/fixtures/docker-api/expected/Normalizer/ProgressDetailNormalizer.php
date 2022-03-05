@@ -39,6 +39,8 @@ class ProgressDetailNormalizer implements DenormalizerInterface, NormalizerInter
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\ProgressDetail();
+        $validator = new \Docker\Api\Validator\ProgressDetailValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -62,6 +64,8 @@ class ProgressDetailNormalizer implements DenormalizerInterface, NormalizerInter
         if (null !== $object->getTotal()) {
             $data['total'] = $object->getTotal();
         }
+        $validator = new \Docker\Api\Validator\ProgressDetailValidator();
+        $validator->validate($data);
         return $data;
     }
 }

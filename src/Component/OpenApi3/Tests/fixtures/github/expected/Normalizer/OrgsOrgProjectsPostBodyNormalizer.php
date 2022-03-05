@@ -39,6 +39,8 @@ class OrgsOrgProjectsPostBodyNormalizer implements DenormalizerInterface, Normal
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\OrgsOrgProjectsPostBody();
+        $validator = new \Github\Validator\OrgsOrgProjectsPostBodyValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -60,6 +62,8 @@ class OrgsOrgProjectsPostBodyNormalizer implements DenormalizerInterface, Normal
         if (null !== $object->getBody()) {
             $data['body'] = $object->getBody();
         }
+        $validator = new \Github\Validator\OrgsOrgProjectsPostBodyValidator();
+        $validator->validate($data);
         return $data;
     }
 }

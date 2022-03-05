@@ -39,6 +39,8 @@ class ReposOwnerRepoPullsPullNumberReviewsPostBodyCommentsItemNormalizer impleme
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ReposOwnerRepoPullsPullNumberReviewsPostBodyCommentsItem();
+        $validator = new \Github\Validator\ReposOwnerRepoPullsPullNumberReviewsPostBodyCommentsItemValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -88,6 +90,8 @@ class ReposOwnerRepoPullsPullNumberReviewsPostBodyCommentsItemNormalizer impleme
         if (null !== $object->getStartSide()) {
             $data['start_side'] = $object->getStartSide();
         }
+        $validator = new \Github\Validator\ReposOwnerRepoPullsPullNumberReviewsPostBodyCommentsItemValidator();
+        $validator->validate($data);
         return $data;
     }
 }

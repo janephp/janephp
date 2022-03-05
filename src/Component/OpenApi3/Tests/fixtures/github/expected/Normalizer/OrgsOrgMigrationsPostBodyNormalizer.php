@@ -39,6 +39,8 @@ class OrgsOrgMigrationsPostBodyNormalizer implements DenormalizerInterface, Norm
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\OrgsOrgMigrationsPostBody();
+        $validator = new \Github\Validator\OrgsOrgMigrationsPostBodyValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -88,6 +90,8 @@ class OrgsOrgMigrationsPostBodyNormalizer implements DenormalizerInterface, Norm
             }
             $data['exclude'] = $values_1;
         }
+        $validator = new \Github\Validator\OrgsOrgMigrationsPostBodyValidator();
+        $validator->validate($data);
         return $data;
     }
 }

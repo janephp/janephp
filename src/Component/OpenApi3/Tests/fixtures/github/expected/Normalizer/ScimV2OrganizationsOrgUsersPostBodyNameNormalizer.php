@@ -39,6 +39,8 @@ class ScimV2OrganizationsOrgUsersPostBodyNameNormalizer implements DenormalizerI
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ScimV2OrganizationsOrgUsersPostBodyName();
+        $validator = new \Github\Validator\ScimV2OrganizationsOrgUsersPostBodyNameValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -58,6 +60,8 @@ class ScimV2OrganizationsOrgUsersPostBodyNameNormalizer implements DenormalizerI
         $data = array();
         $data['givenName'] = $object->getGivenName();
         $data['familyName'] = $object->getFamilyName();
+        $validator = new \Github\Validator\ScimV2OrganizationsOrgUsersPostBodyNameValidator();
+        $validator->validate($data);
         return $data;
     }
 }

@@ -39,6 +39,8 @@ class FullRepositoryNormalizer implements DenormalizerInterface, NormalizerInter
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\FullRepository();
+        $validator = new \Github\Validator\FullRepositoryValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -475,6 +477,8 @@ class FullRepositoryNormalizer implements DenormalizerInterface, NormalizerInter
         if (null !== $object->getAnonymousAccessEnabled()) {
             $data['anonymous_access_enabled'] = $object->getAnonymousAccessEnabled();
         }
+        $validator = new \Github\Validator\FullRepositoryValidator();
+        $validator->validate($data);
         return $data;
     }
 }

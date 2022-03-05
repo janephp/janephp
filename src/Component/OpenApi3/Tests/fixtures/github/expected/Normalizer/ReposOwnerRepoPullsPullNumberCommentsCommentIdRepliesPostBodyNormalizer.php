@@ -39,6 +39,8 @@ class ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBodyNormalizer im
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBody();
+        $validator = new \Github\Validator\ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBodyValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -54,6 +56,8 @@ class ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBodyNormalizer im
     {
         $data = array();
         $data['body'] = $object->getBody();
+        $validator = new \Github\Validator\ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBodyValidator();
+        $validator->validate($data);
         return $data;
     }
 }

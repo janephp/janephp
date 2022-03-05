@@ -39,6 +39,8 @@ class PullRequestBaseNormalizer implements DenormalizerInterface, NormalizerInte
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\PullRequestBase();
+        $validator = new \Github\Validator\PullRequestBaseValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -70,6 +72,8 @@ class PullRequestBaseNormalizer implements DenormalizerInterface, NormalizerInte
         $data['repo'] = $this->normalizer->normalize($object->getRepo(), 'json', $context);
         $data['sha'] = $object->getSha();
         $data['user'] = $this->normalizer->normalize($object->getUser(), 'json', $context);
+        $validator = new \Github\Validator\PullRequestBaseValidator();
+        $validator->validate($data);
         return $data;
     }
 }

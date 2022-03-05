@@ -39,6 +39,8 @@ class NotificationsThreadsThreadIdSubscriptionPutBodyNormalizer implements Denor
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\NotificationsThreadsThreadIdSubscriptionPutBody();
+        $validator = new \Github\Validator\NotificationsThreadsThreadIdSubscriptionPutBodyValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -56,6 +58,8 @@ class NotificationsThreadsThreadIdSubscriptionPutBodyNormalizer implements Denor
         if (null !== $object->getIgnored()) {
             $data['ignored'] = $object->getIgnored();
         }
+        $validator = new \Github\Validator\NotificationsThreadsThreadIdSubscriptionPutBodyValidator();
+        $validator->validate($data);
         return $data;
     }
 }

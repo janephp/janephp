@@ -39,6 +39,8 @@ class IssueEventMilestoneNormalizer implements DenormalizerInterface, Normalizer
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\IssueEventMilestone();
+        $validator = new \Github\Validator\IssueEventMilestoneValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -54,6 +56,8 @@ class IssueEventMilestoneNormalizer implements DenormalizerInterface, Normalizer
     {
         $data = array();
         $data['title'] = $object->getTitle();
+        $validator = new \Github\Validator\IssueEventMilestoneValidator();
+        $validator->validate($data);
         return $data;
     }
 }

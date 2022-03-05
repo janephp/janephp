@@ -39,6 +39,8 @@ class ServiceSpecUpdateConfigNormalizer implements DenormalizerInterface, Normal
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\ServiceSpecUpdateConfig();
+        $validator = new \Docker\Api\Validator\ServiceSpecUpdateConfigValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -86,6 +88,8 @@ class ServiceSpecUpdateConfigNormalizer implements DenormalizerInterface, Normal
         if (null !== $object->getOrder()) {
             $data['Order'] = $object->getOrder();
         }
+        $validator = new \Docker\Api\Validator\ServiceSpecUpdateConfigValidator();
+        $validator->validate($data);
         return $data;
     }
 }

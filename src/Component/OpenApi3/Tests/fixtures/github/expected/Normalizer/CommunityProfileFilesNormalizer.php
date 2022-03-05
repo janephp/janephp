@@ -39,6 +39,8 @@ class CommunityProfileFilesNormalizer implements DenormalizerInterface, Normaliz
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\CommunityProfileFiles();
+        $validator = new \Github\Validator\CommunityProfileFilesValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -92,6 +94,8 @@ class CommunityProfileFilesNormalizer implements DenormalizerInterface, Normaliz
         $data['readme'] = $this->normalizer->normalize($object->getReadme(), 'json', $context);
         $data['issue_template'] = $this->normalizer->normalize($object->getIssueTemplate(), 'json', $context);
         $data['pull_request_template'] = $this->normalizer->normalize($object->getPullRequestTemplate(), 'json', $context);
+        $validator = new \Github\Validator\CommunityProfileFilesValidator();
+        $validator->validate($data);
         return $data;
     }
 }

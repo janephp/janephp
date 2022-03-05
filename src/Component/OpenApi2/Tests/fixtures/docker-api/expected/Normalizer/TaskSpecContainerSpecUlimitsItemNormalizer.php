@@ -39,6 +39,8 @@ class TaskSpecContainerSpecUlimitsItemNormalizer implements DenormalizerInterfac
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\TaskSpecContainerSpecUlimitsItem();
+        $validator = new \Docker\Api\Validator\TaskSpecContainerSpecUlimitsItemValidator();
+        $validator->validate($data);
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -68,6 +70,8 @@ class TaskSpecContainerSpecUlimitsItemNormalizer implements DenormalizerInterfac
         if (null !== $object->getHard()) {
             $data['Hard'] = $object->getHard();
         }
+        $validator = new \Docker\Api\Validator\TaskSpecContainerSpecUlimitsItemValidator();
+        $validator->validate($data);
         return $data;
     }
 }
