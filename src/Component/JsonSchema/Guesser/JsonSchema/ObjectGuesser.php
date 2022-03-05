@@ -84,8 +84,11 @@ class ObjectGuesser implements GuesserInterface, PropertiesGuesserInterface, Typ
                 $classGuess->setRequired($object->getRequired());
             }
 
-            $registry->getSchema($reference)->addClass($reference, $classGuess);
-            $this->chainValidator->guess($object, $name, $classGuess);
+            $schema = $registry->getSchema($reference);
+            if (null !== $schema) {
+                $schema->addClass($reference, $classGuess);
+                $this->chainValidator->guess($object, $name, $classGuess);
+            }
         }
 
         foreach ($object->getProperties() as $key => $property) {
@@ -179,8 +182,8 @@ class ObjectGuesser implements GuesserInterface, PropertiesGuesserInterface, Typ
             }
         }
 
-        if ($registry->hasClass($reference)) {
-            return new ObjectType($object, $registry->getClass($reference)->getName(), $registry->getSchema($reference)->getNamespace(), $discriminants);
+        if ($registry->hasClass($reference) && null !== ($schema = $registry->getSchema($reference))) {
+            return new ObjectType($object, $registry->getClass($reference)->getName(), $schema->getNamespace(), $discriminants);
         }
 
         return new Type($object, 'object');

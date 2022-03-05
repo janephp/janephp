@@ -1,0 +1,8 @@
+<?php
+
+return [
+    'openapi-file' => __DIR__ .  '/docker-api.yaml',
+    'namespace' => 'Docker\Api',
+    'directory' => __DIR__ . '/generated',
+    'use-fixer' => false,
+];
