@@ -58,8 +58,7 @@ final class FileLoader implements ClassLoaderInterface
         $hash = $mapperGeneratorMetadata->getHash();
         $classCode = $this->printer->prettyPrint([$this->generator->generate($mapperGeneratorMetadata)]);
 
-        file_put_contents($classPath, "<?php\n\n" . $classCode . "\n");
-
+        $this->write($classPath, "<?php\n\n" . $classCode . "\n");
         $this->addHashToRegistry($className, $hash);
     }
 
@@ -67,7 +66,7 @@ final class FileLoader implements ClassLoaderInterface
     {
         $registryPath = $this->directory . \DIRECTORY_SEPARATOR . 'registry.php';
         $this->registry[$className] = $hash;
-        file_put_contents($registryPath, "<?php\n\nreturn " . var_export($this->registry, true) . ";\n");
+        $this->write($registryPath, "<?php\n\nreturn " . var_export($this->registry, true) . ";\n");
     }
 
     private function getRegistry()
@@ -87,5 +86,16 @@ final class FileLoader implements ClassLoaderInterface
         }
 
         return $this->registry;
+    }
+
+    private function write(string $file, string $contents): void
+    {
+        $fp = fopen($file, 'w');
+
+        if (flock($fp, LOCK_EX)) {
+            fwrite($fp, $contents);
+        }
+
+        fclose($fp);
     }
 }
