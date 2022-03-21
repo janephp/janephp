@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+## [7.2.2] - 2022-03-21
 ### Fixed
 - [AutoMapper] [GH#606](https://github.com/janephp/janephp/pull/606) Lock file when writing in AutoMapper registry
 
@@ -588,7 +590,8 @@ See :
  * https://github.com/janephp/jane/releases
  * https://github.com/janephp/openapi/releases
 
-[Unreleased]: https://github.com/janephp/janephp/compare/v7.2.1...HEAD
+[Unreleased]: https://github.com/janephp/janephp/compare/v7.2.2...HEAD
+[7.2.2]: https://github.com/janephp/janephp/compare/v7.2.1...v7.2.2
 [7.2.1]: https://github.com/janephp/janephp/compare/v7.2.0...v7.2.1
 [7.2.0]: https://github.com/janephp/janephp/compare/v7.1.7...v7.2.0
 [7.1.7]: https://github.com/janephp/janephp/compare/v7.1.6...v7.1.7
