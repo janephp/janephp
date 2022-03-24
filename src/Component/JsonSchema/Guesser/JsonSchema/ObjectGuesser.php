@@ -122,7 +122,7 @@ class ObjectGuesser implements GuesserInterface, PropertiesGuesserInterface, Typ
             if (method_exists($propertyObj, 'getDeprecated')) {
                 $newProperty->setDeprecated($propertyObj->getDeprecated());
             }
-            $this->chainValidator->guess($property, $name, $newProperty);
+            $this->chainValidator->guess($propertyObj, $name, $newProperty);
             $properties[$key] = $newProperty;
         }
 
