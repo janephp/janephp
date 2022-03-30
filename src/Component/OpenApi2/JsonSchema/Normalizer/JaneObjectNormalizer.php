@@ -31,7 +31,7 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
         return array_key_exists($type, $this->normalizers);
     }
 
-    public function supportsNormalization($data, $format = null)
+    public function supportsNormalization($data, $format = null) : bool
     {
         return is_object($data) && array_key_exists(get_class($data), $this->normalizers);
     }

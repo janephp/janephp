@@ -16,14 +16,11 @@ class UserGpgKeysPostBodyNormalizer implements DenormalizerInterface, Normalizer
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
-    /**
-     * @return bool
-     */
-    public function supportsDenormalization($data, $type, $format = null)
+    public function supportsDenormalization($data, $type, $format = null) : bool
     {
         return $type === 'Github\\Model\\UserGpgKeysPostBody';
     }
-    public function supportsNormalization($data, $format = null)
+    public function supportsNormalization($data, $format = null) : bool
     {
         return is_object($data) && get_class($data) === 'Github\\Model\\UserGpgKeysPostBody';
     }

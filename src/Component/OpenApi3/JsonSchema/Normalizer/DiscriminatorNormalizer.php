@@ -30,7 +30,7 @@ class DiscriminatorNormalizer implements DenormalizerInterface, NormalizerInterf
         return $type === 'Jane\\Component\\OpenApi3\\JsonSchema\\Model\\Discriminator';
     }
 
-    public function supportsNormalization($data, $format = null)
+    public function supportsNormalization($data, $format = null) : bool
     {
         return $data instanceof \Jane\Component\OpenApi3\JsonSchema\Model\Discriminator;
     }

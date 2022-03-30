@@ -15,6 +15,7 @@ trait JaneObjectNormalizerGenerator
     {
         return new Stmt\ClassMethod('supportsDenormalization', [
             'type' => Stmt\Class_::MODIFIER_PUBLIC,
+            'returnType' => 'bool',
             'params' => [
                 new Param(new Expr\Variable('data')),
                 new Param(new Expr\Variable('type')),
@@ -24,13 +25,6 @@ trait JaneObjectNormalizerGenerator
                 new Arg(new Expr\Variable('type')),
                 new Arg(new Expr\PropertyFetch(new Expr\Variable('this'), 'normalizers')),
             ]))],
-        ], [
-            'comments' => [new Doc(<<<EOD
-/**
- * @return bool
- */
-EOD
-            )],
         ]);
     }
 
@@ -38,6 +32,7 @@ EOD
     {
         return new Stmt\ClassMethod('supportsNormalization', [
             'type' => Stmt\Class_::MODIFIER_PUBLIC,
+            'returnType' => 'bool',
             'params' => [
                 new Param(new Expr\Variable('data')),
                 new Param(new Expr\Variable('format'), new Expr\ConstFetch(new Name('null'))),
@@ -50,13 +45,6 @@ EOD
                         new Arg(new Expr\PropertyFetch(new Expr\Variable('this'), 'normalizers')),
                     ])
                 ))],
-        ], [
-            'comments' => [new Doc(<<<EOD
-/**
- * @return bool
- */
-EOD
-            )],
         ]);
     }
 

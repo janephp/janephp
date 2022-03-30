@@ -33,19 +33,13 @@ trait DenormalizerGenerator
     {
         return new Stmt\ClassMethod('supportsDenormalization', [
             'type' => Stmt\Class_::MODIFIER_PUBLIC,
+            'returnType' => 'bool',
             'params' => [
                 new Param(new Expr\Variable('data')),
                 new Param(new Expr\Variable('type')),
                 new Param(new Expr\Variable('format'), new Expr\ConstFetch(new Name('null'))),
             ],
             'stmts' => [new Stmt\Return_(new Expr\BinaryOp\Identical(new Expr\Variable('type'), new Scalar\String_($modelFqdn)))],
-        ], [
-            'comments' => [new Doc(<<<EOD
-/**
- * @return bool
- */
-EOD
-            )],
         ]);
     }
 

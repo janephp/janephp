@@ -30,7 +30,7 @@ class FileSchemaNormalizer implements DenormalizerInterface, NormalizerInterface
         return $type === 'Jane\\Component\\OpenApi2\\JsonSchema\\Model\\FileSchema';
     }
 
-    public function supportsNormalization($data, $format = null)
+    public function supportsNormalization($data, $format = null) : bool
     {
         return $data instanceof \Jane\Component\OpenApi2\JsonSchema\Model\FileSchema;
     }

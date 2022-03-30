@@ -30,7 +30,7 @@ class HTTPSecuritySchemeNormalizer implements DenormalizerInterface, NormalizerI
         return $type === 'Jane\\Component\\OpenApi3\\JsonSchema\\Model\\HTTPSecurityScheme';
     }
 
-    public function supportsNormalization($data, $format = null)
+    public function supportsNormalization($data, $format = null) : bool
     {
         return $data instanceof \Jane\Component\OpenApi3\JsonSchema\Model\HTTPSecurityScheme;
     }
