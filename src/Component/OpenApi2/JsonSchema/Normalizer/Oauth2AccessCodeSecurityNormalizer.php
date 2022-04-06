@@ -30,7 +30,7 @@ class Oauth2AccessCodeSecurityNormalizer implements DenormalizerInterface, Norma
         return $type === 'Jane\\Component\\OpenApi2\\JsonSchema\\Model\\Oauth2AccessCodeSecurity';
     }
 
-    public function supportsNormalization($data, $format = null)
+    public function supportsNormalization($data, $format = null) : bool
     {
         return $data instanceof \Jane\Component\OpenApi2\JsonSchema\Model\Oauth2AccessCodeSecurity;
     }

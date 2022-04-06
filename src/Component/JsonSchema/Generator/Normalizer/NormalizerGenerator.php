@@ -64,18 +64,12 @@ trait NormalizerGenerator
     {
         return new Stmt\ClassMethod('supportsNormalization', [
             'type' => Stmt\Class_::MODIFIER_PUBLIC,
+            'returnType' => 'bool',
             'params' => [
                 new Param(new Expr\Variable('data')),
                 new Param(new Expr\Variable('format'), new Expr\ConstFetch(new Name('null'))),
             ],
             'stmts' => [new Stmt\Return_(new Expr\Instanceof_(new Expr\Variable('data'), new Name('\\' . $modelFqdn)))],
-        ], [
-            'comments' => [new Doc(<<<EOD
-/**
- * @return bool
- */
-EOD
-            )],
         ]);
     }
 

@@ -16,14 +16,11 @@ class ScimV2OrganizationsOrgUsersScimUserIdPutBodyNameNormalizer implements Deno
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
-    /**
-     * @return bool
-     */
-    public function supportsDenormalization($data, $type, $format = null)
+    public function supportsDenormalization($data, $type, $format = null) : bool
     {
         return $type === 'Github\\Model\\ScimV2OrganizationsOrgUsersScimUserIdPutBodyName';
     }
-    public function supportsNormalization($data, $format = null)
+    public function supportsNormalization($data, $format = null) : bool
     {
         return is_object($data) && get_class($data) === 'Github\\Model\\ScimV2OrganizationsOrgUsersScimUserIdPutBodyName';
     }

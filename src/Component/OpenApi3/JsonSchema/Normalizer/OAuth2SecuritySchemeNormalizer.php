@@ -30,7 +30,7 @@ class OAuth2SecuritySchemeNormalizer implements DenormalizerInterface, Normalize
         return $type === 'Jane\\Component\\OpenApi3\\JsonSchema\\Model\\OAuth2SecurityScheme';
     }
 
-    public function supportsNormalization($data, $format = null)
+    public function supportsNormalization($data, $format = null) : bool
     {
         return $data instanceof \Jane\Component\OpenApi3\JsonSchema\Model\OAuth2SecurityScheme;
     }

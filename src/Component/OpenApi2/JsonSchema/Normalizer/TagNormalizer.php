@@ -30,7 +30,7 @@ class TagNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
         return $type === 'Jane\\Component\\OpenApi2\\JsonSchema\\Model\\Tag';
     }
 
-    public function supportsNormalization($data, $format = null)
+    public function supportsNormalization($data, $format = null) : bool
     {
         return $data instanceof \Jane\Component\OpenApi2\JsonSchema\Model\Tag;
     }

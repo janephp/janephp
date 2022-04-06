@@ -30,7 +30,7 @@ class FormDataParameterSubSchemaNormalizer implements DenormalizerInterface, Nor
         return $type === 'Jane\\Component\\OpenApi2\\JsonSchema\\Model\\FormDataParameterSubSchema';
     }
 
-    public function supportsNormalization($data, $format = null)
+    public function supportsNormalization($data, $format = null) : bool
     {
         return $data instanceof \Jane\Component\OpenApi2\JsonSchema\Model\FormDataParameterSubSchema;
     }

@@ -16,17 +16,11 @@ class TestNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
-    /**
-     * @return bool
-     */
-    public function supportsDenormalization($data, $type, $format = null)
+    public function supportsDenormalization($data, $type, $format = null) : bool
     {
         return $type === 'Jane\\Component\\JsonSchema\\Tests\\Expected\\Schema1\\Model\\Test';
     }
-    /**
-     * @return bool
-     */
-    public function supportsNormalization($data, $format = null)
+    public function supportsNormalization($data, $format = null) : bool
     {
         return $data instanceof \Jane\Component\JsonSchema\Tests\Expected\Schema1\Model\Test;
     }

@@ -33,7 +33,7 @@ class AutoMapperNormalizer implements NormalizerInterface, DenormalizerInterface
         return $this->autoMapper->map($data, $class, $this->createAutoMapperContext($context));
     }
 
-    public function supportsNormalization($data, $format = null)
+    public function supportsNormalization($data, $format = null): bool
     {
         if (!\is_object($data) || $data instanceof \stdClass) {
             return false;

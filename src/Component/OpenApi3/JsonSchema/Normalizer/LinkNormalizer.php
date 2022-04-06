@@ -30,7 +30,7 @@ class LinkNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         return $type === 'Jane\\Component\\OpenApi3\\JsonSchema\\Model\\Link';
     }
 
-    public function supportsNormalization($data, $format = null)
+    public function supportsNormalization($data, $format = null) : bool
     {
         return $data instanceof \Jane\Component\OpenApi3\JsonSchema\Model\Link;
     }

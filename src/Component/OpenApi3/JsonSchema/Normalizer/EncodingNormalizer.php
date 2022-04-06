@@ -30,7 +30,7 @@ class EncodingNormalizer implements DenormalizerInterface, NormalizerInterface, 
         return $type === 'Jane\\Component\\OpenApi3\\JsonSchema\\Model\\Encoding';
     }
 
-    public function supportsNormalization($data, $format = null)
+    public function supportsNormalization($data, $format = null) : bool
     {
         return $data instanceof \Jane\Component\OpenApi3\JsonSchema\Model\Encoding;
     }

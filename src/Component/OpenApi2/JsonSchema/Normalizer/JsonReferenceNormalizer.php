@@ -30,7 +30,7 @@ class JsonReferenceNormalizer implements DenormalizerInterface, NormalizerInterf
         return $type === 'Jane\\Component\\OpenApi2\\JsonSchema\\Model\\JsonReference';
     }
 
-    public function supportsNormalization($data, $format = null)
+    public function supportsNormalization($data, $format = null) : bool
     {
         return $data instanceof \Jane\Component\OpenApi2\JsonSchema\Model\JsonReference;
     }

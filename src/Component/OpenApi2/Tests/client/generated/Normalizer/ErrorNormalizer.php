@@ -20,7 +20,7 @@ class ErrorNormalizer implements DenormalizerInterface, NormalizerInterface, Den
     {
         return $type === 'Jane\\Component\\OpenApi2\\Tests\\Client\\Model\\Error';
     }
-    public function supportsNormalization($data, $format = null)
+    public function supportsNormalization($data, $format = null) : bool
     {
         return is_object($data) && get_class($data) === 'Jane\\Component\\OpenApi2\\Tests\\Client\\Model\\Error';
     }

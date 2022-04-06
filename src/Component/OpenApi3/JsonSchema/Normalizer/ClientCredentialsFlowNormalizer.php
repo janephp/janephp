@@ -30,7 +30,7 @@ class ClientCredentialsFlowNormalizer implements DenormalizerInterface, Normaliz
         return $type === 'Jane\\Component\\OpenApi3\\JsonSchema\\Model\\ClientCredentialsFlow';
     }
 
-    public function supportsNormalization($data, $format = null)
+    public function supportsNormalization($data, $format = null) : bool
     {
         return $data instanceof \Jane\Component\OpenApi3\JsonSchema\Model\ClientCredentialsFlow;
     }

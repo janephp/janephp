@@ -30,7 +30,7 @@ class PasswordOAuthFlowNormalizer implements DenormalizerInterface, NormalizerIn
         return $type === 'Jane\\Component\\OpenApi3\\JsonSchema\\Model\\PasswordOAuthFlow';
     }
 
-    public function supportsNormalization($data, $format = null)
+    public function supportsNormalization($data, $format = null) : bool
     {
         return $data instanceof \Jane\Component\OpenApi3\JsonSchema\Model\PasswordOAuthFlow;
     }
