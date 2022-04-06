@@ -6,7 +6,7 @@ class ResourceObjectValidator implements \Docker\Api\Validator\ValidatorInterfac
 {
     public function validate($data) : void
     {
-        $constraints = array(new \Symfony\Component\Validator\Constraints\Collection(array('fields' => array('NanoCPUs' => new \Symfony\Component\Validator\Constraints\Optional(array(new \Symfony\Component\Validator\Constraints\Type(array('0' => 'integer')))), 'MemoryBytes' => new \Symfony\Component\Validator\Constraints\Optional(array(new \Symfony\Component\Validator\Constraints\Type(array('0' => 'integer'))))), 'allowExtraFields' => true)));
+        $constraints = array(new \Symfony\Component\Validator\Constraints\Collection(array('fields' => array('NanoCPUs' => new \Symfony\Component\Validator\Constraints\Optional(array(new \Symfony\Component\Validator\Constraints\Type(array('0' => 'integer')))), 'MemoryBytes' => new \Symfony\Component\Validator\Constraints\Optional(array(new \Symfony\Component\Validator\Constraints\Type(array('0' => 'integer')))), 'GenericResources' => new \Symfony\Component\Validator\Constraints\Optional(array(new \Symfony\Component\Validator\Constraints\Type(array('0' => 'array'))))), 'allowExtraFields' => true)));
         $validator = \Symfony\Component\Validator\Validation::createValidator();
         $violations = $validator->validate($data, $constraints);
         if ($violations->count() > 0) {
