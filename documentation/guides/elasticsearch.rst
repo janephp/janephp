@@ -44,7 +44,7 @@ Controller
 ----------
 
 Then you can see in ``project/src/Controller/BeerController.php`` file some interaction to show Elasticsearch results.
-Same as before, decomposed code to explan each steps::
+Same as before, decomposed code to explain each step::
 
     // With the `getIndex` method, we get a reference of the index we want (here I'm asking for 'beers' index)
     $index = $client->getIndex(self::BEERS_INDEX);
