@@ -39,6 +39,7 @@ const config = {
         },
         blog: {
           showReadingTime: true,
+          readingTime: ({content, frontMatter, defaultReadingTime}) => defaultReadingTime({content, options: {wordsPerMinute: 300}}),
           editUrl:
             'https://github.com/janephp/janephp/tree/website/blog/',
         },
