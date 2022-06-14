@@ -41,10 +41,14 @@ final class FileLoader implements ClassLoaderInterface
             return;
         }
 
-        $hash = $mapperGeneratorMetadata->getHash();
-        $registry = $this->getRegistry();
+        $shouldSaveMapper = true;
+        if ($this->hotReload) {
+            $registry = $this->getRegistry();
+            $hash = $mapperGeneratorMetadata->getHash();
+            $shouldSaveMapper = !isset($registry[$className]) || $registry[$className] !== $hash || !file_exists($classPath);
+        }
 
-        if (!isset($registry[$className]) || $registry[$className] !== $hash || !file_exists($classPath)) {
+        if ($shouldSaveMapper) {
             $this->saveMapper($mapperGeneratorMetadata);
         }
 
@@ -55,11 +59,12 @@ final class FileLoader implements ClassLoaderInterface
     {
         $className = $mapperGeneratorMetadata->getMapperClassName();
         $classPath = $this->directory . \DIRECTORY_SEPARATOR . $className . '.php';
-        $hash = $mapperGeneratorMetadata->getHash();
         $classCode = $this->printer->prettyPrint([$this->generator->generate($mapperGeneratorMetadata)]);
 
         $this->write($classPath, "<?php\n\n" . $classCode . "\n");
-        $this->addHashToRegistry($className, $hash);
+        if ($this->hotReload) {
+            $this->addHashToRegistry($className, $mapperGeneratorMetadata->getHash());
+        }
     }
 
     private function addHashToRegistry($className, $hash): void
