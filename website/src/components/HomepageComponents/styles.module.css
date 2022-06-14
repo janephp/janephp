@@ -1,11 +1,15 @@
-.features {
+.components {
   display: flex;
   align-items: center;
   padding: 2rem 0;
   width: 100%;
 }
 
-.featureSvg {
+[data-theme="dark"] .components {
+    background-color: rgba(0, 0, 0, 0.01);
+}
+
+.componentSvg {
   height: 200px;
   width: 200px;
 }
