@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [7.2.4] - 2022-06-15
+### Fixed
+- [AutoMapper] [GH#624](https://github.com/janephp/janephp/pull/624) AutoMapper directory creation should be out of registry functions
+
 ## [7.2.3] - 2022-06-15
 ### Changed
 - [AutoMapper] [GH#623](https://github.com/janephp/janephp/pull/623) We don't need registry when not hot reloading
@@ -594,7 +598,8 @@ See :
  * https://github.com/janephp/jane/releases
  * https://github.com/janephp/openapi/releases
 
-[Unreleased]: https://github.com/janephp/janephp/compare/v7.2.3...HEAD
+[Unreleased]: https://github.com/janephp/janephp/compare/v7.2.4...HEAD
+[7.2.4]: https://github.com/janephp/janephp/compare/v7.2.3...v7.2.4
 [7.2.3]: https://github.com/janephp/janephp/compare/v7.2.2...v7.2.3
 [7.2.2]: https://github.com/janephp/janephp/compare/v7.2.1...v7.2.2
 [7.2.1]: https://github.com/janephp/janephp/compare/v7.2.0...v7.2.1

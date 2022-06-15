@@ -76,10 +76,6 @@ final class FileLoader implements ClassLoaderInterface
 
     private function getRegistry()
     {
-        if (!file_exists($this->directory)) {
-            mkdir($this->directory);
-        }
-
         if (!$this->registry) {
             $registryPath = $this->directory . \DIRECTORY_SEPARATOR . 'registry.php';
 
@@ -95,6 +91,10 @@ final class FileLoader implements ClassLoaderInterface
 
     private function write(string $file, string $contents): void
     {
+        if (!file_exists($this->directory)) {
+            mkdir($this->directory);
+        }
+
         $fp = fopen($file, 'w');
 
         if (flock($fp, LOCK_EX)) {
