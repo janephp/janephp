@@ -37,7 +37,9 @@ class ReposOwnerRepoInteractionLimitsPutBodyNormalizer implements DenormalizerIn
         }
         $object = new \Github\Model\ReposOwnerRepoInteractionLimitsPutBody();
         $validator = new \Github\Validator\ReposOwnerRepoInteractionLimitsPutBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -54,7 +56,9 @@ class ReposOwnerRepoInteractionLimitsPutBodyNormalizer implements DenormalizerIn
         $data = array();
         $data['limit'] = $object->getLimit();
         $validator = new \Github\Validator\ReposOwnerRepoInteractionLimitsPutBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

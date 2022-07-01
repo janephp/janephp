@@ -37,7 +37,9 @@ class OrgsOrgInvitationsPostBodyNormalizer implements DenormalizerInterface, Nor
         }
         $object = new \Github\Model\OrgsOrgInvitationsPostBody();
         $validator = new \Github\Validator\OrgsOrgInvitationsPostBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -82,7 +84,9 @@ class OrgsOrgInvitationsPostBodyNormalizer implements DenormalizerInterface, Nor
             $data['team_ids'] = $values;
         }
         $validator = new \Github\Validator\OrgsOrgInvitationsPostBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

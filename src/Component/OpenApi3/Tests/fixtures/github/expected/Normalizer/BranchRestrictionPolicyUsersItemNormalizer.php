@@ -37,7 +37,9 @@ class BranchRestrictionPolicyUsersItemNormalizer implements DenormalizerInterfac
         }
         $object = new \Github\Model\BranchRestrictionPolicyUsersItem();
         $validator = new \Github\Validator\BranchRestrictionPolicyUsersItemValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -158,7 +160,9 @@ class BranchRestrictionPolicyUsersItemNormalizer implements DenormalizerInterfac
             $data['site_admin'] = $object->getSiteAdmin();
         }
         $validator = new \Github\Validator\BranchRestrictionPolicyUsersItemValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

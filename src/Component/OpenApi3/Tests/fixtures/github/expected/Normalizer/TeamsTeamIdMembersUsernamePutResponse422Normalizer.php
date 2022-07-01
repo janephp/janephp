@@ -37,7 +37,9 @@ class TeamsTeamIdMembersUsernamePutResponse422Normalizer implements Denormalizer
         }
         $object = new \Github\Model\TeamsTeamIdMembersUsernamePutResponse422();
         $validator = new \Github\Validator\TeamsTeamIdMembersUsernamePutResponse422Validator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -76,7 +78,9 @@ class TeamsTeamIdMembersUsernamePutResponse422Normalizer implements Denormalizer
             $data['documentation_url'] = $object->getDocumentationUrl();
         }
         $validator = new \Github\Validator\TeamsTeamIdMembersUsernamePutResponse422Validator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

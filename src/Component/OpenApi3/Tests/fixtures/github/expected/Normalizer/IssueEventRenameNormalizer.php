@@ -37,7 +37,9 @@ class IssueEventRenameNormalizer implements DenormalizerInterface, NormalizerInt
         }
         $object = new \Github\Model\IssueEventRename();
         $validator = new \Github\Validator\IssueEventRenameValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -58,7 +60,9 @@ class IssueEventRenameNormalizer implements DenormalizerInterface, NormalizerInt
         $data['from'] = $object->getFrom();
         $data['to'] = $object->getTo();
         $validator = new \Github\Validator\IssueEventRenameValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

@@ -37,7 +37,9 @@ class NetworkContainerNormalizer implements DenormalizerInterface, NormalizerInt
         }
         $object = new \Docker\Api\Model\NetworkContainer();
         $validator = new \Docker\Api\Validator\NetworkContainerValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -80,7 +82,9 @@ class NetworkContainerNormalizer implements DenormalizerInterface, NormalizerInt
             $data['IPv6Address'] = $object->getIPv6Address();
         }
         $validator = new \Docker\Api\Validator\NetworkContainerValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

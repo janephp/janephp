@@ -37,7 +37,9 @@ class UserSearchResultItemNormalizer implements DenormalizerInterface, Normalize
         }
         $object = new \Github\Model\UserSearchResultItem();
         $validator = new \Github\Validator\UserSearchResultItemValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -251,7 +253,9 @@ class UserSearchResultItemNormalizer implements DenormalizerInterface, Normalize
             $data['suspended_at'] = $object->getSuspendedAt()->format('Y-m-d\\TH:i:sP');
         }
         $validator = new \Github\Validator\UserSearchResultItemValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

@@ -37,7 +37,9 @@ class CheckSuitePreferencePreferencesNormalizer implements DenormalizerInterface
         }
         $object = new \Github\Model\CheckSuitePreferencePreferences();
         $validator = new \Github\Validator\CheckSuitePreferencePreferencesValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -64,7 +66,9 @@ class CheckSuitePreferencePreferencesNormalizer implements DenormalizerInterface
             $data['auto_trigger_checks'] = $values;
         }
         $validator = new \Github\Validator\CheckSuitePreferencePreferencesValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

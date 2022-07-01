@@ -37,7 +37,9 @@ class TaskSpecContainerSpecSecretsItemFileNormalizer implements DenormalizerInte
         }
         $object = new \Docker\Api\Model\TaskSpecContainerSpecSecretsItemFile();
         $validator = new \Docker\Api\Validator\TaskSpecContainerSpecSecretsItemFileValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -74,7 +76,9 @@ class TaskSpecContainerSpecSecretsItemFileNormalizer implements DenormalizerInte
             $data['Mode'] = $object->getMode();
         }
         $validator = new \Docker\Api\Validator\TaskSpecContainerSpecSecretsItemFileValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

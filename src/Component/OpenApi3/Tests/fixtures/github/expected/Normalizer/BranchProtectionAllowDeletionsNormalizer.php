@@ -37,7 +37,9 @@ class BranchProtectionAllowDeletionsNormalizer implements DenormalizerInterface,
         }
         $object = new \Github\Model\BranchProtectionAllowDeletions();
         $validator = new \Github\Validator\BranchProtectionAllowDeletionsValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -56,7 +58,9 @@ class BranchProtectionAllowDeletionsNormalizer implements DenormalizerInterface,
             $data['enabled'] = $object->getEnabled();
         }
         $validator = new \Github\Validator\BranchProtectionAllowDeletionsValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

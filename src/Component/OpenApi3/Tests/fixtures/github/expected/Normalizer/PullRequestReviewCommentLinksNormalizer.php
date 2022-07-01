@@ -37,7 +37,9 @@ class PullRequestReviewCommentLinksNormalizer implements DenormalizerInterface, 
         }
         $object = new \Github\Model\PullRequestReviewCommentLinks();
         $validator = new \Github\Validator\PullRequestReviewCommentLinksValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -62,7 +64,9 @@ class PullRequestReviewCommentLinksNormalizer implements DenormalizerInterface, 
         $data['html'] = $this->normalizer->normalize($object->getHtml(), 'json', $context);
         $data['pull_request'] = $this->normalizer->normalize($object->getPullRequest(), 'json', $context);
         $validator = new \Github\Validator\PullRequestReviewCommentLinksValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

@@ -37,7 +37,9 @@ class SwarmSpecTaskDefaultsNormalizer implements DenormalizerInterface, Normaliz
         }
         $object = new \Docker\Api\Model\SwarmSpecTaskDefaults();
         $validator = new \Docker\Api\Validator\SwarmSpecTaskDefaultsValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -56,7 +58,9 @@ class SwarmSpecTaskDefaultsNormalizer implements DenormalizerInterface, Normaliz
             $data['LogDriver'] = $this->normalizer->normalize($object->getLogDriver(), 'json', $context);
         }
         $validator = new \Docker\Api\Validator\SwarmSpecTaskDefaultsValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

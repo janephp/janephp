@@ -37,7 +37,9 @@ class InstallationPermissionsNormalizer implements DenormalizerInterface, Normal
         }
         $object = new \Github\Model\InstallationPermissions();
         $validator = new \Github\Validator\InstallationPermissionsValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -98,7 +100,9 @@ class InstallationPermissionsNormalizer implements DenormalizerInterface, Normal
             $data['organization_administration'] = $object->getOrganizationAdministration();
         }
         $validator = new \Github\Validator\InstallationPermissionsValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

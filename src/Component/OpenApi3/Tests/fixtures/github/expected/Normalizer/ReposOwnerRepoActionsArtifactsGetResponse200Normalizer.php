@@ -37,7 +37,9 @@ class ReposOwnerRepoActionsArtifactsGetResponse200Normalizer implements Denormal
         }
         $object = new \Github\Model\ReposOwnerRepoActionsArtifactsGetResponse200();
         $validator = new \Github\Validator\ReposOwnerRepoActionsArtifactsGetResponse200Validator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -70,7 +72,9 @@ class ReposOwnerRepoActionsArtifactsGetResponse200Normalizer implements Denormal
             $data['artifacts'] = $values;
         }
         $validator = new \Github\Validator\ReposOwnerRepoActionsArtifactsGetResponse200Validator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

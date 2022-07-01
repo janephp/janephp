@@ -37,7 +37,9 @@ class EventActorNormalizer implements DenormalizerInterface, NormalizerInterface
         }
         $object = new \Docker\Api\Model\EventActor();
         $validator = new \Docker\Api\Validator\EventActorValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -70,7 +72,9 @@ class EventActorNormalizer implements DenormalizerInterface, NormalizerInterface
             $data['Attributes'] = $values;
         }
         $validator = new \Docker\Api\Validator\EventActorValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

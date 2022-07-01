@@ -37,7 +37,9 @@ class ContainersIdJsonGetResponse200Normalizer implements DenormalizerInterface,
         }
         $object = new \Docker\Api\Model\ContainersIdJsonGetResponse200();
         $validator = new \Docker\Api\Validator\ContainersIdJsonGetResponse200Validator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -227,7 +229,9 @@ class ContainersIdJsonGetResponse200Normalizer implements DenormalizerInterface,
             $data['NetworkSettings'] = $this->normalizer->normalize($object->getNetworkSettings(), 'json', $context);
         }
         $validator = new \Docker\Api\Validator\ContainersIdJsonGetResponse200Validator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

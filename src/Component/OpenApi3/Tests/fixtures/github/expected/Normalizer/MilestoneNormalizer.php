@@ -37,7 +37,9 @@ class MilestoneNormalizer implements DenormalizerInterface, NormalizerInterface,
         }
         $object = new \Github\Model\Milestone();
         $validator = new \Github\Validator\MilestoneValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -126,7 +128,9 @@ class MilestoneNormalizer implements DenormalizerInterface, NormalizerInterface,
         $data['closed_at'] = $object->getClosedAt()->format('Y-m-d\\TH:i:sP');
         $data['due_on'] = $object->getDueOn()->format('Y-m-d\\TH:i:sP');
         $validator = new \Github\Validator\MilestoneValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

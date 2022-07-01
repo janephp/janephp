@@ -37,7 +37,9 @@ class ValidationErrorErrorsItemNormalizer implements DenormalizerInterface, Norm
         }
         $object = new \Github\Model\ValidationErrorErrorsItem();
         $validator = new \Github\Validator\ValidationErrorErrorsItemValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -84,7 +86,9 @@ class ValidationErrorErrorsItemNormalizer implements DenormalizerInterface, Norm
             $data['value'] = $object->getValue();
         }
         $validator = new \Github\Validator\ValidationErrorErrorsItemValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

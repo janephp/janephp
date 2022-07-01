@@ -37,7 +37,9 @@ class GitCommitVerificationNormalizer implements DenormalizerInterface, Normaliz
         }
         $object = new \Github\Model\GitCommitVerification();
         $validator = new \Github\Validator\GitCommitVerificationValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -80,7 +82,9 @@ class GitCommitVerificationNormalizer implements DenormalizerInterface, Normaliz
             $data['payload'] = $object->getPayload();
         }
         $validator = new \Github\Validator\GitCommitVerificationValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

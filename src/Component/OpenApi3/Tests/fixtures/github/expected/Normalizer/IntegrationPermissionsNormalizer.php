@@ -37,7 +37,9 @@ class IntegrationPermissionsNormalizer implements DenormalizerInterface, Normali
         }
         $object = new \Github\Model\IntegrationPermissions();
         $validator = new \Github\Validator\IntegrationPermissionsValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -95,7 +97,9 @@ class IntegrationPermissionsNormalizer implements DenormalizerInterface, Normali
             }
         }
         $validator = new \Github\Validator\IntegrationPermissionsValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

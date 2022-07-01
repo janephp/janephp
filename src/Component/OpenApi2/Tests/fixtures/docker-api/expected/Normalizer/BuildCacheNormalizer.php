@@ -37,7 +37,9 @@ class BuildCacheNormalizer implements DenormalizerInterface, NormalizerInterface
         }
         $object = new \Docker\Api\Model\BuildCache();
         $validator = new \Docker\Api\Validator\BuildCacheValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -113,7 +115,9 @@ class BuildCacheNormalizer implements DenormalizerInterface, NormalizerInterface
             $data['UsageCount'] = $object->getUsageCount();
         }
         $validator = new \Docker\Api\Validator\BuildCacheValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

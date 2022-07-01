@@ -37,7 +37,9 @@ class RepositoryCollaboratorPermissionNormalizer implements DenormalizerInterfac
         }
         $object = new \Github\Model\RepositoryCollaboratorPermission();
         $validator = new \Github\Validator\RepositoryCollaboratorPermissionValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -61,7 +63,9 @@ class RepositoryCollaboratorPermissionNormalizer implements DenormalizerInterfac
         $data['permission'] = $object->getPermission();
         $data['user'] = $this->normalizer->normalize($object->getUser(), 'json', $context);
         $validator = new \Github\Validator\RepositoryCollaboratorPermissionValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

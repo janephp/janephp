@@ -37,7 +37,9 @@ class ModelNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         }
         $object = new \Jane\JsonSchema\Tests\Expected\Model\Model();
         $validator = new \Jane\JsonSchema\Tests\Expected\Validator\ModelValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -224,7 +226,9 @@ class ModelNormalizer implements DenormalizerInterface, NormalizerInterface, Den
             $data['uuidFormat'] = $object->getUuidFormat();
         }
         $validator = new \Jane\JsonSchema\Tests\Expected\Validator\ModelValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

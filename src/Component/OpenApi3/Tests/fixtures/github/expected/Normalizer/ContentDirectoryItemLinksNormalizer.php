@@ -37,7 +37,9 @@ class ContentDirectoryItemLinksNormalizer implements DenormalizerInterface, Norm
         }
         $object = new \Github\Model\ContentDirectoryItemLinks();
         $validator = new \Github\Validator\ContentDirectoryItemLinksValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -68,7 +70,9 @@ class ContentDirectoryItemLinksNormalizer implements DenormalizerInterface, Norm
         $data['html'] = $object->getHtml();
         $data['self'] = $object->getSelf();
         $validator = new \Github\Validator\ContentDirectoryItemLinksValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

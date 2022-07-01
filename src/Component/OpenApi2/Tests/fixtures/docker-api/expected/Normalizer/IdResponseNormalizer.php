@@ -37,7 +37,9 @@ class IdResponseNormalizer implements DenormalizerInterface, NormalizerInterface
         }
         $object = new \Docker\Api\Model\IdResponse();
         $validator = new \Docker\Api\Validator\IdResponseValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -54,7 +56,9 @@ class IdResponseNormalizer implements DenormalizerInterface, NormalizerInterface
         $data = array();
         $data['Id'] = $object->getId();
         $validator = new \Docker\Api\Validator\IdResponseValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

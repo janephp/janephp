@@ -37,7 +37,9 @@ class ScimErrorNormalizer implements DenormalizerInterface, NormalizerInterface,
         }
         $object = new \Github\Model\ScimError();
         $validator = new \Github\Validator\ScimErrorValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -106,7 +108,9 @@ class ScimErrorNormalizer implements DenormalizerInterface, NormalizerInterface,
             $data['schemas'] = $values;
         }
         $validator = new \Github\Validator\ScimErrorValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

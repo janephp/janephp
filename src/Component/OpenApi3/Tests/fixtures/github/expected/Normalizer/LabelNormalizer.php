@@ -37,7 +37,9 @@ class LabelNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         }
         $object = new \Github\Model\Label();
         $validator = new \Github\Validator\LabelValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -83,7 +85,9 @@ class LabelNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         $data['color'] = $object->getColor();
         $data['default'] = $object->getDefault();
         $validator = new \Github\Validator\LabelValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

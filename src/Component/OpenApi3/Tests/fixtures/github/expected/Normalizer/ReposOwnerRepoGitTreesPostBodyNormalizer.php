@@ -37,7 +37,9 @@ class ReposOwnerRepoGitTreesPostBodyNormalizer implements DenormalizerInterface,
         }
         $object = new \Github\Model\ReposOwnerRepoGitTreesPostBody();
         $validator = new \Github\Validator\ReposOwnerRepoGitTreesPostBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -68,7 +70,9 @@ class ReposOwnerRepoGitTreesPostBodyNormalizer implements DenormalizerInterface,
             $data['base_tree'] = $object->getBaseTree();
         }
         $validator = new \Github\Validator\ReposOwnerRepoGitTreesPostBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

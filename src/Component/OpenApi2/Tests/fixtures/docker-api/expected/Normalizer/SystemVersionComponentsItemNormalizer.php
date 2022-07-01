@@ -37,7 +37,9 @@ class SystemVersionComponentsItemNormalizer implements DenormalizerInterface, No
         }
         $object = new \Docker\Api\Model\SystemVersionComponentsItem();
         $validator = new \Docker\Api\Validator\SystemVersionComponentsItemValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -67,7 +69,9 @@ class SystemVersionComponentsItemNormalizer implements DenormalizerInterface, No
             $data['Details'] = $object->getDetails();
         }
         $validator = new \Docker\Api\Validator\SystemVersionComponentsItemValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

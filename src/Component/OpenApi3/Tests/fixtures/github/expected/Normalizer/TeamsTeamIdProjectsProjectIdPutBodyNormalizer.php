@@ -37,7 +37,9 @@ class TeamsTeamIdProjectsProjectIdPutBodyNormalizer implements DenormalizerInter
         }
         $object = new \Github\Model\TeamsTeamIdProjectsProjectIdPutBody();
         $validator = new \Github\Validator\TeamsTeamIdProjectsProjectIdPutBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -56,7 +58,9 @@ class TeamsTeamIdProjectsProjectIdPutBodyNormalizer implements DenormalizerInter
             $data['permission'] = $object->getPermission();
         }
         $validator = new \Github\Validator\TeamsTeamIdProjectsProjectIdPutBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

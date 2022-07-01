@@ -37,7 +37,9 @@ class TaskSpecPlacementNormalizer implements DenormalizerInterface, NormalizerIn
         }
         $object = new \Docker\Api\Model\TaskSpecPlacement();
         $validator = new \Docker\Api\Validator\TaskSpecPlacementValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -98,7 +100,9 @@ class TaskSpecPlacementNormalizer implements DenormalizerInterface, NormalizerIn
             $data['Platforms'] = $values_2;
         }
         $validator = new \Docker\Api\Validator\TaskSpecPlacementValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

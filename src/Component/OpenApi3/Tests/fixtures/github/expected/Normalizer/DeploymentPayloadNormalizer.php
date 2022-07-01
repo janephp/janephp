@@ -37,7 +37,9 @@ class DeploymentPayloadNormalizer implements DenormalizerInterface, NormalizerIn
         }
         $object = new \Github\Model\DeploymentPayload();
         $validator = new \Github\Validator\DeploymentPayloadValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -50,7 +52,9 @@ class DeploymentPayloadNormalizer implements DenormalizerInterface, NormalizerIn
     {
         $data = array();
         $validator = new \Github\Validator\DeploymentPayloadValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

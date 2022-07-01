@@ -37,7 +37,9 @@ class UserMembershipsOrgsOrgPatchBodyNormalizer implements DenormalizerInterface
         }
         $object = new \Github\Model\UserMembershipsOrgsOrgPatchBody();
         $validator = new \Github\Validator\UserMembershipsOrgsOrgPatchBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -54,7 +56,9 @@ class UserMembershipsOrgsOrgPatchBodyNormalizer implements DenormalizerInterface
         $data = array();
         $data['state'] = $object->getState();
         $validator = new \Github\Validator\UserMembershipsOrgsOrgPatchBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

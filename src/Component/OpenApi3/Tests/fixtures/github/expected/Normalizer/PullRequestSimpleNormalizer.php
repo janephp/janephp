@@ -37,7 +37,9 @@ class PullRequestSimpleNormalizer implements DenormalizerInterface, NormalizerIn
         }
         $object = new \Github\Model\PullRequestSimple();
         $validator = new \Github\Validator\PullRequestSimpleValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -265,7 +267,9 @@ class PullRequestSimpleNormalizer implements DenormalizerInterface, NormalizerIn
             $data['draft'] = $object->getDraft();
         }
         $validator = new \Github\Validator\PullRequestSimpleValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

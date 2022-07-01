@@ -37,7 +37,9 @@ class ReleaseNormalizer implements DenormalizerInterface, NormalizerInterface, D
         }
         $object = new \Github\Model\Release();
         $validator = new \Github\Validator\ReleaseValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -162,7 +164,9 @@ class ReleaseNormalizer implements DenormalizerInterface, NormalizerInterface, D
             $data['body_text'] = $object->getBodyText();
         }
         $validator = new \Github\Validator\ReleaseValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

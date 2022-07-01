@@ -37,7 +37,9 @@ class NotificationsPutBodyNormalizer implements DenormalizerInterface, Normalize
         }
         $object = new \Github\Model\NotificationsPutBody();
         $validator = new \Github\Validator\NotificationsPutBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -62,7 +64,9 @@ class NotificationsPutBodyNormalizer implements DenormalizerInterface, Normalize
             $data['read'] = $object->getRead();
         }
         $validator = new \Github\Validator\NotificationsPutBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

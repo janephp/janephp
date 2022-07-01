@@ -37,7 +37,9 @@ class OrgsOrgTeamsTeamSlugMembershipsUsernamePutResponse422ErrorsItemNormalizer 
         }
         $object = new \Github\Model\OrgsOrgTeamsTeamSlugMembershipsUsernamePutResponse422ErrorsItem();
         $validator = new \Github\Validator\OrgsOrgTeamsTeamSlugMembershipsUsernamePutResponse422ErrorsItemValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -68,7 +70,9 @@ class OrgsOrgTeamsTeamSlugMembershipsUsernamePutResponse422ErrorsItemNormalizer 
             $data['resource'] = $object->getResource();
         }
         $validator = new \Github\Validator\OrgsOrgTeamsTeamSlugMembershipsUsernamePutResponse422ErrorsItemValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

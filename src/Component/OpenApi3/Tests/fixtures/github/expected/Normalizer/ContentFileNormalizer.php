@@ -37,7 +37,9 @@ class ContentFileNormalizer implements DenormalizerInterface, NormalizerInterfac
         }
         $object = new \Github\Model\ContentFile();
         $validator = new \Github\Validator\ContentFileValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -119,7 +121,9 @@ class ContentFileNormalizer implements DenormalizerInterface, NormalizerInterfac
             $data['submodule_git_url'] = $object->getSubmoduleGitUrl();
         }
         $validator = new \Github\Validator\ContentFileValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

@@ -37,7 +37,9 @@ class AuthorizationsClientsClientIdFingerprintPutBodyNormalizer implements Denor
         }
         $object = new \Github\Model\AuthorizationsClientsClientIdFingerprintPutBody();
         $validator = new \Github\Validator\AuthorizationsClientsClientIdFingerprintPutBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -83,7 +85,9 @@ class AuthorizationsClientsClientIdFingerprintPutBodyNormalizer implements Denor
             $data['note_url'] = $object->getNoteUrl();
         }
         $validator = new \Github\Validator\AuthorizationsClientsClientIdFingerprintPutBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

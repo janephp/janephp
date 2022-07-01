@@ -37,7 +37,9 @@ class UserInstallationsInstallationIdRepositoriesGetResponse200Normalizer implem
         }
         $object = new \Github\Model\UserInstallationsInstallationIdRepositoriesGetResponse200();
         $validator = new \Github\Validator\UserInstallationsInstallationIdRepositoriesGetResponse200Validator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -76,7 +78,9 @@ class UserInstallationsInstallationIdRepositoriesGetResponse200Normalizer implem
             $data['repositories'] = $values;
         }
         $validator = new \Github\Validator\UserInstallationsInstallationIdRepositoriesGetResponse200Validator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

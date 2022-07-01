@@ -37,7 +37,9 @@ class CommitSearchResultItemCommitNormalizer implements DenormalizerInterface, N
         }
         $object = new \Github\Model\CommitSearchResultItemCommit();
         $validator = new \Github\Validator\CommitSearchResultItemCommitValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -83,7 +85,9 @@ class CommitSearchResultItemCommitNormalizer implements DenormalizerInterface, N
             $data['verification'] = $this->normalizer->normalize($object->getVerification(), 'json', $context);
         }
         $validator = new \Github\Validator\CommitSearchResultItemCommitValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

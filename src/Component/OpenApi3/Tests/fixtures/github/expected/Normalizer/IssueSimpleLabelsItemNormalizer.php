@@ -37,7 +37,9 @@ class IssueSimpleLabelsItemNormalizer implements DenormalizerInterface, Normaliz
         }
         $object = new \Github\Model\IssueSimpleLabelsItem();
         $validator = new \Github\Validator\IssueSimpleLabelsItemValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -95,7 +97,9 @@ class IssueSimpleLabelsItemNormalizer implements DenormalizerInterface, Normaliz
             $data['default'] = $object->getDefault();
         }
         $validator = new \Github\Validator\IssueSimpleLabelsItemValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

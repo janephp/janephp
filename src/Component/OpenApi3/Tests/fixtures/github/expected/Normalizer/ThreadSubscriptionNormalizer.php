@@ -37,7 +37,9 @@ class ThreadSubscriptionNormalizer implements DenormalizerInterface, NormalizerI
         }
         $object = new \Github\Model\ThreadSubscription();
         $validator = new \Github\Validator\ThreadSubscriptionValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -88,7 +90,9 @@ class ThreadSubscriptionNormalizer implements DenormalizerInterface, NormalizerI
             $data['repository_url'] = $object->getRepositoryUrl();
         }
         $validator = new \Github\Validator\ThreadSubscriptionValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

@@ -37,7 +37,9 @@ class AuthPostResponse200Normalizer implements DenormalizerInterface, Normalizer
         }
         $object = new \Docker\Api\Model\AuthPostResponse200();
         $validator = new \Docker\Api\Validator\AuthPostResponse200Validator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -60,7 +62,9 @@ class AuthPostResponse200Normalizer implements DenormalizerInterface, Normalizer
             $data['IdentityToken'] = $object->getIdentityToken();
         }
         $validator = new \Docker\Api\Validator\AuthPostResponse200Validator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

@@ -37,7 +37,9 @@ class ActorNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         }
         $object = new \Github\Model\Actor();
         $validator = new \Github\Validator\ActorValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -79,7 +81,9 @@ class ActorNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         $data['url'] = $object->getUrl();
         $data['avatar_url'] = $object->getAvatarUrl();
         $validator = new \Github\Validator\ActorValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

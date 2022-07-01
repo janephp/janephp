@@ -37,7 +37,9 @@ class OrganizationNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         $object = new \Github\Model\Organization();
         $validator = new \Github\Validator\OrganizationValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -183,7 +185,9 @@ class OrganizationNormalizer implements DenormalizerInterface, NormalizerInterfa
             $data['plan'] = $this->normalizer->normalize($object->getPlan(), 'json', $context);
         }
         $validator = new \Github\Validator\OrganizationValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

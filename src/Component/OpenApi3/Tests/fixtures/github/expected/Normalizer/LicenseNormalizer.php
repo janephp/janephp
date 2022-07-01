@@ -37,7 +37,9 @@ class LicenseNormalizer implements DenormalizerInterface, NormalizerInterface, D
         }
         $object = new \Github\Model\License();
         $validator = new \Github\Validator\LicenseValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -132,7 +134,9 @@ class LicenseNormalizer implements DenormalizerInterface, NormalizerInterface, D
         $data['body'] = $object->getBody();
         $data['featured'] = $object->getFeatured();
         $validator = new \Github\Validator\LicenseValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

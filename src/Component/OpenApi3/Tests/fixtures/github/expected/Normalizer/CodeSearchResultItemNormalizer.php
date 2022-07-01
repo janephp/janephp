@@ -37,7 +37,9 @@ class CodeSearchResultItemNormalizer implements DenormalizerInterface, Normalize
         }
         $object = new \Github\Model\CodeSearchResultItem();
         $validator = new \Github\Validator\CodeSearchResultItemValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -131,7 +133,9 @@ class CodeSearchResultItemNormalizer implements DenormalizerInterface, Normalize
             $data['text_matches'] = $values_1;
         }
         $validator = new \Github\Validator\CodeSearchResultItemValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

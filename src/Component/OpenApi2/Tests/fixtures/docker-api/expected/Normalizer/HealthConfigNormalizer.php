@@ -37,7 +37,9 @@ class HealthConfigNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         $object = new \Docker\Api\Model\HealthConfig();
         $validator = new \Docker\Api\Validator\HealthConfigValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -88,7 +90,9 @@ class HealthConfigNormalizer implements DenormalizerInterface, NormalizerInterfa
             $data['StartPeriod'] = $object->getStartPeriod();
         }
         $validator = new \Docker\Api\Validator\HealthConfigValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

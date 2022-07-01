@@ -37,7 +37,9 @@ class GpgKeyEmailsItemNormalizer implements DenormalizerInterface, NormalizerInt
         }
         $object = new \Github\Model\GpgKeyEmailsItem();
         $validator = new \Github\Validator\GpgKeyEmailsItemValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -62,7 +64,9 @@ class GpgKeyEmailsItemNormalizer implements DenormalizerInterface, NormalizerInt
             $data['verified'] = $object->getVerified();
         }
         $validator = new \Github\Validator\GpgKeyEmailsItemValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

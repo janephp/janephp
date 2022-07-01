@@ -37,7 +37,9 @@ class ImageMetadataNormalizer implements DenormalizerInterface, NormalizerInterf
         }
         $object = new \Docker\Api\Model\ImageMetadata();
         $validator = new \Docker\Api\Validator\ImageMetadataValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -56,7 +58,9 @@ class ImageMetadataNormalizer implements DenormalizerInterface, NormalizerInterf
             $data['LastTagTime'] = $object->getLastTagTime();
         }
         $validator = new \Docker\Api\Validator\ImageMetadataValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

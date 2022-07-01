@@ -37,7 +37,9 @@ class RepositoryTemplateRepositoryNormalizer implements DenormalizerInterface, N
         }
         $object = new \Github\Model\RepositoryTemplateRepository();
         $validator = new \Github\Validator\RepositoryTemplateRepositoryValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -544,7 +546,9 @@ class RepositoryTemplateRepositoryNormalizer implements DenormalizerInterface, N
             $data['network_count'] = $object->getNetworkCount();
         }
         $validator = new \Github\Validator\RepositoryTemplateRepositoryValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

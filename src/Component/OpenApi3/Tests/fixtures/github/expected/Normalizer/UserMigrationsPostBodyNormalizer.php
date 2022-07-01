@@ -37,7 +37,9 @@ class UserMigrationsPostBodyNormalizer implements DenormalizerInterface, Normali
         }
         $object = new \Github\Model\UserMigrationsPostBody();
         $validator = new \Github\Validator\UserMigrationsPostBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -88,7 +90,9 @@ class UserMigrationsPostBodyNormalizer implements DenormalizerInterface, Normali
         }
         $data['repositories'] = $values_1;
         $validator = new \Github\Validator\UserMigrationsPostBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

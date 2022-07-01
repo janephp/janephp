@@ -37,7 +37,9 @@ class FileCommitCommitVerificationNormalizer implements DenormalizerInterface, N
         }
         $object = new \Github\Model\FileCommitCommitVerification();
         $validator = new \Github\Validator\FileCommitCommitVerificationValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -80,7 +82,9 @@ class FileCommitCommitVerificationNormalizer implements DenormalizerInterface, N
             $data['payload'] = $object->getPayload();
         }
         $validator = new \Github\Validator\FileCommitCommitVerificationValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

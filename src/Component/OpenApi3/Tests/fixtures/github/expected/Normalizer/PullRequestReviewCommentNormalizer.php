@@ -37,7 +37,9 @@ class PullRequestReviewCommentNormalizer implements DenormalizerInterface, Norma
         }
         $object = new \Github\Model\PullRequestReviewComment();
         $validator = new \Github\Validator\PullRequestReviewCommentValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -197,7 +199,9 @@ class PullRequestReviewCommentNormalizer implements DenormalizerInterface, Norma
             $data['body_text'] = $object->getBodyText();
         }
         $validator = new \Github\Validator\PullRequestReviewCommentValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

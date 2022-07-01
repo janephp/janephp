@@ -37,7 +37,9 @@ class SwarmInitPostBodyNormalizer implements DenormalizerInterface, NormalizerIn
         }
         $object = new \Docker\Api\Model\SwarmInitPostBody();
         $validator = new \Docker\Api\Validator\SwarmInitPostBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -106,7 +108,9 @@ class SwarmInitPostBodyNormalizer implements DenormalizerInterface, NormalizerIn
             $data['Spec'] = $this->normalizer->normalize($object->getSpec(), 'json', $context);
         }
         $validator = new \Docker\Api\Validator\SwarmInitPostBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

@@ -37,7 +37,9 @@ class ServiceSpecRollbackConfigNormalizer implements DenormalizerInterface, Norm
         }
         $object = new \Docker\Api\Model\ServiceSpecRollbackConfig();
         $validator = new \Docker\Api\Validator\ServiceSpecRollbackConfigValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -86,7 +88,9 @@ class ServiceSpecRollbackConfigNormalizer implements DenormalizerInterface, Norm
             $data['Order'] = $object->getOrder();
         }
         $validator = new \Docker\Api\Validator\ServiceSpecRollbackConfigValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

@@ -37,7 +37,9 @@ class ReposOwnerRepoGitCommitsPostBodyAuthorNormalizer implements DenormalizerIn
         }
         $object = new \Github\Model\ReposOwnerRepoGitCommitsPostBodyAuthor();
         $validator = new \Github\Validator\ReposOwnerRepoGitCommitsPostBodyAuthorValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -68,7 +70,9 @@ class ReposOwnerRepoGitCommitsPostBodyAuthorNormalizer implements DenormalizerIn
             $data['date'] = $object->getDate();
         }
         $validator = new \Github\Validator\ReposOwnerRepoGitCommitsPostBodyAuthorValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

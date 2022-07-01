@@ -37,7 +37,9 @@ class CommitFilesItemNormalizer implements DenormalizerInterface, NormalizerInte
         }
         $object = new \Github\Model\CommitFilesItem();
         $validator = new \Github\Validator\CommitFilesItemValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -116,7 +118,9 @@ class CommitFilesItemNormalizer implements DenormalizerInterface, NormalizerInte
             $data['previous_filename'] = $object->getPreviousFilename();
         }
         $validator = new \Github\Validator\CommitFilesItemValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

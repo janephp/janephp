@@ -37,7 +37,9 @@ class TaskNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         }
         $object = new \Docker\Api\Model\Task();
         $validator = new \Docker\Api\Validator\TaskValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -150,7 +152,9 @@ class TaskNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             $data['JobIteration'] = $this->normalizer->normalize($object->getJobIteration(), 'json', $context);
         }
         $validator = new \Docker\Api\Validator\TaskValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

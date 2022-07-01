@@ -37,7 +37,9 @@ class MountNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         }
         $object = new \Docker\Api\Model\Mount();
         $validator = new \Docker\Api\Validator\MountValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -98,7 +100,9 @@ class MountNormalizer implements DenormalizerInterface, NormalizerInterface, Den
             $data['TmpfsOptions'] = $this->normalizer->normalize($object->getTmpfsOptions(), 'json', $context);
         }
         $validator = new \Docker\Api\Validator\MountValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

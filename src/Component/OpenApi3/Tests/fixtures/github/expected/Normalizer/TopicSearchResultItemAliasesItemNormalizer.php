@@ -37,7 +37,9 @@ class TopicSearchResultItemAliasesItemNormalizer implements DenormalizerInterfac
         }
         $object = new \Github\Model\TopicSearchResultItemAliasesItem();
         $validator = new \Github\Validator\TopicSearchResultItemAliasesItemValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -56,7 +58,9 @@ class TopicSearchResultItemAliasesItemNormalizer implements DenormalizerInterfac
             $data['topic_relation'] = $this->normalizer->normalize($object->getTopicRelation(), 'json', $context);
         }
         $validator = new \Github\Validator\TopicSearchResultItemAliasesItemValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

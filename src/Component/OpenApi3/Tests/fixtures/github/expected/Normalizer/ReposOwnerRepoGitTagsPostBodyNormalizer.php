@@ -37,7 +37,9 @@ class ReposOwnerRepoGitTagsPostBodyNormalizer implements DenormalizerInterface, 
         }
         $object = new \Github\Model\ReposOwnerRepoGitTagsPostBody();
         $validator = new \Github\Validator\ReposOwnerRepoGitTagsPostBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -72,7 +74,9 @@ class ReposOwnerRepoGitTagsPostBodyNormalizer implements DenormalizerInterface, 
             $data['tagger'] = $this->normalizer->normalize($object->getTagger(), 'json', $context);
         }
         $validator = new \Github\Validator\ReposOwnerRepoGitTagsPostBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

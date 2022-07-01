@@ -37,7 +37,9 @@ class MountBindOptionsNormalizer implements DenormalizerInterface, NormalizerInt
         }
         $object = new \Docker\Api\Model\MountBindOptions();
         $validator = new \Docker\Api\Validator\MountBindOptionsValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -62,7 +64,9 @@ class MountBindOptionsNormalizer implements DenormalizerInterface, NormalizerInt
             $data['NonRecursive'] = $object->getNonRecursive();
         }
         $validator = new \Docker\Api\Validator\MountBindOptionsValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

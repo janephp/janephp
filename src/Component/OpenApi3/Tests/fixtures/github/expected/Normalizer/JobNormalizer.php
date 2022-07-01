@@ -37,7 +37,9 @@ class JobNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
         }
         $object = new \Github\Model\Job();
         $validator = new \Github\Validator\JobValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -125,7 +127,9 @@ class JobNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
         }
         $data['check_run_url'] = $object->getCheckRunUrl();
         $validator = new \Github\Validator\JobValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

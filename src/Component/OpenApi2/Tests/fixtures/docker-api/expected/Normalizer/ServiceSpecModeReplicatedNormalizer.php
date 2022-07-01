@@ -37,7 +37,9 @@ class ServiceSpecModeReplicatedNormalizer implements DenormalizerInterface, Norm
         }
         $object = new \Docker\Api\Model\ServiceSpecModeReplicated();
         $validator = new \Docker\Api\Validator\ServiceSpecModeReplicatedValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -56,7 +58,9 @@ class ServiceSpecModeReplicatedNormalizer implements DenormalizerInterface, Norm
             $data['Replicas'] = $object->getReplicas();
         }
         $validator = new \Docker\Api\Validator\ServiceSpecModeReplicatedValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

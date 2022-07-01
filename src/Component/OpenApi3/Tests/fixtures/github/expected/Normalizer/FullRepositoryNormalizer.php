@@ -37,7 +37,9 @@ class FullRepositoryNormalizer implements DenormalizerInterface, NormalizerInter
         }
         $object = new \Github\Model\FullRepository();
         $validator = new \Github\Validator\FullRepositoryValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -475,7 +477,9 @@ class FullRepositoryNormalizer implements DenormalizerInterface, NormalizerInter
             $data['anonymous_access_enabled'] = $object->getAnonymousAccessEnabled();
         }
         $validator = new \Github\Validator\FullRepositoryValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

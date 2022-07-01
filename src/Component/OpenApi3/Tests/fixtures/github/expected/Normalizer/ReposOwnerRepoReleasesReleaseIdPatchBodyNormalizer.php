@@ -37,7 +37,9 @@ class ReposOwnerRepoReleasesReleaseIdPatchBodyNormalizer implements Denormalizer
         }
         $object = new \Github\Model\ReposOwnerRepoReleasesReleaseIdPatchBody();
         $validator = new \Github\Validator\ReposOwnerRepoReleasesReleaseIdPatchBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -86,7 +88,9 @@ class ReposOwnerRepoReleasesReleaseIdPatchBodyNormalizer implements Denormalizer
             $data['prerelease'] = $object->getPrerelease();
         }
         $validator = new \Github\Validator\ReposOwnerRepoReleasesReleaseIdPatchBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

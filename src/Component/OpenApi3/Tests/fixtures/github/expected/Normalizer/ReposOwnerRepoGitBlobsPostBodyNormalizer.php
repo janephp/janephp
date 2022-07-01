@@ -37,7 +37,9 @@ class ReposOwnerRepoGitBlobsPostBodyNormalizer implements DenormalizerInterface,
         }
         $object = new \Github\Model\ReposOwnerRepoGitBlobsPostBody();
         $validator = new \Github\Validator\ReposOwnerRepoGitBlobsPostBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -60,7 +62,9 @@ class ReposOwnerRepoGitBlobsPostBodyNormalizer implements DenormalizerInterface,
             $data['encoding'] = $object->getEncoding();
         }
         $validator = new \Github\Validator\ReposOwnerRepoGitBlobsPostBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

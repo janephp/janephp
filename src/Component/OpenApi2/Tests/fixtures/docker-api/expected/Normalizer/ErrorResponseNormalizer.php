@@ -37,7 +37,9 @@ class ErrorResponseNormalizer implements DenormalizerInterface, NormalizerInterf
         }
         $object = new \Docker\Api\Model\ErrorResponse();
         $validator = new \Docker\Api\Validator\ErrorResponseValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -54,7 +56,9 @@ class ErrorResponseNormalizer implements DenormalizerInterface, NormalizerInterf
         $data = array();
         $data['message'] = $object->getMessage();
         $validator = new \Docker\Api\Validator\ErrorResponseValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

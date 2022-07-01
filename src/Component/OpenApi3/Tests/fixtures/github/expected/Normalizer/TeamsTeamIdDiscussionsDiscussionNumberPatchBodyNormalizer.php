@@ -37,7 +37,9 @@ class TeamsTeamIdDiscussionsDiscussionNumberPatchBodyNormalizer implements Denor
         }
         $object = new \Github\Model\TeamsTeamIdDiscussionsDiscussionNumberPatchBody();
         $validator = new \Github\Validator\TeamsTeamIdDiscussionsDiscussionNumberPatchBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -62,7 +64,9 @@ class TeamsTeamIdDiscussionsDiscussionNumberPatchBodyNormalizer implements Denor
             $data['body'] = $object->getBody();
         }
         $validator = new \Github\Validator\TeamsTeamIdDiscussionsDiscussionNumberPatchBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

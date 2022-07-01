@@ -37,7 +37,9 @@ class ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBodyNormalizer im
         }
         $object = new \Github\Model\ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBody();
         $validator = new \Github\Validator\ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -54,7 +56,9 @@ class ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBodyNormalizer im
         $data = array();
         $data['body'] = $object->getBody();
         $validator = new \Github\Validator\ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

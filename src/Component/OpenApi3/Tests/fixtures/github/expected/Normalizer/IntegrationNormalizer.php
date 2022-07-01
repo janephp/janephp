@@ -37,7 +37,9 @@ class IntegrationNormalizer implements DenormalizerInterface, NormalizerInterfac
         }
         $object = new \Github\Model\Integration();
         $validator = new \Github\Validator\IntegrationValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -171,7 +173,9 @@ class IntegrationNormalizer implements DenormalizerInterface, NormalizerInterfac
             }
         }
         $validator = new \Github\Validator\IntegrationValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

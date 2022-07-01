@@ -37,7 +37,9 @@ class NodeSpecNormalizer implements DenormalizerInterface, NormalizerInterface, 
         }
         $object = new \Docker\Api\Model\NodeSpec();
         $validator = new \Docker\Api\Validator\NodeSpecValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -82,7 +84,9 @@ class NodeSpecNormalizer implements DenormalizerInterface, NormalizerInterface, 
             $data['Availability'] = $object->getAvailability();
         }
         $validator = new \Docker\Api\Validator\NodeSpecValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

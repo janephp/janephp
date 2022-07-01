@@ -37,7 +37,9 @@ class CommitSearchResultItemCommitTreeNormalizer implements DenormalizerInterfac
         }
         $object = new \Github\Model\CommitSearchResultItemCommitTree();
         $validator = new \Github\Validator\CommitSearchResultItemCommitTreeValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -58,7 +60,9 @@ class CommitSearchResultItemCommitTreeNormalizer implements DenormalizerInterfac
         $data['sha'] = $object->getSha();
         $data['url'] = $object->getUrl();
         $validator = new \Github\Validator\CommitSearchResultItemCommitTreeValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

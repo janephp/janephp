@@ -37,7 +37,9 @@ class UserMarketplacePurchaseNormalizer implements DenormalizerInterface, Normal
         }
         $object = new \Github\Model\UserMarketplacePurchase();
         $validator = new \Github\Validator\UserMarketplacePurchaseValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -94,7 +96,9 @@ class UserMarketplacePurchaseNormalizer implements DenormalizerInterface, Normal
         $data['account'] = $this->normalizer->normalize($object->getAccount(), 'json', $context);
         $data['plan'] = $this->normalizer->normalize($object->getPlan(), 'json', $context);
         $validator = new \Github\Validator\UserMarketplacePurchaseValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

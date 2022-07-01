@@ -37,7 +37,9 @@ class EndpointPortConfigNormalizer implements DenormalizerInterface, NormalizerI
         }
         $object = new \Docker\Api\Model\EndpointPortConfig();
         $validator = new \Docker\Api\Validator\EndpointPortConfigValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -80,7 +82,9 @@ class EndpointPortConfigNormalizer implements DenormalizerInterface, NormalizerI
             $data['PublishMode'] = $object->getPublishMode();
         }
         $validator = new \Docker\Api\Validator\EndpointPortConfigValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

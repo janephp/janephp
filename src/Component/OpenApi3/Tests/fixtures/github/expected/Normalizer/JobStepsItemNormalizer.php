@@ -37,7 +37,9 @@ class JobStepsItemNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         $object = new \Github\Model\JobStepsItem();
         $validator = new \Github\Validator\JobStepsItemValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -87,7 +89,9 @@ class JobStepsItemNormalizer implements DenormalizerInterface, NormalizerInterfa
             $data['completed_at'] = $object->getCompletedAt()->format('Y-m-d\\TH:i:sP');
         }
         $validator = new \Github\Validator\JobStepsItemValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

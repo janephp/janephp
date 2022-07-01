@@ -37,7 +37,9 @@ class ReposOwnerRepoPatchBodyNormalizer implements DenormalizerInterface, Normal
         }
         $object = new \Github\Model\ReposOwnerRepoPatchBody();
         $validator = new \Github\Validator\ReposOwnerRepoPatchBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -140,7 +142,9 @@ class ReposOwnerRepoPatchBodyNormalizer implements DenormalizerInterface, Normal
             $data['archived'] = $object->getArchived();
         }
         $validator = new \Github\Validator\ReposOwnerRepoPatchBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

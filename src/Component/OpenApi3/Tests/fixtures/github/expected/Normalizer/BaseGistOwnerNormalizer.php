@@ -37,7 +37,9 @@ class BaseGistOwnerNormalizer implements DenormalizerInterface, NormalizerInterf
         }
         $object = new \Github\Model\BaseGistOwner();
         $validator = new \Github\Validator\BaseGistOwnerValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -131,7 +133,9 @@ class BaseGistOwnerNormalizer implements DenormalizerInterface, NormalizerInterf
             $data['starred_at'] = $object->getStarredAt();
         }
         $validator = new \Github\Validator\BaseGistOwnerValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

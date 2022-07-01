@@ -37,7 +37,9 @@ class CommunityProfileFilesPullRequestTemplateNormalizer implements Denormalizer
         }
         $object = new \Github\Model\CommunityProfileFilesPullRequestTemplate();
         $validator = new \Github\Validator\CommunityProfileFilesPullRequestTemplateValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -58,7 +60,9 @@ class CommunityProfileFilesPullRequestTemplateNormalizer implements Denormalizer
         $data['url'] = $object->getUrl();
         $data['html_url'] = $object->getHtmlUrl();
         $validator = new \Github\Validator\CommunityProfileFilesPullRequestTemplateValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

@@ -37,7 +37,9 @@ class TagCommitNormalizer implements DenormalizerInterface, NormalizerInterface,
         }
         $object = new \Github\Model\TagCommit();
         $validator = new \Github\Validator\TagCommitValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -58,7 +60,9 @@ class TagCommitNormalizer implements DenormalizerInterface, NormalizerInterface,
         $data['sha'] = $object->getSha();
         $data['url'] = $object->getUrl();
         $validator = new \Github\Validator\TagCommitValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

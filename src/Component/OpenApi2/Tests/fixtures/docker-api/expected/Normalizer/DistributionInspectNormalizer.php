@@ -37,7 +37,9 @@ class DistributionInspectNormalizer implements DenormalizerInterface, Normalizer
         }
         $object = new \Docker\Api\Model\DistributionInspect();
         $validator = new \Docker\Api\Validator\DistributionInspectValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -66,7 +68,9 @@ class DistributionInspectNormalizer implements DenormalizerInterface, Normalizer
         }
         $data['Platforms'] = $values;
         $validator = new \Docker\Api\Validator\DistributionInspectValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

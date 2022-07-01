@@ -37,7 +37,9 @@ class ProtectedBranchNormalizer implements DenormalizerInterface, NormalizerInte
         }
         $object = new \Github\Model\ProtectedBranch();
         $validator = new \Github\Validator\ProtectedBranchValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -102,7 +104,9 @@ class ProtectedBranchNormalizer implements DenormalizerInterface, NormalizerInte
             $data['restrictions'] = $this->normalizer->normalize($object->getRestrictions(), 'json', $context);
         }
         $validator = new \Github\Validator\ProtectedBranchValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

@@ -37,7 +37,9 @@ class ReposOwnerRepoNotificationsPutBodyNormalizer implements DenormalizerInterf
         }
         $object = new \Github\Model\ReposOwnerRepoNotificationsPutBody();
         $validator = new \Github\Validator\ReposOwnerRepoNotificationsPutBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -56,7 +58,9 @@ class ReposOwnerRepoNotificationsPutBodyNormalizer implements DenormalizerInterf
             $data['last_read_at'] = $object->getLastReadAt();
         }
         $validator = new \Github\Validator\ReposOwnerRepoNotificationsPutBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

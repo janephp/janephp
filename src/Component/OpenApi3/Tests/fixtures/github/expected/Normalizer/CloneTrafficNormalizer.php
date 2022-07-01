@@ -37,7 +37,9 @@ class CloneTrafficNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         $object = new \Github\Model\CloneTraffic();
         $validator = new \Github\Validator\CloneTrafficValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -70,7 +72,9 @@ class CloneTrafficNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         $data['clones'] = $values;
         $validator = new \Github\Validator\CloneTrafficValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

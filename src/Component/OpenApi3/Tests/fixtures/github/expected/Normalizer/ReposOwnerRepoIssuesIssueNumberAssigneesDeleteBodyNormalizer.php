@@ -37,7 +37,9 @@ class ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBodyNormalizer implements De
         }
         $object = new \Github\Model\ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBody();
         $validator = new \Github\Validator\ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -64,7 +66,9 @@ class ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBodyNormalizer implements De
             $data['assignees'] = $values;
         }
         $validator = new \Github\Validator\ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

@@ -37,7 +37,9 @@ class PullRequestSimpleLinksNormalizer implements DenormalizerInterface, Normali
         }
         $object = new \Github\Model\PullRequestSimpleLinks();
         $validator = new \Github\Validator\PullRequestSimpleLinksValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -82,7 +84,9 @@ class PullRequestSimpleLinksNormalizer implements DenormalizerInterface, Normali
         $data['review_comment'] = $this->normalizer->normalize($object->getReviewComment(), 'json', $context);
         $data['self'] = $this->normalizer->normalize($object->getSelf(), 'json', $context);
         $validator = new \Github\Validator\PullRequestSimpleLinksValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

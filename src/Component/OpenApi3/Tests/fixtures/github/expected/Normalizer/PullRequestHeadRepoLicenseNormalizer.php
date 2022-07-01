@@ -37,7 +37,9 @@ class PullRequestHeadRepoLicenseNormalizer implements DenormalizerInterface, Nor
         }
         $object = new \Github\Model\PullRequestHeadRepoLicense();
         $validator = new \Github\Validator\PullRequestHeadRepoLicenseValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -76,7 +78,9 @@ class PullRequestHeadRepoLicenseNormalizer implements DenormalizerInterface, Nor
         $data['spdx_id'] = $object->getSpdxId();
         $data['node_id'] = $object->getNodeId();
         $validator = new \Github\Validator\PullRequestHeadRepoLicenseValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

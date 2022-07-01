@@ -37,7 +37,9 @@ class AppManifestsCodeConversionsPostResponse201Normalizer implements Denormaliz
         }
         $object = new \Github\Model\AppManifestsCodeConversionsPostResponse201();
         $validator = new \Github\Validator\AppManifestsCodeConversionsPostResponse201Validator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -136,7 +138,9 @@ class AppManifestsCodeConversionsPostResponse201Normalizer implements Denormaliz
         $data['webhook_secret'] = $object->getWebhookSecret();
         $data['pem'] = $object->getPem();
         $validator = new \Github\Validator\AppManifestsCodeConversionsPostResponse201Validator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

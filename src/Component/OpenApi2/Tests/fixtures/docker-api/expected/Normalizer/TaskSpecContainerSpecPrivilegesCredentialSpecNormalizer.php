@@ -37,7 +37,9 @@ class TaskSpecContainerSpecPrivilegesCredentialSpecNormalizer implements Denorma
         }
         $object = new \Docker\Api\Model\TaskSpecContainerSpecPrivilegesCredentialSpec();
         $validator = new \Docker\Api\Validator\TaskSpecContainerSpecPrivilegesCredentialSpecValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -68,7 +70,9 @@ class TaskSpecContainerSpecPrivilegesCredentialSpecNormalizer implements Denorma
             $data['Registry'] = $object->getRegistry();
         }
         $validator = new \Docker\Api\Validator\TaskSpecContainerSpecPrivilegesCredentialSpecValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

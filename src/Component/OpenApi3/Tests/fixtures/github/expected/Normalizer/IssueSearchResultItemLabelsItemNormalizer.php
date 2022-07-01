@@ -37,7 +37,9 @@ class IssueSearchResultItemLabelsItemNormalizer implements DenormalizerInterface
         }
         $object = new \Github\Model\IssueSearchResultItemLabelsItem();
         $validator = new \Github\Validator\IssueSearchResultItemLabelsItemValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -95,7 +97,9 @@ class IssueSearchResultItemLabelsItemNormalizer implements DenormalizerInterface
             $data['description'] = $object->getDescription();
         }
         $validator = new \Github\Validator\IssueSearchResultItemLabelsItemValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

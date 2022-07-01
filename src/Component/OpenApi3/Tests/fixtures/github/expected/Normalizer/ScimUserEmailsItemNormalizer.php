@@ -37,7 +37,9 @@ class ScimUserEmailsItemNormalizer implements DenormalizerInterface, NormalizerI
         }
         $object = new \Github\Model\ScimUserEmailsItem();
         $validator = new \Github\Validator\ScimUserEmailsItemValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -60,7 +62,9 @@ class ScimUserEmailsItemNormalizer implements DenormalizerInterface, NormalizerI
             $data['primary'] = $object->getPrimary();
         }
         $validator = new \Github\Validator\ScimUserEmailsItemValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

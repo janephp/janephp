@@ -37,7 +37,9 @@ class SystemVersionNormalizer implements DenormalizerInterface, NormalizerInterf
         }
         $object = new \Docker\Api\Model\SystemVersion();
         $validator = new \Docker\Api\Validator\SystemVersionValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -130,7 +132,9 @@ class SystemVersionNormalizer implements DenormalizerInterface, NormalizerInterf
             $data['BuildTime'] = $object->getBuildTime();
         }
         $validator = new \Docker\Api\Validator\SystemVersionValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

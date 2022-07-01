@@ -37,7 +37,9 @@ class BranchRestrictionPolicyTeamsItemNormalizer implements DenormalizerInterfac
         }
         $object = new \Github\Model\BranchRestrictionPolicyTeamsItem();
         $validator = new \Github\Validator\BranchRestrictionPolicyTeamsItemValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -128,7 +130,9 @@ class BranchRestrictionPolicyTeamsItemNormalizer implements DenormalizerInterfac
             $data['parent'] = $object->getParent();
         }
         $validator = new \Github\Validator\BranchRestrictionPolicyTeamsItemValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

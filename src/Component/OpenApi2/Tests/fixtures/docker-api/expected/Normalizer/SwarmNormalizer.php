@@ -37,7 +37,9 @@ class SwarmNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         }
         $object = new \Docker\Api\Model\Swarm();
         $validator = new \Docker\Api\Validator\SwarmValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -124,7 +126,9 @@ class SwarmNormalizer implements DenormalizerInterface, NormalizerInterface, Den
             $data['JoinTokens'] = $this->normalizer->normalize($object->getJoinTokens(), 'json', $context);
         }
         $validator = new \Docker\Api\Validator\SwarmValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

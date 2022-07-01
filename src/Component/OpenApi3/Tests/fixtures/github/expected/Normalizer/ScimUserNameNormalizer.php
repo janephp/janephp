@@ -37,7 +37,9 @@ class ScimUserNameNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         $object = new \Github\Model\ScimUserName();
         $validator = new \Github\Validator\ScimUserNameValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -64,7 +66,9 @@ class ScimUserNameNormalizer implements DenormalizerInterface, NormalizerInterfa
         $data['givenName'] = $object->getGivenName();
         $data['familyName'] = $object->getFamilyName();
         $validator = new \Github\Validator\ScimUserNameValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

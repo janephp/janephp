@@ -37,7 +37,9 @@ class AuthenticationTokenNormalizer implements DenormalizerInterface, Normalizer
         }
         $object = new \Github\Model\AuthenticationToken();
         $validator = new \Github\Validator\AuthenticationTokenValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -93,7 +95,9 @@ class AuthenticationTokenNormalizer implements DenormalizerInterface, Normalizer
             $data['repository_selection'] = $object->getRepositorySelection();
         }
         $validator = new \Github\Validator\AuthenticationTokenValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

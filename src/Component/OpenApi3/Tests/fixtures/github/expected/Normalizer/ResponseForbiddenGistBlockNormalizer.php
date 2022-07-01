@@ -37,7 +37,9 @@ class ResponseForbiddenGistBlockNormalizer implements DenormalizerInterface, Nor
         }
         $object = new \Github\Model\ResponseForbiddenGistBlock();
         $validator = new \Github\Validator\ResponseForbiddenGistBlockValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -71,7 +73,9 @@ class ResponseForbiddenGistBlockNormalizer implements DenormalizerInterface, Nor
             $data['html_url'] = $object->getHtmlUrl();
         }
         $validator = new \Github\Validator\ResponseForbiddenGistBlockValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

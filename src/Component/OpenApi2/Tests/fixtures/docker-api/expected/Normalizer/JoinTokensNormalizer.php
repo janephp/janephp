@@ -37,7 +37,9 @@ class JoinTokensNormalizer implements DenormalizerInterface, NormalizerInterface
         }
         $object = new \Docker\Api\Model\JoinTokens();
         $validator = new \Docker\Api\Validator\JoinTokensValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -62,7 +64,9 @@ class JoinTokensNormalizer implements DenormalizerInterface, NormalizerInterface
             $data['Manager'] = $object->getManager();
         }
         $validator = new \Docker\Api\Validator\JoinTokensValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

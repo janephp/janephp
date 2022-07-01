@@ -37,7 +37,9 @@ class ServiceEndpointNormalizer implements DenormalizerInterface, NormalizerInte
         }
         $object = new \Docker\Api\Model\ServiceEndpoint();
         $validator = new \Docker\Api\Validator\ServiceEndpointValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -84,7 +86,9 @@ class ServiceEndpointNormalizer implements DenormalizerInterface, NormalizerInte
             $data['VirtualIPs'] = $values_1;
         }
         $validator = new \Docker\Api\Validator\ServiceEndpointValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

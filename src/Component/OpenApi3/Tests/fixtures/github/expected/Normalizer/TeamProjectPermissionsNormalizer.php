@@ -37,7 +37,9 @@ class TeamProjectPermissionsNormalizer implements DenormalizerInterface, Normali
         }
         $object = new \Github\Model\TeamProjectPermissions();
         $validator = new \Github\Validator\TeamProjectPermissionsValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -68,7 +70,9 @@ class TeamProjectPermissionsNormalizer implements DenormalizerInterface, Normali
             $data['admin'] = $object->getAdmin();
         }
         $validator = new \Github\Validator\TeamProjectPermissionsValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

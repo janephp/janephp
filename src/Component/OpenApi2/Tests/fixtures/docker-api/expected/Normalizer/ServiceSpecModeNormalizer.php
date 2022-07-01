@@ -37,7 +37,9 @@ class ServiceSpecModeNormalizer implements DenormalizerInterface, NormalizerInte
         }
         $object = new \Docker\Api\Model\ServiceSpecMode();
         $validator = new \Docker\Api\Validator\ServiceSpecModeValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -74,7 +76,9 @@ class ServiceSpecModeNormalizer implements DenormalizerInterface, NormalizerInte
             $data['GlobalJob'] = $object->getGlobalJob();
         }
         $validator = new \Docker\Api\Validator\ServiceSpecModeValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

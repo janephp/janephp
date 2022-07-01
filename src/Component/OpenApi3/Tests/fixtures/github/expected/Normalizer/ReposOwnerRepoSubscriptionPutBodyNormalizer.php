@@ -37,7 +37,9 @@ class ReposOwnerRepoSubscriptionPutBodyNormalizer implements DenormalizerInterfa
         }
         $object = new \Github\Model\ReposOwnerRepoSubscriptionPutBody();
         $validator = new \Github\Validator\ReposOwnerRepoSubscriptionPutBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -62,7 +64,9 @@ class ReposOwnerRepoSubscriptionPutBodyNormalizer implements DenormalizerInterfa
             $data['ignored'] = $object->getIgnored();
         }
         $validator = new \Github\Validator\ReposOwnerRepoSubscriptionPutBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

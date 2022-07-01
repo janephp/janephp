@@ -37,7 +37,9 @@ class TeamRepositoryNormalizer implements DenormalizerInterface, NormalizerInter
         }
         $object = new \Github\Model\TeamRepository();
         $validator = new \Github\Validator\TeamRepositoryValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -458,7 +460,9 @@ class TeamRepositoryNormalizer implements DenormalizerInterface, NormalizerInter
             $data['master_branch'] = $object->getMasterBranch();
         }
         $validator = new \Github\Validator\TeamRepositoryValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

@@ -37,7 +37,9 @@ class OrgMembershipPermissionsNormalizer implements DenormalizerInterface, Norma
         }
         $object = new \Github\Model\OrgMembershipPermissions();
         $validator = new \Github\Validator\OrgMembershipPermissionsValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -54,7 +56,9 @@ class OrgMembershipPermissionsNormalizer implements DenormalizerInterface, Norma
         $data = array();
         $data['can_create_repository'] = $object->getCanCreateRepository();
         $validator = new \Github\Validator\OrgMembershipPermissionsValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

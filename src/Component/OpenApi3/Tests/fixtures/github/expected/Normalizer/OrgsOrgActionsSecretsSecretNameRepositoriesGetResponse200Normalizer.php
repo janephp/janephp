@@ -37,7 +37,9 @@ class OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200Normalizer implem
         }
         $object = new \Github\Model\OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200();
         $validator = new \Github\Validator\OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200Validator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -70,7 +72,9 @@ class OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200Normalizer implem
             $data['repositories'] = $values;
         }
         $validator = new \Github\Validator\OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200Validator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

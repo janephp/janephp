@@ -37,7 +37,9 @@ class ReposOwnerRepoContentsPathDeleteBodyCommitterNormalizer implements Denorma
         }
         $object = new \Github\Model\ReposOwnerRepoContentsPathDeleteBodyCommitter();
         $validator = new \Github\Validator\ReposOwnerRepoContentsPathDeleteBodyCommitterValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -62,7 +64,9 @@ class ReposOwnerRepoContentsPathDeleteBodyCommitterNormalizer implements Denorma
             $data['email'] = $object->getEmail();
         }
         $validator = new \Github\Validator\ReposOwnerRepoContentsPathDeleteBodyCommitterValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

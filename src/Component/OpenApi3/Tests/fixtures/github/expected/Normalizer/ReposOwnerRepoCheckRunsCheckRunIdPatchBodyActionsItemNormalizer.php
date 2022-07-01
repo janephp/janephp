@@ -37,7 +37,9 @@ class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyActionsItemNormalizer implements
         }
         $object = new \Github\Model\ReposOwnerRepoCheckRunsCheckRunIdPatchBodyActionsItem();
         $validator = new \Github\Validator\ReposOwnerRepoCheckRunsCheckRunIdPatchBodyActionsItemValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -62,7 +64,9 @@ class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyActionsItemNormalizer implements
         $data['description'] = $object->getDescription();
         $data['identifier'] = $object->getIdentifier();
         $validator = new \Github\Validator\ReposOwnerRepoCheckRunsCheckRunIdPatchBodyActionsItemValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

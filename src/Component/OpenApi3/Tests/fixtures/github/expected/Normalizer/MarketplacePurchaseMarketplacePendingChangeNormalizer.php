@@ -37,7 +37,9 @@ class MarketplacePurchaseMarketplacePendingChangeNormalizer implements Denormali
         }
         $object = new \Github\Model\MarketplacePurchaseMarketplacePendingChange();
         $validator = new \Github\Validator\MarketplacePurchaseMarketplacePendingChangeValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -83,7 +85,9 @@ class MarketplacePurchaseMarketplacePendingChangeNormalizer implements Denormali
             $data['plan'] = $this->normalizer->normalize($object->getPlan(), 'json', $context);
         }
         $validator = new \Github\Validator\MarketplacePurchaseMarketplacePendingChangeValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

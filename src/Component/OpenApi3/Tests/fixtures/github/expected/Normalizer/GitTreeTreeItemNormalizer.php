@@ -37,7 +37,9 @@ class GitTreeTreeItemNormalizer implements DenormalizerInterface, NormalizerInte
         }
         $object = new \Github\Model\GitTreeTreeItem();
         $validator = new \Github\Validator\GitTreeTreeItemValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -86,7 +88,9 @@ class GitTreeTreeItemNormalizer implements DenormalizerInterface, NormalizerInte
             $data['url'] = $object->getUrl();
         }
         $validator = new \Github\Validator\GitTreeTreeItemValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

@@ -37,7 +37,9 @@ class MarketplaceListingPlanNormalizer implements DenormalizerInterface, Normali
         }
         $object = new \Github\Model\MarketplaceListingPlan();
         $validator = new \Github\Validator\MarketplaceListingPlanValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -113,7 +115,9 @@ class MarketplaceListingPlanNormalizer implements DenormalizerInterface, Normali
         }
         $data['bullets'] = $values;
         $validator = new \Github\Validator\MarketplaceListingPlanValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

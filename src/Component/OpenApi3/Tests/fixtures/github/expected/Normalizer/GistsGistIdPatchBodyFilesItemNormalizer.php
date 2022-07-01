@@ -37,7 +37,9 @@ class GistsGistIdPatchBodyFilesItemNormalizer implements DenormalizerInterface, 
         }
         $object = new \Github\Model\GistsGistIdPatchBodyFilesItem();
         $validator = new \Github\Validator\GistsGistIdPatchBodyFilesItemValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -65,7 +67,9 @@ class GistsGistIdPatchBodyFilesItemNormalizer implements DenormalizerInterface, 
             $data['filename'] = $object->getFilename();
         }
         $validator = new \Github\Validator\GistsGistIdPatchBodyFilesItemValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

@@ -37,7 +37,9 @@ class TaskSpecContainerSpecPrivilegesNormalizer implements DenormalizerInterface
         }
         $object = new \Docker\Api\Model\TaskSpecContainerSpecPrivileges();
         $validator = new \Docker\Api\Validator\TaskSpecContainerSpecPrivilegesValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -62,7 +64,9 @@ class TaskSpecContainerSpecPrivilegesNormalizer implements DenormalizerInterface
             $data['SELinuxContext'] = $this->normalizer->normalize($object->getSELinuxContext(), 'json', $context);
         }
         $validator = new \Docker\Api\Validator\TaskSpecContainerSpecPrivilegesValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

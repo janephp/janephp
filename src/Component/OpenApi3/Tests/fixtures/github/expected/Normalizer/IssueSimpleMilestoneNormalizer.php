@@ -37,7 +37,9 @@ class IssueSimpleMilestoneNormalizer implements DenormalizerInterface, Normalize
         }
         $object = new \Github\Model\IssueSimpleMilestone();
         $validator = new \Github\Validator\IssueSimpleMilestoneValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -126,7 +128,9 @@ class IssueSimpleMilestoneNormalizer implements DenormalizerInterface, Normalize
         $data['closed_at'] = $object->getClosedAt()->format('Y-m-d\\TH:i:sP');
         $data['due_on'] = $object->getDueOn()->format('Y-m-d\\TH:i:sP');
         $validator = new \Github\Validator\IssueSimpleMilestoneValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

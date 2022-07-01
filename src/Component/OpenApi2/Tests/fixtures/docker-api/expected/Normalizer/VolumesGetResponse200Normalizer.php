@@ -37,7 +37,9 @@ class VolumesGetResponse200Normalizer implements DenormalizerInterface, Normaliz
         }
         $object = new \Docker\Api\Model\VolumesGetResponse200();
         $validator = new \Docker\Api\Validator\VolumesGetResponse200Validator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -74,7 +76,9 @@ class VolumesGetResponse200Normalizer implements DenormalizerInterface, Normaliz
         }
         $data['Warnings'] = $values_1;
         $validator = new \Docker\Api\Validator\VolumesGetResponse200Validator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

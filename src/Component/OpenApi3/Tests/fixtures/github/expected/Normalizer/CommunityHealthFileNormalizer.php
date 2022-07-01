@@ -37,7 +37,9 @@ class CommunityHealthFileNormalizer implements DenormalizerInterface, Normalizer
         }
         $object = new \Github\Model\CommunityHealthFile();
         $validator = new \Github\Validator\CommunityHealthFileValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -58,7 +60,9 @@ class CommunityHealthFileNormalizer implements DenormalizerInterface, Normalizer
         $data['url'] = $object->getUrl();
         $data['html_url'] = $object->getHtmlUrl();
         $validator = new \Github\Validator\CommunityHealthFileValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

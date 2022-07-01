@@ -37,7 +37,9 @@ class CombinedCommitStatusNormalizer implements DenormalizerInterface, Normalize
         }
         $object = new \Github\Model\CombinedCommitStatus();
         $validator = new \Github\Validator\CombinedCommitStatusValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -86,7 +88,9 @@ class CombinedCommitStatusNormalizer implements DenormalizerInterface, Normalize
         $data['commit_url'] = $object->getCommitUrl();
         $data['url'] = $object->getUrl();
         $validator = new \Github\Validator\CombinedCommitStatusValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

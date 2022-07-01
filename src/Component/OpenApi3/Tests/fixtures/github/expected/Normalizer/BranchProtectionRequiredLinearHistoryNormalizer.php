@@ -37,7 +37,9 @@ class BranchProtectionRequiredLinearHistoryNormalizer implements DenormalizerInt
         }
         $object = new \Github\Model\BranchProtectionRequiredLinearHistory();
         $validator = new \Github\Validator\BranchProtectionRequiredLinearHistoryValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -56,7 +58,9 @@ class BranchProtectionRequiredLinearHistoryNormalizer implements DenormalizerInt
             $data['enabled'] = $object->getEnabled();
         }
         $validator = new \Github\Validator\BranchProtectionRequiredLinearHistoryValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

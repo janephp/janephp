@@ -37,7 +37,9 @@ class CommitSearchResultItemNormalizer implements DenormalizerInterface, Normali
         }
         $object = new \Github\Model\CommitSearchResultItem();
         $validator = new \Github\Validator\CommitSearchResultItemValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -122,7 +124,9 @@ class CommitSearchResultItemNormalizer implements DenormalizerInterface, Normali
             $data['text_matches'] = $values_1;
         }
         $validator = new \Github\Validator\CommitSearchResultItemValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

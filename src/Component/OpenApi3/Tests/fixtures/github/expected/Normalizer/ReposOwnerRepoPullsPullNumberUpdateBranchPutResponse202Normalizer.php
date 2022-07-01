@@ -37,7 +37,9 @@ class ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202Normalizer implemen
         }
         $object = new \Github\Model\ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202();
         $validator = new \Github\Validator\ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202Validator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -62,7 +64,9 @@ class ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202Normalizer implemen
             $data['url'] = $object->getUrl();
         }
         $validator = new \Github\Validator\ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202Validator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

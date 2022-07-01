@@ -150,7 +150,9 @@ trait NormalizerGenerator
 
             $validatorVariable = new Expr\Variable('validator');
             $statements[] = new Stmt\Expression(new Expr\Assign($validatorVariable, new Expr\New_(new Name('\\' . $validatorFqdn))));
-            $statements[] = new Stmt\Expression(new Expr\MethodCall($validatorVariable, 'validate', [new Arg($dataVariable)]));
+            $statements[] = new Stmt\If_(new Expr\BooleanNot(new Expr\BinaryOp\Coalesce(new Expr\ArrayDimFetch($dataVariable, new Scalar\String_('skip_validation')), new Expr\ConstFetch(new Name('false')))), [
+                'stmts' => [new Stmt\Expression(new Expr\MethodCall($validatorVariable, 'validate', [new Arg($dataVariable)]))],
+            ]);
         }
 
         $statements[] = new Stmt\Return_($dataVariable);

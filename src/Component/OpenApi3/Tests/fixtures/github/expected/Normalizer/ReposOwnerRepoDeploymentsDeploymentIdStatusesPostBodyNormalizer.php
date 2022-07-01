@@ -37,7 +37,9 @@ class ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBodyNormalizer implements
         }
         $object = new \Github\Model\ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBody();
         $validator = new \Github\Validator\ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -90,7 +92,9 @@ class ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBodyNormalizer implements
             $data['auto_inactive'] = $object->getAutoInactive();
         }
         $validator = new \Github\Validator\ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

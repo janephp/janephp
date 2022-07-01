@@ -37,7 +37,9 @@ class ContainersIdChangesGetResponse200ItemNormalizer implements DenormalizerInt
         }
         $object = new \Docker\Api\Model\ContainersIdChangesGetResponse200Item();
         $validator = new \Docker\Api\Validator\ContainersIdChangesGetResponse200ItemValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -58,7 +60,9 @@ class ContainersIdChangesGetResponse200ItemNormalizer implements DenormalizerInt
         $data['Path'] = $object->getPath();
         $data['Kind'] = $object->getKind();
         $validator = new \Docker\Api\Validator\ContainersIdChangesGetResponse200ItemValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

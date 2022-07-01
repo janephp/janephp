@@ -37,7 +37,9 @@ class CommitCommitTreeNormalizer implements DenormalizerInterface, NormalizerInt
         }
         $object = new \Github\Model\CommitCommitTree();
         $validator = new \Github\Validator\CommitCommitTreeValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -58,7 +60,9 @@ class CommitCommitTreeNormalizer implements DenormalizerInterface, NormalizerInt
         $data['sha'] = $object->getSha();
         $data['url'] = $object->getUrl();
         $validator = new \Github\Validator\CommitCommitTreeValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

@@ -37,7 +37,9 @@ class SearchRepositoriesGetResponse200Normalizer implements DenormalizerInterfac
         }
         $object = new \Github\Model\SearchRepositoriesGetResponse200();
         $validator = new \Github\Validator\SearchRepositoriesGetResponse200Validator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -76,7 +78,9 @@ class SearchRepositoriesGetResponse200Normalizer implements DenormalizerInterfac
             $data['items'] = $values;
         }
         $validator = new \Github\Validator\SearchRepositoriesGetResponse200Validator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

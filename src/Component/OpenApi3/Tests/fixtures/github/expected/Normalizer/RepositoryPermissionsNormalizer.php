@@ -37,7 +37,9 @@ class RepositoryPermissionsNormalizer implements DenormalizerInterface, Normaliz
         }
         $object = new \Github\Model\RepositoryPermissions();
         $validator = new \Github\Validator\RepositoryPermissionsValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -74,7 +76,9 @@ class RepositoryPermissionsNormalizer implements DenormalizerInterface, Normaliz
             $data['maintain'] = $object->getMaintain();
         }
         $validator = new \Github\Validator\RepositoryPermissionsValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

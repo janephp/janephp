@@ -37,7 +37,9 @@ class ContainersIdArchiveGetResponse400Normalizer implements DenormalizerInterfa
         }
         $object = new \Docker\Api\Model\ContainersIdArchiveGetResponse400();
         $validator = new \Docker\Api\Validator\ContainersIdArchiveGetResponse400Validator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -56,7 +58,9 @@ class ContainersIdArchiveGetResponse400Normalizer implements DenormalizerInterfa
             $data['message'] = $object->getMessage();
         }
         $validator = new \Docker\Api\Validator\ContainersIdArchiveGetResponse400Validator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

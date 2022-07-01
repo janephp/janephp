@@ -37,7 +37,9 @@ class ServiceSpecNormalizer implements DenormalizerInterface, NormalizerInterfac
         }
         $object = new \Docker\Api\Model\ServiceSpec();
         $validator = new \Docker\Api\Validator\ServiceSpecValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -114,7 +116,9 @@ class ServiceSpecNormalizer implements DenormalizerInterface, NormalizerInterfac
             $data['EndpointSpec'] = $this->normalizer->normalize($object->getEndpointSpec(), 'json', $context);
         }
         $validator = new \Docker\Api\Validator\ServiceSpecValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

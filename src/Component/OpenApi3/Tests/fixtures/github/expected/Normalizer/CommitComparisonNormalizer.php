@@ -37,7 +37,9 @@ class CommitComparisonNormalizer implements DenormalizerInterface, NormalizerInt
         }
         $object = new \Github\Model\CommitComparison();
         $validator = new \Github\Validator\CommitComparisonValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -118,7 +120,9 @@ class CommitComparisonNormalizer implements DenormalizerInterface, NormalizerInt
         }
         $data['files'] = $values_1;
         $validator = new \Github\Validator\CommitComparisonValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

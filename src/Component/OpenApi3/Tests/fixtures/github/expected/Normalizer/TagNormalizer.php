@@ -37,7 +37,9 @@ class TagNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
         }
         $object = new \Github\Model\Tag();
         $validator = new \Github\Validator\TagValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -70,7 +72,9 @@ class TagNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
         $data['tarball_url'] = $object->getTarballUrl();
         $data['node_id'] = $object->getNodeId();
         $validator = new \Github\Validator\TagValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

@@ -37,7 +37,9 @@ class SearchResultTextMatchesItemNormalizer implements DenormalizerInterface, No
         }
         $object = new \Github\Model\SearchResultTextMatchesItem();
         $validator = new \Github\Validator\SearchResultTextMatchesItemValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -91,7 +93,9 @@ class SearchResultTextMatchesItemNormalizer implements DenormalizerInterface, No
             $data['matches'] = $values;
         }
         $validator = new \Github\Validator\SearchResultTextMatchesItemValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

@@ -37,7 +37,9 @@ class CollaboratorNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         $object = new \Github\Model\Collaborator();
         $validator = new \Github\Validator\CollaboratorValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -131,7 +133,9 @@ class CollaboratorNormalizer implements DenormalizerInterface, NormalizerInterfa
             $data['permissions'] = $this->normalizer->normalize($object->getPermissions(), 'json', $context);
         }
         $validator = new \Github\Validator\CollaboratorValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

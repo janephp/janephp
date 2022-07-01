@@ -37,7 +37,9 @@ class CommunityProfileFilesCodeOfConductNormalizer implements DenormalizerInterf
         }
         $object = new \Github\Model\CommunityProfileFilesCodeOfConduct();
         $validator = new \Github\Validator\CommunityProfileFilesCodeOfConductValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -69,7 +71,9 @@ class CommunityProfileFilesCodeOfConductNormalizer implements DenormalizerInterf
         $data['name'] = $object->getName();
         $data['html_url'] = $object->getHtmlUrl();
         $validator = new \Github\Validator\CommunityProfileFilesCodeOfConductValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

@@ -37,7 +37,9 @@ class DeploymentPerformedViaGithubAppNormalizer implements DenormalizerInterface
         }
         $object = new \Github\Model\DeploymentPerformedViaGithubApp();
         $validator = new \Github\Validator\DeploymentPerformedViaGithubAppValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -144,7 +146,9 @@ class DeploymentPerformedViaGithubAppNormalizer implements DenormalizerInterface
             $data['pem'] = $object->getPem();
         }
         $validator = new \Github\Validator\DeploymentPerformedViaGithubAppValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

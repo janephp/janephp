@@ -37,7 +37,9 @@ class ActionsSecretNormalizer implements DenormalizerInterface, NormalizerInterf
         }
         $object = new \Github\Model\ActionsSecret();
         $validator = new \Github\Validator\ActionsSecretValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -62,7 +64,9 @@ class ActionsSecretNormalizer implements DenormalizerInterface, NormalizerInterf
         $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
         $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
         $validator = new \Github\Validator\ActionsSecretValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

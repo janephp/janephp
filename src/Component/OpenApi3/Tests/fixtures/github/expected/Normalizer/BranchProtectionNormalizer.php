@@ -37,7 +37,9 @@ class BranchProtectionNormalizer implements DenormalizerInterface, NormalizerInt
         }
         $object = new \Github\Model\BranchProtection();
         $validator = new \Github\Validator\BranchProtectionValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -112,7 +114,9 @@ class BranchProtectionNormalizer implements DenormalizerInterface, NormalizerInt
             $data['protection_url'] = $object->getProtectionUrl();
         }
         $validator = new \Github\Validator\BranchProtectionValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

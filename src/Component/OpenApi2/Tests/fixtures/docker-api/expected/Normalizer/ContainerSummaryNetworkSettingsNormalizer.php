@@ -37,7 +37,9 @@ class ContainerSummaryNetworkSettingsNormalizer implements DenormalizerInterface
         }
         $object = new \Docker\Api\Model\ContainerSummaryNetworkSettings();
         $validator = new \Docker\Api\Validator\ContainerSummaryNetworkSettingsValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -64,7 +66,9 @@ class ContainerSummaryNetworkSettingsNormalizer implements DenormalizerInterface
             $data['Networks'] = $values;
         }
         $validator = new \Docker\Api\Validator\ContainerSummaryNetworkSettingsValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

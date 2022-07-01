@@ -37,7 +37,9 @@ class RateLimitOverviewResourcesNormalizer implements DenormalizerInterface, Nor
         }
         $object = new \Github\Model\RateLimitOverviewResources();
         $validator = new \Github\Validator\RateLimitOverviewResourcesValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -76,7 +78,9 @@ class RateLimitOverviewResourcesNormalizer implements DenormalizerInterface, Nor
             $data['integration_manifest'] = $this->normalizer->normalize($object->getIntegrationManifest(), 'json', $context);
         }
         $validator = new \Github\Validator\RateLimitOverviewResourcesValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

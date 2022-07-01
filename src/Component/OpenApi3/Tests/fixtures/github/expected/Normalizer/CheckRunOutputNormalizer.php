@@ -37,7 +37,9 @@ class CheckRunOutputNormalizer implements DenormalizerInterface, NormalizerInter
         }
         $object = new \Github\Model\CheckRunOutput();
         $validator = new \Github\Validator\CheckRunOutputValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -79,7 +81,9 @@ class CheckRunOutputNormalizer implements DenormalizerInterface, NormalizerInter
         $data['annotations_count'] = $object->getAnnotationsCount();
         $data['annotations_url'] = $object->getAnnotationsUrl();
         $validator = new \Github\Validator\CheckRunOutputValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

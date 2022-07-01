@@ -37,7 +37,9 @@ class SearchLabelsGetResponse200Normalizer implements DenormalizerInterface, Nor
         }
         $object = new \Github\Model\SearchLabelsGetResponse200();
         $validator = new \Github\Validator\SearchLabelsGetResponse200Validator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -76,7 +78,9 @@ class SearchLabelsGetResponse200Normalizer implements DenormalizerInterface, Nor
             $data['items'] = $values;
         }
         $validator = new \Github\Validator\SearchLabelsGetResponse200Validator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

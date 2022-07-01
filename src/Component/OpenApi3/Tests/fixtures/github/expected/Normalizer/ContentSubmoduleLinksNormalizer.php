@@ -37,7 +37,9 @@ class ContentSubmoduleLinksNormalizer implements DenormalizerInterface, Normaliz
         }
         $object = new \Github\Model\ContentSubmoduleLinks();
         $validator = new \Github\Validator\ContentSubmoduleLinksValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -68,7 +70,9 @@ class ContentSubmoduleLinksNormalizer implements DenormalizerInterface, Normaliz
         $data['html'] = $object->getHtml();
         $data['self'] = $object->getSelf();
         $validator = new \Github\Validator\ContentSubmoduleLinksValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

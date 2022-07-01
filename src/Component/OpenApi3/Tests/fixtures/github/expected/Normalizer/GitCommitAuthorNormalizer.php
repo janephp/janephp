@@ -37,7 +37,9 @@ class GitCommitAuthorNormalizer implements DenormalizerInterface, NormalizerInte
         }
         $object = new \Github\Model\GitCommitAuthor();
         $validator = new \Github\Validator\GitCommitAuthorValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -64,7 +66,9 @@ class GitCommitAuthorNormalizer implements DenormalizerInterface, NormalizerInte
         $data['email'] = $object->getEmail();
         $data['name'] = $object->getName();
         $validator = new \Github\Validator\GitCommitAuthorValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

@@ -37,7 +37,9 @@ class IssueSearchResultItemNormalizer implements DenormalizerInterface, Normaliz
         }
         $object = new \Github\Model\IssueSearchResultItem();
         $validator = new \Github\Validator\IssueSearchResultItemValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -249,7 +251,9 @@ class IssueSearchResultItemNormalizer implements DenormalizerInterface, Normaliz
             $data['performed_via_github_app'] = $this->normalizer->normalize($object->getPerformedViaGithubApp(), 'json', $context);
         }
         $validator = new \Github\Validator\IssueSearchResultItemValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

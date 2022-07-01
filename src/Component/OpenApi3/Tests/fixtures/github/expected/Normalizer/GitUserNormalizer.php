@@ -37,7 +37,9 @@ class GitUserNormalizer implements DenormalizerInterface, NormalizerInterface, D
         }
         $object = new \Github\Model\GitUser();
         $validator = new \Github\Validator\GitUserValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -68,7 +70,9 @@ class GitUserNormalizer implements DenormalizerInterface, NormalizerInterface, D
             $data['date'] = $object->getDate();
         }
         $validator = new \Github\Validator\GitUserValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

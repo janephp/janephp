@@ -37,7 +37,9 @@ class CommitCommentNormalizer implements DenormalizerInterface, NormalizerInterf
         }
         $object = new \Github\Model\CommitComment();
         $validator = new \Github\Validator\CommitCommentValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -120,7 +122,9 @@ class CommitCommentNormalizer implements DenormalizerInterface, NormalizerInterf
             $data['reactions'] = $this->normalizer->normalize($object->getReactions(), 'json', $context);
         }
         $validator = new \Github\Validator\CommitCommentValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

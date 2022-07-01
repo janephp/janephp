@@ -37,7 +37,9 @@ class SwarmSpecOrchestrationNormalizer implements DenormalizerInterface, Normali
         }
         $object = new \Docker\Api\Model\SwarmSpecOrchestration();
         $validator = new \Docker\Api\Validator\SwarmSpecOrchestrationValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -56,7 +58,9 @@ class SwarmSpecOrchestrationNormalizer implements DenormalizerInterface, Normali
             $data['TaskHistoryRetentionLimit'] = $object->getTaskHistoryRetentionLimit();
         }
         $validator = new \Docker\Api\Validator\SwarmSpecOrchestrationValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

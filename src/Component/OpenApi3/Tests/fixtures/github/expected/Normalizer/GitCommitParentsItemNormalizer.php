@@ -37,7 +37,9 @@ class GitCommitParentsItemNormalizer implements DenormalizerInterface, Normalize
         }
         $object = new \Github\Model\GitCommitParentsItem();
         $validator = new \Github\Validator\GitCommitParentsItemValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -68,7 +70,9 @@ class GitCommitParentsItemNormalizer implements DenormalizerInterface, Normalize
             $data['html_url'] = $object->getHtmlUrl();
         }
         $validator = new \Github\Validator\GitCommitParentsItemValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

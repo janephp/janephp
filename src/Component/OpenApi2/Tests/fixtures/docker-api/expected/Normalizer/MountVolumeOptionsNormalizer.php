@@ -37,7 +37,9 @@ class MountVolumeOptionsNormalizer implements DenormalizerInterface, NormalizerI
         }
         $object = new \Docker\Api\Model\MountVolumeOptions();
         $validator = new \Docker\Api\Validator\MountVolumeOptionsValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -76,7 +78,9 @@ class MountVolumeOptionsNormalizer implements DenormalizerInterface, NormalizerI
             $data['DriverConfig'] = $this->normalizer->normalize($object->getDriverConfig(), 'json', $context);
         }
         $validator = new \Docker\Api\Validator\MountVolumeOptionsValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

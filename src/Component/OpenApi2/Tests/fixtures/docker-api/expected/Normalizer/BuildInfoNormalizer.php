@@ -37,7 +37,9 @@ class BuildInfoNormalizer implements DenormalizerInterface, NormalizerInterface,
         }
         $object = new \Docker\Api\Model\BuildInfo();
         $validator = new \Docker\Api\Validator\BuildInfoValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -98,7 +100,9 @@ class BuildInfoNormalizer implements DenormalizerInterface, NormalizerInterface,
             $data['aux'] = $this->normalizer->normalize($object->getAux(), 'json', $context);
         }
         $validator = new \Docker\Api\Validator\BuildInfoValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

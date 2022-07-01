@@ -37,7 +37,9 @@ class GistSimpleFilesItemNormalizer implements DenormalizerInterface, Normalizer
         }
         $object = new \Github\Model\GistSimpleFilesItem();
         $validator = new \Github\Validator\GistSimpleFilesItemValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -92,7 +94,9 @@ class GistSimpleFilesItemNormalizer implements DenormalizerInterface, Normalizer
             $data['content'] = $object->getContent();
         }
         $validator = new \Github\Validator\GistSimpleFilesItemValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

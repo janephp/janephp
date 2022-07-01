@@ -37,7 +37,9 @@ class PublicUserPlanNormalizer implements DenormalizerInterface, NormalizerInter
         }
         $object = new \Github\Model\PublicUserPlan();
         $validator = new \Github\Validator\PublicUserPlanValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -66,7 +68,9 @@ class PublicUserPlanNormalizer implements DenormalizerInterface, NormalizerInter
         $data['space'] = $object->getSpace();
         $data['private_repos'] = $object->getPrivateRepos();
         $validator = new \Github\Validator\PublicUserPlanValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

@@ -37,7 +37,9 @@ class CommitSearchResultItemCommitAuthorNormalizer implements DenormalizerInterf
         }
         $object = new \Github\Model\CommitSearchResultItemCommitAuthor();
         $validator = new \Github\Validator\CommitSearchResultItemCommitAuthorValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -62,7 +64,9 @@ class CommitSearchResultItemCommitAuthorNormalizer implements DenormalizerInterf
         $data['email'] = $object->getEmail();
         $data['date'] = $object->getDate()->format('Y-m-d\\TH:i:sP');
         $validator = new \Github\Validator\CommitSearchResultItemCommitAuthorValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

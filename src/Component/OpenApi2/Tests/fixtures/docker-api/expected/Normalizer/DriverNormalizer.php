@@ -37,7 +37,9 @@ class DriverNormalizer implements DenormalizerInterface, NormalizerInterface, De
         }
         $object = new \Docker\Api\Model\Driver();
         $validator = new \Docker\Api\Validator\DriverValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -68,7 +70,9 @@ class DriverNormalizer implements DenormalizerInterface, NormalizerInterface, De
             $data['Options'] = $values;
         }
         $validator = new \Docker\Api\Validator\DriverValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

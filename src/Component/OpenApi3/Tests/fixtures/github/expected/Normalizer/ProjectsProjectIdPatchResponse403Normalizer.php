@@ -37,7 +37,9 @@ class ProjectsProjectIdPatchResponse403Normalizer implements DenormalizerInterfa
         }
         $object = new \Github\Model\ProjectsProjectIdPatchResponse403();
         $validator = new \Github\Validator\ProjectsProjectIdPatchResponse403Validator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -76,7 +78,9 @@ class ProjectsProjectIdPatchResponse403Normalizer implements DenormalizerInterfa
             $data['errors'] = $values;
         }
         $validator = new \Github\Validator\ProjectsProjectIdPatchResponse403Validator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

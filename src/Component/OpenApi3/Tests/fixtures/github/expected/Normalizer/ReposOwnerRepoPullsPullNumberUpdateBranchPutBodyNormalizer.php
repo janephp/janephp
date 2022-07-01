@@ -37,7 +37,9 @@ class ReposOwnerRepoPullsPullNumberUpdateBranchPutBodyNormalizer implements Deno
         }
         $object = new \Github\Model\ReposOwnerRepoPullsPullNumberUpdateBranchPutBody();
         $validator = new \Github\Validator\ReposOwnerRepoPullsPullNumberUpdateBranchPutBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -56,7 +58,9 @@ class ReposOwnerRepoPullsPullNumberUpdateBranchPutBodyNormalizer implements Deno
             $data['expected_head_sha'] = $object->getExpectedHeadSha();
         }
         $validator = new \Github\Validator\ReposOwnerRepoPullsPullNumberUpdateBranchPutBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

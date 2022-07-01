@@ -37,7 +37,9 @@ class GistCommentNormalizer implements DenormalizerInterface, NormalizerInterfac
         }
         $object = new \Github\Model\GistComment();
         $validator = new \Github\Validator\GistCommentValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -85,7 +87,9 @@ class GistCommentNormalizer implements DenormalizerInterface, NormalizerInterfac
         $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
         $data['author_association'] = $object->getAuthorAssociation();
         $validator = new \Github\Validator\GistCommentValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

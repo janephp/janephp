@@ -37,7 +37,9 @@ class ParticipationStatsNormalizer implements DenormalizerInterface, NormalizerI
         }
         $object = new \Github\Model\ParticipationStats();
         $validator = new \Github\Validator\ParticipationStatsValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -78,7 +80,9 @@ class ParticipationStatsNormalizer implements DenormalizerInterface, NormalizerI
             $data['owner'] = $values_1;
         }
         $validator = new \Github\Validator\ParticipationStatsValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

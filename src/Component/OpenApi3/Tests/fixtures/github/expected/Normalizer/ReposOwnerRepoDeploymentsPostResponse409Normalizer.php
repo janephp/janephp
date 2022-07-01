@@ -37,7 +37,9 @@ class ReposOwnerRepoDeploymentsPostResponse409Normalizer implements Denormalizer
         }
         $object = new \Github\Model\ReposOwnerRepoDeploymentsPostResponse409();
         $validator = new \Github\Validator\ReposOwnerRepoDeploymentsPostResponse409Validator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -62,7 +64,9 @@ class ReposOwnerRepoDeploymentsPostResponse409Normalizer implements Denormalizer
             $data['documentation_url'] = $object->getDocumentationUrl();
         }
         $validator = new \Github\Validator\ReposOwnerRepoDeploymentsPostResponse409Validator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

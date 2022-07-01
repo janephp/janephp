@@ -37,7 +37,9 @@ class OrgHookNormalizer implements DenormalizerInterface, NormalizerInterface, D
         }
         $object = new \Github\Model\OrgHook();
         $validator = new \Github\Validator\OrgHookValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -98,7 +100,9 @@ class OrgHookNormalizer implements DenormalizerInterface, NormalizerInterface, D
         $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
         $data['type'] = $object->getType();
         $validator = new \Github\Validator\OrgHookValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

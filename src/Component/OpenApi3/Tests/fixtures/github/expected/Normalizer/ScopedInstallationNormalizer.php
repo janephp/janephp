@@ -37,7 +37,9 @@ class ScopedInstallationNormalizer implements DenormalizerInterface, NormalizerI
         }
         $object = new \Github\Model\ScopedInstallation();
         $validator = new \Github\Validator\ScopedInstallationValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -76,7 +78,9 @@ class ScopedInstallationNormalizer implements DenormalizerInterface, NormalizerI
         $data['repositories_url'] = $object->getRepositoriesUrl();
         $data['account'] = $this->normalizer->normalize($object->getAccount(), 'json', $context);
         $validator = new \Github\Validator\ScopedInstallationValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

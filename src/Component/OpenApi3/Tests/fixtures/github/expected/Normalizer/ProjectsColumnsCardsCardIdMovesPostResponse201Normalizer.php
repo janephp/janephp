@@ -37,7 +37,9 @@ class ProjectsColumnsCardsCardIdMovesPostResponse201Normalizer implements Denorm
         }
         $object = new \Github\Model\ProjectsColumnsCardsCardIdMovesPostResponse201();
         $validator = new \Github\Validator\ProjectsColumnsCardsCardIdMovesPostResponse201Validator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -50,7 +52,9 @@ class ProjectsColumnsCardsCardIdMovesPostResponse201Normalizer implements Denorm
     {
         $data = array();
         $validator = new \Github\Validator\ProjectsColumnsCardsCardIdMovesPostResponse201Validator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

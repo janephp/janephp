@@ -37,7 +37,9 @@ class FullRepositoryTemplateRepositoryNormalizer implements DenormalizerInterfac
         }
         $object = new \Github\Model\FullRepositoryTemplateRepository();
         $validator = new \Github\Validator\FullRepositoryTemplateRepositoryValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -464,7 +466,9 @@ class FullRepositoryTemplateRepositoryNormalizer implements DenormalizerInterfac
             $data['starred_at'] = $object->getStarredAt();
         }
         $validator = new \Github\Validator\FullRepositoryTemplateRepositoryValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

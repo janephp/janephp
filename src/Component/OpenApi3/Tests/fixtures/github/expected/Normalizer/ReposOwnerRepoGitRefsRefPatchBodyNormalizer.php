@@ -37,7 +37,9 @@ class ReposOwnerRepoGitRefsRefPatchBodyNormalizer implements DenormalizerInterfa
         }
         $object = new \Github\Model\ReposOwnerRepoGitRefsRefPatchBody();
         $validator = new \Github\Validator\ReposOwnerRepoGitRefsRefPatchBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -60,7 +62,9 @@ class ReposOwnerRepoGitRefsRefPatchBodyNormalizer implements DenormalizerInterfa
             $data['force'] = $object->getForce();
         }
         $validator = new \Github\Validator\ReposOwnerRepoGitRefsRefPatchBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

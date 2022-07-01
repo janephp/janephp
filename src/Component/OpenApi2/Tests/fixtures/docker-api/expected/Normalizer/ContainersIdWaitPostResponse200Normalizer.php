@@ -37,7 +37,9 @@ class ContainersIdWaitPostResponse200Normalizer implements DenormalizerInterface
         }
         $object = new \Docker\Api\Model\ContainersIdWaitPostResponse200();
         $validator = new \Docker\Api\Validator\ContainersIdWaitPostResponse200Validator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -60,7 +62,9 @@ class ContainersIdWaitPostResponse200Normalizer implements DenormalizerInterface
             $data['Error'] = $this->normalizer->normalize($object->getError(), 'json', $context);
         }
         $validator = new \Docker\Api\Validator\ContainersIdWaitPostResponse200Validator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

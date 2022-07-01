@@ -37,7 +37,9 @@ class ReposOwnerRepoCommentsCommentIdReactionsPostBodyNormalizer implements Deno
         }
         $object = new \Github\Model\ReposOwnerRepoCommentsCommentIdReactionsPostBody();
         $validator = new \Github\Validator\ReposOwnerRepoCommentsCommentIdReactionsPostBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -54,7 +56,9 @@ class ReposOwnerRepoCommentsCommentIdReactionsPostBodyNormalizer implements Deno
         $data = array();
         $data['content'] = $object->getContent();
         $validator = new \Github\Validator\ReposOwnerRepoCommentsCommentIdReactionsPostBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

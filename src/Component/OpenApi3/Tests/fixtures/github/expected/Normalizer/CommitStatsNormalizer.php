@@ -37,7 +37,9 @@ class CommitStatsNormalizer implements DenormalizerInterface, NormalizerInterfac
         }
         $object = new \Github\Model\CommitStats();
         $validator = new \Github\Validator\CommitStatsValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -68,7 +70,9 @@ class CommitStatsNormalizer implements DenormalizerInterface, NormalizerInterfac
             $data['total'] = $object->getTotal();
         }
         $validator = new \Github\Validator\CommitStatsValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

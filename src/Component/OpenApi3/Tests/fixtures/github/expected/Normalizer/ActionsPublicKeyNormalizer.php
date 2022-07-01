@@ -37,7 +37,9 @@ class ActionsPublicKeyNormalizer implements DenormalizerInterface, NormalizerInt
         }
         $object = new \Github\Model\ActionsPublicKey();
         $validator = new \Github\Validator\ActionsPublicKeyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -82,7 +84,9 @@ class ActionsPublicKeyNormalizer implements DenormalizerInterface, NormalizerInt
             $data['created_at'] = $object->getCreatedAt();
         }
         $validator = new \Github\Validator\ActionsPublicKeyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

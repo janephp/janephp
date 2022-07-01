@@ -37,7 +37,9 @@ class InstallationNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         $object = new \Github\Model\Installation();
         $validator = new \Github\Validator\InstallationValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -151,7 +153,9 @@ class InstallationNormalizer implements DenormalizerInterface, NormalizerInterfa
             $data['contact_email'] = $object->getContactEmail();
         }
         $validator = new \Github\Validator\InstallationValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

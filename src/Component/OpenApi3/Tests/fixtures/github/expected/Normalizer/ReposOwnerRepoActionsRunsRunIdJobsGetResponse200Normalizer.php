@@ -37,7 +37,9 @@ class ReposOwnerRepoActionsRunsRunIdJobsGetResponse200Normalizer implements Deno
         }
         $object = new \Github\Model\ReposOwnerRepoActionsRunsRunIdJobsGetResponse200();
         $validator = new \Github\Validator\ReposOwnerRepoActionsRunsRunIdJobsGetResponse200Validator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -70,7 +72,9 @@ class ReposOwnerRepoActionsRunsRunIdJobsGetResponse200Normalizer implements Deno
             $data['jobs'] = $values;
         }
         $validator = new \Github\Validator\ReposOwnerRepoActionsRunsRunIdJobsGetResponse200Validator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

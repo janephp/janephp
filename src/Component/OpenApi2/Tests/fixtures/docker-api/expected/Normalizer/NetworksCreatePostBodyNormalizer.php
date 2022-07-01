@@ -37,7 +37,9 @@ class NetworksCreatePostBodyNormalizer implements DenormalizerInterface, Normali
         }
         $object = new \Docker\Api\Model\NetworksCreatePostBody();
         $validator = new \Docker\Api\Validator\NetworksCreatePostBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -124,7 +126,9 @@ class NetworksCreatePostBodyNormalizer implements DenormalizerInterface, Normali
             $data['Labels'] = $values_1;
         }
         $validator = new \Docker\Api\Validator\NetworksCreatePostBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

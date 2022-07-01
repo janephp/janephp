@@ -37,7 +37,9 @@ class CheckRunNormalizer implements DenormalizerInterface, NormalizerInterface, 
         }
         $object = new \Github\Model\CheckRun();
         $validator = new \Github\Validator\CheckRunValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -138,7 +140,9 @@ class CheckRunNormalizer implements DenormalizerInterface, NormalizerInterface, 
         $data['app'] = $this->normalizer->normalize($object->getApp(), 'json', $context);
         $data['pull_requests'] = $object->getPullRequests();
         $validator = new \Github\Validator\CheckRunValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

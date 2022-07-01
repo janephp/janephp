@@ -37,7 +37,9 @@ class ReposOwnerRepoForksPostBodyNormalizer implements DenormalizerInterface, No
         }
         $object = new \Github\Model\ReposOwnerRepoForksPostBody();
         $validator = new \Github\Validator\ReposOwnerRepoForksPostBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -56,7 +58,9 @@ class ReposOwnerRepoForksPostBodyNormalizer implements DenormalizerInterface, No
             $data['organization'] = $object->getOrganization();
         }
         $validator = new \Github\Validator\ReposOwnerRepoForksPostBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

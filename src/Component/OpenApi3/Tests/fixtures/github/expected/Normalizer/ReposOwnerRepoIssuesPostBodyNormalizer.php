@@ -37,7 +37,9 @@ class ReposOwnerRepoIssuesPostBodyNormalizer implements DenormalizerInterface, N
         }
         $object = new \Github\Model\ReposOwnerRepoIssuesPostBody();
         $validator = new \Github\Validator\ReposOwnerRepoIssuesPostBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -106,7 +108,9 @@ class ReposOwnerRepoIssuesPostBodyNormalizer implements DenormalizerInterface, N
             $data['assignees'] = $values_1;
         }
         $validator = new \Github\Validator\ReposOwnerRepoIssuesPostBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

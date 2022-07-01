@@ -37,7 +37,9 @@ class SwarmSpecEncryptionConfigNormalizer implements DenormalizerInterface, Norm
         }
         $object = new \Docker\Api\Model\SwarmSpecEncryptionConfig();
         $validator = new \Docker\Api\Validator\SwarmSpecEncryptionConfigValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -56,7 +58,9 @@ class SwarmSpecEncryptionConfigNormalizer implements DenormalizerInterface, Norm
             $data['AutoLockManagers'] = $object->getAutoLockManagers();
         }
         $validator = new \Docker\Api\Validator\SwarmSpecEncryptionConfigValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

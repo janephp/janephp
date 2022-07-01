@@ -37,7 +37,9 @@ class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyOutputImagesItemNormalizer imple
         }
         $object = new \Github\Model\ReposOwnerRepoCheckRunsCheckRunIdPatchBodyOutputImagesItem();
         $validator = new \Github\Validator\ReposOwnerRepoCheckRunsCheckRunIdPatchBodyOutputImagesItemValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -64,7 +66,9 @@ class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyOutputImagesItemNormalizer imple
             $data['caption'] = $object->getCaption();
         }
         $validator = new \Github\Validator\ReposOwnerRepoCheckRunsCheckRunIdPatchBodyOutputImagesItemValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

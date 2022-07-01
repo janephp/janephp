@@ -37,7 +37,9 @@ class GpgKeyNormalizer implements DenormalizerInterface, NormalizerInterface, De
         }
         $object = new \Github\Model\GpgKey();
         $validator = new \Github\Validator\GpgKeyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -127,7 +129,9 @@ class GpgKeyNormalizer implements DenormalizerInterface, NormalizerInterface, De
         $data['expires_at'] = $object->getExpiresAt()->format('Y-m-d\\TH:i:sP');
         $data['raw_key'] = $object->getRawKey();
         $validator = new \Github\Validator\GpgKeyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

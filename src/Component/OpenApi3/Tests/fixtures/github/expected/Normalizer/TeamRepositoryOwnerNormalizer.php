@@ -37,7 +37,9 @@ class TeamRepositoryOwnerNormalizer implements DenormalizerInterface, Normalizer
         }
         $object = new \Github\Model\TeamRepositoryOwner();
         $validator = new \Github\Validator\TeamRepositoryOwnerValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -131,7 +133,9 @@ class TeamRepositoryOwnerNormalizer implements DenormalizerInterface, Normalizer
             $data['starred_at'] = $object->getStarredAt();
         }
         $validator = new \Github\Validator\TeamRepositoryOwnerValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

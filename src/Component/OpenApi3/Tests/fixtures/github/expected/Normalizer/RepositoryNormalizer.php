@@ -37,7 +37,9 @@ class RepositoryNormalizer implements DenormalizerInterface, NormalizerInterface
         }
         $object = new \Github\Model\Repository();
         $validator = new \Github\Validator\RepositoryValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -464,7 +466,9 @@ class RepositoryNormalizer implements DenormalizerInterface, NormalizerInterface
             $data['starred_at'] = $object->getStarredAt();
         }
         $validator = new \Github\Validator\RepositoryValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

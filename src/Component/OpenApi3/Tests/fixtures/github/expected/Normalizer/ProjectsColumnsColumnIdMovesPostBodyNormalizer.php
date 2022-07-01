@@ -37,7 +37,9 @@ class ProjectsColumnsColumnIdMovesPostBodyNormalizer implements DenormalizerInte
         }
         $object = new \Github\Model\ProjectsColumnsColumnIdMovesPostBody();
         $validator = new \Github\Validator\ProjectsColumnsColumnIdMovesPostBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -54,7 +56,9 @@ class ProjectsColumnsColumnIdMovesPostBodyNormalizer implements DenormalizerInte
         $data = array();
         $data['position'] = $object->getPosition();
         $validator = new \Github\Validator\ProjectsColumnsColumnIdMovesPostBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

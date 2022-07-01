@@ -37,7 +37,9 @@ class MinimalRepositoryOwnerNormalizer implements DenormalizerInterface, Normali
         }
         $object = new \Github\Model\MinimalRepositoryOwner();
         $validator = new \Github\Validator\MinimalRepositoryOwnerValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -131,7 +133,9 @@ class MinimalRepositoryOwnerNormalizer implements DenormalizerInterface, Normali
             $data['starred_at'] = $object->getStarredAt();
         }
         $validator = new \Github\Validator\MinimalRepositoryOwnerValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

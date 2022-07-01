@@ -37,7 +37,9 @@ class RepositoryOwnerNormalizer implements DenormalizerInterface, NormalizerInte
         }
         $object = new \Github\Model\RepositoryOwner();
         $validator = new \Github\Validator\RepositoryOwnerValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -131,7 +133,9 @@ class RepositoryOwnerNormalizer implements DenormalizerInterface, NormalizerInte
             $data['starred_at'] = $object->getStarredAt();
         }
         $validator = new \Github\Validator\RepositoryOwnerValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

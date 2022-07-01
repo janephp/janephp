@@ -37,7 +37,9 @@ class ExecIdStartPostBodyNormalizer implements DenormalizerInterface, Normalizer
         }
         $object = new \Docker\Api\Model\ExecIdStartPostBody();
         $validator = new \Docker\Api\Validator\ExecIdStartPostBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -62,7 +64,9 @@ class ExecIdStartPostBodyNormalizer implements DenormalizerInterface, Normalizer
             $data['Tty'] = $object->getTty();
         }
         $validator = new \Docker\Api\Validator\ExecIdStartPostBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

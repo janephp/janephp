@@ -37,7 +37,9 @@ class NodeStatusNormalizer implements DenormalizerInterface, NormalizerInterface
         }
         $object = new \Docker\Api\Model\NodeStatus();
         $validator = new \Docker\Api\Validator\NodeStatusValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -68,7 +70,9 @@ class NodeStatusNormalizer implements DenormalizerInterface, NormalizerInterface
             $data['Addr'] = $object->getAddr();
         }
         $validator = new \Docker\Api\Validator\NodeStatusValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

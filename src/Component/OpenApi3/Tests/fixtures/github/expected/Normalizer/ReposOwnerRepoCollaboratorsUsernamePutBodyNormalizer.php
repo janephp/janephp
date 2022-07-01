@@ -37,7 +37,9 @@ class ReposOwnerRepoCollaboratorsUsernamePutBodyNormalizer implements Denormaliz
         }
         $object = new \Github\Model\ReposOwnerRepoCollaboratorsUsernamePutBody();
         $validator = new \Github\Validator\ReposOwnerRepoCollaboratorsUsernamePutBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -62,7 +64,9 @@ class ReposOwnerRepoCollaboratorsUsernamePutBodyNormalizer implements Denormaliz
             $data['permissions'] = $object->getPermissions();
         }
         $validator = new \Github\Validator\ReposOwnerRepoCollaboratorsUsernamePutBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

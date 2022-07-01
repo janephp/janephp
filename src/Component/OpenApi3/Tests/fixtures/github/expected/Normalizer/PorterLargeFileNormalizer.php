@@ -37,7 +37,9 @@ class PorterLargeFileNormalizer implements DenormalizerInterface, NormalizerInte
         }
         $object = new \Github\Model\PorterLargeFile();
         $validator = new \Github\Validator\PorterLargeFileValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -66,7 +68,9 @@ class PorterLargeFileNormalizer implements DenormalizerInterface, NormalizerInte
         $data['oid'] = $object->getOid();
         $data['size'] = $object->getSize();
         $validator = new \Github\Validator\PorterLargeFileValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

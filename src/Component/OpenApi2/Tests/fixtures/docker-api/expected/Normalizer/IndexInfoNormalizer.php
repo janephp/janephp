@@ -37,7 +37,9 @@ class IndexInfoNormalizer implements DenormalizerInterface, NormalizerInterface,
         }
         $object = new \Docker\Api\Model\IndexInfo();
         $validator = new \Docker\Api\Validator\IndexInfoValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -82,7 +84,9 @@ class IndexInfoNormalizer implements DenormalizerInterface, NormalizerInterface,
             $data['Official'] = $object->getOfficial();
         }
         $validator = new \Docker\Api\Validator\IndexInfoValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

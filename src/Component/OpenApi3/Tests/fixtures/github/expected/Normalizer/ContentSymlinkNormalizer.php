@@ -37,7 +37,9 @@ class ContentSymlinkNormalizer implements DenormalizerInterface, NormalizerInter
         }
         $object = new \Github\Model\ContentSymlink();
         $validator = new \Github\Validator\ContentSymlinkValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -103,7 +105,9 @@ class ContentSymlinkNormalizer implements DenormalizerInterface, NormalizerInter
         $data['download_url'] = $object->getDownloadUrl();
         $data['_links'] = $this->normalizer->normalize($object->getLinks(), 'json', $context);
         $validator = new \Github\Validator\ContentSymlinkValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

@@ -37,7 +37,9 @@ class AuthorizationsClientsClientIdPutBodyNormalizer implements DenormalizerInte
         }
         $object = new \Github\Model\AuthorizationsClientsClientIdPutBody();
         $validator = new \Github\Validator\AuthorizationsClientsClientIdPutBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -89,7 +91,9 @@ class AuthorizationsClientsClientIdPutBodyNormalizer implements DenormalizerInte
             $data['fingerprint'] = $object->getFingerprint();
         }
         $validator = new \Github\Validator\AuthorizationsClientsClientIdPutBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

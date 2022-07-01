@@ -37,7 +37,9 @@ class ThreadSubjectNormalizer implements DenormalizerInterface, NormalizerInterf
         }
         $object = new \Github\Model\ThreadSubject();
         $validator = new \Github\Validator\ThreadSubjectValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -74,7 +76,9 @@ class ThreadSubjectNormalizer implements DenormalizerInterface, NormalizerInterf
             $data['type'] = $object->getType();
         }
         $validator = new \Github\Validator\ThreadSubjectValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

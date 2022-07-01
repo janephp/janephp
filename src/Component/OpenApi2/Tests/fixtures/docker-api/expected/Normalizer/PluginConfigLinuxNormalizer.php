@@ -37,7 +37,9 @@ class PluginConfigLinuxNormalizer implements DenormalizerInterface, NormalizerIn
         }
         $object = new \Docker\Api\Model\PluginConfigLinux();
         $validator = new \Docker\Api\Validator\PluginConfigLinuxValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -78,7 +80,9 @@ class PluginConfigLinuxNormalizer implements DenormalizerInterface, NormalizerIn
         }
         $data['Devices'] = $values_1;
         $validator = new \Docker\Api\Validator\PluginConfigLinuxValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

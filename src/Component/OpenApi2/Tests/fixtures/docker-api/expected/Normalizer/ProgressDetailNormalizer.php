@@ -37,7 +37,9 @@ class ProgressDetailNormalizer implements DenormalizerInterface, NormalizerInter
         }
         $object = new \Docker\Api\Model\ProgressDetail();
         $validator = new \Docker\Api\Validator\ProgressDetailValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -62,7 +64,9 @@ class ProgressDetailNormalizer implements DenormalizerInterface, NormalizerInter
             $data['total'] = $object->getTotal();
         }
         $validator = new \Docker\Api\Validator\ProgressDetailValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

@@ -37,7 +37,9 @@ class IPAMNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         }
         $object = new \Docker\Api\Model\IPAM();
         $validator = new \Docker\Api\Validator\IPAMValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -92,7 +94,9 @@ class IPAMNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             $data['Options'] = $values_2;
         }
         $validator = new \Docker\Api\Validator\IPAMValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

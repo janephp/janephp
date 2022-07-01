@@ -37,7 +37,9 @@ class InstallationSuspendedByNormalizer implements DenormalizerInterface, Normal
         }
         $object = new \Github\Model\InstallationSuspendedBy();
         $validator = new \Github\Validator\InstallationSuspendedByValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -131,7 +133,9 @@ class InstallationSuspendedByNormalizer implements DenormalizerInterface, Normal
             $data['starred_at'] = $object->getStarredAt();
         }
         $validator = new \Github\Validator\InstallationSuspendedByValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

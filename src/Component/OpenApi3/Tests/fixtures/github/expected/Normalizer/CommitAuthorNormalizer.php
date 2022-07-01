@@ -37,7 +37,9 @@ class CommitAuthorNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         $object = new \Github\Model\CommitAuthor();
         $validator = new \Github\Validator\CommitAuthorValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -131,7 +133,9 @@ class CommitAuthorNormalizer implements DenormalizerInterface, NormalizerInterfa
             $data['starred_at'] = $object->getStarredAt();
         }
         $validator = new \Github\Validator\CommitAuthorValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

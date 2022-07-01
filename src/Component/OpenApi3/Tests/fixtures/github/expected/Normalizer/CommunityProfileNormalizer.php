@@ -37,7 +37,9 @@ class CommunityProfileNormalizer implements DenormalizerInterface, NormalizerInt
         }
         $object = new \Github\Model\CommunityProfile();
         $validator = new \Github\Validator\CommunityProfileValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -79,7 +81,9 @@ class CommunityProfileNormalizer implements DenormalizerInterface, NormalizerInt
         $data['files'] = $this->normalizer->normalize($object->getFiles(), 'json', $context);
         $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
         $validator = new \Github\Validator\CommunityProfileValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

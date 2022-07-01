@@ -37,7 +37,9 @@ class TaskSpecContainerSpecPrivilegesSELinuxContextNormalizer implements Denorma
         }
         $object = new \Docker\Api\Model\TaskSpecContainerSpecPrivilegesSELinuxContext();
         $validator = new \Docker\Api\Validator\TaskSpecContainerSpecPrivilegesSELinuxContextValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -80,7 +82,9 @@ class TaskSpecContainerSpecPrivilegesSELinuxContextNormalizer implements Denorma
             $data['Level'] = $object->getLevel();
         }
         $validator = new \Docker\Api\Validator\TaskSpecContainerSpecPrivilegesSELinuxContextValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

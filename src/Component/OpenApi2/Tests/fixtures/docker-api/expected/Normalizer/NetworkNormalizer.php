@@ -37,7 +37,9 @@ class NetworkNormalizer implements DenormalizerInterface, NormalizerInterface, D
         }
         $object = new \Docker\Api\Model\Network();
         $validator = new \Docker\Api\Validator\NetworkValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -152,7 +154,9 @@ class NetworkNormalizer implements DenormalizerInterface, NormalizerInterface, D
             $data['Labels'] = $values_2;
         }
         $validator = new \Docker\Api\Validator\NetworkValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

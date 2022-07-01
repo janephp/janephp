@@ -37,7 +37,9 @@ class ApplicationsClientIdTokenPostBodyNormalizer implements DenormalizerInterfa
         }
         $object = new \Github\Model\ApplicationsClientIdTokenPostBody();
         $validator = new \Github\Validator\ApplicationsClientIdTokenPostBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -54,7 +56,9 @@ class ApplicationsClientIdTokenPostBodyNormalizer implements DenormalizerInterfa
         $data = array();
         $data['access_token'] = $object->getAccessToken();
         $validator = new \Github\Validator\ApplicationsClientIdTokenPostBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

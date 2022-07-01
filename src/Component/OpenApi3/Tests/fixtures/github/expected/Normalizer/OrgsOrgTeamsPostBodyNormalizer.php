@@ -37,7 +37,9 @@ class OrgsOrgTeamsPostBodyNormalizer implements DenormalizerInterface, Normalize
         }
         $object = new \Github\Model\OrgsOrgTeamsPostBody();
         $validator = new \Github\Validator\OrgsOrgTeamsPostBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -106,7 +108,9 @@ class OrgsOrgTeamsPostBodyNormalizer implements DenormalizerInterface, Normalize
             $data['parent_team_id'] = $object->getParentTeamId();
         }
         $validator = new \Github\Validator\OrgsOrgTeamsPostBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

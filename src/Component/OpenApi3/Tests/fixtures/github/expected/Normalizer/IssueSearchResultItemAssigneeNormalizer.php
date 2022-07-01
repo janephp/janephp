@@ -37,7 +37,9 @@ class IssueSearchResultItemAssigneeNormalizer implements DenormalizerInterface, 
         }
         $object = new \Github\Model\IssueSearchResultItemAssignee();
         $validator = new \Github\Validator\IssueSearchResultItemAssigneeValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -131,7 +133,9 @@ class IssueSearchResultItemAssigneeNormalizer implements DenormalizerInterface, 
             $data['starred_at'] = $object->getStarredAt();
         }
         $validator = new \Github\Validator\IssueSearchResultItemAssigneeValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

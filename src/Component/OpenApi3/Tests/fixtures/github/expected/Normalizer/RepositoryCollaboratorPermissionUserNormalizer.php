@@ -37,7 +37,9 @@ class RepositoryCollaboratorPermissionUserNormalizer implements DenormalizerInte
         }
         $object = new \Github\Model\RepositoryCollaboratorPermissionUser();
         $validator = new \Github\Validator\RepositoryCollaboratorPermissionUserValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -131,7 +133,9 @@ class RepositoryCollaboratorPermissionUserNormalizer implements DenormalizerInte
             $data['starred_at'] = $object->getStarredAt();
         }
         $validator = new \Github\Validator\RepositoryCollaboratorPermissionUserValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

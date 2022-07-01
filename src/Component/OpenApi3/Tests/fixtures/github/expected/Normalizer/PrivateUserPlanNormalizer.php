@@ -37,7 +37,9 @@ class PrivateUserPlanNormalizer implements DenormalizerInterface, NormalizerInte
         }
         $object = new \Github\Model\PrivateUserPlan();
         $validator = new \Github\Validator\PrivateUserPlanValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -66,7 +68,9 @@ class PrivateUserPlanNormalizer implements DenormalizerInterface, NormalizerInte
         $data['space'] = $object->getSpace();
         $data['private_repos'] = $object->getPrivateRepos();
         $validator = new \Github\Validator\PrivateUserPlanValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

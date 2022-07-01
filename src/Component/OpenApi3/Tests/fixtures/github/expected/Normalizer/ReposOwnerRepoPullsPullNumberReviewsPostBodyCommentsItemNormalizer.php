@@ -37,7 +37,9 @@ class ReposOwnerRepoPullsPullNumberReviewsPostBodyCommentsItemNormalizer impleme
         }
         $object = new \Github\Model\ReposOwnerRepoPullsPullNumberReviewsPostBodyCommentsItem();
         $validator = new \Github\Validator\ReposOwnerRepoPullsPullNumberReviewsPostBodyCommentsItemValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -88,7 +90,9 @@ class ReposOwnerRepoPullsPullNumberReviewsPostBodyCommentsItemNormalizer impleme
             $data['start_side'] = $object->getStartSide();
         }
         $validator = new \Github\Validator\ReposOwnerRepoPullsPullNumberReviewsPostBodyCommentsItemValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

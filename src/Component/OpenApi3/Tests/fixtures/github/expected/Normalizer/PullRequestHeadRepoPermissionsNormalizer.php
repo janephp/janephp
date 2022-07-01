@@ -37,7 +37,9 @@ class PullRequestHeadRepoPermissionsNormalizer implements DenormalizerInterface,
         }
         $object = new \Github\Model\PullRequestHeadRepoPermissions();
         $validator = new \Github\Validator\PullRequestHeadRepoPermissionsValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -62,7 +64,9 @@ class PullRequestHeadRepoPermissionsNormalizer implements DenormalizerInterface,
         $data['pull'] = $object->getPull();
         $data['push'] = $object->getPush();
         $validator = new \Github\Validator\PullRequestHeadRepoPermissionsValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

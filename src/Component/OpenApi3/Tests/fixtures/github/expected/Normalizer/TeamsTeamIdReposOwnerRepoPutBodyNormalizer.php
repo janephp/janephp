@@ -37,7 +37,9 @@ class TeamsTeamIdReposOwnerRepoPutBodyNormalizer implements DenormalizerInterfac
         }
         $object = new \Github\Model\TeamsTeamIdReposOwnerRepoPutBody();
         $validator = new \Github\Validator\TeamsTeamIdReposOwnerRepoPutBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -56,7 +58,9 @@ class TeamsTeamIdReposOwnerRepoPutBodyNormalizer implements DenormalizerInterfac
             $data['permission'] = $object->getPermission();
         }
         $validator = new \Github\Validator\TeamsTeamIdReposOwnerRepoPutBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

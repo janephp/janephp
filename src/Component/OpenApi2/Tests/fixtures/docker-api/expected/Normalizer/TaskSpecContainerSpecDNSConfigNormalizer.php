@@ -37,7 +37,9 @@ class TaskSpecContainerSpecDNSConfigNormalizer implements DenormalizerInterface,
         }
         $object = new \Docker\Api\Model\TaskSpecContainerSpecDNSConfig();
         $validator = new \Docker\Api\Validator\TaskSpecContainerSpecDNSConfigValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -92,7 +94,9 @@ class TaskSpecContainerSpecDNSConfigNormalizer implements DenormalizerInterface,
             $data['Options'] = $values_2;
         }
         $validator = new \Docker\Api\Validator\TaskSpecContainerSpecDNSConfigValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

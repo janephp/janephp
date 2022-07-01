@@ -37,7 +37,9 @@ class SwarmSpecTaskDefaultsLogDriverNormalizer implements DenormalizerInterface,
         }
         $object = new \Docker\Api\Model\SwarmSpecTaskDefaultsLogDriver();
         $validator = new \Docker\Api\Validator\SwarmSpecTaskDefaultsLogDriverValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -70,7 +72,9 @@ class SwarmSpecTaskDefaultsLogDriverNormalizer implements DenormalizerInterface,
             $data['Options'] = $values;
         }
         $validator = new \Docker\Api\Validator\SwarmSpecTaskDefaultsLogDriverValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

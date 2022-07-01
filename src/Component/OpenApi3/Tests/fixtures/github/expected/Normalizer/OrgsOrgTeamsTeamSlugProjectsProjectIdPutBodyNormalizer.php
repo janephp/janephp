@@ -37,7 +37,9 @@ class OrgsOrgTeamsTeamSlugProjectsProjectIdPutBodyNormalizer implements Denormal
         }
         $object = new \Github\Model\OrgsOrgTeamsTeamSlugProjectsProjectIdPutBody();
         $validator = new \Github\Validator\OrgsOrgTeamsTeamSlugProjectsProjectIdPutBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -56,7 +58,9 @@ class OrgsOrgTeamsTeamSlugProjectsProjectIdPutBodyNormalizer implements Denormal
             $data['permission'] = $object->getPermission();
         }
         $validator = new \Github\Validator\OrgsOrgTeamsTeamSlugProjectsProjectIdPutBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

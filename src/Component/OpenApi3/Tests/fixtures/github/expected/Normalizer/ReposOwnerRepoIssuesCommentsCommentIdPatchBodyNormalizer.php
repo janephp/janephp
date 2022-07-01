@@ -37,7 +37,9 @@ class ReposOwnerRepoIssuesCommentsCommentIdPatchBodyNormalizer implements Denorm
         }
         $object = new \Github\Model\ReposOwnerRepoIssuesCommentsCommentIdPatchBody();
         $validator = new \Github\Validator\ReposOwnerRepoIssuesCommentsCommentIdPatchBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -54,7 +56,9 @@ class ReposOwnerRepoIssuesCommentsCommentIdPatchBodyNormalizer implements Denorm
         $data = array();
         $data['body'] = $object->getBody();
         $validator = new \Github\Validator\ReposOwnerRepoIssuesCommentsCommentIdPatchBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

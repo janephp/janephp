@@ -37,7 +37,9 @@ class TaskSpecContainerSpecConfigsItemNormalizer implements DenormalizerInterfac
         }
         $object = new \Docker\Api\Model\TaskSpecContainerSpecConfigsItem();
         $validator = new \Docker\Api\Validator\TaskSpecContainerSpecConfigsItemValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -74,7 +76,9 @@ class TaskSpecContainerSpecConfigsItemNormalizer implements DenormalizerInterfac
             $data['ConfigName'] = $object->getConfigName();
         }
         $validator = new \Docker\Api\Validator\TaskSpecContainerSpecConfigsItemValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

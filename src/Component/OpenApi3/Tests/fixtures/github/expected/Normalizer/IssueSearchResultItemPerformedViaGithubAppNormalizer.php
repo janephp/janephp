@@ -37,7 +37,9 @@ class IssueSearchResultItemPerformedViaGithubAppNormalizer implements Denormaliz
         }
         $object = new \Github\Model\IssueSearchResultItemPerformedViaGithubApp();
         $validator = new \Github\Validator\IssueSearchResultItemPerformedViaGithubAppValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -144,7 +146,9 @@ class IssueSearchResultItemPerformedViaGithubAppNormalizer implements Denormaliz
             $data['pem'] = $object->getPem();
         }
         $validator = new \Github\Validator\IssueSearchResultItemPerformedViaGithubAppValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

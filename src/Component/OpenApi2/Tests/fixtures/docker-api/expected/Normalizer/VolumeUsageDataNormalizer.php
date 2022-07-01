@@ -37,7 +37,9 @@ class VolumeUsageDataNormalizer implements DenormalizerInterface, NormalizerInte
         }
         $object = new \Docker\Api\Model\VolumeUsageData();
         $validator = new \Docker\Api\Validator\VolumeUsageDataValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -58,7 +60,9 @@ class VolumeUsageDataNormalizer implements DenormalizerInterface, NormalizerInte
         $data['Size'] = $object->getSize();
         $data['RefCount'] = $object->getRefCount();
         $validator = new \Docker\Api\Validator\VolumeUsageDataValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

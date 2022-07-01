@@ -37,7 +37,9 @@ class UserEmailVisibilityPatchBodyNormalizer implements DenormalizerInterface, N
         }
         $object = new \Github\Model\UserEmailVisibilityPatchBody();
         $validator = new \Github\Validator\UserEmailVisibilityPatchBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -58,7 +60,9 @@ class UserEmailVisibilityPatchBodyNormalizer implements DenormalizerInterface, N
         $data['email'] = $object->getEmail();
         $data['visibility'] = $object->getVisibility();
         $validator = new \Github\Validator\UserEmailVisibilityPatchBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

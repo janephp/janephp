@@ -37,7 +37,9 @@ class DeviceRequestNormalizer implements DenormalizerInterface, NormalizerInterf
         }
         $object = new \Docker\Api\Model\DeviceRequest();
         $validator = new \Docker\Api\Validator\DeviceRequestValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -112,7 +114,9 @@ class DeviceRequestNormalizer implements DenormalizerInterface, NormalizerInterf
             $data['Options'] = $values_3;
         }
         $validator = new \Docker\Api\Validator\DeviceRequestValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

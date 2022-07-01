@@ -37,7 +37,9 @@ class OrgsOrgPatchBodyNormalizer implements DenormalizerInterface, NormalizerInt
         }
         $object = new \Github\Model\OrgsOrgPatchBody();
         $validator = new \Github\Validator\OrgsOrgPatchBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -146,7 +148,9 @@ class OrgsOrgPatchBodyNormalizer implements DenormalizerInterface, NormalizerInt
             $data['blog'] = $object->getBlog();
         }
         $validator = new \Github\Validator\OrgsOrgPatchBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

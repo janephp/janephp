@@ -37,7 +37,9 @@ class ContainerStateNormalizer implements DenormalizerInterface, NormalizerInter
         }
         $object = new \Docker\Api\Model\ContainerState();
         $validator = new \Docker\Api\Validator\ContainerStateValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -122,7 +124,9 @@ class ContainerStateNormalizer implements DenormalizerInterface, NormalizerInter
             $data['Health'] = $this->normalizer->normalize($object->getHealth(), 'json', $context);
         }
         $validator = new \Docker\Api\Validator\ContainerStateValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

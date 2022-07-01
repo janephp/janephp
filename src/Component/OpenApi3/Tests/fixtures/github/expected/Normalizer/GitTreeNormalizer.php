@@ -37,7 +37,9 @@ class GitTreeNormalizer implements DenormalizerInterface, NormalizerInterface, D
         }
         $object = new \Github\Model\GitTree();
         $validator = new \Github\Validator\GitTreeValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -74,7 +76,9 @@ class GitTreeNormalizer implements DenormalizerInterface, NormalizerInterface, D
         }
         $data['tree'] = $values;
         $validator = new \Github\Validator\GitTreeValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

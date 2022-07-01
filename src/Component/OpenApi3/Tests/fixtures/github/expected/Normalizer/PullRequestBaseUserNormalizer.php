@@ -37,7 +37,9 @@ class PullRequestBaseUserNormalizer implements DenormalizerInterface, Normalizer
         }
         $object = new \Github\Model\PullRequestBaseUser();
         $validator = new \Github\Validator\PullRequestBaseUserValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -125,7 +127,9 @@ class PullRequestBaseUserNormalizer implements DenormalizerInterface, Normalizer
         $data['type'] = $object->getType();
         $data['url'] = $object->getUrl();
         $validator = new \Github\Validator\PullRequestBaseUserValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

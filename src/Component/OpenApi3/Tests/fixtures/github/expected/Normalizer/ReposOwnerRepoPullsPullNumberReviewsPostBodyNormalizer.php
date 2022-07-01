@@ -37,7 +37,9 @@ class ReposOwnerRepoPullsPullNumberReviewsPostBodyNormalizer implements Denormal
         }
         $object = new \Github\Model\ReposOwnerRepoPullsPullNumberReviewsPostBody();
         $validator = new \Github\Validator\ReposOwnerRepoPullsPullNumberReviewsPostBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -82,7 +84,9 @@ class ReposOwnerRepoPullsPullNumberReviewsPostBodyNormalizer implements Denormal
             $data['comments'] = $values;
         }
         $validator = new \Github\Validator\ReposOwnerRepoPullsPullNumberReviewsPostBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

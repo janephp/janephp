@@ -37,7 +37,9 @@ class FileCommitCommitParentsItemNormalizer implements DenormalizerInterface, No
         }
         $object = new \Github\Model\FileCommitCommitParentsItem();
         $validator = new \Github\Validator\FileCommitCommitParentsItemValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -68,7 +70,9 @@ class FileCommitCommitParentsItemNormalizer implements DenormalizerInterface, No
             $data['sha'] = $object->getSha();
         }
         $validator = new \Github\Validator\FileCommitCommitParentsItemValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

@@ -37,7 +37,9 @@ class TaskSpecContainerSpecSecretsItemNormalizer implements DenormalizerInterfac
         }
         $object = new \Docker\Api\Model\TaskSpecContainerSpecSecretsItem();
         $validator = new \Docker\Api\Validator\TaskSpecContainerSpecSecretsItemValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -68,7 +70,9 @@ class TaskSpecContainerSpecSecretsItemNormalizer implements DenormalizerInterfac
             $data['SecretName'] = $object->getSecretName();
         }
         $validator = new \Docker\Api\Validator\TaskSpecContainerSpecSecretsItemValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

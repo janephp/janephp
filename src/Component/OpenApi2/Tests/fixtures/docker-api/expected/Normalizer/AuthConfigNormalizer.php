@@ -37,7 +37,9 @@ class AuthConfigNormalizer implements DenormalizerInterface, NormalizerInterface
         }
         $object = new \Docker\Api\Model\AuthConfig();
         $validator = new \Docker\Api\Validator\AuthConfigValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -74,7 +76,9 @@ class AuthConfigNormalizer implements DenormalizerInterface, NormalizerInterface
             $data['serveraddress'] = $object->getServeraddress();
         }
         $validator = new \Docker\Api\Validator\AuthConfigValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

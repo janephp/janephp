@@ -37,7 +37,9 @@ class GroupMappingGroupsItemNormalizer implements DenormalizerInterface, Normali
         }
         $object = new \Github\Model\GroupMappingGroupsItem();
         $validator = new \Github\Validator\GroupMappingGroupsItemValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -62,7 +64,9 @@ class GroupMappingGroupsItemNormalizer implements DenormalizerInterface, Normali
         $data['group_name'] = $object->getGroupName();
         $data['group_description'] = $object->getGroupDescription();
         $validator = new \Github\Validator\GroupMappingGroupsItemValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

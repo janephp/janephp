@@ -37,7 +37,9 @@ class PortNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         }
         $object = new \Docker\Api\Model\Port();
         $validator = new \Docker\Api\Validator\PortValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -70,7 +72,9 @@ class PortNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         }
         $data['Type'] = $object->getType();
         $validator = new \Docker\Api\Validator\PortValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

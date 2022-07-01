@@ -37,7 +37,9 @@ class EngineDescriptionNormalizer implements DenormalizerInterface, NormalizerIn
         }
         $object = new \Docker\Api\Model\EngineDescription();
         $validator = new \Docker\Api\Validator\EngineDescriptionValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -84,7 +86,9 @@ class EngineDescriptionNormalizer implements DenormalizerInterface, NormalizerIn
             $data['Plugins'] = $values_1;
         }
         $validator = new \Docker\Api\Validator\EngineDescriptionValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

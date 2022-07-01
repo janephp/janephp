@@ -37,7 +37,9 @@ class PullRequestMinimalBaseNormalizer implements DenormalizerInterface, Normali
         }
         $object = new \Github\Model\PullRequestMinimalBase();
         $validator = new \Github\Validator\PullRequestMinimalBaseValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -62,7 +64,9 @@ class PullRequestMinimalBaseNormalizer implements DenormalizerInterface, Normali
         $data['sha'] = $object->getSha();
         $data['repo'] = $this->normalizer->normalize($object->getRepo(), 'json', $context);
         $validator = new \Github\Validator\PullRequestMinimalBaseValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

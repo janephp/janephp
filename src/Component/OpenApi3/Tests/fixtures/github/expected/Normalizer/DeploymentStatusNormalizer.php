@@ -37,7 +37,9 @@ class DeploymentStatusNormalizer implements DenormalizerInterface, NormalizerInt
         }
         $object = new \Github\Model\DeploymentStatus();
         $validator = new \Github\Validator\DeploymentStatusValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -124,7 +126,9 @@ class DeploymentStatusNormalizer implements DenormalizerInterface, NormalizerInt
             $data['performed_via_github_app'] = $this->normalizer->normalize($object->getPerformedViaGithubApp(), 'json', $context);
         }
         $validator = new \Github\Validator\DeploymentStatusValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

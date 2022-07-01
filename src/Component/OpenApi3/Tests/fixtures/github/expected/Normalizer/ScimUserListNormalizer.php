@@ -37,7 +37,9 @@ class ScimUserListNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         $object = new \Github\Model\ScimUserList();
         $validator = new \Github\Validator\ScimUserListValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -86,7 +88,9 @@ class ScimUserListNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         $data['Resources'] = $values_1;
         $validator = new \Github\Validator\ScimUserListValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

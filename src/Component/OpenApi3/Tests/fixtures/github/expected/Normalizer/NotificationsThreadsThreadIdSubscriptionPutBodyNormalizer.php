@@ -37,7 +37,9 @@ class NotificationsThreadsThreadIdSubscriptionPutBodyNormalizer implements Denor
         }
         $object = new \Github\Model\NotificationsThreadsThreadIdSubscriptionPutBody();
         $validator = new \Github\Validator\NotificationsThreadsThreadIdSubscriptionPutBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -56,7 +58,9 @@ class NotificationsThreadsThreadIdSubscriptionPutBodyNormalizer implements Denor
             $data['ignored'] = $object->getIgnored();
         }
         $validator = new \Github\Validator\NotificationsThreadsThreadIdSubscriptionPutBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

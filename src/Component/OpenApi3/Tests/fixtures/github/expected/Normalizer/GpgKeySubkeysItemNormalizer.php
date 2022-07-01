@@ -37,7 +37,9 @@ class GpgKeySubkeysItemNormalizer implements DenormalizerInterface, NormalizerIn
         }
         $object = new \Github\Model\GpgKeySubkeysItem();
         $validator = new \Github\Validator\GpgKeySubkeysItemValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -150,7 +152,9 @@ class GpgKeySubkeysItemNormalizer implements DenormalizerInterface, NormalizerIn
             $data['raw_key'] = $object->getRawKey();
         }
         $validator = new \Github\Validator\GpgKeySubkeysItemValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

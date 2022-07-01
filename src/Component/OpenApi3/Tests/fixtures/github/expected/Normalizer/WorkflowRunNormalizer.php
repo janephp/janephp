@@ -37,7 +37,9 @@ class WorkflowRunNormalizer implements DenormalizerInterface, NormalizerInterfac
         }
         $object = new \Github\Model\WorkflowRun();
         $validator = new \Github\Validator\WorkflowRunValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -178,7 +180,9 @@ class WorkflowRunNormalizer implements DenormalizerInterface, NormalizerInterfac
             $data['head_repository_id'] = $object->getHeadRepositoryId();
         }
         $validator = new \Github\Validator\WorkflowRunValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

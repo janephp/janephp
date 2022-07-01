@@ -37,7 +37,9 @@ class ReposOwnerRepoInvitationsInvitationIdPatchBodyNormalizer implements Denorm
         }
         $object = new \Github\Model\ReposOwnerRepoInvitationsInvitationIdPatchBody();
         $validator = new \Github\Validator\ReposOwnerRepoInvitationsInvitationIdPatchBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -56,7 +58,9 @@ class ReposOwnerRepoInvitationsInvitationIdPatchBodyNormalizer implements Denorm
             $data['permissions'] = $object->getPermissions();
         }
         $validator = new \Github\Validator\ReposOwnerRepoInvitationsInvitationIdPatchBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

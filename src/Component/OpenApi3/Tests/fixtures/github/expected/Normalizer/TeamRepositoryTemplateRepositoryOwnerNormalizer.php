@@ -37,7 +37,9 @@ class TeamRepositoryTemplateRepositoryOwnerNormalizer implements DenormalizerInt
         }
         $object = new \Github\Model\TeamRepositoryTemplateRepositoryOwner();
         $validator = new \Github\Validator\TeamRepositoryTemplateRepositoryOwnerValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -158,7 +160,9 @@ class TeamRepositoryTemplateRepositoryOwnerNormalizer implements DenormalizerInt
             $data['site_admin'] = $object->getSiteAdmin();
         }
         $validator = new \Github\Validator\TeamRepositoryTemplateRepositoryOwnerValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

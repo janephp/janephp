@@ -37,7 +37,9 @@ class IssueCommentUserNormalizer implements DenormalizerInterface, NormalizerInt
         }
         $object = new \Github\Model\IssueCommentUser();
         $validator = new \Github\Validator\IssueCommentUserValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -131,7 +133,9 @@ class IssueCommentUserNormalizer implements DenormalizerInterface, NormalizerInt
             $data['starred_at'] = $object->getStarredAt();
         }
         $validator = new \Github\Validator\IssueCommentUserValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

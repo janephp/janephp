@@ -37,7 +37,9 @@ class OrgsOrgTeamsTeamSlugDiscussionsPostBodyNormalizer implements DenormalizerI
         }
         $object = new \Github\Model\OrgsOrgTeamsTeamSlugDiscussionsPostBody();
         $validator = new \Github\Validator\OrgsOrgTeamsTeamSlugDiscussionsPostBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -64,7 +66,9 @@ class OrgsOrgTeamsTeamSlugDiscussionsPostBodyNormalizer implements DenormalizerI
             $data['private'] = $object->getPrivate();
         }
         $validator = new \Github\Validator\OrgsOrgTeamsTeamSlugDiscussionsPostBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

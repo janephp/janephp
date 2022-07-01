@@ -37,7 +37,9 @@ class WorkflowNormalizer implements DenormalizerInterface, NormalizerInterface, 
         }
         $object = new \Github\Model\Workflow();
         $validator = new \Github\Validator\WorkflowValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -96,7 +98,9 @@ class WorkflowNormalizer implements DenormalizerInterface, NormalizerInterface, 
             $data['deleted_at'] = $object->getDeletedAt()->format('Y-m-d\\TH:i:sP');
         }
         $validator = new \Github\Validator\WorkflowValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

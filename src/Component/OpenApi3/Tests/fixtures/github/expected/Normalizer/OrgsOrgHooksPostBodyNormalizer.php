@@ -37,7 +37,9 @@ class OrgsOrgHooksPostBodyNormalizer implements DenormalizerInterface, Normalize
         }
         $object = new \Github\Model\OrgsOrgHooksPostBody();
         $validator = new \Github\Validator\OrgsOrgHooksPostBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -78,7 +80,9 @@ class OrgsOrgHooksPostBodyNormalizer implements DenormalizerInterface, Normalize
             $data['active'] = $object->getActive();
         }
         $validator = new \Github\Validator\OrgsOrgHooksPostBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

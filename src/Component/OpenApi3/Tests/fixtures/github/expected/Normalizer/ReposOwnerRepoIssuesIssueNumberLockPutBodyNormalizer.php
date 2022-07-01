@@ -37,7 +37,9 @@ class ReposOwnerRepoIssuesIssueNumberLockPutBodyNormalizer implements Denormaliz
         }
         $object = new \Github\Model\ReposOwnerRepoIssuesIssueNumberLockPutBody();
         $validator = new \Github\Validator\ReposOwnerRepoIssuesIssueNumberLockPutBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -56,7 +58,9 @@ class ReposOwnerRepoIssuesIssueNumberLockPutBodyNormalizer implements Denormaliz
             $data['lock_reason'] = $object->getLockReason();
         }
         $validator = new \Github\Validator\ReposOwnerRepoIssuesIssueNumberLockPutBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

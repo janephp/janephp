@@ -37,7 +37,9 @@ class TeamRepositoryPermissionsNormalizer implements DenormalizerInterface, Norm
         }
         $object = new \Github\Model\TeamRepositoryPermissions();
         $validator = new \Github\Validator\TeamRepositoryPermissionsValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -74,7 +76,9 @@ class TeamRepositoryPermissionsNormalizer implements DenormalizerInterface, Norm
             $data['maintain'] = $object->getMaintain();
         }
         $validator = new \Github\Validator\TeamRepositoryPermissionsValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

@@ -37,7 +37,9 @@ class TeamNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         }
         $object = new \Github\Model\Team();
         $validator = new \Github\Validator\TeamValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -108,7 +110,9 @@ class TeamNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             $data['parent'] = $this->normalizer->normalize($object->getParent(), 'json', $context);
         }
         $validator = new \Github\Validator\TeamValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

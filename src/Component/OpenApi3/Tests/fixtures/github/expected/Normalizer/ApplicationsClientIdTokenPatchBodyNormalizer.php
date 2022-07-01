@@ -37,7 +37,9 @@ class ApplicationsClientIdTokenPatchBodyNormalizer implements DenormalizerInterf
         }
         $object = new \Github\Model\ApplicationsClientIdTokenPatchBody();
         $validator = new \Github\Validator\ApplicationsClientIdTokenPatchBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -54,7 +56,9 @@ class ApplicationsClientIdTokenPatchBodyNormalizer implements DenormalizerInterf
         $data = array();
         $data['access_token'] = $object->getAccessToken();
         $validator = new \Github\Validator\ApplicationsClientIdTokenPatchBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

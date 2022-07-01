@@ -37,7 +37,9 @@ class MarkdownPostBodyNormalizer implements DenormalizerInterface, NormalizerInt
         }
         $object = new \Github\Model\MarkdownPostBody();
         $validator = new \Github\Validator\MarkdownPostBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -66,7 +68,9 @@ class MarkdownPostBodyNormalizer implements DenormalizerInterface, NormalizerInt
             $data['context'] = $object->getContext();
         }
         $validator = new \Github\Validator\MarkdownPostBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

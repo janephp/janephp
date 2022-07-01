@@ -37,7 +37,9 @@ class PullRequestSimpleLabelsItemNormalizer implements DenormalizerInterface, No
         }
         $object = new \Github\Model\PullRequestSimpleLabelsItem();
         $validator = new \Github\Validator\PullRequestSimpleLabelsItemValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -92,7 +94,9 @@ class PullRequestSimpleLabelsItemNormalizer implements DenormalizerInterface, No
             $data['default'] = $object->getDefault();
         }
         $validator = new \Github\Validator\PullRequestSimpleLabelsItemValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

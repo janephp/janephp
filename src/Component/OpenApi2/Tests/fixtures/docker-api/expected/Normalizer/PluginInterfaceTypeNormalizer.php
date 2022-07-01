@@ -37,7 +37,9 @@ class PluginInterfaceTypeNormalizer implements DenormalizerInterface, Normalizer
         }
         $object = new \Docker\Api\Model\PluginInterfaceType();
         $validator = new \Docker\Api\Validator\PluginInterfaceTypeValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -62,7 +64,9 @@ class PluginInterfaceTypeNormalizer implements DenormalizerInterface, Normalizer
         $data['Capability'] = $object->getCapability();
         $data['Version'] = $object->getVersion();
         $validator = new \Docker\Api\Validator\PluginInterfaceTypeValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

@@ -37,7 +37,9 @@ class ObjectVersionNormalizer implements DenormalizerInterface, NormalizerInterf
         }
         $object = new \Docker\Api\Model\ObjectVersion();
         $validator = new \Docker\Api\Validator\ObjectVersionValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -56,7 +58,9 @@ class ObjectVersionNormalizer implements DenormalizerInterface, NormalizerInterf
             $data['Index'] = $object->getIndex();
         }
         $validator = new \Docker\Api\Validator\ObjectVersionValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

@@ -37,7 +37,9 @@ class ScimV2OrganizationsOrgUsersScimUserIdPatchBodyNormalizer implements Denorm
         }
         $object = new \Github\Model\ScimV2OrganizationsOrgUsersScimUserIdPatchBody();
         $validator = new \Github\Validator\ScimV2OrganizationsOrgUsersScimUserIdPatchBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -76,7 +78,9 @@ class ScimV2OrganizationsOrgUsersScimUserIdPatchBodyNormalizer implements Denorm
         }
         $data['Operations'] = $values_1;
         $validator = new \Github\Validator\ScimV2OrganizationsOrgUsersScimUserIdPatchBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

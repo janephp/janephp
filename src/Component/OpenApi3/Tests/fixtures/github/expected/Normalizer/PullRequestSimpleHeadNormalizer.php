@@ -37,7 +37,9 @@ class PullRequestSimpleHeadNormalizer implements DenormalizerInterface, Normaliz
         }
         $object = new \Github\Model\PullRequestSimpleHead();
         $validator = new \Github\Validator\PullRequestSimpleHeadValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -73,7 +75,9 @@ class PullRequestSimpleHeadNormalizer implements DenormalizerInterface, Normaliz
         $data['sha'] = $object->getSha();
         $data['user'] = $this->normalizer->normalize($object->getUser(), 'json', $context);
         $validator = new \Github\Validator\PullRequestSimpleHeadValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

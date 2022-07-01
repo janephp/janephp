@@ -37,7 +37,9 @@ class ReposOwnerRepoPullsPullNumberMergePutBodyNormalizer implements Denormalize
         }
         $object = new \Github\Model\ReposOwnerRepoPullsPullNumberMergePutBody();
         $validator = new \Github\Validator\ReposOwnerRepoPullsPullNumberMergePutBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -74,7 +76,9 @@ class ReposOwnerRepoPullsPullNumberMergePutBodyNormalizer implements Denormalize
             $data['merge_method'] = $object->getMergeMethod();
         }
         $validator = new \Github\Validator\ReposOwnerRepoPullsPullNumberMergePutBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

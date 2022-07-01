@@ -37,7 +37,9 @@ class PullRequestReviewRequestUsersItemNormalizer implements DenormalizerInterfa
         }
         $object = new \Github\Model\PullRequestReviewRequestUsersItem();
         $validator = new \Github\Validator\PullRequestReviewRequestUsersItemValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -158,7 +160,9 @@ class PullRequestReviewRequestUsersItemNormalizer implements DenormalizerInterfa
             $data['site_admin'] = $object->getSiteAdmin();
         }
         $validator = new \Github\Validator\PullRequestReviewRequestUsersItemValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

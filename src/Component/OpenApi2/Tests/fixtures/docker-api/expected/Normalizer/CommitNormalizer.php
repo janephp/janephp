@@ -37,7 +37,9 @@ class CommitNormalizer implements DenormalizerInterface, NormalizerInterface, De
         }
         $object = new \Docker\Api\Model\Commit();
         $validator = new \Docker\Api\Validator\CommitValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -62,7 +64,9 @@ class CommitNormalizer implements DenormalizerInterface, NormalizerInterface, De
             $data['Expected'] = $object->getExpected();
         }
         $validator = new \Docker\Api\Validator\CommitValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

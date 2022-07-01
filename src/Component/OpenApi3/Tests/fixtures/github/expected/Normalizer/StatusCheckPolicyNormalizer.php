@@ -37,7 +37,9 @@ class StatusCheckPolicyNormalizer implements DenormalizerInterface, NormalizerIn
         }
         $object = new \Github\Model\StatusCheckPolicy();
         $validator = new \Github\Validator\StatusCheckPolicyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -74,7 +76,9 @@ class StatusCheckPolicyNormalizer implements DenormalizerInterface, NormalizerIn
         $data['contexts'] = $values;
         $data['contexts_url'] = $object->getContextsUrl();
         $validator = new \Github\Validator\StatusCheckPolicyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

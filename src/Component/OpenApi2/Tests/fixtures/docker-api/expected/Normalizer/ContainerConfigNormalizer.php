@@ -37,7 +37,9 @@ class ContainerConfigNormalizer implements DenormalizerInterface, NormalizerInte
         }
         $object = new \Docker\Api\Model\ContainerConfig();
         $validator = new \Docker\Api\Validator\ContainerConfigValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -264,7 +266,9 @@ class ContainerConfigNormalizer implements DenormalizerInterface, NormalizerInte
             $data['Shell'] = $values_7;
         }
         $validator = new \Docker\Api\Validator\ContainerConfigValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

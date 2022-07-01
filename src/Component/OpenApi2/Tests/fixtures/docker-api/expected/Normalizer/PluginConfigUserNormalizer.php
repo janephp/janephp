@@ -37,7 +37,9 @@ class PluginConfigUserNormalizer implements DenormalizerInterface, NormalizerInt
         }
         $object = new \Docker\Api\Model\PluginConfigUser();
         $validator = new \Docker\Api\Validator\PluginConfigUserValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -62,7 +64,9 @@ class PluginConfigUserNormalizer implements DenormalizerInterface, NormalizerInt
             $data['GID'] = $object->getGID();
         }
         $validator = new \Docker\Api\Validator\PluginConfigUserValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

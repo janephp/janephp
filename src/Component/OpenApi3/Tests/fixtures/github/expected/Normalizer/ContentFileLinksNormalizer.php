@@ -37,7 +37,9 @@ class ContentFileLinksNormalizer implements DenormalizerInterface, NormalizerInt
         }
         $object = new \Github\Model\ContentFileLinks();
         $validator = new \Github\Validator\ContentFileLinksValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -68,7 +70,9 @@ class ContentFileLinksNormalizer implements DenormalizerInterface, NormalizerInt
         $data['html'] = $object->getHtml();
         $data['self'] = $object->getSelf();
         $validator = new \Github\Validator\ContentFileLinksValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

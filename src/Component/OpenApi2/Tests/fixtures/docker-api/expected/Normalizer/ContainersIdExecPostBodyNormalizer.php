@@ -37,7 +37,9 @@ class ContainersIdExecPostBodyNormalizer implements DenormalizerInterface, Norma
         }
         $object = new \Docker\Api\Model\ContainersIdExecPostBody();
         $validator = new \Docker\Api\Validator\ContainersIdExecPostBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -126,7 +128,9 @@ class ContainersIdExecPostBodyNormalizer implements DenormalizerInterface, Norma
             $data['WorkingDir'] = $object->getWorkingDir();
         }
         $validator = new \Docker\Api\Validator\ContainersIdExecPostBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

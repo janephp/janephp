@@ -37,7 +37,9 @@ class FileCommitCommitAuthorNormalizer implements DenormalizerInterface, Normali
         }
         $object = new \Github\Model\FileCommitCommitAuthor();
         $validator = new \Github\Validator\FileCommitCommitAuthorValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -68,7 +70,9 @@ class FileCommitCommitAuthorNormalizer implements DenormalizerInterface, Normali
             $data['email'] = $object->getEmail();
         }
         $validator = new \Github\Validator\FileCommitCommitAuthorValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

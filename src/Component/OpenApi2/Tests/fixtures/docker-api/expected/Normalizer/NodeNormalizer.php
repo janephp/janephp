@@ -37,7 +37,9 @@ class NodeNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         }
         $object = new \Docker\Api\Model\Node();
         $validator = new \Docker\Api\Validator\NodeValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -101,7 +103,9 @@ class NodeNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             $data['ManagerStatus'] = $this->normalizer->normalize($object->getManagerStatus(), 'json', $context);
         }
         $validator = new \Docker\Api\Validator\NodeValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

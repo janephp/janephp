@@ -37,7 +37,9 @@ class OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422Normalizer implements 
         }
         $object = new \Github\Model\OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422();
         $validator = new \Github\Validator\OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422Validator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -62,7 +64,9 @@ class OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422Normalizer implements 
             $data['documentation_url'] = $object->getDocumentationUrl();
         }
         $validator = new \Github\Validator\OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422Validator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

@@ -37,7 +37,9 @@ class SwarmSpecNormalizer implements DenormalizerInterface, NormalizerInterface,
         }
         $object = new \Docker\Api\Model\SwarmSpec();
         $validator = new \Docker\Api\Validator\SwarmSpecValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -115,7 +117,9 @@ class SwarmSpecNormalizer implements DenormalizerInterface, NormalizerInterface,
             $data['TaskDefaults'] = $this->normalizer->normalize($object->getTaskDefaults(), 'json', $context);
         }
         $validator = new \Docker\Api\Validator\SwarmSpecValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

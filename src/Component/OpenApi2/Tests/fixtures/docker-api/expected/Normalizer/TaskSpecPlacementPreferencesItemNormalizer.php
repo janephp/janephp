@@ -37,7 +37,9 @@ class TaskSpecPlacementPreferencesItemNormalizer implements DenormalizerInterfac
         }
         $object = new \Docker\Api\Model\TaskSpecPlacementPreferencesItem();
         $validator = new \Docker\Api\Validator\TaskSpecPlacementPreferencesItemValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -56,7 +58,9 @@ class TaskSpecPlacementPreferencesItemNormalizer implements DenormalizerInterfac
             $data['Spread'] = $this->normalizer->normalize($object->getSpread(), 'json', $context);
         }
         $validator = new \Docker\Api\Validator\TaskSpecPlacementPreferencesItemValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }
