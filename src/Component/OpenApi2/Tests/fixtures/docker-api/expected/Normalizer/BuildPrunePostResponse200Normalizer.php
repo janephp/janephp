@@ -37,7 +37,9 @@ class BuildPrunePostResponse200Normalizer implements DenormalizerInterface, Norm
         }
         $object = new \Docker\Api\Model\BuildPrunePostResponse200();
         $validator = new \Docker\Api\Validator\BuildPrunePostResponse200Validator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -70,7 +72,9 @@ class BuildPrunePostResponse200Normalizer implements DenormalizerInterface, Norm
             $data['SpaceReclaimed'] = $object->getSpaceReclaimed();
         }
         $validator = new \Docker\Api\Validator\BuildPrunePostResponse200Validator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

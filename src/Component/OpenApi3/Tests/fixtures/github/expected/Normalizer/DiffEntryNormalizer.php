@@ -37,7 +37,9 @@ class DiffEntryNormalizer implements DenormalizerInterface, NormalizerInterface,
         }
         $object = new \Github\Model\DiffEntry();
         $validator = new \Github\Validator\DiffEntryValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -98,7 +100,9 @@ class DiffEntryNormalizer implements DenormalizerInterface, NormalizerInterface,
             $data['previous_filename'] = $object->getPreviousFilename();
         }
         $validator = new \Github\Validator\DiffEntryValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

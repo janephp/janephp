@@ -37,7 +37,9 @@ class PushImageInfoNormalizer implements DenormalizerInterface, NormalizerInterf
         }
         $object = new \Docker\Api\Model\PushImageInfo();
         $validator = new \Docker\Api\Validator\PushImageInfoValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -74,7 +76,9 @@ class PushImageInfoNormalizer implements DenormalizerInterface, NormalizerInterf
             $data['progressDetail'] = $this->normalizer->normalize($object->getProgressDetail(), 'json', $context);
         }
         $validator = new \Docker\Api\Validator\PushImageInfoValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

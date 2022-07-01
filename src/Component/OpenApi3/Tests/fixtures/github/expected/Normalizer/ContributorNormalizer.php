@@ -37,7 +37,9 @@ class ContributorNormalizer implements DenormalizerInterface, NormalizerInterfac
         }
         $object = new \Github\Model\Contributor();
         $validator = new \Github\Validator\ContributorValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -175,7 +177,9 @@ class ContributorNormalizer implements DenormalizerInterface, NormalizerInterfac
             $data['name'] = $object->getName();
         }
         $validator = new \Github\Validator\ContributorValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

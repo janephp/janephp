@@ -37,7 +37,9 @@ class UserReposPostBodyNormalizer implements DenormalizerInterface, NormalizerIn
         }
         $object = new \Github\Model\UserReposPostBody();
         $validator = new \Github\Validator\UserReposPostBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -150,7 +152,9 @@ class UserReposPostBodyNormalizer implements DenormalizerInterface, NormalizerIn
             $data['is_template'] = $object->getIsTemplate();
         }
         $validator = new \Github\Validator\UserReposPostBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

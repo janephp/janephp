@@ -37,7 +37,9 @@ class ConfigNormalizer implements DenormalizerInterface, NormalizerInterface, De
         }
         $object = new \Docker\Api\Model\Config();
         $validator = new \Docker\Api\Validator\ConfigValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -80,7 +82,9 @@ class ConfigNormalizer implements DenormalizerInterface, NormalizerInterface, De
             $data['Spec'] = $this->normalizer->normalize($object->getSpec(), 'json', $context);
         }
         $validator = new \Docker\Api\Validator\ConfigValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

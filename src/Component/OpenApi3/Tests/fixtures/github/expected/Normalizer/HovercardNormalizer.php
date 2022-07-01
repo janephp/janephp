@@ -37,7 +37,9 @@ class HovercardNormalizer implements DenormalizerInterface, NormalizerInterface,
         }
         $object = new \Github\Model\Hovercard();
         $validator = new \Github\Validator\HovercardValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -62,7 +64,9 @@ class HovercardNormalizer implements DenormalizerInterface, NormalizerInterface,
         }
         $data['contexts'] = $values;
         $validator = new \Github\Validator\HovercardValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

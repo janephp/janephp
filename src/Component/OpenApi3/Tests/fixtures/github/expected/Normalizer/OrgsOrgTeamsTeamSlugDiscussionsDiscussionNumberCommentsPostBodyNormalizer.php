@@ -37,7 +37,9 @@ class OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsPostBodyNormalizer 
         }
         $object = new \Github\Model\OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsPostBody();
         $validator = new \Github\Validator\OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsPostBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -54,7 +56,9 @@ class OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsPostBodyNormalizer 
         $data = array();
         $data['body'] = $object->getBody();
         $validator = new \Github\Validator\OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsPostBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

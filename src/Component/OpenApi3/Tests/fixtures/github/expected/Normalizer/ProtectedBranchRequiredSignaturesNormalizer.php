@@ -37,7 +37,9 @@ class ProtectedBranchRequiredSignaturesNormalizer implements DenormalizerInterfa
         }
         $object = new \Github\Model\ProtectedBranchRequiredSignatures();
         $validator = new \Github\Validator\ProtectedBranchRequiredSignaturesValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -58,7 +60,9 @@ class ProtectedBranchRequiredSignaturesNormalizer implements DenormalizerInterfa
         $data['url'] = $object->getUrl();
         $data['enabled'] = $object->getEnabled();
         $validator = new \Github\Validator\ProtectedBranchRequiredSignaturesValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

@@ -37,7 +37,9 @@ class IssueNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         }
         $object = new \Github\Model\Issue();
         $validator = new \Github\Validator\IssueValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -240,7 +242,9 @@ class IssueNormalizer implements DenormalizerInterface, NormalizerInterface, Den
             $data['reactions'] = $this->normalizer->normalize($object->getReactions(), 'json', $context);
         }
         $validator = new \Github\Validator\IssueValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

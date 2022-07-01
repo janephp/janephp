@@ -37,7 +37,9 @@ class ProjectCreatorNormalizer implements DenormalizerInterface, NormalizerInter
         }
         $object = new \Github\Model\ProjectCreator();
         $validator = new \Github\Validator\ProjectCreatorValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -131,7 +133,9 @@ class ProjectCreatorNormalizer implements DenormalizerInterface, NormalizerInter
             $data['starred_at'] = $object->getStarredAt();
         }
         $validator = new \Github\Validator\ProjectCreatorValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

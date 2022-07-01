@@ -37,7 +37,9 @@ class ReposOwnerRepoIssuesIssueNumberPatchBodyNormalizer implements Denormalizer
         }
         $object = new \Github\Model\ReposOwnerRepoIssuesIssueNumberPatchBody();
         $validator = new \Github\Validator\ReposOwnerRepoIssuesIssueNumberPatchBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -111,7 +113,9 @@ class ReposOwnerRepoIssuesIssueNumberPatchBodyNormalizer implements Denormalizer
             $data['assignees'] = $values_1;
         }
         $validator = new \Github\Validator\ReposOwnerRepoIssuesIssueNumberPatchBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

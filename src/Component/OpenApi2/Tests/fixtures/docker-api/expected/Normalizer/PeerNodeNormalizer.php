@@ -37,7 +37,9 @@ class PeerNodeNormalizer implements DenormalizerInterface, NormalizerInterface, 
         }
         $object = new \Docker\Api\Model\PeerNode();
         $validator = new \Docker\Api\Validator\PeerNodeValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -62,7 +64,9 @@ class PeerNodeNormalizer implements DenormalizerInterface, NormalizerInterface, 
             $data['Addr'] = $object->getAddr();
         }
         $validator = new \Docker\Api\Validator\PeerNodeValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

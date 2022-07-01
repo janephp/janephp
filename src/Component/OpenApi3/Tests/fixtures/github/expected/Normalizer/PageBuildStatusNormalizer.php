@@ -37,7 +37,9 @@ class PageBuildStatusNormalizer implements DenormalizerInterface, NormalizerInte
         }
         $object = new \Github\Model\PageBuildStatus();
         $validator = new \Github\Validator\PageBuildStatusValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -58,7 +60,9 @@ class PageBuildStatusNormalizer implements DenormalizerInterface, NormalizerInte
         $data['url'] = $object->getUrl();
         $data['status'] = $object->getStatus();
         $validator = new \Github\Validator\PageBuildStatusValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

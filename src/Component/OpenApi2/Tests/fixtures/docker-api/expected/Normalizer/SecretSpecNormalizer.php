@@ -37,7 +37,9 @@ class SecretSpecNormalizer implements DenormalizerInterface, NormalizerInterface
         }
         $object = new \Docker\Api\Model\SecretSpec();
         $validator = new \Docker\Api\Validator\SecretSpecValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -88,7 +90,9 @@ class SecretSpecNormalizer implements DenormalizerInterface, NormalizerInterface
             $data['Templating'] = $this->normalizer->normalize($object->getTemplating(), 'json', $context);
         }
         $validator = new \Docker\Api\Validator\SecretSpecValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

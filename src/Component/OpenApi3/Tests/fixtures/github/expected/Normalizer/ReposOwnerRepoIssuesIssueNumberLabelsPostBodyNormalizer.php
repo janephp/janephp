@@ -37,7 +37,9 @@ class ReposOwnerRepoIssuesIssueNumberLabelsPostBodyNormalizer implements Denorma
         }
         $object = new \Github\Model\ReposOwnerRepoIssuesIssueNumberLabelsPostBody();
         $validator = new \Github\Validator\ReposOwnerRepoIssuesIssueNumberLabelsPostBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -62,7 +64,9 @@ class ReposOwnerRepoIssuesIssueNumberLabelsPostBodyNormalizer implements Denorma
         }
         $data['labels'] = $values;
         $validator = new \Github\Validator\ReposOwnerRepoIssuesIssueNumberLabelsPostBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

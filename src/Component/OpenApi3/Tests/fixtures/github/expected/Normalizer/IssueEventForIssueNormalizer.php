@@ -37,7 +37,9 @@ class IssueEventForIssueNormalizer implements DenormalizerInterface, NormalizerI
         }
         $object = new \Github\Model\IssueEventForIssue();
         $validator = new \Github\Validator\IssueEventForIssueValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -185,7 +187,9 @@ class IssueEventForIssueNormalizer implements DenormalizerInterface, NormalizerI
             $data['body_text'] = $object->getBodyText();
         }
         $validator = new \Github\Validator\IssueEventForIssueValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

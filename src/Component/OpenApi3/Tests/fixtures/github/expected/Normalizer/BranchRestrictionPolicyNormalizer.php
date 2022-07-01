@@ -37,7 +37,9 @@ class BranchRestrictionPolicyNormalizer implements DenormalizerInterface, Normal
         }
         $object = new \Github\Model\BranchRestrictionPolicy();
         $validator = new \Github\Validator\BranchRestrictionPolicyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -102,7 +104,9 @@ class BranchRestrictionPolicyNormalizer implements DenormalizerInterface, Normal
         }
         $data['apps'] = $values_2;
         $validator = new \Github\Validator\BranchRestrictionPolicyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

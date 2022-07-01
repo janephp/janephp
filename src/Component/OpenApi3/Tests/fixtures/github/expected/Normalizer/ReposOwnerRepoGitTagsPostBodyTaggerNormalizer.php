@@ -37,7 +37,9 @@ class ReposOwnerRepoGitTagsPostBodyTaggerNormalizer implements DenormalizerInter
         }
         $object = new \Github\Model\ReposOwnerRepoGitTagsPostBodyTagger();
         $validator = new \Github\Validator\ReposOwnerRepoGitTagsPostBodyTaggerValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -68,7 +70,9 @@ class ReposOwnerRepoGitTagsPostBodyTaggerNormalizer implements DenormalizerInter
             $data['date'] = $object->getDate();
         }
         $validator = new \Github\Validator\ReposOwnerRepoGitTagsPostBodyTaggerValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

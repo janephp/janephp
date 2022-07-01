@@ -37,7 +37,9 @@ class ResourcesBlkioWeightDeviceItemNormalizer implements DenormalizerInterface,
         }
         $object = new \Docker\Api\Model\ResourcesBlkioWeightDeviceItem();
         $validator = new \Docker\Api\Validator\ResourcesBlkioWeightDeviceItemValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -62,7 +64,9 @@ class ResourcesBlkioWeightDeviceItemNormalizer implements DenormalizerInterface,
             $data['Weight'] = $object->getWeight();
         }
         $validator = new \Docker\Api\Validator\ResourcesBlkioWeightDeviceItemValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

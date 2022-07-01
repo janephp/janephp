@@ -37,7 +37,9 @@ class SimpleCommitAuthorNormalizer implements DenormalizerInterface, NormalizerI
         }
         $object = new \Github\Model\SimpleCommitAuthor();
         $validator = new \Github\Validator\SimpleCommitAuthorValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -58,7 +60,9 @@ class SimpleCommitAuthorNormalizer implements DenormalizerInterface, NormalizerI
         $data['name'] = $object->getName();
         $data['email'] = $object->getEmail();
         $validator = new \Github\Validator\SimpleCommitAuthorValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

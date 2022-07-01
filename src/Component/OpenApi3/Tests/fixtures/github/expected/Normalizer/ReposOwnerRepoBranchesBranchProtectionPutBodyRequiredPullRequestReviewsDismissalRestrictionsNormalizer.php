@@ -37,7 +37,9 @@ class ReposOwnerRepoBranchesBranchProtectionPutBodyRequiredPullRequestReviewsDis
         }
         $object = new \Github\Model\ReposOwnerRepoBranchesBranchProtectionPutBodyRequiredPullRequestReviewsDismissalRestrictions();
         $validator = new \Github\Validator\ReposOwnerRepoBranchesBranchProtectionPutBodyRequiredPullRequestReviewsDismissalRestrictionsValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -78,7 +80,9 @@ class ReposOwnerRepoBranchesBranchProtectionPutBodyRequiredPullRequestReviewsDis
             $data['teams'] = $values_1;
         }
         $validator = new \Github\Validator\ReposOwnerRepoBranchesBranchProtectionPutBodyRequiredPullRequestReviewsDismissalRestrictionsValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

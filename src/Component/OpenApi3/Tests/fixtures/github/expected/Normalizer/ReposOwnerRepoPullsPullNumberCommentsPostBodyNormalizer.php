@@ -37,7 +37,9 @@ class ReposOwnerRepoPullsPullNumberCommentsPostBodyNormalizer implements Denorma
         }
         $object = new \Github\Model\ReposOwnerRepoPullsPullNumberCommentsPostBody();
         $validator = new \Github\Validator\ReposOwnerRepoPullsPullNumberCommentsPostBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -100,7 +102,9 @@ class ReposOwnerRepoPullsPullNumberCommentsPostBodyNormalizer implements Denorma
             $data['in_reply_to'] = $object->getInReplyTo();
         }
         $validator = new \Github\Validator\ReposOwnerRepoPullsPullNumberCommentsPostBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

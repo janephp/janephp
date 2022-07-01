@@ -37,7 +37,9 @@ class HostConfigLogConfigNormalizer implements DenormalizerInterface, Normalizer
         }
         $object = new \Docker\Api\Model\HostConfigLogConfig();
         $validator = new \Docker\Api\Validator\HostConfigLogConfigValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -70,7 +72,9 @@ class HostConfigLogConfigNormalizer implements DenormalizerInterface, Normalizer
             $data['Config'] = $values;
         }
         $validator = new \Docker\Api\Validator\HostConfigLogConfigValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

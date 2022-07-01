@@ -37,7 +37,9 @@ class PluginConfigInterfaceNormalizer implements DenormalizerInterface, Normaliz
         }
         $object = new \Docker\Api\Model\PluginConfigInterface();
         $validator = new \Docker\Api\Validator\PluginConfigInterfaceValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -72,7 +74,9 @@ class PluginConfigInterfaceNormalizer implements DenormalizerInterface, Normaliz
             $data['ProtocolScheme'] = $object->getProtocolScheme();
         }
         $validator = new \Docker\Api\Validator\PluginConfigInterfaceValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

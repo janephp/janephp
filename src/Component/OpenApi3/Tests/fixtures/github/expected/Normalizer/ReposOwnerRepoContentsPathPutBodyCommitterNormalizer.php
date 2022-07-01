@@ -37,7 +37,9 @@ class ReposOwnerRepoContentsPathPutBodyCommitterNormalizer implements Denormaliz
         }
         $object = new \Github\Model\ReposOwnerRepoContentsPathPutBodyCommitter();
         $validator = new \Github\Validator\ReposOwnerRepoContentsPathPutBodyCommitterValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -64,7 +66,9 @@ class ReposOwnerRepoContentsPathPutBodyCommitterNormalizer implements Denormaliz
             $data['date'] = $object->getDate();
         }
         $validator = new \Github\Validator\ReposOwnerRepoContentsPathPutBodyCommitterValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

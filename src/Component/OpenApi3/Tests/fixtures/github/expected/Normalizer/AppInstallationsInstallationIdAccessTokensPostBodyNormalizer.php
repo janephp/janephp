@@ -37,7 +37,9 @@ class AppInstallationsInstallationIdAccessTokensPostBodyNormalizer implements De
         }
         $object = new \Github\Model\AppInstallationsInstallationIdAccessTokensPostBody();
         $validator = new \Github\Validator\AppInstallationsInstallationIdAccessTokensPostBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -84,7 +86,9 @@ class AppInstallationsInstallationIdAccessTokensPostBodyNormalizer implements De
             $data['permissions'] = $this->normalizer->normalize($object->getPermissions(), 'json', $context);
         }
         $validator = new \Github\Validator\AppInstallationsInstallationIdAccessTokensPostBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

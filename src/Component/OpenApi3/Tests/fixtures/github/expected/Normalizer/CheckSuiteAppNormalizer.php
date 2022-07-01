@@ -37,7 +37,9 @@ class CheckSuiteAppNormalizer implements DenormalizerInterface, NormalizerInterf
         }
         $object = new \Github\Model\CheckSuiteApp();
         $validator = new \Github\Validator\CheckSuiteAppValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -144,7 +146,9 @@ class CheckSuiteAppNormalizer implements DenormalizerInterface, NormalizerInterf
             $data['pem'] = $object->getPem();
         }
         $validator = new \Github\Validator\CheckSuiteAppValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

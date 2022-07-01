@@ -37,7 +37,9 @@ class OrgsOrgOutsideCollaboratorsUsernamePutResponse403Normalizer implements Den
         }
         $object = new \Github\Model\OrgsOrgOutsideCollaboratorsUsernamePutResponse403();
         $validator = new \Github\Validator\OrgsOrgOutsideCollaboratorsUsernamePutResponse403Validator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -62,7 +64,9 @@ class OrgsOrgOutsideCollaboratorsUsernamePutResponse403Normalizer implements Den
             $data['documentation_url'] = $object->getDocumentationUrl();
         }
         $validator = new \Github\Validator\OrgsOrgOutsideCollaboratorsUsernamePutResponse403Validator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

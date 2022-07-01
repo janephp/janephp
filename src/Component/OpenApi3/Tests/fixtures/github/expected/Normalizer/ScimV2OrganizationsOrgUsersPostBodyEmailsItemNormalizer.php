@@ -37,7 +37,9 @@ class ScimV2OrganizationsOrgUsersPostBodyEmailsItemNormalizer implements Denorma
         }
         $object = new \Github\Model\ScimV2OrganizationsOrgUsersPostBodyEmailsItem();
         $validator = new \Github\Validator\ScimV2OrganizationsOrgUsersPostBodyEmailsItemValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -66,7 +68,9 @@ class ScimV2OrganizationsOrgUsersPostBodyEmailsItemNormalizer implements Denorma
             $data['type'] = $object->getType();
         }
         $validator = new \Github\Validator\ScimV2OrganizationsOrgUsersPostBodyEmailsItemValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

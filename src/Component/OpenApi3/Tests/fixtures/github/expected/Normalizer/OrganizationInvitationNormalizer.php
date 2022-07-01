@@ -37,7 +37,9 @@ class OrganizationInvitationNormalizer implements DenormalizerInterface, Normali
         }
         $object = new \Github\Model\OrganizationInvitation();
         $validator = new \Github\Validator\OrganizationInvitationValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -119,7 +121,9 @@ class OrganizationInvitationNormalizer implements DenormalizerInterface, Normali
             $data['invitation_teams_url'] = $object->getInvitationTeamsUrl();
         }
         $validator = new \Github\Validator\OrganizationInvitationValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

@@ -37,7 +37,9 @@ class PluginEnvNormalizer implements DenormalizerInterface, NormalizerInterface,
         }
         $object = new \Docker\Api\Model\PluginEnv();
         $validator = new \Docker\Api\Validator\PluginEnvValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -74,7 +76,9 @@ class PluginEnvNormalizer implements DenormalizerInterface, NormalizerInterface,
         $data['Settable'] = $values;
         $data['Value'] = $object->getValue();
         $validator = new \Docker\Api\Validator\PluginEnvValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

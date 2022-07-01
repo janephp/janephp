@@ -37,7 +37,9 @@ class TaskSpecNetworkAttachmentSpecNormalizer implements DenormalizerInterface, 
         }
         $object = new \Docker\Api\Model\TaskSpecNetworkAttachmentSpec();
         $validator = new \Docker\Api\Validator\TaskSpecNetworkAttachmentSpecValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -56,7 +58,9 @@ class TaskSpecNetworkAttachmentSpecNormalizer implements DenormalizerInterface, 
             $data['ContainerID'] = $object->getContainerID();
         }
         $validator = new \Docker\Api\Validator\TaskSpecNetworkAttachmentSpecValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

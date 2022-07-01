@@ -37,7 +37,9 @@ class ProjectsColumnsColumnIdPatchBodyNormalizer implements DenormalizerInterfac
         }
         $object = new \Github\Model\ProjectsColumnsColumnIdPatchBody();
         $validator = new \Github\Validator\ProjectsColumnsColumnIdPatchBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -54,7 +56,9 @@ class ProjectsColumnsColumnIdPatchBodyNormalizer implements DenormalizerInterfac
         $data = array();
         $data['name'] = $object->getName();
         $validator = new \Github\Validator\ProjectsColumnsColumnIdPatchBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

@@ -37,7 +37,9 @@ class ReposOwnerRepoIssuesIssueNumberLabelsPutBodyNormalizer implements Denormal
         }
         $object = new \Github\Model\ReposOwnerRepoIssuesIssueNumberLabelsPutBody();
         $validator = new \Github\Validator\ReposOwnerRepoIssuesIssueNumberLabelsPutBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -64,7 +66,9 @@ class ReposOwnerRepoIssuesIssueNumberLabelsPutBodyNormalizer implements Denormal
             $data['labels'] = $values;
         }
         $validator = new \Github\Validator\ReposOwnerRepoIssuesIssueNumberLabelsPutBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

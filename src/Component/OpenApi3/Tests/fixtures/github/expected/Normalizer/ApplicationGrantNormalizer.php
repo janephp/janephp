@@ -37,7 +37,9 @@ class ApplicationGrantNormalizer implements DenormalizerInterface, NormalizerInt
         }
         $object = new \Github\Model\ApplicationGrant();
         $validator = new \Github\Validator\ApplicationGrantValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -91,7 +93,9 @@ class ApplicationGrantNormalizer implements DenormalizerInterface, NormalizerInt
             $data['user'] = $this->normalizer->normalize($object->getUser(), 'json', $context);
         }
         $validator = new \Github\Validator\ApplicationGrantValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

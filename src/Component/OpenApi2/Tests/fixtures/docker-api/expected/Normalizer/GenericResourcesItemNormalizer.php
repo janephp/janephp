@@ -37,7 +37,9 @@ class GenericResourcesItemNormalizer implements DenormalizerInterface, Normalize
         }
         $object = new \Docker\Api\Model\GenericResourcesItem();
         $validator = new \Docker\Api\Validator\GenericResourcesItemValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -62,7 +64,9 @@ class GenericResourcesItemNormalizer implements DenormalizerInterface, Normalize
             $data['DiscreteResourceSpec'] = $this->normalizer->normalize($object->getDiscreteResourceSpec(), 'json', $context);
         }
         $validator = new \Docker\Api\Validator\GenericResourcesItemValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

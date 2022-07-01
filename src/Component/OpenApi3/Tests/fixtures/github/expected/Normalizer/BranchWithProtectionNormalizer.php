@@ -37,7 +37,9 @@ class BranchWithProtectionNormalizer implements DenormalizerInterface, Normalize
         }
         $object = new \Github\Model\BranchWithProtection();
         $validator = new \Github\Validator\BranchWithProtectionValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -86,7 +88,9 @@ class BranchWithProtectionNormalizer implements DenormalizerInterface, Normalize
             $data['required_approving_review_count'] = $object->getRequiredApprovingReviewCount();
         }
         $validator = new \Github\Validator\BranchWithProtectionValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

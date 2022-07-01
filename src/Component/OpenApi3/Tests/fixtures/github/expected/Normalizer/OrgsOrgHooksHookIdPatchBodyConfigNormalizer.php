@@ -37,7 +37,9 @@ class OrgsOrgHooksHookIdPatchBodyConfigNormalizer implements DenormalizerInterfa
         }
         $object = new \Github\Model\OrgsOrgHooksHookIdPatchBodyConfig();
         $validator = new \Github\Validator\OrgsOrgHooksHookIdPatchBodyConfigValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -72,7 +74,9 @@ class OrgsOrgHooksHookIdPatchBodyConfigNormalizer implements DenormalizerInterfa
             $data['insecure_ssl'] = $object->getInsecureSsl();
         }
         $validator = new \Github\Validator\OrgsOrgHooksHookIdPatchBodyConfigValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

@@ -37,7 +37,9 @@ class PullRequestHeadRepoOwnerNormalizer implements DenormalizerInterface, Norma
         }
         $object = new \Github\Model\PullRequestHeadRepoOwner();
         $validator = new \Github\Validator\PullRequestHeadRepoOwnerValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -125,7 +127,9 @@ class PullRequestHeadRepoOwnerNormalizer implements DenormalizerInterface, Norma
         $data['type'] = $object->getType();
         $data['url'] = $object->getUrl();
         $validator = new \Github\Validator\PullRequestHeadRepoOwnerValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

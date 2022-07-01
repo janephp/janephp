@@ -37,7 +37,9 @@ class CommitActivityNormalizer implements DenormalizerInterface, NormalizerInter
         }
         $object = new \Github\Model\CommitActivity();
         $validator = new \Github\Validator\CommitActivityValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -70,7 +72,9 @@ class CommitActivityNormalizer implements DenormalizerInterface, NormalizerInter
         $data['total'] = $object->getTotal();
         $data['week'] = $object->getWeek();
         $validator = new \Github\Validator\CommitActivityValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

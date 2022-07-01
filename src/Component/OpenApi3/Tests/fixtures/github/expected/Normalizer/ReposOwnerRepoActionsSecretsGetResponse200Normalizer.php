@@ -37,7 +37,9 @@ class ReposOwnerRepoActionsSecretsGetResponse200Normalizer implements Denormaliz
         }
         $object = new \Github\Model\ReposOwnerRepoActionsSecretsGetResponse200();
         $validator = new \Github\Validator\ReposOwnerRepoActionsSecretsGetResponse200Validator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -70,7 +72,9 @@ class ReposOwnerRepoActionsSecretsGetResponse200Normalizer implements Denormaliz
             $data['secrets'] = $values;
         }
         $validator = new \Github\Validator\ReposOwnerRepoActionsSecretsGetResponse200Validator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

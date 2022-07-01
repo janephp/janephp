@@ -37,7 +37,9 @@ class BranchProtectionAllowForcePushesNormalizer implements DenormalizerInterfac
         }
         $object = new \Github\Model\BranchProtectionAllowForcePushes();
         $validator = new \Github\Validator\BranchProtectionAllowForcePushesValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -56,7 +58,9 @@ class BranchProtectionAllowForcePushesNormalizer implements DenormalizerInterfac
             $data['enabled'] = $object->getEnabled();
         }
         $validator = new \Github\Validator\BranchProtectionAllowForcePushesValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

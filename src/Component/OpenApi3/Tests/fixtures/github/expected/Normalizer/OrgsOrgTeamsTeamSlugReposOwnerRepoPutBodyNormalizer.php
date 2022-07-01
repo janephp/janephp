@@ -37,7 +37,9 @@ class OrgsOrgTeamsTeamSlugReposOwnerRepoPutBodyNormalizer implements Denormalize
         }
         $object = new \Github\Model\OrgsOrgTeamsTeamSlugReposOwnerRepoPutBody();
         $validator = new \Github\Validator\OrgsOrgTeamsTeamSlugReposOwnerRepoPutBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -56,7 +58,9 @@ class OrgsOrgTeamsTeamSlugReposOwnerRepoPutBodyNormalizer implements Denormalize
             $data['permission'] = $object->getPermission();
         }
         $validator = new \Github\Validator\OrgsOrgTeamsTeamSlugReposOwnerRepoPutBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

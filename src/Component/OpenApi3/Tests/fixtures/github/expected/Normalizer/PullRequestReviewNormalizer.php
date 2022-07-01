@@ -37,7 +37,9 @@ class PullRequestReviewNormalizer implements DenormalizerInterface, NormalizerIn
         }
         $object = new \Github\Model\PullRequestReview();
         $validator = new \Github\Validator\PullRequestReviewValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -111,7 +113,9 @@ class PullRequestReviewNormalizer implements DenormalizerInterface, NormalizerIn
         }
         $data['author_association'] = $object->getAuthorAssociation();
         $validator = new \Github\Validator\PullRequestReviewValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

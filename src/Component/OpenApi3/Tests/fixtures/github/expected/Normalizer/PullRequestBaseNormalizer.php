@@ -37,7 +37,9 @@ class PullRequestBaseNormalizer implements DenormalizerInterface, NormalizerInte
         }
         $object = new \Github\Model\PullRequestBase();
         $validator = new \Github\Validator\PullRequestBaseValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -70,7 +72,9 @@ class PullRequestBaseNormalizer implements DenormalizerInterface, NormalizerInte
         $data['sha'] = $object->getSha();
         $data['user'] = $this->normalizer->normalize($object->getUser(), 'json', $context);
         $validator = new \Github\Validator\PullRequestBaseValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

@@ -37,7 +37,9 @@ class ContentTreeEntriesItemNormalizer implements DenormalizerInterface, Normali
         }
         $object = new \Github\Model\ContentTreeEntriesItem();
         $validator = new \Github\Validator\ContentTreeEntriesItemValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -105,7 +107,9 @@ class ContentTreeEntriesItemNormalizer implements DenormalizerInterface, Normali
         $data['download_url'] = $object->getDownloadUrl();
         $data['_links'] = $this->normalizer->normalize($object->getLinks(), 'json', $context);
         $validator = new \Github\Validator\ContentTreeEntriesItemValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

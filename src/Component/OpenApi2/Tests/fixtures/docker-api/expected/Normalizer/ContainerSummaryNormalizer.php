@@ -37,7 +37,9 @@ class ContainerSummaryNormalizer implements DenormalizerInterface, NormalizerInt
         }
         $object = new \Docker\Api\Model\ContainerSummary();
         $validator = new \Docker\Api\Validator\ContainerSummaryValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -172,7 +174,9 @@ class ContainerSummaryNormalizer implements DenormalizerInterface, NormalizerInt
             $data['Mounts'] = $values_3;
         }
         $validator = new \Docker\Api\Validator\ContainerSummaryValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

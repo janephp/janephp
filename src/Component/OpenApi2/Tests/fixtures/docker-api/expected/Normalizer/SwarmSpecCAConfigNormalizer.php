@@ -37,7 +37,9 @@ class SwarmSpecCAConfigNormalizer implements DenormalizerInterface, NormalizerIn
         }
         $object = new \Docker\Api\Model\SwarmSpecCAConfig();
         $validator = new \Docker\Api\Validator\SwarmSpecCAConfigValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -88,7 +90,9 @@ class SwarmSpecCAConfigNormalizer implements DenormalizerInterface, NormalizerIn
             $data['ForceRotate'] = $object->getForceRotate();
         }
         $validator = new \Docker\Api\Validator\SwarmSpecCAConfigValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

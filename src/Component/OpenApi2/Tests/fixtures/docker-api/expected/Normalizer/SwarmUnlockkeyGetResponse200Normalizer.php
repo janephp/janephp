@@ -37,7 +37,9 @@ class SwarmUnlockkeyGetResponse200Normalizer implements DenormalizerInterface, N
         }
         $object = new \Docker\Api\Model\SwarmUnlockkeyGetResponse200();
         $validator = new \Docker\Api\Validator\SwarmUnlockkeyGetResponse200Validator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -56,7 +58,9 @@ class SwarmUnlockkeyGetResponse200Normalizer implements DenormalizerInterface, N
             $data['UnlockKey'] = $object->getUnlockKey();
         }
         $validator = new \Docker\Api\Validator\SwarmUnlockkeyGetResponse200Validator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

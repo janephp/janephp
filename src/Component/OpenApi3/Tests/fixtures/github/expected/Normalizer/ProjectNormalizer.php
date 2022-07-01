@@ -37,7 +37,9 @@ class ProjectNormalizer implements DenormalizerInterface, NormalizerInterface, D
         }
         $object = new \Github\Model\Project();
         $validator = new \Github\Validator\ProjectValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -132,7 +134,9 @@ class ProjectNormalizer implements DenormalizerInterface, NormalizerInterface, D
             $data['permissions'] = $this->normalizer->normalize($object->getPermissions(), 'json', $context);
         }
         $validator = new \Github\Validator\ProjectValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

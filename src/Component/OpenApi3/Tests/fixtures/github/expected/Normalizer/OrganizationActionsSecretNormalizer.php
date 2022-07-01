@@ -37,7 +37,9 @@ class OrganizationActionsSecretNormalizer implements DenormalizerInterface, Norm
         }
         $object = new \Github\Model\OrganizationActionsSecret();
         $validator = new \Github\Validator\OrganizationActionsSecretValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -72,7 +74,9 @@ class OrganizationActionsSecretNormalizer implements DenormalizerInterface, Norm
             $data['selected_repositories_url'] = $object->getSelectedRepositoriesUrl();
         }
         $validator = new \Github\Validator\OrganizationActionsSecretValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

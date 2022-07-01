@@ -37,7 +37,9 @@ class ImagesSearchGetResponse200ItemNormalizer implements DenormalizerInterface,
         }
         $object = new \Docker\Api\Model\ImagesSearchGetResponse200Item();
         $validator = new \Docker\Api\Validator\ImagesSearchGetResponse200ItemValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -80,7 +82,9 @@ class ImagesSearchGetResponse200ItemNormalizer implements DenormalizerInterface,
             $data['star_count'] = $object->getStarCount();
         }
         $validator = new \Docker\Api\Validator\ImagesSearchGetResponse200ItemValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

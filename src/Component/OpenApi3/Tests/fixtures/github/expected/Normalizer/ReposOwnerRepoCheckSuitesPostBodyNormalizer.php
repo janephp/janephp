@@ -37,7 +37,9 @@ class ReposOwnerRepoCheckSuitesPostBodyNormalizer implements DenormalizerInterfa
         }
         $object = new \Github\Model\ReposOwnerRepoCheckSuitesPostBody();
         $validator = new \Github\Validator\ReposOwnerRepoCheckSuitesPostBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -54,7 +56,9 @@ class ReposOwnerRepoCheckSuitesPostBodyNormalizer implements DenormalizerInterfa
         $data = array();
         $data['head_sha'] = $object->getHeadSha();
         $validator = new \Github\Validator\ReposOwnerRepoCheckSuitesPostBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

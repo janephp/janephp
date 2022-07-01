@@ -37,7 +37,9 @@ class GistFullhistoryItemNormalizer implements DenormalizerInterface, Normalizer
         }
         $object = new \Github\Model\GistFullhistoryItem();
         $validator = new \Github\Validator\GistFullhistoryItemValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -83,7 +85,9 @@ class GistFullhistoryItemNormalizer implements DenormalizerInterface, Normalizer
             $data['committed_at'] = $object->getCommittedAt();
         }
         $validator = new \Github\Validator\GistFullhistoryItemValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

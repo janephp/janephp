@@ -37,7 +37,9 @@ class SystemInfoNormalizer implements DenormalizerInterface, NormalizerInterface
         }
         $object = new \Docker\Api\Model\SystemInfo();
         $validator = new \Docker\Api\Validator\SystemInfoValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -489,7 +491,9 @@ class SystemInfoNormalizer implements DenormalizerInterface, NormalizerInterface
             $data['Warnings'] = $values_7;
         }
         $validator = new \Docker\Api\Validator\SystemInfoValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

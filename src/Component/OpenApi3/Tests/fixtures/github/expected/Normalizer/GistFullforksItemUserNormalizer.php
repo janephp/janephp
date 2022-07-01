@@ -37,7 +37,9 @@ class GistFullforksItemUserNormalizer implements DenormalizerInterface, Normaliz
         }
         $object = new \Github\Model\GistFullforksItemUser();
         $validator = new \Github\Validator\GistFullforksItemUserValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -158,7 +160,9 @@ class GistFullforksItemUserNormalizer implements DenormalizerInterface, Normaliz
             $data['site_admin'] = $object->getSiteAdmin();
         }
         $validator = new \Github\Validator\GistFullforksItemUserValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

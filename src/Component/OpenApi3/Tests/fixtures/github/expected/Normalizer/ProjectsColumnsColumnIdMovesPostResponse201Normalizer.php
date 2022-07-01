@@ -37,7 +37,9 @@ class ProjectsColumnsColumnIdMovesPostResponse201Normalizer implements Denormali
         }
         $object = new \Github\Model\ProjectsColumnsColumnIdMovesPostResponse201();
         $validator = new \Github\Validator\ProjectsColumnsColumnIdMovesPostResponse201Validator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -50,7 +52,9 @@ class ProjectsColumnsColumnIdMovesPostResponse201Normalizer implements Denormali
     {
         $data = array();
         $validator = new \Github\Validator\ProjectsColumnsColumnIdMovesPostResponse201Validator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

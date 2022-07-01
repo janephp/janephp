@@ -37,7 +37,9 @@ class ProjectsProjectIdPatchBodyNormalizer implements DenormalizerInterface, Nor
         }
         $object = new \Github\Model\ProjectsProjectIdPatchBody();
         $validator = new \Github\Validator\ProjectsProjectIdPatchBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -83,7 +85,9 @@ class ProjectsProjectIdPatchBodyNormalizer implements DenormalizerInterface, Nor
             $data['private'] = $object->getPrivate();
         }
         $validator = new \Github\Validator\ProjectsProjectIdPatchBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

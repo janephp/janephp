@@ -37,7 +37,9 @@ class LinkWithTypeNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         $object = new \Github\Model\LinkWithType();
         $validator = new \Github\Validator\LinkWithTypeValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -58,7 +60,9 @@ class LinkWithTypeNormalizer implements DenormalizerInterface, NormalizerInterfa
         $data['href'] = $object->getHref();
         $data['type'] = $object->getType();
         $validator = new \Github\Validator\LinkWithTypeValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

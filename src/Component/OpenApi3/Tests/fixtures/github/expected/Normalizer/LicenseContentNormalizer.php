@@ -37,7 +37,9 @@ class LicenseContentNormalizer implements DenormalizerInterface, NormalizerInter
         }
         $object = new \Github\Model\LicenseContent();
         $validator = new \Github\Validator\LicenseContentValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -114,7 +116,9 @@ class LicenseContentNormalizer implements DenormalizerInterface, NormalizerInter
         $data['_links'] = $this->normalizer->normalize($object->getLinks(), 'json', $context);
         $data['license'] = $this->normalizer->normalize($object->getLicense(), 'json', $context);
         $validator = new \Github\Validator\LicenseContentValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

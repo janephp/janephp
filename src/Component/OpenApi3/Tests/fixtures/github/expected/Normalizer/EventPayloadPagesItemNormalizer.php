@@ -37,7 +37,9 @@ class EventPayloadPagesItemNormalizer implements DenormalizerInterface, Normaliz
         }
         $object = new \Github\Model\EventPayloadPagesItem();
         $validator = new \Github\Validator\EventPayloadPagesItemValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -89,7 +91,9 @@ class EventPayloadPagesItemNormalizer implements DenormalizerInterface, Normaliz
             $data['html_url'] = $object->getHtmlUrl();
         }
         $validator = new \Github\Validator\EventPayloadPagesItemValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

@@ -37,7 +37,9 @@ class TrafficNormalizer implements DenormalizerInterface, NormalizerInterface, D
         }
         $object = new \Github\Model\Traffic();
         $validator = new \Github\Validator\TrafficValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -62,7 +64,9 @@ class TrafficNormalizer implements DenormalizerInterface, NormalizerInterface, D
         $data['uniques'] = $object->getUniques();
         $data['count'] = $object->getCount();
         $validator = new \Github\Validator\TrafficValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

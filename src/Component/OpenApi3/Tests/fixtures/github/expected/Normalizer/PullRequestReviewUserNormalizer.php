@@ -37,7 +37,9 @@ class PullRequestReviewUserNormalizer implements DenormalizerInterface, Normaliz
         }
         $object = new \Github\Model\PullRequestReviewUser();
         $validator = new \Github\Validator\PullRequestReviewUserValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -131,7 +133,9 @@ class PullRequestReviewUserNormalizer implements DenormalizerInterface, Normaliz
             $data['starred_at'] = $object->getStarredAt();
         }
         $validator = new \Github\Validator\PullRequestReviewUserValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

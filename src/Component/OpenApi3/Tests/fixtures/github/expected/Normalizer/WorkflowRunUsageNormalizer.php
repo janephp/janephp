@@ -37,7 +37,9 @@ class WorkflowRunUsageNormalizer implements DenormalizerInterface, NormalizerInt
         }
         $object = new \Github\Model\WorkflowRunUsage();
         $validator = new \Github\Validator\WorkflowRunUsageValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -62,7 +64,9 @@ class WorkflowRunUsageNormalizer implements DenormalizerInterface, NormalizerInt
             $data['run_duration_ms'] = $object->getRunDurationMs();
         }
         $validator = new \Github\Validator\WorkflowRunUsageValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

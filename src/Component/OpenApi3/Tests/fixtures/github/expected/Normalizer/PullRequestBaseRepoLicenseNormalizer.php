@@ -37,7 +37,9 @@ class PullRequestBaseRepoLicenseNormalizer implements DenormalizerInterface, Nor
         }
         $object = new \Github\Model\PullRequestBaseRepoLicense();
         $validator = new \Github\Validator\PullRequestBaseRepoLicenseValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -82,7 +84,9 @@ class PullRequestBaseRepoLicenseNormalizer implements DenormalizerInterface, Nor
             $data['html_url'] = $object->getHtmlUrl();
         }
         $validator = new \Github\Validator\PullRequestBaseRepoLicenseValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

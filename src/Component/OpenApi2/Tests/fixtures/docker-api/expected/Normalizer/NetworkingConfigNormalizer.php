@@ -37,7 +37,9 @@ class NetworkingConfigNormalizer implements DenormalizerInterface, NormalizerInt
         }
         $object = new \Docker\Api\Model\NetworkingConfig();
         $validator = new \Docker\Api\Validator\NetworkingConfigValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -64,7 +66,9 @@ class NetworkingConfigNormalizer implements DenormalizerInterface, NormalizerInt
             $data['EndpointsConfig'] = $values;
         }
         $validator = new \Docker\Api\Validator\NetworkingConfigValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

@@ -37,7 +37,9 @@ class ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBodyNormalizer implem
         }
         $object = new \Github\Model\ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBody();
         $validator = new \Github\Validator\ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -78,7 +80,9 @@ class ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBodyNormalizer implem
             $data['team_reviewers'] = $values_1;
         }
         $validator = new \Github\Validator\ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

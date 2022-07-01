@@ -37,7 +37,9 @@ class ApplicationGrantUserNormalizer implements DenormalizerInterface, Normalize
         }
         $object = new \Github\Model\ApplicationGrantUser();
         $validator = new \Github\Validator\ApplicationGrantUserValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -131,7 +133,9 @@ class ApplicationGrantUserNormalizer implements DenormalizerInterface, Normalize
             $data['starred_at'] = $object->getStarredAt();
         }
         $validator = new \Github\Validator\ApplicationGrantUserValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

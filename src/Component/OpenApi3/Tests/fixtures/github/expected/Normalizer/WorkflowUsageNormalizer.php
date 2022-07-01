@@ -37,7 +37,9 @@ class WorkflowUsageNormalizer implements DenormalizerInterface, NormalizerInterf
         }
         $object = new \Github\Model\WorkflowUsage();
         $validator = new \Github\Validator\WorkflowUsageValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -56,7 +58,9 @@ class WorkflowUsageNormalizer implements DenormalizerInterface, NormalizerInterf
             $data['billable'] = $this->normalizer->normalize($object->getBillable(), 'json', $context);
         }
         $validator = new \Github\Validator\WorkflowUsageValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

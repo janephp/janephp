@@ -37,7 +37,9 @@ class ReposOwnerRepoIssuesIssueNumberCommentsPostBodyNormalizer implements Denor
         }
         $object = new \Github\Model\ReposOwnerRepoIssuesIssueNumberCommentsPostBody();
         $validator = new \Github\Validator\ReposOwnerRepoIssuesIssueNumberCommentsPostBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -54,7 +56,9 @@ class ReposOwnerRepoIssuesIssueNumberCommentsPostBodyNormalizer implements Denor
         $data = array();
         $data['body'] = $object->getBody();
         $validator = new \Github\Validator\ReposOwnerRepoIssuesIssueNumberCommentsPostBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

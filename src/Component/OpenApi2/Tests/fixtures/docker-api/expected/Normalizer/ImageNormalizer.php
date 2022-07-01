@@ -37,7 +37,9 @@ class ImageNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         }
         $object = new \Docker\Api\Model\Image();
         $validator = new \Docker\Api\Validator\ImageValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -154,7 +156,9 @@ class ImageNormalizer implements DenormalizerInterface, NormalizerInterface, Den
             $data['Metadata'] = $this->normalizer->normalize($object->getMetadata(), 'json', $context);
         }
         $validator = new \Docker\Api\Validator\ImageValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

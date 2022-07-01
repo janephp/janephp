@@ -37,7 +37,9 @@ class FullRepositoryOrganizationNormalizer implements DenormalizerInterface, Nor
         }
         $object = new \Github\Model\FullRepositoryOrganization();
         $validator = new \Github\Validator\FullRepositoryOrganizationValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -131,7 +133,9 @@ class FullRepositoryOrganizationNormalizer implements DenormalizerInterface, Nor
             $data['starred_at'] = $object->getStarredAt();
         }
         $validator = new \Github\Validator\FullRepositoryOrganizationValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

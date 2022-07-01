@@ -37,7 +37,9 @@ class CheckRunAppNormalizer implements DenormalizerInterface, NormalizerInterfac
         }
         $object = new \Github\Model\CheckRunApp();
         $validator = new \Github\Validator\CheckRunAppValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -144,7 +146,9 @@ class CheckRunAppNormalizer implements DenormalizerInterface, NormalizerInterfac
             $data['pem'] = $object->getPem();
         }
         $validator = new \Github\Validator\CheckRunAppValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

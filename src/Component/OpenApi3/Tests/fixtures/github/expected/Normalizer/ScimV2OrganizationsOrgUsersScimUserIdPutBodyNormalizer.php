@@ -37,7 +37,9 @@ class ScimV2OrganizationsOrgUsersScimUserIdPutBodyNormalizer implements Denormal
         }
         $object = new \Github\Model\ScimV2OrganizationsOrgUsersScimUserIdPutBody();
         $validator = new \Github\Validator\ScimV2OrganizationsOrgUsersScimUserIdPutBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -116,7 +118,9 @@ class ScimV2OrganizationsOrgUsersScimUserIdPutBodyNormalizer implements Denormal
         }
         $data['emails'] = $values_2;
         $validator = new \Github\Validator\ScimV2OrganizationsOrgUsersScimUserIdPutBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

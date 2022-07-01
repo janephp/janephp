@@ -37,7 +37,9 @@ class CommitCommitAuthorNormalizer implements DenormalizerInterface, NormalizerI
         }
         $object = new \Github\Model\CommitCommitAuthor();
         $validator = new \Github\Validator\CommitCommitAuthorValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -68,7 +70,9 @@ class CommitCommitAuthorNormalizer implements DenormalizerInterface, NormalizerI
             $data['date'] = $object->getDate();
         }
         $validator = new \Github\Validator\CommitCommitAuthorValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

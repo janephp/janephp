@@ -37,7 +37,9 @@ class GistFullhistoryItemUserNormalizer implements DenormalizerInterface, Normal
         }
         $object = new \Github\Model\GistFullhistoryItemUser();
         $validator = new \Github\Validator\GistFullhistoryItemUserValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -158,7 +160,9 @@ class GistFullhistoryItemUserNormalizer implements DenormalizerInterface, Normal
             $data['site_admin'] = $object->getSiteAdmin();
         }
         $validator = new \Github\Validator\GistFullhistoryItemUserValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

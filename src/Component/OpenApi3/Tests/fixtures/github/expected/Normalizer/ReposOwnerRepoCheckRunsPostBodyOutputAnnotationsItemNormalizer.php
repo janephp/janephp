@@ -37,7 +37,9 @@ class ReposOwnerRepoCheckRunsPostBodyOutputAnnotationsItemNormalizer implements 
         }
         $object = new \Github\Model\ReposOwnerRepoCheckRunsPostBodyOutputAnnotationsItem();
         $validator = new \Github\Validator\ReposOwnerRepoCheckRunsPostBodyOutputAnnotationsItemValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -94,7 +96,9 @@ class ReposOwnerRepoCheckRunsPostBodyOutputAnnotationsItemNormalizer implements 
             $data['raw_details'] = $object->getRawDetails();
         }
         $validator = new \Github\Validator\ReposOwnerRepoCheckRunsPostBodyOutputAnnotationsItemValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

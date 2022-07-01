@@ -37,7 +37,9 @@ class ReposOwnerRepoBranchesBranchProtectionPutBodyRequiredPullRequestReviewsNor
         }
         $object = new \Github\Model\ReposOwnerRepoBranchesBranchProtectionPutBodyRequiredPullRequestReviews();
         $validator = new \Github\Validator\ReposOwnerRepoBranchesBranchProtectionPutBodyRequiredPullRequestReviewsValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -74,7 +76,9 @@ class ReposOwnerRepoBranchesBranchProtectionPutBodyRequiredPullRequestReviewsNor
             $data['required_approving_review_count'] = $object->getRequiredApprovingReviewCount();
         }
         $validator = new \Github\Validator\ReposOwnerRepoBranchesBranchProtectionPutBodyRequiredPullRequestReviewsValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

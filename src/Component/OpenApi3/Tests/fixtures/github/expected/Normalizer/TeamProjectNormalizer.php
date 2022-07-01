@@ -37,7 +37,9 @@ class TeamProjectNormalizer implements DenormalizerInterface, NormalizerInterfac
         }
         $object = new \Github\Model\TeamProject();
         $validator = new \Github\Validator\TeamProjectValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -152,7 +154,9 @@ class TeamProjectNormalizer implements DenormalizerInterface, NormalizerInterfac
             $data['permissions'] = $this->normalizer->normalize($object->getPermissions(), 'json', $context);
         }
         $validator = new \Github\Validator\TeamProjectValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

@@ -37,7 +37,9 @@ class ProtectedBranchEnforceAdminsNormalizer implements DenormalizerInterface, N
         }
         $object = new \Github\Model\ProtectedBranchEnforceAdmins();
         $validator = new \Github\Validator\ProtectedBranchEnforceAdminsValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -58,7 +60,9 @@ class ProtectedBranchEnforceAdminsNormalizer implements DenormalizerInterface, N
         $data['url'] = $object->getUrl();
         $data['enabled'] = $object->getEnabled();
         $validator = new \Github\Validator\ProtectedBranchEnforceAdminsValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

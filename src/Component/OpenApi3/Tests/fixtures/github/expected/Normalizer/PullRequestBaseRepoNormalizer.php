@@ -37,7 +37,9 @@ class PullRequestBaseRepoNormalizer implements DenormalizerInterface, Normalizer
         }
         $object = new \Github\Model\PullRequestBaseRepo();
         $validator = new \Github\Validator\PullRequestBaseRepoValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -407,7 +409,9 @@ class PullRequestBaseRepoNormalizer implements DenormalizerInterface, Normalizer
         $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
         $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
         $validator = new \Github\Validator\PullRequestBaseRepoValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

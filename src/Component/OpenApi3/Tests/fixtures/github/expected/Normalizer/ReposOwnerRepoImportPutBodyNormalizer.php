@@ -37,7 +37,9 @@ class ReposOwnerRepoImportPutBodyNormalizer implements DenormalizerInterface, No
         }
         $object = new \Github\Model\ReposOwnerRepoImportPutBody();
         $validator = new \Github\Validator\ReposOwnerRepoImportPutBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -78,7 +80,9 @@ class ReposOwnerRepoImportPutBodyNormalizer implements DenormalizerInterface, No
             $data['tfvc_project'] = $object->getTfvcProject();
         }
         $validator = new \Github\Validator\ReposOwnerRepoImportPutBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

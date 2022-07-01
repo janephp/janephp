@@ -37,7 +37,9 @@ class OrgsOrgMigrationsPostBodyNormalizer implements DenormalizerInterface, Norm
         }
         $object = new \Github\Model\OrgsOrgMigrationsPostBody();
         $validator = new \Github\Validator\OrgsOrgMigrationsPostBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -88,7 +90,9 @@ class OrgsOrgMigrationsPostBodyNormalizer implements DenormalizerInterface, Norm
             $data['exclude'] = $values_1;
         }
         $validator = new \Github\Validator\OrgsOrgMigrationsPostBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

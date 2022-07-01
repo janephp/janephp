@@ -37,7 +37,9 @@ class PageBuildPusherNormalizer implements DenormalizerInterface, NormalizerInte
         }
         $object = new \Github\Model\PageBuildPusher();
         $validator = new \Github\Validator\PageBuildPusherValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -131,7 +133,9 @@ class PageBuildPusherNormalizer implements DenormalizerInterface, NormalizerInte
             $data['starred_at'] = $object->getStarredAt();
         }
         $validator = new \Github\Validator\PageBuildPusherValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

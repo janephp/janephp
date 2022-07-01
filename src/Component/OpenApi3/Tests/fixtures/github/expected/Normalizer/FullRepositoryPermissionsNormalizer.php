@@ -37,7 +37,9 @@ class FullRepositoryPermissionsNormalizer implements DenormalizerInterface, Norm
         }
         $object = new \Github\Model\FullRepositoryPermissions();
         $validator = new \Github\Validator\FullRepositoryPermissionsValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -62,7 +64,9 @@ class FullRepositoryPermissionsNormalizer implements DenormalizerInterface, Norm
         $data['pull'] = $object->getPull();
         $data['push'] = $object->getPush();
         $validator = new \Github\Validator\FullRepositoryPermissionsValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

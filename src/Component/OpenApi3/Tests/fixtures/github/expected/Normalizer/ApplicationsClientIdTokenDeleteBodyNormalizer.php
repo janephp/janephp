@@ -37,7 +37,9 @@ class ApplicationsClientIdTokenDeleteBodyNormalizer implements DenormalizerInter
         }
         $object = new \Github\Model\ApplicationsClientIdTokenDeleteBody();
         $validator = new \Github\Validator\ApplicationsClientIdTokenDeleteBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -56,7 +58,9 @@ class ApplicationsClientIdTokenDeleteBodyNormalizer implements DenormalizerInter
             $data['access_token'] = $object->getAccessToken();
         }
         $validator = new \Github\Validator\ApplicationsClientIdTokenDeleteBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

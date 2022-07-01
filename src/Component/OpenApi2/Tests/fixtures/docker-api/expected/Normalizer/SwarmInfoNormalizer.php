@@ -37,7 +37,9 @@ class SwarmInfoNormalizer implements DenormalizerInterface, NormalizerInterface,
         }
         $object = new \Docker\Api\Model\SwarmInfo();
         $validator = new \Docker\Api\Validator\SwarmInfoValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -124,7 +126,9 @@ class SwarmInfoNormalizer implements DenormalizerInterface, NormalizerInterface,
             $data['Cluster'] = $this->normalizer->normalize($object->getCluster(), 'json', $context);
         }
         $validator = new \Docker\Api\Validator\SwarmInfoValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

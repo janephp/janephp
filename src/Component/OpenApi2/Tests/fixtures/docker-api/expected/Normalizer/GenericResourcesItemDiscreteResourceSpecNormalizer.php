@@ -37,7 +37,9 @@ class GenericResourcesItemDiscreteResourceSpecNormalizer implements Denormalizer
         }
         $object = new \Docker\Api\Model\GenericResourcesItemDiscreteResourceSpec();
         $validator = new \Docker\Api\Validator\GenericResourcesItemDiscreteResourceSpecValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -62,7 +64,9 @@ class GenericResourcesItemDiscreteResourceSpecNormalizer implements Denormalizer
             $data['Value'] = $object->getValue();
         }
         $validator = new \Docker\Api\Validator\GenericResourcesItemDiscreteResourceSpecValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

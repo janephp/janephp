@@ -37,7 +37,9 @@ class GroupMappingNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         $object = new \Github\Model\GroupMapping();
         $validator = new \Github\Validator\GroupMappingValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -94,7 +96,9 @@ class GroupMappingNormalizer implements DenormalizerInterface, NormalizerInterfa
             $data['synced_at'] = $object->getSyncedAt();
         }
         $validator = new \Github\Validator\GroupMappingValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

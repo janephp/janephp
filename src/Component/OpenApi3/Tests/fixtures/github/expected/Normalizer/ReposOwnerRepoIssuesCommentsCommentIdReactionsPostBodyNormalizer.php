@@ -37,7 +37,9 @@ class ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBodyNormalizer implement
         }
         $object = new \Github\Model\ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBody();
         $validator = new \Github\Validator\ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -54,7 +56,9 @@ class ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBodyNormalizer implement
         $data = array();
         $data['content'] = $object->getContent();
         $validator = new \Github\Validator\ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

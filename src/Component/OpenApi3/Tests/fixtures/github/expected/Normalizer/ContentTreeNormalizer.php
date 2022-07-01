@@ -37,7 +37,9 @@ class ContentTreeNormalizer implements DenormalizerInterface, NormalizerInterfac
         }
         $object = new \Github\Model\ContentTree();
         $validator = new \Github\Validator\ContentTreeValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -113,7 +115,9 @@ class ContentTreeNormalizer implements DenormalizerInterface, NormalizerInterfac
         }
         $data['_links'] = $this->normalizer->normalize($object->getLinks(), 'json', $context);
         $validator = new \Github\Validator\ContentTreeValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

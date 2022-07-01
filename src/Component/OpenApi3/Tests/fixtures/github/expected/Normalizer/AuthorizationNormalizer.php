@@ -37,7 +37,9 @@ class AuthorizationNormalizer implements DenormalizerInterface, NormalizerInterf
         }
         $object = new \Github\Model\Authorization();
         $validator = new \Github\Validator\AuthorizationValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -142,7 +144,9 @@ class AuthorizationNormalizer implements DenormalizerInterface, NormalizerInterf
             $data['installation'] = $this->normalizer->normalize($object->getInstallation(), 'json', $context);
         }
         $validator = new \Github\Validator\AuthorizationValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

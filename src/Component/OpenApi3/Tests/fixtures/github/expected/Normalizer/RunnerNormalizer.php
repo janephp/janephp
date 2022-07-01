@@ -37,7 +37,9 @@ class RunnerNormalizer implements DenormalizerInterface, NormalizerInterface, De
         }
         $object = new \Github\Model\Runner();
         $validator = new \Github\Validator\RunnerValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -66,7 +68,9 @@ class RunnerNormalizer implements DenormalizerInterface, NormalizerInterface, De
         $data['os'] = $object->getOs();
         $data['status'] = $object->getStatus();
         $validator = new \Github\Validator\RunnerValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

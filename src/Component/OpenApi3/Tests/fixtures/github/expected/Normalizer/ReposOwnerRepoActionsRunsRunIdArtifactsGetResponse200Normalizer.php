@@ -37,7 +37,9 @@ class ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200Normalizer implements
         }
         $object = new \Github\Model\ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200();
         $validator = new \Github\Validator\ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200Validator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -70,7 +72,9 @@ class ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200Normalizer implements
             $data['artifacts'] = $values;
         }
         $validator = new \Github\Validator\ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200Validator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

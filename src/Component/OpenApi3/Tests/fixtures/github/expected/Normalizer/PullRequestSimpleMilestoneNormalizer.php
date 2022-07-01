@@ -37,7 +37,9 @@ class PullRequestSimpleMilestoneNormalizer implements DenormalizerInterface, Nor
         }
         $object = new \Github\Model\PullRequestSimpleMilestone();
         $validator = new \Github\Validator\PullRequestSimpleMilestoneValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -126,7 +128,9 @@ class PullRequestSimpleMilestoneNormalizer implements DenormalizerInterface, Nor
         $data['closed_at'] = $object->getClosedAt()->format('Y-m-d\\TH:i:sP');
         $data['due_on'] = $object->getDueOn()->format('Y-m-d\\TH:i:sP');
         $validator = new \Github\Validator\PullRequestSimpleMilestoneValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

@@ -37,7 +37,9 @@ class WorkflowRunUsageBillableMACOSNormalizer implements DenormalizerInterface, 
         }
         $object = new \Github\Model\WorkflowRunUsageBillableMACOS();
         $validator = new \Github\Validator\WorkflowRunUsageBillableMACOSValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -62,7 +64,9 @@ class WorkflowRunUsageBillableMACOSNormalizer implements DenormalizerInterface, 
             $data['jobs'] = $object->getJobs();
         }
         $validator = new \Github\Validator\WorkflowRunUsageBillableMACOSValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

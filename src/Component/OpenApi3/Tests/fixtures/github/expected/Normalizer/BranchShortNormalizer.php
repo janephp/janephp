@@ -37,7 +37,9 @@ class BranchShortNormalizer implements DenormalizerInterface, NormalizerInterfac
         }
         $object = new \Github\Model\BranchShort();
         $validator = new \Github\Validator\BranchShortValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -68,7 +70,9 @@ class BranchShortNormalizer implements DenormalizerInterface, NormalizerInterfac
             $data['protected'] = $object->getProtected();
         }
         $validator = new \Github\Validator\BranchShortValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

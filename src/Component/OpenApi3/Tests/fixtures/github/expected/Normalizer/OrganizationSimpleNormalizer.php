@@ -37,7 +37,9 @@ class OrganizationSimpleNormalizer implements DenormalizerInterface, NormalizerI
         }
         $object = new \Github\Model\OrganizationSimple();
         $validator = new \Github\Validator\OrganizationSimpleValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -101,7 +103,9 @@ class OrganizationSimpleNormalizer implements DenormalizerInterface, NormalizerI
         $data['avatar_url'] = $object->getAvatarUrl();
         $data['description'] = $object->getDescription();
         $validator = new \Github\Validator\OrganizationSimpleValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

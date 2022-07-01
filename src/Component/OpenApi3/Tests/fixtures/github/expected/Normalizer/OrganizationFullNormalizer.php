@@ -37,7 +37,9 @@ class OrganizationFullNormalizer implements DenormalizerInterface, NormalizerInt
         }
         $object = new \Github\Model\OrganizationFull();
         $validator = new \Github\Validator\OrganizationFullValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -291,7 +293,9 @@ class OrganizationFullNormalizer implements DenormalizerInterface, NormalizerInt
         }
         $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
         $validator = new \Github\Validator\OrganizationFullValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

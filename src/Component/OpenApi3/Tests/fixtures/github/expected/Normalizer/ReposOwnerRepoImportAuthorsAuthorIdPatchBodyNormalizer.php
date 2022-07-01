@@ -37,7 +37,9 @@ class ReposOwnerRepoImportAuthorsAuthorIdPatchBodyNormalizer implements Denormal
         }
         $object = new \Github\Model\ReposOwnerRepoImportAuthorsAuthorIdPatchBody();
         $validator = new \Github\Validator\ReposOwnerRepoImportAuthorsAuthorIdPatchBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -68,7 +70,9 @@ class ReposOwnerRepoImportAuthorsAuthorIdPatchBodyNormalizer implements Denormal
             $data['remote_id'] = $object->getRemoteId();
         }
         $validator = new \Github\Validator\ReposOwnerRepoImportAuthorsAuthorIdPatchBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

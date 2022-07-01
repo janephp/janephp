@@ -37,7 +37,9 @@ class PrivateUserNormalizer implements DenormalizerInterface, NormalizerInterfac
         }
         $object = new \Github\Model\PrivateUser();
         $validator = new \Github\Validator\PrivateUserValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -258,7 +260,9 @@ class PrivateUserNormalizer implements DenormalizerInterface, NormalizerInterfac
             $data['ldap_dn'] = $object->getLdapDn();
         }
         $validator = new \Github\Validator\PrivateUserValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

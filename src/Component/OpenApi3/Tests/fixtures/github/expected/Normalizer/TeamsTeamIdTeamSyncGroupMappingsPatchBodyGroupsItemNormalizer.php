@@ -37,7 +37,9 @@ class TeamsTeamIdTeamSyncGroupMappingsPatchBodyGroupsItemNormalizer implements D
         }
         $object = new \Github\Model\TeamsTeamIdTeamSyncGroupMappingsPatchBodyGroupsItem();
         $validator = new \Github\Validator\TeamsTeamIdTeamSyncGroupMappingsPatchBodyGroupsItemValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -80,7 +82,9 @@ class TeamsTeamIdTeamSyncGroupMappingsPatchBodyGroupsItemNormalizer implements D
             $data['description'] = $object->getDescription();
         }
         $validator = new \Github\Validator\TeamsTeamIdTeamSyncGroupMappingsPatchBodyGroupsItemValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

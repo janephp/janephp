@@ -37,7 +37,9 @@ class PagesSourceHashNormalizer implements DenormalizerInterface, NormalizerInte
         }
         $object = new \Github\Model\PagesSourceHash();
         $validator = new \Github\Validator\PagesSourceHashValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -58,7 +60,9 @@ class PagesSourceHashNormalizer implements DenormalizerInterface, NormalizerInte
         $data['branch'] = $object->getBranch();
         $data['path'] = $object->getPath();
         $validator = new \Github\Validator\PagesSourceHashValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

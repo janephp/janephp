@@ -37,7 +37,9 @@ class TopicSearchResultItemRelatedItemTopicRelationNormalizer implements Denorma
         }
         $object = new \Github\Model\TopicSearchResultItemRelatedItemTopicRelation();
         $validator = new \Github\Validator\TopicSearchResultItemRelatedItemTopicRelationValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -74,7 +76,9 @@ class TopicSearchResultItemRelatedItemTopicRelationNormalizer implements Denorma
             $data['relation_type'] = $object->getRelationType();
         }
         $validator = new \Github\Validator\TopicSearchResultItemRelatedItemTopicRelationValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

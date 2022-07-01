@@ -37,7 +37,9 @@ class PluginsInfoNormalizer implements DenormalizerInterface, NormalizerInterfac
         }
         $object = new \Docker\Api\Model\PluginsInfo();
         $validator = new \Docker\Api\Validator\PluginsInfoValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -106,7 +108,9 @@ class PluginsInfoNormalizer implements DenormalizerInterface, NormalizerInterfac
             $data['Log'] = $values_3;
         }
         $validator = new \Docker\Api\Validator\PluginsInfoValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

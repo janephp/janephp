@@ -37,7 +37,9 @@ class ApplicationsClientIdTokensAccessTokenGetResponse200Normalizer implements D
         }
         $object = new \Github\Model\ApplicationsClientIdTokensAccessTokenGetResponse200();
         $validator = new \Github\Validator\ApplicationsClientIdTokensAccessTokenGetResponse200Validator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -142,7 +144,9 @@ class ApplicationsClientIdTokensAccessTokenGetResponse200Normalizer implements D
             $data['installation'] = $this->normalizer->normalize($object->getInstallation(), 'json', $context);
         }
         $validator = new \Github\Validator\ApplicationsClientIdTokensAccessTokenGetResponse200Validator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

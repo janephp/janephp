@@ -37,7 +37,9 @@ class ReposOwnerRepoCheckSuitesPreferencesPatchBodyAutoTriggerChecksItemNormaliz
         }
         $object = new \Github\Model\ReposOwnerRepoCheckSuitesPreferencesPatchBodyAutoTriggerChecksItem();
         $validator = new \Github\Validator\ReposOwnerRepoCheckSuitesPreferencesPatchBodyAutoTriggerChecksItemValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -58,7 +60,9 @@ class ReposOwnerRepoCheckSuitesPreferencesPatchBodyAutoTriggerChecksItemNormaliz
         $data['app_id'] = $object->getAppId();
         $data['setting'] = $object->getSetting();
         $validator = new \Github\Validator\ReposOwnerRepoCheckSuitesPreferencesPatchBodyAutoTriggerChecksItemValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

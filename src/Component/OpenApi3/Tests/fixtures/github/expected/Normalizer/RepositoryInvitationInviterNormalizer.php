@@ -37,7 +37,9 @@ class RepositoryInvitationInviterNormalizer implements DenormalizerInterface, No
         }
         $object = new \Github\Model\RepositoryInvitationInviter();
         $validator = new \Github\Validator\RepositoryInvitationInviterValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -131,7 +133,9 @@ class RepositoryInvitationInviterNormalizer implements DenormalizerInterface, No
             $data['starred_at'] = $object->getStarredAt();
         }
         $validator = new \Github\Validator\RepositoryInvitationInviterValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

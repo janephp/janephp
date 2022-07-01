@@ -37,7 +37,9 @@ class ContentDirectoryItemNormalizer implements DenormalizerInterface, Normalize
         }
         $object = new \Github\Model\ContentDirectoryItem();
         $validator = new \Github\Validator\ContentDirectoryItemValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -105,7 +107,9 @@ class ContentDirectoryItemNormalizer implements DenormalizerInterface, Normalize
         $data['download_url'] = $object->getDownloadUrl();
         $data['_links'] = $this->normalizer->normalize($object->getLinks(), 'json', $context);
         $validator = new \Github\Validator\ContentDirectoryItemValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

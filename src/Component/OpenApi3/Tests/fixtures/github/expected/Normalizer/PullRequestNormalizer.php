@@ -37,7 +37,9 @@ class PullRequestNormalizer implements DenormalizerInterface, NormalizerInterfac
         }
         $object = new \Github\Model\PullRequest();
         $validator = new \Github\Validator\PullRequestValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -324,7 +326,9 @@ class PullRequestNormalizer implements DenormalizerInterface, NormalizerInterfac
         $data['deletions'] = $object->getDeletions();
         $data['changed_files'] = $object->getChangedFiles();
         $validator = new \Github\Validator\PullRequestValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

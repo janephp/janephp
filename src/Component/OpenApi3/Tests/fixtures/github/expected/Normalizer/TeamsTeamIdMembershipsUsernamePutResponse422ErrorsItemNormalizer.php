@@ -37,7 +37,9 @@ class TeamsTeamIdMembershipsUsernamePutResponse422ErrorsItemNormalizer implement
         }
         $object = new \Github\Model\TeamsTeamIdMembershipsUsernamePutResponse422ErrorsItem();
         $validator = new \Github\Validator\TeamsTeamIdMembershipsUsernamePutResponse422ErrorsItemValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -68,7 +70,9 @@ class TeamsTeamIdMembershipsUsernamePutResponse422ErrorsItemNormalizer implement
             $data['resource'] = $object->getResource();
         }
         $validator = new \Github\Validator\TeamsTeamIdMembershipsUsernamePutResponse422ErrorsItemValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

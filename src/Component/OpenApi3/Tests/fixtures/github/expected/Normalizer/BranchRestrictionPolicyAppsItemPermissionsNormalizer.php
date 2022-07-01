@@ -37,7 +37,9 @@ class BranchRestrictionPolicyAppsItemPermissionsNormalizer implements Denormaliz
         }
         $object = new \Github\Model\BranchRestrictionPolicyAppsItemPermissions();
         $validator = new \Github\Validator\BranchRestrictionPolicyAppsItemPermissionsValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -74,7 +76,9 @@ class BranchRestrictionPolicyAppsItemPermissionsNormalizer implements Denormaliz
             $data['single_file'] = $object->getSingleFile();
         }
         $validator = new \Github\Validator\BranchRestrictionPolicyAppsItemPermissionsValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

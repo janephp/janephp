@@ -37,7 +37,9 @@ class SimpleUserNormalizer implements DenormalizerInterface, NormalizerInterface
         }
         $object = new \Github\Model\SimpleUser();
         $validator = new \Github\Validator\SimpleUserValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -131,7 +133,9 @@ class SimpleUserNormalizer implements DenormalizerInterface, NormalizerInterface
             $data['starred_at'] = $object->getStarredAt();
         }
         $validator = new \Github\Validator\SimpleUserValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

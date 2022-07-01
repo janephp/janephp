@@ -37,7 +37,9 @@ class ManagerStatusNormalizer implements DenormalizerInterface, NormalizerInterf
         }
         $object = new \Docker\Api\Model\ManagerStatus();
         $validator = new \Docker\Api\Validator\ManagerStatusValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -68,7 +70,9 @@ class ManagerStatusNormalizer implements DenormalizerInterface, NormalizerInterf
             $data['Addr'] = $object->getAddr();
         }
         $validator = new \Docker\Api\Validator\ManagerStatusValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

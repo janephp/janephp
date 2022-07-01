@@ -37,7 +37,9 @@ class CommitCommitNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         $object = new \Github\Model\CommitCommit();
         $validator = new \Github\Validator\CommitCommitValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -86,7 +88,9 @@ class CommitCommitNormalizer implements DenormalizerInterface, NormalizerInterfa
             $data['verification'] = $this->normalizer->normalize($object->getVerification(), 'json', $context);
         }
         $validator = new \Github\Validator\CommitCommitValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

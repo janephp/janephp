@@ -37,7 +37,9 @@ class ResourceObjectNormalizer implements DenormalizerInterface, NormalizerInter
         }
         $object = new \Docker\Api\Model\ResourceObject();
         $validator = new \Docker\Api\Validator\ResourceObjectValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -76,7 +78,9 @@ class ResourceObjectNormalizer implements DenormalizerInterface, NormalizerInter
             $data['GenericResources'] = $values;
         }
         $validator = new \Docker\Api\Validator\ResourceObjectValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

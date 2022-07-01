@@ -37,7 +37,9 @@ class RepositoryTemplateRepositoryPermissionsNormalizer implements DenormalizerI
         }
         $object = new \Github\Model\RepositoryTemplateRepositoryPermissions();
         $validator = new \Github\Validator\RepositoryTemplateRepositoryPermissionsValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -68,7 +70,9 @@ class RepositoryTemplateRepositoryPermissionsNormalizer implements DenormalizerI
             $data['pull'] = $object->getPull();
         }
         $validator = new \Github\Validator\RepositoryTemplateRepositoryPermissionsValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

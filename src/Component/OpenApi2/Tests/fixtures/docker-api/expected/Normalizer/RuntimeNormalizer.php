@@ -37,7 +37,9 @@ class RuntimeNormalizer implements DenormalizerInterface, NormalizerInterface, D
         }
         $object = new \Docker\Api\Model\Runtime();
         $validator = new \Docker\Api\Validator\RuntimeValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -73,7 +75,9 @@ class RuntimeNormalizer implements DenormalizerInterface, NormalizerInterface, D
             $data['runtimeArgs'] = $values;
         }
         $validator = new \Docker\Api\Validator\RuntimeValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

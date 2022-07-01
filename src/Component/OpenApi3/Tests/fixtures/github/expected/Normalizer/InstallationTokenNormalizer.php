@@ -37,7 +37,9 @@ class InstallationTokenNormalizer implements DenormalizerInterface, NormalizerIn
         }
         $object = new \Github\Model\InstallationToken();
         $validator = new \Github\Validator\InstallationTokenValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -94,7 +96,9 @@ class InstallationTokenNormalizer implements DenormalizerInterface, NormalizerIn
             $data['single_file'] = $object->getSingleFile();
         }
         $validator = new \Github\Validator\InstallationTokenValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

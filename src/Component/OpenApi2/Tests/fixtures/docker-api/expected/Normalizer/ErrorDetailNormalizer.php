@@ -37,7 +37,9 @@ class ErrorDetailNormalizer implements DenormalizerInterface, NormalizerInterfac
         }
         $object = new \Docker\Api\Model\ErrorDetail();
         $validator = new \Docker\Api\Validator\ErrorDetailValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -62,7 +64,9 @@ class ErrorDetailNormalizer implements DenormalizerInterface, NormalizerInterfac
             $data['message'] = $object->getMessage();
         }
         $validator = new \Docker\Api\Validator\ErrorDetailValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

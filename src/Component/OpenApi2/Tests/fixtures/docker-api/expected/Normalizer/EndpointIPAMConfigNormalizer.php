@@ -37,7 +37,9 @@ class EndpointIPAMConfigNormalizer implements DenormalizerInterface, NormalizerI
         }
         $object = new \Docker\Api\Model\EndpointIPAMConfig();
         $validator = new \Docker\Api\Validator\EndpointIPAMConfigValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -76,7 +78,9 @@ class EndpointIPAMConfigNormalizer implements DenormalizerInterface, NormalizerI
             $data['LinkLocalIPs'] = $values;
         }
         $validator = new \Docker\Api\Validator\EndpointIPAMConfigValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

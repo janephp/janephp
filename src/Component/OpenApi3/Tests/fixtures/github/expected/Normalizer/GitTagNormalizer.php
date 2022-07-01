@@ -37,7 +37,9 @@ class GitTagNormalizer implements DenormalizerInterface, NormalizerInterface, De
         }
         $object = new \Github\Model\GitTag();
         $validator = new \Github\Validator\GitTagValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -84,7 +86,9 @@ class GitTagNormalizer implements DenormalizerInterface, NormalizerInterface, De
             $data['verification'] = $this->normalizer->normalize($object->getVerification(), 'json', $context);
         }
         $validator = new \Github\Validator\GitTagValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

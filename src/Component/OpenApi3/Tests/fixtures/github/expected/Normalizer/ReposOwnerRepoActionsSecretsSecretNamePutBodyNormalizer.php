@@ -37,7 +37,9 @@ class ReposOwnerRepoActionsSecretsSecretNamePutBodyNormalizer implements Denorma
         }
         $object = new \Github\Model\ReposOwnerRepoActionsSecretsSecretNamePutBody();
         $validator = new \Github\Validator\ReposOwnerRepoActionsSecretsSecretNamePutBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -62,7 +64,9 @@ class ReposOwnerRepoActionsSecretsSecretNamePutBodyNormalizer implements Denorma
             $data['key_id'] = $object->getKeyId();
         }
         $validator = new \Github\Validator\ReposOwnerRepoActionsSecretsSecretNamePutBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

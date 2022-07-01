@@ -37,7 +37,9 @@ class NodeDescriptionNormalizer implements DenormalizerInterface, NormalizerInte
         }
         $object = new \Docker\Api\Model\NodeDescription();
         $validator = new \Docker\Api\Validator\NodeDescriptionValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -80,7 +82,9 @@ class NodeDescriptionNormalizer implements DenormalizerInterface, NormalizerInte
             $data['TLSInfo'] = $this->normalizer->normalize($object->getTLSInfo(), 'json', $context);
         }
         $validator = new \Docker\Api\Validator\NodeDescriptionValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

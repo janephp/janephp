@@ -37,7 +37,9 @@ class BlobNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         }
         $object = new \Github\Model\Blob();
         $validator = new \Github\Validator\BlobValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -83,7 +85,9 @@ class BlobNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             $data['highlighted_content'] = $object->getHighlightedContent();
         }
         $validator = new \Github\Validator\BlobValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

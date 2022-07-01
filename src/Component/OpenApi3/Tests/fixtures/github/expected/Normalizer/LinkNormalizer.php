@@ -37,7 +37,9 @@ class LinkNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         }
         $object = new \Github\Model\Link();
         $validator = new \Github\Validator\LinkValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -54,7 +56,9 @@ class LinkNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         $data = array();
         $data['href'] = $object->getHref();
         $validator = new \Github\Validator\LinkValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

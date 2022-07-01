@@ -37,7 +37,9 @@ class GenericResourcesItemNamedResourceSpecNormalizer implements DenormalizerInt
         }
         $object = new \Docker\Api\Model\GenericResourcesItemNamedResourceSpec();
         $validator = new \Docker\Api\Validator\GenericResourcesItemNamedResourceSpecValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -62,7 +64,9 @@ class GenericResourcesItemNamedResourceSpecNormalizer implements DenormalizerInt
             $data['Value'] = $object->getValue();
         }
         $validator = new \Docker\Api\Validator\GenericResourcesItemNamedResourceSpecValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

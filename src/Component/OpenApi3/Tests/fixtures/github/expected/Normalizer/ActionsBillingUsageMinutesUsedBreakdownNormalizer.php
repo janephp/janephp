@@ -37,7 +37,9 @@ class ActionsBillingUsageMinutesUsedBreakdownNormalizer implements DenormalizerI
         }
         $object = new \Github\Model\ActionsBillingUsageMinutesUsedBreakdown();
         $validator = new \Github\Validator\ActionsBillingUsageMinutesUsedBreakdownValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -68,7 +70,9 @@ class ActionsBillingUsageMinutesUsedBreakdownNormalizer implements DenormalizerI
             $data['WINDOWS'] = $object->getWINDOWS();
         }
         $validator = new \Github\Validator\ActionsBillingUsageMinutesUsedBreakdownValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

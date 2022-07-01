@@ -37,7 +37,9 @@ class ValidationErrorSimpleNormalizer implements DenormalizerInterface, Normaliz
         }
         $object = new \Github\Model\ValidationErrorSimple();
         $validator = new \Github\Validator\ValidationErrorSimpleValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -72,7 +74,9 @@ class ValidationErrorSimpleNormalizer implements DenormalizerInterface, Normaliz
             $data['errors'] = $values;
         }
         $validator = new \Github\Validator\ValidationErrorSimpleValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

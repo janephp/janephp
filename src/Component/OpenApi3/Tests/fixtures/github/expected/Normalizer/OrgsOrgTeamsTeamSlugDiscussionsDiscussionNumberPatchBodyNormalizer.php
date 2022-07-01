@@ -37,7 +37,9 @@ class OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBodyNormalizer impleme
         }
         $object = new \Github\Model\OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBody();
         $validator = new \Github\Validator\OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -62,7 +64,9 @@ class OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBodyNormalizer impleme
             $data['body'] = $object->getBody();
         }
         $validator = new \Github\Validator\OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

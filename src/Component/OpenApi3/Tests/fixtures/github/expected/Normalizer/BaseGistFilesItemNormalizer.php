@@ -37,7 +37,9 @@ class BaseGistFilesItemNormalizer implements DenormalizerInterface, NormalizerIn
         }
         $object = new \Github\Model\BaseGistFilesItem();
         $validator = new \Github\Validator\BaseGistFilesItemValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -80,7 +82,9 @@ class BaseGistFilesItemNormalizer implements DenormalizerInterface, NormalizerIn
             $data['size'] = $object->getSize();
         }
         $validator = new \Github\Validator\BaseGistFilesItemValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

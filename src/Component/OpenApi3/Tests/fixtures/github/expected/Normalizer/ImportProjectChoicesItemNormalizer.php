@@ -37,7 +37,9 @@ class ImportProjectChoicesItemNormalizer implements DenormalizerInterface, Norma
         }
         $object = new \Github\Model\ImportProjectChoicesItem();
         $validator = new \Github\Validator\ImportProjectChoicesItemValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -68,7 +70,9 @@ class ImportProjectChoicesItemNormalizer implements DenormalizerInterface, Norma
             $data['human_name'] = $object->getHumanName();
         }
         $validator = new \Github\Validator\ImportProjectChoicesItemValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

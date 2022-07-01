@@ -37,7 +37,9 @@ class IssueCommentNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         $object = new \Github\Model\IssueComment();
         $validator = new \Github\Validator\IssueCommentValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -122,7 +124,9 @@ class IssueCommentNormalizer implements DenormalizerInterface, NormalizerInterfa
             $data['reactions'] = $this->normalizer->normalize($object->getReactions(), 'json', $context);
         }
         $validator = new \Github\Validator\IssueCommentValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

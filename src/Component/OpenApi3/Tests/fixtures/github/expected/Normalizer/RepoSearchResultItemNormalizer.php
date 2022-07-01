@@ -37,7 +37,9 @@ class RepoSearchResultItemNormalizer implements DenormalizerInterface, Normalize
         }
         $object = new \Github\Model\RepoSearchResultItem();
         $validator = new \Github\Validator\RepoSearchResultItemValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -434,7 +436,9 @@ class RepoSearchResultItemNormalizer implements DenormalizerInterface, Normalize
             $data['delete_branch_on_merge'] = $object->getDeleteBranchOnMerge();
         }
         $validator = new \Github\Validator\RepoSearchResultItemValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

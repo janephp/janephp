@@ -37,7 +37,9 @@ class ServiceEndpointVirtualIPsItemNormalizer implements DenormalizerInterface, 
         }
         $object = new \Docker\Api\Model\ServiceEndpointVirtualIPsItem();
         $validator = new \Docker\Api\Validator\ServiceEndpointVirtualIPsItemValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -62,7 +64,9 @@ class ServiceEndpointVirtualIPsItemNormalizer implements DenormalizerInterface, 
             $data['Addr'] = $object->getAddr();
         }
         $validator = new \Docker\Api\Validator\ServiceEndpointVirtualIPsItemValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

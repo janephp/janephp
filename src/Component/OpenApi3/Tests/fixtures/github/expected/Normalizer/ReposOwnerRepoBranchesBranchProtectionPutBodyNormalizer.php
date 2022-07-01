@@ -37,7 +37,9 @@ class ReposOwnerRepoBranchesBranchProtectionPutBodyNormalizer implements Denorma
         }
         $object = new \Github\Model\ReposOwnerRepoBranchesBranchProtectionPutBody();
         $validator = new \Github\Validator\ReposOwnerRepoBranchesBranchProtectionPutBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -99,7 +101,9 @@ class ReposOwnerRepoBranchesBranchProtectionPutBodyNormalizer implements Denorma
             $data['allow_deletions'] = $object->getAllowDeletions();
         }
         $validator = new \Github\Validator\ReposOwnerRepoBranchesBranchProtectionPutBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

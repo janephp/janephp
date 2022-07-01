@@ -37,7 +37,9 @@ class ScimUserGroupsItemNormalizer implements DenormalizerInterface, NormalizerI
         }
         $object = new \Github\Model\ScimUserGroupsItem();
         $validator = new \Github\Validator\ScimUserGroupsItemValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -62,7 +64,9 @@ class ScimUserGroupsItemNormalizer implements DenormalizerInterface, NormalizerI
             $data['display'] = $object->getDisplay();
         }
         $validator = new \Github\Validator\ScimUserGroupsItemValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

@@ -37,7 +37,9 @@ class AddressNormalizer implements DenormalizerInterface, NormalizerInterface, D
         }
         $object = new \Docker\Api\Model\Address();
         $validator = new \Docker\Api\Validator\AddressValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -62,7 +64,9 @@ class AddressNormalizer implements DenormalizerInterface, NormalizerInterface, D
             $data['PrefixLen'] = $object->getPrefixLen();
         }
         $validator = new \Docker\Api\Validator\AddressValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

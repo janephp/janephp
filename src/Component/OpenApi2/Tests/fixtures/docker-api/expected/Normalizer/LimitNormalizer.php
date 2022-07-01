@@ -37,7 +37,9 @@ class LimitNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         }
         $object = new \Docker\Api\Model\Limit();
         $validator = new \Docker\Api\Validator\LimitValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -68,7 +70,9 @@ class LimitNormalizer implements DenormalizerInterface, NormalizerInterface, Den
             $data['Pids'] = $object->getPids();
         }
         $validator = new \Docker\Api\Validator\LimitValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

@@ -37,7 +37,9 @@ class GistsGistIdCommentsCommentIdPatchBodyNormalizer implements DenormalizerInt
         }
         $object = new \Github\Model\GistsGistIdCommentsCommentIdPatchBody();
         $validator = new \Github\Validator\GistsGistIdCommentsCommentIdPatchBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -54,7 +56,9 @@ class GistsGistIdCommentsCommentIdPatchBodyNormalizer implements DenormalizerInt
         $data = array();
         $data['body'] = $object->getBody();
         $validator = new \Github\Validator\GistsGistIdCommentsCommentIdPatchBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

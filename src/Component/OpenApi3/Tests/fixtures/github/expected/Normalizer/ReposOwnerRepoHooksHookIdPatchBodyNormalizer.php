@@ -37,7 +37,9 @@ class ReposOwnerRepoHooksHookIdPatchBodyNormalizer implements DenormalizerInterf
         }
         $object = new \Github\Model\ReposOwnerRepoHooksHookIdPatchBody();
         $validator = new \Github\Validator\ReposOwnerRepoHooksHookIdPatchBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -104,7 +106,9 @@ class ReposOwnerRepoHooksHookIdPatchBodyNormalizer implements DenormalizerInterf
             $data['active'] = $object->getActive();
         }
         $validator = new \Github\Validator\ReposOwnerRepoHooksHookIdPatchBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

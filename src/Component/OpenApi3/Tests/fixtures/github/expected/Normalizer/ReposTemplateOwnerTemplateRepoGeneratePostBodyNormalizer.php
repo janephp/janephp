@@ -37,7 +37,9 @@ class ReposTemplateOwnerTemplateRepoGeneratePostBodyNormalizer implements Denorm
         }
         $object = new \Github\Model\ReposTemplateOwnerTemplateRepoGeneratePostBody();
         $validator = new \Github\Validator\ReposTemplateOwnerTemplateRepoGeneratePostBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -72,7 +74,9 @@ class ReposTemplateOwnerTemplateRepoGeneratePostBodyNormalizer implements Denorm
             $data['private'] = $object->getPrivate();
         }
         $validator = new \Github\Validator\ReposTemplateOwnerTemplateRepoGeneratePostBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

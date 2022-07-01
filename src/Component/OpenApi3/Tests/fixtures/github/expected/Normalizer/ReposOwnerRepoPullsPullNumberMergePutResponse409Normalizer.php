@@ -37,7 +37,9 @@ class ReposOwnerRepoPullsPullNumberMergePutResponse409Normalizer implements Deno
         }
         $object = new \Github\Model\ReposOwnerRepoPullsPullNumberMergePutResponse409();
         $validator = new \Github\Validator\ReposOwnerRepoPullsPullNumberMergePutResponse409Validator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -62,7 +64,9 @@ class ReposOwnerRepoPullsPullNumberMergePutResponse409Normalizer implements Deno
             $data['documentation_url'] = $object->getDocumentationUrl();
         }
         $validator = new \Github\Validator\ReposOwnerRepoPullsPullNumberMergePutResponse409Validator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

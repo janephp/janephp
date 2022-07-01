@@ -37,7 +37,9 @@ class CodeScanningAlertNormalizer implements DenormalizerInterface, NormalizerIn
         }
         $object = new \Github\Model\CodeScanningAlert();
         $validator = new \Github\Validator\CodeScanningAlertValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -134,7 +136,9 @@ class CodeScanningAlertNormalizer implements DenormalizerInterface, NormalizerIn
             $data['closed_reason'] = $object->getClosedReason();
         }
         $validator = new \Github\Validator\CodeScanningAlertValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

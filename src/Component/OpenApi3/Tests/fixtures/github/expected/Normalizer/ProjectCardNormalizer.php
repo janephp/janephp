@@ -37,7 +37,9 @@ class ProjectCardNormalizer implements DenormalizerInterface, NormalizerInterfac
         }
         $object = new \Github\Model\ProjectCard();
         $validator = new \Github\Validator\ProjectCardValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -104,7 +106,9 @@ class ProjectCardNormalizer implements DenormalizerInterface, NormalizerInterfac
         }
         $data['project_url'] = $object->getProjectUrl();
         $validator = new \Github\Validator\ProjectCardValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

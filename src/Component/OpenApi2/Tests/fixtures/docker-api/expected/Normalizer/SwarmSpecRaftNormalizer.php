@@ -37,7 +37,9 @@ class SwarmSpecRaftNormalizer implements DenormalizerInterface, NormalizerInterf
         }
         $object = new \Docker\Api\Model\SwarmSpecRaft();
         $validator = new \Docker\Api\Validator\SwarmSpecRaftValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -80,7 +82,9 @@ class SwarmSpecRaftNormalizer implements DenormalizerInterface, NormalizerInterf
             $data['HeartbeatTick'] = $object->getHeartbeatTick();
         }
         $validator = new \Docker\Api\Validator\SwarmSpecRaftValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

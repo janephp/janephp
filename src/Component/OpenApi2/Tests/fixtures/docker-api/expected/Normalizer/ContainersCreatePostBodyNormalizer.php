@@ -37,7 +37,9 @@ class ContainersCreatePostBodyNormalizer implements DenormalizerInterface, Norma
         }
         $object = new \Docker\Api\Model\ContainersCreatePostBody();
         $validator = new \Docker\Api\Validator\ContainersCreatePostBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -276,7 +278,9 @@ class ContainersCreatePostBodyNormalizer implements DenormalizerInterface, Norma
             $data['NetworkingConfig'] = $this->normalizer->normalize($object->getNetworkingConfig(), 'json', $context);
         }
         $validator = new \Docker\Api\Validator\ContainersCreatePostBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

@@ -37,7 +37,9 @@ class CredentialAuthorizationNormalizer implements DenormalizerInterface, Normal
         }
         $object = new \Github\Model\CredentialAuthorization();
         $validator = new \Github\Validator\CredentialAuthorizationValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -101,7 +103,9 @@ class CredentialAuthorizationNormalizer implements DenormalizerInterface, Normal
             $data['credential_accessed_at'] = $object->getCredentialAccessedAt()->format('Y-m-d\\TH:i:sP');
         }
         $validator = new \Github\Validator\CredentialAuthorizationValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

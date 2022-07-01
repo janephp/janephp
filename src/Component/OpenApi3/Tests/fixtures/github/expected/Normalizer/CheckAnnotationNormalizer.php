@@ -37,7 +37,9 @@ class CheckAnnotationNormalizer implements DenormalizerInterface, NormalizerInte
         }
         $object = new \Github\Model\CheckAnnotation();
         $validator = new \Github\Validator\CheckAnnotationValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -108,7 +110,9 @@ class CheckAnnotationNormalizer implements DenormalizerInterface, NormalizerInte
         $data['raw_details'] = $object->getRawDetails();
         $data['blob_href'] = $object->getBlobHref();
         $validator = new \Github\Validator\CheckAnnotationValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

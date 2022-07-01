@@ -37,7 +37,9 @@ class AppInstallationsInstallationIdAccessTokensPostBodyPermissionsNormalizer im
         }
         $object = new \Github\Model\AppInstallationsInstallationIdAccessTokensPostBodyPermissions();
         $validator = new \Github\Validator\AppInstallationsInstallationIdAccessTokensPostBodyPermissionsValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -80,7 +82,9 @@ class AppInstallationsInstallationIdAccessTokensPostBodyPermissionsNormalizer im
             $data['def_not_a_repo'] = $object->getDefNotARepo();
         }
         $validator = new \Github\Validator\AppInstallationsInstallationIdAccessTokensPostBodyPermissionsValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

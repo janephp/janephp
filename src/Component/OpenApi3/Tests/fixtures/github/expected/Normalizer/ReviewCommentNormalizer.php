@@ -37,7 +37,9 @@ class ReviewCommentNormalizer implements DenormalizerInterface, NormalizerInterf
         }
         $object = new \Github\Model\ReviewComment();
         $validator = new \Github\Validator\ReviewCommentValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -194,7 +196,9 @@ class ReviewCommentNormalizer implements DenormalizerInterface, NormalizerInterf
             $data['original_start_line'] = $object->getOriginalStartLine();
         }
         $validator = new \Github\Validator\ReviewCommentValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

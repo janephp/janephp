@@ -37,7 +37,9 @@ class BranchRestrictionPolicyAppsItemOwnerNormalizer implements DenormalizerInte
         }
         $object = new \Github\Model\BranchRestrictionPolicyAppsItemOwner();
         $validator = new \Github\Validator\BranchRestrictionPolicyAppsItemOwnerValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -182,7 +184,9 @@ class BranchRestrictionPolicyAppsItemOwnerNormalizer implements DenormalizerInte
             $data['type'] = $object->getType();
         }
         $validator = new \Github\Validator\BranchRestrictionPolicyAppsItemOwnerValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

@@ -37,7 +37,9 @@ class IssueEventLabelNormalizer implements DenormalizerInterface, NormalizerInte
         }
         $object = new \Github\Model\IssueEventLabel();
         $validator = new \Github\Validator\IssueEventLabelValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -64,7 +66,9 @@ class IssueEventLabelNormalizer implements DenormalizerInterface, NormalizerInte
         $data['name'] = $object->getName();
         $data['color'] = $object->getColor();
         $validator = new \Github\Validator\IssueEventLabelValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

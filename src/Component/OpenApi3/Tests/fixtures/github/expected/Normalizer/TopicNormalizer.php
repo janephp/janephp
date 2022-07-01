@@ -37,7 +37,9 @@ class TopicNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         }
         $object = new \Github\Model\Topic();
         $validator = new \Github\Validator\TopicValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -64,7 +66,9 @@ class TopicNormalizer implements DenormalizerInterface, NormalizerInterface, Den
             $data['names'] = $values;
         }
         $validator = new \Github\Validator\TopicValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

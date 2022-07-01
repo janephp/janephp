@@ -37,7 +37,9 @@ class PackagesBillingUsageNormalizer implements DenormalizerInterface, Normalize
         }
         $object = new \Github\Model\PackagesBillingUsage();
         $validator = new \Github\Validator\PackagesBillingUsageValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -68,7 +70,9 @@ class PackagesBillingUsageNormalizer implements DenormalizerInterface, Normalize
             $data['included_gigabytes_bandwidth'] = $object->getIncludedGigabytesBandwidth();
         }
         $validator = new \Github\Validator\PackagesBillingUsageValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

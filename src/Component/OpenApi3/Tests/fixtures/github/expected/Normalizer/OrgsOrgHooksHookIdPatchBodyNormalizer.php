@@ -37,7 +37,9 @@ class OrgsOrgHooksHookIdPatchBodyNormalizer implements DenormalizerInterface, No
         }
         $object = new \Github\Model\OrgsOrgHooksHookIdPatchBody();
         $validator = new \Github\Validator\OrgsOrgHooksHookIdPatchBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -82,7 +84,9 @@ class OrgsOrgHooksHookIdPatchBodyNormalizer implements DenormalizerInterface, No
             $data['name'] = $object->getName();
         }
         $validator = new \Github\Validator\OrgsOrgHooksHookIdPatchBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

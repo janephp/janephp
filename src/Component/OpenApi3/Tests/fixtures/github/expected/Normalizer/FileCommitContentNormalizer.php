@@ -37,7 +37,9 @@ class FileCommitContentNormalizer implements DenormalizerInterface, NormalizerIn
         }
         $object = new \Github\Model\FileCommitContent();
         $validator = new \Github\Validator\FileCommitContentValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -110,7 +112,9 @@ class FileCommitContentNormalizer implements DenormalizerInterface, NormalizerIn
             $data['_links'] = $this->normalizer->normalize($object->getLinks(), 'json', $context);
         }
         $validator = new \Github\Validator\FileCommitContentValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

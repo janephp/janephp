@@ -37,7 +37,9 @@ class ProjectsColumnsCardsCardIdPatchBodyNormalizer implements DenormalizerInter
         }
         $object = new \Github\Model\ProjectsColumnsCardsCardIdPatchBody();
         $validator = new \Github\Validator\ProjectsColumnsCardsCardIdPatchBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -65,7 +67,9 @@ class ProjectsColumnsCardsCardIdPatchBodyNormalizer implements DenormalizerInter
             $data['archived'] = $object->getArchived();
         }
         $validator = new \Github\Validator\ProjectsColumnsCardsCardIdPatchBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

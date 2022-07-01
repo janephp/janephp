@@ -37,7 +37,9 @@ class TaskSpecRestartPolicyNormalizer implements DenormalizerInterface, Normaliz
         }
         $object = new \Docker\Api\Model\TaskSpecRestartPolicy();
         $validator = new \Docker\Api\Validator\TaskSpecRestartPolicyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -74,7 +76,9 @@ class TaskSpecRestartPolicyNormalizer implements DenormalizerInterface, Normaliz
             $data['Window'] = $object->getWindow();
         }
         $validator = new \Docker\Api\Validator\TaskSpecRestartPolicyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

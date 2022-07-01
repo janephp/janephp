@@ -37,7 +37,9 @@ class GistsPostBodyNormalizer implements DenormalizerInterface, NormalizerInterf
         }
         $object = new \Github\Model\GistsPostBody();
         $validator = new \Github\Validator\GistsPostBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -74,7 +76,9 @@ class GistsPostBodyNormalizer implements DenormalizerInterface, NormalizerInterf
             $data['public'] = $object->getPublic();
         }
         $validator = new \Github\Validator\GistsPostBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

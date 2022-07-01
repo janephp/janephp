@@ -37,7 +37,9 @@ class ResourcesUlimitsItemNormalizer implements DenormalizerInterface, Normalize
         }
         $object = new \Docker\Api\Model\ResourcesUlimitsItem();
         $validator = new \Docker\Api\Validator\ResourcesUlimitsItemValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -68,7 +70,9 @@ class ResourcesUlimitsItemNormalizer implements DenormalizerInterface, Normalize
             $data['Hard'] = $object->getHard();
         }
         $validator = new \Docker\Api\Validator\ResourcesUlimitsItemValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

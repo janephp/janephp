@@ -37,7 +37,9 @@ class PluginPrivilegeNormalizer implements DenormalizerInterface, NormalizerInte
         }
         $object = new \Docker\Api\Model\PluginPrivilege();
         $validator = new \Docker\Api\Validator\PluginPrivilegeValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -76,7 +78,9 @@ class PluginPrivilegeNormalizer implements DenormalizerInterface, NormalizerInte
             $data['Value'] = $values;
         }
         $validator = new \Docker\Api\Validator\PluginPrivilegeValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

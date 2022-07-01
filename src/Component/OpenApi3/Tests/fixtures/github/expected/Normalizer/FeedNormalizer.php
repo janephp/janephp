@@ -37,7 +37,9 @@ class FeedNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         }
         $object = new \Github\Model\Feed();
         $validator = new \Github\Validator\FeedValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -106,7 +108,9 @@ class FeedNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         }
         $data['_links'] = $this->normalizer->normalize($object->getLinks(), 'json', $context);
         $validator = new \Github\Validator\FeedValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

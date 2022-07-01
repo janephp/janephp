@@ -37,7 +37,9 @@ class IssueEventProjectCardNormalizer implements DenormalizerInterface, Normaliz
         }
         $object = new \Github\Model\IssueEventProjectCard();
         $validator = new \Github\Validator\IssueEventProjectCardValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -76,7 +78,9 @@ class IssueEventProjectCardNormalizer implements DenormalizerInterface, Normaliz
             $data['previous_column_name'] = $object->getPreviousColumnName();
         }
         $validator = new \Github\Validator\IssueEventProjectCardValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

@@ -37,7 +37,9 @@ class ReposOwnerRepoPullsPostBodyNormalizer implements DenormalizerInterface, No
         }
         $object = new \Github\Model\ReposOwnerRepoPullsPostBody();
         $validator = new \Github\Validator\ReposOwnerRepoPullsPostBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -88,7 +90,9 @@ class ReposOwnerRepoPullsPostBodyNormalizer implements DenormalizerInterface, No
             $data['issue'] = $object->getIssue();
         }
         $validator = new \Github\Validator\ReposOwnerRepoPullsPostBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

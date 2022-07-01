@@ -37,7 +37,9 @@ class ServicesIdUpdatePostBodyNormalizer implements DenormalizerInterface, Norma
         }
         $object = new \Docker\Api\Model\ServicesIdUpdatePostBody();
         $validator = new \Docker\Api\Validator\ServicesIdUpdatePostBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -114,7 +116,9 @@ class ServicesIdUpdatePostBodyNormalizer implements DenormalizerInterface, Norma
             $data['EndpointSpec'] = $this->normalizer->normalize($object->getEndpointSpec(), 'json', $context);
         }
         $validator = new \Docker\Api\Validator\ServicesIdUpdatePostBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

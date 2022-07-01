@@ -37,7 +37,9 @@ class LicenseSimpleNormalizer implements DenormalizerInterface, NormalizerInterf
         }
         $object = new \Github\Model\LicenseSimple();
         $validator = new \Github\Validator\LicenseSimpleValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -82,7 +84,9 @@ class LicenseSimpleNormalizer implements DenormalizerInterface, NormalizerInterf
             $data['html_url'] = $object->getHtmlUrl();
         }
         $validator = new \Github\Validator\LicenseSimpleValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

@@ -37,7 +37,9 @@ class PlatformNormalizer implements DenormalizerInterface, NormalizerInterface, 
         }
         $object = new \Docker\Api\Model\Platform();
         $validator = new \Docker\Api\Validator\PlatformValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -62,7 +64,9 @@ class PlatformNormalizer implements DenormalizerInterface, NormalizerInterface, 
             $data['OS'] = $object->getOS();
         }
         $validator = new \Docker\Api\Validator\PlatformValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

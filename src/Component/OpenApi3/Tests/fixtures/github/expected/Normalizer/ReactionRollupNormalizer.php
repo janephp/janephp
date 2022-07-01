@@ -37,7 +37,9 @@ class ReactionRollupNormalizer implements DenormalizerInterface, NormalizerInter
         }
         $object = new \Github\Model\ReactionRollup();
         $validator = new \Github\Validator\ReactionRollupValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -90,7 +92,9 @@ class ReactionRollupNormalizer implements DenormalizerInterface, NormalizerInter
         $data['eyes'] = $object->getEyes();
         $data['rocket'] = $object->getRocket();
         $validator = new \Github\Validator\ReactionRollupValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

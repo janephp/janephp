@@ -37,7 +37,9 @@ class ScimUserMetaNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         $object = new \Github\Model\ScimUserMeta();
         $validator = new \Github\Validator\ScimUserMetaValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -74,7 +76,9 @@ class ScimUserMetaNormalizer implements DenormalizerInterface, NormalizerInterfa
             $data['location'] = $object->getLocation();
         }
         $validator = new \Github\Validator\ScimUserMetaValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

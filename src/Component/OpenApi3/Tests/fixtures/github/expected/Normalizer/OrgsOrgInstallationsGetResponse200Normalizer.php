@@ -37,7 +37,9 @@ class OrgsOrgInstallationsGetResponse200Normalizer implements DenormalizerInterf
         }
         $object = new \Github\Model\OrgsOrgInstallationsGetResponse200();
         $validator = new \Github\Validator\OrgsOrgInstallationsGetResponse200Validator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -70,7 +72,9 @@ class OrgsOrgInstallationsGetResponse200Normalizer implements DenormalizerInterf
             $data['installations'] = $values;
         }
         $validator = new \Github\Validator\OrgsOrgInstallationsGetResponse200Validator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

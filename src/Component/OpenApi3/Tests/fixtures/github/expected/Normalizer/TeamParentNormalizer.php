@@ -37,7 +37,9 @@ class TeamParentNormalizer implements DenormalizerInterface, NormalizerInterface
         }
         $object = new \Github\Model\TeamParent();
         $validator = new \Github\Validator\TeamParentValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -105,7 +107,9 @@ class TeamParentNormalizer implements DenormalizerInterface, NormalizerInterface
             $data['ldap_dn'] = $object->getLdapDn();
         }
         $validator = new \Github\Validator\TeamParentValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

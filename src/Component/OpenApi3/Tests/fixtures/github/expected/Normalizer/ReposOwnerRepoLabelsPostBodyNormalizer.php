@@ -37,7 +37,9 @@ class ReposOwnerRepoLabelsPostBodyNormalizer implements DenormalizerInterface, N
         }
         $object = new \Github\Model\ReposOwnerRepoLabelsPostBody();
         $validator = new \Github\Validator\ReposOwnerRepoLabelsPostBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -66,7 +68,9 @@ class ReposOwnerRepoLabelsPostBodyNormalizer implements DenormalizerInterface, N
             $data['description'] = $object->getDescription();
         }
         $validator = new \Github\Validator\ReposOwnerRepoLabelsPostBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

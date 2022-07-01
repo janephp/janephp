@@ -37,7 +37,9 @@ class StarredRepositoryNormalizer implements DenormalizerInterface, NormalizerIn
         }
         $object = new \Github\Model\StarredRepository();
         $validator = new \Github\Validator\StarredRepositoryValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -58,7 +60,9 @@ class StarredRepositoryNormalizer implements DenormalizerInterface, NormalizerIn
         $data['starred_at'] = $object->getStarredAt()->format('Y-m-d\\TH:i:sP');
         $data['repo'] = $this->normalizer->normalize($object->getRepo(), 'json', $context);
         $validator = new \Github\Validator\StarredRepositoryValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

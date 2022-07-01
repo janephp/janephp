@@ -37,7 +37,9 @@ class KeyNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
         }
         $object = new \Github\Model\Key();
         $validator = new \Github\Validator\KeyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -98,7 +100,9 @@ class KeyNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
             $data['read_only'] = $object->getReadOnly();
         }
         $validator = new \Github\Validator\KeyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

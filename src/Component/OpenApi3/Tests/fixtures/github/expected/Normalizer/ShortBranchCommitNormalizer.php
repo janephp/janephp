@@ -37,7 +37,9 @@ class ShortBranchCommitNormalizer implements DenormalizerInterface, NormalizerIn
         }
         $object = new \Github\Model\ShortBranchCommit();
         $validator = new \Github\Validator\ShortBranchCommitValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -58,7 +60,9 @@ class ShortBranchCommitNormalizer implements DenormalizerInterface, NormalizerIn
         $data['sha'] = $object->getSha();
         $data['url'] = $object->getUrl();
         $validator = new \Github\Validator\ShortBranchCommitValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

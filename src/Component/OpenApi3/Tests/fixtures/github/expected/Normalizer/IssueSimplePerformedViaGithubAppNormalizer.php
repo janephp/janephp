@@ -37,7 +37,9 @@ class IssueSimplePerformedViaGithubAppNormalizer implements DenormalizerInterfac
         }
         $object = new \Github\Model\IssueSimplePerformedViaGithubApp();
         $validator = new \Github\Validator\IssueSimplePerformedViaGithubAppValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -144,7 +146,9 @@ class IssueSimplePerformedViaGithubAppNormalizer implements DenormalizerInterfac
             $data['pem'] = $object->getPem();
         }
         $validator = new \Github\Validator\IssueSimplePerformedViaGithubAppValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

@@ -37,7 +37,9 @@ class VerificationNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         $object = new \Github\Model\Verification();
         $validator = new \Github\Validator\VerificationValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -72,7 +74,9 @@ class VerificationNormalizer implements DenormalizerInterface, NormalizerInterfa
         $data['payload'] = $object->getPayload();
         $data['signature'] = $object->getSignature();
         $validator = new \Github\Validator\VerificationValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

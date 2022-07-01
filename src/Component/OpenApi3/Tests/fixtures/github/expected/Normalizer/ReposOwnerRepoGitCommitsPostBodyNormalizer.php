@@ -37,7 +37,9 @@ class ReposOwnerRepoGitCommitsPostBodyNormalizer implements DenormalizerInterfac
         }
         $object = new \Github\Model\ReposOwnerRepoGitCommitsPostBody();
         $validator = new \Github\Validator\ReposOwnerRepoGitCommitsPostBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -90,7 +92,9 @@ class ReposOwnerRepoGitCommitsPostBodyNormalizer implements DenormalizerInterfac
             $data['signature'] = $object->getSignature();
         }
         $validator = new \Github\Validator\ReposOwnerRepoGitCommitsPostBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

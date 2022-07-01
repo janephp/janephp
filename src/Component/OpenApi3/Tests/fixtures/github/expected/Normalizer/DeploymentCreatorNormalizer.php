@@ -37,7 +37,9 @@ class DeploymentCreatorNormalizer implements DenormalizerInterface, NormalizerIn
         }
         $object = new \Github\Model\DeploymentCreator();
         $validator = new \Github\Validator\DeploymentCreatorValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -131,7 +133,9 @@ class DeploymentCreatorNormalizer implements DenormalizerInterface, NormalizerIn
             $data['starred_at'] = $object->getStarredAt();
         }
         $validator = new \Github\Validator\DeploymentCreatorValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

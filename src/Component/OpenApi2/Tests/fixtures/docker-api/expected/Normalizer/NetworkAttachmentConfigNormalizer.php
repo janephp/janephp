@@ -37,7 +37,9 @@ class NetworkAttachmentConfigNormalizer implements DenormalizerInterface, Normal
         }
         $object = new \Docker\Api\Model\NetworkAttachmentConfig();
         $validator = new \Docker\Api\Validator\NetworkAttachmentConfigValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -84,7 +86,9 @@ class NetworkAttachmentConfigNormalizer implements DenormalizerInterface, Normal
             $data['DriverOpts'] = $values_1;
         }
         $validator = new \Docker\Api\Validator\NetworkAttachmentConfigValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

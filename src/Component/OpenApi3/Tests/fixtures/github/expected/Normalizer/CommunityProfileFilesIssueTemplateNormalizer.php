@@ -37,7 +37,9 @@ class CommunityProfileFilesIssueTemplateNormalizer implements DenormalizerInterf
         }
         $object = new \Github\Model\CommunityProfileFilesIssueTemplate();
         $validator = new \Github\Validator\CommunityProfileFilesIssueTemplateValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -58,7 +60,9 @@ class CommunityProfileFilesIssueTemplateNormalizer implements DenormalizerInterf
         $data['url'] = $object->getUrl();
         $data['html_url'] = $object->getHtmlUrl();
         $validator = new \Github\Validator\CommunityProfileFilesIssueTemplateValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

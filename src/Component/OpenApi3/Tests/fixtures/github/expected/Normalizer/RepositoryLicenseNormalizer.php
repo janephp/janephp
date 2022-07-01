@@ -37,7 +37,9 @@ class RepositoryLicenseNormalizer implements DenormalizerInterface, NormalizerIn
         }
         $object = new \Github\Model\RepositoryLicense();
         $validator = new \Github\Validator\RepositoryLicenseValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -82,7 +84,9 @@ class RepositoryLicenseNormalizer implements DenormalizerInterface, NormalizerIn
             $data['html_url'] = $object->getHtmlUrl();
         }
         $validator = new \Github\Validator\RepositoryLicenseValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

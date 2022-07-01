@@ -37,7 +37,9 @@ class ImageIDNormalizer implements DenormalizerInterface, NormalizerInterface, D
         }
         $object = new \Docker\Api\Model\ImageID();
         $validator = new \Docker\Api\Validator\ImageIDValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -56,7 +58,9 @@ class ImageIDNormalizer implements DenormalizerInterface, NormalizerInterface, D
             $data['ID'] = $object->getID();
         }
         $validator = new \Docker\Api\Validator\ImageIDValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

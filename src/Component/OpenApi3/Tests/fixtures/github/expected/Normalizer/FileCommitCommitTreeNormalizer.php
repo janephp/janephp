@@ -37,7 +37,9 @@ class FileCommitCommitTreeNormalizer implements DenormalizerInterface, Normalize
         }
         $object = new \Github\Model\FileCommitCommitTree();
         $validator = new \Github\Validator\FileCommitCommitTreeValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -62,7 +64,9 @@ class FileCommitCommitTreeNormalizer implements DenormalizerInterface, Normalize
             $data['sha'] = $object->getSha();
         }
         $validator = new \Github\Validator\FileCommitCommitTreeValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

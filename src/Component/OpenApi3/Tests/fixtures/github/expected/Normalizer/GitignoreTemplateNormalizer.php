@@ -37,7 +37,9 @@ class GitignoreTemplateNormalizer implements DenormalizerInterface, NormalizerIn
         }
         $object = new \Github\Model\GitignoreTemplate();
         $validator = new \Github\Validator\GitignoreTemplateValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -58,7 +60,9 @@ class GitignoreTemplateNormalizer implements DenormalizerInterface, NormalizerIn
         $data['name'] = $object->getName();
         $data['source'] = $object->getSource();
         $validator = new \Github\Validator\GitignoreTemplateValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

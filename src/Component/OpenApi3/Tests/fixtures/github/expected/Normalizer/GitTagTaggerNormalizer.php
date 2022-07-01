@@ -37,7 +37,9 @@ class GitTagTaggerNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         $object = new \Github\Model\GitTagTagger();
         $validator = new \Github\Validator\GitTagTaggerValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -62,7 +64,9 @@ class GitTagTaggerNormalizer implements DenormalizerInterface, NormalizerInterfa
         $data['email'] = $object->getEmail();
         $data['name'] = $object->getName();
         $validator = new \Github\Validator\GitTagTaggerValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

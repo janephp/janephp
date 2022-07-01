@@ -37,7 +37,9 @@ class GistCommitChangeStatusNormalizer implements DenormalizerInterface, Normali
         }
         $object = new \Github\Model\GistCommitChangeStatus();
         $validator = new \Github\Validator\GistCommitChangeStatusValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -68,7 +70,9 @@ class GistCommitChangeStatusNormalizer implements DenormalizerInterface, Normali
             $data['deletions'] = $object->getDeletions();
         }
         $validator = new \Github\Validator\GistCommitChangeStatusValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

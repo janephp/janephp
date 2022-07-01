@@ -37,7 +37,9 @@ class VolumesCreatePostBodyNormalizer implements DenormalizerInterface, Normaliz
         }
         $object = new \Docker\Api\Model\VolumesCreatePostBody();
         $validator = new \Docker\Api\Validator\VolumesCreatePostBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -90,7 +92,9 @@ class VolumesCreatePostBodyNormalizer implements DenormalizerInterface, Normaliz
             $data['Labels'] = $values_1;
         }
         $validator = new \Docker\Api\Validator\VolumesCreatePostBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

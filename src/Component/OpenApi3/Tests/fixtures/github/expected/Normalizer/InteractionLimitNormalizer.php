@@ -37,7 +37,9 @@ class InteractionLimitNormalizer implements DenormalizerInterface, NormalizerInt
         }
         $object = new \Github\Model\InteractionLimit();
         $validator = new \Github\Validator\InteractionLimitValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -62,7 +64,9 @@ class InteractionLimitNormalizer implements DenormalizerInterface, NormalizerInt
         $data['origin'] = $object->getOrigin();
         $data['expires_at'] = $object->getExpiresAt()->format('Y-m-d\\TH:i:sP');
         $validator = new \Github\Validator\InteractionLimitValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

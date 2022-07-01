@@ -37,7 +37,9 @@ class CommitSearchResultItemParentsItemNormalizer implements DenormalizerInterfa
         }
         $object = new \Github\Model\CommitSearchResultItemParentsItem();
         $validator = new \Github\Validator\CommitSearchResultItemParentsItemValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -68,7 +70,9 @@ class CommitSearchResultItemParentsItemNormalizer implements DenormalizerInterfa
             $data['sha'] = $object->getSha();
         }
         $validator = new \Github\Validator\CommitSearchResultItemParentsItemValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

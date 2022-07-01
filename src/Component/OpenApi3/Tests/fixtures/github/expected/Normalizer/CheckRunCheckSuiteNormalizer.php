@@ -37,7 +37,9 @@ class CheckRunCheckSuiteNormalizer implements DenormalizerInterface, NormalizerI
         }
         $object = new \Github\Model\CheckRunCheckSuite();
         $validator = new \Github\Validator\CheckRunCheckSuiteValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -54,7 +56,9 @@ class CheckRunCheckSuiteNormalizer implements DenormalizerInterface, NormalizerI
         $data = array();
         $data['id'] = $object->getId();
         $validator = new \Github\Validator\CheckRunCheckSuiteValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

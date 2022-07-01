@@ -37,7 +37,9 @@ class DeployKeyNormalizer implements DenormalizerInterface, NormalizerInterface,
         }
         $object = new \Github\Model\DeployKey();
         $validator = new \Github\Validator\DeployKeyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -92,7 +94,9 @@ class DeployKeyNormalizer implements DenormalizerInterface, NormalizerInterface,
             $data['read_only'] = $object->getReadOnly();
         }
         $validator = new \Github\Validator\DeployKeyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

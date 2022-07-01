@@ -37,7 +37,9 @@ class HookNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         }
         $object = new \Github\Model\Hook();
         $validator = new \Github\Validator\HookValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -106,7 +108,9 @@ class HookNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         $data['ping_url'] = $object->getPingUrl();
         $data['last_response'] = $this->normalizer->normalize($object->getLastResponse(), 'json', $context);
         $validator = new \Github\Validator\HookValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

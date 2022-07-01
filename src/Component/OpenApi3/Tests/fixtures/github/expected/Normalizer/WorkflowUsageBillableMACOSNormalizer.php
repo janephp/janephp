@@ -37,7 +37,9 @@ class WorkflowUsageBillableMACOSNormalizer implements DenormalizerInterface, Nor
         }
         $object = new \Github\Model\WorkflowUsageBillableMACOS();
         $validator = new \Github\Validator\WorkflowUsageBillableMACOSValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -56,7 +58,9 @@ class WorkflowUsageBillableMACOSNormalizer implements DenormalizerInterface, Nor
             $data['total_ms'] = $object->getTotalMs();
         }
         $validator = new \Github\Validator\WorkflowUsageBillableMACOSValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

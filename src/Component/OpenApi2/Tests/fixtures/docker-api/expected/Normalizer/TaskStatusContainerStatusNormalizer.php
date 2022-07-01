@@ -37,7 +37,9 @@ class TaskStatusContainerStatusNormalizer implements DenormalizerInterface, Norm
         }
         $object = new \Docker\Api\Model\TaskStatusContainerStatus();
         $validator = new \Docker\Api\Validator\TaskStatusContainerStatusValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -68,7 +70,9 @@ class TaskStatusContainerStatusNormalizer implements DenormalizerInterface, Norm
             $data['ExitCode'] = $object->getExitCode();
         }
         $validator = new \Docker\Api\Validator\TaskStatusContainerStatusValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

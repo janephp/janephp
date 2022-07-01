@@ -37,7 +37,9 @@ class ViewTrafficNormalizer implements DenormalizerInterface, NormalizerInterfac
         }
         $object = new \Github\Model\ViewTraffic();
         $validator = new \Github\Validator\ViewTrafficValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -70,7 +72,9 @@ class ViewTrafficNormalizer implements DenormalizerInterface, NormalizerInterfac
         }
         $data['views'] = $values;
         $validator = new \Github\Validator\ViewTrafficValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

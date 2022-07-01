@@ -37,7 +37,9 @@ class RepoSearchResultItemPermissionsNormalizer implements DenormalizerInterface
         }
         $object = new \Github\Model\RepoSearchResultItemPermissions();
         $validator = new \Github\Validator\RepoSearchResultItemPermissionsValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -62,7 +64,9 @@ class RepoSearchResultItemPermissionsNormalizer implements DenormalizerInterface
         $data['pull'] = $object->getPull();
         $data['push'] = $object->getPush();
         $validator = new \Github\Validator\RepoSearchResultItemPermissionsValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

@@ -37,7 +37,9 @@ class RepositorySubscriptionNormalizer implements DenormalizerInterface, Normali
         }
         $object = new \Github\Model\RepositorySubscription();
         $validator = new \Github\Validator\RepositorySubscriptionValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -77,7 +79,9 @@ class RepositorySubscriptionNormalizer implements DenormalizerInterface, Normali
         $data['url'] = $object->getUrl();
         $data['repository_url'] = $object->getRepositoryUrl();
         $validator = new \Github\Validator\RepositorySubscriptionValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

@@ -37,7 +37,9 @@ class SystemInfoDefaultAddressPoolsItemNormalizer implements DenormalizerInterfa
         }
         $object = new \Docker\Api\Model\SystemInfoDefaultAddressPoolsItem();
         $validator = new \Docker\Api\Validator\SystemInfoDefaultAddressPoolsItemValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -62,7 +64,9 @@ class SystemInfoDefaultAddressPoolsItemNormalizer implements DenormalizerInterfa
             $data['Size'] = $object->getSize();
         }
         $validator = new \Docker\Api\Validator\SystemInfoDefaultAddressPoolsItemValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

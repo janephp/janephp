@@ -37,7 +37,9 @@ class InstallationTokenPermissionsNormalizer implements DenormalizerInterface, N
         }
         $object = new \Github\Model\InstallationTokenPermissions();
         $validator = new \Github\Validator\InstallationTokenPermissionsValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -74,7 +76,9 @@ class InstallationTokenPermissionsNormalizer implements DenormalizerInterface, N
             $data['single_file'] = $object->getSingleFile();
         }
         $validator = new \Github\Validator\InstallationTokenPermissionsValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

@@ -37,7 +37,9 @@ class TeamFullNormalizer implements DenormalizerInterface, NormalizerInterface, 
         }
         $object = new \Github\Model\TeamFull();
         $validator = new \Github\Validator\TeamFullValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -134,7 +136,9 @@ class TeamFullNormalizer implements DenormalizerInterface, NormalizerInterface, 
             $data['ldap_dn'] = $object->getLdapDn();
         }
         $validator = new \Github\Validator\TeamFullValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

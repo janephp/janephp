@@ -37,7 +37,9 @@ class InstallationRepositoriesGetResponse200Normalizer implements DenormalizerIn
         }
         $object = new \Github\Model\InstallationRepositoriesGetResponse200();
         $validator = new \Github\Validator\InstallationRepositoriesGetResponse200Validator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -76,7 +78,9 @@ class InstallationRepositoriesGetResponse200Normalizer implements DenormalizerIn
             $data['repository_selection'] = $object->getRepositorySelection();
         }
         $validator = new \Github\Validator\InstallationRepositoriesGetResponse200Validator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

@@ -37,7 +37,9 @@ class MinimalRepositoryNormalizer implements DenormalizerInterface, NormalizerIn
         }
         $object = new \Github\Model\MinimalRepository();
         $validator = new \Github\Validator\MinimalRepositoryValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -485,7 +487,9 @@ class MinimalRepositoryNormalizer implements DenormalizerInterface, NormalizerIn
             $data['watchers'] = $object->getWatchers();
         }
         $validator = new \Github\Validator\MinimalRepositoryValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

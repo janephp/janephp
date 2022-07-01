@@ -37,7 +37,9 @@ class GistCommitNormalizer implements DenormalizerInterface, NormalizerInterface
         }
         $object = new \Github\Model\GistCommit();
         $validator = new \Github\Validator\GistCommitValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -73,7 +75,9 @@ class GistCommitNormalizer implements DenormalizerInterface, NormalizerInterface
         $data['change_status'] = $this->normalizer->normalize($object->getChangeStatus(), 'json', $context);
         $data['committed_at'] = $object->getCommittedAt()->format('Y-m-d\\TH:i:sP');
         $validator = new \Github\Validator\GistCommitValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

@@ -37,7 +37,9 @@ class SystemDfGetResponse200Normalizer implements DenormalizerInterface, Normali
         }
         $object = new \Docker\Api\Model\SystemDfGetResponse200();
         $validator = new \Docker\Api\Validator\SystemDfGetResponse200Validator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -112,7 +114,9 @@ class SystemDfGetResponse200Normalizer implements DenormalizerInterface, Normali
             $data['BuildCache'] = $values_3;
         }
         $validator = new \Docker\Api\Validator\SystemDfGetResponse200Validator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

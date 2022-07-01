@@ -37,7 +37,9 @@ class ProtectedBranchPullRequestReviewDismissalRestrictionsNormalizer implements
         }
         $object = new \Github\Model\ProtectedBranchPullRequestReviewDismissalRestrictions();
         $validator = new \Github\Validator\ProtectedBranchPullRequestReviewDismissalRestrictionsValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -96,7 +98,9 @@ class ProtectedBranchPullRequestReviewDismissalRestrictionsNormalizer implements
             $data['teams_url'] = $object->getTeamsUrl();
         }
         $validator = new \Github\Validator\ProtectedBranchPullRequestReviewDismissalRestrictionsValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

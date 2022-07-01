@@ -37,7 +37,9 @@ class ReposOwnerRepoDeploymentsPostResponse202Normalizer implements Denormalizer
         }
         $object = new \Github\Model\ReposOwnerRepoDeploymentsPostResponse202();
         $validator = new \Github\Validator\ReposOwnerRepoDeploymentsPostResponse202Validator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -56,7 +58,9 @@ class ReposOwnerRepoDeploymentsPostResponse202Normalizer implements Denormalizer
             $data['message'] = $object->getMessage();
         }
         $validator = new \Github\Validator\ReposOwnerRepoDeploymentsPostResponse202Validator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

@@ -37,7 +37,9 @@ class ReposOwnerRepoDeploymentsPostBodyNormalizer implements DenormalizerInterfa
         }
         $object = new \Github\Model\ReposOwnerRepoDeploymentsPostBody();
         $validator = new \Github\Validator\ReposOwnerRepoDeploymentsPostBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -119,7 +121,9 @@ class ReposOwnerRepoDeploymentsPostBodyNormalizer implements DenormalizerInterfa
             $data['created_at'] = $object->getCreatedAt();
         }
         $validator = new \Github\Validator\ReposOwnerRepoDeploymentsPostBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

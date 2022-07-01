@@ -37,7 +37,9 @@ class ReposOwnerRepoDeleteResponse403Normalizer implements DenormalizerInterface
         }
         $object = new \Github\Model\ReposOwnerRepoDeleteResponse403();
         $validator = new \Github\Validator\ReposOwnerRepoDeleteResponse403Validator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -62,7 +64,9 @@ class ReposOwnerRepoDeleteResponse403Normalizer implements DenormalizerInterface
             $data['documentation_url'] = $object->getDocumentationUrl();
         }
         $validator = new \Github\Validator\ReposOwnerRepoDeleteResponse403Validator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

@@ -37,7 +37,9 @@ class ScimV2OrganizationsOrgUsersScimUserIdPutBodyNameNormalizer implements Deno
         }
         $object = new \Github\Model\ScimV2OrganizationsOrgUsersScimUserIdPutBodyName();
         $validator = new \Github\Validator\ScimV2OrganizationsOrgUsersScimUserIdPutBodyNameValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -58,7 +60,9 @@ class ScimV2OrganizationsOrgUsersScimUserIdPutBodyNameNormalizer implements Deno
         $data['givenName'] = $object->getGivenName();
         $data['familyName'] = $object->getFamilyName();
         $validator = new \Github\Validator\ScimV2OrganizationsOrgUsersScimUserIdPutBodyNameValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

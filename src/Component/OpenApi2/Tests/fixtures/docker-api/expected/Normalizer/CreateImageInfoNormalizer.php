@@ -37,7 +37,9 @@ class CreateImageInfoNormalizer implements DenormalizerInterface, NormalizerInte
         }
         $object = new \Docker\Api\Model\CreateImageInfo();
         $validator = new \Docker\Api\Validator\CreateImageInfoValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -80,7 +82,9 @@ class CreateImageInfoNormalizer implements DenormalizerInterface, NormalizerInte
             $data['progressDetail'] = $this->normalizer->normalize($object->getProgressDetail(), 'json', $context);
         }
         $validator = new \Docker\Api\Validator\CreateImageInfoValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

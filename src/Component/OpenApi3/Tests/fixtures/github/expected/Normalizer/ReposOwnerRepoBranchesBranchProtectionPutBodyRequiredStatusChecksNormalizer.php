@@ -37,7 +37,9 @@ class ReposOwnerRepoBranchesBranchProtectionPutBodyRequiredStatusChecksNormalize
         }
         $object = new \Github\Model\ReposOwnerRepoBranchesBranchProtectionPutBodyRequiredStatusChecks();
         $validator = new \Github\Validator\ReposOwnerRepoBranchesBranchProtectionPutBodyRequiredStatusChecksValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -66,7 +68,9 @@ class ReposOwnerRepoBranchesBranchProtectionPutBodyRequiredStatusChecksNormalize
         }
         $data['contexts'] = $values;
         $validator = new \Github\Validator\ReposOwnerRepoBranchesBranchProtectionPutBodyRequiredStatusChecksValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

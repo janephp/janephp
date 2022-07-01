@@ -37,7 +37,9 @@ class CommunityProfileFilesReadmeNormalizer implements DenormalizerInterface, No
         }
         $object = new \Github\Model\CommunityProfileFilesReadme();
         $validator = new \Github\Validator\CommunityProfileFilesReadmeValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -58,7 +60,9 @@ class CommunityProfileFilesReadmeNormalizer implements DenormalizerInterface, No
         $data['url'] = $object->getUrl();
         $data['html_url'] = $object->getHtmlUrl();
         $validator = new \Github\Validator\CommunityProfileFilesReadmeValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

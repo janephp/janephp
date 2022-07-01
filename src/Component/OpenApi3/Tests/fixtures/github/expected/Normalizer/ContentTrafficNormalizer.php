@@ -37,7 +37,9 @@ class ContentTrafficNormalizer implements DenormalizerInterface, NormalizerInter
         }
         $object = new \Github\Model\ContentTraffic();
         $validator = new \Github\Validator\ContentTrafficValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -66,7 +68,9 @@ class ContentTrafficNormalizer implements DenormalizerInterface, NormalizerInter
         $data['count'] = $object->getCount();
         $data['uniques'] = $object->getUniques();
         $validator = new \Github\Validator\ContentTrafficValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

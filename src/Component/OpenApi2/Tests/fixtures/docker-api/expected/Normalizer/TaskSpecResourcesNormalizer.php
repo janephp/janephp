@@ -37,7 +37,9 @@ class TaskSpecResourcesNormalizer implements DenormalizerInterface, NormalizerIn
         }
         $object = new \Docker\Api\Model\TaskSpecResources();
         $validator = new \Docker\Api\Validator\TaskSpecResourcesValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -62,7 +64,9 @@ class TaskSpecResourcesNormalizer implements DenormalizerInterface, NormalizerIn
             $data['Reservation'] = $this->normalizer->normalize($object->getReservation(), 'json', $context);
         }
         $validator = new \Docker\Api\Validator\TaskSpecResourcesValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

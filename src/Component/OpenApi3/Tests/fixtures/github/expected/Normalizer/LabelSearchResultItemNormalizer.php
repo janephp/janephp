@@ -37,7 +37,9 @@ class LabelSearchResultItemNormalizer implements DenormalizerInterface, Normaliz
         }
         $object = new \Github\Model\LabelSearchResultItem();
         $validator = new \Github\Validator\LabelSearchResultItemValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -99,7 +101,9 @@ class LabelSearchResultItemNormalizer implements DenormalizerInterface, Normaliz
             $data['text_matches'] = $values;
         }
         $validator = new \Github\Validator\LabelSearchResultItemValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

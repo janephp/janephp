@@ -37,7 +37,9 @@ class CodeOfConductSimpleNormalizer implements DenormalizerInterface, Normalizer
         }
         $object = new \Github\Model\CodeOfConductSimple();
         $validator = new \Github\Validator\CodeOfConductSimpleValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -69,7 +71,9 @@ class CodeOfConductSimpleNormalizer implements DenormalizerInterface, Normalizer
         $data['name'] = $object->getName();
         $data['html_url'] = $object->getHtmlUrl();
         $validator = new \Github\Validator\CodeOfConductSimpleValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

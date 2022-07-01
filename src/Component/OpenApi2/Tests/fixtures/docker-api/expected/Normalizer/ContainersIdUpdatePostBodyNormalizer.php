@@ -37,7 +37,9 @@ class ContainersIdUpdatePostBodyNormalizer implements DenormalizerInterface, Nor
         }
         $object = new \Docker\Api\Model\ContainersIdUpdatePostBody();
         $validator = new \Docker\Api\Validator\ContainersIdUpdatePostBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -326,7 +328,9 @@ class ContainersIdUpdatePostBodyNormalizer implements DenormalizerInterface, Nor
             $data['RestartPolicy'] = $this->normalizer->normalize($object->getRestartPolicy(), 'json', $context);
         }
         $validator = new \Docker\Api\Validator\ContainersIdUpdatePostBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

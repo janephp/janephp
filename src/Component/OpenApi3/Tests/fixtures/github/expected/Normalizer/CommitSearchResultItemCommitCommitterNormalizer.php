@@ -37,7 +37,9 @@ class CommitSearchResultItemCommitCommitterNormalizer implements DenormalizerInt
         }
         $object = new \Github\Model\CommitSearchResultItemCommitCommitter();
         $validator = new \Github\Validator\CommitSearchResultItemCommitCommitterValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -68,7 +70,9 @@ class CommitSearchResultItemCommitCommitterNormalizer implements DenormalizerInt
             $data['date'] = $object->getDate();
         }
         $validator = new \Github\Validator\CommitSearchResultItemCommitCommitterValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

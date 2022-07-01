@@ -37,7 +37,9 @@ class PullRequestReviewRequestNormalizer implements DenormalizerInterface, Norma
         }
         $object = new \Github\Model\PullRequestReviewRequest();
         $validator = new \Github\Validator\PullRequestReviewRequestValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -78,7 +80,9 @@ class PullRequestReviewRequestNormalizer implements DenormalizerInterface, Norma
             $data['teams'] = $values_1;
         }
         $validator = new \Github\Validator\PullRequestReviewRequestValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

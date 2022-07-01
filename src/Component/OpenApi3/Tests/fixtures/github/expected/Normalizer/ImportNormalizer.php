@@ -37,7 +37,9 @@ class ImportNormalizer implements DenormalizerInterface, NormalizerInterface, De
         }
         $object = new \Github\Model\Import();
         $validator = new \Github\Validator\ImportValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -206,7 +208,9 @@ class ImportNormalizer implements DenormalizerInterface, NormalizerInterface, De
             $data['svn_root'] = $object->getSvnRoot();
         }
         $validator = new \Github\Validator\ImportValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

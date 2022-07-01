@@ -37,7 +37,9 @@ class KeySimpleNormalizer implements DenormalizerInterface, NormalizerInterface,
         }
         $object = new \Github\Model\KeySimple();
         $validator = new \Github\Validator\KeySimpleValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -58,7 +60,9 @@ class KeySimpleNormalizer implements DenormalizerInterface, NormalizerInterface,
         $data['id'] = $object->getId();
         $data['key'] = $object->getKey();
         $validator = new \Github\Validator\KeySimpleValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

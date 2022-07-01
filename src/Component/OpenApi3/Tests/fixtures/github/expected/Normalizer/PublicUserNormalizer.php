@@ -37,7 +37,9 @@ class PublicUserNormalizer implements DenormalizerInterface, NormalizerInterface
         }
         $object = new \Github\Model\PublicUser();
         $validator = new \Github\Validator\PublicUserValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -252,7 +254,9 @@ class PublicUserNormalizer implements DenormalizerInterface, NormalizerInterface
             $data['collaborators'] = $object->getCollaborators();
         }
         $validator = new \Github\Validator\PublicUserValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

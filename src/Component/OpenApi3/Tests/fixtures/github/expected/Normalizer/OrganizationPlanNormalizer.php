@@ -37,7 +37,9 @@ class OrganizationPlanNormalizer implements DenormalizerInterface, NormalizerInt
         }
         $object = new \Github\Model\OrganizationPlan();
         $validator = new \Github\Validator\OrganizationPlanValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -80,7 +82,9 @@ class OrganizationPlanNormalizer implements DenormalizerInterface, NormalizerInt
             $data['seats'] = $object->getSeats();
         }
         $validator = new \Github\Validator\OrganizationPlanValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

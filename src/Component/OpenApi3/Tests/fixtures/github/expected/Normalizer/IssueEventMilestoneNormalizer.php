@@ -37,7 +37,9 @@ class IssueEventMilestoneNormalizer implements DenormalizerInterface, Normalizer
         }
         $object = new \Github\Model\IssueEventMilestone();
         $validator = new \Github\Validator\IssueEventMilestoneValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -54,7 +56,9 @@ class IssueEventMilestoneNormalizer implements DenormalizerInterface, Normalizer
         $data = array();
         $data['title'] = $object->getTitle();
         $validator = new \Github\Validator\IssueEventMilestoneValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

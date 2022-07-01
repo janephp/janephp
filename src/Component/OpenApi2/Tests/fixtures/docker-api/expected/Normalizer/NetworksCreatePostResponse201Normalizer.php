@@ -37,7 +37,9 @@ class NetworksCreatePostResponse201Normalizer implements DenormalizerInterface, 
         }
         $object = new \Docker\Api\Model\NetworksCreatePostResponse201();
         $validator = new \Docker\Api\Validator\NetworksCreatePostResponse201Validator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -62,7 +64,9 @@ class NetworksCreatePostResponse201Normalizer implements DenormalizerInterface, 
             $data['Warning'] = $object->getWarning();
         }
         $validator = new \Docker\Api\Validator\NetworksCreatePostResponse201Validator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

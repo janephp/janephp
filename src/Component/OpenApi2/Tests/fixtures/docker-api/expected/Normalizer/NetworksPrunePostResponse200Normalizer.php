@@ -37,7 +37,9 @@ class NetworksPrunePostResponse200Normalizer implements DenormalizerInterface, N
         }
         $object = new \Docker\Api\Model\NetworksPrunePostResponse200();
         $validator = new \Docker\Api\Validator\NetworksPrunePostResponse200Validator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -64,7 +66,9 @@ class NetworksPrunePostResponse200Normalizer implements DenormalizerInterface, N
             $data['NetworksDeleted'] = $values;
         }
         $validator = new \Docker\Api\Validator\NetworksPrunePostResponse200Validator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

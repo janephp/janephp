@@ -37,7 +37,9 @@ class ConfigsCreatePostBodyNormalizer implements DenormalizerInterface, Normaliz
         }
         $object = new \Docker\Api\Model\ConfigsCreatePostBody();
         $validator = new \Docker\Api\Validator\ConfigsCreatePostBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -82,7 +84,9 @@ class ConfigsCreatePostBodyNormalizer implements DenormalizerInterface, Normaliz
             $data['Templating'] = $this->normalizer->normalize($object->getTemplating(), 'json', $context);
         }
         $validator = new \Docker\Api\Validator\ConfigsCreatePostBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

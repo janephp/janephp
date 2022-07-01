@@ -37,7 +37,9 @@ class ReposOwnerRepoCheckRunsPostBodyActionsItemNormalizer implements Denormaliz
         }
         $object = new \Github\Model\ReposOwnerRepoCheckRunsPostBodyActionsItem();
         $validator = new \Github\Validator\ReposOwnerRepoCheckRunsPostBodyActionsItemValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -62,7 +64,9 @@ class ReposOwnerRepoCheckRunsPostBodyActionsItemNormalizer implements Denormaliz
         $data['description'] = $object->getDescription();
         $data['identifier'] = $object->getIdentifier();
         $validator = new \Github\Validator\ReposOwnerRepoCheckRunsPostBodyActionsItemValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

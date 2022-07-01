@@ -37,7 +37,9 @@ class OrgsOrgActionsSecretsSecretNamePutBodyNormalizer implements DenormalizerIn
         }
         $object = new \Github\Model\OrgsOrgActionsSecretsSecretNamePutBody();
         $validator = new \Github\Validator\OrgsOrgActionsSecretsSecretNamePutBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -82,7 +84,9 @@ class OrgsOrgActionsSecretsSecretNamePutBodyNormalizer implements DenormalizerIn
             $data['selected_repository_ids'] = $values;
         }
         $validator = new \Github\Validator\OrgsOrgActionsSecretsSecretNamePutBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

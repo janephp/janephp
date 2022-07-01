@@ -37,7 +37,9 @@ class ThrottleDeviceNormalizer implements DenormalizerInterface, NormalizerInter
         }
         $object = new \Docker\Api\Model\ThrottleDevice();
         $validator = new \Docker\Api\Validator\ThrottleDeviceValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -62,7 +64,9 @@ class ThrottleDeviceNormalizer implements DenormalizerInterface, NormalizerInter
             $data['Rate'] = $object->getRate();
         }
         $validator = new \Docker\Api\Validator\ThrottleDeviceValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

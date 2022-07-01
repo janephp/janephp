@@ -37,7 +37,9 @@ class PorterAuthorNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         $object = new \Github\Model\PorterAuthor();
         $validator = new \Github\Validator\PorterAuthorValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -78,7 +80,9 @@ class PorterAuthorNormalizer implements DenormalizerInterface, NormalizerInterfa
         $data['url'] = $object->getUrl();
         $data['import_url'] = $object->getImportUrl();
         $validator = new \Github\Validator\PorterAuthorValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

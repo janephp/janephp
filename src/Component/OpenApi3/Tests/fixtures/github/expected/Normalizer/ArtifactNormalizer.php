@@ -37,7 +37,9 @@ class ArtifactNormalizer implements DenormalizerInterface, NormalizerInterface, 
         }
         $object = new \Github\Model\Artifact();
         $validator = new \Github\Validator\ArtifactValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -96,7 +98,9 @@ class ArtifactNormalizer implements DenormalizerInterface, NormalizerInterface, 
         $data['expires_at'] = $object->getExpiresAt();
         $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
         $validator = new \Github\Validator\ArtifactValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

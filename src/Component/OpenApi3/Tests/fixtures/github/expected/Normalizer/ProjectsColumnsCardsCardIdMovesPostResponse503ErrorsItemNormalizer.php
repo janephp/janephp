@@ -37,7 +37,9 @@ class ProjectsColumnsCardsCardIdMovesPostResponse503ErrorsItemNormalizer impleme
         }
         $object = new \Github\Model\ProjectsColumnsCardsCardIdMovesPostResponse503ErrorsItem();
         $validator = new \Github\Validator\ProjectsColumnsCardsCardIdMovesPostResponse503ErrorsItemValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -62,7 +64,9 @@ class ProjectsColumnsCardsCardIdMovesPostResponse503ErrorsItemNormalizer impleme
             $data['message'] = $object->getMessage();
         }
         $validator = new \Github\Validator\ProjectsColumnsCardsCardIdMovesPostResponse503ErrorsItemValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

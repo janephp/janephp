@@ -37,7 +37,9 @@ class ReposOwnerRepoHooksHookIdPatchBodyConfigNormalizer implements Denormalizer
         }
         $object = new \Github\Model\ReposOwnerRepoHooksHookIdPatchBodyConfig();
         $validator = new \Github\Validator\ReposOwnerRepoHooksHookIdPatchBodyConfigValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -84,7 +86,9 @@ class ReposOwnerRepoHooksHookIdPatchBodyConfigNormalizer implements Denormalizer
             $data['room'] = $object->getRoom();
         }
         $validator = new \Github\Validator\ReposOwnerRepoHooksHookIdPatchBodyConfigValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

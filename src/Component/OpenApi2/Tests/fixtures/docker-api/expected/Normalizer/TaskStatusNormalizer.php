@@ -37,7 +37,9 @@ class TaskStatusNormalizer implements DenormalizerInterface, NormalizerInterface
         }
         $object = new \Docker\Api\Model\TaskStatus();
         $validator = new \Docker\Api\Validator\TaskStatusValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -80,7 +82,9 @@ class TaskStatusNormalizer implements DenormalizerInterface, NormalizerInterface
             $data['ContainerStatus'] = $this->normalizer->normalize($object->getContainerStatus(), 'json', $context);
         }
         $validator = new \Docker\Api\Validator\TaskStatusValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

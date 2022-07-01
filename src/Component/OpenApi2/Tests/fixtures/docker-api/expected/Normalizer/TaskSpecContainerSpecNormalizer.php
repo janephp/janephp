@@ -37,7 +37,9 @@ class TaskSpecContainerSpecNormalizer implements DenormalizerInterface, Normaliz
         }
         $object = new \Docker\Api\Model\TaskSpecContainerSpec();
         $validator = new \Docker\Api\Validator\TaskSpecContainerSpecValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -319,7 +321,9 @@ class TaskSpecContainerSpecNormalizer implements DenormalizerInterface, Normaliz
             $data['Ulimits'] = $values_12;
         }
         $validator = new \Docker\Api\Validator\TaskSpecContainerSpecValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

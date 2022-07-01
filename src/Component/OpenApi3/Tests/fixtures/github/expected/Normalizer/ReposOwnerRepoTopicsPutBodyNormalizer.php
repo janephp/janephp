@@ -37,7 +37,9 @@ class ReposOwnerRepoTopicsPutBodyNormalizer implements DenormalizerInterface, No
         }
         $object = new \Github\Model\ReposOwnerRepoTopicsPutBody();
         $validator = new \Github\Validator\ReposOwnerRepoTopicsPutBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -62,7 +64,9 @@ class ReposOwnerRepoTopicsPutBodyNormalizer implements DenormalizerInterface, No
         }
         $data['names'] = $values;
         $validator = new \Github\Validator\ReposOwnerRepoTopicsPutBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

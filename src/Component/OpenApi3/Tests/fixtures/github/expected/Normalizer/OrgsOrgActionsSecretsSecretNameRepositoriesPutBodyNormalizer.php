@@ -37,7 +37,9 @@ class OrgsOrgActionsSecretsSecretNameRepositoriesPutBodyNormalizer implements De
         }
         $object = new \Github\Model\OrgsOrgActionsSecretsSecretNameRepositoriesPutBody();
         $validator = new \Github\Validator\OrgsOrgActionsSecretsSecretNameRepositoriesPutBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -64,7 +66,9 @@ class OrgsOrgActionsSecretsSecretNameRepositoriesPutBodyNormalizer implements De
             $data['selected_repository_ids'] = $values;
         }
         $validator = new \Github\Validator\OrgsOrgActionsSecretsSecretNameRepositoriesPutBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

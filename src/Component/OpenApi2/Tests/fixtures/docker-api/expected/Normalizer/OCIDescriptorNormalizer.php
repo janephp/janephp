@@ -37,7 +37,9 @@ class OCIDescriptorNormalizer implements DenormalizerInterface, NormalizerInterf
         }
         $object = new \Docker\Api\Model\OCIDescriptor();
         $validator = new \Docker\Api\Validator\OCIDescriptorValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -68,7 +70,9 @@ class OCIDescriptorNormalizer implements DenormalizerInterface, NormalizerInterf
             $data['size'] = $object->getSize();
         }
         $validator = new \Docker\Api\Validator\OCIDescriptorValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

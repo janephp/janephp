@@ -37,7 +37,9 @@ class ReactionNormalizer implements DenormalizerInterface, NormalizerInterface, 
         }
         $object = new \Github\Model\Reaction();
         $validator = new \Github\Validator\ReactionValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -73,7 +75,9 @@ class ReactionNormalizer implements DenormalizerInterface, NormalizerInterface, 
         $data['content'] = $object->getContent();
         $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
         $validator = new \Github\Validator\ReactionValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

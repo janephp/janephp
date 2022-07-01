@@ -37,7 +37,9 @@ class UserKeysPostBodyNormalizer implements DenormalizerInterface, NormalizerInt
         }
         $object = new \Github\Model\UserKeysPostBody();
         $validator = new \Github\Validator\UserKeysPostBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -60,7 +62,9 @@ class UserKeysPostBodyNormalizer implements DenormalizerInterface, NormalizerInt
         }
         $data['key'] = $object->getKey();
         $validator = new \Github\Validator\UserKeysPostBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

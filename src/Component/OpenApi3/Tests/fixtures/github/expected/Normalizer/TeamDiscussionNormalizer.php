@@ -37,7 +37,9 @@ class TeamDiscussionNormalizer implements DenormalizerInterface, NormalizerInter
         }
         $object = new \Github\Model\TeamDiscussion();
         $validator = new \Github\Validator\TeamDiscussionValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -130,7 +132,9 @@ class TeamDiscussionNormalizer implements DenormalizerInterface, NormalizerInter
             $data['reactions'] = $this->normalizer->normalize($object->getReactions(), 'json', $context);
         }
         $validator = new \Github\Validator\TeamDiscussionValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

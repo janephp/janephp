@@ -37,7 +37,9 @@ class GistSimpleNormalizer implements DenormalizerInterface, NormalizerInterface
         }
         $object = new \Github\Model\GistSimple();
         $validator = new \Github\Validator\GistSimpleValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -175,7 +177,9 @@ class GistSimpleNormalizer implements DenormalizerInterface, NormalizerInterface
             $data['truncated'] = $object->getTruncated();
         }
         $validator = new \Github\Validator\GistSimpleValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

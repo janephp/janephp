@@ -37,7 +37,9 @@ class PullRequestMergeResultNormalizer implements DenormalizerInterface, Normali
         }
         $object = new \Github\Model\PullRequestMergeResult();
         $validator = new \Github\Validator\PullRequestMergeResultValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -62,7 +64,9 @@ class PullRequestMergeResultNormalizer implements DenormalizerInterface, Normali
         $data['merged'] = $object->getMerged();
         $data['message'] = $object->getMessage();
         $validator = new \Github\Validator\PullRequestMergeResultValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

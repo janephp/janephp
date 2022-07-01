@@ -37,7 +37,9 @@ class ApiOverviewNormalizer implements DenormalizerInterface, NormalizerInterfac
         }
         $object = new \Github\Model\ApiOverview();
         $validator = new \Github\Validator\ApiOverviewValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -156,7 +158,9 @@ class ApiOverviewNormalizer implements DenormalizerInterface, NormalizerInterfac
             $data['installed_version'] = $object->getInstalledVersion();
         }
         $validator = new \Github\Validator\ApiOverviewValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

@@ -37,7 +37,9 @@ class ContainerSummaryHostConfigNormalizer implements DenormalizerInterface, Nor
         }
         $object = new \Docker\Api\Model\ContainerSummaryHostConfig();
         $validator = new \Docker\Api\Validator\ContainerSummaryHostConfigValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -56,7 +58,9 @@ class ContainerSummaryHostConfigNormalizer implements DenormalizerInterface, Nor
             $data['NetworkMode'] = $object->getNetworkMode();
         }
         $validator = new \Docker\Api\Validator\ContainerSummaryHostConfigValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

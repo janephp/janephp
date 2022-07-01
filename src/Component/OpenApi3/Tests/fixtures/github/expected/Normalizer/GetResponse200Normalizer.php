@@ -37,7 +37,9 @@ class GetResponse200Normalizer implements DenormalizerInterface, NormalizerInter
         }
         $object = new \Github\Model\GetResponse200();
         $validator = new \Github\Validator\GetResponse200Validator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -184,7 +186,9 @@ class GetResponse200Normalizer implements DenormalizerInterface, NormalizerInter
         $data['user_repositories_url'] = $object->getUserRepositoriesUrl();
         $data['user_search_url'] = $object->getUserSearchUrl();
         $validator = new \Github\Validator\GetResponse200Validator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

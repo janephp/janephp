@@ -37,7 +37,9 @@ class PullRequestSimpleHeadUserNormalizer implements DenormalizerInterface, Norm
         }
         $object = new \Github\Model\PullRequestSimpleHeadUser();
         $validator = new \Github\Validator\PullRequestSimpleHeadUserValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -131,7 +133,9 @@ class PullRequestSimpleHeadUserNormalizer implements DenormalizerInterface, Norm
             $data['starred_at'] = $object->getStarredAt();
         }
         $validator = new \Github\Validator\PullRequestSimpleHeadUserValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

@@ -37,7 +37,9 @@ class SwarmSpecCAConfigExternalCAsItemNormalizer implements DenormalizerInterfac
         }
         $object = new \Docker\Api\Model\SwarmSpecCAConfigExternalCAsItem();
         $validator = new \Docker\Api\Validator\SwarmSpecCAConfigExternalCAsItemValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -82,7 +84,9 @@ class SwarmSpecCAConfigExternalCAsItemNormalizer implements DenormalizerInterfac
             $data['CACert'] = $object->getCACert();
         }
         $validator = new \Docker\Api\Validator\SwarmSpecCAConfigExternalCAsItemValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

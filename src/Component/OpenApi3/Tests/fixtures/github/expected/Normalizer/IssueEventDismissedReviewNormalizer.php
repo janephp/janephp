@@ -37,7 +37,9 @@ class IssueEventDismissedReviewNormalizer implements DenormalizerInterface, Norm
         }
         $object = new \Github\Model\IssueEventDismissedReview();
         $validator = new \Github\Validator\IssueEventDismissedReviewValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -74,7 +76,9 @@ class IssueEventDismissedReviewNormalizer implements DenormalizerInterface, Norm
             $data['dismissal_commit_id'] = $object->getDismissalCommitId();
         }
         $validator = new \Github\Validator\IssueEventDismissedReviewValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

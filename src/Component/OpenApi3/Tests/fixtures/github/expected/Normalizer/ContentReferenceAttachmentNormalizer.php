@@ -37,7 +37,9 @@ class ContentReferenceAttachmentNormalizer implements DenormalizerInterface, Nor
         }
         $object = new \Github\Model\ContentReferenceAttachment();
         $validator = new \Github\Validator\ContentReferenceAttachmentValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -68,7 +70,9 @@ class ContentReferenceAttachmentNormalizer implements DenormalizerInterface, Nor
             $data['node_id'] = $object->getNodeId();
         }
         $validator = new \Github\Validator\ContentReferenceAttachmentValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

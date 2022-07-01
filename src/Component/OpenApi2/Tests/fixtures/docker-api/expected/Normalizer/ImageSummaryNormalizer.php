@@ -37,7 +37,9 @@ class ImageSummaryNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         $object = new \Docker\Api\Model\ImageSummary();
         $validator = new \Docker\Api\Validator\ImageSummaryValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -114,7 +116,9 @@ class ImageSummaryNormalizer implements DenormalizerInterface, NormalizerInterfa
         $data['Labels'] = $values_2;
         $data['Containers'] = $object->getContainers();
         $validator = new \Docker\Api\Validator\ImageSummaryValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

@@ -37,7 +37,9 @@ class ServicesCreatePostBodyNormalizer implements DenormalizerInterface, Normali
         }
         $object = new \Docker\Api\Model\ServicesCreatePostBody();
         $validator = new \Docker\Api\Validator\ServicesCreatePostBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -114,7 +116,9 @@ class ServicesCreatePostBodyNormalizer implements DenormalizerInterface, Normali
             $data['EndpointSpec'] = $this->normalizer->normalize($object->getEndpointSpec(), 'json', $context);
         }
         $validator = new \Docker\Api\Validator\ServicesCreatePostBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

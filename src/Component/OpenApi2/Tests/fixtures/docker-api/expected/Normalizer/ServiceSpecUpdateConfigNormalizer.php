@@ -37,7 +37,9 @@ class ServiceSpecUpdateConfigNormalizer implements DenormalizerInterface, Normal
         }
         $object = new \Docker\Api\Model\ServiceSpecUpdateConfig();
         $validator = new \Docker\Api\Validator\ServiceSpecUpdateConfigValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -86,7 +88,9 @@ class ServiceSpecUpdateConfigNormalizer implements DenormalizerInterface, Normal
             $data['Order'] = $object->getOrder();
         }
         $validator = new \Docker\Api\Validator\ServiceSpecUpdateConfigValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

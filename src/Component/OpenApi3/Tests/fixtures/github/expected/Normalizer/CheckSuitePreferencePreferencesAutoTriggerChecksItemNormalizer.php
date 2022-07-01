@@ -37,7 +37,9 @@ class CheckSuitePreferencePreferencesAutoTriggerChecksItemNormalizer implements 
         }
         $object = new \Github\Model\CheckSuitePreferencePreferencesAutoTriggerChecksItem();
         $validator = new \Github\Validator\CheckSuitePreferencePreferencesAutoTriggerChecksItemValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -58,7 +60,9 @@ class CheckSuitePreferencePreferencesAutoTriggerChecksItemNormalizer implements 
         $data['app_id'] = $object->getAppId();
         $data['setting'] = $object->getSetting();
         $validator = new \Github\Validator\CheckSuitePreferencePreferencesAutoTriggerChecksItemValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

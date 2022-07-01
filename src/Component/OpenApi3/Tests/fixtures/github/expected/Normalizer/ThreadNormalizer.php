@@ -37,7 +37,9 @@ class ThreadNormalizer implements DenormalizerInterface, NormalizerInterface, De
         }
         $object = new \Github\Model\Thread();
         $validator = new \Github\Validator\ThreadValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -107,7 +109,9 @@ class ThreadNormalizer implements DenormalizerInterface, NormalizerInterface, De
             $data['subscription_url'] = $object->getSubscriptionUrl();
         }
         $validator = new \Github\Validator\ThreadValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

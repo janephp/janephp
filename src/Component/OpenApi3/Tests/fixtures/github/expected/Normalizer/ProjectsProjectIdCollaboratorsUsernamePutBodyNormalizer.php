@@ -37,7 +37,9 @@ class ProjectsProjectIdCollaboratorsUsernamePutBodyNormalizer implements Denorma
         }
         $object = new \Github\Model\ProjectsProjectIdCollaboratorsUsernamePutBody();
         $validator = new \Github\Validator\ProjectsProjectIdCollaboratorsUsernamePutBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -56,7 +58,9 @@ class ProjectsProjectIdCollaboratorsUsernamePutBodyNormalizer implements Denorma
             $data['permission'] = $object->getPermission();
         }
         $validator = new \Github\Validator\ProjectsProjectIdCollaboratorsUsernamePutBodyValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }

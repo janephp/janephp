@@ -37,7 +37,9 @@ class IssueSearchResultItemPullRequestNormalizer implements DenormalizerInterfac
         }
         $object = new \Github\Model\IssueSearchResultItemPullRequest();
         $validator = new \Github\Validator\IssueSearchResultItemPullRequestValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -87,7 +89,9 @@ class IssueSearchResultItemPullRequestNormalizer implements DenormalizerInterfac
         $data['patch_url'] = $object->getPatchUrl();
         $data['url'] = $object->getUrl();
         $validator = new \Github\Validator\IssueSearchResultItemPullRequestValidator();
-        $validator->validate($data);
+        if (!($data['skip_validation'] ?? false)) {
+            $validator->validate($data);
+        }
         return $data;
     }
 }
