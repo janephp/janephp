@@ -6,7 +6,7 @@ class ContainersIdWaitPostResponse200Validator implements \Docker\Api\Validator\
 {
     public function validate($data) : void
     {
-        $constraints = array(new \Symfony\Component\Validator\Constraints\Collection(array('fields' => array('StatusCode' => new \Symfony\Component\Validator\Constraints\Required(array(new \Symfony\Component\Validator\Constraints\Type(array('0' => 'integer'))))), 'allowExtraFields' => true)));
+        $constraints = array(new \Symfony\Component\Validator\Constraints\Collection(array('fields' => array('StatusCode' => new \Symfony\Component\Validator\Constraints\Required(array(new \Symfony\Component\Validator\Constraints\Type(array('0' => 'integer')))), 'Error' => new \Symfony\Component\Validator\Constraints\Optional(array())), 'allowExtraFields' => true)));
         $validator = \Symfony\Component\Validator\Validation::createValidator();
         $violations = $validator->validate($data, $constraints);
         if ($violations->count() > 0) {

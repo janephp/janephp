@@ -151,9 +151,7 @@ class ClassGuess
     {
         $validatorGuesses = [];
         foreach ($this->properties as $property) {
-            if (\count($propGuesses = $property->getValidatorGuesses()) > 0) {
-                $validatorGuesses[$property->getName()] = $propGuesses;
-            }
+            $validatorGuesses[$property->getName()] = $property->getValidatorGuesses();
         }
 
         return $validatorGuesses;
