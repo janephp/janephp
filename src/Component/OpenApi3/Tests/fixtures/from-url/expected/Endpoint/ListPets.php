@@ -38,7 +38,7 @@ class ListPets extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Ba
         $optionsResolver->setDefined(array('limit'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array());
-        $optionsResolver->setAllowedTypes('limit', array('int'));
+        $optionsResolver->addAllowedTypes('limit', array('int'));
         return $optionsResolver;
     }
     /**
