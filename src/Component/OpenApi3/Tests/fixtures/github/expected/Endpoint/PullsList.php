@@ -50,13 +50,13 @@ class PullsList extends \Github\Runtime\Client\BaseEndpoint implements \Github\R
         $optionsResolver->setDefined(array('state', 'head', 'base', 'sort', 'direction', 'per_page', 'page'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array('state' => 'open', 'sort' => 'created', 'per_page' => 30, 'page' => 1));
-        $optionsResolver->setAllowedTypes('state', array('string'));
-        $optionsResolver->setAllowedTypes('head', array('string'));
-        $optionsResolver->setAllowedTypes('base', array('string'));
-        $optionsResolver->setAllowedTypes('sort', array('string'));
-        $optionsResolver->setAllowedTypes('direction', array('string'));
-        $optionsResolver->setAllowedTypes('per_page', array('int'));
-        $optionsResolver->setAllowedTypes('page', array('int'));
+        $optionsResolver->addAllowedTypes('state', array('string'));
+        $optionsResolver->addAllowedTypes('head', array('string'));
+        $optionsResolver->addAllowedTypes('base', array('string'));
+        $optionsResolver->addAllowedTypes('sort', array('string'));
+        $optionsResolver->addAllowedTypes('direction', array('string'));
+        $optionsResolver->addAllowedTypes('per_page', array('int'));
+        $optionsResolver->addAllowedTypes('page', array('int'));
         return $optionsResolver;
     }
     /**

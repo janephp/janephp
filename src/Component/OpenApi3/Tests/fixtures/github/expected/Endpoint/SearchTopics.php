@@ -46,7 +46,7 @@ class SearchTopics extends \Github\Runtime\Client\BaseEndpoint implements \Githu
         $optionsResolver->setDefined(array('q'));
         $optionsResolver->setRequired(array('q'));
         $optionsResolver->setDefaults(array());
-        $optionsResolver->setAllowedTypes('q', array('string'));
+        $optionsResolver->addAllowedTypes('q', array('string'));
         return $optionsResolver;
     }
     /**

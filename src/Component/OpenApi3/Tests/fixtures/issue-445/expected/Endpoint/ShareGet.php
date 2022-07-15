@@ -41,7 +41,7 @@ class ShareGet extends \PicturePark\API\Runtime\Client\BaseEndpoint implements \
         $optionsResolver->setDefined(array('resolveBehaviors'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array());
-        $optionsResolver->setAllowedTypes('resolveBehaviors', array('array', 'null'));
+        $optionsResolver->addAllowedTypes('resolveBehaviors', array('array', 'null'));
         return $optionsResolver;
     }
     /**

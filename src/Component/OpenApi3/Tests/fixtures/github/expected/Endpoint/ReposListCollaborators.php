@@ -51,9 +51,9 @@ class ReposListCollaborators extends \Github\Runtime\Client\BaseEndpoint impleme
         $optionsResolver->setDefined(array('affiliation', 'per_page', 'page'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array('affiliation' => 'all', 'per_page' => 30, 'page' => 1));
-        $optionsResolver->setAllowedTypes('affiliation', array('string'));
-        $optionsResolver->setAllowedTypes('per_page', array('int'));
-        $optionsResolver->setAllowedTypes('page', array('int'));
+        $optionsResolver->addAllowedTypes('affiliation', array('string'));
+        $optionsResolver->addAllowedTypes('per_page', array('int'));
+        $optionsResolver->addAllowedTypes('page', array('int'));
         return $optionsResolver;
     }
     /**

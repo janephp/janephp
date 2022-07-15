@@ -34,7 +34,7 @@ class TestDictionary extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Cli
         $optionsResolver->setDefined(array('input'));
         $optionsResolver->setRequired(array('input'));
         $optionsResolver->setDefaults(array());
-        $optionsResolver->setAllowedTypes('input', array('string'));
+        $optionsResolver->addAllowedTypes('input', array('string'));
         return $optionsResolver;
     }
     /**

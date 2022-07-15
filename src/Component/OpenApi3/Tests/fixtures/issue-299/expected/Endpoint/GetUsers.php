@@ -38,7 +38,7 @@ class GetUsers extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Ba
         $optionsResolver->setDefined(array('userState'));
         $optionsResolver->setRequired(array('userState'));
         $optionsResolver->setDefaults(array());
-        $optionsResolver->setAllowedTypes('userState', array('string'));
+        $optionsResolver->addAllowedTypes('userState', array('string'));
         return $optionsResolver;
     }
     /**

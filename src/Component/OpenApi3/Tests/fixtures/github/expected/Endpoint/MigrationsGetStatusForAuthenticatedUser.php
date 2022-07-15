@@ -48,7 +48,7 @@ class MigrationsGetStatusForAuthenticatedUser extends \Github\Runtime\Client\Bas
         $optionsResolver->setDefined(array('exclude'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array());
-        $optionsResolver->setAllowedTypes('exclude', array('array'));
+        $optionsResolver->addAllowedTypes('exclude', array('array'));
         return $optionsResolver;
     }
     /**

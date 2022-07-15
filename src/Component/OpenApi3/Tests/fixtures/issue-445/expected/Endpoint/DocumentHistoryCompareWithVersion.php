@@ -47,7 +47,7 @@ class DocumentHistoryCompareWithVersion extends \PicturePark\API\Runtime\Client\
         $optionsResolver->setDefined(array('version'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array());
-        $optionsResolver->setAllowedTypes('version', array('int'));
+        $optionsResolver->addAllowedTypes('version', array('int'));
         return $optionsResolver;
     }
     /**

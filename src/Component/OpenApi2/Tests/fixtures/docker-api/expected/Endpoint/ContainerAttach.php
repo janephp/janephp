@@ -151,12 +151,12 @@ class ContainerAttach extends \Docker\Api\Runtime\Client\BaseEndpoint implements
         $optionsResolver->setDefined(array('detachKeys', 'logs', 'stream', 'stdin', 'stdout', 'stderr'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array('logs' => false, 'stream' => false, 'stdin' => false, 'stdout' => false, 'stderr' => false));
-        $optionsResolver->setAllowedTypes('detachKeys', array('string'));
-        $optionsResolver->setAllowedTypes('logs', array('bool'));
-        $optionsResolver->setAllowedTypes('stream', array('bool'));
-        $optionsResolver->setAllowedTypes('stdin', array('bool'));
-        $optionsResolver->setAllowedTypes('stdout', array('bool'));
-        $optionsResolver->setAllowedTypes('stderr', array('bool'));
+        $optionsResolver->addAllowedTypes('detachKeys', array('string'));
+        $optionsResolver->addAllowedTypes('logs', array('bool'));
+        $optionsResolver->addAllowedTypes('stream', array('bool'));
+        $optionsResolver->addAllowedTypes('stdin', array('bool'));
+        $optionsResolver->addAllowedTypes('stdout', array('bool'));
+        $optionsResolver->addAllowedTypes('stderr', array('bool'));
         return $optionsResolver;
     }
     /**

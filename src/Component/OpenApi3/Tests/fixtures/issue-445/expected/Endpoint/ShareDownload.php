@@ -46,8 +46,8 @@ class ShareDownload extends \PicturePark\API\Runtime\Client\BaseEndpoint impleme
         $optionsResolver->setDefined(array('width', 'height'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array());
-        $optionsResolver->setAllowedTypes('width', array('int', 'null'));
-        $optionsResolver->setAllowedTypes('height', array('int', 'null'));
+        $optionsResolver->addAllowedTypes('width', array('int', 'null'));
+        $optionsResolver->addAllowedTypes('height', array('int', 'null'));
         return $optionsResolver;
     }
     protected function getHeadersOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
@@ -56,7 +56,7 @@ class ShareDownload extends \PicturePark\API\Runtime\Client\BaseEndpoint impleme
         $optionsResolver->setDefined(array('range'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array());
-        $optionsResolver->setAllowedTypes('range', array('string', 'null'));
+        $optionsResolver->addAllowedTypes('range', array('string', 'null'));
         return $optionsResolver;
     }
     /**

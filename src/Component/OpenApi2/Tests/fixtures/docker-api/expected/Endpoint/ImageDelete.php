@@ -47,8 +47,8 @@ class ImageDelete extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Do
         $optionsResolver->setDefined(array('force', 'noprune'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array('force' => false, 'noprune' => false));
-        $optionsResolver->setAllowedTypes('force', array('bool'));
-        $optionsResolver->setAllowedTypes('noprune', array('bool'));
+        $optionsResolver->addAllowedTypes('force', array('bool'));
+        $optionsResolver->addAllowedTypes('noprune', array('bool'));
         return $optionsResolver;
     }
     /**

@@ -50,9 +50,9 @@ class TeamsListDiscussionCommentsInOrg extends \Github\Runtime\Client\BaseEndpoi
         $optionsResolver->setDefined(array('direction', 'per_page', 'page'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array('direction' => 'desc', 'per_page' => 30, 'page' => 1));
-        $optionsResolver->setAllowedTypes('direction', array('string'));
-        $optionsResolver->setAllowedTypes('per_page', array('int'));
-        $optionsResolver->setAllowedTypes('page', array('int'));
+        $optionsResolver->addAllowedTypes('direction', array('string'));
+        $optionsResolver->addAllowedTypes('per_page', array('int'));
+        $optionsResolver->addAllowedTypes('page', array('int'));
         return $optionsResolver;
     }
     /**

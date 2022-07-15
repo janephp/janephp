@@ -53,12 +53,12 @@ class ListCompanySpecificNotificationEvents extends \CreditSafe\API\Runtime\Clie
         $optionsResolver->setDefined(array('searchQuery', 'sortDir', 'pageSize', 'page', 'isProcessed', 'sortBy'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array('sortDir' => 'asc', 'pageSize' => 50, 'page' => 0, 'sortBy' => 'companyName'));
-        $optionsResolver->setAllowedTypes('searchQuery', array('string'));
-        $optionsResolver->setAllowedTypes('sortDir', array('string'));
-        $optionsResolver->setAllowedTypes('pageSize', array('int'));
-        $optionsResolver->setAllowedTypes('page', array('int'));
-        $optionsResolver->setAllowedTypes('isProcessed', array('bool'));
-        $optionsResolver->setAllowedTypes('sortBy', array('string'));
+        $optionsResolver->addAllowedTypes('searchQuery', array('string'));
+        $optionsResolver->addAllowedTypes('sortDir', array('string'));
+        $optionsResolver->addAllowedTypes('pageSize', array('int'));
+        $optionsResolver->addAllowedTypes('page', array('int'));
+        $optionsResolver->addAllowedTypes('isProcessed', array('bool'));
+        $optionsResolver->addAllowedTypes('sortBy', array('string'));
         return $optionsResolver;
     }
     protected function getHeadersOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
@@ -67,7 +67,7 @@ class ListCompanySpecificNotificationEvents extends \CreditSafe\API\Runtime\Clie
         $optionsResolver->setDefined(array('Authorization'));
         $optionsResolver->setRequired(array('Authorization'));
         $optionsResolver->setDefaults(array());
-        $optionsResolver->setAllowedTypes('Authorization', array('string'));
+        $optionsResolver->addAllowedTypes('Authorization', array('string'));
         return $optionsResolver;
     }
     /**

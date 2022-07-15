@@ -42,7 +42,7 @@ class PeopleDirectorSearchCriteria extends \CreditSafe\API\Runtime\Client\BaseEn
         $optionsResolver->setDefined(array('countries'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array());
-        $optionsResolver->setAllowedTypes('countries', array('string'));
+        $optionsResolver->addAllowedTypes('countries', array('string'));
         return $optionsResolver;
     }
     protected function getHeadersOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
@@ -51,7 +51,7 @@ class PeopleDirectorSearchCriteria extends \CreditSafe\API\Runtime\Client\BaseEn
         $optionsResolver->setDefined(array('Authorization'));
         $optionsResolver->setRequired(array('Authorization'));
         $optionsResolver->setDefaults(array());
-        $optionsResolver->setAllowedTypes('Authorization', array('string'));
+        $optionsResolver->addAllowedTypes('Authorization', array('string'));
         return $optionsResolver;
     }
     /**

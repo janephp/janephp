@@ -42,7 +42,7 @@ class ContainerCreate extends \Docker\Api\Runtime\Client\BaseEndpoint implements
         $optionsResolver->setDefined(array('name'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array());
-        $optionsResolver->setAllowedTypes('name', array('string'));
+        $optionsResolver->addAllowedTypes('name', array('string'));
         return $optionsResolver;
     }
     /**

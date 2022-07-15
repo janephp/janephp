@@ -52,14 +52,14 @@ class CompanyComplianceSearch extends \CreditSafe\API\Runtime\Client\BaseEndpoin
         $optionsResolver->setDefined(array('countries', 'name', 'street', 'houseNo', 'city', 'postCode', 'province', 'phoneNo'));
         $optionsResolver->setRequired(array('name'));
         $optionsResolver->setDefaults(array());
-        $optionsResolver->setAllowedTypes('countries', array('string'));
-        $optionsResolver->setAllowedTypes('name', array('string'));
-        $optionsResolver->setAllowedTypes('street', array('string'));
-        $optionsResolver->setAllowedTypes('houseNo', array('string'));
-        $optionsResolver->setAllowedTypes('city', array('string'));
-        $optionsResolver->setAllowedTypes('postCode', array('string'));
-        $optionsResolver->setAllowedTypes('province', array('string'));
-        $optionsResolver->setAllowedTypes('phoneNo', array('string'));
+        $optionsResolver->addAllowedTypes('countries', array('string'));
+        $optionsResolver->addAllowedTypes('name', array('string'));
+        $optionsResolver->addAllowedTypes('street', array('string'));
+        $optionsResolver->addAllowedTypes('houseNo', array('string'));
+        $optionsResolver->addAllowedTypes('city', array('string'));
+        $optionsResolver->addAllowedTypes('postCode', array('string'));
+        $optionsResolver->addAllowedTypes('province', array('string'));
+        $optionsResolver->addAllowedTypes('phoneNo', array('string'));
         return $optionsResolver;
     }
     protected function getHeadersOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
@@ -68,7 +68,7 @@ class CompanyComplianceSearch extends \CreditSafe\API\Runtime\Client\BaseEndpoin
         $optionsResolver->setDefined(array('Authorization'));
         $optionsResolver->setRequired(array('Authorization'));
         $optionsResolver->setDefaults(array());
-        $optionsResolver->setAllowedTypes('Authorization', array('string'));
+        $optionsResolver->addAllowedTypes('Authorization', array('string'));
         return $optionsResolver;
     }
     /**

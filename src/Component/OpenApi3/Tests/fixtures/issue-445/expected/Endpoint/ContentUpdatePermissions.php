@@ -50,9 +50,9 @@ class ContentUpdatePermissions extends \PicturePark\API\Runtime\Client\BaseEndpo
         $optionsResolver->setDefined(array('resolveBehaviors', 'timeout', 'waitSearchDocCreation'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array('waitSearchDocCreation' => true));
-        $optionsResolver->setAllowedTypes('resolveBehaviors', array('array', 'null'));
-        $optionsResolver->setAllowedTypes('timeout', array('string', 'null'));
-        $optionsResolver->setAllowedTypes('waitSearchDocCreation', array('bool'));
+        $optionsResolver->addAllowedTypes('resolveBehaviors', array('array', 'null'));
+        $optionsResolver->addAllowedTypes('timeout', array('string', 'null'));
+        $optionsResolver->addAllowedTypes('waitSearchDocCreation', array('bool'));
         return $optionsResolver;
     }
     /**

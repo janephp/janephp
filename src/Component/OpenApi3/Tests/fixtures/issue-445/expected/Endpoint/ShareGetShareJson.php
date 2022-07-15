@@ -42,8 +42,8 @@ class ShareGetShareJson extends \PicturePark\API\Runtime\Client\BaseEndpoint imp
         $optionsResolver->setDefined(array('lang', 'resolveBehaviors'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array());
-        $optionsResolver->setAllowedTypes('lang', array('string', 'null'));
-        $optionsResolver->setAllowedTypes('resolveBehaviors', array('array', 'null'));
+        $optionsResolver->addAllowedTypes('lang', array('string', 'null'));
+        $optionsResolver->addAllowedTypes('resolveBehaviors', array('array', 'null'));
         return $optionsResolver;
     }
     /**

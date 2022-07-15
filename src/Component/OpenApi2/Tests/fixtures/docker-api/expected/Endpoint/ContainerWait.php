@@ -43,7 +43,7 @@ class ContainerWait extends \Docker\Api\Runtime\Client\BaseEndpoint implements \
         $optionsResolver->setDefined(array('condition'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array('condition' => 'not-running'));
-        $optionsResolver->setAllowedTypes('condition', array('string'));
+        $optionsResolver->addAllowedTypes('condition', array('string'));
         return $optionsResolver;
     }
     /**

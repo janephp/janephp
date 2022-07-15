@@ -58,8 +58,8 @@ class PluginPull extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Doc
         $optionsResolver->setDefined(array('remote', 'name'));
         $optionsResolver->setRequired(array('remote'));
         $optionsResolver->setDefaults(array());
-        $optionsResolver->setAllowedTypes('remote', array('string'));
-        $optionsResolver->setAllowedTypes('name', array('string'));
+        $optionsResolver->addAllowedTypes('remote', array('string'));
+        $optionsResolver->addAllowedTypes('name', array('string'));
         return $optionsResolver;
     }
     protected function getHeadersOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
@@ -68,7 +68,7 @@ class PluginPull extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Doc
         $optionsResolver->setDefined(array('X-Registry-Auth'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array());
-        $optionsResolver->setAllowedTypes('X-Registry-Auth', array('string'));
+        $optionsResolver->addAllowedTypes('X-Registry-Auth', array('string'));
         return $optionsResolver;
     }
     /**

@@ -50,10 +50,17 @@ class NonBodyParameterGenerator extends ParameterGenerator
         $genericResolverKeys = array_keys($genericResolver);
 
         foreach ($parameters as $parameter) {
-            $defined[] = new Expr\ArrayItem(new Scalar\String_($parameter->getName()));
+            $parameterName = $parameter->getName();
+            if (str_contains($parameterName, '[]')) {
+                $parameterName = substr($parameterName, 0, -2);
+            }
+
+            if (!array_key_exists($parameterName, $defined)) {
+                $defined[$parameterName] = new Expr\ArrayItem(new Scalar\String_($parameterName));
+            }
 
             if ($parameter->getRequired() && null === $parameter->getDefault()) {
-                $required[] = new Expr\ArrayItem(new Scalar\String_($parameter->getName()));
+                $required[] = new Expr\ArrayItem(new Scalar\String_($parameterName));
             }
 
             $matchGenericResolver = null;
@@ -68,24 +75,24 @@ class NonBodyParameterGenerator extends ParameterGenerator
                     $types[] = new Expr\ArrayItem(new Scalar\String_($typeString));
                 }
 
-                $allowedTypes[] = new Node\Stmt\Expression(new Expr\MethodCall($optionsResolverVariable, 'setAllowedTypes', [
-                    new Node\Arg(new Scalar\String_($parameter->getName())),
+                $allowedTypes[] = new Node\Stmt\Expression(new Expr\MethodCall($optionsResolverVariable, 'addAllowedTypes', [
+                    new Node\Arg(new Scalar\String_($parameterName)),
                     new Node\Arg(new Expr\Array_($types)),
                 ]));
             }
 
             if (!$parameter->getRequired() && null !== $parameter->getDefault()) {
-                $defaults[] = new Expr\ArrayItem($this->getDefaultAsExpr($parameter), new Scalar\String_($parameter->getName()));
+                $defaults[] = new Expr\ArrayItem($this->getDefaultAsExpr($parameter), new Scalar\String_($parameterName));
             }
 
             if (null !== $matchGenericResolver) {
-                $allowedTypes[] = $this->generateOptionResolverNormalizationStatement($parameter->getName(), $genericResolver[$matchGenericResolver]);
+                $allowedTypes[] = $this->generateOptionResolverNormalizationStatement($parameterName, $genericResolver[$matchGenericResolver]);
             }
         }
 
         return array_merge([
             new Node\Stmt\Expression(new Expr\MethodCall($optionsResolverVariable, 'setDefined', [
-                new Node\Arg(new Expr\Array_($defined)),
+                new Node\Arg(new Expr\Array_(array_values($defined))),
             ])),
             new Node\Stmt\Expression(new Expr\MethodCall($optionsResolverVariable, 'setRequired', [
                 new Node\Arg(new Expr\Array_($required)),

@@ -55,20 +55,20 @@ class PeopleDirectorSearch extends \CreditSafe\API\Runtime\Client\BaseEndpoint i
         $optionsResolver->setDefined(array('countries', 'id', 'regNo', 'safeNumber', 'peopleId', 'firstName', 'lastName', 'companyName', 'companyNumber', 'localDirectorNumber', 'dateOfBirth', 'page', 'pageSize', 'callRef'));
         $optionsResolver->setRequired(array('countries'));
         $optionsResolver->setDefaults(array());
-        $optionsResolver->setAllowedTypes('countries', array('string'));
-        $optionsResolver->setAllowedTypes('id', array('string'));
-        $optionsResolver->setAllowedTypes('regNo', array('string'));
-        $optionsResolver->setAllowedTypes('safeNumber', array('string'));
-        $optionsResolver->setAllowedTypes('peopleId', array('string'));
-        $optionsResolver->setAllowedTypes('firstName', array('string'));
-        $optionsResolver->setAllowedTypes('lastName', array('string'));
-        $optionsResolver->setAllowedTypes('companyName', array('string'));
-        $optionsResolver->setAllowedTypes('companyNumber', array('string'));
-        $optionsResolver->setAllowedTypes('localDirectorNumber', array('string'));
-        $optionsResolver->setAllowedTypes('dateOfBirth', array('string'));
-        $optionsResolver->setAllowedTypes('page', array('int'));
-        $optionsResolver->setAllowedTypes('pageSize', array('int'));
-        $optionsResolver->setAllowedTypes('callRef', array('string'));
+        $optionsResolver->addAllowedTypes('countries', array('string'));
+        $optionsResolver->addAllowedTypes('id', array('string'));
+        $optionsResolver->addAllowedTypes('regNo', array('string'));
+        $optionsResolver->addAllowedTypes('safeNumber', array('string'));
+        $optionsResolver->addAllowedTypes('peopleId', array('string'));
+        $optionsResolver->addAllowedTypes('firstName', array('string'));
+        $optionsResolver->addAllowedTypes('lastName', array('string'));
+        $optionsResolver->addAllowedTypes('companyName', array('string'));
+        $optionsResolver->addAllowedTypes('companyNumber', array('string'));
+        $optionsResolver->addAllowedTypes('localDirectorNumber', array('string'));
+        $optionsResolver->addAllowedTypes('dateOfBirth', array('string'));
+        $optionsResolver->addAllowedTypes('page', array('int'));
+        $optionsResolver->addAllowedTypes('pageSize', array('int'));
+        $optionsResolver->addAllowedTypes('callRef', array('string'));
         return $optionsResolver;
     }
     protected function getHeadersOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
@@ -77,7 +77,7 @@ class PeopleDirectorSearch extends \CreditSafe\API\Runtime\Client\BaseEndpoint i
         $optionsResolver->setDefined(array('Authorization'));
         $optionsResolver->setRequired(array('Authorization'));
         $optionsResolver->setDefaults(array());
-        $optionsResolver->setAllowedTypes('Authorization', array('string'));
+        $optionsResolver->addAllowedTypes('Authorization', array('string'));
         return $optionsResolver;
     }
     /**

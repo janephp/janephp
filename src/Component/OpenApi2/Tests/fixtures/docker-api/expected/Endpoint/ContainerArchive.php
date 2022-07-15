@@ -41,7 +41,7 @@ class ContainerArchive extends \Docker\Api\Runtime\Client\BaseEndpoint implement
         $optionsResolver->setDefined(array('path'));
         $optionsResolver->setRequired(array('path'));
         $optionsResolver->setDefaults(array());
-        $optionsResolver->setAllowedTypes('path', array('string'));
+        $optionsResolver->addAllowedTypes('path', array('string'));
         return $optionsResolver;
     }
     /**

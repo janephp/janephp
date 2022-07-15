@@ -59,17 +59,17 @@ class IssuesListForRepo extends \Github\Runtime\Client\BaseEndpoint implements \
         $optionsResolver->setDefined(array('milestone', 'state', 'assignee', 'creator', 'mentioned', 'labels', 'sort', 'direction', 'since', 'per_page', 'page'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array('state' => 'open', 'sort' => 'created', 'direction' => 'desc', 'per_page' => 30, 'page' => 1));
-        $optionsResolver->setAllowedTypes('milestone', array('string'));
-        $optionsResolver->setAllowedTypes('state', array('string'));
-        $optionsResolver->setAllowedTypes('assignee', array('string'));
-        $optionsResolver->setAllowedTypes('creator', array('string'));
-        $optionsResolver->setAllowedTypes('mentioned', array('string'));
-        $optionsResolver->setAllowedTypes('labels', array('string'));
-        $optionsResolver->setAllowedTypes('sort', array('string'));
-        $optionsResolver->setAllowedTypes('direction', array('string'));
-        $optionsResolver->setAllowedTypes('since', array('string'));
-        $optionsResolver->setAllowedTypes('per_page', array('int'));
-        $optionsResolver->setAllowedTypes('page', array('int'));
+        $optionsResolver->addAllowedTypes('milestone', array('string'));
+        $optionsResolver->addAllowedTypes('state', array('string'));
+        $optionsResolver->addAllowedTypes('assignee', array('string'));
+        $optionsResolver->addAllowedTypes('creator', array('string'));
+        $optionsResolver->addAllowedTypes('mentioned', array('string'));
+        $optionsResolver->addAllowedTypes('labels', array('string'));
+        $optionsResolver->addAllowedTypes('sort', array('string'));
+        $optionsResolver->addAllowedTypes('direction', array('string'));
+        $optionsResolver->addAllowedTypes('since', array('string'));
+        $optionsResolver->addAllowedTypes('per_page', array('int'));
+        $optionsResolver->addAllowedTypes('page', array('int'));
         return $optionsResolver;
     }
     /**

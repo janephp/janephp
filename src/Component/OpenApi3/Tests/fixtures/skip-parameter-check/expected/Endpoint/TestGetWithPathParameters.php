@@ -43,7 +43,7 @@ class TestGetWithPathParameters extends \Jane\OpenApi3\Tests\Expected\Runtime\Cl
         $optionsResolver->setDefined(array('testQuery'));
         $optionsResolver->setRequired(array('testQuery'));
         $optionsResolver->setDefaults(array());
-        $optionsResolver->setAllowedTypes('testQuery', array('string'));
+        $optionsResolver->addAllowedTypes('testQuery', array('string'));
         return $optionsResolver;
     }
     protected function getHeadersOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
@@ -52,7 +52,7 @@ class TestGetWithPathParameters extends \Jane\OpenApi3\Tests\Expected\Runtime\Cl
         $optionsResolver->setDefined(array('testHeader'));
         $optionsResolver->setRequired(array('testHeader'));
         $optionsResolver->setDefaults(array());
-        $optionsResolver->setAllowedTypes('testHeader', array('string'));
+        $optionsResolver->addAllowedTypes('testHeader', array('string'));
         return $optionsResolver;
     }
     /**

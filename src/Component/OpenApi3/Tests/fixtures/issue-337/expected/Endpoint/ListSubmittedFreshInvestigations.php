@@ -55,20 +55,20 @@ class ListSubmittedFreshInvestigations extends \CreditSafe\API\Runtime\Client\Ba
         $optionsResolver->setDefined(array('page', 'pageSize', 'transactionId', 'reportCreatedAfter', 'reportCreatedBefore', 'createdBefore', 'createdSince', 'lookUpOrderBy', 'companyDetailsCountry', 'companyDetailsName', 'searchCriteriaCountry', 'searchCriteriaName', 'sortBy', 'sortDir'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array('page' => 0, 'pageSize' => 50));
-        $optionsResolver->setAllowedTypes('page', array('int'));
-        $optionsResolver->setAllowedTypes('pageSize', array('int'));
-        $optionsResolver->setAllowedTypes('transactionId', array('string'));
-        $optionsResolver->setAllowedTypes('reportCreatedAfter', array('string'));
-        $optionsResolver->setAllowedTypes('reportCreatedBefore', array('string'));
-        $optionsResolver->setAllowedTypes('createdBefore', array('string'));
-        $optionsResolver->setAllowedTypes('createdSince', array('string'));
-        $optionsResolver->setAllowedTypes('lookUpOrderBy', array('string'));
-        $optionsResolver->setAllowedTypes('companyDetailsCountry', array('string'));
-        $optionsResolver->setAllowedTypes('companyDetailsName', array('string'));
-        $optionsResolver->setAllowedTypes('searchCriteriaCountry', array('string'));
-        $optionsResolver->setAllowedTypes('searchCriteriaName', array('string'));
-        $optionsResolver->setAllowedTypes('sortBy', array('string'));
-        $optionsResolver->setAllowedTypes('sortDir', array('string'));
+        $optionsResolver->addAllowedTypes('page', array('int'));
+        $optionsResolver->addAllowedTypes('pageSize', array('int'));
+        $optionsResolver->addAllowedTypes('transactionId', array('string'));
+        $optionsResolver->addAllowedTypes('reportCreatedAfter', array('string'));
+        $optionsResolver->addAllowedTypes('reportCreatedBefore', array('string'));
+        $optionsResolver->addAllowedTypes('createdBefore', array('string'));
+        $optionsResolver->addAllowedTypes('createdSince', array('string'));
+        $optionsResolver->addAllowedTypes('lookUpOrderBy', array('string'));
+        $optionsResolver->addAllowedTypes('companyDetailsCountry', array('string'));
+        $optionsResolver->addAllowedTypes('companyDetailsName', array('string'));
+        $optionsResolver->addAllowedTypes('searchCriteriaCountry', array('string'));
+        $optionsResolver->addAllowedTypes('searchCriteriaName', array('string'));
+        $optionsResolver->addAllowedTypes('sortBy', array('string'));
+        $optionsResolver->addAllowedTypes('sortDir', array('string'));
         return $optionsResolver;
     }
     protected function getHeadersOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
@@ -77,7 +77,7 @@ class ListSubmittedFreshInvestigations extends \CreditSafe\API\Runtime\Client\Ba
         $optionsResolver->setDefined(array('Authorization'));
         $optionsResolver->setRequired(array('Authorization'));
         $optionsResolver->setDefaults(array());
-        $optionsResolver->setAllowedTypes('Authorization', array('string'));
+        $optionsResolver->addAllowedTypes('Authorization', array('string'));
         return $optionsResolver;
     }
     /**

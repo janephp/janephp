@@ -44,7 +44,7 @@ class SchemaCreate extends \PicturePark\API\Runtime\Client\BaseEndpoint implemen
         $optionsResolver->setDefined(array('timeout'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array());
-        $optionsResolver->setAllowedTypes('timeout', array('string', 'null'));
+        $optionsResolver->addAllowedTypes('timeout', array('string', 'null'));
         return $optionsResolver;
     }
     /**

@@ -41,8 +41,8 @@ class UsersList extends \Github\Runtime\Client\BaseEndpoint implements \Github\R
         $optionsResolver->setDefined(array('since', 'per_page'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array('per_page' => 30));
-        $optionsResolver->setAllowedTypes('since', array('string'));
-        $optionsResolver->setAllowedTypes('per_page', array('int'));
+        $optionsResolver->addAllowedTypes('since', array('string'));
+        $optionsResolver->addAllowedTypes('per_page', array('int'));
         return $optionsResolver;
     }
     /**

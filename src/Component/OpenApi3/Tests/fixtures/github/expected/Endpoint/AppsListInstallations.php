@@ -43,10 +43,10 @@ class AppsListInstallations extends \Github\Runtime\Client\BaseEndpoint implemen
         $optionsResolver->setDefined(array('per_page', 'page', 'since', 'outdated'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array('per_page' => 30, 'page' => 1));
-        $optionsResolver->setAllowedTypes('per_page', array('int'));
-        $optionsResolver->setAllowedTypes('page', array('int'));
-        $optionsResolver->setAllowedTypes('since', array('string'));
-        $optionsResolver->setAllowedTypes('outdated', array('string'));
+        $optionsResolver->addAllowedTypes('per_page', array('int'));
+        $optionsResolver->addAllowedTypes('page', array('int'));
+        $optionsResolver->addAllowedTypes('since', array('string'));
+        $optionsResolver->addAllowedTypes('outdated', array('string'));
         return $optionsResolver;
     }
     /**

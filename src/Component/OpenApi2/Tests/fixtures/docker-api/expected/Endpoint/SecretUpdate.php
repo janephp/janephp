@@ -48,7 +48,7 @@ class SecretUpdate extends \Docker\Api\Runtime\Client\BaseEndpoint implements \D
         $optionsResolver->setDefined(array('version'));
         $optionsResolver->setRequired(array('version'));
         $optionsResolver->setDefaults(array());
-        $optionsResolver->setAllowedTypes('version', array('int'));
+        $optionsResolver->addAllowedTypes('version', array('int'));
         return $optionsResolver;
     }
     /**

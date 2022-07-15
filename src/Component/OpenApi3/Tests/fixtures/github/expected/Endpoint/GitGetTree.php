@@ -49,7 +49,7 @@ class GitGetTree extends \Github\Runtime\Client\BaseEndpoint implements \Github\
         $optionsResolver->setDefined(array('recursive'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array());
-        $optionsResolver->setAllowedTypes('recursive', array('string'));
+        $optionsResolver->addAllowedTypes('recursive', array('string'));
         return $optionsResolver;
     }
     /**

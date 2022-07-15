@@ -49,10 +49,10 @@ class OrgsListMembers extends \Github\Runtime\Client\BaseEndpoint implements \Gi
         $optionsResolver->setDefined(array('filter', 'role', 'per_page', 'page'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array('filter' => 'all', 'role' => 'all', 'per_page' => 30, 'page' => 1));
-        $optionsResolver->setAllowedTypes('filter', array('string'));
-        $optionsResolver->setAllowedTypes('role', array('string'));
-        $optionsResolver->setAllowedTypes('per_page', array('int'));
-        $optionsResolver->setAllowedTypes('page', array('int'));
+        $optionsResolver->addAllowedTypes('filter', array('string'));
+        $optionsResolver->addAllowedTypes('role', array('string'));
+        $optionsResolver->addAllowedTypes('per_page', array('int'));
+        $optionsResolver->addAllowedTypes('page', array('int'));
         return $optionsResolver;
     }
     /**

@@ -45,10 +45,10 @@ class ListDecisionTrees extends \CreditSafe\API\Runtime\Client\BaseEndpoint impl
         $optionsResolver->setDefined(array('type', 'sortBy', 'sortDir', 'callRef'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array('sortBy' => 'friendlyName', 'sortDir' => 'asc'));
-        $optionsResolver->setAllowedTypes('type', array('string'));
-        $optionsResolver->setAllowedTypes('sortBy', array('string'));
-        $optionsResolver->setAllowedTypes('sortDir', array('string'));
-        $optionsResolver->setAllowedTypes('callRef', array('string'));
+        $optionsResolver->addAllowedTypes('type', array('string'));
+        $optionsResolver->addAllowedTypes('sortBy', array('string'));
+        $optionsResolver->addAllowedTypes('sortDir', array('string'));
+        $optionsResolver->addAllowedTypes('callRef', array('string'));
         return $optionsResolver;
     }
     protected function getHeadersOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
@@ -57,7 +57,7 @@ class ListDecisionTrees extends \CreditSafe\API\Runtime\Client\BaseEndpoint impl
         $optionsResolver->setDefined(array('Authorization'));
         $optionsResolver->setRequired(array('Authorization'));
         $optionsResolver->setDefaults(array());
-        $optionsResolver->setAllowedTypes('Authorization', array('string'));
+        $optionsResolver->addAllowedTypes('Authorization', array('string'));
         return $optionsResolver;
     }
     /**

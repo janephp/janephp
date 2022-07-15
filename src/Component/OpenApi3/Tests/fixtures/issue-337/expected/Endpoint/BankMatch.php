@@ -47,11 +47,11 @@ class BankMatch extends \CreditSafe\API\Runtime\Client\BaseEndpoint implements \
         $optionsResolver->setDefined(array('checkType', 'companyId', 'sortCode', 'accountNumber', 'iban', 'vatNumber'));
         $optionsResolver->setRequired(array('checkType', 'companyId'));
         $optionsResolver->setDefaults(array());
-        $optionsResolver->setAllowedTypes('companyId', array('string'));
-        $optionsResolver->setAllowedTypes('sortCode', array('string'));
-        $optionsResolver->setAllowedTypes('accountNumber', array('string'));
-        $optionsResolver->setAllowedTypes('iban', array('string'));
-        $optionsResolver->setAllowedTypes('vatNumber', array('string'));
+        $optionsResolver->addAllowedTypes('companyId', array('string'));
+        $optionsResolver->addAllowedTypes('sortCode', array('string'));
+        $optionsResolver->addAllowedTypes('accountNumber', array('string'));
+        $optionsResolver->addAllowedTypes('iban', array('string'));
+        $optionsResolver->addAllowedTypes('vatNumber', array('string'));
         return $optionsResolver;
     }
     protected function getHeadersOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
@@ -60,7 +60,7 @@ class BankMatch extends \CreditSafe\API\Runtime\Client\BaseEndpoint implements \
         $optionsResolver->setDefined(array('Authorization'));
         $optionsResolver->setRequired(array('Authorization'));
         $optionsResolver->setDefaults(array());
-        $optionsResolver->setAllowedTypes('Authorization', array('string'));
+        $optionsResolver->addAllowedTypes('Authorization', array('string'));
         return $optionsResolver;
     }
     /**

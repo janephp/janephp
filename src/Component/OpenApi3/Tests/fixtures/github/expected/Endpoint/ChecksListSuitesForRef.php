@@ -52,10 +52,10 @@ class ChecksListSuitesForRef extends \Github\Runtime\Client\BaseEndpoint impleme
         $optionsResolver->setDefined(array('app_id', 'check_name', 'per_page', 'page'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array('per_page' => 30, 'page' => 1));
-        $optionsResolver->setAllowedTypes('app_id', array('int'));
-        $optionsResolver->setAllowedTypes('check_name', array('string'));
-        $optionsResolver->setAllowedTypes('per_page', array('int'));
-        $optionsResolver->setAllowedTypes('page', array('int'));
+        $optionsResolver->addAllowedTypes('app_id', array('int'));
+        $optionsResolver->addAllowedTypes('check_name', array('string'));
+        $optionsResolver->addAllowedTypes('per_page', array('int'));
+        $optionsResolver->addAllowedTypes('page', array('int'));
         return $optionsResolver;
     }
     /**

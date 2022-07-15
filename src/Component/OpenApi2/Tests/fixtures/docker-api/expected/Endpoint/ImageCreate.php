@@ -60,13 +60,13 @@ class ImageCreate extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Do
         $optionsResolver->setDefined(array('fromImage', 'fromSrc', 'repo', 'tag', 'message', 'changes', 'platform'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array('platform' => ''));
-        $optionsResolver->setAllowedTypes('fromImage', array('string'));
-        $optionsResolver->setAllowedTypes('fromSrc', array('string'));
-        $optionsResolver->setAllowedTypes('repo', array('string'));
-        $optionsResolver->setAllowedTypes('tag', array('string'));
-        $optionsResolver->setAllowedTypes('message', array('string'));
-        $optionsResolver->setAllowedTypes('changes', array('array'));
-        $optionsResolver->setAllowedTypes('platform', array('string'));
+        $optionsResolver->addAllowedTypes('fromImage', array('string'));
+        $optionsResolver->addAllowedTypes('fromSrc', array('string'));
+        $optionsResolver->addAllowedTypes('repo', array('string'));
+        $optionsResolver->addAllowedTypes('tag', array('string'));
+        $optionsResolver->addAllowedTypes('message', array('string'));
+        $optionsResolver->addAllowedTypes('changes', array('array'));
+        $optionsResolver->addAllowedTypes('platform', array('string'));
         return $optionsResolver;
     }
     protected function getHeadersOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
@@ -75,7 +75,7 @@ class ImageCreate extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Do
         $optionsResolver->setDefined(array('X-Registry-Auth'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array());
-        $optionsResolver->setAllowedTypes('X-Registry-Auth', array('string'));
+        $optionsResolver->addAllowedTypes('X-Registry-Auth', array('string'));
         return $optionsResolver;
     }
     /**

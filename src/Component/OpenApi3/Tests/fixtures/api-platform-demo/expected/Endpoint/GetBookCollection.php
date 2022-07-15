@@ -46,15 +46,15 @@ class GetBookCollection extends \ApiPlatform\Demo\Runtime\Client\BaseEndpoint im
         $optionsResolver->setDefined(array('properties[]', 'order[id]', 'order[title]', 'order[author]', 'order[isbn]', 'order[publicationDate]', 'title', 'author', 'page'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array('page' => 1));
-        $optionsResolver->setAllowedTypes('properties[]', array('array'));
-        $optionsResolver->setAllowedTypes('order[id]', array('string'));
-        $optionsResolver->setAllowedTypes('order[title]', array('string'));
-        $optionsResolver->setAllowedTypes('order[author]', array('string'));
-        $optionsResolver->setAllowedTypes('order[isbn]', array('string'));
-        $optionsResolver->setAllowedTypes('order[publicationDate]', array('string'));
-        $optionsResolver->setAllowedTypes('title', array('string'));
-        $optionsResolver->setAllowedTypes('author', array('string'));
-        $optionsResolver->setAllowedTypes('page', array('int'));
+        $optionsResolver->addAllowedTypes('properties[]', array('array'));
+        $optionsResolver->addAllowedTypes('order[id]', array('string'));
+        $optionsResolver->addAllowedTypes('order[title]', array('string'));
+        $optionsResolver->addAllowedTypes('order[author]', array('string'));
+        $optionsResolver->addAllowedTypes('order[isbn]', array('string'));
+        $optionsResolver->addAllowedTypes('order[publicationDate]', array('string'));
+        $optionsResolver->addAllowedTypes('title', array('string'));
+        $optionsResolver->addAllowedTypes('author', array('string'));
+        $optionsResolver->addAllowedTypes('page', array('int'));
         return $optionsResolver;
     }
     /**

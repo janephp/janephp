@@ -46,8 +46,8 @@ class DirectorReport extends \CreditSafe\API\Runtime\Client\BaseEndpoint impleme
         $optionsResolver->setDefined(array('language', 'callRef'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array('language' => 'en'));
-        $optionsResolver->setAllowedTypes('language', array('string'));
-        $optionsResolver->setAllowedTypes('callRef', array('string'));
+        $optionsResolver->addAllowedTypes('language', array('string'));
+        $optionsResolver->addAllowedTypes('callRef', array('string'));
         return $optionsResolver;
     }
     protected function getHeadersOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
@@ -56,7 +56,7 @@ class DirectorReport extends \CreditSafe\API\Runtime\Client\BaseEndpoint impleme
         $optionsResolver->setDefined(array('Authorization'));
         $optionsResolver->setRequired(array('Authorization'));
         $optionsResolver->setDefaults(array());
-        $optionsResolver->setAllowedTypes('Authorization', array('string'));
+        $optionsResolver->addAllowedTypes('Authorization', array('string'));
         return $optionsResolver;
     }
     /**

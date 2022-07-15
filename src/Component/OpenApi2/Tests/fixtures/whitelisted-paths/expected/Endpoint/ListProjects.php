@@ -40,11 +40,11 @@ class ListProjects extends \Jane\OpenApi2\Tests\Expected\Runtime\Client\BaseEndp
         $optionsResolver->setDefined(array('is_active', 'client_id', 'updated_since', 'page', 'per_page'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array());
-        $optionsResolver->setAllowedTypes('is_active', array('bool'));
-        $optionsResolver->setAllowedTypes('client_id', array('int'));
-        $optionsResolver->setAllowedTypes('updated_since', array('string'));
-        $optionsResolver->setAllowedTypes('page', array('int'));
-        $optionsResolver->setAllowedTypes('per_page', array('int'));
+        $optionsResolver->addAllowedTypes('is_active', array('bool'));
+        $optionsResolver->addAllowedTypes('client_id', array('int'));
+        $optionsResolver->addAllowedTypes('updated_since', array('string'));
+        $optionsResolver->addAllowedTypes('page', array('int'));
+        $optionsResolver->addAllowedTypes('per_page', array('int'));
         return $optionsResolver;
     }
     /**

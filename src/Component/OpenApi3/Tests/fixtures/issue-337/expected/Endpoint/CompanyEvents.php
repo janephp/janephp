@@ -48,10 +48,10 @@ class CompanyEvents extends \CreditSafe\API\Runtime\Client\BaseEndpoint implemen
         $optionsResolver->setDefined(array('startDate', 'endDate', 'page', 'pageSize'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array('page' => 0, 'pageSize' => 50));
-        $optionsResolver->setAllowedTypes('startDate', array('string'));
-        $optionsResolver->setAllowedTypes('endDate', array('string'));
-        $optionsResolver->setAllowedTypes('page', array('int'));
-        $optionsResolver->setAllowedTypes('pageSize', array('int'));
+        $optionsResolver->addAllowedTypes('startDate', array('string'));
+        $optionsResolver->addAllowedTypes('endDate', array('string'));
+        $optionsResolver->addAllowedTypes('page', array('int'));
+        $optionsResolver->addAllowedTypes('pageSize', array('int'));
         return $optionsResolver;
     }
     protected function getHeadersOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
@@ -60,7 +60,7 @@ class CompanyEvents extends \CreditSafe\API\Runtime\Client\BaseEndpoint implemen
         $optionsResolver->setDefined(array('Authorization'));
         $optionsResolver->setRequired(array('Authorization'));
         $optionsResolver->setDefaults(array());
-        $optionsResolver->setAllowedTypes('Authorization', array('string'));
+        $optionsResolver->addAllowedTypes('Authorization', array('string'));
         return $optionsResolver;
     }
     /**

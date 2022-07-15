@@ -43,7 +43,7 @@ class ImageLoad extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Dock
         $optionsResolver->setDefined(array('quiet'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array('quiet' => false));
-        $optionsResolver->setAllowedTypes('quiet', array('bool'));
+        $optionsResolver->addAllowedTypes('quiet', array('bool'));
         return $optionsResolver;
     }
     /**

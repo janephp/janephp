@@ -41,7 +41,7 @@ class ServiceInspect extends \Docker\Api\Runtime\Client\BaseEndpoint implements 
         $optionsResolver->setDefined(array('insertDefaults'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array('insertDefaults' => false));
-        $optionsResolver->setAllowedTypes('insertDefaults', array('bool'));
+        $optionsResolver->addAllowedTypes('insertDefaults', array('bool'));
         return $optionsResolver;
     }
     /**

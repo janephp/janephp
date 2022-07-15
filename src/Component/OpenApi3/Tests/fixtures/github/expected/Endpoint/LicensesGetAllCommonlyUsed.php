@@ -39,8 +39,8 @@ class LicensesGetAllCommonlyUsed extends \Github\Runtime\Client\BaseEndpoint imp
         $optionsResolver->setDefined(array('featured', 'per_page'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array('per_page' => 30));
-        $optionsResolver->setAllowedTypes('featured', array('bool'));
-        $optionsResolver->setAllowedTypes('per_page', array('int'));
+        $optionsResolver->addAllowedTypes('featured', array('bool'));
+        $optionsResolver->addAllowedTypes('per_page', array('int'));
         return $optionsResolver;
     }
     /**
