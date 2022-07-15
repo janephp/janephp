@@ -109,6 +109,19 @@
         "uuidFormat": {
             "type": "string",
             "format": "uuid"
+        },
+        "foo": {
+            "$ref": "#/definitions/Foo"
+        }
+    },
+    "definitions": {
+        "Foo": {
+            "type": "object",
+            "properties": {
+                "foo": {
+                    "type": "string"
+                }
+            }
         }
     }
 }

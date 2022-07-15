@@ -145,6 +145,12 @@ class Model
     /**
      * 
      *
+     * @var Foo
+     */
+    protected $foo;
+    /**
+     * 
+     *
      * @return string
      */
     public function getEnumString() : string
@@ -623,6 +629,27 @@ class Model
     public function setUuidFormat(string $uuidFormat) : self
     {
         $this->uuidFormat = $uuidFormat;
+        return $this;
+    }
+    /**
+     * 
+     *
+     * @return Foo
+     */
+    public function getFoo() : Foo
+    {
+        return $this->foo;
+    }
+    /**
+     * 
+     *
+     * @param Foo $foo
+     *
+     * @return self
+     */
+    public function setFoo(Foo $foo) : self
+    {
+        $this->foo = $foo;
         return $this;
     }
 }

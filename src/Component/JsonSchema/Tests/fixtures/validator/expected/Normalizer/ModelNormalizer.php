@@ -132,6 +132,9 @@ class ModelNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         if (\array_key_exists('uuidFormat', $data)) {
             $object->setUuidFormat($data['uuidFormat']);
         }
+        if (\array_key_exists('foo', $data)) {
+            $object->setFoo($this->denormalizer->denormalize($data['foo'], 'Jane\\JsonSchema\\Tests\\Expected\\Model\\Foo', 'json', $context));
+        }
         return $object;
     }
     /**
@@ -224,6 +227,9 @@ class ModelNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         }
         if (null !== $object->getUuidFormat()) {
             $data['uuidFormat'] = $object->getUuidFormat();
+        }
+        if (null !== $object->getFoo()) {
+            $data['foo'] = $this->normalizer->normalize($object->getFoo(), 'json', $context);
         }
         $validator = new \Jane\JsonSchema\Tests\Expected\Validator\ModelValidator();
         if (!($data['skip_validation'] ?? false)) {
