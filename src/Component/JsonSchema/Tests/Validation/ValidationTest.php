@@ -9,12 +9,14 @@ use Jane\Component\JsonSchema\Tests\Validation\Generated\Model\ArrayObject;
 use Jane\Component\JsonSchema\Tests\Validation\Generated\Model\FormatObject;
 use Jane\Component\JsonSchema\Tests\Validation\Generated\Model\NumericObject;
 use Jane\Component\JsonSchema\Tests\Validation\Generated\Model\ObjectObject;
+use Jane\Component\JsonSchema\Tests\Validation\Generated\Model\Shop;
 use Jane\Component\JsonSchema\Tests\Validation\Generated\Model\StringObject;
 use Jane\Component\JsonSchema\Tests\Validation\Generated\Model\TypeObject;
 use Jane\Component\JsonSchema\Tests\Validation\Generated\Normalizer\ArrayObjectNormalizer;
 use Jane\Component\JsonSchema\Tests\Validation\Generated\Normalizer\FormatObjectNormalizer;
 use Jane\Component\JsonSchema\Tests\Validation\Generated\Normalizer\NumericObjectNormalizer;
 use Jane\Component\JsonSchema\Tests\Validation\Generated\Normalizer\ObjectObjectNormalizer;
+use Jane\Component\JsonSchema\Tests\Validation\Generated\Normalizer\ShopNormalizer;
 use Jane\Component\JsonSchema\Tests\Validation\Generated\Normalizer\StringObjectNormalizer;
 use Jane\Component\JsonSchema\Tests\Validation\Generated\Normalizer\TypeObjectNormalizer;
 use Jane\Component\JsonSchema\Tests\Validation\Generated\Validator\ValidationException;
@@ -36,16 +38,16 @@ class ValidationTest extends TestCase
 
         $command->execute($inputArray, new NullOutput());
 
-        // 2. Numeric --------------------------------------------------------------------------------------------------
+        // 2. Numeric
         $this->numericValidation();
 
-        // 3. String ---------------------------------------------------------------------------------------------------
+        // 3. String
         $this->stringValidation();
 
-        // 4. Array ----------------------------------------------------------------------------------------------------
+        // 4. Array
         $this->arrayValidation();
 
-        // 5. Format ---------------------------------------------------------------------------------------------------
+        // 5. Format
         $this->formatValidation();
 
         // 6. Object
@@ -56,6 +58,9 @@ class ValidationTest extends TestCase
 
         // 8. Normalize
         $this->normalizeValidation();
+
+        // 9. Nullable
+        $this->nullableValidation();
     }
 
     private function numericValidation(): void
@@ -749,5 +754,38 @@ class ValidationTest extends TestCase
         $this->assertEquals(400, $caughtException->getCode());
         $this->assertEquals(1, $caughtException->getViolationList()->count());
         $this->assertEquals('[emailFormat]', $caughtException->getViolationList()->get(0)->getPropertyPath());
+    }
+
+    private function nullableValidation(): void
+    {
+        $normalizer = new ShopNormalizer();
+
+        $caughtException = null;
+        try {
+            $normalizer->denormalize([
+                'name' => '',
+            ], Shop::class);
+        } catch (ValidationException $exception) {
+            $caughtException = $exception;
+        }
+
+        $this->assertInstanceOf(ValidationException::class, $caughtException);
+        $this->assertEquals(400, $caughtException->getCode());
+        $this->assertEquals(1, $caughtException->getViolationList()->count());
+        $this->assertEquals('[name]', $caughtException->getViolationList()->get(0)->getPropertyPath());
+
+        $caughtException = null;
+        try {
+            $normalizer->denormalize([
+                'name' => null,
+            ], Shop::class);
+        } catch (ValidationException $exception) {
+            $caughtException = $exception;
+        }
+
+        $this->assertInstanceOf(ValidationException::class, $caughtException);
+        $this->assertEquals(400, $caughtException->getCode());
+        $this->assertEquals(1, $caughtException->getViolationList()->count());
+        $this->assertEquals('[name]', $caughtException->getViolationList()->get(0)->getPropertyPath());
     }
 }

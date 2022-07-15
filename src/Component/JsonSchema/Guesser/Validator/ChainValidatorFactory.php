@@ -33,6 +33,7 @@ class ChainValidatorFactory
         // Others
         $chainValidator->addValidator(new Any\TypeValidator());
         $chainValidator->addValidator(new Any\EnumValidator());
+        $chainValidator->addValidator(new Any\NotNullValidator());
         $chainValidator->addValidator(new Any\ConstValidator());
 
         return $chainValidator;
