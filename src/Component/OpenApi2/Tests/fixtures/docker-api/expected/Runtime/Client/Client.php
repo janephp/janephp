@@ -5,6 +5,7 @@ namespace Docker\Api\Runtime\Client;
 use Jane\Component\OpenApiRuntime\Client\Plugin\AuthenticationRegistry;
 use Psr\Http\Client\ClientInterface;
 use Psr\Http\Message\RequestFactoryInterface;
+use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\StreamFactoryInterface;
 use Psr\Http\Message\StreamInterface;
 use Symfony\Component\Serializer\SerializerInterface;
@@ -37,6 +38,18 @@ abstract class Client
     }
     public function executeEndpoint(Endpoint $endpoint, string $fetch = self::FETCH_OBJECT)
     {
+        if (self::FETCH_RESPONSE === $fetch) {
+            trigger_deprecation('jane-php/open-api-common', '7.3', 'Using %s::%s method with $fetch parameter equals to response is deprecated, use %s::%s instead.', __CLASS__, __METHOD__, __CLASS__, 'executeRawEndpoint');
+            return $this->executeRawEndpoint($endpoint);
+        }
+        return $endpoint->parseResponse($this->processEndpoint($endpoint), $this->serializer, $fetch);
+    }
+    public function executeRawEndpoint(Endpoint $endpoint) : ResponseInterface
+    {
+        return $this->processEndpoint($endpoint);
+    }
+    private function processEndpoint(Endpoint $endpoint) : ResponseInterface
+    {
         [$bodyHeaders, $body] = $endpoint->getBody($this->serializer, $this->streamFactory);
         $queryString = $endpoint->getQueryString();
         $uriGlue = false === strpos($endpoint->getUri(), '?') ? '?' : '&';
@@ -64,6 +77,6 @@ abstract class Client
             }
             $request = $request->withHeader(AuthenticationRegistry::SCOPES_HEADER, $scopes);
         }
-        return $endpoint->parseResponse($this->httpClient->sendRequest($request), $this->serializer, $fetch);
+        return $this->httpClient->sendRequest($request);
     }
 }
