@@ -32,7 +32,6 @@
         "symfony/console": "^4.4 || ^5.0 || ^6.0",
         "symfony/filesystem": "^4.4 || ^5.0 || ^6.0",
         "symfony/string": "^5.0 || ^6.0",
-        "symfony/translation-contracts": "^2.0",
         "symfony/var-dumper": "^4.4 || ^5.0 || ^6.0"
     },
     "extra": {
