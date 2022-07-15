@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ### Fixed
 - [JsonSchema] [GH#629](https://github.com/janephp/janephp/pull/629) Handle validation when fields has no validation guess
+- [OpenApi2] [OpenApi3] [GH#633](https://github.com/janephp/janephp/pull/633) Remove `null` from endpoint `@return` doc statement if unexpected status code is to be thrown. 
 
 ## [7.2.5] - 2022-07-01
 ### Added
