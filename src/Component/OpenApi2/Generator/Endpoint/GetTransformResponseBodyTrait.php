@@ -23,7 +23,7 @@ trait GetTransformResponseBodyTrait
     public function getTransformResponseBody(OperationGuess $operation, string $endpointName, GuessClass $guessClass, ExceptionGenerator $exceptionGenerator, Context $context): array
     {
         $outputStatements = [];
-        $outputTypes = ['null'];
+        $outputTypes = $context->getRegistry()->getThrowUnexpectedStatusCode() ? [] : ['null'];
         $throwTypes = [];
 
         if ($operation->getOperation()->getResponses()) {
