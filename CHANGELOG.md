@@ -8,13 +8,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ### Added
 - [JsonSchema] [GH#632](https://github.com/janephp/janephp/pull/632) Validation - Check for nullable field values
+- [OpenApi] [GH#634](https://github.com/janephp/janephp/pull/634) Make a new method to get an endpoint raw response
+
+### Deprecated
+- [OpenApi] [GH#634](https://github.com/janephp/janephp/pull/634) Using Client::executeEndpoint method with $fetch parameter equals to response is deprecated, use Client::executeRawEndpoint instead.
 
 ### Removed
 - [OpenApi] [GH#635](https://github.com/janephp/janephp/pull/635) Remove symfony/translation-contracts dependency
 
 ### Fixed
 - [JsonSchema] [GH#629](https://github.com/janephp/janephp/pull/629) Handle validation when fields has no validation guess
-- [OpenApi2] [OpenApi3] [GH#633](https://github.com/janephp/janephp/pull/633) Remove `null` from endpoint `@return` statement if unexpected status code is to be thrown.
+- [OpenApi] [GH#633](https://github.com/janephp/janephp/pull/633) Remove `null` from endpoint `@return` statement if unexpected status code is to be thrown.
 
 ## [7.2.5] - 2022-07-01
 ### Added
@@ -77,7 +81,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [7.1.3] - 2021-11-12
 ### Added
- - Run test suite with PHP 8.1
+- Run test suite with PHP 8.1
 
 ### Changed
 - [AutoMapper] [GH#564](https://github.com/janephp/janephp/pull/564) Remove deprecations
@@ -516,100 +520,100 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
- * [JsonSchema] [GH#109](https://github.com/janephp/janephp/pull/109) Support for default value for array type
- * [OpenAPI] [GH#115](https://github.com/janephp/janephp/pull/115) Fix Content-Type comparison in generated endpoints
+* [JsonSchema] [GH#109](https://github.com/janephp/janephp/pull/109) Support for default value for array type
+* [OpenAPI] [GH#115](https://github.com/janephp/janephp/pull/115) Fix Content-Type comparison in generated endpoints
 
 ## [5.0.0] - 2019-09-11
 
 ### Added
 
- * **BC-BREAK** All libraries now use php-parser v4
- * [OpenAPI] **BC-BREAK** Use the openapi v3 specification (v2 is no longer supported)
- * [OpenAPI] **BC-BREAK** No more asynchronous code generation (sync and async api can be the same on php 7.3 by using ext-async)
- * Composer upgrade  (PHP version to 7.2 and dependencies)
+* **BC-BREAK** All libraries now use php-parser v4
+* [OpenAPI] **BC-BREAK** Use the openapi v3 specification (v2 is no longer supported)
+* [OpenAPI] **BC-BREAK** No more asynchronous code generation (sync and async api can be the same on php 7.3 by using ext-async)
+* Composer upgrade  (PHP version to 7.2 and dependencies)
 
 ### Fixed
 
- * [OpenAPI] GH#101 Remove warning when using Generate command
+* [OpenAPI] GH#101 Remove warning when using Generate command
 
 ## [4.4.0] - 2019-06-17
 
 ### Added
 
- * [Jane] nullable properties
- * [Jane] add null type to PHPDoc for getters/setters
- * [Jane] checking if helper function exists before creating it (php-parser 3.x / 4.x compatibility)
+* [Jane] nullable properties
+* [Jane] add null type to PHPDoc for getters/setters
+* [Jane] checking if helper function exists before creating it (php-parser 3.x / 4.x compatibility)
 
 ## [4.3.0] - 2019-05-31
 
- * [OpenAPI] Discriminator support
- * [Jane] php-parser 4.x compatibility
+* [OpenAPI] Discriminator support
+* [Jane] php-parser 4.x compatibility
 
 ## [4.2.0] - 2019-08-03
 
- * [Jane] Add support for default value in model (only scalar)
- * [OpenAPI] Add support for httplug 2.0
+* [Jane] Add support for default value in model (only scalar)
+* [OpenAPI] Add support for httplug 2.0
 
 ## [4.1.0] - 2019-01-24
 
- * [Jane] Added `use-cacheable-supports-method` option to add CacheableSupportsMethodInterface to your Normalizers.
+* [Jane] Added `use-cacheable-supports-method` option to add CacheableSupportsMethodInterface to your Normalizers.
 
 ## [4.0.4] - 2018-10-19
 
- * [OpenAPI] Fix items object generation for json schema and openapi #29
- * [OpenAPI] Fix bad parameter generation #41 #18
- * [Jane] Fix properties having the same name #25
- * [Jane] Fix bad normalizer on reserved keywords #16
+* [OpenAPI] Fix items object generation for json schema and openapi #29
+* [OpenAPI] Fix bad parameter generation #41 #18
+* [Jane] Fix properties having the same name #25
+* [Jane] Fix bad normalizer on reserved keywords #16
 
 ## [4.0.1] - 2018-02-22
 
 ### Fixed
 
- * [JsonSchema Runtime] Fix composer dependency to allow symfony 4
- * [OpenAPI] Be less restrictive to detect schema serializable
+* [JsonSchema Runtime] Fix composer dependency to allow symfony 4
+* [OpenAPI] Be less restrictive to detect schema serializable
 
 ## [4.0.0] - 2018-02-12
 
 ### Added
 
- * **BC-BREAK** New namespace and repository name due to using a new monolith repository
- * **BC-BREAK** JanePHP now require and generate code for PHP 7.1
- * **BC-BREAK** Config file is now mandatory, console client does not provide anymore options
- * **BC-BREAK** There is no more Resource file, all calls are now done in an unique Client class
- * [OpenAPI] **BC-BREAK** Arguments for each endpoint may be different, they are now split between query, form and headers.
- * [OpenAPI] **BC-BREAK** Response with 400 to 599 status code will know throw custom generated exception instead of
- returning an object
- * [OpenAPI] **BC-BREAK** Base path is no more present in the url as you can use a HTTPlug plugin for that
- * [OpenAPI] New documentation available at [https://jane.readthedocs.io/en/latest/](https://jane.readthedocs.io/en/latest/)
- * [OpenAPI] Add Optional Asynchronous Client Generation (through async option)
- * [OpenAPI] Add support for file in form parameters which will create a multipart stream
- * [OpenAPI] Better method naming when dealing with special characters thanks to @pyrech
- * [OpenAPI] New class `Client` generated which will contains all endpoints of the API
- * [OpenAPI] New factory method for the client which provide better DX to start using a Generated Client
- * [OpenAPI] Add support for global parameters
- * [OpenAPI] Support Symfony 4
- * [OpenAPI] Each endpoint have its own class, this helps extending a generated Client.
- * [OpenAPI] Add support for binary format
- * [Jane] Add a not strict mode, which generate more permissive normalizers (allowing null / not
- defined properties in several places)
- * [Jane] Add property description in doc block comment
- * [Jane] Add support for additionalProperties / patternProperties with existing properties
+* **BC-BREAK** New namespace and repository name due to using a new monolith repository
+* **BC-BREAK** JanePHP now require and generate code for PHP 7.1
+* **BC-BREAK** Config file is now mandatory, console client does not provide anymore options
+* **BC-BREAK** There is no more Resource file, all calls are now done in an unique Client class
+* [OpenAPI] **BC-BREAK** Arguments for each endpoint may be different, they are now split between query, form and headers.
+* [OpenAPI] **BC-BREAK** Response with 400 to 599 status code will know throw custom generated exception instead of
+  returning an object
+* [OpenAPI] **BC-BREAK** Base path is no more present in the url as you can use a HTTPlug plugin for that
+* [OpenAPI] New documentation available at [https://jane.readthedocs.io/en/latest/](https://jane.readthedocs.io/en/latest/)
+* [OpenAPI] Add Optional Asynchronous Client Generation (through async option)
+* [OpenAPI] Add support for file in form parameters which will create a multipart stream
+* [OpenAPI] Better method naming when dealing with special characters thanks to @pyrech
+* [OpenAPI] New class `Client` generated which will contains all endpoints of the API
+* [OpenAPI] New factory method for the client which provide better DX to start using a Generated Client
+* [OpenAPI] Add support for global parameters
+* [OpenAPI] Support Symfony 4
+* [OpenAPI] Each endpoint have its own class, this helps extending a generated Client.
+* [OpenAPI] Add support for binary format
+* [Jane] Add a not strict mode, which generate more permissive normalizers (allowing null / not
+  defined properties in several places)
+* [Jane] Add property description in doc block comment
+* [Jane] Add support for additionalProperties / patternProperties with existing properties
 
 ### Fixed
 
- * [OpenAPI] When a response does have a Schema which is not an object, it will not return the json_decoded value of the data
- instead of null
- * [OpenAPI] Remove base path from method name
- * [OpenAPI] Fix references having a space in the name
- * [OpenAPI] Fix `Content-Type` and `Accept` headers
- * [Jane] Fix all-of not merging properties with the same name
+* [OpenAPI] When a response does have a Schema which is not an object, it will not return the json_decoded value of the data
+  instead of null
+* [OpenAPI] Remove base path from method name
+* [OpenAPI] Fix references having a space in the name
+* [OpenAPI] Fix `Content-Type` and `Accept` headers
+* [Jane] Fix all-of not merging properties with the same name
 
 ## Older versions
 
 See :
 
- * https://github.com/janephp/jane/releases
- * https://github.com/janephp/openapi/releases
+* https://github.com/janephp/jane/releases
+* https://github.com/janephp/openapi/releases
 
 [Unreleased]: https://github.com/janephp/janephp/compare/v7.2.5...HEAD
 [7.2.5]: https://github.com/janephp/janephp/compare/v7.2.4...v7.2.5
