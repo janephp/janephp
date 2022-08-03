@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+## [7.3.0] - 2022-08-03
 ### Added
 - [JsonSchema] [GH#632](https://github.com/janephp/janephp/pull/632) Validation - Check for nullable field values
 - [OpenApi] [GH#634](https://github.com/janephp/janephp/pull/634) Make a new method to get an endpoint raw response
@@ -615,7 +617,8 @@ See :
 * https://github.com/janephp/jane/releases
 * https://github.com/janephp/openapi/releases
 
-[Unreleased]: https://github.com/janephp/janephp/compare/v7.2.5...HEAD
+[Unreleased]: https://github.com/janephp/janephp/compare/v7.3.0...HEAD
+[7.3.0]: https://github.com/janephp/janephp/compare/v7.2.5...v7.3.0
 [7.2.5]: https://github.com/janephp/janephp/compare/v7.2.4...v7.2.5
 [7.2.4]: https://github.com/janephp/janephp/compare/v7.2.3...v7.2.4
 [7.2.3]: https://github.com/janephp/janephp/compare/v7.2.2...v7.2.3
