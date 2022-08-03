@@ -27,7 +27,7 @@ class MinItemsValidator implements ValidatorInterface
     {
         $guess->addValidatorGuess(new ValidatorGuess(Count::class, [
             'min' => $object->getMinItems(),
-            'minMessage' => 'This array has not enough values. It should have {{ limit }} values or more.',
+            'minMessage' => 'Array "'.$name.'" has not enough values. It should have {{ limit }} values or more.',
         ]));
     }
 }
