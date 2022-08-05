@@ -4,6 +4,7 @@ namespace Docker\Api\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
 use Docker\Api\Runtime\Normalizer\CheckArray;
+use Docker\Api\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -16,6 +17,7 @@ class SwarmSpecEncryptionConfigNormalizer implements DenormalizerInterface, Norm
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
+    use ValidatorTrait;
     public function supportsDenormalization($data, $type, $format = null) : bool
     {
         return $type === 'Docker\\Api\\Model\\SwarmSpecEncryptionConfig';
@@ -36,9 +38,9 @@ class SwarmSpecEncryptionConfigNormalizer implements DenormalizerInterface, Norm
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\SwarmSpecEncryptionConfig();
-        $validator = new \Docker\Api\Validator\SwarmSpecEncryptionConfigValidator();
-        if (!($data['skip_validation'] ?? false)) {
-            $validator->validate($data);
+        if (!($context['skip_validation'] ?? false)) {
+            $this->validate($data, new \Docker\Api\Validator\SwarmSpecEncryptionConfigConstraint());
+            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -57,9 +59,9 @@ class SwarmSpecEncryptionConfigNormalizer implements DenormalizerInterface, Norm
         if (null !== $object->getAutoLockManagers()) {
             $data['AutoLockManagers'] = $object->getAutoLockManagers();
         }
-        $validator = new \Docker\Api\Validator\SwarmSpecEncryptionConfigValidator();
-        if (!($data['skip_validation'] ?? false)) {
-            $validator->validate($data);
+        if (!($context['skip_validation'] ?? false)) {
+            $this->validate($data, new \Docker\Api\Validator\SwarmSpecEncryptionConfigConstraint());
+            $context['skip_validation'] = true;
         }
         return $data;
     }

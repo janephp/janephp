@@ -3,6 +3,7 @@
 namespace Jane\Component\OpenApi2\Tests\Expected\Normalizer;
 
 use Jane\Component\OpenApi2\Tests\Expected\Runtime\Normalizer\CheckArray;
+use Jane\Component\OpenApi2\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -14,6 +15,7 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
+    use ValidatorTrait;
     protected $normalizers = array('Jane\\Component\\OpenApi2\\Tests\\Expected\\Model\\BarItem' => 'Jane\\Component\\OpenApi2\\Tests\\Expected\\Normalizer\\BarItemNormalizer', '\\Jane\\Component\\JsonSchemaRuntime\\Reference' => '\\Jane\\Component\\OpenApi2\\Tests\\Expected\\Runtime\\Normalizer\\ReferenceNormalizer'), $normalizersCache = array();
     public function supportsDenormalization($data, $type, $format = null) : bool
     {

@@ -4,6 +4,7 @@ namespace Github\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
 use Github\Runtime\Normalizer\CheckArray;
+use Github\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -16,6 +17,7 @@ class ProjectsColumnsColumnIdMovesPostBodyNormalizer implements DenormalizerInte
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
+    use ValidatorTrait;
     public function supportsDenormalization($data, $type, $format = null) : bool
     {
         return $type === 'Github\\Model\\ProjectsColumnsColumnIdMovesPostBody';
@@ -36,9 +38,9 @@ class ProjectsColumnsColumnIdMovesPostBodyNormalizer implements DenormalizerInte
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ProjectsColumnsColumnIdMovesPostBody();
-        $validator = new \Github\Validator\ProjectsColumnsColumnIdMovesPostBodyValidator();
-        if (!($data['skip_validation'] ?? false)) {
-            $validator->validate($data);
+        if (!($context['skip_validation'] ?? false)) {
+            $this->validate($data, new \Github\Validator\ProjectsColumnsColumnIdMovesPostBodyConstraint());
+            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -55,9 +57,9 @@ class ProjectsColumnsColumnIdMovesPostBodyNormalizer implements DenormalizerInte
     {
         $data = array();
         $data['position'] = $object->getPosition();
-        $validator = new \Github\Validator\ProjectsColumnsColumnIdMovesPostBodyValidator();
-        if (!($data['skip_validation'] ?? false)) {
-            $validator->validate($data);
+        if (!($context['skip_validation'] ?? false)) {
+            $this->validate($data, new \Github\Validator\ProjectsColumnsColumnIdMovesPostBodyConstraint());
+            $context['skip_validation'] = true;
         }
         return $data;
     }

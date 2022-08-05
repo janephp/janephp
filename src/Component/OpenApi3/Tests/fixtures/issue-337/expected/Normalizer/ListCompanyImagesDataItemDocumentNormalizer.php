@@ -4,6 +4,7 @@ namespace CreditSafe\API\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
 use CreditSafe\API\Runtime\Normalizer\CheckArray;
+use CreditSafe\API\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -16,6 +17,7 @@ class ListCompanyImagesDataItemDocumentNormalizer implements DenormalizerInterfa
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
+    use ValidatorTrait;
     public function supportsDenormalization($data, $type, $format = null) : bool
     {
         return $type === 'CreditSafe\\API\\Model\\ListCompanyImagesDataItemDocument';

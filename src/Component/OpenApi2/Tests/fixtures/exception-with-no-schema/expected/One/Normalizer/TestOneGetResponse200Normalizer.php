@@ -4,6 +4,7 @@ namespace Jane\Component\OpenApi2\Tests\Expected\One\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
 use Jane\Component\OpenApi2\Tests\Expected\One\Runtime\Normalizer\CheckArray;
+use Jane\Component\OpenApi2\Tests\Expected\One\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -16,6 +17,7 @@ class TestOneGetResponse200Normalizer implements DenormalizerInterface, Normaliz
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
+    use ValidatorTrait;
     public function supportsDenormalization($data, $type, $format = null) : bool
     {
         return $type === 'Jane\\Component\\OpenApi2\\Tests\\Expected\\One\\Model\\TestOneGetResponse200';

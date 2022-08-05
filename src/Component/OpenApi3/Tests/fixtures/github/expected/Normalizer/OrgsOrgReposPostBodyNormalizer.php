@@ -4,6 +4,7 @@ namespace Github\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
 use Github\Runtime\Normalizer\CheckArray;
+use Github\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -16,6 +17,7 @@ class OrgsOrgReposPostBodyNormalizer implements DenormalizerInterface, Normalize
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
+    use ValidatorTrait;
     public function supportsDenormalization($data, $type, $format = null) : bool
     {
         return $type === 'Github\\Model\\OrgsOrgReposPostBody';
@@ -36,9 +38,9 @@ class OrgsOrgReposPostBodyNormalizer implements DenormalizerInterface, Normalize
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\OrgsOrgReposPostBody();
-        $validator = new \Github\Validator\OrgsOrgReposPostBodyValidator();
-        if (!($data['skip_validation'] ?? false)) {
-            $validator->validate($data);
+        if (!($context['skip_validation'] ?? false)) {
+            $this->validate($data, new \Github\Validator\OrgsOrgReposPostBodyConstraint());
+            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -151,9 +153,9 @@ class OrgsOrgReposPostBodyNormalizer implements DenormalizerInterface, Normalize
         if (null !== $object->getDeleteBranchOnMerge()) {
             $data['delete_branch_on_merge'] = $object->getDeleteBranchOnMerge();
         }
-        $validator = new \Github\Validator\OrgsOrgReposPostBodyValidator();
-        if (!($data['skip_validation'] ?? false)) {
-            $validator->validate($data);
+        if (!($context['skip_validation'] ?? false)) {
+            $this->validate($data, new \Github\Validator\OrgsOrgReposPostBodyConstraint());
+            $context['skip_validation'] = true;
         }
         return $data;
     }

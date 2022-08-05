@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ### Changed
 - [OpenAPI] [GH#647](https://github.com/janephp/janephp/pull/647) Support inheritance using discriminator with mapping
+- [JsonSchema] [GH#640](https://github.com/janephp/janephp/pull/640) Rework Validation
 
 ## [7.3.1] - 2022-08-22
 ### Changed

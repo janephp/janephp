@@ -94,13 +94,18 @@ trait DenormalizerGenerator
         }
         if ($this->validation) {
             $schema = $context->getCurrentSchema();
-            $validatorFqdn = $schema->getNamespace() . '\\Validator\\' . $this->naming->getValidatorName($classGuess->getName());
+            $contextVariable = new Expr\Variable('context');
+            $constraintFqdn = $schema->getNamespace() . '\\Validator\\' . $this->naming->getConstraintName($classGuess->getName());
 
-            $validatorVariable = new Expr\Variable('validator');
-            $statements[] = new Stmt\Expression(new Expr\Assign($validatorVariable, new Expr\New_(new Name('\\' . $validatorFqdn))));
-            $statements[] = new Stmt\If_(new Expr\BooleanNot(new Expr\BinaryOp\Coalesce(new Expr\ArrayDimFetch($dataVariable, new Scalar\String_('skip_validation')), new Expr\ConstFetch(new Name('false')))), [
-                'stmts' => [new Stmt\Expression(new Expr\MethodCall($validatorVariable, 'validate', [new Arg($dataVariable)]))],
-            ]);
+            $statements[] = new Stmt\If_(new Expr\BooleanNot(new Expr\BinaryOp\Coalesce(new Expr\ArrayDimFetch($contextVariable, new Scalar\String_('skip_validation')), new Expr\ConstFetch(new Name('false')))), ['stmts' => [
+                new Stmt\Expression(new Expr\MethodCall(new Expr\Variable('this'), 'validate', [
+                    new Arg($dataVariable), new Arg(new Expr\New_(new Name('\\' . $constraintFqdn))),
+                ])),
+                new Stmt\Expression(new Expr\Assign(
+                    new Expr\ArrayDimFetch($contextVariable, new Scalar\String_('skip_validation')),
+                    new Expr\ConstFetch(new Name('true'))
+                )),
+            ]]);
         }
 
         $denormalizeMethodStatements = $this->denormalizeMethodStatements($classGuess, $context);

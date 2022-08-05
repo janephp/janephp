@@ -4,6 +4,7 @@ namespace ApiPlatform\Demo\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
 use ApiPlatform\Demo\Runtime\Normalizer\CheckArray;
+use ApiPlatform\Demo\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -16,6 +17,7 @@ class ParchmentsGetResponse200HydraSearchHydraMappingItemNormalizer implements D
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
+    use ValidatorTrait;
     public function supportsDenormalization($data, $type, $format = null) : bool
     {
         return $type === 'ApiPlatform\\Demo\\Model\\ParchmentsGetResponse200HydraSearchHydraMappingItem';

@@ -4,6 +4,7 @@ namespace Github\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
 use Github\Runtime\Normalizer\CheckArray;
+use Github\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -16,6 +17,7 @@ class WorkflowUsageBillableUBUNTUNormalizer implements DenormalizerInterface, No
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
+    use ValidatorTrait;
     public function supportsDenormalization($data, $type, $format = null) : bool
     {
         return $type === 'Github\\Model\\WorkflowUsageBillableUBUNTU';
@@ -36,9 +38,9 @@ class WorkflowUsageBillableUBUNTUNormalizer implements DenormalizerInterface, No
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\WorkflowUsageBillableUBUNTU();
-        $validator = new \Github\Validator\WorkflowUsageBillableUBUNTUValidator();
-        if (!($data['skip_validation'] ?? false)) {
-            $validator->validate($data);
+        if (!($context['skip_validation'] ?? false)) {
+            $this->validate($data, new \Github\Validator\WorkflowUsageBillableUBUNTUConstraint());
+            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -57,9 +59,9 @@ class WorkflowUsageBillableUBUNTUNormalizer implements DenormalizerInterface, No
         if (null !== $object->getTotalMs()) {
             $data['total_ms'] = $object->getTotalMs();
         }
-        $validator = new \Github\Validator\WorkflowUsageBillableUBUNTUValidator();
-        if (!($data['skip_validation'] ?? false)) {
-            $validator->validate($data);
+        if (!($context['skip_validation'] ?? false)) {
+            $this->validate($data, new \Github\Validator\WorkflowUsageBillableUBUNTUConstraint());
+            $context['skip_validation'] = true;
         }
         return $data;
     }

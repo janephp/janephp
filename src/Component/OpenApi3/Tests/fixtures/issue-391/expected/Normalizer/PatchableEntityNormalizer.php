@@ -4,6 +4,7 @@ namespace Gounlaf\JanephpBug\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
 use Gounlaf\JanephpBug\Runtime\Normalizer\CheckArray;
+use Gounlaf\JanephpBug\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -16,6 +17,7 @@ class PatchableEntityNormalizer implements DenormalizerInterface, NormalizerInte
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
+    use ValidatorTrait;
     public function supportsDenormalization($data, $type, $format = null) : bool
     {
         return $type === 'Gounlaf\\JanephpBug\\Model\\PatchableEntity';

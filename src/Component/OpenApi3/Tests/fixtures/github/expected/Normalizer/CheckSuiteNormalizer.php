@@ -4,6 +4,7 @@ namespace Github\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
 use Github\Runtime\Normalizer\CheckArray;
+use Github\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -16,6 +17,7 @@ class CheckSuiteNormalizer implements DenormalizerInterface, NormalizerInterface
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
+    use ValidatorTrait;
     public function supportsDenormalization($data, $type, $format = null) : bool
     {
         return $type === 'Github\\Model\\CheckSuite';
@@ -36,9 +38,9 @@ class CheckSuiteNormalizer implements DenormalizerInterface, NormalizerInterface
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\CheckSuite();
-        $validator = new \Github\Validator\CheckSuiteValidator();
-        if (!($data['skip_validation'] ?? false)) {
-            $validator->validate($data);
+        if (!($context['skip_validation'] ?? false)) {
+            $this->validate($data, new \Github\Validator\CheckSuiteConstraint());
+            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -157,9 +159,9 @@ class CheckSuiteNormalizer implements DenormalizerInterface, NormalizerInterface
         $data['head_commit'] = $this->normalizer->normalize($object->getHeadCommit(), 'json', $context);
         $data['latest_check_runs_count'] = $object->getLatestCheckRunsCount();
         $data['check_runs_url'] = $object->getCheckRunsUrl();
-        $validator = new \Github\Validator\CheckSuiteValidator();
-        if (!($data['skip_validation'] ?? false)) {
-            $validator->validate($data);
+        if (!($context['skip_validation'] ?? false)) {
+            $this->validate($data, new \Github\Validator\CheckSuiteConstraint());
+            $context['skip_validation'] = true;
         }
         return $data;
     }

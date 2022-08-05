@@ -4,6 +4,7 @@ namespace Github\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
 use Github\Runtime\Normalizer\CheckArray;
+use Github\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -16,6 +17,7 @@ class ReposOwnerRepoActionsArtifactsGetResponse200Normalizer implements Denormal
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
+    use ValidatorTrait;
     public function supportsDenormalization($data, $type, $format = null) : bool
     {
         return $type === 'Github\\Model\\ReposOwnerRepoActionsArtifactsGetResponse200';
@@ -36,9 +38,9 @@ class ReposOwnerRepoActionsArtifactsGetResponse200Normalizer implements Denormal
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ReposOwnerRepoActionsArtifactsGetResponse200();
-        $validator = new \Github\Validator\ReposOwnerRepoActionsArtifactsGetResponse200Validator();
-        if (!($data['skip_validation'] ?? false)) {
-            $validator->validate($data);
+        if (!($context['skip_validation'] ?? false)) {
+            $this->validate($data, new \Github\Validator\ReposOwnerRepoActionsArtifactsGetResponse200Constraint());
+            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -71,9 +73,9 @@ class ReposOwnerRepoActionsArtifactsGetResponse200Normalizer implements Denormal
             }
             $data['artifacts'] = $values;
         }
-        $validator = new \Github\Validator\ReposOwnerRepoActionsArtifactsGetResponse200Validator();
-        if (!($data['skip_validation'] ?? false)) {
-            $validator->validate($data);
+        if (!($context['skip_validation'] ?? false)) {
+            $this->validate($data, new \Github\Validator\ReposOwnerRepoActionsArtifactsGetResponse200Constraint());
+            $context['skip_validation'] = true;
         }
         return $data;
     }

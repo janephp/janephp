@@ -4,6 +4,7 @@ namespace Github\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
 use Github\Runtime\Normalizer\CheckArray;
+use Github\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -16,6 +17,7 @@ class ProjectsProjectIdPatchResponse403Normalizer implements DenormalizerInterfa
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
+    use ValidatorTrait;
     public function supportsDenormalization($data, $type, $format = null) : bool
     {
         return $type === 'Github\\Model\\ProjectsProjectIdPatchResponse403';
@@ -36,9 +38,9 @@ class ProjectsProjectIdPatchResponse403Normalizer implements DenormalizerInterfa
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ProjectsProjectIdPatchResponse403();
-        $validator = new \Github\Validator\ProjectsProjectIdPatchResponse403Validator();
-        if (!($data['skip_validation'] ?? false)) {
-            $validator->validate($data);
+        if (!($context['skip_validation'] ?? false)) {
+            $this->validate($data, new \Github\Validator\ProjectsProjectIdPatchResponse403Constraint());
+            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -77,9 +79,9 @@ class ProjectsProjectIdPatchResponse403Normalizer implements DenormalizerInterfa
             }
             $data['errors'] = $values;
         }
-        $validator = new \Github\Validator\ProjectsProjectIdPatchResponse403Validator();
-        if (!($data['skip_validation'] ?? false)) {
-            $validator->validate($data);
+        if (!($context['skip_validation'] ?? false)) {
+            $this->validate($data, new \Github\Validator\ProjectsProjectIdPatchResponse403Constraint());
+            $context['skip_validation'] = true;
         }
         return $data;
     }

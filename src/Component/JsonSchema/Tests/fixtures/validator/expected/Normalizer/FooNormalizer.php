@@ -4,6 +4,7 @@ namespace Jane\JsonSchema\Tests\Expected\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
 use Jane\JsonSchema\Tests\Expected\Runtime\Normalizer\CheckArray;
+use Jane\JsonSchema\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -16,6 +17,7 @@ class FooNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
+    use ValidatorTrait;
     public function supportsDenormalization($data, $type, $format = null) : bool
     {
         return $type === 'Jane\\JsonSchema\\Tests\\Expected\\Model\\Foo';
@@ -36,9 +38,9 @@ class FooNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Jane\JsonSchema\Tests\Expected\Model\Foo();
-        $validator = new \Jane\JsonSchema\Tests\Expected\Validator\FooValidator();
-        if (!($data['skip_validation'] ?? false)) {
-            $validator->validate($data);
+        if (!($context['skip_validation'] ?? false)) {
+            $this->validate($data, new \Jane\JsonSchema\Tests\Expected\Validator\FooConstraint());
+            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -57,9 +59,9 @@ class FooNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
         if (null !== $object->getFoo()) {
             $data['foo'] = $object->getFoo();
         }
-        $validator = new \Jane\JsonSchema\Tests\Expected\Validator\FooValidator();
-        if (!($data['skip_validation'] ?? false)) {
-            $validator->validate($data);
+        if (!($context['skip_validation'] ?? false)) {
+            $this->validate($data, new \Jane\JsonSchema\Tests\Expected\Validator\FooConstraint());
+            $context['skip_validation'] = true;
         }
         return $data;
     }

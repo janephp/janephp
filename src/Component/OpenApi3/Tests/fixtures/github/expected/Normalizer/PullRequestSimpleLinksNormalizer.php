@@ -4,6 +4,7 @@ namespace Github\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
 use Github\Runtime\Normalizer\CheckArray;
+use Github\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -16,6 +17,7 @@ class PullRequestSimpleLinksNormalizer implements DenormalizerInterface, Normali
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
+    use ValidatorTrait;
     public function supportsDenormalization($data, $type, $format = null) : bool
     {
         return $type === 'Github\\Model\\PullRequestSimpleLinks';
@@ -36,9 +38,9 @@ class PullRequestSimpleLinksNormalizer implements DenormalizerInterface, Normali
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\PullRequestSimpleLinks();
-        $validator = new \Github\Validator\PullRequestSimpleLinksValidator();
-        if (!($data['skip_validation'] ?? false)) {
-            $validator->validate($data);
+        if (!($context['skip_validation'] ?? false)) {
+            $this->validate($data, new \Github\Validator\PullRequestSimpleLinksConstraint());
+            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -83,9 +85,9 @@ class PullRequestSimpleLinksNormalizer implements DenormalizerInterface, Normali
         $data['review_comments'] = $this->normalizer->normalize($object->getReviewComments(), 'json', $context);
         $data['review_comment'] = $this->normalizer->normalize($object->getReviewComment(), 'json', $context);
         $data['self'] = $this->normalizer->normalize($object->getSelf(), 'json', $context);
-        $validator = new \Github\Validator\PullRequestSimpleLinksValidator();
-        if (!($data['skip_validation'] ?? false)) {
-            $validator->validate($data);
+        if (!($context['skip_validation'] ?? false)) {
+            $this->validate($data, new \Github\Validator\PullRequestSimpleLinksConstraint());
+            $context['skip_validation'] = true;
         }
         return $data;
     }

@@ -3,6 +3,7 @@
 namespace Jane\Component\JsonSchema\Tests\Expected\Schema1\Normalizer;
 
 use Jane\Component\JsonSchema\Tests\Expected\Schema1\Runtime\Normalizer\CheckArray;
+use Jane\Component\JsonSchema\Tests\Expected\Schema1\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -14,6 +15,7 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
+    use ValidatorTrait;
     protected $normalizers = array('Jane\\Component\\JsonSchema\\Tests\\Expected\\Schema1\\Model\\Test' => 'Jane\\Component\\JsonSchema\\Tests\\Expected\\Schema1\\Normalizer\\TestNormalizer'), $normalizersCache = array();
     public function supportsDenormalization($data, $type, $format = null) : bool
     {
