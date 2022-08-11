@@ -771,7 +771,7 @@ class ValidationTest extends TestCase
 
         $this->assertInstanceOf(ValidationException::class, $caughtException);
         $this->assertEquals(400, $caughtException->getCode());
-        $this->assertEquals(1, $caughtException->getViolationList()->count());
+        $this->assertEquals(2, $caughtException->getViolationList()->count());
         $this->assertEquals('[name]', $caughtException->getViolationList()->get(0)->getPropertyPath());
 
         $caughtException = null;
@@ -785,7 +785,7 @@ class ValidationTest extends TestCase
 
         $this->assertInstanceOf(ValidationException::class, $caughtException);
         $this->assertEquals(400, $caughtException->getCode());
-        $this->assertEquals(1, $caughtException->getViolationList()->count());
+        $this->assertEquals(2, $caughtException->getViolationList()->count());
         $this->assertEquals('[name]', $caughtException->getViolationList()->get(0)->getPropertyPath());
     }
 }
