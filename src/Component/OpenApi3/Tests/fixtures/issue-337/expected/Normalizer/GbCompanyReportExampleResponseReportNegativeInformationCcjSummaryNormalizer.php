@@ -36,6 +36,12 @@ class GbCompanyReportExampleResponseReportNegativeInformationCcjSummaryNormalize
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \CreditSafe\API\Model\GbCompanyReportExampleResponseReportNegativeInformationCcjSummary();
+        if (\array_key_exists('exactRegistered', $data) && \is_int($data['exactRegistered'])) {
+            $data['exactRegistered'] = (double) $data['exactRegistered'];
+        }
+        if (\array_key_exists('possibleRegistered', $data) && \is_int($data['possibleRegistered'])) {
+            $data['possibleRegistered'] = (double) $data['possibleRegistered'];
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }

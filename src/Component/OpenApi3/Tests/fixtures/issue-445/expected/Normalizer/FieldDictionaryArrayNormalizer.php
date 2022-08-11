@@ -36,6 +36,9 @@ class FieldDictionaryArrayNormalizer implements DenormalizerInterface, Normalize
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \PicturePark\API\Model\FieldDictionaryArray();
+        if (\array_key_exists('boost', $data) && \is_int($data['boost'])) {
+            $data['boost'] = (double) $data['boost'];
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }

@@ -36,6 +36,12 @@ class GbCompanyReportExampleResponseReportFinancialStatementsItemOtherFinancials
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \CreditSafe\API\Model\GbCompanyReportExampleResponseReportFinancialStatementsItemOtherFinancials();
+        if (\array_key_exists('workingCapital', $data) && \is_int($data['workingCapital'])) {
+            $data['workingCapital'] = (double) $data['workingCapital'];
+        }
+        if (\array_key_exists('netWorth', $data) && \is_int($data['netWorth'])) {
+            $data['netWorth'] = (double) $data['netWorth'];
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }

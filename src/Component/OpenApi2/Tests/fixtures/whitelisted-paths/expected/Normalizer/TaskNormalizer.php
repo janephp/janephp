@@ -36,6 +36,9 @@ class TaskNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Jane\OpenApi2\Tests\Expected\Model\Task();
+        if (\array_key_exists('default_hourly_rate', $data) && \is_int($data['default_hourly_rate'])) {
+            $data['default_hourly_rate'] = (double) $data['default_hourly_rate'];
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }

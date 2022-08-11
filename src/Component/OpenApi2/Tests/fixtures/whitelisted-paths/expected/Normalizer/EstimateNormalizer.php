@@ -36,6 +36,27 @@ class EstimateNormalizer implements DenormalizerInterface, NormalizerInterface, 
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Jane\OpenApi2\Tests\Expected\Model\Estimate();
+        if (\array_key_exists('amount', $data) && \is_int($data['amount'])) {
+            $data['amount'] = (double) $data['amount'];
+        }
+        if (\array_key_exists('tax', $data) && \is_int($data['tax'])) {
+            $data['tax'] = (double) $data['tax'];
+        }
+        if (\array_key_exists('tax_amount', $data) && \is_int($data['tax_amount'])) {
+            $data['tax_amount'] = (double) $data['tax_amount'];
+        }
+        if (\array_key_exists('tax2', $data) && \is_int($data['tax2'])) {
+            $data['tax2'] = (double) $data['tax2'];
+        }
+        if (\array_key_exists('tax2_amount', $data) && \is_int($data['tax2_amount'])) {
+            $data['tax2_amount'] = (double) $data['tax2_amount'];
+        }
+        if (\array_key_exists('discount', $data) && \is_int($data['discount'])) {
+            $data['discount'] = (double) $data['discount'];
+        }
+        if (\array_key_exists('discount_amount', $data) && \is_int($data['discount_amount'])) {
+            $data['discount_amount'] = (double) $data['discount_amount'];
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }

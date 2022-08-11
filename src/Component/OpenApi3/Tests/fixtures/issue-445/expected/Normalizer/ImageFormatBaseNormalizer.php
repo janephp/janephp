@@ -36,6 +36,12 @@ class ImageFormatBaseNormalizer implements DenormalizerInterface, NormalizerInte
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \PicturePark\API\Model\ImageFormatBase();
+        if (\array_key_exists('horizontalResolution', $data) && \is_int($data['horizontalResolution'])) {
+            $data['horizontalResolution'] = (double) $data['horizontalResolution'];
+        }
+        if (\array_key_exists('verticalResolution', $data) && \is_int($data['verticalResolution'])) {
+            $data['verticalResolution'] = (double) $data['verticalResolution'];
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }

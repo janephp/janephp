@@ -36,6 +36,12 @@ class UserNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Jane\OpenApi2\Tests\Expected\Model\User();
+        if (\array_key_exists('default_hourly_rate', $data) && \is_int($data['default_hourly_rate'])) {
+            $data['default_hourly_rate'] = (double) $data['default_hourly_rate'];
+        }
+        if (\array_key_exists('cost_rate', $data) && \is_int($data['cost_rate'])) {
+            $data['cost_rate'] = (double) $data['cost_rate'];
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }

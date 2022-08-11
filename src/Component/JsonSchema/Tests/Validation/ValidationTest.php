@@ -708,6 +708,11 @@ class ValidationTest extends TestCase
         ], TypeObject::class);
         $this->assertInstanceOf(TypeObject::class, $data);
 
+        $data = $normalizer->denormalize([
+            'numberProperty' => 1,
+        ], TypeObject::class);
+        $this->assertInstanceOf(TypeObject::class, $data);
+
         $caughtException = null;
         try {
             $normalizer->denormalize([

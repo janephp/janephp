@@ -36,6 +36,9 @@ class SearchNoResultsErrorNormalizer implements DenormalizerInterface, Normalize
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \CreditSafe\API\Model\SearchNoResultsError();
+        if (\array_key_exists('totalSize', $data) && \is_int($data['totalSize'])) {
+            $data['totalSize'] = (double) $data['totalSize'];
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }

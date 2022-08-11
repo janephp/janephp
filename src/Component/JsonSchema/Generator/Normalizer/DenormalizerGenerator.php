@@ -5,6 +5,7 @@ namespace Jane\Component\JsonSchema\Generator\Normalizer;
 use Jane\Component\JsonSchema\Generator\Context\Context;
 use Jane\Component\JsonSchema\Generator\Naming;
 use Jane\Component\JsonSchema\Guesser\Guess\ClassGuess;
+use Jane\Component\JsonSchema\Guesser\Guess\Type;
 use PhpParser\Comment\Doc;
 use PhpParser\Node\Arg;
 use PhpParser\Node\Expr;
@@ -77,6 +78,20 @@ trait DenormalizerGenerator
 
         $statements[] = new Stmt\Expression(new Expr\Assign($objectVariable, new Expr\New_(new Name('\\' . $modelFqdn))));
 
+        foreach ($classGuess->getProperties() as $property) {
+            if (Type::TYPE_FLOAT !== $property->getType()->getName()) {
+                continue;
+            }
+            $baseCondition = new Expr\FuncCall(new Name('\array_key_exists'), [
+                new Arg(new Scalar\String_($property->getName())),
+                new Arg($dataVariable),
+            ]);
+            $arrayElement = new Expr\ArrayDimFetch($dataVariable, new Scalar\String_($property->getName()));
+            $intCondition = new Expr\FuncCall(new Name('\is_int'), [$arrayElement]);
+            $condition = new Expr\BinaryOp\BooleanAnd($baseCondition, $intCondition);
+            $castFloat = new Stmt\Expression(new Expr\Assign($arrayElement, new Expr\Cast\Double($arrayElement)));
+            $statements[] = new Stmt\If_($condition, ['stmts' => [$castFloat]]);
+        }
         if ($this->validation) {
             $schema = $context->getCurrentSchema();
             $validatorFqdn = $schema->getNamespace() . '\\Validator\\' . $this->naming->getValidatorName($classGuess->getName());

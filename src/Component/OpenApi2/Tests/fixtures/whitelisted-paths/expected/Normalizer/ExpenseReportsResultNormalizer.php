@@ -36,6 +36,12 @@ class ExpenseReportsResultNormalizer implements DenormalizerInterface, Normalize
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Jane\OpenApi2\Tests\Expected\Model\ExpenseReportsResult();
+        if (\array_key_exists('total_amount', $data) && \is_int($data['total_amount'])) {
+            $data['total_amount'] = (double) $data['total_amount'];
+        }
+        if (\array_key_exists('billable_amount', $data) && \is_int($data['billable_amount'])) {
+            $data['billable_amount'] = (double) $data['billable_amount'];
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }

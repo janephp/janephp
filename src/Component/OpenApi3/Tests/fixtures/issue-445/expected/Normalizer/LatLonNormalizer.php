@@ -36,6 +36,12 @@ class LatLonNormalizer implements DenormalizerInterface, NormalizerInterface, De
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \PicturePark\API\Model\LatLon();
+        if (\array_key_exists('lat', $data) && \is_int($data['lat'])) {
+            $data['lat'] = (double) $data['lat'];
+        }
+        if (\array_key_exists('lon', $data) && \is_int($data['lon'])) {
+            $data['lon'] = (double) $data['lon'];
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }

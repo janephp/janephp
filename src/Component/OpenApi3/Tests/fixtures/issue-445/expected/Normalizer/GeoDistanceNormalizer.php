@@ -36,6 +36,9 @@ class GeoDistanceNormalizer implements DenormalizerInterface, NormalizerInterfac
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \PicturePark\API\Model\GeoDistance();
+        if (\array_key_exists('distance', $data) && \is_int($data['distance'])) {
+            $data['distance'] = (double) $data['distance'];
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }

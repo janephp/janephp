@@ -36,6 +36,15 @@ class EventNormalizer implements DenormalizerInterface, NormalizerInterface, Den
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \CreditSafe\API\Model\Event();
+        if (\array_key_exists('eventId', $data) && \is_int($data['eventId'])) {
+            $data['eventId'] = (double) $data['eventId'];
+        }
+        if (\array_key_exists('companyId', $data) && \is_int($data['companyId'])) {
+            $data['companyId'] = (double) $data['companyId'];
+        }
+        if (\array_key_exists('portfolioId', $data) && \is_int($data['portfolioId'])) {
+            $data['portfolioId'] = (double) $data['portfolioId'];
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }

@@ -36,6 +36,9 @@ class GbCompanyReportExampleResponseReportAdditionalInformationRatingHistoryItem
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \CreditSafe\API\Model\GbCompanyReportExampleResponseReportAdditionalInformationRatingHistoryItem();
+        if (\array_key_exists('companyValue', $data) && \is_int($data['companyValue'])) {
+            $data['companyValue'] = (double) $data['companyValue'];
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }

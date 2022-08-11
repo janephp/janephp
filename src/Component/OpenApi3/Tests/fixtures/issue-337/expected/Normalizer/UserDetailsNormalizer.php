@@ -36,6 +36,15 @@ class UserDetailsNormalizer implements DenormalizerInterface, NormalizerInterfac
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \CreditSafe\API\Model\UserDetails();
+        if (\array_key_exists('csCustomerId', $data) && \is_int($data['csCustomerId'])) {
+            $data['csCustomerId'] = (double) $data['csCustomerId'];
+        }
+        if (\array_key_exists('csUserId', $data) && \is_int($data['csUserId'])) {
+            $data['csUserId'] = (double) $data['csUserId'];
+        }
+        if (\array_key_exists('userId', $data) && \is_int($data['userId'])) {
+            $data['userId'] = (double) $data['userId'];
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }

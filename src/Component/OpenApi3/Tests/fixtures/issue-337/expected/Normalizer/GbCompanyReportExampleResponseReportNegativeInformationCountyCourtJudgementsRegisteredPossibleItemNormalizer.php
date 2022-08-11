@@ -36,6 +36,9 @@ class GbCompanyReportExampleResponseReportNegativeInformationCountyCourtJudgemen
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \CreditSafe\API\Model\GbCompanyReportExampleResponseReportNegativeInformationCountyCourtJudgementsRegisteredPossibleItem();
+        if (\array_key_exists('ccjAmount', $data) && \is_int($data['ccjAmount'])) {
+            $data['ccjAmount'] = (double) $data['ccjAmount'];
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }

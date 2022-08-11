@@ -36,6 +36,9 @@ class CostRateNormalizer implements DenormalizerInterface, NormalizerInterface, 
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Jane\OpenApi2\Tests\Expected\Model\CostRate();
+        if (\array_key_exists('amount', $data) && \is_int($data['amount'])) {
+            $data['amount'] = (double) $data['amount'];
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }

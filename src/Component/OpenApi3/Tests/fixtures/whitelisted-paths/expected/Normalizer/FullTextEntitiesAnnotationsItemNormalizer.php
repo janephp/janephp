@@ -36,6 +36,9 @@ class FullTextEntitiesAnnotationsItemNormalizer implements DenormalizerInterface
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\FullTextEntitiesAnnotationsItem();
+        if (\array_key_exists('probability', $data) && \is_int($data['probability'])) {
+            $data['probability'] = (double) $data['probability'];
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }

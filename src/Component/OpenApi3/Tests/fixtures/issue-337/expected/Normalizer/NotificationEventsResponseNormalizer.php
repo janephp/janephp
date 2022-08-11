@@ -36,6 +36,9 @@ class NotificationEventsResponseNormalizer implements DenormalizerInterface, Nor
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \CreditSafe\API\Model\NotificationEventsResponse();
+        if (\array_key_exists('totalCount', $data) && \is_int($data['totalCount'])) {
+            $data['totalCount'] = (double) $data['totalCount'];
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }

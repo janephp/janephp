@@ -36,6 +36,15 @@ class FieldDecimalNormalizer implements DenormalizerInterface, NormalizerInterfa
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \PicturePark\API\Model\FieldDecimal();
+        if (\array_key_exists('minimum', $data) && \is_int($data['minimum'])) {
+            $data['minimum'] = (double) $data['minimum'];
+        }
+        if (\array_key_exists('maximum', $data) && \is_int($data['maximum'])) {
+            $data['maximum'] = (double) $data['maximum'];
+        }
+        if (\array_key_exists('boost', $data) && \is_int($data['boost'])) {
+            $data['boost'] = (double) $data['boost'];
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }

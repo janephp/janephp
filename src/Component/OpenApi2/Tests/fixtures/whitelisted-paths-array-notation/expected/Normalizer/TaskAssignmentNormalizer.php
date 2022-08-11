@@ -36,6 +36,12 @@ class TaskAssignmentNormalizer implements DenormalizerInterface, NormalizerInter
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Jane\OpenApi2\Tests\Expected\Model\TaskAssignment();
+        if (\array_key_exists('hourly_rate', $data) && \is_int($data['hourly_rate'])) {
+            $data['hourly_rate'] = (double) $data['hourly_rate'];
+        }
+        if (\array_key_exists('budget', $data) && \is_int($data['budget'])) {
+            $data['budget'] = (double) $data['budget'];
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }

@@ -36,6 +36,24 @@ class ImageMetadataNormalizer implements DenormalizerInterface, NormalizerInterf
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \PicturePark\API\Model\ImageMetadata();
+        if (\array_key_exists('widthInInch', $data) && \is_int($data['widthInInch'])) {
+            $data['widthInInch'] = (double) $data['widthInInch'];
+        }
+        if (\array_key_exists('heightInInch', $data) && \is_int($data['heightInInch'])) {
+            $data['heightInInch'] = (double) $data['heightInInch'];
+        }
+        if (\array_key_exists('widthInCm', $data) && \is_int($data['widthInCm'])) {
+            $data['widthInCm'] = (double) $data['widthInCm'];
+        }
+        if (\array_key_exists('heightInCm', $data) && \is_int($data['heightInCm'])) {
+            $data['heightInCm'] = (double) $data['heightInCm'];
+        }
+        if (\array_key_exists('horizontalResolution', $data) && \is_int($data['horizontalResolution'])) {
+            $data['horizontalResolution'] = (double) $data['horizontalResolution'];
+        }
+        if (\array_key_exists('verticalResolution', $data) && \is_int($data['verticalResolution'])) {
+            $data['verticalResolution'] = (double) $data['verticalResolution'];
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }

@@ -36,6 +36,21 @@ class JsonSchemaNormalizer implements DenormalizerInterface, NormalizerInterface
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Jane\Component\JsonSchema\JsonSchema\Model\JsonSchema();
+        if (\array_key_exists('multipleOf', $data) && \is_int($data['multipleOf'])) {
+            $data['multipleOf'] = (double) $data['multipleOf'];
+        }
+        if (\array_key_exists('maximum', $data) && \is_int($data['maximum'])) {
+            $data['maximum'] = (double) $data['maximum'];
+        }
+        if (\array_key_exists('exclusiveMaximum', $data) && \is_int($data['exclusiveMaximum'])) {
+            $data['exclusiveMaximum'] = (double) $data['exclusiveMaximum'];
+        }
+        if (\array_key_exists('minimum', $data) && \is_int($data['minimum'])) {
+            $data['minimum'] = (double) $data['minimum'];
+        }
+        if (\array_key_exists('exclusiveMinimum', $data) && \is_int($data['exclusiveMinimum'])) {
+            $data['exclusiveMinimum'] = (double) $data['exclusiveMinimum'];
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }

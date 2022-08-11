@@ -36,6 +36,9 @@ class ServiceSpecRollbackConfigNormalizer implements DenormalizerInterface, Norm
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\ServiceSpecRollbackConfig();
+        if (\array_key_exists('MaxFailureRatio', $data) && \is_int($data['MaxFailureRatio'])) {
+            $data['MaxFailureRatio'] = (double) $data['MaxFailureRatio'];
+        }
         $validator = new \Docker\Api\Validator\ServiceSpecRollbackConfigValidator();
         if (!($data['skip_validation'] ?? false)) {
             $validator->validate($data);

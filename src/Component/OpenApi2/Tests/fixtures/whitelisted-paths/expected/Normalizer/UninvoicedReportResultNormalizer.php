@@ -36,6 +36,18 @@ class UninvoicedReportResultNormalizer implements DenormalizerInterface, Normali
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Jane\OpenApi2\Tests\Expected\Model\UninvoicedReportResult();
+        if (\array_key_exists('total_hours', $data) && \is_int($data['total_hours'])) {
+            $data['total_hours'] = (double) $data['total_hours'];
+        }
+        if (\array_key_exists('uninvoiced_hours', $data) && \is_int($data['uninvoiced_hours'])) {
+            $data['uninvoiced_hours'] = (double) $data['uninvoiced_hours'];
+        }
+        if (\array_key_exists('uninvoiced_expenses', $data) && \is_int($data['uninvoiced_expenses'])) {
+            $data['uninvoiced_expenses'] = (double) $data['uninvoiced_expenses'];
+        }
+        if (\array_key_exists('uninvoiced_amount', $data) && \is_int($data['uninvoiced_amount'])) {
+            $data['uninvoiced_amount'] = (double) $data['uninvoiced_amount'];
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
