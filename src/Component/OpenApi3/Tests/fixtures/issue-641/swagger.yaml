@@ -1,0 +1,16 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: Bug example for Jane PHP
+paths: {}
+components:
+  schemas:
+    example:
+      type: object
+      properties:
+        property1:
+          type: string
+          nullable: true
+      required:
+        - property1
+
