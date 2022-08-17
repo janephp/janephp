@@ -99,8 +99,9 @@ class RuntimeGenerator implements GeneratorInterface
                     ->addStmt(new Expr\Assign(new Expr\PropertyFetch($thisVariable, 'violationList'), $violationListVariable))
                     ->addStmt(new Expr\StaticCall(new Node\Name('parent'), '__construct', [
                         new Node\Arg(new Expr\FuncCall(new Node\Name('sprintf'), [
-                            new Node\Arg(new Scalar\String_('Model validation failed with %d errors.')),
+                            new Node\Arg(new Scalar\String_('Model validation failed with %d errors: %s')),
                             new Node\Arg(new Expr\MethodCall($violationListVariable, 'count')),
+                            new Expr\Cast\String_($violationListVariable),
                         ])),
                         new Node\Arg(new Expr\ConstFetch(new Node\Name('400'))),
                     ]))
