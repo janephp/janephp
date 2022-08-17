@@ -36,6 +36,9 @@ class CompanyNormalizer implements DenormalizerInterface, NormalizerInterface, D
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \CreditSafe\API\Model\Company();
+        if (\array_key_exists('portfolioId', $data) && \is_int($data['portfolioId'])) {
+            $data['portfolioId'] = (double) $data['portfolioId'];
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }

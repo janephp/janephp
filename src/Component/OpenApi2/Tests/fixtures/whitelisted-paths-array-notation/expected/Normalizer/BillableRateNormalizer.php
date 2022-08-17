@@ -36,6 +36,9 @@ class BillableRateNormalizer implements DenormalizerInterface, NormalizerInterfa
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Jane\OpenApi2\Tests\Expected\Model\BillableRate();
+        if (\array_key_exists('amount', $data) && \is_int($data['amount'])) {
+            $data['amount'] = (double) $data['amount'];
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }

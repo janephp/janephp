@@ -36,6 +36,9 @@ class AudioStreamNormalizer implements DenormalizerInterface, NormalizerInterfac
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \PicturePark\API\Model\AudioStream();
+        if (\array_key_exists('durationInSeconds', $data) && \is_int($data['durationInSeconds'])) {
+            $data['durationInSeconds'] = (double) $data['durationInSeconds'];
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }

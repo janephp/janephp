@@ -36,6 +36,48 @@ class GbCompanyReportExampleResponseReportLocalFinancialStatementsItemProfitAndL
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \CreditSafe\API\Model\GbCompanyReportExampleResponseReportLocalFinancialStatementsItemProfitAndLoss();
+        if (\array_key_exists('turnover', $data) && \is_int($data['turnover'])) {
+            $data['turnover'] = (double) $data['turnover'];
+        }
+        if (\array_key_exists('costOfSales', $data) && \is_int($data['costOfSales'])) {
+            $data['costOfSales'] = (double) $data['costOfSales'];
+        }
+        if (\array_key_exists('grossProfit', $data) && \is_int($data['grossProfit'])) {
+            $data['grossProfit'] = (double) $data['grossProfit'];
+        }
+        if (\array_key_exists('depreciation', $data) && \is_int($data['depreciation'])) {
+            $data['depreciation'] = (double) $data['depreciation'];
+        }
+        if (\array_key_exists('auditFees', $data) && \is_int($data['auditFees'])) {
+            $data['auditFees'] = (double) $data['auditFees'];
+        }
+        if (\array_key_exists('wagesAndSalaries', $data) && \is_int($data['wagesAndSalaries'])) {
+            $data['wagesAndSalaries'] = (double) $data['wagesAndSalaries'];
+        }
+        if (\array_key_exists('directorsRemuneration', $data) && \is_int($data['directorsRemuneration'])) {
+            $data['directorsRemuneration'] = (double) $data['directorsRemuneration'];
+        }
+        if (\array_key_exists('operatingProfit', $data) && \is_int($data['operatingProfit'])) {
+            $data['operatingProfit'] = (double) $data['operatingProfit'];
+        }
+        if (\array_key_exists('interestExpense', $data) && \is_int($data['interestExpense'])) {
+            $data['interestExpense'] = (double) $data['interestExpense'];
+        }
+        if (\array_key_exists('profitBeforeTax', $data) && \is_int($data['profitBeforeTax'])) {
+            $data['profitBeforeTax'] = (double) $data['profitBeforeTax'];
+        }
+        if (\array_key_exists('taxation', $data) && \is_int($data['taxation'])) {
+            $data['taxation'] = (double) $data['taxation'];
+        }
+        if (\array_key_exists('profitAfterTax', $data) && \is_int($data['profitAfterTax'])) {
+            $data['profitAfterTax'] = (double) $data['profitAfterTax'];
+        }
+        if (\array_key_exists('dividends', $data) && \is_int($data['dividends'])) {
+            $data['dividends'] = (double) $data['dividends'];
+        }
+        if (\array_key_exists('retainedProfit', $data) && \is_int($data['retainedProfit'])) {
+            $data['retainedProfit'] = (double) $data['retainedProfit'];
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }

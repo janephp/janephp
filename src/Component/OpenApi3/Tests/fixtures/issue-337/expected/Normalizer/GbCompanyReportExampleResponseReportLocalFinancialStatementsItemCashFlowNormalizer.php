@@ -36,6 +36,18 @@ class GbCompanyReportExampleResponseReportLocalFinancialStatementsItemCashFlowNo
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \CreditSafe\API\Model\GbCompanyReportExampleResponseReportLocalFinancialStatementsItemCashFlow();
+        if (\array_key_exists('netCashFlowFromOperations', $data) && \is_int($data['netCashFlowFromOperations'])) {
+            $data['netCashFlowFromOperations'] = (double) $data['netCashFlowFromOperations'];
+        }
+        if (\array_key_exists('netCashFlowBeforeFinancing', $data) && \is_int($data['netCashFlowBeforeFinancing'])) {
+            $data['netCashFlowBeforeFinancing'] = (double) $data['netCashFlowBeforeFinancing'];
+        }
+        if (\array_key_exists('netCashFlowFromFinancing', $data) && \is_int($data['netCashFlowFromFinancing'])) {
+            $data['netCashFlowFromFinancing'] = (double) $data['netCashFlowFromFinancing'];
+        }
+        if (\array_key_exists('increaseInCash', $data) && \is_int($data['increaseInCash'])) {
+            $data['increaseInCash'] = (double) $data['increaseInCash'];
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }

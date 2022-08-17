@@ -36,6 +36,18 @@ class VideoStreamNormalizer implements DenormalizerInterface, NormalizerInterfac
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \PicturePark\API\Model\VideoStream();
+        if (\array_key_exists('durationInSeconds', $data) && \is_int($data['durationInSeconds'])) {
+            $data['durationInSeconds'] = (double) $data['durationInSeconds'];
+        }
+        if (\array_key_exists('frameRate', $data) && \is_int($data['frameRate'])) {
+            $data['frameRate'] = (double) $data['frameRate'];
+        }
+        if (\array_key_exists('pixelAspectRatio', $data) && \is_int($data['pixelAspectRatio'])) {
+            $data['pixelAspectRatio'] = (double) $data['pixelAspectRatio'];
+        }
+        if (\array_key_exists('rotation', $data) && \is_int($data['rotation'])) {
+            $data['rotation'] = (double) $data['rotation'];
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }

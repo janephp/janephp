@@ -36,6 +36,9 @@ class SortableFieldThresholdExceededExceptionNormalizer implements DenormalizerI
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \PicturePark\API\Model\SortableFieldThresholdExceededException();
+        if (\array_key_exists('sortableFieldCount', $data) && \is_int($data['sortableFieldCount'])) {
+            $data['sortableFieldCount'] = (double) $data['sortableFieldCount'];
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }

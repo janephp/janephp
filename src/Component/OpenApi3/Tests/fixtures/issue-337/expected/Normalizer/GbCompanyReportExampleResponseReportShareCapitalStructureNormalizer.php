@@ -36,6 +36,9 @@ class GbCompanyReportExampleResponseReportShareCapitalStructureNormalizer implem
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \CreditSafe\API\Model\GbCompanyReportExampleResponseReportShareCapitalStructure();
+        if (\array_key_exists('numberOfSharesIssued', $data) && \is_int($data['numberOfSharesIssued'])) {
+            $data['numberOfSharesIssued'] = (double) $data['numberOfSharesIssued'];
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }

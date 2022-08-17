@@ -36,6 +36,9 @@ class GbCompanyReportExampleResponseReportLocalFinancialStatementsItemNormalizer
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \CreditSafe\API\Model\GbCompanyReportExampleResponseReportLocalFinancialStatementsItem();
+        if (\array_key_exists('numberOfWeeks', $data) && \is_int($data['numberOfWeeks'])) {
+            $data['numberOfWeeks'] = (double) $data['numberOfWeeks'];
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }

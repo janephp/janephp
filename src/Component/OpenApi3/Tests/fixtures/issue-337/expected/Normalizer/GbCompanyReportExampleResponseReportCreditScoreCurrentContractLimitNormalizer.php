@@ -36,6 +36,9 @@ class GbCompanyReportExampleResponseReportCreditScoreCurrentContractLimitNormali
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \CreditSafe\API\Model\GbCompanyReportExampleResponseReportCreditScoreCurrentContractLimit();
+        if (\array_key_exists('value', $data) && \is_int($data['value'])) {
+            $data['value'] = (double) $data['value'];
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }

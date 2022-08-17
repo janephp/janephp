@@ -36,6 +36,15 @@ class ProjectBudgetReportResultNormalizer implements DenormalizerInterface, Norm
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Jane\OpenApi2\Tests\Expected\Model\ProjectBudgetReportResult();
+        if (\array_key_exists('budget', $data) && \is_int($data['budget'])) {
+            $data['budget'] = (double) $data['budget'];
+        }
+        if (\array_key_exists('budget_spent', $data) && \is_int($data['budget_spent'])) {
+            $data['budget_spent'] = (double) $data['budget_spent'];
+        }
+        if (\array_key_exists('budget_remaining', $data) && \is_int($data['budget_remaining'])) {
+            $data['budget_remaining'] = (double) $data['budget_remaining'];
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }

@@ -36,6 +36,12 @@ class EpsMetadataNormalizer implements DenormalizerInterface, NormalizerInterfac
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \PicturePark\API\Model\EpsMetadata();
+        if (\array_key_exists('widthInPoints', $data) && \is_int($data['widthInPoints'])) {
+            $data['widthInPoints'] = (double) $data['widthInPoints'];
+        }
+        if (\array_key_exists('heightInPoints', $data) && \is_int($data['heightInPoints'])) {
+            $data['heightInPoints'] = (double) $data['heightInPoints'];
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }

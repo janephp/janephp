@@ -36,6 +36,21 @@ class ProjectsPostBodyNormalizer implements DenormalizerInterface, NormalizerInt
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Jane\OpenApi2\Tests\Expected\Model\ProjectsPostBody();
+        if (\array_key_exists('hourly_rate', $data) && \is_int($data['hourly_rate'])) {
+            $data['hourly_rate'] = (double) $data['hourly_rate'];
+        }
+        if (\array_key_exists('budget', $data) && \is_int($data['budget'])) {
+            $data['budget'] = (double) $data['budget'];
+        }
+        if (\array_key_exists('over_budget_notification_percentage', $data) && \is_int($data['over_budget_notification_percentage'])) {
+            $data['over_budget_notification_percentage'] = (double) $data['over_budget_notification_percentage'];
+        }
+        if (\array_key_exists('cost_budget', $data) && \is_int($data['cost_budget'])) {
+            $data['cost_budget'] = (double) $data['cost_budget'];
+        }
+        if (\array_key_exists('fee', $data) && \is_int($data['fee'])) {
+            $data['fee'] = (double) $data['fee'];
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }

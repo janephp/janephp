@@ -36,6 +36,78 @@ class GbCompanyReportExampleResponseReportLocalFinancialStatementsItemBalanceShe
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \CreditSafe\API\Model\GbCompanyReportExampleResponseReportLocalFinancialStatementsItemBalanceSheet();
+        if (\array_key_exists('tangibleAssets', $data) && \is_int($data['tangibleAssets'])) {
+            $data['tangibleAssets'] = (double) $data['tangibleAssets'];
+        }
+        if (\array_key_exists('intangibleAssets', $data) && \is_int($data['intangibleAssets'])) {
+            $data['intangibleAssets'] = (double) $data['intangibleAssets'];
+        }
+        if (\array_key_exists('totalFixedAssets', $data) && \is_int($data['totalFixedAssets'])) {
+            $data['totalFixedAssets'] = (double) $data['totalFixedAssets'];
+        }
+        if (\array_key_exists('stock', $data) && \is_int($data['stock'])) {
+            $data['stock'] = (double) $data['stock'];
+        }
+        if (\array_key_exists('tradeDebtors', $data) && \is_int($data['tradeDebtors'])) {
+            $data['tradeDebtors'] = (double) $data['tradeDebtors'];
+        }
+        if (\array_key_exists('otherDebtors', $data) && \is_int($data['otherDebtors'])) {
+            $data['otherDebtors'] = (double) $data['otherDebtors'];
+        }
+        if (\array_key_exists('cash', $data) && \is_int($data['cash'])) {
+            $data['cash'] = (double) $data['cash'];
+        }
+        if (\array_key_exists('miscCurrentAssets', $data) && \is_int($data['miscCurrentAssets'])) {
+            $data['miscCurrentAssets'] = (double) $data['miscCurrentAssets'];
+        }
+        if (\array_key_exists('totalCurrentAssets', $data) && \is_int($data['totalCurrentAssets'])) {
+            $data['totalCurrentAssets'] = (double) $data['totalCurrentAssets'];
+        }
+        if (\array_key_exists('totalAssets', $data) && \is_int($data['totalAssets'])) {
+            $data['totalAssets'] = (double) $data['totalAssets'];
+        }
+        if (\array_key_exists('tradeCreditors', $data) && \is_int($data['tradeCreditors'])) {
+            $data['tradeCreditors'] = (double) $data['tradeCreditors'];
+        }
+        if (\array_key_exists('bankBorrowingsCurrent', $data) && \is_int($data['bankBorrowingsCurrent'])) {
+            $data['bankBorrowingsCurrent'] = (double) $data['bankBorrowingsCurrent'];
+        }
+        if (\array_key_exists('otherShortTermFinance', $data) && \is_int($data['otherShortTermFinance'])) {
+            $data['otherShortTermFinance'] = (double) $data['otherShortTermFinance'];
+        }
+        if (\array_key_exists('miscCurrentLiabilities', $data) && \is_int($data['miscCurrentLiabilities'])) {
+            $data['miscCurrentLiabilities'] = (double) $data['miscCurrentLiabilities'];
+        }
+        if (\array_key_exists('totalCurrentLiabilities', $data) && \is_int($data['totalCurrentLiabilities'])) {
+            $data['totalCurrentLiabilities'] = (double) $data['totalCurrentLiabilities'];
+        }
+        if (\array_key_exists('otherLongTermFinance', $data) && \is_int($data['otherLongTermFinance'])) {
+            $data['otherLongTermFinance'] = (double) $data['otherLongTermFinance'];
+        }
+        if (\array_key_exists('totalLongTermLiabilities', $data) && \is_int($data['totalLongTermLiabilities'])) {
+            $data['totalLongTermLiabilities'] = (double) $data['totalLongTermLiabilities'];
+        }
+        if (\array_key_exists('totalLiabilities', $data) && \is_int($data['totalLiabilities'])) {
+            $data['totalLiabilities'] = (double) $data['totalLiabilities'];
+        }
+        if (\array_key_exists('netAssets', $data) && \is_int($data['netAssets'])) {
+            $data['netAssets'] = (double) $data['netAssets'];
+        }
+        if (\array_key_exists('issuedShareCapital', $data) && \is_int($data['issuedShareCapital'])) {
+            $data['issuedShareCapital'] = (double) $data['issuedShareCapital'];
+        }
+        if (\array_key_exists('revaluationReserve', $data) && \is_int($data['revaluationReserve'])) {
+            $data['revaluationReserve'] = (double) $data['revaluationReserve'];
+        }
+        if (\array_key_exists('revenueReserves', $data) && \is_int($data['revenueReserves'])) {
+            $data['revenueReserves'] = (double) $data['revenueReserves'];
+        }
+        if (\array_key_exists('otherReserves', $data) && \is_int($data['otherReserves'])) {
+            $data['otherReserves'] = (double) $data['otherReserves'];
+        }
+        if (\array_key_exists('totalShareholdersEquity', $data) && \is_int($data['totalShareholdersEquity'])) {
+            $data['totalShareholdersEquity'] = (double) $data['totalShareholdersEquity'];
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }

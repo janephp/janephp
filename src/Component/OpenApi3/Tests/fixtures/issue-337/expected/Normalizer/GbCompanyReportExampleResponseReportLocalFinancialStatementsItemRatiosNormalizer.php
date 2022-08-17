@@ -36,6 +36,48 @@ class GbCompanyReportExampleResponseReportLocalFinancialStatementsItemRatiosNorm
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \CreditSafe\API\Model\GbCompanyReportExampleResponseReportLocalFinancialStatementsItemRatios();
+        if (\array_key_exists('preTaxProfitMargin', $data) && \is_int($data['preTaxProfitMargin'])) {
+            $data['preTaxProfitMargin'] = (double) $data['preTaxProfitMargin'];
+        }
+        if (\array_key_exists('returnOnCapitalEmployed', $data) && \is_int($data['returnOnCapitalEmployed'])) {
+            $data['returnOnCapitalEmployed'] = (double) $data['returnOnCapitalEmployed'];
+        }
+        if (\array_key_exists('returnOnTotalAssetsEmployed', $data) && \is_int($data['returnOnTotalAssetsEmployed'])) {
+            $data['returnOnTotalAssetsEmployed'] = (double) $data['returnOnTotalAssetsEmployed'];
+        }
+        if (\array_key_exists('returnOnNetAssetsEmployed', $data) && \is_int($data['returnOnNetAssetsEmployed'])) {
+            $data['returnOnNetAssetsEmployed'] = (double) $data['returnOnNetAssetsEmployed'];
+        }
+        if (\array_key_exists('salesOrNetWorkingCapital', $data) && \is_int($data['salesOrNetWorkingCapital'])) {
+            $data['salesOrNetWorkingCapital'] = (double) $data['salesOrNetWorkingCapital'];
+        }
+        if (\array_key_exists('stocKTurnoverRatio', $data) && \is_int($data['stocKTurnoverRatio'])) {
+            $data['stocKTurnoverRatio'] = (double) $data['stocKTurnoverRatio'];
+        }
+        if (\array_key_exists('debtorDays', $data) && \is_int($data['debtorDays'])) {
+            $data['debtorDays'] = (double) $data['debtorDays'];
+        }
+        if (\array_key_exists('creditorDays', $data) && \is_int($data['creditorDays'])) {
+            $data['creditorDays'] = (double) $data['creditorDays'];
+        }
+        if (\array_key_exists('currentRatio', $data) && \is_int($data['currentRatio'])) {
+            $data['currentRatio'] = (double) $data['currentRatio'];
+        }
+        if (\array_key_exists('liquidityRatioOrAcidTest', $data) && \is_int($data['liquidityRatioOrAcidTest'])) {
+            $data['liquidityRatioOrAcidTest'] = (double) $data['liquidityRatioOrAcidTest'];
+        }
+        if (\array_key_exists('currentDebtRatio', $data) && \is_int($data['currentDebtRatio'])) {
+            $data['currentDebtRatio'] = (double) $data['currentDebtRatio'];
+        }
+        if (\array_key_exists('gearing', $data) && \is_int($data['gearing'])) {
+            $data['gearing'] = (double) $data['gearing'];
+        }
+        if (\array_key_exists('equityInPercentage', $data) && \is_int($data['equityInPercentage'])) {
+            $data['equityInPercentage'] = (double) $data['equityInPercentage'];
+        }
+        if (\array_key_exists('totalDebtRatio', $data) && \is_int($data['totalDebtRatio'])) {
+            $data['totalDebtRatio'] = (double) $data['totalDebtRatio'];
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }

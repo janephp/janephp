@@ -36,6 +36,9 @@ class ExpenseCategoryNormalizer implements DenormalizerInterface, NormalizerInte
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Jane\OpenApi2\Tests\Expected\Model\ExpenseCategory();
+        if (\array_key_exists('unit_price', $data) && \is_int($data['unit_price'])) {
+            $data['unit_price'] = (double) $data['unit_price'];
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }

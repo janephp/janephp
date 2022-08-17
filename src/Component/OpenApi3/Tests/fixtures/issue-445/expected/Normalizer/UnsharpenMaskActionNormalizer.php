@@ -36,6 +36,15 @@ class UnsharpenMaskActionNormalizer implements DenormalizerInterface, Normalizer
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \PicturePark\API\Model\UnsharpenMaskAction();
+        if (\array_key_exists('amount', $data) && \is_int($data['amount'])) {
+            $data['amount'] = (double) $data['amount'];
+        }
+        if (\array_key_exists('radius', $data) && \is_int($data['radius'])) {
+            $data['radius'] = (double) $data['radius'];
+        }
+        if (\array_key_exists('threshold', $data) && \is_int($data['threshold'])) {
+            $data['threshold'] = (double) $data['threshold'];
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }

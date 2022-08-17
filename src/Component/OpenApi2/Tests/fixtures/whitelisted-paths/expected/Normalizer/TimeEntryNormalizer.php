@@ -36,6 +36,18 @@ class TimeEntryNormalizer implements DenormalizerInterface, NormalizerInterface,
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Jane\OpenApi2\Tests\Expected\Model\TimeEntry();
+        if (\array_key_exists('hours', $data) && \is_int($data['hours'])) {
+            $data['hours'] = (double) $data['hours'];
+        }
+        if (\array_key_exists('rounded_hours', $data) && \is_int($data['rounded_hours'])) {
+            $data['rounded_hours'] = (double) $data['rounded_hours'];
+        }
+        if (\array_key_exists('billable_rate', $data) && \is_int($data['billable_rate'])) {
+            $data['billable_rate'] = (double) $data['billable_rate'];
+        }
+        if (\array_key_exists('cost_rate', $data) && \is_int($data['cost_rate'])) {
+            $data['cost_rate'] = (double) $data['cost_rate'];
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }

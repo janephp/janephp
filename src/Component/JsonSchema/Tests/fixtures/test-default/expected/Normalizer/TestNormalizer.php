@@ -36,6 +36,9 @@ class TestNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Jane\Component\JsonSchema\Tests\Expected\Model\Test();
+        if (\array_key_exists('float', $data) && \is_int($data['float'])) {
+            $data['float'] = (double) $data['float'];
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }

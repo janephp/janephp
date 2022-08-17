@@ -36,6 +36,9 @@ class IndexedFieldThresholdExceededExceptionNormalizer implements DenormalizerIn
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \PicturePark\API\Model\IndexedFieldThresholdExceededException();
+        if (\array_key_exists('indexedFieldCount', $data) && \is_int($data['indexedFieldCount'])) {
+            $data['indexedFieldCount'] = (double) $data['indexedFieldCount'];
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }

@@ -36,6 +36,9 @@ class GbPeopleReportReponseReportDirectorshipsPreviousItemAdditionalDataNormaliz
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \CreditSafe\API\Model\GbPeopleReportReponseReportDirectorshipsPreviousItemAdditionalData();
+        if (\array_key_exists('gearing', $data) && \is_int($data['gearing'])) {
+            $data['gearing'] = (double) $data['gearing'];
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }

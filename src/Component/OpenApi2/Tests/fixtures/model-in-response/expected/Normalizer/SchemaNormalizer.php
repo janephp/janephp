@@ -36,6 +36,9 @@ class SchemaNormalizer implements DenormalizerInterface, NormalizerInterface, De
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Jane\Component\OpenApi2\Tests\Expected\Model\Schema();
+        if (\array_key_exists('floatProperty', $data) && \is_int($data['floatProperty'])) {
+            $data['floatProperty'] = (double) $data['floatProperty'];
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }

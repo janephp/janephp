@@ -36,6 +36,15 @@ class WatermarkActionNormalizer implements DenormalizerInterface, NormalizerInte
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \PicturePark\API\Model\WatermarkAction();
+        if (\array_key_exists('opacity', $data) && \is_int($data['opacity'])) {
+            $data['opacity'] = (double) $data['opacity'];
+        }
+        if (\array_key_exists('widthRatio', $data) && \is_int($data['widthRatio'])) {
+            $data['widthRatio'] = (double) $data['widthRatio'];
+        }
+        if (\array_key_exists('heightRatio', $data) && \is_int($data['heightRatio'])) {
+            $data['heightRatio'] = (double) $data['heightRatio'];
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }

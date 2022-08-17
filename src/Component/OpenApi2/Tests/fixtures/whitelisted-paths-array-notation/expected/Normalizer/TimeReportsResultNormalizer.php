@@ -36,6 +36,15 @@ class TimeReportsResultNormalizer implements DenormalizerInterface, NormalizerIn
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Jane\OpenApi2\Tests\Expected\Model\TimeReportsResult();
+        if (\array_key_exists('total_hours', $data) && \is_int($data['total_hours'])) {
+            $data['total_hours'] = (double) $data['total_hours'];
+        }
+        if (\array_key_exists('billable_hours', $data) && \is_int($data['billable_hours'])) {
+            $data['billable_hours'] = (double) $data['billable_hours'];
+        }
+        if (\array_key_exists('billable_amount', $data) && \is_int($data['billable_amount'])) {
+            $data['billable_amount'] = (double) $data['billable_amount'];
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
