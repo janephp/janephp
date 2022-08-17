@@ -9,6 +9,7 @@ use Jane\Component\JsonSchema\Guesser\Validator\ValidatorGuess;
 use Jane\Component\JsonSchema\Guesser\Validator\ValidatorInterface;
 use Jane\Component\JsonSchema\JsonSchema\Model\JsonSchema;
 use Symfony\Component\Validator\Constraints\Length;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 class MinLengthValidator implements ValidatorInterface
 {
@@ -29,5 +30,8 @@ class MinLengthValidator implements ValidatorInterface
             'min' => $object->getMinLength(),
             'minMessage' => 'This value is too short. It should have {{ limit }} characters or more.',
         ]));
+        if ($object->getMinLength() > 0) {
+            $guess->addValidatorGuess(new ValidatorGuess(NotBlank::class));
+        }
     }
 }
