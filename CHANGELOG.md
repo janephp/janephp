@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+- [JsonSchema] [GH#645](https://github.com/janephp/janephp/pull/645) Fix nullable incompatibility between JsonSchema/OpenAPI versions
+
 ## [7.3.0] - 2022-08-03
 ### Added
 - [JsonSchema] [GH#632](https://github.com/janephp/janephp/pull/632) Validation - Check for nullable field values
