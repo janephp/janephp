@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class ClarifaiTaggingOptions
+class ClarifaiTaggingOptions extends TaggingOptionsBase
 {
     /**
      * Override for the output format ID to tag.

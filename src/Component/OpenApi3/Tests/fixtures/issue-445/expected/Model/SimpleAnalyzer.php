@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class SimpleAnalyzer
+class SimpleAnalyzer extends AnalyzerBase
 {
     /**
      * 

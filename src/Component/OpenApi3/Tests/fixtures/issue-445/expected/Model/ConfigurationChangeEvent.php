@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class ConfigurationChangeEvent
+class ConfigurationChangeEvent extends ApplicationEvent
 {
     /**
      * 

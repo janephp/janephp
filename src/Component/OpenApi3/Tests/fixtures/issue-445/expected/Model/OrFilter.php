@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class OrFilter
+class OrFilter extends FilterBase
 {
     /**
      * 

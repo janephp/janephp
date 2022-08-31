@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class OutputDetail
+class OutputDetail extends Output
 {
     /**
      * The ID of the output. Can be null for dynamic outputs which are not rendered yet.

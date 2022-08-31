@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class DocumentFormatBase
+class DocumentFormatBase extends FormatBase
 {
     /**
      * 

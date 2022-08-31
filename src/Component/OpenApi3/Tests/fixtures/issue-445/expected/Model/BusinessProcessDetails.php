@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class BusinessProcessDetails
+class BusinessProcessDetails extends BusinessProcess
 {
     /**
      * ID of the business process.

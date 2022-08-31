@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class BusinessProcessDetailsDataBatchResponse
+class BusinessProcessDetailsDataBatchResponse extends BusinessProcessDetailsDataBase
 {
     /**
      * 

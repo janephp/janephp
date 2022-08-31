@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class InverseListItemNamedCacheConfiguration
+class InverseListItemNamedCacheConfiguration extends NamedCacheConfigurationBase
 {
     /**
      * Name of named cache.

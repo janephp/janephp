@@ -5,7 +5,7 @@ namespace Jane\Component\OpenApiCommon\Generator\Normalizer;
 use Jane\Component\JsonSchema\Generator\Context\Context;
 use Jane\Component\JsonSchema\Generator\Normalizer\NormalizerGenerator as JsonSchemaNormalizerGenerator;
 use Jane\Component\JsonSchema\Guesser\Guess\ClassGuess;
-use Jane\Component\OpenApiCommon\Guesser\Guess\MultipleClass;
+use Jane\Component\OpenApiCommon\Guesser\Guess\ParentClass;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Name;
 use PhpParser\Node\Param;
@@ -22,15 +22,15 @@ trait NormalizerGenerator
     {
         $statements = $this->jsonSchemaNormalizeMethodStatements($dataVariable, $classGuess, $context);
 
-        if ($classGuess instanceof MultipleClass) {
-            foreach ($classGuess->getReferences() as $name => $reference) {
+        if ($classGuess instanceof ParentClass) {
+            foreach ($classGuess->getChildEntryKeys() as $discriminatorValue) {
                 $objectVar = new Expr\Variable('object');
                 $propertyVar = new Expr\MethodCall($objectVar, $this->getNaming()->getPrefixedMethodName('get', $classGuess->getDiscriminator()));
 
                 $statements[] = new Stmt\If_(
                     new Expr\BinaryOp\LogicalAnd(
                         new Expr\BinaryOp\NotIdentical(new Expr\ConstFetch(new Name('null')), $propertyVar),
-                        new Expr\BinaryOp\Identical(new Scalar\String_($name), $propertyVar)
+                        new Expr\BinaryOp\Identical(new Scalar\String_($discriminatorValue), $propertyVar)
                     ),
                     [
                         'stmts' => [

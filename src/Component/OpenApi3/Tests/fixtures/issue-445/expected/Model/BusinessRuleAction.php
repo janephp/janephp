@@ -29,13 +29,10 @@ class BusinessRuleAction
      * Optional trace log reference ID set by the system when EnableTracing is set to true on the associated rule.
      *
      * @param string|null $traceRefId
-     *
-     * @return self
      */
-    public function setTraceRefId(?string $traceRefId) : self
+    public function setTraceRefId(?string $traceRefId)
     {
         $this->traceRefId = $traceRefId;
-        return $this;
     }
     /**
      * 
@@ -50,12 +47,9 @@ class BusinessRuleAction
      * 
      *
      * @param string $kind
-     *
-     * @return self
      */
-    public function setKind(string $kind) : self
+    public function setKind(string $kind)
     {
         $this->kind = $kind;
-        return $this;
     }
 }

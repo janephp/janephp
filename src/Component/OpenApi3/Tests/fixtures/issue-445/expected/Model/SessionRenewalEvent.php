@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class SessionRenewalEvent
+class SessionRenewalEvent extends ApplicationEvent
 {
     /**
      * 

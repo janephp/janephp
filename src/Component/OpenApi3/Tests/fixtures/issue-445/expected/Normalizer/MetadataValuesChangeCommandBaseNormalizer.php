@@ -29,6 +29,27 @@ class MetadataValuesChangeCommandBaseNormalizer implements DenormalizerInterface
      */
     public function denormalize($data, $class, $format = null, array $context = array())
     {
+        if (array_key_exists('kind', $data) and 'MetadataValuesSchemaUpdateCommand' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\\API\\Model\\MetadataValuesSchemaUpdateCommand', $format, $context);
+        }
+        if (array_key_exists('kind', $data) and 'MetadataValuesSchemaUpsertCommand' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\\API\\Model\\MetadataValuesSchemaUpsertCommand', $format, $context);
+        }
+        if (array_key_exists('kind', $data) and 'MetadataValuesSchemaRemoveCommand' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\\API\\Model\\MetadataValuesSchemaRemoveCommand', $format, $context);
+        }
+        if (array_key_exists('kind', $data) and 'MetadataValuesSchemaReplaceCommand' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\\API\\Model\\MetadataValuesSchemaReplaceCommand', $format, $context);
+        }
+        if (array_key_exists('kind', $data) and 'MetadataValuesFieldRemoveCommand' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\\API\\Model\\MetadataValuesFieldRemoveCommand', $format, $context);
+        }
+        if (array_key_exists('kind', $data) and 'MetadataValuesSchemaItemAddCommand' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\\API\\Model\\MetadataValuesSchemaItemAddCommand', $format, $context);
+        }
+        if (array_key_exists('kind', $data) and 'MetadataValuesSchemaItemRemoveCommand' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\\API\\Model\\MetadataValuesSchemaItemRemoveCommand', $format, $context);
+        }
         if (isset($data['$ref'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
@@ -53,6 +74,27 @@ class MetadataValuesChangeCommandBaseNormalizer implements DenormalizerInterface
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
+        if (null !== $object->getKind() and 'MetadataValuesSchemaUpdateCommand' === $object->getKind()) {
+            return $this->normalizer->normalize($object, $format, $context);
+        }
+        if (null !== $object->getKind() and 'MetadataValuesSchemaUpsertCommand' === $object->getKind()) {
+            return $this->normalizer->normalize($object, $format, $context);
+        }
+        if (null !== $object->getKind() and 'MetadataValuesSchemaRemoveCommand' === $object->getKind()) {
+            return $this->normalizer->normalize($object, $format, $context);
+        }
+        if (null !== $object->getKind() and 'MetadataValuesSchemaReplaceCommand' === $object->getKind()) {
+            return $this->normalizer->normalize($object, $format, $context);
+        }
+        if (null !== $object->getKind() and 'MetadataValuesFieldRemoveCommand' === $object->getKind()) {
+            return $this->normalizer->normalize($object, $format, $context);
+        }
+        if (null !== $object->getKind() and 'MetadataValuesSchemaItemAddCommand' === $object->getKind()) {
+            return $this->normalizer->normalize($object, $format, $context);
+        }
+        if (null !== $object->getKind() and 'MetadataValuesSchemaItemRemoveCommand' === $object->getKind()) {
+            return $this->normalizer->normalize($object, $format, $context);
+        }
         $data['schemaId'] = $object->getSchemaId();
         $data['kind'] = $object->getKind();
         return $data;

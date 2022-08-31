@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class LayersChangedCondition
+class LayersChangedCondition extends BusinessRuleCondition
 {
     /**
      * Optional trace log reference ID set by the system when EnableTracing is set to true on the associated rule.

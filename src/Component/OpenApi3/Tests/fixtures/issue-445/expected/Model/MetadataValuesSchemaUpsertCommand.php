@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class MetadataValuesSchemaUpsertCommand
+class MetadataValuesSchemaUpsertCommand extends MetadataValuesChangeCommandBase
 {
     /**
      * The ID of the schema to which the operation scope is addressed.

@@ -35,13 +35,10 @@ class NamedCacheConfigurationBase
      * Name of named cache.
      *
      * @param string|null $name
-     *
-     * @return self
      */
-    public function setName(?string $name) : self
+    public function setName(?string $name)
     {
         $this->name = $name;
-        return $this;
     }
     /**
      * Indicates if the lookup should be case sensitive.
@@ -56,13 +53,10 @@ class NamedCacheConfigurationBase
      * Indicates if the lookup should be case sensitive.
      *
      * @param bool $caseSensitive
-     *
-     * @return self
      */
-    public function setCaseSensitive(bool $caseSensitive) : self
+    public function setCaseSensitive(bool $caseSensitive)
     {
         $this->caseSensitive = $caseSensitive;
-        return $this;
     }
     /**
      * 
@@ -77,12 +71,9 @@ class NamedCacheConfigurationBase
      * 
      *
      * @param string $kind
-     *
-     * @return self
      */
-    public function setKind(string $kind) : self
+    public function setKind(string $kind)
     {
         $this->kind = $kind;
-        return $this;
     }
 }

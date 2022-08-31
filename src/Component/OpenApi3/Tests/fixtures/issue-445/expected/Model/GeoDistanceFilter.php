@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class GeoDistanceFilter
+class GeoDistanceFilter extends FilterBase
 {
     /**
      * 

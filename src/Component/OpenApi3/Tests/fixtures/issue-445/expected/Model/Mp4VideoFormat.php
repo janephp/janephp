@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class Mp4VideoFormat
+class Mp4VideoFormat extends FormatBase
 {
     /**
      * 

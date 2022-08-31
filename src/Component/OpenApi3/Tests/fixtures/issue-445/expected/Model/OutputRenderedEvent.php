@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class OutputRenderedEvent
+class OutputRenderedEvent extends ApplicationEvent
 {
     /**
      * 

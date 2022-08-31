@@ -29,6 +29,24 @@ class OutputDataBaseNormalizer implements DenormalizerInterface, NormalizerInter
      */
     public function denormalize($data, $class, $format = null, array $context = array())
     {
+        if (array_key_exists('kind', $data) and 'OutputDataImage' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\\API\\Model\\OutputDataImage', $format, $context);
+        }
+        if (array_key_exists('kind', $data) and 'OutputDataAudio' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\\API\\Model\\OutputDataAudio', $format, $context);
+        }
+        if (array_key_exists('kind', $data) and 'OutputDataVideo' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\\API\\Model\\OutputDataVideo', $format, $context);
+        }
+        if (array_key_exists('kind', $data) and 'OutputDataDocument' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\\API\\Model\\OutputDataDocument', $format, $context);
+        }
+        if (array_key_exists('kind', $data) and 'OutputDataVector' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\\API\\Model\\OutputDataVector', $format, $context);
+        }
+        if (array_key_exists('kind', $data) and 'OutputDataDefault' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\\API\\Model\\OutputDataDefault', $format, $context);
+        }
         if (isset($data['$ref'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
@@ -80,6 +98,24 @@ class OutputDataBaseNormalizer implements DenormalizerInterface, NormalizerInter
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
+        if (null !== $object->getKind() and 'OutputDataImage' === $object->getKind()) {
+            return $this->normalizer->normalize($object, $format, $context);
+        }
+        if (null !== $object->getKind() and 'OutputDataAudio' === $object->getKind()) {
+            return $this->normalizer->normalize($object, $format, $context);
+        }
+        if (null !== $object->getKind() and 'OutputDataVideo' === $object->getKind()) {
+            return $this->normalizer->normalize($object, $format, $context);
+        }
+        if (null !== $object->getKind() and 'OutputDataDocument' === $object->getKind()) {
+            return $this->normalizer->normalize($object, $format, $context);
+        }
+        if (null !== $object->getKind() and 'OutputDataVector' === $object->getKind()) {
+            return $this->normalizer->normalize($object, $format, $context);
+        }
+        if (null !== $object->getKind() and 'OutputDataDefault' === $object->getKind()) {
+            return $this->normalizer->normalize($object, $format, $context);
+        }
         if (null !== $object->getFileExtension()) {
             $data['fileExtension'] = $object->getFileExtension();
         }

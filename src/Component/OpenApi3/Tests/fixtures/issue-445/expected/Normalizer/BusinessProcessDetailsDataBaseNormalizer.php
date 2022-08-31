@@ -29,6 +29,18 @@ class BusinessProcessDetailsDataBaseNormalizer implements DenormalizerInterface,
      */
     public function denormalize($data, $class, $format = null, array $context = array())
     {
+        if (array_key_exists('kind', $data) and 'BusinessProcessDetailsDataBatchResponse' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\\API\\Model\\BusinessProcessDetailsDataBatchResponse', $format, $context);
+        }
+        if (array_key_exists('kind', $data) and 'BusinessProcessDetailsDataSchemaImport' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\\API\\Model\\BusinessProcessDetailsDataSchemaImport', $format, $context);
+        }
+        if (array_key_exists('kind', $data) and 'BusinessProcessDetailsDataCdnPurge' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\\API\\Model\\BusinessProcessDetailsDataCdnPurge', $format, $context);
+        }
+        if (array_key_exists('kind', $data) and 'BusinessProcessDetailsDataContentImport' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\\API\\Model\\BusinessProcessDetailsDataContentImport', $format, $context);
+        }
         if (isset($data['$ref'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
@@ -50,6 +62,18 @@ class BusinessProcessDetailsDataBaseNormalizer implements DenormalizerInterface,
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
+        if (null !== $object->getKind() and 'BusinessProcessDetailsDataBatchResponse' === $object->getKind()) {
+            return $this->normalizer->normalize($object, $format, $context);
+        }
+        if (null !== $object->getKind() and 'BusinessProcessDetailsDataSchemaImport' === $object->getKind()) {
+            return $this->normalizer->normalize($object, $format, $context);
+        }
+        if (null !== $object->getKind() and 'BusinessProcessDetailsDataCdnPurge' === $object->getKind()) {
+            return $this->normalizer->normalize($object, $format, $context);
+        }
+        if (null !== $object->getKind() and 'BusinessProcessDetailsDataContentImport' === $object->getKind()) {
+            return $this->normalizer->normalize($object, $format, $context);
+        }
         $data['kind'] = $object->getKind();
         return $data;
     }

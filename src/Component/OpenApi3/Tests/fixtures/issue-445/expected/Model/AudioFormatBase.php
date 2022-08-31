@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class AudioFormatBase
+class AudioFormatBase extends FormatBase
 {
     /**
      * 

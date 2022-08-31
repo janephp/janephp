@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class OutputDataDefault
+class OutputDataDefault extends OutputDataBase
 {
     /**
      * The extension of the file.

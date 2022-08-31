@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class ReindexEvent
+class ReindexEvent extends ApplicationEvent
 {
     /**
      * 

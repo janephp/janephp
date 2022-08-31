@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class BusinessRuleFiredEvent
+class BusinessRuleFiredEvent extends ApplicationEvent
 {
     /**
      * 

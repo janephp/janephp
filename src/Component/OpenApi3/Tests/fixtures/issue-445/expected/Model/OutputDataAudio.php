@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class OutputDataAudio
+class OutputDataAudio extends OutputDataBase
 {
     /**
      * The extension of the file.

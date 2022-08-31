@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class XmpWritebackCompletedEvent
+class XmpWritebackCompletedEvent extends ApplicationEvent
 {
     /**
      * 

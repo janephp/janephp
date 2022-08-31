@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class SharePageViewEvent
+class SharePageViewEvent extends ApplicationEvent
 {
     /**
      * 

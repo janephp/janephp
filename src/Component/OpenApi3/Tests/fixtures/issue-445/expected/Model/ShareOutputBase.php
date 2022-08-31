@@ -59,13 +59,10 @@ class ShareOutputBase
      * Content ID.
      *
      * @param string $contentId
-     *
-     * @return self
      */
-    public function setContentId(string $contentId) : self
+    public function setContentId(string $contentId)
     {
         $this->contentId = $contentId;
-        return $this;
     }
     /**
      * Output format ID.
@@ -80,13 +77,10 @@ class ShareOutputBase
      * Output format ID.
      *
      * @param string $outputFormatId
-     *
-     * @return self
      */
-    public function setOutputFormatId(string $outputFormatId) : self
+    public function setOutputFormatId(string $outputFormatId)
     {
         $this->outputFormatId = $outputFormatId;
-        return $this;
     }
     /**
      * Url to directly view output. In case of BasicShare if not fetched using a token, a placeholder {token} is included which needs to be replaced with the recipient's token
@@ -101,13 +95,10 @@ class ShareOutputBase
      * Url to directly view output. In case of BasicShare if not fetched using a token, a placeholder {token} is included which needs to be replaced with the recipient's token
      *
      * @param string|null $viewUrl
-     *
-     * @return self
      */
-    public function setViewUrl(?string $viewUrl) : self
+    public function setViewUrl(?string $viewUrl)
     {
         $this->viewUrl = $viewUrl;
-        return $this;
     }
     /**
      * Url to directly download output. In case of BasicShare if not fetched using a token, a placeholder {token} is included which needs to be replaced with the recipient's token
@@ -122,13 +113,10 @@ class ShareOutputBase
      * Url to directly download output. In case of BasicShare if not fetched using a token, a placeholder {token} is included which needs to be replaced with the recipient's token
      *
      * @param string|null $downloadUrl
-     *
-     * @return self
      */
-    public function setDownloadUrl(?string $downloadUrl) : self
+    public function setDownloadUrl(?string $downloadUrl)
     {
         $this->downloadUrl = $downloadUrl;
-        return $this;
     }
     /**
      * Output details.
@@ -143,13 +131,10 @@ class ShareOutputBase
      * Output details.
      *
      * @param mixed $detail
-     *
-     * @return self
      */
-    public function setDetail($detail) : self
+    public function setDetail($detail)
     {
         $this->detail = $detail;
-        return $this;
     }
     /**
      * Whether this Output belongs to a dynamic OutputFormat
@@ -164,13 +149,10 @@ class ShareOutputBase
      * Whether this Output belongs to a dynamic OutputFormat
      *
      * @param bool $dynamicRendering
-     *
-     * @return self
      */
-    public function setDynamicRendering(bool $dynamicRendering) : self
+    public function setDynamicRendering(bool $dynamicRendering)
     {
         $this->dynamicRendering = $dynamicRendering;
-        return $this;
     }
     /**
      * 
@@ -185,12 +167,9 @@ class ShareOutputBase
      * 
      *
      * @param string $kind
-     *
-     * @return self
      */
-    public function setKind(string $kind) : self
+    public function setKind(string $kind)
     {
         $this->kind = $kind;
-        return $this;
     }
 }

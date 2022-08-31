@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class AggregationFilter
+class AggregationFilter extends FilterBase
 {
     /**
      * 

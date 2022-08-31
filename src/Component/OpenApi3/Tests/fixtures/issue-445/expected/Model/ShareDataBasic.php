@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class ShareDataBasic
+class ShareDataBasic extends ShareDataBase
 {
     /**
      * The URL to access the share.

@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class NestedAggregator
+class NestedAggregator extends AggregatorBase
 {
     /**
      * The slug name of the aggregation. It must be unique per aggregation request.

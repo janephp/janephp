@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class PrefixFilter
+class PrefixFilter extends FilterBase
 {
     /**
      * 

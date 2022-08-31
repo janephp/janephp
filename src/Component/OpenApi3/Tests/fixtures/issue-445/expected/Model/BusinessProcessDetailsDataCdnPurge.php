@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class BusinessProcessDetailsDataCdnPurge
+class BusinessProcessDetailsDataCdnPurge extends BusinessProcessDetailsDataBase
 {
     /**
      * 

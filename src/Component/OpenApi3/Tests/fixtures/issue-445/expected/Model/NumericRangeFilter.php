@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class NumericRangeFilter
+class NumericRangeFilter extends FilterBase
 {
     /**
      * 

@@ -107,13 +107,10 @@ class BusinessProcess
      * ID of the business process.
      *
      * @param string $id
-     *
-     * @return self
      */
-    public function setId(string $id) : self
+    public function setId(string $id)
     {
         $this->id = $id;
-        return $this;
     }
     /**
      * ID of the business process definition associated to the business process.
@@ -128,13 +125,10 @@ class BusinessProcess
      * ID of the business process definition associated to the business process.
      *
      * @param string $processDefinitionId
-     *
-     * @return self
      */
-    public function setProcessDefinitionId(string $processDefinitionId) : self
+    public function setProcessDefinitionId(string $processDefinitionId)
     {
         $this->processDefinitionId = $processDefinitionId;
-        return $this;
     }
     /**
      * ID of the document that is modified by the running of the business process. Used during the cancellation of the business process.
@@ -149,13 +143,10 @@ class BusinessProcess
      * ID of the document that is modified by the running of the business process. Used during the cancellation of the business process.
      *
      * @param string|null $referenceId
-     *
-     * @return self
      */
-    public function setReferenceId(?string $referenceId) : self
+    public function setReferenceId(?string $referenceId)
     {
         $this->referenceId = $referenceId;
-        return $this;
     }
     /**
      * Type of the document that is modified by the running of the business process. Used during the cancellation of the business process.
@@ -170,13 +161,10 @@ class BusinessProcess
      * Type of the document that is modified by the running of the business process. Used during the cancellation of the business process.
      *
      * @param string|null $referenceDocType
-     *
-     * @return self
      */
-    public function setReferenceDocType(?string $referenceDocType) : self
+    public function setReferenceDocType(?string $referenceDocType)
     {
         $this->referenceDocType = $referenceDocType;
-        return $this;
     }
     /**
      * True if the business process execution can be cancelled. False otherwise.
@@ -191,13 +179,10 @@ class BusinessProcess
      * True if the business process execution can be cancelled. False otherwise.
      *
      * @param bool $supportsCancellation
-     *
-     * @return self
      */
-    public function setSupportsCancellation(bool $supportsCancellation) : self
+    public function setSupportsCancellation(bool $supportsCancellation)
     {
         $this->supportsCancellation = $supportsCancellation;
-        return $this;
     }
     /**
      * Scope of the business process.
@@ -212,13 +197,10 @@ class BusinessProcess
      * Scope of the business process.
      *
      * @param mixed $businessProcessScope
-     *
-     * @return self
      */
-    public function setBusinessProcessScope($businessProcessScope) : self
+    public function setBusinessProcessScope($businessProcessScope)
     {
         $this->businessProcessScope = $businessProcessScope;
-        return $this;
     }
     /**
      * Current life cycle of the business process.
@@ -233,13 +215,10 @@ class BusinessProcess
      * Current life cycle of the business process.
      *
      * @param mixed $lifeCycle
-     *
-     * @return self
      */
-    public function setLifeCycle($lifeCycle) : self
+    public function setLifeCycle($lifeCycle)
     {
         $this->lifeCycle = $lifeCycle;
-        return $this;
     }
     /**
      * When the business process started.
@@ -254,13 +233,10 @@ class BusinessProcess
      * When the business process started.
      *
      * @param \DateTime $startDate
-     *
-     * @return self
      */
-    public function setStartDate(\DateTime $startDate) : self
+    public function setStartDate(\DateTime $startDate)
     {
         $this->startDate = $startDate;
-        return $this;
     }
     /**
      * When the business process finished.
@@ -275,13 +251,10 @@ class BusinessProcess
      * When the business process finished.
      *
      * @param \DateTime $endDate
-     *
-     * @return self
      */
-    public function setEndDate(\DateTime $endDate) : self
+    public function setEndDate(\DateTime $endDate)
     {
         $this->endDate = $endDate;
-        return $this;
     }
     /**
      * Is the business process finished.
@@ -296,13 +269,10 @@ class BusinessProcess
      * Is the business process finished.
      *
      * @param bool $finished
-     *
-     * @return self
      */
-    public function setFinished(bool $finished) : self
+    public function setFinished(bool $finished)
     {
         $this->finished = $finished;
-        return $this;
     }
     /**
      * List containing the history of all the state transitions of the business process.
@@ -317,13 +287,10 @@ class BusinessProcess
      * List containing the history of all the state transitions of the business process.
      *
      * @param BusinessProcessState[]|null $stateHistory
-     *
-     * @return self
      */
-    public function setStateHistory(?array $stateHistory) : self
+    public function setStateHistory(?array $stateHistory)
     {
         $this->stateHistory = $stateHistory;
-        return $this;
     }
     /**
      * Current state of the business process.
@@ -338,13 +305,10 @@ class BusinessProcess
      * Current state of the business process.
      *
      * @param string|null $currentState
-     *
-     * @return self
      */
-    public function setCurrentState(?string $currentState) : self
+    public function setCurrentState(?string $currentState)
     {
         $this->currentState = $currentState;
-        return $this;
     }
     /**
      * Timestamp when the business process last reported progress.
@@ -359,13 +323,10 @@ class BusinessProcess
      * Timestamp when the business process last reported progress.
      *
      * @param \DateTime|null $lastReportedProgress
-     *
-     * @return self
      */
-    public function setLastReportedProgress(?\DateTime $lastReportedProgress) : self
+    public function setLastReportedProgress(?\DateTime $lastReportedProgress)
     {
         $this->lastReportedProgress = $lastReportedProgress;
-        return $this;
     }
     /**
      * Id of the business process that will be automatically started after the completion of the current one, if any.
@@ -380,13 +341,10 @@ class BusinessProcess
      * Id of the business process that will be automatically started after the completion of the current one, if any.
      *
      * @param string|null $continuationBusinessProcessId
-     *
-     * @return self
      */
-    public function setContinuationBusinessProcessId(?string $continuationBusinessProcessId) : self
+    public function setContinuationBusinessProcessId(?string $continuationBusinessProcessId)
     {
         $this->continuationBusinessProcessId = $continuationBusinessProcessId;
-        return $this;
     }
     /**
      * 
@@ -401,12 +359,9 @@ class BusinessProcess
      * 
      *
      * @param string $kind
-     *
-     * @return self
      */
-    public function setKind(string $kind) : self
+    public function setKind(string $kind)
     {
         $this->kind = $kind;
-        return $this;
     }
 }

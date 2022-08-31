@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class TiffFormat
+class TiffFormat extends FormatBase
 {
     /**
      * 

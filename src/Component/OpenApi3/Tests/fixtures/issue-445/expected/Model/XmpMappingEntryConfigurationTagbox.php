@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class XmpMappingEntryConfigurationTagbox
+class XmpMappingEntryConfigurationTagbox extends XmpMappingEntryConfigurationBase
 {
     /**
      * 

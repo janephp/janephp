@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class ShareEmbedUpdateRequest
+class ShareEmbedUpdateRequest extends ShareBaseUpdateRequest
 {
     /**
      * Name of share.

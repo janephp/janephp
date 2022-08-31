@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class VectorFormatBase
+class VectorFormatBase extends FormatBase
 {
     /**
      * 

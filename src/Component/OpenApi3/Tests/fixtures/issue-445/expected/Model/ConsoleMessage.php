@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class ConsoleMessage
+class ConsoleMessage extends Message
 {
     /**
      * 

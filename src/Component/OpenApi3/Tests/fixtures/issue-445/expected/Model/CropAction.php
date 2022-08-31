@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class CropAction
+class CropAction extends ImageActionBase
 {
     /**
      * 

@@ -29,6 +29,27 @@ class BusinessRuleTransformationNormalizer implements DenormalizerInterface, Nor
      */
     public function denormalize($data, $class, $format = null, array $context = array())
     {
+        if (array_key_exists('kind', $data) and 'TakeDictionaryValueTransformation' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\\API\\Model\\TakeDictionaryValueTransformation', $format, $context);
+        }
+        if (array_key_exists('kind', $data) and 'TakeArrayValueTransformation' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\\API\\Model\\TakeArrayValueTransformation', $format, $context);
+        }
+        if (array_key_exists('kind', $data) and 'JoinByTransformation' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\\API\\Model\\JoinByTransformation', $format, $context);
+        }
+        if (array_key_exists('kind', $data) and 'LookupCacheTransformation' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\\API\\Model\\LookupCacheTransformation', $format, $context);
+        }
+        if (array_key_exists('kind', $data) and 'NGramTransformation' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\\API\\Model\\NGramTransformation', $format, $context);
+        }
+        if (array_key_exists('kind', $data) and 'ProjectionTransformation' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\\API\\Model\\ProjectionTransformation', $format, $context);
+        }
+        if (array_key_exists('kind', $data) and 'SplitTransformation' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\\API\\Model\\SplitTransformation', $format, $context);
+        }
         if (isset($data['$ref'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
@@ -56,6 +77,27 @@ class BusinessRuleTransformationNormalizer implements DenormalizerInterface, Nor
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
+        if (null !== $object->getKind() and 'TakeDictionaryValueTransformation' === $object->getKind()) {
+            return $this->normalizer->normalize($object, $format, $context);
+        }
+        if (null !== $object->getKind() and 'TakeArrayValueTransformation' === $object->getKind()) {
+            return $this->normalizer->normalize($object, $format, $context);
+        }
+        if (null !== $object->getKind() and 'JoinByTransformation' === $object->getKind()) {
+            return $this->normalizer->normalize($object, $format, $context);
+        }
+        if (null !== $object->getKind() and 'LookupCacheTransformation' === $object->getKind()) {
+            return $this->normalizer->normalize($object, $format, $context);
+        }
+        if (null !== $object->getKind() and 'NGramTransformation' === $object->getKind()) {
+            return $this->normalizer->normalize($object, $format, $context);
+        }
+        if (null !== $object->getKind() and 'ProjectionTransformation' === $object->getKind()) {
+            return $this->normalizer->normalize($object, $format, $context);
+        }
+        if (null !== $object->getKind() and 'SplitTransformation' === $object->getKind()) {
+            return $this->normalizer->normalize($object, $format, $context);
+        }
         if (null !== $object->getTraceRefId()) {
             $data['traceRefId'] = $object->getTraceRefId();
         }

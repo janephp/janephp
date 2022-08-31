@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class NGramAnalyzer
+class NGramAnalyzer extends AnalyzerBase
 {
     /**
      * 

@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class OriginalFormat
+class OriginalFormat extends FormatBase
 {
     /**
      * 

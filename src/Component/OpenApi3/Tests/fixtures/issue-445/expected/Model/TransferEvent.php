@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class TransferEvent
+class TransferEvent extends ApplicationEvent
 {
     /**
      * 

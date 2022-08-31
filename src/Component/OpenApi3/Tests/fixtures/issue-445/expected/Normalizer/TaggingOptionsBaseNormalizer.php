@@ -29,6 +29,12 @@ class TaggingOptionsBaseNormalizer implements DenormalizerInterface, NormalizerI
      */
     public function denormalize($data, $class, $format = null, array $context = array())
     {
+        if (array_key_exists('kind', $data) and 'ClarifaiTaggingOptions' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\\API\\Model\\ClarifaiTaggingOptions', $format, $context);
+        }
+        if (array_key_exists('kind', $data) and 'SimulatedTaggingOptions' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\\API\\Model\\SimulatedTaggingOptions', $format, $context);
+        }
         if (isset($data['$ref'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
@@ -80,6 +86,12 @@ class TaggingOptionsBaseNormalizer implements DenormalizerInterface, NormalizerI
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
+        if (null !== $object->getKind() and 'ClarifaiTaggingOptions' === $object->getKind()) {
+            return $this->normalizer->normalize($object, $format, $context);
+        }
+        if (null !== $object->getKind() and 'SimulatedTaggingOptions' === $object->getKind()) {
+            return $this->normalizer->normalize($object, $format, $context);
+        }
         if (null !== $object->getTagOutputFormatId()) {
             $data['tagOutputFormatId'] = $object->getTagOutputFormatId();
         }

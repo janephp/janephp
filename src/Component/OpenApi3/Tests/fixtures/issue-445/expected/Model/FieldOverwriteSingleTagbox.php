@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class FieldOverwriteSingleTagbox
+class FieldOverwriteSingleTagbox extends FieldOverwriteBase
 {
     /**
      * The field's ID whose information need to be overwritten.

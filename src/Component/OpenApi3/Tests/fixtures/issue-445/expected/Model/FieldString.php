@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class FieldString
+class FieldString extends FieldBase
 {
     /**
      * The field ID. It can be a slug; it must be unique within the schema hierarchy (ancestors / descendants); it must be begin with lower case.

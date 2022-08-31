@@ -29,13 +29,10 @@ class MetadataValuesChangeCommandBase
      * The ID of the schema to which the operation scope is addressed.
      *
      * @param string $schemaId
-     *
-     * @return self
      */
-    public function setSchemaId(string $schemaId) : self
+    public function setSchemaId(string $schemaId)
     {
         $this->schemaId = $schemaId;
-        return $this;
     }
     /**
      * 
@@ -50,12 +47,9 @@ class MetadataValuesChangeCommandBase
      * 
      *
      * @param string $kind
-     *
-     * @return self
      */
-    public function setKind(string $kind) : self
+    public function setKind(string $kind)
     {
         $this->kind = $kind;
-        return $this;
     }
 }

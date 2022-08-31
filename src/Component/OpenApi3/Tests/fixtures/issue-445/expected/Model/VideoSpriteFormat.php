@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class VideoSpriteFormat
+class VideoSpriteFormat extends FormatBase
 {
     /**
      * 

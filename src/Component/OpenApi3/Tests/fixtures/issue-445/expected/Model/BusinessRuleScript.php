@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class BusinessRuleScript
+class BusinessRuleScript extends BusinessRule
 {
     /**
      * User defined ID of the rule.

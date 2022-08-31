@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class WatermarkAction
+class WatermarkAction extends ImageActionBase
 {
     /**
      * 

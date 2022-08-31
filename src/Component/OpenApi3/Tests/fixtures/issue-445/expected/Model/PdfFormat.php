@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class PdfFormat
+class PdfFormat extends FormatBase
 {
     /**
      * 

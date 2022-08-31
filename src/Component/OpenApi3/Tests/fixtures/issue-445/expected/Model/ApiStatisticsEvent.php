@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class ApiStatisticsEvent
+class ApiStatisticsEvent extends ApplicationEvent
 {
     /**
      * 

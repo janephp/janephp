@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class BusinessProcessCancellationRequestedEvent
+class BusinessProcessCancellationRequestedEvent extends ApplicationEvent
 {
     /**
      * 

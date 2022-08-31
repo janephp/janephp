@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class VideoStillFormat
+class VideoStillFormat extends FormatBase
 {
     /**
      * 

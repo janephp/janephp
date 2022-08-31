@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class EdgeNGramAnalyzer
+class EdgeNGramAnalyzer extends AnalyzerBase
 {
     /**
      * 

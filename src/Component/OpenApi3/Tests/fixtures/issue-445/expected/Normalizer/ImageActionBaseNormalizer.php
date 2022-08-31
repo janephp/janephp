@@ -29,6 +29,18 @@ class ImageActionBaseNormalizer implements DenormalizerInterface, NormalizerInte
      */
     public function denormalize($data, $class, $format = null, array $context = array())
     {
+        if (array_key_exists('kind', $data) and 'AlphaHandlingAction' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\\API\\Model\\AlphaHandlingAction', $format, $context);
+        }
+        if (array_key_exists('kind', $data) and 'CropAction' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\\API\\Model\\CropAction', $format, $context);
+        }
+        if (array_key_exists('kind', $data) and 'UnsharpenMaskAction' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\\API\\Model\\UnsharpenMaskAction', $format, $context);
+        }
+        if (array_key_exists('kind', $data) and 'WatermarkAction' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\\API\\Model\\WatermarkAction', $format, $context);
+        }
         if (isset($data['$ref'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
@@ -50,6 +62,18 @@ class ImageActionBaseNormalizer implements DenormalizerInterface, NormalizerInte
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
+        if (null !== $object->getKind() and 'AlphaHandlingAction' === $object->getKind()) {
+            return $this->normalizer->normalize($object, $format, $context);
+        }
+        if (null !== $object->getKind() and 'CropAction' === $object->getKind()) {
+            return $this->normalizer->normalize($object, $format, $context);
+        }
+        if (null !== $object->getKind() and 'UnsharpenMaskAction' === $object->getKind()) {
+            return $this->normalizer->normalize($object, $format, $context);
+        }
+        if (null !== $object->getKind() and 'WatermarkAction' === $object->getKind()) {
+            return $this->normalizer->normalize($object, $format, $context);
+        }
         $data['kind'] = $object->getKind();
         return $data;
     }

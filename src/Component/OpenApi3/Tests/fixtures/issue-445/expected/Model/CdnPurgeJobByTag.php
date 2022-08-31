@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class CdnPurgeJobByTag
+class CdnPurgeJobByTag extends CdnPurgeJobBase
 {
     /**
      * Indicates if the operation was performed successfully.

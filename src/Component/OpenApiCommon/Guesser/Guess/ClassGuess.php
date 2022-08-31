@@ -6,16 +6,16 @@ use Jane\Component\JsonSchema\Guesser\Guess\ClassGuess as BaseClassGuess;
 
 class ClassGuess extends BaseClassGuess
 {
-    /** @var MultipleClass */
-    private $multipleClass;
+    /** @var ParentClass */
+    private $parentClass;
 
-    public function getMultipleClass(): ?MultipleClass
+    public function getParentClass(): ?ParentClass
     {
-        return $this->multipleClass;
+        return $this->parentClass;
     }
 
-    public function setMultipleClass(?MultipleClass $multipleClass): void
+    public function setParentClass(?ParentClass $parentClass): void
     {
-        $this->multipleClass = $multipleClass;
+        $this->parentClass = $parentClass;
     }
 }

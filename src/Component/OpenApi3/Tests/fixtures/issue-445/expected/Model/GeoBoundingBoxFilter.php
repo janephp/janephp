@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class GeoBoundingBoxFilter
+class GeoBoundingBoxFilter extends FilterBase
 {
     /**
      * 

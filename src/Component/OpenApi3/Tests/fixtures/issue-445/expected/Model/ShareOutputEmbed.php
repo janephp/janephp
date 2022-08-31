@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class ShareOutputEmbed
+class ShareOutputEmbed extends ShareOutputBase
 {
     /**
      * Content ID.

@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class ContentFieldsBatchUpdateRequest
+class ContentFieldsBatchUpdateRequest extends MetadataValuesChangeRequestBase
 {
     /**
      * Changes that need to be applied to the existing content metadata. The same set of changes is applied to all contents.

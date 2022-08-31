@@ -53,13 +53,10 @@ class TaggingOptionsBase
      * Override for the output format ID to tag.
      *
      * @param string|null $tagOutputFormatId
-     *
-     * @return self
      */
-    public function setTagOutputFormatId(?string $tagOutputFormatId) : self
+    public function setTagOutputFormatId(?string $tagOutputFormatId)
     {
         $this->tagOutputFormatId = $tagOutputFormatId;
-        return $this;
     }
     /**
      * Override for the cache to use.
@@ -74,13 +71,10 @@ class TaggingOptionsBase
      * Override for the cache to use.
      *
      * @param string|null $keywordLookupCacheName
-     *
-     * @return self
      */
-    public function setKeywordLookupCacheName(?string $keywordLookupCacheName) : self
+    public function setKeywordLookupCacheName(?string $keywordLookupCacheName)
     {
         $this->keywordLookupCacheName = $keywordLookupCacheName;
-        return $this;
     }
     /**
      * Override for the layer to assign.
@@ -95,13 +89,10 @@ class TaggingOptionsBase
      * Override for the layer to assign.
      *
      * @param string|null $taggingLayerId
-     *
-     * @return self
      */
-    public function setTaggingLayerId(?string $taggingLayerId) : self
+    public function setTaggingLayerId(?string $taggingLayerId)
     {
         $this->taggingLayerId = $taggingLayerId;
-        return $this;
     }
     /**
      * Override for the field id where found tags are stored.
@@ -116,13 +107,10 @@ class TaggingOptionsBase
      * Override for the field id where found tags are stored.
      *
      * @param string|null $foundTagsFieldId
-     *
-     * @return self
      */
-    public function setFoundTagsFieldId(?string $foundTagsFieldId) : self
+    public function setFoundTagsFieldId(?string $foundTagsFieldId)
     {
         $this->foundTagsFieldId = $foundTagsFieldId;
-        return $this;
     }
     /**
      * Override for the field id where not found tags are stored.
@@ -137,13 +125,10 @@ class TaggingOptionsBase
      * Override for the field id where not found tags are stored.
      *
      * @param string|null $missingKeywordsFieldId
-     *
-     * @return self
      */
-    public function setMissingKeywordsFieldId(?string $missingKeywordsFieldId) : self
+    public function setMissingKeywordsFieldId(?string $missingKeywordsFieldId)
     {
         $this->missingKeywordsFieldId = $missingKeywordsFieldId;
-        return $this;
     }
     /**
      * 
@@ -158,12 +143,9 @@ class TaggingOptionsBase
      * 
      *
      * @param string $kind
-     *
-     * @return self
      */
-    public function setKind(string $kind) : self
+    public function setKind(string $kind)
     {
         $this->kind = $kind;
-        return $this;
     }
 }

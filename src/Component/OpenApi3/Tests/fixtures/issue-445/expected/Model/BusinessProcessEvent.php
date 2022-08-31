@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class BusinessProcessEvent
+class BusinessProcessEvent extends ApplicationEvent
 {
     /**
      * 

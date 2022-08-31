@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class SvgFormat
+class SvgFormat extends FormatBase
 {
     /**
      * 

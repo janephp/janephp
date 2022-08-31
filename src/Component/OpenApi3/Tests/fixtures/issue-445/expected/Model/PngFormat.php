@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class PngFormat
+class PngFormat extends FormatBase
 {
     /**
      * 

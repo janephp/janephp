@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class NestedFilter
+class NestedFilter extends FilterBase
 {
     /**
      * 

@@ -6,7 +6,7 @@ use Jane\Component\JsonSchema\Guesser\Guess\ClassGuess as BaseClassGuess;
 use Jane\Component\JsonSchema\Guesser\JsonSchema\ObjectGuesser;
 use Jane\Component\OpenApi2\JsonSchema\Model\Schema;
 use Jane\Component\OpenApiCommon\Guesser\Guess\ClassGuess;
-use Jane\Component\OpenApiCommon\Guesser\Guess\MultipleClass;
+use Jane\Component\OpenApiCommon\Guesser\Guess\ParentClass;
 
 class SchemaGuesser extends ObjectGuesser
 {
@@ -35,11 +35,11 @@ class SchemaGuesser extends ObjectGuesser
 
         if (\is_string($object->getDiscriminator()) &&
             \is_array($object->getEnum()) && \count($object->getEnum()) > 0) {
-            $classGuess = new MultipleClass($classGuess, $object->getDiscriminator());
+            $classGuess = new ParentClass($classGuess, $object->getDiscriminator());
 
             foreach ($object->getEnum() as $subClassName) {
                 $subReference = preg_replace('#definitions\/.+$#', sprintf('definitions/%s', $subClassName), $reference);
-                $classGuess->addReference($subClassName, $subReference);
+                $classGuess->addChildEntry($subClassName, $subReference);
             }
         }
 

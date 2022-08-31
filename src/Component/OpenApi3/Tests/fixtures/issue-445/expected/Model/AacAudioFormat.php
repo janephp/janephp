@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class AacAudioFormat
+class AacAudioFormat extends FormatBase
 {
     /**
      * 

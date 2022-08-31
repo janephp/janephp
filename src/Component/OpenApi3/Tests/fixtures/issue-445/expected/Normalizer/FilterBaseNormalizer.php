@@ -29,6 +29,51 @@ class FilterBaseNormalizer implements DenormalizerInterface, NormalizerInterface
      */
     public function denormalize($data, $class, $format = null, array $context = array())
     {
+        if (array_key_exists('kind', $data) and 'AndFilter' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\\API\\Model\\AndFilter', $format, $context);
+        }
+        if (array_key_exists('kind', $data) and 'OrFilter' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\\API\\Model\\OrFilter', $format, $context);
+        }
+        if (array_key_exists('kind', $data) and 'NotFilter' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\\API\\Model\\NotFilter', $format, $context);
+        }
+        if (array_key_exists('kind', $data) and 'DateRangeFilter' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\\API\\Model\\DateRangeFilter', $format, $context);
+        }
+        if (array_key_exists('kind', $data) and 'ExistsFilter' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\\API\\Model\\ExistsFilter', $format, $context);
+        }
+        if (array_key_exists('kind', $data) and 'GeoBoundingBoxFilter' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\\API\\Model\\GeoBoundingBoxFilter', $format, $context);
+        }
+        if (array_key_exists('kind', $data) and 'GeoDistanceFilter' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\\API\\Model\\GeoDistanceFilter', $format, $context);
+        }
+        if (array_key_exists('kind', $data) and 'NestedFilter' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\\API\\Model\\NestedFilter', $format, $context);
+        }
+        if (array_key_exists('kind', $data) and 'NumericRangeFilter' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\\API\\Model\\NumericRangeFilter', $format, $context);
+        }
+        if (array_key_exists('kind', $data) and 'PrefixFilter' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\\API\\Model\\PrefixFilter', $format, $context);
+        }
+        if (array_key_exists('kind', $data) and 'TermFilter' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\\API\\Model\\TermFilter', $format, $context);
+        }
+        if (array_key_exists('kind', $data) and 'TermsFilter' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\\API\\Model\\TermsFilter', $format, $context);
+        }
+        if (array_key_exists('kind', $data) and 'AggregationFilter' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\\API\\Model\\AggregationFilter', $format, $context);
+        }
+        if (array_key_exists('kind', $data) and 'ChildFilter' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\\API\\Model\\ChildFilter', $format, $context);
+        }
+        if (array_key_exists('kind', $data) and 'ParentFilter' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\\API\\Model\\ParentFilter', $format, $context);
+        }
         if (isset($data['$ref'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
@@ -50,6 +95,51 @@ class FilterBaseNormalizer implements DenormalizerInterface, NormalizerInterface
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
+        if (null !== $object->getKind() and 'AndFilter' === $object->getKind()) {
+            return $this->normalizer->normalize($object, $format, $context);
+        }
+        if (null !== $object->getKind() and 'OrFilter' === $object->getKind()) {
+            return $this->normalizer->normalize($object, $format, $context);
+        }
+        if (null !== $object->getKind() and 'NotFilter' === $object->getKind()) {
+            return $this->normalizer->normalize($object, $format, $context);
+        }
+        if (null !== $object->getKind() and 'DateRangeFilter' === $object->getKind()) {
+            return $this->normalizer->normalize($object, $format, $context);
+        }
+        if (null !== $object->getKind() and 'ExistsFilter' === $object->getKind()) {
+            return $this->normalizer->normalize($object, $format, $context);
+        }
+        if (null !== $object->getKind() and 'GeoBoundingBoxFilter' === $object->getKind()) {
+            return $this->normalizer->normalize($object, $format, $context);
+        }
+        if (null !== $object->getKind() and 'GeoDistanceFilter' === $object->getKind()) {
+            return $this->normalizer->normalize($object, $format, $context);
+        }
+        if (null !== $object->getKind() and 'NestedFilter' === $object->getKind()) {
+            return $this->normalizer->normalize($object, $format, $context);
+        }
+        if (null !== $object->getKind() and 'NumericRangeFilter' === $object->getKind()) {
+            return $this->normalizer->normalize($object, $format, $context);
+        }
+        if (null !== $object->getKind() and 'PrefixFilter' === $object->getKind()) {
+            return $this->normalizer->normalize($object, $format, $context);
+        }
+        if (null !== $object->getKind() and 'TermFilter' === $object->getKind()) {
+            return $this->normalizer->normalize($object, $format, $context);
+        }
+        if (null !== $object->getKind() and 'TermsFilter' === $object->getKind()) {
+            return $this->normalizer->normalize($object, $format, $context);
+        }
+        if (null !== $object->getKind() and 'AggregationFilter' === $object->getKind()) {
+            return $this->normalizer->normalize($object, $format, $context);
+        }
+        if (null !== $object->getKind() and 'ChildFilter' === $object->getKind()) {
+            return $this->normalizer->normalize($object, $format, $context);
+        }
+        if (null !== $object->getKind() and 'ParentFilter' === $object->getKind()) {
+            return $this->normalizer->normalize($object, $format, $context);
+        }
         $data['kind'] = $object->getKind();
         return $data;
     }

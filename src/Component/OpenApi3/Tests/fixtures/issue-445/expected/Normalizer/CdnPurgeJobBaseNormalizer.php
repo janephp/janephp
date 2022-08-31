@@ -29,6 +29,12 @@ class CdnPurgeJobBaseNormalizer implements DenormalizerInterface, NormalizerInte
      */
     public function denormalize($data, $class, $format = null, array $context = array())
     {
+        if (array_key_exists('kind', $data) and 'CdnPurgeJobByTag' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\\API\\Model\\CdnPurgeJobByTag', $format, $context);
+        }
+        if (array_key_exists('kind', $data) and 'CdnPurgeJobByUri' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\\API\\Model\\CdnPurgeJobByUri', $format, $context);
+        }
         if (isset($data['$ref'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
@@ -56,6 +62,12 @@ class CdnPurgeJobBaseNormalizer implements DenormalizerInterface, NormalizerInte
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
+        if (null !== $object->getKind() and 'CdnPurgeJobByTag' === $object->getKind()) {
+            return $this->normalizer->normalize($object, $format, $context);
+        }
+        if (null !== $object->getKind() and 'CdnPurgeJobByUri' === $object->getKind()) {
+            return $this->normalizer->normalize($object, $format, $context);
+        }
         $data['success'] = $object->getSuccess();
         $data['retriesLeft'] = $object->getRetriesLeft();
         $data['kind'] = $object->getKind();

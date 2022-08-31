@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class VectorStillFormat
+class VectorStillFormat extends FormatBase
 {
     /**
      * 

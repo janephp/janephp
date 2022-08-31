@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class NotFilter
+class NotFilter extends FilterBase
 {
     /**
      * 

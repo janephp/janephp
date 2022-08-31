@@ -29,6 +29,12 @@ class ShareOutputBaseNormalizer implements DenormalizerInterface, NormalizerInte
      */
     public function denormalize($data, $class, $format = null, array $context = array())
     {
+        if (array_key_exists('kind', $data) and 'ShareOutputBasic' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\\API\\Model\\ShareOutputBasic', $format, $context);
+        }
+        if (array_key_exists('kind', $data) and 'ShareOutputEmbed' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\\API\\Model\\ShareOutputEmbed', $format, $context);
+        }
         if (isset($data['$ref'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
@@ -77,6 +83,12 @@ class ShareOutputBaseNormalizer implements DenormalizerInterface, NormalizerInte
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
+        if (null !== $object->getKind() and 'ShareOutputBasic' === $object->getKind()) {
+            return $this->normalizer->normalize($object, $format, $context);
+        }
+        if (null !== $object->getKind() and 'ShareOutputEmbed' === $object->getKind()) {
+            return $this->normalizer->normalize($object, $format, $context);
+        }
         $data['contentId'] = $object->getContentId();
         $data['outputFormatId'] = $object->getOutputFormatId();
         if (null !== $object->getViewUrl()) {

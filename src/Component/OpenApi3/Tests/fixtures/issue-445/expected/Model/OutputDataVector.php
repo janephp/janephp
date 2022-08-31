@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class OutputDataVector
+class OutputDataVector extends OutputDataBase
 {
     /**
      * The extension of the file.

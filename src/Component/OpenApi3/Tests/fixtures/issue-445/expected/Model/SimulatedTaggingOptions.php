@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class SimulatedTaggingOptions
+class SimulatedTaggingOptions extends TaggingOptionsBase
 {
     /**
      * Override for the output format ID to tag.

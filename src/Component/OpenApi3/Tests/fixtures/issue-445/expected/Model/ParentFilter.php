@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class ParentFilter
+class ParentFilter extends FilterBase
 {
     /**
      * 

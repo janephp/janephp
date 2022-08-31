@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class GeoPointWithinPolygonCondition
+class GeoPointWithinPolygonCondition extends BusinessRuleCondition
 {
     /**
      * Optional trace log reference ID set by the system when EnableTracing is set to true on the associated rule.

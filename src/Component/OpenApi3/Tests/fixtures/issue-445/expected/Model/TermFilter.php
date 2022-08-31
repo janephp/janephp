@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class TermFilter
+class TermFilter extends FilterBase
 {
     /**
      * 

@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class AlphaHandlingAction
+class AlphaHandlingAction extends ImageActionBase
 {
     /**
      * 

@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class BusinessProcessDetailsDataSchemaImport
+class BusinessProcessDetailsDataSchemaImport extends BusinessProcessDetailsDataBase
 {
     /**
      * 

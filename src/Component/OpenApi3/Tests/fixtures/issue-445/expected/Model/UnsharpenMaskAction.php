@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class UnsharpenMaskAction
+class UnsharpenMaskAction extends ImageActionBase
 {
     /**
      * 

@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class PathHierarchyAnalyzer
+class PathHierarchyAnalyzer extends AnalyzerBase
 {
     /**
      * 

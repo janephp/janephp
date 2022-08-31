@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class SearchReindexCompletedEvent
+class SearchReindexCompletedEvent extends ApplicationEvent
 {
     /**
      * 

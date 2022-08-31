@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class LanguageAnalyzer
+class LanguageAnalyzer extends AnalyzerBase
 {
     /**
      * 

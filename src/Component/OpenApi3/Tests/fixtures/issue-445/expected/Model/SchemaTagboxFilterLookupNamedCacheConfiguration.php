@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class SchemaTagboxFilterLookupNamedCacheConfiguration
+class SchemaTagboxFilterLookupNamedCacheConfiguration extends NamedCacheConfigurationBase
 {
     /**
      * Name of named cache.

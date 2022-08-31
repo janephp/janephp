@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class DateRangeFilter
+class DateRangeFilter extends FilterBase
 {
     /**
      * 

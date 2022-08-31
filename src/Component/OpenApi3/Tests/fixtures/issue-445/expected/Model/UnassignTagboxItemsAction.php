@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class UnassignTagboxItemsAction
+class UnassignTagboxItemsAction extends BusinessRuleAction
 {
     /**
      * Optional trace log reference ID set by the system when EnableTracing is set to true on the associated rule.

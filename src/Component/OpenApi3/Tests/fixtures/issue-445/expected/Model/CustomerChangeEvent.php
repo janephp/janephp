@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class CustomerChangeEvent
+class CustomerChangeEvent extends ApplicationEvent
 {
     /**
      * 

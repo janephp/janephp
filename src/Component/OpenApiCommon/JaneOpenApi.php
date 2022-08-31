@@ -9,7 +9,7 @@ use Jane\Component\JsonSchema\Guesser\ChainGuesser;
 use Jane\Component\JsonSchema\Registry\Registry;
 use Jane\Component\OpenApiCommon\Contracts\WhitelistFetchInterface;
 use Jane\Component\OpenApiCommon\Guesser\Guess\ClassGuess;
-use Jane\Component\OpenApiCommon\Guesser\Guess\MultipleClass;
+use Jane\Component\OpenApiCommon\Guesser\Guess\ParentClass;
 use Jane\Component\OpenApiCommon\Registry\Registry as OpenApiRegistry;
 use Jane\Component\OpenApiCommon\Registry\Schema;
 use Jane\Component\OpenApiCommon\SchemaParser\SchemaParser;
@@ -131,11 +131,11 @@ abstract class JaneOpenApi extends ChainGenerator
     protected function hydrateDiscriminatedClasses(Schema $schema, Registry $registry)
     {
         foreach ($schema->getClasses() as $class) {
-            if ($class instanceof MultipleClass) { // is parent class
-                foreach ($class->getReferences() as $reference) {
+            if ($class instanceof ParentClass) { // is parent class
+                foreach ($class->getChildReferences() as $reference) {
                     $guess = $registry->getClass($reference);
                     if ($guess instanceof ClassGuess) { // is child class
-                        $guess->setMultipleClass($class);
+                        $guess->setParentClass($class);
                     }
                 }
             }
