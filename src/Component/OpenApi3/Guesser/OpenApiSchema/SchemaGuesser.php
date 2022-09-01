@@ -33,7 +33,7 @@ class SchemaGuesser extends ObjectGuesser
 
         $discriminator = $object->getDiscriminator();
         if ($discriminator instanceof Discriminator &&
-            \is_countable($discriminator->getMapping()) && count($discriminator->getMapping()) > 0) {
+            is_countable($discriminator->getMapping()) && \count($discriminator->getMapping()) > 0) {
             $classGuess = new ParentClass($classGuess, $discriminator->getPropertyName());
 
             foreach ($discriminator->getMapping() as $discriminatorValue => $entryReference) {
