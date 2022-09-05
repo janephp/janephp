@@ -5,12 +5,6 @@ namespace PicturePark\API\Model;
 class VideoSpriteFormat extends FormatBase
 {
     /**
-     * 
-     *
-     * @var string
-     */
-    protected $kind;
-    /**
      * Specifies the dimensions of a single frame in the sprite.
      *
      * @var mixed|null
@@ -34,27 +28,6 @@ class VideoSpriteFormat extends FormatBase
      * @var string|null
      */
     protected $extension;
-    /**
-     * 
-     *
-     * @return string
-     */
-    public function getKind() : string
-    {
-        return $this->kind;
-    }
-    /**
-     * 
-     *
-     * @param string $kind
-     *
-     * @return self
-     */
-    public function setKind(string $kind) : self
-    {
-        $this->kind = $kind;
-        return $this;
-    }
     /**
      * Specifies the dimensions of a single frame in the sprite.
      *

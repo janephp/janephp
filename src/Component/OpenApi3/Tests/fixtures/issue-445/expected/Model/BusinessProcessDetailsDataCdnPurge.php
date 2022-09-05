@@ -5,12 +5,6 @@ namespace PicturePark\API\Model;
 class BusinessProcessDetailsDataCdnPurge extends BusinessProcessDetailsDataBase
 {
     /**
-     * 
-     *
-     * @var string
-     */
-    protected $kind;
-    /**
      * Serialized CDN configuration.
      *
      * @var string
@@ -22,27 +16,6 @@ class BusinessProcessDetailsDataCdnPurge extends BusinessProcessDetailsDataBase
      * @var CdnPurgeJobBase[]
      */
     protected $jobs;
-    /**
-     * 
-     *
-     * @return string
-     */
-    public function getKind() : string
-    {
-        return $this->kind;
-    }
-    /**
-     * 
-     *
-     * @param string $kind
-     *
-     * @return self
-     */
-    public function setKind(string $kind) : self
-    {
-        $this->kind = $kind;
-        return $this;
-    }
     /**
      * Serialized CDN configuration.
      *

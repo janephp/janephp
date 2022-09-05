@@ -5,12 +5,6 @@ namespace PicturePark\API\Model;
 class NestedFilter extends FilterBase
 {
     /**
-     * 
-     *
-     * @var string
-     */
-    protected $kind;
-    /**
      * The path pointing to the nested document (i.e. personLayer.nestedAddress).
      *
      * @var string
@@ -22,27 +16,6 @@ class NestedFilter extends FilterBase
      * @var mixed
      */
     protected $filter;
-    /**
-     * 
-     *
-     * @return string
-     */
-    public function getKind() : string
-    {
-        return $this->kind;
-    }
-    /**
-     * 
-     *
-     * @param string $kind
-     *
-     * @return self
-     */
-    public function setKind(string $kind) : self
-    {
-        $this->kind = $kind;
-        return $this;
-    }
     /**
      * The path pointing to the nested document (i.e. personLayer.nestedAddress).
      *

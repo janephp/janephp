@@ -65,7 +65,7 @@ class ModelGenerator implements GeneratorInterface
             $methods = [];
 
             /** @var Property $property */
-            foreach ($class->getProperties() as $property) {
+            foreach ($class->getLocalProperties() as $property) {
                 $properties[] = $this->createProperty($property, $namespace, null, $context->isStrict());
                 $methods = array_merge($methods, $this->doCreateClassMethods($class, $property, $namespace, $context->isStrict()));
             }

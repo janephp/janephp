@@ -5,12 +5,6 @@ namespace PicturePark\API\Model;
 class BusinessProcessDetailsDataBatchResponse extends BusinessProcessDetailsDataBase
 {
     /**
-     * 
-     *
-     * @var string
-     */
-    protected $kind;
-    /**
      * The DocType on which the operation was performed.
      *
      * @var string
@@ -22,27 +16,6 @@ class BusinessProcessDetailsDataBatchResponse extends BusinessProcessDetailsData
      * @var mixed
      */
     protected $response;
-    /**
-     * 
-     *
-     * @return string
-     */
-    public function getKind() : string
-    {
-        return $this->kind;
-    }
-    /**
-     * 
-     *
-     * @param string $kind
-     *
-     * @return self
-     */
-    public function setKind(string $kind) : self
-    {
-        $this->kind = $kind;
-        return $this;
-    }
     /**
      * The DocType on which the operation was performed.
      *

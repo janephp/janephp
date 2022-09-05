@@ -67,6 +67,14 @@ class ClassGuess
         return $this->properties;
     }
 
+    /**
+     * @return Property[]
+     */
+    public function getLocalProperties(): array
+    {
+        return $this->properties;
+    }
+
     public function getProperty(string $name): ?Property
     {
         foreach ($this->properties as $property) {

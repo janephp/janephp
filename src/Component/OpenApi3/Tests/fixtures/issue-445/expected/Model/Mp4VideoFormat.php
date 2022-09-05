@@ -5,12 +5,6 @@ namespace PicturePark\API\Model;
 class Mp4VideoFormat extends FormatBase
 {
     /**
-     * 
-     *
-     * @var string
-     */
-    protected $kind;
-    /**
      * Allows resizing of the video.
      *
      * @var mixed|null
@@ -34,27 +28,6 @@ class Mp4VideoFormat extends FormatBase
      * @var string|null
      */
     protected $extension;
-    /**
-     * 
-     *
-     * @return string
-     */
-    public function getKind() : string
-    {
-        return $this->kind;
-    }
-    /**
-     * 
-     *
-     * @param string $kind
-     *
-     * @return self
-     */
-    public function setKind(string $kind) : self
-    {
-        $this->kind = $kind;
-        return $this;
-    }
     /**
      * Allows resizing of the video.
      *

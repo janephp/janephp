@@ -5,12 +5,6 @@ namespace PicturePark\API\Model;
 class ParentFilter extends FilterBase
 {
     /**
-     * 
-     *
-     * @var string
-     */
-    protected $kind;
-    /**
      * The type of the parent document.
      *
      * @var string
@@ -22,27 +16,6 @@ class ParentFilter extends FilterBase
      * @var mixed
      */
     protected $filter;
-    /**
-     * 
-     *
-     * @return string
-     */
-    public function getKind() : string
-    {
-        return $this->kind;
-    }
-    /**
-     * 
-     *
-     * @param string $kind
-     *
-     * @return self
-     */
-    public function setKind(string $kind) : self
-    {
-        $this->kind = $kind;
-        return $this;
-    }
     /**
      * The type of the parent document.
      *

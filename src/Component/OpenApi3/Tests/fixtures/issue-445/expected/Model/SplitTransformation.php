@@ -5,18 +5,6 @@ namespace PicturePark\API\Model;
 class SplitTransformation extends BusinessRuleTransformation
 {
     /**
-     * Optional trace log reference ID set by the system when EnableTracing is set to true on the associated rule.
-     *
-     * @var string|null
-     */
-    protected $traceRefId;
-    /**
-     * 
-     *
-     * @var string
-     */
-    protected $kind;
-    /**
      * Separators to use, supports variables, an array of strings including escape sequences or null to split on any white space character.
      *
      * @var mixed|null
@@ -34,48 +22,6 @@ class SplitTransformation extends BusinessRuleTransformation
      * @var bool
      */
     protected $trim;
-    /**
-     * Optional trace log reference ID set by the system when EnableTracing is set to true on the associated rule.
-     *
-     * @return string|null
-     */
-    public function getTraceRefId() : ?string
-    {
-        return $this->traceRefId;
-    }
-    /**
-     * Optional trace log reference ID set by the system when EnableTracing is set to true on the associated rule.
-     *
-     * @param string|null $traceRefId
-     *
-     * @return self
-     */
-    public function setTraceRefId(?string $traceRefId) : self
-    {
-        $this->traceRefId = $traceRefId;
-        return $this;
-    }
-    /**
-     * 
-     *
-     * @return string
-     */
-    public function getKind() : string
-    {
-        return $this->kind;
-    }
-    /**
-     * 
-     *
-     * @param string $kind
-     *
-     * @return self
-     */
-    public function setKind(string $kind) : self
-    {
-        $this->kind = $kind;
-        return $this;
-    }
     /**
      * Separators to use, supports variables, an array of strings including escape sequences or null to split on any white space character.
      *

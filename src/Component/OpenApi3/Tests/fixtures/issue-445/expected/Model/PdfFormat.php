@@ -5,12 +5,6 @@ namespace PicturePark\API\Model;
 class PdfFormat extends FormatBase
 {
     /**
-     * 
-     *
-     * @var string
-     */
-    protected $kind;
-    /**
      * Specifies compression quality used for ReduceFileSize.
      *
      * @var int
@@ -40,27 +34,6 @@ class PdfFormat extends FormatBase
      * @var bool
      */
     protected $extractFullText;
-    /**
-     * 
-     *
-     * @return string
-     */
-    public function getKind() : string
-    {
-        return $this->kind;
-    }
-    /**
-     * 
-     *
-     * @param string $kind
-     *
-     * @return self
-     */
-    public function setKind(string $kind) : self
-    {
-        $this->kind = $kind;
-        return $this;
-    }
     /**
      * Specifies compression quality used for ReduceFileSize.
      *

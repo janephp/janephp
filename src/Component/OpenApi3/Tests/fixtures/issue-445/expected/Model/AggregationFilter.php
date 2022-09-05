@@ -5,12 +5,6 @@ namespace PicturePark\API\Model;
 class AggregationFilter extends FilterBase
 {
     /**
-     * 
-     *
-     * @var string
-     */
-    protected $kind;
-    /**
      * The name of the aggregation this filter is connected to.
      *
      * @var string|null
@@ -28,27 +22,6 @@ class AggregationFilter extends FilterBase
      * @var string|null
      */
     protected $temporaryAggregatorRequestId;
-    /**
-     * 
-     *
-     * @return string
-     */
-    public function getKind() : string
-    {
-        return $this->kind;
-    }
-    /**
-     * 
-     *
-     * @param string $kind
-     *
-     * @return self
-     */
-    public function setKind(string $kind) : self
-    {
-        $this->kind = $kind;
-        return $this;
-    }
     /**
      * The name of the aggregation this filter is connected to.
      *

@@ -5,38 +5,11 @@ namespace PicturePark\API\Model;
 class BusinessProcessDetailsDataContentImport extends BusinessProcessDetailsDataBase
 {
     /**
-     * 
-     *
-     * @var string
-     */
-    protected $kind;
-    /**
      * Items that were imported.
      *
      * @var ContentImportResult[]|null
      */
     protected $items;
-    /**
-     * 
-     *
-     * @return string
-     */
-    public function getKind() : string
-    {
-        return $this->kind;
-    }
-    /**
-     * 
-     *
-     * @param string $kind
-     *
-     * @return self
-     */
-    public function setKind(string $kind) : self
-    {
-        $this->kind = $kind;
-        return $this;
-    }
     /**
      * Items that were imported.
      *

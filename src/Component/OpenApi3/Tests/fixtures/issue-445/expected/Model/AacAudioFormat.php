@@ -7,12 +7,6 @@ class AacAudioFormat extends FormatBase
     /**
      * 
      *
-     * @var string
-     */
-    protected $kind;
-    /**
-     * 
-     *
      * @var string|null
      */
     protected $extension;
@@ -40,27 +34,6 @@ class AacAudioFormat extends FormatBase
      * @var int|null
      */
     protected $variableBitRate;
-    /**
-     * 
-     *
-     * @return string
-     */
-    public function getKind() : string
-    {
-        return $this->kind;
-    }
-    /**
-     * 
-     *
-     * @param string $kind
-     *
-     * @return self
-     */
-    public function setKind(string $kind) : self
-    {
-        $this->kind = $kind;
-        return $this;
-    }
     /**
      * 
      *

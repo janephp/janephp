@@ -5,38 +5,11 @@ namespace PicturePark\API\Model;
 class OrFilter extends FilterBase
 {
     /**
-     * 
-     *
-     * @var string
-     */
-    protected $kind;
-    /**
      * The filters to put in "or". All kinds of filters are accepted.
      *
      * @var FilterBase[]|null
      */
     protected $filters;
-    /**
-     * 
-     *
-     * @return string
-     */
-    public function getKind() : string
-    {
-        return $this->kind;
-    }
-    /**
-     * 
-     *
-     * @param string $kind
-     *
-     * @return self
-     */
-    public function setKind(string $kind) : self
-    {
-        $this->kind = $kind;
-        return $this;
-    }
     /**
      * The filters to put in "or". All kinds of filters are accepted.
      *
