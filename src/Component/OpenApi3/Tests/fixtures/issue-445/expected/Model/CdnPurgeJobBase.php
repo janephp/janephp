@@ -35,13 +35,10 @@ class CdnPurgeJobBase
      * Indicates if the operation was performed successfully.
      *
      * @param bool $success
-     *
-     * @return self
      */
-    public function setSuccess(bool $success) : self
+    public function setSuccess(bool $success)
     {
         $this->success = $success;
-        return $this;
     }
     /**
      * Number of retries left until the operation is considered as failed.
@@ -56,13 +53,10 @@ class CdnPurgeJobBase
      * Number of retries left until the operation is considered as failed.
      *
      * @param int $retriesLeft
-     *
-     * @return self
      */
-    public function setRetriesLeft(int $retriesLeft) : self
+    public function setRetriesLeft(int $retriesLeft)
     {
         $this->retriesLeft = $retriesLeft;
-        return $this;
     }
     /**
      * 
@@ -77,12 +71,9 @@ class CdnPurgeJobBase
      * 
      *
      * @param string $kind
-     *
-     * @return self
      */
-    public function setKind(string $kind) : self
+    public function setKind(string $kind)
     {
         $this->kind = $kind;
-        return $this;
     }
 }

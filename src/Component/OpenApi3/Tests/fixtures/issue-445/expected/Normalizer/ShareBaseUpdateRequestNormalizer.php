@@ -29,6 +29,12 @@ class ShareBaseUpdateRequestNormalizer implements DenormalizerInterface, Normali
      */
     public function denormalize($data, $class, $format = null, array $context = array())
     {
+        if (array_key_exists('kind', $data) and 'ShareBasicUpdateRequest' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\\API\\Model\\ShareBasicUpdateRequest', $format, $context);
+        }
+        if (array_key_exists('kind', $data) and 'ShareEmbedUpdateRequest' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\\API\\Model\\ShareEmbedUpdateRequest', $format, $context);
+        }
         if (isset($data['$ref'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
@@ -85,6 +91,12 @@ class ShareBaseUpdateRequestNormalizer implements DenormalizerInterface, Normali
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
+        if (null !== $object->getKind() and 'ShareBasicUpdateRequest' === $object->getKind()) {
+            return $this->normalizer->normalize($object, $format, $context);
+        }
+        if (null !== $object->getKind() and 'ShareEmbedUpdateRequest' === $object->getKind()) {
+            return $this->normalizer->normalize($object, $format, $context);
+        }
         $data['name'] = $object->getName();
         if (null !== $object->getExpirationDate()) {
             $data['expirationDate'] = $object->getExpirationDate()->format('Y-m-d\\TH:i:sP');

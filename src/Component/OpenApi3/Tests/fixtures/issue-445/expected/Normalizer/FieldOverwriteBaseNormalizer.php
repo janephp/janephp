@@ -29,6 +29,12 @@ class FieldOverwriteBaseNormalizer implements DenormalizerInterface, NormalizerI
      */
     public function denormalize($data, $class, $format = null, array $context = array())
     {
+        if (array_key_exists('kind', $data) and 'FieldOverwriteSingleTagbox' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\\API\\Model\\FieldOverwriteSingleTagbox', $format, $context);
+        }
+        if (array_key_exists('kind', $data) and 'FieldOverwriteMultiTagbox' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\\API\\Model\\FieldOverwriteMultiTagbox', $format, $context);
+        }
         if (isset($data['$ref'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
@@ -62,6 +68,12 @@ class FieldOverwriteBaseNormalizer implements DenormalizerInterface, NormalizerI
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
+        if (null !== $object->getKind() and 'FieldOverwriteSingleTagbox' === $object->getKind()) {
+            return $this->normalizer->normalize($object, $format, $context);
+        }
+        if (null !== $object->getKind() and 'FieldOverwriteMultiTagbox' === $object->getKind()) {
+            return $this->normalizer->normalize($object, $format, $context);
+        }
         if (null !== $object->getId()) {
             $data['id'] = $object->getId();
         }

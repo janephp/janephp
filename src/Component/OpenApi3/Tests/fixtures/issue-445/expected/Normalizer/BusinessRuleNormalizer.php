@@ -29,6 +29,12 @@ class BusinessRuleNormalizer implements DenormalizerInterface, NormalizerInterfa
      */
     public function denormalize($data, $class, $format = null, array $context = array())
     {
+        if (array_key_exists('kind', $data) and 'BusinessRuleConfigurable' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\\API\\Model\\BusinessRuleConfigurable', $format, $context);
+        }
+        if (array_key_exists('kind', $data) and 'BusinessRuleScript' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\\API\\Model\\BusinessRuleScript', $format, $context);
+        }
         if (isset($data['$ref'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
@@ -80,6 +86,12 @@ class BusinessRuleNormalizer implements DenormalizerInterface, NormalizerInterfa
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
+        if (null !== $object->getKind() and 'BusinessRuleConfigurable' === $object->getKind()) {
+            return $this->normalizer->normalize($object, $format, $context);
+        }
+        if (null !== $object->getKind() and 'BusinessRuleScript' === $object->getKind()) {
+            return $this->normalizer->normalize($object, $format, $context);
+        }
         if (null !== $object->getId()) {
             $data['id'] = $object->getId();
         }

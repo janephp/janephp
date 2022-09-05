@@ -29,6 +29,36 @@ class BusinessRuleActionNormalizer implements DenormalizerInterface, NormalizerI
      */
     public function denormalize($data, $class, $format = null, array $context = array())
     {
+        if (array_key_exists('kind', $data) and 'AssignLayerAction' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\\API\\Model\\AssignLayerAction', $format, $context);
+        }
+        if (array_key_exists('kind', $data) and 'UnassignLayerAction' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\\API\\Model\\UnassignLayerAction', $format, $context);
+        }
+        if (array_key_exists('kind', $data) and 'AssignValueAction' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\\API\\Model\\AssignValueAction', $format, $context);
+        }
+        if (array_key_exists('kind', $data) and 'AssignTagboxItemsAction' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\\API\\Model\\AssignTagboxItemsAction', $format, $context);
+        }
+        if (array_key_exists('kind', $data) and 'UnassignTagboxItemsAction' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\\API\\Model\\UnassignTagboxItemsAction', $format, $context);
+        }
+        if (array_key_exists('kind', $data) and 'AssignContentPermissionSetsAction' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\\API\\Model\\AssignContentPermissionSetsAction', $format, $context);
+        }
+        if (array_key_exists('kind', $data) and 'UnassignContentPermissionSetsAction' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\\API\\Model\\UnassignContentPermissionSetsAction', $format, $context);
+        }
+        if (array_key_exists('kind', $data) and 'ProduceMessageAction' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\\API\\Model\\ProduceMessageAction', $format, $context);
+        }
+        if (array_key_exists('kind', $data) and 'AssignTagboxItemsInLayerAction' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\\API\\Model\\AssignTagboxItemsInLayerAction', $format, $context);
+        }
+        if (array_key_exists('kind', $data) and 'EnqueueTaggingAction' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\\API\\Model\\EnqueueTaggingAction', $format, $context);
+        }
         if (isset($data['$ref'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
@@ -56,6 +86,36 @@ class BusinessRuleActionNormalizer implements DenormalizerInterface, NormalizerI
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
+        if (null !== $object->getKind() and 'AssignLayerAction' === $object->getKind()) {
+            return $this->normalizer->normalize($object, $format, $context);
+        }
+        if (null !== $object->getKind() and 'UnassignLayerAction' === $object->getKind()) {
+            return $this->normalizer->normalize($object, $format, $context);
+        }
+        if (null !== $object->getKind() and 'AssignValueAction' === $object->getKind()) {
+            return $this->normalizer->normalize($object, $format, $context);
+        }
+        if (null !== $object->getKind() and 'AssignTagboxItemsAction' === $object->getKind()) {
+            return $this->normalizer->normalize($object, $format, $context);
+        }
+        if (null !== $object->getKind() and 'UnassignTagboxItemsAction' === $object->getKind()) {
+            return $this->normalizer->normalize($object, $format, $context);
+        }
+        if (null !== $object->getKind() and 'AssignContentPermissionSetsAction' === $object->getKind()) {
+            return $this->normalizer->normalize($object, $format, $context);
+        }
+        if (null !== $object->getKind() and 'UnassignContentPermissionSetsAction' === $object->getKind()) {
+            return $this->normalizer->normalize($object, $format, $context);
+        }
+        if (null !== $object->getKind() and 'ProduceMessageAction' === $object->getKind()) {
+            return $this->normalizer->normalize($object, $format, $context);
+        }
+        if (null !== $object->getKind() and 'AssignTagboxItemsInLayerAction' === $object->getKind()) {
+            return $this->normalizer->normalize($object, $format, $context);
+        }
+        if (null !== $object->getKind() and 'EnqueueTaggingAction' === $object->getKind()) {
+            return $this->normalizer->normalize($object, $format, $context);
+        }
         if (null !== $object->getTraceRefId()) {
             $data['traceRefId'] = $object->getTraceRefId();
         }

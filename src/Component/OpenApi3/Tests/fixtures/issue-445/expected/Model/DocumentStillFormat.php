@@ -2,14 +2,8 @@
 
 namespace PicturePark\API\Model;
 
-class DocumentStillFormat
+class DocumentStillFormat extends FormatBase
 {
-    /**
-     * 
-     *
-     * @var string
-     */
-    protected $kind;
     /**
      * 
      *
@@ -22,27 +16,6 @@ class DocumentStillFormat
      * @var mixed|null
      */
     protected $resizeAction;
-    /**
-     * 
-     *
-     * @return string
-     */
-    public function getKind() : string
-    {
-        return $this->kind;
-    }
-    /**
-     * 
-     *
-     * @param string $kind
-     *
-     * @return self
-     */
-    public function setKind(string $kind) : self
-    {
-        $this->kind = $kind;
-        return $this;
-    }
     /**
      * 
      *

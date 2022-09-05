@@ -7,7 +7,7 @@ use Jane\Component\JsonSchema\Guesser\Guess\ClassGuess as BaseClassGuess;
 use Jane\Component\JsonSchema\Guesser\Guess\Property;
 use Jane\Component\OpenApiCommon\Generator\Model\ClassGenerator;
 use Jane\Component\OpenApiCommon\Guesser\Guess\ClassGuess;
-use Jane\Component\OpenApiCommon\Guesser\Guess\MultipleClass;
+use Jane\Component\OpenApiCommon\Guesser\Guess\ParentClass;
 use PhpParser\Node\Stmt;
 
 class ModelGenerator extends BaseModelGenerator
@@ -18,7 +18,7 @@ class ModelGenerator extends BaseModelGenerator
     {
         $methods = [];
         $methods[] = $this->createGetter($property, $namespace, $required);
-        $methods[] = $this->createSetter($property, $namespace, $required, $classGuess instanceof MultipleClass ? false : true);
+        $methods[] = $this->createSetter($property, $namespace, $required, $classGuess instanceof ParentClass ? false : true);
 
         return $methods;
     }
@@ -27,8 +27,8 @@ class ModelGenerator extends BaseModelGenerator
     {
         $extends = null;
         if ($class instanceof ClassGuess &&
-            $class->getMultipleClass() instanceof MultipleClass) {
-            $extends = $this->getNaming()->getClassName($class->getMultipleClass()->getName());
+            $class->getParentClass() instanceof ParentClass) {
+            $extends = $this->getNaming()->getClassName($class->getParentClass()->getName());
         }
 
         $classModel = $this->createModel(

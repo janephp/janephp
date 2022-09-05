@@ -2,14 +2,8 @@
 
 namespace PicturePark\API\Model;
 
-class WatermarkAction
+class WatermarkAction extends ImageActionBase
 {
-    /**
-     * 
-     *
-     * @var string
-     */
-    protected $kind;
     /**
      * Identifies the image to be used as watermark
      *
@@ -58,27 +52,6 @@ class WatermarkAction
      * @var float
      */
     protected $heightRatio;
-    /**
-     * 
-     *
-     * @return string
-     */
-    public function getKind() : string
-    {
-        return $this->kind;
-    }
-    /**
-     * 
-     *
-     * @param string $kind
-     *
-     * @return self
-     */
-    public function setKind(string $kind) : self
-    {
-        $this->kind = $kind;
-        return $this;
-    }
     /**
      * Identifies the image to be used as watermark
      *

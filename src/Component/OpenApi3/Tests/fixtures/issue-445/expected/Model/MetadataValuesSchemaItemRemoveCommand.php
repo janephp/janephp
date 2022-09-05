@@ -2,20 +2,8 @@
 
 namespace PicturePark\API\Model;
 
-class MetadataValuesSchemaItemRemoveCommand
+class MetadataValuesSchemaItemRemoveCommand extends MetadataValuesChangeCommandBase
 {
-    /**
-     * The ID of the schema to which the operation scope is addressed.
-     *
-     * @var string
-     */
-    protected $schemaId;
-    /**
-     * 
-     *
-     * @var string
-     */
-    protected $kind;
     /**
     * The path of the field relative to the Content or Layer schema values defined by the schemaId property.
     (i.e. add a team (existing list item) to the work information of a person: fieldPath = "workInfo.teams", schemaId = "PersonLayer").
@@ -35,48 +23,6 @@ class MetadataValuesSchemaItemRemoveCommand
      * @var string
      */
     protected $referenceId;
-    /**
-     * The ID of the schema to which the operation scope is addressed.
-     *
-     * @return string
-     */
-    public function getSchemaId() : string
-    {
-        return $this->schemaId;
-    }
-    /**
-     * The ID of the schema to which the operation scope is addressed.
-     *
-     * @param string $schemaId
-     *
-     * @return self
-     */
-    public function setSchemaId(string $schemaId) : self
-    {
-        $this->schemaId = $schemaId;
-        return $this;
-    }
-    /**
-     * 
-     *
-     * @return string
-     */
-    public function getKind() : string
-    {
-        return $this->kind;
-    }
-    /**
-     * 
-     *
-     * @param string $kind
-     *
-     * @return self
-     */
-    public function setKind(string $kind) : self
-    {
-        $this->kind = $kind;
-        return $this;
-    }
     /**
     * The path of the field relative to the Content or Layer schema values defined by the schemaId property.
     (i.e. add a team (existing list item) to the work information of a person: fieldPath = "workInfo.teams", schemaId = "PersonLayer").

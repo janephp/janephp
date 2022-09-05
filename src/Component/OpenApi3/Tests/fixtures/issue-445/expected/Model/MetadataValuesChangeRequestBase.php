@@ -41,13 +41,10 @@ class MetadataValuesChangeRequestBase
      * Changes that need to be applied to the existing content metadata. The same set of changes is applied to all contents.
      *
      * @param MetadataValuesChangeCommandBase[] $changeCommands
-     *
-     * @return self
      */
-    public function setChangeCommands(array $changeCommands) : self
+    public function setChangeCommands(array $changeCommands)
     {
         $this->changeCommands = $changeCommands;
-        return $this;
     }
     /**
      * Allows updating contents with references to list items or contents that do not exist in the system.
@@ -62,13 +59,10 @@ class MetadataValuesChangeRequestBase
      * Allows updating contents with references to list items or contents that do not exist in the system.
      *
      * @param bool $allowMissingDependencies
-     *
-     * @return self
      */
-    public function setAllowMissingDependencies(bool $allowMissingDependencies) : self
+    public function setAllowMissingDependencies(bool $allowMissingDependencies)
     {
         $this->allowMissingDependencies = $allowMissingDependencies;
-        return $this;
     }
     /**
      * Create a progress notification and notify on progress. Notifications are shown in the UI only to the same use who triggered the batch update.
@@ -83,13 +77,10 @@ class MetadataValuesChangeRequestBase
      * Create a progress notification and notify on progress. Notifications are shown in the UI only to the same use who triggered the batch update.
      *
      * @param bool $notifyProgress
-     *
-     * @return self
      */
-    public function setNotifyProgress(bool $notifyProgress) : self
+    public function setNotifyProgress(bool $notifyProgress)
     {
         $this->notifyProgress = $notifyProgress;
-        return $this;
     }
     /**
      * 
@@ -104,12 +95,9 @@ class MetadataValuesChangeRequestBase
      * 
      *
      * @param string $kind
-     *
-     * @return self
      */
-    public function setKind(string $kind) : self
+    public function setKind(string $kind)
     {
         $this->kind = $kind;
-        return $this;
     }
 }

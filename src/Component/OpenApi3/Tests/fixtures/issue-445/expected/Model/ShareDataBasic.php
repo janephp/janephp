@@ -2,20 +2,8 @@
 
 namespace PicturePark\API\Model;
 
-class ShareDataBasic
+class ShareDataBasic extends ShareDataBase
 {
-    /**
-     * The URL to access the share.
-     *
-     * @var string
-     */
-    protected $url;
-    /**
-     * 
-     *
-     * @var string
-     */
-    protected $kind;
     /**
      * List of recipients added using email address
      *
@@ -34,48 +22,6 @@ class ShareDataBasic
      * @var string|null
      */
     protected $languageCode;
-    /**
-     * The URL to access the share.
-     *
-     * @return string
-     */
-    public function getUrl() : string
-    {
-        return $this->url;
-    }
-    /**
-     * The URL to access the share.
-     *
-     * @param string $url
-     *
-     * @return self
-     */
-    public function setUrl(string $url) : self
-    {
-        $this->url = $url;
-        return $this;
-    }
-    /**
-     * 
-     *
-     * @return string
-     */
-    public function getKind() : string
-    {
-        return $this->kind;
-    }
-    /**
-     * 
-     *
-     * @param string $kind
-     *
-     * @return self
-     */
-    public function setKind(string $kind) : self
-    {
-        $this->kind = $kind;
-        return $this;
-    }
     /**
      * List of recipients added using email address
      *

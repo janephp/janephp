@@ -2,14 +2,8 @@
 
 namespace PicturePark\API\Model;
 
-class DateRangeFilter
+class DateRangeFilter extends FilterBase
 {
-    /**
-     * 
-     *
-     * @var string
-     */
-    protected $kind;
     /**
     * The field's name to execute the filter on. It is composed by the field ids of the hierarchy joined with "."
     (i.e. personLayer.address.street).
@@ -23,27 +17,6 @@ class DateRangeFilter
      * @var mixed
      */
     protected $range;
-    /**
-     * 
-     *
-     * @return string
-     */
-    public function getKind() : string
-    {
-        return $this->kind;
-    }
-    /**
-     * 
-     *
-     * @param string $kind
-     *
-     * @return self
-     */
-    public function setKind(string $kind) : self
-    {
-        $this->kind = $kind;
-        return $this;
-    }
     /**
     * The field's name to execute the filter on. It is composed by the field ids of the hierarchy joined with "."
     (i.e. personLayer.address.street).

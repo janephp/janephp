@@ -29,6 +29,15 @@ class NamedCacheConfigurationBaseNormalizer implements DenormalizerInterface, No
      */
     public function denormalize($data, $class, $format = null, array $context = array())
     {
+        if (array_key_exists('kind', $data) and 'ListItemNamedCacheConfiguration' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\\API\\Model\\ListItemNamedCacheConfiguration', $format, $context);
+        }
+        if (array_key_exists('kind', $data) and 'SchemaTagboxFilterLookupNamedCacheConfiguration' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\\API\\Model\\SchemaTagboxFilterLookupNamedCacheConfiguration', $format, $context);
+        }
+        if (array_key_exists('kind', $data) and 'InverseListItemNamedCacheConfiguration' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\\API\\Model\\InverseListItemNamedCacheConfiguration', $format, $context);
+        }
         if (isset($data['$ref'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
@@ -59,6 +68,15 @@ class NamedCacheConfigurationBaseNormalizer implements DenormalizerInterface, No
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
+        if (null !== $object->getKind() and 'ListItemNamedCacheConfiguration' === $object->getKind()) {
+            return $this->normalizer->normalize($object, $format, $context);
+        }
+        if (null !== $object->getKind() and 'SchemaTagboxFilterLookupNamedCacheConfiguration' === $object->getKind()) {
+            return $this->normalizer->normalize($object, $format, $context);
+        }
+        if (null !== $object->getKind() and 'InverseListItemNamedCacheConfiguration' === $object->getKind()) {
+            return $this->normalizer->normalize($object, $format, $context);
+        }
         if (null !== $object->getName()) {
             $data['name'] = $object->getName();
         }

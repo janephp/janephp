@@ -2,14 +2,8 @@
 
 namespace PicturePark\API\Model;
 
-class Mp3AudioFormat
+class Mp3AudioFormat extends FormatBase
 {
-    /**
-     * 
-     *
-     * @var string
-     */
-    protected $kind;
     /**
      * 
      *
@@ -29,27 +23,6 @@ class Mp3AudioFormat
     * @var int|null
     */
     protected $quality;
-    /**
-     * 
-     *
-     * @return string
-     */
-    public function getKind() : string
-    {
-        return $this->kind;
-    }
-    /**
-     * 
-     *
-     * @param string $kind
-     *
-     * @return self
-     */
-    public function setKind(string $kind) : self
-    {
-        $this->kind = $kind;
-        return $this;
-    }
     /**
      * 
      *

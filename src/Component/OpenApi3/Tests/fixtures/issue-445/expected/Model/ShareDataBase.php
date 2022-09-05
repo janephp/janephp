@@ -29,13 +29,10 @@ class ShareDataBase
      * The URL to access the share.
      *
      * @param string $url
-     *
-     * @return self
      */
-    public function setUrl(string $url) : self
+    public function setUrl(string $url)
     {
         $this->url = $url;
-        return $this;
     }
     /**
      * 
@@ -50,12 +47,9 @@ class ShareDataBase
      * 
      *
      * @param string $kind
-     *
-     * @return self
      */
-    public function setKind(string $kind) : self
+    public function setKind(string $kind)
     {
         $this->kind = $kind;
-        return $this;
     }
 }

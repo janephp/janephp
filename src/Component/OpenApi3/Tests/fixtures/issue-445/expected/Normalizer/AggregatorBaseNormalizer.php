@@ -29,6 +29,27 @@ class AggregatorBaseNormalizer implements DenormalizerInterface, NormalizerInter
      */
     public function denormalize($data, $class, $format = null, array $context = array())
     {
+        if (array_key_exists('kind', $data) and 'DateRangeAggregator' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\\API\\Model\\DateRangeAggregator', $format, $context);
+        }
+        if (array_key_exists('kind', $data) and 'GeoDistanceAggregator' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\\API\\Model\\GeoDistanceAggregator', $format, $context);
+        }
+        if (array_key_exists('kind', $data) and 'NestedAggregator' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\\API\\Model\\NestedAggregator', $format, $context);
+        }
+        if (array_key_exists('kind', $data) and 'NumericRangeAggregator' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\\API\\Model\\NumericRangeAggregator', $format, $context);
+        }
+        if (array_key_exists('kind', $data) and 'TermsAggregator' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\\API\\Model\\TermsAggregator', $format, $context);
+        }
+        if (array_key_exists('kind', $data) and 'TermsRelationAggregator' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\\API\\Model\\TermsRelationAggregator', $format, $context);
+        }
+        if (array_key_exists('kind', $data) and 'TermsEnumAggregator' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\\API\\Model\\TermsEnumAggregator', $format, $context);
+        }
         if (isset($data['$ref'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
@@ -75,6 +96,27 @@ class AggregatorBaseNormalizer implements DenormalizerInterface, NormalizerInter
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
+        if (null !== $object->getKind() and 'DateRangeAggregator' === $object->getKind()) {
+            return $this->normalizer->normalize($object, $format, $context);
+        }
+        if (null !== $object->getKind() and 'GeoDistanceAggregator' === $object->getKind()) {
+            return $this->normalizer->normalize($object, $format, $context);
+        }
+        if (null !== $object->getKind() and 'NestedAggregator' === $object->getKind()) {
+            return $this->normalizer->normalize($object, $format, $context);
+        }
+        if (null !== $object->getKind() and 'NumericRangeAggregator' === $object->getKind()) {
+            return $this->normalizer->normalize($object, $format, $context);
+        }
+        if (null !== $object->getKind() and 'TermsAggregator' === $object->getKind()) {
+            return $this->normalizer->normalize($object, $format, $context);
+        }
+        if (null !== $object->getKind() and 'TermsRelationAggregator' === $object->getKind()) {
+            return $this->normalizer->normalize($object, $format, $context);
+        }
+        if (null !== $object->getKind() and 'TermsEnumAggregator' === $object->getKind()) {
+            return $this->normalizer->normalize($object, $format, $context);
+        }
         $data['name'] = $object->getName();
         if (null !== $object->getNames()) {
             $data['names'] = $object->getNames();

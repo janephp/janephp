@@ -7,7 +7,7 @@ use Jane\Component\JsonSchema\Guesser\JsonSchema\ObjectGuesser;
 use Jane\Component\OpenApi3\JsonSchema\Model\Discriminator;
 use Jane\Component\OpenApi3\JsonSchema\Model\Schema;
 use Jane\Component\OpenApiCommon\Guesser\Guess\ClassGuess;
-use Jane\Component\OpenApiCommon\Guesser\Guess\MultipleClass;
+use Jane\Component\OpenApiCommon\Guesser\Guess\ParentClass;
 
 class SchemaGuesser extends ObjectGuesser
 {
@@ -31,14 +31,43 @@ class SchemaGuesser extends ObjectGuesser
     {
         $classGuess = new ClassGuess($object, $reference, $this->naming->getClassName($name), $extensions, $object->getDeprecated() ?? false);
 
+        $discriminator = $object->getDiscriminator();
+        if ($discriminator instanceof Discriminator &&
+            is_countable($discriminator->getMapping()) && \count($discriminator->getMapping()) > 0) {
+            $classGuess = new ParentClass($classGuess, $discriminator->getPropertyName());
+
+            foreach ($discriminator->getMapping() as $discriminatorValue => $entryReference) {
+                $subClassName = str_replace('#/components/schemas/', '', $entryReference);
+                $classGuess->addChildEntry(
+                    $subClassName,
+                    preg_replace(
+                        '#components/schemas\/.+$#',
+                        sprintf('components/schemas/%s', $subClassName),
+                        $reference
+                    ),
+                    $discriminatorValue
+                );
+            }
+
+            return $classGuess;
+        }
+
         if ($object->getDiscriminator() instanceof Discriminator &&
             \is_array($object->getEnum()) && \count($object->getEnum()) > 0) {
-            $classGuess = new MultipleClass($classGuess, $object->getDiscriminator()->getPropertyName());
+            $classGuess = new ParentClass($classGuess, $object->getDiscriminator()->getPropertyName());
 
             foreach ($object->getEnum() as $subClassName) {
-                $subReference = preg_replace('#components/schemas\/.+$#', sprintf('components/schemas/%s', $subClassName), $reference);
-                $classGuess->addReference($subClassName, $subReference);
+                $classGuess->addChildEntry(
+                    $subClassName,
+                    preg_replace(
+                        '#components/schemas\/.+$#',
+                        sprintf('components/schemas/%s', $subClassName),
+                        $reference
+                    )
+                );
             }
+
+            return $classGuess;
         }
 
         return $classGuess;

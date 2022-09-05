@@ -59,13 +59,10 @@ class BusinessRule
      * User defined ID of the rule.
      *
      * @param string|null $id
-     *
-     * @return self
      */
-    public function setId(?string $id) : self
+    public function setId(?string $id)
     {
         $this->id = $id;
-        return $this;
     }
     /**
      * Trigger point.
@@ -80,13 +77,10 @@ class BusinessRule
      * Trigger point.
      *
      * @param mixed $triggerPoint
-     *
-     * @return self
      */
-    public function setTriggerPoint($triggerPoint) : self
+    public function setTriggerPoint($triggerPoint)
     {
         $this->triggerPoint = $triggerPoint;
-        return $this;
     }
     /**
      * Enable.
@@ -101,13 +95,10 @@ class BusinessRule
      * Enable.
      *
      * @param bool $isEnabled
-     *
-     * @return self
      */
-    public function setIsEnabled(bool $isEnabled) : self
+    public function setIsEnabled(bool $isEnabled)
     {
         $this->isEnabled = $isEnabled;
-        return $this;
     }
     /**
      * Language specific rule names.
@@ -122,13 +113,10 @@ class BusinessRule
      * Language specific rule names.
      *
      * @param mixed $names
-     *
-     * @return self
      */
-    public function setNames($names) : self
+    public function setNames($names)
     {
         $this->names = $names;
-        return $this;
     }
     /**
      * Language specific rule description.
@@ -143,13 +131,10 @@ class BusinessRule
      * Language specific rule description.
      *
      * @param mixed $description
-     *
-     * @return self
      */
-    public function setDescription($description) : self
+    public function setDescription($description)
     {
         $this->description = $description;
-        return $this;
     }
     /**
      * Enable trace logs for this rule.
@@ -164,13 +149,10 @@ class BusinessRule
      * Enable trace logs for this rule.
      *
      * @param bool $enableTracing
-     *
-     * @return self
      */
-    public function setEnableTracing(bool $enableTracing) : self
+    public function setEnableTracing(bool $enableTracing)
     {
         $this->enableTracing = $enableTracing;
-        return $this;
     }
     /**
      * 
@@ -185,12 +167,9 @@ class BusinessRule
      * 
      *
      * @param string $kind
-     *
-     * @return self
      */
-    public function setKind(string $kind) : self
+    public function setKind(string $kind)
     {
         $this->kind = $kind;
-        return $this;
     }
 }

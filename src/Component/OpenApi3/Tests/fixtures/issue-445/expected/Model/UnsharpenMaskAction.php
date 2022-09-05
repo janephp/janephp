@@ -2,14 +2,8 @@
 
 namespace PicturePark\API\Model;
 
-class UnsharpenMaskAction
+class UnsharpenMaskAction extends ImageActionBase
 {
-    /**
-     * 
-     *
-     * @var string
-     */
-    protected $kind;
     /**
      * Unsharp mask amount (the difference between blurred and original image).
      *
@@ -28,27 +22,6 @@ class UnsharpenMaskAction
      * @var float
      */
     protected $threshold;
-    /**
-     * 
-     *
-     * @return string
-     */
-    public function getKind() : string
-    {
-        return $this->kind;
-    }
-    /**
-     * 
-     *
-     * @param string $kind
-     *
-     * @return self
-     */
-    public function setKind(string $kind) : self
-    {
-        $this->kind = $kind;
-        return $this;
-    }
     /**
      * Unsharp mask amount (the difference between blurred and original image).
      *

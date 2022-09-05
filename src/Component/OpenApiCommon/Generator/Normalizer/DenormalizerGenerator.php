@@ -5,7 +5,7 @@ namespace Jane\Component\OpenApiCommon\Generator\Normalizer;
 use Jane\Component\JsonSchema\Generator\Context\Context;
 use Jane\Component\JsonSchema\Generator\Normalizer\DenormalizerGenerator as JsonSchemaDenormalizerGenerator;
 use Jane\Component\JsonSchema\Guesser\Guess\ClassGuess;
-use Jane\Component\OpenApiCommon\Guesser\Guess\MultipleClass;
+use Jane\Component\OpenApiCommon\Guesser\Guess\ParentClass;
 use PhpParser\Node\Arg;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Name;
@@ -22,8 +22,8 @@ trait DenormalizerGenerator
     {
         $statements = $this->jsonSchemaDenormalizeMethodStatements($classGuess, $context);
 
-        if ($classGuess instanceof MultipleClass) {
-            foreach ($classGuess->getReferences() as $name => $reference) {
+        if ($classGuess instanceof ParentClass) {
+            foreach ($classGuess->getChildEntryKeys() as $discriminatorValue) {
                 $statements[] = new Stmt\If_(
                     new Expr\BinaryOp\LogicalAnd(
                         new Expr\FuncCall(new Name('array_key_exists'), [
@@ -31,7 +31,7 @@ trait DenormalizerGenerator
                             new Arg(new Expr\Variable('data')),
                         ]),
                         new Expr\BinaryOp\Identical(
-                            new Scalar\String_($name),
+                            new Scalar\String_($discriminatorValue),
                             new Expr\ArrayDimFetch(new Expr\Variable('data'), new Scalar\String_($classGuess->getDiscriminator()))
                         )
                     ),
@@ -45,7 +45,7 @@ trait DenormalizerGenerator
                                 'denormalize',
                                 [
                                     new Expr\Variable('data'),
-                                    new Scalar\String_(sprintf('%s\\Model\\%s', $context->getCurrentSchema()->getNamespace(), $this->getNaming()->getClassName($name))),
+                                    new Scalar\String_(sprintf('%s\\Model\\%s', $context->getCurrentSchema()->getNamespace(), $this->getNaming()->getClassName($classGuess->getChildEntryClassNameByKey($discriminatorValue)))),
                                     new Expr\Variable('format'),
                                     new Expr\Variable('context'),
                                 ]

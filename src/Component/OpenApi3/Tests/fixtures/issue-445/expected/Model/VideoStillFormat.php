@@ -2,14 +2,8 @@
 
 namespace PicturePark\API\Model;
 
-class VideoStillFormat
+class VideoStillFormat extends FormatBase
 {
-    /**
-     * 
-     *
-     * @var string
-     */
-    protected $kind;
     /**
      * 
      *
@@ -22,27 +16,6 @@ class VideoStillFormat
      * @var int
      */
     protected $positionInSeconds;
-    /**
-     * 
-     *
-     * @return string
-     */
-    public function getKind() : string
-    {
-        return $this->kind;
-    }
-    /**
-     * 
-     *
-     * @param string $kind
-     *
-     * @return self
-     */
-    public function setKind(string $kind) : self
-    {
-        $this->kind = $kind;
-        return $this;
-    }
     /**
      * 
      *

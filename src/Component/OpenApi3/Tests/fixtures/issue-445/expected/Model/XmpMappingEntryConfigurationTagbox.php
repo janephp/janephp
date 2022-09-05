@@ -2,14 +2,8 @@
 
 namespace PicturePark\API\Model;
 
-class XmpMappingEntryConfigurationTagbox
+class XmpMappingEntryConfigurationTagbox extends XmpMappingEntryConfigurationBase
 {
-    /**
-     * 
-     *
-     * @var string
-     */
-    protected $kind;
     /**
      * IDs of key fields.
      *
@@ -28,27 +22,6 @@ class XmpMappingEntryConfigurationTagbox
      * @var bool
      */
     protected $includeAllSchemaChildren;
-    /**
-     * 
-     *
-     * @return string
-     */
-    public function getKind() : string
-    {
-        return $this->kind;
-    }
-    /**
-     * 
-     *
-     * @param string $kind
-     *
-     * @return self
-     */
-    public function setKind(string $kind) : self
-    {
-        $this->kind = $kind;
-        return $this;
-    }
     /**
      * IDs of key fields.
      *

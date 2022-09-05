@@ -29,6 +29,12 @@ class MetadataValuesChangeRequestBaseNormalizer implements DenormalizerInterface
      */
     public function denormalize($data, $class, $format = null, array $context = array())
     {
+        if (array_key_exists('kind', $data) and 'ContentFieldsBatchUpdateFilterRequest' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\\API\\Model\\ContentFieldsBatchUpdateFilterRequest', $format, $context);
+        }
+        if (array_key_exists('kind', $data) and 'ContentFieldsBatchUpdateRequest' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\\API\\Model\\ContentFieldsBatchUpdateRequest', $format, $context);
+        }
         if (isset($data['$ref'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
@@ -63,6 +69,12 @@ class MetadataValuesChangeRequestBaseNormalizer implements DenormalizerInterface
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
+        if (null !== $object->getKind() and 'ContentFieldsBatchUpdateFilterRequest' === $object->getKind()) {
+            return $this->normalizer->normalize($object, $format, $context);
+        }
+        if (null !== $object->getKind() and 'ContentFieldsBatchUpdateRequest' === $object->getKind()) {
+            return $this->normalizer->normalize($object, $format, $context);
+        }
         $values = array();
         foreach ($object->getChangeCommands() as $value) {
             $values[] = $this->normalizer->normalize($value, 'json', $context);

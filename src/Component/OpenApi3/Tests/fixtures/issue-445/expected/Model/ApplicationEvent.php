@@ -29,13 +29,10 @@ class ApplicationEvent
      * 
      *
      * @param \DateTime $timestamp
-     *
-     * @return self
      */
-    public function setTimestamp(\DateTime $timestamp) : self
+    public function setTimestamp(\DateTime $timestamp)
     {
         $this->timestamp = $timestamp;
-        return $this;
     }
     /**
      * 
@@ -50,12 +47,9 @@ class ApplicationEvent
      * 
      *
      * @param string $kind
-     *
-     * @return self
      */
-    public function setKind(string $kind) : self
+    public function setKind(string $kind)
     {
         $this->kind = $kind;
-        return $this;
     }
 }

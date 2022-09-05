@@ -2,14 +2,8 @@
 
 namespace PicturePark\API\Model;
 
-class CropAction
+class CropAction extends ImageActionBase
 {
-    /**
-     * 
-     *
-     * @var string
-     */
-    protected $kind;
     /**
      * X-Coordinate of top left point of the cropping rectangle.
      *
@@ -34,27 +28,6 @@ class CropAction
      * @var int
      */
     protected $height;
-    /**
-     * 
-     *
-     * @return string
-     */
-    public function getKind() : string
-    {
-        return $this->kind;
-    }
-    /**
-     * 
-     *
-     * @param string $kind
-     *
-     * @return self
-     */
-    public function setKind(string $kind) : self
-    {
-        $this->kind = $kind;
-        return $this;
-    }
     /**
      * X-Coordinate of top left point of the cropping rectangle.
      *

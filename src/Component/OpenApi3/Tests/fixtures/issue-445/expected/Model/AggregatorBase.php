@@ -47,13 +47,10 @@ class AggregatorBase
      * The slug name of the aggregation. It must be unique per aggregation request.
      *
      * @param string $name
-     *
-     * @return self
      */
-    public function setName(string $name) : self
+    public function setName(string $name)
     {
         $this->name = $name;
-        return $this;
     }
     /**
      * Language specific field names.
@@ -68,13 +65,10 @@ class AggregatorBase
      * Language specific field names.
      *
      * @param mixed $names
-     *
-     * @return self
      */
-    public function setNames($names) : self
+    public function setNames($names)
     {
         $this->names = $names;
-        return $this;
     }
     /**
      * An optional aggregator list for nested aggregations.
@@ -89,13 +83,10 @@ class AggregatorBase
      * An optional aggregator list for nested aggregations.
      *
      * @param AggregatorBase[]|null $aggregators
-     *
-     * @return self
      */
-    public function setAggregators(?array $aggregators) : self
+    public function setAggregators(?array $aggregators)
     {
         $this->aggregators = $aggregators;
-        return $this;
     }
     /**
      * An optional filter to limit the data set the aggregation is operation on.
@@ -110,13 +101,10 @@ class AggregatorBase
      * An optional filter to limit the data set the aggregation is operation on.
      *
      * @param mixed $filter
-     *
-     * @return self
      */
-    public function setFilter($filter) : self
+    public function setFilter($filter)
     {
         $this->filter = $filter;
-        return $this;
     }
     /**
      * 
@@ -131,12 +119,9 @@ class AggregatorBase
      * 
      *
      * @param string $kind
-     *
-     * @return self
      */
-    public function setKind(string $kind) : self
+    public function setKind(string $kind)
     {
         $this->kind = $kind;
-        return $this;
     }
 }

@@ -47,13 +47,10 @@ class Message
      * 
      *
      * @param string|null $id
-     *
-     * @return self
      */
-    public function setId(?string $id) : self
+    public function setId(?string $id)
     {
         $this->id = $id;
-        return $this;
     }
     /**
      * 
@@ -68,13 +65,10 @@ class Message
      * 
      *
      * @param int $retries
-     *
-     * @return self
      */
-    public function setRetries(int $retries) : self
+    public function setRetries(int $retries)
     {
         $this->retries = $retries;
-        return $this;
     }
     /**
      * 
@@ -89,13 +83,10 @@ class Message
      * 
      *
      * @param int $priority
-     *
-     * @return self
      */
-    public function setPriority(int $priority) : self
+    public function setPriority(int $priority)
     {
         $this->priority = $priority;
-        return $this;
     }
     /**
      * 
@@ -110,13 +101,10 @@ class Message
      * 
      *
      * @param bool $deduplicate
-     *
-     * @return self
      */
-    public function setDeduplicate(bool $deduplicate) : self
+    public function setDeduplicate(bool $deduplicate)
     {
         $this->deduplicate = $deduplicate;
-        return $this;
     }
     /**
      * 
@@ -131,12 +119,9 @@ class Message
      * 
      *
      * @param string $kind
-     *
-     * @return self
      */
-    public function setKind(string $kind) : self
+    public function setKind(string $kind)
     {
         $this->kind = $kind;
-        return $this;
     }
 }

@@ -29,6 +29,66 @@ class FieldBaseNormalizer implements DenormalizerInterface, NormalizerInterface,
      */
     public function denormalize($data, $class, $format = null, array $context = array())
     {
+        if (array_key_exists('kind', $data) and 'FieldBoolean' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\\API\\Model\\FieldBoolean', $format, $context);
+        }
+        if (array_key_exists('kind', $data) and 'FieldDate' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\\API\\Model\\FieldDate', $format, $context);
+        }
+        if (array_key_exists('kind', $data) and 'FieldDateTime' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\\API\\Model\\FieldDateTime', $format, $context);
+        }
+        if (array_key_exists('kind', $data) and 'FieldDateTimeArray' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\\API\\Model\\FieldDateTimeArray', $format, $context);
+        }
+        if (array_key_exists('kind', $data) and 'FieldDecimal' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\\API\\Model\\FieldDecimal', $format, $context);
+        }
+        if (array_key_exists('kind', $data) and 'FieldDictionary' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\\API\\Model\\FieldDictionary', $format, $context);
+        }
+        if (array_key_exists('kind', $data) and 'FieldDictionaryArray' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\\API\\Model\\FieldDictionaryArray', $format, $context);
+        }
+        if (array_key_exists('kind', $data) and 'FieldGeoPoint' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\\API\\Model\\FieldGeoPoint', $format, $context);
+        }
+        if (array_key_exists('kind', $data) and 'FieldTrigger' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\\API\\Model\\FieldTrigger', $format, $context);
+        }
+        if (array_key_exists('kind', $data) and 'FieldLong' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\\API\\Model\\FieldLong', $format, $context);
+        }
+        if (array_key_exists('kind', $data) and 'FieldLongArray' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\\API\\Model\\FieldLongArray', $format, $context);
+        }
+        if (array_key_exists('kind', $data) and 'FieldSingleFieldset' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\\API\\Model\\FieldSingleFieldset', $format, $context);
+        }
+        if (array_key_exists('kind', $data) and 'FieldMultiFieldset' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\\API\\Model\\FieldMultiFieldset', $format, $context);
+        }
+        if (array_key_exists('kind', $data) and 'FieldSingleTagbox' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\\API\\Model\\FieldSingleTagbox', $format, $context);
+        }
+        if (array_key_exists('kind', $data) and 'FieldMultiTagbox' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\\API\\Model\\FieldMultiTagbox', $format, $context);
+        }
+        if (array_key_exists('kind', $data) and 'FieldString' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\\API\\Model\\FieldString', $format, $context);
+        }
+        if (array_key_exists('kind', $data) and 'FieldStringArray' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\\API\\Model\\FieldStringArray', $format, $context);
+        }
+        if (array_key_exists('kind', $data) and 'FieldTranslatedString' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\\API\\Model\\FieldTranslatedString', $format, $context);
+        }
+        if (array_key_exists('kind', $data) and 'FieldSingleRelation' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\\API\\Model\\FieldSingleRelation', $format, $context);
+        }
+        if (array_key_exists('kind', $data) and 'FieldMultiRelation' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\\API\\Model\\FieldMultiRelation', $format, $context);
+        }
         if (isset($data['$ref'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
@@ -92,6 +152,66 @@ class FieldBaseNormalizer implements DenormalizerInterface, NormalizerInterface,
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
+        if (null !== $object->getKind() and 'FieldBoolean' === $object->getKind()) {
+            return $this->normalizer->normalize($object, $format, $context);
+        }
+        if (null !== $object->getKind() and 'FieldDate' === $object->getKind()) {
+            return $this->normalizer->normalize($object, $format, $context);
+        }
+        if (null !== $object->getKind() and 'FieldDateTime' === $object->getKind()) {
+            return $this->normalizer->normalize($object, $format, $context);
+        }
+        if (null !== $object->getKind() and 'FieldDateTimeArray' === $object->getKind()) {
+            return $this->normalizer->normalize($object, $format, $context);
+        }
+        if (null !== $object->getKind() and 'FieldDecimal' === $object->getKind()) {
+            return $this->normalizer->normalize($object, $format, $context);
+        }
+        if (null !== $object->getKind() and 'FieldDictionary' === $object->getKind()) {
+            return $this->normalizer->normalize($object, $format, $context);
+        }
+        if (null !== $object->getKind() and 'FieldDictionaryArray' === $object->getKind()) {
+            return $this->normalizer->normalize($object, $format, $context);
+        }
+        if (null !== $object->getKind() and 'FieldGeoPoint' === $object->getKind()) {
+            return $this->normalizer->normalize($object, $format, $context);
+        }
+        if (null !== $object->getKind() and 'FieldTrigger' === $object->getKind()) {
+            return $this->normalizer->normalize($object, $format, $context);
+        }
+        if (null !== $object->getKind() and 'FieldLong' === $object->getKind()) {
+            return $this->normalizer->normalize($object, $format, $context);
+        }
+        if (null !== $object->getKind() and 'FieldLongArray' === $object->getKind()) {
+            return $this->normalizer->normalize($object, $format, $context);
+        }
+        if (null !== $object->getKind() and 'FieldSingleFieldset' === $object->getKind()) {
+            return $this->normalizer->normalize($object, $format, $context);
+        }
+        if (null !== $object->getKind() and 'FieldMultiFieldset' === $object->getKind()) {
+            return $this->normalizer->normalize($object, $format, $context);
+        }
+        if (null !== $object->getKind() and 'FieldSingleTagbox' === $object->getKind()) {
+            return $this->normalizer->normalize($object, $format, $context);
+        }
+        if (null !== $object->getKind() and 'FieldMultiTagbox' === $object->getKind()) {
+            return $this->normalizer->normalize($object, $format, $context);
+        }
+        if (null !== $object->getKind() and 'FieldString' === $object->getKind()) {
+            return $this->normalizer->normalize($object, $format, $context);
+        }
+        if (null !== $object->getKind() and 'FieldStringArray' === $object->getKind()) {
+            return $this->normalizer->normalize($object, $format, $context);
+        }
+        if (null !== $object->getKind() and 'FieldTranslatedString' === $object->getKind()) {
+            return $this->normalizer->normalize($object, $format, $context);
+        }
+        if (null !== $object->getKind() and 'FieldSingleRelation' === $object->getKind()) {
+            return $this->normalizer->normalize($object, $format, $context);
+        }
+        if (null !== $object->getKind() and 'FieldMultiRelation' === $object->getKind()) {
+            return $this->normalizer->normalize($object, $format, $context);
+        }
         $data['id'] = $object->getId();
         if (null !== $object->getIndexId()) {
             $data['indexId'] = $object->getIndexId();

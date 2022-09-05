@@ -53,13 +53,10 @@ class OutputDataBase
      * The extension of the file.
      *
      * @param string|null $fileExtension
-     *
-     * @return self
      */
-    public function setFileExtension(?string $fileExtension) : self
+    public function setFileExtension(?string $fileExtension)
     {
         $this->fileExtension = $fileExtension;
-        return $this;
     }
     /**
      * The path where the file is stored.
@@ -74,13 +71,10 @@ class OutputDataBase
      * The path where the file is stored.
      *
      * @param string|null $filePath
-     *
-     * @return self
      */
-    public function setFilePath(?string $filePath) : self
+    public function setFilePath(?string $filePath)
     {
         $this->filePath = $filePath;
-        return $this;
     }
     /**
      * The size of the file in bytes.
@@ -95,13 +89,10 @@ class OutputDataBase
      * The size of the file in bytes.
      *
      * @param int|null $fileSizeInBytes
-     *
-     * @return self
      */
-    public function setFileSizeInBytes(?int $fileSizeInBytes) : self
+    public function setFileSizeInBytes(?int $fileSizeInBytes)
     {
         $this->fileSizeInBytes = $fileSizeInBytes;
-        return $this;
     }
     /**
      * The SHA-1 hash of the file.
@@ -116,13 +107,10 @@ class OutputDataBase
      * The SHA-1 hash of the file.
      *
      * @param string|null $sha1Hash
-     *
-     * @return self
      */
-    public function setSha1Hash(?string $sha1Hash) : self
+    public function setSha1Hash(?string $sha1Hash)
     {
         $this->sha1Hash = $sha1Hash;
-        return $this;
     }
     /**
      * The original filename of the file.
@@ -137,13 +125,10 @@ class OutputDataBase
      * The original filename of the file.
      *
      * @param string|null $originalFileName
-     *
-     * @return self
      */
-    public function setOriginalFileName(?string $originalFileName) : self
+    public function setOriginalFileName(?string $originalFileName)
     {
         $this->originalFileName = $originalFileName;
-        return $this;
     }
     /**
      * 
@@ -158,12 +143,9 @@ class OutputDataBase
      * 
      *
      * @param string $kind
-     *
-     * @return self
      */
-    public function setKind(string $kind) : self
+    public function setKind(string $kind)
     {
         $this->kind = $kind;
-        return $this;
     }
 }

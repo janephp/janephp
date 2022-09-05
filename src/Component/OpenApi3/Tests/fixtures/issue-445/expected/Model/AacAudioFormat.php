@@ -2,14 +2,8 @@
 
 namespace PicturePark\API\Model;
 
-class AacAudioFormat
+class AacAudioFormat extends FormatBase
 {
-    /**
-     * 
-     *
-     * @var string
-     */
-    protected $kind;
     /**
      * 
      *
@@ -40,27 +34,6 @@ class AacAudioFormat
      * @var int|null
      */
     protected $variableBitRate;
-    /**
-     * 
-     *
-     * @return string
-     */
-    public function getKind() : string
-    {
-        return $this->kind;
-    }
-    /**
-     * 
-     *
-     * @param string $kind
-     *
-     * @return self
-     */
-    public function setKind(string $kind) : self
-    {
-        $this->kind = $kind;
-        return $this;
-    }
     /**
      * 
      *

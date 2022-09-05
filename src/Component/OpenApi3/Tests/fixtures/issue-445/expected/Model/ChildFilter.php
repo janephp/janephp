@@ -2,14 +2,8 @@
 
 namespace PicturePark\API\Model;
 
-class ChildFilter
+class ChildFilter extends FilterBase
 {
-    /**
-     * 
-     *
-     * @var string
-     */
-    protected $kind;
     /**
      * The type of the child document.
      *
@@ -22,27 +16,6 @@ class ChildFilter
      * @var mixed
      */
     protected $filter;
-    /**
-     * 
-     *
-     * @return string
-     */
-    public function getKind() : string
-    {
-        return $this->kind;
-    }
-    /**
-     * 
-     *
-     * @param string $kind
-     *
-     * @return self
-     */
-    public function setKind(string $kind) : self
-    {
-        $this->kind = $kind;
-        return $this;
-    }
     /**
      * The type of the child document.
      *

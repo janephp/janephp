@@ -77,13 +77,10 @@ class Output
      * The ID of the output. Can be null for dynamic outputs which are not rendered yet.
      *
      * @param string|null $id
-     *
-     * @return self
      */
-    public function setId(?string $id) : self
+    public function setId(?string $id)
     {
         $this->id = $id;
-        return $this;
     }
     /**
      * The ID of the output format this output represents.
@@ -98,13 +95,10 @@ class Output
      * The ID of the output format this output represents.
      *
      * @param string $outputFormatId
-     *
-     * @return self
      */
-    public function setOutputFormatId(string $outputFormatId) : self
+    public function setOutputFormatId(string $outputFormatId)
     {
         $this->outputFormatId = $outputFormatId;
-        return $this;
     }
     /**
      * The ID of the content for which this output has been created.
@@ -119,13 +113,10 @@ class Output
      * The ID of the content for which this output has been created.
      *
      * @param string $contentId
-     *
-     * @return self
      */
-    public function setContentId(string $contentId) : self
+    public function setContentId(string $contentId)
     {
         $this->contentId = $contentId;
-        return $this;
     }
     /**
      * The rendering state of the output file.
@@ -140,13 +131,10 @@ class Output
      * The rendering state of the output file.
      *
      * @param mixed $renderingState
-     *
-     * @return self
      */
-    public function setRenderingState($renderingState) : self
+    public function setRenderingState($renderingState)
     {
         $this->renderingState = $renderingState;
-        return $this;
     }
     /**
      * Detail of the output that are format dependent.
@@ -161,13 +149,10 @@ class Output
      * Detail of the output that are format dependent.
      *
      * @param mixed $detail
-     *
-     * @return self
      */
-    public function setDetail($detail) : self
+    public function setDetail($detail)
     {
         $this->detail = $detail;
-        return $this;
     }
     /**
      * Date and time of the backup of the output file.
@@ -182,13 +167,10 @@ class Output
      * Date and time of the backup of the output file.
      *
      * @param \DateTime|null $backupTimestamp
-     *
-     * @return self
      */
-    public function setBackupTimestamp(?\DateTime $backupTimestamp) : self
+    public function setBackupTimestamp(?\DateTime $backupTimestamp)
     {
         $this->backupTimestamp = $backupTimestamp;
-        return $this;
     }
     /**
      * Number of rendering retry attempts left.
@@ -203,13 +185,10 @@ class Output
      * Number of rendering retry attempts left.
      *
      * @param int $attemptsLeft
-     *
-     * @return self
      */
-    public function setAttemptsLeft(int $attemptsLeft) : self
+    public function setAttemptsLeft(int $attemptsLeft)
     {
         $this->attemptsLeft = $attemptsLeft;
-        return $this;
     }
     /**
      * Version counter incremented every time this output is rendered (or in case of Original when new original is uploaded).
@@ -224,13 +203,10 @@ class Output
      * Version counter incremented every time this output is rendered (or in case of Original when new original is uploaded).
      *
      * @param int $fileVersion
-     *
-     * @return self
      */
-    public function setFileVersion(int $fileVersion) : self
+    public function setFileVersion(int $fileVersion)
     {
         $this->fileVersion = $fileVersion;
-        return $this;
     }
     /**
      * Whether this Output belongs to a dynamic OutputFormat
@@ -245,13 +221,10 @@ class Output
      * Whether this Output belongs to a dynamic OutputFormat
      *
      * @param bool $dynamicRendering
-     *
-     * @return self
      */
-    public function setDynamicRendering(bool $dynamicRendering) : self
+    public function setDynamicRendering(bool $dynamicRendering)
     {
         $this->dynamicRendering = $dynamicRendering;
-        return $this;
     }
     /**
      * 
@@ -266,12 +239,9 @@ class Output
      * 
      *
      * @param string $kind
-     *
-     * @return self
      */
-    public function setKind(string $kind) : self
+    public function setKind(string $kind)
     {
         $this->kind = $kind;
-        return $this;
     }
 }

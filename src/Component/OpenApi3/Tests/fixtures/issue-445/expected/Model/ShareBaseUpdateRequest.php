@@ -59,13 +59,10 @@ class ShareBaseUpdateRequest
      * Name of share.
      *
      * @param string $name
-     *
-     * @return self
      */
-    public function setName(string $name) : self
+    public function setName(string $name)
     {
         $this->name = $name;
-        return $this;
     }
     /**
      * Optional date when share expires and cannot be accessed anymore.
@@ -80,13 +77,10 @@ class ShareBaseUpdateRequest
      * Optional date when share expires and cannot be accessed anymore.
      *
      * @param \DateTime|null $expirationDate
-     *
-     * @return self
      */
-    public function setExpirationDate(?\DateTime $expirationDate) : self
+    public function setExpirationDate(?\DateTime $expirationDate)
     {
         $this->expirationDate = $expirationDate;
-        return $this;
     }
     /**
      * Optional description of share.
@@ -101,13 +95,10 @@ class ShareBaseUpdateRequest
      * Optional description of share.
      *
      * @param string|null $description
-     *
-     * @return self
      */
-    public function setDescription(?string $description) : self
+    public function setDescription(?string $description)
     {
         $this->description = $description;
-        return $this;
     }
     /**
      * List of contents including outputs. Existing items needs to be sent again, otherwise they will be removed.
@@ -122,13 +113,10 @@ class ShareBaseUpdateRequest
      * List of contents including outputs. Existing items needs to be sent again, otherwise they will be removed.
      *
      * @param ShareContent[] $contents
-     *
-     * @return self
      */
-    public function setContents(array $contents) : self
+    public function setContents(array $contents)
     {
         $this->contents = $contents;
-        return $this;
     }
     /**
      * List of content layers to share.
@@ -143,13 +131,10 @@ class ShareBaseUpdateRequest
      * List of content layers to share.
      *
      * @param string[]|null $layerSchemaIds
-     *
-     * @return self
      */
-    public function setLayerSchemaIds(?array $layerSchemaIds) : self
+    public function setLayerSchemaIds(?array $layerSchemaIds)
     {
         $this->layerSchemaIds = $layerSchemaIds;
-        return $this;
     }
     /**
      * Access for content outputs in share.
@@ -164,13 +149,10 @@ class ShareBaseUpdateRequest
      * Access for content outputs in share.
      *
      * @param mixed $outputAccess
-     *
-     * @return self
      */
-    public function setOutputAccess($outputAccess) : self
+    public function setOutputAccess($outputAccess)
     {
         $this->outputAccess = $outputAccess;
-        return $this;
     }
     /**
      * 
@@ -185,12 +167,9 @@ class ShareBaseUpdateRequest
      * 
      *
      * @param string $kind
-     *
-     * @return self
      */
-    public function setKind(string $kind) : self
+    public function setKind(string $kind)
     {
         $this->kind = $kind;
-        return $this;
     }
 }

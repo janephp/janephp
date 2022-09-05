@@ -2,14 +2,8 @@
 
 namespace PicturePark\API\Model;
 
-class JpegFormat
+class JpegFormat extends FormatBase
 {
-    /**
-     * 
-     *
-     * @var string
-     */
-    protected $kind;
     /**
      * Color profile to use. Colorspace is derived from the chosen profile.
      *
@@ -70,27 +64,6 @@ class JpegFormat
      * @var string|null
      */
     protected $extension;
-    /**
-     * 
-     *
-     * @return string
-     */
-    public function getKind() : string
-    {
-        return $this->kind;
-    }
-    /**
-     * 
-     *
-     * @param string $kind
-     *
-     * @return self
-     */
-    public function setKind(string $kind) : self
-    {
-        $this->kind = $kind;
-        return $this;
-    }
     /**
      * Color profile to use. Colorspace is derived from the chosen profile.
      *

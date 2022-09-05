@@ -2,14 +2,8 @@
 
 namespace PicturePark\API\Model;
 
-class BusinessProcessDetailsDataSchemaImport
+class BusinessProcessDetailsDataSchemaImport extends BusinessProcessDetailsDataBase
 {
-    /**
-     * 
-     *
-     * @var string
-     */
-    protected $kind;
     /**
      * Result information of a schema import operation
      *
@@ -22,27 +16,6 @@ class BusinessProcessDetailsDataSchemaImport
      * @var mixed|null
      */
     protected $listItemImportResult;
-    /**
-     * 
-     *
-     * @return string
-     */
-    public function getKind() : string
-    {
-        return $this->kind;
-    }
-    /**
-     * 
-     *
-     * @param string $kind
-     *
-     * @return self
-     */
-    public function setKind(string $kind) : self
-    {
-        $this->kind = $kind;
-        return $this;
-    }
     /**
      * Result information of a schema import operation
      *

@@ -29,6 +29,21 @@ class AnalyzerBaseNormalizer implements DenormalizerInterface, NormalizerInterfa
      */
     public function denormalize($data, $class, $format = null, array $context = array())
     {
+        if (array_key_exists('kind', $data) and 'EdgeNGramAnalyzer' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\\API\\Model\\EdgeNGramAnalyzer', $format, $context);
+        }
+        if (array_key_exists('kind', $data) and 'LanguageAnalyzer' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\\API\\Model\\LanguageAnalyzer', $format, $context);
+        }
+        if (array_key_exists('kind', $data) and 'NGramAnalyzer' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\\API\\Model\\NGramAnalyzer', $format, $context);
+        }
+        if (array_key_exists('kind', $data) and 'PathHierarchyAnalyzer' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\\API\\Model\\PathHierarchyAnalyzer', $format, $context);
+        }
+        if (array_key_exists('kind', $data) and 'SimpleAnalyzer' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\\API\\Model\\SimpleAnalyzer', $format, $context);
+        }
         if (isset($data['$ref'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
@@ -50,6 +65,21 @@ class AnalyzerBaseNormalizer implements DenormalizerInterface, NormalizerInterfa
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
+        if (null !== $object->getKind() and 'EdgeNGramAnalyzer' === $object->getKind()) {
+            return $this->normalizer->normalize($object, $format, $context);
+        }
+        if (null !== $object->getKind() and 'LanguageAnalyzer' === $object->getKind()) {
+            return $this->normalizer->normalize($object, $format, $context);
+        }
+        if (null !== $object->getKind() and 'NGramAnalyzer' === $object->getKind()) {
+            return $this->normalizer->normalize($object, $format, $context);
+        }
+        if (null !== $object->getKind() and 'PathHierarchyAnalyzer' === $object->getKind()) {
+            return $this->normalizer->normalize($object, $format, $context);
+        }
+        if (null !== $object->getKind() and 'SimpleAnalyzer' === $object->getKind()) {
+            return $this->normalizer->normalize($object, $format, $context);
+        }
         $data['kind'] = $object->getKind();
         return $data;
     }

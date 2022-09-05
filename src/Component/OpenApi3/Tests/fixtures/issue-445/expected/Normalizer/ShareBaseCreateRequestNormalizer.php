@@ -29,6 +29,12 @@ class ShareBaseCreateRequestNormalizer implements DenormalizerInterface, Normali
      */
     public function denormalize($data, $class, $format = null, array $context = array())
     {
+        if (array_key_exists('kind', $data) and 'ShareBasicCreateRequest' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\\API\\Model\\ShareBasicCreateRequest', $format, $context);
+        }
+        if (array_key_exists('kind', $data) and 'ShareEmbedCreateRequest' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\\API\\Model\\ShareEmbedCreateRequest', $format, $context);
+        }
         if (isset($data['$ref'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
@@ -85,6 +91,12 @@ class ShareBaseCreateRequestNormalizer implements DenormalizerInterface, Normali
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
+        if (null !== $object->getKind() and 'ShareBasicCreateRequest' === $object->getKind()) {
+            return $this->normalizer->normalize($object, $format, $context);
+        }
+        if (null !== $object->getKind() and 'ShareEmbedCreateRequest' === $object->getKind()) {
+            return $this->normalizer->normalize($object, $format, $context);
+        }
         $data['name'] = $object->getName();
         if (null !== $object->getDescription()) {
             $data['description'] = $object->getDescription();

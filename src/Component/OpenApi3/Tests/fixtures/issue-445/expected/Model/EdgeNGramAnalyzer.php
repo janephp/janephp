@@ -2,14 +2,8 @@
 
 namespace PicturePark\API\Model;
 
-class EdgeNGramAnalyzer
+class EdgeNGramAnalyzer extends AnalyzerBase
 {
-    /**
-     * 
-     *
-     * @var string
-     */
-    protected $kind;
     /**
      * The analyzer type: EdgeNGram
      *
@@ -22,27 +16,6 @@ class EdgeNGramAnalyzer
      * @var string|null
      */
     protected $fieldSuffix;
-    /**
-     * 
-     *
-     * @return string
-     */
-    public function getKind() : string
-    {
-        return $this->kind;
-    }
-    /**
-     * 
-     *
-     * @param string $kind
-     *
-     * @return self
-     */
-    public function setKind(string $kind) : self
-    {
-        $this->kind = $kind;
-        return $this;
-    }
     /**
      * The analyzer type: EdgeNGram
      *
