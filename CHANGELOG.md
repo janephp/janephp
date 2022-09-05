@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ### Changed
+- [OpenAPI] [GH#647](https://github.com/janephp/janephp/pull/647) Support inheritance using discriminator with mapping
+
+## [7.3.1] - 2022-08-22
+### Changed
 - [JsonSchema] [GH#643](https://github.com/janephp/janephp/pull/643) Correctly handle floats that look like integer
 - [JsonSchema] [GH#644](https://github.com/janephp/janephp/pull/644) Since symfony 5, constraint Length with min option allows empty string
 - [JsonSchema] [GH#639](https://github.com/janephp/janephp/pull/639) Report the actual validation errors when logging validation error
