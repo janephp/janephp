@@ -4,6 +4,7 @@ namespace Github\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
 use Github\Runtime\Normalizer\CheckArray;
+use Github\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -16,6 +17,7 @@ class InstallationRepositoriesGetResponse200Normalizer implements DenormalizerIn
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
+    use ValidatorTrait;
     public function supportsDenormalization($data, $type, $format = null) : bool
     {
         return $type === 'Github\\Model\\InstallationRepositoriesGetResponse200';
@@ -36,9 +38,9 @@ class InstallationRepositoriesGetResponse200Normalizer implements DenormalizerIn
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\InstallationRepositoriesGetResponse200();
-        $validator = new \Github\Validator\InstallationRepositoriesGetResponse200Validator();
-        if (!($data['skip_validation'] ?? false)) {
-            $validator->validate($data);
+        if (!($context['skip_validation'] ?? false)) {
+            $this->validate($data, new \Github\Validator\InstallationRepositoriesGetResponse200Constraint());
+            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -77,9 +79,9 @@ class InstallationRepositoriesGetResponse200Normalizer implements DenormalizerIn
         if (null !== $object->getRepositorySelection()) {
             $data['repository_selection'] = $object->getRepositorySelection();
         }
-        $validator = new \Github\Validator\InstallationRepositoriesGetResponse200Validator();
-        if (!($data['skip_validation'] ?? false)) {
-            $validator->validate($data);
+        if (!($context['skip_validation'] ?? false)) {
+            $this->validate($data, new \Github\Validator\InstallationRepositoriesGetResponse200Constraint());
+            $context['skip_validation'] = true;
         }
         return $data;
     }

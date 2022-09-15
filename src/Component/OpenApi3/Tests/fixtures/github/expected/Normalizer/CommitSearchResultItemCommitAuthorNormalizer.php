@@ -4,6 +4,7 @@ namespace Github\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
 use Github\Runtime\Normalizer\CheckArray;
+use Github\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -16,6 +17,7 @@ class CommitSearchResultItemCommitAuthorNormalizer implements DenormalizerInterf
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
+    use ValidatorTrait;
     public function supportsDenormalization($data, $type, $format = null) : bool
     {
         return $type === 'Github\\Model\\CommitSearchResultItemCommitAuthor';
@@ -36,9 +38,9 @@ class CommitSearchResultItemCommitAuthorNormalizer implements DenormalizerInterf
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\CommitSearchResultItemCommitAuthor();
-        $validator = new \Github\Validator\CommitSearchResultItemCommitAuthorValidator();
-        if (!($data['skip_validation'] ?? false)) {
-            $validator->validate($data);
+        if (!($context['skip_validation'] ?? false)) {
+            $this->validate($data, new \Github\Validator\CommitSearchResultItemCommitAuthorConstraint());
+            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -63,9 +65,9 @@ class CommitSearchResultItemCommitAuthorNormalizer implements DenormalizerInterf
         $data['name'] = $object->getName();
         $data['email'] = $object->getEmail();
         $data['date'] = $object->getDate()->format('Y-m-d\\TH:i:sP');
-        $validator = new \Github\Validator\CommitSearchResultItemCommitAuthorValidator();
-        if (!($data['skip_validation'] ?? false)) {
-            $validator->validate($data);
+        if (!($context['skip_validation'] ?? false)) {
+            $this->validate($data, new \Github\Validator\CommitSearchResultItemCommitAuthorConstraint());
+            $context['skip_validation'] = true;
         }
         return $data;
     }

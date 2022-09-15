@@ -4,6 +4,7 @@ namespace Github\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
 use Github\Runtime\Normalizer\CheckArray;
+use Github\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -16,6 +17,7 @@ class TeamProjectPermissionsNormalizer implements DenormalizerInterface, Normali
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
+    use ValidatorTrait;
     public function supportsDenormalization($data, $type, $format = null) : bool
     {
         return $type === 'Github\\Model\\TeamProjectPermissions';
@@ -36,9 +38,9 @@ class TeamProjectPermissionsNormalizer implements DenormalizerInterface, Normali
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\TeamProjectPermissions();
-        $validator = new \Github\Validator\TeamProjectPermissionsValidator();
-        if (!($data['skip_validation'] ?? false)) {
-            $validator->validate($data);
+        if (!($context['skip_validation'] ?? false)) {
+            $this->validate($data, new \Github\Validator\TeamProjectPermissionsConstraint());
+            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -69,9 +71,9 @@ class TeamProjectPermissionsNormalizer implements DenormalizerInterface, Normali
         if (null !== $object->getAdmin()) {
             $data['admin'] = $object->getAdmin();
         }
-        $validator = new \Github\Validator\TeamProjectPermissionsValidator();
-        if (!($data['skip_validation'] ?? false)) {
-            $validator->validate($data);
+        if (!($context['skip_validation'] ?? false)) {
+            $this->validate($data, new \Github\Validator\TeamProjectPermissionsConstraint());
+            $context['skip_validation'] = true;
         }
         return $data;
     }

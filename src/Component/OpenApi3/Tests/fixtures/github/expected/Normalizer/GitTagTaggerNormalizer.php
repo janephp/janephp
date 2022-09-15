@@ -4,6 +4,7 @@ namespace Github\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
 use Github\Runtime\Normalizer\CheckArray;
+use Github\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -16,6 +17,7 @@ class GitTagTaggerNormalizer implements DenormalizerInterface, NormalizerInterfa
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
+    use ValidatorTrait;
     public function supportsDenormalization($data, $type, $format = null) : bool
     {
         return $type === 'Github\\Model\\GitTagTagger';
@@ -36,9 +38,9 @@ class GitTagTaggerNormalizer implements DenormalizerInterface, NormalizerInterfa
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\GitTagTagger();
-        $validator = new \Github\Validator\GitTagTaggerValidator();
-        if (!($data['skip_validation'] ?? false)) {
-            $validator->validate($data);
+        if (!($context['skip_validation'] ?? false)) {
+            $this->validate($data, new \Github\Validator\GitTagTaggerConstraint());
+            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -63,9 +65,9 @@ class GitTagTaggerNormalizer implements DenormalizerInterface, NormalizerInterfa
         $data['date'] = $object->getDate();
         $data['email'] = $object->getEmail();
         $data['name'] = $object->getName();
-        $validator = new \Github\Validator\GitTagTaggerValidator();
-        if (!($data['skip_validation'] ?? false)) {
-            $validator->validate($data);
+        if (!($context['skip_validation'] ?? false)) {
+            $this->validate($data, new \Github\Validator\GitTagTaggerConstraint());
+            $context['skip_validation'] = true;
         }
         return $data;
     }

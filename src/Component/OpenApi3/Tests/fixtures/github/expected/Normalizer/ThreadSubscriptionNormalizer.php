@@ -4,6 +4,7 @@ namespace Github\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
 use Github\Runtime\Normalizer\CheckArray;
+use Github\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -16,6 +17,7 @@ class ThreadSubscriptionNormalizer implements DenormalizerInterface, NormalizerI
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
+    use ValidatorTrait;
     public function supportsDenormalization($data, $type, $format = null) : bool
     {
         return $type === 'Github\\Model\\ThreadSubscription';
@@ -36,9 +38,9 @@ class ThreadSubscriptionNormalizer implements DenormalizerInterface, NormalizerI
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ThreadSubscription();
-        $validator = new \Github\Validator\ThreadSubscriptionValidator();
-        if (!($data['skip_validation'] ?? false)) {
-            $validator->validate($data);
+        if (!($context['skip_validation'] ?? false)) {
+            $this->validate($data, new \Github\Validator\ThreadSubscriptionConstraint());
+            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -89,9 +91,9 @@ class ThreadSubscriptionNormalizer implements DenormalizerInterface, NormalizerI
         if (null !== $object->getRepositoryUrl()) {
             $data['repository_url'] = $object->getRepositoryUrl();
         }
-        $validator = new \Github\Validator\ThreadSubscriptionValidator();
-        if (!($data['skip_validation'] ?? false)) {
-            $validator->validate($data);
+        if (!($context['skip_validation'] ?? false)) {
+            $this->validate($data, new \Github\Validator\ThreadSubscriptionConstraint());
+            $context['skip_validation'] = true;
         }
         return $data;
     }

@@ -4,6 +4,7 @@ namespace Docker\Api\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
 use Docker\Api\Runtime\Normalizer\CheckArray;
+use Docker\Api\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -16,6 +17,7 @@ class EventMessageNormalizer implements DenormalizerInterface, NormalizerInterfa
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
+    use ValidatorTrait;
     public function supportsDenormalization($data, $type, $format = null) : bool
     {
         return $type === 'Docker\\Api\\Model\\EventMessage';
@@ -36,9 +38,9 @@ class EventMessageNormalizer implements DenormalizerInterface, NormalizerInterfa
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\EventMessage();
-        $validator = new \Docker\Api\Validator\EventMessageValidator();
-        if (!($data['skip_validation'] ?? false)) {
-            $validator->validate($data);
+        if (!($context['skip_validation'] ?? false)) {
+            $this->validate($data, new \Docker\Api\Validator\EventMessageConstraint());
+            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -87,9 +89,9 @@ class EventMessageNormalizer implements DenormalizerInterface, NormalizerInterfa
         if (null !== $object->getTimeNano()) {
             $data['timeNano'] = $object->getTimeNano();
         }
-        $validator = new \Docker\Api\Validator\EventMessageValidator();
-        if (!($data['skip_validation'] ?? false)) {
-            $validator->validate($data);
+        if (!($context['skip_validation'] ?? false)) {
+            $this->validate($data, new \Docker\Api\Validator\EventMessageConstraint());
+            $context['skip_validation'] = true;
         }
         return $data;
     }

@@ -47,9 +47,9 @@ jobs:
       - name: install prism
         run: curl -L https://raw.githack.com/stoplightio/prism/master/install | sh
       - name: run OpenApi3 prism server
-        run: nohup prism mock -p 4010 -m src/Component/OpenApi3/Tests/client/openapi.yaml &
+        run: nohup prism mock src/Component/OpenApi3/Tests/client/openapi.yaml -p 4010 &
       - name: run OpenApi2 prism server
-        run: nohup prism mock -p 4011 -m src/Component/OpenApi2/Tests/client/swagger.yaml &
+        run: nohup prism mock src/Component/OpenApi2/Tests/client/swagger.yaml -p 4011 &
       - name: tests
         run: vendor/bin/phpunit --exclude-group none
   tests-lowest:
@@ -72,8 +72,8 @@ jobs:
       - name: install prism
         run: curl -L https://raw.githack.com/stoplightio/prism/master/install | sh
       - name: run OpenApi3 prism server
-        run: nohup prism mock -p 4010 -m src/Component/OpenApi3/Tests/client/openapi.yaml &
+        run: nohup prism mock src/Component/OpenApi3/Tests/client/openapi.yaml -p 4010 &
       - name: run OpenApi2 prism server
-        run: nohup prism mock -p 4011 -m src/Component/OpenApi2/Tests/client/swagger.yaml &
+        run: nohup prism mock src/Component/OpenApi2/Tests/client/swagger.yaml -p 4011 &
       - name: tests
         run: vendor/bin/phpunit --exclude-group none

@@ -19,7 +19,7 @@ use Jane\Component\JsonSchema\Tests\Validation\Generated\Normalizer\ObjectObject
 use Jane\Component\JsonSchema\Tests\Validation\Generated\Normalizer\ShopNormalizer;
 use Jane\Component\JsonSchema\Tests\Validation\Generated\Normalizer\StringObjectNormalizer;
 use Jane\Component\JsonSchema\Tests\Validation\Generated\Normalizer\TypeObjectNormalizer;
-use Jane\Component\JsonSchema\Tests\Validation\Generated\Validator\ValidationException;
+use Jane\Component\JsonSchema\Tests\Validation\Generated\Runtime\Normalizer\ValidationException;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Output\NullOutput;

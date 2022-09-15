@@ -4,6 +4,7 @@ namespace Github\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
 use Github\Runtime\Normalizer\CheckArray;
+use Github\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -16,6 +17,7 @@ class OrganizationActionsSecretNormalizer implements DenormalizerInterface, Norm
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
+    use ValidatorTrait;
     public function supportsDenormalization($data, $type, $format = null) : bool
     {
         return $type === 'Github\\Model\\OrganizationActionsSecret';
@@ -36,9 +38,9 @@ class OrganizationActionsSecretNormalizer implements DenormalizerInterface, Norm
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\OrganizationActionsSecret();
-        $validator = new \Github\Validator\OrganizationActionsSecretValidator();
-        if (!($data['skip_validation'] ?? false)) {
-            $validator->validate($data);
+        if (!($context['skip_validation'] ?? false)) {
+            $this->validate($data, new \Github\Validator\OrganizationActionsSecretConstraint());
+            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -73,9 +75,9 @@ class OrganizationActionsSecretNormalizer implements DenormalizerInterface, Norm
         if (null !== $object->getSelectedRepositoriesUrl()) {
             $data['selected_repositories_url'] = $object->getSelectedRepositoriesUrl();
         }
-        $validator = new \Github\Validator\OrganizationActionsSecretValidator();
-        if (!($data['skip_validation'] ?? false)) {
-            $validator->validate($data);
+        if (!($context['skip_validation'] ?? false)) {
+            $this->validate($data, new \Github\Validator\OrganizationActionsSecretConstraint());
+            $context['skip_validation'] = true;
         }
         return $data;
     }

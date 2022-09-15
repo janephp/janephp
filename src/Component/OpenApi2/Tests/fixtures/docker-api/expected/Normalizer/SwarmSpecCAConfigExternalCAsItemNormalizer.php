@@ -4,6 +4,7 @@ namespace Docker\Api\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
 use Docker\Api\Runtime\Normalizer\CheckArray;
+use Docker\Api\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -16,6 +17,7 @@ class SwarmSpecCAConfigExternalCAsItemNormalizer implements DenormalizerInterfac
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
+    use ValidatorTrait;
     public function supportsDenormalization($data, $type, $format = null) : bool
     {
         return $type === 'Docker\\Api\\Model\\SwarmSpecCAConfigExternalCAsItem';
@@ -36,9 +38,9 @@ class SwarmSpecCAConfigExternalCAsItemNormalizer implements DenormalizerInterfac
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\SwarmSpecCAConfigExternalCAsItem();
-        $validator = new \Docker\Api\Validator\SwarmSpecCAConfigExternalCAsItemValidator();
-        if (!($data['skip_validation'] ?? false)) {
-            $validator->validate($data);
+        if (!($context['skip_validation'] ?? false)) {
+            $this->validate($data, new \Docker\Api\Validator\SwarmSpecCAConfigExternalCAsItemConstraint());
+            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -83,9 +85,9 @@ class SwarmSpecCAConfigExternalCAsItemNormalizer implements DenormalizerInterfac
         if (null !== $object->getCACert()) {
             $data['CACert'] = $object->getCACert();
         }
-        $validator = new \Docker\Api\Validator\SwarmSpecCAConfigExternalCAsItemValidator();
-        if (!($data['skip_validation'] ?? false)) {
-            $validator->validate($data);
+        if (!($context['skip_validation'] ?? false)) {
+            $this->validate($data, new \Docker\Api\Validator\SwarmSpecCAConfigExternalCAsItemConstraint());
+            $context['skip_validation'] = true;
         }
         return $data;
     }

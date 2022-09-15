@@ -4,6 +4,7 @@ namespace Github\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
 use Github\Runtime\Normalizer\CheckArray;
+use Github\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -16,6 +17,7 @@ class MinimalRepositoryPermissionsNormalizer implements DenormalizerInterface, N
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
+    use ValidatorTrait;
     public function supportsDenormalization($data, $type, $format = null) : bool
     {
         return $type === 'Github\\Model\\MinimalRepositoryPermissions';
@@ -36,9 +38,9 @@ class MinimalRepositoryPermissionsNormalizer implements DenormalizerInterface, N
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\MinimalRepositoryPermissions();
-        $validator = new \Github\Validator\MinimalRepositoryPermissionsValidator();
-        if (!($data['skip_validation'] ?? false)) {
-            $validator->validate($data);
+        if (!($context['skip_validation'] ?? false)) {
+            $this->validate($data, new \Github\Validator\MinimalRepositoryPermissionsConstraint());
+            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -69,9 +71,9 @@ class MinimalRepositoryPermissionsNormalizer implements DenormalizerInterface, N
         if (null !== $object->getPull()) {
             $data['pull'] = $object->getPull();
         }
-        $validator = new \Github\Validator\MinimalRepositoryPermissionsValidator();
-        if (!($data['skip_validation'] ?? false)) {
-            $validator->validate($data);
+        if (!($context['skip_validation'] ?? false)) {
+            $this->validate($data, new \Github\Validator\MinimalRepositoryPermissionsConstraint());
+            $context['skip_validation'] = true;
         }
         return $data;
     }

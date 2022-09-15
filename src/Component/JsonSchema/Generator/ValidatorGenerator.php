@@ -11,7 +11,6 @@ use PhpParser\Node\Scalar;
 use Symfony\Component\Validator\Constraints\Collection;
 use Symfony\Component\Validator\Constraints\Optional;
 use Symfony\Component\Validator\Constraints\Required;
-use Symfony\Component\Validator\Validation;
 
 class ValidatorGenerator implements GeneratorInterface
 {
@@ -33,7 +32,7 @@ class ValidatorGenerator implements GeneratorInterface
 
         foreach ($schema->getClasses() as $class) {
             if ($class->hasValidatorGuesses()) {
-                $className = $this->naming->getValidatorName($class->getName());
+                $className = $this->naming->getConstraintName($class->getName());
                 $collectionItems = [];
 
                 foreach ($class->getPropertyValidatorGuesses() as $name => $propertyGuesses) {
@@ -48,10 +47,7 @@ class ValidatorGenerator implements GeneratorInterface
                     ]), new Scalar\String_($name));
                 }
 
-                $dataVariable = new Expr\Variable('data');
-                $constraintsVariable = new Expr\Variable('constraints');
-                $validatorVariable = new Expr\Variable('validator');
-                $violationsVariable = new Expr\Variable('violations');
+                $optionsVariable = new Expr\Variable('options');
 
                 $constraintsItems = [];
                 foreach ($class->getValidatorGuesses() as $classGuess) {
@@ -79,26 +75,18 @@ class ValidatorGenerator implements GeneratorInterface
                     [
                         'stmts' => [
                             new Node\Stmt\ClassMethod(
-                                'validate',
+                                'getConstraints',
                                 [
-                                    'type' => Node\Stmt\Class_::MODIFIER_PUBLIC,
-                                    'params' => [new Node\Param($dataVariable)],
+                                    'type' => Node\Stmt\Class_::MODIFIER_PROTECTED,
+                                    'params' => [new Node\Param($optionsVariable)],
                                     'stmts' => [
-                                        new Node\Stmt\Expression(new Expr\Assign($constraintsVariable, new Expr\Array_($constraintsItems))),
-                                        new Node\Stmt\Expression(new Expr\Assign($validatorVariable, new Expr\StaticCall(new Node\Name\FullyQualified(Validation::class), 'createValidator'))),
-                                        new Node\Stmt\Expression(new Expr\Assign($violationsVariable, new Expr\MethodCall($validatorVariable, 'validate', [
-                                            new Node\Arg($dataVariable),
-                                            new Node\Arg($constraintsVariable),
-                                        ]))),
-                                        new Node\Stmt\If_(new Expr\BinaryOp\Greater(new Expr\MethodCall($violationsVariable, 'count'), new Scalar\LNumber(0)), ['stmts' => [
-                                            new Node\Stmt\Throw_(new Expr\New_(new Node\Name('\\' . $namespace . '\\' . self::VALIDATOR_EXCEPTION_NAME), [new Node\Arg($violationsVariable)])),
-                                        ]]),
+                                        new Node\Stmt\Return_(new Expr\Array_($constraintsItems)),
                                     ],
-                                    'returnType' => 'void',
+                                    'returnType' => 'array',
                                 ]
                             ),
                         ],
-                        'implements' => [new Node\Name('\\' . $namespace . '\\' . self::VALIDATOR_INTERFACE_NAME)],
+                        'extends' => new Node\Name('\\Symfony\\Component\\Validator\\Constraints\\Compound'),
                     ]
                 );
 

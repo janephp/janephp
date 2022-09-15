@@ -4,6 +4,7 @@ namespace Github\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
 use Github\Runtime\Normalizer\CheckArray;
+use Github\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -16,6 +17,7 @@ class ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBodyNormalizer im
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
+    use ValidatorTrait;
     public function supportsDenormalization($data, $type, $format = null) : bool
     {
         return $type === 'Github\\Model\\ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBody';
@@ -36,9 +38,9 @@ class ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBodyNormalizer im
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBody();
-        $validator = new \Github\Validator\ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBodyValidator();
-        if (!($data['skip_validation'] ?? false)) {
-            $validator->validate($data);
+        if (!($context['skip_validation'] ?? false)) {
+            $this->validate($data, new \Github\Validator\ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBodyConstraint());
+            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -55,9 +57,9 @@ class ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBodyNormalizer im
     {
         $data = array();
         $data['body'] = $object->getBody();
-        $validator = new \Github\Validator\ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBodyValidator();
-        if (!($data['skip_validation'] ?? false)) {
-            $validator->validate($data);
+        if (!($context['skip_validation'] ?? false)) {
+            $this->validate($data, new \Github\Validator\ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBodyConstraint());
+            $context['skip_validation'] = true;
         }
         return $data;
     }

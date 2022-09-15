@@ -3,6 +3,7 @@
 namespace Jane\Component\OpenApi3\Tests\Expected\Normalizer;
 
 use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\CheckArray;
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -14,6 +15,7 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
+    use ValidatorTrait;
     protected $normalizers = array('Jane\\Component\\OpenApi3\\Tests\\Expected\\Model\\Schema' => 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Normalizer\\SchemaNormalizer', 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Model\\SchemaObjectProperty' => 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Normalizer\\SchemaObjectPropertyNormalizer', 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Model\\Error' => 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Normalizer\\ErrorNormalizer', 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Model\\EmptySpace' => 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Normalizer\\EmptySpaceNormalizer', 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Model\\TestIdGetResponse200' => 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Normalizer\\TestIdGetResponse200Normalizer', '\\Jane\\Component\\JsonSchemaRuntime\\Reference' => '\\Jane\\Component\\OpenApi3\\Tests\\Expected\\Runtime\\Normalizer\\ReferenceNormalizer'), $normalizersCache = array();
     public function supportsDenormalization($data, $type, $format = null) : bool
     {

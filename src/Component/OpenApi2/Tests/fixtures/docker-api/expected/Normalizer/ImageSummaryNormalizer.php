@@ -4,6 +4,7 @@ namespace Docker\Api\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
 use Docker\Api\Runtime\Normalizer\CheckArray;
+use Docker\Api\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -16,6 +17,7 @@ class ImageSummaryNormalizer implements DenormalizerInterface, NormalizerInterfa
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
+    use ValidatorTrait;
     public function supportsDenormalization($data, $type, $format = null) : bool
     {
         return $type === 'Docker\\Api\\Model\\ImageSummary';
@@ -36,9 +38,9 @@ class ImageSummaryNormalizer implements DenormalizerInterface, NormalizerInterfa
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\ImageSummary();
-        $validator = new \Docker\Api\Validator\ImageSummaryValidator();
-        if (!($data['skip_validation'] ?? false)) {
-            $validator->validate($data);
+        if (!($context['skip_validation'] ?? false)) {
+            $this->validate($data, new \Docker\Api\Validator\ImageSummaryConstraint());
+            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -115,9 +117,9 @@ class ImageSummaryNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         $data['Labels'] = $values_2;
         $data['Containers'] = $object->getContainers();
-        $validator = new \Docker\Api\Validator\ImageSummaryValidator();
-        if (!($data['skip_validation'] ?? false)) {
-            $validator->validate($data);
+        if (!($context['skip_validation'] ?? false)) {
+            $this->validate($data, new \Docker\Api\Validator\ImageSummaryConstraint());
+            $context['skip_validation'] = true;
         }
         return $data;
     }

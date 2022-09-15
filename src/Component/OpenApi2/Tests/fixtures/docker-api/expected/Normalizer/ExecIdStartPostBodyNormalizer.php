@@ -4,6 +4,7 @@ namespace Docker\Api\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
 use Docker\Api\Runtime\Normalizer\CheckArray;
+use Docker\Api\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -16,6 +17,7 @@ class ExecIdStartPostBodyNormalizer implements DenormalizerInterface, Normalizer
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
+    use ValidatorTrait;
     public function supportsDenormalization($data, $type, $format = null) : bool
     {
         return $type === 'Docker\\Api\\Model\\ExecIdStartPostBody';
@@ -36,9 +38,9 @@ class ExecIdStartPostBodyNormalizer implements DenormalizerInterface, Normalizer
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\ExecIdStartPostBody();
-        $validator = new \Docker\Api\Validator\ExecIdStartPostBodyValidator();
-        if (!($data['skip_validation'] ?? false)) {
-            $validator->validate($data);
+        if (!($context['skip_validation'] ?? false)) {
+            $this->validate($data, new \Docker\Api\Validator\ExecIdStartPostBodyConstraint());
+            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -63,9 +65,9 @@ class ExecIdStartPostBodyNormalizer implements DenormalizerInterface, Normalizer
         if (null !== $object->getTty()) {
             $data['Tty'] = $object->getTty();
         }
-        $validator = new \Docker\Api\Validator\ExecIdStartPostBodyValidator();
-        if (!($data['skip_validation'] ?? false)) {
-            $validator->validate($data);
+        if (!($context['skip_validation'] ?? false)) {
+            $this->validate($data, new \Docker\Api\Validator\ExecIdStartPostBodyConstraint());
+            $context['skip_validation'] = true;
         }
         return $data;
     }

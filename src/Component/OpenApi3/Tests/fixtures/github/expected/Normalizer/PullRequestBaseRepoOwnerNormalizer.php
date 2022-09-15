@@ -4,6 +4,7 @@ namespace Github\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
 use Github\Runtime\Normalizer\CheckArray;
+use Github\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -16,6 +17,7 @@ class PullRequestBaseRepoOwnerNormalizer implements DenormalizerInterface, Norma
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
+    use ValidatorTrait;
     public function supportsDenormalization($data, $type, $format = null) : bool
     {
         return $type === 'Github\\Model\\PullRequestBaseRepoOwner';
@@ -36,9 +38,9 @@ class PullRequestBaseRepoOwnerNormalizer implements DenormalizerInterface, Norma
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\PullRequestBaseRepoOwner();
-        $validator = new \Github\Validator\PullRequestBaseRepoOwnerValidator();
-        if (!($data['skip_validation'] ?? false)) {
-            $validator->validate($data);
+        if (!($context['skip_validation'] ?? false)) {
+            $this->validate($data, new \Github\Validator\PullRequestBaseRepoOwnerConstraint());
+            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -126,9 +128,9 @@ class PullRequestBaseRepoOwnerNormalizer implements DenormalizerInterface, Norma
         $data['subscriptions_url'] = $object->getSubscriptionsUrl();
         $data['type'] = $object->getType();
         $data['url'] = $object->getUrl();
-        $validator = new \Github\Validator\PullRequestBaseRepoOwnerValidator();
-        if (!($data['skip_validation'] ?? false)) {
-            $validator->validate($data);
+        if (!($context['skip_validation'] ?? false)) {
+            $this->validate($data, new \Github\Validator\PullRequestBaseRepoOwnerConstraint());
+            $context['skip_validation'] = true;
         }
         return $data;
     }

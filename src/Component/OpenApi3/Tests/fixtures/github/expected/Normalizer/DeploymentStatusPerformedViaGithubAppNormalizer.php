@@ -4,6 +4,7 @@ namespace Github\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
 use Github\Runtime\Normalizer\CheckArray;
+use Github\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -16,6 +17,7 @@ class DeploymentStatusPerformedViaGithubAppNormalizer implements DenormalizerInt
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
+    use ValidatorTrait;
     public function supportsDenormalization($data, $type, $format = null) : bool
     {
         return $type === 'Github\\Model\\DeploymentStatusPerformedViaGithubApp';
@@ -36,9 +38,9 @@ class DeploymentStatusPerformedViaGithubAppNormalizer implements DenormalizerInt
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\DeploymentStatusPerformedViaGithubApp();
-        $validator = new \Github\Validator\DeploymentStatusPerformedViaGithubAppValidator();
-        if (!($data['skip_validation'] ?? false)) {
-            $validator->validate($data);
+        if (!($context['skip_validation'] ?? false)) {
+            $this->validate($data, new \Github\Validator\DeploymentStatusPerformedViaGithubAppConstraint());
+            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -145,9 +147,9 @@ class DeploymentStatusPerformedViaGithubAppNormalizer implements DenormalizerInt
         if (null !== $object->getPem()) {
             $data['pem'] = $object->getPem();
         }
-        $validator = new \Github\Validator\DeploymentStatusPerformedViaGithubAppValidator();
-        if (!($data['skip_validation'] ?? false)) {
-            $validator->validate($data);
+        if (!($context['skip_validation'] ?? false)) {
+            $this->validate($data, new \Github\Validator\DeploymentStatusPerformedViaGithubAppConstraint());
+            $context['skip_validation'] = true;
         }
         return $data;
     }

@@ -4,6 +4,7 @@ namespace Github\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
 use Github\Runtime\Normalizer\CheckArray;
+use Github\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -16,6 +17,7 @@ class StarredRepositoryNormalizer implements DenormalizerInterface, NormalizerIn
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
+    use ValidatorTrait;
     public function supportsDenormalization($data, $type, $format = null) : bool
     {
         return $type === 'Github\\Model\\StarredRepository';
@@ -36,9 +38,9 @@ class StarredRepositoryNormalizer implements DenormalizerInterface, NormalizerIn
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\StarredRepository();
-        $validator = new \Github\Validator\StarredRepositoryValidator();
-        if (!($data['skip_validation'] ?? false)) {
-            $validator->validate($data);
+        if (!($context['skip_validation'] ?? false)) {
+            $this->validate($data, new \Github\Validator\StarredRepositoryConstraint());
+            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -59,9 +61,9 @@ class StarredRepositoryNormalizer implements DenormalizerInterface, NormalizerIn
         $data = array();
         $data['starred_at'] = $object->getStarredAt()->format('Y-m-d\\TH:i:sP');
         $data['repo'] = $this->normalizer->normalize($object->getRepo(), 'json', $context);
-        $validator = new \Github\Validator\StarredRepositoryValidator();
-        if (!($data['skip_validation'] ?? false)) {
-            $validator->validate($data);
+        if (!($context['skip_validation'] ?? false)) {
+            $this->validate($data, new \Github\Validator\StarredRepositoryConstraint());
+            $context['skip_validation'] = true;
         }
         return $data;
     }

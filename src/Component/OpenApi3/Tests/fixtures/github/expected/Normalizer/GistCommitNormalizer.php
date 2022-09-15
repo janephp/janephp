@@ -4,6 +4,7 @@ namespace Github\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
 use Github\Runtime\Normalizer\CheckArray;
+use Github\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -16,6 +17,7 @@ class GistCommitNormalizer implements DenormalizerInterface, NormalizerInterface
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
+    use ValidatorTrait;
     public function supportsDenormalization($data, $type, $format = null) : bool
     {
         return $type === 'Github\\Model\\GistCommit';
@@ -36,9 +38,9 @@ class GistCommitNormalizer implements DenormalizerInterface, NormalizerInterface
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\GistCommit();
-        $validator = new \Github\Validator\GistCommitValidator();
-        if (!($data['skip_validation'] ?? false)) {
-            $validator->validate($data);
+        if (!($context['skip_validation'] ?? false)) {
+            $this->validate($data, new \Github\Validator\GistCommitConstraint());
+            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -74,9 +76,9 @@ class GistCommitNormalizer implements DenormalizerInterface, NormalizerInterface
         $data['user'] = $this->normalizer->normalize($object->getUser(), 'json', $context);
         $data['change_status'] = $this->normalizer->normalize($object->getChangeStatus(), 'json', $context);
         $data['committed_at'] = $object->getCommittedAt()->format('Y-m-d\\TH:i:sP');
-        $validator = new \Github\Validator\GistCommitValidator();
-        if (!($data['skip_validation'] ?? false)) {
-            $validator->validate($data);
+        if (!($context['skip_validation'] ?? false)) {
+            $this->validate($data, new \Github\Validator\GistCommitConstraint());
+            $context['skip_validation'] = true;
         }
         return $data;
     }

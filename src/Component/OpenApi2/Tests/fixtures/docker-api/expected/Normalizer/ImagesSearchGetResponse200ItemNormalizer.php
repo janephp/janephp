@@ -4,6 +4,7 @@ namespace Docker\Api\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
 use Docker\Api\Runtime\Normalizer\CheckArray;
+use Docker\Api\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -16,6 +17,7 @@ class ImagesSearchGetResponse200ItemNormalizer implements DenormalizerInterface,
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
+    use ValidatorTrait;
     public function supportsDenormalization($data, $type, $format = null) : bool
     {
         return $type === 'Docker\\Api\\Model\\ImagesSearchGetResponse200Item';
@@ -36,9 +38,9 @@ class ImagesSearchGetResponse200ItemNormalizer implements DenormalizerInterface,
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\ImagesSearchGetResponse200Item();
-        $validator = new \Docker\Api\Validator\ImagesSearchGetResponse200ItemValidator();
-        if (!($data['skip_validation'] ?? false)) {
-            $validator->validate($data);
+        if (!($context['skip_validation'] ?? false)) {
+            $this->validate($data, new \Docker\Api\Validator\ImagesSearchGetResponse200ItemConstraint());
+            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -81,9 +83,9 @@ class ImagesSearchGetResponse200ItemNormalizer implements DenormalizerInterface,
         if (null !== $object->getStarCount()) {
             $data['star_count'] = $object->getStarCount();
         }
-        $validator = new \Docker\Api\Validator\ImagesSearchGetResponse200ItemValidator();
-        if (!($data['skip_validation'] ?? false)) {
-            $validator->validate($data);
+        if (!($context['skip_validation'] ?? false)) {
+            $this->validate($data, new \Docker\Api\Validator\ImagesSearchGetResponse200ItemConstraint());
+            $context['skip_validation'] = true;
         }
         return $data;
     }

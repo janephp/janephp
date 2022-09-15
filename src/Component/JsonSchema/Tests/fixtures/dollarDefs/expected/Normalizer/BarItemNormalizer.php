@@ -4,6 +4,7 @@ namespace Jane\JsonSchema\Tests\Expected\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
 use Jane\JsonSchema\Tests\Expected\Runtime\Normalizer\CheckArray;
+use Jane\JsonSchema\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -16,6 +17,7 @@ class BarItemNormalizer implements DenormalizerInterface, NormalizerInterface, D
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
+    use ValidatorTrait;
     public function supportsDenormalization($data, $type, $format = null) : bool
     {
         return $type === 'Jane\\JsonSchema\\Tests\\Expected\\Model\\BarItem';
