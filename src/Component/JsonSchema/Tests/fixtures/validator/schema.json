@@ -111,11 +111,11 @@
             "format": "uuid"
         },
         "foo": {
-            "$ref": "#/definitions/Foo"
+            "$ref": "#/definitions/FooFooFoo"
         }
     },
     "definitions": {
-        "Foo": {
+        "FooFooFoo": {
             "type": "object",
             "properties": {
                 "foo": {

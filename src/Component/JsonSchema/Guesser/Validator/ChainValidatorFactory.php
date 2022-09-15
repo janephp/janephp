@@ -2,9 +2,13 @@
 
 namespace Jane\Component\JsonSchema\Guesser\Validator;
 
+use Jane\Component\JsonSchema\Generator\Naming;
+use Jane\Component\JsonSchema\Registry\Registry;
+use Symfony\Component\Serializer\SerializerInterface;
+
 class ChainValidatorFactory
 {
-    public static function create(): ValidatorInterface
+    public static function create(Naming $naming, Registry $registry, SerializerInterface $denormalizer): ValidatorInterface
     {
         $chainValidator = new ChainValidator();
         // Numeric
@@ -22,6 +26,7 @@ class ChainValidatorFactory
         $chainValidator->addValidator(new Array_\MinItemsValidator());
         $chainValidator->addValidator(new Array_\UniqueItemsValidator());
         // Object
+        $chainValidator->addValidator(new Object_\SubObjectValidator($naming, $registry, $denormalizer));
         $chainValidator->addValidator(new Object_\MaxPropertiesValidator());
         $chainValidator->addValidator(new Object_\MinPropertiesValidator());
         // Format

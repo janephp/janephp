@@ -10,10 +10,14 @@ class ValidatorGuess
     /** @var array */
     private $arguments;
 
-    public function __construct(string $constraintClass, array $arguments = [])
+    /** @var string|null */
+    private $subProperty;
+
+    public function __construct(string $constraintClass, array $arguments = [], string $subProperty = null)
     {
         $this->constraintClass = $constraintClass;
         $this->arguments = $arguments;
+        $this->subProperty = $subProperty;
     }
 
     public function getConstraintClass(): string
@@ -21,8 +25,18 @@ class ValidatorGuess
         return $this->constraintClass;
     }
 
+    public function setConstraintClass(string $constraintClass): void
+    {
+        $this->constraintClass = $constraintClass;
+    }
+
     public function getArguments(): array
     {
         return $this->arguments;
+    }
+
+    public function getSubProperty(): ?string
+    {
+        return $this->subProperty;
     }
 }

@@ -45,6 +45,15 @@ class Registry implements RegistryInterface
         return null;
     }
 
+    public function getFirstSchema(): Schema
+    {
+        foreach ($this->schemas as $schema) {
+            return $schema;
+        }
+
+        throw new \Exception('No schema found.');
+    }
+
     /**
      * @return Schema[]
      */

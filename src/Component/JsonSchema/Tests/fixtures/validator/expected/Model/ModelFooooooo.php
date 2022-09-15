@@ -2,7 +2,7 @@
 
 namespace Jane\JsonSchema\Tests\Expected\Model;
 
-class Model
+class ModelFooooooo
 {
     /**
      * 
@@ -145,7 +145,7 @@ class Model
     /**
      * 
      *
-     * @var Foo
+     * @var FooFooFoo
      */
     protected $foo;
     /**
@@ -634,20 +634,20 @@ class Model
     /**
      * 
      *
-     * @return Foo
+     * @return FooFooFoo
      */
-    public function getFoo() : Foo
+    public function getFoo() : FooFooFoo
     {
         return $this->foo;
     }
     /**
      * 
      *
-     * @param Foo $foo
+     * @param FooFooFoo $foo
      *
      * @return self
      */
-    public function setFoo(Foo $foo) : self
+    public function setFoo(FooFooFoo $foo) : self
     {
         $this->foo = $foo;
         return $this;

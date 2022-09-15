@@ -177,6 +177,28 @@
                     "minLength": 1
                 }
             }
+        },
+        "SimpleObject": {
+            "type": "object",
+            "properties": {
+                "label": {
+                    "type": "string"
+                },
+                "subModel": {
+                    "$ref": "#/definitions/Shop"
+                },
+                "subProperty": {
+                    "type": "object",
+                    "properties": {
+                        "stringProperty": {
+                            "type": "string"
+                        },
+                        "integerProperty": {
+                            "type": "integer"
+                        }
+                    }
+                }
+            }
         }
     }
 }

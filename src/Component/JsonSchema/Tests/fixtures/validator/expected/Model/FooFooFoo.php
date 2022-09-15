@@ -2,7 +2,7 @@
 
 namespace Jane\JsonSchema\Tests\Expected\Model;
 
-class Foo
+class FooFooFoo
 {
     /**
      * 
