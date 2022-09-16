@@ -32,13 +32,12 @@ class ObjectGuesser implements GuesserInterface, PropertiesGuesserInterface, Typ
     protected $naming;
 
     /** @var ValidatorInterface */
-    protected $chainValidator;
+    protected $chainValidator = null;
 
     public function __construct(Naming $naming, SerializerInterface $serializer)
     {
         $this->naming = $naming;
         $this->serializer = $serializer;
-        $this->chainValidator = ChainValidatorFactory::create();
     }
 
     /**
@@ -57,6 +56,7 @@ class ObjectGuesser implements GuesserInterface, PropertiesGuesserInterface, Typ
     public function guessClass($object, string $name, string $reference, Registry $registry): void
     {
         if (!$registry->hasClass($reference)) {
+            $this->initChainValidator($registry);
             $extensions = [];
 
             if ($object->getAdditionalProperties()) {
@@ -87,7 +87,6 @@ class ObjectGuesser implements GuesserInterface, PropertiesGuesserInterface, Typ
             $schema = $registry->getSchema($reference);
             if (null !== $schema) {
                 $schema->addClass($reference, $classGuess);
-                $this->chainValidator->guess($object, $name, $classGuess);
             }
         }
 
@@ -103,6 +102,7 @@ class ObjectGuesser implements GuesserInterface, PropertiesGuesserInterface, Typ
     {
         /** @var JsonSchema $object */
         $properties = [];
+        $this->initChainValidator($registry);
 
         foreach ($object->getProperties() as $key => $property) {
             $propertyObj = $property;
@@ -197,5 +197,12 @@ class ObjectGuesser implements GuesserInterface, PropertiesGuesserInterface, Typ
     protected function createClassGuess($object, string $reference, string $name, array $extensions): ClassGuess
     {
         return new ClassGuess($object, $reference, $this->naming->getClassName($name), $extensions, $object->getDeprecated());
+    }
+
+    private function initChainValidator(Registry $registry): void
+    {
+        if (null === $this->chainValidator) {
+            $this->chainValidator = ChainValidatorFactory::create($this->naming, $registry, $this->serializer);
+        }
     }
 }

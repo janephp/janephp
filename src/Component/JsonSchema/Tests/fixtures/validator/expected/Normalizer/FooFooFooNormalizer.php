@@ -12,7 +12,7 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class FooNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+class FooFooFooNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
@@ -20,11 +20,11 @@ class FooNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
     use ValidatorTrait;
     public function supportsDenormalization($data, $type, $format = null) : bool
     {
-        return $type === 'Jane\\JsonSchema\\Tests\\Expected\\Model\\Foo';
+        return $type === 'Jane\\JsonSchema\\Tests\\Expected\\Model\\FooFooFoo';
     }
     public function supportsNormalization($data, $format = null) : bool
     {
-        return $data instanceof \Jane\JsonSchema\Tests\Expected\Model\Foo;
+        return $data instanceof \Jane\JsonSchema\Tests\Expected\Model\FooFooFoo;
     }
     /**
      * @return mixed
@@ -37,9 +37,9 @@ class FooNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Jane\JsonSchema\Tests\Expected\Model\Foo();
+        $object = new \Jane\JsonSchema\Tests\Expected\Model\FooFooFoo();
         if (!($context['skip_validation'] ?? false)) {
-            $this->validate($data, new \Jane\JsonSchema\Tests\Expected\Validator\FooConstraint());
+            $this->validate($data, new \Jane\JsonSchema\Tests\Expected\Validator\FooFooFooConstraint());
             $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
@@ -60,7 +60,7 @@ class FooNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
             $data['foo'] = $object->getFoo();
         }
         if (!($context['skip_validation'] ?? false)) {
-            $this->validate($data, new \Jane\JsonSchema\Tests\Expected\Validator\FooConstraint());
+            $this->validate($data, new \Jane\JsonSchema\Tests\Expected\Validator\FooFooFooConstraint());
             $context['skip_validation'] = true;
         }
         return $data;

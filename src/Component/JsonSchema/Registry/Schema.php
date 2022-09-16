@@ -90,6 +90,19 @@ class Schema implements SchemaInterface
         return null;
     }
 
+    public function findPropertyClass(string $sourceObject, string $propertyObject): ?ClassGuess
+    {
+        $referencePart = sprintf('%s/properties/%s', $sourceObject, $propertyObject);
+
+        foreach ($this->classes as $class) {
+            if (strpos($class->getReference(), $referencePart) !== false) {
+                return $class;
+            }
+        }
+
+        return null;
+    }
+
     /**
      * @return ClassGuess[]
      */

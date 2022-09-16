@@ -11,6 +11,7 @@ use Jane\Component\JsonSchema\Generator\RuntimeGenerator;
 use Jane\Component\JsonSchema\Generator\ValidatorGenerator;
 use Jane\Component\JsonSchema\Guesser\ChainGuesser;
 use Jane\Component\JsonSchema\Guesser\JsonSchema\JsonSchemaGuesserFactory;
+use Jane\Component\JsonSchema\Guesser\Validator\ChainValidatorFactory;
 use Jane\Component\JsonSchema\JsonSchema\Normalizer\JaneObjectNormalizer;
 use Jane\Component\JsonSchema\Registry\Registry;
 use Jane\Component\JsonSchema\Registry\Schema;
@@ -56,9 +57,12 @@ class Jane extends ChainGenerator
             $this->chainGuesser->guessClass($jsonSchema, $schema->getRootName(), $schema->getOrigin() . '#', $registry);
         }
 
+        $chainValidator = ChainValidatorFactory::create($this->naming, $registry, $this->serializer);
+
         foreach ($registry->getSchemas() as $schema) {
             foreach ($schema->getClasses() as $class) {
                 $properties = $this->chainGuesser->guessProperties($class->getObject(), $schema->getRootName(), $class->getReference(), $registry);
+                $chainValidator->guess($class->getObject(), $class->getName(), $class);
 
                 $names = [];
                 foreach ($properties as $property) {

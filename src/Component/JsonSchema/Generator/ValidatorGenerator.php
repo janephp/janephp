@@ -33,6 +33,7 @@ class ValidatorGenerator implements GeneratorInterface
         foreach ($schema->getClasses() as $class) {
             if ($class->hasValidatorGuesses()) {
                 $className = $this->naming->getConstraintName($class->getName());
+                $collectionItemsConstraints = [];
                 $collectionItems = [];
 
                 foreach ($class->getPropertyValidatorGuesses() as $name => $propertyGuesses) {
@@ -41,17 +42,32 @@ class ValidatorGenerator implements GeneratorInterface
                         $constraints[] = new Expr\ArrayItem($this->generateConstraint($propertyGuess));
                     }
 
-                    $collectionClass = $class->isRequired($name) ? Required::class : Optional::class;
-                    $collectionItems[] = new Expr\ArrayItem(new Expr\New_(new Node\Name\FullyQualified($collectionClass), [
-                        new Node\Arg(new Expr\Array_($constraints)),
-                    ]), new Scalar\String_($name));
+                    $collectionItemsConstraints[$name] = $constraints;
                 }
 
                 $optionsVariable = new Expr\Variable('options');
 
                 $constraintsItems = [];
+                /** @var ValidatorGuess $classGuess */
                 foreach ($class->getValidatorGuesses() as $classGuess) {
-                    $constraintsItems[] = new Expr\ArrayItem($this->generateConstraint($classGuess));
+                    if ($classGuess->getSubProperty() === null) {
+                        $constraintsItems[] = new Expr\ArrayItem($this->generateConstraint($classGuess));
+                    } else {
+                        $classGuess->setConstraintClass(sprintf('%s\%s', $namespace, $classGuess->getConstraintClass()));
+
+                        if (!\array_key_exists($name, $collectionItemsConstraints)) {
+                            $collectionItemsConstraints[$classGuess->getSubProperty()] = [$this->generateConstraint($classGuess)];
+                        } else {
+                            $collectionItemsConstraints[$classGuess->getSubProperty()] = array_merge($collectionItemsConstraints[$name], [$this->generateConstraint($classGuess)]);
+                        }
+                    }
+                }
+
+                foreach ($collectionItemsConstraints as $name => $constraints) {
+                    $collectionClass = $class->isRequired($name) ? Required::class : Optional::class;
+                    $collectionItems[] = new Expr\ArrayItem(new Expr\New_(new Node\Name\FullyQualified($collectionClass), [
+                        new Node\Arg(new Expr\Array_($constraints)),
+                    ]), new Scalar\String_($name));
                 }
 
                 if (\count($collectionItems) > 0) {

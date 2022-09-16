@@ -10,6 +10,8 @@ use Jane\Component\JsonSchema\Tests\Validation\Generated\Model\FormatObject;
 use Jane\Component\JsonSchema\Tests\Validation\Generated\Model\NumericObject;
 use Jane\Component\JsonSchema\Tests\Validation\Generated\Model\ObjectObject;
 use Jane\Component\JsonSchema\Tests\Validation\Generated\Model\Shop;
+use Jane\Component\JsonSchema\Tests\Validation\Generated\Model\SimpleObject;
+use Jane\Component\JsonSchema\Tests\Validation\Generated\Model\SimpleObjectSubProperty;
 use Jane\Component\JsonSchema\Tests\Validation\Generated\Model\StringObject;
 use Jane\Component\JsonSchema\Tests\Validation\Generated\Model\TypeObject;
 use Jane\Component\JsonSchema\Tests\Validation\Generated\Normalizer\ArrayObjectNormalizer;
@@ -17,12 +19,15 @@ use Jane\Component\JsonSchema\Tests\Validation\Generated\Normalizer\FormatObject
 use Jane\Component\JsonSchema\Tests\Validation\Generated\Normalizer\NumericObjectNormalizer;
 use Jane\Component\JsonSchema\Tests\Validation\Generated\Normalizer\ObjectObjectNormalizer;
 use Jane\Component\JsonSchema\Tests\Validation\Generated\Normalizer\ShopNormalizer;
+use Jane\Component\JsonSchema\Tests\Validation\Generated\Normalizer\SimpleObjectNormalizer;
+use Jane\Component\JsonSchema\Tests\Validation\Generated\Normalizer\SimpleObjectSubPropertyNormalizer;
 use Jane\Component\JsonSchema\Tests\Validation\Generated\Normalizer\StringObjectNormalizer;
 use Jane\Component\JsonSchema\Tests\Validation\Generated\Normalizer\TypeObjectNormalizer;
 use Jane\Component\JsonSchema\Tests\Validation\Generated\Runtime\Normalizer\ValidationException;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Output\NullOutput;
+use Symfony\Component\Serializer\Serializer;
 use Symfony\Component\Validator\Constraints\Count;
 use Symfony\Component\Validator\Constraints\Hostname;
 
@@ -61,6 +66,9 @@ class ValidationTest extends TestCase
 
         // 9. Nullable
         $this->nullableValidation();
+
+        // 10. SubModel
+        $this->subModelValidation();
     }
 
     private function numericValidation(): void
@@ -792,5 +800,51 @@ class ValidationTest extends TestCase
         $this->assertEquals(400, $caughtException->getCode());
         $this->assertEquals(2, $caughtException->getViolationList()->count());
         $this->assertEquals('[name]', $caughtException->getViolationList()->get(0)->getPropertyPath());
+    }
+
+    private function subModelValidation(): void
+    {
+        $serializer = new Serializer([new SimpleObjectNormalizer(), new ShopNormalizer(), new SimpleObjectSubPropertyNormalizer()]);
+
+        /** @var SimpleObject|null $simpleObject */
+        $simpleObject = $serializer->denormalize([
+            'label' => 'Coucou',
+            'subModel' => [
+                'name' => 'Appartement',
+            ],
+            'subProperty' => [
+                'stringProperty' => 'string',
+                'integerProperty' => 10,
+            ],
+        ], SimpleObject::class);
+
+        $this->assertInstanceOf(SimpleObject::class, $simpleObject);
+        $this->assertEquals('Coucou', $simpleObject->getLabel());
+        $this->assertInstanceOf(Shop::class, $simpleObject->getSubModel());
+        $this->assertEquals('Appartement', $simpleObject->getSubModel()->getName());
+        $this->assertInstanceOf(SimpleObjectSubProperty::class, $simpleObject->getSubProperty());
+        $this->assertEquals('string', $simpleObject->getSubProperty()->getStringProperty());
+        $this->assertEquals(10, $simpleObject->getSubProperty()->getIntegerProperty());
+
+        $caughtException = null;
+        try {
+            $serializer->denormalize([
+                'label' => 'Coucou',
+                'subModel' => [
+                    'name' => null,
+                ],
+                'subProperty' => [
+                    'stringProperty' => 'string',
+                    'integerProperty' => 10,
+                ],
+            ], SimpleObject::class);
+        } catch (ValidationException $exception) {
+            $caughtException = $exception;
+        }
+
+        $this->assertInstanceOf(ValidationException::class, $caughtException);
+        $this->assertEquals(400, $caughtException->getCode());
+        $this->assertEquals(2, $caughtException->getViolationList()->count());
+        $this->assertEquals('[subModel][name]', $caughtException->getViolationList()->get(0)->getPropertyPath());
     }
 }

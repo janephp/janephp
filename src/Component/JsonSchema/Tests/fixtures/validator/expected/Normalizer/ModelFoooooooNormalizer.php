@@ -12,7 +12,7 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class ModelNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+class ModelFoooooooNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
@@ -20,11 +20,11 @@ class ModelNormalizer implements DenormalizerInterface, NormalizerInterface, Den
     use ValidatorTrait;
     public function supportsDenormalization($data, $type, $format = null) : bool
     {
-        return $type === 'Jane\\JsonSchema\\Tests\\Expected\\Model\\Model';
+        return $type === 'Jane\\JsonSchema\\Tests\\Expected\\Model\\ModelFooooooo';
     }
     public function supportsNormalization($data, $format = null) : bool
     {
-        return $data instanceof \Jane\JsonSchema\Tests\Expected\Model\Model;
+        return $data instanceof \Jane\JsonSchema\Tests\Expected\Model\ModelFooooooo;
     }
     /**
      * @return mixed
@@ -37,9 +37,9 @@ class ModelNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Jane\JsonSchema\Tests\Expected\Model\Model();
+        $object = new \Jane\JsonSchema\Tests\Expected\Model\ModelFooooooo();
         if (!($context['skip_validation'] ?? false)) {
-            $this->validate($data, new \Jane\JsonSchema\Tests\Expected\Validator\ModelConstraint());
+            $this->validate($data, new \Jane\JsonSchema\Tests\Expected\Validator\ModelFoooooooConstraint());
             $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
@@ -135,7 +135,7 @@ class ModelNormalizer implements DenormalizerInterface, NormalizerInterface, Den
             $object->setUuidFormat($data['uuidFormat']);
         }
         if (\array_key_exists('foo', $data)) {
-            $object->setFoo($this->denormalizer->denormalize($data['foo'], 'Jane\\JsonSchema\\Tests\\Expected\\Model\\Foo', 'json', $context));
+            $object->setFoo($this->denormalizer->denormalize($data['foo'], 'Jane\\JsonSchema\\Tests\\Expected\\Model\\FooFooFoo', 'json', $context));
         }
         return $object;
     }
@@ -234,7 +234,7 @@ class ModelNormalizer implements DenormalizerInterface, NormalizerInterface, Den
             $data['foo'] = $this->normalizer->normalize($object->getFoo(), 'json', $context);
         }
         if (!($context['skip_validation'] ?? false)) {
-            $this->validate($data, new \Jane\JsonSchema\Tests\Expected\Validator\ModelConstraint());
+            $this->validate($data, new \Jane\JsonSchema\Tests\Expected\Validator\ModelFoooooooConstraint());
             $context['skip_validation'] = true;
         }
         return $data;

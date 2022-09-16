@@ -2,7 +2,7 @@
 
 namespace Jane\JsonSchema\Tests\Expected\Validator;
 
-class FooConstraint extends \Symfony\Component\Validator\Constraints\Compound
+class FooFooFooConstraint extends \Symfony\Component\Validator\Constraints\Compound
 {
     protected function getConstraints($options) : array
     {
