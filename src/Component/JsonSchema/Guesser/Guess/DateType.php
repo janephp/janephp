@@ -63,8 +63,19 @@ class DateType extends ObjectType
      */
     protected function createNormalizationValueStatement(Context $context, Expr $input, bool $normalizerFromObject = true): Expr
     {
-        // $object->format($format);
-        return new Expr\MethodCall($input, 'format', [
+        if (!(\PHP_VERSION_ID >= 80000)) {
+            if ($this->object->getNullable()) {
+                return new Expr\Ternary($input, new Expr\MethodCall($input, 'format', [
+                    new Arg(new Scalar\String_($this->format)),
+                ]), new ConstFetch(new Name('null')));
+            }
+
+            return new Expr\MethodCall($input, 'format', [
+                new Arg(new Scalar\String_($this->format)),
+            ]);
+        }
+
+        return new Expr\NullsafeMethodCall($input, 'format', [
             new Arg(new Scalar\String_($this->format)),
         ]);
     }

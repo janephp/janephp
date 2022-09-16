@@ -5,6 +5,7 @@ namespace Jane\Component\JsonSchema\Guesser\Guess;
 use Jane\Component\JsonSchema\Generator\Context\Context;
 use PhpParser\Node\Arg;
 use PhpParser\Node\Expr;
+use PhpParser\Node\Expr\ConstFetch;
 use PhpParser\Node\Name;
 use PhpParser\Node\Scalar;
 
@@ -56,8 +57,19 @@ class DateTimeType extends ObjectType
      */
     protected function createNormalizationValueStatement(Context $context, Expr $input, bool $normalizerFromObject = true): Expr
     {
-        // $object->format($format);
-        return new Expr\MethodCall($input, 'format', [
+        if (!(\PHP_VERSION_ID >= 80000)) {
+            if ($this->object->getNullable()) {
+                return new Expr\Ternary($input, new Expr\MethodCall($input, 'format', [
+                    new Arg(new Scalar\String_($this->outputFormat)),
+                ]), new ConstFetch(new Name('null')));
+            }
+
+            return new Expr\MethodCall($input, 'format', [
+                new Arg(new Scalar\String_($this->outputFormat)),
+            ]);
+        }
+
+        return new Expr\NullsafeMethodCall($input, 'format', [
             new Arg(new Scalar\String_($this->outputFormat)),
         ]);
     }
