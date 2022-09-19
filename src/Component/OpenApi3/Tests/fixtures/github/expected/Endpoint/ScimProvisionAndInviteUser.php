@@ -5,16 +5,19 @@ namespace Github\Endpoint;
 class ScimProvisionAndInviteUser extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $org;
+    protected $accept;
     /**
      * Provision organization membership for a user, and send an activation email to the email address.
      *
      * @param string $org 
      * @param null|\Github\Model\ScimV2OrganizationsOrgUsersPostBody $requestBody 
+     * @param array $accept Accept content header application/scim+json|application/json
      */
-    public function __construct(string $org, ?\Github\Model\ScimV2OrganizationsOrgUsersPostBody $requestBody = null)
+    public function __construct(string $org, ?\Github\Model\ScimV2OrganizationsOrgUsersPostBody $requestBody = null, array $accept = array())
     {
         $this->org = $org;
         $this->body = $requestBody;
+        $this->accept = $accept;
     }
     use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
@@ -34,7 +37,10 @@ class ScimProvisionAndInviteUser extends \Github\Runtime\Client\BaseEndpoint imp
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        if (empty($this->accept)) {
+            return array('Accept' => array('application/scim+json', 'application/json'));
+        }
+        return $this->accept;
     }
     /**
      * {@inheritdoc}

@@ -4,6 +4,7 @@ namespace Github\Endpoint;
 
 class ReposCreateForAuthenticatedUser extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
+    protected $accept;
     /**
     * Creates a new repository for the authenticated user.
     
@@ -15,10 +16,12 @@ class ReposCreateForAuthenticatedUser extends \Github\Runtime\Client\BaseEndpoin
     *   `repo` scope to create a private repository
     *
     * @param null|\Github\Model\UserReposPostBody $requestBody 
+    * @param array $accept Accept content header application/json|application/scim+json
     */
-    public function __construct(?\Github\Model\UserReposPostBody $requestBody = null)
+    public function __construct(?\Github\Model\UserReposPostBody $requestBody = null, array $accept = array())
     {
         $this->body = $requestBody;
+        $this->accept = $accept;
     }
     use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
@@ -38,7 +41,10 @@ class ReposCreateForAuthenticatedUser extends \Github\Runtime\Client\BaseEndpoin
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        if (empty($this->accept)) {
+            return array('Accept' => array('application/json', 'application/scim+json'));
+        }
+        return $this->accept;
     }
     /**
      * {@inheritdoc}

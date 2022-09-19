@@ -6,18 +6,21 @@ class ReposUpdateInformationAboutPagesSite extends \Github\Runtime\Client\BaseEn
 {
     protected $owner;
     protected $repo;
+    protected $accept;
     /**
      * 
      *
      * @param string $owner 
      * @param string $repo 
      * @param null|\Github\Model\ReposOwnerRepoPagesPutBody $requestBody 
+     * @param array $accept Accept content header application/json|application/scim+json
      */
-    public function __construct(string $owner, string $repo, ?\Github\Model\ReposOwnerRepoPagesPutBody $requestBody = null)
+    public function __construct(string $owner, string $repo, ?\Github\Model\ReposOwnerRepoPagesPutBody $requestBody = null, array $accept = array())
     {
         $this->owner = $owner;
         $this->repo = $repo;
         $this->body = $requestBody;
+        $this->accept = $accept;
     }
     use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
@@ -37,7 +40,10 @@ class ReposUpdateInformationAboutPagesSite extends \Github\Runtime\Client\BaseEn
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        if (empty($this->accept)) {
+            return array('Accept' => array('application/json', 'application/scim+json'));
+        }
+        return $this->accept;
     }
     /**
      * {@inheritdoc}

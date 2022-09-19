@@ -6,16 +6,19 @@ class ScimDeleteUserFromOrg extends \Github\Runtime\Client\BaseEndpoint implemen
 {
     protected $org;
     protected $scim_user_id;
+    protected $accept;
     /**
      * 
      *
      * @param string $org 
      * @param string $scimUserId scim_user_id parameter
+     * @param array $accept Accept content header application/json|application/scim+json
      */
-    public function __construct(string $org, string $scimUserId)
+    public function __construct(string $org, string $scimUserId, array $accept = array())
     {
         $this->org = $org;
         $this->scim_user_id = $scimUserId;
+        $this->accept = $accept;
     }
     use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
@@ -32,7 +35,10 @@ class ScimDeleteUserFromOrg extends \Github\Runtime\Client\BaseEndpoint implemen
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        if (empty($this->accept)) {
+            return array('Accept' => array('application/json', 'application/scim+json'));
+        }
+        return $this->accept;
     }
     /**
      * {@inheritdoc}

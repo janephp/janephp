@@ -6,6 +6,7 @@ class ReposListForks extends \Github\Runtime\Client\BaseEndpoint implements \Git
 {
     protected $owner;
     protected $repo;
+    protected $accept;
     /**
      * 
      *
@@ -16,12 +17,14 @@ class ReposListForks extends \Github\Runtime\Client\BaseEndpoint implements \Git
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
+     * @param array $accept Accept content header application/json|application/scim+json
      */
-    public function __construct(string $owner, string $repo, array $queryParameters = array())
+    public function __construct(string $owner, string $repo, array $queryParameters = array(), array $accept = array())
     {
         $this->owner = $owner;
         $this->repo = $repo;
         $this->queryParameters = $queryParameters;
+        $this->accept = $accept;
     }
     use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
@@ -38,7 +41,10 @@ class ReposListForks extends \Github\Runtime\Client\BaseEndpoint implements \Git
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        if (empty($this->accept)) {
+            return array('Accept' => array('application/json', 'application/scim+json'));
+        }
+        return $this->accept;
     }
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {

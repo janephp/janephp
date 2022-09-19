@@ -5,6 +5,7 @@ namespace Github\Endpoint;
 class ScimListProvisionedIdentities extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     protected $org;
+    protected $accept;
     /**
     * Retrieves a paginated list of all provisioned organization members, including pending invitations. If you provide the `filter` parameter, the resources for all matching provisions members are returned.
     
@@ -35,11 +36,13 @@ class ScimListProvisionedIdentities extends \Github\Runtime\Client\BaseEndpoint 
     
     `?filter=emails%20eq%20\"octocat@github.com\"`.
     * }
+    * @param array $accept Accept content header application/scim+json|application/json
     */
-    public function __construct(string $org, array $queryParameters = array())
+    public function __construct(string $org, array $queryParameters = array(), array $accept = array())
     {
         $this->org = $org;
         $this->queryParameters = $queryParameters;
+        $this->accept = $accept;
     }
     use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
@@ -56,7 +59,10 @@ class ScimListProvisionedIdentities extends \Github\Runtime\Client\BaseEndpoint 
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        if (empty($this->accept)) {
+            return array('Accept' => array('application/scim+json', 'application/json'));
+        }
+        return $this->accept;
     }
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {

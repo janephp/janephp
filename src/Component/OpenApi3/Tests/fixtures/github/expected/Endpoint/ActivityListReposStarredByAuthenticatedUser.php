@@ -4,6 +4,7 @@ namespace Github\Endpoint;
 
 class ActivityListReposStarredByAuthenticatedUser extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
+    protected $accept;
     /**
     * Lists repositories the authenticated user has starred.
     
@@ -15,10 +16,12 @@ class ActivityListReposStarredByAuthenticatedUser extends \Github\Runtime\Client
     *     @var int $per_page Results per page (max 100)
     *     @var int $page Page number of the results to fetch.
     * }
+    * @param array $accept Accept content header application/json|application/vnd.github.v3.star+json
     */
-    public function __construct(array $queryParameters = array())
+    public function __construct(array $queryParameters = array(), array $accept = array())
     {
         $this->queryParameters = $queryParameters;
+        $this->accept = $accept;
     }
     use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
@@ -35,7 +38,10 @@ class ActivityListReposStarredByAuthenticatedUser extends \Github\Runtime\Client
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        if (empty($this->accept)) {
+            return array('Accept' => array('application/json', 'application/vnd.github.v3.star+json'));
+        }
+        return $this->accept;
     }
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {

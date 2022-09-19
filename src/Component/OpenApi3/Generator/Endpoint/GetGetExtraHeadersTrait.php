@@ -2,11 +2,9 @@
 
 namespace Jane\Component\OpenApi3\Generator\Endpoint;
 
-use Jane\Component\JsonSchemaRuntime\Reference;
 use Jane\Component\OpenApi3\Guesser\GuessClass;
-use Jane\Component\OpenApi3\JsonSchema\Model\Response;
-use Jane\Component\OpenApi3\JsonSchema\Normalizer\ResponseNormalizer;
 use Jane\Component\OpenApiCommon\Guesser\Guess\OperationGuess;
+use PhpParser\Node\Arg;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Name;
 use PhpParser\Node\Scalar;
@@ -17,66 +15,49 @@ trait GetGetExtraHeadersTrait
     public function getExtraHeadersMethod(OperationGuess $operation, GuessClass $guessClass): ?Stmt\ClassMethod
     {
         $headers = [];
-        $produces = [];
+        $produces = $this->getContentTypes($operation, $guessClass);
 
-        if ($operation->getOperation()->getResponses()) {
-            foreach ($operation->getOperation()->getResponses() as $response) {
-                if ($response instanceof Reference) {
-                    [$_, $response] = $guessClass->resolve($response, Response::class);
-                }
-                if (\is_array($response)) {
-                    $normalizer = new ResponseNormalizer();
-                    $normalizer->setDenormalizer($this->denormalizer);
-                    $response = $normalizer->denormalize($response, Response::class);
-                }
-
-                /** @var Response $response */
-                if ($response->getContent()) {
-                    foreach ($response->getContent() as $contentType => $content) {
-                        $produces[] = $contentType;
-                    }
-                }
-            }
-
-            if ($operation->getOperation()->getResponses()->getDefault()) {
-                $response = $operation->getOperation()->getResponses()->getDefault();
-
-                if ($response instanceof Reference) {
-                    [$_, $response] = $guessClass->resolve($response, Response::class);
-                }
-
-                /** @var Response $response */
-                if ($response->getContent()) {
-                    foreach ($response->getContent() as $contentType => $content) {
-                        $produces[] = $contentType;
-                    }
-                }
-            }
-        }
-
-        // It's a server side specification, what it produces is what we potentially can accept
-        if (\in_array('application/json', $produces, true)) {
-            $headers[] = new Expr\ArrayItem(
-                new Expr\Array_(
-                    [
-                        new Expr\ArrayItem(
-                            new Scalar\String_('application/json')
-                        ),
-                    ]
-                ),
-                new Scalar\String_('Accept')
-            );
-        }
-
-        if (\count($headers) === 0) {
+        if (\count($produces) === 0) {
             return null;
         }
 
+        // Add all content types except text/html as default Accept content types.
+        $items = [];
+        foreach ($produces as $contentType) {
+            if ($contentType === 'text/html') {
+                continue;
+            }
+            $items[] = new Expr\ArrayItem(new Scalar\String_($contentType));
+        }
+        $headers[] = new Expr\ArrayItem(
+            new Expr\Array_($items),
+            new Scalar\String_('Accept')
+        );
+
+        if (\count($items) === 1) {
+            return new Stmt\ClassMethod('getExtraHeaders', [
+                'type' => Stmt\Class_::MODIFIER_PUBLIC,
+                'stmts' => [new Stmt\Return_(new Expr\Array_($headers))],
+                'returnType' => new Name('array'),
+            ]);
+        }
+
+        $returnDefault = new Stmt\If_(
+            new Expr\FuncCall(new Name('empty'), [
+                new Arg(new Expr\PropertyFetch(new Expr\Variable('this'), 'accept')),
+            ]),
+            [
+                'stmts' => [
+                    new Stmt\Return_(new Expr\Array_($headers)),
+                ],
+            ]
+        );
+
+        $returnAccept = new Stmt\Return_(new Expr\PropertyFetch(new Expr\Variable('this'), 'accept'));
+
         return new Stmt\ClassMethod('getExtraHeaders', [
             'type' => Stmt\Class_::MODIFIER_PUBLIC,
-            'stmts' => [
-                new Stmt\Return_(new Expr\Array_($headers)),
-            ],
+            'stmts' => [$returnDefault, $returnAccept],
             'returnType' => new Name('array'),
         ]);
     }

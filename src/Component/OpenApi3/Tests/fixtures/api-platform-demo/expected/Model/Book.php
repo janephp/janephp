@@ -5,64 +5,103 @@ namespace ApiPlatform\Demo\Model;
 class Book
 {
     /**
-     * The ISBN of the book
+     * 
      *
-     * @var string
+     * @var string|null
+     */
+    protected $id;
+    /**
+     * The ISBN of the book.
+     *
+     * @var string|null
      */
     protected $isbn;
     /**
-     * The title of the book
+     * The title of the book.
      *
      * @var string
      */
     protected $title;
     /**
-     * A description of the item
+     * A description of the item.
      *
      * @var string
      */
     protected $description;
     /**
-     * The author of this content or rating. Please note that author is special in that HTML 5 provides a special mechanism for indicating authorship via the rel tag. That is equivalent to this and may be used interchangeably
+     * The author of this content or rating. Please note that author is special in that HTML 5 provides a special mechanism for indicating authorship via the rel tag. That is equivalent to this and may be used interchangeably.
      *
      * @var string
      */
     protected $author;
     /**
-     * The date on which the CreativeWork was created or the item was added to a DataFeed
+     * The date on which the CreativeWork was created or the item was added to a DataFeed.
      *
      * @var \DateTime
      */
     protected $publicationDate;
     /**
-     * The book's reviews
+     * The book's reviews.
      *
-     * @var Review[]
+     * @var string[]
      */
     protected $reviews;
     /**
-     * The ISBN of the book
+     * The book's cover base64 encoded.
      *
-     * @return string
+     * @var string|null
      */
-    public function getIsbn() : string
+    protected $cover;
+    /**
+     * 
+     *
+     * @var \DateTime|null
+     */
+    protected $archivedAt;
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getId() : ?string
+    {
+        return $this->id;
+    }
+    /**
+     * 
+     *
+     * @param string|null $id
+     *
+     * @return self
+     */
+    public function setId(?string $id) : self
+    {
+        $this->id = $id;
+        return $this;
+    }
+    /**
+     * The ISBN of the book.
+     *
+     * @return string|null
+     */
+    public function getIsbn() : ?string
     {
         return $this->isbn;
     }
     /**
-     * The ISBN of the book
+     * The ISBN of the book.
      *
-     * @param string $isbn
+     * @param string|null $isbn
      *
      * @return self
      */
-    public function setIsbn(string $isbn) : self
+    public function setIsbn(?string $isbn) : self
     {
         $this->isbn = $isbn;
         return $this;
     }
     /**
-     * The title of the book
+     * The title of the book.
      *
      * @return string
      */
@@ -71,7 +110,7 @@ class Book
         return $this->title;
     }
     /**
-     * The title of the book
+     * The title of the book.
      *
      * @param string $title
      *
@@ -83,7 +122,7 @@ class Book
         return $this;
     }
     /**
-     * A description of the item
+     * A description of the item.
      *
      * @return string
      */
@@ -92,7 +131,7 @@ class Book
         return $this->description;
     }
     /**
-     * A description of the item
+     * A description of the item.
      *
      * @param string $description
      *
@@ -104,7 +143,7 @@ class Book
         return $this;
     }
     /**
-     * The author of this content or rating. Please note that author is special in that HTML 5 provides a special mechanism for indicating authorship via the rel tag. That is equivalent to this and may be used interchangeably
+     * The author of this content or rating. Please note that author is special in that HTML 5 provides a special mechanism for indicating authorship via the rel tag. That is equivalent to this and may be used interchangeably.
      *
      * @return string
      */
@@ -113,7 +152,7 @@ class Book
         return $this->author;
     }
     /**
-     * The author of this content or rating. Please note that author is special in that HTML 5 provides a special mechanism for indicating authorship via the rel tag. That is equivalent to this and may be used interchangeably
+     * The author of this content or rating. Please note that author is special in that HTML 5 provides a special mechanism for indicating authorship via the rel tag. That is equivalent to this and may be used interchangeably.
      *
      * @param string $author
      *
@@ -125,7 +164,7 @@ class Book
         return $this;
     }
     /**
-     * The date on which the CreativeWork was created or the item was added to a DataFeed
+     * The date on which the CreativeWork was created or the item was added to a DataFeed.
      *
      * @return \DateTime
      */
@@ -134,7 +173,7 @@ class Book
         return $this->publicationDate;
     }
     /**
-     * The date on which the CreativeWork was created or the item was added to a DataFeed
+     * The date on which the CreativeWork was created or the item was added to a DataFeed.
      *
      * @param \DateTime $publicationDate
      *
@@ -146,24 +185,66 @@ class Book
         return $this;
     }
     /**
-     * The book's reviews
+     * The book's reviews.
      *
-     * @return Review[]
+     * @return string[]
      */
     public function getReviews() : array
     {
         return $this->reviews;
     }
     /**
-     * The book's reviews
+     * The book's reviews.
      *
-     * @param Review[] $reviews
+     * @param string[] $reviews
      *
      * @return self
      */
     public function setReviews(array $reviews) : self
     {
         $this->reviews = $reviews;
+        return $this;
+    }
+    /**
+     * The book's cover base64 encoded.
+     *
+     * @return string|null
+     */
+    public function getCover() : ?string
+    {
+        return $this->cover;
+    }
+    /**
+     * The book's cover base64 encoded.
+     *
+     * @param string|null $cover
+     *
+     * @return self
+     */
+    public function setCover(?string $cover) : self
+    {
+        $this->cover = $cover;
+        return $this;
+    }
+    /**
+     * 
+     *
+     * @return \DateTime|null
+     */
+    public function getArchivedAt() : ?\DateTime
+    {
+        return $this->archivedAt;
+    }
+    /**
+     * 
+     *
+     * @param \DateTime|null $archivedAt
+     *
+     * @return self
+     */
+    public function setArchivedAt(?\DateTime $archivedAt) : self
+    {
+        $this->archivedAt = $archivedAt;
         return $this;
     }
 }

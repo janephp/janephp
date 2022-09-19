@@ -33,6 +33,10 @@ class ReposGetPullRequestReviewProtection extends \Github\Runtime\Client\BaseEnd
     {
         return array(array(), null);
     }
+    public function getExtraHeaders() : array
+    {
+        return array('Accept' => array('application/vnd.github.luke-cage-preview+json'));
+    }
     /**
      * {@inheritdoc}
      *

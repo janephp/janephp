@@ -4,6 +4,7 @@ namespace Jane\Component\OpenApi3\Generator\Endpoint;
 
 use Jane\Component\JsonSchema\Generator\Context\Context;
 use Jane\Component\JsonSchemaRuntime\Reference;
+use Jane\Component\OpenApi3\Generator\RequestBodyContent\JsonBodyContentGenerator;
 use Jane\Component\OpenApi3\Guesser\GuessClass;
 use Jane\Component\OpenApi3\JsonSchema\Model\Response;
 use Jane\Component\OpenApi3\JsonSchema\Model\Schema;
@@ -172,7 +173,7 @@ EOD
         $statements = [];
 
         foreach ($response->getContent() as $contentType => $content) {
-            if ($contentType === 'application/json' || $contentType === 'application/problem+json') {
+            if (\in_array($contentType, JsonBodyContentGenerator::JSON_TYPES)) {
                 [$returnType, $throwType, $returnStatement] = $this->createContentDenormalizationStatement(
                     $name,
                     $status,

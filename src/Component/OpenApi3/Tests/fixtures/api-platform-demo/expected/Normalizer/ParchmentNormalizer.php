@@ -41,14 +41,17 @@ class ParchmentNormalizer implements DenormalizerInterface, NormalizerInterface,
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
+        if (\array_key_exists('id', $data) && $data['id'] !== null) {
+            $object->setId($data['id']);
+        }
+        elseif (\array_key_exists('id', $data) && $data['id'] === null) {
+            $object->setId(null);
+        }
         if (\array_key_exists('title', $data)) {
             $object->setTitle($data['title']);
         }
         if (\array_key_exists('description', $data)) {
             $object->setDescription($data['description']);
-        }
-        if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
         }
         return $object;
     }

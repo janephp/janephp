@@ -28,6 +28,10 @@ class MetaGetOctocat extends \Github\Runtime\Client\BaseEndpoint implements \Git
     {
         return array(array(), null);
     }
+    public function getExtraHeaders() : array
+    {
+        return array('Accept' => array('application/octocat-stream'));
+    }
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();

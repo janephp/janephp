@@ -6,6 +6,7 @@ class ContentDownload extends \PicturePark\API\Runtime\Client\BaseEndpoint imple
 {
     protected $contentId;
     protected $outputFormatId;
+    protected $accept;
     /**
      * Download a single content in a specific output format. To resize images on download specify target width &amp; height. To download only a portion of the file, specify the range parameter.
      *
@@ -18,13 +19,15 @@ class ContentDownload extends \PicturePark\API\Runtime\Client\BaseEndpoint imple
      * @param array $headerParameters {
      *     @var string $range The range of bytes to download (http range header): bytes={from}-{to} (e.g. bytes=0-100000).
      * }
+     * @param array $accept Accept content header application/json|application/octet-stream
      */
-    public function __construct(string $contentId, string $outputFormatId, array $queryParameters = array(), array $headerParameters = array())
+    public function __construct(string $contentId, string $outputFormatId, array $queryParameters = array(), array $headerParameters = array(), array $accept = array())
     {
         $this->contentId = $contentId;
         $this->outputFormatId = $outputFormatId;
         $this->queryParameters = $queryParameters;
         $this->headerParameters = $headerParameters;
+        $this->accept = $accept;
     }
     use \PicturePark\API\Runtime\Client\EndpointTrait;
     public function getMethod() : string
@@ -41,7 +44,10 @@ class ContentDownload extends \PicturePark\API\Runtime\Client\BaseEndpoint imple
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        if (empty($this->accept)) {
+            return array('Accept' => array('application/json', 'application/octet-stream'));
+        }
+        return $this->accept;
     }
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {

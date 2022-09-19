@@ -4,6 +4,7 @@ namespace Jane\Component\OpenApi3\Tests\Expected\Endpoint;
 
 class FindUsersByIdOrUsername extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Endpoint
 {
+    protected $accept;
     /**
      * This endpoint returns information about users. You can specify users by their ID or screen name, or by a combination of the two.
      *
@@ -16,10 +17,12 @@ class FindUsersByIdOrUsername extends \Jane\Component\OpenApi3\Tests\Expected\Ru
      *     @var string $place.format Format for all place objects returned in response.
      *     @var array $expansions A comma separated list of fields to expand.
      * }
+     * @param array $accept Accept content header application/json|application/problem+json
      */
-    public function __construct(array $queryParameters = array())
+    public function __construct(array $queryParameters = array(), array $accept = array())
     {
         $this->queryParameters = $queryParameters;
+        $this->accept = $accept;
     }
     use \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\EndpointTrait;
     public function getMethod() : string
@@ -36,7 +39,10 @@ class FindUsersByIdOrUsername extends \Jane\Component\OpenApi3\Tests\Expected\Ru
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        if (empty($this->accept)) {
+            return array('Accept' => array('application/json', 'application/problem+json'));
+        }
+        return $this->accept;
     }
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {

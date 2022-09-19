@@ -5,6 +5,7 @@ namespace PicturePark\API\Endpoint;
 class ShareDownload extends \PicturePark\API\Runtime\Client\BaseEndpoint implements \PicturePark\API\Runtime\Client\Endpoint
 {
     protected $token;
+    protected $accept;
     /**
      * 
      *
@@ -16,12 +17,14 @@ class ShareDownload extends \PicturePark\API\Runtime\Client\BaseEndpoint impleme
      * @param array $headerParameters {
      *     @var string $range The range of bytes to download (http range header): bytes={from}-{to} (e.g. bytes=0-100000)
      * }
+     * @param array $accept Accept content header application/json|application/octet-stream
      */
-    public function __construct(string $token, array $queryParameters = array(), array $headerParameters = array())
+    public function __construct(string $token, array $queryParameters = array(), array $headerParameters = array(), array $accept = array())
     {
         $this->token = $token;
         $this->queryParameters = $queryParameters;
         $this->headerParameters = $headerParameters;
+        $this->accept = $accept;
     }
     use \PicturePark\API\Runtime\Client\EndpointTrait;
     public function getMethod() : string
@@ -38,7 +41,10 @@ class ShareDownload extends \PicturePark\API\Runtime\Client\BaseEndpoint impleme
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        if (empty($this->accept)) {
+            return array('Accept' => array('application/json', 'application/octet-stream'));
+        }
+        return $this->accept;
     }
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {

@@ -32,6 +32,13 @@ class MarkdownRenderRaw extends \Github\Runtime\Client\BaseEndpoint implements \
         }
         return array(array(), null);
     }
+    public function getExtraHeaders() : array
+    {
+        if (empty($this->accept)) {
+            return array('Accept' => array());
+        }
+        return $this->accept;
+    }
     /**
      * {@inheritdoc}
      *

@@ -17,12 +17,13 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      *     @var array $expansions A comma separated list of fields to expand.
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array $accept Accept content header application/json|application/problem+json
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\UserLookupResponse|\Jane\Component\OpenApi3\Tests\Expected\Model\Error|\Psr\Http\Message\ResponseInterface
      */
-    public function findUsersByIdOrUsername(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function findUsersByIdOrUsername(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT, array $accept = array())
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Endpoint\FindUsersByIdOrUsername($queryParameters), $fetch);
+        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Endpoint\FindUsersByIdOrUsername($queryParameters, $accept), $fetch);
     }
     /**
      * Returns a variety of information about the Tweet specified by the requested ID
@@ -36,12 +37,13 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      *     @var array $expansions A comma separated list of fields to expand.
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array $accept Accept content header application/json|application/problem+json
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\TweetLookupResponse|\Jane\Component\OpenApi3\Tests\Expected\Model\Error|\Psr\Http\Message\ResponseInterface
      */
-    public function findTweetsById(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function findTweetsById(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT, array $accept = array())
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Endpoint\FindTweetsById($queryParameters), $fetch);
+        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Endpoint\FindTweetsById($queryParameters, $accept), $fetch);
     }
     /**
      * Tweet ID in the path is that of the reply to hide.
@@ -49,12 +51,13 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @param string $id The ID of the reply that you want to hide.
      * @param null|\Jane\Component\OpenApi3\Tests\Expected\Model\HideReplyRequest $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array $accept Accept content header application/json|application/problem+json
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\HideReplyResponse|\Jane\Component\OpenApi3\Tests\Expected\Model\Error|\Psr\Http\Message\ResponseInterface
      */
-    public function hideReplyById(string $id, ?\Jane\Component\OpenApi3\Tests\Expected\Model\HideReplyRequest $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    public function hideReplyById(string $id, ?\Jane\Component\OpenApi3\Tests\Expected\Model\HideReplyRequest $requestBody = null, string $fetch = self::FETCH_OBJECT, array $accept = array())
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Endpoint\HideReplyById($id, $requestBody), $fetch);
+        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Endpoint\HideReplyById($id, $requestBody, $accept), $fetch);
     }
     /**
      * Returns various metrics about a Tweet, including metrics for an embedded Video if one exists
@@ -63,12 +66,13 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      *     @var array $ids A comma separated list of Tweet IDs. Up to 50 are allowed in a single request.
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array $accept Accept content header application/json|application/problem+json
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\TweetMetricsResponse|\Jane\Component\OpenApi3\Tests\Expected\Model\Error|\Psr\Http\Message\ResponseInterface
      */
-    public function findPrivateTweetMetricsById(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function findPrivateTweetMetricsById(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT, array $accept = array())
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Endpoint\FindPrivateTweetMetricsById($queryParameters), $fetch);
+        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Endpoint\FindPrivateTweetMetricsById($queryParameters, $accept), $fetch);
     }
     /**
      * Returns Tweets from the last 7 days that match a search query.
@@ -88,12 +92,13 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      *     @var array $expansions A comma separated list of fields to expand.
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array $accept Accept content header application/json|application/problem+json
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\TweetSearchResponse|\Jane\Component\OpenApi3\Tests\Expected\Model\Error|\Psr\Http\Message\ResponseInterface
      */
-    public function tweetsRecentSearch(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function tweetsRecentSearch(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT, array $accept = array())
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Endpoint\TweetsRecentSearch($queryParameters), $fetch);
+        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Endpoint\TweetsRecentSearch($queryParameters, $accept), $fetch);
     }
     /**
      * Returns rules from a user's active rule set. Users can fetch all of their rules or a subset, specified by the provided rule ids.
@@ -102,12 +107,13 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      *     @var array $ids A comma-separated list of Rule IDs.
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array $accept Accept content header application/json|application/problem+json
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\GetRulesResponse|\Jane\Component\OpenApi3\Tests\Expected\Model\Error|\Psr\Http\Message\ResponseInterface
      */
-    public function getRules(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function getRules(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT, array $accept = array())
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Endpoint\GetRules($queryParameters), $fetch);
+        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Endpoint\GetRules($queryParameters, $accept), $fetch);
     }
     /**
      * Add or delete rules from a user's active rule set. Users can provide unique, optionally tagged rules to add. Users can delete their entire rule set or a subset specified by rule ids or values.
@@ -117,12 +123,13 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      *     @var bool $dry_run Dry Run can be used with both the add and delete action, with the expected result given, but without actually taking any action in the system (meaning the end state will always be as it was when the request was submitted). This is particularly useful to validate rule changes.
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array $accept Accept content header application/json|application/problem+json
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\Error|\Psr\Http\Message\ResponseInterface
      */
-    public function addOrDeleteRules($requestBody, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function addOrDeleteRules($requestBody, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT, array $accept = array())
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Endpoint\AddOrDeleteRules($requestBody, $queryParameters), $fetch);
+        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Endpoint\AddOrDeleteRules($requestBody, $queryParameters, $accept), $fetch);
     }
     /**
      * Streams tweets matching a user's active rule set.
@@ -131,12 +138,13 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      *     @var array $expansions A comma-separated list of tweet expansions.
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array $accept Accept content header application/json|application/problem+json
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\Error|\Psr\Http\Message\ResponseInterface
      */
-    public function streamFilter(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function streamFilter(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT, array $accept = array())
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Endpoint\StreamFilter($queryParameters), $fetch);
+        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Endpoint\StreamFilter($queryParameters, $accept), $fetch);
     }
     /**
      * Streams a deterministic 1% of public tweets.
@@ -145,12 +153,13 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      *     @var array $expansions A comma-separated list of tweet expansions.
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array $accept Accept content header application/json|application/problem+json
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\Error|\Psr\Http\Message\ResponseInterface
      */
-    public function streamSample(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function streamSample(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT, array $accept = array())
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Endpoint\StreamSample($queryParameters), $fetch);
+        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Endpoint\StreamSample($queryParameters, $accept), $fetch);
     }
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
