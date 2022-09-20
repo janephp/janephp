@@ -13,7 +13,7 @@ class Installation
     /**
      * 
      *
-     * @var mixed|null
+     * @var SimpleUser|Enterprise|null
      */
     protected $account;
     /**
@@ -136,7 +136,7 @@ class Installation
     /**
      * 
      *
-     * @return mixed
+     * @return SimpleUser|Enterprise|null
      */
     public function getAccount()
     {
@@ -145,7 +145,7 @@ class Installation
     /**
      * 
      *
-     * @param mixed $account
+     * @param SimpleUser|Enterprise|null $account
      *
      * @return self
      */

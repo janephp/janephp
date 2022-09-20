@@ -49,7 +49,13 @@ class InstallationNormalizer implements DenormalizerInterface, NormalizerInterfa
             $object->setId($data['id']);
         }
         if (\array_key_exists('account', $data) && $data['account'] !== null) {
-            $object->setAccount($data['account']);
+            $value = $data['account'];
+            if (is_array($data['account']) and isset($data['account']['login']) and isset($data['account']['id']) and isset($data['account']['node_id']) and isset($data['account']['avatar_url']) and isset($data['account']['gravatar_id']) and isset($data['account']['url']) and isset($data['account']['html_url']) and isset($data['account']['followers_url']) and isset($data['account']['following_url']) and isset($data['account']['gists_url']) and isset($data['account']['starred_url']) and isset($data['account']['subscriptions_url']) and isset($data['account']['organizations_url']) and isset($data['account']['repos_url']) and isset($data['account']['events_url']) and isset($data['account']['received_events_url']) and isset($data['account']['type']) and isset($data['account']['site_admin'])) {
+                $value = $this->denormalizer->denormalize($data['account'], 'Github\\Model\\SimpleUser', 'json', $context);
+            } elseif (is_array($data['account']) and isset($data['account']['html_url']) and isset($data['account']['id']) and isset($data['account']['node_id']) and isset($data['account']['name']) and isset($data['account']['slug']) and isset($data['account']['created_at']) and isset($data['account']['updated_at']) and isset($data['account']['avatar_url'])) {
+                $value = $this->denormalizer->denormalize($data['account'], 'Github\\Model\\Enterprise', 'json', $context);
+            }
+            $object->setAccount($value);
         }
         elseif (\array_key_exists('account', $data) && $data['account'] === null) {
             $object->setAccount(null);
@@ -80,8 +86,8 @@ class InstallationNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         if (\array_key_exists('events', $data)) {
             $values = array();
-            foreach ($data['events'] as $value) {
-                $values[] = $value;
+            foreach ($data['events'] as $value_1) {
+                $values[] = $value_1;
             }
             $object->setEvents($values);
         }
@@ -127,7 +133,13 @@ class InstallationNormalizer implements DenormalizerInterface, NormalizerInterfa
     {
         $data = array();
         $data['id'] = $object->getId();
-        $data['account'] = $object->getAccount();
+        $value = $object->getAccount();
+        if (is_object($object->getAccount())) {
+            $value = $this->normalizer->normalize($object->getAccount(), 'json', $context);
+        } elseif (is_object($object->getAccount())) {
+            $value = $this->normalizer->normalize($object->getAccount(), 'json', $context);
+        }
+        $data['account'] = $value;
         $data['repository_selection'] = $object->getRepositorySelection();
         $data['access_tokens_url'] = $object->getAccessTokensUrl();
         $data['repositories_url'] = $object->getRepositoriesUrl();
@@ -137,8 +149,8 @@ class InstallationNormalizer implements DenormalizerInterface, NormalizerInterfa
         $data['target_type'] = $object->getTargetType();
         $data['permissions'] = $this->normalizer->normalize($object->getPermissions(), 'json', $context);
         $values = array();
-        foreach ($object->getEvents() as $value) {
-            $values[] = $value;
+        foreach ($object->getEvents() as $value_1) {
+            $values[] = $value_1;
         }
         $data['events'] = $values;
         $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
