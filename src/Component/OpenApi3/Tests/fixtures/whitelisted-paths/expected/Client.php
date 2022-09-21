@@ -16,12 +16,13 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      *     @var array $expansions A comma separated list of fields to expand.
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array $accept Accept content header application/json|application/problem+json
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\TweetLookupResponse|\Psr\Http\Message\ResponseInterface
      */
-    public function findTweetsById(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function findTweetsById(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT, array $accept = array())
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Endpoint\FindTweetsById($queryParameters), $fetch);
+        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Endpoint\FindTweetsById($queryParameters, $accept), $fetch);
     }
     /**
      * Add or delete rules from a user's active rule set. Users can provide unique, optionally tagged rules to add. Users can delete their entire rule set or a subset specified by rule ids or values.
@@ -31,12 +32,13 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      *     @var bool $dry_run Dry Run can be used with both the add and delete action, with the expected result given, but without actually taking any action in the system (meaning the end state will always be as it was when the request was submitted). This is particularly useful to validate rule changes.
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array $accept Accept content header application/json|application/problem+json
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function addOrDeleteRules($requestBody, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function addOrDeleteRules($requestBody, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT, array $accept = array())
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Endpoint\AddOrDeleteRules($requestBody, $queryParameters), $fetch);
+        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Endpoint\AddOrDeleteRules($requestBody, $queryParameters, $accept), $fetch);
     }
     public static function create($httpClient = null, array $additionalPlugins = array(), array $additionalNormalizers = array())
     {

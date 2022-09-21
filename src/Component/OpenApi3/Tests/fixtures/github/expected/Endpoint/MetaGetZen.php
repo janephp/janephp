@@ -17,6 +17,10 @@ class MetaGetZen extends \Github\Runtime\Client\BaseEndpoint implements \Github\
     {
         return array(array(), null);
     }
+    public function getExtraHeaders() : array
+    {
+        return array('Accept' => array('text/plain'));
+    }
     /**
      * {@inheritdoc}
      *

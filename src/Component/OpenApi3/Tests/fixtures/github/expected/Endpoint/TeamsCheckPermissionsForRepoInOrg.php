@@ -42,6 +42,10 @@ class TeamsCheckPermissionsForRepoInOrg extends \Github\Runtime\Client\BaseEndpo
     {
         return array(array(), null);
     }
+    public function getExtraHeaders() : array
+    {
+        return array('Accept' => array('application/vnd.github.v3.repository+json'));
+    }
     /**
      * {@inheritdoc}
      *

@@ -7,6 +7,7 @@ class ReposGetContent extends \Github\Runtime\Client\BaseEndpoint implements \Gi
     protected $owner;
     protected $repo;
     protected $path;
+    protected $accept;
     /**
     * Gets the contents of a file or directory in a repository. Specify the file path or directory in `:path`. If you omit
     `:path`, you will receive the contents of all files in the repository.
@@ -47,13 +48,15 @@ class ReposGetContent extends \Github\Runtime\Client\BaseEndpoint implements \Gi
     * @param array $queryParameters {
     *     @var string $ref The name of the commit/branch/tag. Default: the repository’s default branch (usually `master`)
     * }
+    * @param array $accept Accept content header application/vnd.github.v3.object|application/json
     */
-    public function __construct(string $owner, string $repo, string $path, array $queryParameters = array())
+    public function __construct(string $owner, string $repo, string $path, array $queryParameters = array(), array $accept = array())
     {
         $this->owner = $owner;
         $this->repo = $repo;
         $this->path = $path;
         $this->queryParameters = $queryParameters;
+        $this->accept = $accept;
     }
     use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
@@ -70,7 +73,10 @@ class ReposGetContent extends \Github\Runtime\Client\BaseEndpoint implements \Gi
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        if (empty($this->accept)) {
+            return array('Accept' => array('application/vnd.github.v3.object', 'application/json'));
+        }
+        return $this->accept;
     }
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {

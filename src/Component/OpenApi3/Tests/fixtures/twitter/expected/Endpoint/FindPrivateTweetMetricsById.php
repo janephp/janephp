@@ -4,16 +4,19 @@ namespace Jane\Component\OpenApi3\Tests\Expected\Endpoint;
 
 class FindPrivateTweetMetricsById extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Endpoint
 {
+    protected $accept;
     /**
      * Returns various metrics about a Tweet, including metrics for an embedded Video if one exists
      *
      * @param array $queryParameters {
      *     @var array $ids A comma separated list of Tweet IDs. Up to 50 are allowed in a single request.
      * }
+     * @param array $accept Accept content header application/json|application/problem+json
      */
-    public function __construct(array $queryParameters = array())
+    public function __construct(array $queryParameters = array(), array $accept = array())
     {
         $this->queryParameters = $queryParameters;
+        $this->accept = $accept;
     }
     use \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\EndpointTrait;
     public function getMethod() : string
@@ -30,7 +33,10 @@ class FindPrivateTweetMetricsById extends \Jane\Component\OpenApi3\Tests\Expecte
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        if (empty($this->accept)) {
+            return array('Accept' => array('application/json', 'application/problem+json'));
+        }
+        return $this->accept;
     }
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {

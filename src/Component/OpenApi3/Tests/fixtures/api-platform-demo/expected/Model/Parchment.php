@@ -9,13 +9,19 @@ namespace ApiPlatform\Demo\Model;
 class Parchment
 {
     /**
-     * The title of the book
+     * 
+     *
+     * @var string|null
+     */
+    protected $id;
+    /**
+     * The title of the book.
      *
      * @var string
      */
     protected $title;
     /**
-     * A description of the item
+     * A description of the item.
      *
      * @var string
      */
@@ -23,11 +29,26 @@ class Parchment
     /**
      * 
      *
-     * @var string
+     * @return string|null
      */
-    protected $id;
+    public function getId() : ?string
+    {
+        return $this->id;
+    }
     /**
-     * The title of the book
+     * 
+     *
+     * @param string|null $id
+     *
+     * @return self
+     */
+    public function setId(?string $id) : self
+    {
+        $this->id = $id;
+        return $this;
+    }
+    /**
+     * The title of the book.
      *
      * @return string
      */
@@ -36,7 +57,7 @@ class Parchment
         return $this->title;
     }
     /**
-     * The title of the book
+     * The title of the book.
      *
      * @param string $title
      *
@@ -48,7 +69,7 @@ class Parchment
         return $this;
     }
     /**
-     * A description of the item
+     * A description of the item.
      *
      * @return string
      */
@@ -57,7 +78,7 @@ class Parchment
         return $this->description;
     }
     /**
-     * A description of the item
+     * A description of the item.
      *
      * @param string $description
      *
@@ -66,27 +87,6 @@ class Parchment
     public function setDescription(string $description) : self
     {
         $this->description = $description;
-        return $this;
-    }
-    /**
-     * 
-     *
-     * @return string
-     */
-    public function getId() : string
-    {
-        return $this->id;
-    }
-    /**
-     * 
-     *
-     * @param string $id
-     *
-     * @return self
-     */
-    public function setId(string $id) : self
-    {
-        $this->id = $id;
         return $this;
     }
 }

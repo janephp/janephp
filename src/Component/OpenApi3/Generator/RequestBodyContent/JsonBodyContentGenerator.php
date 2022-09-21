@@ -12,6 +12,15 @@ use PhpParser\Node\Stmt;
 
 class JsonBodyContentGenerator extends AbstractBodyContentGenerator
 {
+    public const JSON_TYPES = [
+        'application/json',
+        'application/merge-patch+json',
+        'application/ld+json',
+        'application/hal+json',
+        'application/vnd.api+json',
+        'application/problem+json',
+    ];
+
     /**
      * {@inheritdoc}
      */

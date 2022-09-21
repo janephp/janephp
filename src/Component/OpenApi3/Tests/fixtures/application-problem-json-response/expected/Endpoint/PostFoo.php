@@ -29,6 +29,10 @@ class PostFoo extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Bas
         }
         return array(array(), null);
     }
+    public function getExtraHeaders() : array
+    {
+        return array('Accept' => array('application/problem+json'));
+    }
     /**
      * {@inheritdoc}
      *

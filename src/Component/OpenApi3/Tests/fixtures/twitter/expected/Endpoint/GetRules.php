@@ -4,16 +4,19 @@ namespace Jane\Component\OpenApi3\Tests\Expected\Endpoint;
 
 class GetRules extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Endpoint
 {
+    protected $accept;
     /**
      * Returns rules from a user's active rule set. Users can fetch all of their rules or a subset, specified by the provided rule ids.
      *
      * @param array $queryParameters {
      *     @var array $ids A comma-separated list of Rule IDs.
      * }
+     * @param array $accept Accept content header application/json|application/problem+json
      */
-    public function __construct(array $queryParameters = array())
+    public function __construct(array $queryParameters = array(), array $accept = array())
     {
         $this->queryParameters = $queryParameters;
+        $this->accept = $accept;
     }
     use \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\EndpointTrait;
     public function getMethod() : string
@@ -30,7 +33,10 @@ class GetRules extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Ba
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        if (empty($this->accept)) {
+            return array('Accept' => array('application/json', 'application/problem+json'));
+        }
+        return $this->accept;
     }
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {

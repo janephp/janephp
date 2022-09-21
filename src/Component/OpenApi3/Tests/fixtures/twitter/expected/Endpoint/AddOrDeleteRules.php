@@ -4,6 +4,7 @@ namespace Jane\Component\OpenApi3\Tests\Expected\Endpoint;
 
 class AddOrDeleteRules extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Endpoint
 {
+    protected $accept;
     /**
      * Add or delete rules from a user's active rule set. Users can provide unique, optionally tagged rules to add. Users can delete their entire rule set or a subset specified by rule ids or values.
      *
@@ -11,11 +12,13 @@ class AddOrDeleteRules extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\C
      * @param array $queryParameters {
      *     @var bool $dry_run Dry Run can be used with both the add and delete action, with the expected result given, but without actually taking any action in the system (meaning the end state will always be as it was when the request was submitted). This is particularly useful to validate rule changes.
      * }
+     * @param array $accept Accept content header application/json|application/problem+json
      */
-    public function __construct($requestBody, array $queryParameters = array())
+    public function __construct($requestBody, array $queryParameters = array(), array $accept = array())
     {
         $this->body = $requestBody;
         $this->queryParameters = $queryParameters;
+        $this->accept = $accept;
     }
     use \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\EndpointTrait;
     public function getMethod() : string
@@ -35,7 +38,10 @@ class AddOrDeleteRules extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\C
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        if (empty($this->accept)) {
+            return array('Accept' => array('application/json', 'application/problem+json'));
+        }
+        return $this->accept;
     }
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {

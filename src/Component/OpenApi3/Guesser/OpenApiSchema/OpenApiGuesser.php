@@ -20,6 +20,7 @@ use Jane\Component\OpenApi3\JsonSchema\Model\Schema;
 use Jane\Component\OpenApiCommon\Guesser\Guess\OperationGuess;
 use Jane\Component\OpenApiCommon\Registry\Registry as OpenApiRegistry;
 use Symfony\Component\Serializer\SerializerInterface;
+use Symfony\Component\String\Slugger\AsciiSlugger;
 
 class OpenApiGuesser implements GuesserInterface, ClassGuesserInterface, ChainGuesserAwareInterface
 {
@@ -27,10 +28,12 @@ class OpenApiGuesser implements GuesserInterface, ClassGuesserInterface, ChainGu
     use GuesserResolverTrait;
 
     private const IN_BODY = 'body';
+    private $slugger;
 
     public function __construct(SerializerInterface $serializer)
     {
         $this->serializer = $serializer;
+        $this->slugger = new AsciiSlugger();
     }
 
     /**
@@ -219,12 +222,22 @@ class OpenApiGuesser implements GuesserInterface, ClassGuesserInterface, ChainGu
         if (is_iterable($operation->getResponses())) {
             foreach ($operation->getResponses() as $status => $response) {
                 if ($response instanceof Response && $response->getContent()) {
+                    $contentCount = \count($response->getContent());
                     foreach ($response->getContent() as $contentType => $content) {
-                        $this->chainGuesser->guessClass($content->getSchema(), $name . 'Response' . $status, $reference . '/responses/' . $status . '/content/' . $contentType . '/schema', $registry);
+                        // Make sure the response class names are unique when we have multiple response types.
+                        $responseName = $contentCount > 1
+                            ? $name . $this->slugContentType($contentType) . 'Response' . $status
+                            : $name . 'Response' . $status;
+                        $this->chainGuesser->guessClass($content->getSchema(), $responseName, $reference . '/responses/' . $status . '/content/' . $contentType . '/schema', $registry);
                     }
                 }
             }
         }
+    }
+
+    private function slugContentType($contentType): string
+    {
+        return ucfirst(str_replace('application', '', $this->slugger->slug($contentType, '')));
     }
 
     private function getApplicationProblemJsonDefaultSchema(): Schema

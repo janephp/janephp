@@ -6,6 +6,7 @@ class ActivityListStargazersForRepo extends \Github\Runtime\Client\BaseEndpoint 
 {
     protected $owner;
     protected $repo;
+    protected $accept;
     /**
     * Lists the people that have starred the repository.
     
@@ -17,12 +18,14 @@ class ActivityListStargazersForRepo extends \Github\Runtime\Client\BaseEndpoint 
     *     @var int $per_page Results per page (max 100)
     *     @var int $page Page number of the results to fetch.
     * }
+    * @param array $accept Accept content header application/json|application/vnd.github.v3.star+json
     */
-    public function __construct(string $owner, string $repo, array $queryParameters = array())
+    public function __construct(string $owner, string $repo, array $queryParameters = array(), array $accept = array())
     {
         $this->owner = $owner;
         $this->repo = $repo;
         $this->queryParameters = $queryParameters;
+        $this->accept = $accept;
     }
     use \Github\Runtime\Client\EndpointTrait;
     public function getMethod() : string
@@ -39,7 +42,10 @@ class ActivityListStargazersForRepo extends \Github\Runtime\Client\BaseEndpoint 
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        if (empty($this->accept)) {
+            return array('Accept' => array('application/json', 'application/vnd.github.v3.star+json'));
+        }
+        return $this->accept;
     }
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {

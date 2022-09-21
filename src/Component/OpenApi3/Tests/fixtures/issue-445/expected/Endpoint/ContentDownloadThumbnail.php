@@ -6,6 +6,7 @@ class ContentDownloadThumbnail extends \PicturePark\API\Runtime\Client\BaseEndpo
 {
     protected $id;
     protected $size;
+    protected $accept;
     /**
      * Provides a lightweight endpoint to download content thumbnails.
      *
@@ -15,12 +16,14 @@ class ContentDownloadThumbnail extends \PicturePark\API\Runtime\Client\BaseEndpo
      *     @var int $width Optional width in pixels to resize image.
      *     @var int $height Optional height in pixels to resize image.
      * }
+     * @param array $accept Accept content header application/json|application/octet-stream
      */
-    public function __construct(string $id, string $size, array $queryParameters = array())
+    public function __construct(string $id, string $size, array $queryParameters = array(), array $accept = array())
     {
         $this->id = $id;
         $this->size = $size;
         $this->queryParameters = $queryParameters;
+        $this->accept = $accept;
     }
     use \PicturePark\API\Runtime\Client\EndpointTrait;
     public function getMethod() : string
@@ -37,7 +40,10 @@ class ContentDownloadThumbnail extends \PicturePark\API\Runtime\Client\BaseEndpo
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        if (empty($this->accept)) {
+            return array('Accept' => array('application/json', 'application/octet-stream'));
+        }
+        return $this->accept;
     }
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {

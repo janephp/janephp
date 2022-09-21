@@ -674,6 +674,7 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      *     @var string $range The range of bytes to download (http range header): bytes={from}-{to} (e.g. bytes=0-100000).
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array $accept Accept content header application/json|application/octet-stream
      * @throws \PicturePark\API\Exception\ContentDownloadBadRequestException
      * @throws \PicturePark\API\Exception\ContentDownloadUnauthorizedException
      * @throws \PicturePark\API\Exception\ContentDownloadNotFoundException
@@ -685,9 +686,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function contentDownload(string $contentId, string $outputFormatId, array $queryParameters = array(), array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function contentDownload(string $contentId, string $outputFormatId, array $queryParameters = array(), array $headerParameters = array(), string $fetch = self::FETCH_OBJECT, array $accept = array())
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ContentDownload($contentId, $outputFormatId, $queryParameters, $headerParameters), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ContentDownload($contentId, $outputFormatId, $queryParameters, $headerParameters, $accept), $fetch);
     }
     /**
      * Provides a lightweight endpoint to download content thumbnails.
@@ -699,6 +700,7 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      *     @var int $height Optional height in pixels to resize image.
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array $accept Accept content header application/json|application/octet-stream
      * @throws \PicturePark\API\Exception\ContentDownloadThumbnailBadRequestException
      * @throws \PicturePark\API\Exception\ContentDownloadThumbnailUnauthorizedException
      * @throws \PicturePark\API\Exception\ContentDownloadThumbnailNotFoundException
@@ -710,9 +712,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function contentDownloadThumbnail(string $id, string $size, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function contentDownloadThumbnail(string $id, string $size, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT, array $accept = array())
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ContentDownloadThumbnail($id, $size, $queryParameters), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ContentDownloadThumbnail($id, $size, $queryParameters, $accept), $fetch);
     }
     /**
     * Gets multiple content details by IDs.
@@ -2031,6 +2033,7 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      *
      * @param \PicturePark\API\Model\OutputFormatRenderPreviewRequest $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array $accept Accept content header application/octet-stream|application/json
      * @throws \PicturePark\API\Exception\OutputFormatRenderFormatPreviewBadRequestException
      * @throws \PicturePark\API\Exception\OutputFormatRenderFormatPreviewUnauthorizedException
      * @throws \PicturePark\API\Exception\OutputFormatRenderFormatPreviewNotFoundException
@@ -2042,9 +2045,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function outputFormatRenderFormatPreview(\PicturePark\API\Model\OutputFormatRenderPreviewRequest $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function outputFormatRenderFormatPreview(\PicturePark\API\Model\OutputFormatRenderPreviewRequest $requestBody, string $fetch = self::FETCH_OBJECT, array $accept = array())
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\OutputFormatRenderFormatPreview($requestBody), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\OutputFormatRenderFormatPreview($requestBody, $accept), $fetch);
     }
     /**
      * Gets multiple output format details by the output format IDs. Can fetch maximum of 100 output formats at once.
@@ -2936,6 +2939,7 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      *     @var string $range The range of bytes to download (http range header): bytes={from}-{to} (e.g. bytes=0-100000)
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array $accept Accept content header application/json|application/octet-stream
      * @throws \PicturePark\API\Exception\ShareDownloadBadRequestException
      * @throws \PicturePark\API\Exception\ShareDownloadUnauthorizedException
      * @throws \PicturePark\API\Exception\ShareDownloadNotFoundException
@@ -2947,9 +2951,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function shareDownload(string $token, array $queryParameters = array(), array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function shareDownload(string $token, array $queryParameters = array(), array $headerParameters = array(), string $fetch = self::FETCH_OBJECT, array $accept = array())
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ShareDownload($token, $queryParameters, $headerParameters), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ShareDownload($token, $queryParameters, $headerParameters, $accept), $fetch);
     }
     /**
      * Download single content in a specific output format (or automatically determined format if none is specified). To resize images on download specify target width &amp; height. To download only a portion of the file, specify the range parameter.
@@ -2965,6 +2969,7 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      *     @var string $range The range of bytes to download (http range header): bytes={from}-{to} (e.g. bytes=0-100000)
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array $accept Accept content header application/json|application/octet-stream
      * @throws \PicturePark\API\Exception\ShareDownloadSingleContentBadRequestException
      * @throws \PicturePark\API\Exception\ShareDownloadSingleContentUnauthorizedException
      * @throws \PicturePark\API\Exception\ShareDownloadSingleContentNotFoundException
@@ -2976,9 +2981,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function shareDownloadSingleContent(string $token, string $contentId, string $outputFormatId, array $queryParameters = array(), array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function shareDownloadSingleContent(string $token, string $contentId, string $outputFormatId, array $queryParameters = array(), array $headerParameters = array(), string $fetch = self::FETCH_OBJECT, array $accept = array())
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ShareDownloadSingleContent($token, $contentId, $outputFormatId, $queryParameters, $headerParameters), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ShareDownloadSingleContent($token, $contentId, $outputFormatId, $queryParameters, $headerParameters, $accept), $fetch);
     }
     /**
      * Get share by id (basic or embed).

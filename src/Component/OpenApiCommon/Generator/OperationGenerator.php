@@ -38,18 +38,22 @@ class OperationGenerator
         [$endpointName, $methodParams, $methodDoc, $returnTypes, $throwTypes] = $this->endpointGenerator->createEndpointClass($operation, $context);
         $endpointArgs = [];
 
-        $documentation =
-            $methodDoc .
-            "\n * @param string \$fetch Fetch mode to use (can be OBJECT or RESPONSE)\n" .
-            $this->getReturnDoc(array_merge($returnTypes, ['\\' . ResponseInterface::class]), $throwTypes) . "\n" .
-            ' */'
-        ;
-
+        // Make sure the $fetch param is in front of $accept header for backwards compatibility.
+        $lastMethodParam = '';
         foreach ($methodParams as $param) {
             $endpointArgs[] = new Arg($param->var);
+            $lastMethodParam = $param->var->name;
         }
-
-        $methodParams[] = new Param(new Node\Expr\Variable('fetch'), new Expr\ClassConstFetch(new Name('self'), 'FETCH_OBJECT'), new Name('string'));
+        $methodDocSplit = explode("\n", $methodDoc);
+        $methodDocPosition = $lastMethodParam === 'accept' ? \count($methodDocSplit) - 1 : \count($methodDocSplit);
+        array_splice($methodDocSplit, $methodDocPosition, 0, [
+            ' * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)',
+        ]);
+        $methodDocSplit[] = $this->getReturnDoc(array_merge($returnTypes, ['\\' . ResponseInterface::class]), $throwTypes);
+        $methodDocSplit[] = ' */';
+        $documentation = implode("\n", $methodDocSplit);
+        $paramsPosition = $lastMethodParam === 'accept' ? \count($methodParams) - 1 : \count($methodParams);
+        array_splice($methodParams, $paramsPosition, 0, [new Param(new Node\Expr\Variable('fetch'), new Expr\ClassConstFetch(new Name('self'), 'FETCH_OBJECT'), new Name('string'))]);
 
         return new Stmt\ClassMethod($name, [
             'type' => Stmt\Class_::MODIFIER_PUBLIC,

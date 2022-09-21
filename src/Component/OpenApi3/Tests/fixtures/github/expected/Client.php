@@ -376,14 +376,15 @@ class Client extends \Github\Runtime\Client\Client
     *     @var string $ref The name of the commit/branch/tag. Default: the repository’s default branch (usually `master`)
     * }
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+    * @param array $accept Accept content header application/vnd.github.v3.object|application/json
     * @throws \Github\Exception\ReposGetContentNotFoundException
     * @throws \Github\Exception\ReposGetContentForbiddenException
     *
     * @return null|\Psr\Http\Message\ResponseInterface
     */
-    public function reposGetContent(string $owner, string $repo, string $path, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function reposGetContent(string $owner, string $repo, string $path, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT, array $accept = array())
     {
-        return $this->executeEndpoint(new \Github\Endpoint\ReposGetContent($owner, $repo, $path, $queryParameters), $fetch);
+        return $this->executeEndpoint(new \Github\Endpoint\ReposGetContent($owner, $repo, $path, $queryParameters, $accept), $fetch);
     }
     /**
      * Creates a new file or replaces an existing file in a repository.
@@ -623,14 +624,15 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $repo 
      * @param null|\Github\Model\ReposOwnerRepoPagesPutBody $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array $accept Accept content header application/json|application/scim+json
      * @throws \Github\Exception\ReposUpdateInformationAboutPagesSiteUnprocessableEntityException
      * @throws \Github\Exception\ReposUpdateInformationAboutPagesSiteBadRequestException
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function reposUpdateInformationAboutPagesSite(string $owner, string $repo, ?\Github\Model\ReposOwnerRepoPagesPutBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    public function reposUpdateInformationAboutPagesSite(string $owner, string $repo, ?\Github\Model\ReposOwnerRepoPagesPutBody $requestBody = null, string $fetch = self::FETCH_OBJECT, array $accept = array())
     {
-        return $this->executeEndpoint(new \Github\Endpoint\ReposUpdateInformationAboutPagesSite($owner, $repo, $requestBody), $fetch);
+        return $this->executeEndpoint(new \Github\Endpoint\ReposUpdateInformationAboutPagesSite($owner, $repo, $requestBody, $accept), $fetch);
     }
     /**
      * Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://help.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
@@ -1752,6 +1754,7 @@ class Client extends \Github\Runtime\Client\Client
     *
     * @param null|\Github\Model\UserReposPostBody $requestBody 
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+    * @param array $accept Accept content header application/json|application/scim+json
     * @throws \Github\Exception\ReposCreateForAuthenticatedUserUnauthorizedException
     * @throws \Github\Exception\ReposCreateForAuthenticatedUserNotFoundException
     * @throws \Github\Exception\ReposCreateForAuthenticatedUserForbiddenException
@@ -1760,9 +1763,9 @@ class Client extends \Github\Runtime\Client\Client
     *
     * @return null|\Github\Model\Repository|\Psr\Http\Message\ResponseInterface
     */
-    public function reposCreateForAuthenticatedUser(?\Github\Model\UserReposPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    public function reposCreateForAuthenticatedUser(?\Github\Model\UserReposPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT, array $accept = array())
     {
-        return $this->executeEndpoint(new \Github\Endpoint\ReposCreateForAuthenticatedUser($requestBody), $fetch);
+        return $this->executeEndpoint(new \Github\Endpoint\ReposCreateForAuthenticatedUser($requestBody, $accept), $fetch);
     }
     /**
      * 
@@ -1865,13 +1868,14 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $page Page number of the results to fetch.
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array $accept Accept content header application/json|application/scim+json
      * @throws \Github\Exception\ReposListForksBadRequestException
      *
      * @return null|\Github\Model\MinimalRepository[]|\Psr\Http\Message\ResponseInterface
      */
-    public function reposListForks(string $owner, string $repo, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function reposListForks(string $owner, string $repo, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT, array $accept = array())
     {
-        return $this->executeEndpoint(new \Github\Endpoint\ReposListForks($owner, $repo, $queryParameters), $fetch);
+        return $this->executeEndpoint(new \Github\Endpoint\ReposListForks($owner, $repo, $queryParameters, $accept), $fetch);
     }
     /**
      * Create a fork for the authenticated user.
@@ -1881,6 +1885,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $repo 
      * @param null|\Github\Model\ReposOwnerRepoForksPostBody $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array $accept Accept content header application/json|application/scim+json
      * @throws \Github\Exception\ReposCreateForkBadRequestException
      * @throws \Github\Exception\ReposCreateForkUnprocessableEntityException
      * @throws \Github\Exception\ReposCreateForkForbiddenException
@@ -1888,9 +1893,9 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\Repository|\Psr\Http\Message\ResponseInterface
      */
-    public function reposCreateFork(string $owner, string $repo, ?\Github\Model\ReposOwnerRepoForksPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    public function reposCreateFork(string $owner, string $repo, ?\Github\Model\ReposOwnerRepoForksPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT, array $accept = array())
     {
-        return $this->executeEndpoint(new \Github\Endpoint\ReposCreateFork($owner, $repo, $requestBody), $fetch);
+        return $this->executeEndpoint(new \Github\Endpoint\ReposCreateFork($owner, $repo, $requestBody, $accept), $fetch);
     }
     /**
      * Get the total number of views and breakdown per day or week for the last 14 days. Timestamps are aligned to UTC midnight of the beginning of the day or week. Week begins on Monday.
@@ -2162,6 +2167,7 @@ class Client extends \Github\Runtime\Client\Client
     *     @var int $page Page number of the results to fetch.
     * }
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+    * @param array $accept Accept content header application/json|application/scim+json
     * @throws \Github\Exception\ReposListCommitsInternalServerErrorException
     * @throws \Github\Exception\ReposListCommitsBadRequestException
     * @throws \Github\Exception\ReposListCommitsNotFoundException
@@ -2169,9 +2175,9 @@ class Client extends \Github\Runtime\Client\Client
     *
     * @return null|\Github\Model\SimpleCommit[]|\Psr\Http\Message\ResponseInterface
     */
-    public function reposListCommits(string $owner, string $repo, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function reposListCommits(string $owner, string $repo, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT, array $accept = array())
     {
-        return $this->executeEndpoint(new \Github\Endpoint\ReposListCommits($owner, $repo, $queryParameters), $fetch);
+        return $this->executeEndpoint(new \Github\Endpoint\ReposListCommits($owner, $repo, $queryParameters, $accept), $fetch);
     }
     /**
     * Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://help.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
@@ -2625,14 +2631,15 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $org 
      * @param string $scimUserId scim_user_id parameter
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array $accept Accept content header application/json|application/scim+json
      * @throws \Github\Exception\ScimDeleteUserFromOrgNotFoundException
      * @throws \Github\Exception\ScimDeleteUserFromOrgForbiddenException
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function scimDeleteUserFromOrg(string $org, string $scimUserId, string $fetch = self::FETCH_OBJECT)
+    public function scimDeleteUserFromOrg(string $org, string $scimUserId, string $fetch = self::FETCH_OBJECT, array $accept = array())
     {
-        return $this->executeEndpoint(new \Github\Endpoint\ScimDeleteUserFromOrg($org, $scimUserId), $fetch);
+        return $this->executeEndpoint(new \Github\Endpoint\ScimDeleteUserFromOrg($org, $scimUserId, $accept), $fetch);
     }
     /**
      * 
@@ -2640,14 +2647,15 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $org 
      * @param string $scimUserId scim_user_id parameter
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array $accept Accept content header application/scim+json|application/json
      * @throws \Github\Exception\ScimGetProvisioningInformationForUserNotFoundException
      * @throws \Github\Exception\ScimGetProvisioningInformationForUserForbiddenException
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function scimGetProvisioningInformationForUser(string $org, string $scimUserId, string $fetch = self::FETCH_OBJECT)
+    public function scimGetProvisioningInformationForUser(string $org, string $scimUserId, string $fetch = self::FETCH_OBJECT, array $accept = array())
     {
-        return $this->executeEndpoint(new \Github\Endpoint\ScimGetProvisioningInformationForUser($org, $scimUserId), $fetch);
+        return $this->executeEndpoint(new \Github\Endpoint\ScimGetProvisioningInformationForUser($org, $scimUserId, $accept), $fetch);
     }
     /**
     * Allows you to change a provisioned user's individual attributes. To change a user's values, you must provide a specific `Operations` JSON format that contains at least one of the `add`, `remove`, or `replace` operations. For examples and more information on the SCIM operations format, see the [SCIM specification](https://tools.ietf.org/html/rfc7644#section-3.5.2).
@@ -2671,6 +2679,7 @@ class Client extends \Github\Runtime\Client\Client
     * @param string $scimUserId scim_user_id parameter
     * @param null|\Github\Model\ScimV2OrganizationsOrgUsersScimUserIdPatchBody $requestBody 
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+    * @param array $accept Accept content header application/scim+json|application/json
     * @throws \Github\Exception\ScimUpdateAttributeForUserNotFoundException
     * @throws \Github\Exception\ScimUpdateAttributeForUserForbiddenException
     * @throws \Github\Exception\ScimUpdateAttributeForUserBadRequestException
@@ -2678,9 +2687,9 @@ class Client extends \Github\Runtime\Client\Client
     *
     * @return null|\Psr\Http\Message\ResponseInterface
     */
-    public function scimUpdateAttributeForUser(string $org, string $scimUserId, ?\Github\Model\ScimV2OrganizationsOrgUsersScimUserIdPatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    public function scimUpdateAttributeForUser(string $org, string $scimUserId, ?\Github\Model\ScimV2OrganizationsOrgUsersScimUserIdPatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT, array $accept = array())
     {
-        return $this->executeEndpoint(new \Github\Endpoint\ScimUpdateAttributeForUser($org, $scimUserId, $requestBody), $fetch);
+        return $this->executeEndpoint(new \Github\Endpoint\ScimUpdateAttributeForUser($org, $scimUserId, $requestBody, $accept), $fetch);
     }
     /**
     * Replaces an existing provisioned user's information. You must provide all the information required for the user as if you were provisioning them for the first time. Any existing user information that you don't provide will be removed. If you want to only update a specific attribute, use the [Update an attribute for a SCIM user](https://developer.github.com/v3/scim/#update-an-attribute-for-a-scim-user) endpoint instead.
@@ -2693,14 +2702,15 @@ class Client extends \Github\Runtime\Client\Client
     * @param string $scimUserId scim_user_id parameter
     * @param null|\Github\Model\ScimV2OrganizationsOrgUsersScimUserIdPutBody $requestBody 
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+    * @param array $accept Accept content header application/scim+json|application/json
     * @throws \Github\Exception\ScimSetInformationForProvisionedUserNotFoundException
     * @throws \Github\Exception\ScimSetInformationForProvisionedUserForbiddenException
     *
     * @return null|\Psr\Http\Message\ResponseInterface
     */
-    public function scimSetInformationForProvisionedUser(string $org, string $scimUserId, ?\Github\Model\ScimV2OrganizationsOrgUsersScimUserIdPutBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    public function scimSetInformationForProvisionedUser(string $org, string $scimUserId, ?\Github\Model\ScimV2OrganizationsOrgUsersScimUserIdPutBody $requestBody = null, string $fetch = self::FETCH_OBJECT, array $accept = array())
     {
-        return $this->executeEndpoint(new \Github\Endpoint\ScimSetInformationForProvisionedUser($org, $scimUserId, $requestBody), $fetch);
+        return $this->executeEndpoint(new \Github\Endpoint\ScimSetInformationForProvisionedUser($org, $scimUserId, $requestBody, $accept), $fetch);
     }
     /**
     * Retrieves a paginated list of all provisioned organization members, including pending invitations. If you provide the `filter` parameter, the resources for all matching provisions members are returned.
@@ -2733,15 +2743,16 @@ class Client extends \Github\Runtime\Client\Client
     `?filter=emails%20eq%20\"octocat@github.com\"`.
     * }
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+    * @param array $accept Accept content header application/scim+json|application/json
     * @throws \Github\Exception\ScimListProvisionedIdentitiesNotFoundException
     * @throws \Github\Exception\ScimListProvisionedIdentitiesForbiddenException
     * @throws \Github\Exception\ScimListProvisionedIdentitiesBadRequestException
     *
     * @return null|\Psr\Http\Message\ResponseInterface
     */
-    public function scimListProvisionedIdentities(string $org, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function scimListProvisionedIdentities(string $org, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT, array $accept = array())
     {
-        return $this->executeEndpoint(new \Github\Endpoint\ScimListProvisionedIdentities($org, $queryParameters), $fetch);
+        return $this->executeEndpoint(new \Github\Endpoint\ScimListProvisionedIdentities($org, $queryParameters, $accept), $fetch);
     }
     /**
      * Provision organization membership for a user, and send an activation email to the email address.
@@ -2749,6 +2760,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $org 
      * @param null|\Github\Model\ScimV2OrganizationsOrgUsersPostBody $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array $accept Accept content header application/scim+json|application/json
      * @throws \Github\Exception\ScimProvisionAndInviteUserNotFoundException
      * @throws \Github\Exception\ScimProvisionAndInviteUserForbiddenException
      * @throws \Github\Exception\ScimProvisionAndInviteUserInternalServerErrorException
@@ -2757,9 +2769,9 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function scimProvisionAndInviteUser(string $org, ?\Github\Model\ScimV2OrganizationsOrgUsersPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    public function scimProvisionAndInviteUser(string $org, ?\Github\Model\ScimV2OrganizationsOrgUsersPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT, array $accept = array())
     {
-        return $this->executeEndpoint(new \Github\Endpoint\ScimProvisionAndInviteUser($org, $requestBody), $fetch);
+        return $this->executeEndpoint(new \Github\Endpoint\ScimProvisionAndInviteUser($org, $requestBody, $accept), $fetch);
     }
     /**
      * Lists the most recent migrations.
@@ -3572,12 +3584,13 @@ class Client extends \Github\Runtime\Client\Client
     *     @var int $page Page number of the results to fetch.
     * }
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+    * @param array $accept Accept content header application/json|application/vnd.github.v3.star+json
     *
     * @return null|\Github\Model\Repository[]|\Psr\Http\Message\ResponseInterface
     */
-    public function activityListReposStarredByUser(string $username, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function activityListReposStarredByUser(string $username, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT, array $accept = array())
     {
-        return $this->executeEndpoint(new \Github\Endpoint\ActivityListReposStarredByUser($username, $queryParameters), $fetch);
+        return $this->executeEndpoint(new \Github\Endpoint\ActivityListReposStarredByUser($username, $queryParameters, $accept), $fetch);
     }
     /**
      * Lists repositories a user is watching.
@@ -3752,14 +3765,15 @@ class Client extends \Github\Runtime\Client\Client
     *     @var int $page Page number of the results to fetch.
     * }
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+    * @param array $accept Accept content header application/json|application/vnd.github.v3.star+json
     * @throws \Github\Exception\ActivityListReposStarredByAuthenticatedUserForbiddenException
     * @throws \Github\Exception\ActivityListReposStarredByAuthenticatedUserUnauthorizedException
     *
     * @return null|\Github\Model\Repository[]|\Psr\Http\Message\ResponseInterface
     */
-    public function activityListReposStarredByAuthenticatedUser(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function activityListReposStarredByAuthenticatedUser(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT, array $accept = array())
     {
-        return $this->executeEndpoint(new \Github\Endpoint\ActivityListReposStarredByAuthenticatedUser($queryParameters), $fetch);
+        return $this->executeEndpoint(new \Github\Endpoint\ActivityListReposStarredByAuthenticatedUser($queryParameters, $accept), $fetch);
     }
     /**
     * Lists the people that have starred the repository.
@@ -3773,13 +3787,14 @@ class Client extends \Github\Runtime\Client\Client
     *     @var int $page Page number of the results to fetch.
     * }
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+    * @param array $accept Accept content header application/json|application/vnd.github.v3.star+json
     * @throws \Github\Exception\ActivityListStargazersForRepoUnprocessableEntityException
     *
     * @return null|\Github\Model\SimpleUser[]|\Psr\Http\Message\ResponseInterface
     */
-    public function activityListStargazersForRepo(string $owner, string $repo, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function activityListStargazersForRepo(string $owner, string $repo, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT, array $accept = array())
     {
-        return $this->executeEndpoint(new \Github\Endpoint\ActivityListStargazersForRepo($owner, $repo, $queryParameters), $fetch);
+        return $this->executeEndpoint(new \Github\Endpoint\ActivityListStargazersForRepo($owner, $repo, $queryParameters, $accept), $fetch);
     }
     /**
      * 

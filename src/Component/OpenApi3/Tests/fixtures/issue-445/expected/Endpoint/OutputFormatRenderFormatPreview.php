@@ -4,14 +4,17 @@ namespace PicturePark\API\Endpoint;
 
 class OutputFormatRenderFormatPreview extends \PicturePark\API\Runtime\Client\BaseEndpoint implements \PicturePark\API\Runtime\Client\Endpoint
 {
+    protected $accept;
     /**
      * Request rendering of the given OutputFormat for a given content.
      *
      * @param \PicturePark\API\Model\OutputFormatRenderPreviewRequest $requestBody 
+     * @param array $accept Accept content header application/octet-stream|application/json
      */
-    public function __construct(\PicturePark\API\Model\OutputFormatRenderPreviewRequest $requestBody)
+    public function __construct(\PicturePark\API\Model\OutputFormatRenderPreviewRequest $requestBody, array $accept = array())
     {
         $this->body = $requestBody;
+        $this->accept = $accept;
     }
     use \PicturePark\API\Runtime\Client\EndpointTrait;
     public function getMethod() : string
@@ -31,7 +34,10 @@ class OutputFormatRenderFormatPreview extends \PicturePark\API\Runtime\Client\Ba
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        if (empty($this->accept)) {
+            return array('Accept' => array('application/octet-stream', 'application/json'));
+        }
+        return $this->accept;
     }
     /**
      * {@inheritdoc}

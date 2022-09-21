@@ -41,8 +41,17 @@ class BookNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('isbn', $data)) {
+        if (\array_key_exists('id', $data) && $data['id'] !== null) {
+            $object->setId($data['id']);
+        }
+        elseif (\array_key_exists('id', $data) && $data['id'] === null) {
+            $object->setId(null);
+        }
+        if (\array_key_exists('isbn', $data) && $data['isbn'] !== null) {
             $object->setIsbn($data['isbn']);
+        }
+        elseif (\array_key_exists('isbn', $data) && $data['isbn'] === null) {
+            $object->setIsbn(null);
         }
         if (\array_key_exists('title', $data)) {
             $object->setTitle($data['title']);
@@ -59,9 +68,21 @@ class BookNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         if (\array_key_exists('reviews', $data)) {
             $values = array();
             foreach ($data['reviews'] as $value) {
-                $values[] = $this->denormalizer->denormalize($value, 'ApiPlatform\\Demo\\Model\\Review', 'json', $context);
+                $values[] = $value;
             }
             $object->setReviews($values);
+        }
+        if (\array_key_exists('cover', $data) && $data['cover'] !== null) {
+            $object->setCover($data['cover']);
+        }
+        elseif (\array_key_exists('cover', $data) && $data['cover'] === null) {
+            $object->setCover(null);
+        }
+        if (\array_key_exists('archivedAt', $data) && $data['archivedAt'] !== null) {
+            $object->setArchivedAt(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['archivedAt']));
+        }
+        elseif (\array_key_exists('archivedAt', $data) && $data['archivedAt'] === null) {
+            $object->setArchivedAt(null);
         }
         return $object;
     }
@@ -81,9 +102,15 @@ class BookNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         if (null !== $object->getReviews()) {
             $values = array();
             foreach ($object->getReviews() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value;
             }
             $data['reviews'] = $values;
+        }
+        if (null !== $object->getCover()) {
+            $data['cover'] = $object->getCover();
+        }
+        if (null !== $object->getArchivedAt()) {
+            $data['archivedAt'] = $object->getArchivedAt()->format('Y-m-d\\TH:i:sP');
         }
         return $data;
     }
