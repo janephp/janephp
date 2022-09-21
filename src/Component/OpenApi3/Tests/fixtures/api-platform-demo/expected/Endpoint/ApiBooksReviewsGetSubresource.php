@@ -6,14 +6,14 @@ class ApiBooksReviewsGetSubresource extends \ApiPlatform\Demo\Runtime\Client\Bas
 {
     protected $id;
     /**
+     * 
      *
-     *
-     * @param string $id
+     * @param string $id 
      * @param array $queryParameters {
-     *     @var string $order[id]
-     *     @var string $order[publicationDate]
-     *     @var string $book
-     *     @var array $book[]
+     *     @var string $order[id] 
+     *     @var string $order[publicationDate] 
+     *     @var string $book 
+     *     @var array $book[] 
      *     @var int $page The collection page number
      * }
      */

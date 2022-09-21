@@ -5,13 +5,13 @@ namespace ApiPlatform\Demo\Endpoint;
 class GetReviewCollection extends \ApiPlatform\Demo\Runtime\Client\BaseEndpoint implements \ApiPlatform\Demo\Runtime\Client\Endpoint
 {
     /**
-     *
+     * 
      *
      * @param array $queryParameters {
-     *     @var string $order[id]
-     *     @var string $order[publicationDate]
-     *     @var string $book
-     *     @var array $book[]
+     *     @var string $order[id] 
+     *     @var string $order[publicationDate] 
+     *     @var string $book 
+     *     @var array $book[] 
      *     @var int $page The collection page number
      * }
      */

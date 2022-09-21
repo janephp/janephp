@@ -43,10 +43,10 @@ class GetBookCollection extends \ApiPlatform\Demo\Runtime\Client\BaseEndpoint im
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('properties[]', 'order[id]', 'order[title]', 'order[author]', 'order[isbn]', 'order[publicationDate]', 'title', 'author', 'page'));
+        $optionsResolver->setDefined(array('properties', 'order[id]', 'order[title]', 'order[author]', 'order[isbn]', 'order[publicationDate]', 'title', 'author', 'page'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array('page' => 1));
-        $optionsResolver->addAllowedTypes('properties[]', array('array'));
+        $optionsResolver->addAllowedTypes('properties', array('array'));
         $optionsResolver->addAllowedTypes('order[id]', array('string'));
         $optionsResolver->addAllowedTypes('order[title]', array('string'));
         $optionsResolver->addAllowedTypes('order[author]', array('string'));
