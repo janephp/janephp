@@ -49,8 +49,8 @@ class ContentTransferOwnership extends \PicturePark\API\Runtime\Client\BaseEndpo
         $optionsResolver->setDefined(array('timeout', 'waitSearchDocCreation'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array('waitSearchDocCreation' => true));
-        $optionsResolver->setAllowedTypes('timeout', array('string', 'null'));
-        $optionsResolver->setAllowedTypes('waitSearchDocCreation', array('bool'));
+        $optionsResolver->addAllowedTypes('timeout', array('string', 'null'));
+        $optionsResolver->addAllowedTypes('waitSearchDocCreation', array('bool'));
         return $optionsResolver;
     }
     /**

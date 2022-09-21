@@ -63,18 +63,18 @@ class IssuesList extends \Github\Runtime\Client\BaseEndpoint implements \Github\
         $optionsResolver->setDefined(array('filter', 'state', 'labels', 'sort', 'direction', 'since', 'collab', 'orgs', 'owned', 'pulls', 'per_page', 'page'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array('filter' => 'assigned', 'state' => 'open', 'sort' => 'created', 'direction' => 'desc', 'per_page' => 30, 'page' => 1));
-        $optionsResolver->setAllowedTypes('filter', array('string'));
-        $optionsResolver->setAllowedTypes('state', array('string'));
-        $optionsResolver->setAllowedTypes('labels', array('string'));
-        $optionsResolver->setAllowedTypes('sort', array('string'));
-        $optionsResolver->setAllowedTypes('direction', array('string'));
-        $optionsResolver->setAllowedTypes('since', array('string'));
-        $optionsResolver->setAllowedTypes('collab', array('bool'));
-        $optionsResolver->setAllowedTypes('orgs', array('bool'));
-        $optionsResolver->setAllowedTypes('owned', array('bool'));
-        $optionsResolver->setAllowedTypes('pulls', array('bool'));
-        $optionsResolver->setAllowedTypes('per_page', array('int'));
-        $optionsResolver->setAllowedTypes('page', array('int'));
+        $optionsResolver->addAllowedTypes('filter', array('string'));
+        $optionsResolver->addAllowedTypes('state', array('string'));
+        $optionsResolver->addAllowedTypes('labels', array('string'));
+        $optionsResolver->addAllowedTypes('sort', array('string'));
+        $optionsResolver->addAllowedTypes('direction', array('string'));
+        $optionsResolver->addAllowedTypes('since', array('string'));
+        $optionsResolver->addAllowedTypes('collab', array('bool'));
+        $optionsResolver->addAllowedTypes('orgs', array('bool'));
+        $optionsResolver->addAllowedTypes('owned', array('bool'));
+        $optionsResolver->addAllowedTypes('pulls', array('bool'));
+        $optionsResolver->addAllowedTypes('per_page', array('int'));
+        $optionsResolver->addAllowedTypes('page', array('int'));
         return $optionsResolver;
     }
     /**

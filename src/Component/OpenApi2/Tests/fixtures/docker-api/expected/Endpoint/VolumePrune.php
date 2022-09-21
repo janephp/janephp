@@ -42,7 +42,7 @@ class VolumePrune extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Do
         $optionsResolver->setDefined(array('filters'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array());
-        $optionsResolver->setAllowedTypes('filters', array('string'));
+        $optionsResolver->addAllowedTypes('filters', array('string'));
         return $optionsResolver;
     }
     /**

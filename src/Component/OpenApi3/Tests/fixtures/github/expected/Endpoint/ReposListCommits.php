@@ -70,13 +70,13 @@ class ReposListCommits extends \Github\Runtime\Client\BaseEndpoint implements \G
         $optionsResolver->setDefined(array('sha', 'path', 'author', 'since', 'until', 'per_page', 'page'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array('per_page' => 30, 'page' => 1));
-        $optionsResolver->setAllowedTypes('sha', array('string'));
-        $optionsResolver->setAllowedTypes('path', array('string'));
-        $optionsResolver->setAllowedTypes('author', array('string'));
-        $optionsResolver->setAllowedTypes('since', array('string'));
-        $optionsResolver->setAllowedTypes('until', array('string'));
-        $optionsResolver->setAllowedTypes('per_page', array('int'));
-        $optionsResolver->setAllowedTypes('page', array('int'));
+        $optionsResolver->addAllowedTypes('sha', array('string'));
+        $optionsResolver->addAllowedTypes('path', array('string'));
+        $optionsResolver->addAllowedTypes('author', array('string'));
+        $optionsResolver->addAllowedTypes('since', array('string'));
+        $optionsResolver->addAllowedTypes('until', array('string'));
+        $optionsResolver->addAllowedTypes('per_page', array('int'));
+        $optionsResolver->addAllowedTypes('page', array('int'));
         return $optionsResolver;
     }
     /**

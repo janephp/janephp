@@ -44,9 +44,9 @@ class ListAllPortfolios extends \CreditSafe\API\Runtime\Client\BaseEndpoint impl
         $optionsResolver->setDefined(array('searchQuery', 'page', 'pageSize'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array('page' => 0, 'pageSize' => 50));
-        $optionsResolver->setAllowedTypes('searchQuery', array('string'));
-        $optionsResolver->setAllowedTypes('page', array('int'));
-        $optionsResolver->setAllowedTypes('pageSize', array('int'));
+        $optionsResolver->addAllowedTypes('searchQuery', array('string'));
+        $optionsResolver->addAllowedTypes('page', array('int'));
+        $optionsResolver->addAllowedTypes('pageSize', array('int'));
         return $optionsResolver;
     }
     protected function getHeadersOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
@@ -55,7 +55,7 @@ class ListAllPortfolios extends \CreditSafe\API\Runtime\Client\BaseEndpoint impl
         $optionsResolver->setDefined(array('Authorization'));
         $optionsResolver->setRequired(array('Authorization'));
         $optionsResolver->setDefaults(array());
-        $optionsResolver->setAllowedTypes('Authorization', array('string'));
+        $optionsResolver->addAllowedTypes('Authorization', array('string'));
         return $optionsResolver;
     }
     /**

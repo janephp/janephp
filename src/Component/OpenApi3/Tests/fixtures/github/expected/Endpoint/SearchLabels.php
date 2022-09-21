@@ -49,10 +49,10 @@ class SearchLabels extends \Github\Runtime\Client\BaseEndpoint implements \Githu
         $optionsResolver->setDefined(array('repository_id', 'q', 'sort', 'order'));
         $optionsResolver->setRequired(array('repository_id', 'q'));
         $optionsResolver->setDefaults(array('order' => 'desc'));
-        $optionsResolver->setAllowedTypes('repository_id', array('int'));
-        $optionsResolver->setAllowedTypes('q', array('string'));
-        $optionsResolver->setAllowedTypes('sort', array('string'));
-        $optionsResolver->setAllowedTypes('order', array('string'));
+        $optionsResolver->addAllowedTypes('repository_id', array('int'));
+        $optionsResolver->addAllowedTypes('q', array('string'));
+        $optionsResolver->addAllowedTypes('sort', array('string'));
+        $optionsResolver->addAllowedTypes('order', array('string'));
         return $optionsResolver;
     }
     /**

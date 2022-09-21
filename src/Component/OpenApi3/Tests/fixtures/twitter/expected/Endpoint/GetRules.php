@@ -38,7 +38,7 @@ class GetRules extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Ba
         $optionsResolver->setDefined(array('ids'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array());
-        $optionsResolver->setAllowedTypes('ids', array('array'));
+        $optionsResolver->addAllowedTypes('ids', array('array'));
         return $optionsResolver;
     }
     /**

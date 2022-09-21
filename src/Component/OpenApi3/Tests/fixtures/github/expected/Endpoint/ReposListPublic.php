@@ -42,9 +42,9 @@ class ReposListPublic extends \Github\Runtime\Client\BaseEndpoint implements \Gi
         $optionsResolver->setDefined(array('per_page', 'since', 'visibility'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array('per_page' => 30));
-        $optionsResolver->setAllowedTypes('per_page', array('int'));
-        $optionsResolver->setAllowedTypes('since', array('string'));
-        $optionsResolver->setAllowedTypes('visibility', array('string'));
+        $optionsResolver->addAllowedTypes('per_page', array('int'));
+        $optionsResolver->addAllowedTypes('since', array('string'));
+        $optionsResolver->addAllowedTypes('visibility', array('string'));
         return $optionsResolver;
     }
     /**

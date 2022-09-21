@@ -48,10 +48,10 @@ class CompanyCreditReport extends \CreditSafe\API\Runtime\Client\BaseEndpoint im
         $optionsResolver->setDefined(array('language', 'template', 'customData', 'callRef'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array('language' => 'en', 'template' => 'full'));
-        $optionsResolver->setAllowedTypes('language', array('string'));
-        $optionsResolver->setAllowedTypes('template', array('string'));
-        $optionsResolver->setAllowedTypes('customData', array('string'));
-        $optionsResolver->setAllowedTypes('callRef', array('string'));
+        $optionsResolver->addAllowedTypes('language', array('string'));
+        $optionsResolver->addAllowedTypes('template', array('string'));
+        $optionsResolver->addAllowedTypes('customData', array('string'));
+        $optionsResolver->addAllowedTypes('callRef', array('string'));
         return $optionsResolver;
     }
     protected function getHeadersOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
@@ -60,7 +60,7 @@ class CompanyCreditReport extends \CreditSafe\API\Runtime\Client\BaseEndpoint im
         $optionsResolver->setDefined(array('Authorization'));
         $optionsResolver->setRequired(array('Authorization'));
         $optionsResolver->setDefaults(array());
-        $optionsResolver->setAllowedTypes('Authorization', array('string'));
+        $optionsResolver->addAllowedTypes('Authorization', array('string'));
         return $optionsResolver;
     }
     /**

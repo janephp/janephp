@@ -42,7 +42,7 @@ class PluginCreate extends \Docker\Api\Runtime\Client\BaseEndpoint implements \D
         $optionsResolver->setDefined(array('name'));
         $optionsResolver->setRequired(array('name'));
         $optionsResolver->setDefaults(array());
-        $optionsResolver->setAllowedTypes('name', array('string'));
+        $optionsResolver->addAllowedTypes('name', array('string'));
         return $optionsResolver;
     }
     /**

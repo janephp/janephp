@@ -46,7 +46,7 @@ class MigrationsGetCommitAuthors extends \Github\Runtime\Client\BaseEndpoint imp
         $optionsResolver->setDefined(array('since'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array());
-        $optionsResolver->setAllowedTypes('since', array('string'));
+        $optionsResolver->addAllowedTypes('since', array('string'));
         return $optionsResolver;
     }
     /**

@@ -43,7 +43,7 @@ class AddOrDeleteRules extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\C
         $optionsResolver->setDefined(array('dry_run'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array());
-        $optionsResolver->setAllowedTypes('dry_run', array('bool'));
+        $optionsResolver->addAllowedTypes('dry_run', array('bool'));
         return $optionsResolver;
     }
     /**

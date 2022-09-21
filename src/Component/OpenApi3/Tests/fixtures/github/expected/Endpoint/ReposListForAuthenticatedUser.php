@@ -53,15 +53,15 @@ class ReposListForAuthenticatedUser extends \Github\Runtime\Client\BaseEndpoint 
         $optionsResolver->setDefined(array('visibility', 'affiliation', 'type', 'sort', 'direction', 'per_page', 'page', 'since', 'before'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array('visibility' => 'all', 'affiliation' => 'owner,collaborator,organization_member', 'type' => 'all', 'sort' => 'full_name', 'per_page' => 30, 'page' => 1));
-        $optionsResolver->setAllowedTypes('visibility', array('string'));
-        $optionsResolver->setAllowedTypes('affiliation', array('string'));
-        $optionsResolver->setAllowedTypes('type', array('string'));
-        $optionsResolver->setAllowedTypes('sort', array('string'));
-        $optionsResolver->setAllowedTypes('direction', array('string'));
-        $optionsResolver->setAllowedTypes('per_page', array('int'));
-        $optionsResolver->setAllowedTypes('page', array('int'));
-        $optionsResolver->setAllowedTypes('since', array('string'));
-        $optionsResolver->setAllowedTypes('before', array('string'));
+        $optionsResolver->addAllowedTypes('visibility', array('string'));
+        $optionsResolver->addAllowedTypes('affiliation', array('string'));
+        $optionsResolver->addAllowedTypes('type', array('string'));
+        $optionsResolver->addAllowedTypes('sort', array('string'));
+        $optionsResolver->addAllowedTypes('direction', array('string'));
+        $optionsResolver->addAllowedTypes('per_page', array('int'));
+        $optionsResolver->addAllowedTypes('page', array('int'));
+        $optionsResolver->addAllowedTypes('since', array('string'));
+        $optionsResolver->addAllowedTypes('before', array('string'));
         return $optionsResolver;
     }
     /**

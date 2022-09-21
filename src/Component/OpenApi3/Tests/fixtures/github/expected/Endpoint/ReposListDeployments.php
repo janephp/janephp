@@ -49,12 +49,12 @@ class ReposListDeployments extends \Github\Runtime\Client\BaseEndpoint implement
         $optionsResolver->setDefined(array('sha', 'ref', 'task', 'environment', 'per_page', 'page'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array('sha' => 'none', 'ref' => 'none', 'task' => 'none', 'environment' => 'none', 'per_page' => 30, 'page' => 1));
-        $optionsResolver->setAllowedTypes('sha', array('string'));
-        $optionsResolver->setAllowedTypes('ref', array('string'));
-        $optionsResolver->setAllowedTypes('task', array('string'));
-        $optionsResolver->setAllowedTypes('environment', array('string'));
-        $optionsResolver->setAllowedTypes('per_page', array('int'));
-        $optionsResolver->setAllowedTypes('page', array('int'));
+        $optionsResolver->addAllowedTypes('sha', array('string'));
+        $optionsResolver->addAllowedTypes('ref', array('string'));
+        $optionsResolver->addAllowedTypes('task', array('string'));
+        $optionsResolver->addAllowedTypes('environment', array('string'));
+        $optionsResolver->addAllowedTypes('per_page', array('int'));
+        $optionsResolver->addAllowedTypes('page', array('int'));
         return $optionsResolver;
     }
     /**

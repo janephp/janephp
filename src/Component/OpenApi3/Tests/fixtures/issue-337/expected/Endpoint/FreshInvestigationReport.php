@@ -45,7 +45,7 @@ class FreshInvestigationReport extends \CreditSafe\API\Runtime\Client\BaseEndpoi
         $optionsResolver->setDefined(array('sections'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array());
-        $optionsResolver->setAllowedTypes('sections', array('string'));
+        $optionsResolver->addAllowedTypes('sections', array('string'));
         return $optionsResolver;
     }
     protected function getHeadersOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
@@ -54,7 +54,7 @@ class FreshInvestigationReport extends \CreditSafe\API\Runtime\Client\BaseEndpoi
         $optionsResolver->setDefined(array('Authorization'));
         $optionsResolver->setRequired(array('Authorization'));
         $optionsResolver->setDefaults(array());
-        $optionsResolver->setAllowedTypes('Authorization', array('string'));
+        $optionsResolver->addAllowedTypes('Authorization', array('string'));
         return $optionsResolver;
     }
     /**

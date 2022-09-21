@@ -39,12 +39,12 @@ class TestHeaderParameters extends \Jane\Component\OpenApi2\Tests\Expected\Runti
         $optionsResolver->setDefined(array('testString', 'testInteger', 'testFloat', 'testArray', 'testRequired', 'testDefault'));
         $optionsResolver->setRequired(array('testRequired'));
         $optionsResolver->setDefaults(array('testDefault' => 'test'));
-        $optionsResolver->setAllowedTypes('testString', array('string'));
-        $optionsResolver->setAllowedTypes('testInteger', array('int'));
-        $optionsResolver->setAllowedTypes('testFloat', array('float'));
-        $optionsResolver->setAllowedTypes('testArray', array('array'));
-        $optionsResolver->setAllowedTypes('testRequired', array('string'));
-        $optionsResolver->setAllowedTypes('testDefault', array('string'));
+        $optionsResolver->addAllowedTypes('testString', array('string'));
+        $optionsResolver->addAllowedTypes('testInteger', array('int'));
+        $optionsResolver->addAllowedTypes('testFloat', array('float'));
+        $optionsResolver->addAllowedTypes('testArray', array('array'));
+        $optionsResolver->addAllowedTypes('testRequired', array('string'));
+        $optionsResolver->addAllowedTypes('testDefault', array('string'));
         return $optionsResolver;
     }
     /**

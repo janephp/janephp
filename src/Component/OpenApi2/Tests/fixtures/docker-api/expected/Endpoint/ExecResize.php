@@ -44,8 +44,8 @@ class ExecResize extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Doc
         $optionsResolver->setDefined(array('h', 'w'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array());
-        $optionsResolver->setAllowedTypes('h', array('int'));
-        $optionsResolver->setAllowedTypes('w', array('int'));
+        $optionsResolver->addAllowedTypes('h', array('int'));
+        $optionsResolver->addAllowedTypes('w', array('int'));
         return $optionsResolver;
     }
     /**

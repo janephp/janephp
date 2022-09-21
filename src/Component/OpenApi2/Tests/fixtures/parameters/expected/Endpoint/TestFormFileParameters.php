@@ -34,7 +34,7 @@ class TestFormFileParameters extends \Jane\Component\OpenApi2\Tests\Expected\Run
         $optionsResolver->setDefined(array('testFile'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array());
-        $optionsResolver->setAllowedTypes('testFile', array('string', 'resource', '\\Psr\\Http\\Message\\StreamInterface'));
+        $optionsResolver->addAllowedTypes('testFile', array('string', 'resource', '\\Psr\\Http\\Message\\StreamInterface'));
         return $optionsResolver;
     }
     /**

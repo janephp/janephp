@@ -45,9 +45,9 @@ class ListItemDelete extends \PicturePark\API\Runtime\Client\BaseEndpoint implem
         $optionsResolver->setDefined(array('forceReferenceRemoval', 'timeout', 'waitSearchDocCreation'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array('forceReferenceRemoval' => false, 'waitSearchDocCreation' => true));
-        $optionsResolver->setAllowedTypes('forceReferenceRemoval', array('bool'));
-        $optionsResolver->setAllowedTypes('timeout', array('string', 'null'));
-        $optionsResolver->setAllowedTypes('waitSearchDocCreation', array('bool'));
+        $optionsResolver->addAllowedTypes('forceReferenceRemoval', array('bool'));
+        $optionsResolver->addAllowedTypes('timeout', array('string', 'null'));
+        $optionsResolver->addAllowedTypes('waitSearchDocCreation', array('bool'));
         return $optionsResolver;
     }
     /**

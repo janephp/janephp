@@ -53,9 +53,9 @@ class BuildPrune extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Doc
         $optionsResolver->setDefined(array('keep-storage', 'all', 'filters'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array());
-        $optionsResolver->setAllowedTypes('keep-storage', array('int'));
-        $optionsResolver->setAllowedTypes('all', array('bool'));
-        $optionsResolver->setAllowedTypes('filters', array('string'));
+        $optionsResolver->addAllowedTypes('keep-storage', array('int'));
+        $optionsResolver->addAllowedTypes('all', array('bool'));
+        $optionsResolver->addAllowedTypes('filters', array('string'));
         return $optionsResolver;
     }
     /**

@@ -48,8 +48,8 @@ class ReposListCommentsForCommit extends \Github\Runtime\Client\BaseEndpoint imp
         $optionsResolver->setDefined(array('per_page', 'page'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array('per_page' => 30, 'page' => 1));
-        $optionsResolver->setAllowedTypes('per_page', array('int'));
-        $optionsResolver->setAllowedTypes('page', array('int'));
+        $optionsResolver->addAllowedTypes('per_page', array('int'));
+        $optionsResolver->addAllowedTypes('page', array('int'));
         return $optionsResolver;
     }
     /**

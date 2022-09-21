@@ -52,9 +52,9 @@ class RunDecisionTree extends \CreditSafe\API\Runtime\Client\BaseEndpoint implem
         $optionsResolver->setDefined(array('companyId', 'originationId', 'callRef'));
         $optionsResolver->setRequired(array('companyId'));
         $optionsResolver->setDefaults(array());
-        $optionsResolver->setAllowedTypes('companyId', array('string'));
-        $optionsResolver->setAllowedTypes('originationId', array('string'));
-        $optionsResolver->setAllowedTypes('callRef', array('string'));
+        $optionsResolver->addAllowedTypes('companyId', array('string'));
+        $optionsResolver->addAllowedTypes('originationId', array('string'));
+        $optionsResolver->addAllowedTypes('callRef', array('string'));
         return $optionsResolver;
     }
     protected function getHeadersOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
@@ -63,7 +63,7 @@ class RunDecisionTree extends \CreditSafe\API\Runtime\Client\BaseEndpoint implem
         $optionsResolver->setDefined(array('Authorization'));
         $optionsResolver->setRequired(array('Authorization'));
         $optionsResolver->setDefaults(array());
-        $optionsResolver->setAllowedTypes('Authorization', array('string'));
+        $optionsResolver->addAllowedTypes('Authorization', array('string'));
         return $optionsResolver;
     }
     /**

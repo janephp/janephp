@@ -46,9 +46,9 @@ class ProjectsListForRepo extends \Github\Runtime\Client\BaseEndpoint implements
         $optionsResolver->setDefined(array('state', 'per_page', 'page'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array('state' => 'open', 'per_page' => 30, 'page' => 1));
-        $optionsResolver->setAllowedTypes('state', array('string'));
-        $optionsResolver->setAllowedTypes('per_page', array('int'));
-        $optionsResolver->setAllowedTypes('page', array('int'));
+        $optionsResolver->addAllowedTypes('state', array('string'));
+        $optionsResolver->addAllowedTypes('per_page', array('int'));
+        $optionsResolver->addAllowedTypes('page', array('int'));
         return $optionsResolver;
     }
     /**

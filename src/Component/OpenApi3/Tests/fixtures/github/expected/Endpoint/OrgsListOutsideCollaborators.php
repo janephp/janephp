@@ -45,9 +45,9 @@ class OrgsListOutsideCollaborators extends \Github\Runtime\Client\BaseEndpoint i
         $optionsResolver->setDefined(array('filter', 'per_page', 'page'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array('filter' => 'all', 'per_page' => 30, 'page' => 1));
-        $optionsResolver->setAllowedTypes('filter', array('string'));
-        $optionsResolver->setAllowedTypes('per_page', array('int'));
-        $optionsResolver->setAllowedTypes('page', array('int'));
+        $optionsResolver->addAllowedTypes('filter', array('string'));
+        $optionsResolver->addAllowedTypes('per_page', array('int'));
+        $optionsResolver->addAllowedTypes('page', array('int'));
         return $optionsResolver;
     }
     /**

@@ -70,8 +70,8 @@ class ReposUploadReleaseAsset extends \Github\Runtime\Client\BaseEndpoint implem
         $optionsResolver->setDefined(array('name', 'label'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array());
-        $optionsResolver->setAllowedTypes('name', array('string'));
-        $optionsResolver->setAllowedTypes('label', array('string'));
+        $optionsResolver->addAllowedTypes('name', array('string'));
+        $optionsResolver->addAllowedTypes('label', array('string'));
         return $optionsResolver;
     }
     /**

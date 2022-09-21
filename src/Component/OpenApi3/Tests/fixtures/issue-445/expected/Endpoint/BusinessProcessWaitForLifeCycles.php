@@ -42,8 +42,8 @@ class BusinessProcessWaitForLifeCycles extends \PicturePark\API\Runtime\Client\B
         $optionsResolver->setDefined(array('lifeCycles', 'timeout'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array());
-        $optionsResolver->setAllowedTypes('lifeCycles', array('array', 'null'));
-        $optionsResolver->setAllowedTypes('timeout', array('string', 'null'));
+        $optionsResolver->addAllowedTypes('lifeCycles', array('array', 'null'));
+        $optionsResolver->addAllowedTypes('timeout', array('string', 'null'));
         return $optionsResolver;
     }
     /**

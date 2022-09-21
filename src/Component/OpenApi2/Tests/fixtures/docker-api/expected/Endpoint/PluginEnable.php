@@ -43,7 +43,7 @@ class PluginEnable extends \Docker\Api\Runtime\Client\BaseEndpoint implements \D
         $optionsResolver->setDefined(array('timeout'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array('timeout' => 0));
-        $optionsResolver->setAllowedTypes('timeout', array('int'));
+        $optionsResolver->addAllowedTypes('timeout', array('int'));
         return $optionsResolver;
     }
     /**

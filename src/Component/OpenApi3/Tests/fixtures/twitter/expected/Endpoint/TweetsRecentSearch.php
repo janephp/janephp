@@ -49,18 +49,18 @@ class TweetsRecentSearch extends \Jane\Component\OpenApi3\Tests\Expected\Runtime
         $optionsResolver->setDefined(array('query', 'start_time', 'end_time', 'since_id', 'until_id', 'max_results', 'next_token', 'format', 'tweet.format', 'user.format', 'place.format', 'expansions'));
         $optionsResolver->setRequired(array('query'));
         $optionsResolver->setDefaults(array('max_results' => 10));
-        $optionsResolver->setAllowedTypes('query', array('string'));
-        $optionsResolver->setAllowedTypes('start_time', array('string'));
-        $optionsResolver->setAllowedTypes('end_time', array('string'));
-        $optionsResolver->setAllowedTypes('since_id', array('string'));
-        $optionsResolver->setAllowedTypes('until_id', array('string'));
-        $optionsResolver->setAllowedTypes('max_results', array('int'));
-        $optionsResolver->setAllowedTypes('next_token', array('string'));
-        $optionsResolver->setAllowedTypes('format', array('string'));
-        $optionsResolver->setAllowedTypes('tweet.format', array('string'));
-        $optionsResolver->setAllowedTypes('user.format', array('string'));
-        $optionsResolver->setAllowedTypes('place.format', array('string'));
-        $optionsResolver->setAllowedTypes('expansions', array('array'));
+        $optionsResolver->addAllowedTypes('query', array('string'));
+        $optionsResolver->addAllowedTypes('start_time', array('string'));
+        $optionsResolver->addAllowedTypes('end_time', array('string'));
+        $optionsResolver->addAllowedTypes('since_id', array('string'));
+        $optionsResolver->addAllowedTypes('until_id', array('string'));
+        $optionsResolver->addAllowedTypes('max_results', array('int'));
+        $optionsResolver->addAllowedTypes('next_token', array('string'));
+        $optionsResolver->addAllowedTypes('format', array('string'));
+        $optionsResolver->addAllowedTypes('tweet.format', array('string'));
+        $optionsResolver->addAllowedTypes('user.format', array('string'));
+        $optionsResolver->addAllowedTypes('place.format', array('string'));
+        $optionsResolver->addAllowedTypes('expansions', array('array'));
         return $optionsResolver;
     }
     /**

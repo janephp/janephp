@@ -78,7 +78,7 @@ class ReposGetContent extends \Github\Runtime\Client\BaseEndpoint implements \Gi
         $optionsResolver->setDefined(array('ref'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array());
-        $optionsResolver->setAllowedTypes('ref', array('string'));
+        $optionsResolver->addAllowedTypes('ref', array('string'));
         return $optionsResolver;
     }
     /**

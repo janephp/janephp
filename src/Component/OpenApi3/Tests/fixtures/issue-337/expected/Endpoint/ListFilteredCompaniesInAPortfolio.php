@@ -49,11 +49,11 @@ class ListFilteredCompaniesInAPortfolio extends \CreditSafe\API\Runtime\Client\B
         $optionsResolver->setDefined(array('searchQuery', 'pageSize', 'page', 'countryCode', 'events'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array('pageSize' => 50, 'page' => 0, 'events' => false));
-        $optionsResolver->setAllowedTypes('searchQuery', array('string'));
-        $optionsResolver->setAllowedTypes('pageSize', array('int'));
-        $optionsResolver->setAllowedTypes('page', array('int'));
-        $optionsResolver->setAllowedTypes('countryCode', array('string'));
-        $optionsResolver->setAllowedTypes('events', array('bool'));
+        $optionsResolver->addAllowedTypes('searchQuery', array('string'));
+        $optionsResolver->addAllowedTypes('pageSize', array('int'));
+        $optionsResolver->addAllowedTypes('page', array('int'));
+        $optionsResolver->addAllowedTypes('countryCode', array('string'));
+        $optionsResolver->addAllowedTypes('events', array('bool'));
         return $optionsResolver;
     }
     protected function getHeadersOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
@@ -62,7 +62,7 @@ class ListFilteredCompaniesInAPortfolio extends \CreditSafe\API\Runtime\Client\B
         $optionsResolver->setDefined(array('Authorization'));
         $optionsResolver->setRequired(array('Authorization'));
         $optionsResolver->setDefaults(array());
-        $optionsResolver->setAllowedTypes('Authorization', array('string'));
+        $optionsResolver->addAllowedTypes('Authorization', array('string'));
         return $optionsResolver;
     }
     /**

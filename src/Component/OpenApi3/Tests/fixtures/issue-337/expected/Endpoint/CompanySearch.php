@@ -64,29 +64,29 @@ class CompanySearch extends \CreditSafe\API\Runtime\Client\BaseEndpoint implemen
         $optionsResolver->setDefined(array('countries', 'language', 'id', 'safeNo', 'regNo', 'vatNo', 'name', 'tradeName', 'acronym', 'exact', 'address', 'street', 'houseNo', 'city', 'postCode', 'province', 'phone', 'officeType', 'status', 'type', 'page', 'pageSize', 'callRef'));
         $optionsResolver->setRequired(array('countries'));
         $optionsResolver->setDefaults(array('language' => 'en'));
-        $optionsResolver->setAllowedTypes('countries', array('string'));
-        $optionsResolver->setAllowedTypes('language', array('string'));
-        $optionsResolver->setAllowedTypes('id', array('string'));
-        $optionsResolver->setAllowedTypes('safeNo', array('string'));
-        $optionsResolver->setAllowedTypes('regNo', array('string'));
-        $optionsResolver->setAllowedTypes('vatNo', array('string'));
-        $optionsResolver->setAllowedTypes('name', array('string'));
-        $optionsResolver->setAllowedTypes('tradeName', array('string'));
-        $optionsResolver->setAllowedTypes('acronym', array('string'));
-        $optionsResolver->setAllowedTypes('exact', array('bool'));
-        $optionsResolver->setAllowedTypes('address', array('string'));
-        $optionsResolver->setAllowedTypes('street', array('string'));
-        $optionsResolver->setAllowedTypes('houseNo', array('string'));
-        $optionsResolver->setAllowedTypes('city', array('string'));
-        $optionsResolver->setAllowedTypes('postCode', array('string'));
-        $optionsResolver->setAllowedTypes('province', array('string'));
-        $optionsResolver->setAllowedTypes('phone', array('string'));
-        $optionsResolver->setAllowedTypes('officeType', array('string'));
-        $optionsResolver->setAllowedTypes('status', array('string'));
-        $optionsResolver->setAllowedTypes('type', array('string'));
-        $optionsResolver->setAllowedTypes('page', array('int'));
-        $optionsResolver->setAllowedTypes('pageSize', array('int'));
-        $optionsResolver->setAllowedTypes('callRef', array('string'));
+        $optionsResolver->addAllowedTypes('countries', array('string'));
+        $optionsResolver->addAllowedTypes('language', array('string'));
+        $optionsResolver->addAllowedTypes('id', array('string'));
+        $optionsResolver->addAllowedTypes('safeNo', array('string'));
+        $optionsResolver->addAllowedTypes('regNo', array('string'));
+        $optionsResolver->addAllowedTypes('vatNo', array('string'));
+        $optionsResolver->addAllowedTypes('name', array('string'));
+        $optionsResolver->addAllowedTypes('tradeName', array('string'));
+        $optionsResolver->addAllowedTypes('acronym', array('string'));
+        $optionsResolver->addAllowedTypes('exact', array('bool'));
+        $optionsResolver->addAllowedTypes('address', array('string'));
+        $optionsResolver->addAllowedTypes('street', array('string'));
+        $optionsResolver->addAllowedTypes('houseNo', array('string'));
+        $optionsResolver->addAllowedTypes('city', array('string'));
+        $optionsResolver->addAllowedTypes('postCode', array('string'));
+        $optionsResolver->addAllowedTypes('province', array('string'));
+        $optionsResolver->addAllowedTypes('phone', array('string'));
+        $optionsResolver->addAllowedTypes('officeType', array('string'));
+        $optionsResolver->addAllowedTypes('status', array('string'));
+        $optionsResolver->addAllowedTypes('type', array('string'));
+        $optionsResolver->addAllowedTypes('page', array('int'));
+        $optionsResolver->addAllowedTypes('pageSize', array('int'));
+        $optionsResolver->addAllowedTypes('callRef', array('string'));
         return $optionsResolver;
     }
     protected function getHeadersOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
@@ -95,7 +95,7 @@ class CompanySearch extends \CreditSafe\API\Runtime\Client\BaseEndpoint implemen
         $optionsResolver->setDefined(array('Authorization'));
         $optionsResolver->setRequired(array('Authorization'));
         $optionsResolver->setDefaults(array());
-        $optionsResolver->setAllowedTypes('Authorization', array('string'));
+        $optionsResolver->addAllowedTypes('Authorization', array('string'));
         return $optionsResolver;
     }
     /**

@@ -48,13 +48,13 @@ class NotificationEvents extends \CreditSafe\API\Runtime\Client\BaseEndpoint imp
         $optionsResolver->setDefined(array('searchQuery', 'sortBy', 'sortDir', 'startDate', 'endDate', 'page', 'pageSize'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array('sortBy' => 'companyName', 'sortDir' => 'asc', 'page' => 0, 'pageSize' => 50));
-        $optionsResolver->setAllowedTypes('searchQuery', array('string'));
-        $optionsResolver->setAllowedTypes('sortBy', array('string'));
-        $optionsResolver->setAllowedTypes('sortDir', array('string'));
-        $optionsResolver->setAllowedTypes('startDate', array('string'));
-        $optionsResolver->setAllowedTypes('endDate', array('string'));
-        $optionsResolver->setAllowedTypes('page', array('int'));
-        $optionsResolver->setAllowedTypes('pageSize', array('int'));
+        $optionsResolver->addAllowedTypes('searchQuery', array('string'));
+        $optionsResolver->addAllowedTypes('sortBy', array('string'));
+        $optionsResolver->addAllowedTypes('sortDir', array('string'));
+        $optionsResolver->addAllowedTypes('startDate', array('string'));
+        $optionsResolver->addAllowedTypes('endDate', array('string'));
+        $optionsResolver->addAllowedTypes('page', array('int'));
+        $optionsResolver->addAllowedTypes('pageSize', array('int'));
         return $optionsResolver;
     }
     protected function getHeadersOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
@@ -63,7 +63,7 @@ class NotificationEvents extends \CreditSafe\API\Runtime\Client\BaseEndpoint imp
         $optionsResolver->setDefined(array('Authorization'));
         $optionsResolver->setRequired(array('Authorization'));
         $optionsResolver->setDefaults(array());
-        $optionsResolver->setAllowedTypes('Authorization', array('string'));
+        $optionsResolver->addAllowedTypes('Authorization', array('string'));
         return $optionsResolver;
     }
     /**

@@ -38,7 +38,7 @@ class GetParchmentCollection extends \ApiPlatform\Demo\Runtime\Client\BaseEndpoi
         $optionsResolver->setDefined(array('page'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array('page' => 1));
-        $optionsResolver->setAllowedTypes('page', array('int'));
+        $optionsResolver->addAllowedTypes('page', array('int'));
         return $optionsResolver;
     }
     /**
