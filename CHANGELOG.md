@@ -6,10 +6,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Added
+- [OpenAPI] [GH#665](https://github.com/janephp/janephp/pull/655) Support API Platform and different response content types; application/ld+json application/hal+json application/vnd.api+json, through optional accept headers in Client methods.
+- [OpenAPI] [GH#656](https://github.com/janephp/janephp/pull/656) Support anyOf reference or null property in schema
+
 ### Changed
 - [OpenAPI] [GH#647](https://github.com/janephp/janephp/pull/647) Support inheritance using discriminator with mapping
 - [JsonSchema] [GH#640](https://github.com/janephp/janephp/pull/640) [GH#651](https://github.com/janephp/janephp/pull/651) Rework Validation
-- [OpenApi] [GH#665](https://github.com/janephp/janephp/pull/655) Support API Platform and different response content types; application/ld+json application/hal+json application/vnd.api+json, through optional accept headers in Client methods.
+
+### Fixed
+- [OpenAPI] [GH#636](https://github.com/janephp/janephp/pull/636) Fixing issue with http_query_build and QS array variables
 
 ## [7.3.1] - 2022-08-22
 ### Changed
