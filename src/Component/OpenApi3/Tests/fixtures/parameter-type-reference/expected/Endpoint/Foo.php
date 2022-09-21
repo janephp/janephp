@@ -34,7 +34,7 @@ class Foo extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\BaseEnd
         $optionsResolver->setDefined(array('bar'));
         $optionsResolver->setRequired(array('bar'));
         $optionsResolver->setDefaults(array());
-        $optionsResolver->setAllowedTypes('bar', array('string'));
+        $optionsResolver->addAllowedTypes('bar', array('string'));
         return $optionsResolver;
     }
     /**

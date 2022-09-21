@@ -44,7 +44,7 @@ class ReposGetViews extends \Github\Runtime\Client\BaseEndpoint implements \Gith
         $optionsResolver->setDefined(array('per'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array('per' => 'day'));
-        $optionsResolver->setAllowedTypes('per', array('string'));
+        $optionsResolver->addAllowedTypes('per', array('string'));
         return $optionsResolver;
     }
     /**

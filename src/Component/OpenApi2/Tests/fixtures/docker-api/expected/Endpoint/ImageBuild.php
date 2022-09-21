@@ -102,30 +102,30 @@ class ImageBuild extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Doc
         $optionsResolver->setDefined(array('dockerfile', 't', 'extrahosts', 'remote', 'q', 'nocache', 'cachefrom', 'pull', 'rm', 'forcerm', 'memory', 'memswap', 'cpushares', 'cpusetcpus', 'cpuperiod', 'cpuquota', 'buildargs', 'shmsize', 'squash', 'labels', 'networkmode', 'platform', 'target', 'outputs'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array('dockerfile' => 'Dockerfile', 'q' => false, 'nocache' => false, 'rm' => true, 'forcerm' => false, 'platform' => '', 'target' => '', 'outputs' => ''));
-        $optionsResolver->setAllowedTypes('dockerfile', array('string'));
-        $optionsResolver->setAllowedTypes('t', array('string'));
-        $optionsResolver->setAllowedTypes('extrahosts', array('string'));
-        $optionsResolver->setAllowedTypes('remote', array('string'));
-        $optionsResolver->setAllowedTypes('q', array('bool'));
-        $optionsResolver->setAllowedTypes('nocache', array('bool'));
-        $optionsResolver->setAllowedTypes('cachefrom', array('string'));
-        $optionsResolver->setAllowedTypes('pull', array('string'));
-        $optionsResolver->setAllowedTypes('rm', array('bool'));
-        $optionsResolver->setAllowedTypes('forcerm', array('bool'));
-        $optionsResolver->setAllowedTypes('memory', array('int'));
-        $optionsResolver->setAllowedTypes('memswap', array('int'));
-        $optionsResolver->setAllowedTypes('cpushares', array('int'));
-        $optionsResolver->setAllowedTypes('cpusetcpus', array('string'));
-        $optionsResolver->setAllowedTypes('cpuperiod', array('int'));
-        $optionsResolver->setAllowedTypes('cpuquota', array('int'));
-        $optionsResolver->setAllowedTypes('buildargs', array('string'));
-        $optionsResolver->setAllowedTypes('shmsize', array('int'));
-        $optionsResolver->setAllowedTypes('squash', array('bool'));
-        $optionsResolver->setAllowedTypes('labels', array('string'));
-        $optionsResolver->setAllowedTypes('networkmode', array('string'));
-        $optionsResolver->setAllowedTypes('platform', array('string'));
-        $optionsResolver->setAllowedTypes('target', array('string'));
-        $optionsResolver->setAllowedTypes('outputs', array('string'));
+        $optionsResolver->addAllowedTypes('dockerfile', array('string'));
+        $optionsResolver->addAllowedTypes('t', array('string'));
+        $optionsResolver->addAllowedTypes('extrahosts', array('string'));
+        $optionsResolver->addAllowedTypes('remote', array('string'));
+        $optionsResolver->addAllowedTypes('q', array('bool'));
+        $optionsResolver->addAllowedTypes('nocache', array('bool'));
+        $optionsResolver->addAllowedTypes('cachefrom', array('string'));
+        $optionsResolver->addAllowedTypes('pull', array('string'));
+        $optionsResolver->addAllowedTypes('rm', array('bool'));
+        $optionsResolver->addAllowedTypes('forcerm', array('bool'));
+        $optionsResolver->addAllowedTypes('memory', array('int'));
+        $optionsResolver->addAllowedTypes('memswap', array('int'));
+        $optionsResolver->addAllowedTypes('cpushares', array('int'));
+        $optionsResolver->addAllowedTypes('cpusetcpus', array('string'));
+        $optionsResolver->addAllowedTypes('cpuperiod', array('int'));
+        $optionsResolver->addAllowedTypes('cpuquota', array('int'));
+        $optionsResolver->addAllowedTypes('buildargs', array('string'));
+        $optionsResolver->addAllowedTypes('shmsize', array('int'));
+        $optionsResolver->addAllowedTypes('squash', array('bool'));
+        $optionsResolver->addAllowedTypes('labels', array('string'));
+        $optionsResolver->addAllowedTypes('networkmode', array('string'));
+        $optionsResolver->addAllowedTypes('platform', array('string'));
+        $optionsResolver->addAllowedTypes('target', array('string'));
+        $optionsResolver->addAllowedTypes('outputs', array('string'));
         return $optionsResolver;
     }
     protected function getHeadersOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
@@ -134,8 +134,8 @@ class ImageBuild extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Doc
         $optionsResolver->setDefined(array('Content-type', 'X-Registry-Config'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array('Content-type' => 'application/x-tar'));
-        $optionsResolver->setAllowedTypes('Content-type', array('string'));
-        $optionsResolver->setAllowedTypes('X-Registry-Config', array('string'));
+        $optionsResolver->addAllowedTypes('Content-type', array('string'));
+        $optionsResolver->addAllowedTypes('X-Registry-Config', array('string'));
         return $optionsResolver;
     }
     /**

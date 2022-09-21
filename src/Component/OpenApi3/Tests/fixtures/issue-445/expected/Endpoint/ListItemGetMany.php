@@ -40,8 +40,8 @@ class ListItemGetMany extends \PicturePark\API\Runtime\Client\BaseEndpoint imple
         $optionsResolver->setDefined(array('ids', 'resolveBehaviors'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array());
-        $optionsResolver->setAllowedTypes('ids', array('array', 'null'));
-        $optionsResolver->setAllowedTypes('resolveBehaviors', array('array', 'null'));
+        $optionsResolver->addAllowedTypes('ids', array('array', 'null'));
+        $optionsResolver->addAllowedTypes('resolveBehaviors', array('array', 'null'));
         return $optionsResolver;
     }
     /**

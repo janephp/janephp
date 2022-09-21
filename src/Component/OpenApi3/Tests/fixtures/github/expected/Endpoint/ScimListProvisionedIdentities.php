@@ -70,9 +70,9 @@ class ScimListProvisionedIdentities extends \Github\Runtime\Client\BaseEndpoint 
         $optionsResolver->setDefined(array('startIndex', 'count', 'filter'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array());
-        $optionsResolver->setAllowedTypes('startIndex', array('int'));
-        $optionsResolver->setAllowedTypes('count', array('int'));
-        $optionsResolver->setAllowedTypes('filter', array('string'));
+        $optionsResolver->addAllowedTypes('startIndex', array('int'));
+        $optionsResolver->addAllowedTypes('count', array('int'));
+        $optionsResolver->addAllowedTypes('filter', array('string'));
         return $optionsResolver;
     }
     /**

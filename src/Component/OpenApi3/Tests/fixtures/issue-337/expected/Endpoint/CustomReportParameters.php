@@ -45,7 +45,7 @@ class CustomReportParameters extends \CreditSafe\API\Runtime\Client\BaseEndpoint
         $optionsResolver->setDefined(array('template'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array('template' => 'full'));
-        $optionsResolver->setAllowedTypes('template', array('string'));
+        $optionsResolver->addAllowedTypes('template', array('string'));
         return $optionsResolver;
     }
     protected function getHeadersOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
@@ -54,7 +54,7 @@ class CustomReportParameters extends \CreditSafe\API\Runtime\Client\BaseEndpoint
         $optionsResolver->setDefined(array('Authorization'));
         $optionsResolver->setRequired(array('Authorization'));
         $optionsResolver->setDefaults(array());
-        $optionsResolver->setAllowedTypes('Authorization', array('string'));
+        $optionsResolver->addAllowedTypes('Authorization', array('string'));
         return $optionsResolver;
     }
     /**

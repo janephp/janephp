@@ -41,7 +41,7 @@ class ContainerInspect extends \Docker\Api\Runtime\Client\BaseEndpoint implement
         $optionsResolver->setDefined(array('size'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array('size' => false));
-        $optionsResolver->setAllowedTypes('size', array('bool'));
+        $optionsResolver->addAllowedTypes('size', array('bool'));
         return $optionsResolver;
     }
     /**

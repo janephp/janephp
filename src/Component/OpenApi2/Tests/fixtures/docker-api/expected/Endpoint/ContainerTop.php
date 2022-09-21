@@ -43,7 +43,7 @@ class ContainerTop extends \Docker\Api\Runtime\Client\BaseEndpoint implements \D
         $optionsResolver->setDefined(array('ps_args'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array('ps_args' => '-ef'));
-        $optionsResolver->setAllowedTypes('ps_args', array('string'));
+        $optionsResolver->addAllowedTypes('ps_args', array('string'));
         return $optionsResolver;
     }
     /**

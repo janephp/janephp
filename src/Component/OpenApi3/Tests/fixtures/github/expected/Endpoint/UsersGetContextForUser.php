@@ -49,8 +49,8 @@ class UsersGetContextForUser extends \Github\Runtime\Client\BaseEndpoint impleme
         $optionsResolver->setDefined(array('subject_type', 'subject_id'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array());
-        $optionsResolver->setAllowedTypes('subject_type', array('string'));
-        $optionsResolver->setAllowedTypes('subject_id', array('string'));
+        $optionsResolver->addAllowedTypes('subject_type', array('string'));
+        $optionsResolver->addAllowedTypes('subject_id', array('string'));
         return $optionsResolver;
     }
     /**

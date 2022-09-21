@@ -40,7 +40,7 @@ class SwarmLeave extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Doc
         $optionsResolver->setDefined(array('force'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array('force' => false));
-        $optionsResolver->setAllowedTypes('force', array('bool'));
+        $optionsResolver->addAllowedTypes('force', array('bool'));
         return $optionsResolver;
     }
     /**

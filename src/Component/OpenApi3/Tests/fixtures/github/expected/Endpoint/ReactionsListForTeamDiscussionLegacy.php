@@ -48,9 +48,9 @@ class ReactionsListForTeamDiscussionLegacy extends \Github\Runtime\Client\BaseEn
         $optionsResolver->setDefined(array('content', 'per_page', 'page'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array('per_page' => 30, 'page' => 1));
-        $optionsResolver->setAllowedTypes('content', array('string'));
-        $optionsResolver->setAllowedTypes('per_page', array('int'));
-        $optionsResolver->setAllowedTypes('page', array('int'));
+        $optionsResolver->addAllowedTypes('content', array('string'));
+        $optionsResolver->addAllowedTypes('per_page', array('int'));
+        $optionsResolver->addAllowedTypes('page', array('int'));
         return $optionsResolver;
     }
     /**

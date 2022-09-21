@@ -45,9 +45,9 @@ class ImageSearch extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Do
         $optionsResolver->setDefined(array('term', 'limit', 'filters'));
         $optionsResolver->setRequired(array('term'));
         $optionsResolver->setDefaults(array());
-        $optionsResolver->setAllowedTypes('term', array('string'));
-        $optionsResolver->setAllowedTypes('limit', array('int'));
-        $optionsResolver->setAllowedTypes('filters', array('string'));
+        $optionsResolver->addAllowedTypes('term', array('string'));
+        $optionsResolver->addAllowedTypes('limit', array('int'));
+        $optionsResolver->addAllowedTypes('filters', array('string'));
         return $optionsResolver;
     }
     /**

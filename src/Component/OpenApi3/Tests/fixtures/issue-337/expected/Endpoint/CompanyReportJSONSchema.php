@@ -46,8 +46,8 @@ class CompanyReportJSONSchema extends \CreditSafe\API\Runtime\Client\BaseEndpoin
         $optionsResolver->setDefined(array('section', 'template'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array());
-        $optionsResolver->setAllowedTypes('section', array('string'));
-        $optionsResolver->setAllowedTypes('template', array('string'));
+        $optionsResolver->addAllowedTypes('section', array('string'));
+        $optionsResolver->addAllowedTypes('template', array('string'));
         return $optionsResolver;
     }
     protected function getHeadersOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
@@ -56,7 +56,7 @@ class CompanyReportJSONSchema extends \CreditSafe\API\Runtime\Client\BaseEndpoin
         $optionsResolver->setDefined(array('Authorization'));
         $optionsResolver->setRequired(array('Authorization'));
         $optionsResolver->setDefaults(array());
-        $optionsResolver->setAllowedTypes('Authorization', array('string'));
+        $optionsResolver->addAllowedTypes('Authorization', array('string'));
         return $optionsResolver;
     }
     /**

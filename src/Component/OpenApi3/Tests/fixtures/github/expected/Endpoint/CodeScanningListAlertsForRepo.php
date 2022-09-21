@@ -45,8 +45,8 @@ class CodeScanningListAlertsForRepo extends \Github\Runtime\Client\BaseEndpoint 
         $optionsResolver->setDefined(array('state', 'ref'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array('state' => 'open'));
-        $optionsResolver->setAllowedTypes('state', array('string'));
-        $optionsResolver->setAllowedTypes('ref', array('string'));
+        $optionsResolver->addAllowedTypes('state', array('string'));
+        $optionsResolver->addAllowedTypes('ref', array('string'));
         return $optionsResolver;
     }
     /**

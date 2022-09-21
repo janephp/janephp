@@ -53,9 +53,9 @@ class PutContainerArchive extends \Docker\Api\Runtime\Client\BaseEndpoint implem
         $optionsResolver->setDefined(array('path', 'noOverwriteDirNonDir', 'copyUIDGID'));
         $optionsResolver->setRequired(array('path'));
         $optionsResolver->setDefaults(array());
-        $optionsResolver->setAllowedTypes('path', array('string'));
-        $optionsResolver->setAllowedTypes('noOverwriteDirNonDir', array('string'));
-        $optionsResolver->setAllowedTypes('copyUIDGID', array('string'));
+        $optionsResolver->addAllowedTypes('path', array('string'));
+        $optionsResolver->addAllowedTypes('noOverwriteDirNonDir', array('string'));
+        $optionsResolver->addAllowedTypes('copyUIDGID', array('string'));
         return $optionsResolver;
     }
     /**

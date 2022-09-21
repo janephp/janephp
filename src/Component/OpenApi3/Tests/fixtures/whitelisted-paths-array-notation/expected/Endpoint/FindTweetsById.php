@@ -49,12 +49,12 @@ class FindTweetsById extends \Jane\OpenApi3\Tests\Expected\Runtime\Client\BaseEn
         $optionsResolver->setDefined(array('ids', 'format', 'tweet.format', 'user.format', 'place.format', 'expansions'));
         $optionsResolver->setRequired(array('ids'));
         $optionsResolver->setDefaults(array());
-        $optionsResolver->setAllowedTypes('ids', array('array'));
-        $optionsResolver->setAllowedTypes('format', array('string'));
-        $optionsResolver->setAllowedTypes('tweet.format', array('string'));
-        $optionsResolver->setAllowedTypes('user.format', array('string'));
-        $optionsResolver->setAllowedTypes('place.format', array('string'));
-        $optionsResolver->setAllowedTypes('expansions', array('array'));
+        $optionsResolver->addAllowedTypes('ids', array('array'));
+        $optionsResolver->addAllowedTypes('format', array('string'));
+        $optionsResolver->addAllowedTypes('tweet.format', array('string'));
+        $optionsResolver->addAllowedTypes('user.format', array('string'));
+        $optionsResolver->addAllowedTypes('place.format', array('string'));
+        $optionsResolver->addAllowedTypes('expansions', array('array'));
         return $optionsResolver;
     }
     /**

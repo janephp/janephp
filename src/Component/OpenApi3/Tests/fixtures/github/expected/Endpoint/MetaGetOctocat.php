@@ -38,7 +38,7 @@ class MetaGetOctocat extends \Github\Runtime\Client\BaseEndpoint implements \Git
         $optionsResolver->setDefined(array('s'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array());
-        $optionsResolver->setAllowedTypes('s', array('string'));
+        $optionsResolver->addAllowedTypes('s', array('string'));
         return $optionsResolver;
     }
     /**

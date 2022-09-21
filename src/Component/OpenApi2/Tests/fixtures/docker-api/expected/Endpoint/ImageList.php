@@ -50,9 +50,9 @@ class ImageList extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Dock
         $optionsResolver->setDefined(array('all', 'filters', 'digests'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array('all' => false, 'digests' => false));
-        $optionsResolver->setAllowedTypes('all', array('bool'));
-        $optionsResolver->setAllowedTypes('filters', array('string'));
-        $optionsResolver->setAllowedTypes('digests', array('bool'));
+        $optionsResolver->addAllowedTypes('all', array('bool'));
+        $optionsResolver->addAllowedTypes('filters', array('string'));
+        $optionsResolver->addAllowedTypes('digests', array('bool'));
         return $optionsResolver;
     }
     /**

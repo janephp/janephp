@@ -45,7 +45,7 @@ class NodeUpdate extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Doc
         $optionsResolver->setDefined(array('version'));
         $optionsResolver->setRequired(array('version'));
         $optionsResolver->setDefaults(array());
-        $optionsResolver->setAllowedTypes('version', array('int'));
+        $optionsResolver->addAllowedTypes('version', array('int'));
         return $optionsResolver;
     }
     /**

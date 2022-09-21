@@ -49,8 +49,8 @@ class ServiceList extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Do
         $optionsResolver->setDefined(array('filters', 'status'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array());
-        $optionsResolver->setAllowedTypes('filters', array('string'));
-        $optionsResolver->setAllowedTypes('status', array('bool'));
+        $optionsResolver->addAllowedTypes('filters', array('string'));
+        $optionsResolver->addAllowedTypes('status', array('bool'));
         return $optionsResolver;
     }
     /**

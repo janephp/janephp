@@ -42,8 +42,8 @@ class NetworkInspect extends \Docker\Api\Runtime\Client\BaseEndpoint implements 
         $optionsResolver->setDefined(array('verbose', 'scope'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array('verbose' => false));
-        $optionsResolver->setAllowedTypes('verbose', array('bool'));
-        $optionsResolver->setAllowedTypes('scope', array('string'));
+        $optionsResolver->addAllowedTypes('verbose', array('bool'));
+        $optionsResolver->addAllowedTypes('scope', array('string'));
         return $optionsResolver;
     }
     /**

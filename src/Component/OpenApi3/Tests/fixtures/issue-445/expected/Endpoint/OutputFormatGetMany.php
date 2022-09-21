@@ -38,7 +38,7 @@ class OutputFormatGetMany extends \PicturePark\API\Runtime\Client\BaseEndpoint i
         $optionsResolver->setDefined(array('ids'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array());
-        $optionsResolver->setAllowedTypes('ids', array('array', 'null'));
+        $optionsResolver->addAllowedTypes('ids', array('array', 'null'));
         return $optionsResolver;
     }
     /**

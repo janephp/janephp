@@ -48,14 +48,14 @@ class ApiBooksBookIdreviewsGetCollection extends \ApiPlatform\Demo\Runtime\Clien
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('page', 'order[id]', 'order[publicationDate]', 'book', 'book[]'));
+        $optionsResolver->setDefined(array('page', 'order[id]', 'order[publicationDate]', 'book'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array('page' => 1));
-        $optionsResolver->setAllowedTypes('page', array('int'));
-        $optionsResolver->setAllowedTypes('order[id]', array('string'));
-        $optionsResolver->setAllowedTypes('order[publicationDate]', array('string'));
-        $optionsResolver->setAllowedTypes('book', array('string'));
-        $optionsResolver->setAllowedTypes('book[]', array('array'));
+        $optionsResolver->addAllowedTypes('page', array('int'));
+        $optionsResolver->addAllowedTypes('order[id]', array('string'));
+        $optionsResolver->addAllowedTypes('order[publicationDate]', array('string'));
+        $optionsResolver->addAllowedTypes('book', array('string'));
+        $optionsResolver->addAllowedTypes('book', array('array'));
         return $optionsResolver;
     }
     /**

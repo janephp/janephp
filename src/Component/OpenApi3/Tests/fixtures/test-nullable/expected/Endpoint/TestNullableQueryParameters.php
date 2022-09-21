@@ -34,7 +34,7 @@ class TestNullableQueryParameters extends \Jane\Component\OpenApi3\Tests\Expecte
         $optionsResolver->setDefined(array('testNullableInteger'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array());
-        $optionsResolver->setAllowedTypes('testNullableInteger', array('int', 'null'));
+        $optionsResolver->addAllowedTypes('testNullableInteger', array('int', 'null'));
         return $optionsResolver;
     }
     /**

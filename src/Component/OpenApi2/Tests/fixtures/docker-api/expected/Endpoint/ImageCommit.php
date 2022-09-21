@@ -46,13 +46,13 @@ class ImageCommit extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Do
         $optionsResolver->setDefined(array('container', 'repo', 'tag', 'comment', 'author', 'pause', 'changes'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array('pause' => true));
-        $optionsResolver->setAllowedTypes('container', array('string'));
-        $optionsResolver->setAllowedTypes('repo', array('string'));
-        $optionsResolver->setAllowedTypes('tag', array('string'));
-        $optionsResolver->setAllowedTypes('comment', array('string'));
-        $optionsResolver->setAllowedTypes('author', array('string'));
-        $optionsResolver->setAllowedTypes('pause', array('bool'));
-        $optionsResolver->setAllowedTypes('changes', array('string'));
+        $optionsResolver->addAllowedTypes('container', array('string'));
+        $optionsResolver->addAllowedTypes('repo', array('string'));
+        $optionsResolver->addAllowedTypes('tag', array('string'));
+        $optionsResolver->addAllowedTypes('comment', array('string'));
+        $optionsResolver->addAllowedTypes('author', array('string'));
+        $optionsResolver->addAllowedTypes('pause', array('bool'));
+        $optionsResolver->addAllowedTypes('changes', array('string'));
         return $optionsResolver;
     }
     /**

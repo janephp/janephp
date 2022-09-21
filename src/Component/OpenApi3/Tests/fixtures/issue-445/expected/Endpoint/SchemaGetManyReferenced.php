@@ -38,7 +38,7 @@ class SchemaGetManyReferenced extends \PicturePark\API\Runtime\Client\BaseEndpoi
         $optionsResolver->setDefined(array('ids'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array());
-        $optionsResolver->setAllowedTypes('ids', array('array', 'null'));
+        $optionsResolver->addAllowedTypes('ids', array('array', 'null'));
         return $optionsResolver;
     }
     /**

@@ -1,0 +1,44 @@
+openapi: 3.0.0
+info:
+  title: 'Any of nullable object in property'
+  version: ''
+paths:
+  /user:
+    get:
+      operationId: get_user
+      responses:
+        200:
+          description: 'Account resource'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Account'
+        404:
+          description: 'Resource not found'
+
+components:
+  schemas:
+    Account:
+      type: object
+      description: User.
+      properties:
+        id:
+          readOnly: true
+          type: integer
+        firstname:
+          type: string
+        lastname:
+          type: string
+        countryOfBirth:
+          nullable: true
+          anyOf:
+            - $ref: '#/components/schemas/Country'
+        country:
+          $ref: '#/components/schemas/Country'
+    Country:
+      type: object
+      properties:
+        iso:
+          type: string
+        printableName:
+          type: string

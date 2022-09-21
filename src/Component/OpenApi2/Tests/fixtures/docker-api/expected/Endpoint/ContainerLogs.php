@@ -53,13 +53,13 @@ class ContainerLogs extends \Docker\Api\Runtime\Client\BaseEndpoint implements \
         $optionsResolver->setDefined(array('follow', 'stdout', 'stderr', 'since', 'until', 'timestamps', 'tail'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array('follow' => false, 'stdout' => false, 'stderr' => false, 'since' => 0, 'until' => 0, 'timestamps' => false, 'tail' => 'all'));
-        $optionsResolver->setAllowedTypes('follow', array('bool'));
-        $optionsResolver->setAllowedTypes('stdout', array('bool'));
-        $optionsResolver->setAllowedTypes('stderr', array('bool'));
-        $optionsResolver->setAllowedTypes('since', array('int'));
-        $optionsResolver->setAllowedTypes('until', array('int'));
-        $optionsResolver->setAllowedTypes('timestamps', array('bool'));
-        $optionsResolver->setAllowedTypes('tail', array('string'));
+        $optionsResolver->addAllowedTypes('follow', array('bool'));
+        $optionsResolver->addAllowedTypes('stdout', array('bool'));
+        $optionsResolver->addAllowedTypes('stderr', array('bool'));
+        $optionsResolver->addAllowedTypes('since', array('int'));
+        $optionsResolver->addAllowedTypes('until', array('int'));
+        $optionsResolver->addAllowedTypes('timestamps', array('bool'));
+        $optionsResolver->addAllowedTypes('tail', array('string'));
         return $optionsResolver;
     }
     /**

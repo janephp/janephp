@@ -48,11 +48,11 @@ class IssuesListCommentsForRepo extends \Github\Runtime\Client\BaseEndpoint impl
         $optionsResolver->setDefined(array('sort', 'direction', 'since', 'per_page', 'page'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array('sort' => 'created', 'per_page' => 30, 'page' => 1));
-        $optionsResolver->setAllowedTypes('sort', array('string'));
-        $optionsResolver->setAllowedTypes('direction', array('string'));
-        $optionsResolver->setAllowedTypes('since', array('string'));
-        $optionsResolver->setAllowedTypes('per_page', array('int'));
-        $optionsResolver->setAllowedTypes('page', array('int'));
+        $optionsResolver->addAllowedTypes('sort', array('string'));
+        $optionsResolver->addAllowedTypes('direction', array('string'));
+        $optionsResolver->addAllowedTypes('since', array('string'));
+        $optionsResolver->addAllowedTypes('per_page', array('int'));
+        $optionsResolver->addAllowedTypes('page', array('int'));
         return $optionsResolver;
     }
     /**

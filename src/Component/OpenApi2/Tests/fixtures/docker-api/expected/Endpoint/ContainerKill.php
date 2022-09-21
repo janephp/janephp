@@ -43,7 +43,7 @@ class ContainerKill extends \Docker\Api\Runtime\Client\BaseEndpoint implements \
         $optionsResolver->setDefined(array('signal'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array('signal' => 'SIGKILL'));
-        $optionsResolver->setAllowedTypes('signal', array('string'));
+        $optionsResolver->addAllowedTypes('signal', array('string'));
         return $optionsResolver;
     }
     /**

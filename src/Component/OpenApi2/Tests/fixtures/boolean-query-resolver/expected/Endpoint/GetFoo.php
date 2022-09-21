@@ -34,7 +34,7 @@ class GetFoo extends \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\Base
         $optionsResolver->setDefined(array('testBoolean'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array());
-        $optionsResolver->setAllowedTypes('testBoolean', array('bool'));
+        $optionsResolver->addAllowedTypes('testBoolean', array('bool'));
         $optionsResolver->setNormalizer('testBoolean', \Closure::fromCallable(array(new \Jane\Component\OpenApi2\Tests\Expected\BooleanQueryResolver\BooleanCustomQueryResolver(), '__invoke')));
         return $optionsResolver;
     }

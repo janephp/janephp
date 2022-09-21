@@ -44,7 +44,7 @@ class ReposGetClones extends \Github\Runtime\Client\BaseEndpoint implements \Git
         $optionsResolver->setDefined(array('per'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array('per' => 'day'));
-        $optionsResolver->setAllowedTypes('per', array('string'));
+        $optionsResolver->addAllowedTypes('per', array('string'));
         return $optionsResolver;
     }
     /**

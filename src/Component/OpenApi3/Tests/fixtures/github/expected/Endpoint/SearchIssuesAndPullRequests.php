@@ -51,11 +51,11 @@ class SearchIssuesAndPullRequests extends \Github\Runtime\Client\BaseEndpoint im
         $optionsResolver->setDefined(array('q', 'sort', 'order', 'per_page', 'page'));
         $optionsResolver->setRequired(array('q'));
         $optionsResolver->setDefaults(array('order' => 'desc', 'per_page' => 30, 'page' => 1));
-        $optionsResolver->setAllowedTypes('q', array('string'));
-        $optionsResolver->setAllowedTypes('sort', array('string'));
-        $optionsResolver->setAllowedTypes('order', array('string'));
-        $optionsResolver->setAllowedTypes('per_page', array('int'));
-        $optionsResolver->setAllowedTypes('page', array('int'));
+        $optionsResolver->addAllowedTypes('q', array('string'));
+        $optionsResolver->addAllowedTypes('sort', array('string'));
+        $optionsResolver->addAllowedTypes('order', array('string'));
+        $optionsResolver->addAllowedTypes('per_page', array('int'));
+        $optionsResolver->addAllowedTypes('page', array('int'));
         return $optionsResolver;
     }
     /**

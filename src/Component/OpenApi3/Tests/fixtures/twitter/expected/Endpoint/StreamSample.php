@@ -44,7 +44,7 @@ class StreamSample extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Clien
         $optionsResolver->setDefined(array('expansions'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array());
-        $optionsResolver->setAllowedTypes('expansions', array('array'));
+        $optionsResolver->addAllowedTypes('expansions', array('array'));
         return $optionsResolver;
     }
     /**

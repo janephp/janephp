@@ -53,11 +53,11 @@ class ChecksListForRef extends \Github\Runtime\Client\BaseEndpoint implements \G
         $optionsResolver->setDefined(array('check_name', 'status', 'filter', 'per_page', 'page'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array('filter' => 'latest', 'per_page' => 30, 'page' => 1));
-        $optionsResolver->setAllowedTypes('check_name', array('string'));
-        $optionsResolver->setAllowedTypes('status', array('string'));
-        $optionsResolver->setAllowedTypes('filter', array('string'));
-        $optionsResolver->setAllowedTypes('per_page', array('int'));
-        $optionsResolver->setAllowedTypes('page', array('int'));
+        $optionsResolver->addAllowedTypes('check_name', array('string'));
+        $optionsResolver->addAllowedTypes('status', array('string'));
+        $optionsResolver->addAllowedTypes('filter', array('string'));
+        $optionsResolver->addAllowedTypes('per_page', array('int'));
+        $optionsResolver->addAllowedTypes('page', array('int'));
         return $optionsResolver;
     }
     /**

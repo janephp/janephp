@@ -47,8 +47,8 @@ class BusinessProcessWaitForCompletion extends \PicturePark\API\Runtime\Client\B
         $optionsResolver->setDefined(array('timeout', 'waitForContinuationCompletion'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array('waitForContinuationCompletion' => true));
-        $optionsResolver->setAllowedTypes('timeout', array('string', 'null'));
-        $optionsResolver->setAllowedTypes('waitForContinuationCompletion', array('bool'));
+        $optionsResolver->addAllowedTypes('timeout', array('string', 'null'));
+        $optionsResolver->addAllowedTypes('waitForContinuationCompletion', array('bool'));
         return $optionsResolver;
     }
     /**

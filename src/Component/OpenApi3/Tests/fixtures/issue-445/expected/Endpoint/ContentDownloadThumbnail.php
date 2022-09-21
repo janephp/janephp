@@ -51,8 +51,8 @@ class ContentDownloadThumbnail extends \PicturePark\API\Runtime\Client\BaseEndpo
         $optionsResolver->setDefined(array('width', 'height'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array());
-        $optionsResolver->setAllowedTypes('width', array('int', 'null'));
-        $optionsResolver->setAllowedTypes('height', array('int', 'null'));
+        $optionsResolver->addAllowedTypes('width', array('int', 'null'));
+        $optionsResolver->addAllowedTypes('height', array('int', 'null'));
         return $optionsResolver;
     }
     /**

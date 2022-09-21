@@ -46,15 +46,15 @@ class ApiReviewsGetCollection extends \ApiPlatform\Demo\Runtime\Client\BaseEndpo
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('page', 'itemsPerPage', 'order[id]', 'order[publicationDate]', 'book', 'book[]'));
+        $optionsResolver->setDefined(array('page', 'itemsPerPage', 'order[id]', 'order[publicationDate]', 'book'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array('page' => 1, 'itemsPerPage' => 30));
-        $optionsResolver->setAllowedTypes('page', array('int'));
-        $optionsResolver->setAllowedTypes('itemsPerPage', array('int'));
-        $optionsResolver->setAllowedTypes('order[id]', array('string'));
-        $optionsResolver->setAllowedTypes('order[publicationDate]', array('string'));
-        $optionsResolver->setAllowedTypes('book', array('string'));
-        $optionsResolver->setAllowedTypes('book[]', array('array'));
+        $optionsResolver->addAllowedTypes('page', array('int'));
+        $optionsResolver->addAllowedTypes('itemsPerPage', array('int'));
+        $optionsResolver->addAllowedTypes('order[id]', array('string'));
+        $optionsResolver->addAllowedTypes('order[publicationDate]', array('string'));
+        $optionsResolver->addAllowedTypes('book', array('string'));
+        $optionsResolver->addAllowedTypes('book', array('array'));
         return $optionsResolver;
     }
     /**

@@ -57,10 +57,10 @@ class TransferUploadFile extends \PicturePark\API\Runtime\Client\BaseEndpoint im
         $optionsResolver->setDefined(array('ChunkNumber', 'CurrentChunkSize', 'TotalSize', 'TotalChunks'));
         $optionsResolver->setRequired(array('ChunkNumber', 'CurrentChunkSize', 'TotalSize', 'TotalChunks'));
         $optionsResolver->setDefaults(array());
-        $optionsResolver->setAllowedTypes('ChunkNumber', array('int'));
-        $optionsResolver->setAllowedTypes('CurrentChunkSize', array('int'));
-        $optionsResolver->setAllowedTypes('TotalSize', array('int'));
-        $optionsResolver->setAllowedTypes('TotalChunks', array('int'));
+        $optionsResolver->addAllowedTypes('ChunkNumber', array('int'));
+        $optionsResolver->addAllowedTypes('CurrentChunkSize', array('int'));
+        $optionsResolver->addAllowedTypes('TotalSize', array('int'));
+        $optionsResolver->addAllowedTypes('TotalChunks', array('int'));
         return $optionsResolver;
     }
     /**

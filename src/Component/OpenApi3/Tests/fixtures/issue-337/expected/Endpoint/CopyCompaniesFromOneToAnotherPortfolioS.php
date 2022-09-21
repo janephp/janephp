@@ -50,7 +50,7 @@ class CopyCompaniesFromOneToAnotherPortfolioS extends \CreditSafe\API\Runtime\Cl
         $optionsResolver->setDefined(array('copyAll'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array('copyAll' => false));
-        $optionsResolver->setAllowedTypes('copyAll', array('bool'));
+        $optionsResolver->addAllowedTypes('copyAll', array('bool'));
         return $optionsResolver;
     }
     protected function getHeadersOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
@@ -59,7 +59,7 @@ class CopyCompaniesFromOneToAnotherPortfolioS extends \CreditSafe\API\Runtime\Cl
         $optionsResolver->setDefined(array('Authorization'));
         $optionsResolver->setRequired(array('Authorization'));
         $optionsResolver->setDefaults(array());
-        $optionsResolver->setAllowedTypes('Authorization', array('string'));
+        $optionsResolver->addAllowedTypes('Authorization', array('string'));
         return $optionsResolver;
     }
     /**

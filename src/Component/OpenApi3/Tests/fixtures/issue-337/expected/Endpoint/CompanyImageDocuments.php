@@ -44,9 +44,9 @@ class CompanyImageDocuments extends \CreditSafe\API\Runtime\Client\BaseEndpoint 
         $optionsResolver->setDefined(array('Id', 'olderThan', 'newerThan'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array());
-        $optionsResolver->setAllowedTypes('Id', array('string'));
-        $optionsResolver->setAllowedTypes('olderThan', array('string'));
-        $optionsResolver->setAllowedTypes('newerThan', array('string'));
+        $optionsResolver->addAllowedTypes('Id', array('string'));
+        $optionsResolver->addAllowedTypes('olderThan', array('string'));
+        $optionsResolver->addAllowedTypes('newerThan', array('string'));
         return $optionsResolver;
     }
     protected function getHeadersOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
@@ -55,7 +55,7 @@ class CompanyImageDocuments extends \CreditSafe\API\Runtime\Client\BaseEndpoint 
         $optionsResolver->setDefined(array('Authorization'));
         $optionsResolver->setRequired(array('Authorization'));
         $optionsResolver->setDefaults(array());
-        $optionsResolver->setAllowedTypes('Authorization', array('string'));
+        $optionsResolver->addAllowedTypes('Authorization', array('string'));
         return $optionsResolver;
     }
     /**

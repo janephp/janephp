@@ -44,7 +44,7 @@ class ContainerStart extends \Docker\Api\Runtime\Client\BaseEndpoint implements 
         $optionsResolver->setDefined(array('detachKeys'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array());
-        $optionsResolver->setAllowedTypes('detachKeys', array('string'));
+        $optionsResolver->addAllowedTypes('detachKeys', array('string'));
         return $optionsResolver;
     }
     /**

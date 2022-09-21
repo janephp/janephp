@@ -54,10 +54,10 @@ class ContentUpdateMetadata extends \PicturePark\API\Runtime\Client\BaseEndpoint
         $optionsResolver->setDefined(array('resolveBehaviors', 'allowMissingDependencies', 'timeout', 'waitSearchDocCreation'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array('allowMissingDependencies' => false, 'waitSearchDocCreation' => true));
-        $optionsResolver->setAllowedTypes('resolveBehaviors', array('array', 'null'));
-        $optionsResolver->setAllowedTypes('allowMissingDependencies', array('bool'));
-        $optionsResolver->setAllowedTypes('timeout', array('string', 'null'));
-        $optionsResolver->setAllowedTypes('waitSearchDocCreation', array('bool'));
+        $optionsResolver->addAllowedTypes('resolveBehaviors', array('array', 'null'));
+        $optionsResolver->addAllowedTypes('allowMissingDependencies', array('bool'));
+        $optionsResolver->addAllowedTypes('timeout', array('string', 'null'));
+        $optionsResolver->addAllowedTypes('waitSearchDocCreation', array('bool'));
         return $optionsResolver;
     }
     /**

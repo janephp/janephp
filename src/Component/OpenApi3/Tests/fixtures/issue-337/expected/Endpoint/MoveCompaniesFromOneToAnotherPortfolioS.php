@@ -50,7 +50,7 @@ class MoveCompaniesFromOneToAnotherPortfolioS extends \CreditSafe\API\Runtime\Cl
         $optionsResolver->setDefined(array('removeAll'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array('removeAll' => false));
-        $optionsResolver->setAllowedTypes('removeAll', array('bool'));
+        $optionsResolver->addAllowedTypes('removeAll', array('bool'));
         return $optionsResolver;
     }
     protected function getHeadersOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
@@ -59,7 +59,7 @@ class MoveCompaniesFromOneToAnotherPortfolioS extends \CreditSafe\API\Runtime\Cl
         $optionsResolver->setDefined(array('Authorization'));
         $optionsResolver->setRequired(array('Authorization'));
         $optionsResolver->setDefaults(array());
-        $optionsResolver->setAllowedTypes('Authorization', array('string'));
+        $optionsResolver->addAllowedTypes('Authorization', array('string'));
         return $optionsResolver;
     }
     /**

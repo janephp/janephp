@@ -72,10 +72,10 @@ class ContainerList extends \Docker\Api\Runtime\Client\BaseEndpoint implements \
         $optionsResolver->setDefined(array('all', 'limit', 'size', 'filters'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array('all' => false, 'size' => false));
-        $optionsResolver->setAllowedTypes('all', array('bool'));
-        $optionsResolver->setAllowedTypes('limit', array('int'));
-        $optionsResolver->setAllowedTypes('size', array('bool'));
-        $optionsResolver->setAllowedTypes('filters', array('string'));
+        $optionsResolver->addAllowedTypes('all', array('bool'));
+        $optionsResolver->addAllowedTypes('limit', array('int'));
+        $optionsResolver->addAllowedTypes('size', array('bool'));
+        $optionsResolver->addAllowedTypes('filters', array('string'));
         return $optionsResolver;
     }
     /**

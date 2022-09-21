@@ -42,8 +42,8 @@ class ImageTag extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Docke
         $optionsResolver->setDefined(array('repo', 'tag'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array());
-        $optionsResolver->setAllowedTypes('repo', array('string'));
-        $optionsResolver->setAllowedTypes('tag', array('string'));
+        $optionsResolver->addAllowedTypes('repo', array('string'));
+        $optionsResolver->addAllowedTypes('tag', array('string'));
         return $optionsResolver;
     }
     /**

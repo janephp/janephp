@@ -44,7 +44,7 @@ class FindPrivateTweetMetricsById extends \Jane\Component\OpenApi3\Tests\Expecte
         $optionsResolver->setDefined(array('ids'));
         $optionsResolver->setRequired(array('ids'));
         $optionsResolver->setDefaults(array());
-        $optionsResolver->setAllowedTypes('ids', array('array'));
+        $optionsResolver->addAllowedTypes('ids', array('array'));
         return $optionsResolver;
     }
     /**

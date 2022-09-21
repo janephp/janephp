@@ -42,8 +42,8 @@ class BusinessProcessWaitForStates extends \PicturePark\API\Runtime\Client\BaseE
         $optionsResolver->setDefined(array('states', 'timeout'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array());
-        $optionsResolver->setAllowedTypes('states', array('array', 'null'));
-        $optionsResolver->setAllowedTypes('timeout', array('string', 'null'));
+        $optionsResolver->addAllowedTypes('states', array('array', 'null'));
+        $optionsResolver->addAllowedTypes('timeout', array('string', 'null'));
         return $optionsResolver;
     }
     /**

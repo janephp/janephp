@@ -50,7 +50,7 @@ class ClearCompaniesFromAPortfolio extends \CreditSafe\API\Runtime\Client\BaseEn
         $optionsResolver->setDefined(array('clearAll'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array('clearAll' => false));
-        $optionsResolver->setAllowedTypes('clearAll', array('bool'));
+        $optionsResolver->addAllowedTypes('clearAll', array('bool'));
         return $optionsResolver;
     }
     protected function getHeadersOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
@@ -59,7 +59,7 @@ class ClearCompaniesFromAPortfolio extends \CreditSafe\API\Runtime\Client\BaseEn
         $optionsResolver->setDefined(array('Authorization'));
         $optionsResolver->setRequired(array('Authorization'));
         $optionsResolver->setDefaults(array());
-        $optionsResolver->setAllowedTypes('Authorization', array('string'));
+        $optionsResolver->addAllowedTypes('Authorization', array('string'));
         return $optionsResolver;
     }
     /**

@@ -51,20 +51,20 @@ class ApiBooksGetCollection extends \ApiPlatform\Demo\Runtime\Client\BaseEndpoin
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('page', 'itemsPerPage', 'archived', 'order[id]', 'order[title]', 'order[author]', 'order[isbn]', 'order[publicationDate]', 'properties[]', 'title', 'author'));
+        $optionsResolver->setDefined(array('page', 'itemsPerPage', 'archived', 'order[id]', 'order[title]', 'order[author]', 'order[isbn]', 'order[publicationDate]', 'properties', 'title', 'author'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array('page' => 1, 'itemsPerPage' => 30));
-        $optionsResolver->setAllowedTypes('page', array('int'));
-        $optionsResolver->setAllowedTypes('itemsPerPage', array('int'));
-        $optionsResolver->setAllowedTypes('archived', array('bool'));
-        $optionsResolver->setAllowedTypes('order[id]', array('string'));
-        $optionsResolver->setAllowedTypes('order[title]', array('string'));
-        $optionsResolver->setAllowedTypes('order[author]', array('string'));
-        $optionsResolver->setAllowedTypes('order[isbn]', array('string'));
-        $optionsResolver->setAllowedTypes('order[publicationDate]', array('string'));
-        $optionsResolver->setAllowedTypes('properties[]', array('array'));
-        $optionsResolver->setAllowedTypes('title', array('string'));
-        $optionsResolver->setAllowedTypes('author', array('string'));
+        $optionsResolver->addAllowedTypes('page', array('int'));
+        $optionsResolver->addAllowedTypes('itemsPerPage', array('int'));
+        $optionsResolver->addAllowedTypes('archived', array('bool'));
+        $optionsResolver->addAllowedTypes('order[id]', array('string'));
+        $optionsResolver->addAllowedTypes('order[title]', array('string'));
+        $optionsResolver->addAllowedTypes('order[author]', array('string'));
+        $optionsResolver->addAllowedTypes('order[isbn]', array('string'));
+        $optionsResolver->addAllowedTypes('order[publicationDate]', array('string'));
+        $optionsResolver->addAllowedTypes('properties', array('array'));
+        $optionsResolver->addAllowedTypes('title', array('string'));
+        $optionsResolver->addAllowedTypes('author', array('string'));
         return $optionsResolver;
     }
     /**

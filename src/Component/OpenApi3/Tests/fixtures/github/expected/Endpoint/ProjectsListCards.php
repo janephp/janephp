@@ -43,9 +43,9 @@ class ProjectsListCards extends \Github\Runtime\Client\BaseEndpoint implements \
         $optionsResolver->setDefined(array('archived_state', 'per_page', 'page'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array('archived_state' => 'not_archived', 'per_page' => 30, 'page' => 1));
-        $optionsResolver->setAllowedTypes('archived_state', array('string'));
-        $optionsResolver->setAllowedTypes('per_page', array('int'));
-        $optionsResolver->setAllowedTypes('page', array('int'));
+        $optionsResolver->addAllowedTypes('archived_state', array('string'));
+        $optionsResolver->addAllowedTypes('per_page', array('int'));
+        $optionsResolver->addAllowedTypes('page', array('int'));
         return $optionsResolver;
     }
     /**

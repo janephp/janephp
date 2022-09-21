@@ -47,7 +47,7 @@ class SchemaTransferOwnership extends \PicturePark\API\Runtime\Client\BaseEndpoi
         $optionsResolver->setDefined(array('timeout'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array());
-        $optionsResolver->setAllowedTypes('timeout', array('string', 'null'));
+        $optionsResolver->addAllowedTypes('timeout', array('string', 'null'));
         return $optionsResolver;
     }
     /**

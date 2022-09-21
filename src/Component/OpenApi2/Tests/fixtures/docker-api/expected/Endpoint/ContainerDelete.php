@@ -43,9 +43,9 @@ class ContainerDelete extends \Docker\Api\Runtime\Client\BaseEndpoint implements
         $optionsResolver->setDefined(array('v', 'force', 'link'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array('v' => false, 'force' => false, 'link' => false));
-        $optionsResolver->setAllowedTypes('v', array('bool'));
-        $optionsResolver->setAllowedTypes('force', array('bool'));
-        $optionsResolver->setAllowedTypes('link', array('bool'));
+        $optionsResolver->addAllowedTypes('v', array('bool'));
+        $optionsResolver->addAllowedTypes('force', array('bool'));
+        $optionsResolver->addAllowedTypes('link', array('bool'));
         return $optionsResolver;
     }
     /**
