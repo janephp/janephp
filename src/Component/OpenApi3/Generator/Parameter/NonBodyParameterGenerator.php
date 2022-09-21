@@ -68,10 +68,10 @@ class NonBodyParameterGenerator extends ParameterGenerator
         foreach ($parameters as $parameter) {
             $parameterName = $parameter->getName();
             if (str_contains($parameterName, '[]')) {
-                $parameterName = substr($parameterName, 0,-2);
+                $parameterName = substr($parameterName, 0, -2);
             }
 
-            if (!array_key_exists($parameterName, $defined)) {
+            if (!\array_key_exists($parameterName, $defined)) {
                 $defined[$parameterName] = new Expr\ArrayItem(new Scalar\String_($parameterName));
             }
 

@@ -55,7 +55,7 @@ class NonBodyParameterGenerator extends ParameterGenerator
                 $parameterName = substr($parameterName, 0, -2);
             }
 
-            if (!array_key_exists($parameterName, $defined)) {
+            if (!\array_key_exists($parameterName, $defined)) {
                 $defined[$parameterName] = new Expr\ArrayItem(new Scalar\String_($parameterName));
             }
 
