@@ -35,6 +35,13 @@ components:
             - $ref: '#/components/schemas/Country'
         country:
           $ref: '#/components/schemas/Country'
+        nationality:
+          nullable: true
+          anyOf:
+            - $ref: '#/components/schemas/Country'
+            - type: array
+              items:
+                $ref: '#/components/schemas/Country'
     Country:
       type: object
       properties:

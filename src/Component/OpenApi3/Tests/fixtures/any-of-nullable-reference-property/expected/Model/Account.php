@@ -37,6 +37,12 @@ class Account
     /**
      * 
      *
+     * @var Country|Country[]|null
+     */
+    protected $nationality;
+    /**
+     * 
+     *
      * @return int
      */
     public function getId() : int
@@ -137,6 +143,27 @@ class Account
     public function setCountry(Country $country) : self
     {
         $this->country = $country;
+        return $this;
+    }
+    /**
+     * 
+     *
+     * @return Country|Country[]|null
+     */
+    public function getNationality()
+    {
+        return $this->nationality;
+    }
+    /**
+     * 
+     *
+     * @param Country|Country[]|null $nationality
+     *
+     * @return self
+     */
+    public function setNationality($nationality) : self
+    {
+        $this->nationality = $nationality;
         return $this;
     }
 }

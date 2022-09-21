@@ -63,6 +63,22 @@ class AccountNormalizer implements DenormalizerInterface, NormalizerInterface, D
         if (\array_key_exists('country', $data)) {
             $object->setCountry($this->denormalizer->denormalize($data['country'], 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Model\\Country', 'json', $context));
         }
+        if (\array_key_exists('nationality', $data) && $data['nationality'] !== null) {
+            $value_1 = $data['nationality'];
+            if (is_array($data['nationality'])) {
+                $value_1 = $this->denormalizer->denormalize($data['nationality'], 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Model\\Country', 'json', $context);
+            } elseif (is_array($data['nationality']) && $this->isOnlyNumericKeys($data['nationality'])) {
+                $values = array();
+                foreach ($data['nationality'] as $value_2) {
+                    $values[] = $this->denormalizer->denormalize($value_2, 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Model\\Country', 'json', $context);
+                }
+                $value_1 = $values;
+            }
+            $object->setNationality($value_1);
+        }
+        elseif (\array_key_exists('nationality', $data) && $data['nationality'] === null) {
+            $object->setNationality(null);
+        }
         return $object;
     }
     /**
@@ -86,6 +102,19 @@ class AccountNormalizer implements DenormalizerInterface, NormalizerInterface, D
         }
         if (null !== $object->getCountry()) {
             $data['country'] = $this->normalizer->normalize($object->getCountry(), 'json', $context);
+        }
+        if (null !== $object->getNationality()) {
+            $value_1 = $object->getNationality();
+            if (is_object($object->getNationality())) {
+                $value_1 = $this->normalizer->normalize($object->getNationality(), 'json', $context);
+            } elseif (is_array($object->getNationality())) {
+                $values = array();
+                foreach ($object->getNationality() as $value_2) {
+                    $values[] = $this->normalizer->normalize($value_2, 'json', $context);
+                }
+                $value_1 = $values;
+            }
+            $data['nationality'] = $value_1;
         }
         return $data;
     }
