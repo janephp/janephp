@@ -6,6 +6,7 @@ use Jane\Component\JsonSchema\Generator\ChainGenerator;
 use Jane\Component\JsonSchema\Generator\Context\Context;
 use Jane\Component\JsonSchema\Generator\Naming;
 use Jane\Component\JsonSchema\Guesser\ChainGuesser;
+use Jane\Component\JsonSchema\Guesser\Validator\ChainValidatorFactory;
 use Jane\Component\JsonSchema\Registry\Registry;
 use Jane\Component\OpenApiCommon\Contracts\WhitelistFetchInterface;
 use Jane\Component\OpenApiCommon\Guesser\Guess\ClassGuess;
@@ -71,6 +72,8 @@ abstract class JaneOpenApi extends ChainGenerator
             $schema->setParsed($openApiSpec);
         }
 
+        $chainValidator = ChainValidatorFactory::create($this->naming, $registry, $this->serializer);
+
         foreach ($schemas as $schema) {
             foreach ($schema->getClasses() as $class) {
                 $properties = $this->chainGuesser->guessProperties($class->getObject(), $schema->getRootName(), $class->getReference(), $registry);
@@ -89,12 +92,12 @@ abstract class JaneOpenApi extends ChainGenerator
                 $schema->addClassRelations($class);
 
                 $extensionsTypes = [];
-
                 foreach ($class->getExtensionsObject() as $pattern => $extensionData) {
                     $extensionsTypes[$pattern] = $this->chainGuesser->guessType($extensionData['object'], $class->getName(), $extensionData['reference'], $registry);
                 }
-
                 $class->setExtensionsType($extensionsTypes);
+
+                $chainValidator->guess($class->getObject(), $class->getName(), $class);
             }
 
             $this->hydrateDiscriminatedClasses($schema, $registry);
