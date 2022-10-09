@@ -62,7 +62,6 @@ class Jane extends ChainGenerator
         foreach ($registry->getSchemas() as $schema) {
             foreach ($schema->getClasses() as $class) {
                 $properties = $this->chainGuesser->guessProperties($class->getObject(), $schema->getRootName(), $class->getReference(), $registry);
-                $chainValidator->guess($class->getObject(), $class->getName(), $class);
 
                 $names = [];
                 foreach ($properties as $property) {
@@ -78,12 +77,12 @@ class Jane extends ChainGenerator
                 $schema->addClassRelations($class);
 
                 $extensionsTypes = [];
-
                 foreach ($class->getExtensionsObject() as $pattern => $extensionData) {
                     $extensionsTypes[$pattern] = $this->chainGuesser->guessType($extensionData['object'], $class->getName(), $extensionData['reference'], $registry);
                 }
-
                 $class->setExtensionsType($extensionsTypes);
+
+                $chainValidator->guess($class->getObject(), $class->getName(), $class);
             }
         }
 
