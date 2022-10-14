@@ -44,8 +44,10 @@ class SubObjectValidator implements ValidatorInterface
     public function guess($object, string $name, $guess): void
     {
         foreach ($object->getProperties() ?? [] as $localName => $property) {
+            $reference = null;
             $className = null;
             if ($property instanceof Reference) {
+                $reference = (string) $property->getMergedUri();
                 /** @var JsonSchema|null $propertyObj */
                 $propertyObj = $this->resolve($property, \get_class($object));
                 $classGuess = $this->registry->getClass((string) $property->getMergedUri());
@@ -54,16 +56,17 @@ class SubObjectValidator implements ValidatorInterface
                 }
             } else {
                 $schema = $this->registry->getFirstSchema();
-                $classGuess = $schema->findPropertyClass($name, $localName);
+                [$classGuess, $localReference] = $schema->findPropertyClass($name, $localName);
 
                 $propertyObj = $property;
                 if (null !== $classGuess) {
                     $className = $classGuess->getName();
+                    $reference = $localReference;
                 }
             }
 
             if (null !== $className && (\is_array($propertyObj->getType()) ? \in_array('object', $propertyObj->getType()) : 'object' === $propertyObj->getType())) {
-                $guess->addValidatorGuess(new ValidatorGuess($this->naming->getConstraintName($className), [], $localName));
+                $guess->addValidatorGuess(new ValidatorGuess($this->naming->getConstraintName($className), [], $localName, $reference));
             }
         }
     }

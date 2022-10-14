@@ -28,6 +28,7 @@ class ValidatorGenerator implements GeneratorInterface
 
     public function generate(Schema $schema, string $className, Context $context): void
     {
+        $registry = $context->getRegistry();
         $namespace = $schema->getNamespace() . '\\Validator';
 
         foreach ($schema->getClasses() as $class) {
@@ -53,7 +54,16 @@ class ValidatorGenerator implements GeneratorInterface
                     if ($classGuess->getSubProperty() === null) {
                         $constraintsItems[] = new Expr\ArrayItem($this->generateConstraint($classGuess));
                     } else {
-                        $classGuess->setConstraintClass(sprintf('%s\%s', $namespace, $classGuess->getConstraintClass()));
+                        $localNamespace = $namespace;
+                        if (null !== $classGuess->getClassReference()) {
+                            foreach ($registry->getSchemas() as $localSchema) {
+                                if (null !== $localSchema->getClass($classGuess->getClassReference())) {
+                                    $localNamespace = $localSchema->getNamespace() . '\\Validator';
+                                }
+                            }
+                        }
+
+                        $classGuess->setConstraintClass(sprintf('%s\%s', $localNamespace, $classGuess->getConstraintClass()));
 
                         if (!\array_key_exists($name, $collectionItemsConstraints)) {
                             $collectionItemsConstraints[$classGuess->getSubProperty()] = [$this->generateConstraint($classGuess)];
