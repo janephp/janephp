@@ -47,9 +47,16 @@ class UserKeysPostBodyNormalizer implements DenormalizerInterface, NormalizerInt
         }
         if (\array_key_exists('title', $data)) {
             $object->setTitle($data['title']);
+            unset($data['title']);
         }
         if (\array_key_exists('key', $data)) {
             $object->setKey($data['key']);
+            unset($data['key']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -63,6 +70,11 @@ class UserKeysPostBodyNormalizer implements DenormalizerInterface, NormalizerInt
             $data['title'] = $object->getTitle();
         }
         $data['key'] = $object->getKey();
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\UserKeysPostBodyConstraint());
             $context['skip_validation'] = true;

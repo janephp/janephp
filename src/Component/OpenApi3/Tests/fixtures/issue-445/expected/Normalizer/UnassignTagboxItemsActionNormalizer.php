@@ -43,30 +43,40 @@ class UnassignTagboxItemsActionNormalizer implements DenormalizerInterface, Norm
         }
         if (\array_key_exists('traceRefId', $data) && $data['traceRefId'] !== null) {
             $object->setTraceRefId($data['traceRefId']);
+            unset($data['traceRefId']);
         }
         elseif (\array_key_exists('traceRefId', $data) && $data['traceRefId'] === null) {
             $object->setTraceRefId(null);
         }
         if (\array_key_exists('kind', $data)) {
             $object->setKind($data['kind']);
+            unset($data['kind']);
         }
         if (\array_key_exists('path', $data) && $data['path'] !== null) {
             $object->setPath($data['path']);
+            unset($data['path']);
         }
         elseif (\array_key_exists('path', $data) && $data['path'] === null) {
             $object->setPath(null);
         }
         if (\array_key_exists('fieldId', $data) && $data['fieldId'] !== null) {
             $object->setFieldId($data['fieldId']);
+            unset($data['fieldId']);
         }
         elseif (\array_key_exists('fieldId', $data) && $data['fieldId'] === null) {
             $object->setFieldId(null);
         }
         if (\array_key_exists('refIds', $data) && $data['refIds'] !== null) {
             $object->setRefIds($data['refIds']);
+            unset($data['refIds']);
         }
         elseif (\array_key_exists('refIds', $data) && $data['refIds'] === null) {
             $object->setRefIds(null);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -88,6 +98,11 @@ class UnassignTagboxItemsActionNormalizer implements DenormalizerInterface, Norm
         }
         if (null !== $object->getRefIds()) {
             $data['refIds'] = $object->getRefIds();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

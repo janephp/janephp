@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class EnvironmentProcessWaitTimeoutException
+class EnvironmentProcessWaitTimeoutException extends \ArrayObject
 {
     /**
      * 

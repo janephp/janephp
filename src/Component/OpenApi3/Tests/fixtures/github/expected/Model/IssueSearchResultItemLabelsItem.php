@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class IssueSearchResultItemLabelsItem
+class IssueSearchResultItemLabelsItem extends \ArrayObject
 {
     /**
      * 

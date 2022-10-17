@@ -47,15 +47,24 @@ class ApiOverviewSshKeyFingerprintsNormalizer implements DenormalizerInterface, 
         }
         if (\array_key_exists('MD5_RSA', $data)) {
             $object->setMD5RSA($data['MD5_RSA']);
+            unset($data['MD5_RSA']);
         }
         if (\array_key_exists('MD5_DSA', $data)) {
             $object->setMD5DSA($data['MD5_DSA']);
+            unset($data['MD5_DSA']);
         }
         if (\array_key_exists('SHA256_RSA', $data)) {
             $object->setSHA256RSA($data['SHA256_RSA']);
+            unset($data['SHA256_RSA']);
         }
         if (\array_key_exists('SHA256_DSA', $data)) {
             $object->setSHA256DSA($data['SHA256_DSA']);
+            unset($data['SHA256_DSA']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -76,6 +85,11 @@ class ApiOverviewSshKeyFingerprintsNormalizer implements DenormalizerInterface, 
         }
         if (null !== $object->getSHA256DSA()) {
             $data['SHA256_DSA'] = $object->getSHA256DSA();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ApiOverviewSshKeyFingerprintsConstraint());

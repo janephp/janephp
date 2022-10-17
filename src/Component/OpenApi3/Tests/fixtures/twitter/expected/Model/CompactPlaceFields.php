@@ -2,7 +2,7 @@
 
 namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 
-class CompactPlaceFields
+class CompactPlaceFields extends \ArrayObject
 {
     /**
      * The identifier for this place

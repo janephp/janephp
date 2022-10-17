@@ -46,6 +46,7 @@ class CompanySearchSuccessResultNormalizer implements DenormalizerInterface, Nor
         }
         if (\array_key_exists('totalSize', $data)) {
             $object->setTotalSize($data['totalSize']);
+            unset($data['totalSize']);
         }
         if (\array_key_exists('companies', $data)) {
             $values = array();
@@ -53,6 +54,12 @@ class CompanySearchSuccessResultNormalizer implements DenormalizerInterface, Nor
                 $values[] = $this->denormalizer->denormalize($value, 'CreditSafe\\API\\Model\\CompanySearchSuccessResultCompaniesItem', 'json', $context);
             }
             $object->setCompanies($values);
+            unset($data['companies']);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
@@ -71,6 +78,11 @@ class CompanySearchSuccessResultNormalizer implements DenormalizerInterface, Nor
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data['companies'] = $values;
+        }
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
+            }
         }
         return $data;
     }

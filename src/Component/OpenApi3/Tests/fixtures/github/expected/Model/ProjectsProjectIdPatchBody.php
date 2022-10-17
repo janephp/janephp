@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class ProjectsProjectIdPatchBody
+class ProjectsProjectIdPatchBody extends \ArrayObject
 {
     /**
      * Name of the project

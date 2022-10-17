@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class SchemaValidationException
+class SchemaValidationException extends \ArrayObject
 {
     /**
      * 

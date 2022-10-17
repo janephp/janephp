@@ -43,6 +43,7 @@ class AccessCountriesResponseNormalizer implements DenormalizerInterface, Normal
         }
         if (\array_key_exists('correlationId', $data)) {
             $object->setCorrelationId($data['correlationId']);
+            unset($data['correlationId']);
         }
         if (\array_key_exists('countryAccess', $data)) {
             $values = array();
@@ -50,6 +51,12 @@ class AccessCountriesResponseNormalizer implements DenormalizerInterface, Normal
                 $values[] = $this->denormalizer->denormalize($value, 'CreditSafe\\API\\Model\\AccessCountriesResponseCountryAccessItem', 'json', $context);
             }
             $object->setCountryAccess($values);
+            unset($data['countryAccess']);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
@@ -68,6 +75,11 @@ class AccessCountriesResponseNormalizer implements DenormalizerInterface, Normal
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data['countryAccess'] = $values;
+        }
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
+            }
         }
         return $data;
     }

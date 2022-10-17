@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class ContentLayerInvalidException
+class ContentLayerInvalidException extends \ArrayObject
 {
     /**
      * 

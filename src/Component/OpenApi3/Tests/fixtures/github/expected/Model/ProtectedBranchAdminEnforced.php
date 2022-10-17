@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class ProtectedBranchAdminEnforced
+class ProtectedBranchAdminEnforced extends \ArrayObject
 {
     /**
      * 

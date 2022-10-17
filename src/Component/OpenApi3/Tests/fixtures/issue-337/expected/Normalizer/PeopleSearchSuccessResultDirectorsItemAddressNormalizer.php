@@ -43,15 +43,24 @@ class PeopleSearchSuccessResultDirectorsItemAddressNormalizer implements Denorma
         }
         if (\array_key_exists('simpleValue', $data)) {
             $object->setSimpleValue($data['simpleValue']);
+            unset($data['simpleValue']);
         }
         if (\array_key_exists('houseNo', $data)) {
             $object->setHouseNo($data['houseNo']);
+            unset($data['houseNo']);
         }
         if (\array_key_exists('city', $data)) {
             $object->setCity($data['city']);
+            unset($data['city']);
         }
         if (\array_key_exists('postCode', $data)) {
             $object->setPostCode($data['postCode']);
+            unset($data['postCode']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -72,6 +81,11 @@ class PeopleSearchSuccessResultDirectorsItemAddressNormalizer implements Denorma
         }
         if (null !== $object->getPostCode()) {
             $data['postCode'] = $object->getPostCode();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

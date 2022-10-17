@@ -51,15 +51,19 @@ class ScimUserListNormalizer implements DenormalizerInterface, NormalizerInterfa
                 $values[] = $value;
             }
             $object->setSchemas($values);
+            unset($data['schemas']);
         }
         if (\array_key_exists('totalResults', $data)) {
             $object->setTotalResults($data['totalResults']);
+            unset($data['totalResults']);
         }
         if (\array_key_exists('itemsPerPage', $data)) {
             $object->setItemsPerPage($data['itemsPerPage']);
+            unset($data['itemsPerPage']);
         }
         if (\array_key_exists('startIndex', $data)) {
             $object->setStartIndex($data['startIndex']);
+            unset($data['startIndex']);
         }
         if (\array_key_exists('Resources', $data)) {
             $values_1 = array();
@@ -67,6 +71,12 @@ class ScimUserListNormalizer implements DenormalizerInterface, NormalizerInterfa
                 $values_1[] = $this->denormalizer->denormalize($value_1, 'Github\\Model\\ScimUser', 'json', $context);
             }
             $object->setResources($values_1);
+            unset($data['Resources']);
+        }
+        foreach ($data as $key => $value_2) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_2;
+            }
         }
         return $object;
     }
@@ -89,6 +99,11 @@ class ScimUserListNormalizer implements DenormalizerInterface, NormalizerInterfa
             $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
         }
         $data['Resources'] = $values_1;
+        foreach ($object as $key => $value_2) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_2;
+            }
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ScimUserListConstraint());
             $context['skip_validation'] = true;

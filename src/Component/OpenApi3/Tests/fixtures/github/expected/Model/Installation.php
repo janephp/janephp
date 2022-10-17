@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class Installation
+class Installation extends \ArrayObject
 {
     /**
      * The ID of the installation.

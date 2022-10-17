@@ -43,6 +43,7 @@ class GbCompanyReportExampleResponseReportCompanyIdentificationActivityClassific
         }
         if (\array_key_exists('classification', $data)) {
             $object->setClassification($data['classification']);
+            unset($data['classification']);
         }
         if (\array_key_exists('activities', $data)) {
             $values = array();
@@ -50,6 +51,12 @@ class GbCompanyReportExampleResponseReportCompanyIdentificationActivityClassific
                 $values[] = $this->denormalizer->denormalize($value, 'CreditSafe\\API\\Model\\GbCompanyReportExampleResponseReportCompanyIdentificationActivityClassificationsItemActivitiesItem', 'json', $context);
             }
             $object->setActivities($values);
+            unset($data['activities']);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
@@ -68,6 +75,11 @@ class GbCompanyReportExampleResponseReportCompanyIdentificationActivityClassific
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data['activities'] = $values;
+        }
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
+            }
         }
         return $data;
     }

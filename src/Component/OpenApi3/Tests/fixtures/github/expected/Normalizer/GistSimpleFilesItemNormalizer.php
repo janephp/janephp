@@ -47,24 +47,36 @@ class GistSimpleFilesItemNormalizer implements DenormalizerInterface, Normalizer
         }
         if (\array_key_exists('filename', $data)) {
             $object->setFilename($data['filename']);
+            unset($data['filename']);
         }
         if (\array_key_exists('type', $data)) {
             $object->setType($data['type']);
+            unset($data['type']);
         }
         if (\array_key_exists('language', $data)) {
             $object->setLanguage($data['language']);
+            unset($data['language']);
         }
         if (\array_key_exists('raw_url', $data)) {
             $object->setRawUrl($data['raw_url']);
+            unset($data['raw_url']);
         }
         if (\array_key_exists('size', $data)) {
             $object->setSize($data['size']);
+            unset($data['size']);
         }
         if (\array_key_exists('truncated', $data)) {
             $object->setTruncated($data['truncated']);
+            unset($data['truncated']);
         }
         if (\array_key_exists('content', $data)) {
             $object->setContent($data['content']);
+            unset($data['content']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -94,6 +106,11 @@ class GistSimpleFilesItemNormalizer implements DenormalizerInterface, Normalizer
         }
         if (null !== $object->getContent()) {
             $data['content'] = $object->getContent();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\GistSimpleFilesItemConstraint());

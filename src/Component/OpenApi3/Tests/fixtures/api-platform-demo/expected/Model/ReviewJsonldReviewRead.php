@@ -2,7 +2,7 @@
 
 namespace ApiPlatform\Demo\Model;
 
-class ReviewJsonldReviewRead
+class ReviewJsonldReviewRead extends \ArrayObject
 {
     /**
      * 

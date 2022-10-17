@@ -52,27 +52,40 @@ class NotificationEventNormalizer implements DenormalizerInterface, NormalizerIn
         }
         if (\array_key_exists('company', $data)) {
             $object->setCompany($this->denormalizer->denormalize($data['company'], 'CreditSafe\\API\\Model\\Company', 'json', $context));
+            unset($data['company']);
         }
         if (\array_key_exists('eventId', $data)) {
             $object->setEventId($data['eventId']);
+            unset($data['eventId']);
         }
         if (\array_key_exists('eventDate', $data)) {
             $object->setEventDate(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['eventDate']));
+            unset($data['eventDate']);
         }
         if (\array_key_exists('newValue', $data)) {
             $object->setNewValue($data['newValue']);
+            unset($data['newValue']);
         }
         if (\array_key_exists('oldValue', $data)) {
             $object->setOldValue($data['oldValue']);
+            unset($data['oldValue']);
         }
         if (\array_key_exists('notificationEventId', $data)) {
             $object->setNotificationEventId($data['notificationEventId']);
+            unset($data['notificationEventId']);
         }
         if (\array_key_exists('ruleCode', $data)) {
             $object->setRuleCode($data['ruleCode']);
+            unset($data['ruleCode']);
         }
         if (\array_key_exists('ruleName', $data)) {
             $object->setRuleName($data['ruleName']);
+            unset($data['ruleName']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -105,6 +118,11 @@ class NotificationEventNormalizer implements DenormalizerInterface, NormalizerIn
         }
         if (null !== $object->getRuleName()) {
             $data['ruleName'] = $object->getRuleName();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

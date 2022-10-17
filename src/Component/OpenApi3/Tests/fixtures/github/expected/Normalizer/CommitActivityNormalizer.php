@@ -51,12 +51,20 @@ class CommitActivityNormalizer implements DenormalizerInterface, NormalizerInter
                 $values[] = $value;
             }
             $object->setDays($values);
+            unset($data['days']);
         }
         if (\array_key_exists('total', $data)) {
             $object->setTotal($data['total']);
+            unset($data['total']);
         }
         if (\array_key_exists('week', $data)) {
             $object->setWeek($data['week']);
+            unset($data['week']);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
@@ -73,6 +81,11 @@ class CommitActivityNormalizer implements DenormalizerInterface, NormalizerInter
         $data['days'] = $values;
         $data['total'] = $object->getTotal();
         $data['week'] = $object->getWeek();
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
+            }
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\CommitActivityConstraint());
             $context['skip_validation'] = true;

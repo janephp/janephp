@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class AtLeastOneActiveTermsOfServiceMustExistException
+class AtLeastOneActiveTermsOfServiceMustExistException extends \ArrayObject
 {
     /**
      * 

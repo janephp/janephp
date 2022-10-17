@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class NotSupportedFileMappingException
+class NotSupportedFileMappingException extends \ArrayObject
 {
     /**
      * 

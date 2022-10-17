@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoCollaboratorsUsernamePutBody
+class ReposOwnerRepoCollaboratorsUsernamePutBody extends \ArrayObject
 {
     /**
     * The permission to grant the collaborator. **Only valid on organization-owned repositories.** Can be one of:  

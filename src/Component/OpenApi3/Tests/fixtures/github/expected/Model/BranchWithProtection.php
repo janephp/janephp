@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class BranchWithProtection
+class BranchWithProtection extends \ArrayObject
 {
     /**
      * 

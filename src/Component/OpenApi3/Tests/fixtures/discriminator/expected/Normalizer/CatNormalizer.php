@@ -43,12 +43,20 @@ class CatNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
         }
         if (\array_key_exists('name', $data)) {
             $object->setName($data['name']);
+            unset($data['name']);
         }
         if (\array_key_exists('petType', $data)) {
             $object->setPetType($data['petType']);
+            unset($data['petType']);
         }
         if (\array_key_exists('huntingSkill', $data)) {
             $object->setHuntingSkill($data['huntingSkill']);
+            unset($data['huntingSkill']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -61,6 +69,11 @@ class CatNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
         $data['name'] = $object->getName();
         $data['petType'] = $object->getPetType();
         $data['huntingSkill'] = $object->getHuntingSkill();
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
         return $data;
     }
 }

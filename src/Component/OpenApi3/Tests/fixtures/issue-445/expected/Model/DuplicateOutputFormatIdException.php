@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class DuplicateOutputFormatIdException
+class DuplicateOutputFormatIdException extends \ArrayObject
 {
     /**
      * 

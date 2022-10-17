@@ -2,7 +2,7 @@
 
 namespace CreditSafe\API\Model;
 
-class MonitoringPortfoliosPortfolioIdCompaniesClearPatchBodyCompaniesItem
+class MonitoringPortfoliosPortfolioIdCompaniesClearPatchBodyCompaniesItem extends \ArrayObject
 {
     /**
      * Company Safe Number or Connect ID. Not required when removeAll query parameter is set to true.

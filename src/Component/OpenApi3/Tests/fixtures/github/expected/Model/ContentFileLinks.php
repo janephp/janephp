@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class ContentFileLinks
+class ContentFileLinks extends \ArrayObject
 {
     /**
      * 

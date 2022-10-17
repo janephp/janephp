@@ -43,30 +43,44 @@ class GbCompanyReportExampleResponseReportCompanySummaryNormalizer implements De
         }
         if (\array_key_exists('businessName', $data)) {
             $object->setBusinessName($data['businessName']);
+            unset($data['businessName']);
         }
         if (\array_key_exists('country', $data)) {
             $object->setCountry($data['country']);
+            unset($data['country']);
         }
         if (\array_key_exists('companyNumber', $data)) {
             $object->setCompanyNumber($data['companyNumber']);
+            unset($data['companyNumber']);
         }
         if (\array_key_exists('companyRegistrationNumber', $data)) {
             $object->setCompanyRegistrationNumber($data['companyRegistrationNumber']);
+            unset($data['companyRegistrationNumber']);
         }
         if (\array_key_exists('mainActivity', $data)) {
             $object->setMainActivity($this->denormalizer->denormalize($data['mainActivity'], 'CreditSafe\\API\\Model\\GbCompanyReportExampleResponseReportCompanySummaryMainActivity', 'json', $context));
+            unset($data['mainActivity']);
         }
         if (\array_key_exists('companyStatus', $data)) {
             $object->setCompanyStatus($this->denormalizer->denormalize($data['companyStatus'], 'CreditSafe\\API\\Model\\GbCompanyReportExampleResponseReportCompanySummaryCompanyStatus', 'json', $context));
+            unset($data['companyStatus']);
         }
         if (\array_key_exists('latestTurnoverFigure', $data)) {
             $object->setLatestTurnoverFigure($this->denormalizer->denormalize($data['latestTurnoverFigure'], 'CreditSafe\\API\\Model\\GbCompanyReportExampleResponseReportCompanySummaryLatestTurnoverFigure', 'json', $context));
+            unset($data['latestTurnoverFigure']);
         }
         if (\array_key_exists('latestShareholdersEquityFigure', $data)) {
             $object->setLatestShareholdersEquityFigure($this->denormalizer->denormalize($data['latestShareholdersEquityFigure'], 'CreditSafe\\API\\Model\\GbCompanyReportExampleResponseReportCompanySummaryLatestShareholdersEquityFigure', 'json', $context));
+            unset($data['latestShareholdersEquityFigure']);
         }
         if (\array_key_exists('creditRating', $data)) {
             $object->setCreditRating($this->denormalizer->denormalize($data['creditRating'], 'CreditSafe\\API\\Model\\GbCompanyReportExampleResponseReportCompanySummaryCreditRating', 'json', $context));
+            unset($data['creditRating']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -102,6 +116,11 @@ class GbCompanyReportExampleResponseReportCompanySummaryNormalizer implements De
         }
         if (null !== $object->getCreditRating()) {
             $data['creditRating'] = $this->normalizer->normalize($object->getCreditRating(), 'json', $context);
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

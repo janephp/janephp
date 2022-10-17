@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class OrgsOrgTeamsTeamSlugPatchBody
+class OrgsOrgTeamsTeamSlugPatchBody extends \ArrayObject
 {
     /**
      * The name of the team.

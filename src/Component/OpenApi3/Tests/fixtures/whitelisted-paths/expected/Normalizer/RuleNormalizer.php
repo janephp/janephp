@@ -43,12 +43,20 @@ class RuleNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         }
         if (\array_key_exists('value', $data)) {
             $object->setValue($data['value']);
+            unset($data['value']);
         }
         if (\array_key_exists('tag', $data)) {
             $object->setTag($data['tag']);
+            unset($data['tag']);
         }
         if (\array_key_exists('id', $data)) {
             $object->setId($data['id']);
+            unset($data['id']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -64,6 +72,11 @@ class RuleNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         }
         if (null !== $object->getId()) {
             $data['id'] = $object->getId();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

@@ -43,6 +43,7 @@ class ShareAggregationRequestNormalizer implements DenormalizerInterface, Normal
         }
         if (\array_key_exists('searchString', $data) && $data['searchString'] !== null) {
             $object->setSearchString($data['searchString']);
+            unset($data['searchString']);
         }
         elseif (\array_key_exists('searchString', $data) && $data['searchString'] === null) {
             $object->setSearchString(null);
@@ -53,12 +54,14 @@ class ShareAggregationRequestNormalizer implements DenormalizerInterface, Normal
                 $values[] = $value;
             }
             $object->setSearchBehaviors($values);
+            unset($data['searchBehaviors']);
         }
         elseif (\array_key_exists('searchBehaviors', $data) && $data['searchBehaviors'] === null) {
             $object->setSearchBehaviors(null);
         }
         if (\array_key_exists('filter', $data) && $data['filter'] !== null) {
             $object->setFilter($data['filter']);
+            unset($data['filter']);
         }
         elseif (\array_key_exists('filter', $data) && $data['filter'] === null) {
             $object->setFilter(null);
@@ -69,6 +72,7 @@ class ShareAggregationRequestNormalizer implements DenormalizerInterface, Normal
                 $values_1[] = $this->denormalizer->denormalize($value_1, 'PicturePark\\API\\Model\\AggregationFilter', 'json', $context);
             }
             $object->setAggregationFilters($values_1);
+            unset($data['aggregationFilters']);
         }
         elseif (\array_key_exists('aggregationFilters', $data) && $data['aggregationFilters'] === null) {
             $object->setAggregationFilters(null);
@@ -79,6 +83,12 @@ class ShareAggregationRequestNormalizer implements DenormalizerInterface, Normal
                 $values_2[] = $this->denormalizer->denormalize($value_2, 'PicturePark\\API\\Model\\AggregatorBase', 'json', $context);
             }
             $object->setAggregators($values_2);
+            unset($data['aggregators']);
+        }
+        foreach ($data as $key => $value_3) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_3;
+            }
         }
         return $object;
     }
@@ -113,6 +123,11 @@ class ShareAggregationRequestNormalizer implements DenormalizerInterface, Normal
             $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
         }
         $data['aggregators'] = $values_2;
+        foreach ($object as $key => $value_3) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_3;
+            }
+        }
         return $data;
     }
 }

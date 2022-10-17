@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyOutput
+class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyOutput extends \ArrayObject
 {
     /**
      * **Required**.

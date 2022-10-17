@@ -43,18 +43,27 @@ class CustomerChangeEventNormalizer implements DenormalizerInterface, Normalizer
         }
         if (\array_key_exists('timestamp', $data)) {
             $object->setTimestamp(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['timestamp']));
+            unset($data['timestamp']);
         }
         if (\array_key_exists('kind', $data)) {
             $object->setKind($data['kind']);
+            unset($data['kind']);
         }
         if (\array_key_exists('documentType', $data) && $data['documentType'] !== null) {
             $object->setDocumentType($data['documentType']);
+            unset($data['documentType']);
         }
         elseif (\array_key_exists('documentType', $data) && $data['documentType'] === null) {
             $object->setDocumentType(null);
         }
         if (\array_key_exists('lifeCycle', $data)) {
             $object->setLifeCycle($data['lifeCycle']);
+            unset($data['lifeCycle']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -71,6 +80,11 @@ class CustomerChangeEventNormalizer implements DenormalizerInterface, Normalizer
         }
         if (null !== $object->getLifeCycle()) {
             $data['lifeCycle'] = $object->getLifeCycle();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

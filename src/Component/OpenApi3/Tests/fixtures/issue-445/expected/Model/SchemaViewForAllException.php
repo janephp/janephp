@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class SchemaViewForAllException
+class SchemaViewForAllException extends \ArrayObject
 {
     /**
      * 

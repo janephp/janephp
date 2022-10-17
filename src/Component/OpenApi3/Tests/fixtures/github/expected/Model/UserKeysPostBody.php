@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class UserKeysPostBody
+class UserKeysPostBody extends \ArrayObject
 {
     /**
      * A descriptive name for the new key.

@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class ProjectCreator
+class ProjectCreator extends \ArrayObject
 {
     /**
      * 

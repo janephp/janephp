@@ -43,24 +43,35 @@ class ParchmentJsonldNormalizer implements DenormalizerInterface, NormalizerInte
         }
         if (\array_key_exists('@context', $data)) {
             $object->setContext($data['@context']);
+            unset($data['@context']);
         }
         if (\array_key_exists('@id', $data)) {
             $object->setId($data['@id']);
+            unset($data['@id']);
         }
         if (\array_key_exists('@type', $data)) {
             $object->setType($data['@type']);
+            unset($data['@type']);
         }
         if (\array_key_exists('id', $data) && $data['id'] !== null) {
             $object->setId2($data['id']);
+            unset($data['id']);
         }
         elseif (\array_key_exists('id', $data) && $data['id'] === null) {
             $object->setId2(null);
         }
         if (\array_key_exists('title', $data)) {
             $object->setTitle($data['title']);
+            unset($data['title']);
         }
         if (\array_key_exists('description', $data)) {
             $object->setDescription($data['description']);
+            unset($data['description']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -72,6 +83,11 @@ class ParchmentJsonldNormalizer implements DenormalizerInterface, NormalizerInte
         $data = array();
         $data['title'] = $object->getTitle();
         $data['description'] = $object->getDescription();
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
         return $data;
     }
 }

@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class ActionsBillingUsageMinutesUsedBreakdown
+class ActionsBillingUsageMinutesUsedBreakdown extends \ArrayObject
 {
     /**
      * Total minutes used on Ubuntu runner machines.

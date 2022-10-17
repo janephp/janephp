@@ -47,6 +47,12 @@ class WorkflowUsageNormalizer implements DenormalizerInterface, NormalizerInterf
         }
         if (\array_key_exists('billable', $data)) {
             $object->setBillable($this->denormalizer->denormalize($data['billable'], 'Github\\Model\\WorkflowUsageBillable', 'json', $context));
+            unset($data['billable']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -58,6 +64,11 @@ class WorkflowUsageNormalizer implements DenormalizerInterface, NormalizerInterf
         $data = array();
         if (null !== $object->getBillable()) {
             $data['billable'] = $this->normalizer->normalize($object->getBillable(), 'json', $context);
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\WorkflowUsageConstraint());

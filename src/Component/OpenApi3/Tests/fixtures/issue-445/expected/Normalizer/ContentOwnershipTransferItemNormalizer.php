@@ -43,9 +43,16 @@ class ContentOwnershipTransferItemNormalizer implements DenormalizerInterface, N
         }
         if (\array_key_exists('transferUserId', $data)) {
             $object->setTransferUserId($data['transferUserId']);
+            unset($data['transferUserId']);
         }
         if (\array_key_exists('contentId', $data)) {
             $object->setContentId($data['contentId']);
+            unset($data['contentId']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -57,6 +64,11 @@ class ContentOwnershipTransferItemNormalizer implements DenormalizerInterface, N
         $data = array();
         $data['transferUserId'] = $object->getTransferUserId();
         $data['contentId'] = $object->getContentId();
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
         return $data;
     }
 }

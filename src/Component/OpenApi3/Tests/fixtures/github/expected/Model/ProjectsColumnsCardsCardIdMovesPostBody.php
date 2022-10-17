@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class ProjectsColumnsCardsCardIdMovesPostBody
+class ProjectsColumnsCardsCardIdMovesPostBody extends \ArrayObject
 {
     /**
      * The position of the card in a column

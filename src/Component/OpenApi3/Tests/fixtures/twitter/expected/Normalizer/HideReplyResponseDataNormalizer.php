@@ -43,6 +43,12 @@ class HideReplyResponseDataNormalizer implements DenormalizerInterface, Normaliz
         }
         if (\array_key_exists('hidden', $data)) {
             $object->setHidden($data['hidden']);
+            unset($data['hidden']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -54,6 +60,11 @@ class HideReplyResponseDataNormalizer implements DenormalizerInterface, Normaliz
         $data = array();
         if (null !== $object->getHidden()) {
             $data['hidden'] = $object->getHidden();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class PageBuildStatus
+class PageBuildStatus extends \ArrayObject
 {
     /**
      * 

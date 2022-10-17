@@ -43,6 +43,12 @@ class BooksGetHaljsonResponse200LinksNextNormalizer implements DenormalizerInter
         }
         if (\array_key_exists('href', $data)) {
             $object->setHref($data['href']);
+            unset($data['href']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -54,6 +60,11 @@ class BooksGetHaljsonResponse200LinksNextNormalizer implements DenormalizerInter
         $data = array();
         if (null !== $object->getHref()) {
             $data['href'] = $object->getHref();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

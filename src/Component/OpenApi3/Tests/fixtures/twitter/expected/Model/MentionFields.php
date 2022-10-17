@@ -2,7 +2,7 @@
 
 namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 
-class MentionFields
+class MentionFields extends \ArrayObject
 {
     /**
      * The Twitter handle (screen name) of this user.

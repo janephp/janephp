@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class UserRoleAssignedException
+class UserRoleAssignedException extends \ArrayObject
 {
     /**
      * 

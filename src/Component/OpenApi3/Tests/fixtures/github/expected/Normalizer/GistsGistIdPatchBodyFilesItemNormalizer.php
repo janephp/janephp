@@ -47,12 +47,19 @@ class GistsGistIdPatchBodyFilesItemNormalizer implements DenormalizerInterface, 
         }
         if (\array_key_exists('content', $data)) {
             $object->setContent($data['content']);
+            unset($data['content']);
         }
         if (\array_key_exists('filename', $data) && $data['filename'] !== null) {
             $object->setFilename($data['filename']);
+            unset($data['filename']);
         }
         elseif (\array_key_exists('filename', $data) && $data['filename'] === null) {
             $object->setFilename(null);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -67,6 +74,11 @@ class GistsGistIdPatchBodyFilesItemNormalizer implements DenormalizerInterface, 
         }
         if (null !== $object->getFilename()) {
             $data['filename'] = $object->getFilename();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\GistsGistIdPatchBodyFilesItemConstraint());

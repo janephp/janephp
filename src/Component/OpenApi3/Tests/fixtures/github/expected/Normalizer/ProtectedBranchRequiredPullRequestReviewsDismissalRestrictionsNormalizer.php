@@ -47,12 +47,15 @@ class ProtectedBranchRequiredPullRequestReviewsDismissalRestrictionsNormalizer i
         }
         if (\array_key_exists('url', $data)) {
             $object->setUrl($data['url']);
+            unset($data['url']);
         }
         if (\array_key_exists('users_url', $data)) {
             $object->setUsersUrl($data['users_url']);
+            unset($data['users_url']);
         }
         if (\array_key_exists('teams_url', $data)) {
             $object->setTeamsUrl($data['teams_url']);
+            unset($data['teams_url']);
         }
         if (\array_key_exists('users', $data)) {
             $values = array();
@@ -60,6 +63,7 @@ class ProtectedBranchRequiredPullRequestReviewsDismissalRestrictionsNormalizer i
                 $values[] = $this->denormalizer->denormalize($value, 'Github\\Model\\SimpleUser', 'json', $context);
             }
             $object->setUsers($values);
+            unset($data['users']);
         }
         if (\array_key_exists('teams', $data)) {
             $values_1 = array();
@@ -67,6 +71,12 @@ class ProtectedBranchRequiredPullRequestReviewsDismissalRestrictionsNormalizer i
                 $values_1[] = $this->denormalizer->denormalize($value_1, 'Github\\Model\\Team', 'json', $context);
             }
             $object->setTeams($values_1);
+            unset($data['teams']);
+        }
+        foreach ($data as $key => $value_2) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_2;
+            }
         }
         return $object;
     }
@@ -89,6 +99,11 @@ class ProtectedBranchRequiredPullRequestReviewsDismissalRestrictionsNormalizer i
             $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
         }
         $data['teams'] = $values_1;
+        foreach ($object as $key => $value_2) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_2;
+            }
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ProtectedBranchRequiredPullRequestReviewsDismissalRestrictionsConstraint());
             $context['skip_validation'] = true;

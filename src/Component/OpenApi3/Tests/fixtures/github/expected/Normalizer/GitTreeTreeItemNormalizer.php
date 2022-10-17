@@ -47,21 +47,32 @@ class GitTreeTreeItemNormalizer implements DenormalizerInterface, NormalizerInte
         }
         if (\array_key_exists('path', $data)) {
             $object->setPath($data['path']);
+            unset($data['path']);
         }
         if (\array_key_exists('mode', $data)) {
             $object->setMode($data['mode']);
+            unset($data['mode']);
         }
         if (\array_key_exists('type', $data)) {
             $object->setType($data['type']);
+            unset($data['type']);
         }
         if (\array_key_exists('sha', $data)) {
             $object->setSha($data['sha']);
+            unset($data['sha']);
         }
         if (\array_key_exists('size', $data)) {
             $object->setSize($data['size']);
+            unset($data['size']);
         }
         if (\array_key_exists('url', $data)) {
             $object->setUrl($data['url']);
+            unset($data['url']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -88,6 +99,11 @@ class GitTreeTreeItemNormalizer implements DenormalizerInterface, NormalizerInte
         }
         if (null !== $object->getUrl()) {
             $data['url'] = $object->getUrl();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\GitTreeTreeItemConstraint());

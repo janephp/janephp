@@ -42,7 +42,11 @@ class ListItemUpdateRequestNormalizer implements DenormalizerInterface, Normaliz
             return $object;
         }
         if (\array_key_exists('content', $data) && $data['content'] !== null) {
-            $object->setContent($data['content']);
+            $values = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
+            foreach ($data['content'] as $key => $value) {
+                $values[$key] = $value;
+            }
+            $object->setContent($values);
         }
         elseif (\array_key_exists('content', $data) && $data['content'] === null) {
             $object->setContent(null);
@@ -59,7 +63,11 @@ class ListItemUpdateRequestNormalizer implements DenormalizerInterface, Normaliz
     {
         $data = array();
         if (null !== $object->getContent()) {
-            $data['content'] = $object->getContent();
+            $values = array();
+            foreach ($object->getContent() as $key => $value) {
+                $values[$key] = $value;
+            }
+            $data['content'] = $values;
         }
         $data['contentFieldsUpdateOptions'] = $object->getContentFieldsUpdateOptions();
         return $data;

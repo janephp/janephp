@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class TeamDiscussionComment
+class TeamDiscussionComment extends \ArrayObject
 {
     /**
      * 

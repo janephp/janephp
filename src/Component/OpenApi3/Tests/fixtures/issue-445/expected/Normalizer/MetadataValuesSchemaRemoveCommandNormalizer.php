@@ -43,9 +43,16 @@ class MetadataValuesSchemaRemoveCommandNormalizer implements DenormalizerInterfa
         }
         if (\array_key_exists('schemaId', $data)) {
             $object->setSchemaId($data['schemaId']);
+            unset($data['schemaId']);
         }
         if (\array_key_exists('kind', $data)) {
             $object->setKind($data['kind']);
+            unset($data['kind']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -57,6 +64,11 @@ class MetadataValuesSchemaRemoveCommandNormalizer implements DenormalizerInterfa
         $data = array();
         $data['schemaId'] = $object->getSchemaId();
         $data['kind'] = $object->getKind();
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
         return $data;
     }
 }

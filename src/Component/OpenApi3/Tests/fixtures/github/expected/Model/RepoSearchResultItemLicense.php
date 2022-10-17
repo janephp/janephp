@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class RepoSearchResultItemLicense
+class RepoSearchResultItemLicense extends \ArrayObject
 {
     /**
      * 

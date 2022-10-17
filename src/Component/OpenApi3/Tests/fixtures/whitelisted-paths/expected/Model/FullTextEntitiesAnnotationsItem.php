@@ -2,7 +2,7 @@
 
 namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 
-class FullTextEntitiesAnnotationsItem
+class FullTextEntitiesAnnotationsItem extends \ArrayObject
 {
     /**
      * Index (zero-based) at which position this entity starts.

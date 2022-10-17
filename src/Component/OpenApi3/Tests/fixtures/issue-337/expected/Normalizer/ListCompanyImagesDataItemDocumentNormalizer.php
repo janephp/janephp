@@ -43,12 +43,20 @@ class ListCompanyImagesDataItemDocumentNormalizer implements DenormalizerInterfa
         }
         if (\array_key_exists('imageType', $data)) {
             $object->setImageType($data['imageType']);
+            unset($data['imageType']);
         }
         if (\array_key_exists('imageCode', $data)) {
             $object->setImageCode($data['imageCode']);
+            unset($data['imageCode']);
         }
         if (\array_key_exists('description', $data)) {
             $object->setDescription($data['description']);
+            unset($data['description']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -66,6 +74,11 @@ class ListCompanyImagesDataItemDocumentNormalizer implements DenormalizerInterfa
         }
         if (null !== $object->getDescription()) {
             $data['description'] = $object->getDescription();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

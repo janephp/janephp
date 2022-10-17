@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoCheckRunsPostBodyOutputImagesItem
+class ReposOwnerRepoCheckRunsPostBodyOutputImagesItem extends \ArrayObject
 {
     /**
      * The alternative text for the image.

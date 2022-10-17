@@ -47,9 +47,16 @@ class ReposOwnerRepoGitRefsRefPatchBodyNormalizer implements DenormalizerInterfa
         }
         if (\array_key_exists('sha', $data)) {
             $object->setSha($data['sha']);
+            unset($data['sha']);
         }
         if (\array_key_exists('force', $data)) {
             $object->setForce($data['force']);
+            unset($data['force']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -62,6 +69,11 @@ class ReposOwnerRepoGitRefsRefPatchBodyNormalizer implements DenormalizerInterfa
         $data['sha'] = $object->getSha();
         if (null !== $object->getForce()) {
             $data['force'] = $object->getForce();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ReposOwnerRepoGitRefsRefPatchBodyConstraint());

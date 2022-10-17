@@ -47,9 +47,11 @@ class OrgsOrgHooksPostBodyNormalizer implements DenormalizerInterface, Normalize
         }
         if (\array_key_exists('name', $data)) {
             $object->setName($data['name']);
+            unset($data['name']);
         }
         if (\array_key_exists('config', $data)) {
             $object->setConfig($this->denormalizer->denormalize($data['config'], 'Github\\Model\\OrgsOrgHooksPostBodyConfig', 'json', $context));
+            unset($data['config']);
         }
         if (\array_key_exists('events', $data)) {
             $values = array();
@@ -57,9 +59,16 @@ class OrgsOrgHooksPostBodyNormalizer implements DenormalizerInterface, Normalize
                 $values[] = $value;
             }
             $object->setEvents($values);
+            unset($data['events']);
         }
         if (\array_key_exists('active', $data)) {
             $object->setActive($data['active']);
+            unset($data['active']);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
@@ -80,6 +89,11 @@ class OrgsOrgHooksPostBodyNormalizer implements DenormalizerInterface, Normalize
         }
         if (null !== $object->getActive()) {
             $data['active'] = $object->getActive();
+        }
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\OrgsOrgHooksPostBodyConstraint());

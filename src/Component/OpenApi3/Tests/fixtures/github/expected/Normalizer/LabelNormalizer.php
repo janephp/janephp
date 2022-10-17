@@ -47,27 +47,39 @@ class LabelNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         }
         if (\array_key_exists('id', $data)) {
             $object->setId($data['id']);
+            unset($data['id']);
         }
         if (\array_key_exists('node_id', $data)) {
             $object->setNodeId($data['node_id']);
+            unset($data['node_id']);
         }
         if (\array_key_exists('url', $data)) {
             $object->setUrl($data['url']);
+            unset($data['url']);
         }
         if (\array_key_exists('name', $data)) {
             $object->setName($data['name']);
+            unset($data['name']);
         }
         if (\array_key_exists('description', $data) && $data['description'] !== null) {
             $object->setDescription($data['description']);
+            unset($data['description']);
         }
         elseif (\array_key_exists('description', $data) && $data['description'] === null) {
             $object->setDescription(null);
         }
         if (\array_key_exists('color', $data)) {
             $object->setColor($data['color']);
+            unset($data['color']);
         }
         if (\array_key_exists('default', $data)) {
             $object->setDefault($data['default']);
+            unset($data['default']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -86,6 +98,11 @@ class LabelNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         }
         $data['color'] = $object->getColor();
         $data['default'] = $object->getDefault();
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\LabelConstraint());
             $context['skip_validation'] = true;

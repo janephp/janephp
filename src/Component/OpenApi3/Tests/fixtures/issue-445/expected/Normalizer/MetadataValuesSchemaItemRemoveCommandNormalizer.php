@@ -43,18 +43,28 @@ class MetadataValuesSchemaItemRemoveCommandNormalizer implements DenormalizerInt
         }
         if (\array_key_exists('schemaId', $data)) {
             $object->setSchemaId($data['schemaId']);
+            unset($data['schemaId']);
         }
         if (\array_key_exists('kind', $data)) {
             $object->setKind($data['kind']);
+            unset($data['kind']);
         }
         if (\array_key_exists('fieldPath', $data)) {
             $object->setFieldPath($data['fieldPath']);
+            unset($data['fieldPath']);
         }
         if (\array_key_exists('fieldNamespace', $data)) {
             $object->setFieldNamespace($data['fieldNamespace']);
+            unset($data['fieldNamespace']);
         }
         if (\array_key_exists('referenceId', $data)) {
             $object->setReferenceId($data['referenceId']);
+            unset($data['referenceId']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -69,6 +79,11 @@ class MetadataValuesSchemaItemRemoveCommandNormalizer implements DenormalizerInt
         $data['fieldPath'] = $object->getFieldPath();
         $data['fieldNamespace'] = $object->getFieldNamespace();
         $data['referenceId'] = $object->getReferenceId();
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
         return $data;
     }
 }

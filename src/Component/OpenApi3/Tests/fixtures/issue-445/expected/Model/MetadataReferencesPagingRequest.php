@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class MetadataReferencesPagingRequest
+class MetadataReferencesPagingRequest extends \ArrayObject
 {
     /**
      * Limits the number of the returned schemas. Defaults to 0.

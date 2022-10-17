@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class CustomerClonesNotAcceptedException
+class CustomerClonesNotAcceptedException extends \ArrayObject
 {
     /**
      * 

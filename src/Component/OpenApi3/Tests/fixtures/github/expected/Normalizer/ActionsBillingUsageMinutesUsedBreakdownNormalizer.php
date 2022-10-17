@@ -47,12 +47,20 @@ class ActionsBillingUsageMinutesUsedBreakdownNormalizer implements DenormalizerI
         }
         if (\array_key_exists('UBUNTU', $data)) {
             $object->setUBUNTU($data['UBUNTU']);
+            unset($data['UBUNTU']);
         }
         if (\array_key_exists('MACOS', $data)) {
             $object->setMACOS($data['MACOS']);
+            unset($data['MACOS']);
         }
         if (\array_key_exists('WINDOWS', $data)) {
             $object->setWINDOWS($data['WINDOWS']);
+            unset($data['WINDOWS']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -70,6 +78,11 @@ class ActionsBillingUsageMinutesUsedBreakdownNormalizer implements DenormalizerI
         }
         if (null !== $object->getWINDOWS()) {
             $data['WINDOWS'] = $object->getWINDOWS();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ActionsBillingUsageMinutesUsedBreakdownConstraint());

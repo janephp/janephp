@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class OrgsOrgOutsideCollaboratorsUsernamePutResponse403
+class OrgsOrgOutsideCollaboratorsUsernamePutResponse403 extends \ArrayObject
 {
     /**
      * 

@@ -2,7 +2,7 @@
 
 namespace CreditSafe\API\Model;
 
-class MonitoringPortfoliosPortfolioIdSharingPermissionsPatchBodyCompaniesItem
+class MonitoringPortfoliosPortfolioIdSharingPermissionsPatchBodyCompaniesItem extends \ArrayObject
 {
     /**
      * A creditsafe user id.

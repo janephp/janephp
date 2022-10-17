@@ -47,12 +47,20 @@ class InteractionLimitNormalizer implements DenormalizerInterface, NormalizerInt
         }
         if (\array_key_exists('limit', $data)) {
             $object->setLimit($data['limit']);
+            unset($data['limit']);
         }
         if (\array_key_exists('origin', $data)) {
             $object->setOrigin($data['origin']);
+            unset($data['origin']);
         }
         if (\array_key_exists('expires_at', $data)) {
             $object->setExpiresAt(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['expires_at']));
+            unset($data['expires_at']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -65,6 +73,11 @@ class InteractionLimitNormalizer implements DenormalizerInterface, NormalizerInt
         $data['limit'] = $object->getLimit();
         $data['origin'] = $object->getOrigin();
         $data['expires_at'] = $object->getExpiresAt()->format('Y-m-d\\TH:i:sP');
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\InteractionLimitConstraint());
             $context['skip_validation'] = true;

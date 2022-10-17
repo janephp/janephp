@@ -47,36 +47,47 @@ class CommitComparisonNormalizer implements DenormalizerInterface, NormalizerInt
         }
         if (\array_key_exists('url', $data)) {
             $object->setUrl($data['url']);
+            unset($data['url']);
         }
         if (\array_key_exists('html_url', $data)) {
             $object->setHtmlUrl($data['html_url']);
+            unset($data['html_url']);
         }
         if (\array_key_exists('permalink_url', $data)) {
             $object->setPermalinkUrl($data['permalink_url']);
+            unset($data['permalink_url']);
         }
         if (\array_key_exists('diff_url', $data)) {
             $object->setDiffUrl($data['diff_url']);
+            unset($data['diff_url']);
         }
         if (\array_key_exists('patch_url', $data)) {
             $object->setPatchUrl($data['patch_url']);
+            unset($data['patch_url']);
         }
         if (\array_key_exists('base_commit', $data)) {
             $object->setBaseCommit($this->denormalizer->denormalize($data['base_commit'], 'Github\\Model\\Commit', 'json', $context));
+            unset($data['base_commit']);
         }
         if (\array_key_exists('merge_base_commit', $data)) {
             $object->setMergeBaseCommit($this->denormalizer->denormalize($data['merge_base_commit'], 'Github\\Model\\Commit', 'json', $context));
+            unset($data['merge_base_commit']);
         }
         if (\array_key_exists('status', $data)) {
             $object->setStatus($data['status']);
+            unset($data['status']);
         }
         if (\array_key_exists('ahead_by', $data)) {
             $object->setAheadBy($data['ahead_by']);
+            unset($data['ahead_by']);
         }
         if (\array_key_exists('behind_by', $data)) {
             $object->setBehindBy($data['behind_by']);
+            unset($data['behind_by']);
         }
         if (\array_key_exists('total_commits', $data)) {
             $object->setTotalCommits($data['total_commits']);
+            unset($data['total_commits']);
         }
         if (\array_key_exists('commits', $data)) {
             $values = array();
@@ -84,6 +95,7 @@ class CommitComparisonNormalizer implements DenormalizerInterface, NormalizerInt
                 $values[] = $this->denormalizer->denormalize($value, 'Github\\Model\\Commit', 'json', $context);
             }
             $object->setCommits($values);
+            unset($data['commits']);
         }
         if (\array_key_exists('files', $data)) {
             $values_1 = array();
@@ -91,6 +103,12 @@ class CommitComparisonNormalizer implements DenormalizerInterface, NormalizerInt
                 $values_1[] = $this->denormalizer->denormalize($value_1, 'Github\\Model\\DiffEntry', 'json', $context);
             }
             $object->setFiles($values_1);
+            unset($data['files']);
+        }
+        foreach ($data as $key => $value_2) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_2;
+            }
         }
         return $object;
     }
@@ -121,6 +139,11 @@ class CommitComparisonNormalizer implements DenormalizerInterface, NormalizerInt
             $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
         }
         $data['files'] = $values_1;
+        foreach ($object as $key => $value_2) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_2;
+            }
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\CommitComparisonConstraint());
             $context['skip_validation'] = true;

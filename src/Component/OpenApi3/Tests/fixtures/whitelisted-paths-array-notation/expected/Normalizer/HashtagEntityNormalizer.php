@@ -43,12 +43,20 @@ class HashtagEntityNormalizer implements DenormalizerInterface, NormalizerInterf
         }
         if (\array_key_exists('start', $data)) {
             $object->setStart($data['start']);
+            unset($data['start']);
         }
         if (\array_key_exists('end', $data)) {
             $object->setEnd($data['end']);
+            unset($data['end']);
         }
         if (\array_key_exists('tag', $data)) {
             $object->setTag($data['tag']);
+            unset($data['tag']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -61,6 +69,11 @@ class HashtagEntityNormalizer implements DenormalizerInterface, NormalizerInterf
         $data['start'] = $object->getStart();
         $data['end'] = $object->getEnd();
         $data['tag'] = $object->getTag();
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
         return $data;
     }
 }

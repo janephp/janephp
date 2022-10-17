@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class CombinedCommitStatus
+class CombinedCommitStatus extends \ArrayObject
 {
     /**
      * 

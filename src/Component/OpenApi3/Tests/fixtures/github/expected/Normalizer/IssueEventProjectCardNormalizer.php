@@ -47,21 +47,32 @@ class IssueEventProjectCardNormalizer implements DenormalizerInterface, Normaliz
         }
         if (\array_key_exists('url', $data)) {
             $object->setUrl($data['url']);
+            unset($data['url']);
         }
         if (\array_key_exists('id', $data)) {
             $object->setId($data['id']);
+            unset($data['id']);
         }
         if (\array_key_exists('project_url', $data)) {
             $object->setProjectUrl($data['project_url']);
+            unset($data['project_url']);
         }
         if (\array_key_exists('project_id', $data)) {
             $object->setProjectId($data['project_id']);
+            unset($data['project_id']);
         }
         if (\array_key_exists('column_name', $data)) {
             $object->setColumnName($data['column_name']);
+            unset($data['column_name']);
         }
         if (\array_key_exists('previous_column_name', $data)) {
             $object->setPreviousColumnName($data['previous_column_name']);
+            unset($data['previous_column_name']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -78,6 +89,11 @@ class IssueEventProjectCardNormalizer implements DenormalizerInterface, Normaliz
         $data['column_name'] = $object->getColumnName();
         if (null !== $object->getPreviousColumnName()) {
             $data['previous_column_name'] = $object->getPreviousColumnName();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\IssueEventProjectCardConstraint());

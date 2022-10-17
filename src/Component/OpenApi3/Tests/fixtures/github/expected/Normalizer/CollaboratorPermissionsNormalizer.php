@@ -47,12 +47,20 @@ class CollaboratorPermissionsNormalizer implements DenormalizerInterface, Normal
         }
         if (\array_key_exists('pull', $data)) {
             $object->setPull($data['pull']);
+            unset($data['pull']);
         }
         if (\array_key_exists('push', $data)) {
             $object->setPush($data['push']);
+            unset($data['push']);
         }
         if (\array_key_exists('admin', $data)) {
             $object->setAdmin($data['admin']);
+            unset($data['admin']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -65,6 +73,11 @@ class CollaboratorPermissionsNormalizer implements DenormalizerInterface, Normal
         $data['pull'] = $object->getPull();
         $data['push'] = $object->getPush();
         $data['admin'] = $object->getAdmin();
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\CollaboratorPermissionsConstraint());
             $context['skip_validation'] = true;

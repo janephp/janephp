@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class GistFullforksItem
+class GistFullforksItem extends \ArrayObject
 {
     /**
      * 

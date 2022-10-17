@@ -2,7 +2,7 @@
 
 namespace ApiPlatform\Demo\Model;
 
-class BooksBookIdReviewsGetLdjsonResponse200HydraView
+class BooksBookIdReviewsGetLdjsonResponse200HydraView extends \ArrayObject
 {
     /**
      * 

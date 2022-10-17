@@ -43,6 +43,7 @@ class SchemaPermissionSetUpdateRequestNormalizer implements DenormalizerInterfac
         }
         if (\array_key_exists('names', $data)) {
             $object->setNames($data['names']);
+            unset($data['names']);
         }
         if (\array_key_exists('userRolesRights', $data) && $data['userRolesRights'] !== null) {
             $values = array();
@@ -50,6 +51,7 @@ class SchemaPermissionSetUpdateRequestNormalizer implements DenormalizerInterfac
                 $values[] = $this->denormalizer->denormalize($value, 'PicturePark\\API\\Model\\UserRoleRightsOfMetadataRight', 'json', $context);
             }
             $object->setUserRolesRights($values);
+            unset($data['userRolesRights']);
         }
         elseif (\array_key_exists('userRolesRights', $data) && $data['userRolesRights'] === null) {
             $object->setUserRolesRights(null);
@@ -60,9 +62,15 @@ class SchemaPermissionSetUpdateRequestNormalizer implements DenormalizerInterfac
                 $values_1[] = $this->denormalizer->denormalize($value_1, 'PicturePark\\API\\Model\\UserRoleRightsOfPermissionSetRight', 'json', $context);
             }
             $object->setUserRolesPermissionSetRights($values_1);
+            unset($data['userRolesPermissionSetRights']);
         }
         elseif (\array_key_exists('userRolesPermissionSetRights', $data) && $data['userRolesPermissionSetRights'] === null) {
             $object->setUserRolesPermissionSetRights(null);
+        }
+        foreach ($data as $key => $value_2) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_2;
+            }
         }
         return $object;
     }
@@ -86,6 +94,11 @@ class SchemaPermissionSetUpdateRequestNormalizer implements DenormalizerInterfac
                 $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
             }
             $data['userRolesPermissionSetRights'] = $values_1;
+        }
+        foreach ($object as $key => $value_2) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_2;
+            }
         }
         return $data;
     }

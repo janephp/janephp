@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class BusinessRuleConditionMissingException
+class BusinessRuleConditionMissingException extends \ArrayObject
 {
     /**
      * 

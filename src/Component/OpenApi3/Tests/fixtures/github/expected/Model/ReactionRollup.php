@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class ReactionRollup
+class ReactionRollup extends \ArrayObject
 {
     /**
      * 

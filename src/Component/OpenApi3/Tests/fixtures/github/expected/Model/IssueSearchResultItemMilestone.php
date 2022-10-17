@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class IssueSearchResultItemMilestone
+class IssueSearchResultItemMilestone extends \ArrayObject
 {
     /**
      * 

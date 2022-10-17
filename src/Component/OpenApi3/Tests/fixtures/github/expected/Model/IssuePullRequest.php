@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class IssuePullRequest
+class IssuePullRequest extends \ArrayObject
 {
     /**
      * 

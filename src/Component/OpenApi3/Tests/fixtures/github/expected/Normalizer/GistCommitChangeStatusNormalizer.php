@@ -47,12 +47,20 @@ class GistCommitChangeStatusNormalizer implements DenormalizerInterface, Normali
         }
         if (\array_key_exists('total', $data)) {
             $object->setTotal($data['total']);
+            unset($data['total']);
         }
         if (\array_key_exists('additions', $data)) {
             $object->setAdditions($data['additions']);
+            unset($data['additions']);
         }
         if (\array_key_exists('deletions', $data)) {
             $object->setDeletions($data['deletions']);
+            unset($data['deletions']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -70,6 +78,11 @@ class GistCommitChangeStatusNormalizer implements DenormalizerInterface, Normali
         }
         if (null !== $object->getDeletions()) {
             $data['deletions'] = $object->getDeletions();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\GistCommitChangeStatusConstraint());

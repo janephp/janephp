@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoGitRefsPostBody
+class ReposOwnerRepoGitRefsPostBody extends \ArrayObject
 {
     /**
      * The name of the fully qualified reference (ie: `refs/heads/master`). If it doesn't start with 'refs' and have at least two slashes, it will be rejected.

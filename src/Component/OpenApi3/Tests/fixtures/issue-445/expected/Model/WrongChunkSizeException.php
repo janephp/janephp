@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class WrongChunkSizeException
+class WrongChunkSizeException extends \ArrayObject
 {
     /**
      * 

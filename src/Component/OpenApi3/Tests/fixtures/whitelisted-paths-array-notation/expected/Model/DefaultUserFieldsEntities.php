@@ -2,7 +2,7 @@
 
 namespace Jane\OpenApi3\Tests\Expected\Model;
 
-class DefaultUserFieldsEntities
+class DefaultUserFieldsEntities extends \ArrayObject
 {
     /**
      * Expanded details for the URL specified in the user's profile, with start and end indices.

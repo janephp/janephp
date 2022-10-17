@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class AppManifestsCodeConversionsPostResponse201
+class AppManifestsCodeConversionsPostResponse201 extends \ArrayObject
 {
     /**
      * Unique identifier of the GitHub app

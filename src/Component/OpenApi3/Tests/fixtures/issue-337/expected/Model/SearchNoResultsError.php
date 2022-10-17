@@ -2,7 +2,7 @@
 
 namespace CreditSafe\API\Model;
 
-class SearchNoResultsError
+class SearchNoResultsError extends \ArrayObject
 {
     /**
      * 
@@ -13,7 +13,7 @@ class SearchNoResultsError
     /**
      * 
      *
-     * @var mixed
+     * @var mixed[]
      */
     protected $companies;
     /**
@@ -46,20 +46,20 @@ class SearchNoResultsError
     /**
      * 
      *
-     * @return mixed
+     * @return mixed[]
      */
-    public function getCompanies()
+    public function getCompanies() : iterable
     {
         return $this->companies;
     }
     /**
      * 
      *
-     * @param mixed $companies
+     * @param mixed[] $companies
      *
      * @return self
      */
-    public function setCompanies($companies) : self
+    public function setCompanies(iterable $companies) : self
     {
         $this->companies = $companies;
         return $this;

@@ -47,24 +47,35 @@ class ActorNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         }
         if (\array_key_exists('id', $data)) {
             $object->setId($data['id']);
+            unset($data['id']);
         }
         if (\array_key_exists('login', $data)) {
             $object->setLogin($data['login']);
+            unset($data['login']);
         }
         if (\array_key_exists('display_login', $data)) {
             $object->setDisplayLogin($data['display_login']);
+            unset($data['display_login']);
         }
         if (\array_key_exists('gravatar_id', $data) && $data['gravatar_id'] !== null) {
             $object->setGravatarId($data['gravatar_id']);
+            unset($data['gravatar_id']);
         }
         elseif (\array_key_exists('gravatar_id', $data) && $data['gravatar_id'] === null) {
             $object->setGravatarId(null);
         }
         if (\array_key_exists('url', $data)) {
             $object->setUrl($data['url']);
+            unset($data['url']);
         }
         if (\array_key_exists('avatar_url', $data)) {
             $object->setAvatarUrl($data['avatar_url']);
+            unset($data['avatar_url']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -82,6 +93,11 @@ class ActorNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         $data['gravatar_id'] = $object->getGravatarId();
         $data['url'] = $object->getUrl();
         $data['avatar_url'] = $object->getAvatarUrl();
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ActorConstraint());
             $context['skip_validation'] = true;

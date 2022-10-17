@@ -43,9 +43,16 @@ class RuleNoIdNormalizer implements DenormalizerInterface, NormalizerInterface, 
         }
         if (\array_key_exists('value', $data)) {
             $object->setValue($data['value']);
+            unset($data['value']);
         }
         if (\array_key_exists('tag', $data)) {
             $object->setTag($data['tag']);
+            unset($data['tag']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -58,6 +65,11 @@ class RuleNoIdNormalizer implements DenormalizerInterface, NormalizerInterface, 
         $data['value'] = $object->getValue();
         if (null !== $object->getTag()) {
             $data['tag'] = $object->getTag();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

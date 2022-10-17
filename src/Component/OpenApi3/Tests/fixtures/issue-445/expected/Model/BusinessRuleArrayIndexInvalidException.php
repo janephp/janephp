@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class BusinessRuleArrayIndexInvalidException
+class BusinessRuleArrayIndexInvalidException extends \ArrayObject
 {
     /**
      * 

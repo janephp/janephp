@@ -43,42 +43,55 @@ class BusinessRuleScriptNormalizer implements DenormalizerInterface, NormalizerI
         }
         if (\array_key_exists('id', $data) && $data['id'] !== null) {
             $object->setId($data['id']);
+            unset($data['id']);
         }
         elseif (\array_key_exists('id', $data) && $data['id'] === null) {
             $object->setId(null);
         }
         if (\array_key_exists('triggerPoint', $data) && $data['triggerPoint'] !== null) {
             $object->setTriggerPoint($data['triggerPoint']);
+            unset($data['triggerPoint']);
         }
         elseif (\array_key_exists('triggerPoint', $data) && $data['triggerPoint'] === null) {
             $object->setTriggerPoint(null);
         }
         if (\array_key_exists('isEnabled', $data)) {
             $object->setIsEnabled($data['isEnabled']);
+            unset($data['isEnabled']);
         }
         if (\array_key_exists('names', $data) && $data['names'] !== null) {
             $object->setNames($data['names']);
+            unset($data['names']);
         }
         elseif (\array_key_exists('names', $data) && $data['names'] === null) {
             $object->setNames(null);
         }
         if (\array_key_exists('description', $data) && $data['description'] !== null) {
             $object->setDescription($data['description']);
+            unset($data['description']);
         }
         elseif (\array_key_exists('description', $data) && $data['description'] === null) {
             $object->setDescription(null);
         }
         if (\array_key_exists('enableTracing', $data)) {
             $object->setEnableTracing($data['enableTracing']);
+            unset($data['enableTracing']);
         }
         if (\array_key_exists('kind', $data)) {
             $object->setKind($data['kind']);
+            unset($data['kind']);
         }
         if (\array_key_exists('script', $data) && $data['script'] !== null) {
             $object->setScript($data['script']);
+            unset($data['script']);
         }
         elseif (\array_key_exists('script', $data) && $data['script'] === null) {
             $object->setScript(null);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -105,6 +118,11 @@ class BusinessRuleScriptNormalizer implements DenormalizerInterface, NormalizerI
         $data['kind'] = $object->getKind();
         if (null !== $object->getScript()) {
             $data['script'] = $object->getScript();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

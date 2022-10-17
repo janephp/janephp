@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class UserUnlockDisallowedException
+class UserUnlockDisallowedException extends \ArrayObject
 {
     /**
      * 

@@ -51,6 +51,7 @@ class ScimV2OrganizationsOrgUsersScimUserIdPatchBodyNormalizer implements Denorm
                 $values[] = $value;
             }
             $object->setSchemas($values);
+            unset($data['schemas']);
         }
         if (\array_key_exists('Operations', $data)) {
             $values_1 = array();
@@ -58,6 +59,12 @@ class ScimV2OrganizationsOrgUsersScimUserIdPatchBodyNormalizer implements Denorm
                 $values_1[] = $this->denormalizer->denormalize($value_1, 'Github\\Model\\ScimV2OrganizationsOrgUsersScimUserIdPatchBodyOperationsItem', 'json', $context);
             }
             $object->setOperations($values_1);
+            unset($data['Operations']);
+        }
+        foreach ($data as $key => $value_2) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_2;
+            }
         }
         return $object;
     }
@@ -79,6 +86,11 @@ class ScimV2OrganizationsOrgUsersScimUserIdPatchBodyNormalizer implements Denorm
             $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
         }
         $data['Operations'] = $values_1;
+        foreach ($object as $key => $value_2) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_2;
+            }
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ScimV2OrganizationsOrgUsersScimUserIdPatchBodyConstraint());
             $context['skip_validation'] = true;

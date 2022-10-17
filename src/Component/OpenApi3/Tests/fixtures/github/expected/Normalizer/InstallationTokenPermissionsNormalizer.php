@@ -47,15 +47,24 @@ class InstallationTokenPermissionsNormalizer implements DenormalizerInterface, N
         }
         if (\array_key_exists('issues', $data)) {
             $object->setIssues($data['issues']);
+            unset($data['issues']);
         }
         if (\array_key_exists('contents', $data)) {
             $object->setContents($data['contents']);
+            unset($data['contents']);
         }
         if (\array_key_exists('metadata', $data)) {
             $object->setMetadata($data['metadata']);
+            unset($data['metadata']);
         }
         if (\array_key_exists('single_file', $data)) {
             $object->setSingleFile($data['single_file']);
+            unset($data['single_file']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -76,6 +85,11 @@ class InstallationTokenPermissionsNormalizer implements DenormalizerInterface, N
         }
         if (null !== $object->getSingleFile()) {
             $data['single_file'] = $object->getSingleFile();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\InstallationTokenPermissionsConstraint());

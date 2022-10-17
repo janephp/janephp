@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class InvalidChangeCommandFieldNotFoundException
+class InvalidChangeCommandFieldNotFoundException extends \ArrayObject
 {
     /**
      * 

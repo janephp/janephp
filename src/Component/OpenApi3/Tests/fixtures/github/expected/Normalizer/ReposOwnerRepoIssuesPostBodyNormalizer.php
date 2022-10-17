@@ -47,18 +47,22 @@ class ReposOwnerRepoIssuesPostBodyNormalizer implements DenormalizerInterface, N
         }
         if (\array_key_exists('title', $data)) {
             $object->setTitle($data['title']);
+            unset($data['title']);
         }
         if (\array_key_exists('body', $data)) {
             $object->setBody($data['body']);
+            unset($data['body']);
         }
         if (\array_key_exists('assignee', $data) && $data['assignee'] !== null) {
             $object->setAssignee($data['assignee']);
+            unset($data['assignee']);
         }
         elseif (\array_key_exists('assignee', $data) && $data['assignee'] === null) {
             $object->setAssignee(null);
         }
         if (\array_key_exists('milestone', $data) && $data['milestone'] !== null) {
             $object->setMilestone($data['milestone']);
+            unset($data['milestone']);
         }
         elseif (\array_key_exists('milestone', $data) && $data['milestone'] === null) {
             $object->setMilestone(null);
@@ -69,6 +73,7 @@ class ReposOwnerRepoIssuesPostBodyNormalizer implements DenormalizerInterface, N
                 $values[] = $value;
             }
             $object->setLabels($values);
+            unset($data['labels']);
         }
         if (\array_key_exists('assignees', $data)) {
             $values_1 = array();
@@ -76,6 +81,12 @@ class ReposOwnerRepoIssuesPostBodyNormalizer implements DenormalizerInterface, N
                 $values_1[] = $value_1;
             }
             $object->setAssignees($values_1);
+            unset($data['assignees']);
+        }
+        foreach ($data as $key => $value_2) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_2;
+            }
         }
         return $object;
     }
@@ -108,6 +119,11 @@ class ReposOwnerRepoIssuesPostBodyNormalizer implements DenormalizerInterface, N
                 $values_1[] = $value_1;
             }
             $data['assignees'] = $values_1;
+        }
+        foreach ($object as $key => $value_2) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_2;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ReposOwnerRepoIssuesPostBodyConstraint());

@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class AggregationSizeInvalidException
+class AggregationSizeInvalidException extends \ArrayObject
 {
     /**
      * 

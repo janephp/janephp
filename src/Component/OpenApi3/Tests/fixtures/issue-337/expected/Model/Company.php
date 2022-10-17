@@ -2,7 +2,7 @@
 
 namespace CreditSafe\API\Model;
 
-class Company
+class Company extends \ArrayObject
 {
     /**
      * The connectId of the company that triggered the `notificationEvent`. A connectId is the primary Company identifier that is used to uniquely identify all companies across Creditsafe's Universe and Partner Network.

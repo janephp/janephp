@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class PictureparkException
+class PictureparkException extends \ArrayObject
 {
     /**
      * 

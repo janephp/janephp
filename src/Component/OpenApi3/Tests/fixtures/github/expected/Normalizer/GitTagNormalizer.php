@@ -47,27 +47,40 @@ class GitTagNormalizer implements DenormalizerInterface, NormalizerInterface, De
         }
         if (\array_key_exists('node_id', $data)) {
             $object->setNodeId($data['node_id']);
+            unset($data['node_id']);
         }
         if (\array_key_exists('tag', $data)) {
             $object->setTag($data['tag']);
+            unset($data['tag']);
         }
         if (\array_key_exists('sha', $data)) {
             $object->setSha($data['sha']);
+            unset($data['sha']);
         }
         if (\array_key_exists('url', $data)) {
             $object->setUrl($data['url']);
+            unset($data['url']);
         }
         if (\array_key_exists('message', $data)) {
             $object->setMessage($data['message']);
+            unset($data['message']);
         }
         if (\array_key_exists('tagger', $data)) {
             $object->setTagger($this->denormalizer->denormalize($data['tagger'], 'Github\\Model\\GitTagTagger', 'json', $context));
+            unset($data['tagger']);
         }
         if (\array_key_exists('object', $data)) {
             $object->setObject($this->denormalizer->denormalize($data['object'], 'Github\\Model\\GitTagObject', 'json', $context));
+            unset($data['object']);
         }
         if (\array_key_exists('verification', $data)) {
             $object->setVerification($this->denormalizer->denormalize($data['verification'], 'Github\\Model\\Verification', 'json', $context));
+            unset($data['verification']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -86,6 +99,11 @@ class GitTagNormalizer implements DenormalizerInterface, NormalizerInterface, De
         $data['object'] = $this->normalizer->normalize($object->getObject(), 'json', $context);
         if (null !== $object->getVerification()) {
             $data['verification'] = $this->normalizer->normalize($object->getVerification(), 'json', $context);
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\GitTagConstraint());

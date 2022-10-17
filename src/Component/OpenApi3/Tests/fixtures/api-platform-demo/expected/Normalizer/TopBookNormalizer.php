@@ -43,21 +43,32 @@ class TopBookNormalizer implements DenormalizerInterface, NormalizerInterface, D
         }
         if (\array_key_exists('id', $data)) {
             $object->setId($data['id']);
+            unset($data['id']);
         }
         if (\array_key_exists('title', $data)) {
             $object->setTitle($data['title']);
+            unset($data['title']);
         }
         if (\array_key_exists('author', $data)) {
             $object->setAuthor($data['author']);
+            unset($data['author']);
         }
         if (\array_key_exists('part', $data)) {
             $object->setPart($data['part']);
+            unset($data['part']);
         }
         if (\array_key_exists('place', $data)) {
             $object->setPlace($data['place']);
+            unset($data['place']);
         }
         if (\array_key_exists('borrowCount', $data)) {
             $object->setBorrowCount($data['borrowCount']);
+            unset($data['borrowCount']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -84,6 +95,11 @@ class TopBookNormalizer implements DenormalizerInterface, NormalizerInterface, D
         }
         if (null !== $object->getBorrowCount()) {
             $data['borrowCount'] = $object->getBorrowCount();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

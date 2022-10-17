@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class CommunityProfileFilesIssueTemplate
+class CommunityProfileFilesIssueTemplate extends \ArrayObject
 {
     /**
      * 

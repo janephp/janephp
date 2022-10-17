@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class AmbiguousUserRoleRightsException
+class AmbiguousUserRoleRightsException extends \ArrayObject
 {
     /**
      * 

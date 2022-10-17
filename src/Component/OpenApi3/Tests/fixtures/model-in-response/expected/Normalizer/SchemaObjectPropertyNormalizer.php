@@ -43,6 +43,12 @@ class SchemaObjectPropertyNormalizer implements DenormalizerInterface, Normalize
         }
         if (\array_key_exists('stringProperty', $data)) {
             $object->setStringProperty($data['stringProperty']);
+            unset($data['stringProperty']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -54,6 +60,11 @@ class SchemaObjectPropertyNormalizer implements DenormalizerInterface, Normalize
         $data = array();
         if (null !== $object->getStringProperty()) {
             $data['stringProperty'] = $object->getStringProperty();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

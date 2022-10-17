@@ -47,21 +47,32 @@ class OrgsOrgHooksPostBodyConfigNormalizer implements DenormalizerInterface, Nor
         }
         if (\array_key_exists('url', $data)) {
             $object->setUrl($data['url']);
+            unset($data['url']);
         }
         if (\array_key_exists('content_type', $data)) {
             $object->setContentType($data['content_type']);
+            unset($data['content_type']);
         }
         if (\array_key_exists('secret', $data)) {
             $object->setSecret($data['secret']);
+            unset($data['secret']);
         }
         if (\array_key_exists('insecure_ssl', $data)) {
             $object->setInsecureSsl($data['insecure_ssl']);
+            unset($data['insecure_ssl']);
         }
         if (\array_key_exists('username', $data)) {
             $object->setUsername($data['username']);
+            unset($data['username']);
         }
         if (\array_key_exists('password', $data)) {
             $object->setPassword($data['password']);
+            unset($data['password']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -86,6 +97,11 @@ class OrgsOrgHooksPostBodyConfigNormalizer implements DenormalizerInterface, Nor
         }
         if (null !== $object->getPassword()) {
             $data['password'] = $object->getPassword();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\OrgsOrgHooksPostBodyConfigConstraint());

@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class ShareByTokenNotFoundException
+class ShareByTokenNotFoundException extends \ArrayObject
 {
     /**
      * 

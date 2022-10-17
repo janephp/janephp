@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class WorkflowUsageBillableUBUNTU
+class WorkflowUsageBillableUBUNTU extends \ArrayObject
 {
     /**
      * 

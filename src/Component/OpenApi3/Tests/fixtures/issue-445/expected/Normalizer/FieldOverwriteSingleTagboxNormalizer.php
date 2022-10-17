@@ -43,36 +43,49 @@ class FieldOverwriteSingleTagboxNormalizer implements DenormalizerInterface, Nor
         }
         if (\array_key_exists('id', $data) && $data['id'] !== null) {
             $object->setId($data['id']);
+            unset($data['id']);
         }
         elseif (\array_key_exists('id', $data) && $data['id'] === null) {
             $object->setId(null);
         }
         if (\array_key_exists('required', $data)) {
             $object->setRequired($data['required']);
+            unset($data['required']);
         }
         if (\array_key_exists('overwriteRequired', $data)) {
             $object->setOverwriteRequired($data['overwriteRequired']);
+            unset($data['overwriteRequired']);
         }
         if (\array_key_exists('kind', $data)) {
             $object->setKind($data['kind']);
+            unset($data['kind']);
         }
         if (\array_key_exists('filter', $data) && $data['filter'] !== null) {
             $object->setFilter($data['filter']);
+            unset($data['filter']);
         }
         elseif (\array_key_exists('filter', $data) && $data['filter'] === null) {
             $object->setFilter(null);
         }
         if (\array_key_exists('overwriteFilter', $data)) {
             $object->setOverwriteFilter($data['overwriteFilter']);
+            unset($data['overwriteFilter']);
         }
         if (\array_key_exists('listItemCreateTemplate', $data) && $data['listItemCreateTemplate'] !== null) {
             $object->setListItemCreateTemplate($data['listItemCreateTemplate']);
+            unset($data['listItemCreateTemplate']);
         }
         elseif (\array_key_exists('listItemCreateTemplate', $data) && $data['listItemCreateTemplate'] === null) {
             $object->setListItemCreateTemplate(null);
         }
         if (\array_key_exists('overwriteListItemCreateTemplate', $data)) {
             $object->setOverwriteListItemCreateTemplate($data['overwriteListItemCreateTemplate']);
+            unset($data['overwriteListItemCreateTemplate']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -99,6 +112,11 @@ class FieldOverwriteSingleTagboxNormalizer implements DenormalizerInterface, Nor
         }
         if (null !== $object->getOverwriteListItemCreateTemplate()) {
             $data['overwriteListItemCreateTemplate'] = $object->getOverwriteListItemCreateTemplate();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

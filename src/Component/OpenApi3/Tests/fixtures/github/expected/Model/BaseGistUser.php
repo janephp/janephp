@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class BaseGistUser
+class BaseGistUser extends \ArrayObject
 {
     /**
      * 

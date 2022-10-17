@@ -2,7 +2,7 @@
 
 namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 
-class RulesResponseMetadata
+class RulesResponseMetadata extends \ArrayObject
 {
     /**
      * 
@@ -13,7 +13,7 @@ class RulesResponseMetadata
     /**
      * 
      *
-     * @var mixed
+     * @var mixed[]
      */
     protected $summary;
     /**
@@ -40,20 +40,20 @@ class RulesResponseMetadata
     /**
      * 
      *
-     * @return mixed
+     * @return mixed[]
      */
-    public function getSummary()
+    public function getSummary() : iterable
     {
         return $this->summary;
     }
     /**
      * 
      *
-     * @param mixed $summary
+     * @param mixed[] $summary
      *
      * @return self
      */
-    public function setSummary($summary) : self
+    public function setSummary(iterable $summary) : self
     {
         $this->summary = $summary;
         return $this;

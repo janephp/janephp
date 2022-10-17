@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class ApiOverview
+class ApiOverview extends \ArrayObject
 {
     /**
      * 

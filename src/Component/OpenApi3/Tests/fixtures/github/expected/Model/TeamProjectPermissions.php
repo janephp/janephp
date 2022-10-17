@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class TeamProjectPermissions
+class TeamProjectPermissions extends \ArrayObject
 {
     /**
      * 

@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class CustomerAliasHeaderMissingException
+class CustomerAliasHeaderMissingException extends \ArrayObject
 {
     /**
      * 

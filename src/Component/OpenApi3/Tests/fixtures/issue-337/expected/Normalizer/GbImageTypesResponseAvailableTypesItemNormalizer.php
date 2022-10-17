@@ -43,12 +43,15 @@ class GbImageTypesResponseAvailableTypesItemNormalizer implements DenormalizerIn
         }
         if (\array_key_exists('name', $data)) {
             $object->setName($data['name']);
+            unset($data['name']);
         }
         if (\array_key_exists('imageType', $data)) {
             $object->setImageType($data['imageType']);
+            unset($data['imageType']);
         }
         if (\array_key_exists('description', $data)) {
             $object->setDescription($data['description']);
+            unset($data['description']);
         }
         if (\array_key_exists('availableFormats', $data)) {
             $values = array();
@@ -56,6 +59,12 @@ class GbImageTypesResponseAvailableTypesItemNormalizer implements DenormalizerIn
                 $values[] = $value;
             }
             $object->setAvailableFormats($values);
+            unset($data['availableFormats']);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
@@ -80,6 +89,11 @@ class GbImageTypesResponseAvailableTypesItemNormalizer implements DenormalizerIn
                 $values[] = $value;
             }
             $data['availableFormats'] = $values;
+        }
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
+            }
         }
         return $data;
     }

@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class ScimV2OrganizationsOrgUsersPostBodyEmailsItem
+class ScimV2OrganizationsOrgUsersPostBodyEmailsItem extends \ArrayObject
 {
     /**
      * 

@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoReleasesPostBody
+class ReposOwnerRepoReleasesPostBody extends \ArrayObject
 {
     /**
      * The name of the tag.

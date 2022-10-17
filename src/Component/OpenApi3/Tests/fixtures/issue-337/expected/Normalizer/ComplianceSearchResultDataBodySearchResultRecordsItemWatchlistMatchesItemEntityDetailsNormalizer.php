@@ -47,6 +47,7 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemE
                 $values[] = $this->denormalizer->denormalize($value, 'CreditSafe\\API\\Model\\ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemEntityDetailsAdditionalInfoItem', 'json', $context);
             }
             $object->setAdditionalInfo($values);
+            unset($data['additionalInfo']);
         }
         if (\array_key_exists('addresses', $data)) {
             $values_1 = array();
@@ -54,6 +55,7 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemE
                 $values_1[] = $this->denormalizer->denormalize($value_1, 'CreditSafe\\API\\Model\\ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemEntityDetailsAddressesItem', 'json', $context);
             }
             $object->setAddresses($values_1);
+            unset($data['addresses']);
         }
         if (\array_key_exists('akAs', $data)) {
             $values_2 = array();
@@ -61,15 +63,19 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemE
                 $values_2[] = $this->denormalizer->denormalize($value_2, 'CreditSafe\\API\\Model\\ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemEntityDetailsAkAsItem', 'json', $context);
             }
             $object->setAkAs($values_2);
+            unset($data['akAs']);
         }
         if (\array_key_exists('comments', $data)) {
             $object->setComments($data['comments']);
+            unset($data['comments']);
         }
         if (\array_key_exists('dateListed', $data)) {
             $object->setDateListed($data['dateListed']);
+            unset($data['dateListed']);
         }
         if (\array_key_exists('entityType', $data)) {
             $object->setEntityType($data['entityType']);
+            unset($data['entityType']);
         }
         if (\array_key_exists('iDs', $data)) {
             $values_3 = array();
@@ -77,15 +83,24 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemE
                 $values_3[] = $this->denormalizer->denormalize($value_3, 'CreditSafe\\API\\Model\\ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemEntityDetailsIDsItem', 'json', $context);
             }
             $object->setIDs($values_3);
+            unset($data['iDs']);
         }
         if (\array_key_exists('listReferenceNumber', $data)) {
             $object->setListReferenceNumber($data['listReferenceNumber']);
+            unset($data['listReferenceNumber']);
         }
         if (\array_key_exists('name', $data)) {
             $object->setName($this->denormalizer->denormalize($data['name'], 'CreditSafe\\API\\Model\\ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemEntityDetailsName', 'json', $context));
+            unset($data['name']);
         }
         if (\array_key_exists('reasonListed', $data)) {
             $object->setReasonListed($data['reasonListed']);
+            unset($data['reasonListed']);
+        }
+        foreach ($data as $key => $value_4) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_4;
+            }
         }
         return $object;
     }
@@ -140,6 +155,11 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemE
         }
         if (null !== $object->getReasonListed()) {
             $data['reasonListed'] = $object->getReasonListed();
+        }
+        foreach ($object as $key => $value_4) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_4;
+            }
         }
         return $data;
     }

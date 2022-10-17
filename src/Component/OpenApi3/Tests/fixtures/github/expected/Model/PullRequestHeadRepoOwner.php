@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class PullRequestHeadRepoOwner
+class PullRequestHeadRepoOwner extends \ArrayObject
 {
     /**
      * 

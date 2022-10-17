@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class ProjectsColumnsCardsCardIdPatchBody
+class ProjectsColumnsCardsCardIdPatchBody extends \ArrayObject
 {
     /**
      * The project card's note

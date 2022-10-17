@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class StargazerUser
+class StargazerUser extends \ArrayObject
 {
     /**
      * 

@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class BranchProtectionRequiredStatusChecks
+class BranchProtectionRequiredStatusChecks extends \ArrayObject
 {
     /**
      * 

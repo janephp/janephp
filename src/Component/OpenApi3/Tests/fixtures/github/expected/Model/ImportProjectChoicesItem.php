@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class ImportProjectChoicesItem
+class ImportProjectChoicesItem extends \ArrayObject
 {
     /**
      * 

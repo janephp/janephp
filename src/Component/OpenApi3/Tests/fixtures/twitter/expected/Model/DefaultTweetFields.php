@@ -2,7 +2,7 @@
 
 namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 
-class DefaultTweetFields
+class DefaultTweetFields extends \ArrayObject
 {
     /**
      * The location tagged on the Tweet, if the user provided one.

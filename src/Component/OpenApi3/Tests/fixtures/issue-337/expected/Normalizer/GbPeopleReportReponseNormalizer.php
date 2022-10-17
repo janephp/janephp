@@ -43,24 +43,36 @@ class GbPeopleReportReponseNormalizer implements DenormalizerInterface, Normaliz
         }
         if (\array_key_exists('correlationId', $data)) {
             $object->setCorrelationId($data['correlationId']);
+            unset($data['correlationId']);
         }
         if (\array_key_exists('orderId', $data)) {
             $object->setOrderId($data['orderId']);
+            unset($data['orderId']);
         }
         if (\array_key_exists('directorId', $data)) {
             $object->setDirectorId($data['directorId']);
+            unset($data['directorId']);
         }
         if (\array_key_exists('dateOfOrder', $data)) {
             $object->setDateOfOrder($data['dateOfOrder']);
+            unset($data['dateOfOrder']);
         }
         if (\array_key_exists('language', $data)) {
             $object->setLanguage($data['language']);
+            unset($data['language']);
         }
         if (\array_key_exists('userId', $data)) {
             $object->setUserId($data['userId']);
+            unset($data['userId']);
         }
         if (\array_key_exists('report', $data)) {
             $object->setReport($this->denormalizer->denormalize($data['report'], 'CreditSafe\\API\\Model\\GbPeopleReportReponseReport', 'json', $context));
+            unset($data['report']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -90,6 +102,11 @@ class GbPeopleReportReponseNormalizer implements DenormalizerInterface, Normaliz
         }
         if (null !== $object->getReport()) {
             $data['report'] = $this->normalizer->normalize($object->getReport(), 'json', $context);
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

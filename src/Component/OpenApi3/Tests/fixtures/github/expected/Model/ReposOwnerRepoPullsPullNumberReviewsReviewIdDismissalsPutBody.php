@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBody
+class ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBody extends \ArrayObject
 {
     /**
      * The message for the pull request review dismissal

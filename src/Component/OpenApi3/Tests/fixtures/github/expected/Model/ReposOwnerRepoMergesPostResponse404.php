@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoMergesPostResponse404
+class ReposOwnerRepoMergesPostResponse404 extends \ArrayObject
 {
     /**
      * 

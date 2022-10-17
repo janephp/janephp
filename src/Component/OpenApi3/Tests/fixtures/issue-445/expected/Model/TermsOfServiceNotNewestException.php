@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class TermsOfServiceNotNewestException
+class TermsOfServiceNotNewestException extends \ArrayObject
 {
     /**
      * 

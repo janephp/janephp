@@ -43,9 +43,16 @@ class FooNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
         }
         if (\array_key_exists('email', $data)) {
             $object->setEmail($data['email']);
+            unset($data['email']);
         }
         if (\array_key_exists('bar', $data)) {
             $object->setBar($data['bar']);
+            unset($data['bar']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -60,6 +67,11 @@ class FooNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
         }
         if (null !== $object->getBar()) {
             $data['bar'] = $object->getBar();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

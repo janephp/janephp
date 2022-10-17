@@ -47,9 +47,16 @@ class NotificationsPutBodyNormalizer implements DenormalizerInterface, Normalize
         }
         if (\array_key_exists('last_read_at', $data)) {
             $object->setLastReadAt(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['last_read_at']));
+            unset($data['last_read_at']);
         }
         if (\array_key_exists('read', $data)) {
             $object->setRead($data['read']);
+            unset($data['read']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -64,6 +71,11 @@ class NotificationsPutBodyNormalizer implements DenormalizerInterface, Normalize
         }
         if (null !== $object->getRead()) {
             $data['read'] = $object->getRead();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\NotificationsPutBodyConstraint());

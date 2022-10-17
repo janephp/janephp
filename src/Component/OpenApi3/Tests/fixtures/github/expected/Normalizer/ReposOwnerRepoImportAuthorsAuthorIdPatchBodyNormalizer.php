@@ -47,12 +47,20 @@ class ReposOwnerRepoImportAuthorsAuthorIdPatchBodyNormalizer implements Denormal
         }
         if (\array_key_exists('email', $data)) {
             $object->setEmail($data['email']);
+            unset($data['email']);
         }
         if (\array_key_exists('name', $data)) {
             $object->setName($data['name']);
+            unset($data['name']);
         }
         if (\array_key_exists('remote_id', $data)) {
             $object->setRemoteId($data['remote_id']);
+            unset($data['remote_id']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -70,6 +78,11 @@ class ReposOwnerRepoImportAuthorsAuthorIdPatchBodyNormalizer implements Denormal
         }
         if (null !== $object->getRemoteId()) {
             $data['remote_id'] = $object->getRemoteId();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ReposOwnerRepoImportAuthorsAuthorIdPatchBodyConstraint());

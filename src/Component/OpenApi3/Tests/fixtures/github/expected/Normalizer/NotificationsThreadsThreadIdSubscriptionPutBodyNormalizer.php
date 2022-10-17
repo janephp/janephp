@@ -47,6 +47,12 @@ class NotificationsThreadsThreadIdSubscriptionPutBodyNormalizer implements Denor
         }
         if (\array_key_exists('ignored', $data)) {
             $object->setIgnored($data['ignored']);
+            unset($data['ignored']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -58,6 +64,11 @@ class NotificationsThreadsThreadIdSubscriptionPutBodyNormalizer implements Denor
         $data = array();
         if (null !== $object->getIgnored()) {
             $data['ignored'] = $object->getIgnored();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\NotificationsThreadsThreadIdSubscriptionPutBodyConstraint());

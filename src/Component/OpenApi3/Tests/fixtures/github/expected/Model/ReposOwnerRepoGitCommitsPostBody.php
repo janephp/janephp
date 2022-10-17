@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoGitCommitsPostBody
+class ReposOwnerRepoGitCommitsPostBody extends \ArrayObject
 {
     /**
      * The commit message

@@ -43,54 +43,67 @@ class FieldSingleRelationNormalizer implements DenormalizerInterface, Normalizer
         }
         if (\array_key_exists('id', $data)) {
             $object->setId($data['id']);
+            unset($data['id']);
         }
         if (\array_key_exists('indexId', $data) && $data['indexId'] !== null) {
             $object->setIndexId($data['indexId']);
+            unset($data['indexId']);
         }
         elseif (\array_key_exists('indexId', $data) && $data['indexId'] === null) {
             $object->setIndexId(null);
         }
         if (\array_key_exists('fieldNamespace', $data) && $data['fieldNamespace'] !== null) {
             $object->setFieldNamespace($data['fieldNamespace']);
+            unset($data['fieldNamespace']);
         }
         elseif (\array_key_exists('fieldNamespace', $data) && $data['fieldNamespace'] === null) {
             $object->setFieldNamespace(null);
         }
         if (\array_key_exists('names', $data) && $data['names'] !== null) {
             $object->setNames($data['names']);
+            unset($data['names']);
         }
         elseif (\array_key_exists('names', $data) && $data['names'] === null) {
             $object->setNames(null);
         }
         if (\array_key_exists('descriptions', $data) && $data['descriptions'] !== null) {
             $object->setDescriptions($data['descriptions']);
+            unset($data['descriptions']);
         }
         elseif (\array_key_exists('descriptions', $data) && $data['descriptions'] === null) {
             $object->setDescriptions(null);
         }
         if (\array_key_exists('required', $data)) {
             $object->setRequired($data['required']);
+            unset($data['required']);
         }
         if (\array_key_exists('fixed', $data)) {
             $object->setFixed($data['fixed']);
+            unset($data['fixed']);
         }
         if (\array_key_exists('index', $data)) {
             $object->setIndex($data['index']);
+            unset($data['index']);
         }
         if (\array_key_exists('simpleSearch', $data)) {
             $object->setSimpleSearch($data['simpleSearch']);
+            unset($data['simpleSearch']);
         }
         if (\array_key_exists('sortable', $data)) {
             $object->setSortable($data['sortable']);
+            unset($data['sortable']);
         }
         if (\array_key_exists('kind', $data)) {
             $object->setKind($data['kind']);
+            unset($data['kind']);
         }
         if (\array_key_exists('schemaId', $data)) {
             $object->setSchemaId($data['schemaId']);
+            unset($data['schemaId']);
         }
         if (\array_key_exists('schemaIndexingInfo', $data) && $data['schemaIndexingInfo'] !== null) {
             $object->setSchemaIndexingInfo($data['schemaIndexingInfo']);
+            unset($data['schemaIndexingInfo']);
         }
         elseif (\array_key_exists('schemaIndexingInfo', $data) && $data['schemaIndexingInfo'] === null) {
             $object->setSchemaIndexingInfo(null);
@@ -101,6 +114,12 @@ class FieldSingleRelationNormalizer implements DenormalizerInterface, Normalizer
                 $values[] = $this->denormalizer->denormalize($value, 'PicturePark\\API\\Model\\RelationType', 'json', $context);
             }
             $object->setRelationTypes($values);
+            unset($data['relationTypes']);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
@@ -138,6 +157,11 @@ class FieldSingleRelationNormalizer implements DenormalizerInterface, Normalizer
             $values[] = $this->normalizer->normalize($value, 'json', $context);
         }
         $data['relationTypes'] = $values;
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
+            }
+        }
         return $data;
     }
 }

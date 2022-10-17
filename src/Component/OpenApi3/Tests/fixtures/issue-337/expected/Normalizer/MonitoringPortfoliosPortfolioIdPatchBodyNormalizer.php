@@ -43,6 +43,7 @@ class MonitoringPortfoliosPortfolioIdPatchBodyNormalizer implements Denormalizer
         }
         if (\array_key_exists('name', $data)) {
             $object->setName($data['name']);
+            unset($data['name']);
         }
         if (\array_key_exists('emails', $data)) {
             $values = array();
@@ -50,12 +51,20 @@ class MonitoringPortfoliosPortfolioIdPatchBodyNormalizer implements Denormalizer
                 $values[] = $this->denormalizer->denormalize($value, 'CreditSafe\\API\\Model\\MonitoringPortfoliosPortfolioIdPatchBodyEmailsItem', 'json', $context);
             }
             $object->setEmails($values);
+            unset($data['emails']);
         }
         if (\array_key_exists('emailLanguage', $data)) {
             $object->setEmailLanguage($data['emailLanguage']);
+            unset($data['emailLanguage']);
         }
         if (\array_key_exists('emailSubject', $data)) {
             $object->setEmailSubject($data['emailSubject']);
+            unset($data['emailSubject']);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
@@ -80,6 +89,11 @@ class MonitoringPortfoliosPortfolioIdPatchBodyNormalizer implements Denormalizer
         }
         if (null !== $object->getEmailSubject()) {
             $data['emailSubject'] = $object->getEmailSubject();
+        }
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
+            }
         }
         return $data;
     }

@@ -43,54 +43,70 @@ class LiveStreamMessageNormalizer implements DenormalizerInterface, NormalizerIn
         }
         if (\array_key_exists('id', $data) && $data['id'] !== null) {
             $object->setId($data['id']);
+            unset($data['id']);
         }
         elseif (\array_key_exists('id', $data) && $data['id'] === null) {
             $object->setId(null);
         }
         if (\array_key_exists('retries', $data)) {
             $object->setRetries($data['retries']);
+            unset($data['retries']);
         }
         if (\array_key_exists('priority', $data)) {
             $object->setPriority($data['priority']);
+            unset($data['priority']);
         }
         if (\array_key_exists('deduplicate', $data)) {
             $object->setDeduplicate($data['deduplicate']);
+            unset($data['deduplicate']);
         }
         if (\array_key_exists('kind', $data)) {
             $object->setKind($data['kind']);
+            unset($data['kind']);
         }
         if (\array_key_exists('customerId', $data) && $data['customerId'] !== null) {
             $object->setCustomerId($data['customerId']);
+            unset($data['customerId']);
         }
         elseif (\array_key_exists('customerId', $data) && $data['customerId'] === null) {
             $object->setCustomerId(null);
         }
         if (\array_key_exists('customerAlias', $data) && $data['customerAlias'] !== null) {
             $object->setCustomerAlias($data['customerAlias']);
+            unset($data['customerAlias']);
         }
         elseif (\array_key_exists('customerAlias', $data) && $data['customerAlias'] === null) {
             $object->setCustomerAlias(null);
         }
         if (\array_key_exists('timestamp', $data)) {
             $object->setTimestamp(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['timestamp']));
+            unset($data['timestamp']);
         }
         if (\array_key_exists('scope', $data) && $data['scope'] !== null) {
             $object->setScope($data['scope']);
+            unset($data['scope']);
         }
         elseif (\array_key_exists('scope', $data) && $data['scope'] === null) {
             $object->setScope(null);
         }
         if (\array_key_exists('documentChange', $data) && $data['documentChange'] !== null) {
             $object->setDocumentChange($data['documentChange']);
+            unset($data['documentChange']);
         }
         elseif (\array_key_exists('documentChange', $data) && $data['documentChange'] === null) {
             $object->setDocumentChange(null);
         }
         if (\array_key_exists('applicationEvent', $data) && $data['applicationEvent'] !== null) {
             $object->setApplicationEvent($data['applicationEvent']);
+            unset($data['applicationEvent']);
         }
         elseif (\array_key_exists('applicationEvent', $data) && $data['applicationEvent'] === null) {
             $object->setApplicationEvent(null);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -124,6 +140,11 @@ class LiveStreamMessageNormalizer implements DenormalizerInterface, NormalizerIn
         }
         if (null !== $object->getApplicationEvent()) {
             $data['applicationEvent'] = $object->getApplicationEvent();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

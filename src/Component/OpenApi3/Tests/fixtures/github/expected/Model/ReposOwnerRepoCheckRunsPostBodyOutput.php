@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoCheckRunsPostBodyOutput
+class ReposOwnerRepoCheckRunsPostBodyOutput extends \ArrayObject
 {
     /**
      * The title of the check run.

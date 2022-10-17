@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoGitTagsPostBodyTagger
+class ReposOwnerRepoGitTagsPostBodyTagger extends \ArrayObject
 {
     /**
      * The name of the author of the tag

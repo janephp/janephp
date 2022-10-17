@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class AddMetadataLanguageTimeoutException
+class AddMetadataLanguageTimeoutException extends \ArrayObject
 {
     /**
      * 

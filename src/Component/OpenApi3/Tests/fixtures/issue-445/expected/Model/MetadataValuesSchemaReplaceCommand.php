@@ -7,26 +7,26 @@ class MetadataValuesSchemaReplaceCommand extends MetadataValuesChangeCommandBase
     /**
      * An object containing the metadata values for the schema. The existing dictionary will be entirely overwritten.
      *
-     * @var mixed
+     * @var mixed[]
      */
     protected $value;
     /**
      * An object containing the metadata values for the schema. The existing dictionary will be entirely overwritten.
      *
-     * @return mixed
+     * @return mixed[]
      */
-    public function getValue()
+    public function getValue() : iterable
     {
         return $this->value;
     }
     /**
      * An object containing the metadata values for the schema. The existing dictionary will be entirely overwritten.
      *
-     * @param mixed $value
+     * @param mixed[] $value
      *
      * @return self
      */
-    public function setValue($value) : self
+    public function setValue(iterable $value) : self
     {
         $this->value = $value;
         return $this;

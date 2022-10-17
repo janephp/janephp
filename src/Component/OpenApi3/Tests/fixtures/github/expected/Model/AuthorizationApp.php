@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class AuthorizationApp
+class AuthorizationApp extends \ArrayObject
 {
     /**
      * 

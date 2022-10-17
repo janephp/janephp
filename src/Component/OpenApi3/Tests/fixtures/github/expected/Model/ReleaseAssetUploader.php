@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class ReleaseAssetUploader
+class ReleaseAssetUploader extends \ArrayObject
 {
     /**
      * 

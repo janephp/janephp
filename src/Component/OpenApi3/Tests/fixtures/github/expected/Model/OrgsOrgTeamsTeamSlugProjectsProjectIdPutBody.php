@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class OrgsOrgTeamsTeamSlugProjectsProjectIdPutBody
+class OrgsOrgTeamsTeamSlugProjectsProjectIdPutBody extends \ArrayObject
 {
     /**
     * The permission to grant to the team for this project. Can be one of:  

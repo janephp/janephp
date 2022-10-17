@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class CommunityProfileFilesLicense
+class CommunityProfileFilesLicense extends \ArrayObject
 {
     /**
      * 

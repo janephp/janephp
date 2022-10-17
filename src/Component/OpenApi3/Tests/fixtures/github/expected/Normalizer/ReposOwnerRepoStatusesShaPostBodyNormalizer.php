@@ -47,15 +47,24 @@ class ReposOwnerRepoStatusesShaPostBodyNormalizer implements DenormalizerInterfa
         }
         if (\array_key_exists('state', $data)) {
             $object->setState($data['state']);
+            unset($data['state']);
         }
         if (\array_key_exists('target_url', $data)) {
             $object->setTargetUrl($data['target_url']);
+            unset($data['target_url']);
         }
         if (\array_key_exists('description', $data)) {
             $object->setDescription($data['description']);
+            unset($data['description']);
         }
         if (\array_key_exists('context', $data)) {
             $object->setContext($data['context']);
+            unset($data['context']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -74,6 +83,11 @@ class ReposOwnerRepoStatusesShaPostBodyNormalizer implements DenormalizerInterfa
         }
         if (null !== $object->getContext()) {
             $data['context'] = $object->getContext();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ReposOwnerRepoStatusesShaPostBodyConstraint());

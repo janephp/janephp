@@ -2,6 +2,6 @@
 
 namespace CreditSafe\API\Model;
 
-class CompanySearchSuccessResultCompaniesItemTradingNames
+class CompanySearchSuccessResultCompaniesItemTradingNames extends \ArrayObject
 {
 }

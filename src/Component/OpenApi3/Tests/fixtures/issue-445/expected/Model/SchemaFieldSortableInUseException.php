@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class SchemaFieldSortableInUseException
+class SchemaFieldSortableInUseException extends \ArrayObject
 {
     /**
      * 

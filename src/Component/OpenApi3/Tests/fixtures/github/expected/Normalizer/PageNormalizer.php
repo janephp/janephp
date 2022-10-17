@@ -47,27 +47,38 @@ class PageNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         }
         if (\array_key_exists('url', $data)) {
             $object->setUrl($data['url']);
+            unset($data['url']);
         }
         if (\array_key_exists('status', $data) && $data['status'] !== null) {
             $object->setStatus($data['status']);
+            unset($data['status']);
         }
         elseif (\array_key_exists('status', $data) && $data['status'] === null) {
             $object->setStatus(null);
         }
         if (\array_key_exists('cname', $data) && $data['cname'] !== null) {
             $object->setCname($data['cname']);
+            unset($data['cname']);
         }
         elseif (\array_key_exists('cname', $data) && $data['cname'] === null) {
             $object->setCname(null);
         }
         if (\array_key_exists('custom_404', $data)) {
             $object->setCustom404($data['custom_404']);
+            unset($data['custom_404']);
         }
         if (\array_key_exists('html_url', $data)) {
             $object->setHtmlUrl($data['html_url']);
+            unset($data['html_url']);
         }
         if (\array_key_exists('source', $data)) {
             $object->setSource($this->denormalizer->denormalize($data['source'], 'Github\\Model\\PagesSourceHash', 'json', $context));
+            unset($data['source']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -86,6 +97,11 @@ class PageNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         }
         if (null !== $object->getSource()) {
             $data['source'] = $this->normalizer->normalize($object->getSource(), 'json', $context);
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\PageConstraint());

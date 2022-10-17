@@ -43,15 +43,23 @@ class BusinessProcessCancellationRequestedEventNormalizer implements Denormalize
         }
         if (\array_key_exists('timestamp', $data)) {
             $object->setTimestamp(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['timestamp']));
+            unset($data['timestamp']);
         }
         if (\array_key_exists('kind', $data)) {
             $object->setKind($data['kind']);
+            unset($data['kind']);
         }
         if (\array_key_exists('businessProcessId', $data) && $data['businessProcessId'] !== null) {
             $object->setBusinessProcessId($data['businessProcessId']);
+            unset($data['businessProcessId']);
         }
         elseif (\array_key_exists('businessProcessId', $data) && $data['businessProcessId'] === null) {
             $object->setBusinessProcessId(null);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -65,6 +73,11 @@ class BusinessProcessCancellationRequestedEventNormalizer implements Denormalize
         $data['kind'] = $object->getKind();
         if (null !== $object->getBusinessProcessId()) {
             $data['businessProcessId'] = $object->getBusinessProcessId();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class SchemaFieldInvalidBoostException
+class SchemaFieldInvalidBoostException extends \ArrayObject
 {
     /**
      * 

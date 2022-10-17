@@ -47,54 +47,76 @@ class UserReposPostBodyNormalizer implements DenormalizerInterface, NormalizerIn
         }
         if (\array_key_exists('name', $data)) {
             $object->setName($data['name']);
+            unset($data['name']);
         }
         if (\array_key_exists('description', $data)) {
             $object->setDescription($data['description']);
+            unset($data['description']);
         }
         if (\array_key_exists('homepage', $data)) {
             $object->setHomepage($data['homepage']);
+            unset($data['homepage']);
         }
         if (\array_key_exists('private', $data)) {
             $object->setPrivate($data['private']);
+            unset($data['private']);
         }
         if (\array_key_exists('has_issues', $data)) {
             $object->setHasIssues($data['has_issues']);
+            unset($data['has_issues']);
         }
         if (\array_key_exists('has_projects', $data)) {
             $object->setHasProjects($data['has_projects']);
+            unset($data['has_projects']);
         }
         if (\array_key_exists('has_wiki', $data)) {
             $object->setHasWiki($data['has_wiki']);
+            unset($data['has_wiki']);
         }
         if (\array_key_exists('team_id', $data)) {
             $object->setTeamId($data['team_id']);
+            unset($data['team_id']);
         }
         if (\array_key_exists('auto_init', $data)) {
             $object->setAutoInit($data['auto_init']);
+            unset($data['auto_init']);
         }
         if (\array_key_exists('gitignore_template', $data)) {
             $object->setGitignoreTemplate($data['gitignore_template']);
+            unset($data['gitignore_template']);
         }
         if (\array_key_exists('license_template', $data)) {
             $object->setLicenseTemplate($data['license_template']);
+            unset($data['license_template']);
         }
         if (\array_key_exists('allow_squash_merge', $data)) {
             $object->setAllowSquashMerge($data['allow_squash_merge']);
+            unset($data['allow_squash_merge']);
         }
         if (\array_key_exists('allow_merge_commit', $data)) {
             $object->setAllowMergeCommit($data['allow_merge_commit']);
+            unset($data['allow_merge_commit']);
         }
         if (\array_key_exists('allow_rebase_merge', $data)) {
             $object->setAllowRebaseMerge($data['allow_rebase_merge']);
+            unset($data['allow_rebase_merge']);
         }
         if (\array_key_exists('delete_branch_on_merge', $data)) {
             $object->setDeleteBranchOnMerge($data['delete_branch_on_merge']);
+            unset($data['delete_branch_on_merge']);
         }
         if (\array_key_exists('has_downloads', $data)) {
             $object->setHasDownloads($data['has_downloads']);
+            unset($data['has_downloads']);
         }
         if (\array_key_exists('is_template', $data)) {
             $object->setIsTemplate($data['is_template']);
+            unset($data['is_template']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -152,6 +174,11 @@ class UserReposPostBodyNormalizer implements DenormalizerInterface, NormalizerIn
         }
         if (null !== $object->getIsTemplate()) {
             $data['is_template'] = $object->getIsTemplate();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\UserReposPostBodyConstraint());

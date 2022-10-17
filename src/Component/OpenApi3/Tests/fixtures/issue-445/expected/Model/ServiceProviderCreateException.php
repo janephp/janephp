@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class ServiceProviderCreateException
+class ServiceProviderCreateException extends \ArrayObject
 {
     /**
      * 

@@ -43,6 +43,7 @@ class TweetWithheldNormalizer implements DenormalizerInterface, NormalizerInterf
         }
         if (\array_key_exists('copyright', $data)) {
             $object->setCopyright($data['copyright']);
+            unset($data['copyright']);
         }
         if (\array_key_exists('country_codes', $data)) {
             $values = array();
@@ -50,9 +51,16 @@ class TweetWithheldNormalizer implements DenormalizerInterface, NormalizerInterf
                 $values[] = $value;
             }
             $object->setCountryCodes($values);
+            unset($data['country_codes']);
         }
         if (\array_key_exists('scope', $data)) {
             $object->setScope($data['scope']);
+            unset($data['scope']);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
@@ -70,6 +78,11 @@ class TweetWithheldNormalizer implements DenormalizerInterface, NormalizerInterf
         $data['country_codes'] = $values;
         if (null !== $object->getScope()) {
             $data['scope'] = $object->getScope();
+        }
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
+            }
         }
         return $data;
     }

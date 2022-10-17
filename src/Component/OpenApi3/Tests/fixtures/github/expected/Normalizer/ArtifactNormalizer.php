@@ -47,39 +47,54 @@ class ArtifactNormalizer implements DenormalizerInterface, NormalizerInterface, 
         }
         if (\array_key_exists('id', $data)) {
             $object->setId($data['id']);
+            unset($data['id']);
         }
         if (\array_key_exists('node_id', $data)) {
             $object->setNodeId($data['node_id']);
+            unset($data['node_id']);
         }
         if (\array_key_exists('name', $data)) {
             $object->setName($data['name']);
+            unset($data['name']);
         }
         if (\array_key_exists('size_in_bytes', $data)) {
             $object->setSizeInBytes($data['size_in_bytes']);
+            unset($data['size_in_bytes']);
         }
         if (\array_key_exists('url', $data)) {
             $object->setUrl($data['url']);
+            unset($data['url']);
         }
         if (\array_key_exists('archive_download_url', $data)) {
             $object->setArchiveDownloadUrl($data['archive_download_url']);
+            unset($data['archive_download_url']);
         }
         if (\array_key_exists('expired', $data)) {
             $object->setExpired($data['expired']);
+            unset($data['expired']);
         }
         if (\array_key_exists('created_at', $data) && $data['created_at'] !== null) {
             $object->setCreatedAt(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['created_at']));
+            unset($data['created_at']);
         }
         elseif (\array_key_exists('created_at', $data) && $data['created_at'] === null) {
             $object->setCreatedAt(null);
         }
         if (\array_key_exists('expires_at', $data)) {
             $object->setExpiresAt($data['expires_at']);
+            unset($data['expires_at']);
         }
         if (\array_key_exists('updated_at', $data) && $data['updated_at'] !== null) {
             $object->setUpdatedAt(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['updated_at']));
+            unset($data['updated_at']);
         }
         elseif (\array_key_exists('updated_at', $data) && $data['updated_at'] === null) {
             $object->setUpdatedAt(null);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -99,6 +114,11 @@ class ArtifactNormalizer implements DenormalizerInterface, NormalizerInterface, 
         $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
         $data['expires_at'] = $object->getExpiresAt();
         $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ArtifactConstraint());
             $context['skip_validation'] = true;

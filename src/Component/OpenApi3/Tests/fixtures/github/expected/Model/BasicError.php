@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class BasicError
+class BasicError extends \ArrayObject
 {
     /**
      * 

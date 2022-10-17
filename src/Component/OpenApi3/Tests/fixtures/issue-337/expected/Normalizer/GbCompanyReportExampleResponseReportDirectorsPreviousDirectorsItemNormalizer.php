@@ -43,15 +43,19 @@ class GbCompanyReportExampleResponseReportDirectorsPreviousDirectorsItemNormaliz
         }
         if (\array_key_exists('id', $data)) {
             $object->setId($data['id']);
+            unset($data['id']);
         }
         if (\array_key_exists('name', $data)) {
             $object->setName($data['name']);
+            unset($data['name']);
         }
         if (\array_key_exists('gender', $data)) {
             $object->setGender($data['gender']);
+            unset($data['gender']);
         }
         if (\array_key_exists('directorType', $data)) {
             $object->setDirectorType($data['directorType']);
+            unset($data['directorType']);
         }
         if (\array_key_exists('positions', $data)) {
             $values = array();
@@ -59,6 +63,12 @@ class GbCompanyReportExampleResponseReportDirectorsPreviousDirectorsItemNormaliz
                 $values[] = $value;
             }
             $object->setPositions($values);
+            unset($data['positions']);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
@@ -86,6 +96,11 @@ class GbCompanyReportExampleResponseReportDirectorsPreviousDirectorsItemNormaliz
                 $values[] = $value;
             }
             $data['positions'] = $values;
+        }
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
+            }
         }
         return $data;
     }

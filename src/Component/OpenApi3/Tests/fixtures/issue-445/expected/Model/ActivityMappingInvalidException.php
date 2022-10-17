@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class ActivityMappingInvalidException
+class ActivityMappingInvalidException extends \ArrayObject
 {
     /**
      * 

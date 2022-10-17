@@ -47,93 +47,127 @@ class OrganizationNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         if (\array_key_exists('login', $data)) {
             $object->setLogin($data['login']);
+            unset($data['login']);
         }
         if (\array_key_exists('url', $data)) {
             $object->setUrl($data['url']);
+            unset($data['url']);
         }
         if (\array_key_exists('id', $data)) {
             $object->setId($data['id']);
+            unset($data['id']);
         }
         if (\array_key_exists('node_id', $data)) {
             $object->setNodeId($data['node_id']);
+            unset($data['node_id']);
         }
         if (\array_key_exists('repos_url', $data)) {
             $object->setReposUrl($data['repos_url']);
+            unset($data['repos_url']);
         }
         if (\array_key_exists('events_url', $data)) {
             $object->setEventsUrl($data['events_url']);
+            unset($data['events_url']);
         }
         if (\array_key_exists('hooks_url', $data)) {
             $object->setHooksUrl($data['hooks_url']);
+            unset($data['hooks_url']);
         }
         if (\array_key_exists('issues_url', $data)) {
             $object->setIssuesUrl($data['issues_url']);
+            unset($data['issues_url']);
         }
         if (\array_key_exists('members_url', $data)) {
             $object->setMembersUrl($data['members_url']);
+            unset($data['members_url']);
         }
         if (\array_key_exists('public_members_url', $data)) {
             $object->setPublicMembersUrl($data['public_members_url']);
+            unset($data['public_members_url']);
         }
         if (\array_key_exists('avatar_url', $data)) {
             $object->setAvatarUrl($data['avatar_url']);
+            unset($data['avatar_url']);
         }
         if (\array_key_exists('description', $data) && $data['description'] !== null) {
             $object->setDescription($data['description']);
+            unset($data['description']);
         }
         elseif (\array_key_exists('description', $data) && $data['description'] === null) {
             $object->setDescription(null);
         }
         if (\array_key_exists('blog', $data)) {
             $object->setBlog($data['blog']);
+            unset($data['blog']);
         }
         if (\array_key_exists('html_url', $data)) {
             $object->setHtmlUrl($data['html_url']);
+            unset($data['html_url']);
         }
         if (\array_key_exists('name', $data)) {
             $object->setName($data['name']);
+            unset($data['name']);
         }
         if (\array_key_exists('company', $data)) {
             $object->setCompany($data['company']);
+            unset($data['company']);
         }
         if (\array_key_exists('location', $data)) {
             $object->setLocation($data['location']);
+            unset($data['location']);
         }
         if (\array_key_exists('email', $data)) {
             $object->setEmail($data['email']);
+            unset($data['email']);
         }
         if (\array_key_exists('has_organization_projects', $data)) {
             $object->setHasOrganizationProjects($data['has_organization_projects']);
+            unset($data['has_organization_projects']);
         }
         if (\array_key_exists('has_repository_projects', $data)) {
             $object->setHasRepositoryProjects($data['has_repository_projects']);
+            unset($data['has_repository_projects']);
         }
         if (\array_key_exists('is_verified', $data)) {
             $object->setIsVerified($data['is_verified']);
+            unset($data['is_verified']);
         }
         if (\array_key_exists('public_repos', $data)) {
             $object->setPublicRepos($data['public_repos']);
+            unset($data['public_repos']);
         }
         if (\array_key_exists('public_gists', $data)) {
             $object->setPublicGists($data['public_gists']);
+            unset($data['public_gists']);
         }
         if (\array_key_exists('followers', $data)) {
             $object->setFollowers($data['followers']);
+            unset($data['followers']);
         }
         if (\array_key_exists('following', $data)) {
             $object->setFollowing($data['following']);
+            unset($data['following']);
         }
         if (\array_key_exists('type', $data)) {
             $object->setType($data['type']);
+            unset($data['type']);
         }
         if (\array_key_exists('created_at', $data)) {
             $object->setCreatedAt(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['created_at']));
+            unset($data['created_at']);
         }
         if (\array_key_exists('updated_at', $data)) {
             $object->setUpdatedAt(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['updated_at']));
+            unset($data['updated_at']);
         }
         if (\array_key_exists('plan', $data)) {
             $object->setPlan($this->denormalizer->denormalize($data['plan'], 'Github\\Model\\OrganizationPlan', 'json', $context));
+            unset($data['plan']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -185,6 +219,11 @@ class OrganizationNormalizer implements DenormalizerInterface, NormalizerInterfa
         $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
         if (null !== $object->getPlan()) {
             $data['plan'] = $this->normalizer->normalize($object->getPlan(), 'json', $context);
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\OrganizationConstraint());

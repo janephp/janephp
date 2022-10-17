@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class CustomerNotAvailableException
+class CustomerNotAvailableException extends \ArrayObject
 {
     /**
      * 

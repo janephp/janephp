@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class RetryException
+class RetryException extends \ArrayObject
 {
     /**
      * 

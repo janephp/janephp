@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoDispatchesPostBody
+class ReposOwnerRepoDispatchesPostBody extends \ArrayObject
 {
     /**
      * **Required:** A custom webhook event name.

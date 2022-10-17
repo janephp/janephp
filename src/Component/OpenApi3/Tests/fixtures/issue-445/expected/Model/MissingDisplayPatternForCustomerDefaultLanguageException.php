@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class MissingDisplayPatternForCustomerDefaultLanguageException
+class MissingDisplayPatternForCustomerDefaultLanguageException extends \ArrayObject
 {
     /**
      * 

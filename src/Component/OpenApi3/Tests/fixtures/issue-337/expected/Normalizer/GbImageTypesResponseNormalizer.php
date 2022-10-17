@@ -43,6 +43,7 @@ class GbImageTypesResponseNormalizer implements DenormalizerInterface, Normalize
         }
         if (\array_key_exists('country', $data)) {
             $object->setCountry($data['country']);
+            unset($data['country']);
         }
         if (\array_key_exists('availableTypes', $data)) {
             $values = array();
@@ -50,6 +51,12 @@ class GbImageTypesResponseNormalizer implements DenormalizerInterface, Normalize
                 $values[] = $this->denormalizer->denormalize($value, 'CreditSafe\\API\\Model\\GbImageTypesResponseAvailableTypesItem', 'json', $context);
             }
             $object->setAvailableTypes($values);
+            unset($data['availableTypes']);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
@@ -68,6 +75,11 @@ class GbImageTypesResponseNormalizer implements DenormalizerInterface, Normalize
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data['availableTypes'] = $values;
+        }
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
+            }
         }
         return $data;
     }

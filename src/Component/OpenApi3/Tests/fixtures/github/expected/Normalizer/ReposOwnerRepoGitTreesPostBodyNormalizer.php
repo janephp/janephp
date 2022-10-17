@@ -51,9 +51,16 @@ class ReposOwnerRepoGitTreesPostBodyNormalizer implements DenormalizerInterface,
                 $values[] = $this->denormalizer->denormalize($value, 'Github\\Model\\ReposOwnerRepoGitTreesPostBodyTreeItem', 'json', $context);
             }
             $object->setTree($values);
+            unset($data['tree']);
         }
         if (\array_key_exists('base_tree', $data)) {
             $object->setBaseTree($data['base_tree']);
+            unset($data['base_tree']);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
@@ -70,6 +77,11 @@ class ReposOwnerRepoGitTreesPostBodyNormalizer implements DenormalizerInterface,
         $data['tree'] = $values;
         if (null !== $object->getBaseTree()) {
             $data['base_tree'] = $object->getBaseTree();
+        }
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ReposOwnerRepoGitTreesPostBodyConstraint());

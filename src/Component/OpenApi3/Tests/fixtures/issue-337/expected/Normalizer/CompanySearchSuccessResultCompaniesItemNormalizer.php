@@ -43,48 +43,68 @@ class CompanySearchSuccessResultCompaniesItemNormalizer implements DenormalizerI
         }
         if (\array_key_exists('id', $data)) {
             $object->setId($data['id']);
+            unset($data['id']);
         }
         if (\array_key_exists('country', $data)) {
             $object->setCountry($data['country']);
+            unset($data['country']);
         }
         if (\array_key_exists('regNo', $data)) {
             $object->setRegNo($data['regNo']);
+            unset($data['regNo']);
         }
         if (\array_key_exists('vatNo', $data)) {
             $object->setVatNo($this->denormalizer->denormalize($data['vatNo'], 'CreditSafe\\API\\Model\\CompanySearchSuccessResultCompaniesItemVatNo', 'json', $context));
+            unset($data['vatNo']);
         }
         if (\array_key_exists('safeNo', $data)) {
             $object->setSafeNo($data['safeNo']);
+            unset($data['safeNo']);
         }
         if (\array_key_exists('name', $data)) {
             $object->setName($data['name']);
+            unset($data['name']);
         }
         if (\array_key_exists('status', $data)) {
             $object->setStatus($data['status']);
+            unset($data['status']);
         }
         if (\array_key_exists('officeType', $data)) {
             $object->setOfficeType($data['officeType']);
+            unset($data['officeType']);
         }
         if (\array_key_exists('type', $data)) {
             $object->setType($data['type']);
+            unset($data['type']);
         }
         if (\array_key_exists('statusDescription', $data)) {
             $object->setStatusDescription($data['statusDescription']);
+            unset($data['statusDescription']);
         }
         if (\array_key_exists('activityCode', $data)) {
             $object->setActivityCode($data['activityCode']);
+            unset($data['activityCode']);
         }
         if (\array_key_exists('tradingNames', $data)) {
             $object->setTradingNames($this->denormalizer->denormalize($data['tradingNames'], 'CreditSafe\\API\\Model\\CompanySearchSuccessResultCompaniesItemTradingNames', 'json', $context));
+            unset($data['tradingNames']);
         }
         if (\array_key_exists('address', $data)) {
             $object->setAddress($this->denormalizer->denormalize($data['address'], 'CreditSafe\\API\\Model\\CompanySearchSuccessResultCompaniesItemAddress', 'json', $context));
+            unset($data['address']);
         }
         if (\array_key_exists('dateOfLatestChange', $data)) {
             $object->setDateOfLatestChange($this->denormalizer->denormalize($data['dateOfLatestChange'], 'CreditSafe\\API\\Model\\CompanySearchSuccessResultCompaniesItemDateOfLatestChange', 'json', $context));
+            unset($data['dateOfLatestChange']);
         }
         if (\array_key_exists('dateOfLatestCAccounts', $data)) {
             $object->setDateOfLatestCAccounts($this->denormalizer->denormalize($data['dateOfLatestCAccounts'], 'CreditSafe\\API\\Model\\CompanySearchSuccessResultCompaniesItemDateOfLatestCAccounts', 'json', $context));
+            unset($data['dateOfLatestCAccounts']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -138,6 +158,11 @@ class CompanySearchSuccessResultCompaniesItemNormalizer implements DenormalizerI
         }
         if (null !== $object->getDateOfLatestCAccounts()) {
             $data['dateOfLatestCAccounts'] = $this->normalizer->normalize($object->getDateOfLatestCAccounts(), 'json', $context);
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

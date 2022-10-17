@@ -46,12 +46,15 @@ class SchemaNormalizer implements DenormalizerInterface, NormalizerInterface, De
         }
         if (\array_key_exists('stringProperty', $data)) {
             $object->setStringProperty($data['stringProperty']);
+            unset($data['stringProperty']);
         }
         if (\array_key_exists('integerProperty', $data)) {
             $object->setIntegerProperty($data['integerProperty']);
+            unset($data['integerProperty']);
         }
         if (\array_key_exists('floatProperty', $data)) {
             $object->setFloatProperty($data['floatProperty']);
+            unset($data['floatProperty']);
         }
         if (\array_key_exists('arrayProperty', $data)) {
             $values = array();
@@ -59,6 +62,7 @@ class SchemaNormalizer implements DenormalizerInterface, NormalizerInterface, De
                 $values[] = $value;
             }
             $object->setArrayProperty($values);
+            unset($data['arrayProperty']);
         }
         if (\array_key_exists('mapProperty', $data)) {
             $values_1 = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
@@ -66,12 +70,20 @@ class SchemaNormalizer implements DenormalizerInterface, NormalizerInterface, De
                 $values_1[$key] = $value_1;
             }
             $object->setMapProperty($values_1);
+            unset($data['mapProperty']);
         }
         if (\array_key_exists('objectProperty', $data)) {
             $object->setObjectProperty($this->denormalizer->denormalize($data['objectProperty'], 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Model\\SchemaObjectProperty', 'json', $context));
+            unset($data['objectProperty']);
         }
         if (\array_key_exists('objectRefProperty', $data)) {
             $object->setObjectRefProperty($this->denormalizer->denormalize($data['objectRefProperty'], 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Model\\Schema', 'json', $context));
+            unset($data['objectRefProperty']);
+        }
+        foreach ($data as $key_1 => $value_2) {
+            if (preg_match('/.*/', (string) $key_1)) {
+                $object[$key_1] = $value_2;
+            }
         }
         return $object;
     }
@@ -109,6 +121,11 @@ class SchemaNormalizer implements DenormalizerInterface, NormalizerInterface, De
         }
         if (null !== $object->getObjectRefProperty()) {
             $data['objectRefProperty'] = $this->normalizer->normalize($object->getObjectRefProperty(), 'json', $context);
+        }
+        foreach ($object as $key_1 => $value_2) {
+            if (preg_match('/.*/', (string) $key_1)) {
+                $data[$key_1] = $value_2;
+            }
         }
         return $data;
     }

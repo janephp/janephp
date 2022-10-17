@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class OrganizationInvitation
+class OrganizationInvitation extends \ArrayObject
 {
     /**
      * 

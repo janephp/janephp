@@ -47,6 +47,7 @@ class OrgsOrgTeamsTeamSlugMembershipsUsernamePutResponse422Normalizer implements
         }
         if (\array_key_exists('message', $data)) {
             $object->setMessage($data['message']);
+            unset($data['message']);
         }
         if (\array_key_exists('errors', $data)) {
             $values = array();
@@ -54,6 +55,12 @@ class OrgsOrgTeamsTeamSlugMembershipsUsernamePutResponse422Normalizer implements
                 $values[] = $this->denormalizer->denormalize($value, 'Github\\Model\\OrgsOrgTeamsTeamSlugMembershipsUsernamePutResponse422ErrorsItem', 'json', $context);
             }
             $object->setErrors($values);
+            unset($data['errors']);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
@@ -72,6 +79,11 @@ class OrgsOrgTeamsTeamSlugMembershipsUsernamePutResponse422Normalizer implements
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data['errors'] = $values;
+        }
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\OrgsOrgTeamsTeamSlugMembershipsUsernamePutResponse422Constraint());

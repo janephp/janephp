@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoTransferPostBody
+class ReposOwnerRepoTransferPostBody extends \ArrayObject
 {
     /**
      * **Required:** The username or organization name the repository will be transferred to.

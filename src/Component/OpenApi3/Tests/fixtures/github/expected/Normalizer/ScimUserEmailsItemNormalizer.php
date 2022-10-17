@@ -47,9 +47,16 @@ class ScimUserEmailsItemNormalizer implements DenormalizerInterface, NormalizerI
         }
         if (\array_key_exists('value', $data)) {
             $object->setValue($data['value']);
+            unset($data['value']);
         }
         if (\array_key_exists('primary', $data)) {
             $object->setPrimary($data['primary']);
+            unset($data['primary']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -62,6 +69,11 @@ class ScimUserEmailsItemNormalizer implements DenormalizerInterface, NormalizerI
         $data['value'] = $object->getValue();
         if (null !== $object->getPrimary()) {
             $data['primary'] = $object->getPrimary();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ScimUserEmailsItemConstraint());

@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class SearchIndexInUseException
+class SearchIndexInUseException extends \ArrayObject
 {
     /**
      * 

@@ -47,15 +47,24 @@ class ScimUserMetaNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         if (\array_key_exists('resourceType', $data)) {
             $object->setResourceType($data['resourceType']);
+            unset($data['resourceType']);
         }
         if (\array_key_exists('created', $data)) {
             $object->setCreated(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['created']));
+            unset($data['created']);
         }
         if (\array_key_exists('lastModified', $data)) {
             $object->setLastModified(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['lastModified']));
+            unset($data['lastModified']);
         }
         if (\array_key_exists('location', $data)) {
             $object->setLocation($data['location']);
+            unset($data['location']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -76,6 +85,11 @@ class ScimUserMetaNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         if (null !== $object->getLocation()) {
             $data['location'] = $object->getLocation();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ScimUserMetaConstraint());

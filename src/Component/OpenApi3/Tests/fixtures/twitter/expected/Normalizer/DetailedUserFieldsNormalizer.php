@@ -43,6 +43,12 @@ class DetailedUserFieldsNormalizer implements DenormalizerInterface, NormalizerI
         }
         if (\array_key_exists('stats', $data)) {
             $object->setStats($this->denormalizer->denormalize($data['stats'], 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Model\\DetailedUserFieldsStats', 'json', $context));
+            unset($data['stats']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -54,6 +60,11 @@ class DetailedUserFieldsNormalizer implements DenormalizerInterface, NormalizerI
         $data = array();
         if (null !== $object->getStats()) {
             $data['stats'] = $this->normalizer->normalize($object->getStats(), 'json', $context);
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

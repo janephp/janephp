@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class NamedCacheConfigurationException
+class NamedCacheConfigurationException extends \ArrayObject
 {
     /**
      * 

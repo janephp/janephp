@@ -7,26 +7,26 @@ class MetadataValuesSchemaUpsertCommand extends MetadataValuesChangeCommandBase
     /**
      * An object containing the metadata values to add / update.
      *
-     * @var mixed
+     * @var mixed[]
      */
     protected $value;
     /**
      * An object containing the metadata values to add / update.
      *
-     * @return mixed
+     * @return mixed[]
      */
-    public function getValue()
+    public function getValue() : iterable
     {
         return $this->value;
     }
     /**
      * An object containing the metadata values to add / update.
      *
-     * @param mixed $value
+     * @param mixed[] $value
      *
      * @return self
      */
-    public function setValue($value) : self
+    public function setValue(iterable $value) : self
     {
         $this->value = $value;
         return $this;

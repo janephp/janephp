@@ -47,48 +47,60 @@ class JobNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
         }
         if (\array_key_exists('id', $data)) {
             $object->setId($data['id']);
+            unset($data['id']);
         }
         if (\array_key_exists('run_id', $data)) {
             $object->setRunId($data['run_id']);
+            unset($data['run_id']);
         }
         if (\array_key_exists('run_url', $data)) {
             $object->setRunUrl($data['run_url']);
+            unset($data['run_url']);
         }
         if (\array_key_exists('node_id', $data)) {
             $object->setNodeId($data['node_id']);
+            unset($data['node_id']);
         }
         if (\array_key_exists('head_sha', $data)) {
             $object->setHeadSha($data['head_sha']);
+            unset($data['head_sha']);
         }
         if (\array_key_exists('url', $data)) {
             $object->setUrl($data['url']);
+            unset($data['url']);
         }
         if (\array_key_exists('html_url', $data) && $data['html_url'] !== null) {
             $object->setHtmlUrl($data['html_url']);
+            unset($data['html_url']);
         }
         elseif (\array_key_exists('html_url', $data) && $data['html_url'] === null) {
             $object->setHtmlUrl(null);
         }
         if (\array_key_exists('status', $data)) {
             $object->setStatus($data['status']);
+            unset($data['status']);
         }
         if (\array_key_exists('conclusion', $data) && $data['conclusion'] !== null) {
             $object->setConclusion($data['conclusion']);
+            unset($data['conclusion']);
         }
         elseif (\array_key_exists('conclusion', $data) && $data['conclusion'] === null) {
             $object->setConclusion(null);
         }
         if (\array_key_exists('started_at', $data)) {
             $object->setStartedAt(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['started_at']));
+            unset($data['started_at']);
         }
         if (\array_key_exists('completed_at', $data) && $data['completed_at'] !== null) {
             $object->setCompletedAt(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['completed_at']));
+            unset($data['completed_at']);
         }
         elseif (\array_key_exists('completed_at', $data) && $data['completed_at'] === null) {
             $object->setCompletedAt(null);
         }
         if (\array_key_exists('name', $data)) {
             $object->setName($data['name']);
+            unset($data['name']);
         }
         if (\array_key_exists('steps', $data)) {
             $values = array();
@@ -96,9 +108,16 @@ class JobNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
                 $values[] = $this->denormalizer->denormalize($value, 'Github\\Model\\JobStepsItem', 'json', $context);
             }
             $object->setSteps($values);
+            unset($data['steps']);
         }
         if (\array_key_exists('check_run_url', $data)) {
             $object->setCheckRunUrl($data['check_run_url']);
+            unset($data['check_run_url']);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
@@ -128,6 +147,11 @@ class JobNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
             $data['steps'] = $values;
         }
         $data['check_run_url'] = $object->getCheckRunUrl();
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
+            }
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\JobConstraint());
             $context['skip_validation'] = true;

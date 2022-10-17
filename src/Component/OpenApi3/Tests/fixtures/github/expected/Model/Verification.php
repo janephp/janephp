@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class Verification
+class Verification extends \ArrayObject
 {
     /**
      * 

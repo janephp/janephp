@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class Label
+class Label extends \ArrayObject
 {
     /**
      * 

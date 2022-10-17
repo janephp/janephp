@@ -49,9 +49,16 @@ class GbCompanyReportExampleResponseReportNegativeInformationCcjSummaryNormalize
         }
         if (\array_key_exists('exactRegistered', $data)) {
             $object->setExactRegistered($data['exactRegistered']);
+            unset($data['exactRegistered']);
         }
         if (\array_key_exists('possibleRegistered', $data)) {
             $object->setPossibleRegistered($data['possibleRegistered']);
+            unset($data['possibleRegistered']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -66,6 +73,11 @@ class GbCompanyReportExampleResponseReportNegativeInformationCcjSummaryNormalize
         }
         if (null !== $object->getPossibleRegistered()) {
             $data['possibleRegistered'] = $object->getPossibleRegistered();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

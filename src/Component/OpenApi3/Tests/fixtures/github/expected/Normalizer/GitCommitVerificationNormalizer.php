@@ -47,21 +47,30 @@ class GitCommitVerificationNormalizer implements DenormalizerInterface, Normaliz
         }
         if (\array_key_exists('verified', $data)) {
             $object->setVerified($data['verified']);
+            unset($data['verified']);
         }
         if (\array_key_exists('reason', $data)) {
             $object->setReason($data['reason']);
+            unset($data['reason']);
         }
         if (\array_key_exists('signature', $data) && $data['signature'] !== null) {
             $object->setSignature($data['signature']);
+            unset($data['signature']);
         }
         elseif (\array_key_exists('signature', $data) && $data['signature'] === null) {
             $object->setSignature(null);
         }
         if (\array_key_exists('payload', $data) && $data['payload'] !== null) {
             $object->setPayload($data['payload']);
+            unset($data['payload']);
         }
         elseif (\array_key_exists('payload', $data) && $data['payload'] === null) {
             $object->setPayload(null);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -82,6 +91,11 @@ class GitCommitVerificationNormalizer implements DenormalizerInterface, Normaliz
         }
         if (null !== $object->getPayload()) {
             $data['payload'] = $object->getPayload();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\GitCommitVerificationConstraint());

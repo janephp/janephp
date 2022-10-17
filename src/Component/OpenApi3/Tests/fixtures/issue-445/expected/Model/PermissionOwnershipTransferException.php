@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class PermissionOwnershipTransferException
+class PermissionOwnershipTransferException extends \ArrayObject
 {
     /**
      * 

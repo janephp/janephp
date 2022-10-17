@@ -43,9 +43,16 @@ class SomethingNormalizer implements DenormalizerInterface, NormalizerInterface,
         }
         if (\array_key_exists('id', $data)) {
             $object->setId($data['id']);
+            unset($data['id']);
         }
         if (\array_key_exists('uuid', $data)) {
             $object->setUuid($this->denormalizer->denormalize($data['uuid'], 'Symfony\\Component\\Uid\\UuidV4', 'json', $context));
+            unset($data['uuid']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -57,6 +64,11 @@ class SomethingNormalizer implements DenormalizerInterface, NormalizerInterface,
         $data = array();
         $data['id'] = $object->getId();
         $data['uuid'] = $this->normalizer->normalize($object->getUuid(), 'json', $context);
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
         return $data;
     }
 }

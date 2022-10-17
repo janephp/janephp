@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class Enterprise
+class Enterprise extends \ArrayObject
 {
     /**
      * A short description of the enterprise.

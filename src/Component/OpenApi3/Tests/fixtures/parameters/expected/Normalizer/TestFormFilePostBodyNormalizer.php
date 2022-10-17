@@ -43,6 +43,12 @@ class TestFormFilePostBodyNormalizer implements DenormalizerInterface, Normalize
         }
         if (\array_key_exists('testFile', $data)) {
             $object->setTestFile($data['testFile']);
+            unset($data['testFile']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -54,6 +60,11 @@ class TestFormFilePostBodyNormalizer implements DenormalizerInterface, Normalize
         $data = array();
         if (null !== $object->getTestFile()) {
             $data['testFile'] = $object->getTestFile();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

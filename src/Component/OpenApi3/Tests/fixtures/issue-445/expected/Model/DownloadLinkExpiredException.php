@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class DownloadLinkExpiredException
+class DownloadLinkExpiredException extends \ArrayObject
 {
     /**
      * 

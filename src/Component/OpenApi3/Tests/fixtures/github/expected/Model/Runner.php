@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class Runner
+class Runner extends \ArrayObject
 {
     /**
      * The id of the runner.

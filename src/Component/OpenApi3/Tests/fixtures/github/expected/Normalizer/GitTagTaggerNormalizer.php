@@ -47,12 +47,20 @@ class GitTagTaggerNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         if (\array_key_exists('date', $data)) {
             $object->setDate($data['date']);
+            unset($data['date']);
         }
         if (\array_key_exists('email', $data)) {
             $object->setEmail($data['email']);
+            unset($data['email']);
         }
         if (\array_key_exists('name', $data)) {
             $object->setName($data['name']);
+            unset($data['name']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -65,6 +73,11 @@ class GitTagTaggerNormalizer implements DenormalizerInterface, NormalizerInterfa
         $data['date'] = $object->getDate();
         $data['email'] = $object->getEmail();
         $data['name'] = $object->getName();
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\GitTagTaggerConstraint());
             $context['skip_validation'] = true;

@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class RelationSelfReferencingException
+class RelationSelfReferencingException extends \ArrayObject
 {
     /**
      * 

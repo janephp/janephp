@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class ShareExpiredException
+class ShareExpiredException extends \ArrayObject
 {
     /**
      * 

@@ -2,7 +2,7 @@
 
 namespace ApiPlatform\Demo\Model;
 
-class ParchmentsGetHaljsonResponse200
+class ParchmentsGetHaljsonResponse200 extends \ArrayObject
 {
     /**
      * 

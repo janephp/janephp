@@ -47,21 +47,32 @@ class TeamsTeamIdTeamSyncGroupMappingsPatchBodyGroupsItemNormalizer implements D
         }
         if (\array_key_exists('group_id', $data)) {
             $object->setGroupId($data['group_id']);
+            unset($data['group_id']);
         }
         if (\array_key_exists('group_name', $data)) {
             $object->setGroupName($data['group_name']);
+            unset($data['group_name']);
         }
         if (\array_key_exists('group_description', $data)) {
             $object->setGroupDescription($data['group_description']);
+            unset($data['group_description']);
         }
         if (\array_key_exists('id', $data)) {
             $object->setId($data['id']);
+            unset($data['id']);
         }
         if (\array_key_exists('name', $data)) {
             $object->setName($data['name']);
+            unset($data['name']);
         }
         if (\array_key_exists('description', $data)) {
             $object->setDescription($data['description']);
+            unset($data['description']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -82,6 +93,11 @@ class TeamsTeamIdTeamSyncGroupMappingsPatchBodyGroupsItemNormalizer implements D
         }
         if (null !== $object->getDescription()) {
             $data['description'] = $object->getDescription();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\TeamsTeamIdTeamSyncGroupMappingsPatchBodyGroupsItemConstraint());

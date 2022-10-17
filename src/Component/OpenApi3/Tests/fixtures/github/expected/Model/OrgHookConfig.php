@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class OrgHookConfig
+class OrgHookConfig extends \ArrayObject
 {
     /**
      * 

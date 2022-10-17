@@ -47,54 +47,74 @@ class DeploymentStatusNormalizer implements DenormalizerInterface, NormalizerInt
         }
         if (\array_key_exists('url', $data)) {
             $object->setUrl($data['url']);
+            unset($data['url']);
         }
         if (\array_key_exists('id', $data)) {
             $object->setId($data['id']);
+            unset($data['id']);
         }
         if (\array_key_exists('node_id', $data)) {
             $object->setNodeId($data['node_id']);
+            unset($data['node_id']);
         }
         if (\array_key_exists('state', $data)) {
             $object->setState($data['state']);
+            unset($data['state']);
         }
         if (\array_key_exists('creator', $data) && $data['creator'] !== null) {
             $object->setCreator($this->denormalizer->denormalize($data['creator'], 'Github\\Model\\DeploymentStatusCreator', 'json', $context));
+            unset($data['creator']);
         }
         elseif (\array_key_exists('creator', $data) && $data['creator'] === null) {
             $object->setCreator(null);
         }
         if (\array_key_exists('description', $data)) {
             $object->setDescription($data['description']);
+            unset($data['description']);
         }
         if (\array_key_exists('environment', $data)) {
             $object->setEnvironment($data['environment']);
+            unset($data['environment']);
         }
         if (\array_key_exists('target_url', $data)) {
             $object->setTargetUrl($data['target_url']);
+            unset($data['target_url']);
         }
         if (\array_key_exists('created_at', $data)) {
             $object->setCreatedAt(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['created_at']));
+            unset($data['created_at']);
         }
         if (\array_key_exists('updated_at', $data)) {
             $object->setUpdatedAt(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['updated_at']));
+            unset($data['updated_at']);
         }
         if (\array_key_exists('deployment_url', $data)) {
             $object->setDeploymentUrl($data['deployment_url']);
+            unset($data['deployment_url']);
         }
         if (\array_key_exists('repository_url', $data)) {
             $object->setRepositoryUrl($data['repository_url']);
+            unset($data['repository_url']);
         }
         if (\array_key_exists('environment_url', $data)) {
             $object->setEnvironmentUrl($data['environment_url']);
+            unset($data['environment_url']);
         }
         if (\array_key_exists('log_url', $data)) {
             $object->setLogUrl($data['log_url']);
+            unset($data['log_url']);
         }
         if (\array_key_exists('performed_via_github_app', $data) && $data['performed_via_github_app'] !== null) {
             $object->setPerformedViaGithubApp($this->denormalizer->denormalize($data['performed_via_github_app'], 'Github\\Model\\DeploymentStatusPerformedViaGithubApp', 'json', $context));
+            unset($data['performed_via_github_app']);
         }
         elseif (\array_key_exists('performed_via_github_app', $data) && $data['performed_via_github_app'] === null) {
             $object->setPerformedViaGithubApp(null);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -126,6 +146,11 @@ class DeploymentStatusNormalizer implements DenormalizerInterface, NormalizerInt
         }
         if (null !== $object->getPerformedViaGithubApp()) {
             $data['performed_via_github_app'] = $this->normalizer->normalize($object->getPerformedViaGithubApp(), 'json', $context);
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\DeploymentStatusConstraint());

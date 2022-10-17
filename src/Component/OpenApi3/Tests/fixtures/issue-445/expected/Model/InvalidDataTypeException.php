@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class InvalidDataTypeException
+class InvalidDataTypeException extends \ArrayObject
 {
     /**
      * 

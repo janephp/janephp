@@ -2,7 +2,7 @@
 
 namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 
-class MessageM70047PostBody
+class MessageM70047PostBody extends \ArrayObject
 {
     /**
      * 

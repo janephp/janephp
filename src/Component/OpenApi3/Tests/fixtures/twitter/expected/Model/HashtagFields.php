@@ -2,7 +2,7 @@
 
 namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 
-class HashtagFields
+class HashtagFields extends \ArrayObject
 {
     /**
      * The text of the Hashtag

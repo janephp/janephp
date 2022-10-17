@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class BusinessRuleNGramTransformationMinWordLengthInvalidException
+class BusinessRuleNGramTransformationMinWordLengthInvalidException extends \ArrayObject
 {
     /**
      * 

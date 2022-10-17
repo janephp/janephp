@@ -47,12 +47,20 @@ class ReposOwnerRepoLabelsPostBodyNormalizer implements DenormalizerInterface, N
         }
         if (\array_key_exists('name', $data)) {
             $object->setName($data['name']);
+            unset($data['name']);
         }
         if (\array_key_exists('color', $data)) {
             $object->setColor($data['color']);
+            unset($data['color']);
         }
         if (\array_key_exists('description', $data)) {
             $object->setDescription($data['description']);
+            unset($data['description']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -68,6 +76,11 @@ class ReposOwnerRepoLabelsPostBodyNormalizer implements DenormalizerInterface, N
         }
         if (null !== $object->getDescription()) {
             $data['description'] = $object->getDescription();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ReposOwnerRepoLabelsPostBodyConstraint());

@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class InvalidArgumentException
+class InvalidArgumentException extends \ArrayObject
 {
     /**
      * 

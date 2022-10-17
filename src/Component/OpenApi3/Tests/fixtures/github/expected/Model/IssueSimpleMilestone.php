@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class IssueSimpleMilestone
+class IssueSimpleMilestone extends \ArrayObject
 {
     /**
      * 

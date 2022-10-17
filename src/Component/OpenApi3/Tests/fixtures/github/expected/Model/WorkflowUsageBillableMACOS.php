@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class WorkflowUsageBillableMACOS
+class WorkflowUsageBillableMACOS extends \ArrayObject
 {
     /**
      * 

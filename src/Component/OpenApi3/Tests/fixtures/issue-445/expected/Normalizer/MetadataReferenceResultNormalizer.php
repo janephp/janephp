@@ -43,6 +43,7 @@ class MetadataReferenceResultNormalizer implements DenormalizerInterface, Normal
         }
         if (\array_key_exists('totalResults', $data)) {
             $object->setTotalResults($data['totalResults']);
+            unset($data['totalResults']);
         }
         if (\array_key_exists('results', $data)) {
             $values = array();
@@ -50,21 +51,30 @@ class MetadataReferenceResultNormalizer implements DenormalizerInterface, Normal
                 $values[] = $this->denormalizer->denormalize($value, 'PicturePark\\API\\Model\\MetadataReference', 'json', $context);
             }
             $object->setResults($values);
+            unset($data['results']);
         }
         if (\array_key_exists('elapsedMilliseconds', $data)) {
             $object->setElapsedMilliseconds($data['elapsedMilliseconds']);
+            unset($data['elapsedMilliseconds']);
         }
         if (\array_key_exists('pageToken', $data) && $data['pageToken'] !== null) {
             $object->setPageToken($data['pageToken']);
+            unset($data['pageToken']);
         }
         elseif (\array_key_exists('pageToken', $data) && $data['pageToken'] === null) {
             $object->setPageToken(null);
         }
         if (\array_key_exists('isReferencedByRestrictedItem', $data) && $data['isReferencedByRestrictedItem'] !== null) {
             $object->setIsReferencedByRestrictedItem($data['isReferencedByRestrictedItem']);
+            unset($data['isReferencedByRestrictedItem']);
         }
         elseif (\array_key_exists('isReferencedByRestrictedItem', $data) && $data['isReferencedByRestrictedItem'] === null) {
             $object->setIsReferencedByRestrictedItem(null);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
@@ -86,6 +96,11 @@ class MetadataReferenceResultNormalizer implements DenormalizerInterface, Normal
         }
         if (null !== $object->getIsReferencedByRestrictedItem()) {
             $data['isReferencedByRestrictedItem'] = $object->getIsReferencedByRestrictedItem();
+        }
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
+            }
         }
         return $data;
     }

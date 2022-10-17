@@ -47,9 +47,16 @@ class PagesSourceHashNormalizer implements DenormalizerInterface, NormalizerInte
         }
         if (\array_key_exists('branch', $data)) {
             $object->setBranch($data['branch']);
+            unset($data['branch']);
         }
         if (\array_key_exists('path', $data)) {
             $object->setPath($data['path']);
+            unset($data['path']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -61,6 +68,11 @@ class PagesSourceHashNormalizer implements DenormalizerInterface, NormalizerInte
         $data = array();
         $data['branch'] = $object->getBranch();
         $data['path'] = $object->getPath();
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\PagesSourceHashConstraint());
             $context['skip_validation'] = true;

@@ -43,18 +43,26 @@ class TransferUploadFileNormalizer implements DenormalizerInterface, NormalizerI
         }
         if (\array_key_exists('identifier', $data) && $data['identifier'] !== null) {
             $object->setIdentifier($data['identifier']);
+            unset($data['identifier']);
         }
         elseif (\array_key_exists('identifier', $data) && $data['identifier'] === null) {
             $object->setIdentifier(null);
         }
         if (\array_key_exists('requestId', $data) && $data['requestId'] !== null) {
             $object->setRequestId($data['requestId']);
+            unset($data['requestId']);
         }
         elseif (\array_key_exists('requestId', $data) && $data['requestId'] === null) {
             $object->setRequestId(null);
         }
         if (\array_key_exists('fileName', $data)) {
             $object->setFileName($data['fileName']);
+            unset($data['fileName']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -71,6 +79,11 @@ class TransferUploadFileNormalizer implements DenormalizerInterface, NormalizerI
             $data['requestId'] = $object->getRequestId();
         }
         $data['fileName'] = $object->getFileName();
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
         return $data;
     }
 }

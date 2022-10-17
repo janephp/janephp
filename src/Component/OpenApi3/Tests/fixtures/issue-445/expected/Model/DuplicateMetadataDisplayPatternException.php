@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class DuplicateMetadataDisplayPatternException
+class DuplicateMetadataDisplayPatternException extends \ArrayObject
 {
     /**
      * 

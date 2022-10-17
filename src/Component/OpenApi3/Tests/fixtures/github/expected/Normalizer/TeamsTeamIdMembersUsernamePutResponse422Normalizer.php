@@ -47,6 +47,7 @@ class TeamsTeamIdMembersUsernamePutResponse422Normalizer implements Denormalizer
         }
         if (\array_key_exists('message', $data)) {
             $object->setMessage($data['message']);
+            unset($data['message']);
         }
         if (\array_key_exists('errors', $data)) {
             $values = array();
@@ -54,9 +55,16 @@ class TeamsTeamIdMembersUsernamePutResponse422Normalizer implements Denormalizer
                 $values[] = $this->denormalizer->denormalize($value, 'Github\\Model\\TeamsTeamIdMembersUsernamePutResponse422ErrorsItem', 'json', $context);
             }
             $object->setErrors($values);
+            unset($data['errors']);
         }
         if (\array_key_exists('documentation_url', $data)) {
             $object->setDocumentationUrl($data['documentation_url']);
+            unset($data['documentation_url']);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
@@ -78,6 +86,11 @@ class TeamsTeamIdMembersUsernamePutResponse422Normalizer implements Denormalizer
         }
         if (null !== $object->getDocumentationUrl()) {
             $data['documentation_url'] = $object->getDocumentationUrl();
+        }
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\TeamsTeamIdMembersUsernamePutResponse422Constraint());

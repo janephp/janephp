@@ -43,12 +43,19 @@ class AudioStillFormatNormalizer implements DenormalizerInterface, NormalizerInt
         }
         if (\array_key_exists('kind', $data)) {
             $object->setKind($data['kind']);
+            unset($data['kind']);
         }
         if (\array_key_exists('extension', $data) && $data['extension'] !== null) {
             $object->setExtension($data['extension']);
+            unset($data['extension']);
         }
         elseif (\array_key_exists('extension', $data) && $data['extension'] === null) {
             $object->setExtension(null);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -61,6 +68,11 @@ class AudioStillFormatNormalizer implements DenormalizerInterface, NormalizerInt
         $data['kind'] = $object->getKind();
         if (null !== $object->getExtension()) {
             $data['extension'] = $object->getExtension();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

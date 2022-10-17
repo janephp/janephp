@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class BusinessRuleTraceLogSearchResult
+class BusinessRuleTraceLogSearchResult extends \ArrayObject
 {
     /**
      * The total number of matching documents.

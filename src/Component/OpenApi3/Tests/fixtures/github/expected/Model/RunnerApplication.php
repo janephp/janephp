@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class RunnerApplication
+class RunnerApplication extends \ArrayObject
 {
     /**
      * 

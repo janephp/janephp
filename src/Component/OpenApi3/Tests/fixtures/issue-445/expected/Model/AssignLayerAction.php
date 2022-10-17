@@ -13,7 +13,7 @@ class AssignLayerAction extends BusinessRuleAction
     /**
      * An object containing default values (used for example to populate required fields).
      *
-     * @var mixed|null
+     * @var mixed[]|null
      */
     protected $defaultValues;
     /**
@@ -40,20 +40,20 @@ class AssignLayerAction extends BusinessRuleAction
     /**
      * An object containing default values (used for example to populate required fields).
      *
-     * @return mixed
+     * @return mixed[]|null
      */
-    public function getDefaultValues()
+    public function getDefaultValues() : ?iterable
     {
         return $this->defaultValues;
     }
     /**
      * An object containing default values (used for example to populate required fields).
      *
-     * @param mixed $defaultValues
+     * @param mixed[]|null $defaultValues
      *
      * @return self
      */
-    public function setDefaultValues($defaultValues) : self
+    public function setDefaultValues(?iterable $defaultValues) : self
     {
         $this->defaultValues = $defaultValues;
         return $this;

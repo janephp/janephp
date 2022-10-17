@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class OutputFormatSourceNotDefinedException
+class OutputFormatSourceNotDefinedException extends \ArrayObject
 {
     /**
      * 

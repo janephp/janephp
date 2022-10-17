@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoGitTreesPostBodyTreeItem
+class ReposOwnerRepoGitTreesPostBodyTreeItem extends \ArrayObject
 {
     /**
      * The file referenced in the tree.

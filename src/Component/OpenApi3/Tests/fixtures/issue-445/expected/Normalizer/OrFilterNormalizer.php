@@ -43,6 +43,7 @@ class OrFilterNormalizer implements DenormalizerInterface, NormalizerInterface, 
         }
         if (\array_key_exists('kind', $data)) {
             $object->setKind($data['kind']);
+            unset($data['kind']);
         }
         if (\array_key_exists('filters', $data) && $data['filters'] !== null) {
             $values = array();
@@ -50,9 +51,15 @@ class OrFilterNormalizer implements DenormalizerInterface, NormalizerInterface, 
                 $values[] = $this->denormalizer->denormalize($value, 'PicturePark\\API\\Model\\FilterBase', 'json', $context);
             }
             $object->setFilters($values);
+            unset($data['filters']);
         }
         elseif (\array_key_exists('filters', $data) && $data['filters'] === null) {
             $object->setFilters(null);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
@@ -69,6 +76,11 @@ class OrFilterNormalizer implements DenormalizerInterface, NormalizerInterface, 
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data['filters'] = $values;
+        }
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
+            }
         }
         return $data;
     }

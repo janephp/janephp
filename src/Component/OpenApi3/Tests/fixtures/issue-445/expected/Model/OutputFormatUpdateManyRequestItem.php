@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class OutputFormatUpdateManyRequestItem
+class OutputFormatUpdateManyRequestItem extends \ArrayObject
 {
     /**
      * Which output format should be used as a source of data.

@@ -43,6 +43,12 @@ class AuthenticationSuccessResponseNormalizer implements DenormalizerInterface, 
         }
         if (\array_key_exists('token', $data)) {
             $object->setToken($data['token']);
+            unset($data['token']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -54,6 +60,11 @@ class AuthenticationSuccessResponseNormalizer implements DenormalizerInterface, 
         $data = array();
         if (null !== $object->getToken()) {
             $data['token'] = $object->getToken();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

@@ -43,6 +43,12 @@ class GbCompanyReportExampleResponseReportOtherInformationAdvisorsItemNormalizer
         }
         if (\array_key_exists('auditorName', $data)) {
             $object->setAuditorName($data['auditorName']);
+            unset($data['auditorName']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -54,6 +60,11 @@ class GbCompanyReportExampleResponseReportOtherInformationAdvisorsItemNormalizer
         $data = array();
         if (null !== $object->getAuditorName()) {
             $data['auditorName'] = $object->getAuditorName();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

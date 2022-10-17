@@ -2,7 +2,7 @@
 
 namespace Jane\OpenApi3\Tests\Expected\Model;
 
-class UserWithheld
+class UserWithheld extends \ArrayObject
 {
     /**
      * Provides a list of countries where this content is not available.

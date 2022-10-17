@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class ScimUserEmailsItem
+class ScimUserEmailsItem extends \ArrayObject
 {
     /**
      * 

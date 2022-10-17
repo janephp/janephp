@@ -47,15 +47,19 @@ class BranchRestrictionPolicyNormalizer implements DenormalizerInterface, Normal
         }
         if (\array_key_exists('url', $data)) {
             $object->setUrl($data['url']);
+            unset($data['url']);
         }
         if (\array_key_exists('users_url', $data)) {
             $object->setUsersUrl($data['users_url']);
+            unset($data['users_url']);
         }
         if (\array_key_exists('teams_url', $data)) {
             $object->setTeamsUrl($data['teams_url']);
+            unset($data['teams_url']);
         }
         if (\array_key_exists('apps_url', $data)) {
             $object->setAppsUrl($data['apps_url']);
+            unset($data['apps_url']);
         }
         if (\array_key_exists('users', $data)) {
             $values = array();
@@ -63,6 +67,7 @@ class BranchRestrictionPolicyNormalizer implements DenormalizerInterface, Normal
                 $values[] = $this->denormalizer->denormalize($value, 'Github\\Model\\BranchRestrictionPolicyUsersItem', 'json', $context);
             }
             $object->setUsers($values);
+            unset($data['users']);
         }
         if (\array_key_exists('teams', $data)) {
             $values_1 = array();
@@ -70,6 +75,7 @@ class BranchRestrictionPolicyNormalizer implements DenormalizerInterface, Normal
                 $values_1[] = $this->denormalizer->denormalize($value_1, 'Github\\Model\\BranchRestrictionPolicyTeamsItem', 'json', $context);
             }
             $object->setTeams($values_1);
+            unset($data['teams']);
         }
         if (\array_key_exists('apps', $data)) {
             $values_2 = array();
@@ -77,6 +83,12 @@ class BranchRestrictionPolicyNormalizer implements DenormalizerInterface, Normal
                 $values_2[] = $this->denormalizer->denormalize($value_2, 'Github\\Model\\BranchRestrictionPolicyAppsItem', 'json', $context);
             }
             $object->setApps($values_2);
+            unset($data['apps']);
+        }
+        foreach ($data as $key => $value_3) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_3;
+            }
         }
         return $object;
     }
@@ -105,6 +117,11 @@ class BranchRestrictionPolicyNormalizer implements DenormalizerInterface, Normal
             $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
         }
         $data['apps'] = $values_2;
+        foreach ($object as $key => $value_3) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_3;
+            }
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\BranchRestrictionPolicyConstraint());
             $context['skip_validation'] = true;

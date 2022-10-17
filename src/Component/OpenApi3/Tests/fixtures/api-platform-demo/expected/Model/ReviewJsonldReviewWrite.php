@@ -2,7 +2,7 @@
 
 namespace ApiPlatform\Demo\Model;
 
-class ReviewJsonldReviewWrite
+class ReviewJsonldReviewWrite extends \ArrayObject
 {
     /**
      * 

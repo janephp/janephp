@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class AppInstallationsInstallationIdAccessTokensPostBodyPermissions
+class AppInstallationsInstallationIdAccessTokensPostBodyPermissions extends \ArrayObject
 {
     /**
      * 

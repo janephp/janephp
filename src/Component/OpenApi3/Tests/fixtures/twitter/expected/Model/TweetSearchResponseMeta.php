@@ -2,7 +2,7 @@
 
 namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 
-class TweetSearchResponseMeta
+class TweetSearchResponseMeta extends \ArrayObject
 {
     /**
      * Most recent Tweet Id returned by search query

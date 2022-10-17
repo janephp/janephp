@@ -2,7 +2,7 @@
 
 namespace Jane\OpenApi3\Tests\Expected\Model;
 
-class Poll
+class Poll extends \ArrayObject
 {
     /**
      * Unique identifier of this poll.

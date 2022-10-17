@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class CustomerBoostValuesInvalidException
+class CustomerBoostValuesInvalidException extends \ArrayObject
 {
     /**
      * 

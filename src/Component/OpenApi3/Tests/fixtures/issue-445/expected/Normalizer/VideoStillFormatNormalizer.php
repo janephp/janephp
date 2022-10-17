@@ -43,15 +43,23 @@ class VideoStillFormatNormalizer implements DenormalizerInterface, NormalizerInt
         }
         if (\array_key_exists('kind', $data)) {
             $object->setKind($data['kind']);
+            unset($data['kind']);
         }
         if (\array_key_exists('extension', $data) && $data['extension'] !== null) {
             $object->setExtension($data['extension']);
+            unset($data['extension']);
         }
         elseif (\array_key_exists('extension', $data) && $data['extension'] === null) {
             $object->setExtension(null);
         }
         if (\array_key_exists('positionInSeconds', $data)) {
             $object->setPositionInSeconds($data['positionInSeconds']);
+            unset($data['positionInSeconds']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -67,6 +75,11 @@ class VideoStillFormatNormalizer implements DenormalizerInterface, NormalizerInt
         }
         if (null !== $object->getPositionInSeconds()) {
             $data['positionInSeconds'] = $object->getPositionInSeconds();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

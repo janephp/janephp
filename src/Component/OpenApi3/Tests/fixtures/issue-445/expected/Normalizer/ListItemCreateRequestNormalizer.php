@@ -45,7 +45,11 @@ class ListItemCreateRequestNormalizer implements DenormalizerInterface, Normaliz
             $object->setContentSchemaId($data['contentSchemaId']);
         }
         if (\array_key_exists('content', $data) && $data['content'] !== null) {
-            $object->setContent($data['content']);
+            $values = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
+            foreach ($data['content'] as $key => $value) {
+                $values[$key] = $value;
+            }
+            $object->setContent($values);
         }
         elseif (\array_key_exists('content', $data) && $data['content'] === null) {
             $object->setContent(null);
@@ -66,7 +70,11 @@ class ListItemCreateRequestNormalizer implements DenormalizerInterface, Normaliz
         $data = array();
         $data['contentSchemaId'] = $object->getContentSchemaId();
         if (null !== $object->getContent()) {
-            $data['content'] = $object->getContent();
+            $values = array();
+            foreach ($object->getContent() as $key => $value) {
+                $values[$key] = $value;
+            }
+            $data['content'] = $values;
         }
         if (null !== $object->getRequestId()) {
             $data['requestId'] = $object->getRequestId();

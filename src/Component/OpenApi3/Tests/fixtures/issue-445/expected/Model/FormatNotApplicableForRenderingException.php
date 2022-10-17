@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class FormatNotApplicableForRenderingException
+class FormatNotApplicableForRenderingException extends \ArrayObject
 {
     /**
      * 

@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class AggregationFilterNotSupportedException
+class AggregationFilterNotSupportedException extends \ArrayObject
 {
     /**
      * 

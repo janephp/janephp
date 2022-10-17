@@ -43,21 +43,32 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemF
         }
         if (\array_key_exists('build', $data)) {
             $object->setBuild($data['build']);
+            unset($data['build']);
         }
         if (\array_key_exists('custom', $data)) {
             $object->setCustom($data['custom']);
+            unset($data['custom']);
         }
         if (\array_key_exists('id', $data)) {
             $object->setId($data['id']);
+            unset($data['id']);
         }
         if (\array_key_exists('name', $data)) {
             $object->setName($data['name']);
+            unset($data['name']);
         }
         if (\array_key_exists('published', $data)) {
             $object->setPublished($data['published']);
+            unset($data['published']);
         }
         if (\array_key_exists('type', $data)) {
             $object->setType($data['type']);
+            unset($data['type']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -84,6 +95,11 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemF
         }
         if (null !== $object->getType()) {
             $data['type'] = $object->getType();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

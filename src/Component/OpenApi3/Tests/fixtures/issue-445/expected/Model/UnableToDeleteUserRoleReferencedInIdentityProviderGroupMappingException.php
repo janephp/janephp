@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class UnableToDeleteUserRoleReferencedInIdentityProviderGroupMappingException
+class UnableToDeleteUserRoleReferencedInIdentityProviderGroupMappingException extends \ArrayObject
 {
     /**
      * 

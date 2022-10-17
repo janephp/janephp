@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class DuplicateSearchIndexDocException
+class DuplicateSearchIndexDocException extends \ArrayObject
 {
     /**
      * 

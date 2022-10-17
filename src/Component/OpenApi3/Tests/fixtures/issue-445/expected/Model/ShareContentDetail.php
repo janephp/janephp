@@ -20,7 +20,7 @@ class ShareContentDetail
     * The content data. It's an object of dynamic metadata whose structure is defined in the Content schema specified
     by the ContentSchemaId property.
     *
-    * @var mixed
+    * @var mixed[]
     */
     protected $content;
     /**
@@ -106,9 +106,9 @@ class ShareContentDetail
     * The content data. It's an object of dynamic metadata whose structure is defined in the Content schema specified
     by the ContentSchemaId property.
     *
-    * @return mixed
+    * @return mixed[]
     */
-    public function getContent()
+    public function getContent() : iterable
     {
         return $this->content;
     }
@@ -116,11 +116,11 @@ class ShareContentDetail
     * The content data. It's an object of dynamic metadata whose structure is defined in the Content schema specified
     by the ContentSchemaId property.
     *
-    * @param mixed $content
+    * @param mixed[] $content
     *
     * @return self
     */
-    public function setContent($content) : self
+    public function setContent(iterable $content) : self
     {
         $this->content = $content;
         return $this;

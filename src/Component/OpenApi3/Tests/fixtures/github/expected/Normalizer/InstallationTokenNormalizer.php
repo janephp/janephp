@@ -47,15 +47,19 @@ class InstallationTokenNormalizer implements DenormalizerInterface, NormalizerIn
         }
         if (\array_key_exists('token', $data)) {
             $object->setToken($data['token']);
+            unset($data['token']);
         }
         if (\array_key_exists('expires_at', $data)) {
             $object->setExpiresAt($data['expires_at']);
+            unset($data['expires_at']);
         }
         if (\array_key_exists('permissions', $data)) {
             $object->setPermissions($this->denormalizer->denormalize($data['permissions'], 'Github\\Model\\InstallationTokenPermissions', 'json', $context));
+            unset($data['permissions']);
         }
         if (\array_key_exists('repository_selection', $data)) {
             $object->setRepositorySelection($data['repository_selection']);
+            unset($data['repository_selection']);
         }
         if (\array_key_exists('repositories', $data)) {
             $values = array();
@@ -63,9 +67,16 @@ class InstallationTokenNormalizer implements DenormalizerInterface, NormalizerIn
                 $values[] = $this->denormalizer->denormalize($value, 'Github\\Model\\Repository', 'json', $context);
             }
             $object->setRepositories($values);
+            unset($data['repositories']);
         }
         if (\array_key_exists('single_file', $data)) {
             $object->setSingleFile($data['single_file']);
+            unset($data['single_file']);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
@@ -96,6 +107,11 @@ class InstallationTokenNormalizer implements DenormalizerInterface, NormalizerIn
         }
         if (null !== $object->getSingleFile()) {
             $data['single_file'] = $object->getSingleFile();
+        }
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\InstallationTokenConstraint());

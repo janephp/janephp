@@ -43,18 +43,28 @@ class TweetInteractionMetricsNormalizer implements DenormalizerInterface, Normal
         }
         if (\array_key_exists('like_count', $data)) {
             $object->setLikeCount($data['like_count']);
+            unset($data['like_count']);
         }
         if (\array_key_exists('retweet_count', $data)) {
             $object->setRetweetCount($data['retweet_count']);
+            unset($data['retweet_count']);
         }
         if (\array_key_exists('quote_count', $data)) {
             $object->setQuoteCount($data['quote_count']);
+            unset($data['quote_count']);
         }
         if (\array_key_exists('reply_count', $data)) {
             $object->setReplyCount($data['reply_count']);
+            unset($data['reply_count']);
         }
         if (\array_key_exists('impression_count', $data)) {
             $object->setImpressionCount($data['impression_count']);
+            unset($data['impression_count']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -70,6 +80,11 @@ class TweetInteractionMetricsNormalizer implements DenormalizerInterface, Normal
         $data['reply_count'] = $object->getReplyCount();
         if (null !== $object->getImpressionCount()) {
             $data['impression_count'] = $object->getImpressionCount();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoContentsPathDeleteBodyCommitter
+class ReposOwnerRepoContentsPathDeleteBodyCommitter extends \ArrayObject
 {
     /**
      * The name of the author (or committer) of the commit

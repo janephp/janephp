@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class CommunityProfileFilesCodeOfConduct
+class CommunityProfileFilesCodeOfConduct extends \ArrayObject
 {
     /**
      * 

@@ -47,18 +47,28 @@ class OrganizationFullPlanNormalizer implements DenormalizerInterface, Normalize
         }
         if (\array_key_exists('name', $data)) {
             $object->setName($data['name']);
+            unset($data['name']);
         }
         if (\array_key_exists('space', $data)) {
             $object->setSpace($data['space']);
+            unset($data['space']);
         }
         if (\array_key_exists('private_repos', $data)) {
             $object->setPrivateRepos($data['private_repos']);
+            unset($data['private_repos']);
         }
         if (\array_key_exists('filled_seats', $data)) {
             $object->setFilledSeats($data['filled_seats']);
+            unset($data['filled_seats']);
         }
         if (\array_key_exists('seats', $data)) {
             $object->setSeats($data['seats']);
+            unset($data['seats']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -76,6 +86,11 @@ class OrganizationFullPlanNormalizer implements DenormalizerInterface, Normalize
         }
         if (null !== $object->getSeats()) {
             $data['seats'] = $object->getSeats();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\OrganizationFullPlanConstraint());

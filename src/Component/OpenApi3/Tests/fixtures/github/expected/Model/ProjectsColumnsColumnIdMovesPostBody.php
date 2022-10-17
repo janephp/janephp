@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class ProjectsColumnsColumnIdMovesPostBody
+class ProjectsColumnsColumnIdMovesPostBody extends \ArrayObject
 {
     /**
      * The position of the column in a project

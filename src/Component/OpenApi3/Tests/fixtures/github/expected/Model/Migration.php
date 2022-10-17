@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class Migration
+class Migration extends \ArrayObject
 {
     /**
      * 

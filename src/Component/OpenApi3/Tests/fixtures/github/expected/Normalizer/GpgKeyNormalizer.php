@@ -47,18 +47,22 @@ class GpgKeyNormalizer implements DenormalizerInterface, NormalizerInterface, De
         }
         if (\array_key_exists('id', $data)) {
             $object->setId($data['id']);
+            unset($data['id']);
         }
         if (\array_key_exists('primary_key_id', $data) && $data['primary_key_id'] !== null) {
             $object->setPrimaryKeyId($data['primary_key_id']);
+            unset($data['primary_key_id']);
         }
         elseif (\array_key_exists('primary_key_id', $data) && $data['primary_key_id'] === null) {
             $object->setPrimaryKeyId(null);
         }
         if (\array_key_exists('key_id', $data)) {
             $object->setKeyId($data['key_id']);
+            unset($data['key_id']);
         }
         if (\array_key_exists('public_key', $data)) {
             $object->setPublicKey($data['public_key']);
+            unset($data['public_key']);
         }
         if (\array_key_exists('emails', $data)) {
             $values = array();
@@ -66,6 +70,7 @@ class GpgKeyNormalizer implements DenormalizerInterface, NormalizerInterface, De
                 $values[] = $this->denormalizer->denormalize($value, 'Github\\Model\\GpgKeyEmailsItem', 'json', $context);
             }
             $object->setEmails($values);
+            unset($data['emails']);
         }
         if (\array_key_exists('subkeys', $data)) {
             $values_1 = array();
@@ -73,33 +78,46 @@ class GpgKeyNormalizer implements DenormalizerInterface, NormalizerInterface, De
                 $values_1[] = $this->denormalizer->denormalize($value_1, 'Github\\Model\\GpgKeySubkeysItem', 'json', $context);
             }
             $object->setSubkeys($values_1);
+            unset($data['subkeys']);
         }
         if (\array_key_exists('can_sign', $data)) {
             $object->setCanSign($data['can_sign']);
+            unset($data['can_sign']);
         }
         if (\array_key_exists('can_encrypt_comms', $data)) {
             $object->setCanEncryptComms($data['can_encrypt_comms']);
+            unset($data['can_encrypt_comms']);
         }
         if (\array_key_exists('can_encrypt_storage', $data)) {
             $object->setCanEncryptStorage($data['can_encrypt_storage']);
+            unset($data['can_encrypt_storage']);
         }
         if (\array_key_exists('can_certify', $data)) {
             $object->setCanCertify($data['can_certify']);
+            unset($data['can_certify']);
         }
         if (\array_key_exists('created_at', $data)) {
             $object->setCreatedAt(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['created_at']));
+            unset($data['created_at']);
         }
         if (\array_key_exists('expires_at', $data) && $data['expires_at'] !== null) {
             $object->setExpiresAt(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['expires_at']));
+            unset($data['expires_at']);
         }
         elseif (\array_key_exists('expires_at', $data) && $data['expires_at'] === null) {
             $object->setExpiresAt(null);
         }
         if (\array_key_exists('raw_key', $data) && $data['raw_key'] !== null) {
             $object->setRawKey($data['raw_key']);
+            unset($data['raw_key']);
         }
         elseif (\array_key_exists('raw_key', $data) && $data['raw_key'] === null) {
             $object->setRawKey(null);
+        }
+        foreach ($data as $key => $value_2) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_2;
+            }
         }
         return $object;
     }
@@ -130,6 +148,11 @@ class GpgKeyNormalizer implements DenormalizerInterface, NormalizerInterface, De
         $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
         $data['expires_at'] = $object->getExpiresAt()->format('Y-m-d\\TH:i:sP');
         $data['raw_key'] = $object->getRawKey();
+        foreach ($object as $key => $value_2) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_2;
+            }
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\GpgKeyConstraint());
             $context['skip_validation'] = true;

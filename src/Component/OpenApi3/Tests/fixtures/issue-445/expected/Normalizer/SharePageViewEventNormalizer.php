@@ -43,15 +43,23 @@ class SharePageViewEventNormalizer implements DenormalizerInterface, NormalizerI
         }
         if (\array_key_exists('timestamp', $data)) {
             $object->setTimestamp(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['timestamp']));
+            unset($data['timestamp']);
         }
         if (\array_key_exists('kind', $data)) {
             $object->setKind($data['kind']);
+            unset($data['kind']);
         }
         if (\array_key_exists('shareToken', $data) && $data['shareToken'] !== null) {
             $object->setShareToken($data['shareToken']);
+            unset($data['shareToken']);
         }
         elseif (\array_key_exists('shareToken', $data) && $data['shareToken'] === null) {
             $object->setShareToken(null);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -65,6 +73,11 @@ class SharePageViewEventNormalizer implements DenormalizerInterface, NormalizerI
         $data['kind'] = $object->getKind();
         if (null !== $object->getShareToken()) {
             $data['shareToken'] = $object->getShareToken();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

@@ -2,7 +2,7 @@
 
 namespace Jane\OpenApi3\Tests\Expected\Model;
 
-class UrlEntity
+class UrlEntity extends \ArrayObject
 {
     /**
      * Index (zero-based) at which position this entity starts.

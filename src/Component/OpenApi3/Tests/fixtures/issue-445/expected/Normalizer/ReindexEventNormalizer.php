@@ -43,18 +43,27 @@ class ReindexEventNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         if (\array_key_exists('timestamp', $data)) {
             $object->setTimestamp(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['timestamp']));
+            unset($data['timestamp']);
         }
         if (\array_key_exists('kind', $data)) {
             $object->setKind($data['kind']);
+            unset($data['kind']);
         }
         if (\array_key_exists('indexId', $data) && $data['indexId'] !== null) {
             $object->setIndexId($data['indexId']);
+            unset($data['indexId']);
         }
         elseif (\array_key_exists('indexId', $data) && $data['indexId'] === null) {
             $object->setIndexId(null);
         }
         if (\array_key_exists('state', $data)) {
             $object->setState($data['state']);
+            unset($data['state']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -71,6 +80,11 @@ class ReindexEventNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         if (null !== $object->getState()) {
             $data['state'] = $object->getState();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

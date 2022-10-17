@@ -47,9 +47,11 @@ class ApiOverviewNormalizer implements DenormalizerInterface, NormalizerInterfac
         }
         if (\array_key_exists('verifiable_password_authentication', $data)) {
             $object->setVerifiablePasswordAuthentication($data['verifiable_password_authentication']);
+            unset($data['verifiable_password_authentication']);
         }
         if (\array_key_exists('ssh_key_fingerprints', $data)) {
             $object->setSshKeyFingerprints($this->denormalizer->denormalize($data['ssh_key_fingerprints'], 'Github\\Model\\ApiOverviewSshKeyFingerprints', 'json', $context));
+            unset($data['ssh_key_fingerprints']);
         }
         if (\array_key_exists('hooks', $data)) {
             $values = array();
@@ -57,6 +59,7 @@ class ApiOverviewNormalizer implements DenormalizerInterface, NormalizerInterfac
                 $values[] = $value;
             }
             $object->setHooks($values);
+            unset($data['hooks']);
         }
         if (\array_key_exists('web', $data)) {
             $values_1 = array();
@@ -64,6 +67,7 @@ class ApiOverviewNormalizer implements DenormalizerInterface, NormalizerInterfac
                 $values_1[] = $value_1;
             }
             $object->setWeb($values_1);
+            unset($data['web']);
         }
         if (\array_key_exists('api', $data)) {
             $values_2 = array();
@@ -71,6 +75,7 @@ class ApiOverviewNormalizer implements DenormalizerInterface, NormalizerInterfac
                 $values_2[] = $value_2;
             }
             $object->setApi($values_2);
+            unset($data['api']);
         }
         if (\array_key_exists('git', $data)) {
             $values_3 = array();
@@ -78,6 +83,7 @@ class ApiOverviewNormalizer implements DenormalizerInterface, NormalizerInterfac
                 $values_3[] = $value_3;
             }
             $object->setGit($values_3);
+            unset($data['git']);
         }
         if (\array_key_exists('pages', $data)) {
             $values_4 = array();
@@ -85,6 +91,7 @@ class ApiOverviewNormalizer implements DenormalizerInterface, NormalizerInterfac
                 $values_4[] = $value_4;
             }
             $object->setPages($values_4);
+            unset($data['pages']);
         }
         if (\array_key_exists('importer', $data)) {
             $values_5 = array();
@@ -92,12 +99,20 @@ class ApiOverviewNormalizer implements DenormalizerInterface, NormalizerInterfac
                 $values_5[] = $value_5;
             }
             $object->setImporter($values_5);
+            unset($data['importer']);
         }
         if (\array_key_exists('github_services_sha', $data)) {
             $object->setGithubServicesSha($data['github_services_sha']);
+            unset($data['github_services_sha']);
         }
         if (\array_key_exists('installed_version', $data)) {
             $object->setInstalledVersion($data['installed_version']);
+            unset($data['installed_version']);
+        }
+        foreach ($data as $key => $value_6) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_6;
+            }
         }
         return $object;
     }
@@ -158,6 +173,11 @@ class ApiOverviewNormalizer implements DenormalizerInterface, NormalizerInterfac
         }
         if (null !== $object->getInstalledVersion()) {
             $data['installed_version'] = $object->getInstalledVersion();
+        }
+        foreach ($object as $key => $value_6) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_6;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ApiOverviewConstraint());

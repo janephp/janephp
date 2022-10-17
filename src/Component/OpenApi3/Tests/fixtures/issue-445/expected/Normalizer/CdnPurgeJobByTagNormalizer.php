@@ -43,15 +43,24 @@ class CdnPurgeJobByTagNormalizer implements DenormalizerInterface, NormalizerInt
         }
         if (\array_key_exists('success', $data)) {
             $object->setSuccess($data['success']);
+            unset($data['success']);
         }
         if (\array_key_exists('retriesLeft', $data)) {
             $object->setRetriesLeft($data['retriesLeft']);
+            unset($data['retriesLeft']);
         }
         if (\array_key_exists('kind', $data)) {
             $object->setKind($data['kind']);
+            unset($data['kind']);
         }
         if (\array_key_exists('tag', $data)) {
             $object->setTag($data['tag']);
+            unset($data['tag']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -65,6 +74,11 @@ class CdnPurgeJobByTagNormalizer implements DenormalizerInterface, NormalizerInt
         $data['retriesLeft'] = $object->getRetriesLeft();
         $data['kind'] = $object->getKind();
         $data['tag'] = $object->getTag();
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
         return $data;
     }
 }

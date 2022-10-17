@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class ActionsPublicKey
+class ActionsPublicKey extends \ArrayObject
 {
     /**
      * The identifier for the key.

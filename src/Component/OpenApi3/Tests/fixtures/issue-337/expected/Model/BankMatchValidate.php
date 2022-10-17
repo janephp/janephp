@@ -2,7 +2,7 @@
 
 namespace CreditSafe\API\Model;
 
-class BankMatchValidate
+class BankMatchValidate extends \ArrayObject
 {
     /**
      * 

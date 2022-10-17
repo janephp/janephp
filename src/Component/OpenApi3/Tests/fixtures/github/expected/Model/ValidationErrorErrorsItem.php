@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class ValidationErrorErrorsItem
+class ValidationErrorErrorsItem extends \ArrayObject
 {
     /**
      * 

@@ -47,9 +47,16 @@ class PageBuildStatusNormalizer implements DenormalizerInterface, NormalizerInte
         }
         if (\array_key_exists('url', $data)) {
             $object->setUrl($data['url']);
+            unset($data['url']);
         }
         if (\array_key_exists('status', $data)) {
             $object->setStatus($data['status']);
+            unset($data['status']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -61,6 +68,11 @@ class PageBuildStatusNormalizer implements DenormalizerInterface, NormalizerInte
         $data = array();
         $data['url'] = $object->getUrl();
         $data['status'] = $object->getStatus();
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\PageBuildStatusConstraint());
             $context['skip_validation'] = true;

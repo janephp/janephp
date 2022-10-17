@@ -2,7 +2,7 @@
 
 namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 
-class DetailedUserFieldsStats
+class DetailedUserFieldsStats extends \ArrayObject
 {
     /**
      * Number of users who are following this user.

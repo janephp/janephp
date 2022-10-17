@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class PullRequestAssignee
+class PullRequestAssignee extends \ArrayObject
 {
     /**
      * 

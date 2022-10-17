@@ -43,42 +43,60 @@ class BankMatchValidateNormalizer implements DenormalizerInterface, NormalizerIn
         }
         if (\array_key_exists('accountNumber', $data)) {
             $object->setAccountNumber($data['accountNumber']);
+            unset($data['accountNumber']);
         }
         if (\array_key_exists('iban', $data)) {
             $object->setIban($data['iban']);
+            unset($data['iban']);
         }
         if (\array_key_exists('ibanResult', $data)) {
             $object->setIbanResult($data['ibanResult']);
+            unset($data['ibanResult']);
         }
         if (\array_key_exists('ibanText', $data)) {
             $object->setIbanText($data['ibanText']);
+            unset($data['ibanText']);
         }
         if (\array_key_exists('logDate', $data)) {
             $object->setLogDate($data['logDate']);
+            unset($data['logDate']);
         }
         if (\array_key_exists('safeNumber', $data)) {
             $object->setSafeNumber($data['safeNumber']);
+            unset($data['safeNumber']);
         }
         if (\array_key_exists('scanResult', $data)) {
             $object->setScanResult($data['scanResult']);
+            unset($data['scanResult']);
         }
         if (\array_key_exists('scanText', $data)) {
             $object->setScanText($data['scanText']);
+            unset($data['scanText']);
         }
         if (\array_key_exists('sortCode', $data)) {
             $object->setSortCode($data['sortCode']);
+            unset($data['sortCode']);
         }
         if (\array_key_exists('statusResult', $data)) {
             $object->setStatusResult($data['statusResult']);
+            unset($data['statusResult']);
         }
         if (\array_key_exists('statusText', $data)) {
             $object->setStatusText($data['statusText']);
+            unset($data['statusText']);
         }
         if (\array_key_exists('vatResult', $data)) {
             $object->setVatResult($data['vatResult']);
+            unset($data['vatResult']);
         }
         if (\array_key_exists('vatText', $data)) {
             $object->setVatText($data['vatText']);
+            unset($data['vatText']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -126,6 +144,11 @@ class BankMatchValidateNormalizer implements DenormalizerInterface, NormalizerIn
         }
         if (null !== $object->getVatText()) {
             $data['vatText'] = $object->getVatText();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

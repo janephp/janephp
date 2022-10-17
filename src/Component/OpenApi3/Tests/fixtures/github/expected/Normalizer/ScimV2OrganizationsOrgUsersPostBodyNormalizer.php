@@ -47,9 +47,11 @@ class ScimV2OrganizationsOrgUsersPostBodyNormalizer implements DenormalizerInter
         }
         if (\array_key_exists('userName', $data)) {
             $object->setUserName($data['userName']);
+            unset($data['userName']);
         }
         if (\array_key_exists('name', $data)) {
             $object->setName($this->denormalizer->denormalize($data['name'], 'Github\\Model\\ScimV2OrganizationsOrgUsersPostBodyName', 'json', $context));
+            unset($data['name']);
         }
         if (\array_key_exists('emails', $data)) {
             $values = array();
@@ -57,6 +59,7 @@ class ScimV2OrganizationsOrgUsersPostBodyNormalizer implements DenormalizerInter
                 $values[] = $this->denormalizer->denormalize($value, 'Github\\Model\\ScimV2OrganizationsOrgUsersPostBodyEmailsItem', 'json', $context);
             }
             $object->setEmails($values);
+            unset($data['emails']);
         }
         if (\array_key_exists('schemas', $data)) {
             $values_1 = array();
@@ -64,12 +67,15 @@ class ScimV2OrganizationsOrgUsersPostBodyNormalizer implements DenormalizerInter
                 $values_1[] = $value_1;
             }
             $object->setSchemas($values_1);
+            unset($data['schemas']);
         }
         if (\array_key_exists('displayName', $data)) {
             $object->setDisplayName($data['displayName']);
+            unset($data['displayName']);
         }
         if (\array_key_exists('externalId', $data)) {
             $object->setExternalId($data['externalId']);
+            unset($data['externalId']);
         }
         if (\array_key_exists('groups', $data)) {
             $values_2 = array();
@@ -77,9 +83,16 @@ class ScimV2OrganizationsOrgUsersPostBodyNormalizer implements DenormalizerInter
                 $values_2[] = $value_2;
             }
             $object->setGroups($values_2);
+            unset($data['groups']);
         }
         if (\array_key_exists('active', $data)) {
             $object->setActive($data['active']);
+            unset($data['active']);
+        }
+        foreach ($data as $key => $value_3) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_3;
+            }
         }
         return $object;
     }
@@ -118,6 +131,11 @@ class ScimV2OrganizationsOrgUsersPostBodyNormalizer implements DenormalizerInter
         }
         if (null !== $object->getActive()) {
             $data['active'] = $object->getActive();
+        }
+        foreach ($object as $key => $value_3) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_3;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ScimV2OrganizationsOrgUsersPostBodyConstraint());

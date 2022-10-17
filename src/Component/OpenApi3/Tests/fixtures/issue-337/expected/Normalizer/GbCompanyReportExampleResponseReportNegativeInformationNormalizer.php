@@ -43,9 +43,16 @@ class GbCompanyReportExampleResponseReportNegativeInformationNormalizer implemen
         }
         if (\array_key_exists('ccjSummary', $data)) {
             $object->setCcjSummary($this->denormalizer->denormalize($data['ccjSummary'], 'CreditSafe\\API\\Model\\GbCompanyReportExampleResponseReportNegativeInformationCcjSummary', 'json', $context));
+            unset($data['ccjSummary']);
         }
         if (\array_key_exists('countyCourtJudgements', $data)) {
             $object->setCountyCourtJudgements($this->denormalizer->denormalize($data['countyCourtJudgements'], 'CreditSafe\\API\\Model\\GbCompanyReportExampleResponseReportNegativeInformationCountyCourtJudgements', 'json', $context));
+            unset($data['countyCourtJudgements']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -60,6 +67,11 @@ class GbCompanyReportExampleResponseReportNegativeInformationNormalizer implemen
         }
         if (null !== $object->getCountyCourtJudgements()) {
             $data['countyCourtJudgements'] = $this->normalizer->normalize($object->getCountyCourtJudgements(), 'json', $context);
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class TransferUploadFile
+class TransferUploadFile extends \ArrayObject
 {
     /**
      * Replaced in favor of RequestId. Client generated identifier of the item.

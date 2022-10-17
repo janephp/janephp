@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class SystemLayerReferenceInvalidModificationException
+class SystemLayerReferenceInvalidModificationException extends \ArrayObject
 {
     /**
      * 

@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class ScimV2OrganizationsOrgUsersScimUserIdPatchBodyOperationsItem
+class ScimV2OrganizationsOrgUsersScimUserIdPatchBodyOperationsItem extends \ArrayObject
 {
     /**
      * 

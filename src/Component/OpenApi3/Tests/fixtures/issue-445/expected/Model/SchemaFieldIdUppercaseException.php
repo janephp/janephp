@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class SchemaFieldIdUppercaseException
+class SchemaFieldIdUppercaseException extends \ArrayObject
 {
     /**
      * 

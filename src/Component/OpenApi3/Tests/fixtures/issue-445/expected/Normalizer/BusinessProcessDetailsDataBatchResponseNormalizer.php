@@ -43,12 +43,20 @@ class BusinessProcessDetailsDataBatchResponseNormalizer implements DenormalizerI
         }
         if (\array_key_exists('kind', $data)) {
             $object->setKind($data['kind']);
+            unset($data['kind']);
         }
         if (\array_key_exists('docType', $data)) {
             $object->setDocType($data['docType']);
+            unset($data['docType']);
         }
         if (\array_key_exists('response', $data)) {
             $object->setResponse($data['response']);
+            unset($data['response']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -61,6 +69,11 @@ class BusinessProcessDetailsDataBatchResponseNormalizer implements DenormalizerI
         $data['kind'] = $object->getKind();
         $data['docType'] = $object->getDocType();
         $data['response'] = $object->getResponse();
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
         return $data;
     }
 }

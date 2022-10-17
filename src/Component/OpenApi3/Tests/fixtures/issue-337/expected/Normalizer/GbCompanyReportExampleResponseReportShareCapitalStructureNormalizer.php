@@ -46,9 +46,11 @@ class GbCompanyReportExampleResponseReportShareCapitalStructureNormalizer implem
         }
         if (\array_key_exists('issuedShareCapital', $data)) {
             $object->setIssuedShareCapital($this->denormalizer->denormalize($data['issuedShareCapital'], 'CreditSafe\\API\\Model\\GbCompanyReportExampleResponseReportShareCapitalStructureIssuedShareCapital', 'json', $context));
+            unset($data['issuedShareCapital']);
         }
         if (\array_key_exists('numberOfSharesIssued', $data)) {
             $object->setNumberOfSharesIssued($data['numberOfSharesIssued']);
+            unset($data['numberOfSharesIssued']);
         }
         if (\array_key_exists('shareHolders', $data)) {
             $values = array();
@@ -56,6 +58,12 @@ class GbCompanyReportExampleResponseReportShareCapitalStructureNormalizer implem
                 $values[] = $this->denormalizer->denormalize($value, 'CreditSafe\\API\\Model\\GbCompanyReportExampleResponseReportShareCapitalStructureShareHoldersItem', 'json', $context);
             }
             $object->setShareHolders($values);
+            unset($data['shareHolders']);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
@@ -77,6 +85,11 @@ class GbCompanyReportExampleResponseReportShareCapitalStructureNormalizer implem
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data['shareHolders'] = $values;
+        }
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
+            }
         }
         return $data;
     }

@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class ContentPermissionSetDetail
+class ContentPermissionSetDetail extends \ArrayObject
 {
     /**
      * The permission set ID.

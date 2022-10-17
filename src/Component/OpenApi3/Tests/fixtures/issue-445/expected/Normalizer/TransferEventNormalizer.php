@@ -43,18 +43,27 @@ class TransferEventNormalizer implements DenormalizerInterface, NormalizerInterf
         }
         if (\array_key_exists('timestamp', $data)) {
             $object->setTimestamp(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['timestamp']));
+            unset($data['timestamp']);
         }
         if (\array_key_exists('kind', $data)) {
             $object->setKind($data['kind']);
+            unset($data['kind']);
         }
         if (\array_key_exists('transferId', $data) && $data['transferId'] !== null) {
             $object->setTransferId($data['transferId']);
+            unset($data['transferId']);
         }
         elseif (\array_key_exists('transferId', $data) && $data['transferId'] === null) {
             $object->setTransferId(null);
         }
         if (\array_key_exists('state', $data)) {
             $object->setState($data['state']);
+            unset($data['state']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -71,6 +80,11 @@ class TransferEventNormalizer implements DenormalizerInterface, NormalizerInterf
         }
         if (null !== $object->getState()) {
             $data['state'] = $object->getState();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

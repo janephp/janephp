@@ -121,81 +121,112 @@ class GbCompanyReportExampleResponseReportFinancialStatementsItemBalanceSheetNor
         }
         if (\array_key_exists('totalTangibleAssets', $data)) {
             $object->setTotalTangibleAssets($data['totalTangibleAssets']);
+            unset($data['totalTangibleAssets']);
         }
         if (\array_key_exists('totalIntangibleAssets', $data)) {
             $object->setTotalIntangibleAssets($data['totalIntangibleAssets']);
+            unset($data['totalIntangibleAssets']);
         }
         if (\array_key_exists('totalOtherFixedAssets', $data)) {
             $object->setTotalOtherFixedAssets($data['totalOtherFixedAssets']);
+            unset($data['totalOtherFixedAssets']);
         }
         if (\array_key_exists('totalFixedAssets', $data)) {
             $object->setTotalFixedAssets($data['totalFixedAssets']);
+            unset($data['totalFixedAssets']);
         }
         if (\array_key_exists('totalInventories', $data)) {
             $object->setTotalInventories($data['totalInventories']);
+            unset($data['totalInventories']);
         }
         if (\array_key_exists('tradeReceivables', $data)) {
             $object->setTradeReceivables($data['tradeReceivables']);
+            unset($data['tradeReceivables']);
         }
         if (\array_key_exists('miscellaneousReceivables', $data)) {
             $object->setMiscellaneousReceivables($data['miscellaneousReceivables']);
+            unset($data['miscellaneousReceivables']);
         }
         if (\array_key_exists('totalReceivables', $data)) {
             $object->setTotalReceivables($data['totalReceivables']);
+            unset($data['totalReceivables']);
         }
         if (\array_key_exists('cash', $data)) {
             $object->setCash($data['cash']);
+            unset($data['cash']);
         }
         if (\array_key_exists('otherCurrentAssets', $data)) {
             $object->setOtherCurrentAssets($data['otherCurrentAssets']);
+            unset($data['otherCurrentAssets']);
         }
         if (\array_key_exists('totalCurrentAssets', $data)) {
             $object->setTotalCurrentAssets($data['totalCurrentAssets']);
+            unset($data['totalCurrentAssets']);
         }
         if (\array_key_exists('totalAssets', $data)) {
             $object->setTotalAssets($data['totalAssets']);
+            unset($data['totalAssets']);
         }
         if (\array_key_exists('tradePayables', $data)) {
             $object->setTradePayables($data['tradePayables']);
+            unset($data['tradePayables']);
         }
         if (\array_key_exists('bankLiabilities', $data)) {
             $object->setBankLiabilities($data['bankLiabilities']);
+            unset($data['bankLiabilities']);
         }
         if (\array_key_exists('otherLoansOrFinance', $data)) {
             $object->setOtherLoansOrFinance($data['otherLoansOrFinance']);
+            unset($data['otherLoansOrFinance']);
         }
         if (\array_key_exists('miscellaneousLiabilities', $data)) {
             $object->setMiscellaneousLiabilities($data['miscellaneousLiabilities']);
+            unset($data['miscellaneousLiabilities']);
         }
         if (\array_key_exists('totalCurrentLiabilities', $data)) {
             $object->setTotalCurrentLiabilities($data['totalCurrentLiabilities']);
+            unset($data['totalCurrentLiabilities']);
         }
         if (\array_key_exists('bankLiabilitiesDueAfter1Year', $data)) {
             $object->setBankLiabilitiesDueAfter1Year($data['bankLiabilitiesDueAfter1Year']);
+            unset($data['bankLiabilitiesDueAfter1Year']);
         }
         if (\array_key_exists('otherLoansOrFinanceDueAfter1Year', $data)) {
             $object->setOtherLoansOrFinanceDueAfter1Year($data['otherLoansOrFinanceDueAfter1Year']);
+            unset($data['otherLoansOrFinanceDueAfter1Year']);
         }
         if (\array_key_exists('miscellaneousLiabilitiesDueAfter1Year', $data)) {
             $object->setMiscellaneousLiabilitiesDueAfter1Year($data['miscellaneousLiabilitiesDueAfter1Year']);
+            unset($data['miscellaneousLiabilitiesDueAfter1Year']);
         }
         if (\array_key_exists('totalLongTermLiabilities', $data)) {
             $object->setTotalLongTermLiabilities($data['totalLongTermLiabilities']);
+            unset($data['totalLongTermLiabilities']);
         }
         if (\array_key_exists('totalLiabilities', $data)) {
             $object->setTotalLiabilities($data['totalLiabilities']);
+            unset($data['totalLiabilities']);
         }
         if (\array_key_exists('calledUpShareCapital', $data)) {
             $object->setCalledUpShareCapital($data['calledUpShareCapital']);
+            unset($data['calledUpShareCapital']);
         }
         if (\array_key_exists('revenueReserves', $data)) {
             $object->setRevenueReserves($data['revenueReserves']);
+            unset($data['revenueReserves']);
         }
         if (\array_key_exists('otherReserves', $data)) {
             $object->setOtherReserves($data['otherReserves']);
+            unset($data['otherReserves']);
         }
         if (\array_key_exists('totalShareholdersEquity', $data)) {
             $object->setTotalShareholdersEquity($data['totalShareholdersEquity']);
+            unset($data['totalShareholdersEquity']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -282,6 +313,11 @@ class GbCompanyReportExampleResponseReportFinancialStatementsItemBalanceSheetNor
         }
         if (null !== $object->getTotalShareholdersEquity()) {
             $data['totalShareholdersEquity'] = $object->getTotalShareholdersEquity();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

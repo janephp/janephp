@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class ContentPermissionSetUpdateRequestItem
+class ContentPermissionSetUpdateRequestItem extends \ArrayObject
 {
     /**
      * Language specific permission set names.

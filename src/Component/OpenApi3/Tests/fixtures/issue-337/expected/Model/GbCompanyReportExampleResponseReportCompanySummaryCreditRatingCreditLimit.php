@@ -2,7 +2,7 @@
 
 namespace CreditSafe\API\Model;
 
-class GbCompanyReportExampleResponseReportCompanySummaryCreditRatingCreditLimit
+class GbCompanyReportExampleResponseReportCompanySummaryCreditRatingCreditLimit extends \ArrayObject
 {
     /**
      * 

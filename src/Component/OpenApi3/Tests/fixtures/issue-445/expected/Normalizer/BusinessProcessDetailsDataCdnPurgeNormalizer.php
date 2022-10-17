@@ -43,9 +43,11 @@ class BusinessProcessDetailsDataCdnPurgeNormalizer implements DenormalizerInterf
         }
         if (\array_key_exists('kind', $data)) {
             $object->setKind($data['kind']);
+            unset($data['kind']);
         }
         if (\array_key_exists('serializedCdnConfiguration', $data)) {
             $object->setSerializedCdnConfiguration($data['serializedCdnConfiguration']);
+            unset($data['serializedCdnConfiguration']);
         }
         if (\array_key_exists('jobs', $data)) {
             $values = array();
@@ -53,6 +55,12 @@ class BusinessProcessDetailsDataCdnPurgeNormalizer implements DenormalizerInterf
                 $values[] = $this->denormalizer->denormalize($value, 'PicturePark\\API\\Model\\CdnPurgeJobBase', 'json', $context);
             }
             $object->setJobs($values);
+            unset($data['jobs']);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
@@ -69,6 +77,11 @@ class BusinessProcessDetailsDataCdnPurgeNormalizer implements DenormalizerInterf
             $values[] = $this->normalizer->normalize($value, 'json', $context);
         }
         $data['jobs'] = $values;
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
+            }
+        }
         return $data;
     }
 }

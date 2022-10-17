@@ -43,6 +43,12 @@ class MonitoringPortfoliosPortfolioIdCompaniesClearPatchBodyCompaniesItemNormali
         }
         if (\array_key_exists('id', $data)) {
             $object->setId($data['id']);
+            unset($data['id']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -54,6 +60,11 @@ class MonitoringPortfoliosPortfolioIdCompaniesClearPatchBodyCompaniesItemNormali
         $data = array();
         if (null !== $object->getId()) {
             $data['id'] = $object->getId();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

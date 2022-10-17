@@ -43,24 +43,36 @@ class VideoMetricsNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         if (\array_key_exists('media_key', $data)) {
             $object->setMediaKey($data['media_key']);
+            unset($data['media_key']);
         }
         if (\array_key_exists('view_count', $data)) {
             $object->setViewCount($data['view_count']);
+            unset($data['view_count']);
         }
         if (\array_key_exists('playback_0_count', $data)) {
             $object->setPlayback0Count($data['playback_0_count']);
+            unset($data['playback_0_count']);
         }
         if (\array_key_exists('playback_25_count', $data)) {
             $object->setPlayback25Count($data['playback_25_count']);
+            unset($data['playback_25_count']);
         }
         if (\array_key_exists('playback_50_count', $data)) {
             $object->setPlayback50Count($data['playback_50_count']);
+            unset($data['playback_50_count']);
         }
         if (\array_key_exists('playback_75_count', $data)) {
             $object->setPlayback75Count($data['playback_75_count']);
+            unset($data['playback_75_count']);
         }
         if (\array_key_exists('playback_100_count', $data)) {
             $object->setPlayback100Count($data['playback_100_count']);
+            unset($data['playback_100_count']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -86,6 +98,11 @@ class VideoMetricsNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         if (null !== $object->getPlayback100Count()) {
             $data['playback_100_count'] = $object->getPlayback100Count();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

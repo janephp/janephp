@@ -43,6 +43,7 @@ class BusinessProcessDetailsDataContentImportNormalizer implements DenormalizerI
         }
         if (\array_key_exists('kind', $data)) {
             $object->setKind($data['kind']);
+            unset($data['kind']);
         }
         if (\array_key_exists('items', $data) && $data['items'] !== null) {
             $values = array();
@@ -50,9 +51,15 @@ class BusinessProcessDetailsDataContentImportNormalizer implements DenormalizerI
                 $values[] = $this->denormalizer->denormalize($value, 'PicturePark\\API\\Model\\ContentImportResult', 'json', $context);
             }
             $object->setItems($values);
+            unset($data['items']);
         }
         elseif (\array_key_exists('items', $data) && $data['items'] === null) {
             $object->setItems(null);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
@@ -69,6 +76,11 @@ class BusinessProcessDetailsDataContentImportNormalizer implements DenormalizerI
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data['items'] = $values;
+        }
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
+            }
         }
         return $data;
     }

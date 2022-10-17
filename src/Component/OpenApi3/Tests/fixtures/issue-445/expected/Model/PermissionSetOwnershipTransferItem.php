@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class PermissionSetOwnershipTransferItem
+class PermissionSetOwnershipTransferItem extends \ArrayObject
 {
     /**
      * The ID of the user to whom the permission set ownership should be transferred to.

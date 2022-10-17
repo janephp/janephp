@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class ListItemCyclicDependencyException
+class ListItemCyclicDependencyException extends \ArrayObject
 {
     /**
      * 

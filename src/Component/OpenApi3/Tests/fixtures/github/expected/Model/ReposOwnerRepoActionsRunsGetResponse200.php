@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoActionsRunsGetResponse200
+class ReposOwnerRepoActionsRunsGetResponse200 extends \ArrayObject
 {
     /**
      * 

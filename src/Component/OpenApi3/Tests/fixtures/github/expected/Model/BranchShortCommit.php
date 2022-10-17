@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class BranchShortCommit
+class BranchShortCommit extends \ArrayObject
 {
     /**
      * 

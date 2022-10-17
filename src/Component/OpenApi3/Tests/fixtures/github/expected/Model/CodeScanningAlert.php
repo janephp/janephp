@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class CodeScanningAlert
+class CodeScanningAlert extends \ArrayObject
 {
     /**
      * 

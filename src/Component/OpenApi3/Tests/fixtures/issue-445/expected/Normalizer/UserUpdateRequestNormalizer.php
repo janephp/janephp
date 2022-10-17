@@ -43,27 +43,32 @@ class UserUpdateRequestNormalizer implements DenormalizerInterface, NormalizerIn
         }
         if (\array_key_exists('id', $data) && $data['id'] !== null) {
             $object->setId($data['id']);
+            unset($data['id']);
         }
         elseif (\array_key_exists('id', $data) && $data['id'] === null) {
             $object->setId(null);
         }
         if (\array_key_exists('firstName', $data) && $data['firstName'] !== null) {
             $object->setFirstName($data['firstName']);
+            unset($data['firstName']);
         }
         elseif (\array_key_exists('firstName', $data) && $data['firstName'] === null) {
             $object->setFirstName(null);
         }
         if (\array_key_exists('lastName', $data) && $data['lastName'] !== null) {
             $object->setLastName($data['lastName']);
+            unset($data['lastName']);
         }
         elseif (\array_key_exists('lastName', $data) && $data['lastName'] === null) {
             $object->setLastName(null);
         }
         if (\array_key_exists('emailAddress', $data)) {
             $object->setEmailAddress($data['emailAddress']);
+            unset($data['emailAddress']);
         }
         if (\array_key_exists('isDeleted', $data)) {
             $object->setIsDeleted($data['isDeleted']);
+            unset($data['isDeleted']);
         }
         if (\array_key_exists('userRoles', $data) && $data['userRoles'] !== null) {
             $values = array();
@@ -71,33 +76,43 @@ class UserUpdateRequestNormalizer implements DenormalizerInterface, NormalizerIn
                 $values[] = $this->denormalizer->denormalize($value, 'PicturePark\\API\\Model\\UserRole', 'json', $context);
             }
             $object->setUserRoles($values);
+            unset($data['userRoles']);
         }
         elseif (\array_key_exists('userRoles', $data) && $data['userRoles'] === null) {
             $object->setUserRoles(null);
         }
         if (\array_key_exists('comment', $data) && $data['comment'] !== null) {
             $object->setComment($data['comment']);
+            unset($data['comment']);
         }
         elseif (\array_key_exists('comment', $data) && $data['comment'] === null) {
             $object->setComment(null);
         }
         if (\array_key_exists('languageCode', $data) && $data['languageCode'] !== null) {
             $object->setLanguageCode($data['languageCode']);
+            unset($data['languageCode']);
         }
         elseif (\array_key_exists('languageCode', $data) && $data['languageCode'] === null) {
             $object->setLanguageCode(null);
         }
         if (\array_key_exists('address', $data) && $data['address'] !== null) {
             $object->setAddress($data['address']);
+            unset($data['address']);
         }
         elseif (\array_key_exists('address', $data) && $data['address'] === null) {
             $object->setAddress(null);
         }
         if (\array_key_exists('identityProviderId', $data) && $data['identityProviderId'] !== null) {
             $object->setIdentityProviderId($data['identityProviderId']);
+            unset($data['identityProviderId']);
         }
         elseif (\array_key_exists('identityProviderId', $data) && $data['identityProviderId'] === null) {
             $object->setIdentityProviderId(null);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
@@ -136,6 +151,11 @@ class UserUpdateRequestNormalizer implements DenormalizerInterface, NormalizerIn
         }
         if (null !== $object->getIdentityProviderId()) {
             $data['identityProviderId'] = $object->getIdentityProviderId();
+        }
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
+            }
         }
         return $data;
     }

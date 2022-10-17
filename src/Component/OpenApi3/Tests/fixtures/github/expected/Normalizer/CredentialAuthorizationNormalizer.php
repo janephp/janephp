@@ -47,18 +47,23 @@ class CredentialAuthorizationNormalizer implements DenormalizerInterface, Normal
         }
         if (\array_key_exists('login', $data)) {
             $object->setLogin($data['login']);
+            unset($data['login']);
         }
         if (\array_key_exists('credential_id', $data)) {
             $object->setCredentialId($data['credential_id']);
+            unset($data['credential_id']);
         }
         if (\array_key_exists('credential_type', $data)) {
             $object->setCredentialType($data['credential_type']);
+            unset($data['credential_type']);
         }
         if (\array_key_exists('token_last_eight', $data)) {
             $object->setTokenLastEight($data['token_last_eight']);
+            unset($data['token_last_eight']);
         }
         if (\array_key_exists('credential_authorized_at', $data)) {
             $object->setCredentialAuthorizedAt(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['credential_authorized_at']));
+            unset($data['credential_authorized_at']);
         }
         if (\array_key_exists('scopes', $data)) {
             $values = array();
@@ -66,15 +71,23 @@ class CredentialAuthorizationNormalizer implements DenormalizerInterface, Normal
                 $values[] = $value;
             }
             $object->setScopes($values);
+            unset($data['scopes']);
         }
         if (\array_key_exists('fingerprint', $data)) {
             $object->setFingerprint($data['fingerprint']);
+            unset($data['fingerprint']);
         }
         if (\array_key_exists('credential_accessed_at', $data) && $data['credential_accessed_at'] !== null) {
             $object->setCredentialAccessedAt(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['credential_accessed_at']));
+            unset($data['credential_accessed_at']);
         }
         elseif (\array_key_exists('credential_accessed_at', $data) && $data['credential_accessed_at'] === null) {
             $object->setCredentialAccessedAt(null);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
@@ -103,6 +116,11 @@ class CredentialAuthorizationNormalizer implements DenormalizerInterface, Normal
         }
         if (null !== $object->getCredentialAccessedAt()) {
             $data['credential_accessed_at'] = $object->getCredentialAccessedAt()->format('Y-m-d\\TH:i:sP');
+        }
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\CredentialAuthorizationConstraint());

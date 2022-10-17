@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class BusinessRuleRuleIdDuplicationException
+class BusinessRuleRuleIdDuplicationException extends \ArrayObject
 {
     /**
      * 

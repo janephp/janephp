@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class ChunkSizeOutOfRangeException
+class ChunkSizeOutOfRangeException extends \ArrayObject
 {
     /**
      * 

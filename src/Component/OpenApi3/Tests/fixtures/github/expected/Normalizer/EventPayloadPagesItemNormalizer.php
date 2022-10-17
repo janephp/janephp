@@ -47,24 +47,35 @@ class EventPayloadPagesItemNormalizer implements DenormalizerInterface, Normaliz
         }
         if (\array_key_exists('page_name', $data)) {
             $object->setPageName($data['page_name']);
+            unset($data['page_name']);
         }
         if (\array_key_exists('title', $data)) {
             $object->setTitle($data['title']);
+            unset($data['title']);
         }
         if (\array_key_exists('summary', $data) && $data['summary'] !== null) {
             $object->setSummary($data['summary']);
+            unset($data['summary']);
         }
         elseif (\array_key_exists('summary', $data) && $data['summary'] === null) {
             $object->setSummary(null);
         }
         if (\array_key_exists('action', $data)) {
             $object->setAction($data['action']);
+            unset($data['action']);
         }
         if (\array_key_exists('sha', $data)) {
             $object->setSha($data['sha']);
+            unset($data['sha']);
         }
         if (\array_key_exists('html_url', $data)) {
             $object->setHtmlUrl($data['html_url']);
+            unset($data['html_url']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -91,6 +102,11 @@ class EventPayloadPagesItemNormalizer implements DenormalizerInterface, Normaliz
         }
         if (null !== $object->getHtmlUrl()) {
             $data['html_url'] = $object->getHtmlUrl();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\EventPayloadPagesItemConstraint());

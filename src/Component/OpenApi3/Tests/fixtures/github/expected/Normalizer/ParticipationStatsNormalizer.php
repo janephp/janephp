@@ -51,6 +51,7 @@ class ParticipationStatsNormalizer implements DenormalizerInterface, NormalizerI
                 $values[] = $value;
             }
             $object->setAll($values);
+            unset($data['all']);
         }
         if (\array_key_exists('owner', $data)) {
             $values_1 = array();
@@ -58,6 +59,12 @@ class ParticipationStatsNormalizer implements DenormalizerInterface, NormalizerI
                 $values_1[] = $value_1;
             }
             $object->setOwner($values_1);
+            unset($data['owner']);
+        }
+        foreach ($data as $key => $value_2) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_2;
+            }
         }
         return $object;
     }
@@ -80,6 +87,11 @@ class ParticipationStatsNormalizer implements DenormalizerInterface, NormalizerI
                 $values_1[] = $value_1;
             }
             $data['owner'] = $values_1;
+        }
+        foreach ($object as $key => $value_2) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_2;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ParticipationStatsConstraint());

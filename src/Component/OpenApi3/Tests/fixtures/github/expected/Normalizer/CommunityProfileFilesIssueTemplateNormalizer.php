@@ -47,9 +47,16 @@ class CommunityProfileFilesIssueTemplateNormalizer implements DenormalizerInterf
         }
         if (\array_key_exists('url', $data)) {
             $object->setUrl($data['url']);
+            unset($data['url']);
         }
         if (\array_key_exists('html_url', $data)) {
             $object->setHtmlUrl($data['html_url']);
+            unset($data['html_url']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -61,6 +68,11 @@ class CommunityProfileFilesIssueTemplateNormalizer implements DenormalizerInterf
         $data = array();
         $data['url'] = $object->getUrl();
         $data['html_url'] = $object->getHtmlUrl();
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\CommunityProfileFilesIssueTemplateConstraint());
             $context['skip_validation'] = true;

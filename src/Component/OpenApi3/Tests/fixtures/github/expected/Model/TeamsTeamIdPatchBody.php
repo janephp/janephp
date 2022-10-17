@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class TeamsTeamIdPatchBody
+class TeamsTeamIdPatchBody extends \ArrayObject
 {
     /**
      * The name of the team.

@@ -43,51 +43,72 @@ class DetailedUserNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         if (\array_key_exists('format', $data)) {
             $object->setFormat($data['format']);
+            unset($data['format']);
         }
         if (\array_key_exists('id', $data)) {
             $object->setId($data['id']);
+            unset($data['id']);
         }
         if (\array_key_exists('created_at', $data)) {
             $object->setCreatedAt(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['created_at']));
+            unset($data['created_at']);
         }
         if (\array_key_exists('name', $data)) {
             $object->setName($data['name']);
+            unset($data['name']);
         }
         if (\array_key_exists('username', $data)) {
             $object->setUsername($data['username']);
+            unset($data['username']);
         }
         if (\array_key_exists('protected', $data)) {
             $object->setProtected($data['protected']);
+            unset($data['protected']);
         }
         if (\array_key_exists('verified', $data)) {
             $object->setVerified($data['verified']);
+            unset($data['verified']);
         }
         if (\array_key_exists('withheld', $data)) {
             $object->setWithheld($this->denormalizer->denormalize($data['withheld'], 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Model\\UserWithheld', 'json', $context));
+            unset($data['withheld']);
         }
         if (\array_key_exists('profile_image_url', $data)) {
             $object->setProfileImageUrl($data['profile_image_url']);
+            unset($data['profile_image_url']);
         }
         if (\array_key_exists('location', $data)) {
             $object->setLocation($data['location']);
+            unset($data['location']);
         }
         if (\array_key_exists('url', $data)) {
             $object->setUrl($data['url']);
+            unset($data['url']);
         }
         if (\array_key_exists('description', $data)) {
             $object->setDescription($data['description']);
+            unset($data['description']);
         }
         if (\array_key_exists('entities', $data)) {
             $object->setEntities($this->denormalizer->denormalize($data['entities'], 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Model\\DefaultUserFieldsEntities', 'json', $context));
+            unset($data['entities']);
         }
         if (\array_key_exists('most_recent_tweet_id', $data)) {
             $object->setMostRecentTweetId($data['most_recent_tweet_id']);
+            unset($data['most_recent_tweet_id']);
         }
         if (\array_key_exists('pinned_tweet_id', $data)) {
             $object->setPinnedTweetId($data['pinned_tweet_id']);
+            unset($data['pinned_tweet_id']);
         }
         if (\array_key_exists('stats', $data)) {
             $object->setStats($this->denormalizer->denormalize($data['stats'], 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Model\\DetailedUserFieldsStats', 'json', $context));
+            unset($data['stats']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -128,6 +149,11 @@ class DetailedUserNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         if (null !== $object->getStats()) {
             $data['stats'] = $this->normalizer->normalize($object->getStats(), 'json', $context);
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

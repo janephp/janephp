@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class UserPropertyChangeNotSupportedException
+class UserPropertyChangeNotSupportedException extends \ArrayObject
 {
     /**
      * 

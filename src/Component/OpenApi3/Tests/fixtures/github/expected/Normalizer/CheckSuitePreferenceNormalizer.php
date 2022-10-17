@@ -47,9 +47,16 @@ class CheckSuitePreferenceNormalizer implements DenormalizerInterface, Normalize
         }
         if (\array_key_exists('preferences', $data)) {
             $object->setPreferences($this->denormalizer->denormalize($data['preferences'], 'Github\\Model\\CheckSuitePreferencePreferences', 'json', $context));
+            unset($data['preferences']);
         }
         if (\array_key_exists('repository', $data)) {
             $object->setRepository($this->denormalizer->denormalize($data['repository'], 'Github\\Model\\Repository', 'json', $context));
+            unset($data['repository']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -64,6 +71,11 @@ class CheckSuitePreferenceNormalizer implements DenormalizerInterface, Normalize
         }
         if (null !== $object->getRepository()) {
             $data['repository'] = $this->normalizer->normalize($object->getRepository(), 'json', $context);
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\CheckSuitePreferenceConstraint());

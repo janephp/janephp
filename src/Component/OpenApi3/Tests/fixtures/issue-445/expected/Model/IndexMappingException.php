@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class IndexMappingException
+class IndexMappingException extends \ArrayObject
 {
     /**
      * 

@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class RateLimitOverview
+class RateLimitOverview extends \ArrayObject
 {
     /**
      * 

@@ -51,9 +51,16 @@ class InvalidRequestProblemErrorsItemNormalizer implements DenormalizerInterface
                 $values[$key] = $values_1;
             }
             $object->setParameters($values);
+            unset($data['parameters']);
         }
         if (\array_key_exists('message', $data)) {
             $object->setMessage($data['message']);
+            unset($data['message']);
+        }
+        foreach ($data as $key_1 => $value_2) {
+            if (preg_match('/.*/', (string) $key_1)) {
+                $object[$key_1] = $value_2;
+            }
         }
         return $object;
     }
@@ -76,6 +83,11 @@ class InvalidRequestProblemErrorsItemNormalizer implements DenormalizerInterface
         }
         if (null !== $object->getMessage()) {
             $data['message'] = $object->getMessage();
+        }
+        foreach ($object as $key_1 => $value_2) {
+            if (preg_match('/.*/', (string) $key_1)) {
+                $data[$key_1] = $value_2;
+            }
         }
         return $data;
     }

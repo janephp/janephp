@@ -47,6 +47,7 @@ class ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyNormalizer imple
         }
         if (\array_key_exists('ref', $data)) {
             $object->setRef($data['ref']);
+            unset($data['ref']);
         }
         if (\array_key_exists('inputs', $data)) {
             $values = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
@@ -54,6 +55,12 @@ class ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyNormalizer imple
                 $values[$key] = $value;
             }
             $object->setInputs($values);
+            unset($data['inputs']);
+        }
+        foreach ($data as $key_1 => $value_1) {
+            if (preg_match('/.*/', (string) $key_1)) {
+                $object[$key_1] = $value_1;
+            }
         }
         return $object;
     }
@@ -70,6 +77,11 @@ class ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyNormalizer imple
                 $values[$key] = $value;
             }
             $data['inputs'] = $values;
+        }
+        foreach ($object as $key_1 => $value_1) {
+            if (preg_match('/.*/', (string) $key_1)) {
+                $data[$key_1] = $value_1;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyConstraint());

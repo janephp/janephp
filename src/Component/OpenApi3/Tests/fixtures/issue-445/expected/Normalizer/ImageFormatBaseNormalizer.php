@@ -49,33 +49,40 @@ class ImageFormatBaseNormalizer implements DenormalizerInterface, NormalizerInte
         }
         if (\array_key_exists('kind', $data)) {
             $object->setKind($data['kind']);
+            unset($data['kind']);
         }
         if (\array_key_exists('colorProfile', $data) && $data['colorProfile'] !== null) {
             $object->setColorProfile($data['colorProfile']);
+            unset($data['colorProfile']);
         }
         elseif (\array_key_exists('colorProfile', $data) && $data['colorProfile'] === null) {
             $object->setColorProfile(null);
         }
         if (\array_key_exists('colorTransformationIntent', $data)) {
             $object->setColorTransformationIntent($data['colorTransformationIntent']);
+            unset($data['colorTransformationIntent']);
         }
         if (\array_key_exists('horizontalResolution', $data) && $data['horizontalResolution'] !== null) {
             $object->setHorizontalResolution($data['horizontalResolution']);
+            unset($data['horizontalResolution']);
         }
         elseif (\array_key_exists('horizontalResolution', $data) && $data['horizontalResolution'] === null) {
             $object->setHorizontalResolution(null);
         }
         if (\array_key_exists('verticalResolution', $data) && $data['verticalResolution'] !== null) {
             $object->setVerticalResolution($data['verticalResolution']);
+            unset($data['verticalResolution']);
         }
         elseif (\array_key_exists('verticalResolution', $data) && $data['verticalResolution'] === null) {
             $object->setVerticalResolution(null);
         }
         if (\array_key_exists('keepClippingPath', $data)) {
             $object->setKeepClippingPath($data['keepClippingPath']);
+            unset($data['keepClippingPath']);
         }
         if (\array_key_exists('resizeAction', $data) && $data['resizeAction'] !== null) {
             $object->setResizeAction($data['resizeAction']);
+            unset($data['resizeAction']);
         }
         elseif (\array_key_exists('resizeAction', $data) && $data['resizeAction'] === null) {
             $object->setResizeAction(null);
@@ -86,9 +93,15 @@ class ImageFormatBaseNormalizer implements DenormalizerInterface, NormalizerInte
                 $values[] = $this->denormalizer->denormalize($value, 'PicturePark\\API\\Model\\ImageActionBase', 'json', $context);
             }
             $object->setActions($values);
+            unset($data['actions']);
         }
         elseif (\array_key_exists('actions', $data) && $data['actions'] === null) {
             $object->setActions(null);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
@@ -123,6 +136,11 @@ class ImageFormatBaseNormalizer implements DenormalizerInterface, NormalizerInte
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data['actions'] = $values;
+        }
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
+            }
         }
         return $data;
     }

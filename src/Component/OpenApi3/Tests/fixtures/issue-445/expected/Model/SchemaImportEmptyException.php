@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class SchemaImportEmptyException
+class SchemaImportEmptyException extends \ArrayObject
 {
     /**
      * 

@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class OutputNotAvailableException
+class OutputNotAvailableException extends \ArrayObject
 {
     /**
      * 

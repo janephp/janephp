@@ -43,6 +43,7 @@ class ListItemSearchRequestNormalizer implements DenormalizerInterface, Normaliz
         }
         if (\array_key_exists('searchString', $data) && $data['searchString'] !== null) {
             $object->setSearchString($data['searchString']);
+            unset($data['searchString']);
         }
         elseif (\array_key_exists('searchString', $data) && $data['searchString'] === null) {
             $object->setSearchString(null);
@@ -53,12 +54,14 @@ class ListItemSearchRequestNormalizer implements DenormalizerInterface, Normaliz
                 $values[] = $value;
             }
             $object->setSearchBehaviors($values);
+            unset($data['searchBehaviors']);
         }
         elseif (\array_key_exists('searchBehaviors', $data) && $data['searchBehaviors'] === null) {
             $object->setSearchBehaviors(null);
         }
         if (\array_key_exists('filter', $data) && $data['filter'] !== null) {
             $object->setFilter($data['filter']);
+            unset($data['filter']);
         }
         elseif (\array_key_exists('filter', $data) && $data['filter'] === null) {
             $object->setFilter(null);
@@ -69,15 +72,18 @@ class ListItemSearchRequestNormalizer implements DenormalizerInterface, Normaliz
                 $values_1[] = $this->denormalizer->denormalize($value_1, 'PicturePark\\API\\Model\\AggregationFilter', 'json', $context);
             }
             $object->setAggregationFilters($values_1);
+            unset($data['aggregationFilters']);
         }
         elseif (\array_key_exists('aggregationFilters', $data) && $data['aggregationFilters'] === null) {
             $object->setAggregationFilters(null);
         }
         if (\array_key_exists('includeAllSchemaChildren', $data)) {
             $object->setIncludeAllSchemaChildren($data['includeAllSchemaChildren']);
+            unset($data['includeAllSchemaChildren']);
         }
         if (\array_key_exists('brokenDependenciesFilter', $data)) {
             $object->setBrokenDependenciesFilter($data['brokenDependenciesFilter']);
+            unset($data['brokenDependenciesFilter']);
         }
         if (\array_key_exists('schemaIds', $data) && $data['schemaIds'] !== null) {
             $values_2 = array();
@@ -85,6 +91,7 @@ class ListItemSearchRequestNormalizer implements DenormalizerInterface, Normaliz
                 $values_2[] = $value_2;
             }
             $object->setSchemaIds($values_2);
+            unset($data['schemaIds']);
         }
         elseif (\array_key_exists('schemaIds', $data) && $data['schemaIds'] === null) {
             $object->setSchemaIds(null);
@@ -95,12 +102,14 @@ class ListItemSearchRequestNormalizer implements DenormalizerInterface, Normaliz
                 $values_3[] = $value_3;
             }
             $object->setSearchLanguages($values_3);
+            unset($data['searchLanguages']);
         }
         elseif (\array_key_exists('searchLanguages', $data) && $data['searchLanguages'] === null) {
             $object->setSearchLanguages(null);
         }
         if (\array_key_exists('lifeCycleFilter', $data)) {
             $object->setLifeCycleFilter($data['lifeCycleFilter']);
+            unset($data['lifeCycleFilter']);
         }
         if (\array_key_exists('sort', $data) && $data['sort'] !== null) {
             $values_4 = array();
@@ -108,21 +117,25 @@ class ListItemSearchRequestNormalizer implements DenormalizerInterface, Normaliz
                 $values_4[] = $this->denormalizer->denormalize($value_4, 'PicturePark\\API\\Model\\SortInfo', 'json', $context);
             }
             $object->setSort($values_4);
+            unset($data['sort']);
         }
         elseif (\array_key_exists('sort', $data) && $data['sort'] === null) {
             $object->setSort(null);
         }
         if (\array_key_exists('limit', $data)) {
             $object->setLimit($data['limit']);
+            unset($data['limit']);
         }
         if (\array_key_exists('pageToken', $data) && $data['pageToken'] !== null) {
             $object->setPageToken($data['pageToken']);
+            unset($data['pageToken']);
         }
         elseif (\array_key_exists('pageToken', $data) && $data['pageToken'] === null) {
             $object->setPageToken(null);
         }
         if (\array_key_exists('debugMode', $data)) {
             $object->setDebugMode($data['debugMode']);
+            unset($data['debugMode']);
         }
         if (\array_key_exists('resolveBehaviors', $data) && $data['resolveBehaviors'] !== null) {
             $values_5 = array();
@@ -130,6 +143,7 @@ class ListItemSearchRequestNormalizer implements DenormalizerInterface, Normaliz
                 $values_5[] = $value_5;
             }
             $object->setResolveBehaviors($values_5);
+            unset($data['resolveBehaviors']);
         }
         elseif (\array_key_exists('resolveBehaviors', $data) && $data['resolveBehaviors'] === null) {
             $object->setResolveBehaviors(null);
@@ -140,9 +154,15 @@ class ListItemSearchRequestNormalizer implements DenormalizerInterface, Normaliz
                 $values_6[] = $this->denormalizer->denormalize($value_6, 'PicturePark\\API\\Model\\AggregatorBase', 'json', $context);
             }
             $object->setAggregators($values_6);
+            unset($data['aggregators']);
         }
         elseif (\array_key_exists('aggregators', $data) && $data['aggregators'] === null) {
             $object->setAggregators(null);
+        }
+        foreach ($data as $key => $value_7) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_7;
+            }
         }
         return $object;
     }
@@ -218,6 +238,11 @@ class ListItemSearchRequestNormalizer implements DenormalizerInterface, Normaliz
                 $values_6[] = $this->normalizer->normalize($value_6, 'json', $context);
             }
             $data['aggregators'] = $values_6;
+        }
+        foreach ($object as $key => $value_7) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_7;
+            }
         }
         return $data;
     }

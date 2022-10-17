@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class SchemaUpdateItem
+class SchemaUpdateItem extends \ArrayObject
 {
     /**
      * Language specific schema names.

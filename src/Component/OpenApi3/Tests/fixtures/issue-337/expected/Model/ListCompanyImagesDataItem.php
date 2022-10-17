@@ -2,7 +2,7 @@
 
 namespace CreditSafe\API\Model;
 
-class ListCompanyImagesDataItem
+class ListCompanyImagesDataItem extends \ArrayObject
 {
     /**
      * 

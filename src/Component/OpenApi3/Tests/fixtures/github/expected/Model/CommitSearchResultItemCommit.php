@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class CommitSearchResultItemCommit
+class CommitSearchResultItemCommit extends \ArrayObject
 {
     /**
      * 

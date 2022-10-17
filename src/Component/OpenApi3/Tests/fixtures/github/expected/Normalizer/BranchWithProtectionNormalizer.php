@@ -47,27 +47,40 @@ class BranchWithProtectionNormalizer implements DenormalizerInterface, Normalize
         }
         if (\array_key_exists('name', $data)) {
             $object->setName($data['name']);
+            unset($data['name']);
         }
         if (\array_key_exists('commit', $data)) {
             $object->setCommit($this->denormalizer->denormalize($data['commit'], 'Github\\Model\\Commit', 'json', $context));
+            unset($data['commit']);
         }
         if (\array_key_exists('_links', $data)) {
             $object->setLinks($this->denormalizer->denormalize($data['_links'], 'Github\\Model\\BranchWithProtectionLinks', 'json', $context));
+            unset($data['_links']);
         }
         if (\array_key_exists('protected', $data)) {
             $object->setProtected($data['protected']);
+            unset($data['protected']);
         }
         if (\array_key_exists('protection', $data)) {
             $object->setProtection($this->denormalizer->denormalize($data['protection'], 'Github\\Model\\BranchProtection', 'json', $context));
+            unset($data['protection']);
         }
         if (\array_key_exists('protection_url', $data)) {
             $object->setProtectionUrl($data['protection_url']);
+            unset($data['protection_url']);
         }
         if (\array_key_exists('pattern', $data)) {
             $object->setPattern($data['pattern']);
+            unset($data['pattern']);
         }
         if (\array_key_exists('required_approving_review_count', $data)) {
             $object->setRequiredApprovingReviewCount($data['required_approving_review_count']);
+            unset($data['required_approving_review_count']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -88,6 +101,11 @@ class BranchWithProtectionNormalizer implements DenormalizerInterface, Normalize
         }
         if (null !== $object->getRequiredApprovingReviewCount()) {
             $data['required_approving_review_count'] = $object->getRequiredApprovingReviewCount();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\BranchWithProtectionConstraint());

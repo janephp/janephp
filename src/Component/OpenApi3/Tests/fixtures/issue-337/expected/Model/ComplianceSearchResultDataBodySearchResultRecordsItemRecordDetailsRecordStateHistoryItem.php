@@ -2,7 +2,7 @@
 
 namespace CreditSafe\API\Model;
 
-class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsRecordStateHistoryItem
+class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsRecordStateHistoryItem extends \ArrayObject
 {
     /**
      * 

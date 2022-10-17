@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class BusinessRuleFieldPathInvalidException
+class BusinessRuleFieldPathInvalidException extends \ArrayObject
 {
     /**
      * 

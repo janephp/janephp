@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class BusinessProcessStateNotHitException
+class BusinessProcessStateNotHitException extends \ArrayObject
 {
     /**
      * 

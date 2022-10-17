@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class DuplicatedItemAssignedException
+class DuplicatedItemAssignedException extends \ArrayObject
 {
     /**
      * 

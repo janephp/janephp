@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class NotificationsPutResponse202
+class NotificationsPutResponse202 extends \ArrayObject
 {
     /**
      * 

@@ -2,7 +2,7 @@
 
 namespace CreditSafe\API\Model;
 
-class AuthenticationSuccessResponse
+class AuthenticationSuccessResponse extends \ArrayObject
 {
     /**
      * Authentication Token

@@ -47,21 +47,27 @@ class FeedNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         }
         if (\array_key_exists('timeline_url', $data)) {
             $object->setTimelineUrl($data['timeline_url']);
+            unset($data['timeline_url']);
         }
         if (\array_key_exists('user_url', $data)) {
             $object->setUserUrl($data['user_url']);
+            unset($data['user_url']);
         }
         if (\array_key_exists('current_user_public_url', $data)) {
             $object->setCurrentUserPublicUrl($data['current_user_public_url']);
+            unset($data['current_user_public_url']);
         }
         if (\array_key_exists('current_user_url', $data)) {
             $object->setCurrentUserUrl($data['current_user_url']);
+            unset($data['current_user_url']);
         }
         if (\array_key_exists('current_user_actor_url', $data)) {
             $object->setCurrentUserActorUrl($data['current_user_actor_url']);
+            unset($data['current_user_actor_url']);
         }
         if (\array_key_exists('current_user_organization_url', $data)) {
             $object->setCurrentUserOrganizationUrl($data['current_user_organization_url']);
+            unset($data['current_user_organization_url']);
         }
         if (\array_key_exists('current_user_organization_urls', $data)) {
             $values = array();
@@ -69,12 +75,20 @@ class FeedNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
                 $values[] = $value;
             }
             $object->setCurrentUserOrganizationUrls($values);
+            unset($data['current_user_organization_urls']);
         }
         if (\array_key_exists('security_advisories_url', $data)) {
             $object->setSecurityAdvisoriesUrl($data['security_advisories_url']);
+            unset($data['security_advisories_url']);
         }
         if (\array_key_exists('_links', $data)) {
             $object->setLinks($this->denormalizer->denormalize($data['_links'], 'Github\\Model\\FeedLinks', 'json', $context));
+            unset($data['_links']);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
@@ -109,6 +123,11 @@ class FeedNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             $data['security_advisories_url'] = $object->getSecurityAdvisoriesUrl();
         }
         $data['_links'] = $this->normalizer->normalize($object->getLinks(), 'json', $context);
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
+            }
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\FeedConstraint());
             $context['skip_validation'] = true;

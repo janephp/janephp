@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class CheckRunOutput
+class CheckRunOutput extends \ArrayObject
 {
     /**
      * 

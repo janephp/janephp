@@ -2,7 +2,7 @@
 
 namespace CreditSafe\API\Model;
 
-class CompanyEventsResponse
+class CompanyEventsResponse extends \ArrayObject
 {
     /**
      * The total number of events returned for the given company.

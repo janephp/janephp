@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class SchemaPermissionException
+class SchemaPermissionException extends \ArrayObject
 {
     /**
      * 

@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class OrgsOrgTeamsTeamSlugMembershipsUsernamePutResponse422
+class OrgsOrgTeamsTeamSlugMembershipsUsernamePutResponse422 extends \ArrayObject
 {
     /**
      * 

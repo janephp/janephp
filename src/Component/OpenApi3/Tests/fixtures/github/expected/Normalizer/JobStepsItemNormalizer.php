@@ -47,30 +47,41 @@ class JobStepsItemNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         if (\array_key_exists('status', $data)) {
             $object->setStatus($data['status']);
+            unset($data['status']);
         }
         if (\array_key_exists('conclusion', $data) && $data['conclusion'] !== null) {
             $object->setConclusion($data['conclusion']);
+            unset($data['conclusion']);
         }
         elseif (\array_key_exists('conclusion', $data) && $data['conclusion'] === null) {
             $object->setConclusion(null);
         }
         if (\array_key_exists('name', $data)) {
             $object->setName($data['name']);
+            unset($data['name']);
         }
         if (\array_key_exists('number', $data)) {
             $object->setNumber($data['number']);
+            unset($data['number']);
         }
         if (\array_key_exists('started_at', $data) && $data['started_at'] !== null) {
             $object->setStartedAt(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['started_at']));
+            unset($data['started_at']);
         }
         elseif (\array_key_exists('started_at', $data) && $data['started_at'] === null) {
             $object->setStartedAt(null);
         }
         if (\array_key_exists('completed_at', $data) && $data['completed_at'] !== null) {
             $object->setCompletedAt(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['completed_at']));
+            unset($data['completed_at']);
         }
         elseif (\array_key_exists('completed_at', $data) && $data['completed_at'] === null) {
             $object->setCompletedAt(null);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -89,6 +100,11 @@ class JobStepsItemNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         if (null !== $object->getCompletedAt()) {
             $data['completed_at'] = $object->getCompletedAt()->format('Y-m-d\\TH:i:sP');
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\JobStepsItemConstraint());

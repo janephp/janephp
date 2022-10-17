@@ -51,24 +51,35 @@ class AuthorizationsPostBodyNormalizer implements DenormalizerInterface, Normali
                 $values[] = $value;
             }
             $object->setScopes($values);
+            unset($data['scopes']);
         }
         elseif (\array_key_exists('scopes', $data) && $data['scopes'] === null) {
             $object->setScopes(null);
         }
         if (\array_key_exists('note', $data)) {
             $object->setNote($data['note']);
+            unset($data['note']);
         }
         if (\array_key_exists('note_url', $data)) {
             $object->setNoteUrl($data['note_url']);
+            unset($data['note_url']);
         }
         if (\array_key_exists('client_id', $data)) {
             $object->setClientId($data['client_id']);
+            unset($data['client_id']);
         }
         if (\array_key_exists('client_secret', $data)) {
             $object->setClientSecret($data['client_secret']);
+            unset($data['client_secret']);
         }
         if (\array_key_exists('fingerprint', $data)) {
             $object->setFingerprint($data['fingerprint']);
+            unset($data['fingerprint']);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
@@ -99,6 +110,11 @@ class AuthorizationsPostBodyNormalizer implements DenormalizerInterface, Normali
         }
         if (null !== $object->getFingerprint()) {
             $data['fingerprint'] = $object->getFingerprint();
+        }
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\AuthorizationsPostBodyConstraint());

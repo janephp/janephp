@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class PageBuildPusher
+class PageBuildPusher extends \ArrayObject
 {
     /**
      * 

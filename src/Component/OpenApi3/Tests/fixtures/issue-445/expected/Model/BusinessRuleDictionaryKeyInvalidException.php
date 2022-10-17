@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class BusinessRuleDictionaryKeyInvalidException
+class BusinessRuleDictionaryKeyInvalidException extends \ArrayObject
 {
     /**
      * 

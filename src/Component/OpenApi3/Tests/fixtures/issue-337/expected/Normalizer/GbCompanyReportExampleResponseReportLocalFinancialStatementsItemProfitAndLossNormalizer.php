@@ -85,45 +85,64 @@ class GbCompanyReportExampleResponseReportLocalFinancialStatementsItemProfitAndL
         }
         if (\array_key_exists('turnover', $data)) {
             $object->setTurnover($data['turnover']);
+            unset($data['turnover']);
         }
         if (\array_key_exists('costOfSales', $data)) {
             $object->setCostOfSales($data['costOfSales']);
+            unset($data['costOfSales']);
         }
         if (\array_key_exists('grossProfit', $data)) {
             $object->setGrossProfit($data['grossProfit']);
+            unset($data['grossProfit']);
         }
         if (\array_key_exists('depreciation', $data)) {
             $object->setDepreciation($data['depreciation']);
+            unset($data['depreciation']);
         }
         if (\array_key_exists('auditFees', $data)) {
             $object->setAuditFees($data['auditFees']);
+            unset($data['auditFees']);
         }
         if (\array_key_exists('wagesAndSalaries', $data)) {
             $object->setWagesAndSalaries($data['wagesAndSalaries']);
+            unset($data['wagesAndSalaries']);
         }
         if (\array_key_exists('directorsRemuneration', $data)) {
             $object->setDirectorsRemuneration($data['directorsRemuneration']);
+            unset($data['directorsRemuneration']);
         }
         if (\array_key_exists('operatingProfit', $data)) {
             $object->setOperatingProfit($data['operatingProfit']);
+            unset($data['operatingProfit']);
         }
         if (\array_key_exists('interestExpense', $data)) {
             $object->setInterestExpense($data['interestExpense']);
+            unset($data['interestExpense']);
         }
         if (\array_key_exists('profitBeforeTax', $data)) {
             $object->setProfitBeforeTax($data['profitBeforeTax']);
+            unset($data['profitBeforeTax']);
         }
         if (\array_key_exists('taxation', $data)) {
             $object->setTaxation($data['taxation']);
+            unset($data['taxation']);
         }
         if (\array_key_exists('profitAfterTax', $data)) {
             $object->setProfitAfterTax($data['profitAfterTax']);
+            unset($data['profitAfterTax']);
         }
         if (\array_key_exists('dividends', $data)) {
             $object->setDividends($data['dividends']);
+            unset($data['dividends']);
         }
         if (\array_key_exists('retainedProfit', $data)) {
             $object->setRetainedProfit($data['retainedProfit']);
+            unset($data['retainedProfit']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -174,6 +193,11 @@ class GbCompanyReportExampleResponseReportLocalFinancialStatementsItemProfitAndL
         }
         if (null !== $object->getRetainedProfit()) {
             $data['retainedProfit'] = $object->getRetainedProfit();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

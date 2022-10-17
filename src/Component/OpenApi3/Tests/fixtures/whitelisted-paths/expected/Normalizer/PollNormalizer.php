@@ -43,6 +43,7 @@ class PollNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         }
         if (\array_key_exists('id', $data)) {
             $object->setId($data['id']);
+            unset($data['id']);
         }
         if (\array_key_exists('options', $data)) {
             $values = array();
@@ -50,15 +51,24 @@ class PollNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
                 $values[] = $this->denormalizer->denormalize($value, 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Model\\PollOption', 'json', $context);
             }
             $object->setOptions($values);
+            unset($data['options']);
         }
         if (\array_key_exists('voting_status', $data)) {
             $object->setVotingStatus($data['voting_status']);
+            unset($data['voting_status']);
         }
         if (\array_key_exists('end_datetime', $data)) {
             $object->setEndDatetime(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['end_datetime']));
+            unset($data['end_datetime']);
         }
         if (\array_key_exists('duration_minutes', $data)) {
             $object->setDurationMinutes($data['duration_minutes']);
+            unset($data['duration_minutes']);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
@@ -78,6 +88,11 @@ class PollNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         $data['end_datetime'] = $object->getEndDatetime()->format('Y-m-d\\TH:i:sP');
         if (null !== $object->getDurationMinutes()) {
             $data['duration_minutes'] = $object->getDurationMinutes();
+        }
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
+            }
         }
         return $data;
     }

@@ -43,18 +43,28 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemNormalizer implements
         }
         if (\array_key_exists('record', $data)) {
             $object->setRecord($data['record']);
+            unset($data['record']);
         }
         if (\array_key_exists('recordDetails', $data)) {
             $object->setRecordDetails($this->denormalizer->denormalize($data['recordDetails'], 'CreditSafe\\API\\Model\\ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetails', 'json', $context));
+            unset($data['recordDetails']);
         }
         if (\array_key_exists('resultID', $data)) {
             $object->setResultID($data['resultID']);
+            unset($data['resultID']);
         }
         if (\array_key_exists('runID', $data)) {
             $object->setRunID($data['runID']);
+            unset($data['runID']);
         }
         if (\array_key_exists('watchlist', $data)) {
             $object->setWatchlist($this->denormalizer->denormalize($data['watchlist'], 'CreditSafe\\API\\Model\\ComplianceSearchResultDataBodySearchResultRecordsItemWatchlist', 'json', $context));
+            unset($data['watchlist']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -78,6 +88,11 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemNormalizer implements
         }
         if (null !== $object->getWatchlist()) {
             $data['watchlist'] = $this->normalizer->normalize($object->getWatchlist(), 'json', $context);
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

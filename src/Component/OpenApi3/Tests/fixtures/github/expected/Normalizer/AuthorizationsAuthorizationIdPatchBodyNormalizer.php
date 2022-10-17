@@ -51,6 +51,7 @@ class AuthorizationsAuthorizationIdPatchBodyNormalizer implements DenormalizerIn
                 $values[] = $value;
             }
             $object->setScopes($values);
+            unset($data['scopes']);
         }
         elseif (\array_key_exists('scopes', $data) && $data['scopes'] === null) {
             $object->setScopes(null);
@@ -61,6 +62,7 @@ class AuthorizationsAuthorizationIdPatchBodyNormalizer implements DenormalizerIn
                 $values_1[] = $value_1;
             }
             $object->setAddScopes($values_1);
+            unset($data['add_scopes']);
         }
         if (\array_key_exists('remove_scopes', $data)) {
             $values_2 = array();
@@ -68,15 +70,24 @@ class AuthorizationsAuthorizationIdPatchBodyNormalizer implements DenormalizerIn
                 $values_2[] = $value_2;
             }
             $object->setRemoveScopes($values_2);
+            unset($data['remove_scopes']);
         }
         if (\array_key_exists('note', $data)) {
             $object->setNote($data['note']);
+            unset($data['note']);
         }
         if (\array_key_exists('note_url', $data)) {
             $object->setNoteUrl($data['note_url']);
+            unset($data['note_url']);
         }
         if (\array_key_exists('fingerprint', $data)) {
             $object->setFingerprint($data['fingerprint']);
+            unset($data['fingerprint']);
+        }
+        foreach ($data as $key => $value_3) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_3;
+            }
         }
         return $object;
     }
@@ -115,6 +126,11 @@ class AuthorizationsAuthorizationIdPatchBodyNormalizer implements DenormalizerIn
         }
         if (null !== $object->getFingerprint()) {
             $data['fingerprint'] = $object->getFingerprint();
+        }
+        foreach ($object as $key => $value_3) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_3;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\AuthorizationsAuthorizationIdPatchBodyConstraint());

@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class GitTreeTreeItem
+class GitTreeTreeItem extends \ArrayObject
 {
     /**
      * 

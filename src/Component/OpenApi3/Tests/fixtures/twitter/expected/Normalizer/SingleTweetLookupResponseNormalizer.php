@@ -43,9 +43,11 @@ class SingleTweetLookupResponseNormalizer implements DenormalizerInterface, Norm
         }
         if (\array_key_exists('data', $data)) {
             $object->setData($data['data']);
+            unset($data['data']);
         }
         if (\array_key_exists('includes', $data)) {
             $object->setIncludes($this->denormalizer->denormalize($data['includes'], 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Model\\Expansions', 'json', $context));
+            unset($data['includes']);
         }
         if (\array_key_exists('errors', $data)) {
             $values = array();
@@ -53,6 +55,12 @@ class SingleTweetLookupResponseNormalizer implements DenormalizerInterface, Norm
                 $values[] = $value;
             }
             $object->setErrors($values);
+            unset($data['errors']);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
@@ -74,6 +82,11 @@ class SingleTweetLookupResponseNormalizer implements DenormalizerInterface, Norm
                 $values[] = $value;
             }
             $data['errors'] = $values;
+        }
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
+            }
         }
         return $data;
     }

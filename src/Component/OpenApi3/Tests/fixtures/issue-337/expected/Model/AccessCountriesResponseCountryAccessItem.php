@@ -2,7 +2,7 @@
 
 namespace CreditSafe\API\Model;
 
-class AccessCountriesResponseCountryAccessItem
+class AccessCountriesResponseCountryAccessItem extends \ArrayObject
 {
     /**
      * Country usage for Company Reports service

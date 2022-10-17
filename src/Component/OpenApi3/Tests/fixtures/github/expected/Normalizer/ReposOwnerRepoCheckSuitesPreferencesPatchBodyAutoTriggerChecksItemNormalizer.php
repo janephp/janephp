@@ -47,9 +47,16 @@ class ReposOwnerRepoCheckSuitesPreferencesPatchBodyAutoTriggerChecksItemNormaliz
         }
         if (\array_key_exists('app_id', $data)) {
             $object->setAppId($data['app_id']);
+            unset($data['app_id']);
         }
         if (\array_key_exists('setting', $data)) {
             $object->setSetting($data['setting']);
+            unset($data['setting']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -61,6 +68,11 @@ class ReposOwnerRepoCheckSuitesPreferencesPatchBodyAutoTriggerChecksItemNormaliz
         $data = array();
         $data['app_id'] = $object->getAppId();
         $data['setting'] = $object->getSetting();
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ReposOwnerRepoCheckSuitesPreferencesPatchBodyAutoTriggerChecksItemConstraint());
             $context['skip_validation'] = true;

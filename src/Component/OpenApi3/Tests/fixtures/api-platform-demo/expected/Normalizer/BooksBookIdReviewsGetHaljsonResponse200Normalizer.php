@@ -47,15 +47,24 @@ class BooksBookIdReviewsGetHaljsonResponse200Normalizer implements DenormalizerI
                 $values[] = $this->denormalizer->denormalize($value, 'ApiPlatform\\Demo\\Model\\ReviewJsonhalReviewRead', 'json', $context);
             }
             $object->setEmbedded($values);
+            unset($data['_embedded']);
         }
         if (\array_key_exists('totalItems', $data)) {
             $object->setTotalItems($data['totalItems']);
+            unset($data['totalItems']);
         }
         if (\array_key_exists('itemsPerPage', $data)) {
             $object->setItemsPerPage($data['itemsPerPage']);
+            unset($data['itemsPerPage']);
         }
         if (\array_key_exists('_links', $data)) {
             $object->setLinks($this->denormalizer->denormalize($data['_links'], 'ApiPlatform\\Demo\\Model\\BooksBookIdReviewsGetHaljsonResponse200Links', 'json', $context));
+            unset($data['_links']);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
@@ -77,6 +86,11 @@ class BooksBookIdReviewsGetHaljsonResponse200Normalizer implements DenormalizerI
             $data['itemsPerPage'] = $object->getItemsPerPage();
         }
         $data['_links'] = $this->normalizer->normalize($object->getLinks(), 'json', $context);
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
+            }
+        }
         return $data;
     }
 }

@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class ApplicationsClientIdTokensAccessTokenGetResponse200
+class ApplicationsClientIdTokensAccessTokenGetResponse200 extends \ArrayObject
 {
     /**
      * 

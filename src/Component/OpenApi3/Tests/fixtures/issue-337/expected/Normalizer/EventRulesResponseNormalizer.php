@@ -49,27 +49,40 @@ class EventRulesResponseNormalizer implements DenormalizerInterface, NormalizerI
         }
         if (\array_key_exists('isActive', $data)) {
             $object->setIsActive($data['isActive']);
+            unset($data['isActive']);
         }
         if (\array_key_exists('ruleCode', $data)) {
             $object->setRuleCode($data['ruleCode']);
+            unset($data['ruleCode']);
         }
         if (\array_key_exists('ruleCountryCode', $data)) {
             $object->setRuleCountryCode($data['ruleCountryCode']);
+            unset($data['ruleCountryCode']);
         }
         if (\array_key_exists('ruleType', $data)) {
             $object->setRuleType($data['ruleType']);
+            unset($data['ruleType']);
         }
         if (\array_key_exists('ruleTypeName', $data)) {
             $object->setRuleTypeName($data['ruleTypeName']);
+            unset($data['ruleTypeName']);
         }
         if (\array_key_exists('name', $data)) {
             $object->setName($data['name']);
+            unset($data['name']);
         }
         if (\array_key_exists('param0', $data)) {
             $object->setParam0($data['param0']);
+            unset($data['param0']);
         }
         if (\array_key_exists('param1', $data)) {
             $object->setParam1($data['param1']);
+            unset($data['param1']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -102,6 +115,11 @@ class EventRulesResponseNormalizer implements DenormalizerInterface, NormalizerI
         }
         if (null !== $object->getParam1()) {
             $data['param1'] = $object->getParam1();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

@@ -47,9 +47,16 @@ class LinkWithTypeNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         if (\array_key_exists('href', $data)) {
             $object->setHref($data['href']);
+            unset($data['href']);
         }
         if (\array_key_exists('type', $data)) {
             $object->setType($data['type']);
+            unset($data['type']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -61,6 +68,11 @@ class LinkWithTypeNormalizer implements DenormalizerInterface, NormalizerInterfa
         $data = array();
         $data['href'] = $object->getHref();
         $data['type'] = $object->getType();
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\LinkWithTypeConstraint());
             $context['skip_validation'] = true;

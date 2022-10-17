@@ -43,27 +43,35 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsNormaliz
         }
         if (\array_key_exists('acceptListID', $data)) {
             $object->setAcceptListID($data['acceptListID']);
+            unset($data['acceptListID']);
         }
         if (\array_key_exists('addedToAcceptList', $data)) {
             $object->setAddedToAcceptList($data['addedToAcceptList']);
+            unset($data['addedToAcceptList']);
         }
         if (\array_key_exists('division', $data)) {
             $object->setDivision($data['division']);
+            unset($data['division']);
         }
         if (\array_key_exists('dppa', $data)) {
             $object->setDppa($data['dppa']);
+            unset($data['dppa']);
         }
         if (\array_key_exists('eftType', $data)) {
             $object->setEftType($data['eftType']);
+            unset($data['eftType']);
         }
         if (\array_key_exists('entityType', $data)) {
             $object->setEntityType($data['entityType']);
+            unset($data['entityType']);
         }
         if (\array_key_exists('gender', $data)) {
             $object->setGender($data['gender']);
+            unset($data['gender']);
         }
         if (\array_key_exists('glb', $data)) {
             $object->setGlb($data['glb']);
+            unset($data['glb']);
         }
         if (\array_key_exists('iDs', $data)) {
             $values = array();
@@ -71,18 +79,28 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsNormaliz
                 $values[] = $this->denormalizer->denormalize($value, 'CreditSafe\\API\\Model\\ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsIDsItem', 'json', $context);
             }
             $object->setIDs($values);
+            unset($data['iDs']);
         }
         if (\array_key_exists('lastUpdatedDate', $data)) {
             $object->setLastUpdatedDate($data['lastUpdatedDate']);
+            unset($data['lastUpdatedDate']);
         }
         if (\array_key_exists('name', $data)) {
             $object->setName($this->denormalizer->denormalize($data['name'], 'CreditSafe\\API\\Model\\ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsName', 'json', $context));
+            unset($data['name']);
         }
         if (\array_key_exists('recordState', $data)) {
             $object->setRecordState($this->denormalizer->denormalize($data['recordState'], 'CreditSafe\\API\\Model\\ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsRecordState', 'json', $context));
+            unset($data['recordState']);
         }
         if (\array_key_exists('searchDate', $data)) {
             $object->setSearchDate($data['searchDate']);
+            unset($data['searchDate']);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
@@ -134,6 +152,11 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsNormaliz
         }
         if (null !== $object->getSearchDate()) {
             $data['searchDate'] = $object->getSearchDate();
+        }
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
+            }
         }
         return $data;
     }

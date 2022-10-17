@@ -43,15 +43,23 @@ class XmpWritebackCompletedEventNormalizer implements DenormalizerInterface, Nor
         }
         if (\array_key_exists('timestamp', $data)) {
             $object->setTimestamp(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['timestamp']));
+            unset($data['timestamp']);
         }
         if (\array_key_exists('kind', $data)) {
             $object->setKind($data['kind']);
+            unset($data['kind']);
         }
         if (\array_key_exists('outputDocId', $data) && $data['outputDocId'] !== null) {
             $object->setOutputDocId($data['outputDocId']);
+            unset($data['outputDocId']);
         }
         elseif (\array_key_exists('outputDocId', $data) && $data['outputDocId'] === null) {
             $object->setOutputDocId(null);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -65,6 +73,11 @@ class XmpWritebackCompletedEventNormalizer implements DenormalizerInterface, Nor
         $data['kind'] = $object->getKind();
         if (null !== $object->getOutputDocId()) {
             $data['outputDocId'] = $object->getOutputDocId();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

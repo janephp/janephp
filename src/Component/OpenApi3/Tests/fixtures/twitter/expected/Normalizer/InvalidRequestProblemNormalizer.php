@@ -43,6 +43,7 @@ class InvalidRequestProblemNormalizer implements DenormalizerInterface, Normaliz
         }
         if (\array_key_exists('type', $data)) {
             $object->setType($data['type']);
+            unset($data['type']);
         }
         if (\array_key_exists('errors', $data)) {
             $values = array();
@@ -50,12 +51,20 @@ class InvalidRequestProblemNormalizer implements DenormalizerInterface, Normaliz
                 $values[] = $this->denormalizer->denormalize($value, 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Model\\InvalidRequestProblemErrorsItem', 'json', $context);
             }
             $object->setErrors($values);
+            unset($data['errors']);
         }
         if (\array_key_exists('title', $data)) {
             $object->setTitle($data['title']);
+            unset($data['title']);
         }
         if (\array_key_exists('detail', $data)) {
             $object->setDetail($data['detail']);
+            unset($data['detail']);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
@@ -75,6 +84,11 @@ class InvalidRequestProblemNormalizer implements DenormalizerInterface, Normaliz
         }
         $data['title'] = $object->getTitle();
         $data['detail'] = $object->getDetail();
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
+            }
+        }
         return $data;
     }
 }

@@ -55,15 +55,24 @@ class GbCompanyReportExampleResponseReportLocalFinancialStatementsItemCashFlowNo
         }
         if (\array_key_exists('netCashFlowFromOperations', $data)) {
             $object->setNetCashFlowFromOperations($data['netCashFlowFromOperations']);
+            unset($data['netCashFlowFromOperations']);
         }
         if (\array_key_exists('netCashFlowBeforeFinancing', $data)) {
             $object->setNetCashFlowBeforeFinancing($data['netCashFlowBeforeFinancing']);
+            unset($data['netCashFlowBeforeFinancing']);
         }
         if (\array_key_exists('netCashFlowFromFinancing', $data)) {
             $object->setNetCashFlowFromFinancing($data['netCashFlowFromFinancing']);
+            unset($data['netCashFlowFromFinancing']);
         }
         if (\array_key_exists('increaseInCash', $data)) {
             $object->setIncreaseInCash($data['increaseInCash']);
+            unset($data['increaseInCash']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -84,6 +93,11 @@ class GbCompanyReportExampleResponseReportLocalFinancialStatementsItemCashFlowNo
         }
         if (null !== $object->getIncreaseInCash()) {
             $data['increaseInCash'] = $object->getIncreaseInCash();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

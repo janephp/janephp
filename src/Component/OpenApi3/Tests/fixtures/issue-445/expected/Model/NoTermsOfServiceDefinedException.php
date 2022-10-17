@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class NoTermsOfServiceDefinedException
+class NoTermsOfServiceDefinedException extends \ArrayObject
 {
     /**
      * 

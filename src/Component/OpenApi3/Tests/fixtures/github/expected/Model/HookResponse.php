@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class HookResponse
+class HookResponse extends \ArrayObject
 {
     /**
      * 

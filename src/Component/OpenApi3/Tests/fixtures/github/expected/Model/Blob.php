@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class Blob
+class Blob extends \ArrayObject
 {
     /**
      * 

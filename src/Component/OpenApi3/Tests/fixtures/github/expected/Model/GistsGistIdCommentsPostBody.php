@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class GistsGistIdCommentsPostBody
+class GistsGistIdCommentsPostBody extends \ArrayObject
 {
     /**
      * The comment text.

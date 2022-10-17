@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class IssueEventProjectCard
+class IssueEventProjectCard extends \ArrayObject
 {
     /**
      * 

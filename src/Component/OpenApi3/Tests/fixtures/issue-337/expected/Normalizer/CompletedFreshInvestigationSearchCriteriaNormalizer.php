@@ -43,21 +43,32 @@ class CompletedFreshInvestigationSearchCriteriaNormalizer implements Denormalize
         }
         if (\array_key_exists('additionalInfo', $data)) {
             $object->setAdditionalInfo($data['additionalInfo']);
+            unset($data['additionalInfo']);
         }
         if (\array_key_exists('address', $data)) {
             $object->setAddress($this->denormalizer->denormalize($data['address'], 'CreditSafe\\API\\Model\\CompletedFreshInvestigationSearchCriteriaAddress', 'json', $context));
+            unset($data['address']);
         }
         if (\array_key_exists('countryCode', $data)) {
             $object->setCountryCode($data['countryCode']);
+            unset($data['countryCode']);
         }
         if (\array_key_exists('name', $data)) {
             $object->setName($data['name']);
+            unset($data['name']);
         }
         if (\array_key_exists('regNo', $data)) {
             $object->setRegNo($data['regNo']);
+            unset($data['regNo']);
         }
         if (\array_key_exists('vatNo', $data)) {
             $object->setVatNo($data['vatNo']);
+            unset($data['vatNo']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -84,6 +95,11 @@ class CompletedFreshInvestigationSearchCriteriaNormalizer implements Denormalize
         }
         if (null !== $object->getVatNo()) {
             $data['vatNo'] = $object->getVatNo();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

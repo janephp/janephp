@@ -47,6 +47,12 @@ class AddRulesRequestNormalizer implements DenormalizerInterface, NormalizerInte
                 $values[] = $this->denormalizer->denormalize($value, 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Model\\RuleNoId', 'json', $context);
             }
             $object->setAdd($values);
+            unset($data['add']);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
@@ -61,6 +67,11 @@ class AddRulesRequestNormalizer implements DenormalizerInterface, NormalizerInte
             $values[] = $this->normalizer->normalize($value, 'json', $context);
         }
         $data['add'] = $values;
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
+            }
+        }
         return $data;
     }
 }

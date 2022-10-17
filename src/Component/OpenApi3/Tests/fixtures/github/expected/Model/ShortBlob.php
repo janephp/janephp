@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class ShortBlob
+class ShortBlob extends \ArrayObject
 {
     /**
      * 

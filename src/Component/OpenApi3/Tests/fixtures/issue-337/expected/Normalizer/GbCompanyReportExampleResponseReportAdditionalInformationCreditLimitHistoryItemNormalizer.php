@@ -43,9 +43,16 @@ class GbCompanyReportExampleResponseReportAdditionalInformationCreditLimitHistor
         }
         if (\array_key_exists('date', $data)) {
             $object->setDate($data['date']);
+            unset($data['date']);
         }
         if (\array_key_exists('companyValue', $data)) {
             $object->setCompanyValue($this->denormalizer->denormalize($data['companyValue'], 'CreditSafe\\API\\Model\\GbCompanyReportExampleResponseReportAdditionalInformationCreditLimitHistoryItemCompanyValue', 'json', $context));
+            unset($data['companyValue']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -60,6 +67,11 @@ class GbCompanyReportExampleResponseReportAdditionalInformationCreditLimitHistor
         }
         if (null !== $object->getCompanyValue()) {
             $data['companyValue'] = $this->normalizer->normalize($object->getCompanyValue(), 'json', $context);
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class ProjectsColumnsCardsCardIdMovesPostResponse503ErrorsItem
+class ProjectsColumnsCardsCardIdMovesPostResponse503ErrorsItem extends \ArrayObject
 {
     /**
      * 

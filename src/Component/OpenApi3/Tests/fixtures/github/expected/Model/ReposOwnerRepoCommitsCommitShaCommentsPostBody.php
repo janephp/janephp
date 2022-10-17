@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoCommitsCommitShaCommentsPostBody
+class ReposOwnerRepoCommitsCommitShaCommentsPostBody extends \ArrayObject
 {
     /**
      * The contents of the comment.

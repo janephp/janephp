@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class OrgsOrgMigrationsPostBody
+class OrgsOrgMigrationsPostBody extends \ArrayObject
 {
     /**
      * A list of arrays indicating which repositories should be migrated.

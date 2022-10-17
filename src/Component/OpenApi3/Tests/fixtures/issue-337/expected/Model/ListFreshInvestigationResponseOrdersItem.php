@@ -2,7 +2,7 @@
 
 namespace CreditSafe\API\Model;
 
-class ListFreshInvestigationResponseOrdersItem
+class ListFreshInvestigationResponseOrdersItem extends \ArrayObject
 {
     /**
      * 

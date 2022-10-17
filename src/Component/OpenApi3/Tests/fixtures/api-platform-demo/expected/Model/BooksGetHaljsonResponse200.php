@@ -2,7 +2,7 @@
 
 namespace ApiPlatform\Demo\Model;
 
-class BooksGetHaljsonResponse200
+class BooksGetHaljsonResponse200 extends \ArrayObject
 {
     /**
      * 

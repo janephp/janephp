@@ -43,15 +43,24 @@ class GbPeopleReportReponseReportDirectorshipsPreviousItemCreditScoreCurrentCred
         }
         if (\array_key_exists('commonValue', $data)) {
             $object->setCommonValue($data['commonValue']);
+            unset($data['commonValue']);
         }
         if (\array_key_exists('commonDescription', $data)) {
             $object->setCommonDescription($data['commonDescription']);
+            unset($data['commonDescription']);
         }
         if (\array_key_exists('creditLimit', $data)) {
             $object->setCreditLimit($this->denormalizer->denormalize($data['creditLimit'], 'CreditSafe\\API\\Model\\GbPeopleReportReponseReportDirectorshipsPreviousItemCreditScoreCurrentCreditRatingCreditLimit', 'json', $context));
+            unset($data['creditLimit']);
         }
         if (\array_key_exists('providerValue', $data)) {
             $object->setProviderValue($this->denormalizer->denormalize($data['providerValue'], 'CreditSafe\\API\\Model\\GbPeopleReportReponseReportDirectorshipsPreviousItemCreditScoreCurrentCreditRatingProviderValue', 'json', $context));
+            unset($data['providerValue']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -72,6 +81,11 @@ class GbPeopleReportReponseReportDirectorshipsPreviousItemCreditScoreCurrentCred
         }
         if (null !== $object->getProviderValue()) {
             $data['providerValue'] = $this->normalizer->normalize($object->getProviderValue(), 'json', $context);
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

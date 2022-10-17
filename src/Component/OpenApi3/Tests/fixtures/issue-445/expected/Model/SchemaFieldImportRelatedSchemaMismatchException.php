@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class SchemaFieldImportRelatedSchemaMismatchException
+class SchemaFieldImportRelatedSchemaMismatchException extends \ArrayObject
 {
     /**
      * 

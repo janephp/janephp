@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class NoTagsFoundException
+class NoTagsFoundException extends \ArrayObject
 {
     /**
      * 

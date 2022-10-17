@@ -47,9 +47,16 @@ class SimpleCommitAuthorNormalizer implements DenormalizerInterface, NormalizerI
         }
         if (\array_key_exists('name', $data)) {
             $object->setName($data['name']);
+            unset($data['name']);
         }
         if (\array_key_exists('email', $data)) {
             $object->setEmail($data['email']);
+            unset($data['email']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -61,6 +68,11 @@ class SimpleCommitAuthorNormalizer implements DenormalizerInterface, NormalizerI
         $data = array();
         $data['name'] = $object->getName();
         $data['email'] = $object->getEmail();
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\SimpleCommitAuthorConstraint());
             $context['skip_validation'] = true;

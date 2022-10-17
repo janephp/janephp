@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class CodeOfConduct
+class CodeOfConduct extends \ArrayObject
 {
     /**
      * 

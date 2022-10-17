@@ -43,12 +43,19 @@ class PermissionSetOwnershipTransferItemNormalizer implements DenormalizerInterf
         }
         if (\array_key_exists('transferUserId', $data)) {
             $object->setTransferUserId($data['transferUserId']);
+            unset($data['transferUserId']);
         }
         if (\array_key_exists('permissionSetId', $data) && $data['permissionSetId'] !== null) {
             $object->setPermissionSetId($data['permissionSetId']);
+            unset($data['permissionSetId']);
         }
         elseif (\array_key_exists('permissionSetId', $data) && $data['permissionSetId'] === null) {
             $object->setPermissionSetId(null);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -61,6 +68,11 @@ class PermissionSetOwnershipTransferItemNormalizer implements DenormalizerInterf
         $data['transferUserId'] = $object->getTransferUserId();
         if (null !== $object->getPermissionSetId()) {
             $data['permissionSetId'] = $object->getPermissionSetId();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

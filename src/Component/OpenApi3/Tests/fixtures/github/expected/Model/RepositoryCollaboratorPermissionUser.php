@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class RepositoryCollaboratorPermissionUser
+class RepositoryCollaboratorPermissionUser extends \ArrayObject
 {
     /**
      * 

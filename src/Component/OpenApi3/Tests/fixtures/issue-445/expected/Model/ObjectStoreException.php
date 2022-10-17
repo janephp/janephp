@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class ObjectStoreException
+class ObjectStoreException extends \ArrayObject
 {
     /**
      * 

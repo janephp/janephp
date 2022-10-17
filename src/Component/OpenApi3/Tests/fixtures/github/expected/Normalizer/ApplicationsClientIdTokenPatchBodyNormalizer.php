@@ -47,6 +47,12 @@ class ApplicationsClientIdTokenPatchBodyNormalizer implements DenormalizerInterf
         }
         if (\array_key_exists('access_token', $data)) {
             $object->setAccessToken($data['access_token']);
+            unset($data['access_token']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -57,6 +63,11 @@ class ApplicationsClientIdTokenPatchBodyNormalizer implements DenormalizerInterf
     {
         $data = array();
         $data['access_token'] = $object->getAccessToken();
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ApplicationsClientIdTokenPatchBodyConstraint());
             $context['skip_validation'] = true;

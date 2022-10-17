@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class AuthorizationsAuthorizationIdPatchBody
+class AuthorizationsAuthorizationIdPatchBody extends \ArrayObject
 {
     /**
      * A list of scopes that this authorization is in.

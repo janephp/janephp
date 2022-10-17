@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class TagCommit
+class TagCommit extends \ArrayObject
 {
     /**
      * 

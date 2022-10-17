@@ -2,7 +2,7 @@
 
 namespace CreditSafe\API\Model;
 
-class GbPeopleReportReponseReportOtherAddressesItem
+class GbPeopleReportReponseReportOtherAddressesItem extends \ArrayObject
 {
     /**
      * 

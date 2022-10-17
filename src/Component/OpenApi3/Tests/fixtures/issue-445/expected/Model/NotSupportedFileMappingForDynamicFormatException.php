@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class NotSupportedFileMappingForDynamicFormatException
+class NotSupportedFileMappingForDynamicFormatException extends \ArrayObject
 {
     /**
      * 

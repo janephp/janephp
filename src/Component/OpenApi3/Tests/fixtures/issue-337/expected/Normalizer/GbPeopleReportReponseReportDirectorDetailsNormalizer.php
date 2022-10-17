@@ -43,39 +43,51 @@ class GbPeopleReportReponseReportDirectorDetailsNormalizer implements Denormaliz
         }
         if (\array_key_exists('id', $data)) {
             $object->setId($data['id']);
+            unset($data['id']);
         }
         if (\array_key_exists('idType', $data)) {
             $object->setIdType($data['idType']);
+            unset($data['idType']);
         }
         if (\array_key_exists('name', $data)) {
             $object->setName($data['name']);
+            unset($data['name']);
         }
         if (\array_key_exists('title', $data)) {
             $object->setTitle($data['title']);
+            unset($data['title']);
         }
         if (\array_key_exists('firstName', $data)) {
             $object->setFirstName($data['firstName']);
+            unset($data['firstName']);
         }
         if (\array_key_exists('middleName', $data)) {
             $object->setMiddleName($data['middleName']);
+            unset($data['middleName']);
         }
         if (\array_key_exists('surname', $data)) {
             $object->setSurname($data['surname']);
+            unset($data['surname']);
         }
         if (\array_key_exists('address', $data)) {
             $object->setAddress($this->denormalizer->denormalize($data['address'], 'CreditSafe\\API\\Model\\GbPeopleReportReponseReportDirectorDetailsAddress', 'json', $context));
+            unset($data['address']);
         }
         if (\array_key_exists('gender', $data)) {
             $object->setGender($data['gender']);
+            unset($data['gender']);
         }
         if (\array_key_exists('dateOfBirth', $data)) {
             $object->setDateOfBirth($data['dateOfBirth']);
+            unset($data['dateOfBirth']);
         }
         if (\array_key_exists('country', $data)) {
             $object->setCountry($data['country']);
+            unset($data['country']);
         }
         if (\array_key_exists('directorType', $data)) {
             $object->setDirectorType($data['directorType']);
+            unset($data['directorType']);
         }
         if (\array_key_exists('positions', $data)) {
             $values = array();
@@ -83,9 +95,16 @@ class GbPeopleReportReponseReportDirectorDetailsNormalizer implements Denormaliz
                 $values[] = $this->denormalizer->denormalize($value, 'CreditSafe\\API\\Model\\GbPeopleReportReponseReportDirectorDetailsPositionsItem', 'json', $context);
             }
             $object->setPositions($values);
+            unset($data['positions']);
         }
         if (\array_key_exists('additionalData', $data)) {
             $object->setAdditionalData($this->denormalizer->denormalize($data['additionalData'], 'CreditSafe\\API\\Model\\GbPeopleReportReponseReportDirectorDetailsAdditionalData', 'json', $context));
+            unset($data['additionalData']);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
@@ -140,6 +159,11 @@ class GbPeopleReportReponseReportDirectorDetailsNormalizer implements Denormaliz
         }
         if (null !== $object->getAdditionalData()) {
             $data['additionalData'] = $this->normalizer->normalize($object->getAdditionalData(), 'json', $context);
+        }
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
+            }
         }
         return $data;
     }

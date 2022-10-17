@@ -43,12 +43,20 @@ class GbPeopleReportReponseReportDirectorSummaryNormalizer implements Denormaliz
         }
         if (\array_key_exists('currentAppointments', $data)) {
             $object->setCurrentAppointments($data['currentAppointments']);
+            unset($data['currentAppointments']);
         }
         if (\array_key_exists('inactiveAppointments', $data)) {
             $object->setInactiveAppointments($data['inactiveAppointments']);
+            unset($data['inactiveAppointments']);
         }
         if (\array_key_exists('previousAppointments', $data)) {
             $object->setPreviousAppointments($data['previousAppointments']);
+            unset($data['previousAppointments']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -66,6 +74,11 @@ class GbPeopleReportReponseReportDirectorSummaryNormalizer implements Denormaliz
         }
         if (null !== $object->getPreviousAppointments()) {
             $data['previousAppointments'] = $object->getPreviousAppointments();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

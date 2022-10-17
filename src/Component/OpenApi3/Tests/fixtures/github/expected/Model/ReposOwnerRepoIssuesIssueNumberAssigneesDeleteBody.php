@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBody
+class ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBody extends \ArrayObject
 {
     /**
      * Usernames of assignees to remove from an issue. _NOTE: Only users with push access can remove assignees from an issue. Assignees are silently ignored otherwise._

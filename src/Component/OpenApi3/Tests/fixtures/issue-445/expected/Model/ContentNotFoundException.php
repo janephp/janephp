@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class ContentNotFoundException
+class ContentNotFoundException extends \ArrayObject
 {
     /**
      * 

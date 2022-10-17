@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class CheckAnnotation
+class CheckAnnotation extends \ArrayObject
 {
     /**
      * 

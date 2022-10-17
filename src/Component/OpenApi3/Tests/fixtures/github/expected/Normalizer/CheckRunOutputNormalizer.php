@@ -47,27 +47,37 @@ class CheckRunOutputNormalizer implements DenormalizerInterface, NormalizerInter
         }
         if (\array_key_exists('title', $data) && $data['title'] !== null) {
             $object->setTitle($data['title']);
+            unset($data['title']);
         }
         elseif (\array_key_exists('title', $data) && $data['title'] === null) {
             $object->setTitle(null);
         }
         if (\array_key_exists('summary', $data) && $data['summary'] !== null) {
             $object->setSummary($data['summary']);
+            unset($data['summary']);
         }
         elseif (\array_key_exists('summary', $data) && $data['summary'] === null) {
             $object->setSummary(null);
         }
         if (\array_key_exists('text', $data) && $data['text'] !== null) {
             $object->setText($data['text']);
+            unset($data['text']);
         }
         elseif (\array_key_exists('text', $data) && $data['text'] === null) {
             $object->setText(null);
         }
         if (\array_key_exists('annotations_count', $data)) {
             $object->setAnnotationsCount($data['annotations_count']);
+            unset($data['annotations_count']);
         }
         if (\array_key_exists('annotations_url', $data)) {
             $object->setAnnotationsUrl($data['annotations_url']);
+            unset($data['annotations_url']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -82,6 +92,11 @@ class CheckRunOutputNormalizer implements DenormalizerInterface, NormalizerInter
         $data['text'] = $object->getText();
         $data['annotations_count'] = $object->getAnnotationsCount();
         $data['annotations_url'] = $object->getAnnotationsUrl();
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\CheckRunOutputConstraint());
             $context['skip_validation'] = true;

@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class Hovercard
+class Hovercard extends \ArrayObject
 {
     /**
      * 

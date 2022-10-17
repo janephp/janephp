@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoDeploymentsPostBody
+class ReposOwnerRepoDeploymentsPostBody extends \ArrayObject
 {
     /**
      * The ref to deploy. This can be a branch, tag, or SHA.

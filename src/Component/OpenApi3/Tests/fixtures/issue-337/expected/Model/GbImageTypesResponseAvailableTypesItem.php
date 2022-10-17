@@ -2,7 +2,7 @@
 
 namespace CreditSafe\API\Model;
 
-class GbImageTypesResponseAvailableTypesItem
+class GbImageTypesResponseAvailableTypesItem extends \ArrayObject
 {
     /**
      * 

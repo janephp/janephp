@@ -43,15 +43,24 @@ class GeoBoundingBoxFilterNormalizer implements DenormalizerInterface, Normalize
         }
         if (\array_key_exists('kind', $data)) {
             $object->setKind($data['kind']);
+            unset($data['kind']);
         }
         if (\array_key_exists('field', $data)) {
             $object->setField($data['field']);
+            unset($data['field']);
         }
         if (\array_key_exists('topLeft', $data)) {
             $object->setTopLeft($data['topLeft']);
+            unset($data['topLeft']);
         }
         if (\array_key_exists('bottomRight', $data)) {
             $object->setBottomRight($data['bottomRight']);
+            unset($data['bottomRight']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -65,6 +74,11 @@ class GeoBoundingBoxFilterNormalizer implements DenormalizerInterface, Normalize
         $data['field'] = $object->getField();
         $data['topLeft'] = $object->getTopLeft();
         $data['bottomRight'] = $object->getBottomRight();
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
         return $data;
     }
 }

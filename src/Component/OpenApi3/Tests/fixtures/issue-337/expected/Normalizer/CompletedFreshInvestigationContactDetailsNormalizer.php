@@ -43,12 +43,20 @@ class CompletedFreshInvestigationContactDetailsNormalizer implements Denormalize
         }
         if (\array_key_exists('emailAddress', $data)) {
             $object->setEmailAddress($data['emailAddress']);
+            unset($data['emailAddress']);
         }
         if (\array_key_exists('name', $data)) {
             $object->setName($data['name']);
+            unset($data['name']);
         }
         if (\array_key_exists('telephoneNumber', $data)) {
             $object->setTelephoneNumber($data['telephoneNumber']);
+            unset($data['telephoneNumber']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -66,6 +74,11 @@ class CompletedFreshInvestigationContactDetailsNormalizer implements Denormalize
         }
         if (null !== $object->getTelephoneNumber()) {
             $data['telephoneNumber'] = $object->getTelephoneNumber();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

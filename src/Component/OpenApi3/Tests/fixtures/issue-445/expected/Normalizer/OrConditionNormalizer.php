@@ -43,12 +43,14 @@ class OrConditionNormalizer implements DenormalizerInterface, NormalizerInterfac
         }
         if (\array_key_exists('traceRefId', $data) && $data['traceRefId'] !== null) {
             $object->setTraceRefId($data['traceRefId']);
+            unset($data['traceRefId']);
         }
         elseif (\array_key_exists('traceRefId', $data) && $data['traceRefId'] === null) {
             $object->setTraceRefId(null);
         }
         if (\array_key_exists('kind', $data)) {
             $object->setKind($data['kind']);
+            unset($data['kind']);
         }
         if (\array_key_exists('conditions', $data) && $data['conditions'] !== null) {
             $values = array();
@@ -56,9 +58,15 @@ class OrConditionNormalizer implements DenormalizerInterface, NormalizerInterfac
                 $values[] = $this->denormalizer->denormalize($value, 'PicturePark\\API\\Model\\BusinessRuleCondition', 'json', $context);
             }
             $object->setConditions($values);
+            unset($data['conditions']);
         }
         elseif (\array_key_exists('conditions', $data) && $data['conditions'] === null) {
             $object->setConditions(null);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
@@ -78,6 +86,11 @@ class OrConditionNormalizer implements DenormalizerInterface, NormalizerInterfac
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data['conditions'] = $values;
+        }
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
+            }
         }
         return $data;
     }

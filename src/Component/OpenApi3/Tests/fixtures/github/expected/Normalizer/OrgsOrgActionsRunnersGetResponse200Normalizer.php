@@ -47,6 +47,7 @@ class OrgsOrgActionsRunnersGetResponse200Normalizer implements DenormalizerInter
         }
         if (\array_key_exists('total_count', $data)) {
             $object->setTotalCount($data['total_count']);
+            unset($data['total_count']);
         }
         if (\array_key_exists('runners', $data)) {
             $values = array();
@@ -54,6 +55,12 @@ class OrgsOrgActionsRunnersGetResponse200Normalizer implements DenormalizerInter
                 $values[] = $this->denormalizer->denormalize($value, 'Github\\Model\\Runner', 'json', $context);
             }
             $object->setRunners($values);
+            unset($data['runners']);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
@@ -72,6 +79,11 @@ class OrgsOrgActionsRunnersGetResponse200Normalizer implements DenormalizerInter
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data['runners'] = $values;
+        }
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\OrgsOrgActionsRunnersGetResponse200Constraint());

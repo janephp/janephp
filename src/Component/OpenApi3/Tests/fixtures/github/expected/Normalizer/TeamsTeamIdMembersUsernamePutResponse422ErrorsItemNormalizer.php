@@ -47,12 +47,20 @@ class TeamsTeamIdMembersUsernamePutResponse422ErrorsItemNormalizer implements De
         }
         if (\array_key_exists('code', $data)) {
             $object->setCode($data['code']);
+            unset($data['code']);
         }
         if (\array_key_exists('field', $data)) {
             $object->setField($data['field']);
+            unset($data['field']);
         }
         if (\array_key_exists('resource', $data)) {
             $object->setResource($data['resource']);
+            unset($data['resource']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -70,6 +78,11 @@ class TeamsTeamIdMembersUsernamePutResponse422ErrorsItemNormalizer implements De
         }
         if (null !== $object->getResource()) {
             $data['resource'] = $object->getResource();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\TeamsTeamIdMembersUsernamePutResponse422ErrorsItemConstraint());

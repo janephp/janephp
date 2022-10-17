@@ -47,12 +47,20 @@ class TrafficNormalizer implements DenormalizerInterface, NormalizerInterface, D
         }
         if (\array_key_exists('timestamp', $data)) {
             $object->setTimestamp(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['timestamp']));
+            unset($data['timestamp']);
         }
         if (\array_key_exists('uniques', $data)) {
             $object->setUniques($data['uniques']);
+            unset($data['uniques']);
         }
         if (\array_key_exists('count', $data)) {
             $object->setCount($data['count']);
+            unset($data['count']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -65,6 +73,11 @@ class TrafficNormalizer implements DenormalizerInterface, NormalizerInterface, D
         $data['timestamp'] = $object->getTimestamp()->format('Y-m-d\\TH:i:sP');
         $data['uniques'] = $object->getUniques();
         $data['count'] = $object->getCount();
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\TrafficConstraint());
             $context['skip_validation'] = true;

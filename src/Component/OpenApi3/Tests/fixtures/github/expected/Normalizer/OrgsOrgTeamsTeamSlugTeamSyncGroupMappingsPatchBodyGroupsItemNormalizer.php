@@ -47,12 +47,20 @@ class OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyGroupsItemNormalizer imp
         }
         if (\array_key_exists('group_id', $data)) {
             $object->setGroupId($data['group_id']);
+            unset($data['group_id']);
         }
         if (\array_key_exists('group_name', $data)) {
             $object->setGroupName($data['group_name']);
+            unset($data['group_name']);
         }
         if (\array_key_exists('group_description', $data)) {
             $object->setGroupDescription($data['group_description']);
+            unset($data['group_description']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -65,6 +73,11 @@ class OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyGroupsItemNormalizer imp
         $data['group_id'] = $object->getGroupId();
         $data['group_name'] = $object->getGroupName();
         $data['group_description'] = $object->getGroupDescription();
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyGroupsItemConstraint());
             $context['skip_validation'] = true;

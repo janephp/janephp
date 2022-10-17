@@ -47,9 +47,16 @@ class OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBodyNormalizer impleme
         }
         if (\array_key_exists('title', $data)) {
             $object->setTitle($data['title']);
+            unset($data['title']);
         }
         if (\array_key_exists('body', $data)) {
             $object->setBody($data['body']);
+            unset($data['body']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -64,6 +71,11 @@ class OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBodyNormalizer impleme
         }
         if (null !== $object->getBody()) {
             $data['body'] = $object->getBody();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBodyConstraint());

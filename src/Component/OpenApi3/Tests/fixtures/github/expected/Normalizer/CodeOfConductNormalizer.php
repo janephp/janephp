@@ -47,21 +47,31 @@ class CodeOfConductNormalizer implements DenormalizerInterface, NormalizerInterf
         }
         if (\array_key_exists('key', $data)) {
             $object->setKey($data['key']);
+            unset($data['key']);
         }
         if (\array_key_exists('name', $data)) {
             $object->setName($data['name']);
+            unset($data['name']);
         }
         if (\array_key_exists('url', $data)) {
             $object->setUrl($data['url']);
+            unset($data['url']);
         }
         if (\array_key_exists('body', $data)) {
             $object->setBody($data['body']);
+            unset($data['body']);
         }
         if (\array_key_exists('html_url', $data) && $data['html_url'] !== null) {
             $object->setHtmlUrl($data['html_url']);
+            unset($data['html_url']);
         }
         elseif (\array_key_exists('html_url', $data) && $data['html_url'] === null) {
             $object->setHtmlUrl(null);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -78,6 +88,11 @@ class CodeOfConductNormalizer implements DenormalizerInterface, NormalizerInterf
             $data['body'] = $object->getBody();
         }
         $data['html_url'] = $object->getHtmlUrl();
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\CodeOfConductConstraint());
             $context['skip_validation'] = true;

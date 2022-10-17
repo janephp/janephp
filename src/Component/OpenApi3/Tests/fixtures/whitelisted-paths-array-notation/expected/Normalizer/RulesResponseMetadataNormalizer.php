@@ -43,9 +43,20 @@ class RulesResponseMetadataNormalizer implements DenormalizerInterface, Normaliz
         }
         if (\array_key_exists('sent', $data)) {
             $object->setSent($data['sent']);
+            unset($data['sent']);
         }
         if (\array_key_exists('summary', $data)) {
-            $object->setSummary($data['summary']);
+            $values = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
+            foreach ($data['summary'] as $key => $value) {
+                $values[$key] = $value;
+            }
+            $object->setSummary($values);
+            unset($data['summary']);
+        }
+        foreach ($data as $key_1 => $value_1) {
+            if (preg_match('/.*/', (string) $key_1)) {
+                $object[$key_1] = $value_1;
+            }
         }
         return $object;
     }
@@ -57,7 +68,16 @@ class RulesResponseMetadataNormalizer implements DenormalizerInterface, Normaliz
         $data = array();
         $data['sent'] = $object->getSent();
         if (null !== $object->getSummary()) {
-            $data['summary'] = $object->getSummary();
+            $values = array();
+            foreach ($object->getSummary() as $key => $value) {
+                $values[$key] = $value;
+            }
+            $data['summary'] = $values;
+        }
+        foreach ($object as $key_1 => $value_1) {
+            if (preg_match('/.*/', (string) $key_1)) {
+                $data[$key_1] = $value_1;
+            }
         }
         return $data;
     }

@@ -47,33 +47,41 @@ class LicenseNormalizer implements DenormalizerInterface, NormalizerInterface, D
         }
         if (\array_key_exists('key', $data)) {
             $object->setKey($data['key']);
+            unset($data['key']);
         }
         if (\array_key_exists('name', $data)) {
             $object->setName($data['name']);
+            unset($data['name']);
         }
         if (\array_key_exists('spdx_id', $data) && $data['spdx_id'] !== null) {
             $object->setSpdxId($data['spdx_id']);
+            unset($data['spdx_id']);
         }
         elseif (\array_key_exists('spdx_id', $data) && $data['spdx_id'] === null) {
             $object->setSpdxId(null);
         }
         if (\array_key_exists('url', $data) && $data['url'] !== null) {
             $object->setUrl($data['url']);
+            unset($data['url']);
         }
         elseif (\array_key_exists('url', $data) && $data['url'] === null) {
             $object->setUrl(null);
         }
         if (\array_key_exists('node_id', $data)) {
             $object->setNodeId($data['node_id']);
+            unset($data['node_id']);
         }
         if (\array_key_exists('html_url', $data)) {
             $object->setHtmlUrl($data['html_url']);
+            unset($data['html_url']);
         }
         if (\array_key_exists('description', $data)) {
             $object->setDescription($data['description']);
+            unset($data['description']);
         }
         if (\array_key_exists('implementation', $data)) {
             $object->setImplementation($data['implementation']);
+            unset($data['implementation']);
         }
         if (\array_key_exists('permissions', $data)) {
             $values = array();
@@ -81,6 +89,7 @@ class LicenseNormalizer implements DenormalizerInterface, NormalizerInterface, D
                 $values[] = $value;
             }
             $object->setPermissions($values);
+            unset($data['permissions']);
         }
         if (\array_key_exists('conditions', $data)) {
             $values_1 = array();
@@ -88,6 +97,7 @@ class LicenseNormalizer implements DenormalizerInterface, NormalizerInterface, D
                 $values_1[] = $value_1;
             }
             $object->setConditions($values_1);
+            unset($data['conditions']);
         }
         if (\array_key_exists('limitations', $data)) {
             $values_2 = array();
@@ -95,12 +105,20 @@ class LicenseNormalizer implements DenormalizerInterface, NormalizerInterface, D
                 $values_2[] = $value_2;
             }
             $object->setLimitations($values_2);
+            unset($data['limitations']);
         }
         if (\array_key_exists('body', $data)) {
             $object->setBody($data['body']);
+            unset($data['body']);
         }
         if (\array_key_exists('featured', $data)) {
             $object->setFeatured($data['featured']);
+            unset($data['featured']);
+        }
+        foreach ($data as $key => $value_3) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_3;
+            }
         }
         return $object;
     }
@@ -135,6 +153,11 @@ class LicenseNormalizer implements DenormalizerInterface, NormalizerInterface, D
         $data['limitations'] = $values_2;
         $data['body'] = $object->getBody();
         $data['featured'] = $object->getFeatured();
+        foreach ($object as $key => $value_3) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_3;
+            }
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\LicenseConstraint());
             $context['skip_validation'] = true;

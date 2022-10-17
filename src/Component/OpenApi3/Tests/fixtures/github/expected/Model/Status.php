@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class Status
+class Status extends \ArrayObject
 {
     /**
      * 

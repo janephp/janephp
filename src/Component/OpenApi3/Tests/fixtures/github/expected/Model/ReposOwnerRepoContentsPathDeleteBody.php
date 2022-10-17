@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoContentsPathDeleteBody
+class ReposOwnerRepoContentsPathDeleteBody extends \ArrayObject
 {
     /**
      * The commit message.

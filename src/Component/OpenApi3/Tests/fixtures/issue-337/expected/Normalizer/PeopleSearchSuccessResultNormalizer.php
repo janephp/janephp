@@ -43,6 +43,7 @@ class PeopleSearchSuccessResultNormalizer implements DenormalizerInterface, Norm
         }
         if (\array_key_exists('totalSize', $data)) {
             $object->setTotalSize($data['totalSize']);
+            unset($data['totalSize']);
         }
         if (\array_key_exists('directors', $data)) {
             $values = array();
@@ -50,6 +51,12 @@ class PeopleSearchSuccessResultNormalizer implements DenormalizerInterface, Norm
                 $values[] = $this->denormalizer->denormalize($value, 'CreditSafe\\API\\Model\\PeopleSearchSuccessResultDirectorsItem', 'json', $context);
             }
             $object->setDirectors($values);
+            unset($data['directors']);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
@@ -68,6 +75,11 @@ class PeopleSearchSuccessResultNormalizer implements DenormalizerInterface, Norm
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data['directors'] = $values;
+        }
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
+            }
         }
         return $data;
     }

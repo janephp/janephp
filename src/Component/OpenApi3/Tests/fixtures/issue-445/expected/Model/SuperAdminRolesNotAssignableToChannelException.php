@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class SuperAdminRolesNotAssignableToChannelException
+class SuperAdminRolesNotAssignableToChannelException extends \ArrayObject
 {
     /**
      * 

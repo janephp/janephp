@@ -43,30 +43,44 @@ class CompactUserNormalizer implements DenormalizerInterface, NormalizerInterfac
         }
         if (\array_key_exists('format', $data)) {
             $object->setFormat($data['format']);
+            unset($data['format']);
         }
         if (\array_key_exists('id', $data)) {
             $object->setId($data['id']);
+            unset($data['id']);
         }
         if (\array_key_exists('created_at', $data)) {
             $object->setCreatedAt(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['created_at']));
+            unset($data['created_at']);
         }
         if (\array_key_exists('name', $data)) {
             $object->setName($data['name']);
+            unset($data['name']);
         }
         if (\array_key_exists('username', $data)) {
             $object->setUsername($data['username']);
+            unset($data['username']);
         }
         if (\array_key_exists('protected', $data)) {
             $object->setProtected($data['protected']);
+            unset($data['protected']);
         }
         if (\array_key_exists('verified', $data)) {
             $object->setVerified($data['verified']);
+            unset($data['verified']);
         }
         if (\array_key_exists('withheld', $data)) {
             $object->setWithheld($this->denormalizer->denormalize($data['withheld'], 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Model\\UserWithheld', 'json', $context));
+            unset($data['withheld']);
         }
         if (\array_key_exists('profile_image_url', $data)) {
             $object->setProfileImageUrl($data['profile_image_url']);
+            unset($data['profile_image_url']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -90,6 +104,11 @@ class CompactUserNormalizer implements DenormalizerInterface, NormalizerInterfac
         }
         if (null !== $object->getProfileImageUrl()) {
             $data['profile_image_url'] = $object->getProfileImageUrl();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

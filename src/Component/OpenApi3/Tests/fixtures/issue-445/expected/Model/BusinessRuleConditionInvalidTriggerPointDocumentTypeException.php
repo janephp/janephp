@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class BusinessRuleConditionInvalidTriggerPointDocumentTypeException
+class BusinessRuleConditionInvalidTriggerPointDocumentTypeException extends \ArrayObject
 {
     /**
      * 

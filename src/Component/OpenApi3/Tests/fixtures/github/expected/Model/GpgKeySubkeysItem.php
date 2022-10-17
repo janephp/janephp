@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class GpgKeySubkeysItem
+class GpgKeySubkeysItem extends \ArrayObject
 {
     /**
      * 

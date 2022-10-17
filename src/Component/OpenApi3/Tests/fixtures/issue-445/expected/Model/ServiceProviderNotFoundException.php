@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class ServiceProviderNotFoundException
+class ServiceProviderNotFoundException extends \ArrayObject
 {
     /**
      * 

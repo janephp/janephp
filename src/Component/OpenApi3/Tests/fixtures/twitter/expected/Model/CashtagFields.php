@@ -2,7 +2,7 @@
 
 namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 
-class CashtagFields
+class CashtagFields extends \ArrayObject
 {
     /**
      * 

@@ -2,7 +2,7 @@
 
 namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 
-class URLFields
+class URLFields extends \ArrayObject
 {
     /**
      * A validly formatted URL.

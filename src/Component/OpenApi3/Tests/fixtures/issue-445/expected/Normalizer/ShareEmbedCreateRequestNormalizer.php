@@ -43,15 +43,18 @@ class ShareEmbedCreateRequestNormalizer implements DenormalizerInterface, Normal
         }
         if (\array_key_exists('name', $data)) {
             $object->setName($data['name']);
+            unset($data['name']);
         }
         if (\array_key_exists('description', $data) && $data['description'] !== null) {
             $object->setDescription($data['description']);
+            unset($data['description']);
         }
         elseif (\array_key_exists('description', $data) && $data['description'] === null) {
             $object->setDescription(null);
         }
         if (\array_key_exists('expirationDate', $data) && $data['expirationDate'] !== null) {
             $object->setExpirationDate(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['expirationDate']));
+            unset($data['expirationDate']);
         }
         elseif (\array_key_exists('expirationDate', $data) && $data['expirationDate'] === null) {
             $object->setExpirationDate(null);
@@ -62,6 +65,7 @@ class ShareEmbedCreateRequestNormalizer implements DenormalizerInterface, Normal
                 $values[] = $this->denormalizer->denormalize($value, 'PicturePark\\API\\Model\\ShareContent', 'json', $context);
             }
             $object->setContents($values);
+            unset($data['contents']);
         }
         if (\array_key_exists('layerSchemaIds', $data) && $data['layerSchemaIds'] !== null) {
             $values_1 = array();
@@ -69,15 +73,23 @@ class ShareEmbedCreateRequestNormalizer implements DenormalizerInterface, Normal
                 $values_1[] = $value_1;
             }
             $object->setLayerSchemaIds($values_1);
+            unset($data['layerSchemaIds']);
         }
         elseif (\array_key_exists('layerSchemaIds', $data) && $data['layerSchemaIds'] === null) {
             $object->setLayerSchemaIds(null);
         }
         if (\array_key_exists('outputAccess', $data)) {
             $object->setOutputAccess($data['outputAccess']);
+            unset($data['outputAccess']);
         }
         if (\array_key_exists('kind', $data)) {
             $object->setKind($data['kind']);
+            unset($data['kind']);
+        }
+        foreach ($data as $key => $value_2) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_2;
+            }
         }
         return $object;
     }
@@ -108,6 +120,11 @@ class ShareEmbedCreateRequestNormalizer implements DenormalizerInterface, Normal
         }
         $data['outputAccess'] = $object->getOutputAccess();
         $data['kind'] = $object->getKind();
+        foreach ($object as $key => $value_2) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_2;
+            }
+        }
         return $data;
     }
 }

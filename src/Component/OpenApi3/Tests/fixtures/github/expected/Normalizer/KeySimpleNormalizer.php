@@ -47,9 +47,16 @@ class KeySimpleNormalizer implements DenormalizerInterface, NormalizerInterface,
         }
         if (\array_key_exists('id', $data)) {
             $object->setId($data['id']);
+            unset($data['id']);
         }
         if (\array_key_exists('key', $data)) {
             $object->setKey($data['key']);
+            unset($data['key']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -61,6 +68,11 @@ class KeySimpleNormalizer implements DenormalizerInterface, NormalizerInterface,
         $data = array();
         $data['id'] = $object->getId();
         $data['key'] = $object->getKey();
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\KeySimpleConstraint());
             $context['skip_validation'] = true;

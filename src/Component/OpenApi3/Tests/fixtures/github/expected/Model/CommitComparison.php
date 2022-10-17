@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class CommitComparison
+class CommitComparison extends \ArrayObject
 {
     /**
      * 

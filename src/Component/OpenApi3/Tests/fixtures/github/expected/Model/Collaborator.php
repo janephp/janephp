@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class Collaborator
+class Collaborator extends \ArrayObject
 {
     /**
      * 

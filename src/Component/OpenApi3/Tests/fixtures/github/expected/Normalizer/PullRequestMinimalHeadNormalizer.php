@@ -47,12 +47,20 @@ class PullRequestMinimalHeadNormalizer implements DenormalizerInterface, Normali
         }
         if (\array_key_exists('ref', $data)) {
             $object->setRef($data['ref']);
+            unset($data['ref']);
         }
         if (\array_key_exists('sha', $data)) {
             $object->setSha($data['sha']);
+            unset($data['sha']);
         }
         if (\array_key_exists('repo', $data)) {
             $object->setRepo($this->denormalizer->denormalize($data['repo'], 'Github\\Model\\PullRequestMinimalHeadRepo', 'json', $context));
+            unset($data['repo']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -65,6 +73,11 @@ class PullRequestMinimalHeadNormalizer implements DenormalizerInterface, Normali
         $data['ref'] = $object->getRef();
         $data['sha'] = $object->getSha();
         $data['repo'] = $this->normalizer->normalize($object->getRepo(), 'json', $context);
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\PullRequestMinimalHeadConstraint());
             $context['skip_validation'] = true;

@@ -47,9 +47,16 @@ class ProjectsColumnsCardsCardIdMovesPostBodyNormalizer implements DenormalizerI
         }
         if (\array_key_exists('position', $data)) {
             $object->setPosition($data['position']);
+            unset($data['position']);
         }
         if (\array_key_exists('column_id', $data)) {
             $object->setColumnId($data['column_id']);
+            unset($data['column_id']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -62,6 +69,11 @@ class ProjectsColumnsCardsCardIdMovesPostBodyNormalizer implements DenormalizerI
         $data['position'] = $object->getPosition();
         if (null !== $object->getColumnId()) {
             $data['column_id'] = $object->getColumnId();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ProjectsColumnsCardsCardIdMovesPostBodyConstraint());

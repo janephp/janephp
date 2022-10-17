@@ -43,15 +43,24 @@ class GbCompanyReportExampleResponseReportAdditionalInformationBadDebtDetailsIte
         }
         if (\array_key_exists('statementDate', $data)) {
             $object->setStatementDate($data['statementDate']);
+            unset($data['statementDate']);
         }
         if (\array_key_exists('registrationNumber', $data)) {
             $object->setRegistrationNumber($data['registrationNumber']);
+            unset($data['registrationNumber']);
         }
         if (\array_key_exists('companyName', $data)) {
             $object->setCompanyName($data['companyName']);
+            unset($data['companyName']);
         }
         if (\array_key_exists('amount', $data)) {
             $object->setAmount($this->denormalizer->denormalize($data['amount'], 'CreditSafe\\API\\Model\\GbCompanyReportExampleResponseReportAdditionalInformationBadDebtDetailsItemAmount', 'json', $context));
+            unset($data['amount']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -72,6 +81,11 @@ class GbCompanyReportExampleResponseReportAdditionalInformationBadDebtDetailsIte
         }
         if (null !== $object->getAmount()) {
             $data['amount'] = $this->normalizer->normalize($object->getAmount(), 'json', $context);
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

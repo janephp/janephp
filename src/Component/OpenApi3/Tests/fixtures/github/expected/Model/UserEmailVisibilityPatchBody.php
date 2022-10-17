@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class UserEmailVisibilityPatchBody
+class UserEmailVisibilityPatchBody extends \ArrayObject
 {
     /**
      * An email address associated with the GitHub user account to manage.

@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoPullsPullNumberReviewsPostBodyCommentsItem
+class ReposOwnerRepoPullsPullNumberReviewsPostBodyCommentsItem extends \ArrayObject
 {
     /**
      * The relative path to the file that necessitates a review comment.

@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class EventPayloadPagesItem
+class EventPayloadPagesItem extends \ArrayObject
 {
     /**
      * 

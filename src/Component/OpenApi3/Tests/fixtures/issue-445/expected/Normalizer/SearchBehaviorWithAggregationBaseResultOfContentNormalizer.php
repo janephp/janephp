@@ -43,6 +43,7 @@ class SearchBehaviorWithAggregationBaseResultOfContentNormalizer implements Deno
         }
         if (\array_key_exists('totalResults', $data)) {
             $object->setTotalResults($data['totalResults']);
+            unset($data['totalResults']);
         }
         if (\array_key_exists('results', $data)) {
             $values = array();
@@ -50,24 +51,29 @@ class SearchBehaviorWithAggregationBaseResultOfContentNormalizer implements Deno
                 $values[] = $this->denormalizer->denormalize($value, 'PicturePark\\API\\Model\\Content', 'json', $context);
             }
             $object->setResults($values);
+            unset($data['results']);
         }
         if (\array_key_exists('elapsedMilliseconds', $data)) {
             $object->setElapsedMilliseconds($data['elapsedMilliseconds']);
+            unset($data['elapsedMilliseconds']);
         }
         if (\array_key_exists('pageToken', $data) && $data['pageToken'] !== null) {
             $object->setPageToken($data['pageToken']);
+            unset($data['pageToken']);
         }
         elseif (\array_key_exists('pageToken', $data) && $data['pageToken'] === null) {
             $object->setPageToken(null);
         }
         if (\array_key_exists('searchString', $data) && $data['searchString'] !== null) {
             $object->setSearchString($data['searchString']);
+            unset($data['searchString']);
         }
         elseif (\array_key_exists('searchString', $data) && $data['searchString'] === null) {
             $object->setSearchString(null);
         }
         if (\array_key_exists('isSearchStringRewritten', $data)) {
             $object->setIsSearchStringRewritten($data['isSearchStringRewritten']);
+            unset($data['isSearchStringRewritten']);
         }
         if (\array_key_exists('queryDebugInformation', $data) && $data['queryDebugInformation'] !== null) {
             $values_1 = array();
@@ -75,6 +81,7 @@ class SearchBehaviorWithAggregationBaseResultOfContentNormalizer implements Deno
                 $values_1[] = $this->denormalizer->denormalize($value_1, 'PicturePark\\API\\Model\\QueryDebugInformation', 'json', $context);
             }
             $object->setQueryDebugInformation($values_1);
+            unset($data['queryDebugInformation']);
         }
         elseif (\array_key_exists('queryDebugInformation', $data) && $data['queryDebugInformation'] === null) {
             $object->setQueryDebugInformation(null);
@@ -85,9 +92,15 @@ class SearchBehaviorWithAggregationBaseResultOfContentNormalizer implements Deno
                 $values_2[] = $this->denormalizer->denormalize($value_2, 'PicturePark\\API\\Model\\AggregationResult', 'json', $context);
             }
             $object->setAggregationResults($values_2);
+            unset($data['aggregationResults']);
         }
         elseif (\array_key_exists('aggregationResults', $data) && $data['aggregationResults'] === null) {
             $object->setAggregationResults(null);
+        }
+        foreach ($data as $key => $value_3) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_3;
+            }
         }
         return $object;
     }
@@ -126,6 +139,11 @@ class SearchBehaviorWithAggregationBaseResultOfContentNormalizer implements Deno
                 $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
             }
             $data['aggregationResults'] = $values_2;
+        }
+        foreach ($object as $key => $value_3) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_3;
+            }
         }
         return $data;
     }

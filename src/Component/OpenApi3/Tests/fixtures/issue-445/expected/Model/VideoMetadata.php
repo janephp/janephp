@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class VideoMetadata
+class VideoMetadata extends \ArrayObject
 {
     /**
      * 

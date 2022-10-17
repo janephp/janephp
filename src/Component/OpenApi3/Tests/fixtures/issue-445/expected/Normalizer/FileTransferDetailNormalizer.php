@@ -43,36 +43,45 @@ class FileTransferDetailNormalizer implements DenormalizerInterface, NormalizerI
         }
         if (\array_key_exists('id', $data)) {
             $object->setId($data['id']);
+            unset($data['id']);
         }
         if (\array_key_exists('name', $data)) {
             $object->setName($data['name']);
+            unset($data['name']);
         }
         if (\array_key_exists('identifier', $data) && $data['identifier'] !== null) {
             $object->setIdentifier($data['identifier']);
+            unset($data['identifier']);
         }
         elseif (\array_key_exists('identifier', $data) && $data['identifier'] === null) {
             $object->setIdentifier(null);
         }
         if (\array_key_exists('requestId', $data)) {
             $object->setRequestId($data['requestId']);
+            unset($data['requestId']);
         }
         if (\array_key_exists('transferId', $data)) {
             $object->setTransferId($data['transferId']);
+            unset($data['transferId']);
         }
         if (\array_key_exists('state', $data)) {
             $object->setState($data['state']);
+            unset($data['state']);
         }
         if (\array_key_exists('contentId', $data) && $data['contentId'] !== null) {
             $object->setContentId($data['contentId']);
+            unset($data['contentId']);
         }
         elseif (\array_key_exists('contentId', $data) && $data['contentId'] === null) {
             $object->setContentId(null);
         }
         if (\array_key_exists('audit', $data)) {
             $object->setAudit($data['audit']);
+            unset($data['audit']);
         }
         if (\array_key_exists('fileMetadata', $data) && $data['fileMetadata'] !== null) {
             $object->setFileMetadata($data['fileMetadata']);
+            unset($data['fileMetadata']);
         }
         elseif (\array_key_exists('fileMetadata', $data) && $data['fileMetadata'] === null) {
             $object->setFileMetadata(null);
@@ -83,9 +92,15 @@ class FileTransferDetailNormalizer implements DenormalizerInterface, NormalizerI
                 $values[] = $this->denormalizer->denormalize($value, 'PicturePark\\API\\Model\\FileTransferOutput', 'json', $context);
             }
             $object->setOutputItems($values);
+            unset($data['outputItems']);
         }
         elseif (\array_key_exists('outputItems', $data) && $data['outputItems'] === null) {
             $object->setOutputItems(null);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
@@ -116,6 +131,11 @@ class FileTransferDetailNormalizer implements DenormalizerInterface, NormalizerI
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data['outputItems'] = $values;
+        }
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
+            }
         }
         return $data;
     }

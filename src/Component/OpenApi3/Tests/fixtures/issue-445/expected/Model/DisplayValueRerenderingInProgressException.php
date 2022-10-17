@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class DisplayValueRerenderingInProgressException
+class DisplayValueRerenderingInProgressException extends \ArrayObject
 {
     /**
      * 

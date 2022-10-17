@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class IssueEventActor
+class IssueEventActor extends \ArrayObject
 {
     /**
      * 

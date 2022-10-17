@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class CommunityProfileFilesPullRequestTemplate
+class CommunityProfileFilesPullRequestTemplate extends \ArrayObject
 {
     /**
      * 

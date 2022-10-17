@@ -2,7 +2,7 @@
 
 namespace CreditSafe\API\Model;
 
-class SearchNoResultsErrorMessages
+class SearchNoResultsErrorMessages extends \ArrayObject
 {
     /**
      * 

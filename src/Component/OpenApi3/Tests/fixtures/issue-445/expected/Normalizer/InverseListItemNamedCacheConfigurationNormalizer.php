@@ -43,36 +43,48 @@ class InverseListItemNamedCacheConfigurationNormalizer implements DenormalizerIn
         }
         if (\array_key_exists('name', $data) && $data['name'] !== null) {
             $object->setName($data['name']);
+            unset($data['name']);
         }
         elseif (\array_key_exists('name', $data) && $data['name'] === null) {
             $object->setName(null);
         }
         if (\array_key_exists('caseSensitive', $data)) {
             $object->setCaseSensitive($data['caseSensitive']);
+            unset($data['caseSensitive']);
         }
         if (\array_key_exists('kind', $data)) {
             $object->setKind($data['kind']);
+            unset($data['kind']);
         }
         if (\array_key_exists('schemaId', $data) && $data['schemaId'] !== null) {
             $object->setSchemaId($data['schemaId']);
+            unset($data['schemaId']);
         }
         elseif (\array_key_exists('schemaId', $data) && $data['schemaId'] === null) {
             $object->setSchemaId(null);
         }
         if (\array_key_exists('valueField', $data) && $data['valueField'] !== null) {
             $object->setValueField($data['valueField']);
+            unset($data['valueField']);
         }
         elseif (\array_key_exists('valueField', $data) && $data['valueField'] === null) {
             $object->setValueField(null);
         }
         if (\array_key_exists('filter', $data) && $data['filter'] !== null) {
             $object->setFilter($data['filter']);
+            unset($data['filter']);
         }
         elseif (\array_key_exists('filter', $data) && $data['filter'] === null) {
             $object->setFilter(null);
         }
         if (\array_key_exists('includeAllSchemaChildren', $data)) {
             $object->setIncludeAllSchemaChildren($data['includeAllSchemaChildren']);
+            unset($data['includeAllSchemaChildren']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -98,6 +110,11 @@ class InverseListItemNamedCacheConfigurationNormalizer implements DenormalizerIn
         }
         if (null !== $object->getIncludeAllSchemaChildren()) {
             $data['includeAllSchemaChildren'] = $object->getIncludeAllSchemaChildren();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

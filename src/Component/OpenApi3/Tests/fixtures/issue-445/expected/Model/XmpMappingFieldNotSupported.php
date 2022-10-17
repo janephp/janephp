@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class XmpMappingFieldNotSupported
+class XmpMappingFieldNotSupported extends \ArrayObject
 {
     /**
      * 

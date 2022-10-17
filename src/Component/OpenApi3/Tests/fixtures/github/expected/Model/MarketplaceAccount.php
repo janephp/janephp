@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class MarketplaceAccount
+class MarketplaceAccount extends \ArrayObject
 {
     /**
      * 

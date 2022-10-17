@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class SchemaCountLimitReachedException
+class SchemaCountLimitReachedException extends \ArrayObject
 {
     /**
      * 

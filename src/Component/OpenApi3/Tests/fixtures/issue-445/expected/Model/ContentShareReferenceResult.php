@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class ContentShareReferenceResult
+class ContentShareReferenceResult extends \ArrayObject
 {
     /**
      * The total number of matching documents.

@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class MarkdownPostBody
+class MarkdownPostBody extends \ArrayObject
 {
     /**
      * The Markdown text to render in HTML.

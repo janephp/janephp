@@ -43,21 +43,32 @@ class PortfolioRequestNormalizer implements DenormalizerInterface, NormalizerInt
         }
         if (\array_key_exists('name', $data)) {
             $object->setName($data['name']);
+            unset($data['name']);
         }
         if (\array_key_exists('isDefault', $data)) {
             $object->setIsDefault($data['isDefault']);
+            unset($data['isDefault']);
         }
         if (\array_key_exists('emails', $data)) {
             $object->setEmails($this->denormalizer->denormalize($data['emails'], 'CreditSafe\\API\\Model\\PortfolioRequestEmails', 'json', $context));
+            unset($data['emails']);
         }
         if (\array_key_exists('emailSubject', $data)) {
             $object->setEmailSubject($data['emailSubject']);
+            unset($data['emailSubject']);
         }
         if (\array_key_exists('emailLanguage', $data)) {
             $object->setEmailLanguage($data['emailLanguage']);
+            unset($data['emailLanguage']);
         }
         if (\array_key_exists('frequency', $data)) {
             $object->setFrequency($data['frequency']);
+            unset($data['frequency']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -80,6 +91,11 @@ class PortfolioRequestNormalizer implements DenormalizerInterface, NormalizerInt
         }
         if (null !== $object->getFrequency()) {
             $data['frequency'] = $object->getFrequency();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

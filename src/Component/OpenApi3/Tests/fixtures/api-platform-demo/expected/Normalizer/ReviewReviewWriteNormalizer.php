@@ -43,30 +43,41 @@ class ReviewReviewWriteNormalizer implements DenormalizerInterface, NormalizerIn
         }
         if (\array_key_exists('body', $data)) {
             $object->setBody($data['body']);
+            unset($data['body']);
         }
         if (\array_key_exists('rating', $data)) {
             $object->setRating($data['rating']);
+            unset($data['rating']);
         }
         if (\array_key_exists('letter', $data) && $data['letter'] !== null) {
             $object->setLetter($data['letter']);
+            unset($data['letter']);
         }
         elseif (\array_key_exists('letter', $data) && $data['letter'] === null) {
             $object->setLetter(null);
         }
         if (\array_key_exists('book', $data)) {
             $object->setBook($data['book']);
+            unset($data['book']);
         }
         if (\array_key_exists('author', $data) && $data['author'] !== null) {
             $object->setAuthor($data['author']);
+            unset($data['author']);
         }
         elseif (\array_key_exists('author', $data) && $data['author'] === null) {
             $object->setAuthor(null);
         }
         if (\array_key_exists('publicationDate', $data) && $data['publicationDate'] !== null) {
             $object->setPublicationDate(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['publicationDate']));
+            unset($data['publicationDate']);
         }
         elseif (\array_key_exists('publicationDate', $data) && $data['publicationDate'] === null) {
             $object->setPublicationDate(null);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -87,6 +98,11 @@ class ReviewReviewWriteNormalizer implements DenormalizerInterface, NormalizerIn
         }
         if (null !== $object->getPublicationDate()) {
             $data['publicationDate'] = $object->getPublicationDate()->format('Y-m-d\\TH:i:sP');
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

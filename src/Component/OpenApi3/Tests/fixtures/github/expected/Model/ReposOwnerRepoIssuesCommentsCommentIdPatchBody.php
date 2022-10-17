@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoIssuesCommentsCommentIdPatchBody
+class ReposOwnerRepoIssuesCommentsCommentIdPatchBody extends \ArrayObject
 {
     /**
      * The contents of the comment.

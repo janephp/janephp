@@ -52,45 +52,59 @@ class WatermarkActionNormalizer implements DenormalizerInterface, NormalizerInte
         }
         if (\array_key_exists('kind', $data)) {
             $object->setKind($data['kind']);
+            unset($data['kind']);
         }
         if (\array_key_exists('watermarkFilePath', $data) && $data['watermarkFilePath'] !== null) {
             $object->setWatermarkFilePath($data['watermarkFilePath']);
+            unset($data['watermarkFilePath']);
         }
         elseif (\array_key_exists('watermarkFilePath', $data) && $data['watermarkFilePath'] === null) {
             $object->setWatermarkFilePath(null);
         }
         if (\array_key_exists('marginLeft', $data) && $data['marginLeft'] !== null) {
             $object->setMarginLeft($data['marginLeft']);
+            unset($data['marginLeft']);
         }
         elseif (\array_key_exists('marginLeft', $data) && $data['marginLeft'] === null) {
             $object->setMarginLeft(null);
         }
         if (\array_key_exists('marginTop', $data) && $data['marginTop'] !== null) {
             $object->setMarginTop($data['marginTop']);
+            unset($data['marginTop']);
         }
         elseif (\array_key_exists('marginTop', $data) && $data['marginTop'] === null) {
             $object->setMarginTop(null);
         }
         if (\array_key_exists('marginRight', $data) && $data['marginRight'] !== null) {
             $object->setMarginRight($data['marginRight']);
+            unset($data['marginRight']);
         }
         elseif (\array_key_exists('marginRight', $data) && $data['marginRight'] === null) {
             $object->setMarginRight(null);
         }
         if (\array_key_exists('marginBottom', $data) && $data['marginBottom'] !== null) {
             $object->setMarginBottom($data['marginBottom']);
+            unset($data['marginBottom']);
         }
         elseif (\array_key_exists('marginBottom', $data) && $data['marginBottom'] === null) {
             $object->setMarginBottom(null);
         }
         if (\array_key_exists('opacity', $data)) {
             $object->setOpacity($data['opacity']);
+            unset($data['opacity']);
         }
         if (\array_key_exists('widthRatio', $data)) {
             $object->setWidthRatio($data['widthRatio']);
+            unset($data['widthRatio']);
         }
         if (\array_key_exists('heightRatio', $data)) {
             $object->setHeightRatio($data['heightRatio']);
+            unset($data['heightRatio']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -124,6 +138,11 @@ class WatermarkActionNormalizer implements DenormalizerInterface, NormalizerInte
         }
         if (null !== $object->getHeightRatio()) {
             $data['heightRatio'] = $object->getHeightRatio();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class Tag
+class Tag extends \ArrayObject
 {
     /**
      * 

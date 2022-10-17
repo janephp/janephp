@@ -55,15 +55,24 @@ class PagingNormalizer implements DenormalizerInterface, NormalizerInterface, De
         }
         if (\array_key_exists('size', $data)) {
             $object->setSize($data['size']);
+            unset($data['size']);
         }
         if (\array_key_exists('prev', $data)) {
             $object->setPrev($data['prev']);
+            unset($data['prev']);
         }
         if (\array_key_exists('next', $data)) {
             $object->setNext($data['next']);
+            unset($data['next']);
         }
         if (\array_key_exists('last', $data)) {
             $object->setLast($data['last']);
+            unset($data['last']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -84,6 +93,11 @@ class PagingNormalizer implements DenormalizerInterface, NormalizerInterface, De
         }
         if (null !== $object->getLast()) {
             $data['last'] = $object->getLast();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

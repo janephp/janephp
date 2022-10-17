@@ -2,7 +2,7 @@
 
 namespace ApiPlatform\Demo\Model;
 
-class StatsGetResponse200
+class StatsGetResponse200 extends \ArrayObject
 {
     /**
      * 

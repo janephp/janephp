@@ -43,42 +43,55 @@ class ElasticVersionUpdateExceptionNormalizer implements DenormalizerInterface, 
         }
         if (\array_key_exists('traceLevel', $data)) {
             $object->setTraceLevel($data['traceLevel']);
+            unset($data['traceLevel']);
         }
         if (\array_key_exists('traceId', $data) && $data['traceId'] !== null) {
             $object->setTraceId($data['traceId']);
+            unset($data['traceId']);
         }
         elseif (\array_key_exists('traceId', $data) && $data['traceId'] === null) {
             $object->setTraceId(null);
         }
         if (\array_key_exists('traceJobId', $data) && $data['traceJobId'] !== null) {
             $object->setTraceJobId($data['traceJobId']);
+            unset($data['traceJobId']);
         }
         elseif (\array_key_exists('traceJobId', $data) && $data['traceJobId'] === null) {
             $object->setTraceJobId(null);
         }
         if (\array_key_exists('httpStatusCode', $data)) {
             $object->setHttpStatusCode($data['httpStatusCode']);
+            unset($data['httpStatusCode']);
         }
         if (\array_key_exists('exceptionMessage', $data) && $data['exceptionMessage'] !== null) {
             $object->setExceptionMessage($data['exceptionMessage']);
+            unset($data['exceptionMessage']);
         }
         elseif (\array_key_exists('exceptionMessage', $data) && $data['exceptionMessage'] === null) {
             $object->setExceptionMessage(null);
         }
         if (\array_key_exists('kind', $data)) {
             $object->setKind($data['kind']);
+            unset($data['kind']);
         }
         if (\array_key_exists('expectedVersion', $data) && $data['expectedVersion'] !== null) {
             $object->setExpectedVersion($data['expectedVersion']);
+            unset($data['expectedVersion']);
         }
         elseif (\array_key_exists('expectedVersion', $data) && $data['expectedVersion'] === null) {
             $object->setExpectedVersion(null);
         }
         if (\array_key_exists('actualVersion', $data) && $data['actualVersion'] !== null) {
             $object->setActualVersion($data['actualVersion']);
+            unset($data['actualVersion']);
         }
         elseif (\array_key_exists('actualVersion', $data) && $data['actualVersion'] === null) {
             $object->setActualVersion(null);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -109,6 +122,11 @@ class ElasticVersionUpdateExceptionNormalizer implements DenormalizerInterface, 
         }
         if (null !== $object->getActualVersion()) {
             $data['actualVersion'] = $object->getActualVersion();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

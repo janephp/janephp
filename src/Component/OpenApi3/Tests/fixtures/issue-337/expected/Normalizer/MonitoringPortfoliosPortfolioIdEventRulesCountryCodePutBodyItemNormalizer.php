@@ -43,18 +43,28 @@ class MonitoringPortfoliosPortfolioIdEventRulesCountryCodePutBodyItemNormalizer 
         }
         if (\array_key_exists('ruleCode', $data)) {
             $object->setRuleCode($data['ruleCode']);
+            unset($data['ruleCode']);
         }
         if (\array_key_exists('isActive', $data)) {
             $object->setIsActive($data['isActive']);
+            unset($data['isActive']);
         }
         if (\array_key_exists('param0', $data)) {
             $object->setParam0($data['param0']);
+            unset($data['param0']);
         }
         if (\array_key_exists('param1', $data)) {
             $object->setParam1($data['param1']);
+            unset($data['param1']);
         }
         if (\array_key_exists('param2...', $data)) {
             $object->setParam2($data['param2...']);
+            unset($data['param2...']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -74,6 +84,11 @@ class MonitoringPortfoliosPortfolioIdEventRulesCountryCodePutBodyItemNormalizer 
         }
         if (null !== $object->getParam2()) {
             $data['param2...'] = $object->getParam2();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

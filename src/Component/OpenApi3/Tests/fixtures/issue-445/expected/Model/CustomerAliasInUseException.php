@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class CustomerAliasInUseException
+class CustomerAliasInUseException extends \ArrayObject
 {
     /**
      * 

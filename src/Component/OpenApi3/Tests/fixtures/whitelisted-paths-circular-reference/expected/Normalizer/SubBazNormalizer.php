@@ -43,6 +43,12 @@ class SubBazNormalizer implements DenormalizerInterface, NormalizerInterface, De
         }
         if (\array_key_exists('parent', $data)) {
             $object->setParent($this->denormalizer->denormalize($data['parent'], 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Model\\Baz', 'json', $context));
+            unset($data['parent']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -54,6 +60,11 @@ class SubBazNormalizer implements DenormalizerInterface, NormalizerInterface, De
         $data = array();
         if (null !== $object->getParent()) {
             $data['parent'] = $this->normalizer->normalize($object->getParent(), 'json', $context);
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

@@ -47,36 +47,50 @@ class RepositoryInvitationNormalizer implements DenormalizerInterface, Normalize
         }
         if (\array_key_exists('id', $data)) {
             $object->setId($data['id']);
+            unset($data['id']);
         }
         if (\array_key_exists('repository', $data)) {
             $object->setRepository($this->denormalizer->denormalize($data['repository'], 'Github\\Model\\MinimalRepository', 'json', $context));
+            unset($data['repository']);
         }
         if (\array_key_exists('invitee', $data) && $data['invitee'] !== null) {
             $object->setInvitee($this->denormalizer->denormalize($data['invitee'], 'Github\\Model\\RepositoryInvitationInvitee', 'json', $context));
+            unset($data['invitee']);
         }
         elseif (\array_key_exists('invitee', $data) && $data['invitee'] === null) {
             $object->setInvitee(null);
         }
         if (\array_key_exists('inviter', $data) && $data['inviter'] !== null) {
             $object->setInviter($this->denormalizer->denormalize($data['inviter'], 'Github\\Model\\RepositoryInvitationInviter', 'json', $context));
+            unset($data['inviter']);
         }
         elseif (\array_key_exists('inviter', $data) && $data['inviter'] === null) {
             $object->setInviter(null);
         }
         if (\array_key_exists('permissions', $data)) {
             $object->setPermissions($data['permissions']);
+            unset($data['permissions']);
         }
         if (\array_key_exists('created_at', $data)) {
             $object->setCreatedAt(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['created_at']));
+            unset($data['created_at']);
         }
         if (\array_key_exists('url', $data)) {
             $object->setUrl($data['url']);
+            unset($data['url']);
         }
         if (\array_key_exists('html_url', $data)) {
             $object->setHtmlUrl($data['html_url']);
+            unset($data['html_url']);
         }
         if (\array_key_exists('node_id', $data)) {
             $object->setNodeId($data['node_id']);
+            unset($data['node_id']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -95,6 +109,11 @@ class RepositoryInvitationNormalizer implements DenormalizerInterface, Normalize
         $data['url'] = $object->getUrl();
         $data['html_url'] = $object->getHtmlUrl();
         $data['node_id'] = $object->getNodeId();
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\RepositoryInvitationConstraint());
             $context['skip_validation'] = true;

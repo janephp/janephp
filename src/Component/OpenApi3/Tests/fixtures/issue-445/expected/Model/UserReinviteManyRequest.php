@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class UserReinviteManyRequest
+class UserReinviteManyRequest extends \ArrayObject
 {
     /**
      * User IDs.

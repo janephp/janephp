@@ -51,12 +51,15 @@ class OrgsOrgMigrationsPostBodyNormalizer implements DenormalizerInterface, Norm
                 $values[] = $value;
             }
             $object->setRepositories($values);
+            unset($data['repositories']);
         }
         if (\array_key_exists('lock_repositories', $data)) {
             $object->setLockRepositories($data['lock_repositories']);
+            unset($data['lock_repositories']);
         }
         if (\array_key_exists('exclude_attachments', $data)) {
             $object->setExcludeAttachments($data['exclude_attachments']);
+            unset($data['exclude_attachments']);
         }
         if (\array_key_exists('exclude', $data)) {
             $values_1 = array();
@@ -64,6 +67,12 @@ class OrgsOrgMigrationsPostBodyNormalizer implements DenormalizerInterface, Norm
                 $values_1[] = $value_1;
             }
             $object->setExclude($values_1);
+            unset($data['exclude']);
+        }
+        foreach ($data as $key => $value_2) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_2;
+            }
         }
         return $object;
     }
@@ -90,6 +99,11 @@ class OrgsOrgMigrationsPostBodyNormalizer implements DenormalizerInterface, Norm
                 $values_1[] = $value_1;
             }
             $data['exclude'] = $values_1;
+        }
+        foreach ($object as $key => $value_2) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_2;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\OrgsOrgMigrationsPostBodyConstraint());

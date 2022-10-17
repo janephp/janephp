@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class IssueEventRequestedReviewer
+class IssueEventRequestedReviewer extends \ArrayObject
 {
     /**
      * 

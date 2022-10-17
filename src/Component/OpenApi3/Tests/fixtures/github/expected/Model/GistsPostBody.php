@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class GistsPostBody
+class GistsPostBody extends \ArrayObject
 {
     /**
      * Description of the gist

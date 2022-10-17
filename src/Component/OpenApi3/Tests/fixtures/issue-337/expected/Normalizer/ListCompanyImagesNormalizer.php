@@ -43,6 +43,7 @@ class ListCompanyImagesNormalizer implements DenormalizerInterface, NormalizerIn
         }
         if (\array_key_exists('totalSize', $data)) {
             $object->setTotalSize($data['totalSize']);
+            unset($data['totalSize']);
         }
         if (\array_key_exists('data', $data)) {
             $values = array();
@@ -50,6 +51,12 @@ class ListCompanyImagesNormalizer implements DenormalizerInterface, NormalizerIn
                 $values[] = $this->denormalizer->denormalize($value, 'CreditSafe\\API\\Model\\ListCompanyImagesDataItem', 'json', $context);
             }
             $object->setData($values);
+            unset($data['data']);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
@@ -68,6 +75,11 @@ class ListCompanyImagesNormalizer implements DenormalizerInterface, NormalizerIn
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data['data'] = $values;
+        }
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
+            }
         }
         return $data;
     }

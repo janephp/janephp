@@ -43,18 +43,26 @@ class TakeArrayValueTransformationNormalizer implements DenormalizerInterface, N
         }
         if (\array_key_exists('traceRefId', $data) && $data['traceRefId'] !== null) {
             $object->setTraceRefId($data['traceRefId']);
+            unset($data['traceRefId']);
         }
         elseif (\array_key_exists('traceRefId', $data) && $data['traceRefId'] === null) {
             $object->setTraceRefId(null);
         }
         if (\array_key_exists('kind', $data)) {
             $object->setKind($data['kind']);
+            unset($data['kind']);
         }
         if (\array_key_exists('index', $data) && $data['index'] !== null) {
             $object->setIndex($data['index']);
+            unset($data['index']);
         }
         elseif (\array_key_exists('index', $data) && $data['index'] === null) {
             $object->setIndex(null);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -70,6 +78,11 @@ class TakeArrayValueTransformationNormalizer implements DenormalizerInterface, N
         $data['kind'] = $object->getKind();
         if (null !== $object->getIndex()) {
             $data['index'] = $object->getIndex();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

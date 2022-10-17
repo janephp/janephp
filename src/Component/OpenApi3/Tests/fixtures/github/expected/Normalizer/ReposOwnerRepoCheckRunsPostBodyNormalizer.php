@@ -47,30 +47,39 @@ class ReposOwnerRepoCheckRunsPostBodyNormalizer implements DenormalizerInterface
         }
         if (\array_key_exists('name', $data)) {
             $object->setName($data['name']);
+            unset($data['name']);
         }
         if (\array_key_exists('head_sha', $data)) {
             $object->setHeadSha($data['head_sha']);
+            unset($data['head_sha']);
         }
         if (\array_key_exists('details_url', $data)) {
             $object->setDetailsUrl($data['details_url']);
+            unset($data['details_url']);
         }
         if (\array_key_exists('external_id', $data)) {
             $object->setExternalId($data['external_id']);
+            unset($data['external_id']);
         }
         if (\array_key_exists('status', $data)) {
             $object->setStatus($data['status']);
+            unset($data['status']);
         }
         if (\array_key_exists('started_at', $data)) {
             $object->setStartedAt($data['started_at']);
+            unset($data['started_at']);
         }
         if (\array_key_exists('conclusion', $data)) {
             $object->setConclusion($data['conclusion']);
+            unset($data['conclusion']);
         }
         if (\array_key_exists('completed_at', $data)) {
             $object->setCompletedAt($data['completed_at']);
+            unset($data['completed_at']);
         }
         if (\array_key_exists('output', $data)) {
             $object->setOutput($this->denormalizer->denormalize($data['output'], 'Github\\Model\\ReposOwnerRepoCheckRunsPostBodyOutput', 'json', $context));
+            unset($data['output']);
         }
         if (\array_key_exists('actions', $data)) {
             $values = array();
@@ -78,6 +87,12 @@ class ReposOwnerRepoCheckRunsPostBodyNormalizer implements DenormalizerInterface
                 $values[] = $this->denormalizer->denormalize($value, 'Github\\Model\\ReposOwnerRepoCheckRunsPostBodyActionsItem', 'json', $context);
             }
             $object->setActions($values);
+            unset($data['actions']);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
@@ -116,6 +131,11 @@ class ReposOwnerRepoCheckRunsPostBodyNormalizer implements DenormalizerInterface
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data['actions'] = $values;
+        }
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ReposOwnerRepoCheckRunsPostBodyConstraint());

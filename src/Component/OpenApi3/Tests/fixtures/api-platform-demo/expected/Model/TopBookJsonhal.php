@@ -2,7 +2,7 @@
 
 namespace ApiPlatform\Demo\Model;
 
-class TopBookJsonhal
+class TopBookJsonhal extends \ArrayObject
 {
     /**
      * 

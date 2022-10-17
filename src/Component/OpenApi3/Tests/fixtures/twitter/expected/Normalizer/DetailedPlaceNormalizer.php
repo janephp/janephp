@@ -43,24 +43,31 @@ class DetailedPlaceNormalizer implements DenormalizerInterface, NormalizerInterf
         }
         if (\array_key_exists('format', $data)) {
             $object->setFormat($data['format']);
+            unset($data['format']);
         }
         if (\array_key_exists('id', $data)) {
             $object->setId($data['id']);
+            unset($data['id']);
         }
         if (\array_key_exists('name', $data)) {
             $object->setName($data['name']);
+            unset($data['name']);
         }
         if (\array_key_exists('country_code', $data)) {
             $object->setCountryCode($data['country_code']);
+            unset($data['country_code']);
         }
         if (\array_key_exists('place_type', $data)) {
             $object->setPlaceType($data['place_type']);
+            unset($data['place_type']);
         }
         if (\array_key_exists('full_name', $data)) {
             $object->setFullName($data['full_name']);
+            unset($data['full_name']);
         }
         if (\array_key_exists('country', $data)) {
             $object->setCountry($data['country']);
+            unset($data['country']);
         }
         if (\array_key_exists('contained_within', $data)) {
             $values = array();
@@ -68,9 +75,16 @@ class DetailedPlaceNormalizer implements DenormalizerInterface, NormalizerInterf
                 $values[] = $value;
             }
             $object->setContainedWithin($values);
+            unset($data['contained_within']);
         }
         if (\array_key_exists('geo', $data)) {
             $object->setGeo($this->denormalizer->denormalize($data['geo'], 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Model\\Geo', 'json', $context));
+            unset($data['geo']);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
@@ -98,6 +112,11 @@ class DetailedPlaceNormalizer implements DenormalizerInterface, NormalizerInterf
         }
         if (null !== $object->getGeo()) {
             $data['geo'] = $this->normalizer->normalize($object->getGeo(), 'json', $context);
+        }
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
+            }
         }
         return $data;
     }

@@ -43,12 +43,20 @@ class MetadataValuesFieldRemoveCommandNormalizer implements DenormalizerInterfac
         }
         if (\array_key_exists('schemaId', $data)) {
             $object->setSchemaId($data['schemaId']);
+            unset($data['schemaId']);
         }
         if (\array_key_exists('kind', $data)) {
             $object->setKind($data['kind']);
+            unset($data['kind']);
         }
         if (\array_key_exists('fieldPath', $data)) {
             $object->setFieldPath($data['fieldPath']);
+            unset($data['fieldPath']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -61,6 +69,11 @@ class MetadataValuesFieldRemoveCommandNormalizer implements DenormalizerInterfac
         $data['schemaId'] = $object->getSchemaId();
         $data['kind'] = $object->getKind();
         $data['fieldPath'] = $object->getFieldPath();
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
         return $data;
     }
 }

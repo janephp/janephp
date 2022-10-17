@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoCheckSuitesPreferencesPatchBodyAutoTriggerChecksItem
+class ReposOwnerRepoCheckSuitesPreferencesPatchBodyAutoTriggerChecksItem extends \ArrayObject
 {
     /**
      * The `id` of the GitHub App.

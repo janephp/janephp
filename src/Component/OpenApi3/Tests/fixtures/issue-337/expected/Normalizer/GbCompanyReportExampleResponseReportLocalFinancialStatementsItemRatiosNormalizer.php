@@ -85,45 +85,64 @@ class GbCompanyReportExampleResponseReportLocalFinancialStatementsItemRatiosNorm
         }
         if (\array_key_exists('preTaxProfitMargin', $data)) {
             $object->setPreTaxProfitMargin($data['preTaxProfitMargin']);
+            unset($data['preTaxProfitMargin']);
         }
         if (\array_key_exists('returnOnCapitalEmployed', $data)) {
             $object->setReturnOnCapitalEmployed($data['returnOnCapitalEmployed']);
+            unset($data['returnOnCapitalEmployed']);
         }
         if (\array_key_exists('returnOnTotalAssetsEmployed', $data)) {
             $object->setReturnOnTotalAssetsEmployed($data['returnOnTotalAssetsEmployed']);
+            unset($data['returnOnTotalAssetsEmployed']);
         }
         if (\array_key_exists('returnOnNetAssetsEmployed', $data)) {
             $object->setReturnOnNetAssetsEmployed($data['returnOnNetAssetsEmployed']);
+            unset($data['returnOnNetAssetsEmployed']);
         }
         if (\array_key_exists('salesOrNetWorkingCapital', $data)) {
             $object->setSalesOrNetWorkingCapital($data['salesOrNetWorkingCapital']);
+            unset($data['salesOrNetWorkingCapital']);
         }
         if (\array_key_exists('stocKTurnoverRatio', $data)) {
             $object->setStocKTurnoverRatio($data['stocKTurnoverRatio']);
+            unset($data['stocKTurnoverRatio']);
         }
         if (\array_key_exists('debtorDays', $data)) {
             $object->setDebtorDays($data['debtorDays']);
+            unset($data['debtorDays']);
         }
         if (\array_key_exists('creditorDays', $data)) {
             $object->setCreditorDays($data['creditorDays']);
+            unset($data['creditorDays']);
         }
         if (\array_key_exists('currentRatio', $data)) {
             $object->setCurrentRatio($data['currentRatio']);
+            unset($data['currentRatio']);
         }
         if (\array_key_exists('liquidityRatioOrAcidTest', $data)) {
             $object->setLiquidityRatioOrAcidTest($data['liquidityRatioOrAcidTest']);
+            unset($data['liquidityRatioOrAcidTest']);
         }
         if (\array_key_exists('currentDebtRatio', $data)) {
             $object->setCurrentDebtRatio($data['currentDebtRatio']);
+            unset($data['currentDebtRatio']);
         }
         if (\array_key_exists('gearing', $data)) {
             $object->setGearing($data['gearing']);
+            unset($data['gearing']);
         }
         if (\array_key_exists('equityInPercentage', $data)) {
             $object->setEquityInPercentage($data['equityInPercentage']);
+            unset($data['equityInPercentage']);
         }
         if (\array_key_exists('totalDebtRatio', $data)) {
             $object->setTotalDebtRatio($data['totalDebtRatio']);
+            unset($data['totalDebtRatio']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -174,6 +193,11 @@ class GbCompanyReportExampleResponseReportLocalFinancialStatementsItemRatiosNorm
         }
         if (null !== $object->getTotalDebtRatio()) {
             $data['totalDebtRatio'] = $object->getTotalDebtRatio();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

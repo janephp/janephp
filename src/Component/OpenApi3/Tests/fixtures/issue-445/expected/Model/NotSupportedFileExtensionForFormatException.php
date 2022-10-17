@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class NotSupportedFileExtensionForFormatException
+class NotSupportedFileExtensionForFormatException extends \ArrayObject
 {
     /**
      * 

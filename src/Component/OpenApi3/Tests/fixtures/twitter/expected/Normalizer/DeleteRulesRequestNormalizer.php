@@ -47,6 +47,7 @@ class DeleteRulesRequestNormalizer implements DenormalizerInterface, NormalizerI
                 $values[] = $value;
             }
             $object->setIds($values);
+            unset($data['ids']);
         }
         if (\array_key_exists('values', $data)) {
             $values_1 = array();
@@ -54,6 +55,12 @@ class DeleteRulesRequestNormalizer implements DenormalizerInterface, NormalizerI
                 $values_1[] = $value_1;
             }
             $object->setValues($values_1);
+            unset($data['values']);
+        }
+        foreach ($data as $key => $value_2) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_2;
+            }
         }
         return $object;
     }
@@ -76,6 +83,11 @@ class DeleteRulesRequestNormalizer implements DenormalizerInterface, NormalizerI
                 $values_1[] = $value_1;
             }
             $data['values'] = $values_1;
+        }
+        foreach ($object as $key => $value_2) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_2;
+            }
         }
         return $data;
     }

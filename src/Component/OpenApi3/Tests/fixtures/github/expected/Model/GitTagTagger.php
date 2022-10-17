@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class GitTagTagger
+class GitTagTagger extends \ArrayObject
 {
     /**
      * 

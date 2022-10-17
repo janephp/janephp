@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class PermissionValidationException
+class PermissionValidationException extends \ArrayObject
 {
     /**
      * 

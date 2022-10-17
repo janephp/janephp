@@ -43,18 +43,26 @@ class BusinessProcessDetailsDataSchemaImportNormalizer implements DenormalizerIn
         }
         if (\array_key_exists('kind', $data)) {
             $object->setKind($data['kind']);
+            unset($data['kind']);
         }
         if (\array_key_exists('schemaImportResult', $data) && $data['schemaImportResult'] !== null) {
             $object->setSchemaImportResult($data['schemaImportResult']);
+            unset($data['schemaImportResult']);
         }
         elseif (\array_key_exists('schemaImportResult', $data) && $data['schemaImportResult'] === null) {
             $object->setSchemaImportResult(null);
         }
         if (\array_key_exists('listItemImportResult', $data) && $data['listItemImportResult'] !== null) {
             $object->setListItemImportResult($data['listItemImportResult']);
+            unset($data['listItemImportResult']);
         }
         elseif (\array_key_exists('listItemImportResult', $data) && $data['listItemImportResult'] === null) {
             $object->setListItemImportResult(null);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -70,6 +78,11 @@ class BusinessProcessDetailsDataSchemaImportNormalizer implements DenormalizerIn
         }
         if (null !== $object->getListItemImportResult()) {
             $data['listItemImportResult'] = $object->getListItemImportResult();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

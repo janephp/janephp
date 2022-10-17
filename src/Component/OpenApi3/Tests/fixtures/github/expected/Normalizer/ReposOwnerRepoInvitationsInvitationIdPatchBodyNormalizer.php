@@ -47,6 +47,12 @@ class ReposOwnerRepoInvitationsInvitationIdPatchBodyNormalizer implements Denorm
         }
         if (\array_key_exists('permissions', $data)) {
             $object->setPermissions($data['permissions']);
+            unset($data['permissions']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -58,6 +64,11 @@ class ReposOwnerRepoInvitationsInvitationIdPatchBodyNormalizer implements Denorm
         $data = array();
         if (null !== $object->getPermissions()) {
             $data['permissions'] = $object->getPermissions();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ReposOwnerRepoInvitationsInvitationIdPatchBodyConstraint());

@@ -47,12 +47,15 @@ class ProjectsColumnsColumnIdCardsPostResponse503Normalizer implements Denormali
         }
         if (\array_key_exists('code', $data)) {
             $object->setCode($data['code']);
+            unset($data['code']);
         }
         if (\array_key_exists('message', $data)) {
             $object->setMessage($data['message']);
+            unset($data['message']);
         }
         if (\array_key_exists('documentation_url', $data)) {
             $object->setDocumentationUrl($data['documentation_url']);
+            unset($data['documentation_url']);
         }
         if (\array_key_exists('errors', $data)) {
             $values = array();
@@ -60,6 +63,12 @@ class ProjectsColumnsColumnIdCardsPostResponse503Normalizer implements Denormali
                 $values[] = $this->denormalizer->denormalize($value, 'Github\\Model\\ProjectsColumnsColumnIdCardsPostResponse503ErrorsItem', 'json', $context);
             }
             $object->setErrors($values);
+            unset($data['errors']);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
@@ -84,6 +93,11 @@ class ProjectsColumnsColumnIdCardsPostResponse503Normalizer implements Denormali
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data['errors'] = $values;
+        }
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ProjectsColumnsColumnIdCardsPostResponse503Constraint());

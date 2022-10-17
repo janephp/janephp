@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class OrgsOrgTeamsTeamSlugDiscussionsPostBody
+class OrgsOrgTeamsTeamSlugDiscussionsPostBody extends \ArrayObject
 {
     /**
      * The discussion post's title.

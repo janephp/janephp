@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoGitRefsRefPatchBody
+class ReposOwnerRepoGitRefsRefPatchBody extends \ArrayObject
 {
     /**
      * The SHA1 value to set this reference to

@@ -43,24 +43,33 @@ class AggregationFilterNormalizer implements DenormalizerInterface, NormalizerIn
         }
         if (\array_key_exists('kind', $data)) {
             $object->setKind($data['kind']);
+            unset($data['kind']);
         }
         if (\array_key_exists('aggregationName', $data) && $data['aggregationName'] !== null) {
             $object->setAggregationName($data['aggregationName']);
+            unset($data['aggregationName']);
         }
         elseif (\array_key_exists('aggregationName', $data) && $data['aggregationName'] === null) {
             $object->setAggregationName(null);
         }
         if (\array_key_exists('filter', $data) && $data['filter'] !== null) {
             $object->setFilter($data['filter']);
+            unset($data['filter']);
         }
         elseif (\array_key_exists('filter', $data) && $data['filter'] === null) {
             $object->setFilter(null);
         }
         if (\array_key_exists('temporaryAggregatorRequestId', $data) && $data['temporaryAggregatorRequestId'] !== null) {
             $object->setTemporaryAggregatorRequestId($data['temporaryAggregatorRequestId']);
+            unset($data['temporaryAggregatorRequestId']);
         }
         elseif (\array_key_exists('temporaryAggregatorRequestId', $data) && $data['temporaryAggregatorRequestId'] === null) {
             $object->setTemporaryAggregatorRequestId(null);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -79,6 +88,11 @@ class AggregationFilterNormalizer implements DenormalizerInterface, NormalizerIn
         }
         if (null !== $object->getTemporaryAggregatorRequestId()) {
             $data['temporaryAggregatorRequestId'] = $object->getTemporaryAggregatorRequestId();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

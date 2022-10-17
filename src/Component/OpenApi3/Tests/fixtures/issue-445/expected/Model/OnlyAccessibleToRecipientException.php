@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class OnlyAccessibleToRecipientException
+class OnlyAccessibleToRecipientException extends \ArrayObject
 {
     /**
      * 

@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class ProjectsProjectIdDeleteResponse403
+class ProjectsProjectIdDeleteResponse403 extends \ArrayObject
 {
     /**
      * 

@@ -47,12 +47,20 @@ class ScimV2OrganizationsOrgUsersPostBodyEmailsItemNormalizer implements Denorma
         }
         if (\array_key_exists('value', $data)) {
             $object->setValue($data['value']);
+            unset($data['value']);
         }
         if (\array_key_exists('primary', $data)) {
             $object->setPrimary($data['primary']);
+            unset($data['primary']);
         }
         if (\array_key_exists('type', $data)) {
             $object->setType($data['type']);
+            unset($data['type']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -68,6 +76,11 @@ class ScimV2OrganizationsOrgUsersPostBodyEmailsItemNormalizer implements Denorma
         }
         if (null !== $object->getType()) {
             $data['type'] = $object->getType();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ScimV2OrganizationsOrgUsersPostBodyEmailsItemConstraint());

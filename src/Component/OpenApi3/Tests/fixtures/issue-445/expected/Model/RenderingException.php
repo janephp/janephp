@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class RenderingException
+class RenderingException extends \ArrayObject
 {
     /**
      * 

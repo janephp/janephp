@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class Hook
+class Hook extends \ArrayObject
 {
     /**
      * 

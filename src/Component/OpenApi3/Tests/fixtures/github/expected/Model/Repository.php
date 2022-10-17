@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class Repository
+class Repository extends \ArrayObject
 {
     /**
      * Unique identifier of the repository

@@ -43,12 +43,20 @@ class MentionEntityNormalizer implements DenormalizerInterface, NormalizerInterf
         }
         if (\array_key_exists('start', $data)) {
             $object->setStart($data['start']);
+            unset($data['start']);
         }
         if (\array_key_exists('end', $data)) {
             $object->setEnd($data['end']);
+            unset($data['end']);
         }
         if (\array_key_exists('username', $data)) {
             $object->setUsername($data['username']);
+            unset($data['username']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -61,6 +69,11 @@ class MentionEntityNormalizer implements DenormalizerInterface, NormalizerInterf
         $data['start'] = $object->getStart();
         $data['end'] = $object->getEnd();
         $data['username'] = $object->getUsername();
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
         return $data;
     }
 }

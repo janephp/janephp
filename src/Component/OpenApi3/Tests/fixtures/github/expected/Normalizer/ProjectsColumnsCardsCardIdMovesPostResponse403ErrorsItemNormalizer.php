@@ -47,15 +47,24 @@ class ProjectsColumnsCardsCardIdMovesPostResponse403ErrorsItemNormalizer impleme
         }
         if (\array_key_exists('code', $data)) {
             $object->setCode($data['code']);
+            unset($data['code']);
         }
         if (\array_key_exists('message', $data)) {
             $object->setMessage($data['message']);
+            unset($data['message']);
         }
         if (\array_key_exists('resource', $data)) {
             $object->setResource($data['resource']);
+            unset($data['resource']);
         }
         if (\array_key_exists('field', $data)) {
             $object->setField($data['field']);
+            unset($data['field']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -76,6 +85,11 @@ class ProjectsColumnsCardsCardIdMovesPostResponse403ErrorsItemNormalizer impleme
         }
         if (null !== $object->getField()) {
             $data['field'] = $object->getField();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ProjectsColumnsCardsCardIdMovesPostResponse403ErrorsItemConstraint());

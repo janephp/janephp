@@ -52,33 +52,48 @@ class EventNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         }
         if (\array_key_exists('eventId', $data)) {
             $object->setEventId($data['eventId']);
+            unset($data['eventId']);
         }
         if (\array_key_exists('companyId', $data)) {
             $object->setCompanyId($data['companyId']);
+            unset($data['companyId']);
         }
         if (\array_key_exists('portfolioId', $data)) {
             $object->setPortfolioId($data['portfolioId']);
+            unset($data['portfolioId']);
         }
         if (\array_key_exists('ruleName', $data)) {
             $object->setRuleName($data['ruleName']);
+            unset($data['ruleName']);
         }
         if (\array_key_exists('localEventCode', $data)) {
             $object->setLocalEventCode($data['localEventCode']);
+            unset($data['localEventCode']);
         }
         if (\array_key_exists('globalEventCode', $data)) {
             $object->setGlobalEventCode($data['globalEventCode']);
+            unset($data['globalEventCode']);
         }
         if (\array_key_exists('newValue', $data)) {
             $object->setNewValue($data['newValue']);
+            unset($data['newValue']);
         }
         if (\array_key_exists('oldValue', $data)) {
             $object->setOldValue($data['oldValue']);
+            unset($data['oldValue']);
         }
         if (\array_key_exists('eventDate', $data)) {
             $object->setEventDate(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['eventDate']));
+            unset($data['eventDate']);
         }
         if (\array_key_exists('createdDate', $data)) {
             $object->setCreatedDate(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['createdDate']));
+            unset($data['createdDate']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -117,6 +132,11 @@ class EventNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         }
         if (null !== $object->getCreatedDate()) {
             $data['createdDate'] = $object->getCreatedDate()->format('Y-m-d\\TH:i:sP');
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

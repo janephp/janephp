@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class CustomerDeactivationException
+class CustomerDeactivationException extends \ArrayObject
 {
     /**
      * 

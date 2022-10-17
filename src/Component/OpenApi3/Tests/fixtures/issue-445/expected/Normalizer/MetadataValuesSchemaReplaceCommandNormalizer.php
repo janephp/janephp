@@ -43,12 +43,24 @@ class MetadataValuesSchemaReplaceCommandNormalizer implements DenormalizerInterf
         }
         if (\array_key_exists('schemaId', $data)) {
             $object->setSchemaId($data['schemaId']);
+            unset($data['schemaId']);
         }
         if (\array_key_exists('kind', $data)) {
             $object->setKind($data['kind']);
+            unset($data['kind']);
         }
         if (\array_key_exists('value', $data)) {
-            $object->setValue($data['value']);
+            $values = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
+            foreach ($data['value'] as $key => $value) {
+                $values[$key] = $value;
+            }
+            $object->setValue($values);
+            unset($data['value']);
+        }
+        foreach ($data as $key_1 => $value_1) {
+            if (preg_match('/.*/', (string) $key_1)) {
+                $object[$key_1] = $value_1;
+            }
         }
         return $object;
     }
@@ -60,7 +72,16 @@ class MetadataValuesSchemaReplaceCommandNormalizer implements DenormalizerInterf
         $data = array();
         $data['schemaId'] = $object->getSchemaId();
         $data['kind'] = $object->getKind();
-        $data['value'] = $object->getValue();
+        $values = array();
+        foreach ($object->getValue() as $key => $value) {
+            $values[$key] = $value;
+        }
+        $data['value'] = $values;
+        foreach ($object as $key_1 => $value_1) {
+            if (preg_match('/.*/', (string) $key_1)) {
+                $data[$key_1] = $value_1;
+            }
+        }
         return $data;
     }
 }

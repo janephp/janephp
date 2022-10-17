@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class StarredRepository
+class StarredRepository extends \ArrayObject
 {
     /**
      * 

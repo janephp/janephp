@@ -43,6 +43,12 @@ class FooPayloadNormalizer implements DenormalizerInterface, NormalizerInterface
         }
         if (\array_key_exists('label', $data)) {
             $object->setLabel($data['label']);
+            unset($data['label']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -54,6 +60,11 @@ class FooPayloadNormalizer implements DenormalizerInterface, NormalizerInterface
         $data = array();
         if (null !== $object->getLabel()) {
             $data['label'] = $object->getLabel();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

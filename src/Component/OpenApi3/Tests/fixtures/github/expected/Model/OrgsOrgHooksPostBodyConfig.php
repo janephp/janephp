@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class OrgsOrgHooksPostBodyConfig
+class OrgsOrgHooksPostBodyConfig extends \ArrayObject
 {
     /**
      * The URL to which the payloads will be delivered.

@@ -47,21 +47,31 @@ class MarketplacePurchaseMarketplacePendingChangeNormalizer implements Denormali
         }
         if (\array_key_exists('is_installed', $data)) {
             $object->setIsInstalled($data['is_installed']);
+            unset($data['is_installed']);
         }
         if (\array_key_exists('effective_date', $data)) {
             $object->setEffectiveDate($data['effective_date']);
+            unset($data['effective_date']);
         }
         if (\array_key_exists('unit_count', $data) && $data['unit_count'] !== null) {
             $object->setUnitCount($data['unit_count']);
+            unset($data['unit_count']);
         }
         elseif (\array_key_exists('unit_count', $data) && $data['unit_count'] === null) {
             $object->setUnitCount(null);
         }
         if (\array_key_exists('id', $data)) {
             $object->setId($data['id']);
+            unset($data['id']);
         }
         if (\array_key_exists('plan', $data)) {
             $object->setPlan($this->denormalizer->denormalize($data['plan'], 'Github\\Model\\MarketplaceListingPlan', 'json', $context));
+            unset($data['plan']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -85,6 +95,11 @@ class MarketplacePurchaseMarketplacePendingChangeNormalizer implements Denormali
         }
         if (null !== $object->getPlan()) {
             $data['plan'] = $this->normalizer->normalize($object->getPlan(), 'json', $context);
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\MarketplacePurchaseMarketplacePendingChangeConstraint());

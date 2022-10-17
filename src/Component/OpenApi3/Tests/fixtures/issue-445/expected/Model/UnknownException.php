@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class UnknownException
+class UnknownException extends \ArrayObject
 {
     /**
      * 

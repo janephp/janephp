@@ -47,12 +47,20 @@ class PullRequestBaseRepoPermissionsNormalizer implements DenormalizerInterface,
         }
         if (\array_key_exists('admin', $data)) {
             $object->setAdmin($data['admin']);
+            unset($data['admin']);
         }
         if (\array_key_exists('pull', $data)) {
             $object->setPull($data['pull']);
+            unset($data['pull']);
         }
         if (\array_key_exists('push', $data)) {
             $object->setPush($data['push']);
+            unset($data['push']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -65,6 +73,11 @@ class PullRequestBaseRepoPermissionsNormalizer implements DenormalizerInterface,
         $data['admin'] = $object->getAdmin();
         $data['pull'] = $object->getPull();
         $data['push'] = $object->getPush();
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\PullRequestBaseRepoPermissionsConstraint());
             $context['skip_validation'] = true;

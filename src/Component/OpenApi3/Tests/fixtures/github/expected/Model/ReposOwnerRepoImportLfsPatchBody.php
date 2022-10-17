@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoImportLfsPatchBody
+class ReposOwnerRepoImportLfsPatchBody extends \ArrayObject
 {
     /**
      * Can be one of `opt_in` (large files will be stored using Git LFS) or `opt_out` (large files will be removed during the import).

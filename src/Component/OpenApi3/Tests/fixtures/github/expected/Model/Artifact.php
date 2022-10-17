@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class Artifact
+class Artifact extends \ArrayObject
 {
     /**
      * 

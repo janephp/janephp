@@ -51,12 +51,15 @@ class ScimV2OrganizationsOrgUsersScimUserIdPutBodyNormalizer implements Denormal
                 $values[] = $value;
             }
             $object->setSchemas($values);
+            unset($data['schemas']);
         }
         if (\array_key_exists('displayName', $data)) {
             $object->setDisplayName($data['displayName']);
+            unset($data['displayName']);
         }
         if (\array_key_exists('externalId', $data)) {
             $object->setExternalId($data['externalId']);
+            unset($data['externalId']);
         }
         if (\array_key_exists('groups', $data)) {
             $values_1 = array();
@@ -64,15 +67,19 @@ class ScimV2OrganizationsOrgUsersScimUserIdPutBodyNormalizer implements Denormal
                 $values_1[] = $value_1;
             }
             $object->setGroups($values_1);
+            unset($data['groups']);
         }
         if (\array_key_exists('active', $data)) {
             $object->setActive($data['active']);
+            unset($data['active']);
         }
         if (\array_key_exists('userName', $data)) {
             $object->setUserName($data['userName']);
+            unset($data['userName']);
         }
         if (\array_key_exists('name', $data)) {
             $object->setName($this->denormalizer->denormalize($data['name'], 'Github\\Model\\ScimV2OrganizationsOrgUsersScimUserIdPutBodyName', 'json', $context));
+            unset($data['name']);
         }
         if (\array_key_exists('emails', $data)) {
             $values_2 = array();
@@ -80,6 +87,12 @@ class ScimV2OrganizationsOrgUsersScimUserIdPutBodyNormalizer implements Denormal
                 $values_2[] = $this->denormalizer->denormalize($value_2, 'Github\\Model\\ScimV2OrganizationsOrgUsersScimUserIdPutBodyEmailsItem', 'json', $context);
             }
             $object->setEmails($values_2);
+            unset($data['emails']);
+        }
+        foreach ($data as $key => $value_3) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_3;
+            }
         }
         return $object;
     }
@@ -119,6 +132,11 @@ class ScimV2OrganizationsOrgUsersScimUserIdPutBodyNormalizer implements Denormal
             $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
         }
         $data['emails'] = $values_2;
+        foreach ($object as $key => $value_3) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_3;
+            }
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ScimV2OrganizationsOrgUsersScimUserIdPutBodyConstraint());
             $context['skip_validation'] = true;

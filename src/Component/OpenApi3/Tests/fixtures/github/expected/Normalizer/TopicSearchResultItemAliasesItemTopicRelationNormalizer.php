@@ -47,15 +47,24 @@ class TopicSearchResultItemAliasesItemTopicRelationNormalizer implements Denorma
         }
         if (\array_key_exists('id', $data)) {
             $object->setId($data['id']);
+            unset($data['id']);
         }
         if (\array_key_exists('name', $data)) {
             $object->setName($data['name']);
+            unset($data['name']);
         }
         if (\array_key_exists('topic_id', $data)) {
             $object->setTopicId($data['topic_id']);
+            unset($data['topic_id']);
         }
         if (\array_key_exists('relation_type', $data)) {
             $object->setRelationType($data['relation_type']);
+            unset($data['relation_type']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -76,6 +85,11 @@ class TopicSearchResultItemAliasesItemTopicRelationNormalizer implements Denorma
         }
         if (null !== $object->getRelationType()) {
             $data['relation_type'] = $object->getRelationType();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\TopicSearchResultItemAliasesItemTopicRelationConstraint());

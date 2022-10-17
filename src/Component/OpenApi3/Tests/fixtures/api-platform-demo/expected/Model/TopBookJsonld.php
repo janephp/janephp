@@ -2,7 +2,7 @@
 
 namespace ApiPlatform\Demo\Model;
 
-class TopBookJsonld
+class TopBookJsonld extends \ArrayObject
 {
     /**
      * 

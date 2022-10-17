@@ -43,15 +43,23 @@ class EdgeNGramAnalyzerNormalizer implements DenormalizerInterface, NormalizerIn
         }
         if (\array_key_exists('kind', $data)) {
             $object->setKind($data['kind']);
+            unset($data['kind']);
         }
         if (\array_key_exists('type', $data)) {
             $object->setType($data['type']);
+            unset($data['type']);
         }
         if (\array_key_exists('fieldSuffix', $data) && $data['fieldSuffix'] !== null) {
             $object->setFieldSuffix($data['fieldSuffix']);
+            unset($data['fieldSuffix']);
         }
         elseif (\array_key_exists('fieldSuffix', $data) && $data['fieldSuffix'] === null) {
             $object->setFieldSuffix(null);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -67,6 +75,11 @@ class EdgeNGramAnalyzerNormalizer implements DenormalizerInterface, NormalizerIn
         }
         if (null !== $object->getFieldSuffix()) {
             $data['fieldSuffix'] = $object->getFieldSuffix();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

@@ -47,6 +47,7 @@ class ReposOwnerRepoHooksHookIdPatchBodyNormalizer implements DenormalizerInterf
         }
         if (\array_key_exists('config', $data)) {
             $object->setConfig($this->denormalizer->denormalize($data['config'], 'Github\\Model\\ReposOwnerRepoHooksHookIdPatchBodyConfig', 'json', $context));
+            unset($data['config']);
         }
         if (\array_key_exists('events', $data)) {
             $values = array();
@@ -54,6 +55,7 @@ class ReposOwnerRepoHooksHookIdPatchBodyNormalizer implements DenormalizerInterf
                 $values[] = $value;
             }
             $object->setEvents($values);
+            unset($data['events']);
         }
         if (\array_key_exists('add_events', $data)) {
             $values_1 = array();
@@ -61,6 +63,7 @@ class ReposOwnerRepoHooksHookIdPatchBodyNormalizer implements DenormalizerInterf
                 $values_1[] = $value_1;
             }
             $object->setAddEvents($values_1);
+            unset($data['add_events']);
         }
         if (\array_key_exists('remove_events', $data)) {
             $values_2 = array();
@@ -68,9 +71,16 @@ class ReposOwnerRepoHooksHookIdPatchBodyNormalizer implements DenormalizerInterf
                 $values_2[] = $value_2;
             }
             $object->setRemoveEvents($values_2);
+            unset($data['remove_events']);
         }
         if (\array_key_exists('active', $data)) {
             $object->setActive($data['active']);
+            unset($data['active']);
+        }
+        foreach ($data as $key => $value_3) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_3;
+            }
         }
         return $object;
     }
@@ -106,6 +116,11 @@ class ReposOwnerRepoHooksHookIdPatchBodyNormalizer implements DenormalizerInterf
         }
         if (null !== $object->getActive()) {
             $data['active'] = $object->getActive();
+        }
+        foreach ($object as $key => $value_3) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_3;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ReposOwnerRepoHooksHookIdPatchBodyConstraint());

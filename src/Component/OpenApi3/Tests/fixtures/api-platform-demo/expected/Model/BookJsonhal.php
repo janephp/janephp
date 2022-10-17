@@ -2,7 +2,7 @@
 
 namespace ApiPlatform\Demo\Model;
 
-class BookJsonhal
+class BookJsonhal extends \ArrayObject
 {
     /**
      * 

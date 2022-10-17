@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class ProjectsProjectIdPatchResponse403
+class ProjectsProjectIdPatchResponse403 extends \ArrayObject
 {
     /**
      * 

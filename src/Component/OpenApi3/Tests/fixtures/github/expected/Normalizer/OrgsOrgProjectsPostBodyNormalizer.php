@@ -47,9 +47,16 @@ class OrgsOrgProjectsPostBodyNormalizer implements DenormalizerInterface, Normal
         }
         if (\array_key_exists('name', $data)) {
             $object->setName($data['name']);
+            unset($data['name']);
         }
         if (\array_key_exists('body', $data)) {
             $object->setBody($data['body']);
+            unset($data['body']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -62,6 +69,11 @@ class OrgsOrgProjectsPostBodyNormalizer implements DenormalizerInterface, Normal
         $data['name'] = $object->getName();
         if (null !== $object->getBody()) {
             $data['body'] = $object->getBody();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\OrgsOrgProjectsPostBodyConstraint());

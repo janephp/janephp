@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class ProtectedBranchRequiredSignatures
+class ProtectedBranchRequiredSignatures extends \ArrayObject
 {
     /**
      * 

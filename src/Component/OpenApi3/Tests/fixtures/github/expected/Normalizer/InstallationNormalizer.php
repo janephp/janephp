@@ -47,6 +47,7 @@ class InstallationNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         if (\array_key_exists('id', $data)) {
             $object->setId($data['id']);
+            unset($data['id']);
         }
         if (\array_key_exists('account', $data) && $data['account'] !== null) {
             $value = $data['account'];
@@ -56,33 +57,42 @@ class InstallationNormalizer implements DenormalizerInterface, NormalizerInterfa
                 $value = $this->denormalizer->denormalize($data['account'], 'Github\\Model\\Enterprise', 'json', $context);
             }
             $object->setAccount($value);
+            unset($data['account']);
         }
         elseif (\array_key_exists('account', $data) && $data['account'] === null) {
             $object->setAccount(null);
         }
         if (\array_key_exists('repository_selection', $data)) {
             $object->setRepositorySelection($data['repository_selection']);
+            unset($data['repository_selection']);
         }
         if (\array_key_exists('access_tokens_url', $data)) {
             $object->setAccessTokensUrl($data['access_tokens_url']);
+            unset($data['access_tokens_url']);
         }
         if (\array_key_exists('repositories_url', $data)) {
             $object->setRepositoriesUrl($data['repositories_url']);
+            unset($data['repositories_url']);
         }
         if (\array_key_exists('html_url', $data)) {
             $object->setHtmlUrl($data['html_url']);
+            unset($data['html_url']);
         }
         if (\array_key_exists('app_id', $data)) {
             $object->setAppId($data['app_id']);
+            unset($data['app_id']);
         }
         if (\array_key_exists('target_id', $data)) {
             $object->setTargetId($data['target_id']);
+            unset($data['target_id']);
         }
         if (\array_key_exists('target_type', $data)) {
             $object->setTargetType($data['target_type']);
+            unset($data['target_type']);
         }
         if (\array_key_exists('permissions', $data)) {
             $object->setPermissions($this->denormalizer->denormalize($data['permissions'], 'Github\\Model\\InstallationPermissions', 'json', $context));
+            unset($data['permissions']);
         }
         if (\array_key_exists('events', $data)) {
             $values = array();
@@ -90,39 +100,52 @@ class InstallationNormalizer implements DenormalizerInterface, NormalizerInterfa
                 $values[] = $value_1;
             }
             $object->setEvents($values);
+            unset($data['events']);
         }
         if (\array_key_exists('created_at', $data)) {
             $object->setCreatedAt(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['created_at']));
+            unset($data['created_at']);
         }
         if (\array_key_exists('updated_at', $data)) {
             $object->setUpdatedAt(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['updated_at']));
+            unset($data['updated_at']);
         }
         if (\array_key_exists('single_file_name', $data) && $data['single_file_name'] !== null) {
             $object->setSingleFileName($data['single_file_name']);
+            unset($data['single_file_name']);
         }
         elseif (\array_key_exists('single_file_name', $data) && $data['single_file_name'] === null) {
             $object->setSingleFileName(null);
         }
         if (\array_key_exists('app_slug', $data)) {
             $object->setAppSlug($data['app_slug']);
+            unset($data['app_slug']);
         }
         if (\array_key_exists('suspended_by', $data) && $data['suspended_by'] !== null) {
             $object->setSuspendedBy($this->denormalizer->denormalize($data['suspended_by'], 'Github\\Model\\InstallationSuspendedBy', 'json', $context));
+            unset($data['suspended_by']);
         }
         elseif (\array_key_exists('suspended_by', $data) && $data['suspended_by'] === null) {
             $object->setSuspendedBy(null);
         }
         if (\array_key_exists('suspended_at', $data) && $data['suspended_at'] !== null) {
             $object->setSuspendedAt(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['suspended_at']));
+            unset($data['suspended_at']);
         }
         elseif (\array_key_exists('suspended_at', $data) && $data['suspended_at'] === null) {
             $object->setSuspendedAt(null);
         }
         if (\array_key_exists('contact_email', $data) && $data['contact_email'] !== null) {
             $object->setContactEmail($data['contact_email']);
+            unset($data['contact_email']);
         }
         elseif (\array_key_exists('contact_email', $data) && $data['contact_email'] === null) {
             $object->setContactEmail(null);
+        }
+        foreach ($data as $key => $value_2) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_2;
+            }
         }
         return $object;
     }
@@ -165,6 +188,11 @@ class InstallationNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         if (null !== $object->getContactEmail()) {
             $data['contact_email'] = $object->getContactEmail();
+        }
+        foreach ($object as $key => $value_2) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_2;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\InstallationConstraint());

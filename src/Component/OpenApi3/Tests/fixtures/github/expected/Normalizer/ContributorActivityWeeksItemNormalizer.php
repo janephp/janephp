@@ -47,15 +47,24 @@ class ContributorActivityWeeksItemNormalizer implements DenormalizerInterface, N
         }
         if (\array_key_exists('w', $data)) {
             $object->setW($data['w']);
+            unset($data['w']);
         }
         if (\array_key_exists('a', $data)) {
             $object->setA($data['a']);
+            unset($data['a']);
         }
         if (\array_key_exists('d', $data)) {
             $object->setD($data['d']);
+            unset($data['d']);
         }
         if (\array_key_exists('c', $data)) {
             $object->setC($data['c']);
+            unset($data['c']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -76,6 +85,11 @@ class ContributorActivityWeeksItemNormalizer implements DenormalizerInterface, N
         }
         if (null !== $object->getC()) {
             $data['c'] = $object->getC();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ContributorActivityWeeksItemConstraint());

@@ -43,15 +43,24 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsRecordSt
         }
         if (\array_key_exists('date', $data)) {
             $object->setDate($data['date']);
+            unset($data['date']);
         }
         if (\array_key_exists('event', $data)) {
             $object->setEvent($data['event']);
+            unset($data['event']);
         }
         if (\array_key_exists('note', $data)) {
             $object->setNote($data['note']);
+            unset($data['note']);
         }
         if (\array_key_exists('user', $data)) {
             $object->setUser($data['user']);
+            unset($data['user']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -72,6 +81,11 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsRecordSt
         }
         if (null !== $object->getUser()) {
             $data['user'] = $object->getUser();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

@@ -43,12 +43,15 @@ class TopBooksGetLdjsonResponse200HydraSearchNormalizer implements DenormalizerI
         }
         if (\array_key_exists('@type', $data)) {
             $object->setType($data['@type']);
+            unset($data['@type']);
         }
         if (\array_key_exists('hydra:template', $data)) {
             $object->setHydraTemplate($data['hydra:template']);
+            unset($data['hydra:template']);
         }
         if (\array_key_exists('hydra:variableRepresentation', $data)) {
             $object->setHydraVariableRepresentation($data['hydra:variableRepresentation']);
+            unset($data['hydra:variableRepresentation']);
         }
         if (\array_key_exists('hydra:mapping', $data)) {
             $values = array();
@@ -56,6 +59,12 @@ class TopBooksGetLdjsonResponse200HydraSearchNormalizer implements DenormalizerI
                 $values[] = $this->denormalizer->denormalize($value, 'ApiPlatform\\Demo\\Model\\TopBooksGetLdjsonResponse200HydraSearchHydraMappingItem', 'json', $context);
             }
             $object->setHydraMapping($values);
+            unset($data['hydra:mapping']);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
@@ -80,6 +89,11 @@ class TopBooksGetLdjsonResponse200HydraSearchNormalizer implements DenormalizerI
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data['hydra:mapping'] = $values;
+        }
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
+            }
         }
         return $data;
     }

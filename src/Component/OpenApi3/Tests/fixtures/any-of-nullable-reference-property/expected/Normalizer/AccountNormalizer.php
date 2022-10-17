@@ -43,12 +43,15 @@ class AccountNormalizer implements DenormalizerInterface, NormalizerInterface, D
         }
         if (\array_key_exists('id', $data)) {
             $object->setId($data['id']);
+            unset($data['id']);
         }
         if (\array_key_exists('firstname', $data)) {
             $object->setFirstname($data['firstname']);
+            unset($data['firstname']);
         }
         if (\array_key_exists('lastname', $data)) {
             $object->setLastname($data['lastname']);
+            unset($data['lastname']);
         }
         if (\array_key_exists('countryOfBirth', $data) && $data['countryOfBirth'] !== null) {
             $value = $data['countryOfBirth'];
@@ -56,12 +59,14 @@ class AccountNormalizer implements DenormalizerInterface, NormalizerInterface, D
                 $value = $this->denormalizer->denormalize($data['countryOfBirth'], 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Model\\Country', 'json', $context);
             }
             $object->setCountryOfBirth($value);
+            unset($data['countryOfBirth']);
         }
         elseif (\array_key_exists('countryOfBirth', $data) && $data['countryOfBirth'] === null) {
             $object->setCountryOfBirth(null);
         }
         if (\array_key_exists('country', $data)) {
             $object->setCountry($this->denormalizer->denormalize($data['country'], 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Model\\Country', 'json', $context));
+            unset($data['country']);
         }
         if (\array_key_exists('nationality', $data) && $data['nationality'] !== null) {
             $value_1 = $data['nationality'];
@@ -75,9 +80,15 @@ class AccountNormalizer implements DenormalizerInterface, NormalizerInterface, D
                 $value_1 = $values;
             }
             $object->setNationality($value_1);
+            unset($data['nationality']);
         }
         elseif (\array_key_exists('nationality', $data) && $data['nationality'] === null) {
             $object->setNationality(null);
+        }
+        foreach ($data as $key => $value_3) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_3;
+            }
         }
         return $object;
     }
@@ -115,6 +126,11 @@ class AccountNormalizer implements DenormalizerInterface, NormalizerInterface, D
                 $value_1 = $values;
             }
             $data['nationality'] = $value_1;
+        }
+        foreach ($object as $key => $value_3) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_3;
+            }
         }
         return $data;
     }

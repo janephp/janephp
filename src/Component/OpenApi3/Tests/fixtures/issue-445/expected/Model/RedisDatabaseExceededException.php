@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class RedisDatabaseExceededException
+class RedisDatabaseExceededException extends \ArrayObject
 {
     /**
      * 

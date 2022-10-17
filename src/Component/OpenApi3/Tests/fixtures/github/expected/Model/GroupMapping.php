@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class GroupMapping
+class GroupMapping extends \ArrayObject
 {
     /**
      * Array of groups to be mapped to this team

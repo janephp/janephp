@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class CustomerNotFoundException
+class CustomerNotFoundException extends \ArrayObject
 {
     /**
      * 

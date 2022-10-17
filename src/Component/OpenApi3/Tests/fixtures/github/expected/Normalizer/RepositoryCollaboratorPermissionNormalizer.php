@@ -47,12 +47,19 @@ class RepositoryCollaboratorPermissionNormalizer implements DenormalizerInterfac
         }
         if (\array_key_exists('permission', $data)) {
             $object->setPermission($data['permission']);
+            unset($data['permission']);
         }
         if (\array_key_exists('user', $data) && $data['user'] !== null) {
             $object->setUser($this->denormalizer->denormalize($data['user'], 'Github\\Model\\RepositoryCollaboratorPermissionUser', 'json', $context));
+            unset($data['user']);
         }
         elseif (\array_key_exists('user', $data) && $data['user'] === null) {
             $object->setUser(null);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -64,6 +71,11 @@ class RepositoryCollaboratorPermissionNormalizer implements DenormalizerInterfac
         $data = array();
         $data['permission'] = $object->getPermission();
         $data['user'] = $this->normalizer->normalize($object->getUser(), 'json', $context);
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\RepositoryCollaboratorPermissionConstraint());
             $context['skip_validation'] = true;

@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class KeySimple
+class KeySimple extends \ArrayObject
 {
     /**
      * 

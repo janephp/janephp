@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class ChannelsNotFoundException
+class ChannelsNotFoundException extends \ArrayObject
 {
     /**
      * 

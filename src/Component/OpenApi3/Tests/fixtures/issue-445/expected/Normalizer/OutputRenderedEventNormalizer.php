@@ -43,30 +43,41 @@ class OutputRenderedEventNormalizer implements DenormalizerInterface, Normalizer
         }
         if (\array_key_exists('timestamp', $data)) {
             $object->setTimestamp(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['timestamp']));
+            unset($data['timestamp']);
         }
         if (\array_key_exists('kind', $data)) {
             $object->setKind($data['kind']);
+            unset($data['kind']);
         }
         if (\array_key_exists('outputId', $data) && $data['outputId'] !== null) {
             $object->setOutputId($data['outputId']);
+            unset($data['outputId']);
         }
         elseif (\array_key_exists('outputId', $data) && $data['outputId'] === null) {
             $object->setOutputId(null);
         }
         if (\array_key_exists('contentId', $data) && $data['contentId'] !== null) {
             $object->setContentId($data['contentId']);
+            unset($data['contentId']);
         }
         elseif (\array_key_exists('contentId', $data) && $data['contentId'] === null) {
             $object->setContentId(null);
         }
         if (\array_key_exists('outputFormatId', $data) && $data['outputFormatId'] !== null) {
             $object->setOutputFormatId($data['outputFormatId']);
+            unset($data['outputFormatId']);
         }
         elseif (\array_key_exists('outputFormatId', $data) && $data['outputFormatId'] === null) {
             $object->setOutputFormatId(null);
         }
         if (\array_key_exists('renderingState', $data)) {
             $object->setRenderingState($data['renderingState']);
+            unset($data['renderingState']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -89,6 +100,11 @@ class OutputRenderedEventNormalizer implements DenormalizerInterface, Normalizer
         }
         if (null !== $object->getRenderingState()) {
             $data['renderingState'] = $object->getRenderingState();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

@@ -43,66 +43,84 @@ class NodeInfoMessageNormalizer implements DenormalizerInterface, NormalizerInte
         }
         if (\array_key_exists('id', $data) && $data['id'] !== null) {
             $object->setId($data['id']);
+            unset($data['id']);
         }
         elseif (\array_key_exists('id', $data) && $data['id'] === null) {
             $object->setId(null);
         }
         if (\array_key_exists('retries', $data)) {
             $object->setRetries($data['retries']);
+            unset($data['retries']);
         }
         if (\array_key_exists('priority', $data)) {
             $object->setPriority($data['priority']);
+            unset($data['priority']);
         }
         if (\array_key_exists('deduplicate', $data)) {
             $object->setDeduplicate($data['deduplicate']);
+            unset($data['deduplicate']);
         }
         if (\array_key_exists('kind', $data)) {
             $object->setKind($data['kind']);
+            unset($data['kind']);
         }
         if (\array_key_exists('nodeId', $data) && $data['nodeId'] !== null) {
             $object->setNodeId($data['nodeId']);
+            unset($data['nodeId']);
         }
         elseif (\array_key_exists('nodeId', $data) && $data['nodeId'] === null) {
             $object->setNodeId(null);
         }
         if (\array_key_exists('hostName', $data) && $data['hostName'] !== null) {
             $object->setHostName($data['hostName']);
+            unset($data['hostName']);
         }
         elseif (\array_key_exists('hostName', $data) && $data['hostName'] === null) {
             $object->setHostName(null);
         }
         if (\array_key_exists('lastResponseTime', $data)) {
             $object->setLastResponseTime(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['lastResponseTime']));
+            unset($data['lastResponseTime']);
         }
         if (\array_key_exists('serviceName', $data) && $data['serviceName'] !== null) {
             $object->setServiceName($data['serviceName']);
+            unset($data['serviceName']);
         }
         elseif (\array_key_exists('serviceName', $data) && $data['serviceName'] === null) {
             $object->setServiceName(null);
         }
         if (\array_key_exists('fileVersion', $data) && $data['fileVersion'] !== null) {
             $object->setFileVersion($data['fileVersion']);
+            unset($data['fileVersion']);
         }
         elseif (\array_key_exists('fileVersion', $data) && $data['fileVersion'] === null) {
             $object->setFileVersion(null);
         }
         if (\array_key_exists('productVersion', $data) && $data['productVersion'] !== null) {
             $object->setProductVersion($data['productVersion']);
+            unset($data['productVersion']);
         }
         elseif (\array_key_exists('productVersion', $data) && $data['productVersion'] === null) {
             $object->setProductVersion(null);
         }
         if (\array_key_exists('release', $data) && $data['release'] !== null) {
             $object->setRelease($data['release']);
+            unset($data['release']);
         }
         elseif (\array_key_exists('release', $data) && $data['release'] === null) {
             $object->setRelease(null);
         }
         if (\array_key_exists('logLevel', $data) && $data['logLevel'] !== null) {
             $object->setLogLevel($data['logLevel']);
+            unset($data['logLevel']);
         }
         elseif (\array_key_exists('logLevel', $data) && $data['logLevel'] === null) {
             $object->setLogLevel(null);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -142,6 +160,11 @@ class NodeInfoMessageNormalizer implements DenormalizerInterface, NormalizerInte
         }
         if (null !== $object->getLogLevel()) {
             $data['logLevel'] = $object->getLogLevel();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

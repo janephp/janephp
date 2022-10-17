@@ -47,12 +47,20 @@ class EventRepoNormalizer implements DenormalizerInterface, NormalizerInterface,
         }
         if (\array_key_exists('id', $data)) {
             $object->setId($data['id']);
+            unset($data['id']);
         }
         if (\array_key_exists('name', $data)) {
             $object->setName($data['name']);
+            unset($data['name']);
         }
         if (\array_key_exists('url', $data)) {
             $object->setUrl($data['url']);
+            unset($data['url']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -65,6 +73,11 @@ class EventRepoNormalizer implements DenormalizerInterface, NormalizerInterface,
         $data['id'] = $object->getId();
         $data['name'] = $object->getName();
         $data['url'] = $object->getUrl();
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\EventRepoConstraint());
             $context['skip_validation'] = true;

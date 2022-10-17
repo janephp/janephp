@@ -47,12 +47,14 @@ class ContributorActivityNormalizer implements DenormalizerInterface, Normalizer
         }
         if (\array_key_exists('author', $data) && $data['author'] !== null) {
             $object->setAuthor($this->denormalizer->denormalize($data['author'], 'Github\\Model\\ContributorActivityAuthor', 'json', $context));
+            unset($data['author']);
         }
         elseif (\array_key_exists('author', $data) && $data['author'] === null) {
             $object->setAuthor(null);
         }
         if (\array_key_exists('total', $data)) {
             $object->setTotal($data['total']);
+            unset($data['total']);
         }
         if (\array_key_exists('weeks', $data)) {
             $values = array();
@@ -60,6 +62,12 @@ class ContributorActivityNormalizer implements DenormalizerInterface, Normalizer
                 $values[] = $this->denormalizer->denormalize($value, 'Github\\Model\\ContributorActivityWeeksItem', 'json', $context);
             }
             $object->setWeeks($values);
+            unset($data['weeks']);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
@@ -76,6 +84,11 @@ class ContributorActivityNormalizer implements DenormalizerInterface, Normalizer
             $values[] = $this->normalizer->normalize($value, 'json', $context);
         }
         $data['weeks'] = $values;
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
+            }
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ContributorActivityConstraint());
             $context['skip_validation'] = true;

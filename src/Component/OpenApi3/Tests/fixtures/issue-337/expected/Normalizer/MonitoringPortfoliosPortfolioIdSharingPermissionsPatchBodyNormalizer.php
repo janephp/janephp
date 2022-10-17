@@ -43,6 +43,7 @@ class MonitoringPortfoliosPortfolioIdSharingPermissionsPatchBodyNormalizer imple
         }
         if (\array_key_exists('revokeAll', $data)) {
             $object->setRevokeAll($data['revokeAll']);
+            unset($data['revokeAll']);
         }
         if (\array_key_exists('companies', $data)) {
             $values = array();
@@ -50,6 +51,12 @@ class MonitoringPortfoliosPortfolioIdSharingPermissionsPatchBodyNormalizer imple
                 $values[] = $this->denormalizer->denormalize($value, 'CreditSafe\\API\\Model\\MonitoringPortfoliosPortfolioIdSharingPermissionsPatchBodyCompaniesItem', 'json', $context);
             }
             $object->setCompanies($values);
+            unset($data['companies']);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
@@ -68,6 +75,11 @@ class MonitoringPortfoliosPortfolioIdSharingPermissionsPatchBodyNormalizer imple
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data['companies'] = $values;
+        }
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
+            }
         }
         return $data;
     }

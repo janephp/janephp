@@ -43,15 +43,23 @@ class MetadataReferencesPagingRequestNormalizer implements DenormalizerInterface
         }
         if (\array_key_exists('limit', $data)) {
             $object->setLimit($data['limit']);
+            unset($data['limit']);
         }
         if (\array_key_exists('pageToken', $data) && $data['pageToken'] !== null) {
             $object->setPageToken($data['pageToken']);
+            unset($data['pageToken']);
         }
         elseif (\array_key_exists('pageToken', $data) && $data['pageToken'] === null) {
             $object->setPageToken(null);
         }
         if (\array_key_exists('fetchReferencedByRestrictedItem', $data)) {
             $object->setFetchReferencedByRestrictedItem($data['fetchReferencedByRestrictedItem']);
+            unset($data['fetchReferencedByRestrictedItem']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -67,6 +75,11 @@ class MetadataReferencesPagingRequestNormalizer implements DenormalizerInterface
         }
         if (null !== $object->getFetchReferencedByRestrictedItem()) {
             $data['fetchReferencedByRestrictedItem'] = $object->getFetchReferencedByRestrictedItem();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

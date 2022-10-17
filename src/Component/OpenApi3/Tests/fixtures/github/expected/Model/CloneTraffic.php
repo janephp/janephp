@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class CloneTraffic
+class CloneTraffic extends \ArrayObject
 {
     /**
      * 

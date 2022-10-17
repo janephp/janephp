@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoPagesPostBodySource
+class ReposOwnerRepoPagesPostBodySource extends \ArrayObject
 {
     /**
      * The repository branch used to publish your [site's source files](https://help.github.com/articles/configuring-a-publishing-source-for-github-pages/). Can be either `master` or `gh-pages`.

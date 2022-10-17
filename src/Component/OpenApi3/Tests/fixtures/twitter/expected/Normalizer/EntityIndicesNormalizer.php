@@ -43,9 +43,16 @@ class EntityIndicesNormalizer implements DenormalizerInterface, NormalizerInterf
         }
         if (\array_key_exists('start', $data)) {
             $object->setStart($data['start']);
+            unset($data['start']);
         }
         if (\array_key_exists('end', $data)) {
             $object->setEnd($data['end']);
+            unset($data['end']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -57,6 +64,11 @@ class EntityIndicesNormalizer implements DenormalizerInterface, NormalizerInterf
         $data = array();
         $data['start'] = $object->getStart();
         $data['end'] = $object->getEnd();
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
         return $data;
     }
 }

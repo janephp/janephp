@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class GistsGistIdPatchBody
+class GistsGistIdPatchBody extends \ArrayObject
 {
     /**
      * Description of the gist

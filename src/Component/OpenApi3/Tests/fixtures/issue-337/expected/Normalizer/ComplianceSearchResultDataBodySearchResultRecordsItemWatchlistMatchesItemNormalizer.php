@@ -43,81 +43,112 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemN
         }
         if (\array_key_exists('acceptListID', $data)) {
             $object->setAcceptListID($data['acceptListID']);
+            unset($data['acceptListID']);
         }
         if (\array_key_exists('addedToAcceptList', $data)) {
             $object->setAddedToAcceptList($data['addedToAcceptList']);
+            unset($data['addedToAcceptList']);
         }
         if (\array_key_exists('addressName', $data)) {
             $object->setAddressName($data['addressName']);
+            unset($data['addressName']);
         }
         if (\array_key_exists('autoFalsePositive', $data)) {
             $object->setAutoFalsePositive($data['autoFalsePositive']);
+            unset($data['autoFalsePositive']);
         }
         if (\array_key_exists('bestAddressIsPartial', $data)) {
             $object->setBestAddressIsPartial($data['bestAddressIsPartial']);
+            unset($data['bestAddressIsPartial']);
         }
         if (\array_key_exists('bestCountryScore', $data)) {
             $object->setBestCountryScore($data['bestCountryScore']);
+            unset($data['bestCountryScore']);
         }
         if (\array_key_exists('bestCountryType', $data)) {
             $object->setBestCountryType($data['bestCountryType']);
+            unset($data['bestCountryType']);
         }
         if (\array_key_exists('bestDOBIsPartial', $data)) {
             $object->setBestDOBIsPartial($data['bestDOBIsPartial']);
+            unset($data['bestDOBIsPartial']);
         }
         if (\array_key_exists('bestName', $data)) {
             $object->setBestName($data['bestName']);
+            unset($data['bestName']);
         }
         if (\array_key_exists('bestNameScore', $data)) {
             $object->setBestNameScore($data['bestNameScore']);
+            unset($data['bestNameScore']);
         }
         if (\array_key_exists('checkSum', $data)) {
             $object->setCheckSum($data['checkSum']);
+            unset($data['checkSum']);
         }
         if (\array_key_exists('conflicts', $data)) {
             $object->setConflicts($this->denormalizer->denormalize($data['conflicts'], 'CreditSafe\\API\\Model\\ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemConflicts', 'json', $context));
+            unset($data['conflicts']);
         }
         if (\array_key_exists('entityDetails', $data)) {
             $object->setEntityDetails($this->denormalizer->denormalize($data['entityDetails'], 'CreditSafe\\API\\Model\\ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemEntityDetails', 'json', $context));
+            unset($data['entityDetails']);
         }
         if (\array_key_exists('entityName', $data)) {
             $object->setEntityName($data['entityName']);
+            unset($data['entityName']);
         }
         if (\array_key_exists('entityScore', $data)) {
             $object->setEntityScore($data['entityScore']);
+            unset($data['entityScore']);
         }
         if (\array_key_exists('entityUniqueID', $data)) {
             $object->setEntityUniqueID($data['entityUniqueID']);
+            unset($data['entityUniqueID']);
         }
         if (\array_key_exists('falsePositive', $data)) {
             $object->setFalsePositive($data['falsePositive']);
+            unset($data['falsePositive']);
         }
         if (\array_key_exists('file', $data)) {
             $object->setFile($this->denormalizer->denormalize($data['file'], 'CreditSafe\\API\\Model\\ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemFile', 'json', $context));
+            unset($data['file']);
         }
         if (\array_key_exists('gatewayOFACScreeningIndicatorMatch', $data)) {
             $object->setGatewayOFACScreeningIndicatorMatch($data['gatewayOFACScreeningIndicatorMatch']);
+            unset($data['gatewayOFACScreeningIndicatorMatch']);
         }
         if (\array_key_exists('id', $data)) {
             $object->setId($data['id']);
+            unset($data['id']);
         }
         if (\array_key_exists('matchReAlert', $data)) {
             $object->setMatchReAlert($data['matchReAlert']);
+            unset($data['matchReAlert']);
         }
         if (\array_key_exists('previousResultID', $data)) {
             $object->setPreviousResultID($data['previousResultID']);
+            unset($data['previousResultID']);
         }
         if (\array_key_exists('reasonListed', $data)) {
             $object->setReasonListed($data['reasonListed']);
+            unset($data['reasonListed']);
         }
         if (\array_key_exists('resultDate', $data)) {
             $object->setResultDate($data['resultDate']);
+            unset($data['resultDate']);
         }
         if (\array_key_exists('secondaryOFACScreeningIndicatorMatch', $data)) {
             $object->setSecondaryOFACScreeningIndicatorMatch($data['secondaryOFACScreeningIndicatorMatch']);
+            unset($data['secondaryOFACScreeningIndicatorMatch']);
         }
         if (\array_key_exists('trueMatch', $data)) {
             $object->setTrueMatch($data['trueMatch']);
+            unset($data['trueMatch']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -204,6 +235,11 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemN
         }
         if (null !== $object->getTrueMatch()) {
             $data['trueMatch'] = $object->getTrueMatch();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

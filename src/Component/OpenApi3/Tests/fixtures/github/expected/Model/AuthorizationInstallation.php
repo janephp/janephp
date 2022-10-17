@@ -2,12 +2,12 @@
 
 namespace Github\Model;
 
-class AuthorizationInstallation
+class AuthorizationInstallation extends \ArrayObject
 {
     /**
      * 
      *
-     * @var mixed
+     * @var mixed[]
      */
     protected $permissions;
     /**
@@ -37,20 +37,20 @@ class AuthorizationInstallation
     /**
      * 
      *
-     * @return mixed
+     * @return mixed[]
      */
-    public function getPermissions()
+    public function getPermissions() : iterable
     {
         return $this->permissions;
     }
     /**
      * 
      *
-     * @param mixed $permissions
+     * @param mixed[] $permissions
      *
      * @return self
      */
-    public function setPermissions($permissions) : self
+    public function setPermissions(iterable $permissions) : self
     {
         $this->permissions = $permissions;
         return $this;

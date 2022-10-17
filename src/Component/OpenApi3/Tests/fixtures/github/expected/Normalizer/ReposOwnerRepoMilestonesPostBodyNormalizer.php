@@ -47,15 +47,24 @@ class ReposOwnerRepoMilestonesPostBodyNormalizer implements DenormalizerInterfac
         }
         if (\array_key_exists('title', $data)) {
             $object->setTitle($data['title']);
+            unset($data['title']);
         }
         if (\array_key_exists('state', $data)) {
             $object->setState($data['state']);
+            unset($data['state']);
         }
         if (\array_key_exists('description', $data)) {
             $object->setDescription($data['description']);
+            unset($data['description']);
         }
         if (\array_key_exists('due_on', $data)) {
             $object->setDueOn($data['due_on']);
+            unset($data['due_on']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -74,6 +83,11 @@ class ReposOwnerRepoMilestonesPostBodyNormalizer implements DenormalizerInterfac
         }
         if (null !== $object->getDueOn()) {
             $data['due_on'] = $object->getDueOn();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ReposOwnerRepoMilestonesPostBodyConstraint());

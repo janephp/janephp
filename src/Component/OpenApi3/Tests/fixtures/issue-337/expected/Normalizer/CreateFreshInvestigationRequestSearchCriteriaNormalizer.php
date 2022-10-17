@@ -43,24 +43,36 @@ class CreateFreshInvestigationRequestSearchCriteriaNormalizer implements Denorma
         }
         if (\array_key_exists('name', $data)) {
             $object->setName($data['name']);
+            unset($data['name']);
         }
         if (\array_key_exists('additionalInfo', $data)) {
             $object->setAdditionalInfo($data['additionalInfo']);
+            unset($data['additionalInfo']);
         }
         if (\array_key_exists('telephoneNumber', $data)) {
             $object->setTelephoneNumber($data['telephoneNumber']);
+            unset($data['telephoneNumber']);
         }
         if (\array_key_exists('address', $data)) {
             $object->setAddress($this->denormalizer->denormalize($data['address'], 'CreditSafe\\API\\Model\\CreateFreshInvestigationRequestSearchCriteriaAddress', 'json', $context));
+            unset($data['address']);
         }
         if (\array_key_exists('regNo', $data)) {
             $object->setRegNo($data['regNo']);
+            unset($data['regNo']);
         }
         if (\array_key_exists('vatNo', $data)) {
             $object->setVatNo($data['vatNo']);
+            unset($data['vatNo']);
         }
         if (\array_key_exists('countryCode', $data)) {
             $object->setCountryCode($data['countryCode']);
+            unset($data['countryCode']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -90,6 +102,11 @@ class CreateFreshInvestigationRequestSearchCriteriaNormalizer implements Denorma
         }
         if (null !== $object->getCountryCode()) {
             $data['countryCode'] = $object->getCountryCode();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

@@ -47,6 +47,7 @@ class CompactTweetFieldsAttachmentsNormalizer implements DenormalizerInterface, 
                 $values[] = $value;
             }
             $object->setMediaKeys($values);
+            unset($data['media_keys']);
         }
         if (\array_key_exists('poll_ids', $data)) {
             $values_1 = array();
@@ -54,6 +55,12 @@ class CompactTweetFieldsAttachmentsNormalizer implements DenormalizerInterface, 
                 $values_1[] = $value_1;
             }
             $object->setPollIds($values_1);
+            unset($data['poll_ids']);
+        }
+        foreach ($data as $key => $value_2) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_2;
+            }
         }
         return $object;
     }
@@ -76,6 +83,11 @@ class CompactTweetFieldsAttachmentsNormalizer implements DenormalizerInterface, 
                 $values_1[] = $value_1;
             }
             $data['poll_ids'] = $values_1;
+        }
+        foreach ($object as $key => $value_2) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_2;
+            }
         }
         return $data;
     }

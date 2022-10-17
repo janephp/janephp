@@ -43,6 +43,7 @@ class GeoNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
         }
         if (\array_key_exists('type', $data)) {
             $object->setType($data['type']);
+            unset($data['type']);
         }
         if (\array_key_exists('bbox', $data)) {
             $values = array();
@@ -50,12 +51,24 @@ class GeoNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
                 $values[] = $value;
             }
             $object->setBbox($values);
+            unset($data['bbox']);
         }
         if (\array_key_exists('geometry', $data)) {
             $object->setGeometry($this->denormalizer->denormalize($data['geometry'], 'Jane\\OpenApi3\\Tests\\Expected\\Model\\Point', 'json', $context));
+            unset($data['geometry']);
         }
         if (\array_key_exists('properties', $data)) {
-            $object->setProperties($data['properties']);
+            $values_1 = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
+            foreach ($data['properties'] as $key => $value_1) {
+                $values_1[$key] = $value_1;
+            }
+            $object->setProperties($values_1);
+            unset($data['properties']);
+        }
+        foreach ($data as $key_1 => $value_2) {
+            if (preg_match('/.*/', (string) $key_1)) {
+                $object[$key_1] = $value_2;
+            }
         }
         return $object;
     }
@@ -74,7 +87,16 @@ class GeoNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
         if (null !== $object->getGeometry()) {
             $data['geometry'] = $this->normalizer->normalize($object->getGeometry(), 'json', $context);
         }
-        $data['properties'] = $object->getProperties();
+        $values_1 = array();
+        foreach ($object->getProperties() as $key => $value_1) {
+            $values_1[$key] = $value_1;
+        }
+        $data['properties'] = $values_1;
+        foreach ($object as $key_1 => $value_2) {
+            if (preg_match('/.*/', (string) $key_1)) {
+                $data[$key_1] = $value_2;
+            }
+        }
         return $data;
     }
 }

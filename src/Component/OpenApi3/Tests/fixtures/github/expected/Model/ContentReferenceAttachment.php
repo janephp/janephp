@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class ContentReferenceAttachment
+class ContentReferenceAttachment extends \ArrayObject
 {
     /**
      * The ID of the attachment

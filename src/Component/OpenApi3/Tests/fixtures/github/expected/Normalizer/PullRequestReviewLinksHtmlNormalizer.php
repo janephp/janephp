@@ -47,6 +47,12 @@ class PullRequestReviewLinksHtmlNormalizer implements DenormalizerInterface, Nor
         }
         if (\array_key_exists('href', $data)) {
             $object->setHref($data['href']);
+            unset($data['href']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -57,6 +63,11 @@ class PullRequestReviewLinksHtmlNormalizer implements DenormalizerInterface, Nor
     {
         $data = array();
         $data['href'] = $object->getHref();
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\PullRequestReviewLinksHtmlConstraint());
             $context['skip_validation'] = true;

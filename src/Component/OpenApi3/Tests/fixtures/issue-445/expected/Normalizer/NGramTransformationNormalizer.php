@@ -43,24 +43,34 @@ class NGramTransformationNormalizer implements DenormalizerInterface, Normalizer
         }
         if (\array_key_exists('traceRefId', $data) && $data['traceRefId'] !== null) {
             $object->setTraceRefId($data['traceRefId']);
+            unset($data['traceRefId']);
         }
         elseif (\array_key_exists('traceRefId', $data) && $data['traceRefId'] === null) {
             $object->setTraceRefId(null);
         }
         if (\array_key_exists('kind', $data)) {
             $object->setKind($data['kind']);
+            unset($data['kind']);
         }
         if (\array_key_exists('size', $data)) {
             $object->setSize($data['size']);
+            unset($data['size']);
         }
         if (\array_key_exists('minWordLength', $data)) {
             $object->setMinWordLength($data['minWordLength']);
+            unset($data['minWordLength']);
         }
         if (\array_key_exists('maxWordLength', $data) && $data['maxWordLength'] !== null) {
             $object->setMaxWordLength($data['maxWordLength']);
+            unset($data['maxWordLength']);
         }
         elseif (\array_key_exists('maxWordLength', $data) && $data['maxWordLength'] === null) {
             $object->setMaxWordLength(null);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -82,6 +92,11 @@ class NGramTransformationNormalizer implements DenormalizerInterface, Normalizer
         }
         if (null !== $object->getMaxWordLength()) {
             $data['maxWordLength'] = $object->getMaxWordLength();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

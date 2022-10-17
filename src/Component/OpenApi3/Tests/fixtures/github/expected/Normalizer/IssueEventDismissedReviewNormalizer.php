@@ -47,21 +47,30 @@ class IssueEventDismissedReviewNormalizer implements DenormalizerInterface, Norm
         }
         if (\array_key_exists('state', $data)) {
             $object->setState($data['state']);
+            unset($data['state']);
         }
         if (\array_key_exists('review_id', $data)) {
             $object->setReviewId($data['review_id']);
+            unset($data['review_id']);
         }
         if (\array_key_exists('dismissal_message', $data) && $data['dismissal_message'] !== null) {
             $object->setDismissalMessage($data['dismissal_message']);
+            unset($data['dismissal_message']);
         }
         elseif (\array_key_exists('dismissal_message', $data) && $data['dismissal_message'] === null) {
             $object->setDismissalMessage(null);
         }
         if (\array_key_exists('dismissal_commit_id', $data) && $data['dismissal_commit_id'] !== null) {
             $object->setDismissalCommitId($data['dismissal_commit_id']);
+            unset($data['dismissal_commit_id']);
         }
         elseif (\array_key_exists('dismissal_commit_id', $data) && $data['dismissal_commit_id'] === null) {
             $object->setDismissalCommitId(null);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -76,6 +85,11 @@ class IssueEventDismissedReviewNormalizer implements DenormalizerInterface, Norm
         $data['dismissal_message'] = $object->getDismissalMessage();
         if (null !== $object->getDismissalCommitId()) {
             $data['dismissal_commit_id'] = $object->getDismissalCommitId();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\IssueEventDismissedReviewConstraint());

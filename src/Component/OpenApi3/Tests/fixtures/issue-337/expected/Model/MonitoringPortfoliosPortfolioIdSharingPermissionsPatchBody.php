@@ -2,7 +2,7 @@
 
 namespace CreditSafe\API\Model;
 
-class MonitoringPortfoliosPortfolioIdSharingPermissionsPatchBody
+class MonitoringPortfoliosPortfolioIdSharingPermissionsPatchBody extends \ArrayObject
 {
     /**
      * If set to "true", all user permissions will be revoked for the portfolio. By default set to "false".

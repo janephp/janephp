@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class InvalidTransferTypeException
+class InvalidTransferTypeException extends \ArrayObject
 {
     /**
      * 

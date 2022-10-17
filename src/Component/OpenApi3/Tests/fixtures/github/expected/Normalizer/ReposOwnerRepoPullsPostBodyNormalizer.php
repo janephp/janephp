@@ -47,24 +47,36 @@ class ReposOwnerRepoPullsPostBodyNormalizer implements DenormalizerInterface, No
         }
         if (\array_key_exists('title', $data)) {
             $object->setTitle($data['title']);
+            unset($data['title']);
         }
         if (\array_key_exists('head', $data)) {
             $object->setHead($data['head']);
+            unset($data['head']);
         }
         if (\array_key_exists('base', $data)) {
             $object->setBase($data['base']);
+            unset($data['base']);
         }
         if (\array_key_exists('body', $data)) {
             $object->setBody($data['body']);
+            unset($data['body']);
         }
         if (\array_key_exists('maintainer_can_modify', $data)) {
             $object->setMaintainerCanModify($data['maintainer_can_modify']);
+            unset($data['maintainer_can_modify']);
         }
         if (\array_key_exists('draft', $data)) {
             $object->setDraft($data['draft']);
+            unset($data['draft']);
         }
         if (\array_key_exists('issue', $data)) {
             $object->setIssue($data['issue']);
+            unset($data['issue']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -90,6 +102,11 @@ class ReposOwnerRepoPullsPostBodyNormalizer implements DenormalizerInterface, No
         }
         if (null !== $object->getIssue()) {
             $data['issue'] = $object->getIssue();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ReposOwnerRepoPullsPostBodyConstraint());

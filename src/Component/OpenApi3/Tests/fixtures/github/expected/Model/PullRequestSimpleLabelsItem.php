@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class PullRequestSimpleLabelsItem
+class PullRequestSimpleLabelsItem extends \ArrayObject
 {
     /**
      * 

@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class LiveStreamSearchResult
+class LiveStreamSearchResult extends \ArrayObject
 {
     /**
      * The total number of matching documents.

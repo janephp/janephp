@@ -47,12 +47,20 @@ class ScimUserOperationsItemNormalizer implements DenormalizerInterface, Normali
         }
         if (\array_key_exists('op', $data)) {
             $object->setOp($data['op']);
+            unset($data['op']);
         }
         if (\array_key_exists('path', $data)) {
             $object->setPath($data['path']);
+            unset($data['path']);
         }
         if (\array_key_exists('value', $data)) {
             $object->setValue($data['value']);
+            unset($data['value']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -68,6 +76,11 @@ class ScimUserOperationsItemNormalizer implements DenormalizerInterface, Normali
         }
         if (null !== $object->getValue()) {
             $data['value'] = $object->getValue();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ScimUserOperationsItemConstraint());

@@ -46,63 +46,77 @@ class FieldTranslatedStringNormalizer implements DenormalizerInterface, Normaliz
         }
         if (\array_key_exists('id', $data)) {
             $object->setId($data['id']);
+            unset($data['id']);
         }
         if (\array_key_exists('indexId', $data) && $data['indexId'] !== null) {
             $object->setIndexId($data['indexId']);
+            unset($data['indexId']);
         }
         elseif (\array_key_exists('indexId', $data) && $data['indexId'] === null) {
             $object->setIndexId(null);
         }
         if (\array_key_exists('fieldNamespace', $data) && $data['fieldNamespace'] !== null) {
             $object->setFieldNamespace($data['fieldNamespace']);
+            unset($data['fieldNamespace']);
         }
         elseif (\array_key_exists('fieldNamespace', $data) && $data['fieldNamespace'] === null) {
             $object->setFieldNamespace(null);
         }
         if (\array_key_exists('names', $data) && $data['names'] !== null) {
             $object->setNames($data['names']);
+            unset($data['names']);
         }
         elseif (\array_key_exists('names', $data) && $data['names'] === null) {
             $object->setNames(null);
         }
         if (\array_key_exists('descriptions', $data) && $data['descriptions'] !== null) {
             $object->setDescriptions($data['descriptions']);
+            unset($data['descriptions']);
         }
         elseif (\array_key_exists('descriptions', $data) && $data['descriptions'] === null) {
             $object->setDescriptions(null);
         }
         if (\array_key_exists('required', $data)) {
             $object->setRequired($data['required']);
+            unset($data['required']);
         }
         if (\array_key_exists('fixed', $data)) {
             $object->setFixed($data['fixed']);
+            unset($data['fixed']);
         }
         if (\array_key_exists('index', $data)) {
             $object->setIndex($data['index']);
+            unset($data['index']);
         }
         if (\array_key_exists('simpleSearch', $data)) {
             $object->setSimpleSearch($data['simpleSearch']);
+            unset($data['simpleSearch']);
         }
         if (\array_key_exists('sortable', $data)) {
             $object->setSortable($data['sortable']);
+            unset($data['sortable']);
         }
         if (\array_key_exists('kind', $data)) {
             $object->setKind($data['kind']);
+            unset($data['kind']);
         }
         if (\array_key_exists('pattern', $data) && $data['pattern'] !== null) {
             $object->setPattern($data['pattern']);
+            unset($data['pattern']);
         }
         elseif (\array_key_exists('pattern', $data) && $data['pattern'] === null) {
             $object->setPattern(null);
         }
         if (\array_key_exists('minimumLength', $data) && $data['minimumLength'] !== null) {
             $object->setMinimumLength($data['minimumLength']);
+            unset($data['minimumLength']);
         }
         elseif (\array_key_exists('minimumLength', $data) && $data['minimumLength'] === null) {
             $object->setMinimumLength(null);
         }
         if (\array_key_exists('maximumLength', $data) && $data['maximumLength'] !== null) {
             $object->setMaximumLength($data['maximumLength']);
+            unset($data['maximumLength']);
         }
         elseif (\array_key_exists('maximumLength', $data) && $data['maximumLength'] === null) {
             $object->setMaximumLength(null);
@@ -113,6 +127,7 @@ class FieldTranslatedStringNormalizer implements DenormalizerInterface, Normaliz
                 $values[] = $this->denormalizer->denormalize($value, 'PicturePark\\API\\Model\\AnalyzerBase', 'json', $context);
             }
             $object->setIndexAnalyzers($values);
+            unset($data['indexAnalyzers']);
         }
         elseif (\array_key_exists('indexAnalyzers', $data) && $data['indexAnalyzers'] === null) {
             $object->setIndexAnalyzers(null);
@@ -123,12 +138,14 @@ class FieldTranslatedStringNormalizer implements DenormalizerInterface, Normaliz
                 $values_1[] = $this->denormalizer->denormalize($value_1, 'PicturePark\\API\\Model\\AnalyzerBase', 'json', $context);
             }
             $object->setSimpleSearchAnalyzers($values_1);
+            unset($data['simpleSearchAnalyzers']);
         }
         elseif (\array_key_exists('simpleSearchAnalyzers', $data) && $data['simpleSearchAnalyzers'] === null) {
             $object->setSimpleSearchAnalyzers(null);
         }
         if (\array_key_exists('multiLine', $data)) {
             $object->setMultiLine($data['multiLine']);
+            unset($data['multiLine']);
         }
         if (\array_key_exists('requiredMetadataLanguages', $data) && $data['requiredMetadataLanguages'] !== null) {
             $values_2 = array();
@@ -136,18 +153,26 @@ class FieldTranslatedStringNormalizer implements DenormalizerInterface, Normaliz
                 $values_2[] = $value_2;
             }
             $object->setRequiredMetadataLanguages($values_2);
+            unset($data['requiredMetadataLanguages']);
         }
         elseif (\array_key_exists('requiredMetadataLanguages', $data) && $data['requiredMetadataLanguages'] === null) {
             $object->setRequiredMetadataLanguages(null);
         }
         if (\array_key_exists('template', $data) && $data['template'] !== null) {
             $object->setTemplate($data['template']);
+            unset($data['template']);
         }
         elseif (\array_key_exists('template', $data) && $data['template'] === null) {
             $object->setTemplate(null);
         }
         if (\array_key_exists('boost', $data)) {
             $object->setBoost($data['boost']);
+            unset($data['boost']);
+        }
+        foreach ($data as $key => $value_3) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_3;
+            }
         }
         return $object;
     }
@@ -214,6 +239,11 @@ class FieldTranslatedStringNormalizer implements DenormalizerInterface, Normaliz
         }
         if (null !== $object->getBoost()) {
             $data['boost'] = $object->getBoost();
+        }
+        foreach ($object as $key => $value_3) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_3;
+            }
         }
         return $data;
     }

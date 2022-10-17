@@ -47,90 +47,116 @@ class IssueEventNormalizer implements DenormalizerInterface, NormalizerInterface
         }
         if (\array_key_exists('id', $data)) {
             $object->setId($data['id']);
+            unset($data['id']);
         }
         if (\array_key_exists('node_id', $data)) {
             $object->setNodeId($data['node_id']);
+            unset($data['node_id']);
         }
         if (\array_key_exists('url', $data)) {
             $object->setUrl($data['url']);
+            unset($data['url']);
         }
         if (\array_key_exists('actor', $data) && $data['actor'] !== null) {
             $object->setActor($this->denormalizer->denormalize($data['actor'], 'Github\\Model\\IssueEventActor', 'json', $context));
+            unset($data['actor']);
         }
         elseif (\array_key_exists('actor', $data) && $data['actor'] === null) {
             $object->setActor(null);
         }
         if (\array_key_exists('event', $data)) {
             $object->setEvent($data['event']);
+            unset($data['event']);
         }
         if (\array_key_exists('commit_id', $data) && $data['commit_id'] !== null) {
             $object->setCommitId($data['commit_id']);
+            unset($data['commit_id']);
         }
         elseif (\array_key_exists('commit_id', $data) && $data['commit_id'] === null) {
             $object->setCommitId(null);
         }
         if (\array_key_exists('commit_url', $data) && $data['commit_url'] !== null) {
             $object->setCommitUrl($data['commit_url']);
+            unset($data['commit_url']);
         }
         elseif (\array_key_exists('commit_url', $data) && $data['commit_url'] === null) {
             $object->setCommitUrl(null);
         }
         if (\array_key_exists('created_at', $data)) {
             $object->setCreatedAt(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['created_at']));
+            unset($data['created_at']);
         }
         if (\array_key_exists('issue', $data)) {
             $object->setIssue($this->denormalizer->denormalize($data['issue'], 'Github\\Model\\IssueSimple', 'json', $context));
+            unset($data['issue']);
         }
         if (\array_key_exists('label', $data)) {
             $object->setLabel($this->denormalizer->denormalize($data['label'], 'Github\\Model\\IssueEventLabel', 'json', $context));
+            unset($data['label']);
         }
         if (\array_key_exists('assignee', $data) && $data['assignee'] !== null) {
             $object->setAssignee($this->denormalizer->denormalize($data['assignee'], 'Github\\Model\\IssueEventAssignee', 'json', $context));
+            unset($data['assignee']);
         }
         elseif (\array_key_exists('assignee', $data) && $data['assignee'] === null) {
             $object->setAssignee(null);
         }
         if (\array_key_exists('assigner', $data) && $data['assigner'] !== null) {
             $object->setAssigner($this->denormalizer->denormalize($data['assigner'], 'Github\\Model\\IssueEventAssigner', 'json', $context));
+            unset($data['assigner']);
         }
         elseif (\array_key_exists('assigner', $data) && $data['assigner'] === null) {
             $object->setAssigner(null);
         }
         if (\array_key_exists('review_requester', $data) && $data['review_requester'] !== null) {
             $object->setReviewRequester($this->denormalizer->denormalize($data['review_requester'], 'Github\\Model\\IssueEventReviewRequester', 'json', $context));
+            unset($data['review_requester']);
         }
         elseif (\array_key_exists('review_requester', $data) && $data['review_requester'] === null) {
             $object->setReviewRequester(null);
         }
         if (\array_key_exists('requested_reviewer', $data) && $data['requested_reviewer'] !== null) {
             $object->setRequestedReviewer($this->denormalizer->denormalize($data['requested_reviewer'], 'Github\\Model\\IssueEventRequestedReviewer', 'json', $context));
+            unset($data['requested_reviewer']);
         }
         elseif (\array_key_exists('requested_reviewer', $data) && $data['requested_reviewer'] === null) {
             $object->setRequestedReviewer(null);
         }
         if (\array_key_exists('requested_team', $data)) {
             $object->setRequestedTeam($this->denormalizer->denormalize($data['requested_team'], 'Github\\Model\\Team', 'json', $context));
+            unset($data['requested_team']);
         }
         if (\array_key_exists('dismissed_review', $data)) {
             $object->setDismissedReview($this->denormalizer->denormalize($data['dismissed_review'], 'Github\\Model\\IssueEventDismissedReview', 'json', $context));
+            unset($data['dismissed_review']);
         }
         if (\array_key_exists('milestone', $data)) {
             $object->setMilestone($this->denormalizer->denormalize($data['milestone'], 'Github\\Model\\IssueEventMilestone', 'json', $context));
+            unset($data['milestone']);
         }
         if (\array_key_exists('project_card', $data)) {
             $object->setProjectCard($this->denormalizer->denormalize($data['project_card'], 'Github\\Model\\IssueEventProjectCard', 'json', $context));
+            unset($data['project_card']);
         }
         if (\array_key_exists('rename', $data)) {
             $object->setRename($this->denormalizer->denormalize($data['rename'], 'Github\\Model\\IssueEventRename', 'json', $context));
+            unset($data['rename']);
         }
         if (\array_key_exists('author_association', $data)) {
             $object->setAuthorAssociation($data['author_association']);
+            unset($data['author_association']);
         }
         if (\array_key_exists('lock_reason', $data) && $data['lock_reason'] !== null) {
             $object->setLockReason($data['lock_reason']);
+            unset($data['lock_reason']);
         }
         elseif (\array_key_exists('lock_reason', $data) && $data['lock_reason'] === null) {
             $object->setLockReason(null);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -186,6 +212,11 @@ class IssueEventNormalizer implements DenormalizerInterface, NormalizerInterface
         }
         if (null !== $object->getLockReason()) {
             $data['lock_reason'] = $object->getLockReason();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\IssueEventConstraint());

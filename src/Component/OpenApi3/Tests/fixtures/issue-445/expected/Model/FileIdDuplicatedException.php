@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class FileIdDuplicatedException
+class FileIdDuplicatedException extends \ArrayObject
 {
     /**
      * 

@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class InvalidVersionException
+class InvalidVersionException extends \ArrayObject
 {
     /**
      * 

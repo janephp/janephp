@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class GistFullhistoryItemChangeStatus
+class GistFullhistoryItemChangeStatus extends \ArrayObject
 {
     /**
      * 

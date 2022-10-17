@@ -43,9 +43,16 @@ class MonitoringPortfoliosPortfolioIdSyncPostBodyNormalizer implements Denormali
         }
         if (\array_key_exists('importCsv', $data)) {
             $object->setImportCsv($data['importCsv']);
+            unset($data['importCsv']);
         }
         if (\array_key_exists('email', $data)) {
             $object->setEmail($data['email']);
+            unset($data['email']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -58,6 +65,11 @@ class MonitoringPortfoliosPortfolioIdSyncPostBodyNormalizer implements Denormali
         $data['importCsv'] = $object->getImportCsv();
         if (null !== $object->getEmail()) {
             $data['email'] = $object->getEmail();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

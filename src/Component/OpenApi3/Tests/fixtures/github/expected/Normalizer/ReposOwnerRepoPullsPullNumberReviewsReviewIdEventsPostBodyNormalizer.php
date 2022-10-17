@@ -47,9 +47,16 @@ class ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBodyNormalizer imple
         }
         if (\array_key_exists('body', $data)) {
             $object->setBody($data['body']);
+            unset($data['body']);
         }
         if (\array_key_exists('event', $data)) {
             $object->setEvent($data['event']);
+            unset($data['event']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -63,6 +70,11 @@ class ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBodyNormalizer imple
             $data['body'] = $object->getBody();
         }
         $data['event'] = $object->getEvent();
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBodyConstraint());
             $context['skip_validation'] = true;

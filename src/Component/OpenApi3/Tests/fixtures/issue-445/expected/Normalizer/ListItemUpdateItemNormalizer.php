@@ -42,16 +42,28 @@ class ListItemUpdateItemNormalizer implements DenormalizerInterface, NormalizerI
             return $object;
         }
         if (\array_key_exists('content', $data) && $data['content'] !== null) {
-            $object->setContent($data['content']);
+            $values = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
+            foreach ($data['content'] as $key => $value) {
+                $values[$key] = $value;
+            }
+            $object->setContent($values);
+            unset($data['content']);
         }
         elseif (\array_key_exists('content', $data) && $data['content'] === null) {
             $object->setContent(null);
         }
         if (\array_key_exists('contentFieldsUpdateOptions', $data)) {
             $object->setContentFieldsUpdateOptions($data['contentFieldsUpdateOptions']);
+            unset($data['contentFieldsUpdateOptions']);
         }
         if (\array_key_exists('id', $data)) {
             $object->setId($data['id']);
+            unset($data['id']);
+        }
+        foreach ($data as $key_1 => $value_1) {
+            if (preg_match('/.*/', (string) $key_1)) {
+                $object[$key_1] = $value_1;
+            }
         }
         return $object;
     }
@@ -62,10 +74,19 @@ class ListItemUpdateItemNormalizer implements DenormalizerInterface, NormalizerI
     {
         $data = array();
         if (null !== $object->getContent()) {
-            $data['content'] = $object->getContent();
+            $values = array();
+            foreach ($object->getContent() as $key => $value) {
+                $values[$key] = $value;
+            }
+            $data['content'] = $values;
         }
         $data['contentFieldsUpdateOptions'] = $object->getContentFieldsUpdateOptions();
         $data['id'] = $object->getId();
+        foreach ($object as $key_1 => $value_1) {
+            if (preg_match('/.*/', (string) $key_1)) {
+                $data[$key_1] = $value_1;
+            }
+        }
         return $data;
     }
 }

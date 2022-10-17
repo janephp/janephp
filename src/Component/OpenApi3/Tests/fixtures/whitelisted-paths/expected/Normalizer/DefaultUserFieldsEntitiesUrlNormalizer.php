@@ -47,6 +47,12 @@ class DefaultUserFieldsEntitiesUrlNormalizer implements DenormalizerInterface, N
                 $values[] = $this->denormalizer->denormalize($value, 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Model\\UrlEntity', 'json', $context);
             }
             $object->setUrls($values);
+            unset($data['urls']);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
@@ -62,6 +68,11 @@ class DefaultUserFieldsEntitiesUrlNormalizer implements DenormalizerInterface, N
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data['urls'] = $values;
+        }
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
+            }
         }
         return $data;
     }

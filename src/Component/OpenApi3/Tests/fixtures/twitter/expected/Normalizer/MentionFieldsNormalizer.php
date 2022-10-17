@@ -43,6 +43,12 @@ class MentionFieldsNormalizer implements DenormalizerInterface, NormalizerInterf
         }
         if (\array_key_exists('username', $data)) {
             $object->setUsername($data['username']);
+            unset($data['username']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -53,6 +59,11 @@ class MentionFieldsNormalizer implements DenormalizerInterface, NormalizerInterf
     {
         $data = array();
         $data['username'] = $object->getUsername();
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
         return $data;
     }
 }

@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class BranchProtectionRequiredLinearHistory
+class BranchProtectionRequiredLinearHistory extends \ArrayObject
 {
     /**
      * 

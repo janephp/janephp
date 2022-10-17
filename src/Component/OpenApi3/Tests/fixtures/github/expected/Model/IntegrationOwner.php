@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class IntegrationOwner
+class IntegrationOwner extends \ArrayObject
 {
     /**
      * 

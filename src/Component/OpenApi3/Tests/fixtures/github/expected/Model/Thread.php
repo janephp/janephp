@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class Thread
+class Thread extends \ArrayObject
 {
     /**
      * 

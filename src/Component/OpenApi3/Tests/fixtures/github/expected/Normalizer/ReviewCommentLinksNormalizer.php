@@ -47,12 +47,20 @@ class ReviewCommentLinksNormalizer implements DenormalizerInterface, NormalizerI
         }
         if (\array_key_exists('self', $data)) {
             $object->setSelf($this->denormalizer->denormalize($data['self'], 'Github\\Model\\Link', 'json', $context));
+            unset($data['self']);
         }
         if (\array_key_exists('html', $data)) {
             $object->setHtml($this->denormalizer->denormalize($data['html'], 'Github\\Model\\Link', 'json', $context));
+            unset($data['html']);
         }
         if (\array_key_exists('pull_request', $data)) {
             $object->setPullRequest($this->denormalizer->denormalize($data['pull_request'], 'Github\\Model\\Link', 'json', $context));
+            unset($data['pull_request']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -65,6 +73,11 @@ class ReviewCommentLinksNormalizer implements DenormalizerInterface, NormalizerI
         $data['self'] = $this->normalizer->normalize($object->getSelf(), 'json', $context);
         $data['html'] = $this->normalizer->normalize($object->getHtml(), 'json', $context);
         $data['pull_request'] = $this->normalizer->normalize($object->getPullRequest(), 'json', $context);
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ReviewCommentLinksConstraint());
             $context['skip_validation'] = true;

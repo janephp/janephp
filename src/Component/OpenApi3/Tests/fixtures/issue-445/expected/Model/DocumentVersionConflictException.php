@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class DocumentVersionConflictException
+class DocumentVersionConflictException extends \ArrayObject
 {
     /**
      * 

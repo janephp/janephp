@@ -43,33 +43,48 @@ class GbPeopleReportReponseReportDirectorshipsPreviousItemNormalizer implements 
         }
         if (\array_key_exists('companyName', $data)) {
             $object->setCompanyName($data['companyName']);
+            unset($data['companyName']);
         }
         if (\array_key_exists('companyRegistrationNumber', $data)) {
             $object->setCompanyRegistrationNumber($data['companyRegistrationNumber']);
+            unset($data['companyRegistrationNumber']);
         }
         if (\array_key_exists('status', $data)) {
             $object->setStatus($data['status']);
+            unset($data['status']);
         }
         if (\array_key_exists('position', $data)) {
             $object->setPosition($this->denormalizer->denormalize($data['position'], 'CreditSafe\\API\\Model\\GbPeopleReportReponseReportDirectorshipsPreviousItemPosition', 'json', $context));
+            unset($data['position']);
         }
         if (\array_key_exists('companyRegistrationDate', $data)) {
             $object->setCompanyRegistrationDate($data['companyRegistrationDate']);
+            unset($data['companyRegistrationDate']);
         }
         if (\array_key_exists('latestTurnoverFigure', $data)) {
             $object->setLatestTurnoverFigure($this->denormalizer->denormalize($data['latestTurnoverFigure'], 'CreditSafe\\API\\Model\\GbPeopleReportReponseReportDirectorshipsPreviousItemLatestTurnoverFigure', 'json', $context));
+            unset($data['latestTurnoverFigure']);
         }
         if (\array_key_exists('netWorth', $data)) {
             $object->setNetWorth($this->denormalizer->denormalize($data['netWorth'], 'CreditSafe\\API\\Model\\GbPeopleReportReponseReportDirectorshipsPreviousItemNetWorth', 'json', $context));
+            unset($data['netWorth']);
         }
         if (\array_key_exists('legalCount', $data)) {
             $object->setLegalCount($data['legalCount']);
+            unset($data['legalCount']);
         }
         if (\array_key_exists('creditScore', $data)) {
             $object->setCreditScore($this->denormalizer->denormalize($data['creditScore'], 'CreditSafe\\API\\Model\\GbPeopleReportReponseReportDirectorshipsPreviousItemCreditScore', 'json', $context));
+            unset($data['creditScore']);
         }
         if (\array_key_exists('additionalData', $data)) {
             $object->setAdditionalData($this->denormalizer->denormalize($data['additionalData'], 'CreditSafe\\API\\Model\\GbPeopleReportReponseReportDirectorshipsPreviousItemAdditionalData', 'json', $context));
+            unset($data['additionalData']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -108,6 +123,11 @@ class GbPeopleReportReponseReportDirectorshipsPreviousItemNormalizer implements 
         }
         if (null !== $object->getAdditionalData()) {
             $data['additionalData'] = $this->normalizer->normalize($object->getAdditionalData(), 'json', $context);
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

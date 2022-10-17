@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class SchemaFieldNotSupportedException
+class SchemaFieldNotSupportedException extends \ArrayObject
 {
     /**
      * 

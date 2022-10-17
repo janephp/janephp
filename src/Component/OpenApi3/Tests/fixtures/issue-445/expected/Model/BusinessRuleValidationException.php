@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class BusinessRuleValidationException
+class BusinessRuleValidationException extends \ArrayObject
 {
     /**
      * 

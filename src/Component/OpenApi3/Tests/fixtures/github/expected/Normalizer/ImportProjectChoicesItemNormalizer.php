@@ -47,12 +47,20 @@ class ImportProjectChoicesItemNormalizer implements DenormalizerInterface, Norma
         }
         if (\array_key_exists('vcs', $data)) {
             $object->setVcs($data['vcs']);
+            unset($data['vcs']);
         }
         if (\array_key_exists('tfvc_project', $data)) {
             $object->setTfvcProject($data['tfvc_project']);
+            unset($data['tfvc_project']);
         }
         if (\array_key_exists('human_name', $data)) {
             $object->setHumanName($data['human_name']);
+            unset($data['human_name']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -70,6 +78,11 @@ class ImportProjectChoicesItemNormalizer implements DenormalizerInterface, Norma
         }
         if (null !== $object->getHumanName()) {
             $data['human_name'] = $object->getHumanName();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ImportProjectChoicesItemConstraint());

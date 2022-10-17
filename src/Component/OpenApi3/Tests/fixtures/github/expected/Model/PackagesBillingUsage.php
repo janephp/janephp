@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class PackagesBillingUsage
+class PackagesBillingUsage extends \ArrayObject
 {
     /**
      * Sum of the free and paid storage space (GB) for GitHuub Packages.

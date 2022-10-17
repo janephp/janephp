@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class UserRoleSearchResult
+class UserRoleSearchResult extends \ArrayObject
 {
     /**
      * The total number of matching documents.

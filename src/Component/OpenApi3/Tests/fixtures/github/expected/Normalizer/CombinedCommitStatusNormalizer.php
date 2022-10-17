@@ -47,6 +47,7 @@ class CombinedCommitStatusNormalizer implements DenormalizerInterface, Normalize
         }
         if (\array_key_exists('state', $data)) {
             $object->setState($data['state']);
+            unset($data['state']);
         }
         if (\array_key_exists('statuses', $data)) {
             $values = array();
@@ -54,21 +55,32 @@ class CombinedCommitStatusNormalizer implements DenormalizerInterface, Normalize
                 $values[] = $this->denormalizer->denormalize($value, 'Github\\Model\\SimpleCommitStatus', 'json', $context);
             }
             $object->setStatuses($values);
+            unset($data['statuses']);
         }
         if (\array_key_exists('sha', $data)) {
             $object->setSha($data['sha']);
+            unset($data['sha']);
         }
         if (\array_key_exists('total_count', $data)) {
             $object->setTotalCount($data['total_count']);
+            unset($data['total_count']);
         }
         if (\array_key_exists('repository', $data)) {
             $object->setRepository($this->denormalizer->denormalize($data['repository'], 'Github\\Model\\MinimalRepository', 'json', $context));
+            unset($data['repository']);
         }
         if (\array_key_exists('commit_url', $data)) {
             $object->setCommitUrl($data['commit_url']);
+            unset($data['commit_url']);
         }
         if (\array_key_exists('url', $data)) {
             $object->setUrl($data['url']);
+            unset($data['url']);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
@@ -89,6 +101,11 @@ class CombinedCommitStatusNormalizer implements DenormalizerInterface, Normalize
         $data['repository'] = $this->normalizer->normalize($object->getRepository(), 'json', $context);
         $data['commit_url'] = $object->getCommitUrl();
         $data['url'] = $object->getUrl();
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
+            }
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\CombinedCommitStatusConstraint());
             $context['skip_validation'] = true;

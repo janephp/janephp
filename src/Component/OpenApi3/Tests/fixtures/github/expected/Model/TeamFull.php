@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class TeamFull
+class TeamFull extends \ArrayObject
 {
     /**
      * Unique identifier of the team

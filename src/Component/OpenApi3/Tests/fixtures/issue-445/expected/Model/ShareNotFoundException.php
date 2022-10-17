@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class ShareNotFoundException
+class ShareNotFoundException extends \ArrayObject
 {
     /**
      * 

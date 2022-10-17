@@ -47,33 +47,48 @@ class ReactionRollupNormalizer implements DenormalizerInterface, NormalizerInter
         }
         if (\array_key_exists('url', $data)) {
             $object->setUrl($data['url']);
+            unset($data['url']);
         }
         if (\array_key_exists('total_count', $data)) {
             $object->setTotalCount($data['total_count']);
+            unset($data['total_count']);
         }
         if (\array_key_exists('+1', $data)) {
             $object->set1($data['+1']);
+            unset($data['+1']);
         }
         if (\array_key_exists('-1', $data)) {
             $object->set12($data['-1']);
+            unset($data['-1']);
         }
         if (\array_key_exists('laugh', $data)) {
             $object->setLaugh($data['laugh']);
+            unset($data['laugh']);
         }
         if (\array_key_exists('confused', $data)) {
             $object->setConfused($data['confused']);
+            unset($data['confused']);
         }
         if (\array_key_exists('heart', $data)) {
             $object->setHeart($data['heart']);
+            unset($data['heart']);
         }
         if (\array_key_exists('hooray', $data)) {
             $object->setHooray($data['hooray']);
+            unset($data['hooray']);
         }
         if (\array_key_exists('eyes', $data)) {
             $object->setEyes($data['eyes']);
+            unset($data['eyes']);
         }
         if (\array_key_exists('rocket', $data)) {
             $object->setRocket($data['rocket']);
+            unset($data['rocket']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -93,6 +108,11 @@ class ReactionRollupNormalizer implements DenormalizerInterface, NormalizerInter
         $data['hooray'] = $object->getHooray();
         $data['eyes'] = $object->getEyes();
         $data['rocket'] = $object->getRocket();
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ReactionRollupConstraint());
             $context['skip_validation'] = true;

@@ -47,15 +47,24 @@ class ReposTemplateOwnerTemplateRepoGeneratePostBodyNormalizer implements Denorm
         }
         if (\array_key_exists('owner', $data)) {
             $object->setOwner($data['owner']);
+            unset($data['owner']);
         }
         if (\array_key_exists('name', $data)) {
             $object->setName($data['name']);
+            unset($data['name']);
         }
         if (\array_key_exists('description', $data)) {
             $object->setDescription($data['description']);
+            unset($data['description']);
         }
         if (\array_key_exists('private', $data)) {
             $object->setPrivate($data['private']);
+            unset($data['private']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -74,6 +83,11 @@ class ReposTemplateOwnerTemplateRepoGeneratePostBodyNormalizer implements Denorm
         }
         if (null !== $object->getPrivate()) {
             $data['private'] = $object->getPrivate();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ReposTemplateOwnerTemplateRepoGeneratePostBodyConstraint());

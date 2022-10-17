@@ -47,9 +47,11 @@ class UserInstallationsInstallationIdRepositoriesGetResponse200Normalizer implem
         }
         if (\array_key_exists('total_count', $data)) {
             $object->setTotalCount($data['total_count']);
+            unset($data['total_count']);
         }
         if (\array_key_exists('repository_selection', $data)) {
             $object->setRepositorySelection($data['repository_selection']);
+            unset($data['repository_selection']);
         }
         if (\array_key_exists('repositories', $data)) {
             $values = array();
@@ -57,6 +59,12 @@ class UserInstallationsInstallationIdRepositoriesGetResponse200Normalizer implem
                 $values[] = $this->denormalizer->denormalize($value, 'Github\\Model\\Repository', 'json', $context);
             }
             $object->setRepositories($values);
+            unset($data['repositories']);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
@@ -78,6 +86,11 @@ class UserInstallationsInstallationIdRepositoriesGetResponse200Normalizer implem
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data['repositories'] = $values;
+        }
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\UserInstallationsInstallationIdRepositoriesGetResponse200Constraint());

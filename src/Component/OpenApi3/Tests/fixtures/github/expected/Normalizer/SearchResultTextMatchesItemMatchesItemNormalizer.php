@@ -47,6 +47,7 @@ class SearchResultTextMatchesItemMatchesItemNormalizer implements DenormalizerIn
         }
         if (\array_key_exists('text', $data)) {
             $object->setText($data['text']);
+            unset($data['text']);
         }
         if (\array_key_exists('indices', $data)) {
             $values = array();
@@ -54,6 +55,12 @@ class SearchResultTextMatchesItemMatchesItemNormalizer implements DenormalizerIn
                 $values[] = $value;
             }
             $object->setIndices($values);
+            unset($data['indices']);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
@@ -72,6 +79,11 @@ class SearchResultTextMatchesItemMatchesItemNormalizer implements DenormalizerIn
                 $values[] = $value;
             }
             $data['indices'] = $values;
+        }
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\SearchResultTextMatchesItemMatchesItemConstraint());

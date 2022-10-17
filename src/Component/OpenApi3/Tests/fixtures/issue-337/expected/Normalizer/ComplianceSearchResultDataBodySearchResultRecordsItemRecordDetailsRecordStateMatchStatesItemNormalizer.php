@@ -43,9 +43,16 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsRecordSt
         }
         if (\array_key_exists('matchID', $data)) {
             $object->setMatchID($data['matchID']);
+            unset($data['matchID']);
         }
         if (\array_key_exists('type', $data)) {
             $object->setType($data['type']);
+            unset($data['type']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -60,6 +67,11 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsRecordSt
         }
         if (null !== $object->getType()) {
             $data['type'] = $object->getType();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

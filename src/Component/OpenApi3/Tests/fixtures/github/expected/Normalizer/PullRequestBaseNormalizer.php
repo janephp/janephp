@@ -47,18 +47,28 @@ class PullRequestBaseNormalizer implements DenormalizerInterface, NormalizerInte
         }
         if (\array_key_exists('label', $data)) {
             $object->setLabel($data['label']);
+            unset($data['label']);
         }
         if (\array_key_exists('ref', $data)) {
             $object->setRef($data['ref']);
+            unset($data['ref']);
         }
         if (\array_key_exists('repo', $data)) {
             $object->setRepo($this->denormalizer->denormalize($data['repo'], 'Github\\Model\\PullRequestBaseRepo', 'json', $context));
+            unset($data['repo']);
         }
         if (\array_key_exists('sha', $data)) {
             $object->setSha($data['sha']);
+            unset($data['sha']);
         }
         if (\array_key_exists('user', $data)) {
             $object->setUser($this->denormalizer->denormalize($data['user'], 'Github\\Model\\PullRequestBaseUser', 'json', $context));
+            unset($data['user']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -73,6 +83,11 @@ class PullRequestBaseNormalizer implements DenormalizerInterface, NormalizerInte
         $data['repo'] = $this->normalizer->normalize($object->getRepo(), 'json', $context);
         $data['sha'] = $object->getSha();
         $data['user'] = $this->normalizer->normalize($object->getUser(), 'json', $context);
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\PullRequestBaseConstraint());
             $context['skip_validation'] = true;

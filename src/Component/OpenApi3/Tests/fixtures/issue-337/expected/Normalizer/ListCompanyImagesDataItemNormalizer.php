@@ -43,39 +43,56 @@ class ListCompanyImagesDataItemNormalizer implements DenormalizerInterface, Norm
         }
         if (\array_key_exists('imageId', $data)) {
             $object->setImageId($data['imageId']);
+            unset($data['imageId']);
         }
         if (\array_key_exists('company', $data)) {
             $object->setCompany($this->denormalizer->denormalize($data['company'], 'CreditSafe\\API\\Model\\ListCompanyImagesDataItemCompany', 'json', $context));
+            unset($data['company']);
         }
         if (\array_key_exists('document', $data)) {
             $object->setDocument($this->denormalizer->denormalize($data['document'], 'CreditSafe\\API\\Model\\ListCompanyImagesDataItemDocument', 'json', $context));
+            unset($data['document']);
         }
         if (\array_key_exists('format', $data)) {
             $object->setFormat($data['format']);
+            unset($data['format']);
         }
         if (\array_key_exists('source', $data)) {
             $object->setSource($data['source']);
+            unset($data['source']);
         }
         if (\array_key_exists('filingDate', $data)) {
             $object->setFilingDate($data['filingDate']);
+            unset($data['filingDate']);
         }
         if (\array_key_exists('uploadDate', $data)) {
             $object->setUploadDate($data['uploadDate']);
+            unset($data['uploadDate']);
         }
         if (\array_key_exists('accountingDate', $data)) {
             $object->setAccountingDate($data['accountingDate']);
+            unset($data['accountingDate']);
         }
         if (\array_key_exists('language', $data)) {
             $object->setLanguage($data['language']);
+            unset($data['language']);
         }
         if (\array_key_exists('comments', $data)) {
             $object->setComments($data['comments']);
+            unset($data['comments']);
         }
         if (\array_key_exists('status', $data)) {
             $object->setStatus($data['status']);
+            unset($data['status']);
         }
         if (\array_key_exists('localProperties', $data)) {
             $object->setLocalProperties($this->denormalizer->denormalize($data['localProperties'], 'CreditSafe\\API\\Model\\ListCompanyImagesDataItemLocalProperties', 'json', $context));
+            unset($data['localProperties']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -120,6 +137,11 @@ class ListCompanyImagesDataItemNormalizer implements DenormalizerInterface, Norm
         }
         if (null !== $object->getLocalProperties()) {
             $data['localProperties'] = $this->normalizer->normalize($object->getLocalProperties(), 'json', $context);
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

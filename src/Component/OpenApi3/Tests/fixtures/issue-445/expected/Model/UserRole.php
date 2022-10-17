@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class UserRole
+class UserRole extends \ArrayObject
 {
     /**
      * Language specific user role names.

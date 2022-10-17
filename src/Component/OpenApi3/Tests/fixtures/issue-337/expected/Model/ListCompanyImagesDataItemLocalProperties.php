@@ -2,7 +2,7 @@
 
 namespace CreditSafe\API\Model;
 
-class ListCompanyImagesDataItemLocalProperties
+class ListCompanyImagesDataItemLocalProperties extends \ArrayObject
 {
     /**
      * 

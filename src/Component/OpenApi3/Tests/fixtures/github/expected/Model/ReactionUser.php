@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class ReactionUser
+class ReactionUser extends \ArrayObject
 {
     /**
      * 

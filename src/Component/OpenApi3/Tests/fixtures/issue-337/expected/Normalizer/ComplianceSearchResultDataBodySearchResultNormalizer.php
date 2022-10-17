@@ -47,9 +47,16 @@ class ComplianceSearchResultDataBodySearchResultNormalizer implements Denormaliz
                 $values[] = $this->denormalizer->denormalize($value, 'CreditSafe\\API\\Model\\ComplianceSearchResultDataBodySearchResultRecordsItem', 'json', $context);
             }
             $object->setRecords($values);
+            unset($data['records']);
         }
         if (\array_key_exists('searchEngineVersion', $data)) {
             $object->setSearchEngineVersion($data['searchEngineVersion']);
+            unset($data['searchEngineVersion']);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
@@ -68,6 +75,11 @@ class ComplianceSearchResultDataBodySearchResultNormalizer implements Denormaliz
         }
         if (null !== $object->getSearchEngineVersion()) {
             $data['searchEngineVersion'] = $object->getSearchEngineVersion();
+        }
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
+            }
         }
         return $data;
     }

@@ -43,12 +43,20 @@ class CompactPlaceFieldsNormalizer implements DenormalizerInterface, NormalizerI
         }
         if (\array_key_exists('id', $data)) {
             $object->setId($data['id']);
+            unset($data['id']);
         }
         if (\array_key_exists('name', $data)) {
             $object->setName($data['name']);
+            unset($data['name']);
         }
         if (\array_key_exists('country_code', $data)) {
             $object->setCountryCode($data['country_code']);
+            unset($data['country_code']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -61,6 +69,11 @@ class CompactPlaceFieldsNormalizer implements DenormalizerInterface, NormalizerI
         $data['id'] = $object->getId();
         $data['name'] = $object->getName();
         $data['country_code'] = $object->getCountryCode();
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
         return $data;
     }
 }

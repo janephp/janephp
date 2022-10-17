@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class NamedCacheNameDuplicationException
+class NamedCacheNameDuplicationException extends \ArrayObject
 {
     /**
      * 

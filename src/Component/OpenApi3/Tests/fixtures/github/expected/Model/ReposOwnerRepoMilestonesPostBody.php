@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoMilestonesPostBody
+class ReposOwnerRepoMilestonesPostBody extends \ArrayObject
 {
     /**
      * The title of the milestone.

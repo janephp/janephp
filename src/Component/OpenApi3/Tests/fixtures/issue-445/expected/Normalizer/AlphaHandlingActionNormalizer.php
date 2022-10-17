@@ -43,15 +43,23 @@ class AlphaHandlingActionNormalizer implements DenormalizerInterface, Normalizer
         }
         if (\array_key_exists('kind', $data)) {
             $object->setKind($data['kind']);
+            unset($data['kind']);
         }
         if (\array_key_exists('alphaHandling', $data)) {
             $object->setAlphaHandling($data['alphaHandling']);
+            unset($data['alphaHandling']);
         }
         if (\array_key_exists('replacementRgbColorHexCode', $data) && $data['replacementRgbColorHexCode'] !== null) {
             $object->setReplacementRgbColorHexCode($data['replacementRgbColorHexCode']);
+            unset($data['replacementRgbColorHexCode']);
         }
         elseif (\array_key_exists('replacementRgbColorHexCode', $data) && $data['replacementRgbColorHexCode'] === null) {
             $object->setReplacementRgbColorHexCode(null);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -67,6 +75,11 @@ class AlphaHandlingActionNormalizer implements DenormalizerInterface, Normalizer
         }
         if (null !== $object->getReplacementRgbColorHexCode()) {
             $data['replacementRgbColorHexCode'] = $object->getReplacementRgbColorHexCode();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

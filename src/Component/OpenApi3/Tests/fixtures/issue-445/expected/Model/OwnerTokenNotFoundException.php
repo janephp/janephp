@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class OwnerTokenNotFoundException
+class OwnerTokenNotFoundException extends \ArrayObject
 {
     /**
      * 

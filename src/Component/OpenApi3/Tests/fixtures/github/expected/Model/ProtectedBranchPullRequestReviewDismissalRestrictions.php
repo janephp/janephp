@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class ProtectedBranchPullRequestReviewDismissalRestrictions
+class ProtectedBranchPullRequestReviewDismissalRestrictions extends \ArrayObject
 {
     /**
      * The list of users with review dismissal access.

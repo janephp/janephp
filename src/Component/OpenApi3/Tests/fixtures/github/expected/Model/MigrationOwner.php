@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class MigrationOwner
+class MigrationOwner extends \ArrayObject
 {
     /**
      * 

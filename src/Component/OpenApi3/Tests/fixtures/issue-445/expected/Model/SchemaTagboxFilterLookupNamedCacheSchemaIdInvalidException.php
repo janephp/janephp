@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class SchemaTagboxFilterLookupNamedCacheSchemaIdInvalidException
+class SchemaTagboxFilterLookupNamedCacheSchemaIdInvalidException extends \ArrayObject
 {
     /**
      * 

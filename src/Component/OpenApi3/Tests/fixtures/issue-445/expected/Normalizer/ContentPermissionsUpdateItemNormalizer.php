@@ -47,12 +47,19 @@ class ContentPermissionsUpdateItemNormalizer implements DenormalizerInterface, N
                 $values[] = $value;
             }
             $object->setContentPermissionSetIds($values);
+            unset($data['contentPermissionSetIds']);
         }
         elseif (\array_key_exists('contentPermissionSetIds', $data) && $data['contentPermissionSetIds'] === null) {
             $object->setContentPermissionSetIds(null);
         }
         if (\array_key_exists('contentId', $data)) {
             $object->setContentId($data['contentId']);
+            unset($data['contentId']);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
@@ -70,6 +77,11 @@ class ContentPermissionsUpdateItemNormalizer implements DenormalizerInterface, N
             $data['contentPermissionSetIds'] = $values;
         }
         $data['contentId'] = $object->getContentId();
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
+            }
+        }
         return $data;
     }
 }

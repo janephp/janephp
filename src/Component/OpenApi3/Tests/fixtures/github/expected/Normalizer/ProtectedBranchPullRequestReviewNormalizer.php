@@ -47,18 +47,28 @@ class ProtectedBranchPullRequestReviewNormalizer implements DenormalizerInterfac
         }
         if (\array_key_exists('url', $data)) {
             $object->setUrl($data['url']);
+            unset($data['url']);
         }
         if (\array_key_exists('dismissal_restrictions', $data)) {
             $object->setDismissalRestrictions($this->denormalizer->denormalize($data['dismissal_restrictions'], 'Github\\Model\\ProtectedBranchPullRequestReviewDismissalRestrictions', 'json', $context));
+            unset($data['dismissal_restrictions']);
         }
         if (\array_key_exists('dismiss_stale_reviews', $data)) {
             $object->setDismissStaleReviews($data['dismiss_stale_reviews']);
+            unset($data['dismiss_stale_reviews']);
         }
         if (\array_key_exists('require_code_owner_reviews', $data)) {
             $object->setRequireCodeOwnerReviews($data['require_code_owner_reviews']);
+            unset($data['require_code_owner_reviews']);
         }
         if (\array_key_exists('required_approving_review_count', $data)) {
             $object->setRequiredApprovingReviewCount($data['required_approving_review_count']);
+            unset($data['required_approving_review_count']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -78,6 +88,11 @@ class ProtectedBranchPullRequestReviewNormalizer implements DenormalizerInterfac
         $data['require_code_owner_reviews'] = $object->getRequireCodeOwnerReviews();
         if (null !== $object->getRequiredApprovingReviewCount()) {
             $data['required_approving_review_count'] = $object->getRequiredApprovingReviewCount();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ProtectedBranchPullRequestReviewConstraint());

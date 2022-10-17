@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberPatchBody
+class TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberPatchBody extends \ArrayObject
 {
     /**
      * The discussion comment's body text.

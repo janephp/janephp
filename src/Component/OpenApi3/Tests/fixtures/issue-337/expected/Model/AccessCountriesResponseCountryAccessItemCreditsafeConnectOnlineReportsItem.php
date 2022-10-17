@@ -2,7 +2,7 @@
 
 namespace CreditSafe\API\Model;
 
-class AccessCountriesResponseCountryAccessItemCreditsafeConnectOnlineReportsItem
+class AccessCountriesResponseCountryAccessItemCreditsafeConnectOnlineReportsItem extends \ArrayObject
 {
     /**
      * 

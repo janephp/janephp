@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class ContentSymlink
+class ContentSymlink extends \ArrayObject
 {
     /**
      * 

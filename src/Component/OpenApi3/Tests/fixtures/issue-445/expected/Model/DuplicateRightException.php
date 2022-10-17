@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class DuplicateRightException
+class DuplicateRightException extends \ArrayObject
 {
     /**
      * 

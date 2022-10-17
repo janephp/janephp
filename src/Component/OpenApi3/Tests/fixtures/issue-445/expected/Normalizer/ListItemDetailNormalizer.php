@@ -48,7 +48,11 @@ class ListItemDetailNormalizer implements DenormalizerInterface, NormalizerInter
             $object->setContentSchemaId($data['contentSchemaId']);
         }
         if (\array_key_exists('content', $data) && $data['content'] !== null) {
-            $object->setContent($data['content']);
+            $values = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
+            foreach ($data['content'] as $key => $value) {
+                $values[$key] = $value;
+            }
+            $object->setContent($values);
         }
         elseif (\array_key_exists('content', $data) && $data['content'] === null) {
             $object->setContent(null);
@@ -60,31 +64,31 @@ class ListItemDetailNormalizer implements DenormalizerInterface, NormalizerInter
             $object->setDisplayValues(null);
         }
         if (\array_key_exists('brokenReferenceIds', $data) && $data['brokenReferenceIds'] !== null) {
-            $values = array();
-            foreach ($data['brokenReferenceIds'] as $value) {
-                $values[] = $value;
+            $values_1 = array();
+            foreach ($data['brokenReferenceIds'] as $value_1) {
+                $values_1[] = $value_1;
             }
-            $object->setBrokenReferenceIds($values);
+            $object->setBrokenReferenceIds($values_1);
         }
         elseif (\array_key_exists('brokenReferenceIds', $data) && $data['brokenReferenceIds'] === null) {
             $object->setBrokenReferenceIds(null);
         }
         if (\array_key_exists('brokenRelationTargetIds', $data) && $data['brokenRelationTargetIds'] !== null) {
-            $values_1 = array();
-            foreach ($data['brokenRelationTargetIds'] as $value_1) {
-                $values_1[] = $value_1;
+            $values_2 = array();
+            foreach ($data['brokenRelationTargetIds'] as $value_2) {
+                $values_2[] = $value_2;
             }
-            $object->setBrokenRelationTargetIds($values_1);
+            $object->setBrokenRelationTargetIds($values_2);
         }
         elseif (\array_key_exists('brokenRelationTargetIds', $data) && $data['brokenRelationTargetIds'] === null) {
             $object->setBrokenRelationTargetIds(null);
         }
         if (\array_key_exists('brokenIndirectReferenceIds', $data) && $data['brokenIndirectReferenceIds'] !== null) {
-            $values_2 = array();
-            foreach ($data['brokenIndirectReferenceIds'] as $value_2) {
-                $values_2[] = $value_2;
+            $values_3 = array();
+            foreach ($data['brokenIndirectReferenceIds'] as $value_3) {
+                $values_3[] = $value_3;
             }
-            $object->setBrokenIndirectReferenceIds($values_2);
+            $object->setBrokenIndirectReferenceIds($values_3);
         }
         elseif (\array_key_exists('brokenIndirectReferenceIds', $data) && $data['brokenIndirectReferenceIds'] === null) {
             $object->setBrokenIndirectReferenceIds(null);
@@ -112,31 +116,35 @@ class ListItemDetailNormalizer implements DenormalizerInterface, NormalizerInter
         $data['id'] = $object->getId();
         $data['contentSchemaId'] = $object->getContentSchemaId();
         if (null !== $object->getContent()) {
-            $data['content'] = $object->getContent();
+            $values = array();
+            foreach ($object->getContent() as $key => $value) {
+                $values[$key] = $value;
+            }
+            $data['content'] = $values;
         }
         if (null !== $object->getDisplayValues()) {
             $data['displayValues'] = $object->getDisplayValues();
         }
         if (null !== $object->getBrokenReferenceIds()) {
-            $values = array();
-            foreach ($object->getBrokenReferenceIds() as $value) {
-                $values[] = $value;
-            }
-            $data['brokenReferenceIds'] = $values;
-        }
-        if (null !== $object->getBrokenRelationTargetIds()) {
             $values_1 = array();
-            foreach ($object->getBrokenRelationTargetIds() as $value_1) {
+            foreach ($object->getBrokenReferenceIds() as $value_1) {
                 $values_1[] = $value_1;
             }
-            $data['brokenRelationTargetIds'] = $values_1;
+            $data['brokenReferenceIds'] = $values_1;
         }
-        if (null !== $object->getBrokenIndirectReferenceIds()) {
+        if (null !== $object->getBrokenRelationTargetIds()) {
             $values_2 = array();
-            foreach ($object->getBrokenIndirectReferenceIds() as $value_2) {
+            foreach ($object->getBrokenRelationTargetIds() as $value_2) {
                 $values_2[] = $value_2;
             }
-            $data['brokenIndirectReferenceIds'] = $values_2;
+            $data['brokenRelationTargetIds'] = $values_2;
+        }
+        if (null !== $object->getBrokenIndirectReferenceIds()) {
+            $values_3 = array();
+            foreach ($object->getBrokenIndirectReferenceIds() as $value_3) {
+                $values_3[] = $value_3;
+            }
+            $data['brokenIndirectReferenceIds'] = $values_3;
         }
         if (null !== $object->getAudit()) {
             $data['audit'] = $object->getAudit();

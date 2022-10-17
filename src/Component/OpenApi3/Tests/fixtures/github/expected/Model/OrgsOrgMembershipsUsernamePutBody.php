@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class OrgsOrgMembershipsUsernamePutBody
+class OrgsOrgMembershipsUsernamePutBody extends \ArrayObject
 {
     /**
     * The role to give the user in the organization. Can be one of:  

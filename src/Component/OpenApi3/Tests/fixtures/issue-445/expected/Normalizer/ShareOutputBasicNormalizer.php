@@ -43,33 +43,45 @@ class ShareOutputBasicNormalizer implements DenormalizerInterface, NormalizerInt
         }
         if (\array_key_exists('contentId', $data)) {
             $object->setContentId($data['contentId']);
+            unset($data['contentId']);
         }
         if (\array_key_exists('outputFormatId', $data)) {
             $object->setOutputFormatId($data['outputFormatId']);
+            unset($data['outputFormatId']);
         }
         if (\array_key_exists('viewUrl', $data) && $data['viewUrl'] !== null) {
             $object->setViewUrl($data['viewUrl']);
+            unset($data['viewUrl']);
         }
         elseif (\array_key_exists('viewUrl', $data) && $data['viewUrl'] === null) {
             $object->setViewUrl(null);
         }
         if (\array_key_exists('downloadUrl', $data) && $data['downloadUrl'] !== null) {
             $object->setDownloadUrl($data['downloadUrl']);
+            unset($data['downloadUrl']);
         }
         elseif (\array_key_exists('downloadUrl', $data) && $data['downloadUrl'] === null) {
             $object->setDownloadUrl(null);
         }
         if (\array_key_exists('detail', $data) && $data['detail'] !== null) {
             $object->setDetail($data['detail']);
+            unset($data['detail']);
         }
         elseif (\array_key_exists('detail', $data) && $data['detail'] === null) {
             $object->setDetail(null);
         }
         if (\array_key_exists('dynamicRendering', $data)) {
             $object->setDynamicRendering($data['dynamicRendering']);
+            unset($data['dynamicRendering']);
         }
         if (\array_key_exists('kind', $data)) {
             $object->setKind($data['kind']);
+            unset($data['kind']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -92,6 +104,11 @@ class ShareOutputBasicNormalizer implements DenormalizerInterface, NormalizerInt
         }
         $data['dynamicRendering'] = $object->getDynamicRendering();
         $data['kind'] = $object->getKind();
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
         return $data;
     }
 }

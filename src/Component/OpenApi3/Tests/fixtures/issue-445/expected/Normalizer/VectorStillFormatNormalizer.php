@@ -43,18 +43,26 @@ class VectorStillFormatNormalizer implements DenormalizerInterface, NormalizerIn
         }
         if (\array_key_exists('kind', $data)) {
             $object->setKind($data['kind']);
+            unset($data['kind']);
         }
         if (\array_key_exists('extension', $data) && $data['extension'] !== null) {
             $object->setExtension($data['extension']);
+            unset($data['extension']);
         }
         elseif (\array_key_exists('extension', $data) && $data['extension'] === null) {
             $object->setExtension(null);
         }
         if (\array_key_exists('resizeAction', $data) && $data['resizeAction'] !== null) {
             $object->setResizeAction($data['resizeAction']);
+            unset($data['resizeAction']);
         }
         elseif (\array_key_exists('resizeAction', $data) && $data['resizeAction'] === null) {
             $object->setResizeAction(null);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -70,6 +78,11 @@ class VectorStillFormatNormalizer implements DenormalizerInterface, NormalizerIn
         }
         if (null !== $object->getResizeAction()) {
             $data['resizeAction'] = $object->getResizeAction();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

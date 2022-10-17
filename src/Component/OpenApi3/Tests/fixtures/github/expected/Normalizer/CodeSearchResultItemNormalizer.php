@@ -47,39 +47,50 @@ class CodeSearchResultItemNormalizer implements DenormalizerInterface, Normalize
         }
         if (\array_key_exists('name', $data)) {
             $object->setName($data['name']);
+            unset($data['name']);
         }
         if (\array_key_exists('path', $data)) {
             $object->setPath($data['path']);
+            unset($data['path']);
         }
         if (\array_key_exists('sha', $data)) {
             $object->setSha($data['sha']);
+            unset($data['sha']);
         }
         if (\array_key_exists('url', $data)) {
             $object->setUrl($data['url']);
+            unset($data['url']);
         }
         if (\array_key_exists('git_url', $data)) {
             $object->setGitUrl($data['git_url']);
+            unset($data['git_url']);
         }
         if (\array_key_exists('html_url', $data)) {
             $object->setHtmlUrl($data['html_url']);
+            unset($data['html_url']);
         }
         if (\array_key_exists('repository', $data)) {
             $object->setRepository($this->denormalizer->denormalize($data['repository'], 'Github\\Model\\MinimalRepository', 'json', $context));
+            unset($data['repository']);
         }
         if (\array_key_exists('score', $data)) {
             $object->setScore($data['score']);
+            unset($data['score']);
         }
         if (\array_key_exists('file_size', $data)) {
             $object->setFileSize($data['file_size']);
+            unset($data['file_size']);
         }
         if (\array_key_exists('language', $data) && $data['language'] !== null) {
             $object->setLanguage($data['language']);
+            unset($data['language']);
         }
         elseif (\array_key_exists('language', $data) && $data['language'] === null) {
             $object->setLanguage(null);
         }
         if (\array_key_exists('last_modified_at', $data)) {
             $object->setLastModifiedAt(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['last_modified_at']));
+            unset($data['last_modified_at']);
         }
         if (\array_key_exists('line_numbers', $data)) {
             $values = array();
@@ -87,6 +98,7 @@ class CodeSearchResultItemNormalizer implements DenormalizerInterface, Normalize
                 $values[] = $value;
             }
             $object->setLineNumbers($values);
+            unset($data['line_numbers']);
         }
         if (\array_key_exists('text_matches', $data)) {
             $values_1 = array();
@@ -94,6 +106,12 @@ class CodeSearchResultItemNormalizer implements DenormalizerInterface, Normalize
                 $values_1[] = $this->denormalizer->denormalize($value_1, 'Github\\Model\\SearchResultTextMatchesItem', 'json', $context);
             }
             $object->setTextMatches($values_1);
+            unset($data['text_matches']);
+        }
+        foreach ($data as $key => $value_2) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_2;
+            }
         }
         return $object;
     }
@@ -133,6 +151,11 @@ class CodeSearchResultItemNormalizer implements DenormalizerInterface, Normalize
                 $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
             }
             $data['text_matches'] = $values_1;
+        }
+        foreach ($object as $key => $value_2) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_2;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\CodeSearchResultItemConstraint());

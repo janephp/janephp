@@ -43,6 +43,7 @@ class XmpMappingEntryConfigurationTagboxNormalizer implements DenormalizerInterf
         }
         if (\array_key_exists('kind', $data)) {
             $object->setKind($data['kind']);
+            unset($data['kind']);
         }
         if (\array_key_exists('keyFieldIds', $data)) {
             $values = array();
@@ -50,12 +51,20 @@ class XmpMappingEntryConfigurationTagboxNormalizer implements DenormalizerInterf
                 $values[] = $value;
             }
             $object->setKeyFieldIds($values);
+            unset($data['keyFieldIds']);
         }
         if (\array_key_exists('caseSensitive', $data)) {
             $object->setCaseSensitive($data['caseSensitive']);
+            unset($data['caseSensitive']);
         }
         if (\array_key_exists('includeAllSchemaChildren', $data)) {
             $object->setIncludeAllSchemaChildren($data['includeAllSchemaChildren']);
+            unset($data['includeAllSchemaChildren']);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
@@ -73,6 +82,11 @@ class XmpMappingEntryConfigurationTagboxNormalizer implements DenormalizerInterf
         $data['keyFieldIds'] = $values;
         $data['caseSensitive'] = $object->getCaseSensitive();
         $data['includeAllSchemaChildren'] = $object->getIncludeAllSchemaChildren();
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
+            }
+        }
         return $data;
     }
 }

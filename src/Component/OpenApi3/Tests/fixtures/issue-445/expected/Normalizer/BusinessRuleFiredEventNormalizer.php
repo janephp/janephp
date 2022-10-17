@@ -43,9 +43,11 @@ class BusinessRuleFiredEventNormalizer implements DenormalizerInterface, Normali
         }
         if (\array_key_exists('timestamp', $data)) {
             $object->setTimestamp(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['timestamp']));
+            unset($data['timestamp']);
         }
         if (\array_key_exists('kind', $data)) {
             $object->setKind($data['kind']);
+            unset($data['kind']);
         }
         if (\array_key_exists('details', $data) && $data['details'] !== null) {
             $values = array();
@@ -53,9 +55,15 @@ class BusinessRuleFiredEventNormalizer implements DenormalizerInterface, Normali
                 $values[] = $this->denormalizer->denormalize($value, 'PicturePark\\API\\Model\\BusinessRuleFiredEventDetail', 'json', $context);
             }
             $object->setDetails($values);
+            unset($data['details']);
         }
         elseif (\array_key_exists('details', $data) && $data['details'] === null) {
             $object->setDetails(null);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
@@ -73,6 +81,11 @@ class BusinessRuleFiredEventNormalizer implements DenormalizerInterface, Normali
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data['details'] = $values;
+        }
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
+            }
         }
         return $data;
     }

@@ -43,21 +43,32 @@ class AccessCountriesResponseCountryAccessItemCreditsafeConnectDirectorReportsIt
         }
         if (\array_key_exists('countryName', $data)) {
             $object->setCountryName($data['countryName']);
+            unset($data['countryName']);
         }
         if (\array_key_exists('countryIso2', $data)) {
             $object->setCountryIso2($data['countryIso2']);
+            unset($data['countryIso2']);
         }
         if (\array_key_exists('startDate', $data)) {
             $object->setStartDate($data['startDate']);
+            unset($data['startDate']);
         }
         if (\array_key_exists('expireDate', $data)) {
             $object->setExpireDate($data['expireDate']);
+            unset($data['expireDate']);
         }
         if (\array_key_exists('paid', $data)) {
             $object->setPaid($data['paid']);
+            unset($data['paid']);
         }
         if (\array_key_exists('used', $data)) {
             $object->setUsed($data['used']);
+            unset($data['used']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -84,6 +95,11 @@ class AccessCountriesResponseCountryAccessItemCreditsafeConnectDirectorReportsIt
         }
         if (null !== $object->getUsed()) {
             $data['used'] = $object->getUsed();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

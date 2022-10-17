@@ -2,7 +2,7 @@
 
 namespace CreditSafe\API\Model;
 
-class MonitoringPortfoliosPortfolioIdEventRulesCountryCodePutBodyItem
+class MonitoringPortfoliosPortfolioIdEventRulesCountryCodePutBodyItem extends \ArrayObject
 {
     /**
      * 

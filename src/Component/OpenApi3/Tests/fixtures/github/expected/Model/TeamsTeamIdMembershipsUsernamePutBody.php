@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class TeamsTeamIdMembershipsUsernamePutBody
+class TeamsTeamIdMembershipsUsernamePutBody extends \ArrayObject
 {
     /**
     * The role that this user should have in the team. Can be one of:  

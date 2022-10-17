@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class InvalidChangeCommandSchemaChangeInvalidException
+class InvalidChangeCommandSchemaChangeInvalidException extends \ArrayObject
 {
     /**
      * 

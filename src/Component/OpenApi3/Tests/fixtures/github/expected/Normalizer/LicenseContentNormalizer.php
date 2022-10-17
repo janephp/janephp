@@ -47,54 +47,72 @@ class LicenseContentNormalizer implements DenormalizerInterface, NormalizerInter
         }
         if (\array_key_exists('name', $data)) {
             $object->setName($data['name']);
+            unset($data['name']);
         }
         if (\array_key_exists('path', $data)) {
             $object->setPath($data['path']);
+            unset($data['path']);
         }
         if (\array_key_exists('sha', $data)) {
             $object->setSha($data['sha']);
+            unset($data['sha']);
         }
         if (\array_key_exists('size', $data)) {
             $object->setSize($data['size']);
+            unset($data['size']);
         }
         if (\array_key_exists('url', $data)) {
             $object->setUrl($data['url']);
+            unset($data['url']);
         }
         if (\array_key_exists('html_url', $data) && $data['html_url'] !== null) {
             $object->setHtmlUrl($data['html_url']);
+            unset($data['html_url']);
         }
         elseif (\array_key_exists('html_url', $data) && $data['html_url'] === null) {
             $object->setHtmlUrl(null);
         }
         if (\array_key_exists('git_url', $data) && $data['git_url'] !== null) {
             $object->setGitUrl($data['git_url']);
+            unset($data['git_url']);
         }
         elseif (\array_key_exists('git_url', $data) && $data['git_url'] === null) {
             $object->setGitUrl(null);
         }
         if (\array_key_exists('download_url', $data) && $data['download_url'] !== null) {
             $object->setDownloadUrl($data['download_url']);
+            unset($data['download_url']);
         }
         elseif (\array_key_exists('download_url', $data) && $data['download_url'] === null) {
             $object->setDownloadUrl(null);
         }
         if (\array_key_exists('type', $data)) {
             $object->setType($data['type']);
+            unset($data['type']);
         }
         if (\array_key_exists('content', $data)) {
             $object->setContent($data['content']);
+            unset($data['content']);
         }
         if (\array_key_exists('encoding', $data)) {
             $object->setEncoding($data['encoding']);
+            unset($data['encoding']);
         }
         if (\array_key_exists('_links', $data)) {
             $object->setLinks($this->denormalizer->denormalize($data['_links'], 'Github\\Model\\LicenseContentLinks', 'json', $context));
+            unset($data['_links']);
         }
         if (\array_key_exists('license', $data) && $data['license'] !== null) {
             $object->setLicense($this->denormalizer->denormalize($data['license'], 'Github\\Model\\LicenseContentLicense', 'json', $context));
+            unset($data['license']);
         }
         elseif (\array_key_exists('license', $data) && $data['license'] === null) {
             $object->setLicense(null);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -117,6 +135,11 @@ class LicenseContentNormalizer implements DenormalizerInterface, NormalizerInter
         $data['encoding'] = $object->getEncoding();
         $data['_links'] = $this->normalizer->normalize($object->getLinks(), 'json', $context);
         $data['license'] = $this->normalizer->normalize($object->getLicense(), 'json', $context);
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\LicenseContentConstraint());
             $context['skip_validation'] = true;

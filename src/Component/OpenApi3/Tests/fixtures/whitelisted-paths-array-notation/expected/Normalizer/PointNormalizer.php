@@ -43,6 +43,7 @@ class PointNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         }
         if (\array_key_exists('type', $data)) {
             $object->setType($data['type']);
+            unset($data['type']);
         }
         if (\array_key_exists('coordinates', $data)) {
             $values = array();
@@ -50,6 +51,12 @@ class PointNormalizer implements DenormalizerInterface, NormalizerInterface, Den
                 $values[] = $value;
             }
             $object->setCoordinates($values);
+            unset($data['coordinates']);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
@@ -65,6 +72,11 @@ class PointNormalizer implements DenormalizerInterface, NormalizerInterface, Den
             $values[] = $value;
         }
         $data['coordinates'] = $values;
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
+            }
+        }
         return $data;
     }
 }

@@ -43,27 +43,40 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemC
         }
         if (\array_key_exists('addressConflict', $data)) {
             $object->setAddressConflict($data['addressConflict']);
+            unset($data['addressConflict']);
         }
         if (\array_key_exists('citizenshipConflict', $data)) {
             $object->setCitizenshipConflict($data['citizenshipConflict']);
+            unset($data['citizenshipConflict']);
         }
         if (\array_key_exists('countryConflict', $data)) {
             $object->setCountryConflict($data['countryConflict']);
+            unset($data['countryConflict']);
         }
         if (\array_key_exists('dobConflict', $data)) {
             $object->setDobConflict($data['dobConflict']);
+            unset($data['dobConflict']);
         }
         if (\array_key_exists('entityTypeConflict', $data)) {
             $object->setEntityTypeConflict($data['entityTypeConflict']);
+            unset($data['entityTypeConflict']);
         }
         if (\array_key_exists('genderConflict', $data)) {
             $object->setGenderConflict($data['genderConflict']);
+            unset($data['genderConflict']);
         }
         if (\array_key_exists('idConflict', $data)) {
             $object->setIdConflict($data['idConflict']);
+            unset($data['idConflict']);
         }
         if (\array_key_exists('phoneConflict', $data)) {
             $object->setPhoneConflict($data['phoneConflict']);
+            unset($data['phoneConflict']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -96,6 +109,11 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemC
         }
         if (null !== $object->getPhoneConflict()) {
             $data['phoneConflict'] = $object->getPhoneConflict();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

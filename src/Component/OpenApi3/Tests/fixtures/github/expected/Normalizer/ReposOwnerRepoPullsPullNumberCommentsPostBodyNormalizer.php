@@ -47,30 +47,44 @@ class ReposOwnerRepoPullsPullNumberCommentsPostBodyNormalizer implements Denorma
         }
         if (\array_key_exists('body', $data)) {
             $object->setBody($data['body']);
+            unset($data['body']);
         }
         if (\array_key_exists('commit_id', $data)) {
             $object->setCommitId($data['commit_id']);
+            unset($data['commit_id']);
         }
         if (\array_key_exists('path', $data)) {
             $object->setPath($data['path']);
+            unset($data['path']);
         }
         if (\array_key_exists('position', $data)) {
             $object->setPosition($data['position']);
+            unset($data['position']);
         }
         if (\array_key_exists('side', $data)) {
             $object->setSide($data['side']);
+            unset($data['side']);
         }
         if (\array_key_exists('line', $data)) {
             $object->setLine($data['line']);
+            unset($data['line']);
         }
         if (\array_key_exists('start_line', $data)) {
             $object->setStartLine($data['start_line']);
+            unset($data['start_line']);
         }
         if (\array_key_exists('start_side', $data)) {
             $object->setStartSide($data['start_side']);
+            unset($data['start_side']);
         }
         if (\array_key_exists('in_reply_to', $data)) {
             $object->setInReplyTo($data['in_reply_to']);
+            unset($data['in_reply_to']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -102,6 +116,11 @@ class ReposOwnerRepoPullsPullNumberCommentsPostBodyNormalizer implements Denorma
         }
         if (null !== $object->getInReplyTo()) {
             $data['in_reply_to'] = $object->getInReplyTo();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ReposOwnerRepoPullsPullNumberCommentsPostBodyConstraint());

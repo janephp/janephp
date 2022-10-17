@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class SchemaInfoNotFoundException
+class SchemaInfoNotFoundException extends \ArrayObject
 {
     /**
      * 

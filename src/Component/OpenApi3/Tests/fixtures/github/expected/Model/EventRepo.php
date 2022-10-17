@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class EventRepo
+class EventRepo extends \ArrayObject
 {
     /**
      * 

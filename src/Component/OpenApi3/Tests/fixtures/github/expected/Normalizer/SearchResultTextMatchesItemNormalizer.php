@@ -47,18 +47,22 @@ class SearchResultTextMatchesItemNormalizer implements DenormalizerInterface, No
         }
         if (\array_key_exists('object_url', $data)) {
             $object->setObjectUrl($data['object_url']);
+            unset($data['object_url']);
         }
         if (\array_key_exists('object_type', $data) && $data['object_type'] !== null) {
             $object->setObjectType($data['object_type']);
+            unset($data['object_type']);
         }
         elseif (\array_key_exists('object_type', $data) && $data['object_type'] === null) {
             $object->setObjectType(null);
         }
         if (\array_key_exists('property', $data)) {
             $object->setProperty($data['property']);
+            unset($data['property']);
         }
         if (\array_key_exists('fragment', $data)) {
             $object->setFragment($data['fragment']);
+            unset($data['fragment']);
         }
         if (\array_key_exists('matches', $data)) {
             $values = array();
@@ -66,6 +70,12 @@ class SearchResultTextMatchesItemNormalizer implements DenormalizerInterface, No
                 $values[] = $this->denormalizer->denormalize($value, 'Github\\Model\\SearchResultTextMatchesItemMatchesItem', 'json', $context);
             }
             $object->setMatches($values);
+            unset($data['matches']);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
@@ -93,6 +103,11 @@ class SearchResultTextMatchesItemNormalizer implements DenormalizerInterface, No
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data['matches'] = $values;
+        }
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\SearchResultTextMatchesItemConstraint());

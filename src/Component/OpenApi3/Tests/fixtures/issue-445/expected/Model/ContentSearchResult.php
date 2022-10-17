@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class ContentSearchResult
+class ContentSearchResult extends \ArrayObject
 {
     /**
      * The total number of matching documents.

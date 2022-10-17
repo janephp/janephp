@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class CheckSuitePreferencePreferencesAutoTriggerChecksItem
+class CheckSuitePreferencePreferencesAutoTriggerChecksItem extends \ArrayObject
 {
     /**
      * 

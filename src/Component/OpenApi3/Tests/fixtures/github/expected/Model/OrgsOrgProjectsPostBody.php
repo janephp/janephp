@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class OrgsOrgProjectsPostBody
+class OrgsOrgProjectsPostBody extends \ArrayObject
 {
     /**
      * The name of the project.

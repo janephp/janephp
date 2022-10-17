@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoGitCommitsPostBodyCommitter
+class ReposOwnerRepoGitCommitsPostBodyCommitter extends \ArrayObject
 {
     /**
      * The name of the author (or committer) of the commit

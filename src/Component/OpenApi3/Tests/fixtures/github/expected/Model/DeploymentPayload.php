@@ -2,6 +2,6 @@
 
 namespace Github\Model;
 
-class DeploymentPayload
+class DeploymentPayload extends \ArrayObject
 {
 }

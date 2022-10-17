@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class BusinessProcessDefinitionNotFoundException
+class BusinessProcessDefinitionNotFoundException extends \ArrayObject
 {
     /**
      * 

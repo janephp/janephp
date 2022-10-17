@@ -47,9 +47,16 @@ class ReposOwnerRepoActionsSecretsSecretNamePutBodyNormalizer implements Denorma
         }
         if (\array_key_exists('encrypted_value', $data)) {
             $object->setEncryptedValue($data['encrypted_value']);
+            unset($data['encrypted_value']);
         }
         if (\array_key_exists('key_id', $data)) {
             $object->setKeyId($data['key_id']);
+            unset($data['key_id']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -64,6 +71,11 @@ class ReposOwnerRepoActionsSecretsSecretNamePutBodyNormalizer implements Denorma
         }
         if (null !== $object->getKeyId()) {
             $data['key_id'] = $object->getKeyId();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ReposOwnerRepoActionsSecretsSecretNamePutBodyConstraint());

@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class EnvironmentNotAvailableException
+class EnvironmentNotAvailableException extends \ArrayObject
 {
     /**
      * 

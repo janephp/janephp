@@ -43,21 +43,32 @@ class VideoNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         }
         if (\array_key_exists('type', $data)) {
             $object->setType($data['type']);
+            unset($data['type']);
         }
         if (\array_key_exists('preview_image_url', $data)) {
             $object->setPreviewImageUrl($data['preview_image_url']);
+            unset($data['preview_image_url']);
         }
         if (\array_key_exists('duration_ms', $data)) {
             $object->setDurationMs($data['duration_ms']);
+            unset($data['duration_ms']);
         }
         if (\array_key_exists('media_key', $data)) {
             $object->setMediaKey($data['media_key']);
+            unset($data['media_key']);
         }
         if (\array_key_exists('height', $data)) {
             $object->setHeight($data['height']);
+            unset($data['height']);
         }
         if (\array_key_exists('width', $data)) {
             $object->setWidth($data['width']);
+            unset($data['width']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -79,6 +90,11 @@ class VideoNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         $data['media_key'] = $object->getMediaKey();
         $data['height'] = $object->getHeight();
         $data['width'] = $object->getWidth();
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
         return $data;
     }
 }

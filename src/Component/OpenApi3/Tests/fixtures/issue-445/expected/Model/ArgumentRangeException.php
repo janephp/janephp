@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class ArgumentRangeException
+class ArgumentRangeException extends \ArrayObject
 {
     /**
      * 

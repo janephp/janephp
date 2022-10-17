@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class Feed
+class Feed extends \ArrayObject
 {
     /**
      * 

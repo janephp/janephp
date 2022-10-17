@@ -47,6 +47,7 @@ class AuthorizationsClientsClientIdFingerprintPutBodyNormalizer implements Denor
         }
         if (\array_key_exists('client_secret', $data)) {
             $object->setClientSecret($data['client_secret']);
+            unset($data['client_secret']);
         }
         if (\array_key_exists('scopes', $data) && $data['scopes'] !== null) {
             $values = array();
@@ -54,15 +55,23 @@ class AuthorizationsClientsClientIdFingerprintPutBodyNormalizer implements Denor
                 $values[] = $value;
             }
             $object->setScopes($values);
+            unset($data['scopes']);
         }
         elseif (\array_key_exists('scopes', $data) && $data['scopes'] === null) {
             $object->setScopes(null);
         }
         if (\array_key_exists('note', $data)) {
             $object->setNote($data['note']);
+            unset($data['note']);
         }
         if (\array_key_exists('note_url', $data)) {
             $object->setNoteUrl($data['note_url']);
+            unset($data['note_url']);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
@@ -85,6 +94,11 @@ class AuthorizationsClientsClientIdFingerprintPutBodyNormalizer implements Denor
         }
         if (null !== $object->getNoteUrl()) {
             $data['note_url'] = $object->getNoteUrl();
+        }
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\AuthorizationsClientsClientIdFingerprintPutBodyConstraint());

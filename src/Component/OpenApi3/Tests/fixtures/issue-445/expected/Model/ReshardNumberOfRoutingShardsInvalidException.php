@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class ReshardNumberOfRoutingShardsInvalidException
+class ReshardNumberOfRoutingShardsInvalidException extends \ArrayObject
 {
     /**
      * 

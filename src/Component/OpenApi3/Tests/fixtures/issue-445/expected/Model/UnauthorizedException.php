@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class UnauthorizedException
+class UnauthorizedException extends \ArrayObject
 {
     /**
      * 

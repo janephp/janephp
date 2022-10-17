@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class IllegalAuthorizationStateTransitionException
+class IllegalAuthorizationStateTransitionException extends \ArrayObject
 {
     /**
      * 

@@ -2,7 +2,7 @@
 
 namespace CreditSafe\API\Model;
 
-class InvalidTokenError
+class InvalidTokenError extends \ArrayObject
 {
     /**
      * 

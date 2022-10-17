@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoGitTreesPostBody
+class ReposOwnerRepoGitTreesPostBody extends \ArrayObject
 {
     /**
      * Objects (of `path`, `mode`, `type`, and `sha`) specifying a tree structure.

@@ -43,9 +43,11 @@ class ContentDownloadEventNormalizer implements DenormalizerInterface, Normalize
         }
         if (\array_key_exists('timestamp', $data)) {
             $object->setTimestamp(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['timestamp']));
+            unset($data['timestamp']);
         }
         if (\array_key_exists('kind', $data)) {
             $object->setKind($data['kind']);
+            unset($data['kind']);
         }
         if (\array_key_exists('downloadInfos', $data) && $data['downloadInfos'] !== null) {
             $values = array();
@@ -53,24 +55,33 @@ class ContentDownloadEventNormalizer implements DenormalizerInterface, Normalize
                 $values[] = $this->denormalizer->denormalize($value, 'PicturePark\\API\\Model\\DownloadTrackingInfo', 'json', $context);
             }
             $object->setDownloadInfos($values);
+            unset($data['downloadInfos']);
         }
         elseif (\array_key_exists('downloadInfos', $data) && $data['downloadInfos'] === null) {
             $object->setDownloadInfos(null);
         }
         if (\array_key_exists('fileSize', $data)) {
             $object->setFileSize($data['fileSize']);
+            unset($data['fileSize']);
         }
         if (\array_key_exists('shareToken', $data) && $data['shareToken'] !== null) {
             $object->setShareToken($data['shareToken']);
+            unset($data['shareToken']);
         }
         elseif (\array_key_exists('shareToken', $data) && $data['shareToken'] === null) {
             $object->setShareToken(null);
         }
         if (\array_key_exists('range', $data) && $data['range'] !== null) {
             $object->setRange($data['range']);
+            unset($data['range']);
         }
         elseif (\array_key_exists('range', $data) && $data['range'] === null) {
             $object->setRange(null);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
@@ -97,6 +108,11 @@ class ContentDownloadEventNormalizer implements DenormalizerInterface, Normalize
         }
         if (null !== $object->getRange()) {
             $data['range'] = $object->getRange();
+        }
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
+            }
         }
         return $data;
     }

@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class UnableToDeleteDefaultUserRoleException
+class UnableToDeleteDefaultUserRoleException extends \ArrayObject
 {
     /**
      * 

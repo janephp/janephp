@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class Link
+class Link extends \ArrayObject
 {
     /**
      * 

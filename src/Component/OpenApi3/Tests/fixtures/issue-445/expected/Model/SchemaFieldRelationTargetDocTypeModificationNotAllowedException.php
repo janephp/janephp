@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class SchemaFieldRelationTargetDocTypeModificationNotAllowedException
+class SchemaFieldRelationTargetDocTypeModificationNotAllowedException extends \ArrayObject
 {
     /**
      * 

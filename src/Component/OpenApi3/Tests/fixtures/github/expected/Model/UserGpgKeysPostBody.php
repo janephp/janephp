@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class UserGpgKeysPostBody
+class UserGpgKeysPostBody extends \ArrayObject
 {
     /**
      * A GPG key in ASCII-armored format.

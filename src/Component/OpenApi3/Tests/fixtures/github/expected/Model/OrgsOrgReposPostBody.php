@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class OrgsOrgReposPostBody
+class OrgsOrgReposPostBody extends \ArrayObject
 {
     /**
      * The name of the repository.

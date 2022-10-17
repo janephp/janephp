@@ -2,7 +2,7 @@
 
 namespace Jane\OpenApi3\Tests\Expected\Model;
 
-class MentionEntity
+class MentionEntity extends \ArrayObject
 {
     /**
      * Index (zero-based) at which position this entity starts.

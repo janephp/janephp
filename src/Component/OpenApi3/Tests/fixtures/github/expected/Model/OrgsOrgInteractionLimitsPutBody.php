@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class OrgsOrgInteractionLimitsPutBody
+class OrgsOrgInteractionLimitsPutBody extends \ArrayObject
 {
     /**
      * Specifies the group of GitHub users who can comment, open issues, or create pull requests in public repositories for the given organization. Must be one of: `existing_users`, `contributors_only`, or `collaborators_only`.

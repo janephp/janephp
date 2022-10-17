@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class SchemaInheritanceFieldIndexDeviationException
+class SchemaInheritanceFieldIndexDeviationException extends \ArrayObject
 {
     /**
      * 

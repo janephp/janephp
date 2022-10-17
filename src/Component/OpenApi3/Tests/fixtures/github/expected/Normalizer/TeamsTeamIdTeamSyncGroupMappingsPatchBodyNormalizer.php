@@ -51,9 +51,16 @@ class TeamsTeamIdTeamSyncGroupMappingsPatchBodyNormalizer implements Denormalize
                 $values[] = $this->denormalizer->denormalize($value, 'Github\\Model\\TeamsTeamIdTeamSyncGroupMappingsPatchBodyGroupsItem', 'json', $context);
             }
             $object->setGroups($values);
+            unset($data['groups']);
         }
         if (\array_key_exists('synced_at', $data)) {
             $object->setSyncedAt($data['synced_at']);
+            unset($data['synced_at']);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
@@ -70,6 +77,11 @@ class TeamsTeamIdTeamSyncGroupMappingsPatchBodyNormalizer implements Denormalize
         $data['groups'] = $values;
         if (null !== $object->getSyncedAt()) {
             $data['synced_at'] = $object->getSyncedAt();
+        }
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\TeamsTeamIdTeamSyncGroupMappingsPatchBodyConstraint());

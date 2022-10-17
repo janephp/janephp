@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoCheckRunsPostBody
+class ReposOwnerRepoCheckRunsPostBody extends \ArrayObject
 {
     /**
      * The name of the check. For example, "code-coverage".

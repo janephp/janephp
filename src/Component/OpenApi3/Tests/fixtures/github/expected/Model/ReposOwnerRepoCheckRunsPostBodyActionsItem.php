@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoCheckRunsPostBodyActionsItem
+class ReposOwnerRepoCheckRunsPostBodyActionsItem extends \ArrayObject
 {
     /**
      * The text to be displayed on a button in the web UI. The maximum size is 20 characters.

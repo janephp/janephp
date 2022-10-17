@@ -43,24 +43,35 @@ class PdfFormatNormalizer implements DenormalizerInterface, NormalizerInterface,
         }
         if (\array_key_exists('kind', $data)) {
             $object->setKind($data['kind']);
+            unset($data['kind']);
         }
         if (\array_key_exists('jpegQuality', $data)) {
             $object->setJpegQuality($data['jpegQuality']);
+            unset($data['jpegQuality']);
         }
         if (\array_key_exists('fastWebView', $data)) {
             $object->setFastWebView($data['fastWebView']);
+            unset($data['fastWebView']);
         }
         if (\array_key_exists('reduceFileSize', $data)) {
             $object->setReduceFileSize($data['reduceFileSize']);
+            unset($data['reduceFileSize']);
         }
         if (\array_key_exists('extension', $data) && $data['extension'] !== null) {
             $object->setExtension($data['extension']);
+            unset($data['extension']);
         }
         elseif (\array_key_exists('extension', $data) && $data['extension'] === null) {
             $object->setExtension(null);
         }
         if (\array_key_exists('extractFullText', $data)) {
             $object->setExtractFullText($data['extractFullText']);
+            unset($data['extractFullText']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -85,6 +96,11 @@ class PdfFormatNormalizer implements DenormalizerInterface, NormalizerInterface,
         }
         if (null !== $object->getExtractFullText()) {
             $data['extractFullText'] = $object->getExtractFullText();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

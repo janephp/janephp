@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class BranchProtectionAllowForcePushes
+class BranchProtectionAllowForcePushes extends \ArrayObject
 {
     /**
      * 

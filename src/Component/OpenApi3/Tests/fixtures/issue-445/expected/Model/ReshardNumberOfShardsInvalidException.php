@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class ReshardNumberOfShardsInvalidException
+class ReshardNumberOfShardsInvalidException extends \ArrayObject
 {
     /**
      * 

@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class MinimalRepositoryOwner
+class MinimalRepositoryOwner extends \ArrayObject
 {
     /**
      * 

@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class PullRequestReviewComment
+class PullRequestReviewComment extends \ArrayObject
 {
     /**
      * URL for the pull request review comment

@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class ContentReferencesContentReferenceIdAttachmentsPostBody
+class ContentReferencesContentReferenceIdAttachmentsPostBody extends \ArrayObject
 {
     /**
      * The title of the attachment

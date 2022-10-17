@@ -43,6 +43,12 @@ class DetailedPlaceFieldsNormalizer implements DenormalizerInterface, Normalizer
         }
         if (\array_key_exists('geo', $data)) {
             $object->setGeo($this->denormalizer->denormalize($data['geo'], 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Model\\Geo', 'json', $context));
+            unset($data['geo']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -54,6 +60,11 @@ class DetailedPlaceFieldsNormalizer implements DenormalizerInterface, Normalizer
         $data = array();
         if (null !== $object->getGeo()) {
             $data['geo'] = $this->normalizer->normalize($object->getGeo(), 'json', $context);
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

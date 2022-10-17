@@ -47,60 +47,73 @@ class TopicSearchResultItemNormalizer implements DenormalizerInterface, Normaliz
         }
         if (\array_key_exists('name', $data)) {
             $object->setName($data['name']);
+            unset($data['name']);
         }
         if (\array_key_exists('display_name', $data) && $data['display_name'] !== null) {
             $object->setDisplayName($data['display_name']);
+            unset($data['display_name']);
         }
         elseif (\array_key_exists('display_name', $data) && $data['display_name'] === null) {
             $object->setDisplayName(null);
         }
         if (\array_key_exists('short_description', $data) && $data['short_description'] !== null) {
             $object->setShortDescription($data['short_description']);
+            unset($data['short_description']);
         }
         elseif (\array_key_exists('short_description', $data) && $data['short_description'] === null) {
             $object->setShortDescription(null);
         }
         if (\array_key_exists('description', $data) && $data['description'] !== null) {
             $object->setDescription($data['description']);
+            unset($data['description']);
         }
         elseif (\array_key_exists('description', $data) && $data['description'] === null) {
             $object->setDescription(null);
         }
         if (\array_key_exists('created_by', $data) && $data['created_by'] !== null) {
             $object->setCreatedBy($data['created_by']);
+            unset($data['created_by']);
         }
         elseif (\array_key_exists('created_by', $data) && $data['created_by'] === null) {
             $object->setCreatedBy(null);
         }
         if (\array_key_exists('released', $data) && $data['released'] !== null) {
             $object->setReleased($data['released']);
+            unset($data['released']);
         }
         elseif (\array_key_exists('released', $data) && $data['released'] === null) {
             $object->setReleased(null);
         }
         if (\array_key_exists('created_at', $data)) {
             $object->setCreatedAt(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['created_at']));
+            unset($data['created_at']);
         }
         if (\array_key_exists('updated_at', $data)) {
             $object->setUpdatedAt(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['updated_at']));
+            unset($data['updated_at']);
         }
         if (\array_key_exists('featured', $data)) {
             $object->setFeatured($data['featured']);
+            unset($data['featured']);
         }
         if (\array_key_exists('curated', $data)) {
             $object->setCurated($data['curated']);
+            unset($data['curated']);
         }
         if (\array_key_exists('score', $data)) {
             $object->setScore($data['score']);
+            unset($data['score']);
         }
         if (\array_key_exists('repository_count', $data) && $data['repository_count'] !== null) {
             $object->setRepositoryCount($data['repository_count']);
+            unset($data['repository_count']);
         }
         elseif (\array_key_exists('repository_count', $data) && $data['repository_count'] === null) {
             $object->setRepositoryCount(null);
         }
         if (\array_key_exists('logo_url', $data) && $data['logo_url'] !== null) {
             $object->setLogoUrl($data['logo_url']);
+            unset($data['logo_url']);
         }
         elseif (\array_key_exists('logo_url', $data) && $data['logo_url'] === null) {
             $object->setLogoUrl(null);
@@ -111,6 +124,7 @@ class TopicSearchResultItemNormalizer implements DenormalizerInterface, Normaliz
                 $values[] = $this->denormalizer->denormalize($value, 'Github\\Model\\SearchResultTextMatchesItem', 'json', $context);
             }
             $object->setTextMatches($values);
+            unset($data['text_matches']);
         }
         if (\array_key_exists('related', $data) && $data['related'] !== null) {
             $values_1 = array();
@@ -118,6 +132,7 @@ class TopicSearchResultItemNormalizer implements DenormalizerInterface, Normaliz
                 $values_1[] = $this->denormalizer->denormalize($value_1, 'Github\\Model\\TopicSearchResultItemRelatedItem', 'json', $context);
             }
             $object->setRelated($values_1);
+            unset($data['related']);
         }
         elseif (\array_key_exists('related', $data) && $data['related'] === null) {
             $object->setRelated(null);
@@ -128,9 +143,15 @@ class TopicSearchResultItemNormalizer implements DenormalizerInterface, Normaliz
                 $values_2[] = $this->denormalizer->denormalize($value_2, 'Github\\Model\\TopicSearchResultItemAliasesItem', 'json', $context);
             }
             $object->setAliases($values_2);
+            unset($data['aliases']);
         }
         elseif (\array_key_exists('aliases', $data) && $data['aliases'] === null) {
             $object->setAliases(null);
+        }
+        foreach ($data as $key => $value_3) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_3;
+            }
         }
         return $object;
     }
@@ -177,6 +198,11 @@ class TopicSearchResultItemNormalizer implements DenormalizerInterface, Normaliz
                 $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
             }
             $data['aliases'] = $values_2;
+        }
+        foreach ($object as $key => $value_3) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_3;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\TopicSearchResultItemConstraint());

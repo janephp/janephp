@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBody
+class ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBody extends \ArrayObject
 {
     /**
      * The body text of the pull request review.

@@ -47,27 +47,37 @@ class CommunityProfileNormalizer implements DenormalizerInterface, NormalizerInt
         }
         if (\array_key_exists('health_percentage', $data)) {
             $object->setHealthPercentage($data['health_percentage']);
+            unset($data['health_percentage']);
         }
         if (\array_key_exists('description', $data) && $data['description'] !== null) {
             $object->setDescription($data['description']);
+            unset($data['description']);
         }
         elseif (\array_key_exists('description', $data) && $data['description'] === null) {
             $object->setDescription(null);
         }
         if (\array_key_exists('documentation', $data) && $data['documentation'] !== null) {
             $object->setDocumentation($data['documentation']);
+            unset($data['documentation']);
         }
         elseif (\array_key_exists('documentation', $data) && $data['documentation'] === null) {
             $object->setDocumentation(null);
         }
         if (\array_key_exists('files', $data)) {
             $object->setFiles($this->denormalizer->denormalize($data['files'], 'Github\\Model\\CommunityProfileFiles', 'json', $context));
+            unset($data['files']);
         }
         if (\array_key_exists('updated_at', $data) && $data['updated_at'] !== null) {
             $object->setUpdatedAt(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['updated_at']));
+            unset($data['updated_at']);
         }
         elseif (\array_key_exists('updated_at', $data) && $data['updated_at'] === null) {
             $object->setUpdatedAt(null);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -82,6 +92,11 @@ class CommunityProfileNormalizer implements DenormalizerInterface, NormalizerInt
         $data['documentation'] = $object->getDocumentation();
         $data['files'] = $this->normalizer->normalize($object->getFiles(), 'json', $context);
         $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\CommunityProfileConstraint());
             $context['skip_validation'] = true;

@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class BusinessRuleActionInvalidExecutionScopeException
+class BusinessRuleActionInvalidExecutionScopeException extends \ArrayObject
 {
     /**
      * 

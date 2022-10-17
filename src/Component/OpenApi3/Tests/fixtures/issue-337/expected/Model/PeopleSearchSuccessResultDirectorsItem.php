@@ -2,7 +2,7 @@
 
 namespace CreditSafe\API\Model;
 
-class PeopleSearchSuccessResultDirectorsItem
+class PeopleSearchSuccessResultDirectorsItem extends \ArrayObject
 {
     /**
      * 

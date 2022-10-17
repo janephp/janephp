@@ -2,7 +2,7 @@
 
 namespace CreditSafe\API\Model;
 
-class GuidSuccessResponseGUIDListItem
+class GuidSuccessResponseGUIDListItem extends \ArrayObject
 {
     /**
      * 

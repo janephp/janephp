@@ -47,12 +47,20 @@ class MarkdownPostBodyNormalizer implements DenormalizerInterface, NormalizerInt
         }
         if (\array_key_exists('text', $data)) {
             $object->setText($data['text']);
+            unset($data['text']);
         }
         if (\array_key_exists('mode', $data)) {
             $object->setMode($data['mode']);
+            unset($data['mode']);
         }
         if (\array_key_exists('context', $data)) {
             $object->setContext($data['context']);
+            unset($data['context']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -68,6 +76,11 @@ class MarkdownPostBodyNormalizer implements DenormalizerInterface, NormalizerInt
         }
         if (null !== $object->getContext()) {
             $data['context'] = $object->getContext();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\MarkdownPostBodyConstraint());

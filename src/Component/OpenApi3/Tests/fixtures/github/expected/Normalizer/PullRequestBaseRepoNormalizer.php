@@ -47,243 +47,318 @@ class PullRequestBaseRepoNormalizer implements DenormalizerInterface, Normalizer
         }
         if (\array_key_exists('archive_url', $data)) {
             $object->setArchiveUrl($data['archive_url']);
+            unset($data['archive_url']);
         }
         if (\array_key_exists('assignees_url', $data)) {
             $object->setAssigneesUrl($data['assignees_url']);
+            unset($data['assignees_url']);
         }
         if (\array_key_exists('blobs_url', $data)) {
             $object->setBlobsUrl($data['blobs_url']);
+            unset($data['blobs_url']);
         }
         if (\array_key_exists('branches_url', $data)) {
             $object->setBranchesUrl($data['branches_url']);
+            unset($data['branches_url']);
         }
         if (\array_key_exists('collaborators_url', $data)) {
             $object->setCollaboratorsUrl($data['collaborators_url']);
+            unset($data['collaborators_url']);
         }
         if (\array_key_exists('comments_url', $data)) {
             $object->setCommentsUrl($data['comments_url']);
+            unset($data['comments_url']);
         }
         if (\array_key_exists('commits_url', $data)) {
             $object->setCommitsUrl($data['commits_url']);
+            unset($data['commits_url']);
         }
         if (\array_key_exists('compare_url', $data)) {
             $object->setCompareUrl($data['compare_url']);
+            unset($data['compare_url']);
         }
         if (\array_key_exists('contents_url', $data)) {
             $object->setContentsUrl($data['contents_url']);
+            unset($data['contents_url']);
         }
         if (\array_key_exists('contributors_url', $data)) {
             $object->setContributorsUrl($data['contributors_url']);
+            unset($data['contributors_url']);
         }
         if (\array_key_exists('deployments_url', $data)) {
             $object->setDeploymentsUrl($data['deployments_url']);
+            unset($data['deployments_url']);
         }
         if (\array_key_exists('description', $data) && $data['description'] !== null) {
             $object->setDescription($data['description']);
+            unset($data['description']);
         }
         elseif (\array_key_exists('description', $data) && $data['description'] === null) {
             $object->setDescription(null);
         }
         if (\array_key_exists('downloads_url', $data)) {
             $object->setDownloadsUrl($data['downloads_url']);
+            unset($data['downloads_url']);
         }
         if (\array_key_exists('events_url', $data)) {
             $object->setEventsUrl($data['events_url']);
+            unset($data['events_url']);
         }
         if (\array_key_exists('fork', $data)) {
             $object->setFork($data['fork']);
+            unset($data['fork']);
         }
         if (\array_key_exists('forks_url', $data)) {
             $object->setForksUrl($data['forks_url']);
+            unset($data['forks_url']);
         }
         if (\array_key_exists('full_name', $data)) {
             $object->setFullName($data['full_name']);
+            unset($data['full_name']);
         }
         if (\array_key_exists('git_commits_url', $data)) {
             $object->setGitCommitsUrl($data['git_commits_url']);
+            unset($data['git_commits_url']);
         }
         if (\array_key_exists('git_refs_url', $data)) {
             $object->setGitRefsUrl($data['git_refs_url']);
+            unset($data['git_refs_url']);
         }
         if (\array_key_exists('git_tags_url', $data)) {
             $object->setGitTagsUrl($data['git_tags_url']);
+            unset($data['git_tags_url']);
         }
         if (\array_key_exists('hooks_url', $data)) {
             $object->setHooksUrl($data['hooks_url']);
+            unset($data['hooks_url']);
         }
         if (\array_key_exists('html_url', $data)) {
             $object->setHtmlUrl($data['html_url']);
+            unset($data['html_url']);
         }
         if (\array_key_exists('id', $data)) {
             $object->setId($data['id']);
+            unset($data['id']);
         }
         if (\array_key_exists('node_id', $data)) {
             $object->setNodeId($data['node_id']);
+            unset($data['node_id']);
         }
         if (\array_key_exists('issue_comment_url', $data)) {
             $object->setIssueCommentUrl($data['issue_comment_url']);
+            unset($data['issue_comment_url']);
         }
         if (\array_key_exists('issue_events_url', $data)) {
             $object->setIssueEventsUrl($data['issue_events_url']);
+            unset($data['issue_events_url']);
         }
         if (\array_key_exists('issues_url', $data)) {
             $object->setIssuesUrl($data['issues_url']);
+            unset($data['issues_url']);
         }
         if (\array_key_exists('keys_url', $data)) {
             $object->setKeysUrl($data['keys_url']);
+            unset($data['keys_url']);
         }
         if (\array_key_exists('labels_url', $data)) {
             $object->setLabelsUrl($data['labels_url']);
+            unset($data['labels_url']);
         }
         if (\array_key_exists('languages_url', $data)) {
             $object->setLanguagesUrl($data['languages_url']);
+            unset($data['languages_url']);
         }
         if (\array_key_exists('merges_url', $data)) {
             $object->setMergesUrl($data['merges_url']);
+            unset($data['merges_url']);
         }
         if (\array_key_exists('milestones_url', $data)) {
             $object->setMilestonesUrl($data['milestones_url']);
+            unset($data['milestones_url']);
         }
         if (\array_key_exists('name', $data)) {
             $object->setName($data['name']);
+            unset($data['name']);
         }
         if (\array_key_exists('notifications_url', $data)) {
             $object->setNotificationsUrl($data['notifications_url']);
+            unset($data['notifications_url']);
         }
         if (\array_key_exists('owner', $data)) {
             $object->setOwner($this->denormalizer->denormalize($data['owner'], 'Github\\Model\\PullRequestBaseRepoOwner', 'json', $context));
+            unset($data['owner']);
         }
         if (\array_key_exists('private', $data)) {
             $object->setPrivate($data['private']);
+            unset($data['private']);
         }
         if (\array_key_exists('pulls_url', $data)) {
             $object->setPullsUrl($data['pulls_url']);
+            unset($data['pulls_url']);
         }
         if (\array_key_exists('releases_url', $data)) {
             $object->setReleasesUrl($data['releases_url']);
+            unset($data['releases_url']);
         }
         if (\array_key_exists('stargazers_url', $data)) {
             $object->setStargazersUrl($data['stargazers_url']);
+            unset($data['stargazers_url']);
         }
         if (\array_key_exists('statuses_url', $data)) {
             $object->setStatusesUrl($data['statuses_url']);
+            unset($data['statuses_url']);
         }
         if (\array_key_exists('subscribers_url', $data)) {
             $object->setSubscribersUrl($data['subscribers_url']);
+            unset($data['subscribers_url']);
         }
         if (\array_key_exists('subscription_url', $data)) {
             $object->setSubscriptionUrl($data['subscription_url']);
+            unset($data['subscription_url']);
         }
         if (\array_key_exists('tags_url', $data)) {
             $object->setTagsUrl($data['tags_url']);
+            unset($data['tags_url']);
         }
         if (\array_key_exists('teams_url', $data)) {
             $object->setTeamsUrl($data['teams_url']);
+            unset($data['teams_url']);
         }
         if (\array_key_exists('trees_url', $data)) {
             $object->setTreesUrl($data['trees_url']);
+            unset($data['trees_url']);
         }
         if (\array_key_exists('url', $data)) {
             $object->setUrl($data['url']);
+            unset($data['url']);
         }
         if (\array_key_exists('clone_url', $data)) {
             $object->setCloneUrl($data['clone_url']);
+            unset($data['clone_url']);
         }
         if (\array_key_exists('default_branch', $data)) {
             $object->setDefaultBranch($data['default_branch']);
+            unset($data['default_branch']);
         }
         if (\array_key_exists('forks', $data)) {
             $object->setForks($data['forks']);
+            unset($data['forks']);
         }
         if (\array_key_exists('forks_count', $data)) {
             $object->setForksCount($data['forks_count']);
+            unset($data['forks_count']);
         }
         if (\array_key_exists('git_url', $data)) {
             $object->setGitUrl($data['git_url']);
+            unset($data['git_url']);
         }
         if (\array_key_exists('has_downloads', $data)) {
             $object->setHasDownloads($data['has_downloads']);
+            unset($data['has_downloads']);
         }
         if (\array_key_exists('has_issues', $data)) {
             $object->setHasIssues($data['has_issues']);
+            unset($data['has_issues']);
         }
         if (\array_key_exists('has_projects', $data)) {
             $object->setHasProjects($data['has_projects']);
+            unset($data['has_projects']);
         }
         if (\array_key_exists('has_wiki', $data)) {
             $object->setHasWiki($data['has_wiki']);
+            unset($data['has_wiki']);
         }
         if (\array_key_exists('has_pages', $data)) {
             $object->setHasPages($data['has_pages']);
+            unset($data['has_pages']);
         }
         if (\array_key_exists('homepage', $data) && $data['homepage'] !== null) {
             $object->setHomepage($data['homepage']);
+            unset($data['homepage']);
         }
         elseif (\array_key_exists('homepage', $data) && $data['homepage'] === null) {
             $object->setHomepage(null);
         }
         if (\array_key_exists('language', $data) && $data['language'] !== null) {
             $object->setLanguage($data['language']);
+            unset($data['language']);
         }
         elseif (\array_key_exists('language', $data) && $data['language'] === null) {
             $object->setLanguage(null);
         }
         if (\array_key_exists('master_branch', $data)) {
             $object->setMasterBranch($data['master_branch']);
+            unset($data['master_branch']);
         }
         if (\array_key_exists('archived', $data)) {
             $object->setArchived($data['archived']);
+            unset($data['archived']);
         }
         if (\array_key_exists('disabled', $data)) {
             $object->setDisabled($data['disabled']);
+            unset($data['disabled']);
         }
         if (\array_key_exists('mirror_url', $data) && $data['mirror_url'] !== null) {
             $object->setMirrorUrl($data['mirror_url']);
+            unset($data['mirror_url']);
         }
         elseif (\array_key_exists('mirror_url', $data) && $data['mirror_url'] === null) {
             $object->setMirrorUrl(null);
         }
         if (\array_key_exists('open_issues', $data)) {
             $object->setOpenIssues($data['open_issues']);
+            unset($data['open_issues']);
         }
         if (\array_key_exists('open_issues_count', $data)) {
             $object->setOpenIssuesCount($data['open_issues_count']);
+            unset($data['open_issues_count']);
         }
         if (\array_key_exists('permissions', $data)) {
             $object->setPermissions($this->denormalizer->denormalize($data['permissions'], 'Github\\Model\\PullRequestBaseRepoPermissions', 'json', $context));
+            unset($data['permissions']);
         }
         if (\array_key_exists('temp_clone_token', $data)) {
             $object->setTempCloneToken($data['temp_clone_token']);
+            unset($data['temp_clone_token']);
         }
         if (\array_key_exists('allow_merge_commit', $data)) {
             $object->setAllowMergeCommit($data['allow_merge_commit']);
+            unset($data['allow_merge_commit']);
         }
         if (\array_key_exists('allow_squash_merge', $data)) {
             $object->setAllowSquashMerge($data['allow_squash_merge']);
+            unset($data['allow_squash_merge']);
         }
         if (\array_key_exists('allow_rebase_merge', $data)) {
             $object->setAllowRebaseMerge($data['allow_rebase_merge']);
+            unset($data['allow_rebase_merge']);
         }
         if (\array_key_exists('license', $data) && $data['license'] !== null) {
             $object->setLicense($this->denormalizer->denormalize($data['license'], 'Github\\Model\\PullRequestBaseRepoLicense', 'json', $context));
+            unset($data['license']);
         }
         elseif (\array_key_exists('license', $data) && $data['license'] === null) {
             $object->setLicense(null);
         }
         if (\array_key_exists('pushed_at', $data)) {
             $object->setPushedAt(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['pushed_at']));
+            unset($data['pushed_at']);
         }
         if (\array_key_exists('size', $data)) {
             $object->setSize($data['size']);
+            unset($data['size']);
         }
         if (\array_key_exists('ssh_url', $data)) {
             $object->setSshUrl($data['ssh_url']);
+            unset($data['ssh_url']);
         }
         if (\array_key_exists('stargazers_count', $data)) {
             $object->setStargazersCount($data['stargazers_count']);
+            unset($data['stargazers_count']);
         }
         if (\array_key_exists('svn_url', $data)) {
             $object->setSvnUrl($data['svn_url']);
+            unset($data['svn_url']);
         }
         if (\array_key_exists('topics', $data)) {
             $values = array();
@@ -291,18 +366,28 @@ class PullRequestBaseRepoNormalizer implements DenormalizerInterface, Normalizer
                 $values[] = $value;
             }
             $object->setTopics($values);
+            unset($data['topics']);
         }
         if (\array_key_exists('watchers', $data)) {
             $object->setWatchers($data['watchers']);
+            unset($data['watchers']);
         }
         if (\array_key_exists('watchers_count', $data)) {
             $object->setWatchersCount($data['watchers_count']);
+            unset($data['watchers_count']);
         }
         if (\array_key_exists('created_at', $data)) {
             $object->setCreatedAt(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['created_at']));
+            unset($data['created_at']);
         }
         if (\array_key_exists('updated_at', $data)) {
             $object->setUpdatedAt(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['updated_at']));
+            unset($data['updated_at']);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
@@ -410,6 +495,11 @@ class PullRequestBaseRepoNormalizer implements DenormalizerInterface, Normalizer
         $data['watchers_count'] = $object->getWatchersCount();
         $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
         $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
+            }
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\PullRequestBaseRepoConstraint());
             $context['skip_validation'] = true;

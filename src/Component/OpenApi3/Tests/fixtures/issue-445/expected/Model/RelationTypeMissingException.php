@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class RelationTypeMissingException
+class RelationTypeMissingException extends \ArrayObject
 {
     /**
      * 

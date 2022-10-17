@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class IssueSearchResultItemPerformedViaGithubApp
+class IssueSearchResultItemPerformedViaGithubApp extends \ArrayObject
 {
     /**
      * Unique identifier of the GitHub app

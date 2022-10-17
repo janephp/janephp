@@ -49,9 +49,16 @@ class GbCompanyReportExampleResponseReportAdditionalInformationMortgageSummaryNo
         }
         if (\array_key_exists('outstanding', $data)) {
             $object->setOutstanding($data['outstanding']);
+            unset($data['outstanding']);
         }
         if (\array_key_exists('satisfied', $data)) {
             $object->setSatisfied($data['satisfied']);
+            unset($data['satisfied']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -66,6 +73,11 @@ class GbCompanyReportExampleResponseReportAdditionalInformationMortgageSummaryNo
         }
         if (null !== $object->getSatisfied()) {
             $data['satisfied'] = $object->getSatisfied();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

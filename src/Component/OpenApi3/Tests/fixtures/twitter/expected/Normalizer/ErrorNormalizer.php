@@ -43,9 +43,16 @@ class ErrorNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         }
         if (\array_key_exists('code', $data)) {
             $object->setCode($data['code']);
+            unset($data['code']);
         }
         if (\array_key_exists('message', $data)) {
             $object->setMessage($data['message']);
+            unset($data['message']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -57,6 +64,11 @@ class ErrorNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         $data = array();
         $data['code'] = $object->getCode();
         $data['message'] = $object->getMessage();
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
         return $data;
     }
 }

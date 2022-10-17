@@ -47,12 +47,15 @@ class ReposOwnerRepoPullsPullNumberReviewsPostBodyNormalizer implements Denormal
         }
         if (\array_key_exists('commit_id', $data)) {
             $object->setCommitId($data['commit_id']);
+            unset($data['commit_id']);
         }
         if (\array_key_exists('body', $data)) {
             $object->setBody($data['body']);
+            unset($data['body']);
         }
         if (\array_key_exists('event', $data)) {
             $object->setEvent($data['event']);
+            unset($data['event']);
         }
         if (\array_key_exists('comments', $data)) {
             $values = array();
@@ -60,6 +63,12 @@ class ReposOwnerRepoPullsPullNumberReviewsPostBodyNormalizer implements Denormal
                 $values[] = $this->denormalizer->denormalize($value, 'Github\\Model\\ReposOwnerRepoPullsPullNumberReviewsPostBodyCommentsItem', 'json', $context);
             }
             $object->setComments($values);
+            unset($data['comments']);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
@@ -84,6 +93,11 @@ class ReposOwnerRepoPullsPullNumberReviewsPostBodyNormalizer implements Denormal
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data['comments'] = $values;
+        }
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ReposOwnerRepoPullsPullNumberReviewsPostBodyConstraint());

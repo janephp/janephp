@@ -43,15 +43,24 @@ class CreateFreshInvestigationRequestContactInfoNormalizer implements Denormaliz
         }
         if (\array_key_exists('name', $data)) {
             $object->setName($data['name']);
+            unset($data['name']);
         }
         if (\array_key_exists('emailAddress', $data)) {
             $object->setEmailAddress($data['emailAddress']);
+            unset($data['emailAddress']);
         }
         if (\array_key_exists('telephoneNumber', $data)) {
             $object->setTelephoneNumber($data['telephoneNumber']);
+            unset($data['telephoneNumber']);
         }
         if (\array_key_exists('company', $data)) {
             $object->setCompany($this->denormalizer->denormalize($data['company'], 'CreditSafe\\API\\Model\\CreateFreshInvestigationRequestContactInfoCompany', 'json', $context));
+            unset($data['company']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -72,6 +81,11 @@ class CreateFreshInvestigationRequestContactInfoNormalizer implements Denormaliz
         }
         if (null !== $object->getCompany()) {
             $data['company'] = $this->normalizer->normalize($object->getCompany(), 'json', $context);
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

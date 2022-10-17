@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class InvalidDateTimeFormatException
+class InvalidDateTimeFormatException extends \ArrayObject
 {
     /**
      * 

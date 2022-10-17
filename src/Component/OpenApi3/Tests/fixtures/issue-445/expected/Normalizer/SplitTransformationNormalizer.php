@@ -43,24 +43,34 @@ class SplitTransformationNormalizer implements DenormalizerInterface, Normalizer
         }
         if (\array_key_exists('traceRefId', $data) && $data['traceRefId'] !== null) {
             $object->setTraceRefId($data['traceRefId']);
+            unset($data['traceRefId']);
         }
         elseif (\array_key_exists('traceRefId', $data) && $data['traceRefId'] === null) {
             $object->setTraceRefId(null);
         }
         if (\array_key_exists('kind', $data)) {
             $object->setKind($data['kind']);
+            unset($data['kind']);
         }
         if (\array_key_exists('separators', $data) && $data['separators'] !== null) {
             $object->setSeparators($data['separators']);
+            unset($data['separators']);
         }
         elseif (\array_key_exists('separators', $data) && $data['separators'] === null) {
             $object->setSeparators(null);
         }
         if (\array_key_exists('keepEmpty', $data)) {
             $object->setKeepEmpty($data['keepEmpty']);
+            unset($data['keepEmpty']);
         }
         if (\array_key_exists('trim', $data)) {
             $object->setTrim($data['trim']);
+            unset($data['trim']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -82,6 +92,11 @@ class SplitTransformationNormalizer implements DenormalizerInterface, Normalizer
         }
         if (null !== $object->getTrim()) {
             $data['trim'] = $object->getTrim();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

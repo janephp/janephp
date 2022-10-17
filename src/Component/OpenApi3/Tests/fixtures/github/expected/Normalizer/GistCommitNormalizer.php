@@ -47,21 +47,31 @@ class GistCommitNormalizer implements DenormalizerInterface, NormalizerInterface
         }
         if (\array_key_exists('url', $data)) {
             $object->setUrl($data['url']);
+            unset($data['url']);
         }
         if (\array_key_exists('version', $data)) {
             $object->setVersion($data['version']);
+            unset($data['version']);
         }
         if (\array_key_exists('user', $data) && $data['user'] !== null) {
             $object->setUser($this->denormalizer->denormalize($data['user'], 'Github\\Model\\GistCommitUser', 'json', $context));
+            unset($data['user']);
         }
         elseif (\array_key_exists('user', $data) && $data['user'] === null) {
             $object->setUser(null);
         }
         if (\array_key_exists('change_status', $data)) {
             $object->setChangeStatus($this->denormalizer->denormalize($data['change_status'], 'Github\\Model\\GistCommitChangeStatus', 'json', $context));
+            unset($data['change_status']);
         }
         if (\array_key_exists('committed_at', $data)) {
             $object->setCommittedAt(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['committed_at']));
+            unset($data['committed_at']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -76,6 +86,11 @@ class GistCommitNormalizer implements DenormalizerInterface, NormalizerInterface
         $data['user'] = $this->normalizer->normalize($object->getUser(), 'json', $context);
         $data['change_status'] = $this->normalizer->normalize($object->getChangeStatus(), 'json', $context);
         $data['committed_at'] = $object->getCommittedAt()->format('Y-m-d\\TH:i:sP');
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\GistCommitConstraint());
             $context['skip_validation'] = true;

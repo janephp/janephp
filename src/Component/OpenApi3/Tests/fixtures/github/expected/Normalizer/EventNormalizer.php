@@ -47,33 +47,46 @@ class EventNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         }
         if (\array_key_exists('id', $data)) {
             $object->setId($data['id']);
+            unset($data['id']);
         }
         if (\array_key_exists('type', $data) && $data['type'] !== null) {
             $object->setType($data['type']);
+            unset($data['type']);
         }
         elseif (\array_key_exists('type', $data) && $data['type'] === null) {
             $object->setType(null);
         }
         if (\array_key_exists('actor', $data)) {
             $object->setActor($this->denormalizer->denormalize($data['actor'], 'Github\\Model\\Actor', 'json', $context));
+            unset($data['actor']);
         }
         if (\array_key_exists('repo', $data)) {
             $object->setRepo($this->denormalizer->denormalize($data['repo'], 'Github\\Model\\EventRepo', 'json', $context));
+            unset($data['repo']);
         }
         if (\array_key_exists('org', $data)) {
             $object->setOrg($this->denormalizer->denormalize($data['org'], 'Github\\Model\\Actor', 'json', $context));
+            unset($data['org']);
         }
         if (\array_key_exists('payload', $data)) {
             $object->setPayload($this->denormalizer->denormalize($data['payload'], 'Github\\Model\\EventPayload', 'json', $context));
+            unset($data['payload']);
         }
         if (\array_key_exists('public', $data)) {
             $object->setPublic($data['public']);
+            unset($data['public']);
         }
         if (\array_key_exists('created_at', $data) && $data['created_at'] !== null) {
             $object->setCreatedAt(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['created_at']));
+            unset($data['created_at']);
         }
         elseif (\array_key_exists('created_at', $data) && $data['created_at'] === null) {
             $object->setCreatedAt(null);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -93,6 +106,11 @@ class EventNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         $data['payload'] = $this->normalizer->normalize($object->getPayload(), 'json', $context);
         $data['public'] = $object->getPublic();
         $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\EventConstraint());
             $context['skip_validation'] = true;

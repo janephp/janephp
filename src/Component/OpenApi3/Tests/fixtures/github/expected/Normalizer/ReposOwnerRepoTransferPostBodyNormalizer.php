@@ -47,6 +47,7 @@ class ReposOwnerRepoTransferPostBodyNormalizer implements DenormalizerInterface,
         }
         if (\array_key_exists('new_owner', $data)) {
             $object->setNewOwner($data['new_owner']);
+            unset($data['new_owner']);
         }
         if (\array_key_exists('team_ids', $data)) {
             $values = array();
@@ -54,6 +55,12 @@ class ReposOwnerRepoTransferPostBodyNormalizer implements DenormalizerInterface,
                 $values[] = $value;
             }
             $object->setTeamIds($values);
+            unset($data['team_ids']);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
@@ -72,6 +79,11 @@ class ReposOwnerRepoTransferPostBodyNormalizer implements DenormalizerInterface,
                 $values[] = $value;
             }
             $data['team_ids'] = $values;
+        }
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ReposOwnerRepoTransferPostBodyConstraint());

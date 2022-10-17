@@ -2,7 +2,7 @@
 
 namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 
-class ConnectionExceptionProblem
+class ConnectionExceptionProblem extends \ArrayObject
 {
     /**
      * 

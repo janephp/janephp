@@ -47,18 +47,28 @@ class ContentFieldsBatchUpdateFilterRequestNormalizer implements DenormalizerInt
                 $values[] = $this->denormalizer->denormalize($value, 'PicturePark\\API\\Model\\MetadataValuesChangeCommandBase', 'json', $context);
             }
             $object->setChangeCommands($values);
+            unset($data['changeCommands']);
         }
         if (\array_key_exists('allowMissingDependencies', $data)) {
             $object->setAllowMissingDependencies($data['allowMissingDependencies']);
+            unset($data['allowMissingDependencies']);
         }
         if (\array_key_exists('notifyProgress', $data)) {
             $object->setNotifyProgress($data['notifyProgress']);
+            unset($data['notifyProgress']);
         }
         if (\array_key_exists('kind', $data)) {
             $object->setKind($data['kind']);
+            unset($data['kind']);
         }
         if (\array_key_exists('filterRequest', $data)) {
             $object->setFilterRequest($data['filterRequest']);
+            unset($data['filterRequest']);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
@@ -77,6 +87,11 @@ class ContentFieldsBatchUpdateFilterRequestNormalizer implements DenormalizerInt
         $data['notifyProgress'] = $object->getNotifyProgress();
         $data['kind'] = $object->getKind();
         $data['filterRequest'] = $object->getFilterRequest();
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
+            }
+        }
         return $data;
     }
 }

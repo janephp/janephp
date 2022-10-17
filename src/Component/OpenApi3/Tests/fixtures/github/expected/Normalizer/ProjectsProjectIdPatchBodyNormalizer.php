@@ -47,21 +47,31 @@ class ProjectsProjectIdPatchBodyNormalizer implements DenormalizerInterface, Nor
         }
         if (\array_key_exists('name', $data)) {
             $object->setName($data['name']);
+            unset($data['name']);
         }
         if (\array_key_exists('body', $data) && $data['body'] !== null) {
             $object->setBody($data['body']);
+            unset($data['body']);
         }
         elseif (\array_key_exists('body', $data) && $data['body'] === null) {
             $object->setBody(null);
         }
         if (\array_key_exists('state', $data)) {
             $object->setState($data['state']);
+            unset($data['state']);
         }
         if (\array_key_exists('organization_permission', $data)) {
             $object->setOrganizationPermission($data['organization_permission']);
+            unset($data['organization_permission']);
         }
         if (\array_key_exists('private', $data)) {
             $object->setPrivate($data['private']);
+            unset($data['private']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -85,6 +95,11 @@ class ProjectsProjectIdPatchBodyNormalizer implements DenormalizerInterface, Nor
         }
         if (null !== $object->getPrivate()) {
             $data['private'] = $object->getPrivate();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ProjectsProjectIdPatchBodyConstraint());
