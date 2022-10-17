@@ -2,7 +2,7 @@
 
 namespace CreditSafe\API\Model;
 
-class CreateFreshInvestigationRequestContactInfo
+class CreateFreshInvestigationRequestContactInfo extends \ArrayObject
 {
     /**
      * 

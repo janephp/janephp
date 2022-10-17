@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class UserDetail
+class UserDetail extends \ArrayObject
 {
     /**
      * User's Picturepark ID.

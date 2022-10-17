@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoHooksPostBody
+class ReposOwnerRepoHooksPostBody extends \ArrayObject
 {
     /**
      * Use `web` to create a webhook. Default: `web`. This parameter only accepts the value `web`.

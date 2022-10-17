@@ -47,15 +47,24 @@ class ReposOwnerRepoCommitsCommitShaCommentsPostBodyNormalizer implements Denorm
         }
         if (\array_key_exists('body', $data)) {
             $object->setBody($data['body']);
+            unset($data['body']);
         }
         if (\array_key_exists('path', $data)) {
             $object->setPath($data['path']);
+            unset($data['path']);
         }
         if (\array_key_exists('position', $data)) {
             $object->setPosition($data['position']);
+            unset($data['position']);
         }
         if (\array_key_exists('line', $data)) {
             $object->setLine($data['line']);
+            unset($data['line']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -74,6 +83,11 @@ class ReposOwnerRepoCommitsCommitShaCommentsPostBodyNormalizer implements Denorm
         }
         if (null !== $object->getLine()) {
             $data['line'] = $object->getLine();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ReposOwnerRepoCommitsCommitShaCommentsPostBodyConstraint());

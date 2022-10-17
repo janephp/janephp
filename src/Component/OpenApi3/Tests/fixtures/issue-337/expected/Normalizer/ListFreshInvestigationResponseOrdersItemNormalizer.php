@@ -43,33 +43,48 @@ class ListFreshInvestigationResponseOrdersItemNormalizer implements Denormalizer
         }
         if (\array_key_exists('orderID', $data)) {
             $object->setOrderID($data['orderID']);
+            unset($data['orderID']);
         }
         if (\array_key_exists('userID', $data)) {
             $object->setUserID($data['userID']);
+            unset($data['userID']);
         }
         if (\array_key_exists('creationDate', $data)) {
             $object->setCreationDate($data['creationDate']);
+            unset($data['creationDate']);
         }
         if (\array_key_exists('lastStatusChangeDate', $data)) {
             $object->setLastStatusChangeDate($data['lastStatusChangeDate']);
+            unset($data['lastStatusChangeDate']);
         }
         if (\array_key_exists('transactionID', $data)) {
             $object->setTransactionID($data['transactionID']);
+            unset($data['transactionID']);
         }
         if (\array_key_exists('chargeReference', $data)) {
             $object->setChargeReference($data['chargeReference']);
+            unset($data['chargeReference']);
         }
         if (\array_key_exists('contactDetails', $data)) {
             $object->setContactDetails($this->denormalizer->denormalize($data['contactDetails'], 'CreditSafe\\API\\Model\\ListFreshInvestigationResponseOrdersItemContactDetails', 'json', $context));
+            unset($data['contactDetails']);
         }
         if (\array_key_exists('status', $data)) {
             $object->setStatus($this->denormalizer->denormalize($data['status'], 'CreditSafe\\API\\Model\\ListFreshInvestigationResponseOrdersItemStatus', 'json', $context));
+            unset($data['status']);
         }
         if (\array_key_exists('consent', $data)) {
             $object->setConsent($data['consent']);
+            unset($data['consent']);
         }
         if (\array_key_exists('searchCriteria', $data)) {
             $object->setSearchCriteria($this->denormalizer->denormalize($data['searchCriteria'], 'CreditSafe\\API\\Model\\ListFreshInvestigationResponseOrdersItemSearchCriteria', 'json', $context));
+            unset($data['searchCriteria']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -108,6 +123,11 @@ class ListFreshInvestigationResponseOrdersItemNormalizer implements Denormalizer
         }
         if (null !== $object->getSearchCriteria()) {
             $data['searchCriteria'] = $this->normalizer->normalize($object->getSearchCriteria(), 'json', $context);
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

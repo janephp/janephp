@@ -2,7 +2,7 @@
 
 namespace ApiPlatform\Demo\Model;
 
-class ParchmentJsonhalLinksSelf
+class ParchmentJsonhalLinksSelf extends \ArrayObject
 {
     /**
      * 

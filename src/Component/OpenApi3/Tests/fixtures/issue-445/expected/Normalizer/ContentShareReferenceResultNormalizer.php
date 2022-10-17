@@ -43,6 +43,7 @@ class ContentShareReferenceResultNormalizer implements DenormalizerInterface, No
         }
         if (\array_key_exists('totalResults', $data)) {
             $object->setTotalResults($data['totalResults']);
+            unset($data['totalResults']);
         }
         if (\array_key_exists('results', $data)) {
             $values = array();
@@ -50,15 +51,23 @@ class ContentShareReferenceResultNormalizer implements DenormalizerInterface, No
                 $values[] = $this->denormalizer->denormalize($value, 'PicturePark\\API\\Model\\ContentShareReference', 'json', $context);
             }
             $object->setResults($values);
+            unset($data['results']);
         }
         if (\array_key_exists('elapsedMilliseconds', $data)) {
             $object->setElapsedMilliseconds($data['elapsedMilliseconds']);
+            unset($data['elapsedMilliseconds']);
         }
         if (\array_key_exists('pageToken', $data) && $data['pageToken'] !== null) {
             $object->setPageToken($data['pageToken']);
+            unset($data['pageToken']);
         }
         elseif (\array_key_exists('pageToken', $data) && $data['pageToken'] === null) {
             $object->setPageToken(null);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
@@ -77,6 +86,11 @@ class ContentShareReferenceResultNormalizer implements DenormalizerInterface, No
         $data['elapsedMilliseconds'] = $object->getElapsedMilliseconds();
         if (null !== $object->getPageToken()) {
             $data['pageToken'] = $object->getPageToken();
+        }
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
+            }
         }
         return $data;
     }

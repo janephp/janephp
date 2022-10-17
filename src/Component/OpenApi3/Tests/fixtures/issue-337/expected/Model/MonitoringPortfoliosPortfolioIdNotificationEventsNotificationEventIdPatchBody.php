@@ -2,7 +2,7 @@
 
 namespace CreditSafe\API\Model;
 
-class MonitoringPortfoliosPortfolioIdNotificationEventsNotificationEventIdPatchBody
+class MonitoringPortfoliosPortfolioIdNotificationEventsNotificationEventIdPatchBody extends \ArrayObject
 {
     /**
      * 

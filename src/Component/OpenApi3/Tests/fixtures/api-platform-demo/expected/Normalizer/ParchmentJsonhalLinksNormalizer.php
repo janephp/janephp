@@ -43,6 +43,12 @@ class ParchmentJsonhalLinksNormalizer implements DenormalizerInterface, Normaliz
         }
         if (\array_key_exists('self', $data)) {
             $object->setSelf($this->denormalizer->denormalize($data['self'], 'ApiPlatform\\Demo\\Model\\ParchmentJsonhalLinksSelf', 'json', $context));
+            unset($data['self']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -54,6 +60,11 @@ class ParchmentJsonhalLinksNormalizer implements DenormalizerInterface, Normaliz
         $data = array();
         if (null !== $object->getSelf()) {
             $data['self'] = $this->normalizer->normalize($object->getSelf(), 'json', $context);
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

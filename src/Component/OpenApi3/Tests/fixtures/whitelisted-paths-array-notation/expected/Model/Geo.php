@@ -2,7 +2,7 @@
 
 namespace Jane\OpenApi3\Tests\Expected\Model;
 
-class Geo
+class Geo extends \ArrayObject
 {
     /**
      * 
@@ -25,7 +25,7 @@ class Geo
     /**
      * 
      *
-     * @var mixed
+     * @var mixed[]
      */
     protected $properties;
     /**
@@ -94,20 +94,20 @@ class Geo
     /**
      * 
      *
-     * @return mixed
+     * @return mixed[]
      */
-    public function getProperties()
+    public function getProperties() : iterable
     {
         return $this->properties;
     }
     /**
      * 
      *
-     * @param mixed $properties
+     * @param mixed[] $properties
      *
      * @return self
      */
-    public function setProperties($properties) : self
+    public function setProperties(iterable $properties) : self
     {
         $this->properties = $properties;
         return $this;

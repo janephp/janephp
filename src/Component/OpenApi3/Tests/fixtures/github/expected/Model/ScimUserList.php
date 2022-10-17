@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class ScimUserList
+class ScimUserList extends \ArrayObject
 {
     /**
      * SCIM schema used.

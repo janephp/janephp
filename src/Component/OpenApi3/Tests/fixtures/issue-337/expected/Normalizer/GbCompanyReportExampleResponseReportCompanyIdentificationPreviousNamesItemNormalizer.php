@@ -43,9 +43,16 @@ class GbCompanyReportExampleResponseReportCompanyIdentificationPreviousNamesItem
         }
         if (\array_key_exists('name', $data)) {
             $object->setName($data['name']);
+            unset($data['name']);
         }
         if (\array_key_exists('dateChanged', $data)) {
             $object->setDateChanged($data['dateChanged']);
+            unset($data['dateChanged']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -60,6 +67,11 @@ class GbCompanyReportExampleResponseReportCompanyIdentificationPreviousNamesItem
         }
         if (null !== $object->getDateChanged()) {
             $data['dateChanged'] = $object->getDateChanged();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

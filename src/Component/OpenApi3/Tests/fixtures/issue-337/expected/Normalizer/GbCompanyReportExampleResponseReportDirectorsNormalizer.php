@@ -47,6 +47,7 @@ class GbCompanyReportExampleResponseReportDirectorsNormalizer implements Denorma
                 $values[] = $this->denormalizer->denormalize($value, 'CreditSafe\\API\\Model\\GbCompanyReportExampleResponseReportDirectorsCurrentDirectorsItem', 'json', $context);
             }
             $object->setCurrentDirectors($values);
+            unset($data['currentDirectors']);
         }
         if (\array_key_exists('previousDirectors', $data)) {
             $values_1 = array();
@@ -54,6 +55,12 @@ class GbCompanyReportExampleResponseReportDirectorsNormalizer implements Denorma
                 $values_1[] = $this->denormalizer->denormalize($value_1, 'CreditSafe\\API\\Model\\GbCompanyReportExampleResponseReportDirectorsPreviousDirectorsItem', 'json', $context);
             }
             $object->setPreviousDirectors($values_1);
+            unset($data['previousDirectors']);
+        }
+        foreach ($data as $key => $value_2) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_2;
+            }
         }
         return $object;
     }
@@ -76,6 +83,11 @@ class GbCompanyReportExampleResponseReportDirectorsNormalizer implements Denorma
                 $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
             }
             $data['previousDirectors'] = $values_1;
+        }
+        foreach ($object as $key => $value_2) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_2;
+            }
         }
         return $data;
     }

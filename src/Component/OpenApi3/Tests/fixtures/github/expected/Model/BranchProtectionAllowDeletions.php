@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class BranchProtectionAllowDeletions
+class BranchProtectionAllowDeletions extends \ArrayObject
 {
     /**
      * 

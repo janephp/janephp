@@ -47,18 +47,26 @@ class ContentSymlinkLinksNormalizer implements DenormalizerInterface, Normalizer
         }
         if (\array_key_exists('git', $data) && $data['git'] !== null) {
             $object->setGit($data['git']);
+            unset($data['git']);
         }
         elseif (\array_key_exists('git', $data) && $data['git'] === null) {
             $object->setGit(null);
         }
         if (\array_key_exists('html', $data) && $data['html'] !== null) {
             $object->setHtml($data['html']);
+            unset($data['html']);
         }
         elseif (\array_key_exists('html', $data) && $data['html'] === null) {
             $object->setHtml(null);
         }
         if (\array_key_exists('self', $data)) {
             $object->setSelf($data['self']);
+            unset($data['self']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -71,6 +79,11 @@ class ContentSymlinkLinksNormalizer implements DenormalizerInterface, Normalizer
         $data['git'] = $object->getGit();
         $data['html'] = $object->getHtml();
         $data['self'] = $object->getSelf();
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ContentSymlinkLinksConstraint());
             $context['skip_validation'] = true;

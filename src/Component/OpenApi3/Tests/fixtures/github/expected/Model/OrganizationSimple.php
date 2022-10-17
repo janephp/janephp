@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class OrganizationSimple
+class OrganizationSimple extends \ArrayObject
 {
     /**
      * 

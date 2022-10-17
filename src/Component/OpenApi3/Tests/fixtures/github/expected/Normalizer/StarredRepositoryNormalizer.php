@@ -47,9 +47,16 @@ class StarredRepositoryNormalizer implements DenormalizerInterface, NormalizerIn
         }
         if (\array_key_exists('starred_at', $data)) {
             $object->setStarredAt(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['starred_at']));
+            unset($data['starred_at']);
         }
         if (\array_key_exists('repo', $data)) {
             $object->setRepo($this->denormalizer->denormalize($data['repo'], 'Github\\Model\\Repository', 'json', $context));
+            unset($data['repo']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -61,6 +68,11 @@ class StarredRepositoryNormalizer implements DenormalizerInterface, NormalizerIn
         $data = array();
         $data['starred_at'] = $object->getStarredAt()->format('Y-m-d\\TH:i:sP');
         $data['repo'] = $this->normalizer->normalize($object->getRepo(), 'json', $context);
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\StarredRepositoryConstraint());
             $context['skip_validation'] = true;

@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class GistCommitChangeStatus
+class GistCommitChangeStatus extends \ArrayObject
 {
     /**
      * 

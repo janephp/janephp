@@ -47,6 +47,7 @@ class GistsPostBodyNormalizer implements DenormalizerInterface, NormalizerInterf
         }
         if (\array_key_exists('description', $data)) {
             $object->setDescription($data['description']);
+            unset($data['description']);
         }
         if (\array_key_exists('files', $data)) {
             $values = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
@@ -54,9 +55,16 @@ class GistsPostBodyNormalizer implements DenormalizerInterface, NormalizerInterf
                 $values[$key] = $this->denormalizer->denormalize($value, 'Github\\Model\\GistsPostBodyFilesItem', 'json', $context);
             }
             $object->setFiles($values);
+            unset($data['files']);
         }
         if (\array_key_exists('public', $data)) {
             $object->setPublic($data['public']);
+            unset($data['public']);
+        }
+        foreach ($data as $key_1 => $value_1) {
+            if (preg_match('/.*/', (string) $key_1)) {
+                $object[$key_1] = $value_1;
+            }
         }
         return $object;
     }
@@ -76,6 +84,11 @@ class GistsPostBodyNormalizer implements DenormalizerInterface, NormalizerInterf
         $data['files'] = $values;
         if (null !== $object->getPublic()) {
             $data['public'] = $object->getPublic();
+        }
+        foreach ($object as $key_1 => $value_1) {
+            if (preg_match('/.*/', (string) $key_1)) {
+                $data[$key_1] = $value_1;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\GistsPostBodyConstraint());

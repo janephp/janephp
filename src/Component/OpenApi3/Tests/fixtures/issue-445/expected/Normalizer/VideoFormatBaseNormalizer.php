@@ -43,6 +43,12 @@ class VideoFormatBaseNormalizer implements DenormalizerInterface, NormalizerInte
         }
         if (\array_key_exists('kind', $data)) {
             $object->setKind($data['kind']);
+            unset($data['kind']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -53,6 +59,11 @@ class VideoFormatBaseNormalizer implements DenormalizerInterface, NormalizerInte
     {
         $data = array();
         $data['kind'] = $object->getKind();
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
         return $data;
     }
 }

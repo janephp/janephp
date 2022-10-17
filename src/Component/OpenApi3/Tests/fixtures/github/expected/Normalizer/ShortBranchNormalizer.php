@@ -47,18 +47,28 @@ class ShortBranchNormalizer implements DenormalizerInterface, NormalizerInterfac
         }
         if (\array_key_exists('name', $data)) {
             $object->setName($data['name']);
+            unset($data['name']);
         }
         if (\array_key_exists('commit', $data)) {
             $object->setCommit($this->denormalizer->denormalize($data['commit'], 'Github\\Model\\ShortBranchCommit', 'json', $context));
+            unset($data['commit']);
         }
         if (\array_key_exists('protected', $data)) {
             $object->setProtected($data['protected']);
+            unset($data['protected']);
         }
         if (\array_key_exists('protection', $data)) {
             $object->setProtection($this->denormalizer->denormalize($data['protection'], 'Github\\Model\\BranchProtection', 'json', $context));
+            unset($data['protection']);
         }
         if (\array_key_exists('protection_url', $data)) {
             $object->setProtectionUrl($data['protection_url']);
+            unset($data['protection_url']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -76,6 +86,11 @@ class ShortBranchNormalizer implements DenormalizerInterface, NormalizerInterfac
         }
         if (null !== $object->getProtectionUrl()) {
             $data['protection_url'] = $object->getProtectionUrl();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ShortBranchConstraint());

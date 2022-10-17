@@ -47,9 +47,16 @@ class GitignoreTemplateNormalizer implements DenormalizerInterface, NormalizerIn
         }
         if (\array_key_exists('name', $data)) {
             $object->setName($data['name']);
+            unset($data['name']);
         }
         if (\array_key_exists('source', $data)) {
             $object->setSource($data['source']);
+            unset($data['source']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -61,6 +68,11 @@ class GitignoreTemplateNormalizer implements DenormalizerInterface, NormalizerIn
         $data = array();
         $data['name'] = $object->getName();
         $data['source'] = $object->getSource();
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\GitignoreTemplateConstraint());
             $context['skip_validation'] = true;

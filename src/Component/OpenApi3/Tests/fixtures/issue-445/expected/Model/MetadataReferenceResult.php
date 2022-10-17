@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class MetadataReferenceResult
+class MetadataReferenceResult extends \ArrayObject
 {
     /**
      * The total number of matching documents.

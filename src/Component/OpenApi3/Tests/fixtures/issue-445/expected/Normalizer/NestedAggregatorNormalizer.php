@@ -43,9 +43,11 @@ class NestedAggregatorNormalizer implements DenormalizerInterface, NormalizerInt
         }
         if (\array_key_exists('name', $data)) {
             $object->setName($data['name']);
+            unset($data['name']);
         }
         if (\array_key_exists('names', $data) && $data['names'] !== null) {
             $object->setNames($data['names']);
+            unset($data['names']);
         }
         elseif (\array_key_exists('names', $data) && $data['names'] === null) {
             $object->setNames(null);
@@ -56,21 +58,30 @@ class NestedAggregatorNormalizer implements DenormalizerInterface, NormalizerInt
                 $values[] = $this->denormalizer->denormalize($value, 'PicturePark\\API\\Model\\AggregatorBase', 'json', $context);
             }
             $object->setAggregators($values);
+            unset($data['aggregators']);
         }
         elseif (\array_key_exists('aggregators', $data) && $data['aggregators'] === null) {
             $object->setAggregators(null);
         }
         if (\array_key_exists('filter', $data) && $data['filter'] !== null) {
             $object->setFilter($data['filter']);
+            unset($data['filter']);
         }
         elseif (\array_key_exists('filter', $data) && $data['filter'] === null) {
             $object->setFilter(null);
         }
         if (\array_key_exists('kind', $data)) {
             $object->setKind($data['kind']);
+            unset($data['kind']);
         }
         if (\array_key_exists('path', $data)) {
             $object->setPath($data['path']);
+            unset($data['path']);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
@@ -96,6 +107,11 @@ class NestedAggregatorNormalizer implements DenormalizerInterface, NormalizerInt
         }
         $data['kind'] = $object->getKind();
         $data['path'] = $object->getPath();
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
+            }
+        }
         return $data;
     }
 }

@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class AggregationNameInvalidException
+class AggregationNameInvalidException extends \ArrayObject
 {
     /**
      * 

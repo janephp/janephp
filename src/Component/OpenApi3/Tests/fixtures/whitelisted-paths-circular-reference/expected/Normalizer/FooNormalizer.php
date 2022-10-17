@@ -43,9 +43,16 @@ class FooNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
         }
         if (\array_key_exists('label', $data)) {
             $object->setLabel($data['label']);
+            unset($data['label']);
         }
         if (\array_key_exists('parent', $data)) {
             $object->setParent($this->denormalizer->denormalize($data['parent'], 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Model\\Foo', 'json', $context));
+            unset($data['parent']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -60,6 +67,11 @@ class FooNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
         }
         if (null !== $object->getParent()) {
             $data['parent'] = $this->normalizer->normalize($object->getParent(), 'json', $context);
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class UnsupportedListItemChangeCommandException
+class UnsupportedListItemChangeCommandException extends \ArrayObject
 {
     /**
      * 

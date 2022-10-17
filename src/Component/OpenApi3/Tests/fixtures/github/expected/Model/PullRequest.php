@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class PullRequest
+class PullRequest extends \ArrayObject
 {
     /**
      * 

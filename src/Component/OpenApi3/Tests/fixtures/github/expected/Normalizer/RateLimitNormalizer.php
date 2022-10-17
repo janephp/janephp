@@ -47,12 +47,20 @@ class RateLimitNormalizer implements DenormalizerInterface, NormalizerInterface,
         }
         if (\array_key_exists('limit', $data)) {
             $object->setLimit($data['limit']);
+            unset($data['limit']);
         }
         if (\array_key_exists('remaining', $data)) {
             $object->setRemaining($data['remaining']);
+            unset($data['remaining']);
         }
         if (\array_key_exists('reset', $data)) {
             $object->setReset($data['reset']);
+            unset($data['reset']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -65,6 +73,11 @@ class RateLimitNormalizer implements DenormalizerInterface, NormalizerInterface,
         $data['limit'] = $object->getLimit();
         $data['remaining'] = $object->getRemaining();
         $data['reset'] = $object->getReset();
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\RateLimitConstraint());
             $context['skip_validation'] = true;

@@ -2,7 +2,7 @@
 
 namespace CreditSafe\API\Model;
 
-class MonitoringPortfoliosPortfolioIdCompaniesCopyPostBodyCompaniesItem
+class MonitoringPortfoliosPortfolioIdCompaniesCopyPostBodyCompaniesItem extends \ArrayObject
 {
     /**
      * Company Safe Number or Connect ID. Not required when copyAll query parameter is set to true.

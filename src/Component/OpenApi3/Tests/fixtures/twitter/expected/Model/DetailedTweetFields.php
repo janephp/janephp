@@ -2,7 +2,7 @@
 
 namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 
-class DetailedTweetFields
+class DetailedTweetFields extends \ArrayObject
 {
     /**
      * Engagement metrics for the Tweet at the time of the request.

@@ -47,6 +47,12 @@ class ReposOwnerRepoPagesPostBodyNormalizer implements DenormalizerInterface, No
         }
         if (\array_key_exists('source', $data)) {
             $object->setSource($this->denormalizer->denormalize($data['source'], 'Github\\Model\\ReposOwnerRepoPagesPostBodySource', 'json', $context));
+            unset($data['source']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -58,6 +64,11 @@ class ReposOwnerRepoPagesPostBodyNormalizer implements DenormalizerInterface, No
         $data = array();
         if (null !== $object->getSource()) {
             $data['source'] = $this->normalizer->normalize($object->getSource(), 'json', $context);
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ReposOwnerRepoPagesPostBodyConstraint());

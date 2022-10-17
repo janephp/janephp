@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoHooksHookIdPatchBody
+class ReposOwnerRepoHooksHookIdPatchBody extends \ArrayObject
 {
     /**
      * Key/value pairs to provide settings for this webhook. [These are defined below](https://developer.github.com/v3/repos/hooks/#create-hook-config-params).

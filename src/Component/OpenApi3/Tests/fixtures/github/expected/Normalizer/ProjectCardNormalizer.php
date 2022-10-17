@@ -47,42 +47,58 @@ class ProjectCardNormalizer implements DenormalizerInterface, NormalizerInterfac
         }
         if (\array_key_exists('url', $data)) {
             $object->setUrl($data['url']);
+            unset($data['url']);
         }
         if (\array_key_exists('id', $data)) {
             $object->setId($data['id']);
+            unset($data['id']);
         }
         if (\array_key_exists('node_id', $data)) {
             $object->setNodeId($data['node_id']);
+            unset($data['node_id']);
         }
         if (\array_key_exists('note', $data) && $data['note'] !== null) {
             $object->setNote($data['note']);
+            unset($data['note']);
         }
         elseif (\array_key_exists('note', $data) && $data['note'] === null) {
             $object->setNote(null);
         }
         if (\array_key_exists('creator', $data) && $data['creator'] !== null) {
             $object->setCreator($this->denormalizer->denormalize($data['creator'], 'Github\\Model\\ProjectCardCreator', 'json', $context));
+            unset($data['creator']);
         }
         elseif (\array_key_exists('creator', $data) && $data['creator'] === null) {
             $object->setCreator(null);
         }
         if (\array_key_exists('created_at', $data)) {
             $object->setCreatedAt(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['created_at']));
+            unset($data['created_at']);
         }
         if (\array_key_exists('updated_at', $data)) {
             $object->setUpdatedAt(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['updated_at']));
+            unset($data['updated_at']);
         }
         if (\array_key_exists('archived', $data)) {
             $object->setArchived($data['archived']);
+            unset($data['archived']);
         }
         if (\array_key_exists('column_url', $data)) {
             $object->setColumnUrl($data['column_url']);
+            unset($data['column_url']);
         }
         if (\array_key_exists('content_url', $data)) {
             $object->setContentUrl($data['content_url']);
+            unset($data['content_url']);
         }
         if (\array_key_exists('project_url', $data)) {
             $object->setProjectUrl($data['project_url']);
+            unset($data['project_url']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -107,6 +123,11 @@ class ProjectCardNormalizer implements DenormalizerInterface, NormalizerInterfac
             $data['content_url'] = $object->getContentUrl();
         }
         $data['project_url'] = $object->getProjectUrl();
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ProjectCardConstraint());
             $context['skip_validation'] = true;

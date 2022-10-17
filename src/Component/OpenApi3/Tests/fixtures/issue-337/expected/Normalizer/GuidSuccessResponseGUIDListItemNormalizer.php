@@ -43,15 +43,24 @@ class GuidSuccessResponseGUIDListItemNormalizer implements DenormalizerInterface
         }
         if (\array_key_exists('friendlyName', $data)) {
             $object->setFriendlyName($data['friendlyName']);
+            unset($data['friendlyName']);
         }
         if (\array_key_exists('GUID', $data)) {
             $object->setGUID($data['GUID']);
+            unset($data['GUID']);
         }
         if (\array_key_exists('type', $data)) {
             $object->setType($data['type']);
+            unset($data['type']);
         }
         if (\array_key_exists('serviceLine', $data)) {
             $object->setServiceLine($data['serviceLine']);
+            unset($data['serviceLine']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -72,6 +81,11 @@ class GuidSuccessResponseGUIDListItemNormalizer implements DenormalizerInterface
         }
         if (null !== $object->getServiceLine()) {
             $data['serviceLine'] = $object->getServiceLine();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

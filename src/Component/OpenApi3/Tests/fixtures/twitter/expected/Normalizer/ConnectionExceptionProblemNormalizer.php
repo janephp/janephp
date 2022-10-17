@@ -43,15 +43,24 @@ class ConnectionExceptionProblemNormalizer implements DenormalizerInterface, Nor
         }
         if (\array_key_exists('type', $data)) {
             $object->setType($data['type']);
+            unset($data['type']);
         }
         if (\array_key_exists('connection_issue', $data)) {
             $object->setConnectionIssue($data['connection_issue']);
+            unset($data['connection_issue']);
         }
         if (\array_key_exists('title', $data)) {
             $object->setTitle($data['title']);
+            unset($data['title']);
         }
         if (\array_key_exists('detail', $data)) {
             $object->setDetail($data['detail']);
+            unset($data['detail']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -67,6 +76,11 @@ class ConnectionExceptionProblemNormalizer implements DenormalizerInterface, Nor
         }
         $data['title'] = $object->getTitle();
         $data['detail'] = $object->getDetail();
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
         return $data;
     }
 }

@@ -47,6 +47,7 @@ class ExpansionsNormalizer implements DenormalizerInterface, NormalizerInterface
                 $values[] = $value;
             }
             $object->setUsers($values);
+            unset($data['users']);
         }
         if (\array_key_exists('tweets', $data)) {
             $values_1 = array();
@@ -54,6 +55,7 @@ class ExpansionsNormalizer implements DenormalizerInterface, NormalizerInterface
                 $values_1[] = $value_1;
             }
             $object->setTweets($values_1);
+            unset($data['tweets']);
         }
         if (\array_key_exists('places', $data)) {
             $values_2 = array();
@@ -61,6 +63,7 @@ class ExpansionsNormalizer implements DenormalizerInterface, NormalizerInterface
                 $values_2[] = $value_2;
             }
             $object->setPlaces($values_2);
+            unset($data['places']);
         }
         if (\array_key_exists('media', $data)) {
             $values_3 = array();
@@ -68,6 +71,7 @@ class ExpansionsNormalizer implements DenormalizerInterface, NormalizerInterface
                 $values_3[] = $value_3;
             }
             $object->setMedia($values_3);
+            unset($data['media']);
         }
         if (\array_key_exists('polls', $data)) {
             $values_4 = array();
@@ -75,6 +79,12 @@ class ExpansionsNormalizer implements DenormalizerInterface, NormalizerInterface
                 $values_4[] = $this->denormalizer->denormalize($value_4, 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Model\\Poll', 'json', $context);
             }
             $object->setPolls($values_4);
+            unset($data['polls']);
+        }
+        foreach ($data as $key => $value_5) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_5;
+            }
         }
         return $object;
     }
@@ -118,6 +128,11 @@ class ExpansionsNormalizer implements DenormalizerInterface, NormalizerInterface
                 $values_4[] = $this->normalizer->normalize($value_4, 'json', $context);
             }
             $data['polls'] = $values_4;
+        }
+        foreach ($object as $key => $value_5) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_5;
+            }
         }
         return $data;
     }

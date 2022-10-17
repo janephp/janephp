@@ -43,15 +43,24 @@ class GbCompanyReportExampleResponseReportContactInformationOtherAddressesItemNo
         }
         if (\array_key_exists('type', $data)) {
             $object->setType($data['type']);
+            unset($data['type']);
         }
         if (\array_key_exists('simpleValue', $data)) {
             $object->setSimpleValue($data['simpleValue']);
+            unset($data['simpleValue']);
         }
         if (\array_key_exists('postalCode', $data)) {
             $object->setPostalCode($data['postalCode']);
+            unset($data['postalCode']);
         }
         if (\array_key_exists('telephone', $data)) {
             $object->setTelephone($data['telephone']);
+            unset($data['telephone']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -72,6 +81,11 @@ class GbCompanyReportExampleResponseReportContactInformationOtherAddressesItemNo
         }
         if (null !== $object->getTelephone()) {
             $data['telephone'] = $object->getTelephone();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

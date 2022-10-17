@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody
+class ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody extends \ArrayObject
 {
     /**
      * The reference of the workflow run. The reference can be a branch, tag, or a commit SHA.

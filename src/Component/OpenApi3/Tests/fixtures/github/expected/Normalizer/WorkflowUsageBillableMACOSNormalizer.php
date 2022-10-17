@@ -47,6 +47,12 @@ class WorkflowUsageBillableMACOSNormalizer implements DenormalizerInterface, Nor
         }
         if (\array_key_exists('total_ms', $data)) {
             $object->setTotalMs($data['total_ms']);
+            unset($data['total_ms']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -58,6 +64,11 @@ class WorkflowUsageBillableMACOSNormalizer implements DenormalizerInterface, Nor
         $data = array();
         if (null !== $object->getTotalMs()) {
             $data['total_ms'] = $object->getTotalMs();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\WorkflowUsageBillableMACOSConstraint());

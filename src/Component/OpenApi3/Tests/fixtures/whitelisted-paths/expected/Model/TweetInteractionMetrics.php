@@ -2,7 +2,7 @@
 
 namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 
-class TweetInteractionMetrics
+class TweetInteractionMetrics extends \ArrayObject
 {
     /**
      * Number of times this Tweet has been liked.

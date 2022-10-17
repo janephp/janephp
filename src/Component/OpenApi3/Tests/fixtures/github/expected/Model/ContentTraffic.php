@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class ContentTraffic
+class ContentTraffic extends \ArrayObject
 {
     /**
      * 

@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class BusinessRuleRegularExpressionInvalidException
+class BusinessRuleRegularExpressionInvalidException extends \ArrayObject
 {
     /**
      * 

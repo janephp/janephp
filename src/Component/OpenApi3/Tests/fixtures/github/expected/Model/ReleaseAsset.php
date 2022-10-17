@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class ReleaseAsset
+class ReleaseAsset extends \ArrayObject
 {
     /**
      * 

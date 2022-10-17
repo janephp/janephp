@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoCheckRunsPostBodyOutputAnnotationsItem
+class ReposOwnerRepoCheckRunsPostBodyOutputAnnotationsItem extends \ArrayObject
 {
     /**
      * The path of the file to add an annotation to. For example, `assets/css/main.css`.

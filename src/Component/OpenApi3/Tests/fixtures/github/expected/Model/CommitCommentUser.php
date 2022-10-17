@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class CommitCommentUser
+class CommitCommentUser extends \ArrayObject
 {
     /**
      * 

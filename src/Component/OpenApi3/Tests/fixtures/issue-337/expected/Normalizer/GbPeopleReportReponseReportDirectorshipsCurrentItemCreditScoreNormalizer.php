@@ -43,6 +43,12 @@ class GbPeopleReportReponseReportDirectorshipsCurrentItemCreditScoreNormalizer i
         }
         if (\array_key_exists('currentCreditRating', $data)) {
             $object->setCurrentCreditRating($this->denormalizer->denormalize($data['currentCreditRating'], 'CreditSafe\\API\\Model\\GbPeopleReportReponseReportDirectorshipsCurrentItemCreditScoreCurrentCreditRating', 'json', $context));
+            unset($data['currentCreditRating']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -54,6 +60,11 @@ class GbPeopleReportReponseReportDirectorshipsCurrentItemCreditScoreNormalizer i
         $data = array();
         if (null !== $object->getCurrentCreditRating()) {
             $data['currentCreditRating'] = $this->normalizer->normalize($object->getCurrentCreditRating(), 'json', $context);
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

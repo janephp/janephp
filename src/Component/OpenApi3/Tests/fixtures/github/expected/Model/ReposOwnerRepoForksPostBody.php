@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoForksPostBody
+class ReposOwnerRepoForksPostBody extends \ArrayObject
 {
     /**
      * Optional parameter to specify the organization name if forking into an organization.

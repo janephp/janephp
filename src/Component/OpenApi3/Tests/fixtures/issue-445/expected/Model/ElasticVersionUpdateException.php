@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class ElasticVersionUpdateException
+class ElasticVersionUpdateException extends \ArrayObject
 {
     /**
      * 

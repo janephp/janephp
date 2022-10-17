@@ -47,27 +47,40 @@ class InstallationPermissionsNormalizer implements DenormalizerInterface, Normal
         }
         if (\array_key_exists('deployments', $data)) {
             $object->setDeployments($data['deployments']);
+            unset($data['deployments']);
         }
         if (\array_key_exists('checks', $data)) {
             $object->setChecks($data['checks']);
+            unset($data['checks']);
         }
         if (\array_key_exists('metadata', $data)) {
             $object->setMetadata($data['metadata']);
+            unset($data['metadata']);
         }
         if (\array_key_exists('contents', $data)) {
             $object->setContents($data['contents']);
+            unset($data['contents']);
         }
         if (\array_key_exists('pull_requests', $data)) {
             $object->setPullRequests($data['pull_requests']);
+            unset($data['pull_requests']);
         }
         if (\array_key_exists('statuses', $data)) {
             $object->setStatuses($data['statuses']);
+            unset($data['statuses']);
         }
         if (\array_key_exists('issues', $data)) {
             $object->setIssues($data['issues']);
+            unset($data['issues']);
         }
         if (\array_key_exists('organization_administration', $data)) {
             $object->setOrganizationAdministration($data['organization_administration']);
+            unset($data['organization_administration']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -100,6 +113,11 @@ class InstallationPermissionsNormalizer implements DenormalizerInterface, Normal
         }
         if (null !== $object->getOrganizationAdministration()) {
             $data['organization_administration'] = $object->getOrganizationAdministration();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\InstallationPermissionsConstraint());

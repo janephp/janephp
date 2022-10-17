@@ -47,12 +47,20 @@ class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyOutputImagesItemNormalizer imple
         }
         if (\array_key_exists('alt', $data)) {
             $object->setAlt($data['alt']);
+            unset($data['alt']);
         }
         if (\array_key_exists('image_url', $data)) {
             $object->setImageUrl($data['image_url']);
+            unset($data['image_url']);
         }
         if (\array_key_exists('caption', $data)) {
             $object->setCaption($data['caption']);
+            unset($data['caption']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -66,6 +74,11 @@ class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyOutputImagesItemNormalizer imple
         $data['image_url'] = $object->getImageUrl();
         if (null !== $object->getCaption()) {
             $data['caption'] = $object->getCaption();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ReposOwnerRepoCheckRunsCheckRunIdPatchBodyOutputImagesItemConstraint());

@@ -43,18 +43,28 @@ class TopBooksGetHaljsonResponse200LinksNormalizer implements DenormalizerInterf
         }
         if (\array_key_exists('self', $data)) {
             $object->setSelf($this->denormalizer->denormalize($data['self'], 'ApiPlatform\\Demo\\Model\\TopBooksGetHaljsonResponse200LinksSelf', 'json', $context));
+            unset($data['self']);
         }
         if (\array_key_exists('first', $data)) {
             $object->setFirst($this->denormalizer->denormalize($data['first'], 'ApiPlatform\\Demo\\Model\\TopBooksGetHaljsonResponse200LinksFirst', 'json', $context));
+            unset($data['first']);
         }
         if (\array_key_exists('last', $data)) {
             $object->setLast($this->denormalizer->denormalize($data['last'], 'ApiPlatform\\Demo\\Model\\TopBooksGetHaljsonResponse200LinksLast', 'json', $context));
+            unset($data['last']);
         }
         if (\array_key_exists('next', $data)) {
             $object->setNext($this->denormalizer->denormalize($data['next'], 'ApiPlatform\\Demo\\Model\\TopBooksGetHaljsonResponse200LinksNext', 'json', $context));
+            unset($data['next']);
         }
         if (\array_key_exists('previous', $data)) {
             $object->setPrevious($this->denormalizer->denormalize($data['previous'], 'ApiPlatform\\Demo\\Model\\TopBooksGetHaljsonResponse200LinksPrevious', 'json', $context));
+            unset($data['previous']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -78,6 +88,11 @@ class TopBooksGetHaljsonResponse200LinksNormalizer implements DenormalizerInterf
         }
         if (null !== $object->getPrevious()) {
             $data['previous'] = $this->normalizer->normalize($object->getPrevious(), 'json', $context);
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

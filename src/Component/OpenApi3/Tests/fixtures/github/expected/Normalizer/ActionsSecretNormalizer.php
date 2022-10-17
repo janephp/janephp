@@ -47,12 +47,20 @@ class ActionsSecretNormalizer implements DenormalizerInterface, NormalizerInterf
         }
         if (\array_key_exists('name', $data)) {
             $object->setName($data['name']);
+            unset($data['name']);
         }
         if (\array_key_exists('created_at', $data)) {
             $object->setCreatedAt(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['created_at']));
+            unset($data['created_at']);
         }
         if (\array_key_exists('updated_at', $data)) {
             $object->setUpdatedAt(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['updated_at']));
+            unset($data['updated_at']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -65,6 +73,11 @@ class ActionsSecretNormalizer implements DenormalizerInterface, NormalizerInterf
         $data['name'] = $object->getName();
         $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
         $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ActionsSecretConstraint());
             $context['skip_validation'] = true;

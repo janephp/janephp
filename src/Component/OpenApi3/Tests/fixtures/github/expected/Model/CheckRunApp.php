@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class CheckRunApp
+class CheckRunApp extends \ArrayObject
 {
     /**
      * Unique identifier of the GitHub app

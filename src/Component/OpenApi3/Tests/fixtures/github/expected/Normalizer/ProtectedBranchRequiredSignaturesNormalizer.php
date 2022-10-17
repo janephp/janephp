@@ -47,9 +47,16 @@ class ProtectedBranchRequiredSignaturesNormalizer implements DenormalizerInterfa
         }
         if (\array_key_exists('url', $data)) {
             $object->setUrl($data['url']);
+            unset($data['url']);
         }
         if (\array_key_exists('enabled', $data)) {
             $object->setEnabled($data['enabled']);
+            unset($data['enabled']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -61,6 +68,11 @@ class ProtectedBranchRequiredSignaturesNormalizer implements DenormalizerInterfa
         $data = array();
         $data['url'] = $object->getUrl();
         $data['enabled'] = $object->getEnabled();
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ProtectedBranchRequiredSignaturesConstraint());
             $context['skip_validation'] = true;

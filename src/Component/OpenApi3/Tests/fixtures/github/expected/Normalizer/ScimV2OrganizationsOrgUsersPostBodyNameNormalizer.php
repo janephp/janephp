@@ -47,9 +47,16 @@ class ScimV2OrganizationsOrgUsersPostBodyNameNormalizer implements DenormalizerI
         }
         if (\array_key_exists('givenName', $data)) {
             $object->setGivenName($data['givenName']);
+            unset($data['givenName']);
         }
         if (\array_key_exists('familyName', $data)) {
             $object->setFamilyName($data['familyName']);
+            unset($data['familyName']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -61,6 +68,11 @@ class ScimV2OrganizationsOrgUsersPostBodyNameNormalizer implements DenormalizerI
         $data = array();
         $data['givenName'] = $object->getGivenName();
         $data['familyName'] = $object->getFamilyName();
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ScimV2OrganizationsOrgUsersPostBodyNameConstraint());
             $context['skip_validation'] = true;

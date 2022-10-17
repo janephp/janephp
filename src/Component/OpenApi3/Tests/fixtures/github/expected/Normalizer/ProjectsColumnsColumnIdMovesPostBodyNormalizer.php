@@ -47,6 +47,12 @@ class ProjectsColumnsColumnIdMovesPostBodyNormalizer implements DenormalizerInte
         }
         if (\array_key_exists('position', $data)) {
             $object->setPosition($data['position']);
+            unset($data['position']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -57,6 +63,11 @@ class ProjectsColumnsColumnIdMovesPostBodyNormalizer implements DenormalizerInte
     {
         $data = array();
         $data['position'] = $object->getPosition();
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ProjectsColumnsColumnIdMovesPostBodyConstraint());
             $context['skip_validation'] = true;

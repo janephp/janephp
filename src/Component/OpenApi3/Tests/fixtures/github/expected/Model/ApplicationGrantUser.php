@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class ApplicationGrantUser
+class ApplicationGrantUser extends \ArrayObject
 {
     /**
      * 

@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoReleasesAssetsAssetIdPatchBody
+class ReposOwnerRepoReleasesAssetsAssetIdPatchBody extends \ArrayObject
 {
     /**
      * The file name of the asset.

@@ -47,42 +47,59 @@ class OrganizationSimpleNormalizer implements DenormalizerInterface, NormalizerI
         }
         if (\array_key_exists('login', $data)) {
             $object->setLogin($data['login']);
+            unset($data['login']);
         }
         if (\array_key_exists('id', $data)) {
             $object->setId($data['id']);
+            unset($data['id']);
         }
         if (\array_key_exists('node_id', $data)) {
             $object->setNodeId($data['node_id']);
+            unset($data['node_id']);
         }
         if (\array_key_exists('url', $data)) {
             $object->setUrl($data['url']);
+            unset($data['url']);
         }
         if (\array_key_exists('repos_url', $data)) {
             $object->setReposUrl($data['repos_url']);
+            unset($data['repos_url']);
         }
         if (\array_key_exists('events_url', $data)) {
             $object->setEventsUrl($data['events_url']);
+            unset($data['events_url']);
         }
         if (\array_key_exists('hooks_url', $data)) {
             $object->setHooksUrl($data['hooks_url']);
+            unset($data['hooks_url']);
         }
         if (\array_key_exists('issues_url', $data)) {
             $object->setIssuesUrl($data['issues_url']);
+            unset($data['issues_url']);
         }
         if (\array_key_exists('members_url', $data)) {
             $object->setMembersUrl($data['members_url']);
+            unset($data['members_url']);
         }
         if (\array_key_exists('public_members_url', $data)) {
             $object->setPublicMembersUrl($data['public_members_url']);
+            unset($data['public_members_url']);
         }
         if (\array_key_exists('avatar_url', $data)) {
             $object->setAvatarUrl($data['avatar_url']);
+            unset($data['avatar_url']);
         }
         if (\array_key_exists('description', $data) && $data['description'] !== null) {
             $object->setDescription($data['description']);
+            unset($data['description']);
         }
         elseif (\array_key_exists('description', $data) && $data['description'] === null) {
             $object->setDescription(null);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -104,6 +121,11 @@ class OrganizationSimpleNormalizer implements DenormalizerInterface, NormalizerI
         $data['public_members_url'] = $object->getPublicMembersUrl();
         $data['avatar_url'] = $object->getAvatarUrl();
         $data['description'] = $object->getDescription();
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\OrganizationSimpleConstraint());
             $context['skip_validation'] = true;

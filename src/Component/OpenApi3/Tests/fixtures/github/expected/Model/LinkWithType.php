@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class LinkWithType
+class LinkWithType extends \ArrayObject
 {
     /**
      * 

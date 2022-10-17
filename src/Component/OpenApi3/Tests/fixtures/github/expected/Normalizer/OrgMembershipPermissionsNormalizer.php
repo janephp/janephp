@@ -47,6 +47,12 @@ class OrgMembershipPermissionsNormalizer implements DenormalizerInterface, Norma
         }
         if (\array_key_exists('can_create_repository', $data)) {
             $object->setCanCreateRepository($data['can_create_repository']);
+            unset($data['can_create_repository']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -57,6 +63,11 @@ class OrgMembershipPermissionsNormalizer implements DenormalizerInterface, Norma
     {
         $data = array();
         $data['can_create_repository'] = $object->getCanCreateRepository();
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\OrgMembershipPermissionsConstraint());
             $context['skip_validation'] = true;

@@ -43,9 +43,11 @@ class TermsFilterNormalizer implements DenormalizerInterface, NormalizerInterfac
         }
         if (\array_key_exists('kind', $data)) {
             $object->setKind($data['kind']);
+            unset($data['kind']);
         }
         if (\array_key_exists('field', $data)) {
             $object->setField($data['field']);
+            unset($data['field']);
         }
         if (\array_key_exists('terms', $data)) {
             $values = array();
@@ -53,6 +55,12 @@ class TermsFilterNormalizer implements DenormalizerInterface, NormalizerInterfac
                 $values[] = $value;
             }
             $object->setTerms($values);
+            unset($data['terms']);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
@@ -69,6 +77,11 @@ class TermsFilterNormalizer implements DenormalizerInterface, NormalizerInterfac
             $values[] = $value;
         }
         $data['terms'] = $values;
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
+            }
+        }
         return $data;
     }
 }

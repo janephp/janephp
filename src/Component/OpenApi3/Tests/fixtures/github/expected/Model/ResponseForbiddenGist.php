@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class ResponseForbiddenGist
+class ResponseForbiddenGist extends \ArrayObject
 {
     /**
      * 

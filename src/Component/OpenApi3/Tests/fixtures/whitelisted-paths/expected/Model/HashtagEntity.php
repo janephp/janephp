@@ -2,7 +2,7 @@
 
 namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 
-class HashtagEntity
+class HashtagEntity extends \ArrayObject
 {
     /**
      * Index (zero-based) at which position this entity starts.

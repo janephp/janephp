@@ -47,18 +47,28 @@ class ReposOwnerRepoContentsPathDeleteBodyNormalizer implements DenormalizerInte
         }
         if (\array_key_exists('message', $data)) {
             $object->setMessage($data['message']);
+            unset($data['message']);
         }
         if (\array_key_exists('sha', $data)) {
             $object->setSha($data['sha']);
+            unset($data['sha']);
         }
         if (\array_key_exists('branch', $data)) {
             $object->setBranch($data['branch']);
+            unset($data['branch']);
         }
         if (\array_key_exists('committer', $data)) {
             $object->setCommitter($this->denormalizer->denormalize($data['committer'], 'Github\\Model\\ReposOwnerRepoContentsPathDeleteBodyCommitter', 'json', $context));
+            unset($data['committer']);
         }
         if (\array_key_exists('author', $data)) {
             $object->setAuthor($this->denormalizer->denormalize($data['author'], 'Github\\Model\\ReposOwnerRepoContentsPathDeleteBodyAuthor', 'json', $context));
+            unset($data['author']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -78,6 +88,11 @@ class ReposOwnerRepoContentsPathDeleteBodyNormalizer implements DenormalizerInte
         }
         if (null !== $object->getAuthor()) {
             $data['author'] = $this->normalizer->normalize($object->getAuthor(), 'json', $context);
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ReposOwnerRepoContentsPathDeleteBodyConstraint());

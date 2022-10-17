@@ -47,12 +47,20 @@ class TeamMembershipNormalizer implements DenormalizerInterface, NormalizerInter
         }
         if (\array_key_exists('url', $data)) {
             $object->setUrl($data['url']);
+            unset($data['url']);
         }
         if (\array_key_exists('role', $data)) {
             $object->setRole($data['role']);
+            unset($data['role']);
         }
         if (\array_key_exists('state', $data)) {
             $object->setState($data['state']);
+            unset($data['state']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -65,6 +73,11 @@ class TeamMembershipNormalizer implements DenormalizerInterface, NormalizerInter
         $data['url'] = $object->getUrl();
         $data['role'] = $object->getRole();
         $data['state'] = $object->getState();
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\TeamMembershipConstraint());
             $context['skip_validation'] = true;

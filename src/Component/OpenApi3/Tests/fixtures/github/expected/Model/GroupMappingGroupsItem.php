@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class GroupMappingGroupsItem
+class GroupMappingGroupsItem extends \ArrayObject
 {
     /**
      * The ID of the group

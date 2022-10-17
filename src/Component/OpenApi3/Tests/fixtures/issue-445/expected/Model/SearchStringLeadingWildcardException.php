@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class SearchStringLeadingWildcardException
+class SearchStringLeadingWildcardException extends \ArrayObject
 {
     /**
      * 

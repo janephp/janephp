@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class ContentPermissionsUpdateItem
+class ContentPermissionsUpdateItem extends \ArrayObject
 {
     /**
     * A list of content permission set IDs which control content permissions that will be updated on the content.

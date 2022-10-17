@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class CommunityProfileFilesReadme
+class CommunityProfileFilesReadme extends \ArrayObject
 {
     /**
      * 

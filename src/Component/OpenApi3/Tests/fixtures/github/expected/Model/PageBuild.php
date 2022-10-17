@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class PageBuild
+class PageBuild extends \ArrayObject
 {
     /**
      * 

@@ -2,7 +2,7 @@
 
 namespace CreditSafe\API\Model;
 
-class GbCompanyReportExampleResponseReportLocalFinancialStatementsItemCashFlow
+class GbCompanyReportExampleResponseReportLocalFinancialStatementsItemCashFlow extends \ArrayObject
 {
     /**
      * 

@@ -47,12 +47,15 @@ class EventPayloadNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         if (\array_key_exists('action', $data)) {
             $object->setAction($data['action']);
+            unset($data['action']);
         }
         if (\array_key_exists('issue', $data)) {
             $object->setIssue($this->denormalizer->denormalize($data['issue'], 'Github\\Model\\IssueSimple', 'json', $context));
+            unset($data['issue']);
         }
         if (\array_key_exists('comment', $data)) {
             $object->setComment($this->denormalizer->denormalize($data['comment'], 'Github\\Model\\IssueComment', 'json', $context));
+            unset($data['comment']);
         }
         if (\array_key_exists('pages', $data)) {
             $values = array();
@@ -60,6 +63,12 @@ class EventPayloadNormalizer implements DenormalizerInterface, NormalizerInterfa
                 $values[] = $this->denormalizer->denormalize($value, 'Github\\Model\\EventPayloadPagesItem', 'json', $context);
             }
             $object->setPages($values);
+            unset($data['pages']);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
@@ -84,6 +93,11 @@ class EventPayloadNormalizer implements DenormalizerInterface, NormalizerInterfa
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data['pages'] = $values;
+        }
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\EventPayloadConstraint());

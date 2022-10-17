@@ -43,27 +43,37 @@ class BusinessProcessEventNormalizer implements DenormalizerInterface, Normalize
         }
         if (\array_key_exists('timestamp', $data)) {
             $object->setTimestamp(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['timestamp']));
+            unset($data['timestamp']);
         }
         if (\array_key_exists('kind', $data)) {
             $object->setKind($data['kind']);
+            unset($data['kind']);
         }
         if (\array_key_exists('businessProcessId', $data) && $data['businessProcessId'] !== null) {
             $object->setBusinessProcessId($data['businessProcessId']);
+            unset($data['businessProcessId']);
         }
         elseif (\array_key_exists('businessProcessId', $data) && $data['businessProcessId'] === null) {
             $object->setBusinessProcessId(null);
         }
         if (\array_key_exists('lifeCycle', $data) && $data['lifeCycle'] !== null) {
             $object->setLifeCycle($data['lifeCycle']);
+            unset($data['lifeCycle']);
         }
         elseif (\array_key_exists('lifeCycle', $data) && $data['lifeCycle'] === null) {
             $object->setLifeCycle(null);
         }
         if (\array_key_exists('state', $data) && $data['state'] !== null) {
             $object->setState($data['state']);
+            unset($data['state']);
         }
         elseif (\array_key_exists('state', $data) && $data['state'] === null) {
             $object->setState(null);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -83,6 +93,11 @@ class BusinessProcessEventNormalizer implements DenormalizerInterface, Normalize
         }
         if (null !== $object->getState()) {
             $data['state'] = $object->getState();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class InstallationPermissions
+class InstallationPermissions extends \ArrayObject
 {
     /**
      * 

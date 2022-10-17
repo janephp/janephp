@@ -43,6 +43,12 @@ class TestGetBodyBazNormalizer implements DenormalizerInterface, NormalizerInter
         }
         if (\array_key_exists('baz', $data)) {
             $object->setBaz($data['baz']);
+            unset($data['baz']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -54,6 +60,11 @@ class TestGetBodyBazNormalizer implements DenormalizerInterface, NormalizerInter
         $data = array();
         if (null !== $object->getBaz()) {
             $data['baz'] = $object->getBaz();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

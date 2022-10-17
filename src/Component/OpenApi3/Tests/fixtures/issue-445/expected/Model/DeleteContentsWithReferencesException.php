@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class DeleteContentsWithReferencesException
+class DeleteContentsWithReferencesException extends \ArrayObject
 {
     /**
      * 

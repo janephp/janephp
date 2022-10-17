@@ -43,36 +43,45 @@ class BookJsonldBookReadNormalizer implements DenormalizerInterface, NormalizerI
         }
         if (\array_key_exists('@context', $data)) {
             $object->setContext($data['@context']);
+            unset($data['@context']);
         }
         if (\array_key_exists('@id', $data)) {
             $object->setId($data['@id']);
+            unset($data['@id']);
         }
         if (\array_key_exists('@type', $data)) {
             $object->setType($data['@type']);
+            unset($data['@type']);
         }
         if (\array_key_exists('id', $data) && $data['id'] !== null) {
             $object->setId2($data['id']);
+            unset($data['id']);
         }
         elseif (\array_key_exists('id', $data) && $data['id'] === null) {
             $object->setId2(null);
         }
         if (\array_key_exists('isbn', $data) && $data['isbn'] !== null) {
             $object->setIsbn($data['isbn']);
+            unset($data['isbn']);
         }
         elseif (\array_key_exists('isbn', $data) && $data['isbn'] === null) {
             $object->setIsbn(null);
         }
         if (\array_key_exists('title', $data)) {
             $object->setTitle($data['title']);
+            unset($data['title']);
         }
         if (\array_key_exists('description', $data)) {
             $object->setDescription($data['description']);
+            unset($data['description']);
         }
         if (\array_key_exists('author', $data)) {
             $object->setAuthor($data['author']);
+            unset($data['author']);
         }
         if (\array_key_exists('publicationDate', $data)) {
             $object->setPublicationDate(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['publicationDate']));
+            unset($data['publicationDate']);
         }
         if (\array_key_exists('reviews', $data)) {
             $values = array();
@@ -80,6 +89,12 @@ class BookJsonldBookReadNormalizer implements DenormalizerInterface, NormalizerI
                 $values[] = $this->denormalizer->denormalize($value, 'ApiPlatform\\Demo\\Model\\ReviewJsonldBookRead', 'json', $context);
             }
             $object->setReviews($values);
+            unset($data['reviews']);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
@@ -102,6 +117,11 @@ class BookJsonldBookReadNormalizer implements DenormalizerInterface, NormalizerI
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data['reviews'] = $values;
+        }
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
+            }
         }
         return $data;
     }

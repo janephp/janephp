@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBody
+class ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBody extends \ArrayObject
 {
     /**
      * An array of user `login`s that will be removed.

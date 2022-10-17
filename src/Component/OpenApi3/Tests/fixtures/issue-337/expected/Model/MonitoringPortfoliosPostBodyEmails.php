@@ -2,7 +2,7 @@
 
 namespace CreditSafe\API\Model;
 
-class MonitoringPortfoliosPostBodyEmails
+class MonitoringPortfoliosPostBodyEmails extends \ArrayObject
 {
     /**
      * 

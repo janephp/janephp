@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class HovercardContextsItem
+class HovercardContextsItem extends \ArrayObject
 {
     /**
      * 

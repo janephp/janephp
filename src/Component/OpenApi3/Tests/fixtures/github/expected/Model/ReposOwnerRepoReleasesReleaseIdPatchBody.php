@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoReleasesReleaseIdPatchBody
+class ReposOwnerRepoReleasesReleaseIdPatchBody extends \ArrayObject
 {
     /**
      * The name of the tag.

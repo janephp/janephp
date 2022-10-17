@@ -2,7 +2,7 @@
 
 namespace CreditSafe\API\Model;
 
-class PortfolioRequestEmails
+class PortfolioRequestEmails extends \ArrayObject
 {
     /**
      * 

@@ -47,12 +47,14 @@ class IdentityProviderNormalizer implements DenormalizerInterface, NormalizerInt
                 $values[] = $this->denormalizer->denormalize($value, 'PicturePark\\API\\Model\\IdpClaimToUserAttributeMapping', 'json', $context);
             }
             $object->setClaimMapping($values);
+            unset($data['claimMapping']);
         }
         elseif (\array_key_exists('claimMapping', $data) && $data['claimMapping'] === null) {
             $object->setClaimMapping(null);
         }
         if (\array_key_exists('groupClaimType', $data) && $data['groupClaimType'] !== null) {
             $object->setGroupClaimType($data['groupClaimType']);
+            unset($data['groupClaimType']);
         }
         elseif (\array_key_exists('groupClaimType', $data) && $data['groupClaimType'] === null) {
             $object->setGroupClaimType(null);
@@ -63,33 +65,43 @@ class IdentityProviderNormalizer implements DenormalizerInterface, NormalizerInt
                 $values_1[] = $this->denormalizer->denormalize($value_1, 'PicturePark\\API\\Model\\IdpGroupToUserRoleMapping', 'json', $context);
             }
             $object->setGroupMapping($values_1);
+            unset($data['groupMapping']);
         }
         elseif (\array_key_exists('groupMapping', $data) && $data['groupMapping'] === null) {
             $object->setGroupMapping(null);
         }
         if (\array_key_exists('fallbackUserRoleId', $data) && $data['fallbackUserRoleId'] !== null) {
             $object->setFallbackUserRoleId($data['fallbackUserRoleId']);
+            unset($data['fallbackUserRoleId']);
         }
         elseif (\array_key_exists('fallbackUserRoleId', $data) && $data['fallbackUserRoleId'] === null) {
             $object->setFallbackUserRoleId(null);
         }
         if (\array_key_exists('id', $data) && $data['id'] !== null) {
             $object->setId($data['id']);
+            unset($data['id']);
         }
         elseif (\array_key_exists('id', $data) && $data['id'] === null) {
             $object->setId(null);
         }
         if (\array_key_exists('name', $data) && $data['name'] !== null) {
             $object->setName($data['name']);
+            unset($data['name']);
         }
         elseif (\array_key_exists('name', $data) && $data['name'] === null) {
             $object->setName(null);
         }
         if (\array_key_exists('displayName', $data) && $data['displayName'] !== null) {
             $object->setDisplayName($data['displayName']);
+            unset($data['displayName']);
         }
         elseif (\array_key_exists('displayName', $data) && $data['displayName'] === null) {
             $object->setDisplayName(null);
+        }
+        foreach ($data as $key => $value_2) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_2;
+            }
         }
         return $object;
     }
@@ -127,6 +139,11 @@ class IdentityProviderNormalizer implements DenormalizerInterface, NormalizerInt
         }
         if (null !== $object->getDisplayName()) {
             $data['displayName'] = $object->getDisplayName();
+        }
+        foreach ($object as $key => $value_2) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_2;
+            }
         }
         return $data;
     }

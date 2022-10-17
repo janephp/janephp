@@ -2,7 +2,7 @@
 
 namespace CreditSafe\API\Model;
 
-class AuthenticationRequest
+class AuthenticationRequest extends \ArrayObject
 {
     /**
      * 

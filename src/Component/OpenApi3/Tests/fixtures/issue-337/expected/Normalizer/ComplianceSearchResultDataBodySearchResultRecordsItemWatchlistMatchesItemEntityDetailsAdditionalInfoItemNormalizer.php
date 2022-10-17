@@ -43,15 +43,24 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemE
         }
         if (\array_key_exists('comments', $data)) {
             $object->setComments($data['comments']);
+            unset($data['comments']);
         }
         if (\array_key_exists('id', $data)) {
             $object->setId($data['id']);
+            unset($data['id']);
         }
         if (\array_key_exists('type', $data)) {
             $object->setType($data['type']);
+            unset($data['type']);
         }
         if (\array_key_exists('value', $data)) {
             $object->setValue($data['value']);
+            unset($data['value']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -72,6 +81,11 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemE
         }
         if (null !== $object->getValue()) {
             $data['value'] = $object->getValue();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

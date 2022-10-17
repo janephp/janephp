@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class UserRoleAssignManyRequest
+class UserRoleAssignManyRequest extends \ArrayObject
 {
     /**
      * User IDs.

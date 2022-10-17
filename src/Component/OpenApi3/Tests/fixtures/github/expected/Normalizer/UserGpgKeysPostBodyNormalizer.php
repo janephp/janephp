@@ -47,6 +47,12 @@ class UserGpgKeysPostBodyNormalizer implements DenormalizerInterface, Normalizer
         }
         if (\array_key_exists('armored_public_key', $data)) {
             $object->setArmoredPublicKey($data['armored_public_key']);
+            unset($data['armored_public_key']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -57,6 +63,11 @@ class UserGpgKeysPostBodyNormalizer implements DenormalizerInterface, Normalizer
     {
         $data = array();
         $data['armored_public_key'] = $object->getArmoredPublicKey();
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\UserGpgKeysPostBodyConstraint());
             $context['skip_validation'] = true;

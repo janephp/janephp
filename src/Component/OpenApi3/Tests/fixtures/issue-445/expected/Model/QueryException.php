@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class QueryException
+class QueryException extends \ArrayObject
 {
     /**
      * 

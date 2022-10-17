@@ -43,42 +43,55 @@ class ServiceProviderDeleteExceptionNormalizer implements DenormalizerInterface,
         }
         if (\array_key_exists('traceLevel', $data)) {
             $object->setTraceLevel($data['traceLevel']);
+            unset($data['traceLevel']);
         }
         if (\array_key_exists('traceId', $data) && $data['traceId'] !== null) {
             $object->setTraceId($data['traceId']);
+            unset($data['traceId']);
         }
         elseif (\array_key_exists('traceId', $data) && $data['traceId'] === null) {
             $object->setTraceId(null);
         }
         if (\array_key_exists('traceJobId', $data) && $data['traceJobId'] !== null) {
             $object->setTraceJobId($data['traceJobId']);
+            unset($data['traceJobId']);
         }
         elseif (\array_key_exists('traceJobId', $data) && $data['traceJobId'] === null) {
             $object->setTraceJobId(null);
         }
         if (\array_key_exists('httpStatusCode', $data)) {
             $object->setHttpStatusCode($data['httpStatusCode']);
+            unset($data['httpStatusCode']);
         }
         if (\array_key_exists('exceptionMessage', $data) && $data['exceptionMessage'] !== null) {
             $object->setExceptionMessage($data['exceptionMessage']);
+            unset($data['exceptionMessage']);
         }
         elseif (\array_key_exists('exceptionMessage', $data) && $data['exceptionMessage'] === null) {
             $object->setExceptionMessage(null);
         }
         if (\array_key_exists('kind', $data)) {
             $object->setKind($data['kind']);
+            unset($data['kind']);
         }
         if (\array_key_exists('serviceProviderId', $data) && $data['serviceProviderId'] !== null) {
             $object->setServiceProviderId($data['serviceProviderId']);
+            unset($data['serviceProviderId']);
         }
         elseif (\array_key_exists('serviceProviderId', $data) && $data['serviceProviderId'] === null) {
             $object->setServiceProviderId(null);
         }
         if (\array_key_exists('detailedErrorMessage', $data) && $data['detailedErrorMessage'] !== null) {
             $object->setDetailedErrorMessage($data['detailedErrorMessage']);
+            unset($data['detailedErrorMessage']);
         }
         elseif (\array_key_exists('detailedErrorMessage', $data) && $data['detailedErrorMessage'] === null) {
             $object->setDetailedErrorMessage(null);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -109,6 +122,11 @@ class ServiceProviderDeleteExceptionNormalizer implements DenormalizerInterface,
         }
         if (null !== $object->getDetailedErrorMessage()) {
             $data['detailedErrorMessage'] = $object->getDetailedErrorMessage();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

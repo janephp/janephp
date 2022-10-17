@@ -43,24 +43,33 @@ class Mp3AudioFormatNormalizer implements DenormalizerInterface, NormalizerInter
         }
         if (\array_key_exists('kind', $data)) {
             $object->setKind($data['kind']);
+            unset($data['kind']);
         }
         if (\array_key_exists('extension', $data) && $data['extension'] !== null) {
             $object->setExtension($data['extension']);
+            unset($data['extension']);
         }
         elseif (\array_key_exists('extension', $data) && $data['extension'] === null) {
             $object->setExtension(null);
         }
         if (\array_key_exists('bitrate', $data) && $data['bitrate'] !== null) {
             $object->setBitrate($data['bitrate']);
+            unset($data['bitrate']);
         }
         elseif (\array_key_exists('bitrate', $data) && $data['bitrate'] === null) {
             $object->setBitrate(null);
         }
         if (\array_key_exists('quality', $data) && $data['quality'] !== null) {
             $object->setQuality($data['quality']);
+            unset($data['quality']);
         }
         elseif (\array_key_exists('quality', $data) && $data['quality'] === null) {
             $object->setQuality(null);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -79,6 +88,11 @@ class Mp3AudioFormatNormalizer implements DenormalizerInterface, NormalizerInter
         }
         if (null !== $object->getQuality()) {
             $data['quality'] = $object->getQuality();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

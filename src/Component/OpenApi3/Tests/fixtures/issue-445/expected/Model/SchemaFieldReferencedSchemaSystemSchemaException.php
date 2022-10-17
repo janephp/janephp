@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class SchemaFieldReferencedSchemaSystemSchemaException
+class SchemaFieldReferencedSchemaSystemSchemaException extends \ArrayObject
 {
     /**
      * 

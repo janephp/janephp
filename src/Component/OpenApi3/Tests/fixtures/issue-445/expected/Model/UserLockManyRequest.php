@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class UserLockManyRequest
+class UserLockManyRequest extends \ArrayObject
 {
     /**
      * User IDs.

@@ -51,6 +51,12 @@ class ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBodyNormalizer implements De
                 $values[] = $value;
             }
             $object->setAssignees($values);
+            unset($data['assignees']);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
@@ -66,6 +72,11 @@ class ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBodyNormalizer implements De
                 $values[] = $value;
             }
             $data['assignees'] = $values;
+        }
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBodyConstraint());

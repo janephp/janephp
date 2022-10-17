@@ -47,6 +47,12 @@ class GbCompanyReportExampleResponseReportGroupStructureNormalizer implements De
                 $values[] = $this->denormalizer->denormalize($value, 'CreditSafe\\API\\Model\\GbCompanyReportExampleResponseReportGroupStructureSubsidiaryCompaniesItem', 'json', $context);
             }
             $object->setSubsidiaryCompanies($values);
+            unset($data['subsidiaryCompanies']);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
@@ -62,6 +68,11 @@ class GbCompanyReportExampleResponseReportGroupStructureNormalizer implements De
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data['subsidiaryCompanies'] = $values;
+        }
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
+            }
         }
         return $data;
     }

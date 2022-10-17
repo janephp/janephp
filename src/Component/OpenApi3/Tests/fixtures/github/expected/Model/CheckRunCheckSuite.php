@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class CheckRunCheckSuite
+class CheckRunCheckSuite extends \ArrayObject
 {
     /**
      * 

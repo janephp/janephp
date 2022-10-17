@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class CommitStats
+class CommitStats extends \ArrayObject
 {
     /**
      * 

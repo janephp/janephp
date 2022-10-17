@@ -43,21 +43,27 @@ class DetailedTweetNormalizer implements DenormalizerInterface, NormalizerInterf
         }
         if (\array_key_exists('format', $data)) {
             $object->setFormat($data['format']);
+            unset($data['format']);
         }
         if (\array_key_exists('id', $data)) {
             $object->setId($data['id']);
+            unset($data['id']);
         }
         if (\array_key_exists('created_at', $data)) {
             $object->setCreatedAt(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['created_at']));
+            unset($data['created_at']);
         }
         if (\array_key_exists('text', $data)) {
             $object->setText($data['text']);
+            unset($data['text']);
         }
         if (\array_key_exists('author_id', $data)) {
             $object->setAuthorId($data['author_id']);
+            unset($data['author_id']);
         }
         if (\array_key_exists('in_reply_to_user_id', $data)) {
             $object->setInReplyToUserId($data['in_reply_to_user_id']);
+            unset($data['in_reply_to_user_id']);
         }
         if (\array_key_exists('referenced_tweets', $data)) {
             $values = array();
@@ -65,21 +71,27 @@ class DetailedTweetNormalizer implements DenormalizerInterface, NormalizerInterf
                 $values[] = $this->denormalizer->denormalize($value, 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Model\\CompactTweetFieldsReferencedTweetsItem', 'json', $context);
             }
             $object->setReferencedTweets($values);
+            unset($data['referenced_tweets']);
         }
         if (\array_key_exists('attachments', $data)) {
             $object->setAttachments($this->denormalizer->denormalize($data['attachments'], 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Model\\CompactTweetFieldsAttachments', 'json', $context));
+            unset($data['attachments']);
         }
         if (\array_key_exists('withheld', $data)) {
             $object->setWithheld($this->denormalizer->denormalize($data['withheld'], 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Model\\TweetWithheld', 'json', $context));
+            unset($data['withheld']);
         }
         if (\array_key_exists('geo', $data)) {
             $object->setGeo($this->denormalizer->denormalize($data['geo'], 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Model\\DefaultTweetFieldsGeo', 'json', $context));
+            unset($data['geo']);
         }
         if (\array_key_exists('entities', $data)) {
             $object->setEntities($this->denormalizer->denormalize($data['entities'], 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Model\\FullTextEntities', 'json', $context));
+            unset($data['entities']);
         }
         if (\array_key_exists('stats', $data)) {
             $object->setStats($this->denormalizer->denormalize($data['stats'], 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Model\\DetailedTweetFieldsStats', 'json', $context));
+            unset($data['stats']);
         }
         if (\array_key_exists('context_annotation', $data)) {
             $values_1 = array();
@@ -87,15 +99,24 @@ class DetailedTweetNormalizer implements DenormalizerInterface, NormalizerInterf
                 $values_1[] = $this->denormalizer->denormalize($value_1, 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Model\\ContextAnnotation', 'json', $context);
             }
             $object->setContextAnnotation($values_1);
+            unset($data['context_annotation']);
         }
         if (\array_key_exists('possibly_sensitive', $data)) {
             $object->setPossiblySensitive($data['possibly_sensitive']);
+            unset($data['possibly_sensitive']);
         }
         if (\array_key_exists('lang', $data)) {
             $object->setLang($data['lang']);
+            unset($data['lang']);
         }
         if (\array_key_exists('source', $data)) {
             $object->setSource($data['source']);
+            unset($data['source']);
+        }
+        foreach ($data as $key => $value_2) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_2;
+            }
         }
         return $object;
     }
@@ -148,6 +169,11 @@ class DetailedTweetNormalizer implements DenormalizerInterface, NormalizerInterf
         }
         if (null !== $object->getSource()) {
             $data['source'] = $object->getSource();
+        }
+        foreach ($object as $key => $value_2) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_2;
+            }
         }
         return $data;
     }

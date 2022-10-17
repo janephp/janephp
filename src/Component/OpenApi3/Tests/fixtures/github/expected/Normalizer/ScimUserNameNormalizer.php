@@ -47,15 +47,22 @@ class ScimUserNameNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         if (\array_key_exists('givenName', $data) && $data['givenName'] !== null) {
             $object->setGivenName($data['givenName']);
+            unset($data['givenName']);
         }
         elseif (\array_key_exists('givenName', $data) && $data['givenName'] === null) {
             $object->setGivenName(null);
         }
         if (\array_key_exists('familyName', $data) && $data['familyName'] !== null) {
             $object->setFamilyName($data['familyName']);
+            unset($data['familyName']);
         }
         elseif (\array_key_exists('familyName', $data) && $data['familyName'] === null) {
             $object->setFamilyName(null);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -67,6 +74,11 @@ class ScimUserNameNormalizer implements DenormalizerInterface, NormalizerInterfa
         $data = array();
         $data['givenName'] = $object->getGivenName();
         $data['familyName'] = $object->getFamilyName();
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ScimUserNameConstraint());
             $context['skip_validation'] = true;

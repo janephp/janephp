@@ -43,15 +43,24 @@ class CreateFreshInvestigationRequestNormalizer implements DenormalizerInterface
         }
         if (\array_key_exists('consent', $data)) {
             $object->setConsent($data['consent']);
+            unset($data['consent']);
         }
         if (\array_key_exists('contactInfo', $data)) {
             $object->setContactInfo($this->denormalizer->denormalize($data['contactInfo'], 'CreditSafe\\API\\Model\\CreateFreshInvestigationRequestContactInfo', 'json', $context));
+            unset($data['contactInfo']);
         }
         if (\array_key_exists('chargeReference', $data)) {
             $object->setChargeReference($data['chargeReference']);
+            unset($data['chargeReference']);
         }
         if (\array_key_exists('searchCriteria', $data)) {
             $object->setSearchCriteria($this->denormalizer->denormalize($data['searchCriteria'], 'CreditSafe\\API\\Model\\CreateFreshInvestigationRequestSearchCriteria', 'json', $context));
+            unset($data['searchCriteria']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -72,6 +81,11 @@ class CreateFreshInvestigationRequestNormalizer implements DenormalizerInterface
         }
         if (null !== $object->getSearchCriteria()) {
             $data['searchCriteria'] = $this->normalizer->normalize($object->getSearchCriteria(), 'json', $context);
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

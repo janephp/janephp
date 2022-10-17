@@ -51,21 +51,32 @@ class GroupMappingNormalizer implements DenormalizerInterface, NormalizerInterfa
                 $values[] = $this->denormalizer->denormalize($value, 'Github\\Model\\GroupMappingGroupsItem', 'json', $context);
             }
             $object->setGroups($values);
+            unset($data['groups']);
         }
         if (\array_key_exists('group_id', $data)) {
             $object->setGroupId($data['group_id']);
+            unset($data['group_id']);
         }
         if (\array_key_exists('group_name', $data)) {
             $object->setGroupName($data['group_name']);
+            unset($data['group_name']);
         }
         if (\array_key_exists('group_description', $data)) {
             $object->setGroupDescription($data['group_description']);
+            unset($data['group_description']);
         }
         if (\array_key_exists('status', $data)) {
             $object->setStatus($data['status']);
+            unset($data['status']);
         }
         if (\array_key_exists('synced_at', $data)) {
             $object->setSyncedAt($data['synced_at']);
+            unset($data['synced_at']);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
@@ -96,6 +107,11 @@ class GroupMappingNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         if (null !== $object->getSyncedAt()) {
             $data['synced_at'] = $object->getSyncedAt();
+        }
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\GroupMappingConstraint());

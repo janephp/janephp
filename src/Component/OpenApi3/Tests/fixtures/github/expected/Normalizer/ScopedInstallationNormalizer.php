@@ -46,25 +46,39 @@ class ScopedInstallationNormalizer implements DenormalizerInterface, NormalizerI
             return $object;
         }
         if (\array_key_exists('permissions', $data)) {
-            $object->setPermissions($data['permissions']);
+            $values = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
+            foreach ($data['permissions'] as $key => $value) {
+                $values[$key] = $value;
+            }
+            $object->setPermissions($values);
+            unset($data['permissions']);
         }
         if (\array_key_exists('repository_selection', $data)) {
             $object->setRepositorySelection($data['repository_selection']);
+            unset($data['repository_selection']);
         }
         if (\array_key_exists('single_file_name', $data) && $data['single_file_name'] !== null) {
             $object->setSingleFileName($data['single_file_name']);
+            unset($data['single_file_name']);
         }
         elseif (\array_key_exists('single_file_name', $data) && $data['single_file_name'] === null) {
             $object->setSingleFileName(null);
         }
         if (\array_key_exists('repositories_url', $data)) {
             $object->setRepositoriesUrl($data['repositories_url']);
+            unset($data['repositories_url']);
         }
         if (\array_key_exists('account', $data) && $data['account'] !== null) {
             $object->setAccount($this->denormalizer->denormalize($data['account'], 'Github\\Model\\SimpleUser', 'json', $context));
+            unset($data['account']);
         }
         elseif (\array_key_exists('account', $data) && $data['account'] === null) {
             $object->setAccount(null);
+        }
+        foreach ($data as $key_1 => $value_1) {
+            if (preg_match('/.*/', (string) $key_1)) {
+                $object[$key_1] = $value_1;
+            }
         }
         return $object;
     }
@@ -74,11 +88,20 @@ class ScopedInstallationNormalizer implements DenormalizerInterface, NormalizerI
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        $data['permissions'] = $object->getPermissions();
+        $values = array();
+        foreach ($object->getPermissions() as $key => $value) {
+            $values[$key] = $value;
+        }
+        $data['permissions'] = $values;
         $data['repository_selection'] = $object->getRepositorySelection();
         $data['single_file_name'] = $object->getSingleFileName();
         $data['repositories_url'] = $object->getRepositoriesUrl();
         $data['account'] = $this->normalizer->normalize($object->getAccount(), 'json', $context);
+        foreach ($object as $key_1 => $value_1) {
+            if (preg_match('/.*/', (string) $key_1)) {
+                $data[$key_1] = $value_1;
+            }
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ScopedInstallationConstraint());
             $context['skip_validation'] = true;

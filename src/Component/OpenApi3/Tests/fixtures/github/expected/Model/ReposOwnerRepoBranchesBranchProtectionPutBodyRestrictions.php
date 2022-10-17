@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoBranchesBranchProtectionPutBodyRestrictions
+class ReposOwnerRepoBranchesBranchProtectionPutBodyRestrictions extends \ArrayObject
 {
     /**
      * The list of user `login`s with push access

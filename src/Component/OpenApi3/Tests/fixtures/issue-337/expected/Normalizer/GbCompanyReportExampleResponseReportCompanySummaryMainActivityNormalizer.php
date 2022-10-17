@@ -43,12 +43,20 @@ class GbCompanyReportExampleResponseReportCompanySummaryMainActivityNormalizer i
         }
         if (\array_key_exists('code', $data)) {
             $object->setCode($data['code']);
+            unset($data['code']);
         }
         if (\array_key_exists('description', $data)) {
             $object->setDescription($data['description']);
+            unset($data['description']);
         }
         if (\array_key_exists('classification', $data)) {
             $object->setClassification($data['classification']);
+            unset($data['classification']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -66,6 +74,11 @@ class GbCompanyReportExampleResponseReportCompanySummaryMainActivityNormalizer i
         }
         if (null !== $object->getClassification()) {
             $data['classification'] = $object->getClassification();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

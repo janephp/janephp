@@ -46,18 +46,28 @@ class GbCompanyReportExampleResponseReportNegativeInformationCountyCourtJudgemen
         }
         if (\array_key_exists('ccjDate', $data)) {
             $object->setCcjDate($data['ccjDate']);
+            unset($data['ccjDate']);
         }
         if (\array_key_exists('court', $data)) {
             $object->setCourt($data['court']);
+            unset($data['court']);
         }
         if (\array_key_exists('ccjAmount', $data)) {
             $object->setCcjAmount($data['ccjAmount']);
+            unset($data['ccjAmount']);
         }
         if (\array_key_exists('caseNumber', $data)) {
             $object->setCaseNumber($data['caseNumber']);
+            unset($data['caseNumber']);
         }
         if (\array_key_exists('ccjStatus', $data)) {
             $object->setCcjStatus($data['ccjStatus']);
+            unset($data['ccjStatus']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -81,6 +91,11 @@ class GbCompanyReportExampleResponseReportNegativeInformationCountyCourtJudgemen
         }
         if (null !== $object->getCcjStatus()) {
             $data['ccjStatus'] = $object->getCcjStatus();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

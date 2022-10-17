@@ -43,9 +43,11 @@ class ContentDetailViewEventNormalizer implements DenormalizerInterface, Normali
         }
         if (\array_key_exists('timestamp', $data)) {
             $object->setTimestamp(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['timestamp']));
+            unset($data['timestamp']);
         }
         if (\array_key_exists('kind', $data)) {
             $object->setKind($data['kind']);
+            unset($data['kind']);
         }
         if (\array_key_exists('contentIds', $data) && $data['contentIds'] !== null) {
             $values = array();
@@ -53,9 +55,15 @@ class ContentDetailViewEventNormalizer implements DenormalizerInterface, Normali
                 $values[] = $value;
             }
             $object->setContentIds($values);
+            unset($data['contentIds']);
         }
         elseif (\array_key_exists('contentIds', $data) && $data['contentIds'] === null) {
             $object->setContentIds(null);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
@@ -73,6 +81,11 @@ class ContentDetailViewEventNormalizer implements DenormalizerInterface, Normali
                 $values[] = $value;
             }
             $data['contentIds'] = $values;
+        }
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
+            }
         }
         return $data;
     }

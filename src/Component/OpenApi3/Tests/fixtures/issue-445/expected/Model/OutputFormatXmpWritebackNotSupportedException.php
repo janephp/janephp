@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class OutputFormatXmpWritebackNotSupportedException
+class OutputFormatXmpWritebackNotSupportedException extends \ArrayObject
 {
     /**
      * 

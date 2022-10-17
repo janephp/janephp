@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class XmpMappingConfigurationInvalidException
+class XmpMappingConfigurationInvalidException extends \ArrayObject
 {
     /**
      * 

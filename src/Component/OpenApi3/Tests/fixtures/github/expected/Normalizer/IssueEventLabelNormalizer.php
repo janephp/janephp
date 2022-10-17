@@ -47,15 +47,22 @@ class IssueEventLabelNormalizer implements DenormalizerInterface, NormalizerInte
         }
         if (\array_key_exists('name', $data) && $data['name'] !== null) {
             $object->setName($data['name']);
+            unset($data['name']);
         }
         elseif (\array_key_exists('name', $data) && $data['name'] === null) {
             $object->setName(null);
         }
         if (\array_key_exists('color', $data) && $data['color'] !== null) {
             $object->setColor($data['color']);
+            unset($data['color']);
         }
         elseif (\array_key_exists('color', $data) && $data['color'] === null) {
             $object->setColor(null);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -67,6 +74,11 @@ class IssueEventLabelNormalizer implements DenormalizerInterface, NormalizerInte
         $data = array();
         $data['name'] = $object->getName();
         $data['color'] = $object->getColor();
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\IssueEventLabelConstraint());
             $context['skip_validation'] = true;

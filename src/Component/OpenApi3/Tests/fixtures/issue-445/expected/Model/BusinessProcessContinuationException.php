@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class BusinessProcessContinuationException
+class BusinessProcessContinuationException extends \ArrayObject
 {
     /**
      * 

@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoKeysPostBody
+class ReposOwnerRepoKeysPostBody extends \ArrayObject
 {
     /**
      * A name for the key.

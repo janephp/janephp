@@ -47,6 +47,12 @@ class ReposOwnerRepoNotificationsPutBodyNormalizer implements DenormalizerInterf
         }
         if (\array_key_exists('last_read_at', $data)) {
             $object->setLastReadAt($data['last_read_at']);
+            unset($data['last_read_at']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -58,6 +64,11 @@ class ReposOwnerRepoNotificationsPutBodyNormalizer implements DenormalizerInterf
         $data = array();
         if (null !== $object->getLastReadAt()) {
             $data['last_read_at'] = $object->getLastReadAt();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ReposOwnerRepoNotificationsPutBodyConstraint());

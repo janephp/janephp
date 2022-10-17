@@ -2,7 +2,7 @@
 
 namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 
-class DetailedPlaceFields
+class DetailedPlaceFields extends \ArrayObject
 {
     /**
      * 

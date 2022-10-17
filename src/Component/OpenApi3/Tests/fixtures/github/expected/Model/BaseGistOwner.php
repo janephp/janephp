@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class BaseGistOwner
+class BaseGistOwner extends \ArrayObject
 {
     /**
      * 

@@ -2,7 +2,7 @@
 
 namespace CreditSafe\API\Model;
 
-class GbCompanyReportExampleResponseReportShareCapitalStructure
+class GbCompanyReportExampleResponseReportShareCapitalStructure extends \ArrayObject
 {
     /**
      * 

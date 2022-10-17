@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class BusinessProcessNotExternalException
+class BusinessProcessNotExternalException extends \ArrayObject
 {
     /**
      * 

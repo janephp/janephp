@@ -43,12 +43,20 @@ class CreateFreshInvestigationRequestSearchCriteriaAddressNormalizer implements 
         }
         if (\array_key_exists('simple', $data)) {
             $object->setSimple($data['simple']);
+            unset($data['simple']);
         }
         if (\array_key_exists('postcode', $data)) {
             $object->setPostcode($data['postcode']);
+            unset($data['postcode']);
         }
         if (\array_key_exists('city', $data)) {
             $object->setCity($data['city']);
+            unset($data['city']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -66,6 +74,11 @@ class CreateFreshInvestigationRequestSearchCriteriaAddressNormalizer implements 
         }
         if (null !== $object->getCity()) {
             $data['city'] = $object->getCity();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

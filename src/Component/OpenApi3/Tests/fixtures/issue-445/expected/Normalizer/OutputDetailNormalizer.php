@@ -43,42 +43,57 @@ class OutputDetailNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         if (\array_key_exists('id', $data) && $data['id'] !== null) {
             $object->setId($data['id']);
+            unset($data['id']);
         }
         elseif (\array_key_exists('id', $data) && $data['id'] === null) {
             $object->setId(null);
         }
         if (\array_key_exists('outputFormatId', $data)) {
             $object->setOutputFormatId($data['outputFormatId']);
+            unset($data['outputFormatId']);
         }
         if (\array_key_exists('contentId', $data)) {
             $object->setContentId($data['contentId']);
+            unset($data['contentId']);
         }
         if (\array_key_exists('renderingState', $data)) {
             $object->setRenderingState($data['renderingState']);
+            unset($data['renderingState']);
         }
         if (\array_key_exists('detail', $data) && $data['detail'] !== null) {
             $object->setDetail($data['detail']);
+            unset($data['detail']);
         }
         elseif (\array_key_exists('detail', $data) && $data['detail'] === null) {
             $object->setDetail(null);
         }
         if (\array_key_exists('backupTimestamp', $data) && $data['backupTimestamp'] !== null) {
             $object->setBackupTimestamp(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['backupTimestamp']));
+            unset($data['backupTimestamp']);
         }
         elseif (\array_key_exists('backupTimestamp', $data) && $data['backupTimestamp'] === null) {
             $object->setBackupTimestamp(null);
         }
         if (\array_key_exists('attemptsLeft', $data)) {
             $object->setAttemptsLeft($data['attemptsLeft']);
+            unset($data['attemptsLeft']);
         }
         if (\array_key_exists('fileVersion', $data)) {
             $object->setFileVersion($data['fileVersion']);
+            unset($data['fileVersion']);
         }
         if (\array_key_exists('dynamicRendering', $data)) {
             $object->setDynamicRendering($data['dynamicRendering']);
+            unset($data['dynamicRendering']);
         }
         if (\array_key_exists('kind', $data)) {
             $object->setKind($data['kind']);
+            unset($data['kind']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -104,6 +119,11 @@ class OutputDetailNormalizer implements DenormalizerInterface, NormalizerInterfa
         $data['fileVersion'] = $object->getFileVersion();
         $data['dynamicRendering'] = $object->getDynamicRendering();
         $data['kind'] = $object->getKind();
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
         return $data;
     }
 }

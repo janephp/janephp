@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class UserUpdateRequest
+class UserUpdateRequest extends \ArrayObject
 {
     /**
      * User's Picturepark ID.

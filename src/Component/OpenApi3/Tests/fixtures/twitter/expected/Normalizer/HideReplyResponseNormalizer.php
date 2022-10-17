@@ -43,6 +43,12 @@ class HideReplyResponseNormalizer implements DenormalizerInterface, NormalizerIn
         }
         if (\array_key_exists('data', $data)) {
             $object->setData($this->denormalizer->denormalize($data['data'], 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Model\\HideReplyResponseData', 'json', $context));
+            unset($data['data']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -54,6 +60,11 @@ class HideReplyResponseNormalizer implements DenormalizerInterface, NormalizerIn
         $data = array();
         if (null !== $object->getData()) {
             $data['data'] = $this->normalizer->normalize($object->getData(), 'json', $context);
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

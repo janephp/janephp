@@ -43,15 +43,24 @@ class TweetSearchResponseMetaNormalizer implements DenormalizerInterface, Normal
         }
         if (\array_key_exists('newest_id', $data)) {
             $object->setNewestId($data['newest_id']);
+            unset($data['newest_id']);
         }
         if (\array_key_exists('oldest_id', $data)) {
             $object->setOldestId($data['oldest_id']);
+            unset($data['oldest_id']);
         }
         if (\array_key_exists('next_token', $data)) {
             $object->setNextToken($data['next_token']);
+            unset($data['next_token']);
         }
         if (\array_key_exists('result_count', $data)) {
             $object->setResultCount($data['result_count']);
+            unset($data['result_count']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -72,6 +81,11 @@ class TweetSearchResponseMetaNormalizer implements DenormalizerInterface, Normal
         }
         if (null !== $object->getResultCount()) {
             $data['result_count'] = $object->getResultCount();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

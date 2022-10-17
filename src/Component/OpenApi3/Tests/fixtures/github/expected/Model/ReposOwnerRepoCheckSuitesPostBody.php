@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoCheckSuitesPostBody
+class ReposOwnerRepoCheckSuitesPostBody extends \ArrayObject
 {
     /**
      * The sha of the head commit.

@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class CollectionSizeLimitExceededException
+class CollectionSizeLimitExceededException extends \ArrayObject
 {
     /**
      * 

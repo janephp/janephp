@@ -2,7 +2,7 @@
 
 namespace Jane\OpenApi3\Tests\Expected\Model;
 
-class CompactTweetFieldsReferencedTweetsItem
+class CompactTweetFieldsReferencedTweetsItem extends \ArrayObject
 {
     /**
      * 

@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class TeamsTeamIdTeamSyncGroupMappingsPatchBodyGroupsItem
+class TeamsTeamIdTeamSyncGroupMappingsPatchBodyGroupsItem extends \ArrayObject
 {
     /**
      * ID of the IdP group.

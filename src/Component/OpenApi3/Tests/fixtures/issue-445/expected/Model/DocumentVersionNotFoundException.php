@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class DocumentVersionNotFoundException
+class DocumentVersionNotFoundException extends \ArrayObject
 {
     /**
      * 

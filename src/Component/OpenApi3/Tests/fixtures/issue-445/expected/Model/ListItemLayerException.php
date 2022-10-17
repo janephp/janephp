@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class ListItemLayerException
+class ListItemLayerException extends \ArrayObject
 {
     /**
      * 

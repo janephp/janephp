@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class SnapshotRetentionTimeTooShortException
+class SnapshotRetentionTimeTooShortException extends \ArrayObject
 {
     /**
      * 

@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class BusinessRuleTriggerPointMissingException
+class BusinessRuleTriggerPointMissingException extends \ArrayObject
 {
     /**
      * 

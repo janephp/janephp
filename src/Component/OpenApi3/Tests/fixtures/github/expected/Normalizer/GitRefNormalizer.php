@@ -47,15 +47,24 @@ class GitRefNormalizer implements DenormalizerInterface, NormalizerInterface, De
         }
         if (\array_key_exists('ref', $data)) {
             $object->setRef($data['ref']);
+            unset($data['ref']);
         }
         if (\array_key_exists('node_id', $data)) {
             $object->setNodeId($data['node_id']);
+            unset($data['node_id']);
         }
         if (\array_key_exists('url', $data)) {
             $object->setUrl($data['url']);
+            unset($data['url']);
         }
         if (\array_key_exists('object', $data)) {
             $object->setObject($this->denormalizer->denormalize($data['object'], 'Github\\Model\\GitRefObject', 'json', $context));
+            unset($data['object']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -76,6 +85,11 @@ class GitRefNormalizer implements DenormalizerInterface, NormalizerInterface, De
         }
         if (null !== $object->getObject()) {
             $data['object'] = $this->normalizer->normalize($object->getObject(), 'json', $context);
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\GitRefConstraint());

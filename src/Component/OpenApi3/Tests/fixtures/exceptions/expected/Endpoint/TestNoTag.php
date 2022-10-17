@@ -27,7 +27,6 @@ class TestNoTag extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\B
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\TestNoTagBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\TestNoTagNotFoundException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\TestNoTagInternalServerErrorException
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\TestNoTagCustom600Exception
      *
      * @return null
      */
@@ -41,9 +40,6 @@ class TestNoTag extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\B
         }
         if (500 === $status) {
             throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\TestNoTagInternalServerErrorException();
-        }
-        if (is_null($contentType) === false && (600 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\TestNoTagCustom600Exception($serializer->deserialize($body, 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Model\\Message', 'json'));
         }
     }
     public function getAuthenticationScopes() : array

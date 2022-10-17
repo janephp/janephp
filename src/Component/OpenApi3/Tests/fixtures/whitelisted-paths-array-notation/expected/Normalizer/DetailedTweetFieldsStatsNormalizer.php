@@ -43,15 +43,24 @@ class DetailedTweetFieldsStatsNormalizer implements DenormalizerInterface, Norma
         }
         if (\array_key_exists('retweet_count', $data)) {
             $object->setRetweetCount($data['retweet_count']);
+            unset($data['retweet_count']);
         }
         if (\array_key_exists('reply_count', $data)) {
             $object->setReplyCount($data['reply_count']);
+            unset($data['reply_count']);
         }
         if (\array_key_exists('like_count', $data)) {
             $object->setLikeCount($data['like_count']);
+            unset($data['like_count']);
         }
         if (\array_key_exists('quote_count', $data)) {
             $object->setQuoteCount($data['quote_count']);
+            unset($data['quote_count']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -66,6 +75,11 @@ class DetailedTweetFieldsStatsNormalizer implements DenormalizerInterface, Norma
         $data['like_count'] = $object->getLikeCount();
         if (null !== $object->getQuoteCount()) {
             $data['quote_count'] = $object->getQuoteCount();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

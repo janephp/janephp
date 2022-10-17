@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class WorkflowRun
+class WorkflowRun extends \ArrayObject
 {
     /**
      * The ID of the workflow run.

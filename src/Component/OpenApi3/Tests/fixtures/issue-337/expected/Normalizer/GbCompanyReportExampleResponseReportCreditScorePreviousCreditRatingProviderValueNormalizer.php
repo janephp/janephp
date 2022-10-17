@@ -43,12 +43,20 @@ class GbCompanyReportExampleResponseReportCreditScorePreviousCreditRatingProvide
         }
         if (\array_key_exists('maxValue', $data)) {
             $object->setMaxValue($data['maxValue']);
+            unset($data['maxValue']);
         }
         if (\array_key_exists('minValue', $data)) {
             $object->setMinValue($data['minValue']);
+            unset($data['minValue']);
         }
         if (\array_key_exists('value', $data)) {
             $object->setValue($data['value']);
+            unset($data['value']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -66,6 +74,11 @@ class GbCompanyReportExampleResponseReportCreditScorePreviousCreditRatingProvide
         }
         if (null !== $object->getValue()) {
             $data['value'] = $object->getValue();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

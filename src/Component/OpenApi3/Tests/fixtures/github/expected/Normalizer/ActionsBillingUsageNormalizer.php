@@ -47,15 +47,24 @@ class ActionsBillingUsageNormalizer implements DenormalizerInterface, Normalizer
         }
         if (\array_key_exists('total_minutes_used', $data)) {
             $object->setTotalMinutesUsed($data['total_minutes_used']);
+            unset($data['total_minutes_used']);
         }
         if (\array_key_exists('total_paid_minutes_used', $data)) {
             $object->setTotalPaidMinutesUsed($data['total_paid_minutes_used']);
+            unset($data['total_paid_minutes_used']);
         }
         if (\array_key_exists('included_minutes', $data)) {
             $object->setIncludedMinutes($data['included_minutes']);
+            unset($data['included_minutes']);
         }
         if (\array_key_exists('minutes_used_breakdown', $data)) {
             $object->setMinutesUsedBreakdown($this->denormalizer->denormalize($data['minutes_used_breakdown'], 'Github\\Model\\ActionsBillingUsageMinutesUsedBreakdown', 'json', $context));
+            unset($data['minutes_used_breakdown']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -76,6 +85,11 @@ class ActionsBillingUsageNormalizer implements DenormalizerInterface, Normalizer
         }
         if (null !== $object->getMinutesUsedBreakdown()) {
             $data['minutes_used_breakdown'] = $this->normalizer->normalize($object->getMinutesUsedBreakdown(), 'json', $context);
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ActionsBillingUsageConstraint());

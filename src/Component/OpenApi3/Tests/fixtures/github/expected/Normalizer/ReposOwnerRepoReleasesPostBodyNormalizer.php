@@ -47,21 +47,32 @@ class ReposOwnerRepoReleasesPostBodyNormalizer implements DenormalizerInterface,
         }
         if (\array_key_exists('tag_name', $data)) {
             $object->setTagName($data['tag_name']);
+            unset($data['tag_name']);
         }
         if (\array_key_exists('target_commitish', $data)) {
             $object->setTargetCommitish($data['target_commitish']);
+            unset($data['target_commitish']);
         }
         if (\array_key_exists('name', $data)) {
             $object->setName($data['name']);
+            unset($data['name']);
         }
         if (\array_key_exists('body', $data)) {
             $object->setBody($data['body']);
+            unset($data['body']);
         }
         if (\array_key_exists('draft', $data)) {
             $object->setDraft($data['draft']);
+            unset($data['draft']);
         }
         if (\array_key_exists('prerelease', $data)) {
             $object->setPrerelease($data['prerelease']);
+            unset($data['prerelease']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -86,6 +97,11 @@ class ReposOwnerRepoReleasesPostBodyNormalizer implements DenormalizerInterface,
         }
         if (null !== $object->getPrerelease()) {
             $data['prerelease'] = $object->getPrerelease();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ReposOwnerRepoReleasesPostBodyConstraint());

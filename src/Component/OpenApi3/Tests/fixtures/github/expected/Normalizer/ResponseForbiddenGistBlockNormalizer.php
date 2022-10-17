@@ -47,15 +47,23 @@ class ResponseForbiddenGistBlockNormalizer implements DenormalizerInterface, Nor
         }
         if (\array_key_exists('reason', $data)) {
             $object->setReason($data['reason']);
+            unset($data['reason']);
         }
         if (\array_key_exists('created_at', $data)) {
             $object->setCreatedAt($data['created_at']);
+            unset($data['created_at']);
         }
         if (\array_key_exists('html_url', $data) && $data['html_url'] !== null) {
             $object->setHtmlUrl($data['html_url']);
+            unset($data['html_url']);
         }
         elseif (\array_key_exists('html_url', $data) && $data['html_url'] === null) {
             $object->setHtmlUrl(null);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -73,6 +81,11 @@ class ResponseForbiddenGistBlockNormalizer implements DenormalizerInterface, Nor
         }
         if (null !== $object->getHtmlUrl()) {
             $data['html_url'] = $object->getHtmlUrl();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ResponseForbiddenGistBlockConstraint());

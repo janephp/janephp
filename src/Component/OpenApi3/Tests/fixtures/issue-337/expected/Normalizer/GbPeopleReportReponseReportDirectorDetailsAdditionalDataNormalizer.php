@@ -43,9 +43,16 @@ class GbPeopleReportReponseReportDirectorDetailsAdditionalDataNormalizer impleme
         }
         if (\array_key_exists('disqualified', $data)) {
             $object->setDisqualified($data['disqualified']);
+            unset($data['disqualified']);
         }
         if (\array_key_exists('disqualifiedException', $data)) {
             $object->setDisqualifiedException($data['disqualifiedException']);
+            unset($data['disqualifiedException']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -60,6 +67,11 @@ class GbPeopleReportReponseReportDirectorDetailsAdditionalDataNormalizer impleme
         }
         if (null !== $object->getDisqualifiedException()) {
             $data['disqualifiedException'] = $object->getDisqualifiedException();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

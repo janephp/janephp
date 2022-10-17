@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class SchemaMultipleTypesException
+class SchemaMultipleTypesException extends \ArrayObject
 {
     /**
      * 

@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class AuthorizationsClientsClientIdPutBody
+class AuthorizationsClientsClientIdPutBody extends \ArrayObject
 {
     /**
      * The OAuth app client secret for which to create the token.

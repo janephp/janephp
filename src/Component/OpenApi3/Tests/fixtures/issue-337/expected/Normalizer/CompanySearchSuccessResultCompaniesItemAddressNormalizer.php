@@ -43,18 +43,28 @@ class CompanySearchSuccessResultCompaniesItemAddressNormalizer implements Denorm
         }
         if (\array_key_exists('simpleValue', $data)) {
             $object->setSimpleValue($data['simpleValue']);
+            unset($data['simpleValue']);
         }
         if (\array_key_exists('street', $data)) {
             $object->setStreet($data['street']);
+            unset($data['street']);
         }
         if (\array_key_exists('city', $data)) {
             $object->setCity($data['city']);
+            unset($data['city']);
         }
         if (\array_key_exists('postCode', $data)) {
             $object->setPostCode($data['postCode']);
+            unset($data['postCode']);
         }
         if (\array_key_exists('province', $data)) {
             $object->setProvince($data['province']);
+            unset($data['province']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -78,6 +88,11 @@ class CompanySearchSuccessResultCompaniesItemAddressNormalizer implements Denorm
         }
         if (null !== $object->getProvince()) {
             $data['province'] = $object->getProvince();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

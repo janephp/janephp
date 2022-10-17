@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class SearchBehaviorWithAggregationBaseResultOfContent
+class SearchBehaviorWithAggregationBaseResultOfContent extends \ArrayObject
 {
     /**
      * The total number of matching documents.

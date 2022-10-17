@@ -55,14 +55,18 @@ class ShareContentDetailNormalizer implements DenormalizerInterface, NormalizerI
             $object->setLayerSchemaIds(null);
         }
         if (\array_key_exists('content', $data)) {
-            $object->setContent($data['content']);
-        }
-        if (\array_key_exists('metadata', $data) && $data['metadata'] !== null) {
             $values_1 = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
-            foreach ($data['metadata'] as $key => $value_1) {
+            foreach ($data['content'] as $key => $value_1) {
                 $values_1[$key] = $value_1;
             }
-            $object->setMetadata($values_1);
+            $object->setContent($values_1);
+        }
+        if (\array_key_exists('metadata', $data) && $data['metadata'] !== null) {
+            $values_2 = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
+            foreach ($data['metadata'] as $key_1 => $value_2) {
+                $values_2[$key_1] = $value_2;
+            }
+            $object->setMetadata($values_2);
         }
         elseif (\array_key_exists('metadata', $data) && $data['metadata'] === null) {
             $object->setMetadata(null);
@@ -71,11 +75,11 @@ class ShareContentDetailNormalizer implements DenormalizerInterface, NormalizerI
             $object->setId($data['id']);
         }
         if (\array_key_exists('outputs', $data)) {
-            $values_2 = array();
-            foreach ($data['outputs'] as $value_2) {
-                $values_2[] = $this->denormalizer->denormalize($value_2, 'PicturePark\\API\\Model\\ShareOutputBase', 'json', $context);
+            $values_3 = array();
+            foreach ($data['outputs'] as $value_3) {
+                $values_3[] = $this->denormalizer->denormalize($value_3, 'PicturePark\\API\\Model\\ShareOutputBase', 'json', $context);
             }
-            $object->setOutputs($values_2);
+            $object->setOutputs($values_3);
         }
         if (\array_key_exists('contentType', $data)) {
             $object->setContentType($data['contentType']);
@@ -105,20 +109,24 @@ class ShareContentDetailNormalizer implements DenormalizerInterface, NormalizerI
             }
             $data['layerSchemaIds'] = $values;
         }
-        $data['content'] = $object->getContent();
+        $values_1 = array();
+        foreach ($object->getContent() as $key => $value_1) {
+            $values_1[$key] = $value_1;
+        }
+        $data['content'] = $values_1;
         if (null !== $object->getMetadata()) {
-            $values_1 = array();
-            foreach ($object->getMetadata() as $key => $value_1) {
-                $values_1[$key] = $value_1;
+            $values_2 = array();
+            foreach ($object->getMetadata() as $key_1 => $value_2) {
+                $values_2[$key_1] = $value_2;
             }
-            $data['metadata'] = $values_1;
+            $data['metadata'] = $values_2;
         }
         $data['id'] = $object->getId();
-        $values_2 = array();
-        foreach ($object->getOutputs() as $value_2) {
-            $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
+        $values_3 = array();
+        foreach ($object->getOutputs() as $value_3) {
+            $values_3[] = $this->normalizer->normalize($value_3, 'json', $context);
         }
-        $data['outputs'] = $values_2;
+        $data['outputs'] = $values_3;
         $data['contentType'] = $object->getContentType();
         $data['displayValues'] = $object->getDisplayValues();
         if (null !== $object->getIconUrl()) {

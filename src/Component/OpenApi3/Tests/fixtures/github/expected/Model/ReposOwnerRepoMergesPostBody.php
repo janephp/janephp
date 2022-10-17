@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoMergesPostBody
+class ReposOwnerRepoMergesPostBody extends \ArrayObject
 {
     /**
      * The name of the base branch that the head will be merged into.

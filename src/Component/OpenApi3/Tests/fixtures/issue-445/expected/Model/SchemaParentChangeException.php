@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class SchemaParentChangeException
+class SchemaParentChangeException extends \ArrayObject
 {
     /**
      * 

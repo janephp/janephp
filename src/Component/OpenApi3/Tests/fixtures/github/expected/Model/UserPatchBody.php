@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class UserPatchBody
+class UserPatchBody extends \ArrayObject
 {
     /**
      * The new name of the user.

@@ -47,12 +47,20 @@ class ReposOwnerRepoReleasesAssetsAssetIdPatchBodyNormalizer implements Denormal
         }
         if (\array_key_exists('name', $data)) {
             $object->setName($data['name']);
+            unset($data['name']);
         }
         if (\array_key_exists('label', $data)) {
             $object->setLabel($data['label']);
+            unset($data['label']);
         }
         if (\array_key_exists('state', $data)) {
             $object->setState($data['state']);
+            unset($data['state']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -70,6 +78,11 @@ class ReposOwnerRepoReleasesAssetsAssetIdPatchBodyNormalizer implements Denormal
         }
         if (null !== $object->getState()) {
             $data['state'] = $object->getState();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ReposOwnerRepoReleasesAssetsAssetIdPatchBodyConstraint());

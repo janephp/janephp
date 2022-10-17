@@ -43,42 +43,56 @@ class MaximumTransferSizeExceptionNormalizer implements DenormalizerInterface, N
         }
         if (\array_key_exists('traceLevel', $data)) {
             $object->setTraceLevel($data['traceLevel']);
+            unset($data['traceLevel']);
         }
         if (\array_key_exists('traceId', $data) && $data['traceId'] !== null) {
             $object->setTraceId($data['traceId']);
+            unset($data['traceId']);
         }
         elseif (\array_key_exists('traceId', $data) && $data['traceId'] === null) {
             $object->setTraceId(null);
         }
         if (\array_key_exists('traceJobId', $data) && $data['traceJobId'] !== null) {
             $object->setTraceJobId($data['traceJobId']);
+            unset($data['traceJobId']);
         }
         elseif (\array_key_exists('traceJobId', $data) && $data['traceJobId'] === null) {
             $object->setTraceJobId(null);
         }
         if (\array_key_exists('httpStatusCode', $data)) {
             $object->setHttpStatusCode($data['httpStatusCode']);
+            unset($data['httpStatusCode']);
         }
         if (\array_key_exists('exceptionMessage', $data) && $data['exceptionMessage'] !== null) {
             $object->setExceptionMessage($data['exceptionMessage']);
+            unset($data['exceptionMessage']);
         }
         elseif (\array_key_exists('exceptionMessage', $data) && $data['exceptionMessage'] === null) {
             $object->setExceptionMessage(null);
         }
         if (\array_key_exists('kind', $data)) {
             $object->setKind($data['kind']);
+            unset($data['kind']);
         }
         if (\array_key_exists('transferSize', $data)) {
             $object->setTransferSize($data['transferSize']);
+            unset($data['transferSize']);
         }
         if (\array_key_exists('maximumTransferSize', $data)) {
             $object->setMaximumTransferSize($data['maximumTransferSize']);
+            unset($data['maximumTransferSize']);
         }
         if (\array_key_exists('transferId', $data) && $data['transferId'] !== null) {
             $object->setTransferId($data['transferId']);
+            unset($data['transferId']);
         }
         elseif (\array_key_exists('transferId', $data) && $data['transferId'] === null) {
             $object->setTransferId(null);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -112,6 +126,11 @@ class MaximumTransferSizeExceptionNormalizer implements DenormalizerInterface, N
         }
         if (null !== $object->getTransferId()) {
             $data['transferId'] = $object->getTransferId();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

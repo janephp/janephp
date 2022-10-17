@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class ContentSubmoduleLinks
+class ContentSubmoduleLinks extends \ArrayObject
 {
     /**
      * 

@@ -43,60 +43,76 @@ class CustomerAliasInUseExceptionNormalizer implements DenormalizerInterface, No
         }
         if (\array_key_exists('traceLevel', $data)) {
             $object->setTraceLevel($data['traceLevel']);
+            unset($data['traceLevel']);
         }
         if (\array_key_exists('traceId', $data) && $data['traceId'] !== null) {
             $object->setTraceId($data['traceId']);
+            unset($data['traceId']);
         }
         elseif (\array_key_exists('traceId', $data) && $data['traceId'] === null) {
             $object->setTraceId(null);
         }
         if (\array_key_exists('traceJobId', $data) && $data['traceJobId'] !== null) {
             $object->setTraceJobId($data['traceJobId']);
+            unset($data['traceJobId']);
         }
         elseif (\array_key_exists('traceJobId', $data) && $data['traceJobId'] === null) {
             $object->setTraceJobId(null);
         }
         if (\array_key_exists('httpStatusCode', $data)) {
             $object->setHttpStatusCode($data['httpStatusCode']);
+            unset($data['httpStatusCode']);
         }
         if (\array_key_exists('exceptionMessage', $data) && $data['exceptionMessage'] !== null) {
             $object->setExceptionMessage($data['exceptionMessage']);
+            unset($data['exceptionMessage']);
         }
         elseif (\array_key_exists('exceptionMessage', $data) && $data['exceptionMessage'] === null) {
             $object->setExceptionMessage(null);
         }
         if (\array_key_exists('kind', $data)) {
             $object->setKind($data['kind']);
+            unset($data['kind']);
         }
         if (\array_key_exists('customerId', $data) && $data['customerId'] !== null) {
             $object->setCustomerId($data['customerId']);
+            unset($data['customerId']);
         }
         elseif (\array_key_exists('customerId', $data) && $data['customerId'] === null) {
             $object->setCustomerId(null);
         }
         if (\array_key_exists('customerAlias', $data) && $data['customerAlias'] !== null) {
             $object->setCustomerAlias($data['customerAlias']);
+            unset($data['customerAlias']);
         }
         elseif (\array_key_exists('customerAlias', $data) && $data['customerAlias'] === null) {
             $object->setCustomerAlias(null);
         }
         if (\array_key_exists('userId', $data) && $data['userId'] !== null) {
             $object->setUserId($data['userId']);
+            unset($data['userId']);
         }
         elseif (\array_key_exists('userId', $data) && $data['userId'] === null) {
             $object->setUserId(null);
         }
         if (\array_key_exists('existingCustomerId', $data) && $data['existingCustomerId'] !== null) {
             $object->setExistingCustomerId($data['existingCustomerId']);
+            unset($data['existingCustomerId']);
         }
         elseif (\array_key_exists('existingCustomerId', $data) && $data['existingCustomerId'] === null) {
             $object->setExistingCustomerId(null);
         }
         if (\array_key_exists('alias', $data) && $data['alias'] !== null) {
             $object->setAlias($data['alias']);
+            unset($data['alias']);
         }
         elseif (\array_key_exists('alias', $data) && $data['alias'] === null) {
             $object->setAlias(null);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -136,6 +152,11 @@ class CustomerAliasInUseExceptionNormalizer implements DenormalizerInterface, No
         }
         if (null !== $object->getAlias()) {
             $data['alias'] = $object->getAlias();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

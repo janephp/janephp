@@ -43,33 +43,43 @@ class GbCompanyReportExampleResponseReportNormalizer implements DenormalizerInte
         }
         if (\array_key_exists('companyId', $data)) {
             $object->setCompanyId($data['companyId']);
+            unset($data['companyId']);
         }
         if (\array_key_exists('language', $data)) {
             $object->setLanguage($data['language']);
+            unset($data['language']);
         }
         if (\array_key_exists('companySummary', $data)) {
             $object->setCompanySummary($this->denormalizer->denormalize($data['companySummary'], 'CreditSafe\\API\\Model\\GbCompanyReportExampleResponseReportCompanySummary', 'json', $context));
+            unset($data['companySummary']);
         }
         if (\array_key_exists('companyIdentification', $data)) {
             $object->setCompanyIdentification($this->denormalizer->denormalize($data['companyIdentification'], 'CreditSafe\\API\\Model\\GbCompanyReportExampleResponseReportCompanyIdentification', 'json', $context));
+            unset($data['companyIdentification']);
         }
         if (\array_key_exists('creditScore', $data)) {
             $object->setCreditScore($this->denormalizer->denormalize($data['creditScore'], 'CreditSafe\\API\\Model\\GbCompanyReportExampleResponseReportCreditScore', 'json', $context));
+            unset($data['creditScore']);
         }
         if (\array_key_exists('contactInformation', $data)) {
             $object->setContactInformation($this->denormalizer->denormalize($data['contactInformation'], 'CreditSafe\\API\\Model\\GbCompanyReportExampleResponseReportContactInformation', 'json', $context));
+            unset($data['contactInformation']);
         }
         if (\array_key_exists('shareCapitalStructure', $data)) {
             $object->setShareCapitalStructure($this->denormalizer->denormalize($data['shareCapitalStructure'], 'CreditSafe\\API\\Model\\GbCompanyReportExampleResponseReportShareCapitalStructure', 'json', $context));
+            unset($data['shareCapitalStructure']);
         }
         if (\array_key_exists('directors', $data)) {
             $object->setDirectors($this->denormalizer->denormalize($data['directors'], 'CreditSafe\\API\\Model\\GbCompanyReportExampleResponseReportDirectors', 'json', $context));
+            unset($data['directors']);
         }
         if (\array_key_exists('otherInformation', $data)) {
             $object->setOtherInformation($this->denormalizer->denormalize($data['otherInformation'], 'CreditSafe\\API\\Model\\GbCompanyReportExampleResponseReportOtherInformation', 'json', $context));
+            unset($data['otherInformation']);
         }
         if (\array_key_exists('groupStructure', $data)) {
             $object->setGroupStructure($this->denormalizer->denormalize($data['groupStructure'], 'CreditSafe\\API\\Model\\GbCompanyReportExampleResponseReportGroupStructure', 'json', $context));
+            unset($data['groupStructure']);
         }
         if (\array_key_exists('extendedGroupStructure', $data)) {
             $values = array();
@@ -77,6 +87,7 @@ class GbCompanyReportExampleResponseReportNormalizer implements DenormalizerInte
                 $values[] = $this->denormalizer->denormalize($value, 'CreditSafe\\API\\Model\\GbCompanyReportExampleResponseReportExtendedGroupStructureItem', 'json', $context);
             }
             $object->setExtendedGroupStructure($values);
+            unset($data['extendedGroupStructure']);
         }
         if (\array_key_exists('financialStatements', $data)) {
             $values_1 = array();
@@ -84,6 +95,7 @@ class GbCompanyReportExampleResponseReportNormalizer implements DenormalizerInte
                 $values_1[] = $this->denormalizer->denormalize($value_1, 'CreditSafe\\API\\Model\\GbCompanyReportExampleResponseReportFinancialStatementsItem', 'json', $context);
             }
             $object->setFinancialStatements($values_1);
+            unset($data['financialStatements']);
         }
         if (\array_key_exists('localFinancialStatements', $data)) {
             $values_2 = array();
@@ -91,15 +103,24 @@ class GbCompanyReportExampleResponseReportNormalizer implements DenormalizerInte
                 $values_2[] = $this->denormalizer->denormalize($value_2, 'CreditSafe\\API\\Model\\GbCompanyReportExampleResponseReportLocalFinancialStatementsItem', 'json', $context);
             }
             $object->setLocalFinancialStatements($values_2);
+            unset($data['localFinancialStatements']);
         }
         if (\array_key_exists('paymentData', $data)) {
             $object->setPaymentData($this->denormalizer->denormalize($data['paymentData'], 'CreditSafe\\API\\Model\\GbCompanyReportExampleResponseReportPaymentData', 'json', $context));
+            unset($data['paymentData']);
         }
         if (\array_key_exists('negativeInformation', $data)) {
             $object->setNegativeInformation($this->denormalizer->denormalize($data['negativeInformation'], 'CreditSafe\\API\\Model\\GbCompanyReportExampleResponseReportNegativeInformation', 'json', $context));
+            unset($data['negativeInformation']);
         }
         if (\array_key_exists('additionalInformation', $data)) {
             $object->setAdditionalInformation($this->denormalizer->denormalize($data['additionalInformation'], 'CreditSafe\\API\\Model\\GbCompanyReportExampleResponseReportAdditionalInformation', 'json', $context));
+            unset($data['additionalInformation']);
+        }
+        foreach ($data as $key => $value_3) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_3;
+            }
         }
         return $object;
     }
@@ -168,6 +189,11 @@ class GbCompanyReportExampleResponseReportNormalizer implements DenormalizerInte
         }
         if (null !== $object->getAdditionalInformation()) {
             $data['additionalInformation'] = $this->normalizer->normalize($object->getAdditionalInformation(), 'json', $context);
+        }
+        foreach ($object as $key => $value_3) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_3;
+            }
         }
         return $data;
     }

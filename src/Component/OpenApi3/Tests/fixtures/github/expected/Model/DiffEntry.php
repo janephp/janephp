@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class DiffEntry
+class DiffEntry extends \ArrayObject
 {
     /**
      * 

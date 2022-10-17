@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class SchemaFieldSchemaIndexInfoNestingException
+class SchemaFieldSchemaIndexInfoNestingException extends \ArrayObject
 {
     /**
      * 

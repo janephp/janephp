@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoBranchesBranchProtectionPutBodyRequiredStatusChecks
+class ReposOwnerRepoBranchesBranchProtectionPutBodyRequiredStatusChecks extends \ArrayObject
 {
     /**
      * Require branches to be up to date before merging.

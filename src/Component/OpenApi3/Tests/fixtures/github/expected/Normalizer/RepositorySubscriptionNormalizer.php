@@ -47,24 +47,35 @@ class RepositorySubscriptionNormalizer implements DenormalizerInterface, Normali
         }
         if (\array_key_exists('subscribed', $data)) {
             $object->setSubscribed($data['subscribed']);
+            unset($data['subscribed']);
         }
         if (\array_key_exists('ignored', $data)) {
             $object->setIgnored($data['ignored']);
+            unset($data['ignored']);
         }
         if (\array_key_exists('reason', $data) && $data['reason'] !== null) {
             $object->setReason($data['reason']);
+            unset($data['reason']);
         }
         elseif (\array_key_exists('reason', $data) && $data['reason'] === null) {
             $object->setReason(null);
         }
         if (\array_key_exists('created_at', $data)) {
             $object->setCreatedAt(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['created_at']));
+            unset($data['created_at']);
         }
         if (\array_key_exists('url', $data)) {
             $object->setUrl($data['url']);
+            unset($data['url']);
         }
         if (\array_key_exists('repository_url', $data)) {
             $object->setRepositoryUrl($data['repository_url']);
+            unset($data['repository_url']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -80,6 +91,11 @@ class RepositorySubscriptionNormalizer implements DenormalizerInterface, Normali
         $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
         $data['url'] = $object->getUrl();
         $data['repository_url'] = $object->getRepositoryUrl();
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\RepositorySubscriptionConstraint());
             $context['skip_validation'] = true;

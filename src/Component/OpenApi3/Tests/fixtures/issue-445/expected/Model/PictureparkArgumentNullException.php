@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class PictureparkArgumentNullException
+class PictureparkArgumentNullException extends \ArrayObject
 {
     /**
      * 

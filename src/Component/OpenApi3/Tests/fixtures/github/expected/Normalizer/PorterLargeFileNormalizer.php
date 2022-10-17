@@ -47,15 +47,24 @@ class PorterLargeFileNormalizer implements DenormalizerInterface, NormalizerInte
         }
         if (\array_key_exists('ref_name', $data)) {
             $object->setRefName($data['ref_name']);
+            unset($data['ref_name']);
         }
         if (\array_key_exists('path', $data)) {
             $object->setPath($data['path']);
+            unset($data['path']);
         }
         if (\array_key_exists('oid', $data)) {
             $object->setOid($data['oid']);
+            unset($data['oid']);
         }
         if (\array_key_exists('size', $data)) {
             $object->setSize($data['size']);
+            unset($data['size']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -69,6 +78,11 @@ class PorterLargeFileNormalizer implements DenormalizerInterface, NormalizerInte
         $data['path'] = $object->getPath();
         $data['oid'] = $object->getOid();
         $data['size'] = $object->getSize();
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\PorterLargeFileConstraint());
             $context['skip_validation'] = true;

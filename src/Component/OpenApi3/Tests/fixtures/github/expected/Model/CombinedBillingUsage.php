@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class CombinedBillingUsage
+class CombinedBillingUsage extends \ArrayObject
 {
     /**
      * Numbers of days left in billing cycle.

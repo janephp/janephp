@@ -47,15 +47,24 @@ class ReviewsGetLdjsonResponse200Normalizer implements DenormalizerInterface, No
                 $values[] = $this->denormalizer->denormalize($value, 'ApiPlatform\\Demo\\Model\\ReviewJsonldReviewRead', 'json', $context);
             }
             $object->setHydraMember($values);
+            unset($data['hydra:member']);
         }
         if (\array_key_exists('hydra:totalItems', $data)) {
             $object->setHydraTotalItems($data['hydra:totalItems']);
+            unset($data['hydra:totalItems']);
         }
         if (\array_key_exists('hydra:view', $data)) {
             $object->setHydraView($this->denormalizer->denormalize($data['hydra:view'], 'ApiPlatform\\Demo\\Model\\ReviewsGetLdjsonResponse200HydraView', 'json', $context));
+            unset($data['hydra:view']);
         }
         if (\array_key_exists('hydra:search', $data)) {
             $object->setHydraSearch($this->denormalizer->denormalize($data['hydra:search'], 'ApiPlatform\\Demo\\Model\\ReviewsGetLdjsonResponse200HydraSearch', 'json', $context));
+            unset($data['hydra:search']);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
@@ -78,6 +87,11 @@ class ReviewsGetLdjsonResponse200Normalizer implements DenormalizerInterface, No
         }
         if (null !== $object->getHydraSearch()) {
             $data['hydra:search'] = $this->normalizer->normalize($object->getHydraSearch(), 'json', $context);
+        }
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
+            }
         }
         return $data;
     }

@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class Key
+class Key extends \ArrayObject
 {
     /**
      * 

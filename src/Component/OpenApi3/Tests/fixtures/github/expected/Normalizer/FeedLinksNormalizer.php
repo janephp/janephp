@@ -47,24 +47,31 @@ class FeedLinksNormalizer implements DenormalizerInterface, NormalizerInterface,
         }
         if (\array_key_exists('timeline', $data)) {
             $object->setTimeline($this->denormalizer->denormalize($data['timeline'], 'Github\\Model\\LinkWithType', 'json', $context));
+            unset($data['timeline']);
         }
         if (\array_key_exists('user', $data)) {
             $object->setUser($this->denormalizer->denormalize($data['user'], 'Github\\Model\\LinkWithType', 'json', $context));
+            unset($data['user']);
         }
         if (\array_key_exists('security_advisories', $data)) {
             $object->setSecurityAdvisories($this->denormalizer->denormalize($data['security_advisories'], 'Github\\Model\\LinkWithType', 'json', $context));
+            unset($data['security_advisories']);
         }
         if (\array_key_exists('current_user', $data)) {
             $object->setCurrentUser($this->denormalizer->denormalize($data['current_user'], 'Github\\Model\\LinkWithType', 'json', $context));
+            unset($data['current_user']);
         }
         if (\array_key_exists('current_user_public', $data)) {
             $object->setCurrentUserPublic($this->denormalizer->denormalize($data['current_user_public'], 'Github\\Model\\LinkWithType', 'json', $context));
+            unset($data['current_user_public']);
         }
         if (\array_key_exists('current_user_actor', $data)) {
             $object->setCurrentUserActor($this->denormalizer->denormalize($data['current_user_actor'], 'Github\\Model\\LinkWithType', 'json', $context));
+            unset($data['current_user_actor']);
         }
         if (\array_key_exists('current_user_organization', $data)) {
             $object->setCurrentUserOrganization($this->denormalizer->denormalize($data['current_user_organization'], 'Github\\Model\\LinkWithType', 'json', $context));
+            unset($data['current_user_organization']);
         }
         if (\array_key_exists('current_user_organizations', $data)) {
             $values = array();
@@ -72,6 +79,12 @@ class FeedLinksNormalizer implements DenormalizerInterface, NormalizerInterface,
                 $values[] = $this->denormalizer->denormalize($value, 'Github\\Model\\LinkWithType', 'json', $context);
             }
             $object->setCurrentUserOrganizations($values);
+            unset($data['current_user_organizations']);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
@@ -104,6 +117,11 @@ class FeedLinksNormalizer implements DenormalizerInterface, NormalizerInterface,
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data['current_user_organizations'] = $values;
+        }
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\FeedLinksConstraint());

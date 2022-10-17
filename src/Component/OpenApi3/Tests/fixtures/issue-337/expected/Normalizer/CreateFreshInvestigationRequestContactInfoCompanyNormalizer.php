@@ -43,9 +43,16 @@ class CreateFreshInvestigationRequestContactInfoCompanyNormalizer implements Den
         }
         if (\array_key_exists('name', $data)) {
             $object->setName($data['name']);
+            unset($data['name']);
         }
         if (\array_key_exists('number', $data)) {
             $object->setNumber($data['number']);
+            unset($data['number']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -60,6 +67,11 @@ class CreateFreshInvestigationRequestContactInfoCompanyNormalizer implements Den
         }
         if (null !== $object->getNumber()) {
             $data['number'] = $object->getNumber();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

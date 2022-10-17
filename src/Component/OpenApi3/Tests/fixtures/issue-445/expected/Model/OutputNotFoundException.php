@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class OutputNotFoundException
+class OutputNotFoundException extends \ArrayObject
 {
     /**
      * 

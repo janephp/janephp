@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class InactiveOrDeletedUserRefusedAccessException
+class InactiveOrDeletedUserRefusedAccessException extends \ArrayObject
 {
     /**
      * 

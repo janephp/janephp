@@ -51,6 +51,7 @@ class ProtectedBranchPullRequestReviewDismissalRestrictionsNormalizer implements
                 $values[] = $this->denormalizer->denormalize($value, 'Github\\Model\\SimpleUser', 'json', $context);
             }
             $object->setUsers($values);
+            unset($data['users']);
         }
         if (\array_key_exists('teams', $data)) {
             $values_1 = array();
@@ -58,15 +59,24 @@ class ProtectedBranchPullRequestReviewDismissalRestrictionsNormalizer implements
                 $values_1[] = $this->denormalizer->denormalize($value_1, 'Github\\Model\\Team', 'json', $context);
             }
             $object->setTeams($values_1);
+            unset($data['teams']);
         }
         if (\array_key_exists('url', $data)) {
             $object->setUrl($data['url']);
+            unset($data['url']);
         }
         if (\array_key_exists('users_url', $data)) {
             $object->setUsersUrl($data['users_url']);
+            unset($data['users_url']);
         }
         if (\array_key_exists('teams_url', $data)) {
             $object->setTeamsUrl($data['teams_url']);
+            unset($data['teams_url']);
+        }
+        foreach ($data as $key => $value_2) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_2;
+            }
         }
         return $object;
     }
@@ -98,6 +108,11 @@ class ProtectedBranchPullRequestReviewDismissalRestrictionsNormalizer implements
         }
         if (null !== $object->getTeamsUrl()) {
             $data['teams_url'] = $object->getTeamsUrl();
+        }
+        foreach ($object as $key => $value_2) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_2;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ProtectedBranchPullRequestReviewDismissalRestrictionsConstraint());

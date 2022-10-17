@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class UserDoesNotSupportLocalLoginException
+class UserDoesNotSupportLocalLoginException extends \ArrayObject
 {
     /**
      * 

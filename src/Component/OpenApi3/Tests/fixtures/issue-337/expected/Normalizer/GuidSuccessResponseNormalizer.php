@@ -47,6 +47,12 @@ class GuidSuccessResponseNormalizer implements DenormalizerInterface, Normalizer
                 $values[] = $this->denormalizer->denormalize($value, 'CreditSafe\\API\\Model\\GuidSuccessResponseGUIDListItem', 'json', $context);
             }
             $object->setGUIDList($values);
+            unset($data['GUIDList']);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
@@ -62,6 +68,11 @@ class GuidSuccessResponseNormalizer implements DenormalizerInterface, Normalizer
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data['GUIDList'] = $values;
+        }
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
+            }
         }
         return $data;
     }

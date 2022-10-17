@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class AppInstallationsInstallationIdAccessTokensPostBody
+class AppInstallationsInstallationIdAccessTokensPostBody extends \ArrayObject
 {
     /**
      * List of repository names that the token should have access to

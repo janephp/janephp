@@ -43,6 +43,7 @@ class GbCompanyReportExampleResponseReportContactInformationNormalizer implement
         }
         if (\array_key_exists('mainAddress', $data)) {
             $object->setMainAddress($this->denormalizer->denormalize($data['mainAddress'], 'CreditSafe\\API\\Model\\GbCompanyReportExampleResponseReportContactInformationMainAddress', 'json', $context));
+            unset($data['mainAddress']);
         }
         if (\array_key_exists('otherAddresses', $data)) {
             $values = array();
@@ -50,6 +51,7 @@ class GbCompanyReportExampleResponseReportContactInformationNormalizer implement
                 $values[] = $this->denormalizer->denormalize($value, 'CreditSafe\\API\\Model\\GbCompanyReportExampleResponseReportContactInformationOtherAddressesItem', 'json', $context);
             }
             $object->setOtherAddresses($values);
+            unset($data['otherAddresses']);
         }
         if (\array_key_exists('websites', $data)) {
             $values_1 = array();
@@ -57,6 +59,12 @@ class GbCompanyReportExampleResponseReportContactInformationNormalizer implement
                 $values_1[] = $value_1;
             }
             $object->setWebsites($values_1);
+            unset($data['websites']);
+        }
+        foreach ($data as $key => $value_2) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_2;
+            }
         }
         return $object;
     }
@@ -82,6 +90,11 @@ class GbCompanyReportExampleResponseReportContactInformationNormalizer implement
                 $values_1[] = $value_1;
             }
             $data['websites'] = $values_1;
+        }
+        foreach ($object as $key => $value_2) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_2;
+            }
         }
         return $data;
     }

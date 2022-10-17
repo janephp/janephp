@@ -43,9 +43,16 @@ class CountryNormalizer implements DenormalizerInterface, NormalizerInterface, D
         }
         if (\array_key_exists('iso', $data)) {
             $object->setIso($data['iso']);
+            unset($data['iso']);
         }
         if (\array_key_exists('printableName', $data)) {
             $object->setPrintableName($data['printableName']);
+            unset($data['printableName']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -60,6 +67,11 @@ class CountryNormalizer implements DenormalizerInterface, NormalizerInterface, D
         }
         if (null !== $object->getPrintableName()) {
             $data['printableName'] = $object->getPrintableName();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

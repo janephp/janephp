@@ -47,6 +47,12 @@ class OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsPostBodyNormalizer 
         }
         if (\array_key_exists('body', $data)) {
             $object->setBody($data['body']);
+            unset($data['body']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -57,6 +63,11 @@ class OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsPostBodyNormalizer 
     {
         $data = array();
         $data['body'] = $object->getBody();
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsPostBodyConstraint());
             $context['skip_validation'] = true;

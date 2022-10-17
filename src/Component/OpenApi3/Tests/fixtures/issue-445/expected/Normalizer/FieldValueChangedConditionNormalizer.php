@@ -43,24 +43,33 @@ class FieldValueChangedConditionNormalizer implements DenormalizerInterface, Nor
         }
         if (\array_key_exists('traceRefId', $data) && $data['traceRefId'] !== null) {
             $object->setTraceRefId($data['traceRefId']);
+            unset($data['traceRefId']);
         }
         elseif (\array_key_exists('traceRefId', $data) && $data['traceRefId'] === null) {
             $object->setTraceRefId(null);
         }
         if (\array_key_exists('kind', $data)) {
             $object->setKind($data['kind']);
+            unset($data['kind']);
         }
         if (\array_key_exists('fieldPath', $data) && $data['fieldPath'] !== null) {
             $object->setFieldPath($data['fieldPath']);
+            unset($data['fieldPath']);
         }
         elseif (\array_key_exists('fieldPath', $data) && $data['fieldPath'] === null) {
             $object->setFieldPath(null);
         }
         if (\array_key_exists('expectedValue', $data) && $data['expectedValue'] !== null) {
             $object->setExpectedValue($data['expectedValue']);
+            unset($data['expectedValue']);
         }
         elseif (\array_key_exists('expectedValue', $data) && $data['expectedValue'] === null) {
             $object->setExpectedValue(null);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -79,6 +88,11 @@ class FieldValueChangedConditionNormalizer implements DenormalizerInterface, Nor
         }
         if (null !== $object->getExpectedValue()) {
             $data['expectedValue'] = $object->getExpectedValue();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

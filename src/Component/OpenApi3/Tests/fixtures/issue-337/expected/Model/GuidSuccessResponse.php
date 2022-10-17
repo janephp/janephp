@@ -2,7 +2,7 @@
 
 namespace CreditSafe\API\Model;
 
-class GuidSuccessResponse
+class GuidSuccessResponse extends \ArrayObject
 {
     /**
      * 

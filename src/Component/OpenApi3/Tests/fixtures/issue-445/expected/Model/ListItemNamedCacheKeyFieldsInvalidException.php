@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class ListItemNamedCacheKeyFieldsInvalidException
+class ListItemNamedCacheKeyFieldsInvalidException extends \ArrayObject
 {
     /**
      * 

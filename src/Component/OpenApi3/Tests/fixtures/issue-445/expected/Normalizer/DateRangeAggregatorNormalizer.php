@@ -43,9 +43,11 @@ class DateRangeAggregatorNormalizer implements DenormalizerInterface, Normalizer
         }
         if (\array_key_exists('name', $data)) {
             $object->setName($data['name']);
+            unset($data['name']);
         }
         if (\array_key_exists('names', $data) && $data['names'] !== null) {
             $object->setNames($data['names']);
+            unset($data['names']);
         }
         elseif (\array_key_exists('names', $data) && $data['names'] === null) {
             $object->setNames(null);
@@ -56,21 +58,25 @@ class DateRangeAggregatorNormalizer implements DenormalizerInterface, Normalizer
                 $values[] = $this->denormalizer->denormalize($value, 'PicturePark\\API\\Model\\AggregatorBase', 'json', $context);
             }
             $object->setAggregators($values);
+            unset($data['aggregators']);
         }
         elseif (\array_key_exists('aggregators', $data) && $data['aggregators'] === null) {
             $object->setAggregators(null);
         }
         if (\array_key_exists('filter', $data) && $data['filter'] !== null) {
             $object->setFilter($data['filter']);
+            unset($data['filter']);
         }
         elseif (\array_key_exists('filter', $data) && $data['filter'] === null) {
             $object->setFilter(null);
         }
         if (\array_key_exists('kind', $data)) {
             $object->setKind($data['kind']);
+            unset($data['kind']);
         }
         if (\array_key_exists('field', $data)) {
             $object->setField($data['field']);
+            unset($data['field']);
         }
         if (\array_key_exists('ranges', $data)) {
             $values_1 = array();
@@ -78,6 +84,12 @@ class DateRangeAggregatorNormalizer implements DenormalizerInterface, Normalizer
                 $values_1[] = $this->denormalizer->denormalize($value_1, 'PicturePark\\API\\Model\\DateRangeForAggregator', 'json', $context);
             }
             $object->setRanges($values_1);
+            unset($data['ranges']);
+        }
+        foreach ($data as $key => $value_2) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_2;
+            }
         }
         return $object;
     }
@@ -108,6 +120,11 @@ class DateRangeAggregatorNormalizer implements DenormalizerInterface, Normalizer
             $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
         }
         $data['ranges'] = $values_1;
+        foreach ($object as $key => $value_2) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_2;
+            }
+        }
         return $data;
     }
 }

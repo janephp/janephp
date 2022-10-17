@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class ThreadSubject
+class ThreadSubject extends \ArrayObject
 {
     /**
      * 

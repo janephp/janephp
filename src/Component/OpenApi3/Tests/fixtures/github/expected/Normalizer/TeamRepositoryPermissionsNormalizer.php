@@ -47,18 +47,28 @@ class TeamRepositoryPermissionsNormalizer implements DenormalizerInterface, Norm
         }
         if (\array_key_exists('admin', $data)) {
             $object->setAdmin($data['admin']);
+            unset($data['admin']);
         }
         if (\array_key_exists('pull', $data)) {
             $object->setPull($data['pull']);
+            unset($data['pull']);
         }
         if (\array_key_exists('triage', $data)) {
             $object->setTriage($data['triage']);
+            unset($data['triage']);
         }
         if (\array_key_exists('push', $data)) {
             $object->setPush($data['push']);
+            unset($data['push']);
         }
         if (\array_key_exists('maintain', $data)) {
             $object->setMaintain($data['maintain']);
+            unset($data['maintain']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -76,6 +86,11 @@ class TeamRepositoryPermissionsNormalizer implements DenormalizerInterface, Norm
         $data['push'] = $object->getPush();
         if (null !== $object->getMaintain()) {
             $data['maintain'] = $object->getMaintain();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\TeamRepositoryPermissionsConstraint());

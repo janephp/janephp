@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422
+class OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422 extends \ArrayObject
 {
     /**
      * 

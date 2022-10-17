@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class InvalidValueFormatException
+class InvalidValueFormatException extends \ArrayObject
 {
     /**
      * 

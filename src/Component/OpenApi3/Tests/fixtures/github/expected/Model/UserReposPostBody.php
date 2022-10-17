@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class UserReposPostBody
+class UserReposPostBody extends \ArrayObject
 {
     /**
      * The name of the repository.

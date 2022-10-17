@@ -43,9 +43,11 @@ class ShareDataBasicNormalizer implements DenormalizerInterface, NormalizerInter
         }
         if (\array_key_exists('url', $data)) {
             $object->setUrl($data['url']);
+            unset($data['url']);
         }
         if (\array_key_exists('kind', $data)) {
             $object->setKind($data['kind']);
+            unset($data['kind']);
         }
         if (\array_key_exists('mailRecipients', $data)) {
             $values = array();
@@ -53,6 +55,7 @@ class ShareDataBasicNormalizer implements DenormalizerInterface, NormalizerInter
                 $values[] = $this->denormalizer->denormalize($value, 'PicturePark\\API\\Model\\MailRecipient', 'json', $context);
             }
             $object->setMailRecipients($values);
+            unset($data['mailRecipients']);
         }
         if (\array_key_exists('internalRecipients', $data)) {
             $values_1 = array();
@@ -60,12 +63,19 @@ class ShareDataBasicNormalizer implements DenormalizerInterface, NormalizerInter
                 $values_1[] = $this->denormalizer->denormalize($value_1, 'PicturePark\\API\\Model\\InternalRecipient', 'json', $context);
             }
             $object->setInternalRecipients($values_1);
+            unset($data['internalRecipients']);
         }
         if (\array_key_exists('languageCode', $data) && $data['languageCode'] !== null) {
             $object->setLanguageCode($data['languageCode']);
+            unset($data['languageCode']);
         }
         elseif (\array_key_exists('languageCode', $data) && $data['languageCode'] === null) {
             $object->setLanguageCode(null);
+        }
+        foreach ($data as $key => $value_2) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_2;
+            }
         }
         return $object;
     }
@@ -89,6 +99,11 @@ class ShareDataBasicNormalizer implements DenormalizerInterface, NormalizerInter
         $data['internalRecipients'] = $values_1;
         if (null !== $object->getLanguageCode()) {
             $data['languageCode'] = $object->getLanguageCode();
+        }
+        foreach ($object as $key => $value_2) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_2;
+            }
         }
         return $data;
     }

@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class RepositorySubscription
+class RepositorySubscription extends \ArrayObject
 {
     /**
      * Determines if notifications should be received from this repository.

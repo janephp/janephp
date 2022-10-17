@@ -43,9 +43,16 @@ class ContextAnnotationNormalizer implements DenormalizerInterface, NormalizerIn
         }
         if (\array_key_exists('domain', $data)) {
             $object->setDomain($this->denormalizer->denormalize($data['domain'], 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Model\\ContextAnnotationDomainFields', 'json', $context));
+            unset($data['domain']);
         }
         if (\array_key_exists('entity', $data)) {
             $object->setEntity($this->denormalizer->denormalize($data['entity'], 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Model\\ContextAnnotationEntityFields', 'json', $context));
+            unset($data['entity']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -57,6 +64,11 @@ class ContextAnnotationNormalizer implements DenormalizerInterface, NormalizerIn
         $data = array();
         $data['domain'] = $this->normalizer->normalize($object->getDomain(), 'json', $context);
         $data['entity'] = $this->normalizer->normalize($object->getEntity(), 'json', $context);
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
         return $data;
     }
 }

@@ -43,9 +43,16 @@ class DefaultTweetFieldsNormalizer implements DenormalizerInterface, NormalizerI
         }
         if (\array_key_exists('geo', $data)) {
             $object->setGeo($this->denormalizer->denormalize($data['geo'], 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Model\\DefaultTweetFieldsGeo', 'json', $context));
+            unset($data['geo']);
         }
         if (\array_key_exists('entities', $data)) {
             $object->setEntities($this->denormalizer->denormalize($data['entities'], 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Model\\FullTextEntities', 'json', $context));
+            unset($data['entities']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -60,6 +67,11 @@ class DefaultTweetFieldsNormalizer implements DenormalizerInterface, NormalizerI
         }
         if (null !== $object->getEntities()) {
             $data['entities'] = $this->normalizer->normalize($object->getEntities(), 'json', $context);
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

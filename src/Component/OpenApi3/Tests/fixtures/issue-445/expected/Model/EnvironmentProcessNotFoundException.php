@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class EnvironmentProcessNotFoundException
+class EnvironmentProcessNotFoundException extends \ArrayObject
 {
     /**
      * 

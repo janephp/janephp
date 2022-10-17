@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoImportPutBody
+class ReposOwnerRepoImportPutBody extends \ArrayObject
 {
     /**
      * The URL of the originating repository.

@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class PermissionSetAggregateException
+class PermissionSetAggregateException extends \ArrayObject
 {
     /**
      * 

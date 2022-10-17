@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class GitCommitCommitter
+class GitCommitCommitter extends \ArrayObject
 {
     /**
      * Timestamp of the commit

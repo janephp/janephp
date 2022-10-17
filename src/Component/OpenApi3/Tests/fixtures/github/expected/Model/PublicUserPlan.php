@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class PublicUserPlan
+class PublicUserPlan extends \ArrayObject
 {
     /**
      * 

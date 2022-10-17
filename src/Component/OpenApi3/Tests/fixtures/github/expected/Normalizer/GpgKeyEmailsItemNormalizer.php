@@ -47,9 +47,16 @@ class GpgKeyEmailsItemNormalizer implements DenormalizerInterface, NormalizerInt
         }
         if (\array_key_exists('email', $data)) {
             $object->setEmail($data['email']);
+            unset($data['email']);
         }
         if (\array_key_exists('verified', $data)) {
             $object->setVerified($data['verified']);
+            unset($data['verified']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -64,6 +71,11 @@ class GpgKeyEmailsItemNormalizer implements DenormalizerInterface, NormalizerInt
         }
         if (null !== $object->getVerified()) {
             $data['verified'] = $object->getVerified();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\GpgKeyEmailsItemConstraint());

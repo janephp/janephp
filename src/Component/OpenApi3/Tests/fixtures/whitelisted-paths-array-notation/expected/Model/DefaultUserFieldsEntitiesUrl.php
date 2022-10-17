@@ -2,7 +2,7 @@
 
 namespace Jane\OpenApi3\Tests\Expected\Model;
 
-class DefaultUserFieldsEntitiesUrl
+class DefaultUserFieldsEntitiesUrl extends \ArrayObject
 {
     /**
      * 

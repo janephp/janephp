@@ -47,12 +47,20 @@ class GitCommitAuthorNormalizer implements DenormalizerInterface, NormalizerInte
         }
         if (\array_key_exists('date', $data)) {
             $object->setDate(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['date']));
+            unset($data['date']);
         }
         if (\array_key_exists('email', $data)) {
             $object->setEmail($data['email']);
+            unset($data['email']);
         }
         if (\array_key_exists('name', $data)) {
             $object->setName($data['name']);
+            unset($data['name']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -67,6 +75,11 @@ class GitCommitAuthorNormalizer implements DenormalizerInterface, NormalizerInte
         }
         $data['email'] = $object->getEmail();
         $data['name'] = $object->getName();
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\GitCommitAuthorConstraint());
             $context['skip_validation'] = true;

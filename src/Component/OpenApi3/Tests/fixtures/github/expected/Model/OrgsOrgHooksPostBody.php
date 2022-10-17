@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class OrgsOrgHooksPostBody
+class OrgsOrgHooksPostBody extends \ArrayObject
 {
     /**
      * Must be passed as "web".

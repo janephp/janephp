@@ -47,9 +47,16 @@ class AddRulesResponseNormalizer implements DenormalizerInterface, NormalizerInt
                 $values[] = $this->denormalizer->denormalize($value, 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Model\\Rule', 'json', $context);
             }
             $object->setData($values);
+            unset($data['data']);
         }
         if (\array_key_exists('meta', $data)) {
             $object->setMeta($this->denormalizer->denormalize($data['meta'], 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Model\\RulesResponseMetadata', 'json', $context));
+            unset($data['meta']);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
@@ -65,6 +72,11 @@ class AddRulesResponseNormalizer implements DenormalizerInterface, NormalizerInt
         }
         $data['data'] = $values;
         $data['meta'] = $this->normalizer->normalize($object->getMeta(), 'json', $context);
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
+            }
+        }
         return $data;
     }
 }

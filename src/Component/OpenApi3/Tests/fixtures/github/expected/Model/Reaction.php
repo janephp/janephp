@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class Reaction
+class Reaction extends \ArrayObject
 {
     /**
      * 

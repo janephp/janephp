@@ -47,18 +47,28 @@ class ReposOwnerRepoGitTagsPostBodyNormalizer implements DenormalizerInterface, 
         }
         if (\array_key_exists('tag', $data)) {
             $object->setTag($data['tag']);
+            unset($data['tag']);
         }
         if (\array_key_exists('message', $data)) {
             $object->setMessage($data['message']);
+            unset($data['message']);
         }
         if (\array_key_exists('object', $data)) {
             $object->setObject($data['object']);
+            unset($data['object']);
         }
         if (\array_key_exists('type', $data)) {
             $object->setType($data['type']);
+            unset($data['type']);
         }
         if (\array_key_exists('tagger', $data)) {
             $object->setTagger($this->denormalizer->denormalize($data['tagger'], 'Github\\Model\\ReposOwnerRepoGitTagsPostBodyTagger', 'json', $context));
+            unset($data['tagger']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -74,6 +84,11 @@ class ReposOwnerRepoGitTagsPostBodyNormalizer implements DenormalizerInterface, 
         $data['type'] = $object->getType();
         if (null !== $object->getTagger()) {
             $data['tagger'] = $this->normalizer->normalize($object->getTagger(), 'json', $context);
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ReposOwnerRepoGitTagsPostBodyConstraint());

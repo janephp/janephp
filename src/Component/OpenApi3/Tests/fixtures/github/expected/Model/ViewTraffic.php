@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class ViewTraffic
+class ViewTraffic extends \ArrayObject
 {
     /**
      * 

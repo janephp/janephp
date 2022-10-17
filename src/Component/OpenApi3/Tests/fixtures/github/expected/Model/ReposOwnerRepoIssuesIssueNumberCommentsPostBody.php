@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoIssuesIssueNumberCommentsPostBody
+class ReposOwnerRepoIssuesIssueNumberCommentsPostBody extends \ArrayObject
 {
     /**
      * The contents of the comment.

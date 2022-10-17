@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class BaseGistFilesItem
+class BaseGistFilesItem extends \ArrayObject
 {
     /**
      * 

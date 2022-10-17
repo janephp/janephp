@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class BusinessProcessSearchResult
+class BusinessProcessSearchResult extends \ArrayObject
 {
     /**
      * The total number of matching documents.

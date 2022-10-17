@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class UserMembershipsOrgsOrgPatchBody
+class UserMembershipsOrgsOrgPatchBody extends \ArrayObject
 {
     /**
      * The state that the membership should be in. Only `"active"` will be accepted.

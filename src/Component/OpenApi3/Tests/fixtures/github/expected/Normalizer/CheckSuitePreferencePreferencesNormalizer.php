@@ -51,6 +51,12 @@ class CheckSuitePreferencePreferencesNormalizer implements DenormalizerInterface
                 $values[] = $this->denormalizer->denormalize($value, 'Github\\Model\\CheckSuitePreferencePreferencesAutoTriggerChecksItem', 'json', $context);
             }
             $object->setAutoTriggerChecks($values);
+            unset($data['auto_trigger_checks']);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
@@ -66,6 +72,11 @@ class CheckSuitePreferencePreferencesNormalizer implements DenormalizerInterface
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data['auto_trigger_checks'] = $values;
+        }
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\CheckSuitePreferencePreferencesConstraint());

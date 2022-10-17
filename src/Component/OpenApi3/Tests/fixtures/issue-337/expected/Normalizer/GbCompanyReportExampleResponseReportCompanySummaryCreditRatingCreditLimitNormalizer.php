@@ -43,9 +43,16 @@ class GbCompanyReportExampleResponseReportCompanySummaryCreditRatingCreditLimitN
         }
         if (\array_key_exists('currency', $data)) {
             $object->setCurrency($data['currency']);
+            unset($data['currency']);
         }
         if (\array_key_exists('value', $data)) {
             $object->setValue($data['value']);
+            unset($data['value']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -57,6 +64,11 @@ class GbCompanyReportExampleResponseReportCompanySummaryCreditRatingCreditLimitN
         $data = array();
         $data['currency'] = $object->getCurrency();
         $data['value'] = $object->getValue();
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
         return $data;
     }
 }

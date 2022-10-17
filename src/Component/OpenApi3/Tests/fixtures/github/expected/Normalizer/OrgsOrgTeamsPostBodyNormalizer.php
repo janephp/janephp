@@ -47,9 +47,11 @@ class OrgsOrgTeamsPostBodyNormalizer implements DenormalizerInterface, Normalize
         }
         if (\array_key_exists('name', $data)) {
             $object->setName($data['name']);
+            unset($data['name']);
         }
         if (\array_key_exists('description', $data)) {
             $object->setDescription($data['description']);
+            unset($data['description']);
         }
         if (\array_key_exists('maintainers', $data)) {
             $values = array();
@@ -57,6 +59,7 @@ class OrgsOrgTeamsPostBodyNormalizer implements DenormalizerInterface, Normalize
                 $values[] = $value;
             }
             $object->setMaintainers($values);
+            unset($data['maintainers']);
         }
         if (\array_key_exists('repo_names', $data)) {
             $values_1 = array();
@@ -64,15 +67,24 @@ class OrgsOrgTeamsPostBodyNormalizer implements DenormalizerInterface, Normalize
                 $values_1[] = $value_1;
             }
             $object->setRepoNames($values_1);
+            unset($data['repo_names']);
         }
         if (\array_key_exists('privacy', $data)) {
             $object->setPrivacy($data['privacy']);
+            unset($data['privacy']);
         }
         if (\array_key_exists('permission', $data)) {
             $object->setPermission($data['permission']);
+            unset($data['permission']);
         }
         if (\array_key_exists('parent_team_id', $data)) {
             $object->setParentTeamId($data['parent_team_id']);
+            unset($data['parent_team_id']);
+        }
+        foreach ($data as $key => $value_2) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_2;
+            }
         }
         return $object;
     }
@@ -108,6 +120,11 @@ class OrgsOrgTeamsPostBodyNormalizer implements DenormalizerInterface, Normalize
         }
         if (null !== $object->getParentTeamId()) {
             $data['parent_team_id'] = $object->getParentTeamId();
+        }
+        foreach ($object as $key => $value_2) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_2;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\OrgsOrgTeamsPostBodyConstraint());

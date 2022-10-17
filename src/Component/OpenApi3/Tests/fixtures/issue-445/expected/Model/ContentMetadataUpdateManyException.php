@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class ContentMetadataUpdateManyException
+class ContentMetadataUpdateManyException extends \ArrayObject
 {
     /**
      * 

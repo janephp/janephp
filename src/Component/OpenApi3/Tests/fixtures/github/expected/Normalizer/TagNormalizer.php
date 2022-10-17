@@ -47,18 +47,28 @@ class TagNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
         }
         if (\array_key_exists('name', $data)) {
             $object->setName($data['name']);
+            unset($data['name']);
         }
         if (\array_key_exists('commit', $data)) {
             $object->setCommit($this->denormalizer->denormalize($data['commit'], 'Github\\Model\\TagCommit', 'json', $context));
+            unset($data['commit']);
         }
         if (\array_key_exists('zipball_url', $data)) {
             $object->setZipballUrl($data['zipball_url']);
+            unset($data['zipball_url']);
         }
         if (\array_key_exists('tarball_url', $data)) {
             $object->setTarballUrl($data['tarball_url']);
+            unset($data['tarball_url']);
         }
         if (\array_key_exists('node_id', $data)) {
             $object->setNodeId($data['node_id']);
+            unset($data['node_id']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -73,6 +83,11 @@ class TagNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
         $data['zipball_url'] = $object->getZipballUrl();
         $data['tarball_url'] = $object->getTarballUrl();
         $data['node_id'] = $object->getNodeId();
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\TagConstraint());
             $context['skip_validation'] = true;

@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class PartialOperationNotSupportedException
+class PartialOperationNotSupportedException extends \ArrayObject
 {
     /**
      * 

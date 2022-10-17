@@ -43,6 +43,7 @@ class ListFreshInvestigationResponseNormalizer implements DenormalizerInterface,
         }
         if (\array_key_exists('totalCount', $data)) {
             $object->setTotalCount($data['totalCount']);
+            unset($data['totalCount']);
         }
         if (\array_key_exists('orders', $data)) {
             $values = array();
@@ -50,6 +51,12 @@ class ListFreshInvestigationResponseNormalizer implements DenormalizerInterface,
                 $values[] = $this->denormalizer->denormalize($value, 'CreditSafe\\API\\Model\\ListFreshInvestigationResponseOrdersItem', 'json', $context);
             }
             $object->setOrders($values);
+            unset($data['orders']);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
@@ -68,6 +75,11 @@ class ListFreshInvestigationResponseNormalizer implements DenormalizerInterface,
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data['orders'] = $values;
+        }
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
+            }
         }
         return $data;
     }

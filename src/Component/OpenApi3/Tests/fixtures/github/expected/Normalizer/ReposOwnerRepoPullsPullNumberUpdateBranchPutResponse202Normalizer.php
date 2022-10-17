@@ -47,9 +47,16 @@ class ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202Normalizer implemen
         }
         if (\array_key_exists('message', $data)) {
             $object->setMessage($data['message']);
+            unset($data['message']);
         }
         if (\array_key_exists('url', $data)) {
             $object->setUrl($data['url']);
+            unset($data['url']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -64,6 +71,11 @@ class ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202Normalizer implemen
         }
         if (null !== $object->getUrl()) {
             $data['url'] = $object->getUrl();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202Constraint());

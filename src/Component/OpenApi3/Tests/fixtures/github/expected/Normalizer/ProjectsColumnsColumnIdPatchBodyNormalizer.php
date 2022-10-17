@@ -47,6 +47,12 @@ class ProjectsColumnsColumnIdPatchBodyNormalizer implements DenormalizerInterfac
         }
         if (\array_key_exists('name', $data)) {
             $object->setName($data['name']);
+            unset($data['name']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -57,6 +63,11 @@ class ProjectsColumnsColumnIdPatchBodyNormalizer implements DenormalizerInterfac
     {
         $data = array();
         $data['name'] = $object->getName();
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ProjectsColumnsColumnIdPatchBodyConstraint());
             $context['skip_validation'] = true;

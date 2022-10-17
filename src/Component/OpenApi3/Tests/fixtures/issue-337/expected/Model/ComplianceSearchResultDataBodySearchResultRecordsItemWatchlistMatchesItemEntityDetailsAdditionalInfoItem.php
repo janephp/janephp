@@ -2,7 +2,7 @@
 
 namespace CreditSafe\API\Model;
 
-class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemEntityDetailsAdditionalInfoItem
+class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemEntityDetailsAdditionalInfoItem extends \ArrayObject
 {
     /**
      * 

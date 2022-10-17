@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class SchemaFieldAnalyzerInvalidException
+class SchemaFieldAnalyzerInvalidException extends \ArrayObject
 {
     /**
      * 

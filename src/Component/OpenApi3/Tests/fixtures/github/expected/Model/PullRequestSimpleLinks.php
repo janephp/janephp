@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class PullRequestSimpleLinks
+class PullRequestSimpleLinks extends \ArrayObject
 {
     /**
      * Hypermedia Link

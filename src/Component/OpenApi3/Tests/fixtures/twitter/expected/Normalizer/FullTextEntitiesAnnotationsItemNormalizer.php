@@ -46,18 +46,28 @@ class FullTextEntitiesAnnotationsItemNormalizer implements DenormalizerInterface
         }
         if (\array_key_exists('start', $data)) {
             $object->setStart($data['start']);
+            unset($data['start']);
         }
         if (\array_key_exists('end', $data)) {
             $object->setEnd($data['end']);
+            unset($data['end']);
         }
         if (\array_key_exists('probability', $data)) {
             $object->setProbability($data['probability']);
+            unset($data['probability']);
         }
         if (\array_key_exists('type', $data)) {
             $object->setType($data['type']);
+            unset($data['type']);
         }
         if (\array_key_exists('normalized_text', $data)) {
             $object->setNormalizedText($data['normalized_text']);
+            unset($data['normalized_text']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -77,6 +87,11 @@ class FullTextEntitiesAnnotationsItemNormalizer implements DenormalizerInterface
         }
         if (null !== $object->getNormalizedText()) {
             $data['normalized_text'] = $object->getNormalizedText();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

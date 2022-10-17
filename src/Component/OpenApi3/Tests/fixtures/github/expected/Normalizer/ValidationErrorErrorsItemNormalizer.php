@@ -47,21 +47,32 @@ class ValidationErrorErrorsItemNormalizer implements DenormalizerInterface, Norm
         }
         if (\array_key_exists('resource', $data)) {
             $object->setResource($data['resource']);
+            unset($data['resource']);
         }
         if (\array_key_exists('field', $data)) {
             $object->setField($data['field']);
+            unset($data['field']);
         }
         if (\array_key_exists('message', $data)) {
             $object->setMessage($data['message']);
+            unset($data['message']);
         }
         if (\array_key_exists('code', $data)) {
             $object->setCode($data['code']);
+            unset($data['code']);
         }
         if (\array_key_exists('index', $data)) {
             $object->setIndex($data['index']);
+            unset($data['index']);
         }
         if (\array_key_exists('value', $data)) {
             $object->setValue($data['value']);
+            unset($data['value']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -86,6 +97,11 @@ class ValidationErrorErrorsItemNormalizer implements DenormalizerInterface, Norm
         }
         if (null !== $object->getValue()) {
             $data['value'] = $object->getValue();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ValidationErrorErrorsItemConstraint());

@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class ContentMetadataUpdateItem
+class ContentMetadataUpdateItem extends \ArrayObject
 {
     /**
     * An optional list of IDs of the schemas that should be updated/replaced based on the options below and Metadata provided.
@@ -17,7 +17,7 @@ class ContentMetadataUpdateItem
     whose ContentType is Virtual).
     Update of content data will be done only if this attribute has any data, i.e. if it's not null or empty.
     *
-    * @var mixed|null
+    * @var mixed[]|null
     */
     protected $content;
     /**
@@ -93,9 +93,9 @@ class ContentMetadataUpdateItem
     whose ContentType is Virtual).
     Update of content data will be done only if this attribute has any data, i.e. if it's not null or empty.
     *
-    * @return mixed
+    * @return mixed[]|null
     */
-    public function getContent()
+    public function getContent() : ?iterable
     {
         return $this->content;
     }
@@ -105,11 +105,11 @@ class ContentMetadataUpdateItem
     whose ContentType is Virtual).
     Update of content data will be done only if this attribute has any data, i.e. if it's not null or empty.
     *
-    * @param mixed $content
+    * @param mixed[]|null $content
     *
     * @return self
     */
-    public function setContent($content) : self
+    public function setContent(?iterable $content) : self
     {
         $this->content = $content;
         return $this;

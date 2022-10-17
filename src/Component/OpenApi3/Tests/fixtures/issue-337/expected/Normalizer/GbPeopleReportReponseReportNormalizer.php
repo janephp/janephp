@@ -43,12 +43,15 @@ class GbPeopleReportReponseReportNormalizer implements DenormalizerInterface, No
         }
         if (\array_key_exists('directorId', $data)) {
             $object->setDirectorId($data['directorId']);
+            unset($data['directorId']);
         }
         if (\array_key_exists('directorSummary', $data)) {
             $object->setDirectorSummary($this->denormalizer->denormalize($data['directorSummary'], 'CreditSafe\\API\\Model\\GbPeopleReportReponseReportDirectorSummary', 'json', $context));
+            unset($data['directorSummary']);
         }
         if (\array_key_exists('directorDetails', $data)) {
             $object->setDirectorDetails($this->denormalizer->denormalize($data['directorDetails'], 'CreditSafe\\API\\Model\\GbPeopleReportReponseReportDirectorDetails', 'json', $context));
+            unset($data['directorDetails']);
         }
         if (\array_key_exists('otherAddresses', $data)) {
             $values = array();
@@ -56,9 +59,16 @@ class GbPeopleReportReponseReportNormalizer implements DenormalizerInterface, No
                 $values[] = $this->denormalizer->denormalize($value, 'CreditSafe\\API\\Model\\GbPeopleReportReponseReportOtherAddressesItem', 'json', $context);
             }
             $object->setOtherAddresses($values);
+            unset($data['otherAddresses']);
         }
         if (\array_key_exists('directorships', $data)) {
             $object->setDirectorships($this->denormalizer->denormalize($data['directorships'], 'CreditSafe\\API\\Model\\GbPeopleReportReponseReportDirectorships', 'json', $context));
+            unset($data['directorships']);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
@@ -86,6 +96,11 @@ class GbPeopleReportReponseReportNormalizer implements DenormalizerInterface, No
         }
         if (null !== $object->getDirectorships()) {
             $data['directorships'] = $this->normalizer->normalize($object->getDirectorships(), 'json', $context);
+        }
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
+            }
         }
         return $data;
     }

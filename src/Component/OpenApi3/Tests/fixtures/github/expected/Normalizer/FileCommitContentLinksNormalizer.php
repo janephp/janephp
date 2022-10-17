@@ -47,12 +47,20 @@ class FileCommitContentLinksNormalizer implements DenormalizerInterface, Normali
         }
         if (\array_key_exists('self', $data)) {
             $object->setSelf($data['self']);
+            unset($data['self']);
         }
         if (\array_key_exists('git', $data)) {
             $object->setGit($data['git']);
+            unset($data['git']);
         }
         if (\array_key_exists('html', $data)) {
             $object->setHtml($data['html']);
+            unset($data['html']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -70,6 +78,11 @@ class FileCommitContentLinksNormalizer implements DenormalizerInterface, Normali
         }
         if (null !== $object->getHtml()) {
             $data['html'] = $object->getHtml();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\FileCommitContentLinksConstraint());

@@ -43,27 +43,35 @@ class UrlEntityNormalizer implements DenormalizerInterface, NormalizerInterface,
         }
         if (\array_key_exists('start', $data)) {
             $object->setStart($data['start']);
+            unset($data['start']);
         }
         if (\array_key_exists('end', $data)) {
             $object->setEnd($data['end']);
+            unset($data['end']);
         }
         if (\array_key_exists('url', $data)) {
             $object->setUrl($data['url']);
+            unset($data['url']);
         }
         if (\array_key_exists('expanded_url', $data)) {
             $object->setExpandedUrl($data['expanded_url']);
+            unset($data['expanded_url']);
         }
         if (\array_key_exists('display_url', $data)) {
             $object->setDisplayUrl($data['display_url']);
+            unset($data['display_url']);
         }
         if (\array_key_exists('status', $data)) {
             $object->setStatus($data['status']);
+            unset($data['status']);
         }
         if (\array_key_exists('title', $data)) {
             $object->setTitle($data['title']);
+            unset($data['title']);
         }
         if (\array_key_exists('description', $data)) {
             $object->setDescription($data['description']);
+            unset($data['description']);
         }
         if (\array_key_exists('images', $data)) {
             $values = array();
@@ -71,6 +79,12 @@ class UrlEntityNormalizer implements DenormalizerInterface, NormalizerInterface,
                 $values[] = $this->denormalizer->denormalize($value, 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Model\\URLImage', 'json', $context);
             }
             $object->setImages($values);
+            unset($data['images']);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
@@ -104,6 +118,11 @@ class UrlEntityNormalizer implements DenormalizerInterface, NormalizerInterface,
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data['images'] = $values;
+        }
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
+            }
         }
         return $data;
     }

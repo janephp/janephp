@@ -47,6 +47,12 @@ class ReposOwnerRepoIssuesIssueNumberLockPutBodyNormalizer implements Denormaliz
         }
         if (\array_key_exists('lock_reason', $data)) {
             $object->setLockReason($data['lock_reason']);
+            unset($data['lock_reason']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -58,6 +64,11 @@ class ReposOwnerRepoIssuesIssueNumberLockPutBodyNormalizer implements Denormaliz
         $data = array();
         if (null !== $object->getLockReason()) {
             $data['lock_reason'] = $object->getLockReason();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ReposOwnerRepoIssuesIssueNumberLockPutBodyConstraint());

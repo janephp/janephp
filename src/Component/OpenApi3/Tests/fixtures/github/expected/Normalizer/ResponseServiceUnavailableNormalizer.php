@@ -47,12 +47,20 @@ class ResponseServiceUnavailableNormalizer implements DenormalizerInterface, Nor
         }
         if (\array_key_exists('code', $data)) {
             $object->setCode($data['code']);
+            unset($data['code']);
         }
         if (\array_key_exists('message', $data)) {
             $object->setMessage($data['message']);
+            unset($data['message']);
         }
         if (\array_key_exists('documentation_url', $data)) {
             $object->setDocumentationUrl($data['documentation_url']);
+            unset($data['documentation_url']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -70,6 +78,11 @@ class ResponseServiceUnavailableNormalizer implements DenormalizerInterface, Nor
         }
         if (null !== $object->getDocumentationUrl()) {
             $data['documentation_url'] = $object->getDocumentationUrl();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ResponseServiceUnavailableConstraint());

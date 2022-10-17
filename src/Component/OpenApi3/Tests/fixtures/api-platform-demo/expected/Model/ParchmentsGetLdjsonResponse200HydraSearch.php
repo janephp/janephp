@@ -2,7 +2,7 @@
 
 namespace ApiPlatform\Demo\Model;
 
-class ParchmentsGetLdjsonResponse200HydraSearch
+class ParchmentsGetLdjsonResponse200HydraSearch extends \ArrayObject
 {
     /**
      * 

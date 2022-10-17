@@ -43,24 +43,33 @@ class TagboxItemAssignedConditionNormalizer implements DenormalizerInterface, No
         }
         if (\array_key_exists('traceRefId', $data) && $data['traceRefId'] !== null) {
             $object->setTraceRefId($data['traceRefId']);
+            unset($data['traceRefId']);
         }
         elseif (\array_key_exists('traceRefId', $data) && $data['traceRefId'] === null) {
             $object->setTraceRefId(null);
         }
         if (\array_key_exists('kind', $data)) {
             $object->setKind($data['kind']);
+            unset($data['kind']);
         }
         if (\array_key_exists('fieldPath', $data) && $data['fieldPath'] !== null) {
             $object->setFieldPath($data['fieldPath']);
+            unset($data['fieldPath']);
         }
         elseif (\array_key_exists('fieldPath', $data) && $data['fieldPath'] === null) {
             $object->setFieldPath(null);
         }
         if (\array_key_exists('refId', $data) && $data['refId'] !== null) {
             $object->setRefId($data['refId']);
+            unset($data['refId']);
         }
         elseif (\array_key_exists('refId', $data) && $data['refId'] === null) {
             $object->setRefId(null);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -79,6 +88,11 @@ class TagboxItemAssignedConditionNormalizer implements DenormalizerInterface, No
         }
         if (null !== $object->getRefId()) {
             $data['refId'] = $object->getRefId();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class OutputFormatNotFoundException
+class OutputFormatNotFoundException extends \ArrayObject
 {
     /**
      * 

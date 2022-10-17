@@ -43,6 +43,12 @@ class ListCompanyImagesDataItemLocalPropertiesNormalizer implements Denormalizer
         }
         if (\array_key_exists('accountRefNumber', $data)) {
             $object->setAccountRefNumber($data['accountRefNumber']);
+            unset($data['accountRefNumber']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -54,6 +60,11 @@ class ListCompanyImagesDataItemLocalPropertiesNormalizer implements Denormalizer
         $data = array();
         if (null !== $object->getAccountRefNumber()) {
             $data['accountRefNumber'] = $object->getAccountRefNumber();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class RepositoryOwner
+class RepositoryOwner extends \ArrayObject
 {
     /**
      * 

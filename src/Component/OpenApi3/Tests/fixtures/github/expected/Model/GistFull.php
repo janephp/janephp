@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class GistFull
+class GistFull extends \ArrayObject
 {
     /**
      * 

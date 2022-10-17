@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class RepositoryTemplateRepositoryPermissions
+class RepositoryTemplateRepositoryPermissions extends \ArrayObject
 {
     /**
      * 

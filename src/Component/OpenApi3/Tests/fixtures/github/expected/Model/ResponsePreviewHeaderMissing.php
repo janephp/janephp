@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class ResponsePreviewHeaderMissing
+class ResponsePreviewHeaderMissing extends \ArrayObject
 {
     /**
      * 

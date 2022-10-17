@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class OrgsOrgTeamsPostBody
+class OrgsOrgTeamsPostBody extends \ArrayObject
 {
     /**
      * The name of the team.

@@ -47,9 +47,16 @@ class ReposOwnerRepoGitBlobsPostBodyNormalizer implements DenormalizerInterface,
         }
         if (\array_key_exists('content', $data)) {
             $object->setContent($data['content']);
+            unset($data['content']);
         }
         if (\array_key_exists('encoding', $data)) {
             $object->setEncoding($data['encoding']);
+            unset($data['encoding']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -62,6 +69,11 @@ class ReposOwnerRepoGitBlobsPostBodyNormalizer implements DenormalizerInterface,
         $data['content'] = $object->getContent();
         if (null !== $object->getEncoding()) {
             $data['encoding'] = $object->getEncoding();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ReposOwnerRepoGitBlobsPostBodyConstraint());

@@ -43,33 +43,48 @@ class PeopleSearchSuccessResultDirectorsItemNormalizer implements DenormalizerIn
         }
         if (\array_key_exists('peopleId', $data)) {
             $object->setPeopleId($data['peopleId']);
+            unset($data['peopleId']);
         }
         if (\array_key_exists('firstName', $data)) {
             $object->setFirstName($data['firstName']);
+            unset($data['firstName']);
         }
         if (\array_key_exists('lastName', $data)) {
             $object->setLastName($data['lastName']);
+            unset($data['lastName']);
         }
         if (\array_key_exists('country', $data)) {
             $object->setCountry($data['country']);
+            unset($data['country']);
         }
         if (\array_key_exists('company', $data)) {
             $object->setCompany($this->denormalizer->denormalize($data['company'], 'CreditSafe\\API\\Model\\PeopleSearchSuccessResultDirectorsItemCompany', 'json', $context));
+            unset($data['company']);
         }
         if (\array_key_exists('address', $data)) {
             $object->setAddress($this->denormalizer->denormalize($data['address'], 'CreditSafe\\API\\Model\\PeopleSearchSuccessResultDirectorsItemAddress', 'json', $context));
+            unset($data['address']);
         }
         if (\array_key_exists('status', $data)) {
             $object->setStatus($data['status']);
+            unset($data['status']);
         }
         if (\array_key_exists('dateOfLatestChange', $data)) {
             $object->setDateOfLatestChange($data['dateOfLatestChange']);
+            unset($data['dateOfLatestChange']);
         }
         if (\array_key_exists('dateOfBirth', $data)) {
             $object->setDateOfBirth($data['dateOfBirth']);
+            unset($data['dateOfBirth']);
         }
         if (\array_key_exists('localDirectorNumber', $data)) {
             $object->setLocalDirectorNumber($data['localDirectorNumber']);
+            unset($data['localDirectorNumber']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -108,6 +123,11 @@ class PeopleSearchSuccessResultDirectorsItemNormalizer implements DenormalizerIn
         }
         if (null !== $object->getLocalDirectorNumber()) {
             $data['localDirectorNumber'] = $object->getLocalDirectorNumber();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class OutputFormatEditable
+class OutputFormatEditable extends \ArrayObject
 {
     /**
      * Which output format should be used as a source of data.

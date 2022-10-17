@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class CommitParentsItem
+class CommitParentsItem extends \ArrayObject
 {
     /**
      * 

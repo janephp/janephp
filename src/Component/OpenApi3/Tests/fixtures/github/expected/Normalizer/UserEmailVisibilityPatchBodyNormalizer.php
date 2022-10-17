@@ -47,9 +47,16 @@ class UserEmailVisibilityPatchBodyNormalizer implements DenormalizerInterface, N
         }
         if (\array_key_exists('email', $data)) {
             $object->setEmail($data['email']);
+            unset($data['email']);
         }
         if (\array_key_exists('visibility', $data)) {
             $object->setVisibility($data['visibility']);
+            unset($data['visibility']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -61,6 +68,11 @@ class UserEmailVisibilityPatchBodyNormalizer implements DenormalizerInterface, N
         $data = array();
         $data['email'] = $object->getEmail();
         $data['visibility'] = $object->getVisibility();
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\UserEmailVisibilityPatchBodyConstraint());
             $context['skip_validation'] = true;

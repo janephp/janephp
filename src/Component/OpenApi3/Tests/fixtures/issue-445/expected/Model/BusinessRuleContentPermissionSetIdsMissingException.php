@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class BusinessRuleContentPermissionSetIdsMissingException
+class BusinessRuleContentPermissionSetIdsMissingException extends \ArrayObject
 {
     /**
      * 

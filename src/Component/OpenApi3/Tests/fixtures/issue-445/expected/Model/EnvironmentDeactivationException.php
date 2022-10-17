@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class EnvironmentDeactivationException
+class EnvironmentDeactivationException extends \ArrayObject
 {
     /**
      * 

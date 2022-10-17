@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class BranchShort
+class BranchShort extends \ArrayObject
 {
     /**
      * 

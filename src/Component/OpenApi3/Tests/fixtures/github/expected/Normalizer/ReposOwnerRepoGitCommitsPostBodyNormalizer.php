@@ -47,9 +47,11 @@ class ReposOwnerRepoGitCommitsPostBodyNormalizer implements DenormalizerInterfac
         }
         if (\array_key_exists('message', $data)) {
             $object->setMessage($data['message']);
+            unset($data['message']);
         }
         if (\array_key_exists('tree', $data)) {
             $object->setTree($data['tree']);
+            unset($data['tree']);
         }
         if (\array_key_exists('parents', $data)) {
             $values = array();
@@ -57,15 +59,24 @@ class ReposOwnerRepoGitCommitsPostBodyNormalizer implements DenormalizerInterfac
                 $values[] = $value;
             }
             $object->setParents($values);
+            unset($data['parents']);
         }
         if (\array_key_exists('author', $data)) {
             $object->setAuthor($this->denormalizer->denormalize($data['author'], 'Github\\Model\\ReposOwnerRepoGitCommitsPostBodyAuthor', 'json', $context));
+            unset($data['author']);
         }
         if (\array_key_exists('committer', $data)) {
             $object->setCommitter($this->denormalizer->denormalize($data['committer'], 'Github\\Model\\ReposOwnerRepoGitCommitsPostBodyCommitter', 'json', $context));
+            unset($data['committer']);
         }
         if (\array_key_exists('signature', $data)) {
             $object->setSignature($data['signature']);
+            unset($data['signature']);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
@@ -92,6 +103,11 @@ class ReposOwnerRepoGitCommitsPostBodyNormalizer implements DenormalizerInterfac
         }
         if (null !== $object->getSignature()) {
             $data['signature'] = $object->getSignature();
+        }
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ReposOwnerRepoGitCommitsPostBodyConstraint());

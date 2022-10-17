@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class DuplicateAggregatorException
+class DuplicateAggregatorException extends \ArrayObject
 {
     /**
      * 

@@ -47,12 +47,20 @@ class ReposOwnerRepoGitRefsPostBodyNormalizer implements DenormalizerInterface, 
         }
         if (\array_key_exists('ref', $data)) {
             $object->setRef($data['ref']);
+            unset($data['ref']);
         }
         if (\array_key_exists('sha', $data)) {
             $object->setSha($data['sha']);
+            unset($data['sha']);
         }
         if (\array_key_exists('key', $data)) {
             $object->setKey($data['key']);
+            unset($data['key']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -66,6 +74,11 @@ class ReposOwnerRepoGitRefsPostBodyNormalizer implements DenormalizerInterface, 
         $data['sha'] = $object->getSha();
         if (null !== $object->getKey()) {
             $data['key'] = $object->getKey();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ReposOwnerRepoGitRefsPostBodyConstraint());

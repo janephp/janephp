@@ -43,18 +43,28 @@ class CompliancePreDefinedSearchesPredefinedSearchesItemNormalizer implements De
         }
         if (\array_key_exists('name', $data)) {
             $object->setName($data['name']);
+            unset($data['name']);
         }
         if (\array_key_exists('categoryName', $data)) {
             $object->setCategoryName($data['categoryName']);
+            unset($data['categoryName']);
         }
         if (\array_key_exists('productName', $data)) {
             $object->setProductName($data['productName']);
+            unset($data['productName']);
         }
         if (\array_key_exists('description', $data)) {
             $object->setDescription($data['description']);
+            unset($data['description']);
         }
         if (\array_key_exists('confidence', $data)) {
             $object->setConfidence($data['confidence']);
+            unset($data['confidence']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -78,6 +88,11 @@ class CompliancePreDefinedSearchesPredefinedSearchesItemNormalizer implements De
         }
         if (null !== $object->getConfidence()) {
             $data['confidence'] = $object->getConfidence();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

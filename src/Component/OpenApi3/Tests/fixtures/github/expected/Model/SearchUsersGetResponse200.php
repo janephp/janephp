@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class SearchUsersGetResponse200
+class SearchUsersGetResponse200 extends \ArrayObject
 {
     /**
      * 

@@ -43,6 +43,7 @@ class ContentSearchResultNormalizer implements DenormalizerInterface, Normalizer
         }
         if (\array_key_exists('totalResults', $data)) {
             $object->setTotalResults($data['totalResults']);
+            unset($data['totalResults']);
         }
         if (\array_key_exists('results', $data)) {
             $values = array();
@@ -50,24 +51,29 @@ class ContentSearchResultNormalizer implements DenormalizerInterface, Normalizer
                 $values[] = $this->denormalizer->denormalize($value, 'PicturePark\\API\\Model\\Content', 'json', $context);
             }
             $object->setResults($values);
+            unset($data['results']);
         }
         if (\array_key_exists('elapsedMilliseconds', $data)) {
             $object->setElapsedMilliseconds($data['elapsedMilliseconds']);
+            unset($data['elapsedMilliseconds']);
         }
         if (\array_key_exists('pageToken', $data) && $data['pageToken'] !== null) {
             $object->setPageToken($data['pageToken']);
+            unset($data['pageToken']);
         }
         elseif (\array_key_exists('pageToken', $data) && $data['pageToken'] === null) {
             $object->setPageToken(null);
         }
         if (\array_key_exists('searchString', $data) && $data['searchString'] !== null) {
             $object->setSearchString($data['searchString']);
+            unset($data['searchString']);
         }
         elseif (\array_key_exists('searchString', $data) && $data['searchString'] === null) {
             $object->setSearchString(null);
         }
         if (\array_key_exists('isSearchStringRewritten', $data)) {
             $object->setIsSearchStringRewritten($data['isSearchStringRewritten']);
+            unset($data['isSearchStringRewritten']);
         }
         if (\array_key_exists('queryDebugInformation', $data) && $data['queryDebugInformation'] !== null) {
             $values_1 = array();
@@ -75,6 +81,7 @@ class ContentSearchResultNormalizer implements DenormalizerInterface, Normalizer
                 $values_1[] = $this->denormalizer->denormalize($value_1, 'PicturePark\\API\\Model\\QueryDebugInformation', 'json', $context);
             }
             $object->setQueryDebugInformation($values_1);
+            unset($data['queryDebugInformation']);
         }
         elseif (\array_key_exists('queryDebugInformation', $data) && $data['queryDebugInformation'] === null) {
             $object->setQueryDebugInformation(null);
@@ -85,6 +92,7 @@ class ContentSearchResultNormalizer implements DenormalizerInterface, Normalizer
                 $values_2[] = $this->denormalizer->denormalize($value_2, 'PicturePark\\API\\Model\\AggregationResult', 'json', $context);
             }
             $object->setAggregationResults($values_2);
+            unset($data['aggregationResults']);
         }
         elseif (\array_key_exists('aggregationResults', $data) && $data['aggregationResults'] === null) {
             $object->setAggregationResults(null);
@@ -95,9 +103,15 @@ class ContentSearchResultNormalizer implements DenormalizerInterface, Normalizer
                 $values_3[] = $this->denormalizer->denormalize($value_3, 'PicturePark\\API\\Model\\ContentRightAggregationCount', 'json', $context);
             }
             $object->setRightsAggregationsCounts($values_3);
+            unset($data['rightsAggregationsCounts']);
         }
         elseif (\array_key_exists('rightsAggregationsCounts', $data) && $data['rightsAggregationsCounts'] === null) {
             $object->setRightsAggregationsCounts(null);
+        }
+        foreach ($data as $key => $value_4) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_4;
+            }
         }
         return $object;
     }
@@ -143,6 +157,11 @@ class ContentSearchResultNormalizer implements DenormalizerInterface, Normalizer
                 $values_3[] = $this->normalizer->normalize($value_3, 'json', $context);
             }
             $data['rightsAggregationsCounts'] = $values_3;
+        }
+        foreach ($object as $key => $value_4) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_4;
+            }
         }
         return $data;
     }

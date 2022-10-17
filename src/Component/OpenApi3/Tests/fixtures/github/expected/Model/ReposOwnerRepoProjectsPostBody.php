@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoProjectsPostBody
+class ReposOwnerRepoProjectsPostBody extends \ArrayObject
 {
     /**
      * The name of the project.

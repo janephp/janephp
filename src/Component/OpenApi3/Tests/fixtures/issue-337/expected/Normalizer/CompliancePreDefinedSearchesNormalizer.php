@@ -43,6 +43,7 @@ class CompliancePreDefinedSearchesNormalizer implements DenormalizerInterface, N
         }
         if (\array_key_exists('totalSize', $data)) {
             $object->setTotalSize($data['totalSize']);
+            unset($data['totalSize']);
         }
         if (\array_key_exists('predefinedSearches', $data)) {
             $values = array();
@@ -50,6 +51,12 @@ class CompliancePreDefinedSearchesNormalizer implements DenormalizerInterface, N
                 $values[] = $this->denormalizer->denormalize($value, 'CreditSafe\\API\\Model\\CompliancePreDefinedSearchesPredefinedSearchesItem', 'json', $context);
             }
             $object->setPredefinedSearches($values);
+            unset($data['predefinedSearches']);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
@@ -68,6 +75,11 @@ class CompliancePreDefinedSearchesNormalizer implements DenormalizerInterface, N
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data['predefinedSearches'] = $values;
+        }
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
+            }
         }
         return $data;
     }

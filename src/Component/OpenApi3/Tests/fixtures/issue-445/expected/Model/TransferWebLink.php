@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class TransferWebLink
+class TransferWebLink extends \ArrayObject
 {
     /**
      * Replaced in favor of RequestId. Client generated identifier of the item.

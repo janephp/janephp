@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class SchemaFieldDisplayPatternTypeNotSupportedException
+class SchemaFieldDisplayPatternTypeNotSupportedException extends \ArrayObject
 {
     /**
      * 

@@ -43,12 +43,20 @@ class CommonMediaFieldsNormalizer implements DenormalizerInterface, NormalizerIn
         }
         if (\array_key_exists('media_key', $data)) {
             $object->setMediaKey($data['media_key']);
+            unset($data['media_key']);
         }
         if (\array_key_exists('height', $data)) {
             $object->setHeight($data['height']);
+            unset($data['height']);
         }
         if (\array_key_exists('width', $data)) {
             $object->setWidth($data['width']);
+            unset($data['width']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -61,6 +69,11 @@ class CommonMediaFieldsNormalizer implements DenormalizerInterface, NormalizerIn
         $data['media_key'] = $object->getMediaKey();
         $data['height'] = $object->getHeight();
         $data['width'] = $object->getWidth();
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
         return $data;
     }
 }

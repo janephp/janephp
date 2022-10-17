@@ -47,9 +47,11 @@ class ProjectsColumnsCardsCardIdDeleteResponse403Normalizer implements Denormali
         }
         if (\array_key_exists('message', $data)) {
             $object->setMessage($data['message']);
+            unset($data['message']);
         }
         if (\array_key_exists('documentation_url', $data)) {
             $object->setDocumentationUrl($data['documentation_url']);
+            unset($data['documentation_url']);
         }
         if (\array_key_exists('errors', $data)) {
             $values = array();
@@ -57,6 +59,12 @@ class ProjectsColumnsCardsCardIdDeleteResponse403Normalizer implements Denormali
                 $values[] = $value;
             }
             $object->setErrors($values);
+            unset($data['errors']);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
@@ -78,6 +86,11 @@ class ProjectsColumnsCardsCardIdDeleteResponse403Normalizer implements Denormali
                 $values[] = $value;
             }
             $data['errors'] = $values;
+        }
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ProjectsColumnsCardsCardIdDeleteResponse403Constraint());

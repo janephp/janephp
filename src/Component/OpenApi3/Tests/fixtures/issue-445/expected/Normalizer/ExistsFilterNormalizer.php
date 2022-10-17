@@ -43,9 +43,16 @@ class ExistsFilterNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         if (\array_key_exists('kind', $data)) {
             $object->setKind($data['kind']);
+            unset($data['kind']);
         }
         if (\array_key_exists('field', $data)) {
             $object->setField($data['field']);
+            unset($data['field']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -57,6 +64,11 @@ class ExistsFilterNormalizer implements DenormalizerInterface, NormalizerInterfa
         $data = array();
         $data['kind'] = $object->getKind();
         $data['field'] = $object->getField();
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
         return $data;
     }
 }

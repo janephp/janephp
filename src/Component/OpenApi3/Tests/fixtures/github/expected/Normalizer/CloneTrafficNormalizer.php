@@ -47,9 +47,11 @@ class CloneTrafficNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         if (\array_key_exists('count', $data)) {
             $object->setCount($data['count']);
+            unset($data['count']);
         }
         if (\array_key_exists('uniques', $data)) {
             $object->setUniques($data['uniques']);
+            unset($data['uniques']);
         }
         if (\array_key_exists('clones', $data)) {
             $values = array();
@@ -57,6 +59,12 @@ class CloneTrafficNormalizer implements DenormalizerInterface, NormalizerInterfa
                 $values[] = $this->denormalizer->denormalize($value, 'Github\\Model\\Traffic', 'json', $context);
             }
             $object->setClones($values);
+            unset($data['clones']);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
@@ -73,6 +81,11 @@ class CloneTrafficNormalizer implements DenormalizerInterface, NormalizerInterfa
             $values[] = $this->normalizer->normalize($value, 'json', $context);
         }
         $data['clones'] = $values;
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
+            }
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\CloneTrafficConstraint());
             $context['skip_validation'] = true;

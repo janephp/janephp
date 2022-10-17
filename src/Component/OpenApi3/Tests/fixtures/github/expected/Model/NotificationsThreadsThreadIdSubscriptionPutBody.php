@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class NotificationsThreadsThreadIdSubscriptionPutBody
+class NotificationsThreadsThreadIdSubscriptionPutBody extends \ArrayObject
 {
     /**
      * Whether to block all notifications from a thread.

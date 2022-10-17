@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class IssueEventLabel
+class IssueEventLabel extends \ArrayObject
 {
     /**
      * 

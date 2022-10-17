@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class ActionsBillingUsage
+class ActionsBillingUsage extends \ArrayObject
 {
     /**
      * The sum of the free and paid GitHub Actions minutes used.

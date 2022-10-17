@@ -47,27 +47,39 @@ class OrgMembershipNormalizer implements DenormalizerInterface, NormalizerInterf
         }
         if (\array_key_exists('url', $data)) {
             $object->setUrl($data['url']);
+            unset($data['url']);
         }
         if (\array_key_exists('state', $data)) {
             $object->setState($data['state']);
+            unset($data['state']);
         }
         if (\array_key_exists('role', $data)) {
             $object->setRole($data['role']);
+            unset($data['role']);
         }
         if (\array_key_exists('organization_url', $data)) {
             $object->setOrganizationUrl($data['organization_url']);
+            unset($data['organization_url']);
         }
         if (\array_key_exists('organization', $data)) {
             $object->setOrganization($this->denormalizer->denormalize($data['organization'], 'Github\\Model\\OrganizationSimple', 'json', $context));
+            unset($data['organization']);
         }
         if (\array_key_exists('user', $data) && $data['user'] !== null) {
             $object->setUser($this->denormalizer->denormalize($data['user'], 'Github\\Model\\OrgMembershipUser', 'json', $context));
+            unset($data['user']);
         }
         elseif (\array_key_exists('user', $data) && $data['user'] === null) {
             $object->setUser(null);
         }
         if (\array_key_exists('permissions', $data)) {
             $object->setPermissions($this->denormalizer->denormalize($data['permissions'], 'Github\\Model\\OrgMembershipPermissions', 'json', $context));
+            unset($data['permissions']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -85,6 +97,11 @@ class OrgMembershipNormalizer implements DenormalizerInterface, NormalizerInterf
         $data['user'] = $this->normalizer->normalize($object->getUser(), 'json', $context);
         if (null !== $object->getPermissions()) {
             $data['permissions'] = $this->normalizer->normalize($object->getPermissions(), 'json', $context);
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\OrgMembershipConstraint());

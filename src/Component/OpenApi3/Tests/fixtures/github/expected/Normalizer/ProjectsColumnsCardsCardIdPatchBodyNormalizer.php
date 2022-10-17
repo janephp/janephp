@@ -47,12 +47,19 @@ class ProjectsColumnsCardsCardIdPatchBodyNormalizer implements DenormalizerInter
         }
         if (\array_key_exists('note', $data) && $data['note'] !== null) {
             $object->setNote($data['note']);
+            unset($data['note']);
         }
         elseif (\array_key_exists('note', $data) && $data['note'] === null) {
             $object->setNote(null);
         }
         if (\array_key_exists('archived', $data)) {
             $object->setArchived($data['archived']);
+            unset($data['archived']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -67,6 +74,11 @@ class ProjectsColumnsCardsCardIdPatchBodyNormalizer implements DenormalizerInter
         }
         if (null !== $object->getArchived()) {
             $data['archived'] = $object->getArchived();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ProjectsColumnsCardsCardIdPatchBodyConstraint());

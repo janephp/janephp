@@ -47,36 +47,49 @@ class MarketplacePurchaseMarketplacePurchaseNormalizer implements DenormalizerIn
         }
         if (\array_key_exists('billing_cycle', $data)) {
             $object->setBillingCycle($data['billing_cycle']);
+            unset($data['billing_cycle']);
         }
         if (\array_key_exists('next_billing_date', $data) && $data['next_billing_date'] !== null) {
             $object->setNextBillingDate($data['next_billing_date']);
+            unset($data['next_billing_date']);
         }
         elseif (\array_key_exists('next_billing_date', $data) && $data['next_billing_date'] === null) {
             $object->setNextBillingDate(null);
         }
         if (\array_key_exists('is_installed', $data)) {
             $object->setIsInstalled($data['is_installed']);
+            unset($data['is_installed']);
         }
         if (\array_key_exists('unit_count', $data) && $data['unit_count'] !== null) {
             $object->setUnitCount($data['unit_count']);
+            unset($data['unit_count']);
         }
         elseif (\array_key_exists('unit_count', $data) && $data['unit_count'] === null) {
             $object->setUnitCount(null);
         }
         if (\array_key_exists('on_free_trial', $data)) {
             $object->setOnFreeTrial($data['on_free_trial']);
+            unset($data['on_free_trial']);
         }
         if (\array_key_exists('free_trial_ends_on', $data) && $data['free_trial_ends_on'] !== null) {
             $object->setFreeTrialEndsOn($data['free_trial_ends_on']);
+            unset($data['free_trial_ends_on']);
         }
         elseif (\array_key_exists('free_trial_ends_on', $data) && $data['free_trial_ends_on'] === null) {
             $object->setFreeTrialEndsOn(null);
         }
         if (\array_key_exists('updated_at', $data)) {
             $object->setUpdatedAt($data['updated_at']);
+            unset($data['updated_at']);
         }
         if (\array_key_exists('plan', $data)) {
             $object->setPlan($this->denormalizer->denormalize($data['plan'], 'Github\\Model\\MarketplaceListingPlan', 'json', $context));
+            unset($data['plan']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -109,6 +122,11 @@ class MarketplacePurchaseMarketplacePurchaseNormalizer implements DenormalizerIn
         }
         if (null !== $object->getPlan()) {
             $data['plan'] = $this->normalizer->normalize($object->getPlan(), 'json', $context);
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\MarketplacePurchaseMarketplacePurchaseConstraint());

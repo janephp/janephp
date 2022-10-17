@@ -47,9 +47,11 @@ class GbCompanyReportExampleResponseReportAdditionalInformationNormalizer implem
                 $values[] = $this->denormalizer->denormalize($value, 'CreditSafe\\API\\Model\\GbCompanyReportExampleResponseReportAdditionalInformationCompanyHistoryItem', 'json', $context);
             }
             $object->setCompanyHistory($values);
+            unset($data['companyHistory']);
         }
         if (\array_key_exists('mortgageSummary', $data)) {
             $object->setMortgageSummary($this->denormalizer->denormalize($data['mortgageSummary'], 'CreditSafe\\API\\Model\\GbCompanyReportExampleResponseReportAdditionalInformationMortgageSummary', 'json', $context));
+            unset($data['mortgageSummary']);
         }
         if (\array_key_exists('mortgageDetails', $data)) {
             $values_1 = array();
@@ -57,6 +59,7 @@ class GbCompanyReportExampleResponseReportAdditionalInformationNormalizer implem
                 $values_1[] = $this->denormalizer->denormalize($value_1, 'CreditSafe\\API\\Model\\GbCompanyReportExampleResponseReportAdditionalInformationMortgageDetailsItem', 'json', $context);
             }
             $object->setMortgageDetails($values_1);
+            unset($data['mortgageDetails']);
         }
         if (\array_key_exists('commentaries', $data)) {
             $values_2 = array();
@@ -64,6 +67,7 @@ class GbCompanyReportExampleResponseReportAdditionalInformationNormalizer implem
                 $values_2[] = $this->denormalizer->denormalize($value_2, 'CreditSafe\\API\\Model\\GbCompanyReportExampleResponseReportAdditionalInformationCommentariesItem', 'json', $context);
             }
             $object->setCommentaries($values_2);
+            unset($data['commentaries']);
         }
         if (\array_key_exists('ratingHistory', $data)) {
             $values_3 = array();
@@ -71,6 +75,7 @@ class GbCompanyReportExampleResponseReportAdditionalInformationNormalizer implem
                 $values_3[] = $this->denormalizer->denormalize($value_3, 'CreditSafe\\API\\Model\\GbCompanyReportExampleResponseReportAdditionalInformationRatingHistoryItem', 'json', $context);
             }
             $object->setRatingHistory($values_3);
+            unset($data['ratingHistory']);
         }
         if (\array_key_exists('creditLimitHistory', $data)) {
             $values_4 = array();
@@ -78,6 +83,7 @@ class GbCompanyReportExampleResponseReportAdditionalInformationNormalizer implem
                 $values_4[] = $this->denormalizer->denormalize($value_4, 'CreditSafe\\API\\Model\\GbCompanyReportExampleResponseReportAdditionalInformationCreditLimitHistoryItem', 'json', $context);
             }
             $object->setCreditLimitHistory($values_4);
+            unset($data['creditLimitHistory']);
         }
         if (\array_key_exists('badDebtDetails', $data)) {
             $values_5 = array();
@@ -85,6 +91,12 @@ class GbCompanyReportExampleResponseReportAdditionalInformationNormalizer implem
                 $values_5[] = $this->denormalizer->denormalize($value_5, 'CreditSafe\\API\\Model\\GbCompanyReportExampleResponseReportAdditionalInformationBadDebtDetailsItem', 'json', $context);
             }
             $object->setBadDebtDetails($values_5);
+            unset($data['badDebtDetails']);
+        }
+        foreach ($data as $key => $value_6) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_6;
+            }
         }
         return $object;
     }
@@ -138,6 +150,11 @@ class GbCompanyReportExampleResponseReportAdditionalInformationNormalizer implem
                 $values_5[] = $this->normalizer->normalize($value_5, 'json', $context);
             }
             $data['badDebtDetails'] = $values_5;
+        }
+        foreach ($object as $key => $value_6) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_6;
+            }
         }
         return $data;
     }

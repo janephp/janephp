@@ -2,7 +2,7 @@
 
 namespace ApiPlatform\Demo\Model;
 
-class BookJsonhalReviewReadLinks
+class BookJsonhalReviewReadLinks extends \ArrayObject
 {
     /**
      * 

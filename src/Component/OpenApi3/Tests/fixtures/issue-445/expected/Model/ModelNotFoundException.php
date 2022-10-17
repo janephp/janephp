@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class ModelNotFoundException
+class ModelNotFoundException extends \ArrayObject
 {
     /**
      * 

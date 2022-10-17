@@ -47,24 +47,31 @@ class GitCommitNormalizer implements DenormalizerInterface, NormalizerInterface,
         }
         if (\array_key_exists('sha', $data)) {
             $object->setSha($data['sha']);
+            unset($data['sha']);
         }
         if (\array_key_exists('node_id', $data)) {
             $object->setNodeId($data['node_id']);
+            unset($data['node_id']);
         }
         if (\array_key_exists('url', $data)) {
             $object->setUrl($data['url']);
+            unset($data['url']);
         }
         if (\array_key_exists('author', $data)) {
             $object->setAuthor($this->denormalizer->denormalize($data['author'], 'Github\\Model\\GitCommitAuthor', 'json', $context));
+            unset($data['author']);
         }
         if (\array_key_exists('committer', $data)) {
             $object->setCommitter($this->denormalizer->denormalize($data['committer'], 'Github\\Model\\GitCommitCommitter', 'json', $context));
+            unset($data['committer']);
         }
         if (\array_key_exists('message', $data)) {
             $object->setMessage($data['message']);
+            unset($data['message']);
         }
         if (\array_key_exists('tree', $data)) {
             $object->setTree($this->denormalizer->denormalize($data['tree'], 'Github\\Model\\GitCommitTree', 'json', $context));
+            unset($data['tree']);
         }
         if (\array_key_exists('parents', $data)) {
             $values = array();
@@ -72,12 +79,20 @@ class GitCommitNormalizer implements DenormalizerInterface, NormalizerInterface,
                 $values[] = $this->denormalizer->denormalize($value, 'Github\\Model\\GitCommitParentsItem', 'json', $context);
             }
             $object->setParents($values);
+            unset($data['parents']);
         }
         if (\array_key_exists('verification', $data)) {
             $object->setVerification($this->denormalizer->denormalize($data['verification'], 'Github\\Model\\GitCommitVerification', 'json', $context));
+            unset($data['verification']);
         }
         if (\array_key_exists('html_url', $data)) {
             $object->setHtmlUrl($data['html_url']);
+            unset($data['html_url']);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
@@ -120,6 +135,11 @@ class GitCommitNormalizer implements DenormalizerInterface, NormalizerInterface,
         }
         if (null !== $object->getHtmlUrl()) {
             $data['html_url'] = $object->getHtmlUrl();
+        }
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\GitCommitConstraint());

@@ -52,33 +52,48 @@ class UserDetailsNormalizer implements DenormalizerInterface, NormalizerInterfac
         }
         if (\array_key_exists('countryCode', $data)) {
             $object->setCountryCode($data['countryCode']);
+            unset($data['countryCode']);
         }
         if (\array_key_exists('createdDate', $data)) {
             $object->setCreatedDate(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['createdDate']));
+            unset($data['createdDate']);
         }
         if (\array_key_exists('csCustomerId', $data)) {
             $object->setCsCustomerId($data['csCustomerId']);
+            unset($data['csCustomerId']);
         }
         if (\array_key_exists('csUserId', $data)) {
             $object->setCsUserId($data['csUserId']);
+            unset($data['csUserId']);
         }
         if (\array_key_exists('isAutoTracker', $data)) {
             $object->setIsAutoTracker($data['isAutoTracker']);
+            unset($data['isAutoTracker']);
         }
         if (\array_key_exists('languageCode', $data)) {
             $object->setLanguageCode($data['languageCode']);
+            unset($data['languageCode']);
         }
         if (\array_key_exists('lastAccessDate', $data)) {
             $object->setLastAccessDate(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['lastAccessDate']));
+            unset($data['lastAccessDate']);
         }
         if (\array_key_exists('modifiedDate', $data)) {
             $object->setModifiedDate(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['modifiedDate']));
+            unset($data['modifiedDate']);
         }
         if (\array_key_exists('contractEndDate', $data)) {
             $object->setContractEndDate(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['contractEndDate']));
+            unset($data['contractEndDate']);
         }
         if (\array_key_exists('userId', $data)) {
             $object->setUserId($data['userId']);
+            unset($data['userId']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -117,6 +132,11 @@ class UserDetailsNormalizer implements DenormalizerInterface, NormalizerInterfac
         }
         if (null !== $object->getUserId()) {
             $data['userId'] = $object->getUserId();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

@@ -43,6 +43,7 @@ class GbCompanyReportExampleResponseReportCompanyIdentificationNormalizer implem
         }
         if (\array_key_exists('basicInformation', $data)) {
             $object->setBasicInformation($this->denormalizer->denormalize($data['basicInformation'], 'CreditSafe\\API\\Model\\GbCompanyReportExampleResponseReportCompanyIdentificationBasicInformation', 'json', $context));
+            unset($data['basicInformation']);
         }
         if (\array_key_exists('activityClassifications', $data)) {
             $values = array();
@@ -50,6 +51,7 @@ class GbCompanyReportExampleResponseReportCompanyIdentificationNormalizer implem
                 $values[] = $this->denormalizer->denormalize($value, 'CreditSafe\\API\\Model\\GbCompanyReportExampleResponseReportCompanyIdentificationActivityClassificationsItem', 'json', $context);
             }
             $object->setActivityClassifications($values);
+            unset($data['activityClassifications']);
         }
         if (\array_key_exists('previousNames', $data)) {
             $values_1 = array();
@@ -57,6 +59,12 @@ class GbCompanyReportExampleResponseReportCompanyIdentificationNormalizer implem
                 $values_1[] = $this->denormalizer->denormalize($value_1, 'CreditSafe\\API\\Model\\GbCompanyReportExampleResponseReportCompanyIdentificationPreviousNamesItem', 'json', $context);
             }
             $object->setPreviousNames($values_1);
+            unset($data['previousNames']);
+        }
+        foreach ($data as $key => $value_2) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_2;
+            }
         }
         return $object;
     }
@@ -82,6 +90,11 @@ class GbCompanyReportExampleResponseReportCompanyIdentificationNormalizer implem
                 $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
             }
             $data['previousNames'] = $values_1;
+        }
+        foreach ($object as $key => $value_2) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_2;
+            }
         }
         return $data;
     }

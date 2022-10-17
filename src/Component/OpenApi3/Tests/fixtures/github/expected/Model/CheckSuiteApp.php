@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class CheckSuiteApp
+class CheckSuiteApp extends \ArrayObject
 {
     /**
      * Unique identifier of the GitHub app

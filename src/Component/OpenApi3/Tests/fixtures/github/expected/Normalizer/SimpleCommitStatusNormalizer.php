@@ -47,45 +47,61 @@ class SimpleCommitStatusNormalizer implements DenormalizerInterface, NormalizerI
         }
         if (\array_key_exists('description', $data) && $data['description'] !== null) {
             $object->setDescription($data['description']);
+            unset($data['description']);
         }
         elseif (\array_key_exists('description', $data) && $data['description'] === null) {
             $object->setDescription(null);
         }
         if (\array_key_exists('id', $data)) {
             $object->setId($data['id']);
+            unset($data['id']);
         }
         if (\array_key_exists('node_id', $data)) {
             $object->setNodeId($data['node_id']);
+            unset($data['node_id']);
         }
         if (\array_key_exists('state', $data)) {
             $object->setState($data['state']);
+            unset($data['state']);
         }
         if (\array_key_exists('context', $data)) {
             $object->setContext($data['context']);
+            unset($data['context']);
         }
         if (\array_key_exists('target_url', $data)) {
             $object->setTargetUrl($data['target_url']);
+            unset($data['target_url']);
         }
         if (\array_key_exists('required', $data) && $data['required'] !== null) {
             $object->setRequired($data['required']);
+            unset($data['required']);
         }
         elseif (\array_key_exists('required', $data) && $data['required'] === null) {
             $object->setRequired(null);
         }
         if (\array_key_exists('avatar_url', $data) && $data['avatar_url'] !== null) {
             $object->setAvatarUrl($data['avatar_url']);
+            unset($data['avatar_url']);
         }
         elseif (\array_key_exists('avatar_url', $data) && $data['avatar_url'] === null) {
             $object->setAvatarUrl(null);
         }
         if (\array_key_exists('url', $data)) {
             $object->setUrl($data['url']);
+            unset($data['url']);
         }
         if (\array_key_exists('created_at', $data)) {
             $object->setCreatedAt(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['created_at']));
+            unset($data['created_at']);
         }
         if (\array_key_exists('updated_at', $data)) {
             $object->setUpdatedAt(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['updated_at']));
+            unset($data['updated_at']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -108,6 +124,11 @@ class SimpleCommitStatusNormalizer implements DenormalizerInterface, NormalizerI
         $data['url'] = $object->getUrl();
         $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
         $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\SimpleCommitStatusConstraint());
             $context['skip_validation'] = true;

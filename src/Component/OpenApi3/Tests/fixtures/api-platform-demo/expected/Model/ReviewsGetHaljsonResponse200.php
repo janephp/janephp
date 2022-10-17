@@ -2,7 +2,7 @@
 
 namespace ApiPlatform\Demo\Model;
 
-class ReviewsGetHaljsonResponse200
+class ReviewsGetHaljsonResponse200 extends \ArrayObject
 {
     /**
      * 

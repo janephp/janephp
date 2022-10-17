@@ -43,12 +43,20 @@ class MonitoringPortfoliosPortfolioIdPatchBodyEmailsItemNormalizer implements De
         }
         if (\array_key_exists('firstName', $data)) {
             $object->setFirstName($data['firstName']);
+            unset($data['firstName']);
         }
         if (\array_key_exists('lastName', $data)) {
             $object->setLastName($data['lastName']);
+            unset($data['lastName']);
         }
         if (\array_key_exists('emailAddress', $data)) {
             $object->setEmailAddress($data['emailAddress']);
+            unset($data['emailAddress']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -66,6 +74,11 @@ class MonitoringPortfoliosPortfolioIdPatchBodyEmailsItemNormalizer implements De
         }
         if (null !== $object->getEmailAddress()) {
             $data['emailAddress'] = $object->getEmailAddress();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

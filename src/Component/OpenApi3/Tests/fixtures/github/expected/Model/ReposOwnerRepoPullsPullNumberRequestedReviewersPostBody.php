@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoPullsPullNumberRequestedReviewersPostBody
+class ReposOwnerRepoPullsPullNumberRequestedReviewersPostBody extends \ArrayObject
 {
     /**
      * An array of user `login`s that will be requested.

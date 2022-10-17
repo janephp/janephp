@@ -47,18 +47,28 @@ class GistFullforksItemNormalizer implements DenormalizerInterface, NormalizerIn
         }
         if (\array_key_exists('user', $data)) {
             $object->setUser($this->denormalizer->denormalize($data['user'], 'Github\\Model\\GistFullforksItemUser', 'json', $context));
+            unset($data['user']);
         }
         if (\array_key_exists('url', $data)) {
             $object->setUrl($data['url']);
+            unset($data['url']);
         }
         if (\array_key_exists('id', $data)) {
             $object->setId($data['id']);
+            unset($data['id']);
         }
         if (\array_key_exists('created_at', $data)) {
             $object->setCreatedAt($data['created_at']);
+            unset($data['created_at']);
         }
         if (\array_key_exists('updated_at', $data)) {
             $object->setUpdatedAt($data['updated_at']);
+            unset($data['updated_at']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -82,6 +92,11 @@ class GistFullforksItemNormalizer implements DenormalizerInterface, NormalizerIn
         }
         if (null !== $object->getUpdatedAt()) {
             $data['updated_at'] = $object->getUpdatedAt();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\GistFullforksItemConstraint());

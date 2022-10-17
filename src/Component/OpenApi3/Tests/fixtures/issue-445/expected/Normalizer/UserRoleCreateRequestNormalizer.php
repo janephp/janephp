@@ -43,6 +43,7 @@ class UserRoleCreateRequestNormalizer implements DenormalizerInterface, Normaliz
         }
         if (\array_key_exists('names', $data)) {
             $object->setNames($data['names']);
+            unset($data['names']);
         }
         if (\array_key_exists('userRights', $data)) {
             $values = array();
@@ -50,12 +51,19 @@ class UserRoleCreateRequestNormalizer implements DenormalizerInterface, Normaliz
                 $values[] = $value;
             }
             $object->setUserRights($values);
+            unset($data['userRights']);
         }
         if (\array_key_exists('requestId', $data) && $data['requestId'] !== null) {
             $object->setRequestId($data['requestId']);
+            unset($data['requestId']);
         }
         elseif (\array_key_exists('requestId', $data) && $data['requestId'] === null) {
             $object->setRequestId(null);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
@@ -73,6 +81,11 @@ class UserRoleCreateRequestNormalizer implements DenormalizerInterface, Normaliz
         $data['userRights'] = $values;
         if (null !== $object->getRequestId()) {
             $data['requestId'] = $object->getRequestId();
+        }
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
+            }
         }
         return $data;
     }

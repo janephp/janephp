@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class UserAlreadyInRequestedLockStateException
+class UserAlreadyInRequestedLockStateException extends \ArrayObject
 {
     /**
      * 

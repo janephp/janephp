@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class PullRequestReview
+class PullRequestReview extends \ArrayObject
 {
     /**
      * Unique identifier of the review

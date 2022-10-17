@@ -47,12 +47,20 @@ class BranchShortNormalizer implements DenormalizerInterface, NormalizerInterfac
         }
         if (\array_key_exists('name', $data)) {
             $object->setName($data['name']);
+            unset($data['name']);
         }
         if (\array_key_exists('commit', $data)) {
             $object->setCommit($this->denormalizer->denormalize($data['commit'], 'Github\\Model\\BranchShortCommit', 'json', $context));
+            unset($data['commit']);
         }
         if (\array_key_exists('protected', $data)) {
             $object->setProtected($data['protected']);
+            unset($data['protected']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -70,6 +78,11 @@ class BranchShortNormalizer implements DenormalizerInterface, NormalizerInterfac
         }
         if (null !== $object->getProtected()) {
             $data['protected'] = $object->getProtected();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\BranchShortConstraint());

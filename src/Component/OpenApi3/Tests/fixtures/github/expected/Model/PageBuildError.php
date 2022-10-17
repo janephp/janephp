@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class PageBuildError
+class PageBuildError extends \ArrayObject
 {
     /**
      * 

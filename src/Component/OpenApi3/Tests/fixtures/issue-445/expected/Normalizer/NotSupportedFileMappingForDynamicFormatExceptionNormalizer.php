@@ -43,66 +43,83 @@ class NotSupportedFileMappingForDynamicFormatExceptionNormalizer implements Deno
         }
         if (\array_key_exists('traceLevel', $data)) {
             $object->setTraceLevel($data['traceLevel']);
+            unset($data['traceLevel']);
         }
         if (\array_key_exists('traceId', $data) && $data['traceId'] !== null) {
             $object->setTraceId($data['traceId']);
+            unset($data['traceId']);
         }
         elseif (\array_key_exists('traceId', $data) && $data['traceId'] === null) {
             $object->setTraceId(null);
         }
         if (\array_key_exists('traceJobId', $data) && $data['traceJobId'] !== null) {
             $object->setTraceJobId($data['traceJobId']);
+            unset($data['traceJobId']);
         }
         elseif (\array_key_exists('traceJobId', $data) && $data['traceJobId'] === null) {
             $object->setTraceJobId(null);
         }
         if (\array_key_exists('httpStatusCode', $data)) {
             $object->setHttpStatusCode($data['httpStatusCode']);
+            unset($data['httpStatusCode']);
         }
         if (\array_key_exists('exceptionMessage', $data) && $data['exceptionMessage'] !== null) {
             $object->setExceptionMessage($data['exceptionMessage']);
+            unset($data['exceptionMessage']);
         }
         elseif (\array_key_exists('exceptionMessage', $data) && $data['exceptionMessage'] === null) {
             $object->setExceptionMessage(null);
         }
         if (\array_key_exists('kind', $data)) {
             $object->setKind($data['kind']);
+            unset($data['kind']);
         }
         if (\array_key_exists('customerId', $data) && $data['customerId'] !== null) {
             $object->setCustomerId($data['customerId']);
+            unset($data['customerId']);
         }
         elseif (\array_key_exists('customerId', $data) && $data['customerId'] === null) {
             $object->setCustomerId(null);
         }
         if (\array_key_exists('customerAlias', $data) && $data['customerAlias'] !== null) {
             $object->setCustomerAlias($data['customerAlias']);
+            unset($data['customerAlias']);
         }
         elseif (\array_key_exists('customerAlias', $data) && $data['customerAlias'] === null) {
             $object->setCustomerAlias(null);
         }
         if (\array_key_exists('userId', $data) && $data['userId'] !== null) {
             $object->setUserId($data['userId']);
+            unset($data['userId']);
         }
         elseif (\array_key_exists('userId', $data) && $data['userId'] === null) {
             $object->setUserId(null);
         }
         if (\array_key_exists('inputExtension', $data) && $data['inputExtension'] !== null) {
             $object->setInputExtension($data['inputExtension']);
+            unset($data['inputExtension']);
         }
         elseif (\array_key_exists('inputExtension', $data) && $data['inputExtension'] === null) {
             $object->setInputExtension(null);
         }
         if (\array_key_exists('targetFormatKind', $data) && $data['targetFormatKind'] !== null) {
             $object->setTargetFormatKind($data['targetFormatKind']);
+            unset($data['targetFormatKind']);
         }
         elseif (\array_key_exists('targetFormatKind', $data) && $data['targetFormatKind'] === null) {
             $object->setTargetFormatKind(null);
         }
         if (\array_key_exists('formatId', $data) && $data['formatId'] !== null) {
             $object->setFormatId($data['formatId']);
+            unset($data['formatId']);
         }
         elseif (\array_key_exists('formatId', $data) && $data['formatId'] === null) {
             $object->setFormatId(null);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -145,6 +162,11 @@ class NotSupportedFileMappingForDynamicFormatExceptionNormalizer implements Deno
         }
         if (null !== $object->getFormatId()) {
             $data['formatId'] = $object->getFormatId();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

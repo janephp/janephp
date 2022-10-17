@@ -47,12 +47,20 @@ class PackagesBillingUsageNormalizer implements DenormalizerInterface, Normalize
         }
         if (\array_key_exists('total_gigabytes_bandwidth_used', $data)) {
             $object->setTotalGigabytesBandwidthUsed($data['total_gigabytes_bandwidth_used']);
+            unset($data['total_gigabytes_bandwidth_used']);
         }
         if (\array_key_exists('total_paid_gigabytes_bandwidth_used', $data)) {
             $object->setTotalPaidGigabytesBandwidthUsed($data['total_paid_gigabytes_bandwidth_used']);
+            unset($data['total_paid_gigabytes_bandwidth_used']);
         }
         if (\array_key_exists('included_gigabytes_bandwidth', $data)) {
             $object->setIncludedGigabytesBandwidth($data['included_gigabytes_bandwidth']);
+            unset($data['included_gigabytes_bandwidth']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -70,6 +78,11 @@ class PackagesBillingUsageNormalizer implements DenormalizerInterface, Normalize
         }
         if (null !== $object->getIncludedGigabytesBandwidth()) {
             $data['included_gigabytes_bandwidth'] = $object->getIncludedGigabytesBandwidth();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\PackagesBillingUsageConstraint());

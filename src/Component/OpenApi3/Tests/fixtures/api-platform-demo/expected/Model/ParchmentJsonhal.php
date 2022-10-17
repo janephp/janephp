@@ -6,7 +6,7 @@ namespace ApiPlatform\Demo\Model;
  *
  * @deprecated
  */
-class ParchmentJsonhal
+class ParchmentJsonhal extends \ArrayObject
 {
     /**
      * 

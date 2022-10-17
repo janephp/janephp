@@ -43,9 +43,16 @@ class GbCompanyReportExampleResponseReportAdditionalInformationCommentariesItemN
         }
         if (\array_key_exists('commentaryText', $data)) {
             $object->setCommentaryText($data['commentaryText']);
+            unset($data['commentaryText']);
         }
         if (\array_key_exists('positiveNegative', $data)) {
             $object->setPositiveNegative($data['positiveNegative']);
+            unset($data['positiveNegative']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -60,6 +67,11 @@ class GbCompanyReportExampleResponseReportAdditionalInformationCommentariesItemN
         }
         if (null !== $object->getPositiveNegative()) {
             $data['positiveNegative'] = $object->getPositiveNegative();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

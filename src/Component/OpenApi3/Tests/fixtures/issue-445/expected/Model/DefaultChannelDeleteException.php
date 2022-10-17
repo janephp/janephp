@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class DefaultChannelDeleteException
+class DefaultChannelDeleteException extends \ArrayObject
 {
     /**
      * 

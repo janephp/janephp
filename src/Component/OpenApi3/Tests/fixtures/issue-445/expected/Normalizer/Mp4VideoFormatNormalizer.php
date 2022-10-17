@@ -43,27 +43,37 @@ class Mp4VideoFormatNormalizer implements DenormalizerInterface, NormalizerInter
         }
         if (\array_key_exists('kind', $data)) {
             $object->setKind($data['kind']);
+            unset($data['kind']);
         }
         if (\array_key_exists('resizeAction', $data) && $data['resizeAction'] !== null) {
             $object->setResizeAction($data['resizeAction']);
+            unset($data['resizeAction']);
         }
         elseif (\array_key_exists('resizeAction', $data) && $data['resizeAction'] === null) {
             $object->setResizeAction(null);
         }
         if (\array_key_exists('audioCodec', $data) && $data['audioCodec'] !== null) {
             $object->setAudioCodec($data['audioCodec']);
+            unset($data['audioCodec']);
         }
         elseif (\array_key_exists('audioCodec', $data) && $data['audioCodec'] === null) {
             $object->setAudioCodec(null);
         }
         if (\array_key_exists('preset', $data)) {
             $object->setPreset($data['preset']);
+            unset($data['preset']);
         }
         if (\array_key_exists('extension', $data) && $data['extension'] !== null) {
             $object->setExtension($data['extension']);
+            unset($data['extension']);
         }
         elseif (\array_key_exists('extension', $data) && $data['extension'] === null) {
             $object->setExtension(null);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -85,6 +95,11 @@ class Mp4VideoFormatNormalizer implements DenormalizerInterface, NormalizerInter
         }
         if (null !== $object->getExtension()) {
             $data['extension'] = $object->getExtension();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

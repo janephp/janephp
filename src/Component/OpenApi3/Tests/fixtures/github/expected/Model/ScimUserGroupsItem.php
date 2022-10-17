@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class ScimUserGroupsItem
+class ScimUserGroupsItem extends \ArrayObject
 {
     /**
      * 

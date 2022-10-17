@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoBranchesBranchProtectionPutBody
+class ReposOwnerRepoBranchesBranchProtectionPutBody extends \ArrayObject
 {
     /**
      * Require status checks to pass before merging. Set to `null` to disable.

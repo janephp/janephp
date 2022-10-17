@@ -43,9 +43,16 @@ class BazNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
         }
         if (\array_key_exists('label', $data)) {
             $object->setLabel($data['label']);
+            unset($data['label']);
         }
         if (\array_key_exists('sub', $data)) {
             $object->setSub($this->denormalizer->denormalize($data['sub'], 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Model\\SubBaz', 'json', $context));
+            unset($data['sub']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -60,6 +67,11 @@ class BazNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
         }
         if (null !== $object->getSub()) {
             $data['sub'] = $this->normalizer->normalize($object->getSub(), 'json', $context);
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

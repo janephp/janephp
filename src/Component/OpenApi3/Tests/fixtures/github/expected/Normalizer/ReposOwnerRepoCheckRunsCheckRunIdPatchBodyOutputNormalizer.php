@@ -47,12 +47,15 @@ class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyOutputNormalizer implements Deno
         }
         if (\array_key_exists('title', $data)) {
             $object->setTitle($data['title']);
+            unset($data['title']);
         }
         if (\array_key_exists('summary', $data)) {
             $object->setSummary($data['summary']);
+            unset($data['summary']);
         }
         if (\array_key_exists('text', $data)) {
             $object->setText($data['text']);
+            unset($data['text']);
         }
         if (\array_key_exists('annotations', $data)) {
             $values = array();
@@ -60,6 +63,7 @@ class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyOutputNormalizer implements Deno
                 $values[] = $this->denormalizer->denormalize($value, 'Github\\Model\\ReposOwnerRepoCheckRunsCheckRunIdPatchBodyOutputAnnotationsItem', 'json', $context);
             }
             $object->setAnnotations($values);
+            unset($data['annotations']);
         }
         if (\array_key_exists('images', $data)) {
             $values_1 = array();
@@ -67,6 +71,12 @@ class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyOutputNormalizer implements Deno
                 $values_1[] = $this->denormalizer->denormalize($value_1, 'Github\\Model\\ReposOwnerRepoCheckRunsCheckRunIdPatchBodyOutputImagesItem', 'json', $context);
             }
             $object->setImages($values_1);
+            unset($data['images']);
+        }
+        foreach ($data as $key => $value_2) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_2;
+            }
         }
         return $object;
     }
@@ -96,6 +106,11 @@ class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyOutputNormalizer implements Deno
                 $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
             }
             $data['images'] = $values_1;
+        }
+        foreach ($object as $key => $value_2) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_2;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ReposOwnerRepoCheckRunsCheckRunIdPatchBodyOutputConstraint());

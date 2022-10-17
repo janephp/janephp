@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyDismissalRestrictions
+class ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyDismissalRestrictions extends \ArrayObject
 {
     /**
      * The list of user `login`s with dismissal access

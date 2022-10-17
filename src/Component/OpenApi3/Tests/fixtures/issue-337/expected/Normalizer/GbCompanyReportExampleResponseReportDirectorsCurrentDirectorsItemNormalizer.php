@@ -43,30 +43,39 @@ class GbCompanyReportExampleResponseReportDirectorsCurrentDirectorsItemNormalize
         }
         if (\array_key_exists('id', $data)) {
             $object->setId($data['id']);
+            unset($data['id']);
         }
         if (\array_key_exists('name', $data)) {
             $object->setName($data['name']);
+            unset($data['name']);
         }
         if (\array_key_exists('title', $data)) {
             $object->setTitle($data['title']);
+            unset($data['title']);
         }
         if (\array_key_exists('firstName', $data)) {
             $object->setFirstName($data['firstName']);
+            unset($data['firstName']);
         }
         if (\array_key_exists('surname', $data)) {
             $object->setSurname($data['surname']);
+            unset($data['surname']);
         }
         if (\array_key_exists('address', $data)) {
             $object->setAddress($this->denormalizer->denormalize($data['address'], 'CreditSafe\\API\\Model\\GbCompanyReportExampleResponseReportDirectorsCurrentDirectorsItemAddress', 'json', $context));
+            unset($data['address']);
         }
         if (\array_key_exists('gender', $data)) {
             $object->setGender($data['gender']);
+            unset($data['gender']);
         }
         if (\array_key_exists('dateOfBirth', $data)) {
             $object->setDateOfBirth($data['dateOfBirth']);
+            unset($data['dateOfBirth']);
         }
         if (\array_key_exists('directorType', $data)) {
             $object->setDirectorType($data['directorType']);
+            unset($data['directorType']);
         }
         if (\array_key_exists('positions', $data)) {
             $values = array();
@@ -74,6 +83,12 @@ class GbCompanyReportExampleResponseReportDirectorsCurrentDirectorsItemNormalize
                 $values[] = $this->denormalizer->denormalize($value, 'CreditSafe\\API\\Model\\GbCompanyReportExampleResponseReportDirectorsCurrentDirectorsItemPositionsItem', 'json', $context);
             }
             $object->setPositions($values);
+            unset($data['positions']);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
@@ -116,6 +131,11 @@ class GbCompanyReportExampleResponseReportDirectorsCurrentDirectorsItemNormalize
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data['positions'] = $values;
+        }
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
+            }
         }
         return $data;
     }

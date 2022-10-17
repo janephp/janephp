@@ -43,12 +43,20 @@ class NestedFilterNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         if (\array_key_exists('kind', $data)) {
             $object->setKind($data['kind']);
+            unset($data['kind']);
         }
         if (\array_key_exists('path', $data)) {
             $object->setPath($data['path']);
+            unset($data['path']);
         }
         if (\array_key_exists('filter', $data)) {
             $object->setFilter($data['filter']);
+            unset($data['filter']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -61,6 +69,11 @@ class NestedFilterNormalizer implements DenormalizerInterface, NormalizerInterfa
         $data['kind'] = $object->getKind();
         $data['path'] = $object->getPath();
         $data['filter'] = $object->getFilter();
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
         return $data;
     }
 }

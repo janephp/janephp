@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class OrgMembershipUser
+class OrgMembershipUser extends \ArrayObject
 {
     /**
      * 

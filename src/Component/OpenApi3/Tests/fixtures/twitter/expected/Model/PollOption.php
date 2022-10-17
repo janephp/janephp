@@ -2,7 +2,7 @@
 
 namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 
-class PollOption
+class PollOption extends \ArrayObject
 {
     /**
      * Position of this choice in the poll.

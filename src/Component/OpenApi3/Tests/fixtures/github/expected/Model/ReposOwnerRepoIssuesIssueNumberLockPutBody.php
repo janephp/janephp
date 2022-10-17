@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoIssuesIssueNumberLockPutBody
+class ReposOwnerRepoIssuesIssueNumberLockPutBody extends \ArrayObject
 {
     /**
     * The reason for locking the issue or pull request conversation. Lock will fail if you don't use one of these reasons:  

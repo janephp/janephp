@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class FullRepository
+class FullRepository extends \ArrayObject
 {
     /**
      * 

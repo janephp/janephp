@@ -2,7 +2,7 @@
 
 namespace CreditSafe\API\Model;
 
-class MonitoringPortfoliosPortfolioIdCompaniesPostBody
+class MonitoringPortfoliosPortfolioIdCompaniesPostBody extends \ArrayObject
 {
     /**
      * The company Safe Number or Connect ID

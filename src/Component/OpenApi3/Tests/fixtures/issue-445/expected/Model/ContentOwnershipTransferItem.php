@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class ContentOwnershipTransferItem
+class ContentOwnershipTransferItem extends \ArrayObject
 {
     /**
      * The ID of the user to whom the content ownership has to be transferred to.

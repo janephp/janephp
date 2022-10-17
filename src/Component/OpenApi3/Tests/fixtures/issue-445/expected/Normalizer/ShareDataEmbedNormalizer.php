@@ -43,12 +43,20 @@ class ShareDataEmbedNormalizer implements DenormalizerInterface, NormalizerInter
         }
         if (\array_key_exists('url', $data)) {
             $object->setUrl($data['url']);
+            unset($data['url']);
         }
         if (\array_key_exists('kind', $data)) {
             $object->setKind($data['kind']);
+            unset($data['kind']);
         }
         if (\array_key_exists('token', $data)) {
             $object->setToken($data['token']);
+            unset($data['token']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -61,6 +69,11 @@ class ShareDataEmbedNormalizer implements DenormalizerInterface, NormalizerInter
         $data['url'] = $object->getUrl();
         $data['kind'] = $object->getKind();
         $data['token'] = $object->getToken();
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
         return $data;
     }
 }

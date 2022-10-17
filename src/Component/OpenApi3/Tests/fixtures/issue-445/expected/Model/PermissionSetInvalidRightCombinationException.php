@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class PermissionSetInvalidRightCombinationException
+class PermissionSetInvalidRightCombinationException extends \ArrayObject
 {
     /**
      * 

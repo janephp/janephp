@@ -43,6 +43,7 @@ class UserRoleNormalizer implements DenormalizerInterface, NormalizerInterface, 
         }
         if (\array_key_exists('names', $data)) {
             $object->setNames($data['names']);
+            unset($data['names']);
         }
         if (\array_key_exists('userRights', $data)) {
             $values = array();
@@ -50,9 +51,16 @@ class UserRoleNormalizer implements DenormalizerInterface, NormalizerInterface, 
                 $values[] = $value;
             }
             $object->setUserRights($values);
+            unset($data['userRights']);
         }
         if (\array_key_exists('id', $data)) {
             $object->setId($data['id']);
+            unset($data['id']);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
@@ -69,6 +77,11 @@ class UserRoleNormalizer implements DenormalizerInterface, NormalizerInterface, 
         }
         $data['userRights'] = $values;
         $data['id'] = $object->getId();
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
+            }
+        }
         return $data;
     }
 }

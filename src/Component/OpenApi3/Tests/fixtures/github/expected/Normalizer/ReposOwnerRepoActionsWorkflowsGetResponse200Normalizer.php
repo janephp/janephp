@@ -47,6 +47,7 @@ class ReposOwnerRepoActionsWorkflowsGetResponse200Normalizer implements Denormal
         }
         if (\array_key_exists('total_count', $data)) {
             $object->setTotalCount($data['total_count']);
+            unset($data['total_count']);
         }
         if (\array_key_exists('workflows', $data)) {
             $values = array();
@@ -54,6 +55,12 @@ class ReposOwnerRepoActionsWorkflowsGetResponse200Normalizer implements Denormal
                 $values[] = $this->denormalizer->denormalize($value, 'Github\\Model\\Workflow', 'json', $context);
             }
             $object->setWorkflows($values);
+            unset($data['workflows']);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
@@ -72,6 +79,11 @@ class ReposOwnerRepoActionsWorkflowsGetResponse200Normalizer implements Denormal
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data['workflows'] = $values;
+        }
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ReposOwnerRepoActionsWorkflowsGetResponse200Constraint());

@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class ProjectsProjectIdColumnsPostBody
+class ProjectsProjectIdColumnsPostBody extends \ArrayObject
 {
     /**
      * Name of the project column

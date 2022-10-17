@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class SchemaFieldRelationMultipleTypesException
+class SchemaFieldRelationMultipleTypesException extends \ArrayObject
 {
     /**
      * 

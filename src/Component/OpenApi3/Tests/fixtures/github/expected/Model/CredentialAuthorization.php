@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class CredentialAuthorization
+class CredentialAuthorization extends \ArrayObject
 {
     /**
      * User login that owns the underlying credential.

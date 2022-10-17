@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class PictureparkOperationCanceledException
+class PictureparkOperationCanceledException extends \ArrayObject
 {
     /**
      * 

@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class SchemaInUseListItemException
+class SchemaInUseListItemException extends \ArrayObject
 {
     /**
      * 

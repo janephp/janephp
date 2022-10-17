@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class ProjectCard
+class ProjectCard extends \ArrayObject
 {
     /**
      * 

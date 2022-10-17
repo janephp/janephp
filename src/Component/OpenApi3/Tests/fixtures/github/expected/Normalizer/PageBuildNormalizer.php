@@ -47,30 +47,43 @@ class PageBuildNormalizer implements DenormalizerInterface, NormalizerInterface,
         }
         if (\array_key_exists('url', $data)) {
             $object->setUrl($data['url']);
+            unset($data['url']);
         }
         if (\array_key_exists('status', $data)) {
             $object->setStatus($data['status']);
+            unset($data['status']);
         }
         if (\array_key_exists('error', $data)) {
             $object->setError($this->denormalizer->denormalize($data['error'], 'Github\\Model\\PageBuildError', 'json', $context));
+            unset($data['error']);
         }
         if (\array_key_exists('pusher', $data) && $data['pusher'] !== null) {
             $object->setPusher($this->denormalizer->denormalize($data['pusher'], 'Github\\Model\\PageBuildPusher', 'json', $context));
+            unset($data['pusher']);
         }
         elseif (\array_key_exists('pusher', $data) && $data['pusher'] === null) {
             $object->setPusher(null);
         }
         if (\array_key_exists('commit', $data)) {
             $object->setCommit($data['commit']);
+            unset($data['commit']);
         }
         if (\array_key_exists('duration', $data)) {
             $object->setDuration($data['duration']);
+            unset($data['duration']);
         }
         if (\array_key_exists('created_at', $data)) {
             $object->setCreatedAt(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['created_at']));
+            unset($data['created_at']);
         }
         if (\array_key_exists('updated_at', $data)) {
             $object->setUpdatedAt(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['updated_at']));
+            unset($data['updated_at']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -88,6 +101,11 @@ class PageBuildNormalizer implements DenormalizerInterface, NormalizerInterface,
         $data['duration'] = $object->getDuration();
         $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
         $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\PageBuildConstraint());
             $context['skip_validation'] = true;

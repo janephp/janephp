@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class FeedLinks
+class FeedLinks extends \ArrayObject
 {
     /**
      * Hypermedia Link with Type

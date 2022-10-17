@@ -47,6 +47,7 @@ class ReposOwnerRepoCommitsRefCheckSuitesGetResponse200Normalizer implements Den
         }
         if (\array_key_exists('total_count', $data)) {
             $object->setTotalCount($data['total_count']);
+            unset($data['total_count']);
         }
         if (\array_key_exists('check_suites', $data)) {
             $values = array();
@@ -54,6 +55,12 @@ class ReposOwnerRepoCommitsRefCheckSuitesGetResponse200Normalizer implements Den
                 $values[] = $this->denormalizer->denormalize($value, 'Github\\Model\\CheckSuite', 'json', $context);
             }
             $object->setCheckSuites($values);
+            unset($data['check_suites']);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
@@ -72,6 +79,11 @@ class ReposOwnerRepoCommitsRefCheckSuitesGetResponse200Normalizer implements Den
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data['check_suites'] = $values;
+        }
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ReposOwnerRepoCommitsRefCheckSuitesGetResponse200Constraint());

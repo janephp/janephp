@@ -47,12 +47,20 @@ class ReposOwnerRepoMergesPostBodyNormalizer implements DenormalizerInterface, N
         }
         if (\array_key_exists('base', $data)) {
             $object->setBase($data['base']);
+            unset($data['base']);
         }
         if (\array_key_exists('head', $data)) {
             $object->setHead($data['head']);
+            unset($data['head']);
         }
         if (\array_key_exists('commit_message', $data)) {
             $object->setCommitMessage($data['commit_message']);
+            unset($data['commit_message']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -66,6 +74,11 @@ class ReposOwnerRepoMergesPostBodyNormalizer implements DenormalizerInterface, N
         $data['head'] = $object->getHead();
         if (null !== $object->getCommitMessage()) {
             $data['commit_message'] = $object->getCommitMessage();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ReposOwnerRepoMergesPostBodyConstraint());

@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class FullRepositoryTemplateRepository
+class FullRepositoryTemplateRepository extends \ArrayObject
 {
     /**
      * Unique identifier of the repository

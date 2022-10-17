@@ -115,75 +115,104 @@ class GbCompanyReportExampleResponseReportLocalFinancialStatementsItemBalanceShe
         }
         if (\array_key_exists('tangibleAssets', $data)) {
             $object->setTangibleAssets($data['tangibleAssets']);
+            unset($data['tangibleAssets']);
         }
         if (\array_key_exists('intangibleAssets', $data)) {
             $object->setIntangibleAssets($data['intangibleAssets']);
+            unset($data['intangibleAssets']);
         }
         if (\array_key_exists('totalFixedAssets', $data)) {
             $object->setTotalFixedAssets($data['totalFixedAssets']);
+            unset($data['totalFixedAssets']);
         }
         if (\array_key_exists('stock', $data)) {
             $object->setStock($data['stock']);
+            unset($data['stock']);
         }
         if (\array_key_exists('tradeDebtors', $data)) {
             $object->setTradeDebtors($data['tradeDebtors']);
+            unset($data['tradeDebtors']);
         }
         if (\array_key_exists('otherDebtors', $data)) {
             $object->setOtherDebtors($data['otherDebtors']);
+            unset($data['otherDebtors']);
         }
         if (\array_key_exists('cash', $data)) {
             $object->setCash($data['cash']);
+            unset($data['cash']);
         }
         if (\array_key_exists('miscCurrentAssets', $data)) {
             $object->setMiscCurrentAssets($data['miscCurrentAssets']);
+            unset($data['miscCurrentAssets']);
         }
         if (\array_key_exists('totalCurrentAssets', $data)) {
             $object->setTotalCurrentAssets($data['totalCurrentAssets']);
+            unset($data['totalCurrentAssets']);
         }
         if (\array_key_exists('totalAssets', $data)) {
             $object->setTotalAssets($data['totalAssets']);
+            unset($data['totalAssets']);
         }
         if (\array_key_exists('tradeCreditors', $data)) {
             $object->setTradeCreditors($data['tradeCreditors']);
+            unset($data['tradeCreditors']);
         }
         if (\array_key_exists('bankBorrowingsCurrent', $data)) {
             $object->setBankBorrowingsCurrent($data['bankBorrowingsCurrent']);
+            unset($data['bankBorrowingsCurrent']);
         }
         if (\array_key_exists('otherShortTermFinance', $data)) {
             $object->setOtherShortTermFinance($data['otherShortTermFinance']);
+            unset($data['otherShortTermFinance']);
         }
         if (\array_key_exists('miscCurrentLiabilities', $data)) {
             $object->setMiscCurrentLiabilities($data['miscCurrentLiabilities']);
+            unset($data['miscCurrentLiabilities']);
         }
         if (\array_key_exists('totalCurrentLiabilities', $data)) {
             $object->setTotalCurrentLiabilities($data['totalCurrentLiabilities']);
+            unset($data['totalCurrentLiabilities']);
         }
         if (\array_key_exists('otherLongTermFinance', $data)) {
             $object->setOtherLongTermFinance($data['otherLongTermFinance']);
+            unset($data['otherLongTermFinance']);
         }
         if (\array_key_exists('totalLongTermLiabilities', $data)) {
             $object->setTotalLongTermLiabilities($data['totalLongTermLiabilities']);
+            unset($data['totalLongTermLiabilities']);
         }
         if (\array_key_exists('totalLiabilities', $data)) {
             $object->setTotalLiabilities($data['totalLiabilities']);
+            unset($data['totalLiabilities']);
         }
         if (\array_key_exists('netAssets', $data)) {
             $object->setNetAssets($data['netAssets']);
+            unset($data['netAssets']);
         }
         if (\array_key_exists('issuedShareCapital', $data)) {
             $object->setIssuedShareCapital($data['issuedShareCapital']);
+            unset($data['issuedShareCapital']);
         }
         if (\array_key_exists('revaluationReserve', $data)) {
             $object->setRevaluationReserve($data['revaluationReserve']);
+            unset($data['revaluationReserve']);
         }
         if (\array_key_exists('revenueReserves', $data)) {
             $object->setRevenueReserves($data['revenueReserves']);
+            unset($data['revenueReserves']);
         }
         if (\array_key_exists('otherReserves', $data)) {
             $object->setOtherReserves($data['otherReserves']);
+            unset($data['otherReserves']);
         }
         if (\array_key_exists('totalShareholdersEquity', $data)) {
             $object->setTotalShareholdersEquity($data['totalShareholdersEquity']);
+            unset($data['totalShareholdersEquity']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -264,6 +293,11 @@ class GbCompanyReportExampleResponseReportLocalFinancialStatementsItemBalanceShe
         }
         if (null !== $object->getTotalShareholdersEquity()) {
             $data['totalShareholdersEquity'] = $object->getTotalShareholdersEquity();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

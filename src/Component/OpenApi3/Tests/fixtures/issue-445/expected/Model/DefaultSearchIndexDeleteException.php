@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class DefaultSearchIndexDeleteException
+class DefaultSearchIndexDeleteException extends \ArrayObject
 {
     /**
      * 

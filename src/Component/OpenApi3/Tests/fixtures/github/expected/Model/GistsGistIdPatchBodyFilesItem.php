@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class GistsGistIdPatchBodyFilesItem
+class GistsGistIdPatchBodyFilesItem extends \ArrayObject
 {
     /**
      * The new content of the file

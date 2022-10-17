@@ -47,6 +47,7 @@ class ReposOwnerRepoDispatchesPostBodyNormalizer implements DenormalizerInterfac
         }
         if (\array_key_exists('event_type', $data)) {
             $object->setEventType($data['event_type']);
+            unset($data['event_type']);
         }
         if (\array_key_exists('client_payload', $data)) {
             $values = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
@@ -54,6 +55,12 @@ class ReposOwnerRepoDispatchesPostBodyNormalizer implements DenormalizerInterfac
                 $values[$key] = $value;
             }
             $object->setClientPayload($values);
+            unset($data['client_payload']);
+        }
+        foreach ($data as $key_1 => $value_1) {
+            if (preg_match('/.*/', (string) $key_1)) {
+                $object[$key_1] = $value_1;
+            }
         }
         return $object;
     }
@@ -72,6 +79,11 @@ class ReposOwnerRepoDispatchesPostBodyNormalizer implements DenormalizerInterfac
                 $values[$key] = $value;
             }
             $data['client_payload'] = $values;
+        }
+        foreach ($object as $key_1 => $value_1) {
+            if (preg_match('/.*/', (string) $key_1)) {
+                $data[$key_1] = $value_1;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ReposOwnerRepoDispatchesPostBodyConstraint());

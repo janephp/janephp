@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class FileTransferSearchResult
+class FileTransferSearchResult extends \ArrayObject
 {
     /**
      * The total number of matching documents.

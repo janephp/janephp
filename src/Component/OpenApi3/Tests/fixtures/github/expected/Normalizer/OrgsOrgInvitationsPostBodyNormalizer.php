@@ -47,12 +47,15 @@ class OrgsOrgInvitationsPostBodyNormalizer implements DenormalizerInterface, Nor
         }
         if (\array_key_exists('invitee_id', $data)) {
             $object->setInviteeId($data['invitee_id']);
+            unset($data['invitee_id']);
         }
         if (\array_key_exists('email', $data)) {
             $object->setEmail($data['email']);
+            unset($data['email']);
         }
         if (\array_key_exists('role', $data)) {
             $object->setRole($data['role']);
+            unset($data['role']);
         }
         if (\array_key_exists('team_ids', $data)) {
             $values = array();
@@ -60,6 +63,12 @@ class OrgsOrgInvitationsPostBodyNormalizer implements DenormalizerInterface, Nor
                 $values[] = $value;
             }
             $object->setTeamIds($values);
+            unset($data['team_ids']);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
@@ -84,6 +93,11 @@ class OrgsOrgInvitationsPostBodyNormalizer implements DenormalizerInterface, Nor
                 $values[] = $value;
             }
             $data['team_ids'] = $values;
+        }
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\OrgsOrgInvitationsPostBodyConstraint());

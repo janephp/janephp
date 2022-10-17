@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class IssueEventForIssue
+class IssueEventForIssue extends \ArrayObject
 {
     /**
      * 

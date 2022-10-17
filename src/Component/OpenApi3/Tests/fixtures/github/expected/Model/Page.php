@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class Page
+class Page extends \ArrayObject
 {
     /**
      * The API address for accessing this Page resource.

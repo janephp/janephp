@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class InstallationRepositoriesGetResponse200
+class InstallationRepositoriesGetResponse200 extends \ArrayObject
 {
     /**
      * 

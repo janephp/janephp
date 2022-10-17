@@ -47,12 +47,20 @@ class AuthorizationAppNormalizer implements DenormalizerInterface, NormalizerInt
         }
         if (\array_key_exists('client_id', $data)) {
             $object->setClientId($data['client_id']);
+            unset($data['client_id']);
         }
         if (\array_key_exists('name', $data)) {
             $object->setName($data['name']);
+            unset($data['name']);
         }
         if (\array_key_exists('url', $data)) {
             $object->setUrl($data['url']);
+            unset($data['url']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -65,6 +73,11 @@ class AuthorizationAppNormalizer implements DenormalizerInterface, NormalizerInt
         $data['client_id'] = $object->getClientId();
         $data['name'] = $object->getName();
         $data['url'] = $object->getUrl();
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\AuthorizationAppConstraint());
             $context['skip_validation'] = true;

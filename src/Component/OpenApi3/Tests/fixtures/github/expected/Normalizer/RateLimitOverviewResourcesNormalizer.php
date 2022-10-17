@@ -47,18 +47,28 @@ class RateLimitOverviewResourcesNormalizer implements DenormalizerInterface, Nor
         }
         if (\array_key_exists('core', $data)) {
             $object->setCore($this->denormalizer->denormalize($data['core'], 'Github\\Model\\RateLimit', 'json', $context));
+            unset($data['core']);
         }
         if (\array_key_exists('graphql', $data)) {
             $object->setGraphql($this->denormalizer->denormalize($data['graphql'], 'Github\\Model\\RateLimit', 'json', $context));
+            unset($data['graphql']);
         }
         if (\array_key_exists('search', $data)) {
             $object->setSearch($this->denormalizer->denormalize($data['search'], 'Github\\Model\\RateLimit', 'json', $context));
+            unset($data['search']);
         }
         if (\array_key_exists('source_import', $data)) {
             $object->setSourceImport($this->denormalizer->denormalize($data['source_import'], 'Github\\Model\\RateLimit', 'json', $context));
+            unset($data['source_import']);
         }
         if (\array_key_exists('integration_manifest', $data)) {
             $object->setIntegrationManifest($this->denormalizer->denormalize($data['integration_manifest'], 'Github\\Model\\RateLimit', 'json', $context));
+            unset($data['integration_manifest']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -78,6 +88,11 @@ class RateLimitOverviewResourcesNormalizer implements DenormalizerInterface, Nor
         }
         if (null !== $object->getIntegrationManifest()) {
             $data['integration_manifest'] = $this->normalizer->normalize($object->getIntegrationManifest(), 'json', $context);
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\RateLimitOverviewResourcesConstraint());

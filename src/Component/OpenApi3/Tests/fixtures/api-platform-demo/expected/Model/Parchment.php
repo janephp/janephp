@@ -6,7 +6,7 @@ namespace ApiPlatform\Demo\Model;
  *
  * @deprecated
  */
-class Parchment
+class Parchment extends \ArrayObject
 {
     /**
      * 

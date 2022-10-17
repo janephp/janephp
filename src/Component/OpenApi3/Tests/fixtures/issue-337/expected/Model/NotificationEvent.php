@@ -2,7 +2,7 @@
 
 namespace CreditSafe\API\Model;
 
-class NotificationEvent
+class NotificationEvent extends \ArrayObject
 {
     /**
      * 

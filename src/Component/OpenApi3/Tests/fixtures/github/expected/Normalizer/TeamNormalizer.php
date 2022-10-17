@@ -47,45 +47,62 @@ class TeamNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         }
         if (\array_key_exists('id', $data)) {
             $object->setId($data['id']);
+            unset($data['id']);
         }
         if (\array_key_exists('node_id', $data)) {
             $object->setNodeId($data['node_id']);
+            unset($data['node_id']);
         }
         if (\array_key_exists('name', $data)) {
             $object->setName($data['name']);
+            unset($data['name']);
         }
         if (\array_key_exists('slug', $data)) {
             $object->setSlug($data['slug']);
+            unset($data['slug']);
         }
         if (\array_key_exists('description', $data) && $data['description'] !== null) {
             $object->setDescription($data['description']);
+            unset($data['description']);
         }
         elseif (\array_key_exists('description', $data) && $data['description'] === null) {
             $object->setDescription(null);
         }
         if (\array_key_exists('privacy', $data)) {
             $object->setPrivacy($data['privacy']);
+            unset($data['privacy']);
         }
         if (\array_key_exists('permission', $data)) {
             $object->setPermission($data['permission']);
+            unset($data['permission']);
         }
         if (\array_key_exists('url', $data)) {
             $object->setUrl($data['url']);
+            unset($data['url']);
         }
         if (\array_key_exists('html_url', $data)) {
             $object->setHtmlUrl($data['html_url']);
+            unset($data['html_url']);
         }
         if (\array_key_exists('members_url', $data)) {
             $object->setMembersUrl($data['members_url']);
+            unset($data['members_url']);
         }
         if (\array_key_exists('repositories_url', $data)) {
             $object->setRepositoriesUrl($data['repositories_url']);
+            unset($data['repositories_url']);
         }
         if (\array_key_exists('parent', $data) && $data['parent'] !== null) {
             $object->setParent($this->denormalizer->denormalize($data['parent'], 'Github\\Model\\TeamParent', 'json', $context));
+            unset($data['parent']);
         }
         elseif (\array_key_exists('parent', $data) && $data['parent'] === null) {
             $object->setParent(null);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -110,6 +127,11 @@ class TeamNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         $data['repositories_url'] = $object->getRepositoriesUrl();
         if (null !== $object->getParent()) {
             $data['parent'] = $this->normalizer->normalize($object->getParent(), 'json', $context);
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\TeamConstraint());

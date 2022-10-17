@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class OutputFormatResizingNotSupportedException
+class OutputFormatResizingNotSupportedException extends \ArrayObject
 {
     /**
      * 

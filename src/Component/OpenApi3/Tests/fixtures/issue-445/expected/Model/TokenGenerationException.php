@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class TokenGenerationException
+class TokenGenerationException extends \ArrayObject
 {
     /**
      * 

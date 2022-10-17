@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class ReviewCommentLinks
+class ReviewCommentLinks extends \ArrayObject
 {
     /**
      * Hypermedia Link

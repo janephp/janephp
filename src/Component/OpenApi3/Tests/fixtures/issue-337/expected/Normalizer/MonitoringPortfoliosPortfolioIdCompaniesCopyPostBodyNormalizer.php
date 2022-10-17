@@ -47,6 +47,7 @@ class MonitoringPortfoliosPortfolioIdCompaniesCopyPostBodyNormalizer implements 
                 $values[] = $value;
             }
             $object->setPortfolios($values);
+            unset($data['portfolios']);
         }
         if (\array_key_exists('companies', $data)) {
             $values_1 = array();
@@ -54,6 +55,12 @@ class MonitoringPortfoliosPortfolioIdCompaniesCopyPostBodyNormalizer implements 
                 $values_1[] = $this->denormalizer->denormalize($value_1, 'CreditSafe\\API\\Model\\MonitoringPortfoliosPortfolioIdCompaniesCopyPostBodyCompaniesItem', 'json', $context);
             }
             $object->setCompanies($values_1);
+            unset($data['companies']);
+        }
+        foreach ($data as $key => $value_2) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_2;
+            }
         }
         return $object;
     }
@@ -76,6 +83,11 @@ class MonitoringPortfoliosPortfolioIdCompaniesCopyPostBodyNormalizer implements 
                 $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
             }
             $data['companies'] = $values_1;
+        }
+        foreach ($object as $key => $value_2) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_2;
+            }
         }
         return $data;
     }

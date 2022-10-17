@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoDeleteResponse403
+class ReposOwnerRepoDeleteResponse403 extends \ArrayObject
 {
     /**
      * 

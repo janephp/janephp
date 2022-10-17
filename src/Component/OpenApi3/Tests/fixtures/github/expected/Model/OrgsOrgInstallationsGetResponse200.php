@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class OrgsOrgInstallationsGetResponse200
+class OrgsOrgInstallationsGetResponse200 extends \ArrayObject
 {
     /**
      * 

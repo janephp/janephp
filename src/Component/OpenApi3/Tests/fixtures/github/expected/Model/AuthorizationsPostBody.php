@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class AuthorizationsPostBody
+class AuthorizationsPostBody extends \ArrayObject
 {
     /**
      * A list of scopes that this authorization is in.

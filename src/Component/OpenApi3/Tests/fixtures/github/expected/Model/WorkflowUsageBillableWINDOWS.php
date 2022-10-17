@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class WorkflowUsageBillableWINDOWS
+class WorkflowUsageBillableWINDOWS extends \ArrayObject
 {
     /**
      * 

@@ -51,6 +51,12 @@ class OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyNormalizer implements De
                 $values[] = $this->denormalizer->denormalize($value, 'Github\\Model\\OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyGroupsItem', 'json', $context);
             }
             $object->setGroups($values);
+            unset($data['groups']);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
@@ -65,6 +71,11 @@ class OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyNormalizer implements De
             $values[] = $this->normalizer->normalize($value, 'json', $context);
         }
         $data['groups'] = $values;
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
+            }
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyConstraint());
             $context['skip_validation'] = true;

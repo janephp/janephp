@@ -51,6 +51,7 @@ class ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBodyNormalizer implem
                 $values[] = $value;
             }
             $object->setReviewers($values);
+            unset($data['reviewers']);
         }
         if (\array_key_exists('team_reviewers', $data)) {
             $values_1 = array();
@@ -58,6 +59,12 @@ class ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBodyNormalizer implem
                 $values_1[] = $value_1;
             }
             $object->setTeamReviewers($values_1);
+            unset($data['team_reviewers']);
+        }
+        foreach ($data as $key => $value_2) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_2;
+            }
         }
         return $object;
     }
@@ -80,6 +87,11 @@ class ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBodyNormalizer implem
                 $values_1[] = $value_1;
             }
             $data['team_reviewers'] = $values_1;
+        }
+        foreach ($object as $key => $value_2) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_2;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBodyConstraint());

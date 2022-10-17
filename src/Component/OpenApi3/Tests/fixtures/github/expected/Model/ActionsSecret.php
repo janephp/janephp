@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class ActionsSecret
+class ActionsSecret extends \ArrayObject
 {
     /**
      * The name of the secret.

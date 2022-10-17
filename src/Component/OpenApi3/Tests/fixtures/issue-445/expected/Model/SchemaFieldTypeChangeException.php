@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class SchemaFieldTypeChangeException
+class SchemaFieldTypeChangeException extends \ArrayObject
 {
     /**
      * 

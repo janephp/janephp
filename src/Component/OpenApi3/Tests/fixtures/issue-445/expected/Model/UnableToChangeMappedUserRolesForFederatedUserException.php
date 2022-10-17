@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class UnableToChangeMappedUserRolesForFederatedUserException
+class UnableToChangeMappedUserRolesForFederatedUserException extends \ArrayObject
 {
     /**
      * 

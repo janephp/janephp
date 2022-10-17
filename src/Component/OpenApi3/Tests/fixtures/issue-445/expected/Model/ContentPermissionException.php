@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class ContentPermissionException
+class ContentPermissionException extends \ArrayObject
 {
     /**
      * 

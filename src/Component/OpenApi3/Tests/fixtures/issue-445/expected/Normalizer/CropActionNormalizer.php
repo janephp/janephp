@@ -43,18 +43,28 @@ class CropActionNormalizer implements DenormalizerInterface, NormalizerInterface
         }
         if (\array_key_exists('kind', $data)) {
             $object->setKind($data['kind']);
+            unset($data['kind']);
         }
         if (\array_key_exists('x', $data)) {
             $object->setX($data['x']);
+            unset($data['x']);
         }
         if (\array_key_exists('y', $data)) {
             $object->setY($data['y']);
+            unset($data['y']);
         }
         if (\array_key_exists('width', $data)) {
             $object->setWidth($data['width']);
+            unset($data['width']);
         }
         if (\array_key_exists('height', $data)) {
             $object->setHeight($data['height']);
+            unset($data['height']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -76,6 +86,11 @@ class CropActionNormalizer implements DenormalizerInterface, NormalizerInterface
         }
         if (null !== $object->getHeight()) {
             $data['height'] = $object->getHeight();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

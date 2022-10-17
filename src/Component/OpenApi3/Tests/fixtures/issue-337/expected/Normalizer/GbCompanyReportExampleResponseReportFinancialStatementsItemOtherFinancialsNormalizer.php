@@ -49,12 +49,20 @@ class GbCompanyReportExampleResponseReportFinancialStatementsItemOtherFinancials
         }
         if (\array_key_exists('contingentLiabilities', $data)) {
             $object->setContingentLiabilities($data['contingentLiabilities']);
+            unset($data['contingentLiabilities']);
         }
         if (\array_key_exists('workingCapital', $data)) {
             $object->setWorkingCapital($data['workingCapital']);
+            unset($data['workingCapital']);
         }
         if (\array_key_exists('netWorth', $data)) {
             $object->setNetWorth($data['netWorth']);
+            unset($data['netWorth']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -72,6 +80,11 @@ class GbCompanyReportExampleResponseReportFinancialStatementsItemOtherFinancials
         }
         if (null !== $object->getNetWorth()) {
             $data['netWorth'] = $object->getNetWorth();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

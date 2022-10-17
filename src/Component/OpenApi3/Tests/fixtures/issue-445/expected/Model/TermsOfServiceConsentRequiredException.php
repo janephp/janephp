@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class TermsOfServiceConsentRequiredException
+class TermsOfServiceConsentRequiredException extends \ArrayObject
 {
     /**
      * 

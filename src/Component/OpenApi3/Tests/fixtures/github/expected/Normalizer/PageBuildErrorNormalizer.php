@@ -47,9 +47,15 @@ class PageBuildErrorNormalizer implements DenormalizerInterface, NormalizerInter
         }
         if (\array_key_exists('message', $data) && $data['message'] !== null) {
             $object->setMessage($data['message']);
+            unset($data['message']);
         }
         elseif (\array_key_exists('message', $data) && $data['message'] === null) {
             $object->setMessage(null);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -60,6 +66,11 @@ class PageBuildErrorNormalizer implements DenormalizerInterface, NormalizerInter
     {
         $data = array();
         $data['message'] = $object->getMessage();
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\PageBuildErrorConstraint());
             $context['skip_validation'] = true;

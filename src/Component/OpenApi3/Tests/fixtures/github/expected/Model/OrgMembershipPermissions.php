@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class OrgMembershipPermissions
+class OrgMembershipPermissions extends \ArrayObject
 {
     /**
      * 

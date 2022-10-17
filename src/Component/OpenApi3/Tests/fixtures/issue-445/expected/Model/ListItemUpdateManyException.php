@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class ListItemUpdateManyException
+class ListItemUpdateManyException extends \ArrayObject
 {
     /**
      * 

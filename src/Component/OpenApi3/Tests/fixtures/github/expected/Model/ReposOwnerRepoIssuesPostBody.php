@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoIssuesPostBody
+class ReposOwnerRepoIssuesPostBody extends \ArrayObject
 {
     /**
      * The title of the issue.

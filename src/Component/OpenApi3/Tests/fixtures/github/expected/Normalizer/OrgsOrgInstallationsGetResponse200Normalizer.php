@@ -47,6 +47,7 @@ class OrgsOrgInstallationsGetResponse200Normalizer implements DenormalizerInterf
         }
         if (\array_key_exists('total_count', $data)) {
             $object->setTotalCount($data['total_count']);
+            unset($data['total_count']);
         }
         if (\array_key_exists('installations', $data)) {
             $values = array();
@@ -54,6 +55,12 @@ class OrgsOrgInstallationsGetResponse200Normalizer implements DenormalizerInterf
                 $values[] = $this->denormalizer->denormalize($value, 'Github\\Model\\Installation', 'json', $context);
             }
             $object->setInstallations($values);
+            unset($data['installations']);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
@@ -72,6 +79,11 @@ class OrgsOrgInstallationsGetResponse200Normalizer implements DenormalizerInterf
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data['installations'] = $values;
+        }
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\OrgsOrgInstallationsGetResponse200Constraint());

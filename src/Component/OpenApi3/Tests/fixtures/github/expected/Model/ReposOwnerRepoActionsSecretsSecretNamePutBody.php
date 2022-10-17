@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoActionsSecretsSecretNamePutBody
+class ReposOwnerRepoActionsSecretsSecretNamePutBody extends \ArrayObject
 {
     /**
      * Value for your secret, encrypted with [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages) using the public key retrieved from the [Get a repository public key](https://developer.github.com/v3/actions/secrets/#get-a-repository-public-key) endpoint.

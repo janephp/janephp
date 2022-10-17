@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class BusinessRuleTransformationGroupInputsMissingException
+class BusinessRuleTransformationGroupInputsMissingException extends \ArrayObject
 {
     /**
      * 

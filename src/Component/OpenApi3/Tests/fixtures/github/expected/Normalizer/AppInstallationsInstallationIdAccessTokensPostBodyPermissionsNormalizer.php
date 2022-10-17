@@ -47,18 +47,28 @@ class AppInstallationsInstallationIdAccessTokensPostBodyPermissionsNormalizer im
         }
         if (\array_key_exists('contents', $data)) {
             $object->setContents($data['contents']);
+            unset($data['contents']);
         }
         if (\array_key_exists('issues', $data)) {
             $object->setIssues($data['issues']);
+            unset($data['issues']);
         }
         if (\array_key_exists('deployments', $data)) {
             $object->setDeployments($data['deployments']);
+            unset($data['deployments']);
         }
         if (\array_key_exists('single_file', $data)) {
             $object->setSingleFile($data['single_file']);
+            unset($data['single_file']);
         }
         if (\array_key_exists('def_not_a_repo', $data)) {
             $object->setDefNotARepo($data['def_not_a_repo']);
+            unset($data['def_not_a_repo']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -82,6 +92,11 @@ class AppInstallationsInstallationIdAccessTokensPostBodyPermissionsNormalizer im
         }
         if (null !== $object->getDefNotARepo()) {
             $data['def_not_a_repo'] = $object->getDefNotARepo();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\AppInstallationsInstallationIdAccessTokensPostBodyPermissionsConstraint());

@@ -46,45 +46,54 @@ class OutputDataVideoNormalizer implements DenormalizerInterface, NormalizerInte
         }
         if (\array_key_exists('fileExtension', $data) && $data['fileExtension'] !== null) {
             $object->setFileExtension($data['fileExtension']);
+            unset($data['fileExtension']);
         }
         elseif (\array_key_exists('fileExtension', $data) && $data['fileExtension'] === null) {
             $object->setFileExtension(null);
         }
         if (\array_key_exists('filePath', $data) && $data['filePath'] !== null) {
             $object->setFilePath($data['filePath']);
+            unset($data['filePath']);
         }
         elseif (\array_key_exists('filePath', $data) && $data['filePath'] === null) {
             $object->setFilePath(null);
         }
         if (\array_key_exists('fileSizeInBytes', $data) && $data['fileSizeInBytes'] !== null) {
             $object->setFileSizeInBytes($data['fileSizeInBytes']);
+            unset($data['fileSizeInBytes']);
         }
         elseif (\array_key_exists('fileSizeInBytes', $data) && $data['fileSizeInBytes'] === null) {
             $object->setFileSizeInBytes(null);
         }
         if (\array_key_exists('sha1Hash', $data) && $data['sha1Hash'] !== null) {
             $object->setSha1Hash($data['sha1Hash']);
+            unset($data['sha1Hash']);
         }
         elseif (\array_key_exists('sha1Hash', $data) && $data['sha1Hash'] === null) {
             $object->setSha1Hash(null);
         }
         if (\array_key_exists('originalFileName', $data) && $data['originalFileName'] !== null) {
             $object->setOriginalFileName($data['originalFileName']);
+            unset($data['originalFileName']);
         }
         elseif (\array_key_exists('originalFileName', $data) && $data['originalFileName'] === null) {
             $object->setOriginalFileName(null);
         }
         if (\array_key_exists('kind', $data)) {
             $object->setKind($data['kind']);
+            unset($data['kind']);
         }
         if (\array_key_exists('durationInSeconds', $data)) {
             $object->setDurationInSeconds($data['durationInSeconds']);
+            unset($data['durationInSeconds']);
         }
         if (\array_key_exists('width', $data)) {
             $object->setWidth($data['width']);
+            unset($data['width']);
         }
         if (\array_key_exists('height', $data)) {
             $object->setHeight($data['height']);
+            unset($data['height']);
         }
         if (\array_key_exists('sprites', $data) && $data['sprites'] !== null) {
             $values = array();
@@ -92,9 +101,15 @@ class OutputDataVideoNormalizer implements DenormalizerInterface, NormalizerInte
                 $values[] = $this->denormalizer->denormalize($value, 'PicturePark\\API\\Model\\Sprite', 'json', $context);
             }
             $object->setSprites($values);
+            unset($data['sprites']);
         }
         elseif (\array_key_exists('sprites', $data) && $data['sprites'] === null) {
             $object->setSprites(null);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
@@ -135,6 +150,11 @@ class OutputDataVideoNormalizer implements DenormalizerInterface, NormalizerInte
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data['sprites'] = $values;
+        }
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
+            }
         }
         return $data;
     }

@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class Job
+class Job extends \ArrayObject
 {
     /**
      * The id of the job.

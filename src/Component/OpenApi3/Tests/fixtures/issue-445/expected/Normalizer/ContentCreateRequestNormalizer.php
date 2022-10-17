@@ -55,27 +55,31 @@ class ContentCreateRequestNormalizer implements DenormalizerInterface, Normalize
             $object->setLayerSchemaIds(null);
         }
         if (\array_key_exists('content', $data) && $data['content'] !== null) {
-            $object->setContent($data['content']);
+            $values_1 = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
+            foreach ($data['content'] as $key => $value_1) {
+                $values_1[$key] = $value_1;
+            }
+            $object->setContent($values_1);
         }
         elseif (\array_key_exists('content', $data) && $data['content'] === null) {
             $object->setContent(null);
         }
         if (\array_key_exists('metadata', $data) && $data['metadata'] !== null) {
-            $values_1 = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
-            foreach ($data['metadata'] as $key => $value_1) {
-                $values_1[$key] = $value_1;
+            $values_2 = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
+            foreach ($data['metadata'] as $key_1 => $value_2) {
+                $values_2[$key_1] = $value_2;
             }
-            $object->setMetadata($values_1);
+            $object->setMetadata($values_2);
         }
         elseif (\array_key_exists('metadata', $data) && $data['metadata'] === null) {
             $object->setMetadata(null);
         }
         if (\array_key_exists('contentPermissionSetIds', $data) && $data['contentPermissionSetIds'] !== null) {
-            $values_2 = array();
-            foreach ($data['contentPermissionSetIds'] as $value_2) {
-                $values_2[] = $value_2;
+            $values_3 = array();
+            foreach ($data['contentPermissionSetIds'] as $value_3) {
+                $values_3[] = $value_3;
             }
-            $object->setContentPermissionSetIds($values_2);
+            $object->setContentPermissionSetIds($values_3);
         }
         elseif (\array_key_exists('contentPermissionSetIds', $data) && $data['contentPermissionSetIds'] === null) {
             $object->setContentPermissionSetIds(null);
@@ -103,21 +107,25 @@ class ContentCreateRequestNormalizer implements DenormalizerInterface, Normalize
             $data['layerSchemaIds'] = $values;
         }
         if (null !== $object->getContent()) {
-            $data['content'] = $object->getContent();
-        }
-        if (null !== $object->getMetadata()) {
             $values_1 = array();
-            foreach ($object->getMetadata() as $key => $value_1) {
+            foreach ($object->getContent() as $key => $value_1) {
                 $values_1[$key] = $value_1;
             }
-            $data['metadata'] = $values_1;
+            $data['content'] = $values_1;
+        }
+        if (null !== $object->getMetadata()) {
+            $values_2 = array();
+            foreach ($object->getMetadata() as $key_1 => $value_2) {
+                $values_2[$key_1] = $value_2;
+            }
+            $data['metadata'] = $values_2;
         }
         if (null !== $object->getContentPermissionSetIds()) {
-            $values_2 = array();
-            foreach ($object->getContentPermissionSetIds() as $value_2) {
-                $values_2[] = $value_2;
+            $values_3 = array();
+            foreach ($object->getContentPermissionSetIds() as $value_3) {
+                $values_3[] = $value_3;
             }
-            $data['contentPermissionSetIds'] = $values_2;
+            $data['contentPermissionSetIds'] = $values_3;
         }
         if (null !== $object->getRequestId()) {
             $data['requestId'] = $object->getRequestId();

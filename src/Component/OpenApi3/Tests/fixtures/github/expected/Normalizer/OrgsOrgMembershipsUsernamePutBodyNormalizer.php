@@ -47,6 +47,12 @@ class OrgsOrgMembershipsUsernamePutBodyNormalizer implements DenormalizerInterfa
         }
         if (\array_key_exists('role', $data)) {
             $object->setRole($data['role']);
+            unset($data['role']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -58,6 +64,11 @@ class OrgsOrgMembershipsUsernamePutBodyNormalizer implements DenormalizerInterfa
         $data = array();
         if (null !== $object->getRole()) {
             $data['role'] = $object->getRole();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\OrgsOrgMembershipsUsernamePutBodyConstraint());

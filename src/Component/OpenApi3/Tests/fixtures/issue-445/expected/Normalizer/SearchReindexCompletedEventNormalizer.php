@@ -43,18 +43,28 @@ class SearchReindexCompletedEventNormalizer implements DenormalizerInterface, No
         }
         if (\array_key_exists('timestamp', $data)) {
             $object->setTimestamp(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['timestamp']));
+            unset($data['timestamp']);
         }
         if (\array_key_exists('kind', $data)) {
             $object->setKind($data['kind']);
+            unset($data['kind']);
         }
         if (\array_key_exists('searchIndex', $data)) {
             $object->setSearchIndex($data['searchIndex']);
+            unset($data['searchIndex']);
         }
         if (\array_key_exists('items', $data)) {
             $object->setItems($data['items']);
+            unset($data['items']);
         }
         if (\array_key_exists('duration', $data)) {
             $object->setDuration($data['duration']);
+            unset($data['duration']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -74,6 +84,11 @@ class SearchReindexCompletedEventNormalizer implements DenormalizerInterface, No
         }
         if (null !== $object->getDuration()) {
             $data['duration'] = $object->getDuration();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

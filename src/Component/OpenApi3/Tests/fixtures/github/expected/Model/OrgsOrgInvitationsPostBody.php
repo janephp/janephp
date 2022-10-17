@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class OrgsOrgInvitationsPostBody
+class OrgsOrgInvitationsPostBody extends \ArrayObject
 {
     /**
      * **Required unless you provide `email`**. GitHub user ID for the person you are inviting.

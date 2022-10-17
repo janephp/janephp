@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class BusinessProcessNotificationUpdateRequest
+class BusinessProcessNotificationUpdateRequest extends \ArrayObject
 {
     /**
      * The title the message that is shown to the user should have.

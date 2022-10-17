@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class TeamMembership
+class TeamMembership extends \ArrayObject
 {
     /**
      * 

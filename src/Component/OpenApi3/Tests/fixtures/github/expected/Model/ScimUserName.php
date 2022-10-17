@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class ScimUserName
+class ScimUserName extends \ArrayObject
 {
     /**
      * 

@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class Commit
+class Commit extends \ArrayObject
 {
     /**
      * 

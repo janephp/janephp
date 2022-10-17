@@ -47,21 +47,31 @@ class GistFullhistoryItemNormalizer implements DenormalizerInterface, Normalizer
         }
         if (\array_key_exists('url', $data)) {
             $object->setUrl($data['url']);
+            unset($data['url']);
         }
         if (\array_key_exists('version', $data)) {
             $object->setVersion($data['version']);
+            unset($data['version']);
         }
         if (\array_key_exists('user', $data) && $data['user'] !== null) {
             $object->setUser($this->denormalizer->denormalize($data['user'], 'Github\\Model\\GistFullhistoryItemUser', 'json', $context));
+            unset($data['user']);
         }
         elseif (\array_key_exists('user', $data) && $data['user'] === null) {
             $object->setUser(null);
         }
         if (\array_key_exists('change_status', $data)) {
             $object->setChangeStatus($this->denormalizer->denormalize($data['change_status'], 'Github\\Model\\GistFullhistoryItemChangeStatus', 'json', $context));
+            unset($data['change_status']);
         }
         if (\array_key_exists('committed_at', $data)) {
             $object->setCommittedAt($data['committed_at']);
+            unset($data['committed_at']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -85,6 +95,11 @@ class GistFullhistoryItemNormalizer implements DenormalizerInterface, Normalizer
         }
         if (null !== $object->getCommittedAt()) {
             $data['committed_at'] = $object->getCommittedAt();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\GistFullhistoryItemConstraint());

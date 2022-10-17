@@ -46,21 +46,32 @@ class CompanyNormalizer implements DenormalizerInterface, NormalizerInterface, D
         }
         if (\array_key_exists('id', $data)) {
             $object->setId($data['id']);
+            unset($data['id']);
         }
         if (\array_key_exists('safeNumber', $data)) {
             $object->setSafeNumber($data['safeNumber']);
+            unset($data['safeNumber']);
         }
         if (\array_key_exists('name', $data)) {
             $object->setName($data['name']);
+            unset($data['name']);
         }
         if (\array_key_exists('countryCode', $data)) {
             $object->setCountryCode($data['countryCode']);
+            unset($data['countryCode']);
         }
         if (\array_key_exists('portfolioId', $data)) {
             $object->setPortfolioId($data['portfolioId']);
+            unset($data['portfolioId']);
         }
         if (\array_key_exists('portfolioName', $data)) {
             $object->setPortfolioName($data['portfolioName']);
+            unset($data['portfolioName']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -87,6 +98,11 @@ class CompanyNormalizer implements DenormalizerInterface, NormalizerInterface, D
         }
         if (null !== $object->getPortfolioName()) {
             $data['portfolioName'] = $object->getPortfolioName();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

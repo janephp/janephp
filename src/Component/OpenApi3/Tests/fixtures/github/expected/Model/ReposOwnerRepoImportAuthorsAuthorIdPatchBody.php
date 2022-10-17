@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoImportAuthorsAuthorIdPatchBody
+class ReposOwnerRepoImportAuthorsAuthorIdPatchBody extends \ArrayObject
 {
     /**
      * The new Git author email.

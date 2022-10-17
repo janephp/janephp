@@ -47,15 +47,24 @@ class ReposOwnerRepoPullsPullNumberMergePutBodyNormalizer implements Denormalize
         }
         if (\array_key_exists('commit_title', $data)) {
             $object->setCommitTitle($data['commit_title']);
+            unset($data['commit_title']);
         }
         if (\array_key_exists('commit_message', $data)) {
             $object->setCommitMessage($data['commit_message']);
+            unset($data['commit_message']);
         }
         if (\array_key_exists('sha', $data)) {
             $object->setSha($data['sha']);
+            unset($data['sha']);
         }
         if (\array_key_exists('merge_method', $data)) {
             $object->setMergeMethod($data['merge_method']);
+            unset($data['merge_method']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -76,6 +85,11 @@ class ReposOwnerRepoPullsPullNumberMergePutBodyNormalizer implements Denormalize
         }
         if (null !== $object->getMergeMethod()) {
             $data['merge_method'] = $object->getMergeMethod();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ReposOwnerRepoPullsPullNumberMergePutBodyConstraint());

@@ -43,12 +43,20 @@ class TestGetBodyNormalizer implements DenormalizerInterface, NormalizerInterfac
         }
         if (\array_key_exists('foo', $data)) {
             $object->setFoo($data['foo']);
+            unset($data['foo']);
         }
         if (\array_key_exists('Bar', $data)) {
             $object->setBar($this->denormalizer->denormalize($data['Bar'], 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Model\\Bar', 'json', $context));
+            unset($data['Bar']);
         }
         if (\array_key_exists('Baz', $data)) {
             $object->setBaz($this->denormalizer->denormalize($data['Baz'], 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Model\\TestGetBodyBaz', 'json', $context));
+            unset($data['Baz']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -66,6 +74,11 @@ class TestGetBodyNormalizer implements DenormalizerInterface, NormalizerInterfac
         }
         if (null !== $object->getBaz()) {
             $data['Baz'] = $this->normalizer->normalize($object->getBaz(), 'json', $context);
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

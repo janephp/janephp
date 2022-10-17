@@ -47,27 +47,32 @@ class ScimErrorNormalizer implements DenormalizerInterface, NormalizerInterface,
         }
         if (\array_key_exists('message', $data) && $data['message'] !== null) {
             $object->setMessage($data['message']);
+            unset($data['message']);
         }
         elseif (\array_key_exists('message', $data) && $data['message'] === null) {
             $object->setMessage(null);
         }
         if (\array_key_exists('documentation_url', $data) && $data['documentation_url'] !== null) {
             $object->setDocumentationUrl($data['documentation_url']);
+            unset($data['documentation_url']);
         }
         elseif (\array_key_exists('documentation_url', $data) && $data['documentation_url'] === null) {
             $object->setDocumentationUrl(null);
         }
         if (\array_key_exists('detail', $data) && $data['detail'] !== null) {
             $object->setDetail($data['detail']);
+            unset($data['detail']);
         }
         elseif (\array_key_exists('detail', $data) && $data['detail'] === null) {
             $object->setDetail(null);
         }
         if (\array_key_exists('status', $data)) {
             $object->setStatus($data['status']);
+            unset($data['status']);
         }
         if (\array_key_exists('scimType', $data) && $data['scimType'] !== null) {
             $object->setScimType($data['scimType']);
+            unset($data['scimType']);
         }
         elseif (\array_key_exists('scimType', $data) && $data['scimType'] === null) {
             $object->setScimType(null);
@@ -78,6 +83,12 @@ class ScimErrorNormalizer implements DenormalizerInterface, NormalizerInterface,
                 $values[] = $value;
             }
             $object->setSchemas($values);
+            unset($data['schemas']);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
@@ -108,6 +119,11 @@ class ScimErrorNormalizer implements DenormalizerInterface, NormalizerInterface,
                 $values[] = $value;
             }
             $data['schemas'] = $values;
+        }
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ScimErrorConstraint());

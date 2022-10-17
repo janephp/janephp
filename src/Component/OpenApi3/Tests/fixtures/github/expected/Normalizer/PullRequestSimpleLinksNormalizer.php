@@ -47,27 +47,40 @@ class PullRequestSimpleLinksNormalizer implements DenormalizerInterface, Normali
         }
         if (\array_key_exists('comments', $data)) {
             $object->setComments($this->denormalizer->denormalize($data['comments'], 'Github\\Model\\Link', 'json', $context));
+            unset($data['comments']);
         }
         if (\array_key_exists('commits', $data)) {
             $object->setCommits($this->denormalizer->denormalize($data['commits'], 'Github\\Model\\Link', 'json', $context));
+            unset($data['commits']);
         }
         if (\array_key_exists('statuses', $data)) {
             $object->setStatuses($this->denormalizer->denormalize($data['statuses'], 'Github\\Model\\Link', 'json', $context));
+            unset($data['statuses']);
         }
         if (\array_key_exists('html', $data)) {
             $object->setHtml($this->denormalizer->denormalize($data['html'], 'Github\\Model\\Link', 'json', $context));
+            unset($data['html']);
         }
         if (\array_key_exists('issue', $data)) {
             $object->setIssue($this->denormalizer->denormalize($data['issue'], 'Github\\Model\\Link', 'json', $context));
+            unset($data['issue']);
         }
         if (\array_key_exists('review_comments', $data)) {
             $object->setReviewComments($this->denormalizer->denormalize($data['review_comments'], 'Github\\Model\\Link', 'json', $context));
+            unset($data['review_comments']);
         }
         if (\array_key_exists('review_comment', $data)) {
             $object->setReviewComment($this->denormalizer->denormalize($data['review_comment'], 'Github\\Model\\Link', 'json', $context));
+            unset($data['review_comment']);
         }
         if (\array_key_exists('self', $data)) {
             $object->setSelf($this->denormalizer->denormalize($data['self'], 'Github\\Model\\Link', 'json', $context));
+            unset($data['self']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -85,6 +98,11 @@ class PullRequestSimpleLinksNormalizer implements DenormalizerInterface, Normali
         $data['review_comments'] = $this->normalizer->normalize($object->getReviewComments(), 'json', $context);
         $data['review_comment'] = $this->normalizer->normalize($object->getReviewComment(), 'json', $context);
         $data['self'] = $this->normalizer->normalize($object->getSelf(), 'json', $context);
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\PullRequestSimpleLinksConstraint());
             $context['skip_validation'] = true;

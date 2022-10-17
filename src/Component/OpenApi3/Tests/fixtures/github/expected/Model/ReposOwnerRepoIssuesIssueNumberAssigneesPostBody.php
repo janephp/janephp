@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoIssuesIssueNumberAssigneesPostBody
+class ReposOwnerRepoIssuesIssueNumberAssigneesPostBody extends \ArrayObject
 {
     /**
      * Usernames of people to assign this issue to. _NOTE: Only users with push access can add assignees to an issue. Assignees are silently ignored otherwise._

@@ -47,24 +47,36 @@ class PorterAuthorNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         if (\array_key_exists('id', $data)) {
             $object->setId($data['id']);
+            unset($data['id']);
         }
         if (\array_key_exists('remote_id', $data)) {
             $object->setRemoteId($data['remote_id']);
+            unset($data['remote_id']);
         }
         if (\array_key_exists('remote_name', $data)) {
             $object->setRemoteName($data['remote_name']);
+            unset($data['remote_name']);
         }
         if (\array_key_exists('email', $data)) {
             $object->setEmail($data['email']);
+            unset($data['email']);
         }
         if (\array_key_exists('name', $data)) {
             $object->setName($data['name']);
+            unset($data['name']);
         }
         if (\array_key_exists('url', $data)) {
             $object->setUrl($data['url']);
+            unset($data['url']);
         }
         if (\array_key_exists('import_url', $data)) {
             $object->setImportUrl($data['import_url']);
+            unset($data['import_url']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -81,6 +93,11 @@ class PorterAuthorNormalizer implements DenormalizerInterface, NormalizerInterfa
         $data['name'] = $object->getName();
         $data['url'] = $object->getUrl();
         $data['import_url'] = $object->getImportUrl();
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\PorterAuthorConstraint());
             $context['skip_validation'] = true;

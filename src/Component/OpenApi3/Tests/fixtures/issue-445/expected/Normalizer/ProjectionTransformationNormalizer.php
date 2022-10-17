@@ -43,12 +43,14 @@ class ProjectionTransformationNormalizer implements DenormalizerInterface, Norma
         }
         if (\array_key_exists('traceRefId', $data) && $data['traceRefId'] !== null) {
             $object->setTraceRefId($data['traceRefId']);
+            unset($data['traceRefId']);
         }
         elseif (\array_key_exists('traceRefId', $data) && $data['traceRefId'] === null) {
             $object->setTraceRefId(null);
         }
         if (\array_key_exists('kind', $data)) {
             $object->setKind($data['kind']);
+            unset($data['kind']);
         }
         if (\array_key_exists('transformations', $data) && $data['transformations'] !== null) {
             $values = array();
@@ -56,9 +58,15 @@ class ProjectionTransformationNormalizer implements DenormalizerInterface, Norma
                 $values[] = $this->denormalizer->denormalize($value, 'PicturePark\\API\\Model\\BusinessRuleTransformation', 'json', $context);
             }
             $object->setTransformations($values);
+            unset($data['transformations']);
         }
         elseif (\array_key_exists('transformations', $data) && $data['transformations'] === null) {
             $object->setTransformations(null);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
@@ -78,6 +86,11 @@ class ProjectionTransformationNormalizer implements DenormalizerInterface, Norma
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data['transformations'] = $values;
+        }
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
+            }
         }
         return $data;
     }

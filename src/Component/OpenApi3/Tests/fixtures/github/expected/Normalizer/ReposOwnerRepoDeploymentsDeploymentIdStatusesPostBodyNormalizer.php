@@ -47,24 +47,36 @@ class ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBodyNormalizer implements
         }
         if (\array_key_exists('state', $data)) {
             $object->setState($data['state']);
+            unset($data['state']);
         }
         if (\array_key_exists('target_url', $data)) {
             $object->setTargetUrl($data['target_url']);
+            unset($data['target_url']);
         }
         if (\array_key_exists('log_url', $data)) {
             $object->setLogUrl($data['log_url']);
+            unset($data['log_url']);
         }
         if (\array_key_exists('description', $data)) {
             $object->setDescription($data['description']);
+            unset($data['description']);
         }
         if (\array_key_exists('environment', $data)) {
             $object->setEnvironment($data['environment']);
+            unset($data['environment']);
         }
         if (\array_key_exists('environment_url', $data)) {
             $object->setEnvironmentUrl($data['environment_url']);
+            unset($data['environment_url']);
         }
         if (\array_key_exists('auto_inactive', $data)) {
             $object->setAutoInactive($data['auto_inactive']);
+            unset($data['auto_inactive']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -92,6 +104,11 @@ class ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBodyNormalizer implements
         }
         if (null !== $object->getAutoInactive()) {
             $data['auto_inactive'] = $object->getAutoInactive();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBodyConstraint());

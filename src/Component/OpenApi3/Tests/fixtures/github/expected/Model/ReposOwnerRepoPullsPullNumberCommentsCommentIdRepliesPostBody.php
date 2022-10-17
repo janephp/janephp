@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBody
+class ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBody extends \ArrayObject
 {
     /**
      * The text of the review comment.

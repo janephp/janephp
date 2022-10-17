@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class BusinessRuleProjectionTransformationsMissingException
+class BusinessRuleProjectionTransformationsMissingException extends \ArrayObject
 {
     /**
      * 

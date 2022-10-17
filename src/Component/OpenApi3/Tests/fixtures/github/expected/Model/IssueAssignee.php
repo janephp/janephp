@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class IssueAssignee
+class IssueAssignee extends \ArrayObject
 {
     /**
      * 

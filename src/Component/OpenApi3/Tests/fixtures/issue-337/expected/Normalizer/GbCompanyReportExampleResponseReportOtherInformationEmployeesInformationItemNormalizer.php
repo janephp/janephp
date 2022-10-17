@@ -46,9 +46,16 @@ class GbCompanyReportExampleResponseReportOtherInformationEmployeesInformationIt
         }
         if (\array_key_exists('year', $data)) {
             $object->setYear($data['year']);
+            unset($data['year']);
         }
         if (\array_key_exists('numberOfEmployees', $data)) {
             $object->setNumberOfEmployees($data['numberOfEmployees']);
+            unset($data['numberOfEmployees']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -63,6 +70,11 @@ class GbCompanyReportExampleResponseReportOtherInformationEmployeesInformationIt
         }
         if (null !== $object->getNumberOfEmployees()) {
             $data['numberOfEmployees'] = $object->getNumberOfEmployees();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

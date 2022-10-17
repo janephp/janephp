@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class ProjectsProjectIdCollaboratorsUsernamePutBody
+class ProjectsProjectIdCollaboratorsUsernamePutBody extends \ArrayObject
 {
     /**
      * The permission to grant the collaborator.

@@ -51,6 +51,7 @@ class ReposOwnerRepoBranchesBranchProtectionPutBodyRequiredPullRequestReviewsDis
                 $values[] = $value;
             }
             $object->setUsers($values);
+            unset($data['users']);
         }
         if (\array_key_exists('teams', $data)) {
             $values_1 = array();
@@ -58,6 +59,12 @@ class ReposOwnerRepoBranchesBranchProtectionPutBodyRequiredPullRequestReviewsDis
                 $values_1[] = $value_1;
             }
             $object->setTeams($values_1);
+            unset($data['teams']);
+        }
+        foreach ($data as $key => $value_2) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_2;
+            }
         }
         return $object;
     }
@@ -80,6 +87,11 @@ class ReposOwnerRepoBranchesBranchProtectionPutBodyRequiredPullRequestReviewsDis
                 $values_1[] = $value_1;
             }
             $data['teams'] = $values_1;
+        }
+        foreach ($object as $key => $value_2) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_2;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ReposOwnerRepoBranchesBranchProtectionPutBodyRequiredPullRequestReviewsDismissalRestrictionsConstraint());

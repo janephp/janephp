@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class LicenseContentLinks
+class LicenseContentLinks extends \ArrayObject
 {
     /**
      * 

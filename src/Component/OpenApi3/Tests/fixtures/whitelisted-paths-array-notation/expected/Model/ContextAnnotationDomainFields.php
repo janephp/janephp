@@ -2,7 +2,7 @@
 
 namespace Jane\OpenApi3\Tests\Expected\Model;
 
-class ContextAnnotationDomainFields
+class ContextAnnotationDomainFields extends \ArrayObject
 {
     /**
      * The unique id for a context annotation domain.

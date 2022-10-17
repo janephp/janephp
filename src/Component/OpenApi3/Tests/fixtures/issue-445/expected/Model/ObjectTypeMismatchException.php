@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class ObjectTypeMismatchException
+class ObjectTypeMismatchException extends \ArrayObject
 {
     /**
      * 

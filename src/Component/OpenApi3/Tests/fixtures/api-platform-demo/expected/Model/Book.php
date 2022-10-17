@@ -2,7 +2,7 @@
 
 namespace ApiPlatform\Demo\Model;
 
-class Book
+class Book extends \ArrayObject
 {
     /**
      * 

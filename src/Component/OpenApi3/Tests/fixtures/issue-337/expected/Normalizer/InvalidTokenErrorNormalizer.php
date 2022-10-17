@@ -43,6 +43,12 @@ class InvalidTokenErrorNormalizer implements DenormalizerInterface, NormalizerIn
         }
         if (\array_key_exists('error', $data)) {
             $object->setError($data['error']);
+            unset($data['error']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -54,6 +60,11 @@ class InvalidTokenErrorNormalizer implements DenormalizerInterface, NormalizerIn
         $data = array();
         if (null !== $object->getError()) {
             $data['error'] = $object->getError();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoImportPatchBody
+class ReposOwnerRepoImportPatchBody extends \ArrayObject
 {
     /**
      * The username to provide to the originating repository.

@@ -43,57 +43,68 @@ class SchemaFieldSortableInUseExceptionNormalizer implements DenormalizerInterfa
         }
         if (\array_key_exists('traceLevel', $data)) {
             $object->setTraceLevel($data['traceLevel']);
+            unset($data['traceLevel']);
         }
         if (\array_key_exists('traceId', $data) && $data['traceId'] !== null) {
             $object->setTraceId($data['traceId']);
+            unset($data['traceId']);
         }
         elseif (\array_key_exists('traceId', $data) && $data['traceId'] === null) {
             $object->setTraceId(null);
         }
         if (\array_key_exists('traceJobId', $data) && $data['traceJobId'] !== null) {
             $object->setTraceJobId($data['traceJobId']);
+            unset($data['traceJobId']);
         }
         elseif (\array_key_exists('traceJobId', $data) && $data['traceJobId'] === null) {
             $object->setTraceJobId(null);
         }
         if (\array_key_exists('httpStatusCode', $data)) {
             $object->setHttpStatusCode($data['httpStatusCode']);
+            unset($data['httpStatusCode']);
         }
         if (\array_key_exists('exceptionMessage', $data) && $data['exceptionMessage'] !== null) {
             $object->setExceptionMessage($data['exceptionMessage']);
+            unset($data['exceptionMessage']);
         }
         elseif (\array_key_exists('exceptionMessage', $data) && $data['exceptionMessage'] === null) {
             $object->setExceptionMessage(null);
         }
         if (\array_key_exists('kind', $data)) {
             $object->setKind($data['kind']);
+            unset($data['kind']);
         }
         if (\array_key_exists('customerId', $data) && $data['customerId'] !== null) {
             $object->setCustomerId($data['customerId']);
+            unset($data['customerId']);
         }
         elseif (\array_key_exists('customerId', $data) && $data['customerId'] === null) {
             $object->setCustomerId(null);
         }
         if (\array_key_exists('customerAlias', $data) && $data['customerAlias'] !== null) {
             $object->setCustomerAlias($data['customerAlias']);
+            unset($data['customerAlias']);
         }
         elseif (\array_key_exists('customerAlias', $data) && $data['customerAlias'] === null) {
             $object->setCustomerAlias(null);
         }
         if (\array_key_exists('userId', $data) && $data['userId'] !== null) {
             $object->setUserId($data['userId']);
+            unset($data['userId']);
         }
         elseif (\array_key_exists('userId', $data) && $data['userId'] === null) {
             $object->setUserId(null);
         }
         if (\array_key_exists('fieldId', $data) && $data['fieldId'] !== null) {
             $object->setFieldId($data['fieldId']);
+            unset($data['fieldId']);
         }
         elseif (\array_key_exists('fieldId', $data) && $data['fieldId'] === null) {
             $object->setFieldId(null);
         }
         if (\array_key_exists('schemaId', $data) && $data['schemaId'] !== null) {
             $object->setSchemaId($data['schemaId']);
+            unset($data['schemaId']);
         }
         elseif (\array_key_exists('schemaId', $data) && $data['schemaId'] === null) {
             $object->setSchemaId(null);
@@ -104,9 +115,15 @@ class SchemaFieldSortableInUseExceptionNormalizer implements DenormalizerInterfa
                 $values[] = $value;
             }
             $object->setChannelIds($values);
+            unset($data['channelIds']);
         }
         elseif (\array_key_exists('channelIds', $data) && $data['channelIds'] === null) {
             $object->setChannelIds(null);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
@@ -153,6 +170,11 @@ class SchemaFieldSortableInUseExceptionNormalizer implements DenormalizerInterfa
                 $values[] = $value;
             }
             $data['channelIds'] = $values;
+        }
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
+            }
         }
         return $data;
     }

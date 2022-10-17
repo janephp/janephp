@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class ListItemAggregationRequest
+class ListItemAggregationRequest extends \ArrayObject
 {
     /**
      * Limits the search by using a query string filter. The Lucene query string syntax is supported.

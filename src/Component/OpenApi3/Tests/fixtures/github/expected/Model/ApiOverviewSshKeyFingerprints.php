@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class ApiOverviewSshKeyFingerprints
+class ApiOverviewSshKeyFingerprints extends \ArrayObject
 {
     /**
      * 

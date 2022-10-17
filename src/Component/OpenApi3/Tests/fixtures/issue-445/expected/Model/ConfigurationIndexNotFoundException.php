@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class ConfigurationIndexNotFoundException
+class ConfigurationIndexNotFoundException extends \ArrayObject
 {
     /**
      * 

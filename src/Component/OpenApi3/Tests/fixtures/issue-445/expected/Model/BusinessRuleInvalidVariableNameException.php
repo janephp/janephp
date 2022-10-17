@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class BusinessRuleInvalidVariableNameException
+class BusinessRuleInvalidVariableNameException extends \ArrayObject
 {
     /**
      * 

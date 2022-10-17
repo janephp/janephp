@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class ProjectColumn
+class ProjectColumn extends \ArrayObject
 {
     /**
      * 

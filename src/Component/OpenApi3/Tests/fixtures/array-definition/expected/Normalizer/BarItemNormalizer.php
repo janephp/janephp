@@ -43,6 +43,12 @@ class BarItemNormalizer implements DenormalizerInterface, NormalizerInterface, D
         }
         if (\array_key_exists('bar', $data)) {
             $object->setBar($data['bar']);
+            unset($data['bar']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -54,6 +60,11 @@ class BarItemNormalizer implements DenormalizerInterface, NormalizerInterface, D
         $data = array();
         if (null !== $object->getBar()) {
             $data['bar'] = $object->getBar();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

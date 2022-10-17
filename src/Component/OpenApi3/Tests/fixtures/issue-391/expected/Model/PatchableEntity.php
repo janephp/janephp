@@ -2,7 +2,7 @@
 
 namespace Gounlaf\JanephpBug\Model;
 
-class PatchableEntity
+class PatchableEntity extends \ArrayObject
 {
     /**
      * 

@@ -47,12 +47,19 @@ class ReposOwnerRepoPagesPutBodyNormalizer implements DenormalizerInterface, Nor
         }
         if (\array_key_exists('cname', $data) && $data['cname'] !== null) {
             $object->setCname($data['cname']);
+            unset($data['cname']);
         }
         elseif (\array_key_exists('cname', $data) && $data['cname'] === null) {
             $object->setCname(null);
         }
         if (\array_key_exists('source', $data)) {
             $object->setSource($data['source']);
+            unset($data['source']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -67,6 +74,11 @@ class ReposOwnerRepoPagesPutBodyNormalizer implements DenormalizerInterface, Nor
         }
         if (null !== $object->getSource()) {
             $data['source'] = $object->getSource();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ReposOwnerRepoPagesPutBodyConstraint());

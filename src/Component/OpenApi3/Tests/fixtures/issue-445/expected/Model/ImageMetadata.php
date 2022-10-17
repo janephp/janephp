@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class ImageMetadata
+class ImageMetadata extends \ArrayObject
 {
     /**
      * 

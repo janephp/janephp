@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class XmpMappingSchemaNotAvailableForFileContentSchemaException
+class XmpMappingSchemaNotAvailableForFileContentSchemaException extends \ArrayObject
 {
     /**
      * 

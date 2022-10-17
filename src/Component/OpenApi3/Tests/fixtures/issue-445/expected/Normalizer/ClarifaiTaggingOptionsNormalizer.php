@@ -43,54 +43,68 @@ class ClarifaiTaggingOptionsNormalizer implements DenormalizerInterface, Normali
         }
         if (\array_key_exists('tagOutputFormatId', $data) && $data['tagOutputFormatId'] !== null) {
             $object->setTagOutputFormatId($data['tagOutputFormatId']);
+            unset($data['tagOutputFormatId']);
         }
         elseif (\array_key_exists('tagOutputFormatId', $data) && $data['tagOutputFormatId'] === null) {
             $object->setTagOutputFormatId(null);
         }
         if (\array_key_exists('keywordLookupCacheName', $data) && $data['keywordLookupCacheName'] !== null) {
             $object->setKeywordLookupCacheName($data['keywordLookupCacheName']);
+            unset($data['keywordLookupCacheName']);
         }
         elseif (\array_key_exists('keywordLookupCacheName', $data) && $data['keywordLookupCacheName'] === null) {
             $object->setKeywordLookupCacheName(null);
         }
         if (\array_key_exists('taggingLayerId', $data) && $data['taggingLayerId'] !== null) {
             $object->setTaggingLayerId($data['taggingLayerId']);
+            unset($data['taggingLayerId']);
         }
         elseif (\array_key_exists('taggingLayerId', $data) && $data['taggingLayerId'] === null) {
             $object->setTaggingLayerId(null);
         }
         if (\array_key_exists('foundTagsFieldId', $data) && $data['foundTagsFieldId'] !== null) {
             $object->setFoundTagsFieldId($data['foundTagsFieldId']);
+            unset($data['foundTagsFieldId']);
         }
         elseif (\array_key_exists('foundTagsFieldId', $data) && $data['foundTagsFieldId'] === null) {
             $object->setFoundTagsFieldId(null);
         }
         if (\array_key_exists('missingKeywordsFieldId', $data) && $data['missingKeywordsFieldId'] !== null) {
             $object->setMissingKeywordsFieldId($data['missingKeywordsFieldId']);
+            unset($data['missingKeywordsFieldId']);
         }
         elseif (\array_key_exists('missingKeywordsFieldId', $data) && $data['missingKeywordsFieldId'] === null) {
             $object->setMissingKeywordsFieldId(null);
         }
         if (\array_key_exists('kind', $data)) {
             $object->setKind($data['kind']);
+            unset($data['kind']);
         }
         if (\array_key_exists('model', $data) && $data['model'] !== null) {
             $object->setModel($data['model']);
+            unset($data['model']);
         }
         elseif (\array_key_exists('model', $data) && $data['model'] === null) {
             $object->setModel(null);
         }
         if (\array_key_exists('language', $data) && $data['language'] !== null) {
             $object->setLanguage($data['language']);
+            unset($data['language']);
         }
         elseif (\array_key_exists('language', $data) && $data['language'] === null) {
             $object->setLanguage(null);
         }
         if (\array_key_exists('minimumValue', $data) && $data['minimumValue'] !== null) {
             $object->setMinimumValue($data['minimumValue']);
+            unset($data['minimumValue']);
         }
         elseif (\array_key_exists('minimumValue', $data) && $data['minimumValue'] === null) {
             $object->setMinimumValue(null);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -124,6 +138,11 @@ class ClarifaiTaggingOptionsNormalizer implements DenormalizerInterface, Normali
         }
         if (null !== $object->getMinimumValue()) {
             $data['minimumValue'] = $object->getMinimumValue();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

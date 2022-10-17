@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class UserReviewManyRequest
+class UserReviewManyRequest extends \ArrayObject
 {
     /**
      * User IDs.

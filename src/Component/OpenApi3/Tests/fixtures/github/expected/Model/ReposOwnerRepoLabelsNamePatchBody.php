@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoLabelsNamePatchBody
+class ReposOwnerRepoLabelsNamePatchBody extends \ArrayObject
 {
     /**
      * The new name of the label. Emoji can be added to label names, using either native emoji or colon-style markup. For example, typing `:strawberry:` will render the emoji ![:strawberry:](https://github.githubassets.com/images/icons/emoji/unicode/1f353.png ":strawberry:"). For a full list of available emoji and codes, see [emoji-cheat-sheet.com](http://emoji-cheat-sheet.com/).

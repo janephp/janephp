@@ -43,9 +43,16 @@ class GbCompanyReportExampleResponseReportDirectorsCurrentDirectorsItemPositions
         }
         if (\array_key_exists('dateAppointed', $data)) {
             $object->setDateAppointed($data['dateAppointed']);
+            unset($data['dateAppointed']);
         }
         if (\array_key_exists('positionName', $data)) {
             $object->setPositionName($data['positionName']);
+            unset($data['positionName']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -60,6 +67,11 @@ class GbCompanyReportExampleResponseReportDirectorsCurrentDirectorsItemPositions
         }
         if (null !== $object->getPositionName()) {
             $data['positionName'] = $object->getPositionName();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

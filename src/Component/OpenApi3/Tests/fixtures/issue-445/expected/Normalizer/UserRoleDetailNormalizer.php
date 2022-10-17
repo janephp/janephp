@@ -43,6 +43,7 @@ class UserRoleDetailNormalizer implements DenormalizerInterface, NormalizerInter
         }
         if (\array_key_exists('names', $data)) {
             $object->setNames($data['names']);
+            unset($data['names']);
         }
         if (\array_key_exists('userRights', $data)) {
             $values = array();
@@ -50,15 +51,23 @@ class UserRoleDetailNormalizer implements DenormalizerInterface, NormalizerInter
                 $values[] = $value;
             }
             $object->setUserRights($values);
+            unset($data['userRights']);
         }
         if (\array_key_exists('id', $data)) {
             $object->setId($data['id']);
+            unset($data['id']);
         }
         if (\array_key_exists('audit', $data) && $data['audit'] !== null) {
             $object->setAudit($data['audit']);
+            unset($data['audit']);
         }
         elseif (\array_key_exists('audit', $data) && $data['audit'] === null) {
             $object->setAudit(null);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
@@ -77,6 +86,11 @@ class UserRoleDetailNormalizer implements DenormalizerInterface, NormalizerInter
         $data['id'] = $object->getId();
         if (null !== $object->getAudit()) {
             $data['audit'] = $object->getAudit();
+        }
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
+            }
         }
         return $data;
     }

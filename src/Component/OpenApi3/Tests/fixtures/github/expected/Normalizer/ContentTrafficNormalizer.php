@@ -47,15 +47,24 @@ class ContentTrafficNormalizer implements DenormalizerInterface, NormalizerInter
         }
         if (\array_key_exists('path', $data)) {
             $object->setPath($data['path']);
+            unset($data['path']);
         }
         if (\array_key_exists('title', $data)) {
             $object->setTitle($data['title']);
+            unset($data['title']);
         }
         if (\array_key_exists('count', $data)) {
             $object->setCount($data['count']);
+            unset($data['count']);
         }
         if (\array_key_exists('uniques', $data)) {
             $object->setUniques($data['uniques']);
+            unset($data['uniques']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -69,6 +78,11 @@ class ContentTrafficNormalizer implements DenormalizerInterface, NormalizerInter
         $data['title'] = $object->getTitle();
         $data['count'] = $object->getCount();
         $data['uniques'] = $object->getUniques();
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ContentTrafficConstraint());
             $context['skip_validation'] = true;

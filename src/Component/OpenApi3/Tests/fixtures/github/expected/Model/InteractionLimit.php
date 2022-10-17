@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class InteractionLimit
+class InteractionLimit extends \ArrayObject
 {
     /**
      * The interaction limit to enable.

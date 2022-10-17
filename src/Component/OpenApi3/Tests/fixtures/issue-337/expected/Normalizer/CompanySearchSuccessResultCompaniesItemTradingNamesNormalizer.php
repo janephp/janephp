@@ -41,6 +41,11 @@ class CompanySearchSuccessResultCompaniesItemTradingNamesNormalizer implements D
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
+        }
         return $object;
     }
     /**
@@ -49,6 +54,11 @@ class CompanySearchSuccessResultCompaniesItemTradingNamesNormalizer implements D
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
         return $data;
     }
 }

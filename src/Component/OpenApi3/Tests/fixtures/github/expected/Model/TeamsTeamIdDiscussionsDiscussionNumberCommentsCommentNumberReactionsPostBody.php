@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBody
+class TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBody extends \ArrayObject
 {
     /**
      * The [reaction type](https://developer.github.com/v3/reactions/#reaction-types) to add to the team discussion comment.

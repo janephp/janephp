@@ -47,33 +47,48 @@ class FileCommitContentNormalizer implements DenormalizerInterface, NormalizerIn
         }
         if (\array_key_exists('name', $data)) {
             $object->setName($data['name']);
+            unset($data['name']);
         }
         if (\array_key_exists('path', $data)) {
             $object->setPath($data['path']);
+            unset($data['path']);
         }
         if (\array_key_exists('sha', $data)) {
             $object->setSha($data['sha']);
+            unset($data['sha']);
         }
         if (\array_key_exists('size', $data)) {
             $object->setSize($data['size']);
+            unset($data['size']);
         }
         if (\array_key_exists('url', $data)) {
             $object->setUrl($data['url']);
+            unset($data['url']);
         }
         if (\array_key_exists('html_url', $data)) {
             $object->setHtmlUrl($data['html_url']);
+            unset($data['html_url']);
         }
         if (\array_key_exists('git_url', $data)) {
             $object->setGitUrl($data['git_url']);
+            unset($data['git_url']);
         }
         if (\array_key_exists('download_url', $data)) {
             $object->setDownloadUrl($data['download_url']);
+            unset($data['download_url']);
         }
         if (\array_key_exists('type', $data)) {
             $object->setType($data['type']);
+            unset($data['type']);
         }
         if (\array_key_exists('_links', $data)) {
             $object->setLinks($this->denormalizer->denormalize($data['_links'], 'Github\\Model\\FileCommitContentLinks', 'json', $context));
+            unset($data['_links']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -112,6 +127,11 @@ class FileCommitContentNormalizer implements DenormalizerInterface, NormalizerIn
         }
         if (null !== $object->getLinks()) {
             $data['_links'] = $this->normalizer->normalize($object->getLinks(), 'json', $context);
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\FileCommitContentConstraint());

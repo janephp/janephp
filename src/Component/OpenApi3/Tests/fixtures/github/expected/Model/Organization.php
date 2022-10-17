@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class Organization
+class Organization extends \ArrayObject
 {
     /**
      * Unique login name of the organization

@@ -2,7 +2,7 @@
 
 namespace Jane\OpenApi3\Tests\Expected\Model;
 
-class TweetWithheld
+class TweetWithheld extends \ArrayObject
 {
     /**
      * Indicates if the content is being withheld for on the basis of copyright infringement.

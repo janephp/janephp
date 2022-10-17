@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class BusinessRuleActionInvalidDocumentTypeException
+class BusinessRuleActionInvalidDocumentTypeException extends \ArrayObject
 {
     /**
      * 

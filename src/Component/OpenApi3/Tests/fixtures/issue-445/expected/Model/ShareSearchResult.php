@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class ShareSearchResult
+class ShareSearchResult extends \ArrayObject
 {
     /**
      * The total number of matching documents.

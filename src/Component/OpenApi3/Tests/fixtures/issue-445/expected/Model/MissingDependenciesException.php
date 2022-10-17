@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class MissingDependenciesException
+class MissingDependenciesException extends \ArrayObject
 {
     /**
      * 

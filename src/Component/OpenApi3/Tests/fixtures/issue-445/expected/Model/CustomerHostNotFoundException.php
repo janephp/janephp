@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class CustomerHostNotFoundException
+class CustomerHostNotFoundException extends \ArrayObject
 {
     /**
      * 

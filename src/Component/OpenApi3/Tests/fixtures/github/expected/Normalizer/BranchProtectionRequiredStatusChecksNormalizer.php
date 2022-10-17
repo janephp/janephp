@@ -47,9 +47,11 @@ class BranchProtectionRequiredStatusChecksNormalizer implements DenormalizerInte
         }
         if (\array_key_exists('url', $data)) {
             $object->setUrl($data['url']);
+            unset($data['url']);
         }
         if (\array_key_exists('enforcement_level', $data)) {
             $object->setEnforcementLevel($data['enforcement_level']);
+            unset($data['enforcement_level']);
         }
         if (\array_key_exists('contexts', $data)) {
             $values = array();
@@ -57,9 +59,16 @@ class BranchProtectionRequiredStatusChecksNormalizer implements DenormalizerInte
                 $values[] = $value;
             }
             $object->setContexts($values);
+            unset($data['contexts']);
         }
         if (\array_key_exists('contexts_url', $data)) {
             $object->setContextsUrl($data['contexts_url']);
+            unset($data['contexts_url']);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
@@ -80,6 +89,11 @@ class BranchProtectionRequiredStatusChecksNormalizer implements DenormalizerInte
         $data['contexts'] = $values;
         if (null !== $object->getContextsUrl()) {
             $data['contexts_url'] = $object->getContextsUrl();
+        }
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\BranchProtectionRequiredStatusChecksConstraint());

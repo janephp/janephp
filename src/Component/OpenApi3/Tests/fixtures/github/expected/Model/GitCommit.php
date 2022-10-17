@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class GitCommit
+class GitCommit extends \ArrayObject
 {
     /**
      * SHA for the commit

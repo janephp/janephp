@@ -43,6 +43,7 @@ class UserAggregationRequestNormalizer implements DenormalizerInterface, Normali
         }
         if (\array_key_exists('searchString', $data) && $data['searchString'] !== null) {
             $object->setSearchString($data['searchString']);
+            unset($data['searchString']);
         }
         elseif (\array_key_exists('searchString', $data) && $data['searchString'] === null) {
             $object->setSearchString(null);
@@ -53,18 +54,21 @@ class UserAggregationRequestNormalizer implements DenormalizerInterface, Normali
                 $values[] = $value;
             }
             $object->setSearchBehaviors($values);
+            unset($data['searchBehaviors']);
         }
         elseif (\array_key_exists('searchBehaviors', $data) && $data['searchBehaviors'] === null) {
             $object->setSearchBehaviors(null);
         }
         if (\array_key_exists('filter', $data) && $data['filter'] !== null) {
             $object->setFilter($data['filter']);
+            unset($data['filter']);
         }
         elseif (\array_key_exists('filter', $data) && $data['filter'] === null) {
             $object->setFilter(null);
         }
         if (\array_key_exists('lifeCycleFilter', $data)) {
             $object->setLifeCycleFilter($data['lifeCycleFilter']);
+            unset($data['lifeCycleFilter']);
         }
         if (\array_key_exists('userRightsFilter', $data) && $data['userRightsFilter'] !== null) {
             $values_1 = array();
@@ -72,6 +76,7 @@ class UserAggregationRequestNormalizer implements DenormalizerInterface, Normali
                 $values_1[] = $value_1;
             }
             $object->setUserRightsFilter($values_1);
+            unset($data['userRightsFilter']);
         }
         elseif (\array_key_exists('userRightsFilter', $data) && $data['userRightsFilter'] === null) {
             $object->setUserRightsFilter(null);
@@ -82,15 +87,18 @@ class UserAggregationRequestNormalizer implements DenormalizerInterface, Normali
                 $values_2[] = $this->denormalizer->denormalize($value_2, 'PicturePark\\API\\Model\\AggregationFilter', 'json', $context);
             }
             $object->setAggregationFilters($values_2);
+            unset($data['aggregationFilters']);
         }
         elseif (\array_key_exists('aggregationFilters', $data) && $data['aggregationFilters'] === null) {
             $object->setAggregationFilters(null);
         }
         if (\array_key_exists('includeServiceUser', $data)) {
             $object->setIncludeServiceUser($data['includeServiceUser']);
+            unset($data['includeServiceUser']);
         }
         if (\array_key_exists('editableOnly', $data)) {
             $object->setEditableOnly($data['editableOnly']);
+            unset($data['editableOnly']);
         }
         if (\array_key_exists('aggregators', $data)) {
             $values_3 = array();
@@ -98,6 +106,12 @@ class UserAggregationRequestNormalizer implements DenormalizerInterface, Normali
                 $values_3[] = $this->denormalizer->denormalize($value_3, 'PicturePark\\API\\Model\\AggregatorBase', 'json', $context);
             }
             $object->setAggregators($values_3);
+            unset($data['aggregators']);
+        }
+        foreach ($data as $key => $value_4) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_4;
+            }
         }
         return $object;
     }
@@ -142,6 +156,11 @@ class UserAggregationRequestNormalizer implements DenormalizerInterface, Normali
             $values_3[] = $this->normalizer->normalize($value_3, 'json', $context);
         }
         $data['aggregators'] = $values_3;
+        foreach ($object as $key => $value_4) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_4;
+            }
+        }
         return $data;
     }
 }

@@ -52,17 +52,21 @@ class ContentMetadataUpdateRequestNormalizer implements DenormalizerInterface, N
             $object->setLayerSchemaIds(null);
         }
         if (\array_key_exists('content', $data) && $data['content'] !== null) {
-            $object->setContent($data['content']);
+            $values_1 = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
+            foreach ($data['content'] as $key => $value_1) {
+                $values_1[$key] = $value_1;
+            }
+            $object->setContent($values_1);
         }
         elseif (\array_key_exists('content', $data) && $data['content'] === null) {
             $object->setContent(null);
         }
         if (\array_key_exists('metadata', $data) && $data['metadata'] !== null) {
-            $values_1 = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
-            foreach ($data['metadata'] as $key => $value_1) {
-                $values_1[$key] = $value_1;
+            $values_2 = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
+            foreach ($data['metadata'] as $key_1 => $value_2) {
+                $values_2[$key_1] = $value_2;
             }
-            $object->setMetadata($values_1);
+            $object->setMetadata($values_2);
         }
         elseif (\array_key_exists('metadata', $data) && $data['metadata'] === null) {
             $object->setMetadata(null);
@@ -92,14 +96,18 @@ class ContentMetadataUpdateRequestNormalizer implements DenormalizerInterface, N
             $data['layerSchemaIds'] = $values;
         }
         if (null !== $object->getContent()) {
-            $data['content'] = $object->getContent();
-        }
-        if (null !== $object->getMetadata()) {
             $values_1 = array();
-            foreach ($object->getMetadata() as $key => $value_1) {
+            foreach ($object->getContent() as $key => $value_1) {
                 $values_1[$key] = $value_1;
             }
-            $data['metadata'] = $values_1;
+            $data['content'] = $values_1;
+        }
+        if (null !== $object->getMetadata()) {
+            $values_2 = array();
+            foreach ($object->getMetadata() as $key_1 => $value_2) {
+                $values_2[$key_1] = $value_2;
+            }
+            $data['metadata'] = $values_2;
         }
         $data['layerSchemasUpdateOptions'] = $object->getLayerSchemasUpdateOptions();
         $data['layerFieldsUpdateOptions'] = $object->getLayerFieldsUpdateOptions();

@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class ForbiddenHtmlElementsUsedException
+class ForbiddenHtmlElementsUsedException extends \ArrayObject
 {
     /**
      * 

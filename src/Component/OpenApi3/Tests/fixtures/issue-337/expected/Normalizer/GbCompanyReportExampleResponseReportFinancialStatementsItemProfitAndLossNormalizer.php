@@ -88,48 +88,68 @@ class GbCompanyReportExampleResponseReportFinancialStatementsItemProfitAndLossNo
         }
         if (\array_key_exists('revenue', $data)) {
             $object->setRevenue($data['revenue']);
+            unset($data['revenue']);
         }
         if (\array_key_exists('operatingCosts', $data)) {
             $object->setOperatingCosts($data['operatingCosts']);
+            unset($data['operatingCosts']);
         }
         if (\array_key_exists('operatingProfit', $data)) {
             $object->setOperatingProfit($data['operatingProfit']);
+            unset($data['operatingProfit']);
         }
         if (\array_key_exists('wagesAndSalaries', $data)) {
             $object->setWagesAndSalaries($data['wagesAndSalaries']);
+            unset($data['wagesAndSalaries']);
         }
         if (\array_key_exists('pensionCosts', $data)) {
             $object->setPensionCosts($data['pensionCosts']);
+            unset($data['pensionCosts']);
         }
         if (\array_key_exists('depreciation', $data)) {
             $object->setDepreciation($data['depreciation']);
+            unset($data['depreciation']);
         }
         if (\array_key_exists('amortisation', $data)) {
             $object->setAmortisation($data['amortisation']);
+            unset($data['amortisation']);
         }
         if (\array_key_exists('financialExpenses', $data)) {
             $object->setFinancialExpenses($data['financialExpenses']);
+            unset($data['financialExpenses']);
         }
         if (\array_key_exists('profitBeforeTax', $data)) {
             $object->setProfitBeforeTax($data['profitBeforeTax']);
+            unset($data['profitBeforeTax']);
         }
         if (\array_key_exists('tax', $data)) {
             $object->setTax($data['tax']);
+            unset($data['tax']);
         }
         if (\array_key_exists('profitAfterTax', $data)) {
             $object->setProfitAfterTax($data['profitAfterTax']);
+            unset($data['profitAfterTax']);
         }
         if (\array_key_exists('dividends', $data)) {
             $object->setDividends($data['dividends']);
+            unset($data['dividends']);
         }
         if (\array_key_exists('minorityInterests', $data)) {
             $object->setMinorityInterests($data['minorityInterests']);
+            unset($data['minorityInterests']);
         }
         if (\array_key_exists('otherAppropriations', $data)) {
             $object->setOtherAppropriations($data['otherAppropriations']);
+            unset($data['otherAppropriations']);
         }
         if (\array_key_exists('retainedProfit', $data)) {
             $object->setRetainedProfit($data['retainedProfit']);
+            unset($data['retainedProfit']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -183,6 +203,11 @@ class GbCompanyReportExampleResponseReportFinancialStatementsItemProfitAndLossNo
         }
         if (null !== $object->getRetainedProfit()) {
             $data['retainedProfit'] = $object->getRetainedProfit();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

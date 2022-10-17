@@ -46,12 +46,24 @@ class SearchNoResultsErrorNormalizer implements DenormalizerInterface, Normalize
         }
         if (\array_key_exists('totalSize', $data)) {
             $object->setTotalSize($data['totalSize']);
+            unset($data['totalSize']);
         }
         if (\array_key_exists('companies', $data)) {
-            $object->setCompanies($data['companies']);
+            $values = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
+            foreach ($data['companies'] as $key => $value) {
+                $values[$key] = $value;
+            }
+            $object->setCompanies($values);
+            unset($data['companies']);
         }
         if (\array_key_exists('messages', $data)) {
             $object->setMessages($this->denormalizer->denormalize($data['messages'], 'CreditSafe\\API\\Model\\SearchNoResultsErrorMessages', 'json', $context));
+            unset($data['messages']);
+        }
+        foreach ($data as $key_1 => $value_1) {
+            if (preg_match('/.*/', (string) $key_1)) {
+                $object[$key_1] = $value_1;
+            }
         }
         return $object;
     }
@@ -65,10 +77,19 @@ class SearchNoResultsErrorNormalizer implements DenormalizerInterface, Normalize
             $data['totalSize'] = $object->getTotalSize();
         }
         if (null !== $object->getCompanies()) {
-            $data['companies'] = $object->getCompanies();
+            $values = array();
+            foreach ($object->getCompanies() as $key => $value) {
+                $values[$key] = $value;
+            }
+            $data['companies'] = $values;
         }
         if (null !== $object->getMessages()) {
             $data['messages'] = $this->normalizer->normalize($object->getMessages(), 'json', $context);
+        }
+        foreach ($object as $key_1 => $value_1) {
+            if (preg_match('/.*/', (string) $key_1)) {
+                $data[$key_1] = $value_1;
+            }
         }
         return $data;
     }

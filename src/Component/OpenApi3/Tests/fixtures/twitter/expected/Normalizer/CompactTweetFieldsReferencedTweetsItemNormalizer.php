@@ -43,9 +43,16 @@ class CompactTweetFieldsReferencedTweetsItemNormalizer implements DenormalizerIn
         }
         if (\array_key_exists('type', $data)) {
             $object->setType($data['type']);
+            unset($data['type']);
         }
         if (\array_key_exists('id', $data)) {
             $object->setId($data['id']);
+            unset($data['id']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -57,6 +64,11 @@ class CompactTweetFieldsReferencedTweetsItemNormalizer implements DenormalizerIn
         $data = array();
         $data['type'] = $object->getType();
         $data['id'] = $object->getId();
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
         return $data;
     }
 }

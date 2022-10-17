@@ -43,30 +43,44 @@ class GbCompanyReportExampleResponseReportCompanyIdentificationBasicInformationN
         }
         if (\array_key_exists('businessName', $data)) {
             $object->setBusinessName($data['businessName']);
+            unset($data['businessName']);
         }
         if (\array_key_exists('registeredCompanyName', $data)) {
             $object->setRegisteredCompanyName($data['registeredCompanyName']);
+            unset($data['registeredCompanyName']);
         }
         if (\array_key_exists('companyRegistrationNumber', $data)) {
             $object->setCompanyRegistrationNumber($data['companyRegistrationNumber']);
+            unset($data['companyRegistrationNumber']);
         }
         if (\array_key_exists('country', $data)) {
             $object->setCountry($data['country']);
+            unset($data['country']);
         }
         if (\array_key_exists('companyRegistrationDate', $data)) {
             $object->setCompanyRegistrationDate($data['companyRegistrationDate']);
+            unset($data['companyRegistrationDate']);
         }
         if (\array_key_exists('legalForm', $data)) {
             $object->setLegalForm($this->denormalizer->denormalize($data['legalForm'], 'CreditSafe\\API\\Model\\GbCompanyReportExampleResponseReportCompanyIdentificationBasicInformationLegalForm', 'json', $context));
+            unset($data['legalForm']);
         }
         if (\array_key_exists('companyStatus', $data)) {
             $object->setCompanyStatus($this->denormalizer->denormalize($data['companyStatus'], 'CreditSafe\\API\\Model\\GbCompanyReportExampleResponseReportCompanyIdentificationBasicInformationCompanyStatus', 'json', $context));
+            unset($data['companyStatus']);
         }
         if (\array_key_exists('principalActivity', $data)) {
             $object->setPrincipalActivity($this->denormalizer->denormalize($data['principalActivity'], 'CreditSafe\\API\\Model\\GbCompanyReportExampleResponseReportCompanyIdentificationBasicInformationPrincipalActivity', 'json', $context));
+            unset($data['principalActivity']);
         }
         if (\array_key_exists('contactAddress', $data)) {
             $object->setContactAddress($this->denormalizer->denormalize($data['contactAddress'], 'CreditSafe\\API\\Model\\GbCompanyReportExampleResponseReportCompanyIdentificationBasicInformationContactAddress', 'json', $context));
+            unset($data['contactAddress']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -102,6 +116,11 @@ class GbCompanyReportExampleResponseReportCompanyIdentificationBasicInformationN
         }
         if (null !== $object->getContactAddress()) {
             $data['contactAddress'] = $this->normalizer->normalize($object->getContactAddress(), 'json', $context);
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

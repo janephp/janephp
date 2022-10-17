@@ -47,6 +47,12 @@ class UserMembershipsOrgsOrgPatchBodyNormalizer implements DenormalizerInterface
         }
         if (\array_key_exists('state', $data)) {
             $object->setState($data['state']);
+            unset($data['state']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -57,6 +63,11 @@ class UserMembershipsOrgsOrgPatchBodyNormalizer implements DenormalizerInterface
     {
         $data = array();
         $data['state'] = $object->getState();
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\UserMembershipsOrgsOrgPatchBodyConstraint());
             $context['skip_validation'] = true;

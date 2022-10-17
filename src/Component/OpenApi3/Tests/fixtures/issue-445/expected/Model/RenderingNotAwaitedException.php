@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class RenderingNotAwaitedException
+class RenderingNotAwaitedException extends \ArrayObject
 {
     /**
      * 

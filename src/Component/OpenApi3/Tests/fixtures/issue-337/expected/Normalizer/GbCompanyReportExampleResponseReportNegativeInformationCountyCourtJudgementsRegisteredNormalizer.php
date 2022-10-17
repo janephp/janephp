@@ -47,6 +47,7 @@ class GbCompanyReportExampleResponseReportNegativeInformationCountyCourtJudgemen
                 $values[] = $this->denormalizer->denormalize($value, 'CreditSafe\\API\\Model\\GbCompanyReportExampleResponseReportNegativeInformationCountyCourtJudgementsRegisteredExactItem', 'json', $context);
             }
             $object->setExact($values);
+            unset($data['exact']);
         }
         if (\array_key_exists('possible', $data)) {
             $values_1 = array();
@@ -54,6 +55,12 @@ class GbCompanyReportExampleResponseReportNegativeInformationCountyCourtJudgemen
                 $values_1[] = $this->denormalizer->denormalize($value_1, 'CreditSafe\\API\\Model\\GbCompanyReportExampleResponseReportNegativeInformationCountyCourtJudgementsRegisteredPossibleItem', 'json', $context);
             }
             $object->setPossible($values_1);
+            unset($data['possible']);
+        }
+        foreach ($data as $key => $value_2) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_2;
+            }
         }
         return $object;
     }
@@ -76,6 +83,11 @@ class GbCompanyReportExampleResponseReportNegativeInformationCountyCourtJudgemen
                 $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
             }
             $data['possible'] = $values_1;
+        }
+        foreach ($object as $key => $value_2) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_2;
+            }
         }
         return $data;
     }

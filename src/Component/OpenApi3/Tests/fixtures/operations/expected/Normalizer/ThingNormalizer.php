@@ -43,6 +43,12 @@ class ThingNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         }
         if (\array_key_exists('name', $data)) {
             $object->setName($data['name']);
+            unset($data['name']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -54,6 +60,11 @@ class ThingNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         $data = array();
         if (null !== $object->getName()) {
             $data['name'] = $object->getName();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

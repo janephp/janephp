@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class Deployment
+class Deployment extends \ArrayObject
 {
     /**
      * 

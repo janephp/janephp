@@ -7,7 +7,7 @@ class ListItemUpdateRequest
     /**
      * The content data of the list item. It's an object of dynamic metadata whose structure is defined in the Content schema of the list item.
      *
-     * @var mixed|null
+     * @var mixed[]|null
      */
     protected $content;
     /**
@@ -22,20 +22,20 @@ class ListItemUpdateRequest
     /**
      * The content data of the list item. It's an object of dynamic metadata whose structure is defined in the Content schema of the list item.
      *
-     * @return mixed
+     * @return mixed[]|null
      */
-    public function getContent()
+    public function getContent() : ?iterable
     {
         return $this->content;
     }
     /**
      * The content data of the list item. It's an object of dynamic metadata whose structure is defined in the Content schema of the list item.
      *
-     * @param mixed $content
+     * @param mixed[]|null $content
      *
      * @return self
      */
-    public function setContent($content) : self
+    public function setContent(?iterable $content) : self
     {
         $this->content = $content;
         return $this;

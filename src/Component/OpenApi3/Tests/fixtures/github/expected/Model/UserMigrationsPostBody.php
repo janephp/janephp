@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class UserMigrationsPostBody
+class UserMigrationsPostBody extends \ArrayObject
 {
     /**
      * Lock the repositories being migrated at the start of the migration

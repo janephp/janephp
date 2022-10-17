@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBody
+class ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBody extends \ArrayObject
 {
     /**
      * The [reaction type](https://developer.github.com/v3/reactions/#reaction-types) to add to the issue comment.

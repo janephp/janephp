@@ -43,18 +43,23 @@ class CompactTweetFieldsNormalizer implements DenormalizerInterface, NormalizerI
         }
         if (\array_key_exists('id', $data)) {
             $object->setId($data['id']);
+            unset($data['id']);
         }
         if (\array_key_exists('created_at', $data)) {
             $object->setCreatedAt(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['created_at']));
+            unset($data['created_at']);
         }
         if (\array_key_exists('text', $data)) {
             $object->setText($data['text']);
+            unset($data['text']);
         }
         if (\array_key_exists('author_id', $data)) {
             $object->setAuthorId($data['author_id']);
+            unset($data['author_id']);
         }
         if (\array_key_exists('in_reply_to_user_id', $data)) {
             $object->setInReplyToUserId($data['in_reply_to_user_id']);
+            unset($data['in_reply_to_user_id']);
         }
         if (\array_key_exists('referenced_tweets', $data)) {
             $values = array();
@@ -62,12 +67,20 @@ class CompactTweetFieldsNormalizer implements DenormalizerInterface, NormalizerI
                 $values[] = $this->denormalizer->denormalize($value, 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Model\\CompactTweetFieldsReferencedTweetsItem', 'json', $context);
             }
             $object->setReferencedTweets($values);
+            unset($data['referenced_tweets']);
         }
         if (\array_key_exists('attachments', $data)) {
             $object->setAttachments($this->denormalizer->denormalize($data['attachments'], 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Model\\CompactTweetFieldsAttachments', 'json', $context));
+            unset($data['attachments']);
         }
         if (\array_key_exists('withheld', $data)) {
             $object->setWithheld($this->denormalizer->denormalize($data['withheld'], 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Model\\TweetWithheld', 'json', $context));
+            unset($data['withheld']);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
@@ -96,6 +109,11 @@ class CompactTweetFieldsNormalizer implements DenormalizerInterface, NormalizerI
         }
         if (null !== $object->getWithheld()) {
             $data['withheld'] = $this->normalizer->normalize($object->getWithheld(), 'json', $context);
+        }
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
+            }
         }
         return $data;
     }

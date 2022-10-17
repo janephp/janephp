@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoPullsPostBody
+class ReposOwnerRepoPullsPostBody extends \ArrayObject
 {
     /**
      * The title of the new pull request.

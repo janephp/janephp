@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class IssueComment
+class IssueComment extends \ArrayObject
 {
     /**
      * Unique identifier of the issue comment

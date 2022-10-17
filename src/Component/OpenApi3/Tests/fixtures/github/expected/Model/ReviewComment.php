@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class ReviewComment
+class ReviewComment extends \ArrayObject
 {
     /**
      * 

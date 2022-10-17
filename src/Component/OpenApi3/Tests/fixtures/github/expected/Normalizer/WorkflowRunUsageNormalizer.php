@@ -47,9 +47,16 @@ class WorkflowRunUsageNormalizer implements DenormalizerInterface, NormalizerInt
         }
         if (\array_key_exists('billable', $data)) {
             $object->setBillable($this->denormalizer->denormalize($data['billable'], 'Github\\Model\\WorkflowRunUsageBillable', 'json', $context));
+            unset($data['billable']);
         }
         if (\array_key_exists('run_duration_ms', $data)) {
             $object->setRunDurationMs($data['run_duration_ms']);
+            unset($data['run_duration_ms']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -64,6 +71,11 @@ class WorkflowRunUsageNormalizer implements DenormalizerInterface, NormalizerInt
         }
         if (null !== $object->getRunDurationMs()) {
             $data['run_duration_ms'] = $object->getRunDurationMs();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\WorkflowRunUsageConstraint());

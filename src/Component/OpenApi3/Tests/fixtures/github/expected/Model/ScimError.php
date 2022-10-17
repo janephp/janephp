@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class ScimError
+class ScimError extends \ArrayObject
 {
     /**
      * 

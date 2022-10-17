@@ -2,7 +2,7 @@
 
 namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 
-class TweetLookupResponse
+class TweetLookupResponse extends \ArrayObject
 {
     /**
      * 

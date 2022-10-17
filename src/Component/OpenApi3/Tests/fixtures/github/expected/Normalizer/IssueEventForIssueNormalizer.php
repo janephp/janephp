@@ -47,75 +47,101 @@ class IssueEventForIssueNormalizer implements DenormalizerInterface, NormalizerI
         }
         if (\array_key_exists('id', $data)) {
             $object->setId($data['id']);
+            unset($data['id']);
         }
         if (\array_key_exists('node_id', $data)) {
             $object->setNodeId($data['node_id']);
+            unset($data['node_id']);
         }
         if (\array_key_exists('url', $data)) {
             $object->setUrl($data['url']);
+            unset($data['url']);
         }
         if (\array_key_exists('actor', $data) && $data['actor'] !== null) {
             $object->setActor($this->denormalizer->denormalize($data['actor'], 'Github\\Model\\SimpleUser', 'json', $context));
+            unset($data['actor']);
         }
         elseif (\array_key_exists('actor', $data) && $data['actor'] === null) {
             $object->setActor(null);
         }
         if (\array_key_exists('event', $data)) {
             $object->setEvent($data['event']);
+            unset($data['event']);
         }
         if (\array_key_exists('commit_id', $data) && $data['commit_id'] !== null) {
             $object->setCommitId($data['commit_id']);
+            unset($data['commit_id']);
         }
         elseif (\array_key_exists('commit_id', $data) && $data['commit_id'] === null) {
             $object->setCommitId(null);
         }
         if (\array_key_exists('commit_url', $data) && $data['commit_url'] !== null) {
             $object->setCommitUrl($data['commit_url']);
+            unset($data['commit_url']);
         }
         elseif (\array_key_exists('commit_url', $data) && $data['commit_url'] === null) {
             $object->setCommitUrl(null);
         }
         if (\array_key_exists('created_at', $data)) {
             $object->setCreatedAt($data['created_at']);
+            unset($data['created_at']);
         }
         if (\array_key_exists('sha', $data)) {
             $object->setSha($data['sha']);
+            unset($data['sha']);
         }
         if (\array_key_exists('html_url', $data)) {
             $object->setHtmlUrl($data['html_url']);
+            unset($data['html_url']);
         }
         if (\array_key_exists('message', $data)) {
             $object->setMessage($data['message']);
+            unset($data['message']);
         }
         if (\array_key_exists('issue_url', $data)) {
             $object->setIssueUrl($data['issue_url']);
+            unset($data['issue_url']);
         }
         if (\array_key_exists('updated_at', $data)) {
             $object->setUpdatedAt($data['updated_at']);
+            unset($data['updated_at']);
         }
         if (\array_key_exists('author_association', $data)) {
             $object->setAuthorAssociation($data['author_association']);
+            unset($data['author_association']);
         }
         if (\array_key_exists('body', $data)) {
             $object->setBody($data['body']);
+            unset($data['body']);
         }
         if (\array_key_exists('lock_reason', $data)) {
             $object->setLockReason($data['lock_reason']);
+            unset($data['lock_reason']);
         }
         if (\array_key_exists('submitted_at', $data)) {
             $object->setSubmittedAt($data['submitted_at']);
+            unset($data['submitted_at']);
         }
         if (\array_key_exists('state', $data)) {
             $object->setState($data['state']);
+            unset($data['state']);
         }
         if (\array_key_exists('pull_request_url', $data)) {
             $object->setPullRequestUrl($data['pull_request_url']);
+            unset($data['pull_request_url']);
         }
         if (\array_key_exists('body_html', $data)) {
             $object->setBodyHtml($data['body_html']);
+            unset($data['body_html']);
         }
         if (\array_key_exists('body_text', $data)) {
             $object->setBodyText($data['body_text']);
+            unset($data['body_text']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -187,6 +213,11 @@ class IssueEventForIssueNormalizer implements DenormalizerInterface, NormalizerI
         }
         if (null !== $object->getBodyText()) {
             $data['body_text'] = $object->getBodyText();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\IssueEventForIssueConstraint());

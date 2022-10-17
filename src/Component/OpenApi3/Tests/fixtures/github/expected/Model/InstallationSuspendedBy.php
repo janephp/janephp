@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class InstallationSuspendedBy
+class InstallationSuspendedBy extends \ArrayObject
 {
     /**
      * 

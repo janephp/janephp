@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class DeploymentStatusPerformedViaGithubApp
+class DeploymentStatusPerformedViaGithubApp extends \ArrayObject
 {
     /**
      * Unique identifier of the GitHub app

@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class NamedCacheNameMissingException
+class NamedCacheNameMissingException extends \ArrayObject
 {
     /**
      * 

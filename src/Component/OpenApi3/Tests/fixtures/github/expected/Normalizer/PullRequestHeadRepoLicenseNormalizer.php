@@ -47,24 +47,34 @@ class PullRequestHeadRepoLicenseNormalizer implements DenormalizerInterface, Nor
         }
         if (\array_key_exists('key', $data)) {
             $object->setKey($data['key']);
+            unset($data['key']);
         }
         if (\array_key_exists('name', $data)) {
             $object->setName($data['name']);
+            unset($data['name']);
         }
         if (\array_key_exists('url', $data) && $data['url'] !== null) {
             $object->setUrl($data['url']);
+            unset($data['url']);
         }
         elseif (\array_key_exists('url', $data) && $data['url'] === null) {
             $object->setUrl(null);
         }
         if (\array_key_exists('spdx_id', $data) && $data['spdx_id'] !== null) {
             $object->setSpdxId($data['spdx_id']);
+            unset($data['spdx_id']);
         }
         elseif (\array_key_exists('spdx_id', $data) && $data['spdx_id'] === null) {
             $object->setSpdxId(null);
         }
         if (\array_key_exists('node_id', $data)) {
             $object->setNodeId($data['node_id']);
+            unset($data['node_id']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -79,6 +89,11 @@ class PullRequestHeadRepoLicenseNormalizer implements DenormalizerInterface, Nor
         $data['url'] = $object->getUrl();
         $data['spdx_id'] = $object->getSpdxId();
         $data['node_id'] = $object->getNodeId();
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\PullRequestHeadRepoLicenseConstraint());
             $context['skip_validation'] = true;

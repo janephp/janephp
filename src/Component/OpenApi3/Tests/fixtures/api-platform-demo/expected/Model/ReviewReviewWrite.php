@@ -2,7 +2,7 @@
 
 namespace ApiPlatform\Demo\Model;
 
-class ReviewReviewWrite
+class ReviewReviewWrite extends \ArrayObject
 {
     /**
      * The actual body of the review.

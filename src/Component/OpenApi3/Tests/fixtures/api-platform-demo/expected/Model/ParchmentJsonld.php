@@ -6,7 +6,7 @@ namespace ApiPlatform\Demo\Model;
  *
  * @deprecated
  */
-class ParchmentJsonld
+class ParchmentJsonld extends \ArrayObject
 {
     /**
      * 

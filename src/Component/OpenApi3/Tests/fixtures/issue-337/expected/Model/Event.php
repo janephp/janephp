@@ -2,7 +2,7 @@
 
 namespace CreditSafe\API\Model;
 
-class Event
+class Event extends \ArrayObject
 {
     /**
      * The unique identifier for the event.

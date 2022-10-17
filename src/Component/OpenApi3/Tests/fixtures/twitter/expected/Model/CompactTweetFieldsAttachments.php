@@ -2,7 +2,7 @@
 
 namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 
-class CompactTweetFieldsAttachments
+class CompactTweetFieldsAttachments extends \ArrayObject
 {
     /**
      * A list of Media Keys for each one of the media attachments (if media are attached).

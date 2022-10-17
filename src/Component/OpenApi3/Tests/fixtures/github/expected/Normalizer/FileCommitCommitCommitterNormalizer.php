@@ -47,12 +47,20 @@ class FileCommitCommitCommitterNormalizer implements DenormalizerInterface, Norm
         }
         if (\array_key_exists('date', $data)) {
             $object->setDate($data['date']);
+            unset($data['date']);
         }
         if (\array_key_exists('name', $data)) {
             $object->setName($data['name']);
+            unset($data['name']);
         }
         if (\array_key_exists('email', $data)) {
             $object->setEmail($data['email']);
+            unset($data['email']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -70,6 +78,11 @@ class FileCommitCommitCommitterNormalizer implements DenormalizerInterface, Norm
         }
         if (null !== $object->getEmail()) {
             $data['email'] = $object->getEmail();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\FileCommitCommitCommitterConstraint());

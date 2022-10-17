@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class RepositoryInvitation
+class RepositoryInvitation extends \ArrayObject
 {
     /**
      * Unique identifier of the repository invitation.

@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class NotificationsPutBody
+class NotificationsPutBody extends \ArrayObject
 {
     /**
      * Describes the last point that notifications were checked.

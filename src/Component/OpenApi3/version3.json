@@ -494,7 +494,7 @@
                             "type": "boolean"
                         }
                     ],
-                    "default": false
+                    "default": true
                 },
                 "description": {
                     "type": "string"

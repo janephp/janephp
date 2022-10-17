@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoStatusesShaPostBody
+class ReposOwnerRepoStatusesShaPostBody extends \ArrayObject
 {
     /**
      * The state of the status. Can be one of `error`, `failure`, `pending`, or `success`.

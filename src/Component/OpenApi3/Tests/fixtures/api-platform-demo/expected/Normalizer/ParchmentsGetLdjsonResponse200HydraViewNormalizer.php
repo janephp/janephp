@@ -43,21 +43,32 @@ class ParchmentsGetLdjsonResponse200HydraViewNormalizer implements DenormalizerI
         }
         if (\array_key_exists('@id', $data)) {
             $object->setId($data['@id']);
+            unset($data['@id']);
         }
         if (\array_key_exists('@type', $data)) {
             $object->setType($data['@type']);
+            unset($data['@type']);
         }
         if (\array_key_exists('hydra:first', $data)) {
             $object->setHydraFirst($data['hydra:first']);
+            unset($data['hydra:first']);
         }
         if (\array_key_exists('hydra:last', $data)) {
             $object->setHydraLast($data['hydra:last']);
+            unset($data['hydra:last']);
         }
         if (\array_key_exists('hydra:previous', $data)) {
             $object->setHydraPrevious($data['hydra:previous']);
+            unset($data['hydra:previous']);
         }
         if (\array_key_exists('hydra:next', $data)) {
             $object->setHydraNext($data['hydra:next']);
+            unset($data['hydra:next']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -84,6 +95,11 @@ class ParchmentsGetLdjsonResponse200HydraViewNormalizer implements DenormalizerI
         }
         if (null !== $object->getHydraNext()) {
             $data['hydra:next'] = $object->getHydraNext();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

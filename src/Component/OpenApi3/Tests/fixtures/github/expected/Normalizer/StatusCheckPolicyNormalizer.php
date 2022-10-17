@@ -47,9 +47,11 @@ class StatusCheckPolicyNormalizer implements DenormalizerInterface, NormalizerIn
         }
         if (\array_key_exists('url', $data)) {
             $object->setUrl($data['url']);
+            unset($data['url']);
         }
         if (\array_key_exists('strict', $data)) {
             $object->setStrict($data['strict']);
+            unset($data['strict']);
         }
         if (\array_key_exists('contexts', $data)) {
             $values = array();
@@ -57,9 +59,16 @@ class StatusCheckPolicyNormalizer implements DenormalizerInterface, NormalizerIn
                 $values[] = $value;
             }
             $object->setContexts($values);
+            unset($data['contexts']);
         }
         if (\array_key_exists('contexts_url', $data)) {
             $object->setContextsUrl($data['contexts_url']);
+            unset($data['contexts_url']);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
@@ -77,6 +86,11 @@ class StatusCheckPolicyNormalizer implements DenormalizerInterface, NormalizerIn
         }
         $data['contexts'] = $values;
         $data['contexts_url'] = $object->getContextsUrl();
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
+            }
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\StatusCheckPolicyConstraint());
             $context['skip_validation'] = true;

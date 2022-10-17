@@ -2,7 +2,7 @@
 
 namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 
-class DetailedUserFields
+class DetailedUserFields extends \ArrayObject
 {
     /**
      * A list of metrics for this user

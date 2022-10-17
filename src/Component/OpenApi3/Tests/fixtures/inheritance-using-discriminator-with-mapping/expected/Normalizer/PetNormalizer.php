@@ -49,9 +49,16 @@ class PetNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
         }
         if (\array_key_exists('name', $data)) {
             $object->setName($data['name']);
+            unset($data['name']);
         }
         if (\array_key_exists('petType', $data)) {
             $object->setPetType($data['petType']);
+            unset($data['petType']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -69,6 +76,11 @@ class PetNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
         }
         $data['name'] = $object->getName();
         $data['petType'] = $object->getPetType();
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
         return $data;
     }
 }

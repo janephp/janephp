@@ -47,30 +47,38 @@ class LabelSearchResultItemNormalizer implements DenormalizerInterface, Normaliz
         }
         if (\array_key_exists('id', $data)) {
             $object->setId($data['id']);
+            unset($data['id']);
         }
         if (\array_key_exists('node_id', $data)) {
             $object->setNodeId($data['node_id']);
+            unset($data['node_id']);
         }
         if (\array_key_exists('url', $data)) {
             $object->setUrl($data['url']);
+            unset($data['url']);
         }
         if (\array_key_exists('name', $data)) {
             $object->setName($data['name']);
+            unset($data['name']);
         }
         if (\array_key_exists('color', $data)) {
             $object->setColor($data['color']);
+            unset($data['color']);
         }
         if (\array_key_exists('default', $data)) {
             $object->setDefault($data['default']);
+            unset($data['default']);
         }
         if (\array_key_exists('description', $data) && $data['description'] !== null) {
             $object->setDescription($data['description']);
+            unset($data['description']);
         }
         elseif (\array_key_exists('description', $data) && $data['description'] === null) {
             $object->setDescription(null);
         }
         if (\array_key_exists('score', $data)) {
             $object->setScore($data['score']);
+            unset($data['score']);
         }
         if (\array_key_exists('text_matches', $data)) {
             $values = array();
@@ -78,6 +86,12 @@ class LabelSearchResultItemNormalizer implements DenormalizerInterface, Normaliz
                 $values[] = $this->denormalizer->denormalize($value, 'Github\\Model\\SearchResultTextMatchesItem', 'json', $context);
             }
             $object->setTextMatches($values);
+            unset($data['text_matches']);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
@@ -101,6 +115,11 @@ class LabelSearchResultItemNormalizer implements DenormalizerInterface, Normaliz
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data['text_matches'] = $values;
+        }
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\LabelSearchResultItemConstraint());

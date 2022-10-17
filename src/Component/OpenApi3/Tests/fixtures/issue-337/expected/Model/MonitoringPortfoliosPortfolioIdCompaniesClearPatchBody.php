@@ -2,7 +2,7 @@
 
 namespace CreditSafe\API\Model;
 
-class MonitoringPortfoliosPortfolioIdCompaniesClearPatchBody
+class MonitoringPortfoliosPortfolioIdCompaniesClearPatchBody extends \ArrayObject
 {
     /**
      * 

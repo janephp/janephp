@@ -47,9 +47,16 @@ class BranchWithProtectionLinksNormalizer implements DenormalizerInterface, Norm
         }
         if (\array_key_exists('html', $data)) {
             $object->setHtml($data['html']);
+            unset($data['html']);
         }
         if (\array_key_exists('self', $data)) {
             $object->setSelf($data['self']);
+            unset($data['self']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -61,6 +68,11 @@ class BranchWithProtectionLinksNormalizer implements DenormalizerInterface, Norm
         $data = array();
         $data['html'] = $object->getHtml();
         $data['self'] = $object->getSelf();
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\BranchWithProtectionLinksConstraint());
             $context['skip_validation'] = true;

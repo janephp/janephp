@@ -47,9 +47,16 @@ class PullRequestReviewLinksNormalizer implements DenormalizerInterface, Normali
         }
         if (\array_key_exists('html', $data)) {
             $object->setHtml($this->denormalizer->denormalize($data['html'], 'Github\\Model\\PullRequestReviewLinksHtml', 'json', $context));
+            unset($data['html']);
         }
         if (\array_key_exists('pull_request', $data)) {
             $object->setPullRequest($this->denormalizer->denormalize($data['pull_request'], 'Github\\Model\\PullRequestReviewLinksPullRequest', 'json', $context));
+            unset($data['pull_request']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -61,6 +68,11 @@ class PullRequestReviewLinksNormalizer implements DenormalizerInterface, Normali
         $data = array();
         $data['html'] = $this->normalizer->normalize($object->getHtml(), 'json', $context);
         $data['pull_request'] = $this->normalizer->normalize($object->getPullRequest(), 'json', $context);
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\PullRequestReviewLinksConstraint());
             $context['skip_validation'] = true;

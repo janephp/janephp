@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class SchemaFieldOverwriteTypeMismatchException
+class SchemaFieldOverwriteTypeMismatchException extends \ArrayObject
 {
     /**
      * 

@@ -47,9 +47,16 @@ class TagCommitNormalizer implements DenormalizerInterface, NormalizerInterface,
         }
         if (\array_key_exists('sha', $data)) {
             $object->setSha($data['sha']);
+            unset($data['sha']);
         }
         if (\array_key_exists('url', $data)) {
             $object->setUrl($data['url']);
+            unset($data['url']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -61,6 +68,11 @@ class TagCommitNormalizer implements DenormalizerInterface, NormalizerInterface,
         $data = array();
         $data['sha'] = $object->getSha();
         $data['url'] = $object->getUrl();
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\TagCommitConstraint());
             $context['skip_validation'] = true;

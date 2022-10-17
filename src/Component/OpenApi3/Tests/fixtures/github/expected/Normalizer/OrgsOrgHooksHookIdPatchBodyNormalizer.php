@@ -47,6 +47,7 @@ class OrgsOrgHooksHookIdPatchBodyNormalizer implements DenormalizerInterface, No
         }
         if (\array_key_exists('config', $data)) {
             $object->setConfig($this->denormalizer->denormalize($data['config'], 'Github\\Model\\OrgsOrgHooksHookIdPatchBodyConfig', 'json', $context));
+            unset($data['config']);
         }
         if (\array_key_exists('events', $data)) {
             $values = array();
@@ -54,12 +55,20 @@ class OrgsOrgHooksHookIdPatchBodyNormalizer implements DenormalizerInterface, No
                 $values[] = $value;
             }
             $object->setEvents($values);
+            unset($data['events']);
         }
         if (\array_key_exists('active', $data)) {
             $object->setActive($data['active']);
+            unset($data['active']);
         }
         if (\array_key_exists('name', $data)) {
             $object->setName($data['name']);
+            unset($data['name']);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
@@ -84,6 +93,11 @@ class OrgsOrgHooksHookIdPatchBodyNormalizer implements DenormalizerInterface, No
         }
         if (null !== $object->getName()) {
             $data['name'] = $object->getName();
+        }
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\OrgsOrgHooksHookIdPatchBodyConstraint());

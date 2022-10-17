@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class ApplicationsClientIdGrantDeleteBody
+class ApplicationsClientIdGrantDeleteBody extends \ArrayObject
 {
     /**
      * The OAuth access token used to authenticate to the GitHub API.

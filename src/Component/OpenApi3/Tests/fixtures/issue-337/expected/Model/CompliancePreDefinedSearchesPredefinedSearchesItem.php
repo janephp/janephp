@@ -2,7 +2,7 @@
 
 namespace CreditSafe\API\Model;
 
-class CompliancePreDefinedSearchesPredefinedSearchesItem
+class CompliancePreDefinedSearchesPredefinedSearchesItem extends \ArrayObject
 {
     /**
      * 

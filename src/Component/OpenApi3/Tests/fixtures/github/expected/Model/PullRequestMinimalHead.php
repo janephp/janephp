@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class PullRequestMinimalHead
+class PullRequestMinimalHead extends \ArrayObject
 {
     /**
      * 

@@ -47,6 +47,12 @@ class ReposOwnerRepoInteractionLimitsPutBodyNormalizer implements DenormalizerIn
         }
         if (\array_key_exists('limit', $data)) {
             $object->setLimit($data['limit']);
+            unset($data['limit']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -57,6 +63,11 @@ class ReposOwnerRepoInteractionLimitsPutBodyNormalizer implements DenormalizerIn
     {
         $data = array();
         $data['limit'] = $object->getLimit();
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ReposOwnerRepoInteractionLimitsPutBodyConstraint());
             $context['skip_validation'] = true;

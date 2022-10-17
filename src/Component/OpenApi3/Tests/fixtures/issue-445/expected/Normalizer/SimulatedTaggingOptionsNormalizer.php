@@ -43,42 +43,54 @@ class SimulatedTaggingOptionsNormalizer implements DenormalizerInterface, Normal
         }
         if (\array_key_exists('tagOutputFormatId', $data) && $data['tagOutputFormatId'] !== null) {
             $object->setTagOutputFormatId($data['tagOutputFormatId']);
+            unset($data['tagOutputFormatId']);
         }
         elseif (\array_key_exists('tagOutputFormatId', $data) && $data['tagOutputFormatId'] === null) {
             $object->setTagOutputFormatId(null);
         }
         if (\array_key_exists('keywordLookupCacheName', $data) && $data['keywordLookupCacheName'] !== null) {
             $object->setKeywordLookupCacheName($data['keywordLookupCacheName']);
+            unset($data['keywordLookupCacheName']);
         }
         elseif (\array_key_exists('keywordLookupCacheName', $data) && $data['keywordLookupCacheName'] === null) {
             $object->setKeywordLookupCacheName(null);
         }
         if (\array_key_exists('taggingLayerId', $data) && $data['taggingLayerId'] !== null) {
             $object->setTaggingLayerId($data['taggingLayerId']);
+            unset($data['taggingLayerId']);
         }
         elseif (\array_key_exists('taggingLayerId', $data) && $data['taggingLayerId'] === null) {
             $object->setTaggingLayerId(null);
         }
         if (\array_key_exists('foundTagsFieldId', $data) && $data['foundTagsFieldId'] !== null) {
             $object->setFoundTagsFieldId($data['foundTagsFieldId']);
+            unset($data['foundTagsFieldId']);
         }
         elseif (\array_key_exists('foundTagsFieldId', $data) && $data['foundTagsFieldId'] === null) {
             $object->setFoundTagsFieldId(null);
         }
         if (\array_key_exists('missingKeywordsFieldId', $data) && $data['missingKeywordsFieldId'] !== null) {
             $object->setMissingKeywordsFieldId($data['missingKeywordsFieldId']);
+            unset($data['missingKeywordsFieldId']);
         }
         elseif (\array_key_exists('missingKeywordsFieldId', $data) && $data['missingKeywordsFieldId'] === null) {
             $object->setMissingKeywordsFieldId(null);
         }
         if (\array_key_exists('kind', $data)) {
             $object->setKind($data['kind']);
+            unset($data['kind']);
         }
         if (\array_key_exists('numberOfKeywords', $data) && $data['numberOfKeywords'] !== null) {
             $object->setNumberOfKeywords($data['numberOfKeywords']);
+            unset($data['numberOfKeywords']);
         }
         elseif (\array_key_exists('numberOfKeywords', $data) && $data['numberOfKeywords'] === null) {
             $object->setNumberOfKeywords(null);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -106,6 +118,11 @@ class SimulatedTaggingOptionsNormalizer implements DenormalizerInterface, Normal
         $data['kind'] = $object->getKind();
         if (null !== $object->getNumberOfKeywords()) {
             $data['numberOfKeywords'] = $object->getNumberOfKeywords();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

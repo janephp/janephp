@@ -43,9 +43,11 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsRecordSt
         }
         if (\array_key_exists('addedToAcceptList', $data)) {
             $object->setAddedToAcceptList($data['addedToAcceptList']);
+            unset($data['addedToAcceptList']);
         }
         if (\array_key_exists('alertState', $data)) {
             $object->setAlertState($data['alertState']);
+            unset($data['alertState']);
         }
         if (\array_key_exists('assignedTo', $data)) {
             $values = array();
@@ -53,12 +55,15 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsRecordSt
                 $values[] = $value;
             }
             $object->setAssignedTo($values);
+            unset($data['assignedTo']);
         }
         if (\array_key_exists('assignmentType', $data)) {
             $object->setAssignmentType($data['assignmentType']);
+            unset($data['assignmentType']);
         }
         if (\array_key_exists('division', $data)) {
             $object->setDivision($data['division']);
+            unset($data['division']);
         }
         if (\array_key_exists('history', $data)) {
             $values_1 = array();
@@ -66,6 +71,7 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsRecordSt
                 $values_1[] = $this->denormalizer->denormalize($value_1, 'CreditSafe\\API\\Model\\ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsRecordStateHistoryItem', 'json', $context);
             }
             $object->setHistory($values_1);
+            unset($data['history']);
         }
         if (\array_key_exists('matchStates', $data)) {
             $values_2 = array();
@@ -73,6 +79,12 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsRecordSt
                 $values_2[] = $this->denormalizer->denormalize($value_2, 'CreditSafe\\API\\Model\\ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsRecordStateMatchStatesItem', 'json', $context);
             }
             $object->setMatchStates($values_2);
+            unset($data['matchStates']);
+        }
+        foreach ($data as $key => $value_3) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_3;
+            }
         }
         return $object;
     }
@@ -114,6 +126,11 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsRecordSt
                 $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
             }
             $data['matchStates'] = $values_2;
+        }
+        foreach ($object as $key => $value_3) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_3;
+            }
         }
         return $data;
     }

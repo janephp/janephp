@@ -43,39 +43,47 @@ class BusinessRuleConfigurableNormalizer implements DenormalizerInterface, Norma
         }
         if (\array_key_exists('id', $data) && $data['id'] !== null) {
             $object->setId($data['id']);
+            unset($data['id']);
         }
         elseif (\array_key_exists('id', $data) && $data['id'] === null) {
             $object->setId(null);
         }
         if (\array_key_exists('triggerPoint', $data) && $data['triggerPoint'] !== null) {
             $object->setTriggerPoint($data['triggerPoint']);
+            unset($data['triggerPoint']);
         }
         elseif (\array_key_exists('triggerPoint', $data) && $data['triggerPoint'] === null) {
             $object->setTriggerPoint(null);
         }
         if (\array_key_exists('isEnabled', $data)) {
             $object->setIsEnabled($data['isEnabled']);
+            unset($data['isEnabled']);
         }
         if (\array_key_exists('names', $data) && $data['names'] !== null) {
             $object->setNames($data['names']);
+            unset($data['names']);
         }
         elseif (\array_key_exists('names', $data) && $data['names'] === null) {
             $object->setNames(null);
         }
         if (\array_key_exists('description', $data) && $data['description'] !== null) {
             $object->setDescription($data['description']);
+            unset($data['description']);
         }
         elseif (\array_key_exists('description', $data) && $data['description'] === null) {
             $object->setDescription(null);
         }
         if (\array_key_exists('enableTracing', $data)) {
             $object->setEnableTracing($data['enableTracing']);
+            unset($data['enableTracing']);
         }
         if (\array_key_exists('kind', $data)) {
             $object->setKind($data['kind']);
+            unset($data['kind']);
         }
         if (\array_key_exists('condition', $data) && $data['condition'] !== null) {
             $object->setCondition($data['condition']);
+            unset($data['condition']);
         }
         elseif (\array_key_exists('condition', $data) && $data['condition'] === null) {
             $object->setCondition(null);
@@ -86,6 +94,7 @@ class BusinessRuleConfigurableNormalizer implements DenormalizerInterface, Norma
                 $values[] = $this->denormalizer->denormalize($value, 'PicturePark\\API\\Model\\BusinessRuleTransformationGroup', 'json', $context);
             }
             $object->setTransformationGroups($values);
+            unset($data['transformationGroups']);
         }
         elseif (\array_key_exists('transformationGroups', $data) && $data['transformationGroups'] === null) {
             $object->setTransformationGroups(null);
@@ -96,9 +105,15 @@ class BusinessRuleConfigurableNormalizer implements DenormalizerInterface, Norma
                 $values_1[] = $this->denormalizer->denormalize($value_1, 'PicturePark\\API\\Model\\BusinessRuleAction', 'json', $context);
             }
             $object->setActions($values_1);
+            unset($data['actions']);
         }
         elseif (\array_key_exists('actions', $data) && $data['actions'] === null) {
             $object->setActions(null);
+        }
+        foreach ($data as $key => $value_2) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_2;
+            }
         }
         return $object;
     }
@@ -139,6 +154,11 @@ class BusinessRuleConfigurableNormalizer implements DenormalizerInterface, Norma
                 $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
             }
             $data['actions'] = $values_1;
+        }
+        foreach ($object as $key => $value_2) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_2;
+            }
         }
         return $data;
     }

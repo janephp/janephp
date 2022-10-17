@@ -46,6 +46,7 @@ class CompanyEventsResponseNormalizer implements DenormalizerInterface, Normaliz
         }
         if (\array_key_exists('totalCount', $data)) {
             $object->setTotalCount($data['totalCount']);
+            unset($data['totalCount']);
         }
         if (\array_key_exists('data', $data)) {
             $values = array();
@@ -53,9 +54,16 @@ class CompanyEventsResponseNormalizer implements DenormalizerInterface, Normaliz
                 $values[] = $this->denormalizer->denormalize($value, 'CreditSafe\\API\\Model\\Event', 'json', $context);
             }
             $object->setData($values);
+            unset($data['data']);
         }
         if (\array_key_exists('paging', $data)) {
             $object->setPaging($this->denormalizer->denormalize($data['paging'], 'CreditSafe\\API\\Model\\Paging', 'json', $context));
+            unset($data['paging']);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
@@ -77,6 +85,11 @@ class CompanyEventsResponseNormalizer implements DenormalizerInterface, Normaliz
         }
         if (null !== $object->getPaging()) {
             $data['paging'] = $this->normalizer->normalize($object->getPaging(), 'json', $context);
+        }
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
+            }
         }
         return $data;
     }

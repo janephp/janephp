@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class ListItemPermissionException
+class ListItemPermissionException extends \ArrayObject
 {
     /**
      * 

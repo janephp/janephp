@@ -46,15 +46,24 @@ class GeoDistanceFilterNormalizer implements DenormalizerInterface, NormalizerIn
         }
         if (\array_key_exists('kind', $data)) {
             $object->setKind($data['kind']);
+            unset($data['kind']);
         }
         if (\array_key_exists('field', $data)) {
             $object->setField($data['field']);
+            unset($data['field']);
         }
         if (\array_key_exists('location', $data)) {
             $object->setLocation($data['location']);
+            unset($data['location']);
         }
         if (\array_key_exists('distance', $data)) {
             $object->setDistance($data['distance']);
+            unset($data['distance']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -69,6 +78,11 @@ class GeoDistanceFilterNormalizer implements DenormalizerInterface, NormalizerIn
         $data['location'] = $object->getLocation();
         if (null !== $object->getDistance()) {
             $data['distance'] = $object->getDistance();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

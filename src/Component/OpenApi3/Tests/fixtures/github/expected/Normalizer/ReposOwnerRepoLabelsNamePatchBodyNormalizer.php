@@ -47,15 +47,24 @@ class ReposOwnerRepoLabelsNamePatchBodyNormalizer implements DenormalizerInterfa
         }
         if (\array_key_exists('new_name', $data)) {
             $object->setNewName($data['new_name']);
+            unset($data['new_name']);
         }
         if (\array_key_exists('color', $data)) {
             $object->setColor($data['color']);
+            unset($data['color']);
         }
         if (\array_key_exists('description', $data)) {
             $object->setDescription($data['description']);
+            unset($data['description']);
         }
         if (\array_key_exists('name', $data)) {
             $object->setName($data['name']);
+            unset($data['name']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -76,6 +85,11 @@ class ReposOwnerRepoLabelsNamePatchBodyNormalizer implements DenormalizerInterfa
         }
         if (null !== $object->getName()) {
             $data['name'] = $object->getName();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ReposOwnerRepoLabelsNamePatchBodyConstraint());

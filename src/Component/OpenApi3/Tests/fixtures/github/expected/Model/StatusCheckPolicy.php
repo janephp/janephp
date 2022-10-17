@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class StatusCheckPolicy
+class StatusCheckPolicy extends \ArrayObject
 {
     /**
      * 

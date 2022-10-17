@@ -2,7 +2,7 @@
 
 namespace CreditSafe\API\Model;
 
-class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsName
+class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsName extends \ArrayObject
 {
     /**
      * 

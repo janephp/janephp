@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class InvalidMetadataException
+class InvalidMetadataException extends \ArrayObject
 {
     /**
      * 

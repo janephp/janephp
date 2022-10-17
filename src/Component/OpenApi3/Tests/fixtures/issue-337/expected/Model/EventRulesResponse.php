@@ -2,7 +2,7 @@
 
 namespace CreditSafe\API\Model;
 
-class EventRulesResponse
+class EventRulesResponse extends \ArrayObject
 {
     /**
      * Shows whether the notification event rule has been enabled for the given portfolio.

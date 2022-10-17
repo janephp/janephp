@@ -2,7 +2,7 @@
 
 namespace ApiPlatform\Demo\Model;
 
-class ReviewsGetLdjsonResponse200
+class ReviewsGetLdjsonResponse200 extends \ArrayObject
 {
     /**
      * 

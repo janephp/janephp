@@ -47,27 +47,39 @@ class MarketplacePurchaseNormalizer implements DenormalizerInterface, Normalizer
         }
         if (\array_key_exists('url', $data)) {
             $object->setUrl($data['url']);
+            unset($data['url']);
         }
         if (\array_key_exists('type', $data)) {
             $object->setType($data['type']);
+            unset($data['type']);
         }
         if (\array_key_exists('id', $data)) {
             $object->setId($data['id']);
+            unset($data['id']);
         }
         if (\array_key_exists('login', $data)) {
             $object->setLogin($data['login']);
+            unset($data['login']);
         }
         if (\array_key_exists('organization_billing_email', $data)) {
             $object->setOrganizationBillingEmail($data['organization_billing_email']);
+            unset($data['organization_billing_email']);
         }
         if (\array_key_exists('marketplace_pending_change', $data) && $data['marketplace_pending_change'] !== null) {
             $object->setMarketplacePendingChange($this->denormalizer->denormalize($data['marketplace_pending_change'], 'Github\\Model\\MarketplacePurchaseMarketplacePendingChange', 'json', $context));
+            unset($data['marketplace_pending_change']);
         }
         elseif (\array_key_exists('marketplace_pending_change', $data) && $data['marketplace_pending_change'] === null) {
             $object->setMarketplacePendingChange(null);
         }
         if (\array_key_exists('marketplace_purchase', $data)) {
             $object->setMarketplacePurchase($this->denormalizer->denormalize($data['marketplace_purchase'], 'Github\\Model\\MarketplacePurchaseMarketplacePurchase', 'json', $context));
+            unset($data['marketplace_purchase']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -88,6 +100,11 @@ class MarketplacePurchaseNormalizer implements DenormalizerInterface, Normalizer
             $data['marketplace_pending_change'] = $this->normalizer->normalize($object->getMarketplacePendingChange(), 'json', $context);
         }
         $data['marketplace_purchase'] = $this->normalizer->normalize($object->getMarketplacePurchase(), 'json', $context);
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\MarketplacePurchaseConstraint());
             $context['skip_validation'] = true;

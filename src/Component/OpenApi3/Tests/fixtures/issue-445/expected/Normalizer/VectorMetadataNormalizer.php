@@ -43,102 +43,124 @@ class VectorMetadataNormalizer implements DenormalizerInterface, NormalizerInter
         }
         if (\array_key_exists('names', $data) && $data['names'] !== null) {
             $object->setNames($data['names']);
+            unset($data['names']);
         }
         elseif (\array_key_exists('names', $data) && $data['names'] === null) {
             $object->setNames(null);
         }
         if (\array_key_exists('descriptions', $data) && $data['descriptions'] !== null) {
             $object->setDescriptions($data['descriptions']);
+            unset($data['descriptions']);
         }
         elseif (\array_key_exists('descriptions', $data) && $data['descriptions'] === null) {
             $object->setDescriptions(null);
         }
         if (\array_key_exists('fileExtension', $data) && $data['fileExtension'] !== null) {
             $object->setFileExtension($data['fileExtension']);
+            unset($data['fileExtension']);
         }
         elseif (\array_key_exists('fileExtension', $data) && $data['fileExtension'] === null) {
             $object->setFileExtension(null);
         }
         if (\array_key_exists('fileName', $data) && $data['fileName'] !== null) {
             $object->setFileName($data['fileName']);
+            unset($data['fileName']);
         }
         elseif (\array_key_exists('fileName', $data) && $data['fileName'] === null) {
             $object->setFileName(null);
         }
         if (\array_key_exists('filePath', $data) && $data['filePath'] !== null) {
             $object->setFilePath($data['filePath']);
+            unset($data['filePath']);
         }
         elseif (\array_key_exists('filePath', $data) && $data['filePath'] === null) {
             $object->setFilePath(null);
         }
         if (\array_key_exists('fileSizeInBytes', $data) && $data['fileSizeInBytes'] !== null) {
             $object->setFileSizeInBytes($data['fileSizeInBytes']);
+            unset($data['fileSizeInBytes']);
         }
         elseif (\array_key_exists('fileSizeInBytes', $data) && $data['fileSizeInBytes'] === null) {
             $object->setFileSizeInBytes(null);
         }
         if (\array_key_exists('sha1Hash', $data) && $data['sha1Hash'] !== null) {
             $object->setSha1Hash($data['sha1Hash']);
+            unset($data['sha1Hash']);
         }
         elseif (\array_key_exists('sha1Hash', $data) && $data['sha1Hash'] === null) {
             $object->setSha1Hash(null);
         }
         if (\array_key_exists('xmpMetadata', $data) && $data['xmpMetadata'] !== null) {
             $object->setXmpMetadata($data['xmpMetadata']);
+            unset($data['xmpMetadata']);
         }
         elseif (\array_key_exists('xmpMetadata', $data) && $data['xmpMetadata'] === null) {
             $object->setXmpMetadata(null);
         }
         if (\array_key_exists('exifMetadata', $data) && $data['exifMetadata'] !== null) {
             $object->setExifMetadata($data['exifMetadata']);
+            unset($data['exifMetadata']);
         }
         elseif (\array_key_exists('exifMetadata', $data) && $data['exifMetadata'] === null) {
             $object->setExifMetadata(null);
         }
         if (\array_key_exists('language', $data) && $data['language'] !== null) {
             $object->setLanguage($data['language']);
+            unset($data['language']);
         }
         elseif (\array_key_exists('language', $data) && $data['language'] === null) {
             $object->setLanguage(null);
         }
         if (\array_key_exists('author', $data) && $data['author'] !== null) {
             $object->setAuthor($data['author']);
+            unset($data['author']);
         }
         elseif (\array_key_exists('author', $data) && $data['author'] === null) {
             $object->setAuthor(null);
         }
         if (\array_key_exists('creator', $data) && $data['creator'] !== null) {
             $object->setCreator($data['creator']);
+            unset($data['creator']);
         }
         elseif (\array_key_exists('creator', $data) && $data['creator'] === null) {
             $object->setCreator(null);
         }
         if (\array_key_exists('publisher', $data) && $data['publisher'] !== null) {
             $object->setPublisher($data['publisher']);
+            unset($data['publisher']);
         }
         elseif (\array_key_exists('publisher', $data) && $data['publisher'] === null) {
             $object->setPublisher(null);
         }
         if (\array_key_exists('company', $data) && $data['company'] !== null) {
             $object->setCompany($data['company']);
+            unset($data['company']);
         }
         elseif (\array_key_exists('company', $data) && $data['company'] === null) {
             $object->setCompany(null);
         }
         if (\array_key_exists('title', $data) && $data['title'] !== null) {
             $object->setTitle($data['title']);
+            unset($data['title']);
         }
         elseif (\array_key_exists('title', $data) && $data['title'] === null) {
             $object->setTitle(null);
         }
         if (\array_key_exists('pageCount', $data)) {
             $object->setPageCount($data['pageCount']);
+            unset($data['pageCount']);
         }
         if (\array_key_exists('epsInfo', $data) && $data['epsInfo'] !== null) {
             $object->setEpsInfo($data['epsInfo']);
+            unset($data['epsInfo']);
         }
         elseif (\array_key_exists('epsInfo', $data) && $data['epsInfo'] === null) {
             $object->setEpsInfo(null);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -198,6 +220,11 @@ class VectorMetadataNormalizer implements DenormalizerInterface, NormalizerInter
         }
         if (null !== $object->getEpsInfo()) {
             $data['epsInfo'] = $object->getEpsInfo();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

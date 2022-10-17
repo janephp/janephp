@@ -43,27 +43,33 @@ class BookNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         }
         if (\array_key_exists('id', $data) && $data['id'] !== null) {
             $object->setId($data['id']);
+            unset($data['id']);
         }
         elseif (\array_key_exists('id', $data) && $data['id'] === null) {
             $object->setId(null);
         }
         if (\array_key_exists('isbn', $data) && $data['isbn'] !== null) {
             $object->setIsbn($data['isbn']);
+            unset($data['isbn']);
         }
         elseif (\array_key_exists('isbn', $data) && $data['isbn'] === null) {
             $object->setIsbn(null);
         }
         if (\array_key_exists('title', $data)) {
             $object->setTitle($data['title']);
+            unset($data['title']);
         }
         if (\array_key_exists('description', $data)) {
             $object->setDescription($data['description']);
+            unset($data['description']);
         }
         if (\array_key_exists('author', $data)) {
             $object->setAuthor($data['author']);
+            unset($data['author']);
         }
         if (\array_key_exists('publicationDate', $data)) {
             $object->setPublicationDate(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['publicationDate']));
+            unset($data['publicationDate']);
         }
         if (\array_key_exists('reviews', $data)) {
             $values = array();
@@ -71,18 +77,26 @@ class BookNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
                 $values[] = $value;
             }
             $object->setReviews($values);
+            unset($data['reviews']);
         }
         if (\array_key_exists('cover', $data) && $data['cover'] !== null) {
             $object->setCover($data['cover']);
+            unset($data['cover']);
         }
         elseif (\array_key_exists('cover', $data) && $data['cover'] === null) {
             $object->setCover(null);
         }
         if (\array_key_exists('archivedAt', $data) && $data['archivedAt'] !== null) {
             $object->setArchivedAt(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['archivedAt']));
+            unset($data['archivedAt']);
         }
         elseif (\array_key_exists('archivedAt', $data) && $data['archivedAt'] === null) {
             $object->setArchivedAt(null);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
@@ -111,6 +125,11 @@ class BookNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         }
         if (null !== $object->getArchivedAt()) {
             $data['archivedAt'] = $object->getArchivedAt()->format('Y-m-d\\TH:i:sP');
+        }
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
+            }
         }
         return $data;
     }

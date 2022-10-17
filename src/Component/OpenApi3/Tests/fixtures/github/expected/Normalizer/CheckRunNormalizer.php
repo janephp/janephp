@@ -47,75 +47,96 @@ class CheckRunNormalizer implements DenormalizerInterface, NormalizerInterface, 
         }
         if (\array_key_exists('id', $data)) {
             $object->setId($data['id']);
+            unset($data['id']);
         }
         if (\array_key_exists('head_sha', $data)) {
             $object->setHeadSha($data['head_sha']);
+            unset($data['head_sha']);
         }
         if (\array_key_exists('node_id', $data)) {
             $object->setNodeId($data['node_id']);
+            unset($data['node_id']);
         }
         if (\array_key_exists('external_id', $data) && $data['external_id'] !== null) {
             $object->setExternalId($data['external_id']);
+            unset($data['external_id']);
         }
         elseif (\array_key_exists('external_id', $data) && $data['external_id'] === null) {
             $object->setExternalId(null);
         }
         if (\array_key_exists('url', $data)) {
             $object->setUrl($data['url']);
+            unset($data['url']);
         }
         if (\array_key_exists('html_url', $data) && $data['html_url'] !== null) {
             $object->setHtmlUrl($data['html_url']);
+            unset($data['html_url']);
         }
         elseif (\array_key_exists('html_url', $data) && $data['html_url'] === null) {
             $object->setHtmlUrl(null);
         }
         if (\array_key_exists('details_url', $data) && $data['details_url'] !== null) {
             $object->setDetailsUrl($data['details_url']);
+            unset($data['details_url']);
         }
         elseif (\array_key_exists('details_url', $data) && $data['details_url'] === null) {
             $object->setDetailsUrl(null);
         }
         if (\array_key_exists('status', $data)) {
             $object->setStatus($data['status']);
+            unset($data['status']);
         }
         if (\array_key_exists('conclusion', $data) && $data['conclusion'] !== null) {
             $object->setConclusion($data['conclusion']);
+            unset($data['conclusion']);
         }
         elseif (\array_key_exists('conclusion', $data) && $data['conclusion'] === null) {
             $object->setConclusion(null);
         }
         if (\array_key_exists('started_at', $data) && $data['started_at'] !== null) {
             $object->setStartedAt(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['started_at']));
+            unset($data['started_at']);
         }
         elseif (\array_key_exists('started_at', $data) && $data['started_at'] === null) {
             $object->setStartedAt(null);
         }
         if (\array_key_exists('completed_at', $data) && $data['completed_at'] !== null) {
             $object->setCompletedAt(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['completed_at']));
+            unset($data['completed_at']);
         }
         elseif (\array_key_exists('completed_at', $data) && $data['completed_at'] === null) {
             $object->setCompletedAt(null);
         }
         if (\array_key_exists('output', $data)) {
             $object->setOutput($this->denormalizer->denormalize($data['output'], 'Github\\Model\\CheckRunOutput', 'json', $context));
+            unset($data['output']);
         }
         if (\array_key_exists('name', $data)) {
             $object->setName($data['name']);
+            unset($data['name']);
         }
         if (\array_key_exists('check_suite', $data) && $data['check_suite'] !== null) {
             $object->setCheckSuite($this->denormalizer->denormalize($data['check_suite'], 'Github\\Model\\CheckRunCheckSuite', 'json', $context));
+            unset($data['check_suite']);
         }
         elseif (\array_key_exists('check_suite', $data) && $data['check_suite'] === null) {
             $object->setCheckSuite(null);
         }
         if (\array_key_exists('app', $data) && $data['app'] !== null) {
             $object->setApp($this->denormalizer->denormalize($data['app'], 'Github\\Model\\CheckRunApp', 'json', $context));
+            unset($data['app']);
         }
         elseif (\array_key_exists('app', $data) && $data['app'] === null) {
             $object->setApp(null);
         }
         if (\array_key_exists('pull_requests', $data)) {
             $object->setPullRequests($data['pull_requests']);
+            unset($data['pull_requests']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -141,6 +162,11 @@ class CheckRunNormalizer implements DenormalizerInterface, NormalizerInterface, 
         $data['check_suite'] = $this->normalizer->normalize($object->getCheckSuite(), 'json', $context);
         $data['app'] = $this->normalizer->normalize($object->getApp(), 'json', $context);
         $data['pull_requests'] = $object->getPullRequests();
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\CheckRunConstraint());
             $context['skip_validation'] = true;

@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class ReferrerTraffic
+class ReferrerTraffic extends \ArrayObject
 {
     /**
      * 

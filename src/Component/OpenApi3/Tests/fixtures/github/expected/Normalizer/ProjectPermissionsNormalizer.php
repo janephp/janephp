@@ -47,12 +47,20 @@ class ProjectPermissionsNormalizer implements DenormalizerInterface, NormalizerI
         }
         if (\array_key_exists('read', $data)) {
             $object->setRead($data['read']);
+            unset($data['read']);
         }
         if (\array_key_exists('write', $data)) {
             $object->setWrite($data['write']);
+            unset($data['write']);
         }
         if (\array_key_exists('admin', $data)) {
             $object->setAdmin($data['admin']);
+            unset($data['admin']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -65,6 +73,11 @@ class ProjectPermissionsNormalizer implements DenormalizerInterface, NormalizerI
         $data['read'] = $object->getRead();
         $data['write'] = $object->getWrite();
         $data['admin'] = $object->getAdmin();
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ProjectPermissionsConstraint());
             $context['skip_validation'] = true;

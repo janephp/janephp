@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class BranchRestrictionPolicyAppsItem
+class BranchRestrictionPolicyAppsItem extends \ArrayObject
 {
     /**
      * 

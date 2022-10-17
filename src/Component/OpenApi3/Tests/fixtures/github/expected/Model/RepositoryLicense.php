@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class RepositoryLicense
+class RepositoryLicense extends \ArrayObject
 {
     /**
      * 

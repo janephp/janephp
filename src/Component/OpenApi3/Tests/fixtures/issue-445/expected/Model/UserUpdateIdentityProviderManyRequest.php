@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class UserUpdateIdentityProviderManyRequest
+class UserUpdateIdentityProviderManyRequest extends \ArrayObject
 {
     /**
      * User IDs.

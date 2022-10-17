@@ -47,33 +47,48 @@ class HookConfigNormalizer implements DenormalizerInterface, NormalizerInterface
         }
         if (\array_key_exists('email', $data)) {
             $object->setEmail($data['email']);
+            unset($data['email']);
         }
         if (\array_key_exists('password', $data)) {
             $object->setPassword($data['password']);
+            unset($data['password']);
         }
         if (\array_key_exists('room', $data)) {
             $object->setRoom($data['room']);
+            unset($data['room']);
         }
         if (\array_key_exists('subdomain', $data)) {
             $object->setSubdomain($data['subdomain']);
+            unset($data['subdomain']);
         }
         if (\array_key_exists('url', $data)) {
             $object->setUrl($data['url']);
+            unset($data['url']);
         }
         if (\array_key_exists('insecure_ssl', $data)) {
             $object->setInsecureSsl($data['insecure_ssl']);
+            unset($data['insecure_ssl']);
         }
         if (\array_key_exists('content_type', $data)) {
             $object->setContentType($data['content_type']);
+            unset($data['content_type']);
         }
         if (\array_key_exists('digest', $data)) {
             $object->setDigest($data['digest']);
+            unset($data['digest']);
         }
         if (\array_key_exists('secret', $data)) {
             $object->setSecret($data['secret']);
+            unset($data['secret']);
         }
         if (\array_key_exists('token', $data)) {
             $object->setToken($data['token']);
+            unset($data['token']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -112,6 +127,11 @@ class HookConfigNormalizer implements DenormalizerInterface, NormalizerInterface
         }
         if (null !== $object->getToken()) {
             $data['token'] = $object->getToken();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\HookConfigConstraint());

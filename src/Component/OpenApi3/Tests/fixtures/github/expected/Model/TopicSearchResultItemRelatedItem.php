@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class TopicSearchResultItemRelatedItem
+class TopicSearchResultItemRelatedItem extends \ArrayObject
 {
     /**
      * 

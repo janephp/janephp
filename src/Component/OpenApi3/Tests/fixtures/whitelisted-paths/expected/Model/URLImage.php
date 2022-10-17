@@ -2,7 +2,7 @@
 
 namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 
-class URLImage
+class URLImage extends \ArrayObject
 {
     /**
      * A validly formatted URL.

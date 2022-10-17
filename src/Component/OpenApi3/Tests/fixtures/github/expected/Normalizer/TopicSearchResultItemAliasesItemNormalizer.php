@@ -47,6 +47,12 @@ class TopicSearchResultItemAliasesItemNormalizer implements DenormalizerInterfac
         }
         if (\array_key_exists('topic_relation', $data)) {
             $object->setTopicRelation($this->denormalizer->denormalize($data['topic_relation'], 'Github\\Model\\TopicSearchResultItemAliasesItemTopicRelation', 'json', $context));
+            unset($data['topic_relation']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -58,6 +64,11 @@ class TopicSearchResultItemAliasesItemNormalizer implements DenormalizerInterfac
         $data = array();
         if (null !== $object->getTopicRelation()) {
             $data['topic_relation'] = $this->normalizer->normalize($object->getTopicRelation(), 'json', $context);
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\TopicSearchResultItemAliasesItemConstraint());

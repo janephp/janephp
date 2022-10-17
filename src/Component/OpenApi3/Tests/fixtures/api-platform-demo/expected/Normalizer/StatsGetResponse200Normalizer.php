@@ -43,9 +43,16 @@ class StatsGetResponse200Normalizer implements DenormalizerInterface, Normalizer
         }
         if (\array_key_exists('books_count', $data)) {
             $object->setBooksCount($data['books_count']);
+            unset($data['books_count']);
         }
         if (\array_key_exists('topbooks_count', $data)) {
             $object->setTopbooksCount($data['topbooks_count']);
+            unset($data['topbooks_count']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -60,6 +67,11 @@ class StatsGetResponse200Normalizer implements DenormalizerInterface, Normalizer
         }
         if (null !== $object->getTopbooksCount()) {
             $data['topbooks_count'] = $object->getTopbooksCount();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

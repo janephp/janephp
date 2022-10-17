@@ -43,15 +43,24 @@ class DetailedUserFieldsStatsNormalizer implements DenormalizerInterface, Normal
         }
         if (\array_key_exists('followers_count', $data)) {
             $object->setFollowersCount($data['followers_count']);
+            unset($data['followers_count']);
         }
         if (\array_key_exists('following_count', $data)) {
             $object->setFollowingCount($data['following_count']);
+            unset($data['following_count']);
         }
         if (\array_key_exists('tweet_count', $data)) {
             $object->setTweetCount($data['tweet_count']);
+            unset($data['tweet_count']);
         }
         if (\array_key_exists('listed_count', $data)) {
             $object->setListedCount($data['listed_count']);
+            unset($data['listed_count']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -65,6 +74,11 @@ class DetailedUserFieldsStatsNormalizer implements DenormalizerInterface, Normal
         $data['following_count'] = $object->getFollowingCount();
         $data['tweet_count'] = $object->getTweetCount();
         $data['listed_count'] = $object->getListedCount();
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
         return $data;
     }
 }

@@ -2,7 +2,7 @@
 
 namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 
-class Rule
+class Rule extends \ArrayObject
 {
     /**
      * The filterlang value of the rule.

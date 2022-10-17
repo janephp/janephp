@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class GitCommitVerification
+class GitCommitVerification extends \ArrayObject
 {
     /**
      * 

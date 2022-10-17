@@ -43,12 +43,20 @@ class SessionRenewalEventNormalizer implements DenormalizerInterface, Normalizer
         }
         if (\array_key_exists('timestamp', $data)) {
             $object->setTimestamp(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['timestamp']));
+            unset($data['timestamp']);
         }
         if (\array_key_exists('kind', $data)) {
             $object->setKind($data['kind']);
+            unset($data['kind']);
         }
         if (\array_key_exists('authorizationState', $data)) {
             $object->setAuthorizationState($data['authorizationState']);
+            unset($data['authorizationState']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -62,6 +70,11 @@ class SessionRenewalEventNormalizer implements DenormalizerInterface, Normalizer
         $data['kind'] = $object->getKind();
         if (null !== $object->getAuthorizationState()) {
             $data['authorizationState'] = $object->getAuthorizationState();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

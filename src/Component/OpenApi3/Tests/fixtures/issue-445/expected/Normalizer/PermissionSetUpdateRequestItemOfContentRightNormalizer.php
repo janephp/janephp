@@ -43,6 +43,7 @@ class PermissionSetUpdateRequestItemOfContentRightNormalizer implements Denormal
         }
         if (\array_key_exists('names', $data)) {
             $object->setNames($data['names']);
+            unset($data['names']);
         }
         if (\array_key_exists('userRolesRights', $data) && $data['userRolesRights'] !== null) {
             $values = array();
@@ -50,6 +51,7 @@ class PermissionSetUpdateRequestItemOfContentRightNormalizer implements Denormal
                 $values[] = $this->denormalizer->denormalize($value, 'PicturePark\\API\\Model\\UserRoleRightsOfContentRight', 'json', $context);
             }
             $object->setUserRolesRights($values);
+            unset($data['userRolesRights']);
         }
         elseif (\array_key_exists('userRolesRights', $data) && $data['userRolesRights'] === null) {
             $object->setUserRolesRights(null);
@@ -60,12 +62,19 @@ class PermissionSetUpdateRequestItemOfContentRightNormalizer implements Denormal
                 $values_1[] = $this->denormalizer->denormalize($value_1, 'PicturePark\\API\\Model\\UserRoleRightsOfPermissionSetRight', 'json', $context);
             }
             $object->setUserRolesPermissionSetRights($values_1);
+            unset($data['userRolesPermissionSetRights']);
         }
         elseif (\array_key_exists('userRolesPermissionSetRights', $data) && $data['userRolesPermissionSetRights'] === null) {
             $object->setUserRolesPermissionSetRights(null);
         }
         if (\array_key_exists('id', $data)) {
             $object->setId($data['id']);
+            unset($data['id']);
+        }
+        foreach ($data as $key => $value_2) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_2;
+            }
         }
         return $object;
     }
@@ -91,6 +100,11 @@ class PermissionSetUpdateRequestItemOfContentRightNormalizer implements Denormal
             $data['userRolesPermissionSetRights'] = $values_1;
         }
         $data['id'] = $object->getId();
+        foreach ($object as $key => $value_2) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_2;
+            }
+        }
         return $data;
     }
 }

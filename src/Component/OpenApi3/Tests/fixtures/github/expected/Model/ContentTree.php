@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class ContentTree
+class ContentTree extends \ArrayObject
 {
     /**
      * 

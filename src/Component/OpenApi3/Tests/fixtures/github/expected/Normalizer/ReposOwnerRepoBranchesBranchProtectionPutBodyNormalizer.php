@@ -47,39 +47,51 @@ class ReposOwnerRepoBranchesBranchProtectionPutBodyNormalizer implements Denorma
         }
         if (\array_key_exists('required_status_checks', $data) && $data['required_status_checks'] !== null) {
             $object->setRequiredStatusChecks($this->denormalizer->denormalize($data['required_status_checks'], 'Github\\Model\\ReposOwnerRepoBranchesBranchProtectionPutBodyRequiredStatusChecks', 'json', $context));
+            unset($data['required_status_checks']);
         }
         elseif (\array_key_exists('required_status_checks', $data) && $data['required_status_checks'] === null) {
             $object->setRequiredStatusChecks(null);
         }
         if (\array_key_exists('enforce_admins', $data) && $data['enforce_admins'] !== null) {
             $object->setEnforceAdmins($data['enforce_admins']);
+            unset($data['enforce_admins']);
         }
         elseif (\array_key_exists('enforce_admins', $data) && $data['enforce_admins'] === null) {
             $object->setEnforceAdmins(null);
         }
         if (\array_key_exists('required_pull_request_reviews', $data) && $data['required_pull_request_reviews'] !== null) {
             $object->setRequiredPullRequestReviews($this->denormalizer->denormalize($data['required_pull_request_reviews'], 'Github\\Model\\ReposOwnerRepoBranchesBranchProtectionPutBodyRequiredPullRequestReviews', 'json', $context));
+            unset($data['required_pull_request_reviews']);
         }
         elseif (\array_key_exists('required_pull_request_reviews', $data) && $data['required_pull_request_reviews'] === null) {
             $object->setRequiredPullRequestReviews(null);
         }
         if (\array_key_exists('restrictions', $data) && $data['restrictions'] !== null) {
             $object->setRestrictions($this->denormalizer->denormalize($data['restrictions'], 'Github\\Model\\ReposOwnerRepoBranchesBranchProtectionPutBodyRestrictions', 'json', $context));
+            unset($data['restrictions']);
         }
         elseif (\array_key_exists('restrictions', $data) && $data['restrictions'] === null) {
             $object->setRestrictions(null);
         }
         if (\array_key_exists('required_linear_history', $data)) {
             $object->setRequiredLinearHistory($data['required_linear_history']);
+            unset($data['required_linear_history']);
         }
         if (\array_key_exists('allow_force_pushes', $data) && $data['allow_force_pushes'] !== null) {
             $object->setAllowForcePushes($data['allow_force_pushes']);
+            unset($data['allow_force_pushes']);
         }
         elseif (\array_key_exists('allow_force_pushes', $data) && $data['allow_force_pushes'] === null) {
             $object->setAllowForcePushes(null);
         }
         if (\array_key_exists('allow_deletions', $data)) {
             $object->setAllowDeletions($data['allow_deletions']);
+            unset($data['allow_deletions']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -101,6 +113,11 @@ class ReposOwnerRepoBranchesBranchProtectionPutBodyNormalizer implements Denorma
         }
         if (null !== $object->getAllowDeletions()) {
             $data['allow_deletions'] = $object->getAllowDeletions();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ReposOwnerRepoBranchesBranchProtectionPutBodyConstraint());

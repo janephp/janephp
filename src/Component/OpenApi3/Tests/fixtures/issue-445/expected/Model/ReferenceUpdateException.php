@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class ReferenceUpdateException
+class ReferenceUpdateException extends \ArrayObject
 {
     /**
      * 

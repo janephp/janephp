@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class PagesSourceHash
+class PagesSourceHash extends \ArrayObject
 {
     /**
      * 

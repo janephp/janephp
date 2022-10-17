@@ -47,9 +47,16 @@ class ScimUserGroupsItemNormalizer implements DenormalizerInterface, NormalizerI
         }
         if (\array_key_exists('value', $data)) {
             $object->setValue($data['value']);
+            unset($data['value']);
         }
         if (\array_key_exists('display', $data)) {
             $object->setDisplay($data['display']);
+            unset($data['display']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -64,6 +71,11 @@ class ScimUserGroupsItemNormalizer implements DenormalizerInterface, NormalizerI
         }
         if (null !== $object->getDisplay()) {
             $data['display'] = $object->getDisplay();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ScimUserGroupsItemConstraint());

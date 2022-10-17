@@ -43,30 +43,42 @@ class XmpMappingEntryCreateRequestNormalizer implements DenormalizerInterface, N
         }
         if (\array_key_exists('direction', $data)) {
             $object->setDirection($data['direction']);
+            unset($data['direction']);
         }
         if (\array_key_exists('priority', $data)) {
             $object->setPriority($data['priority']);
+            unset($data['priority']);
         }
         if (\array_key_exists('stopProcessing', $data)) {
             $object->setStopProcessing($data['stopProcessing']);
+            unset($data['stopProcessing']);
         }
         if (\array_key_exists('xmpPath', $data)) {
             $object->setXmpPath($data['xmpPath']);
+            unset($data['xmpPath']);
         }
         if (\array_key_exists('metadataPath', $data)) {
             $object->setMetadataPath($data['metadataPath']);
+            unset($data['metadataPath']);
         }
         if (\array_key_exists('configuration', $data) && $data['configuration'] !== null) {
             $object->setConfiguration($data['configuration']);
+            unset($data['configuration']);
         }
         elseif (\array_key_exists('configuration', $data) && $data['configuration'] === null) {
             $object->setConfiguration(null);
         }
         if (\array_key_exists('requestId', $data) && $data['requestId'] !== null) {
             $object->setRequestId($data['requestId']);
+            unset($data['requestId']);
         }
         elseif (\array_key_exists('requestId', $data) && $data['requestId'] === null) {
             $object->setRequestId(null);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -86,6 +98,11 @@ class XmpMappingEntryCreateRequestNormalizer implements DenormalizerInterface, N
         }
         if (null !== $object->getRequestId()) {
             $data['requestId'] = $object->getRequestId();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

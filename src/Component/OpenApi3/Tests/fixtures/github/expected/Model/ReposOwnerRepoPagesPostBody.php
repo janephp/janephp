@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoPagesPostBody
+class ReposOwnerRepoPagesPostBody extends \ArrayObject
 {
     /**
      * 

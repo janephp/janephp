@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class UnableToMapMultipleClaimTypesIntoSameAttributeException
+class UnableToMapMultipleClaimTypesIntoSameAttributeException extends \ArrayObject
 {
     /**
      * 

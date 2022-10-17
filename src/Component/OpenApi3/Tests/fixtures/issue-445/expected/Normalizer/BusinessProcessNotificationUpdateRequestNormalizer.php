@@ -43,18 +43,27 @@ class BusinessProcessNotificationUpdateRequestNormalizer implements Denormalizer
         }
         if (\array_key_exists('title', $data)) {
             $object->setTitle($data['title']);
+            unset($data['title']);
         }
         if (\array_key_exists('message', $data)) {
             $object->setMessage($data['message']);
+            unset($data['message']);
         }
         if (\array_key_exists('navigationLink', $data) && $data['navigationLink'] !== null) {
             $object->setNavigationLink($data['navigationLink']);
+            unset($data['navigationLink']);
         }
         elseif (\array_key_exists('navigationLink', $data) && $data['navigationLink'] === null) {
             $object->setNavigationLink(null);
         }
         if (\array_key_exists('eventType', $data)) {
             $object->setEventType($data['eventType']);
+            unset($data['eventType']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -70,6 +79,11 @@ class BusinessProcessNotificationUpdateRequestNormalizer implements Denormalizer
             $data['navigationLink'] = $object->getNavigationLink();
         }
         $data['eventType'] = $object->getEventType();
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
         return $data;
     }
 }

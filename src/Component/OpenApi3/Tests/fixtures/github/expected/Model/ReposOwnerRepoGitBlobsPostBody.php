@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoGitBlobsPostBody
+class ReposOwnerRepoGitBlobsPostBody extends \ArrayObject
 {
     /**
      * The new blob's content.

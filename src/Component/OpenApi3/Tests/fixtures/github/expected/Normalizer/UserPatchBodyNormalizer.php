@@ -47,30 +47,43 @@ class UserPatchBodyNormalizer implements DenormalizerInterface, NormalizerInterf
         }
         if (\array_key_exists('name', $data)) {
             $object->setName($data['name']);
+            unset($data['name']);
         }
         if (\array_key_exists('email', $data)) {
             $object->setEmail($data['email']);
+            unset($data['email']);
         }
         if (\array_key_exists('blog', $data)) {
             $object->setBlog($data['blog']);
+            unset($data['blog']);
         }
         if (\array_key_exists('twitter_username', $data) && $data['twitter_username'] !== null) {
             $object->setTwitterUsername($data['twitter_username']);
+            unset($data['twitter_username']);
         }
         elseif (\array_key_exists('twitter_username', $data) && $data['twitter_username'] === null) {
             $object->setTwitterUsername(null);
         }
         if (\array_key_exists('company', $data)) {
             $object->setCompany($data['company']);
+            unset($data['company']);
         }
         if (\array_key_exists('location', $data)) {
             $object->setLocation($data['location']);
+            unset($data['location']);
         }
         if (\array_key_exists('hireable', $data)) {
             $object->setHireable($data['hireable']);
+            unset($data['hireable']);
         }
         if (\array_key_exists('bio', $data)) {
             $object->setBio($data['bio']);
+            unset($data['bio']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -103,6 +116,11 @@ class UserPatchBodyNormalizer implements DenormalizerInterface, NormalizerInterf
         }
         if (null !== $object->getBio()) {
             $data['bio'] = $object->getBio();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\UserPatchBodyConstraint());

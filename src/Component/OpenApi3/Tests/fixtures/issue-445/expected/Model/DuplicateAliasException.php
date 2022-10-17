@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class DuplicateAliasException
+class DuplicateAliasException extends \ArrayObject
 {
     /**
      * 

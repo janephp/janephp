@@ -2,6 +2,6 @@
 
 namespace CreditSafe\API\Model;
 
-class CompanySearchSuccessResultCompaniesItemDateOfLatestCAccounts
+class CompanySearchSuccessResultCompaniesItemDateOfLatestCAccounts extends \ArrayObject
 {
 }

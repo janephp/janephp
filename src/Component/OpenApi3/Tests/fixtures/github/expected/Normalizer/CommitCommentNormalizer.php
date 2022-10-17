@@ -47,57 +47,76 @@ class CommitCommentNormalizer implements DenormalizerInterface, NormalizerInterf
         }
         if (\array_key_exists('html_url', $data)) {
             $object->setHtmlUrl($data['html_url']);
+            unset($data['html_url']);
         }
         if (\array_key_exists('url', $data)) {
             $object->setUrl($data['url']);
+            unset($data['url']);
         }
         if (\array_key_exists('id', $data)) {
             $object->setId($data['id']);
+            unset($data['id']);
         }
         if (\array_key_exists('node_id', $data)) {
             $object->setNodeId($data['node_id']);
+            unset($data['node_id']);
         }
         if (\array_key_exists('body', $data)) {
             $object->setBody($data['body']);
+            unset($data['body']);
         }
         if (\array_key_exists('path', $data) && $data['path'] !== null) {
             $object->setPath($data['path']);
+            unset($data['path']);
         }
         elseif (\array_key_exists('path', $data) && $data['path'] === null) {
             $object->setPath(null);
         }
         if (\array_key_exists('position', $data) && $data['position'] !== null) {
             $object->setPosition($data['position']);
+            unset($data['position']);
         }
         elseif (\array_key_exists('position', $data) && $data['position'] === null) {
             $object->setPosition(null);
         }
         if (\array_key_exists('line', $data) && $data['line'] !== null) {
             $object->setLine($data['line']);
+            unset($data['line']);
         }
         elseif (\array_key_exists('line', $data) && $data['line'] === null) {
             $object->setLine(null);
         }
         if (\array_key_exists('commit_id', $data)) {
             $object->setCommitId($data['commit_id']);
+            unset($data['commit_id']);
         }
         if (\array_key_exists('user', $data) && $data['user'] !== null) {
             $object->setUser($this->denormalizer->denormalize($data['user'], 'Github\\Model\\CommitCommentUser', 'json', $context));
+            unset($data['user']);
         }
         elseif (\array_key_exists('user', $data) && $data['user'] === null) {
             $object->setUser(null);
         }
         if (\array_key_exists('created_at', $data)) {
             $object->setCreatedAt(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['created_at']));
+            unset($data['created_at']);
         }
         if (\array_key_exists('updated_at', $data)) {
             $object->setUpdatedAt(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['updated_at']));
+            unset($data['updated_at']);
         }
         if (\array_key_exists('author_association', $data)) {
             $object->setAuthorAssociation($data['author_association']);
+            unset($data['author_association']);
         }
         if (\array_key_exists('reactions', $data)) {
             $object->setReactions($this->denormalizer->denormalize($data['reactions'], 'Github\\Model\\ReactionRollup', 'json', $context));
+            unset($data['reactions']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -122,6 +141,11 @@ class CommitCommentNormalizer implements DenormalizerInterface, NormalizerInterf
         $data['author_association'] = $object->getAuthorAssociation();
         if (null !== $object->getReactions()) {
             $data['reactions'] = $this->normalizer->normalize($object->getReactions(), 'json', $context);
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\CommitCommentConstraint());

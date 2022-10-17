@@ -43,27 +43,37 @@ class AssignTagboxItemsInLayerActionNormalizer implements DenormalizerInterface,
         }
         if (\array_key_exists('traceRefId', $data) && $data['traceRefId'] !== null) {
             $object->setTraceRefId($data['traceRefId']);
+            unset($data['traceRefId']);
         }
         elseif (\array_key_exists('traceRefId', $data) && $data['traceRefId'] === null) {
             $object->setTraceRefId(null);
         }
         if (\array_key_exists('kind', $data)) {
             $object->setKind($data['kind']);
+            unset($data['kind']);
         }
         if (\array_key_exists('namedCache', $data) && $data['namedCache'] !== null) {
             $object->setNamedCache($data['namedCache']);
+            unset($data['namedCache']);
         }
         elseif (\array_key_exists('namedCache', $data) && $data['namedCache'] === null) {
             $object->setNamedCache(null);
         }
         if (\array_key_exists('refIds', $data) && $data['refIds'] !== null) {
             $object->setRefIds($data['refIds']);
+            unset($data['refIds']);
         }
         elseif (\array_key_exists('refIds', $data) && $data['refIds'] === null) {
             $object->setRefIds(null);
         }
         if (\array_key_exists('replace', $data)) {
             $object->setReplace($data['replace']);
+            unset($data['replace']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -85,6 +95,11 @@ class AssignTagboxItemsInLayerActionNormalizer implements DenormalizerInterface,
         }
         if (null !== $object->getReplace()) {
             $data['replace'] = $object->getReplace();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

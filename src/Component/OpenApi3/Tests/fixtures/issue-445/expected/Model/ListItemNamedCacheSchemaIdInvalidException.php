@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class ListItemNamedCacheSchemaIdInvalidException
+class ListItemNamedCacheSchemaIdInvalidException extends \ArrayObject
 {
     /**
      * 

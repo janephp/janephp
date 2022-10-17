@@ -43,24 +43,37 @@ class AssignLayerActionNormalizer implements DenormalizerInterface, NormalizerIn
         }
         if (\array_key_exists('traceRefId', $data) && $data['traceRefId'] !== null) {
             $object->setTraceRefId($data['traceRefId']);
+            unset($data['traceRefId']);
         }
         elseif (\array_key_exists('traceRefId', $data) && $data['traceRefId'] === null) {
             $object->setTraceRefId(null);
         }
         if (\array_key_exists('kind', $data)) {
             $object->setKind($data['kind']);
+            unset($data['kind']);
         }
         if (\array_key_exists('layerId', $data) && $data['layerId'] !== null) {
             $object->setLayerId($data['layerId']);
+            unset($data['layerId']);
         }
         elseif (\array_key_exists('layerId', $data) && $data['layerId'] === null) {
             $object->setLayerId(null);
         }
         if (\array_key_exists('defaultValues', $data) && $data['defaultValues'] !== null) {
-            $object->setDefaultValues($data['defaultValues']);
+            $values = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
+            foreach ($data['defaultValues'] as $key => $value) {
+                $values[$key] = $value;
+            }
+            $object->setDefaultValues($values);
+            unset($data['defaultValues']);
         }
         elseif (\array_key_exists('defaultValues', $data) && $data['defaultValues'] === null) {
             $object->setDefaultValues(null);
+        }
+        foreach ($data as $key_1 => $value_1) {
+            if (preg_match('/.*/', (string) $key_1)) {
+                $object[$key_1] = $value_1;
+            }
         }
         return $object;
     }
@@ -78,7 +91,16 @@ class AssignLayerActionNormalizer implements DenormalizerInterface, NormalizerIn
             $data['layerId'] = $object->getLayerId();
         }
         if (null !== $object->getDefaultValues()) {
-            $data['defaultValues'] = $object->getDefaultValues();
+            $values = array();
+            foreach ($object->getDefaultValues() as $key => $value) {
+                $values[$key] = $value;
+            }
+            $data['defaultValues'] = $values;
+        }
+        foreach ($object as $key_1 => $value_1) {
+            if (preg_match('/.*/', (string) $key_1)) {
+                $data[$key_1] = $value_1;
+            }
         }
         return $data;
     }

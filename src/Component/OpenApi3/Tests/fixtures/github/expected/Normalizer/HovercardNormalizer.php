@@ -51,6 +51,12 @@ class HovercardNormalizer implements DenormalizerInterface, NormalizerInterface,
                 $values[] = $this->denormalizer->denormalize($value, 'Github\\Model\\HovercardContextsItem', 'json', $context);
             }
             $object->setContexts($values);
+            unset($data['contexts']);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
@@ -65,6 +71,11 @@ class HovercardNormalizer implements DenormalizerInterface, NormalizerInterface,
             $values[] = $this->normalizer->normalize($value, 'json', $context);
         }
         $data['contexts'] = $values;
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
+            }
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\HovercardConstraint());
             $context['skip_validation'] = true;

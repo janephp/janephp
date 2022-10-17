@@ -43,12 +43,20 @@ class NumericRangeFilterNormalizer implements DenormalizerInterface, NormalizerI
         }
         if (\array_key_exists('kind', $data)) {
             $object->setKind($data['kind']);
+            unset($data['kind']);
         }
         if (\array_key_exists('field', $data)) {
             $object->setField($data['field']);
+            unset($data['field']);
         }
         if (\array_key_exists('range', $data)) {
             $object->setRange($data['range']);
+            unset($data['range']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -61,6 +69,11 @@ class NumericRangeFilterNormalizer implements DenormalizerInterface, NormalizerI
         $data['kind'] = $object->getKind();
         $data['field'] = $object->getField();
         $data['range'] = $object->getRange();
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
         return $data;
     }
 }

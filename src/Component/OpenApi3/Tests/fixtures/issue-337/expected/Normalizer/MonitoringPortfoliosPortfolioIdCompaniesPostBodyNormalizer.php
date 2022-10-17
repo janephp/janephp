@@ -43,15 +43,24 @@ class MonitoringPortfoliosPortfolioIdCompaniesPostBodyNormalizer implements Deno
         }
         if (\array_key_exists('id', $data)) {
             $object->setId($data['id']);
+            unset($data['id']);
         }
         if (\array_key_exists('personalReference', $data)) {
             $object->setPersonalReference($data['personalReference']);
+            unset($data['personalReference']);
         }
         if (\array_key_exists('freeText', $data)) {
             $object->setFreeText($data['freeText']);
+            unset($data['freeText']);
         }
         if (\array_key_exists('personalLimit', $data)) {
             $object->setPersonalLimit($data['personalLimit']);
+            unset($data['personalLimit']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -70,6 +79,11 @@ class MonitoringPortfoliosPortfolioIdCompaniesPostBodyNormalizer implements Deno
         }
         if (null !== $object->getPersonalLimit()) {
             $data['personalLimit'] = $object->getPersonalLimit();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

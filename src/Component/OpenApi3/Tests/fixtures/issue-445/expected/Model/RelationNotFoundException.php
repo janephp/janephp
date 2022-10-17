@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class RelationNotFoundException
+class RelationNotFoundException extends \ArrayObject
 {
     /**
      * 

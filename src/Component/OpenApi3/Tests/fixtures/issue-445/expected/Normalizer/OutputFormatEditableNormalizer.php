@@ -43,33 +43,45 @@ class OutputFormatEditableNormalizer implements DenormalizerInterface, Normalize
         }
         if (\array_key_exists('sourceOutputFormats', $data) && $data['sourceOutputFormats'] !== null) {
             $object->setSourceOutputFormats($data['sourceOutputFormats']);
+            unset($data['sourceOutputFormats']);
         }
         elseif (\array_key_exists('sourceOutputFormats', $data) && $data['sourceOutputFormats'] === null) {
             $object->setSourceOutputFormats(null);
         }
         if (\array_key_exists('format', $data) && $data['format'] !== null) {
             $object->setFormat($data['format']);
+            unset($data['format']);
         }
         elseif (\array_key_exists('format', $data) && $data['format'] === null) {
             $object->setFormat(null);
         }
         if (\array_key_exists('names', $data)) {
             $object->setNames($data['names']);
+            unset($data['names']);
         }
         if (\array_key_exists('retentionTime', $data)) {
             $object->setRetentionTime($data['retentionTime']);
+            unset($data['retentionTime']);
         }
         if (\array_key_exists('downloadFileNamePatterns', $data) && $data['downloadFileNamePatterns'] !== null) {
             $object->setDownloadFileNamePatterns($data['downloadFileNamePatterns']);
+            unset($data['downloadFileNamePatterns']);
         }
         elseif (\array_key_exists('downloadFileNamePatterns', $data) && $data['downloadFileNamePatterns'] === null) {
             $object->setDownloadFileNamePatterns(null);
         }
         if (\array_key_exists('viewForAll', $data)) {
             $object->setViewForAll($data['viewForAll']);
+            unset($data['viewForAll']);
         }
         if (\array_key_exists('enableXmpWriteback', $data)) {
             $object->setEnableXmpWriteback($data['enableXmpWriteback']);
+            unset($data['enableXmpWriteback']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -97,6 +109,11 @@ class OutputFormatEditableNormalizer implements DenormalizerInterface, Normalize
         }
         if (null !== $object->getEnableXmpWriteback()) {
             $data['enableXmpWriteback'] = $object->getEnableXmpWriteback();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

@@ -43,24 +43,36 @@ class GbCompanyReportExampleResponseReportAdditionalInformationMortgageDetailsIt
         }
         if (\array_key_exists('mortgageType', $data)) {
             $object->setMortgageType($data['mortgageType']);
+            unset($data['mortgageType']);
         }
         if (\array_key_exists('dateChargeCreated', $data)) {
             $object->setDateChargeCreated($data['dateChargeCreated']);
+            unset($data['dateChargeCreated']);
         }
         if (\array_key_exists('dateChargeRegistered', $data)) {
             $object->setDateChargeRegistered($data['dateChargeRegistered']);
+            unset($data['dateChargeRegistered']);
         }
         if (\array_key_exists('status', $data)) {
             $object->setStatus($data['status']);
+            unset($data['status']);
         }
         if (\array_key_exists('personsEntitled', $data)) {
             $object->setPersonsEntitled($data['personsEntitled']);
+            unset($data['personsEntitled']);
         }
         if (\array_key_exists('amountSecured', $data)) {
             $object->setAmountSecured($data['amountSecured']);
+            unset($data['amountSecured']);
         }
         if (\array_key_exists('details', $data)) {
             $object->setDetails($data['details']);
+            unset($data['details']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -90,6 +102,11 @@ class GbCompanyReportExampleResponseReportAdditionalInformationMortgageDetailsIt
         }
         if (null !== $object->getDetails()) {
             $data['details'] = $object->getDetails();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

@@ -47,15 +47,24 @@ class ThreadSubjectNormalizer implements DenormalizerInterface, NormalizerInterf
         }
         if (\array_key_exists('title', $data)) {
             $object->setTitle($data['title']);
+            unset($data['title']);
         }
         if (\array_key_exists('url', $data)) {
             $object->setUrl($data['url']);
+            unset($data['url']);
         }
         if (\array_key_exists('latest_comment_url', $data)) {
             $object->setLatestCommentUrl($data['latest_comment_url']);
+            unset($data['latest_comment_url']);
         }
         if (\array_key_exists('type', $data)) {
             $object->setType($data['type']);
+            unset($data['type']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -76,6 +85,11 @@ class ThreadSubjectNormalizer implements DenormalizerInterface, NormalizerInterf
         }
         if (null !== $object->getType()) {
             $data['type'] = $object->getType();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ThreadSubjectConstraint());

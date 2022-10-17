@@ -47,6 +47,7 @@ class GbPeopleReportReponseReportDirectorshipsNormalizer implements Denormalizer
                 $values[] = $this->denormalizer->denormalize($value, 'CreditSafe\\API\\Model\\GbPeopleReportReponseReportDirectorshipsCurrentItem', 'json', $context);
             }
             $object->setCurrent($values);
+            unset($data['current']);
         }
         if (\array_key_exists('inactive', $data)) {
             $values_1 = array();
@@ -54,6 +55,7 @@ class GbPeopleReportReponseReportDirectorshipsNormalizer implements Denormalizer
                 $values_1[] = $this->denormalizer->denormalize($value_1, 'CreditSafe\\API\\Model\\GbPeopleReportReponseReportDirectorshipsInactiveItem', 'json', $context);
             }
             $object->setInactive($values_1);
+            unset($data['inactive']);
         }
         if (\array_key_exists('previous', $data)) {
             $values_2 = array();
@@ -61,6 +63,12 @@ class GbPeopleReportReponseReportDirectorshipsNormalizer implements Denormalizer
                 $values_2[] = $this->denormalizer->denormalize($value_2, 'CreditSafe\\API\\Model\\GbPeopleReportReponseReportDirectorshipsPreviousItem', 'json', $context);
             }
             $object->setPrevious($values_2);
+            unset($data['previous']);
+        }
+        foreach ($data as $key => $value_3) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_3;
+            }
         }
         return $object;
     }
@@ -90,6 +98,11 @@ class GbPeopleReportReponseReportDirectorshipsNormalizer implements Denormalizer
                 $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
             }
             $data['previous'] = $values_2;
+        }
+        foreach ($object as $key => $value_3) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_3;
+            }
         }
         return $data;
     }

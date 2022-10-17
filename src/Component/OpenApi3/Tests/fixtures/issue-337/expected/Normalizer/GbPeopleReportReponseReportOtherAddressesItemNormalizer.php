@@ -43,24 +43,36 @@ class GbPeopleReportReponseReportOtherAddressesItemNormalizer implements Denorma
         }
         if (\array_key_exists('type', $data)) {
             $object->setType($data['type']);
+            unset($data['type']);
         }
         if (\array_key_exists('simpleValue', $data)) {
             $object->setSimpleValue($data['simpleValue']);
+            unset($data['simpleValue']);
         }
         if (\array_key_exists('street', $data)) {
             $object->setStreet($data['street']);
+            unset($data['street']);
         }
         if (\array_key_exists('city', $data)) {
             $object->setCity($data['city']);
+            unset($data['city']);
         }
         if (\array_key_exists('postalCode', $data)) {
             $object->setPostalCode($data['postalCode']);
+            unset($data['postalCode']);
         }
         if (\array_key_exists('province', $data)) {
             $object->setProvince($data['province']);
+            unset($data['province']);
         }
         if (\array_key_exists('country', $data)) {
             $object->setCountry($data['country']);
+            unset($data['country']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -90,6 +102,11 @@ class GbPeopleReportReponseReportOtherAddressesItemNormalizer implements Denorma
         }
         if (null !== $object->getCountry()) {
             $data['country'] = $object->getCountry();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class SearchIndexDocNotFoundException
+class SearchIndexDocNotFoundException extends \ArrayObject
 {
     /**
      * 

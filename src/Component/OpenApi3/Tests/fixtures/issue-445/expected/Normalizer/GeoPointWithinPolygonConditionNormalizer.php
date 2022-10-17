@@ -43,15 +43,18 @@ class GeoPointWithinPolygonConditionNormalizer implements DenormalizerInterface,
         }
         if (\array_key_exists('traceRefId', $data) && $data['traceRefId'] !== null) {
             $object->setTraceRefId($data['traceRefId']);
+            unset($data['traceRefId']);
         }
         elseif (\array_key_exists('traceRefId', $data) && $data['traceRefId'] === null) {
             $object->setTraceRefId(null);
         }
         if (\array_key_exists('kind', $data)) {
             $object->setKind($data['kind']);
+            unset($data['kind']);
         }
         if (\array_key_exists('fieldPath', $data) && $data['fieldPath'] !== null) {
             $object->setFieldPath($data['fieldPath']);
+            unset($data['fieldPath']);
         }
         elseif (\array_key_exists('fieldPath', $data) && $data['fieldPath'] === null) {
             $object->setFieldPath(null);
@@ -62,9 +65,15 @@ class GeoPointWithinPolygonConditionNormalizer implements DenormalizerInterface,
                 $values[] = $this->denormalizer->denormalize($value, 'PicturePark\\API\\Model\\LatLon', 'json', $context);
             }
             $object->setPolygon($values);
+            unset($data['polygon']);
         }
         elseif (\array_key_exists('polygon', $data) && $data['polygon'] === null) {
             $object->setPolygon(null);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
@@ -87,6 +96,11 @@ class GeoPointWithinPolygonConditionNormalizer implements DenormalizerInterface,
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data['polygon'] = $values;
+        }
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
+            }
         }
         return $data;
     }

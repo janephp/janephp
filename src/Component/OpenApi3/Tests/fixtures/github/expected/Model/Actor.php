@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class Actor
+class Actor extends \ArrayObject
 {
     /**
      * 

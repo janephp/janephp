@@ -47,33 +47,43 @@ class IssueSearchResultItemPullRequestNormalizer implements DenormalizerInterfac
         }
         if (\array_key_exists('merged_at', $data) && $data['merged_at'] !== null) {
             $object->setMergedAt(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['merged_at']));
+            unset($data['merged_at']);
         }
         elseif (\array_key_exists('merged_at', $data) && $data['merged_at'] === null) {
             $object->setMergedAt(null);
         }
         if (\array_key_exists('diff_url', $data) && $data['diff_url'] !== null) {
             $object->setDiffUrl($data['diff_url']);
+            unset($data['diff_url']);
         }
         elseif (\array_key_exists('diff_url', $data) && $data['diff_url'] === null) {
             $object->setDiffUrl(null);
         }
         if (\array_key_exists('html_url', $data) && $data['html_url'] !== null) {
             $object->setHtmlUrl($data['html_url']);
+            unset($data['html_url']);
         }
         elseif (\array_key_exists('html_url', $data) && $data['html_url'] === null) {
             $object->setHtmlUrl(null);
         }
         if (\array_key_exists('patch_url', $data) && $data['patch_url'] !== null) {
             $object->setPatchUrl($data['patch_url']);
+            unset($data['patch_url']);
         }
         elseif (\array_key_exists('patch_url', $data) && $data['patch_url'] === null) {
             $object->setPatchUrl(null);
         }
         if (\array_key_exists('url', $data) && $data['url'] !== null) {
             $object->setUrl($data['url']);
+            unset($data['url']);
         }
         elseif (\array_key_exists('url', $data) && $data['url'] === null) {
             $object->setUrl(null);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -90,6 +100,11 @@ class IssueSearchResultItemPullRequestNormalizer implements DenormalizerInterfac
         $data['html_url'] = $object->getHtmlUrl();
         $data['patch_url'] = $object->getPatchUrl();
         $data['url'] = $object->getUrl();
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\IssueSearchResultItemPullRequestConstraint());
             $context['skip_validation'] = true;

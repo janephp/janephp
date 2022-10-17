@@ -47,12 +47,19 @@ class FileCommitNormalizer implements DenormalizerInterface, NormalizerInterface
         }
         if (\array_key_exists('content', $data) && $data['content'] !== null) {
             $object->setContent($this->denormalizer->denormalize($data['content'], 'Github\\Model\\FileCommitContent', 'json', $context));
+            unset($data['content']);
         }
         elseif (\array_key_exists('content', $data) && $data['content'] === null) {
             $object->setContent(null);
         }
         if (\array_key_exists('commit', $data)) {
             $object->setCommit($this->denormalizer->denormalize($data['commit'], 'Github\\Model\\FileCommitCommit', 'json', $context));
+            unset($data['commit']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -67,6 +74,11 @@ class FileCommitNormalizer implements DenormalizerInterface, NormalizerInterface
         }
         if (null !== $object->getCommit()) {
             $data['commit'] = $this->normalizer->normalize($object->getCommit(), 'json', $context);
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\FileCommitConstraint());

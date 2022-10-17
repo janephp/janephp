@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class GitUser
+class GitUser extends \ArrayObject
 {
     /**
      * 

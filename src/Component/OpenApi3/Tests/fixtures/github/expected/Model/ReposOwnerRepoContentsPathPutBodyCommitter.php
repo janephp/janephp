@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoContentsPathPutBodyCommitter
+class ReposOwnerRepoContentsPathPutBodyCommitter extends \ArrayObject
 {
     /**
      * The name of the author or committer of the commit. You'll receive a `422` status code if `name` is omitted.

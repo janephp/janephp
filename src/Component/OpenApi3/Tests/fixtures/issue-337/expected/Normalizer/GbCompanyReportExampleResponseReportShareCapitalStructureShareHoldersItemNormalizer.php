@@ -49,21 +49,32 @@ class GbCompanyReportExampleResponseReportShareCapitalStructureShareHoldersItemN
         }
         if (\array_key_exists('name', $data)) {
             $object->setName($data['name']);
+            unset($data['name']);
         }
         if (\array_key_exists('shareholderType', $data)) {
             $object->setShareholderType($data['shareholderType']);
+            unset($data['shareholderType']);
         }
         if (\array_key_exists('shareType', $data)) {
             $object->setShareType($data['shareType']);
+            unset($data['shareType']);
         }
         if (\array_key_exists('currency', $data)) {
             $object->setCurrency($data['currency']);
+            unset($data['currency']);
         }
         if (\array_key_exists('totalNumberOfSharesOwned', $data)) {
             $object->setTotalNumberOfSharesOwned($data['totalNumberOfSharesOwned']);
+            unset($data['totalNumberOfSharesOwned']);
         }
         if (\array_key_exists('percentSharesHeld', $data)) {
             $object->setPercentSharesHeld($data['percentSharesHeld']);
+            unset($data['percentSharesHeld']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -90,6 +101,11 @@ class GbCompanyReportExampleResponseReportShareCapitalStructureShareHoldersItemN
         }
         if (null !== $object->getPercentSharesHeld()) {
             $data['percentSharesHeld'] = $object->getPercentSharesHeld();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

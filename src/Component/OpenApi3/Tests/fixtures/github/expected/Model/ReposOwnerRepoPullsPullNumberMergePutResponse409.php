@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoPullsPullNumberMergePutResponse409
+class ReposOwnerRepoPullsPullNumberMergePutResponse409 extends \ArrayObject
 {
     /**
      * 

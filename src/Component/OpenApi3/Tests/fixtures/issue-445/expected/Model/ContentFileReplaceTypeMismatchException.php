@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class ContentFileReplaceTypeMismatchException
+class ContentFileReplaceTypeMismatchException extends \ArrayObject
 {
     /**
      * 

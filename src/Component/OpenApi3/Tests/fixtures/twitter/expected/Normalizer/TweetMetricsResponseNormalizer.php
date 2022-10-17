@@ -47,6 +47,7 @@ class TweetMetricsResponseNormalizer implements DenormalizerInterface, Normalize
                 $values[] = $this->denormalizer->denormalize($value, 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Model\\TweetMetrics', 'json', $context);
             }
             $object->setData($values);
+            unset($data['data']);
         }
         if (\array_key_exists('errors', $data)) {
             $values_1 = array();
@@ -54,6 +55,12 @@ class TweetMetricsResponseNormalizer implements DenormalizerInterface, Normalize
                 $values_1[] = $value_1;
             }
             $object->setErrors($values_1);
+            unset($data['errors']);
+        }
+        foreach ($data as $key => $value_2) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_2;
+            }
         }
         return $object;
     }
@@ -76,6 +83,11 @@ class TweetMetricsResponseNormalizer implements DenormalizerInterface, Normalize
                 $values_1[] = $value_1;
             }
             $data['errors'] = $values_1;
+        }
+        foreach ($object as $key => $value_2) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_2;
+            }
         }
         return $data;
     }

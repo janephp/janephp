@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class ScimV2OrganizationsOrgUsersPostBody
+class ScimV2OrganizationsOrgUsersPostBody extends \ArrayObject
 {
     /**
      * Configured by the admin. Could be an email, login, or username

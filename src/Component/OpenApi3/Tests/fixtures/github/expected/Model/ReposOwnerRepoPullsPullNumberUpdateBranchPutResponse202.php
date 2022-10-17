@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202
+class ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202 extends \ArrayObject
 {
     /**
      * 

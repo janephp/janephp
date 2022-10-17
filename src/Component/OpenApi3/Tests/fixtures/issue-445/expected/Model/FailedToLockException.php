@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class FailedToLockException
+class FailedToLockException extends \ArrayObject
 {
     /**
      * 

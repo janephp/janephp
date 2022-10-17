@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class UserAttributeNotSynchronizableException
+class UserAttributeNotSynchronizableException extends \ArrayObject
 {
     /**
      * 

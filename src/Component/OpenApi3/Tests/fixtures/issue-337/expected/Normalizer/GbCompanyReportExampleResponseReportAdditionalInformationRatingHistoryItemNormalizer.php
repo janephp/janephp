@@ -46,12 +46,20 @@ class GbCompanyReportExampleResponseReportAdditionalInformationRatingHistoryItem
         }
         if (\array_key_exists('date', $data)) {
             $object->setDate($data['date']);
+            unset($data['date']);
         }
         if (\array_key_exists('companyValue', $data)) {
             $object->setCompanyValue($data['companyValue']);
+            unset($data['companyValue']);
         }
         if (\array_key_exists('ratingDescription', $data)) {
             $object->setRatingDescription($data['ratingDescription']);
+            unset($data['ratingDescription']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -69,6 +77,11 @@ class GbCompanyReportExampleResponseReportAdditionalInformationRatingHistoryItem
         }
         if (null !== $object->getRatingDescription()) {
             $data['ratingDescription'] = $object->getRatingDescription();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

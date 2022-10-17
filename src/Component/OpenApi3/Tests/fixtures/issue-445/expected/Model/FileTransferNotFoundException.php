@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class FileTransferNotFoundException
+class FileTransferNotFoundException extends \ArrayObject
 {
     /**
      * 

@@ -43,18 +43,27 @@ class TopBooksGetLdjsonResponse200HydraSearchHydraMappingItemNormalizer implemen
         }
         if (\array_key_exists('@type', $data)) {
             $object->setType($data['@type']);
+            unset($data['@type']);
         }
         if (\array_key_exists('variable', $data)) {
             $object->setVariable($data['variable']);
+            unset($data['variable']);
         }
         if (\array_key_exists('property', $data) && $data['property'] !== null) {
             $object->setProperty($data['property']);
+            unset($data['property']);
         }
         elseif (\array_key_exists('property', $data) && $data['property'] === null) {
             $object->setProperty(null);
         }
         if (\array_key_exists('required', $data)) {
             $object->setRequired($data['required']);
+            unset($data['required']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -75,6 +84,11 @@ class TopBooksGetLdjsonResponse200HydraSearchHydraMappingItemNormalizer implemen
         }
         if (null !== $object->getRequired()) {
             $data['required'] = $object->getRequired();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

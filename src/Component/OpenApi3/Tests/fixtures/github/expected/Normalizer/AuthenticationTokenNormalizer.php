@@ -47,28 +47,43 @@ class AuthenticationTokenNormalizer implements DenormalizerInterface, Normalizer
         }
         if (\array_key_exists('token', $data)) {
             $object->setToken($data['token']);
+            unset($data['token']);
         }
         if (\array_key_exists('expires_at', $data)) {
             $object->setExpiresAt(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['expires_at']));
+            unset($data['expires_at']);
         }
         if (\array_key_exists('permissions', $data)) {
-            $object->setPermissions($data['permissions']);
+            $values = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
+            foreach ($data['permissions'] as $key => $value) {
+                $values[$key] = $value;
+            }
+            $object->setPermissions($values);
+            unset($data['permissions']);
         }
         if (\array_key_exists('repositories', $data)) {
-            $values = array();
-            foreach ($data['repositories'] as $value) {
-                $values[] = $this->denormalizer->denormalize($value, 'Github\\Model\\Repository', 'json', $context);
+            $values_1 = array();
+            foreach ($data['repositories'] as $value_1) {
+                $values_1[] = $this->denormalizer->denormalize($value_1, 'Github\\Model\\Repository', 'json', $context);
             }
-            $object->setRepositories($values);
+            $object->setRepositories($values_1);
+            unset($data['repositories']);
         }
         if (\array_key_exists('single_file', $data) && $data['single_file'] !== null) {
             $object->setSingleFile($data['single_file']);
+            unset($data['single_file']);
         }
         elseif (\array_key_exists('single_file', $data) && $data['single_file'] === null) {
             $object->setSingleFile(null);
         }
         if (\array_key_exists('repository_selection', $data)) {
             $object->setRepositorySelection($data['repository_selection']);
+            unset($data['repository_selection']);
+        }
+        foreach ($data as $key_1 => $value_2) {
+            if (preg_match('/.*/', (string) $key_1)) {
+                $object[$key_1] = $value_2;
+            }
         }
         return $object;
     }
@@ -81,20 +96,29 @@ class AuthenticationTokenNormalizer implements DenormalizerInterface, Normalizer
         $data['token'] = $object->getToken();
         $data['expires_at'] = $object->getExpiresAt()->format('Y-m-d\\TH:i:sP');
         if (null !== $object->getPermissions()) {
-            $data['permissions'] = $object->getPermissions();
+            $values = array();
+            foreach ($object->getPermissions() as $key => $value) {
+                $values[$key] = $value;
+            }
+            $data['permissions'] = $values;
         }
         if (null !== $object->getRepositories()) {
-            $values = array();
-            foreach ($object->getRepositories() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+            $values_1 = array();
+            foreach ($object->getRepositories() as $value_1) {
+                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
             }
-            $data['repositories'] = $values;
+            $data['repositories'] = $values_1;
         }
         if (null !== $object->getSingleFile()) {
             $data['single_file'] = $object->getSingleFile();
         }
         if (null !== $object->getRepositorySelection()) {
             $data['repository_selection'] = $object->getRepositorySelection();
+        }
+        foreach ($object as $key_1 => $value_2) {
+            if (preg_match('/.*/', (string) $key_1)) {
+                $data[$key_1] = $value_2;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\AuthenticationTokenConstraint());

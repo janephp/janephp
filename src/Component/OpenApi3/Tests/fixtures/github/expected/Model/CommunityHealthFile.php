@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class CommunityHealthFile
+class CommunityHealthFile extends \ArrayObject
 {
     /**
      * 

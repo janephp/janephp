@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class GitignoreTemplate
+class GitignoreTemplate extends \ArrayObject
 {
     /**
      * 

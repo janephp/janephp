@@ -46,12 +46,20 @@ class GbPeopleReportReponseReportDirectorshipsPreviousItemAdditionalDataNormaliz
         }
         if (\array_key_exists('occupation', $data)) {
             $object->setOccupation($data['occupation']);
+            unset($data['occupation']);
         }
         if (\array_key_exists('statusDescription', $data)) {
             $object->setStatusDescription($data['statusDescription']);
+            unset($data['statusDescription']);
         }
         if (\array_key_exists('gearing', $data)) {
             $object->setGearing($data['gearing']);
+            unset($data['gearing']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -69,6 +77,11 @@ class GbPeopleReportReponseReportDirectorshipsPreviousItemAdditionalDataNormaliz
         }
         if (null !== $object->getGearing()) {
             $data['gearing'] = $object->getGearing();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

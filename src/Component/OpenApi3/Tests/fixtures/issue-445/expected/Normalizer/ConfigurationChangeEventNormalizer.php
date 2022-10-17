@@ -43,15 +43,23 @@ class ConfigurationChangeEventNormalizer implements DenormalizerInterface, Norma
         }
         if (\array_key_exists('timestamp', $data)) {
             $object->setTimestamp(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['timestamp']));
+            unset($data['timestamp']);
         }
         if (\array_key_exists('kind', $data)) {
             $object->setKind($data['kind']);
+            unset($data['kind']);
         }
         if (\array_key_exists('documentType', $data) && $data['documentType'] !== null) {
             $object->setDocumentType($data['documentType']);
+            unset($data['documentType']);
         }
         elseif (\array_key_exists('documentType', $data) && $data['documentType'] === null) {
             $object->setDocumentType(null);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -65,6 +73,11 @@ class ConfigurationChangeEventNormalizer implements DenormalizerInterface, Norma
         $data['kind'] = $object->getKind();
         if (null !== $object->getDocumentType()) {
             $data['documentType'] = $object->getDocumentType();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

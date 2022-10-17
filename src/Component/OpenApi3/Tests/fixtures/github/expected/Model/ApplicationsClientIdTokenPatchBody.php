@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class ApplicationsClientIdTokenPatchBody
+class ApplicationsClientIdTokenPatchBody extends \ArrayObject
 {
     /**
      * The access_token of the OAuth application.

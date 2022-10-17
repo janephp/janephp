@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class AuthenticationToken
+class AuthenticationToken extends \ArrayObject
 {
     /**
      * The token used for authentication
@@ -19,7 +19,7 @@ class AuthenticationToken
     /**
      * 
      *
-     * @var mixed
+     * @var mixed[]
      */
     protected $permissions;
     /**
@@ -85,20 +85,20 @@ class AuthenticationToken
     /**
      * 
      *
-     * @return mixed
+     * @return mixed[]
      */
-    public function getPermissions()
+    public function getPermissions() : iterable
     {
         return $this->permissions;
     }
     /**
      * 
      *
-     * @param mixed $permissions
+     * @param mixed[] $permissions
      *
      * @return self
      */
-    public function setPermissions($permissions) : self
+    public function setPermissions(iterable $permissions) : self
     {
         $this->permissions = $permissions;
         return $this;

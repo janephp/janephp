@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class BusinessProcessCancellationNotSupportedException
+class BusinessProcessCancellationNotSupportedException extends \ArrayObject
 {
     /**
      * 

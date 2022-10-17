@@ -47,9 +47,16 @@ class RateLimitOverviewNormalizer implements DenormalizerInterface, NormalizerIn
         }
         if (\array_key_exists('resources', $data)) {
             $object->setResources($this->denormalizer->denormalize($data['resources'], 'Github\\Model\\RateLimitOverviewResources', 'json', $context));
+            unset($data['resources']);
         }
         if (\array_key_exists('rate', $data)) {
             $object->setRate($this->denormalizer->denormalize($data['rate'], 'Github\\Model\\RateLimit', 'json', $context));
+            unset($data['rate']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -61,6 +68,11 @@ class RateLimitOverviewNormalizer implements DenormalizerInterface, NormalizerIn
         $data = array();
         $data['resources'] = $this->normalizer->normalize($object->getResources(), 'json', $context);
         $data['rate'] = $this->normalizer->normalize($object->getRate(), 'json', $context);
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\RateLimitOverviewConstraint());
             $context['skip_validation'] = true;

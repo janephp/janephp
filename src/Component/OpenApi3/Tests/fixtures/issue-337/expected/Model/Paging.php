@@ -2,7 +2,7 @@
 
 namespace CreditSafe\API\Model;
 
-class Paging
+class Paging extends \ArrayObject
 {
     /**
      * The maximum number of results returned per page.

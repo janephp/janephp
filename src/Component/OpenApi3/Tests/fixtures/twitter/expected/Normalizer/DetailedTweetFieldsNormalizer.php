@@ -43,6 +43,7 @@ class DetailedTweetFieldsNormalizer implements DenormalizerInterface, Normalizer
         }
         if (\array_key_exists('stats', $data)) {
             $object->setStats($this->denormalizer->denormalize($data['stats'], 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Model\\DetailedTweetFieldsStats', 'json', $context));
+            unset($data['stats']);
         }
         if (\array_key_exists('context_annotation', $data)) {
             $values = array();
@@ -50,15 +51,24 @@ class DetailedTweetFieldsNormalizer implements DenormalizerInterface, Normalizer
                 $values[] = $this->denormalizer->denormalize($value, 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Model\\ContextAnnotation', 'json', $context);
             }
             $object->setContextAnnotation($values);
+            unset($data['context_annotation']);
         }
         if (\array_key_exists('possibly_sensitive', $data)) {
             $object->setPossiblySensitive($data['possibly_sensitive']);
+            unset($data['possibly_sensitive']);
         }
         if (\array_key_exists('lang', $data)) {
             $object->setLang($data['lang']);
+            unset($data['lang']);
         }
         if (\array_key_exists('source', $data)) {
             $object->setSource($data['source']);
+            unset($data['source']);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
@@ -82,6 +92,11 @@ class DetailedTweetFieldsNormalizer implements DenormalizerInterface, Normalizer
         }
         if (null !== $object->getSource()) {
             $data['source'] = $object->getSource();
+        }
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
+            }
         }
         return $data;
     }

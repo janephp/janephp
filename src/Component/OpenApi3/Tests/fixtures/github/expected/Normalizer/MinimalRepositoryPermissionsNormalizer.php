@@ -47,12 +47,20 @@ class MinimalRepositoryPermissionsNormalizer implements DenormalizerInterface, N
         }
         if (\array_key_exists('admin', $data)) {
             $object->setAdmin($data['admin']);
+            unset($data['admin']);
         }
         if (\array_key_exists('push', $data)) {
             $object->setPush($data['push']);
+            unset($data['push']);
         }
         if (\array_key_exists('pull', $data)) {
             $object->setPull($data['pull']);
+            unset($data['pull']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -70,6 +78,11 @@ class MinimalRepositoryPermissionsNormalizer implements DenormalizerInterface, N
         }
         if (null !== $object->getPull()) {
             $data['pull'] = $object->getPull();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\MinimalRepositoryPermissionsConstraint());

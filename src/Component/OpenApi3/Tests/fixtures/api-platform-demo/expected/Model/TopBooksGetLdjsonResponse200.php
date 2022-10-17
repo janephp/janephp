@@ -2,7 +2,7 @@
 
 namespace ApiPlatform\Demo\Model;
 
-class TopBooksGetLdjsonResponse200
+class TopBooksGetLdjsonResponse200 extends \ArrayObject
 {
     /**
      * 

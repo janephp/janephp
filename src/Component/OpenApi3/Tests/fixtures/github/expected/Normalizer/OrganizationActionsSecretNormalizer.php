@@ -47,18 +47,28 @@ class OrganizationActionsSecretNormalizer implements DenormalizerInterface, Norm
         }
         if (\array_key_exists('name', $data)) {
             $object->setName($data['name']);
+            unset($data['name']);
         }
         if (\array_key_exists('created_at', $data)) {
             $object->setCreatedAt(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['created_at']));
+            unset($data['created_at']);
         }
         if (\array_key_exists('updated_at', $data)) {
             $object->setUpdatedAt(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['updated_at']));
+            unset($data['updated_at']);
         }
         if (\array_key_exists('visibility', $data)) {
             $object->setVisibility($data['visibility']);
+            unset($data['visibility']);
         }
         if (\array_key_exists('selected_repositories_url', $data)) {
             $object->setSelectedRepositoriesUrl($data['selected_repositories_url']);
+            unset($data['selected_repositories_url']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -74,6 +84,11 @@ class OrganizationActionsSecretNormalizer implements DenormalizerInterface, Norm
         $data['visibility'] = $object->getVisibility();
         if (null !== $object->getSelectedRepositoriesUrl()) {
             $data['selected_repositories_url'] = $object->getSelectedRepositoriesUrl();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\OrganizationActionsSecretConstraint());

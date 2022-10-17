@@ -43,9 +43,16 @@ class DefaultTweetFieldsGeoNormalizer implements DenormalizerInterface, Normaliz
         }
         if (\array_key_exists('coordinates', $data)) {
             $object->setCoordinates($this->denormalizer->denormalize($data['coordinates'], 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Model\\Point', 'json', $context));
+            unset($data['coordinates']);
         }
         if (\array_key_exists('place_id', $data)) {
             $object->setPlaceId($data['place_id']);
+            unset($data['place_id']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -60,6 +67,11 @@ class DefaultTweetFieldsGeoNormalizer implements DenormalizerInterface, Normaliz
         }
         if (null !== $object->getPlaceId()) {
             $data['place_id'] = $object->getPlaceId();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

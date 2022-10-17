@@ -2,7 +2,7 @@
 
 namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 
-class TestIdGetResponse200
+class TestIdGetResponse200 extends \ArrayObject
 {
     /**
      * 

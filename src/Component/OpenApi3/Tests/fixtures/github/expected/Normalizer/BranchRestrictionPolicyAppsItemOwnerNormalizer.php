@@ -47,69 +47,96 @@ class BranchRestrictionPolicyAppsItemOwnerNormalizer implements DenormalizerInte
         }
         if (\array_key_exists('login', $data)) {
             $object->setLogin($data['login']);
+            unset($data['login']);
         }
         if (\array_key_exists('id', $data)) {
             $object->setId($data['id']);
+            unset($data['id']);
         }
         if (\array_key_exists('node_id', $data)) {
             $object->setNodeId($data['node_id']);
+            unset($data['node_id']);
         }
         if (\array_key_exists('url', $data)) {
             $object->setUrl($data['url']);
+            unset($data['url']);
         }
         if (\array_key_exists('repos_url', $data)) {
             $object->setReposUrl($data['repos_url']);
+            unset($data['repos_url']);
         }
         if (\array_key_exists('events_url', $data)) {
             $object->setEventsUrl($data['events_url']);
+            unset($data['events_url']);
         }
         if (\array_key_exists('hooks_url', $data)) {
             $object->setHooksUrl($data['hooks_url']);
+            unset($data['hooks_url']);
         }
         if (\array_key_exists('issues_url', $data)) {
             $object->setIssuesUrl($data['issues_url']);
+            unset($data['issues_url']);
         }
         if (\array_key_exists('members_url', $data)) {
             $object->setMembersUrl($data['members_url']);
+            unset($data['members_url']);
         }
         if (\array_key_exists('public_members_url', $data)) {
             $object->setPublicMembersUrl($data['public_members_url']);
+            unset($data['public_members_url']);
         }
         if (\array_key_exists('avatar_url', $data)) {
             $object->setAvatarUrl($data['avatar_url']);
+            unset($data['avatar_url']);
         }
         if (\array_key_exists('description', $data)) {
             $object->setDescription($data['description']);
+            unset($data['description']);
         }
         if (\array_key_exists('gravatar_id', $data)) {
             $object->setGravatarId($data['gravatar_id']);
+            unset($data['gravatar_id']);
         }
         if (\array_key_exists('html_url', $data)) {
             $object->setHtmlUrl($data['html_url']);
+            unset($data['html_url']);
         }
         if (\array_key_exists('followers_url', $data)) {
             $object->setFollowersUrl($data['followers_url']);
+            unset($data['followers_url']);
         }
         if (\array_key_exists('following_url', $data)) {
             $object->setFollowingUrl($data['following_url']);
+            unset($data['following_url']);
         }
         if (\array_key_exists('gists_url', $data)) {
             $object->setGistsUrl($data['gists_url']);
+            unset($data['gists_url']);
         }
         if (\array_key_exists('starred_url', $data)) {
             $object->setStarredUrl($data['starred_url']);
+            unset($data['starred_url']);
         }
         if (\array_key_exists('subscriptions_url', $data)) {
             $object->setSubscriptionsUrl($data['subscriptions_url']);
+            unset($data['subscriptions_url']);
         }
         if (\array_key_exists('organizations_url', $data)) {
             $object->setOrganizationsUrl($data['organizations_url']);
+            unset($data['organizations_url']);
         }
         if (\array_key_exists('received_events_url', $data)) {
             $object->setReceivedEventsUrl($data['received_events_url']);
+            unset($data['received_events_url']);
         }
         if (\array_key_exists('type', $data)) {
             $object->setType($data['type']);
+            unset($data['type']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -184,6 +211,11 @@ class BranchRestrictionPolicyAppsItemOwnerNormalizer implements DenormalizerInte
         }
         if (null !== $object->getType()) {
             $data['type'] = $object->getType();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\BranchRestrictionPolicyAppsItemOwnerConstraint());

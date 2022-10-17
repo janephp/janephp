@@ -47,45 +47,63 @@ class PullRequestReviewNormalizer implements DenormalizerInterface, NormalizerIn
         }
         if (\array_key_exists('id', $data)) {
             $object->setId($data['id']);
+            unset($data['id']);
         }
         if (\array_key_exists('node_id', $data)) {
             $object->setNodeId($data['node_id']);
+            unset($data['node_id']);
         }
         if (\array_key_exists('user', $data) && $data['user'] !== null) {
             $object->setUser($this->denormalizer->denormalize($data['user'], 'Github\\Model\\PullRequestReviewUser', 'json', $context));
+            unset($data['user']);
         }
         elseif (\array_key_exists('user', $data) && $data['user'] === null) {
             $object->setUser(null);
         }
         if (\array_key_exists('body', $data)) {
             $object->setBody($data['body']);
+            unset($data['body']);
         }
         if (\array_key_exists('state', $data)) {
             $object->setState($data['state']);
+            unset($data['state']);
         }
         if (\array_key_exists('html_url', $data)) {
             $object->setHtmlUrl($data['html_url']);
+            unset($data['html_url']);
         }
         if (\array_key_exists('pull_request_url', $data)) {
             $object->setPullRequestUrl($data['pull_request_url']);
+            unset($data['pull_request_url']);
         }
         if (\array_key_exists('_links', $data)) {
             $object->setLinks($this->denormalizer->denormalize($data['_links'], 'Github\\Model\\PullRequestReviewLinks', 'json', $context));
+            unset($data['_links']);
         }
         if (\array_key_exists('submitted_at', $data)) {
             $object->setSubmittedAt(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['submitted_at']));
+            unset($data['submitted_at']);
         }
         if (\array_key_exists('commit_id', $data)) {
             $object->setCommitId($data['commit_id']);
+            unset($data['commit_id']);
         }
         if (\array_key_exists('body_html', $data)) {
             $object->setBodyHtml($data['body_html']);
+            unset($data['body_html']);
         }
         if (\array_key_exists('body_text', $data)) {
             $object->setBodyText($data['body_text']);
+            unset($data['body_text']);
         }
         if (\array_key_exists('author_association', $data)) {
             $object->setAuthorAssociation($data['author_association']);
+            unset($data['author_association']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -114,6 +132,11 @@ class PullRequestReviewNormalizer implements DenormalizerInterface, NormalizerIn
             $data['body_text'] = $object->getBodyText();
         }
         $data['author_association'] = $object->getAuthorAssociation();
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\PullRequestReviewConstraint());
             $context['skip_validation'] = true;

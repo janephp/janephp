@@ -2,7 +2,7 @@
 
 namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 
-class DetailedTweetFieldsStats
+class DetailedTweetFieldsStats extends \ArrayObject
 {
     /**
      * Number of times this Tweet has been Retweeted.

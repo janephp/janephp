@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class BusinessRulePermissionSetIdInvalidException
+class BusinessRulePermissionSetIdInvalidException extends \ArrayObject
 {
     /**
      * 

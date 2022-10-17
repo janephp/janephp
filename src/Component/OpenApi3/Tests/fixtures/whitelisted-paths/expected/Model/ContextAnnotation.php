@@ -2,7 +2,7 @@
 
 namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 
-class ContextAnnotation
+class ContextAnnotation extends \ArrayObject
 {
     /**
      * Represents the data for the context annotation domain.

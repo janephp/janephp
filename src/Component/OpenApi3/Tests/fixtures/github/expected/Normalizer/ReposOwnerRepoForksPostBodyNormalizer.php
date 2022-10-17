@@ -47,6 +47,12 @@ class ReposOwnerRepoForksPostBodyNormalizer implements DenormalizerInterface, No
         }
         if (\array_key_exists('organization', $data)) {
             $object->setOrganization($data['organization']);
+            unset($data['organization']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -58,6 +64,11 @@ class ReposOwnerRepoForksPostBodyNormalizer implements DenormalizerInterface, No
         $data = array();
         if (null !== $object->getOrganization()) {
             $data['organization'] = $object->getOrganization();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ReposOwnerRepoForksPostBodyConstraint());

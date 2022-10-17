@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class InvalidStateException
+class InvalidStateException extends \ArrayObject
 {
     /**
      * 

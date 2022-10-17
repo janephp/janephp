@@ -47,9 +47,15 @@ class ExampleNormalizer implements DenormalizerInterface, NormalizerInterface, D
         }
         if (\array_key_exists('property1', $data) && $data['property1'] !== null) {
             $object->setProperty1($data['property1']);
+            unset($data['property1']);
         }
         elseif (\array_key_exists('property1', $data) && $data['property1'] === null) {
             $object->setProperty1(null);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -60,6 +66,11 @@ class ExampleNormalizer implements DenormalizerInterface, NormalizerInterface, D
     {
         $data = array();
         $data['property1'] = $object->getProperty1();
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Jane\Component\OpenApi3\Tests\Expected\Validator\ExampleConstraint());
             $context['skip_validation'] = true;

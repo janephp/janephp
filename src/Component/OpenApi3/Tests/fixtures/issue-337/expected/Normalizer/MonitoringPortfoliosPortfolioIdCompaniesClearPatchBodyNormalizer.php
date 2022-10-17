@@ -47,6 +47,12 @@ class MonitoringPortfoliosPortfolioIdCompaniesClearPatchBodyNormalizer implement
                 $values[] = $this->denormalizer->denormalize($value, 'CreditSafe\\API\\Model\\MonitoringPortfoliosPortfolioIdCompaniesClearPatchBodyCompaniesItem', 'json', $context);
             }
             $object->setCompanies($values);
+            unset($data['companies']);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
@@ -62,6 +68,11 @@ class MonitoringPortfoliosPortfolioIdCompaniesClearPatchBodyNormalizer implement
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data['companies'] = $values;
+        }
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
+            }
         }
         return $data;
     }

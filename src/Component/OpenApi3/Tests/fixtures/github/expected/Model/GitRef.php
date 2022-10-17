@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class GitRef
+class GitRef extends \ArrayObject
 {
     /**
      * 

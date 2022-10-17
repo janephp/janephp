@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class CheckSuitePreference
+class CheckSuitePreference extends \ArrayObject
 {
     /**
      * 

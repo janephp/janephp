@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class AudioMetadata
+class AudioMetadata extends \ArrayObject
 {
     /**
      * 

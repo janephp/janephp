@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class ContributorActivity
+class ContributorActivity extends \ArrayObject
 {
     /**
      * 

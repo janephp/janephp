@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class JobStepsItem
+class JobStepsItem extends \ArrayObject
 {
     /**
      * The phase of the lifecycle that the job is currently in.

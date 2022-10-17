@@ -2,7 +2,7 @@
 
 namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 
-class ResponseProblemDetailsResponse500
+class ResponseProblemDetailsResponse500 extends \ArrayObject
 {
     /**
      * http or custom status code corresponding to this operation

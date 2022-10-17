@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class BusinessRuleNamedCacheNameInvalidException
+class BusinessRuleNamedCacheNameInvalidException extends \ArrayObject
 {
     /**
      * 

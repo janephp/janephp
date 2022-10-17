@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class TransferDetail
+class TransferDetail extends \ArrayObject
 {
     /**
      * ID of transfer.

@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class SchemaNoLayerException
+class SchemaNoLayerException extends \ArrayObject
 {
     /**
      * 

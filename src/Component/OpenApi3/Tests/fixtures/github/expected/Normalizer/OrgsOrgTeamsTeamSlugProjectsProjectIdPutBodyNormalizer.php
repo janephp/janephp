@@ -47,6 +47,12 @@ class OrgsOrgTeamsTeamSlugProjectsProjectIdPutBodyNormalizer implements Denormal
         }
         if (\array_key_exists('permission', $data)) {
             $object->setPermission($data['permission']);
+            unset($data['permission']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -58,6 +64,11 @@ class OrgsOrgTeamsTeamSlugProjectsProjectIdPutBodyNormalizer implements Denormal
         $data = array();
         if (null !== $object->getPermission()) {
             $data['permission'] = $object->getPermission();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\OrgsOrgTeamsTeamSlugProjectsProjectIdPutBodyConstraint());

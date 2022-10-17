@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class XmpMappingEntryCreateRequest
+class XmpMappingEntryCreateRequest extends \ArrayObject
 {
     /**
      * Direction of the mapping.

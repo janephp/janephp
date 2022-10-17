@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class ReshardIndexNotAllowedException
+class ReshardIndexNotAllowedException extends \ArrayObject
 {
     /**
      * 

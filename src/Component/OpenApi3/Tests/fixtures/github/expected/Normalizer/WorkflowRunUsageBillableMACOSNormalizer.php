@@ -47,9 +47,16 @@ class WorkflowRunUsageBillableMACOSNormalizer implements DenormalizerInterface, 
         }
         if (\array_key_exists('total_ms', $data)) {
             $object->setTotalMs($data['total_ms']);
+            unset($data['total_ms']);
         }
         if (\array_key_exists('jobs', $data)) {
             $object->setJobs($data['jobs']);
+            unset($data['jobs']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -64,6 +71,11 @@ class WorkflowRunUsageBillableMACOSNormalizer implements DenormalizerInterface, 
         }
         if (null !== $object->getJobs()) {
             $data['jobs'] = $object->getJobs();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\WorkflowRunUsageBillableMACOSConstraint());

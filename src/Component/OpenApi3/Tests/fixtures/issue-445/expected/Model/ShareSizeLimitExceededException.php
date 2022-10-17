@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class ShareSizeLimitExceededException
+class ShareSizeLimitExceededException extends \ArrayObject
 {
     /**
      * 

@@ -47,6 +47,7 @@ class FullTextEntitiesNormalizer implements DenormalizerInterface, NormalizerInt
                 $values[] = $this->denormalizer->denormalize($value, 'Jane\\OpenApi3\\Tests\\Expected\\Model\\UrlEntity', 'json', $context);
             }
             $object->setUrls($values);
+            unset($data['urls']);
         }
         if (\array_key_exists('hashtags', $data)) {
             $values_1 = array();
@@ -54,6 +55,7 @@ class FullTextEntitiesNormalizer implements DenormalizerInterface, NormalizerInt
                 $values_1[] = $this->denormalizer->denormalize($value_1, 'Jane\\OpenApi3\\Tests\\Expected\\Model\\HashtagEntity', 'json', $context);
             }
             $object->setHashtags($values_1);
+            unset($data['hashtags']);
         }
         if (\array_key_exists('mentions', $data)) {
             $values_2 = array();
@@ -61,6 +63,7 @@ class FullTextEntitiesNormalizer implements DenormalizerInterface, NormalizerInt
                 $values_2[] = $this->denormalizer->denormalize($value_2, 'Jane\\OpenApi3\\Tests\\Expected\\Model\\MentionEntity', 'json', $context);
             }
             $object->setMentions($values_2);
+            unset($data['mentions']);
         }
         if (\array_key_exists('cashtags', $data)) {
             $values_3 = array();
@@ -68,6 +71,7 @@ class FullTextEntitiesNormalizer implements DenormalizerInterface, NormalizerInt
                 $values_3[] = $this->denormalizer->denormalize($value_3, 'Jane\\OpenApi3\\Tests\\Expected\\Model\\CashtagEntity', 'json', $context);
             }
             $object->setCashtags($values_3);
+            unset($data['cashtags']);
         }
         if (\array_key_exists('annotations', $data)) {
             $values_4 = array();
@@ -75,6 +79,12 @@ class FullTextEntitiesNormalizer implements DenormalizerInterface, NormalizerInt
                 $values_4[] = $this->denormalizer->denormalize($value_4, 'Jane\\OpenApi3\\Tests\\Expected\\Model\\FullTextEntitiesAnnotationsItem', 'json', $context);
             }
             $object->setAnnotations($values_4);
+            unset($data['annotations']);
+        }
+        foreach ($data as $key => $value_5) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_5;
+            }
         }
         return $object;
     }
@@ -118,6 +128,11 @@ class FullTextEntitiesNormalizer implements DenormalizerInterface, NormalizerInt
                 $values_4[] = $this->normalizer->normalize($value_4, 'json', $context);
             }
             $data['annotations'] = $values_4;
+        }
+        foreach ($object as $key => $value_5) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_5;
+            }
         }
         return $data;
     }

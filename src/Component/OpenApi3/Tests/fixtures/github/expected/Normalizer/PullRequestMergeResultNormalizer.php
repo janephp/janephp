@@ -47,12 +47,20 @@ class PullRequestMergeResultNormalizer implements DenormalizerInterface, Normali
         }
         if (\array_key_exists('sha', $data)) {
             $object->setSha($data['sha']);
+            unset($data['sha']);
         }
         if (\array_key_exists('merged', $data)) {
             $object->setMerged($data['merged']);
+            unset($data['merged']);
         }
         if (\array_key_exists('message', $data)) {
             $object->setMessage($data['message']);
+            unset($data['message']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -65,6 +73,11 @@ class PullRequestMergeResultNormalizer implements DenormalizerInterface, Normali
         $data['sha'] = $object->getSha();
         $data['merged'] = $object->getMerged();
         $data['message'] = $object->getMessage();
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\PullRequestMergeResultConstraint());
             $context['skip_validation'] = true;

@@ -47,18 +47,28 @@ class OrgsOrgTeamsTeamSlugPatchBodyNormalizer implements DenormalizerInterface, 
         }
         if (\array_key_exists('name', $data)) {
             $object->setName($data['name']);
+            unset($data['name']);
         }
         if (\array_key_exists('description', $data)) {
             $object->setDescription($data['description']);
+            unset($data['description']);
         }
         if (\array_key_exists('privacy', $data)) {
             $object->setPrivacy($data['privacy']);
+            unset($data['privacy']);
         }
         if (\array_key_exists('permission', $data)) {
             $object->setPermission($data['permission']);
+            unset($data['permission']);
         }
         if (\array_key_exists('parent_team_id', $data)) {
             $object->setParentTeamId($data['parent_team_id']);
+            unset($data['parent_team_id']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -80,6 +90,11 @@ class OrgsOrgTeamsTeamSlugPatchBodyNormalizer implements DenormalizerInterface, 
         }
         if (null !== $object->getParentTeamId()) {
             $data['parent_team_id'] = $object->getParentTeamId();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\OrgsOrgTeamsTeamSlugPatchBodyConstraint());

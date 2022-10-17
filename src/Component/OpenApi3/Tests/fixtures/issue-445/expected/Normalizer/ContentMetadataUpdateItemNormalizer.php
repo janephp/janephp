@@ -47,37 +47,53 @@ class ContentMetadataUpdateItemNormalizer implements DenormalizerInterface, Norm
                 $values[] = $value;
             }
             $object->setLayerSchemaIds($values);
+            unset($data['layerSchemaIds']);
         }
         elseif (\array_key_exists('layerSchemaIds', $data) && $data['layerSchemaIds'] === null) {
             $object->setLayerSchemaIds(null);
         }
         if (\array_key_exists('content', $data) && $data['content'] !== null) {
-            $object->setContent($data['content']);
+            $values_1 = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
+            foreach ($data['content'] as $key => $value_1) {
+                $values_1[$key] = $value_1;
+            }
+            $object->setContent($values_1);
+            unset($data['content']);
         }
         elseif (\array_key_exists('content', $data) && $data['content'] === null) {
             $object->setContent(null);
         }
         if (\array_key_exists('metadata', $data) && $data['metadata'] !== null) {
-            $values_1 = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
-            foreach ($data['metadata'] as $key => $value_1) {
-                $values_1[$key] = $value_1;
+            $values_2 = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
+            foreach ($data['metadata'] as $key_1 => $value_2) {
+                $values_2[$key_1] = $value_2;
             }
-            $object->setMetadata($values_1);
+            $object->setMetadata($values_2);
+            unset($data['metadata']);
         }
         elseif (\array_key_exists('metadata', $data) && $data['metadata'] === null) {
             $object->setMetadata(null);
         }
         if (\array_key_exists('layerSchemasUpdateOptions', $data)) {
             $object->setLayerSchemasUpdateOptions($data['layerSchemasUpdateOptions']);
+            unset($data['layerSchemasUpdateOptions']);
         }
         if (\array_key_exists('layerFieldsUpdateOptions', $data)) {
             $object->setLayerFieldsUpdateOptions($data['layerFieldsUpdateOptions']);
+            unset($data['layerFieldsUpdateOptions']);
         }
         if (\array_key_exists('contentFieldsUpdateOptions', $data)) {
             $object->setContentFieldsUpdateOptions($data['contentFieldsUpdateOptions']);
+            unset($data['contentFieldsUpdateOptions']);
         }
         if (\array_key_exists('id', $data)) {
             $object->setId($data['id']);
+            unset($data['id']);
+        }
+        foreach ($data as $key_2 => $value_3) {
+            if (preg_match('/.*/', (string) $key_2)) {
+                $object[$key_2] = $value_3;
+            }
         }
         return $object;
     }
@@ -95,19 +111,28 @@ class ContentMetadataUpdateItemNormalizer implements DenormalizerInterface, Norm
             $data['layerSchemaIds'] = $values;
         }
         if (null !== $object->getContent()) {
-            $data['content'] = $object->getContent();
-        }
-        if (null !== $object->getMetadata()) {
             $values_1 = array();
-            foreach ($object->getMetadata() as $key => $value_1) {
+            foreach ($object->getContent() as $key => $value_1) {
                 $values_1[$key] = $value_1;
             }
-            $data['metadata'] = $values_1;
+            $data['content'] = $values_1;
+        }
+        if (null !== $object->getMetadata()) {
+            $values_2 = array();
+            foreach ($object->getMetadata() as $key_1 => $value_2) {
+                $values_2[$key_1] = $value_2;
+            }
+            $data['metadata'] = $values_2;
         }
         $data['layerSchemasUpdateOptions'] = $object->getLayerSchemasUpdateOptions();
         $data['layerFieldsUpdateOptions'] = $object->getLayerFieldsUpdateOptions();
         $data['contentFieldsUpdateOptions'] = $object->getContentFieldsUpdateOptions();
         $data['id'] = $object->getId();
+        foreach ($object as $key_2 => $value_3) {
+            if (preg_match('/.*/', (string) $key_2)) {
+                $data[$key_2] = $value_3;
+            }
+        }
         return $data;
     }
 }

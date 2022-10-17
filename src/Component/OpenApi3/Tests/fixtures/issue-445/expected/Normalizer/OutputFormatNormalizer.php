@@ -43,51 +43,68 @@ class OutputFormatNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         if (\array_key_exists('sourceOutputFormats', $data) && $data['sourceOutputFormats'] !== null) {
             $object->setSourceOutputFormats($data['sourceOutputFormats']);
+            unset($data['sourceOutputFormats']);
         }
         elseif (\array_key_exists('sourceOutputFormats', $data) && $data['sourceOutputFormats'] === null) {
             $object->setSourceOutputFormats(null);
         }
         if (\array_key_exists('format', $data) && $data['format'] !== null) {
             $object->setFormat($data['format']);
+            unset($data['format']);
         }
         elseif (\array_key_exists('format', $data) && $data['format'] === null) {
             $object->setFormat(null);
         }
         if (\array_key_exists('names', $data)) {
             $object->setNames($data['names']);
+            unset($data['names']);
         }
         if (\array_key_exists('retentionTime', $data)) {
             $object->setRetentionTime($data['retentionTime']);
+            unset($data['retentionTime']);
         }
         if (\array_key_exists('downloadFileNamePatterns', $data) && $data['downloadFileNamePatterns'] !== null) {
             $object->setDownloadFileNamePatterns($data['downloadFileNamePatterns']);
+            unset($data['downloadFileNamePatterns']);
         }
         elseif (\array_key_exists('downloadFileNamePatterns', $data) && $data['downloadFileNamePatterns'] === null) {
             $object->setDownloadFileNamePatterns(null);
         }
         if (\array_key_exists('viewForAll', $data)) {
             $object->setViewForAll($data['viewForAll']);
+            unset($data['viewForAll']);
         }
         if (\array_key_exists('enableXmpWriteback', $data)) {
             $object->setEnableXmpWriteback($data['enableXmpWriteback']);
+            unset($data['enableXmpWriteback']);
         }
         if (\array_key_exists('id', $data) && $data['id'] !== null) {
             $object->setId($data['id']);
+            unset($data['id']);
         }
         elseif (\array_key_exists('id', $data) && $data['id'] === null) {
             $object->setId(null);
         }
         if (\array_key_exists('system', $data)) {
             $object->setSystem($data['system']);
+            unset($data['system']);
         }
         if (\array_key_exists('dynamic', $data)) {
             $object->setDynamic($data['dynamic']);
+            unset($data['dynamic']);
         }
         if (\array_key_exists('dataExtraction', $data)) {
             $object->setDataExtraction($data['dataExtraction']);
+            unset($data['dataExtraction']);
         }
         if (\array_key_exists('temporary', $data)) {
             $object->setTemporary($data['temporary']);
+            unset($data['temporary']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -130,6 +147,11 @@ class OutputFormatNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         if (null !== $object->getTemporary()) {
             $data['temporary'] = $object->getTemporary();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

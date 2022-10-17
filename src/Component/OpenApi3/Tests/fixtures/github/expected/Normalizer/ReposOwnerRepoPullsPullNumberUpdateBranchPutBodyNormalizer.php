@@ -47,6 +47,12 @@ class ReposOwnerRepoPullsPullNumberUpdateBranchPutBodyNormalizer implements Deno
         }
         if (\array_key_exists('expected_head_sha', $data)) {
             $object->setExpectedHeadSha($data['expected_head_sha']);
+            unset($data['expected_head_sha']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -58,6 +64,11 @@ class ReposOwnerRepoPullsPullNumberUpdateBranchPutBodyNormalizer implements Deno
         $data = array();
         if (null !== $object->getExpectedHeadSha()) {
             $data['expected_head_sha'] = $object->getExpectedHeadSha();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ReposOwnerRepoPullsPullNumberUpdateBranchPutBodyConstraint());

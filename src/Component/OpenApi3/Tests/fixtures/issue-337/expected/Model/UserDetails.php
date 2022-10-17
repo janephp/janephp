@@ -2,7 +2,7 @@
 
 namespace CreditSafe\API\Model;
 
-class UserDetails
+class UserDetails extends \ArrayObject
 {
     /**
      * The ISO/Alpha 2 format country code for the user's country.

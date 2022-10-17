@@ -6,7 +6,7 @@ namespace Jane\Component\OpenApi3\Tests\Expected\Model;
  *
  * @deprecated
  */
-class Foo
+class Foo extends \ArrayObject
 {
     /**
      * 

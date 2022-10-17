@@ -47,12 +47,20 @@ class ReferrerTrafficNormalizer implements DenormalizerInterface, NormalizerInte
         }
         if (\array_key_exists('referrer', $data)) {
             $object->setReferrer($data['referrer']);
+            unset($data['referrer']);
         }
         if (\array_key_exists('count', $data)) {
             $object->setCount($data['count']);
+            unset($data['count']);
         }
         if (\array_key_exists('uniques', $data)) {
             $object->setUniques($data['uniques']);
+            unset($data['uniques']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -65,6 +73,11 @@ class ReferrerTrafficNormalizer implements DenormalizerInterface, NormalizerInte
         $data['referrer'] = $object->getReferrer();
         $data['count'] = $object->getCount();
         $data['uniques'] = $object->getUniques();
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ReferrerTrafficConstraint());
             $context['skip_validation'] = true;

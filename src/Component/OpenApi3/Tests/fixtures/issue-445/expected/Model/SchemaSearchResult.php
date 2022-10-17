@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class SchemaSearchResult
+class SchemaSearchResult extends \ArrayObject
 {
     /**
      * The total number of matching documents.

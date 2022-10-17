@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class PorterAuthor
+class PorterAuthor extends \ArrayObject
 {
     /**
      * 

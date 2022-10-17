@@ -47,15 +47,24 @@ class RunnerNormalizer implements DenormalizerInterface, NormalizerInterface, De
         }
         if (\array_key_exists('id', $data)) {
             $object->setId($data['id']);
+            unset($data['id']);
         }
         if (\array_key_exists('name', $data)) {
             $object->setName($data['name']);
+            unset($data['name']);
         }
         if (\array_key_exists('os', $data)) {
             $object->setOs($data['os']);
+            unset($data['os']);
         }
         if (\array_key_exists('status', $data)) {
             $object->setStatus($data['status']);
+            unset($data['status']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -69,6 +78,11 @@ class RunnerNormalizer implements DenormalizerInterface, NormalizerInterface, De
         $data['name'] = $object->getName();
         $data['os'] = $object->getOs();
         $data['status'] = $object->getStatus();
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\RunnerConstraint());
             $context['skip_validation'] = true;

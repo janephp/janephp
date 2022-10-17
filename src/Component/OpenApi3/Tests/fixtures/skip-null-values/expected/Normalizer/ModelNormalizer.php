@@ -43,18 +43,26 @@ class ModelNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         }
         if (\array_key_exists('foo', $data) && $data['foo'] !== null) {
             $object->setFoo($data['foo']);
+            unset($data['foo']);
         }
         elseif (\array_key_exists('foo', $data) && $data['foo'] === null) {
             $object->setFoo(null);
         }
         if (\array_key_exists('bar', $data)) {
             $object->setBar($data['bar']);
+            unset($data['bar']);
         }
         if (\array_key_exists('date', $data) && $data['date'] !== null) {
             $object->setDate(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['date']));
+            unset($data['date']);
         }
         elseif (\array_key_exists('date', $data) && $data['date'] === null) {
             $object->setDate(null);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -78,6 +86,11 @@ class ModelNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         }
         else {
             $data['date'] = null;
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

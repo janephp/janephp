@@ -43,9 +43,11 @@ class ContentPermissionSetDetailNormalizer implements DenormalizerInterface, Nor
         }
         if (\array_key_exists('id', $data)) {
             $object->setId($data['id']);
+            unset($data['id']);
         }
         if (\array_key_exists('names', $data)) {
             $object->setNames($data['names']);
+            unset($data['names']);
         }
         if (\array_key_exists('userRolesRights', $data) && $data['userRolesRights'] !== null) {
             $values = array();
@@ -53,6 +55,7 @@ class ContentPermissionSetDetailNormalizer implements DenormalizerInterface, Nor
                 $values[] = $this->denormalizer->denormalize($value, 'PicturePark\\API\\Model\\PermissionUserRoleRightsOfContentRight', 'json', $context);
             }
             $object->setUserRolesRights($values);
+            unset($data['userRolesRights']);
         }
         elseif (\array_key_exists('userRolesRights', $data) && $data['userRolesRights'] === null) {
             $object->setUserRolesRights(null);
@@ -63,21 +66,30 @@ class ContentPermissionSetDetailNormalizer implements DenormalizerInterface, Nor
                 $values_1[] = $this->denormalizer->denormalize($value_1, 'PicturePark\\API\\Model\\PermissionUserRoleRightsOfPermissionSetRight', 'json', $context);
             }
             $object->setUserRolesPermissionSetRights($values_1);
+            unset($data['userRolesPermissionSetRights']);
         }
         elseif (\array_key_exists('userRolesPermissionSetRights', $data) && $data['userRolesPermissionSetRights'] === null) {
             $object->setUserRolesPermissionSetRights(null);
         }
         if (\array_key_exists('exclusive', $data)) {
             $object->setExclusive($data['exclusive']);
+            unset($data['exclusive']);
         }
         if (\array_key_exists('ownerTokenId', $data)) {
             $object->setOwnerTokenId($data['ownerTokenId']);
+            unset($data['ownerTokenId']);
         }
         if (\array_key_exists('audit', $data) && $data['audit'] !== null) {
             $object->setAudit($data['audit']);
+            unset($data['audit']);
         }
         elseif (\array_key_exists('audit', $data) && $data['audit'] === null) {
             $object->setAudit(null);
+        }
+        foreach ($data as $key => $value_2) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_2;
+            }
         }
         return $object;
     }
@@ -107,6 +119,11 @@ class ContentPermissionSetDetailNormalizer implements DenormalizerInterface, Nor
         $data['ownerTokenId'] = $object->getOwnerTokenId();
         if (null !== $object->getAudit()) {
             $data['audit'] = $object->getAudit();
+        }
+        foreach ($object as $key => $value_2) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_2;
+            }
         }
         return $data;
     }

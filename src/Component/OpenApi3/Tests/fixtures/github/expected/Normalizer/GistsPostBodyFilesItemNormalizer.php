@@ -47,6 +47,12 @@ class GistsPostBodyFilesItemNormalizer implements DenormalizerInterface, Normali
         }
         if (\array_key_exists('content', $data)) {
             $object->setContent($data['content']);
+            unset($data['content']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -57,6 +63,11 @@ class GistsPostBodyFilesItemNormalizer implements DenormalizerInterface, Normali
     {
         $data = array();
         $data['content'] = $object->getContent();
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\GistsPostBodyFilesItemConstraint());
             $context['skip_validation'] = true;

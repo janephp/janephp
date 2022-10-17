@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class UserSearchResultItem
+class UserSearchResultItem extends \ArrayObject
 {
     /**
      * 

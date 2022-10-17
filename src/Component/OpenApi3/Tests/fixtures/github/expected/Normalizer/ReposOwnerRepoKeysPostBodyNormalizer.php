@@ -47,12 +47,20 @@ class ReposOwnerRepoKeysPostBodyNormalizer implements DenormalizerInterface, Nor
         }
         if (\array_key_exists('title', $data)) {
             $object->setTitle($data['title']);
+            unset($data['title']);
         }
         if (\array_key_exists('key', $data)) {
             $object->setKey($data['key']);
+            unset($data['key']);
         }
         if (\array_key_exists('read_only', $data)) {
             $object->setReadOnly($data['read_only']);
+            unset($data['read_only']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -68,6 +76,11 @@ class ReposOwnerRepoKeysPostBodyNormalizer implements DenormalizerInterface, Nor
         $data['key'] = $object->getKey();
         if (null !== $object->getReadOnly()) {
             $data['read_only'] = $object->getReadOnly();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ReposOwnerRepoKeysPostBodyConstraint());

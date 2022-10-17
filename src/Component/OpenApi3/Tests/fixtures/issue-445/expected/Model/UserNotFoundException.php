@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class UserNotFoundException
+class UserNotFoundException extends \ArrayObject
 {
     /**
      * 

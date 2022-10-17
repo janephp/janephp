@@ -43,9 +43,16 @@ class BookJsonhalReviewReadNormalizer implements DenormalizerInterface, Normaliz
         }
         if (\array_key_exists('_links', $data)) {
             $object->setLinks($this->denormalizer->denormalize($data['_links'], 'ApiPlatform\\Demo\\Model\\BookJsonhalReviewReadLinks', 'json', $context));
+            unset($data['_links']);
         }
         if (\array_key_exists('title', $data)) {
             $object->setTitle($data['title']);
+            unset($data['title']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -59,6 +66,11 @@ class BookJsonhalReviewReadNormalizer implements DenormalizerInterface, Normaliz
             $data['_links'] = $this->normalizer->normalize($object->getLinks(), 'json', $context);
         }
         $data['title'] = $object->getTitle();
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
         return $data;
     }
 }

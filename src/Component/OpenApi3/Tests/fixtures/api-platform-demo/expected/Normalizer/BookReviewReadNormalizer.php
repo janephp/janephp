@@ -43,6 +43,12 @@ class BookReviewReadNormalizer implements DenormalizerInterface, NormalizerInter
         }
         if (\array_key_exists('title', $data)) {
             $object->setTitle($data['title']);
+            unset($data['title']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -53,6 +59,11 @@ class BookReviewReadNormalizer implements DenormalizerInterface, NormalizerInter
     {
         $data = array();
         $data['title'] = $object->getTitle();
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
         return $data;
     }
 }

@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class OutdatedMetadataUpdateInProgressException
+class OutdatedMetadataUpdateInProgressException extends \ArrayObject
 {
     /**
      * 

@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class OperationInProgressException
+class OperationInProgressException extends \ArrayObject
 {
     /**
      * 

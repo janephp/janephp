@@ -43,9 +43,16 @@ class DefaultUserFieldsEntitiesNormalizer implements DenormalizerInterface, Norm
         }
         if (\array_key_exists('url', $data)) {
             $object->setUrl($this->denormalizer->denormalize($data['url'], 'Jane\\OpenApi3\\Tests\\Expected\\Model\\DefaultUserFieldsEntitiesUrl', 'json', $context));
+            unset($data['url']);
         }
         if (\array_key_exists('description', $data)) {
             $object->setDescription($this->denormalizer->denormalize($data['description'], 'Jane\\OpenApi3\\Tests\\Expected\\Model\\FullTextEntities', 'json', $context));
+            unset($data['description']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -60,6 +67,11 @@ class DefaultUserFieldsEntitiesNormalizer implements DenormalizerInterface, Norm
         }
         if (null !== $object->getDescription()) {
             $data['description'] = $this->normalizer->normalize($object->getDescription(), 'json', $context);
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

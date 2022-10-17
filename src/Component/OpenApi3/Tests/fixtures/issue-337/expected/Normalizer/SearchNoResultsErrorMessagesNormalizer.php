@@ -43,12 +43,20 @@ class SearchNoResultsErrorMessagesNormalizer implements DenormalizerInterface, N
         }
         if (\array_key_exists('code', $data)) {
             $object->setCode($data['code']);
+            unset($data['code']);
         }
         if (\array_key_exists('text', $data)) {
             $object->setText($data['text']);
+            unset($data['text']);
         }
         if (\array_key_exists('type', $data)) {
             $object->setType($data['type']);
+            unset($data['type']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -66,6 +74,11 @@ class SearchNoResultsErrorMessagesNormalizer implements DenormalizerInterface, N
         }
         if (null !== $object->getType()) {
             $data['type'] = $object->getType();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

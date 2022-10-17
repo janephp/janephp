@@ -43,24 +43,34 @@ class VideoSpriteFormatNormalizer implements DenormalizerInterface, NormalizerIn
         }
         if (\array_key_exists('kind', $data)) {
             $object->setKind($data['kind']);
+            unset($data['kind']);
         }
         if (\array_key_exists('spriteResizeAction', $data) && $data['spriteResizeAction'] !== null) {
             $object->setSpriteResizeAction($data['spriteResizeAction']);
+            unset($data['spriteResizeAction']);
         }
         elseif (\array_key_exists('spriteResizeAction', $data) && $data['spriteResizeAction'] === null) {
             $object->setSpriteResizeAction(null);
         }
         if (\array_key_exists('maxNumberOfSprites', $data)) {
             $object->setMaxNumberOfSprites($data['maxNumberOfSprites']);
+            unset($data['maxNumberOfSprites']);
         }
         if (\array_key_exists('quality', $data)) {
             $object->setQuality($data['quality']);
+            unset($data['quality']);
         }
         if (\array_key_exists('extension', $data) && $data['extension'] !== null) {
             $object->setExtension($data['extension']);
+            unset($data['extension']);
         }
         elseif (\array_key_exists('extension', $data) && $data['extension'] === null) {
             $object->setExtension(null);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -82,6 +92,11 @@ class VideoSpriteFormatNormalizer implements DenormalizerInterface, NormalizerIn
         }
         if (null !== $object->getExtension()) {
             $data['extension'] = $object->getExtension();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

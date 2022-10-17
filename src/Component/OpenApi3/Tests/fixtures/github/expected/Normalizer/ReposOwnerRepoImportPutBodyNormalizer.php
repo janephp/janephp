@@ -47,18 +47,28 @@ class ReposOwnerRepoImportPutBodyNormalizer implements DenormalizerInterface, No
         }
         if (\array_key_exists('vcs_url', $data)) {
             $object->setVcsUrl($data['vcs_url']);
+            unset($data['vcs_url']);
         }
         if (\array_key_exists('vcs', $data)) {
             $object->setVcs($data['vcs']);
+            unset($data['vcs']);
         }
         if (\array_key_exists('vcs_username', $data)) {
             $object->setVcsUsername($data['vcs_username']);
+            unset($data['vcs_username']);
         }
         if (\array_key_exists('vcs_password', $data)) {
             $object->setVcsPassword($data['vcs_password']);
+            unset($data['vcs_password']);
         }
         if (\array_key_exists('tfvc_project', $data)) {
             $object->setTfvcProject($data['tfvc_project']);
+            unset($data['tfvc_project']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -80,6 +90,11 @@ class ReposOwnerRepoImportPutBodyNormalizer implements DenormalizerInterface, No
         }
         if (null !== $object->getTfvcProject()) {
             $data['tfvc_project'] = $object->getTfvcProject();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ReposOwnerRepoImportPutBodyConstraint());

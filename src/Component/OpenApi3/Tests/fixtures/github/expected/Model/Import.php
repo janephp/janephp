@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class Import
+class Import extends \ArrayObject
 {
     /**
      * 

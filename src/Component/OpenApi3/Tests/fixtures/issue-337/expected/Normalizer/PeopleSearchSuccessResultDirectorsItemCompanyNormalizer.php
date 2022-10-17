@@ -43,18 +43,28 @@ class PeopleSearchSuccessResultDirectorsItemCompanyNormalizer implements Denorma
         }
         if (\array_key_exists('id', $data)) {
             $object->setId($data['id']);
+            unset($data['id']);
         }
         if (\array_key_exists('companyName', $data)) {
             $object->setCompanyName($data['companyName']);
+            unset($data['companyName']);
         }
         if (\array_key_exists('companyNumber', $data)) {
             $object->setCompanyNumber($data['companyNumber']);
+            unset($data['companyNumber']);
         }
         if (\array_key_exists('type', $data)) {
             $object->setType($data['type']);
+            unset($data['type']);
         }
         if (\array_key_exists('regNo', $data)) {
             $object->setRegNo($data['regNo']);
+            unset($data['regNo']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -78,6 +88,11 @@ class PeopleSearchSuccessResultDirectorsItemCompanyNormalizer implements Denorma
         }
         if (null !== $object->getRegNo()) {
             $data['regNo'] = $object->getRegNo();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

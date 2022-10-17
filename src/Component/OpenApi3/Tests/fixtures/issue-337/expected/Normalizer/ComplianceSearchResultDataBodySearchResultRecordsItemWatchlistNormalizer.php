@@ -47,9 +47,16 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistNormalizer i
                 $values[] = $this->denormalizer->denormalize($value, 'CreditSafe\\API\\Model\\ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItem', 'json', $context);
             }
             $object->setMatches($values);
+            unset($data['matches']);
         }
         if (\array_key_exists('status', $data)) {
             $object->setStatus($data['status']);
+            unset($data['status']);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
@@ -68,6 +75,11 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistNormalizer i
         }
         if (null !== $object->getStatus()) {
             $data['status'] = $object->getStatus();
+        }
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
+            }
         }
         return $data;
     }

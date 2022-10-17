@@ -47,12 +47,15 @@ class OrgsOrgActionsSecretsSecretNamePutBodyNormalizer implements DenormalizerIn
         }
         if (\array_key_exists('encrypted_value', $data)) {
             $object->setEncryptedValue($data['encrypted_value']);
+            unset($data['encrypted_value']);
         }
         if (\array_key_exists('key_id', $data)) {
             $object->setKeyId($data['key_id']);
+            unset($data['key_id']);
         }
         if (\array_key_exists('visibility', $data)) {
             $object->setVisibility($data['visibility']);
+            unset($data['visibility']);
         }
         if (\array_key_exists('selected_repository_ids', $data)) {
             $values = array();
@@ -60,6 +63,12 @@ class OrgsOrgActionsSecretsSecretNamePutBodyNormalizer implements DenormalizerIn
                 $values[] = $value;
             }
             $object->setSelectedRepositoryIds($values);
+            unset($data['selected_repository_ids']);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
@@ -84,6 +93,11 @@ class OrgsOrgActionsSecretsSecretNamePutBodyNormalizer implements DenormalizerIn
                 $values[] = $value;
             }
             $data['selected_repository_ids'] = $values;
+        }
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\OrgsOrgActionsSecretsSecretNamePutBodyConstraint());

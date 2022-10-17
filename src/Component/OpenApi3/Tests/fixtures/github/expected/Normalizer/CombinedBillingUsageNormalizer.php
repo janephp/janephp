@@ -47,12 +47,20 @@ class CombinedBillingUsageNormalizer implements DenormalizerInterface, Normalize
         }
         if (\array_key_exists('days_left_in_billing_cycle', $data)) {
             $object->setDaysLeftInBillingCycle($data['days_left_in_billing_cycle']);
+            unset($data['days_left_in_billing_cycle']);
         }
         if (\array_key_exists('estimated_paid_storage_for_month', $data)) {
             $object->setEstimatedPaidStorageForMonth($data['estimated_paid_storage_for_month']);
+            unset($data['estimated_paid_storage_for_month']);
         }
         if (\array_key_exists('estimated_storage_for_month', $data)) {
             $object->setEstimatedStorageForMonth($data['estimated_storage_for_month']);
+            unset($data['estimated_storage_for_month']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -70,6 +78,11 @@ class CombinedBillingUsageNormalizer implements DenormalizerInterface, Normalize
         }
         if (null !== $object->getEstimatedStorageForMonth()) {
             $data['estimated_storage_for_month'] = $object->getEstimatedStorageForMonth();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\CombinedBillingUsageConstraint());

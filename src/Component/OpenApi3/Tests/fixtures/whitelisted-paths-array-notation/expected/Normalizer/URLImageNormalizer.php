@@ -43,12 +43,20 @@ class URLImageNormalizer implements DenormalizerInterface, NormalizerInterface, 
         }
         if (\array_key_exists('url', $data)) {
             $object->setUrl($data['url']);
+            unset($data['url']);
         }
         if (\array_key_exists('height', $data)) {
             $object->setHeight($data['height']);
+            unset($data['height']);
         }
         if (\array_key_exists('width', $data)) {
             $object->setWidth($data['width']);
+            unset($data['width']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -66,6 +74,11 @@ class URLImageNormalizer implements DenormalizerInterface, NormalizerInterface, 
         }
         if (null !== $object->getWidth()) {
             $data['width'] = $object->getWidth();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class CustomerBoostValuesUpdateTimeoutException
+class CustomerBoostValuesUpdateTimeoutException extends \ArrayObject
 {
     /**
      * 

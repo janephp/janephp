@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class DisplayPatternTypeNotSupportedException
+class DisplayPatternTypeNotSupportedException extends \ArrayObject
 {
     /**
      * 

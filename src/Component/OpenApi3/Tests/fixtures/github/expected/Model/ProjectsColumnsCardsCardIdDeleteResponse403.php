@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class ProjectsColumnsCardsCardIdDeleteResponse403
+class ProjectsColumnsCardsCardIdDeleteResponse403 extends \ArrayObject
 {
     /**
      * 

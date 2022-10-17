@@ -43,6 +43,12 @@ class CashtagFieldsNormalizer implements DenormalizerInterface, NormalizerInterf
         }
         if (\array_key_exists('tag', $data)) {
             $object->setTag($data['tag']);
+            unset($data['tag']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -53,6 +59,11 @@ class CashtagFieldsNormalizer implements DenormalizerInterface, NormalizerInterf
     {
         $data = array();
         $data['tag'] = $object->getTag();
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
         return $data;
     }
 }

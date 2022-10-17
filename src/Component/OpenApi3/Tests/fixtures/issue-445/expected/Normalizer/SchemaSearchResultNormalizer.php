@@ -43,6 +43,7 @@ class SchemaSearchResultNormalizer implements DenormalizerInterface, NormalizerI
         }
         if (\array_key_exists('totalResults', $data)) {
             $object->setTotalResults($data['totalResults']);
+            unset($data['totalResults']);
         }
         if (\array_key_exists('results', $data)) {
             $values = array();
@@ -50,24 +51,29 @@ class SchemaSearchResultNormalizer implements DenormalizerInterface, NormalizerI
                 $values[] = $this->denormalizer->denormalize($value, 'PicturePark\\API\\Model\\Schema', 'json', $context);
             }
             $object->setResults($values);
+            unset($data['results']);
         }
         if (\array_key_exists('elapsedMilliseconds', $data)) {
             $object->setElapsedMilliseconds($data['elapsedMilliseconds']);
+            unset($data['elapsedMilliseconds']);
         }
         if (\array_key_exists('pageToken', $data) && $data['pageToken'] !== null) {
             $object->setPageToken($data['pageToken']);
+            unset($data['pageToken']);
         }
         elseif (\array_key_exists('pageToken', $data) && $data['pageToken'] === null) {
             $object->setPageToken(null);
         }
         if (\array_key_exists('searchString', $data) && $data['searchString'] !== null) {
             $object->setSearchString($data['searchString']);
+            unset($data['searchString']);
         }
         elseif (\array_key_exists('searchString', $data) && $data['searchString'] === null) {
             $object->setSearchString(null);
         }
         if (\array_key_exists('isSearchStringRewritten', $data)) {
             $object->setIsSearchStringRewritten($data['isSearchStringRewritten']);
+            unset($data['isSearchStringRewritten']);
         }
         if (\array_key_exists('queryDebugInformation', $data) && $data['queryDebugInformation'] !== null) {
             $values_1 = array();
@@ -75,9 +81,15 @@ class SchemaSearchResultNormalizer implements DenormalizerInterface, NormalizerI
                 $values_1[] = $this->denormalizer->denormalize($value_1, 'PicturePark\\API\\Model\\QueryDebugInformation', 'json', $context);
             }
             $object->setQueryDebugInformation($values_1);
+            unset($data['queryDebugInformation']);
         }
         elseif (\array_key_exists('queryDebugInformation', $data) && $data['queryDebugInformation'] === null) {
             $object->setQueryDebugInformation(null);
+        }
+        foreach ($data as $key => $value_2) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_2;
+            }
         }
         return $object;
     }
@@ -109,6 +121,11 @@ class SchemaSearchResultNormalizer implements DenormalizerInterface, NormalizerI
                 $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
             }
             $data['queryDebugInformation'] = $values_1;
+        }
+        foreach ($object as $key => $value_2) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_2;
+            }
         }
         return $data;
     }

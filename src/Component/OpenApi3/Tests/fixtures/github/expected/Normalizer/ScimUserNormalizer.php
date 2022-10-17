@@ -51,24 +51,29 @@ class ScimUserNormalizer implements DenormalizerInterface, NormalizerInterface, 
                 $values[] = $value;
             }
             $object->setSchemas($values);
+            unset($data['schemas']);
         }
         if (\array_key_exists('id', $data)) {
             $object->setId($data['id']);
+            unset($data['id']);
         }
         if (\array_key_exists('externalId', $data) && $data['externalId'] !== null) {
             $object->setExternalId($data['externalId']);
+            unset($data['externalId']);
         }
         elseif (\array_key_exists('externalId', $data) && $data['externalId'] === null) {
             $object->setExternalId(null);
         }
         if (\array_key_exists('userName', $data) && $data['userName'] !== null) {
             $object->setUserName($data['userName']);
+            unset($data['userName']);
         }
         elseif (\array_key_exists('userName', $data) && $data['userName'] === null) {
             $object->setUserName(null);
         }
         if (\array_key_exists('name', $data)) {
             $object->setName($this->denormalizer->denormalize($data['name'], 'Github\\Model\\ScimUserName', 'json', $context));
+            unset($data['name']);
         }
         if (\array_key_exists('emails', $data)) {
             $values_1 = array();
@@ -76,15 +81,19 @@ class ScimUserNormalizer implements DenormalizerInterface, NormalizerInterface, 
                 $values_1[] = $this->denormalizer->denormalize($value_1, 'Github\\Model\\ScimUserEmailsItem', 'json', $context);
             }
             $object->setEmails($values_1);
+            unset($data['emails']);
         }
         if (\array_key_exists('active', $data)) {
             $object->setActive($data['active']);
+            unset($data['active']);
         }
         if (\array_key_exists('meta', $data)) {
             $object->setMeta($this->denormalizer->denormalize($data['meta'], 'Github\\Model\\ScimUserMeta', 'json', $context));
+            unset($data['meta']);
         }
         if (\array_key_exists('organization_id', $data)) {
             $object->setOrganizationId($data['organization_id']);
+            unset($data['organization_id']);
         }
         if (\array_key_exists('operations', $data)) {
             $values_2 = array();
@@ -92,6 +101,7 @@ class ScimUserNormalizer implements DenormalizerInterface, NormalizerInterface, 
                 $values_2[] = $this->denormalizer->denormalize($value_2, 'Github\\Model\\ScimUserOperationsItem', 'json', $context);
             }
             $object->setOperations($values_2);
+            unset($data['operations']);
         }
         if (\array_key_exists('groups', $data)) {
             $values_3 = array();
@@ -99,6 +109,12 @@ class ScimUserNormalizer implements DenormalizerInterface, NormalizerInterface, 
                 $values_3[] = $this->denormalizer->denormalize($value_3, 'Github\\Model\\ScimUserGroupsItem', 'json', $context);
             }
             $object->setGroups($values_3);
+            unset($data['groups']);
+        }
+        foreach ($data as $key => $value_4) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_4;
+            }
         }
         return $object;
     }
@@ -140,6 +156,11 @@ class ScimUserNormalizer implements DenormalizerInterface, NormalizerInterface, 
                 $values_3[] = $this->normalizer->normalize($value_3, 'json', $context);
             }
             $data['groups'] = $values_3;
+        }
+        foreach ($object as $key => $value_4) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_4;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ScimUserConstraint());

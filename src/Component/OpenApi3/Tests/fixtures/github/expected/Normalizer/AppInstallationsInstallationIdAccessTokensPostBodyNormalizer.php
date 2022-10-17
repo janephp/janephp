@@ -51,6 +51,7 @@ class AppInstallationsInstallationIdAccessTokensPostBodyNormalizer implements De
                 $values[] = $value;
             }
             $object->setRepositories($values);
+            unset($data['repositories']);
         }
         if (\array_key_exists('repository_ids', $data)) {
             $values_1 = array();
@@ -58,9 +59,16 @@ class AppInstallationsInstallationIdAccessTokensPostBodyNormalizer implements De
                 $values_1[] = $value_1;
             }
             $object->setRepositoryIds($values_1);
+            unset($data['repository_ids']);
         }
         if (\array_key_exists('permissions', $data)) {
             $object->setPermissions($this->denormalizer->denormalize($data['permissions'], 'Github\\Model\\AppInstallationsInstallationIdAccessTokensPostBodyPermissions', 'json', $context));
+            unset($data['permissions']);
+        }
+        foreach ($data as $key => $value_2) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_2;
+            }
         }
         return $object;
     }
@@ -86,6 +94,11 @@ class AppInstallationsInstallationIdAccessTokensPostBodyNormalizer implements De
         }
         if (null !== $object->getPermissions()) {
             $data['permissions'] = $this->normalizer->normalize($object->getPermissions(), 'json', $context);
+        }
+        foreach ($object as $key => $value_2) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_2;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\AppInstallationsInstallationIdAccessTokensPostBodyConstraint());

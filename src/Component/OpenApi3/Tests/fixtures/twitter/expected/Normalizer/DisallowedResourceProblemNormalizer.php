@@ -43,21 +43,32 @@ class DisallowedResourceProblemNormalizer implements DenormalizerInterface, Norm
         }
         if (\array_key_exists('type', $data)) {
             $object->setType($data['type']);
+            unset($data['type']);
         }
         if (\array_key_exists('resource_id', $data)) {
             $object->setResourceId($data['resource_id']);
+            unset($data['resource_id']);
         }
         if (\array_key_exists('resource_type', $data)) {
             $object->setResourceType($data['resource_type']);
+            unset($data['resource_type']);
         }
         if (\array_key_exists('section', $data)) {
             $object->setSection($data['section']);
+            unset($data['section']);
         }
         if (\array_key_exists('title', $data)) {
             $object->setTitle($data['title']);
+            unset($data['title']);
         }
         if (\array_key_exists('detail', $data)) {
             $object->setDetail($data['detail']);
+            unset($data['detail']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -73,6 +84,11 @@ class DisallowedResourceProblemNormalizer implements DenormalizerInterface, Norm
         $data['section'] = $object->getSection();
         $data['title'] = $object->getTitle();
         $data['detail'] = $object->getDetail();
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
         return $data;
     }
 }

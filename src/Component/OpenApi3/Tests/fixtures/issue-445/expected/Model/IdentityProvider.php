@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class IdentityProvider
+class IdentityProvider extends \ArrayObject
 {
     /**
      * Mapping of identity provider claims to user attributes

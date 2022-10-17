@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class TeamParent
+class TeamParent extends \ArrayObject
 {
     /**
      * Unique identifier of the team

@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class IndexedFieldThresholdExceededException
+class IndexedFieldThresholdExceededException extends \ArrayObject
 {
     /**
      * 

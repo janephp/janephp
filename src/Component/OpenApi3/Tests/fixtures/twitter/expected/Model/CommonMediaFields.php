@@ -2,7 +2,7 @@
 
 namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 
-class CommonMediaFields
+class CommonMediaFields extends \ArrayObject
 {
     /**
      * The Media Key identifier for this attachment.

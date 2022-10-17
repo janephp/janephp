@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class ThreadSubscription
+class ThreadSubscription extends \ArrayObject
 {
     /**
      * 

@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class ProtectedBranchRequiredPullRequestReviewsDismissalRestrictions
+class ProtectedBranchRequiredPullRequestReviewsDismissalRestrictions extends \ArrayObject
 {
     /**
      * 

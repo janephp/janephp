@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class GistSimple
+class GistSimple extends \ArrayObject
 {
     /**
      * 

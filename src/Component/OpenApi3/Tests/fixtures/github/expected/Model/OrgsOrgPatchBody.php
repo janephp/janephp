@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class OrgsOrgPatchBody
+class OrgsOrgPatchBody extends \ArrayObject
 {
     /**
      * Billing email address. This address is not publicized.

@@ -43,60 +43,70 @@ class AudioMetadataNormalizer implements DenormalizerInterface, NormalizerInterf
         }
         if (\array_key_exists('names', $data) && $data['names'] !== null) {
             $object->setNames($data['names']);
+            unset($data['names']);
         }
         elseif (\array_key_exists('names', $data) && $data['names'] === null) {
             $object->setNames(null);
         }
         if (\array_key_exists('descriptions', $data) && $data['descriptions'] !== null) {
             $object->setDescriptions($data['descriptions']);
+            unset($data['descriptions']);
         }
         elseif (\array_key_exists('descriptions', $data) && $data['descriptions'] === null) {
             $object->setDescriptions(null);
         }
         if (\array_key_exists('fileExtension', $data) && $data['fileExtension'] !== null) {
             $object->setFileExtension($data['fileExtension']);
+            unset($data['fileExtension']);
         }
         elseif (\array_key_exists('fileExtension', $data) && $data['fileExtension'] === null) {
             $object->setFileExtension(null);
         }
         if (\array_key_exists('fileName', $data) && $data['fileName'] !== null) {
             $object->setFileName($data['fileName']);
+            unset($data['fileName']);
         }
         elseif (\array_key_exists('fileName', $data) && $data['fileName'] === null) {
             $object->setFileName(null);
         }
         if (\array_key_exists('filePath', $data) && $data['filePath'] !== null) {
             $object->setFilePath($data['filePath']);
+            unset($data['filePath']);
         }
         elseif (\array_key_exists('filePath', $data) && $data['filePath'] === null) {
             $object->setFilePath(null);
         }
         if (\array_key_exists('fileSizeInBytes', $data) && $data['fileSizeInBytes'] !== null) {
             $object->setFileSizeInBytes($data['fileSizeInBytes']);
+            unset($data['fileSizeInBytes']);
         }
         elseif (\array_key_exists('fileSizeInBytes', $data) && $data['fileSizeInBytes'] === null) {
             $object->setFileSizeInBytes(null);
         }
         if (\array_key_exists('sha1Hash', $data) && $data['sha1Hash'] !== null) {
             $object->setSha1Hash($data['sha1Hash']);
+            unset($data['sha1Hash']);
         }
         elseif (\array_key_exists('sha1Hash', $data) && $data['sha1Hash'] === null) {
             $object->setSha1Hash(null);
         }
         if (\array_key_exists('xmpMetadata', $data) && $data['xmpMetadata'] !== null) {
             $object->setXmpMetadata($data['xmpMetadata']);
+            unset($data['xmpMetadata']);
         }
         elseif (\array_key_exists('xmpMetadata', $data) && $data['xmpMetadata'] === null) {
             $object->setXmpMetadata(null);
         }
         if (\array_key_exists('exifMetadata', $data) && $data['exifMetadata'] !== null) {
             $object->setExifMetadata($data['exifMetadata']);
+            unset($data['exifMetadata']);
         }
         elseif (\array_key_exists('exifMetadata', $data) && $data['exifMetadata'] === null) {
             $object->setExifMetadata(null);
         }
         if (\array_key_exists('language', $data) && $data['language'] !== null) {
             $object->setLanguage($data['language']);
+            unset($data['language']);
         }
         elseif (\array_key_exists('language', $data) && $data['language'] === null) {
             $object->setLanguage(null);
@@ -107,9 +117,15 @@ class AudioMetadataNormalizer implements DenormalizerInterface, NormalizerInterf
                 $values[] = $this->denormalizer->denormalize($value, 'PicturePark\\API\\Model\\AudioStream', 'json', $context);
             }
             $object->setAudioStreams($values);
+            unset($data['audioStreams']);
         }
         elseif (\array_key_exists('audioStreams', $data) && $data['audioStreams'] === null) {
             $object->setAudioStreams(null);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
@@ -155,6 +171,11 @@ class AudioMetadataNormalizer implements DenormalizerInterface, NormalizerInterf
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data['audioStreams'] = $values;
+        }
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
+            }
         }
         return $data;
     }

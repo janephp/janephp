@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class SnapshotFailedException
+class SnapshotFailedException extends \ArrayObject
 {
     /**
      * 

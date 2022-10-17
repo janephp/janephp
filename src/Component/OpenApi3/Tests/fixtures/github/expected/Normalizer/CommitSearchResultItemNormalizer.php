@@ -47,27 +47,34 @@ class CommitSearchResultItemNormalizer implements DenormalizerInterface, Normali
         }
         if (\array_key_exists('url', $data)) {
             $object->setUrl($data['url']);
+            unset($data['url']);
         }
         if (\array_key_exists('sha', $data)) {
             $object->setSha($data['sha']);
+            unset($data['sha']);
         }
         if (\array_key_exists('html_url', $data)) {
             $object->setHtmlUrl($data['html_url']);
+            unset($data['html_url']);
         }
         if (\array_key_exists('comments_url', $data)) {
             $object->setCommentsUrl($data['comments_url']);
+            unset($data['comments_url']);
         }
         if (\array_key_exists('commit', $data)) {
             $object->setCommit($this->denormalizer->denormalize($data['commit'], 'Github\\Model\\CommitSearchResultItemCommit', 'json', $context));
+            unset($data['commit']);
         }
         if (\array_key_exists('author', $data) && $data['author'] !== null) {
             $object->setAuthor($this->denormalizer->denormalize($data['author'], 'Github\\Model\\CommitSearchResultItemAuthor', 'json', $context));
+            unset($data['author']);
         }
         elseif (\array_key_exists('author', $data) && $data['author'] === null) {
             $object->setAuthor(null);
         }
         if (\array_key_exists('committer', $data) && $data['committer'] !== null) {
             $object->setCommitter($this->denormalizer->denormalize($data['committer'], 'Github\\Model\\CommitSearchResultItemCommitter', 'json', $context));
+            unset($data['committer']);
         }
         elseif (\array_key_exists('committer', $data) && $data['committer'] === null) {
             $object->setCommitter(null);
@@ -78,15 +85,19 @@ class CommitSearchResultItemNormalizer implements DenormalizerInterface, Normali
                 $values[] = $this->denormalizer->denormalize($value, 'Github\\Model\\CommitSearchResultItemParentsItem', 'json', $context);
             }
             $object->setParents($values);
+            unset($data['parents']);
         }
         if (\array_key_exists('repository', $data)) {
             $object->setRepository($this->denormalizer->denormalize($data['repository'], 'Github\\Model\\MinimalRepository', 'json', $context));
+            unset($data['repository']);
         }
         if (\array_key_exists('score', $data)) {
             $object->setScore($data['score']);
+            unset($data['score']);
         }
         if (\array_key_exists('node_id', $data)) {
             $object->setNodeId($data['node_id']);
+            unset($data['node_id']);
         }
         if (\array_key_exists('text_matches', $data)) {
             $values_1 = array();
@@ -94,6 +105,12 @@ class CommitSearchResultItemNormalizer implements DenormalizerInterface, Normali
                 $values_1[] = $this->denormalizer->denormalize($value_1, 'Github\\Model\\SearchResultTextMatchesItem', 'json', $context);
             }
             $object->setTextMatches($values_1);
+            unset($data['text_matches']);
+        }
+        foreach ($data as $key => $value_2) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_2;
+            }
         }
         return $object;
     }
@@ -124,6 +141,11 @@ class CommitSearchResultItemNormalizer implements DenormalizerInterface, Normali
                 $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
             }
             $data['text_matches'] = $values_1;
+        }
+        foreach ($object as $key => $value_2) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_2;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\CommitSearchResultItemConstraint());

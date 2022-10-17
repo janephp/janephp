@@ -47,6 +47,7 @@ class GbCompanyReportExampleResponseReportOtherInformationNormalizer implements 
                 $values[] = $this->denormalizer->denormalize($value, 'CreditSafe\\API\\Model\\GbCompanyReportExampleResponseReportOtherInformationAdvisorsItem', 'json', $context);
             }
             $object->setAdvisors($values);
+            unset($data['advisors']);
         }
         if (\array_key_exists('employeesInformation', $data)) {
             $values_1 = array();
@@ -54,6 +55,12 @@ class GbCompanyReportExampleResponseReportOtherInformationNormalizer implements 
                 $values_1[] = $this->denormalizer->denormalize($value_1, 'CreditSafe\\API\\Model\\GbCompanyReportExampleResponseReportOtherInformationEmployeesInformationItem', 'json', $context);
             }
             $object->setEmployeesInformation($values_1);
+            unset($data['employeesInformation']);
+        }
+        foreach ($data as $key => $value_2) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_2;
+            }
         }
         return $object;
     }
@@ -76,6 +83,11 @@ class GbCompanyReportExampleResponseReportOtherInformationNormalizer implements 
                 $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
             }
             $data['employeesInformation'] = $values_1;
+        }
+        foreach ($object as $key => $value_2) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_2;
+            }
         }
         return $data;
     }

@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class InvalidSortFieldException
+class InvalidSortFieldException extends \ArrayObject
 {
     /**
      * 

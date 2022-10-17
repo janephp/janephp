@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoPullsPullNumberMergePutBody
+class ReposOwnerRepoPullsPullNumberMergePutBody extends \ArrayObject
 {
     /**
      * Title for the automatic commit message.

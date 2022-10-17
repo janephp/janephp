@@ -2,7 +2,7 @@
 
 namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 
-class Bar
+class Bar extends \ArrayObject
 {
     /**
      * 

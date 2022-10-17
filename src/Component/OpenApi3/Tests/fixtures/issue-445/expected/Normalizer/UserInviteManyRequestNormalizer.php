@@ -47,6 +47,12 @@ class UserInviteManyRequestNormalizer implements DenormalizerInterface, Normaliz
                 $values[] = $value;
             }
             $object->setUserIds($values);
+            unset($data['userIds']);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
@@ -61,6 +67,11 @@ class UserInviteManyRequestNormalizer implements DenormalizerInterface, Normaliz
             $values[] = $value;
         }
         $data['userIds'] = $values;
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
+            }
+        }
         return $data;
     }
 }

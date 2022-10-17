@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class PullRequestMergeResult
+class PullRequestMergeResult extends \ArrayObject
 {
     /**
      * 

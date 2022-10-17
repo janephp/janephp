@@ -43,15 +43,24 @@ class SubmittedFreshInvestigationRepsonseNormalizer implements DenormalizerInter
         }
         if (\array_key_exists('correlationId', $data)) {
             $object->setCorrelationId($data['correlationId']);
+            unset($data['correlationId']);
         }
         if (\array_key_exists('message', $data)) {
             $object->setMessage($data['message']);
+            unset($data['message']);
         }
         if (\array_key_exists('orderID', $data)) {
             $object->setOrderID($data['orderID']);
+            unset($data['orderID']);
         }
         if (\array_key_exists('transactionID', $data)) {
             $object->setTransactionID($data['transactionID']);
+            unset($data['transactionID']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -72,6 +81,11 @@ class SubmittedFreshInvestigationRepsonseNormalizer implements DenormalizerInter
         }
         if (null !== $object->getTransactionID()) {
             $data['transactionID'] = $object->getTransactionID();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

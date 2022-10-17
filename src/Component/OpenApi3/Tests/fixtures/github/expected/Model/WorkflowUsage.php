@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class WorkflowUsage
+class WorkflowUsage extends \ArrayObject
 {
     /**
      * 

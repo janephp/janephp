@@ -43,15 +43,18 @@ class ShareBasicCreateRequestNormalizer implements DenormalizerInterface, Normal
         }
         if (\array_key_exists('name', $data)) {
             $object->setName($data['name']);
+            unset($data['name']);
         }
         if (\array_key_exists('description', $data) && $data['description'] !== null) {
             $object->setDescription($data['description']);
+            unset($data['description']);
         }
         elseif (\array_key_exists('description', $data) && $data['description'] === null) {
             $object->setDescription(null);
         }
         if (\array_key_exists('expirationDate', $data) && $data['expirationDate'] !== null) {
             $object->setExpirationDate(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['expirationDate']));
+            unset($data['expirationDate']);
         }
         elseif (\array_key_exists('expirationDate', $data) && $data['expirationDate'] === null) {
             $object->setExpirationDate(null);
@@ -62,6 +65,7 @@ class ShareBasicCreateRequestNormalizer implements DenormalizerInterface, Normal
                 $values[] = $this->denormalizer->denormalize($value, 'PicturePark\\API\\Model\\ShareContent', 'json', $context);
             }
             $object->setContents($values);
+            unset($data['contents']);
         }
         if (\array_key_exists('layerSchemaIds', $data) && $data['layerSchemaIds'] !== null) {
             $values_1 = array();
@@ -69,15 +73,18 @@ class ShareBasicCreateRequestNormalizer implements DenormalizerInterface, Normal
                 $values_1[] = $value_1;
             }
             $object->setLayerSchemaIds($values_1);
+            unset($data['layerSchemaIds']);
         }
         elseif (\array_key_exists('layerSchemaIds', $data) && $data['layerSchemaIds'] === null) {
             $object->setLayerSchemaIds(null);
         }
         if (\array_key_exists('outputAccess', $data)) {
             $object->setOutputAccess($data['outputAccess']);
+            unset($data['outputAccess']);
         }
         if (\array_key_exists('kind', $data)) {
             $object->setKind($data['kind']);
+            unset($data['kind']);
         }
         if (\array_key_exists('recipientEmails', $data) && $data['recipientEmails'] !== null) {
             $values_2 = array();
@@ -85,15 +92,23 @@ class ShareBasicCreateRequestNormalizer implements DenormalizerInterface, Normal
                 $values_2[] = $this->denormalizer->denormalize($value_2, 'PicturePark\\API\\Model\\UserEmail', 'json', $context);
             }
             $object->setRecipientEmails($values_2);
+            unset($data['recipientEmails']);
         }
         elseif (\array_key_exists('recipientEmails', $data) && $data['recipientEmails'] === null) {
             $object->setRecipientEmails(null);
         }
         if (\array_key_exists('languageCode', $data)) {
             $object->setLanguageCode($data['languageCode']);
+            unset($data['languageCode']);
         }
         if (\array_key_exists('suppressNotifications', $data)) {
             $object->setSuppressNotifications($data['suppressNotifications']);
+            unset($data['suppressNotifications']);
+        }
+        foreach ($data as $key => $value_3) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_3;
+            }
         }
         return $object;
     }
@@ -134,6 +149,11 @@ class ShareBasicCreateRequestNormalizer implements DenormalizerInterface, Normal
         $data['languageCode'] = $object->getLanguageCode();
         if (null !== $object->getSuppressNotifications()) {
             $data['suppressNotifications'] = $object->getSuppressNotifications();
+        }
+        foreach ($object as $key => $value_3) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_3;
+            }
         }
         return $data;
     }

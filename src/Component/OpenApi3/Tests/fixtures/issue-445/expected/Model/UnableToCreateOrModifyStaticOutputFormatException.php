@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class UnableToCreateOrModifyStaticOutputFormatException
+class UnableToCreateOrModifyStaticOutputFormatException extends \ArrayObject
 {
     /**
      * 

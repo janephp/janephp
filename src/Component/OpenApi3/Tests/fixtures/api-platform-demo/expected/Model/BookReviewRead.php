@@ -2,7 +2,7 @@
 
 namespace ApiPlatform\Demo\Model;
 
-class BookReviewRead
+class BookReviewRead extends \ArrayObject
 {
     /**
      * The title of the book.

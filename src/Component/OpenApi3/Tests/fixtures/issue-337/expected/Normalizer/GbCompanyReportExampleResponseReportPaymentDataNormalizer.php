@@ -112,75 +112,104 @@ class GbCompanyReportExampleResponseReportPaymentDataNormalizer implements Denor
         }
         if (\array_key_exists('paymentsOnFile', $data)) {
             $object->setPaymentsOnFile($data['paymentsOnFile']);
+            unset($data['paymentsOnFile']);
         }
         if (\array_key_exists('paymentsOnTime', $data)) {
             $object->setPaymentsOnTime($data['paymentsOnTime']);
+            unset($data['paymentsOnTime']);
         }
         if (\array_key_exists('paymentsPaidLate', $data)) {
             $object->setPaymentsPaidLate($data['paymentsPaidLate']);
+            unset($data['paymentsPaidLate']);
         }
         if (\array_key_exists('paymentsSentLegal', $data)) {
             $object->setPaymentsSentLegal($data['paymentsSentLegal']);
+            unset($data['paymentsSentLegal']);
         }
         if (\array_key_exists('paymentsStillOwingLate', $data)) {
             $object->setPaymentsStillOwingLate($data['paymentsStillOwingLate']);
+            unset($data['paymentsStillOwingLate']);
         }
         if (\array_key_exists('paymentsPaid0to30Days', $data)) {
             $object->setPaymentsPaid0to30Days($data['paymentsPaid0to30Days']);
+            unset($data['paymentsPaid0to30Days']);
         }
         if (\array_key_exists('highestInvoiceValueOutstandingLate', $data)) {
             $object->setHighestInvoiceValueOutstandingLate($data['highestInvoiceValueOutstandingLate']);
+            unset($data['highestInvoiceValueOutstandingLate']);
         }
         if (\array_key_exists('paymentsPaid90DaysplusLate', $data)) {
             $object->setPaymentsPaid90DaysplusLate($data['paymentsPaid90DaysplusLate']);
+            unset($data['paymentsPaid90DaysplusLate']);
         }
         if (\array_key_exists('totalBalanceStillOwingLate', $data)) {
             $object->setTotalBalanceStillOwingLate($data['totalBalanceStillOwingLate']);
+            unset($data['totalBalanceStillOwingLate']);
         }
         if (\array_key_exists('dbt', $data)) {
             $object->setDbt($data['dbt']);
+            unset($data['dbt']);
         }
         if (\array_key_exists('paymentsPaid61to90Days', $data)) {
             $object->setPaymentsPaid61to90Days($data['paymentsPaid61to90Days']);
+            unset($data['paymentsPaid61to90Days']);
         }
         if (\array_key_exists('totalBalanceStillOwing', $data)) {
             $object->setTotalBalanceStillOwing($data['totalBalanceStillOwing']);
+            unset($data['totalBalanceStillOwing']);
         }
         if (\array_key_exists('payments31to60DaysLate', $data)) {
             $object->setPayments31to60DaysLate($data['payments31to60DaysLate']);
+            unset($data['payments31to60DaysLate']);
         }
         if (\array_key_exists('payments61to90DaysLate', $data)) {
             $object->setPayments61to90DaysLate($data['payments61to90DaysLate']);
+            unset($data['payments61to90DaysLate']);
         }
         if (\array_key_exists('highestInvoiceValueOutstanding', $data)) {
             $object->setHighestInvoiceValueOutstanding($data['highestInvoiceValueOutstanding']);
+            unset($data['highestInvoiceValueOutstanding']);
         }
         if (\array_key_exists('paymentsStillOwing', $data)) {
             $object->setPaymentsStillOwing($data['paymentsStillOwing']);
+            unset($data['paymentsStillOwing']);
         }
         if (\array_key_exists('paymentsWithinTerms', $data)) {
             $object->setPaymentsWithinTerms($data['paymentsWithinTerms']);
+            unset($data['paymentsWithinTerms']);
         }
         if (\array_key_exists('payments0to30Dayslate', $data)) {
             $object->setPayments0to30Dayslate($data['payments0to30Dayslate']);
+            unset($data['payments0to30Dayslate']);
         }
         if (\array_key_exists('averageInvoiceValue', $data)) {
             $object->setAverageInvoiceValue($data['averageInvoiceValue']);
+            unset($data['averageInvoiceValue']);
         }
         if (\array_key_exists('paymentsPaid31to60Days', $data)) {
             $object->setPaymentsPaid31to60Days($data['paymentsPaid31to60Days']);
+            unset($data['paymentsPaid31to60Days']);
         }
         if (\array_key_exists('paymentsPaid90Daysplus', $data)) {
             $object->setPaymentsPaid90Daysplus($data['paymentsPaid90Daysplus']);
+            unset($data['paymentsPaid90Daysplus']);
         }
         if (\array_key_exists('totalInvoiceValues', $data)) {
             $object->setTotalInvoiceValues($data['totalInvoiceValues']);
+            unset($data['totalInvoiceValues']);
         }
         if (\array_key_exists('paymentTrend', $data)) {
             $object->setPaymentTrend($data['paymentTrend']);
+            unset($data['paymentTrend']);
         }
         if (\array_key_exists('industryDBT', $data)) {
             $object->setIndustryDBT($data['industryDBT']);
+            unset($data['industryDBT']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -261,6 +290,11 @@ class GbCompanyReportExampleResponseReportPaymentDataNormalizer implements Denor
         }
         if (null !== $object->getIndustryDBT()) {
             $data['industryDBT'] = $object->getIndustryDBT();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

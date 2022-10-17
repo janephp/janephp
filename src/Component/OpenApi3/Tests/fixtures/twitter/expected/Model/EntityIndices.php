@@ -2,7 +2,7 @@
 
 namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 
-class EntityIndices
+class EntityIndices extends \ArrayObject
 {
     /**
      * Index (zero-based) at which position this entity starts.

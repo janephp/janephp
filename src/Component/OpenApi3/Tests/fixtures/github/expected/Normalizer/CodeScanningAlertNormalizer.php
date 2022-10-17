@@ -47,51 +47,68 @@ class CodeScanningAlertNormalizer implements DenormalizerInterface, NormalizerIn
         }
         if (\array_key_exists('number', $data)) {
             $object->setNumber($data['number']);
+            unset($data['number']);
         }
         if (\array_key_exists('rule_id', $data)) {
             $object->setRuleId($data['rule_id']);
+            unset($data['rule_id']);
         }
         if (\array_key_exists('rule_severity', $data)) {
             $object->setRuleSeverity($data['rule_severity']);
+            unset($data['rule_severity']);
         }
         if (\array_key_exists('rule_description', $data)) {
             $object->setRuleDescription($data['rule_description']);
+            unset($data['rule_description']);
         }
         if (\array_key_exists('tool', $data) && $data['tool'] !== null) {
             $object->setTool($data['tool']);
+            unset($data['tool']);
         }
         elseif (\array_key_exists('tool', $data) && $data['tool'] === null) {
             $object->setTool(null);
         }
         if (\array_key_exists('created_at', $data)) {
             $object->setCreatedAt(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['created_at']));
+            unset($data['created_at']);
         }
         if (\array_key_exists('open', $data)) {
             $object->setOpen($data['open']);
+            unset($data['open']);
         }
         if (\array_key_exists('closed_by', $data) && $data['closed_by'] !== null) {
             $object->setClosedBy($this->denormalizer->denormalize($data['closed_by'], 'Github\\Model\\CodeScanningAlertClosedBy', 'json', $context));
+            unset($data['closed_by']);
         }
         elseif (\array_key_exists('closed_by', $data) && $data['closed_by'] === null) {
             $object->setClosedBy(null);
         }
         if (\array_key_exists('closed_at', $data) && $data['closed_at'] !== null) {
             $object->setClosedAt(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['closed_at']));
+            unset($data['closed_at']);
         }
         elseif (\array_key_exists('closed_at', $data) && $data['closed_at'] === null) {
             $object->setClosedAt(null);
         }
         if (\array_key_exists('url', $data)) {
             $object->setUrl($data['url']);
+            unset($data['url']);
         }
         if (\array_key_exists('html_url', $data)) {
             $object->setHtmlUrl($data['html_url']);
+            unset($data['html_url']);
         }
         if (\array_key_exists('closed_reason', $data) && $data['closed_reason'] !== null) {
             $object->setClosedReason($data['closed_reason']);
+            unset($data['closed_reason']);
         }
         elseif (\array_key_exists('closed_reason', $data) && $data['closed_reason'] === null) {
             $object->setClosedReason(null);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -136,6 +153,11 @@ class CodeScanningAlertNormalizer implements DenormalizerInterface, NormalizerIn
         }
         if (null !== $object->getClosedReason()) {
             $data['closed_reason'] = $object->getClosedReason();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\CodeScanningAlertConstraint());

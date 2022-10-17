@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class CheckRun
+class CheckRun extends \ArrayObject
 {
     /**
      * The id of the check.

@@ -47,12 +47,20 @@ class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyActionsItemNormalizer implements
         }
         if (\array_key_exists('label', $data)) {
             $object->setLabel($data['label']);
+            unset($data['label']);
         }
         if (\array_key_exists('description', $data)) {
             $object->setDescription($data['description']);
+            unset($data['description']);
         }
         if (\array_key_exists('identifier', $data)) {
             $object->setIdentifier($data['identifier']);
+            unset($data['identifier']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -65,6 +73,11 @@ class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyActionsItemNormalizer implements
         $data['label'] = $object->getLabel();
         $data['description'] = $object->getDescription();
         $data['identifier'] = $object->getIdentifier();
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ReposOwnerRepoCheckRunsCheckRunIdPatchBodyActionsItemConstraint());
             $context['skip_validation'] = true;

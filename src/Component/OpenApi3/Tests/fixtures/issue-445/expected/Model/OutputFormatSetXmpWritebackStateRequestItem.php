@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class OutputFormatSetXmpWritebackStateRequestItem
+class OutputFormatSetXmpWritebackStateRequestItem extends \ArrayObject
 {
     /**
      * Indicates if XMP writeback shall be enabled for the format.

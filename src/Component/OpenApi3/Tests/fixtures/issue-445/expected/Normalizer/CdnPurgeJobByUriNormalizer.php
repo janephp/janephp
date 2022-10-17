@@ -43,18 +43,27 @@ class CdnPurgeJobByUriNormalizer implements DenormalizerInterface, NormalizerInt
         }
         if (\array_key_exists('success', $data)) {
             $object->setSuccess($data['success']);
+            unset($data['success']);
         }
         if (\array_key_exists('retriesLeft', $data)) {
             $object->setRetriesLeft($data['retriesLeft']);
+            unset($data['retriesLeft']);
         }
         if (\array_key_exists('kind', $data)) {
             $object->setKind($data['kind']);
+            unset($data['kind']);
         }
         if (\array_key_exists('uri', $data) && $data['uri'] !== null) {
             $object->setUri($data['uri']);
+            unset($data['uri']);
         }
         elseif (\array_key_exists('uri', $data) && $data['uri'] === null) {
             $object->setUri(null);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -69,6 +78,11 @@ class CdnPurgeJobByUriNormalizer implements DenormalizerInterface, NormalizerInt
         $data['kind'] = $object->getKind();
         if (null !== $object->getUri()) {
             $data['uri'] = $object->getUri();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

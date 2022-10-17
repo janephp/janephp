@@ -47,15 +47,24 @@ class OrgHookConfigNormalizer implements DenormalizerInterface, NormalizerInterf
         }
         if (\array_key_exists('url', $data)) {
             $object->setUrl($data['url']);
+            unset($data['url']);
         }
         if (\array_key_exists('insecure_ssl', $data)) {
             $object->setInsecureSsl($data['insecure_ssl']);
+            unset($data['insecure_ssl']);
         }
         if (\array_key_exists('content_type', $data)) {
             $object->setContentType($data['content_type']);
+            unset($data['content_type']);
         }
         if (\array_key_exists('secret', $data)) {
             $object->setSecret($data['secret']);
+            unset($data['secret']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -76,6 +85,11 @@ class OrgHookConfigNormalizer implements DenormalizerInterface, NormalizerInterf
         }
         if (null !== $object->getSecret()) {
             $data['secret'] = $object->getSecret();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\OrgHookConfigConstraint());

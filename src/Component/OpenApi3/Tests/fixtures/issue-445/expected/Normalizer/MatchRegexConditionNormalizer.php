@@ -43,30 +43,40 @@ class MatchRegexConditionNormalizer implements DenormalizerInterface, Normalizer
         }
         if (\array_key_exists('traceRefId', $data) && $data['traceRefId'] !== null) {
             $object->setTraceRefId($data['traceRefId']);
+            unset($data['traceRefId']);
         }
         elseif (\array_key_exists('traceRefId', $data) && $data['traceRefId'] === null) {
             $object->setTraceRefId(null);
         }
         if (\array_key_exists('kind', $data)) {
             $object->setKind($data['kind']);
+            unset($data['kind']);
         }
         if (\array_key_exists('fieldPath', $data) && $data['fieldPath'] !== null) {
             $object->setFieldPath($data['fieldPath']);
+            unset($data['fieldPath']);
         }
         elseif (\array_key_exists('fieldPath', $data) && $data['fieldPath'] === null) {
             $object->setFieldPath(null);
         }
         if (\array_key_exists('regex', $data) && $data['regex'] !== null) {
             $object->setRegex($data['regex']);
+            unset($data['regex']);
         }
         elseif (\array_key_exists('regex', $data) && $data['regex'] === null) {
             $object->setRegex(null);
         }
         if (\array_key_exists('storeIn', $data) && $data['storeIn'] !== null) {
             $object->setStoreIn($data['storeIn']);
+            unset($data['storeIn']);
         }
         elseif (\array_key_exists('storeIn', $data) && $data['storeIn'] === null) {
             $object->setStoreIn(null);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -88,6 +98,11 @@ class MatchRegexConditionNormalizer implements DenormalizerInterface, Normalizer
         }
         if (null !== $object->getStoreIn()) {
             $data['storeIn'] = $object->getStoreIn();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

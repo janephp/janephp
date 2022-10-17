@@ -46,36 +46,52 @@ class GbCompanyReportExampleResponseReportLocalFinancialStatementsItemNormalizer
         }
         if (\array_key_exists('type', $data)) {
             $object->setType($data['type']);
+            unset($data['type']);
         }
         if (\array_key_exists('yearEndDate', $data)) {
             $object->setYearEndDate($data['yearEndDate']);
+            unset($data['yearEndDate']);
         }
         if (\array_key_exists('numberOfWeeks', $data)) {
             $object->setNumberOfWeeks($data['numberOfWeeks']);
+            unset($data['numberOfWeeks']);
         }
         if (\array_key_exists('currency', $data)) {
             $object->setCurrency($data['currency']);
+            unset($data['currency']);
         }
         if (\array_key_exists('consolidatedAccounts', $data)) {
             $object->setConsolidatedAccounts($data['consolidatedAccounts']);
+            unset($data['consolidatedAccounts']);
         }
         if (\array_key_exists('auditQualification', $data)) {
             $object->setAuditQualification($data['auditQualification']);
+            unset($data['auditQualification']);
         }
         if (\array_key_exists('profitAndLoss', $data)) {
             $object->setProfitAndLoss($this->denormalizer->denormalize($data['profitAndLoss'], 'CreditSafe\\API\\Model\\GbCompanyReportExampleResponseReportLocalFinancialStatementsItemProfitAndLoss', 'json', $context));
+            unset($data['profitAndLoss']);
         }
         if (\array_key_exists('balanceSheet', $data)) {
             $object->setBalanceSheet($this->denormalizer->denormalize($data['balanceSheet'], 'CreditSafe\\API\\Model\\GbCompanyReportExampleResponseReportLocalFinancialStatementsItemBalanceSheet', 'json', $context));
+            unset($data['balanceSheet']);
         }
         if (\array_key_exists('cashFlow', $data)) {
             $object->setCashFlow($this->denormalizer->denormalize($data['cashFlow'], 'CreditSafe\\API\\Model\\GbCompanyReportExampleResponseReportLocalFinancialStatementsItemCashFlow', 'json', $context));
+            unset($data['cashFlow']);
         }
         if (\array_key_exists('otherFinancials', $data)) {
             $object->setOtherFinancials($this->denormalizer->denormalize($data['otherFinancials'], 'CreditSafe\\API\\Model\\GbCompanyReportExampleResponseReportLocalFinancialStatementsItemOtherFinancials', 'json', $context));
+            unset($data['otherFinancials']);
         }
         if (\array_key_exists('ratios', $data)) {
             $object->setRatios($this->denormalizer->denormalize($data['ratios'], 'CreditSafe\\API\\Model\\GbCompanyReportExampleResponseReportLocalFinancialStatementsItemRatios', 'json', $context));
+            unset($data['ratios']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -117,6 +133,11 @@ class GbCompanyReportExampleResponseReportLocalFinancialStatementsItemNormalizer
         }
         if (null !== $object->getRatios()) {
             $data['ratios'] = $this->normalizer->normalize($object->getRatios(), 'json', $context);
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class Milestone
+class Milestone extends \ArrayObject
 {
     /**
      * 

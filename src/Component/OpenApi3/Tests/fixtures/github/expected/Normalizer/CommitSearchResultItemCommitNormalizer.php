@@ -47,27 +47,39 @@ class CommitSearchResultItemCommitNormalizer implements DenormalizerInterface, N
         }
         if (\array_key_exists('author', $data)) {
             $object->setAuthor($this->denormalizer->denormalize($data['author'], 'Github\\Model\\CommitSearchResultItemCommitAuthor', 'json', $context));
+            unset($data['author']);
         }
         if (\array_key_exists('committer', $data) && $data['committer'] !== null) {
             $object->setCommitter($this->denormalizer->denormalize($data['committer'], 'Github\\Model\\CommitSearchResultItemCommitCommitter', 'json', $context));
+            unset($data['committer']);
         }
         elseif (\array_key_exists('committer', $data) && $data['committer'] === null) {
             $object->setCommitter(null);
         }
         if (\array_key_exists('comment_count', $data)) {
             $object->setCommentCount($data['comment_count']);
+            unset($data['comment_count']);
         }
         if (\array_key_exists('message', $data)) {
             $object->setMessage($data['message']);
+            unset($data['message']);
         }
         if (\array_key_exists('tree', $data)) {
             $object->setTree($this->denormalizer->denormalize($data['tree'], 'Github\\Model\\CommitSearchResultItemCommitTree', 'json', $context));
+            unset($data['tree']);
         }
         if (\array_key_exists('url', $data)) {
             $object->setUrl($data['url']);
+            unset($data['url']);
         }
         if (\array_key_exists('verification', $data)) {
             $object->setVerification($this->denormalizer->denormalize($data['verification'], 'Github\\Model\\Verification', 'json', $context));
+            unset($data['verification']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -85,6 +97,11 @@ class CommitSearchResultItemCommitNormalizer implements DenormalizerInterface, N
         $data['url'] = $object->getUrl();
         if (null !== $object->getVerification()) {
             $data['verification'] = $this->normalizer->normalize($object->getVerification(), 'json', $context);
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\CommitSearchResultItemCommitConstraint());

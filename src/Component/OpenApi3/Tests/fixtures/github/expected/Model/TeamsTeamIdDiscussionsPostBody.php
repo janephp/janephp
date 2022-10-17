@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class TeamsTeamIdDiscussionsPostBody
+class TeamsTeamIdDiscussionsPostBody extends \ArrayObject
 {
     /**
      * The discussion post's title.

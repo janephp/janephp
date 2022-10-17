@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoSubscriptionPutBody
+class ReposOwnerRepoSubscriptionPutBody extends \ArrayObject
 {
     /**
      * Determines if notifications should be received from this repository.

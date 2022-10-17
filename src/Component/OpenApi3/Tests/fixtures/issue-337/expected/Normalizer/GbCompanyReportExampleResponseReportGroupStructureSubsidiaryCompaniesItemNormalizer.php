@@ -43,24 +43,36 @@ class GbCompanyReportExampleResponseReportGroupStructureSubsidiaryCompaniesItemN
         }
         if (\array_key_exists('country', $data)) {
             $object->setCountry($data['country']);
+            unset($data['country']);
         }
         if (\array_key_exists('id', $data)) {
             $object->setId($data['id']);
+            unset($data['id']);
         }
         if (\array_key_exists('safeNumber', $data)) {
             $object->setSafeNumber($data['safeNumber']);
+            unset($data['safeNumber']);
         }
         if (\array_key_exists('name', $data)) {
             $object->setName($data['name']);
+            unset($data['name']);
         }
         if (\array_key_exists('type', $data)) {
             $object->setType($data['type']);
+            unset($data['type']);
         }
         if (\array_key_exists('status', $data)) {
             $object->setStatus($data['status']);
+            unset($data['status']);
         }
         if (\array_key_exists('registrationNumber', $data)) {
             $object->setRegistrationNumber($data['registrationNumber']);
+            unset($data['registrationNumber']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -90,6 +102,11 @@ class GbCompanyReportExampleResponseReportGroupStructureSubsidiaryCompaniesItemN
         }
         if (null !== $object->getRegistrationNumber()) {
             $data['registrationNumber'] = $object->getRegistrationNumber();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

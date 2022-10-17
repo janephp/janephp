@@ -47,24 +47,36 @@ class ReposOwnerRepoPullsPullNumberReviewsPostBodyCommentsItemNormalizer impleme
         }
         if (\array_key_exists('path', $data)) {
             $object->setPath($data['path']);
+            unset($data['path']);
         }
         if (\array_key_exists('position', $data)) {
             $object->setPosition($data['position']);
+            unset($data['position']);
         }
         if (\array_key_exists('body', $data)) {
             $object->setBody($data['body']);
+            unset($data['body']);
         }
         if (\array_key_exists('line', $data)) {
             $object->setLine($data['line']);
+            unset($data['line']);
         }
         if (\array_key_exists('side', $data)) {
             $object->setSide($data['side']);
+            unset($data['side']);
         }
         if (\array_key_exists('start_line', $data)) {
             $object->setStartLine($data['start_line']);
+            unset($data['start_line']);
         }
         if (\array_key_exists('start_side', $data)) {
             $object->setStartSide($data['start_side']);
+            unset($data['start_side']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -90,6 +102,11 @@ class ReposOwnerRepoPullsPullNumberReviewsPostBodyCommentsItemNormalizer impleme
         }
         if (null !== $object->getStartSide()) {
             $data['start_side'] = $object->getStartSide();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ReposOwnerRepoPullsPullNumberReviewsPostBodyCommentsItemConstraint());

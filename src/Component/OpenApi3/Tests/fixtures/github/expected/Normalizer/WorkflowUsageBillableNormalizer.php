@@ -47,12 +47,20 @@ class WorkflowUsageBillableNormalizer implements DenormalizerInterface, Normaliz
         }
         if (\array_key_exists('UBUNTU', $data)) {
             $object->setUBUNTU($this->denormalizer->denormalize($data['UBUNTU'], 'Github\\Model\\WorkflowUsageBillableUBUNTU', 'json', $context));
+            unset($data['UBUNTU']);
         }
         if (\array_key_exists('MACOS', $data)) {
             $object->setMACOS($this->denormalizer->denormalize($data['MACOS'], 'Github\\Model\\WorkflowUsageBillableMACOS', 'json', $context));
+            unset($data['MACOS']);
         }
         if (\array_key_exists('WINDOWS', $data)) {
             $object->setWINDOWS($this->denormalizer->denormalize($data['WINDOWS'], 'Github\\Model\\WorkflowUsageBillableWINDOWS', 'json', $context));
+            unset($data['WINDOWS']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -70,6 +78,11 @@ class WorkflowUsageBillableNormalizer implements DenormalizerInterface, Normaliz
         }
         if (null !== $object->getWINDOWS()) {
             $data['WINDOWS'] = $this->normalizer->normalize($object->getWINDOWS(), 'json', $context);
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\WorkflowUsageBillableConstraint());

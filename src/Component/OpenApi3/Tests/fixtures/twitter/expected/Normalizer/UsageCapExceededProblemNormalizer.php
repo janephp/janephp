@@ -43,18 +43,28 @@ class UsageCapExceededProblemNormalizer implements DenormalizerInterface, Normal
         }
         if (\array_key_exists('type', $data)) {
             $object->setType($data['type']);
+            unset($data['type']);
         }
         if (\array_key_exists('period', $data)) {
             $object->setPeriod($data['period']);
+            unset($data['period']);
         }
         if (\array_key_exists('scope', $data)) {
             $object->setScope($data['scope']);
+            unset($data['scope']);
         }
         if (\array_key_exists('title', $data)) {
             $object->setTitle($data['title']);
+            unset($data['title']);
         }
         if (\array_key_exists('detail', $data)) {
             $object->setDetail($data['detail']);
+            unset($data['detail']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -73,6 +83,11 @@ class UsageCapExceededProblemNormalizer implements DenormalizerInterface, Normal
         }
         $data['title'] = $object->getTitle();
         $data['detail'] = $object->getDetail();
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
         return $data;
     }
 }

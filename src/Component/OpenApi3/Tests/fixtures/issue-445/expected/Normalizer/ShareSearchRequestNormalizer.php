@@ -43,6 +43,7 @@ class ShareSearchRequestNormalizer implements DenormalizerInterface, NormalizerI
         }
         if (\array_key_exists('searchString', $data) && $data['searchString'] !== null) {
             $object->setSearchString($data['searchString']);
+            unset($data['searchString']);
         }
         elseif (\array_key_exists('searchString', $data) && $data['searchString'] === null) {
             $object->setSearchString(null);
@@ -53,12 +54,14 @@ class ShareSearchRequestNormalizer implements DenormalizerInterface, NormalizerI
                 $values[] = $value;
             }
             $object->setSearchBehaviors($values);
+            unset($data['searchBehaviors']);
         }
         elseif (\array_key_exists('searchBehaviors', $data) && $data['searchBehaviors'] === null) {
             $object->setSearchBehaviors(null);
         }
         if (\array_key_exists('filter', $data) && $data['filter'] !== null) {
             $object->setFilter($data['filter']);
+            unset($data['filter']);
         }
         elseif (\array_key_exists('filter', $data) && $data['filter'] === null) {
             $object->setFilter(null);
@@ -69,12 +72,14 @@ class ShareSearchRequestNormalizer implements DenormalizerInterface, NormalizerI
                 $values_1[] = $this->denormalizer->denormalize($value_1, 'PicturePark\\API\\Model\\AggregationFilter', 'json', $context);
             }
             $object->setAggregationFilters($values_1);
+            unset($data['aggregationFilters']);
         }
         elseif (\array_key_exists('aggregationFilters', $data) && $data['aggregationFilters'] === null) {
             $object->setAggregationFilters(null);
         }
         if (\array_key_exists('limit', $data)) {
             $object->setLimit($data['limit']);
+            unset($data['limit']);
         }
         if (\array_key_exists('sort', $data) && $data['sort'] !== null) {
             $values_2 = array();
@@ -82,18 +87,21 @@ class ShareSearchRequestNormalizer implements DenormalizerInterface, NormalizerI
                 $values_2[] = $this->denormalizer->denormalize($value_2, 'PicturePark\\API\\Model\\SortInfo', 'json', $context);
             }
             $object->setSort($values_2);
+            unset($data['sort']);
         }
         elseif (\array_key_exists('sort', $data) && $data['sort'] === null) {
             $object->setSort(null);
         }
         if (\array_key_exists('pageToken', $data) && $data['pageToken'] !== null) {
             $object->setPageToken($data['pageToken']);
+            unset($data['pageToken']);
         }
         elseif (\array_key_exists('pageToken', $data) && $data['pageToken'] === null) {
             $object->setPageToken(null);
         }
         if (\array_key_exists('debugMode', $data)) {
             $object->setDebugMode($data['debugMode']);
+            unset($data['debugMode']);
         }
         if (\array_key_exists('aggregators', $data) && $data['aggregators'] !== null) {
             $values_3 = array();
@@ -101,9 +109,15 @@ class ShareSearchRequestNormalizer implements DenormalizerInterface, NormalizerI
                 $values_3[] = $this->denormalizer->denormalize($value_3, 'PicturePark\\API\\Model\\AggregatorBase', 'json', $context);
             }
             $object->setAggregators($values_3);
+            unset($data['aggregators']);
         }
         elseif (\array_key_exists('aggregators', $data) && $data['aggregators'] === null) {
             $object->setAggregators(null);
+        }
+        foreach ($data as $key => $value_4) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_4;
+            }
         }
         return $object;
     }
@@ -155,6 +169,11 @@ class ShareSearchRequestNormalizer implements DenormalizerInterface, NormalizerI
                 $values_3[] = $this->normalizer->normalize($value_3, 'json', $context);
             }
             $data['aggregators'] = $values_3;
+        }
+        foreach ($object as $key => $value_4) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_4;
+            }
         }
         return $data;
     }

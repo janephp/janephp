@@ -43,54 +43,71 @@ class FieldOverwriteMultiTagboxNormalizer implements DenormalizerInterface, Norm
         }
         if (\array_key_exists('id', $data) && $data['id'] !== null) {
             $object->setId($data['id']);
+            unset($data['id']);
         }
         elseif (\array_key_exists('id', $data) && $data['id'] === null) {
             $object->setId(null);
         }
         if (\array_key_exists('required', $data)) {
             $object->setRequired($data['required']);
+            unset($data['required']);
         }
         if (\array_key_exists('overwriteRequired', $data)) {
             $object->setOverwriteRequired($data['overwriteRequired']);
+            unset($data['overwriteRequired']);
         }
         if (\array_key_exists('kind', $data)) {
             $object->setKind($data['kind']);
+            unset($data['kind']);
         }
         if (\array_key_exists('filter', $data) && $data['filter'] !== null) {
             $object->setFilter($data['filter']);
+            unset($data['filter']);
         }
         elseif (\array_key_exists('filter', $data) && $data['filter'] === null) {
             $object->setFilter(null);
         }
         if (\array_key_exists('overwriteFilter', $data)) {
             $object->setOverwriteFilter($data['overwriteFilter']);
+            unset($data['overwriteFilter']);
         }
         if (\array_key_exists('listItemCreateTemplate', $data) && $data['listItemCreateTemplate'] !== null) {
             $object->setListItemCreateTemplate($data['listItemCreateTemplate']);
+            unset($data['listItemCreateTemplate']);
         }
         elseif (\array_key_exists('listItemCreateTemplate', $data) && $data['listItemCreateTemplate'] === null) {
             $object->setListItemCreateTemplate(null);
         }
         if (\array_key_exists('overwriteListItemCreateTemplate', $data)) {
             $object->setOverwriteListItemCreateTemplate($data['overwriteListItemCreateTemplate']);
+            unset($data['overwriteListItemCreateTemplate']);
         }
         if (\array_key_exists('maximumItems', $data) && $data['maximumItems'] !== null) {
             $object->setMaximumItems($data['maximumItems']);
+            unset($data['maximumItems']);
         }
         elseif (\array_key_exists('maximumItems', $data) && $data['maximumItems'] === null) {
             $object->setMaximumItems(null);
         }
         if (\array_key_exists('overwriteMaximumItems', $data)) {
             $object->setOverwriteMaximumItems($data['overwriteMaximumItems']);
+            unset($data['overwriteMaximumItems']);
         }
         if (\array_key_exists('minimumItems', $data) && $data['minimumItems'] !== null) {
             $object->setMinimumItems($data['minimumItems']);
+            unset($data['minimumItems']);
         }
         elseif (\array_key_exists('minimumItems', $data) && $data['minimumItems'] === null) {
             $object->setMinimumItems(null);
         }
         if (\array_key_exists('overwriteMinimumItems', $data)) {
             $object->setOverwriteMinimumItems($data['overwriteMinimumItems']);
+            unset($data['overwriteMinimumItems']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -129,6 +146,11 @@ class FieldOverwriteMultiTagboxNormalizer implements DenormalizerInterface, Norm
         }
         if (null !== $object->getOverwriteMinimumItems()) {
             $data['overwriteMinimumItems'] = $object->getOverwriteMinimumItems();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

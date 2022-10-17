@@ -43,12 +43,20 @@ class BadRequestErrorNormalizer implements DenormalizerInterface, NormalizerInte
         }
         if (\array_key_exists('correlationId', $data)) {
             $object->setCorrelationId($data['correlationId']);
+            unset($data['correlationId']);
         }
         if (\array_key_exists('message', $data)) {
             $object->setMessage($data['message']);
+            unset($data['message']);
         }
         if (\array_key_exists('details', $data)) {
             $object->setDetails($data['details']);
+            unset($data['details']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -66,6 +74,11 @@ class BadRequestErrorNormalizer implements DenormalizerInterface, NormalizerInte
         }
         if (null !== $object->getDetails()) {
             $data['details'] = $object->getDetails();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

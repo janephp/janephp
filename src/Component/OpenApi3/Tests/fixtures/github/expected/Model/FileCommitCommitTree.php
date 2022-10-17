@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class FileCommitCommitTree
+class FileCommitCommitTree extends \ArrayObject
 {
     /**
      * 

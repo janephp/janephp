@@ -43,12 +43,20 @@ class ChildFilterNormalizer implements DenormalizerInterface, NormalizerInterfac
         }
         if (\array_key_exists('kind', $data)) {
             $object->setKind($data['kind']);
+            unset($data['kind']);
         }
         if (\array_key_exists('childType', $data)) {
             $object->setChildType($data['childType']);
+            unset($data['childType']);
         }
         if (\array_key_exists('filter', $data)) {
             $object->setFilter($data['filter']);
+            unset($data['filter']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -61,6 +69,11 @@ class ChildFilterNormalizer implements DenormalizerInterface, NormalizerInterfac
         $data['kind'] = $object->getKind();
         $data['childType'] = $object->getChildType();
         $data['filter'] = $object->getFilter();
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
         return $data;
     }
 }

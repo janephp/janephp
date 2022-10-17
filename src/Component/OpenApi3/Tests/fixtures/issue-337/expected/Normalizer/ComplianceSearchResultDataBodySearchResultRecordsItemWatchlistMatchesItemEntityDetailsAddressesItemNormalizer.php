@@ -43,21 +43,32 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemE
         }
         if (\array_key_exists('city', $data)) {
             $object->setCity($data['city']);
+            unset($data['city']);
         }
         if (\array_key_exists('country', $data)) {
             $object->setCountry($data['country']);
+            unset($data['country']);
         }
         if (\array_key_exists('id', $data)) {
             $object->setId($data['id']);
+            unset($data['id']);
         }
         if (\array_key_exists('postalCode', $data)) {
             $object->setPostalCode($data['postalCode']);
+            unset($data['postalCode']);
         }
         if (\array_key_exists('street1', $data)) {
             $object->setStreet1($data['street1']);
+            unset($data['street1']);
         }
         if (\array_key_exists('type', $data)) {
             $object->setType($data['type']);
+            unset($data['type']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -84,6 +95,11 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemE
         }
         if (null !== $object->getType()) {
             $data['type'] = $object->getType();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

@@ -43,6 +43,7 @@ class ParentNormalizer implements DenormalizerInterface, NormalizerInterface, De
         }
         if (\array_key_exists('id', $data)) {
             $object->setId($data['id']);
+            unset($data['id']);
         }
         if (\array_key_exists('child', $data)) {
             $values = array();
@@ -50,6 +51,12 @@ class ParentNormalizer implements DenormalizerInterface, NormalizerInterface, De
                 $values[] = $this->denormalizer->denormalize($value, 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Model\\Child', 'json', $context);
             }
             $object->setChild($values);
+            unset($data['child']);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
@@ -68,6 +75,11 @@ class ParentNormalizer implements DenormalizerInterface, NormalizerInterface, De
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data['child'] = $values;
+        }
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
+            }
         }
         return $data;
     }

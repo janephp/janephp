@@ -43,24 +43,31 @@ class CompletedFreshInvestigationNormalizer implements DenormalizerInterface, No
         }
         if (\array_key_exists('chargeReference', $data)) {
             $object->setChargeReference($data['chargeReference']);
+            unset($data['chargeReference']);
         }
         if (\array_key_exists('contactDetails', $data)) {
             $object->setContactDetails($this->denormalizer->denormalize($data['contactDetails'], 'CreditSafe\\API\\Model\\CompletedFreshInvestigationContactDetails', 'json', $context));
+            unset($data['contactDetails']);
         }
         if (\array_key_exists('creationDate', $data)) {
             $object->setCreationDate($data['creationDate']);
+            unset($data['creationDate']);
         }
         if (\array_key_exists('lastStatusChangeDate', $data)) {
             $object->setLastStatusChangeDate($data['lastStatusChangeDate']);
+            unset($data['lastStatusChangeDate']);
         }
         if (\array_key_exists('orderID', $data)) {
             $object->setOrderID($data['orderID']);
+            unset($data['orderID']);
         }
         if (\array_key_exists('reportDate', $data)) {
             $object->setReportDate($data['reportDate']);
+            unset($data['reportDate']);
         }
         if (\array_key_exists('searchCriteria', $data)) {
             $object->setSearchCriteria($this->denormalizer->denormalize($data['searchCriteria'], 'CreditSafe\\API\\Model\\CompletedFreshInvestigationSearchCriteria', 'json', $context));
+            unset($data['searchCriteria']);
         }
         if (\array_key_exists('sections', $data)) {
             $values = array();
@@ -68,12 +75,20 @@ class CompletedFreshInvestigationNormalizer implements DenormalizerInterface, No
                 $values[] = $value;
             }
             $object->setSections($values);
+            unset($data['sections']);
         }
         if (\array_key_exists('status', $data)) {
             $object->setStatus($this->denormalizer->denormalize($data['status'], 'CreditSafe\\API\\Model\\CompletedFreshInvestigationStatus', 'json', $context));
+            unset($data['status']);
         }
         if (\array_key_exists('transactionID', $data)) {
             $object->setTransactionID($data['transactionID']);
+            unset($data['transactionID']);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
@@ -116,6 +131,11 @@ class CompletedFreshInvestigationNormalizer implements DenormalizerInterface, No
         }
         if (null !== $object->getTransactionID()) {
             $data['transactionID'] = $object->getTransactionID();
+        }
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
+            }
         }
         return $data;
     }

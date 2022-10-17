@@ -47,36 +47,47 @@ class BranchRestrictionPolicyAppsItemNormalizer implements DenormalizerInterface
         }
         if (\array_key_exists('id', $data)) {
             $object->setId($data['id']);
+            unset($data['id']);
         }
         if (\array_key_exists('slug', $data)) {
             $object->setSlug($data['slug']);
+            unset($data['slug']);
         }
         if (\array_key_exists('node_id', $data)) {
             $object->setNodeId($data['node_id']);
+            unset($data['node_id']);
         }
         if (\array_key_exists('owner', $data)) {
             $object->setOwner($this->denormalizer->denormalize($data['owner'], 'Github\\Model\\BranchRestrictionPolicyAppsItemOwner', 'json', $context));
+            unset($data['owner']);
         }
         if (\array_key_exists('name', $data)) {
             $object->setName($data['name']);
+            unset($data['name']);
         }
         if (\array_key_exists('description', $data)) {
             $object->setDescription($data['description']);
+            unset($data['description']);
         }
         if (\array_key_exists('external_url', $data)) {
             $object->setExternalUrl($data['external_url']);
+            unset($data['external_url']);
         }
         if (\array_key_exists('html_url', $data)) {
             $object->setHtmlUrl($data['html_url']);
+            unset($data['html_url']);
         }
         if (\array_key_exists('created_at', $data)) {
             $object->setCreatedAt($data['created_at']);
+            unset($data['created_at']);
         }
         if (\array_key_exists('updated_at', $data)) {
             $object->setUpdatedAt($data['updated_at']);
+            unset($data['updated_at']);
         }
         if (\array_key_exists('permissions', $data)) {
             $object->setPermissions($this->denormalizer->denormalize($data['permissions'], 'Github\\Model\\BranchRestrictionPolicyAppsItemPermissions', 'json', $context));
+            unset($data['permissions']);
         }
         if (\array_key_exists('events', $data)) {
             $values = array();
@@ -84,6 +95,12 @@ class BranchRestrictionPolicyAppsItemNormalizer implements DenormalizerInterface
                 $values[] = $value;
             }
             $object->setEvents($values);
+            unset($data['events']);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
@@ -132,6 +149,11 @@ class BranchRestrictionPolicyAppsItemNormalizer implements DenormalizerInterface
                 $values[] = $value;
             }
             $data['events'] = $values;
+        }
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\BranchRestrictionPolicyAppsItemConstraint());

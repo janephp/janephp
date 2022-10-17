@@ -46,27 +46,40 @@ class GbCompanyReportExampleResponseReportExtendedGroupStructureItemNormalizer i
         }
         if (\array_key_exists('id', $data)) {
             $object->setId($data['id']);
+            unset($data['id']);
         }
         if (\array_key_exists('country', $data)) {
             $object->setCountry($data['country']);
+            unset($data['country']);
         }
         if (\array_key_exists('safeNumber', $data)) {
             $object->setSafeNumber($data['safeNumber']);
+            unset($data['safeNumber']);
         }
         if (\array_key_exists('companyName', $data)) {
             $object->setCompanyName($data['companyName']);
+            unset($data['companyName']);
         }
         if (\array_key_exists('registeredNumber', $data)) {
             $object->setRegisteredNumber($data['registeredNumber']);
+            unset($data['registeredNumber']);
         }
         if (\array_key_exists('latestAnnualAccounts', $data)) {
             $object->setLatestAnnualAccounts($data['latestAnnualAccounts']);
+            unset($data['latestAnnualAccounts']);
         }
         if (\array_key_exists('level', $data)) {
             $object->setLevel($data['level']);
+            unset($data['level']);
         }
         if (\array_key_exists('status', $data)) {
             $object->setStatus($data['status']);
+            unset($data['status']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -99,6 +112,11 @@ class GbCompanyReportExampleResponseReportExtendedGroupStructureItemNormalizer i
         }
         if (null !== $object->getStatus()) {
             $data['status'] = $object->getStatus();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

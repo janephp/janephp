@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoPatchBody
+class ReposOwnerRepoPatchBody extends \ArrayObject
 {
     /**
      * The name of the repository.

@@ -43,21 +43,30 @@ class SchemaTagboxFilterLookupNamedCacheConfigurationNormalizer implements Denor
         }
         if (\array_key_exists('name', $data) && $data['name'] !== null) {
             $object->setName($data['name']);
+            unset($data['name']);
         }
         elseif (\array_key_exists('name', $data) && $data['name'] === null) {
             $object->setName(null);
         }
         if (\array_key_exists('caseSensitive', $data)) {
             $object->setCaseSensitive($data['caseSensitive']);
+            unset($data['caseSensitive']);
         }
         if (\array_key_exists('kind', $data)) {
             $object->setKind($data['kind']);
+            unset($data['kind']);
         }
         if (\array_key_exists('schemaId', $data) && $data['schemaId'] !== null) {
             $object->setSchemaId($data['schemaId']);
+            unset($data['schemaId']);
         }
         elseif (\array_key_exists('schemaId', $data) && $data['schemaId'] === null) {
             $object->setSchemaId(null);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -74,6 +83,11 @@ class SchemaTagboxFilterLookupNamedCacheConfigurationNormalizer implements Denor
         $data['kind'] = $object->getKind();
         if (null !== $object->getSchemaId()) {
             $data['schemaId'] = $object->getSchemaId();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

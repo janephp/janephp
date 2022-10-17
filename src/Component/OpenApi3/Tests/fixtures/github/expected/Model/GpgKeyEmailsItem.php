@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class GpgKeyEmailsItem
+class GpgKeyEmailsItem extends \ArrayObject
 {
     /**
      * 

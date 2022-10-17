@@ -43,12 +43,20 @@ class ContextAnnotationEntityFieldsNormalizer implements DenormalizerInterface, 
         }
         if (\array_key_exists('id', $data)) {
             $object->setId($data['id']);
+            unset($data['id']);
         }
         if (\array_key_exists('name', $data)) {
             $object->setName($data['name']);
+            unset($data['name']);
         }
         if (\array_key_exists('description', $data)) {
             $object->setDescription($data['description']);
+            unset($data['description']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -64,6 +72,11 @@ class ContextAnnotationEntityFieldsNormalizer implements DenormalizerInterface, 
         }
         if (null !== $object->getDescription()) {
             $data['description'] = $object->getDescription();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

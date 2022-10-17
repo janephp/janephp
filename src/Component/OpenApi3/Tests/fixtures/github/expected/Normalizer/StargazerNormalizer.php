@@ -47,12 +47,19 @@ class StargazerNormalizer implements DenormalizerInterface, NormalizerInterface,
         }
         if (\array_key_exists('starred_at', $data)) {
             $object->setStarredAt(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['starred_at']));
+            unset($data['starred_at']);
         }
         if (\array_key_exists('user', $data) && $data['user'] !== null) {
             $object->setUser($this->denormalizer->denormalize($data['user'], 'Github\\Model\\StargazerUser', 'json', $context));
+            unset($data['user']);
         }
         elseif (\array_key_exists('user', $data) && $data['user'] === null) {
             $object->setUser(null);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -64,6 +71,11 @@ class StargazerNormalizer implements DenormalizerInterface, NormalizerInterface,
         $data = array();
         $data['starred_at'] = $object->getStarredAt()->format('Y-m-d\\TH:i:sP');
         $data['user'] = $this->normalizer->normalize($object->getUser(), 'json', $context);
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\StargazerConstraint());
             $context['skip_validation'] = true;

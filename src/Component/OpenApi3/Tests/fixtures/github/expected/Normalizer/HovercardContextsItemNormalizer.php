@@ -47,9 +47,16 @@ class HovercardContextsItemNormalizer implements DenormalizerInterface, Normaliz
         }
         if (\array_key_exists('message', $data)) {
             $object->setMessage($data['message']);
+            unset($data['message']);
         }
         if (\array_key_exists('octicon', $data)) {
             $object->setOcticon($data['octicon']);
+            unset($data['octicon']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -61,6 +68,11 @@ class HovercardContextsItemNormalizer implements DenormalizerInterface, Normaliz
         $data = array();
         $data['message'] = $object->getMessage();
         $data['octicon'] = $object->getOcticon();
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\HovercardContextsItemConstraint());
             $context['skip_validation'] = true;

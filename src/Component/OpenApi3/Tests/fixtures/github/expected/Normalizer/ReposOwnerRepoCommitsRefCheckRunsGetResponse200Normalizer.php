@@ -47,6 +47,7 @@ class ReposOwnerRepoCommitsRefCheckRunsGetResponse200Normalizer implements Denor
         }
         if (\array_key_exists('total_count', $data)) {
             $object->setTotalCount($data['total_count']);
+            unset($data['total_count']);
         }
         if (\array_key_exists('check_runs', $data)) {
             $values = array();
@@ -54,6 +55,12 @@ class ReposOwnerRepoCommitsRefCheckRunsGetResponse200Normalizer implements Denor
                 $values[] = $this->denormalizer->denormalize($value, 'Github\\Model\\CheckRun', 'json', $context);
             }
             $object->setCheckRuns($values);
+            unset($data['check_runs']);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
@@ -72,6 +79,11 @@ class ReposOwnerRepoCommitsRefCheckRunsGetResponse200Normalizer implements Denor
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data['check_runs'] = $values;
+        }
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ReposOwnerRepoCommitsRefCheckRunsGetResponse200Constraint());

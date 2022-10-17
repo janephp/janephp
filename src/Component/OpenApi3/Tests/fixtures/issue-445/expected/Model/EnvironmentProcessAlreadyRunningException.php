@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class EnvironmentProcessAlreadyRunningException
+class EnvironmentProcessAlreadyRunningException extends \ArrayObject
 {
     /**
      * 

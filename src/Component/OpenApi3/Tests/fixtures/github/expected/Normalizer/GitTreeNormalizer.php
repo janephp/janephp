@@ -47,12 +47,15 @@ class GitTreeNormalizer implements DenormalizerInterface, NormalizerInterface, D
         }
         if (\array_key_exists('sha', $data)) {
             $object->setSha($data['sha']);
+            unset($data['sha']);
         }
         if (\array_key_exists('url', $data)) {
             $object->setUrl($data['url']);
+            unset($data['url']);
         }
         if (\array_key_exists('truncated', $data)) {
             $object->setTruncated($data['truncated']);
+            unset($data['truncated']);
         }
         if (\array_key_exists('tree', $data)) {
             $values = array();
@@ -60,6 +63,12 @@ class GitTreeNormalizer implements DenormalizerInterface, NormalizerInterface, D
                 $values[] = $this->denormalizer->denormalize($value, 'Github\\Model\\GitTreeTreeItem', 'json', $context);
             }
             $object->setTree($values);
+            unset($data['tree']);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
@@ -77,6 +86,11 @@ class GitTreeNormalizer implements DenormalizerInterface, NormalizerInterface, D
             $values[] = $this->normalizer->normalize($value, 'json', $context);
         }
         $data['tree'] = $values;
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
+            }
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\GitTreeConstraint());
             $context['skip_validation'] = true;

@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class BusinessRuleNGramTransformationSizeInvalidException
+class BusinessRuleNGramTransformationSizeInvalidException extends \ArrayObject
 {
     /**
      * 

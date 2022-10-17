@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Model;
 
-class SchemaPermissionSetDetail
+class SchemaPermissionSetDetail extends \ArrayObject
 {
     /**
      * The permission set ID.

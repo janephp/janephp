@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class GistsPostBodyFilesItem
+class GistsPostBodyFilesItem extends \ArrayObject
 {
     /**
      * Content of the file

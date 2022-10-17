@@ -43,21 +43,32 @@ class DefaultUserFieldsNormalizer implements DenormalizerInterface, NormalizerIn
         }
         if (\array_key_exists('location', $data)) {
             $object->setLocation($data['location']);
+            unset($data['location']);
         }
         if (\array_key_exists('url', $data)) {
             $object->setUrl($data['url']);
+            unset($data['url']);
         }
         if (\array_key_exists('description', $data)) {
             $object->setDescription($data['description']);
+            unset($data['description']);
         }
         if (\array_key_exists('entities', $data)) {
             $object->setEntities($this->denormalizer->denormalize($data['entities'], 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Model\\DefaultUserFieldsEntities', 'json', $context));
+            unset($data['entities']);
         }
         if (\array_key_exists('most_recent_tweet_id', $data)) {
             $object->setMostRecentTweetId($data['most_recent_tweet_id']);
+            unset($data['most_recent_tweet_id']);
         }
         if (\array_key_exists('pinned_tweet_id', $data)) {
             $object->setPinnedTweetId($data['pinned_tweet_id']);
+            unset($data['pinned_tweet_id']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -80,6 +91,11 @@ class DefaultUserFieldsNormalizer implements DenormalizerInterface, NormalizerIn
         }
         if (null !== $object->getPinnedTweetId()) {
             $data['pinned_tweet_id'] = $object->getPinnedTweetId();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

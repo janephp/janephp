@@ -47,15 +47,24 @@ class RunnerApplicationNormalizer implements DenormalizerInterface, NormalizerIn
         }
         if (\array_key_exists('os', $data)) {
             $object->setOs($data['os']);
+            unset($data['os']);
         }
         if (\array_key_exists('architecture', $data)) {
             $object->setArchitecture($data['architecture']);
+            unset($data['architecture']);
         }
         if (\array_key_exists('download_url', $data)) {
             $object->setDownloadUrl($data['download_url']);
+            unset($data['download_url']);
         }
         if (\array_key_exists('filename', $data)) {
             $object->setFilename($data['filename']);
+            unset($data['filename']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -76,6 +85,11 @@ class RunnerApplicationNormalizer implements DenormalizerInterface, NormalizerIn
         }
         if (null !== $object->getFilename()) {
             $data['filename'] = $object->getFilename();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\RunnerApplicationConstraint());

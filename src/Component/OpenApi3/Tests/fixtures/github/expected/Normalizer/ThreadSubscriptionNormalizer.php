@@ -47,30 +47,42 @@ class ThreadSubscriptionNormalizer implements DenormalizerInterface, NormalizerI
         }
         if (\array_key_exists('subscribed', $data)) {
             $object->setSubscribed($data['subscribed']);
+            unset($data['subscribed']);
         }
         if (\array_key_exists('ignored', $data)) {
             $object->setIgnored($data['ignored']);
+            unset($data['ignored']);
         }
         if (\array_key_exists('reason', $data) && $data['reason'] !== null) {
             $object->setReason($data['reason']);
+            unset($data['reason']);
         }
         elseif (\array_key_exists('reason', $data) && $data['reason'] === null) {
             $object->setReason(null);
         }
         if (\array_key_exists('created_at', $data) && $data['created_at'] !== null) {
             $object->setCreatedAt(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['created_at']));
+            unset($data['created_at']);
         }
         elseif (\array_key_exists('created_at', $data) && $data['created_at'] === null) {
             $object->setCreatedAt(null);
         }
         if (\array_key_exists('url', $data)) {
             $object->setUrl($data['url']);
+            unset($data['url']);
         }
         if (\array_key_exists('thread_url', $data)) {
             $object->setThreadUrl($data['thread_url']);
+            unset($data['thread_url']);
         }
         if (\array_key_exists('repository_url', $data)) {
             $object->setRepositoryUrl($data['repository_url']);
+            unset($data['repository_url']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -90,6 +102,11 @@ class ThreadSubscriptionNormalizer implements DenormalizerInterface, NormalizerI
         }
         if (null !== $object->getRepositoryUrl()) {
             $data['repository_url'] = $object->getRepositoryUrl();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ThreadSubscriptionConstraint());

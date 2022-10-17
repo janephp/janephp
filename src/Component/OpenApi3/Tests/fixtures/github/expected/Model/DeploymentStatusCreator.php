@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class DeploymentStatusCreator
+class DeploymentStatusCreator extends \ArrayObject
 {
     /**
      * 
