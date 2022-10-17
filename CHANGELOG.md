@@ -6,10 +6,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
-### Changed
-- [OpenAPI] [GH#667](https://github.com/janephp/janephp/pull/667) Update OpenApi3 schema model
-
-## [7.3.2] - 2022-09-21
 ### Added
 - [OpenAPI] [GH#665](https://github.com/janephp/janephp/pull/655) Support API Platform and different response content types; application/ld+json application/hal+json application/vnd.api+json, through optional accept headers in Client methods.
 - [OpenAPI] [GH#656](https://github.com/janephp/janephp/pull/656) Support anyOf reference or null property in schema
@@ -17,9 +13,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - [OpenAPI] [GH#647](https://github.com/janephp/janephp/pull/647) Support inheritance using discriminator with mapping
 - [JsonSchema] [GH#640](https://github.com/janephp/janephp/pull/640) [GH#651](https://github.com/janephp/janephp/pull/651) Rework Validation
+- [OpenAPI] [GH#667](https://github.com/janephp/janephp/pull/667) Update OpenApi3 schema model
 
 ### Fixed
 - [OpenAPI] [GH#636](https://github.com/janephp/janephp/pull/636) Fixing issue with http_query_build and QS array variables
+- [OpenAPI] [GH#660](https://github.com/janephp/janephp/pull/660) Fix non-guessed OpenApiCommon validators
+- [OpenAPI] [GH#664](https://github.com/janephp/janephp/pull/664) Fix Namespace missmatch on SubModel validation
 
 ## [7.3.1] - 2022-08-22
 ### Changed
