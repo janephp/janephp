@@ -199,6 +199,31 @@
                     }
                 }
             }
+        },
+        "RootLevel": {
+            "type": "object",
+            "properties": {
+                "subLevel-1": {
+                    "$ref": "#/definitions/RootSubLevel-1"
+                }
+            }
+        },
+        "RootSubLevel-1": {
+            "type": "object",
+            "properties": {
+                "subLevel-2": {
+                    "$ref": "#/definitions/RootSubLevel-2"
+                }
+            }
+        },
+        "RootSubLevel-2": {
+            "type": "object",
+            "properties": {
+                "end": {
+                    "type": "string",
+                    "pattern": "^[a-z]+$"
+                }
+            }
         }
     }
 }
