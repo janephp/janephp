@@ -9,6 +9,7 @@ use Jane\Component\JsonSchema\Tests\Validation\Generated\Model\ArrayObject;
 use Jane\Component\JsonSchema\Tests\Validation\Generated\Model\FormatObject;
 use Jane\Component\JsonSchema\Tests\Validation\Generated\Model\NumericObject;
 use Jane\Component\JsonSchema\Tests\Validation\Generated\Model\ObjectObject;
+use Jane\Component\JsonSchema\Tests\Validation\Generated\Model\RootLevel;
 use Jane\Component\JsonSchema\Tests\Validation\Generated\Model\Shop;
 use Jane\Component\JsonSchema\Tests\Validation\Generated\Model\SimpleObject;
 use Jane\Component\JsonSchema\Tests\Validation\Generated\Model\SimpleObjectSubProperty;
@@ -18,6 +19,9 @@ use Jane\Component\JsonSchema\Tests\Validation\Generated\Normalizer\ArrayObjectN
 use Jane\Component\JsonSchema\Tests\Validation\Generated\Normalizer\FormatObjectNormalizer;
 use Jane\Component\JsonSchema\Tests\Validation\Generated\Normalizer\NumericObjectNormalizer;
 use Jane\Component\JsonSchema\Tests\Validation\Generated\Normalizer\ObjectObjectNormalizer;
+use Jane\Component\JsonSchema\Tests\Validation\Generated\Normalizer\RootLevelNormalizer;
+use Jane\Component\JsonSchema\Tests\Validation\Generated\Normalizer\RootSubLevel1Normalizer;
+use Jane\Component\JsonSchema\Tests\Validation\Generated\Normalizer\RootSubLevel2Normalizer;
 use Jane\Component\JsonSchema\Tests\Validation\Generated\Normalizer\ShopNormalizer;
 use Jane\Component\JsonSchema\Tests\Validation\Generated\Normalizer\SimpleObjectNormalizer;
 use Jane\Component\JsonSchema\Tests\Validation\Generated\Normalizer\SimpleObjectSubPropertyNormalizer;
@@ -69,6 +73,9 @@ class ValidationTest extends TestCase
 
         // 10. SubModel
         $this->subModelValidation();
+
+        // 11. Nested SubModel
+        $this->nestedSubModelValidation();
     }
 
     private function numericValidation(): void
@@ -846,5 +853,65 @@ class ValidationTest extends TestCase
         $this->assertEquals(400, $caughtException->getCode());
         $this->assertEquals(2, $caughtException->getViolationList()->count());
         $this->assertEquals('[subModel][name]', $caughtException->getViolationList()->get(0)->getPropertyPath());
+    }
+
+    private function nestedSubModelValidation(): void
+    {
+        $serializer = new Serializer([new RootLevelNormalizer(), new RootSubLevel1Normalizer(), new RootSubLevel2Normalizer()]);
+
+        /** @var RootLevel|null $rootLevelObject */
+        $rootLevelObject = $serializer->denormalize([
+            'subLevel-1' => [
+                'subLevel-2' => [
+                    'end' => 'finish',
+                ],
+            ],
+        ], RootLevel::class);
+
+        $this->assertInstanceOf(RootLevel::class, $rootLevelObject);
+        $this->assertEquals('finish', $rootLevelObject->getSubLevel1()->getSubLevel2()->getEnd());
+
+        $caughtException = null;
+        try {
+            $serializer->denormalize([
+                'subLevel-1' => [
+                    'subLevel-2' => null,
+                ],
+            ], RootLevel::class);
+        } catch (ValidationException $exception) {
+            $caughtException = $exception;
+        }
+
+        $this->assertInstanceOf(ValidationException::class, $caughtException);
+        $this->assertEquals(400, $caughtException->getCode());
+        $this->assertEquals(2, $caughtException->getViolationList()->count());
+
+        $violationList = $caughtException->getViolationList();
+        $this->assertEquals($violationList[0], $violationList[1]);
+
+        $violation = $violationList[0];
+        $this->assertEquals('[subLevel-1][subLevel-2]', $violation->getPropertyPath());
+        $this->assertEquals('This value should not be null.', $violation->getMessage());
+
+        $caughtException = null;
+        try {
+            $serializer->denormalize([
+                'subLevel-1' => [
+                    'subLevel-2' => [
+                        'end' => 'Finish!',
+                    ],
+                ],
+            ], RootLevel::class);
+        } catch (ValidationException $exception) {
+            $caughtException = $exception;
+        }
+
+        $this->assertInstanceOf(ValidationException::class, $caughtException);
+        $this->assertEquals(400, $caughtException->getCode());
+        $this->assertEquals(1, $caughtException->getViolationList()->count());
+
+        $violation = $caughtException->getViolationList()[0];
+        $this->assertEquals('[subLevel-1][subLevel-2][end]', $violation->getPropertyPath());
+        $this->assertEquals('This value is not valid.', $violation->getMessage());
     }
 }

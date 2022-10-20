@@ -43,6 +43,10 @@ class SubObjectValidator implements ValidatorInterface
      */
     public function guess($object, string $name, $guess): void
     {
+        if (strpos($guess->getReference(), 'properties') !== false) {
+            return; // we don't want to guess on properties here, only on classes
+        }
+
         foreach ($object->getProperties() ?? [] as $localName => $property) {
             $reference = null;
             $className = null;
