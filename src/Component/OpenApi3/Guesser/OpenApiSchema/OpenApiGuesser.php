@@ -18,6 +18,9 @@ use Jane\Component\OpenApi3\JsonSchema\Model\RequestBody;
 use Jane\Component\OpenApi3\JsonSchema\Model\Response;
 use Jane\Component\OpenApi3\JsonSchema\Model\Schema;
 use Jane\Component\OpenApiCommon\Guesser\Guess\OperationGuess;
+use Jane\Component\OpenApiCommon\Naming\ChainOperationNaming;
+use Jane\Component\OpenApiCommon\Naming\OperationIdNaming;
+use Jane\Component\OpenApiCommon\Naming\OperationUrlNaming;
 use Jane\Component\OpenApiCommon\Registry\Registry as OpenApiRegistry;
 use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Component\String\Slugger\AsciiSlugger;
@@ -29,11 +32,16 @@ class OpenApiGuesser implements GuesserInterface, ClassGuesserInterface, ChainGu
 
     private const IN_BODY = 'body';
     private $slugger;
+    private $naming;
 
     public function __construct(SerializerInterface $serializer)
     {
         $this->serializer = $serializer;
         $this->slugger = new AsciiSlugger();
+        $this->naming = new ChainOperationNaming([
+            new OperationIdNaming(),
+            new OperationUrlNaming(),
+        ]);
     }
 
     /**
@@ -196,14 +204,20 @@ class OpenApiGuesser implements GuesserInterface, ClassGuesserInterface, ChainGu
         $name = $path . ucfirst(strtolower($operationType));
         $reference = $reference . '/' . $path . '/' . strtolower($operationType);
         $operationGuess = new OperationGuess($pathItem, $operation, $path, $operationType, $reference, $securityScopes);
+        $operationName = $this->naming->getEndpointName($operationGuess);
 
         $schema = $registry->getSchema($reference);
         $schema->addOperation($reference, $operationGuess);
+        $schema->initOperationRelations($operationName);
 
         if (null !== $operation->getParameters() && \count($operation->getParameters()) > 0) {
             foreach ($operation->getParameters() as $key => $parameter) {
                 if ($parameter instanceof Parameter && self::IN_BODY === $parameter->getIn()) {
-                    $this->chainGuesser->guessClass($parameter->getSchema(), $name . 'Body', $reference . '/parameters/' . $key, $registry);
+                    $subReference = $reference . '/parameters/' . $key;
+                    $this->chainGuesser->guessClass($parameter->getSchema(), $name . 'Body', $subReference, $registry);
+                    if (null !== ($guessClass = $schema->getClass($subReference))) {
+                        $schema->addOperationRelation($operationName, $guessClass->getName());
+                    }
                 }
             }
         }
@@ -215,7 +229,11 @@ class OpenApiGuesser implements GuesserInterface, ClassGuesserInterface, ChainGu
 
         if ($operation->getRequestBody() instanceof RequestBody && is_iterable($operation->getRequestBody()->getContent())) {
             foreach ($operation->getRequestBody()->getContent() as $contentType => $content) {
-                $this->chainGuesser->guessClass($content->getSchema(), $name . 'Body', $reference . '/requestBody/content/' . $contentType . '/schema', $registry);
+                $subReference = $reference . '/requestBody/content/' . $contentType . '/schema';
+                $this->chainGuesser->guessClass($content->getSchema(), $name . 'Body', $subReference, $registry);
+                if (null !== ($guessClass = $schema->getClass($subReference))) {
+                    $schema->addOperationRelation($operationName, $guessClass->getName());
+                }
             }
         }
 
@@ -228,7 +246,11 @@ class OpenApiGuesser implements GuesserInterface, ClassGuesserInterface, ChainGu
                         $responseName = $contentCount > 1
                             ? $name . $this->slugContentType($contentType) . 'Response' . $status
                             : $name . 'Response' . $status;
-                        $this->chainGuesser->guessClass($content->getSchema(), $responseName, $reference . '/responses/' . $status . '/content/' . $contentType . '/schema', $registry);
+                        $subReference = $reference . '/responses/' . $status . '/content/' . $contentType . '/schema';
+                        $this->chainGuesser->guessClass($content->getSchema(), $responseName, $subReference, $registry);
+                        if (null !== ($guessClass = $schema->getClass($subReference))) {
+                            $schema->addOperationRelation($operationName, $guessClass->getName());
+                        }
                     }
                 }
             }
