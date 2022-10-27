@@ -1,9 +1,9 @@
 <?php
 
-namespace Jane\OpenApi2\Tests\Expected\Normalizer;
+namespace Jane\Component\OpenApi3\Tests\Expected\Normalizer;
 
-use Jane\OpenApi2\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\OpenApi2\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\CheckArray;
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -16,7 +16,7 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
     use NormalizerAwareTrait;
     use CheckArray;
     use ValidatorTrait;
-    protected $normalizers = array('Jane\\OpenApi2\\Tests\\Expected\\Model\\Company' => 'Jane\\OpenApi2\\Tests\\Expected\\Normalizer\\CompanyNormalizer', 'Jane\\OpenApi2\\Tests\\Expected\\Model\\Project' => 'Jane\\OpenApi2\\Tests\\Expected\\Normalizer\\ProjectNormalizer', 'Jane\\OpenApi2\\Tests\\Expected\\Model\\ProjectClient' => 'Jane\\OpenApi2\\Tests\\Expected\\Normalizer\\ProjectClientNormalizer', 'Jane\\OpenApi2\\Tests\\Expected\\Model\\Projects' => 'Jane\\OpenApi2\\Tests\\Expected\\Normalizer\\ProjectsNormalizer', 'Jane\\OpenApi2\\Tests\\Expected\\Model\\Error' => 'Jane\\OpenApi2\\Tests\\Expected\\Normalizer\\ErrorNormalizer', 'Jane\\OpenApi2\\Tests\\Expected\\Model\\PaginationLinks' => 'Jane\\OpenApi2\\Tests\\Expected\\Normalizer\\PaginationLinksNormalizer', 'Jane\\OpenApi2\\Tests\\Expected\\Model\\CompanyPatchBody' => 'Jane\\OpenApi2\\Tests\\Expected\\Normalizer\\CompanyPatchBodyNormalizer', 'Jane\\OpenApi2\\Tests\\Expected\\Model\\ProjectsPostBody' => 'Jane\\OpenApi2\\Tests\\Expected\\Normalizer\\ProjectsPostBodyNormalizer', '\\Jane\\Component\\JsonSchemaRuntime\\Reference' => '\\Jane\\OpenApi2\\Tests\\Expected\\Runtime\\Normalizer\\ReferenceNormalizer'), $normalizersCache = array();
+    protected $normalizers = array('Jane\\Component\\OpenApi3\\Tests\\Expected\\Model\\Endpoint2GetResponse' => 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Normalizer\\Endpoint2GetResponseNormalizer', 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Model\\SubLevel1' => 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Normalizer\\SubLevel1Normalizer', 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Model\\SubLevel2' => 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Normalizer\\SubLevel2Normalizer', 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Model\\SubLevel3' => 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Normalizer\\SubLevel3Normalizer', 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Model\\Endpoint3GetResponse200' => 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Normalizer\\Endpoint3GetResponse200Normalizer', '\\Jane\\Component\\JsonSchemaRuntime\\Reference' => '\\Jane\\Component\\OpenApi3\\Tests\\Expected\\Runtime\\Normalizer\\ReferenceNormalizer'), $normalizersCache = array();
     public function supportsDenormalization($data, $type, $format = null) : bool
     {
         return array_key_exists($type, $this->normalizers);

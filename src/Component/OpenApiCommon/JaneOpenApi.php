@@ -124,11 +124,7 @@ abstract class JaneOpenApi extends ChainGenerator
             $whitelistedSchema->addOperationRelations($operation, $registry);
         }
 
-        foreach ($schema->getClasses() as $class) {
-            if (!$schema->needsRelation($class->getName())) {
-                $schema->removeClass($class->getReference());
-            }
-        }
+        $schema->filterRelations();
     }
 
     protected function hydrateDiscriminatedClasses(Schema $schema, Registry $registry)

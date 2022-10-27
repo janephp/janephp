@@ -1,0 +1,87 @@
+openapi: '3.0.3'
+info:
+  version: 1.0.0
+  title: Bug example for Jane PHP
+paths:
+  /endpoint/1:
+    get:
+      summary: Simple endpoint 1
+      operationId: getEndpoint1
+      responses:
+        '200':
+          description: Simple endpoint response 1
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Endpoint-1-GetResponse'
+  /endpoint/2:
+    get:
+      summary: Simple endpoint 2
+      operationId: getEndpoint2
+      responses:
+        '200':
+          description: Simple endpoint response 2
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Endpoint-2-GetResponse'
+  /endpoint/3:
+    get:
+      summary: Simple endpoint 3
+      operationId: getEndpoint3
+      responses:
+        '200':
+          description: Simple endpoint response 3
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  field-3:
+                    type: string
+
+components:
+  schemas:
+    Endpoint-1-GetResponse:
+      type: object
+      properties:
+        field-1:
+          $ref: '#/components/schemas/UnwantedField1'
+    Endpoint-2-GetResponse:
+      type: object
+      properties:
+        field-2:
+          $ref: '#/components/schemas/SubLevel-1'
+        field-2-bis:
+          $ref: '#/components/schemas/SubLevel-2'
+    UnusedModel:
+      type: object
+      properties:
+        subModel:
+          $ref: '#/components/schemas/UnwantedSubModel'
+    UnwantedSubModel:
+      type: object
+      properties:
+        foo:
+          type: string
+    UnwantedField1:
+      type: object
+      properties:
+        foo1:
+          type: string
+    SubLevel-1:
+      type: object
+      properties:
+        subLevel-2:
+          $ref: '#/components/schemas/SubLevel-2'
+    SubLevel-2:
+      type: object
+      properties:
+        subLevel-3:
+          $ref: '#/components/schemas/SubLevel-3'
+    SubLevel-3:
+      type: object
+      properties:
+        end:
+          type: string
+          pattern: '[a-z]+'

@@ -57,7 +57,7 @@ class WhitelistedSchema implements WhitelistFetchInterface
                 $schema = $response->getSchema();
                 $classGuess = $this->guessClass->guessClass($schema, $reference, $registry);
                 if (null !== $classGuess) {
-                    $this->schema->addRelation($baseOperation, $classGuess->getName());
+                    $this->schema->addOperationRelation($baseOperation, $classGuess->getName());
                 }
             }
         }
@@ -69,7 +69,7 @@ class WhitelistedSchema implements WhitelistFetchInterface
                     $schema = $parameter->getSchema();
                     $classGuess = $this->guessClass->guessClass($schema, $reference, $registry);
                     if (null !== $classGuess) {
-                        $this->schema->addRelation($baseOperation, $classGuess->getName());
+                        $this->schema->addOperationRelation($baseOperation, $classGuess->getName());
                     }
                 }
             }

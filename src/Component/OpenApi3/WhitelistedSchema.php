@@ -52,7 +52,7 @@ class WhitelistedSchema implements WhitelistFetchInterface
                         $schema = $content->getSchema();
                         $classGuess = $this->guessClass->guessClass($schema, $contentReference, $registry);
                         if (null !== $classGuess) {
-                            $this->schema->addRelation($baseOperation, $classGuess->getName());
+                            $this->schema->addOperationRelation($baseOperation, $classGuess->getName());
                         }
                     }
                 }
@@ -74,7 +74,7 @@ class WhitelistedSchema implements WhitelistFetchInterface
                     $schema = null;
                     $classGuess = $this->guessClass->guessClass($schema, $operationGuess->getReference(), $registry);
                     if (null !== $classGuess) {
-                        $this->schema->addRelation($baseOperation, $classGuess->getName());
+                        $this->schema->addOperationRelation($baseOperation, $classGuess->getName());
                     }
                 }
 
@@ -86,7 +86,7 @@ class WhitelistedSchema implements WhitelistFetchInterface
                             $schema = $content->getSchema();
                             $classGuess = $this->guessClass->guessClass($schema, $contentReference, $registry);
                             if (null !== $classGuess) {
-                                $this->schema->addRelation($baseOperation, $classGuess->getName());
+                                $this->schema->addOperationRelation($baseOperation, $classGuess->getName());
                             }
                         }
                     }
@@ -103,7 +103,7 @@ class WhitelistedSchema implements WhitelistFetchInterface
                     $schema = $parameter->getSchema();
                     $classGuess = $this->guessClass->guessClass($schema, $reference, $registry);
                     if (null !== $classGuess) {
-                        $this->schema->addRelation($baseOperation, $classGuess->getName());
+                        $this->schema->addOperationRelation($baseOperation, $classGuess->getName());
                     }
                 }
             }

@@ -20,6 +20,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - [OpenAPI] [GH#660](https://github.com/janephp/janephp/pull/660) Fix non-guessed OpenApiCommon validators
 - [OpenAPI] [GH#664](https://github.com/janephp/janephp/pull/664) Fix Namespace missmatch on SubModel validation
 - [JsonSchema] [GH#668](https://github.com/janephp/janephp/pull/668) Validation - Guess SubModel only on classes, not on properties
+- [OpenAPI] [GH#670](https://github.com/janephp/janephp/issues/670) Missing models when using whitelisted-paths
+- [OpenAPI] [GH#672](https://github.com/janephp/janephp/issues/672) Unwanted models when using whitelisted-paths
 
 ## [7.3.1] - 2022-08-22
 ### Changed

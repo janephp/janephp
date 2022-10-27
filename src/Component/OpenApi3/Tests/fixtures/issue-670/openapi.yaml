@@ -1,0 +1,103 @@
+openapi: '3.0.3'
+info:
+  version: 1.0.0
+  title: Bug example for Jane PHP
+paths:
+  /endpoint/1:
+    get:
+      summary: Simple endpoint 1
+      operationId: getEndpoint1
+      responses:
+        '200':
+          description: Simple endpoint response 1
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Endpoint-1-GetResponse'
+    post:
+      summary: Simple POST endpoint 1
+      operationId: postEndpoint1
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Endpoint-1-PostBody'
+      responses:
+        '204':
+          description: Empty response
+  /endpoint/2:
+    get:
+      summary: Simple endpoint 2
+      operationId: getEndpoint2
+      responses:
+        '200':
+          description: Simple endpoint response 2
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  field-2:
+                    type: string
+    post:
+      summary: Simple POST endpoint 2
+      operationId: postEndpoint2
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                post-field-2:
+                  type: string
+      responses:
+        '204':
+          description: Empty response
+
+  /endpoint/3:
+    get:
+      summary: Simple endpoint 3
+      operationId: getEndpoint3
+      responses:
+        '200':
+          description: Simple endpoint response 3
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  field-3:
+                    type: object
+                    properties:
+                      sub-field-3:
+                        type: string
+    post:
+      summary: Simple POST endpoint 3
+      operationId: postEndpoint3
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                post-field-3:
+                  type: object
+                  properties:
+                    post-sub-field-3:
+                      type: string
+      responses:
+        '204':
+          description: Empty response
+
+components:
+  schemas:
+    Endpoint-1-GetResponse:
+      type: object
+      properties:
+        field-1:
+          type: string
+    Endpoint-1-PostBody:
+      type: object
+      properties:
+        post-field-1:
+          type: string

@@ -62,59 +62,51 @@ class Schema extends BaseSchema implements SchemaInterface
     }
 
     private $neededModels = [];
+    private $operationRelations = [];
 
-    public function addRelation(string $model, string $needs): void
+    public function initOperationRelations(string $model): void
     {
-        parent::addRelation($model, $needs);
+        if (!\array_key_exists($model, $this->operationRelations)) {
+            $this->operationRelations[$model] = [];
+        }
+    }
 
-        if (\in_array($model, $this->neededModels)) {
+    public function addOperationRelation(string $model, string $needs): void
+    {
+        $this->initOperationRelations($model);
+
+        if (!\in_array($needs, $this->operationRelations[$model])) {
+            $this->operationRelations[$model][] = $needs;
+        }
+    }
+
+    public function filterRelations(): void
+    {
+        foreach ($this->operationRelations as $operation => $operationRelations) {
+            $this->neededModels[] = $operation;
+            $this->fetchRelatedModels($operationRelations);
+        }
+
+        foreach ($this->getClasses() as $class) {
+            if (!\in_array($class->getName(), $this->neededModels)) {
+                $this->removeClass($class->getReference());
+            }
+        }
+    }
+
+    private function fetchRelatedModels(array $models): void
+    {
+        if (\count($models) === 0) {
             return;
         }
 
-        $this->neededModels[] = $model;
-    }
-
-    public function relationExists($model): bool
-    {
-        return parent::relationExists($model) && \in_array($model, $this->neededModels);
-    }
-
-    public function needsRelation(string $reference): bool
-    {
-        $passed = [];
-        foreach ($this->neededModels as $neededModel) {
-            if (\array_key_exists($neededModel, $this->relations) && \count($this->relations[$neededModel]) > 0) {
-                $passed[] = $neededModel;
-                if ($this->reccNeedsRelation($this->relations[$neededModel], $reference, $passed)) {
-                    return true;
-                }
+        foreach ($models as $model) {
+            if (\in_array($model, $this->neededModels)) {
+                continue;
             }
+
+            $this->neededModels[] = $model;
+            $this->fetchRelatedModels($this->relations[$model] ?? []);
         }
-
-        return false;
-    }
-
-    private function reccNeedsRelation(array $neededModels, string $reference, array &$passed): bool
-    {
-        if (\count($neededModels) > 0) {
-            if (\in_array($reference, $neededModels)) {
-                return true;
-            }
-
-            foreach ($neededModels as $neededModel) {
-                if (\in_array($neededModel, $passed)) {
-                    return false;
-                }
-
-                if (\array_key_exists($neededModel, $this->relations)) {
-                    $passed[] = $neededModel;
-                    if ($this->reccNeedsRelation($this->relations[$neededModel], $reference, $passed)) {
-                        return true;
-                    }
-                }
-            }
-        }
-
-        return false;
     }
 }
